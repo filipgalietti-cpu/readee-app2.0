@@ -3,6 +3,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --accent-color: #74C0FC;
 }
 
 @theme inline {
@@ -18,7 +19,21 @@
 }
 
 body {
-  background: var(--background);
+  /* Dynamic background based on selected color */
+  background: linear-gradient(
+    170deg,
+    color-mix(in srgb, var(--accent-color) 85%, white) 0%,
+    color-mix(in srgb, var(--accent-color) 70%, white) 50%,
+    color-mix(in srgb, var(--accent-color) 90%, white) 100%
+  );
+  
+  /* Smooth color transitions */
+  transition: background 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  
   color: var(--foreground);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  
+  /* Ensure gradient covers full viewport */
+  min-height: 100vh;
+  background-attachment: fixed;
 }
