@@ -1,5 +1,24 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Setup
+
+### Environment Variables
+
+This project uses Supabase for authentication. You need to set up your environment variables:
+
+1. Copy `.env.example` to `.env.local`:
+   ```bash
+   cp .env.example .env.local
+   ```
+
+2. Get your Supabase credentials from [Supabase Dashboard](https://app.supabase.com/project/_/settings/api)
+
+3. Update `.env.local` with your actual values:
+   - `NEXT_PUBLIC_SUPABASE_URL`: Your Supabase project URL
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`: Your Supabase anonymous key
+
+**Note:** The app will run without these variables but authentication features will not work.
+
 ## Getting Started
 
 First, run the development server:
