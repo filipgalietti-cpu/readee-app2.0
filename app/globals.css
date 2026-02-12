@@ -4,10 +4,6 @@
   --background: #ffffff;
   --foreground: #171717;
   --accent-color: #74C0FC;
-  
-  /* Soft cream base colors for subtle gradient */
-  --bg-gradient-start: #FFF9F0;
-  --bg-gradient-mid: #FFF3E6;
 }
 
 @theme inline {
@@ -19,8 +15,6 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
-    --bg-gradient-start: #1a1612;
-    --bg-gradient-mid: #201a14;
   }
 }
 
