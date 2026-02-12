@@ -55,7 +55,7 @@ export async function middleware(request: NextRequest) {
   }
 
   // Check if user is accessing a protected route
-  if (request.nextUrl.pathname.startsWith('/dashboard') && !user) {
+  if ((request.nextUrl.pathname.startsWith('/dashboard') || request.nextUrl.pathname.startsWith('/library')) && !user) {
     const url = request.nextUrl.clone()
     url.pathname = '/login'
     return NextResponse.redirect(url)
