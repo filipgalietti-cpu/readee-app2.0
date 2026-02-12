@@ -50,7 +50,7 @@ export async function middleware(request: NextRequest) {
     } = await supabase.auth.getUser()
     user = authenticatedUser
   } catch (error) {
-    console.error('Error getting user:', error)
+    console.error('Error getting user in middleware:', error)
     // Continue without user authentication
   }
 
