@@ -2,10 +2,10 @@
 
 import { useState, FormEvent } from "react";
 import Link from "next/link";
-import AuthCard from "../../components/auth/AuthCard";
-import FormField from "../../components/auth/FormField";
-import GoogleButton from "../../components/auth/GoogleButton";
-import Divider from "../../components/auth/Divider";
+import AuthCard from "@/app/components/auth/AuthCard";
+import FormField from "@/app/components/auth/FormField";
+import GoogleButton from "@/app/components/auth/GoogleButton";
+import Divider from "@/app/components/auth/Divider";
 
 interface FormData {
   email: string;
