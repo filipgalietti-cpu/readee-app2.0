@@ -10,7 +10,7 @@ export default function Navbar() {
               Readee
             </Link>
           </div>
-          <div className="flex items-center space-x-8">
+          <div className="flex items-center space-x-4">
             <Link
               href="/"
               className="text-gray-700 hover:text-gray-900 transition-colors"
@@ -28,6 +28,12 @@ export default function Navbar() {
               className="text-gray-700 hover:text-gray-900 transition-colors"
             >
               Login
+            </Link>
+            <Link
+              href="/signup"
+              className="rounded-lg bg-gray-900 px-4 py-2 text-white font-medium hover:bg-gray-800 transition-colors"
+            >
+              Sign Up
             </Link>
           </div>
         </div>
