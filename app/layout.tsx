@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import { ProfileProvider } from "../ProfileContext";
-import { OnboardingGuard } from "../OnboardingGuard";
+import { ProfileProvider } from "@/ProfileContext";
+import { OnboardingGuard } from "@/OnboardingGuard";
 import { DynamicBackground } from "./components/DynamicBackground";
 
 export const metadata: Metadata = {
