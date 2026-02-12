@@ -2,25 +2,28 @@
 
 import { useState, FormEvent } from "react";
 import Link from "next/link";
-import AuthCard from "../components/auth/AuthCard";
-import FormField from "../components/auth/FormField";
-import GoogleButton from "../components/auth/GoogleButton";
-import Divider from "../components/auth/Divider";
+import AuthCard from "../../components/auth/AuthCard";
+import FormField from "../../components/auth/FormField";
+import GoogleButton from "../../components/auth/GoogleButton";
+import Divider from "../../components/auth/Divider";
 
 interface FormData {
   email: string;
   password: string;
+  confirmPassword: string;
 }
 
 interface FormErrors {
   email?: string;
   password?: string;
+  confirmPassword?: string;
 }
 
-export default function Login() {
+export default function Signup() {
   const [formData, setFormData] = useState<FormData>({
     email: "",
     password: "",
+    confirmPassword: "",
   });
   const [errors, setErrors] = useState<FormErrors>({});
 
@@ -41,6 +44,13 @@ export default function Login() {
       newErrors.password = "Password must be at least 8 characters";
     }
 
+    // Confirm password validation
+    if (!formData.confirmPassword) {
+      newErrors.confirmPassword = "Please confirm your password";
+    } else if (formData.password !== formData.confirmPassword) {
+      newErrors.confirmPassword = "Passwords do not match";
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -50,7 +60,10 @@ export default function Login() {
 
     if (validateForm()) {
       // Placeholder - no auth logic yet
-      console.log("Login form submitted:", formData);
+      console.log("Signup form submitted:", {
+        email: formData.email,
+        password: formData.password,
+      });
     }
   };
 
@@ -64,7 +77,7 @@ export default function Login() {
   };
 
   return (
-    <AuthCard title="Welcome Back">
+    <AuthCard title="Create Your Account">
       <GoogleButton />
       <Divider />
       <form onSubmit={handleSubmit} className="space-y-6">
@@ -90,20 +103,31 @@ export default function Login() {
           error={errors.password}
           required
         />
+        <FormField
+          id="confirmPassword"
+          label="Confirm Password"
+          type="password"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          placeholder="••••••••"
+          error={errors.confirmPassword}
+          required
+        />
         <button
           type="submit"
           className="w-full bg-gray-900 text-white py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2"
         >
-          Sign In
+          Create Account
         </button>
       </form>
       <p className="mt-6 text-center text-sm text-gray-600">
-        Don&apos;t have an account?{" "}
+        Already have an account?{" "}
         <Link
-          href="/signup"
+          href="/login"
           className="text-gray-900 font-medium hover:underline"
         >
-          Sign up
+          Sign in
         </Link>
       </p>
     </AuthCard>
