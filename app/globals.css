@@ -25,12 +25,12 @@
 }
 
 body {
-  /* Subtle gradient background with accent color hint */
+  /* Dynamic background based on selected color */
   background: linear-gradient(
     170deg,
-    var(--bg-gradient-start) 0%,
-    var(--bg-gradient-mid) 30%,
-    color-mix(in srgb, var(--accent-color) 3%, transparent) 100%
+    color-mix(in srgb, var(--accent-color) 85%, white) 0%,
+    color-mix(in srgb, var(--accent-color) 70%, white) 50%,
+    color-mix(in srgb, var(--accent-color) 90%, white) 100%
   );
   
   /* Smooth color transitions */
