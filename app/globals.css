@@ -3,6 +3,11 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --accent-color: #74C0FC;
+  
+  /* Soft cream base colors for subtle gradient */
+  --bg-gradient-start: #FFF9F0;
+  --bg-gradient-mid: #FFF3E6;
 }
 
 @theme inline {
@@ -14,11 +19,27 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --bg-gradient-start: #1a1612;
+    --bg-gradient-mid: #201a14;
   }
 }
 
 body {
-  background: var(--background);
+  /* Subtle gradient background with accent color hint */
+  background: linear-gradient(
+    170deg,
+    var(--bg-gradient-start) 0%,
+    var(--bg-gradient-mid) 30%,
+    color-mix(in srgb, var(--accent-color) 3%, transparent) 100%
+  );
+  
+  /* Smooth color transitions */
+  transition: background 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  
   color: var(--foreground);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  
+  /* Ensure gradient covers full viewport */
+  min-height: 100vh;
+  background-attachment: fixed;
 }
