@@ -385,7 +385,7 @@ export default function WelcomePage() {
           className={isTransitioning ? "animate-fadeSlideOut" : "animate-fadeSlideIn"}
           style={{ textAlign: "center", maxWidth: 440 }}
         >
-          <div className="animate-scaleIn">
+          <div style={{ animation: "scaleIn 0.6s ease forwards" }}>
             <MascotFace color="#74C0FC" expression="happy" />
           </div>
           <h1
@@ -549,8 +549,8 @@ export default function WelcomePage() {
             {COLORS.map((c, i) => (
               <div
                 key={c.id}
-                className="animate-popIn"
                 style={{
+                  animation: "popIn 0.3s ease forwards",
                   animationDelay: `${i * 0.05}s`,
                   opacity: 0,
                 }}
@@ -647,7 +647,6 @@ export default function WelcomePage() {
                 <div
                   key={interest.id}
                   onClick={() => toggleInterest(interest.id)}
-                  className="animate-popIn"
                   style={{
                     padding: "10px 18px",
                     borderRadius: 50,
@@ -660,6 +659,7 @@ export default function WelcomePage() {
                     boxShadow: isSelected
                       ? `0 4px 16px ${activeColor}33`
                       : "0 2px 8px rgba(0,0,0,0.04)",
+                    animation: "popIn 0.3s ease forwards",
                     animationDelay: `${i * 0.03}s`,
                     opacity: 0,
                     cursor: "pointer",
@@ -701,7 +701,7 @@ export default function WelcomePage() {
           className="animate-fadeSlideIn"
           style={{ textAlign: "center", maxWidth: 480 }}
         >
-          <div className="animate-scaleIn">
+          <div style={{ animation: "scaleIn 0.5s ease forwards" }}>
             <MascotFace color={activeColor} expression="excited" />
           </div>
           <h2
