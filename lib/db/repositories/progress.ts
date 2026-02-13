@@ -166,31 +166,47 @@ export async function getProgressStats(childId: string): Promise<{
 function calculateStreak(progress: ReadingProgress[]): number {
   const completedProgress = progress
     .filter(p => p.completed && p.completed_at)
-    .sort((a, b) => {
-      const dateA = new Date(a.completed_at!).getTime();
-      const dateB = new Date(b.completed_at!).getTime();
-      return dateB - dateA; // Most recent first
+    .map(p => {
+      const completedDate = new Date(p.completed_at!);
+      completedDate.setHours(0, 0, 0, 0);
+      return completedDate.getTime();
     });
   
   if (completedProgress.length === 0) {
     return 0;
   }
   
-  let streak = 0;
+  // Get unique dates (to handle multiple completions on same day)
+  const uniqueDates = Array.from(new Set(completedProgress)).sort((a, b) => b - a);
+  
   const today = new Date();
   today.setHours(0, 0, 0, 0);
+  const todayTime = today.getTime();
   
-  let currentDate = new Date(today);
+  const yesterday = new Date(today);
+  yesterday.setDate(yesterday.getDate() - 1);
+  const yesterdayTime = yesterday.getTime();
   
-  for (const p of completedProgress) {
-    const completedDate = new Date(p.completed_at!);
-    completedDate.setHours(0, 0, 0, 0);
-    
-    if (completedDate.getTime() === currentDate.getTime()) {
+  // Check if most recent completion was today or yesterday
+  const mostRecentCompletion = uniqueDates[0];
+  if (mostRecentCompletion !== todayTime && mostRecentCompletion !== yesterdayTime) {
+    // Streak is broken - last completion was more than a day ago
+    return 0;
+  }
+  
+  // Count consecutive days
+  let streak = 0;
+  let expectedDate = mostRecentCompletion === todayTime ? todayTime : yesterdayTime;
+  
+  for (const completionDate of uniqueDates) {
+    if (completionDate === expectedDate) {
       streak++;
-      currentDate.setDate(currentDate.getDate() - 1);
-    } else if (completedDate.getTime() < currentDate.getTime()) {
-      // Gap in streak
+      // Move to previous day
+      const nextExpected = new Date(expectedDate);
+      nextExpected.setDate(nextExpected.getDate() - 1);
+      expectedDate = nextExpected.getTime();
+    } else {
+      // Gap found, streak ends
       break;
     }
   }
