@@ -5,18 +5,23 @@ html, body {
   height: 100%;
 }
 
-body {
-  min-height: 100vh;
-  background-color: white;
-  color: rgb(24 24 27);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@layer base {
+  html, body { height: 100%; }
 
-h1 {
-  font-size: 1.875rem;
-  font-weight: 600;
-  letter-spacing: -0.025em;
+  body {
+    min-height: 100vh;
+    background-color: white;
+    color: rgb(24 24 27);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1 {
+    font-size: 1.875rem;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+  }
+}
 }
 
 h2 {
@@ -35,7 +40,7 @@ p {
   color: rgb(82 82 91);
 }
 
-/* Custom component classes for Tailwind v4 */
+/* Custom component classes */
 .container-page {
   margin-left: auto;
   margin-right: auto;
@@ -43,6 +48,18 @@ p {
   max-width: 72rem;
   padding-left: 1rem;
   padding-right: 1rem;
+}
+
+/* Tailwind utility classes (requires Tailwind/PostCSS processing) */
+.card { @apply rounded-2xl border border-zinc-200 bg-white shadow-lg; }
+
+.btn { @apply inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-medium transition; }
+.btn-primary { @apply inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-medium transition bg-zinc-900 text-white hover:bg-zinc-800 active:bg-zinc-950; }
+.btn-ghost { @apply inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-medium transition bg-transparent text-zinc-700 hover:bg-zinc-100; }
+
+.input { @apply w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm outline-none transition focus:border-zinc-400; }
+.label { @apply text-xs font-medium text-zinc-700; }
+.muted { @apply text-sm text-zinc-600; }
 }
 
 @media (min-width: 640px) {
