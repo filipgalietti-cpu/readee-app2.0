@@ -1,62 +1,94 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/Card";
+import { Icon } from "../components/ui/Icon";
 
-// Mock story data
-const stories = [
-  {
-    id: "1",
-    title: "The Brave Little Fox",
-    gradeLevel: "K-2",
-    description: "A young fox learns about courage while exploring the forest for the first time.",
-  },
-  {
-    id: "2",
-    title: "Adventures in Space",
-    gradeLevel: "3-5",
-    description: "Join astronaut Maya as she discovers a mysterious planet with friendly aliens.",
-  },
-  {
-    id: "3",
-    title: "The Magic Library",
-    gradeLevel: "3-5",
-    description: "Emma finds a secret library where books come to life and take her on amazing journeys.",
-  },
-  {
-    id: "4",
-    title: "Robot Friends",
-    gradeLevel: "K-2",
-    description: "A story about a robot who learns what it means to be a good friend.",
-  },
-  {
-    id: "5",
-    title: "Mystery at the Museum",
-    gradeLevel: "6-8",
-    description: "Detective twins solve the case of the missing ancient artifact before the grand opening.",
-  },
-];
+interface Story {
+  id: string;
+  title: string;
+  description: string;
+  grade_level: string;
+  unlocked: boolean;
+}
 
 export default function Library() {
+  const [stories, setStories] = useState<Story[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchStories();
+  }, []);
+
+  const fetchStories = async () => {
+    try {
+      const response = await fetch("/api/stories");
+      const data = await response.json();
+      setStories(data.stories || []);
+    } catch (error) {
+      console.error("Failed to fetch stories:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="container-page py-12">
+        <div className="text-center">
+          <Icon name="book" className="mx-auto mb-4 text-blue-500 animate-pulse" size={48} />
+          <p className="text-zinc-600">Loading library...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
-      <h1 className="text-3xl font-bold text-gray-900 mb-2">Story Library</h1>
-      <p className="text-gray-600 mb-8">Choose a story to start reading</p>
-      
+    <div className="container-page py-12">
+      <div className="mb-8">
+        <h1 className="text-4xl font-bold text-zinc-900 mb-2">Story Library</h1>
+        <p className="text-zinc-600">Choose a story to start reading</p>
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {stories.map((story) => (
-          <Link
-            key={story.id}
-            href={`/reader/${story.id}`}
-            className="bg-white rounded-lg shadow hover:shadow-lg transition-shadow p-6 border border-gray-200 hover:border-gray-300"
-          >
-            <div className="mb-2">
-              <span className="inline-block px-3 py-1 text-sm font-semibold text-gray-700 bg-gray-100 rounded-full">
-                {story.gradeLevel}
-              </span>
-            </div>
-            <h2 className="text-xl font-bold text-gray-900 mb-2">{story.title}</h2>
-            <p className="text-gray-600">{story.description}</p>
-          </Link>
+          <div key={story.id}>
+            {story.unlocked ? (
+              <Link href={`/reader/${story.id}`} className="block">
+                <Card className="h-full hover:shadow-lg transition-shadow cursor-pointer">
+                  <CardHeader>
+                    <div className="flex items-start justify-between mb-2">
+                      <span className="inline-block px-3 py-1 text-xs font-semibold text-blue-700 bg-blue-100 rounded-full">
+                        {story.grade_level}
+                      </span>
+                      <Icon name="book" className="text-blue-500" size={20} />
+                    </div>
+                    <CardTitle>{story.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-zinc-600">{story.description}</p>
+                  </CardContent>
+                </Card>
+              </Link>
+            ) : (
+              <Card className="h-full opacity-60 cursor-not-allowed">
+                <CardHeader>
+                  <div className="flex items-start justify-between mb-2">
+                    <span className="inline-block px-3 py-1 text-xs font-semibold text-zinc-500 bg-zinc-100 rounded-full">
+                      {story.grade_level}
+                    </span>
+                    <Icon name="lock" className="text-zinc-400" size={20} />
+                  </div>
+                  <CardTitle className="text-zinc-500">{story.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-zinc-400">{story.description}</p>
+                  <p className="text-xs text-zinc-500 mt-3">🔒 Complete more lessons to unlock</p>
+                </CardContent>
+              </Card>
+            )}
+          </div>
         ))}
       </div>
     </div>
