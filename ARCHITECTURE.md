@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document describes the backend architecture for the Readee application, a Duolingo-style reading platform for early readers (ages 4-8). The backend is built with **Next.js 15 App Router** and **Supabase**.
+This document describes the backend architecture for the Readee application, a Duolingo-style reading platform for early readers (ages 4-8). The backend is built with **Next.js 16 App Router** and **Supabase**.
 
 ## Folder Structure
 
