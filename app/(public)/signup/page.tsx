@@ -2,6 +2,8 @@
 
 import { useState, FormEvent } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { createClient } from "@/lib/supabase/client";
 import AuthCard from "@/app/components/auth/AuthCard";
 import FormField from "@/app/components/auth/FormField";
 import GoogleButton from "@/app/components/auth/GoogleButton";
@@ -17,15 +19,18 @@ interface FormErrors {
   email?: string;
   password?: string;
   confirmPassword?: string;
+  general?: string;
 }
 
 export default function Signup() {
+  const router = useRouter();
   const [formData, setFormData] = useState<FormData>({
     email: "",
     password: "",
     confirmPassword: "",
   });
   const [errors, setErrors] = useState<FormErrors>({});
+  const [isLoading, setIsLoading] = useState(false);
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
@@ -55,15 +60,46 @@ export default function Signup() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
     if (validateForm()) {
-      // Placeholder - no auth logic yet
-      console.log("Signup form submitted:", {
-        email: formData.email,
-        password: formData.password,
-      });
+      setIsLoading(true);
+      setErrors({});
+
+      try {
+        const supabase = createClient();
+        
+        const { data, error } = await supabase.auth.signUp({
+          email: formData.email,
+          password: formData.password,
+          options: {
+            emailRedirectTo: `${window.location.origin}/auth/callback`,
+          },
+        });
+
+        if (error) {
+          setErrors({ general: error.message });
+          setIsLoading(false);
+          return;
+        }
+
+        if (data?.user) {
+          // Check if email confirmation is required
+          if (data.user.identities && data.user.identities.length === 0) {
+            // Email already registered
+            setErrors({ general: "This email is already registered. Please sign in instead." });
+            setIsLoading(false);
+          } else {
+            // Success - redirect to login or dashboard
+            router.push("/login?message=Account created successfully. Please sign in.");
+          }
+        }
+      } catch (error) {
+        console.error("Signup error:", error);
+        setErrors({ general: "An unexpected error occurred. Please try again." });
+        setIsLoading(false);
+      }
     }
   };
 
@@ -80,6 +116,11 @@ export default function Signup() {
     <AuthCard title="Create Your Account">
       <GoogleButton />
       <Divider />
+      {errors.general && (
+        <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded-lg text-sm">
+          {errors.general}
+        </div>
+      )}
       <form onSubmit={handleSubmit} className="space-y-6">
         <FormField
           id="email"
@@ -116,9 +157,10 @@ export default function Signup() {
         />
         <button
           type="submit"
-          className="w-full bg-gray-900 text-white py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2"
+          disabled={isLoading}
+          className="w-full bg-gray-900 text-white py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          Create Account
+          {isLoading ? "Creating Account..." : "Create Account"}
         </button>
       </form>
       <p className="mt-6 text-center text-sm text-gray-600">
