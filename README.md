@@ -16,8 +16,30 @@ This project uses Supabase for authentication. You need to set up your environme
 3. Update `.env.local` with your actual values:
    - `NEXT_PUBLIC_SUPABASE_URL`: Your Supabase project URL
    - `NEXT_PUBLIC_SUPABASE_ANON_KEY`: Your Supabase anonymous key
+   - `SUPABASE_SERVICE_ROLE_KEY`: (Optional) Your Supabase service role key for admin operations
 
 **Note:** The app will run without these variables but authentication features will not work.
+
+### Admin Client
+
+The admin client (`lib/supabase/admin.ts`) is available for server-side operations that require elevated permissions. It bypasses Row Level Security (RLS) and should be used with caution. Only use it in:
+- Server Components
+- API Routes
+- Server Actions
+
+Never expose the service role key to the client side.
+
+### Testing Your Connection
+
+To verify your Supabase configuration is working correctly:
+
+1. **API Endpoint Test**: Visit `/api/test-connection` to get a JSON response with connection test results
+2. **Visual Test Page**: Visit `/test-connection` for a user-friendly display of test results
+
+Both tests will check:
+- Regular client connection (using anonymous key)
+- Admin client connection (using service role key, if configured)
+- Environment variables status
 
 ## Getting Started
 

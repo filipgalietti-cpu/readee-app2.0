@@ -14,3 +14,7 @@ export function createClient() {
     supabaseAnonKey
   )
 }
+
+// Re-export admin client for server-side admin operations
+// Note: This should only be used in server-side code (API routes, server components, etc.)
+export { createAdminClient } from './admin'
