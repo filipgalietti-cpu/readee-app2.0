@@ -7,8 +7,8 @@ html, body {
 
 body {
   min-height: 100vh;
-  background-color: rgb(255 251 235); /* amber-50 */
-  color: rgb(88 28 135); /* purple-900 */
+  background-color: white;
+  color: rgb(24 24 27); /* zinc-900 */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -17,21 +17,21 @@ h1 {
   font-size: 1.875rem;
   font-weight: 600;
   letter-spacing: -0.025em;
-  color: rgb(126 34 206); /* purple-700 */
+  color: rgb(24 24 27); /* zinc-900 */
 }
 
 h2 {
   font-size: 1.5rem;
   font-weight: 600;
   letter-spacing: -0.025em;
-  color: rgb(234 88 12); /* orange-600 */
+  color: rgb(24 24 27); /* zinc-900 */
 }
 
 h3 {
   font-size: 1.25rem;
   font-weight: 600;
   letter-spacing: -0.025em;
-  color: rgb(219 39 119); /* pink-600 */
+  color: rgb(24 24 27); /* zinc-900 */
 }
 
 p {
@@ -48,17 +48,6 @@ p {
   padding-right: 1rem;
 }
 
-@layer components {
-  .btn { @apply inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-medium transition; }
-  .btn-primary { @apply inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-medium transition bg-zinc-900 text-white hover:bg-zinc-800 active:bg-zinc-950; }
-  .btn-ghost { @apply inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-medium transition bg-transparent text-zinc-700 hover:bg-zinc-100; }
-
-  .input { @apply w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm outline-none transition focus:border-zinc-400; }
-  .label { @apply text-xs font-medium text-zinc-700; }
-  .muted { @apply text-sm text-zinc-600; }
-}
-}
-
 @media (min-width: 640px) {
   .container-page {
     padding-left: 1.5rem;
@@ -68,9 +57,9 @@ p {
 
 .card {
   border-radius: 1rem;
-  border: 2px solid rgb(216 180 254); /* purple-300 */
+  border: 1px solid rgb(228 228 231); /* zinc-200 */
   background-color: white;
-  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); /* shadow-lg */
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
 }
 
 .btn {
@@ -94,7 +83,7 @@ p {
   padding: 0.5rem 1rem;
   font-size: 0.875rem;
   font-weight: 500;
-  background: linear-gradient(to right, rgb(249 115 22), rgb(236 72 153)); /* orange-500 to pink-500 */
+  background-color: rgb(24 24 27); /* zinc-900 */
   color: white;
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -102,11 +91,11 @@ p {
 }
 
 .btn-primary:hover {
-  background: linear-gradient(to right, rgb(234 88 12), rgb(219 39 119)); /* orange-600 to pink-600 */
+  background-color: rgb(39 39 42); /* zinc-800 */
 }
 
 .btn-primary:active {
-  background: linear-gradient(to right, rgb(194 65 12), rgb(190 24 93)); /* orange-700 to pink-700 */
+  background-color: rgb(9 9 11); /* zinc-950 */
 }
 
 .btn-ghost {
@@ -118,20 +107,20 @@ p {
   font-size: 0.875rem;
   font-weight: 500;
   background-color: transparent;
-  color: rgb(126 34 206); /* purple-700 */
+  color: rgb(63 63 70); /* zinc-700 */
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
 
 .btn-ghost:hover {
-  background-color: rgb(243 232 255); /* purple-100 */
+  background-color: rgb(244 244 245); /* zinc-100 */
 }
 
 .input {
   width: 100%;
   border-radius: 0.75rem;
-  border: 2px solid rgb(233 213 255); /* purple-200 */
+  border: 1px solid rgb(228 228 231); /* zinc-200 */
   background-color: white;
   padding: 0.5rem 0.75rem;
   font-size: 0.875rem;
@@ -142,18 +131,18 @@ p {
 }
 
 .input:focus {
-  border-color: rgb(251 146 60); /* orange-400 */
+  border-color: rgb(161 161 170); /* zinc-400 */
 }
 
 .label {
   font-size: 0.75rem;
   font-weight: 500;
-  color: rgb(126 34 206); /* purple-700 */
+  color: rgb(63 63 70); /* zinc-700 */
 }
 
 .muted {
   font-size: 0.875rem;
-  color: rgb(147 51 234); /* purple-600 */
+  color: rgb(82 82 91); /* zinc-600 */
 }
 
 /* Base animations */
@@ -222,4 +211,4 @@ p {
 .floating-shape { animation: floatDown 14s linear infinite; }
 .mascot-bounce { animation: mascotBounce 2s ease-in-out infinite; }
 .confetti-fall { animation: confettiFall 2.2s linear forwards; }
-}
+

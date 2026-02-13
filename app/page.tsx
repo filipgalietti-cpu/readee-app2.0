@@ -4,9 +4,6 @@ import { Icon } from "./components/ui/Icon";
 import { Card, CardContent, CardHeader, CardTitle } from "./components/ui/Card";
 
 export default function Home() {
-  const { profile } = useProfile();
-  const accentColor = profile?.favoriteColorHex || '#10b981';
-
   return (
 <div className="space-y-16 py-8">
   {/* Hero section */}
@@ -116,9 +113,6 @@ export default function Home() {
           </p>
         </div>
       </div>
-    </div>
-  </section>
-</div>
     </div>
   </section>
 

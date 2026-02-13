@@ -1,9 +1,5 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
-import Link from "next/link";
-"use client";
-
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 
@@ -94,11 +90,6 @@ export default function Library() {
               </Card>
             )}
           </div>
-        ))}
-      </div>
-    </div>
-  );
-}
         ))}
       </div>
     </div>
