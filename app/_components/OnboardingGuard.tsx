@@ -1,32 +1,32 @@
 "use client";
 
-import { useEffect } from "react";
-import { usePathname, useRouter } from "next/navigation";
-import { useProfile } from "./ProfileContext";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { createClient } from "@/lib/supabase/client";
 
 export function OnboardingGuard({ children }: { children: React.ReactNode }) {
-  const { profile, isLoading } = useProfile();
   const router = useRouter();
-  const pathname = usePathname();
-
-  const publicPaths = ["/welcome", "/login", "/signup", "/about"];
-  const isPublicPath = publicPaths.some((p) => pathname.startsWith(p));
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (isLoading) return;
+    const checkAuth = async () => {
+      const supabase = createClient();
+      const { data: { user } } = await supabase.auth.getUser();
+      
+      if (user) {
+        // Refresh to let middleware handle redirects
+        router.refresh();
+      }
+      
+      setIsLoading(false);
+    };
 
-    if (!profile?.onboardingComplete && !isPublicPath) {
-      router.replace("/welcome");
-      return;
-    }
+    checkAuth();
+  }, [router]);
 
-    if (profile?.onboardingComplete && pathname === "/welcome") {
-      router.replace("/");
-    }
-  }, [isLoading, profile, isPublicPath, pathname, router]);
-
-  if (isLoading) return null;
-  if (!profile?.onboardingComplete && !isPublicPath) return null;
+  if (isLoading) {
+    return null;
+  }
 
   return <>{children}</>;
 }

@@ -14,6 +14,7 @@ export interface CreateProfileParams {
 export interface UpdateProfileParams {
   displayName?: string;
   role?: UserRole;
+  onboardingComplete?: boolean;
 }
 
 /**
@@ -78,6 +79,9 @@ export async function updateProfile(
   }
   if (params.role !== undefined) {
     updateData.role = params.role;
+  }
+  if (params.onboardingComplete !== undefined) {
+    updateData.onboarding_complete = params.onboardingComplete;
   }
   
   const { data, error } = await supabase

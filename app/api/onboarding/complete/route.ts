@@ -6,7 +6,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { getCurrentUser } from '@/lib/auth/helpers';
-import { createProfile, profileExists } from '@/lib/db/repositories/profiles';
+import { createProfile, profileExists, updateProfile } from '@/lib/db/repositories/profiles';
 import { saveOnboardingPreferences } from '@/lib/db/repositories/onboarding';
 import { OnboardingCompleteRequest, OnboardingCompleteResponse } from '@/lib/db/types';
 
@@ -49,11 +49,16 @@ export async function POST(request: NextRequest) {
       );
     }
     
-    // Create profile
+    // Create profile with onboarding_complete set to true
     const profile = await createProfile({
       userId: user.id,
       displayName: body.displayName,
       role: body.role,
+    });
+    
+    // Update profile to mark onboarding as complete
+    const updatedProfile = await updateProfile(user.id, {
+      onboardingComplete: true,
     });
     
     // Save onboarding preferences if provided
@@ -69,7 +74,7 @@ export async function POST(request: NextRequest) {
     
     const response: OnboardingCompleteResponse = {
       success: true,
-      profile,
+      profile: updatedProfile,
       preferences,
       message: 'Onboarding completed successfully',
     };
