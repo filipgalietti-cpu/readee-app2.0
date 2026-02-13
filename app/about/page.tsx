@@ -2,21 +2,25 @@ import { Card, SectionHeader } from "@/app/_components";
 
 export default function About() {
   return (
-    <div className="max-w-4xl mx-auto space-y-8 pb-12">
-      <div className="text-center py-8">
-        <div className="text-6xl mb-4">📚</div>
-        <h1 className="text-4xl font-bold text-zinc-900 mb-4">About Readee</h1>
-        <p className="text-lg text-zinc-600">
-          Making reading fun and engaging for early learners
-        </p>
-      </div>
+<div className="max-w-4xl mx-auto space-y-8 pb-12">
+  <div className="text-center py-8">
+    <div className="text-6xl mb-4">📚</div>
+    <h1 className="text-4xl font-bold text-zinc-900 mb-4">About Readee</h1>
+    <p className="text-lg text-zinc-600">
+      Making reading fun and engaging for early learners
+    </p>
+  </div>
 
-      <Card className="p-8">
-        <SectionHeader title="Our Mission" />
-        <div className="space-y-4 text-zinc-700">
-          <p className="text-lg leading-relaxed">
-            Readee is your child's personal reading companion, designed to help young readers 
-            (K-3) discover the joy of reading through interactive stories and engaging activities.
+  <Card className="p-8">
+    <SectionHeader title="Our Mission" />
+    <div className="space-y-4 text-zinc-700">
+      <p className="text-lg leading-relaxed">
+        Readee is your child&apos;s personal reading companion, designed to help young readers
+        (K-3) discover the joy of reading through interactive stories and engaging activities.
+      </p>
+    </div>
+  </Card>
+</div>
           </p>
           <p className="text-lg leading-relaxed">
             Inspired by successful learning platforms, we make reading practice feel like play. 

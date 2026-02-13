@@ -73,12 +73,17 @@ export default function Library() {
   const accentColor = profile?.favoriteColorHex || '#10b981';
 
   return (
-    <div className="space-y-8 pb-12">
-      <div className="text-center py-8">
-        <div className="text-5xl mb-4">📚</div>
-        <h1 className="text-3xl md:text-4xl font-bold text-zinc-900 mb-2">Story Library</h1>
-        <p className="text-lg text-zinc-600">Choose a story to start your reading adventure</p>
-      </div>
+<<div className="space-y-8 pb-12">
+  <div className="text-center py-8">
+    <div className="text-5xl mb-4">📚</div>
+    <h1 className="text-3xl md:text-4xl font-bold text-zinc-900 mb-2">
+      Story Library
+    </h1>
+    <p className="text-lg text-zinc-600">
+      Choose a story to start your reading adventure
+    </p>
+  </div>
+</div>
       
       <SectionHeader 
         title="All Stories" 
@@ -87,53 +92,57 @@ export default function Library() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {stories.map((story) => (
-          <Link key={story.id} href={`/reader/${story.id}`}>
-            <Card 
-              className="p-6 h-full hover:shadow-xl transition-all duration-200 hover:-translate-y-1 cursor-pointer group"
-            >
-              <div className="flex flex-col h-full">
-                {/* Emoji Icon */}
-                <div className="text-5xl mb-4 group-hover:scale-110 transition-transform">
-                  {story.emoji}
-                </div>
+<Link key={story.id} href={`/reader/${story.id}`}>
+  <Card className="p-6 h-full hover:shadow-xl transition-all duration-200 hover:-translate-y-1 cursor-pointer group">
+    <div className="flex flex-col h-full">
+      {/* Emoji Icon */}
+      <div className="text-5xl mb-4 group-hover:scale-110 transition-transform">
+        {story.emoji}
+      </div>
 
-                {/* Badges */}
-                <div className="flex flex-wrap gap-2 mb-3">
-                  <Badge accentColor={accentColor}>
-                    {story.gradeLevel}
-                  </Badge>
-                  <Badge variant={
-                    story.difficulty === 'Easy' ? 'success' : 
-                    story.difficulty === 'Medium' ? 'info' : 
-                    'warning'
-                  }>
-                    {story.difficulty}
-                  </Badge>
-                </div>
+      {/* Badges */}
+      <div className="flex flex-wrap gap-2 mb-3">
+        <Badge accentColor={accentColor}>
+          {story.gradeLevel}
+        </Badge>
 
-                {/* Title */}
-                <h2 className="text-xl font-bold text-zinc-900 mb-2 group-hover:text-opacity-80 transition-colors">
-                  {story.title}
-                </h2>
+        <Badge
+          variant={
+            story.difficulty === "Easy"
+              ? "success"
+              : story.difficulty === "Medium"
+              ? "info"
+              : "warning"
+          }
+        >
+          {story.difficulty}
+        </Badge>
+      </div>
 
-                {/* Description */}
-                <p className="text-sm text-zinc-600 mb-4 flex-1">
-                  {story.description}
-                </p>
+      {/* Title */}
+      <h2 className="text-xl font-bold text-zinc-900 mb-2 group-hover:text-opacity-80 transition-colors">
+        {story.title}
+      </h2>
 
-                {/* Footer Info */}
-                <div className="flex items-center justify-between pt-4 border-t border-zinc-100">
-                  <div className="flex items-center gap-2 text-sm text-zinc-600">
-                    <span>⏱️</span>
-                    <span>{story.estimatedTime}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm text-zinc-600">
-                    <span>📂</span>
-                    <span>{story.category}</span>
-                  </div>
-                </div>
-              </div>
-            </Card>
+      {/* Description */}
+      <p className="text-sm text-zinc-600 mb-4 flex-1">
+        {story.description}
+      </p>
+
+      {/* Footer Info */}
+      <div className="flex items-center justify-between pt-4 border-t border-zinc-100">
+        <div className="flex items-center gap-2 text-sm text-zinc-600">
+          <span>⏱️</span>
+          <span>{story.estimatedTime}</span>
+        </div>
+        <div className="flex items-center gap-2 text-sm text-zinc-600">
+          <span>📂</span>
+          <span>{story.category}</span>
+        </div>
+      </div>
+    </div>
+  </Card>
+</Link>
           </Link>
         ))}
       </div>
