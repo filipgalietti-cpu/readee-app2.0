@@ -22,8 +22,14 @@ export async function proxy(req: NextRequest) {
 
   if (!supabaseUrl || !supabaseAnonKey) {
     console.error('Missing Supabase environment variables. Please check .env.local file.');
-    // Allow access to continue without auth check in case of misconfiguration
-    // This prevents the app from completely breaking
+    
+    // Redirect to a setup page instead of bypassing auth
+    // This prevents unauthorized access while providing helpful guidance
+    if (pathname !== '/test-connection') {
+      return NextResponse.redirect(new URL('/test-connection?error=missing-config', req.url));
+    }
+    
+    // Allow access to test-connection page to help with diagnosis
     return res;
   }
 
