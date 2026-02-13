@@ -6,7 +6,7 @@
  */
 
 // Auth helpers
-export * from '../auth/helpers';
+export * from '../../auth/helpers';
 
 // Profile repository
 export * from './profiles';

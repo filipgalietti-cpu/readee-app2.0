@@ -71,9 +71,18 @@ export async function updateProfile(
 ): Promise<Profile> {
   const supabase = await createClient();
   
+  // Convert camelCase to snake_case for database
+  const updateData: any = {};
+  if (params.displayName !== undefined) {
+    updateData.display_name = params.displayName;
+  }
+  if (params.role !== undefined) {
+    updateData.role = params.role;
+  }
+  
   const { data, error } = await supabase
     .from('profiles')
-    .update(params)
+    .update(updateData)
     .eq('id', userId)
     .select()
     .single();

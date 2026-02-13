@@ -156,9 +156,30 @@ export async function updateStory(
 ): Promise<Story> {
   const admin = supabaseAdmin();
   
+  // Convert camelCase to snake_case for database
+  const updateData: any = {};
+  if (params.title !== undefined) {
+    updateData.title = params.title;
+  }
+  if (params.readingLevel !== undefined) {
+    updateData.reading_level = params.readingLevel;
+  }
+  if (params.interestTags !== undefined) {
+    updateData.interest_tags = params.interestTags;
+  }
+  if (params.content !== undefined) {
+    updateData.content = params.content;
+  }
+  if (params.thumbnailUrl !== undefined) {
+    updateData.thumbnail_url = params.thumbnailUrl;
+  }
+  if (params.totalPages !== undefined) {
+    updateData.total_pages = params.totalPages;
+  }
+  
   const { data, error } = await admin
     .from('stories')
-    .update(params)
+    .update(updateData)
     .eq('id', storyId)
     .select()
     .single();

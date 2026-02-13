@@ -93,9 +93,21 @@ export async function updateChild(
 ): Promise<Child> {
   const supabase = await createClient();
   
+  // Convert camelCase to snake_case for database
+  const updateData: any = {};
+  if (params.name !== undefined) {
+    updateData.name = params.name;
+  }
+  if (params.age !== undefined) {
+    updateData.age = params.age;
+  }
+  if (params.readingLevel !== undefined) {
+    updateData.reading_level = params.readingLevel;
+  }
+  
   const { data, error } = await supabase
     .from('children')
-    .update(params)
+    .update(updateData)
     .eq('id', childId)
     .select()
     .single();
