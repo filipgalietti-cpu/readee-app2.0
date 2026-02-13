@@ -29,6 +29,18 @@ The admin client (`lib/supabase/admin.ts`) is available for server-side operatio
 
 Never expose the service role key to the client side.
 
+### Testing Your Connection
+
+To verify your Supabase configuration is working correctly:
+
+1. **API Endpoint Test**: Visit `/api/test-connection` to get a JSON response with connection test results
+2. **Visual Test Page**: Visit `/test-connection` for a user-friendly display of test results
+
+Both tests will check:
+- Regular client connection (using anonymous key)
+- Admin client connection (using service role key, if configured)
+- Environment variables status
+
 ## Getting Started
 
 First, run the development server:
