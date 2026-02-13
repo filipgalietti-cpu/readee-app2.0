@@ -1,140 +1,200 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { useProfile } from "@/app/_components";
-import { Button, Card, ProgressBar } from "@/app/_components";
 
-// Mock story content
-const storyContent = {
-  "1": {
-    title: "The Brave Little Fox",
-    emoji: "🦊",
-    pages: [
-      "Once upon a time, in a cozy forest, there lived a little fox named Finn.",
-      "Finn was small and shy. He had never been far from his den.",
-      "One sunny morning, Finn heard a strange sound. It came from deep in the forest.",
-      "\"I want to see what it is,\" thought Finn. \"But I'm scared.\"",
-      "Finn took a deep breath. He put one paw in front of the other.",
-      "As he walked, Finn saw beautiful flowers and tall trees.",
-      "The sound got louder. Finn's heart beat fast.",
-      "Then Finn saw it: a little bird was stuck in a bush!",
-      "\"Don't worry,\" said Finn. \"I'll help you.\" He gently freed the bird.",
-      "The bird sang a happy song. Finn felt brave and proud!",
-      "From that day on, Finn explored the forest every day.",
-      "The End",
-    ],
-  },
-};
+import { Button } from "@/app/components/ui/Button";
+import { Icon } from "@/app/components/ui/Icon";
+import { Card } from "@/app/components/ui/Card";
+
+interface StoryPage {
+  id: string;
+  page_number: number;
+  content: string;
+  image_url: string | null;
+  audio_url: string | null;
+  word_timings: Array<{ word: string; start: number; end: number }> | null;
+}
+
+interface Story {
+  id: string;
+  title: string;
+  description: string;
+}
 
 export default function Reader() {
   const params = useParams();
   const storyId = params.id as string;
-  const { profile } = useProfile();
-  const accentColor = profile?.favoriteColorHex || '#10b981';
-
-  const story = storyContent[storyId as keyof typeof storyContent] || {
-    title: "Story Not Found",
-    emoji: "📖",
-    pages: ["This story is not available yet."],
-  };
-
+  const [story, setStory] = useState<Story | null>(null);
+  const [pages, setPages] = useState<StoryPage[]>([]);
   const [currentPage, setCurrentPage] = useState(0);
-  const totalPages = story.pages.length;
-  const progress = ((currentPage + 1) / totalPages) * 100;
+  const [loading, setLoading] = useState(true);
+  const [highlightedWordIndex, setHighlightedWordIndex] = useState<number | null>(null);
 
-  const goToNextPage = () => {
-    if (currentPage < totalPages - 1) {
-      setCurrentPage(currentPage + 1);
+  const fetchStory = useCallback(async () => {
+    try {
+      const response = await fetch(`/api/stories/${storyId}`);
+      const data = await response.json();
+
+      if (data.story && data.pages) {
+        setStory(data.story);
+        setPages(data.pages);
+      }
+    } catch (error) {
+      console.error("Failed to fetch story:", error);
+    } finally {
+      setLoading(false);
     }
+  }, [storyId]);
+
+  useEffect(() => {
+    fetchStory();
+  }, [fetchStory]);
+
+  const handlePlayAudio = () => {
+    const page = pages[currentPage];
+    if (!page?.word_timings) return;
+
+    let wordIndex = 0;
+
+    const highlightWords = () => {
+      if (wordIndex < page.word_timings!.length) {
+        setHighlightedWordIndex(wordIndex);
+        const timing = page.word_timings![wordIndex];
+        const duration = Math.max(0, (timing.end - timing.start) * 1000);
+
+        setTimeout(() => {
+          wordIndex++;
+          highlightWords();
+        }, duration);
+      } else {
+        setHighlightedWordIndex(null);
+      }
+    };
+
+    highlightWords();
   };
 
-  const goToPrevPage = () => {
-    if (currentPage > 0) {
-      setCurrentPage(currentPage - 1);
+  const renderContent = () => {
+    const page = pages[currentPage];
+    if (!page) return null;
+
+    if (page.word_timings && page.word_timings.length > 0) {
+      return (
+        <div className="text-2xl leading-relaxed">
+          {page.word_timings.map((timing, idx) => (
+            <span
+              key={idx}
+              className={`inline-block mx-1 transition-colors duration-200 ${
+                highlightedWordIndex === idx ? "bg-yellow-200 font-bold" : "hover:bg-zinc-100"
+              }`}
+            >
+              {timing.word}
+            </span>
+          ))}
+        </div>
+      );
     }
+
+    return <p className="text-2xl leading-relaxed">{page.content}</p>;
   };
 
-  return (
-    <div className="max-w-4xl mx-auto space-y-6 pb-12">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <Link href="/library">
-          <Button variant="ghost" className="gap-2">
-            <span>←</span>
-            <span>Back to Library</span>
-          </Button>
-        </Link>
-        <div className="flex items-center gap-2 text-zinc-600">
-          <span className="text-sm font-medium">
-            Page {currentPage + 1} of {totalPages}
-          </span>
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <Icon name="book" className="mx-auto mb-4 text-zinc-500 animate-pulse" size={48} />
+          <p className="text-zinc-600">Loading story...</p>
         </div>
       </div>
+    );
+  }
 
-      {/* Progress Bar */}
-      <ProgressBar value={progress} accentColor={accentColor} size="lg" />
+  if (!story || pages.length === 0) {
+    return (
+      <div className="container-page py-12">
+        <div className="text-center">
+          <p className="text-zinc-600 mb-4">Story not found.</p>
+          <Link href="/library">
+            <Button>Back to Library</Button>
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
-      {/* Story Card */}
-      <Card className="p-12 min-h-[500px] flex flex-col justify-between">
-        {/* Story Header */}
-        <div className="text-center mb-8">
-          <div className="text-6xl mb-4">{story.emoji}</div>
-          <h1 className="text-2xl font-bold text-zinc-900">{story.title}</h1>
+  const page = pages[currentPage];
+
+  return (
+    <div className="container-page py-12">
+      <div className="max-w-3xl mx-auto">
+        {/* Header */}
+        <div className="mb-6 flex items-center justify-between">
+          <Link href="/library">
+            <Button variant="ghost" className="gap-2">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              Back to Library
+            </Button>
+          </Link>
+
+          <div className="text-sm text-zinc-600">
+            Page {currentPage + 1} of {pages.length}
+          </div>
         </div>
 
-        {/* Story Content */}
-        <div className="flex-1 flex items-center justify-center">
-          <p className="text-3xl leading-relaxed text-zinc-900 text-center max-w-2xl font-serif">
-            {story.pages[currentPage]}
-          </p>
-        </div>
+        {/* Story title */}
+        <h1 className="text-3xl font-bold text-zinc-900 mb-8">{story.title}</h1>
 
-        {/* Navigation */}
-        <div className="flex items-center justify-between mt-8 pt-6 border-t border-zinc-100">
+        {/* Story content card */}
+        <Card className="p-8 mb-6">
+          {page.image_url && (
+            <div className="mb-6 rounded-lg overflow-hidden bg-zinc-100 h-64 flex items-center justify-center">
+              <Icon name="book" className="text-zinc-400" size={64} />
+            </div>
+          )}
+
+          <div className="min-h-[200px] flex items-center justify-center">
+            {renderContent()}
+          </div>
+
+          {/* Audio button */}
+          {page.word_timings && page.word_timings.length > 0 && (
+            <div className="mt-8 flex justify-center">
+              <Button onClick={handlePlayAudio} className="gap-2" disabled={highlightedWordIndex !== null}>
+                <Icon name="play" size={20} />
+                {highlightedWordIndex !== null ? "Playing..." : "Play Audio"}
+              </Button>
+            </div>
+          )}
+        </Card>
+
+        {/* Navigation buttons */}
+        <div className="flex justify-between items-center">
           <Button
-            variant="secondary"
-            onClick={goToPrevPage}
+            onClick={() => setCurrentPage((p) => Math.max(0, p - 1))}
             disabled={currentPage === 0}
-            className="gap-2"
+            variant="outline"
           >
-            <span>←</span>
-            <span>Previous</span>
+            Previous
           </Button>
 
-          {currentPage === totalPages - 1 ? (
+          {currentPage === pages.length - 1 ? (
             <Link href="/library">
-              <Button accentColor={accentColor} className="gap-2">
-                <span>Finish</span>
-                <span>✓</span>
-              </Button>
+              <Button>Finish Story</Button>
             </Link>
           ) : (
             <Button
-              accentColor={accentColor}
-              onClick={goToNextPage}
-              className="gap-2"
+              onClick={() => setCurrentPage((p) => Math.min(pages.length - 1, p + 1))}
+              disabled={currentPage === pages.length - 1}
             >
-              <span>Next</span>
-              <span>→</span>
+              Next
             </Button>
           )}
         </div>
-      </Card>
-
-      {/* Reading Tips */}
-      <Card className="p-6 bg-zinc-50">
-        <div className="flex items-start gap-4">
-          <div className="text-3xl">💡</div>
-          <div>
-            <h3 className="font-semibold text-zinc-900 mb-1">Reading Tip</h3>
-            <p className="text-sm text-zinc-600">
-              Take your time with each word. It's okay to read slowly and enjoy the story!
-            </p>
-          </div>
-        </div>
-      </Card>
+      </div>
     </div>
   );
 }
