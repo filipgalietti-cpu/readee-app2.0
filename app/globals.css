@@ -1,17 +1,47 @@
 @import "tailwindcss";
+
+/* Tailwind v4: allow @apply to reference utility classes */
 @reference "tailwindcss";
 
 @layer base {
-  html,
-  body {
-    height: 100%;
+  html, body { height: 100%; }
+  body { @apply min-h-screen bg-white text-zinc-900 antialiased; }
+
+  h1 { @apply text-3xl font-semibold tracking-tight; }
+  h2 { @apply text-2xl font-semibold tracking-tight; }
+  h3 { @apply text-xl font-semibold tracking-tight; }
+  p  { @apply text-zinc-600; }
+}
+
+@layer components {
+  .container-page { @apply mx-auto w-full max-w-6xl px-4 sm:px-6; }
+
+  .card { @apply rounded-2xl border border-zinc-200 bg-white shadow-sm; }
+
+  .btn { @apply inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-medium transition; }
+  .btn-primary { @apply btn bg-zinc-900 text-white hover:bg-zinc-800 active:bg-zinc-950; }
+  .btn-ghost { @apply btn bg-transparent text-zinc-700 hover:bg-zinc-100; }
+
+  .input { @apply w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm outline-none transition focus:border-zinc-400; }
+  .label { @apply text-xs font-medium text-zinc-700; }
+  .muted { @apply text-sm text-zinc-600; }
+}
+
+@layer utilities {
+  @keyframes floatDown {
+    0% { transform: translateY(-80px) rotate(0deg); }
+    100% { transform: translateY(110vh) rotate(360deg); }
+  }
+  @keyframes mascotBounce {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
-  body {
-    @apply bg-white text-zinc-900 antialiased;
-  }
-
-  a {
-    @apply text-zinc-900;
-  }
+  .animate-fadeUp { animation: fadeUp .25s ease both; }
+  .floating-shape { animation: floatDown 14s linear infinite; }
+  .mascot-bounce { animation: mascotBounce 2s ease-in-out infinite; }
 }
