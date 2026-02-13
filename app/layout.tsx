@@ -31,6 +31,12 @@ export default function RootLayout({
 
             <div className="flex items-center gap-6">
               <Link
+                href="/path"
+                className="text-zinc-700 hover:text-zinc-900 font-medium transition-colors"
+              >
+                Learning Path
+              </Link>
+              <Link
                 href="/library"
                 className="text-zinc-700 hover:text-zinc-900 font-medium transition-colors"
               >
