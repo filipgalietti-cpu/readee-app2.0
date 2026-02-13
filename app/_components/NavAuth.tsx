@@ -3,9 +3,13 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { supabaseBrowser } from "@/lib/supabase/client";
+import { Button } from "./Button";
+import { useProfile } from "./ProfileContext";
 
 export default function NavAuth() {
   const [loggedIn, setLoggedIn] = useState<boolean | null>(null);
+  const { profile } = useProfile();
+  const accentColor = profile?.favoriteColorHex || '#10b981';
 
   useEffect(() => {
     const supabase = supabaseBrowser();
@@ -26,14 +30,24 @@ export default function NavAuth() {
   if (loggedIn === null) return null;
 
   if (!loggedIn) {
-    return <Link href="/login">Login</Link>;
+    return (
+      <Link href="/login">
+        <Button size="sm" accentColor={accentColor}>
+          Login
+        </Button>
+      </Link>
+    );
   }
 
   return (
-    <div className="flex items-center gap-4">
-      <Link href="/dashboard">Dashboard</Link>
-      <Link href="/logout" className="text-gray-600 hover:text-black">
-        Logout
+    <div className="flex items-center gap-3">
+      <Link href="/dashboard" className="text-zinc-700 hover:text-zinc-900 font-medium transition-colors">
+        Dashboard
+      </Link>
+      <Link href="/logout">
+        <Button variant="ghost" size="sm">
+          Logout
+        </Button>
       </Link>
     </div>
   );
