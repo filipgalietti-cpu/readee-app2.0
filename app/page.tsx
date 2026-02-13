@@ -119,26 +119,22 @@ export default function Home() {
       </div>
     </div>
   </section>
-</div>
-        </div>
-      </section>
 
-      {/* CTA */}
-      <section className="text-center py-8">
-        <h2 className="text-3xl font-bold text-zinc-900 mb-4">
-          Ready to Begin?
-        </h2>
-        <p className="text-zinc-600 mb-6">
-          Start your reading journey today
-        </p>
-        <Link href="/path">
-          <Button size="lg" className="gap-2">
-            <Icon name="star" size={20} />
-            Go to Learning Path
-          </Button>
-        </Link>
-      </section>
-    </div>
+  {/* CTA */}
+  <section className="text-center py-8">
+    <h2 className="text-3xl font-bold text-zinc-900 mb-4">
+      Ready to Begin?
+    </h2>
+    <p className="text-zinc-600 mb-6">
+      Start your reading journey today
+    </p>
+    <Link href="/path">
+      <Button size="lg" className="gap-2">
+        <Icon name="star" size={20} />
+        Go to Learning Path
+      </Button>
+    </Link>
+  </section>
+</div>
   );
 }
-

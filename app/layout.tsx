@@ -25,28 +25,16 @@ export default function RootLayout({
               Readee 📚
             </Link>
 
-<<div className="flex items-center gap-6">
-  <Link
-    href="/path"
-    className="text-sm text-zinc-700 hover:text-zinc-900 font-medium transition-colors"
-  >
-    Learning Path
-  </Link>
-
-  <Link
-    href="/library"
-    className="text-sm text-zinc-700 hover:text-zinc-900 font-medium transition-colors"
-  >
-    Library
-  </Link>
-
-  <Link
-    href="/about"
-    className="text-sm text-zinc-700 hover:text-zinc-900 font-medium transition-colors"
-  >
-    About
-  </Link>
-</div>
+            <div className="flex items-center gap-4 text-purple-700 font-medium">
+              <Link href="/path" className="hover:text-orange-600 transition-colors">
+                Learning Path
+              </Link>
+              <Link href="/library" className="hover:text-orange-600 transition-colors">
+                Library
+              </Link>
+              <Link href="/about" className="hover:text-orange-600 transition-colors">
+                About
+              </Link>
               <NavAuth />
             </div>
           </div>
