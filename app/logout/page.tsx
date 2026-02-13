@@ -7,7 +7,7 @@ export default function LogoutPage() {
   useEffect(() => {
     const supabase = supabaseBrowser();
     supabase.auth.signOut().finally(() => {
-      window.location.href = "/";
+      window.location.href = "/login";
     });
   }, []);
 
