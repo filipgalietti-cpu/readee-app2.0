@@ -12,7 +12,7 @@ import { ChildProgressResponse } from '@/lib/db/types';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { childId: string } }
+  { params }: { params: Promise<{ childId: string }> }
 ) {
   try {
     // Get authenticated user
@@ -24,7 +24,7 @@ export async function GET(
       );
     }
     
-    const childId = params.childId;
+    const { childId } = await params;
     
     // Verify the child belongs to the current user
     const isOwner = await verifyChildOwnership(childId, user.id);
