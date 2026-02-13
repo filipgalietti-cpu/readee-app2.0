@@ -26,7 +26,15 @@ export default function RootLayout({
             </Link>
 
             <div className="flex items-center gap-4">
-              <Link href="/about">About</Link>
+              <Link href="/path" className="text-sm hover:text-blue-600 transition">
+                Learning Path
+              </Link>
+              <Link href="/library" className="text-sm hover:text-blue-600 transition">
+                Library
+              </Link>
+              <Link href="/about" className="text-sm hover:text-blue-600 transition">
+                About
+              </Link>
               <NavAuth />
             </div>
           </div>

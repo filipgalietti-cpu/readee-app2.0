@@ -1,65 +1,140 @@
-import Image from "next/image";
+import Link from "next/link";
+import { Button } from "./components/ui/Button";
+import { Icon } from "./components/ui/Icon";
+import { Card, CardContent, CardHeader, CardTitle } from "./components/ui/Card";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="space-y-16 py-8">
+      {/* Hero section */}
+      <section className="text-center py-16">
+        <h1 className="text-5xl font-bold text-zinc-900 mb-4">
+          Welcome to Readee
+        </h1>
+        <p className="text-xl text-zinc-600 mb-8 max-w-2xl mx-auto">
+          A comprehensive early reading platform with structured lessons, practice items, and decodable stories
+        </p>
+        <div className="flex gap-4 justify-center">
+          <Link href="/path">
+            <Button size="lg" className="gap-2">
+              <Icon name="path" size={20} />
+              Start Learning
+            </Button>
+          </Link>
+          <Link href="/library">
+            <Button size="lg" variant="outline" className="gap-2">
+              <Icon name="book" size={20} />
+              Browse Library
+            </Button>
+          </Link>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* Features */}
+      <section className="grid md:grid-cols-3 gap-6">
+        <Card>
+          <CardHeader>
+            <div className="mb-4">
+              <Icon name="path" className="text-blue-500" size={40} />
+            </div>
+            <CardTitle>Learning Path</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-zinc-600">
+              Follow a structured curriculum through units and lessons, building reading skills step by step
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <div className="mb-4">
+              <Icon name="lightning" className="text-yellow-500" size={40} />
+            </div>
+            <CardTitle>Practice Engine</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-zinc-600">
+              Interactive practice with phoneme taps, word building, multiple choice, and comprehension questions
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <div className="mb-4">
+              <Icon name="book" className="text-green-500" size={40} />
+            </div>
+            <CardTitle>Story Library</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-zinc-600">
+              Read decodable stories with word-by-word highlighting and audio support
+            </p>
+          </CardContent>
+        </Card>
+      </section>
+
+      {/* How it works */}
+      <section className="bg-zinc-50 rounded-2xl p-8">
+        <h2 className="text-3xl font-bold text-zinc-900 mb-8 text-center">
+          How It Works
+        </h2>
+        <div className="space-y-6 max-w-3xl mx-auto">
+          <div className="flex gap-4">
+            <div className="flex-shrink-0 w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">
+              1
+            </div>
+            <div>
+              <h3 className="font-semibold text-lg mb-1">Start Your Journey</h3>
+              <p className="text-zinc-600">
+                Begin with the first unit on the learning path and complete lessons at your own pace
+              </p>
+            </div>
+          </div>
+
+          <div className="flex gap-4">
+            <div className="flex-shrink-0 w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">
+              2
+            </div>
+            <div>
+              <h3 className="font-semibold text-lg mb-1">Practice & Learn</h3>
+              <p className="text-zinc-600">
+                Each lesson includes 5-8 practice items with immediate feedback and spaced repetition
+              </p>
+            </div>
+          </div>
+
+          <div className="flex gap-4">
+            <div className="flex-shrink-0 w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">
+              3
+            </div>
+            <div>
+              <h3 className="font-semibold text-lg mb-1">Read Stories</h3>
+              <p className="text-zinc-600">
+                Unlock decodable stories as you progress and practice reading with word highlighting
+              </p>
+            </div>
+          </div>
         </div>
-      </main>
+      </section>
+
+      {/* CTA */}
+      <section className="text-center py-8">
+        <h2 className="text-3xl font-bold text-zinc-900 mb-4">
+          Ready to Begin?
+        </h2>
+        <p className="text-zinc-600 mb-6">
+          Start your reading journey today
+        </p>
+        <Link href="/path">
+          <Button size="lg" className="gap-2">
+            <Icon name="star" size={20} />
+            Go to Learning Path
+          </Button>
+        </Link>
+      </section>
     </div>
   );
 }
+

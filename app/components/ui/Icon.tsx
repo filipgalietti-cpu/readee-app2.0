@@ -11,7 +11,7 @@ interface IconProps {
  * Using simple, accessible SVG icons
  */
 export function Icon({ name, className = "", size = 24 }: IconProps) {
-  const icons: Record<string, JSX.Element> = {
+  const icons: Record<string, React.ReactElement> = {
     book: (
       <path
         strokeLinecap="round"
