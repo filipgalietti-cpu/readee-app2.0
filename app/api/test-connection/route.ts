@@ -79,7 +79,7 @@ export async function GET() {
         name: 'Admin Client Connection',
         status: 'passed',
         message: 'Successfully connected with admin privileges',
-        details: `Users in database: ${data.users.length}`
+        details: 'Admin client can access protected resources'
       })
       results.summary.passed++
     }

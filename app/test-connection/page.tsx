@@ -1,8 +1,19 @@
 import { Suspense } from 'react'
 
+// Helper function to map test status to border and background colors
+function getStatusColors(status: 'passed' | 'failed' | 'warning') {
+  const colors = {
+    passed: { border: '#0a0', background: '#efe' },
+    failed: { border: '#c00', background: '#fee' },
+    warning: { border: '#fa0', background: '#ffc' }
+  }
+  return colors[status]
+}
+
 async function getTestResults() {
   try {
-    const res = await fetch('http://localhost:3001/api/test-connection', {
+    // Use relative URL to work in all environments
+    const res = await fetch('/api/test-connection', {
       cache: 'no-store'
     })
     return await res.json()
@@ -55,15 +66,17 @@ export default async function TestConnectionPage() {
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-            {results.tests.map((test: any, idx: number) => (
+            {results.tests.map((test: any, idx: number) => {
+              const colors = getStatusColors(test.status)
+              return (
               <div 
                 key={idx}
                 style={{ 
                   padding: '20px',
                   border: '2px solid',
-                  borderColor: test.status === 'passed' ? '#0a0' : test.status === 'warning' ? '#fa0' : '#c00',
+                  borderColor: colors.border,
                   borderRadius: '8px',
-                  background: test.status === 'passed' ? '#efe' : test.status === 'warning' ? '#ffc' : '#fee'
+                  background: colors.background
                 }}
               >
                 <h3 style={{ 
@@ -109,7 +122,8 @@ export default async function TestConnectionPage() {
                   </div>
                 )}
               </div>
-            ))}
+              )
+            })}
           </div>
 
           <div style={{ 
