@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { LessonHeader } from "@/app/components/ui/LessonHeader";
 import { ItemRenderer, ContentItem } from "@/app/components/practice/ItemRenderer";
@@ -26,11 +26,7 @@ export default function LessonPage() {
   const [isComplete, setIsComplete] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    fetchLessonData();
-  }, [lessonId]);
-
-  const fetchLessonData = async () => {
+  const fetchLessonData = useCallback(async () => {
     try {
       // Fetch lesson info
       const lessonsResponse = await fetch("/api/content/lessons");
@@ -60,7 +56,11 @@ export default function LessonPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [lessonId]);
+
+  useEffect(() => {
+    fetchLessonData();
+  }, [fetchLessonData]);
 
   const handleAnswer = async (correct: boolean, userAnswer: string) => {
     const newAnswers = [...answers, { correct, answer: userAnswer }];

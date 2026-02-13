@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@/app/components/ui/Button";
@@ -32,11 +32,7 @@ export default function Reader() {
   const [loading, setLoading] = useState(true);
   const [highlightedWordIndex, setHighlightedWordIndex] = useState<number | null>(null);
 
-  useEffect(() => {
-    fetchStory();
-  }, [storyId]);
-
-  const fetchStory = async () => {
+  const fetchStory = useCallback(async () => {
     try {
       const response = await fetch(`/api/stories/${storyId}`);
       const data = await response.json();
@@ -50,7 +46,11 @@ export default function Reader() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [storyId]);
+
+  useEffect(() => {
+    fetchStory();
+  }, [fetchStory]);
 
   const handlePlayAudio = () => {
     const page = pages[currentPage];

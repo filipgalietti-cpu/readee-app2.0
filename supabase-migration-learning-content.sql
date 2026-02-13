@@ -194,6 +194,16 @@ CREATE POLICY "Users can insert own item history"
 -- 6. AUTO-UPDATE TIMESTAMPS
 -- ────────────────────────────────────────────────────────────
 
+-- Note: The update_updated_at_column() function should already exist
+-- from the profiles migration. If not, create it first:
+-- CREATE OR REPLACE FUNCTION update_updated_at_column()
+-- RETURNS TRIGGER AS $$
+-- BEGIN
+--   NEW.updated_at = now();
+--   RETURN NEW;
+-- END;
+-- $$ language 'plpgsql';
+
 CREATE TRIGGER update_content_units_updated_at
   BEFORE UPDATE ON content_units
   FOR EACH ROW

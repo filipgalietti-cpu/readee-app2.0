@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/Card";
 import { Icon } from "../components/ui/Icon";
@@ -30,11 +30,7 @@ export default function LearningPath() {
   const [loading, setLoading] = useState(true);
   const [expandedUnit, setExpandedUnit] = useState<string | null>(null);
 
-  useEffect(() => {
-    fetchUnits();
-  }, []);
-
-  const fetchUnits = async () => {
+  const fetchUnits = useCallback(async () => {
     try {
       const response = await fetch("/api/content/units");
       const data = await response.json();
@@ -44,7 +40,11 @@ export default function LearningPath() {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    fetchUnits();
+  }, [fetchUnits]);
 
   const fetchLessons = async (unitId: string) => {
     try {
