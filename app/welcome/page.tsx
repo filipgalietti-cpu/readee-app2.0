@@ -292,6 +292,7 @@ export default function WelcomePage() {
     // Small delay so the button animation feels nice
     await new Promise((r) => setTimeout(r, 600));
     router.push("/dashboard");
+    router.refresh();
   };
 
   const shapes: { delay: number; left: number; size: number; color: string; shape: "circle" | "square" | "leaf" }[] = [

@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState, ReactNode } from "react";
+import { createContext, useContext, useEffect, useState, ReactNode, useCallback } from "react";
 import { createClient } from "@/lib/supabase/client";
 
 export interface ReadeeProfile {
@@ -36,7 +36,7 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
   const [profile, setProfile] = useState<ReadeeProfile | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  const refreshProfile = async () => {
+  const refreshProfile = useCallback(async () => {
     try {
       const supabase = createClient();
       const { data: { user } } = await supabase.auth.getUser();
@@ -96,11 +96,11 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
       } catch {}
     }
     setIsLoading(false);
-  };
+  }, []);
 
   useEffect(() => {
     refreshProfile();
-  }, []);
+  }, [refreshProfile]);
 
   const updateProfile = (updates: Partial<ReadeeProfile>) => {
     setProfile((prev) => {
