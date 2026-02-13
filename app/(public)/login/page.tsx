@@ -141,16 +141,16 @@ export default function Login() {
         <button
           type="submit"
           disabled={isLoading}
-          className="w-full bg-gray-900 text-white py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full bg-gradient-to-r from-orange-500 to-pink-500 text-white py-3 rounded-lg font-medium hover:from-orange-600 hover:to-pink-600 transition-all focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
         >
           {isLoading ? "Signing In..." : "Sign In"}
         </button>
       </form>
-      <p className="mt-6 text-center text-sm text-gray-600">
+      <p className="mt-6 text-center text-sm text-purple-700">
         Don&apos;t have an account?{" "}
         <Link
           href="/signup"
-          className="text-gray-900 font-medium hover:underline"
+          className="text-orange-600 font-medium hover:underline"
         >
           Sign up
         </Link>
