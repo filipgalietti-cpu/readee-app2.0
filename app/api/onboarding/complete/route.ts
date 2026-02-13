@@ -50,7 +50,7 @@ export async function POST(request: NextRequest) {
     }
     
     // Create profile with onboarding_complete set to true
-    const profile = await createProfile({
+    await createProfile({
       userId: user.id,
       displayName: body.displayName,
       role: body.role,

@@ -3,6 +3,7 @@ import type { NextRequest } from "next/server";
 import { createServerClient } from "@supabase/ssr";
 
 export async function proxy(req: NextRequest) {
+  // eslint-disable-next-line prefer-const
   let res = NextResponse.next();
   const { pathname } = req.nextUrl;
 
