@@ -1,0 +1,25 @@
+# Git attributes for Readee App 2.0
+
+# Mark critical authentication files
+# These files are essential for the app to function
+proxy.ts linguist-generated=false
+lib/supabase/client.ts linguist-generated=false
+lib/supabase/server.ts linguist-generated=false
+app/auth/callback/route.ts linguist-generated=false
+
+# Documentation
+*.md text eol=lf
+
+# TypeScript/JavaScript
+*.ts text eol=lf
+*.tsx text eol=lf
+*.js text eol=lf
+*.jsx text eol=lf
+*.mjs text eol=lf
+
+# JSON files
+*.json text eol=lf
+
+# Configuration files
+.env.example text eol=lf
+.gitignore text eol=lf
