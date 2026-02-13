@@ -39,23 +39,23 @@ const stories = [
 export default function Library() {
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
-      <h1 className="text-3xl font-bold text-gray-900 mb-2">Story Library</h1>
-      <p className="text-gray-600 mb-8">Choose a story to start reading</p>
+      <h1 className="text-3xl font-bold text-purple-700 mb-2">Story Library 📖</h1>
+      <p className="text-purple-700 mb-8 text-lg">Choose a story to start reading</p>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {stories.map((story) => (
           <Link
             key={story.id}
             href={`/reader/${story.id}`}
-            className="bg-white rounded-lg shadow hover:shadow-lg transition-shadow p-6 border border-gray-200 hover:border-gray-300"
+            className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all p-6 border-2 border-purple-300 hover:border-orange-400 transform hover:scale-105"
           >
             <div className="mb-2">
-              <span className="inline-block px-3 py-1 text-sm font-semibold text-gray-700 bg-gray-100 rounded-full">
+              <span className="inline-block px-3 py-1 text-sm font-semibold text-white bg-gradient-to-r from-orange-500 to-pink-500 rounded-full">
                 {story.gradeLevel}
               </span>
             </div>
-            <h2 className="text-xl font-bold text-gray-900 mb-2">{story.title}</h2>
-            <p className="text-gray-600">{story.description}</p>
+            <h2 className="text-xl font-bold text-purple-700 mb-2">{story.title}</h2>
+            <p className="text-purple-600">{story.description}</p>
           </Link>
         ))}
       </div>

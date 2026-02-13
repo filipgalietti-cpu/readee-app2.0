@@ -2,7 +2,7 @@ export default function GoogleButton() {
   return (
     <button
       type="button"
-      className="w-full flex items-center justify-center gap-3 px-4 py-3 border border-gray-300 rounded-lg font-medium text-gray-700 bg-white hover:bg-gray-50 transition-colors"
+      className="w-full flex items-center justify-center gap-3 px-4 py-3 border-2 border-purple-300 rounded-lg font-medium text-purple-700 bg-white hover:bg-purple-50 transition-colors"
       onClick={() => {
         // Placeholder - no auth logic yet
         console.log("Google sign-in clicked");
