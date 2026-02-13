@@ -4,13 +4,14 @@ import { Icon } from "./components/ui/Icon";
 import { Card, CardContent, CardHeader, CardTitle } from "./components/ui/Card";
 
 export default function Home() {
+  const { profile } = useProfile();
+  const accentColor = profile?.favoriteColorHex || '#10b981';
+
   return (
 <div className="space-y-16 py-8">
   {/* Hero section */}
   <section className="text-center py-16">
-    <h1 className="text-5xl font-bold text-zinc-900 mb-4">
-      Welcome to Readee
-    </h1>
+    <h1 className="text-5xl font-bold text-zinc-900 mb-4">Welcome to Readee</h1>
     <p className="text-xl text-zinc-600 mb-8 max-w-2xl mx-auto">
       A comprehensive early reading platform with structured lessons, practice items, and decodable stories
     </p>
@@ -77,9 +78,7 @@ export default function Home() {
 
   {/* How it works */}
   <section className="bg-zinc-50 rounded-2xl p-8">
-    <h2 className="text-3xl font-bold text-zinc-900 mb-8 text-center">
-      How It Works
-    </h2>
+    <h2 className="text-3xl font-bold text-zinc-900 mb-8 text-center">How It Works</h2>
 
     <div className="space-y-6 max-w-3xl mx-auto">
       <div className="flex gap-4">
@@ -101,7 +100,7 @@ export default function Home() {
         <div>
           <h3 className="font-semibold text-lg mb-1">Practice & Learn</h3>
           <p className="text-zinc-600">
-            Each lesson includes 5-8 practice items with immediate feedback and spaced repetition
+            Each lesson includes 5–8 practice items with immediate feedback and spaced repetition
           </p>
         </div>
       </div>
@@ -117,6 +116,9 @@ export default function Home() {
           </p>
         </div>
       </div>
+    </div>
+  </section>
+</div>
     </div>
   </section>
 

@@ -2,6 +2,11 @@
 
 import { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
+"use client";
+
+import { useCallback, useEffect, useState } from "react";
+import Link from "next/link";
+
 import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/Card";
 import { Icon } from "../components/ui/Icon";
 
@@ -37,7 +42,7 @@ export default function Library() {
     return (
       <div className="container-page py-12">
         <div className="text-center">
-          <Icon name="book" className="mx-auto mb-4 text-blue-500 animate-pulse" size={48} />
+          <Icon name="book" className="mx-auto mb-4 text-zinc-500 animate-pulse" size={48} />
           <p className="text-zinc-600">Loading library...</p>
         </div>
       </div>
@@ -89,6 +94,11 @@ export default function Library() {
               </Card>
             )}
           </div>
+        ))}
+      </div>
+    </div>
+  );
+}
         ))}
       </div>
     </div>

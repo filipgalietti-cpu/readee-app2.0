@@ -1,8 +1,11 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+"use client";
+
+import { useCallback, useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
+
 import { Button } from "@/app/components/ui/Button";
 import { Icon } from "@/app/components/ui/Icon";
 import { Card } from "@/app/components/ui/Card";
@@ -25,7 +28,6 @@ interface Story {
 export default function Reader() {
   const params = useParams();
   const storyId = params.id as string;
-
   const [story, setStory] = useState<Story | null>(null);
   const [pages, setPages] = useState<StoryPage[]>([]);
   const [currentPage, setCurrentPage] = useState(0);
@@ -36,7 +38,7 @@ export default function Reader() {
     try {
       const response = await fetch(`/api/stories/${storyId}`);
       const data = await response.json();
-      
+
       if (data.story && data.pages) {
         setStory(data.story);
         setPages(data.pages);
@@ -56,14 +58,14 @@ export default function Reader() {
     const page = pages[currentPage];
     if (!page?.word_timings) return;
 
-    // Simulate audio playback with word highlighting
     let wordIndex = 0;
+
     const highlightWords = () => {
       if (wordIndex < page.word_timings!.length) {
         setHighlightedWordIndex(wordIndex);
         const timing = page.word_timings![wordIndex];
-        const duration = (timing.end - timing.start) * 1000;
-        
+        const duration = Math.max(0, (timing.end - timing.start) * 1000);
+
         setTimeout(() => {
           wordIndex++;
           highlightWords();
@@ -72,7 +74,7 @@ export default function Reader() {
         setHighlightedWordIndex(null);
       }
     };
-    
+
     highlightWords();
   };
 
@@ -87,9 +89,7 @@ export default function Reader() {
             <span
               key={idx}
               className={`inline-block mx-1 transition-colors duration-200 ${
-                highlightedWordIndex === idx
-                  ? "bg-yellow-200 font-bold"
-                  : "hover:bg-gray-100"
+                highlightedWordIndex === idx ? "bg-yellow-200 font-bold" : "hover:bg-zinc-100"
               }`}
             >
               {timing.word}
@@ -106,7 +106,7 @@ export default function Reader() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <Icon name="book" className="mx-auto mb-4 text-blue-500 animate-pulse" size={48} />
+          <Icon name="book" className="mx-auto mb-4 text-zinc-500 animate-pulse" size={48} />
           <p className="text-zinc-600">Loading story...</p>
         </div>
       </div>
@@ -141,6 +141,7 @@ export default function Reader() {
               Back to Library
             </Button>
           </Link>
+
           <div className="text-sm text-zinc-600">
             Page {currentPage + 1} of {pages.length}
           </div>
@@ -156,7 +157,7 @@ export default function Reader() {
               <Icon name="book" className="text-zinc-400" size={64} />
             </div>
           )}
-          
+
           <div className="min-h-[200px] flex items-center justify-center">
             {renderContent()}
           </div>
@@ -164,11 +165,7 @@ export default function Reader() {
           {/* Audio button */}
           {page.word_timings && page.word_timings.length > 0 && (
             <div className="mt-8 flex justify-center">
-              <Button
-                onClick={handlePlayAudio}
-                className="gap-2"
-                disabled={highlightedWordIndex !== null}
-              >
+              <Button onClick={handlePlayAudio} className="gap-2" disabled={highlightedWordIndex !== null}>
                 <Icon name="play" size={20} />
                 {highlightedWordIndex !== null ? "Playing..." : "Play Audio"}
               </Button>
@@ -179,20 +176,20 @@ export default function Reader() {
         {/* Navigation buttons */}
         <div className="flex justify-between items-center">
           <Button
-            onClick={() => setCurrentPage(Math.max(0, currentPage - 1))}
+            onClick={() => setCurrentPage((p) => Math.max(0, p - 1))}
             disabled={currentPage === 0}
             variant="outline"
           >
             Previous
           </Button>
-          
+
           {currentPage === pages.length - 1 ? (
             <Link href="/library">
-              <Button variant="success">Finish Story</Button>
+              <Button>Finish Story</Button>
             </Link>
           ) : (
             <Button
-              onClick={() => setCurrentPage(Math.min(pages.length - 1, currentPage + 1))}
+              onClick={() => setCurrentPage((p) => Math.min(pages.length - 1, p + 1))}
               disabled={currentPage === pages.length - 1}
             >
               Next
@@ -200,6 +197,73 @@ export default function Reader() {
           )}
         </div>
       </div>
+    </div>
+  );
+        </div>
+      </div>
+
+      {/* Progress Bar */}
+      <ProgressBar value={progress} accentColor={accentColor} size="lg" />
+
+      {/* Story Card */}
+      <Card className="p-12 min-h-[500px] flex flex-col justify-between">
+        {/* Story Header */}
+        <div className="text-center mb-8">
+          <div className="text-6xl mb-4">{story.emoji}</div>
+          <h1 className="text-2xl font-bold text-zinc-900">{story.title}</h1>
+        </div>
+
+        {/* Story Content */}
+        <div className="flex-1 flex items-center justify-center">
+          <p className="text-3xl leading-relaxed text-zinc-900 text-center max-w-2xl font-serif">
+            {story.pages[currentPage]}
+          </p>
+        </div>
+
+        {/* Navigation */}
+        <div className="flex items-center justify-between mt-8 pt-6 border-t border-zinc-100">
+          <Button
+            variant="secondary"
+            onClick={goToPrevPage}
+            disabled={currentPage === 0}
+            className="gap-2"
+          >
+            <span>←</span>
+            <span>Previous</span>
+          </Button>
+
+          {currentPage === totalPages - 1 ? (
+            <Link href="/library">
+              <Button accentColor={accentColor} className="gap-2">
+                <span>Finish</span>
+                <span>✓</span>
+              </Button>
+            </Link>
+          ) : (
+            <Button
+              accentColor={accentColor}
+              onClick={goToNextPage}
+              className="gap-2"
+            >
+              <span>Next</span>
+              <span>→</span>
+            </Button>
+          )}
+        </div>
+      </Card>
+
+      {/* Reading Tips */}
+      <Card className="p-6 bg-zinc-50">
+        <div className="flex items-start gap-4">
+          <div className="text-3xl">💡</div>
+          <div>
+            <h3 className="font-semibold text-zinc-900 mb-1">Reading Tip</h3>
+            <p className="text-sm text-zinc-600">
+              Take your time with each word. It's okay to read slowly and enjoy the story!
+            </p>
+          </div>
+        </div>
+      </Card>
     </div>
   );
 }

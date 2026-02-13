@@ -35,10 +35,10 @@ h3 {
 }
 
 p {
-  color: rgb(126 34 206); /* purple-700 */
+  color: rgb(82 82 91); /* zinc-600 */
 }
 
-/* Custom component classes for Tailwind v4 */
+/* Custom component classes */
 .container-page {
   margin-left: auto;
   margin-right: auto;
@@ -46,6 +46,17 @@ p {
   max-width: 72rem;
   padding-left: 1rem;
   padding-right: 1rem;
+}
+
+@layer components {
+  .btn { @apply inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-medium transition; }
+  .btn-primary { @apply inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-medium transition bg-zinc-900 text-white hover:bg-zinc-800 active:bg-zinc-950; }
+  .btn-ghost { @apply inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-medium transition bg-transparent text-zinc-700 hover:bg-zinc-100; }
+
+  .input { @apply w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm outline-none transition focus:border-zinc-400; }
+  .label { @apply text-xs font-medium text-zinc-700; }
+  .muted { @apply text-sm text-zinc-600; }
+}
 }
 
 @media (min-width: 640px) {
@@ -145,7 +156,7 @@ p {
   color: rgb(147 51 234); /* purple-600 */
 }
 
-/* Custom animations */
+/* Base animations */
 @keyframes floatDown {
   0% { transform: translateY(-80px) rotate(0deg); }
   100% { transform: translateY(110vh) rotate(360deg); }
@@ -161,14 +172,54 @@ p {
   to { opacity: 1; transform: translateY(0); }
 }
 
-.animate-fadeUp {
-  animation: fadeUp 0.25s ease both;
+/* Additional animations */
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.floating-shape {
-  animation: floatDown 14s linear infinite;
+@keyframes fadeSlideOut {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-24px); }
 }
 
-.mascot-bounce {
-  animation: mascotBounce 2s ease-in-out infinite;
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.85); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes popIn {
+  0% { transform: scale(0); opacity: 0; }
+  60% { transform: scale(1.15); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes confettiFall {
+  0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-3deg); }
+  75% { transform: rotate(3deg); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+  50% { box-shadow: 0 4px 30px rgba(0,0,0,0.14); }
+}
+
+/* Animation utility classes */
+.animate-fadeUp { animation: fadeUp 0.25s ease both; }
+.animate-fadeSlideIn { animation: fadeSlideIn 0.3s ease forwards; }
+.animate-fadeSlideOut { animation: fadeSlideOut 0.3s ease forwards; }
+.animate-scaleIn { animation: scaleIn 0.5s ease forwards; }
+.animate-popIn { animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+.animate-wiggle { animation: wiggle 2s ease-in-out infinite; }
+.animate-pulseGlow { animation: pulseGlow 3s ease infinite; }
+
+.floating-shape { animation: floatDown 14s linear infinite; }
+.mascot-bounce { animation: mascotBounce 2s ease-in-out infinite; }
+.confetti-fall { animation: confettiFall 2.2s linear forwards; }
 }
