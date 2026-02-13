@@ -1,10 +1,11 @@
-import { createClient as createSupabaseClient } from "@supabase/supabase-js";
+import { createBrowserClient } from "@supabase/ssr";
 
-// Browser/client-safe Supabase client (anon key)
+// Browser/client-safe Supabase client (anon key) with proper cookie management for SSR
 export function supabaseBrowser() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
   const anon = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
-  return createSupabaseClient(url, anon);
+  
+  return createBrowserClient(url, anon);
 }
 
 // Compatibility export (some files import `createClient`)
