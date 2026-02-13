@@ -2,10 +2,28 @@ import { NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/client'
 import { createAdminClient } from '@/lib/supabase/admin'
 
+interface TestResult {
+  name: string
+  status: 'passed' | 'failed' | 'warning'
+  message: string
+  details?: string
+  variables?: Record<string, string>
+}
+
+interface TestResults {
+  timestamp: string
+  tests: TestResult[]
+  summary: {
+    passed: number
+    failed: number
+    warnings: number
+  }
+}
+
 export async function GET() {
-  const results = {
+  const results: TestResults = {
     timestamp: new Date().toISOString(),
-    tests: [] as any[],
+    tests: [],
     summary: { passed: 0, failed: 0, warnings: 0 }
   }
 
@@ -96,26 +114,28 @@ export async function GET() {
     }
   }
 
-  const envTest: any = {
+  const envTest: TestResult = {
     name: 'Environment Variables',
     status: 'passed',
+    message: 'All required environment variables are set',
     variables: {}
   }
 
   for (const [key, value] of Object.entries(envVars.required)) {
     if (value) {
-      envTest.variables[key] = `${value.substring(0, 20)}...`
+      envTest.variables![key] = `${value.substring(0, 20)}...`
     } else {
-      envTest.variables[key] = 'Not set'
+      envTest.variables![key] = 'Not set'
       envTest.status = 'failed'
+      envTest.message = 'Some required environment variables are missing'
     }
   }
 
   for (const [key, value] of Object.entries(envVars.optional)) {
     if (value) {
-      envTest.variables[key] = `${value.substring(0, 20)}... (optional)`
+      envTest.variables![key] = `${value.substring(0, 20)}... (optional)`
     } else {
-      envTest.variables[key] = 'Not set (optional)'
+      envTest.variables![key] = 'Not set (optional)'
     }
   }
 
