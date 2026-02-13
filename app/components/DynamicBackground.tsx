@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { useProfile } from "../../ProfileContext";
+import { useProfile } from "../_components/ProfileContext";
 
 /**
  * DynamicBackground

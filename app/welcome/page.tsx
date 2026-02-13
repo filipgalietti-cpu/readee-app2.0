@@ -252,7 +252,7 @@ export default function WelcomePage() {
     setConfettiPieces(pieces);
     setShowConfetti(true);
 
-    // Save profile to localStorage (works without Supabase)
+    // Save profile to localStorage (for backward compatibility)
     const profile = {
       name,
       favoriteColor: selectedColor,
@@ -263,33 +263,36 @@ export default function WelcomePage() {
     };
     localStorage.setItem("readee-profile", JSON.stringify(profile));
 
-    // ─── OPTIONAL: Save to Supabase if available ───
-    // Uncomment the block below once you have a `profiles` table in Supabase.
-    //
-    // try {
-    //   const { createClient } = await import("@/lib/supabase/client");
-    //   const supabase = createClient();
-    //   const { data: { user } } = await supabase.auth.getUser();
-    //   if (user) {
-    //     await supabase.from("profiles").upsert({
-    //       id: user.id,
-    //       display_name: name,
-    //       favorite_color: selectedColor,
-    //       favorite_color_hex: activeColor,
-    //       interests: selectedInterests,
-    //       onboarding_complete: true,
-    //     });
-    //   }
-    // } catch (err) {
-    //   console.error("Failed to save profile to Supabase:", err);
-    // }
+    // Save to Supabase backend
+    try {
+      const response = await fetch('/api/onboarding/complete', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          displayName: name,
+          role: 'child', // Default role - could be customized
+          favoriteColor: selectedColor,
+          favoriteColorHex: activeColor,
+          interests: selectedInterests,
+        }),
+      });
+      
+      if (!response.ok) {
+        console.error('Failed to save onboarding to backend');
+      }
+    } catch (err) {
+      console.error("Failed to save profile to Supabase:", err);
+    }
   };
 
   const handleStartReading = async () => {
     setSaving(true);
     // Small delay so the button animation feels nice
     await new Promise((r) => setTimeout(r, 600));
-    router.push("/");
+    router.push("/dashboard");
+    router.refresh();
   };
 
   const shapes: { delay: number; left: number; size: number; color: string; shape: "circle" | "square" | "leaf" }[] = [

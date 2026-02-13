@@ -9,6 +9,7 @@ export interface Profile {
   id: string; // UUID - matches auth.users.id
   display_name: string;
   role: UserRole;
+  onboarding_complete: boolean;
   created_at: string;
   updated_at: string;
 }

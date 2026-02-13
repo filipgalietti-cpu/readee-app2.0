@@ -76,8 +76,9 @@ export default function Login() {
         }
 
         if (data?.user) {
-          // Success - redirect to dashboard
-          router.push("/dashboard");
+          // Success - redirect will be handled by middleware
+          router.push("/");
+          router.refresh();
         }
       } catch (error) {
         console.error("Login error:", error);
