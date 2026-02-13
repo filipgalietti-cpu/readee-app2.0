@@ -11,8 +11,8 @@ import { createClient } from '@supabase/supabase-js'
  * @throws Error if required environment variables are not set
  */
 export function createAdminClient() {
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
-  const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL=https://rwlvjtowmfrrqeqvwolo.supabase.co
+  const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY=sb_publishable_NpiMr2p3lzKJQdwlnprr4w_QXwRyBKX
 
   if (!supabaseUrl || !supabaseServiceRoleKey) {
     throw new Error('Missing Supabase admin environment variables. Please set NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY.')
@@ -27,3 +27,4 @@ export function createAdminClient() {
     }
   })
 }
+››
