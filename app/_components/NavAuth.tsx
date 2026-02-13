@@ -31,8 +31,8 @@ export default function NavAuth() {
 
   return (
     <div className="flex items-center gap-4">
-      <Link href="/dashboard">Dashboard</Link>
-      <Link href="/logout" className="text-gray-600 hover:text-black">
+      <Link href="/dashboard" className="text-purple-700 hover:text-orange-600 transition-colors">Dashboard</Link>
+      <Link href="/logout" className="text-purple-700 hover:text-pink-600 transition-colors">
         Logout
       </Link>
     </div>

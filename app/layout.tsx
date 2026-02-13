@@ -19,14 +19,14 @@ export default function RootLayout({
       <body className="antialiased">
 <ClientProviders>
         {/* Navbar */}
-        <nav className="border-b">
+        <nav className="border-b-2 border-purple-300 bg-gradient-to-r from-yellow-100 to-pink-100">
           <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-            <Link href="/" className="text-lg font-semibold">
-              Readee
+            <Link href="/" className="text-lg font-semibold text-purple-700">
+              Readee 📚
             </Link>
 
-            <div className="flex items-center gap-4">
-              <Link href="/about">About</Link>
+            <div className="flex items-center gap-4 text-purple-700 font-medium">
+              <Link href="/about" className="hover:text-orange-600 transition-colors">About</Link>
               <NavAuth />
             </div>
           </div>
