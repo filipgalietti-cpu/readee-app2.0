@@ -2,6 +2,8 @@
 
 import { useState, FormEvent } from "react";
 import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
+import { createClient } from "@/lib/supabase/client";
 import AuthCard from "@/app/components/auth/AuthCard";
 import FormField from "@/app/components/auth/FormField";
 import GoogleButton from "@/app/components/auth/GoogleButton";
@@ -15,14 +17,20 @@ interface FormData {
 interface FormErrors {
   email?: string;
   password?: string;
+  general?: string;
 }
 
 export default function Login() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const message = searchParams.get("message");
+  
   const [formData, setFormData] = useState<FormData>({
     email: "",
     password: "",
   });
   const [errors, setErrors] = useState<FormErrors>({});
+  const [isLoading, setIsLoading] = useState(false);
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
@@ -45,12 +53,37 @@ export default function Login() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
     if (validateForm()) {
-      // Placeholder - no auth logic yet
-      console.log("Login form submitted:", formData);
+      setIsLoading(true);
+      setErrors({});
+
+      try {
+        const supabase = createClient();
+        
+        const { data, error } = await supabase.auth.signInWithPassword({
+          email: formData.email,
+          password: formData.password,
+        });
+
+        if (error) {
+          setErrors({ general: error.message });
+          setIsLoading(false);
+          return;
+        }
+
+        if (data?.user) {
+          // Success - redirect to dashboard
+          router.push("/dashboard");
+          router.refresh();
+        }
+      } catch (error) {
+        console.error("Login error:", error);
+        setErrors({ general: "An unexpected error occurred. Please try again." });
+        setIsLoading(false);
+      }
     }
   };
 
@@ -67,6 +100,16 @@ export default function Login() {
     <AuthCard title="Welcome Back">
       <GoogleButton />
       <Divider />
+      {message && (
+        <div className="mb-4 p-3 bg-green-50 border border-green-200 text-green-700 rounded-lg text-sm">
+          {message}
+        </div>
+      )}
+      {errors.general && (
+        <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded-lg text-sm">
+          {errors.general}
+        </div>
+      )}
       <form onSubmit={handleSubmit} className="space-y-6">
         <FormField
           id="email"
@@ -92,9 +135,10 @@ export default function Login() {
         />
         <button
           type="submit"
-          className="w-full bg-gray-900 text-white py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2"
+          disabled={isLoading}
+          className="w-full bg-gray-900 text-white py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          Sign In
+          {isLoading ? "Signing In..." : "Sign In"}
         </button>
       </form>
       <p className="mt-6 text-center text-sm text-gray-600">
