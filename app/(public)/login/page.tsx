@@ -24,6 +24,7 @@ export default function Login() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const message = searchParams.get("message");
+  const errorParam = searchParams.get("error");
   
   const [formData, setFormData] = useState<FormData>({
     email: "",
@@ -77,7 +78,6 @@ export default function Login() {
         if (data?.user) {
           // Success - redirect to dashboard
           router.push("/dashboard");
-          router.refresh();
         }
       } catch (error) {
         console.error("Login error:", error);
@@ -103,6 +103,11 @@ export default function Login() {
       {message && (
         <div className="mb-4 p-3 bg-green-50 border border-green-200 text-green-700 rounded-lg text-sm">
           {message}
+        </div>
+      )}
+      {errorParam && (
+        <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded-lg text-sm">
+          {errorParam}
         </div>
       )}
       {errors.general && (
