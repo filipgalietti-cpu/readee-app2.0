@@ -40,20 +40,17 @@ export default function NavAuth() {
   }
 
   return (
-<div className="flex items-center gap-3">
-  <Link
-    href="/dashboard"
-    className="text-zinc-700 hover:text-zinc-900 font-medium transition-colors"
-  >
-    Dashboard
-  </Link>
-
-  <Link href="/logout">
-    <Button variant="ghost" size="sm">
-      Logout
-    </Button>
-  </Link>
-</div>
+    <div className="flex items-center gap-3">
+      <Link
+        href="/dashboard"
+        className="text-zinc-700 hover:text-zinc-900 font-medium transition-colors"
+      >
+        Dashboard
+      </Link>
+      <Link href="/logout">
+        <Button variant="ghost" size="sm">
+          Logout
+        </Button>
       </Link>
     </div>
   );

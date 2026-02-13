@@ -19,33 +19,29 @@ export default function RootLayout({
       <body className="antialiased min-h-screen flex flex-col">
 <ClientProviders>
         {/* Navbar */}
-<nav className="sticky top-0 z-50 bg-white border-b border-zinc-200 shadow-sm">
-  <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-    <Link
-      href="/"
-      className="flex items-center gap-2 text-xl font-bold text-zinc-900 hover:opacity-80 transition-opacity"
-    >
-      <span className="text-2xl">📚</span>
-      <span>Readee</span>
-    </Link>
+        <nav className="sticky top-0 z-50 bg-white border-b border-zinc-200 shadow-sm">
+          <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+            <Link
+              href="/"
+              className="flex items-center gap-2 text-xl font-bold text-zinc-900 hover:opacity-80 transition-opacity"
+            >
+              <span className="text-2xl">📚</span>
+              <span>Readee</span>
+            </Link>
 
-    <div className="flex items-center gap-6">
-      <Link
-        href="/library"
-        className="text-zinc-700 hover:text-zinc-900 font-medium transition-colors"
-      >
-        Library
-      </Link>
-
-      <Link
-        href="/about"
-        className="text-zinc-700 hover:text-zinc-900 font-medium transition-colors"
-      >
-        About
-      </Link>
-    </div>
-  </div>
-</nav>
+            <div className="flex items-center gap-6">
+              <Link
+                href="/library"
+                className="text-zinc-700 hover:text-zinc-900 font-medium transition-colors"
+              >
+                Library
+              </Link>
+              <Link
+                href="/about"
+                className="text-zinc-700 hover:text-zinc-900 font-medium transition-colors"
+              >
+                About
+              </Link>
               <NavAuth />
             </div>
           </div>

@@ -9,22 +9,19 @@ export default function Dashboard() {
   const accentColor = profile?.favoriteColorHex || '#10b981';
 
   return (
-<div className="space-y-8 pb-12">
-  <div className="text-center py-8">
-    <div
-      className="w-24 h-24 rounded-full mx-auto mb-4 flex items-center justify-center text-5xl"
-      style={{ backgroundColor: `${accentColor}20` }}
-    >
-      😊
-    </div>
-
-    <h1 className="text-3xl font-bold text-zinc-900 mb-2">
-      {profile?.name || 'Reader'}
-    </h1>
-
-    <p className="text-zinc-600">Level 3 Reader</p>
-  </div>
-</div>
+    <div className="space-y-8 pb-12">
+      {/* Profile Summary */}
+      <div className="text-center py-8">
+        <div
+          className="w-24 h-24 rounded-full mx-auto mb-4 flex items-center justify-center text-5xl"
+          style={{ backgroundColor: `${accentColor}20` }}
+        >
+          😊
+        </div>
+        <h1 className="text-3xl font-bold text-zinc-900 mb-2">
+          {profile?.name || 'Reader'}
+        </h1>
+        <p className="text-zinc-600">Level 3 Reader</p>
       </div>
 
       {/* Stats Overview */}

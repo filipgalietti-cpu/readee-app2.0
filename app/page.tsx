@@ -9,8 +9,8 @@ export default function Home() {
   const accentColor = profile?.favoriteColorHex || '#10b981';
 
   return (
-<<div className="space-y-8 pb-12">
-  {/* Hero Section */}
+    <div className="space-y-8 pb-12">
+      {/* Hero Section */}
   <div className="text-center py-12">
     <div className="inline-block mb-4 text-6xl">📚</div>
     <h1 className="text-4xl md:text-5xl font-bold text-zinc-900 mb-4">

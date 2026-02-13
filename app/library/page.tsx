@@ -73,17 +73,16 @@ export default function Library() {
   const accentColor = profile?.favoriteColorHex || '#10b981';
 
   return (
-<<div className="space-y-8 pb-12">
-  <div className="text-center py-8">
-    <div className="text-5xl mb-4">📚</div>
-    <h1 className="text-3xl md:text-4xl font-bold text-zinc-900 mb-2">
-      Story Library
-    </h1>
-    <p className="text-lg text-zinc-600">
-      Choose a story to start your reading adventure
-    </p>
-  </div>
-</div>
+    <div className="space-y-8 pb-12">
+      <div className="text-center py-8">
+        <div className="text-5xl mb-4">📚</div>
+        <h1 className="text-3xl md:text-4xl font-bold text-zinc-900 mb-2">
+          Story Library
+        </h1>
+        <p className="text-lg text-zinc-600">
+          Choose a story to start your reading adventure
+        </p>
+      </div>
       
       <SectionHeader 
         title="All Stories" 
@@ -139,11 +138,10 @@ export default function Library() {
           <span>📂</span>
           <span>{story.category}</span>
         </div>
-      </div>
-    </div>
-  </Card>
-</Link>
-          </Link>
+              </div>
+            </div>
+          </Card>
+        </Link>
         ))}
       </div>
     </div>
