@@ -139,48 +139,53 @@ function MascotFace({
   );
 }
 
-/* ──────────────────── CSS KEYFRAMES ──────────────────── */
+/* ──────────────────── STYLE CONSTANTS ──────────────────── */
 
-const keyframes = `
-  @keyframes floatDown {
-    0% { transform: translateY(-100px) rotate(0deg); }
-    100% { transform: translateY(110vh) rotate(360deg); }
-  }
-  @keyframes mascotBounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
-  }
-  @keyframes fadeSlideIn {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeSlideOut {
-    from { opacity: 1; transform: translateY(0); }
-    to { opacity: 0; transform: translateY(-24px); }
-  }
-  @keyframes scaleIn {
-    from { opacity: 0; transform: scale(0.85); }
-    to { opacity: 1; transform: scale(1); }
-  }
-  @keyframes popIn {
-    0% { transform: scale(0); opacity: 0; }
-    60% { transform: scale(1.15); }
-    100% { transform: scale(1); opacity: 1; }
-  }
-  @keyframes confettiFall {
-    0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
-    100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
-  }
-  @keyframes wiggle {
-    0%, 100% { transform: rotate(0deg); }
-    25% { transform: rotate(-3deg); }
-    75% { transform: rotate(3deg); }
-  }
-  @keyframes pulseGlow {
-    0%, 100% { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
-    50% { box-shadow: 0 4px 30px rgba(0,0,0,0.14); }
-  }
-`;
+const STYLE = {
+  heading: {
+    fontFamily: "'Baloo 2', cursive",
+    fontSize: "clamp(1.6rem, 4.5vw, 2.2rem)",
+    color: "#2C1810",
+    margin: "0 0 8px",
+  },
+  subtext: {
+    color: "#7A6B5D",
+    fontSize: "1rem",
+    margin: "0 0 28px",
+    fontWeight: 500,
+  },
+  backButton: {
+    color: "#7A6B5D",
+    fontSize: "0.95rem",
+    fontWeight: 600,
+    padding: "12px 20px",
+    background: "none",
+    border: "none",
+    cursor: "pointer",
+    fontFamily: "'Quicksand', sans-serif",
+  },
+  buttonContainer: {
+    display: "flex",
+    justifyContent: "center",
+    gap: 12,
+    marginTop: 32,
+  },
+} as const;
+
+const createPrimaryButton = (activeColor: string, disabled: boolean) => ({
+  background: `linear-gradient(135deg, ${activeColor}, ${activeColor}cc)`,
+  color: "white",
+  fontSize: "1.05rem",
+  padding: "14px 40px",
+  borderRadius: 50,
+  boxShadow: `0 4px 20px ${activeColor}44`,
+  border: "none",
+  fontFamily: "'Quicksand', sans-serif",
+  fontWeight: 700,
+  cursor: disabled ? "not-allowed" : "pointer",
+  opacity: disabled ? 0.4 : 1,
+  transition: "all 0.2s ease",
+});
 
 /* ──────────────────── MAIN COMPONENT ──────────────────── */
 
@@ -320,8 +325,6 @@ export default function WelcomePage() {
         rel="stylesheet"
       />
 
-      <style dangerouslySetInnerHTML={{ __html: keyframes }} />
-
       {/* Floating background shapes */}
       {shapes.map((s, i) => (
         <FloatingShape key={i} {...s} />
@@ -379,13 +382,10 @@ export default function WelcomePage() {
       {/* ═══════════ STEP 0: Welcome Splash ═══════════ */}
       {step === 0 && (
         <div
-          style={{
-            textAlign: "center",
-            maxWidth: 440,
-            animation: isTransitioning ? "fadeSlideOut 0.3s ease forwards" : "fadeSlideIn 0.3s ease forwards",
-          }}
+          className={isTransitioning ? "animate-fadeSlideOut" : "animate-fadeSlideIn"}
+          style={{ textAlign: "center", maxWidth: 440 }}
         >
-          <div style={{ animation: "scaleIn 0.6s ease forwards" }}>
+          <div className="animate-scaleIn">
             <MascotFace color="#74C0FC" expression="happy" />
           </div>
           <h1
@@ -454,27 +454,12 @@ export default function WelcomePage() {
       {/* ═══════════ STEP 1: Name ═══════════ */}
       {step === 1 && (
         <div
-          style={{
-            textAlign: "center",
-            maxWidth: 440,
-            width: "100%",
-            animation: isTransitioning ? "fadeSlideOut 0.3s ease forwards" : "fadeSlideIn 0.3s ease forwards",
-          }}
+          className={isTransitioning ? "animate-fadeSlideOut" : "animate-fadeSlideIn"}
+          style={{ textAlign: "center", maxWidth: 440, width: "100%" }}
         >
           <MascotFace color={activeColor} expression="happy" />
-          <h2
-            style={{
-              fontFamily: "'Baloo 2', cursive",
-              fontSize: "clamp(1.6rem, 4.5vw, 2.2rem)",
-              color: "#2C1810",
-              margin: "0 0 8px",
-            }}
-          >
-            What&apos;s your name?
-          </h2>
-          <p style={{ color: "#7A6B5D", fontSize: "1rem", margin: "0 0 28px", fontWeight: 500 }}>
-            So we know what to call you!
-          </p>
+          <h2 style={STYLE.heading}>What&apos;s your name?</h2>
+          <p style={STYLE.subtext}>So we know what to call you!</p>
           <input
             ref={nameInputRef}
             type="text"
@@ -510,31 +495,21 @@ export default function WelcomePage() {
           />
           {name.trim() && (
             <p
+              className="animate-fadeSlideIn"
               style={{
                 color: activeColor,
                 fontSize: "1rem",
                 margin: "16px 0 0",
                 fontWeight: 600,
-                animation: "fadeSlideIn 0.3s ease",
               }}
             >
               Nice to meet you, {name}! 🎉
             </p>
           )}
-          <div style={{ display: "flex", justifyContent: "center", gap: 12, marginTop: 32 }}>
+          <div style={STYLE.buttonContainer}>
             <button
               onClick={goBack}
-              style={{
-                color: "#7A6B5D",
-                fontSize: "0.95rem",
-                fontWeight: 600,
-                padding: "12px 20px",
-                background: "none",
-                border: "none",
-                cursor: "pointer",
-                fontFamily: "'Quicksand', sans-serif",
-                transition: "transform 0.15s ease",
-              }}
+              style={STYLE.backButton}
               onMouseOver={(e) => (e.currentTarget.style.transform = "translateX(-3px)")}
               onMouseOut={(e) => (e.currentTarget.style.transform = "translateX(0)")}
             >
@@ -543,20 +518,7 @@ export default function WelcomePage() {
             <button
               onClick={goNext}
               disabled={!name.trim()}
-              style={{
-                background: `linear-gradient(135deg, ${activeColor}, ${activeColor}cc)`,
-                color: "white",
-                fontSize: "1.05rem",
-                padding: "14px 40px",
-                borderRadius: 50,
-                boxShadow: `0 4px 20px ${activeColor}44`,
-                border: "none",
-                fontFamily: "'Quicksand', sans-serif",
-                fontWeight: 700,
-                cursor: name.trim() ? "pointer" : "not-allowed",
-                opacity: name.trim() ? 1 : 0.4,
-                transition: "all 0.2s ease",
-              }}
+              style={createPrimaryButton(activeColor, !name.trim())}
             >
               Next →
             </button>
@@ -567,25 +529,12 @@ export default function WelcomePage() {
       {/* ═══════════ STEP 2: Favorite Color ═══════════ */}
       {step === 2 && (
         <div
-          style={{
-            textAlign: "center",
-            maxWidth: 480,
-            width: "100%",
-            animation: isTransitioning ? "fadeSlideOut 0.3s ease forwards" : "fadeSlideIn 0.3s ease forwards",
-          }}
+          className={isTransitioning ? "animate-fadeSlideOut" : "animate-fadeSlideIn"}
+          style={{ textAlign: "center", maxWidth: 480, width: "100%" }}
         >
           <MascotFace color={activeColor} expression="happy" />
-          <h2
-            style={{
-              fontFamily: "'Baloo 2', cursive",
-              fontSize: "clamp(1.6rem, 4.5vw, 2.2rem)",
-              color: "#2C1810",
-              margin: "0 0 8px",
-            }}
-          >
-            Pick your favorite color!
-          </h2>
-          <p style={{ color: "#7A6B5D", fontSize: "1rem", margin: "0 0 28px", fontWeight: 500 }}>
+          <h2 style={STYLE.heading}>Pick your favorite color!</h2>
+          <p style={STYLE.subtext}>
             This will make Readee feel just right for you, {name}
           </p>
           <div
@@ -600,8 +549,8 @@ export default function WelcomePage() {
             {COLORS.map((c, i) => (
               <div
                 key={c.id}
+                className="animate-popIn"
                 style={{
-                  animation: `popIn 0.3s ease forwards`,
                   animationDelay: `${i * 0.05}s`,
                   opacity: 0,
                 }}
@@ -656,39 +605,14 @@ export default function WelcomePage() {
               </div>
             ))}
           </div>
-          <div style={{ display: "flex", justifyContent: "center", gap: 12, marginTop: 32 }}>
-            <button
-              onClick={goBack}
-              style={{
-                color: "#7A6B5D",
-                fontSize: "0.95rem",
-                fontWeight: 600,
-                padding: "12px 20px",
-                background: "none",
-                border: "none",
-                cursor: "pointer",
-                fontFamily: "'Quicksand', sans-serif",
-              }}
-            >
+          <div style={STYLE.buttonContainer}>
+            <button onClick={goBack} style={STYLE.backButton}>
               ← Back
             </button>
             <button
               onClick={goNext}
               disabled={!selectedColor}
-              style={{
-                background: `linear-gradient(135deg, ${activeColor}, ${activeColor}cc)`,
-                color: "white",
-                fontSize: "1.05rem",
-                padding: "14px 40px",
-                borderRadius: 50,
-                boxShadow: `0 4px 20px ${activeColor}44`,
-                border: "none",
-                fontFamily: "'Quicksand', sans-serif",
-                fontWeight: 700,
-                cursor: selectedColor ? "pointer" : "not-allowed",
-                opacity: selectedColor ? 1 : 0.4,
-                transition: "all 0.2s ease",
-              }}
+              style={createPrimaryButton(activeColor, !selectedColor)}
             >
               Next →
             </button>
@@ -699,25 +623,12 @@ export default function WelcomePage() {
       {/* ═══════════ STEP 3: Interests ═══════════ */}
       {step === 3 && (
         <div
-          style={{
-            textAlign: "center",
-            maxWidth: 520,
-            width: "100%",
-            animation: isTransitioning ? "fadeSlideOut 0.3s ease forwards" : "fadeSlideIn 0.3s ease forwards",
-          }}
+          className={isTransitioning ? "animate-fadeSlideOut" : "animate-fadeSlideIn"}
+          style={{ textAlign: "center", maxWidth: 520, width: "100%" }}
         >
           <MascotFace color={activeColor} expression="excited" />
-          <h2
-            style={{
-              fontFamily: "'Baloo 2', cursive",
-              fontSize: "clamp(1.6rem, 4.5vw, 2.2rem)",
-              color: "#2C1810",
-              margin: "0 0 8px",
-            }}
-          >
-            What do you love?
-          </h2>
-          <p style={{ color: "#7A6B5D", fontSize: "1rem", margin: "0 0 24px", fontWeight: 500 }}>
+          <h2 style={STYLE.heading}>What do you love?</h2>
+          <p style={{ ...STYLE.subtext, margin: "0 0 24px" }}>
             Pick up to 5 things you&apos;re interested in!
           </p>
           <div
@@ -736,6 +647,7 @@ export default function WelcomePage() {
                 <div
                   key={interest.id}
                   onClick={() => toggleInterest(interest.id)}
+                  className="animate-popIn"
                   style={{
                     padding: "10px 18px",
                     borderRadius: 50,
@@ -748,7 +660,6 @@ export default function WelcomePage() {
                     boxShadow: isSelected
                       ? `0 4px 16px ${activeColor}33`
                       : "0 2px 8px rgba(0,0,0,0.04)",
-                    animation: `popIn 0.3s ease forwards`,
                     animationDelay: `${i * 0.03}s`,
                     opacity: 0,
                     cursor: "pointer",
@@ -766,20 +677,8 @@ export default function WelcomePage() {
           <p style={{ color: "#a09080", fontSize: "0.85rem", margin: "16px 0 0", fontWeight: 500 }}>
             {selectedInterests.length}/5 selected
           </p>
-          <div style={{ display: "flex", justifyContent: "center", gap: 12, marginTop: 24 }}>
-            <button
-              onClick={goBack}
-              style={{
-                color: "#7A6B5D",
-                fontSize: "0.95rem",
-                fontWeight: 600,
-                padding: "12px 20px",
-                background: "none",
-                border: "none",
-                cursor: "pointer",
-                fontFamily: "'Quicksand', sans-serif",
-              }}
-            >
+          <div style={{ ...STYLE.buttonContainer, marginTop: 24 }}>
+            <button onClick={goBack} style={STYLE.backButton}>
               ← Back
             </button>
             <button
@@ -788,20 +687,7 @@ export default function WelcomePage() {
                 setTimeout(handleFinish, 400);
               }}
               disabled={selectedInterests.length === 0}
-              style={{
-                background: `linear-gradient(135deg, ${activeColor}, ${activeColor}cc)`,
-                color: "white",
-                fontSize: "1.05rem",
-                padding: "14px 40px",
-                borderRadius: 50,
-                boxShadow: `0 4px 20px ${activeColor}44`,
-                border: "none",
-                fontFamily: "'Quicksand', sans-serif",
-                fontWeight: 700,
-                cursor: selectedInterests.length > 0 ? "pointer" : "not-allowed",
-                opacity: selectedInterests.length > 0 ? 1 : 0.4,
-                transition: "all 0.2s ease",
-              }}
+              style={createPrimaryButton(activeColor, selectedInterests.length === 0)}
             >
               Finish! 🎉
             </button>
@@ -812,13 +698,10 @@ export default function WelcomePage() {
       {/* ═══════════ STEP 4: All Done! ═══════════ */}
       {step === 4 && (
         <div
-          style={{
-            textAlign: "center",
-            maxWidth: 480,
-            animation: "fadeSlideIn 0.4s ease forwards",
-          }}
+          className="animate-fadeSlideIn"
+          style={{ textAlign: "center", maxWidth: 480 }}
         >
-          <div style={{ animation: "scaleIn 0.5s ease forwards" }}>
+          <div className="animate-scaleIn">
             <MascotFace color={activeColor} expression="excited" />
           </div>
           <h2
@@ -846,6 +729,7 @@ export default function WelcomePage() {
 
           {/* Summary Card */}
           <div
+            className="animate-pulseGlow"
             style={{
               background: "white",
               borderRadius: 24,
@@ -854,7 +738,6 @@ export default function WelcomePage() {
               margin: "0 auto 28px",
               boxShadow: "0 4px 24px rgba(0,0,0,0.06)",
               textAlign: "left" as const,
-              animation: "pulseGlow 3s ease infinite",
             }}
           >
             <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
@@ -949,6 +832,7 @@ export default function WelcomePage() {
           <button
             onClick={handleStartReading}
             disabled={saving}
+            className={saving ? "" : "animate-wiggle"}
             style={{
               background: `linear-gradient(135deg, ${activeColor}, ${activeColor}cc)`,
               color: "white",
@@ -960,7 +844,6 @@ export default function WelcomePage() {
               fontFamily: "'Quicksand', sans-serif",
               fontWeight: 700,
               cursor: "pointer",
-              animation: saving ? "none" : "wiggle 2s ease-in-out infinite",
               opacity: saving ? 0.7 : 1,
               transition: "all 0.2s ease",
             }}
