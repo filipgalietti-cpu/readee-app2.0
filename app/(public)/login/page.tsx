@@ -1,10 +1,6 @@
 "use client";
 
-<<<<<<< Updated upstream
 import { useState, FormEvent, Suspense } from "react";
-=======
-import React, { useState, FormEvent } from "react";
->>>>>>> Stashed changes
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
@@ -29,7 +25,7 @@ function LoginForm() {
   const searchParams = useSearchParams();
   const message = searchParams.get("message");
   const errorParam = searchParams.get("error");
-
+  
   const [formData, setFormData] = useState<FormData>({
     email: "",
     password: "",
@@ -40,33 +36,45 @@ function LoginForm() {
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
 
-    if (!formData.email) newErrors.email = "Email is required";
-    else if (!/\S+@\S+\.\S+/.test(formData.email))
+    // Email validation
+    if (!formData.email) {
+      newErrors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = "Please enter a valid email address";
+    }
 
-    if (!formData.password) newErrors.password = "Password is required";
-    else if (formData.password.length < 8)
+    // Password validation
+    if (!formData.password) {
+      newErrors.password = "Password is required";
+    } else if (formData.password.length < 8) {
       newErrors.password = "Password must be at least 8 characters";
+    }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e: FormEvent) => {
-  e.preventDefault();
-  console.log("LOGIN: submit fired");
+    e.preventDefault();
 
-  setErrors({});
+    if (validateForm()) {
+      setIsLoading(true);
+      setErrors({});
 
-  if (!validateForm()) {
-    console.log("LOGIN: validation failed", formData);
-    return;
-  }
+      try {
+        const supabase = createClient();
+        
+        const { data, error } = await supabase.auth.signInWithPassword({
+          email: formData.email,
+          password: formData.password,
+        });
 
-  setIsLoading(true);
-  console.log("LOGIN: validation passed, calling supabase...");
+        if (error) {
+          setErrors({ general: error.message });
+          setIsLoading(false);
+          return;
+        }
 
-<<<<<<< Updated upstream
         if (data?.user) {
           // Success - redirect will be handled by middleware
           router.push("/");
@@ -77,52 +85,16 @@ function LoginForm() {
         const errorMessage = error instanceof Error ? error.message : "An unexpected error occurred. Please try again.";
         setErrors({ general: errorMessage });
         setIsLoading(false);
-=======
-  try {
-    const supabase = createClient();
-
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email: formData.email.trim(),
-      password: formData.password,
-    });
-
-    console.log("LOGIN: supabase response", { data, error });
-
-      if (error) {
-        setErrors({ general: error.message });
-        return;
->>>>>>> Stashed changes
       }
-
-      // If we got here, Supabase accepted the login.
-      // Refresh ensures server components see the new cookies/session.
-      if (data?.user) {
-        router.push("/");
-        router.refresh();
-        return;
-      }
-
-      // Very rare fallback
-      setErrors({ general: "Login succeeded but no user returned. Try again." });
-    } catch (err) {
-      console.error("Login error:", err);
-      setErrors({
-        general: "An unexpected error occurred. Please try again.",
-      });
-    } finally {
-      setIsLoading(false);
     }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-
+    // Clear error when user starts typing
     if (errors[name as keyof FormErrors]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }));
-    }
-    if (errors.general) {
-      setErrors((prev) => ({ ...prev, general: undefined }));
     }
   };
 
@@ -130,25 +102,21 @@ function LoginForm() {
     <AuthCard title="Welcome Back">
       <GoogleButton />
       <Divider />
-
       {message && (
         <div className="mb-4 p-3 bg-green-50 border border-green-200 text-green-700 rounded-lg text-sm">
           {message}
         </div>
       )}
-
       {errorParam && (
         <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded-lg text-sm">
           {errorParam}
         </div>
       )}
-
       {errors.general && (
         <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded-lg text-sm">
           {errors.general}
         </div>
       )}
-
       <form onSubmit={handleSubmit} className="space-y-6">
         <FormField
           id="email"
@@ -161,7 +129,6 @@ function LoginForm() {
           error={errors.email}
           required
         />
-
         <FormField
           id="password"
           label="Password"
@@ -173,7 +140,6 @@ function LoginForm() {
           error={errors.password}
           required
         />
-
         <button
           type="submit"
           disabled={isLoading}
@@ -182,25 +148,17 @@ function LoginForm() {
           {isLoading ? "Signing In..." : "Sign In"}
         </button>
       </form>
-<<<<<<< Updated upstream
       <p className="mt-6 text-center text-sm text-purple-700">
         Don&apos;t have an account?{" "}
         <Link
           href="/signup"
           className="text-orange-600 font-medium hover:underline"
         >
-=======
-
-      <p className="mt-6 text-center text-sm text-gray-600">
-        Don&apos;t have an account?{" "}
-        <Link href="/signup" className="text-gray-900 font-medium hover:underline">
->>>>>>> Stashed changes
           Sign up
         </Link>
       </p>
     </AuthCard>
   );
-<<<<<<< Updated upstream
 }
 
 export default function Login() {
@@ -218,6 +176,3 @@ export default function Login() {
     </Suspense>
   );
 }
-=======
-}
->>>>>>> Stashed changes
