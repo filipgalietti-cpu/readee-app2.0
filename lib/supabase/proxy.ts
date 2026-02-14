@@ -1,11 +1,33 @@
-// Session sync proxy for Supabase authentication
-// This file ensures session state is properly synchronized
-// between client and server in Next.js App Router
+// proxy.ts
+import { NextRequest, NextResponse } from "next/server";
+import { createServerClient } from "@supabase/ssr";
 
-import { createClient } from '@/lib/supabase/server'
+export async function proxy(request: NextRequest) {
+  let response = NextResponse.next({ request });
 
-export async function syncSession() {
-  const supabase = await createClient()
-  const { data: { session } } = await supabase.auth.getSession()
-  return session
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+
+  const supabase = createServerClient(supabaseUrl, supabaseAnonKey, {
+    cookies: {
+      getAll() {
+        return request.cookies.getAll();
+      },
+      setAll(cookiesToSet) {
+        cookiesToSet.forEach(({ name, value, options }) => {
+          response.cookies.set(name, value, options);
+        });
+      },
+    },
+  });
+
+  // refresh session if needed
+  await supabase.auth.getUser();
+
+  return response;
 }
+
+// Optional but recommended: don’t run proxy on static assets
+export const config = {
+  matcher: ["/((?!_next/static|_next/image|favicon.ico).*)"],
+};

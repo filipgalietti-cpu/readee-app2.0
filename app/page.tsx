@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 export default function Home() {
   // This page is intentionally minimal
   // The middleware (proxy.ts) handles all redirects:
@@ -13,4 +14,38 @@ export default function Home() {
       </div>
     </div>
   );
+=======
+import { redirect } from "next/navigation";
+import { createClient } from "@/lib/supabase/server";
+
+// ✅ important: prevent Next from caching this route result
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
+export default async function Home() {
+  const supabase = await createClient();
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) redirect("/login");
+
+  const { data: profile, error } = await supabase
+    .from("profiles")
+    .select("onboarding_complete")
+    .eq("id", user.id)
+    .single();
+
+  // If profile lookup fails or profile missing, send to onboarding
+  if (error || !profile) {
+    redirect("/welcome");
+  }
+
+  if (!profile.onboarding_complete) {
+    redirect("/welcome");
+  }
+
+  redirect("/dashboard");
+>>>>>>> Stashed changes
 }

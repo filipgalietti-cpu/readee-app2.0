@@ -1,7 +1,12 @@
 "use client";
 
+<<<<<<< Updated upstream
 import { useState, useEffect, useRef, useCallback } from "react";
+=======
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+>>>>>>> Stashed changes
 import { useRouter } from "next/navigation";
+import { createClient } from "@/lib/supabase/client";
 
 /* ───────────────────────── DATA ───────────────────────── */
 
@@ -31,6 +36,7 @@ const COLORS = [
   { id: "pink", hex: "#F783AC", name: "Pink" },
 ];
 
+<<<<<<< Updated upstream
 /* ──────────────────── SMALL COMPONENTS ──────────────────── */
 
 function FloatingShape({
@@ -75,6 +81,17 @@ function MascotFace({
 }) {
   const eyeStyle = expression === "excited" ? "★" : "◠";
   const mouthStyle = expression === "excited" ? "D" : "◡";
+=======
+function Mascot({
+  color,
+  mood,
+}: {
+  color: string;
+  mood: "happy" | "excited" | "neutral";
+}) {
+  const eyes = mood === "excited" ? "★" : "◠";
+  const mouth = mood === "excited" ? "D" : "◡";
+>>>>>>> Stashed changes
 
   return (
     <div
@@ -191,6 +208,11 @@ const createPrimaryButton = (activeColor: string, disabled: boolean) => ({
 
 export default function WelcomePage() {
   const router = useRouter();
+<<<<<<< Updated upstream
+=======
+
+  const [booting, setBooting] = useState(true); // ✅ stops flicker
+>>>>>>> Stashed changes
   const [step, setStep] = useState(0);
   const [name, setName] = useState("");
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
@@ -201,11 +223,57 @@ export default function WelcomePage() {
     { id: number; left: number; delay: number; color: string; size: number; rotation: number }[]
   >([]);
   const [saving, setSaving] = useState(false);
+<<<<<<< Updated upstream
+=======
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+
+>>>>>>> Stashed changes
   const nameInputRef = useRef<HTMLInputElement>(null);
 
   const activeColor = selectedColor
     ? COLORS.find((c) => c.id === selectedColor)?.hex ?? "#74C0FC"
     : "#74C0FC";
+
+  // ✅ Boot check: if user is already onboarded, don't even show this page
+  useEffect(() => {
+    let alive = true;
+
+    (async () => {
+      try {
+        const supabase = createClient();
+
+        const {
+          data: { user },
+        } = await supabase.auth.getUser();
+
+        if (!alive) return;
+
+        if (!user) {
+          router.replace("/login");
+          return;
+        }
+
+        const { data: profile, error } = await supabase
+          .from("profiles")
+          .select("onboarding_complete")
+          .eq("id", user.id)
+          .single();
+
+        if (!alive) return;
+
+        if (!error && profile?.onboarding_complete) {
+          router.replace("/dashboard");
+          return;
+        }
+      } finally {
+        if (alive) setBooting(false);
+      }
+    })();
+
+    return () => {
+      alive = false;
+    };
+  }, [router]);
 
   useEffect(() => {
     if (step === 1 && nameInputRef.current) {
@@ -240,6 +308,7 @@ export default function WelcomePage() {
   };
 
   const handleFinish = async () => {
+<<<<<<< Updated upstream
     // Confetti!
     const pieces = Array.from({ length: 60 }, (_, i) => ({
       id: i,
@@ -284,11 +353,59 @@ export default function WelcomePage() {
       }
     } catch (err) {
       console.error("Failed to save profile to Supabase:", err);
+=======
+    setErrorMsg(null);
+    setSaving(true);
+
+    try {
+      const supabase = createClient();
+
+      const {
+        data: { user },
+        error: userErr,
+      } = await supabase.auth.getUser();
+
+      if (userErr || !user) {
+        router.replace("/login?error=Please log in again.");
+        return;
+      }
+
+      // NOTE: If your profiles table does NOT have name/favorite_color/etc,
+      // delete those fields below and keep only onboarding_*.
+      const { error: upsertErr } = await supabase.from("profiles").upsert(
+        {
+          id: user.id,
+          email: user.email ?? null,
+          onboarding_complete: true,
+          onboarding_completed_at: new Date().toISOString(),
+
+          name: name.trim(),
+          favorite_color: selectedColor,
+          favorite_color_hex: activeColor,
+          interests: selectedInterests,
+        },
+        { onConflict: "id" }
+      );
+
+      if (upsertErr) {
+        console.error("Profile upsert error:", upsertErr);
+        setErrorMsg(upsertErr.message);
+        return;
+      }
+
+      goNext();
+    } catch (e) {
+      console.error("Welcome finish error:", e);
+      setErrorMsg("Could not save onboarding. Try again.");
+    } finally {
+      setSaving(false);
+>>>>>>> Stashed changes
     }
   };
 
   const handleStartReading = async () => {
     setSaving(true);
+<<<<<<< Updated upstream
     // Small delay so the button animation feels nice
     await new Promise((r) => setTimeout(r, 600));
     router.push("/dashboard");
@@ -305,6 +422,33 @@ export default function WelcomePage() {
   ];
 
   const progressDots = [0, 1, 2, 3, 4];
+=======
+    setErrorMsg(null);
+    router.replace("/dashboard");
+    router.refresh();
+  };
+
+  const canNextName = name.trim().length > 0;
+  const canNextColor = !!selectedColor;
+  const canFinish = selectedInterests.length > 0;
+
+  const shapes = [
+    { left: "10%", size: 40, opacity: 0.08, delay: 0 },
+    { left: "30%", size: 24, opacity: 0.06, delay: 2 },
+    { left: "55%", size: 34, opacity: 0.06, delay: 4 },
+    { left: "75%", size: 28, opacity: 0.06, delay: 1 },
+    { left: "90%", size: 20, opacity: 0.06, delay: 3 },
+  ];
+
+  // ✅ while checking auth/profile, render nothing “flashy”
+  if (booting) {
+    return (
+      <div className="mx-auto flex max-w-xl items-center justify-center py-16 text-sm text-zinc-600">
+        Loading…
+      </div>
+    );
+  }
+>>>>>>> Stashed changes
 
   return (
     <div
@@ -321,6 +465,7 @@ export default function WelcomePage() {
         padding: "20px",
       }}
     >
+<<<<<<< Updated upstream
       {/* Google Fonts */}
       {/* eslint-disable-next-line @next/next/no-page-custom-font */}
       <link
@@ -336,6 +481,10 @@ export default function WelcomePage() {
       {/* Confetti */}
       {showConfetti &&
         confettiPieces.map((p) => (
+=======
+      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+        {shapes.map((s, i) => (
+>>>>>>> Stashed changes
           <div
             key={p.id}
             style={{
@@ -355,7 +504,10 @@ export default function WelcomePage() {
           />
         ))}
 
+<<<<<<< Updated upstream
       {/* Progress dots */}
+=======
+>>>>>>> Stashed changes
       {step > 0 && step < 4 && (
         <div
           style={{
@@ -382,6 +534,7 @@ export default function WelcomePage() {
         </div>
       )}
 
+<<<<<<< Updated upstream
       {/* ═══════════ STEP 0: Welcome Splash ═══════════ */}
       {step === 0 && (
         <div
@@ -453,6 +606,24 @@ export default function WelcomePage() {
           </button>
         </div>
       )}
+=======
+      <div className="card w-full animate-fadeUp p-6 sm:p-8">
+        {errorMsg && (
+          <div className="mb-4 rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700">
+            {errorMsg}
+          </div>
+        )}
+
+        {step === 0 && (
+          <div className="text-center">
+            <Mascot color="#74C0FC" mood="happy" />
+            <h1 className="text-3xl font-semibold tracking-tight">
+              Welcome to <span style={{ color: "var(--accent)" }}>Readee</span>
+            </h1>
+            <p className="mt-2 text-sm text-zinc-600">
+              Your reading buddy. Let’s set things up in under a minute.
+            </p>
+>>>>>>> Stashed changes
 
       {/* ═══════════ STEP 1: Name ═══════════ */}
       {step === 1 && (
@@ -525,10 +696,18 @@ export default function WelcomePage() {
             >
               Next →
             </button>
+<<<<<<< Updated upstream
+=======
+
+            <p className="mt-3 text-xs text-zinc-500">
+              No pressure. You can change this later.
+            </p>
+>>>>>>> Stashed changes
           </div>
         </div>
       )}
 
+<<<<<<< Updated upstream
       {/* ═══════════ STEP 2: Favorite Color ═══════════ */}
       {step === 2 && (
         <div
@@ -830,6 +1009,184 @@ export default function WelcomePage() {
                 })}
               </div>
             </div>
+=======
+        {step === 1 && (
+          <div className="text-center">
+            <Mascot color={activeColor} mood="happy" />
+            <h2 className="text-2xl font-semibold tracking-tight">
+              What’s your name?
+            </h2>
+            <p className="mt-1 text-sm text-zinc-600">
+              So Readee knows what to call you.
+            </p>
+
+            <div className="mt-5 text-left">
+              <label className="label">Name</label>
+              <input
+                ref={nameInputRef}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && canNextName && goNext()}
+                placeholder="Type your name…"
+                maxLength={24}
+                className="input mt-1 text-center"
+              />
+            </div>
+
+            <div className="mt-6 flex gap-2">
+              <button onClick={goBack} className="btn-ghost w-full">
+                Back
+              </button>
+              <button
+                onClick={goNext}
+                disabled={!canNextName}
+                className="w-full rounded-xl px-4 py-2 text-sm font-semibold text-white transition disabled:opacity-40"
+                style={{ background: "var(--accent)" }}
+              >
+                Next
+              </button>
+            </div>
+          </div>
+        )}
+
+        {step === 2 && (
+          <div className="text-center">
+            <Mascot color={activeColor} mood="happy" />
+            <h2 className="text-2xl font-semibold tracking-tight">
+              Pick a favorite color
+            </h2>
+            <p className="mt-1 text-sm text-zinc-600">
+              We’ll use it for your theme.
+            </p>
+
+            <div className="mt-6 grid grid-cols-4 gap-3">
+              {COLORS.map((c) => {
+                const selected = selectedColor === c.id;
+                return (
+                  <button
+                    key={c.id}
+                    type="button"
+                    onClick={() => setSelectedColor(c.id)}
+                    className="group rounded-2xl border border-zinc-200 p-3 transition hover:bg-zinc-50"
+                  >
+                    <div
+                      className="mx-auto grid h-10 w-10 place-items-center rounded-xl"
+                      style={{
+                        background: c.hex,
+                        outline: selected
+                          ? "3px solid rgba(24,24,27,0.9)"
+                          : "3px solid transparent",
+                        outlineOffset: 2,
+                      }}
+                    >
+                      {selected ? (
+                        <span className="text-white text-sm font-bold">✓</span>
+                      ) : null}
+                    </div>
+                    <div className="mt-2 text-xs font-medium text-zinc-700">
+                      {c.name}
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+
+            <div className="mt-6 flex gap-2">
+              <button onClick={goBack} className="btn-ghost w-full">
+                Back
+              </button>
+              <button
+                onClick={goNext}
+                disabled={!canNextColor}
+                className="w-full rounded-xl px-4 py-2 text-sm font-semibold text-white transition disabled:opacity-40"
+                style={{ background: "var(--accent)" }}
+              >
+                Next
+              </button>
+            </div>
+          </div>
+        )}
+
+        {step === 3 && (
+          <div className="text-center">
+            <Mascot color={activeColor} mood="excited" />
+            <h2 className="text-2xl font-semibold tracking-tight">
+              What do you love?
+            </h2>
+            <p className="mt-1 text-sm text-zinc-600">Pick up to 5 interests.</p>
+
+            <div className="mt-5 flex flex-wrap justify-center gap-2">
+              {INTERESTS.map((it) => {
+                const selected = selectedInterests.includes(it.id);
+                return (
+                  <button
+                    key={it.id}
+                    type="button"
+                    onClick={() => toggleInterest(it.id)}
+                    className="rounded-full border px-4 py-2 text-sm font-medium transition"
+                    style={{
+                      borderColor: selected
+                        ? "var(--accent)"
+                        : "rgb(228 228 231)",
+                      background: selected
+                        ? "color-mix(in srgb, var(--accent) 14%, white)"
+                        : "white",
+                      color: selected
+                        ? "rgb(24 24 27)"
+                        : "rgb(63 63 70)",
+                    }}
+                    disabled={saving}
+                  >
+                    <span className="mr-2">{it.emoji}</span>
+                    {it.label}
+                  </button>
+                );
+              })}
+            </div>
+
+            <div className="mt-3 text-xs text-zinc-500">
+              {selectedInterests.length}/5 selected
+            </div>
+
+            <div className="mt-6 flex gap-2">
+              <button
+                onClick={goBack}
+                className="btn-ghost w-full"
+                disabled={saving}
+              >
+                Back
+              </button>
+              <button
+                onClick={handleFinish}
+                disabled={!canFinish || saving}
+                className="w-full rounded-xl px-4 py-2 text-sm font-semibold text-white transition disabled:opacity-40"
+                style={{ background: "var(--accent)" }}
+              >
+                {saving ? "Saving…" : "Finish"}
+              </button>
+            </div>
+          </div>
+        )}
+
+        {step === 4 && (
+          <div className="text-center">
+            <Mascot color={activeColor} mood="excited" />
+            <h2 className="text-2xl font-semibold tracking-tight">
+              You’re all set{ name.trim() ? `, ${name.trim()}` : "" } 🎉
+            </h2>
+            <p className="mt-1 text-sm text-zinc-600">
+              Let’s find stories you’ll actually like.
+            </p>
+
+            <button
+              onClick={handleStart}
+              disabled={saving}
+              className="mt-6 w-full rounded-xl px-4 py-3 text-sm font-semibold text-white transition disabled:opacity-60"
+              style={{ background: "var(--accent)" }}
+            >
+              {saving ? "Loading…" : "Start Reading"}
+            </button>
+>>>>>>> Stashed changes
           </div>
 
           <button

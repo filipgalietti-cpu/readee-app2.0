@@ -1,19 +1,20 @@
 "use client";
 
 import { useEffect } from "react";
-import { supabaseBrowser } from "@/lib/supabase/client";
+import { createClient } from "@/lib/supabase/client";
 
 export default function LogoutPage() {
   useEffect(() => {
+<<<<<<< Updated upstream
     const supabase = supabaseBrowser();
     supabase.auth.signOut().finally(() => {
+=======
+    const supabase = createClient();
+    supabase.auth.signOut().then(() => {
+>>>>>>> Stashed changes
       window.location.href = "/login";
     });
   }, []);
 
-  return (
-    <main className="p-6">
-      <p className="text-gray-600">Signing you out…</p>
-    </main>
-  );
+  return null;
 }
