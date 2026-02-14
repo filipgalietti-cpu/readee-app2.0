@@ -1,4 +1,3 @@
-cat > app/_components/NavAuth.tsx <<'EOF'
 "use client";
 
 import Link from "next/link";
@@ -62,4 +61,3 @@ export default function NavAuth() {
     </div>
   );
 }
-EOF
