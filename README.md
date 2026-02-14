@@ -2,6 +2,14 @@
 
 A comprehensive early reading platform built with Next.js and Supabase, featuring a structured learning path, practice sessions with spaced repetition, and a library of decodable stories for early readers (ages 4–8).
 
+## 🚨 Recent Updates
+
+**Login Error Messages Improved** (Latest)
+- Added proper environment variable validation
+- Login now shows clear error messages if Supabase is not configured
+- See [ENV_SETUP.md](./ENV_SETUP.md) for quick setup instructions
+- If you see "Missing Supabase environment variables", check your `.env.local` file
+
 ## Features
 
 ### 🎯 Learning Path (`/path`)
