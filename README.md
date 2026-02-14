@@ -55,43 +55,60 @@ A comprehensive early reading platform built with Next.js and Supabase, featurin
 
 ## Quick Start
 
-⚠️ **Important:** Login functionality requires proper Supabase configuration. See [SETUP_GUIDE.md](./SETUP_GUIDE.md) for detailed setup instructions.
+⚠️ **Important:** Login functionality requires proper Supabase configuration. See [SUPABASE_CONNECTION_GUIDE.md](./SUPABASE_CONNECTION_GUIDE.md) for detailed setup instructions.
 
 ### Prerequisites
 - Node.js 20+ and npm
-- A Supabase account (create one at supabase.com)
+- Docker Desktop (for local Supabase)
 
-### 1. Clone and Install
+### Fastest Setup (Local Development)
 
 ```bash
+# 1. Clone and install
 git clone <your-repo-url>
 cd readee-app2.0
 npm install
-```
 
-### 2. Configure Supabase
+# 2. Run the automated setup script
+npm run setup:supabase
 
-1. Create a `.env.local` file in the root directory:
-```bash
-cp .env.example .env.local
-```
-
-2. Add your Supabase credentials to `.env.local`:
-```env
-NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key-here
-SUPABASE_SERVICE_ROLE_KEY=your-service-role-key-here
-```
-
-3. Run database migrations in your Supabase SQL Editor (see [SETUP_GUIDE.md](./SETUP_GUIDE.md))
-
-### 3. Run Development Server
-
-```bash
+# 3. Start the dev server
 npm run dev
 ```
 
-Visit `http://localhost:3000/test-connection` to verify your Supabase connection.
+That's it! The script will:
+- ✅ Start local Supabase
+- ✅ Configure environment variables
+- ✅ Run database migrations
+- ✅ Set everything up for you
+
+Visit `http://localhost:3000/test-connection` to verify your connection.
+
+### Alternative: Manual Setup
+
+#### Option 1: Local Supabase (Recommended for Development)
+
+```bash
+# Install Supabase CLI
+npm install supabase --save-dev
+
+# Start local Supabase
+npx supabase start
+
+# Your .env.local is already configured with local credentials!
+# Just start the app:
+npm run dev
+```
+
+#### Option 2: Remote Supabase (For Production)
+
+1. Create a Supabase project at [supabase.com](https://supabase.com)
+2. Get your credentials from Settings → API
+3. Update `.env.local` with your credentials
+4. Run migrations in the SQL Editor
+5. Start the app: `npm run dev`
+
+See [SUPABASE_CONNECTION_GUIDE.md](./SUPABASE_CONNECTION_GUIDE.md) for detailed instructions.
 
 ### 4. Create Your First User
 
@@ -102,7 +119,8 @@ Visit `http://localhost:3000/test-connection` to verify your Supabase connection
 
 ## Documentation
 
-- [📋 Complete Setup Guide](./SETUP_GUIDE.md) - **Start here for detailed setup instructions**
+- [🚀 Supabase Connection Guide](./SUPABASE_CONNECTION_GUIDE.md) - **Start here to connect to Supabase**
+- [📋 Complete Setup Guide](./SETUP_GUIDE.md) - Detailed setup instructions
 - [🏗️ Architecture Overview](./ARCHITECTURE.md) - System design and patterns
 - [🔒 Authentication Flow](./AUTH_FLOW_IMPLEMENTATION.md) - How auth and routing works
 - [⚙️ Backend Setup](./BACKEND_SETUP.md) - API endpoints and database details
