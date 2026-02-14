@@ -1,30 +1,49 @@
 "use client";
 
+import { useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 
 export default function GoogleButton() {
-  const handleGoogleSignIn = async () => {
-    const supabase = createClient();
-    
-    const { error } = await supabase.auth.signInWithOAuth({
-      provider: 'google',
-      options: {
-        redirectTo: `${window.location.origin}/auth/callback`,
-      },
-    });
+  const [loading, setLoading] = useState(false);
 
-    if (error) {
-      console.error('Error signing in with Google:', error.message);
+  const handleGoogle = async () => {
+    try {
+      setLoading(true);
+
+      // Optional "next" support without useSearchParams
+      const params = new URLSearchParams(window.location.search);
+      const next = params.get("next") ?? "/dashboard";
+
+      const supabase = createClient();
+
+      const redirectTo = `${window.location.origin}/auth/callback?next=${encodeURIComponent(
+        next
+      )}`;
+
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: "google",
+        options: { redirectTo },
+      });
+
+      if (error) {
+        console.error("Google OAuth error:", error);
+        setLoading(false);
+      }
+      // If success, browser redirects to Google immediately.
+    } catch (e) {
+      console.error("Google OAuth unexpected:", e);
+      setLoading(false);
     }
   };
 
   return (
     <button
       type="button"
-      className="w-full flex items-center justify-center gap-3 px-4 py-3 border-2 border-purple-300 rounded-lg font-medium text-purple-700 bg-white hover:bg-purple-50 transition-colors"
-      onClick={handleGoogleSignIn}
+      onClick={handleGoogle}
+      disabled={loading}
+      className="w-full flex items-center justify-center gap-3 px-4 py-3 border border-zinc-200 rounded-xl font-semibold text-zinc-900 bg-white hover:bg-zinc-50 transition disabled:opacity-60 disabled:cursor-not-allowed shadow-sm"
     >
-      <svg className="w-5 h-5" viewBox="0 0 24 24">
+      <svg className="w-5 h-5" viewBox="0 0 24 24" aria-hidden="true">
         <path
           fill="#4285F4"
           d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
@@ -42,7 +61,8 @@ export default function GoogleButton() {
           d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
         />
       </svg>
-      Continue with Google
+
+      {loading ? "Connecting…" : "Continue with Google"}
     </button>
   );
 }

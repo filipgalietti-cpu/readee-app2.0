@@ -2,7 +2,7 @@
 
 import React from "react";
 import { ProfileProvider } from "./ProfileContext";
-import { OnboardingGuard } from "./OnboardingGuard";
+import OnboardingGuard from "./OnboardingGuard";
 
 export default function ClientProviders({
   children,

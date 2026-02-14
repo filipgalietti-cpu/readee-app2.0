@@ -1,18 +1,17 @@
+cat > app/_components/NavAuth.tsx <<'EOF'
 "use client";
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { supabaseBrowser } from "@/lib/supabase/client";
-import { Button } from "./Button";
-import { useProfile } from "./ProfileContext";
+import { usePathname } from "next/navigation";
+import { createClient } from "@/lib/supabase/client";
 
 export default function NavAuth() {
+  const pathname = usePathname();
   const [loggedIn, setLoggedIn] = useState<boolean | null>(null);
-  const { profile } = useProfile();
-  const accentColor = profile?.favoriteColorHex || '#10b981';
 
   useEffect(() => {
-    const supabase = supabaseBrowser();
+    const supabase = createClient();
 
     supabase.auth.getSession().then(({ data }) => {
       setLoggedIn(!!data.session);
@@ -27,31 +26,40 @@ export default function NavAuth() {
     };
   }, []);
 
+  // Avoid flicker on first load
   if (loggedIn === null) return null;
 
+  // Hide "Login" button when you're already on /login or /signup
+  const hideLogin = pathname === "/login" || pathname === "/signup";
+
   if (!loggedIn) {
+    if (hideLogin) return null;
+
     return (
-      <Link href="/login">
-        <Button size="sm" accentColor={accentColor}>
-          Login
-        </Button>
+      <Link
+        href="/login"
+        className="rounded-lg px-3 py-2 text-sm font-medium text-zinc-700 hover:bg-zinc-100 hover:text-zinc-900"
+      >
+        Login
       </Link>
     );
   }
 
   return (
-    <div className="flex items-center gap-3">
+    <div className="flex items-center gap-2">
       <Link
         href="/dashboard"
-        className="text-zinc-700 hover:text-zinc-900 font-medium transition-colors"
+        className="rounded-lg px-3 py-2 text-sm font-medium text-zinc-700 hover:bg-zinc-100 hover:text-zinc-900"
       >
         Dashboard
       </Link>
-      <Link href="/logout">
-        <Button variant="ghost" size="sm">
-          Logout
-        </Button>
+      <Link
+        href="/logout"
+        className="rounded-lg px-3 py-2 text-sm font-medium text-zinc-700 hover:bg-zinc-100 hover:text-zinc-900"
+      >
+        Logout
       </Link>
     </div>
   );
 }
+EOF
