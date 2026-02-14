@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "setup:supabase": "bash setup-supabase.sh",
+    "setup:supabase": "node setup-supabase.js",
     "validate:supabase": "node validate-supabase.js",
     "supabase:start": "npx supabase start",
     "supabase:stop": "npx supabase stop",
