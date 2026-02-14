@@ -84,7 +84,7 @@ export async function proxy(req: NextRequest) {
   
   const onboardingComplete = profile?.onboarding_complete ?? false;
   
-  // If onboarding not complete, redirect to /welcome (except if already there)
+  // If onboarding not complete, redirect to /welcome
   if (!onboardingComplete) {
     if (pathname !== '/welcome' && !isPublicPath) {
       return NextResponse.redirect(new URL('/welcome', req.url));
