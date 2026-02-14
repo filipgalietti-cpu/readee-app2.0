@@ -97,7 +97,8 @@ export default function Signup() {
         }
       } catch (error) {
         console.error("Signup error:", error);
-        setErrors({ general: "An unexpected error occurred. Please try again." });
+        const errorMessage = error instanceof Error ? error.message : "An unexpected error occurred. Please try again.";
+        setErrors({ general: errorMessage });
         setIsLoading(false);
       }
     }

@@ -82,7 +82,8 @@ export default function Login() {
         }
       } catch (error) {
         console.error("Login error:", error);
-        setErrors({ general: "An unexpected error occurred. Please try again." });
+        const errorMessage = error instanceof Error ? error.message : "An unexpected error occurred. Please try again.";
+        setErrors({ general: errorMessage });
         setIsLoading(false);
       }
     }
