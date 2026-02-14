@@ -1,12 +1,28 @@
+"use client";
+
+import { createClient } from "@/lib/supabase/client";
+
 export default function GoogleButton() {
+  const handleGoogleSignIn = async () => {
+    const supabase = createClient();
+    
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: {
+        redirectTo: `${window.location.origin}/auth/callback`,
+      },
+    });
+
+    if (error) {
+      console.error('Error signing in with Google:', error.message);
+    }
+  };
+
   return (
     <button
       type="button"
       className="w-full flex items-center justify-center gap-3 px-4 py-3 border-2 border-purple-300 rounded-lg font-medium text-purple-700 bg-white hover:bg-purple-50 transition-colors"
-      onClick={() => {
-        // Placeholder - no auth logic yet
-        console.log("Google sign-in clicked");
-      }}
+      onClick={handleGoogleSignIn}
     >
       <svg className="w-5 h-5" viewBox="0 0 24 24">
         <path
