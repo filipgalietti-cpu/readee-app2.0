@@ -27,8 +27,12 @@ export default function NavAuth() {
     };
   }, []);
 
-  if (loggedIn === null) return null;
+  // Show nothing while loading instead of early return
+  if (loggedIn === null) {
+    return null;
+  }
 
+  // Show login button for logged out users
   if (!loggedIn) {
     return (
       <Link href="/login">
@@ -39,6 +43,7 @@ export default function NavAuth() {
     );
   }
 
+  // Show dashboard link and logout for logged in users
   return (
     <div className="flex items-center gap-3">
       <Link
