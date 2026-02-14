@@ -1,3 +1,12 @@
+/**
+ * CRITICAL FILE - DO NOT DELETE OR MODIFY WITHOUT CAREFUL REVIEW
+ * 
+ * This proxy/middleware handles authentication and routing for the entire application.
+ * It ensures users are logged in and redirected appropriately based on their onboarding status.
+ * 
+ * Removing or breaking this file will cause login and authentication to fail completely.
+ */
+
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { createServerClient } from "@supabase/ssr";
@@ -7,9 +16,26 @@ export async function proxy(req: NextRequest) {
   let res = NextResponse.next();
   const { pathname } = req.nextUrl;
 
+  // Validate required environment variables
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+  if (!supabaseUrl || !supabaseAnonKey) {
+    console.error('Missing Supabase environment variables. Please check .env.local file.');
+    
+    // Redirect to a setup page instead of bypassing auth
+    // This prevents unauthorized access while providing helpful guidance
+    if (pathname !== '/test-connection') {
+      return NextResponse.redirect(new URL('/test-connection?error=missing-config', req.url));
+    }
+    
+    // Allow access to test-connection page to help with diagnosis
+    return res;
+  }
+
   const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    supabaseUrl,
+    supabaseAnonKey,
     {
       cookies: {
         getAll() {

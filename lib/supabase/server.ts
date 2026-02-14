@@ -1,3 +1,10 @@
+/**
+ * CRITICAL FILE - DO NOT DELETE OR MODIFY
+ * 
+ * This file creates the server-side Supabase client for authentication and database access.
+ * Used in server components, API routes, and middleware for secure server-side operations.
+ */
+
 import { createServerClient } from '@supabase/ssr'
 import { cookies } from 'next/headers'
 

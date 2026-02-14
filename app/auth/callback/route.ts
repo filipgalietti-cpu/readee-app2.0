@@ -1,3 +1,11 @@
+/**
+ * CRITICAL FILE - DO NOT DELETE
+ * 
+ * OAuth callback handler for Supabase authentication.
+ * Handles the redirect after Google Sign-In and other OAuth providers.
+ * Required for authentication to work properly.
+ */
+
 import { createClient } from '@/lib/supabase/server'
 import { NextResponse } from 'next/server'
 
