@@ -18,6 +18,6 @@ export type { SectionHeaderProps } from './SectionHeader';
 
 export { default as NavAuth } from './NavAuth';
 export { default as ClientProviders } from './ClientProviders';
-export { OnboardingGuard } from './OnboardingGuard';
+export { default as OnboardingGuard } from './OnboardingGuard';
 export { ProfileProvider, useProfile } from './ProfileContext';
 export type { ReadeeProfile } from './ProfileContext';
