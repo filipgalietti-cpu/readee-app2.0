@@ -67,6 +67,61 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // For parents, auto-create a Supabase auth account + profile
+    let existingAccount = false;
+    if (role === 'parent') {
+      try {
+        const { data: authUser, error: authError } = await admin.auth.admin.createUser({
+          email,
+          email_confirm: false,
+          user_metadata: { first_name, last_name, role: 'parent' },
+        });
+
+        if (authError) {
+          if (authError.message?.includes('already been registered')) {
+            existingAccount = true;
+            console.log('Auth account already exists for:', email);
+          } else {
+            console.error('Error creating auth user:', authError);
+          }
+        } else if (authUser?.user) {
+          console.log('Auth user created:', authUser.user.id);
+
+          // Create a profile row linked to the new auth user
+          const { error: profileError } = await admin
+            .from('profiles')
+            .insert({
+              id: authUser.user.id,
+              display_name: `${first_name} ${last_name}`,
+              role: 'parent',
+              onboarding_complete: false,
+            });
+
+          if (profileError) {
+            console.error('Error creating profile:', profileError);
+          } else {
+            console.log('Profile created for user:', authUser.user.id);
+          }
+        }
+
+        // Send magic link so the parent can confirm & log in
+        if (!existingAccount) {
+          const { error: magicLinkError } = await admin.auth.admin.generateLink({
+            type: 'magiclink',
+            email,
+            options: {
+              redirectTo: 'https://readee-app2-0.vercel.app/login',
+            },
+          });
+          if (magicLinkError) {
+            console.error('Error generating magic link:', magicLinkError);
+          }
+        }
+      } catch (accountErr) {
+        console.error('Error in account creation flow:', accountErr);
+      }
+    }
+
     // Send emails (await so Vercel doesn't kill the function early)
     const roleLabel = role === 'parent' ? 'Parent' : 'Teacher';
     const fullName = `${first_name} ${last_name}`;
@@ -280,7 +335,11 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json(
-      { success: true, signup: data },
+      {
+        success: true,
+        signup: data,
+        ...(existingAccount && { message: 'An account with this email already exists. You can log in with your existing account.' }),
+      },
       { status: 201, headers: CORS_HEADERS }
     );
   } catch (error) {
