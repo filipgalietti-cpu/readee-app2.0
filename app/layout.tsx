@@ -23,10 +23,10 @@ export default function RootLayout({
           <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
             <Link
               href="/"
-              className="flex items-center gap-2 text-xl font-bold text-zinc-900 hover:opacity-80 transition-opacity"
+              className="flex items-center gap-1 text-xl font-extrabold hover:opacity-80 transition-opacity tracking-tight"
             >
-              <span className="text-2xl">📚</span>
-              <span>Readee</span>
+              <span className="text-indigo-700">READ</span>
+              <span className="text-indigo-400">EE</span>
             </Link>
 
             <div className="flex items-center gap-6">
@@ -63,9 +63,9 @@ export default function RootLayout({
           <div className="mx-auto max-w-6xl px-6 py-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div>
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="text-2xl">📚</span>
-                  <span className="font-bold text-zinc-900">Readee</span>
+                <div className="flex items-center gap-1 mb-3 font-extrabold tracking-tight">
+                  <span className="text-indigo-700">READ</span>
+                  <span className="text-indigo-400">EE</span>
                 </div>
                 <p className="text-sm text-zinc-600">
                   Making reading fun for early learners

@@ -78,21 +78,32 @@ export async function POST(request: NextRequest) {
           user_metadata: { first_name, last_name, role: 'parent' },
         });
 
+        let userId: string | null = null;
+
         if (authError) {
           if (authError.message?.includes('already been registered')) {
             existingAccount = true;
             console.log('Auth account already exists for:', email);
+
+            // Look up existing user to get their ID for children insert
+            const { data: userList } = await admin.auth.admin.listUsers();
+            const existingUser = userList?.users?.find((u) => u.email === email);
+            if (existingUser) {
+              userId = existingUser.id;
+              console.log('Found existing user ID:', userId);
+            }
           } else {
             console.error('Error creating auth user:', authError);
           }
         } else if (authUser?.user) {
-          console.log('Auth user created:', authUser.user.id);
+          userId = authUser.user.id;
+          console.log('Auth user created:', userId);
 
           // Create a profile row linked to the new auth user
           const { error: profileError } = await admin
             .from('profiles')
             .insert({
-              id: authUser.user.id,
+              id: userId,
               display_name: `${first_name} ${last_name}`,
               role: 'parent',
               onboarding_complete: false,
@@ -101,31 +112,36 @@ export async function POST(request: NextRequest) {
           if (profileError) {
             console.error('Error creating profile:', profileError);
           } else {
-            console.log('Profile created for user:', authUser.user.id);
-
-            // Insert children into the children table
-            if (body.children?.length) {
-              try {
-                const childrenRows = (body.children as { name?: string; grade?: string }[]).map((c) => ({
-                  parent_id: authUser.user.id,
-                  first_name: c.name || 'Child',
-                  grade: c.grade || null,
-                }));
-
-                const { error: childrenError } = await admin
-                  .from('children')
-                  .insert(childrenRows);
-
-                if (childrenError) {
-                  console.error('Error inserting children:', childrenError);
-                } else {
-                  console.log(`Inserted ${childrenRows.length} children for user:`, authUser.user.id);
-                }
-              } catch (childErr) {
-                console.error('Error in children insertion:', childErr);
-              }
-            }
+            console.log('Profile created for user:', userId);
           }
+        }
+
+        // Insert children — runs for both new and existing accounts
+        if (userId && body.children?.length) {
+          console.log('Inserting children for user:', userId, 'children data:', JSON.stringify(body.children));
+          try {
+            const childrenRows = (body.children as { name?: string; grade?: string }[]).map((c) => ({
+              parent_id: userId as string,
+              first_name: c.name || 'Child',
+              grade: c.grade || null,
+            }));
+            console.log('Children rows to insert:', JSON.stringify(childrenRows));
+
+            const { data: insertedChildren, error: childrenError } = await admin
+              .from('children')
+              .insert(childrenRows)
+              .select();
+
+            if (childrenError) {
+              console.error('Error inserting children:', JSON.stringify(childrenError));
+            } else {
+              console.log(`Inserted ${insertedChildren?.length} children for user:`, userId);
+            }
+          } catch (childErr) {
+            console.error('Error in children insertion:', childErr);
+          }
+        } else {
+          console.log('Skipping children insert — userId:', userId, 'children count:', body.children?.length ?? 0);
         }
 
         // Generate a password-reset link so the parent can set their password & log in
