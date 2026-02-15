@@ -159,16 +159,16 @@ export default function Signup() {
         <button
           type="submit"
           disabled={isLoading}
-          className="w-full bg-gradient-to-r from-orange-500 to-pink-500 text-white py-3 rounded-lg font-medium hover:from-orange-600 hover:to-pink-600 transition-all focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
+          className="w-full bg-gradient-to-r from-indigo-600 to-violet-500 text-white py-3 rounded-lg font-medium hover:from-indigo-700 hover:to-violet-600 transition-all focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
         >
           {isLoading ? "Creating Account..." : "Create Account"}
         </button>
       </form>
-      <p className="mt-6 text-center text-sm text-purple-700">
+      <p className="mt-6 text-center text-sm text-indigo-900">
         Already have an account?{" "}
         <Link
           href="/login"
-          className="text-orange-600 font-medium hover:underline"
+          className="text-indigo-600 font-medium hover:underline"
         >
           Sign in
         </Link>

@@ -110,7 +110,7 @@ export async function POST(request: NextRequest) {
             type: 'magiclink',
             email,
             options: {
-              redirectTo: 'https://readee-app2-0.vercel.app/login',
+              redirectTo: 'https://readee-app2-0.vercel.app/signup',
             },
           });
           if (magicLinkError) {
@@ -191,7 +191,7 @@ export async function POST(request: NextRequest) {
           </table>
         </div>
         <div style="text-align:center;margin:32px 0 8px;">
-          <a href="https://readee-app2-0.vercel.app/login" style="display:inline-block;background:linear-gradient(135deg,#4338ca,#6366f1);color:#ffffff;text-decoration:none;padding:14px 40px;border-radius:50px;font-size:16px;font-weight:700;box-shadow:0 4px 16px rgba(99,102,241,0.3);">
+          <a href="https://readee-app2-0.vercel.app/signup" style="display:inline-block;background:linear-gradient(135deg,#4338ca,#6366f1);color:#ffffff;text-decoration:none;padding:14px 40px;border-radius:50px;font-size:16px;font-weight:700;box-shadow:0 4px 16px rgba(99,102,241,0.3);">
             Go to My Dashboard \u2192
           </a>
         </div>
