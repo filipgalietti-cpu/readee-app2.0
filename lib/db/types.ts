@@ -16,12 +16,13 @@ export interface Profile {
 
 export interface Child {
   id: string; // UUID
-  parent_id: string; // UUID - references profiles.id
-  name: string;
-  age: number; // 3-12
-  reading_level: number; // 1-10
+  parent_id: string; // UUID - references auth.users.id
+  first_name: string;
+  grade: string | null;
+  xp: number;
+  stories_read: number;
+  streak_days: number;
   created_at: string;
-  updated_at: string;
 }
 
 export interface OnboardingPreferences {

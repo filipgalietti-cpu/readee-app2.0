@@ -101,6 +101,29 @@ export async function POST(request: NextRequest) {
             console.error('Error creating profile:', profileError);
           } else {
             console.log('Profile created for user:', authUser.user.id);
+
+            // Insert children into the children table
+            if (body.children?.length) {
+              try {
+                const childrenRows = (body.children as { name?: string; grade?: string }[]).map((c) => ({
+                  parent_id: authUser.user.id,
+                  first_name: c.name || 'Child',
+                  grade: c.grade || null,
+                }));
+
+                const { error: childrenError } = await admin
+                  .from('children')
+                  .insert(childrenRows);
+
+                if (childrenError) {
+                  console.error('Error inserting children:', childrenError);
+                } else {
+                  console.log(`Inserted ${childrenRows.length} children for user:`, authUser.user.id);
+                }
+              } catch (childErr) {
+                console.error('Error in children insertion:', childErr);
+              }
+            }
           }
         }
 
