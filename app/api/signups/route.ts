@@ -304,13 +304,13 @@ export async function POST(request: NextRequest) {
       // Send both emails in parallel
       const [welcomeResult, notifResult] = await Promise.all([
         resend.emails.send({
-          from: 'onboarding@resend.dev',
+          from: 'hello@readee.app',
           to: email,
           subject: welcomeSubject,
           html: welcomeHtml,
         }),
         resend.emails.send({
-          from: 'onboarding@resend.dev',
+          from: 'hello@readee.app',
           to: 'filip.galietti@gmail.com',
           subject: `New Readee Signup: ${roleLabel} - ${fullName}`,
           html: `
