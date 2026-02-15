@@ -69,6 +69,7 @@ export async function POST(request: NextRequest) {
 
     // For parents, auto-create a Supabase auth account + profile
     let existingAccount = false;
+    let passwordResetLink: string | null = null;
     if (role === 'parent') {
       try {
         const { data: authUser, error: authError } = await admin.auth.admin.createUser({
@@ -127,17 +128,20 @@ export async function POST(request: NextRequest) {
           }
         }
 
-        // Send magic link so the parent can confirm & log in
+        // Generate a password-reset link so the parent can set their password & log in
         if (!existingAccount) {
-          const { error: magicLinkError } = await admin.auth.admin.generateLink({
-            type: 'magiclink',
+          const { data: linkData, error: linkError } = await admin.auth.admin.generateLink({
+            type: 'recovery',
             email,
             options: {
               redirectTo: 'https://readee-app2-0.vercel.app/signup',
             },
           });
-          if (magicLinkError) {
-            console.error('Error generating magic link:', magicLinkError);
+          if (linkError) {
+            console.error('Error generating password reset link:', linkError);
+          } else if (linkData?.properties?.action_link) {
+            passwordResetLink = linkData.properties.action_link;
+            console.log('Password reset link generated for:', email);
           }
         }
       } catch (accountErr) {
@@ -214,8 +218,8 @@ export async function POST(request: NextRequest) {
           </table>
         </div>
         <div style="text-align:center;margin:32px 0 8px;">
-          <a href="https://readee-app2-0.vercel.app/signup" style="display:inline-block;background:linear-gradient(135deg,#4338ca,#6366f1);color:#ffffff;text-decoration:none;padding:14px 40px;border-radius:50px;font-size:16px;font-weight:700;box-shadow:0 4px 16px rgba(99,102,241,0.3);">
-            Go to My Dashboard \u2192
+          <a href="${passwordResetLink || 'https://readee-app2-0.vercel.app/signup'}" style="display:inline-block;background:linear-gradient(135deg,#4338ca,#6366f1);color:#ffffff;text-decoration:none;padding:14px 40px;border-radius:50px;font-size:16px;font-weight:700;box-shadow:0 4px 16px rgba(99,102,241,0.3);">
+            ${passwordResetLink ? 'Set Your Password & Get Started \u2192' : 'Go to My Dashboard \u2192'}
           </a>
         </div>
       </div>
