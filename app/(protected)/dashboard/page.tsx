@@ -54,7 +54,10 @@ export default function Dashboard() {
   }
 
   if (children.length === 0) {
-    return <EmptyState />;
+    return <AddChildrenForm onDone={(kids) => {
+      setChildren(kids);
+      if (kids.length === 1) setSelectedChild(kids[0]);
+    }} />;
   }
 
   if (selectedChild) {
@@ -71,27 +74,139 @@ export default function Dashboard() {
   return <ChildSelector children={children} onSelect={setSelectedChild} />;
 }
 
-/* ─── Empty State ─────────────────────────────────────── */
+/* ─── Add Children Form ───────────────────────────────── */
 
-function EmptyState() {
+const GRADES = ["Pre-K", "Kindergarten", "1st", "2nd", "3rd"];
+
+interface ChildRow {
+  name: string;
+  grade: string;
+}
+
+function AddChildrenForm({ onDone }: { onDone: (kids: Child[]) => void }) {
+  const [rows, setRows] = useState<ChildRow[]>([{ name: "", grade: "" }]);
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState("");
+
+  const updateRow = (index: number, field: keyof ChildRow, value: string) => {
+    setRows((prev) => prev.map((r, i) => (i === index ? { ...r, [field]: value } : r)));
+  };
+
+  const addRow = () => {
+    if (rows.length < 5) setRows((prev) => [...prev, { name: "", grade: "" }]);
+  };
+
+  const removeRow = (index: number) => {
+    if (rows.length > 1) setRows((prev) => prev.filter((_, i) => i !== index));
+  };
+
+  const canSubmit = rows.every((r) => r.name.trim() && r.grade);
+
+  const handleSubmit = async () => {
+    if (!canSubmit) return;
+    setSaving(true);
+    setError("");
+
+    const supabase = supabaseBrowser();
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) {
+      setError("Not logged in");
+      setSaving(false);
+      return;
+    }
+
+    const insertRows = rows.map((r) => ({
+      parent_id: user.id,
+      first_name: r.name.trim(),
+      grade: r.grade,
+    }));
+
+    const { data, error: insertError } = await supabase
+      .from("children")
+      .insert(insertRows)
+      .select();
+
+    if (insertError) {
+      console.error("Error saving children:", insertError);
+      setError("Failed to save. Please try again.");
+      setSaving(false);
+      return;
+    }
+
+    onDone((data || []) as Child[]);
+  };
+
   return (
-    <div className="flex flex-col items-center justify-center min-h-[60vh] text-center px-4">
-      <div className="w-20 h-20 rounded-2xl bg-indigo-50 flex items-center justify-center text-4xl mb-6">
-        📚
+    <div className="max-w-md mx-auto py-16 px-4 space-y-8">
+      <div className="text-center">
+        <div className="w-20 h-20 rounded-2xl bg-indigo-50 mx-auto mb-6 flex items-center justify-center text-4xl">
+          📚
+        </div>
+        <h1 className="text-2xl font-bold text-zinc-900 tracking-tight">
+          Welcome to Readee!
+        </h1>
+        <p className="text-zinc-500 mt-2">
+          Let&apos;s set up your readers.
+        </p>
       </div>
-      <h1 className="text-2xl font-bold text-zinc-900 mb-2">
-        No children added yet
-      </h1>
-      <p className="text-zinc-500 max-w-sm mb-8">
-        Complete the signup questionnaire to add your children and get started
-        with Readee.
-      </p>
-      <a
-        href="https://readee-site.vercel.app"
-        className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-indigo-600 text-white font-semibold hover:bg-indigo-700 transition-colors"
+
+      <div className="space-y-4">
+        {rows.map((row, index) => (
+          <div key={index} className="rounded-2xl border border-zinc-200 bg-white p-4 space-y-3">
+            <div className="flex items-center justify-between">
+              <span className="text-sm font-semibold text-zinc-500">
+                {AVATARS[index % AVATARS.length]} Reader {index + 1}
+              </span>
+              {rows.length > 1 && (
+                <button
+                  onClick={() => removeRow(index)}
+                  className="text-zinc-400 hover:text-red-500 text-sm font-medium transition-colors"
+                >
+                  Remove
+                </button>
+              )}
+            </div>
+            <input
+              type="text"
+              placeholder="Child's first name"
+              value={row.name}
+              onChange={(e) => updateRow(index, "name", e.target.value)}
+              className="w-full px-3 py-2.5 rounded-xl border border-zinc-200 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+            />
+            <select
+              value={row.grade}
+              onChange={(e) => updateRow(index, "grade", e.target.value)}
+              className="w-full px-3 py-2.5 rounded-xl border border-zinc-200 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent bg-white text-zinc-700"
+            >
+              <option value="">Select grade</option>
+              {GRADES.map((g) => (
+                <option key={g} value={g}>{g}</option>
+              ))}
+            </select>
+          </div>
+        ))}
+      </div>
+
+      {rows.length < 5 && (
+        <button
+          onClick={addRow}
+          className="w-full py-3 rounded-xl border-2 border-dashed border-zinc-200 text-sm font-medium text-indigo-600 hover:border-indigo-300 hover:bg-indigo-50/50 transition-colors"
+        >
+          + Add another child
+        </button>
+      )}
+
+      {error && (
+        <p className="text-sm text-red-500 text-center">{error}</p>
+      )}
+
+      <button
+        onClick={handleSubmit}
+        disabled={!canSubmit || saving}
+        className="w-full py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white font-bold text-lg hover:from-indigo-700 hover:to-violet-600 transition-all shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        Get Started
-      </a>
+        {saving ? "Setting up..." : "Let's Go!"}
+      </button>
     </div>
   );
 }
