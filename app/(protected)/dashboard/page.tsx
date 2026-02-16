@@ -217,21 +217,6 @@ function ChildDashboard({
         </div>
       </div>
 
-      {/* Assessment prompt */}
-      {!child.reading_level && (
-        <Link href={`/assessment?child=${child.id}`} className="block">
-          <div className="rounded-2xl border-2 border-dashed border-indigo-200 bg-indigo-50/50 p-6 text-center hover:border-indigo-400 transition-colors cursor-pointer">
-            <div className="text-3xl mb-2">📝</div>
-            <div className="text-base font-bold text-zinc-900">
-              Take the Reading Quiz
-            </div>
-            <div className="text-sm text-zinc-500 mt-1">
-              A quick 10-question quiz to find {child.first_name}&apos;s reading level
-            </div>
-          </div>
-        </Link>
-      )}
-
       {/* Stats */}
       <div className="grid grid-cols-3 gap-3">
         <StatCard icon="⭐" label="Total XP" value={String(child.xp)} />
@@ -247,16 +232,28 @@ function ChildDashboard({
         />
       </div>
 
-      {/* Start Reading */}
-      <Link href="/reader/1" className="block">
-        <div className="rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 p-6 text-center text-white hover:from-indigo-700 hover:to-violet-600 transition-all duration-200 shadow-lg hover:shadow-xl cursor-pointer">
-          <div className="text-3xl mb-2">📖</div>
-          <div className="text-lg font-bold">Start Reading</div>
-          <div className="text-indigo-200 text-sm mt-1">
-            Jump into a story and earn XP
+      {/* Primary CTA: Assessment if not taken, Start Reading if done */}
+      {child.reading_level ? (
+        <Link href="/reader/1" className="block">
+          <div className="rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 p-6 text-center text-white hover:from-indigo-700 hover:to-violet-600 transition-all duration-200 shadow-lg hover:shadow-xl cursor-pointer">
+            <div className="text-3xl mb-2">📖</div>
+            <div className="text-lg font-bold">Start Reading</div>
+            <div className="text-indigo-200 text-sm mt-1">
+              Jump into a story and earn XP
+            </div>
           </div>
-        </div>
-      </Link>
+        </Link>
+      ) : (
+        <Link href={`/assessment?child=${child.id}`} className="block">
+          <div className="rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 p-6 text-center text-white hover:from-indigo-700 hover:to-violet-600 transition-all duration-200 shadow-lg hover:shadow-xl cursor-pointer">
+            <div className="text-3xl mb-2">🎯</div>
+            <div className="text-lg font-bold">Take Your Reading Quiz!</div>
+            <div className="text-indigo-200 text-sm mt-1">
+              A fun 10-question quiz to find {child.first_name}&apos;s reading level
+            </div>
+          </div>
+        </Link>
+      )}
 
       {/* Weekly Progress */}
       <div className="rounded-2xl border border-zinc-200 bg-white p-6">
