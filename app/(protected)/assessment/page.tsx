@@ -297,8 +297,6 @@ function AssessmentContent() {
 
   /* ─── Results ────────────────────────────────────────── */
   if (phase === "results") {
-    const stars = Array.from({ length: questions.length }, (_, i) => i < score);
-
     return (
       <div className="max-w-lg mx-auto text-center py-16 px-4 space-y-8 relative overflow-hidden">
         {/* Confetti */}
@@ -316,45 +314,31 @@ function AssessmentContent() {
 
         <div className="text-6xl">🎉</div>
 
-        <div>
-          <h1 className="text-3xl font-bold text-zinc-900 tracking-tight">
-            Great job, {child.first_name}!
-          </h1>
-          <p className="text-zinc-500 mt-2">
-            You scored {score} out of {questions.length}
-          </p>
-        </div>
-
-        {/* Stars */}
-        <div className="flex justify-center gap-1.5">
-          {stars.map((filled, i) => (
-            <span
-              key={i}
-              className={`text-2xl ${filled ? "" : "opacity-20"}`}
-              style={{ animationDelay: `${i * 0.1}s` }}
-            >
-              ⭐
-            </span>
-          ))}
-        </div>
+        <h1 className="text-3xl font-bold text-zinc-900 tracking-tight">
+          Awesome, {child.first_name}!
+        </h1>
 
         {/* Level badge */}
-        <div className="inline-block rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 px-8 py-4 text-white">
+        <div className="inline-block rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 px-8 py-5 text-white">
           <div className="text-sm font-medium text-indigo-200">
-            Reading Level
+            You are a
           </div>
           <div className="text-2xl font-bold mt-1">{levelName}</div>
         </div>
 
+        <p className="text-zinc-500 max-w-xs mx-auto">
+          We&apos;ve built a personalized reading path just for {child.first_name}!
+        </p>
+
         {saving ? (
-          <p className="text-zinc-400 text-sm">Saving your results...</p>
+          <p className="text-zinc-400 text-sm">Setting up your reading path...</p>
         ) : (
           <div className="space-y-3 pt-4">
             <Link
-              href="/reader/1"
+              href="/dashboard"
               className="block w-full py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white font-bold text-lg hover:from-indigo-700 hover:to-violet-600 transition-all shadow-lg"
             >
-              Start Your First Lesson &rarr;
+              Let&apos;s Start Reading &rarr;
             </Link>
             <Link
               href="/dashboard"
