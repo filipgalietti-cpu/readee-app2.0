@@ -19,10 +19,21 @@ export interface Child {
   parent_id: string; // UUID - references auth.users.id
   first_name: string;
   grade: string | null;
+  reading_level: string | null;
   xp: number;
   stories_read: number;
   streak_days: number;
   created_at: string;
+}
+
+export interface Assessment {
+  id: string; // UUID
+  child_id: string; // UUID - references children.id
+  grade_tested: string;
+  score_percent: number;
+  reading_level_placed: string;
+  answers: any; // JSONB
+  completed_at: string;
 }
 
 export interface OnboardingPreferences {

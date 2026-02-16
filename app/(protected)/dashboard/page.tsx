@@ -203,12 +203,34 @@ function ChildDashboard({
           Hey {child.first_name}!
         </h1>
         <p className="text-zinc-500 mt-1">Ready to read today?</p>
-        {child.grade && (
-          <span className="inline-block mt-3 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700">
-            {child.grade}
-          </span>
-        )}
+        <div className="flex justify-center gap-2 mt-3">
+          {child.grade && (
+            <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700">
+              {child.grade}
+            </span>
+          )}
+          {child.reading_level && (
+            <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-violet-50 text-violet-700">
+              {child.reading_level}
+            </span>
+          )}
+        </div>
       </div>
+
+      {/* Assessment prompt */}
+      {!child.reading_level && (
+        <Link href={`/assessment?child=${child.id}`} className="block">
+          <div className="rounded-2xl border-2 border-dashed border-indigo-200 bg-indigo-50/50 p-6 text-center hover:border-indigo-400 transition-colors cursor-pointer">
+            <div className="text-3xl mb-2">📝</div>
+            <div className="text-base font-bold text-zinc-900">
+              Take the Reading Quiz
+            </div>
+            <div className="text-sm text-zinc-500 mt-1">
+              A quick 10-question quiz to find {child.first_name}&apos;s reading level
+            </div>
+          </div>
+        </Link>
+      )}
 
       {/* Stats */}
       <div className="grid grid-cols-3 gap-3">
