@@ -162,9 +162,38 @@ function ChildDashboard({
   onBack: () => void;
   onSwitch: (c: Child) => void;
 }) {
+  const [hasAssessment, setHasAssessment] = useState<boolean | null>(null);
+  const [readingLevel, setReadingLevel] = useState<string | null>(child.reading_level);
   const childIndex = children.findIndex((c) => c.id === child.id);
   const avatar = AVATARS[childIndex % AVATARS.length];
   const hasMultiple = children.length > 1;
+
+  useEffect(() => {
+    async function checkAssessment() {
+      const supabase = supabaseBrowser();
+      const { data, error } = await supabase
+        .from("assessments")
+        .select("reading_level_placed")
+        .eq("child_id", child.id)
+        .order("completed_at", { ascending: false })
+        .limit(1);
+
+      if (error) {
+        console.error("Error checking assessment:", error);
+        // If assessments table doesn't exist yet, treat as no assessment
+        setHasAssessment(false);
+        return;
+      }
+
+      if (data && data.length > 0) {
+        setHasAssessment(true);
+        setReadingLevel(data[0].reading_level_placed);
+      } else {
+        setHasAssessment(false);
+      }
+    }
+    checkAssessment();
+  }, [child.id]);
 
   return (
     <div className="max-w-2xl mx-auto space-y-8 pb-12">
@@ -209,9 +238,9 @@ function ChildDashboard({
               {child.grade}
             </span>
           )}
-          {child.reading_level && (
+          {readingLevel && (
             <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-violet-50 text-violet-700">
-              {child.reading_level}
+              {readingLevel}
             </span>
           )}
         </div>
@@ -233,7 +262,7 @@ function ChildDashboard({
       </div>
 
       {/* Primary CTA: Assessment if not taken, Start Reading if done */}
-      {child.reading_level ? (
+      {hasAssessment ? (
         <Link href="/reader/1" className="block">
           <div className="rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 p-6 text-center text-white hover:from-indigo-700 hover:to-violet-600 transition-all duration-200 shadow-lg hover:shadow-xl cursor-pointer">
             <div className="text-3xl mb-2">📖</div>
