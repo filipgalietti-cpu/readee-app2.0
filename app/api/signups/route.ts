@@ -9,7 +9,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { supabaseAdmin } from '@/lib/supabase/admin';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+function getResend() {
+  return new Resend(process.env.RESEND_API_KEY);
+}
 
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': '*',
@@ -346,13 +348,13 @@ export async function POST(request: NextRequest) {
 
       // Send both emails in parallel
       const [welcomeResult, notifResult] = await Promise.all([
-        resend.emails.send({
+        getResend().emails.send({
           from: 'hello@readee.app',
           to: email,
           subject: welcomeSubject,
           html: welcomeHtml,
         }),
-        resend.emails.send({
+        getResend().emails.send({
           from: 'hello@readee.app',
           to: 'filip.galietti@gmail.com',
           subject: `New Readee Signup: ${roleLabel} - ${fullName}`,
