@@ -34,7 +34,7 @@ export default function RootLayout({
                   <span className="text-white">READ</span><span className="text-indigo-300">EE</span>
                 </span>
                 <span className="hidden sm:block w-px h-5 bg-indigo-700" />
-                <p className="text-sm text-indigo-300">
+                <p className="text-sm text-white">
                   Helping every child become a confident reader.
                 </p>
               </div>
@@ -53,7 +53,7 @@ export default function RootLayout({
                 </Link>
               </div>
             </div>
-            <div className="mt-8 pt-6 border-t border-indigo-800 text-center text-sm text-indigo-400">
+            <div className="mt-8 pt-6 border-t border-indigo-800 text-center text-sm text-white">
               <p>&copy; {new Date().getFullYear()} Readee. All rights reserved.</p>
             </div>
           </div>
