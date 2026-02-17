@@ -1,0 +1,1005 @@
+{
+  "lesson_config": {
+    "lessons_per_level": 5,
+    "sections_per_lesson": 3,
+    "estimated_minutes": 10,
+    "xp_per_lesson": 20,
+    "xp_per_section": {
+      "learn": 5,
+      "practice": 5,
+      "read": 10
+    },
+    "passing_threshold": 0.7
+  },
+  "placement_logic": {
+    "score_80_plus": "Place at grade level",
+    "score_50_to_79": "Place one level below",
+    "score_below_50": "Place two levels below",
+    "floor": "pre-k",
+    "ceiling": "3rd",
+    "challenge_up": "If 100% on grade quiz, offer next grade assessment"
+  },
+  "levels": {
+    "pre-k": {
+      "level_name": "Emerging Reader",
+      "level_number": 1,
+      "focus": "Letter recognition, beginning sounds, print awareness",
+      "lessons": [
+        {
+          "id": "pk-L1",
+          "title": "Meet the Letters!",
+          "skill": "letter_recognition",
+          "description": "Learn to recognize letters A-F",
+          "learn": {
+            "type": "introduction",
+            "content": "Letters are everywhere! Each letter has a special shape and name. Today we're meeting six friendly letters.",
+            "items": [
+              {"letter": "A", "keyword": "Apple", "emoji": "🍎", "hint": "A looks like a mountain with a bridge!"},
+              {"letter": "B", "keyword": "Ball", "emoji": "⚽", "hint": "B has two round bumps on one side."},
+              {"letter": "C", "keyword": "Cat", "emoji": "🐱", "hint": "C looks like a circle with a bite taken out."},
+              {"letter": "D", "keyword": "Dog", "emoji": "🐕", "hint": "D has one big round bump."},
+              {"letter": "E", "keyword": "Elephant", "emoji": "🐘", "hint": "E has three arms reaching out."},
+              {"letter": "F", "keyword": "Fish", "emoji": "🐟", "hint": "F is like E but missing the bottom arm."}
+            ]
+          },
+          "practice": {
+            "type": "matching",
+            "instructions": "Match each letter to its picture!",
+            "questions": [
+              {"prompt": "Find the letter A", "choices": ["A", "B", "D", "F"], "correct": "A"},
+              {"prompt": "Which letter starts 'Cat'?", "choices": ["D", "C", "B", "E"], "correct": "C"},
+              {"prompt": "Find the letter that looks like a mountain", "choices": ["C", "D", "A", "F"], "correct": "A"},
+              {"prompt": "Which letter starts 'Dog'?", "choices": ["B", "F", "D", "A"], "correct": "D"},
+              {"prompt": "Find the letter with three arms", "choices": ["F", "E", "B", "C"], "correct": "E"}
+            ]
+          },
+          "read": {
+            "type": "story",
+            "title": "A Big Day",
+            "text": "A is for Apple. 🍎\nB is for Ball. ⚽\nC is for Cat. 🐱\nD is for Dog. 🐕\nE is for Elephant. 🐘\nF is for Fish. 🐟\nA, B, C, D, E, F — we know six letters today!",
+            "questions": [
+              {"prompt": "What letter is for Apple?", "choices": ["B", "A", "C", "D"], "correct": "A"},
+              {"prompt": "What animal goes with the letter C?", "choices": ["Dog", "Fish", "Cat", "Elephant"], "correct": "Cat"},
+              {"prompt": "How many letters did we learn?", "choices": ["4", "5", "6", "7"], "correct": "6"}
+            ]
+          }
+        },
+        {
+          "id": "pk-L2",
+          "title": "More Letter Friends",
+          "skill": "letter_recognition",
+          "description": "Learn to recognize letters G-L",
+          "learn": {
+            "type": "introduction",
+            "content": "Let's meet six more letter friends today! Each one has its own special shape.",
+            "items": [
+              {"letter": "G", "keyword": "Grapes", "emoji": "🍇", "hint": "G is like C but with a little shelf inside."},
+              {"letter": "H", "keyword": "House", "emoji": "🏠", "hint": "H looks like a ladder with two tall sides."},
+              {"letter": "I", "keyword": "Ice cream", "emoji": "🍦", "hint": "I is simple — just a tall line with hats on top and bottom."},
+              {"letter": "J", "keyword": "Juice", "emoji": "🧃", "hint": "J has a hook at the bottom, like a fish hook!"},
+              {"letter": "K", "keyword": "Kite", "emoji": "🪁", "hint": "K has one tall line and two arms reaching out."},
+              {"letter": "L", "keyword": "Lion", "emoji": "🦁", "hint": "L is easy — just a tall line with a floor."}
+            ]
+          },
+          "practice": {
+            "type": "matching",
+            "instructions": "Can you find each letter?",
+            "questions": [
+              {"prompt": "Find the letter with a hook at the bottom", "choices": ["L", "I", "J", "G"], "correct": "J"},
+              {"prompt": "Which letter starts 'House'?", "choices": ["G", "H", "K", "I"], "correct": "H"},
+              {"prompt": "Find the letter L", "choices": ["I", "J", "L", "K"], "correct": "L"},
+              {"prompt": "Which letter is like C with a shelf?", "choices": ["H", "G", "J", "K"], "correct": "G"},
+              {"prompt": "Which letter starts 'Kite'?", "choices": ["K", "L", "H", "I"], "correct": "K"}
+            ]
+          },
+          "read": {
+            "type": "story",
+            "title": "The Letter Parade",
+            "text": "G is for Grapes, yummy and sweet! 🍇\nH is for House, where we sleep. 🏠\nI is for Ice cream, cold and nice! 🍦\nJ is for Juice, we drink it with ice. 🧃\nK is for Kite, flying so high! 🪁\nL is for Lion, hear him cry! 🦁",
+            "questions": [
+              {"prompt": "What is G for?", "choices": ["Grapes", "House", "Juice", "Kite"], "correct": "Grapes"},
+              {"prompt": "What flies high in the sky?", "choices": ["Lion", "Ice cream", "Kite", "House"], "correct": "Kite"},
+              {"prompt": "Which letter is for something you drink?", "choices": ["G", "J", "K", "L"], "correct": "J"}
+            ]
+          }
+        },
+        {
+          "id": "pk-L3",
+          "title": "Sounds All Around",
+          "skill": "beginning_sounds",
+          "description": "Learn beginning sounds for common words",
+          "learn": {
+            "type": "introduction",
+            "content": "Every word starts with a sound! When you say 'ball,' your lips pop together for the /b/ sound. Let's listen for beginning sounds!",
+            "items": [
+              {"sound": "/b/", "words": ["ball", "bat", "bear"], "emoji": "🐻", "hint": "Your lips pop together for /b/!"},
+              {"sound": "/m/", "words": ["mom", "moon", "mouse"], "emoji": "🌙", "hint": "Your lips press together and hum for /m/!"},
+              {"sound": "/s/", "words": ["sun", "snake", "star"], "emoji": "☀️", "hint": "Air slides over your tongue like a snake for /s/!"},
+              {"sound": "/t/", "words": ["top", "tiger", "tree"], "emoji": "🐯", "hint": "Your tongue taps the roof of your mouth for /t/!"}
+            ]
+          },
+          "practice": {
+            "type": "sound_match",
+            "instructions": "Which word starts with the same sound?",
+            "questions": [
+              {"prompt": "Which starts like 'ball'?", "target_sound": "/b/", "choices": ["bat", "cat", "sun", "top"], "correct": "bat"},
+              {"prompt": "Which starts like 'moon'?", "target_sound": "/m/", "choices": ["sun", "mom", "top", "ball"], "correct": "mom"},
+              {"prompt": "Which starts like 'sun'?", "target_sound": "/s/", "choices": ["ball", "moon", "star", "tiger"], "correct": "star"},
+              {"prompt": "Which starts like 'top'?", "target_sound": "/t/", "choices": ["tree", "ball", "snake", "mouse"], "correct": "tree"},
+              {"prompt": "Which starts like 'bear'?", "target_sound": "/b/", "choices": ["star", "moon", "boat", "top"], "correct": "boat"}
+            ]
+          },
+          "read": {
+            "type": "story",
+            "title": "The Sound Safari",
+            "text": "Bear went on a walk. 🐻\n'I hear /b/!' said Bear. 'Ball! Bat! Boat!'\nMouse came along. 🐭\n'I hear /m/!' said Mouse. 'Moon! Music!'\nSnake slid by. 🐍\n'I hear /s/!' said Snake. 'Sun! Star!'\nThey all love the sounds they make!",
+            "questions": [
+              {"prompt": "What sound does Bear hear?", "choices": ["/b/", "/m/", "/s/", "/t/"], "correct": "/b/"},
+              {"prompt": "Who hears the /m/ sound?", "choices": ["Bear", "Snake", "Mouse", "Tiger"], "correct": "Mouse"},
+              {"prompt": "What is one of Snake's /s/ words?", "choices": ["Ball", "Moon", "Sun", "Bat"], "correct": "Sun"}
+            ]
+          }
+        },
+        {
+          "id": "pk-L4",
+          "title": "Rhyme Time!",
+          "skill": "rhyming",
+          "description": "Recognize and create rhyming words",
+          "learn": {
+            "type": "introduction",
+            "content": "Rhyming words sound the same at the end! 'Cat' and 'hat' rhyme because they both end with '-at'. Rhyming is like music for words!",
+            "items": [
+              {"word": "cat", "rhymes": ["hat", "bat", "mat", "sat"], "family": "-at", "emoji": "🐱"},
+              {"word": "bug", "rhymes": ["hug", "mug", "rug", "tug"], "family": "-ug", "emoji": "🐛"},
+              {"word": "hop", "rhymes": ["top", "mop", "pop", "stop"], "family": "-op", "emoji": "🐰"},
+              {"word": "bed", "rhymes": ["red", "fed", "led", "said"], "family": "-ed", "emoji": "🛏️"}
+            ]
+          },
+          "practice": {
+            "type": "rhyme_match",
+            "instructions": "Find the rhyming word!",
+            "questions": [
+              {"prompt": "What rhymes with 'cat'?", "choices": ["dog", "hat", "cup", "sun"], "correct": "hat"},
+              {"prompt": "What rhymes with 'bug'?", "choices": ["big", "bag", "hug", "bed"], "correct": "hug"},
+              {"prompt": "What rhymes with 'hop'?", "choices": ["hat", "hot", "top", "hug"], "correct": "top"},
+              {"prompt": "What rhymes with 'bed'?", "choices": ["bad", "bid", "red", "rug"], "correct": "red"},
+              {"prompt": "What rhymes with 'mug'?", "choices": ["mop", "rug", "mat", "red"], "correct": "rug"}
+            ]
+          },
+          "read": {
+            "type": "story",
+            "title": "The Rhyming Day",
+            "text": "Cat sat on a mat. 🐱\nCat wore a hat. 🎩\n'I like to rhyme!' said Cat.\n'Mat, hat, bat, sat!'\nBug gave Cat a hug. 🐛\nThey sat on a rug.\n'Hug, mug, rug!' said Bug.\nRhyming is so fun!",
+            "questions": [
+              {"prompt": "What did Cat sit on?", "choices": ["A rug", "A mat", "A bed", "A mop"], "correct": "A mat"},
+              {"prompt": "What did Bug give Cat?", "choices": ["A hat", "A mug", "A hug", "A bat"], "correct": "A hug"},
+              {"prompt": "Which word rhymes with 'hug'?", "choices": ["hat", "rug", "hop", "bed"], "correct": "rug"}
+            ]
+          }
+        },
+        {
+          "id": "pk-L5",
+          "title": "Big and Small Letters",
+          "skill": "uppercase_lowercase",
+          "description": "Match uppercase and lowercase letters",
+          "learn": {
+            "type": "introduction",
+            "content": "Every letter has two forms: a BIG letter (uppercase) and a small letter (lowercase). 'A' is the big version, and 'a' is the small version. They're the same letter — just different sizes!",
+            "items": [
+              {"upper": "A", "lower": "a", "hint": "Big A is a mountain. Little a is a circle with a stick."},
+              {"upper": "B", "lower": "b", "hint": "Big B has two bumps. Little b has one bump on the right."},
+              {"upper": "D", "lower": "d", "hint": "Big D has a bump on the right. Little d has a bump on the left."},
+              {"upper": "M", "lower": "m", "hint": "Big M has two humps going up. Little m has two humps going down."},
+              {"upper": "S", "lower": "s", "hint": "Big S and little s look the same — just different sizes!"}
+            ]
+          },
+          "practice": {
+            "type": "matching",
+            "instructions": "Match the big letter to its small letter!",
+            "questions": [
+              {"prompt": "Which is the lowercase of A?", "choices": ["b", "d", "a", "m"], "correct": "a"},
+              {"prompt": "Which is the uppercase of b?", "choices": ["D", "B", "A", "M"], "correct": "B"},
+              {"prompt": "Which is the lowercase of D?", "choices": ["b", "a", "d", "s"], "correct": "d"},
+              {"prompt": "Which is the uppercase of m?", "choices": ["M", "B", "D", "S"], "correct": "M"},
+              {"prompt": "Which is the lowercase of S?", "choices": ["a", "s", "m", "d"], "correct": "s"}
+            ]
+          },
+          "read": {
+            "type": "story",
+            "title": "The Letter Twins",
+            "text": "Big A and little a are twins! 🔤\nBig A is tall like a mountain.\nLittle a is small like a pebble.\nBig B and little b are twins too!\nBig B has two bumps.\nLittle b has one bump.\nEvery letter has a twin — one big, one small!",
+            "questions": [
+              {"prompt": "What is Big A compared to?", "choices": ["A pebble", "A mountain", "A ball", "A star"], "correct": "A mountain"},
+              {"prompt": "How many bumps does Big B have?", "choices": ["1", "2", "3", "0"], "correct": "2"},
+              {"prompt": "Every letter has a what?", "choices": ["A friend", "A color", "A twin", "A number"], "correct": "A twin"}
+            ]
+          }
+        }
+      ]
+    },
+    "kindergarten": {
+      "level_name": "Beginning Reader",
+      "level_number": 2,
+      "focus": "Letter sounds, CVC words, sight words",
+      "lessons": [
+        {
+          "id": "k-L1",
+          "title": "Consonant Sounds",
+          "skill": "letter_sounds",
+          "description": "Learn the sounds of common consonants",
+          "learn": {
+            "type": "introduction",
+            "content": "Every letter makes a sound! When we know the sounds, we can read words. Let's learn some consonant sounds today!",
+            "items": [
+              {"letter": "B", "sound": "/b/", "example": "bat", "emoji": "🦇", "mouth": "Press your lips together and pop them open!"},
+              {"letter": "C", "sound": "/k/", "example": "cup", "emoji": "☕", "mouth": "The back of your tongue touches the roof of your mouth!"},
+              {"letter": "D", "sound": "/d/", "example": "dog", "emoji": "🐕", "mouth": "Your tongue taps behind your top teeth!"},
+              {"letter": "F", "sound": "/f/", "example": "fan", "emoji": "🌀", "mouth": "Bite your bottom lip gently and blow air!"},
+              {"letter": "G", "sound": "/g/", "example": "goat", "emoji": "🐐", "mouth": "The back of your tongue bumps up!"},
+              {"letter": "H", "sound": "/h/", "example": "hat", "emoji": "🎩", "mouth": "Open your mouth and push out a puff of air!"}
+            ]
+          },
+          "practice": {
+            "type": "sound_match",
+            "instructions": "What sound does this letter make?",
+            "questions": [
+              {"prompt": "What sound does B make?", "choices": ["/b/ like bat", "/d/ like dog", "/g/ like goat", "/h/ like hat"], "correct": "/b/ like bat"},
+              {"prompt": "What sound does F make?", "choices": ["/b/ like bat", "/f/ like fan", "/g/ like goat", "/h/ like hat"], "correct": "/f/ like fan"},
+              {"prompt": "Which letter makes the /d/ sound?", "choices": ["B", "G", "D", "H"], "correct": "D"},
+              {"prompt": "Which letter makes the /k/ sound?", "choices": ["G", "D", "F", "C"], "correct": "C"},
+              {"prompt": "What sound does G make?", "choices": ["/f/", "/g/", "/b/", "/d/"], "correct": "/g/"}
+            ]
+          },
+          "read": {
+            "type": "story",
+            "title": "The Sound Band",
+            "text": "B plays the drum. Boom! Boom! 🥁\nD taps the sticks. Da! Da! 🥢\nF blows the flute. Ffff! 🎶\nG strums the guitar. Guh! Guh! 🎸\nH sings a song. Ha! Ha! Ha! 🎤\nThe Sound Band plays together!",
+            "questions": [
+              {"prompt": "What does B play?", "choices": ["Flute", "Drum", "Guitar", "Piano"], "correct": "Drum"},
+              {"prompt": "Which letter blows the flute?", "choices": ["B", "D", "F", "G"], "correct": "F"},
+              {"prompt": "What sound does G make on the guitar?", "choices": ["Boom", "Da", "Ffff", "Guh"], "correct": "Guh"}
+            ]
+          }
+        },
+        {
+          "id": "k-L2",
+          "title": "Short Vowel Sounds",
+          "skill": "short_vowels",
+          "description": "Learn the five short vowel sounds",
+          "learn": {
+            "type": "introduction",
+            "content": "Vowels are the most important letters! Every word needs at least one. The five vowels are A, E, I, O, U. Today we learn their short sounds.",
+            "items": [
+              {"letter": "A", "sound": "/ă/", "example": "apple", "emoji": "🍎", "keyword": "Short A says /ă/ like in apple!"},
+              {"letter": "E", "sound": "/ĕ/", "example": "egg", "emoji": "🥚", "keyword": "Short E says /ĕ/ like in egg!"},
+              {"letter": "I", "sound": "/ĭ/", "example": "igloo", "emoji": "🏔️", "keyword": "Short I says /ĭ/ like in igloo!"},
+              {"letter": "O", "sound": "/ŏ/", "example": "octopus", "emoji": "🐙", "keyword": "Short O says /ŏ/ like in octopus!"},
+              {"letter": "U", "sound": "/ŭ/", "example": "umbrella", "emoji": "☂️", "keyword": "Short U says /ŭ/ like in umbrella!"}
+            ]
+          },
+          "practice": {
+            "type": "vowel_id",
+            "instructions": "Listen for the vowel sound!",
+            "questions": [
+              {"prompt": "What vowel sound is in 'cat'?", "choices": ["Short A", "Short E", "Short I", "Short O"], "correct": "Short A"},
+              {"prompt": "What vowel sound is in 'pig'?", "choices": ["Short A", "Short I", "Short O", "Short U"], "correct": "Short I"},
+              {"prompt": "What vowel sound is in 'dog'?", "choices": ["Short A", "Short E", "Short O", "Short U"], "correct": "Short O"},
+              {"prompt": "What vowel sound is in 'bed'?", "choices": ["Short A", "Short E", "Short I", "Short O"], "correct": "Short E"},
+              {"prompt": "What vowel sound is in 'cup'?", "choices": ["Short E", "Short I", "Short O", "Short U"], "correct": "Short U"}
+            ]
+          },
+          "read": {
+            "type": "story",
+            "title": "Vowel Village",
+            "text": "In Vowel Village, five friends live together.\nAnt has the /ă/ sound. 🐜\nElf has the /ĕ/ sound. 🧝\nInch has the /ĭ/ sound. 📏\nOx has the /ŏ/ sound. 🐂\nUp has the /ŭ/ sound. ⬆️\n'We are the vowels!' they shout. 'Every word needs us!'",
+            "questions": [
+              {"prompt": "How many vowel friends are there?", "choices": ["3", "4", "5", "6"], "correct": "5"},
+              {"prompt": "Which friend has the /ŏ/ sound?", "choices": ["Ant", "Elf", "Ox", "Up"], "correct": "Ox"},
+              {"prompt": "What do the vowels say about themselves?", "choices": ["They are big", "Every word needs them", "They like to play", "They are fast"], "correct": "Every word needs them"}
+            ]
+          }
+        },
+        {
+          "id": "k-L3",
+          "title": "My First Words!",
+          "skill": "cvc_blending",
+          "description": "Blend sounds to read CVC words (consonant-vowel-consonant)",
+          "learn": {
+            "type": "introduction",
+            "content": "Now we can read real words! We blend sounds together: /c/ + /a/ + /t/ = cat! Say each sound, then slide them together fast.",
+            "items": [
+              {"word": "cat", "sounds": ["/c/", "/a/", "/t/"], "emoji": "🐱", "tip": "Say it slow: c...a...t. Now fast: cat!"},
+              {"word": "dog", "sounds": ["/d/", "/o/", "/g/"], "emoji": "🐕", "tip": "Say it slow: d...o...g. Now fast: dog!"},
+              {"word": "sun", "sounds": ["/s/", "/u/", "/n/"], "emoji": "☀️", "tip": "Say it slow: s...u...n. Now fast: sun!"},
+              {"word": "pig", "sounds": ["/p/", "/i/", "/g/"], "emoji": "🐷", "tip": "Say it slow: p...i...g. Now fast: pig!"},
+              {"word": "bed", "sounds": ["/b/", "/e/", "/d/"], "emoji": "🛏️", "tip": "Say it slow: b...e...d. Now fast: bed!"}
+            ]
+          },
+          "practice": {
+            "type": "blending",
+            "instructions": "Blend the sounds to make a word!",
+            "questions": [
+              {"prompt": "/c/ + /a/ + /t/ = ?", "choices": ["cat", "cut", "cot", "cap"], "correct": "cat"},
+              {"prompt": "/d/ + /o/ + /g/ = ?", "choices": ["dig", "dug", "dog", "dot"], "correct": "dog"},
+              {"prompt": "/s/ + /u/ + /n/ = ?", "choices": ["sin", "son", "sun", "sat"], "correct": "sun"},
+              {"prompt": "/p/ + /i/ + /g/ = ?", "choices": ["pug", "peg", "pig", "pag"], "correct": "pig"},
+              {"prompt": "/b/ + /e/ + /d/ = ?", "choices": ["bad", "bid", "bud", "bed"], "correct": "bed"}
+            ]
+          },
+          "read": {
+            "type": "story",
+            "title": "The Big Pet",
+            "text": "Sam has a cat. 🐱\nThe cat sat on a mat.\nSam has a dog. 🐕\nThe dog dug in the mud.\nThe cat and dog are pals.\nThey sit in the sun. ☀️\nSam is so happy!",
+            "questions": [
+              {"prompt": "What pets does Sam have?", "choices": ["A cat and a pig", "A cat and a dog", "A dog and a bug", "A pig and a hen"], "correct": "A cat and a dog"},
+              {"prompt": "Where did the cat sit?", "choices": ["In the sun", "On a mat", "In the mud", "On Sam"], "correct": "On a mat"},
+              {"prompt": "What did the dog do?", "choices": ["Sat on a mat", "Dug in the mud", "Ran away", "Ate a bug"], "correct": "Dug in the mud"}
+            ]
+          }
+        },
+        {
+          "id": "k-L4",
+          "title": "Sight Words Set 1",
+          "skill": "sight_words",
+          "description": "Learn to read the, I, a, is, and",
+          "learn": {
+            "type": "introduction",
+            "content": "Some words pop up everywhere! These are called sight words. We learn them by heart because they're in almost every sentence. Let's meet five super-star sight words!",
+            "items": [
+              {"word": "the", "sentence": "The dog is big.", "tip": "THE is the most common word in English!"},
+              {"word": "I", "sentence": "I like cats.", "tip": "I is always a capital letter when it means 'me'."},
+              {"word": "a", "sentence": "I see a bird.", "tip": "A means one of something."},
+              {"word": "is", "sentence": "The sun is hot.", "tip": "IS tells us about something right now."},
+              {"word": "and", "sentence": "A cat and a dog.", "tip": "AND connects two things together."}
+            ]
+          },
+          "practice": {
+            "type": "word_recognition",
+            "instructions": "Find the sight word!",
+            "questions": [
+              {"prompt": "Which word is 'the'?", "choices": ["the", "teh", "hte", "eth"], "correct": "the"},
+              {"prompt": "Fill in: ___ like to run.", "choices": ["A", "I", "Is", "The"], "correct": "I"},
+              {"prompt": "Fill in: I see ___ cat.", "choices": ["is", "and", "I", "a"], "correct": "a"},
+              {"prompt": "Fill in: The dog ___ big.", "choices": ["a", "and", "is", "I"], "correct": "is"},
+              {"prompt": "Fill in: A cat ___ a dog.", "choices": ["the", "is", "and", "a"], "correct": "and"}
+            ]
+          },
+          "read": {
+            "type": "story",
+            "title": "I See!",
+            "text": "I see the sun. ☀️\nI see a cat and a dog.\nThe cat is soft.\nThe dog is big.\nI like the cat and the dog.\nThe cat and dog like me!",
+            "questions": [
+              {"prompt": "What does the child see first?", "choices": ["A cat", "The sun", "A dog", "The moon"], "correct": "The sun"},
+              {"prompt": "What is the cat like?", "choices": ["Big", "Soft", "Fast", "Small"], "correct": "Soft"},
+              {"prompt": "Do the cat and dog like the child?", "choices": ["Yes", "No", "Maybe", "Only the cat"], "correct": "Yes"}
+            ]
+          }
+        },
+        {
+          "id": "k-L5",
+          "title": "Word Families: -at, -an, -ig",
+          "skill": "word_families",
+          "description": "Build words using word family patterns",
+          "learn": {
+            "type": "introduction",
+            "content": "Word families are groups of words that end the same way. If you can read 'cat,' you can read 'hat,' 'bat,' and 'mat!' Just change the first letter!",
+            "items": [
+              {"family": "-at", "words": ["cat", "hat", "bat", "mat", "sat", "rat"], "emoji": "🐱"},
+              {"family": "-an", "words": ["can", "man", "fan", "van", "ran", "pan"], "emoji": "🚐"},
+              {"family": "-ig", "words": ["big", "pig", "dig", "wig", "fig", "jig"], "emoji": "🐷"}
+            ]
+          },
+          "practice": {
+            "type": "word_building",
+            "instructions": "Build a word! Change the first letter.",
+            "questions": [
+              {"prompt": "Change the 'c' in 'cat' to 'h'. What word?", "choices": ["hat", "hot", "hit", "hut"], "correct": "hat"},
+              {"prompt": "Change the 'c' in 'can' to 'r'. What word?", "choices": ["run", "ran", "rin", "ron"], "correct": "ran"},
+              {"prompt": "Change the 'b' in 'big' to 'p'. What word?", "choices": ["peg", "pug", "pig", "pag"], "correct": "pig"},
+              {"prompt": "Change the 'm' in 'mat' to 'b'. What word?", "choices": ["bit", "bat", "but", "bot"], "correct": "bat"},
+              {"prompt": "Change the 'f' in 'fan' to 'v'. What word?", "choices": ["van", "vin", "vun", "von"], "correct": "van"}
+            ]
+          },
+          "read": {
+            "type": "story",
+            "title": "The -at Family Picnic",
+            "text": "Cat sat on a mat. 🐱\nRat put on a hat. 🐀\nBat brought a snack. 🦇\n'Let's all sit!' said Cat.\nCat, Rat, and Bat sat.\nThey had a big picnic on the mat.\nWhat a fun -at family day!",
+            "questions": [
+              {"prompt": "Who put on a hat?", "choices": ["Cat", "Bat", "Rat", "Pat"], "correct": "Rat"},
+              {"prompt": "Where did they have the picnic?", "choices": ["On a hat", "On a mat", "In a van", "On a bat"], "correct": "On a mat"},
+              {"prompt": "What word family are cat, rat, and bat in?", "choices": ["-an", "-ig", "-at", "-ot"], "correct": "-at"}
+            ]
+          }
+        }
+      ]
+    },
+    "1st": {
+      "level_name": "Developing Reader",
+      "level_number": 3,
+      "focus": "Blends, digraphs, CVCe words, simple sentences",
+      "lessons": [
+        {
+          "id": "1-L1",
+          "title": "Blends: Two Sounds Together",
+          "skill": "consonant_blends",
+          "description": "Learn to read bl, cl, fl, gl, pl, sl blends",
+          "learn": {
+            "type": "introduction",
+            "content": "Sometimes two consonants work together at the start of a word. You can hear BOTH sounds! 'Bl' in 'blue' — you hear /b/ and /l/ blended together.",
+            "items": [
+              {"blend": "bl", "words": ["blue", "block", "blink"], "emoji": "🔵"},
+              {"blend": "cl", "words": ["clap", "clock", "cloud"], "emoji": "👏"},
+              {"blend": "fl", "words": ["flag", "flip", "flower"], "emoji": "🌸"},
+              {"blend": "sl", "words": ["slide", "sleep", "slow"], "emoji": "🛝"},
+              {"blend": "st", "words": ["stop", "star", "stick"], "emoji": "⭐"},
+              {"blend": "tr", "words": ["tree", "truck", "train"], "emoji": "🚂"}
+            ]
+          },
+          "practice": {
+            "type": "blend_reading",
+            "instructions": "Read the blend and pick the right word!",
+            "questions": [
+              {"prompt": "Which word starts with 'bl'?", "choices": ["blue", "glue", "clue", "flue"], "correct": "blue"},
+              {"prompt": "Which word starts with 'cl'?", "choices": ["flip", "slip", "clip", "trip"], "correct": "clip"},
+              {"prompt": "Which word starts with 'st'?", "choices": ["slop", "stop", "flop", "drop"], "correct": "stop"},
+              {"prompt": "Which word starts with 'tr'?", "choices": ["tree", "free", "three", "bee"], "correct": "tree"},
+              {"prompt": "Which word starts with 'fl'?", "choices": ["slow", "glow", "flow", "blow"], "correct": "flow"}
+            ]
+          },
+          "read": {
+            "type": "story",
+            "title": "Trip to the Park",
+            "text": "Brad and his friend Flo went to the park.\nThey slid down the slide. 🛝\nBrad climbed a tree. 🌳\nFlo clapped when he got to the top!\nThen they saw a blue flag. 🔵\nThey ran to the flag and stopped.\n'What a great trip!' said Flo.",
+            "questions": [
+              {"prompt": "What blend starts 'Brad'?", "choices": ["bl", "br", "cl", "fl"], "correct": "br"},
+              {"prompt": "What did Brad climb?", "choices": ["A slide", "A tree", "A flag", "A truck"], "correct": "A tree"},
+              {"prompt": "What color was the flag?", "choices": ["Red", "Green", "Blue", "Yellow"], "correct": "Blue"}
+            ]
+          }
+        },
+        {
+          "id": "1-L2",
+          "title": "Digraphs: New Sounds!",
+          "skill": "digraphs",
+          "description": "Learn sh, ch, th, wh digraphs",
+          "learn": {
+            "type": "introduction",
+            "content": "A digraph is two letters that make ONE brand new sound! 'SH' doesn't say /s/ and /h/ — it says /sh/ like 'shhhh, be quiet!'",
+            "items": [
+              {"digraph": "sh", "sound": "/sh/", "words": ["ship", "shell", "fish"], "emoji": "🚢", "tip": "Put your finger to your lips: Shhhh!"},
+              {"digraph": "ch", "sound": "/ch/", "words": ["chip", "cheese", "much"], "emoji": "🧀", "tip": "Like a train: Ch-ch-ch-ch!"},
+              {"digraph": "th", "sound": "/th/", "words": ["the", "this", "bath"], "emoji": "🛁", "tip": "Stick your tongue between your teeth!"},
+              {"digraph": "wh", "sound": "/wh/", "words": ["what", "when", "white"], "emoji": "⬜", "tip": "Like blowing out a candle: wh!"}
+            ]
+          },
+          "practice": {
+            "type": "digraph_id",
+            "instructions": "Which digraph do you hear?",
+            "questions": [
+              {"prompt": "What digraph is in 'ship'?", "choices": ["ch", "sh", "th", "wh"], "correct": "sh"},
+              {"prompt": "What digraph is in 'cheese'?", "choices": ["sh", "th", "ch", "wh"], "correct": "ch"},
+              {"prompt": "What digraph is in 'bath'?", "choices": ["ch", "wh", "sh", "th"], "correct": "th"},
+              {"prompt": "What digraph is in 'when'?", "choices": ["sh", "ch", "th", "wh"], "correct": "wh"},
+              {"prompt": "Which word has the 'sh' sound?", "choices": ["chip", "fish", "thin", "what"], "correct": "fish"}
+            ]
+          },
+          "read": {
+            "type": "story",
+            "title": "The Shell Shop",
+            "text": "Chad went to the shell shop by the shore. 🐚\n'What a lot of shells!' Chad said.\nHe chose a white shell and a thin shell.\nThe shop had cheese too! 🧀\n'I will have cheese and shells,' said Chad.\nHe took a bath when he got home. 🛁\nWhat a fun day at the shop!",
+            "questions": [
+              {"prompt": "Where did Chad go?", "choices": ["The fish shop", "The shell shop", "The chip shop", "The shoe shop"], "correct": "The shell shop"},
+              {"prompt": "What two things did Chad get?", "choices": ["Fish and chips", "A shell and cheese", "A bath and a ship", "A hat and shoes"], "correct": "A shell and cheese"},
+              {"prompt": "What digraph starts 'Chad'?", "choices": ["sh", "th", "ch", "wh"], "correct": "ch"}
+            ]
+          }
+        },
+        {
+          "id": "1-L3",
+          "title": "Magic E Words!",
+          "skill": "cvce_pattern",
+          "description": "Learn how silent E changes short vowels to long vowels",
+          "learn": {
+            "type": "introduction",
+            "content": "Magic E is sneaky! It sits at the end of a word and doesn't say anything — but it makes the vowel say its NAME instead of its sound. Watch: 'cap' → 'cape'! The 'a' changes from /ă/ to /ā/!",
+            "items": [
+              {"short": "cap", "long": "cape", "vowel": "a", "emoji": "🦸"},
+              {"short": "hop", "long": "hope", "vowel": "o", "emoji": "🌟"},
+              {"short": "cub", "long": "cube", "vowel": "u", "emoji": "🧊"},
+              {"short": "kit", "long": "kite", "vowel": "i", "emoji": "🪁"},
+              {"short": "pet", "long": "Pete", "vowel": "e", "emoji": "👦"}
+            ]
+          },
+          "practice": {
+            "type": "magic_e",
+            "instructions": "Add Magic E! What's the new word?",
+            "questions": [
+              {"prompt": "Add E to 'cap'. What word?", "choices": ["cape", "cap", "cope", "cup"], "correct": "cape"},
+              {"prompt": "Add E to 'hop'. What word?", "choices": ["hop", "hype", "hope", "hip"], "correct": "hope"},
+              {"prompt": "Add E to 'cub'. What word?", "choices": ["cab", "cube", "cob", "curb"], "correct": "cube"},
+              {"prompt": "Add E to 'kit'. What word?", "choices": ["kite", "kit", "Kate", "bite"], "correct": "kite"},
+              {"prompt": "Which word has Magic E?", "choices": ["dog", "hat", "bike", "cup"], "correct": "bike"}
+            ]
+          },
+          "read": {
+            "type": "story",
+            "title": "The Magic E Adventure",
+            "text": "One day, little 'e' found a cape. 🦸\n'I have magic!' said E.\nE touched 'hop' and it became 'hope'!\nE touched 'cub' and it became 'cube'! 🧊\nE touched 'kit' and it became 'kite'! 🪁\nThe kite flew high in the sky.\n'Magic E makes vowels say their name!' said E.\nAnd that is the Magic E rule!",
+            "questions": [
+              {"prompt": "What did E find?", "choices": ["A hat", "A cape", "A kite", "A cube"], "correct": "A cape"},
+              {"prompt": "What does Magic E do to vowels?", "choices": ["Makes them quiet", "Makes them say their name", "Makes them disappear", "Makes them short"], "correct": "Makes them say their name"},
+              {"prompt": "What did 'kit' become?", "choices": ["Kate", "Kite", "Kit", "Bite"], "correct": "Kite"}
+            ]
+          }
+        },
+        {
+          "id": "1-L4",
+          "title": "Reading Sentences",
+          "skill": "fluency",
+          "description": "Practice reading complete sentences smoothly",
+          "learn": {
+            "type": "introduction",
+            "content": "When we read sentences, we don't read one word at a time like a robot. We read smoothly, like we're talking! Let's practice reading sentences the smooth way.",
+            "items": [
+              {"sentence": "The big dog ran fast.", "tip": "Read it in one smooth breath!"},
+              {"sentence": "I like to play in the park.", "tip": "Don't stop between each word."},
+              {"sentence": "The fish swam in the pond.", "tip": "Let the words flow together!"},
+              {"sentence": "She has a red hat and a blue bag.", "tip": "Pause at the period, not between words!"}
+            ]
+          },
+          "practice": {
+            "type": "comprehension",
+            "instructions": "Read each sentence and answer the question.",
+            "questions": [
+              {"prompt": "Read: 'The frog jumped on the log.' What did the frog do?", "choices": ["Sat on a log", "Jumped on a log", "Swam in a log", "Hid in a log"], "correct": "Jumped on a log"},
+              {"prompt": "Read: 'Mom made a big cake for Jill.' Who is the cake for?", "choices": ["Dad", "Mom", "Jill", "The dog"], "correct": "Jill"},
+              {"prompt": "Read: 'The black cat slept on the bed.' Where did the cat sleep?", "choices": ["On the mat", "In the box", "On the bed", "On the rug"], "correct": "On the bed"},
+              {"prompt": "Read: 'Tom and Kim went to the shop.' How many people went?", "choices": ["1", "2", "3", "4"], "correct": "2"},
+              {"prompt": "Read: 'It is hot today. Let's get ice cream!' Why do they want ice cream?", "choices": ["It is cold", "It is hot", "It is raining", "It is night"], "correct": "It is hot"}
+            ]
+          },
+          "read": {
+            "type": "story",
+            "title": "A Day at the Beach",
+            "text": "Kim and Jack went to the beach. 🏖️\nThe sand was hot on their feet!\nJack made a big sand castle. 🏰\nKim found three white shells. 🐚\n'Look at my shells!' said Kim.\n'Look at my castle!' said Jack.\nThen they jumped in the waves. 🌊\nSplash! What a fun day!",
+            "questions": [
+              {"prompt": "Where did Kim and Jack go?", "choices": ["The park", "The beach", "The shop", "The school"], "correct": "The beach"},
+              {"prompt": "What did Jack make?", "choices": ["A shell", "A boat", "A sand castle", "A flag"], "correct": "A sand castle"},
+              {"prompt": "How many shells did Kim find?", "choices": ["1", "2", "3", "4"], "correct": "3"}
+            ]
+          }
+        },
+        {
+          "id": "1-L5",
+          "title": "Sight Words Set 2",
+          "skill": "sight_words_advanced",
+          "description": "Learn: said, have, was, they, come",
+          "learn": {
+            "type": "introduction",
+            "content": "Time for more sight words! These words are tricky because they don't follow the regular rules. We just need to know them by heart!",
+            "items": [
+              {"word": "said", "sentence": "'Hello!' said the girl.", "trick": "'Said' sounds like 'sed' — the 'ai' is tricky!"},
+              {"word": "have", "sentence": "I have a new book.", "trick": "'Have' ends with a silent E but the 'a' stays short!"},
+              {"word": "was", "sentence": "It was a sunny day.", "trick": "'Was' sounds like 'wuz' — the 'a' sounds like /ŭ/!"},
+              {"word": "they", "sentence": "They are my friends.", "trick": "'They' has the /ā/ sound even though there's no 'a'!"},
+              {"word": "come", "sentence": "Come play with me!", "trick": "'Come' sounds like 'kum' — the 'o' is sneaky!"}
+            ]
+          },
+          "practice": {
+            "type": "word_recognition",
+            "instructions": "Pick the right sight word!",
+            "questions": [
+              {"prompt": "'Hello!' ___ the boy.", "choices": ["sad", "said", "sid", "sayed"], "correct": "said"},
+              {"prompt": "I ___ a big dog.", "choices": ["hav", "has", "have", "hive"], "correct": "have"},
+              {"prompt": "It ___ a rainy day.", "choices": ["was", "waz", "wus", "were"], "correct": "was"},
+              {"prompt": "___ went to the park.", "choices": ["Them", "They", "The", "Then"], "correct": "They"},
+              {"prompt": "___ play with me!", "choices": ["Came", "Come", "Comb", "Some"], "correct": "Come"}
+            ]
+          },
+          "read": {
+            "type": "story",
+            "title": "The Play Date",
+            "text": "'Come play!' said Mia. 🎮\nSo they went to the park.\nThey have a red ball and a jump rope.\n'I was here last time too!' said Ben.\nThey tossed the ball and jumped the rope.\n'This was the best day,' said Mia.\n'Let's come back soon!' they said.",
+            "questions": [
+              {"prompt": "Who said 'Come play!'?", "choices": ["Ben", "Mia", "Mom", "Dad"], "correct": "Mia"},
+              {"prompt": "What do they have?", "choices": ["A kite and a bat", "A ball and a rope", "A book and a pen", "A hat and a bag"], "correct": "A ball and a rope"},
+              {"prompt": "What sight word fills in: 'This ___ the best day'?", "choices": ["is", "was", "have", "said"], "correct": "was"}
+            ]
+          }
+        }
+      ]
+    },
+    "2nd": {
+      "level_name": "Growing Reader",
+      "level_number": 4,
+      "focus": "Vowel teams, compound words, prefixes/suffixes, inference",
+      "lessons": [
+        {
+          "id": "2-L1",
+          "title": "Vowel Teams: AI and AY",
+          "skill": "vowel_teams",
+          "description": "When two vowels go walking, the first one does the talking!",
+          "learn": {
+            "type": "introduction",
+            "content": "When 'A' and 'I' or 'A' and 'Y' team up, they make the long A sound! AI usually goes in the middle of a word. AY usually goes at the end.",
+            "items": [
+              {"team": "ai", "words": ["rain", "mail", "train", "paint"], "position": "middle", "emoji": "🌧️"},
+              {"team": "ay", "words": ["play", "day", "say", "stay"], "position": "end", "emoji": "☀️"}
+            ]
+          },
+          "practice": {
+            "type": "vowel_team_sort",
+            "instructions": "Does this word use AI or AY?",
+            "questions": [
+              {"prompt": "R___N (it falls from the sky)", "choices": ["rain (ai)", "rayn (ay)"], "correct": "rain (ai)"},
+              {"prompt": "PL___ (to have fun)", "choices": ["plai", "play (ay)"], "correct": "play (ay)"},
+              {"prompt": "TR___N (choo choo!)", "choices": ["train (ai)", "trayn (ay)"], "correct": "train (ai)"},
+              {"prompt": "D___ (24 hours)", "choices": ["dai", "day (ay)"], "correct": "day (ay)"},
+              {"prompt": "P___NT (art class!)", "choices": ["paint (ai)", "paynt (ay)"], "correct": "paint (ai)"}
+            ]
+          },
+          "read": {
+            "type": "story",
+            "title": "A Rainy Day",
+            "text": "It was a rainy day. 🌧️\nJay wanted to play, but the rain came down.\n'I will paint!' said Jay. 🎨\nHe painted a train on the mail truck.\nHe painted the sun with golden rays.\nSoon the rain stopped.\n'Hooray!' said Jay. 'Now I can play AND paint!'\nIt turned into the best day.",
+            "questions": [
+              {"prompt": "Why couldn't Jay play outside at first?", "choices": ["It was dark", "It was raining", "He was sick", "He had homework"], "correct": "It was raining"},
+              {"prompt": "What did Jay paint on the mail truck?", "choices": ["A boat", "A train", "A plane", "A cat"], "correct": "A train"},
+              {"prompt": "Find two words with 'ay': ", "choices": ["rain, paint", "day, play", "came, down", "sun, golden"], "correct": "day, play"}
+            ]
+          }
+        },
+        {
+          "id": "2-L2",
+          "title": "Compound Words",
+          "skill": "compound_words",
+          "description": "Two small words make one big word!",
+          "learn": {
+            "type": "introduction",
+            "content": "A compound word is made of two smaller words put together! 'Sun' + 'flower' = 'sunflower'! If you can read the small words, you can read the big word!",
+            "items": [
+              {"word": "sunflower", "parts": ["sun", "flower"], "emoji": "🌻"},
+              {"word": "rainbow", "parts": ["rain", "bow"], "emoji": "🌈"},
+              {"word": "bedroom", "parts": ["bed", "room"], "emoji": "🛏️"},
+              {"word": "football", "parts": ["foot", "ball"], "emoji": "🏈"},
+              {"word": "butterfly", "parts": ["butter", "fly"], "emoji": "🦋"},
+              {"word": "cupcake", "parts": ["cup", "cake"], "emoji": "🧁"}
+            ]
+          },
+          "practice": {
+            "type": "word_building",
+            "instructions": "Put the two words together!",
+            "questions": [
+              {"prompt": "sun + flower = ?", "choices": ["sunflower", "sunlight", "sunshine", "sunset"], "correct": "sunflower"},
+              {"prompt": "rain + bow = ?", "choices": ["raincoat", "rainbow", "raindrop", "rainfall"], "correct": "rainbow"},
+              {"prompt": "What two words make 'bedroom'?", "choices": ["be + droom", "bed + room", "bed + doom", "bear + room"], "correct": "bed + room"},
+              {"prompt": "cup + cake = ?", "choices": ["cupcake", "pancake", "hotcake", "oatcake"], "correct": "cupcake"},
+              {"prompt": "What two words make 'butterfly'?", "choices": ["but + fly", "butt + fly", "butter + fly", "button + fly"], "correct": "butter + fly"}
+            ]
+          },
+          "read": {
+            "type": "story",
+            "title": "The Backyard Adventure",
+            "text": "Emma went into the backyard. 🌿\nA butterfly landed on a sunflower. 🦋🌻\nA ladybug crawled on a blueberry bush.\nEmma saw a rainbow after the rainstorm! 🌈\n'The outside is amazing!' said Emma.\nShe ate a cupcake on the doorstep. 🧁\nThen a firefly lit up the night. ✨\nEmma loved her backyard adventure!",
+            "questions": [
+              {"prompt": "Name a compound word from the story.", "choices": ["amazing", "butterfly", "landed", "crawled"], "correct": "butterfly"},
+              {"prompt": "What did Emma eat?", "choices": ["A blueberry", "A sunflower", "A cupcake", "A pancake"], "correct": "A cupcake"},
+              {"prompt": "What lit up the night?", "choices": ["A rainbow", "A firefly", "A ladybug", "The sun"], "correct": "A firefly"}
+            ]
+          }
+        },
+        {
+          "id": "2-L3",
+          "title": "Prefixes: un- and re-",
+          "skill": "prefixes",
+          "description": "Small word parts that change meaning!",
+          "learn": {
+            "type": "introduction",
+            "content": "A prefix is a small part added to the BEGINNING of a word that changes its meaning. 'Un-' means NOT or the opposite. 'Re-' means AGAIN or back.",
+            "items": [
+              {"prefix": "un-", "meaning": "not / opposite", "examples": [
+                {"word": "unhappy", "base": "happy", "meaning": "not happy"},
+                {"word": "unkind", "base": "kind", "meaning": "not kind"},
+                {"word": "unlock", "base": "lock", "meaning": "opposite of lock"}
+              ]},
+              {"prefix": "re-", "meaning": "again / back", "examples": [
+                {"word": "reread", "base": "read", "meaning": "read again"},
+                {"word": "redo", "base": "do", "meaning": "do again"},
+                {"word": "retell", "base": "tell", "meaning": "tell again"}
+              ]}
+            ]
+          },
+          "practice": {
+            "type": "prefix_meaning",
+            "instructions": "What does the word with the prefix mean?",
+            "questions": [
+              {"prompt": "What does 'unhappy' mean?", "choices": ["Very happy", "Not happy", "Happy again", "Almost happy"], "correct": "Not happy"},
+              {"prompt": "What does 'rewrite' mean?", "choices": ["Not write", "Write fast", "Write again", "Write badly"], "correct": "Write again"},
+              {"prompt": "What does 'unsafe' mean?", "choices": ["Very safe", "Not safe", "Safe again", "Almost safe"], "correct": "Not safe"},
+              {"prompt": "What does 'replay' mean?", "choices": ["Not play", "Play again", "Play fast", "Play alone"], "correct": "Play again"},
+              {"prompt": "Add 'un-' to 'fair'. What does 'unfair' mean?", "choices": ["Very fair", "Not fair", "Fair again", "Almost fair"], "correct": "Not fair"}
+            ]
+          },
+          "read": {
+            "type": "story",
+            "title": "The Redo Day",
+            "text": "Max was unhappy. 😞\nHis drawing was unfinished and his room was untidy.\n'I need to redo this day!' said Max.\nHe restarted his drawing. 🎨\nHe repacked his backpack.\nHe retied his shoes. 👟\n'Now everything is done!' said Max.\nHe was no longer unhappy.\nHe was the opposite — he was HAPPY! 😊",
+            "questions": [
+              {"prompt": "Why was Max unhappy at first?", "choices": ["He was hungry", "His drawing was unfinished", "He lost his dog", "It was raining"], "correct": "His drawing was unfinished"},
+              {"prompt": "What does 'redo' mean?", "choices": ["Do it badly", "Not do it", "Do it again", "Do it fast"], "correct": "Do it again"},
+              {"prompt": "What is the opposite of 'unhappy'?", "choices": ["Sad", "Angry", "Tired", "Happy"], "correct": "Happy"}
+            ]
+          }
+        },
+        {
+          "id": "2-L4",
+          "title": "Making Inferences",
+          "skill": "comprehension_inference",
+          "description": "Read between the lines to figure things out!",
+          "learn": {
+            "type": "introduction",
+            "content": "Sometimes a story doesn't tell you EVERYTHING. You have to be a reading detective! Use clues in the story plus what you already know to figure out what's happening.",
+            "items": [
+              {"clue": "Sara put on her bathing suit and grabbed a towel.", "inference": "Sara is going swimming!", "emoji": "🏊"},
+              {"clue": "The dog's tail was wagging and he was jumping up and down.", "inference": "The dog is happy/excited!", "emoji": "🐕"},
+              {"clue": "Dark clouds filled the sky and the wind started blowing.", "inference": "A storm is coming!", "emoji": "⛈️"}
+            ]
+          },
+          "practice": {
+            "type": "inference",
+            "instructions": "Read the clues and figure out what's happening!",
+            "questions": [
+              {"prompt": "Leo put on his helmet and knee pads. He grabbed his skateboard. What is Leo about to do?", "choices": ["Cook dinner", "Go skateboarding", "Go to bed", "Read a book"], "correct": "Go skateboarding"},
+              {"prompt": "The baby's eyes were closing. She yawned and rubbed her eyes. How does the baby feel?", "choices": ["Hungry", "Scared", "Sleepy", "Excited"], "correct": "Sleepy"},
+              {"prompt": "Mom came home with bags of groceries and a birthday cake. What might happen soon?", "choices": ["A fire drill", "A birthday party", "A car wash", "A haircut"], "correct": "A birthday party"},
+              {"prompt": "Jake looked out the window and saw white flakes falling from the sky. What is the weather?", "choices": ["Rainy", "Sunny", "Snowy", "Windy"], "correct": "Snowy"},
+              {"prompt": "The cat arched its back and hissed at the dog. How does the cat feel?", "choices": ["Happy", "Scared or angry", "Sleepy", "Hungry"], "correct": "Scared or angry"}
+            ]
+          },
+          "read": {
+            "type": "story",
+            "title": "The Mystery Visitor",
+            "text": "One morning, Ava found muddy footprints on the porch. 🐾\nThe footprints were small with four toes.\nA bowl of cat food was empty.\nAva saw scratch marks on the fence.\nThen she heard a soft 'meow' from behind the bush. 🌿\nAva smiled and got some more food.\n'Come here, little friend,' she whispered.",
+            "questions": [
+              {"prompt": "What animal do you think visited?", "choices": ["A dog", "A bird", "A cat", "A rabbit"], "correct": "A cat"},
+              {"prompt": "What clue tells you the visitor was hungry?", "choices": ["Muddy footprints", "Scratch marks", "Empty food bowl", "The meow sound"], "correct": "Empty food bowl"},
+              {"prompt": "How does Ava feel about the visitor?", "choices": ["Scared", "Angry", "Happy and kind", "Confused"], "correct": "Happy and kind"}
+            ]
+          }
+        },
+        {
+          "id": "2-L5",
+          "title": "Suffixes: -ing and -ed",
+          "skill": "suffixes",
+          "description": "Word endings that show when things happen!",
+          "learn": {
+            "type": "introduction",
+            "content": "A suffix goes at the END of a word. '-ing' means something is happening RIGHT NOW. '-ed' means it ALREADY HAPPENED (past tense).",
+            "items": [
+              {"suffix": "-ing", "meaning": "happening now", "examples": [
+                {"base": "jump", "word": "jumping", "sentence": "I am jumping right now!"},
+                {"base": "read", "word": "reading", "sentence": "She is reading a book."},
+                {"base": "play", "word": "playing", "sentence": "They are playing outside."}
+              ]},
+              {"suffix": "-ed", "meaning": "already happened", "examples": [
+                {"base": "jump", "word": "jumped", "sentence": "I jumped yesterday."},
+                {"base": "play", "word": "played", "sentence": "She played outside."},
+                {"base": "walk", "word": "walked", "sentence": "We walked to school."}
+              ]}
+            ]
+          },
+          "practice": {
+            "type": "suffix_choice",
+            "instructions": "Pick -ing or -ed to complete the sentence!",
+            "questions": [
+              {"prompt": "Yesterday, I _____ to the store. (walk)", "choices": ["walking", "walked"], "correct": "walked"},
+              {"prompt": "Right now, she is _____ a song. (sing)", "choices": ["singing", "singed"], "correct": "singing"},
+              {"prompt": "Last week, they _____ a fort. (build)", "choices": ["building", "built"], "correct": "built"},
+              {"prompt": "He is _____ his homework right now. (do)", "choices": ["doing", "did"], "correct": "doing"},
+              {"prompt": "We _____ at the funny movie last night. (laugh)", "choices": ["laughing", "laughed"], "correct": "laughed"}
+            ]
+          },
+          "read": {
+            "type": "story",
+            "title": "The School Play",
+            "text": "Last week, our class performed a play. 🎭\nI played a talking tree. My friend Nora was singing a song.\nWe had practiced for weeks!\nOn the big night, the lights turned on.\nNora started singing beautifully. 🎵\nI waved my branches and talked in a deep voice.\nThe audience clapped and cheered! 👏\nWe all bowed when we finished.\n'That was amazing!' everyone said.",
+            "questions": [
+              {"prompt": "When did the play happen?", "choices": ["Today", "Last week", "Tomorrow", "Right now"], "correct": "Last week"},
+              {"prompt": "What was Nora doing in the play?", "choices": ["Talking", "Dancing", "Singing", "Drawing"], "correct": "Singing"},
+              {"prompt": "Find a word with -ed that means 'already happened':", "choices": ["singing", "talking", "finished", "amazing"], "correct": "finished"}
+            ]
+          }
+        }
+      ]
+    },
+    "3rd": {
+      "level_name": "Independent Reader",
+      "level_number": 5,
+      "focus": "Advanced phonics, main idea, context clues, fluent reading",
+      "lessons": [
+        {
+          "id": "3-L1",
+          "title": "Tricky Spelling Patterns",
+          "skill": "advanced_phonics",
+          "description": "Master silent letters and unusual spellings",
+          "learn": {
+            "type": "introduction",
+            "content": "English has some tricky spellings! Some letters are silent, and some letter combinations make unexpected sounds. Good readers learn to spot these patterns.",
+            "items": [
+              {"pattern": "silent k", "words": ["know", "knee", "knife", "knock"], "rule": "When K comes before N, the K is silent!"},
+              {"pattern": "silent w", "words": ["write", "wrong", "wrap", "wrist"], "rule": "When W comes before R, the W is silent!"},
+              {"pattern": "ph = /f/", "words": ["phone", "photo", "graph", "dolphin"], "rule": "PH makes the /f/ sound — it comes from Greek!"},
+              {"pattern": "igh = /ī/", "words": ["night", "light", "right", "sight"], "rule": "IGH makes the long I sound. The G and H are silent!"}
+            ]
+          },
+          "practice": {
+            "type": "pattern_recognition",
+            "instructions": "Spot the tricky pattern!",
+            "questions": [
+              {"prompt": "Which letter is silent in 'know'?", "choices": ["k", "n", "o", "w"], "correct": "k"},
+              {"prompt": "Which letter is silent in 'write'?", "choices": ["w", "r", "i", "e"], "correct": "w"},
+              {"prompt": "What sound does PH make in 'phone'?", "choices": ["/p/", "/h/", "/f/", "/ph/"], "correct": "/f/"},
+              {"prompt": "What vowel sound is in 'night'?", "choices": ["Short i", "Long i", "Short a", "Long a"], "correct": "Long i"},
+              {"prompt": "Which word has a silent letter?", "choices": ["stop", "plan", "knee", "fast"], "correct": "knee"}
+            ]
+          },
+          "read": {
+            "type": "story",
+            "title": "The Photographer's Night",
+            "text": "Phillip was a photographer who loved the night sky. 📸\nHe would write about the stars in his journal.\nOne night, he saw a bright light streak across the sky!\n'I know what that is — a shooting star!' he thought.\nHe knocked on his sister's door. 'Come look!'\nThey sat on the porch in the moonlight.\nPhillip took a photo of the night sky. ✨\nIt was the most beautiful sight he had ever seen.",
+            "questions": [
+              {"prompt": "What is Phillip's hobby?", "choices": ["Writing", "Photography", "Cooking", "Drawing"], "correct": "Photography"},
+              {"prompt": "Find a word with a silent K.", "choices": ["night", "know", "photo", "bright"], "correct": "know"},
+              {"prompt": "What did Phillip see in the sky?", "choices": ["An airplane", "A bird", "A shooting star", "A cloud"], "correct": "A shooting star"}
+            ]
+          }
+        },
+        {
+          "id": "3-L2",
+          "title": "Finding the Main Idea",
+          "skill": "main_idea",
+          "description": "What is the passage mostly about?",
+          "learn": {
+            "type": "introduction",
+            "content": "The main idea is what a passage is MOSTLY about. It's the big point the author wants you to understand. Details support the main idea — they're the examples and facts that help explain it.",
+            "items": [
+              {"example": "Dogs make great pets. They are loyal and friendly. They can learn tricks and love to play. Many families enjoy having a dog.", "main_idea": "Dogs make great pets.", "details": ["They are loyal", "They learn tricks", "Families enjoy them"]},
+              {"example": "Recycling helps the Earth. Paper, plastic, and glass can all be recycled. When we recycle, we reduce waste in landfills.", "main_idea": "Recycling helps the Earth.", "details": ["Paper, plastic, glass can be recycled", "Reduces waste"]}
+            ]
+          },
+          "practice": {
+            "type": "main_idea_id",
+            "instructions": "What is the main idea?",
+            "questions": [
+              {"prompt": "Read: 'Bees are very important. They help flowers grow by spreading pollen. Without bees, we wouldn't have many fruits and vegetables.' What is the main idea?", "choices": ["Flowers need water", "Bees are very important", "Fruits taste good", "Pollen is yellow"], "correct": "Bees are very important"},
+              {"prompt": "Read: 'Exercise keeps your body healthy. It makes your heart strong and your muscles big. Even a short walk each day can help.' What is the main idea?", "choices": ["Walking is boring", "Exercise keeps your body healthy", "Muscles are big", "Hearts are important"], "correct": "Exercise keeps your body healthy"},
+              {"prompt": "Read: 'The ocean is home to many creatures. Fish, whales, dolphins, and jellyfish all live there. Coral reefs are like underwater cities.' What is the main idea?", "choices": ["Jellyfish are scary", "Coral is colorful", "The ocean is home to many creatures", "Dolphins are smart"], "correct": "The ocean is home to many creatures"},
+              {"prompt": "Which is a DETAIL, not a main idea? 'Dogs make great pets. They are loyal and friendly.'", "choices": ["Dogs make great pets", "They are loyal and friendly"], "correct": "They are loyal and friendly"},
+              {"prompt": "Read: 'Water is essential for life. Humans need about 8 glasses a day. Plants need water to grow. Even desert animals find ways to get water.' Main idea?", "choices": ["Deserts are dry", "Plants need sun", "Water is essential for life", "8 glasses is a lot"], "correct": "Water is essential for life"}
+            ]
+          },
+          "read": {
+            "type": "story",
+            "title": "The Amazing Octopus",
+            "text": "The octopus is one of the most amazing animals in the ocean. 🐙\nIt has eight flexible arms that can grab, taste, and feel.\nAn octopus can change its color in less than a second!\nIt uses this ability to hide from predators or sneak up on prey.\nThe octopus is also incredibly smart. Scientists have watched octopuses solve puzzles, open jars, and even escape from tanks!\nSome researchers believe octopuses are the smartest invertebrates on Earth.\nNext time you see an octopus, remember — there's a lot going on in that big head!",
+            "questions": [
+              {"prompt": "What is the main idea of this passage?", "choices": ["Octopuses have eight arms", "Octopuses can change color", "The octopus is an amazing animal", "Scientists study the ocean"], "correct": "The octopus is an amazing animal"},
+              {"prompt": "Which is a supporting detail?", "choices": ["Octopuses are amazing", "They can change color in less than a second", "The ocean is big", "Animals are interesting"], "correct": "They can change color in less than a second"},
+              {"prompt": "Why does an octopus change color?", "choices": ["To look pretty", "To hide or sneak up on prey", "Because it's cold", "To attract friends"], "correct": "To hide or sneak up on prey"}
+            ]
+          }
+        },
+        {
+          "id": "3-L3",
+          "title": "Context Clues",
+          "skill": "vocabulary_context",
+          "description": "Use the words around a new word to figure out its meaning!",
+          "learn": {
+            "type": "introduction",
+            "content": "When you find a word you don't know, don't panic! Look at the words around it for clues. The sentence often gives you hints about what the mystery word means.",
+            "items": [
+              {"sentence": "The enormous elephant was the biggest animal at the zoo.", "unknown": "enormous", "clue": "biggest", "meaning": "very big"},
+              {"sentence": "The famished boy ate three plates of food because he was so hungry.", "unknown": "famished", "clue": "so hungry, ate three plates", "meaning": "very hungry"},
+              {"sentence": "The road was treacherous — icy, steep, and full of sharp turns.", "unknown": "treacherous", "clue": "icy, steep, sharp turns", "meaning": "dangerous"}
+            ]
+          },
+          "practice": {
+            "type": "context_clues",
+            "instructions": "Use context clues to figure out the meaning!",
+            "questions": [
+              {"prompt": "'The jubilant fans cheered and danced when their team won.' What does 'jubilant' mean?", "choices": ["Sad", "Very happy", "Tired", "Quiet"], "correct": "Very happy"},
+              {"prompt": "'The peculiar noise was strange and unlike anything we'd heard before.' What does 'peculiar' mean?", "choices": ["Loud", "Normal", "Strange", "Quiet"], "correct": "Strange"},
+              {"prompt": "'After running five miles, the exhausted runner collapsed on the ground.' What does 'exhausted' mean?", "choices": ["Very tired", "Very fast", "Very happy", "Very strong"], "correct": "Very tired"},
+              {"prompt": "'The generous woman donated food, money, and clothes to people in need.' What does 'generous' mean?", "choices": ["Selfish", "Mean", "Giving and kind", "Rich"], "correct": "Giving and kind"},
+              {"prompt": "'The frigid wind made everyone shiver and put on heavy coats.' What does 'frigid' mean?", "choices": ["Warm", "Very cold", "Gentle", "Strong"], "correct": "Very cold"}
+            ]
+          },
+          "read": {
+            "type": "story",
+            "title": "The Science Fair",
+            "text": "Olivia was apprehensive about the science fair. Her stomach felt tight with worry. 😰\nHer project was about how plants respond to different types of music.\n'What if the judges think it's bizarre?' she thought. It was certainly an unusual topic.\nBut when she presented, the judges were captivated. They couldn't stop watching and asking questions!\n'Your experiment is remarkable,' said one judge. 'Truly outstanding.'\nOlivia beamed with pride. Her anxiety melted away.\nShe won second place — not bad for a project that started as a peculiar idea! 🏆",
+            "questions": [
+              {"prompt": "What does 'apprehensive' mean? (Use context clues!)", "choices": ["Excited", "Worried/nervous", "Happy", "Bored"], "correct": "Worried/nervous"},
+              {"prompt": "What does 'captivated' mean based on the sentence?", "choices": ["Bored", "Confused", "Very interested", "Angry"], "correct": "Very interested"},
+              {"prompt": "What was Olivia's project about?", "choices": ["How plants grow in soil", "How plants respond to music", "How to make a volcano", "How animals sleep"], "correct": "How plants respond to music"}
+            ]
+          }
+        },
+        {
+          "id": "3-L4",
+          "title": "Fact vs. Opinion",
+          "skill": "critical_thinking",
+          "description": "Is it a FACT or someone's OPINION?",
+          "learn": {
+            "type": "introduction",
+            "content": "A FACT is something that can be proven true. An OPINION is what someone thinks or feels — other people might disagree! Good readers know the difference.",
+            "items": [
+              {"statement": "Water freezes at 32°F.", "type": "fact", "why": "This can be measured and proven."},
+              {"statement": "Chocolate ice cream is the best flavor.", "type": "opinion", "why": "Not everyone agrees! Some people like vanilla."},
+              {"statement": "The Earth orbits the Sun.", "type": "fact", "why": "Scientists have proven this."},
+              {"statement": "Dogs are better pets than cats.", "type": "opinion", "why": "This depends on the person!"}
+            ]
+          },
+          "practice": {
+            "type": "fact_opinion",
+            "instructions": "Is it a fact or an opinion?",
+            "questions": [
+              {"prompt": "There are 50 states in the United States.", "choices": ["Fact", "Opinion"], "correct": "Fact"},
+              {"prompt": "Pizza is the most delicious food.", "choices": ["Fact", "Opinion"], "correct": "Opinion"},
+              {"prompt": "The sun rises in the east.", "choices": ["Fact", "Opinion"], "correct": "Fact"},
+              {"prompt": "Reading is more fun than math.", "choices": ["Fact", "Opinion"], "correct": "Opinion"},
+              {"prompt": "Penguins live in cold climates.", "choices": ["Fact", "Opinion"], "correct": "Fact"}
+            ]
+          },
+          "read": {
+            "type": "story",
+            "title": "The Book Report Debate",
+            "text": "Mr. Chen's class was debating their book reports.\n'Charlotte's Web is the greatest book ever written!' said Maya.\n'I disagree,' said James. 'It was written in 1952 — that's a fact. But calling it the greatest is just your opinion.'\n'Charlotte's Web has sold over 45 million copies,' added Mr. Chen. 'That's a fact.'\n'See? It IS the greatest!' said Maya.\n'Those are impressive numbers,' said James. 'But best is still an opinion. I personally think Harry Potter is better.'\nMr. Chen smiled. 'You're both using facts AND opinions — and that's exactly what good readers do!'",
+            "questions": [
+              {"prompt": "Which is a FACT from the story?", "choices": ["Charlotte's Web is the greatest", "It was written in 1952", "Harry Potter is better", "Books are fun"], "correct": "It was written in 1952"},
+              {"prompt": "Which is an OPINION?", "choices": ["It sold 45 million copies", "It was written in 1952", "Charlotte's Web is the greatest ever", "Mr. Chen is the teacher"], "correct": "Charlotte's Web is the greatest ever"},
+              {"prompt": "What does Mr. Chen say good readers do?", "choices": ["Only state facts", "Only share opinions", "Use both facts and opinions", "Read every day"], "correct": "Use both facts and opinions"}
+            ]
+          }
+        },
+        {
+          "id": "3-L5",
+          "title": "Reading Like a Writer",
+          "skill": "author_craft",
+          "description": "How do authors make their writing interesting?",
+          "learn": {
+            "type": "introduction",
+            "content": "Authors use special techniques to make writing exciting! They choose words carefully, use comparisons, and add details that help you SEE, HEAR, and FEEL what's happening.",
+            "items": [
+              {"technique": "Simile", "definition": "Comparing two things using 'like' or 'as'", "example": "The snow was as white as cotton.", "emoji": "❄️"},
+              {"technique": "Vivid verbs", "definition": "Using strong action words instead of boring ones", "example": "Instead of 'walked,' say 'stomped' or 'tiptoed'!", "emoji": "🦶"},
+              {"technique": "Sensory details", "definition": "Words that help you see, hear, smell, taste, or feel", "example": "The sizzling bacon filled the kitchen with a smoky aroma.", "emoji": "🥓"},
+              {"technique": "Dialogue", "definition": "Characters talking to make the story feel real", "example": "'Watch out!' screamed Jake.", "emoji": "💬"}
+            ]
+          },
+          "practice": {
+            "type": "author_craft_id",
+            "instructions": "What technique is the author using?",
+            "questions": [
+              {"prompt": "'Her smile was as bright as the sun.' What technique is this?", "choices": ["Dialogue", "Simile", "Vivid verb", "Sensory detail"], "correct": "Simile"},
+              {"prompt": "'The thunder BOOMED across the valley.' What makes this sentence strong?", "choices": ["A simile", "A vivid verb (boomed)", "Dialogue", "A question"], "correct": "A vivid verb (boomed)"},
+              {"prompt": "'The warm, gooey chocolate melted on her tongue.' What technique?", "choices": ["Simile", "Dialogue", "Sensory details", "Vivid verb"], "correct": "Sensory details"},
+              {"prompt": "'\"Run!\" shouted Maria.' What technique?", "choices": ["Simile", "Sensory detail", "Vivid verb", "Dialogue"], "correct": "Dialogue"},
+              {"prompt": "Which is more vivid? ", "choices": ["The dog went across the yard", "The dog bounded across the yard"], "correct": "The dog bounded across the yard"}
+            ]
+          },
+          "read": {
+            "type": "story",
+            "title": "The Storm",
+            "text": "The sky turned dark as ink. ⛈️\nWind howled through the trees like a pack of wolves.\nLeaves danced and swirled in wild circles.\n'Get inside!' Dad hollered from the porch.\nRain hammered the roof — tap, tap, TAP, TAP, TAP!\nLightning cracked across the sky, bright as a camera flash. ⚡\nInside, we huddled under blankets.\nThe warm cocoa soothed our shivery hands.\nSlowly, the thunder grumbled softer and softer,\nuntil the storm tiptoed away into the night. 🌙",
+            "questions": [
+              {"prompt": "Find a simile in the story.", "choices": ["Rain hammered the roof", "Dark as ink", "Leaves danced", "Dad hollered"], "correct": "Dark as ink"},
+              {"prompt": "Which is a vivid verb from the story?", "choices": ["went", "said", "hammered", "was"], "correct": "hammered"},
+              {"prompt": "What sensory detail tells you how the cocoa felt?", "choices": ["It was brown", "It soothed their shivery hands", "They drank it", "It was in a cup"], "correct": "It soothed their shivery hands"}
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

@@ -36,6 +36,15 @@ export interface Assessment {
   completed_at: string;
 }
 
+export interface LessonProgress {
+  id: string; // UUID
+  child_id: string; // UUID - references children.id
+  lesson_id: string;
+  section: 'learn' | 'practice' | 'read';
+  score: number;
+  completed_at: string;
+}
+
 export interface OnboardingPreferences {
   id: string; // UUID
   user_id: string; // UUID - references profiles.id

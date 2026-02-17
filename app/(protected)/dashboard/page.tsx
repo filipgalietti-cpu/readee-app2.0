@@ -3,7 +3,9 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { supabaseBrowser } from "@/lib/supabase/client";
-import { Child } from "@/lib/db/types";
+import { Child, LessonProgress } from "@/lib/db/types";
+import { levelNameToGradeKey } from "@/lib/assessment/questions";
+import lessonsData from "@/lib/data/lessons.json";
 
 const AVATARS = ["😊", "🦊", "🐱", "🦋", "🐻"];
 
@@ -279,6 +281,7 @@ function ChildDashboard({
 }) {
   const [hasAssessment, setHasAssessment] = useState<boolean | null>(null);
   const [readingLevel, setReadingLevel] = useState<string | null>(child.reading_level);
+  const [lessonProgress, setLessonProgress] = useState<LessonProgress[]>([]);
   const childIndex = children.findIndex((c) => c.id === child.id);
   const avatar = AVATARS[childIndex % AVATARS.length];
   const hasMultiple = children.length > 1;
@@ -295,7 +298,6 @@ function ChildDashboard({
 
       if (error) {
         console.error("Error checking assessment:", error);
-        // If assessments table doesn't exist yet, treat as no assessment
         setHasAssessment(false);
         return;
       }
@@ -303,6 +305,16 @@ function ChildDashboard({
       if (data && data.length > 0) {
         setHasAssessment(true);
         setReadingLevel(data[0].reading_level_placed);
+
+        // Fetch lesson progress
+        const { data: progress } = await supabase
+          .from("lessons_progress")
+          .select("*")
+          .eq("child_id", child.id);
+
+        if (progress) {
+          setLessonProgress(progress as LessonProgress[]);
+        }
       } else {
         setHasAssessment(false);
       }
@@ -376,17 +388,9 @@ function ChildDashboard({
         />
       </div>
 
-      {/* Primary CTA: Assessment if not taken, Start Reading if done */}
+      {/* Primary CTA: Assessment if not taken, Lesson Path if done */}
       {hasAssessment ? (
-        <Link href="/reader/1" className="block">
-          <div className="rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 p-6 text-center text-white hover:from-indigo-700 hover:to-violet-600 transition-all duration-200 shadow-lg hover:shadow-xl cursor-pointer">
-            <div className="text-3xl mb-2">📖</div>
-            <div className="text-lg font-bold">Start Reading</div>
-            <div className="text-indigo-200 text-sm mt-1">
-              Jump into a story and earn XP
-            </div>
-          </div>
-        </Link>
+        <LessonPath child={child} readingLevel={readingLevel} lessonProgress={lessonProgress} />
       ) : (
         <Link href={`/assessment?child=${child.id}`} className="block">
           <div className="rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 p-6 text-center text-white hover:from-indigo-700 hover:to-violet-600 transition-all duration-200 shadow-lg hover:shadow-xl cursor-pointer">
@@ -429,6 +433,121 @@ function ChildDashboard({
         <p className="text-sm text-zinc-400 text-center py-6">
           No activity yet. Start reading to see your progress here!
         </p>
+      </div>
+    </div>
+  );
+}
+
+/* ─── Lesson Path ─────────────────────────────────────── */
+
+interface LessonData {
+  id: string;
+  title: string;
+  skill: string;
+}
+
+interface LevelData {
+  level_name: string;
+  level_number: number;
+  focus: string;
+  lessons: LessonData[];
+}
+
+interface LessonsFile {
+  levels: Record<string, LevelData>;
+}
+
+function LessonPath({
+  child,
+  readingLevel,
+  lessonProgress,
+}: {
+  child: Child;
+  readingLevel: string | null;
+  lessonProgress: LessonProgress[];
+}) {
+  const gradeKey = levelNameToGradeKey(readingLevel);
+  const file = lessonsData as unknown as LessonsFile;
+  const level = file.levels[gradeKey];
+  const lessons = level?.lessons || [];
+
+  const isLessonComplete = (lessonId: string) => {
+    const sections = lessonProgress.filter((p) => p.lesson_id === lessonId);
+    const completedSections = new Set(sections.map((s) => s.section));
+    return completedSections.has("learn") && completedSections.has("practice") && completedSections.has("read");
+  };
+
+  let firstIncomplete = -1;
+  for (let i = 0; i < lessons.length; i++) {
+    if (!isLessonComplete(lessons[i].id)) {
+      firstIncomplete = i;
+      break;
+    }
+  }
+
+  return (
+    <div className="rounded-2xl border border-zinc-200 bg-white p-6 space-y-4">
+      <div className="flex items-center justify-between">
+        <h3 className="text-base font-bold text-zinc-900">Your Reading Path</h3>
+        {readingLevel && (
+          <span className="px-3 py-1 rounded-full text-xs font-semibold bg-violet-50 text-violet-700">
+            {readingLevel}
+          </span>
+        )}
+      </div>
+
+      <div className="space-y-3">
+        {lessons.map((lesson, i) => {
+          const complete = isLessonComplete(lesson.id);
+          const isNext = i === firstIncomplete;
+          const isFuture = !complete && !isNext;
+
+          return (
+            <div
+              key={lesson.id}
+              className={`rounded-xl border p-4 transition-all ${
+                complete
+                  ? "border-green-200 bg-green-50/50"
+                  : isNext
+                  ? "border-indigo-300 bg-indigo-50/50 shadow-sm"
+                  : "border-zinc-100 bg-zinc-50/50 opacity-60"
+              }`}
+            >
+              <div className="flex items-center gap-3">
+                <div
+                  className={`w-10 h-10 rounded-xl flex items-center justify-center text-sm font-bold flex-shrink-0 ${
+                    complete
+                      ? "bg-green-100 text-green-600"
+                      : isNext
+                      ? "bg-indigo-100 text-indigo-600"
+                      : "bg-zinc-100 text-zinc-400"
+                  }`}
+                >
+                  {complete ? "✓" : i + 1}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className={`font-semibold text-sm ${isFuture ? "text-zinc-400" : "text-zinc-900"}`}>
+                    Lesson {i + 1}: {lesson.title}
+                  </div>
+                  <div className={`text-xs mt-0.5 ${isFuture ? "text-zinc-300" : "text-zinc-500"}`}>
+                    {lesson.skill}
+                  </div>
+                </div>
+                {complete && (
+                  <span className="text-xs font-semibold text-green-600">Completed</span>
+                )}
+                {isNext && (
+                  <Link
+                    href={`/lesson?child=${child.id}&lesson=${lesson.id}`}
+                    className="px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-xs font-bold hover:from-indigo-700 hover:to-violet-600 transition-all shadow-sm"
+                  >
+                    Start Lesson
+                  </Link>
+                )}
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

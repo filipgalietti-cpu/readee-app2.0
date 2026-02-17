@@ -127,6 +127,15 @@ export const grades: Record<GradeKey, GradeAssessment> = {
   },
 };
 
+/** Map reading level name back to grade key (reverse of grades[key].reading_level_name) */
+export function levelNameToGradeKey(levelName: string | null): GradeKey {
+  if (!levelName) return "kindergarten";
+  for (const key of gradeOrder) {
+    if (grades[key].reading_level_name === levelName) return key;
+  }
+  return "kindergarten";
+}
+
 /** Map child's grade from questionnaire to a grade key */
 export function gradeToKey(grade: string | null): GradeKey {
   if (!grade) return "kindergarten";
