@@ -16,40 +16,109 @@ export default async function HomePage() {
     <div className="-mx-6 -mt-8">
       {/* Hero */}
       <section className="px-6 py-20 md:py-28">
-        <div className="max-w-3xl mx-auto text-center space-y-6">
-          <h1 className="text-4xl md:text-5xl font-bold text-zinc-900 tracking-tight leading-tight">
-            Every child can become a{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-500">
-              confident reader
-            </span>
-          </h1>
-          <p className="text-lg text-zinc-600 max-w-2xl mx-auto leading-relaxed">
-            Readee uses the Science of Reading to build a personalized lesson
-            path for your child. Systematic phonics, engaging practice, and real
-            stories — all in one place.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-            <Link
-              href="/signup"
-              className="px-8 py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white font-bold text-lg hover:from-indigo-700 hover:to-violet-600 transition-all shadow-lg"
-            >
-              Start Your Free Trial
-            </Link>
-            <Link
-              href="/about"
-              className="px-8 py-4 rounded-2xl border border-zinc-200 text-zinc-700 font-semibold text-lg hover:bg-zinc-50 transition-all"
-            >
-              Learn More
-            </Link>
+        <div className="max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              <h1 className="text-4xl md:text-5xl font-bold text-zinc-900 tracking-tight leading-tight">
+                Every child can become a{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-500">
+                  confident reader
+                </span>
+              </h1>
+              <p className="text-lg text-zinc-600 leading-relaxed">
+                Readee uses the Science of Reading to build a personalized lesson
+                path for your child. Systematic phonics, engaging practice, and
+                real stories — all in one place.
+              </p>
+              <div className="flex flex-col sm:flex-row items-start gap-4 pt-2">
+                <Link
+                  href="/signup"
+                  className="px-8 py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white font-bold text-lg hover:from-indigo-700 hover:to-violet-600 transition-all shadow-lg"
+                >
+                  Get Started Free
+                </Link>
+                <Link
+                  href="/about"
+                  className="px-8 py-4 rounded-2xl border border-zinc-200 text-zinc-700 font-semibold text-lg hover:bg-zinc-50 transition-all"
+                >
+                  Learn More
+                </Link>
+              </div>
+              <p className="text-sm text-zinc-400">
+                No credit card required. Free plan available.
+              </p>
+            </div>
+
+            {/* Dashboard Mockup */}
+            <div className="rounded-2xl border border-zinc-200 bg-white shadow-xl overflow-hidden">
+              <div className="bg-gradient-to-r from-indigo-600 to-violet-500 px-6 py-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white font-bold text-lg">
+                    B
+                  </div>
+                  <div>
+                    <div className="text-white font-bold">Bobby</div>
+                    <div className="text-indigo-200 text-sm">Pre-K Level</div>
+                  </div>
+                </div>
+              </div>
+              <div className="p-6 space-y-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm font-medium text-zinc-500">
+                    Reading Level
+                  </span>
+                  <span className="px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 text-xs font-bold">
+                    Pre-K
+                  </span>
+                </div>
+                <div>
+                  <div className="flex items-center justify-between text-sm mb-1">
+                    <span className="text-zinc-500">Progress</span>
+                    <span className="text-zinc-700 font-medium">
+                      Just getting started!
+                    </span>
+                  </div>
+                  <div className="w-full h-2 rounded-full bg-zinc-100">
+                    <div className="w-1/12 h-2 rounded-full bg-gradient-to-r from-indigo-500 to-violet-500" />
+                  </div>
+                </div>
+                <div className="rounded-xl bg-indigo-50 border border-indigo-100 p-4 text-center">
+                  <div className="text-sm font-semibold text-indigo-900 mb-1">
+                    Start Reading Assessment
+                  </div>
+                  <div className="text-xs text-indigo-600">
+                    Take a quick quiz to find Bobby&apos;s reading level
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <p className="text-sm text-zinc-400">
-            No credit card required. Try Readee free for 7 days.
-          </p>
+        </div>
+      </section>
+
+      {/* Stats */}
+      <section className="px-6 py-8 bg-zinc-50/50 border-y border-zinc-100">
+        <div className="max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            {[
+              { value: "Pre-K – 3rd", label: "Grade levels supported" },
+              { value: "10 min", label: "Average lesson time" },
+              { value: "3 skills", label: "Per lesson" },
+              { value: "Free", label: "Plan available" },
+            ].map((stat) => (
+              <div key={stat.label}>
+                <div className="text-xl md:text-2xl font-bold text-indigo-700">
+                  {stat.value}
+                </div>
+                <div className="text-sm text-zinc-500 mt-1">{stat.label}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* How It Works */}
-      <section className="px-6 py-16 bg-zinc-50/50">
+      <section className="px-6 py-16">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-bold text-zinc-900 text-center tracking-tight mb-12">
             How Readee Works
@@ -60,7 +129,7 @@ export default async function HomePage() {
                 step: "1",
                 icon: "🎯",
                 title: "Take the Assessment",
-                desc: "A quick 10-question quiz finds your child's reading level — from Pre-K to 3rd grade.",
+                desc: "A quick 10-question quiz finds your child\u2019s reading level \u2014 from Pre-K to 3rd grade.",
               },
               {
                 step: "2",
@@ -90,7 +159,7 @@ export default async function HomePage() {
       </section>
 
       {/* Why Science of Reading */}
-      <section className="px-6 py-16">
+      <section className="px-6 py-16 bg-zinc-50/50">
         <div className="max-w-4xl mx-auto">
           <div className="rounded-2xl bg-gradient-to-br from-indigo-50 to-violet-50 border border-indigo-100 p-8 md:p-12">
             <h2 className="text-2xl md:text-3xl font-bold text-zinc-900 tracking-tight mb-4">
@@ -119,6 +188,33 @@ export default async function HomePage() {
                 </span>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Who It's For */}
+      <section className="px-6 py-16">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold text-zinc-900 text-center tracking-tight mb-12">
+            Built for Young Readers
+          </h2>
+          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { icon: "🎒", label: "Pre-K to 3rd Grade" },
+              { icon: "💪", label: "Struggling Readers" },
+              { icon: "📖", label: "Extra Practice" },
+              { icon: "🏠", label: "Homeschool Families" },
+            ].map((item) => (
+              <div
+                key={item.label}
+                className="rounded-xl border border-zinc-200 bg-white p-5 text-center"
+              >
+                <div className="text-2xl mb-2">{item.icon}</div>
+                <div className="text-sm font-semibold text-zinc-700">
+                  {item.label}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -174,7 +270,7 @@ export default async function HomePage() {
                 href="/signup"
                 className="block w-full text-center py-3 rounded-xl border-2 border-zinc-200 text-zinc-700 font-semibold text-sm hover:bg-zinc-50 transition-all"
               >
-                Get Started
+                Get Started Free
               </Link>
             </div>
 
@@ -204,11 +300,11 @@ export default async function HomePage() {
               </div>
               <ul className="space-y-3">
                 {[
-                  "Full lesson library (all levels)",
+                  "Full lesson library (25+ lessons)",
                   "Unlimited assessments",
                   "Up to 5 child profiles",
                   "Detailed parent reports",
-                  "Audio narration",
+                  "Audio narration (coming soon)",
                   "Cancel anytime",
                 ].map((feature) => (
                   <li key={feature} className="flex items-start gap-3 text-sm">
@@ -240,61 +336,68 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Who It's For */}
+      {/* FAQ */}
       <section className="px-6 py-16">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-3xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-bold text-zinc-900 text-center tracking-tight mb-12">
-            Built for Young Readers
+            Frequently Asked Questions
           </h2>
-          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="space-y-6">
             {[
               {
-                icon: "🎒",
-                label: "Pre-K to 3rd Grade",
+                q: "What ages is Readee for?",
+                a: "Readee is designed for children ages 4\u20139, from Pre-K through 3rd grade. Our lessons follow a research-based progression that meets kids wherever they are in their reading journey.",
               },
               {
-                icon: "💪",
-                label: "Struggling Readers",
+                q: "How does the reading assessment work?",
+                a: "Your child takes a quick 10-question quiz that covers letter recognition, phonics, and reading comprehension. Based on the results, Readee places them at the right level and builds a personalized lesson path.",
               },
               {
-                icon: "📖",
-                label: "Extra Practice",
+                q: "Do I need to set up an account?",
+                a: "Yes, setup takes 2 minutes. You\u2019ll answer a few questions about your child, they\u2019ll take a quick reading quiz, and we\u2019ll build their personalized lesson path.",
               },
               {
-                icon: "🏠",
-                label: "Homeschool Families",
+                q: "Is Readee really free?",
+                a: "Yes! The free plan includes the diagnostic assessment, the first 2 lessons at every level, and basic progress tracking. Upgrade to Readee+ for the full lesson library, detailed reports, and more.",
               },
-            ].map((item) => (
+            ].map((faq) => (
               <div
-                key={item.label}
-                className="rounded-xl border border-zinc-200 bg-white p-5 text-center"
+                key={faq.q}
+                className="rounded-xl border border-zinc-200 bg-white p-6"
               >
-                <div className="text-2xl mb-2">{item.icon}</div>
-                <div className="text-sm font-semibold text-zinc-700">
-                  {item.label}
-                </div>
+                <h3 className="font-bold text-zinc-900 mb-2">{faq.q}</h3>
+                <p className="text-sm text-zinc-600 leading-relaxed">
+                  {faq.a}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Bottom CTA */}
+      {/* Join Our Early Access */}
       <section className="px-6 py-16 bg-gradient-to-br from-indigo-600 to-violet-600">
         <div className="max-w-2xl mx-auto text-center space-y-6">
           <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight">
-            Ready to help your child read with confidence?
+            Join Our Early Access
           </h2>
           <p className="text-indigo-200">
-            Start with a free assessment and see their personalized reading path
-            in minutes.
+            Be among the first families to try Readee. Sign up for early access
+            and get a free diagnostic reading assessment.
           </p>
-          <Link
-            href="/signup"
-            className="inline-block px-8 py-4 rounded-2xl bg-white text-indigo-700 font-bold text-lg hover:bg-indigo-50 transition-all shadow-lg"
-          >
-            Start Your Free Trial
-          </Link>
+          <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              className="flex-1 px-4 py-3 rounded-xl text-sm bg-white/10 border border-white/20 text-white placeholder-indigo-200 focus:outline-none focus:ring-2 focus:ring-white/30"
+            />
+            <button
+              type="submit"
+              className="px-6 py-3 rounded-xl bg-white text-indigo-700 font-bold text-sm hover:bg-indigo-50 transition-all shadow-lg"
+            >
+              Join Waitlist
+            </button>
+          </form>
         </div>
       </section>
     </div>

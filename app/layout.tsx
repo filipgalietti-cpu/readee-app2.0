@@ -28,8 +28,8 @@ export default function RootLayout({
         {/* Footer */}
         <footer className="bg-zinc-50 border-t border-zinc-200 mt-auto">
           <div className="mx-auto max-w-6xl px-6 py-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div>
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
+              <div className="col-span-2 md:col-span-1">
                 <div className="mb-3 font-extrabold tracking-tight">
                   <span className="text-indigo-700">READ</span><span className="text-indigo-400">EE</span>
                 </div>
@@ -38,31 +38,58 @@ export default function RootLayout({
                 </p>
               </div>
               <div>
-                <h3 className="font-semibold text-zinc-900 mb-3">Quick Links</h3>
+                <h3 className="font-semibold text-zinc-900 mb-3">Programs</h3>
                 <ul className="space-y-2 text-sm">
-                  <li>
-                    <Link href="/dashboard" className="text-zinc-600 hover:text-zinc-900 transition-colors">
-                      Dashboard
-                    </Link>
-                  </li>
                   <li>
                     <Link href="/about" className="text-zinc-600 hover:text-zinc-900 transition-colors">
                       About
                     </Link>
                   </li>
                   <li>
-                    <Link href="/settings" className="text-zinc-600 hover:text-zinc-900 transition-colors">
-                      Settings
+                    <Link href="/teachers" className="text-zinc-600 hover:text-zinc-900 transition-colors">
+                      For Educators
                     </Link>
                   </li>
                 </ul>
               </div>
               <div>
-                <h3 className="font-semibold text-zinc-900 mb-3">Support</h3>
+                <h3 className="font-semibold text-zinc-900 mb-3">Get Started</h3>
                 <ul className="space-y-2 text-sm">
-                  <li className="text-zinc-600">Help Center</li>
-                  <li className="text-zinc-600">Parent Resources</li>
-                  <li className="text-zinc-600">Privacy Policy</li>
+                  <li>
+                    <Link href="/signup" className="text-zinc-600 hover:text-zinc-900 transition-colors">
+                      Sign Up
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/login" className="text-zinc-600 hover:text-zinc-900 transition-colors">
+                      Log In
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="font-semibold text-zinc-900 mb-3">Legal</h3>
+                <ul className="space-y-2 text-sm">
+                  <li>
+                    <Link href="/privacy-policy" className="text-zinc-600 hover:text-zinc-900 transition-colors">
+                      Privacy Policy
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/terms-of-service" className="text-zinc-600 hover:text-zinc-900 transition-colors">
+                      Terms of Service
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="font-semibold text-zinc-900 mb-3">Contact</h3>
+                <ul className="space-y-2 text-sm">
+                  <li>
+                    <a href="mailto:hello@readee.app" className="text-zinc-600 hover:text-zinc-900 transition-colors">
+                      hello@readee.app
+                    </a>
+                  </li>
                 </ul>
               </div>
             </div>

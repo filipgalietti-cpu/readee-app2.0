@@ -164,7 +164,7 @@ export default function NavAuth() {
                 href="/signup"
                 className="px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-sm font-semibold hover:from-indigo-700 hover:to-violet-600 transition-all shadow-sm"
               >
-                Sign Up
+                Get Started Free
               </Link>
             </>
           )}
@@ -222,7 +222,7 @@ export default function NavAuth() {
                 Log In
               </Link>
               <Link href="/signup" className="block py-2.5 text-sm font-medium text-indigo-600 hover:text-indigo-700">
-                Sign Up
+                Get Started Free
               </Link>
             </>
           )}
