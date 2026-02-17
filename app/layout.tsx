@@ -18,39 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="antialiased min-h-screen flex flex-col">
 <ClientProviders>
-        {/* Navbar */}
-        <nav className="sticky top-0 z-50 bg-white border-b border-zinc-200 shadow-sm">
-          <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-            <Link
-              href="/"
-              className="text-xl font-extrabold hover:opacity-80 transition-opacity tracking-tight"
-            >
-              <span className="text-indigo-700">READ</span><span className="text-indigo-400">EE</span>
-            </Link>
-
-            <div className="flex items-center gap-6">
-              <Link
-                href="/path"
-                className="text-zinc-700 hover:text-zinc-900 font-medium transition-colors"
-              >
-                Learning Path
-              </Link>
-              <Link
-                href="/library"
-                className="text-zinc-700 hover:text-zinc-900 font-medium transition-colors"
-              >
-                Library
-              </Link>
-              <Link
-                href="/about"
-                className="text-zinc-700 hover:text-zinc-900 font-medium transition-colors"
-              >
-                About
-              </Link>
-              <NavAuth />
-            </div>
-          </div>
-        </nav>
+        <NavAuth />
 
         {/* Page content */}
         <main className="flex-1 mx-auto w-full max-w-6xl px-6 py-8">
@@ -66,17 +34,12 @@ export default function RootLayout({
                   <span className="text-indigo-700">READ</span><span className="text-indigo-400">EE</span>
                 </div>
                 <p className="text-sm text-zinc-600">
-                  Making reading fun for early learners
+                  Early reading, done right.
                 </p>
               </div>
               <div>
                 <h3 className="font-semibold text-zinc-900 mb-3">Quick Links</h3>
                 <ul className="space-y-2 text-sm">
-                  <li>
-                    <Link href="/library" className="text-zinc-600 hover:text-zinc-900 transition-colors">
-                      Story Library
-                    </Link>
-                  </li>
                   <li>
                     <Link href="/dashboard" className="text-zinc-600 hover:text-zinc-900 transition-colors">
                       Dashboard
@@ -85,6 +48,11 @@ export default function RootLayout({
                   <li>
                     <Link href="/about" className="text-zinc-600 hover:text-zinc-900 transition-colors">
                       About
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/settings" className="text-zinc-600 hover:text-zinc-900 transition-colors">
+                      Settings
                     </Link>
                   </li>
                 </ul>
@@ -99,7 +67,7 @@ export default function RootLayout({
               </div>
             </div>
             <div className="mt-8 pt-6 border-t border-zinc-200 text-center text-sm text-zinc-600">
-              © {new Date().getFullYear()} Readee. All rights reserved.
+              &copy; {new Date().getFullYear()} Readee. All rights reserved.
             </div>
           </div>
         </footer>
