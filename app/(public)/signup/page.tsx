@@ -114,7 +114,7 @@ export default function Signup() {
   };
 
   return (
-    <AuthCard title="Create Your Account">
+    <AuthCard title="Create Your Account" banner="7-Day Free Trial — No Credit Card Required!">
       <GoogleButton />
       <Divider />
       {errors.general && (
