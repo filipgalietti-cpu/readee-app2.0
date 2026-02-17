@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { createClient } from "@/lib/supabase/server";
 
 export const metadata: Metadata = {
   title: "About Readee",
@@ -7,7 +8,11 @@ export const metadata: Metadata = {
     "Learn how Readee uses the Science of Reading to help your child become a confident reader.",
 };
 
-export default function About() {
+export default async function About() {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
   return (
     <div className="max-w-4xl mx-auto pb-16 px-4">
       {/* Hero */}
@@ -205,21 +210,39 @@ export default function About() {
         </div>
       </section>
 
-      {/* CTA — Back to Dashboard */}
-      <div className="text-center py-8 space-y-4">
-        <h2 className="text-2xl font-bold text-zinc-900 tracking-tight">
-          Ready to continue?
-        </h2>
-        <p className="text-zinc-500">
-          Head back to the dashboard to start your child&apos;s next lesson.
-        </p>
-        <Link
-          href="/dashboard"
-          className="inline-block px-8 py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white font-bold text-lg hover:from-indigo-700 hover:to-violet-600 transition-all shadow-lg"
-        >
-          Go to Dashboard
-        </Link>
-      </div>
+      {/* CTA */}
+      {user ? (
+        <div className="text-center py-8 space-y-4">
+          <h2 className="text-2xl font-bold text-zinc-900 tracking-tight">
+            Ready to continue?
+          </h2>
+          <p className="text-zinc-500">
+            Head back to the dashboard to start your child&apos;s next lesson.
+          </p>
+          <Link
+            href="/dashboard"
+            className="inline-block px-8 py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white font-bold text-lg hover:from-indigo-700 hover:to-violet-600 transition-all shadow-lg"
+          >
+            Go to Dashboard
+          </Link>
+        </div>
+      ) : (
+        <div className="text-center py-8 space-y-4">
+          <h2 className="text-2xl font-bold text-zinc-900 tracking-tight">
+            Ready to get started?
+          </h2>
+          <p className="text-zinc-500">
+            Create a free account and see where your child&apos;s reading
+            journey begins.
+          </p>
+          <Link
+            href="/signup"
+            className="inline-block px-8 py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white font-bold text-lg hover:from-indigo-700 hover:to-violet-600 transition-all shadow-lg"
+          >
+            Sign Up for Free!
+          </Link>
+        </div>
+      )}
     </div>
   );
 }
