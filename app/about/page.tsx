@@ -175,14 +175,14 @@ export default function About() {
           Ready to get started?
         </h2>
         <p className="text-zinc-500">
-          Sign up for free and see where your child&apos;s reading journey
-          begins.
+          Start your free trial and see where your child&apos;s reading
+          journey begins.
         </p>
         <a
           href="/signup"
           className="inline-block px-8 py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white font-bold text-lg hover:from-indigo-700 hover:to-violet-600 transition-all shadow-lg"
         >
-          Get Started Free
+          Start Your Free Trial
         </a>
       </div>
     </div>
