@@ -92,12 +92,6 @@ export default function NavAuth() {
               <Link href="/dashboard" className={linkClass("/dashboard")}>
                 Dashboard
               </Link>
-              <Link href="/about" className={linkClass("/about")}>
-                About
-              </Link>
-              <Link href="/settings" className={linkClass("/settings")}>
-                Settings
-              </Link>
 
               {/* Profile dropdown */}
               <div className="relative" ref={menuRef}>
@@ -130,10 +124,10 @@ export default function NavAuth() {
                       Settings
                     </Link>
                     <Link
-                      href="/about"
+                      href="/contact-us"
                       className="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 transition-colors"
                     >
-                      Help
+                      Help & Support
                     </Link>
                     <div className="border-t border-zinc-100 my-1" />
                     <button
@@ -196,11 +190,11 @@ export default function NavAuth() {
               <Link href="/dashboard" className="block py-2.5 text-sm font-medium text-zinc-700 hover:text-indigo-700">
                 Dashboard
               </Link>
-              <Link href="/about" className="block py-2.5 text-sm font-medium text-zinc-700 hover:text-indigo-700">
-                About
-              </Link>
               <Link href="/settings" className="block py-2.5 text-sm font-medium text-zinc-700 hover:text-indigo-700">
                 Settings
+              </Link>
+              <Link href="/contact-us" className="block py-2.5 text-sm font-medium text-zinc-700 hover:text-indigo-700">
+                Help & Support
               </Link>
               <div className="border-t border-zinc-100 my-2" />
               <button
