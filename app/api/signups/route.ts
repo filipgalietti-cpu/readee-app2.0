@@ -244,12 +244,12 @@ export async function POST(request: NextRequest) {
       <div style="padding:24px 32px;background:#f9fafb;border-top:1px solid #f3f4f6;text-align:center;">
         <p style="margin:0;font-size:12px;color:#9ca3af;line-height:1.6;">
           You're receiving this because you signed up at Readee.<br>
-          100% free \u00b7 Built by educators \u00b7 No credit card ever
+          Start your free trial today \u00b7 Built by educators \u00b7 Science of Reading
         </p>
       </div>
     </div>
     <div style="text-align:center;margin-top:24px;">
-      <p style="font-size:12px;color:#9ca3af;">\u00a9 2025 Readee \u00b7 Helping every child become a confident reader</p>
+      <p style="font-size:12px;color:#9ca3af;">\u00a9 2026 Readee \u00b7 Helping every child become a confident reader</p>
     </div>
   </div>
 </body>
@@ -310,12 +310,12 @@ export async function POST(request: NextRequest) {
       <div style="padding:24px 32px;background:#f9fafb;border-top:1px solid #f3f4f6;text-align:center;">
         <p style="margin:0;font-size:12px;color:#9ca3af;line-height:1.6;">
           You're receiving this because you submitted a classroom request at Readee.<br>
-          100% free \u00b7 Built by educators \u00b7 Science of Reading
+          Built by educators \u00b7 Science of Reading \u00b7 Try it free
         </p>
       </div>
     </div>
     <div style="text-align:center;margin-top:24px;">
-      <p style="font-size:12px;color:#9ca3af;">\u00a9 2025 Readee \u00b7 Helping every child become a confident reader</p>
+      <p style="font-size:12px;color:#9ca3af;">\u00a9 2026 Readee \u00b7 Helping every child become a confident reader</p>
     </div>
   </div>
 </body>
