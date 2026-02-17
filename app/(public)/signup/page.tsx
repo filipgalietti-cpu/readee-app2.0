@@ -92,7 +92,7 @@ export default function Signup() {
             setIsLoading(false);
           } else {
             // Success - redirect to login or dashboard
-            router.push("/login?message=Account created successfully. Please sign in.");
+            router.push("/login?message=Account created! Check your email to confirm, then sign in.");
           }
         }
       } catch (error) {
