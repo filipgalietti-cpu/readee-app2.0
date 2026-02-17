@@ -152,7 +152,7 @@ export async function POST(request: NextRequest) {
             type: 'recovery',
             email,
             options: {
-              redirectTo: 'https://readee-app2-0.vercel.app/signup',
+              redirectTo: 'https://learn.readee.app/signup',
             },
           });
           if (linkError) {
@@ -236,7 +236,7 @@ export async function POST(request: NextRequest) {
           </table>
         </div>
         <div style="text-align:center;margin:32px 0 8px;">
-          <a href="${passwordResetLink || 'https://readee-app2-0.vercel.app/signup'}" style="display:inline-block;background:linear-gradient(135deg,#4338ca,#6366f1);color:#ffffff;text-decoration:none;padding:14px 40px;border-radius:50px;font-size:16px;font-weight:700;box-shadow:0 4px 16px rgba(99,102,241,0.3);">
+          <a href="${passwordResetLink || 'https://learn.readee.app/signup'}" style="display:inline-block;background:linear-gradient(135deg,#4338ca,#6366f1);color:#ffffff;text-decoration:none;padding:14px 40px;border-radius:50px;font-size:16px;font-weight:700;box-shadow:0 4px 16px rgba(99,102,241,0.3);">
             ${passwordResetLink ? 'Set Your Password & Get Started \u2192' : 'Go to My Dashboard \u2192'}
           </a>
         </div>
@@ -302,7 +302,7 @@ export async function POST(request: NextRequest) {
           In the meantime, feel free to explore our site to learn more about how Readee works.
         </p>
         <div style="text-align:center;margin:28px 0 8px;">
-          <a href="https://readee-site.vercel.app" style="display:inline-block;background:linear-gradient(135deg,#4338ca,#6366f1);color:#ffffff;text-decoration:none;padding:14px 40px;border-radius:50px;font-size:16px;font-weight:700;box-shadow:0 4px 16px rgba(99,102,241,0.3);">
+          <a href="https://learn.readee.app" style="display:inline-block;background:linear-gradient(135deg,#4338ca,#6366f1);color:#ffffff;text-decoration:none;padding:14px 40px;border-radius:50px;font-size:16px;font-weight:700;box-shadow:0 4px 16px rgba(99,102,241,0.3);">
             Learn More About Readee \u2192
           </a>
         </div>
