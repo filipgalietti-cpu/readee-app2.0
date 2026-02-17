@@ -145,9 +145,6 @@ export default function NavAuth() {
               <Link href="/about" className={linkClass("/about")}>
                 About
               </Link>
-              <Link href="/#pricing" className="text-sm font-medium text-zinc-600 hover:text-zinc-900 transition-colors">
-                Pricing
-              </Link>
               <Link
                 href="/login"
                 className={linkClass("/login")}
@@ -208,9 +205,6 @@ export default function NavAuth() {
             <>
               <Link href="/about" className="block py-2.5 text-sm font-medium text-zinc-700 hover:text-indigo-700">
                 About
-              </Link>
-              <Link href="/#pricing" className="block py-2.5 text-sm font-medium text-zinc-700 hover:text-indigo-700">
-                Pricing
               </Link>
               <Link href="/login" className="block py-2.5 text-sm font-medium text-zinc-700 hover:text-indigo-700">
                 Log In
