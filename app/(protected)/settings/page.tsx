@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
 import LevelProgressBar, { READING_LEVELS, GRADES } from "@/app/_components/LevelProgressBar";
@@ -35,6 +36,9 @@ export default function Settings() {
   const [removeChildId, setRemoveChildId] = useState<string | null>(null);
   const [showDeleteAccount, setShowDeleteAccount] = useState(false);
 
+  // Plan
+  const [userPlan, setUserPlan] = useState<string>("free");
+
   // Preferences
   const [soundEffects, setSoundEffects] = useState(true);
   const [autoAdvance, setAutoAdvance] = useState(true);
@@ -58,6 +62,15 @@ export default function Settings() {
       if (!user) { setLoading(false); return; }
       setEmail(user.email || "");
       setUserId(user.id);
+
+      // Fetch plan
+      const { data: profile } = await supabase
+        .from("profiles")
+        .select("plan")
+        .eq("id", user.id)
+        .single();
+      setUserPlan((profile as { plan?: string } | null)?.plan || "free");
+
       await loadChildren(user.id);
       setLoading(false);
     }
@@ -399,24 +412,39 @@ export default function Settings() {
 
       {/* ====== SUBSCRIPTION ====== */}
       <Section title="Subscription">
-        <div className="flex items-center justify-between">
-          <div>
-            <p className="text-sm font-medium text-zinc-900">Free Plan</p>
-            <p className="text-xs text-zinc-500 mt-0.5">Diagnostic assessment, 2 lessons per level, 1 reader profile</p>
-          </div>
-          <span className="px-3 py-1 rounded-full text-xs font-semibold bg-zinc-100 text-zinc-600">Current</span>
-        </div>
-        <div className="rounded-xl border border-indigo-200 bg-indigo-50/50 p-4">
+        {userPlan === "premium" ? (
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-semibold text-indigo-900">Readee+ — $9.99/mo</p>
-              <p className="text-xs text-indigo-600 mt-0.5">25+ lessons, unlimited assessments, up to 5 readers, parent reports</p>
+              <p className="text-sm font-medium text-zinc-900">Readee+ Premium</p>
+              <p className="text-xs text-zinc-500 mt-0.5">All lessons, unlimited assessments, up to 5 readers, parent reports</p>
             </div>
-            <span className="px-3 py-1.5 rounded-lg bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-xs font-bold whitespace-nowrap">
-              Coming Soon
-            </span>
+            <span className="px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-indigo-100 to-violet-100 text-indigo-700">Active</span>
           </div>
-        </div>
+        ) : (
+          <>
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-zinc-900">Free Plan</p>
+                <p className="text-xs text-zinc-500 mt-0.5">Diagnostic assessment, 2 lessons per level, 1 reader profile</p>
+              </div>
+              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-zinc-100 text-zinc-600">Current</span>
+            </div>
+            <Link
+              href="/upgrade"
+              className="block rounded-xl border border-indigo-200 bg-indigo-50/50 p-4 hover:border-indigo-300 hover:bg-indigo-50 transition-colors"
+            >
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-semibold text-indigo-900">Readee+ — $9.99/mo</p>
+                  <p className="text-xs text-indigo-600 mt-0.5">25+ lessons, unlimited assessments, up to 5 readers, parent reports</p>
+                </div>
+                <span className="px-3 py-1.5 rounded-lg bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-xs font-bold whitespace-nowrap">
+                  Upgrade
+                </span>
+              </div>
+            </Link>
+          </>
+        )}
       </Section>
 
       {/* ====== SUPPORT ====== */}
