@@ -242,15 +242,20 @@ function UpgradeContent() {
             const isCurrent = child?.reading_level === level;
             return (
               <div key={level} className="flex items-center gap-1.5">
-                <span
-                  className={`text-[11px] font-medium px-2 py-0.5 rounded-full ${
-                    isCurrent
-                      ? "bg-indigo-100 text-indigo-700 ring-2 ring-indigo-300"
-                      : "bg-zinc-100 text-zinc-400"
-                  }`}
-                >
-                  {level}
-                </span>
+                <div className="flex flex-col items-center gap-1">
+                  <span
+                    className={`text-[11px] font-medium px-2 py-0.5 rounded-full ${
+                      isCurrent
+                        ? "bg-indigo-600 text-white shadow-sm"
+                        : "bg-zinc-100 text-zinc-400"
+                    }`}
+                  >
+                    {level}
+                  </span>
+                  {isCurrent && (
+                    <span className="text-[9px] font-bold text-indigo-600 whitespace-nowrap">You are here</span>
+                  )}
+                </div>
                 {i < READING_LEVELS.length - 1 && (
                   <span className="text-zinc-200 text-xs">→</span>
                 )}
@@ -261,9 +266,9 @@ function UpgradeContent() {
       </div>
 
       {/* ── SECTION 3: Pricing Cards ── */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 dash-slide-up-2">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-end dash-slide-up-2">
         {/* Monthly */}
-        <div className="rounded-2xl border border-zinc-200 bg-white p-6 space-y-4">
+        <div className="rounded-2xl border border-zinc-200 bg-white p-6 space-y-4 self-center">
           <div>
             <div className="text-3xl font-bold text-zinc-900">$9.99</div>
             <div className="text-sm text-zinc-500">/month</div>
@@ -271,14 +276,14 @@ function UpgradeContent() {
           <p className="text-xs text-zinc-400">Billed monthly</p>
           <button
             onClick={() => handleOpenModal("monthly")}
-            className="w-full py-3.5 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white font-bold text-sm hover:from-indigo-700 hover:to-violet-600 transition-all shadow-sm"
+            className="w-full py-3.5 rounded-xl border-2 border-indigo-600 text-indigo-600 font-bold text-sm hover:bg-indigo-50 transition-all"
           >
             Start 7-Day Free Trial
           </button>
         </div>
 
         {/* Annual — highlighted */}
-        <div className="rounded-2xl border-2 border-indigo-300 bg-white p-6 space-y-4 relative shadow-md shadow-indigo-100">
+        <div className="rounded-2xl border-2 border-indigo-400 bg-gradient-to-b from-white to-indigo-50/40 p-7 space-y-4 relative shadow-lg shadow-indigo-100/50">
           <div className="absolute -top-3 left-1/2 -translate-x-1/2">
             <span className="px-3 py-1 rounded-full text-[11px] font-bold bg-gradient-to-r from-amber-400 to-amber-500 text-white shadow-sm">
               Best Value
@@ -293,7 +298,7 @@ function UpgradeContent() {
           </p>
           <button
             onClick={() => handleOpenModal("annual")}
-            className="w-full py-3.5 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white font-bold text-sm hover:from-indigo-700 hover:to-violet-600 transition-all shadow-md"
+            className="w-full py-4 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white font-bold text-sm hover:from-indigo-700 hover:to-violet-600 transition-all shadow-md"
           >
             Start 7-Day Free Trial
           </button>
