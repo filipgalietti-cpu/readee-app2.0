@@ -4,9 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
-import LevelProgressBar, { READING_LEVELS } from "@/app/_components/LevelProgressBar";
-
-const GRADES = ["Pre-K", "Kindergarten", "1st", "2nd", "3rd"];
+import LevelProgressBar, { READING_LEVELS, GRADES } from "@/app/_components/LevelProgressBar";
 
 export default function Settings() {
   const router = useRouter();
@@ -315,22 +313,8 @@ export default function Settings() {
                     <LevelProgressBar
                       currentLevel={child.reading_level}
                       onLevelChange={(level) => handleReadingLevelChange(child.id, level)}
+                      grade={child.grade}
                     />
-
-                    {/* Mastery Banner */}
-                    {child.reading_level === "Independent Reader" && (
-                      <div className="rounded-xl border border-emerald-200 bg-gradient-to-r from-emerald-50 to-teal-50 p-4 space-y-1">
-                        <div className="flex items-center gap-2">
-                          <span className="text-lg">🌟</span>
-                          <p className="text-sm font-semibold text-emerald-800">
-                            {child.first_name} is reading above {child.grade || "their"} grade level!
-                          </p>
-                        </div>
-                        <p className="text-xs text-emerald-600 leading-relaxed">
-                          They&apos;ve mastered all reading skills for their grade. {child.first_name} is an advanced reader — keep up the amazing work!
-                        </p>
-                      </div>
-                    )}
 
                     {/* Danger actions */}
                     <div className="flex gap-3 pt-1">

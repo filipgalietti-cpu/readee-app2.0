@@ -6,7 +6,7 @@ import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child, LessonProgress } from "@/lib/db/types";
 import { levelNameToGradeKey } from "@/lib/assessment/questions";
 import lessonsData from "@/lib/data/lessons.json";
-import LevelProgressBar from "@/app/_components/LevelProgressBar";
+import LevelProgressBar, { GRADES } from "@/app/_components/LevelProgressBar";
 
 const AVATARS = ["😊", "🦊", "🐱", "🦋", "🐻"];
 
@@ -78,8 +78,6 @@ export default function Dashboard() {
 }
 
 /* ─── Add Children Form ───────────────────────────────── */
-
-const GRADES = ["Pre-K", "Kindergarten", "1st", "2nd", "3rd"];
 
 interface ChildRow {
   name: string;
@@ -263,6 +261,7 @@ function ChildSelector({
                 <LevelProgressBar
                   currentLevel={child.reading_level}
                   onLevelChange={() => {}}
+                  grade={child.grade}
                 />
               </div>
             </div>
@@ -384,20 +383,8 @@ function ChildDashboard({
         <LevelProgressBar
           currentLevel={readingLevel}
           onLevelChange={handleReadingLevelChange}
+          grade={child.grade}
         />
-        {readingLevel === "Independent Reader" && (
-          <div className="mt-4 rounded-xl border border-emerald-200 bg-gradient-to-r from-emerald-50 to-teal-50 p-4 space-y-1">
-            <div className="flex items-center gap-2">
-              <span className="text-lg">🌟</span>
-              <p className="text-sm font-semibold text-emerald-800">
-                {child.first_name} is reading above {child.grade || "their"} grade level!
-              </p>
-            </div>
-            <p className="text-xs text-emerald-600 leading-relaxed">
-              They&apos;ve mastered all reading skills for their grade. {child.first_name} is an advanced reader — keep up the amazing work!
-            </p>
-          </div>
-        )}
       </div>
 
       {/* Stats */}
