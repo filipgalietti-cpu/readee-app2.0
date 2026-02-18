@@ -1,47 +1,172 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
 
+const GRADES = ["Pre-K", "Kindergarten", "1st", "2nd", "3rd"];
+const READING_LEVELS = [
+  "Emerging Reader",
+  "Beginning Reader",
+  "Developing Reader",
+  "Growing Reader",
+  "Independent Reader",
+];
+
 export default function Settings() {
   const router = useRouter();
+  const supabase = supabaseBrowser();
+
   const [email, setEmail] = useState("");
+  const [userId, setUserId] = useState("");
   const [children, setChildren] = useState<Child[]>([]);
   const [loading, setLoading] = useState(true);
 
+  // Password change
+  const [showPasswordForm, setShowPasswordForm] = useState(false);
+  const [passwords, setPasswords] = useState({ current: "", new_: "", confirm: "" });
+  const [passwordMsg, setPasswordMsg] = useState<{ type: "success" | "error"; text: string } | null>(null);
+  const [savingPassword, setSavingPassword] = useState(false);
+
+  // Add child
+  const [showAddChild, setShowAddChild] = useState(false);
+  const [newChild, setNewChild] = useState({ name: "", grade: "Pre-K" });
+  const [addingChild, setAddingChild] = useState(false);
+
+  // Editing child
+  const [editingChildId, setEditingChildId] = useState<string | null>(null);
+  const [editValues, setEditValues] = useState({ first_name: "", grade: "" });
+
+  // Modals
+  const [resetChildId, setResetChildId] = useState<string | null>(null);
+  const [removeChildId, setRemoveChildId] = useState<string | null>(null);
+  const [showDeleteAccount, setShowDeleteAccount] = useState(false);
+
+  // Preferences
+  const [soundEffects, setSoundEffects] = useState(true);
+  const [autoAdvance, setAutoAdvance] = useState(true);
+
+  useEffect(() => {
+    const stored = localStorage.getItem("readee_prefs");
+    if (stored) {
+      const prefs = JSON.parse(stored);
+      setSoundEffects(prefs.soundEffects ?? true);
+      setAutoAdvance(prefs.autoAdvance ?? true);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("readee_prefs", JSON.stringify({ soundEffects, autoAdvance }));
+  }, [soundEffects, autoAdvance]);
+
   useEffect(() => {
     async function load() {
-      const supabase = supabaseBrowser();
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
-      if (!user) {
-        setLoading(false);
-        return;
-      }
-
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) { setLoading(false); return; }
       setEmail(user.email || "");
-
-      const { data } = await supabase
-        .from("children")
-        .select("*")
-        .eq("parent_id", user.id)
-        .order("created_at", { ascending: true });
-
-      if (data) setChildren(data as Child[]);
+      setUserId(user.id);
+      await loadChildren(user.id);
       setLoading(false);
     }
     load();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleLogout = async () => {
-    const supabase = supabaseBrowser();
+  async function loadChildren(parentId: string) {
+    const { data } = await supabase
+      .from("children")
+      .select("*")
+      .eq("parent_id", parentId)
+      .order("created_at", { ascending: true });
+    if (data) setChildren(data as Child[]);
+  }
+
+  // === Password ===
+  async function handlePasswordChange() {
+    setPasswordMsg(null);
+    if (passwords.new_ !== passwords.confirm) {
+      setPasswordMsg({ type: "error", text: "New passwords do not match." });
+      return;
+    }
+    if (passwords.new_.length < 8) {
+      setPasswordMsg({ type: "error", text: "Password must be at least 8 characters." });
+      return;
+    }
+    setSavingPassword(true);
+    const { error } = await supabase.auth.updateUser({ password: passwords.new_ });
+    setSavingPassword(false);
+    if (error) {
+      setPasswordMsg({ type: "error", text: error.message });
+    } else {
+      setPasswordMsg({ type: "success", text: "Password updated successfully." });
+      setPasswords({ current: "", new_: "", confirm: "" });
+      setTimeout(() => { setShowPasswordForm(false); setPasswordMsg(null); }, 2000);
+    }
+  }
+
+  // === Add Child ===
+  async function handleAddChild() {
+    if (!newChild.name.trim()) return;
+    setAddingChild(true);
+    await supabase.from("children").insert({
+      parent_id: userId,
+      first_name: newChild.name.trim(),
+      grade: newChild.grade,
+    });
+    await loadChildren(userId);
+    setNewChild({ name: "", grade: "Pre-K" });
+    setShowAddChild(false);
+    setAddingChild(false);
+  }
+
+  // === Edit Child ===
+  function startEditing(child: Child) {
+    setEditingChildId(child.id);
+    setEditValues({ first_name: child.first_name, grade: child.grade || "Pre-K" });
+  }
+
+  async function saveEdit(childId: string) {
+    await supabase.from("children").update({
+      first_name: editValues.first_name.trim(),
+      grade: editValues.grade,
+    }).eq("id", childId);
+    setEditingChildId(null);
+    await loadChildren(userId);
+  }
+
+  // === Change Reading Level ===
+  async function handleReadingLevelChange(childId: string, level: string) {
+    await supabase.from("children").update({ reading_level: level }).eq("id", childId);
+    await loadChildren(userId);
+  }
+
+  // === Reset Progress ===
+  async function handleResetProgress(childId: string) {
+    await supabase.from("assessments").delete().eq("child_id", childId);
+    await supabase.from("lessons_progress").delete().eq("child_id", childId);
+    await supabase.from("children").update({
+      xp: 0,
+      stories_read: 0,
+      streak_days: 0,
+      reading_level: null,
+    }).eq("id", childId);
+    setResetChildId(null);
+    await loadChildren(userId);
+  }
+
+  // === Remove Child ===
+  async function handleRemoveChild(childId: string) {
+    await supabase.from("children").delete().eq("id", childId);
+    setRemoveChildId(null);
+    await loadChildren(userId);
+  }
+
+  // === Logout ===
+  async function handleLogout() {
     await supabase.auth.signOut();
     router.push("/");
-  };
+  }
 
   if (loading) {
     return (
@@ -51,161 +176,266 @@ export default function Settings() {
     );
   }
 
+  const childForReset = children.find((c) => c.id === resetChildId);
+  const childForRemove = children.find((c) => c.id === removeChildId);
+
   return (
     <div className="max-w-2xl mx-auto py-8 space-y-8">
       <div>
-        <h1 className="text-2xl font-bold text-zinc-900 tracking-tight">
-          Settings
-        </h1>
-        <p className="text-zinc-500 mt-1">Manage your account and readers.</p>
+        <h1 className="text-2xl font-bold text-zinc-900 tracking-tight">Settings</h1>
+        <p className="text-zinc-500 mt-1">Manage your account, readers, and preferences.</p>
       </div>
 
-      {/* Account */}
-      <section className="rounded-2xl border border-zinc-200 bg-white p-6 space-y-4">
-        <h2 className="text-base font-bold text-zinc-900">Account</h2>
+      {/* ====== ACCOUNT ====== */}
+      <Section title="Account">
         <div>
-          <label className="block text-xs font-medium text-zinc-500 mb-1">
-            Email
-          </label>
+          <Label>Email</Label>
           <p className="text-sm text-zinc-900">{email}</p>
         </div>
-      </section>
 
-      {/* Children */}
-      <section className="rounded-2xl border border-zinc-200 bg-white p-6 space-y-4">
-        <div className="flex items-center justify-between">
-          <h2 className="text-base font-bold text-zinc-900">Your Readers</h2>
-          <span className="text-xs text-zinc-400">
-            {children.length}/5 profiles
-          </span>
+        <div className="pt-2">
+          {!showPasswordForm ? (
+            <button
+              onClick={() => setShowPasswordForm(true)}
+              className="text-sm font-medium text-indigo-600 hover:text-indigo-700 transition-colors"
+            >
+              Change Password
+            </button>
+          ) : (
+            <div className="space-y-3 rounded-xl border border-zinc-200 bg-zinc-50/50 p-4">
+              <InputField
+                label="Current Password"
+                type="password"
+                value={passwords.current}
+                onChange={(v) => setPasswords((p) => ({ ...p, current: v }))}
+                placeholder="••••••••"
+              />
+              <InputField
+                label="New Password"
+                type="password"
+                value={passwords.new_}
+                onChange={(v) => setPasswords((p) => ({ ...p, new_: v }))}
+                placeholder="••••••••"
+              />
+              <InputField
+                label="Confirm New Password"
+                type="password"
+                value={passwords.confirm}
+                onChange={(v) => setPasswords((p) => ({ ...p, confirm: v }))}
+                placeholder="••••••••"
+              />
+              {passwordMsg && (
+                <p className={`text-sm ${passwordMsg.type === "error" ? "text-red-600" : "text-green-600"}`}>
+                  {passwordMsg.text}
+                </p>
+              )}
+              <div className="flex gap-3">
+                <button
+                  onClick={handlePasswordChange}
+                  disabled={savingPassword}
+                  className="px-4 py-2 rounded-lg bg-indigo-600 text-white text-sm font-medium hover:bg-indigo-700 transition-colors disabled:opacity-50"
+                >
+                  {savingPassword ? "Saving..." : "Save Password"}
+                </button>
+                <button
+                  onClick={() => { setShowPasswordForm(false); setPasswordMsg(null); }}
+                  className="px-4 py-2 rounded-lg border border-zinc-200 text-sm font-medium text-zinc-600 hover:bg-zinc-50 transition-colors"
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          )}
         </div>
+      </Section>
+
+      {/* ====== MY CHILDREN ====== */}
+      <Section title="My Children" badge={`${children.length}/5 profiles`}>
         {children.length === 0 ? (
           <p className="text-sm text-zinc-500">No readers added yet.</p>
         ) : (
-          <div className="space-y-3">
+          <div className="space-y-4">
             {children.map((child) => (
               <div
                 key={child.id}
-                className="flex items-center justify-between rounded-xl border border-zinc-100 bg-zinc-50/50 p-4"
+                className="rounded-xl border border-zinc-200 bg-white p-5 space-y-3"
               >
-                <div>
-                  <div className="font-semibold text-sm text-zinc-900">
-                    {child.first_name}
+                {editingChildId === child.id ? (
+                  /* Editing mode */
+                  <div className="space-y-3">
+                    <div className="grid grid-cols-2 gap-3">
+                      <InputField
+                        label="Name"
+                        value={editValues.first_name}
+                        onChange={(v) => setEditValues((p) => ({ ...p, first_name: v }))}
+                      />
+                      <div>
+                        <Label>Grade</Label>
+                        <select
+                          value={editValues.grade}
+                          onChange={(e) => setEditValues((p) => ({ ...p, grade: e.target.value }))}
+                          className="w-full px-3 py-2 rounded-lg border border-zinc-200 text-sm text-zinc-900 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                        >
+                          {GRADES.map((g) => <option key={g} value={g}>{g}</option>)}
+                        </select>
+                      </div>
+                    </div>
+                    <div className="flex gap-2">
+                      <button onClick={() => saveEdit(child.id)} className="px-3 py-1.5 rounded-lg bg-indigo-600 text-white text-xs font-medium hover:bg-indigo-700 transition-colors">Save</button>
+                      <button onClick={() => setEditingChildId(null)} className="px-3 py-1.5 rounded-lg border border-zinc-200 text-xs font-medium text-zinc-600 hover:bg-zinc-50 transition-colors">Cancel</button>
+                    </div>
                   </div>
-                  <div className="text-xs text-zinc-500">
-                    {child.grade || "No grade set"}
-                    {child.reading_level && ` \u00B7 ${child.reading_level}`}
-                  </div>
-                </div>
-                <div className="text-xs text-zinc-400">{child.xp} XP</div>
+                ) : (
+                  /* Display mode */
+                  <>
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <div className="font-semibold text-zinc-900">{child.first_name}</div>
+                        <div className="text-xs text-zinc-500">
+                          {child.grade || "No grade set"}
+                          {child.reading_level && ` · ${child.reading_level}`}
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <span className="text-xs font-medium text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-full">
+                          {child.xp} XP
+                        </span>
+                        <button
+                          onClick={() => startEditing(child)}
+                          className="text-xs font-medium text-indigo-600 hover:text-indigo-700 transition-colors"
+                        >
+                          Edit
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Reading Level */}
+                    <div>
+                      <Label>Reading Level</Label>
+                      <select
+                        value={child.reading_level || ""}
+                        onChange={(e) => handleReadingLevelChange(child.id, e.target.value)}
+                        className="w-full px-3 py-2 rounded-lg border border-zinc-200 text-sm text-zinc-900 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                      >
+                        <option value="">Not assessed yet</option>
+                        {READING_LEVELS.map((l) => <option key={l} value={l}>{l}</option>)}
+                      </select>
+                    </div>
+
+                    {/* Danger actions */}
+                    <div className="flex gap-3 pt-1">
+                      <button
+                        onClick={() => setResetChildId(child.id)}
+                        className="text-xs font-medium text-amber-600 hover:text-amber-700 transition-colors"
+                      >
+                        Reset Progress
+                      </button>
+                      <button
+                        onClick={() => setRemoveChildId(child.id)}
+                        className="text-xs font-medium text-red-500 hover:text-red-600 transition-colors"
+                      >
+                        Remove Child
+                      </button>
+                    </div>
+                  </>
+                )}
               </div>
             ))}
           </div>
         )}
-      </section>
 
-      {/* Subscription */}
-      <section className="rounded-2xl border border-zinc-200 bg-white p-6 space-y-4">
-        <h2 className="text-base font-bold text-zinc-900">Subscription</h2>
+        {/* Add Child */}
+        {children.length < 5 && (
+          <div className="pt-2">
+            {!showAddChild ? (
+              <button
+                onClick={() => setShowAddChild(true)}
+                className="flex items-center gap-2 text-sm font-medium text-indigo-600 hover:text-indigo-700 transition-colors"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                </svg>
+                Add Another Child
+              </button>
+            ) : (
+              <div className="rounded-xl border border-indigo-200 bg-indigo-50/30 p-4 space-y-3">
+                <div className="grid grid-cols-2 gap-3">
+                  <InputField
+                    label="Name"
+                    value={newChild.name}
+                    onChange={(v) => setNewChild((p) => ({ ...p, name: v }))}
+                    placeholder="Child's first name"
+                  />
+                  <div>
+                    <Label>Grade</Label>
+                    <select
+                      value={newChild.grade}
+                      onChange={(e) => setNewChild((p) => ({ ...p, grade: e.target.value }))}
+                      className="w-full px-3 py-2 rounded-lg border border-zinc-200 text-sm text-zinc-900 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                    >
+                      {GRADES.map((g) => <option key={g} value={g}>{g}</option>)}
+                    </select>
+                  </div>
+                </div>
+                <div className="flex gap-2">
+                  <button
+                    onClick={handleAddChild}
+                    disabled={addingChild || !newChild.name.trim()}
+                    className="px-4 py-2 rounded-lg bg-indigo-600 text-white text-sm font-medium hover:bg-indigo-700 transition-colors disabled:opacity-50"
+                  >
+                    {addingChild ? "Adding..." : "Add Child"}
+                  </button>
+                  <button
+                    onClick={() => setShowAddChild(false)}
+                    className="px-4 py-2 rounded-lg border border-zinc-200 text-sm font-medium text-zinc-600 hover:bg-zinc-50 transition-colors"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+      </Section>
+
+      {/* ====== PREFERENCES ====== */}
+      <Section title="Preferences">
+        <Toggle label="Sound Effects" description="Play sounds during lessons and assessments" value={soundEffects} onChange={setSoundEffects} />
+        <Toggle label="Auto-Advance" description="Automatically move to the next question after answering" value={autoAdvance} onChange={setAutoAdvance} />
+      </Section>
+
+      {/* ====== SUBSCRIPTION ====== */}
+      <Section title="Subscription">
         <div className="flex items-center justify-between">
           <div>
             <p className="text-sm font-medium text-zinc-900">Free Plan</p>
-            <p className="text-xs text-zinc-500 mt-0.5">
-              Diagnostic assessment, 2 lessons per level, 1 reader profile
-            </p>
+            <p className="text-xs text-zinc-500 mt-0.5">Diagnostic assessment, 2 lessons per level, 1 reader profile</p>
           </div>
-          <span className="px-3 py-1 rounded-full text-xs font-semibold bg-zinc-100 text-zinc-600">
-            Current
-          </span>
+          <span className="px-3 py-1 rounded-full text-xs font-semibold bg-zinc-100 text-zinc-600">Current</span>
         </div>
         <div className="rounded-xl border border-indigo-200 bg-indigo-50/50 p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-semibold text-indigo-900">
-                Readee+ — $9.99/mo
-              </p>
-              <p className="text-xs text-indigo-600 mt-0.5">
-                25+ lessons, unlimited assessments, up to 5 readers, parent
-                reports
-              </p>
+              <p className="text-sm font-semibold text-indigo-900">Readee+ — $9.99/mo</p>
+              <p className="text-xs text-indigo-600 mt-0.5">25+ lessons, unlimited assessments, up to 5 readers, parent reports</p>
             </div>
             <span className="px-3 py-1.5 rounded-lg bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-xs font-bold whitespace-nowrap">
               Coming Soon
             </span>
           </div>
         </div>
-      </section>
+      </Section>
 
-      {/* Notifications */}
-      <section className="rounded-2xl border border-zinc-200 bg-white p-6 space-y-4">
-        <h2 className="text-base font-bold text-zinc-900">Notifications</h2>
-        <div className="flex items-center justify-between">
-          <div>
-            <p className="text-sm text-zinc-700">Progress email updates</p>
-            <p className="text-xs text-zinc-400 mt-0.5">
-              Weekly summary of your child&apos;s reading progress
-            </p>
-          </div>
-          <span className="text-xs text-zinc-400">Coming soon</span>
+      {/* ====== SUPPORT ====== */}
+      <Section title="Support">
+        <div className="space-y-2">
+          <SupportLink href="mailto:hello@readee.app" label="Contact Us" desc="Questions, feedback, or need help" />
+          <SupportLink href="mailto:hello@readee.app?subject=Bug%20Report" label="Report a Bug" desc="Found something broken? Let us know" />
+          <SupportLink href="https://readee.app#faq" label="FAQ" desc="Frequently asked questions" external />
         </div>
-      </section>
+      </Section>
 
-      {/* Help & Support */}
-      <section className="rounded-2xl border border-zinc-200 bg-white p-6 space-y-4">
-        <h2 className="text-base font-bold text-zinc-900">Help & Support</h2>
-        <div className="space-y-3">
-          <Link
-            href="/contact-us"
-            className="flex items-center justify-between rounded-xl border border-zinc-100 bg-zinc-50/50 p-4 hover:border-indigo-200 hover:bg-indigo-50/30 transition-colors"
-          >
-            <div>
-              <p className="text-sm font-medium text-zinc-900">Contact Us</p>
-              <p className="text-xs text-zinc-500">
-                Questions, feedback, or need help
-              </p>
-            </div>
-            <svg
-              className="w-4 h-4 text-zinc-400"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
-          </Link>
-          <Link
-            href="/about"
-            className="flex items-center justify-between rounded-xl border border-zinc-100 bg-zinc-50/50 p-4 hover:border-indigo-200 hover:bg-indigo-50/30 transition-colors"
-          >
-            <div>
-              <p className="text-sm font-medium text-zinc-900">About Readee</p>
-              <p className="text-xs text-zinc-500">
-                Our mission and the Science of Reading
-              </p>
-            </div>
-            <svg
-              className="w-4 h-4 text-zinc-400"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
-          </Link>
-        </div>
-      </section>
-
-      {/* Danger Zone */}
+      {/* ====== ACCOUNT ACTIONS ====== */}
       <section className="rounded-2xl border border-red-100 bg-white p-6 space-y-4">
         <h2 className="text-base font-bold text-zinc-900">Account Actions</h2>
         <div className="flex flex-col sm:flex-row gap-3">
@@ -216,23 +446,167 @@ export default function Settings() {
             Log Out
           </button>
           <button
-            disabled
-            className="px-4 py-2.5 rounded-xl border border-red-200 text-sm font-medium text-red-400 cursor-not-allowed"
-            title="Coming soon"
+            onClick={() => setShowDeleteAccount(true)}
+            className="px-4 py-2.5 rounded-xl border border-red-200 text-sm font-medium text-red-600 hover:bg-red-50 transition-colors"
           >
             Delete Account
           </button>
         </div>
-        <p className="text-xs text-zinc-400">
-          To delete your account and all data, contact{" "}
-          <a
-            href="mailto:hello@readee.app"
-            className="text-indigo-500 hover:underline"
-          >
-            hello@readee.app
-          </a>
-        </p>
       </section>
+
+      {/* ====== MODALS ====== */}
+
+      {/* Reset Progress Modal */}
+      {resetChildId && childForReset && (
+        <Modal
+          title={`Reset ${childForReset.first_name}'s Progress?`}
+          description={`This will reset ${childForReset.first_name}'s assessment, lessons, and XP back to zero. They'll take the reading quiz again.`}
+          confirmLabel="Reset Progress"
+          confirmColor="amber"
+          onConfirm={() => handleResetProgress(resetChildId)}
+          onCancel={() => setResetChildId(null)}
+        />
+      )}
+
+      {/* Remove Child Modal */}
+      {removeChildId && childForRemove && (
+        <Modal
+          title={`Remove ${childForRemove.first_name}?`}
+          description={`This will permanently delete ${childForRemove.first_name}'s profile, assessment results, and all lesson progress. This cannot be undone.`}
+          confirmLabel="Remove Child"
+          confirmColor="red"
+          onConfirm={() => handleRemoveChild(removeChildId)}
+          onCancel={() => setRemoveChildId(null)}
+        />
+      )}
+
+      {/* Delete Account Modal */}
+      {showDeleteAccount && (
+        <Modal
+          title="Delete Your Account?"
+          description="Are you sure? This will delete your account and all children's data permanently."
+          confirmLabel="Delete Account"
+          confirmColor="red"
+          onConfirm={() => setShowDeleteAccount(false)}
+          onCancel={() => setShowDeleteAccount(false)}
+        />
+      )}
+    </div>
+  );
+}
+
+/* ====== REUSABLE COMPONENTS ====== */
+
+function Section({ title, badge, children }: { title: string; badge?: string; children: React.ReactNode }) {
+  return (
+    <section className="rounded-2xl border border-zinc-200 bg-white p-6 space-y-4">
+      <div className="flex items-center justify-between">
+        <h2 className="text-base font-bold text-zinc-900">{title}</h2>
+        {badge && <span className="text-xs text-zinc-400">{badge}</span>}
+      </div>
+      {children}
+    </section>
+  );
+}
+
+function Label({ children }: { children: React.ReactNode }) {
+  return <label className="block text-xs font-medium text-zinc-500 mb-1">{children}</label>;
+}
+
+function InputField({
+  label, type = "text", value, onChange, placeholder,
+}: {
+  label: string; type?: string; value: string; onChange: (v: string) => void; placeholder?: string;
+}) {
+  return (
+    <div>
+      <Label>{label}</Label>
+      <input
+        type={type}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder}
+        className="w-full px-3 py-2 rounded-lg border border-zinc-200 text-sm text-zinc-900 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-400 placeholder:text-zinc-400"
+      />
+    </div>
+  );
+}
+
+function Toggle({
+  label, description, value, onChange,
+}: {
+  label: string; description: string; value: boolean; onChange: (v: boolean) => void;
+}) {
+  return (
+    <div className="flex items-center justify-between">
+      <div>
+        <p className="text-sm font-medium text-zinc-900">{label}</p>
+        <p className="text-xs text-zinc-500 mt-0.5">{description}</p>
+      </div>
+      <button
+        onClick={() => onChange(!value)}
+        className={`relative w-11 h-6 rounded-full transition-colors ${value ? "bg-indigo-600" : "bg-zinc-200"}`}
+      >
+        <span
+          className={`absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white shadow transition-transform ${value ? "translate-x-5" : "translate-x-0"}`}
+        />
+      </button>
+    </div>
+  );
+}
+
+function SupportLink({ href, label, desc, external }: { href: string; label: string; desc: string; external?: boolean }) {
+  return (
+    <a
+      href={href}
+      target={external ? "_blank" : undefined}
+      rel={external ? "noopener noreferrer" : undefined}
+      className="flex items-center justify-between rounded-xl border border-zinc-100 bg-zinc-50/50 p-4 hover:border-indigo-200 hover:bg-indigo-50/30 transition-colors"
+    >
+      <div>
+        <p className="text-sm font-medium text-zinc-900">{label}</p>
+        <p className="text-xs text-zinc-500">{desc}</p>
+      </div>
+      <svg className="w-4 h-4 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+      </svg>
+    </a>
+  );
+}
+
+function Modal({
+  title, description, confirmLabel, confirmColor, onConfirm, onCancel,
+}: {
+  title: string; description: string; confirmLabel: string; confirmColor: "red" | "amber";
+  onConfirm: () => void; onCancel: () => void;
+}) {
+  const btnClass = confirmColor === "red"
+    ? "bg-red-600 hover:bg-red-700 text-white"
+    : "bg-amber-500 hover:bg-amber-600 text-white";
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4" onClick={onCancel}>
+      <div
+        className="w-full max-w-sm rounded-2xl bg-white p-6 shadow-xl space-y-4"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <h3 className="text-lg font-bold text-zinc-900">{title}</h3>
+        <p className="text-sm text-zinc-500 leading-relaxed">{description}</p>
+        <div className="flex gap-3 justify-end">
+          <button
+            onClick={onCancel}
+            className="px-4 py-2 rounded-lg border border-zinc-200 text-sm font-medium text-zinc-600 hover:bg-zinc-50 transition-colors"
+          >
+            Cancel
+          </button>
+          <button
+            onClick={onConfirm}
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${btnClass}`}
+          >
+            {confirmLabel}
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
