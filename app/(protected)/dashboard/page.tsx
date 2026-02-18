@@ -239,7 +239,7 @@ function ChildSelector({
             onClick={() => onSelect(child)}
             className="group text-left w-full"
           >
-            <div className="rounded-2xl border border-zinc-200 bg-white p-6 hover:border-indigo-300 hover:shadow-md transition-all duration-200 group-hover:scale-[1.02]">
+            <div className="rounded-2xl border border-zinc-200 bg-white p-6 hover:border-indigo-300 hover:shadow-md transition-all duration-200 group-hover:scale-[1.02] space-y-4">
               <div className="flex items-center gap-4">
                 <div className="w-14 h-14 rounded-xl bg-indigo-50 flex items-center justify-center text-2xl flex-shrink-0">
                   {AVATARS[index % AVATARS.length]}
@@ -258,6 +258,12 @@ function ChildSelector({
                   <div>{child.xp} XP</div>
                   <div>{child.streak_days}d streak</div>
                 </div>
+              </div>
+              <div className="pointer-events-none">
+                <LevelProgressBar
+                  currentLevel={child.reading_level}
+                  onLevelChange={() => {}}
+                />
               </div>
             </div>
           </button>

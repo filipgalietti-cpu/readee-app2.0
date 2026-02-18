@@ -30,7 +30,7 @@ export default function LevelProgressBar({
   return (
     <div className="space-y-2">
       <div className="flex items-center justify-between">
-        <label className="block text-xs font-medium text-zinc-500">Reading Journey</label>
+        <label className="block text-xs font-medium text-zinc-500">Difficulty Level</label>
         {currentLevel ? (
           <span className="text-xs font-medium text-indigo-600">{currentLevel}</span>
         ) : (
