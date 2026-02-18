@@ -36,12 +36,12 @@ export const assessmentConfig: AssessmentConfig = {
   },
 };
 
-export const gradeOrder = ["pre-k", "kindergarten", "1st", "2nd", "3rd"] as const;
+export const gradeOrder = ["pre-k", "kindergarten", "1st", "2nd", "3rd", "4th"] as const;
 export type GradeKey = (typeof gradeOrder)[number];
 
 export const grades: Record<GradeKey, GradeAssessment> = {
   "pre-k": {
-    grade_label: "Pre-K",
+    grade_label: "Foundational",
     reading_level_name: "Emerging Reader",
     skills_tested: ["letter_recognition", "phonological_awareness", "print_concepts", "vocabulary"],
     questions: [
@@ -125,6 +125,23 @@ export const grades: Record<GradeKey, GradeAssessment> = {
       { id: "3-10", skill: "vocabulary", type: "single_choice", prompt: "Choose the correct meaning of 'bank' in this sentence: 'We sat on the bank of the river and watched the ducks.'", choices: ["A place for money", "The side of a river", "To count on something", "A type of building"], correct: "The side of a river", difficulty: 3 },
     ],
   },
+  "4th": {
+    grade_label: "4th Grade",
+    reading_level_name: "Advanced Reader",
+    skills_tested: ["figurative_language", "text_structure", "comprehension", "vocabulary"],
+    questions: [
+      { id: "4-1", skill: "figurative_language", type: "single_choice", prompt: "What does the phrase 'break a leg' mean?", choices: ["Actually break your leg", "Good luck", "Run fast", "Be careful"], correct: "Good luck", difficulty: 1 },
+      { id: "4-2", skill: "vocabulary", type: "single_choice", prompt: "What does the suffix '-less' mean in the word 'fearless'?", choices: ["Full of", "Without", "More than", "Like"], correct: "Without", difficulty: 1 },
+      { id: "4-3", skill: "text_structure", type: "single_choice", prompt: "A passage that explains why something happened and what resulted uses which text structure?", choices: ["Compare and contrast", "Cause and effect", "Chronological order", "Problem and solution"], correct: "Cause and effect", difficulty: 2 },
+      { id: "4-4", skill: "comprehension", type: "single_choice", prompt: "Read: 'The ancient Egyptians built the pyramids as tombs for their pharaohs. These massive structures took thousands of workers and many years to complete. The largest, the Great Pyramid of Giza, still stands today.' What is the author's purpose?", stimulus: "The ancient Egyptians built the pyramids as tombs for their pharaohs. These massive structures took thousands of workers and many years to complete. The largest, the Great Pyramid of Giza, still stands today.", stimulus_type: "passage", choices: ["To persuade you to visit Egypt", "To inform you about the pyramids", "To entertain with a story", "To compare buildings"], correct: "To inform you about the pyramids", difficulty: 2 },
+      { id: "4-5", skill: "figurative_language", type: "single_choice", prompt: "Read: 'The wind whispered through the trees.' What type of figurative language is this?", choices: ["Simile", "Metaphor", "Personification", "Alliteration"], correct: "Personification", difficulty: 2 },
+      { id: "4-6", skill: "vocabulary", type: "single_choice", prompt: "Read: 'The dog was so famished after the long hike that it devoured its entire bowl of food in seconds.' What does 'famished' most likely mean?", choices: ["Tired", "Very hungry", "Excited", "Thirsty"], correct: "Very hungry", difficulty: 2 },
+      { id: "4-7", skill: "comprehension", type: "single_choice", prompt: "Read: 'Maya practiced piano every day after school. Some days she wanted to quit, but she kept going. At the spring recital, she played her piece perfectly. The audience gave her a standing ovation.' What is the theme of this passage?", stimulus: "Maya practiced piano every day after school. Some days she wanted to quit, but she kept going. At the spring recital, she played her piece perfectly. The audience gave her a standing ovation.", stimulus_type: "passage", choices: ["Music is fun", "Persistence leads to success", "School is important", "Audiences are kind"], correct: "Persistence leads to success", difficulty: 2 },
+      { id: "4-8", skill: "text_structure", type: "single_choice", prompt: "Which signal words tell you a passage is comparing two things?", choices: ["First, then, finally", "Because, so, therefore", "However, on the other hand, similarly", "Once upon a time"], correct: "However, on the other hand, similarly", difficulty: 2 },
+      { id: "4-9", skill: "figurative_language", type: "single_choice", prompt: "Read: 'She ran as fast as a cheetah.' This is an example of a:", choices: ["Metaphor", "Simile", "Personification", "Hyperbole"], correct: "Simile", difficulty: 1 },
+      { id: "4-10", skill: "comprehension", type: "single_choice", prompt: "Read: 'Coral reefs are sometimes called the rainforests of the sea. They support more species per unit area than any other marine environment. Yet coral reefs around the world are threatened by rising ocean temperatures and pollution.' Based on this passage, the author would most likely agree that:", stimulus: "Coral reefs are sometimes called the rainforests of the sea. They support more species per unit area than any other marine environment. Yet coral reefs around the world are threatened by rising ocean temperatures and pollution.", stimulus_type: "passage", choices: ["Coral reefs are not important", "We should protect coral reefs", "Pollution is not a problem", "The ocean is too cold"], correct: "We should protect coral reefs", difficulty: 3 },
+    ],
+  },
 };
 
 /** Map reading level name back to grade key (reverse of grades[key].reading_level_name) */
@@ -140,13 +157,14 @@ export function levelNameToGradeKey(levelName: string | null): GradeKey {
 export function gradeToKey(grade: string | null): GradeKey {
   if (!grade) return "kindergarten";
   const g = grade.toLowerCase().trim();
-  if (g.includes("pre") || g.includes("pk")) return "pre-k";
+  if (g.includes("pre") || g.includes("pk") || g.includes("foundational")) return "pre-k";
   if (g.includes("kinder") || g === "k") return "kindergarten";
   if (g.startsWith("1") || g.includes("first")) return "1st";
   if (g.startsWith("2") || g.includes("second")) return "2nd";
   if (g.startsWith("3") || g.includes("third")) return "3rd";
-  // Default for grades 4+ or unknown
-  return "3rd";
+  if (g.startsWith("4") || g.includes("fourth")) return "4th";
+  // Default for grades 5+ or unknown
+  return "4th";
 }
 
 /** Determine reading level placement based on score */

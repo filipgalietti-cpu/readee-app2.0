@@ -15,11 +15,12 @@ const READING_LEVELS = [
   "Developing Reader",
   "Growing Reader",
   "Independent Reader",
+  "Advanced Reader",
 ];
 
 const FEATURES = [
   "40+ structured reading lessons",
-  "Full curriculum from Pre-K through 3rd grade",
+  "Full curriculum from K through 4th grade",
   "Aligned to Common Core ELA standards",
   "Tracks progress across 5 reading levels",
   "Up to 5 children on one account",
@@ -159,7 +160,7 @@ function UpgradeContent() {
 
   // Get locked lessons for preview
   const file = lessonsData as unknown as LessonsFile;
-  const gradeKey = child?.reading_level ? levelNameToGradeKey(child.reading_level) : "pre-k";
+  const gradeKey = child?.reading_level ? levelNameToGradeKey(child.reading_level) : "kindergarten";
   const currentLessons = file.levels[gradeKey]?.lessons || [];
   const lockedLessons = currentLessons.filter((l) => !isLessonFree(l.id));
   const totalLessons = Object.values(file.levels).reduce((sum, l) => sum + l.lessons.length, 0);

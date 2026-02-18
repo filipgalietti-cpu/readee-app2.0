@@ -6,9 +6,10 @@ export const READING_LEVELS = [
   "Developing Reader",
   "Growing Reader",
   "Independent Reader",
+  "Advanced Reader",
 ];
 
-export const GRADES = ["Pre-K", "Kindergarten", "1st", "2nd", "3rd"];
+export const GRADES = ["Kindergarten", "1st", "2nd", "3rd", "4th"];
 
 const LEVEL_COLORS = [
   { bg: "bg-indigo-100", fill: "bg-indigo-400", text: "text-indigo-700", ring: "ring-indigo-400" },
@@ -16,9 +17,10 @@ const LEVEL_COLORS = [
   { bg: "bg-violet-100", fill: "bg-violet-500", text: "text-violet-700", ring: "ring-violet-500" },
   { bg: "bg-purple-100", fill: "bg-purple-500", text: "text-purple-700", ring: "ring-purple-500" },
   { bg: "bg-emerald-100", fill: "bg-emerald-500", text: "text-emerald-700", ring: "ring-emerald-500" },
+  { bg: "bg-amber-100", fill: "bg-amber-500", text: "text-amber-700", ring: "ring-amber-500" },
 ];
 
-const LEVEL_SHORT = ["Emerging", "Beginning", "Developing", "Growing", "Independent"];
+const LEVEL_SHORT = ["Emerging", "Beginning", "Developing", "Growing", "Independent", "Advanced"];
 
 export default function LevelProgressBar({
   currentLevel,

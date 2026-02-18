@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "For Educators — Readee",
   description:
-    "Bring the Science of Reading to your classroom with Readee. Structured phonics lessons for Pre-K through 3rd grade.",
+    "Bring the Science of Reading to your classroom with Readee. Structured phonics lessons for K through 4th grade.",
 };
 
 export default function TeachersPage() {
@@ -40,7 +40,7 @@ export default function TeachersPage() {
             {
               icon: "📋",
               title: "Personalized Lesson Paths",
-              desc: "Every student follows a structured path matched to their level, from Pre-K through 3rd grade skills.",
+              desc: "Every student follows a structured path matched to their level, from K through 4th grade skills.",
             },
             {
               icon: "📊",

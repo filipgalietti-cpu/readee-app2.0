@@ -169,13 +169,13 @@ export default async function About() {
       {/* Who It's For */}
       <section className="rounded-2xl border border-zinc-200 bg-white p-8 space-y-6 mb-8">
         <h2 className="text-2xl font-bold text-zinc-900 tracking-tight">
-          Designed for Ages 4–9
+          Designed for Ages 5–10
         </h2>
         <div className="grid sm:grid-cols-2 gap-4">
           {[
             {
               icon: "🎒",
-              title: "Pre-K through 3rd Grade",
+              title: "K through 4th Grade",
               desc: "Covers the critical years when reading skills are built — from letter sounds to independent reading.",
             },
             {

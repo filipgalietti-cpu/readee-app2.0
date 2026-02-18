@@ -10,13 +10,14 @@ import LevelProgressBar, { GRADES } from "@/app/_components/LevelProgressBar";
 
 const AVATARS = ["😊", "🦊", "🐱", "🦋", "🐻"];
 
-const GRADE_KEYS = ["pre-k", "kindergarten", "1st", "2nd", "3rd"] as const;
+const GRADE_KEYS = ["pre-k", "kindergarten", "1st", "2nd", "3rd", "4th"] as const;
 const GRADE_LABELS: Record<string, string> = {
-  "pre-k": "Pre-K",
+  "pre-k": "Foundational",
   "kindergarten": "Kindergarten",
   "1st": "1st Grade",
   "2nd": "2nd Grade",
   "3rd": "3rd Grade",
+  "4th": "4th Grade",
 };
 
 const MOTIVATIONAL = [

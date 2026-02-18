@@ -5,7 +5,8 @@
       "kindergarten": 8,
       "1st": 8,
       "2nd": 9,
-      "3rd": 10
+      "3rd": 10,
+      "4th": 0
     },
     "sections_per_lesson": 3,
     "estimated_minutes": 10,
@@ -22,7 +23,7 @@
     "score_50_to_79": "Place one level below",
     "score_below_50": "Place two levels below",
     "floor": "pre-k",
-    "ceiling": "3rd",
+    "ceiling": "4th",
     "challenge_up": "If 100% on grade quiz, offer next grade assessment"
   },
   "levels": {
@@ -6734,6 +6735,12 @@
           }
         }
       ]
+    },
+    "4th": {
+      "level_name": "Advanced Reader",
+      "level_number": 6,
+      "focus": "Figurative language, text structure, advanced comprehension, vocabulary in context",
+      "lessons": []
     }
   }
 }

@@ -24,7 +24,7 @@ export default function Settings() {
 
   // Add child
   const [showAddChild, setShowAddChild] = useState(false);
-  const [newChild, setNewChild] = useState({ name: "", grade: "Pre-K" });
+  const [newChild, setNewChild] = useState({ name: "", grade: "Kindergarten" });
   const [addingChild, setAddingChild] = useState(false);
 
   // Editing child
@@ -120,7 +120,7 @@ export default function Settings() {
       grade: newChild.grade,
     });
     await loadChildren(userId);
-    setNewChild({ name: "", grade: "Pre-K" });
+    setNewChild({ name: "", grade: "Kindergarten" });
     setShowAddChild(false);
     setAddingChild(false);
   }
@@ -128,7 +128,7 @@ export default function Settings() {
   // === Edit Child ===
   function startEditing(child: Child) {
     setEditingChildId(child.id);
-    setEditValues({ first_name: child.first_name, grade: child.grade || "Pre-K" });
+    setEditValues({ first_name: child.first_name, grade: child.grade || "Kindergarten" });
   }
 
   async function saveEdit(childId: string) {

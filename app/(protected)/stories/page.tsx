@@ -9,13 +9,14 @@ import { Child, LessonProgress } from "@/lib/db/types";
 import { levelNameToGradeKey } from "@/lib/assessment/questions";
 import lessonsData from "@/lib/data/lessons.json";
 
-const GRADE_KEYS = ["pre-k", "kindergarten", "1st", "2nd", "3rd"] as const;
+const GRADE_KEYS = ["pre-k", "kindergarten", "1st", "2nd", "3rd", "4th"] as const;
 const GRADE_LABELS: Record<string, string> = {
-  "pre-k": "Pre-K",
+  "pre-k": "Foundational",
   "kindergarten": "Kindergarten",
   "1st": "1st Grade",
   "2nd": "2nd Grade",
   "3rd": "3rd Grade",
+  "4th": "4th Grade",
 };
 
 interface LessonRaw {
