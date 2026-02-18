@@ -6,6 +6,7 @@ import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child, LessonProgress } from "@/lib/db/types";
 import { levelNameToGradeKey } from "@/lib/assessment/questions";
 import lessonsData from "@/lib/data/lessons.json";
+import LevelProgressBar from "@/app/_components/LevelProgressBar";
 
 const AVATARS = ["😊", "🦊", "🐱", "🦋", "🐻"];
 
@@ -322,6 +323,12 @@ function ChildDashboard({
     checkAssessment();
   }, [child.id]);
 
+  async function handleReadingLevelChange(level: string) {
+    const supabase = supabaseBrowser();
+    await supabase.from("children").update({ reading_level: level }).eq("id", child.id);
+    setReadingLevel(level);
+  }
+
   return (
     <div className="max-w-2xl mx-auto space-y-8 pb-12">
       {/* Nav */}
@@ -359,18 +366,32 @@ function ChildDashboard({
           Hey {child.first_name}!
         </h1>
         <p className="text-zinc-500 mt-1">Ready to read today?</p>
-        <div className="flex justify-center gap-2 mt-3">
-          {child.grade && (
-            <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700">
-              {child.grade}
-            </span>
-          )}
-          {readingLevel && (
-            <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-violet-50 text-violet-700">
-              {readingLevel}
-            </span>
-          )}
-        </div>
+        {child.grade && (
+          <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 mt-3">
+            {child.grade}
+          </span>
+        )}
+      </div>
+
+      {/* Reading Level Progress */}
+      <div className="rounded-2xl border border-zinc-200 bg-white p-5">
+        <LevelProgressBar
+          currentLevel={readingLevel}
+          onLevelChange={handleReadingLevelChange}
+        />
+        {readingLevel === "Independent Reader" && (
+          <div className="mt-4 rounded-xl border border-emerald-200 bg-gradient-to-r from-emerald-50 to-teal-50 p-4 space-y-1">
+            <div className="flex items-center gap-2">
+              <span className="text-lg">🌟</span>
+              <p className="text-sm font-semibold text-emerald-800">
+                {child.first_name} is reading above {child.grade || "their"} grade level!
+              </p>
+            </div>
+            <p className="text-xs text-emerald-600 leading-relaxed">
+              They&apos;ve mastered all reading skills for their grade. {child.first_name} is an advanced reader — keep up the amazing work!
+            </p>
+          </div>
+        )}
       </div>
 
       {/* Stats */}
