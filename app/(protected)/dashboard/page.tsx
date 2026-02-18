@@ -548,55 +548,64 @@ function ChildDashboard({
       {/* ── Stats Cards ── */}
       <div className="grid grid-cols-3 gap-3 dash-slide-up-3">
         {/* XP Card */}
-        <div className="rounded-2xl border border-amber-200 bg-gradient-to-b from-amber-50 to-white p-4 text-center hover:shadow-md hover:scale-[1.02] transition-all duration-200 group">
-          <div className="text-xl mb-1 group-hover:animate-subtleBounce">⭐</div>
-          <div className="text-xl font-bold text-zinc-900">{child.xp}</div>
-          <div className="text-[10px] text-zinc-500 mt-0.5 font-medium">XP</div>
-          <div className="mt-2 h-1.5 bg-amber-100 rounded-full overflow-hidden">
-            <div
-              className="h-full bg-gradient-to-r from-amber-400 to-amber-500 rounded-full transition-all duration-700"
-              style={{ width: `${Math.min(xpProgress, 100)}%` }}
-            />
+        <Link href={`/xp-rewards?child=${child.id}`} className="block">
+          <div className="rounded-2xl border border-amber-200 bg-gradient-to-b from-amber-50 to-white p-4 text-center hover:shadow-md hover:scale-[1.02] transition-all duration-200 group cursor-pointer">
+            <div className="text-xl mb-1 group-hover:animate-subtleBounce">⭐</div>
+            <div className="text-xl font-bold text-zinc-900">{child.xp}</div>
+            <div className="text-[10px] text-zinc-500 mt-0.5 font-medium">XP</div>
+            <div className="mt-2 h-1.5 bg-amber-100 rounded-full overflow-hidden">
+              <div
+                className="h-full bg-gradient-to-r from-amber-400 to-amber-500 rounded-full transition-all duration-700"
+                style={{ width: `${Math.min(xpProgress, 100)}%` }}
+              />
+            </div>
+            <div className="text-[9px] text-amber-600 mt-1 font-medium">{child.xp}/{nextMilestone} XP</div>
+            <div className="text-[9px] text-amber-500 mt-1 opacity-0 group-hover:opacity-100 transition-opacity">View rewards →</div>
           </div>
-          <div className="text-[9px] text-amber-600 mt-1 font-medium">{child.xp}/{nextMilestone} XP</div>
-        </div>
+        </Link>
 
         {/* Stories Card */}
-        <div className="rounded-2xl border border-indigo-200 bg-gradient-to-b from-indigo-50 to-white p-4 text-center hover:shadow-md hover:scale-[1.02] transition-all duration-200 group">
-          <div className="text-xl mb-1 group-hover:animate-subtleBounce">
-            {child.stories_read > 0 ? "📚" : "📖"}
+        <Link href={`/stories?child=${child.id}`} className="block">
+          <div className="rounded-2xl border border-indigo-200 bg-gradient-to-b from-indigo-50 to-white p-4 text-center hover:shadow-md hover:scale-[1.02] transition-all duration-200 group cursor-pointer">
+            <div className="text-xl mb-1 group-hover:animate-subtleBounce">
+              {child.stories_read > 0 ? "📚" : "📖"}
+            </div>
+            <div className="text-xl font-bold text-zinc-900">{child.stories_read}</div>
+            <div className="text-[10px] text-zinc-500 mt-0.5 font-medium">Stories Read</div>
+            <div className="flex justify-center gap-0.5 mt-2">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <div
+                  key={i}
+                  className={`w-3 h-4 rounded-sm transition-colors ${
+                    i < Math.min(child.stories_read, 5)
+                      ? "bg-indigo-400"
+                      : "bg-zinc-100"
+                  }`}
+                />
+              ))}
+            </div>
+            <div className="text-[9px] text-indigo-500 mt-1 opacity-0 group-hover:opacity-100 transition-opacity">View library →</div>
           </div>
-          <div className="text-xl font-bold text-zinc-900">{child.stories_read}</div>
-          <div className="text-[10px] text-zinc-500 mt-0.5 font-medium">Stories Read</div>
-          <div className="flex justify-center gap-0.5 mt-2">
-            {Array.from({ length: 5 }).map((_, i) => (
-              <div
-                key={i}
-                className={`w-3 h-4 rounded-sm transition-colors ${
-                  i < Math.min(child.stories_read, 5)
-                    ? "bg-indigo-400"
-                    : "bg-zinc-100"
-                }`}
-              />
-            ))}
-          </div>
-        </div>
+        </Link>
 
         {/* Streak Card */}
-        <div className="rounded-2xl border border-orange-200 bg-gradient-to-b from-orange-50 to-white p-4 text-center hover:shadow-md hover:scale-[1.02] transition-all duration-200 group">
-          <div className={`text-xl mb-1 ${child.streak_days > 0 ? "animate-fireGlow" : ""}`}>
-            🔥
-          </div>
-          <div className="text-xl font-bold text-zinc-900">{child.streak_days}</div>
-          <div className="text-[10px] text-zinc-500 mt-0.5 font-medium">
-            {child.streak_days === 1 ? "Day Streak" : "Day Streak"}
-          </div>
-          {child.streak_days > 0 && (
-            <div className="text-[10px] text-orange-600 font-bold mt-1.5">
-              🔥 {child.streak_days} day{child.streak_days !== 1 ? "s" : ""}!
+        <Link href={`/leaderboard?child=${child.id}`} className="block">
+          <div className="rounded-2xl border border-orange-200 bg-gradient-to-b from-orange-50 to-white p-4 text-center hover:shadow-md hover:scale-[1.02] transition-all duration-200 group cursor-pointer">
+            <div className={`text-xl mb-1 ${child.streak_days > 0 ? "animate-fireGlow" : ""}`}>
+              🔥
             </div>
-          )}
-        </div>
+            <div className="text-xl font-bold text-zinc-900">{child.streak_days}</div>
+            <div className="text-[10px] text-zinc-500 mt-0.5 font-medium">
+              {child.streak_days === 1 ? "Day Streak" : "Day Streak"}
+            </div>
+            {child.streak_days > 0 && (
+              <div className="text-[10px] text-orange-600 font-bold mt-1.5">
+                🔥 {child.streak_days} day{child.streak_days !== 1 ? "s" : ""}!
+              </div>
+            )}
+            <div className="text-[9px] text-orange-500 mt-1 opacity-0 group-hover:opacity-100 transition-opacity">Leaderboard →</div>
+          </div>
+        </Link>
       </div>
 
       {/* ── Daily Goal Ring ── */}

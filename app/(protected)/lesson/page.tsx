@@ -35,6 +35,25 @@ interface LessonsFile {
 
 const ENCOURAGEMENTS = ["Nice!", "Great job!", "You got it!", "Amazing!"];
 
+const CELEBRATION_MESSAGES = [
+  "You're a reading superstar! 🌟",
+  "Your brain just leveled up! 🧠",
+  "Another story conquered! 📚",
+  "You make reading look easy! 💪",
+  "Incredible work, keep going! 🚀",
+  "Reading champion in action! 🏆",
+  "That was awesome! 🎯",
+  "You crushed it! 💥",
+];
+
+const XP_MILESTONES = [
+  { name: "Bronze", xp: 50, emoji: "🥉" },
+  { name: "Silver", xp: 100, emoji: "🥈" },
+  { name: "Gold", xp: 200, emoji: "🥇" },
+  { name: "Platinum", xp: 500, emoji: "💎" },
+  { name: "Diamond", xp: 1000, emoji: "👑" },
+];
+
 /** Extract a display-friendly line from a learn item regardless of its shape */
 function formatLearnItem(item: Record<string, unknown>): { emoji: string; title: string; detail: string } {
   const emoji = (item.emoji as string) || "";
@@ -170,6 +189,10 @@ function LessonContent() {
   const [confettiPieces, setConfettiPieces] = useState<
     { id: number; left: number; color: string; delay: number }[]
   >([]);
+  const [streakDays, setStreakDays] = useState(0);
+  const [newBadge, setNewBadge] = useState<string | null>(null);
+  const [nextLessonId, setNextLessonId] = useState<string | null>(null);
+  const [celebrationMsg, setCelebrationMsg] = useState("");
 
   // Load child and lesson data
   useEffect(() => {
@@ -288,7 +311,7 @@ function LessonContent() {
       setReadFeedback(`Keep going! The answer was: ${q.correct}`);
     }
 
-    setTimeout(() => {
+    setTimeout(async () => {
       setReadSelected(null);
       setReadFeedback(null);
       if (readQIdx + 1 < lesson.read.questions.length) {
@@ -298,7 +321,72 @@ function LessonContent() {
         saveProgress("read", score);
         awardXP(10);
 
-        const pieces = Array.from({ length: 40 }, (_, i) => ({
+        // Update stories_read and streak
+        if (child) {
+          const supabase = supabaseBrowser();
+
+          // Increment stories_read
+          const { data: freshChild } = await supabase
+            .from("children")
+            .select("stories_read, streak_days, last_lesson_at, xp")
+            .eq("id", child.id)
+            .single();
+
+          const current = freshChild as { stories_read: number; streak_days: number; last_lesson_at: string | null; xp: number } | null;
+          const newStoriesRead = (current?.stories_read ?? 0) + 1;
+
+          // Streak logic: increment if last lesson was yesterday or today, else reset to 1
+          const now = new Date();
+          const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+          let newStreak = 1;
+          if (current?.last_lesson_at) {
+            const lastDate = new Date(current.last_lesson_at);
+            const lastDay = new Date(lastDate.getFullYear(), lastDate.getMonth(), lastDate.getDate());
+            const diffDays = Math.floor((today.getTime() - lastDay.getTime()) / (1000 * 60 * 60 * 24));
+            if (diffDays === 0) {
+              newStreak = current.streak_days; // same day, keep streak
+            } else if (diffDays === 1) {
+              newStreak = current.streak_days + 1; // consecutive day
+            }
+            // diffDays > 1 means streak resets to 1
+          }
+
+          await supabase
+            .from("children")
+            .update({
+              stories_read: newStoriesRead,
+              streak_days: newStreak,
+              last_lesson_at: now.toISOString(),
+            })
+            .eq("id", child.id);
+
+          setStreakDays(newStreak);
+
+          // Check for milestone badge unlock
+          const totalXPAfter = (current?.xp ?? 0) + 10; // 10 XP from read section
+          for (const milestone of XP_MILESTONES) {
+            if ((current?.xp ?? 0) < milestone.xp && totalXPAfter >= milestone.xp) {
+              setNewBadge(`${milestone.emoji} ${milestone.name}`);
+              break;
+            }
+          }
+
+          // Find next lesson in sequence
+          const file = lessonsData as unknown as LessonsFile;
+          for (const level of Object.values(file.levels)) {
+            const idx = level.lessons.findIndex((l) => l.id === lessonId);
+            if (idx !== -1 && idx + 1 < level.lessons.length) {
+              setNextLessonId(level.lessons[idx + 1].id);
+              break;
+            }
+          }
+        }
+
+        // Celebration message
+        setCelebrationMsg(CELEBRATION_MESSAGES[Math.floor(Math.random() * CELEBRATION_MESSAGES.length)]);
+
+        // More confetti (60 pieces)
+        const pieces = Array.from({ length: 60 }, (_, i) => ({
           id: i,
           left: Math.random() * 100,
           color: ["#4338ca", "#8b5cf6", "#f59e0b", "#10b981", "#ef4444", "#ec4899"][
@@ -618,7 +706,7 @@ function LessonContent() {
   /* ─── Complete Phase ────────────────────────────────── */
   if (phase === "complete") {
     return (
-      <div className="max-w-lg mx-auto text-center py-16 px-4 space-y-8 relative overflow-hidden">
+      <div className="max-w-lg mx-auto text-center py-16 px-4 space-y-6 relative overflow-hidden">
         {confettiPieces.map((p) => (
           <div
             key={p.id}
@@ -637,19 +725,55 @@ function LessonContent() {
           Lesson Complete!
         </h1>
 
-        <div className="inline-block rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 px-8 py-5 text-white">
+        <p className="text-zinc-500 max-w-xs mx-auto">{celebrationMsg}</p>
+
+        {/* Animated XP display */}
+        <div className="inline-block rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 px-8 py-5 text-white animate-xpCountUp">
           <div className="text-sm font-medium text-indigo-200">You earned</div>
-          <div className="text-3xl font-bold mt-1">{totalXP} XP</div>
+          <div className="text-4xl font-bold mt-1">+{totalXP} XP</div>
         </div>
 
-        <p className="text-zinc-500 max-w-xs mx-auto">
-          Great work, {child.first_name}! Keep reading and learning!
-        </p>
+        {/* Streak display */}
+        {streakDays > 0 && (
+          <div className="animate-streakPulse">
+            <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-orange-50 border border-orange-200">
+              <span className="text-xl">🔥</span>
+              <span className="text-lg font-bold text-orange-700">
+                {streakDays} day streak!
+              </span>
+            </div>
+          </div>
+        )}
+
+        {/* New badge unlock */}
+        {newBadge && (
+          <div className="animate-badgeUnlock">
+            <div className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-gradient-to-r from-yellow-50 to-amber-50 border border-yellow-200">
+              <span className="text-2xl">🏆</span>
+              <div className="text-left">
+                <div className="text-xs font-medium text-yellow-600">New Badge Unlocked!</div>
+                <div className="text-sm font-bold text-yellow-800">{newBadge}</div>
+              </div>
+            </div>
+          </div>
+        )}
 
         <div className="space-y-3 pt-4">
+          {nextLessonId && (
+            <Link
+              href={`/lesson?child=${child.id}&lesson=${nextLessonId}`}
+              className="block w-full py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white font-bold text-lg hover:from-indigo-700 hover:to-violet-600 transition-all shadow-lg"
+            >
+              Next Lesson →
+            </Link>
+          )}
           <Link
             href="/dashboard"
-            className="block w-full py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white font-bold text-lg hover:from-indigo-700 hover:to-violet-600 transition-all shadow-lg"
+            className={`block w-full py-4 rounded-2xl font-bold text-lg transition-all ${
+              nextLessonId
+                ? "bg-white border-2 border-zinc-200 text-zinc-700 hover:bg-zinc-50"
+                : "bg-gradient-to-r from-indigo-600 to-violet-500 text-white hover:from-indigo-700 hover:to-violet-600 shadow-lg"
+            }`}
           >
             Back to Dashboard
           </Link>

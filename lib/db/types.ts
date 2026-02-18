@@ -23,6 +23,7 @@ export interface Child {
   xp: number;
   stories_read: number;
   streak_days: number;
+  last_lesson_at: string | null;
   created_at: string;
 }
 
