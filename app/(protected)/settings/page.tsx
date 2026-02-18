@@ -162,18 +162,6 @@ export default function Settings() {
     await loadChildren(userId);
   }
 
-  // === Advance Grade ===
-  async function handleAdvanceGrade(child: Child) {
-    const currentGradeIdx = GRADES.indexOf(child.grade || "");
-    if (currentGradeIdx < 0 || currentGradeIdx >= GRADES.length - 1) return;
-    const nextGrade = GRADES[currentGradeIdx + 1];
-    await supabase.from("children").update({
-      grade: nextGrade,
-      reading_level: "Emerging Reader",
-    }).eq("id", child.id);
-    await loadChildren(userId);
-  }
-
   // === Logout ===
   async function handleLogout() {
     await supabase.auth.signOut();
@@ -303,9 +291,17 @@ export default function Settings() {
                     <div className="flex items-center justify-between">
                       <div>
                         <div className="font-semibold text-zinc-900">{child.first_name}</div>
-                        <div className="text-xs text-zinc-500">
-                          {child.grade || "No grade set"}
-                          {child.reading_level && ` · ${child.reading_level}`}
+                        <div className="flex items-center gap-2 mt-0.5">
+                          {child.grade && (
+                            <span className="text-[10px] font-semibold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded-full">
+                              {child.grade}
+                            </span>
+                          )}
+                          {child.reading_level === "Independent Reader" && (
+                            <span className="text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full">
+                              Advanced
+                            </span>
+                          )}
                         </div>
                       </div>
                       <div className="flex items-center gap-3">
@@ -327,30 +323,18 @@ export default function Settings() {
                       onLevelChange={(level) => handleReadingLevelChange(child.id, level)}
                     />
 
-                    {/* Advanced / Grade Promotion Banner */}
+                    {/* Mastery Banner */}
                     {child.reading_level === "Independent Reader" && (
-                      <div className="rounded-xl border border-emerald-200 bg-gradient-to-r from-emerald-50 to-teal-50 p-4 space-y-2">
+                      <div className="rounded-xl border border-emerald-200 bg-gradient-to-r from-emerald-50 to-teal-50 p-4 space-y-1">
                         <div className="flex items-center gap-2">
                           <span className="text-lg">🌟</span>
                           <p className="text-sm font-semibold text-emerald-800">
-                            {child.first_name} has reached the highest level{child.grade ? ` for ${child.grade}` : ""}!
+                            {child.first_name} is reading above {child.grade || "their"} grade level!
                           </p>
                         </div>
                         <p className="text-xs text-emerald-600 leading-relaxed">
-                          They&apos;ve mastered all reading skills at this grade level. Amazing work!
+                          They&apos;ve mastered all reading skills for their grade. {child.first_name} is an advanced reader — keep up the amazing work!
                         </p>
-                        {child.grade && GRADES.indexOf(child.grade) < GRADES.length - 1 ? (
-                          <button
-                            onClick={() => handleAdvanceGrade(child)}
-                            className="mt-1 px-4 py-2 rounded-lg bg-gradient-to-r from-emerald-500 to-teal-500 text-white text-sm font-semibold hover:from-emerald-600 hover:to-teal-600 transition-all shadow-sm"
-                          >
-                            Advance to {GRADES[GRADES.indexOf(child.grade) + 1]} →
-                          </button>
-                        ) : child.grade === "3rd" ? (
-                          <p className="text-xs font-medium text-emerald-700 bg-emerald-100 inline-block px-3 py-1.5 rounded-full mt-1">
-                            🎓 Completed all grade levels — what a reader!
-                          </p>
-                        ) : null}
                       </div>
                     )}
 
