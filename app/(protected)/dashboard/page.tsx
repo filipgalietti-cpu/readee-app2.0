@@ -484,6 +484,7 @@ interface LessonData {
   id: string;
   title: string;
   skill: string;
+  standards?: string[];
 }
 
 interface LevelData {
@@ -572,6 +573,15 @@ function LessonPath({
                   <div className={`text-xs mt-0.5 ${isFuture ? "text-zinc-300" : "text-zinc-500"}`}>
                     {formatSkillName(lesson.skill)}
                   </div>
+                  {lesson.standards && lesson.standards.length > 0 && (
+                    <div className="flex flex-wrap gap-1 mt-1">
+                      {lesson.standards.map((s) => (
+                        <span key={s} className={`text-[10px] px-1.5 py-0.5 rounded ${isFuture ? "bg-zinc-100 text-zinc-300" : "bg-zinc-100 text-zinc-400"}`}>
+                          {s}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                 </div>
                 {complete && (
                   <span className="text-xs font-semibold text-green-600">Completed</span>
@@ -698,6 +708,15 @@ function CurriculumOverview({
                             <span className="text-xs text-zinc-400 ml-1.5">
                               · {formatSkillName(lesson.skill)}
                             </span>
+                            {lesson.standards && lesson.standards.length > 0 && (
+                              <div className="flex flex-wrap gap-1 mt-0.5">
+                                {lesson.standards.map((s) => (
+                                  <span key={s} className="text-[10px] px-1 py-px rounded bg-zinc-100 text-zinc-400">
+                                    {s}
+                                  </span>
+                                ))}
+                              </div>
+                            )}
                           </div>
                         </div>
                       );
