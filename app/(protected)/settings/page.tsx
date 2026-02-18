@@ -313,7 +313,6 @@ export default function Settings() {
                     <LevelProgressBar
                       currentLevel={child.reading_level}
                       onLevelChange={(level) => handleReadingLevelChange(child.id, level)}
-                      grade={child.grade}
                     />
 
                     {/* Danger actions */}

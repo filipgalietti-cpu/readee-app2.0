@@ -23,24 +23,16 @@ const LEVEL_SHORT = ["Emerging", "Beginning", "Developing", "Growing", "Independ
 export default function LevelProgressBar({
   currentLevel,
   onLevelChange,
-  grade,
 }: {
   currentLevel: string | null;
   onLevelChange: (level: string) => void;
-  grade?: string | null;
 }) {
   const currentIdx = currentLevel ? READING_LEVELS.indexOf(currentLevel) : -1;
-  const isAtMax = currentIdx === READING_LEVELS.length - 1;
-  const gradeIdx = grade ? GRADES.indexOf(grade) : -1;
-  const nextGrade = gradeIdx >= 0 && gradeIdx < GRADES.length - 1 ? GRADES[gradeIdx + 1] : null;
 
   return (
     <div className="space-y-2">
       <div className="flex items-center justify-between">
-        <label className="block text-xs font-medium text-zinc-500">
-          Difficulty Level
-          {grade && <span className="text-zinc-400"> — {grade}</span>}
-        </label>
+        <label className="block text-xs font-medium text-zinc-500">Difficulty Level</label>
         {currentLevel ? (
           <span className="text-xs font-medium text-indigo-600">{currentLevel}</span>
         ) : (
@@ -105,37 +97,6 @@ export default function LevelProgressBar({
           })}
         </div>
       </div>
-
-      {/* Next grade preview */}
-      {isAtMax && nextGrade && (
-        <div className="mt-3 pt-3 border-t border-zinc-100">
-          <div className="flex items-center gap-2 mb-2">
-            <span className="text-[10px] font-semibold text-indigo-600 uppercase tracking-wide">
-              Next: {nextGrade}
-            </span>
-            <div className="flex-1 h-px bg-zinc-100" />
-          </div>
-          <div className="relative">
-            <div className="absolute top-4 left-4 right-4 h-1 bg-zinc-100 rounded-full" />
-            <div className="relative flex justify-between">
-              {READING_LEVELS.map((level, i) => (
-                <div
-                  key={level}
-                  title={`${nextGrade}: ${level}`}
-                  className="flex flex-col items-center gap-1.5 z-10"
-                >
-                  <div className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold bg-zinc-100 text-zinc-300">
-                    {i + 1}
-                  </div>
-                  <span className="text-[10px] font-medium leading-tight text-center max-w-[56px] text-zinc-300">
-                    {LEVEL_SHORT[i]}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

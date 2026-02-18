@@ -10,6 +10,22 @@ import LevelProgressBar, { GRADES } from "@/app/_components/LevelProgressBar";
 
 const AVATARS = ["😊", "🦊", "🐱", "🦋", "🐻"];
 
+const GRADE_KEYS = ["pre-k", "kindergarten", "1st", "2nd", "3rd"] as const;
+const GRADE_LABELS: Record<string, string> = {
+  "pre-k": "Pre-K",
+  "kindergarten": "Kindergarten",
+  "1st": "1st Grade",
+  "2nd": "2nd Grade",
+  "3rd": "3rd Grade",
+};
+
+function formatSkillName(skill: string): string {
+  return skill
+    .split("_")
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(" ");
+}
+
 export default function Dashboard() {
   const [children, setChildren] = useState<Child[]>([]);
   const [selectedChild, setSelectedChild] = useState<Child | null>(null);
@@ -261,7 +277,6 @@ function ChildSelector({
                 <LevelProgressBar
                   currentLevel={child.reading_level}
                   onLevelChange={() => {}}
-                  grade={child.grade}
                 />
               </div>
             </div>
@@ -288,6 +303,8 @@ function ChildDashboard({
   const [hasAssessment, setHasAssessment] = useState<boolean | null>(null);
   const [readingLevel, setReadingLevel] = useState<string | null>(child.reading_level);
   const [lessonProgress, setLessonProgress] = useState<LessonProgress[]>([]);
+  const [showCurriculum, setShowCurriculum] = useState(false);
+  const [expandedGrade, setExpandedGrade] = useState<string | null>(null);
   const childIndex = children.findIndex((c) => c.id === child.id);
   const avatar = AVATARS[childIndex % AVATARS.length];
   const hasMultiple = children.length > 1;
@@ -383,7 +400,6 @@ function ChildDashboard({
         <LevelProgressBar
           currentLevel={readingLevel}
           onLevelChange={handleReadingLevelChange}
-          grade={child.grade}
         />
       </div>
 
@@ -416,6 +432,16 @@ function ChildDashboard({
           </div>
         </Link>
       )}
+
+      {/* Curriculum Overview */}
+      <CurriculumOverview
+        readingLevel={readingLevel}
+        lessonProgress={lessonProgress}
+        showCurriculum={showCurriculum}
+        setShowCurriculum={setShowCurriculum}
+        expandedGrade={expandedGrade}
+        setExpandedGrade={setExpandedGrade}
+      />
 
       {/* Weekly Progress */}
       <div className="rounded-2xl border border-zinc-200 bg-white p-6">
@@ -544,7 +570,7 @@ function LessonPath({
                     Lesson {i + 1}: {lesson.title}
                   </div>
                   <div className={`text-xs mt-0.5 ${isFuture ? "text-zinc-300" : "text-zinc-500"}`}>
-                    {lesson.skill}
+                    {formatSkillName(lesson.skill)}
                   </div>
                 </div>
                 {complete && (
@@ -563,6 +589,126 @@ function LessonPath({
           );
         })}
       </div>
+    </div>
+  );
+}
+
+/* ─── Curriculum Overview ─────────────────────────────── */
+
+function CurriculumOverview({
+  readingLevel,
+  lessonProgress,
+  showCurriculum,
+  setShowCurriculum,
+  expandedGrade,
+  setExpandedGrade,
+}: {
+  readingLevel: string | null;
+  lessonProgress: LessonProgress[];
+  showCurriculum: boolean;
+  setShowCurriculum: (v: boolean) => void;
+  expandedGrade: string | null;
+  setExpandedGrade: (v: string | null) => void;
+}) {
+  const file = lessonsData as unknown as LessonsFile;
+  const currentGradeKey = readingLevel ? levelNameToGradeKey(readingLevel) : null;
+
+  const isLessonComplete = (lessonId: string) => {
+    const sections = lessonProgress.filter((p) => p.lesson_id === lessonId);
+    const completedSections = new Set(sections.map((s) => s.section));
+    return completedSections.has("learn") && completedSections.has("practice") && completedSections.has("read");
+  };
+
+  function handleToggle() {
+    if (!showCurriculum && !expandedGrade) {
+      setExpandedGrade(currentGradeKey);
+    }
+    setShowCurriculum(!showCurriculum);
+  }
+
+  return (
+    <div className="rounded-2xl border border-zinc-200 bg-white overflow-hidden">
+      <button
+        onClick={handleToggle}
+        className="w-full flex items-center justify-between p-5"
+      >
+        <h3 className="text-base font-bold text-zinc-900">Full Curriculum</h3>
+        <span className="text-xs text-indigo-600 font-medium">
+          {showCurriculum ? "Hide" : "View All Levels"}
+        </span>
+      </button>
+
+      {showCurriculum && (
+        <div className="px-5 pb-5 space-y-2">
+          {GRADE_KEYS.map((key) => {
+            const level = file.levels[key];
+            if (!level) return null;
+            const isExpanded = expandedGrade === key;
+            const isCurrent = key === currentGradeKey;
+
+            return (
+              <div key={key}>
+                <button
+                  onClick={() => setExpandedGrade(isExpanded ? null : key)}
+                  className={`w-full flex items-center justify-between p-3 rounded-xl text-left transition-colors ${
+                    isCurrent
+                      ? "bg-indigo-50 border border-indigo-200"
+                      : "bg-zinc-50 border border-zinc-100 hover:bg-zinc-100"
+                  }`}
+                >
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className={`text-sm font-semibold ${isCurrent ? "text-indigo-700" : "text-zinc-700"}`}>
+                      {GRADE_LABELS[key]}
+                    </span>
+                    <span className={`text-xs ${isCurrent ? "text-indigo-500" : "text-zinc-400"}`}>
+                      {level.level_name}
+                    </span>
+                    {isCurrent && (
+                      <span className="text-[10px] font-semibold text-indigo-600 bg-indigo-100 px-1.5 py-0.5 rounded-full">
+                        Current
+                      </span>
+                    )}
+                  </div>
+                  <svg
+                    className={`w-4 h-4 text-zinc-400 transition-transform flex-shrink-0 ${isExpanded ? "rotate-180" : ""}`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+
+                {isExpanded && (
+                  <div className="mt-1 ml-3 pl-3 border-l-2 border-zinc-100 space-y-1.5 py-2">
+                    <p className="text-[11px] text-zinc-400 mb-1">{level.focus}</p>
+                    {level.lessons.map((lesson: LessonData, i: number) => {
+                      const complete = isCurrent && isLessonComplete(lesson.id);
+                      return (
+                        <div key={lesson.id} className="flex items-start gap-2">
+                          <span
+                            className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold flex-shrink-0 mt-0.5 ${
+                              complete ? "bg-green-100 text-green-600" : "bg-zinc-100 text-zinc-400"
+                            }`}
+                          >
+                            {complete ? "✓" : i + 1}
+                          </span>
+                          <div className="min-w-0">
+                            <span className="text-sm text-zinc-700">{lesson.title}</span>
+                            <span className="text-xs text-zinc-400 ml-1.5">
+                              · {formatSkillName(lesson.skill)}
+                            </span>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }
