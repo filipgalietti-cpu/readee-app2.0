@@ -1,7 +1,7 @@
 "use client";
 
 import { Suspense, useEffect, useState, useCallback, useRef } from "react";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
@@ -423,8 +423,16 @@ export default function LessonPage() {
   );
 }
 
+/** Check if a lesson ID is free (L1 or L2) */
+function isLessonFree(lessonId: string): boolean {
+  const match = lessonId.match(/L(\d+)$/);
+  if (!match) return true;
+  return parseInt(match[1]) <= 2;
+}
+
 function LessonContent() {
   const searchParams = useSearchParams();
+  const router = useRouter();
   const childId = searchParams.get("child");
   const lessonId = searchParams.get("lesson");
 
@@ -486,6 +494,23 @@ function LessonContent() {
 
       const c = data as Child;
       setChild(c);
+
+      // Gating: check if lesson requires premium
+      if (lessonId && !isLessonFree(lessonId)) {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (user) {
+          const { data: profile } = await supabase
+            .from("profiles")
+            .select("plan")
+            .eq("id", user.id)
+            .single();
+          const plan = (profile as { plan?: string } | null)?.plan || "free";
+          if (plan !== "premium") {
+            router.replace(`/upgrade?child=${childId}`);
+            return;
+          }
+        }
+      }
 
       const file = lessonsData as unknown as LessonsFile;
       let found: LessonRaw | undefined;

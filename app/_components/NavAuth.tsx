@@ -9,6 +9,7 @@ export default function NavAuth() {
   const pathname = usePathname();
   const router = useRouter();
   const [loggedIn, setLoggedIn] = useState<boolean | null>(null);
+  const [userPlan, setUserPlan] = useState<string>("free");
   const [menuOpen, setMenuOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -17,6 +18,16 @@ export default function NavAuth() {
     const supabase = createClient();
     supabase.auth.getSession().then(({ data }) => {
       setLoggedIn(!!data.session);
+      if (data.session?.user) {
+        supabase
+          .from("profiles")
+          .select("plan")
+          .eq("id", data.session.user.id)
+          .single()
+          .then(({ data: profile }) => {
+            setUserPlan((profile as { plan?: string } | null)?.plan || "free");
+          });
+      }
     });
     const { data: sub } = supabase.auth.onAuthStateChange((_event, session) => {
       setLoggedIn(!!session);
@@ -92,6 +103,15 @@ export default function NavAuth() {
               <Link href="/dashboard" className={linkClass("/dashboard")}>
                 Dashboard
               </Link>
+
+              {userPlan !== "premium" && (
+                <Link
+                  href="/upgrade"
+                  className="text-sm font-semibold text-amber-600 hover:text-amber-700 transition-colors flex items-center gap-1"
+                >
+                  <span>⭐</span> Upgrade
+                </Link>
+              )}
 
               {/* Profile dropdown */}
               <div className="relative" ref={menuRef}>
@@ -187,6 +207,11 @@ export default function NavAuth() {
               <Link href="/dashboard" className="block py-2.5 text-sm font-medium text-zinc-700 hover:text-indigo-700">
                 Dashboard
               </Link>
+              {userPlan !== "premium" && (
+                <Link href="/upgrade" className="block py-2.5 text-sm font-semibold text-amber-600 hover:text-amber-700">
+                  ⭐ Upgrade to Readee+
+                </Link>
+              )}
               <Link href="/settings" className="block py-2.5 text-sm font-medium text-zinc-700 hover:text-indigo-700">
                 Settings
               </Link>

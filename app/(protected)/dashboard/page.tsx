@@ -323,6 +323,7 @@ function ChildDashboard({
   const [lessonProgress, setLessonProgress] = useState<LessonProgress[]>([]);
   const [showCurriculum, setShowCurriculum] = useState(false);
   const [expandedGrade, setExpandedGrade] = useState<string | null>(null);
+  const [userPlan, setUserPlan] = useState<string>("free");
   const childIndex = children.findIndex((c) => c.id === child.id);
   const avatar = AVATARS[childIndex % AVATARS.length];
   const hasMultiple = children.length > 1;
@@ -332,6 +333,18 @@ function ChildDashboard({
   useEffect(() => {
     async function checkAssessment() {
       const supabase = supabaseBrowser();
+
+      // Fetch user plan
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        const { data: profile } = await supabase
+          .from("profiles")
+          .select("plan")
+          .eq("id", user.id)
+          .single();
+        setUserPlan((profile as { plan?: string } | null)?.plan || "free");
+      }
+
       const { data, error } = await supabase
         .from("assessments")
         .select("reading_level_placed")
@@ -693,7 +706,7 @@ function ChildDashboard({
       {/* ── Lesson Path ── */}
       {hasAssessment && (
         <div className="dash-slide-up-6">
-          <LessonPath child={child} readingLevel={readingLevel} lessonProgress={lessonProgress} />
+          <LessonPath child={child} readingLevel={readingLevel} lessonProgress={lessonProgress} userPlan={userPlan} />
         </div>
       )}
 
@@ -800,14 +813,22 @@ interface LessonsFile {
   levels: Record<string, LevelData>;
 }
 
+function isLessonFree(lessonId: string): boolean {
+  const match = lessonId.match(/L(\d+)$/);
+  if (!match) return true;
+  return parseInt(match[1]) <= 2;
+}
+
 function LessonPath({
   child,
   readingLevel,
   lessonProgress,
+  userPlan,
 }: {
   child: Child;
   readingLevel: string | null;
   lessonProgress: LessonProgress[];
+  userPlan: string;
 }) {
   const gradeKey = levelNameToGradeKey(readingLevel);
   const file = lessonsData as unknown as LessonsFile;
@@ -844,51 +865,79 @@ function LessonPath({
           const complete = isLessonComplete(lesson.id);
           const isNext = i === firstIncomplete;
           const isFuture = !complete && !isNext;
+          const isFree = isLessonFree(lesson.id);
+          const isLocked = !isFree && userPlan !== "premium";
 
           return (
             <div
               key={lesson.id}
-              className={`rounded-xl border p-4 transition-all duration-200 ${
-                complete
+              className={`rounded-xl border p-4 transition-all duration-200 relative ${
+                isLocked
+                  ? "border-zinc-200 bg-zinc-50/80 opacity-75"
+                  : complete
                   ? "border-green-200 bg-green-50/50"
                   : isNext
                   ? "border-indigo-300 bg-indigo-50/50 shadow-sm"
                   : "border-zinc-100 bg-zinc-50/50 opacity-60"
-              } ${!isFuture ? "hover:shadow-md" : ""}`}
+              } ${!isFuture && !isLocked ? "hover:shadow-md" : ""}`}
             >
               <div className="flex items-center gap-3">
                 <div
                   className={`w-10 h-10 rounded-xl flex items-center justify-center text-sm font-bold flex-shrink-0 ${
-                    complete
+                    isLocked
+                      ? "bg-zinc-100 text-zinc-400"
+                      : complete
                       ? "bg-green-100 text-green-600"
                       : isNext
                       ? "bg-indigo-100 text-indigo-600"
                       : "bg-zinc-100 text-zinc-400"
                   }`}
                 >
-                  {complete ? "✓" : i + 1}
+                  {isLocked ? (
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                    </svg>
+                  ) : complete ? "✓" : i + 1}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className={`font-semibold text-sm ${isFuture ? "text-zinc-400" : "text-zinc-900"}`}>
-                    Lesson {i + 1}: {lesson.title}
+                  <div className="flex items-center gap-2">
+                    <span className={`font-semibold text-sm ${isLocked || isFuture ? "text-zinc-400" : "text-zinc-900"}`}>
+                      Lesson {i + 1}: {lesson.title}
+                    </span>
+                    {isLocked && (
+                      <span className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-gradient-to-r from-indigo-100 to-violet-100 text-indigo-600">
+                        Readee+
+                      </span>
+                    )}
                   </div>
-                  <div className={`text-xs mt-0.5 ${isFuture ? "text-zinc-300" : "text-zinc-500"}`}>
+                  <div className={`text-xs mt-0.5 ${isLocked || isFuture ? "text-zinc-300" : "text-zinc-500"}`}>
                     {formatSkillName(lesson.skill)}
                   </div>
                   {lesson.standards && lesson.standards.length > 0 && (
                     <div className="flex flex-wrap gap-1 mt-1">
                       {lesson.standards.map((s) => (
-                        <span key={s} className={`text-[10px] px-1.5 py-0.5 rounded ${isFuture ? "bg-zinc-100 text-zinc-300" : "bg-zinc-100 text-zinc-400"}`}>
+                        <span key={s} className={`text-[10px] px-1.5 py-0.5 rounded ${isLocked || isFuture ? "bg-zinc-100 text-zinc-300" : "bg-zinc-100 text-zinc-400"}`}>
                           {s}
                         </span>
                       ))}
                     </div>
                   )}
                 </div>
-                {complete && (
+                {isLocked && (
+                  <Link
+                    href={`/upgrade?child=${child.id}`}
+                    className="px-3 py-1.5 rounded-lg bg-gradient-to-r from-indigo-500 to-violet-500 text-white text-[11px] font-bold hover:from-indigo-600 hover:to-violet-600 transition-all shadow-sm flex items-center gap-1"
+                  >
+                    <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    Unlock
+                  </Link>
+                )}
+                {!isLocked && complete && (
                   <span className="text-xs font-semibold text-green-600">Completed</span>
                 )}
-                {isNext && (
+                {!isLocked && isNext && (
                   <Link
                     href={`/lesson?child=${child.id}&lesson=${lesson.id}`}
                     className="px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-xs font-bold hover:from-indigo-700 hover:to-violet-600 transition-all shadow-sm hover:shadow-md"
