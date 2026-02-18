@@ -90,7 +90,9 @@
                   "D",
                   "F"
                 ],
-                "correct": "A"
+                "correct": "A",
+                "type": "multiple_choice",
+                "question_id": "pk-L1-P1"
               },
               {
                 "prompt": "Which letter starts 'Cat'?",
@@ -100,7 +102,9 @@
                   "B",
                   "E"
                 ],
-                "correct": "C"
+                "correct": "C",
+                "type": "multiple_choice",
+                "question_id": "pk-L1-P2"
               },
               {
                 "prompt": "Find the letter that looks like a mountain",
@@ -110,7 +114,9 @@
                   "A",
                   "F"
                 ],
-                "correct": "A"
+                "correct": "A",
+                "type": "multiple_choice",
+                "question_id": "pk-L1-P3"
               },
               {
                 "prompt": "Which letter starts 'Dog'?",
@@ -120,7 +126,9 @@
                   "D",
                   "A"
                 ],
-                "correct": "D"
+                "correct": "D",
+                "type": "multiple_choice",
+                "question_id": "pk-L1-P4"
               },
               {
                 "prompt": "Find the letter with three arms",
@@ -130,7 +138,9 @@
                   "B",
                   "C"
                 ],
-                "correct": "E"
+                "correct": "E",
+                "type": "multiple_choice",
+                "question_id": "pk-L1-P5"
               }
             ]
           },
@@ -147,7 +157,9 @@
                   "C",
                   "D"
                 ],
-                "correct": "A"
+                "correct": "A",
+                "type": "multiple_choice",
+                "question_id": "pk-L1-R1"
               },
               {
                 "prompt": "What animal goes with the letter C?",
@@ -157,7 +169,9 @@
                   "Cat",
                   "Elephant"
                 ],
-                "correct": "Cat"
+                "correct": "Cat",
+                "type": "multiple_choice",
+                "question_id": "pk-L1-R2"
               },
               {
                 "prompt": "How many letters did we learn?",
@@ -167,7 +181,9 @@
                   "6",
                   "7"
                 ],
-                "correct": "6"
+                "correct": "6",
+                "type": "multiple_choice",
+                "question_id": "pk-L1-R3"
               }
             ]
           },
@@ -234,7 +250,9 @@
                   "J",
                   "G"
                 ],
-                "correct": "J"
+                "correct": "J",
+                "type": "multiple_choice",
+                "question_id": "pk-L2-P1"
               },
               {
                 "prompt": "Which letter starts 'House'?",
@@ -244,7 +262,9 @@
                   "K",
                   "I"
                 ],
-                "correct": "H"
+                "correct": "H",
+                "type": "multiple_choice",
+                "question_id": "pk-L2-P2"
               },
               {
                 "prompt": "Find the letter L",
@@ -254,7 +274,9 @@
                   "L",
                   "K"
                 ],
-                "correct": "L"
+                "correct": "L",
+                "type": "multiple_choice",
+                "question_id": "pk-L2-P3"
               },
               {
                 "prompt": "Which letter is like C with a shelf?",
@@ -264,7 +286,9 @@
                   "J",
                   "K"
                 ],
-                "correct": "G"
+                "correct": "G",
+                "type": "multiple_choice",
+                "question_id": "pk-L2-P4"
               },
               {
                 "prompt": "Which letter starts 'Kite'?",
@@ -274,7 +298,9 @@
                   "H",
                   "I"
                 ],
-                "correct": "K"
+                "correct": "K",
+                "type": "multiple_choice",
+                "question_id": "pk-L2-P5"
               }
             ]
           },
@@ -291,7 +317,9 @@
                   "Juice",
                   "Kite"
                 ],
-                "correct": "Grapes"
+                "correct": "Grapes",
+                "type": "multiple_choice",
+                "question_id": "pk-L2-R1"
               },
               {
                 "prompt": "What flies high in the sky?",
@@ -301,7 +329,9 @@
                   "Kite",
                   "House"
                 ],
-                "correct": "Kite"
+                "correct": "Kite",
+                "type": "multiple_choice",
+                "question_id": "pk-L2-R2"
               },
               {
                 "prompt": "Which letter is for something you drink?",
@@ -311,7 +341,9 @@
                   "K",
                   "L"
                 ],
-                "correct": "J"
+                "correct": "J",
+                "type": "multiple_choice",
+                "question_id": "pk-L2-R3"
               }
             ]
           },
@@ -383,7 +415,9 @@
                   "sun",
                   "top"
                 ],
-                "correct": "bat"
+                "correct": "bat",
+                "type": "multiple_choice",
+                "question_id": "pk-L3-P1"
               },
               {
                 "prompt": "Which starts like 'moon'?",
@@ -394,7 +428,9 @@
                   "top",
                   "ball"
                 ],
-                "correct": "mom"
+                "correct": "mom",
+                "type": "multiple_choice",
+                "question_id": "pk-L3-P2"
               },
               {
                 "prompt": "Which starts like 'sun'?",
@@ -405,7 +441,9 @@
                   "star",
                   "tiger"
                 ],
-                "correct": "star"
+                "correct": "star",
+                "type": "multiple_choice",
+                "question_id": "pk-L3-P3"
               },
               {
                 "prompt": "Which starts like 'top'?",
@@ -416,7 +454,9 @@
                   "snake",
                   "mouse"
                 ],
-                "correct": "tree"
+                "correct": "tree",
+                "type": "multiple_choice",
+                "question_id": "pk-L3-P4"
               },
               {
                 "prompt": "Which starts like 'bear'?",
@@ -427,7 +467,9 @@
                   "boat",
                   "top"
                 ],
-                "correct": "boat"
+                "correct": "boat",
+                "type": "multiple_choice",
+                "question_id": "pk-L3-P5"
               }
             ]
           },
@@ -444,7 +486,9 @@
                   "/s/",
                   "/t/"
                 ],
-                "correct": "/b/"
+                "correct": "/b/",
+                "type": "multiple_choice",
+                "question_id": "pk-L3-R1"
               },
               {
                 "prompt": "Who hears the /m/ sound?",
@@ -454,7 +498,9 @@
                   "Mouse",
                   "Tiger"
                 ],
-                "correct": "Mouse"
+                "correct": "Mouse",
+                "type": "multiple_choice",
+                "question_id": "pk-L3-R2"
               },
               {
                 "prompt": "What is one of Snake's /s/ words?",
@@ -464,7 +510,9 @@
                   "Sun",
                   "Bat"
                 ],
-                "correct": "Sun"
+                "correct": "Sun",
+                "type": "multiple_choice",
+                "question_id": "pk-L3-R3"
               }
             ]
           },
@@ -539,7 +587,9 @@
                   "cup",
                   "sun"
                 ],
-                "correct": "hat"
+                "correct": "hat",
+                "type": "multiple_choice",
+                "question_id": "pk-L4-P1"
               },
               {
                 "prompt": "What rhymes with 'bug'?",
@@ -549,7 +599,9 @@
                   "hug",
                   "bed"
                 ],
-                "correct": "hug"
+                "correct": "hug",
+                "type": "multiple_choice",
+                "question_id": "pk-L4-P2"
               },
               {
                 "prompt": "What rhymes with 'hop'?",
@@ -559,7 +611,9 @@
                   "top",
                   "hug"
                 ],
-                "correct": "top"
+                "correct": "top",
+                "type": "multiple_choice",
+                "question_id": "pk-L4-P3"
               },
               {
                 "prompt": "What rhymes with 'bed'?",
@@ -569,7 +623,9 @@
                   "red",
                   "rug"
                 ],
-                "correct": "red"
+                "correct": "red",
+                "type": "multiple_choice",
+                "question_id": "pk-L4-P4"
               },
               {
                 "prompt": "What rhymes with 'mug'?",
@@ -579,7 +635,9 @@
                   "mat",
                   "red"
                 ],
-                "correct": "rug"
+                "correct": "rug",
+                "type": "multiple_choice",
+                "question_id": "pk-L4-P5"
               }
             ]
           },
@@ -596,7 +654,9 @@
                   "A bed",
                   "A mop"
                 ],
-                "correct": "A mat"
+                "correct": "A mat",
+                "type": "multiple_choice",
+                "question_id": "pk-L4-R1"
               },
               {
                 "prompt": "What did Bug give Cat?",
@@ -606,7 +666,9 @@
                   "A hug",
                   "A bat"
                 ],
-                "correct": "A hug"
+                "correct": "A hug",
+                "type": "multiple_choice",
+                "question_id": "pk-L4-R2"
               },
               {
                 "prompt": "Which word rhymes with 'hug'?",
@@ -616,7 +678,9 @@
                   "hop",
                   "bed"
                 ],
-                "correct": "rug"
+                "correct": "rug",
+                "type": "multiple_choice",
+                "question_id": "pk-L4-R3"
               }
             ]
           },
@@ -672,7 +736,9 @@
                   "a",
                   "m"
                 ],
-                "correct": "a"
+                "correct": "a",
+                "type": "multiple_choice",
+                "question_id": "pk-L5-P1"
               },
               {
                 "prompt": "Which is the uppercase of b?",
@@ -682,7 +748,9 @@
                   "A",
                   "M"
                 ],
-                "correct": "B"
+                "correct": "B",
+                "type": "multiple_choice",
+                "question_id": "pk-L5-P2"
               },
               {
                 "prompt": "Which is the lowercase of D?",
@@ -692,7 +760,9 @@
                   "d",
                   "s"
                 ],
-                "correct": "d"
+                "correct": "d",
+                "type": "multiple_choice",
+                "question_id": "pk-L5-P3"
               },
               {
                 "prompt": "Which is the uppercase of m?",
@@ -702,7 +772,9 @@
                   "D",
                   "S"
                 ],
-                "correct": "M"
+                "correct": "M",
+                "type": "multiple_choice",
+                "question_id": "pk-L5-P4"
               },
               {
                 "prompt": "Which is the lowercase of S?",
@@ -712,7 +784,9 @@
                   "m",
                   "d"
                 ],
-                "correct": "s"
+                "correct": "s",
+                "type": "multiple_choice",
+                "question_id": "pk-L5-P5"
               }
             ]
           },
@@ -729,7 +803,9 @@
                   "A ball",
                   "A star"
                 ],
-                "correct": "A mountain"
+                "correct": "A mountain",
+                "type": "multiple_choice",
+                "question_id": "pk-L5-R1"
               },
               {
                 "prompt": "How many bumps does Big B have?",
@@ -739,7 +815,9 @@
                   "3",
                   "0"
                 ],
-                "correct": "2"
+                "correct": "2",
+                "type": "multiple_choice",
+                "question_id": "pk-L5-R2"
               },
               {
                 "prompt": "Every letter has a what?",
@@ -749,7 +827,9 @@
                   "A twin",
                   "A number"
                 ],
-                "correct": "A twin"
+                "correct": "A twin",
+                "type": "multiple_choice",
+                "question_id": "pk-L5-R3"
               }
             ]
           },
@@ -819,7 +899,9 @@
                   "P",
                   "R"
                 ],
-                "correct": "M"
+                "correct": "M",
+                "type": "multiple_choice",
+                "question_id": "pk-L6-P1"
               },
               {
                 "prompt": "Which letter is a perfect circle?",
@@ -829,7 +911,9 @@
                   "O",
                   "R"
                 ],
-                "correct": "O"
+                "correct": "O",
+                "type": "multiple_choice",
+                "question_id": "pk-L6-P2"
               },
               {
                 "prompt": "Which letter starts 'Penguin'?",
@@ -839,7 +923,9 @@
                   "N",
                   "P"
                 ],
-                "correct": "P"
+                "correct": "P",
+                "type": "multiple_choice",
+                "question_id": "pk-L6-P3"
               },
               {
                 "prompt": "Which letter has a little tail?",
@@ -849,7 +935,9 @@
                   "P",
                   "M"
                 ],
-                "correct": "Q"
+                "correct": "Q",
+                "type": "multiple_choice",
+                "question_id": "pk-L6-P4"
               },
               {
                 "prompt": "Which letter starts 'Rocket'?",
@@ -859,7 +947,9 @@
                   "R",
                   "M"
                 ],
-                "correct": "R"
+                "correct": "R",
+                "type": "multiple_choice",
+                "question_id": "pk-L6-P5"
               }
             ]
           },
@@ -876,7 +966,9 @@
                   "P",
                   "R"
                 ],
-                "correct": "O"
+                "correct": "O",
+                "type": "multiple_choice",
+                "question_id": "pk-L6-R1"
               },
               {
                 "prompt": "What does the queen wear?",
@@ -886,7 +978,9 @@
                   "A scarf",
                   "Glasses"
                 ],
-                "correct": "A crown"
+                "correct": "A crown",
+                "type": "multiple_choice",
+                "question_id": "pk-L6-R2"
               },
               {
                 "prompt": "Which way does the rocket go?",
@@ -896,7 +990,9 @@
                   "Up",
                   "Sideways"
                 ],
-                "correct": "Up"
+                "correct": "Up",
+                "type": "multiple_choice",
+                "question_id": "pk-L6-R3"
               }
             ]
           }
@@ -975,7 +1071,9 @@
                   "W",
                   "V"
                 ],
-                "correct": "S"
+                "correct": "S",
+                "type": "multiple_choice",
+                "question_id": "pk-L7-P1"
               },
               {
                 "prompt": "Which letter is two V's together?",
@@ -985,7 +1083,9 @@
                   "W",
                   "U"
                 ],
-                "correct": "W"
+                "correct": "W",
+                "type": "multiple_choice",
+                "question_id": "pk-L7-P2"
               },
               {
                 "prompt": "Which letter starts 'Zebra'?",
@@ -995,7 +1095,9 @@
                   "Y",
                   "Z"
                 ],
-                "correct": "Z"
+                "correct": "Z",
+                "type": "multiple_choice",
+                "question_id": "pk-L7-P3"
               },
               {
                 "prompt": "Which letter looks like a cup?",
@@ -1005,7 +1107,9 @@
                   "W",
                   "Y"
                 ],
-                "correct": "U"
+                "correct": "U",
+                "type": "multiple_choice",
+                "question_id": "pk-L7-P4"
               },
               {
                 "prompt": "Which letter has two crossing lines?",
@@ -1015,7 +1119,9 @@
                   "X",
                   "V"
                 ],
-                "correct": "X"
+                "correct": "X",
+                "type": "multiple_choice",
+                "question_id": "pk-L7-P5"
               }
             ]
           },
@@ -1032,7 +1138,9 @@
                   "Z",
                   "W"
                 ],
-                "correct": "Z"
+                "correct": "Z",
+                "type": "multiple_choice",
+                "question_id": "pk-L7-R1"
               },
               {
                 "prompt": "What is the biggest animal mentioned?",
@@ -1042,7 +1150,9 @@
                   "Bird",
                   "Snake"
                 ],
-                "correct": "Whale"
+                "correct": "Whale",
+                "type": "multiple_choice",
+                "question_id": "pk-L7-R2"
               },
               {
                 "prompt": "How many letters are in the whole alphabet?",
@@ -1052,7 +1162,9 @@
                   "26",
                   "30"
                 ],
-                "correct": "26"
+                "correct": "26",
+                "type": "multiple_choice",
+                "question_id": "pk-L7-R3"
               }
             ]
           }
@@ -1129,7 +1241,9 @@
                   "/g/ like goat",
                   "/h/ like hat"
                 ],
-                "correct": "/b/ like bat"
+                "correct": "/b/ like bat",
+                "type": "multiple_choice",
+                "question_id": "k-L1-P1"
               },
               {
                 "prompt": "What sound does F make?",
@@ -1139,7 +1253,9 @@
                   "/g/ like goat",
                   "/h/ like hat"
                 ],
-                "correct": "/f/ like fan"
+                "correct": "/f/ like fan",
+                "type": "multiple_choice",
+                "question_id": "k-L1-P2"
               },
               {
                 "prompt": "Which letter makes the /d/ sound?",
@@ -1149,7 +1265,9 @@
                   "D",
                   "H"
                 ],
-                "correct": "D"
+                "correct": "D",
+                "type": "multiple_choice",
+                "question_id": "k-L1-P3"
               },
               {
                 "prompt": "Which letter makes the /k/ sound?",
@@ -1159,7 +1277,9 @@
                   "F",
                   "C"
                 ],
-                "correct": "C"
+                "correct": "C",
+                "type": "multiple_choice",
+                "question_id": "k-L1-P4"
               },
               {
                 "prompt": "What sound does G make?",
@@ -1169,7 +1289,9 @@
                   "/b/",
                   "/d/"
                 ],
-                "correct": "/g/"
+                "correct": "/g/",
+                "type": "multiple_choice",
+                "question_id": "k-L1-P5"
               }
             ]
           },
@@ -1186,7 +1308,9 @@
                   "Guitar",
                   "Piano"
                 ],
-                "correct": "Drum"
+                "correct": "Drum",
+                "type": "multiple_choice",
+                "question_id": "k-L1-R1"
               },
               {
                 "prompt": "Which letter blows the flute?",
@@ -1196,7 +1320,9 @@
                   "F",
                   "G"
                 ],
-                "correct": "F"
+                "correct": "F",
+                "type": "multiple_choice",
+                "question_id": "k-L1-R2"
               },
               {
                 "prompt": "What sound does G make on the guitar?",
@@ -1206,7 +1332,9 @@
                   "Ffff",
                   "Guh"
                 ],
-                "correct": "Guh"
+                "correct": "Guh",
+                "type": "multiple_choice",
+                "question_id": "k-L1-R3"
               }
             ]
           },
@@ -1272,7 +1400,9 @@
                   "Short I",
                   "Short O"
                 ],
-                "correct": "Short A"
+                "correct": "Short A",
+                "type": "multiple_choice",
+                "question_id": "k-L2-P1"
               },
               {
                 "prompt": "What vowel sound is in 'pig'?",
@@ -1282,7 +1412,9 @@
                   "Short O",
                   "Short U"
                 ],
-                "correct": "Short I"
+                "correct": "Short I",
+                "type": "multiple_choice",
+                "question_id": "k-L2-P2"
               },
               {
                 "prompt": "What vowel sound is in 'dog'?",
@@ -1292,7 +1424,9 @@
                   "Short O",
                   "Short U"
                 ],
-                "correct": "Short O"
+                "correct": "Short O",
+                "type": "multiple_choice",
+                "question_id": "k-L2-P3"
               },
               {
                 "prompt": "What vowel sound is in 'bed'?",
@@ -1302,7 +1436,9 @@
                   "Short I",
                   "Short O"
                 ],
-                "correct": "Short E"
+                "correct": "Short E",
+                "type": "multiple_choice",
+                "question_id": "k-L2-P4"
               },
               {
                 "prompt": "What vowel sound is in 'cup'?",
@@ -1312,7 +1448,9 @@
                   "Short O",
                   "Short U"
                 ],
-                "correct": "Short U"
+                "correct": "Short U",
+                "type": "multiple_choice",
+                "question_id": "k-L2-P5"
               }
             ]
           },
@@ -1329,7 +1467,9 @@
                   "5",
                   "6"
                 ],
-                "correct": "5"
+                "correct": "5",
+                "type": "multiple_choice",
+                "question_id": "k-L2-R1"
               },
               {
                 "prompt": "Which friend has the /ŏ/ sound?",
@@ -1339,7 +1479,9 @@
                   "Ox",
                   "Up"
                 ],
-                "correct": "Ox"
+                "correct": "Ox",
+                "type": "multiple_choice",
+                "question_id": "k-L2-R2"
               },
               {
                 "prompt": "What do the vowels say about themselves?",
@@ -1349,7 +1491,9 @@
                   "They like to play",
                   "They are fast"
                 ],
-                "correct": "Every word needs them"
+                "correct": "Every word needs them",
+                "type": "multiple_choice",
+                "question_id": "k-L2-R3"
               }
             ]
           },
@@ -1430,7 +1574,9 @@
                   "cot",
                   "cap"
                 ],
-                "correct": "cat"
+                "correct": "cat",
+                "type": "multiple_choice",
+                "question_id": "k-L3-P1"
               },
               {
                 "prompt": "/d/ + /o/ + /g/ = ?",
@@ -1440,7 +1586,9 @@
                   "dog",
                   "dot"
                 ],
-                "correct": "dog"
+                "correct": "dog",
+                "type": "multiple_choice",
+                "question_id": "k-L3-P2"
               },
               {
                 "prompt": "/s/ + /u/ + /n/ = ?",
@@ -1450,7 +1598,9 @@
                   "sun",
                   "sat"
                 ],
-                "correct": "sun"
+                "correct": "sun",
+                "type": "multiple_choice",
+                "question_id": "k-L3-P3"
               },
               {
                 "prompt": "/p/ + /i/ + /g/ = ?",
@@ -1460,7 +1610,9 @@
                   "pig",
                   "pag"
                 ],
-                "correct": "pig"
+                "correct": "pig",
+                "type": "multiple_choice",
+                "question_id": "k-L3-P4"
               },
               {
                 "prompt": "/b/ + /e/ + /d/ = ?",
@@ -1470,7 +1622,9 @@
                   "bud",
                   "bed"
                 ],
-                "correct": "bed"
+                "correct": "bed",
+                "type": "multiple_choice",
+                "question_id": "k-L3-P5"
               }
             ]
           },
@@ -1487,7 +1641,9 @@
                   "A dog and a bug",
                   "A pig and a hen"
                 ],
-                "correct": "A cat and a dog"
+                "correct": "A cat and a dog",
+                "type": "multiple_choice",
+                "question_id": "k-L3-R1"
               },
               {
                 "prompt": "Where did the cat sit?",
@@ -1497,7 +1653,9 @@
                   "In the mud",
                   "On Sam"
                 ],
-                "correct": "On a mat"
+                "correct": "On a mat",
+                "type": "multiple_choice",
+                "question_id": "k-L3-R2"
               },
               {
                 "prompt": "What did the dog do?",
@@ -1507,7 +1665,9 @@
                   "Ran away",
                   "Ate a bug"
                 ],
-                "correct": "Dug in the mud"
+                "correct": "Dug in the mud",
+                "type": "multiple_choice",
+                "question_id": "k-L3-R3"
               }
             ]
           },
@@ -1564,7 +1724,9 @@
                   "hte",
                   "eth"
                 ],
-                "correct": "the"
+                "correct": "the",
+                "type": "multiple_choice",
+                "question_id": "k-L4-P1"
               },
               {
                 "prompt": "Fill in: ___ like to run.",
@@ -1574,7 +1736,9 @@
                   "Is",
                   "The"
                 ],
-                "correct": "I"
+                "correct": "I",
+                "type": "multiple_choice",
+                "question_id": "k-L4-P2"
               },
               {
                 "prompt": "Fill in: I see ___ cat.",
@@ -1584,7 +1748,9 @@
                   "I",
                   "a"
                 ],
-                "correct": "a"
+                "correct": "a",
+                "type": "multiple_choice",
+                "question_id": "k-L4-P3"
               },
               {
                 "prompt": "Fill in: The dog ___ big.",
@@ -1594,7 +1760,9 @@
                   "is",
                   "I"
                 ],
-                "correct": "is"
+                "correct": "is",
+                "type": "multiple_choice",
+                "question_id": "k-L4-P4"
               },
               {
                 "prompt": "Fill in: A cat ___ a dog.",
@@ -1604,7 +1772,9 @@
                   "and",
                   "a"
                 ],
-                "correct": "and"
+                "correct": "and",
+                "type": "multiple_choice",
+                "question_id": "k-L4-P5"
               }
             ]
           },
@@ -1621,7 +1791,9 @@
                   "A dog",
                   "The moon"
                 ],
-                "correct": "The sun"
+                "correct": "The sun",
+                "type": "multiple_choice",
+                "question_id": "k-L4-R1"
               },
               {
                 "prompt": "What is the cat like?",
@@ -1631,7 +1803,9 @@
                   "Fast",
                   "Small"
                 ],
-                "correct": "Soft"
+                "correct": "Soft",
+                "type": "multiple_choice",
+                "question_id": "k-L4-R2"
               },
               {
                 "prompt": "Do the cat and dog like the child?",
@@ -1641,7 +1815,9 @@
                   "Maybe",
                   "Only the cat"
                 ],
-                "correct": "Yes"
+                "correct": "Yes",
+                "type": "multiple_choice",
+                "question_id": "k-L4-R3"
               }
             ]
           },
@@ -1708,7 +1884,9 @@
                   "hit",
                   "hut"
                 ],
-                "correct": "hat"
+                "correct": "hat",
+                "type": "multiple_choice",
+                "question_id": "k-L5-P1"
               },
               {
                 "prompt": "Change the 'c' in 'can' to 'r'. What word?",
@@ -1718,7 +1896,9 @@
                   "rin",
                   "ron"
                 ],
-                "correct": "ran"
+                "correct": "ran",
+                "type": "multiple_choice",
+                "question_id": "k-L5-P2"
               },
               {
                 "prompt": "Change the 'b' in 'big' to 'p'. What word?",
@@ -1728,7 +1908,9 @@
                   "pig",
                   "pag"
                 ],
-                "correct": "pig"
+                "correct": "pig",
+                "type": "multiple_choice",
+                "question_id": "k-L5-P3"
               },
               {
                 "prompt": "Change the 'm' in 'mat' to 'b'. What word?",
@@ -1738,7 +1920,9 @@
                   "but",
                   "bot"
                 ],
-                "correct": "bat"
+                "correct": "bat",
+                "type": "multiple_choice",
+                "question_id": "k-L5-P4"
               },
               {
                 "prompt": "Change the 'f' in 'fan' to 'v'. What word?",
@@ -1748,7 +1932,9 @@
                   "vun",
                   "von"
                 ],
-                "correct": "van"
+                "correct": "van",
+                "type": "multiple_choice",
+                "question_id": "k-L5-P5"
               }
             ]
           },
@@ -1765,7 +1951,9 @@
                   "Rat",
                   "Pat"
                 ],
-                "correct": "Rat"
+                "correct": "Rat",
+                "type": "multiple_choice",
+                "question_id": "k-L5-R1"
               },
               {
                 "prompt": "Where did they have the picnic?",
@@ -1775,7 +1963,9 @@
                   "In a van",
                   "On a bat"
                 ],
-                "correct": "On a mat"
+                "correct": "On a mat",
+                "type": "multiple_choice",
+                "question_id": "k-L5-R2"
               },
               {
                 "prompt": "What word family are cat, rat, and bat in?",
@@ -1785,7 +1975,9 @@
                   "-at",
                   "-ot"
                 ],
-                "correct": "-at"
+                "correct": "-at",
+                "type": "multiple_choice",
+                "question_id": "k-L5-R3"
               }
             ]
           },
@@ -1856,7 +2048,9 @@
                   "3",
                   "4"
                 ],
-                "correct": "1"
+                "correct": "1",
+                "type": "multiple_choice",
+                "question_id": "k-L6-P1"
               },
               {
                 "prompt": "How many syllables in 'tiger'?",
@@ -1866,7 +2060,9 @@
                   "3",
                   "4"
                 ],
-                "correct": "2"
+                "correct": "2",
+                "type": "multiple_choice",
+                "question_id": "k-L6-P2"
               },
               {
                 "prompt": "How many syllables in 'elephant'?",
@@ -1876,7 +2072,9 @@
                   "3",
                   "4"
                 ],
-                "correct": "3"
+                "correct": "3",
+                "type": "multiple_choice",
+                "question_id": "k-L6-P3"
               },
               {
                 "prompt": "How many syllables in 'fish'?",
@@ -1886,7 +2084,9 @@
                   "3",
                   "4"
                 ],
-                "correct": "1"
+                "correct": "1",
+                "type": "multiple_choice",
+                "question_id": "k-L6-P4"
               },
               {
                 "prompt": "How many syllables in 'banana'?",
@@ -1896,7 +2096,9 @@
                   "3",
                   "4"
                 ],
-                "correct": "3"
+                "correct": "3",
+                "type": "multiple_choice",
+                "question_id": "k-L6-P5"
               }
             ]
           },
@@ -1913,7 +2115,9 @@
                   "3",
                   "4"
                 ],
-                "correct": "1"
+                "correct": "1",
+                "type": "multiple_choice",
+                "question_id": "k-L6-R1"
               },
               {
                 "prompt": "Which word has the most claps?",
@@ -1923,7 +2127,9 @@
                   "Butterfly",
                   "Caterpillar"
                 ],
-                "correct": "Caterpillar"
+                "correct": "Caterpillar",
+                "type": "multiple_choice",
+                "question_id": "k-L6-R2"
               },
               {
                 "prompt": "What are the beats in a word called?",
@@ -1933,7 +2139,9 @@
                   "Letters",
                   "Sounds"
                 ],
-                "correct": "Syllables"
+                "correct": "Syllables",
+                "type": "multiple_choice",
+                "question_id": "k-L6-R3"
               }
             ]
           }
@@ -2004,7 +2212,9 @@
                   "of",
                   "we"
                 ],
-                "correct": "to"
+                "correct": "to",
+                "type": "multiple_choice",
+                "question_id": "k-L7-P1"
               },
               {
                 "prompt": "___ are my best friend.",
@@ -2014,7 +2224,9 @@
                   "You",
                   "We"
                 ],
-                "correct": "You"
+                "correct": "You",
+                "type": "multiple_choice",
+                "question_id": "k-L7-P2"
               },
               {
                 "prompt": "This is ___ cat.",
@@ -2024,7 +2236,9 @@
                   "to",
                   "do"
                 ],
-                "correct": "my"
+                "correct": "my",
+                "type": "multiple_choice",
+                "question_id": "k-L7-P3"
               },
               {
                 "prompt": "What ___ you want?",
@@ -2034,7 +2248,9 @@
                   "to",
                   "do"
                 ],
-                "correct": "do"
+                "correct": "do",
+                "type": "multiple_choice",
+                "question_id": "k-L7-P4"
               },
               {
                 "prompt": "___ like to run and play.",
@@ -2044,7 +2260,9 @@
                   "We",
                   "To"
                 ],
-                "correct": "We"
+                "correct": "We",
+                "type": "multiple_choice",
+                "question_id": "k-L7-P5"
               }
             ]
           },
@@ -2061,7 +2279,9 @@
                   "We",
                   "My sister"
                 ],
-                "correct": "You"
+                "correct": "You",
+                "type": "multiple_choice",
+                "question_id": "k-L7-R1"
               },
               {
                 "prompt": "Where do they go?",
@@ -2071,7 +2291,9 @@
                   "The park",
                   "The shop"
                 ],
-                "correct": "The park"
+                "correct": "The park",
+                "type": "multiple_choice",
+                "question_id": "k-L7-R2"
               },
               {
                 "prompt": "What do friends do?",
@@ -2081,7 +2303,9 @@
                   "Share",
                   "Sleep"
                 ],
-                "correct": "Share"
+                "correct": "Share",
+                "type": "multiple_choice",
+                "question_id": "k-L7-R3"
               }
             ]
           }
@@ -2134,7 +2358,9 @@
                   "Bottom to top",
                   "Any direction"
                 ],
-                "correct": "Left to right"
+                "correct": "Left to right",
+                "type": "multiple_choice",
+                "question_id": "k-L8-P1"
               },
               {
                 "prompt": "Where do we start reading on a page?",
@@ -2144,7 +2370,9 @@
                   "The top",
                   "The right side"
                 ],
-                "correct": "The top"
+                "correct": "The top",
+                "type": "multiple_choice",
+                "question_id": "k-L8-P2"
               },
               {
                 "prompt": "Why do words have spaces between them?",
@@ -2154,7 +2382,9 @@
                   "Because the pen needs a rest",
                   "No reason"
                 ],
-                "correct": "So we know where each word starts and stops"
+                "correct": "So we know where each word starts and stops",
+                "type": "multiple_choice",
+                "question_id": "k-L8-P3"
               },
               {
                 "prompt": "Which is correct?",
@@ -2164,7 +2394,9 @@
                   "I   like   fish",
                   "iLIKEfish"
                 ],
-                "correct": "I like fish"
+                "correct": "I like fish",
+                "type": "multiple_choice",
+                "question_id": "k-L8-P4"
               },
               {
                 "prompt": "What do letters make when put together?",
@@ -2174,7 +2406,9 @@
                   "Words",
                   "Colors"
                 ],
-                "correct": "Words"
+                "correct": "Words",
+                "type": "multiple_choice",
+                "question_id": "k-L8-P5"
               }
             ]
           },
@@ -2191,7 +2425,9 @@
                   "Left side at the top",
                   "The middle"
                 ],
-                "correct": "Left side at the top"
+                "correct": "Left side at the top",
+                "type": "multiple_choice",
+                "question_id": "k-L8-R1"
               },
               {
                 "prompt": "What goes between words?",
@@ -2201,7 +2437,9 @@
                   "Spaces",
                   "Stars"
                 ],
-                "correct": "Spaces"
+                "correct": "Spaces",
+                "type": "multiple_choice",
+                "question_id": "k-L8-R2"
               },
               {
                 "prompt": "What are words made of?",
@@ -2211,7 +2449,9 @@
                   "Pictures",
                   "Colors"
                 ],
-                "correct": "Letters"
+                "correct": "Letters",
+                "type": "multiple_choice",
+                "question_id": "k-L8-R3"
               }
             ]
           }
@@ -2300,7 +2540,9 @@
                   "clue",
                   "flue"
                 ],
-                "correct": "blue"
+                "correct": "blue",
+                "type": "multiple_choice",
+                "question_id": "1-L1-P1"
               },
               {
                 "prompt": "Which word starts with 'cl'?",
@@ -2310,7 +2552,9 @@
                   "clip",
                   "trip"
                 ],
-                "correct": "clip"
+                "correct": "clip",
+                "type": "multiple_choice",
+                "question_id": "1-L1-P2"
               },
               {
                 "prompt": "Which word starts with 'st'?",
@@ -2320,7 +2564,9 @@
                   "flop",
                   "drop"
                 ],
-                "correct": "stop"
+                "correct": "stop",
+                "type": "multiple_choice",
+                "question_id": "1-L1-P3"
               },
               {
                 "prompt": "Which word starts with 'tr'?",
@@ -2330,7 +2576,9 @@
                   "three",
                   "bee"
                 ],
-                "correct": "tree"
+                "correct": "tree",
+                "type": "multiple_choice",
+                "question_id": "1-L1-P4"
               },
               {
                 "prompt": "Which word starts with 'fl'?",
@@ -2340,7 +2588,9 @@
                   "flow",
                   "blow"
                 ],
-                "correct": "flow"
+                "correct": "flow",
+                "type": "multiple_choice",
+                "question_id": "1-L1-P5"
               }
             ]
           },
@@ -2357,7 +2607,9 @@
                   "cl",
                   "fl"
                 ],
-                "correct": "br"
+                "correct": "br",
+                "type": "multiple_choice",
+                "question_id": "1-L1-R1"
               },
               {
                 "prompt": "What did Brad climb?",
@@ -2367,7 +2619,9 @@
                   "A flag",
                   "A truck"
                 ],
-                "correct": "A tree"
+                "correct": "A tree",
+                "type": "multiple_choice",
+                "question_id": "1-L1-R2"
               },
               {
                 "prompt": "What color was the flag?",
@@ -2377,7 +2631,9 @@
                   "Blue",
                   "Yellow"
                 ],
-                "correct": "Blue"
+                "correct": "Blue",
+                "type": "multiple_choice",
+                "question_id": "1-L1-R3"
               }
             ]
           },
@@ -2452,7 +2708,9 @@
                   "th",
                   "wh"
                 ],
-                "correct": "sh"
+                "correct": "sh",
+                "type": "multiple_choice",
+                "question_id": "1-L2-P1"
               },
               {
                 "prompt": "What digraph is in 'cheese'?",
@@ -2462,7 +2720,9 @@
                   "ch",
                   "wh"
                 ],
-                "correct": "ch"
+                "correct": "ch",
+                "type": "multiple_choice",
+                "question_id": "1-L2-P2"
               },
               {
                 "prompt": "What digraph is in 'bath'?",
@@ -2472,7 +2732,9 @@
                   "sh",
                   "th"
                 ],
-                "correct": "th"
+                "correct": "th",
+                "type": "multiple_choice",
+                "question_id": "1-L2-P3"
               },
               {
                 "prompt": "What digraph is in 'when'?",
@@ -2482,7 +2744,9 @@
                   "th",
                   "wh"
                 ],
-                "correct": "wh"
+                "correct": "wh",
+                "type": "multiple_choice",
+                "question_id": "1-L2-P4"
               },
               {
                 "prompt": "Which word has the 'sh' sound?",
@@ -2492,7 +2756,9 @@
                   "thin",
                   "what"
                 ],
-                "correct": "fish"
+                "correct": "fish",
+                "type": "multiple_choice",
+                "question_id": "1-L2-P5"
               }
             ]
           },
@@ -2509,7 +2775,9 @@
                   "The chip shop",
                   "The shoe shop"
                 ],
-                "correct": "The shell shop"
+                "correct": "The shell shop",
+                "type": "multiple_choice",
+                "question_id": "1-L2-R1"
               },
               {
                 "prompt": "What two things did Chad get?",
@@ -2519,7 +2787,9 @@
                   "A bath and a ship",
                   "A hat and shoes"
                 ],
-                "correct": "A shell and cheese"
+                "correct": "A shell and cheese",
+                "type": "multiple_choice",
+                "question_id": "1-L2-R2"
               },
               {
                 "prompt": "What digraph starts 'Chad'?",
@@ -2529,7 +2799,9 @@
                   "ch",
                   "wh"
                 ],
-                "correct": "ch"
+                "correct": "ch",
+                "type": "multiple_choice",
+                "question_id": "1-L2-R3"
               }
             ]
           },
@@ -2590,7 +2862,9 @@
                   "cope",
                   "cup"
                 ],
-                "correct": "cape"
+                "correct": "cape",
+                "type": "multiple_choice",
+                "question_id": "1-L3-P1"
               },
               {
                 "prompt": "Add E to 'hop'. What word?",
@@ -2600,7 +2874,9 @@
                   "hope",
                   "hip"
                 ],
-                "correct": "hope"
+                "correct": "hope",
+                "type": "multiple_choice",
+                "question_id": "1-L3-P2"
               },
               {
                 "prompt": "Add E to 'cub'. What word?",
@@ -2610,7 +2886,9 @@
                   "cob",
                   "curb"
                 ],
-                "correct": "cube"
+                "correct": "cube",
+                "type": "multiple_choice",
+                "question_id": "1-L3-P3"
               },
               {
                 "prompt": "Add E to 'kit'. What word?",
@@ -2620,7 +2898,9 @@
                   "Kate",
                   "bite"
                 ],
-                "correct": "kite"
+                "correct": "kite",
+                "type": "multiple_choice",
+                "question_id": "1-L3-P4"
               },
               {
                 "prompt": "Which word has Magic E?",
@@ -2630,7 +2910,9 @@
                   "bike",
                   "cup"
                 ],
-                "correct": "bike"
+                "correct": "bike",
+                "type": "multiple_choice",
+                "question_id": "1-L3-P5"
               }
             ]
           },
@@ -2647,7 +2929,9 @@
                   "A kite",
                   "A cube"
                 ],
-                "correct": "A cape"
+                "correct": "A cape",
+                "type": "multiple_choice",
+                "question_id": "1-L3-R1"
               },
               {
                 "prompt": "What does Magic E do to vowels?",
@@ -2657,7 +2941,9 @@
                   "Makes them disappear",
                   "Makes them short"
                 ],
-                "correct": "Makes them say their name"
+                "correct": "Makes them say their name",
+                "type": "multiple_choice",
+                "question_id": "1-L3-R2"
               },
               {
                 "prompt": "What did 'kit' become?",
@@ -2667,7 +2953,9 @@
                   "Kit",
                   "Bite"
                 ],
-                "correct": "Kite"
+                "correct": "Kite",
+                "type": "multiple_choice",
+                "question_id": "1-L3-R3"
               }
             ]
           },
@@ -2714,7 +3002,9 @@
                   "Swam in a log",
                   "Hid in a log"
                 ],
-                "correct": "Jumped on a log"
+                "correct": "Jumped on a log",
+                "type": "multiple_choice",
+                "question_id": "1-L4-P1"
               },
               {
                 "prompt": "Read: 'Mom made a big cake for Jill.' Who is the cake for?",
@@ -2724,7 +3014,9 @@
                   "Jill",
                   "The dog"
                 ],
-                "correct": "Jill"
+                "correct": "Jill",
+                "type": "multiple_choice",
+                "question_id": "1-L4-P2"
               },
               {
                 "prompt": "Read: 'The black cat slept on the bed.' Where did the cat sleep?",
@@ -2734,7 +3026,9 @@
                   "On the bed",
                   "On the rug"
                 ],
-                "correct": "On the bed"
+                "correct": "On the bed",
+                "type": "multiple_choice",
+                "question_id": "1-L4-P3"
               },
               {
                 "prompt": "Read: 'Tom and Kim went to the shop.' How many people went?",
@@ -2744,7 +3038,9 @@
                   "3",
                   "4"
                 ],
-                "correct": "2"
+                "correct": "2",
+                "type": "multiple_choice",
+                "question_id": "1-L4-P4"
               },
               {
                 "prompt": "Read: 'It is hot today. Let's get ice cream!' Why do they want ice cream?",
@@ -2754,7 +3050,9 @@
                   "It is raining",
                   "It is night"
                 ],
-                "correct": "It is hot"
+                "correct": "It is hot",
+                "type": "multiple_choice",
+                "question_id": "1-L4-P5"
               }
             ]
           },
@@ -2771,7 +3069,9 @@
                   "The shop",
                   "The school"
                 ],
-                "correct": "The beach"
+                "correct": "The beach",
+                "type": "multiple_choice",
+                "question_id": "1-L4-R1"
               },
               {
                 "prompt": "What did Jack make?",
@@ -2781,7 +3081,9 @@
                   "A sand castle",
                   "A flag"
                 ],
-                "correct": "A sand castle"
+                "correct": "A sand castle",
+                "type": "multiple_choice",
+                "question_id": "1-L4-R2"
               },
               {
                 "prompt": "How many shells did Kim find?",
@@ -2791,7 +3093,9 @@
                   "3",
                   "4"
                 ],
-                "correct": "3"
+                "correct": "3",
+                "type": "multiple_choice",
+                "question_id": "1-L4-R3"
               }
             ]
           },
@@ -2847,7 +3151,9 @@
                   "sid",
                   "sayed"
                 ],
-                "correct": "said"
+                "correct": "said",
+                "type": "multiple_choice",
+                "question_id": "1-L5-P1"
               },
               {
                 "prompt": "I ___ a big dog.",
@@ -2857,7 +3163,9 @@
                   "have",
                   "hive"
                 ],
-                "correct": "have"
+                "correct": "have",
+                "type": "multiple_choice",
+                "question_id": "1-L5-P2"
               },
               {
                 "prompt": "It ___ a rainy day.",
@@ -2867,7 +3175,9 @@
                   "wus",
                   "were"
                 ],
-                "correct": "was"
+                "correct": "was",
+                "type": "multiple_choice",
+                "question_id": "1-L5-P3"
               },
               {
                 "prompt": "___ went to the park.",
@@ -2877,7 +3187,9 @@
                   "The",
                   "Then"
                 ],
-                "correct": "They"
+                "correct": "They",
+                "type": "multiple_choice",
+                "question_id": "1-L5-P4"
               },
               {
                 "prompt": "___ play with me!",
@@ -2887,7 +3199,9 @@
                   "Comb",
                   "Some"
                 ],
-                "correct": "Come"
+                "correct": "Come",
+                "type": "multiple_choice",
+                "question_id": "1-L5-P5"
               }
             ]
           },
@@ -2904,7 +3218,9 @@
                   "Mom",
                   "Dad"
                 ],
-                "correct": "Mia"
+                "correct": "Mia",
+                "type": "multiple_choice",
+                "question_id": "1-L5-R1"
               },
               {
                 "prompt": "What do they have?",
@@ -2914,7 +3230,9 @@
                   "A book and a pen",
                   "A hat and a bag"
                 ],
-                "correct": "A ball and a rope"
+                "correct": "A ball and a rope",
+                "type": "multiple_choice",
+                "question_id": "1-L5-R2"
               },
               {
                 "prompt": "What sight word fills in: 'This ___ the best day'?",
@@ -2924,7 +3242,9 @@
                   "have",
                   "said"
                 ],
-                "correct": "was"
+                "correct": "was",
+                "type": "multiple_choice",
+                "question_id": "1-L5-R3"
               }
             ]
           },
@@ -3016,7 +3336,9 @@
                   "Short A",
                   "Long A"
                 ],
-                "correct": "Long A"
+                "correct": "Long A",
+                "type": "multiple_choice",
+                "question_id": "1-L6-P1"
               },
               {
                 "prompt": "What kind of I is in 'pig'?",
@@ -3024,7 +3346,9 @@
                   "Short I",
                   "Long I"
                 ],
-                "correct": "Short I"
+                "correct": "Short I",
+                "type": "multiple_choice",
+                "question_id": "1-L6-P2"
               },
               {
                 "prompt": "What kind of O is in 'bone'?",
@@ -3032,7 +3356,9 @@
                   "Short O",
                   "Long O"
                 ],
-                "correct": "Long O"
+                "correct": "Long O",
+                "type": "multiple_choice",
+                "question_id": "1-L6-P3"
               },
               {
                 "prompt": "Which word has a LONG E?",
@@ -3042,7 +3368,9 @@
                   "pet",
                   "hen"
                 ],
-                "correct": "tree"
+                "correct": "tree",
+                "type": "multiple_choice",
+                "question_id": "1-L6-P4"
               },
               {
                 "prompt": "Which word has a SHORT U?",
@@ -3052,7 +3380,9 @@
                   "cup",
                   "use"
                 ],
-                "correct": "cup"
+                "correct": "cup",
+                "type": "multiple_choice",
+                "question_id": "1-L6-P5"
               }
             ]
           },
@@ -3069,7 +3399,9 @@
                   "make",
                   "lake"
                 ],
-                "correct": "cat"
+                "correct": "cat",
+                "type": "multiple_choice",
+                "question_id": "1-L6-R1"
               },
               {
                 "prompt": "Does Long I sound like 'pig' or 'bike'?",
@@ -3077,7 +3409,9 @@
                   "pig",
                   "bike"
                 ],
-                "correct": "bike"
+                "correct": "bike",
+                "type": "multiple_choice",
+                "question_id": "1-L6-R2"
               },
               {
                 "prompt": "How many sounds does each vowel have?",
@@ -3087,7 +3421,9 @@
                   "3",
                   "4"
                 ],
-                "correct": "2"
+                "correct": "2",
+                "type": "multiple_choice",
+                "question_id": "1-L6-R3"
               }
             ]
           }
@@ -3159,7 +3495,9 @@
                   "suns + et",
                   "s + unset"
                 ],
-                "correct": "sun + set"
+                "correct": "sun + set",
+                "type": "multiple_choice",
+                "question_id": "1-L7-P1"
               },
               {
                 "prompt": "Split 'kitten' into two parts:",
@@ -3169,7 +3507,9 @@
                   "k + itten",
                   "kitte + n"
                 ],
-                "correct": "kit + ten"
+                "correct": "kit + ten",
+                "type": "multiple_choice",
+                "question_id": "1-L7-P2"
               },
               {
                 "prompt": "Split 'rabbit' into two parts:",
@@ -3179,7 +3519,9 @@
                   "r + abbit",
                   "rabbi + t"
                 ],
-                "correct": "rab + bit"
+                "correct": "rab + bit",
+                "type": "multiple_choice",
+                "question_id": "1-L7-P3"
               },
               {
                 "prompt": "How many syllables in 'napkin'?",
@@ -3189,7 +3531,9 @@
                   "3",
                   "4"
                 ],
-                "correct": "2"
+                "correct": "2",
+                "type": "multiple_choice",
+                "question_id": "1-L7-P4"
               },
               {
                 "prompt": "Every syllable must have a:",
@@ -3199,7 +3543,9 @@
                   "Blend",
                   "Digraph"
                 ],
-                "correct": "Vowel"
+                "correct": "Vowel",
+                "type": "multiple_choice",
+                "question_id": "1-L7-P5"
               }
             ]
           },
@@ -3216,7 +3562,9 @@
                   "On a bed",
                   "In a tree"
                 ],
-                "correct": "In a basket"
+                "correct": "In a basket",
+                "type": "multiple_choice",
+                "question_id": "1-L7-R1"
               },
               {
                 "prompt": "How many syllables in 'ribbon'?",
@@ -3226,7 +3574,9 @@
                   "3",
                   "4"
                 ],
-                "correct": "2"
+                "correct": "2",
+                "type": "multiple_choice",
+                "question_id": "1-L7-R2"
               },
               {
                 "prompt": "What did Max do to read big words?",
@@ -3236,7 +3586,9 @@
                   "Broke them into parts",
                   "Asked for help"
                 ],
-                "correct": "Broke them into parts"
+                "correct": "Broke them into parts",
+                "type": "multiple_choice",
+                "question_id": "1-L7-R3"
               }
             ]
           }
@@ -3339,7 +3691,9 @@
                   "cated",
                   "cates"
                 ],
-                "correct": "cats"
+                "correct": "cats",
+                "type": "multiple_choice",
+                "question_id": "1-L8-P1"
               },
               {
                 "prompt": "One box, two ___",
@@ -3349,7 +3703,9 @@
                   "boxing",
                   "boxed"
                 ],
-                "correct": "boxes"
+                "correct": "boxes",
+                "type": "multiple_choice",
+                "question_id": "1-L8-P2"
               },
               {
                 "prompt": "She is ___ right now. (run)",
@@ -3359,7 +3715,9 @@
                   "running",
                   "runed"
                 ],
-                "correct": "running"
+                "correct": "running",
+                "type": "multiple_choice",
+                "question_id": "1-L8-P3"
               },
               {
                 "prompt": "Yesterday, I ___ to school. (walk)",
@@ -3369,7 +3727,9 @@
                   "walked",
                   "walkes"
                 ],
-                "correct": "walked"
+                "correct": "walked",
+                "type": "multiple_choice",
+                "question_id": "1-L8-P4"
               },
               {
                 "prompt": "He ___ over the puddle. (jump + already happened)",
@@ -3379,7 +3739,9 @@
                   "jumped",
                   "jumpes"
                 ],
-                "correct": "jumped"
+                "correct": "jumped",
+                "type": "multiple_choice",
+                "question_id": "1-L8-P5"
               }
             ]
           },
@@ -3396,7 +3758,9 @@
                   "-s or -es",
                   "-ly"
                 ],
-                "correct": "-s or -es"
+                "correct": "-s or -es",
+                "type": "multiple_choice",
+                "question_id": "1-L8-R1"
               },
               {
                 "prompt": "What are the dogs doing? (What ending tells you?)",
@@ -3406,7 +3770,9 @@
                   "Runs (-s = more than one)",
                   "Run (no ending)"
                 ],
-                "correct": "Running (-ing = happening now)"
+                "correct": "Running (-ing = happening now)",
+                "type": "multiple_choice",
+                "question_id": "1-L8-R2"
               },
               {
                 "prompt": "What did Ben do after lunch?",
@@ -3416,7 +3782,9 @@
                   "Read a book",
                   "Ran in the park"
                 ],
-                "correct": "Washed dishes"
+                "correct": "Washed dishes",
+                "type": "multiple_choice",
+                "question_id": "1-L8-R3"
               }
             ]
           }
@@ -3471,7 +3839,9 @@
                   "rain (ai)",
                   "rayn (ay)"
                 ],
-                "correct": "rain (ai)"
+                "correct": "rain (ai)",
+                "type": "multiple_choice",
+                "question_id": "2-L1-P1"
               },
               {
                 "prompt": "PL___ (to have fun)",
@@ -3479,7 +3849,9 @@
                   "plai",
                   "play (ay)"
                 ],
-                "correct": "play (ay)"
+                "correct": "play (ay)",
+                "type": "multiple_choice",
+                "question_id": "2-L1-P2"
               },
               {
                 "prompt": "TR___N (choo choo!)",
@@ -3487,7 +3859,9 @@
                   "train (ai)",
                   "trayn (ay)"
                 ],
-                "correct": "train (ai)"
+                "correct": "train (ai)",
+                "type": "multiple_choice",
+                "question_id": "2-L1-P3"
               },
               {
                 "prompt": "D___ (24 hours)",
@@ -3495,7 +3869,9 @@
                   "dai",
                   "day (ay)"
                 ],
-                "correct": "day (ay)"
+                "correct": "day (ay)",
+                "type": "multiple_choice",
+                "question_id": "2-L1-P4"
               },
               {
                 "prompt": "P___NT (art class!)",
@@ -3503,7 +3879,9 @@
                   "paint (ai)",
                   "paynt (ay)"
                 ],
-                "correct": "paint (ai)"
+                "correct": "paint (ai)",
+                "type": "multiple_choice",
+                "question_id": "2-L1-P5"
               }
             ]
           },
@@ -3520,7 +3898,9 @@
                   "He was sick",
                   "He had homework"
                 ],
-                "correct": "It was raining"
+                "correct": "It was raining",
+                "type": "multiple_choice",
+                "question_id": "2-L1-R1"
               },
               {
                 "prompt": "What did Jay paint on the mail truck?",
@@ -3530,7 +3910,9 @@
                   "A plane",
                   "A cat"
                 ],
-                "correct": "A train"
+                "correct": "A train",
+                "type": "multiple_choice",
+                "question_id": "2-L1-R2"
               },
               {
                 "prompt": "Find two words with 'ay': ",
@@ -3540,7 +3922,9 @@
                   "came, down",
                   "sun, golden"
                 ],
-                "correct": "day, play"
+                "correct": "day, play",
+                "type": "multiple_choice",
+                "question_id": "2-L1-R3"
               }
             ]
           },
@@ -3619,7 +4003,9 @@
                   "sunshine",
                   "sunset"
                 ],
-                "correct": "sunflower"
+                "correct": "sunflower",
+                "type": "multiple_choice",
+                "question_id": "2-L2-P1"
               },
               {
                 "prompt": "rain + bow = ?",
@@ -3629,7 +4015,9 @@
                   "raindrop",
                   "rainfall"
                 ],
-                "correct": "rainbow"
+                "correct": "rainbow",
+                "type": "multiple_choice",
+                "question_id": "2-L2-P2"
               },
               {
                 "prompt": "What two words make 'bedroom'?",
@@ -3639,7 +4027,9 @@
                   "bed + doom",
                   "bear + room"
                 ],
-                "correct": "bed + room"
+                "correct": "bed + room",
+                "type": "multiple_choice",
+                "question_id": "2-L2-P3"
               },
               {
                 "prompt": "cup + cake = ?",
@@ -3649,7 +4039,9 @@
                   "hotcake",
                   "oatcake"
                 ],
-                "correct": "cupcake"
+                "correct": "cupcake",
+                "type": "multiple_choice",
+                "question_id": "2-L2-P4"
               },
               {
                 "prompt": "What two words make 'butterfly'?",
@@ -3659,7 +4051,9 @@
                   "butter + fly",
                   "button + fly"
                 ],
-                "correct": "butter + fly"
+                "correct": "butter + fly",
+                "type": "multiple_choice",
+                "question_id": "2-L2-P5"
               }
             ]
           },
@@ -3676,7 +4070,9 @@
                   "landed",
                   "crawled"
                 ],
-                "correct": "butterfly"
+                "correct": "butterfly",
+                "type": "multiple_choice",
+                "question_id": "2-L2-R1"
               },
               {
                 "prompt": "What did Emma eat?",
@@ -3686,7 +4082,9 @@
                   "A cupcake",
                   "A pancake"
                 ],
-                "correct": "A cupcake"
+                "correct": "A cupcake",
+                "type": "multiple_choice",
+                "question_id": "2-L2-R2"
               },
               {
                 "prompt": "What lit up the night?",
@@ -3696,7 +4094,9 @@
                   "A ladybug",
                   "The sun"
                 ],
-                "correct": "A firefly"
+                "correct": "A firefly",
+                "type": "multiple_choice",
+                "question_id": "2-L2-R3"
               }
             ]
           },
@@ -3769,7 +4169,9 @@
                   "Happy again",
                   "Almost happy"
                 ],
-                "correct": "Not happy"
+                "correct": "Not happy",
+                "type": "multiple_choice",
+                "question_id": "2-L3-P1"
               },
               {
                 "prompt": "What does 'rewrite' mean?",
@@ -3779,7 +4181,9 @@
                   "Write again",
                   "Write badly"
                 ],
-                "correct": "Write again"
+                "correct": "Write again",
+                "type": "multiple_choice",
+                "question_id": "2-L3-P2"
               },
               {
                 "prompt": "What does 'unsafe' mean?",
@@ -3789,7 +4193,9 @@
                   "Safe again",
                   "Almost safe"
                 ],
-                "correct": "Not safe"
+                "correct": "Not safe",
+                "type": "multiple_choice",
+                "question_id": "2-L3-P3"
               },
               {
                 "prompt": "What does 'replay' mean?",
@@ -3799,7 +4205,9 @@
                   "Play fast",
                   "Play alone"
                 ],
-                "correct": "Play again"
+                "correct": "Play again",
+                "type": "multiple_choice",
+                "question_id": "2-L3-P4"
               },
               {
                 "prompt": "Add 'un-' to 'fair'. What does 'unfair' mean?",
@@ -3809,7 +4217,9 @@
                   "Fair again",
                   "Almost fair"
                 ],
-                "correct": "Not fair"
+                "correct": "Not fair",
+                "type": "multiple_choice",
+                "question_id": "2-L3-P5"
               }
             ]
           },
@@ -3826,7 +4236,9 @@
                   "He lost his dog",
                   "It was raining"
                 ],
-                "correct": "His drawing was unfinished"
+                "correct": "His drawing was unfinished",
+                "type": "multiple_choice",
+                "question_id": "2-L3-R1"
               },
               {
                 "prompt": "What does 'redo' mean?",
@@ -3836,7 +4248,9 @@
                   "Do it again",
                   "Do it fast"
                 ],
-                "correct": "Do it again"
+                "correct": "Do it again",
+                "type": "multiple_choice",
+                "question_id": "2-L3-R2"
               },
               {
                 "prompt": "What is the opposite of 'unhappy'?",
@@ -3846,7 +4260,9 @@
                   "Tired",
                   "Happy"
                 ],
-                "correct": "Happy"
+                "correct": "Happy",
+                "type": "multiple_choice",
+                "question_id": "2-L3-R3"
               }
             ]
           },
@@ -3892,7 +4308,9 @@
                   "Go to bed",
                   "Read a book"
                 ],
-                "correct": "Go skateboarding"
+                "correct": "Go skateboarding",
+                "type": "multiple_choice",
+                "question_id": "2-L4-P1"
               },
               {
                 "prompt": "The baby's eyes were closing. She yawned and rubbed her eyes. How does the baby feel?",
@@ -3902,7 +4320,9 @@
                   "Sleepy",
                   "Excited"
                 ],
-                "correct": "Sleepy"
+                "correct": "Sleepy",
+                "type": "multiple_choice",
+                "question_id": "2-L4-P2"
               },
               {
                 "prompt": "Mom came home with bags of groceries and a birthday cake. What might happen soon?",
@@ -3912,7 +4332,9 @@
                   "A car wash",
                   "A haircut"
                 ],
-                "correct": "A birthday party"
+                "correct": "A birthday party",
+                "type": "multiple_choice",
+                "question_id": "2-L4-P3"
               },
               {
                 "prompt": "Jake looked out the window and saw white flakes falling from the sky. What is the weather?",
@@ -3922,7 +4344,9 @@
                   "Snowy",
                   "Windy"
                 ],
-                "correct": "Snowy"
+                "correct": "Snowy",
+                "type": "multiple_choice",
+                "question_id": "2-L4-P4"
               },
               {
                 "prompt": "The cat arched its back and hissed at the dog. How does the cat feel?",
@@ -3932,7 +4356,9 @@
                   "Sleepy",
                   "Hungry"
                 ],
-                "correct": "Scared or angry"
+                "correct": "Scared or angry",
+                "type": "multiple_choice",
+                "question_id": "2-L4-P5"
               }
             ]
           },
@@ -3949,7 +4375,9 @@
                   "A cat",
                   "A rabbit"
                 ],
-                "correct": "A cat"
+                "correct": "A cat",
+                "type": "multiple_choice",
+                "question_id": "2-L4-R1"
               },
               {
                 "prompt": "What clue tells you the visitor was hungry?",
@@ -3959,7 +4387,9 @@
                   "Empty food bowl",
                   "The meow sound"
                 ],
-                "correct": "Empty food bowl"
+                "correct": "Empty food bowl",
+                "type": "multiple_choice",
+                "question_id": "2-L4-R2"
               },
               {
                 "prompt": "How does Ava feel about the visitor?",
@@ -3969,7 +4399,9 @@
                   "Happy and kind",
                   "Confused"
                 ],
-                "correct": "Happy and kind"
+                "correct": "Happy and kind",
+                "type": "multiple_choice",
+                "question_id": "2-L4-R3"
               }
             ]
           },
@@ -4040,7 +4472,9 @@
                   "walking",
                   "walked"
                 ],
-                "correct": "walked"
+                "correct": "walked",
+                "type": "multiple_choice",
+                "question_id": "2-L5-P1"
               },
               {
                 "prompt": "Right now, she is _____ a song. (sing)",
@@ -4048,7 +4482,9 @@
                   "singing",
                   "singed"
                 ],
-                "correct": "singing"
+                "correct": "singing",
+                "type": "multiple_choice",
+                "question_id": "2-L5-P2"
               },
               {
                 "prompt": "Last week, they _____ a fort. (build)",
@@ -4056,7 +4492,9 @@
                   "building",
                   "built"
                 ],
-                "correct": "built"
+                "correct": "built",
+                "type": "multiple_choice",
+                "question_id": "2-L5-P3"
               },
               {
                 "prompt": "He is _____ his homework right now. (do)",
@@ -4064,7 +4502,9 @@
                   "doing",
                   "did"
                 ],
-                "correct": "doing"
+                "correct": "doing",
+                "type": "multiple_choice",
+                "question_id": "2-L5-P4"
               },
               {
                 "prompt": "We _____ at the funny movie last night. (laugh)",
@@ -4072,7 +4512,9 @@
                   "laughing",
                   "laughed"
                 ],
-                "correct": "laughed"
+                "correct": "laughed",
+                "type": "multiple_choice",
+                "question_id": "2-L5-P5"
               }
             ]
           },
@@ -4089,7 +4531,9 @@
                   "Tomorrow",
                   "Right now"
                 ],
-                "correct": "Last week"
+                "correct": "Last week",
+                "type": "multiple_choice",
+                "question_id": "2-L5-R1"
               },
               {
                 "prompt": "What was Nora doing in the play?",
@@ -4099,7 +4543,9 @@
                   "Singing",
                   "Drawing"
                 ],
-                "correct": "Singing"
+                "correct": "Singing",
+                "type": "multiple_choice",
+                "question_id": "2-L5-R2"
               },
               {
                 "prompt": "Find a word with -ed that means 'already happened':",
@@ -4109,7 +4555,9 @@
                   "finished",
                   "amazing"
                 ],
-                "correct": "finished"
+                "correct": "finished",
+                "type": "multiple_choice",
+                "question_id": "2-L5-R3"
               }
             ]
           },
@@ -4163,7 +4611,9 @@
                   "tree (ee)",
                   "trea (ea)"
                 ],
-                "correct": "tree (ee)"
+                "correct": "tree (ee)",
+                "type": "multiple_choice",
+                "question_id": "2-L6-P1"
               },
               {
                 "prompt": "B___CH  (sandy place by the water)",
@@ -4171,7 +4621,9 @@
                   "beech (ee)",
                   "beach (ea)"
                 ],
-                "correct": "beach (ea)"
+                "correct": "beach (ea)",
+                "type": "multiple_choice",
+                "question_id": "2-L6-P2"
               },
               {
                 "prompt": "SL___P  (what you do at night)",
@@ -4179,7 +4631,9 @@
                   "sleep (ee)",
                   "sleap (ea)"
                 ],
-                "correct": "sleep (ee)"
+                "correct": "sleep (ee)",
+                "type": "multiple_choice",
+                "question_id": "2-L6-P3"
               },
               {
                 "prompt": "CL___N  (not dirty)",
@@ -4187,7 +4641,9 @@
                   "cleen (ee)",
                   "clean (ea)"
                 ],
-                "correct": "clean (ea)"
+                "correct": "clean (ea)",
+                "type": "multiple_choice",
+                "question_id": "2-L6-P4"
               },
               {
                 "prompt": "GR___N  (color of grass)",
@@ -4195,7 +4651,9 @@
                   "green (ee)",
                   "grean (ea)"
                 ],
-                "correct": "green (ee)"
+                "correct": "green (ee)",
+                "type": "multiple_choice",
+                "question_id": "2-L6-P5"
               }
             ]
           },
@@ -4212,7 +4670,9 @@
                   "tree",
                   "clean"
                 ],
-                "correct": "tree"
+                "correct": "tree",
+                "type": "multiple_choice",
+                "question_id": "2-L6-R1"
               },
               {
                 "prompt": "Find a word with 'ea':",
@@ -4222,7 +4682,9 @@
                   "feet",
                   "beach"
                 ],
-                "correct": "beach"
+                "correct": "beach",
+                "type": "multiple_choice",
+                "question_id": "2-L6-R2"
               },
               {
                 "prompt": "What did they do under the tree?",
@@ -4232,7 +4694,9 @@
                   "Ate lunch",
                   "Played ball"
                 ],
-                "correct": "Read books"
+                "correct": "Read books",
+                "type": "multiple_choice",
+                "question_id": "2-L6-R3"
               }
             ]
           }
@@ -4285,7 +4749,9 @@
                   "boat (oa)",
                   "bowt (ow)"
                 ],
-                "correct": "boat (oa)"
+                "correct": "boat (oa)",
+                "type": "multiple_choice",
+                "question_id": "2-L7-P1"
               },
               {
                 "prompt": "SN___  (white and cold)",
@@ -4293,7 +4759,9 @@
                   "snoa (oa)",
                   "snow (ow)"
                 ],
-                "correct": "snow (ow)"
+                "correct": "snow (ow)",
+                "type": "multiple_choice",
+                "question_id": "2-L7-P2"
               },
               {
                 "prompt": "C___T  (you wear it when cold)",
@@ -4301,7 +4769,9 @@
                   "coat (oa)",
                   "cowt (ow)"
                 ],
-                "correct": "coat (oa)"
+                "correct": "coat (oa)",
+                "type": "multiple_choice",
+                "question_id": "2-L7-P3"
               },
               {
                 "prompt": "GR___  (what plants do)",
@@ -4309,7 +4779,9 @@
                   "groa (oa)",
                   "grow (ow)"
                 ],
-                "correct": "grow (ow)"
+                "correct": "grow (ow)",
+                "type": "multiple_choice",
+                "question_id": "2-L7-P4"
               },
               {
                 "prompt": "T___ST  (breakfast bread)",
@@ -4317,7 +4789,9 @@
                   "toast (oa)",
                   "towst (ow)"
                 ],
-                "correct": "toast (oa)"
+                "correct": "toast (oa)",
+                "type": "multiple_choice",
+                "question_id": "2-L7-P5"
               }
             ]
           },
@@ -4334,7 +4808,9 @@
                   "A scarf",
                   "Boots"
                 ],
-                "correct": "A coat"
+                "correct": "A coat",
+                "type": "multiple_choice",
+                "question_id": "2-L7-R1"
               },
               {
                 "prompt": "Why didn't the goat row the boat?",
@@ -4344,7 +4820,9 @@
                   "Too dark",
                   "Too far"
                 ],
-                "correct": "Too cold"
+                "correct": "Too cold",
+                "type": "multiple_choice",
+                "question_id": "2-L7-R2"
               },
               {
                 "prompt": "Find a word with 'oa':",
@@ -4354,7 +4832,9 @@
                   "show",
                   "goat"
                 ],
-                "correct": "goat"
+                "correct": "goat",
+                "type": "multiple_choice",
+                "question_id": "2-L7-R3"
               }
             ]
           }
@@ -4416,7 +4896,9 @@
                   "should",
                   "wold"
                 ],
-                "correct": "would"
+                "correct": "would",
+                "type": "multiple_choice",
+                "question_id": "2-L8-P1"
               },
               {
                 "prompt": "You ___ brush your teeth. (sounds like 'shood')",
@@ -4426,7 +4908,9 @@
                   "should",
                   "shoud"
                 ],
-                "correct": "should"
+                "correct": "should",
+                "type": "multiple_choice",
+                "question_id": "2-L8-P2"
               },
               {
                 "prompt": "We walked ___ the tunnel. (sounds like 'throo')",
@@ -4436,7 +4920,9 @@
                   "threw",
                   "thorough"
                 ],
-                "correct": "through"
+                "correct": "through",
+                "type": "multiple_choice",
+                "question_id": "2-L8-P3"
               },
               {
                 "prompt": "I had ___ cookies. (sounds like 'ee-nuf')",
@@ -4446,7 +4932,9 @@
                   "enough",
                   "enuf"
                 ],
-                "correct": "enough"
+                "correct": "enough",
+                "type": "multiple_choice",
+                "question_id": "2-L8-P4"
               },
               {
                 "prompt": "I'm happy ___ it's my birthday.",
@@ -4456,7 +4944,9 @@
                   "because",
                   "becose"
                 ],
-                "correct": "because"
+                "correct": "because",
+                "type": "multiple_choice",
+                "question_id": "2-L8-P5"
               }
             ]
           },
@@ -4473,7 +4963,9 @@
                   "Silent B",
                   "Silent W"
                 ],
-                "correct": "Silent L"
+                "correct": "Silent L",
+                "type": "multiple_choice",
+                "question_id": "2-L8-R1"
               },
               {
                 "prompt": "Do 'through' and 'enough' sound the same?",
@@ -4483,7 +4975,9 @@
                   "Yes, same ending",
                   "They have no letters in common"
                 ],
-                "correct": "No, the 'ough' sounds different"
+                "correct": "No, the 'ough' sounds different",
+                "type": "multiple_choice",
+                "question_id": "2-L8-R2"
               },
               {
                 "prompt": "What did the tricky words decide to start?",
@@ -4493,7 +4987,9 @@
                   "A race",
                   "A book"
                 ],
-                "correct": "A band"
+                "correct": "A band",
+                "type": "multiple_choice",
+                "question_id": "2-L8-R3"
               }
             ]
           }
@@ -4619,7 +5115,9 @@
                   "Agree before",
                   "Agree slowly"
                 ],
-                "correct": "Not agree"
+                "correct": "Not agree",
+                "type": "multiple_choice",
+                "question_id": "2-L9-P1"
               },
               {
                 "prompt": "What does 'preheat' mean?",
@@ -4629,7 +5127,9 @@
                   "Heat before",
                   "Heat after"
                 ],
-                "correct": "Heat before"
+                "correct": "Heat before",
+                "type": "multiple_choice",
+                "question_id": "2-L9-P2"
               },
               {
                 "prompt": "What does 'thankful' mean?",
@@ -4639,7 +5139,9 @@
                   "Thanks before",
                   "Not thankful"
                 ],
-                "correct": "Full of thanks"
+                "correct": "Full of thanks",
+                "type": "multiple_choice",
+                "question_id": "2-L9-P3"
               },
               {
                 "prompt": "What does 'fearless' mean?",
@@ -4649,7 +5151,9 @@
                   "Fear before",
                   "Very fearful"
                 ],
-                "correct": "Without fear"
+                "correct": "Without fear",
+                "type": "multiple_choice",
+                "question_id": "2-L9-P4"
               },
               {
                 "prompt": "What does 'softly' mean?",
@@ -4659,7 +5163,9 @@
                   "In a soft way",
                   "Not soft"
                 ],
-                "correct": "In a soft way"
+                "correct": "In a soft way",
+                "type": "multiple_choice",
+                "question_id": "2-L9-P5"
               }
             ]
           },
@@ -4676,7 +5182,9 @@
                   "Very afraid",
                   "Fear again"
                 ],
-                "correct": "Without fear"
+                "correct": "Without fear",
+                "type": "multiple_choice",
+                "question_id": "2-L9-R1"
               },
               {
                 "prompt": "What does 'carefully' mean?",
@@ -4686,7 +5194,9 @@
                   "In a careful way",
                   "Not caring"
                 ],
-                "correct": "In a careful way"
+                "correct": "In a careful way",
+                "type": "multiple_choice",
+                "question_id": "2-L9-R2"
               },
               {
                 "prompt": "Find a word with the prefix 'dis-':",
@@ -4696,7 +5206,9 @@
                   "disappear",
                   "thankful"
                 ],
-                "correct": "disappear"
+                "correct": "disappear",
+                "type": "multiple_choice",
+                "question_id": "2-L9-R3"
               }
             ]
           }
@@ -4771,7 +5283,9 @@
                   "o",
                   "w"
                 ],
-                "correct": "k"
+                "correct": "k",
+                "type": "multiple_choice",
+                "question_id": "3-L1-P1"
               },
               {
                 "prompt": "Which letter is silent in 'write'?",
@@ -4781,7 +5295,9 @@
                   "i",
                   "e"
                 ],
-                "correct": "w"
+                "correct": "w",
+                "type": "multiple_choice",
+                "question_id": "3-L1-P2"
               },
               {
                 "prompt": "What sound does PH make in 'phone'?",
@@ -4791,7 +5307,9 @@
                   "/f/",
                   "/ph/"
                 ],
-                "correct": "/f/"
+                "correct": "/f/",
+                "type": "multiple_choice",
+                "question_id": "3-L1-P3"
               },
               {
                 "prompt": "What vowel sound is in 'night'?",
@@ -4801,7 +5319,9 @@
                   "Short a",
                   "Long a"
                 ],
-                "correct": "Long i"
+                "correct": "Long i",
+                "type": "multiple_choice",
+                "question_id": "3-L1-P4"
               },
               {
                 "prompt": "Which word has a silent letter?",
@@ -4811,7 +5331,9 @@
                   "knee",
                   "fast"
                 ],
-                "correct": "knee"
+                "correct": "knee",
+                "type": "multiple_choice",
+                "question_id": "3-L1-P5"
               }
             ]
           },
@@ -4828,7 +5350,9 @@
                   "Cooking",
                   "Drawing"
                 ],
-                "correct": "Photography"
+                "correct": "Photography",
+                "type": "multiple_choice",
+                "question_id": "3-L1-R1"
               },
               {
                 "prompt": "Find a word with a silent K.",
@@ -4838,7 +5362,9 @@
                   "photo",
                   "bright"
                 ],
-                "correct": "know"
+                "correct": "know",
+                "type": "multiple_choice",
+                "question_id": "3-L1-R2"
               },
               {
                 "prompt": "What did Phillip see in the sky?",
@@ -4848,7 +5374,9 @@
                   "A shooting star",
                   "A cloud"
                 ],
-                "correct": "A shooting star"
+                "correct": "A shooting star",
+                "type": "multiple_choice",
+                "question_id": "3-L1-R3"
               }
             ]
           },
@@ -4896,7 +5424,9 @@
                   "Fruits taste good",
                   "Pollen is yellow"
                 ],
-                "correct": "Bees are very important"
+                "correct": "Bees are very important",
+                "type": "multiple_choice",
+                "question_id": "3-L2-P1"
               },
               {
                 "prompt": "Read: 'Exercise keeps your body healthy. It makes your heart strong and your muscles big. Even a short walk each day can help.' What is the main idea?",
@@ -4906,7 +5436,9 @@
                   "Muscles are big",
                   "Hearts are important"
                 ],
-                "correct": "Exercise keeps your body healthy"
+                "correct": "Exercise keeps your body healthy",
+                "type": "multiple_choice",
+                "question_id": "3-L2-P2"
               },
               {
                 "prompt": "Read: 'The ocean is home to many creatures. Fish, whales, dolphins, and jellyfish all live there. Coral reefs are like underwater cities.' What is the main idea?",
@@ -4916,7 +5448,9 @@
                   "The ocean is home to many creatures",
                   "Dolphins are smart"
                 ],
-                "correct": "The ocean is home to many creatures"
+                "correct": "The ocean is home to many creatures",
+                "type": "multiple_choice",
+                "question_id": "3-L2-P3"
               },
               {
                 "prompt": "Which is a DETAIL, not a main idea? 'Dogs make great pets. They are loyal and friendly.'",
@@ -4924,7 +5458,9 @@
                   "Dogs make great pets",
                   "They are loyal and friendly"
                 ],
-                "correct": "They are loyal and friendly"
+                "correct": "They are loyal and friendly",
+                "type": "multiple_choice",
+                "question_id": "3-L2-P4"
               },
               {
                 "prompt": "Read: 'Water is essential for life. Humans need about 8 glasses a day. Plants need water to grow. Even desert animals find ways to get water.' Main idea?",
@@ -4934,7 +5470,9 @@
                   "Water is essential for life",
                   "8 glasses is a lot"
                 ],
-                "correct": "Water is essential for life"
+                "correct": "Water is essential for life",
+                "type": "multiple_choice",
+                "question_id": "3-L2-P5"
               }
             ]
           },
@@ -4951,7 +5489,9 @@
                   "The octopus is an amazing animal",
                   "Scientists study the ocean"
                 ],
-                "correct": "The octopus is an amazing animal"
+                "correct": "The octopus is an amazing animal",
+                "type": "multiple_choice",
+                "question_id": "3-L2-R1"
               },
               {
                 "prompt": "Which is a supporting detail?",
@@ -4961,7 +5501,9 @@
                   "The ocean is big",
                   "Animals are interesting"
                 ],
-                "correct": "They can change color in less than a second"
+                "correct": "They can change color in less than a second",
+                "type": "multiple_choice",
+                "question_id": "3-L2-R2"
               },
               {
                 "prompt": "Why does an octopus change color?",
@@ -4971,7 +5513,9 @@
                   "Because it's cold",
                   "To attract friends"
                 ],
-                "correct": "To hide or sneak up on prey"
+                "correct": "To hide or sneak up on prey",
+                "type": "multiple_choice",
+                "question_id": "3-L2-R3"
               }
             ]
           },
@@ -5021,7 +5565,9 @@
                   "Tired",
                   "Quiet"
                 ],
-                "correct": "Very happy"
+                "correct": "Very happy",
+                "type": "multiple_choice",
+                "question_id": "3-L3-P1"
               },
               {
                 "prompt": "'The peculiar noise was strange and unlike anything we'd heard before.' What does 'peculiar' mean?",
@@ -5031,7 +5577,9 @@
                   "Strange",
                   "Quiet"
                 ],
-                "correct": "Strange"
+                "correct": "Strange",
+                "type": "multiple_choice",
+                "question_id": "3-L3-P2"
               },
               {
                 "prompt": "'After running five miles, the exhausted runner collapsed on the ground.' What does 'exhausted' mean?",
@@ -5041,7 +5589,9 @@
                   "Very happy",
                   "Very strong"
                 ],
-                "correct": "Very tired"
+                "correct": "Very tired",
+                "type": "multiple_choice",
+                "question_id": "3-L3-P3"
               },
               {
                 "prompt": "'The generous woman donated food, money, and clothes to people in need.' What does 'generous' mean?",
@@ -5051,7 +5601,9 @@
                   "Giving and kind",
                   "Rich"
                 ],
-                "correct": "Giving and kind"
+                "correct": "Giving and kind",
+                "type": "multiple_choice",
+                "question_id": "3-L3-P4"
               },
               {
                 "prompt": "'The frigid wind made everyone shiver and put on heavy coats.' What does 'frigid' mean?",
@@ -5061,7 +5613,9 @@
                   "Gentle",
                   "Strong"
                 ],
-                "correct": "Very cold"
+                "correct": "Very cold",
+                "type": "multiple_choice",
+                "question_id": "3-L3-P5"
               }
             ]
           },
@@ -5078,7 +5632,9 @@
                   "Happy",
                   "Bored"
                 ],
-                "correct": "Worried/nervous"
+                "correct": "Worried/nervous",
+                "type": "multiple_choice",
+                "question_id": "3-L3-R1"
               },
               {
                 "prompt": "What does 'captivated' mean based on the sentence?",
@@ -5088,7 +5644,9 @@
                   "Very interested",
                   "Angry"
                 ],
-                "correct": "Very interested"
+                "correct": "Very interested",
+                "type": "multiple_choice",
+                "question_id": "3-L3-R2"
               },
               {
                 "prompt": "What was Olivia's project about?",
@@ -5098,7 +5656,9 @@
                   "How to make a volcano",
                   "How animals sleep"
                 ],
-                "correct": "How plants respond to music"
+                "correct": "How plants respond to music",
+                "type": "multiple_choice",
+                "question_id": "3-L3-R3"
               }
             ]
           },
@@ -5148,7 +5708,9 @@
                   "Fact",
                   "Opinion"
                 ],
-                "correct": "Fact"
+                "correct": "Fact",
+                "type": "multiple_choice",
+                "question_id": "3-L4-P1"
               },
               {
                 "prompt": "Pizza is the most delicious food.",
@@ -5156,7 +5718,9 @@
                   "Fact",
                   "Opinion"
                 ],
-                "correct": "Opinion"
+                "correct": "Opinion",
+                "type": "multiple_choice",
+                "question_id": "3-L4-P2"
               },
               {
                 "prompt": "The sun rises in the east.",
@@ -5164,7 +5728,9 @@
                   "Fact",
                   "Opinion"
                 ],
-                "correct": "Fact"
+                "correct": "Fact",
+                "type": "multiple_choice",
+                "question_id": "3-L4-P3"
               },
               {
                 "prompt": "Reading is more fun than math.",
@@ -5172,7 +5738,9 @@
                   "Fact",
                   "Opinion"
                 ],
-                "correct": "Opinion"
+                "correct": "Opinion",
+                "type": "multiple_choice",
+                "question_id": "3-L4-P4"
               },
               {
                 "prompt": "Penguins live in cold climates.",
@@ -5180,7 +5748,9 @@
                   "Fact",
                   "Opinion"
                 ],
-                "correct": "Fact"
+                "correct": "Fact",
+                "type": "multiple_choice",
+                "question_id": "3-L4-P5"
               }
             ]
           },
@@ -5197,7 +5767,9 @@
                   "Harry Potter is better",
                   "Books are fun"
                 ],
-                "correct": "It was written in 1952"
+                "correct": "It was written in 1952",
+                "type": "multiple_choice",
+                "question_id": "3-L4-R1"
               },
               {
                 "prompt": "Which is an OPINION?",
@@ -5207,7 +5779,9 @@
                   "Charlotte's Web is the greatest ever",
                   "Mr. Chen is the teacher"
                 ],
-                "correct": "Charlotte's Web is the greatest ever"
+                "correct": "Charlotte's Web is the greatest ever",
+                "type": "multiple_choice",
+                "question_id": "3-L4-R2"
               },
               {
                 "prompt": "What does Mr. Chen say good readers do?",
@@ -5217,7 +5791,9 @@
                   "Use both facts and opinions",
                   "Read every day"
                 ],
-                "correct": "Use both facts and opinions"
+                "correct": "Use both facts and opinions",
+                "type": "multiple_choice",
+                "question_id": "3-L4-R3"
               }
             ]
           },
@@ -5272,7 +5848,9 @@
                   "Vivid verb",
                   "Sensory detail"
                 ],
-                "correct": "Simile"
+                "correct": "Simile",
+                "type": "multiple_choice",
+                "question_id": "3-L5-P1"
               },
               {
                 "prompt": "'The thunder BOOMED across the valley.' What makes this sentence strong?",
@@ -5282,7 +5860,9 @@
                   "Dialogue",
                   "A question"
                 ],
-                "correct": "A vivid verb (boomed)"
+                "correct": "A vivid verb (boomed)",
+                "type": "multiple_choice",
+                "question_id": "3-L5-P2"
               },
               {
                 "prompt": "'The warm, gooey chocolate melted on her tongue.' What technique?",
@@ -5292,7 +5872,9 @@
                   "Sensory details",
                   "Vivid verb"
                 ],
-                "correct": "Sensory details"
+                "correct": "Sensory details",
+                "type": "multiple_choice",
+                "question_id": "3-L5-P3"
               },
               {
                 "prompt": "'\"Run!\" shouted Maria.' What technique?",
@@ -5302,7 +5884,9 @@
                   "Vivid verb",
                   "Dialogue"
                 ],
-                "correct": "Dialogue"
+                "correct": "Dialogue",
+                "type": "multiple_choice",
+                "question_id": "3-L5-P4"
               },
               {
                 "prompt": "Which is more vivid? ",
@@ -5310,7 +5894,9 @@
                   "The dog went across the yard",
                   "The dog bounded across the yard"
                 ],
-                "correct": "The dog bounded across the yard"
+                "correct": "The dog bounded across the yard",
+                "type": "multiple_choice",
+                "question_id": "3-L5-P5"
               }
             ]
           },
@@ -5327,7 +5913,9 @@
                   "Leaves danced",
                   "Dad hollered"
                 ],
-                "correct": "Dark as ink"
+                "correct": "Dark as ink",
+                "type": "multiple_choice",
+                "question_id": "3-L5-R1"
               },
               {
                 "prompt": "Which is a vivid verb from the story?",
@@ -5337,7 +5925,9 @@
                   "hammered",
                   "was"
                 ],
-                "correct": "hammered"
+                "correct": "hammered",
+                "type": "multiple_choice",
+                "question_id": "3-L5-R2"
               },
               {
                 "prompt": "What sensory detail tells you how the cocoa felt?",
@@ -5347,7 +5937,9 @@
                   "They drank it",
                   "It was in a cup"
                 ],
-                "correct": "It soothed their shivery hands"
+                "correct": "It soothed their shivery hands",
+                "type": "multiple_choice",
+                "question_id": "3-L5-R3"
               }
             ]
           },
@@ -5432,7 +6024,9 @@
                   "4",
                   "5"
                 ],
-                "correct": "3"
+                "correct": "3",
+                "type": "multiple_choice",
+                "question_id": "3-L6-P1"
               },
               {
                 "prompt": "Break apart 'remember':",
@@ -5442,7 +6036,9 @@
                   "remem-ber",
                   "r-ememb-er"
                 ],
-                "correct": "re-mem-ber"
+                "correct": "re-mem-ber",
+                "type": "multiple_choice",
+                "question_id": "3-L6-P2"
               },
               {
                 "prompt": "How many syllables in 'important'?",
@@ -5452,7 +6048,9 @@
                   "4",
                   "5"
                 ],
-                "correct": "3"
+                "correct": "3",
+                "type": "multiple_choice",
+                "question_id": "3-L6-P3"
               },
               {
                 "prompt": "Break apart 'adventure':",
@@ -5462,7 +6060,9 @@
                   "a-dvent-ure",
                   "adven-ture"
                 ],
-                "correct": "ad-ven-ture"
+                "correct": "ad-ven-ture",
+                "type": "multiple_choice",
+                "question_id": "3-L6-P4"
               },
               {
                 "prompt": "What helps you count syllables?",
@@ -5472,7 +6072,9 @@
                   "Count the letters",
                   "Count the words"
                 ],
-                "correct": "Count the vowel sounds"
+                "correct": "Count the vowel sounds",
+                "type": "multiple_choice",
+                "question_id": "3-L6-P5"
               }
             ]
           },
@@ -5489,7 +6091,9 @@
                   "6",
                   "7"
                 ],
-                "correct": "6"
+                "correct": "6",
+                "type": "multiple_choice",
+                "question_id": "3-L6-R1"
               },
               {
                 "prompt": "What strategy does Sophia use for big words?",
@@ -5499,7 +6103,9 @@
                   "Splits them into syllables",
                   "Asks for help"
                 ],
-                "correct": "Splits them into syllables"
+                "correct": "Splits them into syllables",
+                "type": "multiple_choice",
+                "question_id": "3-L6-R2"
               },
               {
                 "prompt": "What word means 'amazing' and has 4 syllables?",
@@ -5509,7 +6115,9 @@
                   "Incredible",
                   "Fantastic"
                 ],
-                "correct": "Incredible"
+                "correct": "Incredible",
+                "type": "multiple_choice",
+                "question_id": "3-L6-R3"
               }
             ]
           }
@@ -5557,7 +6165,9 @@
                   "Middle",
                   "End"
                 ],
-                "correct": "Beginning"
+                "correct": "Beginning",
+                "type": "multiple_choice",
+                "question_id": "3-L7-P1"
               },
               {
                 "prompt": "'Suddenly, Lily heard a strange noise from the cave!' This is the:",
@@ -5566,7 +6176,9 @@
                   "Middle",
                   "End"
                 ],
-                "correct": "Middle"
+                "correct": "Middle",
+                "type": "multiple_choice",
+                "question_id": "3-L7-P2"
               },
               {
                 "prompt": "'Lily made it home safely and hugged her family.' This is the:",
@@ -5575,7 +6187,9 @@
                   "Middle",
                   "End"
                 ],
-                "correct": "End"
+                "correct": "End",
+                "type": "multiple_choice",
+                "question_id": "3-L7-P3"
               },
               {
                 "prompt": "Where do we learn about the characters?",
@@ -5584,7 +6198,9 @@
                   "Middle",
                   "End"
                 ],
-                "correct": "Beginning"
+                "correct": "Beginning",
+                "type": "multiple_choice",
+                "question_id": "3-L7-P4"
               },
               {
                 "prompt": "Where does the problem usually get solved?",
@@ -5593,7 +6209,9 @@
                   "Middle",
                   "End"
                 ],
-                "correct": "End"
+                "correct": "End",
+                "type": "multiple_choice",
+                "question_id": "3-L7-P5"
               }
             ]
           },
@@ -5610,7 +6228,9 @@
                   "Zoe makes posters",
                   "Mrs. Park calls"
                 ],
-                "correct": "Zoe finds a lost puppy"
+                "correct": "Zoe finds a lost puppy",
+                "type": "multiple_choice",
+                "question_id": "3-L7-R1"
               },
               {
                 "prompt": "What is the PROBLEM in the middle?",
@@ -5620,7 +6240,9 @@
                   "Zoe can't find posters",
                   "It's raining"
                 ],
-                "correct": "No one claims the puppy"
+                "correct": "No one claims the puppy",
+                "type": "multiple_choice",
+                "question_id": "3-L7-R2"
               },
               {
                 "prompt": "How is the problem RESOLVED at the end?",
@@ -5630,7 +6252,9 @@
                   "The owner calls and comes to get Biscuit",
                   "Zoe takes Biscuit to a shelter"
                 ],
-                "correct": "The owner calls and comes to get Biscuit"
+                "correct": "The owner calls and comes to get Biscuit",
+                "type": "multiple_choice",
+                "question_id": "3-L7-R3"
               }
             ]
           }
@@ -5719,7 +6343,9 @@
                   "celeb",
                   "bration"
                 ],
-                "correct": "celebrate"
+                "correct": "celebrate",
+                "type": "multiple_choice",
+                "question_id": "3-L8-P1"
               },
               {
                 "prompt": "What suffix turns 'excite' into 'excitement'?",
@@ -5729,7 +6355,9 @@
                   "-ness",
                   "-ful"
                 ],
-                "correct": "-ment"
+                "correct": "-ment",
+                "type": "multiple_choice",
+                "question_id": "3-L8-P2"
               },
               {
                 "prompt": "What does 'kindness' mean?",
@@ -5739,7 +6367,9 @@
                   "Not kind",
                   "Very kind"
                 ],
-                "correct": "The quality of being kind"
+                "correct": "The quality of being kind",
+                "type": "multiple_choice",
+                "question_id": "3-L8-P3"
               },
               {
                 "prompt": "'Education' comes from the word:",
@@ -5749,7 +6379,9 @@
                   "edge",
                   "date"
                 ],
-                "correct": "educate"
+                "correct": "educate",
+                "type": "multiple_choice",
+                "question_id": "3-L8-P4"
               },
               {
                 "prompt": "Add -ness to 'dark'. What word?",
@@ -5759,7 +6391,9 @@
                   "darkness",
                   "darkly"
                 ],
-                "correct": "darkness"
+                "correct": "darkness",
+                "type": "multiple_choice",
+                "question_id": "3-L8-P5"
               }
             ]
           },
@@ -5776,7 +6410,9 @@
                   "celebration",
                   "happiness"
                 ],
-                "correct": "celebration"
+                "correct": "celebration",
+                "type": "multiple_choice",
+                "question_id": "3-L8-R1"
               },
               {
                 "prompt": "Find a word with '-ment':",
@@ -5786,7 +6422,9 @@
                   "kindness",
                   "education"
                 ],
-                "correct": "excitement"
+                "correct": "excitement",
+                "type": "multiple_choice",
+                "question_id": "3-L8-R2"
               },
               {
                 "prompt": "What was Marcus's project about?",
@@ -5796,7 +6434,9 @@
                   "Darkness and light",
                   "Education"
                 ],
-                "correct": "Darkness and light"
+                "correct": "Darkness and light",
+                "type": "multiple_choice",
+                "question_id": "3-L8-R3"
               }
             ]
           }
@@ -5852,7 +6492,9 @@
                   "shining/through",
                   "I/the"
                 ],
-                "correct": "bright/night"
+                "correct": "bright/night",
+                "type": "multiple_choice",
+                "question_id": "3-L9-P1"
               },
               {
                 "prompt": "A group of lines in a poem is called a:",
@@ -5862,7 +6504,9 @@
                   "Stanza",
                   "Section"
                 ],
-                "correct": "Stanza"
+                "correct": "Stanza",
+                "type": "multiple_choice",
+                "question_id": "3-L9-P2"
               },
               {
                 "prompt": "'The silver moon danced across the velvet sky.' This is an example of:",
@@ -5872,7 +6516,9 @@
                   "Imagery",
                   "Stanza"
                 ],
-                "correct": "Imagery"
+                "correct": "Imagery",
+                "type": "multiple_choice",
+                "question_id": "3-L9-P3"
               },
               {
                 "prompt": "How are poems different from stories?",
@@ -5882,7 +6528,9 @@
                   "They don't have meaning",
                   "They're always short"
                 ],
-                "correct": "They use rhythm and fewer words"
+                "correct": "They use rhythm and fewer words",
+                "type": "multiple_choice",
+                "question_id": "3-L9-P4"
               },
               {
                 "prompt": "'Jack and Jill went up the HILL / to fetch a pail of WATER.' What rhymes?",
@@ -5892,7 +6540,9 @@
                   "Nothing rhymes here",
                   "Up/pail"
                 ],
-                "correct": "Nothing rhymes here"
+                "correct": "Nothing rhymes here",
+                "type": "multiple_choice",
+                "question_id": "3-L9-P5"
               }
             ]
           },
@@ -5909,7 +6559,9 @@
                   "open/waiting",
                   "far/fly"
                 ],
-                "correct": "see/me and car/star"
+                "correct": "see/me and car/star",
+                "type": "multiple_choice",
+                "question_id": "3-L9-R1"
               },
               {
                 "prompt": "How many stanzas does this poem have?",
@@ -5919,7 +6571,9 @@
                   "3",
                   "4"
                 ],
-                "correct": "3"
+                "correct": "3",
+                "type": "multiple_choice",
+                "question_id": "3-L9-R2"
               },
               {
                 "prompt": "What is the poem's message?",
@@ -5929,7 +6583,9 @@
                   "Reading takes you on adventures",
                   "Stars are far away"
                 ],
-                "correct": "Reading takes you on adventures"
+                "correct": "Reading takes you on adventures",
+                "type": "multiple_choice",
+                "question_id": "3-L9-R3"
               }
             ]
           }
@@ -5985,7 +6641,9 @@
                   "First person",
                   "Third person"
                 ],
-                "correct": "First person"
+                "correct": "First person",
+                "type": "multiple_choice",
+                "question_id": "3-L10-P1"
               },
               {
                 "prompt": "'She ran as fast as her legs could carry her.' This is:",
@@ -5993,7 +6651,9 @@
                   "First person",
                   "Third person"
                 ],
-                "correct": "Third person"
+                "correct": "Third person",
+                "type": "multiple_choice",
+                "question_id": "3-L10-P2"
               },
               {
                 "prompt": "'We built the biggest sandcastle on the beach.' This is:",
@@ -6001,7 +6661,9 @@
                   "First person",
                   "Third person"
                 ],
-                "correct": "First person"
+                "correct": "First person",
+                "type": "multiple_choice",
+                "question_id": "3-L10-P3"
               },
               {
                 "prompt": "Which word tells you a story is first person?",
@@ -6011,7 +6673,9 @@
                   "I",
                   "He"
                 ],
-                "correct": "I"
+                "correct": "I",
+                "type": "multiple_choice",
+                "question_id": "3-L10-P4"
               },
               {
                 "prompt": "'The boy opened his backpack and found a note.' This is:",
@@ -6019,7 +6683,9 @@
                   "First person",
                   "Third person"
                 ],
-                "correct": "Third person"
+                "correct": "Third person",
+                "type": "multiple_choice",
+                "question_id": "3-L10-P5"
               }
             ]
           },
@@ -6036,7 +6702,9 @@
                   "It says 'he' and 'his'",
                   "It's longer"
                 ],
-                "correct": "It uses 'I' and 'my'"
+                "correct": "It uses 'I' and 'my'",
+                "type": "multiple_choice",
+                "question_id": "3-L10-R1"
               },
               {
                 "prompt": "In Version 2, how do you know it's third person?",
@@ -6046,7 +6714,9 @@
                   "It uses 'Alex,' 'he,' and 'his'",
                   "It's shorter"
                 ],
-                "correct": "It uses 'Alex,' 'he,' and 'his'"
+                "correct": "It uses 'Alex,' 'he,' and 'his'",
+                "type": "multiple_choice",
+                "question_id": "3-L10-R2"
               },
               {
                 "prompt": "Do both versions tell the same story?",
@@ -6056,7 +6726,9 @@
                   "Only Version 1 is a real story",
                   "Only Version 2 is a real story"
                 ],
-                "correct": "Yes, just from different viewpoints"
+                "correct": "Yes, just from different viewpoints",
+                "type": "multiple_choice",
+                "question_id": "3-L10-R3"
               }
             ]
           }

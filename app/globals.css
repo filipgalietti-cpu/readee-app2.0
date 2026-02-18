@@ -279,3 +279,47 @@ p {
 .animate-streakPulse { animation: streakPulse 1.5s ease-in-out infinite; }
 .animate-xpCountUp { animation: xpCountUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
 
+/* Lesson page animations */
+@keyframes cardSlideIn {
+  from { opacity: 0; transform: translateX(60px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes cardSlideOut {
+  from { opacity: 1; transform: translateX(0); }
+  to { opacity: 0; transform: translateX(-60px); }
+}
+
+@keyframes wrongShake {
+  0%, 100% { transform: translateX(0); }
+  15% { transform: translateX(-8px); }
+  30% { transform: translateX(8px); }
+  45% { transform: translateX(-6px); }
+  60% { transform: translateX(6px); }
+  75% { transform: translateX(-3px); }
+  90% { transform: translateX(3px); }
+}
+
+@keyframes miniBurst {
+  0% { transform: scale(0); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.6; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+@keyframes gentleBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+@keyframes storyLineIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-cardSlideIn { animation: cardSlideIn 0.35s ease both; }
+.animate-cardSlideOut { animation: cardSlideOut 0.25s ease both; }
+.animate-wrongShake { animation: wrongShake 0.5s ease both; }
+.animate-miniBurst { animation: miniBurst 0.4s ease-out forwards; }
+.animate-gentleBounce { animation: gentleBounce 1.5s ease-in-out infinite; }
+.animate-storyLineIn { animation: storyLineIn 0.4s ease both; }
+

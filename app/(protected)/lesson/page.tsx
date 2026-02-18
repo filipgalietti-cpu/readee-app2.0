@@ -1,14 +1,13 @@
 "use client";
 
-import { Suspense, useEffect, useState, useCallback } from "react";
+import { Suspense, useEffect, useState, useCallback, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
 import lessonsData from "@/lib/data/lessons.json";
 
-
-type Phase = "loading" | "learn" | "practice" | "read" | "complete";
+type Phase = "loading" | "learn" | "practice" | "read" | "read-transition" | "complete";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 interface LessonRaw {
@@ -33,7 +32,13 @@ interface LessonsFile {
 }
 /* eslint-enable @typescript-eslint/no-explicit-any */
 
-const ENCOURAGEMENTS = ["Nice!", "Great job!", "You got it!", "Amazing!"];
+const CORRECT_MSGS = [
+  "🎉 Great job!",
+  "⭐ You got it!",
+  "🌟 Amazing!",
+  "🚀 Awesome!",
+  "💪 Nice one!",
+];
 
 const CELEBRATION_MESSAGES = [
   "You're a reading superstar! 🌟",
@@ -54,99 +59,355 @@ const XP_MILESTONES = [
   { name: "Diamond", xp: 1000, emoji: "👑" },
 ];
 
+const CARD_COLORS = [
+  { bg: "bg-blue-50", border: "border-blue-200" },
+  { bg: "bg-green-50", border: "border-green-200" },
+  { bg: "bg-pink-50", border: "border-pink-200" },
+  { bg: "bg-yellow-50", border: "border-yellow-200" },
+  { bg: "bg-purple-50", border: "border-purple-200" },
+  { bg: "bg-orange-50", border: "border-orange-200" },
+];
+
+function formatSkillName(skill: string): string {
+  return skill
+    .split("_")
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(" ");
+}
+
 /** Extract a display-friendly line from a learn item regardless of its shape */
 function formatLearnItem(item: Record<string, unknown>): { emoji: string; title: string; detail: string } {
   const emoji = (item.emoji as string) || "";
 
-  // letter_recognition, letter_sounds, short_vowels
   if (item.letter) {
     const keyword = item.keyword || item.example || "";
     const hint = item.hint || item.mouth || item.keyword || "";
     return { emoji, title: `${item.letter} — ${keyword}`, detail: String(hint) };
   }
-  // beginning_sounds
   if (item.sound && item.words) {
     return { emoji, title: `${item.sound} — ${(item.words as string[]).join(", ")}`, detail: String(item.hint || "") };
   }
-  // rhyming
   if (item.word && item.rhymes) {
     return { emoji, title: `${item.word} rhymes with ${(item.rhymes as string[]).slice(0, 3).join(", ")}`, detail: `Family: ${item.family || ""}` };
   }
-  // uppercase_lowercase
   if (item.upper && item.lower) {
     return { emoji: "🔤", title: `${item.upper} and ${item.lower}`, detail: String(item.hint || "") };
   }
-  // cvc_blending
   if (item.sounds) {
     return { emoji, title: `${(item.sounds as string[]).join(" + ")} = ${item.word}`, detail: String(item.tip || "") };
   }
-  // sight_words
   if (item.word && item.sentence) {
     return { emoji: "⭐", title: String(item.word), detail: `${item.sentence} — ${item.tip || item.trick || ""}` };
   }
-  // word_families
   if (item.family && item.words) {
     return { emoji, title: `${item.family} family`, detail: (item.words as string[]).join(", ") };
   }
-  // blends
   if (item.blend) {
     return { emoji, title: `${item.blend} blend`, detail: (item.words as string[]).join(", ") };
   }
-  // digraphs
   if (item.digraph) {
     return { emoji, title: `${item.digraph} = ${item.sound}`, detail: `${(item.words as string[]).join(", ")} — ${item.tip || ""}` };
   }
-  // cvce (magic e)
   if (item.short && item.long) {
     return { emoji, title: `${item.short} → ${item.long}`, detail: `Vowel ${item.vowel} says its name!` };
   }
-  // fluency
   if (item.sentence && item.tip) {
     return { emoji: "📝", title: String(item.sentence), detail: String(item.tip) };
   }
-  // prefixes/suffixes (nested examples)
   if (item.prefix || item.suffix) {
     const label = item.prefix || item.suffix;
     const meaning = item.meaning || "";
     const examples = (item.examples as Array<{ word: string }>)?.map((e) => e.word).join(", ") || "";
     return { emoji: "🔤", title: `${label} = ${meaning}`, detail: examples };
   }
-  // vowel_teams
   if (item.team) {
     return { emoji, title: `${item.team} vowel team`, detail: (item.words as string[]).join(", ") };
   }
-  // compound_words
   if (item.parts) {
     return { emoji, title: String(item.word), detail: `${(item.parts as string[]).join(" + ")}` };
   }
-  // inference
   if (item.clue && item.inference) {
     return { emoji, title: String(item.clue), detail: String(item.inference) };
   }
-  // advanced_phonics patterns
   if (item.pattern) {
     return { emoji: "🔍", title: String(item.pattern), detail: `${(item.words as string[] || []).join(", ")} — ${item.rule || ""}` };
   }
-  // main_idea
   if (item.main_idea) {
     return { emoji: "🎯", title: String(item.main_idea), detail: String((item.details as string[] || []).join(", ")) };
   }
-  // context_clues
   if (item.unknown) {
     return { emoji: "🔎", title: `${item.unknown} = ${item.meaning}`, detail: String(item.sentence || "") };
   }
-  // fact_opinion
   if (item.statement && item.type) {
     return { emoji: item.type === "fact" ? "✅" : "💭", title: String(item.statement), detail: `${item.type}: ${item.why || ""}` };
   }
-  // author_craft
   if (item.technique) {
     return { emoji: (item.emoji as string) || "✍️", title: String(item.technique), detail: `${item.definition || ""} — "${item.example || ""}"` };
   }
-
-  // Fallback
   return { emoji: emoji || "📚", title: JSON.stringify(item).slice(0, 50), detail: "" };
 }
+
+/* ─── Mini confetti burst ────────────────────────────── */
+function MiniConfetti() {
+  const pieces = Array.from({ length: 12 }, (_, i) => ({
+    id: i,
+    left: 30 + Math.random() * 40,
+    color: ["#4338ca", "#8b5cf6", "#f59e0b", "#10b981", "#ef4444", "#ec4899"][i % 6],
+    delay: Math.random() * 0.3,
+  }));
+  return (
+    <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      {pieces.map((p) => (
+        <div
+          key={p.id}
+          className="confetti-fall absolute top-0 w-2 h-2 rounded-sm"
+          style={{
+            left: `${p.left}%`,
+            backgroundColor: p.color,
+            animationDelay: `${p.delay}s`,
+            animationDuration: "1.2s",
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
+/* ─── 3-Section Progress Bar ─────────────────────────── */
+function SectionProgressBar({
+  phase,
+  practiceIdx,
+  practiceTotal,
+  readQIdx,
+  readTotal,
+  showReadQuestions,
+}: {
+  phase: Phase;
+  practiceIdx: number;
+  practiceTotal: number;
+  readQIdx: number;
+  readTotal: number;
+  showReadQuestions: boolean;
+}) {
+  const sections = [
+    { label: "Learn", key: "learn" },
+    { label: "Practice", key: "practice" },
+    { label: "Read", key: "read" },
+  ];
+
+  const phaseOrder = ["learn", "practice", "read"];
+  const currentIdx = phaseOrder.indexOf(phase === "read-transition" ? "read" : phase === "complete" ? "read" : phase);
+
+  return (
+    <div className="space-y-2">
+      <div className="flex gap-1.5">
+        {sections.map((s, i) => {
+          const isComplete = i < currentIdx || phase === "complete";
+          const isCurrent = i === currentIdx && phase !== "complete";
+          return (
+            <div key={s.key} className="flex-1">
+              <div className={`h-2 rounded-full transition-all duration-500 ${
+                isComplete
+                  ? "bg-green-400"
+                  : isCurrent
+                  ? "bg-gradient-to-r from-indigo-500 to-violet-500"
+                  : "bg-zinc-100"
+              }`} />
+            </div>
+          );
+        })}
+      </div>
+      <div className="flex justify-between items-center text-xs">
+        <div className="flex gap-3">
+          {sections.map((s, i) => {
+            const isComplete = i < currentIdx || phase === "complete";
+            const isCurrent = i === currentIdx && phase !== "complete";
+            return (
+              <span key={s.key} className={`font-medium ${
+                isComplete ? "text-green-600" : isCurrent ? "text-indigo-600" : "text-zinc-300"
+              }`}>
+                {isComplete ? "✓ " : ""}{s.label}
+              </span>
+            );
+          })}
+        </div>
+        {phase === "practice" && (
+          <span className="text-zinc-400">
+            Question {practiceIdx + 1} of {practiceTotal}
+          </span>
+        )}
+        {(phase === "read" || phase === "read-transition") && showReadQuestions && (
+          <span className="text-zinc-400">
+            Question {readQIdx + 1} of {readTotal}
+          </span>
+        )}
+        {phase === "learn" && (
+          <span className="text-zinc-400 text-[10px]">
+            Skill: {/* filled by parent */}
+          </span>
+        )}
+      </div>
+    </div>
+  );
+}
+
+/* ─── Drag & Match Question ──────────────────────────── */
+function DragMatchQuestion({
+  question,
+  onComplete,
+}: {
+  question: { prompt: string; pairs: { item: string; target: string }[]; question_id: string };
+  onComplete: (correct: boolean, selected: string) => void;
+}) {
+  const [matched, setMatched] = useState<Record<string, string>>({});
+  const [dragging, setDragging] = useState<string | null>(null);
+  const [wrongPair, setWrongPair] = useState<string | null>(null);
+
+  const pairs = question.pairs || [];
+  const targets = pairs.map((p) => p.target);
+  const items = pairs.map((p) => p.item);
+  const allMatched = Object.keys(matched).length === pairs.length;
+
+  useEffect(() => {
+    if (allMatched && pairs.length > 0) {
+      const allCorrect = pairs.every((p) => matched[p.item] === p.target);
+      setTimeout(() => onComplete(allCorrect, JSON.stringify(matched)), 800);
+    }
+  }, [allMatched, matched, pairs, onComplete]);
+
+  const handleDrop = (target: string) => {
+    if (!dragging) return;
+    const pair = pairs.find((p) => p.item === dragging);
+    if (pair && pair.target === target) {
+      setMatched((prev) => ({ ...prev, [dragging]: target }));
+    } else {
+      setWrongPair(dragging);
+      setTimeout(() => setWrongPair(null), 600);
+    }
+    setDragging(null);
+  };
+
+  return (
+    <div className="space-y-6">
+      <h2 className="text-xl font-bold text-zinc-900 text-center leading-relaxed">
+        {question.prompt}
+      </h2>
+      <div className="grid grid-cols-2 gap-6">
+        <div className="space-y-3">
+          {items.map((item) => {
+            const isMatched = item in matched;
+            return (
+              <div
+                key={item}
+                draggable={!isMatched}
+                onDragStart={() => setDragging(item)}
+                onTouchStart={() => setDragging(item)}
+                className={`min-h-[48px] rounded-xl border-2 p-3 text-center font-bold text-lg cursor-grab active:cursor-grabbing transition-all ${
+                  isMatched
+                    ? "border-green-300 bg-green-50 text-green-700 opacity-50"
+                    : wrongPair === item
+                    ? "border-red-400 bg-red-50 animate-wrongShake"
+                    : dragging === item
+                    ? "border-indigo-500 bg-indigo-50 scale-105 shadow-md"
+                    : "border-zinc-200 bg-white hover:border-indigo-300"
+                }`}
+              >
+                {item}
+              </div>
+            );
+          })}
+        </div>
+        <div className="space-y-3">
+          {targets.map((target) => {
+            const isMatched = Object.values(matched).includes(target);
+            return (
+              <div
+                key={target}
+                onDragOver={(e) => e.preventDefault()}
+                onDrop={() => handleDrop(target)}
+                onTouchEnd={() => handleDrop(target)}
+                className={`min-h-[48px] rounded-xl border-2 border-dashed p-3 text-center font-bold text-lg transition-all ${
+                  isMatched
+                    ? "border-green-300 bg-green-50 text-green-700"
+                    : "border-zinc-300 bg-zinc-50 text-zinc-500"
+                }`}
+              >
+                {target}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ─── Fill Blank Question ────────────────────────────── */
+function FillBlankQuestion({
+  question,
+  onComplete,
+}: {
+  question: { prompt: string; sentence: string; blank_word: string; chips: string[]; question_id: string };
+  onComplete: (correct: boolean, selected: string) => void;
+}) {
+  const [selected, setSelected] = useState<string | null>(null);
+  const [showResult, setShowResult] = useState(false);
+
+  const handleChip = (chip: string) => {
+    if (selected) return;
+    setSelected(chip);
+    setShowResult(true);
+    const isCorrect = chip === question.blank_word;
+    setTimeout(() => onComplete(isCorrect, chip), 1200);
+  };
+
+  const sentenceParts = question.sentence.split("___");
+
+  return (
+    <div className="space-y-6">
+      <h2 className="text-xl font-bold text-zinc-900 text-center leading-relaxed">
+        {question.prompt}
+      </h2>
+      <div className="rounded-2xl border border-zinc-200 bg-white p-6 text-center">
+        <p className="text-2xl leading-relaxed text-zinc-800">
+          {sentenceParts[0]}
+          <span className={`inline-block min-w-[60px] mx-1 px-3 py-1 rounded-lg border-2 border-dashed font-bold ${
+            selected
+              ? selected === question.blank_word
+                ? "border-green-400 bg-green-50 text-green-700"
+                : "border-red-400 bg-red-50 text-red-700"
+              : "border-indigo-300 bg-indigo-50 text-indigo-400"
+          }`}>
+            {selected || "?"}
+          </span>
+          {sentenceParts[1] || ""}
+        </p>
+      </div>
+      <div className="flex flex-wrap justify-center gap-3">
+        {question.chips.map((chip) => (
+          <button
+            key={chip}
+            onClick={() => handleChip(chip)}
+            disabled={!!selected}
+            className={`min-h-[48px] px-6 py-3 rounded-xl border-2 font-bold text-lg transition-all ${
+              showResult && chip === question.blank_word
+                ? "border-green-500 bg-green-50 text-green-700"
+                : selected === chip && chip !== question.blank_word
+                ? "border-red-400 bg-red-50 text-red-700 animate-wrongShake"
+                : selected
+                ? "border-zinc-100 bg-zinc-50 text-zinc-300"
+                : "border-zinc-200 bg-white text-zinc-800 hover:border-indigo-300 hover:shadow-md active:scale-95"
+            }`}
+          >
+            {chip}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/* ─── Main ───────────────────────────────────────────── */
 
 export default function LessonPage() {
   return (
@@ -171,18 +432,33 @@ function LessonContent() {
   const [lesson, setLesson] = useState<LessonRaw | null>(null);
   const [phase, setPhase] = useState<Phase>("loading");
 
+  // Learn state (flashcard)
+  const [learnIdx, setLearnIdx] = useState(0);
+  const [cardAnimating, setCardAnimating] = useState(false);
+  const [cardDirection, setCardDirection] = useState<"in" | "out">("in");
+
   // Practice state
   const [practiceIdx, setPracticeIdx] = useState(0);
   const [practiceCorrect, setPracticeCorrect] = useState(0);
   const [selectedChoice, setSelectedChoice] = useState<string | null>(null);
-  const [feedback, setFeedback] = useState<string | null>(null);
+  const [wrongChoices, setWrongChoices] = useState<Set<string>>(new Set());
+  const [wrongAttempts, setWrongAttempts] = useState(0);
+  const [feedback, setFeedback] = useState<{ text: string; type: "correct" | "wrong" | "reveal" } | null>(null);
+  const [showMiniConfetti, setShowMiniConfetti] = useState(false);
+  const [practiceAnswers, setPracticeAnswers] = useState<Array<{ question_id: string; correct: boolean; selected: string; time_ms: number }>>([]);
+  const questionStartRef = useRef(Date.now());
 
   // Read state
   const [showReadQuestions, setShowReadQuestions] = useState(false);
   const [readQIdx, setReadQIdx] = useState(0);
   const [readCorrect, setReadCorrect] = useState(0);
   const [readSelected, setReadSelected] = useState<string | null>(null);
-  const [readFeedback, setReadFeedback] = useState<string | null>(null);
+  const [readWrongChoices, setReadWrongChoices] = useState<Set<string>>(new Set());
+  const [readWrongAttempts, setReadWrongAttempts] = useState(0);
+  const [readFeedback, setReadFeedback] = useState<{ text: string; type: "correct" | "wrong" | "reveal" } | null>(null);
+  const [showReadMiniConfetti, setShowReadMiniConfetti] = useState(false);
+  const [readAnswers, setReadAnswers] = useState<Array<{ question_id: string; correct: boolean; selected: string; time_ms: number }>>([]);
+  const readQuestionStartRef = useRef(Date.now());
 
   // Complete state
   const [totalXP, setTotalXP] = useState(0);
@@ -211,7 +487,6 @@ function LessonContent() {
       const c = data as Child;
       setChild(c);
 
-      // Search all grades for the lesson — lesson IDs are unique across the curriculum
       const file = lessonsData as unknown as LessonsFile;
       let found: LessonRaw | undefined;
       for (const level of Object.values(file.levels)) {
@@ -261,143 +536,200 @@ function LessonContent() {
     [child]
   );
 
-  const handleLearnComplete = async () => {
-    await saveProgress("learn", 100);
-    await awardXP(5);
-    setPhase("practice");
+  /* ─── Learn Handlers ─────────────────────────────────── */
+  const handleLearnNext = () => {
+    if (!lesson || cardAnimating) return;
+    if (learnIdx + 1 < lesson.learn.items.length) {
+      setCardAnimating(true);
+      setCardDirection("out");
+      setTimeout(() => {
+        setLearnIdx((prev) => prev + 1);
+        setCardDirection("in");
+        setTimeout(() => setCardAnimating(false), 350);
+      }, 250);
+    } else {
+      // All cards seen — complete learn phase
+      saveProgress("learn", 100);
+      awardXP(5);
+      setPhase("practice");
+      questionStartRef.current = Date.now();
+    }
   };
 
+  /* ─── Practice Handlers ──────────────────────────────── */
+  const advancePractice = useCallback(() => {
+    if (!lesson) return;
+    setSelectedChoice(null);
+    setFeedback(null);
+    setWrongChoices(new Set());
+    setWrongAttempts(0);
+    setShowMiniConfetti(false);
+    if (practiceIdx + 1 < lesson.practice.questions.length) {
+      setPracticeIdx((prev) => prev + 1);
+      questionStartRef.current = Date.now();
+    } else {
+      const score = Math.round((practiceCorrect / lesson.practice.questions.length) * 100);
+      saveProgress("practice", score);
+      awardXP(5);
+      setPhase("read");
+    }
+  }, [lesson, practiceIdx, practiceCorrect, saveProgress, awardXP]);
+
   const handlePracticeAnswer = (choice: string) => {
-    if (selectedChoice || !lesson) return;
-    setSelectedChoice(choice);
+    if (selectedChoice || !lesson || wrongChoices.has(choice)) return;
 
     const q = lesson.practice.questions[practiceIdx];
     const isCorrect = choice === q.correct;
-    const newCorrect = practiceCorrect + (isCorrect ? 1 : 0);
-    setPracticeCorrect(newCorrect);
+    const timeMs = Date.now() - questionStartRef.current;
 
     if (isCorrect) {
-      setFeedback(ENCOURAGEMENTS[Math.floor(Math.random() * ENCOURAGEMENTS.length)]);
+      setSelectedChoice(choice);
+      setPracticeCorrect((prev) => prev + 1);
+      setFeedback({ text: CORRECT_MSGS[Math.floor(Math.random() * CORRECT_MSGS.length)], type: "correct" });
+      setShowMiniConfetti(true);
+      setPracticeAnswers((prev) => [...prev, { question_id: q.question_id || "", correct: true, selected: choice, time_ms: timeMs }]);
+      setTimeout(() => advancePractice(), 1500);
     } else {
-      setFeedback(`Keep going! The answer was: ${q.correct}`);
-    }
+      const newAttempts = wrongAttempts + 1;
+      setWrongAttempts(newAttempts);
+      setWrongChoices((prev) => new Set(prev).add(choice));
 
-    setTimeout(() => {
-      setSelectedChoice(null);
-      setFeedback(null);
-      if (practiceIdx + 1 < lesson.practice.questions.length) {
-        setPracticeIdx(practiceIdx + 1);
+      if (newAttempts >= 2) {
+        // After 2 wrong: reveal answer and auto-advance
+        setSelectedChoice(q.correct);
+        setFeedback({ text: `The answer is "${q.correct}"`, type: "reveal" });
+        setPracticeAnswers((prev) => [...prev, { question_id: q.question_id || "", correct: false, selected: choice, time_ms: timeMs }]);
+        setTimeout(() => advancePractice(), 2000);
       } else {
-        const score = Math.round((newCorrect / lesson.practice.questions.length) * 100);
-        saveProgress("practice", score);
-        awardXP(5);
-        setPhase("read");
+        setFeedback({ text: "Almost! Try again 💪", type: "wrong" });
+        setTimeout(() => setFeedback(null), 1200);
       }
-    }, 800);
+    }
   };
 
+  /* ─── Read Handlers ──────────────────────────────────── */
+  const advanceRead = useCallback(() => {
+    if (!lesson) return;
+    setReadSelected(null);
+    setReadFeedback(null);
+    setReadWrongChoices(new Set());
+    setReadWrongAttempts(0);
+    setShowReadMiniConfetti(false);
+    if (readQIdx + 1 < lesson.read.questions.length) {
+      setReadQIdx((prev) => prev + 1);
+      readQuestionStartRef.current = Date.now();
+    } else {
+      // Lesson complete!
+      const score = Math.round((readCorrect / lesson.read.questions.length) * 100);
+      saveProgress("read", score);
+      awardXP(10);
+      finishLesson();
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lesson, readQIdx, readCorrect, saveProgress, awardXP]);
+
   const handleReadAnswer = (choice: string) => {
-    if (readSelected || !lesson) return;
-    setReadSelected(choice);
+    if (readSelected || !lesson || readWrongChoices.has(choice)) return;
 
     const q = lesson.read.questions[readQIdx];
     const isCorrect = choice === q.correct;
-    const newCorrect = readCorrect + (isCorrect ? 1 : 0);
-    setReadCorrect(newCorrect);
+    const timeMs = Date.now() - readQuestionStartRef.current;
 
     if (isCorrect) {
-      setReadFeedback(ENCOURAGEMENTS[Math.floor(Math.random() * ENCOURAGEMENTS.length)]);
+      setReadSelected(choice);
+      setReadCorrect((prev) => prev + 1);
+      setReadFeedback({ text: CORRECT_MSGS[Math.floor(Math.random() * CORRECT_MSGS.length)], type: "correct" });
+      setShowReadMiniConfetti(true);
+      setReadAnswers((prev) => [...prev, { question_id: q.question_id || "", correct: true, selected: choice, time_ms: timeMs }]);
+      setTimeout(() => advanceRead(), 1500);
     } else {
-      setReadFeedback(`Keep going! The answer was: ${q.correct}`);
+      const newAttempts = readWrongAttempts + 1;
+      setReadWrongAttempts(newAttempts);
+      setReadWrongChoices((prev) => new Set(prev).add(choice));
+
+      if (newAttempts >= 2) {
+        setReadSelected(q.correct);
+        setReadFeedback({ text: `The answer is "${q.correct}"`, type: "reveal" });
+        setReadAnswers((prev) => [...prev, { question_id: q.question_id || "", correct: false, selected: choice, time_ms: timeMs }]);
+        setTimeout(() => advanceRead(), 2000);
+      } else {
+        setReadFeedback({ text: "Almost! Try again 💪", type: "wrong" });
+        setTimeout(() => setReadFeedback(null), 1200);
+      }
+    }
+  };
+
+  const finishLesson = async () => {
+    if (!child || !lessonId) {
+      setPhase("complete");
+      return;
     }
 
-    setTimeout(async () => {
-      setReadSelected(null);
-      setReadFeedback(null);
-      if (readQIdx + 1 < lesson.read.questions.length) {
-        setReadQIdx(readQIdx + 1);
-      } else {
-        const score = Math.round((newCorrect / lesson.read.questions.length) * 100);
-        saveProgress("read", score);
-        awardXP(10);
+    const supabase = supabaseBrowser();
 
-        // Update stories_read and streak
-        if (child) {
-          const supabase = supabaseBrowser();
+    const { data: freshChild } = await supabase
+      .from("children")
+      .select("stories_read, streak_days, last_lesson_at, xp")
+      .eq("id", child.id)
+      .single();
 
-          // Increment stories_read
-          const { data: freshChild } = await supabase
-            .from("children")
-            .select("stories_read, streak_days, last_lesson_at, xp")
-            .eq("id", child.id)
-            .single();
+    const current = freshChild as { stories_read: number; streak_days: number; last_lesson_at: string | null; xp: number } | null;
+    const newStoriesRead = (current?.stories_read ?? 0) + 1;
 
-          const current = freshChild as { stories_read: number; streak_days: number; last_lesson_at: string | null; xp: number } | null;
-          const newStoriesRead = (current?.stories_read ?? 0) + 1;
-
-          // Streak logic: increment if last lesson was yesterday or today, else reset to 1
-          const now = new Date();
-          const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-          let newStreak = 1;
-          if (current?.last_lesson_at) {
-            const lastDate = new Date(current.last_lesson_at);
-            const lastDay = new Date(lastDate.getFullYear(), lastDate.getMonth(), lastDate.getDate());
-            const diffDays = Math.floor((today.getTime() - lastDay.getTime()) / (1000 * 60 * 60 * 24));
-            if (diffDays === 0) {
-              newStreak = current.streak_days; // same day, keep streak
-            } else if (diffDays === 1) {
-              newStreak = current.streak_days + 1; // consecutive day
-            }
-            // diffDays > 1 means streak resets to 1
-          }
-
-          await supabase
-            .from("children")
-            .update({
-              stories_read: newStoriesRead,
-              streak_days: newStreak,
-              last_lesson_at: now.toISOString(),
-            })
-            .eq("id", child.id);
-
-          setStreakDays(newStreak);
-
-          // Check for milestone badge unlock
-          const totalXPAfter = (current?.xp ?? 0) + 10; // 10 XP from read section
-          for (const milestone of XP_MILESTONES) {
-            if ((current?.xp ?? 0) < milestone.xp && totalXPAfter >= milestone.xp) {
-              setNewBadge(`${milestone.emoji} ${milestone.name}`);
-              break;
-            }
-          }
-
-          // Find next lesson in sequence
-          const file = lessonsData as unknown as LessonsFile;
-          for (const level of Object.values(file.levels)) {
-            const idx = level.lessons.findIndex((l) => l.id === lessonId);
-            if (idx !== -1 && idx + 1 < level.lessons.length) {
-              setNextLessonId(level.lessons[idx + 1].id);
-              break;
-            }
-          }
-        }
-
-        // Celebration message
-        setCelebrationMsg(CELEBRATION_MESSAGES[Math.floor(Math.random() * CELEBRATION_MESSAGES.length)]);
-
-        // More confetti (60 pieces)
-        const pieces = Array.from({ length: 60 }, (_, i) => ({
-          id: i,
-          left: Math.random() * 100,
-          color: ["#4338ca", "#8b5cf6", "#f59e0b", "#10b981", "#ef4444", "#ec4899"][
-            Math.floor(Math.random() * 6)
-          ],
-          delay: Math.random() * 1.5,
-        }));
-        setConfettiPieces(pieces);
-        setPhase("complete");
+    const now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    let newStreak = 1;
+    if (current?.last_lesson_at) {
+      const lastDate = new Date(current.last_lesson_at);
+      const lastDay = new Date(lastDate.getFullYear(), lastDate.getMonth(), lastDate.getDate());
+      const diffDays = Math.floor((today.getTime() - lastDay.getTime()) / (1000 * 60 * 60 * 24));
+      if (diffDays === 0) {
+        newStreak = current.streak_days;
+      } else if (diffDays === 1) {
+        newStreak = current.streak_days + 1;
       }
-    }, 800);
+    }
+
+    await supabase
+      .from("children")
+      .update({
+        stories_read: newStoriesRead,
+        streak_days: newStreak,
+        last_lesson_at: now.toISOString(),
+      })
+      .eq("id", child.id);
+
+    setStreakDays(newStreak);
+
+    const totalXPAfter = (current?.xp ?? 0) + 10;
+    for (const milestone of XP_MILESTONES) {
+      if ((current?.xp ?? 0) < milestone.xp && totalXPAfter >= milestone.xp) {
+        setNewBadge(`${milestone.emoji} ${milestone.name}`);
+        break;
+      }
+    }
+
+    const file = lessonsData as unknown as LessonsFile;
+    for (const level of Object.values(file.levels)) {
+      const idx = level.lessons.findIndex((l) => l.id === lessonId);
+      if (idx !== -1 && idx + 1 < level.lessons.length) {
+        setNextLessonId(level.lessons[idx + 1].id);
+        break;
+      }
+    }
+
+    setCelebrationMsg(CELEBRATION_MESSAGES[Math.floor(Math.random() * CELEBRATION_MESSAGES.length)]);
+
+    const pieces = Array.from({ length: 60 }, (_, i) => ({
+      id: i,
+      left: Math.random() * 100,
+      color: ["#4338ca", "#8b5cf6", "#f59e0b", "#10b981", "#ef4444", "#ec4899"][
+        Math.floor(Math.random() * 6)
+      ],
+      delay: Math.random() * 1.5,
+    }));
+    setConfettiPieces(pieces);
+    setPhase("complete");
   };
 
   if (phase === "loading" || !child || !lesson) {
@@ -408,375 +740,458 @@ function LessonContent() {
     );
   }
 
-  /* ─── Learn Phase ───────────────────────────────────── */
+  const pageWrapper = "min-h-screen bg-gradient-to-b from-indigo-50/40 via-white to-violet-50/30";
+
+  /* ═══════════════════════════════════════════════════════
+     LEARN PHASE — Flashcard Mode
+     ═══════════════════════════════════════════════════════ */
   if (phase === "learn") {
-    return (
-      <div className="max-w-2xl mx-auto py-8 px-4 space-y-8">
-        <div className="space-y-2">
-          <div className="flex justify-between text-sm">
-            <span className="font-medium text-indigo-600">Learn</span>
-            <span className="text-zinc-400">{lesson.skill}</span>
-          </div>
-          <div className="h-2 bg-zinc-100 rounded-full overflow-hidden">
-            <div className="h-full bg-gradient-to-r from-indigo-600 to-violet-500 rounded-full w-[10%]" />
-          </div>
-        </div>
-
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-zinc-900 tracking-tight">
-            {lesson.title}
-          </h1>
-          <p className="text-zinc-500 mt-2 max-w-md mx-auto">
-            {lesson.learn.content}
-          </p>
-        </div>
-
-        <div className="space-y-4">
-          {lesson.learn.items.map((item, i) => {
-            const { emoji, title, detail } = formatLearnItem(item);
-            return (
-              <div
-                key={i}
-                className="rounded-2xl border border-zinc-200 bg-white p-5 flex items-start gap-4"
-              >
-                <div className="text-3xl flex-shrink-0">{emoji}</div>
-                <div>
-                  <div className="font-bold text-zinc-900">{title}</div>
-                  {detail && <div className="text-sm text-zinc-500 mt-1">{detail}</div>}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        <button
-          onClick={handleLearnComplete}
-          className="w-full py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white font-bold text-lg hover:from-indigo-700 hover:to-violet-600 transition-all shadow-lg"
-        >
-          Got it!
-        </button>
-      </div>
-    );
-  }
-
-  /* ─── Practice Phase ────────────────────────────────── */
-  if (phase === "practice") {
-    const q = lesson.practice.questions[practiceIdx];
-    const progress = ((practiceIdx) / lesson.practice.questions.length) * 100;
+    const item = lesson.learn.items[learnIdx];
+    const { emoji, title, detail } = formatLearnItem(item);
+    const colorScheme = CARD_COLORS[learnIdx % CARD_COLORS.length];
+    const totalCards = lesson.learn.items.length;
 
     return (
-      <div className="max-w-2xl mx-auto py-8 px-4 space-y-8">
-        <div className="space-y-2">
-          <div className="flex justify-between text-sm">
-            <span className="font-medium text-indigo-600">
-              Practice {practiceIdx + 1} of {lesson.practice.questions.length}
-            </span>
-            <span className="text-zinc-400">{lesson.skill}</span>
-          </div>
-          <div className="h-2 bg-zinc-100 rounded-full overflow-hidden">
-            <div
-              className="h-full bg-gradient-to-r from-indigo-600 to-violet-500 rounded-full transition-all duration-500"
-              style={{ width: `${33 + (progress * 0.33)}%` }}
-            />
-          </div>
-        </div>
-
-        <h2 className="text-xl font-bold text-zinc-900 text-center leading-relaxed">
-          {q.prompt}
-        </h2>
-
-        {feedback && (
-          <div
-            className={`text-center py-2 px-4 rounded-xl text-sm font-semibold ${
-              feedback.startsWith("Keep")
-                ? "bg-amber-50 text-amber-700"
-                : "bg-green-50 text-green-700"
-            }`}
-          >
-            {feedback}
-          </div>
-        )}
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          {q.choices.map((choice: string, i: number) => {
-            const isSelected = selectedChoice === choice;
-            const isCorrect = choice === q.correct;
-            const showResult = selectedChoice !== null;
-            const letters = ["A", "B", "C", "D"];
-
-            return (
-              <button
-                key={i}
-                onClick={() => handlePracticeAnswer(choice)}
-                disabled={!!selectedChoice}
-                className={`
-                  relative text-left rounded-2xl border-2 p-4 transition-all duration-200
-                  ${
-                    showResult && isCorrect
-                      ? "border-green-500 bg-green-50"
-                      : isSelected && !isCorrect
-                      ? "border-red-400 bg-red-50"
-                      : isSelected
-                      ? "border-indigo-500 bg-indigo-50 scale-[1.02]"
-                      : "border-zinc-200 bg-white hover:border-indigo-300 hover:shadow-md"
-                  }
-                  ${showResult && !isSelected && !isCorrect ? "opacity-50" : ""}
-                  disabled:cursor-default
-                `}
-              >
-                <div className="flex items-center gap-3">
-                  <div
-                    className={`
-                    w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold flex-shrink-0
-                    ${
-                      showResult && isCorrect
-                        ? "bg-green-600 text-white"
-                        : isSelected && !isCorrect
-                        ? "bg-red-500 text-white"
-                        : isSelected
-                        ? "bg-indigo-600 text-white"
-                        : "bg-zinc-100 text-zinc-500"
-                    }
-                  `}
-                  >
-                    {letters[i]}
-                  </div>
-                  <span
-                    className={`font-medium ${
-                      showResult && isCorrect
-                        ? "text-green-700"
-                        : isSelected && !isCorrect
-                        ? "text-red-700"
-                        : isSelected
-                        ? "text-indigo-700"
-                        : "text-zinc-800"
-                    }`}
-                  >
-                    {choice}
-                  </span>
-                </div>
-              </button>
-            );
-          })}
-        </div>
-      </div>
-    );
-  }
-
-  /* ─── Read Phase ────────────────────────────────────── */
-  if (phase === "read") {
-    if (!showReadQuestions) {
-      return (
-        <div className="max-w-2xl mx-auto py-8 px-4 space-y-8">
-          <div className="space-y-2">
-            <div className="flex justify-between text-sm">
-              <span className="font-medium text-indigo-600">Read</span>
-              <span className="text-zinc-400">{lesson.skill}</span>
-            </div>
-            <div className="h-2 bg-zinc-100 rounded-full overflow-hidden">
-              <div className="h-full bg-gradient-to-r from-indigo-600 to-violet-500 rounded-full w-[66%]" />
-            </div>
-          </div>
+      <div className={pageWrapper}>
+        <div className="max-w-2xl mx-auto py-8 px-4 space-y-6">
+          <SectionProgressBar
+            phase={phase}
+            practiceIdx={0}
+            practiceTotal={lesson.practice.questions.length}
+            readQIdx={0}
+            readTotal={lesson.read.questions.length}
+            showReadQuestions={false}
+          />
 
           <div className="text-center">
             <h1 className="text-2xl font-bold text-zinc-900 tracking-tight">
-              {lesson.read.title}
+              {lesson.title}
             </h1>
-            <p className="text-zinc-500 mt-1">Read the story below</p>
+            <p className="text-zinc-500 mt-1 text-sm max-w-md mx-auto">
+              {lesson.learn.content}
+            </p>
+            <span className="inline-block mt-2 text-[11px] font-medium text-indigo-500 bg-indigo-50 px-2.5 py-0.5 rounded-full">
+              Skill: {formatSkillName(lesson.skill)}
+            </span>
           </div>
 
-          <div className="rounded-2xl border border-zinc-200 bg-white p-6">
-            <div className="text-lg leading-relaxed text-zinc-800 whitespace-pre-line">
-              {lesson.read.text}
-            </div>
-          </div>
-
-          <button
-            onClick={() => setShowReadQuestions(true)}
-            className="w-full py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white font-bold text-lg hover:from-indigo-700 hover:to-violet-600 transition-all shadow-lg"
+          {/* Flashcard */}
+          <div
+            key={learnIdx}
+            className={`rounded-3xl border-2 ${colorScheme.border} ${colorScheme.bg} p-8 text-center space-y-4 ${
+              cardDirection === "in" ? "animate-cardSlideIn" : "animate-cardSlideOut"
+            }`}
           >
-            Ready for questions!
+            {/* Big emoji */}
+            <div className="text-6xl">{emoji}</div>
+
+            {/* Big title / letter */}
+            <div className="text-5xl sm:text-6xl font-black text-indigo-700 tracking-tight leading-tight">
+              {title}
+            </div>
+
+            {/* Hint in speech bubble */}
+            {detail && (
+              <div className="relative inline-block max-w-sm mx-auto">
+                <div className="rounded-2xl bg-white/80 border border-zinc-200/60 px-5 py-3 shadow-sm">
+                  <p className="text-lg text-zinc-700 font-medium">{detail}</p>
+                </div>
+                <div className="w-4 h-4 bg-white/80 border-b border-r border-zinc-200/60 absolute -bottom-2 left-1/2 -translate-x-1/2 rotate-45" />
+              </div>
+            )}
+
+            {/* Say it out loud prompt */}
+            <p className="text-sm text-indigo-500 font-semibold mt-4">
+              🗣️ Say it out loud!
+            </p>
+          </div>
+
+          {/* Dot indicators */}
+          <div className="flex justify-center items-center gap-2">
+            {Array.from({ length: totalCards }).map((_, i) => (
+              <div
+                key={i}
+                className={`rounded-full transition-all duration-300 ${
+                  i === learnIdx
+                    ? "w-3 h-3 bg-indigo-500"
+                    : i < learnIdx
+                    ? "w-2 h-2 bg-indigo-300"
+                    : "w-2 h-2 bg-zinc-200"
+                }`}
+              />
+            ))}
+            <span className="ml-2 text-xs text-zinc-400 font-medium">
+              {learnIdx + 1}/{totalCards}
+            </span>
+          </div>
+
+          {/* Next button */}
+          <button
+            onClick={handleLearnNext}
+            disabled={cardAnimating}
+            className="w-full py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white font-bold text-lg hover:from-indigo-700 hover:to-violet-600 transition-all shadow-lg animate-gentleBounce disabled:opacity-70"
+          >
+            {learnIdx + 1 < totalCards ? "Next →" : "Got it! Let's practice!"}
           </button>
+        </div>
+      </div>
+    );
+  }
+
+  /* ═══════════════════════════════════════════════════════
+     PRACTICE PHASE
+     ═══════════════════════════════════════════════════════ */
+  if (phase === "practice") {
+    const q = lesson.practice.questions[practiceIdx];
+    const qType = q.type || "multiple_choice";
+
+    return (
+      <div className={pageWrapper}>
+        <div className="max-w-2xl mx-auto py-8 px-4 space-y-6">
+          <SectionProgressBar
+            phase={phase}
+            practiceIdx={practiceIdx}
+            practiceTotal={lesson.practice.questions.length}
+            readQIdx={0}
+            readTotal={lesson.read.questions.length}
+            showReadQuestions={false}
+          />
+
+          {/* Drag & Match */}
+          {qType === "drag_match" && (
+            <DragMatchQuestion
+              question={q}
+              onComplete={(correct, selected) => {
+                const timeMs = Date.now() - questionStartRef.current;
+                setPracticeAnswers((prev) => [...prev, { question_id: q.question_id || "", correct, selected, time_ms: timeMs }]);
+                if (correct) setPracticeCorrect((prev) => prev + 1);
+                advancePractice();
+              }}
+            />
+          )}
+
+          {/* Fill Blank */}
+          {qType === "fill_blank" && (
+            <FillBlankQuestion
+              question={q}
+              onComplete={(correct, selected) => {
+                const timeMs = Date.now() - questionStartRef.current;
+                setPracticeAnswers((prev) => [...prev, { question_id: q.question_id || "", correct, selected, time_ms: timeMs }]);
+                if (correct) setPracticeCorrect((prev) => prev + 1);
+                setTimeout(() => advancePractice(), 300);
+              }}
+            />
+          )}
+
+          {/* Multiple Choice */}
+          {qType === "multiple_choice" && (
+            <>
+              <h2 className="text-xl font-bold text-zinc-900 text-center leading-relaxed">
+                {q.prompt}
+              </h2>
+
+              {/* Feedback */}
+              {feedback && (
+                <div className={`text-center py-3 px-4 rounded-xl text-sm font-bold relative overflow-hidden ${
+                  feedback.type === "correct"
+                    ? "bg-green-50 text-green-700 border border-green-200"
+                    : feedback.type === "reveal"
+                    ? "bg-indigo-50 text-indigo-700 border border-indigo-200"
+                    : "bg-amber-50 text-amber-700 border border-amber-200"
+                }`}>
+                  {feedback.text}
+                  {showMiniConfetti && <MiniConfetti />}
+                </div>
+              )}
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {q.choices.map((choice: string, i: number) => {
+                  const isSelected = selectedChoice === choice;
+                  const isCorrect = choice === q.correct;
+                  const isWrong = wrongChoices.has(choice);
+                  const showCorrect = selectedChoice !== null;
+                  const letters = ["A", "B", "C", "D"];
+
+                  return (
+                    <button
+                      key={i}
+                      onClick={() => handlePracticeAnswer(choice)}
+                      disabled={!!selectedChoice || isWrong}
+                      className={`
+                        relative text-left rounded-2xl border-2 min-h-[52px] p-4 transition-all duration-200
+                        ${
+                          showCorrect && isCorrect
+                            ? "border-green-500 bg-green-50 scale-[1.02]"
+                            : isWrong
+                            ? "border-red-200 bg-red-50/50 opacity-50"
+                            : "border-zinc-200 bg-white hover:border-indigo-300 hover:shadow-md active:scale-[0.98]"
+                        }
+                        ${isWrong && !showCorrect ? "animate-wrongShake" : ""}
+                        disabled:cursor-default
+                      `}
+                    >
+                      <div className="flex items-center gap-3">
+                        <div
+                          className={`
+                          w-10 h-10 rounded-xl flex items-center justify-center text-sm font-bold flex-shrink-0
+                          ${
+                            showCorrect && isCorrect
+                              ? "bg-green-600 text-white"
+                              : isWrong
+                              ? "bg-red-200 text-red-500"
+                              : "bg-zinc-100 text-zinc-500"
+                          }
+                        `}
+                        >
+                          {showCorrect && isCorrect ? "✓" : letters[i]}
+                        </div>
+                        <span
+                          className={`font-medium text-base ${
+                            showCorrect && isCorrect
+                              ? "text-green-700"
+                              : isWrong
+                              ? "text-red-400 line-through"
+                              : "text-zinc-800"
+                          }`}
+                        >
+                          {choice}
+                        </span>
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+            </>
+          )}
+        </div>
+      </div>
+    );
+  }
+
+  /* ═══════════════════════════════════════════════════════
+     READ PHASE — Story + Comprehension
+     ═══════════════════════════════════════════════════════ */
+  if (phase === "read" || phase === "read-transition") {
+    if (!showReadQuestions) {
+      const storyLines = lesson.read.text.split("\n").filter((l) => l.trim());
+
+      return (
+        <div className={pageWrapper}>
+          <div className="max-w-2xl mx-auto py-8 px-4 space-y-6">
+            <SectionProgressBar
+              phase="read"
+              practiceIdx={0}
+              practiceTotal={lesson.practice.questions.length}
+              readQIdx={0}
+              readTotal={lesson.read.questions.length}
+              showReadQuestions={false}
+            />
+
+            <div className="text-center">
+              <h1 className="text-2xl font-bold text-zinc-900 tracking-tight">
+                {lesson.read.title}
+              </h1>
+              <p className="text-zinc-500 mt-1 text-sm">Read the story below</p>
+            </div>
+
+            <div className="rounded-2xl border border-zinc-200 bg-white p-6 space-y-3">
+              {storyLines.map((line, i) => (
+                <p
+                  key={i}
+                  className="text-lg leading-relaxed text-zinc-800 animate-storyLineIn"
+                  style={{ animationDelay: `${i * 0.15}s` }}
+                >
+                  {line}
+                </p>
+              ))}
+            </div>
+
+            <button
+              onClick={() => {
+                setShowReadQuestions(true);
+                readQuestionStartRef.current = Date.now();
+              }}
+              className="w-full py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white font-bold text-lg hover:from-indigo-700 hover:to-violet-600 transition-all shadow-lg animate-gentleBounce"
+            >
+              Let&apos;s check what you remember! 📝
+            </button>
+          </div>
         </div>
       );
     }
 
     const q = lesson.read.questions[readQIdx];
-    const progress = ((readQIdx) / lesson.read.questions.length) * 100;
 
     return (
-      <div className="max-w-2xl mx-auto py-8 px-4 space-y-8">
-        <div className="space-y-2">
-          <div className="flex justify-between text-sm">
-            <span className="font-medium text-indigo-600">
-              Question {readQIdx + 1} of {lesson.read.questions.length}
-            </span>
-            <span className="text-zinc-400">Comprehension</span>
-          </div>
-          <div className="h-2 bg-zinc-100 rounded-full overflow-hidden">
-            <div
-              className="h-full bg-gradient-to-r from-indigo-600 to-violet-500 rounded-full transition-all duration-500"
-              style={{ width: `${66 + (progress * 0.34)}%` }}
-            />
-          </div>
-        </div>
+      <div className={pageWrapper}>
+        <div className="max-w-2xl mx-auto py-8 px-4 space-y-6">
+          <SectionProgressBar
+            phase="read"
+            practiceIdx={0}
+            practiceTotal={lesson.practice.questions.length}
+            readQIdx={readQIdx}
+            readTotal={lesson.read.questions.length}
+            showReadQuestions={true}
+          />
 
-        <h2 className="text-xl font-bold text-zinc-900 text-center leading-relaxed">
-          {q.prompt}
-        </h2>
+          <h2 className="text-xl font-bold text-zinc-900 text-center leading-relaxed">
+            {q.prompt}
+          </h2>
 
-        {readFeedback && (
-          <div
-            className={`text-center py-2 px-4 rounded-xl text-sm font-semibold ${
-              readFeedback.startsWith("Keep")
-                ? "bg-amber-50 text-amber-700"
-                : "bg-green-50 text-green-700"
-            }`}
-          >
-            {readFeedback}
-          </div>
-        )}
+          {/* Feedback */}
+          {readFeedback && (
+            <div className={`text-center py-3 px-4 rounded-xl text-sm font-bold relative overflow-hidden ${
+              readFeedback.type === "correct"
+                ? "bg-green-50 text-green-700 border border-green-200"
+                : readFeedback.type === "reveal"
+                ? "bg-indigo-50 text-indigo-700 border border-indigo-200"
+                : "bg-amber-50 text-amber-700 border border-amber-200"
+            }`}>
+              {readFeedback.text}
+              {showReadMiniConfetti && <MiniConfetti />}
+            </div>
+          )}
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          {q.choices.map((choice: string, i: number) => {
-            const isSelected = readSelected === choice;
-            const isCorrect = choice === q.correct;
-            const showResult = readSelected !== null;
-            const letters = ["A", "B", "C", "D"];
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {q.choices.map((choice: string, i: number) => {
+              const isSelected = readSelected === choice;
+              const isCorrect = choice === q.correct;
+              const isWrong = readWrongChoices.has(choice);
+              const showCorrect = readSelected !== null;
+              const letters = ["A", "B", "C", "D"];
 
-            return (
-              <button
-                key={i}
-                onClick={() => handleReadAnswer(choice)}
-                disabled={!!readSelected}
-                className={`
-                  relative text-left rounded-2xl border-2 p-4 transition-all duration-200
-                  ${
-                    showResult && isCorrect
-                      ? "border-green-500 bg-green-50"
-                      : isSelected && !isCorrect
-                      ? "border-red-400 bg-red-50"
-                      : isSelected
-                      ? "border-indigo-500 bg-indigo-50 scale-[1.02]"
-                      : "border-zinc-200 bg-white hover:border-indigo-300 hover:shadow-md"
-                  }
-                  ${showResult && !isSelected && !isCorrect ? "opacity-50" : ""}
-                  disabled:cursor-default
-                `}
-              >
-                <div className="flex items-center gap-3">
-                  <div
-                    className={`
-                    w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold flex-shrink-0
+              return (
+                <button
+                  key={i}
+                  onClick={() => handleReadAnswer(choice)}
+                  disabled={!!readSelected || isWrong}
+                  className={`
+                    relative text-left rounded-2xl border-2 min-h-[52px] p-4 transition-all duration-200
                     ${
-                      showResult && isCorrect
-                        ? "bg-green-600 text-white"
-                        : isSelected && !isCorrect
-                        ? "bg-red-500 text-white"
-                        : isSelected
-                        ? "bg-indigo-600 text-white"
-                        : "bg-zinc-100 text-zinc-500"
+                      showCorrect && isCorrect
+                        ? "border-green-500 bg-green-50 scale-[1.02]"
+                        : isWrong
+                        ? "border-red-200 bg-red-50/50 opacity-50"
+                        : "border-zinc-200 bg-white hover:border-indigo-300 hover:shadow-md active:scale-[0.98]"
                     }
+                    ${isWrong && !showCorrect ? "animate-wrongShake" : ""}
+                    disabled:cursor-default
                   `}
-                  >
-                    {letters[i]}
+                >
+                  <div className="flex items-center gap-3">
+                    <div
+                      className={`
+                      w-10 h-10 rounded-xl flex items-center justify-center text-sm font-bold flex-shrink-0
+                      ${
+                        showCorrect && isCorrect
+                          ? "bg-green-600 text-white"
+                          : isWrong
+                          ? "bg-red-200 text-red-500"
+                          : "bg-zinc-100 text-zinc-500"
+                      }
+                    `}
+                    >
+                      {showCorrect && isCorrect ? "✓" : letters[i]}
+                    </div>
+                    <span
+                      className={`font-medium text-base ${
+                        showCorrect && isCorrect
+                          ? "text-green-700"
+                          : isWrong
+                          ? "text-red-400 line-through"
+                          : "text-zinc-800"
+                      }`}
+                    >
+                      {choice}
+                    </span>
                   </div>
-                  <span
-                    className={`font-medium ${
-                      showResult && isCorrect
-                        ? "text-green-700"
-                        : isSelected && !isCorrect
-                        ? "text-red-700"
-                        : isSelected
-                        ? "text-indigo-700"
-                        : "text-zinc-800"
-                    }`}
-                  >
-                    {choice}
-                  </span>
-                </div>
-              </button>
-            );
-          })}
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
     );
   }
 
-  /* ─── Complete Phase ────────────────────────────────── */
+  /* ═══════════════════════════════════════════════════════
+     COMPLETE PHASE
+     ═══════════════════════════════════════════════════════ */
   if (phase === "complete") {
     return (
-      <div className="max-w-lg mx-auto text-center py-16 px-4 space-y-6 relative overflow-hidden">
-        {confettiPieces.map((p) => (
-          <div
-            key={p.id}
-            className="confetti-fall absolute top-0 w-2.5 h-2.5 rounded-sm"
-            style={{
-              left: `${p.left}%`,
-              backgroundColor: p.color,
-              animationDelay: `${p.delay}s`,
-            }}
-          />
-        ))}
+      <div className={`${pageWrapper} relative overflow-hidden`}>
+        <div className="max-w-lg mx-auto text-center py-16 px-4 space-y-6 relative">
+          {confettiPieces.map((p) => (
+            <div
+              key={p.id}
+              className="confetti-fall absolute top-0 w-2.5 h-2.5 rounded-sm"
+              style={{
+                left: `${p.left}%`,
+                backgroundColor: p.color,
+                animationDelay: `${p.delay}s`,
+              }}
+            />
+          ))}
 
-        <div className="text-6xl">🎉</div>
+          <div className="text-6xl">🎉</div>
 
-        <h1 className="text-3xl font-bold text-zinc-900 tracking-tight">
-          Lesson Complete!
-        </h1>
+          <h1 className="text-3xl font-bold text-zinc-900 tracking-tight">
+            Lesson Complete!
+          </h1>
 
-        <p className="text-zinc-500 max-w-xs mx-auto">{celebrationMsg}</p>
+          <p className="text-zinc-500 max-w-xs mx-auto">{celebrationMsg}</p>
 
-        {/* Animated XP display */}
-        <div className="inline-block rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 px-8 py-5 text-white animate-xpCountUp">
-          <div className="text-sm font-medium text-indigo-200">You earned</div>
-          <div className="text-4xl font-bold mt-1">+{totalXP} XP</div>
-        </div>
-
-        {/* Streak display */}
-        {streakDays > 0 && (
-          <div className="animate-streakPulse">
-            <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-orange-50 border border-orange-200">
-              <span className="text-xl">🔥</span>
-              <span className="text-lg font-bold text-orange-700">
-                {streakDays} day streak!
-              </span>
-            </div>
+          {/* Animated XP display */}
+          <div className="inline-block rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 px-8 py-5 text-white animate-xpCountUp">
+            <div className="text-sm font-medium text-indigo-200">You earned</div>
+            <div className="text-4xl font-bold mt-1">+{totalXP} XP</div>
           </div>
-        )}
 
-        {/* New badge unlock */}
-        {newBadge && (
-          <div className="animate-badgeUnlock">
-            <div className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-gradient-to-r from-yellow-50 to-amber-50 border border-yellow-200">
-              <span className="text-2xl">🏆</span>
-              <div className="text-left">
-                <div className="text-xs font-medium text-yellow-600">New Badge Unlocked!</div>
-                <div className="text-sm font-bold text-yellow-800">{newBadge}</div>
+          {/* Streak display */}
+          {streakDays > 0 && (
+            <div className="animate-streakPulse">
+              <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-orange-50 border border-orange-200">
+                <span className="text-xl">🔥</span>
+                <span className="text-lg font-bold text-orange-700">
+                  {streakDays} day streak!
+                </span>
               </div>
             </div>
-          </div>
-        )}
-
-        <div className="space-y-3 pt-4">
-          {nextLessonId && (
-            <Link
-              href={`/lesson?child=${child.id}&lesson=${nextLessonId}`}
-              className="block w-full py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white font-bold text-lg hover:from-indigo-700 hover:to-violet-600 transition-all shadow-lg"
-            >
-              Next Lesson →
-            </Link>
           )}
-          <Link
-            href="/dashboard"
-            className={`block w-full py-4 rounded-2xl font-bold text-lg transition-all ${
-              nextLessonId
-                ? "bg-white border-2 border-zinc-200 text-zinc-700 hover:bg-zinc-50"
-                : "bg-gradient-to-r from-indigo-600 to-violet-500 text-white hover:from-indigo-700 hover:to-violet-600 shadow-lg"
-            }`}
-          >
-            Back to Dashboard
-          </Link>
+
+          {/* New badge unlock */}
+          {newBadge && (
+            <div className="animate-badgeUnlock">
+              <div className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-gradient-to-r from-yellow-50 to-amber-50 border border-yellow-200">
+                <span className="text-2xl">🏆</span>
+                <div className="text-left">
+                  <div className="text-xs font-medium text-yellow-600">New Badge Unlocked!</div>
+                  <div className="text-sm font-bold text-yellow-800">{newBadge}</div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          <div className="space-y-3 pt-4">
+            {nextLessonId && (
+              <Link
+                href={`/lesson?child=${child.id}&lesson=${nextLessonId}`}
+                className="block w-full py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white font-bold text-lg hover:from-indigo-700 hover:to-violet-600 transition-all shadow-lg"
+              >
+                Next Lesson →
+              </Link>
+            )}
+            <Link
+              href="/dashboard"
+              className={`block w-full py-4 rounded-2xl font-bold text-lg transition-all ${
+                nextLessonId
+                  ? "bg-white border-2 border-zinc-200 text-zinc-700 hover:bg-zinc-50"
+                  : "bg-gradient-to-r from-indigo-600 to-violet-500 text-white hover:from-indigo-700 hover:to-violet-600 shadow-lg"
+              }`}
+            >
+              Back to Dashboard
+            </Link>
+          </div>
         </div>
       </div>
     );
