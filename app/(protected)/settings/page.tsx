@@ -162,6 +162,18 @@ export default function Settings() {
     await loadChildren(userId);
   }
 
+  // === Advance Grade ===
+  async function handleAdvanceGrade(child: Child) {
+    const currentGradeIdx = GRADES.indexOf(child.grade || "");
+    if (currentGradeIdx < 0 || currentGradeIdx >= GRADES.length - 1) return;
+    const nextGrade = GRADES[currentGradeIdx + 1];
+    await supabase.from("children").update({
+      grade: nextGrade,
+      reading_level: "Emerging Reader",
+    }).eq("id", child.id);
+    await loadChildren(userId);
+  }
+
   // === Logout ===
   async function handleLogout() {
     await supabase.auth.signOut();
@@ -314,6 +326,33 @@ export default function Settings() {
                       currentLevel={child.reading_level}
                       onLevelChange={(level) => handleReadingLevelChange(child.id, level)}
                     />
+
+                    {/* Advanced / Grade Promotion Banner */}
+                    {child.reading_level === "Independent Reader" && (
+                      <div className="rounded-xl border border-emerald-200 bg-gradient-to-r from-emerald-50 to-teal-50 p-4 space-y-2">
+                        <div className="flex items-center gap-2">
+                          <span className="text-lg">🌟</span>
+                          <p className="text-sm font-semibold text-emerald-800">
+                            {child.first_name} has reached the highest level{child.grade ? ` for ${child.grade}` : ""}!
+                          </p>
+                        </div>
+                        <p className="text-xs text-emerald-600 leading-relaxed">
+                          They&apos;ve mastered all reading skills at this grade level. Amazing work!
+                        </p>
+                        {child.grade && GRADES.indexOf(child.grade) < GRADES.length - 1 ? (
+                          <button
+                            onClick={() => handleAdvanceGrade(child)}
+                            className="mt-1 px-4 py-2 rounded-lg bg-gradient-to-r from-emerald-500 to-teal-500 text-white text-sm font-semibold hover:from-emerald-600 hover:to-teal-600 transition-all shadow-sm"
+                          >
+                            Advance to {GRADES[GRADES.indexOf(child.grade) + 1]} →
+                          </button>
+                        ) : child.grade === "3rd" ? (
+                          <p className="text-xs font-medium text-emerald-700 bg-emerald-100 inline-block px-3 py-1.5 rounded-full mt-1">
+                            🎓 Completed all grade levels — what a reader!
+                          </p>
+                        ) : null}
+                      </div>
+                    )}
 
                     {/* Danger actions */}
                     <div className="flex gap-3 pt-1">
