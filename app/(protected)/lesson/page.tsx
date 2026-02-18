@@ -6,7 +6,7 @@ import Link from "next/link";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
 import lessonsData from "@/lib/data/lessons.json";
-import { levelNameToGradeKey } from "@/lib/assessment/questions";
+
 
 type Phase = "loading" | "learn" | "practice" | "read" | "complete";
 
@@ -188,12 +188,13 @@ function LessonContent() {
       const c = data as Child;
       setChild(c);
 
-      const gradeKey = levelNameToGradeKey(c.reading_level);
+      // Search all grades for the lesson — lesson IDs are unique across the curriculum
       const file = lessonsData as unknown as LessonsFile;
-      const level = file.levels[gradeKey];
-      if (!level) return;
-
-      const found = level.lessons.find((l) => l.id === lessonId);
+      let found: LessonRaw | undefined;
+      for (const level of Object.values(file.levels)) {
+        found = level.lessons.find((l) => l.id === lessonId);
+        if (found) break;
+      }
       if (found) {
         setLesson(found);
         setPhase("learn");
