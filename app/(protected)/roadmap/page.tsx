@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
 import kStandards from "@/app/data/kindergarten-standards-questions.json";
+import { useThemeStore } from "@/lib/stores/theme-store";
 import { slideUp, staggerContainer } from "@/lib/motion/variants";
 
 /* ─── Types ──────────────────────────────────────────── */
@@ -44,11 +45,9 @@ const DOMAIN_META: Record<string, { emoji: string; color: string; bg: string; bo
   "Language":                   { emoji: "💬", color: "text-amber-700",  bg: "bg-amber-50",   border: "border-amber-200",   fill: "#f59e0b", gradient: "from-amber-500 to-orange-600" },
 };
 
-const NODE_SPACING = 76;
+const NODE_SPACING = 130;
 const DOMAIN_HEADER_HEIGHT = 72;
 const FREE_STANDARD_COUNT = 10;
-const LEFT_PCT = 0.35;
-const RIGHT_PCT = 0.55;
 
 /* ─── Mock progress ──────────────────────────────────── */
 
@@ -179,6 +178,7 @@ interface LayoutItem {
 function Roadmap({ child, userPlan }: { child: Child; userPlan: string }) {
   const progress = useMemo(() => buildMockProgress(ALL_STANDARDS), []);
   const domainOrder = useMemo(() => getDomainOrder(ALL_STANDARDS), []);
+  const darkMode = useThemeStore((s) => s.darkMode);
   const [activeNode, setActiveNode] = useState<string | null>(null);
   const pathRef = useRef<HTMLDivElement>(null);
   const [pathWidth, setPathWidth] = useState(400);
@@ -197,29 +197,32 @@ function Roadmap({ child, userPlan }: { child: Child; userPlan: string }) {
     return () => ro.disconnect();
   }, []);
 
-  /* ── Compute S-curve layout: alternate 40%/60% ── */
+  /* ── Compute S-curve layout: centered winding path ── */
   const layout = useMemo(() => {
     const items: LayoutItem[] = [];
     let y = 20;
     let currentDomain = "";
     let nodeSeq = 0;
     const cx = pathWidth / 2;
+    const isMobile = pathWidth < 500;
+    const leftPct = isMobile ? 0.25 : 0.30;
+    const rightPct = isMobile ? 0.75 : 0.70;
 
     for (const std of ALL_STANDARDS) {
       if (std.domain !== currentDomain) {
-        if (currentDomain !== "") y += 24;
+        if (currentDomain !== "") y += 32;
         items.push({ type: "header", domain: std.domain, y, x: cx });
         y += DOMAIN_HEADER_HEIGHT;
         currentDomain = std.domain;
       }
 
-      const x = nodeSeq % 2 === 0 ? pathWidth * LEFT_PCT : pathWidth * RIGHT_PCT;
+      const x = nodeSeq % 2 === 0 ? pathWidth * leftPct : pathWidth * rightPct;
       items.push({ type: "node", standard: std, globalIdx: nodeSeq, y, x });
       y += NODE_SPACING;
       nodeSeq++;
     }
 
-    return { items, totalHeight: y + 100 };
+    return { items, totalHeight: y + 120 };
   }, [pathWidth]);
 
   /* ── Build SVG path ── */
@@ -231,8 +234,12 @@ function Roadmap({ child, userPlan }: { child: Child; userPlan: string }) {
     for (let i = 1; i < nodes.length; i++) {
       const prev = nodes[i - 1];
       const cur = nodes[i];
-      const cpY = (prev.y + cur.y) / 2;
-      d += ` C ${prev.x} ${cpY}, ${cur.x} ${cpY}, ${cur.x} ${cur.y}`;
+      const dy = cur.y - prev.y;
+      // Smooth cubic bezier — control points at 55% of vertical distance
+      // creates a gentle, river-like flow between nodes
+      const cp1y = prev.y + dy * 0.55;
+      const cp2y = cur.y - dy * 0.55;
+      d += ` C ${prev.x} ${cp1y}, ${cur.x} ${cp2y}, ${cur.x} ${cur.y}`;
     }
     return d;
   }, []);
@@ -387,25 +394,32 @@ function Roadmap({ child, userPlan }: { child: Child; userPlan: string }) {
 
         {/* Path column (right on desktop, full-width on mobile) */}
         <div className="flex-1 flex justify-center">
-          <div ref={pathRef} className="relative w-full max-w-[400px]" style={{ height: layout.totalHeight }}>
+          <div ref={pathRef} className="relative w-full md:max-w-[480px]" style={{ height: layout.totalHeight }}>
             {/* SVG connecting path */}
             <svg
               className="absolute left-0 top-0 w-full pointer-events-none"
               viewBox={`0 0 ${pathWidth} ${layout.totalHeight}`}
               preserveAspectRatio="xMidYMin meet"
             >
-              {/* Gray background path */}
-              <path d={pathD} fill="none" stroke="#e5e7eb" strokeWidth="4" strokeDasharray="8 6" strokeLinecap="round" />
-              {/* Completed portion */}
-              {completedPathD && (
-                <path d={completedPathD} fill="none" stroke="url(#roadmapGrad)" strokeWidth="4" strokeDasharray="8 6" strokeLinecap="round" />
-              )}
               <defs>
                 <linearGradient id="roadmapGrad" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="0%" stopColor="#6366f1" />
                   <stop offset="100%" stopColor="#8b5cf6" />
                 </linearGradient>
+                <filter id="pathGlow">
+                  <feGaussianBlur stdDeviation="4" result="blur" />
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
               </defs>
+              {/* Gray dashed remaining path */}
+              <path d={pathD} fill="none" stroke={darkMode ? "#334155" : "#e5e7eb"} strokeWidth="5" strokeDasharray="12 8" strokeLinecap="round" />
+              {/* Completed portion — solid gradient with glow */}
+              {completedPathD && (
+                <path d={completedPathD} fill="none" stroke="url(#roadmapGrad)" strokeWidth="5" strokeLinecap="round" filter="url(#pathGlow)" />
+              )}
             </svg>
 
             {/* Layout items */}
@@ -562,8 +576,8 @@ function NodeBubble({
     return () => document.removeEventListener("mousedown", handler);
   }, [isActive, onClose]);
 
-  // Node sizes: current=76px, completed=64px, locked=52px
-  const nodeSize = status === "current" ? 76 : status === "completed" ? 64 : 52;
+  // Node sizes: current=76px, completed=64px, locked=56px
+  const nodeSize = status === "current" ? 76 : status === "completed" ? 64 : 56;
   const leftPct = containerWidth > 0 ? (x / containerWidth) * 100 : 50;
 
   // Tooltip positioning: keep within container
