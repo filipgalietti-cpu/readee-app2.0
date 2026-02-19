@@ -6,6 +6,7 @@ import Link from "next/link";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
 import { READING_LEVELS, GRADES } from "@/app/_components/LevelProgressBar";
+import { useTheme } from "@/app/_components/ThemeContext";
 
 function displayGrade(grade: string): string {
   if (grade.toLowerCase() === "pre-k") return "Foundational";
@@ -48,6 +49,7 @@ export default function Settings() {
   // Preferences
   const [soundEffects, setSoundEffects] = useState(true);
   const [autoAdvance, setAutoAdvance] = useState(true);
+  const { darkMode, toggleDarkMode } = useTheme();
 
   useEffect(() => {
     const stored = localStorage.getItem("readee_prefs");
@@ -201,15 +203,15 @@ export default function Settings() {
   return (
     <div className="max-w-2xl mx-auto py-8 space-y-8">
       <div>
-        <h1 className="text-2xl font-bold text-zinc-900 tracking-tight">Settings</h1>
-        <p className="text-zinc-500 mt-1">Manage your account, readers, and preferences.</p>
+        <h1 className="text-2xl font-bold text-zinc-900 dark:text-slate-100 tracking-tight">Settings</h1>
+        <p className="text-zinc-500 dark:text-slate-400 mt-1">Manage your account, readers, and preferences.</p>
       </div>
 
       {/* ====== ACCOUNT ====== */}
       <Section title="Account">
         <div>
           <Label>Email</Label>
-          <p className="text-sm text-zinc-900">{email}</p>
+          <p className="text-sm text-zinc-900 dark:text-slate-200">{email}</p>
         </div>
 
         <div className="pt-2">
@@ -221,7 +223,7 @@ export default function Settings() {
               Change Password
             </button>
           ) : (
-            <div className="space-y-3 rounded-xl border border-zinc-200 bg-zinc-50/50 p-4">
+            <div className="space-y-3 rounded-xl border border-zinc-200 dark:border-slate-600 bg-zinc-50/50 dark:bg-slate-700/30 p-4">
               <InputField
                 label="Current Password"
                 type="password"
@@ -277,7 +279,7 @@ export default function Settings() {
             {children.map((child) => (
               <div
                 key={child.id}
-                className="rounded-xl border border-zinc-200 bg-white p-5 space-y-3"
+                className="rounded-xl border border-zinc-200 dark:border-slate-600 bg-white dark:bg-slate-700/50 p-5 space-y-3"
               >
                 {editingChildId === child.id ? (
                   /* Editing mode */
@@ -293,7 +295,7 @@ export default function Settings() {
                         <select
                           value={editValues.grade}
                           onChange={(e) => setEditValues((p) => ({ ...p, grade: e.target.value }))}
-                          className="w-full px-3 py-2 rounded-lg border border-zinc-200 text-sm text-zinc-900 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                          className="w-full px-3 py-2 rounded-lg border border-zinc-200 dark:border-slate-600 text-sm text-zinc-900 dark:text-slate-200 bg-white dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-400"
                         >
                           {GRADES.map((g) => <option key={g} value={g}>{g}</option>)}
                         </select>
@@ -301,7 +303,7 @@ export default function Settings() {
                     </div>
                     <div className="flex gap-2">
                       <button onClick={() => saveEdit(child.id)} className="px-3 py-1.5 rounded-lg bg-indigo-600 text-white text-xs font-medium hover:bg-indigo-700 transition-colors">Save</button>
-                      <button onClick={() => setEditingChildId(null)} className="px-3 py-1.5 rounded-lg border border-zinc-200 text-xs font-medium text-zinc-600 hover:bg-zinc-50 transition-colors">Cancel</button>
+                      <button onClick={() => setEditingChildId(null)} className="px-3 py-1.5 rounded-lg border border-zinc-200 dark:border-slate-600 text-xs font-medium text-zinc-600 dark:text-slate-300 hover:bg-zinc-50 dark:hover:bg-slate-700 transition-colors">Cancel</button>
                     </div>
                   </div>
                 ) : (
@@ -309,7 +311,7 @@ export default function Settings() {
                   <>
                     <div className="flex items-center justify-between">
                       <div>
-                        <div className="font-semibold text-zinc-900">{child.first_name}</div>
+                        <div className="font-semibold text-zinc-900 dark:text-slate-100">{child.first_name}</div>
                         <div className="flex items-center gap-2 mt-0.5">
                           {child.grade && (
                             <span className="text-[10px] font-semibold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded-full">
@@ -342,7 +344,7 @@ export default function Settings() {
                       <select
                         value={child.reading_level || ""}
                         onChange={(e) => requestLevelChange(child.id, child.first_name, e.target.value)}
-                        className="w-full px-3 py-2 rounded-lg border border-zinc-200 text-sm text-zinc-900 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                        className="w-full px-3 py-2 rounded-lg border border-zinc-200 dark:border-slate-600 text-sm text-zinc-900 dark:text-slate-200 bg-white dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-400"
                       >
                         <option value="" disabled>Not assessed yet</option>
                         {READING_LEVELS.map((level) => (
@@ -442,7 +444,7 @@ export default function Settings() {
                       <select
                         value={newChild.grade}
                         onChange={(e) => setNewChild((p) => ({ ...p, grade: e.target.value }))}
-                        className="w-full px-3 py-2 rounded-lg border border-zinc-200 text-sm text-zinc-900 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                        className="w-full px-3 py-2 rounded-lg border border-zinc-200 dark:border-slate-600 text-sm text-zinc-900 dark:text-slate-200 bg-white dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-400"
                       >
                         {GRADES.map((g) => <option key={g} value={g}>{g}</option>)}
                       </select>
@@ -472,6 +474,7 @@ export default function Settings() {
 
       {/* ====== PREFERENCES ====== */}
       <Section title="Preferences">
+        <Toggle label="Dark Mode" description="Switch to a darker color scheme for the app" value={darkMode} onChange={toggleDarkMode} />
         <Toggle label="Sound Effects" description="Play sounds during lessons and assessments" value={soundEffects} onChange={setSoundEffects} />
         <Toggle label="Auto-Advance" description="Automatically move to the next question after answering" value={autoAdvance} onChange={setAutoAdvance} />
       </Section>
@@ -481,8 +484,8 @@ export default function Settings() {
         {userPlan === "premium" ? (
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-zinc-900">Readee+ Premium</p>
-              <p className="text-xs text-zinc-500 mt-0.5">All lessons, unlimited assessments, up to 5 readers, parent reports</p>
+              <p className="text-sm font-medium text-zinc-900 dark:text-slate-100">Readee+ Premium</p>
+              <p className="text-xs text-zinc-500 dark:text-slate-400 mt-0.5">All lessons, unlimited assessments, up to 5 readers, parent reports</p>
             </div>
             <span className="px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-indigo-100 to-violet-100 text-indigo-700">Active</span>
           </div>
@@ -490,8 +493,8 @@ export default function Settings() {
           <>
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-zinc-900">Free Plan</p>
-                <p className="text-xs text-zinc-500 mt-0.5">Diagnostic assessment, 2 lessons per level, 1 reader profile</p>
+                <p className="text-sm font-medium text-zinc-900 dark:text-slate-100">Free Plan</p>
+                <p className="text-xs text-zinc-500 dark:text-slate-400 mt-0.5">Diagnostic assessment, 2 lessons per level, 1 reader profile</p>
               </div>
               <span className="px-3 py-1 rounded-full text-xs font-semibold bg-zinc-100 text-zinc-600">Current</span>
             </div>
@@ -523,18 +526,18 @@ export default function Settings() {
       </Section>
 
       {/* ====== ACCOUNT ACTIONS ====== */}
-      <section className="rounded-2xl border border-red-100 bg-white p-6 space-y-4">
-        <h2 className="text-base font-bold text-zinc-900">Account Actions</h2>
+      <section className="rounded-2xl border border-red-100 dark:border-red-900/30 bg-white dark:bg-slate-800 p-6 space-y-4">
+        <h2 className="text-base font-bold text-zinc-900 dark:text-slate-100">Account Actions</h2>
         <div className="flex flex-col sm:flex-row gap-3">
           <button
             onClick={handleLogout}
-            className="px-4 py-2.5 rounded-xl border border-zinc-200 text-sm font-medium text-zinc-700 hover:bg-zinc-50 transition-colors"
+            className="px-4 py-2.5 rounded-xl border border-zinc-200 dark:border-slate-600 text-sm font-medium text-zinc-700 dark:text-slate-300 hover:bg-zinc-50 dark:hover:bg-slate-700 transition-colors"
           >
             Log Out
           </button>
           <button
             onClick={() => setShowDeleteAccount(true)}
-            className="px-4 py-2.5 rounded-xl border border-red-200 text-sm font-medium text-red-600 hover:bg-red-50 transition-colors"
+            className="px-4 py-2.5 rounded-xl border border-red-200 dark:border-red-900/30 text-sm font-medium text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/30 transition-colors"
           >
             Delete Account
           </button>
@@ -598,10 +601,10 @@ export default function Settings() {
 
 function Section({ title, badge, children }: { title: string; badge?: string; children: React.ReactNode }) {
   return (
-    <section className="rounded-2xl border border-zinc-200 bg-white p-6 space-y-4">
+    <section className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 space-y-4">
       <div className="flex items-center justify-between">
-        <h2 className="text-base font-bold text-zinc-900">{title}</h2>
-        {badge && <span className="text-xs text-zinc-400">{badge}</span>}
+        <h2 className="text-base font-bold text-zinc-900 dark:text-slate-100">{title}</h2>
+        {badge && <span className="text-xs text-zinc-400 dark:text-slate-500">{badge}</span>}
       </div>
       {children}
     </section>
@@ -609,7 +612,7 @@ function Section({ title, badge, children }: { title: string; badge?: string; ch
 }
 
 function Label({ children }: { children: React.ReactNode }) {
-  return <label className="block text-xs font-medium text-zinc-500 mb-1">{children}</label>;
+  return <label className="block text-xs font-medium text-zinc-500 dark:text-slate-400 mb-1">{children}</label>;
 }
 
 function InputField({
@@ -625,7 +628,7 @@ function InputField({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="w-full px-3 py-2 rounded-lg border border-zinc-200 text-sm text-zinc-900 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-400 placeholder:text-zinc-400"
+        className="w-full px-3 py-2 rounded-lg border border-zinc-200 dark:border-slate-600 text-sm text-zinc-900 dark:text-slate-200 bg-white dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-400 placeholder:text-zinc-400 dark:placeholder:text-slate-500"
       />
     </div>
   );
@@ -639,12 +642,12 @@ function Toggle({
   return (
     <div className="flex items-center justify-between">
       <div>
-        <p className="text-sm font-medium text-zinc-900">{label}</p>
-        <p className="text-xs text-zinc-500 mt-0.5">{description}</p>
+        <p className="text-sm font-medium text-zinc-900 dark:text-slate-100">{label}</p>
+        <p className="text-xs text-zinc-500 dark:text-slate-400 mt-0.5">{description}</p>
       </div>
       <button
         onClick={() => onChange(!value)}
-        className={`relative w-11 h-6 rounded-full transition-colors ${value ? "bg-indigo-600" : "bg-zinc-200"}`}
+        className={`relative w-11 h-6 rounded-full transition-colors ${value ? "bg-indigo-600" : "bg-zinc-200 dark:bg-slate-600"}`}
       >
         <span
           className={`absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white shadow transition-transform ${value ? "translate-x-5" : "translate-x-0"}`}
@@ -660,13 +663,13 @@ function SupportLink({ href, label, desc, external }: { href: string; label: str
       href={href}
       target={external ? "_blank" : undefined}
       rel={external ? "noopener noreferrer" : undefined}
-      className="flex items-center justify-between rounded-xl border border-zinc-100 bg-zinc-50/50 p-4 hover:border-indigo-200 hover:bg-indigo-50/30 transition-colors"
+      className="flex items-center justify-between rounded-xl border border-zinc-100 dark:border-slate-600 bg-zinc-50/50 dark:bg-slate-700/30 p-4 hover:border-indigo-200 dark:hover:border-indigo-800 hover:bg-indigo-50/30 dark:hover:bg-indigo-950/30 transition-colors"
     >
       <div>
-        <p className="text-sm font-medium text-zinc-900">{label}</p>
-        <p className="text-xs text-zinc-500">{desc}</p>
+        <p className="text-sm font-medium text-zinc-900 dark:text-slate-100">{label}</p>
+        <p className="text-xs text-zinc-500 dark:text-slate-400">{desc}</p>
       </div>
-      <svg className="w-4 h-4 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg className="w-4 h-4 text-zinc-400 dark:text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
       </svg>
     </a>
@@ -684,17 +687,17 @@ function Modal({
     : "bg-amber-500 hover:bg-amber-600 text-white";
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4" onClick={onCancel}>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 dark:bg-black/60 p-4" onClick={onCancel}>
       <div
-        className="w-full max-w-sm rounded-2xl bg-white p-6 shadow-xl space-y-4"
+        className="w-full max-w-sm rounded-2xl bg-white dark:bg-slate-800 p-6 shadow-xl space-y-4"
         onClick={(e) => e.stopPropagation()}
       >
-        <h3 className="text-lg font-bold text-zinc-900">{title}</h3>
-        <p className="text-sm text-zinc-500 leading-relaxed">{description}</p>
+        <h3 className="text-lg font-bold text-zinc-900 dark:text-slate-100">{title}</h3>
+        <p className="text-sm text-zinc-500 dark:text-slate-400 leading-relaxed">{description}</p>
         <div className="flex gap-3 justify-end">
           <button
             onClick={onCancel}
-            className="px-4 py-2 rounded-lg border border-zinc-200 text-sm font-medium text-zinc-600 hover:bg-zinc-50 transition-colors"
+            className="px-4 py-2 rounded-lg border border-zinc-200 dark:border-slate-600 text-sm font-medium text-zinc-600 dark:text-slate-300 hover:bg-zinc-50 dark:hover:bg-slate-700 transition-colors"
           >
             Cancel
           </button>

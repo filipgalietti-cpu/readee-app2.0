@@ -86,18 +86,18 @@ export default function NavAuth() {
   const linkClass = (href: string) =>
     `text-sm font-medium transition-all duration-200 px-3 py-1.5 rounded-lg ${
       isActive(href)
-        ? "text-indigo-700 bg-indigo-50"
-        : "text-zinc-600 hover:text-indigo-700 hover:bg-indigo-50/60"
+        ? "text-indigo-700 bg-indigo-50 dark:text-indigo-300 dark:bg-indigo-950"
+        : "text-zinc-600 hover:text-indigo-700 hover:bg-indigo-50/60 dark:text-slate-300 dark:hover:text-indigo-300 dark:hover:bg-slate-800"
     }`;
 
   // Avoid flicker
   if (loggedIn === null) {
     return (
-      <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-zinc-200 transition-transform duration-300 md:translate-y-0" style={{ transform: navHidden ? "translateY(-100%)" : undefined }}>
+      <nav className="sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm border-b border-zinc-200 dark:border-slate-700 transition-transform duration-300 md:translate-y-0" style={{ transform: navHidden ? "translateY(-100%)" : undefined }}>
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 h-16">
           <span className="text-xl font-extrabold tracking-tight">
-            <span className="text-indigo-700">READ</span>
-            <span className="text-indigo-400">EE</span>
+            <span className="text-indigo-700 dark:text-indigo-400">READ</span>
+            <span className="text-indigo-400 dark:text-indigo-300">EE</span>
           </span>
         </div>
       </nav>
@@ -105,15 +105,15 @@ export default function NavAuth() {
   }
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-zinc-200 transition-transform duration-300 md:translate-y-0" style={{ transform: navHidden ? "translateY(-100%)" : undefined }}>
+    <nav className="sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm border-b border-zinc-200 dark:border-slate-700 transition-transform duration-300 md:translate-y-0" style={{ transform: navHidden ? "translateY(-100%)" : undefined }}>
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 h-16">
         {/* Logo */}
         <Link
           href={loggedIn ? "/dashboard" : "/"}
           className="text-xl font-extrabold tracking-tight hover:opacity-80 transition-opacity"
         >
-          <span className="text-indigo-700">READ</span>
-          <span className="text-indigo-400">EE</span>
+          <span className="text-indigo-700 dark:text-indigo-400">READ</span>
+          <span className="text-indigo-400 dark:text-indigo-300">EE</span>
         </Link>
 
         {/* Desktop nav */}
@@ -145,11 +145,11 @@ export default function NavAuth() {
               <div className="relative" ref={menuRef}>
                 <button
                   onClick={() => setMenuOpen(!menuOpen)}
-                  className="w-9 h-9 rounded-full bg-indigo-100 flex items-center justify-center hover:bg-indigo-200 transition-colors"
+                  className="w-9 h-9 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center hover:bg-indigo-200 dark:hover:bg-indigo-800/50 transition-colors"
                   aria-label="Profile menu"
                 >
                   <svg
-                    className="w-5 h-5 text-indigo-600"
+                    className="w-5 h-5 text-indigo-600 dark:text-indigo-400"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -164,23 +164,23 @@ export default function NavAuth() {
                 </button>
 
                 {menuOpen && (
-                  <div className="absolute right-0 mt-2 w-48 rounded-xl border border-zinc-200 bg-white shadow-lg py-1">
+                  <div className="absolute right-0 mt-2 w-48 rounded-xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-lg py-1">
                     <Link
                       href="/settings"
-                      className="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 transition-colors"
+                      className="block px-4 py-2.5 text-sm text-zinc-700 dark:text-slate-200 hover:bg-zinc-50 dark:hover:bg-slate-700 transition-colors"
                     >
                       Settings
                     </Link>
                     <Link
                       href="/contact-us"
-                      className="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 transition-colors"
+                      className="block px-4 py-2.5 text-sm text-zinc-700 dark:text-slate-200 hover:bg-zinc-50 dark:hover:bg-slate-700 transition-colors"
                     >
                       Help & Support
                     </Link>
-                    <div className="border-t border-zinc-100 my-1" />
+                    <div className="border-t border-zinc-100 dark:border-slate-700 my-1" />
                     <button
                       onClick={handleLogout}
-                      className="block w-full text-left px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 transition-colors"
+                      className="block w-full text-left px-4 py-2.5 text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/30 transition-colors"
                     >
                       Log Out
                     </button>
@@ -201,7 +201,7 @@ export default function NavAuth() {
               </Link>
               <Link
                 href="/signup"
-                className="text-sm font-semibold text-indigo-600 hover:text-indigo-700 transition-colors"
+                className="text-sm font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors"
               >
                 Sign Up for Free!
               </Link>
@@ -212,15 +212,15 @@ export default function NavAuth() {
         {/* Mobile hamburger */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden w-9 h-9 flex items-center justify-center rounded-lg hover:bg-zinc-100 transition-colors"
+          className="md:hidden w-9 h-9 flex items-center justify-center rounded-lg hover:bg-zinc-100 dark:hover:bg-slate-800 transition-colors"
           aria-label="Menu"
         >
           {mobileOpen ? (
-            <svg className="w-5 h-5 text-zinc-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 text-zinc-700 dark:text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           ) : (
-            <svg className="w-5 h-5 text-zinc-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 text-zinc-700 dark:text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           )}
@@ -229,16 +229,16 @@ export default function NavAuth() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden border-t border-zinc-200 bg-white px-6 py-4 space-y-1">
+        <div className="md:hidden border-t border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-6 py-4 space-y-1">
           {loggedIn ? (
             <>
-              <Link href="/dashboard" className={`block py-2.5 px-3 rounded-lg text-sm font-medium transition-all duration-200 ${isActive("/dashboard") ? "text-indigo-700 bg-indigo-50" : "text-zinc-700 hover:text-indigo-700 hover:bg-indigo-50/60"}`}>
+              <Link href="/dashboard" className={`block py-2.5 px-3 rounded-lg text-sm font-medium transition-all duration-200 ${isActive("/dashboard") ? "text-indigo-700 bg-indigo-50 dark:text-indigo-300 dark:bg-indigo-950" : "text-zinc-700 dark:text-slate-300 hover:text-indigo-700 dark:hover:text-indigo-300 hover:bg-indigo-50/60 dark:hover:bg-slate-800"}`}>
                 Dashboard
               </Link>
-              <Link href="/analytics" className={`block py-2.5 px-3 rounded-lg text-sm font-medium transition-all duration-200 ${isActive("/analytics") ? "text-indigo-700 bg-indigo-50" : "text-zinc-700 hover:text-indigo-700 hover:bg-indigo-50/60"}`}>
+              <Link href="/analytics" className={`block py-2.5 px-3 rounded-lg text-sm font-medium transition-all duration-200 ${isActive("/analytics") ? "text-indigo-700 bg-indigo-50 dark:text-indigo-300 dark:bg-indigo-950" : "text-zinc-700 dark:text-slate-300 hover:text-indigo-700 dark:hover:text-indigo-300 hover:bg-indigo-50/60 dark:hover:bg-slate-800"}`}>
                 Analytics
               </Link>
-              <Link href="/feedback" className={`block py-2.5 px-3 rounded-lg text-sm font-medium transition-all duration-200 ${isActive("/feedback") ? "text-indigo-700 bg-indigo-50" : "text-zinc-700 hover:text-indigo-700 hover:bg-indigo-50/60"}`}>
+              <Link href="/feedback" className={`block py-2.5 px-3 rounded-lg text-sm font-medium transition-all duration-200 ${isActive("/feedback") ? "text-indigo-700 bg-indigo-50 dark:text-indigo-300 dark:bg-indigo-950" : "text-zinc-700 dark:text-slate-300 hover:text-indigo-700 dark:hover:text-indigo-300 hover:bg-indigo-50/60 dark:hover:bg-slate-800"}`}>
                 Feedback
               </Link>
               {userPlan !== "premium" && (
@@ -250,29 +250,29 @@ export default function NavAuth() {
                   <span className="relative">⭐ Upgrade to Readee+</span>
                 </Link>
               )}
-              <Link href="/settings" className="block py-2.5 text-sm font-medium text-zinc-700 hover:text-indigo-700">
+              <Link href="/settings" className="block py-2.5 text-sm font-medium text-zinc-700 dark:text-slate-300 hover:text-indigo-700 dark:hover:text-indigo-300">
                 Settings
               </Link>
-              <Link href="/contact-us" className="block py-2.5 text-sm font-medium text-zinc-700 hover:text-indigo-700">
+              <Link href="/contact-us" className="block py-2.5 text-sm font-medium text-zinc-700 dark:text-slate-300 hover:text-indigo-700 dark:hover:text-indigo-300">
                 Help & Support
               </Link>
-              <div className="border-t border-zinc-100 my-2" />
+              <div className="border-t border-zinc-100 dark:border-slate-700 my-2" />
               <button
                 onClick={handleLogout}
-                className="block w-full text-left py-2.5 text-sm font-medium text-red-600 hover:text-red-700"
+                className="block w-full text-left py-2.5 text-sm font-medium text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300"
               >
                 Log Out
               </button>
             </>
           ) : (
             <>
-              <Link href="/about" className="block py-2.5 text-sm font-medium text-zinc-700 hover:text-indigo-700">
+              <Link href="/about" className="block py-2.5 text-sm font-medium text-zinc-700 dark:text-slate-300 hover:text-indigo-700 dark:hover:text-indigo-300">
                 About
               </Link>
-              <Link href="/login" className="block py-2.5 text-sm font-medium text-zinc-700 hover:text-indigo-700">
+              <Link href="/login" className="block py-2.5 text-sm font-medium text-zinc-700 dark:text-slate-300 hover:text-indigo-700 dark:hover:text-indigo-300">
                 Log In
               </Link>
-              <Link href="/signup" className="block py-2.5 text-sm font-semibold text-indigo-600 hover:text-indigo-700">
+              <Link href="/signup" className="block py-2.5 text-sm font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300">
                 Sign Up for Free!
               </Link>
             </>

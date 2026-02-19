@@ -276,7 +276,7 @@ function ChildSelector({
   return (
     <div className="py-10 space-y-10 max-w-2xl mx-auto">
       <div className="text-center">
-        <h1 className="text-3xl font-bold text-zinc-900 tracking-tight">
+        <h1 className="text-3xl font-bold text-zinc-900 dark:text-slate-100 tracking-tight">
           Who&apos;s reading today?
         </h1>
         <p className="text-zinc-500 mt-2">Select a reader to get started</p>
@@ -289,13 +289,13 @@ function ChildSelector({
             onClick={() => onSelect(child)}
             className="group text-left w-full"
           >
-            <div className="rounded-2xl border border-zinc-200 bg-white p-6 hover:border-indigo-300 hover:shadow-md transition-all duration-200 group-hover:scale-[1.02] space-y-4">
+            <div className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 hover:border-indigo-300 dark:hover:border-indigo-700 hover:shadow-md transition-all duration-200 group-hover:scale-[1.02] space-y-4">
               <div className="flex items-center gap-4">
                 <div className="w-14 h-14 rounded-xl bg-indigo-50 flex items-center justify-center text-2xl flex-shrink-0">
                   {AVATARS[index % AVATARS.length]}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h2 className="text-lg font-bold text-zinc-900 truncate">
+                  <h2 className="text-lg font-bold text-zinc-900 dark:text-slate-100 truncate">
                     {child.first_name}
                   </h2>
                   {child.grade && (
@@ -520,7 +520,7 @@ function ChildDashboard({
               const next = children.find((c) => c.id === e.target.value);
               if (next) onSwitch(next);
             }}
-            className="text-sm border border-zinc-200 rounded-lg px-3 py-1.5 bg-white text-zinc-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="text-sm border border-zinc-200 dark:border-slate-600 rounded-lg px-3 py-1.5 bg-white dark:bg-slate-800 text-zinc-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
           >
             {children.map((c, i) => (
               <option key={c.id} value={c.id}>
@@ -536,10 +536,10 @@ function ChildDashboard({
         <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-indigo-50 to-violet-50 mx-auto mb-4 flex items-center justify-center text-4xl shadow-sm">
           {avatar}
         </div>
-        <h1 className="text-2xl font-bold text-zinc-900 tracking-tight">
+        <h1 className="text-2xl font-bold text-zinc-900 dark:text-slate-100 tracking-tight">
           {greeting.text}, {child.first_name}! <span className="animate-wave">{greeting.emoji}</span>
         </h1>
-        <p className="text-zinc-500 mt-1 text-sm">{motivation}</p>
+        <p className="text-zinc-500 dark:text-slate-400 mt-1 text-sm">{motivation}</p>
       </div>
 
       {/* ── Reading Level Badge (compact) ── */}
@@ -569,10 +569,10 @@ function ChildDashboard({
       <div className="grid grid-cols-3 gap-3 dash-slide-up-3">
         {/* XP Card */}
         <Link href={`/xp-rewards?child=${child.id}`} className="block">
-          <div className="rounded-2xl border border-amber-200 bg-gradient-to-b from-amber-50 to-white p-4 text-center hover:shadow-md hover:scale-[1.02] transition-all duration-200 group cursor-pointer">
+          <div className="rounded-2xl border border-amber-200 dark:border-amber-800/40 bg-gradient-to-b from-amber-50 to-white dark:from-amber-950/30 dark:to-slate-800 p-4 text-center hover:shadow-md hover:scale-[1.02] transition-all duration-200 group cursor-pointer">
             <div className="text-xl mb-1 group-hover:animate-subtleBounce">⭐</div>
-            <div className="text-xl font-bold text-zinc-900">{child.xp}</div>
-            <div className="text-[10px] text-zinc-500 mt-0.5 font-medium">XP</div>
+            <div className="text-xl font-bold text-zinc-900 dark:text-slate-100">{child.xp}</div>
+            <div className="text-[10px] text-zinc-500 dark:text-slate-400 mt-0.5 font-medium">XP</div>
             <div className="mt-2 h-1.5 bg-amber-100 rounded-full overflow-hidden">
               <div
                 className="h-full bg-gradient-to-r from-amber-400 to-amber-500 rounded-full transition-all duration-700"
@@ -586,12 +586,12 @@ function ChildDashboard({
 
         {/* Stories Card */}
         <Link href={`/stories?child=${child.id}`} className="block">
-          <div className="rounded-2xl border border-indigo-200 bg-gradient-to-b from-indigo-50 to-white p-4 text-center hover:shadow-md hover:scale-[1.02] transition-all duration-200 group cursor-pointer">
+          <div className="rounded-2xl border border-indigo-200 dark:border-indigo-800/40 bg-gradient-to-b from-indigo-50 to-white dark:from-indigo-950/30 dark:to-slate-800 p-4 text-center hover:shadow-md hover:scale-[1.02] transition-all duration-200 group cursor-pointer">
             <div className="text-xl mb-1 group-hover:animate-subtleBounce">
               {child.stories_read > 0 ? "📚" : "📖"}
             </div>
-            <div className="text-xl font-bold text-zinc-900">{child.stories_read}</div>
-            <div className="text-[10px] text-zinc-500 mt-0.5 font-medium">Stories Read</div>
+            <div className="text-xl font-bold text-zinc-900 dark:text-slate-100">{child.stories_read}</div>
+            <div className="text-[10px] text-zinc-500 dark:text-slate-400 mt-0.5 font-medium">Stories Read</div>
             <div className="flex justify-center gap-0.5 mt-2">
               {Array.from({ length: 5 }).map((_, i) => (
                 <div
@@ -610,12 +610,12 @@ function ChildDashboard({
 
         {/* Streak Card */}
         <Link href={`/leaderboard?child=${child.id}`} className="block">
-          <div className="rounded-2xl border border-orange-200 bg-gradient-to-b from-orange-50 to-white p-4 text-center hover:shadow-md hover:scale-[1.02] transition-all duration-200 group cursor-pointer">
+          <div className="rounded-2xl border border-orange-200 dark:border-orange-800/40 bg-gradient-to-b from-orange-50 to-white dark:from-orange-950/30 dark:to-slate-800 p-4 text-center hover:shadow-md hover:scale-[1.02] transition-all duration-200 group cursor-pointer">
             <div className={`text-xl mb-1 ${child.streak_days > 0 ? "animate-fireGlow" : ""}`}>
               🔥
             </div>
-            <div className="text-xl font-bold text-zinc-900">{child.streak_days}</div>
-            <div className="text-[10px] text-zinc-500 mt-0.5 font-medium">
+            <div className="text-xl font-bold text-zinc-900 dark:text-slate-100">{child.streak_days}</div>
+            <div className="text-[10px] text-zinc-500 dark:text-slate-400 mt-0.5 font-medium">
               {child.streak_days === 1 ? "Day Streak" : "Day Streak"}
             </div>
             {child.streak_days > 0 && (
@@ -629,7 +629,7 @@ function ChildDashboard({
       </div>
 
       {/* ── Daily Goal Ring ── */}
-      <div className="rounded-2xl border border-zinc-200 bg-white p-5 flex items-center gap-5 dash-slide-up-4">
+      <div className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 flex items-center gap-5 dash-slide-up-4">
         <div className="relative w-16 h-16 flex-shrink-0">
           <svg viewBox="0 0 100 100" className="w-full h-full -rotate-90">
             <circle cx="50" cy="50" r="40" fill="none" stroke="#e5e7eb" strokeWidth="8" />
@@ -648,10 +648,10 @@ function ChildDashboard({
           </div>
         </div>
         <div className="flex-1 min-w-0">
-          <div className="font-bold text-zinc-900 text-sm">
+          <div className="font-bold text-zinc-900 dark:text-slate-100 text-sm">
             {dailyGoalMet ? "Daily Goal Complete!" : "Today's Goal"}
           </div>
-          <div className="text-xs text-zinc-500 mt-0.5">
+          <div className="text-xs text-zinc-500 dark:text-slate-400 mt-0.5">
             {dailyGoalMet
               ? "Amazing work! Come back tomorrow for more."
               : "Complete 1 lesson to hit your daily goal"}
@@ -752,15 +752,15 @@ function ChildDashboard({
       </div>
 
       {/* ── Weekly Progress ── */}
-      <div className="rounded-2xl border border-zinc-200 bg-white p-6 dash-slide-up-7">
-        <h3 className="text-base font-bold text-zinc-900 mb-4">Weekly Progress</h3>
+      <div className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 dash-slide-up-7">
+        <h3 className="text-base font-bold text-zinc-900 dark:text-slate-100 mb-4">Weekly Progress</h3>
         <div className="space-y-2.5">
           {weeklyXP.map(({ day, xp, pct, isToday, isPast }) => (
             <div key={day} className="flex items-center gap-3">
               <span className={`w-10 text-xs font-semibold ${isToday ? "text-indigo-600" : "text-zinc-500"}`}>
                 {day}
               </span>
-              <div className="flex-1 h-2.5 bg-zinc-100 rounded-full overflow-hidden">
+              <div className="flex-1 h-2.5 bg-zinc-100 dark:bg-slate-700 rounded-full overflow-hidden">
                 <div
                   className={`h-full rounded-full transition-all duration-700 ${
                     xp > 0
@@ -783,8 +783,8 @@ function ChildDashboard({
       </div>
 
       {/* ── Recent Activity ── */}
-      <div className="rounded-2xl border border-zinc-200 bg-white p-6 dash-slide-up-8">
-        <h3 className="text-base font-bold text-zinc-900 mb-4">Recent Activity</h3>
+      <div className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 dash-slide-up-8">
+        <h3 className="text-base font-bold text-zinc-900 dark:text-slate-100 mb-4">Recent Activity</h3>
         {recentCompleted.length > 0 ? (
           <div className="space-y-3">
             {recentCompleted.map(({ lesson, idx }) => {
@@ -795,10 +795,10 @@ function ChildDashboard({
                     ✓
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="text-sm font-medium text-zinc-900 truncate">
+                    <div className="text-sm font-medium text-zinc-900 dark:text-slate-200 truncate">
                       Lesson {idx + 1}: {lesson.title}
                     </div>
-                    <div className="text-xs text-zinc-400">
+                    <div className="text-xs text-zinc-400 dark:text-slate-500">
                       {formatSkillName(lesson.skill)}
                     </div>
                   </div>
@@ -879,9 +879,9 @@ function LessonPath({
   }
 
   return (
-    <div className="rounded-2xl border border-zinc-200 bg-white p-6 space-y-4">
+    <div className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 space-y-4">
       <div className="flex items-center justify-between">
-        <h3 className="text-base font-bold text-zinc-900">Your Reading Path</h3>
+        <h3 className="text-base font-bold text-zinc-900 dark:text-slate-100">Your Reading Path</h3>
         {readingLevel && (
           <span className="px-3 py-1 rounded-full text-xs font-semibold bg-violet-50 text-violet-700">
             {readingLevel}
@@ -1017,12 +1017,12 @@ function CurriculumOverview({
   }
 
   return (
-    <div className="rounded-2xl border border-zinc-200 bg-white overflow-hidden">
+    <div className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 overflow-hidden">
       <button
         onClick={handleToggle}
-        className="w-full flex items-center justify-between p-5 hover:bg-zinc-50/50 transition-colors"
+        className="w-full flex items-center justify-between p-5 hover:bg-zinc-50/50 dark:hover:bg-slate-700/50 transition-colors"
       >
-        <h3 className="text-base font-bold text-zinc-900">Full Curriculum</h3>
+        <h3 className="text-base font-bold text-zinc-900 dark:text-slate-100">Full Curriculum</h3>
         <span className="text-xs text-indigo-600 font-medium">
           {showCurriculum ? "Hide" : "View All Levels"}
         </span>

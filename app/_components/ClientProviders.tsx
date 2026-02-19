@@ -3,6 +3,7 @@
 import React from "react";
 import { ProfileProvider } from "./ProfileContext";
 import OnboardingGuard from "./OnboardingGuard";
+import { ThemeProvider } from "./ThemeContext";
 
 export default function ClientProviders({
   children,
@@ -10,8 +11,10 @@ export default function ClientProviders({
   children: React.ReactNode;
 }) {
   return (
-    <ProfileProvider>
-      <OnboardingGuard>{children}</OnboardingGuard>
-    </ProfileProvider>
+    <ThemeProvider>
+      <ProfileProvider>
+        <OnboardingGuard>{children}</OnboardingGuard>
+      </ProfileProvider>
+    </ThemeProvider>
   );
 }
