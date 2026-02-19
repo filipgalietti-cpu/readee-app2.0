@@ -292,12 +292,10 @@ function ChildSelector({
                   <div>{child.streak_days}d streak</div>
                 </div>
               </div>
-              <div className="pointer-events-none">
-                <LevelProgressBar
-                  currentLevel={child.reading_level}
-                  onLevelChange={() => {}}
-                />
-              </div>
+              <LevelProgressBar
+                currentLevel={child.reading_level}
+                readOnly
+              />
             </div>
           </button>
         ))}
@@ -379,11 +377,7 @@ function ChildDashboard({
     checkAssessment();
   }, [child.id]);
 
-  async function handleReadingLevelChange(level: string) {
-    const supabase = supabaseBrowser();
-    await supabase.from("children").update({ reading_level: level }).eq("id", child.id);
-    setReadingLevel(level);
-  }
+  // Reading level is now settings-only — removed handleReadingLevelChange
 
   // Compute lesson data for CTA
   const file = lessonsData as unknown as LessonsFile;
@@ -534,29 +528,41 @@ function ChildDashboard({
       {/* ── Reading Level Badge ── */}
       {readingLevel && (
         <div className="dash-slide-up-2">
-          <div className="rounded-2xl bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 p-4 flex items-center gap-4 shadow-lg">
-            <div className="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center text-2xl flex-shrink-0">
-              📖
+          <div className="rounded-2xl bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 p-4 shadow-lg">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center text-2xl flex-shrink-0">
+                📖
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="text-white/70 text-xs font-medium">Current Level</div>
+                <div className="text-white font-bold text-lg leading-tight">{readingLevel}</div>
+              </div>
+              {child.grade && (
+                <span className="px-3 py-1 rounded-full text-xs font-bold bg-white/20 text-white flex-shrink-0">
+                  {child.grade}
+                </span>
+              )}
             </div>
-            <div className="flex-1 min-w-0">
-              <div className="text-white/70 text-xs font-medium">Current Level</div>
-              <div className="text-white font-bold text-lg leading-tight">{readingLevel}</div>
+            <div className="mt-2 text-right">
+              <Link href="/settings" className="text-white/60 hover:text-white/90 text-[11px] font-medium transition-colors">
+                Change Level →
+              </Link>
             </div>
-            {child.grade && (
-              <span className="px-3 py-1 rounded-full text-xs font-bold bg-white/20 text-white flex-shrink-0">
-                {child.grade}
-              </span>
-            )}
           </div>
         </div>
       )}
 
-      {/* ── Reading Level Progress (clickable) ── */}
+      {/* ── Reading Level Progress (display only) ── */}
       <div className="rounded-2xl border border-zinc-200 bg-white p-5 dash-slide-up-2">
         <LevelProgressBar
           currentLevel={readingLevel}
-          onLevelChange={handleReadingLevelChange}
+          readOnly
         />
+        <div className="mt-3 text-center">
+          <Link href="/settings" className="text-xs text-indigo-600 hover:text-indigo-700 font-medium transition-colors">
+            Change in Settings →
+          </Link>
+        </div>
       </div>
 
       {/* ── Stats Cards ── */}

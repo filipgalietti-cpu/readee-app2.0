@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
-import LevelProgressBar, { READING_LEVELS, GRADES } from "@/app/_components/LevelProgressBar";
+import { READING_LEVELS, GRADES } from "@/app/_components/LevelProgressBar";
 
 export default function Settings() {
   const router = useRouter();
@@ -35,6 +35,7 @@ export default function Settings() {
   const [resetChildId, setResetChildId] = useState<string | null>(null);
   const [removeChildId, setRemoveChildId] = useState<string | null>(null);
   const [showDeleteAccount, setShowDeleteAccount] = useState(false);
+  const [levelChangeChild, setLevelChangeChild] = useState<{ id: string; name: string; newLevel: string } | null>(null);
 
   // Plan
   const [userPlan, setUserPlan] = useState<string>("free");
@@ -141,8 +142,16 @@ export default function Settings() {
   }
 
   // === Change Reading Level ===
-  async function handleReadingLevelChange(childId: string, level: string) {
-    await supabase.from("children").update({ reading_level: level }).eq("id", childId);
+  function requestLevelChange(childId: string, childName: string, newLevel: string) {
+    const child = children.find((c) => c.id === childId);
+    if (child?.reading_level === newLevel) return;
+    setLevelChangeChild({ id: childId, name: childName, newLevel });
+  }
+
+  async function confirmLevelChange() {
+    if (!levelChangeChild) return;
+    await supabase.from("children").update({ reading_level: levelChangeChild.newLevel }).eq("id", levelChangeChild.id);
+    setLevelChangeChild(null);
     await loadChildren(userId);
   }
 
@@ -322,11 +331,23 @@ export default function Settings() {
                       </div>
                     </div>
 
-                    {/* Reading Level Progress */}
-                    <LevelProgressBar
-                      currentLevel={child.reading_level}
-                      onLevelChange={(level) => handleReadingLevelChange(child.id, level)}
-                    />
+                    {/* Reading Level */}
+                    <div className="space-y-1.5">
+                      <Label>Reading Level</Label>
+                      <select
+                        value={child.reading_level || ""}
+                        onChange={(e) => requestLevelChange(child.id, child.first_name, e.target.value)}
+                        className="w-full px-3 py-2 rounded-lg border border-zinc-200 text-sm text-zinc-900 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                      >
+                        <option value="" disabled>Not assessed yet</option>
+                        {READING_LEVELS.map((level) => (
+                          <option key={level} value={level}>{level}</option>
+                        ))}
+                      </select>
+                      <p className="text-[11px] text-zinc-400">
+                        Set by assessment. Override manually if needed.
+                      </p>
+                    </div>
 
                     {/* Danger actions */}
                     <div className="flex gap-3 pt-1">
@@ -498,6 +519,18 @@ export default function Settings() {
           confirmColor="red"
           onConfirm={() => handleRemoveChild(removeChildId)}
           onCancel={() => setRemoveChildId(null)}
+        />
+      )}
+
+      {/* Level Change Confirmation Modal */}
+      {levelChangeChild && (
+        <Modal
+          title={`Change ${levelChangeChild.name}'s Reading Level?`}
+          description={`Changing ${levelChangeChild.name}'s reading level will reset their active progress. Completed lessons and XP for the current level will be saved in their history, but they'll start fresh at the new level. Are you sure?`}
+          confirmLabel="Yes, Change Level"
+          confirmColor="amber"
+          onConfirm={confirmLevelChange}
+          onCancel={() => setLevelChangeChild(null)}
         />
       )}
 

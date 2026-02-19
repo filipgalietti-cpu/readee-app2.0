@@ -25,9 +25,11 @@ const LEVEL_SHORT = ["Emerging", "Beginning", "Developing", "Growing", "Independ
 export default function LevelProgressBar({
   currentLevel,
   onLevelChange,
+  readOnly = false,
 }: {
   currentLevel: string | null;
-  onLevelChange: (level: string) => void;
+  onLevelChange?: (level: string) => void;
+  readOnly?: boolean;
 }) {
   const currentIdx = currentLevel ? READING_LEVELS.indexOf(currentLevel) : -1;
 
@@ -61,13 +63,8 @@ export default function LevelProgressBar({
             const isPast = i < currentIdx;
             const color = LEVEL_COLORS[i];
 
-            return (
-              <button
-                key={level}
-                onClick={() => onLevelChange(level)}
-                title={level}
-                className="group flex flex-col items-center gap-1.5 z-10"
-              >
+            const nodeContent = (
+              <>
                 {/* Node circle */}
                 <div
                   className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-300 ${
@@ -75,7 +72,9 @@ export default function LevelProgressBar({
                       ? `${color.fill} text-white ring-4 ${color.ring} ring-opacity-30 scale-110`
                       : isPast
                         ? `${color.fill} text-white`
-                        : "bg-zinc-100 text-zinc-400 group-hover:bg-zinc-200"
+                        : readOnly
+                          ? "bg-zinc-100 text-zinc-400"
+                          : "bg-zinc-100 text-zinc-400 group-hover:bg-zinc-200"
                   }`}
                 >
                   {isPast ? (
@@ -89,11 +88,34 @@ export default function LevelProgressBar({
                 {/* Label */}
                 <span
                   className={`text-[10px] font-medium leading-tight text-center max-w-[56px] transition-colors ${
-                    isActive ? color.text : isPast ? "text-zinc-500" : "text-zinc-400 group-hover:text-zinc-600"
+                    isActive ? color.text : isPast ? "text-zinc-500" : readOnly ? "text-zinc-400" : "text-zinc-400 group-hover:text-zinc-600"
                   }`}
                 >
                   {LEVEL_SHORT[i]}
                 </span>
+              </>
+            );
+
+            if (readOnly) {
+              return (
+                <div
+                  key={level}
+                  title={level}
+                  className="flex flex-col items-center gap-1.5 z-10"
+                >
+                  {nodeContent}
+                </div>
+              );
+            }
+
+            return (
+              <button
+                key={level}
+                onClick={() => onLevelChange?.(level)}
+                title={level}
+                className="group flex flex-col items-center gap-1.5 z-10"
+              >
+                {nodeContent}
               </button>
             );
           })}
