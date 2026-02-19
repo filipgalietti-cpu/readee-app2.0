@@ -8,7 +8,9 @@ import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
 import kStandards from "@/app/data/kindergarten-standards-questions.json";
 import { useThemeStore } from "@/lib/stores/theme-store";
-import { slideUp, staggerContainer } from "@/lib/motion/variants";
+import { slideUp, staggerContainer, slideInLeft } from "@/lib/motion/variants";
+import { safeValidate } from "@/lib/validate";
+import { ChildSchema, StandardsFileSchema } from "@/lib/schemas";
 
 /* ─── Types ──────────────────────────────────────────── */
 
@@ -51,7 +53,7 @@ const FREE_STANDARD_COUNT = 10;
 
 /* ─── Mock progress ──────────────────────────────────── */
 
-const ALL_STANDARDS = (kStandards as { standards: Standard[] }).standards;
+const ALL_STANDARDS = safeValidate(StandardsFileSchema, kStandards).standards as Standard[];
 
 function buildMockProgress(standards: Standard[]): Record<string, StandardProgress> {
   const progress: Record<string, StandardProgress> = {};
@@ -128,7 +130,7 @@ function RoadmapLoader() {
       const supabase = supabaseBrowser();
 
       const { data } = await supabase.from("children").select("*").eq("id", childId).single();
-      if (data) setChild(data as Child);
+      if (data) setChild(safeValidate(ChildSchema, data) as Child);
 
       const { data: { user } } = await supabase.auth.getUser();
       if (user) {
@@ -429,10 +431,14 @@ function Roadmap({ child, userPlan }: { child: Child; userPlan: string }) {
                 const domainStds = ALL_STANDARDS.filter((s) => s.domain === item.domain);
                 const domainDone = domainStds.filter((s) => progress[s.standard_id]?.status === "completed").length;
                 return (
-                  <div
+                  <motion.div
                     key={`hdr-${item.domain}`}
                     className="absolute left-0 right-0"
                     style={{ top: item.y - 12 }}
+                    initial={{ opacity: 0, x: -24 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: "-30px" }}
+                    transition={{ duration: 0.4, ease: "easeOut" }}
                   >
                     <div className={`flex items-center gap-3 rounded-2xl border-2 ${dm.border} ${dm.bg} p-3.5 shadow-sm mx-auto`}>
                       <span className="text-2xl">{dm.emoji}</span>
@@ -450,7 +456,7 @@ function Roadmap({ child, userPlan }: { child: Child; userPlan: string }) {
                         </span>
                       )}
                     </div>
-                  </div>
+                  </motion.div>
                 );
               }
 

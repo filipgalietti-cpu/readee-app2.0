@@ -12,6 +12,8 @@ import {
   type GradeKey,
   type AssessmentQuestion,
 } from "@/lib/assessment/questions";
+import { safeValidate } from "@/lib/validate";
+import { AssessmentResultSchema } from "@/lib/schemas";
 
 type Phase = "loading" | "intro" | "quiz" | "results";
 
@@ -104,14 +106,15 @@ function AssessmentContent() {
 
       const supabase = supabaseBrowser();
 
-      // Save assessment
-      await supabase.from("assessments").insert({
+      // Save assessment — validate payload
+      const assessmentPayload = safeValidate(AssessmentResultSchema, {
         child_id: child.id,
         grade_tested: gradeKey,
         score_percent: pct,
         reading_level_placed: placement.levelName,
         answers: finalAnswers,
       });
+      await supabase.from("assessments").insert(assessmentPayload);
 
       // Update child's reading level
       await supabase

@@ -24,3 +24,19 @@ export {
   FeedbackSchema,
   type FeedbackZ,
 } from "./feedback";
+
+export {
+  AssessmentAnswerSchema,
+  AssessmentResultSchema,
+  type AssessmentAnswerZ,
+  type AssessmentResultZ,
+} from "./assessment";
+
+export {
+  ChildCreateSchema,
+  ChildUpdateSchema,
+  PreferencesSchema,
+  type ChildCreateZ,
+  type ChildUpdateZ,
+  type PreferencesZ,
+} from "./settings";

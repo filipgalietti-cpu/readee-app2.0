@@ -170,6 +170,44 @@ class AudioManager {
     ], "sine");
   }
 
+  /** Play pop sound: short high-frequency burst */
+  playPopSound(): void {
+    const { isMuted } = useAudioStore.getState();
+    if (isMuted) return;
+    this.playTones([{ freq: 880, duration: 0.08 }], "sine");
+  }
+
+  /** Play unlock chime: ascending triad F5 → A5 → C6 */
+  playUnlockChime(): void {
+    const { isMuted } = useAudioStore.getState();
+    if (isMuted) return;
+    this.playTones([
+      { freq: 698, duration: 0.12 },
+      { freq: 880, duration: 0.12 },
+      { freq: 1047, duration: 0.18 },
+    ], "sine");
+  }
+
+  /** Play whoosh: quick descending sweep */
+  playWhoosh(): void {
+    const { isMuted } = useAudioStore.getState();
+    if (isMuted) return;
+    try {
+      const ctx = this.getAudioCtx();
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(600, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(200, ctx.currentTime + 0.25);
+      gain.gain.setValueAtTime(0.2, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.25);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(ctx.currentTime);
+      osc.stop(ctx.currentTime + 0.25);
+    } catch {}
+  }
+
   private playTones(tones: { freq: number; duration: number }[], type: OscillatorType): void {
     try {
       const ctx = this.getAudioCtx();

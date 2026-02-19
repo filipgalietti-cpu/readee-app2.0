@@ -46,6 +46,26 @@ export const feedbackSlideUp: Variants = {
   exit: { y: "100%", transition: { duration: 0.2 } },
 };
 
+export const fadeIn: Variants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { duration: 0.3 } },
+};
+
+export const slideInLeft: Variants = {
+  hidden: { opacity: 0, x: -24 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.4, ease: "easeOut" } },
+};
+
+export const staggerFast: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.05 } },
+};
+
+export const hoverLift: Variants = {
+  rest: { y: 0, boxShadow: "0 1px 3px rgba(0,0,0,0.1)" },
+  hover: { y: -4, boxShadow: "0 12px 24px rgba(0,0,0,0.12)", transition: { duration: 0.2 } },
+};
+
 export function confettiPiece(left: number, delay: number): Variants {
   const xDrift = (Math.random() - 0.5) * 100;
   return {

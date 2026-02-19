@@ -7,6 +7,7 @@ import { supabaseBrowser } from "@/lib/supabase/client";
 import { safeValidate } from "@/lib/validate";
 import { FeedbackSchema } from "@/lib/schemas";
 import { fadeUp, slideUp, popIn, staggerContainer } from "@/lib/motion/variants";
+import { useAudio } from "@/lib/audio/use-audio";
 
 /* ─── Constants ──────────────────────────────────────── */
 
@@ -36,6 +37,7 @@ export default function FeedbackPage() {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [confetti, setConfetti] = useState<{ id: number; x: number; color: string; delay: number }[]>([]);
+  const { playWhoosh } = useAudio();
 
   function selectRating(val: number) {
     setRating(val);
@@ -83,6 +85,7 @@ export default function FeedbackPage() {
       delay: Math.random() * 0.5,
     }));
     setConfetti(particles);
+    playWhoosh();
     setSubmitting(false);
     setSubmitted(true);
   }
@@ -209,18 +212,19 @@ export default function FeedbackPage() {
 
               <div className="flex justify-center gap-3">
                 {RATINGS.map((r) => (
-                  <button
+                  <motion.button
                     key={r.value}
                     onClick={() => selectRating(r.value)}
-                    className={`group flex flex-col items-center gap-1.5 p-3 rounded-2xl transition-all duration-200 ${
+                    whileHover={{ scale: 1.2 }}
+                    whileTap={{ scale: 0.95 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                    className={`group flex flex-col items-center gap-1.5 p-3 rounded-2xl transition-colors duration-200 ${
                       rating === r.value
-                        ? "bg-indigo-100 dark:bg-indigo-900/40 ring-2 ring-indigo-400 scale-110"
-                        : "hover:bg-zinc-50 dark:hover:bg-slate-800 hover:scale-105"
+                        ? "bg-indigo-100 dark:bg-indigo-900/40 ring-2 ring-indigo-400"
+                        : "hover:bg-zinc-50 dark:hover:bg-slate-800"
                     }`}
                   >
-                    <span className={`text-3xl transition-transform ${
-                      rating === r.value ? "scale-110" : "group-hover:scale-110"
-                    }`}>
+                    <span className="text-3xl">
                       {r.emoji}
                     </span>
                     <span className={`text-[10px] font-medium ${
@@ -228,7 +232,7 @@ export default function FeedbackPage() {
                     }`}>
                       {r.label}
                     </span>
-                  </button>
+                  </motion.button>
                 ))}
               </div>
             </div>

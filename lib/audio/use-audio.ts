@@ -78,6 +78,18 @@ export function useAudio() {
     if (audioManager) audioManager.playCompleteChime();
   }, []);
 
+  const playPopSound = useCallback(() => {
+    if (audioManager) audioManager.playPopSound();
+  }, []);
+
+  const playUnlockChime = useCallback(() => {
+    if (audioManager) audioManager.playUnlockChime();
+  }, []);
+
+  const playWhoosh = useCallback(() => {
+    if (audioManager) audioManager.playWhoosh();
+  }, []);
+
   return {
     muted: isMuted,
     isSpeaking,
@@ -90,5 +102,8 @@ export function useAudio() {
     playCorrectChime,
     playIncorrectBuzz,
     playCompleteChime,
+    playPopSound,
+    playUnlockChime,
+    playWhoosh,
   };
 }

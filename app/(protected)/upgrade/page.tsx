@@ -4,7 +4,11 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Suspense } from "react";
+import { motion } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
+import { staggerContainer, slideUp, fadeUp } from "@/lib/motion/variants";
+import { safeValidate } from "@/lib/validate";
+import { ChildSchema } from "@/lib/schemas";
 import { Child } from "@/lib/db/types";
 import { levelNameToGradeKey } from "@/lib/assessment/questions";
 import lessonsData from "@/lib/data/lessons.json";
@@ -115,7 +119,7 @@ function UpgradeContent() {
           supabase.from("lessons_progress").select("lesson_id, section").eq("child_id", childId),
         ]);
 
-        if (childData) setChild(childData as Child);
+        if (childData) setChild(safeValidate(ChildSchema, childData) as Child);
         if (progressData) {
           // Count fully completed lessons
           const byLesson: Record<string, Set<string>> = {};
@@ -177,10 +181,10 @@ function UpgradeContent() {
   }
 
   return (
-    <div className="max-w-3xl mx-auto py-8 px-4 pb-16 space-y-12 min-h-screen bg-gradient-to-b from-white via-indigo-50/30 to-white dark:from-slate-900 dark:via-slate-900 dark:to-slate-900">
+    <motion.div className="max-w-3xl mx-auto py-8 px-4 pb-16 space-y-12 min-h-screen bg-gradient-to-b from-white via-indigo-50/30 to-white dark:from-slate-900 dark:via-slate-900 dark:to-slate-900" variants={staggerContainer} initial="hidden" animate="visible">
       {/* ── SECTION 1: Celebrate Progress ── */}
       {child && (
-        <div className="text-center animate-slideUp">
+        <motion.div variants={fadeUp} className="text-center">
           <div className="text-5xl mb-4">🎉</div>
           <h1 className="text-2xl sm:text-3xl font-bold text-zinc-900 dark:text-slate-100 tracking-tight">
             {child.first_name} is making amazing progress!
@@ -198,11 +202,11 @@ function UpgradeContent() {
               </span>
             )}
           </div>
-        </div>
+        </motion.div>
       )}
 
       {!child && (
-        <div className="text-center animate-slideUp">
+        <motion.div variants={fadeUp} className="text-center">
           <div className="text-5xl mb-4">🚀</div>
           <h1 className="text-2xl sm:text-3xl font-bold text-zinc-900 dark:text-slate-100 tracking-tight">
             Unlock the full reading journey
@@ -210,11 +214,11 @@ function UpgradeContent() {
           <p className="text-zinc-500 dark:text-slate-400 mt-2">
             Give your child access to the complete Readee curriculum
           </p>
-        </div>
+        </motion.div>
       )}
 
       {/* ── SECTION 2: What's Next ── */}
-      <div className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 space-y-4 dash-slide-up-1">
+      <motion.div variants={slideUp} className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 space-y-4">
         <h2 className="text-lg font-bold text-zinc-900 dark:text-slate-100 text-center">
           {child ? `Unlock ${child.first_name}'s full reading journey` : "Unlock the full curriculum"}
         </h2>
@@ -264,12 +268,16 @@ function UpgradeContent() {
             );
           })}
         </div>
-      </div>
+      </motion.div>
 
       {/* ── SECTION 3: Pricing Cards ── */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-end dash-slide-up-2">
+      <motion.div variants={slideUp} className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-end">
         {/* Monthly */}
-        <div className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 space-y-4 self-center">
+        <motion.div
+          className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 space-y-4 self-center"
+          whileHover={{ y: -4, boxShadow: "0 12px 24px rgba(0,0,0,0.1)" }}
+          transition={{ duration: 0.2 }}
+        >
           <div>
             <div className="text-3xl font-bold text-zinc-900 dark:text-slate-100">$9.99</div>
             <div className="text-sm text-zinc-500 dark:text-slate-400">/month</div>
@@ -281,10 +289,14 @@ function UpgradeContent() {
           >
             Start 7-Day Free Trial
           </button>
-        </div>
+        </motion.div>
 
         {/* Annual — highlighted */}
-        <div className="rounded-2xl border-2 border-indigo-400 dark:border-indigo-500 bg-gradient-to-b from-white to-indigo-50/40 dark:from-slate-800 dark:to-indigo-950/20 p-7 space-y-4 relative shadow-lg shadow-indigo-100/50 dark:shadow-indigo-900/30">
+        <motion.div
+          className="rounded-2xl border-2 border-indigo-400 dark:border-indigo-500 bg-gradient-to-b from-white to-indigo-50/40 dark:from-slate-800 dark:to-indigo-950/20 p-7 space-y-4 relative shadow-lg shadow-indigo-100/50 dark:shadow-indigo-900/30"
+          whileHover={{ y: -6, boxShadow: "0 16px 32px rgba(99,102,241,0.2)" }}
+          transition={{ duration: 0.2 }}
+        >
           <div className="absolute -top-3 left-1/2 -translate-x-1/2">
             <span className="px-3 py-1 rounded-full text-[11px] font-bold bg-gradient-to-r from-amber-400 to-amber-500 text-white shadow-sm">
               Best Value
@@ -303,18 +315,18 @@ function UpgradeContent() {
           >
             Start 7-Day Free Trial
           </button>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       {/* ── SECTION 4: Trust Signals ── */}
-      <div className="text-center dash-slide-up-3">
+      <motion.div variants={fadeUp} className="text-center">
         <p className="text-xs text-zinc-400 dark:text-slate-500">
           Cancel anytime &middot; 30-day money-back guarantee &middot; No commitment
         </p>
-      </div>
+      </motion.div>
 
       {/* ── SECTION 5: What's Included ── */}
-      <div className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 space-y-4 dash-slide-up-4">
+      <motion.div variants={slideUp} className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 space-y-4">
         <h3 className="text-base font-bold text-zinc-900 dark:text-slate-100">What&apos;s included in Readee+</h3>
         <div className="space-y-3">
           {FEATURES.map((feature) => (
@@ -324,10 +336,10 @@ function UpgradeContent() {
             </div>
           ))}
         </div>
-      </div>
+      </motion.div>
 
       {/* ── SECTION 6: FAQ ── */}
-      <div className="space-y-2 dash-slide-up-5">
+      <motion.div variants={slideUp} className="space-y-2">
         <h3 className="text-base font-bold text-zinc-900 dark:text-slate-100 mb-3">Frequently Asked Questions</h3>
         {FAQS.map((faq, i) => (
           <div key={i} className="rounded-xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 overflow-hidden">
@@ -354,17 +366,17 @@ function UpgradeContent() {
             )}
           </div>
         ))}
-      </div>
+      </motion.div>
 
       {/* ── SECTION 7: Secondary Exit ── */}
-      <div className="text-center pt-4 dash-slide-up-6">
+      <motion.div variants={fadeUp} className="text-center pt-4">
         <Link
           href="/dashboard"
           className="text-sm text-zinc-400 dark:text-slate-500 hover:text-zinc-600 dark:hover:text-slate-300 transition-colors"
         >
           Continue with Free Plan →
         </Link>
-      </div>
+      </motion.div>
 
       {/* ── Waitlist Modal ── */}
       {showModal && (
@@ -434,6 +446,6 @@ function UpgradeContent() {
           </div>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 }

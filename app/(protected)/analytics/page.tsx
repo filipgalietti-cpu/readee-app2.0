@@ -3,9 +3,13 @@
 import { Suspense, useEffect, useState, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
 import kStandards from "@/app/data/kindergarten-standards-questions.json";
+import { staggerContainer, slideUp, fadeUp } from "@/lib/motion/variants";
+import { safeValidate } from "@/lib/validate";
+import { ChildSchema, StandardsFileSchema } from "@/lib/schemas";
 
 /* ─── Types ──────────────────────────────────────────── */
 
@@ -171,7 +175,7 @@ function AnalyticsLoader() {
       if (!childId) { setLoading(false); return; }
       const supabase = supabaseBrowser();
       const { data } = await supabase.from("children").select("*").eq("id", childId).single();
-      if (data) setChild(data as Child);
+      if (data) setChild(safeValidate(ChildSchema, data) as Child);
       setLoading(false);
     }
     load();
@@ -199,7 +203,7 @@ function AnalyticsLoader() {
 /* ═══════════════════════════════════════════════════════ */
 
 function AnalyticsDashboard({ child }: { child: Child }) {
-  const allStandards = (kStandards as { standards: Standard[] }).standards;
+  const allStandards = safeValidate(StandardsFileSchema, kStandards).standards as Standard[];
   const stats = useMemo(() => generateMockStats(allStandards), [allStandards]);
   const weeklyData = useMemo(() => generateWeeklyData(), []);
 
@@ -265,36 +269,37 @@ function AnalyticsDashboard({ child }: { child: Child }) {
   }
 
   return (
-    <div className="max-w-3xl mx-auto pb-20 px-4">
+    <motion.div className="max-w-3xl mx-auto pb-20 px-4" variants={staggerContainer} initial="hidden" animate="visible">
       {/* ── Nav ── */}
-      <div className="flex items-center justify-between pt-4 mb-6 animate-slideUp">
+      <motion.div variants={fadeUp} className="flex items-center justify-between pt-4 mb-6">
         <Link href="/dashboard" className="text-sm text-indigo-600 hover:text-indigo-700 font-medium transition-colors">
           &larr; Dashboard
         </Link>
         <span className="text-xs text-zinc-400 dark:text-slate-500 font-medium">{displayGrade(child.grade)}</span>
-      </div>
+      </motion.div>
 
       {/* ── Title ── */}
-      <div className="mb-8 dash-slide-up-1">
+      <motion.div variants={slideUp} className="mb-8">
         <h1 className="text-2xl font-bold text-zinc-900 dark:text-slate-100 tracking-tight">
           📊 {child.first_name}&apos;s Progress Report
         </h1>
         <p className="text-zinc-500 dark:text-slate-400 text-sm mt-1">
           Detailed performance breakdown by ELA standard
         </p>
-      </div>
+      </motion.div>
 
       {/* ══════════ TOP SUMMARY ══════════ */}
-      <div className="rounded-2xl bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 p-5 mb-6 shadow-lg dash-slide-up-2">
+      <motion.div variants={slideUp} className="rounded-2xl bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 p-5 mb-6 shadow-lg">
         <div className="flex items-center gap-4 mb-4">
           <div className="relative w-16 h-16 rounded-xl bg-white/20 flex items-center justify-center flex-shrink-0">
             <svg viewBox="0 0 100 100" className="w-12 h-12 -rotate-90">
               <circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="8" />
-              <circle
+              <motion.circle
                 cx="50" cy="50" r="40" fill="none" stroke="white" strokeWidth="8"
                 strokeLinecap="round" strokeDasharray="251"
-                strokeDashoffset={251 - (251 * totals.masteryPct / 100)}
-                className="transition-all duration-1000"
+                initial={{ strokeDashoffset: 251 }}
+                animate={{ strokeDashoffset: 251 - (251 * totals.masteryPct / 100) }}
+                transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
               />
             </svg>
             <span className="absolute text-white text-sm font-bold">{totals.masteryPct}%</span>
@@ -321,35 +326,35 @@ function AnalyticsDashboard({ child }: { child: Child }) {
             <div className="text-white/60 text-[10px] font-medium">Accuracy</div>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* ── Mastery Breakdown Pills ── */}
-      <div className="grid grid-cols-4 gap-2 mb-6 dash-slide-up-3">
+      <motion.div variants={slideUp} className="grid grid-cols-4 gap-2 mb-6">
         <MasteryPill label="Proficient" count={totals.proficient} total={allStandards.length} level="Proficient" />
         <MasteryPill label="Developing" count={totals.developing} total={allStandards.length} level="Developing" />
         <MasteryPill label="Needs Help" count={totals.needsSupport} total={allStandards.length} level="Needs Support" />
         <MasteryPill label="Not Started" count={totals.notStarted} total={allStandards.length} level="Not Started" />
-      </div>
+      </motion.div>
 
       {/* ══════════ PROGRESS CHART ══════════ */}
-      <div className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 mb-6 dash-slide-up-3">
+      <motion.div variants={slideUp} className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 mb-6">
         <h2 className="text-base font-bold text-zinc-900 dark:text-slate-100 mb-4">Weekly Accuracy Trend</h2>
         <AccuracyChart data={weeklyData} />
-      </div>
+      </motion.div>
 
       {/* ══════════ DOMAIN BREAKDOWN ══════════ */}
-      <div className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 mb-6 dash-slide-up-4">
+      <motion.div variants={slideUp} className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 mb-6">
         <h2 className="text-base font-bold text-zinc-900 dark:text-slate-100 mb-4">Performance by Domain</h2>
         <div className="space-y-3">
           {domainStats.map((ds) => (
             <DomainCard key={ds.domain} domainStat={ds} standards={stats.filter((s) => s.domain === ds.domain)} childId={child.id} />
           ))}
         </div>
-      </div>
+      </motion.div>
 
       {/* ══════════ AREAS TO FOCUS ON ══════════ */}
       {struggles.length > 0 && (
-        <div className="rounded-2xl border border-amber-200 dark:border-amber-800/40 bg-gradient-to-b from-amber-50/80 to-white dark:from-amber-950/20 dark:to-slate-800 p-5 mb-6 dash-slide-up-5">
+        <motion.div variants={slideUp} className="rounded-2xl border border-amber-200 dark:border-amber-800/40 bg-gradient-to-b from-amber-50/80 to-white dark:from-amber-950/20 dark:to-slate-800 p-5 mb-6">
           <div className="flex items-center gap-2 mb-1">
             <span className="text-lg">🎯</span>
             <h2 className="text-base font-bold text-zinc-900 dark:text-slate-100">Areas to Focus On</h2>
@@ -429,11 +434,11 @@ function AnalyticsDashboard({ child }: { child: Child }) {
               );
             })}
           </div>
-        </div>
+        </motion.div>
       )}
 
       {/* ══════════ STANDARDS TABLE ══════════ */}
-      <div className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 dash-slide-up-6">
+      <motion.div variants={slideUp} className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5">
         <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
           <h2 className="text-base font-bold text-zinc-900 dark:text-slate-100">Standards Breakdown</h2>
           <span className="text-xs text-zinc-400 dark:text-slate-500">
@@ -491,8 +496,8 @@ function AnalyticsDashboard({ child }: { child: Child }) {
             <StandardRow key={s.standard_id} stat={s} />
           ))}
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
 
@@ -564,8 +569,18 @@ function AccuracyChart({ data }: { data: WeeklyPoint[] }) {
         {/* Area fill */}
         <path d={areaPath} fill="url(#chartGrad)" />
 
-        {/* Line */}
-        <path d={linePath} fill="none" stroke="#6366f1" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+        {/* Line — animated draw */}
+        <motion.path
+          d={linePath}
+          fill="none"
+          stroke="#6366f1"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ duration: 1.5, ease: "easeInOut" }}
+        />
 
         {/* Hover vertical guide */}
         {hovered !== null && (

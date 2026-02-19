@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, useRef } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
@@ -11,8 +11,46 @@ import LevelProgressBar, { GRADES } from "@/app/_components/LevelProgressBar";
 import { useChildStore } from "@/lib/stores/child-store";
 import { safeValidate } from "@/lib/validate";
 import { ChildSchema } from "@/lib/schemas";
-import { staggerContainer, slideUp } from "@/lib/motion/variants";
+import { staggerContainer, slideUp, staggerFast } from "@/lib/motion/variants";
+import { useAudio } from "@/lib/audio/use-audio";
 import kStandards from "@/app/data/kindergarten-standards-questions.json";
+
+/* ─── Count-up animation hook ─────────────────────────── */
+
+function useCountUp(target: number, duration = 800) {
+  const [value, setValue] = useState(0);
+  const ref = useRef<HTMLDivElement>(null);
+  const counted = useRef(false);
+
+  useEffect(() => {
+    if (counted.current || target === 0) { setValue(target); return; }
+    const el = ref.current;
+    if (!el) { setValue(target); return; }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !counted.current) {
+          counted.current = true;
+          const start = performance.now();
+          function tick(now: number) {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            setValue(Math.round(eased * target));
+            if (progress < 1) requestAnimationFrame(tick);
+          }
+          requestAnimationFrame(tick);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [target, duration]);
+
+  return { value, ref };
+}
 
 const AVATARS = ["😊", "🦊", "🐱", "🦋", "🐻"];
 
@@ -276,6 +314,27 @@ function AddChildrenForm({ userPlan, onDone }: { userPlan: string; onDone: (kids
   );
 }
 
+/* ─── CountUpStat ─────────────────────────────────────── */
+
+function CountUpStat({ target }: { target: number }) {
+  const { value, ref } = useCountUp(target);
+  const { playPopSound } = useAudio();
+  const popped = useRef(false);
+
+  useEffect(() => {
+    if (value === target && target > 0 && !popped.current) {
+      popped.current = true;
+      playPopSound();
+    }
+  }, [value, target, playPopSound]);
+
+  return (
+    <div ref={ref} className="text-xl font-bold text-zinc-900 dark:text-slate-100">
+      {value}
+    </div>
+  );
+}
+
 /* ─── Child Selector ──────────────────────────────────── */
 
 function ChildSelector({
@@ -294,12 +353,13 @@ function ChildSelector({
         <p className="text-zinc-500 dark:text-slate-400 mt-2">Select a reader to get started</p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+      <motion.div className="grid grid-cols-1 sm:grid-cols-2 gap-5" variants={staggerFast} initial="hidden" animate="visible">
         {children.map((child, index) => (
-          <button
+          <motion.button
             key={child.id}
             onClick={() => onSelect(child)}
             className="group text-left w-full"
+            variants={slideUp}
           >
             <div className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 hover:border-indigo-300 dark:hover:border-indigo-700 hover:shadow-md transition-all duration-200 group-hover:scale-[1.02] space-y-4">
               <div className="flex items-center gap-4">
@@ -326,9 +386,9 @@ function ChildSelector({
                 readOnly
               />
             </div>
-          </button>
+          </motion.button>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 }
@@ -619,7 +679,7 @@ function ChildDashboard({
         <Link href={`/xp-rewards?child=${child.id}`} className="block">
           <div className="rounded-2xl border border-amber-200 dark:border-amber-800/40 bg-gradient-to-b from-amber-50 to-white dark:from-amber-950/30 dark:to-slate-800 p-4 text-center hover:shadow-md hover:scale-[1.02] transition-all duration-200 group cursor-pointer">
             <div className="text-xl mb-1 group-hover:animate-subtleBounce">⭐</div>
-            <div className="text-xl font-bold text-zinc-900 dark:text-slate-100">{child.xp}</div>
+            <CountUpStat target={child.xp} />
             <div className="text-[10px] text-zinc-500 dark:text-slate-400 mt-0.5 font-medium">XP</div>
             <div className="mt-2 h-1.5 bg-amber-100 rounded-full overflow-hidden">
               <div
@@ -638,7 +698,7 @@ function ChildDashboard({
             <div className="text-xl mb-1 group-hover:animate-subtleBounce">
               {child.stories_read > 0 ? "📚" : "📖"}
             </div>
-            <div className="text-xl font-bold text-zinc-900 dark:text-slate-100">{child.stories_read}</div>
+            <CountUpStat target={child.stories_read} />
             <div className="text-[10px] text-zinc-500 dark:text-slate-400 mt-0.5 font-medium">Stories Read</div>
             <div className="flex justify-center gap-0.5 mt-2">
               {Array.from({ length: 5 }).map((_, i) => (
@@ -662,7 +722,7 @@ function ChildDashboard({
             <div className={`text-xl mb-1 ${child.streak_days > 0 ? "animate-fireGlow" : ""}`}>
               🔥
             </div>
-            <div className="text-xl font-bold text-zinc-900 dark:text-slate-100">{child.streak_days}</div>
+            <CountUpStat target={child.streak_days} />
             <div className="text-[10px] text-zinc-500 dark:text-slate-400 mt-0.5 font-medium">
               {child.streak_days === 1 ? "Day Streak" : "Day Streak"}
             </div>

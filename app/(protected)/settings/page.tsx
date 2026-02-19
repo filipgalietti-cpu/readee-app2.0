@@ -7,6 +7,8 @@ import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
 import { READING_LEVELS, GRADES } from "@/app/_components/LevelProgressBar";
 import { useTheme } from "@/app/_components/ThemeContext";
+import { safeValidate } from "@/lib/validate";
+import { ChildCreateSchema, ChildUpdateSchema } from "@/lib/schemas";
 
 function displayGrade(grade: string): string {
   if (grade.toLowerCase() === "pre-k") return "Foundational";
@@ -128,11 +130,12 @@ export default function Settings() {
   async function handleAddChild() {
     if (!newChild.name.trim()) return;
     setAddingChild(true);
-    await supabase.from("children").insert({
+    const childData = safeValidate(ChildCreateSchema, {
       parent_id: userId,
       first_name: newChild.name.trim(),
       grade: newChild.grade,
     });
+    await supabase.from("children").insert(childData);
     await loadChildren(userId);
     setNewChild({ name: "", grade: "Kindergarten" });
     setShowAddChild(false);
@@ -146,10 +149,11 @@ export default function Settings() {
   }
 
   async function saveEdit(childId: string) {
-    await supabase.from("children").update({
+    const updateData = safeValidate(ChildUpdateSchema, {
       first_name: editValues.first_name.trim(),
       grade: editValues.grade,
-    }).eq("id", childId);
+    });
+    await supabase.from("children").update(updateData).eq("id", childId);
     setEditingChildId(null);
     await loadChildren(userId);
   }
