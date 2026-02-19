@@ -282,14 +282,14 @@ function Roadmap({ child, userPlan }: { child: Child; userPlan: string }) {
   return (
     <div className="max-w-5xl mx-auto pb-20 px-4">
       {/* ── Nav ── */}
-      <div className="pt-4 mb-6  max-w-[400px] mx-auto md:max-w-none">
+      <div className="pt-4 mb-6 max-w-[400px] mx-auto lg:max-w-none">
         <Link href="/dashboard" className="text-sm text-indigo-600 hover:text-indigo-700 font-medium transition-colors">
           &larr; Dashboard
         </Link>
       </div>
 
       {/* ── Title ── */}
-      <div className="text-center mb-6 max-w-[400px] mx-auto md:max-w-none">
+      <div className="text-center mb-6 max-w-[400px] mx-auto lg:max-w-none">
         <h1 className="text-2xl font-bold text-zinc-900 dark:text-slate-100 tracking-tight">
           {child.first_name}&apos;s Learning Journey
         </h1>
@@ -297,7 +297,7 @@ function Roadmap({ child, userPlan }: { child: Child; userPlan: string }) {
       </div>
 
       {/* ── Mobile Progress Summary ── */}
-      <div className="md:hidden mb-6 max-w-[400px] mx-auto">
+      <div className="lg:hidden mb-6 max-w-[400px] mx-auto">
         <MobileProgressCard
           pct={pct}
           completedCount={completedCount}
@@ -308,9 +308,9 @@ function Roadmap({ child, userPlan }: { child: Child; userPlan: string }) {
       </div>
 
       {/* ── Main layout: sidebar (left) + path (right) ── */}
-      <div className="md:flex md:gap-8 md:justify-center">
+      <div className="lg:flex lg:gap-8 lg:justify-center">
         {/* ── Desktop Sidebar (left column) ── */}
-        <div className="hidden md:block w-72 flex-shrink-0">
+        <div className="hidden lg:block w-[280px] min-w-[280px] flex-shrink-0">
           <div className="sticky top-[100px] space-y-4">
             {/* Progress Summary */}
             <div className="rounded-2xl bg-gradient-to-br from-indigo-600 via-violet-600 to-purple-600 p-5 shadow-lg">

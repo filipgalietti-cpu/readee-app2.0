@@ -57,6 +57,8 @@ const INCORRECT_MESSAGES = [
   "Not quite!", "Almost!", "Good try!", "Keep learning!",
 ];
 
+const ACCENT_COLORS = ["#818cf8", "#34d399", "#fbbf24", "#a78bfa"];
+
 /* ─── Helpers ────────────────────────────────────────── */
 
 function shuffleArray<T>(arr: T[]): T[] {
@@ -382,21 +384,17 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
 
             let bg = "bg-white border-zinc-300 hover:border-indigo-400 hover:bg-indigo-50 dark:bg-slate-800 dark:border-slate-600 dark:hover:border-indigo-400 dark:hover:bg-slate-700 active:scale-[0.97]";
             let textColor = "text-zinc-900 dark:text-white";
-            let badgeBg = "bg-zinc-200 text-zinc-600 dark:bg-slate-700 dark:text-slate-300";
 
             if (answered) {
               if (isSelected && isCorrect) {
                 bg = "bg-emerald-50 border-emerald-500 ring-2 ring-emerald-500/30 dark:bg-emerald-900/60";
                 textColor = "text-emerald-800 dark:text-emerald-100";
-                badgeBg = "bg-emerald-500 text-white";
               } else if (isSelected && !isCorrect) {
                 bg = "bg-red-50 border-red-500 ring-2 ring-red-500/30 dark:bg-red-900/40";
                 textColor = "text-red-800 dark:text-red-200";
-                badgeBg = "bg-red-500 text-white";
               } else if (isCorrectChoice && !isCorrect) {
                 bg = "bg-emerald-50/80 border-emerald-500 dark:bg-emerald-900/40";
                 textColor = "text-emerald-800 dark:text-emerald-200";
-                badgeBg = "bg-emerald-500 text-white";
               } else {
                 bg = "bg-zinc-100 border-zinc-200 opacity-40 dark:bg-slate-800/40 dark:border-slate-700";
                 textColor = "text-zinc-400 dark:text-slate-400";
@@ -417,31 +415,40 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
                 onClick={() => handleAnswer(choice)}
                 disabled={answered}
                 className={`
-                  w-full text-left px-5 py-4 rounded-2xl border-2
+                  w-full text-left px-5 py-4 rounded-xl border-2 relative overflow-hidden
                   transition-all duration-200 outline-none
                   ${bg}
                   ${answered ? "cursor-default" : "cursor-pointer"}
                 `}
-                style={{ minHeight: 60 }}
+                style={{ minHeight: 64 }}
               >
-                <div className="flex items-center gap-4">
-                  <span className={`w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 ${badgeBg}`}>
-                    {answered && isSelected && isCorrect ? (
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
+                {/* Color accent bar */}
+                <div
+                  className="absolute left-0 top-0 bottom-0 w-1 rounded-l-xl"
+                  style={{ backgroundColor: ACCENT_COLORS[i % 4] }}
+                />
+                <div className="flex items-center gap-3">
+                  {answered && isSelected && isCorrect && (
+                    <div className="w-7 h-7 rounded-full bg-emerald-500 flex items-center justify-center flex-shrink-0">
+                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
-                    ) : answered && isSelected && !isCorrect ? (
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
+                    </div>
+                  )}
+                  {answered && isSelected && !isCorrect && (
+                    <div className="w-7 h-7 rounded-full bg-red-500 flex items-center justify-center flex-shrink-0">
+                      <svg className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                       </svg>
-                    ) : answered && isCorrectChoice && !isCorrect ? (
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
+                    </div>
+                  )}
+                  {answered && !isSelected && isCorrectChoice && !isCorrect && (
+                    <div className="w-7 h-7 rounded-full bg-emerald-500 flex items-center justify-center flex-shrink-0">
+                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
-                    ) : (
-                      String.fromCharCode(65 + i)
-                    )}
-                  </span>
+                    </div>
+                  )}
                   <span className={`text-lg font-medium leading-snug flex-1 ${textColor}`}>
                     {choice}
                   </span>

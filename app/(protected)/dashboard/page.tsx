@@ -12,6 +12,7 @@ import { useChildStore } from "@/lib/stores/child-store";
 import { safeValidate } from "@/lib/validate";
 import { ChildSchema } from "@/lib/schemas";
 import { staggerContainer, slideUp } from "@/lib/motion/variants";
+import kStandards from "@/app/data/kindergarten-standards-questions.json";
 
 const AVATARS = ["😊", "🦊", "🐱", "🦋", "🐻"];
 
@@ -356,6 +357,10 @@ function ChildDashboard({
   const hasMultiple = children.length > 1;
   const greeting = getGreeting();
   const motivation = useMemo(() => MOTIVATIONAL[Math.floor(Math.random() * MOTIVATIONAL.length)], []);
+  const nextPracticeStandard = useMemo(() => {
+    const standards = (kStandards as { standards: { standard_id: string; standard_description: string }[] }).standards;
+    return standards[0];
+  }, []);
 
   useEffect(() => {
     async function checkAssessment() {
@@ -583,25 +588,29 @@ function ChildDashboard({
 
       {/* ── Start Practice CTA ── */}
       {hasAssessment && (
-        <Link
-          href={`/practice?child=${child.id}&standard=RF.K.1a`}
-          className="block"
-        >
-          <div className="rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 dark:from-emerald-600 dark:to-teal-600 p-5 text-white hover:from-emerald-600 hover:to-teal-600 transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-[1.01] cursor-pointer flex items-center gap-4">
-            <div className="w-14 h-14 rounded-xl bg-white/20 flex items-center justify-center text-3xl flex-shrink-0">
-              🎯
+        <motion.div variants={slideUp}>
+          <Link
+            href={`/practice?child=${child.id}&standard=${nextPracticeStandard.standard_id}`}
+            className="block"
+          >
+            <div className="rounded-2xl bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 p-6 text-white hover:from-indigo-700 hover:via-violet-700 hover:to-purple-700 transition-all duration-200 shadow-xl hover:shadow-2xl hover:scale-[1.01] cursor-pointer">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-16 h-16 rounded-2xl bg-white/20 flex items-center justify-center text-4xl flex-shrink-0">
+                  📖
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="text-white font-extrabold text-xl">Ready to practice?</div>
+                  <div className="text-white/70 text-sm mt-1 truncate">
+                    {nextPracticeStandard.standard_id}: {nextPracticeStandard.standard_description}
+                  </div>
+                </div>
+              </div>
+              <span className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-white text-indigo-700 font-extrabold text-base shadow-md">
+                Start →
+              </span>
             </div>
-            <div className="flex-1 min-w-0">
-              <div className="text-white font-bold text-lg">Start Practice</div>
-              <div className="text-emerald-100 text-sm mt-0.5">Practice reading standards & earn XP</div>
-            </div>
-            <div className="flex-shrink-0 text-white/80">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </div>
-          </div>
-        </Link>
+          </Link>
+        </motion.div>
       )}
 
       {/* ── Stats Cards ── */}
@@ -1007,7 +1016,7 @@ function LessonPath({
                 )}
                 {!isLocked && isNext && (
                   <Link
-                    href={`/lesson?child=${child.id}&lesson=${lesson.id}`}
+                    href={`/practice?child=${child.id}&standard=${lesson.standards?.[0] || 'RF.K.1a'}`}
                     className="px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-xs font-bold hover:from-indigo-700 hover:to-violet-600 transition-all shadow-sm hover:shadow-md"
                   >
                     Start
