@@ -42,13 +42,11 @@ const DOMAIN_META: Record<string, { emoji: string; color: string; bg: string; bo
   "Language":                   { emoji: "💬", color: "text-amber-700",  bg: "bg-amber-50",   border: "border-amber-200",   fill: "#f59e0b", gradient: "from-amber-500 to-orange-600" },
 };
 
-const PATH_WIDTH = 400;
-const CENTER_X = PATH_WIDTH / 2;
-const AMPLITUDE = 55;
-const SINE_FREQ = (2 * Math.PI) / 7;   // smooth S-curve: ~3.5 nodes per half-wave
 const NODE_SPACING = 95;
 const DOMAIN_HEADER_HEIGHT = 72;
 const FREE_STANDARD_COUNT = 10;
+const LEFT_PCT = 0.4;
+const RIGHT_PCT = 0.6;
 
 /* ─── Mock progress ──────────────────────────────────── */
 
@@ -189,22 +187,21 @@ function Roadmap({ child, userPlan }: { child: Child; userPlan: string }) {
   useEffect(() => {
     const el = pathRef.current;
     if (!el) return;
-    setPathWidth(Math.min(el.offsetWidth, PATH_WIDTH));
+    setPathWidth(el.offsetWidth);
     const ro = new ResizeObserver((entries) => {
-      for (const entry of entries) setPathWidth(Math.min(entry.contentRect.width, PATH_WIDTH));
+      for (const entry of entries) setPathWidth(entry.contentRect.width);
     });
     ro.observe(el);
     return () => ro.disconnect();
   }, []);
 
-  /* ── Compute Duolingo-style S-curve layout ── */
+  /* ── Compute S-curve layout: alternate 40%/60% ── */
   const layout = useMemo(() => {
     const items: LayoutItem[] = [];
     let y = 20;
     let currentDomain = "";
     let nodeSeq = 0;
     const cx = pathWidth / 2;
-    const amp = (pathWidth / PATH_WIDTH) * AMPLITUDE;
 
     for (const std of ALL_STANDARDS) {
       if (std.domain !== currentDomain) {
@@ -214,7 +211,7 @@ function Roadmap({ child, userPlan }: { child: Child; userPlan: string }) {
         currentDomain = std.domain;
       }
 
-      const x = cx + Math.sin(nodeSeq * SINE_FREQ) * amp;
+      const x = nodeSeq % 2 === 0 ? pathWidth * LEFT_PCT : pathWidth * RIGHT_PCT;
       items.push({ type: "node", standard: std, globalIdx: nodeSeq, y, x });
       y += NODE_SPACING;
       nodeSeq++;
@@ -304,97 +301,9 @@ function Roadmap({ child, userPlan }: { child: Child; userPlan: string }) {
         />
       </div>
 
-      {/* ── Main layout: path + sidebar ── */}
+      {/* ── Main layout: sidebar (left) + path (right) ── */}
       <div className="md:flex md:gap-8 md:justify-center">
-        {/* Path column */}
-        <div className="max-w-[400px] mx-auto md:mx-0 flex-shrink-0">
-          <div ref={pathRef} className="relative dash-slide-up-3" style={{ height: layout.totalHeight }}>
-            {/* SVG connecting path */}
-            <svg
-              className="absolute left-0 top-0 pointer-events-none"
-              width={pathWidth}
-              height={layout.totalHeight}
-            >
-              {/* Gray background path */}
-              <path d={pathD} fill="none" stroke="#e5e7eb" strokeWidth="4" strokeDasharray="8 6" strokeLinecap="round" />
-              {/* Completed portion */}
-              {completedPathD && (
-                <path d={completedPathD} fill="none" stroke="url(#roadmapGrad)" strokeWidth="4" strokeLinecap="round" />
-              )}
-              <defs>
-                <linearGradient id="roadmapGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#6366f1" />
-                  <stop offset="100%" stopColor="#8b5cf6" />
-                </linearGradient>
-              </defs>
-            </svg>
-
-            {/* Layout items */}
-            {layout.items.map((item) => {
-              if (item.type === "header") {
-                const dm = DOMAIN_META[item.domain!];
-                const domainStds = ALL_STANDARDS.filter((s) => s.domain === item.domain);
-                const domainDone = domainStds.filter((s) => progress[s.standard_id]?.status === "completed").length;
-                return (
-                  <div
-                    key={`hdr-${item.domain}`}
-                    className="absolute left-0 right-0"
-                    style={{ top: item.y - 12, width: pathWidth }}
-                  >
-                    <div className={`flex items-center gap-3 rounded-2xl border-2 ${dm.border} ${dm.bg} p-3.5 shadow-sm mx-auto`}>
-                      <span className="text-2xl">{dm.emoji}</span>
-                      <div className="flex-1 min-w-0">
-                        <div className={`font-bold text-sm ${dm.color}`}>{item.domain}</div>
-                        <div className="text-[11px] text-zinc-500">
-                          {domainDone}/{domainStds.length} standards complete
-                        </div>
-                      </div>
-                      {domainDone === domainStds.length && (
-                        <span className="text-lg">✅</span>
-                      )}
-                    </div>
-                  </div>
-                );
-              }
-
-              const std = item.standard!;
-              const p = progress[std.standard_id];
-              const isActive = activeNode === std.standard_id;
-              const isPremium = item.globalIdx! >= FREE_STANDARD_COUNT && userPlan !== "premium";
-
-              return (
-                <NodeBubble
-                  key={std.standard_id}
-                  standard={std}
-                  progress={p}
-                  x={item.x}
-                  y={item.y}
-                  index={item.globalIdx!}
-                  isActive={isActive}
-                  isPremium={isPremium}
-                  childId={child.id}
-                  containerWidth={pathWidth}
-                  onClick={() => setActiveNode(isActive ? null : std.standard_id)}
-                  onClose={closeActive}
-                />
-              );
-            })}
-
-            {/* Trophy at end */}
-            <div
-              className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center"
-              style={{ top: layout.totalHeight - 90 }}
-            >
-              <div className="w-20 h-20 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-3xl shadow-[0_4px_0_0_#c2410c,0_8px_24px_rgba(245,158,11,0.4)]">
-                🏆
-              </div>
-              <p className="text-sm font-bold text-zinc-700 mt-3">Level Complete!</p>
-              <p className="text-xs text-zinc-400">Master all {ALL_STANDARDS.length} standards</p>
-            </div>
-          </div>
-        </div>
-
-        {/* ── Desktop Sidebar ── */}
+        {/* ── Desktop Sidebar (left column) ── */}
         <div className="hidden md:block w-72 flex-shrink-0">
           <div className="sticky top-20 space-y-4">
             {/* Progress Summary */}
@@ -473,6 +382,94 @@ function Roadmap({ child, userPlan }: { child: Child; userPlan: string }) {
                   );
                 })}
               </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Path column (right on desktop, full-width on mobile) */}
+        <div className="flex-1 flex justify-center">
+          <div ref={pathRef} className="relative w-full max-w-[400px] dash-slide-up-3" style={{ height: layout.totalHeight }}>
+            {/* SVG connecting path */}
+            <svg
+              className="absolute left-0 top-0 w-full pointer-events-none"
+              viewBox={`0 0 ${pathWidth} ${layout.totalHeight}`}
+              preserveAspectRatio="xMidYMin meet"
+            >
+              {/* Gray background path */}
+              <path d={pathD} fill="none" stroke="#e5e7eb" strokeWidth="4" strokeDasharray="8 6" strokeLinecap="round" />
+              {/* Completed portion */}
+              {completedPathD && (
+                <path d={completedPathD} fill="none" stroke="url(#roadmapGrad)" strokeWidth="4" strokeLinecap="round" />
+              )}
+              <defs>
+                <linearGradient id="roadmapGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#6366f1" />
+                  <stop offset="100%" stopColor="#8b5cf6" />
+                </linearGradient>
+              </defs>
+            </svg>
+
+            {/* Layout items */}
+            {layout.items.map((item) => {
+              if (item.type === "header") {
+                const dm = DOMAIN_META[item.domain!];
+                const domainStds = ALL_STANDARDS.filter((s) => s.domain === item.domain);
+                const domainDone = domainStds.filter((s) => progress[s.standard_id]?.status === "completed").length;
+                return (
+                  <div
+                    key={`hdr-${item.domain}`}
+                    className="absolute left-0 right-0"
+                    style={{ top: item.y - 12 }}
+                  >
+                    <div className={`flex items-center gap-3 rounded-2xl border-2 ${dm.border} ${dm.bg} p-3.5 shadow-sm mx-auto`}>
+                      <span className="text-2xl">{dm.emoji}</span>
+                      <div className="flex-1 min-w-0">
+                        <div className={`font-bold text-sm ${dm.color}`}>{item.domain}</div>
+                        <div className="text-[11px] text-zinc-500">
+                          {domainDone}/{domainStds.length} standards complete
+                        </div>
+                      </div>
+                      {domainDone === domainStds.length && (
+                        <span className="text-lg">✅</span>
+                      )}
+                    </div>
+                  </div>
+                );
+              }
+
+              const std = item.standard!;
+              const p = progress[std.standard_id];
+              const isActive = activeNode === std.standard_id;
+              const isPremium = item.globalIdx! >= FREE_STANDARD_COUNT && userPlan !== "premium";
+
+              return (
+                <NodeBubble
+                  key={std.standard_id}
+                  standard={std}
+                  progress={p}
+                  x={item.x}
+                  y={item.y}
+                  index={item.globalIdx!}
+                  isActive={isActive}
+                  isPremium={isPremium}
+                  childId={child.id}
+                  containerWidth={pathWidth}
+                  onClick={() => setActiveNode(isActive ? null : std.standard_id)}
+                  onClose={closeActive}
+                />
+              );
+            })}
+
+            {/* Trophy at end */}
+            <div
+              className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center"
+              style={{ top: layout.totalHeight - 90 }}
+            >
+              <div className="w-20 h-20 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-3xl shadow-[0_4px_0_0_#c2410c,0_8px_24px_rgba(245,158,11,0.4)]">
+                🏆
+              </div>
+              <p className="text-sm font-bold text-zinc-700 mt-3">Level Complete!</p>
+              <p className="text-xs text-zinc-400">Master all {ALL_STANDARDS.length} standards</p>
             </div>
           </div>
         </div>
@@ -564,10 +561,10 @@ function NodeBubble({
 
   // Node sizes: current=76px, completed=64px, locked=52px
   const nodeSize = status === "current" ? 76 : status === "completed" ? 64 : 52;
-  const offsetFromCenter = x - containerWidth / 2;
+  const leftPct = containerWidth > 0 ? (x / containerWidth) * 100 : 50;
 
-  // Tooltip positioning: avoid overflow
-  const tooltipLeft = offsetFromCenter > 30 ? -120 : offsetFromCenter < -30 ? -120 : -144;
+  // Tooltip positioning: keep within container
+  const isLeftSide = leftPct < 50;
 
   return (
     <div
@@ -576,7 +573,7 @@ function NodeBubble({
       className="absolute flex flex-col items-center"
       style={{
         top: y - nodeSize / 2,
-        left: `calc(50% + ${offsetFromCenter}px)`,
+        left: `${leftPct}%`,
         transform: "translateX(-50%)",
         zIndex: isActive ? 50 : status === "current" ? 20 : 10,
       }}
@@ -649,7 +646,7 @@ function NodeBubble({
       {isActive && (
         <div
           className="absolute top-full mt-2 z-50 animate-scaleIn"
-          style={{ width: 288, left: tooltipLeft }}
+          style={{ width: 288, left: isLeftSide ? -40 : -200 }}
         >
           <div className="rounded-2xl bg-white border border-zinc-200 shadow-xl p-4 space-y-3">
             <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white border-l border-t border-zinc-200 rotate-45" />
