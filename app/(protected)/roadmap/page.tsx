@@ -42,11 +42,11 @@ const DOMAIN_META: Record<string, { emoji: string; color: string; bg: string; bo
   "Language":                   { emoji: "💬", color: "text-amber-700",  bg: "bg-amber-50",   border: "border-amber-200",   fill: "#f59e0b", gradient: "from-amber-500 to-orange-600" },
 };
 
-const NODE_SPACING = 95;
+const NODE_SPACING = 76;
 const DOMAIN_HEADER_HEIGHT = 72;
 const FREE_STANDARD_COUNT = 10;
-const LEFT_PCT = 0.4;
-const RIGHT_PCT = 0.6;
+const LEFT_PCT = 0.35;
+const RIGHT_PCT = 0.55;
 
 /* ─── Mock progress ──────────────────────────────────── */
 
@@ -270,16 +270,13 @@ function Roadmap({ child, userPlan }: { child: Child; userPlan: string }) {
     return () => clearTimeout(t);
   }, [currentStandard]);
 
-  const gradeLabel = child.grade?.toLowerCase() === "pre-k" ? "Foundational" : (child.grade || "Kindergarten");
-
   return (
     <div className="max-w-5xl mx-auto pb-20 px-4">
       {/* ── Nav ── */}
-      <div className="flex items-center justify-between pt-4 mb-6 animate-slideUp max-w-[400px] mx-auto md:max-w-none">
+      <div className="pt-4 mb-6 animate-slideUp max-w-[400px] mx-auto md:max-w-none">
         <Link href="/dashboard" className="text-sm text-indigo-600 hover:text-indigo-700 font-medium transition-colors">
           &larr; Dashboard
         </Link>
-        <span className="text-xs text-zinc-400 font-medium">{gradeLabel}</span>
       </div>
 
       {/* ── Title ── */}
@@ -305,7 +302,7 @@ function Roadmap({ child, userPlan }: { child: Child; userPlan: string }) {
       <div className="md:flex md:gap-8 md:justify-center">
         {/* ── Desktop Sidebar (left column) ── */}
         <div className="hidden md:block w-72 flex-shrink-0">
-          <div className="sticky top-20 space-y-4">
+          <div className="sticky top-[100px] space-y-4">
             {/* Progress Summary */}
             <div className="rounded-2xl bg-gradient-to-br from-indigo-600 via-violet-600 to-purple-600 p-5 shadow-lg">
               <div className="flex items-center gap-3 mb-4">
@@ -399,7 +396,7 @@ function Roadmap({ child, userPlan }: { child: Child; userPlan: string }) {
               <path d={pathD} fill="none" stroke="#e5e7eb" strokeWidth="4" strokeDasharray="8 6" strokeLinecap="round" />
               {/* Completed portion */}
               {completedPathD && (
-                <path d={completedPathD} fill="none" stroke="url(#roadmapGrad)" strokeWidth="4" strokeLinecap="round" />
+                <path d={completedPathD} fill="none" stroke="url(#roadmapGrad)" strokeWidth="4" strokeDasharray="8 6" strokeLinecap="round" />
               )}
               <defs>
                 <linearGradient id="roadmapGrad" x1="0" y1="0" x2="0" y2="1">
@@ -430,7 +427,11 @@ function Roadmap({ child, userPlan }: { child: Child; userPlan: string }) {
                         </div>
                       </div>
                       {domainDone === domainStds.length && (
-                        <span className="text-lg">✅</span>
+                        <span className="w-7 h-7 rounded-full bg-gradient-to-b from-emerald-400 to-emerald-600 flex items-center justify-center shadow-[0_2px_0_0_#059669] flex-shrink-0">
+                          <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                          </svg>
+                        </span>
                       )}
                     </div>
                   </div>
@@ -667,16 +668,24 @@ function NodeBubble({
             </div>
 
             {status === "completed" && progress.score != null && (
-              <div className="flex gap-3">
-                <div className="flex-1 bg-emerald-50 rounded-xl p-2.5 text-center">
-                  <div className="text-emerald-700 font-bold text-sm">{progress.score}/{progress.total}</div>
-                  <div className="text-emerald-600 text-[10px]">Correct</div>
+              <>
+                <div className="flex gap-3">
+                  <div className="flex-1 bg-emerald-50 rounded-xl p-2.5 text-center">
+                    <div className="text-emerald-700 font-bold text-sm">{progress.score}/{progress.total}</div>
+                    <div className="text-emerald-600 text-[10px]">Correct</div>
+                  </div>
+                  <div className="flex-1 bg-amber-50 rounded-xl p-2.5 text-center">
+                    <div className="text-amber-700 font-bold text-sm">+{progress.xpEarned}</div>
+                    <div className="text-amber-600 text-[10px]">XP Earned</div>
+                  </div>
                 </div>
-                <div className="flex-1 bg-amber-50 rounded-xl p-2.5 text-center">
-                  <div className="text-amber-700 font-bold text-sm">+{progress.xpEarned}</div>
-                  <div className="text-amber-600 text-[10px]">XP Earned</div>
-                </div>
-              </div>
+                <Link
+                  href={`/roadmap/practice?child=${childId}&standard=${standard.standard_id}`}
+                  className="block w-full text-center px-4 py-2.5 rounded-xl bg-emerald-50 text-emerald-700 text-sm font-bold hover:bg-emerald-100 transition-all border border-emerald-200"
+                >
+                  Practice Again
+                </Link>
+              </>
             )}
 
             {status === "current" && progress.score != null && (
