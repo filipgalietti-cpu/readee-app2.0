@@ -113,7 +113,7 @@ export default function NavAuth() {
               {userPlan !== "premium" && (
                 <Link
                   href="/upgrade"
-                  className="text-sm font-semibold text-amber-600 hover:text-amber-700 transition-colors flex items-center gap-1"
+                  className="text-sm font-semibold text-indigo-600 hover:text-indigo-700 transition-colors flex items-center gap-1"
                 >
                   <span>⭐</span> Upgrade
                 </Link>
@@ -220,7 +220,7 @@ export default function NavAuth() {
                 Feedback
               </Link>
               {userPlan !== "premium" && (
-                <Link href="/upgrade" className="block py-2.5 text-sm font-semibold text-amber-600 hover:text-amber-700">
+                <Link href="/upgrade" className="block py-2.5 text-sm font-semibold text-indigo-600 hover:text-indigo-700">
                   ⭐ Upgrade to Readee+
                 </Link>
               )}
