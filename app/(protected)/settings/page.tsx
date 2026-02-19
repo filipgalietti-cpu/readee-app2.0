@@ -61,7 +61,13 @@ export default function Settings() {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("readee_prefs", JSON.stringify({ soundEffects, autoAdvance }));
+    try {
+      const stored = localStorage.getItem("readee_prefs");
+      const prefs = stored ? JSON.parse(stored) : {};
+      prefs.soundEffects = soundEffects;
+      prefs.autoAdvance = autoAdvance;
+      localStorage.setItem("readee_prefs", JSON.stringify(prefs));
+    } catch {}
   }, [soundEffects, autoAdvance]);
 
   useEffect(() => {

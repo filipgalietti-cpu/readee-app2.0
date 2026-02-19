@@ -5,6 +5,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
+import { useSpeech } from "@/app/_components/SpeechContext";
 import kStandards from "@/app/data/kindergarten-standards-questions.json";
 
 /* ─── Types ──────────────────────────────────────────── */
@@ -17,6 +18,7 @@ interface Question {
   correct: string;
   hint: string;
   difficulty: number;
+  audio_url?: string;
 }
 
 interface Standard {
@@ -85,6 +87,45 @@ function getStars(correct: number, total: number): number {
   if (correct >= total - 1) return 2;
   if (correct >= 1) return 1;
   return 0;
+}
+
+/* ─── Audio Helpers ──────────────────────────────────── */
+
+function SpeakerButton({ text, className = "" }: { text: string; className?: string }) {
+  const { speakManual } = useSpeech();
+  return (
+    <button
+      onClick={(e) => { e.stopPropagation(); speakManual(text); }}
+      className={`inline-flex items-center justify-center w-8 h-8 rounded-full hover:bg-white/10 transition-colors flex-shrink-0 ${className}`}
+      aria-label="Listen"
+    >
+      <svg className="w-4 h-4 text-indigo-300" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15.536 8.464a5 5 0 010 7.072M17.95 6.05a8 8 0 010 11.9M11 5L6 9H2v6h4l5 4V5z" />
+      </svg>
+    </button>
+  );
+}
+
+function MuteToggle() {
+  const { muted, toggleMute } = useSpeech();
+  return (
+    <button
+      onClick={toggleMute}
+      className="w-10 h-10 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 transition-colors flex-shrink-0"
+      aria-label={muted ? "Unmute" : "Mute"}
+    >
+      {muted ? (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+        </svg>
+      ) : (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M15.536 8.464a5 5 0 010 7.072M17.95 6.05a8 8 0 010 11.9M11 5L6 9H2v6h4l5 4V5z" />
+        </svg>
+      )}
+    </button>
+  );
 }
 
 /* ═══════════════════════════════════════════════════════ */
@@ -157,6 +198,7 @@ function PracticeLoader() {
 
 function PracticeSession({ child, standard }: { child: Child; standard: Standard }) {
   const router = useRouter();
+  const { speak, playUrl, stop } = useSpeech();
 
   const questions = useMemo(() => {
     if (standard.questions.length <= QUESTIONS_PER_SESSION) return standard.questions;
@@ -176,6 +218,31 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
 
   const q = questions[currentIdx];
   const totalQ = questions.length;
+
+  /* ── Auto-speak question on load ── */
+  useEffect(() => {
+    if (phase !== "playing") return;
+    const { passage, question } = splitPrompt(q.prompt);
+    if (q.audio_url) {
+      playUrl(q.audio_url);
+    } else {
+      const textToSpeak = passage ? `${passage}. ${question}` : question;
+      speak(textToSpeak);
+    }
+    return () => stop();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentIdx, phase]);
+
+  /* ── Auto-speak feedback ── */
+  useEffect(() => {
+    if (phase !== "feedback") return;
+    if (isCorrect) {
+      speak(feedbackMsg);
+    } else {
+      speak(`${feedbackMsg}. The correct answer is ${q.correct}. ${q.hint}`);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [phase]);
 
   /* ── Handle answer selection ── */
   const handleAnswer = useCallback((choice: string) => {
@@ -215,8 +282,9 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
 
   /* ── Exit ── */
   const handleExit = useCallback(() => {
+    stop();
     router.push(`/dashboard`);
-  }, [router]);
+  }, [router, stop]);
 
   if (phase === "complete") {
     const correctCount = answers.filter((a) => a.correct).length;
@@ -276,6 +344,8 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
           <span className="text-sm">⭐</span>
           <span className="text-sm font-bold text-amber-400 tabular-nums">{sessionXP}</span>
         </div>
+
+        <MuteToggle />
       </div>
 
       {/* ── Question area ── */}
@@ -283,15 +353,21 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
         {/* Passage */}
         {passage && (
           <div className="mb-5 rounded-2xl bg-slate-800/80 border border-slate-700 p-5 animate-fadeUp">
-            <p className="text-lg leading-relaxed text-white/90 whitespace-pre-line">{passage}</p>
+            <div className="flex items-start gap-2">
+              <p className="text-lg leading-relaxed text-white/90 whitespace-pre-line flex-1">{passage}</p>
+              <SpeakerButton text={passage} />
+            </div>
           </div>
         )}
 
         {/* Question */}
         <div className="mb-6 animate-fadeUp" style={{ animationDelay: "0.05s" }}>
-          <h2 className="text-[22px] font-bold text-white leading-snug">
-            {question}
-          </h2>
+          <div className="flex items-start gap-2">
+            <h2 className="text-[22px] font-bold text-white leading-snug flex-1">
+              {question}
+            </h2>
+            <SpeakerButton text={question} />
+          </div>
         </div>
 
         {/* Answer choices */}
@@ -355,9 +431,10 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
                       String.fromCharCode(65 + i)
                     )}
                   </span>
-                  <span className={`text-lg font-medium leading-snug ${textColor}`}>
+                  <span className={`text-lg font-medium leading-snug flex-1 ${textColor}`}>
                     {choice}
                   </span>
+                  <SpeakerButton text={choice} />
                 </div>
               </button>
             );

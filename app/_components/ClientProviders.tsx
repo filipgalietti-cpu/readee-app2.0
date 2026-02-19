@@ -4,6 +4,7 @@ import React from "react";
 import { ProfileProvider } from "./ProfileContext";
 import OnboardingGuard from "./OnboardingGuard";
 import { ThemeProvider } from "./ThemeContext";
+import { SpeechProvider } from "./SpeechContext";
 
 export default function ClientProviders({
   children,
@@ -12,9 +13,11 @@ export default function ClientProviders({
 }) {
   return (
     <ThemeProvider>
-      <ProfileProvider>
-        <OnboardingGuard>{children}</OnboardingGuard>
-      </ProfileProvider>
+      <SpeechProvider>
+        <ProfileProvider>
+          <OnboardingGuard>{children}</OnboardingGuard>
+        </ProfileProvider>
+      </SpeechProvider>
     </ThemeProvider>
   );
 }

@@ -5,6 +5,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
+import { useSpeech } from "@/app/_components/SpeechContext";
 import lessonsData from "@/lib/data/lessons.json";
 
 type Phase = "loading" | "learn" | "practice" | "read" | "read-transition" | "complete";
@@ -145,6 +146,47 @@ function formatLearnItem(item: Record<string, unknown>): { emoji: string; title:
     return { emoji: (item.emoji as string) || "✍️", title: String(item.technique), detail: `${item.definition || ""} — "${item.example || ""}"` };
   }
   return { emoji: emoji || "📚", title: JSON.stringify(item).slice(0, 50), detail: "" };
+}
+
+/* ─── Audio Helpers ──────────────────────────────────── */
+
+function LessonSpeakerButton({ text, light = false }: { text: string; light?: boolean }) {
+  const { speakManual } = useSpeech();
+  return (
+    <button
+      onClick={(e) => { e.stopPropagation(); speakManual(text); }}
+      className={`inline-flex items-center justify-center w-8 h-8 rounded-full transition-colors flex-shrink-0 ${
+        light ? "hover:bg-black/5 text-indigo-400" : "hover:bg-white/10 text-indigo-300"
+      }`}
+      aria-label="Listen"
+    >
+      <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15.536 8.464a5 5 0 010 7.072M17.95 6.05a8 8 0 010 11.9M11 5L6 9H2v6h4l5 4V5z" />
+      </svg>
+    </button>
+  );
+}
+
+function LessonMuteToggle() {
+  const { muted, toggleMute } = useSpeech();
+  return (
+    <button
+      onClick={toggleMute}
+      className="w-9 h-9 rounded-full flex items-center justify-center text-zinc-400 hover:text-indigo-600 hover:bg-indigo-50 transition-colors flex-shrink-0"
+      aria-label={muted ? "Unmute" : "Mute"}
+    >
+      {muted ? (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+        </svg>
+      ) : (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M15.536 8.464a5 5 0 010 7.072M17.95 6.05a8 8 0 010 11.9M11 5L6 9H2v6h4l5 4V5z" />
+        </svg>
+      )}
+    </button>
+  );
 }
 
 /* ─── Mini confetti burst ────────────────────────────── */
@@ -433,6 +475,7 @@ function isLessonFree(lessonId: string): boolean {
 function LessonContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
+  const { speak, stop } = useSpeech();
   const childId = searchParams.get("child");
   const lessonId = searchParams.get("lesson");
 
@@ -560,6 +603,50 @@ function LessonContent() {
     },
     [child]
   );
+
+  /* ─── Auto-speak: Learn phase (flashcards) ── */
+  useEffect(() => {
+    if (phase !== "learn" || !lesson) return;
+    const item = lesson.learn.items[learnIdx];
+    const { title, detail } = formatLearnItem(item);
+    speak(`${title}. ${detail}`);
+    return () => stop();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [phase, learnIdx]);
+
+  /* ─── Auto-speak: Read phase (story title) ── */
+  useEffect(() => {
+    if (phase !== "read" || !lesson || showReadQuestions) return;
+    speak(lesson.read.title);
+    return () => stop();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [phase, showReadQuestions]);
+
+  /* ─── Auto-speak: Read questions ── */
+  useEffect(() => {
+    if (phase !== "read" || !lesson || !showReadQuestions) return;
+    const q = lesson.read.questions[readQIdx];
+    if (q) speak(q.prompt);
+    return () => stop();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [readQIdx, showReadQuestions]);
+
+  /* ─── Auto-speak: Practice questions ── */
+  useEffect(() => {
+    if (phase !== "practice" || !lesson) return;
+    const q = lesson.practice.questions[practiceIdx];
+    if (q) speak(q.prompt);
+    return () => stop();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [phase, practiceIdx]);
+
+  /* ─── Auto-speak: Completion ── */
+  useEffect(() => {
+    if (phase !== "complete") return;
+    speak("Lesson Complete! " + celebrationMsg);
+    return () => stop();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [phase]);
 
   /* ─── Learn Handlers ─────────────────────────────────── */
   const handleLearnNext = () => {
@@ -779,14 +866,19 @@ function LessonContent() {
     return (
       <div className={pageWrapper}>
         <div className="max-w-2xl mx-auto py-8 px-4 space-y-6">
-          <SectionProgressBar
-            phase={phase}
-            practiceIdx={0}
-            practiceTotal={lesson.practice.questions.length}
-            readQIdx={0}
-            readTotal={lesson.read.questions.length}
-            showReadQuestions={false}
-          />
+          <div className="flex items-center gap-2">
+            <div className="flex-1">
+              <SectionProgressBar
+                phase={phase}
+                practiceIdx={0}
+                practiceTotal={lesson.practice.questions.length}
+                readQIdx={0}
+                readTotal={lesson.read.questions.length}
+                showReadQuestions={false}
+              />
+            </div>
+            <LessonMuteToggle />
+          </div>
 
           <div className="text-center">
             <h1 className="text-2xl font-bold text-zinc-900 tracking-tight">
@@ -825,10 +917,13 @@ function LessonContent() {
               </div>
             )}
 
-            {/* Say it out loud prompt */}
-            <p className="text-sm text-indigo-500 font-semibold mt-4">
-              🗣️ Say it out loud!
-            </p>
+            {/* Speaker + Say it out loud prompt */}
+            <div className="flex items-center justify-center gap-2 mt-4">
+              <LessonSpeakerButton text={`${title}. ${detail}`} light />
+              <p className="text-sm text-indigo-500 font-semibold">
+                Say it out loud!
+              </p>
+            </div>
           </div>
 
           {/* Dot indicators */}
@@ -873,14 +968,19 @@ function LessonContent() {
     return (
       <div className={pageWrapper}>
         <div className="max-w-2xl mx-auto py-8 px-4 space-y-6">
-          <SectionProgressBar
-            phase={phase}
-            practiceIdx={practiceIdx}
-            practiceTotal={lesson.practice.questions.length}
-            readQIdx={0}
-            readTotal={lesson.read.questions.length}
-            showReadQuestions={false}
-          />
+          <div className="flex items-center gap-2">
+            <div className="flex-1">
+              <SectionProgressBar
+                phase={phase}
+                practiceIdx={practiceIdx}
+                practiceTotal={lesson.practice.questions.length}
+                readQIdx={0}
+                readTotal={lesson.read.questions.length}
+                showReadQuestions={false}
+              />
+            </div>
+            <LessonMuteToggle />
+          </div>
 
           {/* Drag & Match */}
           {qType === "drag_match" && (
@@ -911,9 +1011,12 @@ function LessonContent() {
           {/* Multiple Choice */}
           {qType === "multiple_choice" && (
             <>
-              <h2 className="text-xl font-bold text-zinc-900 text-center leading-relaxed">
-                {q.prompt}
-              </h2>
+              <div className="flex items-start justify-center gap-2">
+                <h2 className="text-xl font-bold text-zinc-900 text-center leading-relaxed">
+                  {q.prompt}
+                </h2>
+                <LessonSpeakerButton text={q.prompt} light />
+              </div>
 
               {/* Feedback */}
               {feedback && (
@@ -971,7 +1074,7 @@ function LessonContent() {
                           {showCorrect && isCorrect ? "✓" : letters[i]}
                         </div>
                         <span
-                          className={`font-medium text-base ${
+                          className={`font-medium text-base flex-1 ${
                             showCorrect && isCorrect
                               ? "text-green-700"
                               : isWrong
@@ -981,6 +1084,7 @@ function LessonContent() {
                         >
                           {choice}
                         </span>
+                        <LessonSpeakerButton text={choice} light />
                       </div>
                     </button>
                   );
@@ -1003,31 +1107,38 @@ function LessonContent() {
       return (
         <div className={pageWrapper}>
           <div className="max-w-2xl mx-auto py-8 px-4 space-y-6">
-            <SectionProgressBar
-              phase="read"
-              practiceIdx={0}
-              practiceTotal={lesson.practice.questions.length}
-              readQIdx={0}
-              readTotal={lesson.read.questions.length}
-              showReadQuestions={false}
-            />
+            <div className="flex items-center gap-2">
+              <div className="flex-1">
+                <SectionProgressBar
+                  phase="read"
+                  practiceIdx={0}
+                  practiceTotal={lesson.practice.questions.length}
+                  readQIdx={0}
+                  readTotal={lesson.read.questions.length}
+                  showReadQuestions={false}
+                />
+              </div>
+              <LessonMuteToggle />
+            </div>
 
             <div className="text-center">
-              <h1 className="text-2xl font-bold text-zinc-900 tracking-tight">
-                {lesson.read.title}
-              </h1>
+              <div className="flex items-center justify-center gap-2">
+                <h1 className="text-2xl font-bold text-zinc-900 tracking-tight">
+                  {lesson.read.title}
+                </h1>
+                <LessonSpeakerButton text={lesson.read.title} light />
+              </div>
               <p className="text-zinc-500 mt-1 text-sm">Read the story below</p>
             </div>
 
             <div className="rounded-2xl border border-zinc-200 bg-white p-6 space-y-3">
               {storyLines.map((line, i) => (
-                <p
-                  key={i}
-                  className="text-lg leading-relaxed text-zinc-800 animate-storyLineIn"
-                  style={{ animationDelay: `${i * 0.15}s` }}
-                >
-                  {line}
-                </p>
+                <div key={i} className="flex items-start gap-1 animate-storyLineIn" style={{ animationDelay: `${i * 0.15}s` }}>
+                  <p className="text-lg leading-relaxed text-zinc-800 flex-1">
+                    {line}
+                  </p>
+                  <LessonSpeakerButton text={line} light />
+                </div>
               ))}
             </div>
 
@@ -1038,7 +1149,7 @@ function LessonContent() {
               }}
               className="w-full py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white font-bold text-lg hover:from-indigo-700 hover:to-violet-600 transition-all shadow-lg animate-gentleBounce"
             >
-              Let&apos;s check what you remember! 📝
+              Let&apos;s check what you remember!
             </button>
           </div>
         </div>
@@ -1050,18 +1161,26 @@ function LessonContent() {
     return (
       <div className={pageWrapper}>
         <div className="max-w-2xl mx-auto py-8 px-4 space-y-6">
-          <SectionProgressBar
-            phase="read"
-            practiceIdx={0}
-            practiceTotal={lesson.practice.questions.length}
-            readQIdx={readQIdx}
-            readTotal={lesson.read.questions.length}
-            showReadQuestions={true}
-          />
+          <div className="flex items-center gap-2">
+            <div className="flex-1">
+              <SectionProgressBar
+                phase="read"
+                practiceIdx={0}
+                practiceTotal={lesson.practice.questions.length}
+                readQIdx={readQIdx}
+                readTotal={lesson.read.questions.length}
+                showReadQuestions={true}
+              />
+            </div>
+            <LessonMuteToggle />
+          </div>
 
-          <h2 className="text-xl font-bold text-zinc-900 text-center leading-relaxed">
-            {q.prompt}
-          </h2>
+          <div className="flex items-start justify-center gap-2">
+            <h2 className="text-xl font-bold text-zinc-900 text-center leading-relaxed">
+              {q.prompt}
+            </h2>
+            <LessonSpeakerButton text={q.prompt} light />
+          </div>
 
           {/* Feedback */}
           {readFeedback && (
@@ -1119,7 +1238,7 @@ function LessonContent() {
                       {showCorrect && isCorrect ? "✓" : letters[i]}
                     </div>
                     <span
-                      className={`font-medium text-base ${
+                      className={`font-medium text-base flex-1 ${
                         showCorrect && isCorrect
                           ? "text-green-700"
                           : isWrong
@@ -1129,6 +1248,7 @@ function LessonContent() {
                     >
                       {choice}
                     </span>
+                    <LessonSpeakerButton text={choice} light />
                   </div>
                 </button>
               );
