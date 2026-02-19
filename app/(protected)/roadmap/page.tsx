@@ -42,11 +42,18 @@ const DOMAIN_META: Record<string, { emoji: string; color: string; bg: string; bo
   "Language":                   { emoji: "💬", color: "text-amber-700",  bg: "bg-amber-50",   border: "border-amber-200",   fill: "#f59e0b" },
 };
 
-const NODE_SPACING = 100;       // vertical px between nodes
-const AMPLITUDE = 70;           // horizontal snake swing (px)
-const PATH_WIDTH = 320;         // SVG viewbox width
+const NODES_PER_ROW = 3;
+const PATH_WIDTH = 340;
 const CENTER_X = PATH_WIDTH / 2;
-const DOMAIN_HEADER_HEIGHT = 64; // space reserved for domain header rows
+const LEFT_X = 50;
+const RIGHT_X = 290;
+const ROW_X = [LEFT_X, CENTER_X, RIGHT_X];
+
+const INTRA_ROW_Y = 90;
+const TURN_GAP_Y = 50;
+const DOMAIN_HEADER_HEIGHT = 64;
+const TURN_BULGE = 30;
+const FREE_STANDARD_COUNT = 10;
 
 /* ─── Mock progress ──────────────────────────────────── */
 
@@ -83,7 +90,6 @@ function shortName(desc: string): string {
   return capped.length > 55 ? capped.slice(0, 52) + "..." : capped;
 }
 
-/** Get unique domains in order they appear */
 function getDomainOrder(standards: Standard[]): string[] {
   const seen = new Set<string>();
   const order: string[] = [];
@@ -117,14 +123,27 @@ function RoadmapLoader() {
   const params = useSearchParams();
   const childId = params.get("child");
   const [child, setChild] = useState<Child | null>(null);
+  const [userPlan, setUserPlan] = useState<string>("free");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function load() {
       if (!childId) { setLoading(false); return; }
       const supabase = supabaseBrowser();
+
       const { data } = await supabase.from("children").select("*").eq("id", childId).single();
       if (data) setChild(data as Child);
+
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        const { data: profile } = await supabase
+          .from("profiles")
+          .select("plan")
+          .eq("id", user.id)
+          .single();
+        setUserPlan((profile as { plan?: string } | null)?.plan || "free");
+      }
+
       setLoading(false);
     }
     load();
@@ -144,14 +163,23 @@ function RoadmapLoader() {
     );
   }
 
-  return <Roadmap child={child} />;
+  return <Roadmap child={child} userPlan={userPlan} />;
 }
 
 /* ═══════════════════════════════════════════════════════ */
 /*  Main Roadmap                                          */
 /* ═══════════════════════════════════════════════════════ */
 
-function Roadmap({ child }: { child: Child }) {
+interface LayoutItem {
+  type: "header" | "node";
+  domain?: string;
+  standard?: Standard;
+  globalIdx?: number;
+  y: number;
+  x: number;
+}
+
+function Roadmap({ child, userPlan }: { child: Child; userPlan: string }) {
   const allStandards = (kStandards as { standards: Standard[] }).standards;
   const progress = useMemo(() => buildMockProgress(allStandards), [allStandards]);
   const domainOrder = useMemo(() => getDomainOrder(allStandards), [allStandards]);
@@ -159,41 +187,49 @@ function Roadmap({ child }: { child: Child }) {
 
   const closeActive = useCallback(() => setActiveNode(null), []);
 
-  /* ── Compute layout positions ── */
-
-  // We need to know which Y rows are domain headers vs nodes.
-  // Walk through standards, inserting a header row when the domain changes.
-  interface LayoutItem {
-    type: "header" | "node";
-    domain?: string;
-    standard?: Standard;
-    globalIdx?: number;  // sequential index across all standards
-    y: number;           // center-y in the layout
-    x: number;           // center-x in the layout
-  }
+  /* ── Compute wrap-around layout ── */
 
   const layout = useMemo(() => {
     const items: LayoutItem[] = [];
-    let y = 30;
+    let y = 40;
     let currentDomain = "";
     let nodeSeq = 0;
+    let rowInDomain = 0;
+    let colInRow = 0;
 
     for (const std of allStandards) {
-      // Insert domain header when domain changes
+      // Domain header when domain changes
       if (std.domain !== currentDomain) {
-        if (currentDomain !== "") y += 20; // extra gap between domains
+        if (currentDomain !== "") {
+          y += 30;
+          rowInDomain = 0;
+          colInRow = 0;
+        }
         items.push({ type: "header", domain: std.domain, y, x: CENTER_X });
         y += DOMAIN_HEADER_HEIGHT;
         currentDomain = std.domain;
+        rowInDomain = 0;
+        colInRow = 0;
       }
 
-      const x = CENTER_X + Math.sin(nodeSeq * 0.7) * AMPLITUDE;
+      // Start new row if current one is full
+      if (colInRow >= NODES_PER_ROW) {
+        y += TURN_GAP_Y;
+        rowInDomain++;
+        colInRow = 0;
+      }
+
+      // X position based on row direction
+      const isLTR = rowInDomain % 2 === 0;
+      const x = isLTR ? ROW_X[colInRow] : ROW_X[NODES_PER_ROW - 1 - colInRow];
+
       items.push({ type: "node", standard: std, globalIdx: nodeSeq, y, x });
-      y += NODE_SPACING;
+      y += INTRA_ROW_Y;
       nodeSeq++;
+      colInRow++;
     }
 
-    return { items, totalHeight: y + 80 };
+    return { items, totalHeight: y + 100 };
   }, [allStandards]);
 
   /* ── Build SVG path through node centers ── */
@@ -205,25 +241,43 @@ function Roadmap({ child }: { child: Child }) {
     for (let i = 1; i < nodeItems.length; i++) {
       const prev = nodeItems[i - 1];
       const cur = nodeItems[i];
-      const cpY = (prev.y + cur.y) / 2;
-      d += ` C ${prev.x} ${cpY}, ${cur.x} ${cpY}, ${cur.x} ${cur.y}`;
+
+      // U-turn: consecutive nodes on same side (within 20px)
+      const isTurn = Math.abs(prev.x - cur.x) < 20;
+
+      if (isTurn) {
+        const bulgeDir = prev.x > CENTER_X ? 1 : prev.x < CENTER_X ? -1 : 1;
+        const bx = prev.x + bulgeDir * TURN_BULGE;
+        d += ` C ${bx} ${prev.y + 40}, ${bx} ${cur.y - 40}, ${cur.x} ${cur.y}`;
+      } else {
+        const cpY = (prev.y + cur.y) / 2;
+        d += ` C ${prev.x} ${cpY}, ${cur.x} ${cpY}, ${cur.x} ${cur.y}`;
+      }
     }
     return d;
   }, [nodeItems]);
 
-  // Split path for completed portion
+  // Completed portion of path
   const completedIdx = nodeItems.filter((n) => progress[n.standard!.standard_id]?.status === "completed").length;
 
   const completedPathD = useMemo(() => {
-    const end = completedIdx + 1; // include "current" node in colored path
+    const end = completedIdx + 1;
     const slice = nodeItems.slice(0, Math.min(end, nodeItems.length));
     if (slice.length < 2) return "";
     let d = `M ${slice[0].x} ${slice[0].y}`;
     for (let i = 1; i < slice.length; i++) {
       const prev = slice[i - 1];
       const cur = slice[i];
-      const cpY = (prev.y + cur.y) / 2;
-      d += ` C ${prev.x} ${cpY}, ${cur.x} ${cpY}, ${cur.x} ${cur.y}`;
+      const isTurn = Math.abs(prev.x - cur.x) < 20;
+
+      if (isTurn) {
+        const bulgeDir = prev.x > CENTER_X ? 1 : prev.x < CENTER_X ? -1 : 1;
+        const bx = prev.x + bulgeDir * TURN_BULGE;
+        d += ` C ${bx} ${prev.y + 40}, ${bx} ${cur.y - 40}, ${cur.x} ${cur.y}`;
+      } else {
+        const cpY = (prev.y + cur.y) / 2;
+        d += ` C ${prev.x} ${cpY}, ${cur.x} ${cpY}, ${cur.x} ${cur.y}`;
+      }
     }
     return d;
   }, [nodeItems, completedIdx]);
@@ -334,7 +388,7 @@ function Roadmap({ child }: { child: Child }) {
         </svg>
 
         {/* Layout items (headers + nodes) */}
-        {layout.items.map((item, i) => {
+        {layout.items.map((item) => {
           if (item.type === "header") {
             const dm = DOMAIN_META[item.domain!];
             return (
@@ -360,6 +414,8 @@ function Roadmap({ child }: { child: Child }) {
           const std = item.standard!;
           const p = progress[std.standard_id];
           const isActive = activeNode === std.standard_id;
+          const isPremium = item.globalIdx! >= FREE_STANDARD_COUNT && userPlan !== "premium";
+
           return (
             <NodeBubble
               key={std.standard_id}
@@ -369,6 +425,7 @@ function Roadmap({ child }: { child: Child }) {
               y={item.y}
               index={item.globalIdx!}
               isActive={isActive}
+              isPremium={isPremium}
               childId={child.id}
               onClick={() => setActiveNode(isActive ? null : std.standard_id)}
               onClose={closeActive}
@@ -379,7 +436,7 @@ function Roadmap({ child }: { child: Child }) {
         {/* Trophy at end */}
         <div
           className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center"
-          style={{ top: layout.totalHeight - 70 }}
+          style={{ top: layout.totalHeight - 90 }}
         >
           <div className="w-16 h-16 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-2xl shadow-lg shadow-amber-200">
             🏆
@@ -397,7 +454,7 @@ function Roadmap({ child }: { child: Child }) {
 /* ═══════════════════════════════════════════════════════ */
 
 function NodeBubble({
-  standard, progress, x, y, index, isActive, childId, onClick, onClose,
+  standard, progress, x, y, index, isActive, isPremium, childId, onClick, onClose,
 }: {
   standard: Standard;
   progress: StandardProgress;
@@ -405,6 +462,7 @@ function NodeBubble({
   y: number;
   index: number;
   isActive: boolean;
+  isPremium: boolean;
   childId: string;
   onClick: () => void;
   onClose: () => void;
@@ -423,7 +481,6 @@ function NodeBubble({
     return () => document.removeEventListener("mousedown", handler);
   }, [isActive, onClose]);
 
-  // Calculate pixel offset from center (PATH_WIDTH / 2)
   const offsetX = x - CENTER_X;
 
   return (
@@ -432,7 +489,7 @@ function NodeBubble({
       id={`node-${standard.standard_id}`}
       className="absolute flex flex-col items-center"
       style={{
-        top: y - 28, // center the 56px node vertically on the path point
+        top: y - 28,
         left: `calc(50% + ${offsetX}px)`,
         transform: "translateX(-50%)",
         zIndex: isActive ? 50 : 10,
@@ -444,13 +501,15 @@ function NodeBubble({
         className={`
           relative w-14 h-14 rounded-full flex items-center justify-center
           transition-all duration-300 outline-none select-none
-          ${status === "completed"
+          ${isPremium && status === "locked"
+            ? "bg-gradient-to-br from-indigo-200 to-violet-200 text-violet-400"
+            : status === "completed"
             ? "bg-emerald-500 text-white shadow-md shadow-emerald-200"
             : status === "current"
             ? "bg-gradient-to-br from-indigo-500 to-violet-500 text-white shadow-lg shadow-indigo-300 ring-4 ring-indigo-300/40 roadmap-pulse"
             : "bg-zinc-200 text-zinc-400"
           }
-          ${status !== "locked" ? "cursor-pointer hover:scale-110 active:scale-95" : "cursor-default"}
+          ${status !== "locked" ? "cursor-pointer hover:scale-110 active:scale-95" : "cursor-pointer hover:scale-105"}
           ${isActive ? "!scale-110 ring-4 ring-indigo-400/50" : ""}
         `}
         aria-label={`${standard.standard_id}: ${standard.standard_description}`}
@@ -463,9 +522,14 @@ function NodeBubble({
         {status === "current" && (
           <span className="text-lg font-bold">{index + 1}</span>
         )}
-        {status === "locked" && (
+        {status === "locked" && !isPremium && (
           <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+          </svg>
+        )}
+        {status === "locked" && isPremium && (
+          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
           </svg>
         )}
 
@@ -475,12 +539,20 @@ function NodeBubble({
             ⭐
           </span>
         )}
+
+        {/* Readee+ badge for premium locked */}
+        {isPremium && status === "locked" && (
+          <span className="absolute -top-1 -right-1 px-1.5 py-0.5 rounded-full bg-gradient-to-r from-indigo-500 to-violet-500 text-[7px] font-extrabold text-white shadow-sm leading-none">
+            R+
+          </span>
+        )}
       </button>
 
       {/* Label */}
       <span className={`mt-1 text-[10px] font-bold whitespace-nowrap ${
         status === "completed" ? "text-emerald-600"
         : status === "current" ? "text-indigo-600"
+        : isPremium ? "text-violet-400"
         : "text-zinc-300"
       }`}>
         {standard.standard_id}
@@ -499,7 +571,7 @@ function NodeBubble({
                 <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${dm.bg} ${dm.color}`}>
                   {standard.standard_id}
                 </span>
-                <StatusBadge status={status} />
+                <StatusBadge status={status} isPremium={isPremium} />
               </div>
               <h4 className="font-bold text-sm text-zinc-900 mt-2 leading-snug">
                 {shortName(standard.standard_description)}
@@ -549,10 +621,29 @@ function NodeBubble({
               </Link>
             )}
 
-            {status === "locked" && (
+            {status === "locked" && !isPremium && (
               <p className="text-center text-[11px] text-zinc-400 py-1">
                 Complete previous standards to unlock
               </p>
+            )}
+
+            {status === "locked" && isPremium && (
+              <div className="space-y-2">
+                <div className="bg-gradient-to-r from-indigo-50 to-violet-50 rounded-xl p-3 text-center">
+                  <p className="text-[11px] text-indigo-600 font-medium">
+                    This standard is part of Readee+
+                  </p>
+                </div>
+                <Link
+                  href={`/upgrade?child=${childId}`}
+                  className="flex items-center justify-center gap-1.5 w-full px-4 py-2.5 rounded-xl bg-gradient-to-r from-indigo-500 to-violet-500 text-white text-sm font-bold hover:from-indigo-600 hover:to-violet-600 transition-all shadow-md"
+                >
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                  Upgrade to Readee+
+                </Link>
+              </div>
             )}
           </div>
         </div>
@@ -563,12 +654,15 @@ function NodeBubble({
 
 /* ─── Status Badge ───────────────────────────────────── */
 
-function StatusBadge({ status }: { status: StandardProgress["status"] }) {
+function StatusBadge({ status, isPremium }: { status: StandardProgress["status"]; isPremium: boolean }) {
   if (status === "completed") {
     return <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-700">Completed ✓</span>;
   }
   if (status === "current") {
     return <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-indigo-100 text-indigo-700">In Progress</span>;
+  }
+  if (isPremium) {
+    return <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-gradient-to-r from-indigo-100 to-violet-100 text-indigo-600">Readee+</span>;
   }
   return <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-zinc-100 text-zinc-500">Locked 🔒</span>;
 }
