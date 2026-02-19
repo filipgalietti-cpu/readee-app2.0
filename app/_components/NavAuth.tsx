@@ -12,7 +12,9 @@ export default function NavAuth() {
   const [userPlan, setUserPlan] = useState<string>("free");
   const [menuOpen, setMenuOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [navHidden, setNavHidden] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
     const supabase = createClient();
@@ -52,7 +54,25 @@ export default function NavAuth() {
   useEffect(() => {
     setMobileOpen(false);
     setMenuOpen(false);
+    setNavHidden(false);
   }, [pathname]);
+
+  // Auto-hide nav on scroll down (mobile only)
+  useEffect(() => {
+    function handleScroll() {
+      if (window.innerWidth >= 768) { setNavHidden(false); return; }
+      const y = window.scrollY;
+      if (y > lastScrollY.current && y > 80) {
+        setNavHidden(true);
+        setMobileOpen(false);
+      } else {
+        setNavHidden(false);
+      }
+      lastScrollY.current = y;
+    }
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleLogout = async () => {
     const supabase = createClient();
@@ -73,7 +93,7 @@ export default function NavAuth() {
   // Avoid flicker
   if (loggedIn === null) {
     return (
-      <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-zinc-200">
+      <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-zinc-200 transition-transform duration-300 md:translate-y-0" style={{ transform: navHidden ? "translateY(-100%)" : undefined }}>
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 h-16">
           <span className="text-xl font-extrabold tracking-tight">
             <span className="text-indigo-700">READ</span>
@@ -85,7 +105,7 @@ export default function NavAuth() {
   }
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-zinc-200">
+    <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-zinc-200 transition-transform duration-300 md:translate-y-0" style={{ transform: navHidden ? "translateY(-100%)" : undefined }}>
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 h-16">
         {/* Logo */}
         <Link

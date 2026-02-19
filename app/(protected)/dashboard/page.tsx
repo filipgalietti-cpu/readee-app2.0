@@ -542,45 +542,28 @@ function ChildDashboard({
         <p className="text-zinc-500 mt-1 text-sm">{motivation}</p>
       </div>
 
-      {/* ── Reading Level Badge ── */}
+      {/* ── Reading Level Badge (compact) ── */}
       {readingLevel && (
         <div className="dash-slide-up-2">
-          <div className="rounded-2xl bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 p-4 shadow-lg">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center text-2xl flex-shrink-0">
-                📖
+          <div className="rounded-2xl bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 px-4 py-3 shadow-lg">
+            <div className="flex items-center gap-3">
+              <span className="text-xl">📖</span>
+              <div className="flex-1 min-w-0 flex items-center gap-2 flex-wrap">
+                <span className="text-white/70 text-xs font-medium">Level:</span>
+                <span className="text-white font-bold text-sm">{readingLevel}</span>
+                {child.grade && (
+                  <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-white/20 text-white">
+                    {GRADE_LABELS[child.grade] || child.grade}
+                  </span>
+                )}
               </div>
-              <div className="flex-1 min-w-0">
-                <div className="text-white/70 text-xs font-medium">Current Level</div>
-                <div className="text-white font-bold text-lg leading-tight">{readingLevel}</div>
-              </div>
-              {child.grade && (
-                <span className="px-3 py-1 rounded-full text-xs font-bold bg-white/20 text-white flex-shrink-0">
-                  {GRADE_LABELS[child.grade] || child.grade}
-                </span>
-              )}
-            </div>
-            <div className="mt-2 text-right">
-              <Link href="/settings" className="text-white/60 hover:text-white/90 text-[11px] font-medium transition-colors">
-                Change Level →
+              <Link href="/settings" className="text-white/60 hover:text-white/90 text-[11px] font-medium transition-colors flex-shrink-0">
+                Change →
               </Link>
             </div>
           </div>
         </div>
       )}
-
-      {/* ── Reading Level Progress (display only) ── */}
-      <div className="rounded-2xl border border-zinc-200 bg-white p-5 dash-slide-up-2">
-        <LevelProgressBar
-          currentLevel={readingLevel}
-          readOnly
-        />
-        <div className="mt-3 text-center">
-          <Link href="/settings" className="text-xs text-indigo-600 hover:text-indigo-700 font-medium transition-colors">
-            Change in Settings →
-          </Link>
-        </div>
-      </div>
 
       {/* ── Stats Cards ── */}
       <div className="grid grid-cols-3 gap-3 dash-slide-up-3">

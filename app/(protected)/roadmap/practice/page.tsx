@@ -33,7 +33,7 @@ interface AnswerRecord {
   selected: string;
 }
 
-type Phase = "loading" | "playing" | "complete";
+type Phase = "playing" | "feedback" | "complete";
 
 /* ─── Constants ──────────────────────────────────────── */
 
@@ -42,19 +42,13 @@ const QUESTIONS_PER_SESSION = 5;
 const XP_PER_CORRECT = 5;
 
 const CORRECT_MESSAGES = [
-  "Great job! ⭐",
-  "You got it! 🎉",
-  "Amazing! 🌟",
-  "Super smart! 🧠",
-  "Wonderful! 💫",
-  "Nailed it! 🎯",
+  "Amazing!", "Great job!", "You got it!", "Nice catch!",
+  "Super smart!", "Wonderful!", "Nailed it!", "Brilliant!",
 ];
+const CORRECT_EMOJIS = ["⭐", "🎉", "✨", "🌟", "💫", "🎯"];
 
 const INCORRECT_MESSAGES = [
-  "Almost! Try to remember this one 💪",
-  "Not quite, but you're learning! 📖",
-  "Good try! Now you know! 🌱",
-  "Keep going, you've got this! 💜",
+  "Not quite!", "Almost!", "Good try!", "Keep learning!",
 ];
 
 /* ─── Helpers ────────────────────────────────────────── */
@@ -72,9 +66,7 @@ function shuffleArray<T>(arr: T[]): T[] {
   return shuffled;
 }
 
-/** Split prompt into passage (optional) and question */
 function splitPrompt(prompt: string): { passage: string | null; question: string } {
-  // Prompts look like: "🐶 Read: \"Max the dog...\"\n\nWhat did Max play with?"
   const parts = prompt.split("\n\n");
   if (parts.length >= 2) {
     return { passage: parts.slice(0, -1).join("\n\n"), question: parts[parts.length - 1] };
@@ -88,14 +80,11 @@ function getNextStandard(currentId: string): Standard | null {
   return null;
 }
 
-function shortName(desc: string): string {
-  const cleaned = desc
-    .replace(/^With prompting and support, /i, "")
-    .replace(/^Demonstrate understanding of /i, "")
-    .replace(/^Recognize and name /i, "")
-    .replace(/^Know and apply /i, "");
-  const capped = cleaned.charAt(0).toUpperCase() + cleaned.slice(1);
-  return capped.length > 50 ? capped.slice(0, 47) + "..." : capped;
+function getStars(correct: number, total: number): number {
+  if (correct === total) return 3;
+  if (correct >= total - 1) return 2;
+  if (correct >= 1) return 1;
+  return 0;
 }
 
 /* ═══════════════════════════════════════════════════════ */
@@ -112,9 +101,9 @@ export default function PracticePage() {
 
 function LoadingScreen() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-[80vh] gap-4">
-      <div className="h-12 w-12 rounded-full border-4 border-indigo-200 border-t-indigo-600 animate-spin" />
-      <p className="text-zinc-400 text-sm font-medium">Loading questions...</p>
+    <div className="flex flex-col items-center justify-center min-h-[100dvh] bg-[#0f172a] gap-4">
+      <div className="h-12 w-12 rounded-full border-4 border-indigo-900 border-t-indigo-400 animate-spin" />
+      <p className="text-indigo-300 text-sm font-medium">Loading questions...</p>
     </div>
   );
 }
@@ -145,19 +134,16 @@ function PracticeLoader() {
 
   if (!child || !standard) {
     return (
-      <div className="max-w-md mx-auto py-16 text-center space-y-4">
-        <div className="text-5xl">🔍</div>
-        <h1 className="text-xl font-bold text-zinc-900">
-          {!child ? "No reader selected" : "Standard not found"}
-        </h1>
-        <p className="text-sm text-zinc-500">
-          {!child
-            ? "We couldn't find the reader profile."
-            : `Standard "${standardId}" doesn't exist in our question bank.`}
-        </p>
-        <Link href="/dashboard" className="inline-block text-sm text-indigo-600 hover:text-indigo-700 font-medium">
-          &larr; Back to Dashboard
-        </Link>
+      <div className="min-h-[100dvh] bg-[#0f172a] flex items-center justify-center">
+        <div className="max-w-md text-center space-y-4 px-6">
+          <div className="text-5xl">🔍</div>
+          <h1 className="text-xl font-bold text-white">
+            {!child ? "No reader selected" : "Standard not found"}
+          </h1>
+          <Link href="/dashboard" className="inline-block text-sm text-indigo-400 hover:text-indigo-300 font-medium">
+            &larr; Back to Dashboard
+          </Link>
+        </div>
       </div>
     );
   }
@@ -172,13 +158,11 @@ function PracticeLoader() {
 function PracticeSession({ child, standard }: { child: Child; standard: Standard }) {
   const router = useRouter();
 
-  /* ── Pick questions ── */
   const questions = useMemo(() => {
     if (standard.questions.length <= QUESTIONS_PER_SESSION) return standard.questions;
     return shuffleArray(standard.questions).slice(0, QUESTIONS_PER_SESSION);
   }, [standard]);
 
-  /* ── State ── */
   const [phase, setPhase] = useState<Phase>("playing");
   const [currentIdx, setCurrentIdx] = useState(0);
   const [answers, setAnswers] = useState<AnswerRecord[]>([]);
@@ -186,55 +170,53 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
   const [selected, setSelected] = useState<string | null>(null);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [feedbackMsg, setFeedbackMsg] = useState("");
+  const [feedbackEmoji, setFeedbackEmoji] = useState("");
   const [saving, setSaving] = useState(false);
-  const advanceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   const q = questions[currentIdx];
   const totalQ = questions.length;
 
-  /* ── Clean up timer ── */
-  useEffect(() => {
-    return () => { if (advanceTimer.current) clearTimeout(advanceTimer.current); };
-  }, []);
-
   /* ── Handle answer selection ── */
   const handleAnswer = useCallback((choice: string) => {
-    if (selected !== null) return; // already answered
+    if (selected !== null) return;
 
     const correct = choice === q.correct;
     setSelected(choice);
     setIsCorrect(correct);
+    setPhase("feedback");
 
     if (correct) {
       setFeedbackMsg(pickRandom(CORRECT_MESSAGES));
+      setFeedbackEmoji(pickRandom(CORRECT_EMOJIS));
       setSessionXP((prev) => prev + XP_PER_CORRECT);
     } else {
       setFeedbackMsg(pickRandom(INCORRECT_MESSAGES));
+      setFeedbackEmoji("");
     }
 
     setAnswers((prev) => [...prev, { questionId: q.id, correct, selected: choice }]);
+  }, [selected, q]);
 
-    // Auto-advance
-    const delay = correct ? 1500 : 3000;
-    advanceTimer.current = setTimeout(() => {
-      if (currentIdx + 1 < totalQ) {
-        setCurrentIdx((i) => i + 1);
-        setSelected(null);
-        setIsCorrect(null);
-        setFeedbackMsg("");
-      } else {
-        setPhase("complete");
-      }
-    }, delay);
-  }, [selected, q, currentIdx, totalQ]);
+  /* ── Continue to next question ── */
+  const handleContinue = useCallback(() => {
+    if (currentIdx + 1 < totalQ) {
+      setCurrentIdx((i) => i + 1);
+      setSelected(null);
+      setIsCorrect(null);
+      setFeedbackMsg("");
+      setFeedbackEmoji("");
+      setPhase("playing");
+      scrollRef.current?.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      setPhase("complete");
+    }
+  }, [currentIdx, totalQ]);
 
   /* ── Exit ── */
   const handleExit = useCallback(() => {
-    if (advanceTimer.current) clearTimeout(advanceTimer.current);
     router.push(`/roadmap?child=${child.id}`);
   }, [router, child.id]);
-
-  if (phase === "loading") return <LoadingScreen />;
 
   if (phase === "complete") {
     const correctCount = answers.filter((a) => a.correct).length;
@@ -256,95 +238,89 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
           setSelected(null);
           setIsCorrect(null);
           setFeedbackMsg("");
+          setFeedbackEmoji("");
         }}
       />
     );
   }
 
   const { passage, question } = splitPrompt(q.prompt);
+  const progressPct = ((currentIdx + (phase === "feedback" ? 1 : 0)) / totalQ) * 100;
 
   return (
-    <div className="min-h-[100dvh] bg-gradient-to-b from-indigo-50/50 to-white flex flex-col">
-      {/* ── Top bar ── */}
-      <div className="sticky top-0 z-30 bg-white/90 backdrop-blur-sm border-b border-zinc-100">
-        <div className="max-w-lg mx-auto flex items-center gap-3 px-4 py-3">
-          <button
-            onClick={handleExit}
-            className="w-9 h-9 rounded-full flex items-center justify-center hover:bg-zinc-100 transition-colors flex-shrink-0"
-            aria-label="Exit practice"
-          >
-            <svg className="w-5 h-5 text-zinc-400" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
+    <div ref={scrollRef} className="min-h-[100dvh] bg-[#0f172a] flex flex-col overflow-y-auto">
+      {/* ── Top bar: progress + close ── */}
+      <div className="flex items-center gap-3 px-4 pt-4 pb-2 flex-shrink-0">
+        <button
+          onClick={handleExit}
+          className="w-10 h-10 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 transition-colors flex-shrink-0"
+          aria-label="Exit"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
 
-          {/* Progress bar */}
-          <div className="flex-1">
-            <div className="h-3 bg-zinc-100 rounded-full overflow-hidden">
-              <div
-                className="h-full bg-gradient-to-r from-indigo-500 to-violet-500 rounded-full transition-all duration-500 ease-out"
-                style={{ width: `${((currentIdx) / totalQ) * 100}%` }}
-              />
-            </div>
-          </div>
-
-          {/* Question count */}
-          <span className="text-xs font-bold text-zinc-400 flex-shrink-0 tabular-nums">
-            {currentIdx + 1}/{totalQ}
-          </span>
-
-          {/* XP */}
-          <div className="flex items-center gap-1 bg-amber-50 px-2.5 py-1 rounded-full flex-shrink-0">
-            <span className="text-xs">⭐</span>
-            <span className="text-xs font-bold text-amber-700 tabular-nums">{sessionXP}</span>
-          </div>
+        <div className="flex-1 h-4 bg-slate-800 rounded-full overflow-hidden">
+          <div
+            className="h-full rounded-full transition-all duration-500 ease-out"
+            style={{
+              width: `${progressPct}%`,
+              background: "linear-gradient(90deg, #4ade80, #22c55e)",
+              boxShadow: "0 0 8px rgba(74, 222, 128, 0.4)",
+            }}
+          />
         </div>
-      </div>
 
-      {/* ── Standard name ── */}
-      <div className="max-w-lg mx-auto w-full px-4 pt-4 pb-2">
-        <div className="flex items-center gap-2">
-          <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-indigo-100 text-indigo-700">
-            {standard.standard_id}
-          </span>
-          <span className="text-xs text-zinc-400 truncate">{shortName(standard.standard_description)}</span>
+        <div className="flex items-center gap-1 bg-slate-800 px-3 py-1.5 rounded-full flex-shrink-0">
+          <span className="text-sm">⭐</span>
+          <span className="text-sm font-bold text-amber-400 tabular-nums">{sessionXP}</span>
         </div>
       </div>
 
       {/* ── Question area ── */}
-      <div className="flex-1 max-w-lg mx-auto w-full px-4 pb-6 flex flex-col">
-        {/* Passage card */}
+      <div className="flex-1 max-w-lg mx-auto w-full px-4 pt-4 pb-32 flex flex-col">
+        {/* Passage */}
         {passage && (
-          <div className="mb-4 rounded-2xl bg-white border border-indigo-100 p-5 shadow-sm animate-fadeUp">
-            <p className="text-lg leading-relaxed text-zinc-800 whitespace-pre-line">{passage}</p>
+          <div className="mb-5 rounded-2xl bg-slate-800/80 border border-slate-700 p-5 animate-fadeUp">
+            <p className="text-lg leading-relaxed text-slate-200 whitespace-pre-line">{passage}</p>
           </div>
         )}
 
-        {/* Question text */}
+        {/* Question */}
         <div className="mb-6 animate-fadeUp" style={{ animationDelay: "0.05s" }}>
-          <h2 className="text-xl font-bold text-zinc-900 leading-snug">
+          <h2 className="text-[22px] font-bold text-white leading-snug">
             {question}
           </h2>
         </div>
 
         {/* Answer choices */}
-        <div className="space-y-3 flex-1">
+        <div className="space-y-3">
           {q.choices.map((choice, i) => {
             const isSelected = selected === choice;
             const isCorrectChoice = choice === q.correct;
             const answered = selected !== null;
 
-            let cardStyle = "bg-white border-zinc-200 hover:border-indigo-300 hover:bg-indigo-50/50 active:scale-[0.98]";
+            let bg = "bg-slate-800 border-slate-600 hover:border-indigo-400 hover:bg-slate-700 active:scale-[0.97]";
+            let textColor = "text-white";
+            let badgeBg = "bg-slate-700 text-slate-300";
+
             if (answered) {
               if (isSelected && isCorrect) {
-                cardStyle = "bg-emerald-50 border-emerald-400 ring-2 ring-emerald-400/30";
+                bg = "bg-emerald-900/60 border-emerald-500 ring-2 ring-emerald-500/30";
+                textColor = "text-emerald-100";
+                badgeBg = "bg-emerald-500 text-white";
               } else if (isSelected && !isCorrect) {
-                cardStyle = "bg-red-50 border-red-300 ring-2 ring-red-300/30 animate-wrongShake";
+                bg = "bg-red-900/40 border-red-500 ring-2 ring-red-500/30 animate-wrongShake";
+                textColor = "text-red-200";
+                badgeBg = "bg-red-500 text-white";
               } else if (isCorrectChoice && !isCorrect) {
-                // Reveal correct answer when wrong
-                cardStyle = "bg-emerald-50 border-emerald-300";
+                bg = "bg-emerald-900/40 border-emerald-500";
+                textColor = "text-emerald-200";
+                badgeBg = "bg-emerald-500 text-white";
               } else {
-                cardStyle = "bg-zinc-50 border-zinc-100 opacity-50";
+                bg = "bg-slate-800/40 border-slate-700 opacity-40";
+                textColor = "text-slate-400";
               }
             }
 
@@ -355,27 +331,16 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
                 disabled={answered}
                 className={`
                   w-full text-left px-5 py-4 rounded-2xl border-2
-                  transition-all duration-200 outline-none
-                  animate-fadeUp ${cardStyle}
+                  transition-all duration-200 outline-none animate-fadeUp
+                  ${bg}
                   ${answered ? "cursor-default" : "cursor-pointer"}
                 `}
-                style={{ animationDelay: `${0.08 + i * 0.05}s`, minHeight: 60 }}
+                style={{ animationDelay: `${0.1 + i * 0.06}s`, minHeight: 60 }}
               >
-                <div className="flex items-center gap-3">
-                  {/* Letter badge */}
-                  <span className={`
-                    w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0
-                    ${answered && isSelected && isCorrect
-                      ? "bg-emerald-500 text-white"
-                      : answered && isSelected && !isCorrect
-                      ? "bg-red-400 text-white"
-                      : answered && isCorrectChoice && !isCorrect
-                      ? "bg-emerald-500 text-white"
-                      : "bg-zinc-100 text-zinc-500"
-                    }
-                  `}>
+                <div className="flex items-center gap-4">
+                  <span className={`w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 ${badgeBg}`}>
                     {answered && isSelected && isCorrect ? (
-                      <svg className="w-4.5 h-4.5" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                     ) : answered && isSelected && !isCorrect ? (
@@ -383,21 +348,14 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
                         <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                       </svg>
                     ) : answered && isCorrectChoice && !isCorrect ? (
-                      <svg className="w-4.5 h-4.5" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                     ) : (
                       String.fromCharCode(65 + i)
                     )}
                   </span>
-
-                  {/* Choice text */}
-                  <span className={`text-base font-medium leading-snug ${
-                    answered && isSelected && isCorrect ? "text-emerald-800"
-                    : answered && isSelected && !isCorrect ? "text-red-700"
-                    : answered && isCorrectChoice && !isCorrect ? "text-emerald-700"
-                    : "text-zinc-700"
-                  }`}>
+                  <span className={`text-lg font-medium leading-snug ${textColor}`}>
                     {choice}
                   </span>
                 </div>
@@ -405,28 +363,59 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
             );
           })}
         </div>
-
-        {/* Feedback area */}
-        {selected !== null && (
-          <div className={`mt-4 rounded-2xl p-4 animate-fadeUp ${
-            isCorrect
-              ? "bg-emerald-50 border border-emerald-200"
-              : "bg-amber-50 border border-amber-200"
-          }`}>
-            <p className={`text-base font-bold ${isCorrect ? "text-emerald-700" : "text-amber-700"}`}>
-              {feedbackMsg}
-            </p>
-            {!isCorrect && (
-              <p className="text-sm text-amber-600 mt-2 leading-relaxed">
-                💡 <span className="font-medium">Hint:</span> {q.hint}
-              </p>
-            )}
-            {isCorrect && (
-              <p className="text-sm text-emerald-600 mt-1">+{XP_PER_CORRECT} XP</p>
-            )}
-          </div>
-        )}
       </div>
+
+      {/* ── Bottom feedback bar (Duolingo-style) ── */}
+      {phase === "feedback" && (
+        <div
+          className={`fixed bottom-0 left-0 right-0 z-40 animate-slideUp ${
+            isCorrect
+              ? "bg-emerald-600"
+              : "bg-red-500"
+          }`}
+        >
+          <div className="max-w-lg mx-auto px-5 py-5 safe-area-bottom">
+            <div className="flex items-start gap-3 mb-4">
+              {isCorrect ? (
+                <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0 text-xl">
+                  {feedbackEmoji}
+                </div>
+              ) : (
+                <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
+                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </div>
+              )}
+              <div className="flex-1 min-w-0">
+                <p className="text-white font-extrabold text-lg">{feedbackMsg}</p>
+                {isCorrect && (
+                  <p className="text-white/80 text-sm mt-0.5">+{XP_PER_CORRECT} XP</p>
+                )}
+                {!isCorrect && (
+                  <>
+                    <p className="text-white/90 text-sm font-bold mt-1">
+                      Correct answer: {q.correct}
+                    </p>
+                    <p className="text-white/70 text-sm mt-1">{q.hint}</p>
+                  </>
+                )}
+              </div>
+            </div>
+
+            <button
+              onClick={handleContinue}
+              className={`w-full py-4 rounded-2xl font-extrabold text-base transition-all active:scale-[0.97] ${
+                isCorrect
+                  ? "bg-white text-emerald-700 hover:bg-emerald-50"
+                  : "bg-white text-red-600 hover:bg-red-50"
+              }`}
+            >
+              CONTINUE
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -457,46 +446,40 @@ function CompletionScreen({
   onRestart: () => void;
 }) {
   const [saved, setSaved] = useState(false);
-  const [confetti, setConfetti] = useState<{ id: number; left: number; delay: number; color: string }[]>([]);
+  const [confetti, setConfetti] = useState<{ id: number; left: number; delay: number; color: string; size: number }[]>([]);
   const totalQ = questions.length;
-  const pct = Math.round((correctCount / totalQ) * 100);
-  const passed = pct >= 80; // 4/5 or better
+  const stars = getStars(correctCount, totalQ);
   const nextStandard = getNextStandard(standard.standard_id);
 
-  /* ── Celebration tier ── */
-  let tier: "amazing" | "good" | "keep-trying";
-  let tierEmoji: string;
-  let tierTitle: string;
-  let tierSub: string;
+  let title: string;
+  let subtitle: string;
 
-  if (correctCount >= 4) {
-    tier = "amazing";
-    tierEmoji = "🏆";
-    tierTitle = "Amazing work!";
-    tierSub = `You mastered ${standard.standard_id}!`;
-  } else if (correctCount >= 2) {
-    tier = "good";
-    tierEmoji = "💪";
-    tierTitle = "Good effort!";
-    tierSub = "Keep practicing — you're getting better!";
+  if (stars === 3) {
+    title = "Perfect Score!";
+    subtitle = `You mastered ${standard.standard_id}!`;
+  } else if (stars === 2) {
+    title = "Great Work!";
+    subtitle = "Almost perfect — keep it up!";
+  } else if (stars === 1) {
+    title = "Good Effort!";
+    subtitle = "Practice makes perfect!";
   } else {
-    tier = "keep-trying";
-    tierEmoji = "📖";
-    tierTitle = "That was tough!";
-    tierSub = "Let's try again soon — practice makes perfect!";
+    title = "Keep Trying!";
+    subtitle = "Let's give it another go!";
   }
 
-  /* ── Confetti for amazing tier ── */
+  /* ── Confetti for 5/5 ── */
   useEffect(() => {
-    if (tier !== "amazing") return;
-    const pieces = Array.from({ length: 60 }, (_, i) => ({
+    if (correctCount < totalQ) return;
+    const pieces = Array.from({ length: 80 }, (_, i) => ({
       id: i,
       left: Math.random() * 100,
-      delay: Math.random() * 1.5,
-      color: ["#6366f1", "#8b5cf6", "#f59e0b", "#10b981", "#ec4899", "#3b82f6"][i % 6],
+      delay: Math.random() * 2,
+      size: 6 + Math.random() * 8,
+      color: ["#4ade80", "#6366f1", "#f59e0b", "#ec4899", "#8b5cf6", "#06b6d4", "#f43f5e"][i % 7],
     }));
     setConfetti(pieces);
-  }, [tier]);
+  }, [correctCount, totalQ]);
 
   /* ── Save results ── */
   useEffect(() => {
@@ -506,7 +489,6 @@ function CompletionScreen({
     async function save() {
       const supabase = supabaseBrowser();
 
-      // Insert practice result
       await supabase.from("practice_results").insert({
         child_id: child.id,
         standard_id: standard.standard_id,
@@ -515,7 +497,6 @@ function CompletionScreen({
         xp_earned: xpEarned,
       });
 
-      // Award XP
       if (xpEarned > 0) {
         const { data: current } = await supabase
           .from("children")
@@ -538,144 +519,128 @@ function CompletionScreen({
   }, [saved, saving, child.id, standard.standard_id, totalQ, correctCount, xpEarned, setSaving]);
 
   return (
-    <div className="min-h-[100dvh] bg-gradient-to-b from-indigo-50/50 to-white relative overflow-hidden">
+    <div className="min-h-[100dvh] bg-[#0f172a] relative overflow-hidden flex flex-col">
       {/* Confetti */}
       {confetti.map((c) => (
         <div
           key={c.id}
-          className="confetti-fall absolute w-2.5 h-2.5 rounded-sm pointer-events-none"
+          className="confetti-fall absolute rounded-full pointer-events-none"
           style={{
             left: `${c.left}%`,
-            top: -10,
+            top: -20,
+            width: c.size,
+            height: c.size,
             backgroundColor: c.color,
             animationDelay: `${c.delay}s`,
           }}
         />
       ))}
 
-      <div className="max-w-lg mx-auto px-4 py-8 relative z-10">
-        {/* Hero */}
-        <div className="text-center mb-8 animate-scaleIn">
-          <div className={`
-            inline-flex items-center justify-center w-24 h-24 rounded-full text-5xl mb-4
-            ${tier === "amazing"
-              ? "bg-gradient-to-br from-amber-400 to-orange-500 shadow-[0_4px_0_0_#c2410c,0_8px_24px_rgba(245,158,11,0.4)]"
-              : tier === "good"
-              ? "bg-gradient-to-br from-indigo-500 to-violet-600 shadow-[0_4px_0_0_#4338ca,0_8px_24px_rgba(99,102,241,0.3)]"
-              : "bg-gradient-to-br from-zinc-300 to-zinc-400 shadow-[0_4px_0_0_#a1a1aa,0_8px_24px_rgba(0,0,0,0.1)]"
-            }
-          `}>
-            {tierEmoji}
-          </div>
-          <h1 className="text-2xl font-extrabold text-zinc-900 tracking-tight">{tierTitle}</h1>
-          <p className="text-zinc-500 mt-1">{tierSub}</p>
-
-          {tier === "amazing" && (
-            <div className="mt-2 inline-flex items-center gap-1 text-amber-600 text-sm font-bold">
-              ⭐ ⭐ ⭐
+      <div className="flex-1 flex flex-col items-center justify-center px-6 py-10 relative z-10 max-w-lg mx-auto w-full">
+        {/* Stars */}
+        <div className="flex items-end gap-2 mb-6 animate-scaleIn">
+          {[1, 2, 3].map((s) => (
+            <div
+              key={s}
+              className={`transition-all duration-500 ${s === 2 ? "mb-2" : ""}`}
+              style={{ animationDelay: `${s * 0.15}s` }}
+            >
+              <svg
+                viewBox="0 0 24 24"
+                className={`${s === 2 ? "w-16 h-16" : "w-12 h-12"} transition-all duration-500`}
+                fill={s <= stars ? "#facc15" : "#334155"}
+                stroke={s <= stars ? "#eab308" : "#475569"}
+                strokeWidth="0.5"
+              >
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+              </svg>
+              {s <= stars && (
+                <div className="absolute inset-0 animate-popIn" style={{ animationDelay: `${0.3 + s * 0.15}s` }} />
+              )}
             </div>
-          )}
+          ))}
         </div>
 
-        {/* Score card */}
-        <div className="rounded-2xl bg-white border border-zinc-200 shadow-sm p-5 mb-6 dash-slide-up-1">
-          <div className="grid grid-cols-3 gap-4 text-center mb-5">
-            <div>
-              <div className="text-2xl font-extrabold text-zinc-900">{correctCount}/{totalQ}</div>
-              <div className="text-xs text-zinc-400 mt-0.5">Correct</div>
-            </div>
-            <div>
-              <div className="text-2xl font-extrabold text-amber-600">+{xpEarned}</div>
-              <div className="text-xs text-zinc-400 mt-0.5">XP Earned</div>
-            </div>
-            <div>
-              <div className="text-2xl font-extrabold text-zinc-900">{pct}%</div>
-              <div className="text-xs text-zinc-400 mt-0.5">Score</div>
-            </div>
-          </div>
+        {/* Title */}
+        <h1 className="text-3xl font-extrabold text-white tracking-tight text-center mb-1 animate-fadeUp">
+          {title}
+        </h1>
+        <p className="text-slate-400 text-center mb-8">{subtitle}</p>
 
-          {/* Question breakdown */}
-          <div className="space-y-2">
-            {questions.map((q, i) => {
-              const answer = answers[i];
-              if (!answer) return null;
-              const { question } = splitPrompt(q.prompt);
-              return (
-                <div
-                  key={q.id}
-                  className={`flex items-start gap-3 rounded-xl p-3 ${
-                    answer.correct ? "bg-emerald-50" : "bg-red-50"
-                  }`}
-                >
-                  <span className={`
-                    w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5
-                    ${answer.correct ? "bg-emerald-500" : "bg-red-400"}
-                  `}>
-                    {answer.correct ? (
-                      <svg className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                      </svg>
-                    ) : (
-                      <svg className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                      </svg>
-                    )}
-                  </span>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-zinc-800 leading-snug">{question}</p>
-                    {!answer.correct && (
-                      <p className="text-xs text-red-500 mt-1">
-                        Your answer: {answer.selected} — Correct: <span className="font-bold">{q.correct}</span>
-                      </p>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
+        {/* Score + XP */}
+        <div className="flex gap-6 mb-8 dash-slide-up-1">
+          <div className="text-center">
+            <div className="text-4xl font-extrabold text-white">{correctCount}/{totalQ}</div>
+            <div className="text-xs text-slate-500 mt-1 font-medium">Correct</div>
+          </div>
+          <div className="w-px bg-slate-700" />
+          <div className="text-center">
+            <div className="text-4xl font-extrabold text-amber-400">+{xpEarned}</div>
+            <div className="text-xs text-slate-500 mt-1 font-medium">XP Earned</div>
           </div>
         </div>
 
-        {/* Passed badge */}
-        {passed && (
-          <div className="rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 p-4 text-center mb-6 dash-slide-up-2 shadow-md">
-            <p className="text-white font-bold">
-              Standard {standard.standard_id} Complete! 🎓
-            </p>
-            <p className="text-white/70 text-sm mt-0.5">
-              {nextStandard ? `${nextStandard.standard_id} is now unlocked!` : "You've finished all standards!"}
-            </p>
-          </div>
-        )}
+        {/* Question results */}
+        <div className="w-full space-y-2 mb-8 dash-slide-up-2">
+          {questions.map((qItem, i) => {
+            const answer = answers[i];
+            if (!answer) return null;
+            const { question: qText } = splitPrompt(qItem.prompt);
+            return (
+              <div
+                key={qItem.id}
+                className={`flex items-center gap-3 rounded-xl px-4 py-3 ${
+                  answer.correct ? "bg-emerald-500/10 border border-emerald-500/20" : "bg-red-500/10 border border-red-500/20"
+                }`}
+              >
+                <span className={`w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 ${
+                  answer.correct ? "bg-emerald-500" : "bg-red-500"
+                }`}>
+                  {answer.correct ? (
+                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                  ) : (
+                    <svg className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  )}
+                </span>
+                <span className="text-sm text-slate-300 flex-1 min-w-0 truncate">{qText}</span>
+              </div>
+            );
+          })}
+        </div>
 
         {/* Action buttons */}
-        <div className="space-y-3 dash-slide-up-3">
+        <div className="w-full space-y-3 dash-slide-up-3">
+          {nextStandard && (
+            <Link
+              href={`/roadmap/practice?child=${child.id}&standard=${nextStandard.standard_id}`}
+              className="block w-full text-center py-4 rounded-2xl font-extrabold text-base text-emerald-900 transition-all active:scale-[0.97]"
+              style={{ background: "linear-gradient(90deg, #4ade80, #22c55e)", boxShadow: "0 4px 0 0 #16a34a" }}
+            >
+              Next Standard →
+            </Link>
+          )}
+
           <button
             onClick={onRestart}
-            className="w-full px-5 py-4 rounded-2xl border-2 border-zinc-200 bg-white text-zinc-700 font-bold text-base hover:bg-zinc-50 transition-all active:scale-[0.98]"
+            className="w-full py-4 rounded-2xl border-2 border-slate-600 text-white font-bold text-base hover:bg-slate-800 transition-all active:scale-[0.97]"
           >
             Practice Again
           </button>
 
-          {nextStandard && (
-            <Link
-              href={`/roadmap/practice?child=${child.id}&standard=${nextStandard.standard_id}`}
-              className="block w-full text-center px-5 py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white font-bold text-base hover:from-indigo-700 hover:to-violet-600 transition-all shadow-md active:scale-[0.98]"
-            >
-              Next Standard: {nextStandard.standard_id} →
-            </Link>
-          )}
-
           <Link
-            href={`/roadmap?child=${child.id}`}
-            className="block w-full text-center px-5 py-3.5 rounded-2xl text-indigo-600 font-semibold text-sm hover:bg-indigo-50 transition-all"
+            href={`/dashboard`}
+            className="block w-full text-center py-3 rounded-2xl text-slate-400 font-semibold text-sm hover:text-white transition-colors"
           >
-            &larr; Back to Roadmap
+            Back to Dashboard
           </Link>
         </div>
 
-        {/* Saving indicator */}
         {saving && (
-          <p className="text-center text-xs text-zinc-400 mt-4 animate-pulse">Saving results...</p>
+          <p className="text-center text-xs text-slate-500 mt-4 animate-pulse">Saving results...</p>
         )}
       </div>
     </div>
