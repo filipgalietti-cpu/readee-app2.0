@@ -341,71 +341,90 @@ function AnalyticsDashboard({ child }: { child: Child }) {
       <div className="rounded-2xl border border-zinc-200 bg-white p-5 mb-6 dash-slide-up-4">
         <h2 className="text-base font-bold text-zinc-900 mb-4">Performance by Domain</h2>
         <div className="space-y-3">
-          {domainStats.map((ds) => {
-            const meta = DOMAIN_META[ds.domain];
-            return (
-              <div key={ds.domain} className={`rounded-xl border ${meta.border} ${meta.bg} p-3`}>
-                <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center gap-2">
-                    <span className="text-lg">{meta.emoji}</span>
-                    <span className={`text-sm font-bold ${meta.color}`}>{ds.domain}</span>
-                  </div>
-                  <span className={`text-sm font-bold ${meta.color}`}>{ds.accuracy}%</span>
-                </div>
-                <div className="h-2 bg-white/80 rounded-full overflow-hidden">
-                  <div
-                    className="h-full rounded-full transition-all duration-700"
-                    style={{ width: `${ds.accuracy}%`, backgroundColor: meta.barColor }}
-                  />
-                </div>
-                <div className="flex items-center justify-between mt-1.5 text-[11px] text-zinc-500">
-                  <span>{ds.proficient}/{ds.total} proficient</span>
-                  <span>{ds.attempted} questions attempted</span>
-                </div>
-              </div>
-            );
-          })}
+          {domainStats.map((ds) => (
+            <DomainCard key={ds.domain} domainStat={ds} standards={stats.filter((s) => s.domain === ds.domain)} childId={child.id} />
+          ))}
         </div>
       </div>
 
-      {/* ══════════ AREAS OF STRUGGLE ══════════ */}
+      {/* ══════════ AREAS TO FOCUS ON ══════════ */}
       {struggles.length > 0 && (
-        <div className="rounded-2xl border border-red-200 bg-red-50/50 p-5 mb-6 dash-slide-up-5">
-          <div className="flex items-center gap-2 mb-4">
+        <div className="rounded-2xl border border-amber-200 bg-gradient-to-b from-amber-50/80 to-white p-5 mb-6 dash-slide-up-5">
+          <div className="flex items-center gap-2 mb-1">
             <span className="text-lg">🎯</span>
             <h2 className="text-base font-bold text-zinc-900">Areas to Focus On</h2>
           </div>
           <p className="text-xs text-zinc-500 mb-4">
-            These standards have the lowest accuracy and could benefit from extra practice.
+            These {struggles.length} standards need the most attention — ranked by priority.
           </p>
-          <div className="space-y-2.5">
-            {struggles.map((s) => {
+          <div className="space-y-3">
+            {struggles.map((s, i) => {
               const meta = DOMAIN_META[s.domain] || DOMAIN_META["Reading Literature"];
+              const ringPct = s.accuracy;
+              const ringOffset = 88 - (88 * ringPct / 100);
               return (
-                <div key={s.standard_id} className="rounded-xl border border-red-100 bg-white p-3.5">
-                  <div className="flex items-center justify-between gap-2 mb-1.5">
-                    <div className="flex items-center gap-2 min-w-0">
-                      <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${meta.bg} ${meta.color} flex-shrink-0`}>
-                        {s.standard_id}
+                <div key={s.standard_id} className="rounded-xl border border-zinc-200 bg-white p-4 hover:shadow-sm transition-shadow">
+                  <div className="flex gap-3">
+                    {/* Priority ring */}
+                    <div className="relative w-11 h-11 flex-shrink-0">
+                      <svg viewBox="0 0 36 36" className="w-11 h-11 -rotate-90">
+                        <circle cx="18" cy="18" r="14" fill="none" stroke="#fee2e2" strokeWidth="3" />
+                        <circle
+                          cx="18" cy="18" r="14" fill="none"
+                          stroke={ringPct >= 40 ? "#f59e0b" : "#ef4444"}
+                          strokeWidth="3" strokeLinecap="round"
+                          strokeDasharray="88"
+                          strokeDashoffset={ringOffset}
+                        />
+                      </svg>
+                      <span className="absolute inset-0 flex items-center justify-center text-[10px] font-extrabold text-zinc-600">
+                        #{i + 1}
                       </span>
-                      <span className="text-sm font-medium text-zinc-900 truncate">{s.name}</span>
                     </div>
-                    <span className="text-sm font-bold text-red-600 flex-shrink-0">{s.accuracy}%</span>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <div className="flex-1 h-2 bg-red-100 rounded-full overflow-hidden">
-                      <div
-                        className="h-full bg-red-400 rounded-full"
-                        style={{ width: `${s.accuracy}%` }}
-                      />
+
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 mb-1 flex-wrap">
+                        <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${meta.bg} ${meta.color} flex-shrink-0`}>
+                          {s.standard_id}
+                        </span>
+                        <span className="text-sm font-semibold text-zinc-900 truncate">{s.name}</span>
+                      </div>
+
+                      <div className="flex items-center gap-3 mb-2">
+                        <div className="flex-1 h-2 bg-zinc-100 rounded-full overflow-hidden">
+                          <div
+                            className="h-full rounded-full transition-all duration-500"
+                            style={{
+                              width: `${s.accuracy}%`,
+                              backgroundColor: s.accuracy >= 40 ? "#f59e0b" : "#ef4444",
+                            }}
+                          />
+                        </div>
+                        <span className={`text-sm font-bold flex-shrink-0 ${s.accuracy >= 40 ? "text-amber-600" : "text-red-500"}`}>
+                          {s.accuracy}%
+                        </span>
+                        <span className="text-[11px] text-zinc-400 flex-shrink-0">
+                          {s.correct}/{s.attempted}
+                        </span>
+                      </div>
+
+                      {/* Parent tip */}
+                      <div className="rounded-lg bg-amber-50 border border-amber-100 px-3 py-2 mb-2.5">
+                        <p className="text-xs text-amber-800 leading-relaxed">
+                          <span className="font-bold">💡 Tip:</span>{" "}
+                          {s.parent_tip || `Revisit with guided practice and repeat the ${s.domain.toLowerCase()} exercises.`}
+                        </p>
+                      </div>
+
+                      {/* Practice button */}
+                      <Link
+                        href={`/roadmap/practice?child=${child.id}&standard=${s.standard_id}`}
+                        className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-xs font-bold hover:from-indigo-700 hover:to-violet-600 transition-all shadow-sm"
+                      >
+                        Practice {s.standard_id} →
+                      </Link>
                     </div>
-                    <span className="text-[11px] text-zinc-400 flex-shrink-0">
-                      {s.correct}/{s.attempted} correct
-                    </span>
                   </div>
-                  <p className="text-[11px] text-zinc-500 mt-1.5">
-                    Tip: {s.parent_tip || `Revisit with guided practice and repeat the ${s.domain.toLowerCase()} exercises.`}
-                  </p>
                 </div>
               );
             })}
@@ -482,11 +501,12 @@ function AnalyticsDashboard({ child }: { child: Child }) {
 /* ═══════════════════════════════════════════════════════ */
 
 function AccuracyChart({ data }: { data: WeeklyPoint[] }) {
+  const [hovered, setHovered] = useState<number | null>(null);
   const W = 600;
-  const H = 200;
+  const H = 220;
   const PAD_L = 36;
   const PAD_R = 16;
-  const PAD_T = 16;
+  const PAD_T = 28;
   const PAD_B = 32;
   const chartW = W - PAD_L - PAD_R;
   const chartH = H - PAD_T - PAD_B;
@@ -500,7 +520,6 @@ function AccuracyChart({ data }: { data: WeeklyPoint[] }) {
     ...d,
   }));
 
-  // Build smooth line path
   const linePath = points.reduce((path, pt, i) => {
     if (i === 0) return `M ${pt.x} ${pt.y}`;
     const prev = points[i - 1];
@@ -509,17 +528,24 @@ function AccuracyChart({ data }: { data: WeeklyPoint[] }) {
     return `${path} C ${cpx1} ${prev.y}, ${cpx2} ${pt.y}, ${pt.x} ${pt.y}`;
   }, "");
 
-  // Build area fill path
   const areaPath = `${linePath} L ${points[points.length - 1].x} ${PAD_T + chartH} L ${points[0].x} ${PAD_T + chartH} Z`;
 
   return (
     <div className="w-full overflow-x-auto">
-      <svg viewBox={`0 0 ${W} ${H}`} className="w-full min-w-[400px]" preserveAspectRatio="xMidYMid meet">
+      <svg
+        viewBox={`0 0 ${W} ${H}`}
+        className="w-full min-w-[400px]"
+        preserveAspectRatio="xMidYMid meet"
+        onMouseLeave={() => setHovered(null)}
+      >
         <defs>
           <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="#6366f1" stopOpacity="0.2" />
             <stop offset="100%" stopColor="#6366f1" stopOpacity="0.02" />
           </linearGradient>
+          <filter id="tooltipShadow" x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="1" stdDeviation="2" floodOpacity="0.1" />
+          </filter>
         </defs>
 
         {/* Grid lines */}
@@ -541,22 +567,183 @@ function AccuracyChart({ data }: { data: WeeklyPoint[] }) {
         {/* Line */}
         <path d={linePath} fill="none" stroke="#6366f1" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
 
-        {/* Dots + labels */}
-        {points.map((pt, i) => (
-          <g key={i}>
-            <circle cx={pt.x} cy={pt.y} r="4" fill="white" stroke="#6366f1" strokeWidth="2" />
-            <text x={pt.x} y={PAD_T + chartH + 18} textAnchor="middle" className="fill-zinc-400" fontSize="10">
-              {pt.label}
-            </text>
-            {/* Value label on hover — always visible for first/last */}
-            {(i === 0 || i === points.length - 1) && (
-              <text x={pt.x} y={pt.y - 10} textAnchor="middle" className="fill-indigo-600" fontSize="10" fontWeight="bold">
-                {pt.accuracy}%
+        {/* Hover vertical guide */}
+        {hovered !== null && (
+          <line
+            x1={points[hovered].x} y1={PAD_T}
+            x2={points[hovered].x} y2={PAD_T + chartH}
+            stroke="#6366f1" strokeWidth="1" strokeDasharray="4 3" opacity="0.4"
+          />
+        )}
+
+        {/* Dots + hit areas */}
+        {points.map((pt, i) => {
+          const isHovered = hovered === i;
+          const isEndpoint = i === 0 || i === points.length - 1;
+          const showLabel = isHovered || isEndpoint;
+
+          return (
+            <g key={i}>
+              {/* Invisible larger hit area for easy hovering */}
+              <circle
+                cx={pt.x} cy={pt.y} r="18" fill="transparent"
+                onMouseEnter={() => setHovered(i)}
+                style={{ cursor: "pointer" }}
+              />
+
+              {/* Visible dot */}
+              <circle
+                cx={pt.x} cy={pt.y}
+                r={isHovered ? 6 : 4}
+                fill={isHovered ? "#6366f1" : "white"}
+                stroke="#6366f1" strokeWidth="2"
+                style={{ transition: "r 0.15s ease, fill 0.15s ease" }}
+              />
+
+              {/* X-axis label */}
+              <text
+                x={pt.x} y={PAD_T + chartH + 18} textAnchor="middle"
+                className={isHovered ? "fill-indigo-600" : "fill-zinc-400"}
+                fontSize="10" fontWeight={isHovered ? "bold" : "normal"}
+              >
+                {pt.label}
               </text>
-            )}
-          </g>
-        ))}
+
+              {/* Tooltip */}
+              {showLabel && (
+                <g>
+                  {isHovered && (
+                    <>
+                      <rect
+                        x={pt.x - 52} y={pt.y - 48} width="104" height="38" rx="8"
+                        fill="white" stroke="#e5e7eb" strokeWidth="1" filter="url(#tooltipShadow)"
+                      />
+                      <text x={pt.x} y={pt.y - 30} textAnchor="middle" className="fill-indigo-700" fontSize="13" fontWeight="bold">
+                        {pt.accuracy}%
+                      </text>
+                      <text x={pt.x} y={pt.y - 17} textAnchor="middle" className="fill-zinc-400" fontSize="9">
+                        {pt.attempted} questions
+                      </text>
+                    </>
+                  )}
+                  {!isHovered && isEndpoint && (
+                    <text x={pt.x} y={pt.y - 10} textAnchor="middle" className="fill-indigo-600" fontSize="10" fontWeight="bold">
+                      {pt.accuracy}%
+                    </text>
+                  )}
+                </g>
+              )}
+            </g>
+          );
+        })}
       </svg>
+    </div>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════ */
+/*  Domain Card — expandable                               */
+/* ═══════════════════════════════════════════════════════ */
+
+interface DomainStatData {
+  domain: string;
+  total: number;
+  attempted: number;
+  correct: number;
+  accuracy: number;
+  proficient: number;
+}
+
+function DomainCard({ domainStat, standards, childId }: {
+  domainStat: DomainStatData;
+  standards: StandardStat[];
+  childId: string;
+}) {
+  const [expanded, setExpanded] = useState(false);
+  const ds = domainStat;
+  const meta = DOMAIN_META[ds.domain];
+
+  // Sort by accuracy (lowest first when expanded to show where help is needed)
+  const sortedStandards = useMemo(() =>
+    [...standards].sort((a, b) => {
+      if (a.attempted === 0 && b.attempted === 0) return a.standard_id.localeCompare(b.standard_id);
+      if (a.attempted === 0) return 1;
+      if (b.attempted === 0) return -1;
+      return a.accuracy - b.accuracy;
+    }),
+    [standards]
+  );
+
+  return (
+    <div className={`rounded-xl border-2 transition-all ${expanded ? `${meta.border} shadow-sm` : `${meta.border} ${meta.bg}`}`}>
+      <button
+        onClick={() => setExpanded((e) => !e)}
+        className={`w-full text-left p-3.5 rounded-xl transition-colors ${expanded ? `${meta.bg}` : ""}`}
+      >
+        <div className="flex items-center justify-between mb-2">
+          <div className="flex items-center gap-2">
+            <span className="text-lg">{meta.emoji}</span>
+            <span className={`text-sm font-bold ${meta.color}`}>{ds.domain}</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className={`text-sm font-bold ${meta.color}`}>{ds.accuracy}%</span>
+            <svg
+              className={`w-4 h-4 text-zinc-400 transition-transform ${expanded ? "rotate-180" : ""}`}
+              fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+        </div>
+        <div className="h-2 bg-white/80 rounded-full overflow-hidden">
+          <div
+            className="h-full rounded-full transition-all duration-700"
+            style={{ width: `${ds.accuracy}%`, backgroundColor: meta.barColor }}
+          />
+        </div>
+        <div className="flex items-center justify-between mt-1.5 text-[11px] text-zinc-500">
+          <span>{ds.proficient}/{ds.total} proficient</span>
+          <span>{ds.attempted} questions attempted</span>
+        </div>
+      </button>
+
+      {expanded && (
+        <div className="px-3.5 pb-3.5 space-y-1.5 animate-fadeUp">
+          <div className="h-px bg-zinc-200/60 mb-2" />
+          {sortedStandards.map((s) => {
+            const mc = MASTERY_CONFIG[s.mastery];
+            return (
+              <div key={s.standard_id} className="flex items-center gap-2.5 py-2 px-2 rounded-lg hover:bg-white/80 transition-colors group">
+                {/* Mastery dot */}
+                <div className={`w-2.5 h-2.5 rounded-full flex-shrink-0 ${
+                  s.mastery === "Proficient" ? "bg-emerald-500"
+                  : s.mastery === "Developing" ? "bg-amber-400"
+                  : s.mastery === "Needs Support" ? "bg-red-400"
+                  : "bg-zinc-200"
+                }`} />
+                {/* ID */}
+                <span className="text-[11px] font-bold text-zinc-500 w-14 flex-shrink-0">{s.standard_id}</span>
+                {/* Name */}
+                <span className="text-xs text-zinc-600 flex-1 min-w-0 truncate">{s.name}</span>
+                {/* Accuracy */}
+                {s.attempted > 0 ? (
+                  <span className={`text-xs font-bold flex-shrink-0 ${mc.color}`}>{s.accuracy}%</span>
+                ) : (
+                  <span className="text-[10px] text-zinc-300 flex-shrink-0">—</span>
+                )}
+                {/* Practice link */}
+                <Link
+                  href={`/roadmap/practice?child=${childId}&standard=${s.standard_id}`}
+                  className="opacity-0 group-hover:opacity-100 transition-opacity text-[10px] font-bold text-indigo-600 hover:text-indigo-700 flex-shrink-0"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  Practice →
+                </Link>
+              </div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }
