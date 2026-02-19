@@ -35,17 +35,19 @@ interface StandardProgress {
 
 /* ─── Constants ──────────────────────────────────────── */
 
-const DOMAIN_META: Record<string, { emoji: string; color: string; bg: string; border: string; fill: string }> = {
-  "Reading Literature":         { emoji: "📖", color: "text-violet-700",  bg: "bg-violet-50",  border: "border-violet-200",  fill: "#8b5cf6" },
-  "Reading Informational Text": { emoji: "📰", color: "text-blue-700",   bg: "bg-blue-50",    border: "border-blue-200",    fill: "#3b82f6" },
-  "Foundational Skills":        { emoji: "🔤", color: "text-emerald-700", bg: "bg-emerald-50", border: "border-emerald-200", fill: "#10b981" },
-  "Language":                   { emoji: "💬", color: "text-amber-700",  bg: "bg-amber-50",   border: "border-amber-200",   fill: "#f59e0b" },
+const DOMAIN_META: Record<string, { emoji: string; color: string; bg: string; border: string; fill: string; gradient: string }> = {
+  "Reading Literature":         { emoji: "📖", color: "text-violet-700",  bg: "bg-violet-50",  border: "border-violet-200",  fill: "#8b5cf6", gradient: "from-violet-500 to-purple-600" },
+  "Reading Informational Text": { emoji: "📰", color: "text-blue-700",   bg: "bg-blue-50",    border: "border-blue-200",    fill: "#3b82f6", gradient: "from-blue-500 to-indigo-600" },
+  "Foundational Skills":        { emoji: "🔤", color: "text-emerald-700", bg: "bg-emerald-50", border: "border-emerald-200", fill: "#10b981", gradient: "from-emerald-500 to-teal-600" },
+  "Language":                   { emoji: "💬", color: "text-amber-700",  bg: "bg-amber-50",   border: "border-amber-200",   fill: "#f59e0b", gradient: "from-amber-500 to-orange-600" },
 };
 
-const LEFT_PCT = 0.15;                  // 15% from left edge
-const RIGHT_PCT = 0.85;                 // 85% from left edge
-const NODE_SPACING = 74;                // vertical gap between nodes
-const DOMAIN_HEADER_HEIGHT = 64;
+const PATH_WIDTH = 400;
+const CENTER_X = PATH_WIDTH / 2;
+const AMPLITUDE = 55;
+const SINE_FREQ = (2 * Math.PI) / 7;   // smooth S-curve: ~3.5 nodes per half-wave
+const NODE_SPACING = 95;
+const DOMAIN_HEADER_HEIGHT = 72;
 const FREE_STANDARD_COUNT = 10;
 
 /* ─── Mock progress ──────────────────────────────────── */
@@ -60,9 +62,9 @@ function buildMockProgress(standards: Standard[]): Record<string, StandardProgre
     if (i < doneCount) {
       progress[std.standard_id] = {
         status: "completed",
-        score: 3 + (i % 3),          // deterministic: 3, 4, 5, 3, 4, 5, ...
+        score: 3 + (i % 3),
         total: 5,
-        xpEarned: 15 + (i % 4) * 5,  // deterministic: 15, 20, 25, 30, ...
+        xpEarned: 15 + (i % 4) * 5,
       };
     } else if (i === doneCount) {
       progress[std.standard_id] = { status: "current", score: 2, total: 5 };
@@ -95,7 +97,7 @@ function getDomainOrder(standards: Standard[]): string[] {
 }
 
 /* ═══════════════════════════════════════════════════════ */
-/*  Page wrapper (Suspense boundary)                      */
+/*  Page wrapper                                          */
 /* ═══════════════════════════════════════════════════════ */
 
 export default function RoadmapPage() {
@@ -179,44 +181,40 @@ function Roadmap({ child, userPlan }: { child: Child; userPlan: string }) {
   const domainOrder = useMemo(() => getDomainOrder(ALL_STANDARDS), []);
   const [activeNode, setActiveNode] = useState<string | null>(null);
   const pathRef = useRef<HTMLDivElement>(null);
-  const [pathWidth, setPathWidth] = useState(480);
+  const [pathWidth, setPathWidth] = useState(400);
 
   const closeActive = useCallback(() => setActiveNode(null), []);
 
-  /* ── Measure container width for responsive node placement ── */
+  /* ── Measure container width ── */
   useEffect(() => {
     const el = pathRef.current;
     if (!el) return;
-    setPathWidth(el.offsetWidth);
+    setPathWidth(Math.min(el.offsetWidth, PATH_WIDTH));
     const ro = new ResizeObserver((entries) => {
-      for (const entry of entries) setPathWidth(entry.contentRect.width);
+      for (const entry of entries) setPathWidth(Math.min(entry.contentRect.width, PATH_WIDTH));
     });
     ro.observe(el);
     return () => ro.disconnect();
   }, []);
 
-  /* ── Compute zigzag layout: alternate LEFT ↔ RIGHT every node ── */
-
+  /* ── Compute Duolingo-style S-curve layout ── */
   const layout = useMemo(() => {
     const items: LayoutItem[] = [];
-    let y = 40;
+    let y = 20;
     let currentDomain = "";
     let nodeSeq = 0;
-    const leftX = pathWidth * LEFT_PCT;
-    const rightX = pathWidth * RIGHT_PCT;
-    const centerX = pathWidth / 2;
+    const cx = pathWidth / 2;
+    const amp = (pathWidth / PATH_WIDTH) * AMPLITUDE;
 
     for (const std of ALL_STANDARDS) {
       if (std.domain !== currentDomain) {
-        if (currentDomain !== "") y += 20;
-        items.push({ type: "header", domain: std.domain, y, x: centerX });
+        if (currentDomain !== "") y += 24;
+        items.push({ type: "header", domain: std.domain, y, x: cx });
         y += DOMAIN_HEADER_HEIGHT;
         currentDomain = std.domain;
       }
 
-      // Hard alternate: even→left, odd→right
-      const x = nodeSeq % 2 === 0 ? leftX : rightX;
-
+      const x = cx + Math.sin(nodeSeq * SINE_FREQ) * amp;
       items.push({ type: "node", standard: std, globalIdx: nodeSeq, y, x });
       y += NODE_SPACING;
       nodeSeq++;
@@ -225,7 +223,7 @@ function Roadmap({ child, userPlan }: { child: Child; userPlan: string }) {
     return { items, totalHeight: y + 100 };
   }, [pathWidth]);
 
-  /* ── Build SVG S-curve path through node centers ── */
+  /* ── Build SVG path ── */
   const nodeItems = layout.items.filter((it) => it.type === "node");
 
   const buildPath = useCallback((nodes: LayoutItem[]) => {
@@ -235,7 +233,6 @@ function Roadmap({ child, userPlan }: { child: Child; userPlan: string }) {
       const prev = nodes[i - 1];
       const cur = nodes[i];
       const cpY = (prev.y + cur.y) / 2;
-      // S-curve: control points stay at the x of their respective endpoint
       d += ` C ${prev.x} ${cpY}, ${cur.x} ${cpY}, ${cur.x} ${cur.y}`;
     }
     return d;
@@ -257,6 +254,15 @@ function Roadmap({ child, userPlan }: { child: Child; userPlan: string }) {
   const currentDomain = currentStandard?.domain || domainOrder[0];
   const pct = Math.round((completedCount / ALL_STANDARDS.length) * 100);
 
+  /* ── Domain stats for sidebar ── */
+  const domainProgress = useMemo(() => {
+    return domainOrder.map((d) => {
+      const standards = ALL_STANDARDS.filter((s) => s.domain === d);
+      const completed = standards.filter((s) => progress[s.standard_id]?.status === "completed").length;
+      return { domain: d, completed, total: standards.length };
+    });
+  }, [domainOrder, progress]);
+
   /* ── Scroll to current on mount ── */
   useEffect(() => {
     if (!currentStandard) return;
@@ -267,148 +273,208 @@ function Roadmap({ child, userPlan }: { child: Child; userPlan: string }) {
     return () => clearTimeout(t);
   }, [currentStandard]);
 
+  const gradeLabel = child.grade?.toLowerCase() === "pre-k" ? "Foundational" : (child.grade || "Kindergarten");
+
   return (
-    <div className="max-w-lg mx-auto pb-20 px-4">
+    <div className="max-w-5xl mx-auto pb-20 px-4">
       {/* ── Nav ── */}
-      <div className="flex items-center justify-between pt-4 mb-6 animate-slideUp">
+      <div className="flex items-center justify-between pt-4 mb-6 animate-slideUp max-w-[400px] mx-auto md:max-w-none">
         <Link href="/dashboard" className="text-sm text-indigo-600 hover:text-indigo-700 font-medium transition-colors">
           &larr; Dashboard
         </Link>
-        <span className="text-xs text-zinc-400 font-medium">{child.grade?.toLowerCase() === "pre-k" ? "Foundational" : (child.grade || "Kindergarten")}</span>
+        <span className="text-xs text-zinc-400 font-medium">{gradeLabel}</span>
       </div>
 
       {/* ── Title ── */}
-      <div className="text-center mb-8 dash-slide-up-1">
-        <div className="text-4xl mb-2">🗺️</div>
+      <div className="text-center mb-6 dash-slide-up-1 max-w-[400px] mx-auto md:max-w-none">
         <h1 className="text-2xl font-bold text-zinc-900 tracking-tight">
           {child.first_name}&apos;s Learning Journey
         </h1>
         <p className="text-zinc-500 text-sm mt-1">Kindergarten ELA Standards</p>
       </div>
 
-      {/* ── Progress Summary ── */}
-      <div className="rounded-2xl bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 p-5 mb-8 shadow-lg dash-slide-up-2">
-        <div className="flex items-center gap-4 mb-3">
-          <div className="relative w-14 h-14 rounded-xl bg-white/20 flex items-center justify-center flex-shrink-0">
-            <svg viewBox="0 0 100 100" className="w-10 h-10 -rotate-90">
-              <circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="8" />
-              <circle
-                cx="50" cy="50" r="40" fill="none" stroke="white" strokeWidth="8"
-                strokeLinecap="round" strokeDasharray="251"
-                strokeDashoffset={251 - (251 * pct / 100)}
-                className="transition-all duration-1000"
-              />
+      {/* ── Mobile Progress Summary ── */}
+      <div className="md:hidden mb-6 dash-slide-up-2 max-w-[400px] mx-auto">
+        <MobileProgressCard
+          pct={pct}
+          completedCount={completedCount}
+          totalXP={totalXP}
+          streakDays={child.streak_days}
+          currentDomain={currentDomain}
+        />
+      </div>
+
+      {/* ── Main layout: path + sidebar ── */}
+      <div className="md:flex md:gap-8 md:justify-center">
+        {/* Path column */}
+        <div className="max-w-[400px] mx-auto md:mx-0 flex-shrink-0">
+          <div ref={pathRef} className="relative dash-slide-up-3" style={{ height: layout.totalHeight }}>
+            {/* SVG connecting path */}
+            <svg
+              className="absolute left-0 top-0 pointer-events-none"
+              width={pathWidth}
+              height={layout.totalHeight}
+            >
+              {/* Gray background path */}
+              <path d={pathD} fill="none" stroke="#e5e7eb" strokeWidth="4" strokeDasharray="8 6" strokeLinecap="round" />
+              {/* Completed portion */}
+              {completedPathD && (
+                <path d={completedPathD} fill="none" stroke="url(#roadmapGrad)" strokeWidth="4" strokeLinecap="round" />
+              )}
+              <defs>
+                <linearGradient id="roadmapGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#6366f1" />
+                  <stop offset="100%" stopColor="#8b5cf6" />
+                </linearGradient>
+              </defs>
             </svg>
-            <span className="absolute text-white text-xs font-bold">{pct}%</span>
-          </div>
-          <div className="flex-1 min-w-0">
-            <div className="text-white font-bold text-lg">{completedCount} of {ALL_STANDARDS.length} standards</div>
-            <div className="text-white/70 text-xs mt-0.5">Currently on: {currentDomain}</div>
-          </div>
-        </div>
-        <div className="grid grid-cols-3 gap-3">
-          {[
-            { val: totalXP, label: "XP Earned" },
-            { val: child.streak_days, label: "Day Streak" },
-            { val: domainOrder.length, label: "Domains" },
-          ].map((s) => (
-            <div key={s.label} className="bg-white/10 rounded-xl p-2.5 text-center">
-              <div className="text-white font-bold text-lg">{s.val}</div>
-              <div className="text-white/60 text-[10px] font-medium">{s.label}</div>
-            </div>
-          ))}
-        </div>
-      </div>
 
-      {/* ── Domain Legend ── */}
-      <div className="flex flex-wrap gap-2 mb-6 justify-center dash-slide-up-3">
-        {domainOrder.map((d) => {
-          const m = DOMAIN_META[d];
-          return (
-            <span key={d} className={`inline-flex items-center gap-1 text-[11px] font-medium px-2.5 py-1 rounded-full border ${m.bg} ${m.color} ${m.border}`}>
-              {m.emoji} {d}
-            </span>
-          );
-        })}
-      </div>
-
-      {/* ══════════ THE PATH ══════════ */}
-      <div ref={pathRef} className="relative dash-slide-up-4" style={{ height: layout.totalHeight }}>
-        {/* SVG connecting path — full container width */}
-        <svg
-          className="absolute left-0 top-0 pointer-events-none"
-          width={pathWidth}
-          height={layout.totalHeight}
-        >
-          {/* Gray dashed background path */}
-          <path d={pathD} fill="none" stroke="#e5e7eb" strokeWidth="3" strokeDasharray="8 6" strokeLinecap="round" />
-          {/* Colored completed path */}
-          {completedPathD && (
-            <path d={completedPathD} fill="none" stroke="url(#roadmapGrad)" strokeWidth="3" strokeDasharray="8 6" strokeLinecap="round" />
-          )}
-          <defs>
-            <linearGradient id="roadmapGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#6366f1" />
-              <stop offset="100%" stopColor="#8b5cf6" />
-            </linearGradient>
-          </defs>
-        </svg>
-
-        {/* Layout items (headers + nodes) */}
-        {layout.items.map((item) => {
-          if (item.type === "header") {
-            const dm = DOMAIN_META[item.domain!];
-            return (
-              <div
-                key={`hdr-${item.domain}`}
-                className="absolute left-1/2 -translate-x-1/2"
-                style={{ top: item.y - 8, width: 280 }}
-              >
-                <div className={`flex items-center gap-3 rounded-2xl border ${dm.border} ${dm.bg} p-3 shadow-sm`}>
-                  <span className="text-2xl">{dm.emoji}</span>
-                  <div>
-                    <div className={`font-bold text-sm ${dm.color}`}>{item.domain}</div>
-                    <div className="text-[11px] text-zinc-500">
-                      {ALL_STANDARDS.filter((s) => s.domain === item.domain).length} standards
+            {/* Layout items */}
+            {layout.items.map((item) => {
+              if (item.type === "header") {
+                const dm = DOMAIN_META[item.domain!];
+                const domainStds = ALL_STANDARDS.filter((s) => s.domain === item.domain);
+                const domainDone = domainStds.filter((s) => progress[s.standard_id]?.status === "completed").length;
+                return (
+                  <div
+                    key={`hdr-${item.domain}`}
+                    className="absolute left-0 right-0"
+                    style={{ top: item.y - 12, width: pathWidth }}
+                  >
+                    <div className={`flex items-center gap-3 rounded-2xl border-2 ${dm.border} ${dm.bg} p-3.5 shadow-sm mx-auto`}>
+                      <span className="text-2xl">{dm.emoji}</span>
+                      <div className="flex-1 min-w-0">
+                        <div className={`font-bold text-sm ${dm.color}`}>{item.domain}</div>
+                        <div className="text-[11px] text-zinc-500">
+                          {domainDone}/{domainStds.length} standards complete
+                        </div>
+                      </div>
+                      {domainDone === domainStds.length && (
+                        <span className="text-lg">✅</span>
+                      )}
                     </div>
                   </div>
+                );
+              }
+
+              const std = item.standard!;
+              const p = progress[std.standard_id];
+              const isActive = activeNode === std.standard_id;
+              const isPremium = item.globalIdx! >= FREE_STANDARD_COUNT && userPlan !== "premium";
+
+              return (
+                <NodeBubble
+                  key={std.standard_id}
+                  standard={std}
+                  progress={p}
+                  x={item.x}
+                  y={item.y}
+                  index={item.globalIdx!}
+                  isActive={isActive}
+                  isPremium={isPremium}
+                  childId={child.id}
+                  containerWidth={pathWidth}
+                  onClick={() => setActiveNode(isActive ? null : std.standard_id)}
+                  onClose={closeActive}
+                />
+              );
+            })}
+
+            {/* Trophy at end */}
+            <div
+              className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center"
+              style={{ top: layout.totalHeight - 90 }}
+            >
+              <div className="w-20 h-20 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-3xl shadow-[0_4px_0_0_#c2410c,0_8px_24px_rgba(245,158,11,0.4)]">
+                🏆
+              </div>
+              <p className="text-sm font-bold text-zinc-700 mt-3">Level Complete!</p>
+              <p className="text-xs text-zinc-400">Master all {ALL_STANDARDS.length} standards</p>
+            </div>
+          </div>
+        </div>
+
+        {/* ── Desktop Sidebar ── */}
+        <div className="hidden md:block w-72 flex-shrink-0">
+          <div className="sticky top-20 space-y-4">
+            {/* Progress Summary */}
+            <div className="rounded-2xl bg-gradient-to-br from-indigo-600 via-violet-600 to-purple-600 p-5 shadow-lg">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="relative w-14 h-14 flex-shrink-0">
+                  <svg viewBox="0 0 100 100" className="w-14 h-14 -rotate-90">
+                    <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(255,255,255,0.15)" strokeWidth="8" />
+                    <circle
+                      cx="50" cy="50" r="42" fill="none" stroke="white" strokeWidth="8"
+                      strokeLinecap="round" strokeDasharray="264"
+                      strokeDashoffset={264 - (264 * pct / 100)}
+                      className="transition-all duration-1000"
+                    />
+                  </svg>
+                  <span className="absolute inset-0 flex items-center justify-center text-white text-sm font-bold">{pct}%</span>
+                </div>
+                <div>
+                  <div className="text-white font-bold">{completedCount}/{ALL_STANDARDS.length}</div>
+                  <div className="text-white/60 text-xs">Standards</div>
                 </div>
               </div>
-            );
-          }
+              <div className="grid grid-cols-2 gap-2">
+                <div className="bg-white/10 rounded-xl p-2.5 text-center">
+                  <div className="text-white font-bold">{totalXP}</div>
+                  <div className="text-white/50 text-[10px]">XP Earned</div>
+                </div>
+                <div className="bg-white/10 rounded-xl p-2.5 text-center">
+                  <div className="text-white font-bold">{child.streak_days}</div>
+                  <div className="text-white/50 text-[10px]">Day Streak</div>
+                </div>
+              </div>
+            </div>
 
-          const std = item.standard!;
-          const p = progress[std.standard_id];
-          const isActive = activeNode === std.standard_id;
-          const isPremium = item.globalIdx! >= FREE_STANDARD_COUNT && userPlan !== "premium";
+            {/* Currently Working On */}
+            {currentStandard && (
+              <div className="rounded-2xl border border-zinc-200 bg-white p-4 shadow-sm">
+                <div className="text-[11px] text-zinc-400 font-medium uppercase tracking-wide mb-2">Now Working On</div>
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-indigo-100 text-indigo-700">
+                    {currentStandard.standard_id}
+                  </span>
+                </div>
+                <p className="text-sm text-zinc-700 leading-snug">
+                  {shortName(currentStandard.standard_description)}
+                </p>
+                <Link
+                  href={`/roadmap/practice?child=${child.id}&standard=${currentStandard.standard_id}`}
+                  className="mt-3 block w-full text-center px-3 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-xs font-bold hover:from-indigo-700 hover:to-violet-600 transition-all shadow-sm"
+                >
+                  Continue Practice →
+                </Link>
+              </div>
+            )}
 
-          return (
-            <NodeBubble
-              key={std.standard_id}
-              standard={std}
-              progress={p}
-              x={item.x}
-              y={item.y}
-              index={item.globalIdx!}
-              isActive={isActive}
-              isPremium={isPremium}
-              childId={child.id}
-              onClick={() => setActiveNode(isActive ? null : std.standard_id)}
-              onClose={closeActive}
-            />
-          );
-        })}
-
-        {/* Trophy at end */}
-        <div
-          className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center"
-          style={{ top: layout.totalHeight - 90 }}
-        >
-          <div className="w-16 h-16 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-2xl shadow-lg shadow-amber-200">
-            🏆
+            {/* Domain Progress */}
+            <div className="rounded-2xl border border-zinc-200 bg-white p-4 shadow-sm">
+              <div className="text-[11px] text-zinc-400 font-medium uppercase tracking-wide mb-3">Domain Progress</div>
+              <div className="space-y-3">
+                {domainProgress.map((dp) => {
+                  const meta = DOMAIN_META[dp.domain];
+                  const dpPct = dp.total > 0 ? Math.round((dp.completed / dp.total) * 100) : 0;
+                  return (
+                    <div key={dp.domain}>
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-xs font-medium text-zinc-700">{meta.emoji} {dp.domain}</span>
+                        <span className="text-[10px] text-zinc-400">{dp.completed}/{dp.total}</span>
+                      </div>
+                      <div className="h-1.5 bg-zinc-100 rounded-full overflow-hidden">
+                        <div
+                          className="h-full rounded-full transition-all duration-700"
+                          style={{ width: `${dpPct}%`, backgroundColor: meta.fill }}
+                        />
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
-          <p className="text-sm font-bold text-zinc-700 mt-2">Level Complete!</p>
-          <p className="text-xs text-zinc-400">Master all {ALL_STANDARDS.length} standards</p>
         </div>
       </div>
     </div>
@@ -416,11 +482,60 @@ function Roadmap({ child, userPlan }: { child: Child; userPlan: string }) {
 }
 
 /* ═══════════════════════════════════════════════════════ */
-/*  Node Bubble                                           */
+/*  Mobile Progress Card                                   */
+/* ═══════════════════════════════════════════════════════ */
+
+function MobileProgressCard({ pct, completedCount, totalXP, streakDays, currentDomain }: {
+  pct: number;
+  completedCount: number;
+  totalXP: number;
+  streakDays: number;
+  currentDomain: string;
+}) {
+  return (
+    <div className="rounded-2xl bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 p-4 shadow-lg">
+      <div className="flex items-center gap-3 mb-3">
+        <div className="relative w-12 h-12 flex-shrink-0">
+          <svg viewBox="0 0 100 100" className="w-12 h-12 -rotate-90">
+            <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(255,255,255,0.15)" strokeWidth="8" />
+            <circle
+              cx="50" cy="50" r="42" fill="none" stroke="white" strokeWidth="8"
+              strokeLinecap="round" strokeDasharray="264"
+              strokeDashoffset={264 - (264 * pct / 100)}
+              className="transition-all duration-1000"
+            />
+          </svg>
+          <span className="absolute inset-0 flex items-center justify-center text-white text-xs font-bold">{pct}%</span>
+        </div>
+        <div className="flex-1 min-w-0">
+          <div className="text-white font-bold">{completedCount} of {ALL_STANDARDS.length} standards</div>
+          <div className="text-white/60 text-xs mt-0.5">Currently: {currentDomain}</div>
+        </div>
+      </div>
+      <div className="grid grid-cols-3 gap-2">
+        <div className="bg-white/10 rounded-lg p-2 text-center">
+          <div className="text-white font-bold text-sm">{totalXP}</div>
+          <div className="text-white/50 text-[9px]">XP</div>
+        </div>
+        <div className="bg-white/10 rounded-lg p-2 text-center">
+          <div className="text-white font-bold text-sm">{streakDays}</div>
+          <div className="text-white/50 text-[9px]">Streak</div>
+        </div>
+        <div className="bg-white/10 rounded-lg p-2 text-center">
+          <div className="text-white font-bold text-sm">4</div>
+          <div className="text-white/50 text-[9px]">Domains</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════ */
+/*  Node Bubble — Duolingo-style                           */
 /* ═══════════════════════════════════════════════════════ */
 
 function NodeBubble({
-  standard, progress, x, y, index, isActive, isPremium, childId, onClick, onClose,
+  standard, progress, x, y, index, isActive, isPremium, childId, containerWidth, onClick, onClose,
 }: {
   standard: Standard;
   progress: StandardProgress;
@@ -430,6 +545,7 @@ function NodeBubble({
   isActive: boolean;
   isPremium: boolean;
   childId: string;
+  containerWidth: number;
   onClick: () => void;
   onClose: () => void;
 }) {
@@ -437,7 +553,6 @@ function NodeBubble({
   const status = progress.status;
   const dm = DOMAIN_META[standard.domain] || DOMAIN_META["Reading Literature"];
 
-  // Close on outside click
   useEffect(() => {
     if (!isActive) return;
     function handler(e: MouseEvent) {
@@ -447,47 +562,55 @@ function NodeBubble({
     return () => document.removeEventListener("mousedown", handler);
   }, [isActive, onClose]);
 
+  // Node sizes: current=76px, completed=64px, locked=52px
+  const nodeSize = status === "current" ? 76 : status === "completed" ? 64 : 52;
+  const offsetFromCenter = x - containerWidth / 2;
+
+  // Tooltip positioning: avoid overflow
+  const tooltipLeft = offsetFromCenter > 30 ? -120 : offsetFromCenter < -30 ? -120 : -144;
+
   return (
     <div
       ref={ref}
       id={`node-${standard.standard_id}`}
       className="absolute flex flex-col items-center"
       style={{
-        top: y - 28,
-        left: x,
+        top: y - nodeSize / 2,
+        left: `calc(50% + ${offsetFromCenter}px)`,
         transform: "translateX(-50%)",
-        zIndex: isActive ? 50 : 10,
+        zIndex: isActive ? 50 : status === "current" ? 20 : 10,
       }}
     >
-      {/* Circle */}
+      {/* Circle node */}
       <button
         onClick={onClick}
+        style={{ width: nodeSize, height: nodeSize }}
         className={`
-          relative w-14 h-14 rounded-full flex items-center justify-center
+          relative rounded-full flex items-center justify-center
           transition-all duration-300 outline-none select-none
           ${isPremium && status === "locked"
-            ? "bg-gradient-to-br from-indigo-200 to-violet-200 text-violet-400"
+            ? "bg-gradient-to-b from-indigo-300 to-violet-400 text-white/70 shadow-[0_3px_0_0_#6d28d9]"
             : status === "completed"
-            ? "bg-emerald-500 text-white shadow-md shadow-emerald-200"
+            ? "bg-gradient-to-b from-emerald-400 to-emerald-600 text-white shadow-[0_4px_0_0_#059669,0_6px_12px_rgba(16,185,129,0.25)]"
             : status === "current"
-            ? "bg-gradient-to-br from-indigo-500 to-violet-500 text-white shadow-lg shadow-indigo-300 ring-4 ring-indigo-300/40 roadmap-pulse"
-            : "bg-zinc-200 text-zinc-400"
+            ? "bg-gradient-to-br from-indigo-500 via-violet-500 to-purple-600 text-white shadow-[0_4px_0_0_#4338ca,0_0_20px_rgba(99,102,241,0.4)] roadmap-breathe"
+            : "bg-gradient-to-b from-zinc-300 to-zinc-400 text-zinc-500 shadow-[0_3px_0_0_#a1a1aa]"
           }
-          ${status !== "locked" ? "cursor-pointer hover:scale-110 active:scale-95" : "cursor-pointer hover:scale-105"}
-          ${isActive ? "!scale-110 ring-4 ring-indigo-400/50" : ""}
+          ${status !== "locked" ? "cursor-pointer hover:brightness-110 active:translate-y-[2px] active:shadow-none" : "cursor-pointer hover:brightness-105"}
+          ${isActive ? "brightness-110 ring-4 ring-indigo-400/40" : ""}
         `}
         aria-label={`${standard.standard_id}: ${standard.standard_description}`}
       >
         {status === "completed" && (
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
+          <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
           </svg>
         )}
         {status === "current" && (
-          <span className="text-lg font-bold">{index + 1}</span>
+          <span className="text-xl font-extrabold drop-shadow-sm">{index + 1}</span>
         )}
         {status === "locked" && !isPremium && (
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
           </svg>
         )}
@@ -499,37 +622,38 @@ function NodeBubble({
 
         {/* Star badge for completed */}
         {status === "completed" && (
-          <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-amber-400 flex items-center justify-center text-[10px] shadow-sm">
+          <span className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-amber-400 flex items-center justify-center text-[11px] shadow-sm border-2 border-white">
             ⭐
           </span>
         )}
 
-        {/* Readee+ badge for premium locked */}
+        {/* Readee+ badge */}
         {isPremium && status === "locked" && (
-          <span className="absolute -top-1 -right-1 px-1.5 py-0.5 rounded-full bg-gradient-to-r from-indigo-500 to-violet-500 text-[7px] font-extrabold text-white shadow-sm leading-none">
+          <span className="absolute -top-1 -right-1 px-1.5 py-0.5 rounded-full bg-gradient-to-r from-indigo-500 to-violet-500 text-[7px] font-extrabold text-white shadow-sm leading-none border border-white">
             R+
           </span>
         )}
       </button>
 
       {/* Label */}
-      <span className={`mt-1 text-[10px] font-bold whitespace-nowrap ${
+      <span className={`mt-1.5 text-[10px] font-bold whitespace-nowrap ${
         status === "completed" ? "text-emerald-600"
         : status === "current" ? "text-indigo-600"
         : isPremium ? "text-violet-400"
-        : "text-zinc-300"
+        : "text-zinc-400"
       }`}>
         {standard.standard_id}
       </span>
 
       {/* ── Tooltip ── */}
       {isActive && (
-        <div className="absolute top-full mt-2 z-50 animate-scaleIn" style={{ width: 288 }}>
+        <div
+          className="absolute top-full mt-2 z-50 animate-scaleIn"
+          style={{ width: 288, left: tooltipLeft }}
+        >
           <div className="rounded-2xl bg-white border border-zinc-200 shadow-xl p-4 space-y-3">
-            {/* Arrow */}
             <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white border-l border-t border-zinc-200 rotate-45" />
 
-            {/* Header */}
             <div className="relative">
               <div className="flex items-center gap-2 flex-wrap">
                 <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${dm.bg} ${dm.color}`}>
@@ -545,7 +669,6 @@ function NodeBubble({
               </p>
             </div>
 
-            {/* Completed stats */}
             {status === "completed" && progress.score != null && (
               <div className="flex gap-3">
                 <div className="flex-1 bg-emerald-50 rounded-xl p-2.5 text-center">
@@ -559,7 +682,6 @@ function NodeBubble({
               </div>
             )}
 
-            {/* Current progress */}
             {status === "current" && progress.score != null && (
               <div className="bg-indigo-50 rounded-xl p-2.5">
                 <div className="flex items-center justify-between">
@@ -575,7 +697,6 @@ function NodeBubble({
               </div>
             )}
 
-            {/* CTA */}
             {status === "current" && (
               <Link
                 href={`/roadmap/practice?child=${childId}&standard=${standard.standard_id}`}
