@@ -42,8 +42,8 @@ const DOMAIN_META: Record<string, { emoji: string; color: string; bg: string; bo
   "Language":                   { emoji: "💬", color: "text-amber-700",  bg: "bg-amber-50",   border: "border-amber-200",   fill: "#f59e0b" },
 };
 
-const LEFT_PCT = 0.18;                  // 18% from left edge
-const RIGHT_PCT = 0.82;                 // 82% from left edge
+const LEFT_PCT = 0.15;                  // 15% from left edge
+const RIGHT_PCT = 0.85;                 // 85% from left edge
 const NODE_SPACING = 74;                // vertical gap between nodes
 const DOMAIN_HEADER_HEIGHT = 64;
 const FREE_STANDARD_COUNT = 10;
@@ -274,7 +274,7 @@ function Roadmap({ child, userPlan }: { child: Child; userPlan: string }) {
         <Link href="/dashboard" className="text-sm text-indigo-600 hover:text-indigo-700 font-medium transition-colors">
           &larr; Dashboard
         </Link>
-        <span className="text-xs text-zinc-400 font-medium">{child.grade || "Kindergarten"}</span>
+        <span className="text-xs text-zinc-400 font-medium">{child.grade?.toLowerCase() === "pre-k" ? "Foundational" : (child.grade || "Kindergarten")}</span>
       </div>
 
       {/* ── Title ── */}

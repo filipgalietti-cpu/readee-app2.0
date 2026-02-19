@@ -300,7 +300,7 @@ function ChildSelector({
                   </h2>
                   {child.grade && (
                     <span className="text-xs font-medium text-indigo-600">
-                      {child.grade}
+                      {GRADE_LABELS[child.grade] || child.grade}
                     </span>
                   )}
                 </div>
@@ -556,7 +556,7 @@ function ChildDashboard({
               </div>
               {child.grade && (
                 <span className="px-3 py-1 rounded-full text-xs font-bold bg-white/20 text-white flex-shrink-0">
-                  {child.grade}
+                  {GRADE_LABELS[child.grade] || child.grade}
                 </span>
               )}
             </div>

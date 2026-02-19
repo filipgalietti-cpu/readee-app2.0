@@ -7,6 +7,11 @@ import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
 import { READING_LEVELS, GRADES } from "@/app/_components/LevelProgressBar";
 
+function displayGrade(grade: string): string {
+  if (grade.toLowerCase() === "pre-k") return "Foundational";
+  return grade;
+}
+
 export default function Settings() {
   const router = useRouter();
   const supabase = supabaseBrowser();
@@ -308,7 +313,7 @@ export default function Settings() {
                         <div className="flex items-center gap-2 mt-0.5">
                           {child.grade && (
                             <span className="text-[10px] font-semibold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded-full">
-                              {child.grade}
+                              {displayGrade(child.grade)}
                             </span>
                           )}
                           {child.reading_level === "Independent Reader" && (

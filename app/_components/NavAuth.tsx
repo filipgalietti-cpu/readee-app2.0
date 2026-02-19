@@ -103,6 +103,12 @@ export default function NavAuth() {
               <Link href="/dashboard" className={linkClass("/dashboard")}>
                 Dashboard
               </Link>
+              <Link href="/analytics" className={linkClass("/analytics")}>
+                Analytics
+              </Link>
+              <Link href="/feedback" className={linkClass("/feedback")}>
+                Feedback
+              </Link>
 
               {userPlan !== "premium" && (
                 <Link
@@ -142,12 +148,6 @@ export default function NavAuth() {
                       className="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 transition-colors"
                     >
                       Settings
-                    </Link>
-                    <Link
-                      href="/feedback"
-                      className="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 transition-colors"
-                    >
-                      Share Feedback
                     </Link>
                     <Link
                       href="/contact-us"
@@ -213,6 +213,12 @@ export default function NavAuth() {
               <Link href="/dashboard" className="block py-2.5 text-sm font-medium text-zinc-700 hover:text-indigo-700">
                 Dashboard
               </Link>
+              <Link href="/analytics" className="block py-2.5 text-sm font-medium text-zinc-700 hover:text-indigo-700">
+                Analytics
+              </Link>
+              <Link href="/feedback" className="block py-2.5 text-sm font-medium text-zinc-700 hover:text-indigo-700">
+                Feedback
+              </Link>
               {userPlan !== "premium" && (
                 <Link href="/upgrade" className="block py-2.5 text-sm font-semibold text-amber-600 hover:text-amber-700">
                   ⭐ Upgrade to Readee+
@@ -220,9 +226,6 @@ export default function NavAuth() {
               )}
               <Link href="/settings" className="block py-2.5 text-sm font-medium text-zinc-700 hover:text-indigo-700">
                 Settings
-              </Link>
-              <Link href="/feedback" className="block py-2.5 text-sm font-medium text-zinc-700 hover:text-indigo-700">
-                Share Feedback
               </Link>
               <Link href="/contact-us" className="block py-2.5 text-sm font-medium text-zinc-700 hover:text-indigo-700">
                 Help & Support

@@ -13,6 +13,7 @@ interface Standard {
   standard_id: string;
   standard_description: string;
   domain: string;
+  parent_tip?: string;
   questions: { id: string }[];
 }
 
@@ -20,6 +21,7 @@ interface StandardStat {
   standard_id: string;
   name: string;
   domain: string;
+  parent_tip?: string;
   attempted: number;
   correct: number;
   incorrect: number;
@@ -38,6 +40,12 @@ interface WeeklyPoint {
 }
 
 /* ─── Constants ──────────────────────────────────────── */
+
+function displayGrade(grade: string | null | undefined): string {
+  if (!grade) return "Kindergarten";
+  if (grade.toLowerCase() === "pre-k") return "Foundational";
+  return grade;
+}
 
 const DOMAINS = ["All", "Reading Literature", "Reading Informational Text", "Foundational Skills", "Language"] as const;
 
@@ -73,6 +81,7 @@ function generateMockStats(standards: Standard[]): StandardStat[] {
         standard_id: std.standard_id,
         name: shortName(std.standard_description),
         domain: std.domain,
+        parent_tip: std.parent_tip,
         attempted: 0,
         correct: 0,
         incorrect: 0,
@@ -95,6 +104,7 @@ function generateMockStats(standards: Standard[]): StandardStat[] {
       standard_id: std.standard_id,
       name: shortName(std.standard_description),
       domain: std.domain,
+      parent_tip: std.parent_tip,
       attempted,
       correct,
       incorrect,
@@ -261,7 +271,7 @@ function AnalyticsDashboard({ child }: { child: Child }) {
         <Link href="/dashboard" className="text-sm text-indigo-600 hover:text-indigo-700 font-medium transition-colors">
           &larr; Dashboard
         </Link>
-        <span className="text-xs text-zinc-400 font-medium">{child.grade || "Kindergarten"}</span>
+        <span className="text-xs text-zinc-400 font-medium">{displayGrade(child.grade)}</span>
       </div>
 
       {/* ── Title ── */}
@@ -292,7 +302,7 @@ function AnalyticsDashboard({ child }: { child: Child }) {
           <div className="flex-1 min-w-0">
             <div className="text-white font-bold text-lg">Overall Mastery</div>
             <div className="text-white/70 text-xs mt-0.5">
-              {child.reading_level || "Not assessed"} &middot; {child.grade || "Kindergarten"}
+              {child.reading_level || "Not assessed"} &middot; {displayGrade(child.grade)}
             </div>
           </div>
         </div>
@@ -394,7 +404,7 @@ function AnalyticsDashboard({ child }: { child: Child }) {
                     </span>
                   </div>
                   <p className="text-[11px] text-zinc-500 mt-1.5">
-                    Suggestion: Revisit with guided practice and repeat the {s.domain.toLowerCase()} exercises.
+                    Tip: {s.parent_tip || `Revisit with guided practice and repeat the ${s.domain.toLowerCase()} exercises.`}
                   </p>
                 </div>
               );
