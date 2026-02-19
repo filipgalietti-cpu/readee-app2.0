@@ -8,6 +8,7 @@ import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
 import { useAudio } from "@/lib/audio/use-audio";
 import { usePracticeStore } from "@/lib/stores/practice-store";
+import { useThemeStore } from "@/lib/stores/theme-store";
 import { safeValidate } from "@/lib/validate";
 import { StandardsFileSchema, PracticeResultSchema } from "@/lib/schemas";
 import { fadeUp, staggerContainer, wrongShake, feedbackSlideUp, popIn, scaleIn } from "@/lib/motion/variants";
@@ -95,10 +96,10 @@ function SpeakerButton({ text, className = "" }: { text: string; className?: str
   return (
     <button
       onClick={(e) => { e.stopPropagation(); speakManual(text); }}
-      className={`inline-flex items-center justify-center w-8 h-8 rounded-full hover:bg-white/10 transition-colors flex-shrink-0 ${className}`}
+      className={`inline-flex items-center justify-center w-8 h-8 rounded-full hover:bg-zinc-200 dark:hover:bg-white/10 transition-colors flex-shrink-0 ${className}`}
       aria-label="Listen"
     >
-      <svg className="w-4 h-4 text-indigo-300" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+      <svg className="w-4 h-4 text-indigo-600 dark:text-indigo-300" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M15.536 8.464a5 5 0 010 7.072M17.95 6.05a8 8 0 010 11.9M11 5L6 9H2v6h4l5 4V5z" />
       </svg>
     </button>
@@ -110,7 +111,7 @@ function MuteToggle() {
   return (
     <button
       onClick={toggleMute}
-      className="w-10 h-10 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 transition-colors flex-shrink-0"
+      className="w-10 h-10 rounded-full flex items-center justify-center text-zinc-500 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-200 dark:hover:bg-white/10 transition-colors flex-shrink-0"
       aria-label={muted ? "Unmute" : "Mute"}
     >
       {muted ? (
@@ -141,9 +142,9 @@ export default function PracticePage() {
 
 function LoadingScreen() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-[100dvh] bg-[#0f172a] gap-4">
-      <div className="h-12 w-12 rounded-full border-4 border-indigo-900 border-t-indigo-400 animate-spin" />
-      <p className="text-indigo-300 text-sm font-medium">Loading questions...</p>
+    <div className="flex flex-col items-center justify-center min-h-[100dvh] bg-white dark:bg-[#0f172a] gap-4">
+      <div className="h-12 w-12 rounded-full border-4 border-indigo-200 border-t-indigo-500 dark:border-indigo-900 dark:border-t-indigo-400 animate-spin" />
+      <p className="text-indigo-600 dark:text-indigo-300 text-sm font-medium">Loading questions...</p>
     </div>
   );
 }
@@ -174,13 +175,13 @@ function PracticeLoader() {
 
   if (!child || !standard) {
     return (
-      <div className="min-h-[100dvh] bg-[#0f172a] flex items-center justify-center">
+      <div className="min-h-[100dvh] bg-white dark:bg-[#0f172a] flex items-center justify-center">
         <div className="max-w-md text-center space-y-4 px-6">
           <div className="text-5xl">🔍</div>
-          <h1 className="text-xl font-bold text-white">
+          <h1 className="text-xl font-bold text-zinc-900 dark:text-white">
             {!child ? "No reader selected" : "Standard not found"}
           </h1>
-          <Link href="/dashboard" className="inline-block text-sm text-indigo-400 hover:text-indigo-300 font-medium">
+          <Link href="/dashboard" className="inline-block text-sm text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300 font-medium">
             &larr; Back to Dashboard
           </Link>
         </div>
@@ -312,12 +313,12 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
   const progressPct = ((currentIdx + (phase === "feedback" ? 1 : 0)) / totalQ) * 100;
 
   return (
-    <div ref={scrollRef} className="min-h-[100dvh] bg-[#0f172a] flex flex-col overflow-y-auto">
+    <div ref={scrollRef} className="min-h-[100dvh] bg-gray-50 dark:bg-[#0f172a] flex flex-col overflow-y-auto">
       {/* ── Top bar: progress + close ── */}
       <div className="flex items-center gap-3 px-4 pt-4 pb-2 flex-shrink-0">
         <button
           onClick={handleExit}
-          className="w-10 h-10 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 transition-colors flex-shrink-0"
+          className="w-10 h-10 rounded-full flex items-center justify-center text-zinc-500 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-200 dark:hover:bg-white/10 transition-colors flex-shrink-0"
           aria-label="Exit"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
@@ -325,7 +326,7 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
           </svg>
         </button>
 
-        <div className="flex-1 h-4 bg-slate-800 rounded-full overflow-hidden">
+        <div className="flex-1 h-4 bg-zinc-200 dark:bg-slate-800 rounded-full overflow-hidden">
           <div
             className="h-full rounded-full transition-all duration-500 ease-out"
             style={{
@@ -336,9 +337,9 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
           />
         </div>
 
-        <div className="flex items-center gap-1 bg-slate-800 px-3 py-1.5 rounded-full flex-shrink-0">
+        <div className="flex items-center gap-1 bg-zinc-200 dark:bg-slate-800 px-3 py-1.5 rounded-full flex-shrink-0">
           <span className="text-sm">⭐</span>
-          <span className="text-sm font-bold text-amber-400 tabular-nums">{sessionXP}</span>
+          <span className="text-sm font-bold text-amber-600 dark:text-amber-400 tabular-nums">{sessionXP}</span>
         </div>
 
         <MuteToggle />
@@ -354,9 +355,9 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
       >
         {/* Passage */}
         {passage && (
-          <motion.div variants={fadeUp} className="mb-5 rounded-2xl bg-slate-800/80 border border-slate-700 p-5">
+          <motion.div variants={fadeUp} className="mb-5 rounded-2xl bg-white border border-zinc-200 dark:bg-slate-800/80 dark:border-slate-700 p-5">
             <div className="flex items-start gap-2">
-              <p className="text-lg leading-relaxed text-white/90 whitespace-pre-line flex-1">{passage}</p>
+              <p className="text-lg leading-relaxed text-zinc-900 dark:text-white/90 whitespace-pre-line flex-1">{passage}</p>
               <SpeakerButton text={passage} />
             </div>
           </motion.div>
@@ -365,7 +366,7 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
         {/* Question */}
         <motion.div variants={fadeUp} className="mb-6">
           <div className="flex items-start gap-2">
-            <h2 className="text-[22px] font-bold text-white leading-snug flex-1">
+            <h2 className="text-[22px] font-bold text-zinc-900 dark:text-white leading-snug flex-1">
               {question}
             </h2>
             <SpeakerButton text={question} />
@@ -379,26 +380,26 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
             const isCorrectChoice = choice === q.correct;
             const answered = selected !== null;
 
-            let bg = "bg-slate-800 border-slate-600 hover:border-indigo-400 hover:bg-slate-700 active:scale-[0.97]";
-            let textColor = "text-white";
-            let badgeBg = "bg-slate-700 text-slate-300";
+            let bg = "bg-white border-zinc-300 hover:border-indigo-400 hover:bg-indigo-50 dark:bg-slate-800 dark:border-slate-600 dark:hover:border-indigo-400 dark:hover:bg-slate-700 active:scale-[0.97]";
+            let textColor = "text-zinc-900 dark:text-white";
+            let badgeBg = "bg-zinc-200 text-zinc-600 dark:bg-slate-700 dark:text-slate-300";
 
             if (answered) {
               if (isSelected && isCorrect) {
-                bg = "bg-emerald-900/60 border-emerald-500 ring-2 ring-emerald-500/30";
-                textColor = "text-emerald-100";
+                bg = "bg-emerald-50 border-emerald-500 ring-2 ring-emerald-500/30 dark:bg-emerald-900/60";
+                textColor = "text-emerald-800 dark:text-emerald-100";
                 badgeBg = "bg-emerald-500 text-white";
               } else if (isSelected && !isCorrect) {
-                bg = "bg-red-900/40 border-red-500 ring-2 ring-red-500/30";
-                textColor = "text-red-200";
+                bg = "bg-red-50 border-red-500 ring-2 ring-red-500/30 dark:bg-red-900/40";
+                textColor = "text-red-800 dark:text-red-200";
                 badgeBg = "bg-red-500 text-white";
               } else if (isCorrectChoice && !isCorrect) {
-                bg = "bg-emerald-900/40 border-emerald-500";
-                textColor = "text-emerald-200";
+                bg = "bg-emerald-50/80 border-emerald-500 dark:bg-emerald-900/40";
+                textColor = "text-emerald-800 dark:text-emerald-200";
                 badgeBg = "bg-emerald-500 text-white";
               } else {
-                bg = "bg-slate-800/40 border-slate-700 opacity-40";
-                textColor = "text-slate-400";
+                bg = "bg-zinc-100 border-zinc-200 opacity-40 dark:bg-slate-800/40 dark:border-slate-700";
+                textColor = "text-zinc-400 dark:text-slate-400";
               }
             }
 
@@ -540,6 +541,7 @@ function CompletionScreen({
 }) {
   const [saved, setSaved] = useState(false);
   const { playCompleteChime } = useAudio();
+  const darkMode = useThemeStore((s) => s.darkMode);
   const totalQ = questions.length;
   const stars = getStars(correctCount, totalQ);
   const nextStandard = getNextStandard(standard.standard_id);
@@ -621,7 +623,7 @@ function CompletionScreen({
   }, [saved, saving, child.id, standard.standard_id, totalQ, correctCount, xpEarned, setSaving]);
 
   return (
-    <div className="min-h-[100dvh] bg-[#0f172a] relative overflow-hidden flex flex-col">
+    <div className="min-h-[100dvh] bg-gray-50 dark:bg-[#0f172a] relative overflow-hidden flex flex-col">
       {/* Confetti */}
       {confettiPieces.map((c) => (
         <motion.div
@@ -662,8 +664,8 @@ function CompletionScreen({
               <svg
                 viewBox="0 0 24 24"
                 className={`${s === 2 ? "w-16 h-16" : "w-12 h-12"}`}
-                fill={s <= stars ? "#facc15" : "#334155"}
-                stroke={s <= stars ? "#eab308" : "#475569"}
+                fill={s <= stars ? "#facc15" : darkMode ? "#334155" : "#d4d4d8"}
+                stroke={s <= stars ? "#eab308" : darkMode ? "#475569" : "#a1a1aa"}
                 strokeWidth="0.5"
               >
                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
@@ -673,20 +675,20 @@ function CompletionScreen({
         </motion.div>
 
         {/* Title */}
-        <motion.h1 variants={fadeUp} className="text-3xl font-extrabold text-white tracking-tight text-center mb-1">
+        <motion.h1 variants={fadeUp} className="text-3xl font-extrabold text-zinc-900 dark:text-white tracking-tight text-center mb-1">
           {title}
         </motion.h1>
-        <motion.p variants={fadeUp} className="text-slate-400 text-center mb-8">{subtitle}</motion.p>
+        <motion.p variants={fadeUp} className="text-zinc-500 dark:text-slate-400 text-center mb-8">{subtitle}</motion.p>
 
         {/* Score + XP */}
         <motion.div variants={fadeUp} className="flex gap-6 mb-8">
           <div className="text-center">
-            <div className="text-4xl font-extrabold text-white">{correctCount}/{totalQ}</div>
-            <div className="text-xs text-slate-500 mt-1 font-medium">Correct</div>
+            <div className="text-4xl font-extrabold text-zinc-900 dark:text-white">{correctCount}/{totalQ}</div>
+            <div className="text-xs text-zinc-500 dark:text-slate-500 mt-1 font-medium">Correct</div>
           </div>
-          <div className="w-px bg-slate-700" />
+          <div className="w-px bg-zinc-300 dark:bg-slate-700" />
           <div className="text-center">
-            <div className="text-4xl font-extrabold text-amber-400">+{xpEarned}</div>
+            <div className="text-4xl font-extrabold text-amber-600 dark:text-amber-400">+{xpEarned}</div>
             <div className="text-xs text-slate-500 mt-1 font-medium">XP Earned</div>
           </div>
         </motion.div>
@@ -717,7 +719,7 @@ function CompletionScreen({
                     </svg>
                   )}
                 </span>
-                <span className="text-sm text-slate-300 flex-1 min-w-0 truncate">{qText}</span>
+                <span className="text-sm text-zinc-600 dark:text-slate-300 flex-1 min-w-0 truncate">{qText}</span>
               </div>
             );
           })}
@@ -737,14 +739,14 @@ function CompletionScreen({
 
           <button
             onClick={onRestart}
-            className="w-full py-4 rounded-2xl border-2 border-slate-600 text-white font-bold text-base hover:bg-slate-800 transition-all active:scale-[0.97]"
+            className="w-full py-4 rounded-2xl border-2 border-zinc-300 text-zinc-900 dark:border-slate-600 dark:text-white font-bold text-base hover:bg-zinc-100 dark:hover:bg-slate-800 transition-all active:scale-[0.97]"
           >
             Practice Again
           </button>
 
           <Link
             href={`/dashboard`}
-            className="block w-full text-center py-3 rounded-2xl text-slate-400 font-semibold text-sm hover:text-white transition-colors"
+            className="block w-full text-center py-3 rounded-2xl text-zinc-500 dark:text-slate-400 font-semibold text-sm hover:text-zinc-900 dark:hover:text-white transition-colors"
           >
             Back to Dashboard
           </Link>
