@@ -659,6 +659,22 @@ function ChildDashboard({
         </div>
       </div>
 
+      {/* ── Roadmap Link ── */}
+      <Link href={`/roadmap?child=${child.id}`} className="block dash-slide-up-4">
+        <div className="rounded-2xl border border-indigo-200 bg-gradient-to-r from-indigo-50 to-violet-50 p-4 flex items-center gap-4 hover:border-indigo-300 hover:shadow-md transition-all duration-200 cursor-pointer group">
+          <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center text-2xl shadow-sm flex-shrink-0 group-hover:scale-105 transition-transform">
+            🗺️
+          </div>
+          <div className="flex-1 min-w-0">
+            <div className="font-bold text-sm text-zinc-900">My Learning Journey</div>
+            <div className="text-xs text-zinc-500 mt-0.5">View your standards roadmap and progress</div>
+          </div>
+          <svg className="w-5 h-5 text-indigo-400 group-hover:text-indigo-600 transition-colors flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </div>
+      </Link>
+
       {/* ── Primary CTA: Assessment or Next Lesson ── */}
       {hasAssessment === false && (
         <Link href={`/assessment?child=${child.id}`} className="block dash-slide-up-5">
