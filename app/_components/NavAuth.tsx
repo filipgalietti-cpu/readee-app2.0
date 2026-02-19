@@ -8,6 +8,9 @@ import { createClient } from "@/lib/supabase/client";
 export default function NavAuth() {
   const pathname = usePathname();
   const router = useRouter();
+
+  // Hide navbar completely on immersive pages
+  if (pathname === "/practice") return null;
   const [loggedIn, setLoggedIn] = useState<boolean | null>(null);
   const [userPlan, setUserPlan] = useState<string>("free");
   const [menuOpen, setMenuOpen] = useState(false);

@@ -177,23 +177,23 @@ function UpgradeContent() {
   }
 
   return (
-    <div className="max-w-3xl mx-auto py-8 px-4 pb-16 space-y-12">
+    <div className="max-w-3xl mx-auto py-8 px-4 pb-16 space-y-12 min-h-screen bg-gradient-to-b from-white via-indigo-50/30 to-white dark:from-slate-900 dark:via-slate-900 dark:to-slate-900">
       {/* ── SECTION 1: Celebrate Progress ── */}
       {child && (
         <div className="text-center animate-slideUp">
           <div className="text-5xl mb-4">🎉</div>
-          <h1 className="text-2xl sm:text-3xl font-bold text-zinc-900 tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-bold text-zinc-900 dark:text-slate-100 tracking-tight">
             {child.first_name} is making amazing progress!
           </h1>
           <div className="flex flex-wrap justify-center gap-3 mt-4">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-sm font-medium text-amber-700">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800/40 text-sm font-medium text-amber-700 dark:text-amber-300">
               ⭐ {child.xp} XP earned
             </span>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-indigo-50 border border-indigo-200 text-sm font-medium text-indigo-700">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-800/40 text-sm font-medium text-indigo-700 dark:text-indigo-300">
               📚 {completedCount} lesson{completedCount !== 1 ? "s" : ""} completed
             </span>
             {child.reading_level && (
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-violet-50 border border-violet-200 text-sm font-medium text-violet-700">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-violet-50 dark:bg-violet-950/30 border border-violet-200 dark:border-violet-800/40 text-sm font-medium text-violet-700 dark:text-violet-300">
                 📖 {child.reading_level}
               </span>
             )}
@@ -204,18 +204,18 @@ function UpgradeContent() {
       {!child && (
         <div className="text-center animate-slideUp">
           <div className="text-5xl mb-4">🚀</div>
-          <h1 className="text-2xl sm:text-3xl font-bold text-zinc-900 tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-bold text-zinc-900 dark:text-slate-100 tracking-tight">
             Unlock the full reading journey
           </h1>
-          <p className="text-zinc-500 mt-2">
+          <p className="text-zinc-500 dark:text-slate-400 mt-2">
             Give your child access to the complete Readee curriculum
           </p>
         </div>
       )}
 
       {/* ── SECTION 2: What's Next ── */}
-      <div className="rounded-2xl border border-zinc-200 bg-white p-6 space-y-4 dash-slide-up-1">
-        <h2 className="text-lg font-bold text-zinc-900 text-center">
+      <div className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 space-y-4 dash-slide-up-1">
+        <h2 className="text-lg font-bold text-zinc-900 dark:text-slate-100 text-center">
           {child ? `Unlock ${child.first_name}'s full reading journey` : "Unlock the full curriculum"}
         </h2>
 
@@ -223,17 +223,17 @@ function UpgradeContent() {
           {lockedLessons.slice(0, 5).map((lesson) => (
             <div
               key={lesson.id}
-              className="flex items-center gap-3 px-4 py-3 rounded-xl bg-zinc-50 border border-zinc-100"
+              className="flex items-center gap-3 px-4 py-3 rounded-xl bg-zinc-50 dark:bg-slate-700 border border-zinc-100 dark:border-slate-600"
             >
               <span className="text-lg">🔒</span>
-              <span className="text-sm font-medium text-zinc-600">
+              <span className="text-sm font-medium text-zinc-600 dark:text-slate-300">
                 {lesson.title}
               </span>
             </div>
           ))}
         </div>
 
-        <p className="text-sm text-zinc-400 text-center">
+        <p className="text-sm text-zinc-400 dark:text-slate-500 text-center">
           ...and {totalLockedLessons - Math.min(lockedLessons.length, 5)} more lessons across 5 reading levels
         </p>
 
@@ -248,7 +248,7 @@ function UpgradeContent() {
                     className={`text-[11px] font-medium px-2 py-0.5 rounded-full ${
                       isCurrent
                         ? "bg-indigo-600 text-white shadow-sm"
-                        : "bg-zinc-100 text-zinc-400"
+                        : "bg-zinc-100 dark:bg-slate-700 text-zinc-400 dark:text-slate-400"
                     }`}
                   >
                     {level}
@@ -269,12 +269,12 @@ function UpgradeContent() {
       {/* ── SECTION 3: Pricing Cards ── */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-end dash-slide-up-2">
         {/* Monthly */}
-        <div className="rounded-2xl border border-zinc-200 bg-white p-6 space-y-4 self-center">
+        <div className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 space-y-4 self-center">
           <div>
-            <div className="text-3xl font-bold text-zinc-900">$9.99</div>
-            <div className="text-sm text-zinc-500">/month</div>
+            <div className="text-3xl font-bold text-zinc-900 dark:text-slate-100">$9.99</div>
+            <div className="text-sm text-zinc-500 dark:text-slate-400">/month</div>
           </div>
-          <p className="text-xs text-zinc-400">Billed monthly</p>
+          <p className="text-xs text-zinc-400 dark:text-slate-500">Billed monthly</p>
           <button
             onClick={() => handleOpenModal("monthly")}
             className="w-full py-3.5 rounded-xl border-2 border-indigo-600 text-indigo-600 font-bold text-sm hover:bg-indigo-50 transition-all"
@@ -284,17 +284,17 @@ function UpgradeContent() {
         </div>
 
         {/* Annual — highlighted */}
-        <div className="rounded-2xl border-2 border-indigo-400 bg-gradient-to-b from-white to-indigo-50/40 p-7 space-y-4 relative shadow-lg shadow-indigo-100/50">
+        <div className="rounded-2xl border-2 border-indigo-400 dark:border-indigo-500 bg-gradient-to-b from-white to-indigo-50/40 dark:from-slate-800 dark:to-indigo-950/20 p-7 space-y-4 relative shadow-lg shadow-indigo-100/50 dark:shadow-indigo-900/30">
           <div className="absolute -top-3 left-1/2 -translate-x-1/2">
             <span className="px-3 py-1 rounded-full text-[11px] font-bold bg-gradient-to-r from-amber-400 to-amber-500 text-white shadow-sm">
               Best Value
             </span>
           </div>
           <div>
-            <div className="text-3xl font-bold text-zinc-900">$99</div>
-            <div className="text-sm text-zinc-500">/year</div>
+            <div className="text-3xl font-bold text-zinc-900 dark:text-slate-100">$99</div>
+            <div className="text-sm text-zinc-500 dark:text-slate-400">/year</div>
           </div>
-          <p className="text-xs text-zinc-500">
+          <p className="text-xs text-zinc-500 dark:text-slate-400">
             <span className="font-semibold text-indigo-600">$8.25/month</span> — Save $20
           </p>
           <button
@@ -308,19 +308,19 @@ function UpgradeContent() {
 
       {/* ── SECTION 4: Trust Signals ── */}
       <div className="text-center dash-slide-up-3">
-        <p className="text-xs text-zinc-400">
+        <p className="text-xs text-zinc-400 dark:text-slate-500">
           Cancel anytime &middot; 30-day money-back guarantee &middot; No commitment
         </p>
       </div>
 
       {/* ── SECTION 5: What's Included ── */}
-      <div className="rounded-2xl border border-zinc-200 bg-white p-6 space-y-4 dash-slide-up-4">
-        <h3 className="text-base font-bold text-zinc-900">What&apos;s included in Readee+</h3>
+      <div className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 space-y-4 dash-slide-up-4">
+        <h3 className="text-base font-bold text-zinc-900 dark:text-slate-100">What&apos;s included in Readee+</h3>
         <div className="space-y-3">
           {FEATURES.map((feature) => (
             <div key={feature} className="flex items-start gap-3">
-              <span className="text-green-500 flex-shrink-0 mt-0.5">✓</span>
-              <span className="text-sm text-zinc-700">{feature}</span>
+              <span className="text-green-500 dark:text-green-400 flex-shrink-0 mt-0.5">✓</span>
+              <span className="text-sm text-zinc-700 dark:text-slate-300">{feature}</span>
             </div>
           ))}
         </div>
@@ -328,14 +328,14 @@ function UpgradeContent() {
 
       {/* ── SECTION 6: FAQ ── */}
       <div className="space-y-2 dash-slide-up-5">
-        <h3 className="text-base font-bold text-zinc-900 mb-3">Frequently Asked Questions</h3>
+        <h3 className="text-base font-bold text-zinc-900 dark:text-slate-100 mb-3">Frequently Asked Questions</h3>
         {FAQS.map((faq, i) => (
-          <div key={i} className="rounded-xl border border-zinc-200 bg-white overflow-hidden">
+          <div key={i} className="rounded-xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 overflow-hidden">
             <button
               onClick={() => setOpenFaq(openFaq === i ? null : i)}
-              className="w-full flex items-center justify-between p-4 text-left hover:bg-zinc-50 transition-colors"
+              className="w-full flex items-center justify-between p-4 text-left hover:bg-zinc-50 dark:hover:bg-slate-700/50 transition-colors"
             >
-              <span className="text-sm font-medium text-zinc-800">{faq.q}</span>
+              <span className="text-sm font-medium text-zinc-800 dark:text-slate-200">{faq.q}</span>
               <svg
                 className={`w-4 h-4 text-zinc-400 transition-transform flex-shrink-0 ${
                   openFaq === i ? "rotate-180" : ""
@@ -349,7 +349,7 @@ function UpgradeContent() {
             </button>
             {openFaq === i && (
               <div className="px-4 pb-4">
-                <p className="text-sm text-zinc-500">{faq.a}</p>
+                <p className="text-sm text-zinc-500 dark:text-slate-400">{faq.a}</p>
               </div>
             )}
           </div>
@@ -360,7 +360,7 @@ function UpgradeContent() {
       <div className="text-center pt-4 dash-slide-up-6">
         <Link
           href="/dashboard"
-          className="text-sm text-zinc-400 hover:text-zinc-600 transition-colors"
+          className="text-sm text-zinc-400 dark:text-slate-500 hover:text-zinc-600 dark:hover:text-slate-300 transition-colors"
         >
           Continue with Free Plan →
         </Link>
@@ -374,10 +374,10 @@ function UpgradeContent() {
             if (e.target === e.currentTarget) setShowModal(false);
           }}
         >
-          <div className="bg-white rounded-2xl shadow-xl max-w-md w-full p-8 space-y-5 animate-scaleIn relative">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl max-w-md w-full p-8 space-y-5 animate-scaleIn relative">
             <button
               onClick={() => setShowModal(false)}
-              className="absolute top-4 right-4 w-8 h-8 rounded-full bg-zinc-100 flex items-center justify-center text-zinc-400 hover:bg-zinc-200 transition-colors"
+              className="absolute top-4 right-4 w-8 h-8 rounded-full bg-zinc-100 dark:bg-slate-700 flex items-center justify-center text-zinc-400 dark:text-slate-300 hover:bg-zinc-200 dark:hover:bg-slate-600 transition-colors"
             >
               ×
             </button>
@@ -386,10 +386,10 @@ function UpgradeContent() {
               <>
                 <div className="text-center">
                   <div className="text-4xl mb-3">🚀</div>
-                  <h2 className="text-xl font-bold text-zinc-900">
+                  <h2 className="text-xl font-bold text-zinc-900 dark:text-slate-100">
                     Readee+ is launching soon!
                   </h2>
-                  <p className="text-sm text-zinc-500 mt-2">
+                  <p className="text-sm text-zinc-500 dark:text-slate-400 mt-2">
                     Be first in line and get <span className="font-semibold text-indigo-600">20% off</span> your first year.
                   </p>
                 </div>
@@ -399,7 +399,7 @@ function UpgradeContent() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="you@email.com"
-                  className="w-full px-4 py-3 rounded-xl border border-zinc-200 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  className="w-full px-4 py-3 rounded-xl border border-zinc-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-sm text-zinc-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
                 />
 
                 <button
@@ -410,22 +410,22 @@ function UpgradeContent() {
                   {submitting ? "Joining..." : "Join the Waitlist"}
                 </button>
 
-                <p className="text-[11px] text-zinc-400 text-center">
+                <p className="text-[11px] text-zinc-400 dark:text-slate-500 text-center">
                   {modalPlan === "annual" ? "Annual plan selected" : "Monthly plan selected"} &middot; We&apos;ll email you when ready
                 </p>
               </>
             ) : (
               <div className="text-center py-4">
                 <div className="text-5xl mb-4">🎉</div>
-                <h2 className="text-xl font-bold text-zinc-900">
+                <h2 className="text-xl font-bold text-zinc-900 dark:text-slate-100">
                   You&apos;re on the list!
                 </h2>
-                <p className="text-sm text-zinc-500 mt-2">
+                <p className="text-sm text-zinc-500 dark:text-slate-400 mt-2">
                   We&apos;ll email you when Readee+ is ready.
                 </p>
                 <button
                   onClick={() => setShowModal(false)}
-                  className="mt-6 px-6 py-2.5 rounded-xl bg-zinc-100 text-sm font-medium text-zinc-700 hover:bg-zinc-200 transition-colors"
+                  className="mt-6 px-6 py-2.5 rounded-xl bg-zinc-100 dark:bg-slate-700 text-sm font-medium text-zinc-700 dark:text-slate-200 hover:bg-zinc-200 dark:hover:bg-slate-600 transition-colors"
                 >
                   Got it!
                 </button>

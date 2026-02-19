@@ -215,8 +215,8 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
 
   /* ── Exit ── */
   const handleExit = useCallback(() => {
-    router.push(`/roadmap?child=${child.id}`);
-  }, [router, child.id]);
+    router.push(`/dashboard`);
+  }, [router]);
 
   if (phase === "complete") {
     const correctCount = answers.filter((a) => a.correct).length;
@@ -283,7 +283,7 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
         {/* Passage */}
         {passage && (
           <div className="mb-5 rounded-2xl bg-slate-800/80 border border-slate-700 p-5 animate-fadeUp">
-            <p className="text-lg leading-relaxed text-slate-200 whitespace-pre-line">{passage}</p>
+            <p className="text-lg leading-relaxed text-white/90 whitespace-pre-line">{passage}</p>
           </div>
         )}
 
@@ -468,10 +468,11 @@ function CompletionScreen({
     subtitle = "Let's give it another go!";
   }
 
-  /* ── Confetti for 5/5 ── */
+  /* ── Confetti for 4/5 or 5/5 ── */
   useEffect(() => {
-    if (correctCount < totalQ) return;
-    const pieces = Array.from({ length: 80 }, (_, i) => ({
+    if (correctCount < totalQ - 1) return;
+    const count = correctCount === totalQ ? 80 : 50;
+    const pieces = Array.from({ length: count }, (_, i) => ({
       id: i,
       left: Math.random() * 100,
       delay: Math.random() * 2,

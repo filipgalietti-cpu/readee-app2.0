@@ -183,7 +183,7 @@ function AnalyticsLoader() {
     return (
       <div className="max-w-md mx-auto py-16 text-center space-y-4">
         <div className="text-4xl">📊</div>
-        <h1 className="text-xl font-bold text-zinc-900">No reader selected</h1>
+        <h1 className="text-xl font-bold text-zinc-900 dark:text-slate-100">No reader selected</h1>
         <Link href="/dashboard" className="text-sm text-indigo-600 hover:text-indigo-700 font-medium">
           &larr; Back to Dashboard
         </Link>
@@ -271,15 +271,15 @@ function AnalyticsDashboard({ child }: { child: Child }) {
         <Link href="/dashboard" className="text-sm text-indigo-600 hover:text-indigo-700 font-medium transition-colors">
           &larr; Dashboard
         </Link>
-        <span className="text-xs text-zinc-400 font-medium">{displayGrade(child.grade)}</span>
+        <span className="text-xs text-zinc-400 dark:text-slate-500 font-medium">{displayGrade(child.grade)}</span>
       </div>
 
       {/* ── Title ── */}
       <div className="mb-8 dash-slide-up-1">
-        <h1 className="text-2xl font-bold text-zinc-900 tracking-tight">
+        <h1 className="text-2xl font-bold text-zinc-900 dark:text-slate-100 tracking-tight">
           📊 {child.first_name}&apos;s Progress Report
         </h1>
-        <p className="text-zinc-500 text-sm mt-1">
+        <p className="text-zinc-500 dark:text-slate-400 text-sm mt-1">
           Detailed performance breakdown by ELA standard
         </p>
       </div>
@@ -332,14 +332,14 @@ function AnalyticsDashboard({ child }: { child: Child }) {
       </div>
 
       {/* ══════════ PROGRESS CHART ══════════ */}
-      <div className="rounded-2xl border border-zinc-200 bg-white p-5 mb-6 dash-slide-up-3">
-        <h2 className="text-base font-bold text-zinc-900 mb-4">Weekly Accuracy Trend</h2>
+      <div className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 mb-6 dash-slide-up-3">
+        <h2 className="text-base font-bold text-zinc-900 dark:text-slate-100 mb-4">Weekly Accuracy Trend</h2>
         <AccuracyChart data={weeklyData} />
       </div>
 
       {/* ══════════ DOMAIN BREAKDOWN ══════════ */}
-      <div className="rounded-2xl border border-zinc-200 bg-white p-5 mb-6 dash-slide-up-4">
-        <h2 className="text-base font-bold text-zinc-900 mb-4">Performance by Domain</h2>
+      <div className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 mb-6 dash-slide-up-4">
+        <h2 className="text-base font-bold text-zinc-900 dark:text-slate-100 mb-4">Performance by Domain</h2>
         <div className="space-y-3">
           {domainStats.map((ds) => (
             <DomainCard key={ds.domain} domainStat={ds} standards={stats.filter((s) => s.domain === ds.domain)} childId={child.id} />
@@ -349,12 +349,12 @@ function AnalyticsDashboard({ child }: { child: Child }) {
 
       {/* ══════════ AREAS TO FOCUS ON ══════════ */}
       {struggles.length > 0 && (
-        <div className="rounded-2xl border border-amber-200 bg-gradient-to-b from-amber-50/80 to-white p-5 mb-6 dash-slide-up-5">
+        <div className="rounded-2xl border border-amber-200 dark:border-amber-800/40 bg-gradient-to-b from-amber-50/80 to-white dark:from-amber-950/20 dark:to-slate-800 p-5 mb-6 dash-slide-up-5">
           <div className="flex items-center gap-2 mb-1">
             <span className="text-lg">🎯</span>
-            <h2 className="text-base font-bold text-zinc-900">Areas to Focus On</h2>
+            <h2 className="text-base font-bold text-zinc-900 dark:text-slate-100">Areas to Focus On</h2>
           </div>
-          <p className="text-xs text-zinc-500 mb-4">
+          <p className="text-xs text-zinc-500 dark:text-slate-400 mb-4">
             These {struggles.length} standards need the most attention — ranked by priority.
           </p>
           <div className="space-y-3">
@@ -363,7 +363,7 @@ function AnalyticsDashboard({ child }: { child: Child }) {
               const ringPct = s.accuracy;
               const ringOffset = 88 - (88 * ringPct / 100);
               return (
-                <div key={s.standard_id} className="rounded-xl border border-zinc-200 bg-white p-4 hover:shadow-sm transition-shadow">
+                <div key={s.standard_id} className="rounded-xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 hover:shadow-sm transition-shadow">
                   <div className="flex gap-3">
                     {/* Priority ring */}
                     <div className="relative w-11 h-11 flex-shrink-0">
@@ -377,7 +377,7 @@ function AnalyticsDashboard({ child }: { child: Child }) {
                           strokeDashoffset={ringOffset}
                         />
                       </svg>
-                      <span className="absolute inset-0 flex items-center justify-center text-[10px] font-extrabold text-zinc-600">
+                      <span className="absolute inset-0 flex items-center justify-center text-[10px] font-extrabold text-zinc-600 dark:text-slate-300">
                         #{i + 1}
                       </span>
                     </div>
@@ -387,11 +387,11 @@ function AnalyticsDashboard({ child }: { child: Child }) {
                         <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${meta.bg} ${meta.color} flex-shrink-0`}>
                           {s.standard_id}
                         </span>
-                        <span className="text-sm font-semibold text-zinc-900 truncate">{s.name}</span>
+                        <span className="text-sm font-semibold text-zinc-900 dark:text-slate-100 truncate">{s.name}</span>
                       </div>
 
                       <div className="flex items-center gap-3 mb-2">
-                        <div className="flex-1 h-2 bg-zinc-100 rounded-full overflow-hidden">
+                        <div className="flex-1 h-2 bg-zinc-100 dark:bg-slate-700 rounded-full overflow-hidden">
                           <div
                             className="h-full rounded-full transition-all duration-500"
                             style={{
@@ -409,8 +409,8 @@ function AnalyticsDashboard({ child }: { child: Child }) {
                       </div>
 
                       {/* Parent tip */}
-                      <div className="rounded-lg bg-amber-50 border border-amber-100 px-3 py-2 mb-2.5">
-                        <p className="text-xs text-amber-800 leading-relaxed">
+                      <div className="rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-800/40 px-3 py-2 mb-2.5">
+                        <p className="text-xs text-amber-800 dark:text-amber-200 leading-relaxed">
                           <span className="font-bold">💡 Tip:</span>{" "}
                           {s.parent_tip || `Revisit with guided practice and repeat the ${s.domain.toLowerCase()} exercises.`}
                         </p>
@@ -433,10 +433,10 @@ function AnalyticsDashboard({ child }: { child: Child }) {
       )}
 
       {/* ══════════ STANDARDS TABLE ══════════ */}
-      <div className="rounded-2xl border border-zinc-200 bg-white p-5 dash-slide-up-6">
+      <div className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 dash-slide-up-6">
         <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
-          <h2 className="text-base font-bold text-zinc-900">Standards Breakdown</h2>
-          <span className="text-xs text-zinc-400">
+          <h2 className="text-base font-bold text-zinc-900 dark:text-slate-100">Standards Breakdown</h2>
+          <span className="text-xs text-zinc-400 dark:text-slate-500">
             {filteredStats.length} standard{filteredStats.length !== 1 ? "s" : ""}
           </span>
         </div>
@@ -455,7 +455,7 @@ function AnalyticsDashboard({ child }: { child: Child }) {
                     ? "bg-indigo-600 text-white border-indigo-600"
                     : meta
                     ? `${meta.bg} ${meta.color} ${meta.border} hover:opacity-80`
-                    : "bg-zinc-50 text-zinc-600 border-zinc-200 hover:bg-zinc-100"
+                    : "bg-zinc-50 dark:bg-slate-700 text-zinc-600 dark:text-slate-300 border-zinc-200 dark:border-slate-600 hover:bg-zinc-100 dark:hover:bg-slate-600"
                 }`}
               >
                 {meta ? `${meta.emoji} ` : ""}{d === "All" ? "All Domains" : d}
@@ -476,8 +476,8 @@ function AnalyticsDashboard({ child }: { child: Child }) {
               onClick={() => toggleSort(field)}
               className={`text-[11px] font-medium px-2.5 py-1 rounded-lg transition-colors ${
                 sortField === field
-                  ? "bg-indigo-100 text-indigo-700"
-                  : "text-zinc-400 hover:text-zinc-600 hover:bg-zinc-50"
+                  ? "bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300"
+                  : "text-zinc-400 dark:text-slate-500 hover:text-zinc-600 dark:hover:text-slate-300 hover:bg-zinc-50 dark:hover:bg-slate-700"
               }`}
             >
               {label} {sortField === field && (sortDir === "asc" ? "↑" : "↓")}
@@ -695,13 +695,13 @@ function DomainCard({ domainStat, standards, childId }: {
             </svg>
           </div>
         </div>
-        <div className="h-2 bg-white/80 rounded-full overflow-hidden">
+        <div className="h-2 bg-white/80 dark:bg-slate-700 rounded-full overflow-hidden">
           <div
             className="h-full rounded-full transition-all duration-700"
             style={{ width: `${ds.accuracy}%`, backgroundColor: meta.barColor }}
           />
         </div>
-        <div className="flex items-center justify-between mt-1.5 text-[11px] text-zinc-500">
+        <div className="flex items-center justify-between mt-1.5 text-[11px] text-zinc-500 dark:text-slate-400">
           <span>{ds.proficient}/{ds.total} proficient</span>
           <span>{ds.attempted} questions attempted</span>
         </div>
@@ -709,11 +709,11 @@ function DomainCard({ domainStat, standards, childId }: {
 
       {expanded && (
         <div className="px-3.5 pb-3.5 space-y-1.5 animate-fadeUp">
-          <div className="h-px bg-zinc-200/60 mb-2" />
+          <div className="h-px bg-zinc-200/60 dark:bg-slate-600 mb-2" />
           {sortedStandards.map((s) => {
             const mc = MASTERY_CONFIG[s.mastery];
             return (
-              <div key={s.standard_id} className="flex items-center gap-2.5 py-2 px-2 rounded-lg hover:bg-white/80 transition-colors group">
+              <div key={s.standard_id} className="flex items-center gap-2.5 py-2 px-2 rounded-lg hover:bg-white/80 dark:hover:bg-slate-700/50 transition-colors group">
                 {/* Mastery dot */}
                 <div className={`w-2.5 h-2.5 rounded-full flex-shrink-0 ${
                   s.mastery === "Proficient" ? "bg-emerald-500"
@@ -722,9 +722,9 @@ function DomainCard({ domainStat, standards, childId }: {
                   : "bg-zinc-200"
                 }`} />
                 {/* ID */}
-                <span className="text-[11px] font-bold text-zinc-500 w-14 flex-shrink-0">{s.standard_id}</span>
+                <span className="text-[11px] font-bold text-zinc-500 dark:text-slate-400 w-14 flex-shrink-0">{s.standard_id}</span>
                 {/* Name */}
-                <span className="text-xs text-zinc-600 flex-1 min-w-0 truncate">{s.name}</span>
+                <span className="text-xs text-zinc-600 dark:text-slate-300 flex-1 min-w-0 truncate">{s.name}</span>
                 {/* Accuracy */}
                 {s.attempted > 0 ? (
                   <span className={`text-xs font-bold flex-shrink-0 ${mc.color}`}>{s.accuracy}%</span>
@@ -760,7 +760,7 @@ function StandardRow({ stat }: { stat: StandardStat }) {
   return (
     <div
       className={`rounded-xl border transition-all ${
-        expanded ? "border-zinc-300 shadow-sm" : "border-zinc-100 hover:border-zinc-200"
+        expanded ? "border-zinc-300 dark:border-slate-600 shadow-sm" : "border-zinc-100 dark:border-slate-700 hover:border-zinc-200 dark:hover:border-slate-600"
       }`}
     >
       <button
@@ -781,7 +781,7 @@ function StandardRow({ stat }: { stat: StandardStat }) {
         </span>
 
         {/* Name */}
-        <span className="text-sm text-zinc-700 flex-1 min-w-0 truncate">
+        <span className="text-sm text-zinc-700 dark:text-slate-300 flex-1 min-w-0 truncate">
           {stat.name}
         </span>
 
@@ -820,26 +820,26 @@ function StandardRow({ stat }: { stat: StandardStat }) {
           {stat.attempted > 0 ? (
             <>
               <div className="grid grid-cols-3 gap-2">
-                <div className="bg-zinc-50 rounded-lg p-2 text-center">
-                  <div className="text-zinc-900 font-bold text-sm">{stat.attempted}</div>
-                  <div className="text-zinc-400 text-[10px]">Attempted</div>
+                <div className="bg-zinc-50 dark:bg-slate-700 rounded-lg p-2 text-center">
+                  <div className="text-zinc-900 dark:text-slate-100 font-bold text-sm">{stat.attempted}</div>
+                  <div className="text-zinc-400 dark:text-slate-500 text-[10px]">Attempted</div>
                 </div>
-                <div className="bg-emerald-50 rounded-lg p-2 text-center">
-                  <div className="text-emerald-700 font-bold text-sm">{stat.correct}</div>
-                  <div className="text-emerald-500 text-[10px]">Correct</div>
+                <div className="bg-emerald-50 dark:bg-emerald-950/30 rounded-lg p-2 text-center">
+                  <div className="text-emerald-700 dark:text-emerald-400 font-bold text-sm">{stat.correct}</div>
+                  <div className="text-emerald-500 dark:text-emerald-600 text-[10px]">Correct</div>
                 </div>
-                <div className="bg-red-50 rounded-lg p-2 text-center">
-                  <div className="text-red-600 font-bold text-sm">{stat.incorrect}</div>
-                  <div className="text-red-400 text-[10px]">Incorrect</div>
+                <div className="bg-red-50 dark:bg-red-950/30 rounded-lg p-2 text-center">
+                  <div className="text-red-600 dark:text-red-400 font-bold text-sm">{stat.incorrect}</div>
+                  <div className="text-red-400 dark:text-red-600 text-[10px]">Incorrect</div>
                 </div>
               </div>
               {/* Accuracy bar */}
               <div>
                 <div className="flex items-center justify-between text-[11px] mb-1">
-                  <span className="text-zinc-500">Accuracy</span>
-                  <span className="font-bold text-zinc-700">{stat.accuracy}%</span>
+                  <span className="text-zinc-500 dark:text-slate-400">Accuracy</span>
+                  <span className="font-bold text-zinc-700 dark:text-slate-200">{stat.accuracy}%</span>
                 </div>
-                <div className="h-2 bg-zinc-100 rounded-full overflow-hidden">
+                <div className="h-2 bg-zinc-100 dark:bg-slate-700 rounded-full overflow-hidden">
                   <div
                     className={`h-full rounded-full transition-all duration-500 ${
                       stat.accuracy >= 80 ? "bg-emerald-500"

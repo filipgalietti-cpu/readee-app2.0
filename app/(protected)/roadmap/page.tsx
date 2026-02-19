@@ -150,7 +150,7 @@ function RoadmapLoader() {
     return (
       <div className="max-w-md mx-auto py-16 text-center space-y-4">
         <div className="text-4xl">🗺️</div>
-        <h1 className="text-xl font-bold text-zinc-900">No reader selected</h1>
+        <h1 className="text-xl font-bold text-zinc-900 dark:text-slate-100">No reader selected</h1>
         <Link href="/dashboard" className="text-sm text-indigo-600 hover:text-indigo-700 font-medium">
           &larr; Back to Dashboard
         </Link>
@@ -281,10 +281,10 @@ function Roadmap({ child, userPlan }: { child: Child; userPlan: string }) {
 
       {/* ── Title ── */}
       <div className="text-center mb-6 dash-slide-up-1 max-w-[400px] mx-auto md:max-w-none">
-        <h1 className="text-2xl font-bold text-zinc-900 tracking-tight">
+        <h1 className="text-2xl font-bold text-zinc-900 dark:text-slate-100 tracking-tight">
           {child.first_name}&apos;s Learning Journey
         </h1>
-        <p className="text-zinc-500 text-sm mt-1">Kindergarten ELA Standards</p>
+        <p className="text-zinc-500 dark:text-slate-400 text-sm mt-1">Kindergarten ELA Standards</p>
       </div>
 
       {/* ── Mobile Progress Summary ── */}
@@ -337,14 +337,14 @@ function Roadmap({ child, userPlan }: { child: Child; userPlan: string }) {
 
             {/* Currently Working On */}
             {currentStandard && (
-              <div className="rounded-2xl border border-zinc-200 bg-white p-4 shadow-sm">
-                <div className="text-[11px] text-zinc-400 font-medium uppercase tracking-wide mb-2">Now Working On</div>
+              <div className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 shadow-sm">
+                <div className="text-[11px] text-zinc-400 dark:text-slate-500 font-medium uppercase tracking-wide mb-2">Now Working On</div>
                 <div className="flex items-center gap-2 mb-2">
                   <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-indigo-100 text-indigo-700">
                     {currentStandard.standard_id}
                   </span>
                 </div>
-                <p className="text-sm text-zinc-700 leading-snug">
+                <p className="text-sm text-zinc-700 dark:text-slate-300 leading-snug">
                   {shortName(currentStandard.standard_description)}
                 </p>
                 <Link
@@ -357,8 +357,8 @@ function Roadmap({ child, userPlan }: { child: Child; userPlan: string }) {
             )}
 
             {/* Domain Progress */}
-            <div className="rounded-2xl border border-zinc-200 bg-white p-4 shadow-sm">
-              <div className="text-[11px] text-zinc-400 font-medium uppercase tracking-wide mb-3">Domain Progress</div>
+            <div className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 shadow-sm">
+              <div className="text-[11px] text-zinc-400 dark:text-slate-500 font-medium uppercase tracking-wide mb-3">Domain Progress</div>
               <div className="space-y-3">
                 {domainProgress.map((dp) => {
                   const meta = DOMAIN_META[dp.domain];
@@ -366,10 +366,10 @@ function Roadmap({ child, userPlan }: { child: Child; userPlan: string }) {
                   return (
                     <div key={dp.domain}>
                       <div className="flex items-center justify-between mb-1">
-                        <span className="text-xs font-medium text-zinc-700">{meta.emoji} {dp.domain}</span>
-                        <span className="text-[10px] text-zinc-400">{dp.completed}/{dp.total}</span>
+                        <span className="text-xs font-medium text-zinc-700 dark:text-slate-300">{meta.emoji} {dp.domain}</span>
+                        <span className="text-[10px] text-zinc-400 dark:text-slate-500">{dp.completed}/{dp.total}</span>
                       </div>
-                      <div className="h-1.5 bg-zinc-100 rounded-full overflow-hidden">
+                      <div className="h-1.5 bg-zinc-100 dark:bg-slate-700 rounded-full overflow-hidden">
                         <div
                           className="h-full rounded-full transition-all duration-700"
                           style={{ width: `${dpPct}%`, backgroundColor: meta.fill }}
@@ -469,8 +469,8 @@ function Roadmap({ child, userPlan }: { child: Child; userPlan: string }) {
               <div className="w-20 h-20 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-3xl shadow-[0_4px_0_0_#c2410c,0_8px_24px_rgba(245,158,11,0.4)]">
                 🏆
               </div>
-              <p className="text-sm font-bold text-zinc-700 mt-3">Level Complete!</p>
-              <p className="text-xs text-zinc-400">Master all {ALL_STANDARDS.length} standards</p>
+              <p className="text-sm font-bold text-zinc-700 dark:text-slate-200 mt-3">Level Complete!</p>
+              <p className="text-xs text-zinc-400 dark:text-slate-500">Master all {ALL_STANDARDS.length} standards</p>
             </div>
           </div>
         </div>
@@ -649,8 +649,8 @@ function NodeBubble({
           className="absolute top-full mt-2 z-50 animate-scaleIn"
           style={{ width: 288, left: isLeftSide ? -40 : -200 }}
         >
-          <div className="rounded-2xl bg-white border border-zinc-200 shadow-xl p-4 space-y-3">
-            <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white border-l border-t border-zinc-200 rotate-45" />
+          <div className="rounded-2xl bg-white dark:bg-slate-800 border border-zinc-200 dark:border-slate-700 shadow-xl p-4 space-y-3">
+            <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white dark:bg-slate-800 border-l border-t border-zinc-200 dark:border-slate-700 rotate-45" />
 
             <div className="relative">
               <div className="flex items-center gap-2 flex-wrap">
@@ -659,10 +659,10 @@ function NodeBubble({
                 </span>
                 <StatusBadge status={status} isPremium={isPremium} />
               </div>
-              <h4 className="font-bold text-sm text-zinc-900 mt-2 leading-snug">
+              <h4 className="font-bold text-sm text-zinc-900 dark:text-slate-100 mt-2 leading-snug">
                 {shortName(standard.standard_description)}
               </h4>
-              <p className="text-[11px] text-zinc-500 mt-1 leading-relaxed">
+              <p className="text-[11px] text-zinc-500 dark:text-slate-400 mt-1 leading-relaxed">
                 {standard.standard_description}
               </p>
             </div>
@@ -713,7 +713,7 @@ function NodeBubble({
             )}
 
             {status === "locked" && !isPremium && (
-              <p className="text-center text-[11px] text-zinc-400 py-1">
+              <p className="text-center text-[11px] text-zinc-400 dark:text-slate-500 py-1">
                 Complete previous standards to unlock
               </p>
             )}

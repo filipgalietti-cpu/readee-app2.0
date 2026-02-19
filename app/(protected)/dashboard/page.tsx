@@ -189,19 +189,19 @@ function AddChildrenForm({ userPlan, onDone }: { userPlan: string; onDone: (kids
         <div className="w-20 h-20 rounded-2xl bg-indigo-50 mx-auto mb-6 flex items-center justify-center text-4xl">
           📚
         </div>
-        <h1 className="text-2xl font-bold text-zinc-900 tracking-tight">
+        <h1 className="text-2xl font-bold text-zinc-900 dark:text-slate-100 tracking-tight">
           Welcome to Readee!
         </h1>
-        <p className="text-zinc-500 mt-2">
+        <p className="text-zinc-500 dark:text-slate-400 mt-2">
           Let&apos;s set up your readers.
         </p>
       </div>
 
       <div className="space-y-4">
         {rows.map((row, index) => (
-          <div key={index} className="rounded-2xl border border-zinc-200 bg-white p-4 space-y-3">
+          <div key={index} className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-sm font-semibold text-zinc-500">
+              <span className="text-sm font-semibold text-zinc-500 dark:text-slate-400">
                 {AVATARS[index % AVATARS.length]} Reader {index + 1}
               </span>
               {rows.length > 1 && (
@@ -218,12 +218,12 @@ function AddChildrenForm({ userPlan, onDone }: { userPlan: string; onDone: (kids
               placeholder="Child's first name"
               value={row.name}
               onChange={(e) => updateRow(index, "name", e.target.value)}
-              className="w-full px-3 py-2.5 rounded-xl border border-zinc-200 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              className="w-full px-3 py-2.5 rounded-xl border border-zinc-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-sm text-zinc-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
             />
             <select
               value={row.grade}
               onChange={(e) => updateRow(index, "grade", e.target.value)}
-              className="w-full px-3 py-2.5 rounded-xl border border-zinc-200 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent bg-white text-zinc-700"
+              className="w-full px-3 py-2.5 rounded-xl border border-zinc-200 dark:border-slate-600 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent bg-white dark:bg-slate-700 text-zinc-700 dark:text-slate-200"
             >
               <option value="">Select grade</option>
               {GRADES.map((g) => (
@@ -279,7 +279,7 @@ function ChildSelector({
         <h1 className="text-3xl font-bold text-zinc-900 dark:text-slate-100 tracking-tight">
           Who&apos;s reading today?
         </h1>
-        <p className="text-zinc-500 mt-2">Select a reader to get started</p>
+        <p className="text-zinc-500 dark:text-slate-400 mt-2">Select a reader to get started</p>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -565,6 +565,29 @@ function ChildDashboard({
         </div>
       )}
 
+      {/* ── Start Practice CTA ── */}
+      {hasAssessment && (
+        <Link
+          href={`/practice?child=${child.id}&standard=RF.K.1a`}
+          className="block dash-slide-up-3"
+        >
+          <div className="rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 dark:from-emerald-600 dark:to-teal-600 p-5 text-white hover:from-emerald-600 hover:to-teal-600 transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-[1.01] cursor-pointer flex items-center gap-4">
+            <div className="w-14 h-14 rounded-xl bg-white/20 flex items-center justify-center text-3xl flex-shrink-0">
+              🎯
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="text-white font-bold text-lg">Start Practice</div>
+              <div className="text-emerald-100 text-sm mt-0.5">Practice reading standards & earn XP</div>
+            </div>
+            <div className="flex-shrink-0 text-white/80">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
+          </div>
+        </Link>
+      )}
+
       {/* ── Stats Cards ── */}
       <div className="grid grid-cols-3 gap-3 dash-slide-up-3">
         {/* XP Card */}
@@ -662,21 +685,21 @@ function ChildDashboard({
       {/* ── Roadmap & Analytics Links ── */}
       <div className="grid grid-cols-2 gap-3 dash-slide-up-4">
         <Link href={`/roadmap?child=${child.id}`} className="block">
-          <div className="rounded-2xl border border-indigo-200 bg-gradient-to-r from-indigo-50 to-violet-50 p-4 hover:border-indigo-300 hover:shadow-md transition-all duration-200 cursor-pointer group h-full">
-            <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-xl shadow-sm mb-2 group-hover:scale-105 transition-transform">
+          <div className="rounded-2xl border border-indigo-200 dark:border-indigo-800/40 bg-gradient-to-r from-indigo-50 to-violet-50 dark:from-indigo-950/30 dark:to-violet-950/30 p-4 hover:border-indigo-300 dark:hover:border-indigo-700 hover:shadow-md transition-all duration-200 cursor-pointer group h-full">
+            <div className="w-10 h-10 rounded-xl bg-white dark:bg-slate-700 flex items-center justify-center text-xl shadow-sm mb-2 group-hover:scale-105 transition-transform">
               🗺️
             </div>
-            <div className="font-bold text-sm text-zinc-900">Learning Journey</div>
-            <div className="text-[11px] text-zinc-500 mt-0.5">Standards roadmap</div>
+            <div className="font-bold text-sm text-zinc-900 dark:text-slate-100">Learning Journey</div>
+            <div className="text-[11px] text-zinc-500 dark:text-slate-400 mt-0.5">Standards roadmap</div>
           </div>
         </Link>
         <Link href={`/analytics?child=${child.id}`} className="block">
-          <div className="rounded-2xl border border-violet-200 bg-gradient-to-r from-violet-50 to-purple-50 p-4 hover:border-violet-300 hover:shadow-md transition-all duration-200 cursor-pointer group h-full">
-            <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-xl shadow-sm mb-2 group-hover:scale-105 transition-transform">
+          <div className="rounded-2xl border border-violet-200 dark:border-violet-800/40 bg-gradient-to-r from-violet-50 to-purple-50 dark:from-violet-950/30 dark:to-purple-950/30 p-4 hover:border-violet-300 dark:hover:border-violet-700 hover:shadow-md transition-all duration-200 cursor-pointer group h-full">
+            <div className="w-10 h-10 rounded-xl bg-white dark:bg-slate-700 flex items-center justify-center text-xl shadow-sm mb-2 group-hover:scale-105 transition-transform">
               📊
             </div>
-            <div className="font-bold text-sm text-zinc-900">Progress Report</div>
-            <div className="text-[11px] text-zinc-500 mt-0.5">Performance analytics</div>
+            <div className="font-bold text-sm text-zinc-900 dark:text-slate-100">Progress Report</div>
+            <div className="text-[11px] text-zinc-500 dark:text-slate-400 mt-0.5">Performance analytics</div>
           </div>
         </Link>
       </div>
@@ -902,12 +925,12 @@ function LessonPath({
               key={lesson.id}
               className={`rounded-xl border p-4 transition-all duration-200 relative ${
                 isLocked
-                  ? "border-zinc-200 bg-zinc-50/80 opacity-75"
+                  ? "border-zinc-200 dark:border-slate-700 bg-zinc-50/80 dark:bg-slate-800/50 opacity-75"
                   : complete
-                  ? "border-green-200 bg-green-50/50"
+                  ? "border-green-200 dark:border-green-800/40 bg-green-50/50 dark:bg-green-950/20"
                   : isNext
-                  ? "border-indigo-300 bg-indigo-50/50 shadow-sm"
-                  : "border-zinc-100 bg-zinc-50/50 opacity-60"
+                  ? "border-indigo-300 dark:border-indigo-700 bg-indigo-50/50 dark:bg-indigo-950/20 shadow-sm"
+                  : "border-zinc-100 dark:border-slate-700 bg-zinc-50/50 dark:bg-slate-800/50 opacity-60"
               } ${!isFuture && !isLocked ? "hover:shadow-md" : ""}`}
             >
               <div className="flex items-center gap-3">
@@ -930,7 +953,7 @@ function LessonPath({
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2">
-                    <span className={`font-semibold text-sm ${isLocked || isFuture ? "text-zinc-400" : "text-zinc-900"}`}>
+                    <span className={`font-semibold text-sm ${isLocked || isFuture ? "text-zinc-400 dark:text-slate-500" : "text-zinc-900 dark:text-slate-100"}`}>
                       Lesson {i + 1}: {lesson.title}
                     </span>
                     {isLocked && (
@@ -939,13 +962,13 @@ function LessonPath({
                       </span>
                     )}
                   </div>
-                  <div className={`text-xs mt-0.5 ${isLocked || isFuture ? "text-zinc-300" : "text-zinc-500"}`}>
+                  <div className={`text-xs mt-0.5 ${isLocked || isFuture ? "text-zinc-300 dark:text-slate-600" : "text-zinc-500 dark:text-slate-400"}`}>
                     {formatSkillName(lesson.skill)}
                   </div>
                   {lesson.standards && lesson.standards.length > 0 && (
                     <div className="flex flex-wrap gap-1 mt-1">
                       {lesson.standards.map((s) => (
-                        <span key={s} className={`text-[10px] px-1.5 py-0.5 rounded ${isLocked || isFuture ? "bg-zinc-100 text-zinc-300" : "bg-zinc-100 text-zinc-400"}`}>
+                        <span key={s} className={`text-[10px] px-1.5 py-0.5 rounded ${isLocked || isFuture ? "bg-zinc-100 dark:bg-slate-700 text-zinc-300 dark:text-slate-600" : "bg-zinc-100 dark:bg-slate-700 text-zinc-400 dark:text-slate-500"}`}>
                           {s}
                         </span>
                       ))}
@@ -1042,15 +1065,15 @@ function CurriculumOverview({
                   onClick={() => setExpandedGrade(isExpanded ? null : key)}
                   className={`w-full flex items-center justify-between p-3 rounded-xl text-left transition-colors ${
                     isCurrent
-                      ? "bg-indigo-50 border border-indigo-200"
-                      : "bg-zinc-50 border border-zinc-100 hover:bg-zinc-100"
+                      ? "bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-800/40"
+                      : "bg-zinc-50 dark:bg-slate-700/50 border border-zinc-100 dark:border-slate-700 hover:bg-zinc-100 dark:hover:bg-slate-700"
                   }`}
                 >
                   <div className="flex items-center gap-2 flex-wrap">
-                    <span className={`text-sm font-semibold ${isCurrent ? "text-indigo-700" : "text-zinc-700"}`}>
+                    <span className={`text-sm font-semibold ${isCurrent ? "text-indigo-700 dark:text-indigo-300" : "text-zinc-700 dark:text-slate-300"}`}>
                       {GRADE_LABELS[key]}
                     </span>
-                    <span className={`text-xs ${isCurrent ? "text-indigo-500" : "text-zinc-400"}`}>
+                    <span className={`text-xs ${isCurrent ? "text-indigo-500 dark:text-indigo-400" : "text-zinc-400 dark:text-slate-500"}`}>
                       {level.level_name}
                     </span>
                     {isCurrent && (
@@ -1070,8 +1093,8 @@ function CurriculumOverview({
                 </button>
 
                 {isExpanded && (
-                  <div className="mt-1 ml-3 pl-3 border-l-2 border-zinc-100 space-y-1.5 py-2">
-                    <p className="text-[11px] text-zinc-400 mb-1">{level.focus}</p>
+                  <div className="mt-1 ml-3 pl-3 border-l-2 border-zinc-100 dark:border-slate-700 space-y-1.5 py-2">
+                    <p className="text-[11px] text-zinc-400 dark:text-slate-500 mb-1">{level.focus}</p>
                     {level.lessons.map((lesson: LessonData, i: number) => {
                       const complete = isCurrent && isLessonComplete(lesson.id);
                       return (
@@ -1084,14 +1107,14 @@ function CurriculumOverview({
                             {complete ? "✓" : i + 1}
                           </span>
                           <div className="min-w-0">
-                            <span className="text-sm text-zinc-700">{lesson.title}</span>
-                            <span className="text-xs text-zinc-400 ml-1.5">
+                            <span className="text-sm text-zinc-700 dark:text-slate-300">{lesson.title}</span>
+                            <span className="text-xs text-zinc-400 dark:text-slate-500 ml-1.5">
                               · {formatSkillName(lesson.skill)}
                             </span>
                             {lesson.standards && lesson.standards.length > 0 && (
                               <div className="flex flex-wrap gap-1 mt-0.5">
                                 {lesson.standards.map((s) => (
-                                  <span key={s} className="text-[10px] px-1 py-px rounded bg-zinc-100 text-zinc-400">
+                                  <span key={s} className="text-[10px] px-1 py-px rounded bg-zinc-100 dark:bg-slate-700 text-zinc-400 dark:text-slate-500">
                                     {s}
                                   </span>
                                 ))}
