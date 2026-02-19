@@ -144,6 +144,12 @@ export default function NavAuth() {
                       Settings
                     </Link>
                     <Link
+                      href="/feedback"
+                      className="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 transition-colors"
+                    >
+                      Share Feedback
+                    </Link>
+                    <Link
                       href="/contact-us"
                       className="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 transition-colors"
                     >
@@ -214,6 +220,9 @@ export default function NavAuth() {
               )}
               <Link href="/settings" className="block py-2.5 text-sm font-medium text-zinc-700 hover:text-indigo-700">
                 Settings
+              </Link>
+              <Link href="/feedback" className="block py-2.5 text-sm font-medium text-zinc-700 hover:text-indigo-700">
+                Share Feedback
               </Link>
               <Link href="/contact-us" className="block py-2.5 text-sm font-medium text-zinc-700 hover:text-indigo-700">
                 Help & Support

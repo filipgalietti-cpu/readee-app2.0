@@ -264,7 +264,7 @@ export default function Settings() {
       </Section>
 
       {/* ====== MY CHILDREN ====== */}
-      <Section title="My Children" badge={`${children.length}/5 profiles`}>
+      <Section title="My Children" badge={`${children.length}/${userPlan === "premium" ? 5 : 1} profiles`}>
         {children.length === 0 ? (
           <p className="text-sm text-zinc-500">No readers added yet.</p>
         ) : (
@@ -372,57 +372,97 @@ export default function Settings() {
         )}
 
         {/* Add Child */}
-        {children.length < 5 && (
-          <div className="pt-2">
-            {!showAddChild ? (
-              <button
-                onClick={() => setShowAddChild(true)}
-                className="flex items-center gap-2 text-sm font-medium text-indigo-600 hover:text-indigo-700 transition-colors"
-              >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                </svg>
-                Add Another Child
-              </button>
-            ) : (
-              <div className="rounded-xl border border-indigo-200 bg-indigo-50/30 p-4 space-y-3">
-                <div className="grid grid-cols-2 gap-3">
-                  <InputField
-                    label="Name"
-                    value={newChild.name}
-                    onChange={(v) => setNewChild((p) => ({ ...p, name: v }))}
-                    placeholder="Child's first name"
-                  />
-                  <div>
-                    <Label>Grade</Label>
-                    <select
-                      value={newChild.grade}
-                      onChange={(e) => setNewChild((p) => ({ ...p, grade: e.target.value }))}
-                      className="w-full px-3 py-2 rounded-lg border border-zinc-200 text-sm text-zinc-900 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-400"
-                    >
-                      {GRADES.map((g) => <option key={g} value={g}>{g}</option>)}
-                    </select>
+        {(() => {
+          const maxChildren = userPlan === "premium" ? 5 : 1;
+          const canAdd = children.length < maxChildren;
+          const atMaxPremium = userPlan === "premium" && children.length >= 5;
+
+          if (atMaxPremium) {
+            return (
+              <div className="pt-2">
+                <p className="text-xs text-zinc-400">You&apos;ve reached the maximum of 5 child profiles.</p>
+              </div>
+            );
+          }
+
+          if (!canAdd && userPlan !== "premium") {
+            // Free user upgrade prompt
+            return (
+              <div className="pt-2">
+                <div className="rounded-xl border border-indigo-200 bg-gradient-to-r from-indigo-50/80 to-violet-50/80 p-4 space-y-3">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-xl shadow-sm flex-shrink-0">
+                      👨‍👩‍👧‍👦
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-zinc-900">Add more readers with Readee+</p>
+                      <p className="text-xs text-zinc-500 mt-0.5">Track up to 5 children with detailed progress reports for each.</p>
+                    </div>
                   </div>
-                </div>
-                <div className="flex gap-2">
-                  <button
-                    onClick={handleAddChild}
-                    disabled={addingChild || !newChild.name.trim()}
-                    className="px-4 py-2 rounded-lg bg-indigo-600 text-white text-sm font-medium hover:bg-indigo-700 transition-colors disabled:opacity-50"
+                  <Link
+                    href="/upgrade"
+                    className="block w-full text-center px-4 py-2.5 rounded-lg bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-sm font-bold hover:from-indigo-700 hover:to-violet-600 transition-all shadow-sm"
                   >
-                    {addingChild ? "Adding..." : "Add Child"}
-                  </button>
-                  <button
-                    onClick={() => setShowAddChild(false)}
-                    className="px-4 py-2 rounded-lg border border-zinc-200 text-sm font-medium text-zinc-600 hover:bg-zinc-50 transition-colors"
-                  >
-                    Cancel
-                  </button>
+                    Upgrade to Readee+
+                  </Link>
                 </div>
               </div>
-            )}
-          </div>
-        )}
+            );
+          }
+
+          // Can add — show form
+          return (
+            <div className="pt-2">
+              {!showAddChild ? (
+                <button
+                  onClick={() => setShowAddChild(true)}
+                  className="flex items-center gap-2 text-sm font-medium text-indigo-600 hover:text-indigo-700 transition-colors"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                  </svg>
+                  Add Another Child
+                </button>
+              ) : (
+                <div className="rounded-xl border border-indigo-200 bg-indigo-50/30 p-4 space-y-3">
+                  <div className="grid grid-cols-2 gap-3">
+                    <InputField
+                      label="Name"
+                      value={newChild.name}
+                      onChange={(v) => setNewChild((p) => ({ ...p, name: v }))}
+                      placeholder="Child's first name"
+                    />
+                    <div>
+                      <Label>Grade</Label>
+                      <select
+                        value={newChild.grade}
+                        onChange={(e) => setNewChild((p) => ({ ...p, grade: e.target.value }))}
+                        className="w-full px-3 py-2 rounded-lg border border-zinc-200 text-sm text-zinc-900 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                      >
+                        {GRADES.map((g) => <option key={g} value={g}>{g}</option>)}
+                      </select>
+                    </div>
+                  </div>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={handleAddChild}
+                      disabled={addingChild || !newChild.name.trim()}
+                      className="px-4 py-2 rounded-lg bg-indigo-600 text-white text-sm font-medium hover:bg-indigo-700 transition-colors disabled:opacity-50"
+                    >
+                      {addingChild ? "Adding..." : "Add Child"}
+                    </button>
+                    <button
+                      onClick={() => setShowAddChild(false)}
+                      className="px-4 py-2 rounded-lg border border-zinc-200 text-sm font-medium text-zinc-600 hover:bg-zinc-50 transition-colors"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+          );
+        })()}
       </Section>
 
       {/* ====== PREFERENCES ====== */}

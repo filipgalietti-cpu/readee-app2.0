@@ -49,6 +49,7 @@ export default function Dashboard() {
   const [children, setChildren] = useState<Child[]>([]);
   const [selectedChild, setSelectedChild] = useState<Child | null>(null);
   const [loading, setLoading] = useState(true);
+  const [userPlan, setUserPlan] = useState<string>("free");
 
   useEffect(() => {
     async function fetchChildren() {
@@ -60,6 +61,14 @@ export default function Dashboard() {
         setLoading(false);
         return;
       }
+
+      // Fetch user plan
+      const { data: profile } = await supabase
+        .from("profiles")
+        .select("plan")
+        .eq("id", user.id)
+        .single();
+      setUserPlan((profile as { plan?: string } | null)?.plan || "free");
 
       const { data, error } = await supabase
         .from("children")
@@ -92,7 +101,7 @@ export default function Dashboard() {
   }
 
   if (children.length === 0) {
-    return <AddChildrenForm onDone={(kids) => {
+    return <AddChildrenForm userPlan={userPlan} onDone={(kids) => {
       setChildren(kids);
       if (kids.length === 1) setSelectedChild(kids[0]);
     }} />;
@@ -119,7 +128,7 @@ interface ChildRow {
   grade: string;
 }
 
-function AddChildrenForm({ onDone }: { onDone: (kids: Child[]) => void }) {
+function AddChildrenForm({ userPlan, onDone }: { userPlan: string; onDone: (kids: Child[]) => void }) {
   const [rows, setRows] = useState<ChildRow[]>([{ name: "", grade: "" }]);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
@@ -128,8 +137,10 @@ function AddChildrenForm({ onDone }: { onDone: (kids: Child[]) => void }) {
     setRows((prev) => prev.map((r, i) => (i === index ? { ...r, [field]: value } : r)));
   };
 
+  const maxChildren = userPlan === "premium" ? 5 : 1;
+
   const addRow = () => {
-    if (rows.length < 5) setRows((prev) => [...prev, { name: "", grade: "" }]);
+    if (rows.length < maxChildren) setRows((prev) => [...prev, { name: "", grade: "" }]);
   };
 
   const removeRow = (index: number) => {
@@ -223,13 +234,19 @@ function AddChildrenForm({ onDone }: { onDone: (kids: Child[]) => void }) {
         ))}
       </div>
 
-      {rows.length < 5 && (
+      {rows.length < maxChildren ? (
         <button
           onClick={addRow}
           className="w-full py-3 rounded-xl border-2 border-dashed border-zinc-200 text-sm font-medium text-indigo-600 hover:border-indigo-300 hover:bg-indigo-50/50 transition-colors"
         >
           + Add another child
         </button>
+      ) : userPlan !== "premium" && (
+        <Link href="/upgrade" className="block">
+          <div className="w-full py-3 rounded-xl border-2 border-dashed border-indigo-200 bg-indigo-50/50 text-center text-sm font-medium text-indigo-600 hover:border-indigo-300 hover:bg-indigo-50 transition-colors">
+            ⭐ Upgrade to Readee+ for up to 5 children
+          </div>
+        </Link>
       )}
 
       {error && (
