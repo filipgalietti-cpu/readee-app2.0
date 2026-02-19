@@ -42,10 +42,8 @@ const DOMAIN_META: Record<string, { emoji: string; color: string; bg: string; bo
   "Language":                   { emoji: "💬", color: "text-amber-700",  bg: "bg-amber-50",   border: "border-amber-200",   fill: "#f59e0b" },
 };
 
-const PATH_WIDTH = 340;
-const CENTER_X = PATH_WIDTH / 2;       // 170
-const AMPLITUDE = 130;                  // nodes swing ±130px → ~25% to ~75% of container
-const SINE_FREQ = 0.55;                 // full cycle every ~11.4 nodes
+const LEFT_PCT = 0.18;                  // 18% from left edge
+const RIGHT_PCT = 0.82;                 // 82% from left edge
 const NODE_SPACING = 74;                // vertical gap between nodes
 const DOMAIN_HEADER_HEIGHT = 64;
 const FREE_STANDARD_COUNT = 10;
@@ -180,28 +178,44 @@ function Roadmap({ child, userPlan }: { child: Child; userPlan: string }) {
   const progress = useMemo(() => buildMockProgress(ALL_STANDARDS), []);
   const domainOrder = useMemo(() => getDomainOrder(ALL_STANDARDS), []);
   const [activeNode, setActiveNode] = useState<string | null>(null);
+  const pathRef = useRef<HTMLDivElement>(null);
+  const [pathWidth, setPathWidth] = useState(480);
 
   const closeActive = useCallback(() => setActiveNode(null), []);
 
-  /* ── Compute sine-wave layout ── */
+  /* ── Measure container width for responsive node placement ── */
+  useEffect(() => {
+    const el = pathRef.current;
+    if (!el) return;
+    setPathWidth(el.offsetWidth);
+    const ro = new ResizeObserver((entries) => {
+      for (const entry of entries) setPathWidth(entry.contentRect.width);
+    });
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
+  /* ── Compute zigzag layout: alternate LEFT ↔ RIGHT every node ── */
 
   const layout = useMemo(() => {
     const items: LayoutItem[] = [];
     let y = 40;
     let currentDomain = "";
     let nodeSeq = 0;
+    const leftX = pathWidth * LEFT_PCT;
+    const rightX = pathWidth * RIGHT_PCT;
+    const centerX = pathWidth / 2;
 
     for (const std of ALL_STANDARDS) {
-      // Domain header when domain changes
       if (std.domain !== currentDomain) {
         if (currentDomain !== "") y += 20;
-        items.push({ type: "header", domain: std.domain, y, x: CENTER_X });
+        items.push({ type: "header", domain: std.domain, y, x: centerX });
         y += DOMAIN_HEADER_HEIGHT;
         currentDomain = std.domain;
       }
 
-      // Sine-wave X: swings from (CENTER_X - AMPLITUDE) to (CENTER_X + AMPLITUDE)
-      const x = CENTER_X + Math.sin(nodeSeq * SINE_FREQ) * AMPLITUDE;
+      // Hard alternate: even→left, odd→right
+      const x = nodeSeq % 2 === 0 ? leftX : rightX;
 
       items.push({ type: "node", standard: std, globalIdx: nodeSeq, y, x });
       y += NODE_SPACING;
@@ -209,9 +223,9 @@ function Roadmap({ child, userPlan }: { child: Child; userPlan: string }) {
     }
 
     return { items, totalHeight: y + 100 };
-  }, []);
+  }, [pathWidth]);
 
-  /* ── Build SVG path through node centers ── */
+  /* ── Build SVG S-curve path through node centers ── */
   const nodeItems = layout.items.filter((it) => it.type === "node");
 
   const buildPath = useCallback((nodes: LayoutItem[]) => {
@@ -221,6 +235,7 @@ function Roadmap({ child, userPlan }: { child: Child; userPlan: string }) {
       const prev = nodes[i - 1];
       const cur = nodes[i];
       const cpY = (prev.y + cur.y) / 2;
+      // S-curve: control points stay at the x of their respective endpoint
       d += ` C ${prev.x} ${cpY}, ${cur.x} ${cpY}, ${cur.x} ${cur.y}`;
     }
     return d;
@@ -228,7 +243,6 @@ function Roadmap({ child, userPlan }: { child: Child; userPlan: string }) {
 
   const pathD = useMemo(() => buildPath(nodeItems), [nodeItems, buildPath]);
 
-  // Completed portion of path
   const completedIdx = nodeItems.filter((n) => progress[n.standard!.standard_id]?.status === "completed").length;
 
   const completedPathD = useMemo(() => {
@@ -319,13 +333,12 @@ function Roadmap({ child, userPlan }: { child: Child; userPlan: string }) {
       </div>
 
       {/* ══════════ THE PATH ══════════ */}
-      <div className="relative dash-slide-up-4" style={{ height: layout.totalHeight }}>
-        {/* SVG connecting path */}
+      <div ref={pathRef} className="relative dash-slide-up-4" style={{ height: layout.totalHeight }}>
+        {/* SVG connecting path — full container width */}
         <svg
-          className="absolute left-1/2 top-0 pointer-events-none"
-          width={PATH_WIDTH}
+          className="absolute left-0 top-0 pointer-events-none"
+          width={pathWidth}
           height={layout.totalHeight}
-          style={{ transform: "translateX(-50%)" }}
         >
           {/* Gray dashed background path */}
           <path d={pathD} fill="none" stroke="#e5e7eb" strokeWidth="3" strokeDasharray="8 6" strokeLinecap="round" />
@@ -364,7 +377,6 @@ function Roadmap({ child, userPlan }: { child: Child; userPlan: string }) {
             );
           }
 
-          // Node
           const std = item.standard!;
           const p = progress[std.standard_id];
           const isActive = activeNode === std.standard_id;
@@ -435,8 +447,6 @@ function NodeBubble({
     return () => document.removeEventListener("mousedown", handler);
   }, [isActive, onClose]);
 
-  const offsetX = x - CENTER_X;
-
   return (
     <div
       ref={ref}
@@ -444,7 +454,7 @@ function NodeBubble({
       className="absolute flex flex-col items-center"
       style={{
         top: y - 28,
-        left: `calc(50% + ${offsetX}px)`,
+        left: x,
         transform: "translateX(-50%)",
         zIndex: isActive ? 50 : 10,
       }}
