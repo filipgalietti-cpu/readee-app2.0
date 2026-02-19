@@ -616,7 +616,7 @@ function CompletionScreen({
         <div className="w-full space-y-3 dash-slide-up-3">
           {nextStandard && (
             <Link
-              href={`/roadmap/practice?child=${child.id}&standard=${nextStandard.standard_id}`}
+              href={`/practice?child=${child.id}&standard=${nextStandard.standard_id}`}
               className="block w-full text-center py-4 rounded-2xl font-extrabold text-base text-emerald-900 transition-all active:scale-[0.97]"
               style={{ background: "linear-gradient(90deg, #4ade80, #22c55e)", boxShadow: "0 4px 0 0 #16a34a" }}
             >

@@ -348,7 +348,7 @@ function Roadmap({ child, userPlan }: { child: Child; userPlan: string }) {
                   {shortName(currentStandard.standard_description)}
                 </p>
                 <Link
-                  href={`/roadmap/practice?child=${child.id}&standard=${currentStandard.standard_id}`}
+                  href={`/practice?child=${child.id}&standard=${currentStandard.standard_id}`}
                   className="mt-3 block w-full text-center px-3 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-xs font-bold hover:from-indigo-700 hover:to-violet-600 transition-all shadow-sm"
                 >
                   Continue Practice →
@@ -680,7 +680,7 @@ function NodeBubble({
                   </div>
                 </div>
                 <Link
-                  href={`/roadmap/practice?child=${childId}&standard=${standard.standard_id}`}
+                  href={`/practice?child=${childId}&standard=${standard.standard_id}`}
                   className="block w-full text-center px-4 py-2.5 rounded-xl bg-emerald-50 text-emerald-700 text-sm font-bold hover:bg-emerald-100 transition-all border border-emerald-200"
                 >
                   Practice Again
@@ -705,7 +705,7 @@ function NodeBubble({
 
             {status === "current" && (
               <Link
-                href={`/roadmap/practice?child=${childId}&standard=${standard.standard_id}`}
+                href={`/practice?child=${childId}&standard=${standard.standard_id}`}
                 className="block w-full text-center px-4 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-sm font-bold hover:from-indigo-700 hover:to-violet-600 transition-all shadow-md"
               >
                 {progress.score && progress.score > 0 ? "Continue" : "Start"} Practice →

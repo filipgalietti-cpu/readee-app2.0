@@ -418,7 +418,7 @@ function AnalyticsDashboard({ child }: { child: Child }) {
 
                       {/* Practice button */}
                       <Link
-                        href={`/roadmap/practice?child=${child.id}&standard=${s.standard_id}`}
+                        href={`/practice?child=${child.id}&standard=${s.standard_id}`}
                         className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-xs font-bold hover:from-indigo-700 hover:to-violet-600 transition-all shadow-sm"
                       >
                         Practice {s.standard_id} →
@@ -733,7 +733,7 @@ function DomainCard({ domainStat, standards, childId }: {
                 )}
                 {/* Practice link */}
                 <Link
-                  href={`/roadmap/practice?child=${childId}&standard=${s.standard_id}`}
+                  href={`/practice?child=${childId}&standard=${s.standard_id}`}
                   className="opacity-0 group-hover:opacity-100 transition-opacity text-[10px] font-bold text-indigo-600 hover:text-indigo-700 flex-shrink-0"
                   onClick={(e) => e.stopPropagation()}
                 >
