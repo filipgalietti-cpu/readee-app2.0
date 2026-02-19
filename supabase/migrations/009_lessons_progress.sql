@@ -7,13 +7,21 @@ CREATE TABLE IF NOT EXISTS lessons_progress (
   completed_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
-CREATE INDEX idx_lessons_progress_child ON lessons_progress(child_id);
+CREATE INDEX IF NOT EXISTS idx_lessons_progress_child ON lessons_progress(child_id);
 ALTER TABLE lessons_progress ENABLE ROW LEVEL SECURITY;
 
-CREATE POLICY "Parents can view their children's lesson progress"
-  ON lessons_progress FOR SELECT
-  USING (child_id IN (SELECT id FROM children WHERE parent_id = auth.uid()));
+DO $$ BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Parents can view their children''s lesson progress' AND tablename = 'lessons_progress') THEN
+    CREATE POLICY "Parents can view their children's lesson progress"
+      ON lessons_progress FOR SELECT
+      USING (child_id IN (SELECT id FROM children WHERE parent_id = auth.uid()));
+  END IF;
+END $$;
 
-CREATE POLICY "Parents can insert their children's lesson progress"
-  ON lessons_progress FOR INSERT
-  WITH CHECK (child_id IN (SELECT id FROM children WHERE parent_id = auth.uid()));
+DO $$ BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Parents can insert their children''s lesson progress' AND tablename = 'lessons_progress') THEN
+    CREATE POLICY "Parents can insert their children's lesson progress"
+      ON lessons_progress FOR INSERT
+      WITH CHECK (child_id IN (SELECT id FROM children WHERE parent_id = auth.uid()));
+  END IF;
+END $$;

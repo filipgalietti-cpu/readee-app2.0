@@ -12,11 +12,15 @@ CREATE TABLE IF NOT EXISTS feedback (
 ALTER TABLE feedback ENABLE ROW LEVEL SECURITY;
 
 -- Users can insert their own feedback
-CREATE POLICY "Users can insert own feedback"
-  ON feedback FOR INSERT
-  WITH CHECK (auth.uid() = user_id);
+DO $$ BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Users can insert own feedback' AND tablename = 'feedback') THEN
+    CREATE POLICY "Users can insert own feedback" ON feedback FOR INSERT WITH CHECK (auth.uid() = user_id);
+  END IF;
+END $$;
 
 -- Users can read their own feedback
-CREATE POLICY "Users can read own feedback"
-  ON feedback FOR SELECT
-  USING (auth.uid() = user_id);
+DO $$ BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Users can read own feedback' AND tablename = 'feedback') THEN
+    CREATE POLICY "Users can read own feedback" ON feedback FOR SELECT USING (auth.uid() = user_id);
+  END IF;
+END $$;

@@ -115,14 +115,14 @@ CREATE TABLE IF NOT EXISTS user_item_history (
 -- 4. INDEXES for Performance
 -- ────────────────────────────────────────────────────────────
 
-CREATE INDEX idx_content_lessons_unit_id ON content_lessons(unit_id);
-CREATE INDEX idx_content_items_lesson_id ON content_items(lesson_id);
-CREATE INDEX idx_story_pages_story_id ON story_pages(story_id);
-CREATE INDEX idx_user_progress_user_id ON user_progress(user_id);
-CREATE INDEX idx_user_progress_lesson_id ON user_progress(lesson_id);
-CREATE INDEX idx_user_item_history_user_id ON user_item_history(user_id);
-CREATE INDEX idx_user_item_history_item_id ON user_item_history(item_id);
-CREATE INDEX idx_user_item_history_next_review ON user_item_history(next_review_date) WHERE next_review_date IS NOT NULL;
+CREATE INDEX IF NOT EXISTS idx_content_lessons_unit_id ON content_lessons(unit_id);
+CREATE INDEX IF NOT EXISTS idx_content_items_lesson_id ON content_items(lesson_id);
+CREATE INDEX IF NOT EXISTS idx_story_pages_story_id ON story_pages(story_id);
+CREATE INDEX IF NOT EXISTS idx_user_progress_user_id ON user_progress(user_id);
+CREATE INDEX IF NOT EXISTS idx_user_progress_lesson_id ON user_progress(lesson_id);
+CREATE INDEX IF NOT EXISTS idx_user_item_history_user_id ON user_item_history(user_id);
+CREATE INDEX IF NOT EXISTS idx_user_item_history_item_id ON user_item_history(item_id);
+CREATE INDEX IF NOT EXISTS idx_user_item_history_next_review ON user_item_history(next_review_date) WHERE next_review_date IS NOT NULL;
 
 -- ────────────────────────────────────────────────────────────
 -- 5. ROW LEVEL SECURITY (RLS)
@@ -138,97 +138,106 @@ ALTER TABLE user_progress ENABLE ROW LEVEL SECURITY;
 ALTER TABLE user_item_history ENABLE ROW LEVEL SECURITY;
 
 -- Content tables: Anyone authenticated can read
-CREATE POLICY "Anyone can view content units"
-  ON content_units FOR SELECT
-  TO authenticated
-  USING (true);
+DO $$ BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Anyone can view content units' AND tablename = 'content_units') THEN
+    CREATE POLICY "Anyone can view content units" ON content_units FOR SELECT TO authenticated USING (true);
+  END IF;
+END $$;
 
-CREATE POLICY "Anyone can view content lessons"
-  ON content_lessons FOR SELECT
-  TO authenticated
-  USING (true);
+DO $$ BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Anyone can view content lessons' AND tablename = 'content_lessons') THEN
+    CREATE POLICY "Anyone can view content lessons" ON content_lessons FOR SELECT TO authenticated USING (true);
+  END IF;
+END $$;
 
-CREATE POLICY "Anyone can view content items"
-  ON content_items FOR SELECT
-  TO authenticated
-  USING (true);
+DO $$ BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Anyone can view content items' AND tablename = 'content_items') THEN
+    CREATE POLICY "Anyone can view content items" ON content_items FOR SELECT TO authenticated USING (true);
+  END IF;
+END $$;
 
-CREATE POLICY "Anyone can view stories"
-  ON stories FOR SELECT
-  TO authenticated
-  USING (true);
+DO $$ BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Anyone can view stories' AND tablename = 'stories') THEN
+    CREATE POLICY "Anyone can view stories" ON stories FOR SELECT TO authenticated USING (true);
+  END IF;
+END $$;
 
-CREATE POLICY "Anyone can view story pages"
-  ON story_pages FOR SELECT
-  TO authenticated
-  USING (true);
+DO $$ BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Anyone can view story pages' AND tablename = 'story_pages') THEN
+    CREATE POLICY "Anyone can view story pages" ON story_pages FOR SELECT TO authenticated USING (true);
+  END IF;
+END $$;
 
 -- User progress: Users can only see/modify their own
-CREATE POLICY "Users can view own progress"
-  ON user_progress FOR SELECT
-  TO authenticated
-  USING (auth.uid() = user_id);
+DO $$ BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Users can view own progress' AND tablename = 'user_progress') THEN
+    CREATE POLICY "Users can view own progress" ON user_progress FOR SELECT TO authenticated USING (auth.uid() = user_id);
+  END IF;
+END $$;
 
-CREATE POLICY "Users can insert own progress"
-  ON user_progress FOR INSERT
-  TO authenticated
-  WITH CHECK (auth.uid() = user_id);
+DO $$ BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Users can insert own progress' AND tablename = 'user_progress') THEN
+    CREATE POLICY "Users can insert own progress" ON user_progress FOR INSERT TO authenticated WITH CHECK (auth.uid() = user_id);
+  END IF;
+END $$;
 
-CREATE POLICY "Users can update own progress"
-  ON user_progress FOR UPDATE
-  TO authenticated
-  USING (auth.uid() = user_id);
+DO $$ BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Users can update own progress' AND tablename = 'user_progress') THEN
+    CREATE POLICY "Users can update own progress" ON user_progress FOR UPDATE TO authenticated USING (auth.uid() = user_id);
+  END IF;
+END $$;
 
 -- User item history: Users can only see/modify their own
-CREATE POLICY "Users can view own item history"
-  ON user_item_history FOR SELECT
-  TO authenticated
-  USING (auth.uid() = user_id);
+DO $$ BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Users can view own item history' AND tablename = 'user_item_history') THEN
+    CREATE POLICY "Users can view own item history" ON user_item_history FOR SELECT TO authenticated USING (auth.uid() = user_id);
+  END IF;
+END $$;
 
-CREATE POLICY "Users can insert own item history"
-  ON user_item_history FOR INSERT
-  TO authenticated
-  WITH CHECK (auth.uid() = user_id);
+DO $$ BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Users can insert own item history' AND tablename = 'user_item_history') THEN
+    CREATE POLICY "Users can insert own item history" ON user_item_history FOR INSERT TO authenticated WITH CHECK (auth.uid() = user_id);
+  END IF;
+END $$;
 
 -- ────────────────────────────────────────────────────────────
 -- 6. AUTO-UPDATE TIMESTAMPS
 -- ────────────────────────────────────────────────────────────
 
 -- Note: The update_updated_at_column() function should already exist
--- from the profiles migration. If not, create it first:
--- CREATE OR REPLACE FUNCTION update_updated_at_column()
--- RETURNS TRIGGER AS $$
--- BEGIN
---   NEW.updated_at = now();
---   RETURN NEW;
--- END;
--- $$ language 'plpgsql';
+-- from the profiles migration.
 
+DROP TRIGGER IF EXISTS update_content_units_updated_at ON content_units;
 CREATE TRIGGER update_content_units_updated_at
   BEFORE UPDATE ON content_units
   FOR EACH ROW
   EXECUTE PROCEDURE update_updated_at_column();
 
+DROP TRIGGER IF EXISTS update_content_lessons_updated_at ON content_lessons;
 CREATE TRIGGER update_content_lessons_updated_at
   BEFORE UPDATE ON content_lessons
   FOR EACH ROW
   EXECUTE PROCEDURE update_updated_at_column();
 
+DROP TRIGGER IF EXISTS update_content_items_updated_at ON content_items;
 CREATE TRIGGER update_content_items_updated_at
   BEFORE UPDATE ON content_items
   FOR EACH ROW
   EXECUTE PROCEDURE update_updated_at_column();
 
+DROP TRIGGER IF EXISTS update_stories_updated_at ON stories;
 CREATE TRIGGER update_stories_updated_at
   BEFORE UPDATE ON stories
   FOR EACH ROW
   EXECUTE PROCEDURE update_updated_at_column();
 
+DROP TRIGGER IF EXISTS update_story_pages_updated_at ON story_pages;
 CREATE TRIGGER update_story_pages_updated_at
   BEFORE UPDATE ON story_pages
   FOR EACH ROW
   EXECUTE PROCEDURE update_updated_at_column();
 
+DROP TRIGGER IF EXISTS update_user_progress_updated_at ON user_progress;
 CREATE TRIGGER update_user_progress_updated_at
   BEFORE UPDATE ON user_progress
   FOR EACH ROW

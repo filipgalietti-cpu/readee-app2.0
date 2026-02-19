@@ -16,15 +16,19 @@ CREATE TABLE IF NOT EXISTS assessments (
 ALTER TABLE assessments ENABLE ROW LEVEL SECURITY;
 
 -- Parents can view assessments for their own children
-CREATE POLICY "Parents can view own children assessments"
-  ON assessments FOR SELECT
-  USING (
-    child_id IN (SELECT id FROM children WHERE parent_id = auth.uid())
-  );
+DO $$ BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Parents can view own children assessments' AND tablename = 'assessments') THEN
+    CREATE POLICY "Parents can view own children assessments"
+      ON assessments FOR SELECT
+      USING (child_id IN (SELECT id FROM children WHERE parent_id = auth.uid()));
+  END IF;
+END $$;
 
 -- Parents can insert assessments for their own children
-CREATE POLICY "Parents can insert own children assessments"
-  ON assessments FOR INSERT
-  WITH CHECK (
-    child_id IN (SELECT id FROM children WHERE parent_id = auth.uid())
-  );
+DO $$ BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Parents can insert own children assessments' AND tablename = 'assessments') THEN
+    CREATE POLICY "Parents can insert own children assessments"
+      ON assessments FOR INSERT
+      WITH CHECK (child_id IN (SELECT id FROM children WHERE parent_id = auth.uid()));
+  END IF;
+END $$;

@@ -124,26 +124,31 @@ END;
 $$ language 'plpgsql';
 
 -- Apply triggers to all tables
+DROP TRIGGER IF EXISTS update_profiles_updated_at ON profiles;
 CREATE TRIGGER update_profiles_updated_at
   BEFORE UPDATE ON profiles
   FOR EACH ROW
   EXECUTE PROCEDURE update_updated_at_column();
 
+DROP TRIGGER IF EXISTS update_children_updated_at ON children;
 CREATE TRIGGER update_children_updated_at
   BEFORE UPDATE ON children
   FOR EACH ROW
   EXECUTE PROCEDURE update_updated_at_column();
 
+DROP TRIGGER IF EXISTS update_onboarding_preferences_updated_at ON onboarding_preferences;
 CREATE TRIGGER update_onboarding_preferences_updated_at
   BEFORE UPDATE ON onboarding_preferences
   FOR EACH ROW
   EXECUTE PROCEDURE update_updated_at_column();
 
+DROP TRIGGER IF EXISTS update_stories_updated_at ON stories;
 CREATE TRIGGER update_stories_updated_at
   BEFORE UPDATE ON stories
   FOR EACH ROW
   EXECUTE PROCEDURE update_updated_at_column();
 
+DROP TRIGGER IF EXISTS update_reading_progress_updated_at ON reading_progress;
 CREATE TRIGGER update_reading_progress_updated_at
   BEFORE UPDATE ON reading_progress
   FOR EACH ROW
@@ -164,73 +169,83 @@ ALTER TABLE reading_progress ENABLE ROW LEVEL SECURITY;
 -- PROFILES POLICIES
 -- ═══════════════════════════════════════════════════════════
 
--- Users can view their own profile
-CREATE POLICY "Users can view own profile"
-  ON profiles FOR SELECT
-  USING (auth.uid() = id);
+DO $$ BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Users can view own profile' AND tablename = 'profiles') THEN
+    CREATE POLICY "Users can view own profile" ON profiles FOR SELECT USING (auth.uid() = id);
+  END IF;
+END $$;
 
--- Users can insert their own profile
-CREATE POLICY "Users can insert own profile"
-  ON profiles FOR INSERT
-  WITH CHECK (auth.uid() = id);
+DO $$ BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Users can insert own profile' AND tablename = 'profiles') THEN
+    CREATE POLICY "Users can insert own profile" ON profiles FOR INSERT WITH CHECK (auth.uid() = id);
+  END IF;
+END $$;
 
--- Users can update their own profile
-CREATE POLICY "Users can update own profile"
-  ON profiles FOR UPDATE
-  USING (auth.uid() = id);
+DO $$ BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Users can update own profile' AND tablename = 'profiles') THEN
+    CREATE POLICY "Users can update own profile" ON profiles FOR UPDATE USING (auth.uid() = id);
+  END IF;
+END $$;
 
 -- ═══════════════════════════════════════════════════════════
 -- CHILDREN POLICIES
 -- ═══════════════════════════════════════════════════════════
 
--- Parents can view their own children
-CREATE POLICY "Parents can view own children"
-  ON children FOR SELECT
-  USING (parent_id = auth.uid());
+DO $$ BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Parents can view own children' AND tablename = 'children') THEN
+    CREATE POLICY "Parents can view own children" ON children FOR SELECT USING (parent_id = auth.uid());
+  END IF;
+END $$;
 
--- Parents can insert children
-CREATE POLICY "Parents can insert children"
-  ON children FOR INSERT
-  WITH CHECK (parent_id = auth.uid());
+DO $$ BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Parents can insert children' AND tablename = 'children') THEN
+    CREATE POLICY "Parents can insert children" ON children FOR INSERT WITH CHECK (parent_id = auth.uid());
+  END IF;
+END $$;
 
--- Parents can update their own children
-CREATE POLICY "Parents can update own children"
-  ON children FOR UPDATE
-  USING (parent_id = auth.uid());
+DO $$ BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Parents can update own children' AND tablename = 'children') THEN
+    CREATE POLICY "Parents can update own children" ON children FOR UPDATE USING (parent_id = auth.uid());
+  END IF;
+END $$;
 
--- Parents can delete their own children
-CREATE POLICY "Parents can delete own children"
-  ON children FOR DELETE
-  USING (parent_id = auth.uid());
+DO $$ BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Parents can delete own children' AND tablename = 'children') THEN
+    CREATE POLICY "Parents can delete own children" ON children FOR DELETE USING (parent_id = auth.uid());
+  END IF;
+END $$;
 
 -- ═══════════════════════════════════════════════════════════
 -- ONBOARDING PREFERENCES POLICIES
 -- ═══════════════════════════════════════════════════════════
 
--- Users can view their own preferences
-CREATE POLICY "Users can view own preferences"
-  ON onboarding_preferences FOR SELECT
-  USING (user_id = auth.uid());
+DO $$ BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Users can view own preferences' AND tablename = 'onboarding_preferences') THEN
+    CREATE POLICY "Users can view own preferences" ON onboarding_preferences FOR SELECT USING (user_id = auth.uid());
+  END IF;
+END $$;
 
--- Users can insert their own preferences
-CREATE POLICY "Users can insert own preferences"
-  ON onboarding_preferences FOR INSERT
-  WITH CHECK (user_id = auth.uid());
+DO $$ BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Users can insert own preferences' AND tablename = 'onboarding_preferences') THEN
+    CREATE POLICY "Users can insert own preferences" ON onboarding_preferences FOR INSERT WITH CHECK (user_id = auth.uid());
+  END IF;
+END $$;
 
--- Users can update their own preferences
-CREATE POLICY "Users can update own preferences"
-  ON onboarding_preferences FOR UPDATE
-  USING (user_id = auth.uid());
+DO $$ BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Users can update own preferences' AND tablename = 'onboarding_preferences') THEN
+    CREATE POLICY "Users can update own preferences" ON onboarding_preferences FOR UPDATE USING (user_id = auth.uid());
+  END IF;
+END $$;
 
 -- ═══════════════════════════════════════════════════════════
 -- STORIES POLICIES (Public Read-Only)
 -- ═══════════════════════════════════════════════════════════
 
--- Anyone (authenticated) can view stories
-CREATE POLICY "Authenticated users can view stories"
-  ON stories FOR SELECT
-  TO authenticated
-  USING (true);
+DO $$ BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Authenticated users can view stories' AND tablename = 'stories') THEN
+    CREATE POLICY "Authenticated users can view stories" ON stories FOR SELECT TO authenticated USING (true);
+  END IF;
+END $$;
 
 -- Only service role can insert/update/delete stories (via admin API)
 -- No explicit policies needed - RLS will block by default
@@ -239,32 +254,29 @@ CREATE POLICY "Authenticated users can view stories"
 -- READING PROGRESS POLICIES
 -- ═══════════════════════════════════════════════════════════
 
--- Parents can view progress for their children
-CREATE POLICY "Parents can view children's progress"
-  ON reading_progress FOR SELECT
-  USING (
-    child_id IN (
-      SELECT id FROM children WHERE parent_id = auth.uid()
-    )
-  );
+DO $$ BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Parents can view children''s progress' AND tablename = 'reading_progress') THEN
+    CREATE POLICY "Parents can view children's progress"
+      ON reading_progress FOR SELECT
+      USING (child_id IN (SELECT id FROM children WHERE parent_id = auth.uid()));
+  END IF;
+END $$;
 
--- Parents can insert progress for their children
-CREATE POLICY "Parents can insert children's progress"
-  ON reading_progress FOR INSERT
-  WITH CHECK (
-    child_id IN (
-      SELECT id FROM children WHERE parent_id = auth.uid()
-    )
-  );
+DO $$ BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Parents can insert children''s progress' AND tablename = 'reading_progress') THEN
+    CREATE POLICY "Parents can insert children's progress"
+      ON reading_progress FOR INSERT
+      WITH CHECK (child_id IN (SELECT id FROM children WHERE parent_id = auth.uid()));
+  END IF;
+END $$;
 
--- Parents can update progress for their children
-CREATE POLICY "Parents can update children's progress"
-  ON reading_progress FOR UPDATE
-  USING (
-    child_id IN (
-      SELECT id FROM children WHERE parent_id = auth.uid()
-    )
-  );
+DO $$ BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'Parents can update children''s progress' AND tablename = 'reading_progress') THEN
+    CREATE POLICY "Parents can update children's progress"
+      ON reading_progress FOR UPDATE
+      USING (child_id IN (SELECT id FROM children WHERE parent_id = auth.uid()));
+  END IF;
+END $$;
 
 -- ═══════════════════════════════════════════════════════════
 -- HELPER FUNCTIONS
@@ -285,7 +297,7 @@ RETURNS TABLE (
 ) AS $$
 BEGIN
   RETURN QUERY
-  SELECT 
+  SELECT
     s.id,
     s.title,
     s.reading_level,
