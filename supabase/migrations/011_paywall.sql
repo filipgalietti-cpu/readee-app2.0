@@ -12,9 +12,15 @@ CREATE TABLE IF NOT EXISTS waitlist (
 -- Allow any authenticated user to insert into waitlist
 ALTER TABLE waitlist ENABLE ROW LEVEL SECURITY;
 
-CREATE POLICY "Authenticated users can insert waitlist"
-  ON waitlist FOR INSERT
-  TO authenticated
-  WITH CHECK (true);
+DO $$ BEGIN
+  IF NOT EXISTS (
+    SELECT 1 FROM pg_policies WHERE policyname = 'Authenticated users can insert waitlist' AND tablename = 'waitlist'
+  ) THEN
+    CREATE POLICY "Authenticated users can insert waitlist"
+      ON waitlist FOR INSERT
+      TO authenticated
+      WITH CHECK (true);
+  END IF;
+END $$;
 
 -- Allow service_role full access (admin client bypasses RLS by default)
