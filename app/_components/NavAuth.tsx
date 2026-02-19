@@ -64,10 +64,10 @@ export default function NavAuth() {
   const isActive = (href: string) => pathname === href;
 
   const linkClass = (href: string) =>
-    `text-sm font-medium transition-colors ${
+    `text-sm font-medium transition-all duration-200 px-3 py-1.5 rounded-lg ${
       isActive(href)
-        ? "text-indigo-700"
-        : "text-zinc-600 hover:text-zinc-900"
+        ? "text-indigo-700 bg-indigo-50"
+        : "text-zinc-600 hover:text-indigo-700 hover:bg-indigo-50/60"
     }`;
 
   // Avoid flicker
@@ -113,9 +113,11 @@ export default function NavAuth() {
               {userPlan !== "premium" && (
                 <Link
                   href="/upgrade"
-                  className="text-sm font-semibold text-indigo-600 hover:text-indigo-700 transition-colors flex items-center gap-1"
+                  className="relative text-sm font-bold px-4 py-1.5 rounded-full bg-gradient-to-r from-indigo-600 to-violet-500 text-white hover:from-indigo-700 hover:to-violet-600 transition-all duration-200 shadow-sm hover:shadow-md hover:scale-105 flex items-center gap-1.5 overflow-hidden group nav-shine"
                 >
-                  <span>⭐</span> Upgrade
+                  <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
+                  <span className="relative">⭐</span>
+                  <span className="relative font-extrabold">Upgrade</span>
                 </Link>
               )}
 
@@ -210,18 +212,22 @@ export default function NavAuth() {
         <div className="md:hidden border-t border-zinc-200 bg-white px-6 py-4 space-y-1">
           {loggedIn ? (
             <>
-              <Link href="/dashboard" className="block py-2.5 text-sm font-medium text-zinc-700 hover:text-indigo-700">
+              <Link href="/dashboard" className={`block py-2.5 px-3 rounded-lg text-sm font-medium transition-all duration-200 ${isActive("/dashboard") ? "text-indigo-700 bg-indigo-50" : "text-zinc-700 hover:text-indigo-700 hover:bg-indigo-50/60"}`}>
                 Dashboard
               </Link>
-              <Link href="/analytics" className="block py-2.5 text-sm font-medium text-zinc-700 hover:text-indigo-700">
+              <Link href="/analytics" className={`block py-2.5 px-3 rounded-lg text-sm font-medium transition-all duration-200 ${isActive("/analytics") ? "text-indigo-700 bg-indigo-50" : "text-zinc-700 hover:text-indigo-700 hover:bg-indigo-50/60"}`}>
                 Analytics
               </Link>
-              <Link href="/feedback" className="block py-2.5 text-sm font-medium text-zinc-700 hover:text-indigo-700">
+              <Link href="/feedback" className={`block py-2.5 px-3 rounded-lg text-sm font-medium transition-all duration-200 ${isActive("/feedback") ? "text-indigo-700 bg-indigo-50" : "text-zinc-700 hover:text-indigo-700 hover:bg-indigo-50/60"}`}>
                 Feedback
               </Link>
               {userPlan !== "premium" && (
-                <Link href="/upgrade" className="block py-2.5 text-sm font-semibold text-indigo-600 hover:text-indigo-700">
-                  ⭐ Upgrade to Readee+
+                <Link
+                  href="/upgrade"
+                  className="relative block my-2 px-4 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-sm font-bold text-center hover:from-indigo-700 hover:to-violet-600 transition-all shadow-sm overflow-hidden group"
+                >
+                  <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
+                  <span className="relative">⭐ Upgrade to Readee+</span>
                 </Link>
               )}
               <Link href="/settings" className="block py-2.5 text-sm font-medium text-zinc-700 hover:text-indigo-700">
