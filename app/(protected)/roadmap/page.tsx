@@ -42,20 +42,17 @@ const DOMAIN_META: Record<string, { emoji: string; color: string; bg: string; bo
   "Language":                   { emoji: "💬", color: "text-amber-700",  bg: "bg-amber-50",   border: "border-amber-200",   fill: "#f59e0b" },
 };
 
-const NODES_PER_ROW = 3;
 const PATH_WIDTH = 340;
-const CENTER_X = PATH_WIDTH / 2;
-const LEFT_X = 50;
-const RIGHT_X = 290;
-const ROW_X = [LEFT_X, CENTER_X, RIGHT_X];
-
-const INTRA_ROW_Y = 90;
-const TURN_GAP_Y = 50;
+const CENTER_X = PATH_WIDTH / 2;       // 170
+const AMPLITUDE = 130;                  // nodes swing ±130px → ~25% to ~75% of container
+const SINE_FREQ = 0.55;                 // full cycle every ~11.4 nodes
+const NODE_SPACING = 74;                // vertical gap between nodes
 const DOMAIN_HEADER_HEIGHT = 64;
-const TURN_BULGE = 30;
 const FREE_STANDARD_COUNT = 10;
 
 /* ─── Mock progress ──────────────────────────────────── */
+
+const ALL_STANDARDS = (kStandards as { standards: Standard[] }).standards;
 
 function buildMockProgress(standards: Standard[]): Record<string, StandardProgress> {
   const progress: Record<string, StandardProgress> = {};
@@ -65,9 +62,9 @@ function buildMockProgress(standards: Standard[]): Record<string, StandardProgre
     if (i < doneCount) {
       progress[std.standard_id] = {
         status: "completed",
-        score: 3 + Math.floor(Math.random() * 3),
+        score: 3 + (i % 3),          // deterministic: 3, 4, 5, 3, 4, 5, ...
         total: 5,
-        xpEarned: 10 + Math.floor(Math.random() * 6) * 5,
+        xpEarned: 15 + (i % 4) * 5,  // deterministic: 15, 20, 25, 30, ...
       };
     } else if (i === doneCount) {
       progress[std.standard_id] = { status: "current", score: 2, total: 5 };
@@ -180,114 +177,71 @@ interface LayoutItem {
 }
 
 function Roadmap({ child, userPlan }: { child: Child; userPlan: string }) {
-  const allStandards = (kStandards as { standards: Standard[] }).standards;
-  const progress = useMemo(() => buildMockProgress(allStandards), [allStandards]);
-  const domainOrder = useMemo(() => getDomainOrder(allStandards), [allStandards]);
+  const progress = useMemo(() => buildMockProgress(ALL_STANDARDS), []);
+  const domainOrder = useMemo(() => getDomainOrder(ALL_STANDARDS), []);
   const [activeNode, setActiveNode] = useState<string | null>(null);
 
   const closeActive = useCallback(() => setActiveNode(null), []);
 
-  /* ── Compute wrap-around layout ── */
+  /* ── Compute sine-wave layout ── */
 
   const layout = useMemo(() => {
     const items: LayoutItem[] = [];
     let y = 40;
     let currentDomain = "";
     let nodeSeq = 0;
-    let rowInDomain = 0;
-    let colInRow = 0;
 
-    for (const std of allStandards) {
+    for (const std of ALL_STANDARDS) {
       // Domain header when domain changes
       if (std.domain !== currentDomain) {
-        if (currentDomain !== "") {
-          y += 30;
-          rowInDomain = 0;
-          colInRow = 0;
-        }
+        if (currentDomain !== "") y += 20;
         items.push({ type: "header", domain: std.domain, y, x: CENTER_X });
         y += DOMAIN_HEADER_HEIGHT;
         currentDomain = std.domain;
-        rowInDomain = 0;
-        colInRow = 0;
       }
 
-      // Start new row if current one is full
-      if (colInRow >= NODES_PER_ROW) {
-        y += TURN_GAP_Y;
-        rowInDomain++;
-        colInRow = 0;
-      }
-
-      // X position based on row direction
-      const isLTR = rowInDomain % 2 === 0;
-      const x = isLTR ? ROW_X[colInRow] : ROW_X[NODES_PER_ROW - 1 - colInRow];
+      // Sine-wave X: swings from (CENTER_X - AMPLITUDE) to (CENTER_X + AMPLITUDE)
+      const x = CENTER_X + Math.sin(nodeSeq * SINE_FREQ) * AMPLITUDE;
 
       items.push({ type: "node", standard: std, globalIdx: nodeSeq, y, x });
-      y += INTRA_ROW_Y;
+      y += NODE_SPACING;
       nodeSeq++;
-      colInRow++;
     }
 
     return { items, totalHeight: y + 100 };
-  }, [allStandards]);
+  }, []);
 
   /* ── Build SVG path through node centers ── */
   const nodeItems = layout.items.filter((it) => it.type === "node");
 
-  const pathD = useMemo(() => {
-    if (nodeItems.length < 2) return "";
-    let d = `M ${nodeItems[0].x} ${nodeItems[0].y}`;
-    for (let i = 1; i < nodeItems.length; i++) {
-      const prev = nodeItems[i - 1];
-      const cur = nodeItems[i];
-
-      // U-turn: consecutive nodes on same side (within 20px)
-      const isTurn = Math.abs(prev.x - cur.x) < 20;
-
-      if (isTurn) {
-        const bulgeDir = prev.x > CENTER_X ? 1 : prev.x < CENTER_X ? -1 : 1;
-        const bx = prev.x + bulgeDir * TURN_BULGE;
-        d += ` C ${bx} ${prev.y + 40}, ${bx} ${cur.y - 40}, ${cur.x} ${cur.y}`;
-      } else {
-        const cpY = (prev.y + cur.y) / 2;
-        d += ` C ${prev.x} ${cpY}, ${cur.x} ${cpY}, ${cur.x} ${cur.y}`;
-      }
+  const buildPath = useCallback((nodes: LayoutItem[]) => {
+    if (nodes.length < 2) return "";
+    let d = `M ${nodes[0].x} ${nodes[0].y}`;
+    for (let i = 1; i < nodes.length; i++) {
+      const prev = nodes[i - 1];
+      const cur = nodes[i];
+      const cpY = (prev.y + cur.y) / 2;
+      d += ` C ${prev.x} ${cpY}, ${cur.x} ${cpY}, ${cur.x} ${cur.y}`;
     }
     return d;
-  }, [nodeItems]);
+  }, []);
+
+  const pathD = useMemo(() => buildPath(nodeItems), [nodeItems, buildPath]);
 
   // Completed portion of path
   const completedIdx = nodeItems.filter((n) => progress[n.standard!.standard_id]?.status === "completed").length;
 
   const completedPathD = useMemo(() => {
     const end = completedIdx + 1;
-    const slice = nodeItems.slice(0, Math.min(end, nodeItems.length));
-    if (slice.length < 2) return "";
-    let d = `M ${slice[0].x} ${slice[0].y}`;
-    for (let i = 1; i < slice.length; i++) {
-      const prev = slice[i - 1];
-      const cur = slice[i];
-      const isTurn = Math.abs(prev.x - cur.x) < 20;
-
-      if (isTurn) {
-        const bulgeDir = prev.x > CENTER_X ? 1 : prev.x < CENTER_X ? -1 : 1;
-        const bx = prev.x + bulgeDir * TURN_BULGE;
-        d += ` C ${bx} ${prev.y + 40}, ${bx} ${cur.y - 40}, ${cur.x} ${cur.y}`;
-      } else {
-        const cpY = (prev.y + cur.y) / 2;
-        d += ` C ${prev.x} ${cpY}, ${cur.x} ${cpY}, ${cur.x} ${cur.y}`;
-      }
-    }
-    return d;
-  }, [nodeItems, completedIdx]);
+    return buildPath(nodeItems.slice(0, Math.min(end, nodeItems.length)));
+  }, [nodeItems, completedIdx, buildPath]);
 
   /* ── Stats ── */
   const completedCount = Object.values(progress).filter((p) => p.status === "completed").length;
   const totalXP = Object.values(progress).reduce((sum, p) => sum + (p.xpEarned || 0), 0);
-  const currentStandard = allStandards.find((s) => progress[s.standard_id]?.status === "current");
+  const currentStandard = ALL_STANDARDS.find((s) => progress[s.standard_id]?.status === "current");
   const currentDomain = currentStandard?.domain || domainOrder[0];
-  const pct = Math.round((completedCount / allStandards.length) * 100);
+  const pct = Math.round((completedCount / ALL_STANDARDS.length) * 100);
 
   /* ── Scroll to current on mount ── */
   useEffect(() => {
@@ -334,7 +288,7 @@ function Roadmap({ child, userPlan }: { child: Child; userPlan: string }) {
             <span className="absolute text-white text-xs font-bold">{pct}%</span>
           </div>
           <div className="flex-1 min-w-0">
-            <div className="text-white font-bold text-lg">{completedCount} of {allStandards.length} standards</div>
+            <div className="text-white font-bold text-lg">{completedCount} of {ALL_STANDARDS.length} standards</div>
             <div className="text-white/70 text-xs mt-0.5">Currently on: {currentDomain}</div>
           </div>
         </div>
@@ -402,7 +356,7 @@ function Roadmap({ child, userPlan }: { child: Child; userPlan: string }) {
                   <div>
                     <div className={`font-bold text-sm ${dm.color}`}>{item.domain}</div>
                     <div className="text-[11px] text-zinc-500">
-                      {allStandards.filter((s) => s.domain === item.domain).length} standards
+                      {ALL_STANDARDS.filter((s) => s.domain === item.domain).length} standards
                     </div>
                   </div>
                 </div>
@@ -442,7 +396,7 @@ function Roadmap({ child, userPlan }: { child: Child; userPlan: string }) {
             🏆
           </div>
           <p className="text-sm font-bold text-zinc-700 mt-2">Level Complete!</p>
-          <p className="text-xs text-zinc-400">Master all {allStandards.length} standards</p>
+          <p className="text-xs text-zinc-400">Master all {ALL_STANDARDS.length} standards</p>
         </div>
       </div>
     </div>
