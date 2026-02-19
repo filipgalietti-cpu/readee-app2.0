@@ -1,8 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
+import { safeValidate } from "@/lib/validate";
+import { FeedbackSchema } from "@/lib/schemas";
+import { fadeUp, slideUp, popIn, staggerContainer } from "@/lib/motion/variants";
 
 /* ─── Constants ──────────────────────────────────────── */
 
@@ -48,6 +52,12 @@ export default function FeedbackPage() {
     if (!rating || !category) return;
     setSubmitting(true);
 
+    const feedbackData = safeValidate(FeedbackSchema, {
+      rating,
+      category,
+      message: message.trim() || null,
+    });
+
     try {
       const supabase = supabaseBrowser();
       const { data: { user } } = await supabase.auth.getUser();
@@ -55,16 +65,14 @@ export default function FeedbackPage() {
       if (user) {
         await supabase.from("feedback").insert({
           user_id: user.id,
-          rating,
-          category,
-          message: message.trim() || null,
+          ...feedbackData,
         });
       } else {
-        console.log("Feedback (not logged in):", { rating, category, message });
+        console.log("Feedback (not logged in):", feedbackData);
       }
     } catch {
       // Show success anyway — don't block the user experience
-      console.log("Feedback saved locally:", { rating, category, message });
+      console.log("Feedback saved locally:", feedbackData);
     }
 
     // Trigger confetti
@@ -91,7 +99,7 @@ export default function FeedbackPage() {
   return (
     <div className="max-w-md mx-auto py-8 px-4">
       {/* Nav */}
-      <div className="flex items-center justify-between mb-8 animate-slideUp">
+      <div className="flex items-center justify-between mb-8">
         <Link href="/dashboard" className="text-sm text-indigo-600 hover:text-indigo-700 font-medium transition-colors">
           &larr; Dashboard
         </Link>
@@ -102,42 +110,52 @@ export default function FeedbackPage() {
         <div className="text-center space-y-6 relative overflow-hidden">
           {/* Confetti */}
           {confetti.map((p) => (
-            <div
+            <motion.div
               key={p.id}
-              className="confetti-fall absolute w-2.5 h-2.5 rounded-sm"
+              className="absolute w-2.5 h-2.5 rounded-sm"
               style={{
                 left: `${p.x}%`,
                 top: -20,
                 backgroundColor: p.color,
-                animationDelay: `${p.delay}s`,
               }}
+              initial={{ y: -20, rotate: 0, opacity: 1 }}
+              animate={{ y: "100vh", rotate: 720, opacity: [1, 1, 0] }}
+              transition={{ duration: 2.5, delay: p.delay, ease: "easeIn" }}
             />
           ))}
 
-          <div className="relative z-10 pt-8">
-            <div className="w-24 h-24 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-500 mx-auto mb-6 flex items-center justify-center animate-popIn shadow-lg shadow-emerald-200">
+          <motion.div
+            className="relative z-10 pt-8"
+            variants={staggerContainer}
+            initial="hidden"
+            animate="visible"
+          >
+            <motion.div
+              variants={popIn}
+              className="w-24 h-24 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-500 mx-auto mb-6 flex items-center justify-center shadow-lg shadow-emerald-200"
+            >
               <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
               </svg>
-            </div>
+            </motion.div>
 
-            <h1 className="text-2xl font-bold text-zinc-900 dark:text-slate-100 tracking-tight animate-fadeUp">
+            <motion.h1 variants={fadeUp} className="text-2xl font-bold text-zinc-900 dark:text-slate-100 tracking-tight">
               Thank you!
-            </h1>
-            <p className="text-zinc-500 dark:text-slate-400 mt-2 leading-relaxed animate-fadeUp" style={{ animationDelay: "0.1s" }}>
+            </motion.h1>
+            <motion.p variants={fadeUp} className="text-zinc-500 dark:text-slate-400 mt-2 leading-relaxed">
               Your feedback helps us make Readee better for every family 💜
-            </p>
+            </motion.p>
 
             {rating && (
-              <div className="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 dark:bg-indigo-900/40 animate-fadeUp" style={{ animationDelay: "0.2s" }}>
+              <motion.div variants={fadeUp} className="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 dark:bg-indigo-900/40">
                 <span className="text-2xl">{RATINGS.find((r) => r.value === rating)?.emoji}</span>
                 <span className="text-sm font-medium text-indigo-700 dark:text-indigo-300">
                   {RATINGS.find((r) => r.value === rating)?.label}
                 </span>
-              </div>
+              </motion.div>
             )}
 
-            <div className="mt-8 flex flex-col items-center gap-3 animate-fadeUp" style={{ animationDelay: "0.3s" }}>
+            <motion.div variants={fadeUp} className="mt-8 flex flex-col items-center gap-3">
               <button
                 onClick={resetForm}
                 className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-sm font-bold hover:from-indigo-700 hover:to-violet-600 transition-all shadow-md"
@@ -147,13 +165,13 @@ export default function FeedbackPage() {
               <Link href="/dashboard" className="text-sm text-zinc-500 hover:text-zinc-700 transition-colors">
                 Back to Dashboard
               </Link>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       ) : (
         <>
           {/* Header */}
-          <div className="text-center mb-8 dash-slide-up-1">
+          <div className="text-center mb-8">
             <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-50 to-violet-50 mx-auto mb-4 flex items-center justify-center text-3xl">
               💬
             </div>
@@ -184,7 +202,7 @@ export default function FeedbackPage() {
 
           {/* Step 1: Rating */}
           {step === 1 && (
-            <div className="space-y-6 animate-fadeSlideIn">
+            <div className="space-y-6">
               <h2 className="text-lg font-bold text-zinc-900 dark:text-slate-100 text-center">
                 How&apos;s your experience with Readee?
               </h2>
@@ -218,7 +236,7 @@ export default function FeedbackPage() {
 
           {/* Step 2: Category */}
           {step === 2 && (
-            <div className="space-y-6 animate-fadeSlideIn">
+            <div className="space-y-6">
               <h2 className="text-lg font-bold text-zinc-900 dark:text-slate-100 text-center">
                 What kind of feedback?
               </h2>
@@ -251,7 +269,7 @@ export default function FeedbackPage() {
 
           {/* Step 3: Message + Submit */}
           {step === 3 && (
-            <div className="space-y-6 animate-fadeSlideIn">
+            <div className="space-y-6">
               <h2 className="text-lg font-bold text-zinc-900 dark:text-slate-100 text-center">
                 Tell us more <span className="text-zinc-400 dark:text-slate-500 font-normal">(optional)</span>
               </h2>

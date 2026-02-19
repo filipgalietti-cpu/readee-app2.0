@@ -2,11 +2,16 @@
 
 import { useEffect, useState, useMemo } from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child, LessonProgress } from "@/lib/db/types";
 import { levelNameToGradeKey } from "@/lib/assessment/questions";
 import lessonsData from "@/lib/data/lessons.json";
 import LevelProgressBar, { GRADES } from "@/app/_components/LevelProgressBar";
+import { useChildStore } from "@/lib/stores/child-store";
+import { safeValidate } from "@/lib/validate";
+import { ChildSchema } from "@/lib/schemas";
+import { staggerContainer, slideUp } from "@/lib/motion/variants";
 
 const AVATARS = ["😊", "🦊", "🐱", "🦋", "🐻"];
 
@@ -46,10 +51,15 @@ function getGreeting(): { text: string; emoji: string } {
 }
 
 export default function Dashboard() {
-  const [children, setChildren] = useState<Child[]>([]);
-  const [selectedChild, setSelectedChild] = useState<Child | null>(null);
+  const children = useChildStore((s) => s.children);
+  const selectedChild = useChildStore((s) => s.childData);
+  const setStoreChildren = useChildStore((s) => s.setChildren);
+  const setStoreChildData = useChildStore((s) => s.setChildData);
   const [loading, setLoading] = useState(true);
   const [userPlan, setUserPlan] = useState<string>("free");
+
+  const setChildren = (kids: Child[]) => setStoreChildren(kids);
+  const setSelectedChild = (child: Child | null) => setStoreChildData(child);
 
   useEffect(() => {
     async function fetchChildren() {
@@ -82,14 +92,15 @@ export default function Dashboard() {
         return;
       }
 
-      const kids = (data || []) as Child[];
-      setChildren(kids);
+      const kids = (data || []).map((d: unknown) => safeValidate(ChildSchema, d)) as Child[];
+      setStoreChildren(kids);
       if (kids.length === 1) {
-        setSelectedChild(kids[0]);
+        setStoreChildData(kids[0]);
       }
       setLoading(false);
     }
     fetchChildren();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (loading) {
@@ -504,10 +515,15 @@ function ChildDashboard({
   const xpProgress = Math.round(((child.xp - prevMilestone) / (nextMilestone - prevMilestone)) * 100);
 
   return (
-    <div className="max-w-2xl mx-auto space-y-6 pb-12 px-4">
+    <motion.div
+      className="max-w-2xl mx-auto space-y-6 pb-12 px-4"
+      variants={staggerContainer}
+      initial="hidden"
+      animate="visible"
+    >
       {/* Nav */}
       {hasMultiple && (
-        <div className="flex items-center justify-between animate-slideUp">
+        <motion.div variants={slideUp} className="flex items-center justify-between">
           <button
             onClick={onBack}
             className="text-sm text-indigo-600 hover:text-indigo-700 font-medium transition-colors"
@@ -528,11 +544,11 @@ function ChildDashboard({
               </option>
             ))}
           </select>
-        </div>
+        </motion.div>
       )}
 
       {/* ── Greeting ── */}
-      <div className="text-center pt-4 dash-slide-up-1">
+      <motion.div variants={slideUp} className="text-center pt-4">
         <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-indigo-50 to-violet-50 mx-auto mb-4 flex items-center justify-center text-4xl shadow-sm">
           {avatar}
         </div>
@@ -540,11 +556,11 @@ function ChildDashboard({
           {greeting.text}, {child.first_name}! <span className="animate-wave">{greeting.emoji}</span>
         </h1>
         <p className="text-zinc-500 dark:text-slate-400 mt-1 text-sm">{motivation}</p>
-      </div>
+      </motion.div>
 
       {/* ── Reading Level Badge (compact) ── */}
       {readingLevel && (
-        <div className="dash-slide-up-2">
+        <motion.div variants={slideUp}>
           <div className="rounded-2xl bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 px-4 py-3 shadow-lg">
             <div className="flex items-center gap-3">
               <span className="text-xl">📖</span>
@@ -562,14 +578,14 @@ function ChildDashboard({
               </Link>
             </div>
           </div>
-        </div>
+        </motion.div>
       )}
 
       {/* ── Start Practice CTA ── */}
       {hasAssessment && (
         <Link
           href={`/practice?child=${child.id}&standard=RF.K.1a`}
-          className="block dash-slide-up-3"
+          className="block"
         >
           <div className="rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 dark:from-emerald-600 dark:to-teal-600 p-5 text-white hover:from-emerald-600 hover:to-teal-600 transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-[1.01] cursor-pointer flex items-center gap-4">
             <div className="w-14 h-14 rounded-xl bg-white/20 flex items-center justify-center text-3xl flex-shrink-0">
@@ -589,7 +605,7 @@ function ChildDashboard({
       )}
 
       {/* ── Stats Cards ── */}
-      <div className="grid grid-cols-3 gap-3 dash-slide-up-3">
+      <motion.div variants={slideUp} className="grid grid-cols-3 gap-3">
         {/* XP Card */}
         <Link href={`/xp-rewards?child=${child.id}`} className="block">
           <div className="rounded-2xl border border-amber-200 dark:border-amber-800/40 bg-gradient-to-b from-amber-50 to-white dark:from-amber-950/30 dark:to-slate-800 p-4 text-center hover:shadow-md hover:scale-[1.02] transition-all duration-200 group cursor-pointer">
@@ -649,10 +665,10 @@ function ChildDashboard({
             <div className="text-[9px] text-orange-500 mt-1 opacity-0 group-hover:opacity-100 transition-opacity">Leaderboard →</div>
           </div>
         </Link>
-      </div>
+      </motion.div>
 
       {/* ── Daily Goal Ring ── */}
-      <div className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 flex items-center gap-5 dash-slide-up-4">
+      <motion.div variants={slideUp} className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 flex items-center gap-5">
         <div className="relative w-16 h-16 flex-shrink-0">
           <svg viewBox="0 0 100 100" className="w-full h-full -rotate-90">
             <circle cx="50" cy="50" r="40" fill="none" stroke="#e5e7eb" strokeWidth="8" />
@@ -680,10 +696,10 @@ function ChildDashboard({
               : "Complete 1 lesson to hit your daily goal"}
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* ── Roadmap & Analytics Links ── */}
-      <div className="grid grid-cols-2 gap-3 dash-slide-up-4">
+      <motion.div variants={slideUp} className="grid grid-cols-2 gap-3">
         <Link href={`/roadmap?child=${child.id}`} className="block">
           <div className="rounded-2xl border border-indigo-200 dark:border-indigo-800/40 bg-gradient-to-r from-indigo-50 to-violet-50 dark:from-indigo-950/30 dark:to-violet-950/30 p-4 hover:border-indigo-300 dark:hover:border-indigo-700 hover:shadow-md transition-all duration-200 cursor-pointer group h-full">
             <div className="w-10 h-10 rounded-xl bg-white dark:bg-slate-700 flex items-center justify-center text-xl shadow-sm mb-2 group-hover:scale-105 transition-transform">
@@ -702,11 +718,11 @@ function ChildDashboard({
             <div className="text-[11px] text-zinc-500 dark:text-slate-400 mt-0.5">Performance analytics</div>
           </div>
         </Link>
-      </div>
+      </motion.div>
 
       {/* ── Primary CTA: Assessment or Next Lesson ── */}
       {hasAssessment === false && (
-        <Link href={`/assessment?child=${child.id}`} className="block dash-slide-up-5">
+        <Link href={`/assessment?child=${child.id}`} className="block">
           <div className="rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 p-6 text-center text-white hover:from-indigo-700 hover:to-violet-600 transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-[1.01] cursor-pointer">
             <div className="text-3xl mb-2">🎯</div>
             <div className="text-lg font-bold">Take Your Reading Quiz!</div>
@@ -718,7 +734,7 @@ function ChildDashboard({
       )}
 
       {hasAssessment && nextLesson && (
-        <Link href={`/lesson?child=${child.id}&lesson=${nextLesson.id}`} className="block dash-slide-up-5">
+        <Link href={`/lesson?child=${child.id}&lesson=${nextLesson.id}`} className="block">
           <div className="rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 p-5 text-white hover:from-indigo-700 hover:to-violet-600 transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-[1.01] cursor-pointer animate-subtleBounce">
             <div className="flex items-center gap-4">
               <div className="w-14 h-14 rounded-xl bg-white/20 flex items-center justify-center text-3xl flex-shrink-0">
@@ -746,7 +762,7 @@ function ChildDashboard({
       )}
 
       {hasAssessment && !nextLesson && lessons.length > 0 && (
-        <div className="rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 p-5 text-center text-white shadow-lg dash-slide-up-5">
+        <div className="rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 p-5 text-center text-white shadow-lg">
           <div className="text-3xl mb-2">🏆</div>
           <div className="text-lg font-bold">All Lessons Complete!</div>
           <div className="text-emerald-100 text-sm mt-1">
@@ -757,13 +773,13 @@ function ChildDashboard({
 
       {/* ── Lesson Path ── */}
       {hasAssessment && (
-        <div className="dash-slide-up-6">
+        <motion.div variants={slideUp}>
           <LessonPath child={child} readingLevel={readingLevel} lessonProgress={lessonProgress} userPlan={userPlan} />
-        </div>
+        </motion.div>
       )}
 
       {/* ── Curriculum Overview ── */}
-      <div className="dash-slide-up-6">
+      <motion.div variants={slideUp}>
         <CurriculumOverview
           readingLevel={readingLevel}
           lessonProgress={lessonProgress}
@@ -772,10 +788,10 @@ function ChildDashboard({
           expandedGrade={expandedGrade}
           setExpandedGrade={setExpandedGrade}
         />
-      </div>
+      </motion.div>
 
       {/* ── Weekly Progress ── */}
-      <div className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 dash-slide-up-7">
+      <motion.div variants={slideUp} className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6">
         <h3 className="text-base font-bold text-zinc-900 dark:text-slate-100 mb-4">Weekly Progress</h3>
         <div className="space-y-2.5">
           {weeklyXP.map(({ day, xp, pct, isToday, isPast }) => (
@@ -803,10 +819,10 @@ function ChildDashboard({
             </div>
           ))}
         </div>
-      </div>
+      </motion.div>
 
       {/* ── Recent Activity ── */}
-      <div className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 dash-slide-up-8">
+      <motion.div variants={slideUp} className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6">
         <h3 className="text-base font-bold text-zinc-900 dark:text-slate-100 mb-4">Recent Activity</h3>
         {recentCompleted.length > 0 ? (
           <div className="space-y-3">
@@ -840,8 +856,8 @@ function ChildDashboard({
             </p>
           </div>
         )}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
 

@@ -1,39 +1,17 @@
 "use client";
 
-import { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
-import { audioManager } from "@/lib/audio/audio-manager";
+import { useCallback, useRef, useState, useEffect } from "react";
 import { useAudioStore } from "@/lib/stores/audio-store";
+import { audioManager } from "./audio-manager";
 
-interface SpeechCtx {
-  muted: boolean;
-  isSpeaking: boolean;
-  speak: (text: string) => void;
-  playUrl: (url: string) => void;
-  speakManual: (text: string) => void;
-  stop: () => void;
-  toggleMute: () => void;
-}
-
-const SpeechContext = createContext<SpeechCtx>({
-  muted: false,
-  isSpeaking: false,
-  speak: () => {},
-  playUrl: () => {},
-  speakManual: () => {},
-  stop: () => {},
-  toggleMute: () => {},
-});
-
-export function SpeechProvider({ children }: { children: React.ReactNode }) {
+export function useAudio() {
   const isMuted = useAudioStore((s) => s.isMuted);
   const toggleMuteStore = useAudioStore((s) => s.toggleMute);
   const [isSpeaking, setIsSpeaking] = useState(false);
   const mountedRef = useRef(true);
 
   useEffect(() => {
-    return () => {
-      mountedRef.current = false;
-    };
+    return () => { mountedRef.current = false; };
   }, []);
 
   const speak = useCallback(
@@ -84,13 +62,33 @@ export function SpeechProvider({ children }: { children: React.ReactNode }) {
     }
   }, [isMuted, toggleMuteStore]);
 
-  return (
-    <SpeechContext.Provider value={{ muted: isMuted, isSpeaking, speak, playUrl, speakManual, stop, toggleMute }}>
-      {children}
-    </SpeechContext.Provider>
-  );
-}
+  const preload = useCallback((url: string) => {
+    if (audioManager) audioManager.preload(url);
+  }, []);
 
-export function useSpeech() {
-  return useContext(SpeechContext);
+  const playCorrectChime = useCallback(() => {
+    if (audioManager) audioManager.playCorrectChime();
+  }, []);
+
+  const playIncorrectBuzz = useCallback(() => {
+    if (audioManager) audioManager.playIncorrectBuzz();
+  }, []);
+
+  const playCompleteChime = useCallback(() => {
+    if (audioManager) audioManager.playCompleteChime();
+  }, []);
+
+  return {
+    muted: isMuted,
+    isSpeaking,
+    speak,
+    playUrl,
+    speakManual,
+    stop,
+    toggleMute,
+    preload,
+    playCorrectChime,
+    playIncorrectBuzz,
+    playCompleteChime,
+  };
 }

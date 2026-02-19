@@ -1,4 +1,5 @@
 import ClientProviders from "./_components/ClientProviders";
+import PageTransition from "./_components/PageTransition";
 import type { Metadata } from "next";
 import "./globals.css";
 import Link from "next/link";
@@ -22,7 +23,7 @@ export default function RootLayout({
 
         {/* Page content */}
         <main className="flex-1 mx-auto w-full max-w-6xl px-6 py-8">
-          {children}
+          <PageTransition>{children}</PageTransition>
         </main>
 
         {/* Footer */}

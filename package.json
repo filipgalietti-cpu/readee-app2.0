@@ -11,13 +11,18 @@
   "dependencies": {
     "@supabase/ssr": "^0.8.0",
     "@supabase/supabase-js": "^2.95.3",
+    "framer-motion": "^12.34.2",
+    "howler": "^2.2.4",
     "next": "16.1.6",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "resend": "^6.9.2"
+    "resend": "^6.9.2",
+    "zod": "^4.3.6",
+    "zustand": "^5.0.11"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/howler": "^2.2.12",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

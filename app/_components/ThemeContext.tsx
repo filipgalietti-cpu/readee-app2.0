@@ -1,6 +1,7 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect } from "react";
+import { useThemeStore } from "@/lib/stores/theme-store";
 
 interface ThemeCtx {
   darkMode: boolean;
@@ -10,43 +11,14 @@ interface ThemeCtx {
 const ThemeContext = createContext<ThemeCtx>({ darkMode: false, toggleDarkMode: () => {} });
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [darkMode, setDarkMode] = useState(false);
-  const [mounted, setMounted] = useState(false);
+  const darkMode = useThemeStore((s) => s.darkMode);
+  const mounted = useThemeStore((s) => s.mounted);
+  const toggleDarkMode = useThemeStore((s) => s.toggleDarkMode);
+  const hydrate = useThemeStore((s) => s.hydrate);
 
-  // Read initial value from localStorage
   useEffect(() => {
-    try {
-      const stored = localStorage.getItem("readee_prefs");
-      if (stored) {
-        const prefs = JSON.parse(stored);
-        if (prefs.darkMode === true) {
-          setDarkMode(true);
-          document.documentElement.classList.add("dark");
-        }
-      }
-    } catch {}
-    setMounted(true);
-  }, []);
-
-  const toggleDarkMode = () => {
-    setDarkMode((prev) => {
-      const next = !prev;
-      // Persist to localStorage (merge with existing prefs)
-      try {
-        const stored = localStorage.getItem("readee_prefs");
-        const prefs = stored ? JSON.parse(stored) : {};
-        prefs.darkMode = next;
-        localStorage.setItem("readee_prefs", JSON.stringify(prefs));
-      } catch {}
-      // Toggle class on <html>
-      if (next) {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
-      return next;
-    });
-  };
+    hydrate();
+  }, [hydrate]);
 
   // Prevent flash of wrong theme
   if (!mounted) return null;

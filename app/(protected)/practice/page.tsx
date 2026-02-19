@@ -3,9 +3,14 @@
 import { Suspense, useEffect, useState, useMemo, useCallback, useRef } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
-import { useSpeech } from "@/app/_components/SpeechContext";
+import { useAudio } from "@/lib/audio/use-audio";
+import { usePracticeStore } from "@/lib/stores/practice-store";
+import { safeValidate } from "@/lib/validate";
+import { StandardsFileSchema, PracticeResultSchema } from "@/lib/schemas";
+import { fadeUp, staggerContainer, wrongShake, feedbackSlideUp, popIn, scaleIn } from "@/lib/motion/variants";
 import kStandards from "@/app/data/kindergarten-standards-questions.json";
 
 /* ─── Types ──────────────────────────────────────────── */
@@ -35,11 +40,9 @@ interface AnswerRecord {
   selected: string;
 }
 
-type Phase = "playing" | "feedback" | "complete";
-
 /* ─── Constants ──────────────────────────────────────── */
 
-const ALL_STANDARDS = (kStandards as { standards: Standard[] }).standards;
+const ALL_STANDARDS = safeValidate(StandardsFileSchema, kStandards).standards as Standard[];
 const QUESTIONS_PER_SESSION = 5;
 const XP_PER_CORRECT = 5;
 
@@ -54,10 +57,6 @@ const INCORRECT_MESSAGES = [
 ];
 
 /* ─── Helpers ────────────────────────────────────────── */
-
-function pickRandom<T>(arr: T[]): T {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
 
 function shuffleArray<T>(arr: T[]): T[] {
   const shuffled = [...arr];
@@ -92,7 +91,7 @@ function getStars(correct: number, total: number): number {
 /* ─── Audio Helpers ──────────────────────────────────── */
 
 function SpeakerButton({ text, className = "" }: { text: string; className?: string }) {
-  const { speakManual } = useSpeech();
+  const { speakManual } = useAudio();
   return (
     <button
       onClick={(e) => { e.stopPropagation(); speakManual(text); }}
@@ -107,7 +106,7 @@ function SpeakerButton({ text, className = "" }: { text: string; className?: str
 }
 
 function MuteToggle() {
-  const { muted, toggleMute } = useSpeech();
+  const { muted, toggleMute } = useAudio();
   return (
     <button
       onClick={toggleMute}
@@ -198,26 +197,46 @@ function PracticeLoader() {
 
 function PracticeSession({ child, standard }: { child: Child; standard: Standard }) {
   const router = useRouter();
-  const { speak, playUrl, stop } = useSpeech();
+  const { speak, playUrl, stop, preload, playCorrectChime, playIncorrectBuzz } = useAudio();
+
+  // Zustand store
+  const phase = usePracticeStore((s) => s.phase);
+  const currentIdx = usePracticeStore((s) => s.currentIdx);
+  const answers = usePracticeStore((s) => s.answers);
+  const sessionXP = usePracticeStore((s) => s.sessionXP);
+  const selected = usePracticeStore((s) => s.selected);
+  const isCorrect = usePracticeStore((s) => s.isCorrect);
+  const feedbackMsg = usePracticeStore((s) => s.feedbackMsg);
+  const feedbackEmoji = usePracticeStore((s) => s.feedbackEmoji);
+  const selectAnswer = usePracticeStore((s) => s.selectAnswer);
+  const nextQuestion = usePracticeStore((s) => s.nextQuestion);
+  const resetStore = usePracticeStore((s) => s.reset);
+
+  const [saving, setSaving] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   const questions = useMemo(() => {
     if (standard.questions.length <= QUESTIONS_PER_SESSION) return standard.questions;
     return shuffleArray(standard.questions).slice(0, QUESTIONS_PER_SESSION);
   }, [standard]);
 
-  const [phase, setPhase] = useState<Phase>("playing");
-  const [currentIdx, setCurrentIdx] = useState(0);
-  const [answers, setAnswers] = useState<AnswerRecord[]>([]);
-  const [sessionXP, setSessionXP] = useState(0);
-  const [selected, setSelected] = useState<string | null>(null);
-  const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
-  const [feedbackMsg, setFeedbackMsg] = useState("");
-  const [feedbackEmoji, setFeedbackEmoji] = useState("");
-  const [saving, setSaving] = useState(false);
-  const scrollRef = useRef<HTMLDivElement>(null);
+  // Reset store on mount/standard change
+  useEffect(() => {
+    resetStore();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [standard.standard_id]);
 
   const q = questions[currentIdx];
   const totalQ = questions.length;
+
+  /* ── Preload next question audio ── */
+  useEffect(() => {
+    if (phase !== "playing") return;
+    const nextIdx = currentIdx + 1;
+    if (nextIdx < totalQ && questions[nextIdx]?.audio_url) {
+      preload(questions[nextIdx].audio_url!);
+    }
+  }, [currentIdx, phase, questions, totalQ, preload]);
 
   /* ── Auto-speak question on load ── */
   useEffect(() => {
@@ -247,44 +266,30 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
   /* ── Handle answer selection ── */
   const handleAnswer = useCallback((choice: string) => {
     if (selected !== null) return;
-
     const correct = choice === q.correct;
-    setSelected(choice);
-    setIsCorrect(correct);
-    setPhase("feedback");
 
+    selectAnswer(choice, correct, q.id, XP_PER_CORRECT, CORRECT_MESSAGES, CORRECT_EMOJIS, INCORRECT_MESSAGES);
+
+    // Sound effects
     if (correct) {
-      setFeedbackMsg(pickRandom(CORRECT_MESSAGES));
-      setFeedbackEmoji(pickRandom(CORRECT_EMOJIS));
-      setSessionXP((prev) => prev + XP_PER_CORRECT);
+      playCorrectChime();
     } else {
-      setFeedbackMsg(pickRandom(INCORRECT_MESSAGES));
-      setFeedbackEmoji("");
+      playIncorrectBuzz();
     }
-
-    setAnswers((prev) => [...prev, { questionId: q.id, correct, selected: choice }]);
-  }, [selected, q]);
+  }, [selected, q, selectAnswer, playCorrectChime, playIncorrectBuzz]);
 
   /* ── Continue to next question ── */
   const handleContinue = useCallback(() => {
-    if (currentIdx + 1 < totalQ) {
-      setCurrentIdx((i) => i + 1);
-      setSelected(null);
-      setIsCorrect(null);
-      setFeedbackMsg("");
-      setFeedbackEmoji("");
-      setPhase("playing");
-      scrollRef.current?.scrollTo({ top: 0, behavior: "smooth" });
-    } else {
-      setPhase("complete");
-    }
-  }, [currentIdx, totalQ]);
+    nextQuestion(totalQ);
+    scrollRef.current?.scrollTo({ top: 0, behavior: "smooth" });
+  }, [nextQuestion, totalQ]);
 
   /* ── Exit ── */
   const handleExit = useCallback(() => {
     stop();
+    resetStore();
     router.push(`/dashboard`);
-  }, [router, stop]);
+  }, [router, stop, resetStore]);
 
   if (phase === "complete") {
     const correctCount = answers.filter((a) => a.correct).length;
@@ -298,16 +303,7 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
         xpEarned={correctCount * XP_PER_CORRECT}
         saving={saving}
         setSaving={setSaving}
-        onRestart={() => {
-          setPhase("playing");
-          setCurrentIdx(0);
-          setAnswers([]);
-          setSessionXP(0);
-          setSelected(null);
-          setIsCorrect(null);
-          setFeedbackMsg("");
-          setFeedbackEmoji("");
-        }}
+        onRestart={resetStore}
       />
     );
   }
@@ -349,26 +345,32 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
       </div>
 
       {/* ── Question area ── */}
-      <div className="flex-1 max-w-lg mx-auto w-full px-4 pt-4 pb-32 flex flex-col">
+      <motion.div
+        className="flex-1 max-w-lg mx-auto w-full px-4 pt-4 pb-32 flex flex-col"
+        variants={staggerContainer}
+        initial="hidden"
+        animate="visible"
+        key={currentIdx}
+      >
         {/* Passage */}
         {passage && (
-          <div className="mb-5 rounded-2xl bg-slate-800/80 border border-slate-700 p-5 animate-fadeUp">
+          <motion.div variants={fadeUp} className="mb-5 rounded-2xl bg-slate-800/80 border border-slate-700 p-5">
             <div className="flex items-start gap-2">
               <p className="text-lg leading-relaxed text-white/90 whitespace-pre-line flex-1">{passage}</p>
               <SpeakerButton text={passage} />
             </div>
-          </div>
+          </motion.div>
         )}
 
         {/* Question */}
-        <div className="mb-6 animate-fadeUp" style={{ animationDelay: "0.05s" }}>
+        <motion.div variants={fadeUp} className="mb-6">
           <div className="flex items-start gap-2">
             <h2 className="text-[22px] font-bold text-white leading-snug flex-1">
               {question}
             </h2>
             <SpeakerButton text={question} />
           </div>
-        </div>
+        </motion.div>
 
         {/* Answer choices */}
         <div className="space-y-3">
@@ -387,7 +389,7 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
                 textColor = "text-emerald-100";
                 badgeBg = "bg-emerald-500 text-white";
               } else if (isSelected && !isCorrect) {
-                bg = "bg-red-900/40 border-red-500 ring-2 ring-red-500/30 animate-wrongShake";
+                bg = "bg-red-900/40 border-red-500 ring-2 ring-red-500/30";
                 textColor = "text-red-200";
                 badgeBg = "bg-red-500 text-white";
               } else if (isCorrectChoice && !isCorrect) {
@@ -401,17 +403,25 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
             }
 
             return (
-              <button
+              <motion.button
                 key={choice}
+                variants={fadeUp}
+                animate={
+                  isSelected && !isCorrect
+                    ? { x: [0, -8, 8, -6, 6, -3, 3, 0], transition: { duration: 0.5 } }
+                    : isSelected && isCorrect
+                    ? { scale: [1, 1.05, 1], transition: { duration: 0.3 } }
+                    : {}
+                }
                 onClick={() => handleAnswer(choice)}
                 disabled={answered}
                 className={`
                   w-full text-left px-5 py-4 rounded-2xl border-2
-                  transition-all duration-200 outline-none animate-fadeUp
+                  transition-all duration-200 outline-none
                   ${bg}
                   ${answered ? "cursor-default" : "cursor-pointer"}
                 `}
-                style={{ animationDelay: `${0.1 + i * 0.06}s`, minHeight: 60 }}
+                style={{ minHeight: 60 }}
               >
                 <div className="flex items-center gap-4">
                   <span className={`w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 ${badgeBg}`}>
@@ -436,63 +446,69 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
                   </span>
                   <SpeakerButton text={choice} />
                 </div>
-              </button>
+              </motion.button>
             );
           })}
         </div>
-      </div>
+      </motion.div>
 
       {/* ── Bottom feedback bar (Duolingo-style) ── */}
-      {phase === "feedback" && (
-        <div
-          className={`fixed bottom-0 left-0 right-0 z-40 animate-slideUp ${
-            isCorrect
-              ? "bg-emerald-600"
-              : "bg-red-500"
-          }`}
-        >
-          <div className="max-w-lg mx-auto px-5 py-5 safe-area-bottom">
-            <div className="flex items-start gap-3 mb-4">
-              {isCorrect ? (
-                <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0 text-xl">
-                  {feedbackEmoji}
-                </div>
-              ) : (
-                <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
-                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </div>
-              )}
-              <div className="flex-1 min-w-0">
-                <p className="text-white font-extrabold text-lg">{feedbackMsg}</p>
-                {isCorrect && (
-                  <p className="text-white/80 text-sm mt-0.5">+{XP_PER_CORRECT} XP</p>
+      <AnimatePresence>
+        {phase === "feedback" && (
+          <motion.div
+            variants={feedbackSlideUp}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            className={`fixed bottom-0 left-0 right-0 z-40 ${
+              isCorrect
+                ? "bg-emerald-600"
+                : "bg-red-500"
+            }`}
+          >
+            <div className="max-w-lg mx-auto px-5 py-5 safe-area-bottom">
+              <div className="flex items-start gap-3 mb-4">
+                {isCorrect ? (
+                  <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0 text-xl">
+                    {feedbackEmoji}
+                  </div>
+                ) : (
+                  <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
+                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </div>
                 )}
-                {!isCorrect && (
-                  <>
-                    <p className="text-white/90 text-sm font-bold mt-1">
-                      Correct answer: {q.correct}
-                    </p>
-                    <p className="text-white/70 text-sm mt-1">{q.hint}</p>
-                  </>
-                )}
+                <div className="flex-1 min-w-0">
+                  <p className="text-white font-extrabold text-lg">{feedbackMsg}</p>
+                  {isCorrect && (
+                    <p className="text-white/80 text-sm mt-0.5">+{XP_PER_CORRECT} XP</p>
+                  )}
+                  {!isCorrect && (
+                    <>
+                      <p className="text-white/90 text-sm font-bold mt-1">
+                        Correct answer: {q.correct}
+                      </p>
+                      <p className="text-white/70 text-sm mt-1">{q.hint}</p>
+                    </>
+                  )}
+                </div>
               </div>
-            </div>
 
-            <button
-              onClick={handleContinue}
-              className={`w-full py-4 rounded-2xl font-extrabold text-base transition-all active:scale-[0.97] ${
-                isCorrect
-                  ? "bg-white text-emerald-700 hover:bg-emerald-50"
-                  : "bg-white text-red-600 hover:bg-red-50"
-              }`}
-            >
-              CONTINUE
-            </button>
-          </div>
-        </div>
-      )}
+              <button
+                onClick={handleContinue}
+                className={`w-full py-4 rounded-2xl font-extrabold text-base transition-all active:scale-[0.97] ${
+                  isCorrect
+                    ? "bg-white text-emerald-700 hover:bg-emerald-50"
+                    : "bg-white text-red-600 hover:bg-red-50"
+                }`}
+              >
+                CONTINUE
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
@@ -523,10 +539,24 @@ function CompletionScreen({
   onRestart: () => void;
 }) {
   const [saved, setSaved] = useState(false);
-  const [confetti, setConfetti] = useState<{ id: number; left: number; delay: number; color: string; size: number }[]>([]);
+  const { playCompleteChime } = useAudio();
   const totalQ = questions.length;
   const stars = getStars(correctCount, totalQ);
   const nextStandard = getNextStandard(standard.standard_id);
+
+  // Confetti pieces
+  const confettiPieces = useMemo(() => {
+    if (correctCount < totalQ - 1) return [];
+    const count = correctCount === totalQ ? 80 : 50;
+    return Array.from({ length: count }, (_, i) => ({
+      id: i,
+      left: Math.random() * 100,
+      delay: Math.random() * 2,
+      size: 6 + Math.random() * 8,
+      color: ["#4ade80", "#6366f1", "#f59e0b", "#ec4899", "#8b5cf6", "#06b6d4", "#f43f5e"][i % 7],
+      xDrift: (Math.random() - 0.5) * 100,
+    }));
+  }, [correctCount, totalQ]);
 
   let title: string;
   let subtitle: string;
@@ -545,19 +575,11 @@ function CompletionScreen({
     subtitle = "Let's give it another go!";
   }
 
-  /* ── Confetti for 4/5 or 5/5 ── */
+  /* ── Play completion chime ── */
   useEffect(() => {
-    if (correctCount < totalQ - 1) return;
-    const count = correctCount === totalQ ? 80 : 50;
-    const pieces = Array.from({ length: count }, (_, i) => ({
-      id: i,
-      left: Math.random() * 100,
-      delay: Math.random() * 2,
-      size: 6 + Math.random() * 8,
-      color: ["#4ade80", "#6366f1", "#f59e0b", "#ec4899", "#8b5cf6", "#06b6d4", "#f43f5e"][i % 7],
-    }));
-    setConfetti(pieces);
-  }, [correctCount, totalQ]);
+    playCompleteChime();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   /* ── Save results ── */
   useEffect(() => {
@@ -567,13 +589,15 @@ function CompletionScreen({
     async function save() {
       const supabase = supabaseBrowser();
 
-      await supabase.from("practice_results").insert({
+      const payload = safeValidate(PracticeResultSchema, {
         child_id: child.id,
         standard_id: standard.standard_id,
         questions_attempted: totalQ,
         questions_correct: correctCount,
         xp_earned: xpEarned,
       });
+
+      await supabase.from("practice_results").insert(payload);
 
       if (xpEarned > 0) {
         const { data: current } = await supabase
@@ -599,54 +623,63 @@ function CompletionScreen({
   return (
     <div className="min-h-[100dvh] bg-[#0f172a] relative overflow-hidden flex flex-col">
       {/* Confetti */}
-      {confetti.map((c) => (
-        <div
+      {confettiPieces.map((c) => (
+        <motion.div
           key={c.id}
-          className="confetti-fall absolute rounded-full pointer-events-none"
+          className="absolute rounded-full pointer-events-none"
           style={{
             left: `${c.left}%`,
             top: -20,
             width: c.size,
             height: c.size,
             backgroundColor: c.color,
-            animationDelay: `${c.delay}s`,
           }}
+          initial={{ y: -20, x: 0, rotate: 0, opacity: 1 }}
+          animate={{
+            y: "100vh",
+            x: c.xDrift,
+            rotate: 720,
+            opacity: [1, 1, 0],
+          }}
+          transition={{ duration: 2.5, delay: c.delay, ease: "easeIn" }}
         />
       ))}
 
-      <div className="flex-1 flex flex-col items-center justify-center px-6 py-10 relative z-10 max-w-lg mx-auto w-full">
+      <motion.div
+        className="flex-1 flex flex-col items-center justify-center px-6 py-10 relative z-10 max-w-lg mx-auto w-full"
+        variants={staggerContainer}
+        initial="hidden"
+        animate="visible"
+      >
         {/* Stars */}
-        <div className="flex items-end gap-2 mb-6 animate-scaleIn">
+        <motion.div variants={scaleIn} className="flex items-end gap-2 mb-6">
           {[1, 2, 3].map((s) => (
-            <div
+            <motion.div
               key={s}
-              className={`transition-all duration-500 ${s === 2 ? "mb-2" : ""}`}
-              style={{ animationDelay: `${s * 0.15}s` }}
+              variants={popIn}
+              className={`${s === 2 ? "mb-2" : ""}`}
             >
               <svg
                 viewBox="0 0 24 24"
-                className={`${s === 2 ? "w-16 h-16" : "w-12 h-12"} transition-all duration-500`}
+                className={`${s === 2 ? "w-16 h-16" : "w-12 h-12"}`}
                 fill={s <= stars ? "#facc15" : "#334155"}
                 stroke={s <= stars ? "#eab308" : "#475569"}
                 strokeWidth="0.5"
               >
                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
               </svg>
-              {s <= stars && (
-                <div className="absolute inset-0 animate-popIn" style={{ animationDelay: `${0.3 + s * 0.15}s` }} />
-              )}
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Title */}
-        <h1 className="text-3xl font-extrabold text-white tracking-tight text-center mb-1 animate-fadeUp">
+        <motion.h1 variants={fadeUp} className="text-3xl font-extrabold text-white tracking-tight text-center mb-1">
           {title}
-        </h1>
-        <p className="text-slate-400 text-center mb-8">{subtitle}</p>
+        </motion.h1>
+        <motion.p variants={fadeUp} className="text-slate-400 text-center mb-8">{subtitle}</motion.p>
 
         {/* Score + XP */}
-        <div className="flex gap-6 mb-8 dash-slide-up-1">
+        <motion.div variants={fadeUp} className="flex gap-6 mb-8">
           <div className="text-center">
             <div className="text-4xl font-extrabold text-white">{correctCount}/{totalQ}</div>
             <div className="text-xs text-slate-500 mt-1 font-medium">Correct</div>
@@ -656,10 +689,10 @@ function CompletionScreen({
             <div className="text-4xl font-extrabold text-amber-400">+{xpEarned}</div>
             <div className="text-xs text-slate-500 mt-1 font-medium">XP Earned</div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Question results */}
-        <div className="w-full space-y-2 mb-8 dash-slide-up-2">
+        <motion.div variants={fadeUp} className="w-full space-y-2 mb-8">
           {questions.map((qItem, i) => {
             const answer = answers[i];
             if (!answer) return null;
@@ -688,10 +721,10 @@ function CompletionScreen({
               </div>
             );
           })}
-        </div>
+        </motion.div>
 
         {/* Action buttons */}
-        <div className="w-full space-y-3 dash-slide-up-3">
+        <motion.div variants={fadeUp} className="w-full space-y-3">
           {nextStandard && (
             <Link
               href={`/practice?child=${child.id}&standard=${nextStandard.standard_id}`}
@@ -715,12 +748,12 @@ function CompletionScreen({
           >
             Back to Dashboard
           </Link>
-        </div>
+        </motion.div>
 
         {saving && (
           <p className="text-center text-xs text-slate-500 mt-4 animate-pulse">Saving results...</p>
         )}
-      </div>
+      </motion.div>
     </div>
   );
 }

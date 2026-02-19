@@ -3,9 +3,11 @@
 import { Suspense, useEffect, useState, useRef, useMemo, useCallback } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
 import kStandards from "@/app/data/kindergarten-standards-questions.json";
+import { slideUp, staggerContainer } from "@/lib/motion/variants";
 
 /* ─── Types ──────────────────────────────────────────── */
 
@@ -273,14 +275,14 @@ function Roadmap({ child, userPlan }: { child: Child; userPlan: string }) {
   return (
     <div className="max-w-5xl mx-auto pb-20 px-4">
       {/* ── Nav ── */}
-      <div className="pt-4 mb-6 animate-slideUp max-w-[400px] mx-auto md:max-w-none">
+      <div className="pt-4 mb-6  max-w-[400px] mx-auto md:max-w-none">
         <Link href="/dashboard" className="text-sm text-indigo-600 hover:text-indigo-700 font-medium transition-colors">
           &larr; Dashboard
         </Link>
       </div>
 
       {/* ── Title ── */}
-      <div className="text-center mb-6 dash-slide-up-1 max-w-[400px] mx-auto md:max-w-none">
+      <div className="text-center mb-6 max-w-[400px] mx-auto md:max-w-none">
         <h1 className="text-2xl font-bold text-zinc-900 dark:text-slate-100 tracking-tight">
           {child.first_name}&apos;s Learning Journey
         </h1>
@@ -288,7 +290,7 @@ function Roadmap({ child, userPlan }: { child: Child; userPlan: string }) {
       </div>
 
       {/* ── Mobile Progress Summary ── */}
-      <div className="md:hidden mb-6 dash-slide-up-2 max-w-[400px] mx-auto">
+      <div className="md:hidden mb-6 max-w-[400px] mx-auto">
         <MobileProgressCard
           pct={pct}
           completedCount={completedCount}
@@ -385,7 +387,7 @@ function Roadmap({ child, userPlan }: { child: Child; userPlan: string }) {
 
         {/* Path column (right on desktop, full-width on mobile) */}
         <div className="flex-1 flex justify-center">
-          <div ref={pathRef} className="relative w-full max-w-[400px] dash-slide-up-3" style={{ height: layout.totalHeight }}>
+          <div ref={pathRef} className="relative w-full max-w-[400px]" style={{ height: layout.totalHeight }}>
             {/* SVG connecting path */}
             <svg
               className="absolute left-0 top-0 w-full pointer-events-none"
@@ -568,7 +570,7 @@ function NodeBubble({
   const isLeftSide = leftPct < 50;
 
   return (
-    <div
+    <motion.div
       ref={ref}
       id={`node-${standard.standard_id}`}
       className="absolute flex flex-col items-center"
@@ -578,6 +580,10 @@ function NodeBubble({
         transform: "translateX(-50%)",
         zIndex: isActive ? 50 : status === "current" ? 20 : 10,
       }}
+      initial={{ opacity: 0, scale: 0.8 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.3 }}
     >
       {/* Circle node */}
       <button
@@ -646,7 +652,7 @@ function NodeBubble({
       {/* ── Tooltip ── */}
       {isActive && (
         <div
-          className="absolute top-full mt-2 z-50 animate-scaleIn"
+          className="absolute top-full mt-2 z-50"
           style={{ width: 288, left: isLeftSide ? -40 : -200 }}
         >
           <div className="rounded-2xl bg-white dark:bg-slate-800 border border-zinc-200 dark:border-slate-700 shadow-xl p-4 space-y-3">
@@ -739,7 +745,7 @@ function NodeBubble({
           </div>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 }
 
