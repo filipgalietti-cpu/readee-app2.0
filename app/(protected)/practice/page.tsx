@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
 import { useAudio } from "@/lib/audio/use-audio";
+import { audioManager } from "@/lib/audio/audio-manager";
 import { usePracticeStore } from "@/lib/stores/practice-store";
 import { useThemeStore } from "@/lib/stores/theme-store";
 import { safeValidate } from "@/lib/validate";
@@ -325,9 +326,12 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
     };
   }, []);
 
-  /** Handle "Tap to Start" — unlock audio and begin */
+  /** Handle "Tap to Start" — unlock audio, play intro, then begin */
   const handleStart = useCallback(async () => {
     await unlockAudio();
+    if (audioManager) {
+      await audioManager.play("/audio/kindergarten/intro.mp3");
+    }
     setAudioReady(true);
   }, [unlockAudio]);
 
