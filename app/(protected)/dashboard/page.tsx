@@ -12,7 +12,6 @@ import { useChildStore } from "@/lib/stores/child-store";
 import { safeValidate } from "@/lib/validate";
 import { ChildSchema } from "@/lib/schemas";
 import { staggerContainer, slideUp, staggerFast } from "@/lib/motion/variants";
-import { useAudio } from "@/lib/audio/use-audio";
 import kStandards from "@/app/data/kindergarten-standards-questions.json";
 
 /* ─── Count-up animation hook ─────────────────────────── */
@@ -318,15 +317,6 @@ function AddChildrenForm({ userPlan, onDone }: { userPlan: string; onDone: (kids
 
 function CountUpStat({ target }: { target: number }) {
   const { value, ref } = useCountUp(target);
-  const { playPopSound } = useAudio();
-  const popped = useRef(false);
-
-  useEffect(() => {
-    if (value === target && target > 0 && !popped.current) {
-      popped.current = true;
-      playPopSound();
-    }
-  }, [value, target, playPopSound]);
 
   return (
     <div ref={ref} className="text-xl font-bold text-zinc-900 dark:text-slate-100">
