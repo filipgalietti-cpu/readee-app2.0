@@ -25,6 +25,10 @@ interface Question {
   hint: string;
   difficulty: number;
   audio_url?: string;
+  passage_audio_url?: string;
+  prompt_audio_url?: string;
+  choices_audio_urls?: string[];
+  hint_audio_url?: string;
 }
 
 interface Standard {
@@ -93,11 +97,11 @@ function getStars(correct: number, total: number): number {
 
 /* ─── Audio Helpers ──────────────────────────────────── */
 
-function SpeakerButton({ text, className = "" }: { text: string; className?: string }) {
-  const { speakManual } = useAudio();
+function SpeakerButton({ text, audioUrl, className = "" }: { text: string; audioUrl?: string; className?: string }) {
+  const { speakManual, playUrl } = useAudio();
   return (
     <button
-      onClick={(e) => { e.stopPropagation(); speakManual(text); }}
+      onClick={(e) => { e.stopPropagation(); audioUrl ? playUrl(audioUrl) : speakManual(text); }}
       className={`inline-flex items-center justify-center w-8 h-8 rounded-full hover:bg-zinc-200 dark:hover:bg-white/10 transition-colors flex-shrink-0 ${className}`}
       aria-label="Listen"
     >
@@ -236,8 +240,10 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
   useEffect(() => {
     if (phase !== "playing") return;
     const nextIdx = currentIdx + 1;
-    if (nextIdx < totalQ && questions[nextIdx]?.audio_url) {
-      preload(questions[nextIdx].audio_url!);
+    if (nextIdx < totalQ) {
+      const nq = questions[nextIdx];
+      if (nq.passage_audio_url) preload(nq.passage_audio_url);
+      if (nq.prompt_audio_url) preload(nq.prompt_audio_url);
     }
   }, [currentIdx, phase, questions, totalQ, preload]);
 
@@ -245,8 +251,13 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
   useEffect(() => {
     if (phase !== "playing") return;
     const { passage, question } = splitPrompt(q.prompt);
-    if (q.audio_url) {
-      playUrl(q.audio_url);
+
+    // Prefer ElevenLabs MP3 files, fall back to browser TTS
+    if (q.passage_audio_url && q.prompt_audio_url) {
+      // Play passage first, then question
+      playUrl(q.passage_audio_url);
+    } else if (q.prompt_audio_url) {
+      playUrl(q.prompt_audio_url);
     } else {
       const textToSpeak = passage ? `${passage}. ${question}` : question;
       speak(textToSpeak);
@@ -260,6 +271,9 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
     if (phase !== "feedback") return;
     if (isCorrect) {
       speak(feedbackMsg);
+    } else if (q.hint_audio_url) {
+      // Play the ElevenLabs hint audio instead of TTS
+      playUrl(q.hint_audio_url);
     } else {
       speak(`${feedbackMsg}. The correct answer is ${q.correct}. ${q.hint}`);
     }
@@ -360,7 +374,7 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
           <motion.div variants={fadeUp} className="mb-5 rounded-2xl bg-white border border-zinc-200 dark:bg-slate-800/80 dark:border-slate-700 p-5">
             <div className="flex items-start gap-2">
               <p className="text-lg leading-relaxed text-zinc-900 dark:text-white/90 whitespace-pre-line flex-1">{passage}</p>
-              <SpeakerButton text={passage} />
+              <SpeakerButton text={passage} audioUrl={q.passage_audio_url} />
             </div>
           </motion.div>
         )}
@@ -371,7 +385,7 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
             <h2 className="text-[22px] font-bold text-zinc-900 dark:text-white leading-snug flex-1">
               {question}
             </h2>
-            <SpeakerButton text={question} />
+            <SpeakerButton text={question} audioUrl={q.prompt_audio_url} />
           </div>
         </motion.div>
 
@@ -452,7 +466,7 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
                   <span className={`text-lg font-medium leading-snug flex-1 ${textColor}`}>
                     {choice}
                   </span>
-                  <SpeakerButton text={choice} />
+                  <SpeakerButton text={choice} audioUrl={q.choices_audio_urls?.[i]} />
                 </div>
               </motion.button>
             );
