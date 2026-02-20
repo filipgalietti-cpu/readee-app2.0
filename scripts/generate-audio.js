@@ -99,13 +99,13 @@ function buildSSML(q) {
   parts.push(`  ${numbersToWords(escapeSSML(question))}`);
   parts.push('  <break time="1s"/>');
 
-  for (let i = 0; i < choices.length; i++) {
-    if (i === choices.length - 1 && choices.length > 1) {
-      parts.push('  <break time="0.3s"/>');
-      parts.push(`  or ${lowercaseFirst(choices[i])}.`);
-    } else {
-      parts.push(`  ${choices[i]},`);
-    }
+  // Wrap choices in "Was it ..." for natural teacher-style reading
+  const choiceList = choices.map((c) => lowercaseFirst(c));
+  if (choiceList.length > 1) {
+    const last = choiceList.pop();
+    parts.push(`  Was it ${choiceList.join(", ")}, or ${last}?`);
+  } else if (choiceList.length === 1) {
+    parts.push(`  Was it ${choiceList[0]}?`);
   }
 
   parts.push("</speak>");
