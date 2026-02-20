@@ -2,246 +2,231 @@
 
 const fs = require("fs");
 const path = require("path");
-const { GoogleAuth } = require("google-auth-library");
+const { execSync } = require("child_process");
+
+// ── Load GEMINI_API_KEY from .env.local ─────────────────
+const ENV_PATH = path.join(__dirname, "..", ".env.local");
+const envFile = fs.readFileSync(ENV_PATH, "utf-8");
+const keyMatch = envFile.match(/^GEMINI_API_KEY=(.+)$/m);
+if (!keyMatch) {
+  console.error("GEMINI_API_KEY not found in .env.local");
+  process.exit(1);
+}
+const GEMINI_API_KEY = keyMatch[1].trim();
 
 // ── Config ──────────────────────────────────────────────
-const TTS_ENDPOINT = "https://texttospeech.googleapis.com/v1/text:synthesize";
-const VOICE = {
-  languageCode: "en-us",
-  name: "Autonoe",
-  model_name: "gemini-2.5-flash-tts",
-};
-const AUDIO_CONFIG = { audioEncoding: "MP3" };
-const PROMPT_STYLE =
-  "Read this like a warm, encouraging kindergarten teacher reading to a small child. Speak slowly and clearly with natural pauses.";
+const TTS_ENDPOINT = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${GEMINI_API_KEY}`;
+const STYLE_PREFIX =
+  "Read this like a warm, encouraging kindergarten teacher reading to a small child. Speak slowly and clearly with gentle pauses:";
 
 const INPUT_PATH = path.join(__dirname, "..", "app", "data", "kindergarten-standards-questions.json");
-const OUTPUT_DIR = path.join(__dirname, "..", "public", "audio", "kindergarten");
-
-// Only generate for these standards (pass --all to generate everything)
-const TEST_STANDARDS = ["RL.K.1"];
-const generateAll = process.argv.includes("--all");
-// Pass --force to regenerate files that already exist
-const forceRegenerate = process.argv.includes("--force");
+const KINDERGARTEN_DIR = path.join(__dirname, "..", "public", "audio", "kindergarten");
+const FEEDBACK_DIR = path.join(__dirname, "..", "public", "audio", "feedback");
 
 const delay = (ms) => new Promise((r) => setTimeout(r, ms));
 
-// ── Auth ────────────────────────────────────────────────
-
-let cachedToken = null;
-
-async function getAccessToken() {
-  if (cachedToken && cachedToken.expiry > Date.now() + 60_000) {
-    return cachedToken.token;
-  }
-  const auth = new GoogleAuth({
-    scopes: ["https://www.googleapis.com/auth/cloud-platform"],
-  });
-  const client = await auth.getClient();
-  const res = await client.getAccessToken();
-  cachedToken = { token: res.token, expiry: Date.now() + 50 * 60_000 };
-  return res.token;
-}
-
-// ── Text helpers ────────────────────────────────────────
-
-/** Strip emoji and "Read:" prefix */
-function cleanText(text) {
-  let cleaned = text.replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{FE00}-\u{FE0F}\u{200D}]/gu, "").trim();
-  cleaned = cleaned.replace(/^Read:\s*/i, "");
-  return cleaned;
-}
-
-/** Split prompt into passage and question */
-function splitPrompt(prompt) {
-  const parts = prompt.split("\n\n");
-  if (parts.length >= 2) {
-    return {
-      passage: cleanText(parts.slice(0, -1).join(" ").trim()),
-      question: cleanText(parts[parts.length - 1].trim()),
-    };
-  }
-  return { passage: "", question: cleanText(prompt.trim()) };
-}
-
-/** Lowercase the first letter unless it's "I" or proper-noun-like */
-function lowercaseFirst(text) {
-  if (!text) return text;
-  if (text === "I" || text.startsWith("I ") || text.startsWith("I'")) return text;
-  return text.charAt(0).toLowerCase() + text.slice(1);
-}
-
-/** Convert numbers 0-20 to written words for natural TTS */
-const NUMBER_WORDS = [
-  "zero", "one", "two", "three", "four", "five", "six", "seven",
-  "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen",
-  "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty",
+// ── Feedback phrases ────────────────────────────────────
+const FEEDBACK_PHRASES = [
+  // Correct
+  { file: "correct-1.mp3", text: "Great job!" },
+  { file: "correct-2.mp3", text: "Brilliant!" },
+  { file: "correct-3.mp3", text: "Super smart!" },
+  { file: "correct-4.mp3", text: "You got it!" },
+  { file: "correct-5.mp3", text: "Amazing!" },
+  // Incorrect
+  { file: "incorrect-1.mp3", text: "Almost! Let's see the answer." },
+  { file: "incorrect-2.mp3", text: "Not quite. Let's learn from this one." },
+  { file: "incorrect-3.mp3", text: "Good try! Here's the answer." },
+  // Completion: perfect (5/5)
+  { file: "complete-perfect-1.mp3", text: "Wow, five out of five! You made that look easy!" },
+  { file: "complete-perfect-2.mp3", text: "Perfect score! You're a reading superstar!" },
+  { file: "complete-perfect-3.mp3", text: "You got every single one right! That was amazing!" },
+  // Completion: great (4/5)
+  { file: "complete-good-1.mp3", text: "Four out of five, so close to perfect! Great work!" },
+  { file: "complete-good-2.mp3", text: "Almost perfect! You're getting really good at this!" },
+  { file: "complete-good-3.mp3", text: "Wow, four out of five! You're on fire!" },
+  // Completion: ok (3/5)
+  { file: "complete-ok-1.mp3", text: "Three out of five, nice job! Let's keep practicing!" },
+  { file: "complete-ok-2.mp3", text: "Good effort! You're learning something new every time!" },
+  { file: "complete-ok-3.mp3", text: "Three right! Practice makes perfect, let's try again!" },
+  // Completion: needs work (0-2/5)
+  { file: "complete-try-1.mp3", text: "Good try! Every reader starts somewhere. Let's practice more!" },
+  { file: "complete-try-2.mp3", text: "Don't give up! You're getting better every time you practice!" },
+  { file: "complete-try-3.mp3", text: "Keep going! The more you practice, the easier it gets!" },
 ];
 
-function numbersToWords(text) {
-  return text.replace(/\b(\d+)\b/g, (match, num) => {
-    const n = parseInt(num, 10);
-    if (n >= 0 && n <= 20) return NUMBER_WORDS[n];
-    return match;
-  });
-}
+const INTRO_PHRASE = {
+  file: "intro.mp3",
+  text: "Ready to practice? Let's answer five questions. Tap the screen to start!",
+};
 
-// ── Build audio_script fallback from prompt + choices ───
+// ── Gemini 2.5 Flash TTS API ────────────────────────────
 
-function buildFallbackScript(q) {
-  const { passage, question } = splitPrompt(q.prompt);
-  const choices = q.choices.map((c) => numbersToWords(cleanText(c)));
-
-  let script = "";
-  if (passage) {
-    script += `"${passage}" ...`;
-  }
-  script += `${question}..? `;
-
-  const choiceList = choices.map((c) => lowercaseFirst(c));
-  if (choiceList.length > 1) {
-    const last = choiceList.pop();
-    script += choiceList.map((c) => `..${ c}`).join(".. ") + `.. or..., ${last}. ..What do you think?`;
-  }
-
-  return script;
-}
-
-// ── Gemini 2.5 Flash TTS API call ──────────────────────
-
-async function synthesize(text, outputFile) {
-  if (!forceRegenerate && fs.existsSync(outputFile)) {
-    return false;
-  }
-
-  const token = await getAccessToken();
+async function synthesizeToMp3(text, outputMp3) {
   const body = {
-    input: {
-      prompt: PROMPT_STYLE,
-      text,
+    contents: [{
+      parts: [{
+        text: `${STYLE_PREFIX} ${text}`,
+      }],
+    }],
+    generationConfig: {
+      responseModalities: ["AUDIO"],
+      speechConfig: {
+        voiceConfig: {
+          prebuiltVoiceConfig: {
+            voiceName: "Autonoe",
+          },
+        },
+      },
     },
-    voice: VOICE,
-    audioConfig: AUDIO_CONFIG,
   };
 
   const res = await fetch(TTS_ENDPOINT, {
     method: "POST",
-    headers: {
-      Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json",
-    },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(body),
   });
 
   if (!res.ok) {
     const errText = await res.text();
-    throw new Error(`TTS API ${res.status}: ${errText}`);
+    throw new Error(`Gemini TTS API ${res.status}: ${errText}`);
   }
 
   const json = await res.json();
-  const audioBuffer = Buffer.from(json.audioContent, "base64");
-  fs.writeFileSync(outputFile, audioBuffer);
-  return true;
+
+  const audioData = json.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data;
+  if (!audioData) {
+    throw new Error(`No audio data in response: ${JSON.stringify(json).slice(0, 500)}`);
+  }
+
+  // Write raw PCM to temp file
+  const tmpPcm = outputMp3.replace(/\.mp3$/, ".tmp.pcm");
+  fs.writeFileSync(tmpPcm, Buffer.from(audioData, "base64"));
+
+  // Convert PCM (signed 16-bit LE, 24kHz, mono) to MP3 via ffmpeg
+  try {
+    execSync(
+      `ffmpeg -y -f s16le -ar 24000 -ac 1 -i "${tmpPcm}" "${outputMp3}"`,
+      { stdio: "pipe" }
+    );
+  } finally {
+    // Clean up temp PCM file
+    if (fs.existsSync(tmpPcm)) fs.unlinkSync(tmpPcm);
+  }
+}
+
+// ── Helpers ─────────────────────────────────────────────
+
+function deleteAllFiles(dir) {
+  if (!fs.existsSync(dir)) return 0;
+  const files = fs.readdirSync(dir).filter((f) => f.endsWith(".mp3"));
+  for (const f of files) {
+    fs.unlinkSync(path.join(dir, f));
+  }
+  return files.length;
 }
 
 // ── Main ────────────────────────────────────────────────
 
 async function main() {
+  // Check ffmpeg
+  try {
+    execSync("which ffmpeg", { stdio: "pipe" });
+  } catch {
+    console.error("ffmpeg is required but not installed. Install with: brew install ffmpeg");
+    process.exit(1);
+  }
+
+  // ── Phase 1: Delete old audio files ───────────────────
+  console.log("=== Deleting old audio files ===\n");
+  const deletedK = deleteAllFiles(KINDERGARTEN_DIR);
+  console.log(`  Deleted ${deletedK} files from kindergarten/`);
+  const deletedF = deleteAllFiles(FEEDBACK_DIR);
+  console.log(`  Deleted ${deletedF} files from feedback/`);
+
+  fs.mkdirSync(KINDERGARTEN_DIR, { recursive: true });
+  fs.mkdirSync(FEEDBACK_DIR, { recursive: true });
+
+  let totalGenerated = 0;
+
+  // ── Phase 2: Generate question audio ──────────────────
+  console.log("\n=== Generating question audio (RL.K.1) ===\n");
+
   const data = JSON.parse(fs.readFileSync(INPUT_PATH, "utf-8"));
-  fs.mkdirSync(OUTPUT_DIR, { recursive: true });
 
-  const standards = generateAll
-    ? data.standards
-    : data.standards.filter((s) => TEST_STANDARDS.includes(s.standard_id));
+  // Only generate for questions that have audio_script
+  for (const std of data.standards) {
+    const questionsWithScript = std.questions.filter((q) => q.audio_script);
+    if (questionsWithScript.length === 0) continue;
 
-  if (!generateAll) {
-    console.log(`Test mode: generating for ${TEST_STANDARDS.join(", ")} only. Use --all for everything.\n`);
-  }
-  if (forceRegenerate) {
-    console.log("Force mode: regenerating all files even if they exist.\n");
-  }
-
-  let totalFiles = 0;
-  for (const std of standards) {
-    totalFiles += std.questions.length;
-  }
-
-  let generated = 0;
-  let skipped = 0;
-  let fileNum = 0;
-
-  for (const std of standards) {
     for (let qIdx = 0; qIdx < std.questions.length; qIdx++) {
       const q = std.questions[qIdx];
+      if (!q.audio_script) continue;
+
       const qNum = qIdx + 1;
-
-      // Use audio_script if present, otherwise build a fallback
-      const script = q.audio_script || buildFallbackScript(q);
-
-      // --- Question audio ---
       const fileName = `${std.standard_id}-q${qNum}.mp3`;
-      const file = path.join(OUTPUT_DIR, fileName);
+      const file = path.join(KINDERGARTEN_DIR, fileName);
 
-      fileNum++;
-      console.log(`[${fileNum}/${totalFiles}] ${std.standard_id} q${qNum}...`);
+      console.log(`  [question] ${fileName}`);
+      console.log(`    Script: "${q.audio_script.slice(0, 80)}..."`);
 
-      const didGenerate = await synthesize(script, file);
+      await synthesizeToMp3(q.audio_script, file);
+      totalGenerated++;
+      console.log(`    ✓ Generated`);
+      await delay(1000);
 
-      if (didGenerate) {
-        console.log(`       GENERATED (${script.length} chars)`);
-        generated++;
-        await delay(200);
-      } else {
-        console.log(`       SKIP (exists)`);
-        skipped++;
-      }
-
-      // --- Hint audio ---
+      // Hint audio
       if (q.hint) {
         const hintFileName = `${std.standard_id}-q${qNum}-hint.mp3`;
-        const hintFile = path.join(OUTPUT_DIR, hintFileName);
+        const hintFile = path.join(KINDERGARTEN_DIR, hintFileName);
 
-        if (!forceRegenerate && fs.existsSync(hintFile)) {
-          console.log(`       hint: SKIP (exists)`);
-        } else {
-          const hintText = cleanText(q.hint);
-          console.log(`       hint: GEN "${hintText}"`);
-          await synthesize(hintText, hintFile);
-          generated++;
-          await delay(200);
-        }
+        console.log(`  [hint]     ${hintFileName}`);
+        await synthesizeToMp3(q.hint, hintFile);
+        totalGenerated++;
+        console.log(`    ✓ Generated`);
+        await delay(1000);
       }
-    }
-  }
 
-  console.log(`\nDone! Generated: ${generated}, Skipped (existing): ${skipped}, Total questions: ${fileNum}`);
-
-  // --- Phase 2: Update JSON with audio_url ---
-  console.log("\nUpdating JSON with audio_url fields...");
-
-  for (const std of standards) {
-    for (let qIdx = 0; qIdx < std.questions.length; qIdx++) {
-      const q = std.questions[qIdx];
-      const qNum = qIdx + 1;
+      // Update JSON audio_url fields
       q.audio_url = `/audio/kindergarten/${std.standard_id}-q${qNum}.mp3`;
-
-      // Set hint audio URL if hint exists
       if (q.hint) {
         q.hint_audio_url = `/audio/kindergarten/${std.standard_id}-q${qNum}-hint.mp3`;
       }
-
-      // Clean up old separate fields if they exist
       delete q.passage_audio_url;
       delete q.prompt_audio_url;
       delete q.choices_audio_urls;
     }
   }
 
+  // Save updated JSON
   fs.writeFileSync(INPUT_PATH, JSON.stringify(data, null, 2) + "\n", "utf-8");
-  console.log("JSON updated successfully.");
+  console.log("\n  JSON updated with audio_url fields.");
+
+  // ── Phase 3: Generate feedback audio ──────────────────
+  console.log("\n=== Generating feedback audio ===\n");
+
+  for (const phrase of FEEDBACK_PHRASES) {
+    const file = path.join(FEEDBACK_DIR, phrase.file);
+    console.log(`  [feedback] ${phrase.file}: "${phrase.text}"`);
+    await synthesizeToMp3(phrase.text, file);
+    totalGenerated++;
+    console.log(`    ✓ Generated`);
+    await delay(1000);
+  }
+
+  // ── Phase 4: Generate intro audio ─────────────────────
+  console.log("\n=== Generating intro audio ===\n");
+
+  const introFile = path.join(KINDERGARTEN_DIR, INTRO_PHRASE.file);
+  console.log(`  [intro] ${INTRO_PHRASE.file}: "${INTRO_PHRASE.text}"`);
+  await synthesizeToMp3(INTRO_PHRASE.text, introFile);
+  totalGenerated++;
+  console.log(`    ✓ Generated`);
+
+  console.log(`\n=== Done! Total files generated: ${totalGenerated} ===`);
 }
 
 main().catch((err) => {
-  console.error("Fatal error:", err);
+  console.error("\nFatal error:", err);
   process.exit(1);
 });
