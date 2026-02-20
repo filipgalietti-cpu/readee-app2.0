@@ -31,31 +31,31 @@ export default function RootLayout({
           <div className="mx-auto max-w-6xl px-6 py-10">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
               <div className="flex items-center gap-6">
-                <span className="font-extrabold tracking-tight text-lg">
-                  <span className="text-white">READ</span><span className="text-indigo-300">EE</span>
+                <span className="font-extrabold tracking-tight text-lg text-white">
+                  READ<span className="text-indigo-300">EE</span>
                 </span>
-                <span className="hidden sm:block w-px h-5 bg-indigo-700" />
-                <p className="text-sm text-white">
+                <span className="hidden sm:block w-px h-5 bg-gray-500" />
+                <span className="text-sm text-gray-300">
                   Helping every child become a confident reader.
-                </p>
+                </span>
               </div>
               <div className="flex flex-wrap items-center justify-center gap-5 text-sm">
-                <Link href="/about" className="text-indigo-300 hover:text-white transition-colors">
+                <Link href="/about" className="text-gray-300 hover:text-white transition-colors">
                   About
                 </Link>
-                <Link href="/contact-us" className="text-indigo-300 hover:text-white transition-colors">
+                <Link href="/contact-us" className="text-gray-300 hover:text-white transition-colors">
                   Contact
                 </Link>
-                <Link href="/privacy-policy" className="text-indigo-300 hover:text-white transition-colors">
+                <Link href="/privacy-policy" className="text-gray-300 hover:text-white transition-colors">
                   Privacy
                 </Link>
-                <Link href="/terms-of-service" className="text-indigo-300 hover:text-white transition-colors">
+                <Link href="/terms-of-service" className="text-gray-300 hover:text-white transition-colors">
                   Terms
                 </Link>
               </div>
             </div>
-            <div className="mt-8 pt-6 border-t border-indigo-800 text-center text-sm text-white">
-              <p>&copy; {new Date().getFullYear()} Readee. All rights reserved.</p>
+            <div className="mt-8 pt-6 border-t border-gray-500 text-center">
+              <span className="text-sm text-gray-400">&copy; {new Date().getFullYear()} Readee. All rights reserved.</span>
             </div>
           </div>
         </footer>
