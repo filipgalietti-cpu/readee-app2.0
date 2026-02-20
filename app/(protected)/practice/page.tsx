@@ -25,6 +25,7 @@ interface Question {
   hint: string;
   difficulty: number;
   audio_url?: string;
+  hint_audio_url?: string;
 }
 
 interface Standard {
@@ -243,7 +244,7 @@ function PracticeLoader() {
 
 function PracticeSession({ child, standard }: { child: Child; standard: Standard }) {
   const router = useRouter();
-  const { playUrl, unlockAudio, stop, preload, playCorrectChime, playIncorrectBuzz } = useAudio();
+  const { playUrl, playSequence, unlockAudio, stop, preload, playCorrectChime, playIncorrectBuzz } = useAudio();
 
   // Zustand store
   const phase = usePracticeStore((s) => s.phase);
@@ -354,9 +355,17 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
   /* ── Play feedback audio ── */
   useEffect(() => {
     if (phase !== "feedback") return;
-    const pool = isCorrect ? CORRECT_AUDIO : INCORRECT_AUDIO;
-    const url = pool[Math.floor(Math.random() * pool.length)];
-    playUrl(url);
+    if (isCorrect) {
+      const url = CORRECT_AUDIO[Math.floor(Math.random() * CORRECT_AUDIO.length)];
+      playUrl(url);
+    } else {
+      const url = INCORRECT_AUDIO[Math.floor(Math.random() * INCORRECT_AUDIO.length)];
+      const items: Array<{ url?: string; delayMs?: number }> = [{ url }];
+      if (q.hint_audio_url) {
+        items.push({ delayMs: 500 }, { url: q.hint_audio_url });
+      }
+      playSequence(items);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase]);
 

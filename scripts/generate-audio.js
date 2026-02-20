@@ -19,6 +19,12 @@ const AUDIO_CONFIG = {
   pitch: 0.0,
   volumeGainDb: 0.0,
 };
+const HINT_AUDIO_CONFIG = {
+  audioEncoding: "MP3",
+  speakingRate: 0.82,
+  pitch: 0.0,
+  volumeGainDb: 0.0,
+};
 
 const INPUT_PATH = path.join(__dirname, "..", "app", "data", "kindergarten-standards-questions.json");
 const OUTPUT_DIR = path.join(__dirname, "..", "public", "audio", "kindergarten");
@@ -136,6 +142,8 @@ async function main() {
     for (let qIdx = 0; qIdx < std.questions.length; qIdx++) {
       const q = std.questions[qIdx];
       const qNum = qIdx + 1;
+
+      // --- Question audio ---
       const fileName = `${std.standard_id}-q${qNum}.mp3`;
       const file = path.join(OUTPUT_DIR, fileName);
 
@@ -151,10 +159,31 @@ async function main() {
       } else {
         skipped++;
       }
+
+      // --- Hint audio ---
+      if (q.hint) {
+        const hintFileName = `${std.standard_id}-q${qNum}-hint.mp3`;
+        const hintFile = path.join(OUTPUT_DIR, hintFileName);
+
+        if (fs.existsSync(hintFile)) {
+          console.log(`       hint: SKIP (exists)`);
+        } else {
+          const hintSSML = `<speak>${escapeSSML(cleanText(q.hint))}</speak>`;
+          console.log(`       hint: GEN "${q.hint}"`);
+          const [hintResp] = await client.synthesizeSpeech({
+            input: { ssml: hintSSML },
+            voice: VOICE,
+            audioConfig: HINT_AUDIO_CONFIG,
+          });
+          fs.writeFileSync(hintFile, hintResp.audioContent, "binary");
+          generated++;
+          await delay(100);
+        }
+      }
     }
   }
 
-  console.log(`\nDone! Generated: ${generated}, Skipped (existing): ${skipped}, Total: ${fileNum}`);
+  console.log(`\nDone! Generated: ${generated}, Skipped (existing): ${skipped}, Total questions: ${fileNum}`);
 
   // --- Phase 2: Update JSON with audio_url ---
   console.log("\nUpdating JSON with audio_url fields...");
@@ -165,11 +194,15 @@ async function main() {
       const qNum = qIdx + 1;
       q.audio_url = `/audio/kindergarten/${std.standard_id}-q${qNum}.mp3`;
 
+      // Set hint audio URL if hint exists
+      if (q.hint) {
+        q.hint_audio_url = `/audio/kindergarten/${std.standard_id}-q${qNum}-hint.mp3`;
+      }
+
       // Clean up old separate fields if they exist
       delete q.passage_audio_url;
       delete q.prompt_audio_url;
       delete q.choices_audio_urls;
-      delete q.hint_audio_url;
     }
   }
 
