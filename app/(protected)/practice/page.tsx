@@ -57,6 +57,20 @@ const INCORRECT_MESSAGES = [
   "Not quite!", "Almost!", "Good try!", "Keep learning!",
 ];
 
+// Pre-recorded feedback audio (Google Cloud TTS)
+const CORRECT_AUDIO = [
+  "/audio/feedback/correct-1.mp3",
+  "/audio/feedback/correct-2.mp3",
+  "/audio/feedback/correct-3.mp3",
+  "/audio/feedback/correct-4.mp3",
+  "/audio/feedback/correct-5.mp3",
+];
+const INCORRECT_AUDIO = [
+  "/audio/feedback/incorrect-1.mp3",
+  "/audio/feedback/incorrect-2.mp3",
+  "/audio/feedback/incorrect-3.mp3",
+];
+
 const ACCENT_COLORS = ["#60a5fa", "#4ade80", "#fb923c", "#a78bfa"]; // blue, green, orange, purple
 
 // Per-choice highlight styles when TTS reads each card
@@ -136,21 +150,6 @@ function getStars(correct: number, total: number): number {
 }
 
 /* ─── Audio Helpers ──────────────────────────────────── */
-
-function SpeakerButton({ text, audioUrl, className = "" }: { text: string; audioUrl?: string; className?: string }) {
-  const { speakManual, playUrl } = useAudio();
-  return (
-    <button
-      onClick={(e) => { e.stopPropagation(); audioUrl ? playUrl(audioUrl) : speakManual(text); }}
-      className={`inline-flex items-center justify-center w-8 h-8 rounded-full hover:bg-zinc-200 dark:hover:bg-white/10 transition-colors flex-shrink-0 ${className}`}
-      aria-label="Listen"
-    >
-      <svg className="w-4 h-4 text-indigo-600 dark:text-indigo-300" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M15.536 8.464a5 5 0 010 7.072M17.95 6.05a8 8 0 010 11.9M11 5L6 9H2v6h4l5 4V5z" />
-      </svg>
-    </button>
-  );
-}
 
 function MuteToggle() {
   const { muted, toggleMute } = useAudio();
@@ -244,7 +243,7 @@ function PracticeLoader() {
 
 function PracticeSession({ child, standard }: { child: Child; standard: Standard }) {
   const router = useRouter();
-  const { speak, playUrl, unlockAudio, stop, preload, playCorrectChime, playIncorrectBuzz } = useAudio();
+  const { playUrl, unlockAudio, stop, preload, playCorrectChime, playIncorrectBuzz } = useAudio();
 
   // Zustand store
   const phase = usePracticeStore((s) => s.phase);
@@ -347,24 +346,17 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
     if (q.audio_url) {
       playUrl(q.audio_url);
       startHighlightSequence(q);
-    } else {
-      // Fallback to TTS if no audio file
-      const { passage, question } = splitPrompt(q.prompt);
-      const textToSpeak = passage ? `${passage}. ${question}` : question;
-      speak(textToSpeak);
     }
     return () => { stop(); clearHighlights(); };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentIdx, phase, audioReady]);
 
-  /* ── Auto-speak feedback ── */
+  /* ── Play feedback audio ── */
   useEffect(() => {
     if (phase !== "feedback") return;
-    if (isCorrect) {
-      speak(feedbackMsg);
-    } else {
-      speak(`${feedbackMsg}. The correct answer is ${q.correct}. ${q.hint}`);
-    }
+    const pool = isCorrect ? CORRECT_AUDIO : INCORRECT_AUDIO;
+    const url = pool[Math.floor(Math.random() * pool.length)];
+    playUrl(url);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase]);
 
@@ -377,12 +369,8 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
       if (selected === null) {
         startHighlightSequence(q);
       }
-    } else {
-      const { passage: p, question: qText } = splitPrompt(q.prompt);
-      const textToSpeak = p ? `${p}. ${qText}` : qText;
-      speak(textToSpeak);
     }
-  }, [q, stop, clearHighlights, playUrl, startHighlightSequence, speak, selected]);
+  }, [q, stop, clearHighlights, playUrl, startHighlightSequence, selected]);
 
   /* ── Handle answer selection ── */
   const handleAnswer = useCallback((choice: string) => {
@@ -746,7 +734,7 @@ function CompletionScreen({
   onRestart: () => void;
 }) {
   const [saved, setSaved] = useState(false);
-  const { playCompleteChime } = useAudio();
+  const { playUrl } = useAudio();
   const darkMode = useThemeStore((s) => s.darkMode);
   const totalQ = questions.length;
   const stars = getStars(correctCount, totalQ);
@@ -783,9 +771,14 @@ function CompletionScreen({
     subtitle = "Let's give it another go!";
   }
 
-  /* ── Play completion chime ── */
+  /* ── Play completion audio ── */
   useEffect(() => {
-    playCompleteChime();
+    const url = correctCount === totalQ
+      ? "/audio/feedback/complete-perfect.mp3"
+      : correctCount >= totalQ - 1
+      ? "/audio/feedback/complete-good.mp3"
+      : "/audio/feedback/complete-ok.mp3";
+    playUrl(url);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
