@@ -786,11 +786,17 @@ function CompletionScreen({
 
   /* ── Play completion audio ── */
   useEffect(() => {
-    const url = correctCount === totalQ
-      ? "/audio/feedback/complete-perfect.mp3"
-      : correctCount >= totalQ - 1
-      ? "/audio/feedback/complete-good.mp3"
-      : "/audio/feedback/complete-ok.mp3";
+    const pick = (arr: string[]) => arr[Math.floor(Math.random() * arr.length)];
+    let url: string;
+    if (correctCount === totalQ) {
+      url = pick(["/audio/feedback/complete-perfect-1.mp3", "/audio/feedback/complete-perfect-2.mp3", "/audio/feedback/complete-perfect-3.mp3"]);
+    } else if (correctCount === totalQ - 1) {
+      url = pick(["/audio/feedback/complete-good-1.mp3", "/audio/feedback/complete-good-2.mp3", "/audio/feedback/complete-good-3.mp3"]);
+    } else if (correctCount === totalQ - 2) {
+      url = pick(["/audio/feedback/complete-ok-1.mp3", "/audio/feedback/complete-ok-2.mp3", "/audio/feedback/complete-ok-3.mp3"]);
+    } else {
+      url = pick(["/audio/feedback/complete-try-1.mp3", "/audio/feedback/complete-try-2.mp3", "/audio/feedback/complete-try-3.mp3"]);
+    }
     playUrl(url);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
