@@ -331,9 +331,9 @@ function UpgradeContent() {
         <h2 className="text-xl font-bold text-zinc-900 dark:text-slate-100 text-center">
           Choose your plan
         </h2>
-        <p className="text-sm text-zinc-500 dark:text-slate-400 text-center">
-          Both plans include a 7-day free trial. Cancel anytime.
-        </p>
+        <span className="block text-sm text-zinc-500 dark:text-slate-400 text-center">
+          7 days free, then just $8.25/month with the annual plan. Cancel anytime — no risk, no commitment.
+        </span>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-end pt-2">
           {/* Monthly */}
