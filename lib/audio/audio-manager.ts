@@ -31,7 +31,6 @@ class AudioManager {
   private currentHowl: Howl | null = null;
   private audioCtx: AudioContext | null = null;
   private sequenceAbort: AbortController | null = null;
-  private stopTimer: ReturnType<typeof setTimeout> | null = null;
 
   constructor() {
     if (typeof window !== "undefined") {
@@ -60,13 +59,7 @@ class AudioManager {
     const { isMuted } = useAudioStore.getState();
     if (isMuted) return Promise.resolve();
 
-    // Cancel any pending delayed stop from stopCurrent — prevents it from killing the replayed cached howl
-    if (this.stopTimer) {
-      clearTimeout(this.stopTimer);
-      this.stopTimer = null;
-    }
-
-    // Stop immediately (no fade delay) since new audio starts right away
+    // Stop current audio immediately
     if (this.currentHowl) {
       try { this.currentHowl.stop(); } catch {}
       this.currentHowl = null;
@@ -75,23 +68,26 @@ class AudioManager {
     return new Promise((resolve) => {
       let howl = this.cache.get(url);
       if (!howl) {
-        howl = new Howl({ src: [url], html5: true, preload: true });
+        howl = new Howl({ src: [url], preload: true });
         this.cache.set(url, howl);
       }
+
+      // Clear any orphaned listeners from previous plays that were stopped early
+      howl.off("end").off("loaderror").off("playerror");
 
       this.currentHowl = howl;
       howl.volume(0);
 
       howl.once("end", () => {
-        this.currentHowl = null;
+        if (this.currentHowl === howl) this.currentHowl = null;
         resolve();
       });
       howl.once("loaderror", () => {
-        this.currentHowl = null;
+        if (this.currentHowl === howl) this.currentHowl = null;
         resolve();
       });
       howl.once("playerror", () => {
-        this.currentHowl = null;
+        if (this.currentHowl === howl) this.currentHowl = null;
         resolve();
       });
 
@@ -135,16 +131,8 @@ class AudioManager {
 
   /** Stop current Howl only (no sequence abort) */
   private stopCurrent(): void {
-    if (this.stopTimer) {
-      clearTimeout(this.stopTimer);
-      this.stopTimer = null;
-    }
     if (this.currentHowl) {
-      try {
-        this.currentHowl.fade(this.currentHowl.volume() as number, 0, 200);
-        const h = this.currentHowl;
-        this.stopTimer = setTimeout(() => { h.stop(); this.stopTimer = null; }, 200);
-      } catch {}
+      try { this.currentHowl.stop(); } catch {}
       this.currentHowl = null;
     }
   }
@@ -160,7 +148,7 @@ class AudioManager {
   /** Preload audio from URL */
   preload(url: string): void {
     if (this.cache.has(url)) return;
-    const howl = new Howl({ src: [url], html5: true, preload: true });
+    const howl = new Howl({ src: [url], preload: true });
     this.cache.set(url, howl);
   }
 
