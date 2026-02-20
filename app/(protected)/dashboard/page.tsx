@@ -668,27 +668,26 @@ function ChildDashboard({
       )}
 
       {/* ── Stats Cards ── */}
-      <motion.div variants={slideUp} className="grid grid-cols-3 gap-3">
+      <motion.div variants={slideUp} className="grid grid-cols-3 gap-4">
         {/* XP Card */}
         <Link href={`/xp-rewards?child=${child.id}`} className="block">
-          <div className="rounded-2xl border border-gray-200 dark:border-slate-700 bg-gradient-to-b from-amber-50 to-white dark:from-amber-950/30 dark:to-slate-800 p-4 text-center hover:shadow-md hover:scale-[1.02] transition-all duration-200 group cursor-pointer">
+          <div className="rounded-2xl border border-gray-200 dark:border-slate-700 bg-gradient-to-b from-amber-50 to-white dark:from-amber-950/30 dark:to-slate-800 p-6 min-h-[160px] flex flex-col items-center justify-center text-center hover:shadow-md hover:scale-[1.02] transition-all duration-200 group cursor-pointer">
             <div className="text-xl mb-1 group-hover:animate-subtleBounce">⭐</div>
             <CountUpStat target={child.xp} />
             <div className="text-[10px] text-zinc-500 dark:text-slate-400 mt-0.5 font-medium">XP</div>
-            <div className="mt-2 h-1.5 bg-amber-100 rounded-full overflow-hidden">
+            <div className="mt-2 w-full h-1.5 bg-amber-100 rounded-full overflow-hidden">
               <div
                 className="h-full bg-gradient-to-r from-amber-400 to-amber-500 rounded-full transition-all duration-700"
                 style={{ width: `${Math.min(xpProgress, 100)}%` }}
               />
             </div>
             <div className="text-[9px] text-amber-600 mt-1 font-medium">{child.xp}/{nextMilestone} XP</div>
-            <div className="text-[9px] text-amber-500 mt-1 opacity-0 group-hover:opacity-100 transition-opacity">View rewards →</div>
           </div>
         </Link>
 
         {/* Stories Card */}
         <Link href={`/stories?child=${child.id}`} className="block">
-          <div className="rounded-2xl border border-gray-200 dark:border-slate-700 bg-gradient-to-b from-indigo-50 to-white dark:from-indigo-950/30 dark:to-slate-800 p-4 text-center hover:shadow-md hover:scale-[1.02] transition-all duration-200 group cursor-pointer">
+          <div className="rounded-2xl border border-gray-200 dark:border-slate-700 bg-gradient-to-b from-indigo-50 to-white dark:from-indigo-950/30 dark:to-slate-800 p-6 min-h-[160px] flex flex-col items-center justify-center text-center hover:shadow-md hover:scale-[1.02] transition-all duration-200 group cursor-pointer">
             <div className="text-xl mb-1 group-hover:animate-subtleBounce">
               {child.stories_read > 0 ? "📚" : "📖"}
             </div>
@@ -706,26 +705,22 @@ function ChildDashboard({
                 />
               ))}
             </div>
-            <div className="text-[9px] text-indigo-500 mt-1 opacity-0 group-hover:opacity-100 transition-opacity">View library →</div>
           </div>
         </Link>
 
         {/* Streak Card */}
         <Link href={`/leaderboard?child=${child.id}`} className="block">
-          <div className="rounded-2xl border border-gray-200 dark:border-slate-700 bg-gradient-to-b from-orange-50 to-white dark:from-orange-950/30 dark:to-slate-800 p-4 text-center hover:shadow-md hover:scale-[1.02] transition-all duration-200 group cursor-pointer">
+          <div className="rounded-2xl border border-gray-200 dark:border-slate-700 bg-gradient-to-b from-orange-50 to-white dark:from-orange-950/30 dark:to-slate-800 p-6 min-h-[160px] flex flex-col items-center justify-center text-center hover:shadow-md hover:scale-[1.02] transition-all duration-200 group cursor-pointer">
             <div className={`text-xl mb-1 ${child.streak_days > 0 ? "animate-fireGlow" : ""}`}>
               🔥
             </div>
             <CountUpStat target={child.streak_days} />
-            <div className="text-[10px] text-zinc-500 dark:text-slate-400 mt-0.5 font-medium">
-              {child.streak_days === 1 ? "Day Streak" : "Day Streak"}
-            </div>
+            <div className="text-[10px] text-zinc-500 dark:text-slate-400 mt-0.5 font-medium">Day Streak</div>
             {child.streak_days > 0 && (
               <div className="text-[10px] text-orange-600 font-bold mt-1.5">
                 🔥 {child.streak_days} day{child.streak_days !== 1 ? "s" : ""}!
               </div>
             )}
-            <div className="text-[9px] text-orange-500 mt-1 opacity-0 group-hover:opacity-100 transition-opacity">Leaderboard →</div>
           </div>
         </Link>
       </motion.div>
