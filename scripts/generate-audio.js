@@ -2,29 +2,18 @@
 
 const fs = require("fs");
 const path = require("path");
-const textToSpeech = require("@google-cloud/text-to-speech");
+const { GoogleAuth } = require("google-auth-library");
 
-// Google Cloud TTS client — uses GOOGLE_APPLICATION_CREDENTIALS env var
-const client = new textToSpeech.TextToSpeechClient();
-
-// Calm, warm female voice — like a kindergarten teacher
+// ── Config ──────────────────────────────────────────────
+const TTS_ENDPOINT = "https://texttospeech.googleapis.com/v1/text:synthesize";
 const VOICE = {
-  languageCode: "en-US",
-  name: "en-US-Studio-O",
-  ssmlGender: "FEMALE",
+  languageCode: "en-us",
+  name: "Autonoe",
+  model_name: "gemini-2.5-flash-tts",
 };
-const AUDIO_CONFIG = {
-  audioEncoding: "MP3",
-  speakingRate: 0.75,
-  pitch: 0.0,
-  volumeGainDb: 0.0,
-};
-const HINT_AUDIO_CONFIG = {
-  audioEncoding: "MP3",
-  speakingRate: 0.82,
-  pitch: 0.0,
-  volumeGainDb: 0.0,
-};
+const AUDIO_CONFIG = { audioEncoding: "MP3" };
+const PROMPT_STYLE =
+  "Read this like a warm, encouraging kindergarten teacher reading to a small child. Speak slowly and clearly with natural pauses.";
 
 const INPUT_PATH = path.join(__dirname, "..", "app", "data", "kindergarten-standards-questions.json");
 const OUTPUT_DIR = path.join(__dirname, "..", "public", "audio", "kindergarten");
@@ -32,8 +21,29 @@ const OUTPUT_DIR = path.join(__dirname, "..", "public", "audio", "kindergarten")
 // Only generate for these standards (pass --all to generate everything)
 const TEST_STANDARDS = ["RL.K.1"];
 const generateAll = process.argv.includes("--all");
+// Pass --force to regenerate files that already exist
+const forceRegenerate = process.argv.includes("--force");
 
 const delay = (ms) => new Promise((r) => setTimeout(r, ms));
+
+// ── Auth ────────────────────────────────────────────────
+
+let cachedToken = null;
+
+async function getAccessToken() {
+  if (cachedToken && cachedToken.expiry > Date.now() + 60_000) {
+    return cachedToken.token;
+  }
+  const auth = new GoogleAuth({
+    scopes: ["https://www.googleapis.com/auth/cloud-platform"],
+  });
+  const client = await auth.getClient();
+  const res = await client.getAccessToken();
+  cachedToken = { token: res.token, expiry: Date.now() + 50 * 60_000 };
+  return res.token;
+}
+
+// ── Text helpers ────────────────────────────────────────
 
 /** Strip emoji and "Read:" prefix */
 function cleanText(text) {
@@ -54,20 +64,11 @@ function splitPrompt(prompt) {
   return { passage: "", question: cleanText(prompt.trim()) };
 }
 
-/** Lowercase the first letter unless it's "I" (pronoun) or starts with a proper noun pattern */
+/** Lowercase the first letter unless it's "I" or proper-noun-like */
 function lowercaseFirst(text) {
   if (!text) return text;
   if (text === "I" || text.startsWith("I ") || text.startsWith("I'")) return text;
   return text.charAt(0).toLowerCase() + text.slice(1);
-}
-
-/** Escape text for SSML (ampersands, angle brackets, quotes) */
-function escapeSSML(text) {
-  return text
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
 }
 
 /** Convert numbers 0-20 to written words for natural TTS */
@@ -85,49 +86,65 @@ function numbersToWords(text) {
   });
 }
 
-/** Build SSML with natural teacher-style pauses */
-function buildSSML(q) {
+// ── Build audio_script fallback from prompt + choices ───
+
+function buildFallbackScript(q) {
   const { passage, question } = splitPrompt(q.prompt);
-  const choices = q.choices.map((c) => numbersToWords(escapeSSML(cleanText(c))));
-  const parts = [];
+  const choices = q.choices.map((c) => numbersToWords(cleanText(c)));
 
-  parts.push("<speak>");
+  let script = "";
   if (passage) {
-    parts.push(`  ${numbersToWords(escapeSSML(passage))}`);
-    parts.push('  <break time="1.5s"/>');
+    script += `"${passage}" ...`;
   }
-  parts.push(`  ${numbersToWords(escapeSSML(question))}`);
-  parts.push('  <break time="1s"/>');
+  script += `${question}..? `;
 
-  // Wrap choices in "Was it ..." with pauses between each choice
   const choiceList = choices.map((c) => lowercaseFirst(c));
   if (choiceList.length > 1) {
     const last = choiceList.pop();
-    const mid = choiceList.map((c) => `<break time="0.4s"/> ${c},`).join("");
-    parts.push(`  Was it${mid} <break time="0.5s"/> or <break time="0.3s"/> ${last}?`);
-  } else if (choiceList.length === 1) {
-    parts.push(`  Was it ${choiceList[0]}?`);
+    script += choiceList.map((c) => `..${ c}`).join(".. ") + `.. or..., ${last}. ..What do you think?`;
   }
 
-  parts.push("</speak>");
-  return parts.join("\n");
+  return script;
 }
 
-/** Generate audio via Google Cloud TTS using SSML */
-async function generateAudio(ssml, outputFile) {
-  if (fs.existsSync(outputFile)) {
+// ── Gemini 2.5 Flash TTS API call ──────────────────────
+
+async function synthesize(text, outputFile) {
+  if (!forceRegenerate && fs.existsSync(outputFile)) {
     return false;
   }
 
-  const [response] = await client.synthesizeSpeech({
-    input: { ssml },
+  const token = await getAccessToken();
+  const body = {
+    input: {
+      prompt: PROMPT_STYLE,
+      text,
+    },
     voice: VOICE,
     audioConfig: AUDIO_CONFIG,
+  };
+
+  const res = await fetch(TTS_ENDPOINT, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(body),
   });
 
-  fs.writeFileSync(outputFile, response.audioContent, "binary");
+  if (!res.ok) {
+    const errText = await res.text();
+    throw new Error(`TTS API ${res.status}: ${errText}`);
+  }
+
+  const json = await res.json();
+  const audioBuffer = Buffer.from(json.audioContent, "base64");
+  fs.writeFileSync(outputFile, audioBuffer);
   return true;
 }
+
+// ── Main ────────────────────────────────────────────────
 
 async function main() {
   const data = JSON.parse(fs.readFileSync(INPUT_PATH, "utf-8"));
@@ -139,6 +156,9 @@ async function main() {
 
   if (!generateAll) {
     console.log(`Test mode: generating for ${TEST_STANDARDS.join(", ")} only. Use --all for everything.\n`);
+  }
+  if (forceRegenerate) {
+    console.log("Force mode: regenerating all files even if they exist.\n");
   }
 
   let totalFiles = 0;
@@ -155,6 +175,9 @@ async function main() {
       const q = std.questions[qIdx];
       const qNum = qIdx + 1;
 
+      // Use audio_script if present, otherwise build a fallback
+      const script = q.audio_script || buildFallbackScript(q);
+
       // --- Question audio ---
       const fileName = `${std.standard_id}-q${qNum}.mp3`;
       const file = path.join(OUTPUT_DIR, fileName);
@@ -162,13 +185,14 @@ async function main() {
       fileNum++;
       console.log(`[${fileNum}/${totalFiles}] ${std.standard_id} q${qNum}...`);
 
-      const ssml = buildSSML(q);
-      const didGenerate = await generateAudio(ssml, file);
+      const didGenerate = await synthesize(script, file);
 
       if (didGenerate) {
+        console.log(`       GENERATED (${script.length} chars)`);
         generated++;
-        await delay(100);
+        await delay(200);
       } else {
+        console.log(`       SKIP (exists)`);
         skipped++;
       }
 
@@ -177,19 +201,14 @@ async function main() {
         const hintFileName = `${std.standard_id}-q${qNum}-hint.mp3`;
         const hintFile = path.join(OUTPUT_DIR, hintFileName);
 
-        if (fs.existsSync(hintFile)) {
+        if (!forceRegenerate && fs.existsSync(hintFile)) {
           console.log(`       hint: SKIP (exists)`);
         } else {
-          const hintSSML = `<speak>${escapeSSML(cleanText(q.hint))}</speak>`;
-          console.log(`       hint: GEN "${q.hint}"`);
-          const [hintResp] = await client.synthesizeSpeech({
-            input: { ssml: hintSSML },
-            voice: VOICE,
-            audioConfig: HINT_AUDIO_CONFIG,
-          });
-          fs.writeFileSync(hintFile, hintResp.audioContent, "binary");
+          const hintText = cleanText(q.hint);
+          console.log(`       hint: GEN "${hintText}"`);
+          await synthesize(hintText, hintFile);
           generated++;
-          await delay(100);
+          await delay(200);
         }
       }
     }
