@@ -15,7 +15,7 @@ const VOICE = {
 };
 const AUDIO_CONFIG = {
   audioEncoding: "MP3",
-  speakingRate: 0.9,
+  speakingRate: 0.82,
   pitch: 0.0,
   volumeGainDb: 0.0,
 };
