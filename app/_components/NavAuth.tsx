@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState, useRef } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
+import { useChildStore } from "@/lib/stores/child-store";
 
 export default function NavAuth() {
   const pathname = usePathname();
@@ -84,6 +85,11 @@ export default function NavAuth() {
     router.push("/");
   };
 
+  const childData = useChildStore((s) => s.childData);
+  const storeChildren = useChildStore((s) => s.children);
+  const activeChild = childData || storeChildren[0] || null;
+  const analyticsHref = activeChild ? `/analytics?child=${activeChild.id}` : "/analytics";
+
   const isActive = (href: string) => pathname === href;
 
   const linkClass = (href: string) =>
@@ -126,7 +132,7 @@ export default function NavAuth() {
               <Link href="/dashboard" className={linkClass("/dashboard")}>
                 Dashboard
               </Link>
-              <Link href="/analytics" className={linkClass("/analytics")}>
+              <Link href={analyticsHref} className={linkClass("/analytics")}>
                 Analytics
               </Link>
               <Link href="/feedback" className={linkClass("/feedback")}>
@@ -238,7 +244,7 @@ export default function NavAuth() {
               <Link href="/dashboard" className={`block py-2.5 px-3 rounded-lg text-sm font-medium transition-all duration-200 ${isActive("/dashboard") ? "text-indigo-700 bg-indigo-50 dark:text-indigo-300 dark:bg-indigo-950" : "text-zinc-700 dark:text-slate-300 hover:text-indigo-700 dark:hover:text-indigo-300 hover:bg-indigo-50/60 dark:hover:bg-slate-800"}`}>
                 Dashboard
               </Link>
-              <Link href="/analytics" className={`block py-2.5 px-3 rounded-lg text-sm font-medium transition-all duration-200 ${isActive("/analytics") ? "text-indigo-700 bg-indigo-50 dark:text-indigo-300 dark:bg-indigo-950" : "text-zinc-700 dark:text-slate-300 hover:text-indigo-700 dark:hover:text-indigo-300 hover:bg-indigo-50/60 dark:hover:bg-slate-800"}`}>
+              <Link href={analyticsHref} className={`block py-2.5 px-3 rounded-lg text-sm font-medium transition-all duration-200 ${isActive("/analytics") ? "text-indigo-700 bg-indigo-50 dark:text-indigo-300 dark:bg-indigo-950" : "text-zinc-700 dark:text-slate-300 hover:text-indigo-700 dark:hover:text-indigo-300 hover:bg-indigo-50/60 dark:hover:bg-slate-800"}`}>
                 Analytics
               </Link>
               <Link href="/feedback" className={`block py-2.5 px-3 rounded-lg text-sm font-medium transition-all duration-200 ${isActive("/feedback") ? "text-indigo-700 bg-indigo-50 dark:text-indigo-300 dark:bg-indigo-950" : "text-zinc-700 dark:text-slate-300 hover:text-indigo-700 dark:hover:text-indigo-300 hover:bg-indigo-50/60 dark:hover:bg-slate-800"}`}>

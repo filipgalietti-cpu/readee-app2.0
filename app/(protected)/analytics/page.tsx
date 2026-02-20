@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useEffect, useState, useMemo } from "react";
+import { Suspense, useEffect, useState, useMemo, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -10,6 +10,7 @@ import kStandards from "@/app/data/kindergarten-standards-questions.json";
 import { staggerContainer, slideUp, fadeUp } from "@/lib/motion/variants";
 import { safeValidate } from "@/lib/validate";
 import { ChildSchema, StandardsFileSchema } from "@/lib/schemas";
+import { useChildStore } from "@/lib/stores/child-store";
 
 /* ─── Types ──────────────────────────────────────────── */
 
@@ -21,114 +22,28 @@ interface Standard {
   questions: { id: string }[];
 }
 
-interface StandardStat {
+interface PracticeResult {
+  id: string;
+  child_id: string;
   standard_id: string;
-  name: string;
-  domain: string;
-  parent_tip?: string;
-  attempted: number;
-  correct: number;
-  incorrect: number;
-  accuracy: number;
-  mastery: MasteryLevel;
+  questions_attempted: number;
+  questions_correct: number;
+  xp_earned: number;
+  completed_at: string;
 }
 
-type MasteryLevel = "Proficient" | "Developing" | "Needs Support" | "Not Started";
-type SortField = "standard_id" | "accuracy" | "attempted";
-type SortDir = "asc" | "desc";
-
-interface WeeklyPoint {
-  label: string;
-  accuracy: number;
-  attempted: number;
-}
+type DateRange = "week" | "month" | "all";
 
 /* ─── Constants ──────────────────────────────────────── */
 
-function displayGrade(grade: string | null | undefined): string {
-  if (!grade) return "Kindergarten";
-  if (grade.toLowerCase() === "pre-k") return "Foundational";
-  return grade;
-}
+const AVATARS = ["😊", "🦊", "🐱", "🦋", "🐻"];
 
-const DOMAINS = ["All", "Reading Literature", "Reading Informational Text", "Foundational Skills", "Language"] as const;
-
-const DOMAIN_META: Record<string, { emoji: string; color: string; bg: string; border: string; barColor: string }> = {
-  "Reading Literature":         { emoji: "📖", color: "text-violet-700",  bg: "bg-violet-50",  border: "border-violet-200",  barColor: "#8b5cf6" },
-  "Reading Informational Text": { emoji: "📰", color: "text-blue-700",   bg: "bg-blue-50",    border: "border-blue-200",    barColor: "#3b82f6" },
-  "Foundational Skills":        { emoji: "🔤", color: "text-emerald-700", bg: "bg-emerald-50", border: "border-emerald-200", barColor: "#10b981" },
-  "Language":                   { emoji: "💬", color: "text-amber-700",  bg: "bg-amber-50",   border: "border-amber-200",   barColor: "#f59e0b" },
+const DOMAIN_META: Record<string, { emoji: string; color: string; darkColor: string; bg: string; darkBg: string; border: string; barColor: string; total: number }> = {
+  "Reading Literature":         { emoji: "📖", color: "text-violet-700",  darkColor: "dark:text-violet-400",  bg: "bg-violet-50",  darkBg: "dark:bg-violet-950/30", border: "border-violet-200",  barColor: "#8b5cf6", total: 8 },
+  "Reading Informational Text": { emoji: "📰", color: "text-blue-700",   darkColor: "dark:text-blue-400",   bg: "bg-blue-50",    darkBg: "dark:bg-blue-950/30",   border: "border-blue-200",    barColor: "#3b82f6", total: 9 },
+  "Foundational Skills":        { emoji: "🔤", color: "text-emerald-700", darkColor: "dark:text-emerald-400", bg: "bg-emerald-50", darkBg: "dark:bg-emerald-950/30", border: "border-emerald-200", barColor: "#10b981", total: 14 },
+  "Language":                   { emoji: "💬", color: "text-amber-700",  darkColor: "dark:text-amber-400",  bg: "bg-amber-50",   darkBg: "dark:bg-amber-950/30",  border: "border-amber-200",   barColor: "#f59e0b", total: 5 },
 };
-
-const MASTERY_CONFIG: Record<MasteryLevel, { color: string; bg: string; border: string }> = {
-  "Proficient":    { color: "text-emerald-700", bg: "bg-emerald-50",  border: "border-emerald-200" },
-  "Developing":    { color: "text-amber-700",   bg: "bg-amber-50",    border: "border-amber-200" },
-  "Needs Support": { color: "text-red-600",     bg: "bg-red-50",      border: "border-red-200" },
-  "Not Started":   { color: "text-zinc-500",    bg: "bg-zinc-50",     border: "border-zinc-200" },
-};
-
-/* ─── Mock data generator ────────────────────────────── */
-
-function generateMockStats(standards: Standard[]): StandardStat[] {
-  // Deterministic "random" using standard_id as seed
-  function seed(id: string): number {
-    let h = 0;
-    for (let i = 0; i < id.length; i++) h = (h * 31 + id.charCodeAt(i)) & 0x7fffffff;
-    return h;
-  }
-
-  return standards.map((std) => {
-    const s = seed(std.standard_id);
-    const hasAttempted = (s % 100) < 72; // ~72% of standards attempted
-    if (!hasAttempted) {
-      return {
-        standard_id: std.standard_id,
-        name: shortName(std.standard_description),
-        domain: std.domain,
-        parent_tip: std.parent_tip,
-        attempted: 0,
-        correct: 0,
-        incorrect: 0,
-        accuracy: 0,
-        mastery: "Not Started" as MasteryLevel,
-      };
-    }
-
-    const attempted = 3 + (s % 8); // 3-10 attempts
-    const accuracyRaw = 25 + (s % 70); // 25-94%
-    const correct = Math.round((accuracyRaw / 100) * attempted);
-    const incorrect = attempted - correct;
-    const accuracy = attempted > 0 ? Math.round((correct / attempted) * 100) : 0;
-
-    let mastery: MasteryLevel = "Needs Support";
-    if (accuracy >= 80) mastery = "Proficient";
-    else if (accuracy >= 50) mastery = "Developing";
-
-    return {
-      standard_id: std.standard_id,
-      name: shortName(std.standard_description),
-      domain: std.domain,
-      parent_tip: std.parent_tip,
-      attempted,
-      correct,
-      incorrect,
-      accuracy,
-      mastery,
-    };
-  });
-}
-
-function generateWeeklyData(): WeeklyPoint[] {
-  const weeks = ["Week 1", "Week 2", "Week 3", "Week 4", "Week 5", "Week 6", "Week 7", "Week 8"];
-  // Simulate upward trend
-  const base = [52, 55, 61, 58, 67, 72, 70, 76];
-  const attempted = [15, 20, 25, 22, 30, 28, 35, 32];
-  return weeks.map((label, i) => ({
-    label,
-    accuracy: base[i],
-    attempted: attempted[i],
-  }));
-}
 
 /* ─── Helpers ────────────────────────────────────────── */
 
@@ -142,6 +57,68 @@ function shortName(desc: string): string {
     .replace(/^Know and apply /i, "");
   const capped = cleaned.charAt(0).toUpperCase() + cleaned.slice(1);
   return capped.length > 60 ? capped.slice(0, 57) + "..." : capped;
+}
+
+function displayGrade(grade: string | null | undefined): string {
+  if (!grade) return "Kindergarten";
+  if (grade.toLowerCase() === "pre-k") return "Pre-K";
+  return grade;
+}
+
+function getAvatar(name: string): string {
+  let h = 0;
+  for (let i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) & 0x7fffffff;
+  return AVATARS[h % AVATARS.length];
+}
+
+function formatDate(dateStr: string): string {
+  const d = new Date(dateStr);
+  return d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+}
+
+function getDateCutoff(range: DateRange): Date | null {
+  if (range === "all") return null;
+  const now = new Date();
+  if (range === "week") now.setDate(now.getDate() - 7);
+  else now.setMonth(now.getMonth() - 1);
+  return now;
+}
+
+/* ─── useCountUp ─────────────────────────────────────── */
+
+function useCountUp(target: number, duration = 800) {
+  const [value, setValue] = useState(0);
+  const ref = useRef<HTMLDivElement>(null);
+  const counted = useRef(false);
+
+  useEffect(() => {
+    if (counted.current || target === 0) { setValue(target); return; }
+    const el = ref.current;
+    if (!el) { setValue(target); return; }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !counted.current) {
+          counted.current = true;
+          const start = performance.now();
+          function tick(now: number) {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            setValue(Math.round(eased * target));
+            if (progress < 1) requestAnimationFrame(tick);
+          }
+          requestAnimationFrame(tick);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [target, duration]);
+
+  return { value, ref };
 }
 
 /* ═══════════════════════════════════════════════════════ */
@@ -166,20 +143,55 @@ function Spinner() {
 
 function AnalyticsLoader() {
   const params = useSearchParams();
-  const childId = params.get("child");
+  const childIdParam = params.get("child");
   const [child, setChild] = useState<Child | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function load() {
-      if (!childId) { setLoading(false); return; }
       const supabase = supabaseBrowser();
-      const { data } = await supabase.from("children").select("*").eq("id", childId).single();
+      let resolvedId = childIdParam;
+      console.log("[Analytics] URL child param:", childIdParam);
+
+      // If no child param, try child store first, then fetch from DB
+      if (!resolvedId) {
+        const store = useChildStore.getState();
+        const storeChild = store.childData || store.children[0] || null;
+        console.log("[Analytics] Store childData:", store.childData?.id ?? "null", "| Store children:", store.children.length);
+        if (storeChild) {
+          resolvedId = storeChild.id;
+        } else {
+          const { data: { user } } = await supabase.auth.getUser();
+          console.log("[Analytics] Supabase user:", user?.id ?? "null");
+          if (user) {
+            const { data: children } = await supabase
+              .from("children")
+              .select("*")
+              .eq("parent_id", user.id)
+              .order("created_at", { ascending: true })
+              .limit(1);
+            console.log("[Analytics] Fetched children from DB:", children?.length ?? 0);
+            if (children && children.length > 0) {
+              resolvedId = children[0].id;
+            }
+          }
+        }
+      }
+
+      console.log("[Analytics] Resolved child ID:", resolvedId ?? "null");
+      if (!resolvedId) { setLoading(false); return; }
+
+      // Silently update URL so bookmarks/sharing work, without triggering navigation
+      if (!childIdParam && resolvedId) {
+        window.history.replaceState(null, "", `/analytics?child=${resolvedId}`);
+      }
+
+      const { data } = await supabase.from("children").select("*").eq("id", resolvedId).single();
       if (data) setChild(safeValidate(ChildSchema, data) as Child);
       setLoading(false);
     }
     load();
-  }, [childId]);
+  }, [childIdParam]);
 
   if (loading) return <Spinner />;
 
@@ -203,301 +215,454 @@ function AnalyticsLoader() {
 /* ═══════════════════════════════════════════════════════ */
 
 function AnalyticsDashboard({ child }: { child: Child }) {
-  const allStandards = safeValidate(StandardsFileSchema, kStandards).standards as Standard[];
-  const stats = useMemo(() => generateMockStats(allStandards), [allStandards]);
-  const weeklyData = useMemo(() => generateWeeklyData(), []);
+  const allStandards = useMemo(() =>
+    safeValidate(StandardsFileSchema, kStandards).standards as Standard[],
+    []
+  );
+  const [dateRange, setDateRange] = useState<DateRange>("all");
+  const [practiceResults, setPracticeResults] = useState<PracticeResult[]>([]);
+  const [loadingData, setLoadingData] = useState(true);
 
-  const [domainFilter, setDomainFilter] = useState<string>("All");
-  const [sortField, setSortField] = useState<SortField>("standard_id");
-  const [sortDir, setSortDir] = useState<SortDir>("asc");
-
-  /* ── Derived stats ── */
-  const totals = useMemo(() => {
-    const attempted = stats.reduce((s, st) => s + st.attempted, 0);
-    const correct = stats.reduce((s, st) => s + st.correct, 0);
-    const accuracy = attempted > 0 ? Math.round((correct / attempted) * 100) : 0;
-    const proficient = stats.filter((s) => s.mastery === "Proficient").length;
-    const developing = stats.filter((s) => s.mastery === "Developing").length;
-    const needsSupport = stats.filter((s) => s.mastery === "Needs Support").length;
-    const notStarted = stats.filter((s) => s.mastery === "Not Started").length;
-    const masteryPct = Math.round((proficient / allStandards.length) * 100);
-    return { attempted, correct, accuracy, proficient, developing, needsSupport, notStarted, masteryPct };
-  }, [stats, allStandards.length]);
-
-  /* ── Domain breakdown ── */
-  const domainStats = useMemo(() => {
-    return Object.keys(DOMAIN_META).map((domain) => {
-      const domainItems = stats.filter((s) => s.domain === domain);
-      const attempted = domainItems.reduce((s, st) => s + st.attempted, 0);
-      const correct = domainItems.reduce((s, st) => s + st.correct, 0);
-      const accuracy = attempted > 0 ? Math.round((correct / attempted) * 100) : 0;
-      const proficient = domainItems.filter((s) => s.mastery === "Proficient").length;
-      return { domain, total: domainItems.length, attempted, correct, accuracy, proficient };
-    });
-  }, [stats]);
-
-  /* ── Struggling standards ── */
-  const struggles = useMemo(() => {
-    return stats
-      .filter((s) => s.attempted > 0 && s.accuracy < 60)
-      .sort((a, b) => a.accuracy - b.accuracy)
-      .slice(0, 5);
-  }, [stats]);
-
-  /* ── Filtered & sorted table ── */
-  const filteredStats = useMemo(() => {
-    let list = domainFilter === "All" ? [...stats] : stats.filter((s) => s.domain === domainFilter);
-
-    list.sort((a, b) => {
-      let cmp = 0;
-      if (sortField === "standard_id") cmp = a.standard_id.localeCompare(b.standard_id);
-      else if (sortField === "accuracy") cmp = a.accuracy - b.accuracy;
-      else if (sortField === "attempted") cmp = a.attempted - b.attempted;
-      return sortDir === "desc" ? -cmp : cmp;
-    });
-
-    return list;
-  }, [stats, domainFilter, sortField, sortDir]);
-
-  function toggleSort(field: SortField) {
-    if (sortField === field) {
-      setSortDir((d) => (d === "asc" ? "desc" : "asc"));
-    } else {
-      setSortField(field);
-      setSortDir(field === "accuracy" ? "desc" : "asc");
+  // Build standard friendly name map
+  const standardNameMap = useMemo(() => {
+    const map: Record<string, string> = {};
+    for (const s of allStandards) {
+      map[s.standard_id] = shortName(s.standard_description);
     }
+    return map;
+  }, [allStandards]);
+
+  // Build standard to domain map
+  const standardDomainMap = useMemo(() => {
+    const map: Record<string, string> = {};
+    for (const s of allStandards) {
+      map[s.standard_id] = s.domain;
+    }
+    return map;
+  }, [allStandards]);
+
+  // Fetch practice results
+  useEffect(() => {
+    async function fetchResults() {
+      const supabase = supabaseBrowser();
+      const { data } = await supabase
+        .from("practice_results")
+        .select("*")
+        .eq("child_id", child.id)
+        .order("completed_at", { ascending: false });
+      setPracticeResults((data as PracticeResult[]) || []);
+      setLoadingData(false);
+    }
+    fetchResults();
+  }, [child.id]);
+
+  // Filter by date range
+  const filteredResults = useMemo(() => {
+    const cutoff = getDateCutoff(dateRange);
+    if (!cutoff) return practiceResults;
+    return practiceResults.filter((r) => new Date(r.completed_at) >= cutoff);
+  }, [practiceResults, dateRange]);
+
+  // Aggregate stats
+  const totals = useMemo(() => {
+    const attempted = filteredResults.reduce((s, r) => s + r.questions_attempted, 0);
+    const correct = filteredResults.reduce((s, r) => s + r.questions_correct, 0);
+    const accuracy = attempted > 0 ? Math.round((correct / attempted) * 100) : 0;
+    const sessions = filteredResults.length;
+    return { attempted, correct, accuracy, sessions };
+  }, [filteredResults]);
+
+  // Per-standard accuracy
+  const standardStats = useMemo(() => {
+    const map: Record<string, { attempted: number; correct: number }> = {};
+    for (const r of filteredResults) {
+      if (!map[r.standard_id]) map[r.standard_id] = { attempted: 0, correct: 0 };
+      map[r.standard_id].attempted += r.questions_attempted;
+      map[r.standard_id].correct += r.questions_correct;
+    }
+    return Object.entries(map).map(([id, s]) => ({
+      standard_id: id,
+      name: standardNameMap[id] || id,
+      domain: standardDomainMap[id] || "Unknown",
+      attempted: s.attempted,
+      correct: s.correct,
+      accuracy: s.attempted > 0 ? Math.round((s.correct / s.attempted) * 100) : 0,
+    }));
+  }, [filteredResults, standardNameMap, standardDomainMap]);
+
+  // Strengths & weaknesses
+  const strengths = useMemo(() =>
+    [...standardStats].filter((s) => s.attempted >= 1).sort((a, b) => b.accuracy - a.accuracy).slice(0, 3),
+    [standardStats]
+  );
+  const weaknesses = useMemo(() =>
+    [...standardStats].filter((s) => s.attempted >= 1).sort((a, b) => a.accuracy - b.accuracy).slice(0, 3),
+    [standardStats]
+  );
+
+  // Chart data — group by day
+  const chartData = useMemo(() => {
+    const dayMap: Record<string, { attempted: number; correct: number }> = {};
+    for (const r of filteredResults) {
+      const day = new Date(r.completed_at).toLocaleDateString("en-US", { month: "short", day: "numeric" });
+      if (!dayMap[day]) dayMap[day] = { attempted: 0, correct: 0 };
+      dayMap[day].attempted += r.questions_attempted;
+      dayMap[day].correct += r.questions_correct;
+    }
+    // Sort chronologically
+    const sorted = [...filteredResults].sort((a, b) => new Date(a.completed_at).getTime() - new Date(b.completed_at).getTime());
+    const seen = new Set<string>();
+    const result: { label: string; accuracy: number; attempted: number }[] = [];
+    for (const r of sorted) {
+      const day = new Date(r.completed_at).toLocaleDateString("en-US", { month: "short", day: "numeric" });
+      if (seen.has(day)) continue;
+      seen.add(day);
+      const d = dayMap[day];
+      result.push({
+        label: day,
+        accuracy: d.attempted > 0 ? Math.round((d.correct / d.attempted) * 100) : 0,
+        attempted: d.attempted,
+      });
+    }
+    return result;
+  }, [filteredResults]);
+
+  // Curriculum progress — standards practiced per domain
+  const domainProgress = useMemo(() => {
+    const practicedStandards = new Set(practiceResults.map((r) => r.standard_id));
+    const allPracticedInRange = new Set(filteredResults.map((r) => r.standard_id));
+    const totalPracticed = new Set<string>();
+    for (const s of allStandards) {
+      if (practicedStandards.has(s.standard_id)) totalPracticed.add(s.standard_id);
+    }
+    return Object.entries(DOMAIN_META).map(([domain, meta]) => {
+      const domainStandards = allStandards.filter((s) => s.domain === domain);
+      const practiced = domainStandards.filter((s) => practicedStandards.has(s.standard_id)).length;
+      return { domain, practiced, ...meta };
+    });
+  }, [allStandards, practiceResults, filteredResults]);
+
+  const totalStandardsPracticed = useMemo(() => {
+    const all = new Set(practiceResults.map((r) => r.standard_id));
+    return all.size;
+  }, [practiceResults]);
+
+  const overallProgressPct = Math.round((totalStandardsPracticed / allStandards.length) * 100);
+
+  // Recent activity (last 5)
+  const recentActivity = filteredResults.slice(0, 5);
+
+  if (loadingData) return <Spinner />;
+
+  const hasData = practiceResults.length > 0;
+  const avatar = getAvatar(child.first_name);
+
+  /* ── No data empty state ── */
+  if (!hasData) {
+    return (
+      <motion.div
+        className="max-w-lg mx-auto pb-20 px-4 pt-8 text-center"
+        variants={staggerContainer}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.div variants={slideUp}>
+          <div className="text-6xl mb-4">{avatar}</div>
+          <h1 className="text-2xl font-bold text-zinc-900 dark:text-slate-100 mb-2">
+            {child.first_name}&apos;s Analytics
+          </h1>
+          <p className="text-zinc-500 dark:text-slate-400 mb-8">
+            {displayGrade(child.grade)} {child.reading_level ? `· ${child.reading_level}` : ""}
+          </p>
+        </motion.div>
+
+        <motion.div variants={slideUp} className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-8 shadow-sm">
+          <div className="text-5xl mb-4">🚀</div>
+          <h2 className="text-lg font-bold text-zinc-900 dark:text-slate-100 mb-2">
+            Ready to get started?
+          </h2>
+          <p className="text-sm text-zinc-500 dark:text-slate-400 mb-6">
+            Complete your first practice session to see progress, strengths, and areas to grow!
+          </p>
+          <Link
+            href={`/practice?child=${child.id}`}
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white font-bold text-sm hover:from-indigo-700 hover:to-violet-600 transition-all shadow-md hover:shadow-lg hover:scale-105"
+          >
+            Start Practice →
+          </Link>
+        </motion.div>
+
+        <motion.div variants={fadeUp} className="mt-6">
+          <Link href="/dashboard" className="text-sm text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 font-medium">
+            &larr; Back to Dashboard
+          </Link>
+        </motion.div>
+      </motion.div>
+    );
   }
 
   return (
     <motion.div className="max-w-3xl mx-auto pb-20 px-4" variants={staggerContainer} initial="hidden" animate="visible">
-      {/* ── Nav ── */}
-      <motion.div variants={fadeUp} className="flex items-center justify-between pt-4 mb-6">
-        <Link href="/dashboard" className="text-sm text-indigo-600 hover:text-indigo-700 font-medium transition-colors">
-          &larr; Dashboard
-        </Link>
-        <span className="text-xs text-zinc-400 dark:text-slate-500 font-medium">{displayGrade(child.grade)}</span>
-      </motion.div>
-
-      {/* ── Title ── */}
-      <motion.div variants={slideUp} className="mb-8">
-        <h1 className="text-2xl font-bold text-zinc-900 dark:text-slate-100 tracking-tight">
-          📊 {child.first_name}&apos;s Progress Report
-        </h1>
-        <p className="text-zinc-500 dark:text-slate-400 text-sm mt-1">
-          Detailed performance breakdown by ELA standard
-        </p>
-      </motion.div>
-
-      {/* ══════════ TOP SUMMARY ══════════ */}
-      <motion.div variants={slideUp} className="rounded-2xl bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 p-5 mb-6 shadow-lg">
+      {/* ═══ Section 1 — Header ═══ */}
+      <motion.div variants={slideUp} className="pt-6 mb-6">
         <div className="flex items-center gap-4 mb-4">
-          <div className="relative w-16 h-16 rounded-xl bg-white/20 flex items-center justify-center flex-shrink-0">
-            <svg viewBox="0 0 100 100" className="w-12 h-12 -rotate-90">
-              <circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="8" />
-              <motion.circle
-                cx="50" cy="50" r="40" fill="none" stroke="white" strokeWidth="8"
-                strokeLinecap="round" strokeDasharray="251"
-                initial={{ strokeDashoffset: 251 }}
-                animate={{ strokeDashoffset: 251 - (251 * totals.masteryPct / 100) }}
-                transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
-              />
-            </svg>
-            <span className="absolute text-white text-sm font-bold">{totals.masteryPct}%</span>
+          <div className="w-14 h-14 rounded-2xl bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-3xl flex-shrink-0">
+            {avatar}
           </div>
           <div className="flex-1 min-w-0">
-            <div className="text-white font-bold text-lg">Overall Mastery</div>
-            <div className="text-white/70 text-xs mt-0.5">
-              {child.reading_level || "Not assessed"} &middot; {displayGrade(child.grade)}
-            </div>
+            <h1 className="text-2xl font-bold text-zinc-900 dark:text-slate-100 tracking-tight">
+              {child.first_name}&apos;s Progress
+            </h1>
+            <p className="text-sm text-zinc-500 dark:text-slate-400">
+              {displayGrade(child.grade)} {child.reading_level ? `· ${child.reading_level}` : ""}
+            </p>
           </div>
+          <Link href="/dashboard" className="text-sm text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 font-medium flex-shrink-0">
+            &larr; Dashboard
+          </Link>
         </div>
 
-        <div className="grid grid-cols-3 gap-3">
-          <div className="bg-white/10 rounded-xl p-3 text-center">
-            <div className="text-white font-bold text-xl">{totals.attempted}</div>
-            <div className="text-white/60 text-[10px] font-medium">Questions</div>
-          </div>
-          <div className="bg-white/10 rounded-xl p-3 text-center">
-            <div className="text-white font-bold text-xl">{totals.correct}</div>
-            <div className="text-white/60 text-[10px] font-medium">Correct</div>
-          </div>
-          <div className="bg-white/10 rounded-xl p-3 text-center">
-            <div className="text-white font-bold text-xl">{totals.accuracy}%</div>
-            <div className="text-white/60 text-[10px] font-medium">Accuracy</div>
-          </div>
-        </div>
-      </motion.div>
-
-      {/* ── Mastery Breakdown Pills ── */}
-      <motion.div variants={slideUp} className="grid grid-cols-4 gap-2 mb-6">
-        <MasteryPill label="Proficient" count={totals.proficient} total={allStandards.length} level="Proficient" />
-        <MasteryPill label="Developing" count={totals.developing} total={allStandards.length} level="Developing" />
-        <MasteryPill label="Needs Help" count={totals.needsSupport} total={allStandards.length} level="Needs Support" />
-        <MasteryPill label="Not Started" count={totals.notStarted} total={allStandards.length} level="Not Started" />
-      </motion.div>
-
-      {/* ══════════ PROGRESS CHART ══════════ */}
-      <motion.div variants={slideUp} className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 mb-6">
-        <h2 className="text-base font-bold text-zinc-900 dark:text-slate-100 mb-4">Weekly Accuracy Trend</h2>
-        <AccuracyChart data={weeklyData} />
-      </motion.div>
-
-      {/* ══════════ DOMAIN BREAKDOWN ══════════ */}
-      <motion.div variants={slideUp} className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 mb-6">
-        <h2 className="text-base font-bold text-zinc-900 dark:text-slate-100 mb-4">Performance by Domain</h2>
-        <div className="space-y-3">
-          {domainStats.map((ds) => (
-            <DomainCard key={ds.domain} domainStat={ds} standards={stats.filter((s) => s.domain === ds.domain)} childId={child.id} />
+        {/* Date range tabs */}
+        <div className="flex gap-1.5 bg-zinc-100 dark:bg-slate-800 rounded-xl p-1">
+          {([
+            { key: "week" as DateRange, label: "This Week" },
+            { key: "month" as DateRange, label: "This Month" },
+            { key: "all" as DateRange, label: "All Time" },
+          ]).map(({ key, label }) => (
+            <button
+              key={key}
+              onClick={() => setDateRange(key)}
+              className={`flex-1 py-2 px-3 rounded-lg text-sm font-medium transition-all ${
+                dateRange === key
+                  ? "bg-white dark:bg-slate-700 text-indigo-700 dark:text-indigo-300 shadow-sm"
+                  : "text-zinc-500 dark:text-slate-400 hover:text-zinc-700 dark:hover:text-slate-300"
+              }`}
+            >
+              {label}
+            </button>
           ))}
         </div>
       </motion.div>
 
-      {/* ══════════ AREAS TO FOCUS ON ══════════ */}
-      {struggles.length > 0 && (
-        <motion.div variants={slideUp} className="rounded-2xl border border-amber-200 dark:border-amber-800/40 bg-gradient-to-b from-amber-50/80 to-white dark:from-amber-950/20 dark:to-slate-800 p-5 mb-6">
-          <div className="flex items-center gap-2 mb-1">
-            <span className="text-lg">🎯</span>
-            <h2 className="text-base font-bold text-zinc-900 dark:text-slate-100">Areas to Focus On</h2>
+      {/* ═══ Section 2 — Key Stats ═══ */}
+      <motion.div variants={slideUp} className="grid grid-cols-3 gap-3 mb-6">
+        <StatCard label="Questions Answered" value={totals.attempted} icon="📝" />
+        <AccuracyCard accuracy={totals.accuracy} />
+        <StatCard label="Practice Sessions" value={totals.sessions} icon="🎯" />
+      </motion.div>
+
+      {/* ═══ Section 3 — Progress Chart ═══ */}
+      <motion.div variants={slideUp} className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 mb-6 shadow-sm">
+        <h2 className="text-base font-bold text-zinc-900 dark:text-slate-100 mb-4">
+          How {child.first_name} is doing
+        </h2>
+        {chartData.length >= 2 ? (
+          <AccuracyChart data={chartData} />
+        ) : (
+          <div className="text-center py-8">
+            <div className="text-3xl mb-2">📈</div>
+            <p className="text-sm text-zinc-500 dark:text-slate-400">
+              Complete a few more sessions to see your progress trend!
+            </p>
           </div>
-          <p className="text-xs text-zinc-500 dark:text-slate-400 mb-4">
-            These {struggles.length} standards need the most attention — ranked by priority.
-          </p>
-          <div className="space-y-3">
-            {struggles.map((s, i) => {
-              const meta = DOMAIN_META[s.domain] || DOMAIN_META["Reading Literature"];
-              const ringPct = s.accuracy;
-              const ringOffset = 88 - (88 * ringPct / 100);
-              return (
-                <div key={s.standard_id} className="rounded-xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 hover:shadow-sm transition-shadow">
-                  <div className="flex gap-3">
-                    {/* Priority ring */}
-                    <div className="relative w-11 h-11 flex-shrink-0">
-                      <svg viewBox="0 0 36 36" className="w-11 h-11 -rotate-90">
-                        <circle cx="18" cy="18" r="14" fill="none" stroke="#fee2e2" strokeWidth="3" />
-                        <circle
-                          cx="18" cy="18" r="14" fill="none"
-                          stroke={ringPct >= 40 ? "#f59e0b" : "#ef4444"}
-                          strokeWidth="3" strokeLinecap="round"
-                          strokeDasharray="88"
-                          strokeDashoffset={ringOffset}
-                        />
+        )}
+      </motion.div>
+
+      {/* ═══ Section 4 — Strengths & Weaknesses ═══ */}
+      {standardStats.length > 0 && (
+        <motion.div variants={slideUp} className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+          {/* Strengths */}
+          <div className="rounded-2xl border border-emerald-200 dark:border-emerald-800/40 bg-gradient-to-b from-emerald-50/80 to-white dark:from-emerald-950/20 dark:to-slate-800 p-5 shadow-sm">
+            <h3 className="text-base font-bold text-zinc-900 dark:text-slate-100 mb-3">
+              Strengths 💪
+            </h3>
+            {strengths.length > 0 ? (
+              <div className="space-y-2.5">
+                {strengths.map((s) => (
+                  <div key={s.standard_id} className="flex items-center gap-3">
+                    <div className="w-6 h-6 rounded-full bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center flex-shrink-0">
+                      <svg className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                       </svg>
-                      <span className="absolute inset-0 flex items-center justify-center text-[10px] font-extrabold text-zinc-600 dark:text-slate-300">
-                        #{i + 1}
-                      </span>
                     </div>
-
                     <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2 mb-1 flex-wrap">
-                        <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${meta.bg} ${meta.color} flex-shrink-0`}>
-                          {s.standard_id}
-                        </span>
-                        <span className="text-sm font-semibold text-zinc-900 dark:text-slate-100 truncate">{s.name}</span>
-                      </div>
-
-                      <div className="flex items-center gap-3 mb-2">
-                        <div className="flex-1 h-2 bg-zinc-100 dark:bg-slate-700 rounded-full overflow-hidden">
-                          <div
-                            className="h-full rounded-full transition-all duration-500"
-                            style={{
-                              width: `${s.accuracy}%`,
-                              backgroundColor: s.accuracy >= 40 ? "#f59e0b" : "#ef4444",
-                            }}
-                          />
-                        </div>
-                        <span className={`text-sm font-bold flex-shrink-0 ${s.accuracy >= 40 ? "text-amber-600" : "text-red-500"}`}>
-                          {s.accuracy}%
-                        </span>
-                        <span className="text-[11px] text-zinc-400 flex-shrink-0">
-                          {s.correct}/{s.attempted}
-                        </span>
-                      </div>
-
-                      {/* Parent tip */}
-                      <div className="rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-800/40 px-3 py-2 mb-2.5">
-                        <p className="text-xs text-amber-800 dark:text-amber-200 leading-relaxed">
-                          <span className="font-bold">💡 Tip:</span>{" "}
-                          {s.parent_tip || `Revisit with guided practice and repeat the ${s.domain.toLowerCase()} exercises.`}
-                        </p>
-                      </div>
-
-                      {/* Practice button */}
-                      <Link
-                        href={`/practice?child=${child.id}&standard=${s.standard_id}`}
-                        className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-xs font-bold hover:from-indigo-700 hover:to-violet-600 transition-all shadow-sm"
-                      >
-                        Practice {s.standard_id} →
-                      </Link>
+                      <div className="text-sm font-medium text-zinc-800 dark:text-slate-200 truncate">{s.name}</div>
+                      <div className="text-xs text-zinc-400 dark:text-slate-500">{s.standard_id}</div>
                     </div>
+                    <span className="text-sm font-bold text-emerald-600 dark:text-emerald-400 flex-shrink-0">{s.accuracy}%</span>
                   </div>
-                </div>
-              );
-            })}
+                ))}
+              </div>
+            ) : (
+              <p className="text-sm text-zinc-500 dark:text-slate-400">Keep practicing to discover strengths!</p>
+            )}
+          </div>
+
+          {/* Weaknesses */}
+          <div className="rounded-2xl border border-amber-200 dark:border-amber-800/40 bg-gradient-to-b from-amber-50/80 to-white dark:from-amber-950/20 dark:to-slate-800 p-5 shadow-sm">
+            <h3 className="text-base font-bold text-zinc-900 dark:text-slate-100 mb-3">
+              Keep Practicing 🌱
+            </h3>
+            {weaknesses.length > 0 ? (
+              <div className="space-y-2.5">
+                {weaknesses.map((s) => (
+                  <div key={s.standard_id} className="flex items-center gap-3">
+                    <div className="w-6 h-6 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center flex-shrink-0">
+                      <span className="text-xs">🌱</span>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="text-sm font-medium text-zinc-800 dark:text-slate-200 truncate">{s.name}</div>
+                      <div className="text-xs text-zinc-400 dark:text-slate-500">{s.standard_id}</div>
+                    </div>
+                    <Link
+                      href={`/practice?child=${child.id}&standard=${s.standard_id}`}
+                      className="text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 flex-shrink-0"
+                    >
+                      Practice →
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-sm text-zinc-500 dark:text-slate-400">Great work so far! Keep it up!</p>
+            )}
           </div>
         </motion.div>
       )}
 
-      {/* ══════════ STANDARDS TABLE ══════════ */}
-      <motion.div variants={slideUp} className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5">
-        <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
-          <h2 className="text-base font-bold text-zinc-900 dark:text-slate-100">Standards Breakdown</h2>
-          <span className="text-xs text-zinc-400 dark:text-slate-500">
-            {filteredStats.length} standard{filteredStats.length !== 1 ? "s" : ""}
-          </span>
+      {/* ═══ Section 5 — Curriculum Progress ═══ */}
+      <motion.div variants={slideUp} className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 mb-6 shadow-sm">
+        <h2 className="text-base font-bold text-zinc-900 dark:text-slate-100 mb-1">Curriculum Progress</h2>
+        <p className="text-xs text-zinc-500 dark:text-slate-400 mb-4">
+          {overallProgressPct}% of Kindergarten standards practiced
+        </p>
+
+        {/* Overall bar */}
+        <div className="h-3 bg-zinc-100 dark:bg-slate-700 rounded-full overflow-hidden mb-5">
+          <motion.div
+            className="h-full rounded-full bg-gradient-to-r from-indigo-500 to-violet-500"
+            initial={{ width: 0 }}
+            animate={{ width: `${overallProgressPct}%` }}
+            transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
+          />
         </div>
 
-        {/* Domain filter tabs */}
-        <div className="flex flex-wrap gap-1.5 mb-4">
-          {DOMAINS.map((d) => {
-            const isActive = domainFilter === d;
-            const meta = d !== "All" ? DOMAIN_META[d] : null;
+        {/* Domain rows */}
+        <div className="space-y-3">
+          {domainProgress.map((dp) => {
+            const pct = dp.total > 0 ? Math.round((dp.practiced / dp.total) * 100) : 0;
             return (
-              <button
-                key={d}
-                onClick={() => setDomainFilter(d)}
-                className={`px-3 py-1.5 rounded-full text-[11px] font-medium transition-all border ${
-                  isActive
-                    ? "bg-indigo-600 text-white border-indigo-600"
-                    : meta
-                    ? `${meta.bg} ${meta.color} ${meta.border} hover:opacity-80`
-                    : "bg-zinc-50 dark:bg-slate-700 text-zinc-600 dark:text-slate-300 border-zinc-200 dark:border-slate-600 hover:bg-zinc-100 dark:hover:bg-slate-600"
-                }`}
-              >
-                {meta ? `${meta.emoji} ` : ""}{d === "All" ? "All Domains" : d}
-              </button>
+              <div key={dp.domain}>
+                <div className="flex items-center justify-between mb-1">
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm">{dp.emoji}</span>
+                    <span className={`text-sm font-medium ${dp.color} ${dp.darkColor}`}>{dp.domain}</span>
+                  </div>
+                  <span className="text-xs text-zinc-500 dark:text-slate-400 font-medium">{dp.practiced}/{dp.total}</span>
+                </div>
+                <div className="h-2 bg-zinc-100 dark:bg-slate-700 rounded-full overflow-hidden">
+                  <motion.div
+                    className="h-full rounded-full"
+                    style={{ backgroundColor: dp.barColor }}
+                    initial={{ width: 0 }}
+                    animate={{ width: `${pct}%` }}
+                    transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+                  />
+                </div>
+              </div>
             );
           })}
         </div>
+      </motion.div>
 
-        {/* Sort controls */}
-        <div className="flex gap-2 mb-3">
-          {([
-            { field: "standard_id" as SortField, label: "Standard" },
-            { field: "accuracy" as SortField, label: "Accuracy" },
-            { field: "attempted" as SortField, label: "Attempts" },
-          ]).map(({ field, label }) => (
-            <button
-              key={field}
-              onClick={() => toggleSort(field)}
-              className={`text-[11px] font-medium px-2.5 py-1 rounded-lg transition-colors ${
-                sortField === field
-                  ? "bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300"
-                  : "text-zinc-400 dark:text-slate-500 hover:text-zinc-600 dark:hover:text-slate-300 hover:bg-zinc-50 dark:hover:bg-slate-700"
-              }`}
-            >
-              {label} {sortField === field && (sortDir === "asc" ? "↑" : "↓")}
-            </button>
-          ))}
-        </div>
-
-        {/* Table */}
-        <div className="space-y-1.5">
-          {filteredStats.map((s) => (
-            <StandardRow key={s.standard_id} stat={s} />
-          ))}
-        </div>
+      {/* ═══ Section 6 — Recent Activity ═══ */}
+      <motion.div variants={slideUp} className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-sm">
+        <h2 className="text-base font-bold text-zinc-900 dark:text-slate-100 mb-4">Recent Activity</h2>
+        {recentActivity.length > 0 ? (
+          <div className="space-y-2">
+            {recentActivity.map((r) => (
+              <div key={r.id} className="flex items-center gap-3 py-2.5 px-3 rounded-xl hover:bg-zinc-50 dark:hover:bg-slate-700/50 transition-colors">
+                <div className="text-xs text-zinc-400 dark:text-slate-500 w-16 flex-shrink-0 font-medium">
+                  {formatDate(r.completed_at)}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="text-sm font-medium text-zinc-800 dark:text-slate-200 truncate">
+                    {standardNameMap[r.standard_id] || r.standard_id}
+                  </div>
+                  <div className="text-xs text-zinc-400 dark:text-slate-500">{r.standard_id}</div>
+                </div>
+                <div className="text-sm font-bold text-zinc-700 dark:text-slate-300 flex-shrink-0">
+                  {r.questions_correct}/{r.questions_attempted}
+                </div>
+                <div className="text-xs font-medium text-amber-600 dark:text-amber-400 flex-shrink-0">
+                  +{r.xp_earned} XP
+                </div>
+              </div>
+            ))}
+            {filteredResults.length > 5 && (
+              <div className="text-center pt-2">
+                <span className="text-xs text-zinc-400 dark:text-slate-500">
+                  Showing 5 of {filteredResults.length} sessions
+                </span>
+              </div>
+            )}
+          </div>
+        ) : (
+          <div className="text-center py-6">
+            <p className="text-sm text-zinc-500 dark:text-slate-400">
+              No activity in this time period. Try a different range!
+            </p>
+          </div>
+        )}
       </motion.div>
     </motion.div>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════ */
+/*  Stat Card                                              */
+/* ═══════════════════════════════════════════════════════ */
+
+function StatCard({ label, value, icon }: { label: string; value: number; icon: string }) {
+  const { value: animated, ref } = useCountUp(value);
+
+  return (
+    <div ref={ref} className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 text-center shadow-sm">
+      <div className="text-xl mb-1">{icon}</div>
+      <div className="text-2xl font-bold text-zinc-900 dark:text-slate-100">{animated}</div>
+      <div className="text-[11px] text-zinc-500 dark:text-slate-400 mt-0.5 font-medium">{label}</div>
+    </div>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════ */
+/*  Accuracy Card with animated ring                       */
+/* ═══════════════════════════════════════════════════════ */
+
+function AccuracyCard({ accuracy }: { accuracy: number }) {
+  const ringColor = accuracy >= 70 ? "#10b981" : accuracy >= 50 ? "#f59e0b" : "#ef4444";
+  const circumference = 2 * Math.PI * 28; // r=28
+
+  return (
+    <div className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 text-center shadow-sm">
+      <div className="relative w-16 h-16 mx-auto mb-1">
+        <svg viewBox="0 0 64 64" className="w-16 h-16 -rotate-90">
+          <circle cx="32" cy="32" r="28" fill="none" stroke="currentColor" strokeWidth="4" className="text-zinc-100 dark:text-slate-700" />
+          <motion.circle
+            cx="32" cy="32" r="28" fill="none" stroke={ringColor} strokeWidth="4"
+            strokeLinecap="round"
+            strokeDasharray={circumference}
+            initial={{ strokeDashoffset: circumference }}
+            animate={{ strokeDashoffset: circumference - (circumference * accuracy / 100) }}
+            transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
+          />
+        </svg>
+        <span className="absolute inset-0 flex items-center justify-center text-lg font-bold text-zinc-900 dark:text-slate-100">
+          {accuracy}%
+        </span>
+      </div>
+      <div className="text-[11px] text-zinc-500 dark:text-slate-400 font-medium">Accuracy</div>
+    </div>
   );
 }
 
@@ -505,7 +670,7 @@ function AnalyticsDashboard({ child }: { child: Child }) {
 /*  Accuracy Chart (pure SVG)                              */
 /* ═══════════════════════════════════════════════════════ */
 
-function AccuracyChart({ data }: { data: WeeklyPoint[] }) {
+function AccuracyChart({ data }: { data: { label: string; accuracy: number; attempted: number }[] }) {
   const [hovered, setHovered] = useState<number | null>(null);
   const W = 600;
   const H = 220;
@@ -520,7 +685,7 @@ function AccuracyChart({ data }: { data: WeeklyPoint[] }) {
   const yTicks = [0, 25, 50, 75, 100];
 
   const points = data.map((d, i) => ({
-    x: PAD_L + (i / (data.length - 1)) * chartW,
+    x: PAD_L + (i / Math.max(data.length - 1, 1)) * chartW,
     y: PAD_T + chartH - (d.accuracy / maxY) * chartH,
     ...d,
   }));
@@ -558,8 +723,8 @@ function AccuracyChart({ data }: { data: WeeklyPoint[] }) {
           const y = PAD_T + chartH - (tick / maxY) * chartH;
           return (
             <g key={tick}>
-              <line x1={PAD_L} y1={y} x2={W - PAD_R} y2={y} stroke="#f4f4f5" strokeWidth="1" />
-              <text x={PAD_L - 6} y={y + 3} textAnchor="end" className="fill-zinc-400" fontSize="10">
+              <line x1={PAD_L} y1={y} x2={W - PAD_R} y2={y} stroke="#f4f4f5" strokeWidth="1" className="dark:stroke-slate-700" />
+              <text x={PAD_L - 6} y={y + 3} textAnchor="end" className="fill-zinc-400 dark:fill-slate-500" fontSize="10">
                 {tick}%
               </text>
             </g>
@@ -599,14 +764,11 @@ function AccuracyChart({ data }: { data: WeeklyPoint[] }) {
 
           return (
             <g key={i}>
-              {/* Invisible larger hit area for easy hovering */}
               <circle
                 cx={pt.x} cy={pt.y} r="18" fill="transparent"
                 onMouseEnter={() => setHovered(i)}
                 style={{ cursor: "pointer" }}
               />
-
-              {/* Visible dot */}
               <circle
                 cx={pt.x} cy={pt.y}
                 r={isHovered ? 6 : 4}
@@ -614,16 +776,14 @@ function AccuracyChart({ data }: { data: WeeklyPoint[] }) {
                 stroke="#6366f1" strokeWidth="2"
                 style={{ transition: "r 0.15s ease, fill 0.15s ease" }}
               />
-
               {/* X-axis label */}
               <text
                 x={pt.x} y={PAD_T + chartH + 18} textAnchor="middle"
-                className={isHovered ? "fill-indigo-600" : "fill-zinc-400"}
+                className={isHovered ? "fill-indigo-600" : "fill-zinc-400 dark:fill-slate-500"}
                 fontSize="10" fontWeight={isHovered ? "bold" : "normal"}
               >
                 {pt.label}
               </text>
-
               {/* Tooltip */}
               {showLabel && (
                 <g>
@@ -652,254 +812,6 @@ function AccuracyChart({ data }: { data: WeeklyPoint[] }) {
           );
         })}
       </svg>
-    </div>
-  );
-}
-
-/* ═══════════════════════════════════════════════════════ */
-/*  Domain Card — expandable                               */
-/* ═══════════════════════════════════════════════════════ */
-
-interface DomainStatData {
-  domain: string;
-  total: number;
-  attempted: number;
-  correct: number;
-  accuracy: number;
-  proficient: number;
-}
-
-function DomainCard({ domainStat, standards, childId }: {
-  domainStat: DomainStatData;
-  standards: StandardStat[];
-  childId: string;
-}) {
-  const [expanded, setExpanded] = useState(false);
-  const ds = domainStat;
-  const meta = DOMAIN_META[ds.domain];
-
-  // Sort by accuracy (lowest first when expanded to show where help is needed)
-  const sortedStandards = useMemo(() =>
-    [...standards].sort((a, b) => {
-      if (a.attempted === 0 && b.attempted === 0) return a.standard_id.localeCompare(b.standard_id);
-      if (a.attempted === 0) return 1;
-      if (b.attempted === 0) return -1;
-      return a.accuracy - b.accuracy;
-    }),
-    [standards]
-  );
-
-  return (
-    <div className={`rounded-xl border-2 transition-all ${expanded ? `${meta.border} shadow-sm` : `${meta.border} ${meta.bg}`}`}>
-      <button
-        onClick={() => setExpanded((e) => !e)}
-        className={`w-full text-left p-3.5 rounded-xl transition-colors ${expanded ? `${meta.bg}` : ""}`}
-      >
-        <div className="flex items-center justify-between mb-2">
-          <div className="flex items-center gap-2">
-            <span className="text-lg">{meta.emoji}</span>
-            <span className={`text-sm font-bold ${meta.color}`}>{ds.domain}</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className={`text-sm font-bold ${meta.color}`}>{ds.accuracy}%</span>
-            <svg
-              className={`w-4 h-4 text-zinc-400 transition-transform ${expanded ? "rotate-180" : ""}`}
-              fill="none" stroke="currentColor" viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-            </svg>
-          </div>
-        </div>
-        <div className="h-2 bg-white/80 dark:bg-slate-700 rounded-full overflow-hidden">
-          <div
-            className="h-full rounded-full transition-all duration-700"
-            style={{ width: `${ds.accuracy}%`, backgroundColor: meta.barColor }}
-          />
-        </div>
-        <div className="flex items-center justify-between mt-1.5 text-[11px] text-zinc-500 dark:text-slate-400">
-          <span>{ds.proficient}/{ds.total} proficient</span>
-          <span>{ds.attempted} questions attempted</span>
-        </div>
-      </button>
-
-      {expanded && (
-        <div className="px-3.5 pb-3.5 space-y-1.5 animate-fadeUp">
-          <div className="h-px bg-zinc-200/60 dark:bg-slate-600 mb-2" />
-          {sortedStandards.map((s) => {
-            const mc = MASTERY_CONFIG[s.mastery];
-            return (
-              <div key={s.standard_id} className="flex items-center gap-2.5 py-2 px-2 rounded-lg hover:bg-white/80 dark:hover:bg-slate-700/50 transition-colors group">
-                {/* Mastery dot */}
-                <div className={`w-2.5 h-2.5 rounded-full flex-shrink-0 ${
-                  s.mastery === "Proficient" ? "bg-emerald-500"
-                  : s.mastery === "Developing" ? "bg-amber-400"
-                  : s.mastery === "Needs Support" ? "bg-red-400"
-                  : "bg-zinc-200"
-                }`} />
-                {/* ID */}
-                <span className="text-[11px] font-bold text-zinc-500 dark:text-slate-400 w-14 flex-shrink-0">{s.standard_id}</span>
-                {/* Name */}
-                <span className="text-xs text-zinc-600 dark:text-slate-300 flex-1 min-w-0 truncate">{s.name}</span>
-                {/* Accuracy */}
-                {s.attempted > 0 ? (
-                  <span className={`text-xs font-bold flex-shrink-0 ${mc.color}`}>{s.accuracy}%</span>
-                ) : (
-                  <span className="text-[10px] text-zinc-300 flex-shrink-0">—</span>
-                )}
-                {/* Practice link */}
-                <Link
-                  href={`/practice?child=${childId}&standard=${s.standard_id}`}
-                  className="opacity-0 group-hover:opacity-100 transition-opacity text-[10px] font-bold text-indigo-600 hover:text-indigo-700 flex-shrink-0"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  Practice →
-                </Link>
-              </div>
-            );
-          })}
-        </div>
-      )}
-    </div>
-  );
-}
-
-/* ═══════════════════════════════════════════════════════ */
-/*  Standard Row                                           */
-/* ═══════════════════════════════════════════════════════ */
-
-function StandardRow({ stat }: { stat: StandardStat }) {
-  const [expanded, setExpanded] = useState(false);
-  const mc = MASTERY_CONFIG[stat.mastery];
-  const dm = DOMAIN_META[stat.domain] || DOMAIN_META["Reading Literature"];
-
-  return (
-    <div
-      className={`rounded-xl border transition-all ${
-        expanded ? "border-zinc-300 dark:border-slate-600 shadow-sm" : "border-zinc-100 dark:border-slate-700 hover:border-zinc-200 dark:hover:border-slate-600"
-      }`}
-    >
-      <button
-        onClick={() => setExpanded((e) => !e)}
-        className="w-full text-left p-3 flex items-center gap-3"
-      >
-        {/* Mastery indicator dot */}
-        <div className={`w-2.5 h-2.5 rounded-full flex-shrink-0 ${
-          stat.mastery === "Proficient" ? "bg-emerald-500"
-          : stat.mastery === "Developing" ? "bg-amber-400"
-          : stat.mastery === "Needs Support" ? "bg-red-400"
-          : "bg-zinc-200"
-        }`} />
-
-        {/* Standard ID */}
-        <span className={`text-[11px] font-bold w-16 flex-shrink-0 ${dm.color}`}>
-          {stat.standard_id}
-        </span>
-
-        {/* Name */}
-        <span className="text-sm text-zinc-700 dark:text-slate-300 flex-1 min-w-0 truncate">
-          {stat.name}
-        </span>
-
-        {/* Accuracy */}
-        <span className={`text-sm font-bold flex-shrink-0 w-12 text-right ${
-          stat.mastery === "Not Started" ? "text-zinc-300"
-          : stat.mastery === "Proficient" ? "text-emerald-600"
-          : stat.mastery === "Developing" ? "text-amber-600"
-          : "text-red-500"
-        }`}>
-          {stat.attempted > 0 ? `${stat.accuracy}%` : "—"}
-        </span>
-
-        {/* Chevron */}
-        <svg
-          className={`w-4 h-4 text-zinc-300 flex-shrink-0 transition-transform ${expanded ? "rotate-180" : ""}`}
-          fill="none" stroke="currentColor" viewBox="0 0 24 24"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-        </svg>
-      </button>
-
-      {expanded && (
-        <div className="px-3 pb-3 pt-0 space-y-2.5 animate-fadeUp">
-          {/* Mastery badge + domain */}
-          <div className="flex items-center gap-2 flex-wrap">
-            <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold border ${mc.bg} ${mc.color} ${mc.border}`}>
-              {stat.mastery}
-            </span>
-            <span className={`px-2 py-0.5 rounded-full text-[10px] font-medium ${dm.bg} ${dm.color}`}>
-              {dm.emoji} {stat.domain}
-            </span>
-          </div>
-
-          {/* Stats grid */}
-          {stat.attempted > 0 ? (
-            <>
-              <div className="grid grid-cols-3 gap-2">
-                <div className="bg-zinc-50 dark:bg-slate-700 rounded-lg p-2 text-center">
-                  <div className="text-zinc-900 dark:text-slate-100 font-bold text-sm">{stat.attempted}</div>
-                  <div className="text-zinc-400 dark:text-slate-500 text-[10px]">Attempted</div>
-                </div>
-                <div className="bg-emerald-50 dark:bg-emerald-950/30 rounded-lg p-2 text-center">
-                  <div className="text-emerald-700 dark:text-emerald-400 font-bold text-sm">{stat.correct}</div>
-                  <div className="text-emerald-500 dark:text-emerald-600 text-[10px]">Correct</div>
-                </div>
-                <div className="bg-red-50 dark:bg-red-950/30 rounded-lg p-2 text-center">
-                  <div className="text-red-600 dark:text-red-400 font-bold text-sm">{stat.incorrect}</div>
-                  <div className="text-red-400 dark:text-red-600 text-[10px]">Incorrect</div>
-                </div>
-              </div>
-              {/* Accuracy bar */}
-              <div>
-                <div className="flex items-center justify-between text-[11px] mb-1">
-                  <span className="text-zinc-500 dark:text-slate-400">Accuracy</span>
-                  <span className="font-bold text-zinc-700 dark:text-slate-200">{stat.accuracy}%</span>
-                </div>
-                <div className="h-2 bg-zinc-100 dark:bg-slate-700 rounded-full overflow-hidden">
-                  <div
-                    className={`h-full rounded-full transition-all duration-500 ${
-                      stat.accuracy >= 80 ? "bg-emerald-500"
-                      : stat.accuracy >= 50 ? "bg-amber-400"
-                      : "bg-red-400"
-                    }`}
-                    style={{ width: `${stat.accuracy}%` }}
-                  />
-                </div>
-              </div>
-            </>
-          ) : (
-            <p className="text-xs text-zinc-400 py-2">
-              No attempts yet. This standard will be tracked once practice begins.
-            </p>
-          )}
-        </div>
-      )}
-    </div>
-  );
-}
-
-/* ═══════════════════════════════════════════════════════ */
-/*  Mastery Pill                                           */
-/* ═══════════════════════════════════════════════════════ */
-
-function MasteryPill({ label, count, total, level }: { label: string; count: number; total: number; level: MasteryLevel }) {
-  const mc = MASTERY_CONFIG[level];
-  const pct = Math.round((count / total) * 100);
-
-  return (
-    <div className={`rounded-xl border ${mc.border} ${mc.bg} p-2.5 text-center`}>
-      <div className={`font-bold text-lg ${mc.color}`}>{count}</div>
-      <div className={`text-[10px] font-medium ${mc.color} opacity-80`}>{label}</div>
-      <div className="mt-1 h-1 bg-white/80 rounded-full overflow-hidden">
-        <div
-          className={`h-full rounded-full ${
-            level === "Proficient" ? "bg-emerald-400"
-            : level === "Developing" ? "bg-amber-400"
-            : level === "Needs Support" ? "bg-red-400"
-            : "bg-zinc-300"
-          }`}
-          style={{ width: `${pct}%` }}
-        />
-      </div>
     </div>
   );
 }
