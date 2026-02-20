@@ -30,6 +30,7 @@ class AudioManager {
   private cache = new Map<string, Howl>();
   private currentHowl: Howl | null = null;
   private audioCtx: AudioContext | null = null;
+  private sequenceAbort: AbortController | null = null;
 
   constructor() {
     if (typeof window !== "undefined") {
@@ -44,17 +45,26 @@ class AudioManager {
     return this.audioCtx;
   }
 
+  /** Unlock audio playback — call on first user gesture */
+  async unlockAudio(): Promise<void> {
+    try {
+      const ctx = this.getAudioCtx();
+      if (ctx.state === "suspended") await ctx.resume();
+      if (Howler.ctx && Howler.ctx.state === "suspended") await Howler.ctx.resume();
+    } catch {}
+  }
+
   /** Play audio from a URL via Howler with fade-in */
   play(url: string): Promise<void> {
     const { isMuted } = useAudioStore.getState();
     if (isMuted) return Promise.resolve();
 
-    this.stop();
+    this.stopCurrent();
 
     return new Promise((resolve) => {
       let howl = this.cache.get(url);
       if (!howl) {
-        howl = new Howl({ src: [url], html5: true });
+        howl = new Howl({ src: [url], html5: true, preload: true });
         this.cache.set(url, howl);
       }
 
@@ -79,8 +89,41 @@ class AudioManager {
     });
   }
 
-  /** Stop current Howl + cancel SpeechSynthesis */
-  stop(): void {
+  /** Play a sequence of audio URLs with delays */
+  async playSequence(items: Array<{ url?: string; delayMs?: number }>): Promise<void> {
+    this.abortSequence();
+    const { isMuted } = useAudioStore.getState();
+    if (isMuted) return;
+
+    this.sequenceAbort = new AbortController();
+    const signal = this.sequenceAbort.signal;
+
+    for (const item of items) {
+      if (signal.aborted) return;
+      if (item.url) {
+        await this.play(item.url);
+      }
+      if (signal.aborted) return;
+      if (item.delayMs) {
+        await new Promise<void>((resolve) => {
+          const timer = setTimeout(resolve, item.delayMs);
+          signal.addEventListener("abort", () => { clearTimeout(timer); resolve(); }, { once: true });
+        });
+      }
+    }
+  }
+
+  /** Abort any running audio sequence */
+  abortSequence(): void {
+    if (this.sequenceAbort) {
+      this.sequenceAbort.abort();
+      this.sequenceAbort = null;
+    }
+    this.stopCurrent();
+  }
+
+  /** Stop current Howl only (no sequence abort) */
+  private stopCurrent(): void {
     if (this.currentHowl) {
       try {
         this.currentHowl.fade(this.currentHowl.volume() as number, 0, 200);
@@ -89,6 +132,11 @@ class AudioManager {
       } catch {}
       this.currentHowl = null;
     }
+  }
+
+  /** Stop everything: current Howl + sequence + SpeechSynthesis */
+  stop(): void {
+    this.abortSequence();
     if (typeof window !== "undefined") {
       try { speechSynthesis.cancel(); } catch {}
     }

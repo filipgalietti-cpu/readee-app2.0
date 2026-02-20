@@ -27,14 +27,36 @@ export function useAudio() {
 
   const playUrl = useCallback(
     (url: string) => {
-      if (isMuted || !audioManager) return;
+      if (!audioManager) return;
       setIsSpeaking(true);
       audioManager.play(url).finally(() => {
         if (mountedRef.current) setIsSpeaking(false);
       });
     },
-    [isMuted]
+    []
   );
+
+  const playSequence = useCallback(
+    (items: Array<{ url?: string; delayMs?: number }>) => {
+      if (!audioManager) return;
+      setIsSpeaking(true);
+      audioManager.playSequence(items).finally(() => {
+        if (mountedRef.current) setIsSpeaking(false);
+      });
+    },
+    []
+  );
+
+  const abortSequence = useCallback(() => {
+    if (!audioManager) return;
+    audioManager.abortSequence();
+    setIsSpeaking(false);
+  }, []);
+
+  const unlockAudio = useCallback(async () => {
+    if (!audioManager) return;
+    await audioManager.unlockAudio();
+  }, []);
 
   const speakManual = useCallback((text: string) => {
     if (!audioManager) return;
@@ -95,6 +117,9 @@ export function useAudio() {
     isSpeaking,
     speak,
     playUrl,
+    playSequence,
+    abortSequence,
+    unlockAudio,
     speakManual,
     stop,
     toggleMute,

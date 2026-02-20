@@ -13,9 +13,10 @@ const VOICE_ID = "kXsOSDWolD7e9l1Z0sbH";
 const MODEL_ID = "eleven_multilingual_v2";
 const OUTPUT_FORMAT = "mp3_44100_128";
 const VOICE_SETTINGS = {
-  stability: 0.6,
+  stability: 0.85,
   similarity_boost: 0.75,
-  style: 0.4,
+  style: 0.0,
+  use_speaker_boost: false,
 };
 
 const INPUT_PATH = path.join(__dirname, "..", "app", "data", "kindergarten-standards-questions.json");

@@ -204,7 +204,7 @@ function PracticeLoader() {
 
 function PracticeSession({ child, standard }: { child: Child; standard: Standard }) {
   const router = useRouter();
-  const { speak, playUrl, stop, preload, playCorrectChime, playIncorrectBuzz } = useAudio();
+  const { speak, playUrl, playSequence, abortSequence, unlockAudio, stop, preload, playCorrectChime, playIncorrectBuzz } = useAudio();
 
   // Zustand store
   const phase = usePracticeStore((s) => s.phase);
@@ -220,6 +220,7 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
   const resetStore = usePracticeStore((s) => s.reset);
 
   const [saving, setSaving] = useState(false);
+  const [audioReady, setAudioReady] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const questions = useMemo(() => {
@@ -230,41 +231,74 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
   // Reset store on mount/standard change
   useEffect(() => {
     resetStore();
+    setAudioReady(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [standard.standard_id]);
 
   const q = questions[currentIdx];
   const totalQ = questions.length;
 
+  /** Build the teacher-style audio sequence for a question */
+  const buildAudioSequence = useCallback((question: Question) => {
+    const items: Array<{ url?: string; delayMs?: number }> = [];
+    if (question.passage_audio_url) {
+      items.push({ url: question.passage_audio_url });
+      items.push({ delayMs: 800 });
+    }
+    if (question.prompt_audio_url) {
+      items.push({ url: question.prompt_audio_url });
+      items.push({ delayMs: 500 });
+    }
+    if (question.choices_audio_urls?.length) {
+      const choices = question.choices_audio_urls;
+      for (let i = 0; i < choices.length; i++) {
+        if (i === choices.length - 1 && choices.length > 1) {
+          // Say "or" before last choice via a short pause (TTS "or" handled inline)
+          items.push({ delayMs: 300 });
+        }
+        items.push({ url: choices[i] });
+        if (i < choices.length - 1) {
+          items.push({ delayMs: 400 });
+        }
+      }
+    }
+    return items;
+  }, []);
+
+  /** Handle "Tap to Start" — unlock audio and begin */
+  const handleStart = useCallback(async () => {
+    await unlockAudio();
+    setAudioReady(true);
+  }, [unlockAudio]);
+
   /* ── Preload next question audio ── */
   useEffect(() => {
-    if (phase !== "playing") return;
+    if (phase !== "playing" || !audioReady) return;
     const nextIdx = currentIdx + 1;
     if (nextIdx < totalQ) {
       const nq = questions[nextIdx];
       if (nq.passage_audio_url) preload(nq.passage_audio_url);
       if (nq.prompt_audio_url) preload(nq.prompt_audio_url);
+      nq.choices_audio_urls?.forEach((u) => preload(u));
     }
-  }, [currentIdx, phase, questions, totalQ, preload]);
+  }, [currentIdx, phase, audioReady, questions, totalQ, preload]);
 
-  /* ── Auto-speak question on load ── */
+  /* ── Play teacher-style audio sequence when question loads ── */
   useEffect(() => {
-    if (phase !== "playing") return;
-    const { passage, question } = splitPrompt(q.prompt);
+    if (phase !== "playing" || !audioReady) return;
 
-    // Prefer ElevenLabs MP3 files, fall back to browser TTS
-    if (q.passage_audio_url && q.prompt_audio_url) {
-      // Play passage first, then question
-      playUrl(q.passage_audio_url);
-    } else if (q.prompt_audio_url) {
-      playUrl(q.prompt_audio_url);
+    const sequence = buildAudioSequence(q);
+    if (sequence.length > 0) {
+      playSequence(sequence);
     } else {
+      // Fallback to TTS if no audio URLs
+      const { passage, question } = splitPrompt(q.prompt);
       const textToSpeak = passage ? `${passage}. ${question}` : question;
       speak(textToSpeak);
     }
     return () => stop();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentIdx, phase]);
+  }, [currentIdx, phase, audioReady]);
 
   /* ── Auto-speak feedback ── */
   useEffect(() => {
@@ -272,7 +306,6 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
     if (isCorrect) {
       speak(feedbackMsg);
     } else if (q.hint_audio_url) {
-      // Play the ElevenLabs hint audio instead of TTS
       playUrl(q.hint_audio_url);
     } else {
       speak(`${feedbackMsg}. The correct answer is ${q.correct}. ${q.hint}`);
@@ -283,17 +316,18 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
   /* ── Handle answer selection ── */
   const handleAnswer = useCallback((choice: string) => {
     if (selected !== null) return;
+    // Stop any playing audio sequence immediately
+    abortSequence();
     const correct = choice === q.correct;
 
     selectAnswer(choice, correct, q.id, XP_PER_CORRECT, CORRECT_MESSAGES, CORRECT_EMOJIS, INCORRECT_MESSAGES);
 
-    // Sound effects
     if (correct) {
       playCorrectChime();
     } else {
       playIncorrectBuzz();
     }
-  }, [selected, q, selectAnswer, playCorrectChime, playIncorrectBuzz]);
+  }, [selected, q, selectAnswer, abortSequence, playCorrectChime, playIncorrectBuzz]);
 
   /* ── Continue to next question ── */
   const handleContinue = useCallback(() => {
@@ -327,6 +361,47 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
 
   const { passage, question } = splitPrompt(q.prompt);
   const progressPct = ((currentIdx + (phase === "feedback" ? 1 : 0)) / totalQ) * 100;
+
+  /* ── "Tap to Start" intro screen ── */
+  if (!audioReady) {
+    return (
+      <div className="min-h-[100dvh] bg-gray-50 dark:bg-[#0f172a] flex flex-col items-center justify-center px-6">
+        <motion.div
+          className="text-center max-w-sm"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+        >
+          <div className="text-6xl mb-6">🎧</div>
+          <h2 className="text-2xl font-extrabold text-zinc-900 dark:text-white mb-2">
+            Ready to practice?
+          </h2>
+          <p className="text-zinc-500 dark:text-slate-400 text-sm mb-2">
+            {standard.standard_description}
+          </p>
+          <p className="text-zinc-400 dark:text-slate-500 text-xs mb-8">
+            {totalQ} questions &middot; Audio will read each question aloud
+          </p>
+          <button
+            onClick={handleStart}
+            className="w-full max-w-xs mx-auto py-4 rounded-2xl font-extrabold text-lg text-white transition-all active:scale-[0.97]"
+            style={{
+              background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
+              boxShadow: "0 4px 0 0 #4f46e5",
+            }}
+          >
+            Tap to Start
+          </button>
+          <button
+            onClick={handleExit}
+            className="mt-4 text-sm text-zinc-400 dark:text-slate-500 hover:text-zinc-600 dark:hover:text-slate-300 transition-colors"
+          >
+            &larr; Back
+          </button>
+        </motion.div>
+      </div>
+    );
+  }
 
   return (
     <div ref={scrollRef} className="min-h-[100dvh] bg-gray-50 dark:bg-[#0f172a] flex flex-col overflow-y-auto">
