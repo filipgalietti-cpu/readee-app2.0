@@ -48,37 +48,52 @@ function splitPrompt(prompt) {
   return { passage: "", question: cleanText(prompt.trim()) };
 }
 
-/** Build combined teacher-style text for one question */
-function buildCombinedText(q) {
+/** Escape text for SSML (ampersands, angle brackets, quotes) */
+function escapeSSML(text) {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+/** Build SSML with natural teacher-style pauses */
+function buildSSML(q) {
   const { passage, question } = splitPrompt(q.prompt);
+  const choices = q.choices.map((c) => escapeSSML(cleanText(c)));
   const parts = [];
 
+  parts.push("<speak>");
   if (passage) {
-    parts.push(passage);
+    parts.push(`  ${escapeSSML(passage)}`);
+    parts.push('  <break time="1s"/>');
   }
-  parts.push(question);
+  parts.push(`  ${escapeSSML(question)}`);
+  parts.push('  <break time="0.8s"/>');
 
-  // Add choices with "Or" before the last one
-  const choices = q.choices.map((c) => cleanText(c));
   for (let i = 0; i < choices.length; i++) {
     if (i === choices.length - 1 && choices.length > 1) {
-      parts.push(`Or, ${choices[i]}.`);
-    } else {
-      parts.push(`${choices[i]}.`);
+      parts.push("  Or");
+      parts.push('  <break time="0.4s"/>');
+    }
+    parts.push(`  ${choices[i]}`);
+    if (i < choices.length - 1) {
+      parts.push('  <break time="0.6s"/>');
     }
   }
 
-  return parts.join(" ");
+  parts.push("</speak>");
+  return parts.join("\n");
 }
 
-/** Generate audio via Google Cloud TTS */
-async function generateAudio(text, outputFile) {
+/** Generate audio via Google Cloud TTS using SSML */
+async function generateAudio(ssml, outputFile) {
   if (fs.existsSync(outputFile)) {
     return false;
   }
 
   const [response] = await client.synthesizeSpeech({
-    input: { text },
+    input: { ssml },
     voice: VOICE,
     audioConfig: AUDIO_CONFIG,
   });
@@ -118,8 +133,8 @@ async function main() {
       fileNum++;
       console.log(`[${fileNum}/${totalFiles}] ${std.standard_id} q${qNum}...`);
 
-      const combinedText = buildCombinedText(q);
-      const didGenerate = await generateAudio(combinedText, file);
+      const ssml = buildSSML(q);
+      const didGenerate = await generateAudio(ssml, file);
 
       if (didGenerate) {
         generated++;
