@@ -59,7 +59,11 @@ class AudioManager {
     const { isMuted } = useAudioStore.getState();
     if (isMuted) return Promise.resolve();
 
-    this.stopCurrent();
+    // Stop immediately (not with fade delay) to avoid killing a replayed cached howl
+    if (this.currentHowl) {
+      try { this.currentHowl.stop(); } catch {}
+      this.currentHowl = null;
+    }
 
     return new Promise((resolve) => {
       let howl = this.cache.get(url);

@@ -48,6 +48,13 @@ function splitPrompt(prompt) {
   return { passage: "", question: cleanText(prompt.trim()) };
 }
 
+/** Lowercase the first letter unless it's "I" (pronoun) or starts with a proper noun pattern */
+function lowercaseFirst(text) {
+  if (!text) return text;
+  if (text === "I" || text.startsWith("I ") || text.startsWith("I'")) return text;
+  return text.charAt(0).toLowerCase() + text.slice(1);
+}
+
 /** Escape text for SSML (ampersands, angle brackets, quotes) */
 function escapeSSML(text) {
   return text
@@ -73,10 +80,12 @@ function buildSSML(q) {
 
   for (let i = 0; i < choices.length; i++) {
     if (i === choices.length - 1 && choices.length > 1) {
-      parts.push("  Or");
+      parts.push("  Or,");
       parts.push('  <break time="0.4s"/>');
+      parts.push(`  ${lowercaseFirst(choices[i])}`);
+    } else {
+      parts.push(`  ${choices[i]}`);
     }
-    parts.push(`  ${choices[i]}`);
     if (i < choices.length - 1) {
       parts.push('  <break time="0.6s"/>');
     }

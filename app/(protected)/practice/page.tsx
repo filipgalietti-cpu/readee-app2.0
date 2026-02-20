@@ -78,6 +78,41 @@ function splitPrompt(prompt: string): { passage: string | null; question: string
   return { passage: null, question: prompt };
 }
 
+/** Strip emoji for timing calculation (mirrors generate-audio.js cleanText) */
+function cleanForTiming(text: string): string {
+  return text.replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{FE00}-\u{FE0F}\u{200D}]/gu, "").replace(/^Read:\s*/i, "").trim();
+}
+
+/** Calculate when each answer choice starts being read (in ms) */
+function calculateChoiceTimings(prompt: string, choices: string[]): number[] {
+  const CHARS_PER_SEC = 15; // ~15 chars/sec at 0.82 speaking rate
+  const { passage, question } = splitPrompt(prompt);
+
+  let t = 0;
+  if (passage) {
+    t += cleanForTiming(passage).length / CHARS_PER_SEC;
+    t += 1.0; // SSML break after passage
+  }
+  t += cleanForTiming(question).length / CHARS_PER_SEC;
+  t += 0.8; // SSML break after question
+
+  const timings: number[] = [];
+  for (let i = 0; i < choices.length; i++) {
+    if (i === choices.length - 1 && choices.length > 1) {
+      t += 3 / CHARS_PER_SEC; // "Or," spoken
+      t += 0.4; // SSML break after "Or,"
+    }
+    timings.push(t * 1000);
+    t += cleanForTiming(choices[i]).length / CHARS_PER_SEC;
+    if (i < choices.length - 1) {
+      t += 0.6; // SSML break between choices
+    }
+  }
+  // End time: after last choice finishes + buffer
+  timings.push((t + 0.5) * 1000);
+  return timings; // [choice0Start, choice1Start, ..., endTime]
+}
+
 function getNextStandard(currentId: string): Standard | null {
   const idx = ALL_STANDARDS.findIndex((s) => s.standard_id === currentId);
   if (idx >= 0 && idx < ALL_STANDARDS.length - 1) return ALL_STANDARDS[idx + 1];
@@ -217,7 +252,9 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
 
   const [saving, setSaving] = useState(false);
   const [audioReady, setAudioReady] = useState(false);
+  const [highlightedIdx, setHighlightedIdx] = useState<number | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const highlightTimersRef = useRef<ReturnType<typeof setTimeout>[]>([]);
 
   const questions = useMemo(() => {
     if (standard.questions.length <= QUESTIONS_PER_SESSION) return standard.questions;
@@ -233,6 +270,39 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
 
   const q = questions[currentIdx];
   const totalQ = questions.length;
+
+  /** Clear all highlight timers */
+  const clearHighlights = useCallback(() => {
+    highlightTimersRef.current.forEach(clearTimeout);
+    highlightTimersRef.current = [];
+    setHighlightedIdx(null);
+  }, []);
+
+  /** Start timed highlight sequence for answer cards */
+  const startHighlightSequence = useCallback((question: Question) => {
+    clearHighlights();
+    if (!question.audio_url) return;
+
+    const timings = calculateChoiceTimings(question.prompt, question.choices);
+    const timers: ReturnType<typeof setTimeout>[] = [];
+
+    for (let i = 0; i < question.choices.length; i++) {
+      timers.push(setTimeout(() => setHighlightedIdx(i), timings[i]));
+    }
+    // Clear highlight after last choice finishes
+    const endTime = timings[timings.length - 1]; // the extra end marker
+    timers.push(setTimeout(() => setHighlightedIdx(null), endTime));
+
+    highlightTimersRef.current = timers;
+  }, [clearHighlights]);
+
+  // Clean up highlight timers on unmount
+  useEffect(() => {
+    return () => {
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      highlightTimersRef.current.forEach(clearTimeout);
+    };
+  }, []);
 
   /** Handle "Tap to Start" — unlock audio and begin */
   const handleStart = useCallback(async () => {
@@ -255,13 +325,14 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
 
     if (q.audio_url) {
       playUrl(q.audio_url);
+      startHighlightSequence(q);
     } else {
       // Fallback to TTS if no audio file
       const { passage, question } = splitPrompt(q.prompt);
       const textToSpeak = passage ? `${passage}. ${question}` : question;
       speak(textToSpeak);
     }
-    return () => stop();
+    return () => { stop(); clearHighlights(); };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentIdx, phase, audioReady]);
 
@@ -276,11 +347,28 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase]);
 
+  /* ── Replay full audio from the beginning ── */
+  const handleReplay = useCallback(() => {
+    stop();
+    clearHighlights();
+    if (q.audio_url) {
+      playUrl(q.audio_url);
+      if (selected === null) {
+        startHighlightSequence(q);
+      }
+    } else {
+      const { passage: p, question: qText } = splitPrompt(q.prompt);
+      const textToSpeak = p ? `${p}. ${qText}` : qText;
+      speak(textToSpeak);
+    }
+  }, [q, stop, clearHighlights, playUrl, startHighlightSequence, speak, selected]);
+
   /* ── Handle answer selection ── */
   const handleAnswer = useCallback((choice: string) => {
     if (selected !== null) return;
-    // Stop any playing audio immediately
+    // Stop any playing audio and highlights immediately
     stop();
+    clearHighlights();
     const correct = choice === q.correct;
 
     selectAnswer(choice, correct, q.id, XP_PER_CORRECT, CORRECT_MESSAGES, CORRECT_EMOJIS, INCORRECT_MESSAGES);
@@ -290,7 +378,7 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
     } else {
       playIncorrectBuzz();
     }
-  }, [selected, q, selectAnswer, stop, playCorrectChime, playIncorrectBuzz]);
+  }, [selected, q, selectAnswer, stop, clearHighlights, playCorrectChime, playIncorrectBuzz]);
 
   /* ── Continue to next question ── */
   const handleContinue = useCallback(() => {
@@ -420,7 +508,15 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
             <h2 className="text-[22px] font-bold text-zinc-900 dark:text-white leading-snug flex-1">
               {question}
             </h2>
-            <SpeakerButton text={question} audioUrl={q.audio_url} />
+            <button
+              onClick={handleReplay}
+              className="inline-flex items-center justify-center w-8 h-8 rounded-full hover:bg-zinc-200 dark:hover:bg-white/10 transition-colors flex-shrink-0"
+              aria-label="Replay audio"
+            >
+              <svg className="w-4 h-4 text-indigo-600 dark:text-indigo-300" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.536 8.464a5 5 0 010 7.072M17.95 6.05a8 8 0 010 11.9M11 5L6 9H2v6h4l5 4V5z" />
+              </svg>
+            </button>
           </div>
         </motion.div>
 
@@ -430,6 +526,7 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
             const isSelected = selected === choice;
             const isCorrectChoice = choice === q.correct;
             const answered = selected !== null;
+            const isHighlighted = highlightedIdx === i && !answered;
 
             let bg = "bg-white border-zinc-300 hover:border-indigo-400 hover:bg-indigo-50 dark:bg-slate-800 dark:border-slate-600 dark:hover:border-indigo-400 dark:hover:bg-slate-700 active:scale-[0.97]";
             let textColor = "text-zinc-900 dark:text-white";
@@ -459,7 +556,16 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
                     ? { x: [0, -8, 8, -6, 6, -3, 3, 0], transition: { duration: 0.5 } }
                     : isSelected && isCorrect
                     ? { scale: [1, 1.05, 1], transition: { duration: 0.3 } }
-                    : {}
+                    : isHighlighted
+                    ? {
+                        boxShadow: [
+                          "0 0 0 2px rgba(99,102,241,0.5), 0 0 8px rgba(99,102,241,0.2)",
+                          "0 0 0 3px rgba(129,140,248,0.7), 0 0 16px rgba(99,102,241,0.35)",
+                          "0 0 0 2px rgba(99,102,241,0.5), 0 0 8px rgba(99,102,241,0.2)",
+                        ],
+                        transition: { duration: 1.5, repeat: Infinity, ease: "easeInOut" },
+                      }
+                    : { boxShadow: "0 0 0 0px transparent", transition: { duration: 0.3 } }
                 }
                 onClick={() => handleAnswer(choice)}
                 disabled={answered}
