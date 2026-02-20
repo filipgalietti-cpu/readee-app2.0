@@ -70,30 +70,41 @@ function escapeSSML(text) {
     .replace(/"/g, "&quot;");
 }
 
+/** Convert numbers 0-20 to written words for natural TTS */
+const NUMBER_WORDS = [
+  "zero", "one", "two", "three", "four", "five", "six", "seven",
+  "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen",
+  "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty",
+];
+
+function numbersToWords(text) {
+  return text.replace(/\b(\d+)\b/g, (match, num) => {
+    const n = parseInt(num, 10);
+    if (n >= 0 && n <= 20) return NUMBER_WORDS[n];
+    return match;
+  });
+}
+
 /** Build SSML with natural teacher-style pauses */
 function buildSSML(q) {
   const { passage, question } = splitPrompt(q.prompt);
-  const choices = q.choices.map((c) => escapeSSML(cleanText(c)));
+  const choices = q.choices.map((c) => numbersToWords(escapeSSML(cleanText(c))));
   const parts = [];
 
   parts.push("<speak>");
   if (passage) {
-    parts.push(`  ${escapeSSML(passage)}`);
+    parts.push(`  ${numbersToWords(escapeSSML(passage))}`);
     parts.push('  <break time="1.5s"/>');
   }
-  parts.push(`  ${escapeSSML(question)}`);
-  parts.push('  <break time="1.2s"/>');
+  parts.push(`  ${numbersToWords(escapeSSML(question))}`);
+  parts.push('  <break time="1s"/>');
 
   for (let i = 0; i < choices.length; i++) {
     if (i === choices.length - 1 && choices.length > 1) {
-      parts.push("  Or,");
-      parts.push('  <break time="0.5s"/>');
-      parts.push(`  ${lowercaseFirst(choices[i])}`);
+      parts.push('  <break time="0.3s"/>');
+      parts.push(`  or ${lowercaseFirst(choices[i])}.`);
     } else {
-      parts.push(`  ${choices[i]}`);
-    }
-    if (i < choices.length - 1) {
-      parts.push('  <break time="0.8s"/>');
+      parts.push(`  ${choices[i]},`);
     }
   }
 

@@ -118,19 +118,17 @@ function calculateChoiceTimings(prompt: string, choices: string[]): number[] {
     t += 1.5; // SSML break after passage
   }
   t += cleanForTiming(question).length / CHARS_PER_SEC;
-  t += 1.2; // SSML break after question
+  t += 1.0; // SSML break after question
 
   const timings: number[] = [];
   for (let i = 0; i < choices.length; i++) {
     if (i === choices.length - 1 && choices.length > 1) {
-      t += 3 / CHARS_PER_SEC; // "Or," spoken
-      t += 0.5; // SSML break after "Or,"
+      t += 0.3; // SSML break before "or"
+      t += 3 / CHARS_PER_SEC; // "or " spoken
     }
     timings.push(t * 1000);
     t += cleanForTiming(choices[i]).length / CHARS_PER_SEC;
-    if (i < choices.length - 1) {
-      t += 0.8; // SSML break between choices
-    }
+    // Commas handle natural pacing — no extra breaks between choices
   }
   // End time: after last choice finishes + buffer
   timings.push((t + 0.5) * 1000);
