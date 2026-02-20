@@ -68,6 +68,7 @@ const FAQS = [
 ];
 
 const ACCENT_COLORS = ["#60a5fa", "#4ade80", "#fb923c", "#a78bfa"];
+const TESTIMONIAL_BORDER_COLORS = ["#6366f1", "#6d28d9", "#8b5cf6"];
 
 interface LessonData {
   id: string;
@@ -225,7 +226,7 @@ function UpgradeContent() {
 
   return (
     <motion.div
-      className="max-w-3xl mx-auto py-8 px-4 pb-16 space-y-14 min-h-screen bg-gradient-to-b from-white via-indigo-50/30 to-white dark:from-slate-900 dark:via-slate-900 dark:to-slate-900"
+      className="max-w-3xl mx-auto py-8 px-4 pb-16 space-y-8 min-h-screen bg-gradient-to-b from-white via-indigo-50/30 to-white dark:from-slate-900 dark:via-slate-900 dark:to-slate-900"
       variants={staggerContainer}
       initial="hidden"
       animate="visible"
@@ -353,7 +354,7 @@ function UpgradeContent() {
                 animate={{ opacity: 1, scale: 1, x: 0 }}
                 exit={{ opacity: 0, scale: 0.8, x: -8 }}
                 transition={{ type: "spring", stiffness: 500, damping: 25 }}
-                className="px-2.5 py-1 rounded-full text-[11px] font-bold bg-green-100 dark:bg-green-950/40 text-green-700 dark:text-green-300 border border-green-200 dark:border-green-800/40"
+                className="px-2.5 py-1 rounded-full text-[11px] font-bold bg-amber-500 text-white border border-amber-400"
               >
                 Save $21/year
               </motion.span>
@@ -363,8 +364,9 @@ function UpgradeContent() {
 
         {/* Pricing card */}
         <div className="max-w-sm mx-auto">
+          <div className="rounded-2xl bg-gradient-to-br from-indigo-500 via-violet-500 to-indigo-500 p-[2px] shadow-lg shadow-indigo-200 dark:shadow-indigo-900/30">
           <motion.div
-            className="rounded-2xl border-2 border-indigo-400 dark:border-indigo-500 bg-gradient-to-b from-white to-indigo-50/40 dark:from-slate-800 dark:to-indigo-950/20 p-7 space-y-4 relative shadow-lg shadow-indigo-100/50 dark:shadow-indigo-900/30"
+            className="rounded-[14px] bg-gradient-to-b from-white to-indigo-50/40 dark:from-slate-800 dark:to-indigo-950/20 p-7 space-y-4 relative"
             whileHover={{ y: -4, boxShadow: "0 16px 32px rgba(99,102,241,0.2)" }}
             transition={{ duration: 0.2 }}
           >
@@ -409,6 +411,7 @@ function UpgradeContent() {
               Start 7-Day Free Trial
             </button>
           </motion.div>
+          </div>
         </div>
 
         <p className="text-center text-xs text-zinc-400 dark:text-slate-500">
@@ -484,7 +487,7 @@ function UpgradeContent() {
         <h2 className="text-xl sm:text-2xl font-bold text-white">
           Start your child&apos;s reading journey today
         </h2>
-        <p className="text-indigo-100 text-sm max-w-md mx-auto">
+        <p className="text-white/80 text-sm max-w-md mx-auto">
           7 days free, then just $8.25/month with the annual plan. Cancel anytime — no risk, no commitment.
         </p>
         <button
@@ -662,7 +665,7 @@ function MiniDemoQuestion({ onTrialClick }: { onTrialClick: () => void }) {
     <div className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 overflow-hidden shadow-sm">
       <div className="bg-gradient-to-r from-indigo-600 to-violet-500 px-5 py-3">
         <h2 className="text-white font-bold text-sm">Try a sample question!</h2>
-        <p className="text-indigo-100 text-xs">See what your child&apos;s practice sessions look like</p>
+        <p className="text-white/90 text-xs">See what your child&apos;s practice sessions look like</p>
       </div>
 
       <div className="p-5 space-y-4">
@@ -674,7 +677,7 @@ function MiniDemoQuestion({ onTrialClick }: { onTrialClick: () => void }) {
             </p>
             <button
               onClick={handleStart}
-              className="px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white font-bold text-sm hover:from-indigo-700 hover:to-violet-600 transition-all shadow-md hover:shadow-lg hover:scale-105"
+              className="w-full max-w-xs mx-auto h-14 rounded-xl bg-white text-indigo-600 font-extrabold text-base hover:bg-indigo-50 transition-all shadow-md hover:shadow-lg animate-pulse"
             >
               Try it!
             </button>
@@ -856,8 +859,11 @@ function TestimonialCarousel() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -60 }}
             transition={{ duration: 0.35, ease: "easeInOut" }}
-            className="p-6 space-y-3"
+            className="p-6 space-y-3 relative"
+            style={{ borderLeft: `3px solid ${TESTIMONIAL_BORDER_COLORS[current % TESTIMONIAL_BORDER_COLORS.length]}` }}
           >
+            {/* Quotation mark graphic */}
+            <span className="absolute top-2 right-4 text-6xl font-serif leading-none text-indigo-100 dark:text-indigo-900/40 pointer-events-none select-none">&ldquo;</span>
             {/* Stars */}
             <div className="flex gap-0.5">
               {Array.from({ length: 5 }).map((_, j) => (
@@ -866,7 +872,7 @@ function TestimonialCarousel() {
                 </svg>
               ))}
             </div>
-            <p className="text-sm text-zinc-700 dark:text-slate-300 leading-relaxed">
+            <p className="text-sm text-zinc-700 dark:text-slate-300 leading-relaxed relative z-10">
               &ldquo;{TESTIMONIALS[current].quote}&rdquo;
             </p>
             <div className="text-xs text-zinc-500 dark:text-slate-400">
