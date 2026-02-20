@@ -154,9 +154,6 @@ function UpgradeContent() {
   const [loading, setLoading] = useState(true);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-  // Pricing toggle
-  const [billingPeriod, setBillingPeriod] = useState<"monthly" | "annual">("annual");
-
   // Modal state
   const [showModal, setShowModal] = useState(false);
   const [modalPlan, setModalPlan] = useState<"monthly" | "annual">("annual");
@@ -321,118 +318,83 @@ function UpgradeContent() {
         </table>
       </motion.div>
 
-      {/* ── PRICING WITH TOGGLE ── */}
+      {/* ── PRICING — SIDE BY SIDE ── */}
       <motion.div variants={slideUp} className="space-y-6">
         <h2 className="text-xl font-bold text-zinc-900 dark:text-slate-100 text-center">
           Choose your plan
         </h2>
 
-        {/* Toggle switch */}
-        <div className="flex items-center justify-center gap-3">
-          <span className={`text-sm font-medium transition-colors ${billingPeriod === "monthly" ? "text-zinc-900 dark:text-slate-100" : "text-zinc-400 dark:text-slate-500"}`}>
-            Monthly
-          </span>
-          <button
-            onClick={() => setBillingPeriod(billingPeriod === "monthly" ? "annual" : "monthly")}
-            className={`relative w-14 h-8 rounded-full transition-colors duration-300 ${
-              billingPeriod === "annual" ? "bg-indigo-600" : "bg-zinc-300 dark:bg-slate-600"
-            }`}
-          >
-            <motion.div
-              className="absolute top-1 w-6 h-6 rounded-full bg-white shadow-md"
-              animate={{ left: billingPeriod === "annual" ? 30 : 4 }}
-              transition={{ type: "spring", stiffness: 500, damping: 30 }}
-            />
-          </button>
-          <span className={`text-sm font-medium transition-colors ${billingPeriod === "annual" ? "text-zinc-900 dark:text-slate-100" : "text-zinc-400 dark:text-slate-500"}`}>
-            Annual
-          </span>
-          <AnimatePresence>
-            {billingPeriod === "annual" && (
-              <motion.span
-                initial={{ opacity: 0, scale: 0.8, x: -8 }}
-                animate={{ opacity: 1, scale: 1, x: 0 }}
-                exit={{ opacity: 0, scale: 0.8, x: -8 }}
-                transition={{ type: "spring", stiffness: 500, damping: 25 }}
-                className="px-2.5 py-1 rounded-full text-[11px] font-bold bg-amber-500 text-white border border-amber-400"
-              >
-                Save $21/year
-              </motion.span>
-            )}
-          </AnimatePresence>
-        </div>
-
-        {/* Pricing card */}
-        <div className="max-w-sm mx-auto">
-          <div className="rounded-2xl bg-gradient-to-br from-indigo-500 via-violet-500 to-indigo-500 p-[2px] shadow-lg shadow-indigo-200 dark:shadow-indigo-900/30">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+          {/* Monthly card */}
           <motion.div
-            className="rounded-[14px] bg-gradient-to-b from-white to-indigo-50/40 dark:from-slate-800 dark:to-indigo-950/20 p-7 space-y-4 relative"
-            whileHover={{ y: -4, boxShadow: "0 16px 32px rgba(99,102,241,0.2)" }}
+            className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-7 flex flex-col justify-between space-y-6 order-2 md:order-1"
+            whileHover={{ y: -4 }}
             transition={{ duration: 0.2 }}
           >
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={billingPeriod}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.2 }}
-                className="space-y-1"
-              >
-                {billingPeriod === "annual" ? (
-                  <>
-                    <div className="text-sm font-semibold text-indigo-600 dark:text-indigo-400">Annual</div>
-                    <div className="flex items-baseline gap-2">
-                      <span className="text-4xl font-bold text-zinc-900 dark:text-slate-100">$99</span>
-                      <span className="text-sm text-zinc-400 dark:text-slate-500 line-through">$119.88</span>
-                    </div>
-                    <div className="text-sm text-zinc-500 dark:text-slate-400">/year</div>
-                    <p className="text-xs text-zinc-500 dark:text-slate-400 pt-1">
-                      Just <span className="font-semibold text-indigo-600 dark:text-indigo-400">$8.25/month</span> — billed annually
-                    </p>
-                  </>
-                ) : (
-                  <>
-                    <div className="text-sm font-semibold text-zinc-500 dark:text-slate-400">Monthly</div>
-                    <div>
-                      <span className="text-4xl font-bold text-zinc-900 dark:text-slate-100">$9.99</span>
-                    </div>
-                    <div className="text-sm text-zinc-500 dark:text-slate-400">/month</div>
-                    <p className="text-xs text-zinc-400 dark:text-slate-500 pt-1">Billed monthly. Cancel anytime.</p>
-                  </>
-                )}
-              </motion.div>
-            </AnimatePresence>
+            <div className="space-y-1">
+              <div className="text-sm font-semibold text-zinc-500 dark:text-slate-400">Monthly</div>
+              <div className="flex items-baseline gap-1">
+                <span className="text-4xl font-bold text-zinc-900 dark:text-slate-100">$9.99</span>
+                <span className="text-sm text-zinc-400 dark:text-slate-500">/month</span>
+              </div>
+              <p className="text-xs text-zinc-500 dark:text-slate-400 pt-1">Billed monthly</p>
+              <p className="text-xs text-zinc-400 dark:text-slate-500 pt-2">Flexibility to cancel anytime</p>
+            </div>
 
             <button
-              onClick={() => handleOpenModal(billingPeriod)}
-              className="w-full py-4 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white font-bold text-sm hover:from-indigo-700 hover:to-violet-600 transition-all shadow-md"
+              onClick={() => handleOpenModal("monthly")}
+              className="w-full py-4 rounded-xl border-2 border-indigo-500 dark:border-indigo-400 text-indigo-600 dark:text-indigo-400 font-bold text-sm hover:bg-indigo-50 dark:hover:bg-indigo-950/30 transition-all"
             >
               Start 7-Day Free Trial
             </button>
           </motion.div>
-          </div>
+
+          {/* Annual card (recommended) */}
+          <motion.div
+            className="relative rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 p-7 flex flex-col justify-between space-y-6 order-1 md:order-2 md:-mt-2 shadow-xl shadow-indigo-300/40 dark:shadow-indigo-900/50"
+            whileHover={{ y: -6 }}
+            animate={{ y: [0, -4, 0] }}
+            transition={{ y: { duration: 3, repeat: Infinity, ease: "easeInOut" } }}
+          >
+            {/* Best Value badge */}
+            <div className="absolute -top-3 -right-2 px-3 py-1 rounded-full text-[11px] font-bold bg-amber-500 text-white shadow-md">
+              Best Value
+            </div>
+
+            <div className="space-y-1">
+              <div className="text-sm font-semibold text-white/80">Annual</div>
+              <div className="flex items-baseline gap-2">
+                <span className="text-4xl font-bold text-white">$99</span>
+                <span className="text-sm text-white/60 line-through">$119.88</span>
+                <span className="text-sm text-white/70">/year</span>
+              </div>
+              <p className="text-sm font-bold text-white pt-1">Just $8.25/month</p>
+              <span className="inline-block mt-2 px-2.5 py-1 rounded-full text-[11px] font-bold bg-emerald-400/20 text-emerald-100 border border-emerald-300/30">
+                Save $21 per year
+              </span>
+            </div>
+
+            <button
+              onClick={() => handleOpenModal("annual")}
+              className="w-full py-4 rounded-xl bg-white text-indigo-600 font-bold text-sm hover:bg-indigo-50 transition-all shadow-md"
+            >
+              Start 7-Day Free Trial
+            </button>
+          </motion.div>
         </div>
 
         <p className="text-center text-xs text-zinc-400 dark:text-slate-500">
-          7 days free, then {billingPeriod === "annual" ? "$99/year ($8.25/mo)" : "$9.99/month"}. Cancel anytime.
+          7 days free, then your selected plan. Cancel anytime.
         </p>
-      </motion.div>
 
-      {/* ── TRUST SIGNALS ── */}
-      <motion.div variants={fadeUp} className="flex flex-wrap justify-center gap-x-6 gap-y-2">
-        {[
-          { icon: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z", label: "7-day free trial" },
-          { icon: "M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z", label: "Cancel anytime" },
-          { icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z", label: "30-day money back" },
-        ].map((item) => (
-          <div key={item.label} className="flex items-center gap-1.5 text-xs text-zinc-500 dark:text-slate-400">
-            <svg className="w-4 h-4 text-green-500 dark:text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d={item.icon} />
-            </svg>
-            {item.label}
-          </div>
-        ))}
+        {/* Trust badges */}
+        <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs text-zinc-500 dark:text-slate-400">
+          <span>🔒 Secure payment</span>
+          <span className="text-zinc-300 dark:text-slate-600">·</span>
+          <span>✅ Cancel anytime</span>
+          <span className="text-zinc-300 dark:text-slate-600">·</span>
+          <span>💰 30-day money back</span>
+        </div>
       </motion.div>
 
       {/* ── TESTIMONIAL CAROUSEL ── */}
