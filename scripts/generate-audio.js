@@ -81,18 +81,35 @@ async function synthesizeToMp3(text, outputMp3) {
     },
   };
 
-  const res = await fetch(TTS_ENDPOINT, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body),
-  });
+  let json;
+  for (let attempt = 0; attempt < 10; attempt++) {
+    const res = await fetch(TTS_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
 
-  if (!res.ok) {
-    const errText = await res.text();
-    throw new Error(`Gemini TTS API ${res.status}: ${errText}`);
+    if (res.status === 429) {
+      const errBody = await res.text();
+      // Try to parse "retryDelay": "27s" or "retry in 27.6s"
+      const retryMatch = errBody.match(/"retryDelay":\s*"(\d+)s?"/i)
+        || errBody.match(/retry in ([\d.]+)s/i);
+      const waitSec = retryMatch ? Math.ceil(parseFloat(retryMatch[1])) + 5 : 35;
+      console.log(`    ⏳ Rate limited (attempt ${attempt + 1}/10), waiting ${waitSec}s...`);
+      await delay(waitSec * 1000);
+      continue;
+    }
+
+    if (!res.ok) {
+      const errText = await res.text();
+      throw new Error(`Gemini TTS API ${res.status}: ${errText}`);
+    }
+
+    json = await res.json();
+    break;
   }
 
-  const json = await res.json();
+  if (!json) throw new Error("Failed after 10 retries");
 
   const audioData = json.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data;
   if (!audioData) {
@@ -137,12 +154,18 @@ async function main() {
     process.exit(1);
   }
 
-  // ── Phase 1: Delete old audio files ───────────────────
-  console.log("=== Deleting old audio files ===\n");
-  const deletedK = deleteAllFiles(KINDERGARTEN_DIR);
-  console.log(`  Deleted ${deletedK} files from kindergarten/`);
-  const deletedF = deleteAllFiles(FEEDBACK_DIR);
-  console.log(`  Deleted ${deletedF} files from feedback/`);
+  const freshStart = process.argv.includes("--clean");
+
+  if (freshStart) {
+    // ── Phase 1: Delete old audio files ───────────────────
+    console.log("=== Deleting old audio files ===\n");
+    const deletedK = deleteAllFiles(KINDERGARTEN_DIR);
+    console.log(`  Deleted ${deletedK} files from kindergarten/`);
+    const deletedF = deleteAllFiles(FEEDBACK_DIR);
+    console.log(`  Deleted ${deletedF} files from feedback/`);
+  } else {
+    console.log("=== Resumable mode (pass --clean to delete old files first) ===\n");
+  }
 
   fs.mkdirSync(KINDERGARTEN_DIR, { recursive: true });
   fs.mkdirSync(FEEDBACK_DIR, { recursive: true });
@@ -167,24 +190,31 @@ async function main() {
       const fileName = `${std.standard_id}-q${qNum}.mp3`;
       const file = path.join(KINDERGARTEN_DIR, fileName);
 
-      console.log(`  [question] ${fileName}`);
-      console.log(`    Script: "${q.audio_script.slice(0, 80)}..."`);
-
-      await synthesizeToMp3(q.audio_script, file);
-      totalGenerated++;
-      console.log(`    ✓ Generated`);
-      await delay(1000);
+      if (fs.existsSync(file)) {
+        console.log(`  [question] ${fileName} — SKIP (exists)`);
+      } else {
+        console.log(`  [question] ${fileName}`);
+        console.log(`    Script: "${q.audio_script.slice(0, 80)}..."`);
+        await synthesizeToMp3(q.audio_script, file);
+        totalGenerated++;
+        console.log(`    ✓ Generated`);
+        await delay(21000);
+      }
 
       // Hint audio
       if (q.hint) {
         const hintFileName = `${std.standard_id}-q${qNum}-hint.mp3`;
         const hintFile = path.join(KINDERGARTEN_DIR, hintFileName);
 
-        console.log(`  [hint]     ${hintFileName}`);
-        await synthesizeToMp3(q.hint, hintFile);
-        totalGenerated++;
-        console.log(`    ✓ Generated`);
-        await delay(1000);
+        if (fs.existsSync(hintFile)) {
+          console.log(`  [hint]     ${hintFileName} — SKIP (exists)`);
+        } else {
+          console.log(`  [hint]     ${hintFileName}`);
+          await synthesizeToMp3(q.hint, hintFile);
+          totalGenerated++;
+          console.log(`    ✓ Generated`);
+          await delay(21000);
+        }
       }
 
       // Update JSON audio_url fields
@@ -207,21 +237,29 @@ async function main() {
 
   for (const phrase of FEEDBACK_PHRASES) {
     const file = path.join(FEEDBACK_DIR, phrase.file);
+    if (fs.existsSync(file)) {
+      console.log(`  [feedback] ${phrase.file} — SKIP (exists)`);
+      continue;
+    }
     console.log(`  [feedback] ${phrase.file}: "${phrase.text}"`);
     await synthesizeToMp3(phrase.text, file);
     totalGenerated++;
     console.log(`    ✓ Generated`);
-    await delay(1000);
+    await delay(21000);
   }
 
   // ── Phase 4: Generate intro audio ─────────────────────
   console.log("\n=== Generating intro audio ===\n");
 
   const introFile = path.join(KINDERGARTEN_DIR, INTRO_PHRASE.file);
-  console.log(`  [intro] ${INTRO_PHRASE.file}: "${INTRO_PHRASE.text}"`);
-  await synthesizeToMp3(INTRO_PHRASE.text, introFile);
-  totalGenerated++;
-  console.log(`    ✓ Generated`);
+  if (fs.existsSync(introFile)) {
+    console.log(`  [intro] ${INTRO_PHRASE.file} — SKIP (exists)`);
+  } else {
+    console.log(`  [intro] ${INTRO_PHRASE.file}: "${INTRO_PHRASE.text}"`);
+    await synthesizeToMp3(INTRO_PHRASE.text, introFile);
+    totalGenerated++;
+    console.log(`    ✓ Generated`);
+  }
 
   console.log(`\n=== Done! Total files generated: ${totalGenerated} ===`);
 }
