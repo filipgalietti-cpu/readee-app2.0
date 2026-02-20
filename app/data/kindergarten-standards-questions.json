@@ -22,7 +22,16 @@
           ],
           "correct": "A red ball",
           "hint": "Look at the second sentence — what did Max play fetch with?",
-          "difficulty": 1
+          "difficulty": 1,
+          "passage_audio_url": "/audio/kindergarten/RL.K.1-q1-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RL.K.1-q1-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RL.K.1-q1-choice1.mp3",
+            "/audio/kindergarten/RL.K.1-q1-choice2.mp3",
+            "/audio/kindergarten/RL.K.1-q1-choice3.mp3",
+            "/audio/kindergarten/RL.K.1-q1-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RL.K.1-q1-hint.mp3"
         },
         {
           "id": "RL.K.1-Q2",
@@ -36,7 +45,16 @@
           ],
           "correct": "To school",
           "hint": "Read the end of the second sentence carefully!",
-          "difficulty": 1
+          "difficulty": 1,
+          "passage_audio_url": "/audio/kindergarten/RL.K.1-q2-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RL.K.1-q2-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RL.K.1-q2-choice1.mp3",
+            "/audio/kindergarten/RL.K.1-q2-choice2.mp3",
+            "/audio/kindergarten/RL.K.1-q2-choice3.mp3",
+            "/audio/kindergarten/RL.K.1-q2-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RL.K.1-q2-hint.mp3"
         },
         {
           "id": "RL.K.1-Q3",
@@ -50,7 +68,16 @@
           ],
           "correct": "6",
           "hint": "The story tells you a number — what is it?",
-          "difficulty": 1
+          "difficulty": 1,
+          "passage_audio_url": "/audio/kindergarten/RL.K.1-q3-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RL.K.1-q3-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RL.K.1-q3-choice1.mp3",
+            "/audio/kindergarten/RL.K.1-q3-choice2.mp3",
+            "/audio/kindergarten/RL.K.1-q3-choice3.mp3",
+            "/audio/kindergarten/RL.K.1-q3-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RL.K.1-q3-hint.mp3"
         },
         {
           "id": "RL.K.1-Q4",
@@ -64,7 +91,16 @@
           ],
           "correct": "Gray with white paws",
           "hint": "The second sentence describes what the kitten looked like.",
-          "difficulty": 2
+          "difficulty": 2,
+          "passage_audio_url": "/audio/kindergarten/RL.K.1-q4-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RL.K.1-q4-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RL.K.1-q4-choice1.mp3",
+            "/audio/kindergarten/RL.K.1-q4-choice2.mp3",
+            "/audio/kindergarten/RL.K.1-q4-choice3.mp3",
+            "/audio/kindergarten/RL.K.1-q4-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RL.K.1-q4-hint.mp3"
         },
         {
           "id": "RL.K.1-Q5",
@@ -78,7 +114,16 @@
           ],
           "correct": "His grandma",
           "hint": "Look at the very first word of the story!",
-          "difficulty": 2
+          "difficulty": 2,
+          "passage_audio_url": "/audio/kindergarten/RL.K.1-q5-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RL.K.1-q5-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RL.K.1-q5-choice1.mp3",
+            "/audio/kindergarten/RL.K.1-q5-choice2.mp3",
+            "/audio/kindergarten/RL.K.1-q5-choice3.mp3",
+            "/audio/kindergarten/RL.K.1-q5-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RL.K.1-q5-hint.mp3"
         }
       ]
     },
@@ -100,7 +145,16 @@
           ],
           "correct": "Bear was hungry, found honey in a tree, and ate it.",
           "hint": "Which answer tells what happened in order — beginning, middle, and end?",
-          "difficulty": 1
+          "difficulty": 1,
+          "passage_audio_url": "/audio/kindergarten/RL.K.2-q1-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RL.K.2-q1-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RL.K.2-q1-choice1.mp3",
+            "/audio/kindergarten/RL.K.2-q1-choice2.mp3",
+            "/audio/kindergarten/RL.K.2-q1-choice3.mp3",
+            "/audio/kindergarten/RL.K.2-q1-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RL.K.2-q1-hint.mp3"
         },
         {
           "id": "RL.K.2-Q2",
@@ -114,7 +168,16 @@
           ],
           "correct": "Frog wanted to cross the pond.",
           "hint": "Think about what started the story — what did Frog want?",
-          "difficulty": 1
+          "difficulty": 1,
+          "passage_audio_url": "/audio/kindergarten/RL.K.2-q2-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RL.K.2-q2-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RL.K.2-q2-choice1.mp3",
+            "/audio/kindergarten/RL.K.2-q2-choice2.mp3",
+            "/audio/kindergarten/RL.K.2-q2-choice3.mp3",
+            "/audio/kindergarten/RL.K.2-q2-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RL.K.2-q2-hint.mp3"
         },
         {
           "id": "RL.K.2-Q3",
@@ -128,7 +191,16 @@
           ],
           "correct": "Mia forgot her lunch, so Leo shared with her.",
           "hint": "A good retelling includes the problem AND how it was solved.",
-          "difficulty": 2
+          "difficulty": 2,
+          "passage_audio_url": "/audio/kindergarten/RL.K.2-q3-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RL.K.2-q3-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RL.K.2-q3-choice1.mp3",
+            "/audio/kindergarten/RL.K.2-q3-choice2.mp3",
+            "/audio/kindergarten/RL.K.2-q3-choice3.mp3",
+            "/audio/kindergarten/RL.K.2-q3-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RL.K.2-q3-hint.mp3"
         },
         {
           "id": "RL.K.2-Q4",
@@ -142,7 +214,16 @@
           ],
           "correct": "Turtle won the race.",
           "hint": "Read the last sentence — who crossed the finish line?",
-          "difficulty": 1
+          "difficulty": 1,
+          "passage_audio_url": "/audio/kindergarten/RL.K.2-q4-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RL.K.2-q4-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RL.K.2-q4-choice1.mp3",
+            "/audio/kindergarten/RL.K.2-q4-choice2.mp3",
+            "/audio/kindergarten/RL.K.2-q4-choice3.mp3",
+            "/audio/kindergarten/RL.K.2-q4-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RL.K.2-q4-hint.mp3"
         },
         {
           "id": "RL.K.2-Q5",
@@ -156,7 +237,16 @@
           ],
           "correct": "A rainbow appeared.",
           "hint": "Look at what happened right after the sun came out.",
-          "difficulty": 2
+          "difficulty": 2,
+          "passage_audio_url": "/audio/kindergarten/RL.K.2-q5-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RL.K.2-q5-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RL.K.2-q5-choice1.mp3",
+            "/audio/kindergarten/RL.K.2-q5-choice2.mp3",
+            "/audio/kindergarten/RL.K.2-q5-choice3.mp3",
+            "/audio/kindergarten/RL.K.2-q5-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RL.K.2-q5-hint.mp3"
         }
       ]
     },
@@ -178,7 +268,16 @@
           ],
           "correct": "Jake and his sister",
           "hint": "Characters are the people (or animals) IN the story.",
-          "difficulty": 1
+          "difficulty": 1,
+          "passage_audio_url": "/audio/kindergarten/RL.K.3-q1-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RL.K.3-q1-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RL.K.3-q1-choice1.mp3",
+            "/audio/kindergarten/RL.K.3-q1-choice2.mp3",
+            "/audio/kindergarten/RL.K.3-q1-choice3.mp3",
+            "/audio/kindergarten/RL.K.3-q1-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RL.K.3-q1-hint.mp3"
         },
         {
           "id": "RL.K.3-Q2",
@@ -192,7 +291,16 @@
           ],
           "correct": "At the beach",
           "hint": "The setting is WHERE the story happens. Look for a place!",
-          "difficulty": 1
+          "difficulty": 1,
+          "passage_audio_url": "/audio/kindergarten/RL.K.3-q2-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RL.K.3-q2-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RL.K.3-q2-choice1.mp3",
+            "/audio/kindergarten/RL.K.3-q2-choice2.mp3",
+            "/audio/kindergarten/RL.K.3-q2-choice3.mp3",
+            "/audio/kindergarten/RL.K.3-q2-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RL.K.3-q2-hint.mp3"
         },
         {
           "id": "RL.K.3-Q3",
@@ -206,7 +314,16 @@
           ],
           "correct": "Nora saw a clown juggle at the circus.",
           "hint": "A major event is the BIG thing that happened in the story.",
-          "difficulty": 2
+          "difficulty": 2,
+          "passage_audio_url": "/audio/kindergarten/RL.K.3-q3-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RL.K.3-q3-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RL.K.3-q3-choice1.mp3",
+            "/audio/kindergarten/RL.K.3-q3-choice2.mp3",
+            "/audio/kindergarten/RL.K.3-q3-choice3.mp3",
+            "/audio/kindergarten/RL.K.3-q3-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RL.K.3-q3-hint.mp3"
         },
         {
           "id": "RL.K.3-Q4",
@@ -220,7 +337,16 @@
           ],
           "correct": "At nighttime",
           "hint": "What clues tell you the time? Think about 'dark' and 'moon.'",
-          "difficulty": 2
+          "difficulty": 2,
+          "passage_audio_url": "/audio/kindergarten/RL.K.3-q4-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RL.K.3-q4-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RL.K.3-q4-choice1.mp3",
+            "/audio/kindergarten/RL.K.3-q4-choice2.mp3",
+            "/audio/kindergarten/RL.K.3-q4-choice3.mp3",
+            "/audio/kindergarten/RL.K.3-q4-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RL.K.3-q4-hint.mp3"
         },
         {
           "id": "RL.K.3-Q5",
@@ -234,7 +360,16 @@
           ],
           "correct": "Biscuit",
           "hint": "Read carefully — who was digging?",
-          "difficulty": 1
+          "difficulty": 1,
+          "passage_audio_url": "/audio/kindergarten/RL.K.3-q5-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RL.K.3-q5-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RL.K.3-q5-choice1.mp3",
+            "/audio/kindergarten/RL.K.3-q5-choice2.mp3",
+            "/audio/kindergarten/RL.K.3-q5-choice3.mp3",
+            "/audio/kindergarten/RL.K.3-q5-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RL.K.3-q5-hint.mp3"
         }
       ]
     },
@@ -256,7 +391,16 @@
           ],
           "correct": "Very big",
           "hint": "The next sentence gives you a clue — 'bigger than a car.'",
-          "difficulty": 1
+          "difficulty": 1,
+          "passage_audio_url": "/audio/kindergarten/RL.K.4-q1-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RL.K.4-q1-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RL.K.4-q1-choice1.mp3",
+            "/audio/kindergarten/RL.K.4-q1-choice2.mp3",
+            "/audio/kindergarten/RL.K.4-q1-choice3.mp3",
+            "/audio/kindergarten/RL.K.4-q1-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RL.K.4-q1-hint.mp3"
         },
         {
           "id": "RL.K.4-Q2",
@@ -270,7 +414,16 @@
           ],
           "correct": "Very happy",
           "hint": "Think about what Kai did — he smiled and jumped!",
-          "difficulty": 1
+          "difficulty": 1,
+          "passage_audio_url": "/audio/kindergarten/RL.K.4-q2-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RL.K.4-q2-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RL.K.4-q2-choice1.mp3",
+            "/audio/kindergarten/RL.K.4-q2-choice2.mp3",
+            "/audio/kindergarten/RL.K.4-q2-choice3.mp3",
+            "/audio/kindergarten/RL.K.4-q2-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RL.K.4-q2-hint.mp3"
         },
         {
           "id": "RL.K.4-Q3",
@@ -284,7 +437,16 @@
           ],
           "correct": "Moved slowly",
           "hint": "The word 'slowly' right after it helps you figure it out!",
-          "difficulty": 2
+          "difficulty": 2,
+          "passage_audio_url": "/audio/kindergarten/RL.K.4-q3-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RL.K.4-q3-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RL.K.4-q3-choice1.mp3",
+            "/audio/kindergarten/RL.K.4-q3-choice2.mp3",
+            "/audio/kindergarten/RL.K.4-q3-choice3.mp3",
+            "/audio/kindergarten/RL.K.4-q3-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RL.K.4-q3-hint.mp3"
         },
         {
           "id": "RL.K.4-Q4",
@@ -298,7 +460,16 @@
           ],
           "correct": "Cold",
           "hint": "When can you see your breath outside? When it's...?",
-          "difficulty": 1
+          "difficulty": 1,
+          "passage_audio_url": "/audio/kindergarten/RL.K.4-q4-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RL.K.4-q4-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RL.K.4-q4-choice1.mp3",
+            "/audio/kindergarten/RL.K.4-q4-choice2.mp3",
+            "/audio/kindergarten/RL.K.4-q4-choice3.mp3",
+            "/audio/kindergarten/RL.K.4-q4-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RL.K.4-q4-hint.mp3"
         },
         {
           "id": "RL.K.4-Q5",
@@ -312,7 +483,16 @@
           ],
           "correct": "Scared",
           "hint": "The animals ran away — how would YOU feel if a lion roared at you?",
-          "difficulty": 2
+          "difficulty": 2,
+          "passage_audio_url": "/audio/kindergarten/RL.K.4-q5-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RL.K.4-q5-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RL.K.4-q5-choice1.mp3",
+            "/audio/kindergarten/RL.K.4-q5-choice2.mp3",
+            "/audio/kindergarten/RL.K.4-q5-choice3.mp3",
+            "/audio/kindergarten/RL.K.4-q5-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RL.K.4-q5-hint.mp3"
         }
       ]
     },
@@ -334,7 +514,16 @@
           ],
           "correct": "B — it's a storybook",
           "hint": "Storybooks tell a story with characters and things that happen. Which one starts like a story?",
-          "difficulty": 1
+          "difficulty": 1,
+          "passage_audio_url": "/audio/kindergarten/RL.K.5-q1-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RL.K.5-q1-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RL.K.5-q1-choice1.mp3",
+            "/audio/kindergarten/RL.K.5-q1-choice2.mp3",
+            "/audio/kindergarten/RL.K.5-q1-choice3.mp3",
+            "/audio/kindergarten/RL.K.5-q1-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RL.K.5-q1-hint.mp3"
         },
         {
           "id": "RL.K.5-Q2",
@@ -348,7 +537,16 @@
           ],
           "correct": "A poem or song",
           "hint": "Does it rhyme? Does it have short lines? That's a clue!",
-          "difficulty": 1
+          "difficulty": 1,
+          "passage_audio_url": "/audio/kindergarten/RL.K.5-q2-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RL.K.5-q2-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RL.K.5-q2-choice1.mp3",
+            "/audio/kindergarten/RL.K.5-q2-choice2.mp3",
+            "/audio/kindergarten/RL.K.5-q2-choice3.mp3",
+            "/audio/kindergarten/RL.K.5-q2-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RL.K.5-q2-hint.mp3"
         },
         {
           "id": "RL.K.5-Q3",
@@ -362,7 +560,15 @@
           ],
           "correct": "Characters and things that happen",
           "hint": "Think about your favorite storybook — what makes it a story?",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RL.K.5-q3-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RL.K.5-q3-choice1.mp3",
+            "/audio/kindergarten/RL.K.5-q3-choice2.mp3",
+            "/audio/kindergarten/RL.K.5-q3-choice3.mp3",
+            "/audio/kindergarten/RL.K.5-q3-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RL.K.5-q3-hint.mp3"
         },
         {
           "id": "RL.K.5-Q4",
@@ -376,7 +582,16 @@
           ],
           "correct": "Poem",
           "hint": "It has short lines and some words rhyme — that's a poem!",
-          "difficulty": 2
+          "difficulty": 2,
+          "passage_audio_url": "/audio/kindergarten/RL.K.5-q4-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RL.K.5-q4-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RL.K.5-q4-choice1.mp3",
+            "/audio/kindergarten/RL.K.5-q4-choice2.mp3",
+            "/audio/kindergarten/RL.K.5-q4-choice3.mp3",
+            "/audio/kindergarten/RL.K.5-q4-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RL.K.5-q4-hint.mp3"
         },
         {
           "id": "RL.K.5-Q5",
@@ -390,7 +605,16 @@
           ],
           "correct": "Storybook",
           "hint": "It has characters (pigs, wolf) and things that happen — that's a story!",
-          "difficulty": 1
+          "difficulty": 1,
+          "passage_audio_url": "/audio/kindergarten/RL.K.5-q5-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RL.K.5-q5-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RL.K.5-q5-choice1.mp3",
+            "/audio/kindergarten/RL.K.5-q5-choice2.mp3",
+            "/audio/kindergarten/RL.K.5-q5-choice3.mp3",
+            "/audio/kindergarten/RL.K.5-q5-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RL.K.5-q5-hint.mp3"
         }
       ]
     },
@@ -412,7 +636,15 @@
           ],
           "correct": "Author",
           "hint": "This person uses words to tell the story.",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RL.K.6-q1-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RL.K.6-q1-choice1.mp3",
+            "/audio/kindergarten/RL.K.6-q1-choice2.mp3",
+            "/audio/kindergarten/RL.K.6-q1-choice3.mp3",
+            "/audio/kindergarten/RL.K.6-q1-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RL.K.6-q1-hint.mp3"
         },
         {
           "id": "RL.K.6-Q2",
@@ -426,7 +658,15 @@
           ],
           "correct": "Illustrator",
           "hint": "This person creates the artwork and images you see!",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RL.K.6-q2-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RL.K.6-q2-choice1.mp3",
+            "/audio/kindergarten/RL.K.6-q2-choice2.mp3",
+            "/audio/kindergarten/RL.K.6-q2-choice3.mp3",
+            "/audio/kindergarten/RL.K.6-q2-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RL.K.6-q2-hint.mp3"
         },
         {
           "id": "RL.K.6-Q3",
@@ -440,7 +680,16 @@
           ],
           "correct": "James Park",
           "hint": "'Illustrated by' means 'pictures drawn by.'",
-          "difficulty": 1
+          "difficulty": 1,
+          "passage_audio_url": "/audio/kindergarten/RL.K.6-q3-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RL.K.6-q3-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RL.K.6-q3-choice1.mp3",
+            "/audio/kindergarten/RL.K.6-q3-choice2.mp3",
+            "/audio/kindergarten/RL.K.6-q3-choice3.mp3",
+            "/audio/kindergarten/RL.K.6-q3-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RL.K.6-q3-hint.mp3"
         },
         {
           "id": "RL.K.6-Q4",
@@ -454,7 +703,15 @@
           ],
           "correct": "Writes the words",
           "hint": "An author creates the story using words.",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RL.K.6-q4-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RL.K.6-q4-choice1.mp3",
+            "/audio/kindergarten/RL.K.6-q4-choice2.mp3",
+            "/audio/kindergarten/RL.K.6-q4-choice3.mp3",
+            "/audio/kindergarten/RL.K.6-q4-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RL.K.6-q4-hint.mp3"
         },
         {
           "id": "RL.K.6-Q5",
@@ -468,7 +725,16 @@
           ],
           "correct": "Author",
           "hint": "'By' on a book cover usually means who wrote it!",
-          "difficulty": 2
+          "difficulty": 2,
+          "passage_audio_url": "/audio/kindergarten/RL.K.6-q5-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RL.K.6-q5-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RL.K.6-q5-choice1.mp3",
+            "/audio/kindergarten/RL.K.6-q5-choice2.mp3",
+            "/audio/kindergarten/RL.K.6-q5-choice3.mp3",
+            "/audio/kindergarten/RL.K.6-q5-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RL.K.6-q5-hint.mp3"
         }
       ]
     },
@@ -490,7 +756,16 @@
           ],
           "correct": "It shows us what sad looks like.",
           "hint": "Pictures help us SEE what the words are telling us!",
-          "difficulty": 1
+          "difficulty": 1,
+          "passage_audio_url": "/audio/kindergarten/RL.K.7-q1-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RL.K.7-q1-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RL.K.7-q1-choice1.mp3",
+            "/audio/kindergarten/RL.K.7-q1-choice2.mp3",
+            "/audio/kindergarten/RL.K.7-q1-choice3.mp3",
+            "/audio/kindergarten/RL.K.7-q1-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RL.K.7-q1-hint.mp3"
         },
         {
           "id": "RL.K.7-Q2",
@@ -504,7 +779,16 @@
           ],
           "correct": "❄️ White snowflakes falling",
           "hint": "The picture should show what the words describe — snow!",
-          "difficulty": 1
+          "difficulty": 1,
+          "passage_audio_url": "/audio/kindergarten/RL.K.7-q2-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RL.K.7-q2-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RL.K.7-q2-choice1.mp3",
+            "/audio/kindergarten/RL.K.7-q2-choice2.mp3",
+            "/audio/kindergarten/RL.K.7-q2-choice3.mp3",
+            "/audio/kindergarten/RL.K.7-q2-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RL.K.7-q2-hint.mp3"
         },
         {
           "id": "RL.K.7-Q3",
@@ -518,7 +802,16 @@
           ],
           "correct": "That there were balloons and a cake",
           "hint": "Sometimes pictures show MORE details than the words!",
-          "difficulty": 2
+          "difficulty": 2,
+          "passage_audio_url": "/audio/kindergarten/RL.K.7-q3-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RL.K.7-q3-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RL.K.7-q3-choice1.mp3",
+            "/audio/kindergarten/RL.K.7-q3-choice2.mp3",
+            "/audio/kindergarten/RL.K.7-q3-choice3.mp3",
+            "/audio/kindergarten/RL.K.7-q3-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RL.K.7-q3-hint.mp3"
         },
         {
           "id": "RL.K.7-Q4",
@@ -532,7 +825,16 @@
           ],
           "correct": "WHERE the cat was hiding",
           "hint": "The words say 'somewhere' — the picture shows us exactly where!",
-          "difficulty": 2
+          "difficulty": 2,
+          "passage_audio_url": "/audio/kindergarten/RL.K.7-q4-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RL.K.7-q4-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RL.K.7-q4-choice1.mp3",
+            "/audio/kindergarten/RL.K.7-q4-choice2.mp3",
+            "/audio/kindergarten/RL.K.7-q4-choice3.mp3",
+            "/audio/kindergarten/RL.K.7-q4-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RL.K.7-q4-hint.mp3"
         },
         {
           "id": "RL.K.7-Q5",
@@ -546,7 +848,15 @@
           ],
           "correct": "To help us understand the story better",
           "hint": "Think about how pictures help you when you read a book!",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RL.K.7-q5-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RL.K.7-q5-choice1.mp3",
+            "/audio/kindergarten/RL.K.7-q5-choice2.mp3",
+            "/audio/kindergarten/RL.K.7-q5-choice3.mp3",
+            "/audio/kindergarten/RL.K.7-q5-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RL.K.7-q5-hint.mp3"
         }
       ]
     },
@@ -568,7 +878,16 @@
           ],
           "correct": "They like different foods.",
           "hint": "Different means NOT the same. What do they each like to eat or drink?",
-          "difficulty": 1
+          "difficulty": 1,
+          "passage_audio_url": "/audio/kindergarten/RL.K.9-q1-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RL.K.9-q1-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RL.K.9-q1-choice1.mp3",
+            "/audio/kindergarten/RL.K.9-q1-choice2.mp3",
+            "/audio/kindergarten/RL.K.9-q1-choice3.mp3",
+            "/audio/kindergarten/RL.K.9-q1-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RL.K.9-q1-hint.mp3"
         },
         {
           "id": "RL.K.9-Q2",
@@ -582,7 +901,16 @@
           ],
           "correct": "They both live in the forest.",
           "hint": "Alike means the SAME. What do they both do or have?",
-          "difficulty": 1
+          "difficulty": 1,
+          "passage_audio_url": "/audio/kindergarten/RL.K.9-q2-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RL.K.9-q2-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RL.K.9-q2-choice1.mp3",
+            "/audio/kindergarten/RL.K.9-q2-choice2.mp3",
+            "/audio/kindergarten/RL.K.9-q2-choice3.mp3",
+            "/audio/kindergarten/RL.K.9-q2-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RL.K.9-q2-hint.mp3"
         },
         {
           "id": "RL.K.9-Q3",
@@ -596,7 +924,16 @@
           ],
           "correct": "They were both scared of the dark.",
           "hint": "What feeling did BOTH characters share?",
-          "difficulty": 2
+          "difficulty": 2,
+          "passage_audio_url": "/audio/kindergarten/RL.K.9-q3-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RL.K.9-q3-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RL.K.9-q3-choice1.mp3",
+            "/audio/kindergarten/RL.K.9-q3-choice2.mp3",
+            "/audio/kindergarten/RL.K.9-q3-choice3.mp3",
+            "/audio/kindergarten/RL.K.9-q3-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RL.K.9-q3-hint.mp3"
         },
         {
           "id": "RL.K.9-Q4",
@@ -610,7 +947,16 @@
           ],
           "correct": "The pigs build, the wolf destroys.",
           "hint": "Think about what each character DOES in the story.",
-          "difficulty": 2
+          "difficulty": 2,
+          "passage_audio_url": "/audio/kindergarten/RL.K.9-q4-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RL.K.9-q4-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RL.K.9-q4-choice1.mp3",
+            "/audio/kindergarten/RL.K.9-q4-choice2.mp3",
+            "/audio/kindergarten/RL.K.9-q4-choice3.mp3",
+            "/audio/kindergarten/RL.K.9-q4-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RL.K.9-q4-hint.mp3"
         },
         {
           "id": "RL.K.9-Q5",
@@ -624,7 +970,16 @@
           ],
           "correct": "Zoe cried, James searched for his toy.",
           "hint": "What did each kid DO when they lost their toy?",
-          "difficulty": 2
+          "difficulty": 2,
+          "passage_audio_url": "/audio/kindergarten/RL.K.9-q5-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RL.K.9-q5-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RL.K.9-q5-choice1.mp3",
+            "/audio/kindergarten/RL.K.9-q5-choice2.mp3",
+            "/audio/kindergarten/RL.K.9-q5-choice3.mp3",
+            "/audio/kindergarten/RL.K.9-q5-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RL.K.9-q5-hint.mp3"
         }
       ]
     },
@@ -646,7 +1001,16 @@
           ],
           "correct": "Honey",
           "hint": "Look at the second sentence!",
-          "difficulty": 1
+          "difficulty": 1,
+          "passage_audio_url": "/audio/kindergarten/RI.K.1-q1-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RI.K.1-q1-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RI.K.1-q1-choice1.mp3",
+            "/audio/kindergarten/RI.K.1-q1-choice2.mp3",
+            "/audio/kindergarten/RI.K.1-q1-choice3.mp3",
+            "/audio/kindergarten/RI.K.1-q1-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RI.K.1-q1-hint.mp3"
         },
         {
           "id": "RI.K.1-Q2",
@@ -660,7 +1024,16 @@
           ],
           "correct": "Water",
           "hint": "Read the last sentence carefully!",
-          "difficulty": 1
+          "difficulty": 1,
+          "passage_audio_url": "/audio/kindergarten/RI.K.1-q2-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RI.K.1-q2-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RI.K.1-q2-choice1.mp3",
+            "/audio/kindergarten/RI.K.1-q2-choice2.mp3",
+            "/audio/kindergarten/RI.K.1-q2-choice3.mp3",
+            "/audio/kindergarten/RI.K.1-q2-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RI.K.1-q2-hint.mp3"
         },
         {
           "id": "RI.K.1-Q3",
@@ -674,7 +1047,16 @@
           ],
           "correct": "Two times",
           "hint": "The first sentence tells you the number!",
-          "difficulty": 1
+          "difficulty": 1,
+          "passage_audio_url": "/audio/kindergarten/RI.K.1-q3-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RI.K.1-q3-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RI.K.1-q3-choice1.mp3",
+            "/audio/kindergarten/RI.K.1-q3-choice2.mp3",
+            "/audio/kindergarten/RI.K.1-q3-choice3.mp3",
+            "/audio/kindergarten/RI.K.1-q3-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RI.K.1-q3-hint.mp3"
         },
         {
           "id": "RI.K.1-Q4",
@@ -688,7 +1070,16 @@
           ],
           "correct": "In cold places",
           "hint": "Check the last sentence for the answer!",
-          "difficulty": 1
+          "difficulty": 1,
+          "passage_audio_url": "/audio/kindergarten/RI.K.1-q4-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RI.K.1-q4-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RI.K.1-q4-choice1.mp3",
+            "/audio/kindergarten/RI.K.1-q4-choice2.mp3",
+            "/audio/kindergarten/RI.K.1-q4-choice3.mp3",
+            "/audio/kindergarten/RI.K.1-q4-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RI.K.1-q4-hint.mp3"
         },
         {
           "id": "RI.K.1-Q5",
@@ -702,7 +1093,16 @@
           ],
           "correct": "Candy",
           "hint": "The passage lists exactly three things plants need. Which choice is NOT one of them?",
-          "difficulty": 2
+          "difficulty": 2,
+          "passage_audio_url": "/audio/kindergarten/RI.K.1-q5-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RI.K.1-q5-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RI.K.1-q5-choice1.mp3",
+            "/audio/kindergarten/RI.K.1-q5-choice2.mp3",
+            "/audio/kindergarten/RI.K.1-q5-choice3.mp3",
+            "/audio/kindergarten/RI.K.1-q5-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RI.K.1-q5-hint.mp3"
         }
       ]
     },
