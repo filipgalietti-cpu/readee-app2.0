@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Suspense } from "react";
@@ -67,6 +67,8 @@ const FAQS = [
   },
 ];
 
+const ACCENT_COLORS = ["#60a5fa", "#4ade80", "#fb923c", "#a78bfa"];
+
 interface LessonData {
   id: string;
   title: string;
@@ -88,6 +90,47 @@ function isLessonFree(lessonId: string): boolean {
   return parseInt(match[1]) <= 2;
 }
 
+/* ─── useCountUp ─────────────────────────────────────── */
+
+function useCountUp(target: number, duration = 800) {
+  const [value, setValue] = useState(0);
+  const ref = useRef<HTMLDivElement>(null);
+  const counted = useRef(false);
+
+  useEffect(() => {
+    if (counted.current || target === 0) { setValue(target); return; }
+    const el = ref.current;
+    if (!el) { setValue(target); return; }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !counted.current) {
+          counted.current = true;
+          const start = performance.now();
+          function tick(now: number) {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            setValue(Math.round(eased * target));
+            if (progress < 1) requestAnimationFrame(tick);
+          }
+          requestAnimationFrame(tick);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [target, duration]);
+
+  return { value, ref };
+}
+
+/* ═══════════════════════════════════════════════════════ */
+/*  Page                                                   */
+/* ═══════════════════════════════════════════════════════ */
+
 export default function UpgradePage() {
   return (
     <Suspense
@@ -107,9 +150,11 @@ function UpgradeContent() {
   const childId = searchParams.get("child");
 
   const [child, setChild] = useState<Child | null>(null);
-  const [completedCount, setCompletedCount] = useState(0);
   const [loading, setLoading] = useState(true);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  // Pricing toggle
+  const [billingPeriod, setBillingPeriod] = useState<"monthly" | "annual">("annual");
 
   // Modal state
   const [showModal, setShowModal] = useState(false);
@@ -130,24 +175,8 @@ function UpgradeContent() {
       }
 
       if (childId) {
-        const [{ data: childData }, { data: progressData }] = await Promise.all([
-          supabase.from("children").select("*").eq("id", childId).single(),
-          supabase.from("lessons_progress").select("lesson_id, section").eq("child_id", childId),
-        ]);
-
+        const { data: childData } = await supabase.from("children").select("*").eq("id", childId).single();
         if (childData) setChild(safeValidate(ChildSchema, childData) as Child);
-        if (progressData) {
-          const byLesson: Record<string, Set<string>> = {};
-          for (const p of progressData) {
-            if (!byLesson[p.lesson_id]) byLesson[p.lesson_id] = new Set();
-            byLesson[p.lesson_id].add(p.section);
-          }
-          let count = 0;
-          for (const sections of Object.values(byLesson)) {
-            if (sections.has("learn") && sections.has("practice") && sections.has("read")) count++;
-          }
-          setCompletedCount(count);
-        }
       }
       setLoading(false);
     }
@@ -216,18 +245,16 @@ function UpgradeContent() {
         </p>
       </motion.div>
 
-      {/* ── SOCIAL PROOF: Stats Bar ── */}
+      {/* ── ANIMATED STAT COUNTERS ── */}
       <motion.div variants={fadeUp} className="grid grid-cols-3 gap-4">
-        {[
-          { value: `${totalLessons}+`, label: "Lessons" },
-          { value: "5", label: "Reading levels" },
-          { value: "36", label: "Standards covered" },
-        ].map((stat) => (
-          <div key={stat.label} className="text-center py-3 rounded-xl bg-indigo-50/60 dark:bg-indigo-950/20 border border-indigo-100 dark:border-indigo-900/30">
-            <div className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">{stat.value}</div>
-            <div className="text-xs text-zinc-500 dark:text-slate-400 mt-0.5">{stat.label}</div>
-          </div>
-        ))}
+        <CountUpStatCard target={totalLessons} suffix="+" label="Lessons" />
+        <CountUpStatCard target={5} label="Reading levels" />
+        <CountUpStatCard target={36} label="Standards covered" />
+      </motion.div>
+
+      {/* ── LIVE DEMO PREVIEW ── */}
+      <motion.div variants={slideUp}>
+        <MiniDemoQuestion onTrialClick={() => handleOpenModal("annual")} />
       </motion.div>
 
       {/* ── LOCKED LESSONS PREVIEW ── */}
@@ -293,66 +320,100 @@ function UpgradeContent() {
         </table>
       </motion.div>
 
-      {/* ── PRICING CARDS ── */}
-      <motion.div variants={slideUp} className="space-y-4">
+      {/* ── PRICING WITH TOGGLE ── */}
+      <motion.div variants={slideUp} className="space-y-6">
         <h2 className="text-xl font-bold text-zinc-900 dark:text-slate-100 text-center">
           Choose your plan
         </h2>
-        <span className="block text-sm text-zinc-500 dark:text-slate-400 text-center">
-          7 days free, then just $8.25/month with the annual plan. Cancel anytime — no risk, no commitment.
-        </span>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-end pt-2">
-          {/* Monthly */}
-          <motion.div
-            className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 space-y-4 self-center"
-            whileHover={{ y: -4, boxShadow: "0 12px 24px rgba(0,0,0,0.1)" }}
-            transition={{ duration: 0.2 }}
+        {/* Toggle switch */}
+        <div className="flex items-center justify-center gap-3">
+          <span className={`text-sm font-medium transition-colors ${billingPeriod === "monthly" ? "text-zinc-900 dark:text-slate-100" : "text-zinc-400 dark:text-slate-500"}`}>
+            Monthly
+          </span>
+          <button
+            onClick={() => setBillingPeriod(billingPeriod === "monthly" ? "annual" : "monthly")}
+            className={`relative w-14 h-8 rounded-full transition-colors duration-300 ${
+              billingPeriod === "annual" ? "bg-indigo-600" : "bg-zinc-300 dark:bg-slate-600"
+            }`}
           >
-            <div className="text-sm font-semibold text-zinc-500 dark:text-slate-400">Monthly</div>
-            <div>
-              <div className="text-3xl font-bold text-zinc-900 dark:text-slate-100">$9.99</div>
-              <div className="text-sm text-zinc-500 dark:text-slate-400">/month</div>
-            </div>
-            <p className="text-xs text-zinc-400 dark:text-slate-500">Billed monthly. Flexibility to cancel anytime.</p>
-            <button
-              onClick={() => handleOpenModal("monthly")}
-              className="w-full py-3.5 rounded-xl border-2 border-indigo-600 dark:border-indigo-500 text-indigo-600 dark:text-indigo-400 font-bold text-sm hover:bg-indigo-50 dark:hover:bg-indigo-950/30 transition-all"
-            >
-              Start 7-Day Free Trial
-            </button>
-          </motion.div>
+            <motion.div
+              className="absolute top-1 w-6 h-6 rounded-full bg-white shadow-md"
+              animate={{ left: billingPeriod === "annual" ? 30 : 4 }}
+              transition={{ type: "spring", stiffness: 500, damping: 30 }}
+            />
+          </button>
+          <span className={`text-sm font-medium transition-colors ${billingPeriod === "annual" ? "text-zinc-900 dark:text-slate-100" : "text-zinc-400 dark:text-slate-500"}`}>
+            Annual
+          </span>
+          <AnimatePresence>
+            {billingPeriod === "annual" && (
+              <motion.span
+                initial={{ opacity: 0, scale: 0.8, x: -8 }}
+                animate={{ opacity: 1, scale: 1, x: 0 }}
+                exit={{ opacity: 0, scale: 0.8, x: -8 }}
+                transition={{ type: "spring", stiffness: 500, damping: 25 }}
+                className="px-2.5 py-1 rounded-full text-[11px] font-bold bg-green-100 dark:bg-green-950/40 text-green-700 dark:text-green-300 border border-green-200 dark:border-green-800/40"
+              >
+                Save $21/year
+              </motion.span>
+            )}
+          </AnimatePresence>
+        </div>
 
-          {/* Annual — highlighted */}
+        {/* Pricing card */}
+        <div className="max-w-sm mx-auto">
           <motion.div
             className="rounded-2xl border-2 border-indigo-400 dark:border-indigo-500 bg-gradient-to-b from-white to-indigo-50/40 dark:from-slate-800 dark:to-indigo-950/20 p-7 space-y-4 relative shadow-lg shadow-indigo-100/50 dark:shadow-indigo-900/30"
-            whileHover={{ y: -6, boxShadow: "0 16px 32px rgba(99,102,241,0.2)" }}
+            whileHover={{ y: -4, boxShadow: "0 16px 32px rgba(99,102,241,0.2)" }}
             transition={{ duration: 0.2 }}
           >
-            <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-              <span className="px-3 py-1 rounded-full text-[11px] font-bold bg-gradient-to-r from-amber-400 to-amber-500 text-white shadow-sm">
-                Best Value — Save $21
-              </span>
-            </div>
-            <div className="text-sm font-semibold text-indigo-600 dark:text-indigo-400">Annual</div>
-            <div>
-              <div className="flex items-baseline gap-2">
-                <span className="text-3xl font-bold text-zinc-900 dark:text-slate-100">$99</span>
-                <span className="text-sm text-zinc-400 dark:text-slate-500 line-through">$119.88</span>
-              </div>
-              <div className="text-sm text-zinc-500 dark:text-slate-400">/year</div>
-            </div>
-            <p className="text-xs text-zinc-500 dark:text-slate-400">
-              Just <span className="font-semibold text-indigo-600 dark:text-indigo-400">$8.25/month</span> — billed annually
-            </p>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={billingPeriod}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.2 }}
+                className="space-y-1"
+              >
+                {billingPeriod === "annual" ? (
+                  <>
+                    <div className="text-sm font-semibold text-indigo-600 dark:text-indigo-400">Annual</div>
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-4xl font-bold text-zinc-900 dark:text-slate-100">$99</span>
+                      <span className="text-sm text-zinc-400 dark:text-slate-500 line-through">$119.88</span>
+                    </div>
+                    <div className="text-sm text-zinc-500 dark:text-slate-400">/year</div>
+                    <p className="text-xs text-zinc-500 dark:text-slate-400 pt-1">
+                      Just <span className="font-semibold text-indigo-600 dark:text-indigo-400">$8.25/month</span> — billed annually
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <div className="text-sm font-semibold text-zinc-500 dark:text-slate-400">Monthly</div>
+                    <div>
+                      <span className="text-4xl font-bold text-zinc-900 dark:text-slate-100">$9.99</span>
+                    </div>
+                    <div className="text-sm text-zinc-500 dark:text-slate-400">/month</div>
+                    <p className="text-xs text-zinc-400 dark:text-slate-500 pt-1">Billed monthly. Cancel anytime.</p>
+                  </>
+                )}
+              </motion.div>
+            </AnimatePresence>
+
             <button
-              onClick={() => handleOpenModal("annual")}
+              onClick={() => handleOpenModal(billingPeriod)}
               className="w-full py-4 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white font-bold text-sm hover:from-indigo-700 hover:to-violet-600 transition-all shadow-md"
             >
               Start 7-Day Free Trial
             </button>
           </motion.div>
         </div>
+
+        <p className="text-center text-xs text-zinc-400 dark:text-slate-500">
+          7 days free, then {billingPeriod === "annual" ? "$99/year ($8.25/mo)" : "$9.99/month"}. Cancel anytime.
+        </p>
       </motion.div>
 
       {/* ── TRUST SIGNALS ── */}
@@ -371,35 +432,9 @@ function UpgradeContent() {
         ))}
       </motion.div>
 
-      {/* ── TESTIMONIALS ── */}
-      <motion.div variants={slideUp} className="space-y-4">
-        <h3 className="text-lg font-bold text-zinc-900 dark:text-slate-100 text-center">
-          Parents love Readee
-        </h3>
-        <div className="space-y-3">
-          {TESTIMONIALS.map((t, i) => (
-            <motion.div
-              key={i}
-              variants={fadeUp}
-              className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 space-y-3"
-            >
-              {/* Stars */}
-              <div className="flex gap-0.5">
-                {Array.from({ length: 5 }).map((_, j) => (
-                  <svg key={j} className="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
-              </div>
-              <p className="text-sm text-zinc-700 dark:text-slate-300 leading-relaxed">
-                &ldquo;{t.quote}&rdquo;
-              </p>
-              <div className="text-xs text-zinc-500 dark:text-slate-400">
-                <span className="font-semibold text-zinc-700 dark:text-slate-300">{t.name}</span> &middot; {t.detail}
-              </div>
-            </motion.div>
-          ))}
-        </div>
+      {/* ── TESTIMONIAL CAROUSEL ── */}
+      <motion.div variants={slideUp}>
+        <TestimonialCarousel />
       </motion.div>
 
       {/* ── FAQ ── */}
@@ -562,3 +597,299 @@ function UpgradeContent() {
   );
 }
 
+/* ═══════════════════════════════════════════════════════ */
+/*  CountUp Stat Card                                      */
+/* ═══════════════════════════════════════════════════════ */
+
+function CountUpStatCard({ target, suffix, label }: { target: number; suffix?: string; label: string }) {
+  const { value, ref } = useCountUp(target);
+
+  return (
+    <div ref={ref} className="text-center py-3 rounded-xl bg-indigo-50/60 dark:bg-indigo-950/20 border border-indigo-100 dark:border-indigo-900/30">
+      <div className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">{value}{suffix || ""}</div>
+      <div className="text-xs text-zinc-500 dark:text-slate-400 mt-0.5">{label}</div>
+    </div>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════ */
+/*  Mini Demo Question                                     */
+/* ═══════════════════════════════════════════════════════ */
+
+const DEMO_CHOICES = ["A stick", "A red ball", "A bone", "A toy car"];
+const DEMO_CORRECT = "A red ball";
+
+function MiniDemoQuestion({ onTrialClick }: { onTrialClick: () => void }) {
+  const [phase, setPhase] = useState<"idle" | "active" | "answered" | "upsell">("idle");
+  const [selected, setSelected] = useState<string | null>(null);
+  const [isCorrect, setIsCorrect] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const playAudio = useCallback(() => {
+    try {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
+      }
+      const audio = new Audio("/audio/kindergarten/RL.K.1-q1.mp3");
+      audioRef.current = audio;
+      audio.play().catch(() => {});
+    } catch {
+      // Audio playback not available
+    }
+  }, []);
+
+  const handleStart = () => {
+    setPhase("active");
+    playAudio();
+  };
+
+  const handleAnswer = (choice: string) => {
+    if (phase !== "active") return;
+    setSelected(choice);
+    setIsCorrect(choice === DEMO_CORRECT);
+    setPhase("answered");
+    setTimeout(() => setPhase("upsell"), 2000);
+  };
+
+  const handleReset = () => {
+    setPhase("idle");
+    setSelected(null);
+    setIsCorrect(false);
+  };
+
+  return (
+    <div className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 overflow-hidden shadow-sm">
+      <div className="bg-gradient-to-r from-indigo-600 to-violet-500 px-5 py-3">
+        <h2 className="text-white font-bold text-sm">Try a sample question!</h2>
+        <p className="text-indigo-100 text-xs">See what your child&apos;s practice sessions look like</p>
+      </div>
+
+      <div className="p-5 space-y-4">
+        {phase === "idle" ? (
+          <div className="text-center py-4 space-y-4">
+            <div className="text-4xl">📖</div>
+            <p className="text-sm text-zinc-600 dark:text-slate-300 font-medium">
+              Experience a real Readee question — with audio!
+            </p>
+            <button
+              onClick={handleStart}
+              className="px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white font-bold text-sm hover:from-indigo-700 hover:to-violet-600 transition-all shadow-md hover:shadow-lg hover:scale-105"
+            >
+              Try it!
+            </button>
+          </div>
+        ) : phase === "upsell" ? (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center py-4 space-y-4"
+          >
+            <div className="text-4xl">🌟</div>
+            <p className="text-base font-bold text-zinc-900 dark:text-slate-100">
+              Your child gets hundreds of questions just like this with Readee+
+            </p>
+            <p className="text-sm text-zinc-500 dark:text-slate-400">
+              Audio narration, instant feedback, and progress tracking — all included.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <button
+                onClick={onTrialClick}
+                className="px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white font-bold text-sm hover:from-indigo-700 hover:to-violet-600 transition-all shadow-md"
+              >
+                Start Free Trial →
+              </button>
+              <button
+                onClick={handleReset}
+                className="px-4 py-3 rounded-xl text-sm font-medium text-zinc-500 dark:text-slate-400 hover:text-zinc-700 dark:hover:text-slate-200 hover:bg-zinc-100 dark:hover:bg-slate-700 transition-colors"
+              >
+                Try again
+              </button>
+            </div>
+          </motion.div>
+        ) : (
+          <>
+            {/* Question prompt */}
+            <div className="rounded-xl bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900/40 p-4">
+              <p className="text-sm text-zinc-800 dark:text-slate-200 leading-relaxed">
+                🐶 Read: &ldquo;Max the dog ran to the park. He played fetch with a red ball.&rdquo;
+              </p>
+              <p className="text-sm font-semibold text-zinc-900 dark:text-slate-100 mt-2">
+                What did Max play with?
+              </p>
+            </div>
+
+            {/* Answer choices */}
+            <div className="space-y-2">
+              {DEMO_CHOICES.map((choice, i) => {
+                const isSelected = selected === choice;
+                const isCorrectChoice = choice === DEMO_CORRECT;
+                const answered = phase === "answered";
+
+                let bg = "bg-white dark:bg-slate-800 border-zinc-200 dark:border-slate-600 hover:border-indigo-300 dark:hover:border-indigo-600";
+                if (answered && isSelected && isCorrect) bg = "bg-emerald-50 dark:bg-emerald-950/30 border-emerald-400 dark:border-emerald-500";
+                if (answered && isSelected && !isCorrect) bg = "bg-red-50 dark:bg-red-950/30 border-red-400 dark:border-red-500";
+                if (answered && !isSelected && isCorrectChoice && !isCorrect) bg = "bg-emerald-50 dark:bg-emerald-950/30 border-emerald-400 dark:border-emerald-500";
+
+                return (
+                  <motion.button
+                    key={choice}
+                    whileHover={!answered ? { scale: 1.02 } : undefined}
+                    whileTap={!answered ? { scale: 0.98 } : undefined}
+                    onClick={() => handleAnswer(choice)}
+                    disabled={answered}
+                    className={`group w-full text-left px-5 py-4 rounded-xl border-2 relative overflow-hidden transition-all duration-200 ${bg} ${answered ? "cursor-default" : "cursor-pointer"}`}
+                  >
+                    {/* Color accent bar */}
+                    <div
+                      className="absolute left-0 top-0 bottom-0 w-[3px] group-hover:w-[5px] rounded-l-xl transition-all duration-200"
+                      style={{ backgroundColor: ACCENT_COLORS[i % 4] }}
+                    />
+                    <div className="flex items-center gap-3">
+                      {answered && isSelected && isCorrect && (
+                        <div className="w-7 h-7 rounded-full bg-emerald-500 flex items-center justify-center flex-shrink-0">
+                          <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                          </svg>
+                        </div>
+                      )}
+                      {answered && isSelected && !isCorrect && (
+                        <div className="w-7 h-7 rounded-full bg-red-500 flex items-center justify-center flex-shrink-0">
+                          <svg className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                          </svg>
+                        </div>
+                      )}
+                      {answered && !isSelected && isCorrectChoice && !isCorrect && (
+                        <div className="w-7 h-7 rounded-full bg-emerald-500 flex items-center justify-center flex-shrink-0">
+                          <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                          </svg>
+                        </div>
+                      )}
+                      <span className="text-base font-medium text-zinc-800 dark:text-slate-200 leading-snug flex-1">
+                        {choice}
+                      </span>
+                    </div>
+                  </motion.button>
+                );
+              })}
+            </div>
+
+            {/* Feedback bar */}
+            <AnimatePresence>
+              {phase === "answered" && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0 }}
+                  className={`rounded-xl p-4 flex items-center gap-3 ${
+                    isCorrect
+                      ? "bg-emerald-100 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/40"
+                      : "bg-red-100 dark:bg-red-950/40 border border-red-200 dark:border-red-800/40"
+                  }`}
+                >
+                  <div className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 text-xl ${
+                    isCorrect ? "bg-emerald-200 dark:bg-emerald-900/50" : "bg-red-200 dark:bg-red-900/50"
+                  }`}>
+                    {isCorrect ? "🎉" : "💡"}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className={`font-bold text-sm ${isCorrect ? "text-emerald-800 dark:text-emerald-200" : "text-red-800 dark:text-red-200"}`}>
+                      {isCorrect ? "Amazing! That's correct!" : "Not quite — the answer is \"A red ball\""}
+                    </p>
+                    {isCorrect && (
+                      <p className="text-xs text-emerald-600 dark:text-emerald-400 font-medium mt-0.5">+5 XP</p>
+                    )}
+                    {!isCorrect && (
+                      <p className="text-xs text-red-600 dark:text-red-400 mt-0.5">Hint: Look at the second sentence!</p>
+                    )}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </>
+        )}
+
+        {/* Audio button */}
+        {(phase === "active" || phase === "answered") && (
+          <button
+            onClick={playAudio}
+            className="flex items-center gap-2 text-xs text-indigo-600 dark:text-indigo-400 font-medium hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+            </svg>
+            Play audio
+          </button>
+        )}
+      </div>
+    </div>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════ */
+/*  Testimonial Carousel                                   */
+/* ═══════════════════════════════════════════════════════ */
+
+function TestimonialCarousel() {
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((c) => (c + 1) % TESTIMONIALS.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="space-y-4">
+      <h3 className="text-lg font-bold text-zinc-900 dark:text-slate-100 text-center">
+        Parents love Readee
+      </h3>
+
+      <div className="relative overflow-hidden rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={current}
+            initial={{ opacity: 0, x: 60 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -60 }}
+            transition={{ duration: 0.35, ease: "easeInOut" }}
+            className="p-6 space-y-3"
+          >
+            {/* Stars */}
+            <div className="flex gap-0.5">
+              {Array.from({ length: 5 }).map((_, j) => (
+                <svg key={j} className="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+              ))}
+            </div>
+            <p className="text-sm text-zinc-700 dark:text-slate-300 leading-relaxed">
+              &ldquo;{TESTIMONIALS[current].quote}&rdquo;
+            </p>
+            <div className="text-xs text-zinc-500 dark:text-slate-400">
+              <span className="font-semibold text-zinc-700 dark:text-slate-300">{TESTIMONIALS[current].name}</span> &middot; {TESTIMONIALS[current].detail}
+            </div>
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Dots */}
+        <div className="flex justify-center gap-2 pb-4">
+          {TESTIMONIALS.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrent(i)}
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                i === current
+                  ? "bg-indigo-600 dark:bg-indigo-400 w-6"
+                  : "bg-zinc-300 dark:bg-slate-600 hover:bg-zinc-400 dark:hover:bg-slate-500"
+              }`}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
