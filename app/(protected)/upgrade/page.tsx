@@ -13,15 +13,6 @@ import { Child } from "@/lib/db/types";
 import { levelNameToGradeKey } from "@/lib/assessment/questions";
 import lessonsData from "@/lib/data/lessons.json";
 
-const READING_LEVELS = [
-  "Emerging Reader",
-  "Beginning Reader",
-  "Developing Reader",
-  "Growing Reader",
-  "Independent Reader",
-  "Advanced Reader",
-];
-
 const COMPARISON_ROWS = [
   { feature: "Diagnostic assessment", free: true, premium: true },
   { feature: "First 2 lessons per level", free: true, premium: true },
@@ -279,7 +270,7 @@ function UpgradeContent() {
         </h2>
 
         <div className="space-y-2">
-          {lockedLessons.slice(0, 4).map((lesson) => (
+          {lockedLessons.slice(0, 3).map((lesson) => (
             <div
               key={lesson.id}
               className="flex items-center gap-3 px-4 py-3 rounded-xl bg-zinc-50 dark:bg-slate-700 border border-zinc-100 dark:border-slate-600"
@@ -287,70 +278,52 @@ function UpgradeContent() {
               <svg className="w-4 h-4 text-zinc-300 dark:text-slate-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
               </svg>
-              <div className="flex-1 min-w-0">
-                <span className="text-sm font-medium text-zinc-600 dark:text-slate-300 block truncate">
-                  {lesson.title}
-                </span>
-                <span className="text-xs text-zinc-400 dark:text-slate-500">{lesson.skill}</span>
-              </div>
+              <span className="text-sm font-medium text-zinc-600 dark:text-slate-300 truncate">
+                {lesson.title}
+              </span>
             </div>
           ))}
         </div>
 
-        <p className="text-sm text-zinc-400 dark:text-slate-500 text-center">
-          + {totalLockedLessons - Math.min(lockedLessons.length, 4)} more lessons across 5 reading levels
-        </p>
-
-        {/* Reading level progression */}
-        <div className="flex flex-wrap justify-center gap-2 pt-2">
-          {READING_LEVELS.map((level, i) => {
-            const isCurrent = child?.reading_level === level;
-            return (
-              <div key={level} className="flex items-center gap-1.5">
-                <div className="flex flex-col items-center gap-1">
-                  <span
-                    className={`text-[11px] font-medium px-2 py-0.5 rounded-full ${
-                      isCurrent
-                        ? "bg-indigo-600 text-white shadow-sm"
-                        : "bg-zinc-100 dark:bg-slate-700 text-zinc-400 dark:text-slate-400"
-                    }`}
-                  >
-                    {level}
-                  </span>
-                  {isCurrent && (
-                    <span className="text-[9px] font-bold text-indigo-600 dark:text-indigo-400 whitespace-nowrap">
-                      You are here
-                    </span>
-                  )}
-                </div>
-                {i < READING_LEVELS.length - 1 && (
-                  <span className="text-zinc-200 dark:text-slate-600 text-xs">&rarr;</span>
-                )}
-              </div>
-            );
-          })}
-        </div>
+        {totalLockedLessons > 3 && (
+          <p className="text-sm text-zinc-400 dark:text-slate-500 text-center">
+            +{totalLockedLessons - 3} more lessons across 5 reading levels
+          </p>
+        )}
       </motion.div>
 
       {/* ── COMPARISON TABLE: Free vs Readee+ ── */}
       <motion.div variants={slideUp} className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 overflow-hidden">
-        <div className="grid grid-cols-[1fr,80px,80px] sm:grid-cols-[1fr,100px,100px] text-center">
-          {/* Header */}
-          <div className="px-4 py-3 text-left text-sm font-bold text-zinc-700 dark:text-slate-300 border-b border-zinc-100 dark:border-slate-700">
-            Feature
-          </div>
-          <div className="px-2 py-3 text-sm font-bold text-zinc-500 dark:text-slate-400 border-b border-zinc-100 dark:border-slate-700">
-            Free
-          </div>
-          <div className="px-2 py-3 text-sm font-bold bg-indigo-50 dark:bg-indigo-950/30 text-indigo-600 dark:text-indigo-400 border-b border-indigo-100 dark:border-indigo-900/30">
-            Readee+
-          </div>
-
-          {/* Rows */}
-          {COMPARISON_ROWS.map((row, i) => (
-            <ComparisonRow key={i} feature={row.feature} free={row.free} premium={row.premium} isLast={i === COMPARISON_ROWS.length - 1} />
-          ))}
-        </div>
+        <table className="w-full">
+          <thead>
+            <tr className="border-b border-zinc-100 dark:border-slate-700">
+              <th className="px-4 py-3 text-left text-sm font-bold text-zinc-700 dark:text-slate-300">Feature</th>
+              <th className="w-20 sm:w-24 px-2 py-3 text-center text-sm font-bold text-zinc-500 dark:text-slate-400">Free</th>
+              <th className="w-20 sm:w-24 px-2 py-3 text-center text-sm font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/30">Readee+</th>
+            </tr>
+          </thead>
+          <tbody>
+            {COMPARISON_ROWS.map((row, i) => (
+              <tr key={i} className={i < COMPARISON_ROWS.length - 1 ? "border-b border-zinc-50 dark:border-slate-700/50" : ""}>
+                <td className="px-4 py-3 text-left text-sm text-zinc-600 dark:text-slate-300">{row.feature}</td>
+                <td className="px-2 py-3 text-center">
+                  {row.free ? (
+                    <svg className="w-5 h-5 text-green-500 dark:text-green-400 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                  ) : (
+                    <span className="inline-block w-4 h-0.5 bg-zinc-200 dark:bg-slate-600 rounded" />
+                  )}
+                </td>
+                <td className="px-2 py-3 text-center bg-indigo-50/50 dark:bg-indigo-950/10">
+                  <svg className="w-5 h-5 text-indigo-600 dark:text-indigo-400 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </motion.div>
 
       {/* ── PRICING CARDS ── */}
@@ -624,28 +597,3 @@ function UpgradeContent() {
   );
 }
 
-/* ── Comparison Row Sub-component ── */
-function ComparisonRow({ feature, free, premium, isLast }: { feature: string; free: boolean; premium: boolean; isLast: boolean }) {
-  const borderClass = isLast ? "" : "border-b border-zinc-50 dark:border-slate-700/50";
-  return (
-    <>
-      <div className={`px-4 py-3 text-left text-sm text-zinc-600 dark:text-slate-300 ${borderClass}`}>
-        {feature}
-      </div>
-      <div className={`px-2 py-3 flex items-center justify-center ${borderClass}`}>
-        {free ? (
-          <svg className="w-5 h-5 text-green-500 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-          </svg>
-        ) : (
-          <span className="w-4 h-0.5 bg-zinc-200 dark:bg-slate-600 rounded" />
-        )}
-      </div>
-      <div className={`px-2 py-3 flex items-center justify-center bg-indigo-50/50 dark:bg-indigo-950/10 ${borderClass}`}>
-        <svg className="w-5 h-5 text-indigo-600 dark:text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-        </svg>
-      </div>
-    </>
-  );
-}
