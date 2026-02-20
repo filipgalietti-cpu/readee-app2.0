@@ -559,7 +559,7 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
         </motion.div>
 
         {/* Answer choices */}
-        <div className="space-y-3">
+        <div className="flex flex-col gap-3">
           {q.choices.map((choice, i) => {
             const isSelected = selected === choice;
             const isCorrectChoice = choice === q.correct;
