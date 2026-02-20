@@ -25,10 +25,6 @@ interface Question {
   hint: string;
   difficulty: number;
   audio_url?: string;
-  passage_audio_url?: string;
-  prompt_audio_url?: string;
-  choices_audio_urls?: string[];
-  hint_audio_url?: string;
 }
 
 interface Standard {
@@ -204,7 +200,7 @@ function PracticeLoader() {
 
 function PracticeSession({ child, standard }: { child: Child; standard: Standard }) {
   const router = useRouter();
-  const { speak, playUrl, playSequence, abortSequence, unlockAudio, stop, preload, playCorrectChime, playIncorrectBuzz } = useAudio();
+  const { speak, playUrl, unlockAudio, stop, preload, playCorrectChime, playIncorrectBuzz } = useAudio();
 
   // Zustand store
   const phase = usePracticeStore((s) => s.phase);
@@ -238,33 +234,6 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
   const q = questions[currentIdx];
   const totalQ = questions.length;
 
-  /** Build the teacher-style audio sequence for a question */
-  const buildAudioSequence = useCallback((question: Question) => {
-    const items: Array<{ url?: string; delayMs?: number }> = [];
-    if (question.passage_audio_url) {
-      items.push({ url: question.passage_audio_url });
-      items.push({ delayMs: 800 });
-    }
-    if (question.prompt_audio_url) {
-      items.push({ url: question.prompt_audio_url });
-      items.push({ delayMs: 500 });
-    }
-    if (question.choices_audio_urls?.length) {
-      const choices = question.choices_audio_urls;
-      for (let i = 0; i < choices.length; i++) {
-        if (i === choices.length - 1 && choices.length > 1) {
-          // Say "or" before last choice via a short pause (TTS "or" handled inline)
-          items.push({ delayMs: 300 });
-        }
-        items.push({ url: choices[i] });
-        if (i < choices.length - 1) {
-          items.push({ delayMs: 400 });
-        }
-      }
-    }
-    return items;
-  }, []);
-
   /** Handle "Tap to Start" — unlock audio and begin */
   const handleStart = useCallback(async () => {
     await unlockAudio();
@@ -275,23 +244,19 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
   useEffect(() => {
     if (phase !== "playing" || !audioReady) return;
     const nextIdx = currentIdx + 1;
-    if (nextIdx < totalQ) {
-      const nq = questions[nextIdx];
-      if (nq.passage_audio_url) preload(nq.passage_audio_url);
-      if (nq.prompt_audio_url) preload(nq.prompt_audio_url);
-      nq.choices_audio_urls?.forEach((u) => preload(u));
+    if (nextIdx < totalQ && questions[nextIdx]?.audio_url) {
+      preload(questions[nextIdx].audio_url!);
     }
   }, [currentIdx, phase, audioReady, questions, totalQ, preload]);
 
-  /* ── Play teacher-style audio sequence when question loads ── */
+  /* ── Play combined audio when question loads ── */
   useEffect(() => {
     if (phase !== "playing" || !audioReady) return;
 
-    const sequence = buildAudioSequence(q);
-    if (sequence.length > 0) {
-      playSequence(sequence);
+    if (q.audio_url) {
+      playUrl(q.audio_url);
     } else {
-      // Fallback to TTS if no audio URLs
+      // Fallback to TTS if no audio file
       const { passage, question } = splitPrompt(q.prompt);
       const textToSpeak = passage ? `${passage}. ${question}` : question;
       speak(textToSpeak);
@@ -305,8 +270,6 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
     if (phase !== "feedback") return;
     if (isCorrect) {
       speak(feedbackMsg);
-    } else if (q.hint_audio_url) {
-      playUrl(q.hint_audio_url);
     } else {
       speak(`${feedbackMsg}. The correct answer is ${q.correct}. ${q.hint}`);
     }
@@ -316,8 +279,8 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
   /* ── Handle answer selection ── */
   const handleAnswer = useCallback((choice: string) => {
     if (selected !== null) return;
-    // Stop any playing audio sequence immediately
-    abortSequence();
+    // Stop any playing audio immediately
+    stop();
     const correct = choice === q.correct;
 
     selectAnswer(choice, correct, q.id, XP_PER_CORRECT, CORRECT_MESSAGES, CORRECT_EMOJIS, INCORRECT_MESSAGES);
@@ -327,7 +290,7 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
     } else {
       playIncorrectBuzz();
     }
-  }, [selected, q, selectAnswer, abortSequence, playCorrectChime, playIncorrectBuzz]);
+  }, [selected, q, selectAnswer, stop, playCorrectChime, playIncorrectBuzz]);
 
   /* ── Continue to next question ── */
   const handleContinue = useCallback(() => {
@@ -447,20 +410,17 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
         {/* Passage */}
         {passage && (
           <motion.div variants={fadeUp} className="mb-5 rounded-2xl bg-white border border-zinc-200 dark:bg-slate-800/80 dark:border-slate-700 p-5">
-            <div className="flex items-start gap-2">
-              <p className="text-lg leading-relaxed text-zinc-900 dark:text-white/90 whitespace-pre-line flex-1">{passage}</p>
-              <SpeakerButton text={passage} audioUrl={q.passage_audio_url} />
-            </div>
+            <p className="text-lg leading-relaxed text-zinc-900 dark:text-white/90 whitespace-pre-line">{passage}</p>
           </motion.div>
         )}
 
-        {/* Question */}
+        {/* Question + replay button */}
         <motion.div variants={fadeUp} className="mb-6">
           <div className="flex items-start gap-2">
             <h2 className="text-[22px] font-bold text-zinc-900 dark:text-white leading-snug flex-1">
               {question}
             </h2>
-            <SpeakerButton text={question} audioUrl={q.prompt_audio_url} />
+            <SpeakerButton text={question} audioUrl={q.audio_url} />
           </div>
         </motion.div>
 
@@ -541,7 +501,6 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
                   <span className={`text-lg font-medium leading-snug flex-1 ${textColor}`}>
                     {choice}
                   </span>
-                  <SpeakerButton text={choice} audioUrl={q.choices_audio_urls?.[i]} />
                 </div>
               </motion.button>
             );

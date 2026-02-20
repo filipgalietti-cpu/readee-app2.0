@@ -2,38 +2,41 @@
 
 const fs = require("fs");
 const path = require("path");
+const textToSpeech = require("@google-cloud/text-to-speech");
 
-const API_KEY = process.env.ELEVENLABS_API_KEY;
-if (!API_KEY) {
-  console.error("Missing ELEVENLABS_API_KEY environment variable");
-  process.exit(1);
-}
+// Google Cloud TTS client — uses GOOGLE_APPLICATION_CREDENTIALS env var
+const client = new textToSpeech.TextToSpeechClient();
 
-const VOICE_ID = "kXsOSDWolD7e9l1Z0sbH";
-const MODEL_ID = "eleven_multilingual_v2";
-const OUTPUT_FORMAT = "mp3_44100_128";
-const VOICE_SETTINGS = {
-  stability: 0.85,
-  similarity_boost: 0.75,
-  style: 0.0,
-  use_speaker_boost: false,
+// Calm, warm female voice — like a kindergarten teacher
+const VOICE = {
+  languageCode: "en-US",
+  name: "en-US-Studio-O",
+  ssmlGender: "FEMALE",
+};
+const AUDIO_CONFIG = {
+  audioEncoding: "MP3",
+  speakingRate: 0.9,
+  pitch: 0.0,
+  volumeGainDb: 0.0,
 };
 
 const INPUT_PATH = path.join(__dirname, "..", "app", "data", "kindergarten-standards-questions.json");
 const OUTPUT_DIR = path.join(__dirname, "..", "public", "audio", "kindergarten");
 
+// Only generate for these standards (pass --all to generate everything)
+const TEST_STANDARDS = ["RL.K.1"];
+const generateAll = process.argv.includes("--all");
+
 const delay = (ms) => new Promise((r) => setTimeout(r, ms));
 
-/** Strip emoji prefixes like "🐶 Read: " from text */
+/** Strip emoji and "Read:" prefix */
 function cleanText(text) {
-  // Remove emoji characters (common unicode ranges)
   let cleaned = text.replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{FE00}-\u{FE0F}\u{200D}]/gu, "").trim();
-  // Remove leading "Read: " if present
   cleaned = cleaned.replace(/^Read:\s*/i, "");
   return cleaned;
 }
 
-/** Split a prompt into passage and question parts */
+/** Split prompt into passage and question */
 function splitPrompt(prompt) {
   const parts = prompt.split("\n\n");
   if (parts.length >= 2) {
@@ -45,34 +48,42 @@ function splitPrompt(prompt) {
   return { passage: "", question: cleanText(prompt.trim()) };
 }
 
-/** Generate audio via ElevenLabs REST API */
+/** Build combined teacher-style text for one question */
+function buildCombinedText(q) {
+  const { passage, question } = splitPrompt(q.prompt);
+  const parts = [];
+
+  if (passage) {
+    parts.push(passage);
+  }
+  parts.push(question);
+
+  // Add choices with "Or" before the last one
+  const choices = q.choices.map((c) => cleanText(c));
+  for (let i = 0; i < choices.length; i++) {
+    if (i === choices.length - 1 && choices.length > 1) {
+      parts.push(`Or, ${choices[i]}.`);
+    } else {
+      parts.push(`${choices[i]}.`);
+    }
+  }
+
+  return parts.join(" ");
+}
+
+/** Generate audio via Google Cloud TTS */
 async function generateAudio(text, outputFile) {
   if (fs.existsSync(outputFile)) {
-    return false; // already exists, skip
+    return false;
   }
 
-  const url = `https://api.elevenlabs.io/v1/text-to-speech/${VOICE_ID}?output_format=${OUTPUT_FORMAT}`;
-
-  const res = await fetch(url, {
-    method: "POST",
-    headers: {
-      "xi-api-key": API_KEY,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      text,
-      model_id: MODEL_ID,
-      voice_settings: VOICE_SETTINGS,
-    }),
+  const [response] = await client.synthesizeSpeech({
+    input: { text },
+    voice: VOICE,
+    audioConfig: AUDIO_CONFIG,
   });
 
-  if (!res.ok) {
-    const errText = await res.text();
-    throw new Error(`ElevenLabs API error ${res.status}: ${errText}`);
-  }
-
-  const buffer = Buffer.from(await res.arrayBuffer());
-  fs.writeFileSync(outputFile, buffer);
+  fs.writeFileSync(outputFile, response.audioContent, "binary");
   return true;
 }
 
@@ -80,85 +91,61 @@ async function main() {
   const data = JSON.parse(fs.readFileSync(INPUT_PATH, "utf-8"));
   fs.mkdirSync(OUTPUT_DIR, { recursive: true });
 
-  // Count total audio files to generate
+  const standards = generateAll
+    ? data.standards
+    : data.standards.filter((s) => TEST_STANDARDS.includes(s.standard_id));
+
+  if (!generateAll) {
+    console.log(`Test mode: generating for ${TEST_STANDARDS.join(", ")} only. Use --all for everything.\n`);
+  }
+
   let totalFiles = 0;
-  for (const std of data.standards) {
-    for (const q of std.questions) {
-      const { passage } = splitPrompt(q.prompt);
-      if (passage) totalFiles++; // passage
-      totalFiles++; // prompt
-      totalFiles += q.choices.length; // choices
-      totalFiles++; // hint
-    }
+  for (const std of standards) {
+    totalFiles += std.questions.length;
   }
 
   let generated = 0;
   let skipped = 0;
   let fileNum = 0;
 
-  for (const std of data.standards) {
+  for (const std of standards) {
     for (let qIdx = 0; qIdx < std.questions.length; qIdx++) {
       const q = std.questions[qIdx];
       const qNum = qIdx + 1;
-      const prefix = `${std.standard_id}-q${qNum}`;
-      const { passage, question } = splitPrompt(q.prompt);
+      const fileName = `${std.standard_id}-q${qNum}.mp3`;
+      const file = path.join(OUTPUT_DIR, fileName);
 
-      console.log(`Generating ${std.standard_id} question ${qNum}... (${fileNum + 1}/${totalFiles})`);
+      fileNum++;
+      console.log(`[${fileNum}/${totalFiles}] ${std.standard_id} q${qNum}...`);
 
-      // Passage audio (if exists)
-      if (passage) {
-        const file = path.join(OUTPUT_DIR, `${prefix}-passage.mp3`);
-        const didGenerate = await generateAudio(passage, file);
-        if (didGenerate) { generated++; await delay(500); } else { skipped++; }
-        fileNum++;
-      }
+      const combinedText = buildCombinedText(q);
+      const didGenerate = await generateAudio(combinedText, file);
 
-      // Question prompt audio
-      {
-        const file = path.join(OUTPUT_DIR, `${prefix}-prompt.mp3`);
-        const didGenerate = await generateAudio(question, file);
-        if (didGenerate) { generated++; await delay(500); } else { skipped++; }
-        fileNum++;
-      }
-
-      // Choice audio
-      for (let cIdx = 0; cIdx < q.choices.length; cIdx++) {
-        const file = path.join(OUTPUT_DIR, `${prefix}-choice${cIdx + 1}.mp3`);
-        const didGenerate = await generateAudio(cleanText(q.choices[cIdx]), file);
-        if (didGenerate) { generated++; await delay(500); } else { skipped++; }
-        fileNum++;
-      }
-
-      // Hint audio
-      {
-        const file = path.join(OUTPUT_DIR, `${prefix}-hint.mp3`);
-        const didGenerate = await generateAudio(cleanText(q.hint), file);
-        if (didGenerate) { generated++; await delay(500); } else { skipped++; }
-        fileNum++;
+      if (didGenerate) {
+        generated++;
+        await delay(100);
+      } else {
+        skipped++;
       }
     }
   }
 
   console.log(`\nDone! Generated: ${generated}, Skipped (existing): ${skipped}, Total: ${fileNum}`);
 
-  // --- Phase 2: Update JSON with audio URLs ---
-  console.log("\nUpdating kindergarten-standards-questions.json with audio URLs...");
+  // --- Phase 2: Update JSON with audio_url ---
+  console.log("\nUpdating JSON with audio_url fields...");
 
-  for (const std of data.standards) {
+  for (const std of standards) {
     for (let qIdx = 0; qIdx < std.questions.length; qIdx++) {
       const q = std.questions[qIdx];
       const qNum = qIdx + 1;
-      const prefix = `${std.standard_id}-q${qNum}`;
-      const { passage } = splitPrompt(q.prompt);
+      q.audio_url = `/audio/kindergarten/${std.standard_id}-q${qNum}.mp3`;
 
-      if (passage) {
-        q.passage_audio_url = `/audio/kindergarten/${prefix}-passage.mp3`;
-      }
-      q.prompt_audio_url = `/audio/kindergarten/${prefix}-prompt.mp3`;
-      q.choices_audio_urls = q.choices.map((_, cIdx) =>
-        `/audio/kindergarten/${prefix}-choice${cIdx + 1}.mp3`
-      );
-      q.hint_audio_url = `/audio/kindergarten/${prefix}-hint.mp3`;
+      // Clean up old separate fields if they exist
+      delete q.passage_audio_url;
+      delete q.prompt_audio_url;
+      delete q.choices_audio_urls;
+      delete q.hint_audio_url;
     }
   }
 

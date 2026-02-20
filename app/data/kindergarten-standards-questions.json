@@ -23,15 +23,7 @@
           "correct": "A red ball",
           "hint": "Look at the second sentence — what did Max play fetch with?",
           "difficulty": 1,
-          "passage_audio_url": "/audio/kindergarten/RL.K.1-q1-passage.mp3",
-          "prompt_audio_url": "/audio/kindergarten/RL.K.1-q1-prompt.mp3",
-          "choices_audio_urls": [
-            "/audio/kindergarten/RL.K.1-q1-choice1.mp3",
-            "/audio/kindergarten/RL.K.1-q1-choice2.mp3",
-            "/audio/kindergarten/RL.K.1-q1-choice3.mp3",
-            "/audio/kindergarten/RL.K.1-q1-choice4.mp3"
-          ],
-          "hint_audio_url": "/audio/kindergarten/RL.K.1-q1-hint.mp3"
+          "audio_url": "/audio/kindergarten/RL.K.1-q1.mp3"
         },
         {
           "id": "RL.K.1-Q2",
@@ -46,15 +38,7 @@
           "correct": "To school",
           "hint": "Read the end of the second sentence carefully!",
           "difficulty": 1,
-          "passage_audio_url": "/audio/kindergarten/RL.K.1-q2-passage.mp3",
-          "prompt_audio_url": "/audio/kindergarten/RL.K.1-q2-prompt.mp3",
-          "choices_audio_urls": [
-            "/audio/kindergarten/RL.K.1-q2-choice1.mp3",
-            "/audio/kindergarten/RL.K.1-q2-choice2.mp3",
-            "/audio/kindergarten/RL.K.1-q2-choice3.mp3",
-            "/audio/kindergarten/RL.K.1-q2-choice4.mp3"
-          ],
-          "hint_audio_url": "/audio/kindergarten/RL.K.1-q2-hint.mp3"
+          "audio_url": "/audio/kindergarten/RL.K.1-q2.mp3"
         },
         {
           "id": "RL.K.1-Q3",
@@ -69,15 +53,7 @@
           "correct": "6",
           "hint": "The story tells you a number — what is it?",
           "difficulty": 1,
-          "passage_audio_url": "/audio/kindergarten/RL.K.1-q3-passage.mp3",
-          "prompt_audio_url": "/audio/kindergarten/RL.K.1-q3-prompt.mp3",
-          "choices_audio_urls": [
-            "/audio/kindergarten/RL.K.1-q3-choice1.mp3",
-            "/audio/kindergarten/RL.K.1-q3-choice2.mp3",
-            "/audio/kindergarten/RL.K.1-q3-choice3.mp3",
-            "/audio/kindergarten/RL.K.1-q3-choice4.mp3"
-          ],
-          "hint_audio_url": "/audio/kindergarten/RL.K.1-q3-hint.mp3"
+          "audio_url": "/audio/kindergarten/RL.K.1-q3.mp3"
         },
         {
           "id": "RL.K.1-Q4",
@@ -92,15 +68,7 @@
           "correct": "Gray with white paws",
           "hint": "The second sentence describes what the kitten looked like.",
           "difficulty": 2,
-          "passage_audio_url": "/audio/kindergarten/RL.K.1-q4-passage.mp3",
-          "prompt_audio_url": "/audio/kindergarten/RL.K.1-q4-prompt.mp3",
-          "choices_audio_urls": [
-            "/audio/kindergarten/RL.K.1-q4-choice1.mp3",
-            "/audio/kindergarten/RL.K.1-q4-choice2.mp3",
-            "/audio/kindergarten/RL.K.1-q4-choice3.mp3",
-            "/audio/kindergarten/RL.K.1-q4-choice4.mp3"
-          ],
-          "hint_audio_url": "/audio/kindergarten/RL.K.1-q4-hint.mp3"
+          "audio_url": "/audio/kindergarten/RL.K.1-q4.mp3"
         },
         {
           "id": "RL.K.1-Q5",
@@ -115,15 +83,7 @@
           "correct": "His grandma",
           "hint": "Look at the very first word of the story!",
           "difficulty": 2,
-          "passage_audio_url": "/audio/kindergarten/RL.K.1-q5-passage.mp3",
-          "prompt_audio_url": "/audio/kindergarten/RL.K.1-q5-prompt.mp3",
-          "choices_audio_urls": [
-            "/audio/kindergarten/RL.K.1-q5-choice1.mp3",
-            "/audio/kindergarten/RL.K.1-q5-choice2.mp3",
-            "/audio/kindergarten/RL.K.1-q5-choice3.mp3",
-            "/audio/kindergarten/RL.K.1-q5-choice4.mp3"
-          ],
-          "hint_audio_url": "/audio/kindergarten/RL.K.1-q5-hint.mp3"
+          "audio_url": "/audio/kindergarten/RL.K.1-q5.mp3"
         }
       ]
     },
