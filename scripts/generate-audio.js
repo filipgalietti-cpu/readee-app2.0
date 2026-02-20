@@ -15,7 +15,7 @@ const VOICE = {
 };
 const AUDIO_CONFIG = {
   audioEncoding: "MP3",
-  speakingRate: 0.82,
+  speakingRate: 0.75,
   pitch: 0.0,
   volumeGainDb: 0.0,
 };
@@ -73,21 +73,21 @@ function buildSSML(q) {
   parts.push("<speak>");
   if (passage) {
     parts.push(`  ${escapeSSML(passage)}`);
-    parts.push('  <break time="1s"/>');
+    parts.push('  <break time="1.5s"/>');
   }
   parts.push(`  ${escapeSSML(question)}`);
-  parts.push('  <break time="0.8s"/>');
+  parts.push('  <break time="1.2s"/>');
 
   for (let i = 0; i < choices.length; i++) {
     if (i === choices.length - 1 && choices.length > 1) {
       parts.push("  Or,");
-      parts.push('  <break time="0.4s"/>');
+      parts.push('  <break time="0.5s"/>');
       parts.push(`  ${lowercaseFirst(choices[i])}`);
     } else {
       parts.push(`  ${choices[i]}`);
     }
     if (i < choices.length - 1) {
-      parts.push('  <break time="0.6s"/>');
+      parts.push('  <break time="0.8s"/>');
     }
   }
 

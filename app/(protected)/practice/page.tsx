@@ -57,7 +57,15 @@ const INCORRECT_MESSAGES = [
   "Not quite!", "Almost!", "Good try!", "Keep learning!",
 ];
 
-const ACCENT_COLORS = ["#818cf8", "#34d399", "#fbbf24", "#a78bfa"];
+const ACCENT_COLORS = ["#60a5fa", "#4ade80", "#fb923c", "#a78bfa"]; // blue, green, orange, purple
+
+// Per-choice highlight styles when TTS reads each card
+const CARD_HIGHLIGHTS = [
+  { shadow: "0 0 0 2px rgba(96,165,250,0.6), 0 0 12px rgba(96,165,250,0.25)", bg: "bg-blue-50/70 border-blue-300 dark:bg-blue-950/25 dark:border-blue-500/50" },
+  { shadow: "0 0 0 2px rgba(74,222,128,0.6), 0 0 12px rgba(74,222,128,0.25)", bg: "bg-green-50/70 border-green-300 dark:bg-green-950/25 dark:border-green-500/50" },
+  { shadow: "0 0 0 2px rgba(251,146,60,0.6), 0 0 12px rgba(251,146,60,0.25)", bg: "bg-orange-50/70 border-orange-300 dark:bg-orange-950/25 dark:border-orange-500/50" },
+  { shadow: "0 0 0 2px rgba(167,139,250,0.6), 0 0 12px rgba(167,139,250,0.25)", bg: "bg-purple-50/70 border-purple-300 dark:bg-purple-950/25 dark:border-purple-500/50" },
+];
 
 /* ─── Helpers ────────────────────────────────────────── */
 
@@ -85,27 +93,27 @@ function cleanForTiming(text: string): string {
 
 /** Calculate when each answer choice starts being read (in ms) */
 function calculateChoiceTimings(prompt: string, choices: string[]): number[] {
-  const CHARS_PER_SEC = 15; // ~15 chars/sec at 0.82 speaking rate
+  const CHARS_PER_SEC = 13.5; // ~13.5 chars/sec at 0.75 speaking rate
   const { passage, question } = splitPrompt(prompt);
 
   let t = 0;
   if (passage) {
     t += cleanForTiming(passage).length / CHARS_PER_SEC;
-    t += 1.0; // SSML break after passage
+    t += 1.5; // SSML break after passage
   }
   t += cleanForTiming(question).length / CHARS_PER_SEC;
-  t += 0.8; // SSML break after question
+  t += 1.2; // SSML break after question
 
   const timings: number[] = [];
   for (let i = 0; i < choices.length; i++) {
     if (i === choices.length - 1 && choices.length > 1) {
       t += 3 / CHARS_PER_SEC; // "Or," spoken
-      t += 0.4; // SSML break after "Or,"
+      t += 0.5; // SSML break after "Or,"
     }
     timings.push(t * 1000);
     t += cleanForTiming(choices[i]).length / CHARS_PER_SEC;
     if (i < choices.length - 1) {
-      t += 0.6; // SSML break between choices
+      t += 0.8; // SSML break between choices
     }
   }
   // End time: after last choice finishes + buffer
@@ -235,7 +243,7 @@ function PracticeLoader() {
 
 function PracticeSession({ child, standard }: { child: Child; standard: Standard }) {
   const router = useRouter();
-  const { speak, playUrl, unlockAudio, stop, preload, playCorrectChime, playIncorrectBuzz } = useAudio();
+  const { speak, playUrl, unlockAudio, stop, preload, playCorrectChime, playIncorrectBuzz, isSpeaking } = useAudio();
 
   // Zustand store
   const phase = usePracticeStore((s) => s.phase);
@@ -253,8 +261,10 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
   const [saving, setSaving] = useState(false);
   const [audioReady, setAudioReady] = useState(false);
   const [highlightedIdx, setHighlightedIdx] = useState<number | null>(null);
+  const [xpFlash, setXpFlash] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const highlightTimersRef = useRef<ReturnType<typeof setTimeout>[]>([]);
+  const prevXPRef = useRef(sessionXP);
 
   const questions = useMemo(() => {
     if (standard.questions.length <= QUESTIONS_PER_SESSION) return standard.questions;
@@ -267,6 +277,16 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
     setAudioReady(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [standard.standard_id]);
+
+  // XP sparkle flash
+  useEffect(() => {
+    if (sessionXP > prevXPRef.current) {
+      setXpFlash(true);
+      const timer = setTimeout(() => setXpFlash(false), 600);
+      prevXPRef.current = sessionXP;
+      return () => clearTimeout(timer);
+    }
+  }, [sessionXP]);
 
   const q = questions[currentIdx];
   const totalQ = questions.length;
@@ -470,19 +490,37 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
 
         <div className="flex-1 h-4 bg-zinc-200 dark:bg-slate-800 rounded-full overflow-hidden">
           <div
-            className="h-full rounded-full transition-all duration-500 ease-out"
+            className="h-full rounded-full transition-all duration-500 ease-out relative overflow-hidden"
             style={{
               width: `${progressPct}%`,
               background: "linear-gradient(90deg, #4ade80, #22c55e)",
               boxShadow: "0 0 8px rgba(74, 222, 128, 0.4)",
             }}
-          />
+          >
+            {/* Shimmer overlay */}
+            <motion.div
+              className="absolute inset-0 rounded-full"
+              style={{
+                background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%)",
+                width: "50%",
+              }}
+              animate={{ x: ["-100%", "300%"] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "linear", repeatDelay: 1 }}
+            />
+          </div>
         </div>
 
-        <div className="flex items-center gap-1 bg-zinc-200 dark:bg-slate-800 px-3 py-1.5 rounded-full flex-shrink-0">
+        <motion.div
+          className="flex items-center gap-1 bg-zinc-200 dark:bg-slate-800 px-3 py-1.5 rounded-full flex-shrink-0"
+          animate={xpFlash ? {
+            scale: [1, 1.25, 1],
+            boxShadow: ["0 0 0 0px rgba(251,191,36,0)", "0 0 8px 4px rgba(251,191,36,0.5)", "0 0 0 0px rgba(251,191,36,0)"],
+          } : {}}
+          transition={{ duration: 0.6 }}
+        >
           <span className="text-sm">⭐</span>
           <span className="text-sm font-bold text-amber-600 dark:text-amber-400 tabular-nums">{sessionXP}</span>
-        </div>
+        </motion.div>
 
         <MuteToggle />
       </div>
@@ -513,9 +551,17 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
               className="inline-flex items-center justify-center w-8 h-8 rounded-full hover:bg-zinc-200 dark:hover:bg-white/10 transition-colors flex-shrink-0"
               aria-label="Replay audio"
             >
-              <svg className="w-4 h-4 text-indigo-600 dark:text-indigo-300" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+              <motion.svg
+                className="w-5 h-5 text-indigo-600 dark:text-indigo-300"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+                viewBox="0 0 24 24"
+                animate={isSpeaking ? { rotate: 360 } : { rotate: 0 }}
+                transition={isSpeaking ? { duration: 3, repeat: Infinity, ease: "linear" } : { duration: 0.3 }}
+              >
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.536 8.464a5 5 0 010 7.072M17.95 6.05a8 8 0 010 11.9M11 5L6 9H2v6h4l5 4V5z" />
-              </svg>
+              </motion.svg>
             </button>
           </div>
         </motion.div>
@@ -527,8 +573,12 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
             const isCorrectChoice = choice === q.correct;
             const answered = selected !== null;
             const isHighlighted = highlightedIdx === i && !answered;
+            const isBreathing = highlightedIdx === null && !answered && phase === "playing";
+            const hl = CARD_HIGHLIGHTS[i % 4];
 
-            let bg = "bg-white border-zinc-300 hover:border-indigo-400 hover:bg-indigo-50 dark:bg-slate-800 dark:border-slate-600 dark:hover:border-indigo-400 dark:hover:bg-slate-700 active:scale-[0.97]";
+            let bg = isHighlighted
+              ? hl.bg
+              : "bg-white border-zinc-200 dark:bg-slate-800 dark:border-slate-600";
             let textColor = "text-zinc-900 dark:text-white";
 
             if (answered) {
@@ -553,33 +603,35 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
                 variants={fadeUp}
                 animate={
                   isSelected && !isCorrect
-                    ? { x: [0, -8, 8, -6, 6, -3, 3, 0], transition: { duration: 0.5 } }
+                    ? { x: [0, -8, 8, -6, 6, -3, 3, 0], boxShadow: "none", transition: { duration: 0.5 } }
                     : isSelected && isCorrect
-                    ? { scale: [1, 1.05, 1], transition: { duration: 0.3 } }
+                    ? { scale: [1, 1.05, 1], boxShadow: "none", transition: { duration: 0.3 } }
                     : isHighlighted
-                    ? {
-                        boxShadow: [
-                          "0 0 0 2px rgba(99,102,241,0.5), 0 0 8px rgba(99,102,241,0.2)",
-                          "0 0 0 3px rgba(129,140,248,0.7), 0 0 16px rgba(99,102,241,0.35)",
-                          "0 0 0 2px rgba(99,102,241,0.5), 0 0 8px rgba(99,102,241,0.2)",
-                        ],
-                        transition: { duration: 1.5, repeat: Infinity, ease: "easeInOut" },
-                      }
-                    : { boxShadow: "0 0 0 0px transparent", transition: { duration: 0.3 } }
+                    ? { boxShadow: hl.shadow, transition: { duration: 0.3 } }
+                    : isBreathing
+                    ? { scale: [1, 1.01, 1], boxShadow: "0 0 0 0px transparent", transition: { scale: { duration: 2, repeat: Infinity, ease: "easeInOut" }, boxShadow: { duration: 0.3 } } }
+                    : { boxShadow: "0 0 0 0px transparent", scale: 1, transition: { duration: 0.3 } }
                 }
+                whileHover={!answered ? {
+                  y: -3,
+                  scale: 1.02,
+                  boxShadow: `0 8px 20px ${ACCENT_COLORS[i % 4]}30`,
+                  transition: { type: "spring", stiffness: 400, damping: 15 },
+                } : undefined}
+                whileTap={!answered ? { scale: 0.97, transition: { duration: 0.1 } } : undefined}
                 onClick={() => handleAnswer(choice)}
                 disabled={answered}
                 className={`
-                  w-full text-left px-5 py-4 rounded-xl border-2 relative overflow-hidden
-                  transition-all duration-200 outline-none
+                  group w-full text-left px-5 py-4 rounded-xl border-2 relative overflow-hidden
+                  transition-[background-color,border-color,opacity] duration-200 outline-none
                   ${bg}
                   ${answered ? "cursor-default" : "cursor-pointer"}
                 `}
                 style={{ minHeight: 64 }}
               >
-                {/* Color accent bar */}
+                {/* Color accent bar — widens on hover */}
                 <div
-                  className="absolute left-0 top-0 bottom-0 w-1 rounded-l-xl"
+                  className="absolute left-0 top-0 bottom-0 w-[3px] group-hover:w-[5px] rounded-l-xl transition-all duration-200"
                   style={{ backgroundColor: ACCENT_COLORS[i % 4] }}
                 />
                 <div className="flex items-center gap-3">
