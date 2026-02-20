@@ -31,6 +31,7 @@ class AudioManager {
   private currentHowl: Howl | null = null;
   private audioCtx: AudioContext | null = null;
   private sequenceAbort: AbortController | null = null;
+  private stopTimer: ReturnType<typeof setTimeout> | null = null;
 
   constructor() {
     if (typeof window !== "undefined") {
@@ -59,7 +60,13 @@ class AudioManager {
     const { isMuted } = useAudioStore.getState();
     if (isMuted) return Promise.resolve();
 
-    // Stop immediately (not with fade delay) to avoid killing a replayed cached howl
+    // Cancel any pending delayed stop from stopCurrent — prevents it from killing the replayed cached howl
+    if (this.stopTimer) {
+      clearTimeout(this.stopTimer);
+      this.stopTimer = null;
+    }
+
+    // Stop immediately (no fade delay) since new audio starts right away
     if (this.currentHowl) {
       try { this.currentHowl.stop(); } catch {}
       this.currentHowl = null;
@@ -128,11 +135,15 @@ class AudioManager {
 
   /** Stop current Howl only (no sequence abort) */
   private stopCurrent(): void {
+    if (this.stopTimer) {
+      clearTimeout(this.stopTimer);
+      this.stopTimer = null;
+    }
     if (this.currentHowl) {
       try {
         this.currentHowl.fade(this.currentHowl.volume() as number, 0, 200);
         const h = this.currentHowl;
-        setTimeout(() => h.stop(), 200);
+        this.stopTimer = setTimeout(() => { h.stop(); this.stopTimer = null; }, 200);
       } catch {}
       this.currentHowl = null;
     }

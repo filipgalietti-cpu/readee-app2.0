@@ -118,7 +118,8 @@ function calculateChoiceTimings(prompt: string, choices: string[]): number[] {
   }
   // End time: after last choice finishes + buffer
   timings.push((t + 0.5) * 1000);
-  return timings; // [choice0Start, choice1Start, ..., endTime]
+  // Shift highlights 0.3s earlier so card lights up just BEFORE TTS reads it
+  return timings.map((ms) => Math.max(0, ms - 300)); // [choice0Start, choice1Start, ..., endTime]
 }
 
 function getNextStandard(currentId: string): Standard | null {
@@ -243,7 +244,7 @@ function PracticeLoader() {
 
 function PracticeSession({ child, standard }: { child: Child; standard: Standard }) {
   const router = useRouter();
-  const { speak, playUrl, unlockAudio, stop, preload, playCorrectChime, playIncorrectBuzz, isSpeaking } = useAudio();
+  const { speak, playUrl, unlockAudio, stop, preload, playCorrectChime, playIncorrectBuzz } = useAudio();
 
   // Zustand store
   const phase = usePracticeStore((s) => s.phase);
@@ -551,17 +552,9 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
               className="inline-flex items-center justify-center w-8 h-8 rounded-full hover:bg-zinc-200 dark:hover:bg-white/10 transition-colors flex-shrink-0"
               aria-label="Replay audio"
             >
-              <motion.svg
-                className="w-5 h-5 text-indigo-600 dark:text-indigo-300"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-                viewBox="0 0 24 24"
-                animate={isSpeaking ? { rotate: 360 } : { rotate: 0 }}
-                transition={isSpeaking ? { duration: 3, repeat: Infinity, ease: "linear" } : { duration: 0.3 }}
-              >
+              <svg className="w-5 h-5 text-indigo-600 dark:text-indigo-300" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.536 8.464a5 5 0 010 7.072M17.95 6.05a8 8 0 010 11.9M11 5L6 9H2v6h4l5 4V5z" />
-              </motion.svg>
+              </svg>
             </button>
           </div>
         </motion.div>
