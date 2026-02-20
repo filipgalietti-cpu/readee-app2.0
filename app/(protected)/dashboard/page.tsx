@@ -81,6 +81,17 @@ function formatSkillName(skill: string): string {
     .join(" ");
 }
 
+const DOMAIN_FRIENDLY_NAMES: Record<string, string> = {
+  "Reading Literature": "Reading stories and answering questions",
+  "Reading Informational Text": "Learning from real-world texts",
+  "Foundational Skills": "Building reading skills",
+  "Language": "Words and language practice",
+};
+
+function getFriendlyTopicName(domain: string): string {
+  return DOMAIN_FRIENDLY_NAMES[domain] || "Reading practice";
+}
+
 function getGreeting(): { text: string; emoji: string } {
   const h = new Date().getHours();
   if (h < 12) return { text: "Good morning", emoji: "☀️" };
@@ -408,7 +419,7 @@ function ChildDashboard({
   const greeting = getGreeting();
   const motivation = useMemo(() => MOTIVATIONAL[Math.floor(Math.random() * MOTIVATIONAL.length)], []);
   const nextPracticeStandard = useMemo(() => {
-    const standards = (kStandards as { standards: { standard_id: string; standard_description: string }[] }).standards;
+    const standards = (kStandards as { standards: { standard_id: string; standard_description: string; domain: string }[] }).standards;
     return standards[0];
   }, []);
 
@@ -539,29 +550,22 @@ function ChildDashboard({
     }));
   }, [lessonProgress]);
 
-  // Daily goal: complete 1 lesson today
-  const dailyGoalMet = useMemo(() => {
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    const completedToday = new Set<string>();
-    for (const p of lessonProgress) {
-      const d = new Date(p.completed_at);
-      if (d >= today) {
-        completedToday.add(`${p.lesson_id}:${p.section}`);
-      }
+  // Daily goal: at least 1 practice session today
+  const [dailyGoalMet, setDailyGoalMet] = useState(false);
+  useEffect(() => {
+    async function checkDailyPractice() {
+      const supabase = supabaseBrowser();
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      const { count } = await supabase
+        .from("practice_results")
+        .select("id", { count: "exact", head: true })
+        .eq("child_id", child.id)
+        .gte("completed_at", today.toISOString());
+      setDailyGoalMet((count ?? 0) > 0);
     }
-    // Check if any lesson has all 3 sections completed today
-    for (const l of lessons) {
-      if (
-        completedToday.has(`${l.id}:learn`) &&
-        completedToday.has(`${l.id}:practice`) &&
-        completedToday.has(`${l.id}:read`)
-      ) {
-        return true;
-      }
-    }
-    return false;
-  }, [lessonProgress, lessons]);
+    checkDailyPractice();
+  }, [child.id]);
 
   // XP milestone
   const xpMilestones = [25, 50, 100, 200, 500, 1000];
@@ -651,7 +655,7 @@ function ChildDashboard({
                 <div className="flex-1 min-w-0">
                   <div className="text-white font-extrabold text-xl">Ready to practice?</div>
                   <div className="text-white/70 text-sm mt-1 truncate">
-                    {nextPracticeStandard.standard_id}: {nextPracticeStandard.standard_description}
+                    {getFriendlyTopicName(nextPracticeStandard.domain)}
                   </div>
                 </div>
               </div>
@@ -667,7 +671,7 @@ function ChildDashboard({
       <motion.div variants={slideUp} className="grid grid-cols-3 gap-3">
         {/* XP Card */}
         <Link href={`/xp-rewards?child=${child.id}`} className="block">
-          <div className="rounded-2xl border border-amber-200 dark:border-amber-800/40 bg-gradient-to-b from-amber-50 to-white dark:from-amber-950/30 dark:to-slate-800 p-4 text-center hover:shadow-md hover:scale-[1.02] transition-all duration-200 group cursor-pointer">
+          <div className="rounded-2xl border border-gray-200 dark:border-slate-700 bg-gradient-to-b from-amber-50 to-white dark:from-amber-950/30 dark:to-slate-800 p-4 text-center hover:shadow-md hover:scale-[1.02] transition-all duration-200 group cursor-pointer">
             <div className="text-xl mb-1 group-hover:animate-subtleBounce">⭐</div>
             <CountUpStat target={child.xp} />
             <div className="text-[10px] text-zinc-500 dark:text-slate-400 mt-0.5 font-medium">XP</div>
@@ -684,7 +688,7 @@ function ChildDashboard({
 
         {/* Stories Card */}
         <Link href={`/stories?child=${child.id}`} className="block">
-          <div className="rounded-2xl border border-indigo-200 dark:border-indigo-800/40 bg-gradient-to-b from-indigo-50 to-white dark:from-indigo-950/30 dark:to-slate-800 p-4 text-center hover:shadow-md hover:scale-[1.02] transition-all duration-200 group cursor-pointer">
+          <div className="rounded-2xl border border-gray-200 dark:border-slate-700 bg-gradient-to-b from-indigo-50 to-white dark:from-indigo-950/30 dark:to-slate-800 p-4 text-center hover:shadow-md hover:scale-[1.02] transition-all duration-200 group cursor-pointer">
             <div className="text-xl mb-1 group-hover:animate-subtleBounce">
               {child.stories_read > 0 ? "📚" : "📖"}
             </div>
@@ -708,7 +712,7 @@ function ChildDashboard({
 
         {/* Streak Card */}
         <Link href={`/leaderboard?child=${child.id}`} className="block">
-          <div className="rounded-2xl border border-orange-200 dark:border-orange-800/40 bg-gradient-to-b from-orange-50 to-white dark:from-orange-950/30 dark:to-slate-800 p-4 text-center hover:shadow-md hover:scale-[1.02] transition-all duration-200 group cursor-pointer">
+          <div className="rounded-2xl border border-gray-200 dark:border-slate-700 bg-gradient-to-b from-orange-50 to-white dark:from-orange-950/30 dark:to-slate-800 p-4 text-center hover:shadow-md hover:scale-[1.02] transition-all duration-200 group cursor-pointer">
             <div className={`text-xl mb-1 ${child.streak_days > 0 ? "animate-fireGlow" : ""}`}>
               🔥
             </div>
@@ -752,7 +756,7 @@ function ChildDashboard({
           <div className="text-xs text-zinc-500 dark:text-slate-400 mt-0.5">
             {dailyGoalMet
               ? "Amazing work! Come back tomorrow for more."
-              : "Complete 1 lesson to hit your daily goal"}
+              : "Complete 1 practice session to hit your daily goal"}
           </div>
         </div>
       </motion.div>
