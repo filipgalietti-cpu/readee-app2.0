@@ -1124,7 +1124,16 @@
           ],
           "correct": "Apples",
           "hint": "The main topic is what the WHOLE passage is about — every sentence talks about...",
-          "difficulty": 1
+          "difficulty": 1,
+          "passage_audio_url": "/audio/kindergarten/RI.K.2-q1-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RI.K.2-q1-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RI.K.2-q1-choice1.mp3",
+            "/audio/kindergarten/RI.K.2-q1-choice2.mp3",
+            "/audio/kindergarten/RI.K.2-q1-choice3.mp3",
+            "/audio/kindergarten/RI.K.2-q1-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RI.K.2-q1-hint.mp3"
         },
         {
           "id": "RI.K.2-Q2",
@@ -1138,7 +1147,16 @@
           ],
           "correct": "Dogs",
           "hint": "Every sentence is about the same animal. Which one?",
-          "difficulty": 1
+          "difficulty": 1,
+          "passage_audio_url": "/audio/kindergarten/RI.K.2-q2-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RI.K.2-q2-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RI.K.2-q2-choice1.mp3",
+            "/audio/kindergarten/RI.K.2-q2-choice2.mp3",
+            "/audio/kindergarten/RI.K.2-q2-choice3.mp3",
+            "/audio/kindergarten/RI.K.2-q2-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RI.K.2-q2-hint.mp3"
         },
         {
           "id": "RI.K.2-Q3",
@@ -1152,7 +1170,16 @@
           ],
           "correct": "The sun",
           "hint": "What is mentioned in EVERY sentence?",
-          "difficulty": 1
+          "difficulty": 1,
+          "passage_audio_url": "/audio/kindergarten/RI.K.2-q3-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RI.K.2-q3-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RI.K.2-q3-choice1.mp3",
+            "/audio/kindergarten/RI.K.2-q3-choice2.mp3",
+            "/audio/kindergarten/RI.K.2-q3-choice3.mp3",
+            "/audio/kindergarten/RI.K.2-q3-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RI.K.2-q3-hint.mp3"
         },
         {
           "id": "RI.K.2-Q4",
@@ -1166,7 +1193,16 @@
           ],
           "correct": "Firefighters rescue people.",
           "hint": "A key detail is something the passage actually SAYS.",
-          "difficulty": 2
+          "difficulty": 2,
+          "passage_audio_url": "/audio/kindergarten/RI.K.2-q4-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RI.K.2-q4-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RI.K.2-q4-choice1.mp3",
+            "/audio/kindergarten/RI.K.2-q4-choice2.mp3",
+            "/audio/kindergarten/RI.K.2-q4-choice3.mp3",
+            "/audio/kindergarten/RI.K.2-q4-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RI.K.2-q4-hint.mp3"
         },
         {
           "id": "RI.K.2-Q5",
@@ -1180,7 +1216,16 @@
           ],
           "correct": "How Butterflies Change",
           "hint": "A good title tells you what the whole passage is about!",
-          "difficulty": 2
+          "difficulty": 2,
+          "passage_audio_url": "/audio/kindergarten/RI.K.2-q5-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RI.K.2-q5-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RI.K.2-q5-choice1.mp3",
+            "/audio/kindergarten/RI.K.2-q5-choice2.mp3",
+            "/audio/kindergarten/RI.K.2-q5-choice3.mp3",
+            "/audio/kindergarten/RI.K.2-q5-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RI.K.2-q5-hint.mp3"
         }
       ]
     },
@@ -1202,7 +1247,16 @@
           ],
           "correct": "Because it rained a lot",
           "hint": "What happened FIRST that caused the flowers to grow?",
-          "difficulty": 1
+          "difficulty": 1,
+          "passage_audio_url": "/audio/kindergarten/RI.K.3-q1-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RI.K.3-q1-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RI.K.3-q1-choice1.mp3",
+            "/audio/kindergarten/RI.K.3-q1-choice2.mp3",
+            "/audio/kindergarten/RI.K.3-q1-choice3.mp3",
+            "/audio/kindergarten/RI.K.3-q1-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RI.K.3-q1-hint.mp3"
         },
         {
           "id": "RI.K.3-Q2",
@@ -1216,7 +1270,16 @@
           ],
           "correct": "It melts into water.",
           "hint": "The second sentence tells you what happens!",
-          "difficulty": 1
+          "difficulty": 1,
+          "passage_audio_url": "/audio/kindergarten/RI.K.3-q2-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RI.K.3-q2-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RI.K.3-q2-choice1.mp3",
+            "/audio/kindergarten/RI.K.3-q2-choice2.mp3",
+            "/audio/kindergarten/RI.K.3-q2-choice3.mp3",
+            "/audio/kindergarten/RI.K.3-q2-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RI.K.3-q2-hint.mp3"
         },
         {
           "id": "RI.K.3-Q3",
@@ -1230,7 +1293,16 @@
           ],
           "correct": "A baby chick comes out.",
           "hint": "Follow the order: first, then, finally...",
-          "difficulty": 1
+          "difficulty": 1,
+          "passage_audio_url": "/audio/kindergarten/RI.K.3-q3-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RI.K.3-q3-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RI.K.3-q3-choice1.mp3",
+            "/audio/kindergarten/RI.K.3-q3-choice2.mp3",
+            "/audio/kindergarten/RI.K.3-q3-choice3.mp3",
+            "/audio/kindergarten/RI.K.3-q3-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RI.K.3-q3-hint.mp3"
         },
         {
           "id": "RI.K.3-Q4",
@@ -1244,7 +1316,16 @@
           ],
           "correct": "To get ready for their long winter sleep",
           "hint": "Think about what comes NEXT — they sleep all winter. They need energy!",
-          "difficulty": 2
+          "difficulty": 2,
+          "passage_audio_url": "/audio/kindergarten/RI.K.3-q4-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RI.K.3-q4-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RI.K.3-q4-choice1.mp3",
+            "/audio/kindergarten/RI.K.3-q4-choice2.mp3",
+            "/audio/kindergarten/RI.K.3-q4-choice3.mp3",
+            "/audio/kindergarten/RI.K.3-q4-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RI.K.3-q4-hint.mp3"
         },
         {
           "id": "RI.K.3-Q5",
@@ -1258,7 +1339,16 @@
           ],
           "correct": "A stem pops up",
           "hint": "Look at the order — what comes right before 'finally'?",
-          "difficulty": 2
+          "difficulty": 2,
+          "passage_audio_url": "/audio/kindergarten/RI.K.3-q5-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RI.K.3-q5-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RI.K.3-q5-choice1.mp3",
+            "/audio/kindergarten/RI.K.3-q5-choice2.mp3",
+            "/audio/kindergarten/RI.K.3-q5-choice3.mp3",
+            "/audio/kindergarten/RI.K.3-q5-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RI.K.3-q5-hint.mp3"
         }
       ]
     },
@@ -1280,7 +1370,16 @@
           ],
           "correct": "An animal with scales",
           "hint": "The sentence right after tells you what a reptile is!",
-          "difficulty": 1
+          "difficulty": 1,
+          "passage_audio_url": "/audio/kindergarten/RI.K.4-q1-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RI.K.4-q1-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RI.K.4-q1-choice1.mp3",
+            "/audio/kindergarten/RI.K.4-q1-choice2.mp3",
+            "/audio/kindergarten/RI.K.4-q1-choice3.mp3",
+            "/audio/kindergarten/RI.K.4-q1-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RI.K.4-q1-hint.mp3"
         },
         {
           "id": "RI.K.4-Q2",
@@ -1294,7 +1393,16 @@
           ],
           "correct": "Explodes or shoots out",
           "hint": "The sentence says lava 'shoots out' — that's what erupting is!",
-          "difficulty": 2
+          "difficulty": 2,
+          "passage_audio_url": "/audio/kindergarten/RI.K.4-q2-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RI.K.4-q2-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RI.K.4-q2-choice1.mp3",
+            "/audio/kindergarten/RI.K.4-q2-choice2.mp3",
+            "/audio/kindergarten/RI.K.4-q2-choice3.mp3",
+            "/audio/kindergarten/RI.K.4-q2-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RI.K.4-q2-hint.mp3"
         },
         {
           "id": "RI.K.4-Q3",
@@ -1308,7 +1416,16 @@
           ],
           "correct": "The very top of a mountain",
           "hint": "The second sentence tells you exactly what a peak is!",
-          "difficulty": 1
+          "difficulty": 1,
+          "passage_audio_url": "/audio/kindergarten/RI.K.4-q3-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RI.K.4-q3-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RI.K.4-q3-choice1.mp3",
+            "/audio/kindergarten/RI.K.4-q3-choice2.mp3",
+            "/audio/kindergarten/RI.K.4-q3-choice3.mp3",
+            "/audio/kindergarten/RI.K.4-q3-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RI.K.4-q3-hint.mp3"
         },
         {
           "id": "RI.K.4-Q4",
@@ -1322,7 +1439,16 @@
           ],
           "correct": "Travel to a different place",
           "hint": "The next sentence says they 'travel very far' — that's what migrate means!",
-          "difficulty": 2
+          "difficulty": 2,
+          "passage_audio_url": "/audio/kindergarten/RI.K.4-q4-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RI.K.4-q4-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RI.K.4-q4-choice1.mp3",
+            "/audio/kindergarten/RI.K.4-q4-choice2.mp3",
+            "/audio/kindergarten/RI.K.4-q4-choice3.mp3",
+            "/audio/kindergarten/RI.K.4-q4-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RI.K.4-q4-hint.mp3"
         },
         {
           "id": "RI.K.4-Q5",
@@ -1336,7 +1462,16 @@
           ],
           "correct": "Ocean or sea animals",
           "hint": "All the examples (fish, dolphins, sea turtles) live in the ocean!",
-          "difficulty": 2
+          "difficulty": 2,
+          "passage_audio_url": "/audio/kindergarten/RI.K.4-q5-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RI.K.4-q5-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RI.K.4-q5-choice1.mp3",
+            "/audio/kindergarten/RI.K.4-q5-choice2.mp3",
+            "/audio/kindergarten/RI.K.4-q5-choice3.mp3",
+            "/audio/kindergarten/RI.K.4-q5-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RI.K.4-q5-hint.mp3"
         }
       ]
     },
@@ -1358,7 +1493,15 @@
           ],
           "correct": "On the front cover",
           "hint": "The title is the big name of the book — you see it right away when you pick up a book!",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RI.K.5-q1-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RI.K.5-q1-choice1.mp3",
+            "/audio/kindergarten/RI.K.5-q1-choice2.mp3",
+            "/audio/kindergarten/RI.K.5-q1-choice3.mp3",
+            "/audio/kindergarten/RI.K.5-q1-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RI.K.5-q1-hint.mp3"
         },
         {
           "id": "RI.K.5-Q2",
@@ -1372,7 +1515,15 @@
           ],
           "correct": "A short description of what the book is about",
           "hint": "Flip the book over — there's usually a little blurb that tells you about the book!",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RI.K.5-q2-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RI.K.5-q2-choice1.mp3",
+            "/audio/kindergarten/RI.K.5-q2-choice2.mp3",
+            "/audio/kindergarten/RI.K.5-q2-choice3.mp3",
+            "/audio/kindergarten/RI.K.5-q2-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RI.K.5-q2-hint.mp3"
         },
         {
           "id": "RI.K.5-Q3",
@@ -1386,7 +1537,15 @@
           ],
           "correct": "One of the first pages inside the book with the title and author",
           "hint": "Open the book — one of the first things you see is the title page!",
-          "difficulty": 2
+          "difficulty": 2,
+          "prompt_audio_url": "/audio/kindergarten/RI.K.5-q3-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RI.K.5-q3-choice1.mp3",
+            "/audio/kindergarten/RI.K.5-q3-choice2.mp3",
+            "/audio/kindergarten/RI.K.5-q3-choice3.mp3",
+            "/audio/kindergarten/RI.K.5-q3-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RI.K.5-q3-hint.mp3"
         },
         {
           "id": "RI.K.5-Q4",
@@ -1400,7 +1559,15 @@
           ],
           "correct": "The front cover",
           "hint": "Books face forward on a shelf — what's facing you?",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RI.K.5-q4-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RI.K.5-q4-choice1.mp3",
+            "/audio/kindergarten/RI.K.5-q4-choice2.mp3",
+            "/audio/kindergarten/RI.K.5-q4-choice3.mp3",
+            "/audio/kindergarten/RI.K.5-q4-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RI.K.5-q4-hint.mp3"
         },
         {
           "id": "RI.K.5-Q5",
@@ -1414,7 +1581,15 @@
           ],
           "correct": "The front cover and back cover",
           "hint": "The cover gives you the title and a picture, and the back cover tells you more!",
-          "difficulty": 2
+          "difficulty": 2,
+          "prompt_audio_url": "/audio/kindergarten/RI.K.5-q5-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RI.K.5-q5-choice1.mp3",
+            "/audio/kindergarten/RI.K.5-q5-choice2.mp3",
+            "/audio/kindergarten/RI.K.5-q5-choice3.mp3",
+            "/audio/kindergarten/RI.K.5-q5-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RI.K.5-q5-hint.mp3"
         }
       ]
     },
@@ -1436,7 +1611,16 @@
           ],
           "correct": "Author",
           "hint": "'Written by' means this person wrote the words!",
-          "difficulty": 1
+          "difficulty": 1,
+          "passage_audio_url": "/audio/kindergarten/RI.K.6-q1-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RI.K.6-q1-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RI.K.6-q1-choice1.mp3",
+            "/audio/kindergarten/RI.K.6-q1-choice2.mp3",
+            "/audio/kindergarten/RI.K.6-q1-choice3.mp3",
+            "/audio/kindergarten/RI.K.6-q1-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RI.K.6-q1-hint.mp3"
         },
         {
           "id": "RI.K.6-Q2",
@@ -1450,7 +1634,15 @@
           ],
           "correct": "Draws pictures and diagrams to help explain",
           "hint": "In a fact book, pictures and diagrams help you understand. Who makes those?",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RI.K.6-q2-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RI.K.6-q2-choice1.mp3",
+            "/audio/kindergarten/RI.K.6-q2-choice2.mp3",
+            "/audio/kindergarten/RI.K.6-q2-choice3.mp3",
+            "/audio/kindergarten/RI.K.6-q2-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RI.K.6-q2-hint.mp3"
         },
         {
           "id": "RI.K.6-Q3",
@@ -1464,7 +1656,16 @@
           ],
           "correct": "Astronaut Mike Collins",
           "hint": "'By' tells you who the author is!",
-          "difficulty": 2
+          "difficulty": 2,
+          "passage_audio_url": "/audio/kindergarten/RI.K.6-q3-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RI.K.6-q3-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RI.K.6-q3-choice1.mp3",
+            "/audio/kindergarten/RI.K.6-q3-choice2.mp3",
+            "/audio/kindergarten/RI.K.6-q3-choice3.mp3",
+            "/audio/kindergarten/RI.K.6-q3-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RI.K.6-q3-hint.mp3"
         },
         {
           "id": "RI.K.6-Q4",
@@ -1478,7 +1679,15 @@
           ],
           "correct": "Illustrator or photographer",
           "hint": "Photos serve the same purpose as drawings — they show you what things look like!",
-          "difficulty": 2
+          "difficulty": 2,
+          "prompt_audio_url": "/audio/kindergarten/RI.K.6-q4-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RI.K.6-q4-choice1.mp3",
+            "/audio/kindergarten/RI.K.6-q4-choice2.mp3",
+            "/audio/kindergarten/RI.K.6-q4-choice3.mp3",
+            "/audio/kindergarten/RI.K.6-q4-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RI.K.6-q4-hint.mp3"
         },
         {
           "id": "RI.K.6-Q5",
@@ -1492,7 +1701,15 @@
           ],
           "correct": "The author writes facts, and the illustrator draws pictures to help explain.",
           "hint": "Words tell you facts, pictures help you see and understand them!",
-          "difficulty": 2
+          "difficulty": 2,
+          "prompt_audio_url": "/audio/kindergarten/RI.K.6-q5-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RI.K.6-q5-choice1.mp3",
+            "/audio/kindergarten/RI.K.6-q5-choice2.mp3",
+            "/audio/kindergarten/RI.K.6-q5-choice3.mp3",
+            "/audio/kindergarten/RI.K.6-q5-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RI.K.6-q5-hint.mp3"
         }
       ]
     },
@@ -1514,7 +1731,16 @@
           ],
           "correct": "It shows what a mane looks like.",
           "hint": "If you didn't know what a mane was, the picture would show you!",
-          "difficulty": 1
+          "difficulty": 1,
+          "passage_audio_url": "/audio/kindergarten/RI.K.7-q1-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RI.K.7-q1-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RI.K.7-q1-choice1.mp3",
+            "/audio/kindergarten/RI.K.7-q1-choice2.mp3",
+            "/audio/kindergarten/RI.K.7-q1-choice3.mp3",
+            "/audio/kindergarten/RI.K.7-q1-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RI.K.7-q1-hint.mp3"
         },
         {
           "id": "RI.K.7-Q2",
@@ -1528,7 +1754,16 @@
           ],
           "correct": "Where the states are located",
           "hint": "Maps show WHERE things are!",
-          "difficulty": 2
+          "difficulty": 2,
+          "passage_audio_url": "/audio/kindergarten/RI.K.7-q2-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RI.K.7-q2-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RI.K.7-q2-choice1.mp3",
+            "/audio/kindergarten/RI.K.7-q2-choice2.mp3",
+            "/audio/kindergarten/RI.K.7-q2-choice3.mp3",
+            "/audio/kindergarten/RI.K.7-q2-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RI.K.7-q2-hint.mp3"
         },
         {
           "id": "RI.K.7-Q3",
@@ -1542,7 +1777,16 @@
           ],
           "correct": "All the steps in order",
           "hint": "The picture gives you MORE information — it shows each step!",
-          "difficulty": 2
+          "difficulty": 2,
+          "passage_audio_url": "/audio/kindergarten/RI.K.7-q3-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RI.K.7-q3-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RI.K.7-q3-choice1.mp3",
+            "/audio/kindergarten/RI.K.7-q3-choice2.mp3",
+            "/audio/kindergarten/RI.K.7-q3-choice3.mp3",
+            "/audio/kindergarten/RI.K.7-q3-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RI.K.7-q3-hint.mp3"
         },
         {
           "id": "RI.K.7-Q4",
@@ -1556,7 +1800,16 @@
           ],
           "correct": "To help you understand how we measure temperature",
           "hint": "Pictures in fact books are there to help explain ideas!",
-          "difficulty": 2
+          "difficulty": 2,
+          "passage_audio_url": "/audio/kindergarten/RI.K.7-q4-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RI.K.7-q4-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RI.K.7-q4-choice1.mp3",
+            "/audio/kindergarten/RI.K.7-q4-choice2.mp3",
+            "/audio/kindergarten/RI.K.7-q4-choice3.mp3",
+            "/audio/kindergarten/RI.K.7-q4-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RI.K.7-q4-hint.mp3"
         },
         {
           "id": "RI.K.7-Q5",
@@ -1570,7 +1823,16 @@
           ],
           "correct": "How different dog sizes can be",
           "hint": "The picture puts two very different-sized dogs side by side so you can compare!",
-          "difficulty": 1
+          "difficulty": 1,
+          "passage_audio_url": "/audio/kindergarten/RI.K.7-q5-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RI.K.7-q5-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RI.K.7-q5-choice1.mp3",
+            "/audio/kindergarten/RI.K.7-q5-choice2.mp3",
+            "/audio/kindergarten/RI.K.7-q5-choice3.mp3",
+            "/audio/kindergarten/RI.K.7-q5-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RI.K.7-q5-hint.mp3"
         }
       ]
     },
@@ -1592,7 +1854,16 @@
           ],
           "correct": "Because they have vitamins that keep you healthy.",
           "hint": "Look for the REASON the author gives — it comes after the point.",
-          "difficulty": 1
+          "difficulty": 1,
+          "passage_audio_url": "/audio/kindergarten/RI.K.8-q1-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RI.K.8-q1-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RI.K.8-q1-choice1.mp3",
+            "/audio/kindergarten/RI.K.8-q1-choice2.mp3",
+            "/audio/kindergarten/RI.K.8-q1-choice3.mp3",
+            "/audio/kindergarten/RI.K.8-q1-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RI.K.8-q1-hint.mp3"
         },
         {
           "id": "RI.K.8-Q2",
@@ -1606,7 +1877,16 @@
           ],
           "correct": "It helps your body grow and your brain learn.",
           "hint": "The second sentence gives you the reasons!",
-          "difficulty": 1
+          "difficulty": 1,
+          "passage_audio_url": "/audio/kindergarten/RI.K.8-q2-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RI.K.8-q2-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RI.K.8-q2-choice1.mp3",
+            "/audio/kindergarten/RI.K.8-q2-choice2.mp3",
+            "/audio/kindergarten/RI.K.8-q2-choice3.mp3",
+            "/audio/kindergarten/RI.K.8-q2-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RI.K.8-q2-hint.mp3"
         },
         {
           "id": "RI.K.8-Q3",
@@ -1620,7 +1900,16 @@
           ],
           "correct": "They protect your head if you fall.",
           "hint": "A reason explains WHY something is true or important.",
-          "difficulty": 1
+          "difficulty": 1,
+          "passage_audio_url": "/audio/kindergarten/RI.K.8-q3-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RI.K.8-q3-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RI.K.8-q3-choice1.mp3",
+            "/audio/kindergarten/RI.K.8-q3-choice2.mp3",
+            "/audio/kindergarten/RI.K.8-q3-choice3.mp3",
+            "/audio/kindergarten/RI.K.8-q3-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RI.K.8-q3-hint.mp3"
         },
         {
           "id": "RI.K.8-Q4",
@@ -1634,7 +1923,16 @@
           ],
           "correct": "3 reasons",
           "hint": "Count them: loyal, love to play, and can learn tricks. That's 1, 2, 3!",
-          "difficulty": 2
+          "difficulty": 2,
+          "passage_audio_url": "/audio/kindergarten/RI.K.8-q4-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RI.K.8-q4-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RI.K.8-q4-choice1.mp3",
+            "/audio/kindergarten/RI.K.8-q4-choice2.mp3",
+            "/audio/kindergarten/RI.K.8-q4-choice3.mp3",
+            "/audio/kindergarten/RI.K.8-q4-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RI.K.8-q4-hint.mp3"
         },
         {
           "id": "RI.K.8-Q5",
@@ -1648,7 +1946,16 @@
           ],
           "correct": "Water makes you taller.",
           "hint": "Read the passage again — which answer is NOT mentioned?",
-          "difficulty": 2
+          "difficulty": 2,
+          "passage_audio_url": "/audio/kindergarten/RI.K.8-q5-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RI.K.8-q5-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RI.K.8-q5-choice1.mp3",
+            "/audio/kindergarten/RI.K.8-q5-choice2.mp3",
+            "/audio/kindergarten/RI.K.8-q5-choice3.mp3",
+            "/audio/kindergarten/RI.K.8-q5-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RI.K.8-q5-hint.mp3"
         }
       ]
     },
@@ -1670,7 +1977,16 @@
           ],
           "correct": "Cats",
           "hint": "What topic do BOTH books share?",
-          "difficulty": 1
+          "difficulty": 1,
+          "passage_audio_url": "/audio/kindergarten/RI.K.9-q1-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RI.K.9-q1-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RI.K.9-q1-choice1.mp3",
+            "/audio/kindergarten/RI.K.9-q1-choice2.mp3",
+            "/audio/kindergarten/RI.K.9-q1-choice3.mp3",
+            "/audio/kindergarten/RI.K.9-q1-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RI.K.9-q1-hint.mp3"
         },
         {
           "id": "RI.K.9-Q2",
@@ -1684,7 +2000,16 @@
           ],
           "correct": "Book 1 tells WHERE rain comes from; Book 2 tells WHAT rain does.",
           "hint": "Both books are about rain, but each tells you something different about it!",
-          "difficulty": 2
+          "difficulty": 2,
+          "passage_audio_url": "/audio/kindergarten/RI.K.9-q2-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RI.K.9-q2-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RI.K.9-q2-choice1.mp3",
+            "/audio/kindergarten/RI.K.9-q2-choice2.mp3",
+            "/audio/kindergarten/RI.K.9-q2-choice3.mp3",
+            "/audio/kindergarten/RI.K.9-q2-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RI.K.9-q2-hint.mp3"
         },
         {
           "id": "RI.K.9-Q3",
@@ -1698,7 +2023,16 @@
           ],
           "correct": "The sun is important and gives things to Earth.",
           "hint": "Both books talk about what the sun gives — light, energy, growth!",
-          "difficulty": 2
+          "difficulty": 2,
+          "passage_audio_url": "/audio/kindergarten/RI.K.9-q3-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RI.K.9-q3-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RI.K.9-q3-choice1.mp3",
+            "/audio/kindergarten/RI.K.9-q3-choice2.mp3",
+            "/audio/kindergarten/RI.K.9-q3-choice3.mp3",
+            "/audio/kindergarten/RI.K.9-q3-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RI.K.9-q3-hint.mp3"
         },
         {
           "id": "RI.K.9-Q4",
@@ -1712,7 +2046,16 @@
           ],
           "correct": "Training dogs",
           "hint": "Sit, stay, and shake are all tricks — that's training!",
-          "difficulty": 2
+          "difficulty": 2,
+          "passage_audio_url": "/audio/kindergarten/RI.K.9-q4-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RI.K.9-q4-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RI.K.9-q4-choice1.mp3",
+            "/audio/kindergarten/RI.K.9-q4-choice2.mp3",
+            "/audio/kindergarten/RI.K.9-q4-choice3.mp3",
+            "/audio/kindergarten/RI.K.9-q4-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RI.K.9-q4-hint.mp3"
         },
         {
           "id": "RI.K.9-Q5",
@@ -1726,7 +2069,16 @@
           ],
           "correct": "They are both about butterflies.",
           "hint": "Even though they share different facts, they're both about the same creature!",
-          "difficulty": 1
+          "difficulty": 1,
+          "passage_audio_url": "/audio/kindergarten/RI.K.9-q5-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RI.K.9-q5-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RI.K.9-q5-choice1.mp3",
+            "/audio/kindergarten/RI.K.9-q5-choice2.mp3",
+            "/audio/kindergarten/RI.K.9-q5-choice3.mp3",
+            "/audio/kindergarten/RI.K.9-q5-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RI.K.9-q5-hint.mp3"
         }
       ]
     },
@@ -1748,7 +2100,15 @@
           ],
           "correct": "The left side",
           "hint": "We read from LEFT to right!",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.1a-q1-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.1a-q1-choice1.mp3",
+            "/audio/kindergarten/RF.K.1a-q1-choice2.mp3",
+            "/audio/kindergarten/RF.K.1a-q1-choice3.mp3",
+            "/audio/kindergarten/RF.K.1a-q1-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.1a-q1-hint.mp3"
         },
         {
           "id": "RF.K.1a-Q2",
@@ -1762,7 +2122,15 @@
           ],
           "correct": "Down to the next line on the left side",
           "hint": "Your eyes sweep down and back to the left to start the next line!",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.1a-q2-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.1a-q2-choice1.mp3",
+            "/audio/kindergarten/RF.K.1a-q2-choice2.mp3",
+            "/audio/kindergarten/RF.K.1a-q2-choice3.mp3",
+            "/audio/kindergarten/RF.K.1a-q2-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.1a-q2-hint.mp3"
         },
         {
           "id": "RF.K.1a-Q3",
@@ -1776,7 +2144,15 @@
           ],
           "correct": "Turn to the next page",
           "hint": "We read page by page — one after another!",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.1a-q3-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.1a-q3-choice1.mp3",
+            "/audio/kindergarten/RF.K.1a-q3-choice2.mp3",
+            "/audio/kindergarten/RF.K.1a-q3-choice3.mp3",
+            "/audio/kindergarten/RF.K.1a-q3-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.1a-q3-hint.mp3"
         },
         {
           "id": "RF.K.1a-Q4",
@@ -1790,7 +2166,15 @@
           ],
           "correct": "➡️ Left to right",
           "hint": "In English, our eyes go from the LEFT side to the RIGHT side!",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.1a-q4-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.1a-q4-choice1.mp3",
+            "/audio/kindergarten/RF.K.1a-q4-choice2.mp3",
+            "/audio/kindergarten/RF.K.1a-q4-choice3.mp3",
+            "/audio/kindergarten/RF.K.1a-q4-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.1a-q4-hint.mp3"
         },
         {
           "id": "RF.K.1a-Q5",
@@ -1804,7 +2188,15 @@
           ],
           "correct": "Top left corner",
           "hint": "We start at the TOP and on the LEFT — then go right and down!",
-          "difficulty": 2
+          "difficulty": 2,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.1a-q5-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.1a-q5-choice1.mp3",
+            "/audio/kindergarten/RF.K.1a-q5-choice2.mp3",
+            "/audio/kindergarten/RF.K.1a-q5-choice3.mp3",
+            "/audio/kindergarten/RF.K.1a-q5-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.1a-q5-hint.mp3"
         }
       ]
     },
@@ -1826,7 +2218,15 @@
           ],
           "correct": "c-a-t",
           "hint": "The word 'cat' uses the letters C, A, and T in that order!",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.1b-q1-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.1b-q1-choice1.mp3",
+            "/audio/kindergarten/RF.K.1b-q1-choice2.mp3",
+            "/audio/kindergarten/RF.K.1b-q1-choice3.mp3",
+            "/audio/kindergarten/RF.K.1b-q1-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.1b-q1-hint.mp3"
         },
         {
           "id": "RF.K.1b-Q2",
@@ -1840,7 +2240,15 @@
           ],
           "correct": "Letters",
           "hint": "A, B, C, D... we use these to build words!",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.1b-q2-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.1b-q2-choice1.mp3",
+            "/audio/kindergarten/RF.K.1b-q2-choice2.mp3",
+            "/audio/kindergarten/RF.K.1b-q2-choice3.mp3",
+            "/audio/kindergarten/RF.K.1b-q2-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.1b-q2-hint.mp3"
         },
         {
           "id": "RF.K.1b-Q3",
@@ -1854,7 +2262,15 @@
           ],
           "correct": "d-o-g",
           "hint": "Sound it out: /d/ - /o/ - /g/. What letters make those sounds?",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.1b-q3-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.1b-q3-choice1.mp3",
+            "/audio/kindergarten/RF.K.1b-q3-choice2.mp3",
+            "/audio/kindergarten/RF.K.1b-q3-choice3.mp3",
+            "/audio/kindergarten/RF.K.1b-q3-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.1b-q3-hint.mp3"
         },
         {
           "id": "RF.K.1b-Q4",
@@ -1868,7 +2284,15 @@
           ],
           "correct": "You get a different word or a nonsense word",
           "hint": "C-A-T is 'cat' but C-A-P is 'cap' — different letters make different words!",
-          "difficulty": 2
+          "difficulty": 2,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.1b-q4-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.1b-q4-choice1.mp3",
+            "/audio/kindergarten/RF.K.1b-q4-choice2.mp3",
+            "/audio/kindergarten/RF.K.1b-q4-choice3.mp3",
+            "/audio/kindergarten/RF.K.1b-q4-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.1b-q4-hint.mp3"
         },
         {
           "id": "RF.K.1b-Q5",
@@ -1882,7 +2306,15 @@
           ],
           "correct": "Written with letters",
           "hint": "We can write down anything we say using letters!",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.1b-q5-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.1b-q5-choice1.mp3",
+            "/audio/kindergarten/RF.K.1b-q5-choice2.mp3",
+            "/audio/kindergarten/RF.K.1b-q5-choice3.mp3",
+            "/audio/kindergarten/RF.K.1b-q5-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.1b-q5-hint.mp3"
         }
       ]
     },
@@ -1904,7 +2336,15 @@
           ],
           "correct": "I like dogs",
           "hint": "Each WORD gets its own space between it and the next word!",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.1c-q1-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.1c-q1-choice1.mp3",
+            "/audio/kindergarten/RF.K.1c-q1-choice2.mp3",
+            "/audio/kindergarten/RF.K.1c-q1-choice3.mp3",
+            "/audio/kindergarten/RF.K.1c-q1-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.1c-q1-hint.mp3"
         },
         {
           "id": "RF.K.1c-Q2",
@@ -1918,7 +2358,15 @@
           ],
           "correct": "So we can tell where one word ends and the next begins",
           "hint": "Without spaces, all the words would smush together!",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.1c-q2-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.1c-q2-choice1.mp3",
+            "/audio/kindergarten/RF.K.1c-q2-choice2.mp3",
+            "/audio/kindergarten/RF.K.1c-q2-choice3.mp3",
+            "/audio/kindergarten/RF.K.1c-q2-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.1c-q2-hint.mp3"
         },
         {
           "id": "RF.K.1c-Q3",
@@ -1932,7 +2380,15 @@
           ],
           "correct": "3 words",
           "hint": "It should be: the cat sat — that's 3 separate words!",
-          "difficulty": 2
+          "difficulty": 2,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.1c-q3-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.1c-q3-choice1.mp3",
+            "/audio/kindergarten/RF.K.1c-q3-choice2.mp3",
+            "/audio/kindergarten/RF.K.1c-q3-choice3.mp3",
+            "/audio/kindergarten/RF.K.1c-q3-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.1c-q3-hint.mp3"
         },
         {
           "id": "RF.K.1c-Q4",
@@ -1946,7 +2402,15 @@
           ],
           "correct": "3",
           "hint": "Count the groups of letters separated by spaces: I / am / happy.",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.1c-q4-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.1c-q4-choice1.mp3",
+            "/audio/kindergarten/RF.K.1c-q4-choice2.mp3",
+            "/audio/kindergarten/RF.K.1c-q4-choice3.mp3",
+            "/audio/kindergarten/RF.K.1c-q4-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.1c-q4-hint.mp3"
         },
         {
           "id": "RF.K.1c-Q5",
@@ -1960,7 +2424,15 @@
           ],
           "correct": "My dog is big (between each word)",
           "hint": "Put a space between each word — not between each letter!",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.1c-q5-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.1c-q5-choice1.mp3",
+            "/audio/kindergarten/RF.K.1c-q5-choice2.mp3",
+            "/audio/kindergarten/RF.K.1c-q5-choice3.mp3",
+            "/audio/kindergarten/RF.K.1c-q5-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.1c-q5-hint.mp3"
         }
       ]
     },
@@ -1982,7 +2454,15 @@
           ],
           "correct": "A",
           "hint": "Uppercase letters are BIG letters — the capital version of 'a' is...",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.1d-q1-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.1d-q1-choice1.mp3",
+            "/audio/kindergarten/RF.K.1d-q1-choice2.mp3",
+            "/audio/kindergarten/RF.K.1d-q1-choice3.mp3",
+            "/audio/kindergarten/RF.K.1d-q1-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.1d-q1-hint.mp3"
         },
         {
           "id": "RF.K.1d-Q2",
@@ -1996,7 +2476,15 @@
           ],
           "correct": "g",
           "hint": "Lowercase letters are small letters. The small 'G' looks like 'g.'",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.1d-q2-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.1d-q2-choice1.mp3",
+            "/audio/kindergarten/RF.K.1d-q2-choice2.mp3",
+            "/audio/kindergarten/RF.K.1d-q2-choice3.mp3",
+            "/audio/kindergarten/RF.K.1d-q2-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.1d-q2-hint.mp3"
         },
         {
           "id": "RF.K.1d-Q3",
@@ -2010,7 +2498,15 @@
           ],
           "correct": "M and m",
           "hint": "One should be the big version and the other the small version of the same letter!",
-          "difficulty": 2
+          "difficulty": 2,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.1d-q3-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.1d-q3-choice1.mp3",
+            "/audio/kindergarten/RF.K.1d-q3-choice2.mp3",
+            "/audio/kindergarten/RF.K.1d-q3-choice3.mp3",
+            "/audio/kindergarten/RF.K.1d-q3-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.1d-q3-hint.mp3"
         },
         {
           "id": "RF.K.1d-Q4",
@@ -2024,7 +2520,15 @@
           ],
           "correct": "N",
           "hint": "Sing the alphabet song: ...K, L, M, __, O...",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.1d-q4-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.1d-q4-choice1.mp3",
+            "/audio/kindergarten/RF.K.1d-q4-choice2.mp3",
+            "/audio/kindergarten/RF.K.1d-q4-choice3.mp3",
+            "/audio/kindergarten/RF.K.1d-q4-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.1d-q4-hint.mp3"
         },
         {
           "id": "RF.K.1d-Q5",
@@ -2038,7 +2542,15 @@
           ],
           "correct": "26",
           "hint": "From A to Z, there are 26 letters!",
-          "difficulty": 2
+          "difficulty": 2,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.1d-q5-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.1d-q5-choice1.mp3",
+            "/audio/kindergarten/RF.K.1d-q5-choice2.mp3",
+            "/audio/kindergarten/RF.K.1d-q5-choice3.mp3",
+            "/audio/kindergarten/RF.K.1d-q5-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.1d-q5-hint.mp3"
         }
       ]
     },
@@ -2060,7 +2572,15 @@
           ],
           "correct": "Hat",
           "hint": "Rhyming words sound the same at the END. Cat... hat... they both end in -at!",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.2a-q1-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.2a-q1-choice1.mp3",
+            "/audio/kindergarten/RF.K.2a-q1-choice2.mp3",
+            "/audio/kindergarten/RF.K.2a-q1-choice3.mp3",
+            "/audio/kindergarten/RF.K.2a-q1-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.2a-q1-hint.mp3"
         },
         {
           "id": "RF.K.2a-Q2",
@@ -2074,7 +2594,15 @@
           ],
           "correct": "Fun",
           "hint": "Sun and ___ both end with the -un sound!",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.2a-q2-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.2a-q2-choice1.mp3",
+            "/audio/kindergarten/RF.K.2a-q2-choice2.mp3",
+            "/audio/kindergarten/RF.K.2a-q2-choice3.mp3",
+            "/audio/kindergarten/RF.K.2a-q2-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.2a-q2-hint.mp3"
         },
         {
           "id": "RF.K.2a-Q3",
@@ -2088,7 +2616,15 @@
           ],
           "correct": "Dog",
           "hint": "Ball, tall, wall, fall all end in -all. Which one doesn't?",
-          "difficulty": 2
+          "difficulty": 2,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.2a-q3-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.2a-q3-choice1.mp3",
+            "/audio/kindergarten/RF.K.2a-q3-choice2.mp3",
+            "/audio/kindergarten/RF.K.2a-q3-choice3.mp3",
+            "/audio/kindergarten/RF.K.2a-q3-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.2a-q3-hint.mp3"
         },
         {
           "id": "RF.K.2a-Q4",
@@ -2102,7 +2638,15 @@
           ],
           "correct": "Big — pig",
           "hint": "Rhyming words end with the same sound. Which pair sounds alike at the end?",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.2a-q4-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.2a-q4-choice1.mp3",
+            "/audio/kindergarten/RF.K.2a-q4-choice2.mp3",
+            "/audio/kindergarten/RF.K.2a-q4-choice3.mp3",
+            "/audio/kindergarten/RF.K.2a-q4-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.2a-q4-hint.mp3"
         },
         {
           "id": "RF.K.2a-Q5",
@@ -2116,7 +2660,15 @@
           ],
           "correct": "Stop",
           "hint": "Hop ends with -op. Which other word ends with -op?",
-          "difficulty": 2
+          "difficulty": 2,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.2a-q5-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.2a-q5-choice1.mp3",
+            "/audio/kindergarten/RF.K.2a-q5-choice2.mp3",
+            "/audio/kindergarten/RF.K.2a-q5-choice3.mp3",
+            "/audio/kindergarten/RF.K.2a-q5-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.2a-q5-hint.mp3"
         }
       ]
     },
@@ -2138,7 +2690,15 @@
           ],
           "correct": "1",
           "hint": "Say it and clap: CAT. Just one clap!",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.2b-q1-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.2b-q1-choice1.mp3",
+            "/audio/kindergarten/RF.K.2b-q1-choice2.mp3",
+            "/audio/kindergarten/RF.K.2b-q1-choice3.mp3",
+            "/audio/kindergarten/RF.K.2b-q1-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.2b-q1-hint.mp3"
         },
         {
           "id": "RF.K.2b-Q2",
@@ -2152,7 +2712,15 @@
           ],
           "correct": "3",
           "hint": "Clap it out: ba-NA-na. That's 3 claps!",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.2b-q2-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.2b-q2-choice1.mp3",
+            "/audio/kindergarten/RF.K.2b-q2-choice2.mp3",
+            "/audio/kindergarten/RF.K.2b-q2-choice3.mp3",
+            "/audio/kindergarten/RF.K.2b-q2-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.2b-q2-hint.mp3"
         },
         {
           "id": "RF.K.2b-Q3",
@@ -2166,7 +2734,15 @@
           ],
           "correct": "3",
           "hint": "Clap it: BUT-ter-fly. Count the claps!",
-          "difficulty": 2
+          "difficulty": 2,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.2b-q3-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.2b-q3-choice1.mp3",
+            "/audio/kindergarten/RF.K.2b-q3-choice2.mp3",
+            "/audio/kindergarten/RF.K.2b-q3-choice3.mp3",
+            "/audio/kindergarten/RF.K.2b-q3-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.2b-q3-hint.mp3"
         },
         {
           "id": "RF.K.2b-Q4",
@@ -2180,7 +2756,15 @@
           ],
           "correct": "Apple",
           "hint": "Clap each word: dog (1), ap-ple (2), cat (1), fish (1).",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.2b-q4-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.2b-q4-choice1.mp3",
+            "/audio/kindergarten/RF.K.2b-q4-choice2.mp3",
+            "/audio/kindergarten/RF.K.2b-q4-choice3.mp3",
+            "/audio/kindergarten/RF.K.2b-q4-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.2b-q4-hint.mp3"
         },
         {
           "id": "RF.K.2b-Q5",
@@ -2194,7 +2778,15 @@
           ],
           "correct": "Rainbow",
           "hint": "Blend the parts together: rain + bow = ?",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.2b-q5-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.2b-q5-choice1.mp3",
+            "/audio/kindergarten/RF.K.2b-q5-choice2.mp3",
+            "/audio/kindergarten/RF.K.2b-q5-choice3.mp3",
+            "/audio/kindergarten/RF.K.2b-q5-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.2b-q5-hint.mp3"
         }
       ]
     },
@@ -2216,7 +2808,15 @@
           ],
           "correct": "Cat",
           "hint": "Put the /c/ sound in front of -at!",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.2c-q1-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.2c-q1-choice1.mp3",
+            "/audio/kindergarten/RF.K.2c-q1-choice2.mp3",
+            "/audio/kindergarten/RF.K.2c-q1-choice3.mp3",
+            "/audio/kindergarten/RF.K.2c-q1-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.2c-q1-hint.mp3"
         },
         {
           "id": "RF.K.2c-Q2",
@@ -2230,7 +2830,15 @@
           ],
           "correct": "Sun",
           "hint": "Start with the /s/ sound, then add -un!",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.2c-q2-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.2c-q2-choice1.mp3",
+            "/audio/kindergarten/RF.K.2c-q2-choice2.mp3",
+            "/audio/kindergarten/RF.K.2c-q2-choice3.mp3",
+            "/audio/kindergarten/RF.K.2c-q2-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.2c-q2-hint.mp3"
         },
         {
           "id": "RF.K.2c-Q3",
@@ -2244,7 +2852,16 @@
           ],
           "correct": "/m/ + /op/",
           "hint": "The onset (first sound) is /m/. The rime (rest of the word) is -op.",
-          "difficulty": 2
+          "difficulty": 2,
+          "passage_audio_url": "/audio/kindergarten/RF.K.2c-q3-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RF.K.2c-q3-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.2c-q3-choice1.mp3",
+            "/audio/kindergarten/RF.K.2c-q3-choice2.mp3",
+            "/audio/kindergarten/RF.K.2c-q3-choice3.mp3",
+            "/audio/kindergarten/RF.K.2c-q3-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.2c-q3-hint.mp3"
         },
         {
           "id": "RF.K.2c-Q4",
@@ -2258,7 +2875,15 @@
           ],
           "correct": "Big",
           "hint": "/b/ in front of -ig = ?",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.2c-q4-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.2c-q4-choice1.mp3",
+            "/audio/kindergarten/RF.K.2c-q4-choice2.mp3",
+            "/audio/kindergarten/RF.K.2c-q4-choice3.mp3",
+            "/audio/kindergarten/RF.K.2c-q4-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.2c-q4-hint.mp3"
         },
         {
           "id": "RF.K.2c-Q5",
@@ -2272,7 +2897,15 @@
           ],
           "correct": "/t/",
           "hint": "The onset is the very first sound before the vowel!",
-          "difficulty": 2
+          "difficulty": 2,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.2c-q5-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.2c-q5-choice1.mp3",
+            "/audio/kindergarten/RF.K.2c-q5-choice2.mp3",
+            "/audio/kindergarten/RF.K.2c-q5-choice3.mp3",
+            "/audio/kindergarten/RF.K.2c-q5-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.2c-q5-hint.mp3"
         }
       ]
     },
@@ -2294,7 +2927,15 @@
           ],
           "correct": "/m/",
           "hint": "Say 'map' slowly — what sound does your mouth make first?",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.2d-q1-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.2d-q1-choice1.mp3",
+            "/audio/kindergarten/RF.K.2d-q1-choice2.mp3",
+            "/audio/kindergarten/RF.K.2d-q1-choice3.mp3",
+            "/audio/kindergarten/RF.K.2d-q1-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.2d-q1-hint.mp3"
         },
         {
           "id": "RF.K.2d-Q2",
@@ -2308,7 +2949,15 @@
           ],
           "correct": "/s/",
           "hint": "Say 'bus' — what sound do you hear at the very end?",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.2d-q2-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.2d-q2-choice1.mp3",
+            "/audio/kindergarten/RF.K.2d-q2-choice2.mp3",
+            "/audio/kindergarten/RF.K.2d-q2-choice3.mp3",
+            "/audio/kindergarten/RF.K.2d-q2-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.2d-q2-hint.mp3"
         },
         {
           "id": "RF.K.2d-Q3",
@@ -2322,7 +2971,15 @@
           ],
           "correct": "/i/",
           "hint": "P - I - G. The middle sound is the vowel!",
-          "difficulty": 2
+          "difficulty": 2,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.2d-q3-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.2d-q3-choice1.mp3",
+            "/audio/kindergarten/RF.K.2d-q3-choice2.mp3",
+            "/audio/kindergarten/RF.K.2d-q3-choice3.mp3",
+            "/audio/kindergarten/RF.K.2d-q3-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.2d-q3-hint.mp3"
         },
         {
           "id": "RF.K.2d-Q4",
@@ -2336,7 +2993,15 @@
           ],
           "correct": "/f/",
           "hint": "Say 'fun' slowly. The very first sound is...",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.2d-q4-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.2d-q4-choice1.mp3",
+            "/audio/kindergarten/RF.K.2d-q4-choice2.mp3",
+            "/audio/kindergarten/RF.K.2d-q4-choice3.mp3",
+            "/audio/kindergarten/RF.K.2d-q4-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.2d-q4-hint.mp3"
         },
         {
           "id": "RF.K.2d-Q5",
@@ -2350,7 +3015,16 @@
           ],
           "correct": "/e/",
           "hint": "The middle sound is always the vowel — the one in between!",
-          "difficulty": 1
+          "difficulty": 1,
+          "passage_audio_url": "/audio/kindergarten/RF.K.2d-q5-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RF.K.2d-q5-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.2d-q5-choice1.mp3",
+            "/audio/kindergarten/RF.K.2d-q5-choice2.mp3",
+            "/audio/kindergarten/RF.K.2d-q5-choice3.mp3",
+            "/audio/kindergarten/RF.K.2d-q5-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.2d-q5-hint.mp3"
         }
       ]
     },
@@ -2372,7 +3046,15 @@
           ],
           "correct": "Bat",
           "hint": "Take away the 'c' sound and put in a 'b' sound: b-at!",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.2e-q1-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.2e-q1-choice1.mp3",
+            "/audio/kindergarten/RF.K.2e-q1-choice2.mp3",
+            "/audio/kindergarten/RF.K.2e-q1-choice3.mp3",
+            "/audio/kindergarten/RF.K.2e-q1-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.2e-q1-hint.mp3"
         },
         {
           "id": "RF.K.2e-Q2",
@@ -2386,7 +3068,15 @@
           ],
           "correct": "Top",
           "hint": "Replace the /h/ with /t/: t-op!",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.2e-q2-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.2e-q2-choice1.mp3",
+            "/audio/kindergarten/RF.K.2e-q2-choice2.mp3",
+            "/audio/kindergarten/RF.K.2e-q2-choice3.mp3",
+            "/audio/kindergarten/RF.K.2e-q2-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.2e-q2-hint.mp3"
         },
         {
           "id": "RF.K.2e-Q3",
@@ -2400,7 +3090,15 @@
           ],
           "correct": "Men",
           "hint": "Keep the 'm' and 'n' but change the middle sound to /e/!",
-          "difficulty": 2
+          "difficulty": 2,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.2e-q3-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.2e-q3-choice1.mp3",
+            "/audio/kindergarten/RF.K.2e-q3-choice2.mp3",
+            "/audio/kindergarten/RF.K.2e-q3-choice3.mp3",
+            "/audio/kindergarten/RF.K.2e-q3-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.2e-q3-hint.mp3"
         },
         {
           "id": "RF.K.2e-Q4",
@@ -2414,7 +3112,15 @@
           ],
           "correct": "Sip",
           "hint": "Keep 'si-' and change the ending to /p/!",
-          "difficulty": 2
+          "difficulty": 2,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.2e-q4-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.2e-q4-choice1.mp3",
+            "/audio/kindergarten/RF.K.2e-q4-choice2.mp3",
+            "/audio/kindergarten/RF.K.2e-q4-choice3.mp3",
+            "/audio/kindergarten/RF.K.2e-q4-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.2e-q4-hint.mp3"
         },
         {
           "id": "RF.K.2e-Q5",
@@ -2428,7 +3134,15 @@
           ],
           "correct": "Stop",
           "hint": "Put /s/ right before 'top': s-top!",
-          "difficulty": 2
+          "difficulty": 2,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.2e-q5-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.2e-q5-choice1.mp3",
+            "/audio/kindergarten/RF.K.2e-q5-choice2.mp3",
+            "/audio/kindergarten/RF.K.2e-q5-choice3.mp3",
+            "/audio/kindergarten/RF.K.2e-q5-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.2e-q5-hint.mp3"
         }
       ]
     },
@@ -2450,7 +3164,15 @@
           ],
           "correct": "/b/",
           "hint": "Think of words that start with B: ball, bat, bear. They all start with /b/!",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.3a-q1-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.3a-q1-choice1.mp3",
+            "/audio/kindergarten/RF.K.3a-q1-choice2.mp3",
+            "/audio/kindergarten/RF.K.3a-q1-choice3.mp3",
+            "/audio/kindergarten/RF.K.3a-q1-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.3a-q1-hint.mp3"
         },
         {
           "id": "RF.K.3a-Q2",
@@ -2464,7 +3186,15 @@
           ],
           "correct": "/s/",
           "hint": "Think: snake, sun, sit — they all start with the /s/ sound!",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.3a-q2-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.3a-q2-choice1.mp3",
+            "/audio/kindergarten/RF.K.3a-q2-choice2.mp3",
+            "/audio/kindergarten/RF.K.3a-q2-choice3.mp3",
+            "/audio/kindergarten/RF.K.3a-q2-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.3a-q2-hint.mp3"
         },
         {
           "id": "RF.K.3a-Q3",
@@ -2478,7 +3208,15 @@
           ],
           "correct": "M",
           "hint": "Mmm... like 'mom' and 'milk'!",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.3a-q3-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.3a-q3-choice1.mp3",
+            "/audio/kindergarten/RF.K.3a-q3-choice2.mp3",
+            "/audio/kindergarten/RF.K.3a-q3-choice3.mp3",
+            "/audio/kindergarten/RF.K.3a-q3-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.3a-q3-hint.mp3"
         },
         {
           "id": "RF.K.3a-Q4",
@@ -2492,7 +3230,15 @@
           ],
           "correct": "Top",
           "hint": "The letter T makes the /t/ sound. Which word starts with /t/?",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.3a-q4-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.3a-q4-choice1.mp3",
+            "/audio/kindergarten/RF.K.3a-q4-choice2.mp3",
+            "/audio/kindergarten/RF.K.3a-q4-choice3.mp3",
+            "/audio/kindergarten/RF.K.3a-q4-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.3a-q4-hint.mp3"
         },
         {
           "id": "RF.K.3a-Q5",
@@ -2506,7 +3252,15 @@
           ],
           "correct": "/r/",
           "hint": "Think of 'run,' 'red,' and 'rain' — they all start with /r/!",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.3a-q5-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.3a-q5-choice1.mp3",
+            "/audio/kindergarten/RF.K.3a-q5-choice2.mp3",
+            "/audio/kindergarten/RF.K.3a-q5-choice3.mp3",
+            "/audio/kindergarten/RF.K.3a-q5-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.3a-q5-hint.mp3"
         }
       ]
     },
@@ -2528,7 +3282,16 @@
           ],
           "correct": "Lake",
           "hint": "Long 'a' says its own name — like in 'lake' and 'cake'!",
-          "difficulty": 2
+          "difficulty": 2,
+          "passage_audio_url": "/audio/kindergarten/RF.K.3b-q1-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RF.K.3b-q1-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.3b-q1-choice1.mp3",
+            "/audio/kindergarten/RF.K.3b-q1-choice2.mp3",
+            "/audio/kindergarten/RF.K.3b-q1-choice3.mp3",
+            "/audio/kindergarten/RF.K.3b-q1-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.3b-q1-hint.mp3"
         },
         {
           "id": "RF.K.3b-Q2",
@@ -2542,7 +3305,15 @@
           ],
           "correct": "Sit",
           "hint": "Short 'i' sounds like the 'i' in pig, sit, and big!",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.3b-q2-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.3b-q2-choice1.mp3",
+            "/audio/kindergarten/RF.K.3b-q2-choice2.mp3",
+            "/audio/kindergarten/RF.K.3b-q2-choice3.mp3",
+            "/audio/kindergarten/RF.K.3b-q2-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.3b-q2-hint.mp3"
         },
         {
           "id": "RF.K.3b-Q3",
@@ -2556,7 +3327,15 @@
           ],
           "correct": "Bone",
           "hint": "Long 'o' says its name — like 'bone' and 'note'!",
-          "difficulty": 2
+          "difficulty": 2,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.3b-q3-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.3b-q3-choice1.mp3",
+            "/audio/kindergarten/RF.K.3b-q3-choice2.mp3",
+            "/audio/kindergarten/RF.K.3b-q3-choice3.mp3",
+            "/audio/kindergarten/RF.K.3b-q3-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.3b-q3-hint.mp3"
         },
         {
           "id": "RF.K.3b-Q4",
@@ -2570,7 +3349,15 @@
           ],
           "correct": "Red",
           "hint": "Short 'e' sounds like the 'e' in bed, red, and pet!",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.3b-q4-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.3b-q4-choice1.mp3",
+            "/audio/kindergarten/RF.K.3b-q4-choice2.mp3",
+            "/audio/kindergarten/RF.K.3b-q4-choice3.mp3",
+            "/audio/kindergarten/RF.K.3b-q4-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.3b-q4-hint.mp3"
         },
         {
           "id": "RF.K.3b-Q5",
@@ -2584,7 +3371,15 @@
           ],
           "correct": "Cup",
           "hint": "Short 'u' sounds like the 'u' in bus, cup, and sun!",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.3b-q5-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.3b-q5-choice1.mp3",
+            "/audio/kindergarten/RF.K.3b-q5-choice2.mp3",
+            "/audio/kindergarten/RF.K.3b-q5-choice3.mp3",
+            "/audio/kindergarten/RF.K.3b-q5-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.3b-q5-hint.mp3"
         }
       ]
     },
@@ -2606,7 +3401,15 @@
           ],
           "correct": "the",
           "hint": "Look carefully at the order of the letters: t-h-e!",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.3c-q1-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.3c-q1-choice1.mp3",
+            "/audio/kindergarten/RF.K.3c-q1-choice2.mp3",
+            "/audio/kindergarten/RF.K.3c-q1-choice3.mp3",
+            "/audio/kindergarten/RF.K.3c-q1-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.3c-q1-hint.mp3"
         },
         {
           "id": "RF.K.3c-Q2",
@@ -2620,7 +3423,15 @@
           ],
           "correct": "do",
           "hint": "This common word is spelled: d-o!",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.3c-q2-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.3c-q2-choice1.mp3",
+            "/audio/kindergarten/RF.K.3c-q2-choice2.mp3",
+            "/audio/kindergarten/RF.K.3c-q2-choice3.mp3",
+            "/audio/kindergarten/RF.K.3c-q2-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.3c-q2-hint.mp3"
         },
         {
           "id": "RF.K.3c-Q3",
@@ -2634,7 +3445,15 @@
           ],
           "correct": "He is happy.",
           "hint": "The word 'is' is spelled: i-s!",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.3c-q3-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.3c-q3-choice1.mp3",
+            "/audio/kindergarten/RF.K.3c-q3-choice2.mp3",
+            "/audio/kindergarten/RF.K.3c-q3-choice3.mp3",
+            "/audio/kindergarten/RF.K.3c-q3-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.3c-q3-hint.mp3"
         },
         {
           "id": "RF.K.3c-Q4",
@@ -2648,7 +3467,16 @@
           ],
           "correct": "I see you!",
           "hint": "The word 'you' is spelled: y-o-u!",
-          "difficulty": 1
+          "difficulty": 1,
+          "passage_audio_url": "/audio/kindergarten/RF.K.3c-q4-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RF.K.3c-q4-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.3c-q4-choice1.mp3",
+            "/audio/kindergarten/RF.K.3c-q4-choice2.mp3",
+            "/audio/kindergarten/RF.K.3c-q4-choice3.mp3",
+            "/audio/kindergarten/RF.K.3c-q4-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.3c-q4-hint.mp3"
         },
         {
           "id": "RF.K.3c-Q5",
@@ -2662,7 +3490,16 @@
           ],
           "correct": "is",
           "hint": "We say 'She is' — not 'She am' or 'She are.'",
-          "difficulty": 2
+          "difficulty": 2,
+          "passage_audio_url": "/audio/kindergarten/RF.K.3c-q5-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RF.K.3c-q5-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.3c-q5-choice1.mp3",
+            "/audio/kindergarten/RF.K.3c-q5-choice2.mp3",
+            "/audio/kindergarten/RF.K.3c-q5-choice3.mp3",
+            "/audio/kindergarten/RF.K.3c-q5-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.3c-q5-hint.mp3"
         }
       ]
     },
@@ -2684,7 +3521,16 @@
           ],
           "correct": "The first letter",
           "hint": "C-A-T and B-A-T — which letter changed?",
-          "difficulty": 1
+          "difficulty": 1,
+          "passage_audio_url": "/audio/kindergarten/RF.K.3d-q1-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RF.K.3d-q1-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.3d-q1-choice1.mp3",
+            "/audio/kindergarten/RF.K.3d-q1-choice2.mp3",
+            "/audio/kindergarten/RF.K.3d-q1-choice3.mp3",
+            "/audio/kindergarten/RF.K.3d-q1-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.3d-q1-hint.mp3"
         },
         {
           "id": "RF.K.3d-Q2",
@@ -2698,7 +3544,15 @@
           ],
           "correct": "The middle letter is different",
           "hint": "P-A-N vs P-E-N — the 'A' changed to 'E'!",
-          "difficulty": 2
+          "difficulty": 2,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.3d-q2-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.3d-q2-choice1.mp3",
+            "/audio/kindergarten/RF.K.3d-q2-choice2.mp3",
+            "/audio/kindergarten/RF.K.3d-q2-choice3.mp3",
+            "/audio/kindergarten/RF.K.3d-q2-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.3d-q2-hint.mp3"
         },
         {
           "id": "RF.K.3d-Q3",
@@ -2710,7 +3564,13 @@
           ],
           "correct": "Same",
           "hint": "Look at every letter: B-I-G and B-I-G. Any differences?",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.3d-q3-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.3d-q3-choice1.mp3",
+            "/audio/kindergarten/RF.K.3d-q3-choice2.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.3d-q3-hint.mp3"
         },
         {
           "id": "RF.K.3d-Q4",
@@ -2724,7 +3584,15 @@
           ],
           "correct": "A changed to O",
           "hint": "M-A-P vs M-O-P — the middle vowel is different!",
-          "difficulty": 2
+          "difficulty": 2,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.3d-q4-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.3d-q4-choice1.mp3",
+            "/audio/kindergarten/RF.K.3d-q4-choice2.mp3",
+            "/audio/kindergarten/RF.K.3d-q4-choice3.mp3",
+            "/audio/kindergarten/RF.K.3d-q4-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.3d-q4-hint.mp3"
         },
         {
           "id": "RF.K.3d-Q5",
@@ -2738,7 +3606,15 @@
           ],
           "correct": "Log",
           "hint": "D-O-G → L-O-G!",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/RF.K.3d-q5-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.3d-q5-choice1.mp3",
+            "/audio/kindergarten/RF.K.3d-q5-choice2.mp3",
+            "/audio/kindergarten/RF.K.3d-q5-choice3.mp3",
+            "/audio/kindergarten/RF.K.3d-q5-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.3d-q5-hint.mp3"
         }
       ]
     },
@@ -2760,7 +3636,16 @@
           ],
           "correct": "On the mat",
           "hint": "Read the last sentence — where is the cat sitting?",
-          "difficulty": 1
+          "difficulty": 1,
+          "passage_audio_url": "/audio/kindergarten/RF.K.4-q1-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RF.K.4-q1-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.4-q1-choice1.mp3",
+            "/audio/kindergarten/RF.K.4-q1-choice2.mp3",
+            "/audio/kindergarten/RF.K.4-q1-choice3.mp3",
+            "/audio/kindergarten/RF.K.4-q1-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.4-q1-hint.mp3"
         },
         {
           "id": "RF.K.4-Q2",
@@ -2774,7 +3659,16 @@
           ],
           "correct": "Pets",
           "hint": "Dogs, cats, and fish are all types of...",
-          "difficulty": 1
+          "difficulty": 1,
+          "passage_audio_url": "/audio/kindergarten/RF.K.4-q2-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RF.K.4-q2-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.4-q2-choice1.mp3",
+            "/audio/kindergarten/RF.K.4-q2-choice2.mp3",
+            "/audio/kindergarten/RF.K.4-q2-choice3.mp3",
+            "/audio/kindergarten/RF.K.4-q2-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.4-q2-hint.mp3"
         },
         {
           "id": "RF.K.4-Q3",
@@ -2788,7 +3682,16 @@
           ],
           "correct": "Fly",
           "hint": "The story mentions run, hop, and skip — but NOT fly!",
-          "difficulty": 2
+          "difficulty": 2,
+          "passage_audio_url": "/audio/kindergarten/RF.K.4-q3-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RF.K.4-q3-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.4-q3-choice1.mp3",
+            "/audio/kindergarten/RF.K.4-q3-choice2.mp3",
+            "/audio/kindergarten/RF.K.4-q3-choice3.mp3",
+            "/audio/kindergarten/RF.K.4-q3-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.4-q3-hint.mp3"
         },
         {
           "id": "RF.K.4-Q4",
@@ -2802,7 +3705,16 @@
           ],
           "correct": "Daytime",
           "hint": "The sun is up and the story says 'It is day.'",
-          "difficulty": 1
+          "difficulty": 1,
+          "passage_audio_url": "/audio/kindergarten/RF.K.4-q4-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RF.K.4-q4-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.4-q4-choice1.mp3",
+            "/audio/kindergarten/RF.K.4-q4-choice2.mp3",
+            "/audio/kindergarten/RF.K.4-q4-choice3.mp3",
+            "/audio/kindergarten/RF.K.4-q4-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.4-q4-hint.mp3"
         },
         {
           "id": "RF.K.4-Q5",
@@ -2816,7 +3728,16 @@
           ],
           "correct": "It's cold outside.",
           "hint": "The last sentence tells you why!",
-          "difficulty": 1
+          "difficulty": 1,
+          "passage_audio_url": "/audio/kindergarten/RF.K.4-q5-passage.mp3",
+          "prompt_audio_url": "/audio/kindergarten/RF.K.4-q5-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/RF.K.4-q5-choice1.mp3",
+            "/audio/kindergarten/RF.K.4-q5-choice2.mp3",
+            "/audio/kindergarten/RF.K.4-q5-choice3.mp3",
+            "/audio/kindergarten/RF.K.4-q5-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/RF.K.4-q5-hint.mp3"
         }
       ]
     },
@@ -2838,7 +3759,15 @@
           ],
           "correct": "Dog",
           "hint": "Can you touch it or point to it? That's a noun!",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/K.L.1-q1-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/K.L.1-q1-choice1.mp3",
+            "/audio/kindergarten/K.L.1-q1-choice2.mp3",
+            "/audio/kindergarten/K.L.1-q1-choice3.mp3",
+            "/audio/kindergarten/K.L.1-q1-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/K.L.1-q1-hint.mp3"
         },
         {
           "id": "K.L.1-Q2",
@@ -2852,7 +3781,15 @@
           ],
           "correct": "Jump",
           "hint": "Which word is something you can DO?",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/K.L.1-q2-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/K.L.1-q2-choice1.mp3",
+            "/audio/kindergarten/K.L.1-q2-choice2.mp3",
+            "/audio/kindergarten/K.L.1-q2-choice3.mp3",
+            "/audio/kindergarten/K.L.1-q2-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/K.L.1-q2-hint.mp3"
         },
         {
           "id": "K.L.1-Q3",
@@ -2866,7 +3803,15 @@
           ],
           "correct": "Cats",
           "hint": "To make most words plural, just add an 's' at the end!",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/K.L.1-q3-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/K.L.1-q3-choice1.mp3",
+            "/audio/kindergarten/K.L.1-q3-choice2.mp3",
+            "/audio/kindergarten/K.L.1-q3-choice3.mp3",
+            "/audio/kindergarten/K.L.1-q3-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/K.L.1-q3-hint.mp3"
         },
         {
           "id": "K.L.1-Q4",
@@ -2880,7 +3825,15 @@
           ],
           "correct": "Where",
           "hint": "\"_____ is the park?\" — you're asking about a place!",
-          "difficulty": 2
+          "difficulty": 2,
+          "prompt_audio_url": "/audio/kindergarten/K.L.1-q4-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/K.L.1-q4-choice1.mp3",
+            "/audio/kindergarten/K.L.1-q4-choice2.mp3",
+            "/audio/kindergarten/K.L.1-q4-choice3.mp3",
+            "/audio/kindergarten/K.L.1-q4-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/K.L.1-q4-hint.mp3"
         },
         {
           "id": "K.L.1-Q5",
@@ -2894,7 +3847,15 @@
           ],
           "correct": "In",
           "hint": "If the ball is INSIDE the box, we say it's 'in' the box!",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/K.L.1-q5-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/K.L.1-q5-choice1.mp3",
+            "/audio/kindergarten/K.L.1-q5-choice2.mp3",
+            "/audio/kindergarten/K.L.1-q5-choice3.mp3",
+            "/audio/kindergarten/K.L.1-q5-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/K.L.1-q5-hint.mp3"
         }
       ]
     },
@@ -2916,7 +3877,15 @@
           ],
           "correct": "I like pizza.",
           "hint": "The first word of a sentence starts with a CAPITAL letter!",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/K.L.2-q1-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/K.L.2-q1-choice1.mp3",
+            "/audio/kindergarten/K.L.2-q1-choice2.mp3",
+            "/audio/kindergarten/K.L.2-q1-choice3.mp3",
+            "/audio/kindergarten/K.L.2-q1-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/K.L.2-q1-hint.mp3"
         },
         {
           "id": "K.L.2-Q2",
@@ -2930,7 +3899,15 @@
           ],
           "correct": "A period (.)",
           "hint": "A telling sentence (statement) ends with a period!",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/K.L.2-q2-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/K.L.2-q2-choice1.mp3",
+            "/audio/kindergarten/K.L.2-q2-choice2.mp3",
+            "/audio/kindergarten/K.L.2-q2-choice3.mp3",
+            "/audio/kindergarten/K.L.2-q2-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/K.L.2-q2-hint.mp3"
         },
         {
           "id": "K.L.2-Q3",
@@ -2944,7 +3921,15 @@
           ],
           "correct": "A question mark (?)",
           "hint": "Questions ask something — they end with this curvy mark!",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/K.L.2-q3-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/K.L.2-q3-choice1.mp3",
+            "/audio/kindergarten/K.L.2-q3-choice2.mp3",
+            "/audio/kindergarten/K.L.2-q3-choice3.mp3",
+            "/audio/kindergarten/K.L.2-q3-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/K.L.2-q3-hint.mp3"
         },
         {
           "id": "K.L.2-Q4",
@@ -2958,7 +3943,15 @@
           ],
           "correct": "Sam",
           "hint": "People's names ALWAYS start with a capital letter!",
-          "difficulty": 1
+          "difficulty": 1,
+          "prompt_audio_url": "/audio/kindergarten/K.L.2-q4-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/K.L.2-q4-choice1.mp3",
+            "/audio/kindergarten/K.L.2-q4-choice2.mp3",
+            "/audio/kindergarten/K.L.2-q4-choice3.mp3",
+            "/audio/kindergarten/K.L.2-q4-choice4.mp3"
+          ],
+          "hint_audio_url": "/audio/kindergarten/K.L.2-q4-hint.mp3"
         },
         {
           "id": "K.L.2-Q5",
@@ -2972,7 +3965,14 @@
           ],
           "correct": "The dog is big.",
           "hint": "A correct sentence needs: capital letter at the start AND a period at the end!",
-          "difficulty": 2
+          "difficulty": 2,
+          "prompt_audio_url": "/audio/kindergarten/K.L.2-q5-prompt.mp3",
+          "choices_audio_urls": [
+            "/audio/kindergarten/K.L.2-q5-choice1.mp3",
+            "/audio/kindergarten/K.L.2-q5-choice2.mp3",
+            "/audio/kindergarten/K.L.2-q5-choice3.mp3",
+            "/audio/kindergarten/K.L.2-q5-choice4.mp3"
+          ]
         }
       ]
     },

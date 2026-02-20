@@ -9,8 +9,7 @@ if (!API_KEY) {
   process.exit(1);
 }
 
-// Library voice kXsOSDWolD7e9l1Z0sbH requires paid plan — using Rachel (premade) instead
-const VOICE_ID = "21m00Tcm4TlvDq8ikWAM";
+const VOICE_ID = "kXsOSDWolD7e9l1Z0sbH";
 const MODEL_ID = "eleven_multilingual_v2";
 const OUTPUT_FORMAT = "mp3_44100_128";
 const VOICE_SETTINGS = {
