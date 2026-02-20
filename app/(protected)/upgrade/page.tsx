@@ -201,53 +201,20 @@ function UpgradeContent() {
       initial="hidden"
       animate="visible"
     >
-      {/* ── HERO: Celebrate Progress ── */}
-      {child ? (
-        <motion.div variants={fadeUp} className="text-center space-y-5">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 dark:bg-green-950/30 border border-green-200 dark:border-green-800/40 text-sm font-medium text-green-700 dark:text-green-300">
-            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-            {child.first_name} is making great progress
-          </div>
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-zinc-900 dark:text-slate-100 tracking-tight leading-tight">
-            Don&apos;t let {child.first_name}&apos;s<br />
-            <span className="bg-gradient-to-r from-indigo-600 to-violet-500 bg-clip-text text-transparent">
-              reading momentum
-            </span>{" "}
-            stop here
-          </h1>
-          <p className="text-zinc-500 dark:text-slate-400 max-w-md mx-auto">
-            {child.first_name} has already earned {child.xp} XP and completed {completedCount} lesson{completedCount !== 1 ? "s" : ""}. Unlock the full curriculum to keep the growth going.
-          </p>
-
-          {/* Progress badges */}
-          <div className="flex flex-wrap justify-center gap-3">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800/40 text-sm font-medium text-amber-700 dark:text-amber-300">
-              {child.xp} XP earned
-            </span>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-800/40 text-sm font-medium text-indigo-700 dark:text-indigo-300">
-              {completedCount} lesson{completedCount !== 1 ? "s" : ""} done
-            </span>
-            {child.reading_level && (
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-violet-50 dark:bg-violet-950/30 border border-violet-200 dark:border-violet-800/40 text-sm font-medium text-violet-700 dark:text-violet-300">
-                {child.reading_level}
-              </span>
-            )}
-          </div>
-        </motion.div>
-      ) : (
-        <motion.div variants={fadeUp} className="text-center space-y-4">
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-zinc-900 dark:text-slate-100 tracking-tight leading-tight">
-            Give your child the{" "}
-            <span className="bg-gradient-to-r from-indigo-600 to-violet-500 bg-clip-text text-transparent">
-              reading superpowers
-            </span>{" "}
-            they deserve
-          </h1>
-          <p className="text-zinc-500 dark:text-slate-400 max-w-md mx-auto">
-            {totalLessons}+ structured lessons, audio narration, and a full K-4th grade curriculum — all aligned to Common Core ELA standards.
-          </p>
-        </motion.div>
-      )}
+      {/* ── HERO ── */}
+      <motion.div variants={fadeUp} className="text-center space-y-4">
+        <div className="text-5xl">🚀</div>
+        <h1 className="text-3xl sm:text-4xl font-extrabold text-zinc-900 dark:text-slate-100 tracking-tight leading-tight">
+          Give your child the{" "}
+          <span className="bg-gradient-to-r from-indigo-600 to-violet-500 bg-clip-text text-transparent">
+            reading superpowers
+          </span>{" "}
+          they deserve
+        </h1>
+        <p className="text-zinc-500 dark:text-slate-400 max-w-md mx-auto">
+          42+ structured lessons, audio narration, and a full K-4th grade curriculum — all aligned to Common Core ELA standards.
+        </p>
+      </motion.div>
 
       {/* ── SOCIAL PROOF: Stats Bar ── */}
       <motion.div variants={fadeUp} className="grid grid-cols-3 gap-4">
@@ -266,7 +233,7 @@ function UpgradeContent() {
       {/* ── LOCKED LESSONS PREVIEW ── */}
       <motion.div variants={slideUp} className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 space-y-4">
         <h2 className="text-lg font-bold text-zinc-900 dark:text-slate-100 text-center">
-          {child ? `What ${child.first_name} will unlock` : "Unlock the full curriculum"}
+          What your child will unlock
         </h2>
 
         <div className="space-y-2">
@@ -480,9 +447,7 @@ function UpgradeContent() {
       {/* ── FINAL CTA ── */}
       <motion.div variants={slideUp} className="rounded-2xl bg-gradient-to-br from-indigo-600 to-violet-600 p-8 text-center space-y-4 shadow-xl shadow-indigo-200/40 dark:shadow-indigo-900/40">
         <h2 className="text-xl sm:text-2xl font-bold text-white">
-          {child
-            ? `Start ${child.first_name}'s free trial today`
-            : "Start your child's reading journey today"}
+          Start your child&apos;s reading journey today
         </h2>
         <p className="text-indigo-100 text-sm max-w-md mx-auto">
           7 days free, then just $8.25/month with the annual plan. Cancel anytime — no risk, no commitment.
