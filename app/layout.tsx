@@ -8,6 +8,10 @@ import NavAuth from "./_components/NavAuth";
 export const metadata: Metadata = {
   title: "Readee",
   description: "Early reading, done right",
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({
@@ -31,9 +35,7 @@ export default function RootLayout({
           <div className="mx-auto max-w-6xl px-6 py-10">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
               <div className="flex items-center gap-6">
-                <span className="font-extrabold tracking-tight text-lg text-white">
-                  READ<span className="text-indigo-300">EE</span>
-                </span>
+                <img src="/readee-logo.png" alt="Readee" className="h-8 w-auto" />
                 <span className="hidden sm:block w-px h-5 bg-gray-500" />
                 <span className="text-sm text-gray-300">
                   Helping every child become a confident reader.
