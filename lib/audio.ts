@@ -1,53 +1,35 @@
 /**
  * Static audio playback utility.
  *
- * Plays .mp3 files from /public/audio/{folder}/{filename}.mp3
+ * Plays .mp3 files from Supabase Storage (production) with local fallback.
  * Uses HTML5 Audio — no external dependencies.
  */
+
+const SUPABASE_AUDIO_BASE =
+  process.env.NEXT_PUBLIC_SUPABASE_URL
+    ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audio`
+    : "";
 
 let currentAudio: HTMLAudioElement | null = null;
 
 /**
  * Play a static audio file by folder + name.
+ * Uses Supabase Storage URL in production, falls back to local /audio/ path.
  *
  * @param folder    Folder name, e.g. "kindergarten", "feedback"
  * @param filename  File stem without extension, e.g. "RL.K.1-q1", "correct-1"
- *
- * @example
- *   playAudio("kindergarten", "RL.K.1-q1"); // plays /audio/kindergarten/RL.K.1-q1.mp3
- *   playAudio("feedback", "correct-1");     // plays /audio/feedback/correct-1.mp3
  */
 export function playAudio(folder: string, filename: string): Promise<void> {
-  return new Promise((resolve) => {
-    stopAudio();
-
-    const src = `/audio/${folder}/${filename}.mp3`;
-    const audio = new Audio(src);
-    currentAudio = audio;
-
-    audio.addEventListener("ended", () => {
-      if (currentAudio === audio) currentAudio = null;
-      resolve();
-    });
-
-    audio.addEventListener("error", () => {
-      // Fail silently — file may not exist yet
-      if (currentAudio === audio) currentAudio = null;
-      resolve();
-    });
-
-    audio.play().catch(() => {
-      // Autoplay blocked or file missing — fail silently
-      if (currentAudio === audio) currentAudio = null;
-      resolve();
-    });
-  });
+  const src = SUPABASE_AUDIO_BASE
+    ? `${SUPABASE_AUDIO_BASE}/${folder}/${filename}.mp3`
+    : `/audio/${folder}/${filename}.mp3`;
+  return playAudioUrl(src);
 }
 
 /**
- * Play a static audio file from a direct URL path.
+ * Play audio from a direct URL (full Supabase URL or relative path).
  *
- * @param url  Full path, e.g. "/audio/kindergarten/RL.K.1-q1.mp3"
+ * @param url  Full URL or relative path, e.g. "https://...supabase.co/.../RL.K.1-q1.mp3"
  */
 export function playAudioUrl(url: string): Promise<void> {
   return new Promise((resolve) => {

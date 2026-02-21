@@ -23,8 +23,8 @@
           "correct": "A red ball",
           "hint": "Look at the second sentence — what did Max play fetch with?",
           "difficulty": 1,
-          "audio_url": "/audio/kindergarten/RL.K.1-q1.mp3",
-          "hint_audio_url": "/audio/kindergarten/RL.K.1-q1-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.1-q1.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.1-q1-hint.mp3"
         },
         {
           "id": "RL.K.1-Q2",
@@ -39,8 +39,8 @@
           "correct": "To school",
           "hint": "Read the end of the second sentence carefully!",
           "difficulty": 1,
-          "audio_url": "/audio/kindergarten/RL.K.1-q2.mp3",
-          "hint_audio_url": "/audio/kindergarten/RL.K.1-q2-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.1-q2.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.1-q2-hint.mp3"
         },
         {
           "id": "RL.K.1-Q3",
@@ -55,8 +55,8 @@
           "correct": "6",
           "hint": "The story tells you a number — what is it?",
           "difficulty": 1,
-          "audio_url": "/audio/kindergarten/RL.K.1-q3.mp3",
-          "hint_audio_url": "/audio/kindergarten/RL.K.1-q3-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.1-q3.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.1-q3-hint.mp3"
         },
         {
           "id": "RL.K.1-Q4",
@@ -71,8 +71,8 @@
           "correct": "Gray with white paws",
           "hint": "The second sentence describes what the kitten looked like.",
           "difficulty": 2,
-          "audio_url": "/audio/kindergarten/RL.K.1-q4.mp3",
-          "hint_audio_url": "/audio/kindergarten/RL.K.1-q4-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.1-q4.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.1-q4-hint.mp3"
         },
         {
           "id": "RL.K.1-Q5",
@@ -87,8 +87,8 @@
           "correct": "His grandma",
           "hint": "Look at the very first word of the story!",
           "difficulty": 2,
-          "audio_url": "/audio/kindergarten/RL.K.1-q5.mp3",
-          "hint_audio_url": "/audio/kindergarten/RL.K.1-q5-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.1-q5.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.1-q5-hint.mp3"
         }
       ]
     },
