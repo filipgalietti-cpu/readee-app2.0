@@ -79,8 +79,12 @@ function formatDate(dateStr: string): string {
 function getDateCutoff(range: DateRange): Date | null {
   if (range === "all") return null;
   const now = new Date();
-  if (range === "week") now.setDate(now.getDate() - 7);
-  else now.setMonth(now.getMonth() - 1);
+  if (range === "week") {
+    now.setDate(now.getDate() - 7);
+  } else {
+    // Current calendar month: 1st of this month at midnight
+    return new Date(now.getFullYear(), now.getMonth(), 1);
+  }
   return now;
 }
 
@@ -327,25 +331,20 @@ function AnalyticsDashboard({ child }: { child: Child }) {
     return result;
   }, [filteredResults]);
 
-  // Curriculum progress — standards practiced per domain
+  // Curriculum progress — standards practiced per domain (filtered by date range)
   const domainProgress = useMemo(() => {
-    const practicedStandards = new Set(practiceResults.map((r) => r.standard_id));
-    const allPracticedInRange = new Set(filteredResults.map((r) => r.standard_id));
-    const totalPracticed = new Set<string>();
-    for (const s of allStandards) {
-      if (practicedStandards.has(s.standard_id)) totalPracticed.add(s.standard_id);
-    }
+    const practicedStandards = new Set(filteredResults.map((r) => r.standard_id));
     return Object.entries(DOMAIN_META).map(([domain, meta]) => {
       const domainStandards = allStandards.filter((s) => s.domain === domain);
       const practiced = domainStandards.filter((s) => practicedStandards.has(s.standard_id)).length;
       return { domain, practiced, ...meta };
     });
-  }, [allStandards, practiceResults, filteredResults]);
+  }, [allStandards, filteredResults]);
 
   const totalStandardsPracticed = useMemo(() => {
-    const all = new Set(practiceResults.map((r) => r.standard_id));
+    const all = new Set(filteredResults.map((r) => r.standard_id));
     return all.size;
-  }, [practiceResults]);
+  }, [filteredResults]);
 
   const overallProgressPct = Math.round((totalStandardsPracticed / allStandards.length) * 100);
 
