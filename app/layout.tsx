@@ -35,7 +35,7 @@ export default function RootLayout({
           <div className="mx-auto max-w-6xl px-6 py-10">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
               <div className="flex items-center gap-6">
-                <img src="/readee-logo.png" alt="Readee" className="h-8 w-auto" />
+                <img src="/readee-logo.png" alt="Readee" style={{ width: 120 }} className="h-auto" />
                 <span className="hidden sm:block w-px h-5 bg-gray-500" />
                 <span className="text-sm text-gray-300">
                   Helping every child become a confident reader.

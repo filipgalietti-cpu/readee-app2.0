@@ -103,8 +103,8 @@ export default function NavAuth() {
   if (loggedIn === null) {
     return (
       <nav className="sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm border-b border-zinc-200 dark:border-slate-700 transition-transform duration-300 md:translate-y-0" style={{ transform: navHidden ? "translateY(-100%)" : undefined }}>
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 h-16">
-          <img src="/readee-logo.png" alt="Readee - Learn to Read" className="h-10 w-auto" />
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 h-20">
+          <img src="/readee-logo.png" alt="Readee - Learn to Read" style={{ width: 150, height: 'auto' }} />
         </div>
       </nav>
     );
@@ -112,13 +112,13 @@ export default function NavAuth() {
 
   return (
     <nav className="sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm border-b border-zinc-200 dark:border-slate-700 transition-transform duration-300 md:translate-y-0" style={{ transform: navHidden ? "translateY(-100%)" : undefined }}>
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 h-16">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 h-20">
         {/* Logo */}
         <Link
           href={loggedIn ? "/dashboard" : "/"}
           className="hover:opacity-80 transition-opacity"
         >
-          <img src="/readee-logo.png" alt="Readee - Learn to Read" className="h-10 w-auto" />
+          <img src="/readee-logo.png" alt="Readee - Learn to Read" style={{ width: 150, height: 'auto' }} />
         </Link>
 
         {/* Desktop nav */}
