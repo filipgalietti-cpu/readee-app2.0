@@ -346,7 +346,7 @@ function ChildSelector({
   onSelect: (c: Child) => void;
 }) {
   return (
-    <div className="py-10 space-y-10 max-w-2xl mx-auto">
+    <div className="py-10 space-y-10 max-w-[480px] mx-auto">
       <div className="text-center">
         <h1 className="text-3xl font-bold text-zinc-900 dark:text-slate-100 tracking-tight">
           Who&apos;s reading today?
@@ -575,7 +575,7 @@ function ChildDashboard({
 
   return (
     <motion.div
-      className="max-w-2xl mx-auto space-y-6 pb-12 px-4"
+      className="max-w-[480px] mx-auto space-y-6 pb-12 px-4"
       variants={staggerContainer}
       initial="hidden"
       animate="visible"
