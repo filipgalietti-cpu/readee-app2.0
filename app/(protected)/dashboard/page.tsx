@@ -620,19 +620,19 @@ function ChildDashboard({
       {/* ── Reading Level Badge (compact) ── */}
       {readingLevel && (
         <motion.div variants={slideUp}>
-          <div className="rounded-2xl bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 px-4 py-3 shadow-lg">
+          <div className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3">
             <div className="flex items-center gap-3">
-              <span className="text-xl">📖</span>
+              <div className="w-9 h-9 rounded-xl bg-indigo-50 dark:bg-indigo-950/30 flex items-center justify-center text-lg flex-shrink-0">📖</div>
               <div className="flex-1 min-w-0 flex items-center gap-2 flex-wrap">
-                <span className="text-white/70 text-xs font-medium">Level:</span>
-                <span className="text-white font-bold text-sm">{readingLevel}</span>
+                <span className="text-zinc-500 dark:text-slate-400 text-xs font-medium">Level:</span>
+                <span className="text-zinc-900 dark:text-slate-100 font-bold text-sm">{readingLevel}</span>
                 {child.grade && (
-                  <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-white/20 text-white">
+                  <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-indigo-50 dark:bg-indigo-950/30 text-indigo-600 dark:text-indigo-400">
                     {GRADE_LABELS[child.grade] || child.grade}
                   </span>
                 )}
               </div>
-              <Link href="/settings" className="text-white/60 hover:text-white/90 text-[11px] font-medium transition-colors flex-shrink-0">
+              <Link href="/settings" className="text-indigo-500 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300 text-[11px] font-medium transition-colors flex-shrink-0">
                 Change →
               </Link>
             </div>
@@ -647,21 +647,21 @@ function ChildDashboard({
             href={`/practice?child=${child.id}&standard=${nextPracticeStandard.standard_id}`}
             className="block"
           >
-            <div className="rounded-2xl bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 p-6 text-white hover:from-indigo-700 hover:via-violet-700 hover:to-purple-700 transition-all duration-200 shadow-xl hover:shadow-2xl hover:scale-[1.01] cursor-pointer">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-16 h-16 rounded-2xl bg-white/20 flex items-center justify-center text-4xl flex-shrink-0">
-                  📖
+            <div className="rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 p-5 text-white hover:from-indigo-700 hover:to-violet-600 transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-[1.01] cursor-pointer">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center text-2xl flex-shrink-0">
+                  🎯
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="text-white font-extrabold text-xl">Ready to practice?</div>
-                  <div className="text-white/70 text-sm mt-1 truncate">
+                  <div className="text-white font-bold text-lg">Ready to practice?</div>
+                  <div className="text-white/70 text-sm mt-0.5 truncate">
                     {getFriendlyTopicName(nextPracticeStandard.domain)}
                   </div>
                 </div>
+                <span className="px-5 py-2.5 rounded-xl bg-white text-indigo-700 font-bold text-sm shadow-sm flex-shrink-0">
+                  Start →
+                </span>
               </div>
-              <span className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-white text-indigo-700 font-extrabold text-base shadow-md">
-                Start →
-              </span>
             </div>
           </Link>
         </motion.div>
