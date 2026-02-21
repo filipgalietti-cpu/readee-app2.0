@@ -2,25 +2,24 @@
 
 const fs = require("fs");
 const path = require("path");
-const { execSync } = require("child_process");
 
-// ── Load GEMINI_API_KEY from .env.local ─────────────────
+// ── Load OPENAI_API_KEY from .env.local ──────────────────
 const ENV_PATH = path.join(__dirname, "..", ".env.local");
 const envFile = fs.readFileSync(ENV_PATH, "utf-8");
-const keyMatch = envFile.match(/^GEMINI_API_KEY=(.+)$/m);
+const keyMatch = envFile.match(/^OPENAI_API_KEY=(.+)$/m);
 if (!keyMatch) {
-  console.error("GEMINI_API_KEY not found in .env.local");
+  console.error("OPENAI_API_KEY not found in .env.local");
   process.exit(1);
 }
-const GEMINI_API_KEY = keyMatch[1].trim();
+const OPENAI_API_KEY = keyMatch[1].trim();
 
 // ── Config ──────────────────────────────────────────────
-const TTS_ENDPOINT = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${GEMINI_API_KEY}`;
-const STYLE_PREFIX =
-  "Read this in a clear, bright, friendly voice like a cheerful elementary school teacher. Normal speaking pace, not slow. Be upbeat and energetic, not whispery or soft:";
+const TTS_ENDPOINT = "https://api.openai.com/v1/audio/speech";
+const VOICE = "nova";
+const MODEL = "tts-1";
+const SPEED = 0.9;
 
-const MAX_REQUESTS_PER_RUN = 95; // Paid Tier 1 = 100 RPD, leave buffer
-const DELAY_BETWEEN_REQUESTS = 7000; // 7s = safely under 10 RPM
+const DELAY_BETWEEN_REQUESTS = 500; // 0.5s — OpenAI TTS has generous limits
 
 const INPUT_PATH = path.join(__dirname, "..", "app", "data", "kindergarten-standards-questions.json");
 const KINDERGARTEN_DIR = path.join(__dirname, "..", "public", "audio", "kindergarten");
@@ -28,21 +27,6 @@ const FEEDBACK_DIR = path.join(__dirname, "..", "public", "audio", "feedback");
 const PROGRESS_PATH = path.join(__dirname, "progress.json");
 
 const delay = (ms) => new Promise((r) => setTimeout(r, ms));
-
-// ── Request counter ─────────────────────────────────────
-let requestCount = 0;
-
-function checkDailyLimit() {
-  if (requestCount >= MAX_REQUESTS_PER_RUN) {
-    throw new DailyLimitError();
-  }
-}
-
-class DailyLimitError extends Error {
-  constructor() {
-    super("DAILY_LIMIT");
-  }
-}
 
 // ── Text helpers ────────────────────────────────────────
 
@@ -125,69 +109,54 @@ const FEEDBACK_PHRASES = [
   { file: "complete-try-3.mp3", text: "Keep going! The more you practice, the easier it gets!" },
 ];
 
-// ── Gemini 2.5 Flash TTS ───────────────────────────────
+// ── OpenAI TTS ──────────────────────────────────────────
 
 async function synthesizeToMp3(text, outputMp3) {
-  checkDailyLimit();
-
   const body = {
-    contents: [{ parts: [{ text: `${STYLE_PREFIX} ${text}` }] }],
-    generationConfig: {
-      responseModalities: ["AUDIO"],
-      speechConfig: {
-        voiceConfig: { prebuiltVoiceConfig: { voiceName: "Autonoe" } },
-      },
-    },
+    model: MODEL,
+    input: text,
+    voice: VOICE,
+    speed: SPEED,
   };
 
-  let json;
+  let res;
   for (let attempt = 0; attempt < 3; attempt++) {
-    const res = await fetch(TTS_ENDPOINT, {
+    res = await fetch(TTS_ENDPOINT, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${OPENAI_API_KEY}`,
+      },
       body: JSON.stringify(body),
     });
 
     if (res.status === 429) {
-      console.log(`    ⏳ Rate limited (attempt ${attempt + 1}/3), waiting 60s...`);
-      await delay(60000);
+      console.log(`    ⏳ Rate limited (attempt ${attempt + 1}/3), waiting 30s...`);
+      await delay(30000);
       continue;
     }
 
     if (res.status >= 500) {
-      console.log(`    ⚠️  Server error ${res.status} (attempt ${attempt + 1}/3), waiting 15s...`);
-      await delay(15000);
+      console.log(`    ⚠️  Server error ${res.status} (attempt ${attempt + 1}/3), waiting 10s...`);
+      await delay(10000);
       continue;
     }
 
     if (!res.ok) {
       const errText = await res.text();
-      throw new Error(`Gemini TTS API ${res.status}: ${errText}`);
+      throw new Error(`OpenAI TTS API ${res.status}: ${errText}`);
     }
 
-    json = await res.json();
     break;
   }
 
-  if (!json) throw new DailyLimitError();
-
-  requestCount++;
-
-  const audioData = json.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data;
-  if (!audioData) {
-    throw new Error(`No audio in response: ${JSON.stringify(json).slice(0, 300)}`);
+  if (!res || !res.ok) {
+    throw new Error("Failed after 3 retries");
   }
 
-  // PCM → MP3 via ffmpeg
-  const tmpPcm = outputMp3.replace(/\.mp3$/, ".tmp.pcm");
-  fs.writeFileSync(tmpPcm, Buffer.from(audioData, "base64"));
-  try {
-    execSync(`ffmpeg -y -f s16le -ar 24000 -ac 1 -i "${tmpPcm}" "${outputMp3}"`, {
-      stdio: "pipe",
-    });
-  } finally {
-    if (fs.existsSync(tmpPcm)) fs.unlinkSync(tmpPcm);
-  }
+  // Response is raw MP3 binary — save directly
+  const buffer = Buffer.from(await res.arrayBuffer());
+  fs.writeFileSync(outputMp3, buffer);
 }
 
 // ── Progress tracking ───────────────────────────────────
@@ -263,14 +232,6 @@ function buildJobList(data) {
 // ── Main ────────────────────────────────────────────────
 
 async function main() {
-  // Check ffmpeg
-  try {
-    execSync("which ffmpeg", { stdio: "pipe" });
-  } catch {
-    console.error("ffmpeg is required. Install with: brew install ffmpeg");
-    process.exit(1);
-  }
-
   fs.mkdirSync(KINDERGARTEN_DIR, { recursive: true });
   fs.mkdirSync(FEEDBACK_DIR, { recursive: true });
 
@@ -281,61 +242,50 @@ async function main() {
   const totalJobs = jobs.length;
   let generated = 0;
   let skipped = 0;
-  let dailyLimitHit = false;
+  let requestCount = 0;
 
-  console.log(`\n=== Gemini 2.5 Flash TTS — Autonoe ===`);
+  console.log(`\n=== OpenAI TTS — ${VOICE} (${MODEL}, speed ${SPEED}) ===`);
   console.log(`  Total files needed: ${totalJobs}`);
-  console.log(`  Max requests this run: ${MAX_REQUESTS_PER_RUN}`);
   console.log(`  Delay between requests: ${DELAY_BETWEEN_REQUESTS / 1000}s`);
   console.log(`  Previous runs: ${progress.runs} (${progress.generated.length} files generated so far)\n`);
 
-  try {
-    for (let i = 0; i < jobs.length; i++) {
-      const job = jobs[i];
-      const outputPath = path.join(job.dir, job.file);
-      const num = i + 1;
+  for (let i = 0; i < jobs.length; i++) {
+    const job = jobs[i];
+    const outputPath = path.join(job.dir, job.file);
+    const num = i + 1;
 
-      if (fs.existsSync(outputPath)) {
-        skipped++;
-        continue;
-      }
-
-      checkDailyLimit();
-
-      console.log(`[${num}/${totalJobs}] Generating ${job.file}...`);
-      await synthesizeToMp3(job.text, outputPath);
-      generated++;
-      progress.generated.push(job.file);
-      console.log(`[${num}/${totalJobs}] ✓ ${job.file}  (${requestCount}/${MAX_REQUESTS_PER_RUN} requests used)`);
-
-      // Update JSON audio_url for question jobs
-      if (job.type === "question") {
-        const std = data.standards.find((s) => s.standard_id === job.stdId);
-        if (std) {
-          const q = std.questions[job.qIdx];
-          q.audio_url = `/audio/kindergarten/${job.file}`;
-          delete q.passage_audio_url;
-          delete q.prompt_audio_url;
-          delete q.choices_audio_urls;
-        }
-      }
-      if (job.type === "hint") {
-        // Parse stdId and qIdx from filename like "RL.K.1-q2-hint.mp3"
-        const m = job.file.match(/^(.+)-q(\d+)-hint\.mp3$/);
-        if (m) {
-          const std = data.standards.find((s) => s.standard_id === m[1]);
-          if (std) std.questions[parseInt(m[2]) - 1].hint_audio_url = `/audio/kindergarten/${job.file}`;
-        }
-      }
-
-      await delay(DELAY_BETWEEN_REQUESTS);
+    if (fs.existsSync(outputPath)) {
+      skipped++;
+      continue;
     }
-  } catch (err) {
-    if (err instanceof DailyLimitError) {
-      dailyLimitHit = true;
-    } else {
-      throw err;
+
+    console.log(`[${num}/${totalJobs}] Generating ${job.file}...`);
+    await synthesizeToMp3(job.text, outputPath);
+    generated++;
+    requestCount++;
+    progress.generated.push(job.file);
+    console.log(`[${num}/${totalJobs}] ✓ ${job.file}`);
+
+    // Update JSON audio_url for question jobs
+    if (job.type === "question") {
+      const std = data.standards.find((s) => s.standard_id === job.stdId);
+      if (std) {
+        const q = std.questions[job.qIdx];
+        q.audio_url = `/audio/kindergarten/${job.file}`;
+        delete q.passage_audio_url;
+        delete q.prompt_audio_url;
+        delete q.choices_audio_urls;
+      }
     }
+    if (job.type === "hint") {
+      const m = job.file.match(/^(.+)-q(\d+)-hint\.mp3$/);
+      if (m) {
+        const std = data.standards.find((s) => s.standard_id === m[1]);
+        if (std) std.questions[parseInt(m[2]) - 1].hint_audio_url = `/audio/kindergarten/${job.file}`;
+      }
+    }
+
+    await delay(DELAY_BETWEEN_REQUESTS);
   }
 
   // Save updated JSON
@@ -355,15 +305,13 @@ async function main() {
   console.log(`\n${"=".repeat(50)}`);
   console.log(`  Generated this run:  ${generated}`);
   console.log(`  Skipped (existing):  ${skipped}`);
-  console.log(`  API requests used:   ${requestCount}/${MAX_REQUESTS_PER_RUN}`);
+  console.log(`  API requests used:   ${requestCount}`);
   console.log(`  Total files done:    ${existing}/${totalJobs}`);
   console.log(`  Remaining:           ${remaining}`);
   console.log(`  Total runs so far:   ${progress.runs}`);
   console.log(`${"=".repeat(50)}`);
 
-  if (dailyLimitHit) {
-    console.log(`\n⚠️  Daily limit reached (${MAX_REQUESTS_PER_RUN} requests). Run again tomorrow to continue.\n`);
-  } else if (remaining === 0) {
+  if (remaining === 0) {
     console.log(`\n🎉 All ${totalJobs} audio files generated!\n`);
   }
 }
