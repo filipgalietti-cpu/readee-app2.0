@@ -338,12 +338,9 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
     };
   }, []);
 
-  /** Handle "Tap to Start" — unlock audio, play intro, then begin */
+  /** Handle "Tap to Start" — unlock audio, then begin */
   const handleStart = useCallback(async () => {
     await unlockAudio();
-    if (audioManager) {
-      await audioManager.play("/audio/kindergarten/intro.mp3");
-    }
     setAudioReady(true);
   }, [unlockAudio]);
 
@@ -361,8 +358,11 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
     if (phase !== "playing" || !audioReady) return;
 
     if (q.audio_url) {
+      console.log("[audio] Playing:", q.audio_url);
       playUrl(q.audio_url);
       startHighlightSequence(q);
+    } else {
+      console.log("[audio] No audio_url for question:", q.id);
     }
     return () => { stop(); clearHighlights(); };
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -476,6 +476,15 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
             }}
           >
             Tap to Start
+          </button>
+          <button
+            onClick={() => {
+              const a = new Audio("/audio/kindergarten/RL.K.1-q1.mp3");
+              a.play().then(() => console.log("[TEST] HTML5 Audio playing")).catch(e => console.error("[TEST] HTML5 Audio error:", e));
+            }}
+            className="mt-2 w-full max-w-xs mx-auto py-3 rounded-2xl font-bold text-sm bg-green-500 text-white"
+          >
+            DEBUG: Test Audio (raw HTML5)
           </button>
           <button
             onClick={handleExit}

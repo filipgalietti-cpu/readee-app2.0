@@ -57,6 +57,7 @@ class AudioManager {
   /** Play audio from a URL via Howler with fade-in */
   play(url: string): Promise<void> {
     const { isMuted } = useAudioStore.getState();
+    console.log("[AudioManager] play()", { url, isMuted });
     if (isMuted) return Promise.resolve();
 
     // Stop current audio immediately
@@ -82,11 +83,13 @@ class AudioManager {
         if (this.currentHowl === howl) this.currentHowl = null;
         resolve();
       });
-      howl.once("loaderror", () => {
+      howl.once("loaderror", (_id: number, err: unknown) => {
+        console.error("[AudioManager] loaderror", url, err);
         if (this.currentHowl === howl) this.currentHowl = null;
         resolve();
       });
-      howl.once("playerror", () => {
+      howl.once("playerror", (_id: number, err: unknown) => {
+        console.error("[AudioManager] playerror", url, err);
         if (this.currentHowl === howl) this.currentHowl = null;
         resolve();
       });

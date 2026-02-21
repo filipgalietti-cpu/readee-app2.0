@@ -6,7 +6,7 @@ const path = require("path");
 // ── Load OPENAI_API_KEY from .env.local ──────────────────
 const ENV_PATH = path.join(__dirname, "..", ".env.local");
 const envFile = fs.readFileSync(ENV_PATH, "utf-8");
-const keyMatch = envFile.match(/^OPENAI_API_KEY=(.+)$/m);
+const keyMatch = envFile.match(/^OPENAI_API_KEY=(.+)$/im);
 if (!keyMatch) {
   console.error("OPENAI_API_KEY not found in .env.local");
   process.exit(1);
