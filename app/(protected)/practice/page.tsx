@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
 import { useAudio } from "@/lib/audio/use-audio";
-import { playAudio as playStaticAudio, stopAudio as stopStaticAudio } from "@/lib/audio";
+import { playAudio as playStaticAudio, playAudioUrl, stopAudio as stopStaticAudio } from "@/lib/audio";
 import { usePracticeStore } from "@/lib/stores/practice-store";
 import { useThemeStore } from "@/lib/stores/theme-store";
 import { safeValidate } from "@/lib/validate";
@@ -59,7 +59,7 @@ const INCORRECT_MESSAGES = [
   "Not quite!", "Almost!", "Good try!", "Keep learning!",
 ];
 
-// Feedback audio files (static .wav in /audio/feedback/)
+// Feedback audio files (static .mp3 in /audio/feedback/)
 const CORRECT_AUDIO = ["correct-1", "correct-2", "correct-3", "correct-4", "correct-5"];
 const INCORRECT_AUDIO = ["incorrect-1", "incorrect-2", "incorrect-3"];
 
@@ -249,8 +249,9 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
   /* ── Play static audio when question loads ── */
   useEffect(() => {
     if (phase !== "playing" || !audioReady) return;
-    // Play question audio from static file (fails silently if not found)
-    playStaticAudio(standard.standard_id, `q${currentIdx + 1}`);
+    // Play question audio from audio_url in JSON (fails silently if not found)
+    const url = q.audio_url;
+    if (url) playAudioUrl(url);
     return () => { stopStaticAudio(); };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentIdx, phase, audioReady]);
@@ -272,8 +273,9 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
   const handleReplay = useCallback(() => {
     stop();
     stopStaticAudio();
-    playStaticAudio(standard.standard_id, `q${currentIdx + 1}`);
-  }, [standard.standard_id, currentIdx, stop]);
+    const url = q.audio_url;
+    if (url) playAudioUrl(url);
+  }, [q.audio_url, stop]);
 
   /* ── Handle answer selection ── */
   const handleAnswer = useCallback((choice: string) => {

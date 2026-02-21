@@ -1,49 +1,43 @@
 # Static Audio Files
 
-Audio files for Readee lessons. Each lesson has its own folder.
+Audio files for Readee practice questions and feedback.
 
 ## Folder structure
 
 ```
 public/audio/
-  pk-L1/        # Pre-K Lesson 1
-  pk-L2/        # Pre-K Lesson 2
-  k-L1/         # Kindergarten Lesson 1
-  k-L2/         # Kindergarten Lesson 2
-  ...
-  feedback/     # Shared feedback audio (correct, incorrect, completion)
+  kindergarten/   # Kindergarten practice question audio
+  feedback/       # Shared feedback audio (correct, incorrect, completion)
 ```
 
-## File naming convention
+## Kindergarten question audio
 
-- One folder per lesson: `/audio/{lesson-id}/`
-- Files named by word or letter: `cat.wav`, `a.wav`, `short-a.wav`
-- Keep filenames **lowercase**
-- Use **hyphens** for multi-word names: `the-cat.wav`, `short-a.wav`
-- Passages: `passage-1.wav`, `passage-2.wav`
-- Questions: `question-1.wav`, `question-2.wav`
-- Hints: `hint-1.wav`, `hint-2.wav`
+Files use the standard ID prefix:
+- `RL.K.1-q1.mp3` — question 1 audio
+- `RL.K.1-q1-hint.mp3` — question 1 hint
+- `intro.mp3` — standard intro
 
 ## Feedback audio
 
 Shared audio in `/audio/feedback/`:
 
-- `correct-1.wav`, `correct-2.wav`, ... — positive feedback
-- `incorrect-1.wav`, `incorrect-2.wav`, ... — encouraging correction
-- `complete-perfect.wav` — perfect score celebration
-- `complete-good.wav` — good score celebration
-- `complete-ok.wav` — encouragement to keep practicing
+- `correct-1.mp3` ... `correct-5.mp3` — positive feedback ("Amazing!", "Brilliant!", etc.)
+- `incorrect-1.mp3` ... `incorrect-3.mp3` — encouraging correction
+- `complete-perfect-1.mp3` ... `complete-perfect-3.mp3` — 5/5 celebration
+- `complete-good-1.mp3` ... `complete-good-3.mp3` — 4/5 celebration
+- `complete-ok-1.mp3` ... `complete-ok-3.mp3` — 3/5 encouragement
+- `complete-try-1.mp3` ... `complete-try-3.mp3` — 0-2/5 encouragement
 
 ## Usage in code
 
 ```ts
-import { playAudio, stopAudio } from "@/lib/audio";
+import { playAudio, playAudioUrl, stopAudio } from "@/lib/audio";
 
-// Play a word audio file
-playAudio("k-L1", "cat");     // plays /audio/k-L1/cat.wav
+// Play by folder + filename
+playAudio("feedback", "correct-1");  // plays /audio/feedback/correct-1.mp3
 
-// Play feedback
-playAudio("feedback", "correct-1");
+// Play from a direct URL (e.g. from question JSON)
+playAudioUrl("/audio/kindergarten/RL.K.1-q1.mp3");
 
 // Stop playback
 stopAudio();

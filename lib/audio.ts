@@ -1,27 +1,27 @@
 /**
  * Static audio playback utility.
  *
- * Plays .wav files from /public/audio/{lessonId}/{filename}.wav
+ * Plays .mp3 files from /public/audio/{folder}/{filename}.mp3
  * Uses HTML5 Audio — no external dependencies.
  */
 
 let currentAudio: HTMLAudioElement | null = null;
 
 /**
- * Play a static audio file.
+ * Play a static audio file by folder + name.
  *
- * @param lessonId  Folder name, e.g. "k-L1", "pk-L2", "feedback"
- * @param filename  File stem without extension, e.g. "cat", "short-a", "correct-1"
+ * @param folder    Folder name, e.g. "kindergarten", "feedback"
+ * @param filename  File stem without extension, e.g. "RL.K.1-q1", "correct-1"
  *
  * @example
- *   playAudio("k-L1", "cat");        // plays /audio/k-L1/cat.wav
- *   playAudio("feedback", "correct-1"); // plays /audio/feedback/correct-1.wav
+ *   playAudio("kindergarten", "RL.K.1-q1"); // plays /audio/kindergarten/RL.K.1-q1.mp3
+ *   playAudio("feedback", "correct-1");     // plays /audio/feedback/correct-1.mp3
  */
-export function playAudio(lessonId: string, filename: string): Promise<void> {
+export function playAudio(folder: string, filename: string): Promise<void> {
   return new Promise((resolve) => {
     stopAudio();
 
-    const src = `/audio/${lessonId}/${filename}.wav`;
+    const src = `/audio/${folder}/${filename}.mp3`;
     const audio = new Audio(src);
     currentAudio = audio;
 
@@ -38,6 +38,35 @@ export function playAudio(lessonId: string, filename: string): Promise<void> {
 
     audio.play().catch(() => {
       // Autoplay blocked or file missing — fail silently
+      if (currentAudio === audio) currentAudio = null;
+      resolve();
+    });
+  });
+}
+
+/**
+ * Play a static audio file from a direct URL path.
+ *
+ * @param url  Full path, e.g. "/audio/kindergarten/RL.K.1-q1.mp3"
+ */
+export function playAudioUrl(url: string): Promise<void> {
+  return new Promise((resolve) => {
+    stopAudio();
+
+    const audio = new Audio(url);
+    currentAudio = audio;
+
+    audio.addEventListener("ended", () => {
+      if (currentAudio === audio) currentAudio = null;
+      resolve();
+    });
+
+    audio.addEventListener("error", () => {
+      if (currentAudio === audio) currentAudio = null;
+      resolve();
+    });
+
+    audio.play().catch(() => {
       if (currentAudio === audio) currentAudio = null;
       resolve();
     });

@@ -7,8 +7,8 @@ import { playAudio as playStaticAudio, stopAudio } from "@/lib/audio";
 interface SpeechCtx {
   muted: boolean;
   isSpeaking: boolean;
-  /** Play a static audio file: playAudio(lessonId, filename) */
-  playAudio: (lessonId: string, filename: string) => void;
+  /** Play a static audio file: playAudio(folder, filename) */
+  playAudio: (folder: string, filename: string) => void;
   stop: () => void;
   toggleMute: () => void;
 }
