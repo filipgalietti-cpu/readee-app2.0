@@ -86,8 +86,6 @@ function numbersToWords(text) {
 
 /** Build a teacher-style TTS script from prompt + choices */
 function buildScript(q) {
-  if (q.audio_script) return q.audio_script;
-
   const { passage, question } = splitPrompt(q.prompt);
   const choices = q.choices.map((c) => numbersToWords(cleanText(c)));
 

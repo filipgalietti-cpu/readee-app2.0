@@ -107,38 +107,47 @@ function cleanForTiming(text: string): string {
   return text.replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{FE00}-\u{FE0F}\u{200D}]/gu, "").replace(/^Read:\s*/i, "").trim();
 }
 
-/** Calculate when each answer choice starts being read (in ms) */
+/** Calculate when each answer choice starts being read (in ms).
+ *  Matches the script format from generate-audio.js buildScript:
+ *  "passage" ...question..? ..choice1.. ..choice2.. ..choice3.. or..., choice4. ..What do you think?
+ */
 function calculateChoiceTimings(prompt: string, choices: string[]): number[] {
-  const CHARS_PER_SEC = 13.5; // ~13.5 chars/sec at 0.75 speaking rate
+  const CHARS_PER_SEC = 16; // Normal pace, upbeat style
+  const DOT_PAUSE = 0.3;    // ".." short pause
+  const ELLIPSIS_PAUSE = 0.5; // "..." medium pause
+
   const { passage, question } = splitPrompt(prompt);
 
   let t = 0;
   if (passage) {
     t += cleanForTiming(passage).length / CHARS_PER_SEC;
-    t += 1.5; // SSML break after passage
+    t += ELLIPSIS_PAUSE; // "..." after passage
   }
   t += cleanForTiming(question).length / CHARS_PER_SEC;
-  t += 1.0; // SSML break after question
-
-  // "Was it " prefix before choices
-  t += 7 / CHARS_PER_SEC; // "Was it " = 7 chars
+  t += DOT_PAUSE; // "..?" pause after question
 
   const timings: number[] = [];
   for (let i = 0; i < choices.length; i++) {
-    if (i === choices.length - 1 && choices.length > 1) {
-      t += 0.5; // break before "or"
-      t += 3 / CHARS_PER_SEC; // "or " spoken
-      t += 0.3; // break after "or"
+    if (i === 0) {
+      t += DOT_PAUSE; // ".." before first choice
+    } else if (i < choices.length - 1) {
+      t += DOT_PAUSE * 2; // ".. .." between non-last choices
     } else {
-      t += 0.4; // break before each non-last choice
+      // Last choice: ".. or..., "
+      t += DOT_PAUSE; // ".." after previous choice
+      t += 2 / CHARS_PER_SEC; // "or"
+      t += ELLIPSIS_PAUSE; // "...,"
     }
     timings.push(t * 1000);
     t += cleanForTiming(choices[i]).length / CHARS_PER_SEC;
   }
-  // End time: after last choice finishes + buffer
-  timings.push((t + 0.5) * 1000);
-  // Shift highlights 0.3s earlier so card lights up just BEFORE TTS reads it
-  return timings.map((ms) => Math.max(0, ms - 300)); // [choice0Start, choice1Start, ..., endTime]
+  // End: ". ..What do you think?"
+  t += DOT_PAUSE;
+  t += "What do you think".length / CHARS_PER_SEC;
+  t += 0.3;
+  timings.push(t * 1000);
+  // Shift highlights slightly earlier so card lights up just BEFORE TTS reads it
+  return timings.map((ms) => Math.max(0, ms - 200));
 }
 
 function getNextStandard(currentId: string): Standard | null {

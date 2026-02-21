@@ -23,7 +23,6 @@
           "correct": "A red ball",
           "hint": "Look at the second sentence — what did Max play fetch with?",
           "difficulty": 1,
-          "audio_script": "\"Max the dog, ran to the park.. He played fetch with a red ball.\" ...What did Max play with..? ..Did he play with a stick.. ..a red ball.. ..a bone.. or..., a toy car. ..What do you think?",
           "audio_url": "/audio/kindergarten/RL.K.1-q1.mp3",
           "hint_audio_url": "/audio/kindergarten/RL.K.1-q1-hint.mp3"
         },
@@ -40,7 +39,6 @@
           "correct": "To school",
           "hint": "Read the end of the second sentence carefully!",
           "difficulty": 1,
-          "audio_script": "\"Lily put on her yellow raincoat.. She splashed in every puddle, on the way to school.\" ...Where was Lily going..? ..Was she going to the park.. ..to the store.. ..to school.. or..., to bed. ..What do you think?",
           "audio_url": "/audio/kindergarten/RL.K.1-q2.mp3",
           "hint_audio_url": "/audio/kindergarten/RL.K.1-q2-hint.mp3"
         },
@@ -57,7 +55,6 @@
           "correct": "6",
           "hint": "The story tells you a number — what is it?",
           "difficulty": 1,
-          "audio_script": "\"Today is Emma's birthday!.. She is turning six.. Her mom made a chocolate cake.\" ...How old is Emma turning..? ..Is she turning five.. ..six.. ..seven.. or..., eight. ..What do you think?",
           "audio_url": "/audio/kindergarten/RL.K.1-q3.mp3",
           "hint_audio_url": "/audio/kindergarten/RL.K.1-q3-hint.mp3"
         },
@@ -74,7 +71,6 @@
           "correct": "Gray with white paws",
           "hint": "The second sentence describes what the kitten looked like.",
           "difficulty": 2,
-          "audio_script": "\"Sam found a tiny kitten, under the porch.. The kitten was gray with white paws.. Sam named her Mittens.\" ...What color was the kitten..? ..Was it black with white spots.. ..orange and fluffy.. ..gray with white paws.. or..., all white. ..What do you think?",
           "audio_url": "/audio/kindergarten/RL.K.1-q4.mp3",
           "hint_audio_url": "/audio/kindergarten/RL.K.1-q4-hint.mp3"
         },
@@ -91,7 +87,6 @@
           "correct": "His grandma",
           "hint": "Look at the very first word of the story!",
           "difficulty": 2,
-          "audio_script": "\"Grandma and Ben planted sunflower seeds in the garden.. They watered them every day.. Soon, tall yellow flowers grew!\" ...Who helped Ben plant the seeds..? ..Was it his mom.. ..his dad.. ..his grandma.. or..., his teacher. ..What do you think?",
           "audio_url": "/audio/kindergarten/RL.K.1-q5.mp3",
           "hint_audio_url": "/audio/kindergarten/RL.K.1-q5-hint.mp3"
         }
