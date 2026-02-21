@@ -1287,15 +1287,8 @@
           "correct": "To get ready for their long winter sleep",
           "hint": "Think about what comes NEXT — they sleep all winter. They need energy!",
           "difficulty": 2,
-          "passage_audio_url": "/audio/kindergarten/RI.K.3-q4-passage.mp3",
-          "prompt_audio_url": "/audio/kindergarten/RI.K.3-q4-prompt.mp3",
-          "choices_audio_urls": [
-            "/audio/kindergarten/RI.K.3-q4-choice1.mp3",
-            "/audio/kindergarten/RI.K.3-q4-choice2.mp3",
-            "/audio/kindergarten/RI.K.3-q4-choice3.mp3",
-            "/audio/kindergarten/RI.K.3-q4-choice4.mp3"
-          ],
-          "hint_audio_url": "/audio/kindergarten/RI.K.3-q4-hint.mp3"
+          "hint_audio_url": "/audio/kindergarten/RI.K.3-q4-hint.mp3",
+          "audio_url": "/audio/kindergarten/RI.K.3-q4.mp3"
         },
         {
           "id": "RI.K.3-Q5",
