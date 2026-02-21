@@ -17,7 +17,7 @@ const GEMINI_API_KEY = keyMatch[1].trim();
 // ── Config ──────────────────────────────────────────────
 const TTS_ENDPOINT = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${GEMINI_API_KEY}`;
 const STYLE_PREFIX =
-  "Read this like a warm, encouraging kindergarten teacher reading to a small child. Speak slowly and clearly with gentle pauses:";
+  "Read this in a clear, bright, friendly voice like a cheerful elementary school teacher. Normal speaking pace, not slow. Be upbeat and energetic, not whispery or soft:";
 
 const MAX_REQUESTS_PER_RUN = 95; // Paid Tier 1 = 100 RPD, leave buffer
 const DELAY_BETWEEN_REQUESTS = 7000; // 7s = safely under 10 RPM
