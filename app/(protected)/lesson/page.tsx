@@ -150,11 +150,11 @@ function formatLearnItem(item: Record<string, unknown>): { emoji: string; title:
 
 /* ─── Audio Helpers ──────────────────────────────────── */
 
-function LessonSpeakerButton({ text, light = false }: { text: string; light?: boolean }) {
-  const { speakManual } = useSpeech();
+function LessonSpeakerButton({ lessonId, audioFile, light = false }: { lessonId: string; audioFile: string; light?: boolean }) {
+  const { playAudio } = useSpeech();
   return (
     <button
-      onClick={(e) => { e.stopPropagation(); speakManual(text); }}
+      onClick={(e) => { e.stopPropagation(); playAudio(lessonId, audioFile); }}
       className={`inline-flex items-center justify-center w-8 h-8 rounded-full transition-colors flex-shrink-0 ${
         light ? "hover:bg-black/5 text-indigo-400" : "hover:bg-white/10 text-indigo-300"
       }`}
@@ -475,7 +475,7 @@ function isLessonFree(lessonId: string): boolean {
 function LessonContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const { speak, stop } = useSpeech();
+  const { playAudio, stop } = useSpeech();
   const childId = searchParams.get("child");
   const lessonId = searchParams.get("lesson");
 
@@ -604,46 +604,42 @@ function LessonContent() {
     [child]
   );
 
-  /* ─── Auto-speak: Learn phase (flashcards) ── */
+  /* ─── Auto-play: Learn phase (flashcards) ── */
   useEffect(() => {
-    if (phase !== "learn" || !lesson) return;
-    const item = lesson.learn.items[learnIdx];
-    const { title, detail } = formatLearnItem(item);
-    speak(`${title}. ${detail}`);
+    if (phase !== "learn" || !lesson || !lessonId) return;
+    playAudio(lessonId, `learn-${learnIdx + 1}`);
     return () => stop();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase, learnIdx]);
 
-  /* ─── Auto-speak: Read phase (story title) ── */
+  /* ─── Auto-play: Read phase (story title) ── */
   useEffect(() => {
-    if (phase !== "read" || !lesson || showReadQuestions) return;
-    speak(lesson.read.title);
+    if (phase !== "read" || !lesson || !lessonId || showReadQuestions) return;
+    playAudio(lessonId, "story");
     return () => stop();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase, showReadQuestions]);
 
-  /* ─── Auto-speak: Read questions ── */
+  /* ─── Auto-play: Read questions ── */
   useEffect(() => {
-    if (phase !== "read" || !lesson || !showReadQuestions) return;
-    const q = lesson.read.questions[readQIdx];
-    if (q) speak(q.prompt);
+    if (phase !== "read" || !lesson || !lessonId || !showReadQuestions) return;
+    playAudio(lessonId, `read-q${readQIdx + 1}`);
     return () => stop();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [readQIdx, showReadQuestions]);
 
-  /* ─── Auto-speak: Practice questions ── */
+  /* ─── Auto-play: Practice questions ── */
   useEffect(() => {
-    if (phase !== "practice" || !lesson) return;
-    const q = lesson.practice.questions[practiceIdx];
-    if (q) speak(q.prompt);
+    if (phase !== "practice" || !lesson || !lessonId) return;
+    playAudio(lessonId, `practice-q${practiceIdx + 1}`);
     return () => stop();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase, practiceIdx]);
 
-  /* ─── Auto-speak: Completion ── */
+  /* ─── Auto-play: Completion ── */
   useEffect(() => {
-    if (phase !== "complete") return;
-    speak("Lesson Complete! " + celebrationMsg);
+    if (phase !== "complete" || !lessonId) return;
+    playAudio(lessonId, "complete");
     return () => stop();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase]);
@@ -919,7 +915,7 @@ function LessonContent() {
 
             {/* Speaker + Say it out loud prompt */}
             <div className="flex items-center justify-center gap-2 mt-4">
-              <LessonSpeakerButton text={`${title}. ${detail}`} light />
+              <LessonSpeakerButton lessonId={lessonId!} audioFile={`learn-${learnIdx + 1}`} light />
               <p className="text-sm text-indigo-500 font-semibold">
                 Say it out loud!
               </p>
@@ -1015,7 +1011,7 @@ function LessonContent() {
                 <h2 className="text-xl font-bold text-zinc-900 text-center leading-relaxed">
                   {q.prompt}
                 </h2>
-                <LessonSpeakerButton text={q.prompt} light />
+                <LessonSpeakerButton lessonId={lessonId!} audioFile={`practice-q${practiceIdx + 1}`} light />
               </div>
 
               {/* Feedback */}
@@ -1084,7 +1080,7 @@ function LessonContent() {
                         >
                           {choice}
                         </span>
-                        <LessonSpeakerButton text={choice} light />
+                        <LessonSpeakerButton lessonId={lessonId!} audioFile={`practice-q${practiceIdx + 1}-c${i + 1}`} light />
                       </div>
                     </button>
                   );
@@ -1126,7 +1122,7 @@ function LessonContent() {
                 <h1 className="text-2xl font-bold text-zinc-900 tracking-tight">
                   {lesson.read.title}
                 </h1>
-                <LessonSpeakerButton text={lesson.read.title} light />
+                <LessonSpeakerButton lessonId={lessonId!} audioFile="story" light />
               </div>
               <p className="text-zinc-500 mt-1 text-sm">Read the story below</p>
             </div>
@@ -1137,7 +1133,7 @@ function LessonContent() {
                   <p className="text-lg leading-relaxed text-zinc-800 flex-1">
                     {line}
                   </p>
-                  <LessonSpeakerButton text={line} light />
+                  <LessonSpeakerButton lessonId={lessonId!} audioFile={`story-line-${i + 1}`} light />
                 </div>
               ))}
             </div>
@@ -1179,7 +1175,7 @@ function LessonContent() {
             <h2 className="text-xl font-bold text-zinc-900 text-center leading-relaxed">
               {q.prompt}
             </h2>
-            <LessonSpeakerButton text={q.prompt} light />
+            <LessonSpeakerButton lessonId={lessonId!} audioFile={`read-q${readQIdx + 1}`} light />
           </div>
 
           {/* Feedback */}
@@ -1248,7 +1244,7 @@ function LessonContent() {
                     >
                       {choice}
                     </span>
-                    <LessonSpeakerButton text={choice} light />
+                    <LessonSpeakerButton lessonId={lessonId!} audioFile={`read-q${readQIdx + 1}-c${i + 1}`} light />
                   </div>
                 </button>
               );

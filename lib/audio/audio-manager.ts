@@ -1,42 +1,11 @@
 import { Howl, Howler } from "howler";
 import { useAudioStore } from "@/lib/stores/audio-store";
 
-/** Pre-load voices (some browsers load them async) */
-function initVoices(): Promise<SpeechSynthesisVoice[]> {
-  if (typeof window === "undefined") return Promise.resolve([]);
-  return new Promise((resolve) => {
-    const voices = speechSynthesis.getVoices();
-    if (voices.length > 0) {
-      resolve(voices);
-      return;
-    }
-    speechSynthesis.onvoiceschanged = () => {
-      resolve(speechSynthesis.getVoices());
-    };
-    setTimeout(() => resolve(speechSynthesis.getVoices()), 1000);
-  });
-}
-
-/** Pick a warm female voice when available */
-function pickVoice(voices: SpeechSynthesisVoice[]): SpeechSynthesisVoice | undefined {
-  const female = voices.find(
-    (v) => v.lang.startsWith("en") && /female|samantha|karen|fiona|victoria|zira/i.test(v.name)
-  );
-  if (female) return female;
-  return voices.find((v) => v.lang.startsWith("en"));
-}
-
 class AudioManager {
   private cache = new Map<string, Howl>();
   private currentHowl: Howl | null = null;
   private audioCtx: AudioContext | null = null;
   private sequenceAbort: AbortController | null = null;
-
-  constructor() {
-    if (typeof window !== "undefined") {
-      initVoices();
-    }
-  }
 
   private getAudioCtx(): AudioContext {
     if (!this.audioCtx) {
@@ -57,10 +26,8 @@ class AudioManager {
   /** Play audio from a URL via Howler with fade-in */
   play(url: string): Promise<void> {
     const { isMuted } = useAudioStore.getState();
-    console.log("[AudioManager] play()", { url, isMuted });
     if (isMuted) return Promise.resolve();
 
-    // Stop current audio immediately
     if (this.currentHowl) {
       try { this.currentHowl.stop(); } catch {}
       this.currentHowl = null;
@@ -73,7 +40,6 @@ class AudioManager {
         this.cache.set(url, howl);
       }
 
-      // Clear any orphaned listeners from previous plays that were stopped early
       howl.off("end").off("loaderror").off("playerror");
 
       this.currentHowl = howl;
@@ -83,13 +49,11 @@ class AudioManager {
         if (this.currentHowl === howl) this.currentHowl = null;
         resolve();
       });
-      howl.once("loaderror", (_id: number, err: unknown) => {
-        console.error("[AudioManager] loaderror", url, err);
+      howl.once("loaderror", () => {
         if (this.currentHowl === howl) this.currentHowl = null;
         resolve();
       });
-      howl.once("playerror", (_id: number, err: unknown) => {
-        console.error("[AudioManager] playerror", url, err);
+      howl.once("playerror", () => {
         if (this.currentHowl === howl) this.currentHowl = null;
         resolve();
       });
@@ -132,7 +96,6 @@ class AudioManager {
     this.stopCurrent();
   }
 
-  /** Stop current Howl only (no sequence abort) */
   private stopCurrent(): void {
     if (this.currentHowl) {
       try { this.currentHowl.stop(); } catch {}
@@ -140,12 +103,9 @@ class AudioManager {
     }
   }
 
-  /** Stop everything: current Howl + sequence + SpeechSynthesis */
+  /** Stop everything */
   stop(): void {
     this.abortSequence();
-    if (typeof window !== "undefined") {
-      try { speechSynthesis.cancel(); } catch {}
-    }
   }
 
   /** Preload audio from URL */
@@ -158,40 +118,6 @@ class AudioManager {
   /** Set global mute via Howler */
   setMuted(muted: boolean): void {
     Howler.mute(muted);
-  }
-
-  /** Speak text via SpeechSynthesis (respects mute) */
-  speakText(text: string): Promise<void> {
-    if (typeof window === "undefined") return Promise.resolve();
-    const { isMuted } = useAudioStore.getState();
-    if (isMuted) return Promise.resolve();
-
-    return this._speak(text);
-  }
-
-  /** Speak text regardless of mute state */
-  speakManual(text: string): Promise<void> {
-    if (typeof window === "undefined") return Promise.resolve();
-    return this._speak(text);
-  }
-
-  private _speak(text: string): Promise<void> {
-    return new Promise((resolve) => {
-      try {
-        speechSynthesis.cancel();
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.rate = 0.85;
-        utterance.pitch = 1.1;
-        const voices = speechSynthesis.getVoices();
-        const voice = pickVoice(voices);
-        if (voice) utterance.voice = voice;
-        utterance.onend = () => resolve();
-        utterance.onerror = () => resolve();
-        speechSynthesis.speak(utterance);
-      } catch {
-        resolve();
-      }
-    });
   }
 
   /** Play correct answer chime: C5 → E5 */
@@ -224,14 +150,14 @@ class AudioManager {
     ], "sine");
   }
 
-  /** Play pop sound: short high-frequency burst */
+  /** Play pop sound */
   playPopSound(): void {
     const { isMuted } = useAudioStore.getState();
     if (isMuted) return;
     this.playTones([{ freq: 880, duration: 0.08 }], "sine");
   }
 
-  /** Play unlock chime: ascending triad F5 → A5 → C6 */
+  /** Play unlock chime: F5 → A5 → C6 */
   playUnlockChime(): void {
     const { isMuted } = useAudioStore.getState();
     if (isMuted) return;

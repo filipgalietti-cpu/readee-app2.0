@@ -7,12 +7,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
 import { useAudio } from "@/lib/audio/use-audio";
-import { audioManager } from "@/lib/audio/audio-manager";
+import { playAudio as playStaticAudio, stopAudio as stopStaticAudio } from "@/lib/audio";
 import { usePracticeStore } from "@/lib/stores/practice-store";
 import { useThemeStore } from "@/lib/stores/theme-store";
 import { safeValidate } from "@/lib/validate";
 import { StandardsFileSchema, PracticeResultSchema } from "@/lib/schemas";
-import { fadeUp, staggerContainer, wrongShake, feedbackSlideUp, popIn, scaleIn } from "@/lib/motion/variants";
+import { fadeUp, staggerContainer, feedbackSlideUp, popIn, scaleIn } from "@/lib/motion/variants";
 import kStandards from "@/app/data/kindergarten-standards-questions.json";
 
 /* ─── Types ──────────────────────────────────────────── */
@@ -59,29 +59,12 @@ const INCORRECT_MESSAGES = [
   "Not quite!", "Almost!", "Good try!", "Keep learning!",
 ];
 
-// Pre-recorded feedback audio (Google Cloud TTS)
-const CORRECT_AUDIO = [
-  "/audio/feedback/correct-1.mp3",
-  "/audio/feedback/correct-2.mp3",
-  "/audio/feedback/correct-3.mp3",
-  "/audio/feedback/correct-4.mp3",
-  "/audio/feedback/correct-5.mp3",
-];
-const INCORRECT_AUDIO = [
-  "/audio/feedback/incorrect-1.mp3",
-  "/audio/feedback/incorrect-2.mp3",
-  "/audio/feedback/incorrect-3.mp3",
-];
+// Feedback audio files (static .wav in /audio/feedback/)
+const CORRECT_AUDIO = ["correct-1", "correct-2", "correct-3", "correct-4", "correct-5"];
+const INCORRECT_AUDIO = ["incorrect-1", "incorrect-2", "incorrect-3"];
 
 const ACCENT_COLORS = ["#60a5fa", "#4ade80", "#fb923c", "#a78bfa"]; // blue, green, orange, purple
 
-// Per-choice highlight styles when TTS reads each card
-const CARD_HIGHLIGHTS = [
-  { shadow: "0 0 0 2px rgba(96,165,250,0.6), 0 0 12px rgba(96,165,250,0.25)", bg: "bg-blue-50/70 border-blue-300 dark:bg-blue-950/25 dark:border-blue-500/50" },
-  { shadow: "0 0 0 2px rgba(74,222,128,0.6), 0 0 12px rgba(74,222,128,0.25)", bg: "bg-green-50/70 border-green-300 dark:bg-green-950/25 dark:border-green-500/50" },
-  { shadow: "0 0 0 2px rgba(251,146,60,0.6), 0 0 12px rgba(251,146,60,0.25)", bg: "bg-orange-50/70 border-orange-300 dark:bg-orange-950/25 dark:border-orange-500/50" },
-  { shadow: "0 0 0 2px rgba(167,139,250,0.6), 0 0 12px rgba(167,139,250,0.25)", bg: "bg-purple-50/70 border-purple-300 dark:bg-purple-950/25 dark:border-purple-500/50" },
-];
 
 /* ─── Helpers ────────────────────────────────────────── */
 
@@ -102,52 +85,7 @@ function splitPrompt(prompt: string): { passage: string | null; question: string
   return { passage: null, question: prompt };
 }
 
-/** Strip emoji for timing calculation (mirrors generate-audio.js cleanText) */
-function cleanForTiming(text: string): string {
-  return text.replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{FE00}-\u{FE0F}\u{200D}]/gu, "").replace(/^Read:\s*/i, "").trim();
-}
 
-/** Calculate when each answer choice starts being read (in ms).
- *  Matches the script format from generate-audio.js buildScript:
- *  passage. ... question ... Is it... choice1? ... choice2? ... or, lastChoice? ... What do you think?
- */
-function calculateChoiceTimings(prompt: string, choices: string[]): number[] {
-  const CHARS_PER_SEC = 14; // 0.85x speed, teacher pace
-  const ELLIPSIS_PAUSE = 0.6; // "..." pause
-
-  const { passage, question } = splitPrompt(prompt);
-
-  let t = 0;
-  if (passage) {
-    t += cleanForTiming(passage).length / CHARS_PER_SEC;
-    t += ELLIPSIS_PAUSE; // "... " after passage
-  }
-  t += cleanForTiming(question).length / CHARS_PER_SEC;
-  t += ELLIPSIS_PAUSE; // "... " after question
-
-  // "Is it... " before choices
-  t += "Is it".length / CHARS_PER_SEC;
-  t += ELLIPSIS_PAUSE;
-
-  const timings: number[] = [];
-  for (let i = 0; i < choices.length; i++) {
-    if (i > 0 && i < choices.length - 1) {
-      t += ELLIPSIS_PAUSE; // "... " between choices
-    } else if (i === choices.length - 1 && choices.length > 1) {
-      t += ELLIPSIS_PAUSE; // "... " before "or"
-      t += 3 / CHARS_PER_SEC; // "or, "
-    }
-    timings.push(t * 1000);
-    t += cleanForTiming(choices[i]).length / CHARS_PER_SEC;
-  }
-  // End: "... What do you think?"
-  t += ELLIPSIS_PAUSE;
-  t += "What do you think".length / CHARS_PER_SEC;
-  t += 0.3;
-  timings.push(t * 1000);
-  // Shift highlights slightly earlier so card lights up just BEFORE TTS reads it
-  return timings.map((ms) => Math.max(0, ms - 200));
-}
 
 function getNextStandard(currentId: string): Standard | null {
   const idx = ALL_STANDARDS.findIndex((s) => s.standard_id === currentId);
@@ -256,7 +194,7 @@ function PracticeLoader() {
 
 function PracticeSession({ child, standard }: { child: Child; standard: Standard }) {
   const router = useRouter();
-  const { playUrl, playSequence, unlockAudio, stop, preload, playCorrectChime, playIncorrectBuzz } = useAudio();
+  const { unlockAudio, stop, playCorrectChime, playIncorrectBuzz } = useAudio();
 
   // Zustand store
   const phase = usePracticeStore((s) => s.phase);
@@ -273,10 +211,8 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
 
   const [saving, setSaving] = useState(false);
   const [audioReady, setAudioReady] = useState(false);
-  const [highlightedIdx, setHighlightedIdx] = useState<number | null>(null);
   const [xpFlash, setXpFlash] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
-  const highlightTimersRef = useRef<ReturnType<typeof setTimeout>[]>([]);
   const prevXPRef = useRef(sessionXP);
 
   const questions = useMemo(() => {
@@ -304,66 +240,18 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
   const q = questions[currentIdx];
   const totalQ = questions.length;
 
-  /** Clear all highlight timers */
-  const clearHighlights = useCallback(() => {
-    highlightTimersRef.current.forEach(clearTimeout);
-    highlightTimersRef.current = [];
-    setHighlightedIdx(null);
-  }, []);
-
-  /** Start timed highlight sequence for answer cards */
-  const startHighlightSequence = useCallback((question: Question) => {
-    clearHighlights();
-    if (!question.audio_url) return;
-
-    const timings = calculateChoiceTimings(question.prompt, question.choices);
-    const timers: ReturnType<typeof setTimeout>[] = [];
-
-    for (let i = 0; i < question.choices.length; i++) {
-      timers.push(setTimeout(() => setHighlightedIdx(i), timings[i]));
-    }
-    // Clear highlight after last choice finishes
-    const endTime = timings[timings.length - 1]; // the extra end marker
-    timers.push(setTimeout(() => setHighlightedIdx(null), endTime));
-
-    highlightTimersRef.current = timers;
-  }, [clearHighlights]);
-
-  // Clean up highlight timers on unmount
-  useEffect(() => {
-    return () => {
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      highlightTimersRef.current.forEach(clearTimeout);
-    };
-  }, []);
-
   /** Handle "Tap to Start" — unlock audio, then begin */
   const handleStart = useCallback(async () => {
     await unlockAudio();
     setAudioReady(true);
   }, [unlockAudio]);
 
-  /* ── Preload next question audio ── */
+  /* ── Play static audio when question loads ── */
   useEffect(() => {
     if (phase !== "playing" || !audioReady) return;
-    const nextIdx = currentIdx + 1;
-    if (nextIdx < totalQ && questions[nextIdx]?.audio_url) {
-      preload(questions[nextIdx].audio_url!);
-    }
-  }, [currentIdx, phase, audioReady, questions, totalQ, preload]);
-
-  /* ── Play combined audio when question loads ── */
-  useEffect(() => {
-    if (phase !== "playing" || !audioReady) return;
-
-    if (q.audio_url) {
-      console.log("[audio] Playing:", q.audio_url);
-      playUrl(q.audio_url);
-      startHighlightSequence(q);
-    } else {
-      console.log("[audio] No audio_url for question:", q.id);
-    }
-    return () => { stop(); clearHighlights(); };
+    // Play question audio from static file (fails silently if not found)
+    playStaticAudio(standard.standard_id, `q${currentIdx + 1}`);
+    return () => { stopStaticAudio(); };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentIdx, phase, audioReady]);
 
@@ -371,37 +259,27 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
   useEffect(() => {
     if (phase !== "feedback") return;
     if (isCorrect) {
-      const url = CORRECT_AUDIO[Math.floor(Math.random() * CORRECT_AUDIO.length)];
-      playUrl(url);
+      const file = CORRECT_AUDIO[Math.floor(Math.random() * CORRECT_AUDIO.length)];
+      playStaticAudio("feedback", file);
     } else {
-      const url = INCORRECT_AUDIO[Math.floor(Math.random() * INCORRECT_AUDIO.length)];
-      const items: Array<{ url?: string; delayMs?: number }> = [{ url }];
-      if (q.hint_audio_url) {
-        items.push({ delayMs: 500 }, { url: q.hint_audio_url });
-      }
-      playSequence(items);
+      const file = INCORRECT_AUDIO[Math.floor(Math.random() * INCORRECT_AUDIO.length)];
+      playStaticAudio("feedback", file);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase]);
 
-  /* ── Replay full audio from the beginning ── */
+  /* ── Replay audio ── */
   const handleReplay = useCallback(() => {
     stop();
-    clearHighlights();
-    if (q.audio_url) {
-      playUrl(q.audio_url);
-      if (selected === null) {
-        startHighlightSequence(q);
-      }
-    }
-  }, [q, stop, clearHighlights, playUrl, startHighlightSequence, selected]);
+    stopStaticAudio();
+    playStaticAudio(standard.standard_id, `q${currentIdx + 1}`);
+  }, [standard.standard_id, currentIdx, stop]);
 
   /* ── Handle answer selection ── */
   const handleAnswer = useCallback((choice: string) => {
     if (selected !== null) return;
-    // Stop any playing audio and highlights immediately
     stop();
-    clearHighlights();
+    stopStaticAudio();
     const correct = choice === q.correct;
 
     selectAnswer(choice, correct, q.id, XP_PER_CORRECT, CORRECT_MESSAGES, CORRECT_EMOJIS, INCORRECT_MESSAGES);
@@ -411,7 +289,7 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
     } else {
       playIncorrectBuzz();
     }
-  }, [selected, q, selectAnswer, stop, clearHighlights, playCorrectChime, playIncorrectBuzz]);
+  }, [selected, q, selectAnswer, stop, playCorrectChime, playIncorrectBuzz]);
 
   /* ── Continue to next question ── */
   const handleContinue = useCallback(() => {
@@ -475,15 +353,6 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
             }}
           >
             Tap to Start
-          </button>
-          <button
-            onClick={() => {
-              const a = new Audio("/audio/kindergarten/RL.K.1-q1.mp3");
-              a.play().then(() => console.log("[TEST] HTML5 Audio playing")).catch(e => console.error("[TEST] HTML5 Audio error:", e));
-            }}
-            className="mt-2 w-full max-w-xs mx-auto py-3 rounded-2xl font-bold text-sm bg-green-500 text-white"
-          >
-            DEBUG: Test Audio (raw HTML5)
           </button>
           <button
             onClick={handleExit}
@@ -586,13 +455,8 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
             const isSelected = selected === choice;
             const isCorrectChoice = choice === q.correct;
             const answered = selected !== null;
-            const isHighlighted = highlightedIdx === i && !answered;
-            const isBreathing = highlightedIdx === null && !answered && phase === "playing";
-            const hl = CARD_HIGHLIGHTS[i % 4];
 
-            let bg = isHighlighted
-              ? hl.bg
-              : "bg-white border-zinc-200 dark:bg-slate-800 dark:border-slate-600";
+            let bg = "bg-white border-zinc-200 dark:bg-slate-800 dark:border-slate-600";
             let textColor = "text-zinc-900 dark:text-white";
 
             if (answered) {
@@ -617,14 +481,10 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
                 variants={fadeUp}
                 animate={
                   isSelected && !isCorrect
-                    ? { x: [0, -8, 8, -6, 6, -3, 3, 0], boxShadow: "none", transition: { duration: 0.5 } }
+                    ? { x: [0, -8, 8, -6, 6, -3, 3, 0], transition: { duration: 0.5 } }
                     : isSelected && isCorrect
-                    ? { scale: [1, 1.05, 1], boxShadow: "none", transition: { duration: 0.3 } }
-                    : isHighlighted
-                    ? { boxShadow: hl.shadow, transition: { duration: 0.3 } }
-                    : isBreathing
-                    ? { scale: [1, 1.01, 1], boxShadow: "0 0 0 0px transparent", transition: { scale: { duration: 2, repeat: Infinity, ease: "easeInOut" }, boxShadow: { duration: 0.3 } } }
-                    : { boxShadow: "0 0 0 0px transparent", scale: 1, transition: { duration: 0.3 } }
+                    ? { scale: [1, 1.05, 1], transition: { duration: 0.3 } }
+                    : {}
                 }
                 whileHover={!answered ? {
                   y: -3,
@@ -767,7 +627,6 @@ function CompletionScreen({
   onRestart: () => void;
 }) {
   const [saved, setSaved] = useState(false);
-  const { playUrl } = useAudio();
   const darkMode = useThemeStore((s) => s.darkMode);
   const totalQ = questions.length;
   const stars = getStars(correctCount, totalQ);
@@ -807,17 +666,17 @@ function CompletionScreen({
   /* ── Play completion audio ── */
   useEffect(() => {
     const pick = (arr: string[]) => arr[Math.floor(Math.random() * arr.length)];
-    let url: string;
+    let file: string;
     if (correctCount === totalQ) {
-      url = pick(["/audio/feedback/complete-perfect-1.mp3", "/audio/feedback/complete-perfect-2.mp3", "/audio/feedback/complete-perfect-3.mp3"]);
+      file = pick(["complete-perfect-1", "complete-perfect-2", "complete-perfect-3"]);
     } else if (correctCount === totalQ - 1) {
-      url = pick(["/audio/feedback/complete-good-1.mp3", "/audio/feedback/complete-good-2.mp3", "/audio/feedback/complete-good-3.mp3"]);
+      file = pick(["complete-good-1", "complete-good-2", "complete-good-3"]);
     } else if (correctCount === totalQ - 2) {
-      url = pick(["/audio/feedback/complete-ok-1.mp3", "/audio/feedback/complete-ok-2.mp3", "/audio/feedback/complete-ok-3.mp3"]);
+      file = pick(["complete-ok-1", "complete-ok-2", "complete-ok-3"]);
     } else {
-      url = pick(["/audio/feedback/complete-try-1.mp3", "/audio/feedback/complete-try-2.mp3", "/audio/feedback/complete-try-3.mp3"]);
+      file = pick(["complete-try-1", "complete-try-2", "complete-try-3"]);
     }
-    playUrl(url);
+    playStaticAudio("feedback", file);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

@@ -14,17 +14,6 @@ export function useAudio() {
     return () => { mountedRef.current = false; };
   }, []);
 
-  const speak = useCallback(
-    (text: string) => {
-      if (isMuted || !audioManager) return;
-      setIsSpeaking(true);
-      audioManager.speakText(text).finally(() => {
-        if (mountedRef.current) setIsSpeaking(false);
-      });
-    },
-    [isMuted]
-  );
-
   const playUrl = useCallback(
     (url: string) => {
       if (!audioManager) return;
@@ -56,14 +45,6 @@ export function useAudio() {
   const unlockAudio = useCallback(async () => {
     if (!audioManager) return;
     await audioManager.unlockAudio();
-  }, []);
-
-  const speakManual = useCallback((text: string) => {
-    if (!audioManager) return;
-    setIsSpeaking(true);
-    audioManager.speakManual(text).finally(() => {
-      if (mountedRef.current) setIsSpeaking(false);
-    });
   }, []);
 
   const stop = useCallback(() => {
@@ -115,12 +96,10 @@ export function useAudio() {
   return {
     muted: isMuted,
     isSpeaking,
-    speak,
     playUrl,
     playSequence,
     abortSequence,
     unlockAudio,
-    speakManual,
     stop,
     toggleMute,
     preload,

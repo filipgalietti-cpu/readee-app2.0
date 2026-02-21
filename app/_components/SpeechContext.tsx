@@ -1,15 +1,14 @@
 "use client";
 
-import { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
-import { audioManager } from "@/lib/audio/audio-manager";
+import { createContext, useCallback, useContext, useState } from "react";
 import { useAudioStore } from "@/lib/stores/audio-store";
+import { playAudio as playStaticAudio, stopAudio } from "@/lib/audio";
 
 interface SpeechCtx {
   muted: boolean;
   isSpeaking: boolean;
-  speak: (text: string) => void;
-  playUrl: (url: string) => void;
-  speakManual: (text: string) => void;
+  /** Play a static audio file: playAudio(lessonId, filename) */
+  playAudio: (lessonId: string, filename: string) => void;
   stop: () => void;
   toggleMute: () => void;
 }
@@ -17,9 +16,7 @@ interface SpeechCtx {
 const SpeechContext = createContext<SpeechCtx>({
   muted: false,
   isSpeaking: false,
-  speak: () => {},
-  playUrl: () => {},
-  speakManual: () => {},
+  playAudio: () => {},
   stop: () => {},
   toggleMute: () => {},
 });
@@ -28,64 +25,33 @@ export function SpeechProvider({ children }: { children: React.ReactNode }) {
   const isMuted = useAudioStore((s) => s.isMuted);
   const toggleMuteStore = useAudioStore((s) => s.toggleMute);
   const [isSpeaking, setIsSpeaking] = useState(false);
-  const mountedRef = useRef(true);
 
-  useEffect(() => {
-    return () => {
-      mountedRef.current = false;
-    };
-  }, []);
-
-  const speak = useCallback(
-    (text: string) => {
-      if (isMuted || !audioManager) return;
+  const playAudio = useCallback(
+    (lessonId: string, filename: string) => {
+      if (isMuted) return;
       setIsSpeaking(true);
-      audioManager.speakText(text).finally(() => {
-        if (mountedRef.current) setIsSpeaking(false);
+      playStaticAudio(lessonId, filename).finally(() => {
+        setIsSpeaking(false);
       });
     },
     [isMuted]
   );
-
-  const playUrl = useCallback(
-    (url: string) => {
-      if (isMuted || !audioManager) return;
-      setIsSpeaking(true);
-      audioManager.play(url).finally(() => {
-        if (mountedRef.current) setIsSpeaking(false);
-      });
-    },
-    [isMuted]
-  );
-
-  const speakManual = useCallback((text: string) => {
-    if (!audioManager) return;
-    setIsSpeaking(true);
-    audioManager.speakManual(text).finally(() => {
-      if (mountedRef.current) setIsSpeaking(false);
-    });
-  }, []);
 
   const stop = useCallback(() => {
-    if (!audioManager) return;
-    audioManager.stop();
+    stopAudio();
     setIsSpeaking(false);
   }, []);
 
   const toggleMute = useCallback(() => {
     toggleMuteStore();
-    const newMuted = !isMuted;
-    if (audioManager) {
-      audioManager.setMuted(newMuted);
-      if (newMuted) {
-        audioManager.stop();
-        setIsSpeaking(false);
-      }
+    if (!isMuted) {
+      stopAudio();
+      setIsSpeaking(false);
     }
   }, [isMuted, toggleMuteStore]);
 
   return (
-    <SpeechContext.Provider value={{ muted: isMuted, isSpeaking, speak, playUrl, speakManual, stop, toggleMute }}>
+    <SpeechContext.Provider value={{ muted: isMuted, isSpeaking, playAudio, stop, toggleMute }}>
       {children}
     </SpeechContext.Provider>
   );
