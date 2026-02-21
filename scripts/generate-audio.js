@@ -17,7 +17,7 @@ const OPENAI_API_KEY = keyMatch[1].trim();
 const TTS_ENDPOINT = "https://api.openai.com/v1/audio/speech";
 const VOICE = "nova";
 const MODEL = "tts-1";
-const SPEED = 0.9;
+const SPEED = 0.85;
 
 const DELAY_BETWEEN_REQUESTS = 500; // 0.5s — OpenAI TTS has generous limits
 
@@ -68,19 +68,27 @@ function numbersToWords(text) {
   });
 }
 
-/** Build a teacher-style TTS script from prompt + choices */
+/** Build a teacher-style TTS script from prompt + choices.
+ *  Uses natural punctuation for OpenAI TTS pauses:
+ *  - "..." for longer pauses
+ *  - "?" after each choice for inquisitive rising tone
+ */
 function buildScript(q) {
   const { passage, question } = splitPrompt(q.prompt);
   const choices = q.choices.map((c) => numbersToWords(cleanText(c)));
 
   let script = "";
-  if (passage) script += `"${passage}" ...`;
-  script += `${question}..? `;
+  if (passage) {
+    // Strip existing quotes from passage so we don't double-quote
+    const bare = passage.replace(/^[""\u201C]+|[""\u201D]+$/g, "");
+    script += `${bare}. ... `;
+  }
+  script += `${question} ... `;
 
   const list = choices.map((c) => lowercaseFirst(c));
   if (list.length > 1) {
     const last = list.pop();
-    script += list.map((c) => `..${c}`).join(".. ") + `.. or..., ${last}. ..What do you think?`;
+    script += "Is it... " + list.map((c) => `${c}?`).join(" ... ") + ` ... or, ${last}? ... What do you think?`;
   }
   return script;
 }

@@ -109,40 +109,39 @@ function cleanForTiming(text: string): string {
 
 /** Calculate when each answer choice starts being read (in ms).
  *  Matches the script format from generate-audio.js buildScript:
- *  "passage" ...question..? ..choice1.. ..choice2.. ..choice3.. or..., choice4. ..What do you think?
+ *  passage. ... question ... Is it... choice1? ... choice2? ... or, lastChoice? ... What do you think?
  */
 function calculateChoiceTimings(prompt: string, choices: string[]): number[] {
-  const CHARS_PER_SEC = 16; // Normal pace, upbeat style
-  const DOT_PAUSE = 0.3;    // ".." short pause
-  const ELLIPSIS_PAUSE = 0.5; // "..." medium pause
+  const CHARS_PER_SEC = 14; // 0.85x speed, teacher pace
+  const ELLIPSIS_PAUSE = 0.6; // "..." pause
 
   const { passage, question } = splitPrompt(prompt);
 
   let t = 0;
   if (passage) {
     t += cleanForTiming(passage).length / CHARS_PER_SEC;
-    t += ELLIPSIS_PAUSE; // "..." after passage
+    t += ELLIPSIS_PAUSE; // "... " after passage
   }
   t += cleanForTiming(question).length / CHARS_PER_SEC;
-  t += DOT_PAUSE; // "..?" pause after question
+  t += ELLIPSIS_PAUSE; // "... " after question
+
+  // "Is it... " before choices
+  t += "Is it".length / CHARS_PER_SEC;
+  t += ELLIPSIS_PAUSE;
 
   const timings: number[] = [];
   for (let i = 0; i < choices.length; i++) {
-    if (i === 0) {
-      t += DOT_PAUSE; // ".." before first choice
-    } else if (i < choices.length - 1) {
-      t += DOT_PAUSE * 2; // ".. .." between non-last choices
-    } else {
-      // Last choice: ".. or..., "
-      t += DOT_PAUSE; // ".." after previous choice
-      t += 2 / CHARS_PER_SEC; // "or"
-      t += ELLIPSIS_PAUSE; // "...,"
+    if (i > 0 && i < choices.length - 1) {
+      t += ELLIPSIS_PAUSE; // "... " between choices
+    } else if (i === choices.length - 1 && choices.length > 1) {
+      t += ELLIPSIS_PAUSE; // "... " before "or"
+      t += 3 / CHARS_PER_SEC; // "or, "
     }
     timings.push(t * 1000);
     t += cleanForTiming(choices[i]).length / CHARS_PER_SEC;
   }
-  // End: ". ..What do you think?"
-  t += DOT_PAUSE;
+  // End: "... What do you think?"
+  t += ELLIPSIS_PAUSE;
   t += "What do you think".length / CHARS_PER_SEC;
   t += 0.3;
   timings.push(t * 1000);
