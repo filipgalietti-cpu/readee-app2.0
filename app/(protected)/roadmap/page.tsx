@@ -226,6 +226,188 @@ function getMascotPositions(nodes: NodeLayout[]): {
   });
 }
 
+/* ─── Zone Helper ───────────────────────────────────── */
+
+function getNodeZone(y: number, totalHeight: number): "meadow" | "sunset" | "night" | "space" {
+  const pct = totalHeight > 0 ? y / totalHeight : 0;
+  if (pct < 0.25) return "meadow";
+  if (pct < 0.50) return "sunset";
+  if (pct < 0.75) return "night";
+  return "space";
+}
+
+function isDarkZone(y: number, totalHeight: number): boolean {
+  return totalHeight > 0 && y / totalHeight > 0.44;
+}
+
+/* ─── Star positions (deterministic to avoid SSR mismatch) ── */
+
+const STAR_POSITIONS = [
+  { top: 53, left: 8, size: 2, delay: 0 },
+  { top: 55, left: 22, size: 1.5, delay: 1.2 },
+  { top: 57, left: 45, size: 2.5, delay: 0.5 },
+  { top: 54, left: 67, size: 1, delay: 2.1 },
+  { top: 59, left: 88, size: 2, delay: 0.8 },
+  { top: 61, left: 15, size: 1.5, delay: 1.8 },
+  { top: 56, left: 35, size: 2, delay: 3.2 },
+  { top: 63, left: 52, size: 1, delay: 0.3 },
+  { top: 58, left: 78, size: 2.5, delay: 2.5 },
+  { top: 65, left: 5, size: 1.5, delay: 1.5 },
+  { top: 60, left: 92, size: 2, delay: 0.9 },
+  { top: 67, left: 30, size: 1, delay: 3.5 },
+  { top: 62, left: 60, size: 2, delay: 2.0 },
+  { top: 69, left: 18, size: 1.5, delay: 0.7 },
+  { top: 64, left: 73, size: 2.5, delay: 1.1 },
+  { top: 71, left: 42, size: 1, delay: 2.8 },
+  { top: 66, left: 85, size: 2, delay: 0.4 },
+  { top: 73, left: 10, size: 1.5, delay: 3.0 },
+  { top: 68, left: 55, size: 2, delay: 1.6 },
+  { top: 75, left: 38, size: 1, delay: 2.3 },
+  { top: 52, left: 48, size: 2.5, delay: 0.2 },
+  { top: 70, left: 25, size: 1.5, delay: 3.8 },
+  { top: 54, left: 95, size: 2, delay: 1.4 },
+  { top: 72, left: 65, size: 1, delay: 2.6 },
+  { top: 57, left: 3, size: 2, delay: 0.6 },
+  { top: 77, left: 12, size: 2, delay: 1.0 },
+  { top: 79, left: 33, size: 1.5, delay: 2.2 },
+  { top: 81, left: 58, size: 2.5, delay: 0.1 },
+  { top: 78, left: 80, size: 1, delay: 3.3 },
+  { top: 83, left: 20, size: 2, delay: 1.7 },
+  { top: 80, left: 47, size: 1.5, delay: 2.9 },
+  { top: 85, left: 72, size: 2, delay: 0.5 },
+  { top: 82, left: 90, size: 1, delay: 3.6 },
+  { top: 87, left: 8, size: 2.5, delay: 1.3 },
+  { top: 84, left: 55, size: 1.5, delay: 2.7 },
+  { top: 89, left: 40, size: 2, delay: 0.8 },
+  { top: 86, left: 15, size: 1, delay: 3.1 },
+  { top: 91, left: 68, size: 2, delay: 1.9 },
+  { top: 88, left: 85, size: 1.5, delay: 2.4 },
+  { top: 93, left: 30, size: 2.5, delay: 0.3 },
+];
+
+/* ─── World Background ──────────────────────────────── */
+
+function WorldBackground({ totalHeight }: { totalHeight: number }) {
+  return (
+    <div className="absolute inset-0 overflow-hidden rounded-3xl" style={{ zIndex: 0 }}>
+      {/* Continuous gradient through all 4 worlds */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: `linear-gradient(to bottom,
+            #f0f9ff 0%,
+            #bae6fd 6%,
+            #e0f2fe 12%,
+            #fef9c3 20%,
+            #fed7aa 28%,
+            #fdba74 34%,
+            #fb923c 40%,
+            #f472b6 46%,
+            #7c3aed 52%,
+            #312e81 58%,
+            #1e1b4b 65%,
+            #0f172a 72%,
+            #1e1b4b 80%,
+            #2e1065 88%,
+            #0c0a09 100%
+          )`,
+        }}
+      />
+
+      {/* ── Meadow: Clouds ── */}
+      <svg className="absolute" style={{ top: "3%", left: "5%", opacity: 0.5 }} width="100" height="40" viewBox="0 0 100 40">
+        <ellipse cx="50" cy="25" rx="45" ry="14" fill="white" />
+        <ellipse cx="35" cy="18" rx="25" ry="12" fill="white" />
+        <ellipse cx="68" cy="18" rx="28" ry="10" fill="white" />
+      </svg>
+      <svg className="absolute" style={{ top: "8%", right: "8%", opacity: 0.4 }} width="80" height="35" viewBox="0 0 80 35">
+        <ellipse cx="40" cy="22" rx="36" ry="12" fill="white" />
+        <ellipse cx="28" cy="16" rx="20" ry="10" fill="white" />
+        <ellipse cx="55" cy="15" rx="22" ry="9" fill="white" />
+      </svg>
+      <svg className="absolute" style={{ top: "14%", left: "35%", opacity: 0.3 }} width="70" height="30" viewBox="0 0 70 30">
+        <ellipse cx="35" cy="18" rx="30" ry="10" fill="white" />
+        <ellipse cx="22" cy="13" rx="18" ry="9" fill="white" />
+        <ellipse cx="48" cy="12" rx="20" ry="8" fill="white" />
+      </svg>
+
+      {/* ── Sunset: Tree silhouettes ── */}
+      <svg className="absolute" style={{ top: "30%", left: 0, opacity: 0.15 }} width="45" height="70" viewBox="0 0 45 70">
+        <polygon points="22,0 45,50 0,50" fill="#1c1917" />
+        <rect x="18" y="50" width="8" height="20" fill="#1c1917" />
+      </svg>
+      <svg className="absolute" style={{ top: "34%", left: "8%", opacity: 0.12 }} width="35" height="55" viewBox="0 0 35 55">
+        <polygon points="17,0 35,40 0,40" fill="#1c1917" />
+        <rect x="14" y="40" width="6" height="15" fill="#1c1917" />
+      </svg>
+      <svg className="absolute" style={{ top: "38%", left: "3%", opacity: 0.1 }} width="40" height="65" viewBox="0 0 40 65">
+        <polygon points="20,0 40,48 0,48" fill="#1c1917" />
+        <rect x="16" y="48" width="8" height="17" fill="#1c1917" />
+      </svg>
+      <svg className="absolute" style={{ top: "32%", right: 0, opacity: 0.15 }} width="45" height="70" viewBox="0 0 45 70">
+        <polygon points="22,0 45,50 0,50" fill="#1c1917" />
+        <rect x="18" y="50" width="8" height="20" fill="#1c1917" />
+      </svg>
+      <svg className="absolute" style={{ top: "36%", right: "7%", opacity: 0.12 }} width="35" height="55" viewBox="0 0 35 55">
+        <polygon points="17,0 35,40 0,40" fill="#1c1917" />
+        <rect x="14" y="40" width="6" height="15" fill="#1c1917" />
+      </svg>
+      <svg className="absolute" style={{ top: "40%", right: "2%", opacity: 0.1 }} width="40" height="60" viewBox="0 0 40 60">
+        <polygon points="20,0 40,45 0,45" fill="#1c1917" />
+        <rect x="16" y="45" width="8" height="15" fill="#1c1917" />
+      </svg>
+
+      {/* ── Night: Stars ── */}
+      {STAR_POSITIONS.map((s, i) => (
+        <div
+          key={i}
+          className="absolute rounded-full bg-white roadmap-twinkle"
+          style={{
+            top: `${s.top}%`,
+            left: `${s.left}%`,
+            width: s.size,
+            height: s.size,
+            animationDelay: `${s.delay}s`,
+          }}
+        />
+      ))}
+
+      {/* Moon */}
+      <div
+        className="absolute rounded-full"
+        style={{
+          top: "56%",
+          right: "10%",
+          width: 36,
+          height: 36,
+          background: "radial-gradient(circle at 40% 40%, #fef3c7, #fde68a)",
+          boxShadow: "0 0 30px 8px rgba(253,230,138,0.25)",
+        }}
+      />
+
+      {/* ── Space: Aurora streaks ── */}
+      <div className="absolute left-0 right-0" style={{ top: "82%", height: "8%" }}>
+        <div
+          className="h-full w-3/4 mx-auto rounded-full blur-2xl"
+          style={{ background: "linear-gradient(to right, transparent, rgba(52,211,153,0.2), transparent)" }}
+        />
+      </div>
+      <div className="absolute left-0 right-0" style={{ top: "87%", height: "6%" }}>
+        <div
+          className="h-full w-1/2 ml-auto mr-[15%] rounded-full blur-2xl"
+          style={{ background: "linear-gradient(to right, transparent, rgba(167,139,250,0.15), transparent)" }}
+        />
+      </div>
+      <div className="absolute left-0 right-0" style={{ top: "91%", height: "5%" }}>
+        <div
+          className="h-full w-2/3 mr-auto ml-[10%] rounded-full blur-xl"
+          style={{ background: "linear-gradient(to right, transparent, rgba(52,211,153,0.12), rgba(167,139,250,0.1), transparent)" }}
+        />
+      </div>
+    </div>
+  );
+}
+
 /* ═══════════════════════════════════════════════════════ */
 /*  Page wrapper                                          */
 /* ═══════════════════════════════════════════════════════ */
@@ -381,6 +563,9 @@ function SnakePathRoadmap({ child, userPlan }: { child: Child; userPlan: string 
 
       {/* ── Snake Path Area ── */}
       <div ref={pathRef} className="relative w-full mt-6" style={{ height: totalHeight }}>
+        {/* World background zones */}
+        <WorldBackground totalHeight={totalHeight} />
+
         {/* SVG path layer */}
         <svg
           className="absolute left-0 top-0 w-full pointer-events-none"
@@ -449,21 +634,28 @@ function SnakePathRoadmap({ child, userPlan }: { child: Child; userPlan: string 
           .filter((n) => n.isFirstOfDomain)
           .map((n) => {
             const meta = DOMAIN_META[n.domain];
+            const dark = isDarkZone(n.y, totalHeight);
             return (
               <div
                 key={`domain-${n.domain}`}
-                className="absolute left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-zinc-200/60 dark:border-slate-700/60 shadow-sm"
-                style={{ top: n.y - 62 }}
+                className={`absolute left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-3 py-1 rounded-full backdrop-blur-sm shadow-sm ${
+                  dark
+                    ? "bg-slate-900/70 border border-slate-600/60"
+                    : "bg-white/80 border border-zinc-200/60"
+                }`}
+                style={{ top: n.y - 62, zIndex: 5 }}
               >
                 <span className="text-sm">{meta?.emoji}</span>
-                <span className="text-[11px] font-semibold text-zinc-600 dark:text-slate-300">{n.domain}</span>
+                <span className={`text-[11px] font-semibold ${dark ? "text-slate-200" : "text-zinc-600"}`}>
+                  {n.domain}
+                </span>
               </div>
             );
           })}
 
         {/* Mascot bubbles */}
         {mascots.map((m) => (
-          <MascotBubble key={m.nodeIndex} mascot={m} containerWidth={pathWidth} />
+          <MascotBubble key={m.nodeIndex} mascot={m} containerWidth={pathWidth} totalHeight={totalHeight} />
         ))}
 
         {/* Nodes */}
@@ -481,6 +673,7 @@ function SnakePathRoadmap({ child, userPlan }: { child: Child; userPlan: string 
               isPremium={isPremium}
               childId={child.id}
               containerWidth={pathWidth}
+              totalHeight={totalHeight}
               onClick={() => setActiveNode(isActive ? null : node.standard.standard_id)}
               onClose={closeActive}
             />
@@ -495,8 +688,8 @@ function SnakePathRoadmap({ child, userPlan }: { child: Child; userPlan: string 
           <div className="w-20 h-20 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-3xl shadow-[0_4px_0_0_#c2410c,0_8px_24px_rgba(245,158,11,0.4)]">
             🏆
           </div>
-          <p className="text-sm font-bold text-zinc-700 dark:text-slate-200 mt-3">Level Complete!</p>
-          <p className="text-xs text-zinc-400 dark:text-slate-500">Master all {ALL_STANDARDS.length} standards</p>
+          <p className="text-sm font-bold text-slate-100 mt-3">Level Complete!</p>
+          <p className="text-xs text-slate-400">Master all {ALL_STANDARDS.length} standards</p>
         </div>
       </div>
     </div>
@@ -555,12 +748,18 @@ function TopProgressBar({ pct, completedCount, totalXP, streakDays }: {
 /*  Mascot Bubble                                          */
 /* ═══════════════════════════════════════════════════════ */
 
-function MascotBubble({ mascot, containerWidth }: {
+function MascotBubble({ mascot, containerWidth, totalHeight }: {
   mascot: { emoji: string; message: string; x: number; y: number; side: "left" | "right" };
   containerWidth: number;
+  totalHeight: number;
 }) {
   const leftPct = containerWidth > 0 ? (mascot.x / containerWidth) * 100 : 50;
   const clampedPct = Math.max(10, Math.min(90, leftPct));
+  const dark = isDarkZone(mascot.y, totalHeight);
+
+  const bubbleClass = dark
+    ? "bg-slate-800/90 text-violet-300 border border-violet-700"
+    : "bg-white text-violet-700 border border-violet-100";
 
   return (
     <motion.div
@@ -572,13 +771,13 @@ function MascotBubble({ mascot, containerWidth }: {
       transition={{ duration: 0.4, delay: 0.2 }}
     >
       {mascot.side === "left" && (
-        <div className="bg-white dark:bg-slate-800 rounded-xl px-3 py-2 shadow-md text-sm font-medium text-violet-700 dark:text-violet-300 border border-violet-100 dark:border-violet-800 max-w-[160px]">
+        <div className={`rounded-xl px-3 py-2 shadow-md text-sm font-medium max-w-[160px] ${bubbleClass}`}>
           {mascot.message}
         </div>
       )}
       <span className="text-4xl drop-shadow-md">{mascot.emoji}</span>
       {mascot.side === "right" && (
-        <div className="bg-white dark:bg-slate-800 rounded-xl px-3 py-2 shadow-md text-sm font-medium text-violet-700 dark:text-violet-300 border border-violet-100 dark:border-violet-800 max-w-[160px]">
+        <div className={`rounded-xl px-3 py-2 shadow-md text-sm font-medium max-w-[160px] ${bubbleClass}`}>
           {mascot.message}
         </div>
       )}
@@ -591,7 +790,7 @@ function MascotBubble({ mascot, containerWidth }: {
 /* ═══════════════════════════════════════════════════════ */
 
 function MapNode({
-  node, progress, isActive, isPremium, childId, containerWidth, onClick, onClose,
+  node, progress, isActive, isPremium, childId, containerWidth, totalHeight, onClick, onClose,
 }: {
   node: NodeLayout;
   progress: StandardProgress;
@@ -599,6 +798,7 @@ function MapNode({
   isPremium: boolean;
   childId: string;
   containerWidth: number;
+  totalHeight: number;
   onClick: () => void;
   onClose: () => void;
 }) {
@@ -628,11 +828,16 @@ function MapNode({
   // Margin must clear the path border (PATH_BORDER_W/2) from the node edge
   const labelMargin = Math.max(16, PATH_BORDER_W / 2 - nodeSize / 2 + 10);
 
-  const labelColorClass =
-    status === "completed" ? "text-emerald-700 dark:text-emerald-400"
-    : status === "current" ? "text-indigo-700 dark:text-indigo-400"
-    : isPremium ? "text-violet-400"
-    : "text-zinc-400 dark:text-zinc-500";
+  const dark = isDarkZone(node.y, totalHeight);
+  const labelColorClass = dark
+    ? (status === "completed" ? "text-emerald-300"
+      : status === "current" ? "text-indigo-300"
+      : isPremium ? "text-violet-300"
+      : "text-zinc-300")
+    : (status === "completed" ? "text-emerald-700"
+      : status === "current" ? "text-indigo-700"
+      : isPremium ? "text-violet-400"
+      : "text-zinc-400");
 
   return (
     <motion.div
