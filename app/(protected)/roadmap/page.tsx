@@ -153,7 +153,7 @@ function computeSnakeLayout(
 ): { nodes: NodeLayout[]; totalHeight: number } {
   const nodes: NodeLayout[] = [];
   const isMobile = containerWidth < 500;
-  const amplitude = isMobile ? containerWidth * 0.28 : containerWidth * 0.30;
+  const amplitude = isMobile ? containerWidth * 0.28 : Math.min(containerWidth * 0.30, 300);
   const cx = containerWidth / 2;
   let y = 80;
   let prevDomain = "";
@@ -537,34 +537,38 @@ function SnakePathRoadmap({ child, userPlan }: { child: Child; userPlan: string 
   }, [currentStandard]);
 
   return (
-    <div className="max-w-lg mx-auto pb-20 px-4">
-      {/* ── Nav ── */}
-      <div className="pt-4 mb-4">
-        <Link href="/dashboard" className="text-sm text-indigo-600 hover:text-indigo-700 font-medium transition-colors">
-          &larr; Dashboard
-        </Link>
+    <div className="pb-20">
+      {/* ── Header — stays centered narrow ── */}
+      <div className="max-w-lg mx-auto px-4">
+        {/* ── Nav ── */}
+        <div className="pt-4 mb-4">
+          <Link href="/dashboard" className="text-sm text-indigo-600 hover:text-indigo-700 font-medium transition-colors">
+            &larr; Dashboard
+          </Link>
+        </div>
+
+        {/* ── Title ── */}
+        <div className="text-center mb-5">
+          <h1 className="text-2xl font-bold text-zinc-900 dark:text-slate-100 tracking-tight">
+            {child.first_name}&apos;s Learning Journey
+          </h1>
+          <p className="text-zinc-500 dark:text-slate-400 text-sm mt-1">Kindergarten ELA Standards</p>
+        </div>
+
+        {/* ── Top Progress Bar ── */}
+        <TopProgressBar
+          pct={pct}
+          completedCount={completedCount}
+          totalXP={totalXP}
+          streakDays={child.streak_days}
+        />
       </div>
 
-      {/* ── Title ── */}
-      <div className="text-center mb-5">
-        <h1 className="text-2xl font-bold text-zinc-900 dark:text-slate-100 tracking-tight">
-          {child.first_name}&apos;s Learning Journey
-        </h1>
-        <p className="text-zinc-500 dark:text-slate-400 text-sm mt-1">Kindergarten ELA Standards</p>
-      </div>
-
-      {/* ── Top Progress Bar ── */}
-      <TopProgressBar
-        pct={pct}
-        completedCount={completedCount}
-        totalXP={totalXP}
-        streakDays={child.streak_days}
-      />
-
-      {/* ── Snake Path Area ── */}
-      <div ref={pathRef} className="relative w-full mt-6" style={{ height: totalHeight }}>
-        {/* World background zones */}
-        <WorldBackground totalHeight={totalHeight} />
+      {/* ── Snake Path Area — full width on desktop ── */}
+      <div className="mt-6 px-4 md:px-6">
+        <div ref={pathRef} className="relative w-full" style={{ height: totalHeight }}>
+          {/* World background zones */}
+          <WorldBackground totalHeight={totalHeight} />
 
         {/* SVG path layer */}
         <svg
@@ -690,6 +694,7 @@ function SnakePathRoadmap({ child, userPlan }: { child: Child; userPlan: string 
           </div>
           <p className="text-sm font-bold text-slate-100 mt-3">Level Complete!</p>
           <p className="text-xs text-slate-400">Master all {ALL_STANDARDS.length} standards</p>
+        </div>
         </div>
       </div>
     </div>
