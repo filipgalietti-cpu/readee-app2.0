@@ -617,29 +617,6 @@ function ChildDashboard({
         <p className="text-zinc-500 dark:text-slate-400 mt-1 text-sm">{motivation}</p>
       </motion.div>
 
-      {/* ── Reading Level Badge (compact) ── */}
-      {readingLevel && (
-        <motion.div variants={slideUp}>
-          <div className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3">
-            <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl bg-indigo-50 dark:bg-indigo-950/30 flex items-center justify-center text-lg flex-shrink-0">📖</div>
-              <div className="flex-1 min-w-0 flex items-center gap-2 flex-wrap">
-                <span className="text-zinc-500 dark:text-slate-400 text-xs font-medium">Level:</span>
-                <span className="text-zinc-900 dark:text-slate-100 font-bold text-sm">{readingLevel}</span>
-                {child.grade && (
-                  <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-indigo-50 dark:bg-indigo-950/30 text-indigo-600 dark:text-indigo-400">
-                    {GRADE_LABELS[child.grade] || child.grade}
-                  </span>
-                )}
-              </div>
-              <Link href="/settings" className="text-indigo-500 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300 text-[11px] font-medium transition-colors flex-shrink-0">
-                Change →
-              </Link>
-            </div>
-          </div>
-        </motion.div>
-      )}
-
       {/* ── Start Practice CTA ── */}
       {hasAssessment && (
         <motion.div variants={slideUp}>
