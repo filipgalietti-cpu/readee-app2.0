@@ -28,7 +28,7 @@ interface PracticeResult {
   standard_id: string;
   questions_attempted: number;
   questions_correct: number;
-  xp_earned: number;
+  carrots_earned: number;
   completed_at: string;
 }
 
@@ -614,7 +614,7 @@ function AnalyticsDashboard({ child }: { child: Child }) {
                   {r.questions_correct}/{r.questions_attempted}
                 </div>
                 <div className="text-xs font-medium text-amber-600 dark:text-amber-400 flex-shrink-0">
-                  +{r.xp_earned} XP
+                  +{r.carrots_earned} 🥕
                 </div>
               </div>
             ))}

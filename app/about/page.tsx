@@ -47,7 +47,7 @@ export default async function About() {
             {
               icon: "📈",
               title: "Real, Measurable Growth",
-              desc: "Track XP, completed lessons, and mastered skills. You'll always know exactly where your child stands.",
+              desc: "Track carrots earned, completed lessons, and mastered skills. You'll always know exactly where your child stands.",
             },
           ].map((item) => (
             <div

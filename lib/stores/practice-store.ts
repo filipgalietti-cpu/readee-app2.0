@@ -12,7 +12,7 @@ type Phase = "playing" | "feedback" | "complete";
 interface LifetimeStats {
   totalQuestions: number;
   totalCorrect: number;
-  totalXP: number;
+  totalCarrots: number;
   sessionsCompleted: number;
 }
 
@@ -20,7 +20,7 @@ interface PracticeState {
   standardId: string | null;
   currentIdx: number;
   answers: AnswerRecord[];
-  sessionXP: number;
+  sessionCarrots: number;
   selected: string | null;
   isCorrect: boolean | null;
   feedbackMsg: string;
@@ -29,7 +29,7 @@ interface PracticeState {
   lifetime: LifetimeStats;
 
   setStandard: (id: string) => void;
-  selectAnswer: (choice: string, correct: boolean, questionId: string, xpPerCorrect: number, correctMessages: string[], correctEmojis: string[], incorrectMessages: string[]) => void;
+  selectAnswer: (choice: string, correct: boolean, questionId: string, carrotsPerCorrect: number, correctMessages: string[], correctEmojis: string[], incorrectMessages: string[]) => void;
   nextQuestion: (totalQ: number) => void;
   reset: () => void;
   recordSessionEnd: () => void;
@@ -43,7 +43,7 @@ const initialSession = {
   standardId: null as string | null,
   currentIdx: 0,
   answers: [] as AnswerRecord[],
-  sessionXP: 0,
+  sessionCarrots: 0,
   selected: null as string | null,
   isCorrect: null as boolean | null,
   feedbackMsg: "",
@@ -54,7 +54,7 @@ const initialSession = {
 const initialLifetime: LifetimeStats = {
   totalQuestions: 0,
   totalCorrect: 0,
-  totalXP: 0,
+  totalCarrots: 0,
   sessionsCompleted: 0,
 };
 
@@ -66,7 +66,7 @@ export const usePracticeStore = create<PracticeState>()(
 
       setStandard: (id) => set({ standardId: id }),
 
-      selectAnswer: (choice, correct, questionId, xpPerCorrect, correctMessages, correctEmojis, incorrectMessages) => {
+      selectAnswer: (choice, correct, questionId, carrotsPerCorrect, correctMessages, correctEmojis, incorrectMessages) => {
         set((state) => {
           if (state.selected !== null) return state;
           return {
@@ -75,7 +75,7 @@ export const usePracticeStore = create<PracticeState>()(
             phase: "feedback" as Phase,
             feedbackMsg: correct ? pickRandom(correctMessages) : pickRandom(incorrectMessages),
             feedbackEmoji: correct ? pickRandom(correctEmojis) : "",
-            sessionXP: correct ? state.sessionXP + xpPerCorrect : state.sessionXP,
+            sessionCarrots: correct ? state.sessionCarrots + carrotsPerCorrect : state.sessionCarrots,
             answers: [...state.answers, { questionId, correct, selected: choice }],
           };
         });
@@ -104,7 +104,7 @@ export const usePracticeStore = create<PracticeState>()(
           lifetime: {
             totalQuestions: state.lifetime.totalQuestions + state.answers.length,
             totalCorrect: state.lifetime.totalCorrect + state.answers.filter((a) => a.correct).length,
-            totalXP: state.lifetime.totalXP + state.sessionXP,
+            totalCarrots: state.lifetime.totalCarrots + state.sessionCarrots,
             sessionsCompleted: state.lifetime.sessionsCompleted + 1,
           },
         }));
@@ -112,7 +112,20 @@ export const usePracticeStore = create<PracticeState>()(
     }),
     {
       name: "readee_practice",
+      version: 2,
       partialize: (state) => ({ lifetime: state.lifetime }),
+      migrate: (persisted: unknown, version: number) => {
+        const state = persisted as Record<string, unknown>;
+        if (version < 2) {
+          // Rename totalXP → totalCarrots in persisted lifetime
+          const lifetime = state.lifetime as Record<string, number> | undefined;
+          if (lifetime && "totalXP" in lifetime) {
+            lifetime.totalCarrots = lifetime.totalXP;
+            delete lifetime.totalXP;
+          }
+        }
+        return state as unknown as PracticeState;
+      },
     }
   )
 );

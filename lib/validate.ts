@@ -11,8 +11,9 @@ export function safeValidate<T>(schema: ZodSchema<T>, data: unknown): T {
     if (process.env.NODE_ENV === "development") {
       console.warn("[safeValidate] Validation failed:", result.error.format());
     }
+    return data as T;
   }
-  return data as T;
+  return result.data;
 }
 
 /**

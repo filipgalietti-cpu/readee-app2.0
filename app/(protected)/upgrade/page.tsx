@@ -764,7 +764,7 @@ function MiniDemoQuestion({ onTrialClick }: { onTrialClick: () => void }) {
                       {isCorrect ? "Amazing! That's correct!" : "Not quite — the answer is \"A red ball\""}
                     </p>
                     {isCorrect && (
-                      <p className="text-xs text-emerald-600 dark:text-emerald-400 font-medium mt-0.5">+5 XP</p>
+                      <p className="text-xs text-emerald-600 dark:text-emerald-400 font-medium mt-0.5">+5 🥕</p>
                     )}
                     {!isCorrect && (
                       <p className="text-xs text-red-600 dark:text-red-400 mt-0.5">Hint: Look at the second sentence!</p>

@@ -280,7 +280,7 @@ body {
   70% { transform: scale(0.9); }
   100% { transform: scale(1); opacity: 1; box-shadow: 0 0 20px rgba(99, 102, 241, 0.4); }
 }
-@keyframes xpCountUp {
+@keyframes carrotCountUp {
   0% { transform: scale(0.5) translateY(20px); opacity: 0; }
   60% { transform: scale(1.2) translateY(-5px); }
   100% { transform: scale(1) translateY(0); opacity: 1; }
@@ -323,7 +323,7 @@ body {
 .dash-slide-up-5 { animation: slideUp 0.4s ease 0.25s both; }
 .dash-slide-up-6 { animation: slideUp 0.4s ease 0.3s both; }
 .animate-badgeUnlock { animation: badgeUnlock 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
-.animate-xpCountUp { animation: xpCountUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+.animate-carrotCountUp { animation: carrotCountUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
 .animate-cardSlideIn { animation: cardSlideIn 0.35s ease both; }
 .animate-cardSlideOut { animation: cardSlideOut 0.25s ease both; }
 .animate-wrongShake { animation: wrongShake 0.5s ease both; }

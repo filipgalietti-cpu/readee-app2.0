@@ -177,7 +177,7 @@ export default function Settings() {
     await supabase.from("assessments").delete().eq("child_id", childId);
     await supabase.from("lessons_progress").delete().eq("child_id", childId);
     await supabase.from("children").update({
-      xp: 0,
+      carrots: 0,
       stories_read: 0,
       streak_days: 0,
       reading_level: null,
@@ -336,8 +336,8 @@ export default function Settings() {
                         </div>
                       </div>
                       <div className="flex items-center gap-3">
-                        <span className="text-xs font-medium text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-full">
-                          {child.xp} XP
+                        <span className="text-xs font-medium text-orange-600 bg-orange-50 px-2.5 py-1 rounded-full">
+                          {child.carrots} 🥕
                         </span>
                         <button
                           onClick={() => startEditing(child)}
@@ -560,7 +560,7 @@ export default function Settings() {
       {resetChildId && childForReset && (
         <Modal
           title={`Reset ${childForReset.first_name}'s Progress?`}
-          description={`This will reset ${childForReset.first_name}'s assessment, lessons, and XP back to zero. They'll take the reading quiz again.`}
+          description={`This will reset ${childForReset.first_name}'s assessment, lessons, and carrots back to zero. They'll take the reading quiz again.`}
           confirmLabel="Reset Progress"
           confirmColor="amber"
           onConfirm={() => handleResetProgress(resetChildId)}
@@ -584,7 +584,7 @@ export default function Settings() {
       {levelChangeChild && (
         <Modal
           title={`Change ${levelChangeChild.name}'s Reading Level?`}
-          description={`Changing ${levelChangeChild.name}'s reading level will reset their active progress. Completed lessons and XP for the current level will be saved in their history, but they'll start fresh at the new level. Are you sure?`}
+          description={`Changing ${levelChangeChild.name}'s reading level will reset their active progress. Completed lessons and carrots for the current level will be saved in their history, but they'll start fresh at the new level. Are you sure?`}
           confirmLabel="Yes, Change Level"
           confirmColor="amber"
           onConfirm={confirmLevelChange}

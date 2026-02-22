@@ -131,8 +131,8 @@ export default function NavAuth() {
               <Link href={analyticsHref} className={linkClass("/analytics")}>
                 Analytics
               </Link>
-              <Link href="/feedback" className={linkClass("/feedback")}>
-                Feedback
+              <Link href={activeChild ? `/shop?child=${activeChild.id}` : "/shop"} className={linkClass("/shop")}>
+                🥕 Shop
               </Link>
 
               {userPlan !== "premium" && (
@@ -240,8 +240,8 @@ export default function NavAuth() {
               <Link href={analyticsHref} className={`block py-2.5 px-3 rounded-lg text-sm font-medium transition-all duration-200 ${isActive("/analytics") ? "text-indigo-700 bg-indigo-50 dark:text-indigo-300 dark:bg-indigo-950" : "text-zinc-700 dark:text-slate-300 hover:text-indigo-700 dark:hover:text-indigo-300 hover:bg-indigo-50/60 dark:hover:bg-slate-800"}`}>
                 Analytics
               </Link>
-              <Link href="/feedback" className={`block py-2.5 px-3 rounded-lg text-sm font-medium transition-all duration-200 ${isActive("/feedback") ? "text-indigo-700 bg-indigo-50 dark:text-indigo-300 dark:bg-indigo-950" : "text-zinc-700 dark:text-slate-300 hover:text-indigo-700 dark:hover:text-indigo-300 hover:bg-indigo-50/60 dark:hover:bg-slate-800"}`}>
-                Feedback
+              <Link href={activeChild ? `/shop?child=${activeChild.id}` : "/shop"} className={`block py-2.5 px-3 rounded-lg text-sm font-medium transition-all duration-200 ${isActive("/shop") ? "text-indigo-700 bg-indigo-50 dark:text-indigo-300 dark:bg-indigo-950" : "text-zinc-700 dark:text-slate-300 hover:text-indigo-700 dark:hover:text-indigo-300 hover:bg-indigo-50/60 dark:hover:bg-slate-800"}`}>
+                🥕 Shop
               </Link>
               {userPlan !== "premium" && (
                 <Link

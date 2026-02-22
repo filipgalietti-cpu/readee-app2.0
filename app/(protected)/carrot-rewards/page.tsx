@@ -6,16 +6,18 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
+import { safeValidate } from "@/lib/validate";
+import { ChildSchema } from "@/lib/schemas";
 
 const TIERS = [
-  { name: "Bronze", xp: 50, emoji: "🥉", color: "from-amber-600 to-amber-700", bg: "bg-amber-50", border: "border-amber-200", text: "text-amber-700" },
-  { name: "Silver", xp: 100, emoji: "🥈", color: "from-gray-400 to-gray-500", bg: "bg-gray-50", border: "border-gray-200", text: "text-gray-600" },
-  { name: "Gold", xp: 200, emoji: "🥇", color: "from-yellow-400 to-yellow-500", bg: "bg-yellow-50", border: "border-yellow-200", text: "text-yellow-700" },
-  { name: "Platinum", xp: 500, emoji: "💎", color: "from-cyan-400 to-cyan-600", bg: "bg-cyan-50", border: "border-cyan-200", text: "text-cyan-700" },
-  { name: "Diamond", xp: 1000, emoji: "👑", color: "from-violet-500 to-purple-600", bg: "bg-violet-50", border: "border-violet-200", text: "text-violet-700" },
+  { name: "Bronze", carrots: 50, emoji: "🥉", color: "from-amber-600 to-amber-700", bg: "bg-amber-50", border: "border-amber-200", text: "text-amber-700" },
+  { name: "Silver", carrots: 100, emoji: "🥈", color: "from-gray-400 to-gray-500", bg: "bg-gray-50", border: "border-gray-200", text: "text-gray-600" },
+  { name: "Gold", carrots: 200, emoji: "🥇", color: "from-yellow-400 to-yellow-500", bg: "bg-yellow-50", border: "border-yellow-200", text: "text-yellow-700" },
+  { name: "Platinum", carrots: 500, emoji: "💎", color: "from-cyan-400 to-cyan-600", bg: "bg-cyan-50", border: "border-cyan-200", text: "text-cyan-700" },
+  { name: "Diamond", carrots: 1000, emoji: "👑", color: "from-violet-500 to-purple-600", bg: "bg-violet-50", border: "border-violet-200", text: "text-violet-700" },
 ];
 
-export default function XPRewardsPage() {
+export default function CarrotRewardsPage() {
   return (
     <Suspense
       fallback={
@@ -24,12 +26,12 @@ export default function XPRewardsPage() {
         </div>
       }
     >
-      <XPRewardsContent />
+      <CarrotRewardsContent />
     </Suspense>
   );
 }
 
-function XPRewardsContent() {
+function CarrotRewardsContent() {
   const searchParams = useSearchParams();
   const childId = searchParams.get("child");
   const [child, setChild] = useState<Child | null>(null);
@@ -44,7 +46,7 @@ function XPRewardsContent() {
         .select("*")
         .eq("id", childId)
         .single();
-      if (data) setChild(data as Child);
+      if (data) setChild(safeValidate(ChildSchema, data) as Child);
       setLoading(false);
     }
     load();
@@ -58,12 +60,14 @@ function XPRewardsContent() {
     );
   }
 
-  const currentTierIdx = TIERS.findLastIndex((t) => child.xp >= t.xp);
+  const carrots = Number(child.carrots) || 0;
+  const currentTierIdx = TIERS.findLastIndex((t) => carrots >= t.carrots);
   const nextTier = TIERS[currentTierIdx + 1] || null;
-  const prevTierXP = currentTierIdx >= 0 ? TIERS[currentTierIdx].xp : 0;
-  const nextTierXP = nextTier ? nextTier.xp : child.xp;
-  const progressPct = nextTier
-    ? Math.min(Math.round(((child.xp - prevTierXP) / (nextTierXP - prevTierXP)) * 100), 100)
+  const prevTierCarrots = currentTierIdx >= 0 ? TIERS[currentTierIdx].carrots : 0;
+  const nextTierCarrots = nextTier ? nextTier.carrots : carrots;
+  const range = nextTierCarrots - prevTierCarrots;
+  const progressPct = nextTier && range > 0
+    ? Math.min(Math.round(((carrots - prevTierCarrots) / range) * 100), 100)
     : 100;
 
   return (
@@ -78,11 +82,11 @@ function XPRewardsContent() {
         </Link>
       </div>
 
-      {/* XP Display */}
+      {/* Carrots Display */}
       <div className="text-center animate-slideUp">
-        <div className="text-5xl mb-3">⭐</div>
-        <div className="text-4xl font-bold text-zinc-900">{child.xp} XP</div>
-        <p className="text-zinc-500 mt-1">{child.first_name}&apos;s Experience Points</p>
+        <div className="text-5xl mb-3">🥕</div>
+        <div className="text-4xl font-bold text-orange-600">{carrots} Carrots</div>
+        <p className="text-zinc-500 mt-1">{child.first_name}&apos;s Carrot Collection</p>
       </div>
 
       {/* Progress to next tier */}
@@ -92,16 +96,16 @@ function XPRewardsContent() {
             <span className="text-sm font-medium text-zinc-600">
               Next: {nextTier.emoji} {nextTier.name}
             </span>
-            <span className="text-sm font-bold text-indigo-600">{child.xp}/{nextTier.xp} XP</span>
+            <span className="text-sm font-bold text-orange-600">{carrots}/{nextTier.carrots} 🥕</span>
           </div>
           <div className="h-3 bg-zinc-100 rounded-full overflow-hidden">
             <div
-              className="h-full bg-gradient-to-r from-indigo-500 to-violet-500 rounded-full transition-all duration-700"
+              className="h-full bg-gradient-to-r from-orange-400 to-amber-500 rounded-full transition-all duration-700"
               style={{ width: `${progressPct}%` }}
             />
           </div>
           <p className="text-xs text-zinc-400 mt-2">
-            {nextTier.xp - child.xp} XP to go!
+            {nextTier.carrots - carrots} carrots to go!
           </p>
         </div>
       )}
@@ -110,7 +114,7 @@ function XPRewardsContent() {
       <div className="space-y-3 dash-slide-up-2">
         <h2 className="text-lg font-bold text-zinc-900">Milestone Badges</h2>
         {TIERS.map((tier, i) => {
-          const earned = child.xp >= tier.xp;
+          const earned = carrots >= tier.carrots;
           return (
             <div
               key={tier.name}
@@ -133,7 +137,7 @@ function XPRewardsContent() {
                   {tier.name}
                 </div>
                 <div className="text-xs text-zinc-400">
-                  {tier.xp} XP required
+                  {tier.carrots} 🥕 required
                 </div>
               </div>
               {earned ? (
@@ -148,12 +152,17 @@ function XPRewardsContent() {
         })}
       </div>
 
-      {/* Rewards Shop Teaser */}
-      <div className="rounded-2xl border-2 border-dashed border-indigo-200 bg-indigo-50/50 p-6 text-center dash-slide-up-3">
-        <div className="text-3xl mb-2">🛍️</div>
-        <h3 className="font-bold text-indigo-700">Rewards Shop</h3>
-        <p className="text-sm text-indigo-500 mt-1">Coming Soon! Spend your XP on fun rewards.</p>
-      </div>
+      {/* Rewards Shop Link */}
+      <Link href={`/shop?child=${child.id}`} className="block">
+        <div className="rounded-2xl border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-amber-50 p-6 text-center hover:border-orange-300 hover:shadow-md transition-all dash-slide-up-3">
+          <div className="text-3xl mb-2">🛍️</div>
+          <h3 className="font-bold text-orange-700">Rewards Shop</h3>
+          <p className="text-sm text-orange-500 mt-1">Spend your carrots on fun rewards!</p>
+          <span className="inline-block mt-3 px-5 py-2 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold text-sm shadow-sm">
+            Visit Shop →
+          </span>
+        </div>
+      </Link>
     </div>
   );
 }

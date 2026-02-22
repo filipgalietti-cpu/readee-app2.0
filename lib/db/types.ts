@@ -14,17 +14,33 @@ export interface Profile {
   updated_at: string;
 }
 
+export interface EquippedItems {
+  avatar?: string | null;
+  outfit?: string | null;
+  badge?: string | null;
+  background?: string | null;
+  theme?: string | null;
+}
+
 export interface Child {
   id: string; // UUID
   parent_id: string; // UUID - references auth.users.id
   first_name: string;
   grade: string | null;
   reading_level: string | null;
-  xp: number;
+  carrots: number;
   stories_read: number;
   streak_days: number;
   last_lesson_at: string | null;
+  equipped_items: EquippedItems;
   created_at: string;
+}
+
+export interface ShopPurchase {
+  id: string;
+  child_id: string;
+  item_id: string;
+  purchased_at: string;
 }
 
 export interface Assessment {

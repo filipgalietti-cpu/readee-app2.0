@@ -18,14 +18,15 @@ import kStandards from "@/app/data/kindergarten-standards-questions.json";
 /* ─── Count-up animation hook ─────────────────────────── */
 
 function useCountUp(target: number, duration = 800) {
+  const safeTarget = Number(target) || 0;
   const [value, setValue] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
   const counted = useRef(false);
 
   useEffect(() => {
-    if (counted.current || target === 0) { setValue(target); return; }
+    if (counted.current || safeTarget === 0) { setValue(safeTarget); return; }
     const el = ref.current;
-    if (!el) { setValue(target); return; }
+    if (!el) { setValue(safeTarget); return; }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -36,7 +37,7 @@ function useCountUp(target: number, duration = 800) {
             const elapsed = now - start;
             const progress = Math.min(elapsed / duration, 1);
             const eased = 1 - Math.pow(1 - progress, 3);
-            setValue(Math.round(eased * target));
+            setValue(Math.round(eased * safeTarget));
             if (progress < 1) requestAnimationFrame(tick);
           }
           requestAnimationFrame(tick);
@@ -47,7 +48,7 @@ function useCountUp(target: number, duration = 800) {
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, [target, duration]);
+  }, [safeTarget, duration]);
 
   return { value, ref };
 }
@@ -386,7 +387,7 @@ function ChildSelector({
                   )}
                 </div>
                 <div className="text-right text-xs text-zinc-400 space-y-1">
-                  <div>{child.xp} XP</div>
+                  <div>{Number(child.carrots) || 0} 🥕</div>
                   <div>{child.streak_days}d streak</div>
                 </div>
               </div>
@@ -522,8 +523,8 @@ function ChildDashboard({
     return null;
   };
 
-  // Weekly progress: XP earned per day this week
-  const weeklyXP = useMemo(() => {
+  // Weekly progress: Carrots earned per day this week
+  const weeklyCarrots = useMemo(() => {
     const now = new Date();
     const dayOfWeek = now.getDay(); // 0 = Sunday
     const mondayOffset = dayOfWeek === 0 ? -6 : 1 - dayOfWeek;
@@ -532,27 +533,27 @@ function ChildDashboard({
     monday.setHours(0, 0, 0, 0);
 
     const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-    const xpPerDay: number[] = [0, 0, 0, 0, 0, 0, 0];
+    const carrotsPerDay: number[] = [0, 0, 0, 0, 0, 0, 0];
 
     for (const p of lessonProgress) {
       const d = new Date(p.completed_at);
       if (d >= monday) {
         const diff = Math.floor((d.getTime() - monday.getTime()) / (1000 * 60 * 60 * 24));
         if (diff >= 0 && diff < 7) {
-          // Estimate XP from section: learn=5, practice=5, read=10
-          const xp = p.section === "read" ? 10 : 5;
-          xpPerDay[diff] += xp;
+          // Estimate carrots from section: learn=5, practice=5, read=10
+          const carrots = p.section === "read" ? 10 : 5;
+          carrotsPerDay[diff] += carrots;
         }
       }
     }
 
     const todayIdx = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
-    const maxXP = Math.max(...xpPerDay, 20); // 20 as minimum max for bar scale
+    const maxCarrots = Math.max(...carrotsPerDay, 20); // 20 as minimum max for bar scale
 
     return days.map((day, i) => ({
       day,
-      xp: xpPerDay[i],
-      pct: Math.round((xpPerDay[i] / maxXP) * 100),
+      carrots: carrotsPerDay[i],
+      pct: Math.round((carrotsPerDay[i] / maxCarrots) * 100),
       isToday: i === todayIdx,
       isPast: i < todayIdx,
     }));
@@ -575,11 +576,13 @@ function ChildDashboard({
     checkDailyPractice();
   }, [child.id]);
 
-  // XP milestone
-  const xpMilestones = [25, 50, 100, 200, 500, 1000];
-  const nextMilestone = xpMilestones.find((m) => m > child.xp) || child.xp + 100;
-  const prevMilestone = [...xpMilestones].reverse().find((m) => m <= child.xp) || 0;
-  const xpProgress = Math.round(((child.xp - prevMilestone) / (nextMilestone - prevMilestone)) * 100);
+  // Carrot milestone
+  const carrots = Number(child.carrots) || 0;
+  const carrotMilestones = [25, 50, 100, 200, 500, 1000];
+  const nextMilestone = carrotMilestones.find((m) => m > carrots) || carrots + 100;
+  const prevMilestone = [...carrotMilestones].reverse().find((m) => m <= carrots) || 0;
+  const range = nextMilestone - prevMilestone;
+  const carrotProgress = range > 0 ? Math.round(((carrots - prevMilestone) / range) * 100) : 0;
 
   return (
     <motion.div
@@ -677,19 +680,19 @@ function ChildDashboard({
 
       {/* ── Stats Cards ── */}
       <motion.div variants={slideUp} className="grid grid-cols-3 gap-4">
-        {/* XP Card */}
-        <Link href={`/xp-rewards?child=${child.id}`} className="block">
+        {/* Carrots Card */}
+        <Link href={`/carrot-rewards?child=${child.id}`} className="block">
           <div className="rounded-2xl border border-gray-200 dark:border-slate-700 bg-gradient-to-b from-amber-50 to-white dark:from-amber-950/30 dark:to-slate-800 p-6 min-h-[160px] flex flex-col items-center justify-center text-center hover:shadow-md hover:scale-[1.02] transition-all duration-200 group cursor-pointer">
-            <div className="text-xl mb-1 group-hover:animate-subtleBounce">⭐</div>
-            <CountUpStat target={child.xp} />
-            <div className="text-[10px] text-zinc-500 dark:text-slate-400 mt-0.5 font-medium">XP</div>
+            <div className="text-xl mb-1 group-hover:animate-subtleBounce">🥕</div>
+            <CountUpStat target={carrots} />
+            <div className="text-[10px] text-zinc-500 dark:text-slate-400 mt-0.5 font-medium">Carrots</div>
             <div className="mt-2 w-full h-1.5 bg-amber-100 rounded-full overflow-hidden">
               <div
                 className="h-full bg-gradient-to-r from-amber-400 to-amber-500 rounded-full transition-all duration-700"
-                style={{ width: `${Math.min(xpProgress, 100)}%` }}
+                style={{ width: `${Math.min(carrotProgress, 100)}%` }}
               />
             </div>
-            <div className="text-[9px] text-amber-600 mt-1 font-medium">{child.xp}/{nextMilestone} XP</div>
+            <div className="text-[9px] text-orange-600 mt-1 font-medium">{carrots}/{nextMilestone} 🥕</div>
           </div>
         </Link>
 
@@ -860,7 +863,7 @@ function ChildDashboard({
       <motion.div variants={slideUp} className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6">
         <h3 className="text-base font-bold text-zinc-900 dark:text-slate-100 mb-4">Weekly Progress</h3>
         <div className="space-y-2.5">
-          {weeklyXP.map(({ day, xp, pct, isToday, isPast }) => (
+          {weeklyCarrots.map(({ day, carrots, pct, isToday, isPast }) => (
             <div key={day} className="flex items-center gap-3">
               <span className={`w-10 text-xs font-semibold ${isToday ? "text-indigo-600" : "text-zinc-500"}`}>
                 {day}
@@ -868,19 +871,19 @@ function ChildDashboard({
               <div className="flex-1 h-2.5 bg-zinc-100 dark:bg-slate-700 rounded-full overflow-hidden">
                 <div
                   className={`h-full rounded-full transition-all duration-700 ${
-                    xp > 0
+                    carrots > 0
                       ? "bg-gradient-to-r from-emerald-400 to-emerald-500"
                       : isToday
                       ? "bg-indigo-200"
                       : ""
                   }`}
-                  style={{ width: xp > 0 ? `${Math.max(pct, 8)}%` : isToday ? "4%" : "0%" }}
+                  style={{ width: carrots > 0 ? `${Math.max(pct, 8)}%` : isToday ? "4%" : "0%" }}
                 />
               </div>
               <span className={`w-14 text-right text-xs font-medium ${
-                xp > 0 ? "text-emerald-600" : isToday ? "text-indigo-400" : isPast ? "text-zinc-300" : "text-zinc-300"
+                carrots > 0 ? "text-emerald-600" : isToday ? "text-indigo-400" : isPast ? "text-zinc-300" : "text-zinc-300"
               }`}>
-                {xp > 0 ? `${xp} XP` : isToday ? "Today" : "—"}
+                {carrots > 0 ? `${carrots} 🥕` : isToday ? "Today" : "—"}
               </span>
             </div>
           ))}

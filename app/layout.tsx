@@ -58,6 +58,9 @@ export default function RootLayout({
                 <Link href="/terms-of-service" className="text-gray-300 hover:text-white transition-colors">
                   Terms
                 </Link>
+                <Link href="/feedback" className="text-gray-300 hover:text-white transition-colors">
+                  Feedback
+                </Link>
               </div>
             </div>
             <div className="mt-8 pt-6 border-t border-gray-500 text-center">

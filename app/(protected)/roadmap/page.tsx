@@ -33,7 +33,7 @@ interface StandardProgress {
   status: "completed" | "current" | "locked";
   score?: number;
   total?: number;
-  xpEarned?: number;
+  carrotsEarned?: number;
 }
 
 /* ─── Constants ──────────────────────────────────────── */
@@ -113,7 +113,7 @@ function buildMockProgress(standards: Standard[]): Record<string, StandardProgre
         status: "completed",
         score: 3 + (i % 3),
         total: 5,
-        xpEarned: 15 + (i % 4) * 5,
+        carrotsEarned: 15 + (i % 4) * 5,
       };
     } else if (i === doneCount) {
       progress[std.standard_id] = { status: "current", score: 2, total: 5 };
@@ -522,7 +522,7 @@ function SnakePathRoadmap({ child, userPlan }: { child: Child; userPlan: string 
 
   /* ── Stats ── */
   const completedCount = Object.values(progress).filter((p) => p.status === "completed").length;
-  const totalXP = Object.values(progress).reduce((sum, p) => sum + (p.xpEarned || 0), 0);
+  const totalCarrots = Object.values(progress).reduce((sum, p) => sum + (p.carrotsEarned || 0), 0);
   const currentStandard = ALL_STANDARDS.find((s) => progress[s.standard_id]?.status === "current");
   const pct = Math.round((completedCount / ALL_STANDARDS.length) * 100);
 
@@ -559,7 +559,7 @@ function SnakePathRoadmap({ child, userPlan }: { child: Child; userPlan: string 
         <TopProgressBar
           pct={pct}
           completedCount={completedCount}
-          totalXP={totalXP}
+          totalCarrots={totalCarrots}
           streakDays={child.streak_days}
         />
       </div>
@@ -705,10 +705,10 @@ function SnakePathRoadmap({ child, userPlan }: { child: Child; userPlan: string 
 /*  Top Progress Bar                                       */
 /* ═══════════════════════════════════════════════════════ */
 
-function TopProgressBar({ pct, completedCount, totalXP, streakDays }: {
+function TopProgressBar({ pct, completedCount, totalCarrots, streakDays }: {
   pct: number;
   completedCount: number;
-  totalXP: number;
+  totalCarrots: number;
   streakDays: number;
 }) {
   return (
@@ -733,8 +733,8 @@ function TopProgressBar({ pct, completedCount, totalXP, streakDays }: {
       </div>
       <div className="grid grid-cols-3 gap-2">
         <div className="bg-white/10 rounded-lg p-2 text-center">
-          <div className="text-white font-bold text-sm">{totalXP}</div>
-          <div className="text-white/50 text-[9px]">XP</div>
+          <div className="text-white font-bold text-sm">{totalCarrots}</div>
+          <div className="text-white/50 text-[9px]">🥕</div>
         </div>
         <div className="bg-white/10 rounded-lg p-2 text-center">
           <div className="text-white font-bold text-sm">{streakDays}</div>
@@ -1007,9 +1007,9 @@ function NodeTooltip({ standard, progress, isPremium, childId, nodeSize }: {
                 <div className="text-emerald-700 dark:text-emerald-400 font-bold text-sm">{progress.score}/{progress.total}</div>
                 <div className="text-emerald-600 dark:text-emerald-500 text-[10px]">Correct</div>
               </div>
-              <div className="flex-1 bg-amber-50 dark:bg-amber-900/20 rounded-xl p-2.5 text-center">
-                <div className="text-amber-700 dark:text-amber-400 font-bold text-sm">+{progress.xpEarned}</div>
-                <div className="text-amber-600 dark:text-amber-500 text-[10px]">XP Earned</div>
+              <div className="flex-1 bg-orange-50 dark:bg-orange-900/20 rounded-xl p-2.5 text-center">
+                <div className="text-orange-700 dark:text-orange-400 font-bold text-sm">+{progress.carrotsEarned} 🥕</div>
+                <div className="text-orange-600 dark:text-orange-500 text-[10px]">Carrots Earned</div>
               </div>
             </div>
             <Link

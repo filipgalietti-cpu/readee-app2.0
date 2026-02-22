@@ -11,7 +11,7 @@ export const PracticeResultSchema = z.object({
   standard_id: z.string(),
   questions_attempted: z.number().int().min(0),
   questions_correct: z.number().int().min(0),
-  xp_earned: z.number().int().min(0),
+  carrots_earned: z.number().int().min(0),
 });
 
 export type AnswerRecordZ = z.infer<typeof AnswerRecordSchema>;

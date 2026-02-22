@@ -55,7 +55,7 @@ interface AnswerRecord {
 
 const ALL_STANDARDS = safeValidate(StandardsFileSchema, kStandards).standards as Standard[];
 const QUESTIONS_PER_SESSION = 5;
-const XP_PER_CORRECT = 5;
+const CARROTS_PER_CORRECT = 5;
 
 const CORRECT_MESSAGES = [
   "Amazing!", "Great job!", "You got it!", "Nice catch!",
@@ -227,7 +227,7 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
   const phase = usePracticeStore((s) => s.phase);
   const currentIdx = usePracticeStore((s) => s.currentIdx);
   const answers = usePracticeStore((s) => s.answers);
-  const sessionXP = usePracticeStore((s) => s.sessionXP);
+  const sessionCarrots = usePracticeStore((s) => s.sessionCarrots);
   const selected = usePracticeStore((s) => s.selected);
   const isCorrect = usePracticeStore((s) => s.isCorrect);
   const feedbackMsg = usePracticeStore((s) => s.feedbackMsg);
@@ -238,9 +238,9 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
 
   const [saving, setSaving] = useState(false);
   const [audioReady, setAudioReady] = useState(false);
-  const [xpFlash, setXpFlash] = useState(false);
+  const [carrotFlash, setCarrotFlash] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
-  const prevXPRef = useRef(sessionXP);
+  const prevCarrotsRef = useRef(sessionCarrots);
 
   const questions = useMemo(() => {
     if (standard.questions.length <= QUESTIONS_PER_SESSION) return standard.questions;
@@ -254,15 +254,15 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [standard.standard_id]);
 
-  // XP sparkle flash
+  // Carrot sparkle flash
   useEffect(() => {
-    if (sessionXP > prevXPRef.current) {
-      setXpFlash(true);
-      const timer = setTimeout(() => setXpFlash(false), 600);
-      prevXPRef.current = sessionXP;
+    if (sessionCarrots > prevCarrotsRef.current) {
+      setCarrotFlash(true);
+      const timer = setTimeout(() => setCarrotFlash(false), 600);
+      prevCarrotsRef.current = sessionCarrots;
       return () => clearTimeout(timer);
     }
-  }, [sessionXP]);
+  }, [sessionCarrots]);
 
   const q = questions[currentIdx];
   const totalQ = questions.length;
@@ -311,7 +311,7 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
     stopStaticAudio();
     const correct = choice === q.correct;
 
-    selectAnswer(choice, correct, q.id, XP_PER_CORRECT, CORRECT_MESSAGES, CORRECT_EMOJIS, INCORRECT_MESSAGES);
+    selectAnswer(choice, correct, q.id, CARROTS_PER_CORRECT, CORRECT_MESSAGES, CORRECT_EMOJIS, INCORRECT_MESSAGES);
 
     if (correct) {
       playCorrectChime();
@@ -326,7 +326,7 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
     stop();
     stopStaticAudio();
 
-    selectAnswer(placedSentence, isCorrect, q.id, XP_PER_CORRECT, CORRECT_MESSAGES, CORRECT_EMOJIS, INCORRECT_MESSAGES);
+    selectAnswer(placedSentence, isCorrect, q.id, CARROTS_PER_CORRECT, CORRECT_MESSAGES, CORRECT_EMOJIS, INCORRECT_MESSAGES);
 
     if (isCorrect) {
       playCorrectChime();
@@ -341,7 +341,7 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
     stop();
     stopStaticAudio();
 
-    selectAnswer(answer, isCorrect, q.id, XP_PER_CORRECT, CORRECT_MESSAGES, CORRECT_EMOJIS, INCORRECT_MESSAGES);
+    selectAnswer(answer, isCorrect, q.id, CARROTS_PER_CORRECT, CORRECT_MESSAGES, CORRECT_EMOJIS, INCORRECT_MESSAGES);
 
     if (isCorrect) {
       playCorrectChime();
@@ -372,7 +372,7 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
         answers={answers}
         questions={questions}
         correctCount={correctCount}
-        xpEarned={correctCount * XP_PER_CORRECT}
+        carrotsEarned={correctCount * CARROTS_PER_CORRECT}
         saving={saving}
         setSaving={setSaving}
         onRestart={resetStore}
@@ -462,14 +462,14 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
 
         <motion.div
           className="flex items-center gap-1 bg-zinc-200 dark:bg-slate-800 px-3 py-1.5 rounded-full flex-shrink-0"
-          animate={xpFlash ? {
+          animate={carrotFlash ? {
             scale: [1, 1.25, 1],
             boxShadow: ["0 0 0 0px rgba(251,191,36,0)", "0 0 8px 4px rgba(251,191,36,0.5)", "0 0 0 0px rgba(251,191,36,0)"],
           } : {}}
           transition={{ duration: 0.6 }}
         >
-          <span className="text-sm">⭐</span>
-          <span className="text-sm font-bold text-amber-600 dark:text-amber-400 tabular-nums">{sessionXP}</span>
+          <span className="text-sm">🥕</span>
+          <span className="text-sm font-bold text-orange-600 dark:text-orange-400 tabular-nums">{sessionCarrots}</span>
         </motion.div>
 
         <MuteToggle />
@@ -656,7 +656,7 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
                 <div className="flex-1 min-w-0">
                   <p className="text-white font-extrabold text-lg">{feedbackMsg}</p>
                   {isCorrect && (
-                    <p className="text-white/80 text-sm mt-0.5">+{XP_PER_CORRECT} XP</p>
+                    <p className="text-white/80 text-sm mt-0.5">+{CARROTS_PER_CORRECT} 🥕</p>
                   )}
                   {!isCorrect && (
                     <>
@@ -697,7 +697,7 @@ function CompletionScreen({
   answers,
   questions,
   correctCount,
-  xpEarned,
+  carrotsEarned,
   saving,
   setSaving,
   onRestart,
@@ -707,7 +707,7 @@ function CompletionScreen({
   answers: AnswerRecord[];
   questions: Question[];
   correctCount: number;
-  xpEarned: number;
+  carrotsEarned: number;
   saving: boolean;
   setSaving: (v: boolean) => void;
   onRestart: () => void;
@@ -779,21 +779,21 @@ function CompletionScreen({
         standard_id: standard.standard_id,
         questions_attempted: totalQ,
         questions_correct: correctCount,
-        xp_earned: xpEarned,
+        carrots_earned: carrotsEarned,
       });
 
       await supabase.from("practice_results").insert(payload);
 
-      if (xpEarned > 0) {
+      if (carrotsEarned > 0) {
         const { data: current } = await supabase
           .from("children")
-          .select("xp")
+          .select("carrots")
           .eq("id", child.id)
           .single();
         if (current) {
           await supabase
             .from("children")
-            .update({ xp: (current.xp || 0) + xpEarned })
+            .update({ carrots: (current.carrots || 0) + carrotsEarned })
             .eq("id", child.id);
         }
       }
@@ -803,7 +803,7 @@ function CompletionScreen({
     }
 
     save();
-  }, [saved, saving, child.id, standard.standard_id, totalQ, correctCount, xpEarned, setSaving]);
+  }, [saved, saving, child.id, standard.standard_id, totalQ, correctCount, carrotsEarned, setSaving]);
 
   return (
     <div className="min-h-[100dvh] bg-gray-50 dark:bg-[#0f172a] relative overflow-hidden flex flex-col">
@@ -863,7 +863,7 @@ function CompletionScreen({
         </motion.h1>
         <motion.p variants={fadeUp} className="text-zinc-500 dark:text-slate-400 text-center mb-8">{subtitle}</motion.p>
 
-        {/* Score + XP */}
+        {/* Score + Carrots */}
         <motion.div variants={fadeUp} className="flex gap-6 mb-8">
           <div className="text-center">
             <div className="text-4xl font-extrabold text-zinc-900 dark:text-white">{correctCount}/{totalQ}</div>
@@ -871,8 +871,8 @@ function CompletionScreen({
           </div>
           <div className="w-px bg-zinc-300 dark:bg-slate-700" />
           <div className="text-center">
-            <div className="text-4xl font-extrabold text-amber-600 dark:text-amber-400">+{xpEarned}</div>
-            <div className="text-xs text-slate-500 mt-1 font-medium">XP Earned</div>
+            <div className="text-4xl font-extrabold text-orange-600 dark:text-orange-400">+{carrotsEarned}</div>
+            <div className="text-xs text-slate-500 mt-1 font-medium">Carrots Earned</div>
           </div>
         </motion.div>
 

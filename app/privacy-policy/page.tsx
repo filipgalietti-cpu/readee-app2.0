@@ -48,7 +48,7 @@ export default function PrivacyPolicyPage() {
               from diagnostic reading quizzes
             </li>
             <li>
-              <strong>Lesson progress:</strong> Completed lessons, XP earned, and
+              <strong>Lesson progress:</strong> Completed lessons, carrots earned, and
               reading level progression
             </li>
             <li>

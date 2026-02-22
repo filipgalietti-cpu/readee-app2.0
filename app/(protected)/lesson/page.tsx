@@ -52,12 +52,12 @@ const CELEBRATION_MESSAGES = [
   "You crushed it! 💥",
 ];
 
-const XP_MILESTONES = [
-  { name: "Bronze", xp: 50, emoji: "🥉" },
-  { name: "Silver", xp: 100, emoji: "🥈" },
-  { name: "Gold", xp: 200, emoji: "🥇" },
-  { name: "Platinum", xp: 500, emoji: "💎" },
-  { name: "Diamond", xp: 1000, emoji: "👑" },
+const CARROT_MILESTONES = [
+  { name: "Bronze", carrots: 50, emoji: "🥉" },
+  { name: "Silver", carrots: 100, emoji: "🥈" },
+  { name: "Gold", carrots: 200, emoji: "🥇" },
+  { name: "Platinum", carrots: 500, emoji: "💎" },
+  { name: "Diamond", carrots: 1000, emoji: "👑" },
 ];
 
 const CARD_COLORS = [
@@ -512,7 +512,7 @@ function LessonContent() {
   const readQuestionStartRef = useRef(Date.now());
 
   // Complete state
-  const [totalXP, setTotalXP] = useState(0);
+  const [totalCarrots, setTotalCarrots] = useState(0);
   const [confettiPieces, setConfettiPieces] = useState<
     { id: number; left: number; color: string; delay: number }[]
   >([]);
@@ -583,23 +583,23 @@ function LessonContent() {
     [child, lessonId]
   );
 
-  const awardXP = useCallback(
+  const awardCarrots = useCallback(
     async (amount: number) => {
       if (!child) return;
       const supabase = supabaseBrowser();
       const { data } = await supabase
         .from("children")
-        .select("xp")
+        .select("carrots")
         .eq("id", child.id)
         .single();
 
-      const currentXP = (data as { xp: number } | null)?.xp ?? 0;
+      const currentCarrots = (data as { carrots: number } | null)?.carrots ?? 0;
       await supabase
         .from("children")
-        .update({ xp: currentXP + amount })
+        .update({ carrots: currentCarrots + amount })
         .eq("id", child.id);
 
-      setTotalXP((prev) => prev + amount);
+      setTotalCarrots((prev) => prev + amount);
     },
     [child]
   );
@@ -658,7 +658,7 @@ function LessonContent() {
     } else {
       // All cards seen — complete learn phase
       saveProgress("learn", 100);
-      awardXP(5);
+      awardCarrots(5);
       setPhase("practice");
       questionStartRef.current = Date.now();
     }
@@ -678,10 +678,10 @@ function LessonContent() {
     } else {
       const score = Math.round((practiceCorrect / lesson.practice.questions.length) * 100);
       saveProgress("practice", score);
-      awardXP(5);
+      awardCarrots(5);
       setPhase("read");
     }
-  }, [lesson, practiceIdx, practiceCorrect, saveProgress, awardXP]);
+  }, [lesson, practiceIdx, practiceCorrect, saveProgress, awardCarrots]);
 
   const handlePracticeAnswer = (choice: string) => {
     if (selectedChoice || !lesson || wrongChoices.has(choice)) return;
@@ -730,11 +730,11 @@ function LessonContent() {
       // Lesson complete!
       const score = Math.round((readCorrect / lesson.read.questions.length) * 100);
       saveProgress("read", score);
-      awardXP(10);
+      awardCarrots(10);
       finishLesson();
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [lesson, readQIdx, readCorrect, saveProgress, awardXP]);
+  }, [lesson, readQIdx, readCorrect, saveProgress, awardCarrots]);
 
   const handleReadAnswer = (choice: string) => {
     if (readSelected || !lesson || readWrongChoices.has(choice)) return;
@@ -777,11 +777,11 @@ function LessonContent() {
 
     const { data: freshChild } = await supabase
       .from("children")
-      .select("stories_read, streak_days, last_lesson_at, xp")
+      .select("stories_read, streak_days, last_lesson_at, carrots")
       .eq("id", child.id)
       .single();
 
-    const current = freshChild as { stories_read: number; streak_days: number; last_lesson_at: string | null; xp: number } | null;
+    const current = freshChild as { stories_read: number; streak_days: number; last_lesson_at: string | null; carrots: number } | null;
     const newStoriesRead = (current?.stories_read ?? 0) + 1;
 
     const now = new Date();
@@ -809,9 +809,9 @@ function LessonContent() {
 
     setStreakDays(newStreak);
 
-    const totalXPAfter = (current?.xp ?? 0) + 10;
-    for (const milestone of XP_MILESTONES) {
-      if ((current?.xp ?? 0) < milestone.xp && totalXPAfter >= milestone.xp) {
+    const totalCarrotsAfter = (current?.carrots ?? 0) + 10;
+    for (const milestone of CARROT_MILESTONES) {
+      if ((current?.carrots ?? 0) < milestone.carrots && totalCarrotsAfter >= milestone.carrots) {
         setNewBadge(`${milestone.emoji} ${milestone.name}`);
         break;
       }
@@ -1282,10 +1282,10 @@ function LessonContent() {
 
           <p className="text-zinc-500 max-w-xs mx-auto">{celebrationMsg}</p>
 
-          {/* Animated XP display */}
-          <div className="inline-block rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 px-8 py-5 text-white animate-xpCountUp">
-            <div className="text-sm font-medium text-indigo-200">You earned</div>
-            <div className="text-4xl font-bold mt-1">+{totalXP} XP</div>
+          {/* Animated carrots display */}
+          <div className="inline-block rounded-2xl bg-gradient-to-r from-orange-500 to-amber-500 px-8 py-5 text-white animate-carrotCountUp">
+            <div className="text-sm font-medium text-orange-200">You earned</div>
+            <div className="text-4xl font-bold mt-1">+{totalCarrots} 🥕</div>
           </div>
 
           {/* Streak display */}
