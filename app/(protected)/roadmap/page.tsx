@@ -3,12 +3,10 @@
 import { Suspense, useEffect, useState, useRef, useMemo, useCallback } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
 import kStandards from "@/app/data/kindergarten-standards-questions.json";
-import { useThemeStore } from "@/lib/stores/theme-store";
-import { slideUp, staggerContainer, slideInLeft } from "@/lib/motion/variants";
 import { safeValidate } from "@/lib/validate";
 import { ChildSchema, StandardsFileSchema } from "@/lib/schemas";
 
@@ -40,16 +38,66 @@ interface StandardProgress {
 
 /* ─── Constants ──────────────────────────────────────── */
 
-const DOMAIN_META: Record<string, { emoji: string; color: string; bg: string; border: string; fill: string; gradient: string }> = {
-  "Reading Literature":         { emoji: "📖", color: "text-violet-700",  bg: "bg-violet-50",  border: "border-violet-200",  fill: "#8b5cf6", gradient: "from-violet-500 to-purple-600" },
-  "Reading Informational Text": { emoji: "📰", color: "text-blue-700",   bg: "bg-blue-50",    border: "border-blue-200",    fill: "#3b82f6", gradient: "from-blue-500 to-indigo-600" },
-  "Foundational Skills":        { emoji: "🔤", color: "text-emerald-700", bg: "bg-emerald-50", border: "border-emerald-200", fill: "#10b981", gradient: "from-emerald-500 to-teal-600" },
-  "Language":                   { emoji: "💬", color: "text-amber-700",  bg: "bg-amber-50",   border: "border-amber-200",   fill: "#f59e0b", gradient: "from-amber-500 to-orange-600" },
+const FREE_STANDARD_COUNT = 10;
+const NODE_VERTICAL_SPACING = 240;
+const PATH_ROAD_W = 56;
+const PATH_BORDER_W = 64;
+
+const DOMAIN_META: Record<string, { emoji: string }> = {
+  "Reading Literature":         { emoji: "📖" },
+  "Reading Informational Text": { emoji: "📰" },
+  "Foundational Skills":        { emoji: "🔤" },
+  "Language":                   { emoji: "💬" },
 };
 
-const NODE_SPACING = 130;
-const DOMAIN_HEADER_HEIGHT = 72;
-const FREE_STANDARD_COUNT = 10;
+const MASCOTS: { afterNode: number; emoji: string; message: string }[] = [
+  { afterNode: 3,  emoji: "🐰", message: "Great start! Keep going!" },
+  { afterNode: 8,  emoji: "🦊", message: "You're doing amazing!" },
+  { afterNode: 15, emoji: "🦡", message: "Almost halfway there!" },
+];
+
+const KID_NAMES: Record<string, string> = {
+  // Reading Literature
+  "RL.K.1": "Key Details",
+  "RL.K.2": "Retelling",
+  "RL.K.3": "Story People",
+  "RL.K.4": "New Words",
+  "RL.K.5": "Book Types",
+  "RL.K.6": "Authors",
+  "RL.K.7": "Story Art",
+  "RL.K.9": "Compare Stories",
+  // Reading Informational Text
+  "RI.K.1": "Info Details",
+  "RI.K.2": "Main Topic",
+  "RI.K.3": "Linking Ideas",
+  "RI.K.4": "Info Words",
+  "RI.K.5": "Book Parts",
+  "RI.K.6": "Who Wrote?",
+  "RI.K.7": "Art & Text",
+  "RI.K.8": "Author's Why",
+  "RI.K.9": "Compare Texts",
+  // Foundational Skills
+  "RF.K.1a": "Word Tracking",
+  "RF.K.1b": "Print Concepts",
+  "RF.K.1c": "Word Spaces",
+  "RF.K.1d": "ABCs",
+  "RF.K.2a": "Rhyming",
+  "RF.K.2b": "Syllables",
+  "RF.K.2c": "Blending",
+  "RF.K.2d": "Sound Out",
+  "RF.K.2e": "New Sounds",
+  "RF.K.3a": "Letter Sounds",
+  "RF.K.3b": "Vowel Sounds",
+  "RF.K.3c": "Sight Words",
+  "RF.K.3d": "Spelling Clues",
+  "RF.K.4": "Reading Time",
+  // Language
+  "K.L.1": "Grammar",
+  "K.L.2": "Punctuation",
+  "K.L.4": "Word Meaning",
+  "K.L.5": "Word Play",
+  "K.L.6": "Vocabulary",
+};
 
 /* ─── Mock progress ──────────────────────────────────── */
 
@@ -88,13 +136,94 @@ function shortName(desc: string): string {
   return capped.length > 55 ? capped.slice(0, 52) + "..." : capped;
 }
 
-function getDomainOrder(standards: Standard[]): string[] {
-  const seen = new Set<string>();
-  const order: string[] = [];
-  for (const s of standards) {
-    if (!seen.has(s.domain)) { seen.add(s.domain); order.push(s.domain); }
+/* ─── Path Helpers ───────────────────────────────────── */
+
+interface NodeLayout {
+  standard: Standard;
+  globalIdx: number;
+  x: number;
+  y: number;
+  domain: string;
+  isFirstOfDomain: boolean;
+}
+
+function computeSnakeLayout(
+  standards: Standard[],
+  containerWidth: number,
+): { nodes: NodeLayout[]; totalHeight: number } {
+  const nodes: NodeLayout[] = [];
+  const isMobile = containerWidth < 500;
+  const amplitude = isMobile ? containerWidth * 0.28 : containerWidth * 0.30;
+  const cx = containerWidth / 2;
+  let y = 80;
+  let prevDomain = "";
+
+  for (let i = 0; i < standards.length; i++) {
+    const std = standards[i];
+    const isFirstOfDomain = std.domain !== prevDomain;
+    if (isFirstOfDomain && i > 0) y += 40;
+
+    // Sine-based horizontal offset: nodes snake left-right
+    const phase = (i % 4);
+    let xOffset: number;
+    if (phase === 0) xOffset = -amplitude;
+    else if (phase === 1) xOffset = 0;
+    else if (phase === 2) xOffset = amplitude;
+    else xOffset = 0;
+
+    nodes.push({
+      standard: std,
+      globalIdx: i,
+      x: cx + xOffset,
+      y,
+      domain: std.domain,
+      isFirstOfDomain,
+    });
+
+    prevDomain = std.domain;
+    y += NODE_VERTICAL_SPACING;
   }
-  return order;
+
+  return { nodes, totalHeight: y + 100 };
+}
+
+function buildBezierPath(nodes: NodeLayout[]): string {
+  if (nodes.length < 2) return "";
+  let d = `M ${nodes[0].x} ${nodes[0].y}`;
+  for (let i = 1; i < nodes.length; i++) {
+    const prev = nodes[i - 1];
+    const cur = nodes[i];
+    const dy = cur.y - prev.y;
+    const cp1y = prev.y + dy * 0.55;
+    const cp2y = cur.y - dy * 0.55;
+    d += ` C ${prev.x} ${cp1y}, ${cur.x} ${cp2y}, ${cur.x} ${cur.y}`;
+  }
+  return d;
+}
+
+function getMascotPositions(nodes: NodeLayout[]): {
+  nodeIndex: number;
+  side: "left" | "right";
+  emoji: string;
+  message: string;
+  x: number;
+  y: number;
+}[] {
+  return MASCOTS.filter((m) => m.afterNode < nodes.length).map((m, i) => {
+    const node = nodes[m.afterNode];
+    const nextNode = nodes[m.afterNode + 1];
+    const midY = nextNode ? (node.y + nextNode.y) / 2 : node.y + 60;
+    const side: "left" | "right" = i % 2 === 0 ? "right" : "left";
+    const xOffset = side === "right" ? 110 : -110;
+    return {
+      nodeIndex: m.afterNode,
+      side,
+      emoji: m.emoji,
+      message: m.message,
+      x: (node.x + (nextNode?.x || node.x)) / 2 + xOffset,
+      y: midY,
+    };
+  });
 }
 
 /* ═══════════════════════════════════════════════════════ */
@@ -161,26 +290,15 @@ function RoadmapLoader() {
     );
   }
 
-  return <Roadmap child={child} userPlan={userPlan} />;
+  return <SnakePathRoadmap child={child} userPlan={userPlan} />;
 }
 
 /* ═══════════════════════════════════════════════════════ */
-/*  Main Roadmap                                          */
+/*  Snake Path Roadmap — Main Component                    */
 /* ═══════════════════════════════════════════════════════ */
 
-interface LayoutItem {
-  type: "header" | "node";
-  domain?: string;
-  standard?: Standard;
-  globalIdx?: number;
-  y: number;
-  x: number;
-}
-
-function Roadmap({ child, userPlan }: { child: Child; userPlan: string }) {
+function SnakePathRoadmap({ child, userPlan }: { child: Child; userPlan: string }) {
   const progress = useMemo(() => buildMockProgress(ALL_STANDARDS), []);
-  const domainOrder = useMemo(() => getDomainOrder(ALL_STANDARDS), []);
-  const darkMode = useThemeStore((s) => s.darkMode);
   const [activeNode, setActiveNode] = useState<string | null>(null);
   const pathRef = useRef<HTMLDivElement>(null);
   const [pathWidth, setPathWidth] = useState(400);
@@ -199,77 +317,32 @@ function Roadmap({ child, userPlan }: { child: Child; userPlan: string }) {
     return () => ro.disconnect();
   }, []);
 
-  /* ── Compute S-curve layout: centered winding path ── */
-  const layout = useMemo(() => {
-    const items: LayoutItem[] = [];
-    let y = 20;
-    let currentDomain = "";
-    let nodeSeq = 0;
-    const cx = pathWidth / 2;
-    const isMobile = pathWidth < 500;
-    const leftPct = isMobile ? 0.25 : 0.30;
-    const rightPct = isMobile ? 0.75 : 0.70;
+  /* ── Compute layout ── */
+  const { nodes, totalHeight } = useMemo(
+    () => computeSnakeLayout(ALL_STANDARDS, pathWidth),
+    [pathWidth],
+  );
 
-    for (const std of ALL_STANDARDS) {
-      if (std.domain !== currentDomain) {
-        if (currentDomain !== "") y += 32;
-        items.push({ type: "header", domain: std.domain, y, x: cx });
-        y += DOMAIN_HEADER_HEIGHT;
-        currentDomain = std.domain;
-      }
+  /* ── SVG paths ── */
+  const fullPathD = useMemo(() => buildBezierPath(nodes), [nodes]);
 
-      const x = nodeSeq % 2 === 0 ? pathWidth * leftPct : pathWidth * rightPct;
-      items.push({ type: "node", standard: std, globalIdx: nodeSeq, y, x });
-      y += NODE_SPACING;
-      nodeSeq++;
-    }
-
-    return { items, totalHeight: y + 120 };
-  }, [pathWidth]);
-
-  /* ── Build SVG path ── */
-  const nodeItems = layout.items.filter((it) => it.type === "node");
-
-  const buildPath = useCallback((nodes: LayoutItem[]) => {
-    if (nodes.length < 2) return "";
-    let d = `M ${nodes[0].x} ${nodes[0].y}`;
-    for (let i = 1; i < nodes.length; i++) {
-      const prev = nodes[i - 1];
-      const cur = nodes[i];
-      const dy = cur.y - prev.y;
-      // Smooth cubic bezier — control points at 55% of vertical distance
-      // creates a gentle, river-like flow between nodes
-      const cp1y = prev.y + dy * 0.55;
-      const cp2y = cur.y - dy * 0.55;
-      d += ` C ${prev.x} ${cp1y}, ${cur.x} ${cp2y}, ${cur.x} ${cur.y}`;
-    }
-    return d;
-  }, []);
-
-  const pathD = useMemo(() => buildPath(nodeItems), [nodeItems, buildPath]);
-
-  const completedIdx = nodeItems.filter((n) => progress[n.standard!.standard_id]?.status === "completed").length;
+  const completedIdx = nodes.filter(
+    (n) => progress[n.standard.standard_id]?.status === "completed",
+  ).length;
 
   const completedPathD = useMemo(() => {
     const end = completedIdx + 1;
-    return buildPath(nodeItems.slice(0, Math.min(end, nodeItems.length)));
-  }, [nodeItems, completedIdx, buildPath]);
+    return buildBezierPath(nodes.slice(0, Math.min(end, nodes.length)));
+  }, [nodes, completedIdx]);
+
+  /* ── Mascots ── */
+  const mascots = useMemo(() => getMascotPositions(nodes), [nodes]);
 
   /* ── Stats ── */
   const completedCount = Object.values(progress).filter((p) => p.status === "completed").length;
   const totalXP = Object.values(progress).reduce((sum, p) => sum + (p.xpEarned || 0), 0);
   const currentStandard = ALL_STANDARDS.find((s) => progress[s.standard_id]?.status === "current");
-  const currentDomain = currentStandard?.domain || domainOrder[0];
   const pct = Math.round((completedCount / ALL_STANDARDS.length) * 100);
-
-  /* ── Domain stats for sidebar ── */
-  const domainProgress = useMemo(() => {
-    return domainOrder.map((d) => {
-      const standards = ALL_STANDARDS.filter((s) => s.domain === d);
-      const completed = standards.filter((s) => progress[s.standard_id]?.status === "completed").length;
-      return { domain: d, completed, total: standards.length };
-    });
-  }, [domainOrder, progress]);
 
   /* ── Scroll to current on mount ── */
   useEffect(() => {
@@ -282,219 +355,148 @@ function Roadmap({ child, userPlan }: { child: Child; userPlan: string }) {
   }, [currentStandard]);
 
   return (
-    <div className="max-w-5xl mx-auto pb-20 px-4">
+    <div className="max-w-lg mx-auto pb-20 px-4">
       {/* ── Nav ── */}
-      <div className="pt-4 mb-6 max-w-[400px] mx-auto lg:max-w-none">
+      <div className="pt-4 mb-4">
         <Link href="/dashboard" className="text-sm text-indigo-600 hover:text-indigo-700 font-medium transition-colors">
           &larr; Dashboard
         </Link>
       </div>
 
       {/* ── Title ── */}
-      <div className="text-center mb-6 max-w-[400px] mx-auto lg:max-w-none">
+      <div className="text-center mb-5">
         <h1 className="text-2xl font-bold text-zinc-900 dark:text-slate-100 tracking-tight">
           {child.first_name}&apos;s Learning Journey
         </h1>
         <p className="text-zinc-500 dark:text-slate-400 text-sm mt-1">Kindergarten ELA Standards</p>
       </div>
 
-      {/* ── Mobile Progress Summary ── */}
-      <div className="lg:hidden mb-6 max-w-[400px] mx-auto">
-        <MobileProgressCard
-          pct={pct}
-          completedCount={completedCount}
-          totalXP={totalXP}
-          streakDays={child.streak_days}
-          currentDomain={currentDomain}
-        />
-      </div>
+      {/* ── Top Progress Bar ── */}
+      <TopProgressBar
+        pct={pct}
+        completedCount={completedCount}
+        totalXP={totalXP}
+        streakDays={child.streak_days}
+      />
 
-      {/* ── Main layout: sidebar (left) + path (right) ── */}
-      <div className="lg:flex lg:gap-8 lg:justify-center">
-        {/* ── Desktop Sidebar (left column) ── */}
-        <div className="hidden lg:block w-[280px] min-w-[280px] flex-shrink-0">
-          <div className="sticky top-[100px] space-y-4">
-            {/* Progress Summary */}
-            <div className="rounded-2xl bg-gradient-to-br from-indigo-600 via-violet-600 to-purple-600 p-5 shadow-lg">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="relative w-14 h-14 flex-shrink-0">
-                  <svg viewBox="0 0 100 100" className="w-14 h-14 -rotate-90">
-                    <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(255,255,255,0.15)" strokeWidth="8" />
-                    <circle
-                      cx="50" cy="50" r="42" fill="none" stroke="white" strokeWidth="8"
-                      strokeLinecap="round" strokeDasharray="264"
-                      strokeDashoffset={264 - (264 * pct / 100)}
-                      className="transition-all duration-1000"
-                    />
-                  </svg>
-                  <span className="absolute inset-0 flex items-center justify-center text-white text-sm font-bold">{pct}%</span>
-                </div>
-                <div>
-                  <div className="text-white font-bold">{completedCount}/{ALL_STANDARDS.length}</div>
-                  <div className="text-white/60 text-xs">Standards</div>
-                </div>
-              </div>
-              <div className="grid grid-cols-2 gap-2">
-                <div className="bg-white/10 rounded-xl p-2.5 text-center">
-                  <div className="text-white font-bold">{totalXP}</div>
-                  <div className="text-white/50 text-[10px]">XP Earned</div>
-                </div>
-                <div className="bg-white/10 rounded-xl p-2.5 text-center">
-                  <div className="text-white font-bold">{child.streak_days}</div>
-                  <div className="text-white/50 text-[10px]">Day Streak</div>
-                </div>
-              </div>
-            </div>
+      {/* ── Snake Path Area ── */}
+      <div ref={pathRef} className="relative w-full mt-6" style={{ height: totalHeight }}>
+        {/* SVG path layer */}
+        <svg
+          className="absolute left-0 top-0 w-full pointer-events-none"
+          viewBox={`0 0 ${pathWidth} ${totalHeight}`}
+          preserveAspectRatio="xMidYMin meet"
+        >
+          <defs>
+            <linearGradient id="snakeGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#8b5cf6" />
+              <stop offset="100%" stopColor="#6366f1" />
+            </linearGradient>
+            <filter id="pathGlow">
+              <feGaussianBlur stdDeviation="6" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
 
-            {/* Currently Working On */}
-            {currentStandard && (
-              <div className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 shadow-sm">
-                <div className="text-[11px] text-zinc-400 dark:text-slate-500 font-medium uppercase tracking-wide mb-2">Now Working On</div>
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-indigo-100 text-indigo-700">
-                    {currentStandard.standard_id}
-                  </span>
-                </div>
-                <p className="text-sm text-zinc-700 dark:text-slate-300 leading-snug">
-                  {shortName(currentStandard.standard_description)}
-                </p>
-                <Link
-                  href={`/practice?child=${child.id}&standard=${currentStandard.standard_id}`}
-                  className="mt-3 block w-full text-center px-3 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-xs font-bold hover:from-indigo-700 hover:to-violet-600 transition-all shadow-sm"
-                >
-                  Continue Practice →
-                </Link>
-              </div>
-            )}
+          {/* Road shadow (3D depth — cast underneath) */}
+          <path
+            d={fullPathD}
+            fill="none"
+            stroke="rgba(0,0,0,0.18)"
+            strokeWidth={PATH_BORDER_W}
+            strokeLinecap="round"
+            transform="translate(0, 5)"
+          />
 
-            {/* Domain Progress */}
-            <div className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 shadow-sm">
-              <div className="text-[11px] text-zinc-400 dark:text-slate-500 font-medium uppercase tracking-wide mb-3">Domain Progress</div>
-              <div className="space-y-3">
-                {domainProgress.map((dp) => {
-                  const meta = DOMAIN_META[dp.domain];
-                  const dpPct = dp.total > 0 ? Math.round((dp.completed / dp.total) * 100) : 0;
-                  return (
-                    <div key={dp.domain}>
-                      <div className="flex items-center justify-between mb-1">
-                        <span className="text-xs font-medium text-zinc-700 dark:text-slate-300">{meta.emoji} {dp.domain}</span>
-                        <span className="text-[10px] text-zinc-400 dark:text-slate-500">{dp.completed}/{dp.total}</span>
-                      </div>
-                      <div className="h-1.5 bg-zinc-100 dark:bg-slate-700 rounded-full overflow-hidden">
-                        <div
-                          className="h-full rounded-full transition-all duration-700"
-                          style={{ width: `${dpPct}%`, backgroundColor: meta.fill }}
-                        />
-                      </div>
-                    </div>
-                  );
-                })}
+          {/* Road border — dark outline for board game trail feel */}
+          <path
+            d={fullPathD}
+            fill="none"
+            stroke="#312e81"
+            strokeWidth={PATH_BORDER_W}
+            strokeLinecap="round"
+            className="dark:stroke-indigo-950"
+          />
+
+          {/* Road surface — base trail color */}
+          <path
+            d={fullPathD}
+            fill="none"
+            stroke="#ede9fe"
+            strokeWidth={PATH_ROAD_W}
+            strokeLinecap="round"
+            className="dark:stroke-slate-700"
+          />
+
+          {/* Completed road — gradient overlay */}
+          {completedPathD && (
+            <path
+              d={completedPathD}
+              fill="none"
+              stroke="url(#snakeGrad)"
+              strokeWidth={PATH_ROAD_W}
+              strokeLinecap="round"
+              filter="url(#pathGlow)"
+            />
+          )}
+        </svg>
+
+        {/* Domain labels */}
+        {nodes
+          .filter((n) => n.isFirstOfDomain)
+          .map((n) => {
+            const meta = DOMAIN_META[n.domain];
+            return (
+              <div
+                key={`domain-${n.domain}`}
+                className="absolute left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-zinc-200/60 dark:border-slate-700/60 shadow-sm"
+                style={{ top: n.y - 62 }}
+              >
+                <span className="text-sm">{meta?.emoji}</span>
+                <span className="text-[11px] font-semibold text-zinc-600 dark:text-slate-300">{n.domain}</span>
               </div>
-            </div>
+            );
+          })}
+
+        {/* Mascot bubbles */}
+        {mascots.map((m) => (
+          <MascotBubble key={m.nodeIndex} mascot={m} containerWidth={pathWidth} />
+        ))}
+
+        {/* Nodes */}
+        {nodes.map((node) => {
+          const p = progress[node.standard.standard_id];
+          const isActive = activeNode === node.standard.standard_id;
+          const isPremium = node.globalIdx >= FREE_STANDARD_COUNT && userPlan !== "premium";
+
+          return (
+            <MapNode
+              key={node.standard.standard_id}
+              node={node}
+              progress={p}
+              isActive={isActive}
+              isPremium={isPremium}
+              childId={child.id}
+              containerWidth={pathWidth}
+              onClick={() => setActiveNode(isActive ? null : node.standard.standard_id)}
+              onClose={closeActive}
+            />
+          );
+        })}
+
+        {/* Trophy at end */}
+        <div
+          className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center"
+          style={{ top: totalHeight - 80 }}
+        >
+          <div className="w-20 h-20 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-3xl shadow-[0_4px_0_0_#c2410c,0_8px_24px_rgba(245,158,11,0.4)]">
+            🏆
           </div>
-        </div>
-
-        {/* Path column (right on desktop, full-width on mobile) */}
-        <div className="flex-1 flex justify-center">
-          <div ref={pathRef} className="relative w-full md:max-w-[480px]" style={{ height: layout.totalHeight }}>
-            {/* SVG connecting path */}
-            <svg
-              className="absolute left-0 top-0 w-full pointer-events-none"
-              viewBox={`0 0 ${pathWidth} ${layout.totalHeight}`}
-              preserveAspectRatio="xMidYMin meet"
-            >
-              <defs>
-                <linearGradient id="roadmapGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#6366f1" />
-                  <stop offset="100%" stopColor="#8b5cf6" />
-                </linearGradient>
-                <filter id="pathGlow">
-                  <feGaussianBlur stdDeviation="4" result="blur" />
-                  <feMerge>
-                    <feMergeNode in="blur" />
-                    <feMergeNode in="SourceGraphic" />
-                  </feMerge>
-                </filter>
-              </defs>
-              {/* Gray dashed remaining path */}
-              <path d={pathD} fill="none" stroke={darkMode ? "#334155" : "#e5e7eb"} strokeWidth="5" strokeDasharray="12 8" strokeLinecap="round" />
-              {/* Completed portion — solid gradient with glow */}
-              {completedPathD && (
-                <path d={completedPathD} fill="none" stroke="url(#roadmapGrad)" strokeWidth="5" strokeLinecap="round" filter="url(#pathGlow)" />
-              )}
-            </svg>
-
-            {/* Layout items */}
-            {layout.items.map((item) => {
-              if (item.type === "header") {
-                const dm = DOMAIN_META[item.domain!];
-                const domainStds = ALL_STANDARDS.filter((s) => s.domain === item.domain);
-                const domainDone = domainStds.filter((s) => progress[s.standard_id]?.status === "completed").length;
-                return (
-                  <motion.div
-                    key={`hdr-${item.domain}`}
-                    className="absolute left-0 right-0"
-                    style={{ top: item.y - 12 }}
-                    initial={{ opacity: 0, x: -24 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, margin: "-30px" }}
-                    transition={{ duration: 0.4, ease: "easeOut" }}
-                  >
-                    <div className={`flex items-center gap-3 rounded-2xl border-2 ${dm.border} ${dm.bg} p-3.5 shadow-sm mx-auto`}>
-                      <span className="text-2xl">{dm.emoji}</span>
-                      <div className="flex-1 min-w-0">
-                        <div className={`font-bold text-sm ${dm.color}`}>{item.domain}</div>
-                        <div className="text-[11px] text-zinc-500">
-                          {domainDone}/{domainStds.length} standards complete
-                        </div>
-                      </div>
-                      {domainDone === domainStds.length && (
-                        <span className="w-7 h-7 rounded-full bg-gradient-to-b from-emerald-400 to-emerald-600 flex items-center justify-center shadow-[0_2px_0_0_#059669] flex-shrink-0">
-                          <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                          </svg>
-                        </span>
-                      )}
-                    </div>
-                  </motion.div>
-                );
-              }
-
-              const std = item.standard!;
-              const p = progress[std.standard_id];
-              const isActive = activeNode === std.standard_id;
-              const isPremium = item.globalIdx! >= FREE_STANDARD_COUNT && userPlan !== "premium";
-
-              return (
-                <NodeBubble
-                  key={std.standard_id}
-                  standard={std}
-                  progress={p}
-                  x={item.x}
-                  y={item.y}
-                  index={item.globalIdx!}
-                  isActive={isActive}
-                  isPremium={isPremium}
-                  childId={child.id}
-                  containerWidth={pathWidth}
-                  onClick={() => setActiveNode(isActive ? null : std.standard_id)}
-                  onClose={closeActive}
-                />
-              );
-            })}
-
-            {/* Trophy at end */}
-            <div
-              className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center"
-              style={{ top: layout.totalHeight - 90 }}
-            >
-              <div className="w-20 h-20 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-3xl shadow-[0_4px_0_0_#c2410c,0_8px_24px_rgba(245,158,11,0.4)]">
-                🏆
-              </div>
-              <p className="text-sm font-bold text-zinc-700 dark:text-slate-200 mt-3">Level Complete!</p>
-              <p className="text-xs text-zinc-400 dark:text-slate-500">Master all {ALL_STANDARDS.length} standards</p>
-            </div>
-          </div>
+          <p className="text-sm font-bold text-zinc-700 dark:text-slate-200 mt-3">Level Complete!</p>
+          <p className="text-xs text-zinc-400 dark:text-slate-500">Master all {ALL_STANDARDS.length} standards</p>
         </div>
       </div>
     </div>
@@ -502,15 +504,14 @@ function Roadmap({ child, userPlan }: { child: Child; userPlan: string }) {
 }
 
 /* ═══════════════════════════════════════════════════════ */
-/*  Mobile Progress Card                                   */
+/*  Top Progress Bar                                       */
 /* ═══════════════════════════════════════════════════════ */
 
-function MobileProgressCard({ pct, completedCount, totalXP, streakDays, currentDomain }: {
+function TopProgressBar({ pct, completedCount, totalXP, streakDays }: {
   pct: number;
   completedCount: number;
   totalXP: number;
   streakDays: number;
-  currentDomain: string;
 }) {
   return (
     <div className="rounded-2xl bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 p-4 shadow-lg">
@@ -529,7 +530,7 @@ function MobileProgressCard({ pct, completedCount, totalXP, streakDays, currentD
         </div>
         <div className="flex-1 min-w-0">
           <div className="text-white font-bold">{completedCount} of {ALL_STANDARDS.length} standards</div>
-          <div className="text-white/60 text-xs mt-0.5">Currently: {currentDomain}</div>
+          <div className="text-white/60 text-xs mt-0.5">Keep up the great work!</div>
         </div>
       </div>
       <div className="grid grid-cols-3 gap-2">
@@ -542,8 +543,8 @@ function MobileProgressCard({ pct, completedCount, totalXP, streakDays, currentD
           <div className="text-white/50 text-[9px]">Streak</div>
         </div>
         <div className="bg-white/10 rounded-lg p-2 text-center">
-          <div className="text-white font-bold text-sm">4</div>
-          <div className="text-white/50 text-[9px]">Domains</div>
+          <div className="text-white font-bold text-sm">{ALL_STANDARDS.length}</div>
+          <div className="text-white/50 text-[9px]">Total</div>
         </div>
       </div>
     </div>
@@ -551,17 +552,49 @@ function MobileProgressCard({ pct, completedCount, totalXP, streakDays, currentD
 }
 
 /* ═══════════════════════════════════════════════════════ */
-/*  Node Bubble — Duolingo-style                           */
+/*  Mascot Bubble                                          */
 /* ═══════════════════════════════════════════════════════ */
 
-function NodeBubble({
-  standard, progress, x, y, index, isActive, isPremium, childId, containerWidth, onClick, onClose,
+function MascotBubble({ mascot, containerWidth }: {
+  mascot: { emoji: string; message: string; x: number; y: number; side: "left" | "right" };
+  containerWidth: number;
+}) {
+  const leftPct = containerWidth > 0 ? (mascot.x / containerWidth) * 100 : 50;
+  const clampedPct = Math.max(10, Math.min(90, leftPct));
+
+  return (
+    <motion.div
+      className="absolute hidden sm:flex items-center gap-2 z-10"
+      style={{ top: mascot.y - 20, left: `${clampedPct}%`, transform: "translateX(-50%)" }}
+      initial={{ opacity: 0, scale: 0.8 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true, margin: "-30px" }}
+      transition={{ duration: 0.4, delay: 0.2 }}
+    >
+      {mascot.side === "left" && (
+        <div className="bg-white dark:bg-slate-800 rounded-xl px-3 py-2 shadow-md text-sm font-medium text-violet-700 dark:text-violet-300 border border-violet-100 dark:border-violet-800 max-w-[160px]">
+          {mascot.message}
+        </div>
+      )}
+      <span className="text-4xl drop-shadow-md">{mascot.emoji}</span>
+      {mascot.side === "right" && (
+        <div className="bg-white dark:bg-slate-800 rounded-xl px-3 py-2 shadow-md text-sm font-medium text-violet-700 dark:text-violet-300 border border-violet-100 dark:border-violet-800 max-w-[160px]">
+          {mascot.message}
+        </div>
+      )}
+    </motion.div>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════ */
+/*  Map Node                                               */
+/* ═══════════════════════════════════════════════════════ */
+
+function MapNode({
+  node, progress, isActive, isPremium, childId, containerWidth, onClick, onClose,
 }: {
-  standard: Standard;
+  node: NodeLayout;
   progress: StandardProgress;
-  x: number;
-  y: number;
-  index: number;
   isActive: boolean;
   isPremium: boolean;
   childId: string;
@@ -571,7 +604,11 @@ function NodeBubble({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const status = progress.status;
-  const dm = DOMAIN_META[standard.domain] || DOMAIN_META["Reading Literature"];
+  const standard = node.standard;
+
+  // Label side: nodes on the right → label left (toward center), and vice-versa
+  const phase = node.globalIdx % 4;
+  const labelRight = phase === 0 || phase === 3;
 
   useEffect(() => {
     if (!isActive) return;
@@ -582,189 +619,247 @@ function NodeBubble({
     return () => document.removeEventListener("mousedown", handler);
   }, [isActive, onClose]);
 
-  // Node sizes: current=76px, completed=64px, locked=56px
-  const nodeSize = status === "current" ? 76 : status === "completed" ? 64 : 56;
-  const leftPct = containerWidth > 0 ? (x / containerWidth) * 100 : 50;
+  // Compact nodes that sit INSIDE the fat road
+  const nodeSize = status === "current" ? 48 : status === "completed" ? 42 : 36;
+  const leftPct = containerWidth > 0 ? (node.x / containerWidth) * 100 : 50;
 
-  // Tooltip positioning: keep within container
-  const isLeftSide = leftPct < 50;
+  const kidName = KID_NAMES[standard.standard_id] || "Lesson";
+
+  // Margin must clear the path border (PATH_BORDER_W/2) from the node edge
+  const labelMargin = Math.max(16, PATH_BORDER_W / 2 - nodeSize / 2 + 10);
+
+  const labelColorClass =
+    status === "completed" ? "text-emerald-700 dark:text-emerald-400"
+    : status === "current" ? "text-indigo-700 dark:text-indigo-400"
+    : isPremium ? "text-violet-400"
+    : "text-zinc-400 dark:text-zinc-500";
 
   return (
     <motion.div
       ref={ref}
       id={`node-${standard.standard_id}`}
-      className="absolute flex flex-col items-center"
+      className="absolute"
       style={{
-        top: y - nodeSize / 2,
+        top: node.y - nodeSize / 2,
         left: `${leftPct}%`,
-        transform: "translateX(-50%)",
+        width: nodeSize,
+        height: nodeSize,
         zIndex: isActive ? 50 : status === "current" ? 20 : 10,
       }}
-      initial={{ opacity: 0, scale: 0.8 }}
-      whileInView={{ opacity: 1, scale: 1 }}
+      initial={{ opacity: 0, scale: 0.8, x: "-50%" }}
+      whileInView={{ opacity: 1, scale: 1, x: "-50%" }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.3 }}
     >
-      {/* Circle node */}
-      <button
-        onClick={onClick}
-        style={{ width: nodeSize, height: nodeSize }}
-        className={`
-          relative rounded-full flex items-center justify-center
-          transition-all duration-300 outline-none select-none
-          ${isPremium && status === "locked"
-            ? "bg-gradient-to-b from-indigo-300 to-violet-400 text-white/70 shadow-[0_3px_0_0_#6d28d9]"
-            : status === "completed"
-            ? "bg-gradient-to-b from-emerald-400 to-emerald-600 text-white shadow-[0_4px_0_0_#059669,0_6px_12px_rgba(16,185,129,0.25)]"
-            : status === "current"
-            ? "bg-gradient-to-br from-indigo-500 via-violet-500 to-purple-600 text-white shadow-[0_4px_0_0_#4338ca,0_0_20px_rgba(99,102,241,0.4)] roadmap-breathe"
-            : "bg-gradient-to-b from-zinc-300 to-zinc-400 text-zinc-500 shadow-[0_3px_0_0_#a1a1aa]"
-          }
-          ${status !== "locked" ? "cursor-pointer hover:brightness-110 active:translate-y-[2px] active:shadow-none" : "cursor-pointer hover:brightness-105"}
-          ${isActive ? "brightness-110 ring-4 ring-indigo-400/40" : ""}
-        `}
-        aria-label={`${standard.standard_id}: ${standard.standard_description}`}
-      >
-        {status === "completed" && (
-          <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
+      {/* ── Node circle — fills container, centered exactly on path ── */}
+      {status === "completed" && (
+        <motion.button
+          onClick={onClick}
+          whileHover={{ scale: 1.15 }}
+          whileTap={{ scale: 0.95 }}
+          className={`
+            w-full h-full relative rounded-full flex items-center justify-center
+            bg-gradient-to-b from-emerald-400 to-emerald-600 text-white
+            shadow-[0_3px_0_0_#059669] outline-none select-none cursor-pointer
+            border-[3px] border-emerald-300/80
+            ${isActive ? "ring-4 ring-emerald-400/40" : ""}
+          `}
+          aria-label={`${standard.standard_id}: ${standard.standard_description}`}
+        >
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
           </svg>
-        )}
-        {status === "current" && (
-          <span className="text-xl font-extrabold drop-shadow-sm">{index + 1}</span>
-        )}
-        {status === "locked" && !isPremium && (
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-          </svg>
-        )}
-        {status === "locked" && isPremium && (
-          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-          </svg>
-        )}
-
-        {/* Star badge for completed */}
-        {status === "completed" && (
-          <span className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-amber-400 flex items-center justify-center text-[11px] shadow-sm border-2 border-white">
+          <span className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-amber-400 flex items-center justify-center text-[9px] shadow-sm border-2 border-white">
             ⭐
           </span>
-        )}
+        </motion.button>
+      )}
 
-        {/* Readee+ badge */}
-        {isPremium && status === "locked" && (
-          <span className="absolute -top-1 -right-1 px-1.5 py-0.5 rounded-full bg-gradient-to-r from-indigo-500 to-violet-500 text-[7px] font-extrabold text-white shadow-sm leading-none border border-white">
-            R+
-          </span>
-        )}
-      </button>
-
-      {/* Label */}
-      <span className={`mt-1.5 text-[10px] font-bold whitespace-nowrap ${
-        status === "completed" ? "text-emerald-600"
-        : status === "current" ? "text-indigo-600"
-        : isPremium ? "text-violet-400"
-        : "text-zinc-400"
-      }`}>
-        {standard.standard_id}
-      </span>
-
-      {/* ── Tooltip ── */}
-      {isActive && (
-        <div
-          className="absolute top-full mt-2 z-50"
-          style={{ width: 288, left: isLeftSide ? -40 : -200 }}
+      {status === "current" && (
+        <motion.button
+          onClick={onClick}
+          whileHover={{ scale: 1.1 }}
+          className={`
+            w-full h-full relative rounded-full flex items-center justify-center
+            bg-gradient-to-br from-indigo-500 to-violet-600 text-white
+            shadow-[0_4px_0_0_#4338ca] outline-none select-none cursor-pointer
+            border-[3px] border-indigo-300/80
+            roadmap-breathe
+            ${isActive ? "ring-4 ring-indigo-400/40" : ""}
+          `}
+          aria-label={`${standard.standard_id}: ${standard.standard_description}`}
         >
-          <div className="rounded-2xl bg-white dark:bg-slate-800 border border-zinc-200 dark:border-slate-700 shadow-xl p-4 space-y-3">
-            <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white dark:bg-slate-800 border-l border-t border-zinc-200 dark:border-slate-700 rotate-45" />
+          <span className="text-lg font-extrabold drop-shadow-sm">{node.globalIdx + 1}</span>
+        </motion.button>
+      )}
 
-            <div className="relative">
-              <div className="flex items-center gap-2 flex-wrap">
-                <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${dm.bg} ${dm.color}`}>
-                  {standard.standard_id}
-                </span>
-                <StatusBadge status={status} isPremium={isPremium} />
-              </div>
-              <h4 className="font-bold text-sm text-zinc-900 dark:text-slate-100 mt-2 leading-snug">
-                {shortName(standard.standard_description)}
-              </h4>
-              <p className="text-[11px] text-zinc-500 dark:text-slate-400 mt-1 leading-relaxed">
-                {standard.standard_description}
-              </p>
-            </div>
-
-            {status === "completed" && progress.score != null && (
-              <>
-                <div className="flex gap-3">
-                  <div className="flex-1 bg-emerald-50 rounded-xl p-2.5 text-center">
-                    <div className="text-emerald-700 font-bold text-sm">{progress.score}/{progress.total}</div>
-                    <div className="text-emerald-600 text-[10px]">Correct</div>
-                  </div>
-                  <div className="flex-1 bg-amber-50 rounded-xl p-2.5 text-center">
-                    <div className="text-amber-700 font-bold text-sm">+{progress.xpEarned}</div>
-                    <div className="text-amber-600 text-[10px]">XP Earned</div>
-                  </div>
-                </div>
-                <Link
-                  href={`/practice?child=${childId}&standard=${standard.standard_id}`}
-                  className="block w-full text-center px-4 py-2.5 rounded-xl bg-emerald-50 text-emerald-700 text-sm font-bold hover:bg-emerald-100 transition-all border border-emerald-200"
-                >
-                  Practice Again
-                </Link>
-              </>
-            )}
-
-            {status === "current" && progress.score != null && (
-              <div className="bg-indigo-50 rounded-xl p-2.5">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs text-indigo-600 font-medium">Progress</span>
-                  <span className="text-xs font-bold text-indigo-700">{progress.score}/{progress.total}</span>
-                </div>
-                <div className="mt-1.5 h-2 bg-indigo-100 rounded-full overflow-hidden">
-                  <div
-                    className="h-full bg-gradient-to-r from-indigo-500 to-violet-500 rounded-full"
-                    style={{ width: `${((progress.score || 0) / (progress.total || 1)) * 100}%` }}
-                  />
-                </div>
-              </div>
-            )}
-
-            {status === "current" && (
-              <Link
-                href={`/practice?child=${childId}&standard=${standard.standard_id}`}
-                className="block w-full text-center px-4 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-sm font-bold hover:from-indigo-700 hover:to-violet-600 transition-all shadow-md"
-              >
-                {progress.score && progress.score > 0 ? "Continue" : "Start"} Practice →
-              </Link>
-            )}
-
-            {status === "locked" && !isPremium && (
-              <p className="text-center text-[11px] text-zinc-400 dark:text-slate-500 py-1">
-                Complete previous standards to unlock
-              </p>
-            )}
-
-            {status === "locked" && isPremium && (
-              <div className="space-y-2">
-                <div className="bg-gradient-to-r from-indigo-50 to-violet-50 rounded-xl p-3 text-center">
-                  <p className="text-[11px] text-indigo-600 font-medium">
-                    This standard is part of Readee+
-                  </p>
-                </div>
-                <Link
-                  href={`/upgrade?child=${childId}`}
-                  className="flex items-center justify-center gap-1.5 w-full px-4 py-2.5 rounded-xl bg-gradient-to-r from-indigo-500 to-violet-500 text-white text-sm font-bold hover:from-indigo-600 hover:to-violet-600 transition-all shadow-md"
-                >
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                  Upgrade to Readee+
-                </Link>
-              </div>
-            )}
-          </div>
+      {status === "locked" && (
+        <div
+          onClick={onClick}
+          className={`
+            w-full h-full relative rounded-full flex items-center justify-center cursor-pointer
+            border-[3px]
+            ${isPremium
+              ? "bg-gradient-to-b from-indigo-300 to-violet-400 text-white/70 shadow-[0_2px_0_0_#6d28d9] opacity-70 border-violet-300/50"
+              : "bg-gradient-to-b from-zinc-300 to-zinc-400 text-zinc-500 shadow-[0_2px_0_0_#a1a1aa] opacity-60 border-zinc-200"
+            }
+          `}
+          aria-label={`${standard.standard_id}: ${standard.standard_description}`}
+        >
+          {isPremium ? (
+            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+          ) : (
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            </svg>
+          )}
+          {isPremium && (
+            <span className="absolute -top-1 -right-1 px-1 py-0.5 rounded-full bg-gradient-to-r from-indigo-500 to-violet-500 text-[6px] font-extrabold text-white shadow-sm leading-none border border-white">
+              R+
+            </span>
+          )}
         </div>
       )}
+
+      {/* ── Kid-friendly label — to the side, clear of the path ── */}
+      <div
+        className="absolute top-1/2 -translate-y-1/2 pointer-events-none whitespace-nowrap"
+        style={labelRight
+          ? { left: "100%", marginLeft: labelMargin }
+          : { right: "100%", marginRight: labelMargin }
+        }
+      >
+        <span className={`text-[11px] font-semibold ${labelColorClass}`}>
+          {kidName}
+        </span>
+      </div>
+
+      {/* ── Tooltip ── */}
+      <AnimatePresence>
+        {isActive && (
+          <NodeTooltip
+            standard={standard}
+            progress={progress}
+            isPremium={isPremium}
+            childId={childId}
+            nodeSize={nodeSize}
+          />
+        )}
+      </AnimatePresence>
+    </motion.div>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════ */
+/*  Node Tooltip                                           */
+/* ═══════════════════════════════════════════════════════ */
+
+function NodeTooltip({ standard, progress, isPremium, childId, nodeSize }: {
+  standard: Standard;
+  progress: StandardProgress;
+  isPremium: boolean;
+  childId: string;
+  nodeSize: number;
+}) {
+  const status = progress.status;
+  const tooltipW = 280;
+
+  return (
+    <motion.div
+      className="absolute top-full mt-3 z-50"
+      style={{ width: tooltipW, left: -(tooltipW - nodeSize) / 2 }}
+      initial={{ opacity: 0, y: -8 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -8 }}
+      transition={{ duration: 0.2 }}
+    >
+      <div className="rounded-2xl bg-white dark:bg-slate-800 border border-zinc-200 dark:border-slate-700 shadow-xl p-4 space-y-3">
+        <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white dark:bg-slate-800 border-l border-t border-zinc-200 dark:border-slate-700 rotate-45" />
+
+        <div className="relative">
+          <div className="flex items-center gap-2 flex-wrap">
+            <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-violet-50 text-violet-700 dark:bg-violet-900/30 dark:text-violet-300">
+              {KID_NAMES[standard.standard_id] || "Lesson"}
+            </span>
+            <StatusBadge status={status} isPremium={isPremium} />
+          </div>
+          <h4 className="font-bold text-sm text-zinc-900 dark:text-slate-100 mt-2 leading-snug">
+            {shortName(standard.standard_description)}
+          </h4>
+        </div>
+
+        {status === "completed" && progress.score != null && (
+          <>
+            <div className="flex gap-3">
+              <div className="flex-1 bg-emerald-50 dark:bg-emerald-900/20 rounded-xl p-2.5 text-center">
+                <div className="text-emerald-700 dark:text-emerald-400 font-bold text-sm">{progress.score}/{progress.total}</div>
+                <div className="text-emerald-600 dark:text-emerald-500 text-[10px]">Correct</div>
+              </div>
+              <div className="flex-1 bg-amber-50 dark:bg-amber-900/20 rounded-xl p-2.5 text-center">
+                <div className="text-amber-700 dark:text-amber-400 font-bold text-sm">+{progress.xpEarned}</div>
+                <div className="text-amber-600 dark:text-amber-500 text-[10px]">XP Earned</div>
+              </div>
+            </div>
+            <Link
+              href={`/practice?child=${childId}&standard=${standard.standard_id}`}
+              className="block w-full text-center px-4 py-2.5 rounded-xl bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-400 text-sm font-bold hover:bg-emerald-100 dark:hover:bg-emerald-900/30 transition-all border border-emerald-200 dark:border-emerald-800"
+            >
+              Practice Again
+            </Link>
+          </>
+        )}
+
+        {status === "current" && progress.score != null && (
+          <div className="bg-indigo-50 dark:bg-indigo-900/20 rounded-xl p-2.5">
+            <div className="flex items-center justify-between">
+              <span className="text-xs text-indigo-600 dark:text-indigo-400 font-medium">Progress</span>
+              <span className="text-xs font-bold text-indigo-700 dark:text-indigo-300">{progress.score}/{progress.total}</span>
+            </div>
+            <div className="mt-1.5 h-2 bg-indigo-100 dark:bg-indigo-900/30 rounded-full overflow-hidden">
+              <div
+                className="h-full bg-gradient-to-r from-indigo-500 to-violet-500 rounded-full"
+                style={{ width: `${((progress.score || 0) / (progress.total || 1)) * 100}%` }}
+              />
+            </div>
+          </div>
+        )}
+
+        {status === "current" && (
+          <Link
+            href={`/practice?child=${childId}&standard=${standard.standard_id}`}
+            className="block w-full text-center px-4 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-sm font-bold hover:from-indigo-700 hover:to-violet-600 transition-all shadow-md"
+          >
+            {progress.score && progress.score > 0 ? "Continue" : "Start"} Practice →
+          </Link>
+        )}
+
+        {status === "locked" && !isPremium && (
+          <p className="text-center text-[11px] text-zinc-400 dark:text-slate-500 py-1">
+            Complete previous standards to unlock
+          </p>
+        )}
+
+        {status === "locked" && isPremium && (
+          <div className="space-y-2">
+            <div className="bg-gradient-to-r from-indigo-50 to-violet-50 dark:from-indigo-900/20 dark:to-violet-900/20 rounded-xl p-3 text-center">
+              <p className="text-[11px] text-indigo-600 dark:text-indigo-400 font-medium">
+                This standard is part of Readee+
+              </p>
+            </div>
+            <Link
+              href={`/upgrade?child=${childId}`}
+              className="flex items-center justify-center gap-1.5 w-full px-4 py-2.5 rounded-xl bg-gradient-to-r from-indigo-500 to-violet-500 text-white text-sm font-bold hover:from-indigo-600 hover:to-violet-600 transition-all shadow-md"
+            >
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+              Upgrade to Readee+
+            </Link>
+          </div>
+        )}
+      </div>
     </motion.div>
   );
 }
@@ -773,13 +868,13 @@ function NodeBubble({
 
 function StatusBadge({ status, isPremium }: { status: StandardProgress["status"]; isPremium: boolean }) {
   if (status === "completed") {
-    return <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-700">Completed ✓</span>;
+    return <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400">Completed ✓</span>;
   }
   if (status === "current") {
-    return <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-indigo-100 text-indigo-700">In Progress</span>;
+    return <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-400">In Progress</span>;
   }
   if (isPremium) {
-    return <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-gradient-to-r from-indigo-100 to-violet-100 text-indigo-600">Readee+</span>;
+    return <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-gradient-to-r from-indigo-100 to-violet-100 dark:from-indigo-900/30 dark:to-violet-900/30 text-indigo-600 dark:text-indigo-400">Readee+</span>;
   }
-  return <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-zinc-100 text-zinc-500">Locked 🔒</span>;
+  return <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400">Locked 🔒</span>;
 }
