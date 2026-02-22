@@ -2155,6 +2155,45 @@
             "/audio/kindergarten/RF.K.1a-q5-choice4.mp3"
           ],
           "hint_audio_url": "/audio/kindergarten/RF.K.1a-q5-hint.mp3"
+        },
+        {
+          "id": "RF.K.1a-Q6",
+          "type": "sentence_build",
+          "prompt": "Put the words in order to make a sentence.",
+          "words": ["Cat", "The", "Sat", "The", "On", "Mat"],
+          "correct": "The Cat Sat On The Mat.",
+          "sentence_hint": "🐱 A cat is sitting on something...",
+          "hint": "Start with a capital letter and end with a period.",
+          "difficulty": 1,
+          "audio_url": "/audio/prompts/put-words-in-order.mp3",
+          "hint_audio_url": "/audio/prompts/hint-cat-sitting.mp3",
+          "sentence_audio_url": "/audio/sentences/the-cat-sat-on-the-mat.mp3"
+        },
+        {
+          "id": "RF.K.1a-Q7",
+          "type": "sentence_build",
+          "prompt": "Put the words in the right order.",
+          "words": ["I", "Read", "To", "Like"],
+          "correct": "I Like To Read.",
+          "sentence_hint": "📚 Someone enjoys reading!",
+          "hint": "Start with 'I' and end with a period.",
+          "difficulty": 1,
+          "audio_url": "/audio/prompts/put-words-right-order.mp3",
+          "hint_audio_url": "/audio/prompts/hint-enjoys-reading.mp3",
+          "sentence_audio_url": "/audio/sentences/i-like-to-read.mp3"
+        },
+        {
+          "id": "RF.K.1a-Q8",
+          "type": "sentence_build",
+          "prompt": "Arrange the words to build a sentence.",
+          "words": ["Dog", "Ran", "The", "Fast"],
+          "correct": "The Dog Ran Fast.",
+          "sentence_hint": "🐕 A dog is moving quickly!",
+          "hint": "Start with a capital letter. What did the dog do?",
+          "difficulty": 2,
+          "audio_url": "/audio/prompts/arrange-words-build-sentence.mp3",
+          "hint_audio_url": "/audio/prompts/hint-dog-moving.mp3",
+          "sentence_audio_url": "/audio/sentences/the-dog-ran-fast.mp3"
         }
       ]
     },
@@ -4087,6 +4126,51 @@
           "correct": "Smile, giggle, laugh",
           "hint": "A smile is quiet, a giggle is in the middle, and a laugh is the biggest!",
           "difficulty": 2
+        },
+        {
+          "id": "K.L.5-Q6",
+          "type": "category_sort",
+          "prompt": "Sort these words into the correct group!",
+          "categories": ["Animals", "Colors"],
+          "category_items": {
+            "Animals": ["Dog", "Cat", "Bird"],
+            "Colors": ["Red", "Blue", "Green"]
+          },
+          "items": ["Dog", "Red", "Cat", "Blue", "Bird", "Green"],
+          "correct": "Animals: Dog, Cat, Bird | Colors: Red, Blue, Green",
+          "hint": "Animals are living creatures. Colors describe how things look.",
+          "difficulty": 1,
+          "audio_url": "/audio/prompts/sort-words-into-group.mp3"
+        },
+        {
+          "id": "K.L.5-Q7",
+          "type": "category_sort",
+          "prompt": "Sort these words into the correct group!",
+          "categories": ["Fruits", "Vegetables"],
+          "category_items": {
+            "Fruits": ["Apple", "Banana", "Grape"],
+            "Vegetables": ["Carrot", "Broccoli", "Pea"]
+          },
+          "items": ["Apple", "Carrot", "Banana", "Broccoli", "Grape", "Pea"],
+          "correct": "Fruits: Apple, Banana, Grape | Vegetables: Carrot, Broccoli, Pea",
+          "hint": "Fruits are usually sweet. Vegetables are usually green or orange.",
+          "difficulty": 1,
+          "audio_url": "/audio/prompts/sort-words-into-group.mp3"
+        },
+        {
+          "id": "K.L.5-Q8",
+          "type": "category_sort",
+          "prompt": "Sort these words into the correct group!",
+          "categories": ["Big", "Small"],
+          "category_items": {
+            "Big": ["Elephant", "Whale", "Mountain"],
+            "Small": ["Ant", "Ladybug", "Seed"]
+          },
+          "items": ["Elephant", "Ant", "Whale", "Ladybug", "Mountain", "Seed"],
+          "correct": "Big: Elephant, Whale, Mountain | Small: Ant, Ladybug, Seed",
+          "hint": "Think about the SIZE of each thing in real life.",
+          "difficulty": 2,
+          "audio_url": "/audio/prompts/sort-words-into-group.mp3"
         }
       ]
     },

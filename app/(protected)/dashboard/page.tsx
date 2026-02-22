@@ -652,6 +652,29 @@ function ChildDashboard({
         </motion.div>
       )}
 
+      {/* ── Sentence Building CTA ── */}
+      <motion.div variants={slideUp}>
+        <Link
+          href={`/practice?child=${child.id}&types=sentence_build,category_sort`}
+          className="block"
+        >
+          <div className="rounded-2xl bg-gradient-to-r from-amber-500 to-orange-500 p-4 text-white hover:from-amber-600 hover:to-orange-600 transition-all duration-200 shadow-md hover:shadow-lg hover:scale-[1.01] cursor-pointer">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center text-xl flex-shrink-0">
+                🧩
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="text-white font-bold text-base">Try Interactive Games!</div>
+                <div className="text-white/70 text-xs mt-0.5">Build sentences & sort words</div>
+              </div>
+              <span className="px-4 py-2 rounded-xl bg-white text-amber-700 font-bold text-xs shadow-sm flex-shrink-0">
+                Try it →
+              </span>
+            </div>
+          </div>
+        </Link>
+      </motion.div>
+
       {/* ── Stats Cards ── */}
       <motion.div variants={slideUp} className="grid grid-cols-3 gap-4">
         {/* XP Card */}

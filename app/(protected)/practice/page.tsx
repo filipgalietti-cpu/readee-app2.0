@@ -13,6 +13,8 @@ import { useThemeStore } from "@/lib/stores/theme-store";
 import { safeValidate } from "@/lib/validate";
 import { StandardsFileSchema, PracticeResultSchema } from "@/lib/schemas";
 import { fadeUp, staggerContainer, feedbackSlideUp, popIn, scaleIn } from "@/lib/motion/variants";
+import { SentenceBuild } from "@/app/components/practice/SentenceBuild";
+import { CategorySort } from "@/app/components/practice/CategorySort";
 import kStandards from "@/app/data/kindergarten-standards-questions.json";
 
 /* ─── Types ──────────────────────────────────────────── */
@@ -21,12 +23,18 @@ interface Question {
   id: string;
   type: string;
   prompt: string;
-  choices: string[];
+  choices?: string[];
   correct: string;
   hint: string;
   difficulty: number;
   audio_url?: string;
   hint_audio_url?: string;
+  words?: string[];
+  sentence_hint?: string;
+  sentence_audio_url?: string;
+  categories?: string[];
+  category_items?: Record<string, string[]>;
+  items?: string[];
 }
 
 interface Standard {
@@ -151,6 +159,7 @@ function PracticeLoader() {
   const params = useSearchParams();
   const childId = params.get("child");
   const standardId = params.get("standard");
+  const typesParam = params.get("types"); // e.g. "sentence_build,category_sort"
   const [child, setChild] = useState<Child | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -167,7 +176,25 @@ function PracticeLoader() {
 
   if (loading) return <LoadingScreen />;
 
-  const standard = ALL_STANDARDS.find((s) => s.standard_id === standardId);
+  // Build a virtual standard when filtering by question types across all standards
+  let standard: Standard | undefined;
+  if (typesParam) {
+    const types = new Set(typesParam.split(","));
+    const filtered = ALL_STANDARDS.flatMap((s) =>
+      s.questions.filter((q) => types.has(q.type))
+    );
+    if (filtered.length > 0) {
+      standard = {
+        standard_id: "mixed",
+        standard_description: "Interactive Questions",
+        domain: "Mixed",
+        parent_tip: "",
+        questions: filtered,
+      };
+    }
+  } else {
+    standard = ALL_STANDARDS.find((s) => s.standard_id === standardId);
+  }
 
   if (!child || !standard) {
     return (
@@ -287,6 +314,36 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
     selectAnswer(choice, correct, q.id, XP_PER_CORRECT, CORRECT_MESSAGES, CORRECT_EMOJIS, INCORRECT_MESSAGES);
 
     if (correct) {
+      playCorrectChime();
+    } else {
+      playIncorrectBuzz();
+    }
+  }, [selected, q, selectAnswer, stop, playCorrectChime, playIncorrectBuzz]);
+
+  /* ── Handle sentence build answer ── */
+  const handleSentenceBuildAnswer = useCallback((isCorrect: boolean, placedSentence: string) => {
+    if (selected !== null) return;
+    stop();
+    stopStaticAudio();
+
+    selectAnswer(placedSentence, isCorrect, q.id, XP_PER_CORRECT, CORRECT_MESSAGES, CORRECT_EMOJIS, INCORRECT_MESSAGES);
+
+    if (isCorrect) {
+      playCorrectChime();
+    } else {
+      playIncorrectBuzz();
+    }
+  }, [selected, q, selectAnswer, stop, playCorrectChime, playIncorrectBuzz]);
+
+  /* ── Handle category sort answer ── */
+  const handleCategorySortAnswer = useCallback((isCorrect: boolean, answer: string) => {
+    if (selected !== null) return;
+    stop();
+    stopStaticAudio();
+
+    selectAnswer(answer, isCorrect, q.id, XP_PER_CORRECT, CORRECT_MESSAGES, CORRECT_EMOJIS, INCORRECT_MESSAGES);
+
+    if (isCorrect) {
       playCorrectChime();
     } else {
       playIncorrectBuzz();
@@ -426,6 +483,31 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
         animate="visible"
         key={currentIdx}
       >
+        {/* Sentence build — renders its own prompt/passage */}
+        {q.type === "sentence_build" && q.words ? (
+          <SentenceBuild
+            prompt={question}
+            passage={passage}
+            words={q.words}
+            correctSentence={q.correct}
+            sentenceHint={q.sentence_hint}
+            sentenceAudioUrl={q.sentence_audio_url}
+            answered={selected !== null}
+            onAnswer={handleSentenceBuildAnswer}
+          />
+        ) : q.type === "category_sort" && q.categories && q.category_items && q.items ? (
+          <CategorySort
+            prompt={question}
+            categories={q.categories}
+            categoryItems={q.category_items}
+            items={q.items}
+            answered={selected !== null}
+            onAnswer={handleCategorySortAnswer}
+            onCorrectPlace={playCorrectChime}
+            onIncorrectPlace={playIncorrectBuzz}
+          />
+        ) : (
+        <>
         {/* Passage */}
         {passage && (
           <motion.div variants={fadeUp} className="mb-5 rounded-2xl bg-white border border-zinc-200 dark:bg-slate-800/80 dark:border-slate-700 p-5">
@@ -453,7 +535,7 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
 
         {/* Answer choices */}
         <div className="flex flex-col gap-3">
-          {q.choices.map((choice, i) => {
+          {(q.choices ?? []).map((choice, i) => {
             const isSelected = selected === choice;
             const isCorrectChoice = choice === q.correct;
             const answered = selected !== null;
@@ -540,6 +622,8 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
             );
           })}
         </div>
+        </>
+        )}
       </motion.div>
 
       {/* ── Bottom feedback bar (Duolingo-style) ── */}
