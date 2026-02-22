@@ -55,7 +55,7 @@ const FAQS = [
   },
   {
     q: "Is there a free trial?",
-    a: "Yes! Try Readee+ free for 7 days. You won't be charged until the trial ends, and you can cancel anytime during the trial.",
+    a: "Yes! Try readee+ free for 7 days. You won't be charged until the trial ends, and you can cancel anytime during the trial.",
   },
   {
     q: "What's included in the free plan?",
@@ -239,10 +239,10 @@ function UpgradeContent() {
           they deserve with{" "}
           <span className="relative inline-block">
             <span className="bg-gradient-to-r from-violet-600 via-purple-500 to-indigo-500 bg-clip-text text-transparent">
-              Readee+
+              readee+
             </span>
             <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent bg-[length:200%_100%] bg-clip-text text-transparent animate-textShimmer pointer-events-none" aria-hidden="true">
-              Readee+
+              readee+
             </span>
           </span>
         </h1>
@@ -288,14 +288,14 @@ function UpgradeContent() {
         )}
       </motion.div>
 
-      {/* ── COMPARISON TABLE: Free vs Readee+ ── */}
+      {/* ── COMPARISON TABLE: Free vs readee+ ── */}
       <motion.div variants={slideUp} className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 overflow-hidden">
         <table className="w-full">
           <thead>
             <tr className="border-b border-zinc-100 dark:border-slate-700">
               <th className="px-4 py-3 text-left text-sm font-bold text-zinc-700 dark:text-slate-300">Feature</th>
               <th className="w-20 sm:w-24 px-2 py-3 text-center text-sm font-bold text-zinc-500 dark:text-slate-400">Free</th>
-              <th className="w-20 sm:w-24 px-2 py-3 text-center text-sm font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/30">Readee+</th>
+              <th className="w-20 sm:w-24 px-2 py-3 text-center text-sm font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/30">readee+</th>
             </tr>
           </thead>
           <tbody>
@@ -509,7 +509,7 @@ function UpgradeContent() {
                       </svg>
                     </div>
                     <h2 className="text-xl font-bold text-zinc-900 dark:text-slate-100">
-                      Readee+ is launching soon!
+                      readee+ is launching soon!
                     </h2>
                     <p className="text-sm text-zinc-500 dark:text-slate-400 mt-2">
                       Be first in line and get{" "}
@@ -548,7 +548,7 @@ function UpgradeContent() {
                     You&apos;re on the list!
                   </h2>
                   <p className="text-sm text-zinc-500 dark:text-slate-400 mt-2">
-                    We&apos;ll email you when Readee+ is ready with your exclusive 20% discount.
+                    We&apos;ll email you when readee+ is ready with your exclusive 20% discount.
                   </p>
                   <button
                     onClick={() => setShowModal(false)}
