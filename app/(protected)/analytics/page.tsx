@@ -294,15 +294,19 @@ function AnalyticsDashboard({ child }: { child: Child }) {
     }));
   }, [filteredResults, standardNameMap, standardDomainMap]);
 
-  // Strengths & weaknesses
-  const strengths = useMemo(() =>
-    [...standardStats].filter((s) => s.attempted >= 1).sort((a, b) => b.accuracy - a.accuracy).slice(0, 3),
+  // Strengths & weaknesses (full lists)
+  const allStrengths = useMemo(() =>
+    [...standardStats].filter((s) => s.attempted >= 1).sort((a, b) => b.accuracy - a.accuracy),
     [standardStats]
   );
-  const weaknesses = useMemo(() =>
-    [...standardStats].filter((s) => s.attempted >= 1).sort((a, b) => a.accuracy - b.accuracy).slice(0, 3),
+  const allWeaknesses = useMemo(() =>
+    [...standardStats].filter((s) => s.attempted >= 1).sort((a, b) => a.accuracy - b.accuracy),
     [standardStats]
   );
+  const [showAllStrengths, setShowAllStrengths] = useState(false);
+  const [showAllWeaknesses, setShowAllWeaknesses] = useState(false);
+  const strengths = showAllStrengths ? allStrengths : allStrengths.slice(0, 3);
+  const weaknesses = showAllWeaknesses ? allWeaknesses : allWeaknesses.slice(0, 3);
 
   // Chart data — group by day
   const chartData = useMemo(() => {
@@ -491,6 +495,14 @@ function AnalyticsDashboard({ child }: { child: Child }) {
                     <span className="text-sm font-bold text-emerald-600 dark:text-emerald-400 flex-shrink-0">{s.accuracy}%</span>
                   </div>
                 ))}
+                {allStrengths.length > 3 && (
+                  <button
+                    onClick={() => setShowAllStrengths(!showAllStrengths)}
+                    className="text-xs font-medium text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 mt-1"
+                  >
+                    {showAllStrengths ? "Show less" : `Show all ${allStrengths.length}`}
+                  </button>
+                )}
               </div>
             ) : (
               <p className="text-sm text-zinc-500 dark:text-slate-400">Keep practicing to discover strengths!</p>
@@ -521,6 +533,14 @@ function AnalyticsDashboard({ child }: { child: Child }) {
                     </Link>
                   </div>
                 ))}
+                {allWeaknesses.length > 3 && (
+                  <button
+                    onClick={() => setShowAllWeaknesses(!showAllWeaknesses)}
+                    className="text-xs font-medium text-amber-600 dark:text-amber-400 hover:text-amber-700 dark:hover:text-amber-300 mt-1"
+                  >
+                    {showAllWeaknesses ? "Show less" : `Show all ${allWeaknesses.length}`}
+                  </button>
+                )}
               </div>
             ) : (
               <p className="text-sm text-zinc-500 dark:text-slate-400">Great work so far! Keep it up!</p>

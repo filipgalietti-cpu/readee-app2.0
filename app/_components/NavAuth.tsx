@@ -195,9 +195,6 @@ export default function NavAuth() {
             </>
           ) : (
             <>
-              <Link href="/about" className={linkClass("/about")}>
-                About
-              </Link>
               <Link
                 href="/login"
                 className={linkClass("/login")}
@@ -271,9 +268,6 @@ export default function NavAuth() {
             </>
           ) : (
             <>
-              <Link href="/about" className="block py-2.5 text-sm font-medium text-zinc-700 dark:text-slate-300 hover:text-indigo-700 dark:hover:text-indigo-300">
-                About
-              </Link>
               <Link href="/login" className="block py-2.5 text-sm font-medium text-zinc-700 dark:text-slate-300 hover:text-indigo-700 dark:hover:text-indigo-300">
                 Log In
               </Link>
