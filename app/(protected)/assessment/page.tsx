@@ -192,6 +192,14 @@ function AssessmentContent() {
         >
           Start Quiz
         </button>
+        <div>
+          <Link
+            href="/dashboard"
+            className="text-sm text-zinc-400 hover:text-zinc-600 transition-colors"
+          >
+            Skip for now
+          </Link>
+        </div>
       </div>
     );
   }

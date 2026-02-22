@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useMemo, useRef } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child, LessonProgress } from "@/lib/db/types";
@@ -189,6 +190,7 @@ interface ChildRow {
 }
 
 function AddChildrenForm({ userPlan, onDone }: { userPlan: string; onDone: (kids: Child[]) => void }) {
+  const router = useRouter();
   const [rows, setRows] = useState<ChildRow[]>([{ name: "", grade: "" }]);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
@@ -240,7 +242,13 @@ function AddChildrenForm({ userPlan, onDone }: { userPlan: string; onDone: (kids
       return;
     }
 
-    onDone((data || []) as Child[]);
+    const kids = (data || []) as Child[];
+    onDone(kids);
+
+    // Auto-redirect to assessment for the first child
+    if (kids.length > 0) {
+      router.push(`/assessment?child=${kids[0].id}`);
+    }
   };
 
   return (
