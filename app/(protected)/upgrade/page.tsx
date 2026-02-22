@@ -236,7 +236,15 @@ function UpgradeContent() {
           <span className="bg-gradient-to-r from-indigo-600 to-violet-500 bg-clip-text text-transparent">
             reading superpowers
           </span>{" "}
-          they deserve
+          they deserve with{" "}
+          <span className="relative inline-block">
+            <span className="bg-gradient-to-r from-violet-600 via-purple-500 to-indigo-500 bg-clip-text text-transparent">
+              Readee+
+            </span>
+            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent bg-[length:200%_100%] bg-clip-text text-transparent animate-textShimmer pointer-events-none" aria-hidden="true">
+              Readee+
+            </span>
+          </span>
         </h1>
         <p className="text-zinc-500 dark:text-slate-400 max-w-md mx-auto">
           42+ structured lessons, audio narration, and a full K-4th grade curriculum — all aligned to Common Core ELA standards.

@@ -369,6 +369,13 @@ body {
 }
 .roadmap-twinkle { animation: roadmapTwinkle 3s ease-in-out infinite; }
 
+/* Text shimmer for Readee+ branding */
+@keyframes textShimmer {
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+.animate-textShimmer { animation: textShimmer 3s ease-in-out infinite; }
+
 /* Nav shimmer for Upgrade CTA */
 @keyframes navShine {
   0% { transform: translateX(-200%); }
