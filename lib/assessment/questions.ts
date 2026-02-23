@@ -11,6 +11,21 @@ export interface AssessmentQuestion {
   difficulty: number;
 }
 
+export interface MatchingQuestion {
+  id: string;
+  type: "category_sort" | "sentence_build";
+  prompt: string;
+  // category_sort
+  categories?: string[];
+  categoryItems?: Record<string, string[]>;
+  items?: string[];
+  // sentence_build
+  words?: string[];
+  correctSentence?: string;
+  sentenceHint?: string;
+  sentenceAudioUrl?: string;
+}
+
 export interface GradeAssessment {
   grade_label: string;
   reading_level_name: string;
@@ -66,7 +81,7 @@ export const grades: Record<GradeKey, GradeAssessment> = {
       { id: "k-2", skill: "letter_sounds", type: "audio_choice", prompt: "What sound does the letter 'B' make?", stimulus: "B", stimulus_type: "large_letter", choices: ["/d/ (like dog)", "/p/ (like pig)", "/b/ (like bat)", "/g/ (like go)"], correct: "/b/ (like bat)", difficulty: 1 },
       { id: "k-3", skill: "cvc_words", type: "single_choice", prompt: "Sound it out: C - A - T. What word is this?", stimulus: "C \u00B7 A \u00B7 T", stimulus_type: "segmented_word", choices: ["cut", "cat", "cot", "cap"], correct: "cat", difficulty: 1 },
       { id: "k-4", skill: "cvc_words", type: "single_choice", prompt: "Sound it out: D - O - G. What word is this?", stimulus: "D \u00B7 O \u00B7 G", stimulus_type: "segmented_word", choices: ["dig", "dug", "dog", "dot"], correct: "dog", difficulty: 1 },
-      { id: "k-5", skill: "sight_words", type: "single_choice", prompt: "Which word is 'the'?", choices: ["the", "teh", "hte", "eth"], correct: "the", difficulty: 1 },
+      { id: "k-5", skill: "letter_sounds", type: "single_choice", prompt: "Which word starts with the same sound as 'moon'?", stimulus: "🌙 moon", stimulus_type: "word_display", choices: ["Nest", "Map", "Lamp", "Sun"], correct: "Map", difficulty: 1 },
       { id: "k-6", skill: "sight_words", type: "single_choice", prompt: "Finish the sentence: I can ___ a book.", choices: ["run", "see", "big", "up"], correct: "see", difficulty: 2 },
       { id: "k-7", skill: "cvc_words", type: "single_choice", prompt: "Which word has the short 'a' sound like in 'hat'?", choices: ["map", "mop", "mug", "met"], correct: "map", difficulty: 2 },
       { id: "k-8", skill: "phonological_awareness", type: "single_choice", prompt: "What do you get if you change the 'c' in 'cat' to 'b'?", choices: ["bat", "bit", "but", "bet"], correct: "bat", difficulty: 3 },
@@ -186,3 +201,4 @@ export function getPlacement(
   const belowKey = gradeOrder[belowIdx];
   return { levelName: grades[belowKey].reading_level_name, gradeKey: belowKey };
 }
+

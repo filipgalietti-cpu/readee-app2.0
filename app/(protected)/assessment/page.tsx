@@ -11,11 +11,25 @@ import {
   getPlacement,
   type GradeKey,
   type AssessmentQuestion,
+  type MatchingQuestion,
 } from "@/lib/assessment/questions";
+import { generateMatchingSet } from "@/lib/word-bank/generators";
 import { safeValidate } from "@/lib/validate";
 import { AssessmentResultSchema } from "@/lib/schemas";
+import { CategorySort } from "@/app/components/practice/CategorySort";
+import { SentenceBuild } from "@/app/components/practice/SentenceBuild";
+import { useAudio } from "@/lib/audio/use-audio";
 
-type Phase = "loading" | "intro" | "quiz" | "results";
+const CORRECT_MESSAGES = [
+  "Amazing!", "Great job!", "You got it!", "Nice catch!",
+  "Super smart!", "Wonderful!", "Nailed it!", "Brilliant!",
+];
+const CORRECT_EMOJIS = ["⭐", "🎉", "✨", "🌟", "💫", "🎯"];
+const INCORRECT_MESSAGES = [
+  "Not quite!", "Almost!", "Good try!", "Keep going!",
+];
+
+type Phase = "loading" | "intro" | "quiz" | "matching" | "results";
 
 interface AnswerRecord {
   question_id: string;
@@ -53,6 +67,17 @@ function AssessmentContent() {
   const [confettiPieces, setConfettiPieces] = useState<
     { id: number; left: number; color: string; delay: number }[]
   >([]);
+  const [matchQuestions, setMatchQuestions] = useState<MatchingQuestion[]>([]);
+  const [matchIdx, setMatchIdx] = useState(0);
+  const [matchCorrect, setMatchCorrect] = useState(0);
+  const [matchAnswered, setMatchAnswered] = useState(false);
+  const [matchFeedback, setMatchFeedback] = useState<{
+    show: boolean;
+    isCorrect: boolean;
+    msg: string;
+    emoji: string;
+  }>({ show: false, isCorrect: false, msg: "", emoji: "" });
+  const { playCorrectChime, playIncorrectBuzz } = useAudio();
 
   // Load child data
   useEffect(() => {
@@ -74,6 +99,12 @@ function AssessmentContent() {
         const gk = gradeToKey(c.grade);
         setGradeKey(gk);
         setQuestions(grades[gk].questions);
+        // Skip straight to matching for testing: ?test=matching
+        if (searchParams.get("test") === "matching") {
+          setMatchQuestions(generateMatchingSet(3, 3));
+          setPhase("matching");
+          return;
+        }
         setPhase("intro");
       }
     }
@@ -82,12 +113,14 @@ function AssessmentContent() {
 
   // Save results
   const saveResults = useCallback(
-    async (finalAnswers: AnswerRecord[]) => {
+    async (finalAnswers: AnswerRecord[], matchingCorrect = 0, matchingTotal = 0) => {
       if (!child) return;
       setSaving(true);
 
-      const correct = finalAnswers.filter((a) => a.is_correct).length;
-      const pct = Math.round((correct / finalAnswers.length) * 100);
+      const mcCorrect = finalAnswers.filter((a) => a.is_correct).length;
+      const correct = mcCorrect + matchingCorrect;
+      const totalQuestions = finalAnswers.length + matchingTotal;
+      const pct = Math.round((correct / totalQuestions) * 100);
       const placement = getPlacement(pct, gradeKey);
 
       setScore(correct);
@@ -148,6 +181,10 @@ function AssessmentContent() {
       setSelectedChoice(null);
       if (currentIdx + 1 < questions.length) {
         setCurrentIdx(currentIdx + 1);
+      } else if (gradeKey === "kindergarten") {
+        // Kindergarten gets the mix & match bonus round
+        setMatchQuestions(generateMatchingSet(3, 3));
+        setPhase("matching");
       } else {
         saveResults(newAnswers);
       }
@@ -302,6 +339,119 @@ function AssessmentContent() {
             );
           })}
         </div>
+      </div>
+    );
+  }
+
+  /* ─── Matching (kindergarten bonus) ──────────────────── */
+  if (phase === "matching") {
+    const mq = matchQuestions[matchIdx];
+    const matchTotal = matchQuestions.length;
+    const matchProgress = (matchIdx / matchTotal) * 100;
+
+    const advanceMatch = (isCorrect: boolean) => {
+      if (isCorrect) setMatchCorrect((c) => c + 1);
+      setMatchAnswered(true);
+
+      // Play chime/buzz and show feedback banner
+      if (isCorrect) {
+        playCorrectChime();
+      } else {
+        playIncorrectBuzz();
+      }
+      const pick = <T,>(arr: T[]) => arr[Math.floor(Math.random() * arr.length)];
+      setMatchFeedback({
+        show: true,
+        isCorrect,
+        msg: isCorrect ? pick(CORRECT_MESSAGES) : pick(INCORRECT_MESSAGES),
+        emoji: isCorrect ? pick(CORRECT_EMOJIS) : "",
+      });
+
+      setTimeout(() => {
+        setMatchFeedback((f) => ({ ...f, show: false }));
+        setMatchAnswered(false);
+        if (matchIdx + 1 < matchTotal) {
+          setMatchIdx(matchIdx + 1);
+        } else {
+          const finalMatchCorrect = matchCorrect + (isCorrect ? 1 : 0);
+          saveResults(answers, finalMatchCorrect, matchTotal);
+        }
+      }, 1500);
+    };
+
+    return (
+      <div className="max-w-2xl mx-auto py-8 px-4 space-y-6">
+        {/* Progress */}
+        <div className="space-y-2">
+          <div className="flex justify-between text-sm">
+            <span className="font-medium text-indigo-600">
+              Activity {matchIdx + 1} of {matchTotal}
+            </span>
+            <span className="text-zinc-400">Mix &amp; Match</span>
+          </div>
+          <div className="h-2 bg-zinc-100 rounded-full overflow-hidden">
+            <div
+              className="h-full bg-gradient-to-r from-indigo-600 to-violet-500 rounded-full transition-all duration-500"
+              style={{ width: `${matchProgress}%` }}
+            />
+          </div>
+        </div>
+
+        {mq.type === "category_sort" && mq.categories && mq.categoryItems && mq.items && (
+          <CategorySort
+            key={mq.id}
+            prompt={mq.prompt}
+            categories={mq.categories}
+            categoryItems={mq.categoryItems}
+            items={mq.items}
+            answered={matchAnswered}
+            onAnswer={(isCorrect) => advanceMatch(isCorrect)}
+            onCorrectPlace={playCorrectChime}
+            onIncorrectPlace={playIncorrectBuzz}
+          />
+        )}
+
+        {mq.type === "sentence_build" && mq.words && mq.correctSentence && (
+          <SentenceBuild
+            key={mq.id}
+            prompt={mq.prompt}
+            passage={null}
+            words={mq.words}
+            correctSentence={mq.correctSentence}
+            sentenceHint={mq.sentenceHint}
+            sentenceAudioUrl={mq.sentenceAudioUrl}
+            answered={matchAnswered}
+            onAnswer={(isCorrect) => advanceMatch(isCorrect)}
+          />
+        )}
+
+        {/* Feedback banner */}
+        {matchFeedback.show && (
+          <div
+            className={`fixed bottom-0 left-0 right-0 z-50 transition-all duration-300 ${
+              matchFeedback.isCorrect
+                ? "bg-gradient-to-r from-emerald-500 to-green-500"
+                : "bg-gradient-to-r from-red-500 to-orange-500"
+            }`}
+          >
+            <div className="max-w-lg mx-auto px-5 py-5 safe-area-bottom">
+              <div className="flex items-center gap-3">
+                {matchFeedback.isCorrect ? (
+                  <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-xl">
+                    {matchFeedback.emoji}
+                  </div>
+                ) : (
+                  <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </div>
+                )}
+                <p className="text-white font-extrabold text-lg">{matchFeedback.msg}</p>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     );
   }
