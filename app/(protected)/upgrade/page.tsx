@@ -368,13 +368,13 @@ function UpgradeContent() {
             <div className="space-y-1">
               <div className="text-sm font-semibold text-white/80">Annual</div>
               <div className="flex items-baseline gap-2">
-                <span className="text-4xl font-bold text-white">$99</span>
+                <span className="text-4xl font-bold text-white">$79.99</span>
                 <span className="text-sm text-white/60 line-through">$119.88</span>
                 <span className="text-sm text-white/70">/year</span>
               </div>
-              <p className="text-sm font-bold text-white pt-1">Just $8.25/month</p>
+              <p className="text-sm font-bold text-white pt-1">Just $6.67/month</p>
               <span className="inline-block mt-2 px-2.5 py-1 rounded-full text-[11px] font-bold bg-emerald-400/20 text-emerald-100 border border-emerald-300/30">
-                Save $21 per year
+                Save 40%
               </span>
             </div>
 
@@ -454,7 +454,7 @@ function UpgradeContent() {
           Start your child&apos;s reading journey today
         </h2>
         <p className="text-white/80 text-sm max-w-md mx-auto">
-          7 days free, then just $8.25/month with the annual plan. Cancel anytime — no risk, no commitment.
+          7 days free, then just $6.67/month with the annual plan. Cancel anytime — no risk, no commitment.
         </p>
         <button
           onClick={() => handleOpenModal("annual")}

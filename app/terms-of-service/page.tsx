@@ -80,7 +80,7 @@ export default function TermsOfServicePage() {
               basic progress tracking. No payment required.
             </li>
             <li>
-              <strong>Readee+ ($9.99/month or $99/year):</strong> Includes the
+              <strong>Readee+ ($9.99/month or $79.99/year):</strong> Includes the
               full lesson library, unlimited assessments, up to 5 child profiles,
               detailed parent reports, and additional features as they become
               available.
