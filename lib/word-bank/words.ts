@@ -143,6 +143,128 @@ export const wordBank: WordEntry[] = [
 
   // ── Nature (non-animal, non-food) ──
   w("mountain",  ["nature", "thing", "big", "outside", "nonliving", "noun", "starts:m"]),
+
+  // ═══════════════════════════════════════════════════════════
+  // Batch 2 — 101 new words
+  // ═══════════════════════════════════════════════════════════
+
+  // ── Animals (batch 2) ──
+  w("cub",       ["animal", "small", "land", "wild", "living", "cvc", "noun", "short-u", "rhyme:-ub", "starts:c"]),
+  w("deer",      ["animal", "land", "wild", "living", "noun", "starts:d"]),
+  w("hog",       ["animal", "big", "land", "farm", "living", "cvc", "noun", "short-o", "rhyme:-og", "starts:h"]),
+  w("horse",     ["animal", "big", "land", "farm", "living", "noun", "starts:h"]),
+  w("lion",      ["animal", "big", "land", "wild", "living", "noun", "starts:l"]),
+  w("mouse",     ["animal", "small", "land", "wild", "living", "noun", "starts:m"]),
+  w("pug",       ["animal", "small", "land", "pet", "living", "cvc", "noun", "short-u", "rhyme:-ug", "starts:p"]),
+  w("pup",       ["animal", "small", "land", "pet", "living", "cvc", "noun", "short-u", "rhyme:-up", "starts:p"]),
+  w("sheep",     ["animal", "land", "farm", "living", "noun", "starts:s"]),
+  w("snake",     ["animal", "land", "wild", "living", "noun", "starts:s"]),
+
+  // ── Food (batch 2) ──
+  w("bun",       ["food", "thing", "nonliving", "cvc", "noun", "short-u", "rhyme:-un", "starts:b"]),
+  w("fig",       ["food", "nature", "small", "living", "cvc", "noun", "short-i", "rhyme:-ig", "starts:f"]),
+  w("ham",       ["food", "thing", "nonliving", "cvc", "noun", "short-a", "rhyme:-am", "starts:h"]),
+  w("nut",       ["food", "nature", "small", "nonliving", "cvc", "noun", "short-u", "rhyme:-ut", "starts:n"]),
+  w("yam",       ["food", "nature", "living", "cvc", "noun", "short-a", "rhyme:-am", "starts:y"]),
+
+  // ── Things / Objects (batch 2) ──
+  w("bag",       ["thing", "nonliving", "noun", "cvc", "short-a", "rhyme:-ag", "starts:b"]),
+  w("bin",       ["thing", "nonliving", "inside", "noun", "cvc", "short-i", "rhyme:-in", "starts:b"]),
+  w("cab",       ["thing", "vehicle", "land", "nonliving", "noun", "cvc", "short-a", "rhyme:-ab", "starts:c"]),
+  w("cap",       ["thing", "clothing", "nonliving", "noun", "cvc", "short-a", "rhyme:-ap", "starts:c"]),
+  w("cot",       ["thing", "nonliving", "inside", "noun", "cvc", "short-o", "rhyme:-ot", "starts:c"]),
+  w("den",       ["thing", "nonliving", "inside", "noun", "cvc", "short-e", "rhyme:-en", "starts:d"]),
+  w("dot",       ["thing", "nonliving", "noun", "cvc", "short-o", "rhyme:-ot", "starts:d"]),
+  w("gap",       ["thing", "nonliving", "noun", "cvc", "short-a", "rhyme:-ap", "starts:g"]),
+  w("hut",       ["thing", "nonliving", "outside", "noun", "cvc", "short-u", "rhyme:-ut", "starts:h"]),
+  w("jet",       ["thing", "vehicle", "fly", "noisy", "nonliving", "noun", "cvc", "short-e", "rhyme:-et", "starts:j"]),
+  w("job",       ["thing", "nonliving", "noun", "cvc", "short-o", "rhyme:-ob", "starts:j"]),
+  w("lid",       ["thing", "nonliving", "inside", "noun", "cvc", "short-i", "rhyme:-id", "starts:l"]),
+  w("mug",       ["thing", "nonliving", "inside", "noun", "cvc", "short-u", "rhyme:-ug", "starts:m"]),
+  w("pad",       ["thing", "nonliving", "inside", "noun", "cvc", "short-a", "rhyme:-ad", "starts:p"]),
+  w("pan",       ["thing", "nonliving", "inside", "noun", "cvc", "short-a", "rhyme:-an", "starts:p"]),
+  w("peg",       ["thing", "nonliving", "noun", "cvc", "short-e", "rhyme:-eg", "starts:p"]),
+  w("pet",       ["thing", "living", "noun", "cvc", "short-e", "rhyme:-et", "starts:p"]),
+  w("pop",       ["thing", "noun", "cvc", "short-o", "rhyme:-op", "starts:p"]),
+  w("rim",       ["thing", "nonliving", "noun", "cvc", "short-i", "rhyme:-im", "starts:r"]),
+  w("rod",       ["thing", "nonliving", "outside", "noun", "cvc", "short-o", "rhyme:-od", "starts:r"]),
+  w("sub",       ["thing", "vehicle", "water", "nonliving", "noun", "cvc", "short-u", "rhyme:-ub", "starts:s"]),
+  w("tab",       ["thing", "nonliving", "noun", "cvc", "short-a", "rhyme:-ab", "starts:t"]),
+  w("tin",       ["thing", "nonliving", "inside", "noun", "cvc", "short-i", "rhyme:-in", "starts:t"]),
+  w("tip",       ["thing", "nonliving", "noun", "cvc", "short-i", "rhyme:-ip", "starts:t"]),
+  w("top",       ["thing", "nonliving", "noun", "cvc", "short-o", "rhyme:-op", "starts:t"]),
+  w("tub",       ["thing", "nonliving", "inside", "noun", "cvc", "short-u", "rhyme:-ub", "starts:t"]),
+  w("vet",       ["thing", "nonliving", "noun", "cvc", "short-e", "rhyme:-et", "starts:v"]),
+  w("web",       ["thing", "nonliving", "noun", "cvc", "short-e", "rhyme:-eb", "starts:w"]),
+
+  // ── Body (batch 2) ──
+  w("hip",       ["body", "living", "noun", "cvc", "short-i", "rhyme:-ip", "starts:h"]),
+  w("lap",       ["body", "living", "noun", "cvc", "short-a", "rhyme:-ap", "starts:l"]),
+  w("leg",       ["body", "living", "noun", "cvc", "short-e", "rhyme:-eg", "starts:l"]),
+  w("lip",       ["body", "living", "noun", "cvc", "short-i", "rhyme:-ip", "starts:l"]),
+  w("rib",       ["body", "living", "noun", "cvc", "short-i", "rhyme:-ib", "starts:r"]),
+
+  // ── Adjectives (batch 2) ──
+  w("dim",       ["adjective", "cvc", "short-i", "rhyme:-im", "starts:d"]),
+  w("fun",       ["adjective", "cvc", "short-u", "rhyme:-un", "starts:f"]),
+  w("hot",       ["adjective", "cvc", "short-o", "rhyme:-ot", "starts:h"]),
+  w("tan",       ["adjective", "cvc", "short-a", "rhyme:-an", "starts:t"]),
+
+  // ── Verbs (batch 2) ──
+  w("ask",       ["verb", "starts:a"]),
+  w("cut",       ["verb", "cvc", "short-u", "rhyme:-ut", "starts:c"]),
+  w("dug",       ["verb", "cvc", "short-u", "rhyme:-ug", "starts:d"]),
+  w("eat",       ["verb", "starts:e"]),
+  w("help",      ["verb", "starts:h"]),
+  w("jog",       ["verb", "cvc", "short-o", "rhyme:-og", "starts:j"]),
+  w("jump",      ["verb", "starts:j"]),
+  w("kick",      ["verb", "starts:k"]),
+  w("pat",       ["verb", "cvc", "short-a", "rhyme:-at", "starts:p"]),
+  w("pull",      ["verb", "starts:p"]),
+  w("push",      ["verb", "starts:p"]),
+  w("rip",       ["verb", "cvc", "short-i", "rhyme:-ip", "starts:r"]),
+  w("stop",      ["verb", "starts:s"]),
+  w("swim",      ["verb", "starts:s"]),
+  w("tap",       ["verb", "cvc", "short-a", "rhyme:-ap", "starts:t"]),
+  w("tug",       ["verb", "cvc", "short-u", "rhyme:-ug", "starts:t"]),
+  w("walk",      ["verb", "starts:w"]),
+  w("win",       ["verb", "cvc", "short-i", "rhyme:-in", "starts:w"]),
+
+  // ── Sight words (batch 2) ──
+  w("a",         ["sight", "starts:a"]),
+  w("all",       ["sight", "starts:a"]),
+  w("am",        ["sight", "cvc", "short-a", "rhyme:-am", "starts:a"]),
+  w("an",        ["sight", "cvc", "short-a", "rhyme:-an", "starts:a"]),
+  w("at",        ["sight", "cvc", "short-a", "rhyme:-at", "starts:a"]),
+  w("be",        ["sight", "verb", "starts:b"]),
+  w("but",       ["sight", "cvc", "short-u", "rhyme:-ut", "starts:b"]),
+  w("did",       ["sight", "verb", "cvc", "short-i", "rhyme:-id", "starts:d"]),
+  w("do",        ["sight", "verb", "starts:d"]),
+  w("for",       ["sight", "starts:f"]),
+  w("get",       ["sight", "verb", "cvc", "short-e", "rhyme:-et", "starts:g"]),
+  w("got",       ["sight", "verb", "cvc", "short-o", "rhyme:-ot", "starts:g"]),
+  w("had",       ["sight", "verb", "cvc", "short-a", "rhyme:-ad", "starts:h"]),
+  w("has",       ["sight", "verb", "starts:h"]),
+  w("him",       ["sight", "noun", "cvc", "short-i", "rhyme:-im", "starts:h"]),
+  w("his",       ["sight", "starts:h"]),
+  w("man",       ["sight", "noun", "cvc", "short-a", "rhyme:-an", "starts:m"]),
+  w("men",       ["sight", "noun", "cvc", "short-e", "rhyme:-en", "starts:m"]),
+  w("not",       ["sight", "cvc", "short-o", "rhyme:-ot", "starts:n"]),
+  w("now",       ["sight", "starts:n"]),
+  w("of",        ["sight", "starts:o"]),
+  w("or",        ["sight", "starts:o"]),
+  w("out",       ["sight", "starts:o"]),
+  w("so",        ["sight", "starts:s"]),
+  w("ten",       ["sight", "noun", "cvc", "short-e", "rhyme:-en", "starts:t"]),
+  w("that",      ["sight", "starts:t"]),
+  w("them",      ["sight", "starts:t"]),
+  w("this",      ["sight", "starts:t"]),
+  w("was",       ["sight", "verb", "starts:w"]),
+  w("will",      ["sight", "verb", "starts:w"]),
+  w("with",      ["sight", "starts:w"]),
+
+  // ── Nature (batch 2) ──
+  w("fog",       ["nature", "thing", "outside", "nonliving", "noun", "cvc", "short-o", "rhyme:-og", "starts:f"]),
 ];
 
 /** Look up words by a single tag */

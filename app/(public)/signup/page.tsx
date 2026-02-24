@@ -8,6 +8,8 @@ import AuthCard from "@/app/components/auth/AuthCard";
 import FormField from "@/app/components/auth/FormField";
 import GoogleButton from "@/app/components/auth/GoogleButton";
 import Divider from "@/app/components/auth/Divider";
+import TosCheckbox from "@/app/components/auth/TosCheckbox";
+import { CURRENT_TOS_VERSION } from "@/lib/tos";
 
 interface FormData {
   email: string;
@@ -31,6 +33,7 @@ export default function Signup() {
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [isLoading, setIsLoading] = useState(false);
+  const [tosAccepted, setTosAccepted] = useState(false);
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
@@ -91,6 +94,14 @@ export default function Signup() {
             setErrors({ general: "This email is already registered. Please sign in instead." });
             setIsLoading(false);
           } else {
+            // Stash ToS consent for TosGate to pick up after login
+            localStorage.setItem(
+              "readee-tos-consent",
+              JSON.stringify({
+                tos_accepted_at: new Date().toISOString(),
+                tos_version: CURRENT_TOS_VERSION,
+              })
+            );
             // Success - redirect to login or dashboard
             router.push("/login?message=Account created! Check your email to confirm, then sign in.");
           }
@@ -156,9 +167,10 @@ export default function Signup() {
           error={errors.confirmPassword}
           required
         />
+        <TosCheckbox checked={tosAccepted} onChange={setTosAccepted} />
         <button
           type="submit"
-          disabled={isLoading}
+          disabled={!tosAccepted || isLoading}
           className="w-full bg-gradient-to-r from-indigo-600 to-violet-500 text-white py-3 rounded-lg font-medium hover:from-indigo-700 hover:to-violet-600 transition-all focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
         >
           {isLoading ? "Creating Account..." : "Create Account"}

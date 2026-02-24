@@ -10,6 +10,8 @@ export interface Profile {
   display_name: string;
   role: UserRole;
   onboarding_complete: boolean;
+  tos_accepted_at: string | null;
+  tos_version: string | null;
   created_at: string;
   updated_at: string;
 }

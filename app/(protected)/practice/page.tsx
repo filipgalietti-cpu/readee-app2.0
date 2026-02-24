@@ -15,6 +15,7 @@ import { StandardsFileSchema, PracticeResultSchema } from "@/lib/schemas";
 import { fadeUp, staggerContainer, feedbackSlideUp, popIn, scaleIn } from "@/lib/motion/variants";
 import { SentenceBuild } from "@/app/components/practice/SentenceBuild";
 import { CategorySort } from "@/app/components/practice/CategorySort";
+import { MissingWord } from "@/app/components/practice/MissingWord";
 import kStandards from "@/app/data/kindergarten-standards-questions.json";
 
 /* ─── Types ──────────────────────────────────────────── */
@@ -494,6 +495,17 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
             sentenceAudioUrl={q.sentence_audio_url}
             answered={selected !== null}
             onAnswer={handleSentenceBuildAnswer}
+          />
+        ) : q.type === "missing_word" && (q as any).sentence_words && (q as any).missing_choices && (q as any).blank_index !== undefined ? (
+          <MissingWord
+            prompt={question}
+            sentenceWords={(q as any).sentence_words}
+            blankIndex={(q as any).blank_index}
+            choices={(q as any).missing_choices}
+            sentenceHint={(q as any).sentence_hint}
+            sentenceAudioUrl={(q as any).sentence_audio_url}
+            answered={selected !== null}
+            onAnswer={(isCorrect, choice) => handleSentenceBuildAnswer(isCorrect, choice)}
           />
         ) : q.type === "category_sort" && q.categories && q.category_items && q.items ? (
           <CategorySort

@@ -1,5 +1,6 @@
 import { wordsByTag, type WordEntry } from "./words";
 import { sentenceTemplates, buildSentence } from "./sentences";
+import { generateMissingWord, resetMissingWordIds } from "./missing-word";
 import type { MatchingQuestion } from "@/lib/assessment/questions";
 
 /* ── Helpers ─────────────────────────────────────────── */
@@ -233,15 +234,17 @@ const letterPairs: [string, string][] = [
 type GeneratorType = "category" | "rhyme" | "beginning_sound";
 
 /**
- * Generate a matching set with a mix of CategorySort and SentenceBuild questions.
- * Returns an interleaved array: [cat, sent, cat, sent, ...]
+ * Generate a matching set with a mix of CategorySort, SentenceBuild, and MissingWord questions.
+ * Returns an interleaved array of all three types.
  */
 export function generateMatchingSet(
   catCount = 3,
-  sentCount = 3
+  sentCount = 2,
+  mwCount = 2
 ): MatchingQuestion[] {
-  // Reset ID counter for fresh run
+  // Reset ID counters for fresh run
   nextId = 1;
+  resetMissingWordIds();
   const usedWords = new Set<string>();
 
   // Pick category-sort questions using a mix of generator types
@@ -303,12 +306,21 @@ export function generateMatchingSet(
     if (q) sentQuestions.push(q);
   }
 
-  // Interleave: category, sentence, category, sentence, ...
+  // Generate missing-word questions
+  const mwQuestions: MatchingQuestion[] = [];
+  const usedSentences = new Set<number>();
+  for (let i = 0; i < mwCount; i++) {
+    const q = generateMissingWord(usedSentences);
+    if (q) mwQuestions.push(q);
+  }
+
+  // Interleave all three types: cat, sent, mw, cat, sent, mw, ...
   const result: MatchingQuestion[] = [];
-  const max = Math.max(catQuestions.length, sentQuestions.length);
+  const max = Math.max(catQuestions.length, sentQuestions.length, mwQuestions.length);
   for (let i = 0; i < max; i++) {
     if (i < catQuestions.length) result.push(catQuestions[i]);
     if (i < sentQuestions.length) result.push(sentQuestions[i]);
+    if (i < mwQuestions.length) result.push(mwQuestions[i]);
   }
 
   return result;

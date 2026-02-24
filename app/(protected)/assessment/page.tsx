@@ -18,6 +18,7 @@ import { safeValidate } from "@/lib/validate";
 import { AssessmentResultSchema } from "@/lib/schemas";
 import { CategorySort } from "@/app/components/practice/CategorySort";
 import { SentenceBuild } from "@/app/components/practice/SentenceBuild";
+import { MissingWord } from "@/app/components/practice/MissingWord";
 import { useAudio } from "@/lib/audio/use-audio";
 
 const CORRECT_MESSAGES = [
@@ -418,6 +419,20 @@ function AssessmentContent() {
             passage={null}
             words={mq.words}
             correctSentence={mq.correctSentence}
+            sentenceHint={mq.sentenceHint}
+            sentenceAudioUrl={mq.sentenceAudioUrl}
+            answered={matchAnswered}
+            onAnswer={(isCorrect) => advanceMatch(isCorrect)}
+          />
+        )}
+
+        {mq.type === "missing_word" && mq.sentenceWords && mq.missingChoices && mq.blankIndex !== undefined && (
+          <MissingWord
+            key={mq.id}
+            prompt={mq.prompt}
+            sentenceWords={mq.sentenceWords}
+            blankIndex={mq.blankIndex}
+            choices={mq.missingChoices}
             sentenceHint={mq.sentenceHint}
             sentenceAudioUrl={mq.sentenceAudioUrl}
             answered={matchAnswered}

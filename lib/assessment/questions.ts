@@ -13,7 +13,7 @@ export interface AssessmentQuestion {
 
 export interface MatchingQuestion {
   id: string;
-  type: "category_sort" | "sentence_build";
+  type: "category_sort" | "sentence_build" | "missing_word";
   prompt: string;
   // category_sort
   categories?: string[];
@@ -24,6 +24,10 @@ export interface MatchingQuestion {
   correctSentence?: string;
   sentenceHint?: string;
   sentenceAudioUrl?: string;
+  // missing_word
+  sentenceWords?: string[];   // Full sentence as word array, e.g. ["The", "Dog", "Can", "Run"]
+  blankIndex?: number;        // Which word is blanked out
+  missingChoices?: string[];  // 4 choices (shuffled, including correct)
 }
 
 export interface GradeAssessment {
