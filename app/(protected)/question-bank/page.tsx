@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useCallback } from "react";
+import { useState, useMemo, useCallback, useEffect, useRef } from "react";
 import { missingSentences } from "@/lib/word-bank/missing-word";
 import { generateMissingWord, resetMissingWordIds } from "@/lib/word-bank/missing-word";
 import { sentenceTemplates, buildSentence } from "@/lib/word-bank/sentences";
@@ -16,6 +16,15 @@ import type { MatchingQuestion } from "@/lib/assessment/questions";
 import { MissingWord } from "@/app/components/practice/MissingWord";
 import { SentenceBuild } from "@/app/components/practice/SentenceBuild";
 import { CategorySort } from "@/app/components/practice/CategorySort";
+import { useAudio } from "@/lib/audio/use-audio";
+
+/* ── Prompt audio URLs ─────────────────────────────── */
+
+const PROMPT_AUDIO: Record<string, string> = {
+  missing_word: "/audio/prompts/pick-the-missing-word.mp3",
+  sentence_build: "/audio/prompts/put-words-in-order.mp3",
+  category_sort: "/audio/prompts/sort-words-into-group.mp3",
+};
 
 /* ── Types ──────────────────────────────────────────── */
 
@@ -195,17 +204,29 @@ function QuestionCard({
   entry,
   expanded,
   onToggle,
+  playCorrectChime,
+  playIncorrectBuzz,
 }: {
   entry: QuestionEntry;
   expanded: boolean;
   onToggle: () => void;
+  playCorrectChime: () => void;
+  playIncorrectBuzz: () => void;
 }) {
   const [answered, setAnswered] = useState(false);
   const q = entry.question;
 
-  const handleAnswer = useCallback(() => {
-    setAnswered(true);
-  }, []);
+  const handleAnswer = useCallback(
+    (isCorrect: boolean) => {
+      setAnswered(true);
+      if (isCorrect) {
+        playCorrectChime();
+      } else {
+        playIncorrectBuzz();
+      }
+    },
+    [playCorrectChime, playIncorrectBuzz]
+  );
 
   const handleReset = useCallback(() => {
     setAnswered(false);
@@ -276,7 +297,7 @@ function QuestionCard({
                 sentenceHint={q.sentenceHint}
                 sentenceAudioUrl={q.sentenceAudioUrl}
                 answered={false}
-                onAnswer={(isCorrect) => handleAnswer()}
+                onAnswer={(isCorrect) => handleAnswer(isCorrect)}
               />
             )}
 
@@ -290,7 +311,7 @@ function QuestionCard({
                 sentenceHint={q.sentenceHint}
                 sentenceAudioUrl={q.sentenceAudioUrl}
                 answered={false}
-                onAnswer={(isCorrect) => handleAnswer()}
+                onAnswer={(isCorrect) => handleAnswer(isCorrect)}
               />
             )}
 
@@ -302,7 +323,9 @@ function QuestionCard({
                 categoryItems={q.categoryItems}
                 items={q.items}
                 answered={false}
-                onAnswer={(isCorrect) => handleAnswer()}
+                onAnswer={(isCorrect) => handleAnswer(isCorrect)}
+                onCorrectPlace={playCorrectChime}
+                onIncorrectPlace={playIncorrectBuzz}
               />
             )}
           </div>
@@ -317,6 +340,8 @@ function QuestionCard({
 export default function QuestionBankPage() {
   const [tab, setTab] = useState<Tab>("missing-word");
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  const audioUnlockedRef = useRef(false);
+  const { playUrl, playCorrectChime, playIncorrectBuzz, unlockAudio } = useAudio();
 
   // Generate all questions once on mount
   const mwEntries = useMemo(() => generateAllMissingWord(), []);
@@ -331,6 +356,36 @@ export default function QuestionBankPage() {
       : csEntries;
 
   const total = mwEntries.length + sbEntries.length + csEntries.length;
+
+  // Build a lookup from entry id → question type for prompt audio
+  const entryTypeMap = useMemo(() => {
+    const map = new Map<string, string>();
+    for (const e of mwEntries) map.set(e.id, e.question.type);
+    for (const e of sbEntries) map.set(e.id, e.question.type);
+    for (const e of csEntries) map.set(e.id, e.question.type);
+    return map;
+  }, [mwEntries, sbEntries, csEntries]);
+
+  // Play prompt audio when a card expands
+  useEffect(() => {
+    if (!expandedId) return;
+    const type = entryTypeMap.get(expandedId);
+    if (type && PROMPT_AUDIO[type]) {
+      playUrl(PROMPT_AUDIO[type]);
+    }
+  }, [expandedId, entryTypeMap, playUrl]);
+
+  // Unlock audio on first card tap (needed for mobile browsers)
+  const handleToggle = useCallback(
+    (entryId: string) => {
+      if (!audioUnlockedRef.current) {
+        unlockAudio();
+        audioUnlockedRef.current = true;
+      }
+      setExpandedId((prev) => (prev === entryId ? null : entryId));
+    },
+    [unlockAudio]
+  );
 
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-slate-900">
@@ -374,9 +429,9 @@ export default function QuestionBankPage() {
               key={entry.id}
               entry={entry}
               expanded={expandedId === entry.id}
-              onToggle={() =>
-                setExpandedId((prev) => (prev === entry.id ? null : entry.id))
-              }
+              onToggle={() => handleToggle(entry.id)}
+              playCorrectChime={playCorrectChime}
+              playIncorrectBuzz={playIncorrectBuzz}
             />
           ))}
         </div>
