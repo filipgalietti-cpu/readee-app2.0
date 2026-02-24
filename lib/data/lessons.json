@@ -2,7 +2,7 @@
   "lesson_config": {
     "lessons_per_level": {
       "pre-k": 7,
-      "kindergarten": 8,
+      "kindergarten": 13,
       "1st": 8,
       "2nd": 9,
       "3rd": 10,
@@ -2453,6 +2453,186 @@
                 "correct": "Letters",
                 "type": "multiple_choice",
                 "question_id": "k-L8-R3"
+              }
+            ]
+          }
+        },
+        {
+          "id": "k-L9",
+          "title": "The Lost Hat",
+          "skill": "decodable_story",
+          "description": "Read a decodable story about Sam and his lost hat",
+          "learn": { "type": "flashcard", "content": "", "items": [] },
+          "practice": { "type": "multiple_choice", "instructions": "", "questions": [] },
+          "read": {
+            "type": "story",
+            "title": "The Lost Hat",
+            "text": "Sam had a red hat.\nSam liked his hat.\n\nOne day, the hat was gone.\n\nSam ran back.\nSam ran past the map.\nSam ran to the cat.\n\nThe cat sat on the mat.\n\nAnd on the mat, was the hat!\n\nSam was glad.\nSam had his hat back.",
+            "questions": [
+              {
+                "prompt": "What color was Sam's hat?",
+                "choices": ["Blue", "Red", "Green", "Yellow"],
+                "correct": "Red",
+                "type": "multiple_choice",
+                "question_id": "k-L9-R1"
+              },
+              {
+                "prompt": "Who sat on the mat?",
+                "choices": ["Sam", "The dog", "The cat", "The hen"],
+                "correct": "The cat",
+                "type": "multiple_choice",
+                "question_id": "k-L9-R2"
+              },
+              {
+                "prompt": "How did Sam feel at the end?",
+                "choices": ["Sad", "Mad", "Glad", "Scared"],
+                "correct": "Glad",
+                "type": "multiple_choice",
+                "question_id": "k-L9-R3"
+              }
+            ]
+          }
+        },
+        {
+          "id": "k-L10",
+          "title": "Meg and the Red Hen",
+          "skill": "decodable_story",
+          "description": "Read a decodable story about Meg and her red hen",
+          "learn": { "type": "flashcard", "content": "", "items": [] },
+          "practice": { "type": "multiple_choice", "instructions": "", "questions": [] },
+          "read": {
+            "type": "story",
+            "title": "Meg and the Red Hen",
+            "text": "Meg has a red hen.\nThe hen is in a pen.\n\n\"Hen! Hen!\" said Meg.\n\nThe hen did not peck.\nThe hen did not run.\n\nThe hen sat on ten eggs!\n\nMeg fed the hen.\nMeg pet the hen.\n\nMeg said, \"You are the best hen!\"",
+            "questions": [
+              {
+                "prompt": "Where is the hen?",
+                "choices": ["In a box", "In a pen", "On a log", "In the mud"],
+                "correct": "In a pen",
+                "type": "multiple_choice",
+                "question_id": "k-L10-R1"
+              },
+              {
+                "prompt": "What did the hen sit on?",
+                "choices": ["A mat", "A hat", "Ten eggs", "A box"],
+                "correct": "Ten eggs",
+                "type": "multiple_choice",
+                "question_id": "k-L10-R2"
+              },
+              {
+                "prompt": "What did Meg say to the hen?",
+                "choices": ["\"Run, hen, run!\"", "\"You are the best hen!\"", "\"Sit, hen, sit!\"", "\"Come here, hen!\""],
+                "correct": "\"You are the best hen!\"",
+                "type": "multiple_choice",
+                "question_id": "k-L10-R3"
+              }
+            ]
+          }
+        },
+        {
+          "id": "k-L11",
+          "title": "Tim the Pig",
+          "skill": "decodable_story",
+          "description": "Read a decodable story about Tim the pig",
+          "learn": { "type": "flashcard", "content": "", "items": [] },
+          "practice": { "type": "multiple_choice", "instructions": "", "questions": [] },
+          "read": {
+            "type": "story",
+            "title": "Tim the Pig",
+            "text": "Tim is a pig.\nTim is not big.\n\nTim can dig.\nTim can sit.\n\nTim sits in the mud.\nTim digs in the mud.\n\n\"Dig, dig, dig!\" said Tim.\n\nTim is a happy pig.",
+            "questions": [
+              {
+                "prompt": "What can Tim do?",
+                "choices": ["Fly", "Dig", "Swim", "Cook"],
+                "correct": "Dig",
+                "type": "multiple_choice",
+                "question_id": "k-L11-R1"
+              },
+              {
+                "prompt": "Where does Tim sit?",
+                "choices": ["On a mat", "On a log", "In the mud", "In a pen"],
+                "correct": "In the mud",
+                "type": "multiple_choice",
+                "question_id": "k-L11-R2"
+              },
+              {
+                "prompt": "Is Tim big?",
+                "choices": ["Yes, Tim is big", "No, Tim is not big", "Tim is very big", "Tim is the biggest"],
+                "correct": "No, Tim is not big",
+                "type": "multiple_choice",
+                "question_id": "k-L11-R3"
+              }
+            ]
+          }
+        },
+        {
+          "id": "k-L12",
+          "title": "The Fox and the Box",
+          "skill": "decodable_story",
+          "description": "Read a decodable story about a fox and a box",
+          "learn": { "type": "flashcard", "content": "", "items": [] },
+          "practice": { "type": "multiple_choice", "instructions": "", "questions": [] },
+          "read": {
+            "type": "story",
+            "title": "The Fox and the Box",
+            "text": "A fox has a box.\n\nThe box is on a log.\n\nThe fox hops on the log.\nThe fox stops.\n\nThe box tips!\n\nPlop!\n\nThe fox sits on the box.\n\nWhat is in the box?\n\nSocks!",
+            "questions": [
+              {
+                "prompt": "Where is the box?",
+                "choices": ["On a mat", "On a log", "In the mud", "On the bed"],
+                "correct": "On a log",
+                "type": "multiple_choice",
+                "question_id": "k-L12-R1"
+              },
+              {
+                "prompt": "What happened to the box?",
+                "choices": ["It fell", "It tipped", "It broke", "It ran away"],
+                "correct": "It tipped",
+                "type": "multiple_choice",
+                "question_id": "k-L12-R2"
+              },
+              {
+                "prompt": "What is in the box?",
+                "choices": ["Rocks", "Blocks", "Socks", "A fox"],
+                "correct": "Socks",
+                "type": "multiple_choice",
+                "question_id": "k-L12-R3"
+              }
+            ]
+          }
+        },
+        {
+          "id": "k-L13",
+          "title": "The Fun Run",
+          "skill": "decodable_story",
+          "description": "Read a decodable story about Bud's fun run",
+          "learn": { "type": "flashcard", "content": "", "items": [] },
+          "practice": { "type": "multiple_choice", "instructions": "", "questions": [] },
+          "read": {
+            "type": "story",
+            "title": "The Fun Run",
+            "text": "Bud can run.\nBud has fun.\n\nBud runs in the sun.\n\nBud jumps in the mud.\nBud runs to his pup.\n\n\"Run, pup, run!\" said Bud.\n\nBud hugs his pup.\n\nWhat a fun run!",
+            "questions": [
+              {
+                "prompt": "Where does Bud run?",
+                "choices": ["In the rain", "In the sun", "In the dark", "In the snow"],
+                "correct": "In the sun",
+                "type": "multiple_choice",
+                "question_id": "k-L13-R1"
+              },
+              {
+                "prompt": "What did Bud jump in?",
+                "choices": ["A pool", "The mud", "A box", "The sand"],
+                "correct": "The mud",
+                "type": "multiple_choice",
+                "question_id": "k-L13-R2"
+              },
+              {
+                "prompt": "Who did Bud hug?",
+                "choices": ["His mom", "His cat", "His pup", "His hen"],
+                "correct": "His pup",
+                "type": "multiple_choice",
+                "question_id": "k-L13-R3"
               }
             ]
           }

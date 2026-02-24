@@ -563,7 +563,13 @@ function LessonContent() {
       }
       if (found) {
         setLesson(found);
-        setPhase("learn");
+        if (found.learn.items.length === 0 && found.practice.questions.length === 0) {
+          setPhase("read");
+        } else if (found.learn.items.length === 0) {
+          setPhase("practice");
+        } else {
+          setPhase("learn");
+        }
       }
     }
     load();
