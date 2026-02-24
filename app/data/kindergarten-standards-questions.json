@@ -2160,7 +2160,14 @@
           "id": "RF.K.1a-Q6",
           "type": "sentence_build",
           "prompt": "Put the words in order to make a sentence.",
-          "words": ["Cat", "The", "Sat", "The", "On", "Mat"],
+          "words": [
+            "Cat",
+            "The",
+            "Sat",
+            "The",
+            "On",
+            "Mat"
+          ],
           "correct": "The Cat Sat On The Mat.",
           "sentence_hint": "🐱 A cat is sitting on something...",
           "hint": "Start with a capital letter and end with a period.",
@@ -2173,7 +2180,12 @@
           "id": "RF.K.1a-Q7",
           "type": "sentence_build",
           "prompt": "Put the words in the right order.",
-          "words": ["I", "Read", "To", "Like"],
+          "words": [
+            "I",
+            "Read",
+            "To",
+            "Like"
+          ],
           "correct": "I Like To Read.",
           "sentence_hint": "📚 Someone enjoys reading!",
           "hint": "Start with 'I' and end with a period.",
@@ -2186,7 +2198,12 @@
           "id": "RF.K.1a-Q8",
           "type": "sentence_build",
           "prompt": "Arrange the words to build a sentence.",
-          "words": ["Dog", "Ran", "The", "Fast"],
+          "words": [
+            "Dog",
+            "Ran",
+            "The",
+            "Fast"
+          ],
           "correct": "The Dog Ran Fast.",
           "sentence_hint": "🐕 A dog is moving quickly!",
           "hint": "Start with a capital letter. What did the dog do?",
@@ -3969,7 +3986,8 @@
             "/audio/kindergarten/K.L.2-q5-choice2.mp3",
             "/audio/kindergarten/K.L.2-q5-choice3.mp3",
             "/audio/kindergarten/K.L.2-q5-choice4.mp3"
-          ]
+          ],
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.2-q5-hint.mp3"
         }
       ]
     },
@@ -3991,7 +4009,8 @@
           ],
           "correct": "It already happened.",
           "hint": "The ending '-ed' means something already happened — in the past!",
-          "difficulty": 2
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.4-q1-hint.mp3"
         },
         {
           "id": "K.L.4-Q2",
@@ -4005,7 +4024,8 @@
           ],
           "correct": "Not",
           "hint": "Un- means 'not.' So unhappy means NOT happy!",
-          "difficulty": 2
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.4-q2-hint.mp3"
         },
         {
           "id": "K.L.4-Q3",
@@ -4019,7 +4039,8 @@
           ],
           "correct": "More than one dog",
           "hint": "Adding '-s' usually means there is more than one!",
-          "difficulty": 1
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.4-q3-hint.mp3"
         },
         {
           "id": "K.L.4-Q4",
@@ -4033,7 +4054,8 @@
           ],
           "correct": "Full of help",
           "hint": "-ful means 'full of.' So helpful means full of help!",
-          "difficulty": 2
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.4-q4-hint.mp3"
         },
         {
           "id": "K.L.4-Q5",
@@ -4047,7 +4069,8 @@
           ],
           "correct": "Without care",
           "hint": "-less means 'without.' Careless = without care (not being careful)!",
-          "difficulty": 2
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.4-q5-hint.mp3"
         }
       ]
     },
@@ -4069,7 +4092,8 @@
           ],
           "correct": "Fruits",
           "hint": "These are all things you eat that grow on trees or bushes — they're all types of...",
-          "difficulty": 1
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.5-q1-hint.mp3"
         },
         {
           "id": "K.L.5-Q2",
@@ -4083,7 +4107,8 @@
           ],
           "correct": "Cold",
           "hint": "Opposites are as different as can be. If something isn't hot, it's...",
-          "difficulty": 1
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.5-q2-hint.mp3"
         },
         {
           "id": "K.L.5-Q3",
@@ -4097,7 +4122,8 @@
           ],
           "correct": "Strut",
           "hint": "Think of a peacock walking proudly — that's strutting!",
-          "difficulty": 2
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.5-q3-hint.mp3"
         },
         {
           "id": "K.L.5-Q4",
@@ -4111,7 +4137,8 @@
           ],
           "correct": "Animals",
           "hint": "They are all living creatures — what group do they belong to?",
-          "difficulty": 1
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.5-q4-hint.mp3"
         },
         {
           "id": "K.L.5-Q5",
@@ -4125,33 +4152,71 @@
           ],
           "correct": "Smile, giggle, laugh",
           "hint": "A smile is quiet, a giggle is in the middle, and a laugh is the biggest!",
-          "difficulty": 2
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.5-q5-hint.mp3"
         },
         {
           "id": "K.L.5-Q6",
           "type": "category_sort",
           "prompt": "Sort these words into the correct group!",
-          "categories": ["Animals", "Colors"],
+          "categories": [
+            "Animals",
+            "Colors"
+          ],
           "category_items": {
-            "Animals": ["Dog", "Cat", "Bird"],
-            "Colors": ["Red", "Blue", "Green"]
+            "Animals": [
+              "Dog",
+              "Cat",
+              "Bird"
+            ],
+            "Colors": [
+              "Red",
+              "Blue",
+              "Green"
+            ]
           },
-          "items": ["Dog", "Red", "Cat", "Blue", "Bird", "Green"],
+          "items": [
+            "Dog",
+            "Red",
+            "Cat",
+            "Blue",
+            "Bird",
+            "Green"
+          ],
           "correct": "Animals: Dog, Cat, Bird | Colors: Red, Blue, Green",
           "hint": "Animals are living creatures. Colors describe how things look.",
           "difficulty": 1,
-          "audio_url": "/audio/prompts/sort-words-into-group.mp3"
+          "audio_url": "/audio/prompts/sort-words-into-group.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.5-q6-hint.mp3"
         },
         {
           "id": "K.L.5-Q7",
           "type": "category_sort",
           "prompt": "Sort these words into the correct group!",
-          "categories": ["Fruits", "Vegetables"],
+          "categories": [
+            "Fruits",
+            "Vegetables"
+          ],
           "category_items": {
-            "Fruits": ["Apple", "Banana", "Grape"],
-            "Vegetables": ["Carrot", "Broccoli", "Pea"]
+            "Fruits": [
+              "Apple",
+              "Banana",
+              "Grape"
+            ],
+            "Vegetables": [
+              "Carrot",
+              "Broccoli",
+              "Pea"
+            ]
           },
-          "items": ["Apple", "Carrot", "Banana", "Broccoli", "Grape", "Pea"],
+          "items": [
+            "Apple",
+            "Carrot",
+            "Banana",
+            "Broccoli",
+            "Grape",
+            "Pea"
+          ],
           "correct": "Fruits: Apple, Banana, Grape | Vegetables: Carrot, Broccoli, Pea",
           "hint": "Fruits are usually sweet. Vegetables are usually green or orange.",
           "difficulty": 1,
@@ -4161,16 +4226,35 @@
           "id": "K.L.5-Q8",
           "type": "category_sort",
           "prompt": "Sort these words into the correct group!",
-          "categories": ["Big", "Small"],
+          "categories": [
+            "Big",
+            "Small"
+          ],
           "category_items": {
-            "Big": ["Elephant", "Whale", "Mountain"],
-            "Small": ["Ant", "Ladybug", "Seed"]
+            "Big": [
+              "Elephant",
+              "Whale",
+              "Mountain"
+            ],
+            "Small": [
+              "Ant",
+              "Ladybug",
+              "Seed"
+            ]
           },
-          "items": ["Elephant", "Ant", "Whale", "Ladybug", "Mountain", "Seed"],
+          "items": [
+            "Elephant",
+            "Ant",
+            "Whale",
+            "Ladybug",
+            "Mountain",
+            "Seed"
+          ],
           "correct": "Big: Elephant, Whale, Mountain | Small: Ant, Ladybug, Seed",
           "hint": "Think about the SIZE of each thing in real life.",
           "difficulty": 2,
-          "audio_url": "/audio/prompts/sort-words-into-group.mp3"
+          "audio_url": "/audio/prompts/sort-words-into-group.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.5-q8-hint.mp3"
         }
       ]
     },
@@ -4192,7 +4276,8 @@
           ],
           "correct": "Fish, whales, and dolphins",
           "hint": "Think about what you learned from the ocean book!",
-          "difficulty": 1
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.6-q1-hint.mp3"
         },
         {
           "id": "K.L.6-Q2",
@@ -4206,7 +4291,8 @@
           ],
           "correct": "One behind the other in a line",
           "hint": "When things are 'in a row,' they make a straight line!",
-          "difficulty": 1
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.6-q2-hint.mp3"
         },
         {
           "id": "K.L.6-Q3",
@@ -4220,7 +4306,8 @@
           ],
           "correct": "Sleep for a long time",
           "hint": "Bears go to sleep for the whole winter — that's hibernating!",
-          "difficulty": 2
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.6-q3-hint.mp3"
         },
         {
           "id": "K.L.6-Q4",
@@ -4234,7 +4321,8 @@
           ],
           "correct": "Hard to figure out",
           "hint": "If something is tricky, you really have to think to solve it!",
-          "difficulty": 1
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.6-q4-hint.mp3"
         },
         {
           "id": "K.L.6-Q5",
@@ -4248,7 +4336,8 @@
           ],
           "correct": "They change color and fall down.",
           "hint": "Think about what you know about fall — what happens to the trees?",
-          "difficulty": 2
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.6-q5-hint.mp3"
         }
       ]
     }
