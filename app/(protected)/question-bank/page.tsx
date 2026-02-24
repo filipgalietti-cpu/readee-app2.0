@@ -17,6 +17,7 @@ import { MissingWord } from "@/app/components/practice/MissingWord";
 import { SentenceBuild } from "@/app/components/practice/SentenceBuild";
 import { CategorySort } from "@/app/components/practice/CategorySort";
 import { useAudio } from "@/lib/audio/use-audio";
+import kStandards from "@/app/data/kindergarten-standards-questions.json";
 
 /* ── Prompt audio URLs ─────────────────────────────── */
 
@@ -28,13 +29,22 @@ const PROMPT_AUDIO: Record<string, string> = {
 
 /* ── Types ──────────────────────────────────────────── */
 
+interface McqData {
+  choices: string[];
+  correct: string;
+  hint: string;
+  audioUrl?: string;
+  hintAudioUrl?: string;
+}
+
 interface QuestionEntry {
   id: string;
   preview: string;
   question: MatchingQuestion;
+  mcq?: McqData;
 }
 
-type Tab = "missing-word" | "sentence-build" | "category-sort";
+type Tab = "missing-word" | "sentence-build" | "category-sort" | "mcq";
 
 /* ── Helpers ─────────────────────────────────────────── */
 
@@ -50,6 +60,17 @@ function shuffle<T>(arr: T[]): T[] {
   }
   return a;
 }
+
+function splitPrompt(prompt: string): { passage: string | null; question: string } {
+  const parts = prompt.split("\n\n");
+  if (parts.length >= 2) {
+    return { passage: parts.slice(0, -1).join("\n\n"), question: parts[parts.length - 1] };
+  }
+  return { passage: null, question: prompt };
+}
+
+const ACCENT_COLORS = ["#60a5fa", "#4ade80", "#fb923c", "#a78bfa"];
+const CHOICE_LETTERS = ["A", "B", "C", "D"];
 
 /* ── Generate all questions ──────────────────────────── */
 
@@ -171,6 +192,38 @@ function generateAllCategorySort(): QuestionEntry[] {
   return entries;
 }
 
+function generateAllMcq(): QuestionEntry[] {
+  const entries: QuestionEntry[] = [];
+  let idx = 0;
+
+  for (const standard of (kStandards as { standards: Array<{ questions: Array<{ id: string; type: string; prompt: string; choices: string[]; correct: string; hint: string; difficulty: number; audio_url?: string; hint_audio_url?: string }> }> }).standards) {
+    for (const q of standard.questions) {
+      idx++;
+      const { question } = splitPrompt(q.prompt);
+      const preview = question.length > 60 ? question.slice(0, 57) + "..." : question;
+
+      entries.push({
+        id: `MCQ-${idx}`,
+        preview,
+        question: {
+          id: q.id,
+          type: "multiple_choice",
+          prompt: q.prompt,
+        },
+        mcq: {
+          choices: q.choices,
+          correct: q.correct,
+          hint: q.hint,
+          audioUrl: q.audio_url,
+          hintAudioUrl: q.hint_audio_url,
+        },
+      });
+    }
+  }
+
+  return entries;
+}
+
 /* ── Tab Button ──────────────────────────────────────── */
 
 function TabButton({
@@ -206,14 +259,17 @@ function QuestionCard({
   onToggle,
   playCorrectChime,
   playIncorrectBuzz,
+  playUrl,
 }: {
   entry: QuestionEntry;
   expanded: boolean;
   onToggle: () => void;
   playCorrectChime: () => void;
   playIncorrectBuzz: () => void;
+  playUrl: (url: string) => void;
 }) {
   const [answered, setAnswered] = useState(false);
+  const [mcqSelected, setMcqSelected] = useState<string | null>(null);
   const q = entry.question;
 
   const handleAnswer = useCallback(
@@ -228,8 +284,28 @@ function QuestionCard({
     [playCorrectChime, playIncorrectBuzz]
   );
 
+  const handleMcqAnswer = useCallback(
+    (choice: string) => {
+      if (mcqSelected) return;
+      const mcq = entry.mcq!;
+      const isCorrect = choice === mcq.correct;
+      setMcqSelected(choice);
+      setAnswered(true);
+      if (isCorrect) {
+        playCorrectChime();
+      } else {
+        playIncorrectBuzz();
+        if (mcq.hintAudioUrl) {
+          setTimeout(() => playUrl(mcq.hintAudioUrl!), 600);
+        }
+      }
+    },
+    [mcqSelected, entry.mcq, playCorrectChime, playIncorrectBuzz, playUrl]
+  );
+
   const handleReset = useCallback(() => {
     setAnswered(false);
+    setMcqSelected(null);
   }, []);
 
   return (
@@ -328,6 +404,114 @@ function QuestionCard({
                 onIncorrectPlace={playIncorrectBuzz}
               />
             )}
+
+            {entry.mcq && (() => {
+              const { passage, question } = splitPrompt(q.prompt);
+              const mcq = entry.mcq;
+              const hasAnswered = mcqSelected !== null;
+              const isCorrect = mcqSelected === mcq.correct;
+
+              return (
+                <div key={answered ? "reset" : "active"}>
+                  {/* Passage */}
+                  {passage && (
+                    <div className="mb-5 rounded-2xl bg-white border border-zinc-200 dark:bg-slate-800/80 dark:border-slate-700 p-5">
+                      <p className="text-lg leading-relaxed text-zinc-900 dark:text-white/90 whitespace-pre-line">{passage}</p>
+                    </div>
+                  )}
+
+                  {/* Question */}
+                  <h2 className="text-[22px] font-bold text-zinc-900 dark:text-white leading-snug mb-5">
+                    {question}
+                  </h2>
+
+                  {/* Choices */}
+                  <div className="flex flex-col gap-3">
+                    {mcq.choices.map((choice, i) => {
+                      const isSelected = mcqSelected === choice;
+                      const isCorrectChoice = choice === mcq.correct;
+
+                      let bg = "bg-white border-zinc-200 dark:bg-slate-800 dark:border-slate-600 hover:bg-zinc-50 dark:hover:bg-slate-700/50";
+                      let textColor = "text-zinc-900 dark:text-white";
+
+                      if (hasAnswered) {
+                        if (isSelected && isCorrect) {
+                          bg = "bg-emerald-50 border-emerald-500 ring-2 ring-emerald-500/30 dark:bg-emerald-900/60";
+                          textColor = "text-emerald-800 dark:text-emerald-100";
+                        } else if (isSelected && !isCorrect) {
+                          bg = "bg-red-50 border-red-500 ring-2 ring-red-500/30 dark:bg-red-900/40";
+                          textColor = "text-red-800 dark:text-red-200";
+                        } else if (isCorrectChoice && !isCorrect) {
+                          bg = "bg-emerald-50/80 border-emerald-500 dark:bg-emerald-900/40";
+                          textColor = "text-emerald-800 dark:text-emerald-200";
+                        } else {
+                          bg = "bg-zinc-100 border-zinc-200 opacity-40 dark:bg-slate-800/40 dark:border-slate-700";
+                          textColor = "text-zinc-400 dark:text-slate-400";
+                        }
+                      }
+
+                      return (
+                        <button
+                          key={choice}
+                          onClick={() => handleMcqAnswer(choice)}
+                          disabled={hasAnswered}
+                          className={`group w-full text-left px-5 py-4 rounded-xl border-2 relative overflow-hidden transition-all duration-200 outline-none ${bg} ${hasAnswered ? "cursor-default" : "cursor-pointer"}`}
+                          style={{ minHeight: 56 }}
+                        >
+                          {/* Color accent bar */}
+                          <div
+                            className="absolute left-0 top-0 bottom-0 w-[3px] group-hover:w-[5px] rounded-l-xl transition-all duration-200"
+                            style={{ backgroundColor: ACCENT_COLORS[i % 4] }}
+                          />
+                          <div className="flex items-center gap-3">
+                            {/* Letter badge */}
+                            <span
+                              className="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-white text-xs font-bold"
+                              style={{ backgroundColor: ACCENT_COLORS[i % 4] }}
+                            >
+                              {CHOICE_LETTERS[i]}
+                            </span>
+                            {/* Check / X icons */}
+                            {hasAnswered && isSelected && isCorrect && (
+                              <div className="w-7 h-7 rounded-full bg-emerald-500 flex items-center justify-center flex-shrink-0">
+                                <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                                </svg>
+                              </div>
+                            )}
+                            {hasAnswered && isSelected && !isCorrect && (
+                              <div className="w-7 h-7 rounded-full bg-red-500 flex items-center justify-center flex-shrink-0">
+                                <svg className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                              </div>
+                            )}
+                            {hasAnswered && !isSelected && isCorrectChoice && !isCorrect && (
+                              <div className="w-7 h-7 rounded-full bg-emerald-500 flex items-center justify-center flex-shrink-0">
+                                <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                                </svg>
+                              </div>
+                            )}
+                            <span className={`text-lg font-medium leading-snug flex-1 ${textColor}`}>
+                              {choice}
+                            </span>
+                          </div>
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  {/* Hint on wrong answer */}
+                  {hasAnswered && !isCorrect && (
+                    <div className="mt-4 p-4 rounded-xl bg-amber-50 border border-amber-200 dark:bg-amber-900/30 dark:border-amber-700">
+                      <p className="text-sm font-semibold text-amber-800 dark:text-amber-200 mb-1">Hint</p>
+                      <p className="text-sm text-amber-700 dark:text-amber-300">{mcq.hint}</p>
+                    </div>
+                  )}
+                </div>
+              );
+            })()}
           </div>
         </div>
       )}
@@ -347,15 +531,18 @@ export default function QuestionBankPage() {
   const mwEntries = useMemo(() => generateAllMissingWord(), []);
   const sbEntries = useMemo(() => generateAllSentenceBuild(), []);
   const csEntries = useMemo(() => generateAllCategorySort(), []);
+  const mcqEntries = useMemo(() => generateAllMcq(), []);
 
   const entries =
     tab === "missing-word"
       ? mwEntries
       : tab === "sentence-build"
       ? sbEntries
-      : csEntries;
+      : tab === "category-sort"
+      ? csEntries
+      : mcqEntries;
 
-  const total = mwEntries.length + sbEntries.length + csEntries.length;
+  const total = mwEntries.length + sbEntries.length + csEntries.length + mcqEntries.length;
 
   // Build a lookup from entry id → question type for prompt audio
   const entryTypeMap = useMemo(() => {
@@ -363,17 +550,33 @@ export default function QuestionBankPage() {
     for (const e of mwEntries) map.set(e.id, e.question.type);
     for (const e of sbEntries) map.set(e.id, e.question.type);
     for (const e of csEntries) map.set(e.id, e.question.type);
+    for (const e of mcqEntries) map.set(e.id, e.question.type);
     return map;
-  }, [mwEntries, sbEntries, csEntries]);
+  }, [mwEntries, sbEntries, csEntries, mcqEntries]);
+
+  // Build a lookup from entry id → MCQ audio URL
+  const mcqAudioMap = useMemo(() => {
+    const map = new Map<string, string>();
+    for (const e of mcqEntries) {
+      if (e.mcq?.audioUrl) map.set(e.id, e.mcq.audioUrl);
+    }
+    return map;
+  }, [mcqEntries]);
 
   // Play prompt audio when a card expands
   useEffect(() => {
     if (!expandedId) return;
+    // MCQ questions have their own audio
+    const mcqAudio = mcqAudioMap.get(expandedId);
+    if (mcqAudio) {
+      playUrl(mcqAudio);
+      return;
+    }
     const type = entryTypeMap.get(expandedId);
     if (type && PROMPT_AUDIO[type]) {
       playUrl(PROMPT_AUDIO[type]);
     }
-  }, [expandedId, entryTypeMap, playUrl]);
+  }, [expandedId, entryTypeMap, mcqAudioMap, playUrl]);
 
   // Unlock audio on first card tap (needed for mobile browsers)
   const handleToggle = useCallback(
@@ -420,6 +623,12 @@ export default function QuestionBankPage() {
             active={tab === "category-sort"}
             onClick={() => { setTab("category-sort"); setExpandedId(null); }}
           />
+          <TabButton
+            label="MCQ"
+            count={mcqEntries.length}
+            active={tab === "mcq"}
+            onClick={() => { setTab("mcq"); setExpandedId(null); }}
+          />
         </div>
 
         {/* Question list */}
@@ -432,6 +641,7 @@ export default function QuestionBankPage() {
               onToggle={() => handleToggle(entry.id)}
               playCorrectChime={playCorrectChime}
               playIncorrectBuzz={playIncorrectBuzz}
+              playUrl={playUrl}
             />
           ))}
         </div>

@@ -13,7 +13,7 @@ export interface AssessmentQuestion {
 
 export interface MatchingQuestion {
   id: string;
-  type: "category_sort" | "sentence_build" | "missing_word";
+  type: "category_sort" | "sentence_build" | "missing_word" | "multiple_choice";
   prompt: string;
   // category_sort
   categories?: string[];
