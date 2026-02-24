@@ -505,7 +505,20 @@ function QuestionCard({
                   {/* Hint on wrong answer */}
                   {hasAnswered && !isCorrect && (
                     <div className="mt-4 p-4 rounded-xl bg-amber-50 border border-amber-200 dark:bg-amber-900/30 dark:border-amber-700">
-                      <p className="text-sm font-semibold text-amber-800 dark:text-amber-200 mb-1">Hint</p>
+                      <div className="flex items-center gap-2 mb-1">
+                        <p className="text-sm font-semibold text-amber-800 dark:text-amber-200">Hint</p>
+                        {mcq.hintAudioUrl && (
+                          <button
+                            onClick={() => playUrl(mcq.hintAudioUrl!)}
+                            className="inline-flex items-center justify-center w-7 h-7 rounded-full hover:bg-amber-200/60 dark:hover:bg-amber-800/40 transition-colors"
+                            aria-label="Play hint audio"
+                          >
+                            <svg className="w-4 h-4 text-amber-700 dark:text-amber-300" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M15.536 8.464a5 5 0 010 7.072M17.95 6.05a8 8 0 010 11.9M11 5L6 9H2v6h4l5 4V5z" />
+                            </svg>
+                          </button>
+                        )}
+                      </div>
                       <p className="text-sm text-amber-700 dark:text-amber-300">{mcq.hint}</p>
                     </div>
                   )}
