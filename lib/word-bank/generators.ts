@@ -181,7 +181,7 @@ interface CategoryPreset {
   prompt: string;
 }
 
-const categoryPresets: CategoryPreset[] = [
+export const categoryPresets: CategoryPreset[] = [
   { tag1: "animal", tag2: "thing", label1: "Animals", label2: "Things", prompt: "Which are animals and which are things?" },
   { tag1: "big", tag2: "small", label1: "Big", label2: "Small", prompt: "Which things are big and which are small?" },
   { tag1: "land", tag2: "water", label1: "Land", label2: "Water", prompt: "Which live on land and which live in water?" },
@@ -196,7 +196,7 @@ const categoryPresets: CategoryPreset[] = [
 ];
 
 /** Rhyme family pairs that have enough words */
-const rhymePairs: [string, string][] = [
+export const rhymePairs: [string, string][] = [
   ["-at", "-ig"],
   ["-ug", "-an"],
   ["-at", "-ug"],
@@ -212,7 +212,7 @@ const rhymePairs: [string, string][] = [
 ];
 
 /** Letter pairs for beginning sounds */
-const letterPairs: [string, string][] = [
+export const letterPairs: [string, string][] = [
   ["b", "c"],
   ["c", "d"],
   ["b", "f"],
