@@ -333,18 +333,6 @@ function AddChildrenForm({ userPlan, onDone }: { userPlan: string; onDone: (kids
   );
 }
 
-/* ─── CountUpStat ─────────────────────────────────────── */
-
-function CountUpStat({ target }: { target: number }) {
-  const { value, ref } = useCountUp(target);
-
-  return (
-    <div ref={ref} className="text-xl font-bold text-zinc-900 dark:text-slate-100">
-      {value}
-    </div>
-  );
-}
-
 /* ─── Child Selector ──────────────────────────────────── */
 
 function ChildSelector({
@@ -578,11 +566,11 @@ function ChildDashboard({
 
   // Carrot milestone
   const carrots = Number(child.carrots) || 0;
-  const carrotMilestones = [25, 50, 100, 200, 500, 1000];
-  const nextMilestone = carrotMilestones.find((m) => m > carrots) || carrots + 100;
-  const prevMilestone = [...carrotMilestones].reverse().find((m) => m <= carrots) || 0;
-  const range = nextMilestone - prevMilestone;
-  const carrotProgress = range > 0 ? Math.round(((carrots - prevMilestone) / range) * 100) : 0;
+
+  // Count-up animations for stats
+  const carrotCount = useCountUp(carrots);
+  const storiesCount = useCountUp(child.stories_read);
+  const streakCount = useCountUp(child.streak_days);
 
   return (
     <motion.div
@@ -617,130 +605,93 @@ function ChildDashboard({
         </motion.div>
       )}
 
-      {/* ── Greeting ── */}
+      {/* ── Greeting (enlarged) ── */}
       <motion.div variants={slideUp} className="text-center pt-4">
-        <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-indigo-50 to-violet-50 mx-auto mb-4 flex items-center justify-center text-4xl shadow-sm">
+        <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-indigo-50 to-violet-50 dark:from-indigo-950/40 dark:to-violet-950/40 mx-auto mb-4 flex items-center justify-center text-5xl shadow-sm">
           {avatar}
         </div>
-        <h1 className="text-2xl font-bold text-zinc-900 dark:text-slate-100 tracking-tight">
+        <h1 className="text-3xl font-bold text-zinc-900 dark:text-slate-100 tracking-tight">
           {greeting.text}, {child.first_name}! <span className="animate-wave">{greeting.emoji}</span>
         </h1>
         <p className="text-zinc-500 dark:text-slate-400 mt-1 text-sm">{motivation}</p>
       </motion.div>
 
-      {/* ── Start Practice CTA ── */}
-      {hasAssessment && (
-        <motion.div variants={slideUp}>
-          <Link
-            href={`/practice?child=${child.id}&standard=${nextPracticeStandard.standard_id}`}
-            className="block"
-          >
-            <div className="rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 p-5 text-white hover:from-indigo-700 hover:to-violet-600 transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-[1.01] cursor-pointer">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center text-2xl flex-shrink-0">
-                  🎯
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="text-white font-bold text-lg">Ready to practice?</div>
-                  <div className="text-white/70 text-sm mt-0.5 truncate">
-                    {getFriendlyTopicName(nextPracticeStandard.domain)}
-                  </div>
-                </div>
-                <span className="px-5 py-2.5 rounded-xl bg-white text-indigo-700 font-bold text-sm shadow-sm flex-shrink-0">
-                  Start →
-                </span>
-              </div>
-            </div>
-          </Link>
-        </motion.div>
-      )}
+      {/* ── Hero Tiles — 2×2 grid ── */}
+      <motion.div variants={slideUp} className="grid grid-cols-2 gap-4">
+        {/* Practice */}
+        <Link
+          href={hasAssessment ? `/practice?child=${child.id}&standard=${nextPracticeStandard.standard_id}` : `/assessment?child=${child.id}`}
+          className="block"
+        >
+          <div className="min-h-[140px] rounded-3xl bg-gradient-to-br from-indigo-600 to-violet-500 dark:from-indigo-700 dark:to-violet-600 p-5 flex flex-col items-center justify-center text-center shadow-lg hover:scale-[1.03] active:scale-[0.97] transition-transform duration-200 cursor-pointer">
+            <span className="text-5xl mb-2">🎯</span>
+            <span className="text-lg font-extrabold text-white">Practice</span>
+          </div>
+        </Link>
 
-      {/* ── Sentence Building CTA ── */}
-      <motion.div variants={slideUp}>
+        {/* Games */}
         <Link
           href={`/practice?child=${child.id}&types=sentence_build,category_sort`}
           className="block"
         >
-          <div className="rounded-2xl bg-gradient-to-r from-amber-500 to-orange-500 p-4 text-white hover:from-amber-600 hover:to-orange-600 transition-all duration-200 shadow-md hover:shadow-lg hover:scale-[1.01] cursor-pointer">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center text-xl flex-shrink-0">
-                🧩
-              </div>
-              <div className="flex-1 min-w-0">
-                <div className="text-white font-bold text-base">Try Interactive Games!</div>
-                <div className="text-white/70 text-xs mt-0.5">Build sentences & sort words</div>
-              </div>
-              <span className="px-4 py-2 rounded-xl bg-white text-amber-700 font-bold text-xs shadow-sm flex-shrink-0">
-                Try it →
-              </span>
-            </div>
+          <div className="min-h-[140px] rounded-3xl bg-gradient-to-br from-amber-500 to-orange-500 dark:from-amber-600 dark:to-orange-600 p-5 flex flex-col items-center justify-center text-center shadow-lg hover:scale-[1.03] active:scale-[0.97] transition-transform duration-200 cursor-pointer">
+            <span className="text-5xl mb-2">🧩</span>
+            <span className="text-lg font-extrabold text-white">Games</span>
+          </div>
+        </Link>
+
+        {/* Stories */}
+        <Link href={`/stories?child=${child.id}`} className="block">
+          <div className="min-h-[140px] rounded-3xl bg-gradient-to-br from-emerald-500 to-teal-500 dark:from-emerald-600 dark:to-teal-600 p-5 flex flex-col items-center justify-center text-center shadow-lg hover:scale-[1.03] active:scale-[0.97] transition-transform duration-200 cursor-pointer">
+            <span className="text-5xl mb-2">📚</span>
+            <span className="text-lg font-extrabold text-white">Stories</span>
+          </div>
+        </Link>
+
+        {/* My Journey */}
+        <Link href={`/roadmap?child=${child.id}`} className="block">
+          <div className="min-h-[140px] rounded-3xl bg-gradient-to-br from-pink-500 to-rose-500 dark:from-pink-600 dark:to-rose-600 p-5 flex flex-col items-center justify-center text-center shadow-lg hover:scale-[1.03] active:scale-[0.97] transition-transform duration-200 cursor-pointer">
+            <span className="text-5xl mb-2">🗺️</span>
+            <span className="text-lg font-extrabold text-white">My Journey</span>
           </div>
         </Link>
       </motion.div>
 
-      {/* ── Stats Cards ── */}
+      {/* ── Stats Row — chunky stat cards ── */}
       <motion.div variants={slideUp} className="grid grid-cols-3 gap-4">
         {/* Carrots Card */}
         <Link href={`/carrot-rewards?child=${child.id}`} className="block">
-          <div className="rounded-2xl border border-gray-200 dark:border-slate-700 bg-gradient-to-b from-amber-50 to-white dark:from-amber-950/30 dark:to-slate-800 p-6 min-h-[160px] flex flex-col items-center justify-center text-center hover:shadow-md hover:scale-[1.02] transition-all duration-200 group cursor-pointer">
-            <div className="text-xl mb-1 group-hover:animate-subtleBounce">🥕</div>
-            <CountUpStat target={carrots} />
-            <div className="text-[10px] text-zinc-500 dark:text-slate-400 mt-0.5 font-medium">Carrots</div>
-            <div className="mt-2 w-full h-1.5 bg-amber-100 rounded-full overflow-hidden">
-              <div
-                className="h-full bg-gradient-to-r from-amber-400 to-amber-500 rounded-full transition-all duration-700"
-                style={{ width: `${Math.min(carrotProgress, 100)}%` }}
-              />
-            </div>
-            <div className="text-[9px] text-orange-600 mt-1 font-medium">{carrots}/{nextMilestone} 🥕</div>
+          <div className="rounded-2xl border border-gray-200 dark:border-slate-700 bg-gradient-to-b from-amber-50 to-white dark:from-amber-950/30 dark:to-slate-800 p-4 min-h-[120px] flex flex-col items-center justify-center text-center hover:shadow-md hover:scale-[1.02] transition-all duration-200 group cursor-pointer">
+            <div className="text-4xl mb-1 group-hover:animate-subtleBounce">🥕</div>
+            <div ref={carrotCount.ref} className="text-3xl font-extrabold text-zinc-900 dark:text-slate-100">{carrotCount.value}</div>
+            <div className="text-sm text-zinc-500 dark:text-slate-400 mt-0.5 font-medium">Carrots</div>
           </div>
         </Link>
 
         {/* Stories Card */}
         <Link href={`/stories?child=${child.id}`} className="block">
-          <div className="rounded-2xl border border-gray-200 dark:border-slate-700 bg-gradient-to-b from-indigo-50 to-white dark:from-indigo-950/30 dark:to-slate-800 p-6 min-h-[160px] flex flex-col items-center justify-center text-center hover:shadow-md hover:scale-[1.02] transition-all duration-200 group cursor-pointer">
-            <div className="text-xl mb-1 group-hover:animate-subtleBounce">
-              {child.stories_read > 0 ? "📚" : "📖"}
-            </div>
-            <CountUpStat target={child.stories_read} />
-            <div className="text-[10px] text-zinc-500 dark:text-slate-400 mt-0.5 font-medium">Stories Read</div>
-            <div className="flex justify-center gap-0.5 mt-2">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <div
-                  key={i}
-                  className={`w-3 h-4 rounded-sm transition-colors ${
-                    i < Math.min(child.stories_read, 5)
-                      ? "bg-indigo-400"
-                      : "bg-zinc-100"
-                  }`}
-                />
-              ))}
-            </div>
+          <div className="rounded-2xl border border-gray-200 dark:border-slate-700 bg-gradient-to-b from-indigo-50 to-white dark:from-indigo-950/30 dark:to-slate-800 p-4 min-h-[120px] flex flex-col items-center justify-center text-center hover:shadow-md hover:scale-[1.02] transition-all duration-200 group cursor-pointer">
+            <div className="text-4xl mb-1 group-hover:animate-subtleBounce">📚</div>
+            <div ref={storiesCount.ref} className="text-3xl font-extrabold text-zinc-900 dark:text-slate-100">{storiesCount.value}</div>
+            <div className="text-sm text-zinc-500 dark:text-slate-400 mt-0.5 font-medium">Stories</div>
           </div>
         </Link>
 
         {/* Streak Card */}
         <Link href={`/leaderboard?child=${child.id}`} className="block">
-          <div className="rounded-2xl border border-gray-200 dark:border-slate-700 bg-gradient-to-b from-orange-50 to-white dark:from-orange-950/30 dark:to-slate-800 p-6 min-h-[160px] flex flex-col items-center justify-center text-center hover:shadow-md hover:scale-[1.02] transition-all duration-200 group cursor-pointer">
-            <div className={`text-xl mb-1 ${child.streak_days > 0 ? "animate-fireGlow" : ""}`}>
-              🔥
-            </div>
-            <CountUpStat target={child.streak_days} />
-            <div className="text-[10px] text-zinc-500 dark:text-slate-400 mt-0.5 font-medium">Day Streak</div>
-            {child.streak_days > 0 && (
-              <div className="text-[10px] text-orange-600 font-bold mt-1.5">
-                🔥 {child.streak_days} day{child.streak_days !== 1 ? "s" : ""}!
-              </div>
-            )}
+          <div className="rounded-2xl border border-gray-200 dark:border-slate-700 bg-gradient-to-b from-orange-50 to-white dark:from-orange-950/30 dark:to-slate-800 p-4 min-h-[120px] flex flex-col items-center justify-center text-center hover:shadow-md hover:scale-[1.02] transition-all duration-200 group cursor-pointer">
+            <div className={`text-4xl mb-1 ${child.streak_days > 0 ? "animate-fireGlow" : ""}`}>🔥</div>
+            <div ref={streakCount.ref} className="text-3xl font-extrabold text-zinc-900 dark:text-slate-100">{streakCount.value}</div>
+            <div className="text-sm text-zinc-500 dark:text-slate-400 mt-0.5 font-medium">Day Streak</div>
           </div>
         </Link>
       </motion.div>
 
-      {/* ── Daily Goal Ring ── */}
-      <motion.div variants={slideUp} className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 flex items-center gap-5">
-        <div className="relative w-16 h-16 flex-shrink-0">
+      {/* ── Daily Goal (simplified, full-width tile) ── */}
+      <motion.div variants={slideUp} className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 flex items-center gap-5">
+        <div className="relative w-20 h-20 flex-shrink-0">
           <svg viewBox="0 0 100 100" className="w-full h-full -rotate-90">
-            <circle cx="50" cy="50" r="40" fill="none" stroke="#e5e7eb" strokeWidth="8" />
+            <circle cx="50" cy="50" r="40" fill="none" stroke="#e5e7eb" strokeWidth="8" className="dark:stroke-slate-700" />
             <circle
               cx="50" cy="50" r="40" fill="none"
               stroke={dailyGoalMet ? "#10b981" : "#6366f1"}
@@ -751,94 +702,102 @@ function ChildDashboard({
               className="transition-all duration-1000"
             />
           </svg>
-          <div className="absolute inset-0 flex items-center justify-center text-lg">
-            {dailyGoalMet ? "✅" : "🎯"}
+          <div className="absolute inset-0 flex items-center justify-center text-2xl">
+            {dailyGoalMet ? "🎉" : "🎯"}
           </div>
         </div>
         <div className="flex-1 min-w-0">
-          <div className="font-bold text-zinc-900 dark:text-slate-100 text-sm">
-            {dailyGoalMet ? "Daily Goal Complete!" : "Today's Goal"}
+          <div className="font-bold text-zinc-900 dark:text-slate-100 text-base">
+            {dailyGoalMet ? "You did it!" : "Today's Goal"}
           </div>
-          <div className="text-xs text-zinc-500 dark:text-slate-400 mt-0.5">
+          <div className="text-sm text-zinc-500 dark:text-slate-400 mt-0.5">
             {dailyGoalMet
               ? "Amazing work! Come back tomorrow for more."
-              : "Complete 1 practice session to hit your daily goal"}
+              : "Do 1 lesson today!"}
           </div>
         </div>
       </motion.div>
 
-      {/* ── Roadmap & Analytics Links ── */}
-      <motion.div variants={slideUp} className="grid grid-cols-2 gap-3">
-        <Link href={`/roadmap?child=${child.id}`} className="block">
-          <div className="rounded-2xl border border-indigo-200 dark:border-indigo-800/40 bg-gradient-to-r from-indigo-50 to-violet-50 dark:from-indigo-950/30 dark:to-violet-950/30 p-4 hover:border-indigo-300 dark:hover:border-indigo-700 hover:shadow-md transition-all duration-200 cursor-pointer group h-full">
-            <div className="w-10 h-10 rounded-xl bg-white dark:bg-slate-700 flex items-center justify-center text-xl shadow-sm mb-2 group-hover:scale-105 transition-transform">
-              🗺️
-            </div>
-            <div className="font-bold text-sm text-zinc-900 dark:text-slate-100">Learning Journey</div>
-            <div className="text-[11px] text-zinc-500 dark:text-slate-400 mt-0.5">Standards roadmap</div>
-          </div>
-        </Link>
-        <Link href={`/analytics?child=${child.id}`} className="block">
-          <div className="rounded-2xl border border-violet-200 dark:border-violet-800/40 bg-gradient-to-r from-violet-50 to-purple-50 dark:from-violet-950/30 dark:to-purple-950/30 p-4 hover:border-violet-300 dark:hover:border-violet-700 hover:shadow-md transition-all duration-200 cursor-pointer group h-full">
-            <div className="w-10 h-10 rounded-xl bg-white dark:bg-slate-700 flex items-center justify-center text-xl shadow-sm mb-2 group-hover:scale-105 transition-transform">
-              📊
-            </div>
-            <div className="font-bold text-sm text-zinc-900 dark:text-slate-100">Progress Report</div>
-            <div className="text-[11px] text-zinc-500 dark:text-slate-400 mt-0.5">Performance analytics</div>
-          </div>
-        </Link>
-      </motion.div>
-
-      {/* ── Primary CTA: Assessment or Next Lesson ── */}
+      {/* ── Primary CTA: Assessment or Next Lesson (enlarged) ── */}
       {hasAssessment === false && (
-        <Link href={`/assessment?child=${child.id}`} className="block">
-          <div className="rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 p-6 text-center text-white hover:from-indigo-700 hover:to-violet-600 transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-[1.01] cursor-pointer">
-            <div className="text-3xl mb-2">🎯</div>
-            <div className="text-lg font-bold">Take Your Reading Quiz!</div>
-            <div className="text-indigo-200 text-sm mt-1">
-              A fun 10-question quiz to find {child.first_name}&apos;s reading level
+        <motion.div variants={slideUp}>
+          <Link href={`/assessment?child=${child.id}`} className="block">
+            <div className="rounded-3xl bg-gradient-to-r from-indigo-600 to-violet-500 p-7 text-center text-white hover:from-indigo-700 hover:to-violet-600 transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] cursor-pointer">
+              <div className="text-5xl mb-3">🎯</div>
+              <div className="text-xl font-extrabold">Take Your Reading Quiz!</div>
+              <div className="text-indigo-200 text-base mt-1">
+                A fun 10-question quiz to find {child.first_name}&apos;s reading level
+              </div>
             </div>
-          </div>
-        </Link>
+          </Link>
+        </motion.div>
       )}
 
       {hasAssessment && nextLesson && (
-        <Link href={`/lesson?child=${child.id}&lesson=${nextLesson.id}`} className="block">
-          <div className="rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 p-5 text-white hover:from-indigo-700 hover:to-violet-600 transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-[1.01] cursor-pointer animate-subtleBounce">
-            <div className="flex items-center gap-4">
-              <div className="w-14 h-14 rounded-xl bg-white/20 flex items-center justify-center text-3xl flex-shrink-0">
-                {completedCount === 0 ? "🚀" : "📖"}
+        <motion.div variants={slideUp}>
+          <Link href={`/lesson?child=${child.id}&lesson=${nextLesson.id}`} className="block">
+            <div className="rounded-3xl bg-gradient-to-r from-indigo-600 to-violet-500 p-6 text-white hover:from-indigo-700 hover:to-violet-600 transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] cursor-pointer">
+              <div className="flex items-center gap-4">
+                <div className="w-16 h-16 rounded-2xl bg-white/20 flex items-center justify-center text-4xl flex-shrink-0">
+                  {completedCount === 0 ? "🚀" : "📖"}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="text-indigo-200 text-sm font-medium">
+                    {completedCount === 0 ? "Begin Your Reading Adventure!" : `Continue: Lesson ${nextLessonIdx + 1}`}
+                  </div>
+                  <div className="text-white font-extrabold text-xl leading-tight truncate">
+                    {nextLesson.title}
+                  </div>
+                  <div className="text-indigo-200 text-sm mt-1">
+                    {completedCount} of {lessons.length} lessons complete
+                  </div>
+                </div>
+                <div className="flex-shrink-0 text-white/80">
+                  <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </Link>
+        </motion.div>
+      )}
+
+      {hasAssessment && !nextLesson && lessons.length > 0 && (
+        <motion.div variants={slideUp}>
+          <div className="rounded-3xl bg-gradient-to-r from-emerald-500 to-teal-500 p-7 text-center text-white shadow-lg">
+            <div className="text-5xl mb-3">🏆</div>
+            <div className="text-xl font-extrabold">All Lessons Complete!</div>
+            <div className="text-emerald-100 text-base mt-1">
+              {child.first_name} has finished all {lessons.length} lessons. Amazing!
+            </div>
+          </div>
+        </motion.div>
+      )}
+
+      {/* ── For Parents divider ── */}
+      <motion.div variants={slideUp} className="flex items-center gap-3 pt-2">
+        <div className="flex-1 h-px bg-zinc-200 dark:bg-slate-700" />
+        <span className="text-xs font-semibold text-zinc-400 dark:text-slate-500 uppercase tracking-wider">For Parents</span>
+        <div className="flex-1 h-px bg-zinc-200 dark:bg-slate-700" />
+      </motion.div>
+
+      {/* ── Analytics Link ── */}
+      <motion.div variants={slideUp}>
+        <Link href={`/analytics?child=${child.id}`} className="block">
+          <div className="rounded-2xl border border-violet-200 dark:border-violet-800/40 bg-gradient-to-r from-violet-50 to-purple-50 dark:from-violet-950/30 dark:to-purple-950/30 p-4 hover:border-violet-300 dark:hover:border-violet-700 hover:shadow-md transition-all duration-200 cursor-pointer group">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-white dark:bg-slate-700 flex items-center justify-center text-xl shadow-sm group-hover:scale-105 transition-transform">
+                📊
               </div>
               <div className="flex-1 min-w-0">
-                <div className="text-indigo-200 text-xs font-medium">
-                  {completedCount === 0 ? "Begin Your Reading Adventure!" : `Continue: Lesson ${nextLessonIdx + 1}`}
-                </div>
-                <div className="text-white font-bold text-lg leading-tight truncate">
-                  {nextLesson.title}
-                </div>
-                <div className="text-indigo-200 text-xs mt-1">
-                  {completedCount} of {lessons.length} lessons complete
-                </div>
-              </div>
-              <div className="flex-shrink-0 text-white/80">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
+                <div className="font-bold text-sm text-zinc-900 dark:text-slate-100">Progress Report</div>
+                <div className="text-[11px] text-zinc-500 dark:text-slate-400 mt-0.5">Performance analytics</div>
               </div>
             </div>
           </div>
         </Link>
-      )}
-
-      {hasAssessment && !nextLesson && lessons.length > 0 && (
-        <div className="rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 p-5 text-center text-white shadow-lg">
-          <div className="text-3xl mb-2">🏆</div>
-          <div className="text-lg font-bold">All Lessons Complete!</div>
-          <div className="text-emerald-100 text-sm mt-1">
-            {child.first_name} has finished all {lessons.length} lessons. Amazing!
-          </div>
-        </div>
-      )}
+      </motion.div>
 
       {/* ── Lesson Path ── */}
       {hasAssessment && (
