@@ -801,11 +801,6 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
                     ? { scale: [1, 1.08, 1], transition: { duration: 0.3 } }
                     : {}
                 }
-                whileHover={!answered ? {
-                  scale: 1.04,
-                  boxShadow: "0 8px 24px rgba(99,102,241,0.18)",
-                  transition: { type: "spring", stiffness: 400, damping: 15 },
-                } : undefined}
                 whileTap={!answered ? { scale: 0.95, transition: { duration: 0.1 } } : undefined}
                 onClick={() => handleAnswer(choice)}
                 disabled={answered}
@@ -814,7 +809,7 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
                   transition-[background-color,border-color,opacity,box-shadow] duration-200 outline-none
                   min-h-[80px] md:min-h-[100px]
                   ${bg} ${borderExtra}
-                  ${answered ? "cursor-default" : "cursor-pointer active:scale-[0.95]"}
+                  ${answered ? "cursor-default" : "cursor-pointer hover:scale-[1.04] hover:shadow-lg active:scale-[0.95]"}
                   ${isLastOdd ? "col-span-2 max-w-[50%] mx-auto" : ""}
                 `}
               >
