@@ -703,6 +703,30 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
           />
         ) : (
         <>
+        {/* ── Progress dots ── */}
+        <motion.div variants={fadeUp} className="flex items-center justify-center gap-2 mb-5">
+          {Array.from({ length: totalQ }).map((_, i) => {
+            const answer = answers[i];
+            const isCurrent = i === currentIdx;
+            let dotClass = "bg-zinc-300 dark:bg-slate-600"; // upcoming
+            if (answer) {
+              dotClass = answer.correct
+                ? "bg-emerald-500"
+                : "bg-red-400";
+            } else if (isCurrent) {
+              dotClass = "bg-indigo-500";
+            }
+            return (
+              <div
+                key={i}
+                className={`rounded-full transition-all duration-300 ${dotClass} ${
+                  isCurrent ? "w-3.5 h-3.5" : "w-2.5 h-2.5"
+                }`}
+              />
+            );
+          })}
+        </motion.div>
+
         {/* Passage */}
         {passage && (
           <motion.div variants={fadeUp} className="mb-5 rounded-2xl bg-white border border-zinc-200 dark:bg-slate-800/80 dark:border-slate-700 p-5">
@@ -711,42 +735,54 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
         )}
 
         {/* Question + replay button */}
-        <motion.div variants={fadeUp} className="mb-6">
-          <div className="flex items-start gap-2">
-            <h2 className="text-[22px] font-bold text-zinc-900 dark:text-white leading-snug flex-1">
+        <motion.div variants={fadeUp} className="mb-8">
+          <div className="flex items-start gap-3 max-w-[600px] mx-auto">
+            <h2 className="text-[28px] md:text-[36px] font-bold text-zinc-900 dark:text-white leading-[1.5] text-center flex-1">
               {question}
             </h2>
             <button
               onClick={handleReplay}
-              className="inline-flex items-center justify-center w-8 h-8 rounded-full hover:bg-zinc-200 dark:hover:bg-white/10 transition-colors flex-shrink-0"
+              className="inline-flex items-center justify-center w-11 h-11 rounded-full bg-indigo-50 dark:bg-indigo-500/20 hover:bg-indigo-100 dark:hover:bg-indigo-500/30 transition-colors flex-shrink-0 mt-1"
               aria-label="Replay audio"
             >
-              <svg className="w-5 h-5 text-indigo-600 dark:text-indigo-300" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+              <svg className="w-6 h-6 text-indigo-600 dark:text-indigo-300" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.536 8.464a5 5 0 010 7.072M17.95 6.05a8 8 0 010 11.9M11 5L6 9H2v6h4l5 4V5z" />
               </svg>
             </button>
           </div>
         </motion.div>
 
-        {/* Answer choices */}
-        <div className="flex flex-col gap-3">
+        {/* Answer choices — 2×2 grid */}
+        <div className={`grid gap-3 ${
+          (q.choices?.length ?? 0) === 2
+            ? "grid-cols-2"
+            : (q.choices?.length ?? 0) === 3
+            ? "grid-cols-2"
+            : "grid-cols-2"
+        }`}>
           {(q.choices ?? []).map((choice, i) => {
             const isSelected = selected === choice;
             const isCorrectChoice = choice === q.correct;
             const answered = selected !== null;
+            const choiceCount = q.choices?.length ?? 0;
+            // Center the last item when 3 choices
+            const isLastOdd = choiceCount === 3 && i === 2;
 
-            let bg = "bg-white border-zinc-200 dark:bg-slate-800 dark:border-slate-600";
+            let bg = "bg-white border-zinc-200 dark:bg-slate-800 dark:border-slate-600 shadow-sm";
             let textColor = "text-zinc-900 dark:text-white";
+            let borderExtra = "";
 
-            if (answered) {
+            if (!answered && isSelected) {
+              borderExtra = "border-indigo-500 ring-2 ring-indigo-500/30";
+            } else if (answered) {
               if (isSelected && isCorrect) {
-                bg = "bg-emerald-50 border-emerald-500 ring-2 ring-emerald-500/30 dark:bg-emerald-900/60";
+                bg = "bg-emerald-50 border-emerald-500 shadow-sm dark:bg-emerald-900/60";
                 textColor = "text-emerald-800 dark:text-emerald-100";
               } else if (isSelected && !isCorrect) {
-                bg = "bg-red-50 border-red-500 ring-2 ring-red-500/30 dark:bg-red-900/40";
+                bg = "bg-red-50 border-red-500 shadow-sm dark:bg-red-900/40";
                 textColor = "text-red-800 dark:text-red-200";
               } else if (isCorrectChoice && !isCorrect) {
-                bg = "bg-emerald-50/80 border-emerald-500 dark:bg-emerald-900/40";
+                bg = "bg-emerald-50/80 border-emerald-500 shadow-sm dark:bg-emerald-900/40";
                 textColor = "text-emerald-800 dark:text-emerald-200";
               } else {
                 bg = "bg-zinc-100 border-zinc-200 opacity-40 dark:bg-slate-800/40 dark:border-slate-700";
@@ -759,35 +795,25 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
                 key={choice}
                 variants={fadeUp}
                 animate={
-                  isSelected && !isCorrect
+                  answered && isSelected && !isCorrect
                     ? { x: [0, -8, 8, -6, 6, -3, 3, 0], transition: { duration: 0.5 } }
-                    : isSelected && isCorrect
-                    ? { scale: [1, 1.05, 1], transition: { duration: 0.3 } }
+                    : answered && isSelected && isCorrect
+                    ? { scale: [1, 1.08, 1], transition: { duration: 0.3 } }
                     : {}
                 }
-                whileHover={!answered ? {
-                  y: -3,
-                  scale: 1.02,
-                  boxShadow: `0 8px 20px ${ACCENT_COLORS[i % 4]}30`,
-                  transition: { type: "spring", stiffness: 400, damping: 15 },
-                } : undefined}
-                whileTap={!answered ? { scale: 0.97, transition: { duration: 0.1 } } : undefined}
+                whileTap={!answered ? { scale: 0.95, transition: { duration: 0.1 } } : undefined}
                 onClick={() => handleAnswer(choice)}
                 disabled={answered}
                 className={`
-                  group w-full text-left px-5 py-4 rounded-xl border-2 relative overflow-hidden
-                  transition-[background-color,border-color,opacity] duration-200 outline-none
-                  ${bg}
-                  ${answered ? "cursor-default" : "cursor-pointer"}
+                  flex items-center justify-center px-4 py-4 rounded-2xl border-2 relative
+                  transition-[background-color,border-color,opacity,box-shadow] duration-200 outline-none
+                  min-h-[80px] md:min-h-[100px]
+                  ${bg} ${borderExtra}
+                  ${answered ? "cursor-default" : "cursor-pointer active:scale-[0.95]"}
+                  ${isLastOdd ? "col-span-2 max-w-[50%] mx-auto" : ""}
                 `}
-                style={{ minHeight: 64 }}
               >
-                {/* Color accent bar — widens on hover */}
-                <div
-                  className="absolute left-0 top-0 bottom-0 w-[3px] group-hover:w-[5px] rounded-l-xl transition-all duration-200"
-                  style={{ backgroundColor: ACCENT_COLORS[i % 4] }}
-                />
-                <div className="flex items-center gap-3">
+                <div className="flex items-center justify-center gap-2">
                   {answered && isSelected && isCorrect && (
                     <div className="w-7 h-7 rounded-full bg-emerald-500 flex items-center justify-center flex-shrink-0">
                       <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
@@ -809,7 +835,7 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
                       </svg>
                     </div>
                   )}
-                  <span className={`text-lg font-medium leading-snug flex-1 ${textColor}`}>
+                  <span className={`text-[22px] md:text-[26px] font-bold leading-snug text-center ${textColor}`}>
                     {choice}
                   </span>
                 </div>
