@@ -141,7 +141,7 @@ export default function NavAuth() {
                 Question Bank
               </Link>
 
-              {userPlan !== "premium" && (
+              {userPlan !== "premium" ? (
                 <Link
                   href="/upgrade"
                   className="relative text-sm font-bold px-4 py-1.5 rounded-full bg-gradient-to-r from-indigo-600 to-violet-500 text-white hover:from-indigo-700 hover:to-violet-600 transition-all duration-200 shadow-sm hover:shadow-md hover:scale-105 flex items-center gap-1.5 overflow-hidden group nav-shine"
@@ -149,6 +149,16 @@ export default function NavAuth() {
                   <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
                   <span className="relative">⭐</span>
                   <span className="relative font-extrabold">Upgrade</span>
+                </Link>
+              ) : (
+                <Link
+                  href="/settings"
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-sm font-bold shadow-sm hover:shadow-md hover:scale-105 transition-all duration-200"
+                >
+                  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm0 2h14v1a1 1 0 01-1 1H6a1 1 0 01-1-1v-1z" />
+                  </svg>
+                  Readee+
                 </Link>
               )}
 
@@ -255,13 +265,23 @@ export default function NavAuth() {
               <Link href="/question-bank" className={`block py-2.5 px-3 rounded-lg text-sm font-medium transition-all duration-200 ${isActive("/question-bank") ? "text-indigo-700 bg-indigo-50 dark:text-indigo-300 dark:bg-indigo-950" : "text-zinc-700 dark:text-slate-300 hover:text-indigo-700 dark:hover:text-indigo-300 hover:bg-indigo-50/60 dark:hover:bg-slate-800"}`}>
                 Question Bank
               </Link>
-              {userPlan !== "premium" && (
+              {userPlan !== "premium" ? (
                 <Link
                   href="/upgrade"
                   className="relative block my-2 px-4 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-sm font-bold text-center hover:from-indigo-700 hover:to-violet-600 transition-all shadow-sm overflow-hidden group"
                 >
                   <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
                   <span className="relative">⭐ Upgrade to Readee+</span>
+                </Link>
+              ) : (
+                <Link
+                  href="/settings"
+                  className="flex items-center justify-center gap-2 my-2 px-4 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-sm font-bold shadow-sm"
+                >
+                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm0 2h14v1a1 1 0 01-1 1H6a1 1 0 01-1-1v-1z" />
+                  </svg>
+                  Readee+ Member
                 </Link>
               )}
               <Link href="/settings" className="block py-2.5 text-sm font-medium text-zinc-700 dark:text-slate-300 hover:text-indigo-700 dark:hover:text-indigo-300">

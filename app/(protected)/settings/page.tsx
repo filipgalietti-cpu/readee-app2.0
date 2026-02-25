@@ -55,6 +55,9 @@ export default function Settings() {
   const [promoLoading, setPromoLoading] = useState(false);
   const [promoResult, setPromoResult] = useState<{ success: boolean; message: string } | null>(null);
 
+  // Dev reset
+  const [resettingPremium, setResettingPremium] = useState(false);
+
   // Preferences
   const [soundEffects, setSoundEffects] = useState(true);
   const [autoAdvance, setAutoAdvance] = useState(true);
@@ -225,6 +228,20 @@ export default function Settings() {
       setPromoResult({ success: false, message: "Something went wrong. Please try again." });
     }
     setPromoLoading(false);
+  }
+
+  async function handleResetPremium() {
+    setResettingPremium(true);
+    try {
+      await fetch("/api/admin/reset-premium", { method: "POST" });
+      setUserPlan("free");
+      setPromoCode("");
+      setPromoResult(null);
+      setShowPromo(false);
+    } catch {
+      // ignore
+    }
+    setResettingPremium(false);
   }
 
   if (loading) {
@@ -520,12 +537,23 @@ export default function Settings() {
       {/* ====== SUBSCRIPTION ====== */}
       <Section title="Subscription">
         {userPlan === "premium" ? (
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm font-medium text-zinc-900 dark:text-slate-100">Readee+ Premium</p>
-              <p className="text-xs text-zinc-500 dark:text-slate-400 mt-0.5">All lessons, unlimited assessments, up to 5 readers, parent reports</p>
+          <div className="space-y-3">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-zinc-900 dark:text-slate-100">Readee+ Premium</p>
+                <p className="text-xs text-zinc-500 dark:text-slate-400 mt-0.5">All lessons, unlimited assessments, up to 5 readers, parent reports</p>
+              </div>
+              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-indigo-100 to-violet-100 text-indigo-700">Active</span>
             </div>
-            <span className="px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-indigo-100 to-violet-100 text-indigo-700">Active</span>
+            {process.env.NODE_ENV === "development" && (
+              <button
+                onClick={handleResetPremium}
+                disabled={resettingPremium}
+                className="text-xs text-zinc-400 hover:text-red-500 transition-colors disabled:opacity-50"
+              >
+                {resettingPremium ? "Resetting..." : "Reset to Free (Dev)"}
+              </button>
+            )}
           </div>
         ) : (
           <>
