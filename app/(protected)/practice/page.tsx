@@ -60,6 +60,93 @@ const ALL_STANDARDS = safeValidate(StandardsFileSchema, kStandards).standards as
 const QUESTIONS_PER_SESSION = 5;
 const CARROTS_PER_CORRECT = 5;
 
+/* ─── Kid-friendly lesson titles & prompts ────────────── */
+
+const KID_TITLES: Record<string, string> = {
+  "RL.K.1": "Key Details in a Story",
+  "RL.K.2": "Retell a Story",
+  "RL.K.3": "Story People & Places",
+  "RL.K.4": "Discover New Words",
+  "RL.K.5": "Book Types",
+  "RL.K.6": "Authors & Illustrators",
+  "RL.K.7": "Story Art",
+  "RL.K.9": "Compare Two Stories",
+  "RI.K.1": "Find the Facts",
+  "RI.K.2": "What's the Main Topic?",
+  "RI.K.3": "Linking Ideas Together",
+  "RI.K.4": "Info Words",
+  "RI.K.5": "Book Parts",
+  "RI.K.6": "Who Wrote This?",
+  "RI.K.7": "Art & Text Clues",
+  "RI.K.8": "Author's Reasons",
+  "RI.K.9": "Compare Two Texts",
+  "RF.K.1a": "Word Tracking",
+  "RF.K.1b": "Print Concepts",
+  "RF.K.1c": "Word Spaces",
+  "RF.K.1d": "ABCs",
+  "RF.K.2a": "Rhyme Time",
+  "RF.K.2b": "Syllable Clap",
+  "RF.K.2c": "Blend It Together",
+  "RF.K.2d": "Sound It Out",
+  "RF.K.2e": "New Sounds",
+  "RF.K.3a": "Letter Sounds",
+  "RF.K.3b": "Vowel Sounds",
+  "RF.K.3c": "Sight Words",
+  "RF.K.3d": "Spelling Clues",
+  "RF.K.4": "Reading Time",
+  "K.L.1": "Grammar Fun",
+  "K.L.2": "Punctuation Power",
+  "K.L.4": "Word Meaning",
+  "K.L.5": "Word Play",
+  "K.L.6": "Vocabulary Builder",
+};
+
+const KID_PROMPTS: Record<string, string> = {
+  "RL.K.1": "Can you find the important parts of a story? Let's find out!",
+  "RL.K.2": "Can you retell what happened in a story? Let's try!",
+  "RL.K.3": "Who's in the story and where does it happen? Let's explore!",
+  "RL.K.4": "Time to discover cool new words hiding in stories!",
+  "RL.K.5": "Do you know your book types? Let's see!",
+  "RL.K.6": "Let's learn about the people who make books!",
+  "RL.K.7": "How do pictures and words work together? Let's look!",
+  "RL.K.9": "Two stories, one challenge — spot the differences!",
+  "RI.K.1": "Can you hunt for facts and details? Let's go!",
+  "RI.K.2": "What's the big idea? Let's figure it out together!",
+  "RI.K.3": "How do ideas connect? Let's link them up!",
+  "RI.K.4": "Time to unlock tricky words in real texts!",
+  "RI.K.5": "Do you know the parts of a book? Let's check!",
+  "RI.K.6": "Who wrote this and why? Let's investigate!",
+  "RI.K.7": "Pictures + words = clues! Let's put them together!",
+  "RI.K.8": "Why did the author write this? Let's figure it out!",
+  "RI.K.9": "Two texts, same topic — what's different? Let's compare!",
+  "RF.K.1a": "Follow the words with your finger — let's track them!",
+  "RF.K.1b": "Let's learn how books and words work!",
+  "RF.K.1c": "Can you spot the spaces between words? Let's look!",
+  "RF.K.1d": "A-B-C, let's go! Time to practice your letters!",
+  "RF.K.2a": "Cat, hat, bat — can you find the rhymes?",
+  "RF.K.2b": "Clap it out! How many syllables can you hear?",
+  "RF.K.2c": "Put the sounds together to make a word!",
+  "RF.K.2d": "Break it apart! What sounds do you hear?",
+  "RF.K.2e": "New sounds to discover — let's listen carefully!",
+  "RF.K.3a": "What sound does each letter make? Let's practice!",
+  "RF.K.3b": "A, E, I, O, U — time to learn vowel sounds!",
+  "RF.K.3c": "Can you read these important words super fast?",
+  "RF.K.3d": "Use letter clues to figure out new words!",
+  "RF.K.4": "Time to read like a superstar! Let's go!",
+  "K.L.1": "Nouns, verbs, and more — let's build sentences!",
+  "K.L.2": "Capitals and periods — let's get them right!",
+  "K.L.4": "What does that word mean? Let's find out!",
+  "K.L.5": "Opposites, categories, and more — let's play with words!",
+  "K.L.6": "Big words, small words — let's grow your vocabulary!",
+};
+
+const DOMAIN_EMOJI: Record<string, string> = {
+  "Reading Literature": "📖",
+  "Reading Informational Text": "📰",
+  "Foundational Skills": "🔤",
+  "Language": "💬",
+};
+
 const CORRECT_MESSAGES = [
   "Amazing!", "Great job!", "You got it!", "Nice catch!",
   "Super smart!", "Wonderful!", "Nailed it!", "Brilliant!",
@@ -416,6 +503,11 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
 
   /* ── "Tap to Start" intro screen ── */
   if (!audioReady) {
+    const lessonTitle = KID_TITLES[standard.standard_id] ?? standard.standard_id;
+    const lessonPrompt = KID_PROMPTS[standard.standard_id] ?? standard.standard_description;
+    const lessonEmoji = DOMAIN_EMOJI[standard.domain] ?? "📖";
+    const maxCarrots = totalQ * CARROTS_PER_CORRECT;
+
     return (
       <div className="min-h-[100dvh] bg-gray-50 dark:bg-[#0f172a] flex flex-col items-center justify-center px-6">
         <motion.div
@@ -428,39 +520,56 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
           <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-xl overflow-hidden">
             {/* ── Gradient header strip ── */}
             <div
-              className="relative px-6 pt-8 pb-10 text-center"
+              className="relative px-6 pt-8 pb-10 text-center overflow-hidden"
               style={{ background: "linear-gradient(135deg, #6366f1, #8b5cf6)" }}
             >
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-white/20 backdrop-blur flex items-center justify-center">
-                <span className="text-3xl">🎧</span>
+              {/* Decorative dots / sparkles */}
+              <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+                <div className="absolute top-3 left-4 w-2 h-2 rounded-full bg-white/15" />
+                <div className="absolute top-6 left-12 w-1.5 h-1.5 rounded-full bg-white/10" />
+                <div className="absolute top-4 right-6 w-2.5 h-2.5 rounded-full bg-white/12" />
+                <div className="absolute top-8 right-14 w-1.5 h-1.5 rounded-full bg-white/10" />
+                <div className="absolute bottom-4 left-8 w-2 h-2 rounded-full bg-white/10" />
+                <div className="absolute bottom-6 right-10 w-1 h-1 rounded-full bg-white/15" />
+                <div className="absolute top-2 left-1/2 w-1 h-1 rounded-full bg-white/20" />
+                <div className="absolute bottom-3 left-1/3 w-1.5 h-1.5 rounded-full bg-white/8" />
               </div>
-              <h2 className="text-xl font-extrabold text-white">
+
+              <div className="relative w-20 h-20 mx-auto mb-4 rounded-full bg-white/20 backdrop-blur flex items-center justify-center">
+                <span className="text-5xl">{lessonEmoji}</span>
+              </div>
+              <h2 className="relative text-xl font-extrabold text-white">
                 Let&apos;s go, {child.first_name}!
               </h2>
             </div>
 
             {/* ── Content area ── */}
             <div className="px-6 pt-6 pb-6">
-              <span className="inline-block px-3 py-1 text-xs font-semibold bg-indigo-50 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-300 rounded-full mb-3">
-                {standard.standard_id}
-              </span>
-              <p className="text-zinc-600 dark:text-slate-300 text-sm leading-relaxed mb-5">
-                {standard.standard_description}
+              <h3 className="text-lg font-bold text-zinc-800 dark:text-white mb-2">
+                {lessonTitle}
+              </h3>
+              <p className="text-zinc-500 dark:text-slate-400 text-sm leading-relaxed mb-5">
+                {lessonPrompt}
               </p>
 
               {/* Info row */}
-              <div className="flex items-center gap-4 text-xs text-zinc-400 dark:text-slate-500 mb-6">
-                <span className="flex items-center gap-1.5">
-                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01" />
-                  </svg>
-                  {totalQ} questions
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" />
-                  </svg>
-                  Audio enabled
+              <div className="flex flex-col gap-2 text-xs text-zinc-400 dark:text-slate-500 mb-6">
+                <div className="flex items-center gap-4">
+                  <span className="flex items-center gap-1.5">
+                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01" />
+                    </svg>
+                    {totalQ} questions
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" />
+                    </svg>
+                    Audio enabled
+                  </span>
+                </div>
+                <span className="text-orange-500 dark:text-orange-400 font-medium">
+                  Earn up to {maxCarrots} XP 🥕
                 </span>
               </div>
 
