@@ -155,9 +155,7 @@ export default function NavAuth() {
                   href="/settings"
                   className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-sm font-bold shadow-sm hover:shadow-md hover:scale-105 transition-all duration-200"
                 >
-                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9.5 2C8.2 2 7 3.5 7 5.5c0 1.2.4 2.3 1 3C6.8 9.2 6 10.5 6 12v4c0 2.2 2.7 4 6 4s6-1.8 6-4v-4c0-1.5-.8-2.8-2-3.5.6-.7 1-1.8 1-3C17 3.5 15.8 2 14.5 2c-.8 0-1.5.5-2 1.2L12 4l-.5-.8C11 2.5 10.3 2 9.5 2zM10 13.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm7 0a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
-                  </svg>
+                  <span className="text-sm">⭐</span>
                   Readee+
                 </Link>
               )}
@@ -278,9 +276,7 @@ export default function NavAuth() {
                   href="/settings"
                   className="flex items-center justify-center gap-2 my-2 px-4 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-sm font-bold shadow-sm"
                 >
-                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9.5 2C8.2 2 7 3.5 7 5.5c0 1.2.4 2.3 1 3C6.8 9.2 6 10.5 6 12v4c0 2.2 2.7 4 6 4s6-1.8 6-4v-4c0-1.5-.8-2.8-2-3.5.6-.7 1-1.8 1-3C17 3.5 15.8 2 14.5 2c-.8 0-1.5.5-2 1.2L12 4l-.5-.8C11 2.5 10.3 2 9.5 2zM10 13.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm7 0a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
-                  </svg>
+                  <span>⭐</span>
                   Readee+ Member
                 </Link>
               )}
