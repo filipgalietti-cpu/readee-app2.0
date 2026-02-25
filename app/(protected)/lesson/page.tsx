@@ -1047,6 +1047,16 @@ function LessonContent() {
           {/* Multiple Choice */}
           {qType === "multiple_choice" && (
             <>
+              {/* Question image */}
+              <div className="flex justify-center">
+                <img
+                  src={`https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/${lessonId}/q${practiceIdx + 1}.png`}
+                  alt=""
+                  className="w-48 h-48 md:w-56 md:h-56 rounded-2xl shadow-md object-cover"
+                  onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = 'none'; }}
+                />
+              </div>
+
               <div className="flex items-start justify-center gap-2">
                 <h2 className="text-xl font-bold text-zinc-900 text-center leading-relaxed">
                   {q.prompt}
@@ -1216,6 +1226,16 @@ function LessonContent() {
               />
             </div>
             <LessonMuteToggle />
+          </div>
+
+          {/* Question image */}
+          <div className="flex justify-center">
+            <img
+              src={`https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/${lessonId}/rq${readQIdx + 1}.png`}
+              alt=""
+              className="w-48 h-48 md:w-56 md:h-56 rounded-2xl shadow-md object-cover"
+              onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = 'none'; }}
+            />
           </div>
 
           <div className="flex items-start justify-center gap-2">

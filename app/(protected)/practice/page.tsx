@@ -198,6 +198,14 @@ function getStars(correct: number, total: number): number {
   return 0;
 }
 
+const SUPABASE_STORAGE = "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public";
+
+function questionImageUrl(questionId: string): string {
+  const match = questionId.match(/^(.+)-Q(\d+)$/i);
+  if (!match) return "";
+  return `${SUPABASE_STORAGE}/images/${match[1]}/q${match[2]}.png`;
+}
+
 /* ─── Audio Helpers ──────────────────────────────────── */
 
 function MuteToggle() {
@@ -330,6 +338,7 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
   const [audioReady, setAudioReady] = useState(false);
   const [carrotFlash, setCarrotFlash] = useState(false);
   const [consecutiveCorrect, setConsecutiveCorrect] = useState(0);
+  const [showHint, setShowHint] = useState(false);
   const mysteryBoxMultiplier = usePracticeStore((s) => s.mysteryBoxMultiplier);
   const clearMysteryBoxMultiplier = usePracticeStore((s) => s.clearMysteryBoxMultiplier);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -463,6 +472,7 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
 
   /* ── Continue to next question ── */
   const handleContinue = useCallback(() => {
+    setShowHint(false);
     nextQuestion(totalQ);
     scrollRef.current?.scrollTo({ top: 0, behavior: "smooth" });
   }, [nextQuestion, totalQ]);
@@ -734,6 +744,18 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
           </motion.div>
         )}
 
+        {/* Question image */}
+        {questionImageUrl(q.id) && (
+          <motion.div variants={fadeUp} className="flex justify-center mb-5">
+            <img
+              src={questionImageUrl(q.id)}
+              alt=""
+              className="w-48 h-48 md:w-56 md:h-56 rounded-2xl shadow-md object-cover"
+              onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = 'none'; }}
+            />
+          </motion.div>
+        )}
+
         {/* Question + replay button */}
         <motion.div variants={fadeUp} className="mb-8">
           <div className="flex items-start gap-3 max-w-[600px] mx-auto">
@@ -843,6 +865,26 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
             );
           })}
         </div>
+
+        {/* Hint button */}
+        {q.hint && (
+          <motion.div variants={fadeUp} className="mt-5 flex flex-col items-center gap-2">
+            <button
+              onClick={() => setShowHint((v) => !v)}
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/30 hover:bg-amber-100 dark:hover:bg-amber-500/20 transition-colors"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5.002 5.002 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+              </svg>
+              Hint
+            </button>
+            {showHint && (
+              <div className="rounded-xl bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/30 px-4 py-3 text-sm text-amber-800 dark:text-amber-200 max-w-sm text-center">
+                {q.hint}
+              </div>
+            )}
+          </motion.div>
+        )}
         </>
         )}
       </motion.div>
@@ -888,12 +930,9 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
                     );
                   })()}
                   {!isCorrect && (
-                    <>
-                      <p className="text-white/90 text-sm font-bold mt-1">
-                        Correct answer: {q.correct}
-                      </p>
-                      <p className="text-white/70 text-sm mt-1">{q.hint}</p>
-                    </>
+                    <p className="text-white/90 text-sm font-bold mt-1">
+                      Correct answer: {q.correct}
+                    </p>
                   )}
                 </div>
               </div>
