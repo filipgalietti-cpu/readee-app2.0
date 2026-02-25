@@ -8,6 +8,7 @@ import { Child } from "@/lib/db/types";
 import { READING_LEVELS, GRADES } from "@/app/_components/LevelProgressBar";
 import { useTheme } from "@/app/_components/ThemeContext";
 import { safeValidate } from "@/lib/validate";
+import CelebrationOverlay from "@/app/_components/CelebrationOverlay";
 import { ChildCreateSchema, ChildUpdateSchema } from "@/lib/schemas";
 
 function displayGrade(grade: string): string {
@@ -672,6 +673,9 @@ export default function Settings() {
           onCancel={() => setShowDeleteAccount(false)}
         />
       )}
+
+      {/* Celebration Overlay (promo success) */}
+      <CelebrationOverlay show={!!promoResult?.success} />
     </div>
   );
 }

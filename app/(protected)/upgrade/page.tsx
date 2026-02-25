@@ -1,12 +1,13 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { staggerContainer, slideUp, fadeUp } from "@/lib/motion/variants";
+import CelebrationOverlay from "@/app/_components/CelebrationOverlay";
 import { safeValidate } from "@/lib/validate";
 import { ChildSchema } from "@/lib/schemas";
 import { Child } from "@/lib/db/types";
@@ -148,7 +149,6 @@ export default function UpgradePage() {
 
 function UpgradeContent() {
   const searchParams = useSearchParams();
-  const router = useRouter();
   const childId = searchParams.get("child");
 
   const [child, setChild] = useState<Child | null>(null);
@@ -222,9 +222,7 @@ function UpgradeContent() {
       });
       const data = await res.json();
       setPromoResult({ success: data.success, message: data.message });
-      if (data.success) {
-        setTimeout(() => router.push("/dashboard"), 2000);
-      }
+      // Celebration overlay handles navigation via "Go to Dashboard" button
     } catch {
       setPromoResult({ success: false, message: "Something went wrong. Please try again." });
     }
@@ -544,6 +542,9 @@ function UpgradeContent() {
           Continue with Free Plan &rarr;
         </Link>
       </motion.div>
+
+      {/* ── Celebration Overlay (promo success) ── */}
+      <CelebrationOverlay show={!!promoResult?.success} />
 
       {/* ── Waitlist Modal ── */}
       <AnimatePresence>
