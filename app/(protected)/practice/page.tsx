@@ -419,37 +419,74 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
     return (
       <div className="min-h-[100dvh] bg-gray-50 dark:bg-[#0f172a] flex flex-col items-center justify-center px-6">
         <motion.div
-          className="text-center max-w-sm"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
+          className="w-full max-w-sm"
+          initial={{ opacity: 0, scale: 0.95, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
         >
-          <div className="text-6xl mb-6">🎧</div>
-          <h2 className="text-2xl font-extrabold text-zinc-900 dark:text-white mb-2">
-            Ready to practice?
-          </h2>
-          <p className="text-zinc-500 dark:text-slate-400 text-sm mb-2">
-            {standard.standard_description}
-          </p>
-          <p className="text-zinc-400 dark:text-slate-500 text-xs mb-8">
-            {totalQ} questions &middot; Audio will read each question aloud
-          </p>
-          <button
-            onClick={handleStart}
-            className="w-full max-w-xs mx-auto py-4 rounded-2xl font-extrabold text-lg text-white transition-all active:scale-[0.97]"
-            style={{
-              background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
-              boxShadow: "0 4px 0 0 #4f46e5",
-            }}
-          >
-            Tap to Start
-          </button>
-          <button
-            onClick={handleExit}
-            className="mt-4 text-sm text-zinc-400 dark:text-slate-500 hover:text-zinc-600 dark:hover:text-slate-300 transition-colors"
-          >
-            &larr; Back
-          </button>
+          {/* ── Elevated card ── */}
+          <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-xl overflow-hidden">
+            {/* ── Gradient header strip ── */}
+            <div
+              className="relative px-6 pt-8 pb-10 text-center"
+              style={{ background: "linear-gradient(135deg, #6366f1, #8b5cf6)" }}
+            >
+              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-white/20 backdrop-blur flex items-center justify-center">
+                <span className="text-3xl">🎧</span>
+              </div>
+              <h2 className="text-xl font-extrabold text-white">
+                Let&apos;s go, {child.first_name}!
+              </h2>
+            </div>
+
+            {/* ── Content area ── */}
+            <div className="px-6 pt-6 pb-6">
+              <span className="inline-block px-3 py-1 text-xs font-semibold bg-indigo-50 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-300 rounded-full mb-3">
+                {standard.standard_id}
+              </span>
+              <p className="text-zinc-600 dark:text-slate-300 text-sm leading-relaxed mb-5">
+                {standard.standard_description}
+              </p>
+
+              {/* Info row */}
+              <div className="flex items-center gap-4 text-xs text-zinc-400 dark:text-slate-500 mb-6">
+                <span className="flex items-center gap-1.5">
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01" />
+                  </svg>
+                  {totalQ} questions
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" />
+                  </svg>
+                  Audio enabled
+                </span>
+              </div>
+
+              {/* Start button */}
+              <button
+                onClick={handleStart}
+                className="w-full py-4 rounded-2xl font-extrabold text-lg text-white transition-all hover:scale-[1.02] active:scale-[0.97]"
+                style={{
+                  background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
+                  boxShadow: "0 4px 0 0 #4f46e5",
+                }}
+              >
+                Tap to Start
+              </button>
+            </div>
+          </div>
+
+          {/* ── Back link (below card) ── */}
+          <div className="text-center mt-5">
+            <button
+              onClick={handleExit}
+              className="text-sm text-zinc-400 dark:text-slate-500 hover:text-zinc-600 dark:hover:text-slate-300 transition-colors"
+            >
+              &larr; Back
+            </button>
+          </div>
         </motion.div>
       </div>
     );
