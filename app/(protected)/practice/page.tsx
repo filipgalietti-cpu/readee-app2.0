@@ -17,6 +17,8 @@ import { SentenceBuild } from "@/app/components/practice/SentenceBuild";
 import { CategorySort } from "@/app/components/practice/CategorySort";
 import { MissingWord } from "@/app/components/practice/MissingWord";
 import kStandards from "@/app/data/kindergarten-standards-questions.json";
+import { getDailyMultiplier, getSessionStreakTier } from "@/lib/carrots/multipliers";
+import { StreakFire } from "@/app/_components/StreakFire";
 
 /* ─── Types ──────────────────────────────────────────── */
 
@@ -240,6 +242,9 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
   const [saving, setSaving] = useState(false);
   const [audioReady, setAudioReady] = useState(false);
   const [carrotFlash, setCarrotFlash] = useState(false);
+  const [consecutiveCorrect, setConsecutiveCorrect] = useState(0);
+  const mysteryBoxMultiplier = usePracticeStore((s) => s.mysteryBoxMultiplier);
+  const clearMysteryBoxMultiplier = usePracticeStore((s) => s.clearMysteryBoxMultiplier);
   const scrollRef = useRef<HTMLDivElement>(null);
   const prevCarrotsRef = useRef(sessionCarrots);
 
@@ -312,14 +317,20 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
     stopStaticAudio();
     const correct = choice === q.correct;
 
-    selectAnswer(choice, correct, q.id, CARROTS_PER_CORRECT, CORRECT_MESSAGES, CORRECT_EMOJIS, INCORRECT_MESSAGES);
-
     if (correct) {
+      const newConsecutive = consecutiveCorrect + 1;
+      setConsecutiveCorrect(newConsecutive);
+      const daily = getDailyMultiplier(child.streak_days);
+      const session = getSessionStreakTier(newConsecutive);
+      const carrots = Math.floor(CARROTS_PER_CORRECT * daily.multiplier * session.multiplier * mysteryBoxMultiplier);
+      selectAnswer(choice, true, q.id, carrots, CORRECT_MESSAGES, CORRECT_EMOJIS, INCORRECT_MESSAGES);
       playCorrectChime();
     } else {
+      setConsecutiveCorrect(0);
+      selectAnswer(choice, false, q.id, CARROTS_PER_CORRECT, CORRECT_MESSAGES, CORRECT_EMOJIS, INCORRECT_MESSAGES);
       playIncorrectBuzz();
     }
-  }, [selected, q, selectAnswer, stop, playCorrectChime, playIncorrectBuzz]);
+  }, [selected, q, selectAnswer, stop, playCorrectChime, playIncorrectBuzz, consecutiveCorrect, child.streak_days, mysteryBoxMultiplier]);
 
   /* ── Handle sentence build answer ── */
   const handleSentenceBuildAnswer = useCallback((isCorrect: boolean, placedSentence: string) => {
@@ -327,14 +338,20 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
     stop();
     stopStaticAudio();
 
-    selectAnswer(placedSentence, isCorrect, q.id, CARROTS_PER_CORRECT, CORRECT_MESSAGES, CORRECT_EMOJIS, INCORRECT_MESSAGES);
-
     if (isCorrect) {
+      const newConsecutive = consecutiveCorrect + 1;
+      setConsecutiveCorrect(newConsecutive);
+      const daily = getDailyMultiplier(child.streak_days);
+      const session = getSessionStreakTier(newConsecutive);
+      const carrots = Math.floor(CARROTS_PER_CORRECT * daily.multiplier * session.multiplier * mysteryBoxMultiplier);
+      selectAnswer(placedSentence, true, q.id, carrots, CORRECT_MESSAGES, CORRECT_EMOJIS, INCORRECT_MESSAGES);
       playCorrectChime();
     } else {
+      setConsecutiveCorrect(0);
+      selectAnswer(placedSentence, false, q.id, CARROTS_PER_CORRECT, CORRECT_MESSAGES, CORRECT_EMOJIS, INCORRECT_MESSAGES);
       playIncorrectBuzz();
     }
-  }, [selected, q, selectAnswer, stop, playCorrectChime, playIncorrectBuzz]);
+  }, [selected, q, selectAnswer, stop, playCorrectChime, playIncorrectBuzz, consecutiveCorrect, child.streak_days, mysteryBoxMultiplier]);
 
   /* ── Handle category sort answer ── */
   const handleCategorySortAnswer = useCallback((isCorrect: boolean, answer: string) => {
@@ -342,14 +359,20 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
     stop();
     stopStaticAudio();
 
-    selectAnswer(answer, isCorrect, q.id, CARROTS_PER_CORRECT, CORRECT_MESSAGES, CORRECT_EMOJIS, INCORRECT_MESSAGES);
-
     if (isCorrect) {
+      const newConsecutive = consecutiveCorrect + 1;
+      setConsecutiveCorrect(newConsecutive);
+      const daily = getDailyMultiplier(child.streak_days);
+      const session = getSessionStreakTier(newConsecutive);
+      const carrots = Math.floor(CARROTS_PER_CORRECT * daily.multiplier * session.multiplier * mysteryBoxMultiplier);
+      selectAnswer(answer, true, q.id, carrots, CORRECT_MESSAGES, CORRECT_EMOJIS, INCORRECT_MESSAGES);
       playCorrectChime();
     } else {
+      setConsecutiveCorrect(0);
+      selectAnswer(answer, false, q.id, CARROTS_PER_CORRECT, CORRECT_MESSAGES, CORRECT_EMOJIS, INCORRECT_MESSAGES);
       playIncorrectBuzz();
     }
-  }, [selected, q, selectAnswer, stop, playCorrectChime, playIncorrectBuzz]);
+  }, [selected, q, selectAnswer, stop, playCorrectChime, playIncorrectBuzz, consecutiveCorrect, child.streak_days, mysteryBoxMultiplier]);
 
   /* ── Continue to next question ── */
   const handleContinue = useCallback(() => {
@@ -364,6 +387,13 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
     router.push(`/dashboard`);
   }, [router, stop, resetStore]);
 
+  // Clear mystery box multiplier when session completes
+  useEffect(() => {
+    if (phase === "complete" && mysteryBoxMultiplier > 1) {
+      clearMysteryBoxMultiplier();
+    }
+  }, [phase, mysteryBoxMultiplier, clearMysteryBoxMultiplier]);
+
   if (phase === "complete") {
     const correctCount = answers.filter((a) => a.correct).length;
     return (
@@ -373,7 +403,7 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
         answers={answers}
         questions={questions}
         correctCount={correctCount}
-        carrotsEarned={correctCount * CARROTS_PER_CORRECT}
+        carrotsEarned={sessionCarrots}
         saving={saving}
         setSaving={setSaving}
         onRestart={resetStore}
@@ -484,6 +514,13 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
         animate="visible"
         key={currentIdx}
       >
+        {/* Streak fire indicator */}
+        {consecutiveCorrect >= 3 && (
+          <div className="flex justify-center mb-3">
+            <StreakFire consecutiveCorrect={consecutiveCorrect} />
+          </div>
+        )}
+
         {/* Sentence build — renders its own prompt/passage */}
         {q.type === "sentence_build" && q.words ? (
           <SentenceBuild
@@ -667,9 +704,17 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
                 )}
                 <div className="flex-1 min-w-0">
                   <p className="text-white font-extrabold text-lg">{feedbackMsg}</p>
-                  {isCorrect && (
-                    <p className="text-white/80 text-sm mt-0.5">+{CARROTS_PER_CORRECT} 🥕</p>
-                  )}
+                  {isCorrect && (() => {
+                    const daily = getDailyMultiplier(child.streak_days);
+                    const session = getSessionStreakTier(consecutiveCorrect);
+                    const earned = Math.floor(CARROTS_PER_CORRECT * daily.multiplier * session.multiplier * mysteryBoxMultiplier);
+                    const hasBonus = daily.multiplier > 1 || session.multiplier > 1 || mysteryBoxMultiplier > 1;
+                    return (
+                      <p className="text-white/80 text-sm mt-0.5">
+                        +{earned} 🥕{hasBonus ? " (Bonus!)" : ""}
+                      </p>
+                    );
+                  })()}
                   {!isCorrect && (
                     <>
                       <p className="text-white/90 text-sm font-bold mt-1">

@@ -27,12 +27,15 @@ interface PracticeState {
   feedbackEmoji: string;
   phase: Phase;
   lifetime: LifetimeStats;
+  mysteryBoxMultiplier: number;
 
   setStandard: (id: string) => void;
   selectAnswer: (choice: string, correct: boolean, questionId: string, carrotsPerCorrect: number, correctMessages: string[], correctEmojis: string[], incorrectMessages: string[]) => void;
   nextQuestion: (totalQ: number) => void;
   reset: () => void;
   recordSessionEnd: () => void;
+  setMysteryBoxMultiplier: (mult: number) => void;
+  clearMysteryBoxMultiplier: () => void;
 }
 
 function pickRandom<T>(arr: T[]): T {
@@ -49,6 +52,7 @@ const initialSession = {
   feedbackMsg: "",
   feedbackEmoji: "",
   phase: "playing" as Phase,
+  mysteryBoxMultiplier: 1,
 };
 
 const initialLifetime: LifetimeStats = {
@@ -101,6 +105,7 @@ export const usePracticeStore = create<PracticeState>()(
 
       recordSessionEnd: () => {
         set((state) => ({
+          mysteryBoxMultiplier: 1,
           lifetime: {
             totalQuestions: state.lifetime.totalQuestions + state.answers.length,
             totalCorrect: state.lifetime.totalCorrect + state.answers.filter((a) => a.correct).length,
@@ -109,11 +114,25 @@ export const usePracticeStore = create<PracticeState>()(
           },
         }));
       },
+
+      setMysteryBoxMultiplier: (mult) => {
+        set({ mysteryBoxMultiplier: mult });
+        if (typeof window !== "undefined") {
+          localStorage.setItem("readee_mystery_multiplier", String(mult));
+        }
+      },
+
+      clearMysteryBoxMultiplier: () => {
+        set({ mysteryBoxMultiplier: 1 });
+        if (typeof window !== "undefined") {
+          localStorage.removeItem("readee_mystery_multiplier");
+        }
+      },
     }),
     {
       name: "readee_practice",
       version: 2,
-      partialize: (state) => ({ lifetime: state.lifetime }),
+      partialize: (state) => ({ lifetime: state.lifetime, mysteryBoxMultiplier: state.mysteryBoxMultiplier }),
       migrate: (persisted: unknown, version: number) => {
         const state = persisted as Record<string, unknown>;
         if (version < 2) {

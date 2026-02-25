@@ -7,6 +7,8 @@ import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
 import { useSpeech } from "@/app/_components/SpeechContext";
 import lessonsData from "@/lib/data/lessons.json";
+import { getDailyMultiplier, getSessionStreakTier } from "@/lib/carrots/multipliers";
+import { StreakFire } from "@/app/_components/StreakFire";
 
 type Phase = "loading" | "learn" | "practice" | "read" | "read-transition" | "complete";
 
@@ -511,6 +513,9 @@ function LessonContent() {
   const [readAnswers, setReadAnswers] = useState<Array<{ question_id: string; correct: boolean; selected: string; time_ms: number }>>([]);
   const readQuestionStartRef = useRef(Date.now());
 
+  // Streak multiplier state
+  const [consecutiveCorrect, setConsecutiveCorrect] = useState(0);
+
   // Complete state
   const [totalCarrots, setTotalCarrots] = useState(0);
   const [confettiPieces, setConfettiPieces] = useState<
@@ -664,7 +669,9 @@ function LessonContent() {
     } else {
       // All cards seen — complete learn phase
       saveProgress("learn", 100);
-      awardCarrots(5);
+      const mysteryMult = parseFloat(typeof window !== "undefined" ? localStorage.getItem("readee_mystery_multiplier") || "1" : "1") || 1;
+      const daily = getDailyMultiplier(child?.streak_days ?? 0);
+      awardCarrots(Math.floor(5 * daily.multiplier * mysteryMult));
       setPhase("practice");
       questionStartRef.current = Date.now();
     }
@@ -684,7 +691,9 @@ function LessonContent() {
     } else {
       const score = Math.round((practiceCorrect / lesson.practice.questions.length) * 100);
       saveProgress("practice", score);
-      awardCarrots(5);
+      const mysteryMult = parseFloat(typeof window !== "undefined" ? localStorage.getItem("readee_mystery_multiplier") || "1" : "1") || 1;
+      const daily = getDailyMultiplier(child?.streak_days ?? 0);
+      awardCarrots(Math.floor(5 * daily.multiplier * mysteryMult));
       setPhase("read");
     }
   }, [lesson, practiceIdx, practiceCorrect, saveProgress, awardCarrots]);
@@ -697,13 +706,22 @@ function LessonContent() {
     const timeMs = Date.now() - questionStartRef.current;
 
     if (isCorrect) {
+      const newConsecutive = consecutiveCorrect + 1;
+      setConsecutiveCorrect(newConsecutive);
       setSelectedChoice(choice);
       setPracticeCorrect((prev) => prev + 1);
+      // Per-question bonus carrot with multipliers
+      const daily = getDailyMultiplier(child?.streak_days ?? 0);
+      const session = getSessionStreakTier(newConsecutive);
+      const mysteryMult = parseFloat(typeof window !== "undefined" ? localStorage.getItem("readee_mystery_multiplier") || "1" : "1") || 1;
+      const bonus = Math.floor(1 * daily.multiplier * session.multiplier * mysteryMult);
+      if (bonus > 0) awardCarrots(bonus);
       setFeedback({ text: CORRECT_MSGS[Math.floor(Math.random() * CORRECT_MSGS.length)], type: "correct" });
       setShowMiniConfetti(true);
       setPracticeAnswers((prev) => [...prev, { question_id: q.question_id || "", correct: true, selected: choice, time_ms: timeMs }]);
       setTimeout(() => advancePractice(), 1500);
     } else {
+      setConsecutiveCorrect(0);
       const newAttempts = wrongAttempts + 1;
       setWrongAttempts(newAttempts);
       setWrongChoices((prev) => new Set(prev).add(choice));
@@ -736,7 +754,9 @@ function LessonContent() {
       // Lesson complete!
       const score = Math.round((readCorrect / lesson.read.questions.length) * 100);
       saveProgress("read", score);
-      awardCarrots(10);
+      const mysteryMult = parseFloat(typeof window !== "undefined" ? localStorage.getItem("readee_mystery_multiplier") || "1" : "1") || 1;
+      const daily = getDailyMultiplier(child?.streak_days ?? 0);
+      awardCarrots(Math.floor(10 * daily.multiplier * mysteryMult));
       finishLesson();
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -750,13 +770,22 @@ function LessonContent() {
     const timeMs = Date.now() - readQuestionStartRef.current;
 
     if (isCorrect) {
+      const newConsecutive = consecutiveCorrect + 1;
+      setConsecutiveCorrect(newConsecutive);
       setReadSelected(choice);
       setReadCorrect((prev) => prev + 1);
+      // Per-question bonus carrot with multipliers
+      const daily = getDailyMultiplier(child?.streak_days ?? 0);
+      const session = getSessionStreakTier(newConsecutive);
+      const mysteryMult = parseFloat(typeof window !== "undefined" ? localStorage.getItem("readee_mystery_multiplier") || "1" : "1") || 1;
+      const bonus = Math.floor(1 * daily.multiplier * session.multiplier * mysteryMult);
+      if (bonus > 0) awardCarrots(bonus);
       setReadFeedback({ text: CORRECT_MSGS[Math.floor(Math.random() * CORRECT_MSGS.length)], type: "correct" });
       setShowReadMiniConfetti(true);
       setReadAnswers((prev) => [...prev, { question_id: q.question_id || "", correct: true, selected: choice, time_ms: timeMs }]);
       setTimeout(() => advanceRead(), 1500);
     } else {
+      setConsecutiveCorrect(0);
       const newAttempts = readWrongAttempts + 1;
       setReadWrongAttempts(newAttempts);
       setReadWrongChoices((prev) => new Set(prev).add(choice));
@@ -774,6 +803,11 @@ function LessonContent() {
   };
 
   const finishLesson = async () => {
+    // Clear mystery box multiplier after lesson
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("readee_mystery_multiplier");
+    }
+
     if (!child || !lessonId) {
       setPhase("complete");
       return;
@@ -1020,6 +1054,13 @@ function LessonContent() {
                 <LessonSpeakerButton lessonId={lessonId!} audioFile={`practice-q${practiceIdx + 1}`} light />
               </div>
 
+              {/* Streak fire indicator */}
+              {consecutiveCorrect >= 3 && (
+                <div className="flex justify-center">
+                  <StreakFire consecutiveCorrect={consecutiveCorrect} />
+                </div>
+              )}
+
               {/* Feedback */}
               {feedback && (
                 <div className={`text-center py-3 px-4 rounded-xl text-sm font-bold relative overflow-hidden ${
@@ -1184,6 +1225,13 @@ function LessonContent() {
             <LessonSpeakerButton lessonId={lessonId!} audioFile={`read-q${readQIdx + 1}`} light />
           </div>
 
+          {/* Streak fire indicator */}
+          {consecutiveCorrect >= 3 && (
+            <div className="flex justify-center">
+              <StreakFire consecutiveCorrect={consecutiveCorrect} />
+            </div>
+          )}
+
           {/* Feedback */}
           {readFeedback && (
             <div className={`text-center py-3 px-4 rounded-xl text-sm font-bold relative overflow-hidden ${
@@ -1293,6 +1341,21 @@ function LessonContent() {
             <div className="text-sm font-medium text-orange-200">You earned</div>
             <div className="text-4xl font-bold mt-1">+{totalCarrots} 🥕</div>
           </div>
+
+          {/* Daily streak multiplier badge */}
+          {(() => {
+            const dm = getDailyMultiplier(streakDays);
+            return dm.multiplier > 1 ? (
+              <div className="animate-streakPulse">
+                <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-amber-50 border border-amber-200">
+                  <span className="text-xl">⚡</span>
+                  <span className="text-lg font-bold text-amber-700">
+                    {dm.label}
+                  </span>
+                </div>
+              </div>
+            ) : null;
+          })()}
 
           {/* Streak display */}
           {streakDays > 0 && (

@@ -15,6 +15,10 @@ import {
   getItemsByCategory,
   categoryToSlot,
 } from "@/lib/data/shop-items";
+import { MYSTERY_BOX_PRICE, rollMysteryBox, MysteryReward } from "@/lib/data/mystery-box";
+import { MysteryBoxOpener } from "@/app/_components/MysteryBoxOpener";
+import { GetMoreCarrotsModal } from "@/app/_components/GetMoreCarrotsModal";
+import { usePracticeStore } from "@/lib/stores/practice-store";
 
 export default function ShopPage() {
   return (
@@ -84,6 +88,10 @@ function ShopContent({
   const [activeCategory, setActiveCategory] = useState<ShopCategory>("avatars");
   const [buying, setBuying] = useState<string | null>(null);
   const [justBought, setJustBought] = useState<string | null>(null);
+  const [mysteryReward, setMysteryReward] = useState<MysteryReward | null>(null);
+  const [buyingMystery, setBuyingMystery] = useState(false);
+  const [showGetMore, setShowGetMore] = useState<ShopItem | null>(null);
+  const setMysteryBoxMultiplier = usePracticeStore((s) => s.setMysteryBoxMultiplier);
 
   const ownedIds = new Set(purchases.map((p) => p.item_id));
   const items = getItemsByCategory(activeCategory);
@@ -137,6 +145,33 @@ function ShopContent({
     [child, setChild],
   );
 
+  const handleBuyMysteryBox = useCallback(async () => {
+    if (child.carrots < MYSTERY_BOX_PRICE || buyingMystery) return;
+    setBuyingMystery(true);
+
+    const supabase = supabaseBrowser();
+    const newCarrots = child.carrots - MYSTERY_BOX_PRICE;
+    await supabase.from("children").update({ carrots: newCarrots }).eq("id", child.id);
+    setChild({ ...child, carrots: newCarrots });
+
+    const reward = rollMysteryBox(ownedIds);
+
+    // Apply reward
+    if (reward.type === "carrots" || reward.type === "jackpot") {
+      const bonus = reward.amount;
+      await supabase.from("children").update({ carrots: newCarrots + bonus }).eq("id", child.id);
+      setChild({ ...child, carrots: newCarrots + bonus });
+    } else if (reward.type === "item") {
+      await supabase.from("shop_purchases").insert({ child_id: child.id, item_id: reward.item.id });
+      setPurchases([...purchases, { id: crypto.randomUUID(), child_id: child.id, item_id: reward.item.id, purchased_at: new Date().toISOString() }]);
+    } else if (reward.type === "multiplier") {
+      setMysteryBoxMultiplier(reward.multiplier);
+    }
+
+    setMysteryReward(reward);
+    setBuyingMystery(false);
+  }, [child, buyingMystery, ownedIds, purchases, setChild, setPurchases, setMysteryBoxMultiplier]);
+
   return (
     <div className="max-w-3xl mx-auto py-8 px-4 pb-16">
       {/* Back link */}
@@ -159,6 +194,47 @@ function ShopContent({
         <div className="text-3xl font-extrabold">{child.carrots}</div>
         <div className="text-sm font-medium text-white/80 mt-1">
           {child.first_name}&apos;s Carrots
+        </div>
+      </motion.div>
+
+      {/* Mystery Box */}
+      <motion.div
+        initial={{ opacity: 0, y: 8 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.1 }}
+        className="rounded-2xl border-2 border-amber-300 dark:border-amber-700 bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30 p-5 mb-6"
+      >
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <motion.div
+              className="text-4xl"
+              animate={{ rotate: [0, -5, 5, -5, 5, 0] }}
+              transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+            >
+              🎁
+            </motion.div>
+            <div>
+              <div className="font-bold text-zinc-900 dark:text-white">Mystery Box</div>
+              <div className="text-xs text-zinc-500 dark:text-slate-400">
+                Win carrots, items, or multipliers!
+              </div>
+            </div>
+          </div>
+          <button
+            onClick={child.carrots >= MYSTERY_BOX_PRICE ? handleBuyMysteryBox : () => setShowGetMore({ id: "mystery_box", name: "Mystery Box", emoji: "🎁", category: "avatars", price: MYSTERY_BOX_PRICE, description: "Mystery Box" })}
+            disabled={buyingMystery}
+            className={`px-5 py-2.5 rounded-xl text-sm font-bold transition-all active:scale-[0.97] ${
+              child.carrots >= MYSTERY_BOX_PRICE
+                ? "bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-sm hover:from-amber-600 hover:to-orange-600"
+                : "bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 hover:bg-amber-200 dark:hover:bg-amber-900/50"
+            }`}
+          >
+            {buyingMystery ? (
+              <span className="inline-block h-4 w-4 rounded-full border-2 border-white/40 border-t-white animate-spin" />
+            ) : (
+              <span>{MYSTERY_BOX_PRICE} 🥕</span>
+            )}
+          </button>
         </div>
       </motion.div>
 
@@ -200,10 +276,29 @@ function ShopContent({
               justBought={justBought === item.id}
               onBuy={() => handleBuy(item)}
               onEquip={() => handleEquip(item)}
+              onCantAfford={() => setShowGetMore(item)}
             />
           ))}
         </motion.div>
       </AnimatePresence>
+
+      {/* Mystery Box Opener modal */}
+      {mysteryReward && (
+        <MysteryBoxOpener
+          reward={mysteryReward}
+          onClose={() => setMysteryReward(null)}
+        />
+      )}
+
+      {/* Get More Carrots modal */}
+      {showGetMore && (
+        <GetMoreCarrotsModal
+          itemName={showGetMore.name}
+          shortfall={showGetMore.price - child.carrots}
+          childId={child.id}
+          onClose={() => setShowGetMore(null)}
+        />
+      )}
     </div>
   );
 }
@@ -217,6 +312,7 @@ function ShopItemCard({
   justBought,
   onBuy,
   onEquip,
+  onCantAfford,
 }: {
   item: ShopItem;
   owned: boolean;
@@ -226,6 +322,7 @@ function ShopItemCard({
   justBought: boolean;
   onBuy: () => void;
   onEquip: () => void;
+  onCantAfford: () => void;
 }) {
   return (
     <motion.div
@@ -237,7 +334,7 @@ function ShopItemCard({
             : "border-green-200 bg-green-50/50 dark:bg-green-950/20 dark:border-green-800"
           : canAfford
           ? "border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-orange-300 dark:hover:border-orange-700 hover:shadow-md"
-          : "border-zinc-100 dark:border-slate-800 bg-zinc-50 dark:bg-slate-900 opacity-60"
+          : "border-zinc-100 dark:border-slate-800 bg-zinc-50 dark:bg-slate-900 opacity-70 hover:opacity-100"
       }`}
     >
       {/* Emoji */}
@@ -273,12 +370,12 @@ function ShopItemCard({
         </button>
       ) : (
         <button
-          onClick={onBuy}
-          disabled={!canAfford || buying}
+          onClick={canAfford ? onBuy : onCantAfford}
+          disabled={buying}
           className={`w-full py-2 rounded-xl text-xs font-bold transition-all active:scale-[0.97] ${
             canAfford
               ? "bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-sm hover:from-orange-600 hover:to-amber-600"
-              : "bg-zinc-200 dark:bg-slate-700 text-zinc-400 dark:text-slate-500 cursor-not-allowed"
+              : "bg-zinc-200 dark:bg-slate-700 text-zinc-400 dark:text-slate-500 hover:bg-zinc-300 dark:hover:bg-slate-600"
           }`}
         >
           {buying ? (
