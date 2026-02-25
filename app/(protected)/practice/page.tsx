@@ -801,6 +801,11 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
                     ? { scale: [1, 1.08, 1], transition: { duration: 0.3 } }
                     : {}
                 }
+                whileHover={!answered ? {
+                  scale: 1.04,
+                  boxShadow: "0 8px 24px rgba(99,102,241,0.18)",
+                  transition: { type: "spring", stiffness: 400, damping: 15 },
+                } : undefined}
                 whileTap={!answered ? { scale: 0.95, transition: { duration: 0.1 } } : undefined}
                 onClick={() => handleAnswer(choice)}
                 disabled={answered}
