@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -148,6 +148,7 @@ export default function UpgradePage() {
 
 function UpgradeContent() {
   const searchParams = useSearchParams();
+  const router = useRouter();
   const childId = searchParams.get("child");
 
   const [child, setChild] = useState<Child | null>(null);
@@ -160,6 +161,12 @@ function UpgradeContent() {
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+
+  // Promo code state
+  const [showPromo, setShowPromo] = useState(false);
+  const [promoCode, setPromoCode] = useState("");
+  const [promoLoading, setPromoLoading] = useState(false);
+  const [promoResult, setPromoResult] = useState<{ success: boolean; message: string } | null>(null);
 
   useEffect(() => {
     async function load() {
@@ -202,6 +209,27 @@ function UpgradeContent() {
     }
     setSubmitting(false);
   };
+
+  async function handleRedeemPromo() {
+    if (!promoCode.trim()) return;
+    setPromoLoading(true);
+    setPromoResult(null);
+    try {
+      const res = await fetch("/api/promo/redeem", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ code: promoCode.trim() }),
+      });
+      const data = await res.json();
+      setPromoResult({ success: data.success, message: data.message });
+      if (data.success) {
+        setTimeout(() => router.push("/dashboard"), 2000);
+      }
+    } catch {
+      setPromoResult({ success: false, message: "Something went wrong. Please try again." });
+    }
+    setPromoLoading(false);
+  }
 
   // Get locked lessons for preview
   const file = lessonsData as unknown as LessonsFile;
@@ -399,6 +427,49 @@ function UpgradeContent() {
           <span className="text-zinc-300 dark:text-slate-600">·</span>
           <span>💰 30-day money back</span>
         </div>
+      </motion.div>
+
+      {/* ── PROMO CODE ── */}
+      <motion.div variants={fadeUp} className="text-center">
+        {!showPromo ? (
+          <button
+            onClick={() => setShowPromo(true)}
+            className="text-sm text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 font-medium transition-colors"
+          >
+            Have a promo code?
+          </button>
+        ) : (
+          <div className="max-w-sm mx-auto space-y-3">
+            <div className="flex gap-2">
+              <input
+                type="text"
+                value={promoCode}
+                onChange={(e) => { setPromoCode(e.target.value); setPromoResult(null); }}
+                placeholder="Enter promo code"
+                disabled={promoResult?.success}
+                className="flex-1 px-4 py-3 rounded-xl border border-zinc-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-sm text-zinc-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent placeholder:text-zinc-400 dark:placeholder:text-slate-500 disabled:opacity-50"
+                onKeyDown={(e) => { if (e.key === "Enter") handleRedeemPromo(); }}
+              />
+              <button
+                onClick={handleRedeemPromo}
+                disabled={promoLoading || !promoCode.trim() || promoResult?.success}
+                className="px-5 py-3 rounded-xl bg-indigo-600 text-white text-sm font-bold hover:bg-indigo-700 transition-colors disabled:opacity-50 whitespace-nowrap"
+              >
+                {promoLoading ? "..." : "Redeem"}
+              </button>
+            </div>
+            {promoResult && (
+              <div className={`flex items-center justify-center gap-2 text-sm font-medium ${promoResult.success ? "text-green-600 dark:text-green-400" : "text-red-500 dark:text-red-400"}`}>
+                {promoResult.success && (
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                )}
+                {promoResult.message}
+              </div>
+            )}
+          </div>
+        )}
       </motion.div>
 
       {/* ── TESTIMONIAL CAROUSEL ── */}

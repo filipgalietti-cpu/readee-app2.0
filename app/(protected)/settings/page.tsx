@@ -48,6 +48,12 @@ export default function Settings() {
   // Plan
   const [userPlan, setUserPlan] = useState<string>("free");
 
+  // Promo code
+  const [showPromo, setShowPromo] = useState(false);
+  const [promoCode, setPromoCode] = useState("");
+  const [promoLoading, setPromoLoading] = useState(false);
+  const [promoResult, setPromoResult] = useState<{ success: boolean; message: string } | null>(null);
+
   // Preferences
   const [soundEffects, setSoundEffects] = useState(true);
   const [autoAdvance, setAutoAdvance] = useState(true);
@@ -197,6 +203,27 @@ export default function Settings() {
   async function handleLogout() {
     await supabase.auth.signOut();
     router.push("/");
+  }
+
+  async function handleRedeemPromo() {
+    if (!promoCode.trim()) return;
+    setPromoLoading(true);
+    setPromoResult(null);
+    try {
+      const res = await fetch("/api/promo/redeem", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ code: promoCode.trim() }),
+      });
+      const data = await res.json();
+      setPromoResult({ success: data.success, message: data.message });
+      if (data.success) {
+        setUserPlan("premium");
+      }
+    } catch {
+      setPromoResult({ success: false, message: "Something went wrong. Please try again." });
+    }
+    setPromoLoading(false);
   }
 
   if (loading) {
@@ -522,6 +549,48 @@ export default function Settings() {
                 </span>
               </div>
             </Link>
+            {/* Promo code */}
+            <div className="pt-1">
+              {!showPromo ? (
+                <button
+                  onClick={() => setShowPromo(true)}
+                  className="text-xs text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 font-medium transition-colors"
+                >
+                  Have a promo code?
+                </button>
+              ) : (
+                <div className="space-y-2">
+                  <div className="flex gap-2">
+                    <input
+                      type="text"
+                      value={promoCode}
+                      onChange={(e) => { setPromoCode(e.target.value); setPromoResult(null); }}
+                      placeholder="Enter promo code"
+                      disabled={promoResult?.success}
+                      className="flex-1 px-3 py-2 rounded-lg border border-zinc-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-sm text-zinc-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-400 placeholder:text-zinc-400 dark:placeholder:text-slate-500 disabled:opacity-50"
+                      onKeyDown={(e) => { if (e.key === "Enter") handleRedeemPromo(); }}
+                    />
+                    <button
+                      onClick={handleRedeemPromo}
+                      disabled={promoLoading || !promoCode.trim() || promoResult?.success}
+                      className="px-4 py-2 rounded-lg bg-indigo-600 text-white text-sm font-medium hover:bg-indigo-700 transition-colors disabled:opacity-50 whitespace-nowrap"
+                    >
+                      {promoLoading ? "..." : "Redeem"}
+                    </button>
+                  </div>
+                  {promoResult && (
+                    <div className={`flex items-center gap-2 text-sm font-medium ${promoResult.success ? "text-green-600 dark:text-green-400" : "text-red-500 dark:text-red-400"}`}>
+                      {promoResult.success && (
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                      )}
+                      {promoResult.message}
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
           </>
         )}
       </Section>
