@@ -1,151 +1,68 @@
-# Readee - Early Reading Learning Platform
+# Readee 2.0 🐰
+### Common Core Aligned Literacy Platform
+**Built with Next.js 15, React 19, and Supabase**
 
-A comprehensive early reading platform built with Next.js and Supabase, featuring a structured learning path, practice sessions with spaced repetition, and a library of decodable stories for early readers (ages 4–8).
+Readee is a full-stack reading comprehension engine designed for early learners (ages 4–8). It maps interactive learning to **Common Core ELA standards**, utilizing a data-driven "Snake Path" to build student reading confidence.
 
-## 🚨 Recent Updates
+---
 
-**Login Error Messages Improved** (Latest)
-- Added proper environment variable validation
-- Login now shows clear error messages if Supabase is not configured
-- See [ENV_SETUP.md](./ENV_SETUP.md) for quick setup instructions
-- If you see "Missing Supabase environment variables", check your `.env.local` file
+## 👨‍💻 The Engineering Perspective
+As a developer transitioning from a **Professional Accounting** background, I built Readee with a focus on **Logical Rigor** and **Data Integrity**. My goal was to move from auditing financial systems to architecting educational ones.
 
-## Features
+* **Algorithmic Learning:** Engineered a spaced repetition engine (70% new / 30% review) to optimize memory retention.
+* **Strict Type Safety:** Leveraged TypeScript to ensure "Zero-Error" data flow across the Practice Engine.
+* **System Stability:** Implemented robust environment validation and middleware guards to handle authentication state across the App Router.
 
-### 🎯 Learning Path (`/path`)
-- Vertical progression through content units
-- Track progress through lessons
-- View completed lessons and scores
-- Expandable units showing all available lessons
+---
 
-### 📚 Practice Engine (`/lesson/[lessonId]`)
-- **4 Item Types:**
-  - **Phoneme Tap**: Identify sounds in words
-  - **Word Build**: Construct words from letters
-  - **Multiple Choice**: Select correct answers
-  - **Comprehension**: Reading comprehension questions
-- Immediate feedback and retry logic
-- Spaced repetition: ~60–70% new items + ~30–40% review items
-- Progress tracking and scoring
+## 🛠️ Tech Stack
+* **Framework:** Next.js 15.1 (App Router)
+* **Frontend:** React 19, Tailwind CSS v4
+* **Backend/Auth:** Supabase (PostgreSQL)
+* **Language:** TypeScript
+* **Middleware:** Custom Auth Guards & Proxy Logic
 
-### 📖 Story Library (`/library`)
-- Decodable stories for early readers
-- Stories unlock based on progress
-- Grade-level indicators
-- Rich metadata and descriptions
+---
 
-### 🎧 Story Reader (`/reader/[storyId]`)
-- Page-by-page story rendering
-- Word-by-word highlighting (simulated timing)
-- Audio playback simulation
-- Navigation between pages
+## 🎯 Core Features
 
-### 🔐 Authentication
-- Email/password authentication via Supabase
-- Google OAuth integration
-- Protected routes with authentication guards
-- Profile management
+### 🛣️ Learning Path (`/path`)
+Vertical unit progression that tracks mastery scores and dynamically unlocks content nodes based on student performance.
 
-## Tech Stack
-- **Framework**: Next.js 16.1.6 (App Router)
-- **UI**: React 19, Tailwind CSS v4
-- **Database**: Supabase (PostgreSQL)
-- **Authentication**: Supabase Auth
-- **TypeScript**: Full type safety
+### 🧠 Practice Engine (`/lesson/[id]`)
+Four specialized item types designed for phonemic awareness:
+* **Phoneme Tap:** Sound identification.
+* **Word Build:** Segmenting and blending.
+* **Multiple Choice & Comprehension:** Contextual reading skills.
 
-## Quick Start
+### 📖 Decodable Library & Reader
+* **Library:** Stories unlocked via progress milestones with grade-level metadata.
+* **Reader:** Page-by-page rendering with simulated word-timing and audio highlighting.
 
-⚠️ **Important:** Login functionality requires proper Supabase configuration. See [SETUP_GUIDE.md](./SETUP_GUIDE.md) for detailed setup instructions.
+---
 
-### Prerequisites
-- Node.js 20+ and npm
-- A Supabase account (create one at supabase.com)
+## 🏗️ Quick Start & Setup
 
-### 1. Clone and Install
-
+### 1. Installation
 ```bash
-git clone <your-repo-url>
+git clone [https://github.com/filipgalietti-cpu/readee-app2.0.git](https://github.com/filipgalietti-cpu/readee-app2.0.git)
 cd readee-app2.0
-npm install
-```
+npm installVisit http://localhost:3000/test-connection to verify your database setup.
 
-### 2. Configure Supabase
+📂 Architecture Overview
+app/: Next.js 15 App Router (Protected vs. Public Routes)
 
-1. Create a `.env.local` file in the root directory:
-```bash
-cp .env.example .env.local
-```
+lib/: Core logic—Auth helpers, DB repositories, and Supabase clients.
 
-2. Add your Supabase credentials to `.env.local`:
-```env
-NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key-here
-SUPABASE_SERVICE_ROLE_KEY=your-service-role-key-here
-```
+proxy.ts: Critical authentication middleware for route protection.
 
-3. Run database migrations in your Supabase SQL Editor (see [SETUP_GUIDE.md](./SETUP_GUIDE.md))
+supabase/: Database migrations and SQL schemas.
 
-### 3. Run Development Server
+📜 Documentation & Security
+Detailed guides on the system architecture and security protocols:
 
-```bash
-npm run dev
-```
+📋 Setup Guide
 
-Visit `http://localhost:3000/test-connection` to verify your Supabase connection.
+🏗️ Architecture Overview
 
-### 4. Create Your First User
-
-1. Navigate to `http://localhost:3000/signup`
-2. Create an account
-3. Complete the onboarding flow
-4. Start exploring the platform!
-
-## Documentation
-
-- [📋 Complete Setup Guide](./SETUP_GUIDE.md) - **Start here for detailed setup instructions**
-- [🏗️ Architecture Overview](./ARCHITECTURE.md) - System design and patterns
-- [🔒 Authentication Flow](./AUTH_FLOW_IMPLEMENTATION.md) - How auth and routing works
-- [⚙️ Backend Setup](./BACKEND_SETUP.md) - API endpoints and database details
-- [🔒 Security Summary](./SECURITY_SUMMARY.md) - Security considerations
-
-## Troubleshooting
-
-### Login not working?
-
-If clicking "Sign In" does nothing, check:
-1. `.env.local` file exists with valid Supabase credentials
-2. Database migrations have been run
-3. `proxy.ts` file exists in the root directory
-4. Visit `/test-connection` to diagnose connection issues
-
-See [SETUP_GUIDE.md](./SETUP_GUIDE.md) for more troubleshooting tips.
-
-## Project Structure
-
-```
-readee-app2.0/
-├── app/                      # Next.js app directory
-│   ├── (public)/            # Public routes (login, signup)
-│   ├── (protected)/         # Protected routes (dashboard, etc.)
-│   ├── api/                 # API routes
-│   ├── components/          # Reusable components
-│   ├── lesson/              # Practice engine
-│   ├── library/             # Story library
-│   ├── path/                # Learning path
-│   └── reader/              # Story reader
-├── lib/
-│   ├── auth/                # Authentication helpers
-│   ├── db/                  # Database types and repositories
-│   └── supabase/            # Supabase clients (DO NOT DELETE)
-├── proxy.ts                 # Authentication middleware (CRITICAL - DO NOT DELETE)
-├── supabase/                # Database migrations
-└── public/                  # Static assets
-```
-
-## Contributing
-
-This is a private educational project. For questions or issues, please contact the repository owner.
-
-## License
-
-Private - All rights reserved
+🔒 Security Summary
