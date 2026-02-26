@@ -1047,18 +1047,18 @@ function LessonContent() {
           {/* Multiple Choice */}
           {qType === "multiple_choice" && (
             <>
-              {/* Question image */}
+              {/* Question image — compact on mobile */}
               <div className="flex justify-center">
                 <img
                   src={`https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/${lessonId}/q${practiceIdx + 1}.png`}
                   alt=""
-                  className="w-48 h-48 md:w-56 md:h-56 rounded-2xl shadow-md object-cover"
+                  className="max-h-[150px] md:max-h-[200px] w-auto rounded-2xl shadow-md object-cover"
                   onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = 'none'; }}
                 />
               </div>
 
-              <div className="flex items-start justify-center gap-2">
-                <h2 className="text-xl font-bold text-zinc-900 text-center leading-relaxed">
+              <div className="flex items-center justify-center gap-2">
+                <h2 className="text-lg md:text-xl font-bold text-zinc-900 text-center leading-snug">
                   {q.prompt}
                 </h2>
                 <LessonSpeakerButton lessonId={lessonId!} audioFile={`practice-q${practiceIdx + 1}`} light />
@@ -1073,7 +1073,7 @@ function LessonContent() {
 
               {/* Feedback */}
               {feedback && (
-                <div className={`text-center py-3 px-4 rounded-xl text-sm font-bold relative overflow-hidden ${
+                <div className={`text-center py-2 px-4 rounded-xl text-sm font-bold relative overflow-hidden ${
                   feedback.type === "correct"
                     ? "bg-green-50 text-green-700 border border-green-200"
                     : feedback.type === "reveal"
@@ -1085,7 +1085,7 @@ function LessonContent() {
                 </div>
               )}
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="grid grid-cols-2 gap-2.5">
                 {q.choices.map((choice: string, i: number) => {
                   const isSelected = selectedChoice === choice;
                   const isCorrect = choice === q.correct;
@@ -1099,7 +1099,7 @@ function LessonContent() {
                       onClick={() => handlePracticeAnswer(choice)}
                       disabled={!!selectedChoice || isWrong}
                       className={`
-                        relative text-left rounded-2xl border-2 min-h-[52px] p-4 transition-all duration-200
+                        relative text-left rounded-2xl border-2 min-h-[52px] p-3 transition-all duration-200
                         ${
                           showCorrect && isCorrect
                             ? "border-green-500 bg-green-50 scale-[1.02]"
@@ -1111,10 +1111,10 @@ function LessonContent() {
                         disabled:cursor-default
                       `}
                     >
-                      <div className="flex items-center gap-3">
+                      <div className="flex items-center gap-2">
                         <div
                           className={`
-                          w-10 h-10 rounded-xl flex items-center justify-center text-sm font-bold flex-shrink-0
+                          w-8 h-8 rounded-xl flex items-center justify-center text-sm font-bold flex-shrink-0
                           ${
                             showCorrect && isCorrect
                               ? "bg-green-600 text-white"
@@ -1127,7 +1127,7 @@ function LessonContent() {
                           {showCorrect && isCorrect ? "✓" : letters[i]}
                         </div>
                         <span
-                          className={`font-medium text-base flex-1 ${
+                          className={`font-medium text-sm flex-1 leading-tight ${
                             showCorrect && isCorrect
                               ? "text-green-700"
                               : isWrong
@@ -1228,18 +1228,18 @@ function LessonContent() {
             <LessonMuteToggle />
           </div>
 
-          {/* Question image */}
+          {/* Question image — compact on mobile */}
           <div className="flex justify-center">
             <img
               src={`https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/${lessonId}/rq${readQIdx + 1}.png`}
               alt=""
-              className="w-48 h-48 md:w-56 md:h-56 rounded-2xl shadow-md object-cover"
+              className="max-h-[150px] md:max-h-[200px] w-auto rounded-2xl shadow-md object-cover"
               onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = 'none'; }}
             />
           </div>
 
-          <div className="flex items-start justify-center gap-2">
-            <h2 className="text-xl font-bold text-zinc-900 text-center leading-relaxed">
+          <div className="flex items-center justify-center gap-2">
+            <h2 className="text-lg md:text-xl font-bold text-zinc-900 text-center leading-snug">
               {q.prompt}
             </h2>
             <LessonSpeakerButton lessonId={lessonId!} audioFile={`read-q${readQIdx + 1}`} light />
@@ -1254,7 +1254,7 @@ function LessonContent() {
 
           {/* Feedback */}
           {readFeedback && (
-            <div className={`text-center py-3 px-4 rounded-xl text-sm font-bold relative overflow-hidden ${
+            <div className={`text-center py-2 px-4 rounded-xl text-sm font-bold relative overflow-hidden ${
               readFeedback.type === "correct"
                 ? "bg-green-50 text-green-700 border border-green-200"
                 : readFeedback.type === "reveal"
@@ -1266,7 +1266,7 @@ function LessonContent() {
             </div>
           )}
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div className="grid grid-cols-2 gap-2.5">
             {q.choices.map((choice: string, i: number) => {
               const isSelected = readSelected === choice;
               const isCorrect = choice === q.correct;
@@ -1280,7 +1280,7 @@ function LessonContent() {
                   onClick={() => handleReadAnswer(choice)}
                   disabled={!!readSelected || isWrong}
                   className={`
-                    relative text-left rounded-2xl border-2 min-h-[52px] p-4 transition-all duration-200
+                    relative text-left rounded-2xl border-2 min-h-[52px] p-3 transition-all duration-200
                     ${
                       showCorrect && isCorrect
                         ? "border-green-500 bg-green-50 scale-[1.02]"
@@ -1292,10 +1292,10 @@ function LessonContent() {
                     disabled:cursor-default
                   `}
                 >
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-2">
                     <div
                       className={`
-                      w-10 h-10 rounded-xl flex items-center justify-center text-sm font-bold flex-shrink-0
+                      w-8 h-8 rounded-xl flex items-center justify-center text-sm font-bold flex-shrink-0
                       ${
                         showCorrect && isCorrect
                           ? "bg-green-600 text-white"
@@ -1308,7 +1308,7 @@ function LessonContent() {
                       {showCorrect && isCorrect ? "✓" : letters[i]}
                     </div>
                     <span
-                      className={`font-medium text-base flex-1 ${
+                      className={`font-medium text-sm flex-1 leading-tight ${
                         showCorrect && isCorrect
                           ? "text-green-700"
                           : isWrong

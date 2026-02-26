@@ -737,51 +737,38 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
           })}
         </motion.div>
 
-        {/* Passage */}
-        {passage && (
-          <motion.div variants={fadeUp} className="mb-5 rounded-2xl bg-white border border-zinc-200 dark:bg-slate-800/80 dark:border-slate-700 p-5">
-            <p className="text-lg leading-relaxed text-zinc-900 dark:text-white/90 whitespace-pre-line">{passage}</p>
-          </motion.div>
-        )}
-
-        {/* Question image */}
+        {/* Question image — compact on mobile */}
         {questionImageUrl(q.id) && (
-          <motion.div variants={fadeUp} className="flex justify-center mb-5">
+          <motion.div variants={fadeUp} className="flex justify-center mb-2">
             <img
               src={questionImageUrl(q.id)}
               alt=""
-              className="w-48 h-48 md:w-56 md:h-56 rounded-2xl shadow-md object-cover"
+              className="max-h-[150px] md:max-h-[200px] w-auto rounded-2xl shadow-md object-cover"
               onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = 'none'; }}
             />
           </motion.div>
         )}
 
         {/* Question + replay button */}
-        <motion.div variants={fadeUp} className="mb-8">
-          <div className="flex items-start gap-3 max-w-[600px] mx-auto">
-            <h2 className="text-[28px] md:text-[36px] font-bold text-zinc-900 dark:text-white leading-[1.5] text-center flex-1">
+        <motion.div variants={fadeUp} className="mb-3">
+          <div className="flex items-center gap-2 max-w-[600px] mx-auto justify-center">
+            <h2 className="text-lg md:text-2xl font-bold text-zinc-900 dark:text-white leading-snug text-center">
               {question}
             </h2>
             <button
               onClick={handleReplay}
-              className="inline-flex items-center justify-center w-11 h-11 rounded-full bg-indigo-50 dark:bg-indigo-500/20 hover:bg-indigo-100 dark:hover:bg-indigo-500/30 transition-colors flex-shrink-0 mt-1"
+              className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-indigo-50 dark:bg-indigo-500/20 hover:bg-indigo-100 dark:hover:bg-indigo-500/30 transition-colors flex-shrink-0"
               aria-label="Replay audio"
             >
-              <svg className="w-6 h-6 text-indigo-600 dark:text-indigo-300" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+              <svg className="w-5 h-5 text-indigo-600 dark:text-indigo-300" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.536 8.464a5 5 0 010 7.072M17.95 6.05a8 8 0 010 11.9M11 5L6 9H2v6h4l5 4V5z" />
               </svg>
             </button>
           </div>
         </motion.div>
 
-        {/* Answer choices — 2×2 grid */}
-        <div className={`grid gap-3 ${
-          (q.choices?.length ?? 0) === 2
-            ? "grid-cols-2"
-            : (q.choices?.length ?? 0) === 3
-            ? "grid-cols-2"
-            : "grid-cols-2"
-        }`}>
+        {/* Answer choices — always 2×2 grid */}
+        <div className="grid grid-cols-2 gap-2.5">
           {(q.choices ?? []).map((choice, i) => {
             const isSelected = selected === choice;
             const isCorrectChoice = choice === q.correct;
@@ -827,9 +814,9 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
                 onClick={() => handleAnswer(choice)}
                 disabled={answered}
                 className={`
-                  flex items-center justify-center px-4 py-4 rounded-2xl border-2 relative
+                  flex items-center justify-center px-3 py-3 rounded-2xl border-2 relative
                   transition-[background-color,border-color,opacity,box-shadow] duration-200 outline-none
-                  min-h-[80px] md:min-h-[100px]
+                  min-h-[64px] md:min-h-[80px]
                   ${bg} ${borderExtra}
                   ${answered ? "cursor-default" : "cursor-pointer hover:scale-[1.04] hover:shadow-lg active:scale-[0.95]"}
                   ${isLastOdd ? "col-span-2 max-w-[50%] mx-auto" : ""}
@@ -837,27 +824,27 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
               >
                 <div className="flex items-center justify-center gap-2">
                   {answered && isSelected && isCorrect && (
-                    <div className="w-7 h-7 rounded-full bg-emerald-500 flex items-center justify-center flex-shrink-0">
-                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
+                    <div className="w-6 h-6 rounded-full bg-emerald-500 flex items-center justify-center flex-shrink-0">
+                      <svg className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
                   )}
                   {answered && isSelected && !isCorrect && (
-                    <div className="w-7 h-7 rounded-full bg-red-500 flex items-center justify-center flex-shrink-0">
-                      <svg className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
+                    <div className="w-6 h-6 rounded-full bg-red-500 flex items-center justify-center flex-shrink-0">
+                      <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                       </svg>
                     </div>
                   )}
                   {answered && !isSelected && isCorrectChoice && !isCorrect && (
-                    <div className="w-7 h-7 rounded-full bg-emerald-500 flex items-center justify-center flex-shrink-0">
-                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
+                    <div className="w-6 h-6 rounded-full bg-emerald-500 flex items-center justify-center flex-shrink-0">
+                      <svg className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
                   )}
-                  <span className={`text-[22px] md:text-[26px] font-bold leading-snug text-center ${textColor}`}>
+                  <span className={`text-base md:text-xl font-bold leading-snug text-center ${textColor}`}>
                     {choice}
                   </span>
                 </div>
@@ -865,6 +852,13 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
             );
           })}
         </div>
+
+        {/* Passage — de-emphasized, below choices (audio reads it) */}
+        {passage && (
+          <motion.div variants={fadeUp} className="mt-3 rounded-xl bg-zinc-50 border border-zinc-200 dark:bg-slate-800/80 dark:border-slate-700 px-3 py-2">
+            <p className="text-sm leading-relaxed text-zinc-500 dark:text-slate-400 whitespace-pre-line">{passage}</p>
+          </motion.div>
+        )}
 
         {/* Hint button */}
         {q.hint && (
