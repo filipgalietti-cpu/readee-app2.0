@@ -6,9 +6,10 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
-import kStandards from "@/app/data/kindergarten-standards-questions.json";
 import { safeValidate } from "@/lib/validate";
-import { ChildSchema, StandardsFileSchema } from "@/lib/schemas";
+import { ChildSchema } from "@/lib/schemas";
+import { getStandardsForGrade } from "@/lib/data/all-standards";
+import { levelNameToGradeKey } from "@/lib/assessment/questions";
 
 /* ─── Types ──────────────────────────────────────────── */
 
@@ -101,7 +102,7 @@ const KID_NAMES: Record<string, string> = {
 
 /* ─── Mock progress ──────────────────────────────────── */
 
-const ALL_STANDARDS = safeValidate(StandardsFileSchema, kStandards).standards as Standard[];
+// ALL_STANDARDS is now computed per-child inside SnakePathRoadmap
 
 function buildMockProgress(standards: Standard[]): Record<string, StandardProgress> {
   const progress: Record<string, StandardProgress> = {};
@@ -480,7 +481,9 @@ function RoadmapLoader() {
 /* ═══════════════════════════════════════════════════════ */
 
 function SnakePathRoadmap({ child, userPlan }: { child: Child; userPlan: string }) {
-  const progress = useMemo(() => buildMockProgress(ALL_STANDARDS), []);
+  const gradeKey = levelNameToGradeKey(child.reading_level ?? null);
+  const ALL_STANDARDS = useMemo(() => getStandardsForGrade(gradeKey) as Standard[], [gradeKey]);
+  const progress = useMemo(() => buildMockProgress(ALL_STANDARDS), [ALL_STANDARDS]);
   const [activeNode, setActiveNode] = useState<string | null>(null);
   const pathRef = useRef<HTMLDivElement>(null);
   const [pathWidth, setPathWidth] = useState(400);
@@ -502,7 +505,7 @@ function SnakePathRoadmap({ child, userPlan }: { child: Child; userPlan: string 
   /* ── Compute layout ── */
   const { nodes, totalHeight } = useMemo(
     () => computeSnakeLayout(ALL_STANDARDS, pathWidth),
-    [pathWidth],
+    [ALL_STANDARDS, pathWidth],
   );
 
   /* ── SVG paths ── */
@@ -559,6 +562,7 @@ function SnakePathRoadmap({ child, userPlan }: { child: Child; userPlan: string 
         <TopProgressBar
           pct={pct}
           completedCount={completedCount}
+          totalStandards={ALL_STANDARDS.length}
           totalCarrots={totalCarrots}
           streakDays={child.streak_days}
         />
@@ -705,9 +709,10 @@ function SnakePathRoadmap({ child, userPlan }: { child: Child; userPlan: string 
 /*  Top Progress Bar                                       */
 /* ═══════════════════════════════════════════════════════ */
 
-function TopProgressBar({ pct, completedCount, totalCarrots, streakDays }: {
+function TopProgressBar({ pct, completedCount, totalStandards, totalCarrots, streakDays }: {
   pct: number;
   completedCount: number;
+  totalStandards: number;
   totalCarrots: number;
   streakDays: number;
 }) {
@@ -727,7 +732,7 @@ function TopProgressBar({ pct, completedCount, totalCarrots, streakDays }: {
           <span className="absolute inset-0 flex items-center justify-center text-white text-xs font-bold">{pct}%</span>
         </div>
         <div className="flex-1 min-w-0">
-          <div className="text-white font-bold">{completedCount} of {ALL_STANDARDS.length} standards</div>
+          <div className="text-white font-bold">{completedCount} of {totalStandards} standards</div>
           <div className="text-white/60 text-xs mt-0.5">Keep up the great work!</div>
         </div>
       </div>
@@ -741,7 +746,7 @@ function TopProgressBar({ pct, completedCount, totalCarrots, streakDays }: {
           <div className="text-white/50 text-[9px]">Streak</div>
         </div>
         <div className="bg-white/10 rounded-lg p-2 text-center">
-          <div className="text-white font-bold text-sm">{ALL_STANDARDS.length}</div>
+          <div className="text-white font-bold text-sm">{totalStandards}</div>
           <div className="text-white/50 text-[9px]">Total</div>
         </div>
       </div>

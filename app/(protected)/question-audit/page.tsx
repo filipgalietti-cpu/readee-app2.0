@@ -2,7 +2,7 @@
 
 import { useState, useMemo, useCallback, useEffect, useRef } from "react";
 import Link from "next/link";
-import kStandards from "@/app/data/kindergarten-standards-questions.json";
+import { getAllStandards, GRADE_LABELS } from "@/lib/data/all-standards";
 import lessonsData from "@/lib/data/lessons.json";
 import { useAudio } from "@/lib/audio/use-audio";
 import { supabaseBrowser } from "@/lib/supabase/client";
@@ -54,6 +54,7 @@ const LEVEL_LABELS: Record<string, string> = {
   "1st": "1st Grade",
   "2nd": "2nd Grade",
   "3rd": "3rd Grade",
+  "4th": "4th Grade",
 };
 
 /* ── Build flat question list ───────────────────────── */
@@ -61,24 +62,36 @@ const LEVEL_LABELS: Record<string, string> = {
 function buildQuestions(): AuditQuestion[] {
   const questions: AuditQuestion[] = [];
 
-  // 1. Standards MCQ
-  for (const standard of (kStandards as any).standards) {
+  // 1. Standards MCQ — all grades
+  const allStandards = getAllStandards();
+  for (const standard of allStandards) {
+    // Determine grade label from standard_id prefix (e.g. RL.K.1 → Kindergarten, RL.1.1 → 1st Grade)
+    const stdId = standard.standard_id;
+    const gradeMatch = stdId.match(/\.([^.]+)\./);
+    const gradeChar = gradeMatch ? gradeMatch[1] : "K";
+    const gradeLabel = gradeChar === "K" ? "Kindergarten"
+      : gradeChar === "1" ? "1st Grade"
+      : gradeChar === "2" ? "2nd Grade"
+      : gradeChar === "3" ? "3rd Grade"
+      : gradeChar === "4" ? "4th Grade"
+      : gradeChar;
+
     for (const q of standard.questions) {
-      const stdId = q.id.split("-Q")[0];
+      const qStdId = q.id.split("-Q")[0];
       const qNum = q.id.split("-Q")[1];
       questions.push({
         id: q.id,
         source: "standards",
-        level: "Kindergarten",
-        lessonTitle: `Standard ${stdId}`,
+        level: gradeLabel,
+        lessonTitle: `Standard ${qStdId}`,
         prompt: q.prompt,
-        choices: q.choices,
+        choices: q.choices ?? [],
         correct: q.correct,
         hint: q.hint,
-        imageUrl: `${SUPABASE_IMG}/${stdId}/q${qNum}.png`,
+        imageUrl: `${SUPABASE_IMG}/${qStdId}/q${qNum}.png`,
         audioUrl: q.audio_url,
         hintAudioUrl: q.hint_audio_url,
-        standardId: stdId,
+        standardId: qStdId,
       });
     }
   }

@@ -13,7 +13,7 @@ import { useChildStore } from "@/lib/stores/child-store";
 import { safeValidate } from "@/lib/validate";
 import { ChildSchema } from "@/lib/schemas";
 import { staggerContainer, slideUp, staggerFast } from "@/lib/motion/variants";
-import kStandards from "@/app/data/kindergarten-standards-questions.json";
+import { getStandardsForGrade } from "@/lib/data/all-standards";
 
 /* ─── Count-up animation hook ─────────────────────────── */
 
@@ -416,9 +416,10 @@ function ChildDashboard({
   const greeting = getGreeting();
   const motivation = useMemo(() => MOTIVATIONAL[Math.floor(Math.random() * MOTIVATIONAL.length)], []);
   const nextPracticeStandard = useMemo(() => {
-    const standards = (kStandards as { standards: { standard_id: string; standard_description: string; domain: string }[] }).standards;
-    return standards[0];
-  }, []);
+    const gradeKey = levelNameToGradeKey(readingLevel);
+    const standards = getStandardsForGrade(gradeKey);
+    return standards[0] ?? { standard_id: "RL.K.1", standard_description: "", domain: "" };
+  }, [readingLevel]);
 
   useEffect(() => {
     async function checkAssessment() {

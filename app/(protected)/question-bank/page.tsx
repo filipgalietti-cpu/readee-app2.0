@@ -17,7 +17,7 @@ import { MissingWord } from "@/app/components/practice/MissingWord";
 import { SentenceBuild } from "@/app/components/practice/SentenceBuild";
 import { CategorySort } from "@/app/components/practice/CategorySort";
 import { useAudio } from "@/lib/audio/use-audio";
-import kStandards from "@/app/data/kindergarten-standards-questions.json";
+import { getAllStandards } from "@/lib/data/all-standards";
 
 /* ── Prompt audio URLs ─────────────────────────────── */
 
@@ -196,7 +196,7 @@ function generateAllMcq(): QuestionEntry[] {
   const entries: QuestionEntry[] = [];
   let idx = 0;
 
-  for (const standard of (kStandards as { standards: Array<{ questions: Array<{ id: string; type: string; prompt: string; choices: string[]; correct: string; hint: string; difficulty: number; audio_url?: string; hint_audio_url?: string }> }> }).standards) {
+  for (const standard of getAllStandards()) {
     for (const q of standard.questions) {
       idx++;
       const { question } = splitPrompt(q.prompt);
@@ -211,7 +211,7 @@ function generateAllMcq(): QuestionEntry[] {
           prompt: q.prompt,
         },
         mcq: {
-          choices: q.choices,
+          choices: q.choices ?? [],
           correct: q.correct,
           hint: q.hint,
           audioUrl: q.audio_url,

@@ -11,12 +11,13 @@ import { playAudio as playStaticAudio, playAudioUrl, stopAudio as stopStaticAudi
 import { usePracticeStore } from "@/lib/stores/practice-store";
 import { useThemeStore } from "@/lib/stores/theme-store";
 import { safeValidate } from "@/lib/validate";
-import { StandardsFileSchema, PracticeResultSchema } from "@/lib/schemas";
+import { PracticeResultSchema } from "@/lib/schemas";
+import { levelNameToGradeKey } from "@/lib/assessment/questions";
+import { getStandardsForGrade, findStandardById } from "@/lib/data/all-standards";
 import { fadeUp, staggerContainer, feedbackSlideUp, popIn, scaleIn } from "@/lib/motion/variants";
 import { SentenceBuild } from "@/app/components/practice/SentenceBuild";
 import { CategorySort } from "@/app/components/practice/CategorySort";
 import { MissingWord } from "@/app/components/practice/MissingWord";
-import kStandards from "@/app/data/kindergarten-standards-questions.json";
 import { getDailyMultiplier, getSessionStreakTier } from "@/lib/carrots/multipliers";
 import { StreakFire } from "@/app/_components/StreakFire";
 
@@ -56,7 +57,6 @@ interface AnswerRecord {
 
 /* ─── Constants ──────────────────────────────────────── */
 
-const ALL_STANDARDS = safeValidate(StandardsFileSchema, kStandards).standards as Standard[];
 const QUESTIONS_PER_SESSION = 5;
 const CARROTS_PER_CORRECT = 5;
 
@@ -185,9 +185,9 @@ function splitPrompt(prompt: string): { passage: string | null; question: string
 
 
 
-function getNextStandard(currentId: string): Standard | null {
-  const idx = ALL_STANDARDS.findIndex((s) => s.standard_id === currentId);
-  if (idx >= 0 && idx < ALL_STANDARDS.length - 1) return ALL_STANDARDS[idx + 1];
+function getNextStandard(currentId: string, standards: Standard[]): Standard | null {
+  const idx = standards.findIndex((s) => s.standard_id === currentId);
+  if (idx >= 0 && idx < standards.length - 1) return standards[idx + 1];
   return null;
 }
 
@@ -274,11 +274,15 @@ function PracticeLoader() {
 
   if (loading) return <LoadingScreen />;
 
+  // Determine grade from child's reading level, then load the right standards
+  const gradeKey = levelNameToGradeKey(child?.reading_level ?? null);
+  const gradeStandards = getStandardsForGrade(gradeKey);
+
   // Build a virtual standard when filtering by question types across all standards
   let standard: Standard | undefined;
   if (typesParam) {
     const types = new Set(typesParam.split(","));
-    const filtered = ALL_STANDARDS.flatMap((s) =>
+    const filtered = gradeStandards.flatMap((s) =>
       s.questions.filter((q) => types.has(q.type))
     );
     if (filtered.length > 0) {
@@ -291,7 +295,8 @@ function PracticeLoader() {
       };
     }
   } else {
-    standard = ALL_STANDARDS.find((s) => s.standard_id === standardId);
+    // Look up by ID — search all grades since the URL specifies the exact standard
+    standard = findStandardById(standardId ?? "");
   }
 
   if (!child || !standard) {
@@ -310,14 +315,14 @@ function PracticeLoader() {
     );
   }
 
-  return <PracticeSession child={child} standard={standard} />;
+  return <PracticeSession child={child} standard={standard} gradeStandards={gradeStandards} />;
 }
 
 /* ═══════════════════════════════════════════════════════ */
 /*  Practice Session                                       */
 /* ═══════════════════════════════════════════════════════ */
 
-function PracticeSession({ child, standard }: { child: Child; standard: Standard }) {
+function PracticeSession({ child, standard, gradeStandards }: { child: Child; standard: Standard; gradeStandards: Standard[] }) {
   const router = useRouter();
   const { unlockAudio, stop, playCorrectChime, playIncorrectBuzz } = useAudio();
 
@@ -497,6 +502,7 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
       <CompletionScreen
         child={child}
         standard={standard}
+        gradeStandards={gradeStandards}
         answers={answers}
         questions={questions}
         correctCount={correctCount}
@@ -956,6 +962,7 @@ function PracticeSession({ child, standard }: { child: Child; standard: Standard
 function CompletionScreen({
   child,
   standard,
+  gradeStandards,
   answers,
   questions,
   correctCount,
@@ -966,6 +973,7 @@ function CompletionScreen({
 }: {
   child: Child;
   standard: Standard;
+  gradeStandards: Standard[];
   answers: AnswerRecord[];
   questions: Question[];
   correctCount: number;
@@ -978,7 +986,7 @@ function CompletionScreen({
   const darkMode = useThemeStore((s) => s.darkMode);
   const totalQ = questions.length;
   const stars = getStars(correctCount, totalQ);
-  const nextStandard = getNextStandard(standard.standard_id);
+  const nextStandard = getNextStandard(standard.standard_id, gradeStandards);
 
   // Confetti pieces
   const confettiPieces = useMemo(() => {

@@ -6,10 +6,10 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
-import kStandards from "@/app/data/kindergarten-standards-questions.json";
 import { staggerContainer, slideUp, fadeUp } from "@/lib/motion/variants";
 import { safeValidate } from "@/lib/validate";
-import { ChildSchema, StandardsFileSchema } from "@/lib/schemas";
+import { ChildSchema } from "@/lib/schemas";
+import { getAllStandards as fetchAllStandards } from "@/lib/data/all-standards";
 import { useChildStore } from "@/lib/stores/child-store";
 
 /* ─── Types ──────────────────────────────────────────── */
@@ -219,10 +219,7 @@ function AnalyticsLoader() {
 /* ═══════════════════════════════════════════════════════ */
 
 function AnalyticsDashboard({ child }: { child: Child }) {
-  const allStandards = useMemo(() =>
-    safeValidate(StandardsFileSchema, kStandards).standards as Standard[],
-    []
-  );
+  const allStandards = useMemo(() => fetchAllStandards() as Standard[], []);
   const [dateRange, setDateRange] = useState<DateRange>("all");
   const [practiceResults, setPracticeResults] = useState<PracticeResult[]>([]);
   const [loadingData, setLoadingData] = useState(true);

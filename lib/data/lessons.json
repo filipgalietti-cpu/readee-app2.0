@@ -6,7 +6,7 @@
       "1st": 8,
       "2nd": 9,
       "3rd": 10,
-      "4th": 0
+      "4th": 10
     },
     "sections_per_lesson": 3,
     "estimated_minutes": 10,
@@ -9168,8 +9168,1917 @@
     "4th": {
       "level_name": "Advanced Reader",
       "level_number": 6,
-      "focus": "Figurative language, text structure, advanced comprehension, vocabulary in context",
-      "lessons": []
+      "focus": "Figurative language, text structure, theme, point of view, author's purpose",
+      "lessons": [
+        {
+          "id": "4-L1",
+          "title": "Greek & Latin Roots",
+          "skill": "greek_latin_roots",
+          "description": "Many English words come from Greek and Latin. If you know the ROOT — the base part — you can figure out words you've nev",
+          "learn": {
+            "type": "introduction",
+            "content": "Many English words come from Greek and Latin. If you know the ROOT — the base part — you can figure out words you've never seen before! It's like having a secret decoder ring for reading.",
+            "items": [
+              {
+                "technique": "Our next root is aud",
+                "definition": "It comes from Latin and means hear",
+                "example": "For example: audience, audio, auditorium.. An AUDience is a group that HEARS a performance",
+                "emoji": "👂",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L1/item1.mp3"
+              },
+              {
+                "technique": "Our next root is vis/vid",
+                "definition": "It comes from Latin and means see",
+                "example": "For example: visible, video, vision.. A VIDeo is something you SEE",
+                "emoji": "👀",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L1/item2.mp3"
+              },
+              {
+                "technique": "Our next root is scrib/script",
+                "definition": "It comes from Latin and means write",
+                "example": "For example: scribble, script, describe.. A SCRIPT is something WRITTEN for actors",
+                "emoji": "✍️",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L1/item3.mp3"
+              },
+              {
+                "technique": "Our next root is port",
+                "definition": "It comes from Latin and means carry",
+                "example": "For example: transport, portable, export.. A PORTable device is easy to CARRY",
+                "emoji": "📦",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L1/item4.mp3"
+              },
+              {
+                "technique": "Our next root is graph",
+                "definition": "It comes from Greek and means write/draw",
+                "example": "For example: photograph, autograph, paragraph.. A photoGRAPH is light WRITING a picture",
+                "emoji": "📝",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L1/item5.mp3"
+              },
+              {
+                "technique": "Our next root is tele",
+                "definition": "It comes from Greek and means far",
+                "example": "For example: telephone, telescope, television.. A TELEphone lets you hear from FAR away",
+                "emoji": "🔭",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L1/item6.mp3"
+              }
+            ],
+            "intro_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L1/intro.mp3"
+          },
+          "practice": {
+            "type": "multiple_choice",
+            "instructions": "Choose the best answer!",
+            "questions": [
+              {
+                "prompt": "The root 'aud' means 'hear.' What is an auditorium?",
+                "choices": [
+                  "A place to eat",
+                  "A place to hear performances",
+                  "A place to swim",
+                  "A place to sleep"
+                ],
+                "correct": "A place to hear performances",
+                "type": "multiple_choice",
+                "question_id": "4-L1-P1",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L1/q1.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L1/q1-hint.mp3"
+              },
+              {
+                "prompt": "The root 'vis' means 'see.' What does invisible mean?",
+                "choices": [
+                  "Very loud",
+                  "Cannot be seen",
+                  "Very large",
+                  "Cannot be heard"
+                ],
+                "correct": "Cannot be seen",
+                "type": "multiple_choice",
+                "question_id": "4-L1-P2",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L1/q2.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L1/q2-hint.mp3"
+              },
+              {
+                "prompt": "The root 'port' means 'carry.' What does transport mean?",
+                "choices": [
+                  "To build something",
+                  "To carry across",
+                  "To break apart",
+                  "To write down"
+                ],
+                "correct": "To carry across",
+                "type": "multiple_choice",
+                "question_id": "4-L1-P3",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L1/q3.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L1/q3-hint.mp3"
+              },
+              {
+                "prompt": "The root 'graph' means 'write.' What is an autograph?",
+                "choices": [
+                  "A type of car",
+                  "A person's own writing/signature",
+                  "A kind of food",
+                  "A math problem"
+                ],
+                "correct": "A person's own writing/signature",
+                "type": "multiple_choice",
+                "question_id": "4-L1-P4",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L1/q4.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L1/q4-hint.mp3"
+              },
+              {
+                "prompt": "The root 'tele' means 'far.' What does a telescope help you do?",
+                "choices": [
+                  "Hear far away",
+                  "See far away",
+                  "Travel far away",
+                  "Write far away"
+                ],
+                "correct": "See far away",
+                "type": "multiple_choice",
+                "question_id": "4-L1-P5",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L1/q5.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L1/q5-hint.mp3"
+              }
+            ]
+          },
+          "read": {
+            "type": "story",
+            "title": "The Word Detective",
+            "text": "The Word Detective Mia loved mysteries, and today she had a new one to solve — a page full of big words! Her teacher, Ms. Patel, wrote TELESCOPE on the board.\n'I know tele means far,' Mia thought.\n'And scope means to look. So a telescope helps you look far away!' Next was PORTABLE.\n'Port means carry so portable means easy to carry!' Then came the hardest one: DESCRIBE.\n'Hmm scrib means write,' Mia whispered.\n'De means about. So describe means to write about something!' Ms. Patel smiled.\n'Mia, you cracked the code.'.\n'Roots are like puzzle pieces,' Mia said.\n'Once you know them, every big word is just a puzzle waiting to be solved.'",
+            "questions": [
+              {
+                "prompt": "How did Mia figure out the meaning of 'telescope'?",
+                "choices": [
+                  "She looked it up",
+                  "She used the root words 'tele' and 'scope'",
+                  "She asked her teacher",
+                  "She guessed"
+                ],
+                "correct": "She used the root words 'tele' and 'scope'",
+                "type": "multiple_choice",
+                "question_id": "4-L1-R1",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L1/rq1.mp3"
+              },
+              {
+                "prompt": "What does the root 'scrib' mean?",
+                "choices": [
+                  "Read",
+                  "Write",
+                  "Speak",
+                  "Think"
+                ],
+                "correct": "Write",
+                "type": "multiple_choice",
+                "question_id": "4-L1-R2",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L1/rq2.mp3"
+              },
+              {
+                "prompt": "What does Mia compare roots to?",
+                "choices": [
+                  "Building blocks",
+                  "Puzzle pieces",
+                  "Secret codes",
+                  "Keys"
+                ],
+                "correct": "Puzzle pieces",
+                "type": "multiple_choice",
+                "question_id": "4-L1-R3",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L1/rq3.mp3"
+              }
+            ],
+            "story_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L1/story.mp3"
+          },
+          "standards": [],
+          "audio_urls": {
+            "intro": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L1/intro.mp3",
+            "item1": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L1/item1.mp3",
+            "item2": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L1/item2.mp3",
+            "item3": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L1/item3.mp3",
+            "item4": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L1/item4.mp3",
+            "item5": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L1/item5.mp3",
+            "item6": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L1/item6.mp3",
+            "q1": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L1/q1.mp3",
+            "q1_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L1/q1-hint.mp3",
+            "q2": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L1/q2.mp3",
+            "q2_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L1/q2-hint.mp3",
+            "q3": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L1/q3.mp3",
+            "q3_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L1/q3-hint.mp3",
+            "q4": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L1/q4.mp3",
+            "q4_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L1/q4-hint.mp3",
+            "q5": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L1/q5.mp3",
+            "q5_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L1/q5-hint.mp3",
+            "story": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L1/story.mp3",
+            "rq1": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L1/rq1.mp3",
+            "rq2": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L1/rq2.mp3",
+            "rq3": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L1/rq3.mp3"
+          }
+        },
+        {
+          "id": "4-L2",
+          "title": "Similes & Metaphors",
+          "skill": "figurative_language",
+          "description": "Writers use comparisons to paint pictures with words! A SIMILE compares two things using 'like' or 'as.' A METAPHOR says",
+          "learn": {
+            "type": "introduction",
+            "content": "Writers use comparisons to paint pictures with words! A SIMILE compares two things using 'like' or 'as.' A METAPHOR says something IS something else — no 'like' or 'as' needed. Both make writing more ..",
+            "items": [
+              {
+                "technique": "Here's a simile: Her smile was as bright as the sun",
+                "definition": "Uses 'as",
+                "example": "as' to compare her smile to the sun",
+                "emoji": "☀️",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L2/item1.mp3"
+              },
+              {
+                "technique": "Here's a simile: He ran like the wind",
+                "definition": "Uses 'like' to compare his running to the wind",
+                "example": "",
+                "emoji": "💨",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L2/item2.mp3"
+              },
+              {
+                "technique": "Here's a metaphor: The classroom was a zoo",
+                "definition": "Says the classroom IS a zoo — it was wild and noisy!",
+                "example": "",
+                "emoji": "🎪",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L2/item3.mp3"
+              },
+              {
+                "technique": "Here's a metaphor: Time is money",
+                "definition": "Says time IS money — both are valuable and shouldn't be wasted",
+                "example": "",
+                "emoji": "💰",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L2/item4.mp3"
+              },
+              {
+                "technique": "Here's a simile: The stars twinkled like diamonds",
+                "definition": "Uses 'like' to compare stars to sparkling diamonds",
+                "example": "",
+                "emoji": "💎",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L2/item5.mp3"
+              },
+              {
+                "technique": "Here's a metaphor: Her voice was velvet",
+                "definition": "Says her voice IS velvet — it was smooth and soft",
+                "example": "",
+                "emoji": "🧵",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L2/item6.mp3"
+              }
+            ],
+            "intro_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L2/intro.mp3"
+          },
+          "practice": {
+            "type": "multiple_choice",
+            "instructions": "Choose the best answer!",
+            "questions": [
+              {
+                "prompt": "\"The wind whispered through the trees.\" What type of figurative language is this?",
+                "choices": [
+                  "Simile",
+                  "Metaphor",
+                  "Personification",
+                  "Idiom"
+                ],
+                "correct": "Personification",
+                "type": "multiple_choice",
+                "question_id": "4-L2-P1",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L2/q1.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L2/q1-hint.mp3"
+              },
+              {
+                "prompt": "\"She ran as fast as a cheetah.\" This is an example of a",
+                "choices": [
+                  "Metaphor",
+                  "Simile",
+                  "Idiom",
+                  "Hyperbole"
+                ],
+                "correct": "Simile",
+                "type": "multiple_choice",
+                "question_id": "4-L2-P2",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L2/q2.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L2/q2-hint.mp3"
+              },
+              {
+                "prompt": "\"The snow was a white blanket over the town.\" This is a",
+                "choices": [
+                  "Simile",
+                  "Metaphor",
+                  "Personification",
+                  "Alliteration"
+                ],
+                "correct": "Metaphor",
+                "type": "multiple_choice",
+                "question_id": "4-L2-P3",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L2/q3.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L2/q3-hint.mp3"
+              },
+              {
+                "prompt": "\"His heart was as cold as ice.\" This is a",
+                "choices": [
+                  "Metaphor",
+                  "Simile",
+                  "Personification",
+                  "Idiom"
+                ],
+                "correct": "Simile",
+                "type": "multiple_choice",
+                "question_id": "4-L2-P4",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L2/q4.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L2/q4-hint.mp3"
+              },
+              {
+                "prompt": "\"Life is a roller coaster.\" This is a",
+                "choices": [
+                  "Simile",
+                  "Metaphor",
+                  "Idiom",
+                  "Personification"
+                ],
+                "correct": "Metaphor",
+                "type": "multiple_choice",
+                "question_id": "4-L2-P5",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L2/q5.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L2/q5-hint.mp3"
+              }
+            ]
+          },
+          "read": {
+            "type": "story",
+            "title": "The Soccer Game",
+            "text": "The Soccer Game The stadium was a roaring ocean of fans. Leo stepped onto the field, his legs shaking like leaves in a storm. The whistle blew, and the game was a blur of speed and sweat. Leo's teammate, Kai, was a rocket — he sprinted past every defender. Kai passed the ball to Leo. Time seemed to freeze. Leo kicked with everything he had. The ball flew like a bullet into the net! The crowd erupted. Their cheers were thunder rolling across the sky. Leo's smile was as wide as the goal itself..\n'We did it!' he shouted. His heart was a drum, beating fast with joy.",
+            "questions": [
+              {
+                "prompt": "\"The stadium was a roaring ocean of fans\" is a",
+                "choices": [
+                  "Simile",
+                  "Metaphor",
+                  "Fact",
+                  "Opinion"
+                ],
+                "correct": "Metaphor",
+                "type": "multiple_choice",
+                "question_id": "4-L2-R1",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L2/rq1.mp3"
+              },
+              {
+                "prompt": "Find the simile that describes Leo's legs.",
+                "choices": [
+                  "Shaking like leaves in a storm",
+                  "A roaring ocean",
+                  "A blur of speed",
+                  "A drum beating fast"
+                ],
+                "correct": "Shaking like leaves in a storm",
+                "type": "multiple_choice",
+                "question_id": "4-L2-R2",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L2/rq2.mp3"
+              },
+              {
+                "prompt": "\"Kai was a rocket\" means Kai was",
+                "choices": [
+                  "On fire",
+                  "Very fast",
+                  "Very tall",
+                  "Loud"
+                ],
+                "correct": "Very fast",
+                "type": "multiple_choice",
+                "question_id": "4-L2-R3",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L2/rq3.mp3"
+              }
+            ],
+            "story_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L2/story.mp3"
+          },
+          "standards": [],
+          "audio_urls": {
+            "intro": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L2/intro.mp3",
+            "item1": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L2/item1.mp3",
+            "item2": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L2/item2.mp3",
+            "item3": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L2/item3.mp3",
+            "item4": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L2/item4.mp3",
+            "item5": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L2/item5.mp3",
+            "item6": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L2/item6.mp3",
+            "q1": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L2/q1.mp3",
+            "q1_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L2/q1-hint.mp3",
+            "q2": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L2/q2.mp3",
+            "q2_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L2/q2-hint.mp3",
+            "q3": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L2/q3.mp3",
+            "q3_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L2/q3-hint.mp3",
+            "q4": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L2/q4.mp3",
+            "q4_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L2/q4-hint.mp3",
+            "q5": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L2/q5.mp3",
+            "q5_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L2/q5-hint.mp3",
+            "story": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L2/story.mp3",
+            "rq1": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L2/rq1.mp3",
+            "rq2": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L2/rq2.mp3",
+            "rq3": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L2/rq3.mp3"
+          }
+        },
+        {
+          "id": "4-L3",
+          "title": "Idioms & Proverbs",
+          "skill": "idioms_proverbs",
+          "description": "An IDIOM is a phrase that means something different from the actual words. 'Break a leg' doesn't mean hurt yourself — it",
+          "learn": {
+            "type": "introduction",
+            "content": "An IDIOM is a phrase that means something different from the actual words. 'Break a leg' doesn't mean hurt yourself — it means good luck! A PROVERB is a short, wise saying that teaches a lesson, like ..",
+            "items": [
+              {
+                "technique": "The phrase is: break a leg",
+                "definition": "It means: Good luck!",
+                "example": "Said to performers before a show",
+                "emoji": "🦵",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L3/item1.mp3"
+              },
+              {
+                "technique": "The phrase is: piece of cake",
+                "definition": "It means: Something very easy",
+                "example": "'That test was a piece of cake!'",
+                "emoji": "🍰",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L3/item2.mp3"
+              },
+              {
+                "technique": "The phrase is: hit the books",
+                "definition": "It means: To study hard",
+                "example": "'I need to hit the books before the exam.'",
+                "emoji": "👄",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L3/item3.mp3"
+              },
+              {
+                "technique": "The phrase is: actions speak louder than words",
+                "definition": "It means: What you do matters more than what you say",
+                "example": "Show people through your behavior, not just promises",
+                "emoji": "☁️",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L3/item4.mp3"
+              },
+              {
+                "technique": "The phrase is: don't judge a book by its cover",
+                "definition": "It means: Don't decide about something based on how it looks",
+                "example": "Get to know people before making judgments",
+                "emoji": "🐝",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L3/item5.mp3"
+              },
+              {
+                "technique": "The phrase is: the early bird catches the worm",
+                "definition": "It means: People who start early have an advantage",
+                "example": "Being on time and prepared pays off",
+                "emoji": "🎉",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L3/item6.mp3"
+              }
+            ],
+            "intro_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L3/intro.mp3"
+          },
+          "practice": {
+            "type": "multiple_choice",
+            "instructions": "Choose the best answer!",
+            "questions": [
+              {
+                "prompt": "What does the phrase \"break a leg\" mean?",
+                "choices": [
+                  "Actually break your leg",
+                  "Good luck",
+                  "Run fast",
+                  "Be careful"
+                ],
+                "correct": "Good luck",
+                "type": "multiple_choice",
+                "question_id": "4-L3-P1",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L3/q1.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L3/q1-hint.mp3"
+              },
+              {
+                "prompt": "\"I'm feeling under the weather.\" What does this mean?",
+                "choices": [
+                  "Standing in rain",
+                  "Feeling sick",
+                  "Feeling happy",
+                  "Feeling cold"
+                ],
+                "correct": "Feeling sick",
+                "type": "multiple_choice",
+                "question_id": "4-L3-P2",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L3/q2.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L3/q2-hint.mp3"
+              },
+              {
+                "prompt": "\"Don't cry over spilled milk\" means",
+                "choices": [
+                  "Clean up your milk",
+                  "Don't be messy",
+                  "Don't worry about things you can't change",
+                  "Milk is expensive"
+                ],
+                "correct": "Don't worry about things you can't change",
+                "type": "multiple_choice",
+                "question_id": "4-L3-P3",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L3/q3.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L3/q3-hint.mp3"
+              },
+              {
+                "prompt": "\"The early bird catches the worm\" teaches that",
+                "choices": [
+                  "Birds eat worms",
+                  "Starting early gives you an advantage",
+                  "Mornings are the best",
+                  "Worms are hard to find"
+                ],
+                "correct": "Starting early gives you an advantage",
+                "type": "multiple_choice",
+                "question_id": "4-L3-P4",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L3/q4.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L3/q4-hint.mp3"
+              },
+              {
+                "prompt": "\"She let the cat out of the bag\" means she",
+                "choices": [
+                  "Released a cat",
+                  "Revealed a secret",
+                  "Opened a bag",
+                  "Made a mess"
+                ],
+                "correct": "Revealed a secret",
+                "type": "multiple_choice",
+                "question_id": "4-L3-P5",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L3/q5.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L3/q5-hint.mp3"
+              }
+            ]
+          },
+          "read": {
+            "type": "story",
+            "title": "Grandma's Wisdom",
+            "text": "Grandma's Wisdom Every Saturday, Aisha visited her grandma..\n'How was your week? Was it...\n' Grandma asked.? 'Terrible! I studied all week but still got a B on my test. It's not fair!'? Grandma smiled.\n'Don't cry over spilled milk, sweetheart. A B is wonderful.'? 'But Maya didn't study at all and got an A!'? 'Don't judge a book by its cover,' Grandma said.\n'Maybe Maya studied in ways you didn't see.'? Aisha sighed.\n'I guess you're right.'? 'And remember — actions speak louder than words. Keep working hard, and your effort will pay off.'? or Aisha hugged her grandma.\n'You always know what to say.'? 'That's because I've been around the block a few times!' Grandma laughed.",
+            "questions": [
+              {
+                "prompt": "When Grandma says 'don't cry over spilled milk,' she means",
+                "choices": [
+                  "Don't make a mess",
+                  "Don't worry about what's already done",
+                  "Don't drink milk",
+                  "Don't cry in public"
+                ],
+                "correct": "Don't worry about what's already done",
+                "type": "multiple_choice",
+                "question_id": "4-L3-R1",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L3/rq1.mp3"
+              },
+              {
+                "prompt": "What does 'been around the block' mean?",
+                "choices": [
+                  "Walked around the neighborhood",
+                  "Has a lot of experience",
+                  "Goes on walks",
+                  "Lives on a block"
+                ],
+                "correct": "Has a lot of experience",
+                "type": "multiple_choice",
+                "question_id": "4-L3-R2",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L3/rq2.mp3"
+              },
+              {
+                "prompt": "What lesson does the proverb 'actions speak louder than words' teach Aisha?",
+                "choices": [
+                  "Talk less",
+                  "Speak louder",
+                  "Keep working hard and it will show",
+                  "Don't talk to Maya"
+                ],
+                "correct": "Keep working hard and it will show",
+                "type": "multiple_choice",
+                "question_id": "4-L3-R3",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L3/rq3.mp3"
+              }
+            ],
+            "story_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L3/story.mp3"
+          },
+          "standards": [],
+          "audio_urls": {
+            "intro": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L3/intro.mp3",
+            "item1": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L3/item1.mp3",
+            "item2": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L3/item2.mp3",
+            "item3": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L3/item3.mp3",
+            "item4": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L3/item4.mp3",
+            "item5": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L3/item5.mp3",
+            "item6": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L3/item6.mp3",
+            "q1": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L3/q1.mp3",
+            "q1_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L3/q1-hint.mp3",
+            "q2": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L3/q2.mp3",
+            "q2_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L3/q2-hint.mp3",
+            "q3": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L3/q3.mp3",
+            "q3_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L3/q3-hint.mp3",
+            "q4": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L3/q4.mp3",
+            "q4_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L3/q4-hint.mp3",
+            "q5": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L3/q5.mp3",
+            "q5_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L3/q5-hint.mp3",
+            "story": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L3/story.mp3",
+            "rq1": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L3/rq1.mp3",
+            "rq2": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L3/rq2.mp3",
+            "rq3": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L3/rq3.mp3"
+          }
+        },
+        {
+          "id": "4-L4",
+          "title": "Text Structure",
+          "skill": "text_structure",
+          "description": "Authors organize their writing in different patterns called TEXT STRUCTURES. Knowing the structure helps you understand ",
+          "learn": {
+            "type": "introduction",
+            "content": "Authors organize their writing in different patterns called TEXT STRUCTURES. Knowing the structure helps you understand and remember what you read! Look for signal words — they're clues that tell you ..",
+            "items": [
+              {
+                "technique": "Cause & Effect",
+                "definition": "Explains why something happened and what resulted",
+                "example": "Signal words include: because, so, therefore, as a result",
+                "emoji": "🔗",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L4/item1.mp3"
+              },
+              {
+                "technique": "Compare & Contrast",
+                "definition": "Shows how two things are alike and different",
+                "example": "Signal words include: however, similarly, on the other hand, both",
+                "emoji": "⚖️",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L4/item2.mp3"
+              },
+              {
+                "technique": "Problem & Solution",
+                "definition": "Presents a problem and explains how it was solved",
+                "example": "Signal words include: the problem is, one solution, as a result, resolved by",
+                "emoji": "📊",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L4/item3.mp3"
+              },
+              {
+                "technique": "Chronological Order",
+                "definition": "Events told in the order they happened",
+                "example": "Signal words include: first, then, next, finally",
+                "emoji": "📋",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L4/item4.mp3"
+              },
+              {
+                "technique": "Description",
+                "definition": "Gives details about a topic using characteristics and examples",
+                "example": "Signal words include: for example, such as, including, characterized by",
+                "emoji": "📚",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L4/item5.mp3"
+              }
+            ],
+            "intro_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L4/intro.mp3"
+          },
+          "practice": {
+            "type": "multiple_choice",
+            "instructions": "Choose the best answer!",
+            "questions": [
+              {
+                "prompt": "A passage that explains why something happened, and what resulted, uses which text structure?",
+                "choices": [
+                  "Compare & Contrast",
+                  "Cause & Effect",
+                  "Chronological Order",
+                  "Problem & Solution"
+                ],
+                "correct": "Cause & Effect",
+                "type": "multiple_choice",
+                "question_id": "4-L4-P1",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L4/q1.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L4/q1-hint.mp3"
+              },
+              {
+                "prompt": "Which signal words tell you a passage is comparing two things?",
+                "choices": [
+                  "First, then, finally",
+                  "Because, so, therefore",
+                  "However, on the other hand, similarly",
+                  "Once upon a time"
+                ],
+                "correct": "However, on the other hand, similarly",
+                "type": "multiple_choice",
+                "question_id": "4-L4-P2",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L4/q2.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L4/q2-hint.mp3"
+              },
+              {
+                "prompt": "\"The city had too much traffic. To fix this, they built a new train system.\" This is",
+                "choices": [
+                  "Cause & Effect",
+                  "Compare & Contrast",
+                  "Problem & Solution",
+                  "Description"
+                ],
+                "correct": "Problem & Solution",
+                "type": "multiple_choice",
+                "question_id": "4-L4-P3",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L4/q3.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L4/q3-hint.mp3"
+              },
+              {
+                "prompt": "\"First, the settlers arrived. Then, they built homes. Finally, a town was formed.\" This is",
+                "choices": [
+                  "Compare & Contrast",
+                  "Cause & Effect",
+                  "Chronological Order",
+                  "Problem & Solution"
+                ],
+                "correct": "Chronological Order",
+                "type": "multiple_choice",
+                "question_id": "4-L4-P4",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L4/q4.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L4/q4-hint.mp3"
+              },
+              {
+                "prompt": "\"Dogs are loyal and playful. Cats, however, tend to be more independent.\" This is",
+                "choices": [
+                  "Compare & Contrast",
+                  "Cause & Effect",
+                  "Chronological Order",
+                  "Problem & Solution"
+                ],
+                "correct": "Compare & Contrast",
+                "type": "multiple_choice",
+                "question_id": "4-L4-P5",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L4/q5.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L4/q5-hint.mp3"
+              }
+            ]
+          },
+          "read": {
+            "type": "story",
+            "title": "Two Kinds of Energy",
+            "text": "Two Kinds of Energy There are two main kinds of energy that power our world: solar energy and fossil fuels. Solar energy comes from the sun. It is renewable, which means it won't run out. Solar panels collect sunlight and turn it into electricity. However, solar energy only works well on sunny days. Fossil fuels, on the other hand, come from deep underground. They include coal, oil, and natural gas. Fossil fuels are powerful and reliable, but burning them causes pollution. Both types of energy have advantages and disadvantages. Similarly, both play important roles in our daily lives.. Scientists are working to find the best balance between these energy sources to protect our planet while keeping the lights on.",
+            "questions": [
+              {
+                "prompt": "What text structure does this passage mainly use?",
+                "choices": [
+                  "Chronological Order",
+                  "Cause & Effect",
+                  "Compare & Contrast",
+                  "Problem & Solution"
+                ],
+                "correct": "Compare & Contrast",
+                "type": "multiple_choice",
+                "question_id": "4-L4-R1",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L4/rq1.mp3"
+              },
+              {
+                "prompt": "Which signal word helps you identify the structure?",
+                "choices": [
+                  "First",
+                  "Because",
+                  "On the other hand",
+                  "Finally"
+                ],
+                "correct": "On the other hand",
+                "type": "multiple_choice",
+                "question_id": "4-L4-R2",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L4/rq2.mp3"
+              },
+              {
+                "prompt": "What is one disadvantage of solar energy mentioned?",
+                "choices": [
+                  "It causes pollution",
+                  "It costs too much",
+                  "It only works well on sunny days",
+                  "It runs out quickly"
+                ],
+                "correct": "It only works well on sunny days",
+                "type": "multiple_choice",
+                "question_id": "4-L4-R3",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L4/rq3.mp3"
+              }
+            ],
+            "story_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L4/story.mp3"
+          },
+          "standards": [],
+          "audio_urls": {
+            "intro": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L4/intro.mp3",
+            "item1": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L4/item1.mp3",
+            "item2": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L4/item2.mp3",
+            "item3": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L4/item3.mp3",
+            "item4": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L4/item4.mp3",
+            "item5": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L4/item5.mp3",
+            "q1": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L4/q1.mp3",
+            "q1_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L4/q1-hint.mp3",
+            "q2": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L4/q2.mp3",
+            "q2_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L4/q2-hint.mp3",
+            "q3": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L4/q3.mp3",
+            "q3_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L4/q3-hint.mp3",
+            "q4": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L4/q4.mp3",
+            "q4_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L4/q4-hint.mp3",
+            "q5": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L4/q5.mp3",
+            "q5_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L4/q5-hint.mp3",
+            "story": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L4/story.mp3",
+            "rq1": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L4/rq1.mp3",
+            "rq2": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L4/rq2.mp3",
+            "rq3": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L4/rq3.mp3"
+          }
+        },
+        {
+          "id": "4-L5",
+          "title": "Finding the Theme",
+          "skill": "theme",
+          "description": "The THEME is the big message or lesson an author wants you to take away from a story. It's not the topic (what the story",
+          "learn": {
+            "type": "introduction",
+            "content": "The THEME is the big message or lesson an author wants you to take away from a story. It's not the topic (what the story is about) — it's the deeper meaning. A story about a race might have the theme ..",
+            "items": [
+              {
+                "technique": "Theme: Persistence pays off",
+                "definition": "A character keeps trying and eventually succeeds",
+                "example": "Look for characters who don't give up",
+                "emoji": "💪",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L5/item1.mp3"
+              },
+              {
+                "technique": "Theme: Be true to yourself",
+                "definition": "A character learns to be honest about who they are",
+                "example": "Look for characters who stop pretending",
+                "emoji": "🪞",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L5/item2.mp3"
+              },
+              {
+                "technique": "Theme: Friendship matters",
+                "definition": "Characters help each other through hard times",
+                "example": "Look for how friends support one another",
+                "emoji": "🤝",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L5/item3.mp3"
+              },
+              {
+                "technique": "Theme: Kindness makes a difference",
+                "definition": "A small act of kindness changes someone's day",
+                "example": "Look for the ripple effect of nice actions",
+                "emoji": "🏠",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L5/item4.mp3"
+              },
+              {
+                "technique": "Theme: Don't judge by appearances",
+                "definition": "Someone surprising turns out to be helpful or talented",
+                "example": "Look for characters who prove others wrong",
+                "emoji": "🌱",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L5/item5.mp3"
+              }
+            ],
+            "intro_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L5/intro.mp3"
+          },
+          "practice": {
+            "type": "multiple_choice",
+            "instructions": "Choose the best answer!",
+            "questions": [
+              {
+                "prompt": "Maya practiced piano every day after school. Some days she wanted to quit, but she kept going. At the spring recital, she played her piece perfectly. The audience gave her a standing ovation. What is the theme?",
+                "choices": [
+                  "Music is fun",
+                  "Persistence leads to success",
+                  "School is important",
+                  "Audiences are kind"
+                ],
+                "correct": "Persistence leads to success",
+                "type": "multiple_choice",
+                "question_id": "4-L5-P1",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L5/q1.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L5/q1-hint.mp3"
+              },
+              {
+                "prompt": "Jake made fun of the new kid's old shoes. Later, the new kid shared his lunch when Jake forgot his. Jake felt terrible and apologized. They became best friends. What is the theme?",
+                "choices": [
+                  "Always bring lunch",
+                  "New shoes are important",
+                  "Don't judge others by their appearance",
+                  "Making fun is okay"
+                ],
+                "correct": "Don't judge others by their appearance",
+                "type": "multiple_choice",
+                "question_id": "4-L5-P2",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L5/q2.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L5/q2-hint.mp3"
+              },
+              {
+                "prompt": "Everyone told Rosa she was too small to play basketball. She practiced every day, and by the end of the season, she was the team's best shooter. What is the theme?",
+                "choices": [
+                  "Basketball is the best sport",
+                  "Tall people are better at sports",
+                  "Believe in yourself and work hard",
+                  "Practice is boring"
+                ],
+                "correct": "Believe in yourself and work hard",
+                "type": "multiple_choice",
+                "question_id": "4-L5-P3",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L5/q3.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L5/q3-hint.mp3"
+              },
+              {
+                "prompt": "Sam wanted to win the science fair alone. But his project kept failing. When he finally asked his classmates for help, they built something amazing together. What is the theme?",
+                "choices": [
+                  "Science is hard",
+                  "Working together can achieve great things",
+                  "Winning is everything",
+                  "Don't ask for help"
+                ],
+                "correct": "Working together can achieve great things",
+                "type": "multiple_choice",
+                "question_id": "4-L5-P4",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L5/q4.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L5/q4-hint.mp3"
+              },
+              {
+                "prompt": "Lily found a wallet full of money. Nobody was watching. She could have kept it, but she turned it in to the office. The owner was so grateful, she gave Lily a reward. What is the theme?",
+                "choices": [
+                  "Money is important",
+                  "Finders keepers",
+                  "Honesty is rewarded",
+                  "Always check the lost and found"
+                ],
+                "correct": "Honesty is rewarded",
+                "type": "multiple_choice",
+                "question_id": "4-L5-P5",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L5/q5.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L5/q5-hint.mp3"
+              }
+            ]
+          },
+          "read": {
+            "type": "story",
+            "title": "The Art Contest",
+            "text": "The Art Contest Zara wanted to win the school art contest more than anything. She spent weeks painting a sunset, using every color she had. On the day of the contest, she saw the other entries. They were incredible.\n'I'll never win,' she whispered. But when she looked at her painting again, she noticed something. The colors blended perfectly. The sky glowed. It was HER sunset, painted HER way. The judges announced third place, then second place. Neither was Zara.\n'And first place goes to Zara Chen!' Zara couldn't believe it. Her eyes filled with happy tears.. Her teacher said, 'You won because you painted from your heart, not from someone else's.'",
+            "questions": [
+              {
+                "prompt": "What is the theme of this story?",
+                "choices": [
+                  "Art contests are stressful",
+                  "Being yourself leads to success",
+                  "Sunsets are beautiful",
+                  "Teachers are always right"
+                ],
+                "correct": "Being yourself leads to success",
+                "type": "multiple_choice",
+                "question_id": "4-L5-R1",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L5/rq1.mp3"
+              },
+              {
+                "prompt": "What almost made Zara give up?",
+                "choices": [
+                  "She ran out of paint",
+                  "She saw how good the other entries were",
+                  "Her teacher criticized her",
+                  "She was late"
+                ],
+                "correct": "She saw how good the other entries were",
+                "type": "multiple_choice",
+                "question_id": "4-L5-R2",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L5/rq2.mp3"
+              },
+              {
+                "prompt": "What does the teacher mean by 'painted from your heart'?",
+                "choices": [
+                  "She used red paint",
+                  "She was being authentically herself",
+                  "She painted a heart",
+                  "She was emotional"
+                ],
+                "correct": "She was being authentically herself",
+                "type": "multiple_choice",
+                "question_id": "4-L5-R3",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L5/rq3.mp3"
+              }
+            ],
+            "story_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L5/story.mp3"
+          },
+          "standards": [],
+          "audio_urls": {
+            "intro": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L5/intro.mp3",
+            "item1": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L5/item1.mp3",
+            "item2": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L5/item2.mp3",
+            "item3": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L5/item3.mp3",
+            "item4": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L5/item4.mp3",
+            "item5": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L5/item5.mp3",
+            "q1": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L5/q1.mp3",
+            "q1_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L5/q1-hint.mp3",
+            "q2": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L5/q2.mp3",
+            "q2_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L5/q2-hint.mp3",
+            "q3": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L5/q3.mp3",
+            "q3_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L5/q3-hint.mp3",
+            "q4": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L5/q4.mp3",
+            "q4_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L5/q4-hint.mp3",
+            "q5": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L5/q5.mp3",
+            "q5_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L5/q5-hint.mp3",
+            "story": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L5/story.mp3",
+            "rq1": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L5/rq1.mp3",
+            "rq2": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L5/rq2.mp3",
+            "rq3": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L5/rq3.mp3"
+          }
+        },
+        {
+          "id": "4-L6",
+          "title": "Point of View",
+          "skill": "point_of_view",
+          "description": "Every story is told from a POINT OF VIEW. FIRST PERSON means a character in the story is telling it — they use 'I' and '",
+          "learn": {
+            "type": "introduction",
+            "content": "Every story is told from a POINT OF VIEW. FIRST PERSON means a character in the story is telling it — they use 'I' and 'me.' THIRD PERSON means someone outside the story is telling it — they use 'he,'..",
+            "items": [
+              {
+                "technique": "First Person",
+                "definition": "Uses pronouns like: I, me, my I walked to school and saw my friend waiting for me",
+                "example": "You know exactly what the narrator thinks and feels",
+                "emoji": "👤",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L6/item1.mp3"
+              },
+              {
+                "technique": "Third Person Limited",
+                "definition": "Uses pronouns like: he, she, they She walked to school",
+                "example": "She felt nervous about the test.. You know one character's thoughts and feelings",
+                "emoji": "👥",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L6/item2.mp3"
+              },
+              {
+                "technique": "Third Person Omniscient",
+                "definition": "Uses pronouns like: he, she, they She felt nervous",
+                "example": "He felt excited. They both wanted to win.. You know what ALL characters think and feel",
+                "emoji": "🔮",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L6/item3.mp3"
+              }
+            ],
+            "intro_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L6/intro.mp3"
+          },
+          "practice": {
+            "type": "multiple_choice",
+            "instructions": "Choose the best answer!",
+            "questions": [
+              {
+                "prompt": "\"I couldn't believe my eyes when the dolphin jumped right next to our boat!\" What point of view?",
+                "choices": [
+                  "First person",
+                  "Third person limited",
+                  "Third person omniscient",
+                  "Second person"
+                ],
+                "correct": "First person",
+                "type": "multiple_choice",
+                "question_id": "4-L6-P1",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L6/q1.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L6/q1-hint.mp3"
+              },
+              {
+                "prompt": "\"Marcus sprinted down the field. His heart pounded as he neared the goal.\" What point of view?",
+                "choices": [
+                  "First person",
+                  "Third person limited",
+                  "Second person",
+                  "No point of view"
+                ],
+                "correct": "Third person limited",
+                "type": "multiple_choice",
+                "question_id": "4-L6-P2",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L6/q2.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L6/q2-hint.mp3"
+              },
+              {
+                "prompt": "Which word is a clue that a story is in first person?",
+                "choices": [
+                  "He",
+                  "She",
+                  "I",
+                  "They"
+                ],
+                "correct": "I",
+                "type": "multiple_choice",
+                "question_id": "4-L6-P3",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L6/q3.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L6/q3-hint.mp3"
+              },
+              {
+                "prompt": "\"Anna felt worried. Across town, her brother felt the same way, though neither knew it.\" What point of view?",
+                "choices": [
+                  "First person",
+                  "Third person limited",
+                  "Third person omniscient",
+                  "Second person"
+                ],
+                "correct": "Third person omniscient",
+                "type": "multiple_choice",
+                "question_id": "4-L6-P4",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L6/q4.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L6/q4-hint.mp3"
+              },
+              {
+                "prompt": "Why might an author choose first person?",
+                "choices": [
+                  "To describe every character equally",
+                  "To make the reader feel close to one character",
+                  "To hide all characters' feelings",
+                  "To make the story shorter"
+                ],
+                "correct": "To make the reader feel close to one character",
+                "type": "multiple_choice",
+                "question_id": "4-L6-P5",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L6/q5.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L6/q5-hint.mp3"
+              }
+            ]
+          },
+          "read": {
+            "type": "story",
+            "title": "Two Sides of the Story",
+            "text": "Two Sides of the Story VERSION 1 — FIRST PERSON: I stared at the last cookie on the plate. My mouth watered. I reached for it slowly but my sister's hand shot out and grabbed it first! 'Hey! That was mine!' I yelled. She just laughed and took a big bite. I couldn't believe it. That was SO unfair. VERSION 2 — THIRD PERSON: Oliver stared at the last cookie. His mouth watered as he reached for it. But Emma was faster. She snatched it with a grin.\n'Hey! That was mine!' Oliver yelled.. Emma laughed. She didn't think it was unfair at all — after all, she had baked the cookies herself.",
+            "questions": [
+              {
+                "prompt": "Version 1 is written in which point of view?",
+                "choices": [
+                  "First person",
+                  "Third person limited",
+                  "Third person omniscient",
+                  "Second person"
+                ],
+                "correct": "First person",
+                "type": "multiple_choice",
+                "question_id": "4-L6-R1",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L6/rq1.mp3"
+              },
+              {
+                "prompt": "In Version 2, what extra information do we learn?",
+                "choices": [
+                  "Oliver baked the cookies",
+                  "Emma baked the cookies",
+                  "Mom baked the cookies",
+                  "Nobody baked them"
+                ],
+                "correct": "Emma baked the cookies",
+                "type": "multiple_choice",
+                "question_id": "4-L6-R2",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L6/rq2.mp3"
+              },
+              {
+                "prompt": "Why does Version 1 feel more personal?",
+                "choices": [
+                  "It's longer",
+                  "We hear the narrator's exact thoughts and feelings",
+                  "It has more characters",
+                  "It's funnier"
+                ],
+                "correct": "We hear the narrator's exact thoughts and feelings",
+                "type": "multiple_choice",
+                "question_id": "4-L6-R3",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L6/rq3.mp3"
+              }
+            ],
+            "story_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L6/story.mp3"
+          },
+          "standards": [],
+          "audio_urls": {
+            "intro": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L6/intro.mp3",
+            "item1": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L6/item1.mp3",
+            "item2": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L6/item2.mp3",
+            "item3": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L6/item3.mp3",
+            "q1": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L6/q1.mp3",
+            "q1_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L6/q1-hint.mp3",
+            "q2": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L6/q2.mp3",
+            "q2_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L6/q2-hint.mp3",
+            "q3": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L6/q3.mp3",
+            "q3_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L6/q3-hint.mp3",
+            "q4": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L6/q4.mp3",
+            "q4_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L6/q4-hint.mp3",
+            "q5": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L6/q5.mp3",
+            "q5_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L6/q5-hint.mp3",
+            "story": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L6/story.mp3",
+            "rq1": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L6/rq1.mp3",
+            "rq2": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L6/rq2.mp3",
+            "rq3": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L6/rq3.mp3"
+          }
+        },
+        {
+          "id": "4-L7",
+          "title": "Author's Purpose",
+          "skill": "authors_purpose",
+          "description": "Every author writes for a reason — their PURPOSE. The three main purposes are: INFORM (teach you facts), PERSUADE (convi",
+          "learn": {
+            "type": "introduction",
+            "content": "Every author writes for a reason — their PURPOSE. The three main purposes are: INFORM (teach you facts), PERSUADE (convince you of something), and ENTERTAIN (tell you an enjoyable story). Some texts d..",
+            "items": [
+              {
+                "technique": "Inform",
+                "definition": "Teaches facts, explains how something works, or gives information",
+                "example": "Example: Dolphins are mammals that live in the ocean",
+                "emoji": "📚",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L7/item1.mp3"
+              },
+              {
+                "technique": "Persuade",
+                "definition": "Tries to convince you to think or do something",
+                "example": "Example: Everyone should recycle — our planet depends on it",
+                "emoji": "🗳️",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L7/item2.mp3"
+              },
+              {
+                "technique": "Entertain",
+                "definition": "Tells a story or makes you laugh, feel, or imagine",
+                "example": "Example: The dragon sneezed, and the whole village lost its eyebrows",
+                "emoji": "😂",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L7/item3.mp3"
+              }
+            ],
+            "intro_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L7/intro.mp3"
+          },
+          "practice": {
+            "type": "multiple_choice",
+            "instructions": "Choose the best answer!",
+            "questions": [
+              {
+                "prompt": "\"The ancient Egyptians built the pyramids as tombs for their pharaohs. These massive structures took thousands of workers and many years to complete.\" The author's purpose is to",
+                "choices": [
+                  "Persuade you to visit Egypt",
+                  "Inform you about the pyramids",
+                  "Entertain with a story",
+                  "Compare buildings"
+                ],
+                "correct": "Inform you about the pyramids",
+                "type": "multiple_choice",
+                "question_id": "4-L7-P1",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L7/q1.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L7/q1-hint.mp3"
+              },
+              {
+                "prompt": "\"School lunches should include more fresh fruits and vegetables. Studies show that healthy food helps students focus and learn better.\" The author's purpose is to",
+                "choices": [
+                  "Entertain",
+                  "Inform",
+                  "Persuade",
+                  "Describe"
+                ],
+                "correct": "Persuade",
+                "type": "multiple_choice",
+                "question_id": "4-L7-P2",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L7/q2.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L7/q2-hint.mp3"
+              },
+              {
+                "prompt": "\"Captain Whiskers leaped from rooftop to rooftop, her cape flapping in the moonlight. The city's mice didn't stand a chance!\" The author's purpose is to",
+                "choices": [
+                  "Inform",
+                  "Persuade",
+                  "Entertain",
+                  "Argue"
+                ],
+                "correct": "Entertain",
+                "type": "multiple_choice",
+                "question_id": "4-L7-P3",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L7/q3.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L7/q3-hint.mp3"
+              },
+              {
+                "prompt": "How can you tell when an author is trying to PERSUADE you?",
+                "choices": [
+                  "They use only facts",
+                  "They use opinions and emotional language",
+                  "They tell a funny story",
+                  "They describe a place"
+                ],
+                "correct": "They use opinions and emotional language",
+                "type": "multiple_choice",
+                "question_id": "4-L7-P4",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L7/q4.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L7/q4-hint.mp3"
+              },
+              {
+                "prompt": "\"Coral reefs are sometimes called the rainforests of the sea. They support more species per unit area than any other marine environment. Yet coral reefs are threatened by rising ocean temperatures.\" The author's purpose is to",
+                "choices": [
+                  "Entertain with a fish story",
+                  "Persuade you to go diving",
+                  "Inform about coral reefs and their challenges",
+                  "Compare forests and oceans"
+                ],
+                "correct": "Inform about coral reefs and their challenges",
+                "type": "multiple_choice",
+                "question_id": "4-L7-P5",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L7/q5.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L7/q5-hint.mp3"
+              }
+            ]
+          },
+          "read": {
+            "type": "story",
+            "title": "Save the School Garden!",
+            "text": "Save the School Garden! Our school garden is in danger. The district wants to pave it over for a new parking lot. But this garden is more than just plants. It's a classroom. In science, we studied how seeds grow into vegetables. In math, we measured garden beds and calculated soil needs. In art, we sketched the sunflowers. Studies show that school gardens improve student test scores by up to fifteen percent. Students who work in gardens also show better attendance and behavior. Other schools that lost their gardens regretted it. Jefferson Elementary paved their garden three years ago, and students there miss it every day.. We can save our garden. Come to the school board meeting Tuesday night. Bring a sign. Bring your voice. Our garden — and our learning — depends on it.",
+            "questions": [
+              {
+                "prompt": "What is the author's main purpose?",
+                "choices": [
+                  "To entertain with a garden story",
+                  "To inform about how plants grow",
+                  "To persuade readers to save the school garden",
+                  "To describe what a garden looks like"
+                ],
+                "correct": "To persuade readers to save the school garden",
+                "type": "multiple_choice",
+                "question_id": "4-L7-R1",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L7/rq1.mp3"
+              },
+              {
+                "prompt": "What evidence does the author use to support their argument?",
+                "choices": [
+                  "A funny joke",
+                  "Test score data and examples from other schools",
+                  "A recipe for vegetables",
+                  "A poem about flowers"
+                ],
+                "correct": "Test score data and examples from other schools",
+                "type": "multiple_choice",
+                "question_id": "4-L7-R2",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L7/rq2.mp3"
+              },
+              {
+                "prompt": "\"Come to the school board meeting\" is an example of",
+                "choices": [
+                  "A fact",
+                  "A call to action",
+                  "A description",
+                  "A metaphor"
+                ],
+                "correct": "A call to action",
+                "type": "multiple_choice",
+                "question_id": "4-L7-R3",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L7/rq3.mp3"
+              }
+            ],
+            "story_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L7/story.mp3"
+          },
+          "standards": [],
+          "audio_urls": {
+            "intro": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L7/intro.mp3",
+            "item1": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L7/item1.mp3",
+            "item2": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L7/item2.mp3",
+            "item3": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L7/item3.mp3",
+            "q1": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L7/q1.mp3",
+            "q1_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L7/q1-hint.mp3",
+            "q2": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L7/q2.mp3",
+            "q2_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L7/q2-hint.mp3",
+            "q3": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L7/q3.mp3",
+            "q3_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L7/q3-hint.mp3",
+            "q4": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L7/q4.mp3",
+            "q4_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L7/q4-hint.mp3",
+            "q5": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L7/q5.mp3",
+            "q5_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L7/q5-hint.mp3",
+            "story": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L7/story.mp3",
+            "rq1": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L7/rq1.mp3",
+            "rq2": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L7/rq2.mp3",
+            "rq3": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L7/rq3.mp3"
+          }
+        },
+        {
+          "id": "4-L8",
+          "title": "Context Clues & Vocabulary",
+          "skill": "context_clues",
+          "description": "Welcome to today's lesson . Context Clues & Vocabulary! When you find a word you don't know, don't panic! Listen to the ",
+          "learn": {
+            "type": "introduction",
+            "content": "Welcome to today's lesson . Context Clues & Vocabulary! When you find a word you don't know, don't panic! Listen to the CONTEXT . the words and sentences around it. Authors often give clues: they might define the word, give an example, use a synonym, or show..",
+            "items": [
+              {
+                "technique": "Definition Clue",
+                "definition": "The author defines the word right in the sentence",
+                "example": "Example: The arid, or very dry, desert stretched for miles",
+                "emoji": "📖",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L8/item1.mp3"
+              },
+              {
+                "technique": "Example Clue",
+                "definition": "The author gives examples to explain the word",
+                "example": "Example: Nocturnal animals, such as owls, bats, and raccoons, are active at night",
+                "emoji": "🔍",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L8/item2.mp3"
+              },
+              {
+                "technique": "Synonym Clue",
+                "definition": "A word with a similar meaning appears nearby",
+                "example": "Example: The enormous elephant was the biggest animal at the zoo",
+                "emoji": "💬",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L8/item3.mp3"
+              },
+              {
+                "technique": "Contrast Clue",
+                "definition": "",
+                "example": "The opposite meaning is given as a hint ... Example: Unlike her timid sister, Ava was bold and fearless",
+                "emoji": "🧩",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L8/item4.mp3"
+              }
+            ],
+            "intro_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L8/intro.mp3"
+          },
+          "practice": {
+            "type": "multiple_choice",
+            "instructions": "Choose the best answer!",
+            "questions": [
+              {
+                "prompt": "\"The dog was so famished after the long hike that it devoured its entire bowl of food in seconds.\" What does famished most likely mean?",
+                "choices": [
+                  "Tired",
+                  "Very hungry",
+                  "Excited",
+                  "Thirsty"
+                ],
+                "correct": "Very hungry",
+                "type": "multiple_choice",
+                "question_id": "4-L8-P1",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L8/q1.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L8/q1-hint.mp3"
+              },
+              {
+                "prompt": "\"The ancient ruins were dilapidated — the walls crumbled and the roof had caved in long ago.\" What does dilapidated mean?",
+                "choices": [
+                  "Beautiful",
+                  "New",
+                  "Fallen apart and ruined",
+                  "Painted"
+                ],
+                "correct": "Fallen apart and ruined",
+                "type": "multiple_choice",
+                "question_id": "4-L8-P2",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L8/q2.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L8/q2-hint.mp3"
+              },
+              {
+                "prompt": "\"Unlike the boisterous crowd at the game, the library was tranquil and silent.\" What does tranquil mean?",
+                "choices": [
+                  "Loud",
+                  "Calm and peaceful",
+                  "Empty",
+                  "Dark"
+                ],
+                "correct": "Calm and peaceful",
+                "type": "multiple_choice",
+                "question_id": "4-L8-P3",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L8/q3.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L8/q3-hint.mp3"
+              },
+              {
+                "prompt": "\"Reptiles, such as snakes, lizards, and turtles, are cold-blooded animals.\" The examples help you understand that reptiles are",
+                "choices": [
+                  "Mammals",
+                  "Birds",
+                  "A group including snakes, lizards, and turtles",
+                  "Fish"
+                ],
+                "correct": "A group including snakes, lizards, and turtles",
+                "type": "multiple_choice",
+                "question_id": "4-L8-P4",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L8/q4.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L8/q4-hint.mp3"
+              },
+              {
+                "prompt": "\"The scientist made a remarkable discovery — something so extraordinary that it changed the field forever.\" What does remarkable mean?",
+                "choices": [
+                  "Boring",
+                  "Small",
+                  "Amazing and noteworthy",
+                  "Confusing"
+                ],
+                "correct": "Amazing and noteworthy",
+                "type": "multiple_choice",
+                "question_id": "4-L8-P5",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L8/q5.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L8/q5-hint.mp3"
+              }
+            ]
+          },
+          "read": {
+            "type": "story",
+            "title": "The Mysterious Museum",
+            "text": "The Mysterious Museum On the field trip, Dante stopped in front of a strange artifact — an ancient object behind thick glass. The plaque read: 'This relic, found in the ruins of a forgotten city, is estimated to be over 3,000 years old.'.\n'What's an artifact? Was it...\n' asked his friend Priya.? 'It's an object from a long time ago,' Dante said, pointing to the old pottery and tools nearby.? They moved to the next room, where the air felt frigid — completely opposite of the warm hallway they'd just left.? 'This room preserves delicate items,' the guide explained.\n'The cold temperature prevents deterioration — that means it stops things from breaking down over time.'? or 'Context clues!' Priya whispered.\n'The guide just defined deterioration for us.'? Dante grinned.\n'Reading skills work in real life too.'",
+            "questions": [
+              {
+                "prompt": "What context clue helps you understand 'artifact'?",
+                "choices": [
+                  "The glass case",
+                  "The nearby pottery and tools as examples",
+                  "The room temperature",
+                  "The plaque color"
+                ],
+                "correct": "The nearby pottery and tools as examples",
+                "type": "multiple_choice",
+                "question_id": "4-L8-R1",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L8/rq1.mp3"
+              },
+              {
+                "prompt": "What does 'frigid' mean based on context?",
+                "choices": [
+                  "Very warm",
+                  "Very cold",
+                  "Very dark",
+                  "Very large"
+                ],
+                "correct": "Very cold",
+                "type": "multiple_choice",
+                "question_id": "4-L8-R2",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L8/rq2.mp3"
+              },
+              {
+                "prompt": "How does the guide help readers understand 'deterioration'?",
+                "choices": [
+                  "By giving an example",
+                  "By showing a contrast",
+                  "By defining it directly",
+                  "By using a synonym"
+                ],
+                "correct": "By defining it directly",
+                "type": "multiple_choice",
+                "question_id": "4-L8-R3",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L8/rq3.mp3"
+              }
+            ],
+            "story_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L8/story.mp3"
+          },
+          "standards": [],
+          "audio_urls": {
+            "intro": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L8/intro.mp3",
+            "item1": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L8/item1.mp3",
+            "item2": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L8/item2.mp3",
+            "item3": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L8/item3.mp3",
+            "item4": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L8/item4.mp3",
+            "q1": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L8/q1.mp3",
+            "q1_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L8/q1-hint.mp3",
+            "q2": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L8/q2.mp3",
+            "q2_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L8/q2-hint.mp3",
+            "q3": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L8/q3.mp3",
+            "q3_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L8/q3-hint.mp3",
+            "q4": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L8/q4.mp3",
+            "q4_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L8/q4-hint.mp3",
+            "q5": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L8/q5.mp3",
+            "q5_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L8/q5-hint.mp3",
+            "story": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L8/story.mp3",
+            "rq1": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L8/rq1.mp3",
+            "rq2": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L8/rq2.mp3",
+            "rq3": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L8/rq3.mp3"
+          }
+        },
+        {
+          "id": "4-L9",
+          "title": "Character Analysis",
+          "skill": "character_analysis",
+          "description": "Good readers don't just know WHAT characters do — they understand WHY. You can learn about a character by paying attenti",
+          "learn": {
+            "type": "introduction",
+            "content": "Good readers don't just know WHAT characters do — they understand WHY. You can learn about a character by paying attention to three things: what they THINK (their inner feelings), what they SAY (their..",
+            "items": [
+              {
+                "technique": "Thoughts",
+                "definition": "What the character thinks or feels inside Example: 'I hope nobody notices I'm nervous,' she thought",
+                "example": "This reveals: She's self-conscious and anxious",
+                "emoji": "💬",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L9/item1.mp3"
+              },
+              {
+                "technique": "Words",
+                "definition": "What the character says out loud Example: 'Don't worry, I'll help you carry those,' he said",
+                "example": "This reveals: He's kind and helpful",
+                "emoji": "🎭",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L9/item2.mp3"
+              },
+              {
+                "technique": "Actions",
+                "definition": "What the character does Example: She stayed late every night to practice her lines",
+                "example": "This reveals: She's dedicated and hardworking",
+                "emoji": "🏃",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L9/item3.mp3"
+              },
+              {
+                "technique": "Reactions",
+                "definition": "How the character responds to events Example: When he lost the game, he congratulated the winner",
+                "example": "This reveals: He's a good sport with strong character",
+                "emoji": "🔄",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L9/item4.mp3"
+              }
+            ],
+            "intro_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L9/intro.mp3"
+          },
+          "practice": {
+            "type": "multiple_choice",
+            "instructions": "Choose the best answer!",
+            "questions": [
+              {
+                "prompt": "\"Even though Carlos was exhausted, he stayed to help his teammates clean up after practice.\" What does this tell you about Carlos?",
+                "choices": [
+                  "He's lazy",
+                  "He's selfish",
+                  "He's loyal and hardworking",
+                  "He's angry"
+                ],
+                "correct": "He's loyal and hardworking",
+                "type": "multiple_choice",
+                "question_id": "4-L9-P1",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L9/q1.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L9/q1-hint.mp3"
+              },
+              {
+                "prompt": "\"'I'm sure you'll do great,' said Nina, even though she secretly hoped she would score higher.\" What does this reveal about Nina?",
+                "choices": [
+                  "She's completely honest",
+                  "She says nice things but is competitive inside",
+                  "She doesn't care about scores",
+                  "She's a bad friend"
+                ],
+                "correct": "She says nice things but is competitive inside",
+                "type": "multiple_choice",
+                "question_id": "4-L9-P2",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L9/q2.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L9/q2-hint.mp3"
+              },
+              {
+                "prompt": "\"When the younger kids were being bullied, Tomas stepped between them and said, 'Leave them alone.'\" This shows Tomas is",
+                "choices": [
+                  "Scared",
+                  "A bully",
+                  "Brave and protective",
+                  "Shy"
+                ],
+                "correct": "Brave and protective",
+                "type": "multiple_choice",
+                "question_id": "4-L9-P3",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L9/q3.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L9/q3-hint.mp3"
+              },
+              {
+                "prompt": "Which of these reveals the MOST about a character?",
+                "choices": [
+                  "What they look like",
+                  "What they eat",
+                  "What they do when nobody is watching",
+                  "What they wear"
+                ],
+                "correct": "What they do when nobody is watching",
+                "type": "multiple_choice",
+                "question_id": "4-L9-P4",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L9/q4.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L9/q4-hint.mp3"
+              },
+              {
+                "prompt": "\"Grace frowned at her test score. She immediately opened her textbook and started reviewing her mistakes.\" Grace is",
+                "choices": [
+                  "Giving up",
+                  "Determined to improve",
+                  "Angry at her teacher",
+                  "Bored"
+                ],
+                "correct": "Determined to improve",
+                "type": "multiple_choice",
+                "question_id": "4-L9-P5",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L9/q5.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L9/q5-hint.mp3"
+              }
+            ]
+          },
+          "read": {
+            "type": "story",
+            "title": "The New Student",
+            "text": "The New Student Everyone ignored the new girl, Hana, on her first day. At lunch, she sat alone. She opened her notebook and started drawing — detailed sketches of birds that looked almost real. Jackson noticed from across the cafeteria.\n'Those drawings are incredible,' he thought. But his friends were watching, and being nice to the new kid wasn't cool. Jackson looked at his friends. Then he looked at Hana, sitting alone.. He picked up his tray and walked over.\n'Mind if I sit here? Was it... I'm Jackson.'? Hana looked up, surprised.\n'I'm Hana. Sure!'? 'Your drawings are amazing,' Jackson said.? or His friends stared from across the room. But Jackson didn't care.? Sometimes doing the right thing means standing alone — or in this case, sitting with someone who is.",
+            "questions": [
+              {
+                "prompt": "What do Jackson's ACTIONS reveal about his character?",
+                "choices": [
+                  "He follows the crowd",
+                  "He's brave enough to do what's right even when it's not popular",
+                  "He doesn't like his friends",
+                  "He wants Hana to draw him"
+                ],
+                "correct": "He's brave enough to do what's right even when it's not popular",
+                "type": "multiple_choice",
+                "question_id": "4-L9-R1",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L9/rq1.mp3"
+              },
+              {
+                "prompt": "What internal conflict does Jackson face?",
+                "choices": [
+                  "He's hungry",
+                  "He wants to sit with his friends but also wants to be kind to Hana",
+                  "He doesn't like drawing",
+                  "He's new too"
+                ],
+                "correct": "He wants to sit with his friends but also wants to be kind to Hana",
+                "type": "multiple_choice",
+                "question_id": "4-L9-R2",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L9/rq2.mp3"
+              },
+              {
+                "prompt": "How does Hana's drawing reveal something about her character?",
+                "choices": [
+                  "She's messy",
+                  "She's talented and uses art to cope with being alone",
+                  "She doesn't like school",
+                  "She wants attention"
+                ],
+                "correct": "She's talented and uses art to cope with being alone",
+                "type": "multiple_choice",
+                "question_id": "4-L9-R3",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L9/rq3.mp3"
+              }
+            ],
+            "story_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L9/story.mp3"
+          },
+          "standards": [],
+          "audio_urls": {
+            "intro": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L9/intro.mp3",
+            "item1": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L9/item1.mp3",
+            "item2": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L9/item2.mp3",
+            "item3": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L9/item3.mp3",
+            "item4": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L9/item4.mp3",
+            "q1": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L9/q1.mp3",
+            "q1_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L9/q1-hint.mp3",
+            "q2": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L9/q2.mp3",
+            "q2_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L9/q2-hint.mp3",
+            "q3": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L9/q3.mp3",
+            "q3_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L9/q3-hint.mp3",
+            "q4": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L9/q4.mp3",
+            "q4_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L9/q4-hint.mp3",
+            "q5": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L9/q5.mp3",
+            "q5_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L9/q5-hint.mp3",
+            "story": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L9/story.mp3",
+            "rq1": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L9/rq1.mp3",
+            "rq2": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L9/rq2.mp3",
+            "rq3": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L9/rq3.mp3"
+          }
+        },
+        {
+          "id": "4-L10",
+          "title": "Summarizing",
+          "skill": "summarizing",
+          "description": "A SUMMARY is a short retelling of the most important information. It includes only the key details — not every little th",
+          "learn": {
+            "type": "introduction",
+            "content": "A SUMMARY is a short retelling of the most important information. It includes only the key details — not every little thing. For stories, include: WHO (main character), WHAT (the problem), HOW (how it..",
+            "items": [
+              {
+                "technique": "Who",
+                "definition": "The main character or subject",
+                "example": "Who is the story/article about?",
+                "emoji": "👤",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L10/item1.mp3"
+              },
+              {
+                "technique": "What",
+                "definition": "The main problem, event, or topic",
+                "example": "What happened or what is the main idea?",
+                "emoji": "📌",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L10/item2.mp3"
+              },
+              {
+                "technique": "How",
+                "definition": "How it was resolved or explained",
+                "example": "How was it solved? What supports the main idea?",
+                "emoji": "🔧",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L10/item3.mp3"
+              },
+              {
+                "technique": "Why",
+                "definition": "The lesson, theme, or significance",
+                "example": "Why does this matter?",
+                "emoji": "❓",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L10/item4.mp3"
+              }
+            ],
+            "intro_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L10/intro.mp3"
+          },
+          "practice": {
+            "type": "multiple_choice",
+            "instructions": "Choose the best answer!",
+            "questions": [
+              {
+                "prompt": "A summary should include",
+                "choices": [
+                  "Every detail from the story",
+                  "Only the most important information",
+                  "Your personal opinion",
+                  "Only the funny parts"
+                ],
+                "correct": "Only the most important information",
+                "type": "multiple_choice",
+                "question_id": "4-L10-P1",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L10/q1.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L10/q1-hint.mp3"
+              },
+              {
+                "prompt": "\"Tom forgot his homework. His teacher gave him extra time. He finished it at lunch. He got an A.\" Which is the best summary?",
+                "choices": [
+                  "Tom went to school",
+                  "Tom forgot his homework but his teacher gave him extra time and he finished it",
+                  "Tom got an A on everything",
+                  "Tom ate lunch at school"
+                ],
+                "correct": "Tom forgot his homework but his teacher gave him extra time and he finished it",
+                "type": "multiple_choice",
+                "question_id": "4-L10-P2",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L10/q2.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L10/q2-hint.mp3"
+              },
+              {
+                "prompt": "Which detail would you LEAVE OUT of a summary about a girl winning a spelling bee?",
+                "choices": [
+                  "She practiced every night",
+                  "She won first place",
+                  "She wore a blue shirt",
+                  "The final word was 'magnificent'"
+                ],
+                "correct": "She wore a blue shirt",
+                "type": "multiple_choice",
+                "question_id": "4-L10-P3",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L10/q3.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L10/q3-hint.mp3"
+              },
+              {
+                "prompt": "When summarizing informational text, you should include",
+                "choices": [
+                  "The main idea and key supporting details",
+                  "Every sentence from the text",
+                  "Only the first paragraph",
+                  "Your opinion about the topic"
+                ],
+                "correct": "The main idea and key supporting details",
+                "type": "multiple_choice",
+                "question_id": "4-L10-P4",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L10/q4.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L10/q4-hint.mp3"
+              },
+              {
+                "prompt": "A good summary is",
+                "choices": [
+                  "Longer than the original",
+                  "The same length as the original",
+                  "Shorter than the original",
+                  "Exactly the same words"
+                ],
+                "correct": "Shorter than the original",
+                "type": "multiple_choice",
+                "question_id": "4-L10-P5",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L10/q5.mp3",
+                "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L10/q5-hint.mp3"
+              }
+            ]
+          },
+          "read": {
+            "type": "story",
+            "title": "The Great Migration",
+            "text": "The Great Migration Every year, millions of monarch butterflies make an incredible journey. They travel up to 3,000 miles from Canada and the United States to the mountains of central Mexico. This trip is called the Great Migration. It is one of the most amazing events in nature. The butterflies fly south to escape the cold winter. They gather in forests where the temperature is just right — not too hot and not too cold. Scientists are still learning how monarchs navigate such huge distances. Some believe they use the sun as a compass. Others think they may sense Earth's magnetic field.. Sadly, monarch populations have been declining. Loss of habitat and changes in climate threaten their survival. Conservation groups are working to plant milkweed — the only plant where monarchs lay their eggs — to help save these remarkable insects.",
+            "questions": [
+              {
+                "prompt": "What is the main idea of this passage?",
+                "choices": [
+                  "Butterflies are pretty",
+                  "Monarch butterflies make an amazing migration but face threats",
+                  "Scientists study insects",
+                  "Mexico has nice weather"
+                ],
+                "correct": "Monarch butterflies make an amazing migration but face threats",
+                "type": "multiple_choice",
+                "question_id": "4-L10-R1",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L10/rq1.mp3"
+              },
+              {
+                "prompt": "Which is the best summary of this passage?",
+                "choices": [
+                  "Butterflies fly south and scientists study them",
+                  "Monarch butterflies travel 3,000 miles from North America to Mexico each year to escape winter, but their population is declining due to habitat loss, so conservation groups are planting milkweed to help",
+                  "Butterflies like milkweed and warm weather",
+                  "Scientists think butterflies use the sun"
+                ],
+                "correct": "Monarch butterflies travel 3,000 miles from North America to Mexico each year to escape winter, but their population is declining due to habitat loss, so conservation groups are planting milkweed to help",
+                "type": "multiple_choice",
+                "question_id": "4-L10-R2",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L10/rq2.mp3"
+              },
+              {
+                "prompt": "Which detail is important enough to include in a summary?",
+                "choices": [
+                  "The temperature is just right",
+                  "They travel up to 3,000 miles",
+                  "Some scientists study the sun",
+                  "The forests are in mountains"
+                ],
+                "correct": "They travel up to 3,000 miles",
+                "type": "multiple_choice",
+                "question_id": "4-L10-R3",
+                "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L10/rq3.mp3"
+              }
+            ],
+            "story_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L10/story.mp3"
+          },
+          "standards": [],
+          "audio_urls": {
+            "intro": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L10/intro.mp3",
+            "item1": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L10/item1.mp3",
+            "item2": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L10/item2.mp3",
+            "item3": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L10/item3.mp3",
+            "item4": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L10/item4.mp3",
+            "q1": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L10/q1.mp3",
+            "q1_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L10/q1-hint.mp3",
+            "q2": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L10/q2.mp3",
+            "q2_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L10/q2-hint.mp3",
+            "q3": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L10/q3.mp3",
+            "q3_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L10/q3-hint.mp3",
+            "q4": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L10/q4.mp3",
+            "q4_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L10/q4-hint.mp3",
+            "q5": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L10/q5.mp3",
+            "q5_hint": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L10/q5-hint.mp3",
+            "story": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L10/story.mp3",
+            "rq1": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L10/rq1.mp3",
+            "rq2": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L10/rq2.mp3",
+            "rq3": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4-L10/rq3.mp3"
+          }
+        }
+      ]
     }
   }
 }
