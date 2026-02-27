@@ -2,18 +2,18 @@
 
 import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { PhonemeQuestion } from "@/app/components/practice/PhonemeQuestion";
+import { SoundMachine } from "@/app/components/practice/SoundMachine";
 import { TapToPair } from "@/app/components/practice/TapToPair";
 import { WordBankFill } from "@/app/components/practice/WordBankFill";
 
 /* ── Sample data ─────────────────────────────────────── */
 
-interface PhonemeQ {
-  type: "phoneme";
+interface SoundMachineQ {
+  type: "sound_machine";
   prompt: string;
-  phonemeAudioUrl?: string;
-  choices: string[];
-  correct: string;
+  targetWord: string;
+  phonemes: string[];
+  distractors: string[];
 }
 
 interface MatchingQ {
@@ -34,33 +34,34 @@ interface WordBankQ {
   difficulty: "easy" | "medium" | "hard";
 }
 
-const PHONEME_QUESTIONS: PhonemeQ[] = [
+const SOUND_MACHINE_QUESTIONS: SoundMachineQ[] = [
   {
-    type: "phoneme",
-    prompt: 'What sound does B make?',
-    phonemeAudioUrl: "/audio/phonemes/b.mp3",
-    choices: ["/b/", "/d/", "/p/", "/g/"],
-    correct: "/b/",
+    type: "sound_machine",
+    prompt: "Build the word: cat",
+    targetWord: "cat",
+    phonemes: ["/k/", "/æ/", "/t/"],
+    distractors: ["/d/", "/ɒ/"],
   },
   {
-    type: "phoneme",
-    prompt: 'Which letter says /s/?',
-    choices: ["Z", "S", "C", "F"],
-    correct: "S",
+    type: "sound_machine",
+    prompt: "Build the word: ship",
+    targetWord: "ship",
+    phonemes: ["/ʃ/", "/ɪ/", "/p/"],
+    distractors: ["/tʃ/", "/ɛ/"],
   },
   {
-    type: "phoneme",
-    prompt: 'Tap the word that starts with /m/',
-    phonemeAudioUrl: "/audio/phonemes/m.mp3",
-    choices: ["nap", "map", "tap", "cap"],
-    correct: "map",
+    type: "sound_machine",
+    prompt: "Build the word: fun",
+    targetWord: "fun",
+    phonemes: ["/f/", "/ʌ/", "/n/"],
+    distractors: ["/v/", "/æ/"],
   },
   {
-    type: "phoneme",
-    prompt: 'Which letter says /k/?',
-    phonemeAudioUrl: "/audio/phonemes/k.mp3",
-    choices: ["T", "K", "G", "D"],
-    correct: "K",
+    type: "sound_machine",
+    prompt: "Build the word: dog",
+    targetWord: "dog",
+    phonemes: ["/d/", "/ɒ/", "/g/"],
+    distractors: ["/b/", "/ʌ/"],
   },
 ];
 
@@ -130,7 +131,7 @@ const WORD_BANK_QUESTIONS: WordBankQ[] = [
 type Tab = "phoneme" | "matching" | "word_bank";
 
 const TABS: { key: Tab; label: string }[] = [
-  { key: "phoneme", label: "Phoneme" },
+  { key: "phoneme", label: "Sound Machine" },
   { key: "matching", label: "Matching" },
   { key: "word_bank", label: "Word Bank" },
 ];
@@ -148,7 +149,7 @@ export default function PrototypePage() {
   const [results, setResults] = useState<Record<string, "correct" | "incorrect">>({});
 
   const counts: Record<Tab, number> = {
-    phoneme: PHONEME_QUESTIONS.length,
+    phoneme: SOUND_MACHINE_QUESTIONS.length,
     matching: MATCHING_QUESTIONS.length,
     word_bank: WORD_BANK_QUESTIONS.length,
   };
@@ -281,12 +282,12 @@ export default function PrototypePage() {
             className="bg-white dark:bg-slate-800/80 rounded-2xl border border-zinc-200 dark:border-slate-700 p-5 shadow-sm"
           >
             {tab === "phoneme" && (
-              <PhonemeQuestion
+              <SoundMachine
                 key={questionKey}
-                prompt={PHONEME_QUESTIONS[idx].prompt}
-                phonemeAudioUrl={PHONEME_QUESTIONS[idx].phonemeAudioUrl}
-                choices={PHONEME_QUESTIONS[idx].choices}
-                correct={PHONEME_QUESTIONS[idx].correct}
+                prompt={SOUND_MACHINE_QUESTIONS[idx].prompt}
+                targetWord={SOUND_MACHINE_QUESTIONS[idx].targetWord}
+                phonemes={SOUND_MACHINE_QUESTIONS[idx].phonemes}
+                distractors={SOUND_MACHINE_QUESTIONS[idx].distractors}
                 answered={isAnswered}
                 onAnswer={handleAnswer}
               />
