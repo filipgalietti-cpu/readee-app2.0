@@ -305,6 +305,9 @@ export default function QuestionAuditPage() {
   const [imgError, setImgError] = useState(false);
   const [useLive, setUseLive] = useState(false);
   const [saving, setSaving] = useState(false);
+  const [jumpOpen, setJumpOpen] = useState(false);
+  const [jumpValue, setJumpValue] = useState("");
+  const jumpInputRef = useRef<HTMLInputElement>(null);
   const audioUnlockedRef = useRef(false);
   const [playingUrl, setPlayingUrl] = useState<string | null>(null);
 
@@ -714,9 +717,53 @@ export default function QuestionAuditPage() {
                 <span className="px-2.5 py-1 rounded-lg bg-indigo-100 text-indigo-700 dark:bg-indigo-900/50 dark:text-indigo-300 font-mono font-bold text-xs">
                   {q.id}
                 </span>
-                <span className="ml-2 text-sm text-zinc-500 dark:text-slate-400">
-                  {safeIndex + 1} of {filtered.length}
-                </span>
+                {jumpOpen ? (
+                  <span className="inline-flex items-center ml-2">
+                    <input
+                      ref={jumpInputRef}
+                      type="number"
+                      min={1}
+                      max={filtered.length}
+                      value={jumpValue}
+                      onChange={(e) => setJumpValue(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                          const n = parseInt(jumpValue, 10);
+                          if (n >= 1 && n <= filtered.length) {
+                            stop();
+                            setCurrentIndex(n - 1);
+                          }
+                          setJumpOpen(false);
+                          setJumpValue("");
+                        } else if (e.key === "Escape") {
+                          setJumpOpen(false);
+                          setJumpValue("");
+                        }
+                      }}
+                      onBlur={() => {
+                        setJumpOpen(false);
+                        setJumpValue("");
+                      }}
+                      className="w-14 px-2 py-0.5 rounded-lg border-2 border-indigo-400 bg-white dark:bg-slate-700 text-sm text-center font-bold text-zinc-900 dark:text-white outline-none"
+                      placeholder="#"
+                    />
+                    <span className="text-sm text-zinc-500 dark:text-slate-400 ml-1">
+                      / {filtered.length}
+                    </span>
+                  </span>
+                ) : (
+                  <button
+                    onClick={() => {
+                      setJumpOpen(true);
+                      setJumpValue(String(safeIndex + 1));
+                      setTimeout(() => jumpInputRef.current?.select(), 50);
+                    }}
+                    className="ml-2 text-sm text-zinc-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors cursor-pointer"
+                    title="Click to jump to a question number"
+                  >
+                    {safeIndex + 1} of {filtered.length}
+                  </button>
+                )}
               </div>
 
               <button
