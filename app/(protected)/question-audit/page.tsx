@@ -42,6 +42,19 @@ type FilterTab =
   | "needs-review"
   | "thumbs-down";
 
+type GradeFilter = "all" | "Pre-K" | "Kindergarten" | "1st Grade" | "2nd Grade" | "3rd Grade" | "4th Grade";
+
+const GRADE_ORDER: GradeFilter[] = ["all", "Pre-K", "Kindergarten", "1st Grade", "2nd Grade", "3rd Grade", "4th Grade"];
+const GRADE_SHORT: Record<GradeFilter, string> = {
+  all: "All",
+  "Pre-K": "Pre-K",
+  Kindergarten: "K",
+  "1st Grade": "1st",
+  "2nd Grade": "2nd",
+  "3rd Grade": "3rd",
+  "4th Grade": "4th",
+};
+
 const LOCAL_KEY = "readee_question_audit";
 const SUPABASE_IMG =
   "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images";
@@ -285,6 +298,7 @@ function TabButton({
 export default function QuestionAuditPage() {
   const allQuestions = useMemo(() => buildQuestions(), []);
   const [auditMap, setAuditMap] = useState<AuditMap>({});
+  const [gradeFilter, setGradeFilter] = useState<GradeFilter>("all");
   const [tab, setTab] = useState<FilterTab>("all");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [comment, setComment] = useState("");
@@ -333,13 +347,41 @@ export default function QuestionAuditPage() {
     (e) => e.rating !== null
   ).length;
 
+  // Questions filtered by grade
+  const gradeQuestions = useMemo(() => {
+    if (gradeFilter === "all") return allQuestions;
+    return allQuestions.filter((q) => q.level === gradeFilter);
+  }, [allQuestions, gradeFilter]);
+
+  // Per-grade counts for the chapter bar
+  const gradeCounts = useMemo(() => {
+    const counts: Record<GradeFilter, { total: number; reviewed: number; flagged: number }> = {} as any;
+    for (const g of GRADE_ORDER) {
+      counts[g] = { total: 0, reviewed: 0, flagged: 0 };
+    }
+    for (const q of allQuestions) {
+      const g = q.level as GradeFilter;
+      if (counts[g]) {
+        counts[g].total++;
+        const entry = auditMap[q.id];
+        if (entry?.rating) counts[g].reviewed++;
+        if (entry?.rating === "down") counts[g].flagged++;
+      }
+      counts.all.total++;
+      const entry = auditMap[q.id];
+      if (entry?.rating) counts.all.reviewed++;
+      if (entry?.rating === "down") counts.all.flagged++;
+    }
+    return counts;
+  }, [allQuestions, auditMap]);
+
   const counts = useMemo(() => {
     let standards = 0;
     let practice = 0;
     let read = 0;
     let needsReview = 0;
     let thumbsDown = 0;
-    for (const q of allQuestions) {
+    for (const q of gradeQuestions) {
       if (q.source === "standards") standards++;
       if (q.source === "lesson-practice") practice++;
       if (q.source === "lesson-read") read++;
@@ -348,11 +390,11 @@ export default function QuestionAuditPage() {
       if (entry?.rating === "down") thumbsDown++;
     }
     return { standards, practice, read, needsReview, thumbsDown };
-  }, [allQuestions, auditMap]);
+  }, [gradeQuestions, auditMap]);
 
   // Filter
   const filtered = useMemo(() => {
-    return allQuestions.filter((q) => {
+    return gradeQuestions.filter((q) => {
       if (tab === "all") return true;
       if (tab === "standards") return q.source === "standards";
       if (tab === "lesson-practice") return q.source === "lesson-practice";
@@ -362,7 +404,7 @@ export default function QuestionAuditPage() {
       if (tab === "thumbs-down") return entry?.rating === "down";
       return true;
     });
-  }, [allQuestions, auditMap, tab]);
+  }, [gradeQuestions, auditMap, tab]);
 
   // Current question
   const safeIndex = Math.min(currentIndex, Math.max(0, filtered.length - 1));
@@ -375,10 +417,10 @@ export default function QuestionAuditPage() {
     setImgError(false);
   }, [safeIndex, audit?.comment]);
 
-  // Reset index when filter changes
+  // Reset index when filter or grade changes
   useEffect(() => {
     setCurrentIndex(0);
-  }, [tab]);
+  }, [tab, gradeFilter]);
 
   // Ensure audio is unlocked
   const ensureAudio = useCallback(() => {
@@ -535,7 +577,7 @@ export default function QuestionAuditPage() {
             </h1>
           </div>
           <span className="px-3 py-1.5 rounded-full bg-indigo-100 text-indigo-700 dark:bg-indigo-900/50 dark:text-indigo-300 font-bold text-sm">
-            {reviewedCount} / {allQuestions.length}
+            {gradeCounts[gradeFilter].reviewed} / {gradeCounts[gradeFilter].total}
           </span>
           <button
             onClick={handleExport}
@@ -557,11 +599,48 @@ export default function QuestionAuditPage() {
           </span>
         </div>
 
+        {/* Grade chapters */}
+        <div className="grid grid-cols-7 gap-1.5 mb-4">
+          {GRADE_ORDER.map((g) => {
+            const gc = gradeCounts[g];
+            const isActive = gradeFilter === g;
+            const pct = gc.total > 0 ? Math.round((gc.reviewed / gc.total) * 100) : 0;
+            return (
+              <button
+                key={g}
+                onClick={() => setGradeFilter(g)}
+                className={`relative flex flex-col items-center px-1 py-2.5 rounded-xl font-semibold text-xs transition-all overflow-hidden ${
+                  isActive
+                    ? "bg-indigo-600 text-white shadow-md"
+                    : "bg-white text-zinc-600 hover:bg-zinc-100 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700 border border-zinc-200 dark:border-slate-700"
+                }`}
+              >
+                {/* Progress bar background */}
+                {!isActive && pct > 0 && (
+                  <div
+                    className="absolute bottom-0 left-0 right-0 bg-emerald-100 dark:bg-emerald-900/30 transition-all"
+                    style={{ height: `${pct}%` }}
+                  />
+                )}
+                <span className="relative z-10 font-bold text-sm">{GRADE_SHORT[g]}</span>
+                <span className={`relative z-10 text-[10px] mt-0.5 ${isActive ? "text-indigo-200" : "text-zinc-400 dark:text-slate-500"}`}>
+                  {gc.reviewed}/{gc.total}
+                </span>
+                {gc.flagged > 0 && (
+                  <span className={`relative z-10 text-[10px] ${isActive ? "text-red-200" : "text-red-400"}`}>
+                    {gc.flagged} flagged
+                  </span>
+                )}
+              </button>
+            );
+          })}
+        </div>
+
         {/* Filter tabs */}
         <div className="flex gap-2 mb-5 overflow-x-auto pb-1">
           <TabButton
             label="All"
-            count={allQuestions.length}
+            count={gradeQuestions.length}
             active={tab === "all"}
             onClick={() => setTab("all")}
           />
