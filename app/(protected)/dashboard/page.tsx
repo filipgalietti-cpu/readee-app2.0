@@ -14,6 +14,9 @@ import { safeValidate } from "@/lib/validate";
 import { ChildSchema } from "@/lib/schemas";
 import { staggerContainer, slideUp, staggerFast } from "@/lib/motion/variants";
 import { getStandardsForGrade } from "@/lib/data/all-standards";
+import { getChildAvatar, DEFAULT_AVATARS } from "@/lib/utils/get-child-avatar";
+import { getItemsByCategory } from "@/lib/data/shop-items";
+import type { ShopPurchase, EquippedItems } from "@/lib/db/types";
 
 /* ─── Count-up animation hook ─────────────────────────── */
 
@@ -362,7 +365,7 @@ function ChildSelector({
             <div className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 hover:border-indigo-300 dark:hover:border-indigo-700 hover:shadow-md transition-all duration-200 group-hover:scale-[1.02] space-y-4">
               <div className="flex items-center gap-4">
                 <div className="w-14 h-14 rounded-xl bg-indigo-50 flex items-center justify-center text-2xl flex-shrink-0">
-                  {AVATARS[index % AVATARS.length]}
+                  {getChildAvatar(child, index)}
                 </div>
                 <div className="flex-1 min-w-0">
                   <h2 className="text-lg font-bold text-zinc-900 dark:text-slate-100 truncate">
@@ -410,8 +413,13 @@ function ChildDashboard({
   const [showCurriculum, setShowCurriculum] = useState(false);
   const [expandedGrade, setExpandedGrade] = useState<string | null>(null);
   const [userPlan, setUserPlan] = useState<string>("free");
+  const setStoreChildren = useChildStore((s) => s.setChildren);
+  const setStoreChildData = useChildStore((s) => s.setChildData);
   const childIndex = children.findIndex((c) => c.id === child.id);
-  const avatar = AVATARS[childIndex % AVATARS.length];
+  const [currentChild, setCurrentChild] = useState(child);
+  const [avatarPickerOpen, setAvatarPickerOpen] = useState(false);
+  const [purchases, setPurchases] = useState<ShopPurchase[]>([]);
+  const avatar = getChildAvatar(currentChild, childIndex);
   const hasMultiple = children.length > 1;
   const greeting = getGreeting();
   const motivation = useMemo(() => MOTIVATIONAL[Math.floor(Math.random() * MOTIVATIONAL.length)], []);
@@ -420,6 +428,9 @@ function ChildDashboard({
     const standards = getStandardsForGrade(gradeKey);
     return standards[0] ?? { standard_id: "RL.K.1", standard_description: "", domain: "" };
   }, [readingLevel]);
+
+  // Keep currentChild in sync when prop changes (e.g. switching children)
+  useEffect(() => { setCurrentChild(child); }, [child]);
 
   useEffect(() => {
     async function checkAssessment() {
@@ -467,6 +478,17 @@ function ChildDashboard({
       }
     }
     checkAssessment();
+
+    // Fetch shop purchases for avatar picker
+    async function fetchPurchases() {
+      const supabase = supabaseBrowser();
+      const { data } = await supabase
+        .from("shop_purchases")
+        .select("*")
+        .eq("child_id", child.id);
+      setPurchases((data || []) as ShopPurchase[]);
+    }
+    fetchPurchases();
   }, [child.id]);
 
   // Reading level is now settings-only — removed handleReadingLevelChange
@@ -573,6 +595,32 @@ function ChildDashboard({
   const storiesCount = useCountUp(child.stories_read);
   const streakCount = useCountUp(child.streak_days);
 
+  // ── Avatar picker logic ──
+  const shopAvatars = getItemsByCategory("avatars");
+  const ownedAvatarIds = new Set(purchases.filter((p) => p.item_id.startsWith("avatar_")).map((p) => p.item_id));
+  const equippedAvatarId = currentChild.equipped_items?.avatar ?? null;
+
+  const handleEquipAvatar = async (avatarId: string | null) => {
+    const newEquipped: EquippedItems = {
+      ...currentChild.equipped_items,
+      avatar: avatarId,
+    };
+    const supabase = supabaseBrowser();
+    const { error } = await supabase
+      .from("children")
+      .update({ equipped_items: newEquipped })
+      .eq("id", currentChild.id);
+
+    if (!error) {
+      const updated = { ...currentChild, equipped_items: newEquipped };
+      setCurrentChild(updated);
+      // Sync zustand store: update selected child + children array
+      setStoreChildData(updated);
+      setStoreChildren(children.map((c) => (c.id === updated.id ? updated : c)));
+    }
+    setAvatarPickerOpen(false);
+  };
+
   return (
     <motion.div
       className="max-w-[480px] mx-auto space-y-6 pb-12 px-4"
@@ -599,7 +647,7 @@ function ChildDashboard({
           >
             {children.map((c, i) => (
               <option key={c.id} value={c.id}>
-                {AVATARS[i % AVATARS.length]} {c.first_name}
+                {getChildAvatar(c, i)} {c.first_name}
               </option>
             ))}
           </select>
@@ -608,14 +656,111 @@ function ChildDashboard({
 
       {/* ── Greeting (enlarged) ── */}
       <motion.div variants={slideUp} className="text-center pt-4">
-        <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-indigo-50 to-violet-50 dark:from-indigo-950/40 dark:to-violet-950/40 mx-auto mb-4 flex items-center justify-center text-5xl shadow-sm">
-          {avatar}
+        <div className="relative mx-auto mb-4 w-24">
+          <button
+            onClick={() => setAvatarPickerOpen(true)}
+            className="w-24 h-24 rounded-2xl bg-gradient-to-br from-indigo-50 to-violet-50 dark:from-indigo-950/40 dark:to-violet-950/40 flex items-center justify-center text-5xl shadow-sm hover:shadow-md hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
+            aria-label="Change avatar"
+          >
+            {avatar}
+          </button>
+          <div className="absolute -bottom-1 -right-1 w-7 h-7 rounded-full bg-indigo-600 flex items-center justify-center shadow-md pointer-events-none">
+            <svg className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+            </svg>
+          </div>
         </div>
         <h1 className="text-3xl font-bold text-zinc-900 dark:text-slate-100 tracking-tight">
-          {greeting.text}, {child.first_name}! <span className="animate-wave">{greeting.emoji}</span>
+          {greeting.text}, {currentChild.first_name}! <span className="animate-wave">{greeting.emoji}</span>
         </h1>
         <p className="text-zinc-500 dark:text-slate-400 mt-1 text-sm">{motivation}</p>
       </motion.div>
+
+      {/* ── Avatar Picker Modal ── */}
+      {avatarPickerOpen && (
+        <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center">
+          <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={() => setAvatarPickerOpen(false)} />
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="relative w-full max-w-md mx-4 mb-4 sm:mb-0 rounded-3xl bg-white dark:bg-slate-800 shadow-2xl overflow-hidden"
+          >
+            <div className="p-6 pb-2">
+              <div className="flex items-center justify-between">
+                <h2 className="text-lg font-bold text-zinc-900 dark:text-slate-100">Choose Your Avatar</h2>
+                <button
+                  onClick={() => setAvatarPickerOpen(false)}
+                  className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-zinc-100 dark:hover:bg-slate-700 transition-colors"
+                >
+                  <svg className="w-5 h-5 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <div className="px-6 pb-2">
+              <p className="text-xs font-semibold text-zinc-400 dark:text-slate-500 uppercase tracking-wider mb-3">Defaults</p>
+              <div className="grid grid-cols-5 gap-3">
+                {DEFAULT_AVATARS.map((emoji, i) => {
+                  const id = `default_${i}`;
+                  const isActive = equippedAvatarId === id || (!equippedAvatarId && i === childIndex % DEFAULT_AVATARS.length);
+                  return (
+                    <button
+                      key={id}
+                      onClick={() => handleEquipAvatar(i === childIndex % DEFAULT_AVATARS.length ? null : id)}
+                      className={`aspect-square rounded-2xl flex items-center justify-center text-3xl transition-all duration-200 ${
+                        isActive
+                          ? "bg-indigo-100 dark:bg-indigo-900/50 ring-2 ring-indigo-500 scale-110"
+                          : "bg-zinc-100 dark:bg-slate-700 hover:bg-zinc-200 dark:hover:bg-slate-600 hover:scale-105"
+                      }`}
+                    >
+                      {emoji}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="px-6 pt-4 pb-6">
+              <p className="text-xs font-semibold text-zinc-400 dark:text-slate-500 uppercase tracking-wider mb-3">Shop Avatars</p>
+              <div className="grid grid-cols-5 gap-3">
+                {shopAvatars.map((item) => {
+                  const owned = ownedAvatarIds.has(item.id);
+                  const isActive = equippedAvatarId === item.id;
+                  return (
+                    <button
+                      key={item.id}
+                      onClick={() => owned && handleEquipAvatar(item.id)}
+                      disabled={!owned}
+                      className={`aspect-square rounded-2xl flex items-center justify-center text-3xl relative transition-all duration-200 ${
+                        isActive
+                          ? "bg-indigo-100 dark:bg-indigo-900/50 ring-2 ring-indigo-500 scale-110"
+                          : owned
+                            ? "bg-zinc-100 dark:bg-slate-700 hover:bg-zinc-200 dark:hover:bg-slate-600 hover:scale-105"
+                            : "bg-zinc-50 dark:bg-slate-800 opacity-40 cursor-not-allowed"
+                      }`}
+                      title={owned ? item.name : `${item.name} — ${item.price} carrots`}
+                    >
+                      {item.emoji}
+                      {!owned && (
+                        <span className="absolute bottom-0.5 right-0.5 text-[10px]">
+                          🔒
+                        </span>
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
+              {shopAvatars.some((item) => !ownedAvatarIds.has(item.id)) && (
+                <p className="text-xs text-zinc-400 dark:text-slate-500 mt-3 text-center">
+                  Earn carrots to unlock more avatars in the Shop!
+                </p>
+              )}
+            </div>
+          </motion.div>
+        </div>
+      )}
 
       {/* ── Hero Tiles — 2×2 grid ── */}
       <motion.div variants={slideUp} className="grid grid-cols-2 gap-4">
