@@ -11,6 +11,7 @@ import { safeValidate } from "@/lib/validate";
 import { ChildSchema } from "@/lib/schemas";
 import { getAllStandards as fetchAllStandards } from "@/lib/data/all-standards";
 import { useChildStore } from "@/lib/stores/child-store";
+import { getChildAvatar } from "@/lib/utils/get-child-avatar";
 
 /* ─── Types ──────────────────────────────────────────── */
 
@@ -36,7 +37,6 @@ type DateRange = "week" | "month" | "all";
 
 /* ─── Constants ──────────────────────────────────────── */
 
-const AVATARS = ["😊", "🦊", "🐱", "🦋", "🐻"];
 
 const DOMAIN_META: Record<string, { emoji: string; color: string; darkColor: string; bg: string; darkBg: string; border: string; barColor: string; total: number }> = {
   "Reading Literature":         { emoji: "📖", color: "text-violet-700",  darkColor: "dark:text-violet-400",  bg: "bg-violet-50",  darkBg: "dark:bg-violet-950/30", border: "border-violet-200",  barColor: "#8b5cf6", total: 8 },
@@ -65,11 +65,6 @@ function displayGrade(grade: string | null | undefined): string {
   return grade;
 }
 
-function getAvatar(name: string): string {
-  let h = 0;
-  for (let i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) & 0x7fffffff;
-  return AVATARS[h % AVATARS.length];
-}
 
 function formatDate(dateStr: string): string {
   const d = new Date(dateStr);
@@ -368,7 +363,9 @@ function AnalyticsDashboard({ child }: { child: Child }) {
   if (loadingData) return <Spinner />;
 
   const hasData = practiceResults.length > 0;
-  const avatar = getAvatar(child.first_name);
+  const storeChildren = useChildStore((s) => s.children);
+  const childIndex = storeChildren.findIndex((c) => c.id === child.id);
+  const avatar = getChildAvatar(child, childIndex === -1 ? 0 : childIndex);
 
   /* ── No data empty state ── */
   if (!hasData) {
