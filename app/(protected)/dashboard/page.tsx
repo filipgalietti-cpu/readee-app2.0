@@ -604,9 +604,9 @@ function ChildDashboard({
   // Equipped background gradient
   const darkMode = useThemeStore((s) => s.darkMode);
   const equippedBgId = currentChild.equipped_items?.background ?? null;
-  const bgStyle = equippedBgId && BACKGROUND_STYLES[equippedBgId]
-    ? { background: darkMode ? BACKGROUND_STYLES[equippedBgId].dark : BACKGROUND_STYLES[equippedBgId].light }
-    : undefined;
+  const bgGradient = equippedBgId && BACKGROUND_STYLES[equippedBgId]
+    ? (darkMode ? BACKGROUND_STYLES[equippedBgId].dark : BACKGROUND_STYLES[equippedBgId].light)
+    : null;
 
   const handleEquipAvatar = async (avatarId: string | null) => {
     const newEquipped: EquippedItems = {
@@ -630,9 +630,12 @@ function ChildDashboard({
   };
 
   return (
+    <div
+      className={bgGradient ? "-mx-6 -mt-8 -mb-8 px-6 pt-8 pb-8 min-h-screen" : ""}
+      style={bgGradient ? { background: bgGradient } : undefined}
+    >
     <motion.div
-      className={`max-w-3xl mx-auto space-y-6 pb-12 px-4${bgStyle ? " min-h-screen rounded-3xl" : ""}`}
-      style={bgStyle}
+      className="max-w-3xl mx-auto space-y-6 pb-12 px-4"
       variants={staggerContainer}
       initial="hidden"
       animate="visible"
@@ -1041,6 +1044,7 @@ function ChildDashboard({
         )}
       </motion.div>
     </motion.div>
+    </div>
   );
 }
 
