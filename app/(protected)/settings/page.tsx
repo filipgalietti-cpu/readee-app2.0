@@ -6,7 +6,6 @@ import Link from "next/link";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
 import { READING_LEVELS, GRADES } from "@/app/_components/LevelProgressBar";
-import { useTheme } from "@/app/_components/ThemeContext";
 import { safeValidate } from "@/lib/validate";
 import CelebrationOverlay from "@/app/_components/CelebrationOverlay";
 import { ChildCreateSchema, ChildUpdateSchema } from "@/lib/schemas";
@@ -61,8 +60,6 @@ export default function Settings() {
   // Preferences
   const [soundEffects, setSoundEffects] = useState(true);
   const [autoAdvance, setAutoAdvance] = useState(true);
-  const { darkMode, toggleDarkMode } = useTheme();
-
   useEffect(() => {
     const stored = localStorage.getItem("readee_prefs");
     if (stored) {
@@ -529,7 +526,6 @@ export default function Settings() {
 
       {/* ====== PREFERENCES ====== */}
       <Section title="Preferences">
-        <Toggle label="Dark Mode" description="Switch to a darker color scheme for the app" value={darkMode} onChange={toggleDarkMode} />
         <Toggle label="Sound Effects" description="Play sounds during lessons and assessments" value={soundEffects} onChange={setSoundEffects} />
         <Toggle label="Auto-Advance" description="Automatically move to the next question after answering" value={autoAdvance} onChange={setAutoAdvance} />
       </Section>

@@ -659,7 +659,7 @@ function ChildDashboard({
         <div className="relative mx-auto mb-4 w-24">
           <button
             onClick={() => setAvatarPickerOpen(true)}
-            className="w-24 h-24 rounded-2xl bg-gradient-to-br from-indigo-50 to-violet-50 dark:from-indigo-950/40 dark:to-violet-950/40 flex items-center justify-center text-5xl shadow-sm hover:shadow-md hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
+            className="w-24 h-24 rounded-2xl bg-gradient-to-br from-indigo-50 to-violet-50 flex items-center justify-center text-5xl shadow-sm hover:shadow-md hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
             aria-label="Change avatar"
           >
             {avatar}
@@ -683,14 +683,14 @@ function ChildDashboard({
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            className="relative w-full max-w-md mx-4 mb-4 sm:mb-0 rounded-3xl bg-white dark:bg-slate-800 shadow-2xl overflow-hidden"
+            className="relative w-full max-w-md mx-4 mb-4 sm:mb-0 rounded-3xl bg-white shadow-2xl overflow-hidden"
           >
             <div className="p-6 pb-2">
               <div className="flex items-center justify-between">
-                <h2 className="text-lg font-bold text-zinc-900 dark:text-slate-100">Choose Your Avatar</h2>
+                <h2 className="text-lg font-bold text-zinc-900">Choose Your Avatar</h2>
                 <button
                   onClick={() => setAvatarPickerOpen(false)}
-                  className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-zinc-100 dark:hover:bg-slate-700 transition-colors"
+                  className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-zinc-100 transition-colors"
                 >
                   <svg className="w-5 h-5 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -700,7 +700,7 @@ function ChildDashboard({
             </div>
 
             <div className="px-6 pb-2">
-              <p className="text-xs font-semibold text-zinc-400 dark:text-slate-500 uppercase tracking-wider mb-3">Defaults</p>
+              <p className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3">Defaults</p>
               <div className="grid grid-cols-5 gap-3">
                 {DEFAULT_AVATARS.map((emoji, i) => {
                   const id = `default_${i}`;
@@ -711,8 +711,8 @@ function ChildDashboard({
                       onClick={() => handleEquipAvatar(i === childIndex % DEFAULT_AVATARS.length ? null : id)}
                       className={`aspect-square rounded-2xl flex items-center justify-center text-3xl transition-all duration-200 ${
                         isActive
-                          ? "bg-indigo-100 dark:bg-indigo-900/50 ring-2 ring-indigo-500 scale-110"
-                          : "bg-zinc-100 dark:bg-slate-700 hover:bg-zinc-200 dark:hover:bg-slate-600 hover:scale-105"
+                          ? "bg-indigo-100 ring-2 ring-indigo-500 scale-110"
+                          : "bg-zinc-100 hover:bg-zinc-200 hover:scale-105"
                       }`}
                     >
                       {emoji}
@@ -723,7 +723,7 @@ function ChildDashboard({
             </div>
 
             <div className="px-6 pt-4 pb-6">
-              <p className="text-xs font-semibold text-zinc-400 dark:text-slate-500 uppercase tracking-wider mb-3">Shop Avatars</p>
+              <p className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3">Shop Avatars</p>
               <div className="grid grid-cols-5 gap-3">
                 {shopAvatars.map((item) => {
                   const owned = ownedAvatarIds.has(item.id);
@@ -735,10 +735,10 @@ function ChildDashboard({
                       disabled={!owned}
                       className={`aspect-square rounded-2xl flex items-center justify-center text-3xl relative transition-all duration-200 ${
                         isActive
-                          ? "bg-indigo-100 dark:bg-indigo-900/50 ring-2 ring-indigo-500 scale-110"
+                          ? "bg-indigo-100 ring-2 ring-indigo-500 scale-110"
                           : owned
-                            ? "bg-zinc-100 dark:bg-slate-700 hover:bg-zinc-200 dark:hover:bg-slate-600 hover:scale-105"
-                            : "bg-zinc-50 dark:bg-slate-800 opacity-40 cursor-not-allowed"
+                            ? "bg-zinc-100 hover:bg-zinc-200 hover:scale-105"
+                            : "bg-zinc-50 opacity-40 cursor-not-allowed"
                       }`}
                       title={owned ? item.name : `${item.name} — ${item.price} carrots`}
                     >
@@ -753,7 +753,7 @@ function ChildDashboard({
                 })}
               </div>
               {shopAvatars.some((item) => !ownedAvatarIds.has(item.id)) && (
-                <p className="text-xs text-zinc-400 dark:text-slate-500 mt-3 text-center">
+                <p className="text-xs text-zinc-400 mt-3 text-center">
                   Earn carrots to unlock more avatars in the Shop!
                 </p>
               )}
