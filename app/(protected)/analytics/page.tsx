@@ -302,19 +302,30 @@ function AnalyticsDashboard({ child }: { child: Child }) {
     }));
   }, [filteredResults, standardNameMap, standardDomainMap]);
 
-  // Strengths & weaknesses (full lists)
-  const allStrengths = useMemo(() =>
-    [...standardStats].filter((s) => s.attempted >= 1).sort((a, b) => b.accuracy - a.accuracy),
-    [standardStats]
-  );
-  const allWeaknesses = useMemo(() =>
-    [...standardStats].filter((s) => s.attempted >= 1).sort((a, b) => a.accuracy - b.accuracy),
-    [standardStats]
-  );
-  const [showAllStrengths, setShowAllStrengths] = useState(false);
-  const [showAllWeaknesses, setShowAllWeaknesses] = useState(false);
-  const strengths = showAllStrengths ? allStrengths : allStrengths.slice(0, 3);
-  const weaknesses = showAllWeaknesses ? allWeaknesses : allWeaknesses.slice(0, 3);
+  // Domain-level strengths & weaknesses
+  const domainStats = useMemo(() => {
+    const map: Record<string, { attempted: number; correct: number; skills: typeof standardStats }> = {};
+    for (const s of standardStats) {
+      if (s.attempted < 1) continue;
+      if (!map[s.domain]) map[s.domain] = { attempted: 0, correct: 0, skills: [] };
+      map[s.domain].attempted += s.attempted;
+      map[s.domain].correct += s.correct;
+      map[s.domain].skills.push(s);
+    }
+    return Object.entries(map).map(([domain, d]) => {
+      const sorted = [...d.skills].sort((a, b) => b.accuracy - a.accuracy);
+      return {
+        domain,
+        accuracy: d.attempted > 0 ? Math.round((d.correct / d.attempted) * 100) : 0,
+        attempted: d.attempted,
+        bestSkill: sorted[0],
+        worstSkill: sorted[sorted.length - 1],
+      };
+    });
+  }, [standardStats]);
+
+  const domainsByStrength = useMemo(() => [...domainStats].sort((a, b) => b.accuracy - a.accuracy), [domainStats]);
+  const domainsByWeakness = useMemo(() => [...domainStats].sort((a, b) => a.accuracy - b.accuracy), [domainStats]);
 
   // Chart data — group by day
   const chartData = useMemo(() => {
@@ -562,41 +573,32 @@ function AnalyticsDashboard({ child }: { child: Child }) {
           </motion.div>
 
           {/* ═══ Section 4 — Strengths & Weaknesses ═══ */}
-          {standardStats.length > 0 && (
+          {domainStats.length > 0 && (
             <motion.div variants={slideUp} className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
               {/* Strengths */}
               <div className="rounded-2xl border border-emerald-200 dark:border-emerald-800/40 bg-gradient-to-b from-emerald-50/80 to-white dark:from-emerald-950/20 dark:to-slate-800 p-5 shadow-sm">
                 <h3 className="text-base font-bold text-zinc-900 dark:text-slate-100 mb-3">
                   Strengths 💪
                 </h3>
-                {strengths.length > 0 ? (
-                  <div className="space-y-2.5">
-                    {strengths.map((s) => (
-                      <div key={s.standard_id} className="flex items-center gap-3">
-                        <div className="w-6 h-6 rounded-full bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center flex-shrink-0">
-                          <svg className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                          </svg>
+                <div className="space-y-3">
+                  {domainsByStrength.map((d) => {
+                    const meta = DOMAIN_META[d.domain];
+                    return (
+                      <div key={d.domain} className="flex items-start gap-3">
+                        <div className="w-7 h-7 rounded-full bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center flex-shrink-0 text-sm">
+                          {meta?.emoji ?? "📚"}
                         </div>
                         <div className="flex-1 min-w-0">
-                          <div className="text-sm font-medium text-zinc-800 dark:text-slate-200 truncate">{s.name}</div>
-                          <div className="text-xs text-zinc-400 dark:text-slate-500">{s.standard_id}</div>
+                          <div className="text-sm font-medium text-zinc-800 dark:text-slate-200">{d.domain}</div>
+                          <div className="text-xs text-zinc-400 dark:text-slate-500 truncate">
+                            Best: {d.bestSkill.name}
+                          </div>
                         </div>
-                        <span className="text-sm font-bold text-emerald-600 dark:text-emerald-400 flex-shrink-0">{s.accuracy}%</span>
+                        <span className="text-sm font-bold text-emerald-600 dark:text-emerald-400 flex-shrink-0 pt-0.5">{d.accuracy}%</span>
                       </div>
-                    ))}
-                    {allStrengths.length > 3 && (
-                      <button
-                        onClick={() => setShowAllStrengths(!showAllStrengths)}
-                        className="text-xs font-medium text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 mt-1"
-                      >
-                        {showAllStrengths ? "Show less" : `Show all ${allStrengths.length}`}
-                      </button>
-                    )}
-                  </div>
-                ) : (
-                  <p className="text-sm text-zinc-500 dark:text-slate-400">Keep practicing to discover strengths!</p>
-                )}
+                    );
+                  })}
+                </div>
               </div>
 
               {/* Weaknesses */}
@@ -604,37 +606,30 @@ function AnalyticsDashboard({ child }: { child: Child }) {
                 <h3 className="text-base font-bold text-zinc-900 dark:text-slate-100 mb-3">
                   Keep Practicing 🌱
                 </h3>
-                {weaknesses.length > 0 ? (
-                  <div className="space-y-2.5">
-                    {weaknesses.map((s) => (
-                      <div key={s.standard_id} className="flex items-center gap-3">
-                        <div className="w-6 h-6 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center flex-shrink-0">
-                          <span className="text-xs">🌱</span>
+                <div className="space-y-3">
+                  {domainsByWeakness.map((d) => {
+                    const meta = DOMAIN_META[d.domain];
+                    return (
+                      <div key={d.domain} className="flex items-start gap-3">
+                        <div className="w-7 h-7 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center flex-shrink-0 text-sm">
+                          {meta?.emoji ?? "📚"}
                         </div>
                         <div className="flex-1 min-w-0">
-                          <div className="text-sm font-medium text-zinc-800 dark:text-slate-200 truncate">{s.name}</div>
-                          <div className="text-xs text-zinc-400 dark:text-slate-500">{s.standard_id}</div>
+                          <div className="text-sm font-medium text-zinc-800 dark:text-slate-200">{d.domain}</div>
+                          <div className="text-xs text-zinc-400 dark:text-slate-500 truncate">
+                            Focus: {d.worstSkill.name}
+                          </div>
                         </div>
                         <Link
-                          href={`/practice?child=${child.id}&standard=${s.standard_id}`}
-                          className="text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 flex-shrink-0"
+                          href={`/practice?child=${child.id}&standard=${d.worstSkill.standard_id}`}
+                          className="text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 flex-shrink-0 pt-0.5"
                         >
                           Practice →
                         </Link>
                       </div>
-                    ))}
-                    {allWeaknesses.length > 3 && (
-                      <button
-                        onClick={() => setShowAllWeaknesses(!showAllWeaknesses)}
-                        className="text-xs font-medium text-amber-600 dark:text-amber-400 hover:text-amber-700 dark:hover:text-amber-300 mt-1"
-                      >
-                        {showAllWeaknesses ? "Show less" : `Show all ${allWeaknesses.length}`}
-                      </button>
-                    )}
-                  </div>
-                ) : (
-                  <p className="text-sm text-zinc-500 dark:text-slate-400">Great work so far! Keep it up!</p>
-                )}
+                    );
+                  })}
+                </div>
               </div>
             </motion.div>
           )}
