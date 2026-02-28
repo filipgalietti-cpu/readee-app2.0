@@ -306,7 +306,7 @@ function AnalyticsDashboard({ child }: { child: Child }) {
   const domainStats = useMemo(() => {
     const map: Record<string, { attempted: number; correct: number; skills: typeof standardStats }> = {};
     for (const s of standardStats) {
-      if (s.attempted < 1) continue;
+      if (s.attempted < 1 || s.domain === "Unknown") continue;
       if (!map[s.domain]) map[s.domain] = { attempted: 0, correct: 0, skills: [] };
       map[s.domain].attempted += s.attempted;
       map[s.domain].correct += s.correct;
