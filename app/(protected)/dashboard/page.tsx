@@ -754,7 +754,7 @@ function ChildDashboard({
               </div>
               {shopAvatars.some((item) => !ownedAvatarIds.has(item.id)) && (
                 <p className="text-xs text-zinc-400 mt-3 text-center">
-                  Earn carrots to unlock more avatars in the Shop!
+                  Earn carrots 🥕 to unlock more avatars in the <Link href={`/shop?child=${currentChild.id}`} className="text-indigo-600 font-semibold hover:underline" onClick={() => setAvatarPickerOpen(false)}>Shop</Link>!
                 </p>
               )}
             </div>
