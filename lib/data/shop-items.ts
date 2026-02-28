@@ -59,6 +59,16 @@ export const SHOP_ITEMS: ShopItem[] = [
   { id: "bg_aurora",       name: "Aurora",      emoji: "🌌", category: "backgrounds", price: 200, description: "Northern lights aurora" },
 ];
 
+/** CSS gradients for equipped backgrounds (light + dark variants) */
+export const BACKGROUND_STYLES: Record<string, { light: string; dark: string }> = {
+  bg_sunset:     { light: "linear-gradient(135deg, #fff7ed 0%, #fde68a 50%, #fecaca 100%)", dark: "linear-gradient(135deg, #1c1917 0%, #451a03 50%, #44403c 100%)" },
+  bg_underwater:  { light: "linear-gradient(135deg, #e0f2fe 0%, #bae6fd 50%, #a5f3fc 100%)", dark: "linear-gradient(135deg, #0c1222 0%, #0c4a6e 50%, #164e63 100%)" },
+  bg_mountains:   { light: "linear-gradient(135deg, #f0fdf4 0%, #d1fae5 50%, #e0e7ff 100%)", dark: "linear-gradient(135deg, #0f1a14 0%, #064e3b 50%, #1e1b4b 100%)" },
+  bg_galaxy:      { light: "linear-gradient(135deg, #ede9fe 0%, #e0e7ff 50%, #fae8ff 100%)", dark: "linear-gradient(135deg, #0f0720 0%, #1e1b4b 50%, #2e1065 100%)" },
+  bg_garden:      { light: "linear-gradient(135deg, #fdf2f8 0%, #fce7f3 50%, #f0fdf4 100%)", dark: "linear-gradient(135deg, #1a0a14 0%, #831843 30%, #064e3b 100%)" },
+  bg_aurora:      { light: "linear-gradient(135deg, #ecfdf5 0%, #d1fae5 30%, #ede9fe 70%, #fce7f3 100%)", dark: "linear-gradient(135deg, #022c22 0%, #064e3b 30%, #1e1b4b 70%, #2e1065 100%)" },
+};
+
 export function getItemsByCategory(category: ShopCategory): ShopItem[] {
   return SHOP_ITEMS.filter((item) => item.category === category);
 }

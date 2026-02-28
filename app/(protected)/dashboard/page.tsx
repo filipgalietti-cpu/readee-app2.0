@@ -15,7 +15,8 @@ import { ChildSchema } from "@/lib/schemas";
 import { staggerContainer, slideUp, staggerFast } from "@/lib/motion/variants";
 import { getStandardsForGrade } from "@/lib/data/all-standards";
 import { getChildAvatar, DEFAULT_AVATARS } from "@/lib/utils/get-child-avatar";
-import { getItemsByCategory } from "@/lib/data/shop-items";
+import { getItemsByCategory, BACKGROUND_STYLES } from "@/lib/data/shop-items";
+import { useThemeStore } from "@/lib/stores/theme-store";
 import type { ShopPurchase, EquippedItems } from "@/lib/db/types";
 
 /* ─── Count-up animation hook ─────────────────────────── */
@@ -600,6 +601,13 @@ function ChildDashboard({
   const ownedAvatarIds = new Set(purchases.filter((p) => p.item_id.startsWith("avatar_")).map((p) => p.item_id));
   const equippedAvatarId = currentChild.equipped_items?.avatar ?? null;
 
+  // Equipped background gradient
+  const darkMode = useThemeStore((s) => s.darkMode);
+  const equippedBgId = currentChild.equipped_items?.background ?? null;
+  const bgStyle = equippedBgId && BACKGROUND_STYLES[equippedBgId]
+    ? { background: darkMode ? BACKGROUND_STYLES[equippedBgId].dark : BACKGROUND_STYLES[equippedBgId].light }
+    : undefined;
+
   const handleEquipAvatar = async (avatarId: string | null) => {
     const newEquipped: EquippedItems = {
       ...currentChild.equipped_items,
@@ -623,7 +631,8 @@ function ChildDashboard({
 
   return (
     <motion.div
-      className="max-w-3xl mx-auto space-y-6 pb-12 px-4"
+      className={`max-w-3xl mx-auto space-y-6 pb-12 px-4${bgStyle ? " min-h-screen rounded-3xl" : ""}`}
+      style={bgStyle}
       variants={staggerContainer}
       initial="hidden"
       animate="visible"
