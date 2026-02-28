@@ -23,11 +23,17 @@ for (const std of data.standards) {
     const qNum = q.id.split("-Q")[1];
     const folder = stdId;
 
-    // Question prompt audio
+    // Question prompt audio — include full prompt + answer choices
+    const LETTERS = ["A", "B", "C", "D"];
+    let promptText = q.prompt.replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/gu, "").replace(/\n+/g, " ").trim();
+    if (q.choices && q.choices.length > 0) {
+      const choicesText = q.choices.map((c, i) => `${LETTERS[i]}: ${c}`).join(". ");
+      promptText += " " + choicesText + ".";
+    }
     rows.push({
       lessonId: folder,
       filename: `q${qNum}`,
-      scriptText: q.prompt.replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/gu, "").trim(),
+      scriptText: promptText,
       voiceDirection: "",
     });
 

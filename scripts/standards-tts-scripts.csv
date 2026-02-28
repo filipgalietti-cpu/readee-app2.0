@@ -1,334 +1,183 @@
 lesson_id,filename,script_text,voice_direction
-RL.K.1,q1,"Read: ""Max the dog ran to the park. He played fetch with a red ball.""
-
-What did Max play with?",
+RL.K.1,q1,"Read: ""Max the dog ran to the park. He played fetch with a red ball."" What did Max play with? A: A stick. B: A red ball. C: A bone. D: A toy car.",
 RL.K.1,q1-hint,Look at the second sentence — what did Max play fetch with?,
-RL.K.1,q2,"️ Read: ""Lily put on her yellow raincoat. She splashed in every puddle on the way to school.""
-
-Where was Lily going?",
+RL.K.1,q2,"️ Read: ""Lily put on her yellow raincoat. She splashed in every puddle on the way to school."" Where was Lily going? A: To the park. B: To the store. C: To school. D: To bed.",
 RL.K.1,q2-hint,Read the end of the second sentence carefully!,
-RL.K.1,q3,"Read: ""Today is Emma's birthday! She is turning 6. Her mom made a chocolate cake.""
-
-How old is Emma turning?",
+RL.K.1,q3,"Read: ""Today is Emma's birthday! She is turning 6. Her mom made a chocolate cake."" How old is Emma turning? A: 5. B: 6. C: 7. D: 8.",
 RL.K.1,q3-hint,The story tells you a number — what is it?,
-RL.K.1,q4,"Read: ""Sam found a tiny kitten under the porch. The kitten was gray with white paws. Sam named her Mittens.""
-
-What color was the kitten?",
+RL.K.1,q4,"Read: ""Sam found a tiny kitten under the porch. The kitten was gray with white paws. Sam named her Mittens."" What color was the kitten? A: Black with white spots. B: Orange and fluffy. C: Gray with white paws. D: All white.",
 RL.K.1,q4-hint,The second sentence describes what the kitten looked like.,
-RL.K.1,q5,"Read: ""Grandma and Ben planted sunflower seeds in the garden. They watered them every day. Soon, tall yellow flowers grew!""
-
-Who helped Ben plant the seeds?",
+RL.K.1,q5,"Read: ""Grandma and Ben planted sunflower seeds in the garden. They watered them every day. Soon, tall yellow flowers grew!"" Who helped Ben plant the seeds? A: His mom. B: His dad. C: His grandma. D: His teacher.",
 RL.K.1,q5-hint,Look at the very first word of the story!,
-RL.K.2,q1,"Read: ""Bear was hungry. He looked in a tree and found honey. He ate it all up and felt happy.""
-
-Which retelling is correct?",
+RL.K.2,q1,"Read: ""Bear was hungry. He looked in a tree and found honey. He ate it all up and felt happy."" Which retelling is correct? A: Bear found a fish and ate it.. B: Bear was hungry, found honey in a tree, and ate it.. C: Bear went to sleep in a cave.. D: Bear played with his friends..",
 RL.K.2,q1-hint,"Which answer tells what happened in order — beginning, middle, and end?",
-RL.K.2,q2,"Read: ""Frog wanted to cross the pond. He jumped on a lily pad. The lily pad floated him to the other side!""
-
-What happened FIRST?",
+RL.K.2,q2,"Read: ""Frog wanted to cross the pond. He jumped on a lily pad. The lily pad floated him to the other side!"" What happened FIRST? A: Frog floated across.. B: Frog jumped on a lily pad.. C: Frog wanted to cross the pond.. D: Frog went home..",
 RL.K.2,q2-hint,Think about what started the story — what did Frog want?,
-RL.K.2,q3,"Read: ""Mia forgot her lunch at home. Her friend Leo shared his sandwich with her. Mia said thank you.""
-
-What is the BEST retelling?",
+RL.K.2,q3,"Read: ""Mia forgot her lunch at home. Her friend Leo shared his sandwich with her. Mia said thank you."" What is the BEST retelling? A: Mia ate lunch alone.. B: Mia brought two lunches to school.. C: Mia forgot her lunch, so Leo shared with her.. D: Leo forgot his lunch at home..",
 RL.K.2,q3-hint,A good retelling includes the problem AND how it was solved.,
-RL.K.2,q4,"Read: ""Turtle was slow but kept walking. Rabbit ran fast and took a nap. Turtle passed Rabbit and won the race!""
-
-What happened at the END?",
+RL.K.2,q4,"Read: ""Turtle was slow but kept walking. Rabbit ran fast and took a nap. Turtle passed Rabbit and won the race!"" What happened at the END? A: Rabbit won the race.. B: Turtle gave up.. C: Turtle won the race.. D: They both stopped..",
 RL.K.2,q4-hint,Read the last sentence — who crossed the finish line?,
-RL.K.2,q5,"Read: ""It rained all morning. Then the sun came out. A beautiful rainbow appeared in the sky. All the kids cheered!""
-
-What happened AFTER the sun came out?",
+RL.K.2,q5,"Read: ""It rained all morning. Then the sun came out. A beautiful rainbow appeared in the sky. All the kids cheered!"" What happened AFTER the sun came out? A: It started raining again.. B: A rainbow appeared.. C: The kids went inside.. D: It got dark..",
 RL.K.2,q5-hint,Look at what happened right after the sun came out.,
-RL.K.3,q1,"Read: ""Jake and his sister walked to school on Monday morning.""
-
-WHO is in this story?",
+RL.K.3,q1,"Read: ""Jake and his sister walked to school on Monday morning."" WHO is in this story? A: Jake and his mom. B: Jake and his sister. C: Jake and his dog. D: Jake and his teacher.",
 RL.K.3,q1-hint,Characters are the people (or animals) IN the story.,
-RL.K.3,q2,"️ Read: ""Rosa built a sandcastle at the beach. The waves knocked it down!""
-
-WHERE does this story take place?",
+RL.K.3,q2,"️ Read: ""Rosa built a sandcastle at the beach. The waves knocked it down!"" WHERE does this story take place? A: At school. B: At the park. C: At the beach. D: At home.",
 RL.K.3,q2-hint,The setting is WHERE the story happens. Look for a place!,
-RL.K.3,q3,"Read: ""Nora went to the circus with her dad. She saw a clown juggle five balls. Nora clapped and laughed.""
-
-What is the MAJOR EVENT in this story?",
+RL.K.3,q3,"Read: ""Nora went to the circus with her dad. She saw a clown juggle five balls. Nora clapped and laughed."" What is the MAJOR EVENT in this story? A: Nora went to bed.. B: Nora saw a clown juggle at the circus.. C: Nora went to school.. D: Nora ate dinner..",
 RL.K.3,q3-hint,A major event is the BIG thing that happened in the story.,
-RL.K.3,q4,"Read: ""Owl sat on a branch in the dark forest. He hooted at the moon.""
-
-WHEN does this story happen?",
+RL.K.3,q4,"Read: ""Owl sat on a branch in the dark forest. He hooted at the moon."" WHEN does this story happen? A: In the morning. B: At lunchtime. C: At nighttime. D: In the afternoon.",
 RL.K.3,q4-hint,What clues tell you the time? Think about 'dark' and 'moon.',
-RL.K.3,q5,"Read: ""Lucy and her puppy Biscuit played in the backyard. Biscuit dug a hole and found an old bone!""
-
-Who FOUND the bone?",
+RL.K.3,q5,"Read: ""Lucy and her puppy Biscuit played in the backyard. Biscuit dug a hole and found an old bone!"" Who FOUND the bone? A: Lucy. B: Biscuit. C: Lucy's mom. D: A cat.",
 RL.K.3,q5-hint,Read carefully — who was digging?,
-RL.K.4,q1,"Read: ""The elephant was ENORMOUS. It was bigger than a car!""
-
-What does ENORMOUS mean?",
+RL.K.4,q1,"Read: ""The elephant was ENORMOUS. It was bigger than a car!"" What does ENORMOUS mean? A: Very small. B: Very loud. C: Very big. D: Very fast.",
 RL.K.4,q1-hint,The next sentence gives you a clue — 'bigger than a car.',
-RL.K.4,q2,"Read: ""After winning the game, Kai was DELIGHTED. He smiled and jumped up and down.""
-
-What does DELIGHTED mean?",
+RL.K.4,q2,"Read: ""After winning the game, Kai was DELIGHTED. He smiled and jumped up and down."" What does DELIGHTED mean? A: Sad. B: Scared. C: Very happy. D: Tired.",
 RL.K.4,q2-hint,Think about what Kai did — he smiled and jumped!,
-RL.K.4,q3,"Read: ""The boat DRIFTED slowly across the calm lake.""
-
-What does DRIFTED mean?",
+RL.K.4,q3,"Read: ""The boat DRIFTED slowly across the calm lake."" What does DRIFTED mean? A: Sank to the bottom. B: Moved slowly. C: Flew into the air. D: Stopped moving.",
 RL.K.4,q3-hint,The word 'slowly' right after it helps you figure it out!,
-RL.K.4,q4,"Read: ""It was so CHILLY outside that Ana could see her breath!""
-
-What does CHILLY mean?",
+RL.K.4,q4,"Read: ""It was so CHILLY outside that Ana could see her breath!"" What does CHILLY mean? A: Hot. B: Cold. C: Windy. D: Rainy.",
 RL.K.4,q4-hint,When can you see your breath outside? When it's...?,
-RL.K.4,q5,"Read: ""The lion let out a mighty ROAR. All the animals ran away because they were FRIGHTENED.""
-
-What does FRIGHTENED mean?",
+RL.K.4,q5,"Read: ""The lion let out a mighty ROAR. All the animals ran away because they were FRIGHTENED."" What does FRIGHTENED mean? A: Hungry. B: Happy. C: Scared. D: Sleepy.",
 RL.K.4,q5-hint,The animals ran away — how would YOU feel if a lion roared at you?,
-RL.K.5,q1,"Which one is a STORYBOOK?
-
-A) ""Roses are red, violets are blue, sugar is sweet, and so are you.""
-B) ""Once upon a time, a princess lived in a tall castle...""",
+RL.K.5,q1,"Which one is a STORYBOOK? A) ""Roses are red, violets are blue, sugar is sweet, and so are you."" B) ""Once upon a time, a princess lived in a tall castle..."" A: A — it's a storybook. B: B — it's a storybook. C: Both are storybooks. D: Neither is a storybook.",
 RL.K.5,q1-hint,Storybooks tell a story with characters and things that happen. Which one starts like a story?,
-RL.K.5,q2,"Read: ""Twinkle, twinkle, little star / How I wonder what you are / Up above the world so high / Like a diamond in the sky""
-
-What kind of text is this?",
+RL.K.5,q2,"Read: ""Twinkle, twinkle, little star / How I wonder what you are / Up above the world so high / Like a diamond in the sky"" What kind of text is this? A: A storybook. B: A poem or song. C: A recipe. D: A letter.",
 RL.K.5,q2-hint,Does it rhyme? Does it have short lines? That's a clue!,
-RL.K.5,q3,A STORYBOOK usually has...,
+RL.K.5,q3,A STORYBOOK usually has... A: Rhyming words on every line. B: Characters and things that happen. C: Just a list of facts. D: Only pictures and no words.,
 RL.K.5,q3-hint,Think about your favorite storybook — what makes it a story?,
-RL.K.5,q4,"Read: ""I like bugs / Big bugs, small bugs / Crawly bugs, tall bugs / I like bugs a lot!""
-
-This text is a...",
+RL.K.5,q4,"Read: ""I like bugs / Big bugs, small bugs / Crawly bugs, tall bugs / I like bugs a lot!"" This text is a... A: Story. B: Poem. C: News report. D: Math problem.",
 RL.K.5,q4-hint,It has short lines and some words rhyme — that's a poem!,
-RL.K.5,q5,"Read: ""The three little pigs built their houses. The wolf came and blew the straw house down. Then he blew the stick house down. But he could NOT blow down the brick house!""
-
-This is a...",
+RL.K.5,q5,"Read: ""The three little pigs built their houses. The wolf came and blew the straw house down. Then he blew the stick house down. But he could NOT blow down the brick house!"" This is a... A: Poem. B: Storybook. C: Shopping list. D: Song.",
 RL.K.5,q5-hint,"It has characters (pigs, wolf) and things that happen — that's a story!",
-RL.K.6,q1,️ The person who WRITES a book is called the...,
+RL.K.6,q1,️ The person who WRITES a book is called the... A: Illustrator. B: Author. C: Teacher. D: Reader.,
 RL.K.6,q1-hint,This person uses words to tell the story.,
-RL.K.6,q2,The person who DRAWS the pictures in a book is called the...,
+RL.K.6,q2,The person who DRAWS the pictures in a book is called the... A: Author. B: Illustrator. C: Singer. D: Librarian.,
 RL.K.6,q2-hint,This person creates the artwork and images you see!,
-RL.K.6,q3,"A book cover says: ""Written by Maria Lopez. Illustrated by James Park.""
-
-Who drew the pictures?",
+RL.K.6,q3,"A book cover says: ""Written by Maria Lopez. Illustrated by James Park."" Who drew the pictures? A: Maria Lopez. B: James Park. C: Both of them. D: The reader.",
 RL.K.6,q3-hint,'Illustrated by' means 'pictures drawn by.',
-RL.K.6,q4,What does an AUTHOR do?,
+RL.K.6,q4,What does an AUTHOR do? A: Draws the pictures. B: Writes the words. C: Reads the book out loud. D: Sells the book.,
 RL.K.6,q4-hint,An author creates the story using words.,
-RL.K.6,q5,"️ A book says: ""By Dr. Seuss""
-
-Dr. Seuss is the...",
+RL.K.6,q5,"️ A book says: ""By Dr. Seuss"" Dr. Seuss is the... A: Illustrator. B: Author. C: Main character. D: Publisher.",
 RL.K.6,q5-hint,'By' on a book cover usually means who wrote it!,
-RL.K.7,q1,"️ The story says: ""The girl was very sad."" The picture shows a girl with tears on her face.
-
-How does the picture HELP the story?",
+RL.K.7,q1,"️ The story says: ""The girl was very sad."" The picture shows a girl with tears on her face. How does the picture HELP the story? A: It shows us what sad looks like.. B: It shows a different story.. C: It doesn't help at all.. D: It shows the girl is happy..",
 RL.K.7,q1-hint,Pictures help us SEE what the words are telling us!,
-RL.K.7,q2,"The story says: ""It was snowing outside."" 
-
-Which picture would match this part?",
+RL.K.7,q2,"The story says: ""It was snowing outside.""  Which picture would match this part? A: 🌞 A sunny beach. B: ❄️ White snowflakes falling. C: 🌺 Flowers blooming. D: 🍂 Leaves falling.",
 RL.K.7,q2-hint,The picture should show what the words describe — snow!,
-RL.K.7,q3,"The story says: ""Everyone clapped and cheered at the party."" The picture shows kids with balloons and a cake.
-
-What does the picture tell us that the words DON'T?",
+RL.K.7,q3,"The story says: ""Everyone clapped and cheered at the party."" The picture shows kids with balloons and a cake. What does the picture tell us that the words DON'T? A: That people clapped. B: That there were balloons and a cake. C: That it was a party. D: That people cheered.",
 RL.K.7,q3-hint,Sometimes pictures show MORE details than the words!,
-RL.K.7,q4,"The story says: ""The cat hid somewhere in the room.""
-
-If the picture shows a cat under the bed, what did the picture help us learn?",
+RL.K.7,q4,"The story says: ""The cat hid somewhere in the room."" If the picture shows a cat under the bed, what did the picture help us learn? A: The cat's name. B: WHERE the cat was hiding. C: What the cat ate. D: The cat's favorite toy.",
 RL.K.7,q4-hint,The words say 'somewhere' — the picture shows us exactly where!,
-RL.K.7,q5,WHY do books have pictures?,
+RL.K.7,q5,WHY do books have pictures? A: To make the pages heavy. B: To help us understand the story better. C: To hide the words. D: Pictures are not important.,
 RL.K.7,q5-hint,Think about how pictures help you when you read a book!,
-RL.K.9,q1,"Bear likes honey. Cat likes milk.
-
-How are Bear and Cat DIFFERENT?",
+RL.K.9,q1,Bear likes honey. Cat likes milk. How are Bear and Cat DIFFERENT? A: They are both animals.. B: They like different foods.. C: They both live in the forest.. D: They are the same size..,
 RL.K.9,q1-hint,Different means NOT the same. What do they each like to eat or drink?,
-RL.K.9,q2,"️ Rabbit and Squirrel both live in the forest. Rabbit hops, but Squirrel climbs trees.
-
-How are they ALIKE?",
+RL.K.9,q2,"️ Rabbit and Squirrel both live in the forest. Rabbit hops, but Squirrel climbs trees. How are they ALIKE? A: They both climb trees.. B: They both hop.. C: They both live in the forest.. D: They both fly..",
 RL.K.9,q2-hint,Alike means the SAME. What do they both do or have?,
-RL.K.9,q3,"Story 1: Maya was scared of the dark but she was brave and slept with no night light.
-Story 2: Tom was scared of the dark and asked for a night light.
-
-How are Maya and Tom ALIKE?",
+RL.K.9,q3,Story 1: Maya was scared of the dark but she was brave and slept with no night light. Story 2: Tom was scared of the dark and asked for a night light. How are Maya and Tom ALIKE? A: They both used a night light.. B: They were both scared of the dark.. C: They were both brave.. D: They both slept in the dark..,
 RL.K.9,q3-hint,What feeling did BOTH characters share?,
-RL.K.9,q4,"In the story, the pigs build houses. The wolf tries to blow them down.
-
-The pigs and the wolf are DIFFERENT because...",
+RL.K.9,q4,"In the story, the pigs build houses. The wolf tries to blow them down. The pigs and the wolf are DIFFERENT because... A: The pigs build, the wolf destroys.. B: They all build houses.. C: They are all friends.. D: The wolf is small and the pigs are big..",
 RL.K.9,q4-hint,Think about what each character DOES in the story.,
-RL.K.9,q5,"Zoe lost her toy and cried. James lost his toy and looked everywhere until he found it.
-
-How did Zoe and James handle their problem DIFFERENTLY?",
+RL.K.9,q5,"Zoe lost her toy and cried. James lost his toy and looked everywhere until he found it. How did Zoe and James handle their problem DIFFERENTLY? A: Zoe cried, James searched for his toy.. B: They both cried.. C: They both looked for their toys.. D: Neither of them cared..",
 RL.K.9,q5-hint,What did each kid DO when they lost their toy?,
-RI.K.1,q1,"Read: ""Bees live in hives. They make honey. Bees can sting if they are scared.""
-
-What do bees make?",
+RI.K.1,q1,"Read: ""Bees live in hives. They make honey. Bees can sting if they are scared."" What do bees make? A: Milk. B: Honey. C: Bread. D: Juice.",
 RI.K.1,q1-hint,Look at the second sentence!,
-RI.K.1,q2,"Read: ""Earth is the planet where we live. It has land, water, and air. Most of Earth is covered by water.""
-
-What covers MOST of Earth?",
+RI.K.1,q2,"Read: ""Earth is the planet where we live. It has land, water, and air. Most of Earth is covered by water."" What covers MOST of Earth? A: Land. B: Air. C: Water. D: Trees.",
 RI.K.1,q2-hint,Read the last sentence carefully!,
-RI.K.1,q3,"Read: ""You should brush your teeth two times a day. This keeps your teeth clean and healthy.""
-
-How many times a day should you brush?",
+RI.K.1,q3,"Read: ""You should brush your teeth two times a day. This keeps your teeth clean and healthy."" How many times a day should you brush? A: One time. B: Two times. C: Three times. D: Five times.",
 RI.K.1,q3-hint,The first sentence tells you the number!,
-RI.K.1,q4,"Read: ""Penguins are birds that cannot fly. They are great swimmers. They live in cold places.""
-
-Where do penguins live?",
+RI.K.1,q4,"Read: ""Penguins are birds that cannot fly. They are great swimmers. They live in cold places."" Where do penguins live? A: In hot deserts. B: In cold places. C: In the jungle. D: On the moon.",
 RI.K.1,q4-hint,Check the last sentence for the answer!,
-RI.K.1,q5,"Read: ""Plants need three things to grow: sunlight, water, and soil. Without these, a plant will not survive.""
-
-Which is NOT something plants need?",
+RI.K.1,q5,"Read: ""Plants need three things to grow: sunlight, water, and soil. Without these, a plant will not survive."" Which is NOT something plants need? A: Sunlight. B: Water. C: Candy. D: Soil.",
 RI.K.1,q5-hint,The passage lists exactly three things plants need. Which choice is NOT one of them?,
-RI.K.2,q1,"Read: ""Apples can be red, green, or yellow. They grow on trees. People eat apples raw, in pies, and as applesauce.""
-
-What is this passage MOSTLY about?",
+RI.K.2,q1,"Read: ""Apples can be red, green, or yellow. They grow on trees. People eat apples raw, in pies, and as applesauce."" What is this passage MOSTLY about? A: Trees. B: Colors. C: Apples. D: Pies.",
 RI.K.2,q1-hint,The main topic is what the WHOLE passage is about — every sentence talks about...,
-RI.K.2,q2,"Read: ""Dogs are great pets. They can learn tricks. Dogs need food, water, and lots of love.""
-
-What is the MAIN TOPIC?",
+RI.K.2,q2,"Read: ""Dogs are great pets. They can learn tricks. Dogs need food, water, and lots of love."" What is the MAIN TOPIC? A: Cats. B: Tricks. C: Dogs. D: Food.",
 RI.K.2,q2-hint,Every sentence is about the same animal. Which one?,
-RI.K.2,q3,"️ Read: ""The sun gives us light and heat. Plants need the sun to grow. Without the sun, Earth would be very cold and dark.""
-
-What is this passage mostly about?",
+RI.K.2,q3,"️ Read: ""The sun gives us light and heat. Plants need the sun to grow. Without the sun, Earth would be very cold and dark."" What is this passage mostly about? A: Plants. B: The moon. C: The sun. D: Winter.",
 RI.K.2,q3-hint,What is mentioned in EVERY sentence?,
-RI.K.2,q4,"Read: ""Firefighters help keep us safe. They put out fires and rescue people. They drive big red trucks.""
-
-Which is a KEY DETAIL from this passage?",
+RI.K.2,q4,"Read: ""Firefighters help keep us safe. They put out fires and rescue people. They drive big red trucks."" Which is a KEY DETAIL from this passage? A: Firefighters eat lunch.. B: Firefighters rescue people.. C: Firefighters like cats.. D: Firefighters go to school..",
 RI.K.2,q4-hint,A key detail is something the passage actually SAYS.,
-RI.K.2,q5,"Read: ""Butterflies start as tiny eggs. Then they become caterpillars. Finally, they grow wings and fly!""
-
-What is the BEST title for this passage?",
+RI.K.2,q5,"Read: ""Butterflies start as tiny eggs. Then they become caterpillars. Finally, they grow wings and fly!"" What is the BEST title for this passage? A: How Dogs Grow. B: How Butterflies Change. C: My Pet Caterpillar. D: Flying Birds.",
 RI.K.2,q5-hint,A good title tells you what the whole passage is about!,
-RI.K.3,q1,"️ Read: ""It rained a lot. The flowers grew tall.""
-
-Why did the flowers grow tall?",
+RI.K.3,q1,"️ Read: ""It rained a lot. The flowers grew tall."" Why did the flowers grow tall? A: Because it was sunny. B: Because it rained a lot. C: Because someone picked them. D: Because it snowed.",
 RI.K.3,q1-hint,What happened FIRST that caused the flowers to grow?,
-RI.K.3,q2,"Read: ""When water gets very cold, it turns into ice. When ice gets warm, it melts back into water.""
-
-What happens when ice gets warm?",
+RI.K.3,q2,"Read: ""When water gets very cold, it turns into ice. When ice gets warm, it melts back into water."" What happens when ice gets warm? A: It gets colder.. B: It melts into water.. C: It turns into snow.. D: Nothing happens..",
 RI.K.3,q2-hint,The second sentence tells you what happens!,
-RI.K.3,q3,"Read: ""First, the hen lays an egg. Then the egg cracks open. A baby chick comes out!""
-
-What happens AFTER the egg cracks?",
+RI.K.3,q3,"Read: ""First, the hen lays an egg. Then the egg cracks open. A baby chick comes out!"" What happens AFTER the egg cracks? A: The hen lays an egg.. B: A baby chick comes out.. C: The egg disappears.. D: The hen flies away..",
 RI.K.3,q3-hint,"Follow the order: first, then, finally...",
-RI.K.3,q4,"Read: ""Bears eat a LOT of food in the fall. Then they sleep all winter long. This is called hibernation.""
-
-WHY do bears eat a lot in the fall?",
+RI.K.3,q4,"Read: ""Bears eat a LOT of food in the fall. Then they sleep all winter long. This is called hibernation."" WHY do bears eat a lot in the fall? A: Because they are bored. B: To get ready for their long winter sleep. C: Because the food tastes bad. D: Because they like cooking.",
 RI.K.3,q4-hint,Think about what comes NEXT — they sleep all winter. They need energy!,
-RI.K.3,q5,"Read: ""A seed needs water and sun. First it grows roots. Then a stem pops up. Finally, a flower blooms!""
-
-What happens BEFORE the flower blooms?",
+RI.K.3,q5,"Read: ""A seed needs water and sun. First it grows roots. Then a stem pops up. Finally, a flower blooms!"" What happens BEFORE the flower blooms? A: The seed disappears. B: A stem pops up. C: The flower falls. D: It snows.",
 RI.K.3,q5-hint,Look at the order — what comes right before 'finally'?,
-RI.K.4,q1,"Read: ""A chameleon is a REPTILE. Reptiles are animals with scales that are cold-blooded.""
-
-What is a REPTILE?",
+RI.K.4,q1,"Read: ""A chameleon is a REPTILE. Reptiles are animals with scales that are cold-blooded."" What is a REPTILE? A: A type of plant. B: An animal with scales. C: A type of food. D: A big rock.",
 RI.K.4,q1-hint,The sentence right after tells you what a reptile is!,
-RI.K.4,q2,"Read: ""A volcano ERUPTS when hot lava shoots out of the top.""
-
-What does ERUPTS mean?",
+RI.K.4,q2,"Read: ""A volcano ERUPTS when hot lava shoots out of the top."" What does ERUPTS mean? A: Goes to sleep. B: Explodes or shoots out. C: Turns cold. D: Disappears.",
 RI.K.4,q2-hint,The sentence says lava 'shoots out' — that's what erupting is!,
-RI.K.4,q3,"️ Read: ""The mountain peak was covered in snow. The peak is the very top of the mountain.""
-
-What is a PEAK?",
+RI.K.4,q3,"️ Read: ""The mountain peak was covered in snow. The peak is the very top of the mountain."" What is a PEAK? A: The bottom of a mountain. B: The very top of a mountain. C: A river near a mountain. D: A tree on a mountain.",
 RI.K.4,q3-hint,The second sentence tells you exactly what a peak is!,
-RI.K.4,q4,"Read: ""Whales MIGRATE to warmer water in the winter. They travel very far to find warm places.""
-
-What does MIGRATE mean?",
+RI.K.4,q4,"Read: ""Whales MIGRATE to warmer water in the winter. They travel very far to find warm places."" What does MIGRATE mean? A: Stay in one place. B: Travel to a different place. C: Sleep underwater. D: Eat a big meal.",
 RI.K.4,q4-hint,The next sentence says they 'travel very far' — that's what migrate means!,
-RI.K.4,q5,"Read: ""The ocean is full of MARINE animals like fish, dolphins, and sea turtles.""
-
-What does MARINE mean?",
+RI.K.4,q5,"Read: ""The ocean is full of MARINE animals like fish, dolphins, and sea turtles."" What does MARINE mean? A: Land animals. B: Sky animals. C: Ocean or sea animals. D: Farm animals.",
 RI.K.4,q5-hint,"All the examples (fish, dolphins, sea turtles) live in the ocean!",
-RI.K.5,q1,Where do you find the TITLE of a book?,
+RI.K.5,q1,Where do you find the TITLE of a book? A: On the last page. B: On the front cover. C: Inside the back cover. D: On the spine only.,
 RI.K.5,q1-hint,The title is the big name of the book — you see it right away when you pick up a book!,
-RI.K.5,q2,The BACK COVER of a book usually has...,
+RI.K.5,q2,The BACK COVER of a book usually has... A: The whole story. B: A short description of what the book is about. C: Nothing at all. D: The table of contents.,
 RI.K.5,q2-hint,Flip the book over — there's usually a little blurb that tells you about the book!,
-RI.K.5,q3,The TITLE PAGE is...,
+RI.K.5,q3,The TITLE PAGE is... A: The very last page. B: One of the first pages inside the book with the title and author. C: The glossary. D: The index.,
 RI.K.5,q3-hint,Open the book — one of the first things you see is the title page!,
-RI.K.5,q4,Which part of the book do you see FIRST when it's on a shelf?,
+RI.K.5,q4,Which part of the book do you see FIRST when it's on a shelf? A: The back cover. B: The title page. C: The front cover. D: The last chapter.,
 RI.K.5,q4-hint,Books face forward on a shelf — what's facing you?,
-RI.K.5,q5,You want to know what a book is about BEFORE you read it. Where would you look?,
+RI.K.5,q5,You want to know what a book is about BEFORE you read it. Where would you look? A: The middle of the book. B: The front cover and back cover. C: Page 50. D: The very last page.,
 RI.K.5,q5-hint,"The cover gives you the title and a picture, and the back cover tells you more!",
-RI.K.6,q1,"A book about dinosaurs says: ""Written by Dr. Sara Chen.""
-
-Dr. Sara Chen is the...",
+RI.K.6,q1,"A book about dinosaurs says: ""Written by Dr. Sara Chen."" Dr. Sara Chen is the... A: Illustrator. B: Author. C: Dinosaur. D: Teacher.",
 RI.K.6,q1-hint,'Written by' means this person wrote the words!,
-RI.K.6,q2,"In an informational book, the ILLUSTRATOR...",
+RI.K.6,q2,"In an informational book, the ILLUSTRATOR... A: Writes all the facts. B: Draws pictures and diagrams to help explain. C: Reads the book out loud. D: Sells the book at a store.",
 RI.K.6,q2-hint,"In a fact book, pictures and diagrams help you understand. Who makes those?",
-RI.K.6,q3,"A book about space says: ""By Astronaut Mike Collins. Photos by NASA.""
-
-Who wrote the words?",
+RI.K.6,q3,"A book about space says: ""By Astronaut Mike Collins. Photos by NASA."" Who wrote the words? A: NASA. B: Astronaut Mike Collins. C: The reader. D: The printer.",
 RI.K.6,q3-hint,'By' tells you who the author is!,
-RI.K.6,q4,"In a book about animals, there are real photographs. The person who took the photos is like an...",
+RI.K.6,q4,"In a book about animals, there are real photographs. The person who took the photos is like an... A: Author. B: Illustrator or photographer. C: Character in the story. D: Librarian.",
 RI.K.6,q4-hint,Photos serve the same purpose as drawings — they show you what things look like!,
-RI.K.6,q5,️ Why do informational books need BOTH an author AND an illustrator?,
+RI.K.6,q5,"️ Why do informational books need BOTH an author AND an illustrator? A: They don't — only stories need both.. B: The author writes facts, and the illustrator draws pictures to help explain.. C: The illustrator writes and the author draws.. D: Only one person is needed..",
 RI.K.6,q5-hint,"Words tell you facts, pictures help you see and understand them!",
-RI.K.7,q1,"A book says: ""Lions have sharp teeth and big manes."" The picture shows a lion with a fluffy mane.
-
-How does the picture help?",
+RI.K.7,q1,"A book says: ""Lions have sharp teeth and big manes."" The picture shows a lion with a fluffy mane. How does the picture help? A: It shows what a mane looks like.. B: It shows a different animal.. C: It doesn't help at all.. D: It shows a lion sleeping..",
 RI.K.7,q1-hint,"If you didn't know what a mane was, the picture would show you!",
-RI.K.7,q2,"️ A book about the United States has a MAP showing all 50 states.
-
-What does the map help you understand?",
+RI.K.7,q2,️ A book about the United States has a MAP showing all 50 states. What does the map help you understand? A: What food people eat. B: Where the states are located. C: How many people live there. D: What the weather is like.,
 RI.K.7,q2-hint,Maps show WHERE things are!,
-RI.K.7,q3,"The text says: ""A caterpillar becomes a butterfly."" The picture shows: Egg → Caterpillar → Cocoon → Butterfly.
-
-The picture shows...",
+RI.K.7,q3,"The text says: ""A caterpillar becomes a butterfly."" The picture shows: Egg → Caterpillar → Cocoon → Butterfly. The picture shows... A: Just one step. B: All the steps in order. C: Only the butterfly. D: Something different from the text.",
 RI.K.7,q3-hint,The picture gives you MORE information — it shows each step!,
-RI.K.7,q4,"️ A book about weather has a picture of a thermometer.
-
-Why would the author include this picture?",
+RI.K.7,q4,️ A book about weather has a picture of a thermometer. Why would the author include this picture? A: Because it looks pretty. B: To help you understand how we measure temperature. C: To fill empty space. D: Because the book is about thermometers.,
 RI.K.7,q4-hint,Pictures in fact books are there to help explain ideas!,
-RI.K.7,q5,"The text says: ""Dogs come in many sizes."" The picture shows a tiny chihuahua next to a huge Great Dane.
-
-What does the picture help you see?",
+RI.K.7,q5,"The text says: ""Dogs come in many sizes."" The picture shows a tiny chihuahua next to a huge Great Dane. What does the picture help you see? A: That all dogs are the same size. B: How different dog sizes can be. C: That cats are bigger than dogs. D: That dogs can fly.",
 RI.K.7,q5-hint,The picture puts two very different-sized dogs side by side so you can compare!,
-RI.K.8,q1,"Read: ""You should eat vegetables. They have vitamins that keep you healthy and strong.""
-
-WHY does the author say you should eat vegetables?",
+RI.K.8,q1,"Read: ""You should eat vegetables. They have vitamins that keep you healthy and strong."" WHY does the author say you should eat vegetables? A: Because they taste like candy.. B: Because they have vitamins that keep you healthy.. C: Because they are pretty colors.. D: Because your friends eat them..",
 RI.K.8,q1-hint,Look for the REASON the author gives — it comes after the point.,
-RI.K.8,q2,"Read: ""Kids need lots of sleep. Sleep helps your body grow and helps your brain learn new things.""
-
-What REASONS does the author give for why kids need sleep?",
+RI.K.8,q2,"Read: ""Kids need lots of sleep. Sleep helps your body grow and helps your brain learn new things."" What REASONS does the author give for why kids need sleep? A: Sleep is boring.. B: It helps your body grow and your brain learn.. C: You need sleep to watch TV.. D: Sleep makes you hungry..",
 RI.K.8,q2-hint,The second sentence gives you the reasons!,
-RI.K.8,q3,"Read: ""Helmets are important. They protect your head if you fall off your bike.""
-
-What reason does the author give for wearing a helmet?",
+RI.K.8,q3,"Read: ""Helmets are important. They protect your head if you fall off your bike."" What reason does the author give for wearing a helmet? A: Helmets look cool.. B: They protect your head if you fall.. C: Everyone has one.. D: They keep you warm..",
 RI.K.8,q3-hint,A reason explains WHY something is true or important.,
-RI.K.8,q4,"Read: ""Dogs make great pets. They are loyal, they love to play, and they can learn tricks.""
-
-How many REASONS does the author give?",
+RI.K.8,q4,"Read: ""Dogs make great pets. They are loyal, they love to play, and they can learn tricks."" How many REASONS does the author give? A: 1 reason. B: 2 reasons. C: 3 reasons. D: 4 reasons.",
 RI.K.8,q4-hint,"Count them: loyal, love to play, and can learn tricks. That's 1, 2, 3!",
-RI.K.8,q5,"Read: ""Drinking water is good for you. Water keeps your body working, helps you think clearly, and gives you energy.""
-
-Which is NOT a reason the author gives?",
+RI.K.8,q5,"Read: ""Drinking water is good for you. Water keeps your body working, helps you think clearly, and gives you energy."" Which is NOT a reason the author gives? A: Water keeps your body working.. B: Water makes you taller.. C: Water helps you think clearly.. D: Water gives you energy..",
 RI.K.8,q5-hint,Read the passage again — which answer is NOT mentioned?,
-RI.K.9,q1,"Book 1: ""Cats are soft and like to sleep a lot.""
- Book 2: ""Cats are playful and love to chase toys.""
-
-Both books are about...",
+RI.K.9,q1,"Book 1: ""Cats are soft and like to sleep a lot.""  Book 2: ""Cats are playful and love to chase toys."" Both books are about... A: Dogs. B: Cats. C: Birds. D: Fish.",
 RI.K.9,q1-hint,What topic do BOTH books share?,
-RI.K.9,q2,"Book 1 says: ""Rain comes from clouds.""
- Book 2 says: ""Rain helps flowers grow.""
-
-How are these books DIFFERENT?",
+RI.K.9,q2,"Book 1 says: ""Rain comes from clouds.""  Book 2 says: ""Rain helps flowers grow."" How are these books DIFFERENT? A: They are about different topics.. B: Book 1 tells WHERE rain comes from; Book 2 tells WHAT rain does.. C: They say the exact same thing.. D: Neither is about rain..",
 RI.K.9,q2-hint,"Both books are about rain, but each tells you something different about it!",
-RI.K.9,q3,"Book 1: ""The sun is very hot and gives us light.""
- Book 2: ""The sun helps plants grow by giving them energy.""
-
-What do BOTH books agree on?",
+RI.K.9,q3,"Book 1: ""The sun is very hot and gives us light.""  Book 2: ""The sun helps plants grow by giving them energy."" What do BOTH books agree on? A: The sun is cold.. B: The sun is important and gives things to Earth.. C: The sun is a planet.. D: Plants don't need the sun..",
 RI.K.9,q3-hint,"Both books talk about what the sun gives — light, energy, growth!",
-RI.K.9,q4,"Book 1: ""Dogs need water, food, and walks every day.""
- Book 2: ""Dogs can be trained to sit, stay, and shake.""
-
-Book 1 is about CARING for dogs. Book 2 is about...",
+RI.K.9,q4,"Book 1: ""Dogs need water, food, and walks every day.""  Book 2: ""Dogs can be trained to sit, stay, and shake."" Book 1 is about CARING for dogs. Book 2 is about... A: Caring for dogs. B: Training dogs. C: Wild dogs. D: Cats.",
 RI.K.9,q4-hint,"Sit, stay, and shake are all tricks — that's training!",
-RI.K.9,q5,"Book 1: ""Butterflies have colorful wings and drink nectar from flowers.""
- Book 2: ""Butterflies start as caterpillars and go through metamorphosis.""
-
-What is SIMILAR about both books?",
+RI.K.9,q5,"Book 1: ""Butterflies have colorful wings and drink nectar from flowers.""  Book 2: ""Butterflies start as caterpillars and go through metamorphosis."" What is SIMILAR about both books? A: They are both about butterflies.. B: They both talk about caterpillars.. C: They both talk about wings.. D: They are about different insects..",
 RI.K.9,q5-hint,"Even though they share different facts, they're both about the same creature!",
-RF.K.1a,q1,"When we read a book in English, we start on which side?",
+RF.K.1a,q1,"When we read a book in English, we start on which side? A: The right side. B: The left side. C: The bottom. D: The middle.",
 RF.K.1a,q1-hint,We read from LEFT to right!,
-RF.K.1a,q2,"When you finish reading a line of words, where do you look next?",
+RF.K.1a,q2,"When you finish reading a line of words, where do you look next? A: Back to the same line. B: Down to the next line on the left side. C: To the right of the line. D: Anywhere you want.",
 RF.K.1a,q2-hint,Your eyes sweep down and back to the left to start the next line!,
-RF.K.1a,q3,"When you finish a page, what do you do?",
+RF.K.1a,q3,"When you finish a page, what do you do? A: Close the book. B: Turn to the next page. C: Start over from the beginning. D: Skip to the last page.",
 RF.K.1a,q3-hint,We read page by page — one after another!,
-RF.K.1a,q4,️ Which arrow shows the direction we READ words?,
+RF.K.1a,q4,️ Which arrow shows the direction we READ words? A: ⬅️ Right to left. B: ➡️ Left to right. C: ⬇️ Bottom to top. D: ⬆️ Top to bottom only.,
 RF.K.1a,q4-hint,"In English, our eyes go from the LEFT side to the RIGHT side!",
-RF.K.1a,q5,Where do you START reading on a page?,
+RF.K.1a,q5,Where do you START reading on a page? A: Bottom right corner. B: Top left corner. C: Bottom left corner. D: Top right corner.,
 RF.K.1a,q5-hint,We start at the TOP and on the LEFT — then go right and down!,
 RF.K.1a,q6,Put the words in order to make a sentence.,
 RF.K.1a,q6-hint,Start with a capital letter and end with a period.,
@@ -336,208 +185,175 @@ RF.K.1a,q7,Put the words in the right order.,
 RF.K.1a,q7-hint,Start with 'I' and end with a period.,
 RF.K.1a,q8,Arrange the words to build a sentence.,
 RF.K.1a,q8-hint,Start with a capital letter. What did the dog do?,
-RF.K.1b,q1,"️ When you SAY the word ""cat,"" how do we WRITE it?",
+RF.K.1b,q1,"️ When you SAY the word ""cat,"" how do we WRITE it? A: k-a-t. B: c-a-t. C: c-t-a. D: k-t-a.",
 RF.K.1b,q1-hint,"The word 'cat' uses the letters C, A, and T in that order!",
-RF.K.1b,q2,️ Words are made up of...,
+RF.K.1b,q2,️ Words are made up of... A: Numbers. B: Letters. C: Colors. D: Shapes.,
 RF.K.1b,q2-hint,"A, B, C, D... we use these to build words!",
-RF.K.1b,q3,"️ You say the word ""dog."" Which letters spell that word?",
+RF.K.1b,q3,"️ You say the word ""dog."" Which letters spell that word? A: b-o-g. B: d-o-g. C: d-o-t. D: g-o-d.",
 RF.K.1b,q3-hint,Sound it out: /d/ - /o/ - /g/. What letters make those sounds?,
-RF.K.1b,q4,"If you change the letters in a word, what happens?",
+RF.K.1b,q4,"If you change the letters in a word, what happens? A: Nothing changes. B: You get a different word or a nonsense word. C: The word stays the same. D: The letters disappear.",
 RF.K.1b,q4-hint,C-A-T is 'cat' but C-A-P is 'cap' — different letters make different words!,
-RF.K.1b,q5,Every word we say can also be...,
+RF.K.1b,q5,"Every word we say can also be... A: Drawn as a picture only. B: Written with letters. C: Only spoken, never written. D: Made with numbers.",
 RF.K.1b,q5-hint,We can write down anything we say using letters!,
-RF.K.1c,q1,Which sentence uses spaces CORRECTLY?,
+RF.K.1c,q1,Which sentence uses spaces CORRECTLY? A: Ilikedogs. B: I like dogs. C: I l i k e d o g s. D: Ilike dogs.,
 RF.K.1c,q1-hint,Each WORD gets its own space between it and the next word!,
-RF.K.1c,q2,Why do we put SPACES between words?,
+RF.K.1c,q2,Why do we put SPACES between words? A: To waste paper. B: So we can tell where one word ends and the next begins. C: Because spaces are letters too. D: To make writing slower.,
 RF.K.1c,q2-hint,"Without spaces, all the words would smush together!",
-RF.K.1c,q3,"Look: ""thecat sat"" — How many words is this SUPPOSED to be?",
+RF.K.1c,q3,"Look: ""thecat sat"" — How many words is this SUPPOSED to be? A: 1 word. B: 2 words. C: 3 words. D: 4 words.",
 RF.K.1c,q3-hint,It should be: the cat sat — that's 3 separate words!,
-RF.K.1c,q4,"How many WORDS are in this sentence?
-""I am happy.""",
+RF.K.1c,q4,"How many WORDS are in this sentence? ""I am happy."" A: 1. B: 2. C: 3. D: 7.",
 RF.K.1c,q4-hint,Count the groups of letters separated by spaces: I / am / happy.,
-RF.K.1c,q5,"️ You're writing ""My dog is big."" Where do the spaces go?",
+RF.K.1c,q5,"️ You're writing ""My dog is big."" Where do the spaces go? A: My dog is big (between each word). B: Mydogisbig (no spaces). C: M y d o g i s b i g (between each letter). D: My dogis big (only one space).",
 RF.K.1c,q5-hint,Put a space between each word — not between each letter!,
-RF.K.1d,q1,Which is the UPPERCASE (capital) version of the letter 'a'?,
+RF.K.1d,q1,Which is the UPPERCASE (capital) version of the letter 'a'? A: a. B: A. C: B. D: d.,
 RF.K.1d,q1-hint,Uppercase letters are BIG letters — the capital version of 'a' is...,
-RF.K.1d,q2,Which is the LOWERCASE (small) version of the letter 'G'?,
+RF.K.1d,q2,Which is the LOWERCASE (small) version of the letter 'G'? A: G. B: g. C: q. D: j.,
 RF.K.1d,q2-hint,Lowercase letters are small letters. The small 'G' looks like 'g.',
-RF.K.1d,q3,Which pair shows the SAME letter in uppercase and lowercase?,
+RF.K.1d,q3,Which pair shows the SAME letter in uppercase and lowercase? A: B and d. B: M and m. C: P and q. D: R and s.,
 RF.K.1d,q3-hint,One should be the big version and the other the small version of the same letter!,
-RF.K.1d,q4,What letter comes AFTER 'M' in the alphabet?,
+RF.K.1d,q4,What letter comes AFTER 'M' in the alphabet? A: L. B: N. C: O. D: K.,
 RF.K.1d,q4-hint,"Sing the alphabet song: ...K, L, M, __, O...",
-RF.K.1d,q5,How many letters are in the English alphabet?,
+RF.K.1d,q5,How many letters are in the English alphabet? A: 20. B: 24. C: 26. D: 30.,
 RF.K.1d,q5-hint,"From A to Z, there are 26 letters!",
-RF.K.2a,q1,"Which word RHYMES with ""cat""?",
+RF.K.2a,q1,"Which word RHYMES with ""cat""? A: Dog. B: Hat. C: Cup. D: Sun.",
 RF.K.2a,q1-hint,Rhyming words sound the same at the END. Cat... hat... they both end in -at!,
-RF.K.2a,q2,"Which word RHYMES with ""sun""?",
+RF.K.2a,q2,"Which word RHYMES with ""sun""? A: Moon. B: Fun. C: Sat. D: Bed.",
 RF.K.2a,q2-hint,Sun and ___ both end with the -un sound!,
-RF.K.2a,q3,"Which word does NOT rhyme with ""ball""?",
+RF.K.2a,q3,"Which word does NOT rhyme with ""ball""? A: Tall. B: Wall. C: Dog. D: Fall.",
 RF.K.2a,q3-hint,"Ball, tall, wall, fall all end in -all. Which one doesn't?",
-RF.K.2a,q4,Which pair of words RHYMES?,
+RF.K.2a,q4,Which pair of words RHYMES? A: Big — pig. B: Cat — dog. C: Red — blue. D: Top — sun.,
 RF.K.2a,q4-hint,Rhyming words end with the same sound. Which pair sounds alike at the end?,
-RF.K.2a,q5,"Pick a word that rhymes with ""hop.""",
+RF.K.2a,q5,"Pick a word that rhymes with ""hop."" A: Hot. B: Stop. C: Hug. D: Hit.",
 RF.K.2a,q5-hint,Hop ends with -op. Which other word ends with -op?,
-RF.K.2b,q1,"How many SYLLABLES (claps) are in the word ""cat""?",
+RF.K.2b,q1,"How many SYLLABLES (claps) are in the word ""cat""? A: 1. B: 2. C: 3. D: 4.",
 RF.K.2b,q1-hint,Say it and clap: CAT. Just one clap!,
-RF.K.2b,q2,"How many SYLLABLES (claps) are in the word ""banana""?",
+RF.K.2b,q2,"How many SYLLABLES (claps) are in the word ""banana""? A: 1. B: 2. C: 3. D: 4.",
 RF.K.2b,q2-hint,Clap it out: ba-NA-na. That's 3 claps!,
-RF.K.2b,q3,"How many SYLLABLES are in the word ""butterfly""?",
+RF.K.2b,q3,"How many SYLLABLES are in the word ""butterfly""? A: 1. B: 2. C: 3. D: 4.",
 RF.K.2b,q3-hint,Clap it: BUT-ter-fly. Count the claps!,
-RF.K.2b,q4,Which word has 2 syllables?,
+RF.K.2b,q4,Which word has 2 syllables? A: Dog. B: Apple. C: Cat. D: Fish.,
 RF.K.2b,q4-hint,"Clap each word: dog (1), ap-ple (2), cat (1), fish (1).",
-RF.K.2b,q5,"Put these syllables together: ""rain"" + ""bow."" What word is it?",
+RF.K.2b,q5,"Put these syllables together: ""rain"" + ""bow."" What word is it? A: Raindrop. B: Rainbow. C: Rainfall. D: Raincoat.",
 RF.K.2b,q5-hint,Blend the parts together: rain + bow = ?,
-RF.K.2c,q1,Blend these sounds together: /c/ + /at/. What word is it?,
+RF.K.2c,q1,Blend these sounds together: /c/ + /at/. What word is it? A: Bat. B: Cat. C: Sat. D: Mat.,
 RF.K.2c,q1-hint,Put the /c/ sound in front of -at!,
-RF.K.2c,q2,Blend: /s/ + /un/. What word is it?,
+RF.K.2c,q2,Blend: /s/ + /un/. What word is it? A: Fun. B: Run. C: Sun. D: Bun.,
 RF.K.2c,q2-hint,"Start with the /s/ sound, then add -un!",
-RF.K.2c,q3,"️ Break the word ""mop"" into two parts: the first sound and the rest.
-
-Which is correct?",
+RF.K.2c,q3,"️ Break the word ""mop"" into two parts: the first sound and the rest. Which is correct? A: /m/ + /op/. B: /mo/ + /p/. C: /m/ + /o/ + /p/. D: /mp/ + /o/.",
 RF.K.2c,q3-hint,The onset (first sound) is /m/. The rime (rest of the word) is -op.,
-RF.K.2c,q4,Blend: /b/ + /ig/. What word do you get?,
+RF.K.2c,q4,Blend: /b/ + /ig/. What word do you get? A: Bag. B: Bug. C: Big. D: Bog.,
 RF.K.2c,q4-hint,/b/ in front of -ig = ?,
-RF.K.2c,q5,"️ What is the FIRST sound (onset) in the word ""top""?",
+RF.K.2c,q5,"️ What is the FIRST sound (onset) in the word ""top""? A: /t/. B: /o/. C: /p/. D: /to/.",
 RF.K.2c,q5-hint,The onset is the very first sound before the vowel!,
-RF.K.2d,q1,"What is the FIRST sound in the word ""map""?",
+RF.K.2d,q1,"What is the FIRST sound in the word ""map""? A: /m/. B: /a/. C: /p/. D: /s/.",
 RF.K.2d,q1-hint,Say 'map' slowly — what sound does your mouth make first?,
-RF.K.2d,q2,"What is the LAST sound in the word ""bus""?",
+RF.K.2d,q2,"What is the LAST sound in the word ""bus""? A: /b/. B: /u/. C: /s/. D: /z/.",
 RF.K.2d,q2-hint,Say 'bus' — what sound do you hear at the very end?,
-RF.K.2d,q3,"What is the MIDDLE sound in the word ""pig""?",
+RF.K.2d,q3,"What is the MIDDLE sound in the word ""pig""? A: /p/. B: /i/. C: /g/. D: /a/.",
 RF.K.2d,q3-hint,P - I - G. The middle sound is the vowel!,
-RF.K.2d,q4,"What is the FIRST sound in the word ""fun""?",
+RF.K.2d,q4,"What is the FIRST sound in the word ""fun""? A: /u/. B: /n/. C: /f/. D: /s/.",
 RF.K.2d,q4-hint,Say 'fun' slowly. The very first sound is...,
-RF.K.2d,q5,"The word ""bed"" has 3 sounds: /b/ - /e/ - /d/.
-
-What is the MIDDLE sound?",
+RF.K.2d,q5,"The word ""bed"" has 3 sounds: /b/ - /e/ - /d/. What is the MIDDLE sound? A: /b/. B: /d/. C: /e/. D: /a/.",
 RF.K.2d,q5-hint,The middle sound is always the vowel — the one in between!,
-RF.K.2e,q1,"Start with ""cat."" Change the /c/ to /b/. What new word do you get?",
+RF.K.2e,q1,"Start with ""cat."" Change the /c/ to /b/. What new word do you get? A: Sat. B: Bat. C: Mat. D: Hat.",
 RF.K.2e,q1-hint,Take away the 'c' sound and put in a 'b' sound: b-at!,
-RF.K.2e,q2,"Start with ""hop."" Change the /h/ to /t/. What word do you get?",
+RF.K.2e,q2,"Start with ""hop."" Change the /h/ to /t/. What word do you get? A: Mop. B: Top. C: Pop. D: Cop.",
 RF.K.2e,q2-hint,Replace the /h/ with /t/: t-op!,
-RF.K.2e,q3,"Start with ""man."" Change the /a/ to /e/. What word do you get?",
+RF.K.2e,q3,"Start with ""man."" Change the /a/ to /e/. What word do you get? A: Min. B: Men. C: Mon. D: Mun.",
 RF.K.2e,q3-hint,Keep the 'm' and 'n' but change the middle sound to /e/!,
-RF.K.2e,q4,"Start with ""sit."" Change the /t/ to /p/. What word do you get?",
+RF.K.2e,q4,"Start with ""sit."" Change the /t/ to /p/. What word do you get? A: Sip. B: Sat. C: Set. D: Sap.",
 RF.K.2e,q4-hint,Keep 'si-' and change the ending to /p/!,
-RF.K.2e,q5,"Add /s/ to the beginning of ""top."" What word do you get?",
+RF.K.2e,q5,"Add /s/ to the beginning of ""top."" What word do you get? A: Stop. B: Tops. C: Spot. D: Step.",
 RF.K.2e,q5-hint,Put /s/ right before 'top': s-top!,
-RF.K.3a,q1,What sound does the letter 'B' make?,
+RF.K.3a,q1,What sound does the letter 'B' make? A: /d/. B: /b/. C: /p/. D: /g/.,
 RF.K.3a,q1-hint,"Think of words that start with B: ball, bat, bear. They all start with /b/!",
-RF.K.3a,q2,What sound does the letter 'S' make?,
+RF.K.3a,q2,What sound does the letter 'S' make? A: /s/. B: /z/. C: /f/. D: /t/.,
 RF.K.3a,q2-hint,"Think: snake, sun, sit — they all start with the /s/ sound!",
-RF.K.3a,q3,Which letter makes the /m/ sound?,
+RF.K.3a,q3,Which letter makes the /m/ sound? A: N. B: M. C: W. D: B.,
 RF.K.3a,q3-hint,Mmm... like 'mom' and 'milk'!,
-RF.K.3a,q4,Which word STARTS with the same sound as the letter 'T'?,
+RF.K.3a,q4,Which word STARTS with the same sound as the letter 'T'? A: Dog. B: Fish. C: Top. D: Run.,
 RF.K.3a,q4-hint,The letter T makes the /t/ sound. Which word starts with /t/?,
-RF.K.3a,q5,What sound does the letter 'R' make?,
+RF.K.3a,q5,What sound does the letter 'R' make? A: /l/. B: /r/. C: /w/. D: /n/.,
 RF.K.3a,q5-hint,"Think of 'run,' 'red,' and 'rain' — they all start with /r/!",
-RF.K.3b,q1,"The word ""cake"" has a LONG 'a' sound. The word ""cat"" has a SHORT 'a' sound.
-
-Which word has a LONG 'a' sound?",
+RF.K.3b,q1,"The word ""cake"" has a LONG 'a' sound. The word ""cat"" has a SHORT 'a' sound. Which word has a LONG 'a' sound? A: Hat. B: Bat. C: Lake. D: Ran.",
 RF.K.3b,q1-hint,Long 'a' says its own name — like in 'lake' and 'cake'!,
-RF.K.3b,q2,"Which word has a SHORT 'i' sound (like in ""pig"")?",
+RF.K.3b,q2,"Which word has a SHORT 'i' sound (like in ""pig"")? A: Bike. B: Sit. C: Kite. D: Nine.",
 RF.K.3b,q2-hint,"Short 'i' sounds like the 'i' in pig, sit, and big!",
-RF.K.3b,q3,"The word ""note"" has a LONG 'o' sound. Which other word has a LONG 'o' sound?",
+RF.K.3b,q3,"The word ""note"" has a LONG 'o' sound. Which other word has a LONG 'o' sound? A: Hot. B: Bone. C: Dog. D: Mop.",
 RF.K.3b,q3-hint,Long 'o' says its name — like 'bone' and 'note'!,
-RF.K.3b,q4,"Which word has a SHORT 'e' sound (like in ""bed"")?",
+RF.K.3b,q4,"Which word has a SHORT 'e' sound (like in ""bed"")? A: Bee. B: Tree. C: Red. D: Me.",
 RF.K.3b,q4-hint,"Short 'e' sounds like the 'e' in bed, red, and pet!",
-RF.K.3b,q5,"Which word has a SHORT 'u' sound (like in ""bus"")?",
+RF.K.3b,q5,"Which word has a SHORT 'u' sound (like in ""bus"")? A: Cute. B: Cup. C: Mule. D: Tune.",
 RF.K.3b,q5-hint,"Short 'u' sounds like the 'u' in bus, cup, and sun!",
-RF.K.3c,q1,"Which word is ""the""?",
+RF.K.3c,q1,"Which word is ""the""? A: teh. B: the. C: hte. D: eth.",
 RF.K.3c,q1-hint,Look carefully at the order of the letters: t-h-e!,
-RF.K.3c,q2,"Fill in the blank: ""I can ___ it!""",
+RF.K.3c,q2,"Fill in the blank: ""I can ___ it!"" A: doo. B: do. C: od. D: doe.",
 RF.K.3c,q2-hint,This common word is spelled: d-o!,
-RF.K.3c,q3,"Which sentence uses the word ""is"" correctly?",
+RF.K.3c,q3,"Which sentence uses the word ""is"" correctly? A: He is happy.. B: He si happy.. C: He iz happy.. D: He es happy..",
 RF.K.3c,q3-hint,The word 'is' is spelled: i-s!,
-RF.K.3c,q4,"️ Read this sight word: ""you""
-
-Which sentence uses it?",
+RF.K.3c,q4,"️ Read this sight word: ""you"" Which sentence uses it? A: I see you!. B: I see yoo!. C: I see yew!. D: I see yu!.",
 RF.K.3c,q4-hint,The word 'you' is spelled: y-o-u!,
-RF.K.3c,q5,"Read: ""She ___ my friend.""
-
-Which sight word fits?",
+RF.K.3c,q5,"Read: ""She ___ my friend."" Which sight word fits? A: am. B: are. C: is. D: it.",
 RF.K.3c,q5-hint,We say 'She is' — not 'She am' or 'She are.',
-RF.K.3d,q1,"Look at these words: CAT and BAT.
-
-Which letter is DIFFERENT?",
+RF.K.3d,q1,Look at these words: CAT and BAT. Which letter is DIFFERENT? A: The last letter. B: The middle letter. C: The first letter. D: No letters are different.,
 RF.K.3d,q1-hint,C-A-T and B-A-T — which letter changed?,
-RF.K.3d,q2,PAN and PEN are different because...,
+RF.K.3d,q2,PAN and PEN are different because... A: The first letter is different. B: The middle letter is different. C: The last letter is different. D: They are the same word.,
 RF.K.3d,q2-hint,P-A-N vs P-E-N — the 'A' changed to 'E'!,
-RF.K.3d,q3,BIG and BIG — Are these the same or different?,
+RF.K.3d,q3,BIG and BIG — Are these the same or different? A: Same. B: Different.,
 RF.K.3d,q3-hint,Look at every letter: B-I-G and B-I-G. Any differences?,
-RF.K.3d,q4,MAP and MOP — what letter changed?,
+RF.K.3d,q4,MAP and MOP — what letter changed? A: M. B: A changed to O. C: P. D: Nothing changed.,
 RF.K.3d,q4-hint,M-A-P vs M-O-P — the middle vowel is different!,
-RF.K.3d,q5,"If you change the 'D' in ""dog"" to 'L', what new word do you get?",
+RF.K.3d,q5,"If you change the 'D' in ""dog"" to 'L', what new word do you get? A: Fog. B: Log. C: Hog. D: Bog.",
 RF.K.3d,q5-hint,D-O-G → L-O-G!,
-RF.K.4,q1,"Read: ""I see a cat. The cat is big. The cat is on the mat.""
-
-Where is the cat?",
+RF.K.4,q1,"Read: ""I see a cat. The cat is big. The cat is on the mat."" Where is the cat? A: On the bed. B: On the mat. C: In a tree. D: Under the table.",
 RF.K.4,q1-hint,Read the last sentence — where is the cat sitting?,
-RF.K.4,q2,"Read: ""I like dogs. I like cats. I like fish. I like all pets!""
-
-What is this story about?",
+RF.K.4,q2,"Read: ""I like dogs. I like cats. I like fish. I like all pets!"" What is this story about? A: Food. B: Toys. C: Pets. D: School.",
 RF.K.4,q2-hint,"Dogs, cats, and fish are all types of...",
-RF.K.4,q3,"Read: ""I can run. I can hop. I can skip. I can do a lot!""
-
-What CAN'T this person do according to the story?",
+RF.K.4,q3,"Read: ""I can run. I can hop. I can skip. I can do a lot!"" What CAN'T this person do according to the story? A: Run. B: Hop. C: Fly. D: Skip.",
 RF.K.4,q3-hint,"The story mentions run, hop, and skip — but NOT fly!",
-RF.K.4,q4,"Read: ""The sun is up. It is day. We can play!""
-
-What time of day is it?",
+RF.K.4,q4,"Read: ""The sun is up. It is day. We can play!"" What time of day is it? A: Nighttime. B: Daytime. C: Bedtime. D: Dinnertime.",
 RF.K.4,q4-hint,The sun is up and the story says 'It is day.',
-RF.K.4,q5,"Read: ""Mom said, 'Get your coat.' Dad said, 'Get your hat.' It is cold outside!""
-
-WHY did Mom and Dad tell the child to get a coat and hat?",
+RF.K.4,q5,"Read: ""Mom said, 'Get your coat.' Dad said, 'Get your hat.' It is cold outside!"" WHY did Mom and Dad tell the child to get a coat and hat? A: It's hot outside.. B: It's cold outside.. C: It's time for school.. D: It's bedtime..",
 RF.K.4,q5-hint,The last sentence tells you why!,
-K.L.1,q1,"A NOUN is a person, place, or thing. Which word is a noun?",
+K.L.1,q1,"A NOUN is a person, place, or thing. Which word is a noun? A: Run. B: Dog. C: Happy. D: Quickly.",
 K.L.1,q1-hint,Can you touch it or point to it? That's a noun!,
-K.L.1,q2,A VERB is an action word. Which word is a verb?,
+K.L.1,q2,A VERB is an action word. Which word is a verb? A: Cat. B: Jump. C: Red. D: Big.,
 K.L.1,q2-hint,Which word is something you can DO?,
-K.L.1,q3,"What is the PLURAL (more than one) of ""cat""?",
+K.L.1,q3,"What is the PLURAL (more than one) of ""cat""? A: Cat. B: Cats. C: Cates. D: Catties.",
 K.L.1,q3-hint,"To make most words plural, just add an 's' at the end!",
-K.L.1,q4,Which word do you use to ask about a PLACE?,
+K.L.1,q4,Which word do you use to ask about a PLACE? A: Who. B: What. C: Where. D: When.,
 K.L.1,q4-hint,"""_____ is the park?"" — you're asking about a place!",
-K.L.1,q5,"""The ball is ___ the box."" Which word means inside the box?",
+K.L.1,q5,"""The ball is ___ the box."" Which word means inside the box? A: On. B: Under. C: In. D: Behind.",
 K.L.1,q5-hint,"If the ball is INSIDE the box, we say it's 'in' the box!",
-K.L.2,q1,Which sentence has CORRECT capitalization?,
+K.L.2,q1,Which sentence has CORRECT capitalization? A: i like pizza.. B: I like pizza.. C: i Like Pizza.. D: I LIKE PIZZA..,
 K.L.2,q1-hint,The first word of a sentence starts with a CAPITAL letter!,
-K.L.2,q2,"What goes at the END of a telling sentence like ""I see a dog""?",
+K.L.2,q2,"What goes at the END of a telling sentence like ""I see a dog""? A: A question mark (?). B: A period (.). C: An exclamation mark (!). D: Nothing.",
 K.L.2,q2-hint,A telling sentence (statement) ends with a period!,
-K.L.2,q3,What goes at the END of a question?,
+K.L.2,q3,"What goes at the END of a question? A: A period (.). B: A question mark (?). C: A comma (,). D: Nothing.",
 K.L.2,q3-hint,Questions ask something — they end with this curvy mark!,
-K.L.2,q4,Which name is written CORRECTLY?,
+K.L.2,q4,Which name is written CORRECTLY? A: sam. B: Sam. C: sAm. D: saM.,
 K.L.2,q4-hint,People's names ALWAYS start with a capital letter!,
-K.L.2,q5,️ Which sentence is CORRECT?,
+K.L.2,q5,️ Which sentence is CORRECT? A: the dog is big. B: The dog is big.. C: the Dog is big.. D: The dog is big.,
 K.L.2,q5-hint,A correct sentence needs: capital letter at the start AND a period at the end!,
-K.L.4,q1,"Read: ""The boy JUMPED. He went up in the air.""
-
-The '-ed' at the end of ""jumped"" tells us...",
+K.L.4,q1,"Read: ""The boy JUMPED. He went up in the air."" The '-ed' at the end of ""jumped"" tells us... A: It's happening right now.. B: It already happened.. C: It will happen later.. D: It never happened..",
 K.L.4,q1-hint,The ending '-ed' means something already happened — in the past!,
-K.L.4,q2,"Read: ""The UNHAPPY girl frowned.""
-
-What does 'UN-' at the beginning of 'unhappy' mean?",
+K.L.4,q2,"Read: ""The UNHAPPY girl frowned."" What does 'UN-' at the beginning of 'unhappy' mean? A: Very. B: Not. C: More. D: Always.",
 K.L.4,q2-hint,Un- means 'not.' So unhappy means NOT happy!,
-K.L.4,q3,"""She has two dogs."" The '-s' on ""dogs"" means...",
+K.L.4,q3,"""She has two dogs."" The '-s' on ""dogs"" means... A: One dog. B: More than one dog. C: A big dog. D: A small dog.",
 K.L.4,q3-hint,Adding '-s' usually means there is more than one!,
-K.L.4,q4,"""He was HELPFUL at school."" 
-
-The '-ful' in 'helpful' means...",
+K.L.4,q4,"""He was HELPFUL at school.""  The '-ful' in 'helpful' means... A: Without help. B: Full of help. C: Never helping. D: A little help.",
 K.L.4,q4-hint,-ful means 'full of.' So helpful means full of help!,
-K.L.4,q5,"""The CARELESS boy spilled his milk.""
-
-The '-less' in 'careless' means...",
+K.L.4,q5,"""The CARELESS boy spilled his milk."" The '-less' in 'careless' means... A: Full of care. B: Without care. C: More care. D: Lots of care.",
 K.L.4,q5-hint,-less means 'without.' Careless = without care (not being careful)!,
-K.L.5,q1,"Apple, banana, and orange all belong to which CATEGORY?",
+K.L.5,q1,"Apple, banana, and orange all belong to which CATEGORY? A: Vegetables. B: Animals. C: Fruits. D: Colors.",
 K.L.5,q1-hint,These are all things you eat that grow on trees or bushes — they're all types of...,
-K.L.5,q2,"↔️ What is the OPPOSITE of ""hot""?",
+K.L.5,q2,"↔️ What is the OPPOSITE of ""hot""? A: Warm. B: Cold. C: Wet. D: Big.",
 K.L.5,q2-hint,"Opposites are as different as can be. If something isn't hot, it's...",
-K.L.5,q3,"‍️ Which word means to walk in a PROUD, fancy way?",
+K.L.5,q3,"‍️ Which word means to walk in a PROUD, fancy way? A: Crawl. B: Strut. C: Tiptoe. D: Stumble.",
 K.L.5,q3-hint,Think of a peacock walking proudly — that's strutting!,
-K.L.5,q4,"Dog, cat, and fish all belong to which CATEGORY?",
+K.L.5,q4,"Dog, cat, and fish all belong to which CATEGORY? A: Foods. B: Animals. C: Toys. D: Colors.",
 K.L.5,q4-hint,They are all living creatures — what group do they belong to?,
-K.L.5,q5,"Put these in order from LEAST happy to MOST happy:
-
-smile, laugh, giggle",
+K.L.5,q5,"Put these in order from LEAST happy to MOST happy: smile, laugh, giggle A: Laugh, giggle, smile. B: Smile, giggle, laugh. C: Giggle, smile, laugh. D: Laugh, smile, giggle.",
 K.L.5,q5-hint,"A smile is quiet, a giggle is in the middle, and a laugh is the biggest!",
 K.L.5,q6,Sort these words into the correct group!,
 K.L.5,q6-hint,Animals are living creatures. Colors describe how things look.,
@@ -545,21 +361,13 @@ K.L.5,q7,Sort these words into the correct group!,
 K.L.5,q7-hint,Fruits are usually sweet. Vegetables are usually green or orange.,
 K.L.5,q8,Sort these words into the correct group!,
 K.L.5,q8-hint,Think about the SIZE of each thing in real life.,
-K.L.6,q1,"You read a book about the ocean. Now someone asks: ""What lives in the ocean?""
-
-The BEST answer is...",
+K.L.6,q1,"You read a book about the ocean. Now someone asks: ""What lives in the ocean?"" The BEST answer is... A: Cars and trucks. B: Fish, whales, and dolphins. C: Dogs and cats. D: Trees and flowers.",
 K.L.6,q1-hint,Think about what you learned from the ocean book!,
-K.L.6,q2,"️ Your teacher says: ""Line up in a row.""
-
-What does ""in a row"" mean?",
+K.L.6,q2,"️ Your teacher says: ""Line up in a row."" What does ""in a row"" mean? A: In a circle. B: One behind the other in a line. C: Sitting down. D: Running around.",
 K.L.6,q2-hint,"When things are 'in a row,' they make a straight line!",
-K.L.6,q3,"You read a book about bears that said bears HIBERNATE in winter.
-
-What does hibernate mean?",
+K.L.6,q3,You read a book about bears that said bears HIBERNATE in winter. What does hibernate mean? A: Run really fast. B: Sleep for a long time. C: Eat a lot of food. D: Swim in the river.,
 K.L.6,q3-hint,Bears go to sleep for the whole winter — that's hibernating!,
-K.L.6,q4,"️ Your friend says: ""That puzzle is really TRICKY.""
-
-What does TRICKY mean?",
+K.L.6,q4,"️ Your friend says: ""That puzzle is really TRICKY."" What does TRICKY mean? A: Easy. B: Hard to figure out. C: Boring. D: Silly.",
 K.L.6,q4-hint,"If something is tricky, you really have to think to solve it!",
-K.L.6,q5,"After reading about seasons, which word BEST describes what happens to leaves in fall?",
+K.L.6,q5,"After reading about seasons, which word BEST describes what happens to leaves in fall? A: They grow bigger.. B: They change color and fall down.. C: They stay the same.. D: They turn into flowers..",
 K.L.6,q5-hint,Think about what you know about fall — what happens to the trees?,
