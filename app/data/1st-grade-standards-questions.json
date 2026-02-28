@@ -13,7 +13,7 @@
         {
           "id": "RL.1.1-Q1",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"Bella picked three red apples from the tree. She put them in her basket.\"\n\nHow many apples did Bella pick?",
+          "prompt": "Bella picked three red apples from the tree. She put them in her basket.\n\nHow many apples did Bella pick?",
           "choices": [
             "One",
             "Two",
@@ -29,7 +29,7 @@
         {
           "id": "RL.1.1-Q2",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"The frog sat on a lily pad in the pond. He was waiting for a fly.\"\n\nWhere was the frog sitting?",
+          "prompt": "The frog sat on a lily pad in the pond. He was waiting for a fly.\n\nWhere was the frog sitting?",
           "choices": [
             "On a rock",
             "On a lily pad",
@@ -45,7 +45,7 @@
         {
           "id": "RL.1.1-Q3",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"Emma walked to school with her friend Jake. They talked about their favorite animals.\"\n\nWho did Emma walk with?",
+          "prompt": "Emma walked to school with her friend Jake. They talked about their favorite animals.\n\nWho did Emma walk with?",
           "choices": [
             "Her mom",
             "Her dog",
@@ -61,7 +61,7 @@
         {
           "id": "RL.1.1-Q4",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"Dad made pancakes for breakfast. He put blueberries on top.\"\n\nWhat did Dad put on the pancakes?",
+          "prompt": "Dad made pancakes for breakfast. He put blueberries on top.\n\nWhat did Dad put on the pancakes?",
           "choices": [
             "Syrup",
             "Chocolate chips",
@@ -77,7 +77,7 @@
         {
           "id": "RL.1.1-Q5",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"The kitten climbed the tall tree. It was scared to come down.\"\n\nHow did the kitten feel?",
+          "prompt": "The kitten climbed the tall tree. It was scared to come down.\n\nHow did the kitten feel?",
           "choices": [
             "Happy",
             "Scared",
@@ -101,7 +101,7 @@
         {
           "id": "RL.1.2-Q1",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"Tom wanted to win the race. He practiced running every day. On race day, he came in first!\"\n\nWhat is the lesson of this story?",
+          "prompt": "Tom wanted to win the race. He practiced running every day. On race day, he came in first!\n\nWhat is the lesson of this story?",
           "choices": [
             "Running is boring",
             "Practice helps you get better",
@@ -117,7 +117,7 @@
         {
           "id": "RL.1.2-Q2",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"Mia did not share her crayons. Her friends stopped playing with her. Mia felt sad and lonely.\"\n\nWhat is the lesson of this story?",
+          "prompt": "Mia did not share her crayons. Her friends stopped playing with her. Mia felt sad and lonely.\n\nWhat is the lesson of this story?",
           "choices": [
             "Crayons are important",
             "Friends are mean",
@@ -133,7 +133,7 @@
         {
           "id": "RL.1.2-Q3",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"The ant worked hard all summer saving food. The grasshopper played all day. When winter came, the ant had food but the grasshopper did not.\"\n\nWhat is the lesson?",
+          "prompt": "The ant worked hard all summer saving food. The grasshopper played all day. When winter came, the ant had food but the grasshopper did not.\n\nWhat is the lesson?",
           "choices": [
             "Playing is bad",
             "It is good to plan ahead",
@@ -149,7 +149,7 @@
         {
           "id": "RL.1.2-Q4",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"Leo tried to ride his bike but kept falling. His mom said, 'Keep trying!' After many tries, Leo could ride all by himself.\"\n\nWhat happened first in the story?",
+          "prompt": "Leo tried to ride his bike but kept falling. His mom said, 'Keep trying!' After many tries, Leo could ride all by himself.\n\nWhat happened first in the story?",
           "choices": [
             "Leo rode his bike",
             "Mom said keep trying",
@@ -165,7 +165,7 @@
         {
           "id": "RL.1.2-Q5",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"Sara told a lie about breaking the vase. She felt bad all day. She told the truth and felt much better.\"\n\nWhat is the lesson?",
+          "prompt": "Sara told a lie about breaking the vase. She felt bad all day. She told the truth and felt much better.\n\nWhat is the lesson?",
           "choices": [
             "Vases break easily",
             "Lying makes you feel bad",
@@ -189,7 +189,7 @@
         {
           "id": "RL.1.3-Q1",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"The kind old woman lived in a tiny cottage by the sea. She fed the birds every morning.\"\n\nWhere does the story take place?",
+          "prompt": "The kind old woman lived in a tiny cottage by the sea. She fed the birds every morning.\n\nWhere does the story take place?",
           "choices": [
             "In a city",
             "By the sea",
@@ -205,7 +205,7 @@
         {
           "id": "RL.1.3-Q2",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"Ben was always helping others. He carried bags for his neighbor and shared his lunch with friends.\"\n\nWhat word best describes Ben?",
+          "prompt": "Ben was always helping others. He carried bags for his neighbor and shared his lunch with friends.\n\nWhat word best describes Ben?",
           "choices": [
             "Lazy",
             "Kind",
@@ -221,7 +221,7 @@
         {
           "id": "RL.1.3-Q3",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"It was a dark and stormy night. The wind howled outside the old barn.\"\n\nWhat is the setting?",
+          "prompt": "It was a dark and stormy night. The wind howled outside the old barn.\n\nWhat is the setting?",
           "choices": [
             "A sunny beach",
             "A dark, stormy barn",
@@ -237,7 +237,7 @@
         {
           "id": "RL.1.3-Q4",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"Rosa found a lost puppy. She gave it water and food. Then she found its owner.\"\n\nWhat was the major event?",
+          "prompt": "Rosa found a lost puppy. She gave it water and food. Then she found its owner.\n\nWhat was the major event?",
           "choices": [
             "Rosa went to school",
             "Rosa found a lost puppy",
@@ -253,7 +253,7 @@
         {
           "id": "RL.1.3-Q5",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"Grumpy Gus never smiled. He frowned at everyone. One day a little girl gave him a flower and he finally smiled.\"\n\nHow does Gus change in the story?",
+          "prompt": "Grumpy Gus never smiled. He frowned at everyone. One day a little girl gave him a flower and he finally smiled.\n\nHow does Gus change in the story?",
           "choices": [
             "He gets angrier",
             "He goes from grumpy to happy",
@@ -277,7 +277,7 @@
         {
           "id": "RL.1.4-Q1",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"The bright sun warmed her face.\"\n\nWhich word helps you feel the sun?",
+          "prompt": "The bright sun warmed her face.\n\nWhich word helps you feel the sun?",
           "choices": [
             "Sun",
             "Bright",
@@ -293,7 +293,7 @@
         {
           "id": "RL.1.4-Q2",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"The puppy whimpered softly in the rain.\"\n\nHow does the puppy probably feel?",
+          "prompt": "The puppy whimpered softly in the rain.\n\nHow does the puppy probably feel?",
           "choices": [
             "Happy",
             "Excited",
@@ -309,7 +309,7 @@
         {
           "id": "RL.1.4-Q3",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"The cookies smelled sweet and warm from the oven.\"\n\nWhich words appeal to your sense of smell?",
+          "prompt": "The cookies smelled sweet and warm from the oven.\n\nWhich words appeal to your sense of smell?",
           "choices": [
             "Cookies and oven",
             "Sweet and warm",
@@ -325,7 +325,7 @@
         {
           "id": "RL.1.4-Q4",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"Jake stomped his feet and crossed his arms.\"\n\nHow does Jake feel?",
+          "prompt": "Jake stomped his feet and crossed his arms.\n\nHow does Jake feel?",
           "choices": [
             "Happy",
             "Angry",
@@ -341,7 +341,7 @@
         {
           "id": "RL.1.4-Q5",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"The soft, fluffy blanket kept her cozy all night.\"\n\nWhich words help you imagine how the blanket feels?",
+          "prompt": "The soft, fluffy blanket kept her cozy all night.\n\nWhich words help you imagine how the blanket feels?",
           "choices": [
             "Kept and night",
             "Soft and fluffy",
@@ -429,7 +429,7 @@
         {
           "id": "RL.1.5-Q5",
           "type": "multiple_choice",
-          "prompt": "📖 \"Once upon a time, a brave knight saved a dragon.\"\n\nIs this from a story or an informational book?",
+          "prompt": "Once upon a time, a brave knight saved a dragon.\n\nIs this from a story or an informational book?",
           "choices": [
             "Informational book",
             "Story",
@@ -453,7 +453,7 @@
         {
           "id": "RL.1.6-Q1",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"I went to the store with my mom. I picked out a red apple.\"\n\nWho is telling this story?",
+          "prompt": "I went to the store with my mom. I picked out a red apple.\n\nWho is telling this story?",
           "choices": [
             "Mom",
             "The store owner",
@@ -469,7 +469,7 @@
         {
           "id": "RL.1.6-Q2",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"Sam ran to the park. He played on the swings.\"\n\nWho is telling this story?",
+          "prompt": "Sam ran to the park. He played on the swings.\n\nWho is telling this story?",
           "choices": [
             "Sam is telling it",
             "A narrator outside the story",
@@ -485,7 +485,7 @@
         {
           "id": "RL.1.6-Q3",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"'I love pizza!' said Maria.\"\n\nWho is speaking?",
+          "prompt": "'I love pizza!' said Maria.\n\nWho is speaking?",
           "choices": [
             "The narrator",
             "Maria",
@@ -517,7 +517,7 @@
         {
           "id": "RL.1.6-Q5",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"'Let's go!' shouted Tom. 'Wait for me!' called Lily.\"\n\nWho says 'Wait for me'?",
+          "prompt": "'Let's go!' shouted Tom. 'Wait for me!' called Lily.\n\nWho says 'Wait for me'?",
           "choices": [
             "Tom",
             "Lily",
@@ -717,7 +717,7 @@
         {
           "id": "RI.1.1-Q1",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"Penguins live in very cold places. They cannot fly, but they are great swimmers.\"\n\nWhere do penguins live?",
+          "prompt": "Penguins live in very cold places. They cannot fly, but they are great swimmers.\n\nWhere do penguins live?",
           "choices": [
             "In hot places",
             "In very cold places",
@@ -733,7 +733,7 @@
         {
           "id": "RI.1.1-Q2",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"Bees make honey. They live together in a hive. A queen bee leads the group.\"\n\nWho leads the bees?",
+          "prompt": "Bees make honey. They live together in a hive. A queen bee leads the group.\n\nWho leads the bees?",
           "choices": [
             "A king bee",
             "A worker bee",
@@ -749,7 +749,7 @@
         {
           "id": "RI.1.1-Q3",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"The sun is a star. It gives Earth light and heat. Without the sun, Earth would be very cold.\"\n\nWhat does the sun give Earth?",
+          "prompt": "The sun is a star. It gives Earth light and heat. Without the sun, Earth would be very cold.\n\nWhat does the sun give Earth?",
           "choices": [
             "Water and food",
             "Light and heat",
@@ -765,7 +765,7 @@
         {
           "id": "RI.1.1-Q4",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"Dogs need fresh water every day. They also need food and exercise to stay healthy.\"\n\nWhat do dogs need to stay healthy?",
+          "prompt": "Dogs need fresh water every day. They also need food and exercise to stay healthy.\n\nWhat do dogs need to stay healthy?",
           "choices": [
             "Just water",
             "Just food",
@@ -781,7 +781,7 @@
         {
           "id": "RI.1.1-Q5",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"Frogs start as eggs in the water. Then they become tadpoles. Finally, they grow into frogs.\"\n\nWhat comes AFTER the egg stage?",
+          "prompt": "Frogs start as eggs in the water. Then they become tadpoles. Finally, they grow into frogs.\n\nWhat comes AFTER the egg stage?",
           "choices": [
             "Adult frog",
             "Tadpole",
@@ -805,7 +805,7 @@
         {
           "id": "RI.1.2-Q1",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"Apples can be red, green, or yellow. They grow on trees. Apples are a healthy snack.\"\n\nWhat is the main topic?",
+          "prompt": "Apples can be red, green, or yellow. They grow on trees. Apples are a healthy snack.\n\nWhat is the main topic?",
           "choices": [
             "Trees",
             "Colors",
@@ -821,7 +821,7 @@
         {
           "id": "RI.1.2-Q2",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"Firefighters wear special gear. They drive fire trucks. They put out fires and help people.\"\n\nWhat is the main topic?",
+          "prompt": "Firefighters wear special gear. They drive fire trucks. They put out fires and help people.\n\nWhat is the main topic?",
           "choices": [
             "Trucks",
             "Firefighters",
@@ -837,7 +837,7 @@
         {
           "id": "RI.1.2-Q3",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"Cats are popular pets. They like to sleep a lot. Cats clean themselves by licking their fur.\"\n\nWhich is a key detail?",
+          "prompt": "Cats are popular pets. They like to sleep a lot. Cats clean themselves by licking their fur.\n\nWhich is a key detail?",
           "choices": [
             "Cats can fly",
             "Cats clean themselves by licking",
@@ -853,7 +853,7 @@
         {
           "id": "RI.1.2-Q4",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"The ocean is full of salt water. Many animals live in the ocean. Whales, fish, and dolphins swim there.\"\n\nWhat is the main topic?",
+          "prompt": "The ocean is full of salt water. Many animals live in the ocean. Whales, fish, and dolphins swim there.\n\nWhat is the main topic?",
           "choices": [
             "Salt",
             "Whales",
@@ -869,7 +869,7 @@
         {
           "id": "RI.1.2-Q5",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"Teeth are important. You should brush them twice a day. Eating too much candy can hurt your teeth.\"\n\nWhich is a key detail?",
+          "prompt": "Teeth are important. You should brush them twice a day. Eating too much candy can hurt your teeth.\n\nWhich is a key detail?",
           "choices": [
             "Brush teeth once a week",
             "Never eat candy",
@@ -893,7 +893,7 @@
         {
           "id": "RI.1.3-Q1",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"It rained all day. The next morning, puddles were everywhere.\"\n\nWhy were there puddles?",
+          "prompt": "It rained all day. The next morning, puddles were everywhere.\n\nWhy were there puddles?",
           "choices": [
             "Someone spilled water",
             "It rained all day",
@@ -909,7 +909,7 @@
         {
           "id": "RI.1.3-Q2",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"Seeds need water and sunlight to grow. A farmer waters the seeds every day. Soon, small plants appear.\"\n\nWhy do small plants appear?",
+          "prompt": "Seeds need water and sunlight to grow. A farmer waters the seeds every day. Soon, small plants appear.\n\nWhy do small plants appear?",
           "choices": [
             "The wind blows",
             "The farmer waters them",
@@ -925,7 +925,7 @@
         {
           "id": "RI.1.3-Q3",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"Bears eat a lot in the fall. In winter, they hibernate and sleep for months.\"\n\nWhy do bears eat a lot in fall?",
+          "prompt": "Bears eat a lot in the fall. In winter, they hibernate and sleep for months.\n\nWhy do bears eat a lot in fall?",
           "choices": [
             "They are bored",
             "To get ready for winter sleep",
@@ -941,7 +941,7 @@
         {
           "id": "RI.1.3-Q4",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"George Washington was the first president. He led the army before that.\"\n\nWhat did Washington do BEFORE being president?",
+          "prompt": "George Washington was the first president. He led the army before that.\n\nWhat did Washington do BEFORE being president?",
           "choices": [
             "He was a teacher",
             "He led the army",
@@ -957,7 +957,7 @@
         {
           "id": "RI.1.3-Q5",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"The caterpillar eats lots of leaves. Then it makes a cocoon. Later, it becomes a butterfly.\"\n\nWhat happens RIGHT AFTER the caterpillar eats leaves?",
+          "prompt": "The caterpillar eats lots of leaves. Then it makes a cocoon. Later, it becomes a butterfly.\n\nWhat happens RIGHT AFTER the caterpillar eats leaves?",
           "choices": [
             "It flies away",
             "It makes a cocoon",
@@ -981,7 +981,7 @@
         {
           "id": "RI.1.4-Q1",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"Hibernation is a long, deep sleep that some animals take in winter.\"\n\nWhat does hibernation mean?",
+          "prompt": "Hibernation is a long, deep sleep that some animals take in winter.\n\nWhat does hibernation mean?",
           "choices": [
             "Running fast",
             "A long winter sleep",
@@ -997,7 +997,7 @@
         {
           "id": "RI.1.4-Q2",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"The enormous elephant was the biggest animal at the zoo.\"\n\nWhat does enormous mean?",
+          "prompt": "The enormous elephant was the biggest animal at the zoo.\n\nWhat does enormous mean?",
           "choices": [
             "Tiny",
             "Fast",
@@ -1013,7 +1013,7 @@
         {
           "id": "RI.1.4-Q3",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"Nocturnal animals are awake at night and sleep during the day.\"\n\nWhat does nocturnal mean?",
+          "prompt": "Nocturnal animals are awake at night and sleep during the day.\n\nWhat does nocturnal mean?",
           "choices": [
             "Active at night",
             "Active during the day",
@@ -1029,7 +1029,7 @@
         {
           "id": "RI.1.4-Q4",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"The habitat is the place where an animal lives. A fish's habitat is water.\"\n\nWhat is a habitat?",
+          "prompt": "The habitat is the place where an animal lives. A fish's habitat is water.\n\nWhat is a habitat?",
           "choices": [
             "An animal's food",
             "The place where an animal lives",
@@ -1045,7 +1045,7 @@
         {
           "id": "RI.1.4-Q5",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"The cheetah sprinted across the field. It was the fastest animal there.\"\n\nWhat does sprinted mean?",
+          "prompt": "The cheetah sprinted across the field. It was the fastest animal there.\n\nWhat does sprinted mean?",
           "choices": [
             "Walked slowly",
             "Ran very fast",
@@ -1333,7 +1333,7 @@
         {
           "id": "RI.1.8-Q1",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"You should drink water every day. Water helps your body work well and keeps you from getting thirsty.\"\n\nWhat reason does the author give for drinking water?",
+          "prompt": "You should drink water every day. Water helps your body work well and keeps you from getting thirsty.\n\nWhat reason does the author give for drinking water?",
           "choices": [
             "Water is blue",
             "Water helps your body work well",
@@ -1349,7 +1349,7 @@
         {
           "id": "RI.1.8-Q2",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"Dogs make great pets. They are loyal, playful, and love their owners.\"\n\nWhat reasons does the author give?",
+          "prompt": "Dogs make great pets. They are loyal, playful, and love their owners.\n\nWhat reasons does the author give?",
           "choices": [
             "Dogs are big",
             "Dogs are loyal, playful, and loving",
@@ -1365,7 +1365,7 @@
         {
           "id": "RI.1.8-Q3",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"Kids should eat vegetables. Vegetables have vitamins that help you grow strong.\"\n\nThe author's POINT is:",
+          "prompt": "Kids should eat vegetables. Vegetables have vitamins that help you grow strong.\n\nThe author's POINT is:",
           "choices": [
             "Vitamins are small",
             "Vegetables taste bad",
@@ -1381,7 +1381,7 @@
         {
           "id": "RI.1.8-Q4",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"Recycling is important. It reduces trash and helps keep the Earth clean.\"\n\nWhat reason does the author give for recycling?",
+          "prompt": "Recycling is important. It reduces trash and helps keep the Earth clean.\n\nWhat reason does the author give for recycling?",
           "choices": [
             "Recycling is easy",
             "It reduces trash and keeps Earth clean",
@@ -1397,7 +1397,7 @@
         {
           "id": "RI.1.8-Q5",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"Reading every day makes you smarter. It helps you learn new words and understand more stories.\"\n\nThe author supports the point by saying reading:",
+          "prompt": "Reading every day makes you smarter. It helps you learn new words and understand more stories.\n\nThe author supports the point by saying reading:",
           "choices": [
             "Is boring",
             "Takes too long",
@@ -1909,7 +1909,7 @@
         {
           "id": "RF.1.4b-Q4",
           "type": "multiple_choice",
-          "prompt": "📖 Read: \"'Help!' cried the little mouse.\"\n\nHow should you read this?",
+          "prompt": "'Help!' cried the little mouse.\n\nHow should you read this?",
           "choices": [
             "In a calm, quiet voice",
             "In a loud, scared voice",
@@ -1949,7 +1949,7 @@
         {
           "id": "RF.1.4c-Q1",
           "type": "multiple_choice",
-          "prompt": "📖 \"The bird flew over the _____.\" \n\nWhich word makes sense?",
+          "prompt": "The bird flew over the _____.\n\nWhich word makes sense?",
           "choices": [
             "tree",
             "book",
@@ -1981,7 +1981,7 @@
         {
           "id": "RF.1.4c-Q3",
           "type": "multiple_choice",
-          "prompt": "📖 \"I drank a glass of _____.\" \n\nWhich word makes sense?",
+          "prompt": "I drank a glass of _____.\n\nWhich word makes sense?",
           "choices": [
             "milk",
             "rocks",
@@ -2013,7 +2013,7 @@
         {
           "id": "RF.1.4c-Q5",
           "type": "multiple_choice",
-          "prompt": "📖 \"The sun is very _____.\"\n\nWhich word fits?",
+          "prompt": "The sun is very _____.\n\nWhich word fits?",
           "choices": [
             "cold",
             "bright",
@@ -2037,7 +2037,7 @@
         {
           "id": "L.1.4-Q1",
           "type": "multiple_choice",
-          "prompt": "📖 \"The tiny ant carried a big crumb.\"\n\nWhat does tiny mean?",
+          "prompt": "The tiny ant carried a big crumb.\n\nWhat does tiny mean?",
           "choices": [
             "Big",
             "Very small",
@@ -2053,7 +2053,7 @@
         {
           "id": "L.1.4-Q2",
           "type": "multiple_choice",
-          "prompt": "📖 \"She was furious when someone broke her toy.\"\n\nWhat does furious mean?",
+          "prompt": "She was furious when someone broke her toy.\n\nWhat does furious mean?",
           "choices": [
             "Happy",
             "Very angry",
@@ -2085,7 +2085,7 @@
         {
           "id": "L.1.4-Q4",
           "type": "multiple_choice",
-          "prompt": "📖 \"The road was slippery after the rain.\"\n\nWhat does slippery mean?",
+          "prompt": "The road was slippery after the rain.\n\nWhat does slippery mean?",
           "choices": [
             "Dry",
             "Easy to slide on",
@@ -2101,7 +2101,7 @@
         {
           "id": "L.1.4-Q5",
           "type": "multiple_choice",
-          "prompt": "📖 \"She peeked through the window to see if it was raining.\"\n\nWhat does peeked mean?",
+          "prompt": "She peeked through the window to see if it was raining.\n\nWhat does peeked mean?",
           "choices": [
             "Listened carefully",
             "Looked quickly",
@@ -2125,7 +2125,7 @@
         {
           "id": "L.1.4a-Q1",
           "type": "multiple_choice",
-          "prompt": "📖 \"The dog was famished, so he ate all his food very fast.\"\n\nWhat does famished mean?",
+          "prompt": "The dog was famished, so he ate all his food very fast.\n\nWhat does famished mean?",
           "choices": [
             "Full",
             "Very hungry",
@@ -2141,7 +2141,7 @@
         {
           "id": "L.1.4a-Q2",
           "type": "multiple_choice",
-          "prompt": "📖 \"It was sweltering outside, so we stayed in the cool house.\"\n\nWhat does sweltering mean?",
+          "prompt": "It was sweltering outside, so we stayed in the cool house.\n\nWhat does sweltering mean?",
           "choices": [
             "Very cold",
             "Very hot",
@@ -2157,7 +2157,7 @@
         {
           "id": "L.1.4a-Q3",
           "type": "multiple_choice",
-          "prompt": "📖 \"The cheerful girl was always smiling and laughing.\"\n\nWhat does cheerful mean?",
+          "prompt": "The cheerful girl was always smiling and laughing.\n\nWhat does cheerful mean?",
           "choices": [
             "Sad",
             "Happy",
@@ -2173,7 +2173,7 @@
         {
           "id": "L.1.4a-Q4",
           "type": "multiple_choice",
-          "prompt": "📖 \"He was exhausted after running all day, so he went straight to bed.\"\n\nWhat does exhausted mean?",
+          "prompt": "He was exhausted after running all day, so he went straight to bed.\n\nWhat does exhausted mean?",
           "choices": [
             "Excited",
             "Very tired",
@@ -2189,7 +2189,7 @@
         {
           "id": "L.1.4a-Q5",
           "type": "multiple_choice",
-          "prompt": "📖 \"The timid rabbit hid behind the bush when it heard a loud noise.\"\n\nWhat does timid mean?",
+          "prompt": "The timid rabbit hid behind the bush when it heard a loud noise.\n\nWhat does timid mean?",
           "choices": [
             "Brave",
             "Fast",

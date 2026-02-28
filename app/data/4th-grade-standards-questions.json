@@ -11,7 +11,7 @@
         {
           "id": "RL.4.1-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"Elena clutched her telescope and crept onto the rooftop. The city lights dimmed the stars, but she knew exactly where to look. At 9:47 PM, a streak of light raced across the sky — the comet her grandfather had told her about.\"\n\nWhat can you infer about Elena's grandfather?",
+          "prompt": "Elena clutched her telescope and crept onto the rooftop. The city lights dimmed the stars, but she knew exactly where to look. At 9:47 PM, a streak of light raced across the sky — the comet her grandfather had told her about.\n\nWhat can you infer about Elena's grandfather?",
           "choices": [
             "He doesn't like stars",
             "He shared his knowledge of astronomy with Elena",
@@ -27,7 +27,7 @@
         {
           "id": "RL.4.1-Q2",
           "type": "multiple_choice",
-          "prompt": "Read: \"The letter had been folded and refolded so many times that the creases were soft as fabric. Marcus kept it in his front pocket, close to his chest, even though he'd memorized every word.\"\n\nWhat can you infer about how Marcus feels about the letter?",
+          "prompt": "The letter had been folded and refolded so many times that the creases were soft as fabric. Marcus kept it in his front pocket, close to his chest, even though he'd memorized every word.\n\nWhat can you infer about how Marcus feels about the letter?",
           "choices": [
             "He wants to throw it away",
             "It's extremely important and meaningful to him",
@@ -43,7 +43,7 @@
         {
           "id": "RL.4.1-Q3",
           "type": "multiple_choice",
-          "prompt": "Read: \"Priya practiced her free throws every morning before school and every evening after dinner. On the day of tryouts, she was the only one who made all ten shots.\"\n\nWhat detail from the text BEST supports the idea that hard work pays off?",
+          "prompt": "Priya practiced her free throws every morning before school and every evening after dinner. On the day of tryouts, she was the only one who made all ten shots.\n\nWhat detail from the text BEST supports the idea that hard work pays off?",
           "choices": [
             "She practiced before school and after dinner",
             "She went to tryouts",
@@ -59,7 +59,7 @@
         {
           "id": "RL.4.1-Q4",
           "type": "multiple_choice",
-          "prompt": "Read: \"Dad hadn't said a word during the entire drive home. He gripped the steering wheel tightly, and his jaw was clenched. When they pulled into the driveway, he finally sighed and said, 'We'll talk about this inside.'\"\n\nWhat can you infer about Dad's mood?",
+          "prompt": "Dad hadn't said a word during the entire drive home. He gripped the steering wheel tightly, and his jaw was clenched. When they pulled into the driveway, he finally sighed and said, 'We'll talk about this inside.'\n\nWhat can you infer about Dad's mood?",
           "choices": [
             "He's happy and excited",
             "He's upset or frustrated about something",
@@ -75,7 +75,7 @@
         {
           "id": "RL.4.1-Q5",
           "type": "multiple_choice",
-          "prompt": "Read: \"The old bookshop smelled of leather and dust. Mrs. Tanaka knew every book by heart — where it sat, what it was about, who had loved it last. When the city announced the building would be torn down, she simply said, 'Books always find a new home.'\"\n\nWhat does Mrs. Tanaka's response reveal about her character?",
+          "prompt": "The old bookshop smelled of leather and dust. Mrs. Tanaka knew every book by heart — where it sat, what it was about, who had loved it last. When the city announced the building would be torn down, she simply said, 'Books always find a new home.'\n\nWhat does Mrs. Tanaka's response reveal about her character?",
           "choices": [
             "She doesn't care about the bookshop",
             "She's optimistic and resilient even in difficult times",
@@ -99,7 +99,7 @@
         {
           "id": "RL.4.2-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"Kai wanted to win the science fair more than anything. He worked alone, refusing help from his classmates. His project looked impressive but had a major flaw he hadn't noticed. Meanwhile, the team next to him — who had shared ideas and caught each other's mistakes — won first place.\"\n\nWhat is the theme?",
+          "prompt": "Kai wanted to win the science fair more than anything. He worked alone, refusing help from his classmates. His project looked impressive but had a major flaw he hadn't noticed. Meanwhile, the team next to him — who had shared ideas and caught each other's mistakes — won first place.\n\nWhat is the theme?",
           "choices": [
             "Science fairs are unfair",
             "Working alone is always best",
@@ -115,7 +115,7 @@
         {
           "id": "RL.4.2-Q2",
           "type": "multiple_choice",
-          "prompt": "Read: \"Amara was embarrassed by her grandmother's accent and old-fashioned clothes. She asked Grandma not to come to the school play. After the show, Amara saw her classmates laughing with their grandparents and felt a deep ache. She called Grandma that night and said, 'Next time, front row.'\"\n\nWhat is the theme?",
+          "prompt": "Amara was embarrassed by her grandmother's accent and old-fashioned clothes. She asked Grandma not to come to the school play. After the show, Amara saw her classmates laughing with their grandparents and felt a deep ache. She called Grandma that night and said, 'Next time, front row.'\n\nWhat is the theme?",
           "choices": [
             "School plays are boring",
             "Don't be ashamed of your family — appreciate them",
@@ -147,7 +147,7 @@
         {
           "id": "RL.4.2-Q4",
           "type": "multiple_choice",
-          "prompt": "Read: \"The tiny seed was carried by the wind past tall trees and mighty oaks. It landed in a crack between two rocks where nothing grew. But the seed pushed through anyway, and years later it became the only tree on that rocky hill.\"\n\nWhat is the theme?",
+          "prompt": "The tiny seed was carried by the wind past tall trees and mighty oaks. It landed in a crack between two rocks where nothing grew. But the seed pushed through anyway, and years later it became the only tree on that rocky hill.\n\nWhat is the theme?",
           "choices": [
             "Seeds need good soil",
             "Determination can help you thrive even in difficult conditions",
@@ -187,7 +187,7 @@
         {
           "id": "RL.4.3-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"Coach Reyes never raised her voice. When a player made a mistake, she'd kneel down, look them in the eye, and say, 'Tell me what you were thinking.' By season's end, every player said she was the best coach they'd ever had.\"\n\nWhich word BEST describes Coach Reyes?",
+          "prompt": "Coach Reyes never raised her voice. When a player made a mistake, she'd kneel down, look them in the eye, and say, 'Tell me what you were thinking.' By season's end, every player said she was the best coach they'd ever had.\n\nWhich word BEST describes Coach Reyes?",
           "choices": [
             "Strict",
             "Impatient",
@@ -203,7 +203,7 @@
         {
           "id": "RL.4.3-Q2",
           "type": "multiple_choice",
-          "prompt": "Read: \"The marketplace buzzed with voices in a dozen languages. Spices piled in colorful mountains — saffron yellow, paprika red, turmeric orange. Somewhere a radio played scratchy music, and the smell of roasting lamb drifted through the narrow aisles.\"\n\nThe author uses these details to create a setting that feels —",
+          "prompt": "The marketplace buzzed with voices in a dozen languages. Spices piled in colorful mountains — saffron yellow, paprika red, turmeric orange. Somewhere a radio played scratchy music, and the smell of roasting lamb drifted through the narrow aisles.\n\nThe author uses these details to create a setting that feels —",
           "choices": [
             "Quiet and lonely",
             "Vibrant, busy, and full of sensory experiences",
@@ -219,7 +219,7 @@
         {
           "id": "RL.4.3-Q3",
           "type": "multiple_choice",
-          "prompt": "Read: \"Jordan's hands trembled as he opened the envelope. His eyes scanned the page, then widened. He read it again. Then a third time. Then he let out a whoop so loud the neighbors' dog started barking.\"\n\nWhat can you infer about the letter's contents?",
+          "prompt": "Jordan's hands trembled as he opened the envelope. His eyes scanned the page, then widened. He read it again. Then a third time. Then he let out a whoop so loud the neighbors' dog started barking.\n\nWhat can you infer about the letter's contents?",
           "choices": [
             "Bad news",
             "Very good news",
@@ -251,7 +251,7 @@
         {
           "id": "RL.4.3-Q5",
           "type": "multiple_choice",
-          "prompt": "Read: \"The abandoned lighthouse stood at the edge of the cliff, its paint peeling like sunburned skin. Waves crashed against the rocks below, sending spray twenty feet into the air. Inside, the spiral staircase groaned under the weight of years.\"\n\nThe setting creates a mood that is —",
+          "prompt": "The abandoned lighthouse stood at the edge of the cliff, its paint peeling like sunburned skin. Waves crashed against the rocks below, sending spray twenty feet into the air. Inside, the spiral staircase groaned under the weight of years.\n\nThe setting creates a mood that is —",
           "choices": [
             "Cheerful and bright",
             "Eerie and isolated",
@@ -275,7 +275,7 @@
         {
           "id": "RL.4.4-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"She had the Midas touch — every business she started turned into gold.\"\n\nThis allusion to King Midas means —",
+          "prompt": "She had the Midas touch — every business she started turned into gold.\n\nThis allusion to King Midas means —",
           "choices": [
             "She literally turned things to gold",
             "Everything she did became successful",
@@ -291,7 +291,7 @@
         {
           "id": "RL.4.4-Q2",
           "type": "multiple_choice",
-          "prompt": "Read: \"Cleaning out the garage was a Herculean task.\"\n\nThis allusion to Hercules means the task was —",
+          "prompt": "Cleaning out the garage was a Herculean task.\n\nThis allusion to Hercules means the task was —",
           "choices": [
             "Easy and quick",
             "Extremely difficult and required great effort",
@@ -307,7 +307,7 @@
         {
           "id": "RL.4.4-Q3",
           "type": "multiple_choice",
-          "prompt": "Read: \"The morning light tiptoed through the curtains.\"\n\nWhat does 'tiptoed' suggest about the light?",
+          "prompt": "The morning light tiptoed through the curtains.\n\nWhat does 'tiptoed' suggest about the light?",
           "choices": [
             "It was very bright and harsh",
             "It entered gently and softly",
@@ -323,7 +323,7 @@
         {
           "id": "RL.4.4-Q4",
           "type": "multiple_choice",
-          "prompt": "Read: \"His Achilles' heel was his temper — it always got him into trouble.\"\n\nAn 'Achilles' heel' refers to —",
+          "prompt": "His Achilles' heel was his temper — it always got him into trouble.\n\nAn 'Achilles' heel' refers to —",
           "choices": [
             "A foot injury",
             "A person's greatest weakness or vulnerability",
@@ -339,7 +339,7 @@
         {
           "id": "RL.4.4-Q5",
           "type": "multiple_choice",
-          "prompt": "Read: \"The silence in the library was so thick you could cut it with a knife.\"\n\nThis phrase means —",
+          "prompt": "The silence in the library was so thick you could cut it with a knife.\n\nThis phrase means —",
           "choices": [
             "Someone had a knife in the library",
             "The silence was intense and heavy",
@@ -451,7 +451,7 @@
         {
           "id": "RL.4.6-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"I couldn't believe my eyes when I opened the door.\"\n\nThis is written in —",
+          "prompt": "I couldn't believe my eyes when I opened the door.\n\nThis is written in —",
           "choices": [
             "First person",
             "Second person",
@@ -467,7 +467,7 @@
         {
           "id": "RL.4.6-Q2",
           "type": "multiple_choice",
-          "prompt": "Read: \"Sarah couldn't believe her eyes when she opened the door.\"\n\nThis is written in —",
+          "prompt": "Sarah couldn't believe her eyes when she opened the door.\n\nThis is written in —",
           "choices": [
             "First person",
             "Second person",
@@ -715,7 +715,7 @@
         {
           "id": "RL.4.10-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"Nobody knew where the music came from. Every night at midnight, a violin played from somewhere deep in the woods. The townspeople locked their doors and whispered about ghosts. Only young Alma grabbed her lantern and followed the sound.\"\n\nWhat does Alma's action reveal about her?",
+          "prompt": "Nobody knew where the music came from. Every night at midnight, a violin played from somewhere deep in the woods. The townspeople locked their doors and whispered about ghosts. Only young Alma grabbed her lantern and followed the sound.\n\nWhat does Alma's action reveal about her?",
           "choices": [
             "She's foolish and doesn't listen",
             "She's curious and braver than the other townspeople",
@@ -731,7 +731,7 @@
         {
           "id": "RL.4.10-Q2",
           "type": "multiple_choice",
-          "prompt": "Read: \"The treaty was signed on a Tuesday. By Wednesday, the two kingdoms had already broken it. 'Peace,' the old queen muttered, 'is harder to keep than to promise.'\"\n\nWhat is the queen's message about peace?",
+          "prompt": "The treaty was signed on a Tuesday. By Wednesday, the two kingdoms had already broken it. 'Peace,' the old queen muttered, 'is harder to keep than to promise.'\n\nWhat is the queen's message about peace?",
           "choices": [
             "Peace is easy",
             "Making peace is simple but maintaining it is the real challenge",
@@ -747,7 +747,7 @@
         {
           "id": "RL.4.10-Q3",
           "type": "multiple_choice",
-          "prompt": "Read: \"Theo didn't notice the first leaf fall. Or the second. But by the time the maple tree was half bare, he understood what his grandmother meant when she said, 'Change happens slowly, then all at once.'\"\n\nWhat is Grandmother's saying about?",
+          "prompt": "Theo didn't notice the first leaf fall. Or the second. But by the time the maple tree was half bare, he understood what his grandmother meant when she said, 'Change happens slowly, then all at once.'\n\nWhat is Grandmother's saying about?",
           "choices": [
             "Only about trees losing leaves",
             "How change in life can be gradual then suddenly obvious",
@@ -763,7 +763,7 @@
         {
           "id": "RL.4.10-Q4",
           "type": "multiple_choice",
-          "prompt": "Read: \"Zuri had two rules: never break a promise, and always carry a pencil. 'You never know,' she said, 'when you'll need to write something down before you forget it — or before someone tries to make you forget.'\"\n\nWhat does the second rule suggest about Zuri?",
+          "prompt": "Zuri had two rules: never break a promise, and always carry a pencil. 'You never know,' she said, 'when you'll need to write something down before you forget it — or before someone tries to make you forget.'\n\nWhat does the second rule suggest about Zuri?",
           "choices": [
             "She likes drawing",
             "She values truth and recording important things",
@@ -779,7 +779,7 @@
         {
           "id": "RL.4.10-Q5",
           "type": "multiple_choice",
-          "prompt": "Read: \"The ship had been at sea for thirty-seven days. Fresh water was running low, and the crew whispered about turning back. Captain Adaeze stood at the bow, eyes fixed on the horizon. 'Land by sunrise,' she said. Nobody believed her. But at dawn, there it was.\"\n\nWhat theme does this passage suggest?",
+          "prompt": "The ship had been at sea for thirty-seven days. Fresh water was running low, and the crew whispered about turning back. Captain Adaeze stood at the bow, eyes fixed on the horizon. 'Land by sunrise,' she said. Nobody believed her. But at dawn, there it was.\n\nWhat theme does this passage suggest?",
           "choices": [
             "Ships are dangerous",
             "Faith and determination can lead you through doubt",
@@ -803,7 +803,7 @@
         {
           "id": "RI.4.1-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"The International Space Station orbits Earth at approximately 17,500 miles per hour. At this speed, astronauts experience 16 sunrises and 16 sunsets every 24 hours.\"\n\nWhat detail explains why astronauts see so many sunrises?",
+          "prompt": "The International Space Station orbits Earth at approximately 17,500 miles per hour. At this speed, astronauts experience 16 sunrises and 16 sunsets every 24 hours.\n\nWhat detail explains why astronauts see so many sunrises?",
           "choices": [
             "The station is large",
             "It orbits at 17,500 mph, completing an orbit roughly every 90 minutes",
@@ -819,7 +819,7 @@
         {
           "id": "RI.4.1-Q2",
           "type": "multiple_choice",
-          "prompt": "Read: \"Jane Goodall arrived in Tanzania in 1960 with no formal training in science. Within months, she observed chimpanzees using sticks as tools to extract termites — a discovery that changed our understanding of what makes humans unique.\"\n\nWhat inference can you make about why this discovery was so important?",
+          "prompt": "Jane Goodall arrived in Tanzania in 1960 with no formal training in science. Within months, she observed chimpanzees using sticks as tools to extract termites — a discovery that changed our understanding of what makes humans unique.\n\nWhat inference can you make about why this discovery was so important?",
           "choices": [
             "People didn't know about termites before",
             "Scientists previously believed only humans used tools",
@@ -835,7 +835,7 @@
         {
           "id": "RI.4.1-Q3",
           "type": "multiple_choice",
-          "prompt": "Read: \"Honeybees communicate through a 'waggle dance.' A bee returning from a food source dances in a figure-eight pattern. The angle of the dance indicates the direction of the food relative to the sun.\"\n\nWhat specific detail tells you HOW bees show direction?",
+          "prompt": "Honeybees communicate through a 'waggle dance.' A bee returning from a food source dances in a figure-eight pattern. The angle of the dance indicates the direction of the food relative to the sun.\n\nWhat specific detail tells you HOW bees show direction?",
           "choices": [
             "They dance in a circle",
             "The angle of the dance relative to the sun",
@@ -851,7 +851,7 @@
         {
           "id": "RI.4.1-Q4",
           "type": "multiple_choice",
-          "prompt": "Read: \"During the California Gold Rush of 1849, most miners didn't get rich from gold. However, merchants who sold pickaxes, shovels, and jeans to the miners made fortunes.\"\n\nWhat can you infer from this passage?",
+          "prompt": "During the California Gold Rush of 1849, most miners didn't get rich from gold. However, merchants who sold pickaxes, shovels, and jeans to the miners made fortunes.\n\nWhat can you infer from this passage?",
           "choices": [
             "Gold was easy to find",
             "Selling supplies to miners was more profitable than mining itself",
@@ -891,7 +891,7 @@
         {
           "id": "RI.4.2-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"Plastic pollution is devastating ocean ecosystems. Over 8 million tons of plastic enter the oceans each year. Sea turtles mistake plastic bags for jellyfish. Microplastics have been found in fish that humans eat.\"\n\nWhat is the main idea?",
+          "prompt": "Plastic pollution is devastating ocean ecosystems. Over 8 million tons of plastic enter the oceans each year. Sea turtles mistake plastic bags for jellyfish. Microplastics have been found in fish that humans eat.\n\nWhat is the main idea?",
           "choices": [
             "Sea turtles eat jellyfish",
             "Fish contain microplastics",
@@ -907,7 +907,7 @@
         {
           "id": "RI.4.2-Q2",
           "type": "multiple_choice",
-          "prompt": "Read: \"Ancient Rome's road system was an engineering marvel. Roman roads were built in layers — gravel, sand, and paving stones — designed to last centuries. Over 250,000 miles of roads connected the empire. Many of these roads are still visible today.\"\n\nWhich detail BEST supports the main idea that Roman roads were remarkable?",
+          "prompt": "Ancient Rome's road system was an engineering marvel. Roman roads were built in layers — gravel, sand, and paving stones — designed to last centuries. Over 250,000 miles of roads connected the empire. Many of these roads are still visible today.\n\nWhich detail BEST supports the main idea that Roman roads were remarkable?",
           "choices": [
             "Roads were made of gravel",
             "Many roads are still visible centuries later",
@@ -939,7 +939,7 @@
         {
           "id": "RI.4.2-Q4",
           "type": "multiple_choice",
-          "prompt": "Read: \"Exercise benefits the brain in multiple ways. Physical activity increases blood flow to the brain, delivering more oxygen. It also triggers the release of chemicals that improve mood and focus. Studies show students who exercise regularly perform better academically.\"\n\nHow does the detail about students support the main idea?",
+          "prompt": "Exercise benefits the brain in multiple ways. Physical activity increases blood flow to the brain, delivering more oxygen. It also triggers the release of chemicals that improve mood and focus. Studies show students who exercise regularly perform better academically.\n\nHow does the detail about students support the main idea?",
           "choices": [
             "It changes the topic",
             "It provides real-world evidence that exercise helps brains work better",
@@ -955,7 +955,7 @@
         {
           "id": "RI.4.2-Q5",
           "type": "multiple_choice",
-          "prompt": "Read: \"Paragraph 1: Renewable energy sources like solar and wind are growing rapidly. Paragraph 2: Solar panel costs have dropped 89% since 2010. Paragraph 3: Wind energy now powers millions of homes.\"\n\nThe main idea of the ENTIRE passage is —",
+          "prompt": "Paragraph 1: Renewable energy sources like solar and wind are growing rapidly. Paragraph 2: Solar panel costs have dropped 89% since 2010. Paragraph 3: Wind energy now powers millions of homes.\n\nThe main idea of the ENTIRE passage is —",
           "choices": [
             "Solar panels are cheap",
             "Wind energy is popular",
@@ -979,7 +979,7 @@
         {
           "id": "RI.4.3-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"In 1773, American colonists were furious about being taxed by Britain without representation in Parliament. A group of colonists disguised as Native Americans boarded British ships and dumped 342 chests of tea into Boston Harbor.\"\n\nWhat caused the Boston Tea Party?",
+          "prompt": "In 1773, American colonists were furious about being taxed by Britain without representation in Parliament. A group of colonists disguised as Native Americans boarded British ships and dumped 342 chests of tea into Boston Harbor.\n\nWhat caused the Boston Tea Party?",
           "choices": [
             "The colonists wanted free tea",
             "Anger over taxation without representation",
@@ -995,7 +995,7 @@
         {
           "id": "RI.4.3-Q2",
           "type": "multiple_choice",
-          "prompt": "Read: \"Vaccines work by introducing a weakened or inactive form of a virus to the body. The immune system learns to recognize and fight the virus. If the person is later exposed to the real virus, their body already knows how to defeat it.\"\n\nExplain the SEQUENCE of how vaccines work:",
+          "prompt": "Vaccines work by introducing a weakened or inactive form of a virus to the body. The immune system learns to recognize and fight the virus. If the person is later exposed to the real virus, their body already knows how to defeat it.\n\nExplain the SEQUENCE of how vaccines work:",
           "choices": [
             "Real virus enters → immune system fights → vaccine given",
             "Vaccine introduces weak virus → immune system learns to fight it → body is prepared for the real virus",
@@ -1011,7 +1011,7 @@
         {
           "id": "RI.4.3-Q3",
           "type": "multiple_choice",
-          "prompt": "Read: \"The invention of the printing press in 1440 made books affordable for the first time. Before that, books were copied by hand, making them rare and expensive. As books became accessible, literacy rates soared across Europe.\"\n\nWhat was the EFFECT of the printing press on literacy?",
+          "prompt": "The invention of the printing press in 1440 made books affordable for the first time. Before that, books were copied by hand, making them rare and expensive. As books became accessible, literacy rates soared across Europe.\n\nWhat was the EFFECT of the printing press on literacy?",
           "choices": [
             "Literacy decreased",
             "Literacy rates soared because books became accessible",
@@ -1027,7 +1027,7 @@
         {
           "id": "RI.4.3-Q4",
           "type": "multiple_choice",
-          "prompt": "Read: \"Photosynthesis occurs in the leaves of plants. Chlorophyll in the leaves absorbs sunlight. The plant combines this energy with water from the roots and carbon dioxide from the air to produce glucose and oxygen.\"\n\nWhat are the INPUTS (ingredients) of photosynthesis?",
+          "prompt": "Photosynthesis occurs in the leaves of plants. Chlorophyll in the leaves absorbs sunlight. The plant combines this energy with water from the roots and carbon dioxide from the air to produce glucose and oxygen.\n\nWhat are the INPUTS (ingredients) of photosynthesis?",
           "choices": [
             "Glucose and oxygen",
             "Sunlight, water, and carbon dioxide",
@@ -1067,7 +1067,7 @@
         {
           "id": "RI.4.4-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"The archaeologist carefully excavated the site, removing layers of dirt to reveal ancient pottery buried for thousands of years.\"\n\nWhat does 'excavated' mean?",
+          "prompt": "The archaeologist carefully excavated the site, removing layers of dirt to reveal ancient pottery buried for thousands of years.\n\nWhat does 'excavated' mean?",
           "choices": [
             "Covered up",
             "Dug up carefully",
@@ -1083,7 +1083,7 @@
         {
           "id": "RI.4.4-Q2",
           "type": "multiple_choice",
-          "prompt": "Read: \"The legislative branch of government is responsible for making laws. Congress, made up of the Senate and House of Representatives, is the legislative branch.\"\n\nWhat does 'legislative' relate to?",
+          "prompt": "The legislative branch of government is responsible for making laws. Congress, made up of the Senate and House of Representatives, is the legislative branch.\n\nWhat does 'legislative' relate to?",
           "choices": [
             "Enforcing laws",
             "Making laws",
@@ -1099,7 +1099,7 @@
         {
           "id": "RI.4.4-Q3",
           "type": "multiple_choice",
-          "prompt": "Read: \"The ecosystem was thriving — diverse species of plants and animals coexisted in a balanced, interdependent community.\"\n\nWhat does 'interdependent' mean?",
+          "prompt": "The ecosystem was thriving — diverse species of plants and animals coexisted in a balanced, interdependent community.\n\nWhat does 'interdependent' mean?",
           "choices": [
             "Living alone",
             "Depending on each other",
@@ -1115,7 +1115,7 @@
         {
           "id": "RI.4.4-Q4",
           "type": "multiple_choice",
-          "prompt": "Read: \"The metamorphosis of a caterpillar into a butterfly involves a complete transformation of the insect's body.\"\n\nWhat does 'metamorphosis' mean?",
+          "prompt": "The metamorphosis of a caterpillar into a butterfly involves a complete transformation of the insect's body.\n\nWhat does 'metamorphosis' mean?",
           "choices": [
             "A type of butterfly",
             "A dramatic change in form",
@@ -1131,7 +1131,7 @@
         {
           "id": "RI.4.4-Q5",
           "type": "multiple_choice",
-          "prompt": "Read: \"The drought caused widespread famine. Crops withered in the fields, and livestock had no grass to eat. Thousands of people faced severe hunger.\"\n\nWhat does 'famine' mean?",
+          "prompt": "The drought caused widespread famine. Crops withered in the fields, and livestock had no grass to eat. Thousands of people faced severe hunger.\n\nWhat does 'famine' mean?",
           "choices": [
             "A type of storm",
             "Extreme widespread hunger",
@@ -1203,7 +1203,7 @@
         {
           "id": "RI.4.5-Q4",
           "type": "multiple_choice",
-          "prompt": "Read: \"Because the temperature dropped below freezing, the pipes burst. As a result, the basement flooded.\"\n\nThis is an example of —",
+          "prompt": "Because the temperature dropped below freezing, the pipes burst. As a result, the basement flooded.\n\nThis is an example of —",
           "choices": [
             "Compare and contrast",
             "Problem and solution",
@@ -1419,7 +1419,7 @@
         {
           "id": "RI.4.8-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"Schools should offer more art classes. Studies show that students in art programs score higher on standardized tests. Art also teaches creativity, problem-solving, and collaboration.\"\n\nThe author supports their point with —",
+          "prompt": "Schools should offer more art classes. Studies show that students in art programs score higher on standardized tests. Art also teaches creativity, problem-solving, and collaboration.\n\nThe author supports their point with —",
           "choices": [
             "Personal opinions only",
             "Research studies and specific skills art teaches",
@@ -1451,7 +1451,7 @@
         {
           "id": "RI.4.8-Q3",
           "type": "multiple_choice",
-          "prompt": "Read: \"Endangered species need stronger legal protections. The bald eagle was nearly extinct until the Endangered Species Act helped its population recover from 417 pairs in 1963 to over 316,000 today.\"\n\nHow does the bald eagle example support the author's point?",
+          "prompt": "Endangered species need stronger legal protections. The bald eagle was nearly extinct until the Endangered Species Act helped its population recover from 417 pairs in 1963 to over 316,000 today.\n\nHow does the bald eagle example support the author's point?",
           "choices": [
             "It shows eagles are pretty",
             "It proves that legal protections actually work to save species",
@@ -1595,7 +1595,7 @@
         {
           "id": "RI.4.10-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"The human brain weighs about three pounds but uses roughly 20% of the body's total energy. It contains approximately 86 billion neurons, each connected to thousands of others, forming a network more complex than any computer ever built.\"\n\nWhat comparison does the author make to emphasize the brain's complexity?",
+          "prompt": "The human brain weighs about three pounds but uses roughly 20% of the body's total energy. It contains approximately 86 billion neurons, each connected to thousands of others, forming a network more complex than any computer ever built.\n\nWhat comparison does the author make to emphasize the brain's complexity?",
           "choices": [
             "Comparing it to a muscle",
             "Comparing it to a computer",
@@ -1611,7 +1611,7 @@
         {
           "id": "RI.4.10-Q2",
           "type": "multiple_choice",
-          "prompt": "Read: \"The Dead Sea, located between Israel and Jordan, is nearly ten times saltier than the ocean. This extreme salinity means no fish or plants can survive in it — hence the name. However, the mineral-rich mud and water have been used for health treatments for thousands of years.\"\n\nWhat is ironic about the Dead Sea?",
+          "prompt": "The Dead Sea, located between Israel and Jordan, is nearly ten times saltier than the ocean. This extreme salinity means no fish or plants can survive in it — hence the name. However, the mineral-rich mud and water have been used for health treatments for thousands of years.\n\nWhat is ironic about the Dead Sea?",
           "choices": [
             "It's not really a sea",
             "Despite being called 'dead,' it has been valuable for human health for millennia",
@@ -1627,7 +1627,7 @@
         {
           "id": "RI.4.10-Q3",
           "type": "multiple_choice",
-          "prompt": "Read: \"In 1983, Dr. Sally Ride became the first American woman in space. She later founded Sally Ride Science, an organization encouraging girls to pursue careers in science, technology, engineering, and math.\"\n\nWhat does this tell you about Dr. Ride's priorities?",
+          "prompt": "In 1983, Dr. Sally Ride became the first American woman in space. She later founded Sally Ride Science, an organization encouraging girls to pursue careers in science, technology, engineering, and math.\n\nWhat does this tell you about Dr. Ride's priorities?",
           "choices": [
             "She only cared about her own career",
             "She wanted to inspire the next generation, especially girls, to follow in her footsteps",
@@ -1643,7 +1643,7 @@
         {
           "id": "RI.4.10-Q4",
           "type": "multiple_choice",
-          "prompt": "Read: \"Bamboo is one of the fastest-growing plants on Earth, capable of growing up to 35 inches in a single day. It's also incredibly strong — pound for pound, bamboo has a greater tensile strength than steel.\"\n\nWhy might bamboo be considered a 'super-plant'?",
+          "prompt": "Bamboo is one of the fastest-growing plants on Earth, capable of growing up to 35 inches in a single day. It's also incredibly strong — pound for pound, bamboo has a greater tensile strength than steel.\n\nWhy might bamboo be considered a 'super-plant'?",
           "choices": [
             "It's green",
             "It grows extremely fast AND is stronger than steel by weight",
@@ -1659,7 +1659,7 @@
         {
           "id": "RI.4.10-Q5",
           "type": "multiple_choice",
-          "prompt": "Read: \"The Library of Alexandria, built around 300 BCE in Egypt, was the ancient world's greatest center of learning. Scholars from across the Mediterranean came to study its estimated 400,000 scrolls. When it was eventually destroyed, countless works of ancient knowledge were lost forever.\"\n\nWhat makes the Library's destruction significant?",
+          "prompt": "The Library of Alexandria, built around 300 BCE in Egypt, was the ancient world's greatest center of learning. Scholars from across the Mediterranean came to study its estimated 400,000 scrolls. When it was eventually destroyed, countless works of ancient knowledge were lost forever.\n\nWhat makes the Library's destruction significant?",
           "choices": [
             "It was in Egypt",
             "Irreplaceable knowledge accumulated over centuries was permanently lost",
@@ -1947,7 +1947,7 @@
         {
           "id": "L.4.4-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"The company decided to table the discussion until next week's meeting.\"\n\nIn this sentence, 'table' means —",
+          "prompt": "The company decided to table the discussion until next week's meeting.\n\nIn this sentence, 'table' means —",
           "choices": [
             "A piece of furniture",
             "To postpone or delay",
@@ -1963,7 +1963,7 @@
         {
           "id": "L.4.4-Q2",
           "type": "multiple_choice",
-          "prompt": "Read: \"After the long hike, the exhausted climbers sought refuge in a mountain cabin.\"\n\nWhat does 'refuge' mean?",
+          "prompt": "After the long hike, the exhausted climbers sought refuge in a mountain cabin.\n\nWhat does 'refuge' mean?",
           "choices": [
             "Food",
             "A safe place or shelter",
@@ -1995,7 +1995,7 @@
         {
           "id": "L.4.4-Q4",
           "type": "multiple_choice",
-          "prompt": "Read: \"The philanthropist donated millions to build schools in underserved communities.\"\n\nUsing the Greek roots 'phil' (love) and 'anthrop' (human), a philanthropist is someone who —",
+          "prompt": "The philanthropist donated millions to build schools in underserved communities.\n\nUsing the Greek roots 'phil' (love) and 'anthrop' (human), a philanthropist is someone who —",
           "choices": [
             "Studies philosophy",
             "Loves helping humanity through generous donations",
@@ -2035,7 +2035,7 @@
         {
           "id": "L.4.4a-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"The unprecedented snowstorm shut down the entire city — nothing like it had ever happened before.\"\n\nWhat does 'unprecedented' mean?",
+          "prompt": "The unprecedented snowstorm shut down the entire city — nothing like it had ever happened before.\n\nWhat does 'unprecedented' mean?",
           "choices": [
             "Expected",
             "Never happened before",
@@ -2051,7 +2051,7 @@
         {
           "id": "L.4.4a-Q2",
           "type": "multiple_choice",
-          "prompt": "Read: \"The resilient community rebuilt their homes after the hurricane, stronger than before.\"\n\nWhat does 'resilient' mean?",
+          "prompt": "The resilient community rebuilt their homes after the hurricane, stronger than before.\n\nWhat does 'resilient' mean?",
           "choices": [
             "Weak and defeated",
             "Able to recover and bounce back",
@@ -2067,7 +2067,7 @@
         {
           "id": "L.4.4a-Q3",
           "type": "multiple_choice",
-          "prompt": "Read: \"Her meticulous notes included every detail — dates, names, page numbers, and color-coded tabs.\"\n\nWhat does 'meticulous' mean?",
+          "prompt": "Her meticulous notes included every detail — dates, names, page numbers, and color-coded tabs.\n\nWhat does 'meticulous' mean?",
           "choices": [
             "Messy and disorganized",
             "Extremely careful and thorough",
@@ -2083,7 +2083,7 @@
         {
           "id": "L.4.4a-Q4",
           "type": "multiple_choice",
-          "prompt": "Read: \"The two countries formed an alliance, agreeing to protect each other in times of war.\"\n\nAn 'alliance' is —",
+          "prompt": "The two countries formed an alliance, agreeing to protect each other in times of war.\n\nAn 'alliance' is —",
           "choices": [
             "A battle between countries",
             "A partnership or agreement to work together",
@@ -2099,7 +2099,7 @@
         {
           "id": "L.4.4a-Q5",
           "type": "multiple_choice",
-          "prompt": "Read: \"The verbose speaker went on for two hours, using far more words than necessary to make simple points.\"\n\nWhat does 'verbose' mean?",
+          "prompt": "The verbose speaker went on for two hours, using far more words than necessary to make simple points.\n\nWhat does 'verbose' mean?",
           "choices": [
             "Quiet",
             "Using too many words",
@@ -2299,7 +2299,7 @@
         {
           "id": "L.4.5-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"The news hit her like a ton of bricks.\"\n\nThis is an example of —",
+          "prompt": "The news hit her like a ton of bricks.\n\nThis is an example of —",
           "choices": [
             "A metaphor",
             "A simile",
@@ -2315,7 +2315,7 @@
         {
           "id": "L.4.5-Q2",
           "type": "multiple_choice",
-          "prompt": "Read: \"The world is a stage, and we are merely players.\"\n\nThis is an example of —",
+          "prompt": "The world is a stage, and we are merely players.\n\nThis is an example of —",
           "choices": [
             "A simile",
             "A metaphor",
@@ -2347,7 +2347,7 @@
         {
           "id": "L.4.5-Q4",
           "type": "multiple_choice",
-          "prompt": "Read: \"The old car coughed and sputtered before finally dying on the side of the road.\"\n\nThis is an example of —",
+          "prompt": "The old car coughed and sputtered before finally dying on the side of the road.\n\nThis is an example of —",
           "choices": [
             "Simile",
             "Personification",
@@ -2387,7 +2387,7 @@
         {
           "id": "L.4.5a-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"Her smile was as bright as the sun.\"\n\nThis simile compares —",
+          "prompt": "Her smile was as bright as the sun.\n\nThis simile compares —",
           "choices": [
             "Her smile to the moon",
             "Her smile to sunlight — both are bright and warm",
@@ -2403,7 +2403,7 @@
         {
           "id": "L.4.5a-Q2",
           "type": "multiple_choice",
-          "prompt": "Read: \"Time is money.\"\n\nThis metaphor means —",
+          "prompt": "Time is money.\n\nThis metaphor means —",
           "choices": [
             "You can buy time",
             "Time is valuable and shouldn't be wasted, just like money",
@@ -2419,7 +2419,7 @@
         {
           "id": "L.4.5a-Q3",
           "type": "multiple_choice",
-          "prompt": "Read: \"The dancer moved like water flowing over rocks.\"\n\nWhat quality of the dancer does this simile highlight?",
+          "prompt": "The dancer moved like water flowing over rocks.\n\nWhat quality of the dancer does this simile highlight?",
           "choices": [
             "She was wet",
             "She moved smoothly and gracefully",
@@ -2435,7 +2435,7 @@
         {
           "id": "L.4.5a-Q4",
           "type": "multiple_choice",
-          "prompt": "Read: \"He has a heart of stone.\"\n\nThis metaphor means —",
+          "prompt": "He has a heart of stone.\n\nThis metaphor means —",
           "choices": [
             "He needs a doctor",
             "He is cold, uncaring, and unfeeling",

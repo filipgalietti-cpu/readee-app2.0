@@ -11,7 +11,7 @@
         {
           "id": "RL.2.1-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"Mia woke up early on Saturday. She put on her boots and grabbed a basket. She walked to the garden and picked strawberries until the basket was full.\"\n\nWhere did Mia go?",
+          "prompt": "Mia woke up early on Saturday. She put on her boots and grabbed a basket. She walked to the garden and picked strawberries until the basket was full.\n\nWhere did Mia go?",
           "choices": [
             "The store",
             "The garden",
@@ -27,7 +27,7 @@
         {
           "id": "RL.2.1-Q2",
           "type": "multiple_choice",
-          "prompt": "Read: \"Leo's dog, Biscuit, loved to play fetch. Every afternoon, Leo would throw a tennis ball across the yard. Biscuit always brought it back, wagging his tail.\"\n\nWhat did Leo throw?",
+          "prompt": "Leo's dog, Biscuit, loved to play fetch. Every afternoon, Leo would throw a tennis ball across the yard. Biscuit always brought it back, wagging his tail.\n\nWhat did Leo throw?",
           "choices": [
             "A stick",
             "A frisbee",
@@ -43,7 +43,7 @@
         {
           "id": "RL.2.1-Q3",
           "type": "multiple_choice",
-          "prompt": "Read: \"On the first day of second grade, Emma felt nervous. She didn't know anyone in her new class. At lunch, a girl named Priya sat next to her and said, 'Want to share my crackers?'\"\n\nWhy was Emma nervous?",
+          "prompt": "On the first day of second grade, Emma felt nervous. She didn't know anyone in her new class. At lunch, a girl named Priya sat next to her and said, 'Want to share my crackers?'\n\nWhy was Emma nervous?",
           "choices": [
             "She forgot her lunch",
             "She didn't know anyone",
@@ -59,7 +59,7 @@
         {
           "id": "RL.2.1-Q4",
           "type": "multiple_choice",
-          "prompt": "Read: \"Grandpa and Tomas built a birdhouse together. They used wood, nails, and bright blue paint. They hung it on the oak tree in the backyard.\"\n\nWho helped Tomas build the birdhouse?",
+          "prompt": "Grandpa and Tomas built a birdhouse together. They used wood, nails, and bright blue paint. They hung it on the oak tree in the backyard.\n\nWho helped Tomas build the birdhouse?",
           "choices": [
             "His mom",
             "His teacher",
@@ -75,7 +75,7 @@
         {
           "id": "RL.2.1-Q5",
           "type": "multiple_choice",
-          "prompt": "Read: \"It was raining hard, so the soccer game was canceled. Ava was disappointed. Her dad said, 'Let's play board games instead!' They played three rounds of her favorite game.\"\n\nWhen was the soccer game canceled?",
+          "prompt": "It was raining hard, so the soccer game was canceled. Ava was disappointed. Her dad said, 'Let's play board games instead!' They played three rounds of her favorite game.\n\nWhen was the soccer game canceled?",
           "choices": [
             "When it was sunny",
             "When it was snowing",
@@ -99,7 +99,7 @@
         {
           "id": "RL.2.2-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"The ant worked all summer storing food. The grasshopper played and sang. When winter came, the ant had plenty to eat, but the grasshopper had nothing.\"\n\nWhat is the lesson of this story?",
+          "prompt": "The ant worked all summer storing food. The grasshopper played and sang. When winter came, the ant had plenty to eat, but the grasshopper had nothing.\n\nWhat is the lesson of this story?",
           "choices": [
             "Singing is fun",
             "It's good to plan ahead",
@@ -115,7 +115,7 @@
         {
           "id": "RL.2.2-Q2",
           "type": "multiple_choice",
-          "prompt": "Read: \"The tortoise and the hare had a race. The hare ran fast but stopped to nap. The tortoise kept going slowly and steadily. The tortoise crossed the finish line first.\"\n\nWhat is the moral of this story?",
+          "prompt": "The tortoise and the hare had a race. The hare ran fast but stopped to nap. The tortoise kept going slowly and steadily. The tortoise crossed the finish line first.\n\nWhat is the moral of this story?",
           "choices": [
             "Running fast always wins",
             "Slow and steady wins the race",
@@ -131,7 +131,7 @@
         {
           "id": "RL.2.2-Q3",
           "type": "multiple_choice",
-          "prompt": "Read: \"Rosa wanted the biggest piece of cake. She pushed ahead of everyone in line. Her friends were upset and didn't want to sit with her. Rosa wished she had waited her turn.\"\n\nWhat is the lesson of this story?",
+          "prompt": "Rosa wanted the biggest piece of cake. She pushed ahead of everyone in line. Her friends were upset and didn't want to sit with her. Rosa wished she had waited her turn.\n\nWhat is the lesson of this story?",
           "choices": [
             "Cake is delicious",
             "Being patient and fair matters",
@@ -147,7 +147,7 @@
         {
           "id": "RL.2.2-Q4",
           "type": "multiple_choice",
-          "prompt": "Read: \"A lion was caught in a hunter's net. A tiny mouse chewed through the ropes and set the lion free. The lion had once let the mouse go instead of eating it.\"\n\nWhat is the message of this story?",
+          "prompt": "A lion was caught in a hunter's net. A tiny mouse chewed through the ropes and set the lion free. The lion had once let the mouse go instead of eating it.\n\nWhat is the message of this story?",
           "choices": [
             "Lions are scary",
             "Even small friends can be a big help",
@@ -163,7 +163,7 @@
         {
           "id": "RL.2.2-Q5",
           "type": "multiple_choice",
-          "prompt": "Read: \"Ben bragged that he was the best speller in class. During the spelling bee, he didn't study and missed an easy word. His friend Kai, who had practiced every night, won.\"\n\nWhat is the central message?",
+          "prompt": "Ben bragged that he was the best speller in class. During the spelling bee, he didn't study and missed an easy word. His friend Kai, who had practiced every night, won.\n\nWhat is the central message?",
           "choices": [
             "Spelling is hard",
             "Hard work beats bragging",
@@ -187,7 +187,7 @@
         {
           "id": "RL.2.3-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"Lily's sandcastle was knocked down by a big wave. She felt sad at first, but then she smiled and said, 'I'll build an even bigger one!'\"\n\nHow did Lily respond to the challenge?",
+          "prompt": "Lily's sandcastle was knocked down by a big wave. She felt sad at first, but then she smiled and said, 'I'll build an even bigger one!'\n\nHow did Lily respond to the challenge?",
           "choices": [
             "She cried and gave up",
             "She decided to build a bigger one",
@@ -203,7 +203,7 @@
         {
           "id": "RL.2.3-Q2",
           "type": "multiple_choice",
-          "prompt": "Read: \"During the talent show, Jake forgot the words to his song. His face turned red. Then he took a deep breath and started over from the beginning.\"\n\nHow did Jake handle forgetting the words?",
+          "prompt": "During the talent show, Jake forgot the words to his song. His face turned red. Then he took a deep breath and started over from the beginning.\n\nHow did Jake handle forgetting the words?",
           "choices": [
             "He ran off the stage",
             "He started crying",
@@ -219,7 +219,7 @@
         {
           "id": "RL.2.3-Q3",
           "type": "multiple_choice",
-          "prompt": "Read: \"When the power went out during the storm, Maya was scared. Her mom lit candles and they told funny stories. Soon Maya was laughing instead of being afraid.\"\n\nHow did Maya's feelings change?",
+          "prompt": "When the power went out during the storm, Maya was scared. Her mom lit candles and they told funny stories. Soon Maya was laughing instead of being afraid.\n\nHow did Maya's feelings change?",
           "choices": [
             "She stayed scared the whole time",
             "She went from scared to laughing",
@@ -235,7 +235,7 @@
         {
           "id": "RL.2.3-Q4",
           "type": "multiple_choice",
-          "prompt": "Read: \"Sam's best friend moved to a different city. Sam was really sad. He asked his mom if they could write letters to each other. Now Sam and his friend are pen pals.\"\n\nHow did Sam respond when his friend moved away?",
+          "prompt": "Sam's best friend moved to a different city. Sam was really sad. He asked his mom if they could write letters to each other. Now Sam and his friend are pen pals.\n\nHow did Sam respond when his friend moved away?",
           "choices": [
             "He forgot about his friend",
             "He found a way to stay in touch",
@@ -251,7 +251,7 @@
         {
           "id": "RL.2.3-Q5",
           "type": "multiple_choice",
-          "prompt": "Read: \"Nora's team lost the championship game. Some kids were upset, but Nora high-fived every player and said, 'We played our best. I'm proud of us.'\"\n\nWhat does Nora's response tell us about her?",
+          "prompt": "Nora's team lost the championship game. Some kids were upset, but Nora high-fived every player and said, 'We played our best. I'm proud of us.'\n\nWhat does Nora's response tell us about her?",
           "choices": [
             "She didn't care about winning",
             "She is a good sport",
@@ -275,7 +275,7 @@
         {
           "id": "RL.2.4-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"The rain came down, drip, drip, drop. It wouldn't quit, it wouldn't stop!\"\n\nWhat do the words 'drip, drip, drop' help you imagine?",
+          "prompt": "The rain came down, drip, drip, drop. It wouldn't quit, it wouldn't stop!\n\nWhat do the words 'drip, drip, drop' help you imagine?",
           "choices": [
             "A sunny day",
             "The sound of rain falling",
@@ -291,7 +291,7 @@
         {
           "id": "RL.2.4-Q2",
           "type": "multiple_choice",
-          "prompt": "Read: \"Swoosh went the broom across the floor. Swish, swish, swoosh — it swept some more!\"\n\nThe words 'swoosh' and 'swish' help the reader —",
+          "prompt": "Swoosh went the broom across the floor. Swish, swish, swoosh — it swept some more!\n\nThe words 'swoosh' and 'swish' help the reader —",
           "choices": [
             "See the color of the broom",
             "Hear the sound of sweeping",
@@ -307,7 +307,7 @@
         {
           "id": "RL.2.4-Q3",
           "type": "multiple_choice",
-          "prompt": "Read: \"Silly Sally sat on a seal, singing songs by the sea.\"\n\nWhat makes this sentence fun to say?",
+          "prompt": "Silly Sally sat on a seal, singing songs by the sea.\n\nWhat makes this sentence fun to say?",
           "choices": [
             "It has big words",
             "Many words start with the same sound",
@@ -323,7 +323,7 @@
         {
           "id": "RL.2.4-Q4",
           "type": "multiple_choice",
-          "prompt": "Read: \"The leaves danced in the wind, twirling and spinning to the ground.\"\n\nThe word 'danced' makes the leaves seem —",
+          "prompt": "The leaves danced in the wind, twirling and spinning to the ground.\n\nThe word 'danced' makes the leaves seem —",
           "choices": [
             "Heavy and slow",
             "Lively and playful",
@@ -339,7 +339,7 @@
         {
           "id": "RL.2.4-Q5",
           "type": "multiple_choice",
-          "prompt": "Read: \"Tick-tock, tick-tock, the clock on the wall. Tick-tock, tick-tock, it counts for us all.\"\n\nWhy does the author repeat 'tick-tock'?",
+          "prompt": "Tick-tock, tick-tock, the clock on the wall. Tick-tock, tick-tock, it counts for us all.\n\nWhy does the author repeat 'tick-tock'?",
           "choices": [
             "To make the poem longer",
             "To copy the sound and rhythm of a clock",
@@ -363,7 +363,7 @@
         {
           "id": "RL.2.5-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"Once upon a time, a girl named Zara found a magic key. She used it to open a secret door in her attic. Behind the door was a land of talking animals. After many adventures, Zara returned home and locked the door.\"\n\nWhich part is the beginning of the story?",
+          "prompt": "Once upon a time, a girl named Zara found a magic key. She used it to open a secret door in her attic. Behind the door was a land of talking animals. After many adventures, Zara returned home and locked the door.\n\nWhich part is the beginning of the story?",
           "choices": [
             "Zara returned home",
             "Zara found a magic key",
@@ -395,7 +395,7 @@
         {
           "id": "RL.2.5-Q3",
           "type": "multiple_choice",
-          "prompt": "Read: \"Devin wanted to win the art contest. He painted every day after school. His painting of a sunset won first place!\"\n\nWhat is the problem at the beginning?",
+          "prompt": "Devin wanted to win the art contest. He painted every day after school. His painting of a sunset won first place!\n\nWhat is the problem at the beginning?",
           "choices": [
             "Devin won a prize",
             "Devin wanted to win the contest",
@@ -427,7 +427,7 @@
         {
           "id": "RL.2.5-Q5",
           "type": "multiple_choice",
-          "prompt": "Read: \"Mia lost her puppy in the park. She looked everywhere. Finally, she heard barking behind the slide and found her puppy playing with another dog.\"\n\nHow does the ending conclude the action?",
+          "prompt": "Mia lost her puppy in the park. She looked everywhere. Finally, she heard barking behind the slide and found her puppy playing with another dog.\n\nHow does the ending conclude the action?",
           "choices": [
             "Mia loses her puppy",
             "Mia looks everywhere",
@@ -451,7 +451,7 @@
         {
           "id": "RL.2.6-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"Ana thought the roller coaster was amazing and wanted to ride again. Her brother Carlos shook his head and said, 'No way, that was too scary!'\"\n\nHow are Ana's and Carlos's feelings different?",
+          "prompt": "Ana thought the roller coaster was amazing and wanted to ride again. Her brother Carlos shook his head and said, 'No way, that was too scary!'\n\nHow are Ana's and Carlos's feelings different?",
           "choices": [
             "Both were scared",
             "Ana loved it but Carlos was scared",
@@ -467,7 +467,7 @@
         {
           "id": "RL.2.6-Q2",
           "type": "multiple_choice",
-          "prompt": "Read: \"Mom said, 'We should get a cat.' Dad said, 'I think a dog would be better.' Jayden said, 'Can we get both?'\"\n\nWho has a different point of view from Mom?",
+          "prompt": "Mom said, 'We should get a cat.' Dad said, 'I think a dog would be better.' Jayden said, 'Can we get both?'\n\nWho has a different point of view from Mom?",
           "choices": [
             "Only Dad",
             "Only Jayden",
@@ -483,7 +483,7 @@
         {
           "id": "RL.2.6-Q3",
           "type": "multiple_choice",
-          "prompt": "Read: \"The farmer was happy when it rained because his crops needed water. The children were sad because they couldn't play outside.\"\n\nWhy do the farmer and the children feel differently about the rain?",
+          "prompt": "The farmer was happy when it rained because his crops needed water. The children were sad because they couldn't play outside.\n\nWhy do the farmer and the children feel differently about the rain?",
           "choices": [
             "They live in different places",
             "Rain helps the farmer's crops but stops the children's play",
@@ -499,7 +499,7 @@
         {
           "id": "RL.2.6-Q4",
           "type": "multiple_choice",
-          "prompt": "Read: \"Ella wanted to stay up late to watch a movie. Her mom said it was a school night and bedtime was 8 o'clock.\"\n\nHow is Ella's point of view different from her mom's?",
+          "prompt": "Ella wanted to stay up late to watch a movie. Her mom said it was a school night and bedtime was 8 o'clock.\n\nHow is Ella's point of view different from her mom's?",
           "choices": [
             "Ella wants to sleep but mom says no",
             "Ella wants to stay up but mom wants her to go to bed",
@@ -515,7 +515,7 @@
         {
           "id": "RL.2.6-Q5",
           "type": "multiple_choice",
-          "prompt": "Read: \"In the story, the Big Bad Wolf said, 'I just wanted to borrow some sugar!' The Three Little Pigs said, 'He tried to blow our houses down!'\"\n\nHow are the points of view different?",
+          "prompt": "In the story, the Big Bad Wolf said, 'I just wanted to borrow some sugar!' The Three Little Pigs said, 'He tried to blow our houses down!'\n\nHow are the points of view different?",
           "choices": [
             "They agree on what happened",
             "The wolf says he was friendly but the pigs say he was dangerous",
@@ -715,7 +715,7 @@
         {
           "id": "RL.2.10-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"The wind howled through the trees as Sophie clutched her flashlight. She had promised to walk to the mailbox alone, and she wasn't going to break her promise. With each step, the shadows seemed to dance around her.\"\n\nHow is Sophie feeling?",
+          "prompt": "The wind howled through the trees as Sophie clutched her flashlight. She had promised to walk to the mailbox alone, and she wasn't going to break her promise. With each step, the shadows seemed to dance around her.\n\nHow is Sophie feeling?",
           "choices": [
             "Excited and happy",
             "Brave but a little scared",
@@ -731,7 +731,7 @@
         {
           "id": "RL.2.10-Q2",
           "type": "multiple_choice",
-          "prompt": "Read: \"Jackson's painting looked nothing like the sunset he was trying to copy. He almost crumpled it up, but then his art teacher said, 'Art doesn't have to be perfect — it just has to be yours.'\"\n\nWhat did Jackson learn?",
+          "prompt": "Jackson's painting looked nothing like the sunset he was trying to copy. He almost crumpled it up, but then his art teacher said, 'Art doesn't have to be perfect — it just has to be yours.'\n\nWhat did Jackson learn?",
           "choices": [
             "He should stop painting",
             "Art should be a perfect copy",
@@ -747,7 +747,7 @@
         {
           "id": "RL.2.10-Q3",
           "type": "multiple_choice",
-          "prompt": "Read: \"Every day, the old lighthouse keeper climbed 137 steps to light the lamp. 'Ships depend on me,' he would say. Even in the worst storms, the light always shone.\"\n\nWhat word BEST describes the lighthouse keeper?",
+          "prompt": "Every day, the old lighthouse keeper climbed 137 steps to light the lamp. 'Ships depend on me,' he would say. Even in the worst storms, the light always shone.\n\nWhat word BEST describes the lighthouse keeper?",
           "choices": [
             "Lazy",
             "Dedicated",
@@ -763,7 +763,7 @@
         {
           "id": "RL.2.10-Q4",
           "type": "multiple_choice",
-          "prompt": "Read: \"The squirrel buried an acorn in the fall. By spring, a tiny green sprout poked through the soil. Years later, it became the tallest oak in the forest.\"\n\nWhat is this story mainly about?",
+          "prompt": "The squirrel buried an acorn in the fall. By spring, a tiny green sprout poked through the soil. Years later, it became the tallest oak in the forest.\n\nWhat is this story mainly about?",
           "choices": [
             "Squirrels are forgetful",
             "Small things can grow into something big",
@@ -779,7 +779,7 @@
         {
           "id": "RL.2.10-Q5",
           "type": "multiple_choice",
-          "prompt": "Read: \"'I'll never make friends here,' whispered Amir on his first day at the new school. By the end of the week, he had joined the soccer team and made three new friends.\"\n\nWhat happened that Amir did NOT expect?",
+          "prompt": "'I'll never make friends here,' whispered Amir on his first day at the new school. By the end of the week, he had joined the soccer team and made three new friends.\n\nWhat happened that Amir did NOT expect?",
           "choices": [
             "He went to a new school",
             "He made friends quickly",
@@ -803,7 +803,7 @@
         {
           "id": "RI.2.1-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"Honeybees live in hives. A hive can have up to 60,000 bees! The queen bee lays all the eggs, and worker bees collect nectar from flowers.\"\n\nWhat does the queen bee do?",
+          "prompt": "Honeybees live in hives. A hive can have up to 60,000 bees! The queen bee lays all the eggs, and worker bees collect nectar from flowers.\n\nWhat does the queen bee do?",
           "choices": [
             "Collects nectar",
             "Builds the hive",
@@ -819,7 +819,7 @@
         {
           "id": "RI.2.1-Q2",
           "type": "multiple_choice",
-          "prompt": "Read: \"Firefighters wear special gear to stay safe. Their helmets protect their heads. Their thick coats keep them safe from fire and heat.\"\n\nWhy do firefighters wear thick coats?",
+          "prompt": "Firefighters wear special gear to stay safe. Their helmets protect their heads. Their thick coats keep them safe from fire and heat.\n\nWhy do firefighters wear thick coats?",
           "choices": [
             "To look cool",
             "To keep safe from fire and heat",
@@ -835,7 +835,7 @@
         {
           "id": "RI.2.1-Q3",
           "type": "multiple_choice",
-          "prompt": "Read: \"George Washington Carver was a scientist who studied peanuts. He found over 300 uses for peanuts, including making soap, ink, and dye.\"\n\nHow many uses did Carver find for peanuts?",
+          "prompt": "George Washington Carver was a scientist who studied peanuts. He found over 300 uses for peanuts, including making soap, ink, and dye.\n\nHow many uses did Carver find for peanuts?",
           "choices": [
             "30",
             "100",
@@ -851,7 +851,7 @@
         {
           "id": "RI.2.1-Q4",
           "type": "multiple_choice",
-          "prompt": "Read: \"Sea turtles travel thousands of miles through the ocean. They return to the same beach where they were born to lay their eggs.\"\n\nWhere do sea turtles lay their eggs?",
+          "prompt": "Sea turtles travel thousands of miles through the ocean. They return to the same beach where they were born to lay their eggs.\n\nWhere do sea turtles lay their eggs?",
           "choices": [
             "In the deep ocean",
             "On any beach",
@@ -867,7 +867,7 @@
         {
           "id": "RI.2.1-Q5",
           "type": "multiple_choice",
-          "prompt": "Read: \"In 1969, astronauts Neil Armstrong and Buzz Aldrin walked on the Moon for the first time. Millions of people watched on television.\"\n\nWhen did astronauts first walk on the Moon?",
+          "prompt": "In 1969, astronauts Neil Armstrong and Buzz Aldrin walked on the Moon for the first time. Millions of people watched on television.\n\nWhen did astronauts first walk on the Moon?",
           "choices": [
             "1959",
             "1969",
@@ -891,7 +891,7 @@
         {
           "id": "RI.2.2-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"Dogs make great pets. They are loyal and friendly. Many dogs can be trained to do tricks. Some dogs even help people who are blind.\"\n\nWhat is the main topic?",
+          "prompt": "Dogs make great pets. They are loyal and friendly. Many dogs can be trained to do tricks. Some dogs even help people who are blind.\n\nWhat is the main topic?",
           "choices": [
             "Cats",
             "How to train pets",
@@ -907,7 +907,7 @@
         {
           "id": "RI.2.2-Q2",
           "type": "multiple_choice",
-          "prompt": "Read: \"Paragraph 1: Apples come in many colors — red, green, and yellow. Paragraph 2: Apples are good for you because they have vitamins and fiber.\"\n\nWhat is Paragraph 2 mostly about?",
+          "prompt": "Paragraph 1: Apples come in many colors — red, green, and yellow. Paragraph 2: Apples are good for you because they have vitamins and fiber.\n\nWhat is Paragraph 2 mostly about?",
           "choices": [
             "The colors of apples",
             "Why apples are healthy",
@@ -939,7 +939,7 @@
         {
           "id": "RI.2.2-Q4",
           "type": "multiple_choice",
-          "prompt": "Read: \"Water can be a solid, a liquid, or a gas. Ice is solid water. Steam is water as a gas. The water you drink is a liquid.\"\n\nWhat is the main topic?",
+          "prompt": "Water can be a solid, a liquid, or a gas. Ice is solid water. Steam is water as a gas. The water you drink is a liquid.\n\nWhat is the main topic?",
           "choices": [
             "Ice is cold",
             "The three forms of water",
@@ -979,7 +979,7 @@
         {
           "id": "RI.2.3-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"First, the caterpillar eats lots of leaves. Then, it makes a chrysalis. Finally, it comes out as a butterfly.\"\n\nWhat happens AFTER the caterpillar makes a chrysalis?",
+          "prompt": "First, the caterpillar eats lots of leaves. Then, it makes a chrysalis. Finally, it comes out as a butterfly.\n\nWhat happens AFTER the caterpillar makes a chrysalis?",
           "choices": [
             "It eats more leaves",
             "It becomes a butterfly",
@@ -995,7 +995,7 @@
         {
           "id": "RI.2.3-Q2",
           "type": "multiple_choice",
-          "prompt": "Read: \"The sun heats the ocean water. The water evaporates into the air. Clouds form. Then rain falls back to the ground.\"\n\nWhat causes clouds to form?",
+          "prompt": "The sun heats the ocean water. The water evaporates into the air. Clouds form. Then rain falls back to the ground.\n\nWhat causes clouds to form?",
           "choices": [
             "Rain falling",
             "Wind blowing",
@@ -1011,7 +1011,7 @@
         {
           "id": "RI.2.3-Q3",
           "type": "multiple_choice",
-          "prompt": "Read: \"In 1903, the Wright Brothers flew the first airplane. Their flight lasted only 12 seconds. Today, planes can fly across the whole world.\"\n\nHow are the events connected?",
+          "prompt": "In 1903, the Wright Brothers flew the first airplane. Their flight lasted only 12 seconds. Today, planes can fly across the whole world.\n\nHow are the events connected?",
           "choices": [
             "They are not related",
             "The Wright Brothers' invention led to modern airplanes",
@@ -1027,7 +1027,7 @@
         {
           "id": "RI.2.3-Q4",
           "type": "multiple_choice",
-          "prompt": "Read: \"To make a peanut butter sandwich: First, get two slices of bread. Next, spread peanut butter on one slice. Then, put the other slice on top.\"\n\nWhat do you do right AFTER spreading peanut butter?",
+          "prompt": "To make a peanut butter sandwich: First, get two slices of bread. Next, spread peanut butter on one slice. Then, put the other slice on top.\n\nWhat do you do right AFTER spreading peanut butter?",
           "choices": [
             "Get the bread",
             "Eat the sandwich",
@@ -1043,7 +1043,7 @@
         {
           "id": "RI.2.3-Q5",
           "type": "multiple_choice",
-          "prompt": "Read: \"When bees visit flowers, pollen sticks to their legs. They carry the pollen to other flowers. This helps new plants grow.\"\n\nHow does pollen getting on bees connect to new plants growing?",
+          "prompt": "When bees visit flowers, pollen sticks to their legs. They carry the pollen to other flowers. This helps new plants grow.\n\nHow does pollen getting on bees connect to new plants growing?",
           "choices": [
             "Bees eat the plants",
             "Bees carry pollen to other flowers, which helps plants grow",
@@ -1067,7 +1067,7 @@
         {
           "id": "RI.2.4-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"Nocturnal animals are active at night. Owls, bats, and raccoons are nocturnal.\"\n\nWhat does 'nocturnal' mean?",
+          "prompt": "Nocturnal animals are active at night. Owls, bats, and raccoons are nocturnal.\n\nWhat does 'nocturnal' mean?",
           "choices": [
             "Active during the day",
             "Active at night",
@@ -1083,7 +1083,7 @@
         {
           "id": "RI.2.4-Q2",
           "type": "multiple_choice",
-          "prompt": "Read: \"A habitat is the natural home of an animal or plant. A frog's habitat is near ponds and streams.\"\n\nWhat is a 'habitat'?",
+          "prompt": "A habitat is the natural home of an animal or plant. A frog's habitat is near ponds and streams.\n\nWhat is a 'habitat'?",
           "choices": [
             "A type of food",
             "A natural home",
@@ -1099,7 +1099,7 @@
         {
           "id": "RI.2.4-Q3",
           "type": "multiple_choice",
-          "prompt": "Read: \"Mammals are warm-blooded animals that have fur or hair. Dogs, cats, and humans are all mammals.\"\n\nBased on the text, what makes an animal a mammal?",
+          "prompt": "Mammals are warm-blooded animals that have fur or hair. Dogs, cats, and humans are all mammals.\n\nBased on the text, what makes an animal a mammal?",
           "choices": [
             "It can fly",
             "It lives in water",
@@ -1115,7 +1115,7 @@
         {
           "id": "RI.2.4-Q4",
           "type": "multiple_choice",
-          "prompt": "Read: \"The ancient Egyptians built enormous pyramids. These huge stone structures still stand today.\"\n\nWhat does 'enormous' mean in this sentence?",
+          "prompt": "The ancient Egyptians built enormous pyramids. These huge stone structures still stand today.\n\nWhat does 'enormous' mean in this sentence?",
           "choices": [
             "Very old",
             "Very small",
@@ -1131,7 +1131,7 @@
         {
           "id": "RI.2.4-Q5",
           "type": "multiple_choice",
-          "prompt": "Read: \"Plants need nutrients from the soil to grow. Nutrients are like food for plants — they give plants energy and help them stay healthy.\"\n\nWhat are 'nutrients'?",
+          "prompt": "Plants need nutrients from the soil to grow. Nutrients are like food for plants — they give plants energy and help them stay healthy.\n\nWhat are 'nutrients'?",
           "choices": [
             "A type of soil",
             "Sunlight",
@@ -1243,7 +1243,7 @@
         {
           "id": "RI.2.6-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"Brush your teeth twice a day. Use toothpaste with fluoride. Visit the dentist every six months.\"\n\nWhat is the author's purpose?",
+          "prompt": "Brush your teeth twice a day. Use toothpaste with fluoride. Visit the dentist every six months.\n\nWhat is the author's purpose?",
           "choices": [
             "To tell a funny story",
             "To explain how to take care of your teeth",
@@ -1259,7 +1259,7 @@
         {
           "id": "RI.2.6-Q2",
           "type": "multiple_choice",
-          "prompt": "Read: \"The blue whale is the largest animal ever to live on Earth. It can be over 100 feet long and weigh as much as 200 tons.\"\n\nThe author wrote this to —",
+          "prompt": "The blue whale is the largest animal ever to live on Earth. It can be over 100 feet long and weigh as much as 200 tons.\n\nThe author wrote this to —",
           "choices": [
             "Make you laugh",
             "Inform you about blue whales",
@@ -1275,7 +1275,7 @@
         {
           "id": "RI.2.6-Q3",
           "type": "multiple_choice",
-          "prompt": "Read: \"Everyone should recycle! When we recycle, we save trees and keep trash out of the ocean. Please recycle your cans, bottles, and paper.\"\n\nThe author's main purpose is to —",
+          "prompt": "Everyone should recycle! When we recycle, we save trees and keep trash out of the ocean. Please recycle your cans, bottles, and paper.\n\nThe author's main purpose is to —",
           "choices": [
             "Entertain you with a story",
             "Describe what recycling looks like",
@@ -1307,7 +1307,7 @@
         {
           "id": "RI.2.6-Q5",
           "type": "multiple_choice",
-          "prompt": "Read: \"Butterflies have four stages in their life: egg, caterpillar, chrysalis, and butterfly. Each stage is an important part of their life cycle.\"\n\nWhat question is the author trying to answer?",
+          "prompt": "Butterflies have four stages in their life: egg, caterpillar, chrysalis, and butterfly. Each stage is an important part of their life cycle.\n\nWhat question is the author trying to answer?",
           "choices": [
             "Where do butterflies live?",
             "What are the stages of a butterfly's life?",
@@ -1419,7 +1419,7 @@
         {
           "id": "RI.2.8-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"Recess is important for kids. It gives them time to exercise. It also helps them focus better in class.\"\n\nWhat reason does the author give for why recess helps in class?",
+          "prompt": "Recess is important for kids. It gives them time to exercise. It also helps them focus better in class.\n\nWhat reason does the author give for why recess helps in class?",
           "choices": [
             "Kids like to play",
             "It helps them focus better",
@@ -1435,7 +1435,7 @@
         {
           "id": "RI.2.8-Q2",
           "type": "multiple_choice",
-          "prompt": "Read: \"Everyone should drink more water. Water keeps your body healthy. It helps your brain work better. It also gives you energy.\"\n\nHow many reasons does the author give for drinking water?",
+          "prompt": "Everyone should drink more water. Water keeps your body healthy. It helps your brain work better. It also gives you energy.\n\nHow many reasons does the author give for drinking water?",
           "choices": [
             "1",
             "2",
@@ -1451,7 +1451,7 @@
         {
           "id": "RI.2.8-Q3",
           "type": "multiple_choice",
-          "prompt": "Read: \"Helmets should be worn when riding a bike. They protect your head if you fall. Studies show helmets reduce head injuries by 85%.\"\n\nWhat supports the author's point that helmets are important?",
+          "prompt": "Helmets should be worn when riding a bike. They protect your head if you fall. Studies show helmets reduce head injuries by 85%.\n\nWhat supports the author's point that helmets are important?",
           "choices": [
             "Helmets look cool",
             "They come in many colors",
@@ -1483,7 +1483,7 @@
         {
           "id": "RI.2.8-Q5",
           "type": "multiple_choice",
-          "prompt": "Read: \"Schools should have gardens. Gardens teach kids about science. They also help kids eat healthier because kids are more likely to eat vegetables they grew themselves.\"\n\nWhich reason explains HOW gardens help kids eat healthier?",
+          "prompt": "Schools should have gardens. Gardens teach kids about science. They also help kids eat healthier because kids are more likely to eat vegetables they grew themselves.\n\nWhich reason explains HOW gardens help kids eat healthier?",
           "choices": [
             "Gardens are pretty",
             "Gardens teach science",
@@ -1595,7 +1595,7 @@
         {
           "id": "RI.2.10-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"Octopuses are amazing creatures. They have eight arms and three hearts. They can change color to blend in with their surroundings. Some octopuses can even open jars!\"\n\nAccording to the text, how many hearts does an octopus have?",
+          "prompt": "Octopuses are amazing creatures. They have eight arms and three hearts. They can change color to blend in with their surroundings. Some octopuses can even open jars!\n\nAccording to the text, how many hearts does an octopus have?",
           "choices": [
             "One",
             "Two",
@@ -1611,7 +1611,7 @@
         {
           "id": "RI.2.10-Q2",
           "type": "multiple_choice",
-          "prompt": "Read: \"The Great Wall of China was built over many centuries to protect China from invaders. It stretches over 13,000 miles, making it the longest structure ever built by humans.\"\n\nWhy was the Great Wall built?",
+          "prompt": "The Great Wall of China was built over many centuries to protect China from invaders. It stretches over 13,000 miles, making it the longest structure ever built by humans.\n\nWhy was the Great Wall built?",
           "choices": [
             "For decoration",
             "To protect from invaders",
@@ -1627,7 +1627,7 @@
         {
           "id": "RI.2.10-Q3",
           "type": "multiple_choice",
-          "prompt": "Read: \"Recycling one aluminum can saves enough energy to power a TV for three hours. Americans throw away enough cans each year to build more than 20 Eiffel Towers.\"\n\nWhat is the author trying to show with these facts?",
+          "prompt": "Recycling one aluminum can saves enough energy to power a TV for three hours. Americans throw away enough cans each year to build more than 20 Eiffel Towers.\n\nWhat is the author trying to show with these facts?",
           "choices": [
             "TVs use too much power",
             "Recycling cans saves a lot of energy",
@@ -1643,7 +1643,7 @@
         {
           "id": "RI.2.10-Q4",
           "type": "multiple_choice",
-          "prompt": "Read: \"Polar bears have black skin under their white fur. The white fur helps them hide in the snow. Their large paws work like snowshoes, helping them walk on ice.\"\n\nWhat helps polar bears walk on ice?",
+          "prompt": "Polar bears have black skin under their white fur. The white fur helps them hide in the snow. Their large paws work like snowshoes, helping them walk on ice.\n\nWhat helps polar bears walk on ice?",
           "choices": [
             "Their black skin",
             "Their white fur",
@@ -1659,7 +1659,7 @@
         {
           "id": "RI.2.10-Q5",
           "type": "multiple_choice",
-          "prompt": "Read: \"Volcanoes form when hot melted rock called magma pushes up through the Earth's surface. When magma comes out, it's called lava. Over time, the lava cools and builds up to form the volcano's cone shape.\"\n\nWhat is magma called after it comes out of the volcano?",
+          "prompt": "Volcanoes form when hot melted rock called magma pushes up through the Earth's surface. When magma comes out, it's called lava. Over time, the lava cools and builds up to form the volcano's cone shape.\n\nWhat is magma called after it comes out of the volcano?",
           "choices": [
             "Rock",
             "Lava",
@@ -2347,7 +2347,7 @@
         {
           "id": "RF.2.4-Q4",
           "type": "multiple_choice",
-          "prompt": "Read: \"'Stop!' yelled the crossing guard.\"\n\nHow should you read the word 'Stop'?",
+          "prompt": "'Stop!' yelled the crossing guard.\n\nHow should you read the word 'Stop'?",
           "choices": [
             "In a whisper",
             "In a loud, firm voice",
@@ -2387,7 +2387,7 @@
         {
           "id": "RF.2.4a-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"The farmer planted seeds in the spring. He watered them every day. By summer, his garden was full of tomatoes, peppers, and corn.\"\n\nWhat grew in the farmer's garden?",
+          "prompt": "The farmer planted seeds in the spring. He watered them every day. By summer, his garden was full of tomatoes, peppers, and corn.\n\nWhat grew in the farmer's garden?",
           "choices": [
             "Flowers",
             "Tomatoes, peppers, and corn",
@@ -2419,7 +2419,7 @@
         {
           "id": "RF.2.4a-Q3",
           "type": "multiple_choice",
-          "prompt": "Read: \"Dolphins are mammals, not fish. They breathe air and feed milk to their babies. Dolphins are very smart and can learn tricks.\"\n\nWhat makes dolphins different from fish?",
+          "prompt": "Dolphins are mammals, not fish. They breathe air and feed milk to their babies. Dolphins are very smart and can learn tricks.\n\nWhat makes dolphins different from fish?",
           "choices": [
             "They swim",
             "They breathe air and feed milk to babies",
@@ -2435,7 +2435,7 @@
         {
           "id": "RF.2.4a-Q4",
           "type": "multiple_choice",
-          "prompt": "Read: \"Ben's favorite book is about space. He reads it every week because he wants to be an astronaut someday.\"\n\nWhy does Ben read the space book so often?",
+          "prompt": "Ben's favorite book is about space. He reads it every week because he wants to be an astronaut someday.\n\nWhy does Ben read the space book so often?",
           "choices": [
             "It's the only book he has",
             "He has to for school",
@@ -2451,7 +2451,7 @@
         {
           "id": "RF.2.4a-Q5",
           "type": "multiple_choice",
-          "prompt": "Read: \"Earthworms help gardens by making tunnels in the soil. The tunnels let air and water reach plant roots.\"\n\nHow do earthworm tunnels help plants?",
+          "prompt": "Earthworms help gardens by making tunnels in the soil. The tunnels let air and water reach plant roots.\n\nHow do earthworm tunnels help plants?",
           "choices": [
             "They make the garden look nice",
             "They keep bugs away",
@@ -2579,7 +2579,7 @@
         {
           "id": "RF.2.4c-Q2",
           "type": "multiple_choice",
-          "prompt": "Read: 'The bird flew to its ____.' Which word fits best?",
+          "prompt": "'The bird flew to its ____.' Which word fits best?",
           "choices": [
             "nest",
             "desk",
@@ -2611,7 +2611,7 @@
         {
           "id": "RF.2.4c-Q4",
           "type": "multiple_choice",
-          "prompt": "Read: 'The cat climbed up the tall ___.' Which word makes the most sense?",
+          "prompt": "'The cat climbed up the tall ___.' Which word makes the most sense?",
           "choices": [
             "tree",
             "spoon",
@@ -2651,7 +2651,7 @@
         {
           "id": "L.2.4-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: 'The tiny kitten was so small it fit in my hand.'\n\nWhat does 'tiny' mean?",
+          "prompt": "'The tiny kitten was so small it fit in my hand.'\n\nWhat does 'tiny' mean?",
           "choices": [
             "Very big",
             "Very small",
@@ -2683,7 +2683,7 @@
         {
           "id": "L.2.4-Q3",
           "type": "multiple_choice",
-          "prompt": "Read: 'The exhausted runner sat down after the race.'\n\nWhat does 'exhausted' most likely mean?",
+          "prompt": "'The exhausted runner sat down after the race.'\n\nWhat does 'exhausted' most likely mean?",
           "choices": [
             "Excited",
             "Very tired",
@@ -2715,7 +2715,7 @@
         {
           "id": "RF.2.4-Q5",
           "type": "multiple_choice",
-          "prompt": "Read: 'The bright sun made everything glow.'\n\nWhat does 'bright' mean here?",
+          "prompt": "'The bright sun made everything glow.'\n\nWhat does 'bright' mean here?",
           "choices": [
             "Dark",
             "Shining with a lot of light",
@@ -2739,7 +2739,7 @@
         {
           "id": "L.2.4a-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: 'The enormous elephant was the biggest animal at the zoo.'\n\nThe word 'enormous' means —",
+          "prompt": "'The enormous elephant was the biggest animal at the zoo.'\n\nThe word 'enormous' means —",
           "choices": [
             "Tiny",
             "Gray",
@@ -2755,7 +2755,7 @@
         {
           "id": "L.2.4a-Q2",
           "type": "multiple_choice",
-          "prompt": "Read: 'The children were famished after playing all day, so they ate a huge dinner.'\n\nWhat does 'famished' mean?",
+          "prompt": "'The children were famished after playing all day, so they ate a huge dinner.'\n\nWhat does 'famished' mean?",
           "choices": [
             "Happy",
             "Very hungry",
@@ -2771,7 +2771,7 @@
         {
           "id": "L.2.4a-Q3",
           "type": "multiple_choice",
-          "prompt": "Read: 'Be cautious when crossing the street — look both ways first.'\n\nWhat does 'cautious' mean?",
+          "prompt": "'Be cautious when crossing the street — look both ways first.'\n\nWhat does 'cautious' mean?",
           "choices": [
             "Careful",
             "Fast",
@@ -2787,7 +2787,7 @@
         {
           "id": "L.2.4a-Q4",
           "type": "multiple_choice",
-          "prompt": "Read: 'The frigid wind made everyone shiver and bundle up in their coats.'\n\nThe word 'frigid' means —",
+          "prompt": "'The frigid wind made everyone shiver and bundle up in their coats.'\n\nThe word 'frigid' means —",
           "choices": [
             "Warm",
             "Very cold",
@@ -2803,7 +2803,7 @@
         {
           "id": "L.2.4a-Q5",
           "type": "multiple_choice",
-          "prompt": "Read: 'Mom said the movie was hilarious — she couldn't stop laughing!'\n\nWhat does 'hilarious' mean?",
+          "prompt": "'Mom said the movie was hilarious — she couldn't stop laughing!'\n\nWhat does 'hilarious' mean?",
           "choices": [
             "Scary",
             "Boring",

@@ -11,7 +11,7 @@
         {
           "id": "RL.3.1-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"Captain Rosie sailed her tiny boat across the lake every morning. One foggy day, she spotted something glowing beneath the water. She leaned over the side and saw a golden chest resting on the sandy bottom.\"\n\nWhat did Captain Rosie find under the water?",
+          "prompt": "Captain Rosie sailed her tiny boat across the lake every morning. One foggy day, she spotted something glowing beneath the water. She leaned over the side and saw a golden chest resting on the sandy bottom.\n\nWhat did Captain Rosie find under the water?",
           "choices": [
             "A fish",
             "A golden chest",
@@ -27,7 +27,7 @@
         {
           "id": "RL.3.1-Q2",
           "type": "multiple_choice",
-          "prompt": "Read: \"Marcus had practiced his speech twenty times. When he stepped onto the stage, his hands were shaking. But once he started talking, the words flowed easily, and the audience clapped loudly at the end.\"\n\nHow did Marcus feel when he first stepped on stage?",
+          "prompt": "Marcus had practiced his speech twenty times. When he stepped onto the stage, his hands were shaking. But once he started talking, the words flowed easily, and the audience clapped loudly at the end.\n\nHow did Marcus feel when he first stepped on stage?",
           "choices": [
             "Confident and calm",
             "Nervous and shaky",
@@ -43,7 +43,7 @@
         {
           "id": "RL.3.1-Q3",
           "type": "multiple_choice",
-          "prompt": "Read: \"Grandma Chen kept a garden full of herbs. 'Every plant has a story,' she told Mei. She pointed to the lavender. 'Your grandfather brought those seeds from his village.'\"\n\nWho brought the lavender seeds?",
+          "prompt": "Grandma Chen kept a garden full of herbs. 'Every plant has a story,' she told Mei. She pointed to the lavender. 'Your grandfather brought those seeds from his village.'\n\nWho brought the lavender seeds?",
           "choices": [
             "Grandma Chen",
             "Mei",
@@ -59,7 +59,7 @@
         {
           "id": "RL.3.1-Q4",
           "type": "multiple_choice",
-          "prompt": "Read: \"The fox crept through the snow, its orange fur bright against the white. It paused, tilted its head, then leaped straight up and dove nose-first into a snowbank. Seconds later, it emerged with a mouse in its jaws.\"\n\nWhy did the fox leap into the snowbank?",
+          "prompt": "The fox crept through the snow, its orange fur bright against the white. It paused, tilted its head, then leaped straight up and dove nose-first into a snowbank. Seconds later, it emerged with a mouse in its jaws.\n\nWhy did the fox leap into the snowbank?",
           "choices": [
             "To play in the snow",
             "To hide from a predator",
@@ -75,7 +75,7 @@
         {
           "id": "RL.3.1-Q5",
           "type": "multiple_choice",
-          "prompt": "Read: \"Aisha's violin had belonged to three generations of her family. The wood was worn smooth where countless fingers had pressed the strings. 'Play with your heart, not just your hands,' her mother always said.\"\n\nWhat does the worn wood tell us about the violin?",
+          "prompt": "Aisha's violin had belonged to three generations of her family. The wood was worn smooth where countless fingers had pressed the strings. 'Play with your heart, not just your hands,' her mother always said.\n\nWhat does the worn wood tell us about the violin?",
           "choices": [
             "It's brand new",
             "It's been played by many people over many years",
@@ -99,7 +99,7 @@
         {
           "id": "RL.3.2-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"The crow found a piece of cheese. A fox said, 'What a beautiful voice you must have! Please sing for me.' The crow opened its beak to sing, and the cheese fell right into the fox's mouth.\"\n\nWhat is the moral of this fable?",
+          "prompt": "The crow found a piece of cheese. A fox said, 'What a beautiful voice you must have! Please sing for me.' The crow opened its beak to sing, and the cheese fell right into the fox's mouth.\n\nWhat is the moral of this fable?",
           "choices": [
             "Crows can't sing",
             "Don't trust flattery from someone who wants something",
@@ -115,7 +115,7 @@
         {
           "id": "RL.3.2-Q2",
           "type": "multiple_choice",
-          "prompt": "Read: \"A boy cried 'Wolf!' when there was no wolf, just to get attention. The villagers came running twice. When a real wolf appeared and the boy cried for help, no one believed him.\"\n\nWhat is the central message?",
+          "prompt": "A boy cried 'Wolf!' when there was no wolf, just to get attention. The villagers came running twice. When a real wolf appeared and the boy cried for help, no one believed him.\n\nWhat is the central message?",
           "choices": [
             "Wolves are dangerous",
             "Lying destroys trust",
@@ -131,7 +131,7 @@
         {
           "id": "RL.3.2-Q3",
           "type": "multiple_choice",
-          "prompt": "Read: \"King Midas wished that everything he touched would turn to gold. His wish came true! But when his food, his flowers, and even his daughter turned to gold, he begged for the wish to be taken away.\"\n\nWhat lesson does this myth teach?",
+          "prompt": "King Midas wished that everything he touched would turn to gold. His wish came true! But when his food, his flowers, and even his daughter turned to gold, he begged for the wish to be taken away.\n\nWhat lesson does this myth teach?",
           "choices": [
             "Gold is the most valuable thing",
             "Be careful what you wish for — greed has consequences",
@@ -147,7 +147,7 @@
         {
           "id": "RL.3.2-Q4",
           "type": "multiple_choice",
-          "prompt": "Read: \"Two goats met on a narrow bridge over a river. Neither would step aside. They pushed and shoved until both fell into the water below.\"\n\nWhat is the lesson?",
+          "prompt": "Two goats met on a narrow bridge over a river. Neither would step aside. They pushed and shoved until both fell into the water below.\n\nWhat is the lesson?",
           "choices": [
             "Goats can't swim",
             "Bridges are dangerous",
@@ -163,7 +163,7 @@
         {
           "id": "RL.3.2-Q5",
           "type": "multiple_choice",
-          "prompt": "Read: \"A young girl named Anansi's daughter was always bragging about being the smartest in her village. One day, the village elder gave her a riddle she couldn't solve. A quiet boy named Kofi, who listened more than he talked, solved it easily.\"\n\nWhat is the central message?",
+          "prompt": "A young girl named Anansi's daughter was always bragging about being the smartest in her village. One day, the village elder gave her a riddle she couldn't solve. A quiet boy named Kofi, who listened more than he talked, solved it easily.\n\nWhat is the central message?",
           "choices": [
             "Riddles are hard",
             "Bragging doesn't make you smart — listening and thinking do",
@@ -187,7 +187,7 @@
         {
           "id": "RL.3.3-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"Dina noticed her classmate sitting alone at lunch every day. She walked over and said, 'Want to sit with us?' Soon they became best friends and started a book club together.\"\n\nWhat character trait does Dina show?",
+          "prompt": "Dina noticed her classmate sitting alone at lunch every day. She walked over and said, 'Want to sit with us?' Soon they became best friends and started a book club together.\n\nWhat character trait does Dina show?",
           "choices": [
             "Shyness",
             "Kindness",
@@ -203,7 +203,7 @@
         {
           "id": "RL.3.3-Q2",
           "type": "multiple_choice",
-          "prompt": "Read: \"When the team's star player got hurt, nobody wanted to take her place. Jaylen was nervous, but he stepped up and said, 'I'll do it.' He scored the winning goal.\"\n\nHow did Jaylen's action affect the story?",
+          "prompt": "When the team's star player got hurt, nobody wanted to take her place. Jaylen was nervous, but he stepped up and said, 'I'll do it.' He scored the winning goal.\n\nHow did Jaylen's action affect the story?",
           "choices": [
             "The team lost the game",
             "Nothing changed",
@@ -219,7 +219,7 @@
         {
           "id": "RL.3.3-Q3",
           "type": "multiple_choice",
-          "prompt": "Read: \"Omar found a wallet on the playground with twenty dollars inside. He thought about keeping it, but instead he brought it to the office. The wallet belonged to a kindergartner's mom.\"\n\nWhat does Omar's action tell us about him?",
+          "prompt": "Omar found a wallet on the playground with twenty dollars inside. He thought about keeping it, but instead he brought it to the office. The wallet belonged to a kindergartner's mom.\n\nWhat does Omar's action tell us about him?",
           "choices": [
             "He doesn't need money",
             "He is honest and does the right thing",
@@ -235,7 +235,7 @@
         {
           "id": "RL.3.3-Q4",
           "type": "multiple_choice",
-          "prompt": "Read: \"Marta refused to share the art supplies with her group. She kept the best markers for herself. The other kids stopped inviting her to work on projects.\"\n\nWhat happened BECAUSE of Marta's actions?",
+          "prompt": "Marta refused to share the art supplies with her group. She kept the best markers for herself. The other kids stopped inviting her to work on projects.\n\nWhat happened BECAUSE of Marta's actions?",
           "choices": [
             "She won an art contest",
             "Her group stopped including her",
@@ -275,7 +275,7 @@
         {
           "id": "RL.3.4-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"After winning the race, Kenji was on top of the world.\"\n\nWhat does 'on top of the world' mean?",
+          "prompt": "After winning the race, Kenji was on top of the world.\n\nWhat does 'on top of the world' mean?",
           "choices": [
             "He climbed a mountain",
             "He was extremely happy",
@@ -291,7 +291,7 @@
         {
           "id": "RL.3.4-Q2",
           "type": "multiple_choice",
-          "prompt": "Read: \"'Don't let the cat out of the bag,' whispered Mom before the surprise party.\"\n\nWhat does 'let the cat out of the bag' mean?",
+          "prompt": "'Don't let the cat out of the bag,' whispered Mom before the surprise party.\n\nWhat does 'let the cat out of the bag' mean?",
           "choices": [
             "Release an actual cat",
             "Reveal a secret",
@@ -323,7 +323,7 @@
         {
           "id": "RL.3.4-Q4",
           "type": "multiple_choice",
-          "prompt": "Read: \"The classroom was a zoo today!\"\n\nThis means —",
+          "prompt": "The classroom was a zoo today!\n\nThis means —",
           "choices": [
             "There were animals in the classroom",
             "The classroom was very loud and chaotic",
@@ -339,7 +339,7 @@
         {
           "id": "RL.3.4-Q5",
           "type": "multiple_choice",
-          "prompt": "Read: \"The icy wind bit at their faces as they walked to school.\"\n\nWhat does 'bit at their faces' mean?",
+          "prompt": "The icy wind bit at their faces as they walked to school.\n\nWhat does 'bit at their faces' mean?",
           "choices": [
             "An animal bit them",
             "The wind felt sharp and painful on their skin",
@@ -451,7 +451,7 @@
         {
           "id": "RL.3.6-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"The narrator says, 'Vegetables are the most boring food in the world.'\"\n\nThis is the point of view of —",
+          "prompt": "The narrator says, 'Vegetables are the most boring food in the world.'\n\nThis is the point of view of —",
           "choices": [
             "All people everywhere",
             "The narrator or character",
@@ -483,7 +483,7 @@
         {
           "id": "RL.3.6-Q3",
           "type": "multiple_choice",
-          "prompt": "Read: \"I hated moving to a new town. Everything was different and terrible. But by the end of the year, I had the best friends I'd ever had.\"\n\nWho is telling this story?",
+          "prompt": "I hated moving to a new town. Everything was different and terrible. But by the end of the year, I had the best friends I'd ever had.\n\nWho is telling this story?",
           "choices": [
             "A parent watching their child",
             "The main character, using 'I'",
@@ -515,7 +515,7 @@
         {
           "id": "RL.3.6-Q5",
           "type": "multiple_choice",
-          "prompt": "Read: \"The wolf in the story said he was just trying to borrow sugar. But the pigs said he tried to blow their houses down.\"\n\nA reader might think —",
+          "prompt": "The wolf in the story said he was just trying to borrow sugar. But the pigs said he tried to blow their houses down.\n\nA reader might think —",
           "choices": [
             "The wolf is definitely telling the truth",
             "The pigs are definitely lying",
@@ -715,7 +715,7 @@
         {
           "id": "RL.3.10-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"The old woman lived at the edge of the forest where the trees whispered secrets to one another. Every evening, she placed a lantern in her window. 'For the lost travelers,' she told the cat, who blinked slowly as if he understood.\"\n\nWhy does the old woman place a lantern in her window?",
+          "prompt": "The old woman lived at the edge of the forest where the trees whispered secrets to one another. Every evening, she placed a lantern in her window. 'For the lost travelers,' she told the cat, who blinked slowly as if he understood.\n\nWhy does the old woman place a lantern in her window?",
           "choices": [
             "She's afraid of the dark",
             "To guide lost travelers",
@@ -731,7 +731,7 @@
         {
           "id": "RL.3.10-Q2",
           "type": "multiple_choice",
-          "prompt": "Read: \"Diego had exactly one week to build his invention for the science fair. On Monday he sketched plans. By Wednesday, he'd used all his supplies and started over. On Friday, with tape on his fingers and glue in his hair, he stepped back and grinned.\"\n\nWhat can you infer about Diego?",
+          "prompt": "Diego had exactly one week to build his invention for the science fair. On Monday he sketched plans. By Wednesday, he'd used all his supplies and started over. On Friday, with tape on his fingers and glue in his hair, he stepped back and grinned.\n\nWhat can you infer about Diego?",
           "choices": [
             "He gave up easily",
             "He was persistent and creative despite setbacks",
@@ -747,7 +747,7 @@
         {
           "id": "RL.3.10-Q3",
           "type": "multiple_choice",
-          "prompt": "Read: \"'You can't climb that,' said every kid on the block. Sana looked up at the ancient oak, its branches reaching like outstretched arms. She grabbed the lowest branch and pulled herself up.\"\n\nThe phrase 'branches reaching like outstretched arms' is an example of —",
+          "prompt": "'You can't climb that,' said every kid on the block. Sana looked up at the ancient oak, its branches reaching like outstretched arms. She grabbed the lowest branch and pulled herself up.\n\nThe phrase 'branches reaching like outstretched arms' is an example of —",
           "choices": [
             "A fact about trees",
             "A simile comparing branches to arms",
@@ -763,7 +763,7 @@
         {
           "id": "RL.3.10-Q4",
           "type": "multiple_choice",
-          "prompt": "Read: \"The package sat on the porch for three days. Each morning, Eliot walked past it. Each evening, he wondered what was inside. On the fourth day, he finally picked it up and read the label: 'To Eliot, from your future self.'\"\n\nWhat is the author trying to make the reader feel?",
+          "prompt": "The package sat on the porch for three days. Each morning, Eliot walked past it. Each evening, he wondered what was inside. On the fourth day, he finally picked it up and read the label: 'To Eliot, from your future self.'\n\nWhat is the author trying to make the reader feel?",
           "choices": [
             "Bored",
             "Curious and intrigued",
@@ -779,7 +779,7 @@
         {
           "id": "RL.3.10-Q5",
           "type": "multiple_choice",
-          "prompt": "Read: \"Everyone said the old house was haunted. Lina didn't believe in ghosts. She marched up the creaky steps, pushed open the door, and found... a family of raccoons living in the fireplace.\"\n\nWhat makes this ending effective?",
+          "prompt": "Everyone said the old house was haunted. Lina didn't believe in ghosts. She marched up the creaky steps, pushed open the door, and found... a family of raccoons living in the fireplace.\n\nWhat makes this ending effective?",
           "choices": [
             "It's scary",
             "It surprises the reader with a funny, unexpected twist",
@@ -803,7 +803,7 @@
         {
           "id": "RI.3.1-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"The Amazon Rainforest produces about 20 percent of the world's oxygen. It is home to more than 10 million species of plants and animals.\"\n\nHow much of the world's oxygen does the Amazon produce?",
+          "prompt": "The Amazon Rainforest produces about 20 percent of the world's oxygen. It is home to more than 10 million species of plants and animals.\n\nHow much of the world's oxygen does the Amazon produce?",
           "choices": [
             "About 10 percent",
             "About 20 percent",
@@ -819,7 +819,7 @@
         {
           "id": "RI.3.1-Q2",
           "type": "multiple_choice",
-          "prompt": "Read: \"Harriet Tubman escaped slavery in 1849. She then risked her life many times to help others escape through the Underground Railroad. She led about 70 people to freedom.\"\n\nHow many people did Harriet Tubman help escape?",
+          "prompt": "Harriet Tubman escaped slavery in 1849. She then risked her life many times to help others escape through the Underground Railroad. She led about 70 people to freedom.\n\nHow many people did Harriet Tubman help escape?",
           "choices": [
             "About 17",
             "About 70",
@@ -835,7 +835,7 @@
         {
           "id": "RI.3.1-Q3",
           "type": "multiple_choice",
-          "prompt": "Read: \"Earthquakes happen when large pieces of the Earth's crust, called tectonic plates, suddenly move. Most earthquakes occur along the edges of these plates.\"\n\nWhat causes earthquakes?",
+          "prompt": "Earthquakes happen when large pieces of the Earth's crust, called tectonic plates, suddenly move. Most earthquakes occur along the edges of these plates.\n\nWhat causes earthquakes?",
           "choices": [
             "Strong winds",
             "Heavy rain",
@@ -851,7 +851,7 @@
         {
           "id": "RI.3.1-Q4",
           "type": "multiple_choice",
-          "prompt": "Read: \"Thomas Edison failed over 1,000 times before successfully inventing the light bulb. He once said, 'I have not failed. I've just found 1,000 ways that won't work.'\"\n\nWhat does Edison's quote tell us about his attitude?",
+          "prompt": "Thomas Edison failed over 1,000 times before successfully inventing the light bulb. He once said, 'I have not failed. I've just found 1,000 ways that won't work.'\n\nWhat does Edison's quote tell us about his attitude?",
           "choices": [
             "He was ready to give up",
             "He saw failures as learning experiences",
@@ -867,7 +867,7 @@
         {
           "id": "RI.3.1-Q5",
           "type": "multiple_choice",
-          "prompt": "Read: \"The International Space Station orbits Earth about every 90 minutes, traveling at 17,500 miles per hour. Astronauts aboard the station see 16 sunrises and sunsets every day.\"\n\nWhy do astronauts see 16 sunrises each day?",
+          "prompt": "The International Space Station orbits Earth about every 90 minutes, traveling at 17,500 miles per hour. Astronauts aboard the station see 16 sunrises and sunsets every day.\n\nWhy do astronauts see 16 sunrises each day?",
           "choices": [
             "The sun moves faster in space",
             "The station orbits Earth so quickly",
@@ -891,7 +891,7 @@
         {
           "id": "RI.3.2-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"Bees are essential to our food supply. They pollinate flowers that grow into fruits and vegetables. Without bees, we would lose about one-third of the food we eat.\"\n\nWhat is the main idea?",
+          "prompt": "Bees are essential to our food supply. They pollinate flowers that grow into fruits and vegetables. Without bees, we would lose about one-third of the food we eat.\n\nWhat is the main idea?",
           "choices": [
             "Bees make honey",
             "Bees are important for our food supply",
@@ -907,7 +907,7 @@
         {
           "id": "RI.3.2-Q2",
           "type": "multiple_choice",
-          "prompt": "Read: \"Sleep is important for kids. During sleep, your brain stores what you learned that day. Your body grows and repairs itself. Kids who get enough sleep do better in school.\"\n\nWhich detail supports the idea that sleep helps learning?",
+          "prompt": "Sleep is important for kids. During sleep, your brain stores what you learned that day. Your body grows and repairs itself. Kids who get enough sleep do better in school.\n\nWhich detail supports the idea that sleep helps learning?",
           "choices": [
             "Your body grows",
             "Your brain stores what you learned",
@@ -923,7 +923,7 @@
         {
           "id": "RI.3.2-Q3",
           "type": "multiple_choice",
-          "prompt": "Read: \"Coral reefs are in danger. Pollution poisons the water. Rising temperatures cause coral to turn white and die. Overfishing removes animals that keep reefs healthy.\"\n\nThe key details all support the main idea that —",
+          "prompt": "Coral reefs are in danger. Pollution poisons the water. Rising temperatures cause coral to turn white and die. Overfishing removes animals that keep reefs healthy.\n\nThe key details all support the main idea that —",
           "choices": [
             "Fish live in reefs",
             "Coral reefs are beautiful",
@@ -955,7 +955,7 @@
         {
           "id": "RI.3.2-Q5",
           "type": "multiple_choice",
-          "prompt": "Read: \"Ancient Egyptians invented many things we still use today. They created one of the first writing systems called hieroglyphics. They developed a 365-day calendar. They even invented toothpaste!\"\n\nWhat is the main idea?",
+          "prompt": "Ancient Egyptians invented many things we still use today. They created one of the first writing systems called hieroglyphics. They developed a 365-day calendar. They even invented toothpaste!\n\nWhat is the main idea?",
           "choices": [
             "Egyptians liked to write",
             "Ancient Egypt had a calendar",
@@ -979,7 +979,7 @@
         {
           "id": "RI.3.3-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"Because the river flooded, farmers lost their crops. As a result, food prices went up that year.\"\n\nWhat caused food prices to go up?",
+          "prompt": "Because the river flooded, farmers lost their crops. As a result, food prices went up that year.\n\nWhat caused food prices to go up?",
           "choices": [
             "High temperatures",
             "Farmers lost crops due to flooding",
@@ -995,7 +995,7 @@
         {
           "id": "RI.3.3-Q2",
           "type": "multiple_choice",
-          "prompt": "Read: \"First, Rosa Parks refused to give up her bus seat in 1955. Then, the Montgomery Bus Boycott began. Finally, the Supreme Court ruled bus segregation was unconstitutional.\"\n\nWhich event happened FIRST?",
+          "prompt": "First, Rosa Parks refused to give up her bus seat in 1955. Then, the Montgomery Bus Boycott began. Finally, the Supreme Court ruled bus segregation was unconstitutional.\n\nWhich event happened FIRST?",
           "choices": [
             "The Supreme Court ruling",
             "The boycott",
@@ -1027,7 +1027,7 @@
         {
           "id": "RI.3.3-Q4",
           "type": "multiple_choice",
-          "prompt": "Read: \"Scientists noticed that temperatures were rising globally. This led to melting ice caps, which caused sea levels to rise.\"\n\nWhat is the EFFECT of melting ice caps?",
+          "prompt": "Scientists noticed that temperatures were rising globally. This led to melting ice caps, which caused sea levels to rise.\n\nWhat is the EFFECT of melting ice caps?",
           "choices": [
             "Temperatures rise",
             "Sea levels rise",
@@ -1043,7 +1043,7 @@
         {
           "id": "RI.3.3-Q5",
           "type": "multiple_choice",
-          "prompt": "Read: \"After the Great Fire of London in 1666, the city was rebuilt with stone and brick instead of wood. This made buildings much safer from future fires.\"\n\nHow are these two events connected?",
+          "prompt": "After the Great Fire of London in 1666, the city was rebuilt with stone and brick instead of wood. This made buildings much safer from future fires.\n\nHow are these two events connected?",
           "choices": [
             "They are not connected",
             "The fire caused the city to change how it built buildings",
@@ -1067,7 +1067,7 @@
         {
           "id": "RI.3.4-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"Photosynthesis is the process by which plants use sunlight, water, and carbon dioxide to make their own food.\"\n\nWhat is photosynthesis?",
+          "prompt": "Photosynthesis is the process by which plants use sunlight, water, and carbon dioxide to make their own food.\n\nWhat is photosynthesis?",
           "choices": [
             "A type of plant",
             "How plants make food using sunlight",
@@ -1083,7 +1083,7 @@
         {
           "id": "RI.3.4-Q2",
           "type": "multiple_choice",
-          "prompt": "Read: \"The Constitution is the supreme law of the United States. It establishes the structure of the government and protects citizens' rights.\"\n\nWhat does 'supreme' mean in this context?",
+          "prompt": "The Constitution is the supreme law of the United States. It establishes the structure of the government and protects citizens' rights.\n\nWhat does 'supreme' mean in this context?",
           "choices": [
             "Old",
             "Highest or most important",
@@ -1099,7 +1099,7 @@
         {
           "id": "RI.3.4-Q3",
           "type": "multiple_choice",
-          "prompt": "Read: \"Erosion is the gradual wearing away of land by water, wind, or ice. Over thousands of years, erosion carved the Grand Canyon.\"\n\nWhat does 'gradual' mean?",
+          "prompt": "Erosion is the gradual wearing away of land by water, wind, or ice. Over thousands of years, erosion carved the Grand Canyon.\n\nWhat does 'gradual' mean?",
           "choices": [
             "Sudden and fast",
             "Happening slowly over time",
@@ -1115,7 +1115,7 @@
         {
           "id": "RI.3.4-Q4",
           "type": "multiple_choice",
-          "prompt": "Read: \"Herbivores are animals that eat only plants. Deer, rabbits, and cows are all herbivores.\"\n\nA herbivore eats —",
+          "prompt": "Herbivores are animals that eat only plants. Deer, rabbits, and cows are all herbivores.\n\nA herbivore eats —",
           "choices": [
             "Only meat",
             "Both meat and plants",
@@ -1131,7 +1131,7 @@
         {
           "id": "RI.3.4-Q5",
           "type": "multiple_choice",
-          "prompt": "Read: \"The expedition to the South Pole took months of preparation. The team packed food, fuel, and navigation equipment for the dangerous journey.\"\n\nWhat is an 'expedition'?",
+          "prompt": "The expedition to the South Pole took months of preparation. The team packed food, fuel, and navigation equipment for the dangerous journey.\n\nWhat is an 'expedition'?",
           "choices": [
             "A type of equipment",
             "A long journey for a specific purpose",
@@ -1243,7 +1243,7 @@
         {
           "id": "RI.3.6-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"Homework is valuable because it helps students practice what they learned in class.\"\n\nThe author's point of view is that homework is —",
+          "prompt": "Homework is valuable because it helps students practice what they learned in class.\n\nThe author's point of view is that homework is —",
           "choices": [
             "A waste of time",
             "Valuable for learning",
@@ -1291,7 +1291,7 @@
         {
           "id": "RI.3.6-Q4",
           "type": "multiple_choice",
-          "prompt": "Read: \"Zoos keep animals in small spaces where they can't roam freely. Animals deserve to live in their natural habitats.\"\n\nThe author most likely believes —",
+          "prompt": "Zoos keep animals in small spaces where they can't roam freely. Animals deserve to live in their natural habitats.\n\nThe author most likely believes —",
           "choices": [
             "Zoos are great for animals",
             "Animals are happier in zoos",
@@ -1419,7 +1419,7 @@
         {
           "id": "RI.3.8-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"Sentence 1: Plastic bags harm ocean animals. Sentence 2: Sea turtles mistake plastic bags for jellyfish and eat them.\"\n\nSentence 2 connects to Sentence 1 by —",
+          "prompt": "Sentence 1: Plastic bags harm ocean animals. Sentence 2: Sea turtles mistake plastic bags for jellyfish and eat them.\n\nSentence 2 connects to Sentence 1 by —",
           "choices": [
             "Changing the topic",
             "Giving an example of how plastic harms animals",
@@ -1435,7 +1435,7 @@
         {
           "id": "RI.3.8-Q2",
           "type": "multiple_choice",
-          "prompt": "Read: \"Paragraph 1 describes what earthquakes are. Paragraph 2 explains what causes them.\"\n\nHow are these paragraphs connected?",
+          "prompt": "Paragraph 1 describes what earthquakes are. Paragraph 2 explains what causes them.\n\nHow are these paragraphs connected?",
           "choices": [
             "They contrast each other",
             "The first defines the topic and the second explains the cause",
@@ -1451,7 +1451,7 @@
         {
           "id": "RI.3.8-Q3",
           "type": "multiple_choice",
-          "prompt": "Read: \"Dogs are loyal pets. However, they require a lot of time and attention.\"\n\nThe word 'however' shows —",
+          "prompt": "Dogs are loyal pets. However, they require a lot of time and attention.\n\nThe word 'however' shows —",
           "choices": [
             "Agreement between the two ideas",
             "A contrast or opposing point",
@@ -1595,7 +1595,7 @@
         {
           "id": "RI.3.10-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"The Great Barrier Reef stretches over 1,400 miles along Australia's coast. It's so large it can be seen from space. Made up of billions of tiny organisms called coral polyps, it is the largest living structure on Earth.\"\n\nWhat are coral polyps?",
+          "prompt": "The Great Barrier Reef stretches over 1,400 miles along Australia's coast. It's so large it can be seen from space. Made up of billions of tiny organisms called coral polyps, it is the largest living structure on Earth.\n\nWhat are coral polyps?",
           "choices": [
             "Rocks",
             "Fish",
@@ -1611,7 +1611,7 @@
         {
           "id": "RI.3.10-Q2",
           "type": "multiple_choice",
-          "prompt": "Read: \"Unlike most spiders, tarantulas don't spin webs to catch prey. Instead, they hunt by ambushing insects and small animals. Despite their scary appearance, most tarantulas are harmless to humans.\"\n\nWhat is surprising about tarantulas based on this text?",
+          "prompt": "Unlike most spiders, tarantulas don't spin webs to catch prey. Instead, they hunt by ambushing insects and small animals. Despite their scary appearance, most tarantulas are harmless to humans.\n\nWhat is surprising about tarantulas based on this text?",
           "choices": [
             "They spin webs",
             "They are harmless despite looking scary",
@@ -1627,7 +1627,7 @@
         {
           "id": "RI.3.10-Q3",
           "type": "multiple_choice",
-          "prompt": "Read: \"In 1928, Alexander Fleming noticed that mold had accidentally grown on one of his petri dishes. The bacteria around the mold had died. This accidental discovery led to the development of penicillin, the world's first antibiotic.\"\n\nWhat made Fleming's discovery unusual?",
+          "prompt": "In 1928, Alexander Fleming noticed that mold had accidentally grown on one of his petri dishes. The bacteria around the mold had died. This accidental discovery led to the development of penicillin, the world's first antibiotic.\n\nWhat made Fleming's discovery unusual?",
           "choices": [
             "He planned it carefully",
             "It happened by accident",
@@ -1643,7 +1643,7 @@
         {
           "id": "RI.3.10-Q4",
           "type": "multiple_choice",
-          "prompt": "Read: \"Monarch butterflies migrate up to 3,000 miles from Canada to Mexico each fall. No single butterfly makes the entire round trip — it takes multiple generations. The butterflies that fly south in fall are the great-great-grandchildren of the ones that flew north in spring.\"\n\nWhy is the monarch migration remarkable?",
+          "prompt": "Monarch butterflies migrate up to 3,000 miles from Canada to Mexico each fall. No single butterfly makes the entire round trip — it takes multiple generations. The butterflies that fly south in fall are the great-great-grandchildren of the ones that flew north in spring.\n\nWhy is the monarch migration remarkable?",
           "choices": [
             "They fly very slowly",
             "Multiple generations complete what no single butterfly could",
@@ -1659,7 +1659,7 @@
         {
           "id": "RI.3.10-Q5",
           "type": "multiple_choice",
-          "prompt": "Read: \"The Sahara Desert isn't just sand — only about 25% is sandy. The rest includes rocky plateaus, gravel plains, and even mountains. Temperatures can swing from over 130°F during the day to below freezing at night.\"\n\nWhat common misconception about the Sahara does this text correct?",
+          "prompt": "The Sahara Desert isn't just sand — only about 25% is sandy. The rest includes rocky plateaus, gravel plains, and even mountains. Temperatures can swing from over 130°F during the day to below freezing at night.\n\nWhat common misconception about the Sahara does this text correct?",
           "choices": [
             "That it's in Africa",
             "That it's the largest desert",
@@ -2211,7 +2211,7 @@
         {
           "id": "RF.3.4a-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"The octopus is a master of disguise. It can change its color, texture, and even shape to match its surroundings in less than a second.\"\n\nWhat makes the octopus a 'master of disguise'?",
+          "prompt": "The octopus is a master of disguise. It can change its color, texture, and even shape to match its surroundings in less than a second.\n\nWhat makes the octopus a 'master of disguise'?",
           "choices": [
             "It's very fast",
             "It can change color, texture, and shape instantly",
@@ -2243,7 +2243,7 @@
         {
           "id": "RF.3.4a-Q3",
           "type": "multiple_choice",
-          "prompt": "Read: \"Benjamin Franklin was not only a Founding Father but also an inventor. He invented bifocal glasses, the lightning rod, and a more efficient fireplace called the Franklin stove.\"\n\nWhat were three of Franklin's inventions?",
+          "prompt": "Benjamin Franklin was not only a Founding Father but also an inventor. He invented bifocal glasses, the lightning rod, and a more efficient fireplace called the Franklin stove.\n\nWhat were three of Franklin's inventions?",
           "choices": [
             "The telephone, light bulb, and car",
             "Bifocals, lightning rod, and Franklin stove",
@@ -2259,7 +2259,7 @@
         {
           "id": "RF.3.4a-Q4",
           "type": "multiple_choice",
-          "prompt": "Read: \"Unlike most fish, seahorses swim upright and are surprisingly slow swimmers. The dwarf seahorse holds the record as the slowest fish in the ocean, moving at just 5 feet per hour.\"\n\nWhat is unusual about how seahorses swim?",
+          "prompt": "Unlike most fish, seahorses swim upright and are surprisingly slow swimmers. The dwarf seahorse holds the record as the slowest fish in the ocean, moving at just 5 feet per hour.\n\nWhat is unusual about how seahorses swim?",
           "choices": [
             "They swim backwards",
             "They swim upright instead of horizontally",
@@ -2419,7 +2419,7 @@
         {
           "id": "RF.3.4c-Q3",
           "type": "multiple_choice",
-          "prompt": "Read: 'The scientist used a microscope to examine the tiny ____.' Which word fits best?",
+          "prompt": "'The scientist used a microscope to examine the tiny ____.' Which word fits best?",
           "choices": [
             "elephant",
             "organisms",
@@ -2475,7 +2475,7 @@
         {
           "id": "L.3.4-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"The spectators cheered wildly as the runner crossed the finish line.\"\n\nWhat are 'spectators'?",
+          "prompt": "The spectators cheered wildly as the runner crossed the finish line.\n\nWhat are 'spectators'?",
           "choices": [
             "Runners",
             "People watching",
@@ -2507,7 +2507,7 @@
         {
           "id": "L.3.4-Q3",
           "type": "multiple_choice",
-          "prompt": "Read: \"The magician performed an elaborate trick with scarves, rings, and hidden mirrors.\"\n\nWhat does 'elaborate' mean?",
+          "prompt": "The magician performed an elaborate trick with scarves, rings, and hidden mirrors.\n\nWhat does 'elaborate' mean?",
           "choices": [
             "Simple and quick",
             "Complex and detailed",
@@ -2539,7 +2539,7 @@
         {
           "id": "L.3.4-Q5",
           "type": "multiple_choice",
-          "prompt": "Read: \"After the long drought, the parched earth cracked and split.\"\n\nWhat does 'parched' mean?",
+          "prompt": "After the long drought, the parched earth cracked and split.\n\nWhat does 'parched' mean?",
           "choices": [
             "Wet",
             "Extremely dry",
@@ -2563,7 +2563,7 @@
         {
           "id": "L.3.4a-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"The benevolent king gave food to every poor family in his kingdom.\"\n\nWhat does 'benevolent' most likely mean?",
+          "prompt": "The benevolent king gave food to every poor family in his kingdom.\n\nWhat does 'benevolent' most likely mean?",
           "choices": [
             "Mean",
             "Kind and generous",
@@ -2579,7 +2579,7 @@
         {
           "id": "L.3.4a-Q2",
           "type": "multiple_choice",
-          "prompt": "Read: \"The abandoned house was empty, with broken windows and weeds growing through the porch.\"\n\nWhat does 'abandoned' mean?",
+          "prompt": "The abandoned house was empty, with broken windows and weeds growing through the porch.\n\nWhat does 'abandoned' mean?",
           "choices": [
             "Brand new",
             "Left behind and empty",
@@ -2595,7 +2595,7 @@
         {
           "id": "L.3.4a-Q3",
           "type": "multiple_choice",
-          "prompt": "Read: \"The camouflaged lizard blended perfectly with the brown leaves on the ground.\"\n\nWhat does 'camouflaged' mean?",
+          "prompt": "The camouflaged lizard blended perfectly with the brown leaves on the ground.\n\nWhat does 'camouflaged' mean?",
           "choices": [
             "Brightly colored",
             "Disguised to blend in",
@@ -2611,7 +2611,7 @@
         {
           "id": "L.3.4a-Q4",
           "type": "multiple_choice",
-          "prompt": "Read: \"The fragile vase shattered into a hundred pieces when it hit the floor.\"\n\nWhat does 'fragile' mean?",
+          "prompt": "The fragile vase shattered into a hundred pieces when it hit the floor.\n\nWhat does 'fragile' mean?",
           "choices": [
             "Strong",
             "Heavy",
@@ -2627,7 +2627,7 @@
         {
           "id": "L.3.4a-Q5",
           "type": "multiple_choice",
-          "prompt": "Read: \"The nocturnal owl hunted mice while other birds slept.\"\n\nUsing context clues, 'nocturnal' means —",
+          "prompt": "The nocturnal owl hunted mice while other birds slept.\n\nUsing context clues, 'nocturnal' means —",
           "choices": [
             "Very fast",
             "Active at night",
@@ -2915,7 +2915,7 @@
         {
           "id": "L.3.5-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"She had a heart of gold.\"\n\nThis means —",
+          "prompt": "She had a heart of gold.\n\nThis means —",
           "choices": [
             "Her heart was made of gold metal",
             "She was very kind and generous",
@@ -2979,7 +2979,7 @@
         {
           "id": "L.3.5-Q5",
           "type": "multiple_choice",
-          "prompt": "Read: \"The thunder grumbled like an angry old man.\"\n\nThis is an example of —",
+          "prompt": "The thunder grumbled like an angry old man.\n\nThis is an example of —",
           "choices": [
             "A fact",
             "Personification and simile",
@@ -3003,7 +3003,7 @@
         {
           "id": "L.3.5a-Q1",
           "type": "multiple_choice",
-          "prompt": "Read: \"Time flies when you're having fun.\"\n\nIs this literal or nonliteral?",
+          "prompt": "Time flies when you're having fun.\n\nIs this literal or nonliteral?",
           "choices": [
             "Literal — time actually has wings",
             "Nonliteral — it means time seems to pass quickly",
@@ -3035,7 +3035,7 @@
         {
           "id": "L.3.5a-Q3",
           "type": "multiple_choice",
-          "prompt": "Read: \"My backpack weighs a ton.\"\n\nWhat does this really mean?",
+          "prompt": "My backpack weighs a ton.\n\nWhat does this really mean?",
           "choices": [
             "The backpack literally weighs 2,000 pounds",
             "The backpack feels very heavy",
@@ -3051,7 +3051,7 @@
         {
           "id": "L.3.5a-Q4",
           "type": "multiple_choice",
-          "prompt": "Read: \"She was drowning in homework.\"\n\nThis means —",
+          "prompt": "She was drowning in homework.\n\nThis means —",
           "choices": [
             "She fell into a pool of papers",
             "She had way too much homework",
@@ -3067,7 +3067,7 @@
         {
           "id": "L.3.5a-Q5",
           "type": "multiple_choice",
-          "prompt": "Read: \"His words cut like a knife.\"\n\nThis sentence means his words were —",
+          "prompt": "His words cut like a knife.\n\nThis sentence means his words were —",
           "choices": [
             "Made of metal",
             "Sharp and hurtful",
@@ -3243,7 +3243,7 @@
         {
           "id": "L.3.5c-Q5",
           "type": "multiple_choice",
-          "prompt": "Read: \"I heard the rumor about the snow day.\" vs. \"I knew school would be canceled.\"\n\nWhich shows MORE certainty?",
+          "prompt": "I heard the rumor about the snow day.\" vs. \"I knew school would be canceled.\n\nWhich shows MORE certainty?",
           "choices": [
             "'I heard' shows more certainty",
             "'I knew' shows more certainty",
