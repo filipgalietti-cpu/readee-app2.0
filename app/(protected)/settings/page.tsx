@@ -5,10 +5,12 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
+import type { ShopPurchase, EquippedItems } from "@/lib/db/types";
 import { READING_LEVELS, GRADES } from "@/app/_components/LevelProgressBar";
 import { safeValidate } from "@/lib/validate";
 import CelebrationOverlay from "@/app/_components/CelebrationOverlay";
 import { ChildCreateSchema, ChildUpdateSchema } from "@/lib/schemas";
+import { BACKGROUND_STYLES, SHOP_ITEMS } from "@/lib/data/shop-items";
 
 function displayGrade(grade: string): string {
   if (grade.toLowerCase() === "pre-k") return "Foundational";
@@ -56,6 +58,9 @@ export default function Settings() {
 
   // Dev reset
   const [resettingPremium, setResettingPremium] = useState(false);
+
+  // Background picker
+  const [purchases, setPurchases] = useState<Record<string, ShopPurchase[]>>({});
 
   // Preferences
   const [soundEffects, setSoundEffects] = useState(true);
@@ -107,7 +112,24 @@ export default function Settings() {
       .select("*")
       .eq("parent_id", parentId)
       .order("created_at", { ascending: true });
-    if (data) setChildren(data as Child[]);
+    if (data) {
+      setChildren(data as Child[]);
+      // Fetch purchases for background picker
+      const childIds = (data as Child[]).map((c) => c.id);
+      if (childIds.length > 0) {
+        const { data: allPurchases } = await supabase
+          .from("shop_purchases")
+          .select("*")
+          .in("child_id", childIds);
+        if (allPurchases) {
+          const grouped: Record<string, ShopPurchase[]> = {};
+          for (const p of allPurchases as ShopPurchase[]) {
+            (grouped[p.child_id] ??= []).push(p);
+          }
+          setPurchases(grouped);
+        }
+      }
+    }
   }
 
   // === Password ===
@@ -239,6 +261,20 @@ export default function Settings() {
       // ignore
     }
     setResettingPremium(false);
+  }
+
+  async function handleEquipBackground(child: Child, bgId: string | null) {
+    const newEquipped: EquippedItems = {
+      ...(child.equipped_items || {}),
+      background: bgId,
+    };
+    const { error } = await supabase
+      .from("children")
+      .update({ equipped_items: newEquipped })
+      .eq("id", child.id);
+    if (!error) {
+      setChildren((prev) => prev.map((c) => c.id === child.id ? { ...c, equipped_items: newEquipped } : c));
+    }
   }
 
   if (loading) {
@@ -407,6 +443,55 @@ export default function Settings() {
                         Set by assessment. Override manually if needed.
                       </p>
                     </div>
+
+                    {/* Dashboard Background */}
+                    {(() => {
+                      const childPurchases = purchases[child.id] || [];
+                      const ownedBgIds = childPurchases.filter((p) => p.item_id.startsWith("bg_")).map((p) => p.item_id);
+                      const equippedBg = (child.equipped_items as EquippedItems | null)?.background ?? null;
+                      if (ownedBgIds.length === 0) return null;
+                      return (
+                        <div className="space-y-1.5">
+                          <Label>Dashboard Background</Label>
+                          <div className="flex flex-wrap gap-2">
+                            {/* None option */}
+                            <button
+                              onClick={() => handleEquipBackground(child, null)}
+                              className={`w-10 h-10 rounded-xl border-2 transition-all flex items-center justify-center text-xs font-medium ${
+                                !equippedBg
+                                  ? "border-indigo-500 ring-2 ring-indigo-200"
+                                  : "border-zinc-200 dark:border-slate-600 hover:border-zinc-300"
+                              } bg-white dark:bg-slate-700 text-zinc-400 dark:text-slate-400`}
+                              title="Default (no background)"
+                            >
+                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+                              </svg>
+                            </button>
+                            {/* Owned backgrounds */}
+                            {ownedBgIds.map((bgId) => {
+                              const style = BACKGROUND_STYLES[bgId];
+                              const item = SHOP_ITEMS.find((i) => i.id === bgId);
+                              if (!style) return null;
+                              const isActive = equippedBg === bgId;
+                              return (
+                                <button
+                                  key={bgId}
+                                  onClick={() => handleEquipBackground(child, isActive ? null : bgId)}
+                                  className={`w-10 h-10 rounded-xl border-2 transition-all ${
+                                    isActive
+                                      ? "border-indigo-500 ring-2 ring-indigo-200 scale-110"
+                                      : "border-zinc-200 dark:border-slate-600 hover:border-zinc-300 hover:scale-105"
+                                  }`}
+                                  style={{ background: style.light }}
+                                  title={item?.name || bgId}
+                                />
+                              );
+                            })}
+                          </div>
+                        </div>
+                      );
+                    })()}
 
                     {/* Danger actions */}
                     <div className="flex gap-3 pt-1">
