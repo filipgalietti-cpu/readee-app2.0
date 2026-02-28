@@ -601,19 +601,12 @@ function ChildDashboard({
   const ownedAvatarIds = new Set(purchases.filter((p) => p.item_id.startsWith("avatar_")).map((p) => p.item_id));
   const equippedAvatarId = currentChild.equipped_items?.avatar ?? null;
 
-  // Equipped background gradient — apply to body so it covers the full viewport
+  // Equipped background gradient — applied inline on the wrapper div
   const darkMode = useThemeStore((s) => s.darkMode);
   const equippedBgId = currentChild.equipped_items?.background ?? null;
   const bgGradient = equippedBgId && BACKGROUND_STYLES[equippedBgId]
     ? (darkMode ? BACKGROUND_STYLES[equippedBgId].dark : BACKGROUND_STYLES[equippedBgId].light)
     : null;
-
-  useEffect(() => {
-    if (bgGradient) {
-      document.body.style.background = bgGradient;
-      return () => { document.body.style.background = ""; };
-    }
-  }, [bgGradient]);
 
   const handleEquipAvatar = async (avatarId: string | null) => {
     const newEquipped: EquippedItems = {
@@ -638,10 +631,11 @@ function ChildDashboard({
 
   return (
     <motion.div
-      className="max-w-3xl mx-auto space-y-6 pb-12 px-4"
+      className={`max-w-3xl mx-auto space-y-6 pb-12 px-4${bgGradient ? " min-h-screen rounded-3xl" : ""}`}
       variants={staggerContainer}
       initial="hidden"
       animate="visible"
+      {...(bgGradient ? { style: { background: bgGradient } } : {})}
     >
       {/* Nav */}
       {hasMultiple && (
