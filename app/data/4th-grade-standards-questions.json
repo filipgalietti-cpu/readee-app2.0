@@ -15,8 +15,8 @@
           "choices": [
             "He doesn't like stars",
             "He shared his knowledge of astronomy with Elena",
-            "He lives on the rooftop",
-            "He has never seen a comet"
+            "He has never seen a comet",
+            "He lives on the rooftop"
           ],
           "correct": "He shared his knowledge of astronomy with Elena",
           "hint": "Elena knew exactly where to look because her grandfather told her about the comet.",
@@ -30,8 +30,8 @@
           "prompt": "The letter had been folded and refolded so many times that the creases were soft as fabric. Marcus kept it in his front pocket, close to his chest, even though he'd memorized every word.\n\nWhat can you infer about how Marcus feels about the letter?",
           "choices": [
             "He wants to throw it away",
-            "It's extremely important and meaningful to him",
             "He just received it today",
+            "It's extremely important and meaningful to him",
             "He can't read it"
           ],
           "correct": "It's extremely important and meaningful to him",
@@ -46,9 +46,9 @@
           "prompt": "Priya practiced her free throws every morning before school and every evening after dinner. On the day of tryouts, she was the only one who made all ten shots.\n\nWhat detail from the text BEST supports the idea that hard work pays off?",
           "choices": [
             "She practiced before school and after dinner",
-            "She went to tryouts",
+            "She goes to school",
             "She shoots free throws",
-            "She goes to school"
+            "She went to tryouts"
           ],
           "correct": "She practiced before school and after dinner",
           "hint": "The detail about her practice schedule directly explains why she succeeded at tryouts.",
@@ -62,8 +62,8 @@
           "prompt": "Dad hadn't said a word during the entire drive home. He gripped the steering wheel tightly, and his jaw was clenched. When they pulled into the driveway, he finally sighed and said, 'We'll talk about this inside.'\n\nWhat can you infer about Dad's mood?",
           "choices": [
             "He's happy and excited",
-            "He's upset or frustrated about something",
             "He's tired from driving",
+            "He's upset or frustrated about something",
             "He's hungry"
           ],
           "correct": "He's upset or frustrated about something",
@@ -77,10 +77,10 @@
           "type": "multiple_choice",
           "prompt": "The old bookshop smelled of leather and dust. Mrs. Tanaka knew every book by heart — where it sat, what it was about, who had loved it last. When the city announced the building would be torn down, she simply said, 'Books always find a new home.'\n\nWhat does Mrs. Tanaka's response reveal about her character?",
           "choices": [
-            "She doesn't care about the bookshop",
-            "She's optimistic and resilient even in difficult times",
             "She wants a new building",
-            "She doesn't like books"
+            "She's optimistic and resilient even in difficult times",
+            "She doesn't like books",
+            "She doesn't care about the bookshop"
           ],
           "correct": "She's optimistic and resilient even in difficult times",
           "hint": "Instead of being devastated, she focuses on the positive — books will survive. That's resilience.",
@@ -101,9 +101,9 @@
           "type": "multiple_choice",
           "prompt": "Kai wanted to win the science fair more than anything. He worked alone, refusing help from his classmates. His project looked impressive but had a major flaw he hadn't noticed. Meanwhile, the team next to him — who had shared ideas and caught each other's mistakes — won first place.\n\nWhat is the theme?",
           "choices": [
-            "Science fairs are unfair",
-            "Working alone is always best",
             "Collaboration leads to better results than working alone",
+            "Working alone is always best",
+            "Science fairs are unfair",
             "Winning is everything"
           ],
           "correct": "Collaboration leads to better results than working alone",
@@ -117,10 +117,10 @@
           "type": "multiple_choice",
           "prompt": "Amara was embarrassed by her grandmother's accent and old-fashioned clothes. She asked Grandma not to come to the school play. After the show, Amara saw her classmates laughing with their grandparents and felt a deep ache. She called Grandma that night and said, 'Next time, front row.'\n\nWhat is the theme?",
           "choices": [
-            "School plays are boring",
+            "Clothes matter more than people",
             "Don't be ashamed of your family — appreciate them",
             "Grandparents shouldn't visit schools",
-            "Clothes matter more than people"
+            "School plays are boring"
           ],
           "correct": "Don't be ashamed of your family — appreciate them",
           "hint": "Amara regretted pushing her grandmother away and realized family matters more than appearances.",
@@ -133,10 +133,10 @@
           "type": "multiple_choice",
           "prompt": "A theme is different from a topic because —",
           "choices": [
-            "A theme is one word like 'friendship'",
-            "A theme is the message or lesson, while a topic is just the subject",
             "A theme is always stated directly",
-            "There's no difference"
+            "There's no difference",
+            "A theme is one word like 'friendship'",
+            "A theme is the message or lesson, while a topic is just the subject"
           ],
           "correct": "A theme is the message or lesson, while a topic is just the subject",
           "hint": "Topic = friendship. Theme = true friends stand by you in hard times.",
@@ -150,8 +150,8 @@
           "prompt": "The tiny seed was carried by the wind past tall trees and mighty oaks. It landed in a crack between two rocks where nothing grew. But the seed pushed through anyway, and years later it became the only tree on that rocky hill.\n\nWhat is the theme?",
           "choices": [
             "Seeds need good soil",
-            "Determination can help you thrive even in difficult conditions",
             "Trees are stronger than rocks",
+            "Determination can help you thrive even in difficult conditions",
             "Wind is powerful"
           ],
           "correct": "Determination can help you thrive even in difficult conditions",
@@ -165,10 +165,10 @@
           "type": "multiple_choice",
           "prompt": "Which is the BEST summary of a story?",
           "choices": [
-            "A list of every single event that happened",
-            "A brief retelling of the main character, problem, key events, and resolution",
             "Just the ending",
-            "A copy of the first paragraph"
+            "A copy of the first paragraph",
+            "A brief retelling of the main character, problem, key events, and resolution",
+            "A list of every single event that happened"
           ],
           "correct": "A brief retelling of the main character, problem, key events, and resolution",
           "hint": "A good summary hits the highlights: who, what problem, what happened, how it ended.",
@@ -190,8 +190,8 @@
           "prompt": "Coach Reyes never raised her voice. When a player made a mistake, she'd kneel down, look them in the eye, and say, 'Tell me what you were thinking.' By season's end, every player said she was the best coach they'd ever had.\n\nWhich word BEST describes Coach Reyes?",
           "choices": [
             "Strict",
-            "Impatient",
             "Respectful",
+            "Impatient",
             "Careless"
           ],
           "correct": "Respectful",
@@ -205,10 +205,10 @@
           "type": "multiple_choice",
           "prompt": "The marketplace buzzed with voices in a dozen languages. Spices piled in colorful mountains — saffron yellow, paprika red, turmeric orange. Somewhere a radio played scratchy music, and the smell of roasting lamb drifted through the narrow aisles.\n\nThe author uses these details to create a setting that feels —",
           "choices": [
-            "Quiet and lonely",
+            "Modern and high-tech",
             "Vibrant, busy, and full of sensory experiences",
-            "Cold and frightening",
-            "Modern and high-tech"
+            "Quiet and lonely",
+            "Cold and frightening"
           ],
           "correct": "Vibrant, busy, and full of sensory experiences",
           "hint": "Voices, colors, music, smells — the author hits sight, sound, and smell to bring it alive.",
@@ -222,8 +222,8 @@
           "prompt": "Jordan's hands trembled as he opened the envelope. His eyes scanned the page, then widened. He read it again. Then a third time. Then he let out a whoop so loud the neighbors' dog started barking.\n\nWhat can you infer about the letter's contents?",
           "choices": [
             "Bad news",
-            "Very good news",
             "A grocery list",
+            "Very good news",
             "A homework assignment"
           ],
           "correct": "Very good news",
@@ -237,10 +237,10 @@
           "type": "multiple_choice",
           "prompt": "When describing a character 'in depth,' you should include —",
           "choices": [
-            "Only what they look like",
             "Their traits, motivations, thoughts, words, and actions",
             "Just their name and age",
-            "Only what other characters say about them"
+            "Only what other characters say about them",
+            "Only what they look like"
           ],
           "correct": "Their traits, motivations, thoughts, words, and actions",
           "hint": "A deep character description goes beyond appearance — it explores WHO they are inside.",
@@ -253,10 +253,10 @@
           "type": "multiple_choice",
           "prompt": "The abandoned lighthouse stood at the edge of the cliff, its paint peeling like sunburned skin. Waves crashed against the rocks below, sending spray twenty feet into the air. Inside, the spiral staircase groaned under the weight of years.\n\nThe setting creates a mood that is —",
           "choices": [
-            "Cheerful and bright",
             "Eerie and isolated",
-            "Warm and cozy",
-            "Busy and crowded"
+            "Busy and crowded",
+            "Cheerful and bright",
+            "Warm and cozy"
           ],
           "correct": "Eerie and isolated",
           "hint": "Abandoned, peeling paint, crashing waves, groaning staircase — all create a lonely, spooky mood.",
@@ -277,10 +277,10 @@
           "type": "multiple_choice",
           "prompt": "She had the Midas touch — every business she started turned into gold.\n\nThis allusion to King Midas means —",
           "choices": [
-            "She literally turned things to gold",
+            "She was a queen",
             "Everything she did became successful",
             "She was greedy",
-            "She was a queen"
+            "She literally turned things to gold"
           ],
           "correct": "Everything she did became successful",
           "hint": "King Midas turned everything to gold. This phrase means everything she touches succeeds.",
@@ -293,10 +293,10 @@
           "type": "multiple_choice",
           "prompt": "Cleaning out the garage was a Herculean task.\n\nThis allusion to Hercules means the task was —",
           "choices": [
-            "Easy and quick",
             "Extremely difficult and required great effort",
-            "Fun and entertaining",
-            "Impossible to start"
+            "Impossible to start",
+            "Easy and quick",
+            "Fun and entertaining"
           ],
           "correct": "Extremely difficult and required great effort",
           "hint": "Hercules was famous for completing incredibly difficult tasks (his twelve labors).",
@@ -309,9 +309,9 @@
           "type": "multiple_choice",
           "prompt": "The morning light tiptoed through the curtains.\n\nWhat does 'tiptoed' suggest about the light?",
           "choices": [
+            "It was nighttime",
             "It was very bright and harsh",
             "It entered gently and softly",
-            "It was nighttime",
             "The curtains were open"
           ],
           "correct": "It entered gently and softly",
@@ -325,10 +325,10 @@
           "type": "multiple_choice",
           "prompt": "His Achilles' heel was his temper — it always got him into trouble.\n\nAn 'Achilles' heel' refers to —",
           "choices": [
-            "A foot injury",
-            "A person's greatest weakness or vulnerability",
             "A type of shoe",
-            "A battle strategy"
+            "A person's greatest weakness or vulnerability",
+            "A battle strategy",
+            "A foot injury"
           ],
           "correct": "A person's greatest weakness or vulnerability",
           "hint": "In mythology, Achilles was invincible except for his heel. The phrase means a fatal weakness.",
@@ -341,10 +341,10 @@
           "type": "multiple_choice",
           "prompt": "The silence in the library was so thick you could cut it with a knife.\n\nThis phrase means —",
           "choices": [
+            "People were cooking in the library",
             "Someone had a knife in the library",
             "The silence was intense and heavy",
-            "The library was noisy",
-            "People were cooking in the library"
+            "The library was noisy"
           ],
           "correct": "The silence was intense and heavy",
           "hint": "This is figurative — the silence felt so strong and present it was almost physical.",
@@ -366,9 +366,9 @@
           "prompt": "Which structural element is found in a drama (play) but NOT in prose (a regular story)?",
           "choices": [
             "Chapters",
-            "Stage directions",
             "Paragraphs",
-            "A title"
+            "A title",
+            "Stage directions"
           ],
           "correct": "Stage directions",
           "hint": "Stage directions (in italics or brackets) tell actors how to move and speak — only plays have these.",
@@ -381,10 +381,10 @@
           "type": "multiple_choice",
           "prompt": "A poem is organized into stanzas. Stanzas are similar to ____ in prose.",
           "choices": [
-            "Chapters",
-            "Paragraphs",
             "Sentences",
-            "Titles"
+            "Titles",
+            "Paragraphs",
+            "Chapters"
           ],
           "correct": "Paragraphs",
           "hint": "Stanzas group lines in a poem, just like paragraphs group sentences in prose.",
@@ -397,10 +397,10 @@
           "type": "multiple_choice",
           "prompt": "How is dialogue presented differently in a play versus a novel?",
           "choices": [
-            "Plays don't have dialogue",
             "In plays, the character's name appears before their lines; novels use quotation marks",
             "Novels don't have dialogue",
-            "There's no difference"
+            "There's no difference",
+            "Plays don't have dialogue"
           ],
           "correct": "In plays, the character's name appears before their lines; novels use quotation marks",
           "hint": "Play: ROMEO: But soft! Novel: \"But soft!\" said Romeo.",
@@ -413,10 +413,10 @@
           "type": "multiple_choice",
           "prompt": "What structural element do poems often have that prose does not?",
           "choices": [
-            "Sentences",
-            "Meter and rhyme scheme",
+            "A beginning and end",
             "Characters",
-            "A beginning and end"
+            "Meter and rhyme scheme",
+            "Sentences"
           ],
           "correct": "Meter and rhyme scheme",
           "hint": "Poems often have rhythm (meter) and patterns of rhyming — prose usually doesn't.",
@@ -429,10 +429,10 @@
           "type": "multiple_choice",
           "prompt": "A verse in a poem is most similar to a ____ in a novel.",
           "choices": [
-            "Character",
-            "Line or sentence",
             "Chapter",
-            "Setting"
+            "Setting",
+            "Line or sentence",
+            "Character"
           ],
           "correct": "Line or sentence",
           "hint": "A verse is a single line of poetry — similar to how a sentence is a unit in prose.",
@@ -453,10 +453,10 @@
           "type": "multiple_choice",
           "prompt": "I couldn't believe my eyes when I opened the door.\n\nThis is written in —",
           "choices": [
+            "No point of view",
             "First person",
-            "Second person",
             "Third person",
-            "No point of view"
+            "Second person"
           ],
           "correct": "First person",
           "hint": "The word 'I' is the key clue — the narrator is telling their own story.",
@@ -469,9 +469,9 @@
           "type": "multiple_choice",
           "prompt": "Sarah couldn't believe her eyes when she opened the door.\n\nThis is written in —",
           "choices": [
-            "First person",
             "Second person",
             "Third person",
+            "First person",
             "No point of view"
           ],
           "correct": "Third person",
@@ -485,10 +485,10 @@
           "type": "multiple_choice",
           "prompt": "How does first-person narration affect a story compared to third-person?",
           "choices": [
-            "First person gives you access to every character's thoughts",
-            "First person limits you to one character's perspective and feelings",
             "There's no difference",
-            "Third person is always more honest"
+            "Third person is always more honest",
+            "First person gives you access to every character's thoughts",
+            "First person limits you to one character's perspective and feelings"
           ],
           "correct": "First person limits you to one character's perspective and feelings",
           "hint": "With 'I,' you only know what THAT character knows and feels.",
@@ -502,9 +502,9 @@
           "prompt": "A story told by an outside narrator who knows the thoughts and feelings of ALL characters is called —",
           "choices": [
             "First person",
-            "Third person limited",
+            "Second person",
             "Third person omniscient",
-            "Second person"
+            "Third person limited"
           ],
           "correct": "Third person omniscient",
           "hint": "'Omniscient' means all-knowing — this narrator can see into everyone's mind.",
@@ -517,9 +517,9 @@
           "type": "multiple_choice",
           "prompt": "The same event is described two ways: Version A: 'I scored the winning goal and felt like a hero.' Version B: 'Jake scored the winning goal. His teammates cheered, but the other team walked away in silence.'\n\nHow does the point of view change what the reader learns?",
           "choices": [
-            "Both versions give the same information",
             "Version A shows Jake's feelings; Version B shows both teams' reactions",
             "Version B is better written",
+            "Both versions give the same information",
             "Version A has more details"
           ],
           "correct": "Version A shows Jake's feelings; Version B shows both teams' reactions",
@@ -557,10 +557,10 @@
           "type": "multiple_choice",
           "prompt": "When a book is turned into a play, what might be LOST?",
           "choices": [
-            "Dialogue",
+            "All the characters",
             "The character's inner thoughts described by the narrator",
             "The plot",
-            "All the characters"
+            "Dialogue"
           ],
           "correct": "The character's inner thoughts described by the narrator",
           "hint": "On stage, you can't hear what a character is thinking the way a narrator can tell you.",
@@ -573,10 +573,10 @@
           "type": "multiple_choice",
           "prompt": "What might a visual presentation (movie or play) ADD to a story that the text cannot?",
           "choices": [
+            "More chapters",
             "More words",
-            "Facial expressions, tone of voice, and body language of actors",
             "Longer descriptions",
-            "More chapters"
+            "Facial expressions, tone of voice, and body language of actors"
           ],
           "correct": "Facial expressions, tone of voice, and body language of actors",
           "hint": "Actors bring characters to life with their faces, voices, and movements.",
@@ -589,10 +589,10 @@
           "type": "multiple_choice",
           "prompt": "A book describes a character as 'a tall woman with kind eyes.' In the movie, the actress has a warm smile and speaks softly. How does the movie expand on the text?",
           "choices": [
-            "It changes the character completely",
+            "It contradicts the book",
             "It shows specific visual and audio details that bring 'kind eyes' to life",
             "It removes the description",
-            "It contradicts the book"
+            "It changes the character completely"
           ],
           "correct": "It shows specific visual and audio details that bring 'kind eyes' to life",
           "hint": "The movie translates 'kind eyes' into a warm smile and soft voice — making it real.",
@@ -605,10 +605,10 @@
           "type": "multiple_choice",
           "prompt": "Why might a reader prefer the book version over the movie?",
           "choices": [
-            "Books are always better",
-            "The reader's imagination creates a personal version of the story",
             "Movies don't have stories",
-            "Books have more special effects"
+            "The reader's imagination creates a personal version of the story",
+            "Books have more special effects",
+            "Books are always better"
           ],
           "correct": "The reader's imagination creates a personal version of the story",
           "hint": "When you read, YOU decide what characters look like and how settings feel.",
@@ -629,9 +629,9 @@
           "type": "multiple_choice",
           "prompt": "A Greek myth says the sun is pulled across the sky by the god Helios in a chariot. A Native American story says the sun is carried by a spirit eagle. Both stories try to explain —",
           "choices": [
-            "Why it rains",
-            "How the sun moves across the sky",
             "Why birds can fly",
+            "How the sun moves across the sky",
+            "Why it rains",
             "How fire was created"
           ],
           "correct": "How the sun moves across the sky",
@@ -645,9 +645,9 @@
           "type": "multiple_choice",
           "prompt": "Many cultures have flood myths — a great flood that covers the earth. What does this SIMILARITY suggest?",
           "choices": [
+            "They all copied from one story",
             "Only one culture had a flood",
             "Ancient peoples around the world may have experienced similar natural disasters",
-            "They all copied from one story",
             "Floods never actually happened"
           ],
           "correct": "Ancient peoples around the world may have experienced similar natural disasters",
@@ -662,9 +662,9 @@
           "prompt": "A European fairy tale and a West African folktale both feature a clever trickster who outsmarts a more powerful character. The European version uses a fox; the African version uses a spider named Anansi. What is the SAME?",
           "choices": [
             "The animal character",
+            "The language",
             "The setting",
-            "The theme of cleverness defeating power",
-            "The language"
+            "The theme of cleverness defeating power"
           ],
           "correct": "The theme of cleverness defeating power",
           "hint": "Different characters, same message — brains can beat brawn.",
@@ -677,8 +677,8 @@
           "type": "multiple_choice",
           "prompt": "Why do different cultures often tell stories with similar themes?",
           "choices": [
-            "They all speak the same language",
             "Human experiences like love, courage, and fairness are universal",
+            "They all speak the same language",
             "They don't have any different themes",
             "One culture wrote all the stories"
           ],
@@ -693,10 +693,10 @@
           "type": "multiple_choice",
           "prompt": "When comparing myths from different cultures, the MOST important thing to examine is —",
           "choices": [
-            "Which myth is older",
+            "How long each myth is",
             "How each culture uses its own characters and settings to explore universal themes",
             "Which myth is more exciting",
-            "How long each myth is"
+            "Which myth is older"
           ],
           "correct": "How each culture uses its own characters and settings to explore universal themes",
           "hint": "The richest comparison looks at how different cultures express the same big ideas.",
@@ -717,9 +717,9 @@
           "type": "multiple_choice",
           "prompt": "Nobody knew where the music came from. Every night at midnight, a violin played from somewhere deep in the woods. The townspeople locked their doors and whispered about ghosts. Only young Alma grabbed her lantern and followed the sound.\n\nWhat does Alma's action reveal about her?",
           "choices": [
+            "She plays violin",
             "She's foolish and doesn't listen",
             "She's curious and braver than the other townspeople",
-            "She plays violin",
             "She's a ghost"
           ],
           "correct": "She's curious and braver than the other townspeople",
@@ -733,10 +733,10 @@
           "type": "multiple_choice",
           "prompt": "The treaty was signed on a Tuesday. By Wednesday, the two kingdoms had already broken it. 'Peace,' the old queen muttered, 'is harder to keep than to promise.'\n\nWhat is the queen's message about peace?",
           "choices": [
-            "Peace is easy",
             "Making peace is simple but maintaining it is the real challenge",
+            "Tuesdays are unlucky",
             "Treaties always work",
-            "Tuesdays are unlucky"
+            "Peace is easy"
           ],
           "correct": "Making peace is simple but maintaining it is the real challenge",
           "hint": "They signed peace easily but broke it immediately — keeping peace is the hard part.",
@@ -749,10 +749,10 @@
           "type": "multiple_choice",
           "prompt": "Theo didn't notice the first leaf fall. Or the second. But by the time the maple tree was half bare, he understood what his grandmother meant when she said, 'Change happens slowly, then all at once.'\n\nWhat is Grandmother's saying about?",
           "choices": [
-            "Only about trees losing leaves",
             "How change in life can be gradual then suddenly obvious",
-            "Autumn is the best season",
-            "Maple trees grow fast"
+            "Maple trees grow fast",
+            "Only about trees losing leaves",
+            "Autumn is the best season"
           ],
           "correct": "How change in life can be gradual then suddenly obvious",
           "hint": "The leaves are a metaphor — change builds quietly until suddenly you notice everything is different.",
@@ -765,10 +765,10 @@
           "type": "multiple_choice",
           "prompt": "Zuri had two rules: never break a promise, and always carry a pencil. 'You never know,' she said, 'when you'll need to write something down before you forget it — or before someone tries to make you forget.'\n\nWhat does the second rule suggest about Zuri?",
           "choices": [
-            "She likes drawing",
-            "She values truth and recording important things",
+            "She forgets everything",
             "She's a teacher",
-            "She forgets everything"
+            "She likes drawing",
+            "She values truth and recording important things"
           ],
           "correct": "She values truth and recording important things",
           "hint": "She writes things down so they can't be changed or forgotten — she values accuracy and truth.",
@@ -782,9 +782,9 @@
           "prompt": "The ship had been at sea for thirty-seven days. Fresh water was running low, and the crew whispered about turning back. Captain Adaeze stood at the bow, eyes fixed on the horizon. 'Land by sunrise,' she said. Nobody believed her. But at dawn, there it was.\n\nWhat theme does this passage suggest?",
           "choices": [
             "Ships are dangerous",
+            "The ocean is beautiful",
             "Faith and determination can lead you through doubt",
-            "Captains are always right",
-            "The ocean is beautiful"
+            "Captains are always right"
           ],
           "correct": "Faith and determination can lead you through doubt",
           "hint": "Everyone doubted, but the captain held firm — and she was right.",
@@ -805,10 +805,10 @@
           "type": "multiple_choice",
           "prompt": "The International Space Station orbits Earth at approximately 17,500 miles per hour. At this speed, astronauts experience 16 sunrises and 16 sunsets every 24 hours.\n\nWhat detail explains why astronauts see so many sunrises?",
           "choices": [
-            "The station is large",
             "It orbits at 17,500 mph, completing an orbit roughly every 90 minutes",
+            "Astronauts sleep less",
             "The sun moves faster in space",
-            "Astronauts sleep less"
+            "The station is large"
           ],
           "correct": "It orbits at 17,500 mph, completing an orbit roughly every 90 minutes",
           "hint": "The extreme speed means it circles Earth many times a day — each orbit brings a new sunrise.",
@@ -821,10 +821,10 @@
           "type": "multiple_choice",
           "prompt": "Jane Goodall arrived in Tanzania in 1960 with no formal training in science. Within months, she observed chimpanzees using sticks as tools to extract termites — a discovery that changed our understanding of what makes humans unique.\n\nWhat inference can you make about why this discovery was so important?",
           "choices": [
-            "People didn't know about termites before",
+            "Tanzania is a new country",
             "Scientists previously believed only humans used tools",
-            "Chimpanzees are smarter than humans",
-            "Tanzania is a new country"
+            "People didn't know about termites before",
+            "Chimpanzees are smarter than humans"
           ],
           "correct": "Scientists previously believed only humans used tools",
           "hint": "The text says it 'changed our understanding of what makes humans unique' — tool use was thought to be a human-only ability.",
@@ -837,10 +837,10 @@
           "type": "multiple_choice",
           "prompt": "Honeybees communicate through a 'waggle dance.' A bee returning from a food source dances in a figure-eight pattern. The angle of the dance indicates the direction of the food relative to the sun.\n\nWhat specific detail tells you HOW bees show direction?",
           "choices": [
-            "They dance in a circle",
+            "They fly in a straight line",
             "The angle of the dance relative to the sun",
             "They make buzzing sounds",
-            "They fly in a straight line"
+            "They dance in a circle"
           ],
           "correct": "The angle of the dance relative to the sun",
           "hint": "The last sentence gives the precise detail about direction.",
@@ -853,10 +853,10 @@
           "type": "multiple_choice",
           "prompt": "During the California Gold Rush of 1849, most miners didn't get rich from gold. However, merchants who sold pickaxes, shovels, and jeans to the miners made fortunes.\n\nWhat can you infer from this passage?",
           "choices": [
-            "Gold was easy to find",
             "Selling supplies to miners was more profitable than mining itself",
+            "The Gold Rush lasted one year",
             "Merchants also mined for gold",
-            "The Gold Rush lasted one year"
+            "Gold was easy to find"
           ],
           "correct": "Selling supplies to miners was more profitable than mining itself",
           "hint": "Most miners didn't get rich, but the people selling them tools did — what does that tell you?",
@@ -869,10 +869,10 @@
           "type": "multiple_choice",
           "prompt": "When you 'draw an inference' from a text, you —",
           "choices": [
+            "Only read the title",
             "Copy a sentence from the text",
-            "Use clues from the text plus your own knowledge to figure something out",
             "Draw a picture of the text",
-            "Only read the title"
+            "Use clues from the text plus your own knowledge to figure something out"
           ],
           "correct": "Use clues from the text plus your own knowledge to figure something out",
           "hint": "An inference = text evidence + your brain. You figure out what the author implies but doesn't directly say.",
@@ -893,10 +893,10 @@
           "type": "multiple_choice",
           "prompt": "Plastic pollution is devastating ocean ecosystems. Over 8 million tons of plastic enter the oceans each year. Sea turtles mistake plastic bags for jellyfish. Microplastics have been found in fish that humans eat.\n\nWhat is the main idea?",
           "choices": [
-            "Sea turtles eat jellyfish",
-            "Fish contain microplastics",
             "Plastic pollution is seriously harming ocean life",
-            "8 million tons is a lot"
+            "Sea turtles eat jellyfish",
+            "8 million tons is a lot",
+            "Fish contain microplastics"
           ],
           "correct": "Plastic pollution is seriously harming ocean life",
           "hint": "The first sentence states the main idea. Every other sentence supports it with examples.",
@@ -909,8 +909,8 @@
           "type": "multiple_choice",
           "prompt": "Ancient Rome's road system was an engineering marvel. Roman roads were built in layers — gravel, sand, and paving stones — designed to last centuries. Over 250,000 miles of roads connected the empire. Many of these roads are still visible today.\n\nWhich detail BEST supports the main idea that Roman roads were remarkable?",
           "choices": [
-            "Roads were made of gravel",
             "Many roads are still visible centuries later",
+            "Roads were made of gravel",
             "Rome had an empire",
             "Roads connected cities"
           ],
@@ -925,10 +925,10 @@
           "type": "multiple_choice",
           "prompt": "A good summary of an informational text includes —",
           "choices": [
-            "Every single detail from the text",
             "The main idea and the most important supporting details in your own words",
+            "Just the title and author",
             "Only your personal opinion",
-            "Just the title and author"
+            "Every single detail from the text"
           ],
           "correct": "The main idea and the most important supporting details in your own words",
           "hint": "Summaries are brief — main idea + key details, in YOUR words, no small details.",
@@ -941,10 +941,10 @@
           "type": "multiple_choice",
           "prompt": "Exercise benefits the brain in multiple ways. Physical activity increases blood flow to the brain, delivering more oxygen. It also triggers the release of chemicals that improve mood and focus. Studies show students who exercise regularly perform better academically.\n\nHow does the detail about students support the main idea?",
           "choices": [
-            "It changes the topic",
             "It provides real-world evidence that exercise helps brains work better",
             "It's about schools, not brains",
-            "It contradicts the main idea"
+            "It contradicts the main idea",
+            "It changes the topic"
           ],
           "correct": "It provides real-world evidence that exercise helps brains work better",
           "hint": "Better academic performance = proof that exercise benefits the brain. It's concrete evidence!",
@@ -957,10 +957,10 @@
           "type": "multiple_choice",
           "prompt": "Paragraph 1: Renewable energy sources like solar and wind are growing rapidly. Paragraph 2: Solar panel costs have dropped 89% since 2010. Paragraph 3: Wind energy now powers millions of homes.\n\nThe main idea of the ENTIRE passage is —",
           "choices": [
-            "Solar panels are cheap",
+            "Energy is expensive",
             "Wind energy is popular",
-            "Renewable energy is growing and becoming more accessible",
-            "Energy is expensive"
+            "Solar panels are cheap",
+            "Renewable energy is growing and becoming more accessible"
           ],
           "correct": "Renewable energy is growing and becoming more accessible",
           "hint": "Both paragraphs 2 and 3 give specific examples supporting the big idea in paragraph 1.",
@@ -981,10 +981,10 @@
           "type": "multiple_choice",
           "prompt": "In 1773, American colonists were furious about being taxed by Britain without representation in Parliament. A group of colonists disguised as Native Americans boarded British ships and dumped 342 chests of tea into Boston Harbor.\n\nWhat caused the Boston Tea Party?",
           "choices": [
-            "The colonists wanted free tea",
-            "Anger over taxation without representation",
             "The ships were blocking the harbor",
-            "Britain declared war"
+            "The colonists wanted free tea",
+            "Britain declared war",
+            "Anger over taxation without representation"
           ],
           "correct": "Anger over taxation without representation",
           "hint": "The first sentence states the cause — being taxed without having a voice in government.",
@@ -1013,8 +1013,8 @@
           "type": "multiple_choice",
           "prompt": "The invention of the printing press in 1440 made books affordable for the first time. Before that, books were copied by hand, making them rare and expensive. As books became accessible, literacy rates soared across Europe.\n\nWhat was the EFFECT of the printing press on literacy?",
           "choices": [
-            "Literacy decreased",
             "Literacy rates soared because books became accessible",
+            "Literacy decreased",
             "Nothing changed",
             "People stopped reading"
           ],
@@ -1030,9 +1030,9 @@
           "prompt": "Photosynthesis occurs in the leaves of plants. Chlorophyll in the leaves absorbs sunlight. The plant combines this energy with water from the roots and carbon dioxide from the air to produce glucose and oxygen.\n\nWhat are the INPUTS (ingredients) of photosynthesis?",
           "choices": [
             "Glucose and oxygen",
-            "Sunlight, water, and carbon dioxide",
             "Only sunlight",
-            "Roots and leaves"
+            "Roots and leaves",
+            "Sunlight, water, and carbon dioxide"
           ],
           "correct": "Sunlight, water, and carbon dioxide",
           "hint": "The plant combines sunlight + water + CO2 to MAKE glucose and oxygen.",
@@ -1045,10 +1045,10 @@
           "type": "multiple_choice",
           "prompt": "When explaining a historical event, it's important to include —",
           "choices": [
-            "Only the date",
             "What happened, why it happened, and what resulted from it",
             "Just the people involved",
-            "Only your opinion about it"
+            "Only your opinion about it",
+            "Only the date"
           ],
           "correct": "What happened, why it happened, and what resulted from it",
           "hint": "A complete explanation covers the event, its causes, and its effects.",
@@ -1070,8 +1070,8 @@
           "prompt": "The archaeologist carefully excavated the site, removing layers of dirt to reveal ancient pottery buried for thousands of years.\n\nWhat does 'excavated' mean?",
           "choices": [
             "Covered up",
-            "Dug up carefully",
             "Photographed",
+            "Dug up carefully",
             "Destroyed"
           ],
           "correct": "Dug up carefully",
@@ -1085,10 +1085,10 @@
           "type": "multiple_choice",
           "prompt": "The legislative branch of government is responsible for making laws. Congress, made up of the Senate and House of Representatives, is the legislative branch.\n\nWhat does 'legislative' relate to?",
           "choices": [
-            "Enforcing laws",
+            "Breaking laws",
             "Making laws",
             "Interpreting laws",
-            "Breaking laws"
+            "Enforcing laws"
           ],
           "correct": "Making laws",
           "hint": "The text defines it directly — the legislative branch MAKES laws.",
@@ -1101,10 +1101,10 @@
           "type": "multiple_choice",
           "prompt": "The ecosystem was thriving — diverse species of plants and animals coexisted in a balanced, interdependent community.\n\nWhat does 'interdependent' mean?",
           "choices": [
-            "Living alone",
-            "Depending on each other",
             "Fighting each other",
-            "Independent"
+            "Independent",
+            "Depending on each other",
+            "Living alone"
           ],
           "correct": "Depending on each other",
           "hint": "'Inter' means between/among. 'Dependent' means relying on. Together = relying on each other.",
@@ -1118,9 +1118,9 @@
           "prompt": "The metamorphosis of a caterpillar into a butterfly involves a complete transformation of the insect's body.\n\nWhat does 'metamorphosis' mean?",
           "choices": [
             "A type of butterfly",
-            "A dramatic change in form",
             "A cocoon",
-            "A type of insect"
+            "A type of insect",
+            "A dramatic change in form"
           ],
           "correct": "A dramatic change in form",
           "hint": "The text says 'complete transformation' right after — that defines metamorphosis!",
@@ -1133,10 +1133,10 @@
           "type": "multiple_choice",
           "prompt": "The drought caused widespread famine. Crops withered in the fields, and livestock had no grass to eat. Thousands of people faced severe hunger.\n\nWhat does 'famine' mean?",
           "choices": [
-            "A type of storm",
             "Extreme widespread hunger",
+            "Hot weather",
             "A farming technique",
-            "Hot weather"
+            "A type of storm"
           ],
           "correct": "Extreme widespread hunger",
           "hint": "Crops died, animals starved, thousands faced severe hunger — famine means extreme hunger on a large scale.",
@@ -1157,10 +1157,10 @@
           "type": "multiple_choice",
           "prompt": "A passage first describes a problem (too much trash in the ocean) and then explains ways to fix it (recycling programs, beach cleanups). This text structure is —",
           "choices": [
-            "Cause and effect",
-            "Compare and contrast",
             "Problem and solution",
-            "Chronological order"
+            "Chronological order",
+            "Cause and effect",
+            "Compare and contrast"
           ],
           "correct": "Problem and solution",
           "hint": "Problem presented → solution offered. Classic problem/solution structure!",
@@ -1173,9 +1173,9 @@
           "type": "multiple_choice",
           "prompt": "Signal words like 'first, next, then, finally' indicate which text structure?",
           "choices": [
-            "Compare and contrast",
             "Cause and effect",
             "Chronological/sequential order",
+            "Compare and contrast",
             "Description"
           ],
           "correct": "Chronological/sequential order",
@@ -1189,10 +1189,10 @@
           "type": "multiple_choice",
           "prompt": "A passage about hurricanes and tornadoes uses words like 'similarly,' 'however,' and 'on the other hand.' This structure is —",
           "choices": [
-            "Chronological order",
+            "Cause and effect",
             "Compare and contrast",
-            "Problem and solution",
-            "Cause and effect"
+            "Chronological order",
+            "Problem and solution"
           ],
           "correct": "Compare and contrast",
           "hint": "'Similarly' shows likeness; 'however' and 'on the other hand' show differences.",
@@ -1205,10 +1205,10 @@
           "type": "multiple_choice",
           "prompt": "Because the temperature dropped below freezing, the pipes burst. As a result, the basement flooded.\n\nThis is an example of —",
           "choices": [
-            "Compare and contrast",
-            "Problem and solution",
             "Cause and effect",
-            "Description"
+            "Compare and contrast",
+            "Description",
+            "Problem and solution"
           ],
           "correct": "Cause and effect",
           "hint": "'Because' and 'as a result' are cause-and-effect signal words.",
@@ -1221,10 +1221,10 @@
           "type": "multiple_choice",
           "prompt": "Why is it helpful to identify a text's structure?",
           "choices": [
-            "It makes the text shorter",
             "It helps you understand how the author organized ideas and find information more easily",
-            "It changes the meaning of the text",
-            "It's only important for fiction"
+            "It makes the text shorter",
+            "It's only important for fiction",
+            "It changes the meaning of the text"
           ],
           "correct": "It helps you understand how the author organized ideas and find information more easily",
           "hint": "Knowing the structure is like having a map — it helps you navigate the text.",
@@ -1245,9 +1245,9 @@
           "type": "multiple_choice",
           "prompt": "A firsthand account is written by someone who —",
           "choices": [
-            "Read about the event in a book",
-            "Was actually there and experienced it",
             "Heard about it from a friend",
+            "Was actually there and experienced it",
+            "Read about the event in a book",
             "Watched a documentary about it"
           ],
           "correct": "Was actually there and experienced it",
@@ -1261,8 +1261,8 @@
           "type": "multiple_choice",
           "prompt": "Which is a firsthand account?",
           "choices": [
-            "A textbook chapter about the Civil War",
             "A soldier's diary from the Civil War battlefield",
+            "A textbook chapter about the Civil War",
             "A Wikipedia article about a battle",
             "A movie about the war"
           ],
@@ -1278,8 +1278,8 @@
           "prompt": "How might a firsthand account DIFFER from a secondhand account of the same event?",
           "choices": [
             "Firsthand accounts include personal feelings and experiences; secondhand accounts are more objective",
-            "They're always exactly the same",
             "Secondhand accounts have more feelings",
+            "They're always exactly the same",
             "Firsthand accounts are always shorter"
           ],
           "correct": "Firsthand accounts include personal feelings and experiences; secondhand accounts are more objective",
@@ -1293,8 +1293,8 @@
           "type": "multiple_choice",
           "prompt": "Account A: 'I could feel the ground shaking under my feet. Dust filled the air and I couldn't see.' Account B: 'The earthquake measured 6.7 on the Richter scale and caused significant structural damage.'\n\nWhich is firsthand?",
           "choices": [
-            "Account A",
             "Account B",
+            "Account A",
             "Both",
             "Neither"
           ],
@@ -1309,10 +1309,10 @@
           "type": "multiple_choice",
           "prompt": "Why is it valuable to read BOTH firsthand and secondhand accounts?",
           "choices": [
-            "You only need one type",
             "Firsthand gives personal perspective; secondhand gives broader context — together you get a fuller picture",
+            "Firsthand is always more accurate",
             "Secondhand is always more accurate",
-            "Firsthand is always more accurate"
+            "You only need one type"
           ],
           "correct": "Firsthand gives personal perspective; secondhand gives broader context — together you get a fuller picture",
           "hint": "Each type offers something the other can't. Together, they give you the complete story.",
@@ -1333,10 +1333,10 @@
           "type": "multiple_choice",
           "prompt": "A bar graph shows that the school recycled 200 pounds in January, 350 in February, and 500 in March. What trend does the graph show?",
           "choices": [
-            "Recycling decreased each month",
-            "Recycling stayed the same",
             "Recycling increased each month",
-            "The school stopped recycling"
+            "The school stopped recycling",
+            "Recycling decreased each month",
+            "Recycling stayed the same"
           ],
           "correct": "Recycling increased each month",
           "hint": "200 → 350 → 500. The numbers are going UP each month.",
@@ -1349,10 +1349,10 @@
           "type": "multiple_choice",
           "prompt": "A timeline in a history text shows events from 1760 to 1790. This visual helps readers —",
           "choices": [
-            "Understand the exact words people said",
-            "See the sequence and spacing of events over time",
             "Learn about geography",
-            "Read faster"
+            "Understand the exact words people said",
+            "Read faster",
+            "See the sequence and spacing of events over time"
           ],
           "correct": "See the sequence and spacing of events over time",
           "hint": "Timelines show WHEN things happened and how much time passed between events.",
@@ -1365,10 +1365,10 @@
           "type": "multiple_choice",
           "prompt": "A pie chart shows: 45% of students prefer pizza, 30% prefer tacos, 15% prefer pasta, 10% prefer salad. What can you conclude?",
           "choices": [
-            "Everyone likes pizza",
-            "Pizza is the most popular but not everyone's favorite",
             "Salad is the most popular",
-            "Tacos and pizza are equally popular"
+            "Tacos and pizza are equally popular",
+            "Everyone likes pizza",
+            "Pizza is the most popular but not everyone's favorite"
           ],
           "correct": "Pizza is the most popular but not everyone's favorite",
           "hint": "45% is the biggest slice, but that means 55% prefer something else!",
@@ -1381,10 +1381,10 @@
           "type": "multiple_choice",
           "prompt": "How does a diagram of the human digestive system help a reader MORE than a written description alone?",
           "choices": [
-            "It replaces the need to read",
+            "It adds color to the page",
             "It shows the physical layout and connections between organs that are hard to describe in words",
-            "It makes the text longer",
-            "It adds color to the page"
+            "It replaces the need to read",
+            "It makes the text longer"
           ],
           "correct": "It shows the physical layout and connections between organs that are hard to describe in words",
           "hint": "Seeing WHERE organs are and how they connect is much easier in a picture than in words.",
@@ -1399,8 +1399,8 @@
           "choices": [
             "The colors",
             "The title and axis labels to understand what data is being shown",
-            "The smallest bar",
-            "The source at the bottom"
+            "The source at the bottom",
+            "The smallest bar"
           ],
           "correct": "The title and axis labels to understand what data is being shown",
           "hint": "Before reading the data, you need to know WHAT the graph is measuring!",
@@ -1421,9 +1421,9 @@
           "type": "multiple_choice",
           "prompt": "Schools should offer more art classes. Studies show that students in art programs score higher on standardized tests. Art also teaches creativity, problem-solving, and collaboration.\n\nThe author supports their point with —",
           "choices": [
-            "Personal opinions only",
-            "Research studies and specific skills art teaches",
             "No evidence",
+            "Research studies and specific skills art teaches",
+            "Personal opinions only",
             "A story about an artist"
           ],
           "correct": "Research studies and specific skills art teaches",
@@ -1437,10 +1437,10 @@
           "type": "multiple_choice",
           "prompt": "Which type of evidence is STRONGEST?",
           "choices": [
-            "'I think recess is important'",
+            "'Recess is fun'",
             "'Everybody knows recess matters'",
-            "'Studies show students who have recess perform 20% better on afternoon tests'",
-            "'Recess is fun'"
+            "'I think recess is important'",
+            "'Studies show students who have recess perform 20% better on afternoon tests'"
           ],
           "correct": "'Studies show students who have recess perform 20% better on afternoon tests'",
           "hint": "Specific data from studies is stronger than opinions or vague claims.",
@@ -1453,9 +1453,9 @@
           "type": "multiple_choice",
           "prompt": "Endangered species need stronger legal protections. The bald eagle was nearly extinct until the Endangered Species Act helped its population recover from 417 pairs in 1963 to over 316,000 today.\n\nHow does the bald eagle example support the author's point?",
           "choices": [
+            "It changes the topic to birds",
             "It shows eagles are pretty",
             "It proves that legal protections actually work to save species",
-            "It changes the topic to birds",
             "It's just an interesting fact"
           ],
           "correct": "It proves that legal protections actually work to save species",
@@ -1469,10 +1469,10 @@
           "type": "multiple_choice",
           "prompt": "When evaluating an author's argument, you should ask —",
           "choices": [
-            "Is the author famous?",
             "Does the evidence actually support the point being made?",
+            "Does it have pictures?",
             "Is the text long enough?",
-            "Does it have pictures?"
+            "Is the author famous?"
           ],
           "correct": "Does the evidence actually support the point being made?",
           "hint": "Critical readers check whether the evidence truly connects to and proves the author's claim.",
@@ -1485,10 +1485,10 @@
           "type": "multiple_choice",
           "prompt": "An author argues that school lunches should be healthier. Which evidence would NOT support this point?",
           "choices": [
-            "Childhood obesity rates are rising",
             "Students who eat nutritious lunches concentrate better",
-            "The cafeteria was painted blue last year",
-            "Processed foods are linked to health problems"
+            "Childhood obesity rates are rising",
+            "Processed foods are linked to health problems",
+            "The cafeteria was painted blue last year"
           ],
           "correct": "The cafeteria was painted blue last year",
           "hint": "The paint color has nothing to do with how healthy the food is — it's irrelevant evidence.",
@@ -1509,10 +1509,10 @@
           "type": "multiple_choice",
           "prompt": "Text A explains how solar panels convert sunlight to electricity. Text B discusses the environmental benefits of solar energy. To write a complete report on solar energy, you should —",
           "choices": [
+            "Ignore both and use your own knowledge",
             "Only use Text A",
-            "Only use Text B",
             "Combine information from both texts",
-            "Ignore both and use your own knowledge"
+            "Only use Text B"
           ],
           "correct": "Combine information from both texts",
           "hint": "Each text contributes different pieces. Together, they give you a complete picture.",
@@ -1525,10 +1525,10 @@
           "type": "multiple_choice",
           "prompt": "Text A: 'Mars has a thin atmosphere made mostly of carbon dioxide.' Text B: 'Mars has massive dust storms that can cover the entire planet for months.'\n\nUsing both texts, what can you explain about Mars?",
           "choices": [
-            "Only its atmosphere",
-            "Only its weather",
             "Both its atmospheric composition AND its extreme weather patterns",
-            "Nothing new"
+            "Only its atmosphere",
+            "Nothing new",
+            "Only its weather"
           ],
           "correct": "Both its atmospheric composition AND its extreme weather patterns",
           "hint": "Text A gives atmosphere facts. Text B gives weather facts. Together = a fuller picture of Mars.",
@@ -1541,9 +1541,9 @@
           "type": "multiple_choice",
           "prompt": "When integrating information from two sources, what should you watch for?",
           "choices": [
-            "Which text is longer",
             "Whether the sources agree, disagree, or provide complementary information",
             "Which text has better pictures",
+            "Which text is longer",
             "Which was written first"
           ],
           "correct": "Whether the sources agree, disagree, or provide complementary information",
@@ -1557,10 +1557,10 @@
           "type": "multiple_choice",
           "prompt": "Text A says wolves were removed from Yellowstone in the 1920s. Text B says after wolves were reintroduced in 1995, the elk population became healthier and rivers changed course. Combining these texts helps you understand —",
           "choices": [
-            "Wolves are dangerous",
             "The long-term impact of removing and then restoring a species to an ecosystem",
-            "Rivers always change course",
-            "1995 was an important year"
+            "Wolves are dangerous",
+            "1995 was an important year",
+            "Rivers always change course"
           ],
           "correct": "The long-term impact of removing and then restoring a species to an ecosystem",
           "hint": "Text A = removal. Text B = reintroduction and effects. Together = the full cause-and-effect story.",
@@ -1573,10 +1573,10 @@
           "type": "multiple_choice",
           "prompt": "Why is using multiple sources better than using just one?",
           "choices": [
-            "One source always has errors",
             "Multiple sources provide different perspectives, details, and a more complete understanding",
-            "More sources means a longer report",
-            "You should always use exactly one source"
+            "One source always has errors",
+            "You should always use exactly one source",
+            "More sources means a longer report"
           ],
           "correct": "Multiple sources provide different perspectives, details, and a more complete understanding",
           "hint": "Each source might cover different angles or details. Together, your understanding is richer.",
@@ -1597,10 +1597,10 @@
           "type": "multiple_choice",
           "prompt": "The human brain weighs about three pounds but uses roughly 20% of the body's total energy. It contains approximately 86 billion neurons, each connected to thousands of others, forming a network more complex than any computer ever built.\n\nWhat comparison does the author make to emphasize the brain's complexity?",
           "choices": [
+            "Comparing it to the heart",
             "Comparing it to a muscle",
-            "Comparing it to a computer",
             "Comparing it to other organs",
-            "Comparing it to the heart"
+            "Comparing it to a computer"
           ],
           "correct": "Comparing it to a computer",
           "hint": "The author says the brain's network is 'more complex than any computer ever built.'",
@@ -1613,10 +1613,10 @@
           "type": "multiple_choice",
           "prompt": "The Dead Sea, located between Israel and Jordan, is nearly ten times saltier than the ocean. This extreme salinity means no fish or plants can survive in it — hence the name. However, the mineral-rich mud and water have been used for health treatments for thousands of years.\n\nWhat is ironic about the Dead Sea?",
           "choices": [
-            "It's not really a sea",
-            "Despite being called 'dead,' it has been valuable for human health for millennia",
+            "It's between two countries",
             "It's very salty",
-            "It's between two countries"
+            "It's not really a sea",
+            "Despite being called 'dead,' it has been valuable for human health for millennia"
           ],
           "correct": "Despite being called 'dead,' it has been valuable for human health for millennia",
           "hint": "Called 'dead' because nothing lives in it — yet it HELPS living humans. That's ironic!",
@@ -1631,8 +1631,8 @@
           "choices": [
             "She only cared about her own career",
             "She wanted to inspire the next generation, especially girls, to follow in her footsteps",
-            "She didn't like science",
-            "She stopped working after 1983"
+            "She stopped working after 1983",
+            "She didn't like science"
           ],
           "correct": "She wanted to inspire the next generation, especially girls, to follow in her footsteps",
           "hint": "She founded an organization specifically to encourage girls in STEM — that shows her priorities.",
@@ -1645,10 +1645,10 @@
           "type": "multiple_choice",
           "prompt": "Bamboo is one of the fastest-growing plants on Earth, capable of growing up to 35 inches in a single day. It's also incredibly strong — pound for pound, bamboo has a greater tensile strength than steel.\n\nWhy might bamboo be considered a 'super-plant'?",
           "choices": [
-            "It's green",
             "It grows extremely fast AND is stronger than steel by weight",
-            "It's a type of tree",
-            "It grows in Asia"
+            "It's green",
+            "It grows in Asia",
+            "It's a type of tree"
           ],
           "correct": "It grows extremely fast AND is stronger than steel by weight",
           "hint": "Two extraordinary qualities: incredible growth speed AND incredible strength.",
@@ -1661,10 +1661,10 @@
           "type": "multiple_choice",
           "prompt": "The Library of Alexandria, built around 300 BCE in Egypt, was the ancient world's greatest center of learning. Scholars from across the Mediterranean came to study its estimated 400,000 scrolls. When it was eventually destroyed, countless works of ancient knowledge were lost forever.\n\nWhat makes the Library's destruction significant?",
           "choices": [
-            "It was in Egypt",
-            "Irreplaceable knowledge accumulated over centuries was permanently lost",
             "Libraries are expensive to build",
-            "It had too many scrolls"
+            "It had too many scrolls",
+            "Irreplaceable knowledge accumulated over centuries was permanently lost",
+            "It was in Egypt"
           ],
           "correct": "Irreplaceable knowledge accumulated over centuries was permanently lost",
           "hint": "400,000 scrolls of ancient knowledge — gone forever. That's a massive loss to human history.",
@@ -1685,8 +1685,8 @@
           "type": "multiple_choice",
           "prompt": "The word 'autobiography' can be broken into: auto + bio + graph + y. Using these parts, what does it mean?",
           "choices": [
-            "A book about cars",
             "A life story written by the person themselves",
+            "A book about cars",
             "A drawing of a machine",
             "A type of photograph"
           ],
@@ -1701,10 +1701,10 @@
           "type": "multiple_choice",
           "prompt": "Which word contains the Greek root 'tele' meaning 'far'?",
           "choices": [
-            "Telephone",
-            "Television",
             "Telescope",
-            "All of the above"
+            "Telephone",
+            "All of the above",
+            "Television"
           ],
           "correct": "All of the above",
           "hint": "Tele = far. Phone = sound. Vision = seeing. Scope = viewing. All involve far-distance!",
@@ -1717,10 +1717,10 @@
           "type": "multiple_choice",
           "prompt": "How many syllables are in the word 'communication'?",
           "choices": [
-            "3",
-            "4",
             "5",
-            "6"
+            "4",
+            "6",
+            "3"
           ],
           "correct": "5",
           "hint": "Clap it: com-mu-ni-ca-tion. Five beats!",
@@ -1733,12 +1733,12 @@
           "type": "multiple_choice",
           "prompt": "In the word 'unbreakable,' the prefix, root, and suffix are —",
           "choices": [
-            "un + break + able",
-            "unb + reak + able",
-            "un + brea + kable",
-            "unbreak + able"
+            "Un + break + able",
+            "Un + brea + kable",
+            "Unbreak + able",
+            "Unb + reak + able"
           ],
-          "correct": "un + break + able",
+          "correct": "Un + break + able",
           "hint": "Un- (not) + break (root) + -able (can be done) = cannot be broken.",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.4.3/q4.mp3",
@@ -1749,10 +1749,10 @@
           "type": "multiple_choice",
           "prompt": "The word 'pseudonym' uses the Greek root 'pseudo' meaning 'false' and 'nym' meaning 'name.' A pseudonym is —",
           "choices": [
-            "A real name",
-            "A false or fake name used by an author",
             "A type of poem",
-            "A dictionary entry"
+            "A false or fake name used by an author",
+            "A dictionary entry",
+            "A real name"
           ],
           "correct": "A false or fake name used by an author",
           "hint": "False + name = a fake name. Authors like Mark Twain used pseudonyms!",
@@ -1773,10 +1773,10 @@
           "type": "multiple_choice",
           "prompt": "You encounter the unfamiliar word 'transportation.' What's the BEST first step?",
           "choices": [
-            "Skip it",
+            "Ask someone immediately",
             "Break it into parts: trans + port + a + tion",
             "Guess from the first letter",
-            "Ask someone immediately"
+            "Skip it"
           ],
           "correct": "Break it into parts: trans + port + a + tion",
           "hint": "Breaking big words into smaller, recognizable parts makes them manageable!",
@@ -1789,12 +1789,12 @@
           "type": "multiple_choice",
           "prompt": "The word 'international' can be decoded as —",
           "choices": [
-            "in + ter + nation + al",
-            "inter + nat + ional",
-            "in + tern + at + ional",
-            "interna + tional"
+            "Inter + nat + ional",
+            "In + tern + at + ional",
+            "In + ter + nation + al",
+            "Interna + tional"
           ],
-          "correct": "in + ter + nation + al",
+          "correct": "In + ter + nation + al",
           "hint": "Inter (between) + nation + al (relating to) = between nations.",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.4.3a/q2.mp3",
@@ -1807,8 +1807,8 @@
           "choices": [
             "Rocks",
             "Stars",
-            "Living things (bio = life)",
-            "Weather"
+            "Weather",
+            "Living things (bio = life)"
           ],
           "correct": "Living things (bio = life)",
           "hint": "Bio = life. -ology = study of. Biology = study of life!",
@@ -1821,10 +1821,10 @@
           "type": "multiple_choice",
           "prompt": "How many syllables are in 'extraordinary'?",
           "choices": [
-            "4",
-            "5",
             "6",
-            "7"
+            "5",
+            "7",
+            "4"
           ],
           "correct": "6",
           "hint": "ex-tra-or-di-na-ry. Count each vowel sound!",
@@ -1837,10 +1837,10 @@
           "type": "multiple_choice",
           "prompt": "You see the word 'misconception' for the first time. Using morphology, what does it mean?",
           "choices": [
-            "A correct idea",
-            "A wrong or mistaken belief",
             "A type of puzzle",
-            "A new concept"
+            "A new concept",
+            "A wrong or mistaken belief",
+            "A correct idea"
           ],
           "correct": "A wrong or mistaken belief",
           "hint": "Mis (wrong) + concept (idea) + ion (state of) = a wrong idea or mistaken belief.",
@@ -1861,10 +1861,10 @@
           "type": "multiple_choice",
           "prompt": "A fluent reader adjusts their reading speed based on —",
           "choices": [
-            "How many pages are left",
-            "The difficulty and type of text they're reading",
             "What time it is",
-            "How many people are listening"
+            "How many people are listening",
+            "How many pages are left",
+            "The difficulty and type of text they're reading"
           ],
           "correct": "The difficulty and type of text they're reading",
           "hint": "You'd read a science textbook slower than a fun novel. Good readers adjust!",
@@ -1877,10 +1877,10 @@
           "type": "multiple_choice",
           "prompt": "Why is reading fluency important for comprehension?",
           "choices": [
-            "It's not important",
             "When you read smoothly, your brain can focus on understanding instead of struggling with words",
+            "Fluent readers skip more words",
             "Fluency only matters for reading aloud",
-            "Fluent readers skip more words"
+            "It's not important"
           ],
           "correct": "When you read smoothly, your brain can focus on understanding instead of struggling with words",
           "hint": "If you're stuck on every word, you can't focus on meaning. Fluency frees your brain to think.",
@@ -1894,9 +1894,9 @@
           "prompt": "When reading a passage with technical vocabulary, a good reader should —",
           "choices": [
             "Speed up to get through it faster",
-            "Slow down and use context clues to understand unfamiliar terms",
+            "Stop reading",
             "Skip the technical words",
-            "Stop reading"
+            "Slow down and use context clues to understand unfamiliar terms"
           ],
           "correct": "Slow down and use context clues to understand unfamiliar terms",
           "hint": "Hard vocabulary = slow down, not speed up. Use context to figure out the meaning.",
@@ -1909,10 +1909,10 @@
           "type": "multiple_choice",
           "prompt": "Which shows the BEST reading fluency?",
           "choices": [
-            "Reading... each... word... one... at... a... time...",
+            "Skipping every other word to read faster",
             "ReadingsoFASSthatnobodycanunderstand",
-            "Reading smoothly with natural pauses at commas and periods, and expression that matches the content",
-            "Skipping every other word to read faster"
+            "Reading... each... word... one... at... a... time...",
+            "Reading smoothly with natural pauses at commas and periods, and expression that matches the content"
           ],
           "correct": "Reading smoothly with natural pauses at commas and periods, and expression that matches the content",
           "hint": "Fluent reading flows naturally — not too choppy, not too rushed.",
@@ -1925,9 +1925,9 @@
           "type": "multiple_choice",
           "prompt": "Self-monitoring while reading means —",
           "choices": [
-            "Having someone else check your reading",
             "Checking your own understanding as you read and going back when something doesn't make sense",
             "Reading out loud",
+            "Having someone else check your reading",
             "Timing how fast you read"
           ],
           "correct": "Checking your own understanding as you read and going back when something doesn't make sense",
@@ -1949,10 +1949,10 @@
           "type": "multiple_choice",
           "prompt": "The company decided to table the discussion until next week's meeting.\n\nIn this sentence, 'table' means —",
           "choices": [
-            "A piece of furniture",
+            "To organize neatly",
             "To postpone or delay",
-            "To serve food",
-            "To organize neatly"
+            "A piece of furniture",
+            "To serve food"
           ],
           "correct": "To postpone or delay",
           "hint": "'Table the discussion until next week' — they're putting it aside for later.",
@@ -1965,9 +1965,9 @@
           "type": "multiple_choice",
           "prompt": "After the long hike, the exhausted climbers sought refuge in a mountain cabin.\n\nWhat does 'refuge' mean?",
           "choices": [
-            "Food",
             "A safe place or shelter",
             "A type of mountain",
+            "Food",
             "A dangerous path"
           ],
           "correct": "A safe place or shelter",
@@ -1981,9 +1981,9 @@
           "type": "multiple_choice",
           "prompt": "The word 'scale' has many meanings. What does it mean here?\n\n\"The fish's scale shimmered in the sunlight.\"",
           "choices": [
-            "A weighing device",
-            "To climb",
             "A thin plate covering a fish's body",
+            "To climb",
+            "A weighing device",
             "A musical sequence"
           ],
           "correct": "A thin plate covering a fish's body",
@@ -1997,9 +1997,9 @@
           "type": "multiple_choice",
           "prompt": "The philanthropist donated millions to build schools in underserved communities.\n\nUsing the Greek roots 'phil' (love) and 'anthrop' (human), a philanthropist is someone who —",
           "choices": [
-            "Studies philosophy",
-            "Loves helping humanity through generous donations",
             "Collects stamps",
+            "Loves helping humanity through generous donations",
+            "Studies philosophy",
             "Teaches at a school"
           ],
           "correct": "Loves helping humanity through generous donations",
@@ -2013,9 +2013,9 @@
           "type": "multiple_choice",
           "prompt": "When you encounter a word with multiple meanings, the BEST way to determine which meaning is correct is —",
           "choices": [
-            "Always use the first definition in the dictionary",
             "Use the surrounding context to figure out which meaning fits",
             "Pick the easiest definition",
+            "Always use the first definition in the dictionary",
             "Ask someone else"
           ],
           "correct": "Use the surrounding context to figure out which meaning fits",
@@ -2037,10 +2037,10 @@
           "type": "multiple_choice",
           "prompt": "The unprecedented snowstorm shut down the entire city — nothing like it had ever happened before.\n\nWhat does 'unprecedented' mean?",
           "choices": [
-            "Expected",
             "Never happened before",
             "Very cold",
-            "Predicted by scientists"
+            "Predicted by scientists",
+            "Expected"
           ],
           "correct": "Never happened before",
           "hint": "The text literally says 'nothing like it had ever happened before' — that defines unprecedented!",
@@ -2053,10 +2053,10 @@
           "type": "multiple_choice",
           "prompt": "The resilient community rebuilt their homes after the hurricane, stronger than before.\n\nWhat does 'resilient' mean?",
           "choices": [
-            "Weak and defeated",
             "Able to recover and bounce back",
+            "Moving to a new place",
             "Angry and upset",
-            "Moving to a new place"
+            "Weak and defeated"
           ],
           "correct": "Able to recover and bounce back",
           "hint": "They rebuilt stronger than before — that's bouncing back from difficulty!",
@@ -2070,9 +2070,9 @@
           "prompt": "Her meticulous notes included every detail — dates, names, page numbers, and color-coded tabs.\n\nWhat does 'meticulous' mean?",
           "choices": [
             "Messy and disorganized",
-            "Extremely careful and thorough",
+            "Simple and basic",
             "Quick and careless",
-            "Simple and basic"
+            "Extremely careful and thorough"
           ],
           "correct": "Extremely careful and thorough",
           "hint": "Every detail, color-coded tabs — that's extremely thorough and careful work!",
@@ -2085,9 +2085,9 @@
           "type": "multiple_choice",
           "prompt": "The two countries formed an alliance, agreeing to protect each other in times of war.\n\nAn 'alliance' is —",
           "choices": [
+            "A type of weapon",
             "A battle between countries",
             "A partnership or agreement to work together",
-            "A type of weapon",
             "A border between nations"
           ],
           "correct": "A partnership or agreement to work together",
@@ -2102,9 +2102,9 @@
           "prompt": "The verbose speaker went on for two hours, using far more words than necessary to make simple points.\n\nWhat does 'verbose' mean?",
           "choices": [
             "Quiet",
+            "Nervous",
             "Using too many words",
-            "Funny",
-            "Nervous"
+            "Funny"
           ],
           "correct": "Using too many words",
           "hint": "Two hours and 'far more words than necessary' — verbose means overly wordy!",
@@ -2126,9 +2126,9 @@
           "prompt": "The Latin root 'dict' means 'to say or speak.' What does 'predict' mean?",
           "choices": [
             "To say after",
+            "To say wrongly",
             "To say before — to tell what will happen in advance",
-            "To say again",
-            "To say wrongly"
+            "To say again"
           ],
           "correct": "To say before — to tell what will happen in advance",
           "hint": "Pre (before) + dict (say) = say before it happens = predict!",
@@ -2141,10 +2141,10 @@
           "type": "multiple_choice",
           "prompt": "The Greek root 'graph' means 'to write.' Which word means 'a person's own handwriting of their name'?",
           "choices": [
-            "Photograph",
-            "Geography",
             "Autograph",
-            "Telegraph"
+            "Telegraph",
+            "Geography",
+            "Photograph"
           ],
           "correct": "Autograph",
           "hint": "Auto (self) + graph (write) = self-writing = your own signature!",
@@ -2157,10 +2157,10 @@
           "type": "multiple_choice",
           "prompt": "The Latin root 'rupt' means 'to break.' What does 'interrupt' mean?",
           "choices": [
+            "To speak quietly",
             "To build something",
-            "To break into a conversation or process",
             "To fix something broken",
-            "To speak quietly"
+            "To break into a conversation or process"
           ],
           "correct": "To break into a conversation or process",
           "hint": "Inter (between) + rupt (break) = break into the middle of something.",
@@ -2173,10 +2173,10 @@
           "type": "multiple_choice",
           "prompt": "The Greek prefix 'micro-' means 'small.' What does 'microscope' let you see?",
           "choices": [
-            "Very large things",
             "Very small things",
+            "Things in the dark",
             "Things far away",
-            "Things in the dark"
+            "Very large things"
           ],
           "correct": "Very small things",
           "hint": "Micro (small) + scope (to view) = a tool for viewing small things!",
@@ -2189,9 +2189,9 @@
           "type": "multiple_choice",
           "prompt": "If 'bene-' means 'good' and 'mal-' means 'bad,' which word means 'a person who does good'?",
           "choices": [
-            "Malefactor",
-            "Benefactor",
             "Malfunction",
+            "Benefactor",
+            "Malefactor",
             "Beneficial"
           ],
           "correct": "Benefactor",
@@ -2213,10 +2213,10 @@
           "type": "multiple_choice",
           "prompt": "A dictionary entry shows: 'ar·chi·pel·a·go (ar-kuh-PEL-uh-go) n. a group of islands.' What does the entry in parentheses tell you?",
           "choices": [
-            "The word's origin",
             "How to pronounce the word",
             "A synonym",
-            "When to use the word"
+            "When to use the word",
+            "The word's origin"
           ],
           "correct": "How to pronounce the word",
           "hint": "The syllable breakdown and capitalized stress show you how to SAY the word.",
@@ -2229,9 +2229,9 @@
           "type": "multiple_choice",
           "prompt": "You want to find a word that means the same as 'happy' but with a stronger feeling. Which reference should you use?",
           "choices": [
-            "A dictionary",
             "A thesaurus",
             "An encyclopedia",
+            "A dictionary",
             "An atlas"
           ],
           "correct": "A thesaurus",
@@ -2261,10 +2261,10 @@
           "type": "multiple_choice",
           "prompt": "A dictionary shows three definitions for 'crane': 1. A large bird. 2. A machine for lifting heavy objects. 3. To stretch one's neck. The sentence is: 'She craned her neck to see over the crowd.' Which definition applies?",
           "choices": [
-            "Definition 1",
             "Definition 2",
-            "Definition 3",
-            "All three"
+            "Definition 1",
+            "All three",
+            "Definition 3"
           ],
           "correct": "Definition 3",
           "hint": "She stretched her neck to see — that matches definition 3!",
@@ -2277,10 +2277,10 @@
           "type": "multiple_choice",
           "prompt": "When should you consult a reference material instead of relying only on context clues?",
           "choices": [
-            "Always — context clues never work",
-            "When context clues aren't enough to determine the precise meaning",
             "Never — context clues are always sufficient",
-            "Only during tests"
+            "When context clues aren't enough to determine the precise meaning",
+            "Only during tests",
+            "Always — context clues never work"
           ],
           "correct": "When context clues aren't enough to determine the precise meaning",
           "hint": "Context clues are the first strategy, but sometimes you need the exact definition — that's when you grab a dictionary.",
@@ -2317,10 +2317,10 @@
           "type": "multiple_choice",
           "prompt": "The world is a stage, and we are merely players.\n\nThis is an example of —",
           "choices": [
-            "A simile",
-            "A metaphor",
             "Onomatopoeia",
-            "Alliteration"
+            "Alliteration",
+            "A simile",
+            "A metaphor"
           ],
           "correct": "A metaphor",
           "hint": "It says the world IS a stage — direct comparison without 'like' or 'as.' That's a metaphor.",
@@ -2335,8 +2335,8 @@
           "choices": [
             "To hammer something",
             "To be exactly right",
-            "To hurt yourself",
-            "To build something"
+            "To build something",
+            "To hurt yourself"
           ],
           "correct": "To be exactly right",
           "hint": "If you hit a nail perfectly on its head, you got it exactly right!",
@@ -2349,8 +2349,8 @@
           "type": "multiple_choice",
           "prompt": "The old car coughed and sputtered before finally dying on the side of the road.\n\nThis is an example of —",
           "choices": [
-            "Simile",
             "Personification",
+            "Simile",
             "Alliteration",
             "Hyperbole"
           ],
@@ -2365,10 +2365,10 @@
           "type": "multiple_choice",
           "prompt": "Which pair of words shows the GREATEST difference in intensity?",
           "choices": [
-            "Warm and hot",
-            "Upset and furious",
+            "Big and large",
             "Walk and stroll",
-            "Big and large"
+            "Upset and furious",
+            "Warm and hot"
           ],
           "correct": "Upset and furious",
           "hint": "Upset is mild. Furious is extreme. That's the biggest jump in intensity.",
@@ -2389,10 +2389,10 @@
           "type": "multiple_choice",
           "prompt": "Her smile was as bright as the sun.\n\nThis simile compares —",
           "choices": [
-            "Her smile to the moon",
-            "Her smile to sunlight — both are bright and warm",
             "The sun to a lamp",
-            "Her teeth to stars"
+            "Her teeth to stars",
+            "Her smile to the moon",
+            "Her smile to sunlight — both are bright and warm"
           ],
           "correct": "Her smile to sunlight — both are bright and warm",
           "hint": "'As bright as the sun' — her smile is being compared to the sun's brightness.",
@@ -2405,10 +2405,10 @@
           "type": "multiple_choice",
           "prompt": "Time is money.\n\nThis metaphor means —",
           "choices": [
-            "You can buy time",
             "Time is valuable and shouldn't be wasted, just like money",
             "Clocks are expensive",
-            "Money takes time to earn"
+            "Money takes time to earn",
+            "You can buy time"
           ],
           "correct": "Time is valuable and shouldn't be wasted, just like money",
           "hint": "The metaphor says time IS money — meaning time is just as valuable as money.",
@@ -2421,10 +2421,10 @@
           "type": "multiple_choice",
           "prompt": "The dancer moved like water flowing over rocks.\n\nWhat quality of the dancer does this simile highlight?",
           "choices": [
-            "She was wet",
-            "She moved smoothly and gracefully",
             "She was cold",
-            "She was fast"
+            "She was fast",
+            "She moved smoothly and gracefully",
+            "She was wet"
           ],
           "correct": "She moved smoothly and gracefully",
           "hint": "Water flowing over rocks is smooth and graceful — that's how the dancer moved.",
@@ -2438,9 +2438,9 @@
           "prompt": "He has a heart of stone.\n\nThis metaphor means —",
           "choices": [
             "He needs a doctor",
-            "He is cold, uncaring, and unfeeling",
             "He collects rocks",
-            "He is very strong"
+            "He is very strong",
+            "He is cold, uncaring, and unfeeling"
           ],
           "correct": "He is cold, uncaring, and unfeeling",
           "hint": "Stone is hard and cold. A heart of stone = a person who doesn't show emotions or compassion.",
@@ -2453,10 +2453,10 @@
           "type": "multiple_choice",
           "prompt": "How do you tell the difference between a simile and a metaphor?",
           "choices": [
-            "Similes are longer than metaphors",
             "Similes use 'like' or 'as'; metaphors make a direct comparison without them",
-            "Metaphors are always about animals",
-            "There is no difference"
+            "Similes are longer than metaphors",
+            "There is no difference",
+            "Metaphors are always about animals"
           ],
           "correct": "Similes use 'like' or 'as'; metaphors make a direct comparison without them",
           "hint": "Simile: 'brave AS a lion.' Metaphor: 'He IS a lion.' The words 'like/as' are the key difference.",
@@ -2477,10 +2477,10 @@
           "type": "multiple_choice",
           "prompt": "What does the proverb 'Don't judge a book by its cover' mean?",
           "choices": [
-            "Book covers are ugly",
             "Don't evaluate things or people based only on appearance",
-            "Always read the whole book",
-            "Covers are important"
+            "Book covers are ugly",
+            "Covers are important",
+            "Always read the whole book"
           ],
           "correct": "Don't evaluate things or people based only on appearance",
           "hint": "A book (or person) might look one way on the outside but be completely different inside.",
@@ -2493,9 +2493,9 @@
           "type": "multiple_choice",
           "prompt": "What does the adage 'Actions speak louder than words' mean?",
           "choices": [
+            "Actions make noise",
             "Talk loudly",
             "What you DO matters more than what you SAY",
-            "Actions make noise",
             "Words are quiet"
           ],
           "correct": "What you DO matters more than what you SAY",
@@ -2509,10 +2509,10 @@
           "type": "multiple_choice",
           "prompt": "What does the idiom 'costs an arm and a leg' mean?",
           "choices": [
+            "It causes pain",
             "You have to lose body parts",
             "Something is very expensive",
-            "It requires physical strength",
-            "It causes pain"
+            "It requires physical strength"
           ],
           "correct": "Something is very expensive",
           "hint": "You wouldn't literally give an arm and leg — this means the price is extremely high!",
@@ -2525,9 +2525,9 @@
           "type": "multiple_choice",
           "prompt": "What does the proverb 'The early bird catches the worm' teach?",
           "choices": [
-            "Birds wake up early",
-            "Those who act first or prepare early have an advantage",
             "Worms are best in the morning",
+            "Those who act first or prepare early have an advantage",
+            "Birds wake up early",
             "Sleeping late is healthy"
           ],
           "correct": "Those who act first or prepare early have an advantage",
@@ -2542,8 +2542,8 @@
           "prompt": "What does 'When it rains, it pours' mean?",
           "choices": [
             "Rain is always heavy",
-            "When problems happen, they tend to come all at once",
             "Always carry an umbrella",
+            "When problems happen, they tend to come all at once",
             "Pouring is worse than raining"
           ],
           "correct": "When problems happen, they tend to come all at once",
@@ -2565,8 +2565,8 @@
           "type": "multiple_choice",
           "prompt": "Which word is a SYNONYM for 'courageous'?",
           "choices": [
-            "Cowardly",
             "Brave",
+            "Cowardly",
             "Weak",
             "Frightened"
           ],
@@ -2582,9 +2582,9 @@
           "prompt": "Which word is an ANTONYM for 'generous'?",
           "choices": [
             "Kind",
-            "Selfish",
+            "Wealthy",
             "Giving",
-            "Wealthy"
+            "Selfish"
           ],
           "correct": "Selfish",
           "hint": "An antonym is the opposite. The opposite of giving freely (generous) is keeping everything for yourself (selfish).",
@@ -2598,9 +2598,9 @@
           "prompt": "The words 'happy,' 'joyful,' and 'ecstatic' are synonyms, but they differ in —",
           "choices": [
             "They mean completely different things",
-            "Their intensity — from mild to extreme happiness",
+            "Nothing — they're identical",
             "Their spelling",
-            "Nothing — they're identical"
+            "Their intensity — from mild to extreme happiness"
           ],
           "correct": "Their intensity — from mild to extreme happiness",
           "hint": "Happy is mild. Joyful is stronger. Ecstatic is extreme. Same family, different levels.",
@@ -2614,9 +2614,9 @@
           "prompt": "Which word BEST replaces 'said' to show the character is angry?\n\n\"'That's not fair!' ____ Marcus.\"",
           "choices": [
             "Whispered",
-            "Shouted",
+            "Sighed",
             "Mumbled",
-            "Sighed"
+            "Shouted"
           ],
           "correct": "Shouted",
           "hint": "An angry person saying 'That's not fair!' would most likely raise their voice — shout!",
@@ -2630,9 +2630,9 @@
           "prompt": "Which pair are antonyms?",
           "choices": [
             "Ancient and old",
+            "Quick and fast",
             "Brave and courageous",
-            "Expand and contract",
-            "Quick and fast"
+            "Expand and contract"
           ],
           "correct": "Expand and contract",
           "hint": "Expand = get bigger. Contract = get smaller. Those are opposites!",
@@ -2653,10 +2653,10 @@
           "type": "multiple_choice",
           "prompt": "Which sentence uses the most precise language?",
           "choices": [
-            "The thing went fast.",
-            "The rocket accelerated through the atmosphere at tremendous speed.",
             "Something moved quickly up there.",
-            "It went really, really fast."
+            "It went really, really fast.",
+            "The rocket accelerated through the atmosphere at tremendous speed.",
+            "The thing went fast."
           ],
           "correct": "The rocket accelerated through the atmosphere at tremendous speed.",
           "hint": "Precise means specific. 'Rocket,' 'accelerated,' 'atmosphere,' and 'tremendous' are all precise.",
@@ -2669,10 +2669,10 @@
           "type": "multiple_choice",
           "prompt": "In social studies, the word 'democracy' means —",
           "choices": [
-            "Rule by one king",
             "A system where citizens have the power to make decisions through voting",
+            "A military government",
             "A type of economy",
-            "A military government"
+            "Rule by one king"
           ],
           "correct": "A system where citizens have the power to make decisions through voting",
           "hint": "Demo = people. Cracy = rule. Democracy = rule by the people.",
@@ -2685,9 +2685,9 @@
           "type": "multiple_choice",
           "prompt": "Replace 'nice' with a more precise word:\n\n\"The ____ sunset painted the sky in shades of orange and pink.\"",
           "choices": [
+            "Good",
             "Nice",
             "Spectacular",
-            "Good",
             "Okay"
           ],
           "correct": "Spectacular",
@@ -2717,10 +2717,10 @@
           "type": "multiple_choice",
           "prompt": "Which word BEST describes someone who stammered, looked at the floor, and spoke in a shaky voice?",
           "choices": [
-            "Confident",
-            "Nervous",
             "Excited",
-            "Bored"
+            "Nervous",
+            "Bored",
+            "Confident"
           ],
           "correct": "Nervous",
           "hint": "Stammering, avoiding eye contact, shaky voice — classic signs of nervousness!",

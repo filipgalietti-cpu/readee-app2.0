@@ -13,10 +13,10 @@
           "type": "multiple_choice",
           "prompt": "Captain Rosie sailed her tiny boat across the lake every morning. One foggy day, she spotted something glowing beneath the water. She leaned over the side and saw a golden chest resting on the sandy bottom.\n\nWhat did Captain Rosie find under the water?",
           "choices": [
-            "A fish",
             "A golden chest",
-            "A sunken ship",
-            "A glowing rock"
+            "A glowing rock",
+            "A fish",
+            "A sunken ship"
           ],
           "correct": "A golden chest",
           "hint": "Look at the last sentence — what was resting on the sandy bottom?",
@@ -30,9 +30,9 @@
           "prompt": "Marcus had practiced his speech twenty times. When he stepped onto the stage, his hands were shaking. But once he started talking, the words flowed easily, and the audience clapped loudly at the end.\n\nHow did Marcus feel when he first stepped on stage?",
           "choices": [
             "Confident and calm",
-            "Nervous and shaky",
             "Angry and upset",
-            "Bored and tired"
+            "Bored and tired",
+            "Nervous and shaky"
           ],
           "correct": "Nervous and shaky",
           "hint": "The text says his hands were shaking — what feeling does that show?",
@@ -46,9 +46,9 @@
           "prompt": "Grandma Chen kept a garden full of herbs. 'Every plant has a story,' she told Mei. She pointed to the lavender. 'Your grandfather brought those seeds from his village.'\n\nWho brought the lavender seeds?",
           "choices": [
             "Grandma Chen",
-            "Mei",
+            "A neighbor",
             "Mei's grandfather",
-            "A neighbor"
+            "Mei"
           ],
           "correct": "Mei's grandfather",
           "hint": "Grandma says 'Your grandfather brought those seeds.' Whose grandfather?",
@@ -62,8 +62,8 @@
           "prompt": "The fox crept through the snow, its orange fur bright against the white. It paused, tilted its head, then leaped straight up and dove nose-first into a snowbank. Seconds later, it emerged with a mouse in its jaws.\n\nWhy did the fox leap into the snowbank?",
           "choices": [
             "To play in the snow",
-            "To hide from a predator",
             "To catch a mouse",
+            "To hide from a predator",
             "To cool down"
           ],
           "correct": "To catch a mouse",
@@ -77,10 +77,10 @@
           "type": "multiple_choice",
           "prompt": "Aisha's violin had belonged to three generations of her family. The wood was worn smooth where countless fingers had pressed the strings. 'Play with your heart, not just your hands,' her mother always said.\n\nWhat does the worn wood tell us about the violin?",
           "choices": [
-            "It's brand new",
+            "It needs to be replaced",
             "It's been played by many people over many years",
-            "It's broken",
-            "It needs to be replaced"
+            "It's brand new",
+            "It's broken"
           ],
           "correct": "It's been played by many people over many years",
           "hint": "The text says it belonged to three generations and has smooth, worn wood from countless fingers.",
@@ -101,9 +101,9 @@
           "type": "multiple_choice",
           "prompt": "The crow found a piece of cheese. A fox said, 'What a beautiful voice you must have! Please sing for me.' The crow opened its beak to sing, and the cheese fell right into the fox's mouth.\n\nWhat is the moral of this fable?",
           "choices": [
-            "Crows can't sing",
             "Don't trust flattery from someone who wants something",
             "Foxes are faster than crows",
+            "Crows can't sing",
             "Cheese is delicious"
           ],
           "correct": "Don't trust flattery from someone who wants something",
@@ -118,8 +118,8 @@
           "prompt": "A boy cried 'Wolf!' when there was no wolf, just to get attention. The villagers came running twice. When a real wolf appeared and the boy cried for help, no one believed him.\n\nWhat is the central message?",
           "choices": [
             "Wolves are dangerous",
-            "Lying destroys trust",
             "Boys shouldn't be shepherds",
+            "Lying destroys trust",
             "Villagers are mean"
           ],
           "correct": "Lying destroys trust",
@@ -133,10 +133,10 @@
           "type": "multiple_choice",
           "prompt": "King Midas wished that everything he touched would turn to gold. His wish came true! But when his food, his flowers, and even his daughter turned to gold, he begged for the wish to be taken away.\n\nWhat lesson does this myth teach?",
           "choices": [
-            "Gold is the most valuable thing",
-            "Be careful what you wish for — greed has consequences",
             "Magic always works out well",
-            "Kings are always happy"
+            "Kings are always happy",
+            "Gold is the most valuable thing",
+            "Be careful what you wish for — greed has consequences"
           ],
           "correct": "Be careful what you wish for — greed has consequences",
           "hint": "Midas got exactly what he wanted, but it ruined everything he loved.",
@@ -149,10 +149,10 @@
           "type": "multiple_choice",
           "prompt": "Two goats met on a narrow bridge over a river. Neither would step aside. They pushed and shoved until both fell into the water below.\n\nWhat is the lesson?",
           "choices": [
+            "Always cross bridges quickly",
             "Goats can't swim",
-            "Bridges are dangerous",
             "Stubbornness and refusing to compromise hurts everyone",
-            "Always cross bridges quickly"
+            "Bridges are dangerous"
           ],
           "correct": "Stubbornness and refusing to compromise hurts everyone",
           "hint": "Neither goat would give way. What happened because of that?",
@@ -166,9 +166,9 @@
           "prompt": "A young girl named Anansi's daughter was always bragging about being the smartest in her village. One day, the village elder gave her a riddle she couldn't solve. A quiet boy named Kofi, who listened more than he talked, solved it easily.\n\nWhat is the central message?",
           "choices": [
             "Riddles are hard",
-            "Bragging doesn't make you smart — listening and thinking do",
+            "Elders are tricky",
             "Girls aren't as smart as boys",
-            "Elders are tricky"
+            "Bragging doesn't make you smart — listening and thinking do"
           ],
           "correct": "Bragging doesn't make you smart — listening and thinking do",
           "hint": "Compare the girl who bragged with the boy who listened. Who succeeded?",
@@ -189,10 +189,10 @@
           "type": "multiple_choice",
           "prompt": "Dina noticed her classmate sitting alone at lunch every day. She walked over and said, 'Want to sit with us?' Soon they became best friends and started a book club together.\n\nWhat character trait does Dina show?",
           "choices": [
-            "Shyness",
             "Kindness",
+            "Stubbornness",
             "Laziness",
-            "Stubbornness"
+            "Shyness"
           ],
           "correct": "Kindness",
           "hint": "Dina noticed someone alone and invited them to join. What kind of person does that?",
@@ -206,9 +206,9 @@
           "prompt": "When the team's star player got hurt, nobody wanted to take her place. Jaylen was nervous, but he stepped up and said, 'I'll do it.' He scored the winning goal.\n\nHow did Jaylen's action affect the story?",
           "choices": [
             "The team lost the game",
+            "He got hurt too",
             "Nothing changed",
-            "His bravery led to the team winning",
-            "He got hurt too"
+            "His bravery led to the team winning"
           ],
           "correct": "His bravery led to the team winning",
           "hint": "Jaylen volunteered even though he was nervous. What happened because of that?",
@@ -221,10 +221,10 @@
           "type": "multiple_choice",
           "prompt": "Omar found a wallet on the playground with twenty dollars inside. He thought about keeping it, but instead he brought it to the office. The wallet belonged to a kindergartner's mom.\n\nWhat does Omar's action tell us about him?",
           "choices": [
-            "He doesn't need money",
-            "He is honest and does the right thing",
+            "He doesn't like money",
             "He is scared of getting caught",
-            "He doesn't like money"
+            "He doesn't need money",
+            "He is honest and does the right thing"
           ],
           "correct": "He is honest and does the right thing",
           "hint": "Omar chose to return the wallet even though he could have kept the money.",
@@ -238,9 +238,9 @@
           "prompt": "Marta refused to share the art supplies with her group. She kept the best markers for herself. The other kids stopped inviting her to work on projects.\n\nWhat happened BECAUSE of Marta's actions?",
           "choices": [
             "She won an art contest",
-            "Her group stopped including her",
+            "The teacher praised her",
             "She got more supplies",
-            "The teacher praised her"
+            "Her group stopped including her"
           ],
           "correct": "Her group stopped including her",
           "hint": "Marta's selfishness had a consequence. What was it?",
@@ -253,10 +253,10 @@
           "type": "multiple_choice",
           "prompt": "A character who always makes careful plans before acting can be described as —",
           "choices": [
+            "Fearful",
             "Reckless",
-            "Thoughtful",
             "Impatient",
-            "Fearful"
+            "Thoughtful"
           ],
           "correct": "Thoughtful",
           "hint": "Someone who thinks carefully before doing something is being thought-ful!",
@@ -277,10 +277,10 @@
           "type": "multiple_choice",
           "prompt": "After winning the race, Kenji was on top of the world.\n\nWhat does 'on top of the world' mean?",
           "choices": [
-            "He climbed a mountain",
-            "He was extremely happy",
+            "He was very tall",
             "He was standing on a globe",
-            "He was very tall"
+            "He was extremely happy",
+            "He climbed a mountain"
           ],
           "correct": "He was extremely happy",
           "hint": "This is figurative language — it doesn't literally mean he's on top of the world!",
@@ -294,9 +294,9 @@
           "prompt": "'Don't let the cat out of the bag,' whispered Mom before the surprise party.\n\nWhat does 'let the cat out of the bag' mean?",
           "choices": [
             "Release an actual cat",
+            "Feed a pet",
             "Reveal a secret",
-            "Open a bag",
-            "Feed a pet"
+            "Open a bag"
           ],
           "correct": "Reveal a secret",
           "hint": "Mom is talking about keeping the surprise party a secret!",
@@ -309,10 +309,10 @@
           "type": "multiple_choice",
           "prompt": "Which sentence uses LITERAL language?",
           "choices": [
-            "She has a heart of gold.",
             "Time flies when you're having fun.",
-            "The dog ate his dinner.",
-            "He was drowning in homework."
+            "She has a heart of gold.",
+            "He was drowning in homework.",
+            "The dog ate his dinner."
           ],
           "correct": "The dog ate his dinner.",
           "hint": "Literal language means exactly what it says — no hidden meaning.",
@@ -325,10 +325,10 @@
           "type": "multiple_choice",
           "prompt": "The classroom was a zoo today!\n\nThis means —",
           "choices": [
-            "There were animals in the classroom",
-            "The classroom was very loud and chaotic",
             "They went on a field trip to the zoo",
-            "The teacher likes animals"
+            "The teacher likes animals",
+            "There were animals in the classroom",
+            "The classroom was very loud and chaotic"
           ],
           "correct": "The classroom was very loud and chaotic",
           "hint": "The classroom isn't ACTUALLY a zoo — the author is comparing it to one. Why?",
@@ -341,10 +341,10 @@
           "type": "multiple_choice",
           "prompt": "The icy wind bit at their faces as they walked to school.\n\nWhat does 'bit at their faces' mean?",
           "choices": [
-            "An animal bit them",
-            "The wind felt sharp and painful on their skin",
+            "Their faces were frozen solid",
             "They were eating something cold",
-            "Their faces were frozen solid"
+            "The wind felt sharp and painful on their skin",
+            "An animal bit them"
           ],
           "correct": "The wind felt sharp and painful on their skin",
           "hint": "Wind can't actually bite! The author is describing how the cold FELT.",
@@ -365,10 +365,10 @@
           "type": "multiple_choice",
           "prompt": "A group of lines in a poem is called a —",
           "choices": [
-            "Chapter",
+            "Scene",
             "Paragraph",
             "Stanza",
-            "Scene"
+            "Chapter"
           ],
           "correct": "Stanza",
           "hint": "Chapters are for books, paragraphs for essays, scenes for plays. What about poems?",
@@ -381,10 +381,10 @@
           "type": "multiple_choice",
           "prompt": "In a play, when the setting or time changes, a new ____ begins.",
           "choices": [
-            "Chapter",
-            "Stanza",
             "Scene",
-            "Paragraph"
+            "Chapter",
+            "Paragraph",
+            "Stanza"
           ],
           "correct": "Scene",
           "hint": "Plays are divided into acts and these smaller parts.",
@@ -397,10 +397,10 @@
           "type": "multiple_choice",
           "prompt": "A long novel is usually divided into —",
           "choices": [
-            "Scenes",
-            "Stanzas",
             "Chapters",
-            "Verses"
+            "Verses",
+            "Scenes",
+            "Stanzas"
           ],
           "correct": "Chapters",
           "hint": "Think about how a novel is organized — each section has a number and sometimes a title.",
@@ -413,9 +413,9 @@
           "type": "multiple_choice",
           "prompt": "If a poem has four stanzas, each with four lines, how many lines does the poem have in total?",
           "choices": [
-            "4",
-            "8",
             "12",
+            "8",
+            "4",
             "16"
           ],
           "correct": "16",
@@ -429,10 +429,10 @@
           "type": "multiple_choice",
           "prompt": "Which text type uses the word 'scene' to describe its parts?",
           "choices": [
-            "A poem",
+            "A newspaper article",
             "A novel",
             "A play or drama",
-            "A newspaper article"
+            "A poem"
           ],
           "correct": "A play or drama",
           "hint": "When actors perform on stage, each part of the show is a...?",
@@ -453,10 +453,10 @@
           "type": "multiple_choice",
           "prompt": "The narrator says, 'Vegetables are the most boring food in the world.'\n\nThis is the point of view of —",
           "choices": [
-            "All people everywhere",
+            "The author's final opinion",
             "The narrator or character",
-            "A scientist",
-            "The author's final opinion"
+            "All people everywhere",
+            "A scientist"
           ],
           "correct": "The narrator or character",
           "hint": "Just because a character says something doesn't mean everyone agrees!",
@@ -469,10 +469,10 @@
           "type": "multiple_choice",
           "prompt": "A character in a story thinks it's okay to cheat on a test. You think cheating is wrong. This shows that —",
           "choices": [
-            "The story is wrong",
             "You and the character have different points of view",
             "You didn't understand the story",
-            "The character is always right"
+            "The character is always right",
+            "The story is wrong"
           ],
           "correct": "You and the character have different points of view",
           "hint": "It's normal to disagree with a character! That's having a different point of view.",
@@ -485,10 +485,10 @@
           "type": "multiple_choice",
           "prompt": "I hated moving to a new town. Everything was different and terrible. But by the end of the year, I had the best friends I'd ever had.\n\nWho is telling this story?",
           "choices": [
-            "A parent watching their child",
+            "An outside narrator",
             "The main character, using 'I'",
             "A teacher",
-            "An outside narrator"
+            "A parent watching their child"
           ],
           "correct": "The main character, using 'I'",
           "hint": "The word 'I' tells you this is first-person — the character is telling their own story.",
@@ -501,10 +501,10 @@
           "type": "multiple_choice",
           "prompt": "Why is it important to notice the narrator's point of view?",
           "choices": [
-            "Because narrators are always right",
-            "Because it helps you understand who is telling the story and how they see things",
+            "It's not important at all",
             "Because there's only one way to see a story",
-            "It's not important at all"
+            "Because narrators are always right",
+            "Because it helps you understand who is telling the story and how they see things"
           ],
           "correct": "Because it helps you understand who is telling the story and how they see things",
           "hint": "Different narrators might tell the same story in very different ways!",
@@ -542,8 +542,8 @@
           "prompt": "A story says 'The girl walked into the room.' The illustration shows the room decorated with balloons, streamers, and a big cake. The illustration helps show that —",
           "choices": [
             "The girl is at school",
-            "There's a party or celebration happening",
             "The room is empty",
+            "There's a party or celebration happening",
             "The girl is sad"
           ],
           "correct": "There's a party or celebration happening",
@@ -557,8 +557,8 @@
           "type": "multiple_choice",
           "prompt": "An illustration uses dark colors and shadows. This most likely creates a mood that is —",
           "choices": [
-            "Happy and cheerful",
             "Mysterious or scary",
+            "Happy and cheerful",
             "Silly and funny",
             "Bright and exciting"
           ],
@@ -573,9 +573,9 @@
           "type": "multiple_choice",
           "prompt": "In a picture book, the text says the character is 'fine.' But the illustration shows tears in the character's eyes. What does the illustration tell us?",
           "choices": [
-            "The character really is fine",
-            "The character is lying about their feelings",
             "The illustrator made a mistake",
+            "The character is lying about their feelings",
+            "The character really is fine",
             "The character is laughing"
           ],
           "correct": "The character is lying about their feelings",
@@ -589,10 +589,10 @@
           "type": "multiple_choice",
           "prompt": "How can an illustration emphasize a character's personality?",
           "choices": [
-            "By showing the character's clothing, expression, and posture",
+            "Illustrations can't show personality",
             "By writing the character's name in big letters",
-            "By using only black and white",
-            "Illustrations can't show personality"
+            "By showing the character's clothing, expression, and posture",
+            "By using only black and white"
           ],
           "correct": "By showing the character's clothing, expression, and posture",
           "hint": "Think about how someone LOOKS — messy or neat, smiling or frowning, tall and proud or hunched over.",
@@ -605,10 +605,10 @@
           "type": "multiple_choice",
           "prompt": "A story describes a 'small cottage.' The illustration shows it surrounded by enormous trees and a vast mountain range. How does the illustration add to the story?",
           "choices": [
-            "It shows the cottage is actually big",
-            "It emphasizes how small the cottage is compared to nature",
             "It changes the story",
-            "It doesn't add anything"
+            "It shows the cottage is actually big",
+            "It doesn't add anything",
+            "It emphasizes how small the cottage is compared to nature"
           ],
           "correct": "It emphasizes how small the cottage is compared to nature",
           "hint": "The huge trees and mountains around the tiny cottage show just how small it is!",
@@ -631,8 +631,8 @@
           "choices": [
             "The setting",
             "The theme of learning bravery",
-            "The other characters",
-            "The ending"
+            "The ending",
+            "The other characters"
           ],
           "correct": "The theme of learning bravery",
           "hint": "Both books are about the same big idea — bravery. That's the theme!",
@@ -646,9 +646,9 @@
           "prompt": "Two stories by the same author are set in different places — one in a city and one on a farm. But both stories are about friendship. What is DIFFERENT between the stories?",
           "choices": [
             "The theme",
+            "The message",
             "The setting",
-            "The moral",
-            "The message"
+            "The moral"
           ],
           "correct": "The setting",
           "hint": "A city and a farm are two different places. That's the setting!",
@@ -661,10 +661,10 @@
           "type": "multiple_choice",
           "prompt": "In Story 1, a girl solves a mystery at her school. In Story 2 by the same author, the same girl solves a mystery at a museum. What changed between the stories?",
           "choices": [
+            "The author",
             "The main character",
             "The type of story",
-            "The setting and specific plot",
-            "The author"
+            "The setting and specific plot"
           ],
           "correct": "The setting and specific plot",
           "hint": "Same girl, same type of story (mystery), but different place and different mystery!",
@@ -677,10 +677,10 @@
           "type": "multiple_choice",
           "prompt": "Why might an author write multiple books about the same character?",
           "choices": [
-            "They can't think of new characters",
             "Readers enjoy following a character through new adventures",
             "They have to write sequels",
-            "It's easier to copy the same story"
+            "It's easier to copy the same story",
+            "They can't think of new characters"
           ],
           "correct": "Readers enjoy following a character through new adventures",
           "hint": "Think about book series you love — why do you want to read the next one?",
@@ -693,10 +693,10 @@
           "type": "multiple_choice",
           "prompt": "When comparing two stories, which of these would be a CONTRAST (difference)?",
           "choices": [
-            "Both have the same main character",
             "Both teach a lesson about kindness",
             "One takes place in winter and the other in summer",
-            "Both are written by the same author"
+            "Both are written by the same author",
+            "Both have the same main character"
           ],
           "correct": "One takes place in winter and the other in summer",
           "hint": "A contrast is something that's DIFFERENT between the two stories.",
@@ -718,8 +718,8 @@
           "prompt": "The old woman lived at the edge of the forest where the trees whispered secrets to one another. Every evening, she placed a lantern in her window. 'For the lost travelers,' she told the cat, who blinked slowly as if he understood.\n\nWhy does the old woman place a lantern in her window?",
           "choices": [
             "She's afraid of the dark",
-            "To guide lost travelers",
             "To scare away animals",
+            "To guide lost travelers",
             "Because she likes fire"
           ],
           "correct": "To guide lost travelers",
@@ -734,9 +734,9 @@
           "prompt": "Diego had exactly one week to build his invention for the science fair. On Monday he sketched plans. By Wednesday, he'd used all his supplies and started over. On Friday, with tape on his fingers and glue in his hair, he stepped back and grinned.\n\nWhat can you infer about Diego?",
           "choices": [
             "He gave up easily",
+            "He had help from a friend",
             "He was persistent and creative despite setbacks",
-            "He didn't care about the science fair",
-            "He had help from a friend"
+            "He didn't care about the science fair"
           ],
           "correct": "He was persistent and creative despite setbacks",
           "hint": "He started over but kept going. By Friday, he was grinning. What does that tell you?",
@@ -749,9 +749,9 @@
           "type": "multiple_choice",
           "prompt": "'You can't climb that,' said every kid on the block. Sana looked up at the ancient oak, its branches reaching like outstretched arms. She grabbed the lowest branch and pulled herself up.\n\nThe phrase 'branches reaching like outstretched arms' is an example of —",
           "choices": [
-            "A fact about trees",
-            "A simile comparing branches to arms",
             "Literal description",
+            "A simile comparing branches to arms",
+            "A fact about trees",
             "A character's thoughts"
           ],
           "correct": "A simile comparing branches to arms",
@@ -765,8 +765,8 @@
           "type": "multiple_choice",
           "prompt": "The package sat on the porch for three days. Each morning, Eliot walked past it. Each evening, he wondered what was inside. On the fourth day, he finally picked it up and read the label: 'To Eliot, from your future self.'\n\nWhat is the author trying to make the reader feel?",
           "choices": [
-            "Bored",
             "Curious and intrigued",
+            "Bored",
             "Angry",
             "Sleepy"
           ],
@@ -781,10 +781,10 @@
           "type": "multiple_choice",
           "prompt": "Everyone said the old house was haunted. Lina didn't believe in ghosts. She marched up the creaky steps, pushed open the door, and found... a family of raccoons living in the fireplace.\n\nWhat makes this ending effective?",
           "choices": [
-            "It's scary",
-            "It surprises the reader with a funny, unexpected twist",
+            "It leaves everything unresolved",
             "It confirms the house is haunted",
-            "It leaves everything unresolved"
+            "It's scary",
+            "It surprises the reader with a funny, unexpected twist"
           ],
           "correct": "It surprises the reader with a funny, unexpected twist",
           "hint": "You expected something spooky, but got raccoons! That surprise is what makes it work.",
@@ -805,10 +805,10 @@
           "type": "multiple_choice",
           "prompt": "The Amazon Rainforest produces about 20 percent of the world's oxygen. It is home to more than 10 million species of plants and animals.\n\nHow much of the world's oxygen does the Amazon produce?",
           "choices": [
+            "About 80 percent",
             "About 10 percent",
             "About 20 percent",
-            "About 50 percent",
-            "About 80 percent"
+            "About 50 percent"
           ],
           "correct": "About 20 percent",
           "hint": "The percentage is stated in the first sentence.",
@@ -821,10 +821,10 @@
           "type": "multiple_choice",
           "prompt": "Harriet Tubman escaped slavery in 1849. She then risked her life many times to help others escape through the Underground Railroad. She led about 70 people to freedom.\n\nHow many people did Harriet Tubman help escape?",
           "choices": [
+            "About 700",
             "About 17",
             "About 70",
-            "About 170",
-            "About 700"
+            "About 170"
           ],
           "correct": "About 70",
           "hint": "The last sentence gives you the exact number.",
@@ -837,10 +837,10 @@
           "type": "multiple_choice",
           "prompt": "Earthquakes happen when large pieces of the Earth's crust, called tectonic plates, suddenly move. Most earthquakes occur along the edges of these plates.\n\nWhat causes earthquakes?",
           "choices": [
-            "Strong winds",
             "Heavy rain",
             "Tectonic plates suddenly moving",
-            "Volcanoes erupting"
+            "Volcanoes erupting",
+            "Strong winds"
           ],
           "correct": "Tectonic plates suddenly moving",
           "hint": "The first sentence explains exactly what causes them.",
@@ -853,10 +853,10 @@
           "type": "multiple_choice",
           "prompt": "Thomas Edison failed over 1,000 times before successfully inventing the light bulb. He once said, 'I have not failed. I've just found 1,000 ways that won't work.'\n\nWhat does Edison's quote tell us about his attitude?",
           "choices": [
-            "He was ready to give up",
-            "He saw failures as learning experiences",
             "He didn't care about inventing",
-            "He thought 1,000 failures was too many"
+            "He thought 1,000 failures was too many",
+            "He was ready to give up",
+            "He saw failures as learning experiences"
           ],
           "correct": "He saw failures as learning experiences",
           "hint": "He didn't call them failures — he called them ways that won't work. That's a positive attitude!",
@@ -869,10 +869,10 @@
           "type": "multiple_choice",
           "prompt": "The International Space Station orbits Earth about every 90 minutes, traveling at 17,500 miles per hour. Astronauts aboard the station see 16 sunrises and sunsets every day.\n\nWhy do astronauts see 16 sunrises each day?",
           "choices": [
-            "The sun moves faster in space",
-            "The station orbits Earth so quickly",
             "There are 16 suns",
-            "Days are longer in space"
+            "Days are longer in space",
+            "The sun moves faster in space",
+            "The station orbits Earth so quickly"
           ],
           "correct": "The station orbits Earth so quickly",
           "hint": "It goes around Earth every 90 minutes — so it sees the sun rise and set with each orbit!",
@@ -893,10 +893,10 @@
           "type": "multiple_choice",
           "prompt": "Bees are essential to our food supply. They pollinate flowers that grow into fruits and vegetables. Without bees, we would lose about one-third of the food we eat.\n\nWhat is the main idea?",
           "choices": [
-            "Bees make honey",
             "Bees are important for our food supply",
+            "Fruits and vegetables are healthy",
             "Flowers need sunlight",
-            "Fruits and vegetables are healthy"
+            "Bees make honey"
           ],
           "correct": "Bees are important for our food supply",
           "hint": "The first sentence states the main idea. The rest gives supporting details.",
@@ -909,10 +909,10 @@
           "type": "multiple_choice",
           "prompt": "Sleep is important for kids. During sleep, your brain stores what you learned that day. Your body grows and repairs itself. Kids who get enough sleep do better in school.\n\nWhich detail supports the idea that sleep helps learning?",
           "choices": [
-            "Your body grows",
-            "Your brain stores what you learned",
             "Sleep is important for kids",
-            "Kids do better in school"
+            "Your brain stores what you learned",
+            "Kids do better in school",
+            "Your body grows"
           ],
           "correct": "Your brain stores what you learned",
           "hint": "Which detail specifically connects sleep to LEARNING?",
@@ -925,10 +925,10 @@
           "type": "multiple_choice",
           "prompt": "Coral reefs are in danger. Pollution poisons the water. Rising temperatures cause coral to turn white and die. Overfishing removes animals that keep reefs healthy.\n\nThe key details all support the main idea that —",
           "choices": [
-            "Fish live in reefs",
             "Coral reefs are beautiful",
-            "Coral reefs face many threats",
-            "The ocean is cold"
+            "Fish live in reefs",
+            "The ocean is cold",
+            "Coral reefs face many threats"
           ],
           "correct": "Coral reefs face many threats",
           "hint": "Pollution, rising temperatures, overfishing — these are all threats!",
@@ -941,10 +941,10 @@
           "type": "multiple_choice",
           "prompt": "How do you find the main idea of a passage?",
           "choices": [
-            "Read only the first word",
-            "Think about what all the details have in common",
             "Count the sentences",
-            "Look at the last sentence only"
+            "Read only the first word",
+            "Look at the last sentence only",
+            "Think about what all the details have in common"
           ],
           "correct": "Think about what all the details have in common",
           "hint": "The main idea is the big umbrella that all the details fit under.",
@@ -957,9 +957,9 @@
           "type": "multiple_choice",
           "prompt": "Ancient Egyptians invented many things we still use today. They created one of the first writing systems called hieroglyphics. They developed a 365-day calendar. They even invented toothpaste!\n\nWhat is the main idea?",
           "choices": [
-            "Egyptians liked to write",
             "Ancient Egypt had a calendar",
             "Ancient Egyptians were great inventors",
+            "Egyptians liked to write",
             "Toothpaste is important"
           ],
           "correct": "Ancient Egyptians were great inventors",
@@ -981,10 +981,10 @@
           "type": "multiple_choice",
           "prompt": "Because the river flooded, farmers lost their crops. As a result, food prices went up that year.\n\nWhat caused food prices to go up?",
           "choices": [
-            "High temperatures",
             "Farmers lost crops due to flooding",
             "Too many people buying food",
-            "A new law about food"
+            "A new law about food",
+            "High temperatures"
           ],
           "correct": "Farmers lost crops due to flooding",
           "hint": "Follow the chain: flood → lost crops → higher food prices.",
@@ -997,10 +997,10 @@
           "type": "multiple_choice",
           "prompt": "First, Rosa Parks refused to give up her bus seat in 1955. Then, the Montgomery Bus Boycott began. Finally, the Supreme Court ruled bus segregation was unconstitutional.\n\nWhich event happened FIRST?",
           "choices": [
-            "The Supreme Court ruling",
             "The boycott",
-            "Rosa Parks refused to give up her seat",
-            "Bus segregation began"
+            "The Supreme Court ruling",
+            "Bus segregation began",
+            "Rosa Parks refused to give up her seat"
           ],
           "correct": "Rosa Parks refused to give up her seat",
           "hint": "The word 'First' tells you the sequence!",
@@ -1013,10 +1013,10 @@
           "type": "multiple_choice",
           "prompt": "The words 'because,' 'as a result,' and 'therefore' signal what type of relationship?",
           "choices": [
-            "Compare and contrast",
-            "Cause and effect",
             "Chronological order",
-            "Problem and solution"
+            "Problem and solution",
+            "Cause and effect",
+            "Compare and contrast"
           ],
           "correct": "Cause and effect",
           "hint": "These words show that one thing CAUSED another thing to happen.",
@@ -1029,9 +1029,9 @@
           "type": "multiple_choice",
           "prompt": "Scientists noticed that temperatures were rising globally. This led to melting ice caps, which caused sea levels to rise.\n\nWhat is the EFFECT of melting ice caps?",
           "choices": [
+            "Ice caps grow larger",
             "Temperatures rise",
             "Sea levels rise",
-            "Ice caps grow larger",
             "More snow falls"
           ],
           "correct": "Sea levels rise",
@@ -1045,10 +1045,10 @@
           "type": "multiple_choice",
           "prompt": "After the Great Fire of London in 1666, the city was rebuilt with stone and brick instead of wood. This made buildings much safer from future fires.\n\nHow are these two events connected?",
           "choices": [
-            "They are not connected",
-            "The fire caused the city to change how it built buildings",
             "The stone buildings caused the fire",
-            "London stopped building after the fire"
+            "The fire caused the city to change how it built buildings",
+            "London stopped building after the fire",
+            "They are not connected"
           ],
           "correct": "The fire caused the city to change how it built buildings",
           "hint": "The fire was the cause. Rebuilding with stone was the effect.",
@@ -1069,10 +1069,10 @@
           "type": "multiple_choice",
           "prompt": "Photosynthesis is the process by which plants use sunlight, water, and carbon dioxide to make their own food.\n\nWhat is photosynthesis?",
           "choices": [
+            "How plants grow roots",
             "A type of plant",
-            "How plants make food using sunlight",
             "A chemical in soil",
-            "How plants grow roots"
+            "How plants make food using sunlight"
           ],
           "correct": "How plants make food using sunlight",
           "hint": "The sentence defines it right after the word!",
@@ -1086,9 +1086,9 @@
           "prompt": "The Constitution is the supreme law of the United States. It establishes the structure of the government and protects citizens' rights.\n\nWhat does 'supreme' mean in this context?",
           "choices": [
             "Old",
-            "Highest or most important",
+            "Secret",
             "Written on paper",
-            "Secret"
+            "Highest or most important"
           ],
           "correct": "Highest or most important",
           "hint": "The Constitution is the law that all other laws must follow — it's the top one!",
@@ -1102,9 +1102,9 @@
           "prompt": "Erosion is the gradual wearing away of land by water, wind, or ice. Over thousands of years, erosion carved the Grand Canyon.\n\nWhat does 'gradual' mean?",
           "choices": [
             "Sudden and fast",
+            "Underground",
             "Happening slowly over time",
-            "Very large",
-            "Underground"
+            "Very large"
           ],
           "correct": "Happening slowly over time",
           "hint": "It took THOUSANDS of years. That's definitely not fast!",
@@ -1117,10 +1117,10 @@
           "type": "multiple_choice",
           "prompt": "Herbivores are animals that eat only plants. Deer, rabbits, and cows are all herbivores.\n\nA herbivore eats —",
           "choices": [
-            "Only meat",
-            "Both meat and plants",
+            "Only insects",
             "Only plants",
-            "Only insects"
+            "Both meat and plants",
+            "Only meat"
           ],
           "correct": "Only plants",
           "hint": "The first sentence tells you the definition right away.",
@@ -1135,8 +1135,8 @@
           "choices": [
             "A type of equipment",
             "A long journey for a specific purpose",
-            "A map",
-            "A type of fuel"
+            "A type of fuel",
+            "A map"
           ],
           "correct": "A long journey for a specific purpose",
           "hint": "It took months of preparation for a dangerous journey to the South Pole.",
@@ -1157,9 +1157,9 @@
           "type": "multiple_choice",
           "prompt": "You want to find information about volcanoes on page 47 of a textbook. Which text feature would help you find page 47 the fastest?",
           "choices": [
-            "The glossary",
-            "The index",
             "The title page",
+            "The index",
+            "The glossary",
             "A caption"
           ],
           "correct": "The index",
@@ -1173,10 +1173,10 @@
           "type": "multiple_choice",
           "prompt": "A sidebar in a textbook usually contains —",
           "choices": [
-            "The main text of the chapter",
-            "Extra interesting facts or related information",
+            "The table of contents",
             "The glossary",
-            "The table of contents"
+            "The main text of the chapter",
+            "Extra interesting facts or related information"
           ],
           "correct": "Extra interesting facts or related information",
           "hint": "Sidebars are those boxes on the side of a page with bonus information!",
@@ -1189,10 +1189,10 @@
           "type": "multiple_choice",
           "prompt": "You're researching dolphins online. Which search term would give you the BEST results?",
           "choices": [
-            "Animals",
             "Blue things in the ocean",
+            "Cute stuff",
             "Dolphin habitat and diet",
-            "Cute stuff"
+            "Animals"
           ],
           "correct": "Dolphin habitat and diet",
           "hint": "Specific keywords help you find exactly what you need!",
@@ -1205,10 +1205,10 @@
           "type": "multiple_choice",
           "prompt": "What is the difference between an index and a glossary?",
           "choices": [
-            "An index defines words; a glossary lists page numbers",
             "An index lists topics with page numbers; a glossary defines words",
+            "An index is at the front; a glossary is in the middle",
             "They are the same thing",
-            "An index is at the front; a glossary is in the middle"
+            "An index defines words; a glossary lists page numbers"
           ],
           "correct": "An index lists topics with page numbers; a glossary defines words",
           "hint": "Index = find WHERE something is. Glossary = find WHAT a word means.",
@@ -1221,10 +1221,10 @@
           "type": "multiple_choice",
           "prompt": "Hyperlinks in a digital text allow you to —",
           "choices": [
-            "Print the page",
+            "Delete words",
             "Jump to related information quickly",
             "Change the font size",
-            "Delete words"
+            "Print the page"
           ],
           "correct": "Jump to related information quickly",
           "hint": "Clicking a hyperlink takes you to another page or section with more information!",
@@ -1245,10 +1245,10 @@
           "type": "multiple_choice",
           "prompt": "Homework is valuable because it helps students practice what they learned in class.\n\nThe author's point of view is that homework is —",
           "choices": [
-            "A waste of time",
+            "Only for math",
             "Valuable for learning",
             "Too easy",
-            "Only for math"
+            "A waste of time"
           ],
           "correct": "Valuable for learning",
           "hint": "The author uses the word 'valuable' — that tells you they think homework is good.",
@@ -1261,10 +1261,10 @@
           "type": "multiple_choice",
           "prompt": "A student reads an article that says school should start later. The student likes waking up early. This shows —",
           "choices": [
-            "The student is wrong",
-            "The author is wrong",
             "The student and author have different points of view",
-            "The article is bad"
+            "The student is wrong",
+            "The article is bad",
+            "The author is wrong"
           ],
           "correct": "The student and author have different points of view",
           "hint": "It's okay to disagree with an author! That's having your own point of view.",
@@ -1277,10 +1277,10 @@
           "type": "multiple_choice",
           "prompt": "How can you figure out an author's point of view?",
           "choices": [
-            "Read only the title",
             "Look at the words they choose and what they emphasize",
             "Count the paragraphs",
-            "Ask the author directly"
+            "Ask the author directly",
+            "Read only the title"
           ],
           "correct": "Look at the words they choose and what they emphasize",
           "hint": "Authors reveal their opinions through their word choices and what they focus on.",
@@ -1293,10 +1293,10 @@
           "type": "multiple_choice",
           "prompt": "Zoos keep animals in small spaces where they can't roam freely. Animals deserve to live in their natural habitats.\n\nThe author most likely believes —",
           "choices": [
-            "Zoos are great for animals",
-            "Animals are happier in zoos",
+            "All animals should be pets",
             "Zoos aren't the best place for animals",
-            "All animals should be pets"
+            "Animals are happier in zoos",
+            "Zoos are great for animals"
           ],
           "correct": "Zoos aren't the best place for animals",
           "hint": "Words like 'small spaces' and 'deserve to live in natural habitats' show the author's opinion.",
@@ -1309,10 +1309,10 @@
           "type": "multiple_choice",
           "prompt": "Why is it important to recognize your OWN point of view when reading?",
           "choices": [
-            "So you always agree with the author",
             "So you can think critically and form your own opinions",
+            "It's not important",
             "So you can argue with everyone",
-            "It's not important"
+            "So you always agree with the author"
           ],
           "correct": "So you can think critically and form your own opinions",
           "hint": "Good readers don't just accept everything — they think about it and decide for themselves!",
@@ -1333,10 +1333,10 @@
           "type": "multiple_choice",
           "prompt": "A science text describes the water cycle. Beside it is a diagram with arrows showing evaporation, condensation, and precipitation. The diagram helps by —",
           "choices": [
-            "Making the page look nice",
             "Showing the process visually so it's easier to understand",
+            "Adding new vocabulary",
             "Replacing the text",
-            "Adding new vocabulary"
+            "Making the page look nice"
           ],
           "correct": "Showing the process visually so it's easier to understand",
           "hint": "Diagrams show you HOW something works in a way words alone can't.",
@@ -1349,10 +1349,10 @@
           "type": "multiple_choice",
           "prompt": "A map in a history book shows the route Lewis and Clark traveled. The map helps readers understand —",
           "choices": [
-            "What the explorers looked like",
             "How far and where they traveled",
             "What they ate",
-            "When they were born"
+            "When they were born",
+            "What the explorers looked like"
           ],
           "correct": "How far and where they traveled",
           "hint": "Maps show locations and distances!",
@@ -1365,9 +1365,9 @@
           "type": "multiple_choice",
           "prompt": "A photograph in a textbook shows a volcano erupting with lava flowing down its side. The photograph adds to the text by —",
           "choices": [
-            "Showing what an eruption actually looks like",
-            "Explaining the science of volcanoes",
             "Listing vocabulary words",
+            "Explaining the science of volcanoes",
+            "Showing what an eruption actually looks like",
             "Providing a map"
           ],
           "correct": "Showing what an eruption actually looks like",
@@ -1397,10 +1397,10 @@
           "type": "multiple_choice",
           "prompt": "Which illustration would BEST help a reader understand an article about the layers of the Earth?",
           "choices": [
-            "A photo of a sunset",
-            "A cross-section diagram showing the crust, mantle, and core",
             "A map of the continents",
-            "A picture of a mountain"
+            "A picture of a mountain",
+            "A cross-section diagram showing the crust, mantle, and core",
+            "A photo of a sunset"
           ],
           "correct": "A cross-section diagram showing the crust, mantle, and core",
           "hint": "You can't SEE inside the Earth, so a diagram that shows a cross-section is the best way!",
@@ -1421,10 +1421,10 @@
           "type": "multiple_choice",
           "prompt": "Sentence 1: Plastic bags harm ocean animals. Sentence 2: Sea turtles mistake plastic bags for jellyfish and eat them.\n\nSentence 2 connects to Sentence 1 by —",
           "choices": [
-            "Changing the topic",
             "Giving an example of how plastic harms animals",
-            "Disagreeing with Sentence 1",
-            "Introducing a new idea"
+            "Introducing a new idea",
+            "Changing the topic",
+            "Disagreeing with Sentence 1"
           ],
           "correct": "Giving an example of how plastic harms animals",
           "hint": "Sentence 1 makes a general point. Sentence 2 gives a specific example!",
@@ -1438,9 +1438,9 @@
           "prompt": "Paragraph 1 describes what earthquakes are. Paragraph 2 explains what causes them.\n\nHow are these paragraphs connected?",
           "choices": [
             "They contrast each other",
-            "The first defines the topic and the second explains the cause",
+            "They tell a story in order",
             "They are about different topics",
-            "They tell a story in order"
+            "The first defines the topic and the second explains the cause"
           ],
           "correct": "The first defines the topic and the second explains the cause",
           "hint": "First you learn WHAT something is, then WHY it happens. That's a logical order!",
@@ -1453,10 +1453,10 @@
           "type": "multiple_choice",
           "prompt": "Dogs are loyal pets. However, they require a lot of time and attention.\n\nThe word 'however' shows —",
           "choices": [
-            "Agreement between the two ideas",
-            "A contrast or opposing point",
             "A cause and effect",
-            "A time sequence"
+            "A time sequence",
+            "A contrast or opposing point",
+            "Agreement between the two ideas"
           ],
           "correct": "A contrast or opposing point",
           "hint": "'However' signals that the next idea is different from or opposite to the first.",
@@ -1469,10 +1469,10 @@
           "type": "multiple_choice",
           "prompt": "A paragraph about saving water is followed by a paragraph listing specific ways to save water at home. The second paragraph —",
           "choices": [
-            "Changes the topic completely",
-            "Provides specific examples to support the first paragraph",
             "Disagrees with the first",
-            "Tells a personal story"
+            "Tells a personal story",
+            "Provides specific examples to support the first paragraph",
+            "Changes the topic completely"
           ],
           "correct": "Provides specific examples to support the first paragraph",
           "hint": "General idea → specific examples. That's a common way paragraphs connect!",
@@ -1485,10 +1485,10 @@
           "type": "multiple_choice",
           "prompt": "Which signal words show a sequence (order) connection between sentences?",
           "choices": [
-            "However, but, although",
+            "Because, therefore, as a result",
             "First, next, then, finally",
-            "For example, such as",
-            "Because, therefore, as a result"
+            "However, but, although",
+            "For example, such as"
           ],
           "correct": "First, next, then, finally",
           "hint": "These words tell you the ORDER things happen in!",
@@ -1510,9 +1510,9 @@
           "prompt": "Text A about sharks focuses on how they hunt. Text B about sharks focuses on why they're endangered. What do both texts have in common?",
           "choices": [
             "Both focus on hunting",
-            "Both focus on endangerment",
             "Both are about sharks",
-            "Both are about fishing"
+            "Both are about fishing",
+            "Both focus on endangerment"
           ],
           "correct": "Both are about sharks",
           "hint": "The topic is the same — sharks. But each text focuses on a different aspect.",
@@ -1541,10 +1541,10 @@
           "type": "multiple_choice",
           "prompt": "When comparing two texts, which question is MOST useful?",
           "choices": [
-            "Which text is longer?",
+            "Which text was written first?",
             "What information is in both, and what is only in one?",
             "Which text has bigger pictures?",
-            "Which text was written first?"
+            "Which text is longer?"
           ],
           "correct": "What information is in both, and what is only in one?",
           "hint": "The best comparison looks at what's shared AND what's unique to each text.",
@@ -1558,9 +1558,9 @@
           "prompt": "Text A: \"Mars has the tallest volcano in the solar system.\" Text B: \"Mars once had flowing water on its surface.\"\n\nThese texts provide —",
           "choices": [
             "The same exact information",
-            "Contradicting facts",
+            "Information about different planets",
             "Different facts about the same planet",
-            "Information about different planets"
+            "Contradicting facts"
           ],
           "correct": "Different facts about the same planet",
           "hint": "Both are about Mars, but each shares a different interesting detail.",
@@ -1573,10 +1573,10 @@
           "type": "multiple_choice",
           "prompt": "Text A argues that screen time should be limited. Text B argues that educational screen time can be beneficial. A reader should —",
           "choices": [
-            "Only believe Text A",
-            "Only believe Text B",
+            "Ignore both texts",
             "Consider both viewpoints and think critically",
-            "Ignore both texts"
+            "Only believe Text A",
+            "Only believe Text B"
           ],
           "correct": "Consider both viewpoints and think critically",
           "hint": "Good readers think about different perspectives before forming their own opinion!",
@@ -1597,8 +1597,8 @@
           "type": "multiple_choice",
           "prompt": "The Great Barrier Reef stretches over 1,400 miles along Australia's coast. It's so large it can be seen from space. Made up of billions of tiny organisms called coral polyps, it is the largest living structure on Earth.\n\nWhat are coral polyps?",
           "choices": [
-            "Rocks",
             "Fish",
+            "Rocks",
             "Tiny organisms that make up the reef",
             "Types of seaweed"
           ],
@@ -1613,10 +1613,10 @@
           "type": "multiple_choice",
           "prompt": "Unlike most spiders, tarantulas don't spin webs to catch prey. Instead, they hunt by ambushing insects and small animals. Despite their scary appearance, most tarantulas are harmless to humans.\n\nWhat is surprising about tarantulas based on this text?",
           "choices": [
-            "They spin webs",
             "They are harmless despite looking scary",
-            "They only eat plants",
-            "They are very small"
+            "They spin webs",
+            "They are very small",
+            "They only eat plants"
           ],
           "correct": "They are harmless despite looking scary",
           "hint": "The word 'despite' signals something unexpected — scary-looking but harmless!",
@@ -1629,10 +1629,10 @@
           "type": "multiple_choice",
           "prompt": "In 1928, Alexander Fleming noticed that mold had accidentally grown on one of his petri dishes. The bacteria around the mold had died. This accidental discovery led to the development of penicillin, the world's first antibiotic.\n\nWhat made Fleming's discovery unusual?",
           "choices": [
-            "He planned it carefully",
             "It happened by accident",
             "He was looking for mold",
-            "He worked alone"
+            "He worked alone",
+            "He planned it carefully"
           ],
           "correct": "It happened by accident",
           "hint": "The text uses the word 'accidentally' — Fleming didn't plan this discovery!",
@@ -1646,8 +1646,8 @@
           "prompt": "Monarch butterflies migrate up to 3,000 miles from Canada to Mexico each fall. No single butterfly makes the entire round trip — it takes multiple generations. The butterflies that fly south in fall are the great-great-grandchildren of the ones that flew north in spring.\n\nWhy is the monarch migration remarkable?",
           "choices": [
             "They fly very slowly",
-            "Multiple generations complete what no single butterfly could",
             "They only travel short distances",
+            "Multiple generations complete what no single butterfly could",
             "They migrate in summer"
           ],
           "correct": "Multiple generations complete what no single butterfly could",
@@ -1661,10 +1661,10 @@
           "type": "multiple_choice",
           "prompt": "The Sahara Desert isn't just sand — only about 25% is sandy. The rest includes rocky plateaus, gravel plains, and even mountains. Temperatures can swing from over 130°F during the day to below freezing at night.\n\nWhat common misconception about the Sahara does this text correct?",
           "choices": [
-            "That it's in Africa",
-            "That it's the largest desert",
             "That it's all sand",
-            "That it's hot"
+            "That it's hot",
+            "That it's in Africa",
+            "That it's the largest desert"
           ],
           "correct": "That it's all sand",
           "hint": "The text starts by saying the Sahara ISN'T just sand, then explains what else is there.",
@@ -1685,12 +1685,12 @@
           "type": "multiple_choice",
           "prompt": "What is the root word in 'uncomfortable'?",
           "choices": [
-            "un",
-            "comfort",
-            "able",
-            "table"
+            "Able",
+            "Table",
+            "Comfort",
+            "Un"
           ],
-          "correct": "comfort",
+          "correct": "Comfort",
           "hint": "Remove the prefix 'un-' and suffix '-able.' What's left?",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.3.3/q1.mp3",
@@ -1701,9 +1701,9 @@
           "type": "multiple_choice",
           "prompt": "How many syllables are in the word 'important'?",
           "choices": [
+            "4",
             "2",
             "3",
-            "4",
             "5"
           ],
           "correct": "3",
@@ -1717,12 +1717,12 @@
           "type": "multiple_choice",
           "prompt": "Which word has the same 'tion' sound as 'nation'?",
           "choices": [
-            "button",
-            "station",
-            "mitten",
-            "cotton"
+            "Cotton",
+            "Button",
+            "Station",
+            "Mitten"
           ],
-          "correct": "station",
+          "correct": "Station",
           "hint": "Say each word. Which one ends with that 'shun' sound like 'nation'?",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.3.3/q3.mp3",
@@ -1733,12 +1733,12 @@
           "type": "multiple_choice",
           "prompt": "In the word 'knight,' which letters are silent?",
           "choices": [
-            "k and g",
-            "n and h",
-            "k and h",
-            "g and t"
+            "G and t",
+            "N and h",
+            "K and h",
+            "K and g"
           ],
-          "correct": "k and g",
+          "correct": "K and g",
           "hint": "Say 'knight' out loud. You hear 'nite' — which letters are you NOT hearing?",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.3.3/q4.mp3",
@@ -1749,12 +1749,12 @@
           "type": "multiple_choice",
           "prompt": "Break the word 'basketball' into syllables:",
           "choices": [
-            "bas-ket-ball",
-            "bask-et-ball",
-            "ba-sket-ball",
-            "basket-ball"
+            "Bask-et-ball",
+            "Bas-ket-ball",
+            "Basket-ball",
+            "Ba-sket-ball"
           ],
-          "correct": "bas-ket-ball",
+          "correct": "Bas-ket-ball",
           "hint": "This compound-style word has three natural breaks.",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.3.3/q5.mp3",
@@ -1773,9 +1773,9 @@
           "type": "multiple_choice",
           "prompt": "The prefix 'dis-' in 'disagree' means —",
           "choices": [
-            "Again",
-            "Not or opposite",
             "Before",
+            "Not or opposite",
+            "Again",
             "Very"
           ],
           "correct": "Not or opposite",
@@ -1789,10 +1789,10 @@
           "type": "multiple_choice",
           "prompt": "What does the suffix '-ment' mean in the word 'enjoyment'?",
           "choices": [
-            "Without",
             "Full of",
+            "Again",
             "The act or state of",
-            "Again"
+            "Without"
           ],
           "correct": "The act or state of",
           "hint": "Enjoyment = the act or state of enjoying!",
@@ -1805,10 +1805,10 @@
           "type": "multiple_choice",
           "prompt": "If 'pre-' means 'before,' what does 'preview' mean?",
           "choices": [
-            "To view again",
+            "To not view",
             "To view after",
             "To view before",
-            "To not view"
+            "To view again"
           ],
           "correct": "To view before",
           "hint": "Pre = before. View = see. So preview = see before!",
@@ -1822,9 +1822,9 @@
           "prompt": "Which word uses the suffix '-able' correctly?",
           "choices": [
             "Readable",
-            "Runable",
+            "Jumpable",
             "Swimable",
-            "Jumpable"
+            "Runable"
           ],
           "correct": "Readable",
           "hint": "'-able' means 'can be done.' Which one sounds right and is a real word?",
@@ -1839,8 +1839,8 @@
           "choices": [
             "Very",
             "Not",
-            "Wrongly",
-            "Before"
+            "Before",
+            "Wrongly"
           ],
           "correct": "Wrongly",
           "hint": "If you misunderstand something, you understand it WRONGLY.",
@@ -1861,12 +1861,12 @@
           "type": "multiple_choice",
           "prompt": "What sound does '-tion' make at the end of a word?",
           "choices": [
-            "tee-on",
-            "shun",
-            "tye-on",
-            "ton"
+            "Ton",
+            "Tee-on",
+            "Shun",
+            "Tye-on"
           ],
-          "correct": "shun",
+          "correct": "Shun",
           "hint": "Say 'nation' — the '-tion' sounds like 'shun.'",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.3.3b/q1.mp3",
@@ -1877,10 +1877,10 @@
           "type": "multiple_choice",
           "prompt": "Which word ends with the '-sion' suffix?",
           "choices": [
-            "Mission",
-            "Kitten",
+            "Lesson",
             "Person",
-            "Lesson"
+            "Mission",
+            "Kitten"
           ],
           "correct": "Mission",
           "hint": "'-sion' also makes the 'shun' sound. Which word has it?",
@@ -1893,10 +1893,10 @@
           "type": "multiple_choice",
           "prompt": "The suffix '-ible' in 'visible' means —",
           "choices": [
-            "Without",
             "Able to be",
-            "Full of",
-            "Before"
+            "Without",
+            "Before",
+            "Full of"
           ],
           "correct": "Able to be",
           "hint": "Visible = able to be seen. So '-ible' means able to be!",
@@ -1909,10 +1909,10 @@
           "type": "multiple_choice",
           "prompt": "Which word has a Latin suffix?",
           "choices": [
-            "Running",
             "Education",
+            "Softly",
             "Biggest",
-            "Softly"
+            "Running"
           ],
           "correct": "Education",
           "hint": "'-tion' is a Latin suffix commonly found in English words.",
@@ -1925,12 +1925,12 @@
           "type": "multiple_choice",
           "prompt": "The word 'invention' breaks into which parts?",
           "choices": [
-            "in + vent + ion",
-            "inven + tion",
-            "in + vention",
-            "invent + ion"
+            "Inven + tion",
+            "In + vent + ion",
+            "In + vention",
+            "Invent + ion"
           ],
-          "correct": "invent + ion",
+          "correct": "Invent + ion",
           "hint": "The root word is 'invent' and the suffix is '-ion.'",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.3.3b/q5.mp3",
@@ -1949,10 +1949,10 @@
           "type": "multiple_choice",
           "prompt": "How many syllables are in 'unbelievable'?",
           "choices": [
-            "3",
             "4",
+            "6",
             "5",
-            "6"
+            "3"
           ],
           "correct": "5",
           "hint": "Clap it: un-be-liev-a-ble. That's five claps!",
@@ -1965,12 +1965,12 @@
           "type": "multiple_choice",
           "prompt": "Break 'adventure' into syllables:",
           "choices": [
-            "ad-ven-ture",
-            "adven-ture",
-            "a-dvent-ure",
-            "ad-ventu-re"
+            "Adven-ture",
+            "A-dvent-ure",
+            "Ad-ven-ture",
+            "Ad-ventu-re"
           ],
-          "correct": "ad-ven-ture",
+          "correct": "Ad-ven-ture",
           "hint": "Three syllables: ad, ven, ture.",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.3.3c/q2.mp3",
@@ -1981,10 +1981,10 @@
           "type": "multiple_choice",
           "prompt": "Which strategy helps you read a long, unfamiliar word?",
           "choices": [
-            "Skip it entirely",
-            "Break it into smaller parts and sound out each part",
             "Guess based on the first letter",
-            "Read it backwards"
+            "Read it backwards",
+            "Break it into smaller parts and sound out each part",
+            "Skip it entirely"
           ],
           "correct": "Break it into smaller parts and sound out each part",
           "hint": "Chunk the word into syllables, then put the sounds together!",
@@ -1998,8 +1998,8 @@
           "prompt": "How many syllables are in 'helicopter'?",
           "choices": [
             "2",
-            "3",
             "4",
+            "3",
             "5"
           ],
           "correct": "4",
@@ -2013,12 +2013,12 @@
           "type": "multiple_choice",
           "prompt": "Break 'independent' into syllables:",
           "choices": [
-            "in-de-pen-dent",
-            "inde-pend-ent",
-            "in-dep-end-ent",
-            "indepen-dent"
+            "In-de-pen-dent",
+            "In-dep-end-ent",
+            "Indepen-dent",
+            "Inde-pend-ent"
           ],
-          "correct": "in-de-pen-dent",
+          "correct": "In-de-pen-dent",
           "hint": "Four syllables: in, de, pen, dent.",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.3.3c/q5.mp3",
@@ -2037,12 +2037,12 @@
           "type": "multiple_choice",
           "prompt": "Which word is spelled correctly?",
           "choices": [
-            "enuff",
-            "enough",
-            "enugh",
-            "enuf"
+            "Enuff",
+            "Enough",
+            "Enugh",
+            "Enuf"
           ],
-          "correct": "enough",
+          "correct": "Enough",
           "hint": "This tricky word has 'ough' — which doesn't sound like it looks!",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.3.3d/q1.mp3",
@@ -2053,12 +2053,12 @@
           "type": "multiple_choice",
           "prompt": "Choose the correct spelling:",
           "choices": [
-            "thoght",
-            "thawt",
-            "thought",
-            "thougth"
+            "Thought",
+            "Thoght",
+            "Thougth",
+            "Thawt"
           ],
-          "correct": "thought",
+          "correct": "Thought",
           "hint": "Another 'ough' word! Thought has a silent 'gh.'",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.3.3d/q2.mp3",
@@ -2070,9 +2070,9 @@
           "prompt": "The word 'through' rhymes with —",
           "choices": [
             "Cough",
-            "Though",
+            "Rough",
             "Blue",
-            "Rough"
+            "Though"
           ],
           "correct": "Blue",
           "hint": "Say 'through' — it sounds like 'threw.' What rhymes with that?",
@@ -2101,12 +2101,12 @@
           "type": "multiple_choice",
           "prompt": "Choose the correct spelling of the word that means 'having knowledge':",
           "choices": [
-            "nolege",
-            "knowlege",
-            "knowledge",
-            "knoledge"
+            "Nolege",
+            "Knowlege",
+            "Knowledge",
+            "Knoledge"
           ],
-          "correct": "knowledge",
+          "correct": "Knowledge",
           "hint": "This word starts with a silent 'k' and has 'ledge' at the end.",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.3.3d/q5.mp3",
@@ -2125,10 +2125,10 @@
           "type": "multiple_choice",
           "prompt": "What does it mean to read with 'expression'?",
           "choices": [
-            "Reading very fast",
-            "Changing your voice to show feelings and meaning",
             "Reading every word the same way",
-            "Reading silently"
+            "Changing your voice to show feelings and meaning",
+            "Reading silently",
+            "Reading very fast"
           ],
           "correct": "Changing your voice to show feelings and meaning",
           "hint": "Expression means your voice shows the emotions in the text!",
@@ -2141,10 +2141,10 @@
           "type": "multiple_choice",
           "prompt": "A fluent reader —",
           "choices": [
-            "Reads very slowly, word by word",
             "Reads smoothly and at a natural pace",
-            "Never makes mistakes",
-            "Skips hard words"
+            "Reads very slowly, word by word",
+            "Skips hard words",
+            "Never makes mistakes"
           ],
           "correct": "Reads smoothly and at a natural pace",
           "hint": "Fluent reading sounds natural, like a conversation.",
@@ -2157,9 +2157,9 @@
           "type": "multiple_choice",
           "prompt": "You're reading aloud and you mispronounce a word. What should you do?",
           "choices": [
+            "Stop reading completely",
             "Keep going and hope nobody noticed",
             "Go back, correct the word, and reread the sentence",
-            "Stop reading completely",
             "Ask someone to finish for you"
           ],
           "correct": "Go back, correct the word, and reread the sentence",
@@ -2173,10 +2173,10 @@
           "type": "multiple_choice",
           "prompt": "How should you read this sentence? \"'Watch out!' screamed the lifeguard.\"",
           "choices": [
-            "In a quiet, calm voice",
-            "In a loud, urgent voice",
             "Very slowly",
-            "In a bored tone"
+            "In a bored tone",
+            "In a quiet, calm voice",
+            "In a loud, urgent voice"
           ],
           "correct": "In a loud, urgent voice",
           "hint": "The lifeguard SCREAMED — so read it with urgency!",
@@ -2189,10 +2189,10 @@
           "type": "multiple_choice",
           "prompt": "Reading accuracy means —",
           "choices": [
-            "Reading fast",
-            "Reading each word correctly",
+            "Finishing the book quickly",
             "Reading with a loud voice",
-            "Finishing the book quickly"
+            "Reading each word correctly",
+            "Reading fast"
           ],
           "correct": "Reading each word correctly",
           "hint": "Accuracy = getting the words right!",
@@ -2213,10 +2213,10 @@
           "type": "multiple_choice",
           "prompt": "The octopus is a master of disguise. It can change its color, texture, and even shape to match its surroundings in less than a second.\n\nWhat makes the octopus a 'master of disguise'?",
           "choices": [
-            "It's very fast",
             "It can change color, texture, and shape instantly",
-            "It hides in shells",
-            "It lives in deep water"
+            "It's very fast",
+            "It lives in deep water",
+            "It hides in shells"
           ],
           "correct": "It can change color, texture, and shape instantly",
           "hint": "The second sentence lists all the amazing things it can change!",
@@ -2229,10 +2229,10 @@
           "type": "multiple_choice",
           "prompt": "Setting a purpose for reading means —",
           "choices": [
-            "Reading as fast as possible",
-            "Knowing what you want to learn or find out before you start",
+            "Reading out loud",
             "Picking the longest book",
-            "Reading out loud"
+            "Reading as fast as possible",
+            "Knowing what you want to learn or find out before you start"
           ],
           "correct": "Knowing what you want to learn or find out before you start",
           "hint": "Having a goal helps you focus and understand better!",
@@ -2245,10 +2245,10 @@
           "type": "multiple_choice",
           "prompt": "Benjamin Franklin was not only a Founding Father but also an inventor. He invented bifocal glasses, the lightning rod, and a more efficient fireplace called the Franklin stove.\n\nWhat were three of Franklin's inventions?",
           "choices": [
-            "The telephone, light bulb, and car",
             "Bifocals, lightning rod, and Franklin stove",
-            "The Constitution, the flag, and the dollar",
-            "Books, newspapers, and maps"
+            "Books, newspapers, and maps",
+            "The telephone, light bulb, and car",
+            "The Constitution, the flag, and the dollar"
           ],
           "correct": "Bifocals, lightning rod, and Franklin stove",
           "hint": "The second sentence lists his three inventions.",
@@ -2261,9 +2261,9 @@
           "type": "multiple_choice",
           "prompt": "Unlike most fish, seahorses swim upright and are surprisingly slow swimmers. The dwarf seahorse holds the record as the slowest fish in the ocean, moving at just 5 feet per hour.\n\nWhat is unusual about how seahorses swim?",
           "choices": [
+            "They can fly",
             "They swim backwards",
             "They swim upright instead of horizontally",
-            "They can fly",
             "They swim in circles"
           ],
           "correct": "They swim upright instead of horizontally",
@@ -2277,10 +2277,10 @@
           "type": "multiple_choice",
           "prompt": "After reading a passage, what should you be able to do?",
           "choices": [
-            "Recite every word from memory",
-            "Explain the main idea and key details in your own words",
+            "Spell every word correctly",
             "Draw a perfect picture of it",
-            "Spell every word correctly"
+            "Recite every word from memory",
+            "Explain the main idea and key details in your own words"
           ],
           "correct": "Explain the main idea and key details in your own words",
           "hint": "Understanding means you can talk about what you read in your own words!",
@@ -2301,10 +2301,10 @@
           "type": "multiple_choice",
           "prompt": "When reading a poem aloud, you should —",
           "choices": [
-            "Read as fast as possible",
             "Pay attention to rhythm and pause at line breaks",
-            "Read in a monotone voice",
-            "Skip the rhyming words"
+            "Skip the rhyming words",
+            "Read as fast as possible",
+            "Read in a monotone voice"
           ],
           "correct": "Pay attention to rhythm and pause at line breaks",
           "hint": "Poems have a special rhythm — reading them well means following that beat!",
@@ -2317,10 +2317,10 @@
           "type": "multiple_choice",
           "prompt": "How should you read this line? \"'Please,' she begged quietly, 'don't go.'\"",
           "choices": [
-            "In a loud, happy voice",
             "In a soft, pleading voice",
             "In an angry voice",
-            "As fast as possible"
+            "As fast as possible",
+            "In a loud, happy voice"
           ],
           "correct": "In a soft, pleading voice",
           "hint": "She 'begged quietly' — match your voice to that!",
@@ -2333,10 +2333,10 @@
           "type": "multiple_choice",
           "prompt": "What does 'appropriate rate' mean when reading aloud?",
           "choices": [
-            "As fast as you can",
             "So slow every word takes 5 seconds",
+            "At a constant speed with no changes",
             "At a speed that sounds natural and allows understanding",
-            "At a constant speed with no changes"
+            "As fast as you can"
           ],
           "correct": "At a speed that sounds natural and allows understanding",
           "hint": "Not too fast, not too slow — like how you'd tell a friend a story.",
@@ -2350,8 +2350,8 @@
           "prompt": "A passage has a tense, exciting action scene. How should your reading change?",
           "choices": [
             "Slow down and get quieter",
-            "Speed up slightly and add energy to your voice",
             "Read in a bored voice",
+            "Speed up slightly and add energy to your voice",
             "Stop reading entirely"
           ],
           "correct": "Speed up slightly and add energy to your voice",
@@ -2365,10 +2365,10 @@
           "type": "multiple_choice",
           "prompt": "When reading dialogue between two characters, what should you do?",
           "choices": [
-            "Read both characters the same way",
-            "Use a slightly different voice for each character",
             "Skip the dialogue",
-            "Only read one character's lines"
+            "Use a slightly different voice for each character",
+            "Only read one character's lines",
+            "Read both characters the same way"
           ],
           "correct": "Use a slightly different voice for each character",
           "hint": "Different voices help listeners know which character is speaking!",
@@ -2389,10 +2389,10 @@
           "type": "multiple_choice",
           "prompt": "You read the word 'desert' as 'dessert' in this sentence: 'The camel walked across the hot desert.' How do you know you made a mistake?",
           "choices": [
+            "Camels eat dessert",
             "Dessert doesn't make sense in a sentence about camels and heat",
-            "You can never make mistakes",
             "The sentence has too many words",
-            "Camels eat dessert"
+            "You can never make mistakes"
           ],
           "correct": "Dessert doesn't make sense in a sentence about camels and heat",
           "hint": "Camels don't walk across dessert! The context tells you the word should be 'desert.'",
@@ -2405,8 +2405,8 @@
           "type": "multiple_choice",
           "prompt": "What is 'self-correcting' when reading?",
           "choices": [
-            "Someone else fixes your mistakes",
             "You notice your own mistake and fix it",
+            "Someone else fixes your mistakes",
             "You erase and rewrite",
             "You stop reading"
           ],
@@ -2421,12 +2421,12 @@
           "type": "multiple_choice",
           "prompt": "'The scientist used a microscope to examine the tiny ____.' Which word fits best?",
           "choices": [
-            "elephant",
-            "organisms",
-            "mountain",
-            "building"
+            "Mountain",
+            "Building",
+            "Organisms",
+            "Elephant"
           ],
-          "correct": "organisms",
+          "correct": "Organisms",
           "hint": "A microscope looks at TINY things. Which answer is something tiny a scientist would study?",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.3.4c/q3.mp3",
@@ -2437,9 +2437,9 @@
           "type": "multiple_choice",
           "prompt": "If you read a paragraph and it doesn't make sense, the BEST thing to do is —",
           "choices": [
-            "Move on to the next chapter",
             "Reread the paragraph more carefully",
             "Close the book",
+            "Move on to the next chapter",
             "Read it faster"
           ],
           "correct": "Reread the paragraph more carefully",
@@ -2454,9 +2454,9 @@
           "prompt": "You read 'wind' as rhyming with 'find' in this sentence: 'The wind blew the leaves across the yard.' Is that correct?",
           "choices": [
             "Yes, it rhymes with find",
+            "You can't tell from the sentence",
             "No, in this sentence 'wind' rhymes with 'pinned'",
-            "Both pronunciations work",
-            "You can't tell from the sentence"
+            "Both pronunciations work"
           ],
           "correct": "No, in this sentence 'wind' rhymes with 'pinned'",
           "hint": "Context clue: wind that BLOWS is pronounced like 'pinned,' not like 'find.'",
@@ -2477,9 +2477,9 @@
           "type": "multiple_choice",
           "prompt": "The spectators cheered wildly as the runner crossed the finish line.\n\nWhat are 'spectators'?",
           "choices": [
-            "Runners",
-            "People watching",
             "Coaches",
+            "People watching",
+            "Runners",
             "Judges"
           ],
           "correct": "People watching",
@@ -2493,10 +2493,10 @@
           "type": "multiple_choice",
           "prompt": "The word 'light' can mean many things. What does it mean here?\n\n\"Please light the candle.\"",
           "choices": [
-            "Not heavy",
             "Bright",
+            "A shade of color",
             "To set fire to",
-            "A shade of color"
+            "Not heavy"
           ],
           "correct": "To set fire to",
           "hint": "You 'light' a candle by giving it a flame.",
@@ -2511,8 +2511,8 @@
           "choices": [
             "Simple and quick",
             "Complex and detailed",
-            "Boring",
-            "Invisible"
+            "Invisible",
+            "Boring"
           ],
           "correct": "Complex and detailed",
           "hint": "The trick used scarves, rings, AND hidden mirrors — that's not simple!",
@@ -2525,9 +2525,9 @@
           "type": "multiple_choice",
           "prompt": "What does 'current' mean in this sentence?\n\n\"The strong current carried the boat downstream.\"",
           "choices": [
+            "The flow of water",
             "Happening now",
             "Electricity",
-            "The flow of water",
             "A type of fruit"
           ],
           "correct": "The flow of water",
@@ -2541,9 +2541,9 @@
           "type": "multiple_choice",
           "prompt": "After the long drought, the parched earth cracked and split.\n\nWhat does 'parched' mean?",
           "choices": [
+            "Cold",
             "Wet",
             "Extremely dry",
-            "Cold",
             "Flat"
           ],
           "correct": "Extremely dry",
@@ -2565,10 +2565,10 @@
           "type": "multiple_choice",
           "prompt": "The benevolent king gave food to every poor family in his kingdom.\n\nWhat does 'benevolent' most likely mean?",
           "choices": [
-            "Mean",
-            "Kind and generous",
             "Lazy",
-            "Wealthy"
+            "Wealthy",
+            "Kind and generous",
+            "Mean"
           ],
           "correct": "Kind and generous",
           "hint": "A king who gives food to poor families sounds kind and generous!",
@@ -2582,9 +2582,9 @@
           "prompt": "The abandoned house was empty, with broken windows and weeds growing through the porch.\n\nWhat does 'abandoned' mean?",
           "choices": [
             "Brand new",
-            "Left behind and empty",
             "Very large",
-            "Recently painted"
+            "Recently painted",
+            "Left behind and empty"
           ],
           "correct": "Left behind and empty",
           "hint": "Empty, broken windows, weeds — nobody lives there anymore!",
@@ -2597,10 +2597,10 @@
           "type": "multiple_choice",
           "prompt": "The camouflaged lizard blended perfectly with the brown leaves on the ground.\n\nWhat does 'camouflaged' mean?",
           "choices": [
-            "Brightly colored",
             "Disguised to blend in",
             "Very large",
-            "Poisonous"
+            "Poisonous",
+            "Brightly colored"
           ],
           "correct": "Disguised to blend in",
           "hint": "It 'blended perfectly' — camouflage means hiding by looking like your surroundings.",
@@ -2613,10 +2613,10 @@
           "type": "multiple_choice",
           "prompt": "The fragile vase shattered into a hundred pieces when it hit the floor.\n\nWhat does 'fragile' mean?",
           "choices": [
+            "Expensive",
             "Strong",
-            "Heavy",
             "Easily broken",
-            "Expensive"
+            "Heavy"
           ],
           "correct": "Easily broken",
           "hint": "It shattered into pieces — so it must break easily!",
@@ -2631,8 +2631,8 @@
           "choices": [
             "Very fast",
             "Active at night",
-            "Large and heavy",
-            "Colorful"
+            "Colorful",
+            "Large and heavy"
           ],
           "correct": "Active at night",
           "hint": "The owl hunted while other birds SLEPT. When do birds sleep? At night!",
@@ -2653,10 +2653,10 @@
           "type": "multiple_choice",
           "prompt": "If 'comfort' means a state of ease, what does 'uncomfortable' mean?",
           "choices": [
-            "Very comfortable",
-            "Not comfortable",
             "Comfortable again",
-            "Comfortable before"
+            "Very comfortable",
+            "Comfortable before",
+            "Not comfortable"
           ],
           "correct": "Not comfortable",
           "hint": "'Un-' means not. So un + comfortable = not comfortable.",
@@ -2669,10 +2669,10 @@
           "type": "multiple_choice",
           "prompt": "What does 'misspell' mean?",
           "choices": [
-            "To spell correctly",
             "To spell wrongly",
-            "To spell again",
-            "To spell before"
+            "To spell before",
+            "To spell correctly",
+            "To spell again"
           ],
           "correct": "To spell wrongly",
           "hint": "'Mis-' means wrongly. Mis + spell = spell wrongly!",
@@ -2686,8 +2686,8 @@
           "prompt": "The word 'impossible' means —",
           "choices": [
             "Very possible",
-            "Not possible",
             "Possible again",
+            "Not possible",
             "Possible before"
           ],
           "correct": "Not possible",
@@ -2703,8 +2703,8 @@
           "choices": [
             "To take away courage",
             "To give courage or support to someone",
-            "To have no courage",
-            "To be scared"
+            "To be scared",
+            "To have no courage"
           ],
           "correct": "To give courage or support to someone",
           "hint": "'En-' means to put into. Encourage = put courage INTO someone!",
@@ -2717,10 +2717,10 @@
           "type": "multiple_choice",
           "prompt": "What does 'disappearance' mean?",
           "choices": [
-            "Appearing again",
+            "Very visible",
             "The act of disappearing",
             "Appearing before",
-            "Very visible"
+            "Appearing again"
           ],
           "correct": "The act of disappearing",
           "hint": "Dis + appear + ance. 'Dis-' means opposite, '-ance' means the act of.",
@@ -2741,10 +2741,10 @@
           "type": "multiple_choice",
           "prompt": "If 'act' means to do something, what does 'action' mean?",
           "choices": [
-            "Not doing anything",
             "The process of doing something",
-            "Doing something before",
-            "A type of movie"
+            "Not doing anything",
+            "A type of movie",
+            "Doing something before"
           ],
           "correct": "The process of doing something",
           "hint": "Act + ion. The root 'act' means to do, and '-ion' makes it a noun.",
@@ -2757,10 +2757,10 @@
           "type": "multiple_choice",
           "prompt": "The root word 'port' means 'to carry.' What does 'transport' most likely mean?",
           "choices": [
+            "A type of door",
             "To carry across or from one place to another",
             "To stay in one place",
-            "To drop something",
-            "A type of door"
+            "To drop something"
           ],
           "correct": "To carry across or from one place to another",
           "hint": "'Trans' means across. 'Port' means carry. Transport = carry across!",
@@ -2774,8 +2774,8 @@
           "prompt": "You know 'graph' means 'to write or draw.' Which word is related to writing or drawing?",
           "choices": [
             "Grammar",
-            "Photograph",
             "Giraffe",
+            "Photograph",
             "Grape"
           ],
           "correct": "Photograph",
@@ -2805,10 +2805,10 @@
           "type": "multiple_choice",
           "prompt": "The words 'company' and 'companion' share the root 'compan-' which means 'together with bread.' Both words relate to —",
           "choices": [
-            "Baking",
-            "Being together or having company",
             "Traveling alone",
-            "Cooking food"
+            "Cooking food",
+            "Being together or having company",
+            "Baking"
           ],
           "correct": "Being together or having company",
           "hint": "Sharing bread = being together. Both words are about togetherness!",
@@ -2829,8 +2829,8 @@
           "type": "multiple_choice",
           "prompt": "A dictionary entry for 'bark' shows two definitions: 1. The outer covering of a tree. 2. The sound a dog makes. How do you know which definition fits?\n\n\"The bark of the old oak tree was rough and gray.\"",
           "choices": [
-            "Use definition 2",
             "Use definition 1",
+            "Use definition 2",
             "Both definitions fit",
             "Neither fits"
           ],
@@ -2845,9 +2845,9 @@
           "type": "multiple_choice",
           "prompt": "Guide words at the top of a dictionary page are 'maple' and 'market.' Which word would be on this page?",
           "choices": [
-            "Magic",
-            "March",
             "Master",
+            "March",
+            "Magic",
             "Magazine"
           ],
           "correct": "March",
@@ -2862,9 +2862,9 @@
           "prompt": "What information does a dictionary give you about a word?",
           "choices": [
             "Only the spelling",
-            "Only the definition",
+            "Only example sentences",
             "Spelling, pronunciation, definition, and part of speech",
-            "Only example sentences"
+            "Only the definition"
           ],
           "correct": "Spelling, pronunciation, definition, and part of speech",
           "hint": "A dictionary is packed with info — spelling, how to say it, what it means, and how to use it!",
@@ -2878,8 +2878,8 @@
           "prompt": "In a glossary, you find: 'ecosystem (n.) — a community of living things and their environment.' The '(n.)' tells you that 'ecosystem' is a —",
           "choices": [
             "Verb",
-            "Adjective",
             "Noun",
+            "Adjective",
             "Adverb"
           ],
           "correct": "Noun",
@@ -2893,10 +2893,10 @@
           "type": "multiple_choice",
           "prompt": "When is it BEST to use a dictionary or glossary?",
           "choices": [
-            "When you already know the word",
+            "Never — just skip unknown words",
             "When context clues and word parts don't help enough",
-            "Only during tests",
-            "Never — just skip unknown words"
+            "When you already know the word",
+            "Only during tests"
           ],
           "correct": "When context clues and word parts don't help enough",
           "hint": "Try context clues first, then word parts. If you're still stuck, grab the dictionary!",
@@ -2917,10 +2917,10 @@
           "type": "multiple_choice",
           "prompt": "She had a heart of gold.\n\nThis means —",
           "choices": [
-            "Her heart was made of gold metal",
             "She was very kind and generous",
-            "She wore gold jewelry",
-            "She was rich"
+            "Her heart was made of gold metal",
+            "She was rich",
+            "She wore gold jewelry"
           ],
           "correct": "She was very kind and generous",
           "hint": "This is figurative language — a 'heart of gold' means a person who is very kind.",
@@ -2934,9 +2934,9 @@
           "prompt": "Which sentence uses a simile?",
           "choices": [
             "The dog barked loudly.",
-            "She was as fast as a rocket.",
+            "The sky was blue.",
             "He ate his lunch.",
-            "The sky was blue."
+            "She was as fast as a rocket."
           ],
           "correct": "She was as fast as a rocket.",
           "hint": "A simile compares two things using 'as' or 'like.'",
@@ -2950,9 +2950,9 @@
           "prompt": "What does 'break a leg' mean?",
           "choices": [
             "Actually break your leg",
-            "Good luck",
+            "Run very fast",
             "Be careful",
-            "Run very fast"
+            "Good luck"
           ],
           "correct": "Good luck",
           "hint": "This is an idiom — it means the opposite of what it sounds like! Performers say it for luck.",
@@ -2965,10 +2965,10 @@
           "type": "multiple_choice",
           "prompt": "Which two words are antonyms (opposites)?",
           "choices": [
-            "Big and large",
-            "Happy and joyful",
+            "Fast and quick",
             "Hot and cold",
-            "Fast and quick"
+            "Happy and joyful",
+            "Big and large"
           ],
           "correct": "Hot and cold",
           "hint": "Antonyms are opposites. Which pair shows opposite meanings?",
@@ -2981,10 +2981,10 @@
           "type": "multiple_choice",
           "prompt": "The thunder grumbled like an angry old man.\n\nThis is an example of —",
           "choices": [
-            "A fact",
-            "Personification and simile",
+            "Literal language",
             "A definition",
-            "Literal language"
+            "A fact",
+            "Personification and simile"
           ],
           "correct": "Personification and simile",
           "hint": "Thunder 'grumbling' is personification (human action). 'Like an angry old man' is a simile!",
@@ -3007,8 +3007,8 @@
           "choices": [
             "Literal — time actually has wings",
             "Nonliteral — it means time seems to pass quickly",
-            "Literal — clocks move faster",
-            "Neither"
+            "Neither",
+            "Literal — clocks move faster"
           ],
           "correct": "Nonliteral — it means time seems to pass quickly",
           "hint": "Time doesn't actually fly! It's a figurative way of saying time SEEMS to go fast.",
@@ -3021,10 +3021,10 @@
           "type": "multiple_choice",
           "prompt": "Which sentence is LITERAL (means exactly what it says)?",
           "choices": [
-            "He was on cloud nine.",
-            "She has butterflies in her stomach.",
             "The cat sat on the mat.",
-            "He's a real couch potato."
+            "He was on cloud nine.",
+            "He's a real couch potato.",
+            "She has butterflies in her stomach."
           ],
           "correct": "The cat sat on the mat.",
           "hint": "Only one of these sentences describes something that could actually, physically happen.",
@@ -3039,8 +3039,8 @@
           "choices": [
             "The backpack literally weighs 2,000 pounds",
             "The backpack feels very heavy",
-            "The backpack is made of metal",
-            "The backpack is broken"
+            "The backpack is broken",
+            "The backpack is made of metal"
           ],
           "correct": "The backpack feels very heavy",
           "hint": "A backpack can't really weigh a ton! This is an exaggeration (hyperbole).",
@@ -3069,10 +3069,10 @@
           "type": "multiple_choice",
           "prompt": "His words cut like a knife.\n\nThis sentence means his words were —",
           "choices": [
-            "Made of metal",
-            "Sharp and hurtful",
+            "Long and boring",
             "Quiet and soft",
-            "Long and boring"
+            "Sharp and hurtful",
+            "Made of metal"
           ],
           "correct": "Sharp and hurtful",
           "hint": "Words can't actually cut, but they CAN hurt feelings — like a knife hurts physically.",
@@ -3093,10 +3093,10 @@
           "type": "multiple_choice",
           "prompt": "When would you describe someone as 'generous'?",
           "choices": [
-            "When they keep everything for themselves",
-            "When they share with others willingly",
             "When they are very tall",
-            "When they run fast"
+            "When they run fast",
+            "When they keep everything for themselves",
+            "When they share with others willingly"
           ],
           "correct": "When they share with others willingly",
           "hint": "Generous means giving freely. Think of someone who shares!",
@@ -3109,10 +3109,10 @@
           "type": "multiple_choice",
           "prompt": "Which situation shows 'cooperation'?",
           "choices": [
-            "A student working alone on a test",
-            "A group building a fort together",
             "Someone sleeping",
-            "A person eating lunch"
+            "A student working alone on a test",
+            "A person eating lunch",
+            "A group building a fort together"
           ],
           "correct": "A group building a fort together",
           "hint": "Cooperation means working together. Which choice shows teamwork?",
@@ -3125,10 +3125,10 @@
           "type": "multiple_choice",
           "prompt": "Which word BEST describes how you feel when you try something new and scary?",
           "choices": [
-            "Bored",
             "Anxious",
-            "Sleepy",
-            "Calm"
+            "Calm",
+            "Bored",
+            "Sleepy"
           ],
           "correct": "Anxious",
           "hint": "Trying something new and scary can make you feel nervous or anxious.",
@@ -3141,10 +3141,10 @@
           "type": "multiple_choice",
           "prompt": "A person who always tells the truth can be described as —",
           "choices": [
+            "Stubborn",
             "Honest",
             "Greedy",
-            "Careless",
-            "Stubborn"
+            "Careless"
           ],
           "correct": "Honest",
           "hint": "Someone truthful is honest — a word connected to trust.",
@@ -3157,10 +3157,10 @@
           "type": "multiple_choice",
           "prompt": "Which word describes a person who keeps trying even when things are difficult?",
           "choices": [
-            "Lazy",
+            "Forgetful",
             "Persistent",
             "Nervous",
-            "Forgetful"
+            "Lazy"
           ],
           "correct": "Persistent",
           "hint": "Think of someone who doesn't give up. They per-sist!",
@@ -3181,12 +3181,12 @@
           "type": "multiple_choice",
           "prompt": "Put these words in order from LEAST certain to MOST certain: knew, suspected, wondered",
           "choices": [
-            "knew → suspected → wondered",
-            "wondered → suspected → knew",
-            "suspected → wondered → knew",
-            "wondered → knew → suspected"
+            "Wondered → suspected → knew",
+            "Knew → suspected → wondered",
+            "Wondered → knew → suspected",
+            "Suspected → wondered → knew"
           ],
-          "correct": "wondered → suspected → knew",
+          "correct": "Wondered → suspected → knew",
           "hint": "Wondering is just curious. Suspecting is thinking it might be true. Knowing is being certain!",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.3.5c/q1.mp3",
@@ -3197,10 +3197,10 @@
           "type": "multiple_choice",
           "prompt": "Which word shows the STRONGEST feeling of anger?",
           "choices": [
-            "Annoyed",
-            "Irritated",
+            "Bothered",
             "Furious",
-            "Bothered"
+            "Annoyed",
+            "Irritated"
           ],
           "correct": "Furious",
           "hint": "All these words relate to anger, but which one is the most intense?",
@@ -3213,12 +3213,12 @@
           "type": "multiple_choice",
           "prompt": "Put these in order from LEAST scared to MOST scared: terrified, nervous, uneasy",
           "choices": [
-            "terrified → nervous → uneasy",
-            "uneasy → nervous → terrified",
-            "nervous → uneasy → terrified",
-            "uneasy → terrified → nervous"
+            "Nervous → uneasy → terrified",
+            "Terrified → nervous → uneasy",
+            "Uneasy → nervous → terrified",
+            "Uneasy → terrified → nervous"
           ],
-          "correct": "uneasy → nervous → terrified",
+          "correct": "Uneasy → nervous → terrified",
           "hint": "Uneasy is mild, nervous is moderate, terrified is extreme fear!",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.3.5c/q3.mp3",
@@ -3229,9 +3229,9 @@
           "type": "multiple_choice",
           "prompt": "Which word means MORE than 'happy' but LESS than 'ecstatic'?",
           "choices": [
+            "Delighted",
             "Sad",
             "Content",
-            "Delighted",
             "Okay"
           ],
           "correct": "Delighted",
@@ -3245,10 +3245,10 @@
           "type": "multiple_choice",
           "prompt": "I heard the rumor about the snow day.\" vs. \"I knew school would be canceled.\n\nWhich shows MORE certainty?",
           "choices": [
-            "'I heard' shows more certainty",
-            "'I knew' shows more certainty",
+            "Neither shows certainty",
             "Both show the same certainty",
-            "Neither shows certainty"
+            "'I heard' shows more certainty",
+            "'I knew' shows more certainty"
           ],
           "correct": "'I knew' shows more certainty",
           "hint": "Hearing something is secondhand information. Knowing is being sure!",
@@ -3269,10 +3269,10 @@
           "type": "multiple_choice",
           "prompt": "Which sentence uses more precise vocabulary?",
           "choices": [
-            "The food was good.",
             "The pasta was delicious and perfectly seasoned.",
-            "I ate stuff.",
-            "Lunch was okay."
+            "I ate stuff",
+            "Lunch was okay",
+            "The food was good."
           ],
           "correct": "The pasta was delicious and perfectly seasoned.",
           "hint": "Precise words paint a clearer picture. Which sentence tells you the MOST?",
@@ -3285,9 +3285,9 @@
           "type": "multiple_choice",
           "prompt": "In science, 'habitat' means —",
           "choices": [
-            "A type of animal",
-            "The natural home of an animal or plant",
             "A science experiment",
+            "The natural home of an animal or plant",
+            "A type of animal",
             "A weather pattern"
           ],
           "correct": "The natural home of an animal or plant",
@@ -3301,9 +3301,9 @@
           "type": "multiple_choice",
           "prompt": "Which word is a better replacement for 'said' in this sentence?\n\n\"'I can't believe it!' ____ Maria.\"",
           "choices": [
+            "Whispered",
             "Said",
             "Exclaimed",
-            "Whispered",
             "Mumbled"
           ],
           "correct": "Exclaimed",
@@ -3317,10 +3317,10 @@
           "type": "multiple_choice",
           "prompt": "The academic word 'compare' means to —",
           "choices": [
-            "Write a story",
-            "Find how things are alike and different",
             "Draw a picture",
-            "Read silently"
+            "Find how things are alike and different",
+            "Read silently",
+            "Write a story"
           ],
           "correct": "Find how things are alike and different",
           "hint": "'Compare' is a word you use in all subjects — it means looking at similarities and differences.",
@@ -3333,12 +3333,12 @@
           "type": "multiple_choice",
           "prompt": "Choose the MOST specific word to complete this sentence:\n\n\"The ____ cheetah sprinted across the savanna.\"",
           "choices": [
-            "fast",
-            "quick",
-            "swift",
-            "nice"
+            "Nice",
+            "Fast",
+            "Quick",
+            "Swift"
           ],
-          "correct": "swift",
+          "correct": "Swift",
           "hint": "All could work, but 'swift' is the most vivid and precise for describing a cheetah's speed.",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.3.6/q5.mp3",

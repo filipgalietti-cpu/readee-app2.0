@@ -15,10 +15,10 @@
           "type": "multiple_choice",
           "prompt": "Bella picked three red apples from the tree. She put them in her basket.\n\nHow many apples did Bella pick?",
           "choices": [
-            "One",
             "Two",
-            "Three",
-            "Four"
+            "One",
+            "Four",
+            "Three"
           ],
           "correct": "Three",
           "hint": "Read the first sentence again — how many apples?",
@@ -31,8 +31,8 @@
           "type": "multiple_choice",
           "prompt": "The frog sat on a lily pad in the pond. He was waiting for a fly.\n\nWhere was the frog sitting?",
           "choices": [
-            "On a rock",
             "On a lily pad",
+            "On a rock",
             "In the mud",
             "On the grass"
           ],
@@ -47,10 +47,10 @@
           "type": "multiple_choice",
           "prompt": "Emma walked to school with her friend Jake. They talked about their favorite animals.\n\nWho did Emma walk with?",
           "choices": [
-            "Her mom",
             "Her dog",
-            "Her friend Jake",
-            "Her sister"
+            "Her mom",
+            "Her sister",
+            "Her friend Jake"
           ],
           "correct": "Her friend Jake",
           "hint": "Read the first sentence — who walked with Emma?",
@@ -63,10 +63,10 @@
           "type": "multiple_choice",
           "prompt": "Dad made pancakes for breakfast. He put blueberries on top.\n\nWhat did Dad put on the pancakes?",
           "choices": [
-            "Syrup",
             "Chocolate chips",
-            "Blueberries",
-            "Bananas"
+            "Syrup",
+            "Bananas",
+            "Blueberries"
           ],
           "correct": "Blueberries",
           "hint": "Read the second sentence — what went on top?",
@@ -80,9 +80,9 @@
           "prompt": "The kitten climbed the tall tree. It was scared to come down.\n\nHow did the kitten feel?",
           "choices": [
             "Happy",
-            "Scared",
+            "Hungry",
             "Sleepy",
-            "Hungry"
+            "Scared"
           ],
           "correct": "Scared",
           "hint": "The second sentence tells you how the kitten felt.",
@@ -104,9 +104,9 @@
           "prompt": "Tom wanted to win the race. He practiced running every day. On race day, he came in first!\n\nWhat is the lesson of this story?",
           "choices": [
             "Running is boring",
-            "Practice helps you get better",
             "Races are scary",
-            "Tom is the fastest kid"
+            "Tom is the fastest kid",
+            "Practice helps you get better"
           ],
           "correct": "Practice helps you get better",
           "hint": "What did Tom do before the race that helped him win?",
@@ -119,9 +119,9 @@
           "type": "multiple_choice",
           "prompt": "Mia did not share her crayons. Her friends stopped playing with her. Mia felt sad and lonely.\n\nWhat is the lesson of this story?",
           "choices": [
-            "Crayons are important",
-            "Friends are mean",
             "Sharing is important",
+            "Friends are mean",
+            "Crayons are important",
             "Drawing is fun"
           ],
           "correct": "Sharing is important",
@@ -135,10 +135,10 @@
           "type": "multiple_choice",
           "prompt": "The ant worked hard all summer saving food. The grasshopper played all day. When winter came, the ant had food but the grasshopper did not.\n\nWhat is the lesson?",
           "choices": [
-            "Playing is bad",
-            "It is good to plan ahead",
+            "Winter is cold",
             "Ants are better than grasshoppers",
-            "Winter is cold"
+            "It is good to plan ahead",
+            "Playing is bad"
           ],
           "correct": "It is good to plan ahead",
           "hint": "Who was ready for winter and why?",
@@ -152,9 +152,9 @@
           "prompt": "Leo tried to ride his bike but kept falling. His mom said, 'Keep trying!' After many tries, Leo could ride all by himself.\n\nWhat happened first in the story?",
           "choices": [
             "Leo rode his bike",
-            "Mom said keep trying",
             "Leo kept falling",
-            "Leo stopped trying"
+            "Leo stopped trying",
+            "Mom said keep trying"
           ],
           "correct": "Leo kept falling",
           "hint": "What happened at the beginning before he learned?",
@@ -167,10 +167,10 @@
           "type": "multiple_choice",
           "prompt": "Sara told a lie about breaking the vase. She felt bad all day. She told the truth and felt much better.\n\nWhat is the lesson?",
           "choices": [
-            "Vases break easily",
-            "Lying makes you feel bad",
             "Parents get angry",
-            "Don't touch vases"
+            "Vases break easily",
+            "Don't touch vases",
+            "Lying makes you feel bad"
           ],
           "correct": "Lying makes you feel bad",
           "hint": "How did Sara feel after she told the truth vs. the lie?",
@@ -191,9 +191,9 @@
           "type": "multiple_choice",
           "prompt": "The kind old woman lived in a tiny cottage by the sea. She fed the birds every morning.\n\nWhere does the story take place?",
           "choices": [
-            "In a city",
-            "By the sea",
             "In the mountains",
+            "By the sea",
+            "In a city",
             "In a forest"
           ],
           "correct": "By the sea",
@@ -208,9 +208,9 @@
           "prompt": "Ben was always helping others. He carried bags for his neighbor and shared his lunch with friends.\n\nWhat word best describes Ben?",
           "choices": [
             "Lazy",
+            "Funny",
             "Kind",
-            "Shy",
-            "Funny"
+            "Shy"
           ],
           "correct": "Kind",
           "hint": "Think about what Ben does — helping and sharing.",
@@ -225,8 +225,8 @@
           "choices": [
             "A sunny beach",
             "A dark, stormy barn",
-            "A busy school",
-            "A quiet park"
+            "A quiet park",
+            "A busy school"
           ],
           "correct": "A dark, stormy barn",
           "hint": "The setting is WHERE and WHEN the story happens.",
@@ -239,10 +239,10 @@
           "type": "multiple_choice",
           "prompt": "Rosa found a lost puppy. She gave it water and food. Then she found its owner.\n\nWhat was the major event?",
           "choices": [
-            "Rosa went to school",
             "Rosa found a lost puppy",
             "Rosa ate lunch",
-            "Rosa played outside"
+            "Rosa played outside",
+            "Rosa went to school"
           ],
           "correct": "Rosa found a lost puppy",
           "hint": "What is the most important thing that happened?",
@@ -255,9 +255,9 @@
           "type": "multiple_choice",
           "prompt": "Grumpy Gus never smiled. He frowned at everyone. One day a little girl gave him a flower and he finally smiled.\n\nHow does Gus change in the story?",
           "choices": [
-            "He gets angrier",
             "He goes from grumpy to happy",
             "He falls asleep",
+            "He gets angrier",
             "He runs away"
           ],
           "correct": "He goes from grumpy to happy",
@@ -279,10 +279,10 @@
           "type": "multiple_choice",
           "prompt": "The bright sun warmed her face.\n\nWhich word helps you feel the sun?",
           "choices": [
-            "Sun",
+            "Face",
             "Bright",
-            "Her",
-            "Face"
+            "Sun",
+            "Her"
           ],
           "correct": "Bright",
           "hint": "Which word helps you imagine what the sun looks and feels like?",
@@ -295,10 +295,10 @@
           "type": "multiple_choice",
           "prompt": "The puppy whimpered softly in the rain.\n\nHow does the puppy probably feel?",
           "choices": [
-            "Happy",
             "Excited",
-            "Sad or scared",
-            "Angry"
+            "Angry",
+            "Happy",
+            "Sad or scared"
           ],
           "correct": "Sad or scared",
           "hint": "What does 'whimpered' sound like? Happy or sad?",
@@ -311,9 +311,9 @@
           "type": "multiple_choice",
           "prompt": "The cookies smelled sweet and warm from the oven.\n\nWhich words appeal to your sense of smell?",
           "choices": [
+            "The and from",
             "Cookies and oven",
             "Sweet and warm",
-            "The and from",
             "Smelled and the"
           ],
           "correct": "Sweet and warm",
@@ -327,10 +327,10 @@
           "type": "multiple_choice",
           "prompt": "Jake stomped his feet and crossed his arms.\n\nHow does Jake feel?",
           "choices": [
+            "Silly",
             "Happy",
             "Angry",
-            "Tired",
-            "Silly"
+            "Tired"
           ],
           "correct": "Angry",
           "hint": "When people stomp and cross their arms, how do they usually feel?",
@@ -344,9 +344,9 @@
           "prompt": "The soft, fluffy blanket kept her cozy all night.\n\nWhich words help you imagine how the blanket feels?",
           "choices": [
             "Kept and night",
+            "Blanket and cozy",
             "Soft and fluffy",
-            "Her and all",
-            "Blanket and cozy"
+            "Her and all"
           ],
           "correct": "Soft and fluffy",
           "hint": "Which words describe what the blanket feels like when you touch it?",
@@ -368,9 +368,9 @@
           "prompt": "A book about a talking rabbit who goes on an adventure is what type of book?",
           "choices": [
             "Informational",
+            "Cookbook",
             "Storybook",
-            "Dictionary",
-            "Cookbook"
+            "Dictionary"
           ],
           "correct": "Storybook",
           "hint": "Can rabbits really talk? If it's made up, it's a story.",
@@ -383,10 +383,10 @@
           "type": "multiple_choice",
           "prompt": "A book with facts about how plants grow is what type of book?",
           "choices": [
-            "Storybook",
-            "Poem",
             "Informational book",
-            "Fairy tale"
+            "Storybook",
+            "Fairy tale",
+            "Poem"
           ],
           "correct": "Informational book",
           "hint": "Does this book teach real facts or tell a made-up story?",
@@ -399,10 +399,10 @@
           "type": "multiple_choice",
           "prompt": "Which is TRUE about storybooks?",
           "choices": [
-            "They have only facts",
+            "They don't have pictures",
             "They have made-up characters and events",
             "They are always short",
-            "They don't have pictures"
+            "They have only facts"
           ],
           "correct": "They have made-up characters and events",
           "hint": "Stories come from someone's imagination.",
@@ -416,9 +416,9 @@
           "prompt": "Which is TRUE about informational books?",
           "choices": [
             "They have made-up characters",
-            "They teach real facts",
+            "They have talking animals",
             "They are always funny",
-            "They have talking animals"
+            "They teach real facts"
           ],
           "correct": "They teach real facts",
           "hint": "Informational means it gives you real information.",
@@ -431,10 +431,10 @@
           "type": "multiple_choice",
           "prompt": "Once upon a time, a brave knight saved a dragon.\n\nIs this from a story or an informational book?",
           "choices": [
-            "Informational book",
-            "Story",
             "Textbook",
-            "News article"
+            "Informational book",
+            "News article",
+            "Story"
           ],
           "correct": "Story",
           "hint": "'Once upon a time' is a clue! Real fact books don't start this way.",
@@ -457,8 +457,8 @@
           "choices": [
             "Mom",
             "The store owner",
-            "The child (I)",
-            "A teacher"
+            "A teacher",
+            "The child (I)"
           ],
           "correct": "The child (I)",
           "hint": "Look at the word 'I' — who is the 'I' in the story?",
@@ -472,9 +472,9 @@
           "prompt": "Sam ran to the park. He played on the swings.\n\nWho is telling this story?",
           "choices": [
             "Sam is telling it",
+            "Sam's mom",
             "A narrator outside the story",
-            "Sam's friend",
-            "Sam's mom"
+            "Sam's friend"
           ],
           "correct": "A narrator outside the story",
           "hint": "The story says 'He' not 'I' — someone else is telling us about Sam.",
@@ -487,10 +487,10 @@
           "type": "multiple_choice",
           "prompt": "'I love pizza!' said Maria.\n\nWho is speaking?",
           "choices": [
-            "The narrator",
             "Maria",
-            "The pizza maker",
-            "Maria's mom"
+            "The narrator",
+            "Maria's mom",
+            "The pizza maker"
           ],
           "correct": "Maria",
           "hint": "Look at the words inside the quotation marks and who 'said' them.",
@@ -503,10 +503,10 @@
           "type": "multiple_choice",
           "prompt": "If a story uses the words 'I' and 'my,' who is telling it?",
           "choices": [
-            "Someone outside the story",
-            "A character in the story",
             "The author only",
-            "No one"
+            "A character in the story",
+            "No one",
+            "Someone outside the story"
           ],
           "correct": "A character in the story",
           "hint": "When you see 'I' and 'my,' a character is talking about themselves.",
@@ -519,10 +519,10 @@
           "type": "multiple_choice",
           "prompt": "'Let's go!' shouted Tom. 'Wait for me!' called Lily.\n\nWho says 'Wait for me'?",
           "choices": [
-            "Tom",
             "Lily",
-            "The narrator",
-            "The teacher"
+            "Tom",
+            "The teacher",
+            "The narrator"
           ],
           "correct": "Lily",
           "hint": "Look at who 'called' those words.",
@@ -544,9 +544,9 @@
           "prompt": "If a picture shows a girl with a big smile and a trophy, how does the girl probably feel?",
           "choices": [
             "Sad",
+            "Bored",
             "Proud and happy",
-            "Scared",
-            "Bored"
+            "Scared"
           ],
           "correct": "Proud and happy",
           "hint": "What do smiles and trophies usually mean?",
@@ -559,10 +559,10 @@
           "type": "multiple_choice",
           "prompt": "A picture shows snow on the ground and kids wearing coats. What season is it?",
           "choices": [
+            "Fall",
             "Summer",
-            "Spring",
             "Winter",
-            "Fall"
+            "Spring"
           ],
           "correct": "Winter",
           "hint": "Snow and coats are clues about the season.",
@@ -575,9 +575,9 @@
           "type": "multiple_choice",
           "prompt": "The story says 'The dog was big.' The picture shows a dog as tall as the boy. What do we learn from the picture?",
           "choices": [
-            "The dog is small",
-            "The dog is as tall as the boy",
             "The dog is sleeping",
+            "The dog is as tall as the boy",
+            "The dog is small",
             "The dog is brown"
           ],
           "correct": "The dog is as tall as the boy",
@@ -591,10 +591,10 @@
           "type": "multiple_choice",
           "prompt": "Why are pictures in stories helpful?",
           "choices": [
-            "They make the book heavier",
-            "They show us what characters and places look like",
+            "They replace the words",
             "They are just for fun",
-            "They replace the words"
+            "They make the book heavier",
+            "They show us what characters and places look like"
           ],
           "correct": "They show us what characters and places look like",
           "hint": "Pictures give us extra information the words might not say.",
@@ -607,9 +607,9 @@
           "type": "multiple_choice",
           "prompt": "A picture shows a boy with tears on his face standing next to a broken toy. How does the boy feel?",
           "choices": [
+            "Tired",
             "Excited",
             "Sad",
-            "Tired",
             "Hungry"
           ],
           "correct": "Sad",
@@ -631,10 +631,10 @@
           "type": "multiple_choice",
           "prompt": "Story 1: A bear looks for honey. Story 2: A bee makes honey.\n\nWhat do both stories have in common?",
           "choices": [
+            "Both are about the forest",
             "Both are about bears",
             "Both are about honey",
-            "Both are about bees",
-            "Both are about the forest"
+            "Both are about bees"
           ],
           "correct": "Both are about honey",
           "hint": "What topic do both stories share?",
@@ -647,10 +647,10 @@
           "type": "multiple_choice",
           "prompt": "Story 1: Amy is brave and climbs a mountain. Story 2: Bob is brave and swims across a lake.\n\nHow are Amy and Bob alike?",
           "choices": [
-            "They both climb",
-            "They both swim",
+            "They are both scared",
             "They are both brave",
-            "They are both scared"
+            "They both swim",
+            "They both climb"
           ],
           "correct": "They are both brave",
           "hint": "What trait do both characters share?",
@@ -664,9 +664,9 @@
           "prompt": "Story 1: The cat stays inside all day. Story 2: The dog plays outside all day.\n\nHow are the cat and dog DIFFERENT?",
           "choices": [
             "One stays inside, one goes outside",
+            "One is big, one is small",
             "Both stay inside",
-            "Both go outside",
-            "One is big, one is small"
+            "Both go outside"
           ],
           "correct": "One stays inside, one goes outside",
           "hint": "Where does each animal spend the day?",
@@ -679,10 +679,10 @@
           "type": "multiple_choice",
           "prompt": "When we COMPARE two characters, we look for ways they are:",
           "choices": [
-            "Different",
             "The same",
-            "Funny",
-            "Sad"
+            "Different",
+            "Sad",
+            "Funny"
           ],
           "correct": "The same",
           "hint": "Compare means to find what's similar.",
@@ -696,9 +696,9 @@
           "prompt": "When we CONTRAST two characters, we look for ways they are:",
           "choices": [
             "The same",
+            "Tall",
             "Different",
-            "Happy",
-            "Tall"
+            "Happy"
           ],
           "correct": "Different",
           "hint": "Contrast means to find what's not the same.",
@@ -719,10 +719,10 @@
           "type": "multiple_choice",
           "prompt": "Penguins live in very cold places. They cannot fly, but they are great swimmers.\n\nWhere do penguins live?",
           "choices": [
+            "In the desert",
             "In hot places",
             "In very cold places",
-            "In the forest",
-            "In the desert"
+            "In the forest"
           ],
           "correct": "In very cold places",
           "hint": "The first sentence tells you where penguins live.",
@@ -735,10 +735,10 @@
           "type": "multiple_choice",
           "prompt": "Bees make honey. They live together in a hive. A queen bee leads the group.\n\nWho leads the bees?",
           "choices": [
-            "A king bee",
-            "A worker bee",
             "A queen bee",
-            "A baby bee"
+            "A worker bee",
+            "A baby bee",
+            "A king bee"
           ],
           "correct": "A queen bee",
           "hint": "The last sentence tells you who leads.",
@@ -751,10 +751,10 @@
           "type": "multiple_choice",
           "prompt": "The sun is a star. It gives Earth light and heat. Without the sun, Earth would be very cold.\n\nWhat does the sun give Earth?",
           "choices": [
-            "Water and food",
-            "Light and heat",
+            "Snow and ice",
             "Wind and rain",
-            "Snow and ice"
+            "Water and food",
+            "Light and heat"
           ],
           "correct": "Light and heat",
           "hint": "Read the second sentence carefully.",
@@ -767,10 +767,10 @@
           "type": "multiple_choice",
           "prompt": "Dogs need fresh water every day. They also need food and exercise to stay healthy.\n\nWhat do dogs need to stay healthy?",
           "choices": [
-            "Just water",
-            "Just food",
             "Water, food, and exercise",
-            "Only exercise"
+            "Only exercise",
+            "Just food",
+            "Just water"
           ],
           "correct": "Water, food, and exercise",
           "hint": "Both sentences tell you what dogs need.",
@@ -783,10 +783,10 @@
           "type": "multiple_choice",
           "prompt": "Frogs start as eggs in the water. Then they become tadpoles. Finally, they grow into frogs.\n\nWhat comes AFTER the egg stage?",
           "choices": [
-            "Adult frog",
-            "Tadpole",
+            "Fish",
             "Baby bird",
-            "Fish"
+            "Tadpole",
+            "Adult frog"
           ],
           "correct": "Tadpole",
           "hint": "Look at the order: eggs, then what?",
@@ -807,10 +807,10 @@
           "type": "multiple_choice",
           "prompt": "Apples can be red, green, or yellow. They grow on trees. Apples are a healthy snack.\n\nWhat is the main topic?",
           "choices": [
-            "Trees",
             "Colors",
+            "Snacks",
             "Apples",
-            "Snacks"
+            "Trees"
           ],
           "correct": "Apples",
           "hint": "Every sentence is about the same thing — what is it?",
@@ -823,10 +823,10 @@
           "type": "multiple_choice",
           "prompt": "Firefighters wear special gear. They drive fire trucks. They put out fires and help people.\n\nWhat is the main topic?",
           "choices": [
-            "Trucks",
-            "Firefighters",
             "Gear",
-            "Buildings"
+            "Trucks",
+            "Buildings",
+            "Firefighters"
           ],
           "correct": "Firefighters",
           "hint": "What is every sentence about?",
@@ -839,10 +839,10 @@
           "type": "multiple_choice",
           "prompt": "Cats are popular pets. They like to sleep a lot. Cats clean themselves by licking their fur.\n\nWhich is a key detail?",
           "choices": [
-            "Cats can fly",
-            "Cats clean themselves by licking",
             "Cats live in water",
-            "Cats are very big"
+            "Cats can fly",
+            "Cats are very big",
+            "Cats clean themselves by licking"
           ],
           "correct": "Cats clean themselves by licking",
           "hint": "Which fact was actually in the passage?",
@@ -855,9 +855,9 @@
           "type": "multiple_choice",
           "prompt": "The ocean is full of salt water. Many animals live in the ocean. Whales, fish, and dolphins swim there.\n\nWhat is the main topic?",
           "choices": [
-            "Salt",
             "Whales",
             "The ocean",
+            "Salt",
             "Swimming"
           ],
           "correct": "The ocean",
@@ -872,9 +872,9 @@
           "prompt": "Teeth are important. You should brush them twice a day. Eating too much candy can hurt your teeth.\n\nWhich is a key detail?",
           "choices": [
             "Brush teeth once a week",
-            "Never eat candy",
+            "Teeth are not important",
             "Brush teeth twice a day",
-            "Teeth are not important"
+            "Never eat candy"
           ],
           "correct": "Brush teeth twice a day",
           "hint": "Read the second sentence for a key detail.",
@@ -895,9 +895,9 @@
           "type": "multiple_choice",
           "prompt": "It rained all day. The next morning, puddles were everywhere.\n\nWhy were there puddles?",
           "choices": [
+            "The sprinklers were on",
             "Someone spilled water",
             "It rained all day",
-            "The sprinklers were on",
             "Snow melted"
           ],
           "correct": "It rained all day",
@@ -912,9 +912,9 @@
           "prompt": "Seeds need water and sunlight to grow. A farmer waters the seeds every day. Soon, small plants appear.\n\nWhy do small plants appear?",
           "choices": [
             "The wind blows",
+            "The farmer sings to them",
             "The farmer waters them",
-            "It snows",
-            "The farmer sings to them"
+            "It snows"
           ],
           "correct": "The farmer waters them",
           "hint": "What does the farmer do that helps the seeds?",
@@ -927,9 +927,9 @@
           "type": "multiple_choice",
           "prompt": "Bears eat a lot in the fall. In winter, they hibernate and sleep for months.\n\nWhy do bears eat a lot in fall?",
           "choices": [
+            "They like fall food",
             "They are bored",
             "To get ready for winter sleep",
-            "They like fall food",
             "To grow taller"
           ],
           "correct": "To get ready for winter sleep",
@@ -943,10 +943,10 @@
           "type": "multiple_choice",
           "prompt": "George Washington was the first president. He led the army before that.\n\nWhat did Washington do BEFORE being president?",
           "choices": [
-            "He was a teacher",
+            "He was a doctor",
             "He led the army",
             "He was a farmer only",
-            "He was a doctor"
+            "He was a teacher"
           ],
           "correct": "He led the army",
           "hint": "The second sentence tells what he did before.",
@@ -959,10 +959,10 @@
           "type": "multiple_choice",
           "prompt": "The caterpillar eats lots of leaves. Then it makes a cocoon. Later, it becomes a butterfly.\n\nWhat happens RIGHT AFTER the caterpillar eats leaves?",
           "choices": [
-            "It flies away",
-            "It makes a cocoon",
             "It becomes a butterfly",
-            "It sleeps in a tree"
+            "It makes a cocoon",
+            "It sleeps in a tree",
+            "It flies away"
           ],
           "correct": "It makes a cocoon",
           "hint": "Follow the order: eats, then what?",
@@ -983,10 +983,10 @@
           "type": "multiple_choice",
           "prompt": "Hibernation is a long, deep sleep that some animals take in winter.\n\nWhat does hibernation mean?",
           "choices": [
-            "Running fast",
-            "A long winter sleep",
+            "Playing in snow",
             "Eating a lot",
-            "Playing in snow"
+            "A long winter sleep",
+            "Running fast"
           ],
           "correct": "A long winter sleep",
           "hint": "The sentence tells you the meaning right after the word.",
@@ -1001,8 +1001,8 @@
           "choices": [
             "Tiny",
             "Fast",
-            "Very big",
-            "Quiet"
+            "Quiet",
+            "Very big"
           ],
           "correct": "Very big",
           "hint": "The sentence says 'biggest' — that's a clue.",
@@ -1016,9 +1016,9 @@
           "prompt": "Nocturnal animals are awake at night and sleep during the day.\n\nWhat does nocturnal mean?",
           "choices": [
             "Active at night",
+            "Very loud",
             "Active during the day",
-            "Always sleeping",
-            "Very loud"
+            "Always sleeping"
           ],
           "correct": "Active at night",
           "hint": "The sentence explains when nocturnal animals are awake.",
@@ -1031,9 +1031,9 @@
           "type": "multiple_choice",
           "prompt": "The habitat is the place where an animal lives. A fish's habitat is water.\n\nWhat is a habitat?",
           "choices": [
-            "An animal's food",
             "The place where an animal lives",
             "An animal's name",
+            "An animal's food",
             "A type of weather"
           ],
           "correct": "The place where an animal lives",
@@ -1048,8 +1048,8 @@
           "prompt": "The cheetah sprinted across the field. It was the fastest animal there.\n\nWhat does sprinted mean?",
           "choices": [
             "Walked slowly",
-            "Ran very fast",
             "Sat down",
+            "Ran very fast",
             "Jumped high"
           ],
           "correct": "Ran very fast",
@@ -1071,10 +1071,10 @@
           "type": "multiple_choice",
           "prompt": "Where would you look to find what page a chapter starts on?",
           "choices": [
+            "The cover",
             "The glossary",
             "The table of contents",
-            "The index",
-            "The cover"
+            "The index"
           ],
           "correct": "The table of contents",
           "hint": "The table of contents lists chapters and their page numbers.",
@@ -1088,9 +1088,9 @@
           "prompt": "What does a heading at the top of a page tell you?",
           "choices": [
             "Who wrote the book",
-            "What that section is about",
             "How many pages are left",
-            "When the book was made"
+            "When the book was made",
+            "What that section is about"
           ],
           "correct": "What that section is about",
           "hint": "Headings are like titles for each section.",
@@ -1103,8 +1103,8 @@
           "type": "multiple_choice",
           "prompt": "A glossary in the back of a book helps you:",
           "choices": [
-            "Find pictures",
             "Learn word meanings",
+            "Find pictures",
             "Find the author's name",
             "Count the pages"
           ],
@@ -1120,9 +1120,9 @@
           "prompt": "If a word in a book is in bold (dark, thick letters), it probably means:",
           "choices": [
             "Skip that word",
+            "It is a mistake",
             "It is not important",
-            "It is an important word to know",
-            "It is a mistake"
+            "It is an important word to know"
           ],
           "correct": "It is an important word to know",
           "hint": "Authors make words bold to show they are important.",
@@ -1135,10 +1135,10 @@
           "type": "multiple_choice",
           "prompt": "You want to learn about 'Polar Bears' in a book about animals. Where do you look first?",
           "choices": [
+            "Read the last page",
             "Read the whole book",
             "Check the table of contents or index",
-            "Look at the back cover",
-            "Read the last page"
+            "Look at the back cover"
           ],
           "correct": "Check the table of contents or index",
           "hint": "Use text features to find topics quickly without reading everything.",
@@ -1159,9 +1159,9 @@
           "type": "multiple_choice",
           "prompt": "The text says 'Ladybugs are small insects.' The picture shows a ladybug on a green leaf. What does the PICTURE tell us that the words do NOT?",
           "choices": [
-            "Ladybugs are insects",
             "Ladybugs are small",
             "The ladybug is on a green leaf",
+            "Ladybugs are insects",
             "Ladybugs are bugs"
           ],
           "correct": "The ladybug is on a green leaf",
@@ -1175,10 +1175,10 @@
           "type": "multiple_choice",
           "prompt": "What can pictures in a book show that words cannot?",
           "choices": [
-            "Exact colors and shapes",
             "Sounds",
             "Smells",
-            "Feelings"
+            "Feelings",
+            "Exact colors and shapes"
           ],
           "correct": "Exact colors and shapes",
           "hint": "Pictures let you SEE things — what can you see that's hard to describe?",
@@ -1191,10 +1191,10 @@
           "type": "multiple_choice",
           "prompt": "The words say 'The bird has feathers.' The picture shows a bright blue bird. What does the picture add?",
           "choices": [
-            "Birds have feathers",
-            "The bird is blue",
+            "Birds eat seeds",
             "Birds can fly",
-            "Birds eat seeds"
+            "The bird is blue",
+            "Birds have feathers"
           ],
           "correct": "The bird is blue",
           "hint": "The words didn't mention the color — where did you learn that?",
@@ -1207,10 +1207,10 @@
           "type": "multiple_choice",
           "prompt": "A diagram shows the parts of a flower with labels. What does a diagram help you do?",
           "choices": [
+            "Touch the flower",
             "Hear the flower",
             "Smell the flower",
-            "See and name the parts",
-            "Touch the flower"
+            "See and name the parts"
           ],
           "correct": "See and name the parts",
           "hint": "Diagrams use pictures AND labels to teach you about parts.",
@@ -1223,8 +1223,8 @@
           "type": "multiple_choice",
           "prompt": "The words say 'The house was old.' The picture shows a house with broken windows and peeling paint. The PICTURE tells us:",
           "choices": [
-            "The house is new",
             "HOW the house looks old",
+            "The house is new",
             "The house is big",
             "Someone lives there"
           ],
@@ -1247,10 +1247,10 @@
           "type": "multiple_choice",
           "prompt": "A book about seasons shows a picture of trees with no leaves and snow on the ground. This picture shows:",
           "choices": [
+            "Fall",
             "Summer",
-            "Spring",
             "Winter",
-            "Fall"
+            "Spring"
           ],
           "correct": "Winter",
           "hint": "Snow and bare trees are clues about which season.",
@@ -1263,10 +1263,10 @@
           "type": "multiple_choice",
           "prompt": "A book about healthy food shows a picture of a plate with fruits, vegetables, and grains. The picture helps you understand:",
           "choices": [
-            "What unhealthy food looks like",
             "What a balanced meal looks like",
-            "How to cook food",
-            "Where food comes from"
+            "Where food comes from",
+            "What unhealthy food looks like",
+            "How to cook food"
           ],
           "correct": "What a balanced meal looks like",
           "hint": "The picture shows you an example of healthy eating.",
@@ -1279,9 +1279,9 @@
           "type": "multiple_choice",
           "prompt": "A map in a book shows where lions live in Africa. The map helps you understand:",
           "choices": [
+            "Where lions live",
             "What lions eat",
             "How big lions are",
-            "Where lions live",
             "How fast lions run"
           ],
           "correct": "Where lions live",
@@ -1295,9 +1295,9 @@
           "type": "multiple_choice",
           "prompt": "A book about the water cycle has arrows showing water going from the ocean to clouds to rain. The arrows help you understand:",
           "choices": [
-            "How heavy water is",
-            "The order of the water cycle",
             "How to swim",
+            "The order of the water cycle",
+            "How heavy water is",
             "What color water is"
           ],
           "correct": "The order of the water cycle",
@@ -1311,10 +1311,10 @@
           "type": "multiple_choice",
           "prompt": "Why do informational books include pictures and illustrations?",
           "choices": [
-            "Just for decoration",
+            "To make the book longer",
             "To help explain the key ideas",
-            "To take up space",
-            "To make the book longer"
+            "Just for decoration",
+            "To take up space"
           ],
           "correct": "To help explain the key ideas",
           "hint": "Pictures in informational books have a purpose — they teach!",
@@ -1335,9 +1335,9 @@
           "type": "multiple_choice",
           "prompt": "You should drink water every day. Water helps your body work well and keeps you from getting thirsty.\n\nWhat reason does the author give for drinking water?",
           "choices": [
-            "Water is blue",
-            "Water helps your body work well",
             "Water is cold",
+            "Water helps your body work well",
+            "Water is blue",
             "Water comes from the sink"
           ],
           "correct": "Water helps your body work well",
@@ -1351,10 +1351,10 @@
           "type": "multiple_choice",
           "prompt": "Dogs make great pets. They are loyal, playful, and love their owners.\n\nWhat reasons does the author give?",
           "choices": [
-            "Dogs are big",
             "Dogs are loyal, playful, and loving",
+            "Dogs sleep all day",
             "Dogs eat a lot",
-            "Dogs sleep all day"
+            "Dogs are big"
           ],
           "correct": "Dogs are loyal, playful, and loving",
           "hint": "The author lists reasons after saying dogs are great pets.",
@@ -1367,10 +1367,10 @@
           "type": "multiple_choice",
           "prompt": "Kids should eat vegetables. Vegetables have vitamins that help you grow strong.\n\nThe author's POINT is:",
           "choices": [
-            "Vitamins are small",
-            "Vegetables taste bad",
+            "Growing is fun",
             "Kids should eat vegetables",
-            "Growing is fun"
+            "Vitamins are small",
+            "Vegetables taste bad"
           ],
           "correct": "Kids should eat vegetables",
           "hint": "The point is the main thing the author wants you to believe.",
@@ -1383,10 +1383,10 @@
           "type": "multiple_choice",
           "prompt": "Recycling is important. It reduces trash and helps keep the Earth clean.\n\nWhat reason does the author give for recycling?",
           "choices": [
-            "Recycling is easy",
-            "It reduces trash and keeps Earth clean",
             "Trash cans are full",
-            "Everyone recycles"
+            "Everyone recycles",
+            "It reduces trash and keeps Earth clean",
+            "Recycling is easy"
           ],
           "correct": "It reduces trash and keeps Earth clean",
           "hint": "The second sentence gives the reasons.",
@@ -1399,10 +1399,10 @@
           "type": "multiple_choice",
           "prompt": "Reading every day makes you smarter. It helps you learn new words and understand more stories.\n\nThe author supports the point by saying reading:",
           "choices": [
-            "Is boring",
-            "Takes too long",
             "Helps you learn words and understand stories",
-            "Is only for school"
+            "Is only for school",
+            "Is boring",
+            "Takes too long"
           ],
           "correct": "Helps you learn words and understand stories",
           "hint": "What GOOD things does the author say happen when you read?",
@@ -1423,9 +1423,9 @@
           "type": "multiple_choice",
           "prompt": "Book 1 says dogs need walks. Book 2 says dogs need exercise. These books are:",
           "choices": [
-            "Saying different things",
             "Saying the same thing in different words",
             "Wrong",
+            "Saying different things",
             "About cats"
           ],
           "correct": "Saying the same thing in different words",
@@ -1439,10 +1439,10 @@
           "type": "multiple_choice",
           "prompt": "Book 1 says the sun is hot. Book 2 says the sun gives Earth light. What do both agree on?",
           "choices": [
-            "The sun is cold",
+            "The sun is new",
             "The sun is important",
             "The sun is small",
-            "The sun is new"
+            "The sun is cold"
           ],
           "correct": "The sun is important",
           "hint": "Both books tell us something the sun does — so it must be important.",
@@ -1471,10 +1471,10 @@
           "type": "multiple_choice",
           "prompt": "Two books are both about rain. Book 1 explains how rain forms. Book 2 explains why plants need rain. They are SIMILAR because:",
           "choices": [
-            "They say the same exact words",
+            "They have the same author",
             "They are both about rain",
             "They are about the same plants",
-            "They have the same author"
+            "They say the same exact words"
           ],
           "correct": "They are both about rain",
           "hint": "What topic do they share?",
@@ -1487,9 +1487,9 @@
           "type": "multiple_choice",
           "prompt": "When comparing two texts on the same topic, you should look for:",
           "choices": [
-            "Which book is longer",
             "What facts are the same and what facts are different",
             "Which cover looks better",
+            "Which book is longer",
             "Who reads faster"
           ],
           "correct": "What facts are the same and what facts are different",
@@ -1527,10 +1527,10 @@
           "type": "multiple_choice",
           "prompt": "A sentence always ends with a:",
           "choices": [
-            "Capital letter",
             "Comma",
             "Space",
-            "Period, question mark, or exclamation point"
+            "Period, question mark, or exclamation point",
+            "Capital letter"
           ],
           "correct": "Period, question mark, or exclamation point",
           "hint": "What mark goes at the very end?",
@@ -1543,9 +1543,9 @@
           "type": "multiple_choice",
           "prompt": "Which is a correct sentence?",
           "choices": [
-            "the dog ran fast",
+            "The dog ran fast",
             "The dog ran fast.",
-            "the dog ran fast.",
+            "The dog ran fast.",
             "The Dog Ran Fast"
           ],
           "correct": "The dog ran fast.",
@@ -1559,10 +1559,10 @@
           "type": "multiple_choice",
           "prompt": "What is wrong with this sentence: 'she likes ice cream'",
           "choices": [
-            "It needs a capital S",
-            "It has too many words",
+            "Nothing is wrong",
             "It needs a comma",
-            "Nothing is wrong"
+            "It has too many words",
+            "It needs a capital S"
           ],
           "correct": "It needs a capital S",
           "hint": "Every sentence begins with a capital letter.",
@@ -1575,12 +1575,12 @@
           "type": "multiple_choice",
           "prompt": "Which one is NOT a sentence?",
           "choices": [
-            "I like cats.",
-            "The bird flew.",
-            "ran fast the boy",
-            "She is nice."
+            "Ran fast the boy",
+            "The bird flew",
+            "I like cats",
+            "She is nice"
           ],
-          "correct": "ran fast the boy",
+          "correct": "Ran fast the boy",
           "hint": "A sentence needs to make sense, start with a capital, and end with punctuation.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.1.1a/q5.mp3",
@@ -1599,12 +1599,12 @@
           "type": "multiple_choice",
           "prompt": "Blend these sounds together: /s/ /i/ /t/. What word do you get?",
           "choices": [
-            "sat",
-            "sit",
-            "set",
-            "sip"
+            "Set",
+            "Sip",
+            "Sit",
+            "Sat"
           ],
-          "correct": "sit",
+          "correct": "Sit",
           "hint": "Say each sound, then push them together fast.",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.1.2b/q1.mp3",
@@ -1615,12 +1615,12 @@
           "type": "multiple_choice",
           "prompt": "Blend these sounds: /f/ /l/ /a/ /g/. What word?",
           "choices": [
-            "frog",
-            "flag",
-            "flat",
-            "flap"
+            "Flat",
+            "Flag",
+            "Flap",
+            "Frog"
           ],
-          "correct": "flag",
+          "correct": "Flag",
           "hint": "Say /f/ /l/ together, then /a/ /g/.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.1.2b/q2.mp3",
@@ -1631,12 +1631,12 @@
           "type": "multiple_choice",
           "prompt": "Blend these sounds: /s/ /t/ /o/ /p/. What word?",
           "choices": [
-            "step",
-            "stop",
-            "stomp",
-            "stop"
+            "Stomp",
+            "Step",
+            "Stop",
+            "Stop"
           ],
-          "correct": "stop",
+          "correct": "Stop",
           "hint": "/s/ /t/ blend together, then /o/ /p/.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.1.2b/q3.mp3",
@@ -1647,12 +1647,12 @@
           "type": "multiple_choice",
           "prompt": "Blend: /d/ /r/ /i/ /p/. What word?",
           "choices": [
-            "drip",
-            "drop",
-            "trip",
-            "trap"
+            "Drop",
+            "Trap",
+            "Trip",
+            "Drip"
           ],
-          "correct": "drip",
+          "correct": "Drip",
           "hint": "Start with /d/ /r/ together, then add /i/ /p/.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.1.2b/q4.mp3",
@@ -1663,12 +1663,12 @@
           "type": "multiple_choice",
           "prompt": "Blend: /g/ /r/ /a/ /b/. What word?",
           "choices": [
-            "grab",
-            "crab",
-            "grub",
-            "grid"
+            "Grab",
+            "Grub",
+            "Crab",
+            "Grid"
           ],
-          "correct": "grab",
+          "correct": "Grab",
           "hint": "/g/ /r/ together, then /a/ /b/.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.1.2b/q5.mp3",
@@ -1687,8 +1687,8 @@
           "type": "multiple_choice",
           "prompt": "What is the FIRST sound in the word 'map'?",
           "choices": [
-            "/a/",
             "/p/",
+            "/a/",
             "/m/",
             "/s/"
           ],
@@ -1703,10 +1703,10 @@
           "type": "multiple_choice",
           "prompt": "What is the MIDDLE sound in the word 'big'?",
           "choices": [
-            "/b/",
-            "/g/",
+            "/a/",
             "/i/",
-            "/a/"
+            "/b/",
+            "/g/"
           ],
           "correct": "/i/",
           "hint": "Say b-i-g slowly — what sound is in the middle?",
@@ -1720,9 +1720,9 @@
           "prompt": "What is the LAST sound in the word 'cup'?",
           "choices": [
             "/c/",
+            "/k/",
             "/u/",
-            "/p/",
-            "/k/"
+            "/p/"
           ],
           "correct": "/p/",
           "hint": "Say 'cup' — what sound do you hear at the very end?",
@@ -1735,12 +1735,12 @@
           "type": "multiple_choice",
           "prompt": "Which word has the SAME first sound as 'top'?",
           "choices": [
-            "dog",
-            "man",
-            "ten",
-            "big"
+            "Big",
+            "Dog",
+            "Man",
+            "Ten"
           ],
-          "correct": "ten",
+          "correct": "Ten",
           "hint": "Say 'top' and 'ten' — do they start the same?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.1.2c/q4.mp3",
@@ -1751,12 +1751,12 @@
           "type": "multiple_choice",
           "prompt": "Which word has the SAME middle sound as 'cat'?",
           "choices": [
-            "cut",
-            "cot",
-            "bat",
-            "bit"
+            "Cut",
+            "Cot",
+            "Bat",
+            "Bit"
           ],
-          "correct": "bat",
+          "correct": "Bat",
           "hint": "Cat has /a/ in the middle. Which other word has /a/?",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.1.2c/q5.mp3",
@@ -1775,10 +1775,10 @@
           "type": "multiple_choice",
           "prompt": "How many sounds are in the word 'cat'?",
           "choices": [
+            "5",
             "2",
-            "3",
             "4",
-            "5"
+            "3"
           ],
           "correct": "3",
           "hint": "C-A-T: /k/ /a/ /t/ — count each sound.",
@@ -1791,10 +1791,10 @@
           "type": "multiple_choice",
           "prompt": "Break the word 'ship' into sounds. How many sounds?",
           "choices": [
-            "2",
-            "3",
             "4",
-            "5"
+            "5",
+            "2",
+            "3"
           ],
           "correct": "3",
           "hint": "'Sh' makes ONE sound: /sh/ /i/ /p/ = 3 sounds.",
@@ -1807,10 +1807,10 @@
           "type": "multiple_choice",
           "prompt": "What are the sounds in the word 'fun'?",
           "choices": [
-            "/f/ /u/ /n/",
-            "/f/ /a/ /n/",
             "/f/ /u/",
-            "/f/ /o/ /n/"
+            "/f/ /a/ /n/",
+            "/f/ /o/ /n/",
+            "/f/ /u/ /n/"
           ],
           "correct": "/f/ /u/ /n/",
           "hint": "Say 'fun' very slowly and listen to each sound.",
@@ -1823,10 +1823,10 @@
           "type": "multiple_choice",
           "prompt": "How many sounds in the word 'stop'?",
           "choices": [
+            "5",
             "2",
             "3",
-            "4",
-            "5"
+            "4"
           ],
           "correct": "4",
           "hint": "/s/ /t/ /o/ /p/ — each letter makes its own sound here.",
@@ -1839,10 +1839,10 @@
           "type": "multiple_choice",
           "prompt": "What are the sounds in the word 'them'?",
           "choices": [
-            "/t/ /h/ /e/ /m/",
-            "/th/ /e/ /m/",
             "/th/ /m/",
-            "/t/ /e/ /m/"
+            "/t/ /h/ /e/ /m/",
+            "/t/ /e/ /m/",
+            "/th/ /e/ /m/"
           ],
           "correct": "/th/ /e/ /m/",
           "hint": "'Th' makes ONE sound together, so: /th/ /e/ /m/ = 3 sounds.",
@@ -1863,10 +1863,10 @@
           "type": "multiple_choice",
           "prompt": "When you see an exclamation point (!), you should read with:",
           "choices": [
-            "A quiet voice",
+            "No expression",
             "Excitement or strong feeling",
-            "A bored voice",
-            "No expression"
+            "A quiet voice",
+            "A bored voice"
           ],
           "correct": "Excitement or strong feeling",
           "hint": "Exclamation points mean strong feelings!",
@@ -1880,9 +1880,9 @@
           "prompt": "When you see a question mark (?), your voice should:",
           "choices": [
             "Go down at the end",
+            "Get louder",
             "Go up at the end",
-            "Stay the same",
-            "Get louder"
+            "Stay the same"
           ],
           "correct": "Go up at the end",
           "hint": "Try asking 'Really?' — hear how your voice goes up?",
@@ -1896,8 +1896,8 @@
           "prompt": "Good readers read at the right speed. What does that mean?",
           "choices": [
             "Read as fast as possible",
-            "Read so slow it's boring",
             "Read at a pace that sounds like talking",
+            "Read so slow it's boring",
             "Skip hard words"
           ],
           "correct": "Read at a pace that sounds like talking",
@@ -1911,10 +1911,10 @@
           "type": "multiple_choice",
           "prompt": "'Help!' cried the little mouse.\n\nHow should you read this?",
           "choices": [
-            "In a calm, quiet voice",
-            "In a loud, scared voice",
+            "In a silly voice",
             "In a sleepy voice",
-            "In a silly voice"
+            "In a loud, scared voice",
+            "In a calm, quiet voice"
           ],
           "correct": "In a loud, scared voice",
           "hint": "The mouse is crying for help — that sounds scared!",
@@ -1927,10 +1927,10 @@
           "type": "multiple_choice",
           "prompt": "What is expression when reading?",
           "choices": [
-            "Reading in a flat robot voice",
-            "Using your voice to show feelings",
             "Reading very fast",
-            "Skipping words"
+            "Skipping words",
+            "Reading in a flat robot voice",
+            "Using your voice to show feelings"
           ],
           "correct": "Using your voice to show feelings",
           "hint": "Expression means making your voice match what's happening.",
@@ -1951,12 +1951,12 @@
           "type": "multiple_choice",
           "prompt": "The bird flew over the _____.\n\nWhich word makes sense?",
           "choices": [
-            "tree",
-            "book",
-            "chair",
-            "cup"
+            "Tree",
+            "Chair",
+            "Book",
+            "Cup"
           ],
-          "correct": "tree",
+          "correct": "Tree",
           "hint": "Where do birds usually fly over?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.1.4c/q1.mp3",
@@ -1967,9 +1967,9 @@
           "type": "multiple_choice",
           "prompt": "You read: 'The cat sat on the mat.' But you said 'mat' as 'map.' What should you do?",
           "choices": [
-            "Keep going",
             "Go back and try again",
             "Skip the word",
+            "Keep going",
             "Ask someone"
           ],
           "correct": "Go back and try again",
@@ -1983,12 +1983,12 @@
           "type": "multiple_choice",
           "prompt": "I drank a glass of _____.\n\nWhich word makes sense?",
           "choices": [
-            "milk",
-            "rocks",
-            "paper",
-            "shoes"
+            "Rocks",
+            "Paper",
+            "Milk",
+            "Shoes"
           ],
-          "correct": "milk",
+          "correct": "Milk",
           "hint": "What do people drink?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.1.4c/q3.mp3",
@@ -2000,8 +2000,8 @@
           "prompt": "If you read a sentence and it doesn't make sense, a good reader will:",
           "choices": [
             "Give up",
-            "Reread it and try to fix the mistake",
             "Read faster",
+            "Reread it and try to fix the mistake",
             "Skip to the next page"
           ],
           "correct": "Reread it and try to fix the mistake",
@@ -2015,12 +2015,12 @@
           "type": "multiple_choice",
           "prompt": "The sun is very _____.\n\nWhich word fits?",
           "choices": [
-            "cold",
-            "bright",
-            "dark",
-            "wet"
+            "Wet",
+            "Cold",
+            "Dark",
+            "Bright"
           ],
-          "correct": "bright",
+          "correct": "Bright",
           "hint": "Think about what the sun is like — does it give light?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.1.4c/q5.mp3",
@@ -2039,8 +2039,8 @@
           "type": "multiple_choice",
           "prompt": "The tiny ant carried a big crumb.\n\nWhat does tiny mean?",
           "choices": [
-            "Big",
             "Very small",
+            "Big",
             "Fast",
             "Old"
           ],
@@ -2055,10 +2055,10 @@
           "type": "multiple_choice",
           "prompt": "She was furious when someone broke her toy.\n\nWhat does furious mean?",
           "choices": [
-            "Happy",
-            "Very angry",
+            "Silly",
             "Sleepy",
-            "Silly"
+            "Happy",
+            "Very angry"
           ],
           "correct": "Very angry",
           "hint": "How would YOU feel if someone broke your toy?",
@@ -2071,10 +2071,10 @@
           "type": "multiple_choice",
           "prompt": "The word 'bat' can mean more than one thing. Which two are correct?",
           "choices": [
-            "A flying animal AND a stick to hit a ball",
-            "A type of food AND a hat",
+            "A shoe AND a sock",
             "A car AND a boat",
-            "A shoe AND a sock"
+            "A flying animal AND a stick to hit a ball",
+            "A type of food AND a hat"
           ],
           "correct": "A flying animal AND a stick to hit a ball",
           "hint": "Think about baseball and think about animals that fly at night.",
@@ -2087,10 +2087,10 @@
           "type": "multiple_choice",
           "prompt": "The road was slippery after the rain.\n\nWhat does slippery mean?",
           "choices": [
-            "Dry",
             "Easy to slide on",
-            "Very long",
-            "Dark"
+            "Dark",
+            "Dry",
+            "Very long"
           ],
           "correct": "Easy to slide on",
           "hint": "What happens to roads after rain? They get wet and you might slip.",
@@ -2103,10 +2103,10 @@
           "type": "multiple_choice",
           "prompt": "She peeked through the window to see if it was raining.\n\nWhat does peeked mean?",
           "choices": [
-            "Listened carefully",
             "Looked quickly",
+            "Cleaned the window",
             "Opened the window",
-            "Cleaned the window"
+            "Listened carefully"
           ],
           "correct": "Looked quickly",
           "hint": "When you peek, you take a quick look.",
@@ -2127,10 +2127,10 @@
           "type": "multiple_choice",
           "prompt": "The dog was famished, so he ate all his food very fast.\n\nWhat does famished mean?",
           "choices": [
+            "Angry",
             "Full",
             "Very hungry",
-            "Tired",
-            "Angry"
+            "Tired"
           ],
           "correct": "Very hungry",
           "hint": "He ate all his food fast — he must have been very...?",
@@ -2144,9 +2144,9 @@
           "prompt": "It was sweltering outside, so we stayed in the cool house.\n\nWhat does sweltering mean?",
           "choices": [
             "Very cold",
-            "Very hot",
             "Very windy",
-            "Very dark"
+            "Very dark",
+            "Very hot"
           ],
           "correct": "Very hot",
           "hint": "They went inside to be cool — so outside must have been...?",
@@ -2160,9 +2160,9 @@
           "prompt": "The cheerful girl was always smiling and laughing.\n\nWhat does cheerful mean?",
           "choices": [
             "Sad",
-            "Happy",
+            "Angry",
             "Quiet",
-            "Angry"
+            "Happy"
           ],
           "correct": "Happy",
           "hint": "Smiling and laughing — what kind of person does that?",
@@ -2175,10 +2175,10 @@
           "type": "multiple_choice",
           "prompt": "He was exhausted after running all day, so he went straight to bed.\n\nWhat does exhausted mean?",
           "choices": [
+            "Scared",
             "Excited",
             "Very tired",
-            "Hungry",
-            "Scared"
+            "Hungry"
           ],
           "correct": "Very tired",
           "hint": "He ran all day and went to bed — he must have been...?",
@@ -2192,9 +2192,9 @@
           "prompt": "The timid rabbit hid behind the bush when it heard a loud noise.\n\nWhat does timid mean?",
           "choices": [
             "Brave",
-            "Fast",
             "Shy or scared",
-            "Strong"
+            "Strong",
+            "Fast"
           ],
           "correct": "Shy or scared",
           "hint": "It hid when it heard a noise — that sounds shy or scared.",
@@ -2215,10 +2215,10 @@
           "type": "multiple_choice",
           "prompt": "What does 'unhappy' mean?",
           "choices": [
-            "Very happy",
-            "Not happy",
             "Kind of happy",
-            "Happy again"
+            "Very happy",
+            "Happy again",
+            "Not happy"
           ],
           "correct": "Not happy",
           "hint": "'Un-' at the beginning means NOT.",
@@ -2231,10 +2231,10 @@
           "type": "multiple_choice",
           "prompt": "What does 'redo' mean?",
           "choices": [
+            "Stop doing",
             "Do before",
-            "Not do",
             "Do again",
-            "Stop doing"
+            "Not do"
           ],
           "correct": "Do again",
           "hint": "'Re-' at the beginning means AGAIN.",
@@ -2247,10 +2247,10 @@
           "type": "multiple_choice",
           "prompt": "If 'un-' means NOT, what does 'unkind' mean?",
           "choices": [
-            "Very kind",
-            "Not kind",
+            "Always kind",
             "Kind again",
-            "Always kind"
+            "Not kind",
+            "Very kind"
           ],
           "correct": "Not kind",
           "hint": "Un + kind = not kind.",
@@ -2265,8 +2265,8 @@
           "choices": [
             "Something you teach",
             "One who teaches",
-            "A type of school",
-            "A book"
+            "A book",
+            "A type of school"
           ],
           "correct": "One who teaches",
           "hint": "Teach + er = one who teaches.",
@@ -2280,8 +2280,8 @@
           "prompt": "What does 'reread' mean?",
           "choices": [
             "Stop reading",
-            "Read again",
             "Not read",
+            "Read again",
             "Read fast"
           ],
           "correct": "Read again",
@@ -2303,10 +2303,10 @@
           "type": "multiple_choice",
           "prompt": "What is the root word in 'jumping'?",
           "choices": [
+            "Ing",
             "Jum",
-            "Jump",
             "Jumping",
-            "Ing"
+            "Jump"
           ],
           "correct": "Jump",
           "hint": "Take away the -ing. What's left?",
@@ -2319,10 +2319,10 @@
           "type": "multiple_choice",
           "prompt": "What is the root word in 'played'?",
           "choices": [
-            "Ed",
-            "Played",
             "Play",
-            "Playe"
+            "Playe",
+            "Played",
+            "Ed"
           ],
           "correct": "Play",
           "hint": "Take away the -ed ending.",
@@ -2335,12 +2335,12 @@
           "type": "multiple_choice",
           "prompt": "Which words all come from the root word 'look'?",
           "choices": [
-            "looks, looked, looking",
-            "looks, books, hooks",
-            "lock, look, luck",
-            "looked, cooked, booked"
+            "Looks, books, hooks",
+            "Looked, cooked, booked",
+            "Lock, look, luck",
+            "Looks, looked, looking"
           ],
-          "correct": "looks, looked, looking",
+          "correct": "Looks, looked, looking",
           "hint": "Which group keeps 'look' as the base and just adds endings?",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.1.4c/q3.mp3",
@@ -2351,10 +2351,10 @@
           "type": "multiple_choice",
           "prompt": "'Walks' has the ending '-s.' The root word is:",
           "choices": [
-            "Wal",
             "Walk",
             "Walks",
-            "Walking"
+            "Walking",
+            "Wal"
           ],
           "correct": "Walk",
           "hint": "Remove the -s to find the root.",
@@ -2368,8 +2368,8 @@
           "prompt": "What is the root word in 'runs,' 'running,' and 'runner'?",
           "choices": [
             "Ru",
-            "Runs",
             "Run",
+            "Runs",
             "Running"
           ],
           "correct": "Run",
@@ -2391,8 +2391,8 @@
           "type": "multiple_choice",
           "prompt": "What is the opposite of 'hot'?",
           "choices": [
-            "Warm",
             "Cold",
+            "Warm",
             "Fast",
             "Big"
           ],
@@ -2407,9 +2407,9 @@
           "type": "multiple_choice",
           "prompt": "Which word means almost the same as 'big'?",
           "choices": [
+            "Large",
             "Small",
             "Tiny",
-            "Large",
             "Short"
           ],
           "correct": "Large",
@@ -2423,10 +2423,10 @@
           "type": "multiple_choice",
           "prompt": "What is the opposite of 'fast'?",
           "choices": [
-            "Quick",
+            "Tall",
             "Speedy",
             "Slow",
-            "Tall"
+            "Quick"
           ],
           "correct": "Slow",
           "hint": "Fast means quick. The opposite would be...not quick.",
@@ -2439,9 +2439,9 @@
           "type": "multiple_choice",
           "prompt": "Which word is a type of animal: chair, dog, pencil, cup?",
           "choices": [
+            "Pencil",
             "Chair",
             "Dog",
-            "Pencil",
             "Cup"
           ],
           "correct": "Dog",
@@ -2455,10 +2455,10 @@
           "type": "multiple_choice",
           "prompt": "Which group of words goes together? Apple, banana, grape OR apple, chair, banana?",
           "choices": [
+            "Dog, cat, apple",
             "Apple, chair, banana",
             "Apple, banana, grape",
-            "Chair, table, grape",
-            "Dog, cat, apple"
+            "Chair, table, grape"
           ],
           "correct": "Apple, banana, grape",
           "hint": "Which group has items that are all the same type of thing?",
@@ -2496,9 +2496,9 @@
           "prompt": "Cat, dog, fish, bird. These are all:",
           "choices": [
             "Foods",
+            "Toys",
             "Animals",
-            "Colors",
-            "Toys"
+            "Colors"
           ],
           "correct": "Animals",
           "hint": "What do all four have in common?",
@@ -2512,9 +2512,9 @@
           "prompt": "Which word belongs in the 'fruit' category: carrot, apple, bread, cheese?",
           "choices": [
             "Carrot",
-            "Apple",
+            "Cheese",
             "Bread",
-            "Cheese"
+            "Apple"
           ],
           "correct": "Apple",
           "hint": "Which one grows on a tree and is sweet?",
@@ -2527,10 +2527,10 @@
           "type": "multiple_choice",
           "prompt": "Shirt, pants, hat, shoes. These are all:",
           "choices": [
-            "Animals",
+            "Toys",
             "Clothing",
             "Foods",
-            "Toys"
+            "Animals"
           ],
           "correct": "Clothing",
           "hint": "You wear all of these — what category is that?",
@@ -2543,9 +2543,9 @@
           "type": "multiple_choice",
           "prompt": "Which word goes with: car, bus, train?",
           "choices": [
-            "Apple",
             "Airplane",
             "Dog",
+            "Apple",
             "Book"
           ],
           "correct": "Airplane",
@@ -2568,8 +2568,8 @@
           "prompt": "A dog is an animal that:",
           "choices": [
             "Swims in the ocean",
-            "Barks and has four legs",
             "Flies in the sky",
+            "Barks and has four legs",
             "Lives in a pond"
           ],
           "correct": "Barks and has four legs",
@@ -2583,9 +2583,9 @@
           "type": "multiple_choice",
           "prompt": "An apple is a fruit that:",
           "choices": [
+            "Can be red, green, or yellow",
             "Is always blue",
             "Grows underground",
-            "Can be red, green, or yellow",
             "Is very spicy"
           ],
           "correct": "Can be red, green, or yellow",
@@ -2599,10 +2599,10 @@
           "type": "multiple_choice",
           "prompt": "A hammer is a tool used to:",
           "choices": [
-            "Cut paper",
             "Pound nails",
-            "Cook food",
-            "Water plants"
+            "Water plants",
+            "Cut paper",
+            "Cook food"
           ],
           "correct": "Pound nails",
           "hint": "What do people use a hammer for?",
@@ -2631,10 +2631,10 @@
           "type": "multiple_choice",
           "prompt": "A fire truck is a vehicle that:",
           "choices": [
-            "Delivers mail",
             "Helps fight fires",
-            "Takes kids to school",
-            "Sells ice cream"
+            "Sells ice cream",
+            "Delivers mail",
+            "Takes kids to school"
           ],
           "correct": "Helps fight fires",
           "hint": "What is a fire truck's special job?",
@@ -2655,9 +2655,9 @@
           "type": "multiple_choice",
           "prompt": "Which of these is something COZY?",
           "choices": [
-            "A rock",
             "A warm blanket",
             "A cactus",
+            "A rock",
             "Ice"
           ],
           "correct": "A warm blanket",
@@ -2671,9 +2671,9 @@
           "type": "multiple_choice",
           "prompt": "Which of these is CRUNCHY?",
           "choices": [
+            "Carrots",
             "Pudding",
             "Soup",
-            "Carrots",
             "Yogurt"
           ],
           "correct": "Carrots",
@@ -2687,10 +2687,10 @@
           "type": "multiple_choice",
           "prompt": "Where might you feel CHILLY?",
           "choices": [
-            "Next to a fire",
-            "At the beach in summer",
+            "In a hot bath",
             "Outside in the snow",
-            "In a hot bath"
+            "Next to a fire",
+            "At the beach in summer"
           ],
           "correct": "Outside in the snow",
           "hint": "Chilly means a little cold. Where would you feel cold?",
@@ -2719,10 +2719,10 @@
           "type": "multiple_choice",
           "prompt": "When might you feel PROUD?",
           "choices": [
+            "When you're sleepy",
             "When you break a toy",
-            "When you do well on a test",
             "When you lose a game",
-            "When you're sleepy"
+            "When you do well on a test"
           ],
           "correct": "When you do well on a test",
           "hint": "Proud means feeling good about something you did.",
@@ -2744,9 +2744,9 @@
           "prompt": "Which word means MORE than 'big'?",
           "choices": [
             "Small",
+            "Tiny",
             "Medium",
-            "Gigantic",
-            "Tiny"
+            "Gigantic"
           ],
           "correct": "Gigantic",
           "hint": "Gigantic means really, really big — even bigger than big.",
@@ -2759,10 +2759,10 @@
           "type": "multiple_choice",
           "prompt": "Put these in order from quietest to loudest: talk, whisper, shout",
           "choices": [
-            "Shout, talk, whisper",
-            "Whisper, talk, shout",
             "Talk, whisper, shout",
-            "Whisper, shout, talk"
+            "Shout, talk, whisper",
+            "Whisper, shout, talk",
+            "Whisper, talk, shout"
           ],
           "correct": "Whisper, talk, shout",
           "hint": "Which is the quietest? Which is the loudest?",
@@ -2775,10 +2775,10 @@
           "type": "multiple_choice",
           "prompt": "Which word means to move FASTER than 'walk'?",
           "choices": [
-            "Sit",
-            "Crawl",
             "Run",
-            "Stand"
+            "Sit",
+            "Stand",
+            "Crawl"
           ],
           "correct": "Run",
           "hint": "Walking is medium speed. What's faster?",
@@ -2793,8 +2793,8 @@
           "choices": [
             "Sad",
             "Okay",
-            "Thrilled",
-            "Fine"
+            "Fine",
+            "Thrilled"
           ],
           "correct": "Thrilled",
           "hint": "Thrilled means extremely happy — even more than just happy.",
@@ -2807,10 +2807,10 @@
           "type": "multiple_choice",
           "prompt": "Put these in order from coldest to hottest: warm, freezing, hot",
           "choices": [
-            "Hot, warm, freezing",
             "Freezing, warm, hot",
             "Warm, freezing, hot",
-            "Hot, freezing, warm"
+            "Hot, freezing, warm",
+            "Hot, warm, freezing"
           ],
           "correct": "Freezing, warm, hot",
           "hint": "Start with the coldest temperature and end with the hottest.",
@@ -2831,12 +2831,12 @@
           "type": "multiple_choice",
           "prompt": "Which word best completes: 'The _____ elephant sprayed water with its trunk.'",
           "choices": [
-            "tiny",
-            "enormous",
-            "quiet",
-            "fast"
+            "Quiet",
+            "Enormous",
+            "Tiny",
+            "Fast"
           ],
-          "correct": "enormous",
+          "correct": "Enormous",
           "hint": "Elephants are very big. Which word means very big?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.1.6/q1.mp3",
@@ -2847,9 +2847,9 @@
           "type": "multiple_choice",
           "prompt": "'Because' is a word that tells you:",
           "choices": [
-            "When something happened",
             "The reason why",
             "Who did it",
+            "When something happened",
             "Where it happened"
           ],
           "correct": "The reason why",
@@ -2863,12 +2863,12 @@
           "type": "multiple_choice",
           "prompt": "Which word best completes: 'She was _____ to get a new puppy.'",
           "choices": [
-            "sad",
-            "angry",
-            "excited",
-            "bored"
+            "Excited",
+            "Bored",
+            "Sad",
+            "Angry"
           ],
-          "correct": "excited",
+          "correct": "Excited",
           "hint": "Getting a new puppy is a happy thing!",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.1.6/q3.mp3",
@@ -2879,10 +2879,10 @@
           "type": "multiple_choice",
           "prompt": "'However' means the same as:",
           "choices": [
-            "And also",
-            "But",
             "Because",
-            "Then"
+            "Then",
+            "And also",
+            "But"
           ],
           "correct": "But",
           "hint": "'I wanted ice cream. However, the store was closed.' — this means BUT.",
@@ -2896,9 +2896,9 @@
           "prompt": "Which sentence uses 'beautiful' correctly?",
           "choices": [
             "The beautiful ran fast.",
+            "Beautiful the cat slept.",
             "She saw a beautiful sunset.",
-            "He ate a beautiful.",
-            "Beautiful the cat slept."
+            "He ate a beautiful."
           ],
           "correct": "She saw a beautiful sunset.",
           "hint": "Beautiful describes something — it needs a noun after it.",
