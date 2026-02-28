@@ -219,6 +219,9 @@ function AnalyticsDashboard({ child }: { child: Child }) {
   const [practiceResults, setPracticeResults] = useState<PracticeResult[]>([]);
   const [loadingData, setLoadingData] = useState(true);
   const [userPlan, setUserPlan] = useState<string>("free");
+  const storeChildren = useChildStore((s) => s.children);
+  const childIndex = storeChildren.findIndex((c) => c.id === child.id);
+  const avatar = getChildAvatar(child, childIndex === -1 ? 0 : childIndex);
 
   // Build standard friendly name map
   const standardNameMap = useMemo(() => {
@@ -363,9 +366,6 @@ function AnalyticsDashboard({ child }: { child: Child }) {
   if (loadingData) return <Spinner />;
 
   const hasData = practiceResults.length > 0;
-  const storeChildren = useChildStore((s) => s.children);
-  const childIndex = storeChildren.findIndex((c) => c.id === child.id);
-  const avatar = getChildAvatar(child, childIndex === -1 ? 0 : childIndex);
 
   /* ── No data empty state ── */
   if (!hasData) {
