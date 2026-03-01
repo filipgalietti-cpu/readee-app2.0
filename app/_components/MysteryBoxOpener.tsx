@@ -124,7 +124,7 @@ export function MysteryBoxOpener({
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
               <motion.img
-                src="/images/shop/mystery-box-closed-noshadow.png"
+                src="/images/shop/mystery-box-open.png"
                 alt="Mystery Box Opening"
                 className="w-full h-full object-contain"
 
