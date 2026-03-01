@@ -207,7 +207,7 @@ function ShopContent({
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <motion.div
-              className="w-20 h-20 -my-2"
+              className="w-28 h-28 -my-4"
               animate={{ rotate: [0, -5, 5, -5, 5, 0] }}
               transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
             >
