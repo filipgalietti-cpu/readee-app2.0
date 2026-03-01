@@ -21,8 +21,8 @@
           "correct": "He shared his knowledge of astronomy with Elena",
           "hint": "Elena knew exactly where to look because her grandfather told her about the comet.",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.1/q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.1/q1-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.1/RL.4.1-Q1.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.1/RL.4.1-Q1-hint.mp3"
         },
         {
           "id": "RL.4.1-Q2",
@@ -37,8 +37,8 @@
           "correct": "It's extremely important and meaningful to him",
           "hint": "He keeps it close to his chest and has memorized every word — those are signs of deep attachment.",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.1/q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.1/q2-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.1/RL.4.1-Q2.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.1/RL.4.1-Q2-hint.mp3"
         },
         {
           "id": "RL.4.1-Q3",
@@ -53,13 +53,13 @@
           "correct": "She practiced before school and after dinner",
           "hint": "The detail about her practice schedule directly explains why she succeeded at tryouts.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.1/q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.1/q3-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.1/RL.4.1-Q3.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.1/RL.4.1-Q3-hint.mp3"
         },
         {
           "id": "RL.4.1-Q4",
           "type": "multiple_choice",
-          "prompt": "Dad hadn't said a word during the entire drive home. He gripped the steering wheel tightly, and his jaw was clenched. When they pulled into the driveway, he finally sighed and said, 'We'll talk about this inside.'\n\nWhat can you infer about Dad's mood?",
+          "prompt": "Dad hadn't said a word during the entire drive home. He gripped the steering wheel tightly, and his jaw was clenched. When they pulled into the driveway, he finally sighed and said, \"We'll talk about this inside.\"\n\nWhat can you infer about Dad's mood?",
           "choices": [
             "He's happy and excited",
             "He's tired from driving",
@@ -69,13 +69,13 @@
           "correct": "He's upset or frustrated about something",
           "hint": "Silent, tight grip, clenched jaw, deep sigh — those are all signs of frustration.",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.1/q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.1/q4-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.1/RL.4.1-Q4.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.1/RL.4.1-Q4-hint.mp3"
         },
         {
           "id": "RL.4.1-Q5",
           "type": "multiple_choice",
-          "prompt": "The old bookshop smelled of leather and dust. Mrs. Tanaka knew every book by heart — where it sat, what it was about, who had loved it last. When the city announced the building would be torn down, she simply said, 'Books always find a new home.'\n\nWhat does Mrs. Tanaka's response reveal about her character?",
+          "prompt": "The old bookshop smelled of leather and dust. Mrs. Tanaka knew every book by heart — where it sat, what it was about, who had loved it last. When the city announced the building would be torn down, she simply said, \"Books always find a new home.\"\n\nWhat does Mrs. Tanaka's response reveal about her character?",
           "choices": [
             "She wants a new building",
             "She's optimistic and resilient even in difficult times",
@@ -85,8 +85,8 @@
           "correct": "She's optimistic and resilient even in difficult times",
           "hint": "Instead of being devastated, she focuses on the positive — books will survive. That's resilience.",
           "difficulty": "hard",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.1/q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.1/q5-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.1/RL.4.1-Q5.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.1/RL.4.1-Q5-hint.mp3"
         }
       ],
       "standard_id": "RL.4.1",
@@ -109,13 +109,13 @@
           "correct": "Collaboration leads to better results than working alone",
           "hint": "Compare what happened to Kai (alone, missed a flaw) vs. the team (shared ideas, won).",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.2/q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.2/q1-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.2/RL.4.2-Q1.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.2/RL.4.2-Q1-hint.mp3"
         },
         {
           "id": "RL.4.2-Q2",
           "type": "multiple_choice",
-          "prompt": "Amara was embarrassed by her grandmother's accent and old-fashioned clothes. She asked Grandma not to come to the school play. After the show, Amara saw her classmates laughing with their grandparents and felt a deep ache. She called Grandma that night and said, 'Next time, front row.'\n\nWhat is the theme?",
+          "prompt": "Amara was embarrassed by her grandmother's accent and old-fashioned clothes. She asked Grandma not to come to the school play. After the show, Amara saw her classmates laughing with their grandparents and felt a deep ache. She called Grandma that night and said, \"Next time, front row.\"\n\nWhat is the theme?",
           "choices": [
             "Clothes matter more than people",
             "Don't be ashamed of your family — appreciate them",
@@ -125,8 +125,8 @@
           "correct": "Don't be ashamed of your family — appreciate them",
           "hint": "Amara regretted pushing her grandmother away and realized family matters more than appearances.",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.2/q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.2/q2-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.2/RL.4.2-Q2.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.2/RL.4.2-Q2-hint.mp3"
         },
         {
           "id": "RL.4.2-Q3",
@@ -141,8 +141,8 @@
           "correct": "A theme is the message or lesson, while a topic is just the subject",
           "hint": "Topic = friendship. Theme = true friends stand by you in hard times.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.2/q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.2/q3-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.2/RL.4.2-Q3.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.2/RL.4.2-Q3-hint.mp3"
         },
         {
           "id": "RL.4.2-Q4",
@@ -157,8 +157,8 @@
           "correct": "Determination can help you thrive even in difficult conditions",
           "hint": "The seed grew where 'nothing grew' — it succeeded against the odds through persistence.",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.2/q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.2/q4-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.2/RL.4.2-Q4.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.2/RL.4.2-Q4-hint.mp3"
         },
         {
           "id": "RL.4.2-Q5",
@@ -173,8 +173,8 @@
           "correct": "A brief retelling of the main character, problem, key events, and resolution",
           "hint": "A good summary hits the highlights: who, what problem, what happened, how it ended.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.2/q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.2/q5-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.2/RL.4.2-Q5.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.2/RL.4.2-Q5-hint.mp3"
         }
       ],
       "standard_id": "RL.4.2",
@@ -187,7 +187,7 @@
         {
           "id": "RL.4.3-Q1",
           "type": "multiple_choice",
-          "prompt": "Coach Reyes never raised her voice. When a player made a mistake, she'd kneel down, look them in the eye, and say, 'Tell me what you were thinking.' By season's end, every player said she was the best coach they'd ever had.\n\nWhich word BEST describes Coach Reyes?",
+          "prompt": "Coach Reyes never raised her voice. When a player made a mistake, she'd kneel down, look them in the eye, and say, \"Tell me what you were thinking.\" By season's end, every player said she was the best coach they'd ever had.\n\nWhich word BEST describes Coach Reyes?",
           "choices": [
             "Strict",
             "Respectful",
@@ -197,8 +197,8 @@
           "correct": "Respectful",
           "hint": "She kneels down, makes eye contact, and asks for their perspective — that's deep respect.",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.3/q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.3/q1-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.3/RL.4.3-Q1.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.3/RL.4.3-Q1-hint.mp3"
         },
         {
           "id": "RL.4.3-Q2",
@@ -213,13 +213,13 @@
           "correct": "Vibrant, busy, and full of sensory experiences",
           "hint": "Voices, colors, music, smells — the author hits sight, sound, and smell to bring it alive.",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.3/q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.3/q2-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.3/RL.4.3-Q2.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.3/RL.4.3-Q2-hint.mp3"
         },
         {
           "id": "RL.4.3-Q3",
           "type": "multiple_choice",
-          "prompt": "Jordan's hands trembled as he opened the envelope. His eyes scanned the page, then widened. He read it again. Then a third time. Then he let out a whoop so loud the neighbors' dog started barking.\n\nWhat can you infer about the letter's contents?",
+          "prompt": "Jordan's hands trembled as he opened the envelope. His eyes scanned the page, then widened. He read it again. Then a third time. Then he let out a whoop so loud the neighbors\" dog started barking.\n\nWhat can you infer about the letter's contents?",
           "choices": [
             "Bad news",
             "A grocery list",
@@ -229,13 +229,13 @@
           "correct": "Very good news",
           "hint": "Trembling hands (nervous), then widened eyes and a whoop (excitement) — that's great news!",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.3/q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.3/q3-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.3/RL.4.3-Q3.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.3/RL.4.3-Q3-hint.mp3"
         },
         {
           "id": "RL.4.3-Q4",
           "type": "multiple_choice",
-          "prompt": "When describing a character 'in depth,' you should include —",
+          "prompt": "When describing a character **in depth,** you should include —",
           "choices": [
             "Their traits, motivations, thoughts, words, and actions",
             "Just their name and age",
@@ -245,8 +245,8 @@
           "correct": "Their traits, motivations, thoughts, words, and actions",
           "hint": "A deep character description goes beyond appearance — it explores WHO they are inside.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.3/q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.3/q4-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.3/RL.4.3-Q4.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.3/RL.4.3-Q4-hint.mp3"
         },
         {
           "id": "RL.4.3-Q5",
@@ -261,8 +261,8 @@
           "correct": "Eerie and isolated",
           "hint": "Abandoned, peeling paint, crashing waves, groaning staircase — all create a lonely, spooky mood.",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.3/q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.3/q5-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.3/RL.4.3-Q5.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.3/RL.4.3-Q5-hint.mp3"
         }
       ],
       "standard_id": "RL.4.3",
@@ -285,8 +285,8 @@
           "correct": "Everything she did became successful",
           "hint": "King Midas turned everything to gold. This phrase means everything she touches succeeds.",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.4/q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.4/q1-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.4/RL.4.4-Q1.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.4/RL.4.4-Q1-hint.mp3"
         },
         {
           "id": "RL.4.4-Q2",
@@ -301,13 +301,13 @@
           "correct": "Extremely difficult and required great effort",
           "hint": "Hercules was famous for completing incredibly difficult tasks (his twelve labors).",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.4/q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.4/q2-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.4/RL.4.4-Q2.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.4/RL.4.4-Q2-hint.mp3"
         },
         {
           "id": "RL.4.4-Q3",
           "type": "multiple_choice",
-          "prompt": "The morning light tiptoed through the curtains.\n\nWhat does 'tiptoed' suggest about the light?",
+          "prompt": "The morning light tiptoed through the curtains.\n\nWhat does **tiptoed** suggest about the light?",
           "choices": [
             "It was nighttime",
             "It was very bright and harsh",
@@ -317,13 +317,13 @@
           "correct": "It entered gently and softly",
           "hint": "Tiptoeing is quiet and careful — the light came in softly, not harshly.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.4/q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.4/q3-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.4/RL.4.4-Q3.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.4/RL.4.4-Q3-hint.mp3"
         },
         {
           "id": "RL.4.4-Q4",
           "type": "multiple_choice",
-          "prompt": "His Achilles' heel was his temper — it always got him into trouble.\n\nAn 'Achilles' heel' refers to —",
+          "prompt": "His Achilles\" heel was his temper — it always got him into trouble.\n\nAn **Achilles** heel\" refers to —",
           "choices": [
             "A type of shoe",
             "A person's greatest weakness or vulnerability",
@@ -333,8 +333,8 @@
           "correct": "A person's greatest weakness or vulnerability",
           "hint": "In mythology, Achilles was invincible except for his heel. The phrase means a fatal weakness.",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.4/q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.4/q4-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.4/RL.4.4-Q4.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.4/RL.4.4-Q4-hint.mp3"
         },
         {
           "id": "RL.4.4-Q5",
@@ -349,8 +349,8 @@
           "correct": "The silence was intense and heavy",
           "hint": "This is figurative — the silence felt so strong and present it was almost physical.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.4/q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.4/q5-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.4/RL.4.4-Q5.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.4/RL.4.4-Q5-hint.mp3"
         }
       ],
       "standard_id": "RL.4.4",
@@ -373,8 +373,8 @@
           "correct": "Stage directions",
           "hint": "Stage directions (in italics or brackets) tell actors how to move and speak — only plays have these.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.5/q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.5/q1-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.5/RL.4.5-Q1.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.5/RL.4.5-Q1-hint.mp3"
         },
         {
           "id": "RL.4.5-Q2",
@@ -389,8 +389,8 @@
           "correct": "Paragraphs",
           "hint": "Stanzas group lines in a poem, just like paragraphs group sentences in prose.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.5/q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.5/q2-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.5/RL.4.5-Q2.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.5/RL.4.5-Q2-hint.mp3"
         },
         {
           "id": "RL.4.5-Q3",
@@ -405,8 +405,8 @@
           "correct": "In plays, the character's name appears before their lines; novels use quotation marks",
           "hint": "Play: ROMEO: But soft! Novel: \"But soft!\" said Romeo.",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.5/q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.5/q3-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.5/RL.4.5-Q3.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.5/RL.4.5-Q3-hint.mp3"
         },
         {
           "id": "RL.4.5-Q4",
@@ -421,8 +421,8 @@
           "correct": "Meter and rhyme scheme",
           "hint": "Poems often have rhythm (meter) and patterns of rhyming — prose usually doesn't.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.5/q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.5/q4-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.5/RL.4.5-Q4.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.5/RL.4.5-Q4-hint.mp3"
         },
         {
           "id": "RL.4.5-Q5",
@@ -437,8 +437,8 @@
           "correct": "Line or sentence",
           "hint": "A verse is a single line of poetry — similar to how a sentence is a unit in prose.",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.5/q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.5/q5-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.5/RL.4.5-Q5.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.5/RL.4.5-Q5-hint.mp3"
         }
       ],
       "standard_id": "RL.4.5",
@@ -461,8 +461,8 @@
           "correct": "First person",
           "hint": "The word 'I' is the key clue — the narrator is telling their own story.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.6/q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.6/q1-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.6/RL.4.6-Q1.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.6/RL.4.6-Q1-hint.mp3"
         },
         {
           "id": "RL.4.6-Q2",
@@ -477,8 +477,8 @@
           "correct": "Third person",
           "hint": "The narrator uses 'she' and 'Sarah' — someone else is telling Sarah's story.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.6/q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.6/q2-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.6/RL.4.6-Q2.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.6/RL.4.6-Q2-hint.mp3"
         },
         {
           "id": "RL.4.6-Q3",
@@ -493,8 +493,8 @@
           "correct": "First person limits you to one character's perspective and feelings",
           "hint": "With 'I,' you only know what THAT character knows and feels.",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.6/q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.6/q3-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.6/RL.4.6-Q3.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.6/RL.4.6-Q3-hint.mp3"
         },
         {
           "id": "RL.4.6-Q4",
@@ -509,13 +509,13 @@
           "correct": "Third person omniscient",
           "hint": "'Omniscient' means all-knowing — this narrator can see into everyone's mind.",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.6/q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.6/q4-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.6/RL.4.6-Q4.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.6/RL.4.6-Q4-hint.mp3"
         },
         {
           "id": "RL.4.6-Q5",
           "type": "multiple_choice",
-          "prompt": "The same event is described two ways: Version A: 'I scored the winning goal and felt like a hero.' Version B: 'Jake scored the winning goal. His teammates cheered, but the other team walked away in silence.'\n\nHow does the point of view change what the reader learns?",
+          "prompt": "The same event is described two ways: Version A: \"I scored the winning goal and felt like a hero.\" Version B: \"Jake scored the winning goal. His teammates cheered, but the other team walked away in silence.\"\n\nHow does the point of view change what the reader learns?",
           "choices": [
             "Version A shows Jake's feelings; Version B shows both teams' reactions",
             "Version B is better written",
@@ -525,8 +525,8 @@
           "correct": "Version A shows Jake's feelings; Version B shows both teams' reactions",
           "hint": "First person (A) gives inner feelings. Third person (B) gives a wider view of the scene.",
           "difficulty": "hard",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.6/q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.6/q5-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.6/RL.4.6-Q5.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.6/RL.4.6-Q5-hint.mp3"
         }
       ],
       "standard_id": "RL.4.6",
@@ -549,8 +549,8 @@
           "correct": "Mood and atmosphere through sound and visuals",
           "hint": "Music and lighting create feelings that words alone describe differently.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.7/q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.7/q1-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.7/RL.4.7-Q1.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.7/RL.4.7-Q1-hint.mp3"
         },
         {
           "id": "RL.4.7-Q2",
@@ -565,8 +565,8 @@
           "correct": "The character's inner thoughts described by the narrator",
           "hint": "On stage, you can't hear what a character is thinking the way a narrator can tell you.",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.7/q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.7/q2-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.7/RL.4.7-Q2.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.7/RL.4.7-Q2-hint.mp3"
         },
         {
           "id": "RL.4.7-Q3",
@@ -581,13 +581,13 @@
           "correct": "Facial expressions, tone of voice, and body language of actors",
           "hint": "Actors bring characters to life with their faces, voices, and movements.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.7/q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.7/q3-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.7/RL.4.7-Q3.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.7/RL.4.7-Q3-hint.mp3"
         },
         {
           "id": "RL.4.7-Q4",
           "type": "multiple_choice",
-          "prompt": "A book describes a character as 'a tall woman with kind eyes.' In the movie, the actress has a warm smile and speaks softly. How does the movie expand on the text?",
+          "prompt": "A book describes a character as \"a tall woman with kind eyes.\" In the movie, the actress has a warm smile and speaks softly. How does the movie expand on the text?",
           "choices": [
             "It contradicts the book",
             "It shows specific visual and audio details that bring 'kind eyes' to life",
@@ -597,8 +597,8 @@
           "correct": "It shows specific visual and audio details that bring 'kind eyes' to life",
           "hint": "The movie translates 'kind eyes' into a warm smile and soft voice — making it real.",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.7/q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.7/q4-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.7/RL.4.7-Q4.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.7/RL.4.7-Q4-hint.mp3"
         },
         {
           "id": "RL.4.7-Q5",
@@ -613,8 +613,8 @@
           "correct": "The reader's imagination creates a personal version of the story",
           "hint": "When you read, YOU decide what characters look like and how settings feel.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.7/q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.7/q5-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.7/RL.4.7-Q5.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.7/RL.4.7-Q5-hint.mp3"
         }
       ],
       "standard_id": "RL.4.7",
@@ -637,8 +637,8 @@
           "correct": "How the sun moves across the sky",
           "hint": "Both cultures created stories to explain the same natural phenomenon — the sun's movement.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.9/q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.9/q1-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.9/RL.4.9-Q1.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.9/RL.4.9-Q1-hint.mp3"
         },
         {
           "id": "RL.4.9-Q2",
@@ -653,8 +653,8 @@
           "correct": "Ancient peoples around the world may have experienced similar natural disasters",
           "hint": "When many cultures tell similar stories, it often reflects shared human experiences.",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.9/q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.9/q2-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.9/RL.4.9-Q2.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.9/RL.4.9-Q2-hint.mp3"
         },
         {
           "id": "RL.4.9-Q3",
@@ -669,8 +669,8 @@
           "correct": "The theme of cleverness defeating power",
           "hint": "Different characters, same message — brains can beat brawn.",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.9/q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.9/q3-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.9/RL.4.9-Q3.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.9/RL.4.9-Q3-hint.mp3"
         },
         {
           "id": "RL.4.9-Q4",
@@ -685,8 +685,8 @@
           "correct": "Human experiences like love, courage, and fairness are universal",
           "hint": "People everywhere face similar challenges and value similar things.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.9/q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.9/q4-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.9/RL.4.9-Q4.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.9/RL.4.9-Q4-hint.mp3"
         },
         {
           "id": "RL.4.9-Q5",
@@ -701,8 +701,8 @@
           "correct": "How each culture uses its own characters and settings to explore universal themes",
           "hint": "The richest comparison looks at how different cultures express the same big ideas.",
           "difficulty": "hard",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.9/q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.9/q5-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.9/RL.4.9-Q5.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.9/RL.4.9-Q5-hint.mp3"
         }
       ],
       "standard_id": "RL.4.9",
@@ -725,13 +725,13 @@
           "correct": "She's curious and braver than the other townspeople",
           "hint": "While everyone else locked their doors in fear, Alma went TOWARD the mystery.",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.10/q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.10/q1-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.10/RL.4.10-Q1.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.10/RL.4.10-Q1-hint.mp3"
         },
         {
           "id": "RL.4.10-Q2",
           "type": "multiple_choice",
-          "prompt": "The treaty was signed on a Tuesday. By Wednesday, the two kingdoms had already broken it. 'Peace,' the old queen muttered, 'is harder to keep than to promise.'\n\nWhat is the queen's message about peace?",
+          "prompt": "The treaty was signed on a Tuesday. By Wednesday, the two kingdoms had already broken it. **Peace,** the old queen muttered, \"is harder to keep than to promise.\"\n\nWhat is the queen's message about peace?",
           "choices": [
             "Making peace is simple but maintaining it is the real challenge",
             "Tuesdays are unlucky",
@@ -741,13 +741,13 @@
           "correct": "Making peace is simple but maintaining it is the real challenge",
           "hint": "They signed peace easily but broke it immediately — keeping peace is the hard part.",
           "difficulty": "hard",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.10/q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.10/q2-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.10/RL.4.10-Q2.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.10/RL.4.10-Q2-hint.mp3"
         },
         {
           "id": "RL.4.10-Q3",
           "type": "multiple_choice",
-          "prompt": "Theo didn't notice the first leaf fall. Or the second. But by the time the maple tree was half bare, he understood what his grandmother meant when she said, 'Change happens slowly, then all at once.'\n\nWhat is Grandmother's saying about?",
+          "prompt": "Theo didn't notice the first leaf fall. Or the second. But by the time the maple tree was half bare, he understood what his grandmother meant when she said, \"Change happens slowly, then all at once.\"\n\nWhat is Grandmother's saying about?",
           "choices": [
             "How change in life can be gradual then suddenly obvious",
             "Maple trees grow fast",
@@ -757,13 +757,13 @@
           "correct": "How change in life can be gradual then suddenly obvious",
           "hint": "The leaves are a metaphor — change builds quietly until suddenly you notice everything is different.",
           "difficulty": "hard",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.10/q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.10/q3-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.10/RL.4.10-Q3.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.10/RL.4.10-Q3-hint.mp3"
         },
         {
           "id": "RL.4.10-Q4",
           "type": "multiple_choice",
-          "prompt": "Zuri had two rules: never break a promise, and always carry a pencil. 'You never know,' she said, 'when you'll need to write something down before you forget it — or before someone tries to make you forget.'\n\nWhat does the second rule suggest about Zuri?",
+          "prompt": "Zuri had two rules: never break a promise, and always carry a pencil. **You never know,** she said, \"when you'll need to write something down before you forget it — or before someone tries to make you forget.\"\n\nWhat does the second rule suggest about Zuri?",
           "choices": [
             "She forgets everything",
             "She's a teacher",
@@ -773,13 +773,13 @@
           "correct": "She values truth and recording important things",
           "hint": "She writes things down so they can't be changed or forgotten — she values accuracy and truth.",
           "difficulty": "hard",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.10/q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.10/q4-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.10/RL.4.10-Q4.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.10/RL.4.10-Q4-hint.mp3"
         },
         {
           "id": "RL.4.10-Q5",
           "type": "multiple_choice",
-          "prompt": "The ship had been at sea for thirty-seven days. Fresh water was running low, and the crew whispered about turning back. Captain Adaeze stood at the bow, eyes fixed on the horizon. 'Land by sunrise,' she said. Nobody believed her. But at dawn, there it was.\n\nWhat theme does this passage suggest?",
+          "prompt": "The ship had been at sea for thirty-seven days. Fresh water was running low, and the crew whispered about turning back. Captain Adaeze stood at the bow, eyes fixed on the horizon. **Land by sunrise,** she said. Nobody believed her. But at dawn, there it was.\n\nWhat theme does this passage suggest?",
           "choices": [
             "Ships are dangerous",
             "The ocean is beautiful",
@@ -789,8 +789,8 @@
           "correct": "Faith and determination can lead you through doubt",
           "hint": "Everyone doubted, but the captain held firm — and she was right.",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.10/q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RL.4.10/q5-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.10/RL.4.10-Q5.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.10/RL.4.10-Q5-hint.mp3"
         }
       ],
       "standard_id": "RL.4.10",
@@ -813,8 +813,8 @@
           "correct": "It orbits at 17,500 mph, completing an orbit roughly every 90 minutes",
           "hint": "The extreme speed means it circles Earth many times a day — each orbit brings a new sunrise.",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.1/q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.1/q1-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.1/RI.4.1-Q1.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.1/RI.4.1-Q1-hint.mp3"
         },
         {
           "id": "RI.4.1-Q2",
@@ -829,13 +829,13 @@
           "correct": "Scientists previously believed only humans used tools",
           "hint": "The text says it 'changed our understanding of what makes humans unique' — tool use was thought to be a human-only ability.",
           "difficulty": "hard",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.1/q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.1/q2-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.1/RI.4.1-Q2.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.1/RI.4.1-Q2-hint.mp3"
         },
         {
           "id": "RI.4.1-Q3",
           "type": "multiple_choice",
-          "prompt": "Honeybees communicate through a 'waggle dance.' A bee returning from a food source dances in a figure-eight pattern. The angle of the dance indicates the direction of the food relative to the sun.\n\nWhat specific detail tells you HOW bees show direction?",
+          "prompt": "Honeybees communicate through a \"waggle dance.\" A bee returning from a food source dances in a figure-eight pattern. The angle of the dance indicates the direction of the food relative to the sun.\n\nWhat specific detail tells you HOW bees show direction?",
           "choices": [
             "They fly in a straight line",
             "The angle of the dance relative to the sun",
@@ -845,8 +845,8 @@
           "correct": "The angle of the dance relative to the sun",
           "hint": "The last sentence gives the precise detail about direction.",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.1/q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.1/q3-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.1/RI.4.1-Q3.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.1/RI.4.1-Q3-hint.mp3"
         },
         {
           "id": "RI.4.1-Q4",
@@ -861,13 +861,13 @@
           "correct": "Selling supplies to miners was more profitable than mining itself",
           "hint": "Most miners didn't get rich, but the people selling them tools did — what does that tell you?",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.1/q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.1/q4-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.1/RI.4.1-Q4.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.1/RI.4.1-Q4-hint.mp3"
         },
         {
           "id": "RI.4.1-Q5",
           "type": "multiple_choice",
-          "prompt": "When you 'draw an inference' from a text, you —",
+          "prompt": "When you **draw an inference** from a text, you —",
           "choices": [
             "Only read the title",
             "Copy a sentence from the text",
@@ -877,8 +877,8 @@
           "correct": "Use clues from the text plus your own knowledge to figure something out",
           "hint": "An inference = text evidence + your brain. You figure out what the author implies but doesn't directly say.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.1/q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.1/q5-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.1/RI.4.1-Q5.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.1/RI.4.1-Q5-hint.mp3"
         }
       ],
       "standard_id": "RI.4.1",
@@ -901,8 +901,8 @@
           "correct": "Plastic pollution is seriously harming ocean life",
           "hint": "The first sentence states the main idea. Every other sentence supports it with examples.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.2/q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.2/q1-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.2/RI.4.2-Q1.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.2/RI.4.2-Q1-hint.mp3"
         },
         {
           "id": "RI.4.2-Q2",
@@ -917,8 +917,8 @@
           "correct": "Many roads are still visible centuries later",
           "hint": "Roads lasting CENTURIES is the most powerful evidence of their remarkable quality.",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.2/q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.2/q2-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.2/RI.4.2-Q2.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.2/RI.4.2-Q2-hint.mp3"
         },
         {
           "id": "RI.4.2-Q3",
@@ -933,8 +933,8 @@
           "correct": "The main idea and the most important supporting details in your own words",
           "hint": "Summaries are brief — main idea + key details, in YOUR words, no small details.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.2/q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.2/q3-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.2/RI.4.2-Q3.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.2/RI.4.2-Q3-hint.mp3"
         },
         {
           "id": "RI.4.2-Q4",
@@ -949,8 +949,8 @@
           "correct": "It provides real-world evidence that exercise helps brains work better",
           "hint": "Better academic performance = proof that exercise benefits the brain. It's concrete evidence!",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.2/q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.2/q4-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.2/RI.4.2-Q4.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.2/RI.4.2-Q4-hint.mp3"
         },
         {
           "id": "RI.4.2-Q5",
@@ -965,8 +965,8 @@
           "correct": "Renewable energy is growing and becoming more accessible",
           "hint": "Both paragraphs 2 and 3 give specific examples supporting the big idea in paragraph 1.",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.2/q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.2/q5-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.2/RI.4.2-Q5.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.2/RI.4.2-Q5-hint.mp3"
         }
       ],
       "standard_id": "RI.4.2",
@@ -989,8 +989,8 @@
           "correct": "Anger over taxation without representation",
           "hint": "The first sentence states the cause — being taxed without having a voice in government.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.3/q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.3/q1-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.3/RI.4.3-Q1.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.3/RI.4.3-Q1-hint.mp3"
         },
         {
           "id": "RI.4.3-Q2",
@@ -1005,8 +1005,8 @@
           "correct": "Vaccine introduces weak virus → immune system learns to fight it → body is prepared for the real virus",
           "hint": "Follow the order: introduce weak virus first, then the body learns, then it's ready.",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.3/q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.3/q2-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.3/RI.4.3-Q2.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.3/RI.4.3-Q2-hint.mp3"
         },
         {
           "id": "RI.4.3-Q3",
@@ -1021,8 +1021,8 @@
           "correct": "Literacy rates soared because books became accessible",
           "hint": "Affordable books → more people could get books → more people learned to read.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.3/q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.3/q3-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.3/RI.4.3-Q3.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.3/RI.4.3-Q3-hint.mp3"
         },
         {
           "id": "RI.4.3-Q4",
@@ -1037,8 +1037,8 @@
           "correct": "Sunlight, water, and carbon dioxide",
           "hint": "The plant combines sunlight + water + CO2 to MAKE glucose and oxygen.",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.3/q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.3/q4-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.3/RI.4.3-Q4.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.3/RI.4.3-Q4-hint.mp3"
         },
         {
           "id": "RI.4.3-Q5",
@@ -1053,8 +1053,8 @@
           "correct": "What happened, why it happened, and what resulted from it",
           "hint": "A complete explanation covers the event, its causes, and its effects.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.3/q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.3/q5-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.3/RI.4.3-Q5.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.3/RI.4.3-Q5-hint.mp3"
         }
       ],
       "standard_id": "RI.4.3",
@@ -1067,7 +1067,7 @@
         {
           "id": "RI.4.4-Q1",
           "type": "multiple_choice",
-          "prompt": "The archaeologist carefully excavated the site, removing layers of dirt to reveal ancient pottery buried for thousands of years.\n\nWhat does 'excavated' mean?",
+          "prompt": "The archaeologist carefully excavated the site, removing layers of dirt to reveal ancient pottery buried for thousands of years.\n\nWhat does **excavated** mean?",
           "choices": [
             "Covered up",
             "Photographed",
@@ -1077,13 +1077,13 @@
           "correct": "Dug up carefully",
           "hint": "She's removing layers of dirt to reveal things — that's careful digging.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.4/q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.4/q1-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.4/RI.4.4-Q1.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.4/RI.4.4-Q1-hint.mp3"
         },
         {
           "id": "RI.4.4-Q2",
           "type": "multiple_choice",
-          "prompt": "The legislative branch of government is responsible for making laws. Congress, made up of the Senate and House of Representatives, is the legislative branch.\n\nWhat does 'legislative' relate to?",
+          "prompt": "The legislative branch of government is responsible for making laws. Congress, made up of the Senate and House of Representatives, is the legislative branch.\n\nWhat does **legislative** relate to?",
           "choices": [
             "Breaking laws",
             "Making laws",
@@ -1093,13 +1093,13 @@
           "correct": "Making laws",
           "hint": "The text defines it directly — the legislative branch MAKES laws.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.4/q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.4/q2-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.4/RI.4.4-Q2.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.4/RI.4.4-Q2-hint.mp3"
         },
         {
           "id": "RI.4.4-Q3",
           "type": "multiple_choice",
-          "prompt": "The ecosystem was thriving — diverse species of plants and animals coexisted in a balanced, interdependent community.\n\nWhat does 'interdependent' mean?",
+          "prompt": "The ecosystem was thriving — diverse species of plants and animals coexisted in a balanced, interdependent community.\n\nWhat does **interdependent** mean?",
           "choices": [
             "Fighting each other",
             "Independent",
@@ -1109,13 +1109,13 @@
           "correct": "Depending on each other",
           "hint": "'Inter' means between/among. 'Dependent' means relying on. Together = relying on each other.",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.4/q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.4/q3-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.4/RI.4.4-Q3.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.4/RI.4.4-Q3-hint.mp3"
         },
         {
           "id": "RI.4.4-Q4",
           "type": "multiple_choice",
-          "prompt": "The metamorphosis of a caterpillar into a butterfly involves a complete transformation of the insect's body.\n\nWhat does 'metamorphosis' mean?",
+          "prompt": "The metamorphosis of a caterpillar into a butterfly involves a complete transformation of the insect's body.\n\nWhat does **metamorphosis** mean?",
           "choices": [
             "A type of butterfly",
             "A cocoon",
@@ -1125,13 +1125,13 @@
           "correct": "A dramatic change in form",
           "hint": "The text says 'complete transformation' right after — that defines metamorphosis!",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.4/q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.4/q4-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.4/RI.4.4-Q4.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.4/RI.4.4-Q4-hint.mp3"
         },
         {
           "id": "RI.4.4-Q5",
           "type": "multiple_choice",
-          "prompt": "The drought caused widespread famine. Crops withered in the fields, and livestock had no grass to eat. Thousands of people faced severe hunger.\n\nWhat does 'famine' mean?",
+          "prompt": "The drought caused widespread famine. Crops withered in the fields, and livestock had no grass to eat. Thousands of people faced severe hunger.\n\nWhat does **famine** mean?",
           "choices": [
             "Extreme widespread hunger",
             "Hot weather",
@@ -1141,8 +1141,8 @@
           "correct": "Extreme widespread hunger",
           "hint": "Crops died, animals starved, thousands faced severe hunger — famine means extreme hunger on a large scale.",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.4/q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.4/q5-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.4/RI.4.4-Q5.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.4/RI.4.4-Q5-hint.mp3"
         }
       ],
       "standard_id": "RI.4.4",
@@ -1165,13 +1165,13 @@
           "correct": "Problem and solution",
           "hint": "Problem presented → solution offered. Classic problem/solution structure!",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.5/q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.5/q1-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q1.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q1-hint.mp3"
         },
         {
           "id": "RI.4.5-Q2",
           "type": "multiple_choice",
-          "prompt": "Signal words like 'first, next, then, finally' indicate which text structure?",
+          "prompt": "Signal words like \"first, next, then, finally\" indicate which text structure?",
           "choices": [
             "Cause and effect",
             "Chronological/sequential order",
@@ -1181,13 +1181,13 @@
           "correct": "Chronological/sequential order",
           "hint": "These words show ORDER — things happening in sequence.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.5/q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.5/q2-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q2.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q2-hint.mp3"
         },
         {
           "id": "RI.4.5-Q3",
           "type": "multiple_choice",
-          "prompt": "A passage about hurricanes and tornadoes uses words like 'similarly,' 'however,' and 'on the other hand.' This structure is —",
+          "prompt": "A passage about hurricanes and tornadoes uses words like **similarly,** \"however,\" and \"on the other hand.\" This structure is —",
           "choices": [
             "Cause and effect",
             "Compare and contrast",
@@ -1197,8 +1197,8 @@
           "correct": "Compare and contrast",
           "hint": "'Similarly' shows likeness; 'however' and 'on the other hand' show differences.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.5/q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.5/q3-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q3.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q3-hint.mp3"
         },
         {
           "id": "RI.4.5-Q4",
@@ -1213,8 +1213,8 @@
           "correct": "Cause and effect",
           "hint": "'Because' and 'as a result' are cause-and-effect signal words.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.5/q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.5/q4-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q4.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q4-hint.mp3"
         },
         {
           "id": "RI.4.5-Q5",
@@ -1229,8 +1229,8 @@
           "correct": "It helps you understand how the author organized ideas and find information more easily",
           "hint": "Knowing the structure is like having a map — it helps you navigate the text.",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.5/q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.5/q5-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q5.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q5-hint.mp3"
         }
       ],
       "standard_id": "RI.4.5",
@@ -1253,8 +1253,8 @@
           "correct": "Was actually there and experienced it",
           "hint": "Firsthand = first person = 'I was there.'",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.6/q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.6/q1-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.6/RI.4.6-Q1.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.6/RI.4.6-Q1-hint.mp3"
         },
         {
           "id": "RI.4.6-Q2",
@@ -1269,8 +1269,8 @@
           "correct": "A soldier's diary from the Civil War battlefield",
           "hint": "The soldier was THERE. Everyone else is writing about it secondhand.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.6/q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.6/q2-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.6/RI.4.6-Q2.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.6/RI.4.6-Q2-hint.mp3"
         },
         {
           "id": "RI.4.6-Q3",
@@ -1285,13 +1285,13 @@
           "correct": "Firsthand accounts include personal feelings and experiences; secondhand accounts are more objective",
           "hint": "Being there means emotions and personal details. Writing about it later means more distance and objectivity.",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.6/q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.6/q3-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.6/RI.4.6-Q3.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.6/RI.4.6-Q3-hint.mp3"
         },
         {
           "id": "RI.4.6-Q4",
           "type": "multiple_choice",
-          "prompt": "Account A: 'I could feel the ground shaking under my feet. Dust filled the air and I couldn't see.' Account B: 'The earthquake measured 6.7 on the Richter scale and caused significant structural damage.'\n\nWhich is firsthand?",
+          "prompt": "Account A: \"I could feel the ground shaking under my feet. Dust filled the air and I couldn't see.\" Account B: \"The earthquake measured 6.7 on the Richter scale and caused significant structural damage.\"\n\nWhich is firsthand?",
           "choices": [
             "Account B",
             "Account A",
@@ -1301,8 +1301,8 @@
           "correct": "Account A",
           "hint": "Account A uses 'I' and describes personal sensory experiences. That's firsthand!",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.6/q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.6/q4-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.6/RI.4.6-Q4.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.6/RI.4.6-Q4-hint.mp3"
         },
         {
           "id": "RI.4.6-Q5",
@@ -1317,8 +1317,8 @@
           "correct": "Firsthand gives personal perspective; secondhand gives broader context — together you get a fuller picture",
           "hint": "Each type offers something the other can't. Together, they give you the complete story.",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.6/q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.6/q5-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.6/RI.4.6-Q5.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.6/RI.4.6-Q5-hint.mp3"
         }
       ],
       "standard_id": "RI.4.6",
@@ -1341,8 +1341,8 @@
           "correct": "Recycling increased each month",
           "hint": "200 → 350 → 500. The numbers are going UP each month.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.7/q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.7/q1-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.7/RI.4.7-Q1.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.7/RI.4.7-Q1-hint.mp3"
         },
         {
           "id": "RI.4.7-Q2",
@@ -1357,8 +1357,8 @@
           "correct": "See the sequence and spacing of events over time",
           "hint": "Timelines show WHEN things happened and how much time passed between events.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.7/q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.7/q2-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.7/RI.4.7-Q2.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.7/RI.4.7-Q2-hint.mp3"
         },
         {
           "id": "RI.4.7-Q3",
@@ -1373,8 +1373,8 @@
           "correct": "Pizza is the most popular but not everyone's favorite",
           "hint": "45% is the biggest slice, but that means 55% prefer something else!",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.7/q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.7/q3-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.7/RI.4.7-Q3.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.7/RI.4.7-Q3-hint.mp3"
         },
         {
           "id": "RI.4.7-Q4",
@@ -1389,8 +1389,8 @@
           "correct": "It shows the physical layout and connections between organs that are hard to describe in words",
           "hint": "Seeing WHERE organs are and how they connect is much easier in a picture than in words.",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.7/q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.7/q4-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.7/RI.4.7-Q4.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.7/RI.4.7-Q4-hint.mp3"
         },
         {
           "id": "RI.4.7-Q5",
@@ -1405,8 +1405,8 @@
           "correct": "The title and axis labels to understand what data is being shown",
           "hint": "Before reading the data, you need to know WHAT the graph is measuring!",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.7/q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.7/q5-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.7/RI.4.7-Q5.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.7/RI.4.7-Q5-hint.mp3"
         }
       ],
       "standard_id": "RI.4.7",
@@ -1429,8 +1429,8 @@
           "correct": "Research studies and specific skills art teaches",
           "hint": "The author uses data (test scores) AND specific benefits (creativity, problem-solving) as evidence.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.8/q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.8/q1-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.8/RI.4.8-Q1.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.8/RI.4.8-Q1-hint.mp3"
         },
         {
           "id": "RI.4.8-Q2",
@@ -1445,8 +1445,8 @@
           "correct": "'Studies show students who have recess perform 20% better on afternoon tests'",
           "hint": "Specific data from studies is stronger than opinions or vague claims.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.8/q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.8/q2-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.8/RI.4.8-Q2.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.8/RI.4.8-Q2-hint.mp3"
         },
         {
           "id": "RI.4.8-Q3",
@@ -1461,8 +1461,8 @@
           "correct": "It proves that legal protections actually work to save species",
           "hint": "The author's point is that protections are needed. The eagle example PROVES they work.",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.8/q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.8/q3-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.8/RI.4.8-Q3.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.8/RI.4.8-Q3-hint.mp3"
         },
         {
           "id": "RI.4.8-Q4",
@@ -1477,8 +1477,8 @@
           "correct": "Does the evidence actually support the point being made?",
           "hint": "Critical readers check whether the evidence truly connects to and proves the author's claim.",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.8/q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.8/q4-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.8/RI.4.8-Q4.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.8/RI.4.8-Q4-hint.mp3"
         },
         {
           "id": "RI.4.8-Q5",
@@ -1493,8 +1493,8 @@
           "correct": "The cafeteria was painted blue last year",
           "hint": "The paint color has nothing to do with how healthy the food is — it's irrelevant evidence.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.8/q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.8/q5-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.8/RI.4.8-Q5.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.8/RI.4.8-Q5-hint.mp3"
         }
       ],
       "standard_id": "RI.4.8",
@@ -1517,13 +1517,13 @@
           "correct": "Combine information from both texts",
           "hint": "Each text contributes different pieces. Together, they give you a complete picture.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.9/q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.9/q1-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.9/RI.4.9-Q1.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.9/RI.4.9-Q1-hint.mp3"
         },
         {
           "id": "RI.4.9-Q2",
           "type": "multiple_choice",
-          "prompt": "Text A: 'Mars has a thin atmosphere made mostly of carbon dioxide.' Text B: 'Mars has massive dust storms that can cover the entire planet for months.'\n\nUsing both texts, what can you explain about Mars?",
+          "prompt": "Text A: \"Mars has a thin atmosphere made mostly of carbon dioxide.\" Text B: \"Mars has massive dust storms that can cover the entire planet for months.\"\n\nUsing both texts, what can you explain about Mars?",
           "choices": [
             "Both its atmospheric composition AND its extreme weather patterns",
             "Only its atmosphere",
@@ -1533,8 +1533,8 @@
           "correct": "Both its atmospheric composition AND its extreme weather patterns",
           "hint": "Text A gives atmosphere facts. Text B gives weather facts. Together = a fuller picture of Mars.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.9/q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.9/q2-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.9/RI.4.9-Q2.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.9/RI.4.9-Q2-hint.mp3"
         },
         {
           "id": "RI.4.9-Q3",
@@ -1549,8 +1549,8 @@
           "correct": "Whether the sources agree, disagree, or provide complementary information",
           "hint": "Good researchers note when sources support each other, contradict each other, or fill in different gaps.",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.9/q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.9/q3-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.9/RI.4.9-Q3.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.9/RI.4.9-Q3-hint.mp3"
         },
         {
           "id": "RI.4.9-Q4",
@@ -1565,8 +1565,8 @@
           "correct": "The long-term impact of removing and then restoring a species to an ecosystem",
           "hint": "Text A = removal. Text B = reintroduction and effects. Together = the full cause-and-effect story.",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.9/q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.9/q4-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.9/RI.4.9-Q4.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.9/RI.4.9-Q4-hint.mp3"
         },
         {
           "id": "RI.4.9-Q5",
@@ -1581,8 +1581,8 @@
           "correct": "Multiple sources provide different perspectives, details, and a more complete understanding",
           "hint": "Each source might cover different angles or details. Together, your understanding is richer.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.9/q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.9/q5-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.9/RI.4.9-Q5.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.9/RI.4.9-Q5-hint.mp3"
         }
       ],
       "standard_id": "RI.4.9",
@@ -1605,8 +1605,8 @@
           "correct": "Comparing it to a computer",
           "hint": "The author says the brain's network is 'more complex than any computer ever built.'",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.10/q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.10/q1-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.10/RI.4.10-Q1.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.10/RI.4.10-Q1-hint.mp3"
         },
         {
           "id": "RI.4.10-Q2",
@@ -1621,8 +1621,8 @@
           "correct": "Despite being called 'dead,' it has been valuable for human health for millennia",
           "hint": "Called 'dead' because nothing lives in it — yet it HELPS living humans. That's ironic!",
           "difficulty": "hard",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.10/q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.10/q2-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.10/RI.4.10-Q2.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.10/RI.4.10-Q2-hint.mp3"
         },
         {
           "id": "RI.4.10-Q3",
@@ -1637,13 +1637,13 @@
           "correct": "She wanted to inspire the next generation, especially girls, to follow in her footsteps",
           "hint": "She founded an organization specifically to encourage girls in STEM — that shows her priorities.",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.10/q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.10/q3-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.10/RI.4.10-Q3.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.10/RI.4.10-Q3-hint.mp3"
         },
         {
           "id": "RI.4.10-Q4",
           "type": "multiple_choice",
-          "prompt": "Bamboo is one of the fastest-growing plants on Earth, capable of growing up to 35 inches in a single day. It's also incredibly strong — pound for pound, bamboo has a greater tensile strength than steel.\n\nWhy might bamboo be considered a 'super-plant'?",
+          "prompt": "Bamboo is one of the fastest-growing plants on Earth, capable of growing up to 35 inches in a single day. It's also incredibly strong — pound for pound, bamboo has a greater tensile strength than steel.\n\nWhy might bamboo be considered a **super-plant**?",
           "choices": [
             "It grows extremely fast AND is stronger than steel by weight",
             "It's green",
@@ -1653,8 +1653,8 @@
           "correct": "It grows extremely fast AND is stronger than steel by weight",
           "hint": "Two extraordinary qualities: incredible growth speed AND incredible strength.",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.10/q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.10/q4-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.10/RI.4.10-Q4.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.10/RI.4.10-Q4-hint.mp3"
         },
         {
           "id": "RI.4.10-Q5",
@@ -1669,8 +1669,8 @@
           "correct": "Irreplaceable knowledge accumulated over centuries was permanently lost",
           "hint": "400,000 scrolls of ancient knowledge — gone forever. That's a massive loss to human history.",
           "difficulty": "hard",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.10/q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RI.4.10/q5-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.10/RI.4.10-Q5.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.10/RI.4.10-Q5-hint.mp3"
         }
       ],
       "standard_id": "RI.4.10",
@@ -1683,7 +1683,7 @@
         {
           "id": "RF.4.3-Q1",
           "type": "multiple_choice",
-          "prompt": "The word 'autobiography' can be broken into: auto + bio + graph + y. Using these parts, what does it mean?",
+          "prompt": "The word **autobiography** can be broken into: auto + bio + graph + y. Using these parts, what does it mean?",
           "choices": [
             "A life story written by the person themselves",
             "A book about cars",
@@ -1693,13 +1693,13 @@
           "correct": "A life story written by the person themselves",
           "hint": "Auto = self, bio = life, graph = write. Self + life + write = writing about your own life!",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.4.3/q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.4.3/q1-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.3/RF.4.3-Q1.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.3/RF.4.3-Q1-hint.mp3"
         },
         {
           "id": "RF.4.3-Q2",
           "type": "multiple_choice",
-          "prompt": "Which word contains the Greek root 'tele' meaning 'far'?",
+          "prompt": "Which word contains the Greek root **tele** meaning **far**?",
           "choices": [
             "Telescope",
             "Telephone",
@@ -1709,13 +1709,13 @@
           "correct": "All of the above",
           "hint": "Tele = far. Phone = sound. Vision = seeing. Scope = viewing. All involve far-distance!",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.4.3/q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.4.3/q2-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.3/RF.4.3-Q2.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.3/RF.4.3-Q2-hint.mp3"
         },
         {
           "id": "RF.4.3-Q3",
           "type": "multiple_choice",
-          "prompt": "How many syllables are in the word 'communication'?",
+          "prompt": "How many syllables are in the word **communication**?",
           "choices": [
             "5",
             "4",
@@ -1725,13 +1725,13 @@
           "correct": "5",
           "hint": "Clap it: com-mu-ni-ca-tion. Five beats!",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.4.3/q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.4.3/q3-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.3/RF.4.3-Q3.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.3/RF.4.3-Q3-hint.mp3"
         },
         {
           "id": "RF.4.3-Q4",
           "type": "multiple_choice",
-          "prompt": "In the word 'unbreakable,' the prefix, root, and suffix are —",
+          "prompt": "In the word **unbreakable,** the prefix, root, and suffix are —",
           "choices": [
             "Un + break + able",
             "Un + brea + kable",
@@ -1741,13 +1741,13 @@
           "correct": "Un + break + able",
           "hint": "Un- (not) + break (root) + -able (can be done) = cannot be broken.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.4.3/q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.4.3/q4-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.3/RF.4.3-Q4.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.3/RF.4.3-Q4-hint.mp3"
         },
         {
           "id": "RF.4.3-Q5",
           "type": "multiple_choice",
-          "prompt": "The word 'pseudonym' uses the Greek root 'pseudo' meaning 'false' and 'nym' meaning 'name.' A pseudonym is —",
+          "prompt": "The word **pseudonym** uses the Greek root **pseudo** meaning **false** and **nym** meaning \"name.\" A pseudonym is —",
           "choices": [
             "A type of poem",
             "A false or fake name used by an author",
@@ -1757,8 +1757,8 @@
           "correct": "A false or fake name used by an author",
           "hint": "False + name = a fake name. Authors like Mark Twain used pseudonyms!",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.4.3/q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.4.3/q5-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.3/RF.4.3-Q5.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.3/RF.4.3-Q5-hint.mp3"
         }
       ],
       "standard_id": "RF.4.3",
@@ -1771,7 +1771,7 @@
         {
           "id": "RF.4.3a-Q1",
           "type": "multiple_choice",
-          "prompt": "You encounter the unfamiliar word 'transportation.' What's the BEST first step?",
+          "prompt": "You encounter the unfamiliar word \"transportation.\" What's the BEST first step?",
           "choices": [
             "Ask someone immediately",
             "Break it into parts: trans + port + a + tion",
@@ -1781,13 +1781,13 @@
           "correct": "Break it into parts: trans + port + a + tion",
           "hint": "Breaking big words into smaller, recognizable parts makes them manageable!",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.4.3a/q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.4.3a/q1-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.3a/RF.4.3a-Q1.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.3a/RF.4.3a-Q1-hint.mp3"
         },
         {
           "id": "RF.4.3a-Q2",
           "type": "multiple_choice",
-          "prompt": "The word 'international' can be decoded as —",
+          "prompt": "The word **international** can be decoded as —",
           "choices": [
             "Inter + nat + ional",
             "In + tern + at + ional",
@@ -1797,13 +1797,13 @@
           "correct": "In + ter + nation + al",
           "hint": "Inter (between) + nation + al (relating to) = between nations.",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.4.3a/q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.4.3a/q2-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.3a/RF.4.3a-Q2.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.3a/RF.4.3a-Q2-hint.mp3"
         },
         {
           "id": "RF.4.3a-Q3",
           "type": "multiple_choice",
-          "prompt": "If you know that '-ology' means 'study of,' what does 'biology' study?",
+          "prompt": "If you know that **-ology** means **study of,** what does **biology** study?",
           "choices": [
             "Rocks",
             "Stars",
@@ -1813,13 +1813,13 @@
           "correct": "Living things (bio = life)",
           "hint": "Bio = life. -ology = study of. Biology = study of life!",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.4.3a/q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.4.3a/q3-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.3a/RF.4.3a-Q3.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.3a/RF.4.3a-Q3-hint.mp3"
         },
         {
           "id": "RF.4.3a-Q4",
           "type": "multiple_choice",
-          "prompt": "How many syllables are in 'extraordinary'?",
+          "prompt": "How many syllables are in **extraordinary**?",
           "choices": [
             "6",
             "5",
@@ -1829,13 +1829,13 @@
           "correct": "6",
           "hint": "ex-tra-or-di-na-ry. Count each vowel sound!",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.4.3a/q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.4.3a/q4-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.3a/RF.4.3a-Q4.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.3a/RF.4.3a-Q4-hint.mp3"
         },
         {
           "id": "RF.4.3a-Q5",
           "type": "multiple_choice",
-          "prompt": "You see the word 'misconception' for the first time. Using morphology, what does it mean?",
+          "prompt": "You see the word **misconception** for the first time. Using morphology, what does it mean?",
           "choices": [
             "A type of puzzle",
             "A new concept",
@@ -1845,8 +1845,8 @@
           "correct": "A wrong or mistaken belief",
           "hint": "Mis (wrong) + concept (idea) + ion (state of) = a wrong idea or mistaken belief.",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.4.3a/q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.4.3a/q5-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.3a/RF.4.3a-Q5.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.3a/RF.4.3a-Q5-hint.mp3"
         }
       ],
       "standard_id": "RF.4.3a",
@@ -1869,8 +1869,8 @@
           "correct": "The difficulty and type of text they're reading",
           "hint": "You'd read a science textbook slower than a fun novel. Good readers adjust!",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.4.4/q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.4.4/q1-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.4/RF.4.4-Q1.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.4/RF.4.4-Q1-hint.mp3"
         },
         {
           "id": "RF.4.4-Q2",
@@ -1885,8 +1885,8 @@
           "correct": "When you read smoothly, your brain can focus on understanding instead of struggling with words",
           "hint": "If you're stuck on every word, you can't focus on meaning. Fluency frees your brain to think.",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.4.4/q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.4.4/q2-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.4/RF.4.4-Q2.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.4/RF.4.4-Q2-hint.mp3"
         },
         {
           "id": "RF.4.4-Q3",
@@ -1901,8 +1901,8 @@
           "correct": "Slow down and use context clues to understand unfamiliar terms",
           "hint": "Hard vocabulary = slow down, not speed up. Use context to figure out the meaning.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.4.4/q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.4.4/q3-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.4/RF.4.4-Q3.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.4/RF.4.4-Q3-hint.mp3"
         },
         {
           "id": "RF.4.4-Q4",
@@ -1917,8 +1917,8 @@
           "correct": "Reading smoothly with natural pauses at commas and periods, and expression that matches the content",
           "hint": "Fluent reading flows naturally — not too choppy, not too rushed.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.4.4/q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.4.4/q4-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.4/RF.4.4-Q4.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.4/RF.4.4-Q4-hint.mp3"
         },
         {
           "id": "RF.4.4-Q5",
@@ -1933,8 +1933,8 @@
           "correct": "Checking your own understanding as you read and going back when something doesn't make sense",
           "hint": "Good readers constantly ask themselves 'Does this make sense?' as they read.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.4.4/q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/RF.4.4/q5-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.4/RF.4.4-Q5.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.4/RF.4.4-Q5-hint.mp3"
         }
       ],
       "standard_id": "RF.4.4",
@@ -1947,7 +1947,7 @@
         {
           "id": "L.4.4-Q1",
           "type": "multiple_choice",
-          "prompt": "The company decided to table the discussion until next week's meeting.\n\nIn this sentence, 'table' means —",
+          "prompt": "The company decided to table the discussion until next week's meeting.\n\nIn this sentence, **table** means —",
           "choices": [
             "To organize neatly",
             "To postpone or delay",
@@ -1957,13 +1957,13 @@
           "correct": "To postpone or delay",
           "hint": "'Table the discussion until next week' — they're putting it aside for later.",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.4/q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.4/q1-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4/L.4.4-Q1.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4/L.4.4-Q1-hint.mp3"
         },
         {
           "id": "L.4.4-Q2",
           "type": "multiple_choice",
-          "prompt": "After the long hike, the exhausted climbers sought refuge in a mountain cabin.\n\nWhat does 'refuge' mean?",
+          "prompt": "After the long hike, the exhausted climbers sought refuge in a mountain cabin.\n\nWhat does **refuge** mean?",
           "choices": [
             "A safe place or shelter",
             "A type of mountain",
@@ -1973,13 +1973,13 @@
           "correct": "A safe place or shelter",
           "hint": "They were exhausted and needed somewhere safe to rest — a shelter.",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.4/q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.4/q2-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4/L.4.4-Q2.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4/L.4.4-Q2-hint.mp3"
         },
         {
           "id": "L.4.4-Q3",
           "type": "multiple_choice",
-          "prompt": "The word 'scale' has many meanings. What does it mean here?\n\n\"The fish's scale shimmered in the sunlight.\"",
+          "prompt": "The word **scale** has many meanings. What does it mean here?\n\n\"The fish's scale shimmered in the sunlight.\"",
           "choices": [
             "A thin plate covering a fish's body",
             "To climb",
@@ -1989,13 +1989,13 @@
           "correct": "A thin plate covering a fish's body",
           "hint": "Context: it's on a fish and it shimmers. That's the thin, shiny covering!",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.4/q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.4/q3-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4/L.4.4-Q3.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4/L.4.4-Q3-hint.mp3"
         },
         {
           "id": "L.4.4-Q4",
           "type": "multiple_choice",
-          "prompt": "The philanthropist donated millions to build schools in underserved communities.\n\nUsing the Greek roots 'phil' (love) and 'anthrop' (human), a philanthropist is someone who —",
+          "prompt": "The philanthropist donated millions to build schools in underserved communities.\n\nUsing the Greek roots **phil** (love) and **anthrop** (human), a philanthropist is someone who —",
           "choices": [
             "Collects stamps",
             "Loves helping humanity through generous donations",
@@ -2005,8 +2005,8 @@
           "correct": "Loves helping humanity through generous donations",
           "hint": "Phil = love + anthrop = human. A lover of humanity who helps through generosity!",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.4/q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.4/q4-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4/L.4.4-Q4.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4/L.4.4-Q4-hint.mp3"
         },
         {
           "id": "L.4.4-Q5",
@@ -2021,8 +2021,8 @@
           "correct": "Use the surrounding context to figure out which meaning fits",
           "hint": "The words around a multiple-meaning word tell you which definition the author intended.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.4/q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.4/q5-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4/L.4.4-Q5.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4/L.4.4-Q5-hint.mp3"
         }
       ],
       "standard_id": "L.4.4",
@@ -2035,7 +2035,7 @@
         {
           "id": "L.4.4a-Q1",
           "type": "multiple_choice",
-          "prompt": "The unprecedented snowstorm shut down the entire city — nothing like it had ever happened before.\n\nWhat does 'unprecedented' mean?",
+          "prompt": "The unprecedented snowstorm shut down the entire city — nothing like it had ever happened before.\n\nWhat does **unprecedented** mean?",
           "choices": [
             "Never happened before",
             "Very cold",
@@ -2045,13 +2045,13 @@
           "correct": "Never happened before",
           "hint": "The text literally says 'nothing like it had ever happened before' — that defines unprecedented!",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.4a/q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.4a/q1-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4a/L.4.4a-Q1.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4a/L.4.4a-Q1-hint.mp3"
         },
         {
           "id": "L.4.4a-Q2",
           "type": "multiple_choice",
-          "prompt": "The resilient community rebuilt their homes after the hurricane, stronger than before.\n\nWhat does 'resilient' mean?",
+          "prompt": "The resilient community rebuilt their homes after the hurricane, stronger than before.\n\nWhat does **resilient** mean?",
           "choices": [
             "Able to recover and bounce back",
             "Moving to a new place",
@@ -2061,13 +2061,13 @@
           "correct": "Able to recover and bounce back",
           "hint": "They rebuilt stronger than before — that's bouncing back from difficulty!",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.4a/q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.4a/q2-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4a/L.4.4a-Q2.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4a/L.4.4a-Q2-hint.mp3"
         },
         {
           "id": "L.4.4a-Q3",
           "type": "multiple_choice",
-          "prompt": "Her meticulous notes included every detail — dates, names, page numbers, and color-coded tabs.\n\nWhat does 'meticulous' mean?",
+          "prompt": "Her meticulous notes included every detail — dates, names, page numbers, and color-coded tabs.\n\nWhat does **meticulous** mean?",
           "choices": [
             "Messy and disorganized",
             "Simple and basic",
@@ -2077,13 +2077,13 @@
           "correct": "Extremely careful and thorough",
           "hint": "Every detail, color-coded tabs — that's extremely thorough and careful work!",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.4a/q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.4a/q3-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4a/L.4.4a-Q3.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4a/L.4.4a-Q3-hint.mp3"
         },
         {
           "id": "L.4.4a-Q4",
           "type": "multiple_choice",
-          "prompt": "The two countries formed an alliance, agreeing to protect each other in times of war.\n\nAn 'alliance' is —",
+          "prompt": "The two countries formed an alliance, agreeing to protect each other in times of war.\n\nAn **alliance** is —",
           "choices": [
             "A type of weapon",
             "A battle between countries",
@@ -2093,13 +2093,13 @@
           "correct": "A partnership or agreement to work together",
           "hint": "They agreed to protect EACH OTHER — that's a cooperative partnership.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.4a/q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.4a/q4-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4a/L.4.4a-Q4.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4a/L.4.4a-Q4-hint.mp3"
         },
         {
           "id": "L.4.4a-Q5",
           "type": "multiple_choice",
-          "prompt": "The verbose speaker went on for two hours, using far more words than necessary to make simple points.\n\nWhat does 'verbose' mean?",
+          "prompt": "The verbose speaker went on for two hours, using far more words than necessary to make simple points.\n\nWhat does **verbose** mean?",
           "choices": [
             "Quiet",
             "Nervous",
@@ -2109,8 +2109,8 @@
           "correct": "Using too many words",
           "hint": "Two hours and 'far more words than necessary' — verbose means overly wordy!",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.4a/q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.4a/q5-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4a/L.4.4a-Q5.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4a/L.4.4a-Q5-hint.mp3"
         }
       ],
       "standard_id": "L.4.4a",
@@ -2123,7 +2123,7 @@
         {
           "id": "L.4.4b-Q1",
           "type": "multiple_choice",
-          "prompt": "The Latin root 'dict' means 'to say or speak.' What does 'predict' mean?",
+          "prompt": "The Latin root **dict** means \"to say or speak.\" What does **predict** mean?",
           "choices": [
             "To say after",
             "To say wrongly",
@@ -2133,13 +2133,13 @@
           "correct": "To say before — to tell what will happen in advance",
           "hint": "Pre (before) + dict (say) = say before it happens = predict!",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.4b/q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.4b/q1-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4b/L.4.4b-Q1.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4b/L.4.4b-Q1-hint.mp3"
         },
         {
           "id": "L.4.4b-Q2",
           "type": "multiple_choice",
-          "prompt": "The Greek root 'graph' means 'to write.' Which word means 'a person's own handwriting of their name'?",
+          "prompt": "The Greek root **graph** means \"to write.\" Which word means \"a person's own handwriting of their name\"?",
           "choices": [
             "Autograph",
             "Telegraph",
@@ -2149,13 +2149,13 @@
           "correct": "Autograph",
           "hint": "Auto (self) + graph (write) = self-writing = your own signature!",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.4b/q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.4b/q2-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4b/L.4.4b-Q2.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4b/L.4.4b-Q2-hint.mp3"
         },
         {
           "id": "L.4.4b-Q3",
           "type": "multiple_choice",
-          "prompt": "The Latin root 'rupt' means 'to break.' What does 'interrupt' mean?",
+          "prompt": "The Latin root **rupt** means \"to break.\" What does **interrupt** mean?",
           "choices": [
             "To speak quietly",
             "To build something",
@@ -2165,13 +2165,13 @@
           "correct": "To break into a conversation or process",
           "hint": "Inter (between) + rupt (break) = break into the middle of something.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.4b/q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.4b/q3-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4b/L.4.4b-Q3.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4b/L.4.4b-Q3-hint.mp3"
         },
         {
           "id": "L.4.4b-Q4",
           "type": "multiple_choice",
-          "prompt": "The Greek prefix 'micro-' means 'small.' What does 'microscope' let you see?",
+          "prompt": "The Greek prefix **micro-** means \"small.\" What does **microscope** let you see?",
           "choices": [
             "Very small things",
             "Things in the dark",
@@ -2181,13 +2181,13 @@
           "correct": "Very small things",
           "hint": "Micro (small) + scope (to view) = a tool for viewing small things!",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.4b/q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.4b/q4-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4b/L.4.4b-Q4.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4b/L.4.4b-Q4-hint.mp3"
         },
         {
           "id": "L.4.4b-Q5",
           "type": "multiple_choice",
-          "prompt": "If 'bene-' means 'good' and 'mal-' means 'bad,' which word means 'a person who does good'?",
+          "prompt": "If **bene-** means **good** and **mal-** means **bad,** which word means \"a person who does good\"?",
           "choices": [
             "Malfunction",
             "Benefactor",
@@ -2197,8 +2197,8 @@
           "correct": "Benefactor",
           "hint": "Bene (good) + factor (doer) = a person who does good (like donating money).",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.4b/q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.4b/q5-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4b/L.4.4b-Q5.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4b/L.4.4b-Q5-hint.mp3"
         }
       ],
       "standard_id": "L.4.4b",
@@ -2211,7 +2211,7 @@
         {
           "id": "L.4.4c-Q1",
           "type": "multiple_choice",
-          "prompt": "A dictionary entry shows: 'ar·chi·pel·a·go (ar-kuh-PEL-uh-go) n. a group of islands.' What does the entry in parentheses tell you?",
+          "prompt": "A dictionary entry shows: \"ar·chi·pel·a·go (ar-kuh-PEL-uh-go) n. a group of islands.\" What does the entry in parentheses tell you?",
           "choices": [
             "How to pronounce the word",
             "A synonym",
@@ -2221,13 +2221,13 @@
           "correct": "How to pronounce the word",
           "hint": "The syllable breakdown and capitalized stress show you how to SAY the word.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.4c/q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.4c/q1-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4c/L.4.4c-Q1.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4c/L.4.4c-Q1-hint.mp3"
         },
         {
           "id": "L.4.4c-Q2",
           "type": "multiple_choice",
-          "prompt": "You want to find a word that means the same as 'happy' but with a stronger feeling. Which reference should you use?",
+          "prompt": "You want to find a word that means the same as **happy** but with a stronger feeling. Which reference should you use?",
           "choices": [
             "A thesaurus",
             "An encyclopedia",
@@ -2237,13 +2237,13 @@
           "correct": "A thesaurus",
           "hint": "A thesaurus gives you synonyms — words with similar meanings but different intensities.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.4c/q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.4c/q2-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4c/L.4.4c-Q2.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4c/L.4.4c-Q2-hint.mp3"
         },
         {
           "id": "L.4.4c-Q3",
           "type": "multiple_choice",
-          "prompt": "In a dictionary, the abbreviation 'v.' means the word is a —",
+          "prompt": "In a dictionary, the abbreviation \"v.\" means the word is a —",
           "choices": [
             "Very important word",
             "Verb",
@@ -2253,13 +2253,13 @@
           "correct": "Verb",
           "hint": "v. = verb, n. = noun, adj. = adjective. These tell you the part of speech.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.4c/q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.4c/q3-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4c/L.4.4c-Q3.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4c/L.4.4c-Q3-hint.mp3"
         },
         {
           "id": "L.4.4c-Q4",
           "type": "multiple_choice",
-          "prompt": "A dictionary shows three definitions for 'crane': 1. A large bird. 2. A machine for lifting heavy objects. 3. To stretch one's neck. The sentence is: 'She craned her neck to see over the crowd.' Which definition applies?",
+          "prompt": "A dictionary shows three definitions for **crane**: 1. A large bird. 2. A machine for lifting heavy objects. 3. To stretch one's neck. The sentence is: \"She craned her neck to see over the crowd.\" Which definition applies?",
           "choices": [
             "Definition 2",
             "Definition 1",
@@ -2269,8 +2269,8 @@
           "correct": "Definition 3",
           "hint": "She stretched her neck to see — that matches definition 3!",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.4c/q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.4c/q4-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4c/L.4.4c-Q4.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4c/L.4.4c-Q4-hint.mp3"
         },
         {
           "id": "L.4.4c-Q5",
@@ -2285,8 +2285,8 @@
           "correct": "When context clues aren't enough to determine the precise meaning",
           "hint": "Context clues are the first strategy, but sometimes you need the exact definition — that's when you grab a dictionary.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.4c/q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.4c/q5-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4c/L.4.4c-Q5.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4c/L.4.4c-Q5-hint.mp3"
         }
       ],
       "standard_id": "L.4.4c",
@@ -2309,8 +2309,8 @@
           "correct": "A simile",
           "hint": "The word 'like' compares the news to a ton of bricks. That's a simile!",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.5/q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.5/q1-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5/L.4.5-Q1.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5/L.4.5-Q1-hint.mp3"
         },
         {
           "id": "L.4.5-Q2",
@@ -2325,13 +2325,13 @@
           "correct": "A metaphor",
           "hint": "It says the world IS a stage — direct comparison without 'like' or 'as.' That's a metaphor.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.5/q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.5/q2-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5/L.4.5-Q2.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5/L.4.5-Q2-hint.mp3"
         },
         {
           "id": "L.4.5-Q3",
           "type": "multiple_choice",
-          "prompt": "What does the idiom 'hit the nail on the head' mean?",
+          "prompt": "What does the idiom \"hit the nail on the head\" mean?",
           "choices": [
             "To hammer something",
             "To be exactly right",
@@ -2341,8 +2341,8 @@
           "correct": "To be exactly right",
           "hint": "If you hit a nail perfectly on its head, you got it exactly right!",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.5/q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.5/q3-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5/L.4.5-Q3.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5/L.4.5-Q3-hint.mp3"
         },
         {
           "id": "L.4.5-Q4",
@@ -2357,8 +2357,8 @@
           "correct": "Personification",
           "hint": "Cars can't cough, sputter, or die — those are human/living qualities given to a non-living thing.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.5/q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.5/q4-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5/L.4.5-Q4.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5/L.4.5-Q4-hint.mp3"
         },
         {
           "id": "L.4.5-Q5",
@@ -2373,8 +2373,8 @@
           "correct": "Upset and furious",
           "hint": "Upset is mild. Furious is extreme. That's the biggest jump in intensity.",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.5/q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.5/q5-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5/L.4.5-Q5.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5/L.4.5-Q5-hint.mp3"
         }
       ],
       "standard_id": "L.4.5",
@@ -2397,8 +2397,8 @@
           "correct": "Her smile to sunlight — both are bright and warm",
           "hint": "'As bright as the sun' — her smile is being compared to the sun's brightness.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.5a/q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.5a/q1-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5a/L.4.5a-Q1.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5a/L.4.5a-Q1-hint.mp3"
         },
         {
           "id": "L.4.5a-Q2",
@@ -2413,8 +2413,8 @@
           "correct": "Time is valuable and shouldn't be wasted, just like money",
           "hint": "The metaphor says time IS money — meaning time is just as valuable as money.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.5a/q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.5a/q2-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5a/L.4.5a-Q2.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5a/L.4.5a-Q2-hint.mp3"
         },
         {
           "id": "L.4.5a-Q3",
@@ -2429,8 +2429,8 @@
           "correct": "She moved smoothly and gracefully",
           "hint": "Water flowing over rocks is smooth and graceful — that's how the dancer moved.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.5a/q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.5a/q3-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5a/L.4.5a-Q3.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5a/L.4.5a-Q3-hint.mp3"
         },
         {
           "id": "L.4.5a-Q4",
@@ -2445,8 +2445,8 @@
           "correct": "He is cold, uncaring, and unfeeling",
           "hint": "Stone is hard and cold. A heart of stone = a person who doesn't show emotions or compassion.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.5a/q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.5a/q4-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5a/L.4.5a-Q4.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5a/L.4.5a-Q4-hint.mp3"
         },
         {
           "id": "L.4.5a-Q5",
@@ -2461,8 +2461,8 @@
           "correct": "Similes use 'like' or 'as'; metaphors make a direct comparison without them",
           "hint": "Simile: 'brave AS a lion.' Metaphor: 'He IS a lion.' The words 'like/as' are the key difference.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.5a/q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.5a/q5-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5a/L.4.5a-Q5.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5a/L.4.5a-Q5-hint.mp3"
         }
       ],
       "standard_id": "L.4.5a",
@@ -2475,7 +2475,7 @@
         {
           "id": "L.4.5b-Q1",
           "type": "multiple_choice",
-          "prompt": "What does the proverb 'Don't judge a book by its cover' mean?",
+          "prompt": "What does the proverb \"Don't judge a book by its cover\" mean?",
           "choices": [
             "Don't evaluate things or people based only on appearance",
             "Book covers are ugly",
@@ -2485,13 +2485,13 @@
           "correct": "Don't evaluate things or people based only on appearance",
           "hint": "A book (or person) might look one way on the outside but be completely different inside.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.5b/q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.5b/q1-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5b/L.4.5b-Q1.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5b/L.4.5b-Q1-hint.mp3"
         },
         {
           "id": "L.4.5b-Q2",
           "type": "multiple_choice",
-          "prompt": "What does the adage 'Actions speak louder than words' mean?",
+          "prompt": "What does the adage \"Actions speak louder than words\" mean?",
           "choices": [
             "Actions make noise",
             "Talk loudly",
@@ -2501,13 +2501,13 @@
           "correct": "What you DO matters more than what you SAY",
           "hint": "Anyone can SAY they'll help, but actually DOING it is what counts.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.5b/q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.5b/q2-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5b/L.4.5b-Q2.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5b/L.4.5b-Q2-hint.mp3"
         },
         {
           "id": "L.4.5b-Q3",
           "type": "multiple_choice",
-          "prompt": "What does the idiom 'costs an arm and a leg' mean?",
+          "prompt": "What does the idiom \"costs an arm and a leg\" mean?",
           "choices": [
             "It causes pain",
             "You have to lose body parts",
@@ -2517,13 +2517,13 @@
           "correct": "Something is very expensive",
           "hint": "You wouldn't literally give an arm and leg — this means the price is extremely high!",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.5b/q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.5b/q3-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5b/L.4.5b-Q3.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5b/L.4.5b-Q3-hint.mp3"
         },
         {
           "id": "L.4.5b-Q4",
           "type": "multiple_choice",
-          "prompt": "What does the proverb 'The early bird catches the worm' teach?",
+          "prompt": "What does the proverb \"The early bird catches the worm\" teach?",
           "choices": [
             "Worms are best in the morning",
             "Those who act first or prepare early have an advantage",
@@ -2533,13 +2533,13 @@
           "correct": "Those who act first or prepare early have an advantage",
           "hint": "Being early and taking action gives you an advantage — in life, not just bird-feeding!",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.5b/q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.5b/q4-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5b/L.4.5b-Q4.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5b/L.4.5b-Q4-hint.mp3"
         },
         {
           "id": "L.4.5b-Q5",
           "type": "multiple_choice",
-          "prompt": "What does 'When it rains, it pours' mean?",
+          "prompt": "What does \"When it rains, it pours\" mean?",
           "choices": [
             "Rain is always heavy",
             "Always carry an umbrella",
@@ -2549,8 +2549,8 @@
           "correct": "When problems happen, they tend to come all at once",
           "hint": "It's not about weather — it means difficulties tend to pile up all at the same time.",
           "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.5b/q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.5b/q5-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5b/L.4.5b-Q5.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5b/L.4.5b-Q5-hint.mp3"
         }
       ],
       "standard_id": "L.4.5b",
@@ -2563,7 +2563,7 @@
         {
           "id": "L.4.5c-Q1",
           "type": "multiple_choice",
-          "prompt": "Which word is a SYNONYM for 'courageous'?",
+          "prompt": "Which word is a SYNONYM for **courageous**?",
           "choices": [
             "Brave",
             "Cowardly",
@@ -2573,13 +2573,13 @@
           "correct": "Brave",
           "hint": "A synonym has a similar meaning. Courageous and brave both mean showing courage.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.5c/q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.5c/q1-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5c/L.4.5c-Q1.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5c/L.4.5c-Q1-hint.mp3"
         },
         {
           "id": "L.4.5c-Q2",
           "type": "multiple_choice",
-          "prompt": "Which word is an ANTONYM for 'generous'?",
+          "prompt": "Which word is an ANTONYM for **generous**?",
           "choices": [
             "Kind",
             "Wealthy",
@@ -2589,13 +2589,13 @@
           "correct": "Selfish",
           "hint": "An antonym is the opposite. The opposite of giving freely (generous) is keeping everything for yourself (selfish).",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.5c/q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.5c/q2-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5c/L.4.5c-Q2.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5c/L.4.5c-Q2-hint.mp3"
         },
         {
           "id": "L.4.5c-Q3",
           "type": "multiple_choice",
-          "prompt": "The words 'happy,' 'joyful,' and 'ecstatic' are synonyms, but they differ in —",
+          "prompt": "The words **happy,** \"joyful,\" and **ecstatic** are synonyms, but they differ in —",
           "choices": [
             "They mean completely different things",
             "Nothing — they're identical",
@@ -2605,13 +2605,13 @@
           "correct": "Their intensity — from mild to extreme happiness",
           "hint": "Happy is mild. Joyful is stronger. Ecstatic is extreme. Same family, different levels.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.5c/q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.5c/q3-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5c/L.4.5c-Q3.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5c/L.4.5c-Q3-hint.mp3"
         },
         {
           "id": "L.4.5c-Q4",
           "type": "multiple_choice",
-          "prompt": "Which word BEST replaces 'said' to show the character is angry?\n\n\"'That's not fair!' ____ Marcus.\"",
+          "prompt": "Which word BEST replaces **said** to show the character is angry?\n\n\"'That's not fair!\" ____ Marcus.\"",
           "choices": [
             "Whispered",
             "Sighed",
@@ -2621,8 +2621,8 @@
           "correct": "Shouted",
           "hint": "An angry person saying 'That's not fair!' would most likely raise their voice — shout!",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.5c/q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.5c/q4-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5c/L.4.5c-Q4.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5c/L.4.5c-Q4-hint.mp3"
         },
         {
           "id": "L.4.5c-Q5",
@@ -2637,8 +2637,8 @@
           "correct": "Expand and contract",
           "hint": "Expand = get bigger. Contract = get smaller. Those are opposites!",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.5c/q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.5c/q5-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5c/L.4.5c-Q5.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5c/L.4.5c-Q5-hint.mp3"
         }
       ],
       "standard_id": "L.4.5c",
@@ -2661,13 +2661,13 @@
           "correct": "The rocket accelerated through the atmosphere at tremendous speed.",
           "hint": "Precise means specific. 'Rocket,' 'accelerated,' 'atmosphere,' and 'tremendous' are all precise.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.6/q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.6/q1-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.6/L.4.6-Q1.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.6/L.4.6-Q1-hint.mp3"
         },
         {
           "id": "L.4.6-Q2",
           "type": "multiple_choice",
-          "prompt": "In social studies, the word 'democracy' means —",
+          "prompt": "In social studies, the word **democracy** means —",
           "choices": [
             "A system where citizens have the power to make decisions through voting",
             "A military government",
@@ -2677,13 +2677,13 @@
           "correct": "A system where citizens have the power to make decisions through voting",
           "hint": "Demo = people. Cracy = rule. Democracy = rule by the people.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.6/q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.6/q2-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.6/L.4.6-Q2.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.6/L.4.6-Q2-hint.mp3"
         },
         {
           "id": "L.4.6-Q3",
           "type": "multiple_choice",
-          "prompt": "Replace 'nice' with a more precise word:\n\n\"The ____ sunset painted the sky in shades of orange and pink.\"",
+          "prompt": "Replace **nice** with a more precise word:\n\n\"The ____ sunset painted the sky in shades of orange and pink.\"",
           "choices": [
             "Good",
             "Nice",
@@ -2693,13 +2693,13 @@
           "correct": "Spectacular",
           "hint": "A sunset that paints the sky deserves a more vivid word than 'nice'!",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.6/q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.6/q3-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.6/L.4.6-Q3.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.6/L.4.6-Q3-hint.mp3"
         },
         {
           "id": "L.4.6-Q4",
           "type": "multiple_choice",
-          "prompt": "The academic phrase 'in contrast' signals that the author is about to —",
+          "prompt": "The academic phrase **in contrast** signals that the author is about to —",
           "choices": [
             "Give an example",
             "Show a difference",
@@ -2709,8 +2709,8 @@
           "correct": "Show a difference",
           "hint": "'In contrast' = the next idea will be different from the previous one.",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.6/q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.6/q4-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.6/L.4.6-Q4.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.6/L.4.6-Q4-hint.mp3"
         },
         {
           "id": "L.4.6-Q5",
@@ -2725,8 +2725,8 @@
           "correct": "Nervous",
           "hint": "Stammering, avoiding eye contact, shaky voice — classic signs of nervousness!",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.6/q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/L.4.6/q5-hint.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.6/L.4.6-Q5.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.6/L.4.6-Q5-hint.mp3"
         }
       ],
       "standard_id": "L.4.6",

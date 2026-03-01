@@ -91,11 +91,10 @@ async function uploadFile(filePath, storagePath) {
   );
 
   if (res.ok) {
-    console.log(`  ✓ ${storagePath}`);
     return true;
   } else {
     const body = await res.text();
-    console.error(`  ✗ ${storagePath} — ${res.status}: ${body}`);
+    console.error(`\n  FAIL ${storagePath} — ${res.status}: ${body}`);
     return false;
   }
 }
@@ -107,18 +106,32 @@ async function main() {
   await ensureBucket();
 
   const files = collectMp3Files(AUDIO_DIR);
-  console.log(`\nFound ${files.length} .mp3 files to upload:\n`);
+  console.log(`\nFound ${files.length} .mp3 files to upload\n`);
 
   let success = 0;
   let failed = 0;
+  const total = files.length;
 
+  function progressBar() {
+    const done = success + failed;
+    const width = 30;
+    const pct = total > 0 ? done / total : 0;
+    const filled = Math.round(width * pct);
+    const bar = "\u2588".repeat(filled) + "\u2591".repeat(width - filled);
+    const pctStr = (pct * 100).toFixed(1).padStart(5);
+    const failStr = failed > 0 ? ` | ${failed} failed` : "";
+    process.stdout.write(`\r  ${bar} ${pctStr}% (${done}/${total})${failStr}  `);
+  }
+
+  progressBar();
   for (const { fullPath, storagePath } of files) {
     const ok = await uploadFile(fullPath, storagePath);
     if (ok) success++;
     else failed++;
+    progressBar();
   }
 
-  console.log(`\nDone: ${success} uploaded, ${failed} failed`);
+  console.log(`\n\nDone: ${success} uploaded, ${failed} failed`);
 
   if (success > 0) {
     const samplePath = files[0].storagePath;

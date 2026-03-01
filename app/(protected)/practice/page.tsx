@@ -200,10 +200,21 @@ function getStars(correct: number, total: number): number {
 
 const SUPABASE_STORAGE = "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public";
 
-function questionImageUrl(questionId: string): string {
-  const match = questionId.match(/^(.+)-Q(\d+)$/i);
+const GRADE_FOLDER: Record<string, string> = {
+  kindergarten: "kindergarten",
+  "1st": "1st-grade",
+  "2nd": "2nd-grade",
+  "3rd": "3rd-grade",
+  "4th": "4th-grade",
+};
+
+function questionImageUrl(questionId: string, gradeKey?: string): string {
+  const match = questionId.match(/^(.+)-Q\d+$/i);
   if (!match) return "";
-  return `${SUPABASE_STORAGE}/images/${match[1]}/q${match[2]}.png`;
+  const standardId = match[1]; // e.g. "RL.K.1"
+  const folder = gradeKey ? GRADE_FOLDER[gradeKey] || gradeKey : "";
+  if (!folder) return "";
+  return `${SUPABASE_STORAGE}/images/${folder}/${standardId}/${questionId}.png`;
 }
 
 /* ─── Audio Helpers ──────────────────────────────────── */
@@ -325,6 +336,7 @@ function PracticeLoader() {
 function PracticeSession({ child, standard, gradeStandards }: { child: Child; standard: Standard; gradeStandards: Standard[] }) {
   const router = useRouter();
   const { unlockAudio, stop, playCorrectChime, playIncorrectBuzz } = useAudio();
+  const gradeKey = levelNameToGradeKey(child?.reading_level ?? null);
 
   // Zustand store
   const phase = usePracticeStore((s) => s.phase);
@@ -744,10 +756,10 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
         </motion.div>
 
         {/* Question image — compact on mobile */}
-        {questionImageUrl(q.id) && (
+        {questionImageUrl(q.id, gradeKey) && (
           <motion.div variants={fadeUp} className="flex justify-center mb-2">
             <img
-              src={questionImageUrl(q.id)}
+              src={questionImageUrl(q.id, gradeKey)}
               alt=""
               className="max-h-[150px] md:max-h-[200px] w-auto rounded-2xl shadow-md object-cover"
               onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = 'none'; }}

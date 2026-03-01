@@ -40,7 +40,16 @@ type FilterTab =
   | "lesson-practice"
   | "lesson-read"
   | "needs-review"
-  | "thumbs-down";
+  | "thumbs-down"
+  | "test-batch";
+
+const TEST_IDS = new Set([
+  "RL.K.1-Q1", "RF.K.3a-Q1",
+  "RL.1.1-Q1", "RL.1.2-Q1",
+  "RL.2.1-Q1", "RL.2.2-Q1", "L.2.4-Q5",
+  "RL.3.1-Q1", "RL.3.4-Q3",
+  "RL.4.1-Q1",
+]);
 
 type GradeFilter = "all" | "Pre-K" | "Kindergarten" | "1st Grade" | "2nd Grade" | "3rd Grade" | "4th Grade";
 
@@ -59,7 +68,17 @@ const LOCAL_KEY = "readee_question_audit";
 const SUPABASE_IMG =
   "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images";
 const CHOICE_LETTERS = ["A", "B", "C", "D"];
+const SUPABASE_AUDIO =
+  "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio";
 const ACCENT_COLORS = ["#60a5fa", "#4ade80", "#fb923c", "#a78bfa"];
+
+const GRADE_FOLDER: Record<string, string> = {
+  Kindergarten: "kindergarten",
+  "1st Grade": "1st-grade",
+  "2nd Grade": "2nd-grade",
+  "3rd Grade": "3rd-grade",
+  "4th Grade": "4th-grade",
+};
 
 const LEVEL_LABELS: Record<string, string> = {
   "pre-k": "Pre-K",
@@ -72,7 +91,7 @@ const LEVEL_LABELS: Record<string, string> = {
 
 /* ── Build flat question list ───────────────────────── */
 
-function buildQuestions(): AuditQuestion[] {
+function buildQuestions(useLocal: boolean): AuditQuestion[] {
   const questions: AuditQuestion[] = [];
 
   // 1. Standards MCQ — all grades
@@ -89,9 +108,24 @@ function buildQuestions(): AuditQuestion[] {
       : gradeChar === "4" ? "4th Grade"
       : gradeChar;
 
+    const gradeFolder = GRADE_FOLDER[gradeLabel] || "other";
+
     for (const q of standard.questions) {
       const qStdId = q.id.split("-Q")[0];
-      const qNum = q.id.split("-Q")[1];
+      const assetPath = `${gradeFolder}/${qStdId}`;
+
+      const imageUrl = useLocal
+        ? `/images/${assetPath}/${q.id}.png`
+        : `${SUPABASE_IMG}/${assetPath}/${q.id}.png`;
+      const audioUrl = useLocal
+        ? `/audio/${assetPath}/${q.id}.mp3`
+        : `${SUPABASE_AUDIO}/${assetPath}/${q.id}.mp3`;
+      const hintAudioUrl = q.hint
+        ? (useLocal
+            ? `/audio/${assetPath}/${q.id}-hint.mp3`
+            : `${SUPABASE_AUDIO}/${assetPath}/${q.id}-hint.mp3`)
+        : undefined;
+
       questions.push({
         id: q.id,
         source: "standards",
@@ -101,9 +135,9 @@ function buildQuestions(): AuditQuestion[] {
         choices: q.choices ?? [],
         correct: q.correct,
         hint: q.hint,
-        imageUrl: `${SUPABASE_IMG}/${qStdId}/q${qNum}.png`,
-        audioUrl: q.audio_url,
-        hintAudioUrl: q.hint_audio_url,
+        imageUrl,
+        audioUrl,
+        hintAudioUrl,
         standardId: qStdId,
       });
     }
@@ -266,6 +300,27 @@ function SpeakerButton({
   );
 }
 
+/* ── Render **word** as bold+underline ─────────────── */
+
+function RichPrompt({ text }: { text: string }) {
+  const parts = text.split(/(\*\*[^*]+?\*\*)/g);
+  return (
+    <>
+      {parts.map((part, i) => {
+        const bold = part.match(/^\*\*(.+?)\*\*$/);
+        if (bold) {
+          return (
+            <span key={i} className="font-bold underline decoration-indigo-400 decoration-2 underline-offset-2">
+              {bold[1]}
+            </span>
+          );
+        }
+        return <span key={i}>{part}</span>;
+      })}
+    </>
+  );
+}
+
 /* ── Tab button ────────────────────────────────────── */
 
 function TabButton({
@@ -296,7 +351,8 @@ function TabButton({
 /* ── Main Page ──────────────────────────────────────── */
 
 export default function QuestionAuditPage() {
-  const allQuestions = useMemo(() => buildQuestions(), []);
+  const [useLocal, setUseLocal] = useState(false);
+  const allQuestions = useMemo(() => buildQuestions(useLocal), [useLocal]);
   const [auditMap, setAuditMap] = useState<AuditMap>({});
   const [gradeFilter, setGradeFilter] = useState<GradeFilter>("all");
   const [tab, setTab] = useState<FilterTab>("all");
@@ -305,6 +361,7 @@ export default function QuestionAuditPage() {
   const [imgError, setImgError] = useState(false);
   const [useLive, setUseLive] = useState(false);
   const [saving, setSaving] = useState(false);
+  const [searchId, setSearchId] = useState("");
   const [jumpOpen, setJumpOpen] = useState(false);
   const [jumpValue, setJumpValue] = useState("");
   const jumpInputRef = useRef<HTMLInputElement>(null);
@@ -395,9 +452,12 @@ export default function QuestionAuditPage() {
     return { standards, practice, read, needsReview, thumbsDown };
   }, [gradeQuestions, auditMap]);
 
-  // Filter
+  // Filter — test-batch uses allQuestions (ignores grade filter)
   const filtered = useMemo(() => {
-    return gradeQuestions.filter((q) => {
+    if (tab === "test-batch") {
+      return allQuestions.filter((q) => TEST_IDS.has(q.id));
+    }
+    let result = gradeQuestions.filter((q) => {
       if (tab === "all") return true;
       if (tab === "standards") return q.source === "standards";
       if (tab === "lesson-practice") return q.source === "lesson-practice";
@@ -407,7 +467,12 @@ export default function QuestionAuditPage() {
       if (tab === "thumbs-down") return entry?.rating === "down";
       return true;
     });
-  }, [gradeQuestions, auditMap, tab]);
+    if (searchId.trim()) {
+      const term = searchId.trim().toLowerCase();
+      result = result.filter((q) => q.id.toLowerCase().includes(term));
+    }
+    return result;
+  }, [allQuestions, gradeQuestions, auditMap, tab, searchId]);
 
   // Current question
   const safeIndex = Math.min(currentIndex, Math.max(0, filtered.length - 1));
@@ -420,10 +485,10 @@ export default function QuestionAuditPage() {
     setImgError(false);
   }, [safeIndex, audit?.comment]);
 
-  // Reset index when filter or grade changes
+  // Reset index when filter, grade, or search changes
   useEffect(() => {
     setCurrentIndex(0);
-  }, [tab, gradeFilter]);
+  }, [tab, gradeFilter, searchId]);
 
   // Ensure audio is unlocked
   const ensureAudio = useCallback(() => {
@@ -521,6 +586,14 @@ export default function QuestionAuditPage() {
     [useLive, auditMap]
   );
 
+  // Reset all feedback
+  const handleReset = useCallback(() => {
+    if (!window.confirm("Clear ALL audit feedback? This cannot be undone.")) return;
+    setAuditMap({});
+    saveLocal({});
+    setComment("");
+  }, []);
+
   // Export
   const handleExport = useCallback(() => {
     // Build a rich export with question text, not just IDs
@@ -583,6 +656,12 @@ export default function QuestionAuditPage() {
             {gradeCounts[gradeFilter].reviewed} / {gradeCounts[gradeFilter].total}
           </span>
           <button
+            onClick={handleReset}
+            className="px-3 py-1.5 rounded-xl bg-red-50 text-red-500 hover:bg-red-100 dark:bg-red-900/30 dark:text-red-400 dark:hover:bg-red-900/50 font-semibold text-sm transition-colors"
+          >
+            Reset
+          </button>
+          <button
             onClick={handleExport}
             className="px-3 py-1.5 rounded-xl bg-zinc-100 text-zinc-600 hover:bg-zinc-200 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700 font-semibold text-sm transition-colors"
           >
@@ -590,16 +669,28 @@ export default function QuestionAuditPage() {
           </button>
         </div>
 
-        {/* Live status */}
-        <div className="flex items-center gap-2 mb-4">
-          <span
-            className={`w-2 h-2 rounded-full ${useLive ? "bg-emerald-500" : "bg-amber-500"}`}
-          />
-          <span className="text-xs text-zinc-500 dark:text-slate-400">
-            {useLive
-              ? "Live - feedback syncs to cloud"
-              : "Offline - saving to this browser only"}
-          </span>
+        {/* Live status + asset source toggle */}
+        <div className="flex items-center gap-4 mb-4">
+          <div className="flex items-center gap-2">
+            <span
+              className={`w-2 h-2 rounded-full ${useLive ? "bg-emerald-500" : "bg-amber-500"}`}
+            />
+            <span className="text-xs text-zinc-500 dark:text-slate-400">
+              {useLive
+                ? "Live - feedback syncs to cloud"
+                : "Offline - saving to this browser only"}
+            </span>
+          </div>
+          <button
+            onClick={() => setUseLocal((v) => !v)}
+            className={`px-3 py-1 rounded-lg text-xs font-semibold transition-all ${
+              useLocal
+                ? "bg-amber-100 text-amber-700 dark:bg-amber-900/50 dark:text-amber-300"
+                : "bg-zinc-100 text-zinc-500 dark:bg-slate-800 dark:text-slate-400"
+            }`}
+          >
+            {useLocal ? "Local files" : "Supabase"}
+          </button>
         </div>
 
         {/* Grade chapters */}
@@ -677,6 +768,37 @@ export default function QuestionAuditPage() {
             active={tab === "thumbs-down"}
             onClick={() => setTab("thumbs-down")}
           />
+          <button
+            onClick={() => {
+              setTab("test-batch");
+              setUseLocal(true);
+              setGradeFilter("all");
+              setSearchId("");
+            }}
+            className={`px-4 py-2.5 rounded-xl font-semibold text-sm transition-all whitespace-nowrap ${
+              tab === "test-batch"
+                ? "bg-amber-500 text-white shadow-md"
+                : "bg-amber-50 text-amber-700 hover:bg-amber-100 dark:bg-amber-900/30 dark:text-amber-300 dark:hover:bg-amber-900/50"
+            }`}
+          >
+            Test Batch (10)
+          </button>
+        </div>
+
+        {/* Search by ID */}
+        <div className="mb-4">
+          <input
+            type="text"
+            placeholder="Search by ID (e.g. RL.K.1-Q1)..."
+            value={searchId}
+            onChange={(e) => setSearchId(e.target.value)}
+            className="w-full px-4 py-2.5 rounded-xl border-2 border-zinc-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-sm text-zinc-900 dark:text-white placeholder:text-zinc-400 dark:placeholder:text-slate-500 outline-none focus:border-indigo-400 transition-colors"
+          />
+          {searchId.trim() && (
+            <p className="text-xs text-zinc-500 dark:text-slate-400 mt-1 ml-1">
+              {filtered.length} match{filtered.length !== 1 ? "es" : ""}
+            </p>
+          )}
         </div>
 
         {/* Empty state */}
@@ -827,12 +949,12 @@ export default function QuestionAuditPage() {
 
                 {/* Image */}
                 {!imgError ? (
-                  <div className="rounded-xl overflow-hidden flex justify-center bg-zinc-100 dark:bg-slate-700/50">
+                  <div className="rounded-xl overflow-hidden flex justify-center">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={q.imageUrl}
                       alt={`Question ${q.id}`}
-                      className="max-h-44 w-auto rounded-xl"
+                      className="w-full max-h-80 object-contain rounded-xl"
                       onError={() => setImgError(true)}
                     />
                   </div>
@@ -850,7 +972,7 @@ export default function QuestionAuditPage() {
                 {/* Prompt + Audio buttons */}
                 <div className="rounded-xl bg-zinc-50 dark:bg-slate-700/50 p-4">
                   <p className="text-base leading-relaxed text-zinc-900 dark:text-white/90 whitespace-pre-line">
-                    {q.prompt}
+                    <RichPrompt text={q.prompt} />
                   </p>
                   <div className="flex flex-wrap gap-2 mt-3">
                     {q.audioUrl ? (

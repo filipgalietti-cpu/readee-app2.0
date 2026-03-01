@@ -34,8 +34,8 @@ const client = new PredictionServiceClient({
 const ENDPOINT = `projects/${PROJECT_ID}/locations/${LOCATION}/publishers/google/models/${MODEL}`;
 const IMAGES_DIR = path.resolve(__dirname, "..", "public", "images");
 const PROGRESS_PATH = path.resolve(__dirname, "image-progress.json");
-const DELAY_MS = 5000;
-const MAX_REQUESTS = 95;
+const DELAY_MS = 1000;
+const MAX_REQUESTS = 500;
 const RATE_LIMIT_WAIT_MS = 30000;
 
 const ALL_CSVS = ["image-prompts.csv", "system1-image-prompts.csv"];
@@ -97,6 +97,16 @@ function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+function progressBar(completed, total, failures) {
+  const width = 30;
+  const pct = total > 0 ? completed / total : 0;
+  const filled = Math.round(width * pct);
+  const bar = "█".repeat(filled) + "░".repeat(width - filled);
+  const pctStr = (pct * 100).toFixed(1).padStart(5);
+  const failStr = failures > 0 ? ` | ${failures} failed` : "";
+  process.stdout.write(`\r  ${bar} ${pctStr}% (${completed}/${total})${failStr}  `);
+}
+
 async function generateImage(prompt) {
   const instanceValue = helpers.toValue({ prompt });
   const parameters = helpers.toValue({
@@ -131,11 +141,14 @@ async function processCSV(csvName, progress, state) {
 
   const csvContent = fs.readFileSync(csvPath, "utf-8");
   const rows = parseCSV(csvContent);
-  console.log(`\n--- ${csvName}: ${rows.length} prompts ---\n`);
+  const total = rows.length;
+  let failures = 0;
+  console.log(`\n--- ${csvName}: ${total} prompts ---\n`);
+  progressBar(progress.completed.length, total, 0);
 
   for (let i = 0; i < rows.length; i++) {
     if (state.requestCount >= MAX_REQUESTS) {
-      console.log(`\nReached ${MAX_REQUESTS} request limit. Run again to continue.`);
+      console.log(`\n\nReached ${MAX_REQUESTS} request limit. Run again to continue.`);
       state.stopped = true;
       return;
     }
@@ -167,22 +180,23 @@ async function processCSV(csvName, progress, state) {
       state.requestCount++;
       state.consecutiveRateLimits = 0;
 
-      console.log(`[${i + 1}/${rows.length}] Generated ${key}`);
+      progressBar(progress.completed.length, total, failures);
     } catch (err) {
       const msg = err.message || "";
       if (msg.includes("429") || msg.includes("RESOURCE_EXHAUSTED")) {
         state.consecutiveRateLimits++;
         if (state.consecutiveRateLimits >= 5) {
-          console.log(`\n5 consecutive rate limits — stopping. Run again later.`);
+          console.log(`\n\n5 consecutive rate limits — stopping. Run again later.`);
           state.stopped = true;
           return;
         }
-        console.log(`[${i + 1}/${rows.length}] Rate limited on ${key} — waiting 30s (${state.consecutiveRateLimits}/5)`);
+        console.log(`\n  Rate limited — waiting 30s (${state.consecutiveRateLimits}/5)`);
         await sleep(RATE_LIMIT_WAIT_MS);
         i--; // retry this image after the wait
         continue;
       }
-      console.error(`[${i + 1}/${rows.length}] FAILED ${key}: ${msg}`);
+      failures++;
+      progressBar(progress.completed.length, total, failures);
     }
 
     // Delay between requests
@@ -208,8 +222,8 @@ async function main() {
     await processCSV(csvName, progress, state);
   }
 
-  console.log(`\nDone: ${state.requestCount} images generated this run`);
-  console.log(`Total completed: ${progress.completed.length}`);
+  console.log(`\n\nDone: ${state.requestCount} images generated this run`);
+  console.log(`Total completed: ${progress.completed.length}/${896}`);
 }
 
 main();
