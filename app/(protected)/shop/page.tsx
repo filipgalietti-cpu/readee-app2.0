@@ -213,10 +213,10 @@ function ShopContent({
           whileHover={{ scale: 1.08 }}
           whileTap={{ scale: 0.95 }}
         >
-          <img src="/images/shop/mystery-box-closed.png" alt="Mystery Box" className="w-full h-full object-contain" style={{ filter: "drop-shadow(0 4px 20px rgba(245, 158, 11, 0.3))" }} />
+          <img src="/images/shop/mystery-box-closed-noshadow.png" alt="Mystery Box" className="w-full h-full object-contain" />
           {/* Shine sweep */}
           <div className="absolute inset-0 overflow-hidden rounded-xl pointer-events-none">
-            <div className="absolute -inset-full animate-[shine_3s_ease-in-out_infinite] bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-[-20deg]" />
+            <div className="absolute -inset-full animate-[shine_4s_ease-in-out_infinite] bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-[-20deg]" />
           </div>
           {/* Golden sparkles */}
           {[
