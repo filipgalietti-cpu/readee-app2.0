@@ -91,6 +91,7 @@ export default function NavAuth() {
   const activeChild = childData || storeChildren[0] || null;
   const analyticsHref = activeChild ? `/analytics?child=${activeChild.id}` : "/analytics";
 
+  const isAuthPage = pathname === "/login" || pathname === "/signup";
   const isActive = (href: string) => pathname === href;
 
   const linkClass = (href: string) =>
@@ -210,18 +211,22 @@ export default function NavAuth() {
             </>
           ) : (
             <>
-              <Link
-                href="/login"
-                className={linkClass("/login")}
-              >
-                Log In
-              </Link>
-              <Link
-                href="/signup"
-                className="text-sm font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors"
-              >
-                Sign Up for Free!
-              </Link>
+              {!isAuthPage && (
+                <>
+                  <Link
+                    href="/login"
+                    className={linkClass("/login")}
+                  >
+                    Log In
+                  </Link>
+                  <Link
+                    href="/signup"
+                    className="text-sm font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors"
+                  >
+                    Sign Up for Free!
+                  </Link>
+                </>
+              )}
             </>
           )}
         </div>
@@ -297,12 +302,16 @@ export default function NavAuth() {
             </>
           ) : (
             <>
-              <Link href="/login" className="block py-2.5 text-sm font-medium text-zinc-700 dark:text-slate-300 hover:text-indigo-700 dark:hover:text-indigo-300">
-                Log In
-              </Link>
-              <Link href="/signup" className="block py-2.5 text-sm font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300">
-                Sign Up for Free!
-              </Link>
+              {!isAuthPage && (
+                <>
+                  <Link href="/login" className="block py-2.5 text-sm font-medium text-zinc-700 dark:text-slate-300 hover:text-indigo-700 dark:hover:text-indigo-300">
+                    Log In
+                  </Link>
+                  <Link href="/signup" className="block py-2.5 text-sm font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300">
+                    Sign Up for Free!
+                  </Link>
+                </>
+              )}
             </>
           )}
         </div>

@@ -288,7 +288,7 @@ function LoginForm() {
           href="/signup"
           className="text-indigo-600 font-medium hover:underline"
         >
-          Sign up
+          Sign up for free
         </Link>
       </p>
     </AuthCard>
