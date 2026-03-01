@@ -69,6 +69,32 @@ const CHOICE_COLORS = [
   "bg-emerald-100 text-emerald-800 border-emerald-300 dark:bg-emerald-900/60 dark:text-emerald-200 dark:border-emerald-700",
 ];
 
+/* ─── Highlight proper nouns in question text ───────── */
+
+const QUESTION_SKIP_WORDS = new Set([
+  "What","Who","Where","When","Why","How","Which","Does","Do","Did",
+  "Is","Are","Was","Were","Can","Could","Will","Would","Should",
+  "The","A","An","In","On","At","If","It","Read","Look","Find",
+  "Pick","Choose","Tell","That","This","These","Those","Each",
+  "Every","Some","Many","Most","All","Both","Have","Has","Had",
+]);
+
+function highlightQuestion(text: string): React.ReactNode[] {
+  // Split on word boundaries, keeping separators
+  return text.split(/(\s+|(?=[.,!?;:])|(?<=[.,!?;:]))/).map((part, i) => {
+    const clean = part.replace(/[^a-zA-Z']/g, "");
+    // Highlight capitalized words that aren't common question/sentence starters
+    if (
+      clean.length > 1 &&
+      /^[A-Z]/.test(clean) &&
+      !QUESTION_SKIP_WORDS.has(clean)
+    ) {
+      return <span key={i} className="text-indigo-600 dark:text-indigo-400">{part}</span>;
+    }
+    return part;
+  });
+}
+
 /* ─── Kid-friendly lesson titles & prompts ────────────── */
 
 const KID_TITLES: Record<string, string> = {
@@ -755,7 +781,7 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
             <img
               src={questionImageUrl(q.id, gradeKey)}
               alt=""
-              className="max-h-[220px] md:max-h-[300px] w-full object-contain rounded-2xl shadow-md"
+              className="max-h-[220px] md:max-h-[300px] w-auto object-contain rounded-2xl shadow-md border-2 border-white dark:border-slate-700"
               onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = 'none'; }}
             />
           </motion.div>
@@ -763,16 +789,16 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
 
         {/* ── Passage — context before the question ── */}
         {passage && (
-          <motion.div variants={fadeUp} className="mb-3 rounded-xl bg-zinc-50 border border-zinc-200 dark:bg-slate-800/80 dark:border-slate-700 px-3 py-2">
-            <p className="text-sm leading-relaxed text-zinc-500 dark:text-slate-400 whitespace-pre-line">{passage}</p>
+          <motion.div variants={fadeUp} className="mb-5 rounded-xl bg-zinc-50 border border-zinc-200 dark:bg-slate-800/80 dark:border-slate-700 px-3 py-2">
+            <p className="text-sm leading-relaxed text-gray-600 dark:text-slate-400 italic whitespace-pre-line">{passage}</p>
           </motion.div>
         )}
 
         {/* ── Question + replay button ── */}
         <motion.div variants={fadeUp} className="mb-3">
           <div className="flex items-center gap-2 max-w-[600px] mx-auto justify-center">
-            <h2 className="text-xl md:text-2xl font-bold text-zinc-900 dark:text-white leading-snug text-center">
-              {question}
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white leading-snug text-center">
+              {highlightQuestion(question)}
             </h2>
             <button
               onClick={handleReplay}
