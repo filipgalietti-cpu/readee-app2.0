@@ -626,10 +626,13 @@ function ChildDashboard({
   };
 
   return (
-    <div
-      className={bgImage ? "min-h-screen -mx-6 -my-8 px-6 py-8" : ""}
-      style={bgImage ? { backgroundImage: `url(${bgImage})`, backgroundSize: "cover", backgroundPosition: "center", backgroundAttachment: "fixed" } : undefined}
-    >
+    <>
+    {bgImage && (
+      <div
+        className="fixed inset-0 -z-10"
+        style={{ backgroundImage: `url(${bgImage})`, backgroundSize: "cover", backgroundPosition: "center" }}
+      />
+    )}
     <motion.div
       className="max-w-3xl mx-auto space-y-6 pb-12 px-4"
       variants={staggerContainer}
@@ -1040,7 +1043,7 @@ function ChildDashboard({
         )}
       </motion.div>
     </motion.div>
-    </div>
+    </>
   );
 }
 
