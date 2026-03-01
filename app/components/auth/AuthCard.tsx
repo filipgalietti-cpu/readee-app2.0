@@ -13,7 +13,7 @@ export default function AuthCard({ title, banner, children }: AuthCardProps) {
 
   useEffect(() => {
     if (!banner) return;
-    const timer = setTimeout(() => setShowBanner(true), 1500);
+    const timer = setTimeout(() => setShowBanner(true), 5000);
     return () => clearTimeout(timer);
   }, [banner]);
 

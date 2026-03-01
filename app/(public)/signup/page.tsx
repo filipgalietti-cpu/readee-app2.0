@@ -125,7 +125,7 @@ export default function Signup() {
   };
 
   return (
-    <AuthCard title="Create Your Account">
+    <AuthCard title="Create Your Account" banner="It's Free to Get Started!">
       <GoogleButton />
       <Divider />
       {errors.general && (
