@@ -207,11 +207,17 @@ function ShopContent({
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <motion.div
-              className="w-36 h-36 -my-6"
+              className="w-36 h-36 -my-6 relative cursor-pointer"
               animate={{ rotate: [0, -5, 5, -5, 5, 0] }}
               transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+              whileHover={{ scale: 1.12, rotate: 0 }}
+              whileTap={{ scale: 0.95 }}
             >
-              <img src="/images/shop/mystery-box-closed.png" alt="Mystery Box" className="w-full h-full object-contain" />
+              <img src="/images/shop/mystery-box-closed.png" alt="Mystery Box" className="w-full h-full object-contain drop-shadow-lg" />
+              {/* Shine sweep */}
+              <div className="absolute inset-0 overflow-hidden rounded-xl pointer-events-none">
+                <div className="absolute -inset-full animate-[shine_3s_ease-in-out_infinite] bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-[-20deg]" />
+              </div>
             </motion.div>
             <div>
               <div className="font-bold text-zinc-900 dark:text-white">Mystery Box</div>

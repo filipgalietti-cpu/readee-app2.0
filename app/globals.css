@@ -382,6 +382,11 @@ body {
   100% { transform: translateX(200%); }
 }
 
+@keyframes shine {
+  0%, 80% { transform: translateX(-200%) skewX(-20deg); }
+  100% { transform: translateX(200%) skewX(-20deg); }
+}
+
 .nav-shine::after {
   content: "";
   position: absolute;
