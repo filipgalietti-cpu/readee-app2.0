@@ -57,9 +57,9 @@ export function MysteryBoxOpener({
                 scale: [1, 1.05, 1, 1.05, 1],
               }}
               transition={{ duration: 1, ease: "easeInOut" }}
-              className="text-8xl"
+              className="w-32 h-32 mx-auto"
             >
-              {"\uD83C\uDF81"}
+              <img src="/images/shop/mystery-box-closed.png" alt="Mystery Box" className="w-full h-full object-contain" />
             </motion.div>
           )}
 
@@ -69,9 +69,9 @@ export function MysteryBoxOpener({
               initial={{ scale: 1.1 }}
               animate={{ scale: [1.1, 1.5, 0.8] }}
               transition={{ duration: 0.5 }}
-              className="text-8xl"
+              className="w-32 h-32 mx-auto"
             >
-              {"\u2728"}
+              <img src="/images/shop/mystery-box-open.png" alt="Mystery Box Opening" className="w-full h-full object-contain" />
             </motion.div>
           )}
 

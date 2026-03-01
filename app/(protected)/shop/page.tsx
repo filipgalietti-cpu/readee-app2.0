@@ -207,11 +207,11 @@ function ShopContent({
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <motion.div
-              className="text-4xl"
+              className="w-12 h-12"
               animate={{ rotate: [0, -5, 5, -5, 5, 0] }}
               transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
             >
-              🎁
+              <img src="/images/shop/mystery-box-closed.png" alt="Mystery Box" className="w-full h-full object-contain" />
             </motion.div>
             <div>
               <div className="font-bold text-zinc-900 dark:text-white">Mystery Box</div>

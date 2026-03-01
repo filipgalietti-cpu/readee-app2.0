@@ -36,6 +36,7 @@ yarn-error.log*
 # generated media (hosted on Supabase Storage)
 /public/images/*
 !/public/images/backgrounds/
+!/public/images/shop/
 /public/audio/
 /scripts/image-progress.json
 
