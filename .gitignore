@@ -37,6 +37,7 @@ yarn-error.log*
 /public/images/*
 !/public/images/backgrounds/
 !/public/images/shop/
+!/public/images/dashboard/
 /public/audio/
 /scripts/image-progress.json
 
