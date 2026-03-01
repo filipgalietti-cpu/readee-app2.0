@@ -10,7 +10,7 @@ import { READING_LEVELS, GRADES } from "@/app/_components/LevelProgressBar";
 import { safeValidate } from "@/lib/validate";
 import CelebrationOverlay from "@/app/_components/CelebrationOverlay";
 import { ChildCreateSchema, ChildUpdateSchema } from "@/lib/schemas";
-import { BACKGROUND_STYLES, SHOP_ITEMS } from "@/lib/data/shop-items";
+import { BACKGROUND_IMAGES, SHOP_ITEMS } from "@/lib/data/shop-items";
 
 function displayGrade(grade: string): string {
   if (grade.toLowerCase() === "pre-k") return "Foundational";
@@ -470,20 +470,20 @@ export default function Settings() {
                             </button>
                             {/* Owned backgrounds */}
                             {ownedBgIds.map((bgId) => {
-                              const style = BACKGROUND_STYLES[bgId];
+                              const imgSrc = BACKGROUND_IMAGES[bgId];
                               const item = SHOP_ITEMS.find((i) => i.id === bgId);
-                              if (!style) return null;
+                              if (!imgSrc) return null;
                               const isActive = equippedBg === bgId;
                               return (
                                 <button
                                   key={bgId}
                                   onClick={() => handleEquipBackground(child, isActive ? null : bgId)}
-                                  className={`w-10 h-10 rounded-xl border-2 transition-all ${
+                                  className={`w-10 h-10 rounded-xl border-2 transition-all overflow-hidden ${
                                     isActive
                                       ? "border-indigo-500 ring-2 ring-indigo-200 scale-110"
                                       : "border-zinc-200 dark:border-slate-600 hover:border-zinc-300 hover:scale-105"
                                   }`}
-                                  style={{ background: style.light }}
+                                  style={{ backgroundImage: `url(${imgSrc})`, backgroundSize: "cover", backgroundPosition: "center" }}
                                   title={item?.name || bgId}
                                 />
                               );
