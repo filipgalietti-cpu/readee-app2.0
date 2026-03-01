@@ -11,8 +11,8 @@ export default function NavAuth() {
   const pathname = usePathname();
   const router = useRouter();
 
-  // Hide navbar completely on immersive pages
-  if (pathname === "/practice") return null;
+  // Hide navbar completely on immersive/auth pages
+  if (pathname === "/practice" || pathname === "/login" || pathname === "/signup") return null;
   const [loggedIn, setLoggedIn] = useState<boolean | null>(null);
   const [userPlan, setUserPlan] = useState<string>("free");
   const [menuOpen, setMenuOpen] = useState(false);
