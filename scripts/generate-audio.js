@@ -31,6 +31,8 @@ const ENDPOINT = `https://${LOCATION}-aiplatform.googleapis.com/v1/projects/${PR
 const AUDIO_DIR = path.resolve(__dirname, "..", "public", "audio");
 const DEFAULT_CSV = "readee-tts-scripts.csv";
 const MAX_RETRIES = 3;
+const DELAY_MS = 3000;
+const RATE_LIMIT_WAIT_MS = 30000;
 
 /* ── CSV parser (handles quoted fields) ───────────── */
 
@@ -252,22 +254,35 @@ async function main() {
         success = true;
         break;
       } catch (err) {
-        const isAuth = /40[13]/.test(err.message);
-        if (attempt < MAX_RETRIES && isAuth) {
+        const msg = err.message || "";
+        const isAuth = /40[13]/.test(msg);
+        const isRateLimit = /429/.test(msg) || /RESOURCE_EXHAUSTED/.test(msg);
+
+        if (isRateLimit) {
+          console.log(`\n  Rate limited — waiting 30s (attempt ${attempt}/${MAX_RETRIES})`);
+          await sleep(RATE_LIMIT_WAIT_MS);
+          if (attempt < MAX_RETRIES) continue;
+        } else if (attempt < MAX_RETRIES && isAuth) {
           // Auth error — retry with fresh token
           continue;
-        }
-        if (attempt < MAX_RETRIES) {
+        } else if (attempt < MAX_RETRIES) {
           // Other error — wait 2s then retry
           await sleep(2000);
           continue;
         }
-        // Final attempt failed
-        failures++;
-        console.error(`\n  FAIL [${outFile}]: ${err.message.slice(0, 120)}`);
+
+        if (attempt >= MAX_RETRIES) {
+          failures++;
+          console.error(`\n  FAIL [${outFile}]: ${msg.slice(0, 120)}`);
+        }
       }
     }
     progressBar(generated + skipped, total, failures);
+
+    // Throttle between requests
+    if (generated + skipped < total) {
+      await sleep(DELAY_MS);
+    }
   }
 
   console.log(`\n\nDone: ${generated} generated, ${skipped} skipped, ${failures} failed`);

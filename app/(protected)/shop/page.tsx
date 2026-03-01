@@ -19,6 +19,16 @@ import { MYSTERY_BOX_PRICE, rollMysteryBox, MysteryReward } from "@/lib/data/mys
 import { MysteryBoxOpener } from "@/app/_components/MysteryBoxOpener";
 import { GetMoreCarrotsModal } from "@/app/_components/GetMoreCarrotsModal";
 import { usePracticeStore } from "@/lib/stores/practice-store";
+import { Carrot, Smile, Crown, Palette, Star, Image as ImageIcon } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+
+const CATEGORY_ICON: Record<string, LucideIcon> = {
+  avatars: Smile,
+  outfits: Crown,
+  themes: Palette,
+  stickers: Star,
+  backgrounds: ImageIcon,
+};
 
 export default function ShopPage() {
   return (
@@ -190,7 +200,7 @@ function ShopContent({
         animate={{ opacity: 1, y: 0 }}
         className="rounded-2xl bg-gradient-to-br from-orange-500 to-amber-500 p-6 text-center text-white shadow-lg mb-8"
       >
-        <div className="text-4xl mb-2">🥕</div>
+        <div className="flex justify-center mb-2"><Carrot className="w-10 h-10 text-white" strokeWidth={1.5} /></div>
         <div className="text-3xl font-extrabold">{child.carrots}</div>
         <div className="text-sm font-medium text-white/80 mt-1">
           {child.first_name}&apos;s Carrots
@@ -259,7 +269,7 @@ function ShopContent({
             {buyingMystery ? (
               <span className="inline-block h-4 w-4 rounded-full border-2 border-white/40 border-t-white animate-spin" />
             ) : (
-              <span>{MYSTERY_BOX_PRICE} 🥕</span>
+              <span className="inline-flex items-center gap-1">{MYSTERY_BOX_PRICE} <Carrot className="w-4 h-4" strokeWidth={1.5} /></span>
             )}
           </button>
         </div>
@@ -277,7 +287,7 @@ function ShopContent({
                 : "bg-zinc-100 dark:bg-slate-800 text-zinc-600 dark:text-slate-300 hover:bg-zinc-200 dark:hover:bg-slate-700"
             }`}
           >
-            {cat.emoji} {cat.label}
+            {(() => { const CI = CATEGORY_ICON[cat.key]; return CI ? <CI className="w-4 h-4 inline-block" strokeWidth={1.5} /> : null; })()} {cat.label}
           </button>
         ))}
       </div>
@@ -411,7 +421,7 @@ function ShopItemCard({
           {buying ? (
             <span className="inline-block h-4 w-4 rounded-full border-2 border-white/40 border-t-white animate-spin" />
           ) : (
-            <span>{item.price} 🥕</span>
+            <span className="inline-flex items-center gap-1">{item.price} <Carrot className="w-3.5 h-3.5" strokeWidth={1.5} /></span>
           )}
         </button>
       )}

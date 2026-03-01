@@ -11,6 +11,7 @@ import { safeValidate } from "@/lib/validate";
 import CelebrationOverlay from "@/app/_components/CelebrationOverlay";
 import { ChildCreateSchema, ChildUpdateSchema } from "@/lib/schemas";
 import { BACKGROUND_IMAGES, SHOP_ITEMS } from "@/lib/data/shop-items";
+import { Carrot } from "lucide-react";
 
 function displayGrade(grade: string): string {
   if (grade.toLowerCase() === "pre-k") return "Foundational";
@@ -415,7 +416,7 @@ export default function Settings() {
                       </div>
                       <div className="flex items-center gap-3">
                         <span className="text-xs font-medium text-orange-600 bg-orange-50 px-2.5 py-1 rounded-full">
-                          {child.carrots} 🥕
+                          {child.carrots} <Carrot className="w-3.5 h-3.5 inline-block align-text-bottom" strokeWidth={1.5} />
                         </span>
                         <button
                           onClick={() => startEditing(child)}

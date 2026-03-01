@@ -8,23 +8,25 @@ import { safeValidate } from "@/lib/validate";
 import { FeedbackSchema } from "@/lib/schemas";
 import { fadeUp, slideUp, popIn, staggerContainer } from "@/lib/motion/variants";
 import { useAudio } from "@/lib/audio/use-audio";
+import { MessageCircle, Bug, Lightbulb, BookOpen, Star, Heart, Frown, Meh, Smile, SmilePlus, Angry } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
 /* ─── Constants ──────────────────────────────────────── */
 
-const RATINGS = [
-  { value: 1, emoji: "😫", label: "Terrible" },
-  { value: 2, emoji: "😕", label: "Poor" },
-  { value: 3, emoji: "😐", label: "Okay" },
-  { value: 4, emoji: "🙂", label: "Good" },
-  { value: 5, emoji: "😍", label: "Amazing" },
+const RATINGS: { value: number; icon: LucideIcon; label: string }[] = [
+  { value: 1, icon: Angry,     label: "Terrible" },
+  { value: 2, icon: Frown,     label: "Poor" },
+  { value: 3, icon: Meh,       label: "Okay" },
+  { value: 4, icon: Smile,     label: "Good" },
+  { value: 5, icon: SmilePlus, label: "Amazing" },
 ];
 
-const CATEGORIES = [
-  { id: "bug", label: "Bug Report", emoji: "🐛" },
-  { id: "feature", label: "Feature Request", emoji: "💡" },
-  { id: "content", label: "Content Feedback", emoji: "📚" },
-  { id: "general", label: "General", emoji: "💬" },
-  { id: "praise", label: "Praise", emoji: "🌟" },
+const CATEGORIES: { id: string; label: string; icon: LucideIcon }[] = [
+  { id: "bug", label: "Bug Report", icon: Bug },
+  { id: "feature", label: "Feature Request", icon: Lightbulb },
+  { id: "content", label: "Content Feedback", icon: BookOpen },
+  { id: "general", label: "General", icon: MessageCircle },
+  { id: "praise", label: "Praise", icon: Star },
 ];
 
 /* ─── Page ───────────────────────────────────────────── */
@@ -146,12 +148,12 @@ export default function FeedbackPage() {
               Thank you!
             </motion.h1>
             <motion.p variants={fadeUp} className="text-zinc-500 dark:text-slate-400 mt-2 leading-relaxed">
-              Your feedback helps us make Readee better for every family 💜
+              Your feedback helps us make Readee better for every family <Heart className="w-4 h-4 inline-block text-violet-500" strokeWidth={1.5} />
             </motion.p>
 
             {rating && (
               <motion.div variants={fadeUp} className="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 dark:bg-indigo-900/40">
-                <span className="text-2xl">{RATINGS.find((r) => r.value === rating)?.emoji}</span>
+                {(() => { const R = RATINGS.find((r) => r.value === rating); return R ? <R.icon className="w-6 h-6 text-indigo-600" strokeWidth={1.5} /> : null; })()}
                 <span className="text-sm font-medium text-indigo-700 dark:text-indigo-300">
                   {RATINGS.find((r) => r.value === rating)?.label}
                 </span>
@@ -175,8 +177,8 @@ export default function FeedbackPage() {
         <>
           {/* Header */}
           <div className="text-center mb-8">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-50 to-violet-50 mx-auto mb-4 flex items-center justify-center text-3xl">
-              💬
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-50 to-violet-50 mx-auto mb-4 flex items-center justify-center">
+              <MessageCircle className="w-8 h-8 text-indigo-500" strokeWidth={1.5} />
             </div>
             <h1 className="text-2xl font-bold text-zinc-900 dark:text-slate-100 tracking-tight">
               Share Your Feedback
@@ -224,9 +226,7 @@ export default function FeedbackPage() {
                         : "hover:bg-zinc-50 dark:hover:bg-slate-800"
                     }`}
                   >
-                    <span className="text-3xl">
-                      {r.emoji}
-                    </span>
+                    <r.icon className="w-8 h-8" strokeWidth={1.5} />
                     <span className={`text-[10px] font-medium ${
                       rating === r.value ? "text-indigo-700 dark:text-indigo-300" : "text-zinc-400 dark:text-slate-500"
                     }`}>
@@ -256,7 +256,7 @@ export default function FeedbackPage() {
                         : "bg-white dark:bg-slate-800 text-zinc-700 dark:text-slate-200 border-zinc-200 dark:border-slate-600 hover:border-indigo-300 dark:hover:border-indigo-700 hover:bg-indigo-50/50 dark:hover:bg-indigo-950/30"
                     }`}
                   >
-                    <span>{c.emoji}</span>
+                    <c.icon className="w-4 h-4" strokeWidth={1.5} />
                     {c.label}
                   </button>
                 ))}
@@ -282,13 +282,13 @@ export default function FeedbackPage() {
               <div className="flex items-center justify-center gap-3">
                 {rating && (
                   <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-900/40 text-sm">
-                    <span className="text-lg">{RATINGS.find((r) => r.value === rating)?.emoji}</span>
+                    {(() => { const R = RATINGS.find((r) => r.value === rating); return R ? <R.icon className="w-5 h-5 text-indigo-600" strokeWidth={1.5} /> : null; })()}
                     <span className="font-medium text-indigo-700 dark:text-indigo-300">{RATINGS.find((r) => r.value === rating)?.label}</span>
                   </span>
                 )}
                 {category && (
                   <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-violet-50 dark:bg-violet-900/40 text-sm">
-                    <span>{CATEGORIES.find((c) => c.id === category)?.emoji}</span>
+                    {(() => { const C = CATEGORIES.find((c) => c.id === category); return C ? <C.icon className="w-4 h-4 text-violet-600" strokeWidth={1.5} /> : null; })()}
                     <span className="font-medium text-violet-700 dark:text-violet-300">{CATEGORIES.find((c) => c.id === category)?.label}</span>
                   </span>
                 )}
@@ -307,7 +307,7 @@ export default function FeedbackPage() {
                 disabled={submitting}
                 className="w-full py-3.5 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white font-bold text-base hover:from-indigo-700 hover:to-violet-600 transition-all shadow-lg disabled:opacity-50"
               >
-                {submitting ? "Sending..." : "Send Feedback 💜"}
+                {submitting ? "Sending..." : "Send Feedback"}
               </button>
 
               <button

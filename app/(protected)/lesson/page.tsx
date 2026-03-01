@@ -9,6 +9,28 @@ import { useSpeech } from "@/app/_components/SpeechContext";
 import lessonsData from "@/lib/data/lessons.json";
 import { getDailyMultiplier, getSessionStreakTier } from "@/lib/carrots/multipliers";
 import { StreakFire } from "@/app/_components/StreakFire";
+import { Star, Sparkles, Rocket, Zap, Trophy, Target, Medal, Gem, Crown, Type, FileText, Search, Eye, CheckCircle, PenTool, BookOpen, MessageSquare, Flame, Carrot } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+
+const LEARN_ICON_MAP: Record<string, LucideIcon> = {
+  "📝": FileText,
+  "🔤": Type,
+  "🔍": Search,
+  "🎯": Target,
+  "🔎": Eye,
+  "✅": CheckCircle,
+  "💭": MessageSquare,
+  "✍️": PenTool,
+  "📚": BookOpen,
+};
+
+function emojiToIcon(emoji: string): React.ReactNode {
+  const Icon = LEARN_ICON_MAP[emoji];
+  if (Icon) return <Icon className="w-12 h-12 text-indigo-500" strokeWidth={1.5} />;
+  if (!emoji) return null;
+  // For any unmapped emoji from JSON data, use BookOpen as fallback
+  return <BookOpen className="w-12 h-12 text-indigo-500" strokeWidth={1.5} />;
+}
 
 type Phase = "loading" | "learn" | "practice" | "read" | "read-transition" | "complete";
 
@@ -36,30 +58,30 @@ interface LessonsFile {
 /* eslint-enable @typescript-eslint/no-explicit-any */
 
 const CORRECT_MSGS = [
-  "🎉 Great job!",
-  "⭐ You got it!",
-  "🌟 Amazing!",
-  "🚀 Awesome!",
-  "💪 Nice one!",
+  "Great job!",
+  "You got it!",
+  "Amazing!",
+  "Awesome!",
+  "Nice one!",
 ];
 
 const CELEBRATION_MESSAGES = [
-  "You're a reading superstar! 🌟",
-  "Your brain just leveled up! 🧠",
-  "Another story conquered! 📚",
-  "You make reading look easy! 💪",
-  "Incredible work, keep going! 🚀",
-  "Reading champion in action! 🏆",
-  "That was awesome! 🎯",
-  "You crushed it! 💥",
+  "You're a reading superstar!",
+  "Your brain just leveled up!",
+  "Another story conquered!",
+  "You make reading look easy!",
+  "Incredible work, keep going!",
+  "Reading champion in action!",
+  "That was awesome!",
+  "You crushed it!",
 ];
 
 const CARROT_MILESTONES = [
-  { name: "Bronze", carrots: 50, emoji: "🥉" },
-  { name: "Silver", carrots: 100, emoji: "🥈" },
-  { name: "Gold", carrots: 200, emoji: "🥇" },
-  { name: "Platinum", carrots: 500, emoji: "💎" },
-  { name: "Diamond", carrots: 1000, emoji: "👑" },
+  { name: "Bronze", carrots: 50, icon: Medal },
+  { name: "Silver", carrots: 100, icon: Medal },
+  { name: "Gold", carrots: 200, icon: Medal },
+  { name: "Platinum", carrots: 500, icon: Gem },
+  { name: "Diamond", carrots: 1000, icon: Crown },
 ];
 
 const CARD_COLORS = [
@@ -79,75 +101,76 @@ function formatSkillName(skill: string): string {
 }
 
 /** Extract a display-friendly line from a learn item regardless of its shape */
-function formatLearnItem(item: Record<string, unknown>): { emoji: string; title: string; detail: string } {
-  const emoji = (item.emoji as string) || "";
+function formatLearnItem(item: Record<string, unknown>): { icon: React.ReactNode; title: string; detail: string } {
+  const rawEmoji = (item.emoji as string) || "";
+  const icon = emojiToIcon(rawEmoji);
 
   if (item.letter) {
     const keyword = item.keyword || item.example || "";
     const hint = item.hint || item.mouth || item.keyword || "";
-    return { emoji, title: `${item.letter} — ${keyword}`, detail: String(hint) };
+    return { icon, title: `${item.letter} — ${keyword}`, detail: String(hint) };
   }
   if (item.sound && item.words) {
-    return { emoji, title: `${item.sound} — ${(item.words as string[]).join(", ")}`, detail: String(item.hint || "") };
+    return { icon, title: `${item.sound} — ${(item.words as string[]).join(", ")}`, detail: String(item.hint || "") };
   }
   if (item.word && item.rhymes) {
-    return { emoji, title: `${item.word} rhymes with ${(item.rhymes as string[]).slice(0, 3).join(", ")}`, detail: `Family: ${item.family || ""}` };
+    return { icon, title: `${item.word} rhymes with ${(item.rhymes as string[]).slice(0, 3).join(", ")}`, detail: `Family: ${item.family || ""}` };
   }
   if (item.upper && item.lower) {
-    return { emoji: "🔤", title: `${item.upper} and ${item.lower}`, detail: String(item.hint || "") };
+    return { icon: null, title: `${item.upper} and ${item.lower}`, detail: String(item.hint || "") };
   }
   if (item.sounds) {
-    return { emoji, title: `${(item.sounds as string[]).join(" + ")} = ${item.word}`, detail: String(item.tip || "") };
+    return { icon, title: `${(item.sounds as string[]).join(" + ")} = ${item.word}`, detail: String(item.tip || "") };
   }
   if (item.word && item.sentence) {
-    return { emoji: "⭐", title: String(item.word), detail: `${item.sentence} — ${item.tip || item.trick || ""}` };
+    return { icon: null, title: String(item.word), detail: `${item.sentence} — ${item.tip || item.trick || ""}` };
   }
   if (item.family && item.words) {
-    return { emoji, title: `${item.family} family`, detail: (item.words as string[]).join(", ") };
+    return { icon, title: `${item.family} family`, detail: (item.words as string[]).join(", ") };
   }
   if (item.blend) {
-    return { emoji, title: `${item.blend} blend`, detail: (item.words as string[]).join(", ") };
+    return { icon, title: `${item.blend} blend`, detail: (item.words as string[]).join(", ") };
   }
   if (item.digraph) {
-    return { emoji, title: `${item.digraph} = ${item.sound}`, detail: `${(item.words as string[]).join(", ")} — ${item.tip || ""}` };
+    return { icon, title: `${item.digraph} = ${item.sound}`, detail: `${(item.words as string[]).join(", ")} — ${item.tip || ""}` };
   }
   if (item.short && item.long) {
-    return { emoji, title: `${item.short} → ${item.long}`, detail: `Vowel ${item.vowel} says its name!` };
+    return { icon, title: `${item.short} → ${item.long}`, detail: `Vowel ${item.vowel} says its name!` };
   }
   if (item.sentence && item.tip) {
-    return { emoji: "📝", title: String(item.sentence), detail: String(item.tip) };
+    return { icon: emojiToIcon("📝"), title: String(item.sentence), detail: String(item.tip) };
   }
   if (item.prefix || item.suffix) {
     const label = item.prefix || item.suffix;
     const meaning = item.meaning || "";
     const examples = (item.examples as Array<{ word: string }>)?.map((e) => e.word).join(", ") || "";
-    return { emoji: "🔤", title: `${label} = ${meaning}`, detail: examples };
+    return { icon: emojiToIcon("🔤"), title: `${label} = ${meaning}`, detail: examples };
   }
   if (item.team) {
-    return { emoji, title: `${item.team} vowel team`, detail: (item.words as string[]).join(", ") };
+    return { icon, title: `${item.team} vowel team`, detail: (item.words as string[]).join(", ") };
   }
   if (item.parts) {
-    return { emoji, title: String(item.word), detail: `${(item.parts as string[]).join(" + ")}` };
+    return { icon, title: String(item.word), detail: `${(item.parts as string[]).join(" + ")}` };
   }
   if (item.clue && item.inference) {
-    return { emoji, title: String(item.clue), detail: String(item.inference) };
+    return { icon, title: String(item.clue), detail: String(item.inference) };
   }
   if (item.pattern) {
-    return { emoji: "🔍", title: String(item.pattern), detail: `${(item.words as string[] || []).join(", ")} — ${item.rule || ""}` };
+    return { icon: emojiToIcon("🔍"), title: String(item.pattern), detail: `${(item.words as string[] || []).join(", ")} — ${item.rule || ""}` };
   }
   if (item.main_idea) {
-    return { emoji: "🎯", title: String(item.main_idea), detail: String((item.details as string[] || []).join(", ")) };
+    return { icon: emojiToIcon("🎯"), title: String(item.main_idea), detail: String((item.details as string[] || []).join(", ")) };
   }
   if (item.unknown) {
-    return { emoji: "🔎", title: `${item.unknown} = ${item.meaning}`, detail: String(item.sentence || "") };
+    return { icon: emojiToIcon("🔎"), title: `${item.unknown} = ${item.meaning}`, detail: String(item.sentence || "") };
   }
   if (item.statement && item.type) {
-    return { emoji: item.type === "fact" ? "✅" : "💭", title: String(item.statement), detail: `${item.type}: ${item.why || ""}` };
+    return { icon: emojiToIcon(item.type === "fact" ? "✅" : "💭"), title: String(item.statement), detail: `${item.type}: ${item.why || ""}` };
   }
   if (item.technique) {
-    return { emoji: (item.emoji as string) || "✍️", title: String(item.technique), detail: `${item.definition || ""} — "${item.example || ""}"` };
+    return { icon: emojiToIcon((item.emoji as string) || "✍️"), title: String(item.technique), detail: `${item.definition || ""} — "${item.example || ""}"` };
   }
-  return { emoji: emoji || "📚", title: JSON.stringify(item).slice(0, 50), detail: "" };
+  return { icon: emojiToIcon(rawEmoji || "📚"), title: JSON.stringify(item).slice(0, 50), detail: "" };
 }
 
 /* ─── Audio Helpers ──────────────────────────────────── */
@@ -733,7 +756,7 @@ function LessonContent() {
         setPracticeAnswers((prev) => [...prev, { question_id: q.question_id || "", correct: false, selected: choice, time_ms: timeMs }]);
         setTimeout(() => advancePractice(), 2000);
       } else {
-        setFeedback({ text: "Almost! Try again 💪", type: "wrong" });
+        setFeedback({ text: "Almost! Try again", type: "wrong" });
         setTimeout(() => setFeedback(null), 1200);
       }
     }
@@ -796,7 +819,7 @@ function LessonContent() {
         setReadAnswers((prev) => [...prev, { question_id: q.question_id || "", correct: false, selected: choice, time_ms: timeMs }]);
         setTimeout(() => advanceRead(), 2000);
       } else {
-        setReadFeedback({ text: "Almost! Try again 💪", type: "wrong" });
+        setReadFeedback({ text: "Almost! Try again", type: "wrong" });
         setTimeout(() => setReadFeedback(null), 1200);
       }
     }
@@ -852,7 +875,7 @@ function LessonContent() {
     const totalCarrotsAfter = (current?.carrots ?? 0) + 10;
     for (const milestone of CARROT_MILESTONES) {
       if ((current?.carrots ?? 0) < milestone.carrots && totalCarrotsAfter >= milestone.carrots) {
-        setNewBadge(`${milestone.emoji} ${milestone.name}`);
+        setNewBadge(milestone.name);
         break;
       }
     }
@@ -895,7 +918,7 @@ function LessonContent() {
      ═══════════════════════════════════════════════════════ */
   if (phase === "learn") {
     const item = lesson.learn.items[learnIdx];
-    const { emoji, title, detail } = formatLearnItem(item);
+    const { icon, title, detail } = formatLearnItem(item);
     const colorScheme = CARD_COLORS[learnIdx % CARD_COLORS.length];
     const totalCards = lesson.learn.items.length;
 
@@ -935,8 +958,8 @@ function LessonContent() {
               cardDirection === "in" ? "animate-cardSlideIn" : "animate-cardSlideOut"
             }`}
           >
-            {/* Big emoji */}
-            <div className="text-6xl">{emoji}</div>
+            {/* Icon */}
+            {icon && <div className="flex justify-center">{icon}</div>}
 
             {/* Big title / letter */}
             <div className="text-5xl sm:text-6xl font-black text-indigo-700 tracking-tight leading-tight">
@@ -1348,7 +1371,7 @@ function LessonContent() {
             />
           ))}
 
-          <div className="text-6xl">🎉</div>
+          <div className="flex justify-center"><Sparkles className="w-16 h-16 text-indigo-500" strokeWidth={1.5} /></div>
 
           <h1 className="text-3xl font-bold text-zinc-900 tracking-tight">
             Lesson Complete!
@@ -1359,7 +1382,7 @@ function LessonContent() {
           {/* Animated carrots display */}
           <div className="inline-block rounded-2xl bg-gradient-to-r from-orange-500 to-amber-500 px-8 py-5 text-white animate-carrotCountUp">
             <div className="text-sm font-medium text-orange-200">You earned</div>
-            <div className="text-4xl font-bold mt-1">+{totalCarrots} 🥕</div>
+            <div className="text-4xl font-bold mt-1 flex items-center justify-center gap-2">+{totalCarrots} <Carrot className="w-8 h-8" strokeWidth={1.5} /></div>
           </div>
 
           {/* Daily streak multiplier badge */}
@@ -1368,7 +1391,7 @@ function LessonContent() {
             return dm.multiplier > 1 ? (
               <div className="animate-streakPulse">
                 <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-amber-50 border border-amber-200">
-                  <span className="text-xl">⚡</span>
+                  <Zap className="w-5 h-5 text-amber-500" strokeWidth={1.5} />
                   <span className="text-lg font-bold text-amber-700">
                     {dm.label}
                   </span>
@@ -1381,7 +1404,7 @@ function LessonContent() {
           {streakDays > 0 && (
             <div className="animate-streakPulse">
               <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-orange-50 border border-orange-200">
-                <span className="text-xl">🔥</span>
+                <Flame className="w-5 h-5 text-orange-500" strokeWidth={1.5} />
                 <span className="text-lg font-bold text-orange-700">
                   {streakDays} day streak!
                 </span>
@@ -1393,7 +1416,7 @@ function LessonContent() {
           {newBadge && (
             <div className="animate-badgeUnlock">
               <div className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-gradient-to-r from-yellow-50 to-amber-50 border border-yellow-200">
-                <span className="text-2xl">🏆</span>
+                <Trophy className="w-6 h-6 text-yellow-500" strokeWidth={1.5} />
                 <div className="text-left">
                   <div className="text-xs font-medium text-yellow-600">New Badge Unlocked!</div>
                   <div className="text-sm font-bold text-yellow-800">{newBadge}</div>

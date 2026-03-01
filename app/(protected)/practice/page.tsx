@@ -20,6 +20,8 @@ import { CategorySort } from "@/app/components/practice/CategorySort";
 import { MissingWord } from "@/app/components/practice/MissingWord";
 import { getDailyMultiplier, getSessionStreakTier } from "@/lib/carrots/multipliers";
 import { StreakFire } from "@/app/_components/StreakFire";
+import { BookOpen, Newspaper, Type, MessageCircle, Star, Sparkles, Target, Carrot, Search } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
 /* ─── Types ──────────────────────────────────────────── */
 
@@ -140,18 +142,27 @@ const KID_PROMPTS: Record<string, string> = {
   "K.L.6": "Big words, small words — let's grow your vocabulary!",
 };
 
-const DOMAIN_EMOJI: Record<string, string> = {
-  "Reading Literature": "📖",
-  "Reading Informational Text": "📰",
-  "Foundational Skills": "🔤",
-  "Language": "💬",
+const DOMAIN_ICON: Record<string, LucideIcon> = {
+  "Reading Literature": BookOpen,
+  "Reading Informational Text": Newspaper,
+  "Foundational Skills": Type,
+  "Language": MessageCircle,
 };
 
 const CORRECT_MESSAGES = [
   "Amazing!", "Great job!", "You got it!", "Nice catch!",
   "Super smart!", "Wonderful!", "Nailed it!", "Brilliant!",
 ];
-const CORRECT_EMOJIS = ["⭐", "🎉", "✨", "🌟", "💫", "🎯"];
+const CORRECT_EMOJIS = ["star", "sparkles", "sparkle", "star2", "zap", "target"];
+
+const FEEDBACK_ICON_MAP: Record<string, LucideIcon> = {
+  star: Star,
+  sparkles: Sparkles,
+  sparkle: Sparkles,
+  star2: Star,
+  zap: Target,
+  target: Target,
+};
 
 const INCORRECT_MESSAGES = [
   "Not quite!", "Almost!", "Good try!", "Keep learning!",
@@ -314,7 +325,7 @@ function PracticeLoader() {
     return (
       <div className="min-h-[100dvh] bg-white dark:bg-[#0f172a] flex items-center justify-center">
         <div className="max-w-md text-center space-y-4 px-6">
-          <div className="text-5xl">🔍</div>
+          <div className="flex justify-center"><Search className="w-12 h-12 text-zinc-400 dark:text-slate-500" strokeWidth={1.5} /></div>
           <h1 className="text-xl font-bold text-zinc-900 dark:text-white">
             {!child ? "No reader selected" : "Standard not found"}
           </h1>
@@ -533,7 +544,7 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
   if (!audioReady) {
     const lessonTitle = KID_TITLES[standard.standard_id] ?? standard.standard_id;
     const lessonPrompt = KID_PROMPTS[standard.standard_id] ?? standard.standard_description;
-    const lessonEmoji = DOMAIN_EMOJI[standard.domain] ?? "📖";
+    const LessonIcon = DOMAIN_ICON[standard.domain] ?? BookOpen;
     const maxCarrots = totalQ * CARROTS_PER_CORRECT;
 
     return (
@@ -564,7 +575,7 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
               </div>
 
               <div className="relative w-20 h-20 mx-auto mb-4 rounded-full bg-white/20 backdrop-blur flex items-center justify-center">
-                <span className="text-5xl">{lessonEmoji}</span>
+                <LessonIcon className="w-10 h-10 text-white" strokeWidth={1.5} />
               </div>
               <h2 className="relative text-xl font-extrabold text-white">
                 Let&apos;s go, {child.first_name}!
@@ -597,7 +608,7 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
                   </span>
                 </div>
                 <span className="text-orange-500 dark:text-orange-400 font-medium">
-                  Earn up to {maxCarrots} XP 🥕
+                  Earn up to {maxCarrots} XP <Carrot className="w-4 h-4 inline-block align-text-bottom" strokeWidth={1.5} />
                 </span>
               </div>
 
@@ -673,7 +684,7 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
           } : {}}
           transition={{ duration: 0.6 }}
         >
-          <span className="text-sm">🥕</span>
+          <Carrot className="w-4 h-4 text-orange-500" strokeWidth={1.5} />
           <span className="text-sm font-bold text-orange-600 dark:text-orange-400 tabular-nums">{sessionCarrots}</span>
         </motion.div>
 
@@ -918,8 +929,8 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
             <div className="max-w-lg mx-auto px-5 py-5 safe-area-bottom">
               <div className="flex items-start gap-3 mb-4">
                 {isCorrect ? (
-                  <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0 text-xl">
-                    {feedbackEmoji}
+                  <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
+                    {(() => { const FI = FEEDBACK_ICON_MAP[feedbackEmoji] || Star; return <FI className="w-5 h-5 text-white" strokeWidth={1.5} />; })()}
                   </div>
                 ) : (
                   <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
@@ -937,7 +948,7 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
                     const hasBonus = daily.multiplier > 1 || session.multiplier > 1 || mysteryBoxMultiplier > 1;
                     return (
                       <p className="text-white/80 text-sm mt-0.5">
-                        +{earned} 🥕{hasBonus ? " (Bonus!)" : ""}
+                        +{earned} <Carrot className="w-3.5 h-3.5 inline-block align-text-bottom" strokeWidth={1.5} />{hasBonus ? " (Bonus!)" : ""}
                       </p>
                     );
                   })()}

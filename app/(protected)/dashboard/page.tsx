@@ -17,7 +17,8 @@ import { getStandardsForGrade } from "@/lib/data/all-standards";
 import { getChildAvatar, DEFAULT_AVATARS } from "@/lib/utils/get-child-avatar";
 import { getItemsByCategory, BACKGROUND_IMAGES } from "@/lib/data/shop-items";
 import type { ShopPurchase, EquippedItems } from "@/lib/db/types";
-import { Target, Puzzle, BookOpen, Map, Carrot, Flame } from "lucide-react";
+import { Target, Puzzle, BookOpen, Map, Carrot, Flame, Sun, CloudSun, Moon, Sparkles, Star, Rocket, Trophy, BarChart3, Sprout } from "lucide-react";
+import type { ReactNode } from "react";
 
 /* ─── Count-up animation hook ─────────────────────────── */
 
@@ -70,14 +71,14 @@ const GRADE_LABELS: Record<string, string> = {
 };
 
 const MOTIVATIONAL = [
-  "You're doing amazing! 🌟",
-  "Every lesson makes you stronger! 💪",
-  "Reading superstar in the making! ⭐",
-  "Keep it up, you're on fire! 🔥",
-  "Your brain is growing! 🧠",
-  "One more page, one more adventure! 🚀",
-  "Readers are leaders! 📚",
-  "You're unstoppable! 💫",
+  "You're doing amazing!",
+  "Every lesson makes you stronger!",
+  "Reading superstar in the making!",
+  "Keep it up, you're on fire!",
+  "Your brain is growing!",
+  "One more page, one more adventure!",
+  "Readers are leaders!",
+  "You're unstoppable!",
 ];
 
 function formatSkillName(skill: string): string {
@@ -98,11 +99,11 @@ function getFriendlyTopicName(domain: string): string {
   return DOMAIN_FRIENDLY_NAMES[domain] || "Reading practice";
 }
 
-function getGreeting(): { text: string; emoji: string } {
+function getGreeting(): { text: string; icon: ReactNode } {
   const h = new Date().getHours();
-  if (h < 12) return { text: "Good morning", emoji: "☀️" };
-  if (h < 17) return { text: "Good afternoon", emoji: "🌤️" };
-  return { text: "Good evening", emoji: "🌙" };
+  if (h < 12) return { text: "Good morning", icon: <Sun className="w-8 h-8 text-amber-400" strokeWidth={1.5} /> };
+  if (h < 17) return { text: "Good afternoon", icon: <CloudSun className="w-8 h-8 text-amber-400" strokeWidth={1.5} /> };
+  return { text: "Good evening", icon: <Moon className="w-8 h-8 text-indigo-400" strokeWidth={1.5} /> };
 }
 
 export default function Dashboard() {
@@ -259,8 +260,8 @@ function AddChildrenForm({ userPlan, onDone }: { userPlan: string; onDone: (kids
   return (
     <div className="max-w-md mx-auto py-16 px-4 space-y-8">
       <div className="text-center">
-        <div className="w-20 h-20 rounded-2xl bg-indigo-50 mx-auto mb-6 flex items-center justify-center text-4xl">
-          📚
+        <div className="w-20 h-20 rounded-2xl bg-indigo-50 mx-auto mb-6 flex items-center justify-center">
+          <BookOpen className="w-10 h-10 text-indigo-500" strokeWidth={1.5} />
         </div>
         <h1 className="text-2xl font-bold text-zinc-900 dark:text-slate-100 tracking-tight">
           Welcome to Readee!
@@ -317,7 +318,7 @@ function AddChildrenForm({ userPlan, onDone }: { userPlan: string; onDone: (kids
       ) : userPlan !== "premium" && (
         <Link href="/upgrade" className="block">
           <div className="w-full py-3 rounded-xl border-2 border-dashed border-indigo-200 bg-indigo-50/50 text-center text-sm font-medium text-indigo-600 hover:border-indigo-300 hover:bg-indigo-50 transition-colors">
-            ⭐ Upgrade to Readee+ for up to 5 children
+            <Star className="w-4 h-4 inline-block" strokeWidth={1.5} /> Upgrade to Readee+ for up to 5 children
           </div>
         </Link>
       )}
@@ -379,7 +380,7 @@ function ChildSelector({
                   )}
                 </div>
                 <div className="text-right text-xs text-zinc-400 space-y-1">
-                  <div>{Number(child.carrots) || 0} 🥕</div>
+                  <div className="flex items-center gap-0.5">{Number(child.carrots) || 0} <Carrot className="w-3 h-3 text-orange-500" strokeWidth={1.5} /></div>
                   <div>{child.streak_days}d streak</div>
                 </div>
               </div>
@@ -683,7 +684,7 @@ function ChildDashboard({
           </div>
         </div>
         <h1 className="text-3xl font-bold text-indigo-600 dark:text-indigo-400 tracking-tight">
-          {greeting.text}, {currentChild.first_name}! <span className="animate-wave">{greeting.emoji}</span>
+          {greeting.text}, {currentChild.first_name}! <span className="animate-wave inline-block">{greeting.icon}</span>
         </h1>
         <p className="text-zinc-500 dark:text-slate-400 mt-1 text-sm">{motivation}</p>
       </motion.div>
@@ -756,8 +757,8 @@ function ChildDashboard({
                     >
                       {item.emoji}
                       {!owned && (
-                        <span className="absolute bottom-0.5 right-0.5 text-[10px]">
-                          🔒
+                        <span className="absolute bottom-0.5 right-0.5">
+                          <svg className="w-2.5 h-2.5 text-zinc-400" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" /></svg>
                         </span>
                       )}
                     </button>
@@ -766,7 +767,7 @@ function ChildDashboard({
               </div>
               {shopAvatars.some((item) => !ownedAvatarIds.has(item.id)) && (
                 <p className="text-xs text-zinc-400 mt-3 text-center">
-                  Earn carrots 🥕 to unlock more avatars in the <Link href={`/shop?child=${currentChild.id}`} className="text-indigo-600 font-semibold hover:underline" onClick={() => setAvatarPickerOpen(false)}>Shop</Link>!
+                  Earn carrots <Carrot className="w-3 h-3 inline-block text-orange-500" strokeWidth={1.5} /> to unlock more avatars in the <Link href={`/shop?child=${currentChild.id}`} className="text-indigo-600 font-semibold hover:underline" onClick={() => setAvatarPickerOpen(false)}>Shop</Link>!
                 </p>
               )}
             </div>
@@ -860,8 +861,8 @@ function ChildDashboard({
               className="transition-all duration-1000"
             />
           </svg>
-          <div className="absolute inset-0 flex items-center justify-center text-2xl">
-            {dailyGoalMet ? "🎉" : "🎯"}
+          <div className="absolute inset-0 flex items-center justify-center">
+            {dailyGoalMet ? <Sparkles className="w-7 h-7 text-emerald-500" strokeWidth={1.5} /> : <Target className="w-7 h-7 text-indigo-500" strokeWidth={1.5} />}
           </div>
         </div>
         <div className="flex-1 min-w-0">
@@ -881,7 +882,7 @@ function ChildDashboard({
         <motion.div variants={slideUp}>
           <Link href={`/assessment?child=${child.id}`} className="block">
             <div className="rounded-3xl bg-gradient-to-r from-indigo-600 to-violet-500 p-7 text-center text-white hover:from-indigo-700 hover:to-violet-600 transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] cursor-pointer">
-              <div className="text-5xl mb-3">🎯</div>
+              <Target className="w-12 h-12 text-white mx-auto mb-3" strokeWidth={1.5} />
               <div className="text-xl font-extrabold">Take Your Reading Quiz!</div>
               <div className="text-indigo-200 text-base mt-1">
                 A fun 10-question quiz to find {child.first_name}&apos;s reading level
@@ -896,8 +897,8 @@ function ChildDashboard({
           <Link href={`/lesson?child=${child.id}&lesson=${nextLesson.id}`} className="block">
             <div className="rounded-3xl bg-gradient-to-r from-indigo-600 to-violet-500 p-6 text-white hover:from-indigo-700 hover:to-violet-600 transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] cursor-pointer">
               <div className="flex items-center gap-4">
-                <div className="w-16 h-16 rounded-2xl bg-white/20 flex items-center justify-center text-4xl flex-shrink-0">
-                  {completedCount === 0 ? "🚀" : "📖"}
+                <div className="w-16 h-16 rounded-2xl bg-white/20 flex items-center justify-center flex-shrink-0">
+                  {completedCount === 0 ? <Rocket className="w-9 h-9 text-white" strokeWidth={1.5} /> : <BookOpen className="w-9 h-9 text-white" strokeWidth={1.5} />}
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="text-indigo-200 text-sm font-medium">
@@ -924,7 +925,7 @@ function ChildDashboard({
       {hasAssessment && !nextLesson && lessons.length > 0 && (
         <motion.div variants={slideUp}>
           <div className="rounded-3xl bg-gradient-to-r from-emerald-500 to-teal-500 p-7 text-center text-white shadow-lg">
-            <div className="text-5xl mb-3">🏆</div>
+            <Trophy className="w-12 h-12 text-white mx-auto mb-3" strokeWidth={1.5} />
             <div className="text-xl font-extrabold">All Lessons Complete!</div>
             <div className="text-emerald-100 text-base mt-1">
               {child.first_name} has finished all {lessons.length} lessons. Amazing!
@@ -945,8 +946,8 @@ function ChildDashboard({
         <Link href={`/analytics?child=${child.id}`} className="block">
           <div className="rounded-2xl border border-violet-200 dark:border-violet-800/40 bg-gradient-to-r from-violet-50 to-purple-50 dark:from-violet-950/30 dark:to-purple-950/30 p-4 hover:border-violet-300 dark:hover:border-violet-700 hover:shadow-md transition-all duration-200 cursor-pointer group">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-white dark:bg-slate-700 flex items-center justify-center text-xl shadow-sm group-hover:scale-105 transition-transform">
-                📊
+              <div className="w-10 h-10 rounded-xl bg-white dark:bg-slate-700 flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform">
+                <BarChart3 className="w-5 h-5 text-violet-600 dark:text-violet-400" strokeWidth={1.5} />
               </div>
               <div className="flex-1 min-w-0">
                 <div className="font-bold text-sm text-zinc-900 dark:text-slate-100">Progress Report</div>
@@ -1000,7 +1001,7 @@ function ChildDashboard({
               <span className={`w-14 text-right text-xs font-medium ${
                 carrots > 0 ? "text-emerald-600" : isToday ? "text-indigo-400" : isPast ? "text-zinc-300" : "text-zinc-300"
               }`}>
-                {carrots > 0 ? `${carrots} 🥕` : isToday ? "Today" : "—"}
+                {carrots > 0 ? <>{carrots} <Carrot className="w-3 h-3 inline-block text-orange-500" strokeWidth={1.5} /></> : isToday ? "Today" : "—"}
               </span>
             </div>
           ))}
@@ -1036,7 +1037,7 @@ function ChildDashboard({
           </div>
         ) : (
           <div className="text-center py-6">
-            <div className="text-2xl mb-2">🌱</div>
+            <Sprout className="w-6 h-6 text-emerald-500 mx-auto mb-2" strokeWidth={1.5} />
             <p className="text-sm text-zinc-400">
               No activity yet. Start your first lesson to see progress here!
             </p>

@@ -16,9 +16,14 @@ interface SentenceBuildProps {
 
 const PUNCTUATION = new Set([".", "!", "?"]);
 
-/** Play a word's audio file from /audio/words/ */
+/** Play a word's audio file */
 function playWord(word: string) {
-  const src = `/audio/words/${word.toLowerCase()}.mp3`;
+  const base = process.env.NEXT_PUBLIC_SUPABASE_URL
+    ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audio`
+    : "";
+  const src = base
+    ? `${base}/words/${word.toLowerCase()}.mp3`
+    : `/audio/words/${word.toLowerCase()}.mp3`;
   const audio = new Audio(src);
   audio.play().catch(() => {});
 }

@@ -10,6 +10,8 @@ import { safeValidate } from "@/lib/validate";
 import { ChildSchema } from "@/lib/schemas";
 import { getStandardsForGrade } from "@/lib/data/all-standards";
 import { levelNameToGradeKey } from "@/lib/assessment/questions";
+import { BookOpen, Newspaper, Type, MessageCircle, Map as MapIcon, Trophy, Carrot, Star, Rabbit, Squirrel, Dog, Lock } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
 /* ─── Types ──────────────────────────────────────────── */
 
@@ -44,17 +46,17 @@ const NODE_VERTICAL_SPACING = 240;
 const PATH_ROAD_W = 56;
 const PATH_BORDER_W = 64;
 
-const DOMAIN_META: Record<string, { emoji: string }> = {
-  "Reading Literature":         { emoji: "📖" },
-  "Reading Informational Text": { emoji: "📰" },
-  "Foundational Skills":        { emoji: "🔤" },
-  "Language":                   { emoji: "💬" },
+const DOMAIN_META: Record<string, { icon: LucideIcon }> = {
+  "Reading Literature":         { icon: BookOpen },
+  "Reading Informational Text": { icon: Newspaper },
+  "Foundational Skills":        { icon: Type },
+  "Language":                   { icon: MessageCircle },
 };
 
-const MASCOTS: { afterNode: number; emoji: string; message: string }[] = [
-  { afterNode: 3,  emoji: "🐰", message: "Great start! Keep going!" },
-  { afterNode: 8,  emoji: "🦊", message: "You're doing amazing!" },
-  { afterNode: 15, emoji: "🦡", message: "Almost halfway there!" },
+const MASCOTS: { afterNode: number; icon: LucideIcon; message: string }[] = [
+  { afterNode: 3,  icon: Rabbit,   message: "Great start! Keep going!" },
+  { afterNode: 8,  icon: Squirrel, message: "You're doing amazing!" },
+  { afterNode: 15, icon: Dog,      message: "Almost halfway there!" },
 ];
 
 const KID_NAMES: Record<string, string> = {
@@ -205,7 +207,7 @@ function buildBezierPath(nodes: NodeLayout[]): string {
 function getMascotPositions(nodes: NodeLayout[]): {
   nodeIndex: number;
   side: "left" | "right";
-  emoji: string;
+  icon: LucideIcon;
   message: string;
   x: number;
   y: number;
@@ -219,7 +221,7 @@ function getMascotPositions(nodes: NodeLayout[]): {
     return {
       nodeIndex: m.afterNode,
       side,
-      emoji: m.emoji,
+      icon: m.icon,
       message: m.message,
       x: (node.x + (nextNode?.x || node.x)) / 2 + xOffset,
       y: midY,
@@ -464,7 +466,7 @@ function RoadmapLoader() {
   if (!child) {
     return (
       <div className="max-w-md mx-auto py-16 text-center space-y-4">
-        <div className="text-4xl">🗺️</div>
+        <MapIcon className="w-10 h-10 text-indigo-500" strokeWidth={1.5} />
         <h1 className="text-xl font-bold text-zinc-900 dark:text-slate-100">No reader selected</h1>
         <Link href="/dashboard" className="text-sm text-indigo-600 hover:text-indigo-700 font-medium">
           &larr; Back to Dashboard
@@ -653,7 +655,7 @@ function SnakePathRoadmap({ child, userPlan }: { child: Child; userPlan: string 
                 }`}
                 style={{ top: n.y - 62, zIndex: 5 }}
               >
-                <span className="text-sm">{meta?.emoji}</span>
+                {meta && <meta.icon className="w-4 h-4" strokeWidth={1.5} />}
                 <span className={`text-[11px] font-semibold ${dark ? "text-slate-200" : "text-zinc-600"}`}>
                   {n.domain}
                 </span>
@@ -693,8 +695,8 @@ function SnakePathRoadmap({ child, userPlan }: { child: Child; userPlan: string 
           className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center"
           style={{ top: totalHeight - 80 }}
         >
-          <div className="w-20 h-20 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-3xl shadow-[0_4px_0_0_#c2410c,0_8px_24px_rgba(245,158,11,0.4)]">
-            🏆
+          <div className="w-20 h-20 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center shadow-[0_4px_0_0_#c2410c,0_8px_24px_rgba(245,158,11,0.4)]">
+            <Trophy className="w-9 h-9 text-white" strokeWidth={1.5} />
           </div>
           <p className="text-sm font-bold text-slate-100 mt-3">Level Complete!</p>
           <p className="text-xs text-slate-400">Master all {ALL_STANDARDS.length} standards</p>
@@ -739,7 +741,7 @@ function TopProgressBar({ pct, completedCount, totalStandards, totalCarrots, str
       <div className="grid grid-cols-3 gap-2">
         <div className="bg-white/10 rounded-lg p-2 text-center">
           <div className="text-white font-bold text-sm">{totalCarrots}</div>
-          <div className="text-white/50 text-[9px]">🥕</div>
+          <Carrot className="w-3 h-3 text-white/50 mx-auto" strokeWidth={1.5} />
         </div>
         <div className="bg-white/10 rounded-lg p-2 text-center">
           <div className="text-white font-bold text-sm">{streakDays}</div>
@@ -759,7 +761,7 @@ function TopProgressBar({ pct, completedCount, totalStandards, totalCarrots, str
 /* ═══════════════════════════════════════════════════════ */
 
 function MascotBubble({ mascot, containerWidth, totalHeight }: {
-  mascot: { emoji: string; message: string; x: number; y: number; side: "left" | "right" };
+  mascot: { icon: LucideIcon; message: string; x: number; y: number; side: "left" | "right" };
   containerWidth: number;
   totalHeight: number;
 }) {
@@ -785,7 +787,7 @@ function MascotBubble({ mascot, containerWidth, totalHeight }: {
           {mascot.message}
         </div>
       )}
-      <span className="text-4xl drop-shadow-md">{mascot.emoji}</span>
+      <mascot.icon className="w-10 h-10 text-violet-500 dark:text-violet-300 drop-shadow-md" strokeWidth={1.5} />
       {mascot.side === "right" && (
         <div className={`rounded-xl px-3 py-2 shadow-md text-sm font-medium max-w-[160px] ${bubbleClass}`}>
           {mascot.message}
@@ -884,8 +886,8 @@ function MapNode({
           <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
           </svg>
-          <span className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-amber-400 flex items-center justify-center text-[9px] shadow-sm border-2 border-white">
-            ⭐
+          <span className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-amber-400 flex items-center justify-center shadow-sm border-2 border-white">
+            <Star className="w-3 h-3 text-white" strokeWidth={1.5} />
           </span>
         </motion.button>
       )}
@@ -1013,7 +1015,7 @@ function NodeTooltip({ standard, progress, isPremium, childId, nodeSize }: {
                 <div className="text-emerald-600 dark:text-emerald-500 text-[10px]">Correct</div>
               </div>
               <div className="flex-1 bg-orange-50 dark:bg-orange-900/20 rounded-xl p-2.5 text-center">
-                <div className="text-orange-700 dark:text-orange-400 font-bold text-sm">+{progress.carrotsEarned} 🥕</div>
+                <div className="text-orange-700 dark:text-orange-400 font-bold text-sm flex items-center justify-center gap-1">+{progress.carrotsEarned} <Carrot className="w-3.5 h-3.5" strokeWidth={1.5} /></div>
                 <div className="text-orange-600 dark:text-orange-500 text-[10px]">Carrots Earned</div>
               </div>
             </div>
@@ -1091,5 +1093,5 @@ function StatusBadge({ status, isPremium }: { status: StandardProgress["status"]
   if (isPremium) {
     return <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-gradient-to-r from-indigo-100 to-violet-100 dark:from-indigo-900/30 dark:to-violet-900/30 text-indigo-600 dark:text-indigo-400">Readee+</span>;
   }
-  return <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400">Locked 🔒</span>;
+  return <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 inline-flex items-center gap-0.5">Locked <Lock className="w-3 h-3" strokeWidth={1.5} /></span>;
 }

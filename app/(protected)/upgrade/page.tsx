@@ -13,6 +13,7 @@ import { ChildSchema } from "@/lib/schemas";
 import { Child } from "@/lib/db/types";
 import { levelNameToGradeKey } from "@/lib/assessment/questions";
 import lessonsData from "@/lib/data/lessons.json";
+import { Rocket, Lock, ShieldCheck, BadgeDollarSign } from "lucide-react";
 
 const COMPARISON_ROWS = [
   { feature: "Diagnostic assessment", free: true, premium: true },
@@ -256,7 +257,7 @@ function UpgradeContent() {
     >
       {/* ── HERO ── */}
       <motion.div variants={fadeUp} className="text-center space-y-4">
-        <div className="text-5xl">🚀</div>
+        <div className="flex justify-center"><Rocket className="w-12 h-12 text-indigo-500" strokeWidth={1.5} /></div>
         <h1 className="text-3xl sm:text-4xl font-extrabold text-zinc-900 dark:text-slate-100 tracking-tight leading-tight">
           Give your child the{" "}
           <span className="bg-gradient-to-r from-indigo-600 to-violet-500 bg-clip-text text-transparent">
@@ -419,11 +420,11 @@ function UpgradeContent() {
 
         {/* Trust badges */}
         <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs text-zinc-500 dark:text-slate-400">
-          <span>🔒 Secure payment</span>
+          <span className="inline-flex items-center gap-1"><Lock className="w-3.5 h-3.5" strokeWidth={1.5} /> Secure payment</span>
           <span className="text-zinc-300 dark:text-slate-600">·</span>
-          <span>✅ Cancel anytime</span>
+          <span className="inline-flex items-center gap-1"><ShieldCheck className="w-3.5 h-3.5" strokeWidth={1.5} /> Cancel anytime</span>
           <span className="text-zinc-300 dark:text-slate-600">·</span>
-          <span>💰 30-day money back</span>
+          <span className="inline-flex items-center gap-1"><BadgeDollarSign className="w-3.5 h-3.5" strokeWidth={1.5} /> 30-day money back</span>
         </div>
       </motion.div>
 

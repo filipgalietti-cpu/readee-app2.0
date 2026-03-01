@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { School, Target, ClipboardList, BarChart3, Microscope } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "For Educators — Readee",
@@ -12,8 +13,8 @@ export default function TeachersPage() {
     <div className="max-w-4xl mx-auto pb-16 px-4">
       {/* Hero */}
       <div className="text-center py-16 space-y-4">
-        <div className="w-20 h-20 rounded-2xl bg-indigo-50 mx-auto flex items-center justify-center text-4xl">
-          🏫
+        <div className="w-20 h-20 rounded-2xl bg-indigo-50 mx-auto flex items-center justify-center">
+          <School className="w-10 h-10 text-indigo-500" strokeWidth={1.5} />
         </div>
         <h1 className="text-4xl font-bold text-zinc-900 tracking-tight">
           Readee for Educators
@@ -33,22 +34,22 @@ export default function TeachersPage() {
         <div className="grid sm:grid-cols-2 gap-4">
           {[
             {
-              icon: "🎯",
+              icon: <Target className="w-5 h-5 text-indigo-500" strokeWidth={1.5} />,
               title: "Diagnostic Assessment",
               desc: "A quick 10-question quiz places each student at their reading level — no prep needed from you.",
             },
             {
-              icon: "📋",
+              icon: <ClipboardList className="w-5 h-5 text-indigo-500" strokeWidth={1.5} />,
               title: "Personalized Lesson Paths",
               desc: "Every student follows a structured path matched to their level, from K through 4th grade skills.",
             },
             {
-              icon: "📊",
+              icon: <BarChart3 className="w-5 h-5 text-indigo-500" strokeWidth={1.5} />,
               title: "Progress Tracking",
               desc: "See which students are progressing, who needs extra help, and what skills they've mastered.",
             },
             {
-              icon: "🔬",
+              icon: <Microscope className="w-5 h-5 text-indigo-500" strokeWidth={1.5} />,
               title: "Research-Based",
               desc: "Built on systematic phonics, phonemic awareness, fluency, vocabulary, and comprehension — the five pillars of reading.",
             },
@@ -58,7 +59,7 @@ export default function TeachersPage() {
               className="rounded-xl bg-white border border-indigo-100 p-5"
             >
               <div className="flex items-center gap-3 mb-2">
-                <span className="text-xl">{item.icon}</span>
+                {item.icon}
                 <h3 className="font-semibold text-zinc-900 text-sm">
                   {item.title}
                 </h3>

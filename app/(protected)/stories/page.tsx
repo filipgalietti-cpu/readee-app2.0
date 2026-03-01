@@ -8,6 +8,7 @@ import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child, LessonProgress } from "@/lib/db/types";
 import { levelNameToGradeKey } from "@/lib/assessment/questions";
 import lessonsData from "@/lib/data/lessons.json";
+import { BookOpen, Lock, CheckCircle } from "lucide-react";
 
 const GRADE_KEYS = ["pre-k", "kindergarten", "1st", "2nd", "3rd", "4th"] as const;
 const GRADE_LABELS: Record<string, string> = {
@@ -121,7 +122,7 @@ function StoriesContent() {
       </div>
 
       <div className="text-center animate-slideUp">
-        <div className="text-5xl mb-3">📚</div>
+        <BookOpen className="w-12 h-12 text-indigo-500 mx-auto mb-3" strokeWidth={1.5} />
         <h1 className="text-2xl font-bold text-zinc-900 tracking-tight">Stories Library</h1>
         <p className="text-zinc-500 mt-1">
           {completedStories} of {totalStories} stories read
@@ -161,7 +162,15 @@ function StoriesContent() {
                 }`}
               >
                 <div className="flex items-center gap-3">
-                  <span className="text-lg">{isLocked ? "🔒" : isCurrent ? "📖" : "✅"}</span>
+                  <span className="text-lg">
+                    {isLocked ? (
+                      <Lock className="w-5 h-5 text-zinc-400" strokeWidth={1.5} />
+                    ) : isCurrent ? (
+                      <BookOpen className="w-5 h-5 text-indigo-600" strokeWidth={1.5} />
+                    ) : (
+                      <CheckCircle className="w-5 h-5 text-green-500" strokeWidth={1.5} />
+                    )}
+                  </span>
                   <div>
                     <span className={`text-sm font-bold ${isCurrent ? "text-indigo-700" : "text-zinc-700"}`}>
                       {GRADE_LABELS[gradeKey]}
@@ -209,7 +218,13 @@ function StoriesContent() {
                           <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm flex-shrink-0 mt-0.5 ${
                             completed ? "bg-green-100 text-green-600" : available ? "bg-indigo-100 text-indigo-600" : "bg-zinc-100 text-zinc-400"
                           }`}>
-                            {completed ? "✓" : isLocked ? "🔒" : "📖"}
+                            {completed ? (
+                              <CheckCircle className="w-4 h-4" strokeWidth={2} />
+                            ) : isLocked ? (
+                              <Lock className="w-4 h-4" strokeWidth={1.5} />
+                            ) : (
+                              <BookOpen className="w-4 h-4" strokeWidth={1.5} />
+                            )}
                           </div>
                           <div className="flex-1 min-w-0">
                             <div className={`font-semibold text-sm ${isLocked ? "text-zinc-400" : "text-zinc-900"}`}>

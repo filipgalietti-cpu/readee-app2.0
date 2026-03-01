@@ -1,6 +1,8 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { createClient } from "@/lib/supabase/server";
+import { Target, Puzzle, TrendingUp, Type, Ear, BookOpen, MessageCircle, Brain, GraduationCap, Zap, Home } from "lucide-react";
+import type { ReactNode } from "react";
 
 export const metadata: Metadata = {
   title: "About Readee",
@@ -35,17 +37,17 @@ export default async function About() {
         <div className="grid sm:grid-cols-3 gap-4">
           {[
             {
-              icon: "🎯",
+              icon: <Target className="w-6 h-6 text-indigo-500" strokeWidth={1.5} />,
               title: "Meets Them Where They Are",
               desc: "A diagnostic assessment finds your child's exact reading level so every lesson is just right — never too easy, never too hard.",
             },
             {
-              icon: "🧩",
+              icon: <Puzzle className="w-6 h-6 text-indigo-500" strokeWidth={1.5} />,
               title: "Structured & Sequential",
               desc: "Skills build on each other in a logical order. No skipping ahead, no gaps — just steady, confident progress.",
             },
             {
-              icon: "📈",
+              icon: <TrendingUp className="w-6 h-6 text-indigo-500" strokeWidth={1.5} />,
               title: "Real, Measurable Growth",
               desc: "Track carrots earned, completed lessons, and mastered skills. You'll always know exactly where your child stands.",
             },
@@ -54,7 +56,7 @@ export default async function About() {
               key={item.title}
               className="rounded-xl bg-white border border-indigo-100 p-5"
             >
-              <div className="text-2xl mb-3">{item.icon}</div>
+              <div className="mb-3">{item.icon}</div>
               <h3 className="font-semibold text-zinc-900 text-sm mb-1">
                 {item.title}
               </h3>
@@ -81,27 +83,27 @@ export default async function About() {
         <div className="grid sm:grid-cols-2 gap-4">
           {[
             {
-              icon: "🔤",
+              icon: <Type className="w-5 h-5 text-indigo-500" strokeWidth={1.5} />,
               title: "Systematic Phonics",
               desc: "Learning the sounds letters make and how to blend them into words — the foundation of reading.",
             },
             {
-              icon: "👂",
+              icon: <Ear className="w-5 h-5 text-indigo-500" strokeWidth={1.5} />,
               title: "Phonemic Awareness",
               desc: "Hearing and playing with the individual sounds in words, like rhyming and segmenting.",
             },
             {
-              icon: "📖",
+              icon: <BookOpen className="w-5 h-5 text-indigo-500" strokeWidth={1.5} />,
               title: "Fluency",
               desc: "Reading smoothly and with expression so kids can focus on understanding, not just decoding.",
             },
             {
-              icon: "💬",
+              icon: <MessageCircle className="w-5 h-5 text-indigo-500" strokeWidth={1.5} />,
               title: "Vocabulary",
               desc: "Building a rich word bank so new words in stories feel familiar and meaningful.",
             },
             {
-              icon: "🧠",
+              icon: <Brain className="w-5 h-5 text-indigo-500" strokeWidth={1.5} />,
               title: "Comprehension",
               desc: "Understanding what they read — finding main ideas, making connections, and thinking critically.",
             },
@@ -111,7 +113,7 @@ export default async function About() {
               className="rounded-xl border border-zinc-100 bg-zinc-50/50 p-4"
             >
               <div className="flex items-center gap-3 mb-2">
-                <span className="text-xl">{item.icon}</span>
+                {item.icon}
                 <h3 className="font-semibold text-zinc-900 text-sm">
                   {item.title}
                 </h3>
@@ -174,22 +176,22 @@ export default async function About() {
         <div className="grid sm:grid-cols-2 gap-4">
           {[
             {
-              icon: "🎒",
+              icon: <GraduationCap className="w-6 h-6 text-indigo-500" strokeWidth={1.5} />,
               title: "K through 4th Grade",
               desc: "Covers the critical years when reading skills are built — from letter sounds to independent reading.",
             },
             {
-              icon: "💪",
+              icon: <Zap className="w-6 h-6 text-indigo-500" strokeWidth={1.5} />,
               title: "Kids Who Struggle with Reading",
               desc: "Structured, systematic lessons that meet them where they are and build confidence step by step.",
             },
             {
-              icon: "📚",
+              icon: <BookOpen className="w-6 h-6 text-indigo-500" strokeWidth={1.5} />,
               title: "Kids Who Need Extra Practice",
               desc: "A supplement to school that reinforces skills with engaging, bite-sized lessons at home.",
             },
             {
-              icon: "🏠",
+              icon: <Home className="w-6 h-6 text-indigo-500" strokeWidth={1.5} />,
               title: "Homeschool Families",
               desc: "A complete reading curriculum your child can follow with your guidance.",
             },
@@ -198,7 +200,7 @@ export default async function About() {
               key={item.title}
               className="rounded-xl border border-zinc-100 bg-zinc-50/50 p-5"
             >
-              <div className="text-2xl mb-2">{item.icon}</div>
+              <div className="mb-2">{item.icon}</div>
               <h3 className="font-semibold text-zinc-900 text-sm mb-1">
                 {item.title}
               </h3>

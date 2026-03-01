@@ -4,6 +4,7 @@ import { Suspense, useEffect, useState, useMemo } from "react";
 import Link from "next/link";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { wordBank, type WordEntry } from "@/lib/word-bank/words";
+import { BookOpen, Star } from "lucide-react";
 
 const CATEGORY_FILTERS = [
   { label: "All", tag: null },
@@ -87,8 +88,8 @@ function WordBankContent() {
       {/* Header */}
       <div className="mb-6">
         <div className="flex items-center gap-3 mb-2">
-          <div className="w-12 h-12 rounded-2xl bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-2xl">
-            📚
+          <div className="w-12 h-12 rounded-2xl bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center">
+            <BookOpen className="w-6 h-6 text-indigo-500 dark:text-indigo-400" strokeWidth={1.5} />
           </div>
           <div>
             <h1 className="text-2xl font-bold text-zinc-900 dark:text-slate-100 tracking-tight">
@@ -186,8 +187,8 @@ function WordBankContent() {
         {!isPremium && filteredWords.length > FREE_WORD_LIMIT && (
           <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-white dark:from-slate-900 via-white/90 dark:via-slate-900/90 to-transparent flex items-end justify-center pb-6">
             <div className="text-center px-6 py-6 max-w-sm">
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-violet-100 to-indigo-100 dark:from-violet-900/40 dark:to-indigo-900/40 mx-auto mb-3 flex items-center justify-center text-2xl shadow-sm">
-                📚
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-violet-100 to-indigo-100 dark:from-violet-900/40 dark:to-indigo-900/40 mx-auto mb-3 flex items-center justify-center shadow-sm">
+                <BookOpen className="w-7 h-7 text-violet-600 dark:text-violet-400" strokeWidth={1.5} />
               </div>
               <h2 className="text-lg font-extrabold text-zinc-900 dark:text-slate-100 mb-1.5">
                 Unlock All {wordBank.length} Words
@@ -201,7 +202,7 @@ function WordBankContent() {
                 className="relative inline-flex items-center gap-2 px-7 py-3 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-bold text-sm hover:from-violet-700 hover:to-indigo-700 transition-all shadow-lg hover:shadow-xl hover:scale-105 overflow-hidden group"
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
-                <span className="relative">⭐</span>
+                <Star className="relative w-4 h-4" strokeWidth={1.5} />
                 <span className="relative">Upgrade to Readee+</span>
               </Link>
             </div>

@@ -4,6 +4,7 @@ import { useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { popIn, confettiPiece } from "@/lib/motion/variants";
+import { Sparkles } from "lucide-react";
 
 const CONFETTI_COLORS = [
   "#6366f1", "#8b5cf6", "#a78bfa", "#60a5fa",
@@ -67,14 +68,14 @@ export default function CelebrationOverlay({ show }: { show: boolean }) {
             transition={{ type: "spring", stiffness: 400, damping: 30, delay: 0.1 }}
             className="bg-white dark:bg-slate-800 rounded-3xl shadow-2xl max-w-sm w-full p-8 text-center space-y-5 relative overflow-hidden"
           >
-            {/* Emoji */}
+            {/* Icon */}
             <motion.div
               variants={popIn}
               initial="hidden"
               animate="visible"
-              className="text-6xl"
+              className="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-indigo-100 to-violet-100 dark:from-indigo-900/40 dark:to-violet-900/40 flex items-center justify-center"
             >
-              🎉
+              <Sparkles className="w-8 h-8 text-indigo-600 dark:text-indigo-400" strokeWidth={1.5} />
             </motion.div>
 
             {/* Heading */}

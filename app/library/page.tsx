@@ -5,6 +5,7 @@ import Link from "next/link";
 
 import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/Card";
 import { Icon } from "../components/ui/Icon";
+import { Lock } from "lucide-react";
 
 interface Story {
   id: string;
@@ -85,7 +86,7 @@ export default function Library() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-sm text-zinc-400">{story.description}</p>
-                  <p className="text-xs text-zinc-500 mt-3">🔒 Complete more lessons to unlock</p>
+                  <p className="text-xs text-zinc-500 mt-3 flex items-center gap-1"><Lock className="w-3 h-3" strokeWidth={1.5} /> Complete more lessons to unlock</p>
                 </CardContent>
               </Card>
             )}

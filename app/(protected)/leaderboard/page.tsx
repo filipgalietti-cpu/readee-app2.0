@@ -6,6 +6,8 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
+import { Crown, Medal, Flame, Sprout } from "lucide-react";
+import type { ReactNode } from "react";
 
 interface LeaderEntry {
   id: string;
@@ -13,7 +15,11 @@ interface LeaderEntry {
   streak_days: number;
 }
 
-const RANK_ICONS = ["👑", "🥈", "🥉"];
+const RANK_ICONS: ReactNode[] = [
+  <Crown key="1st" className="w-5 h-5 text-amber-500" strokeWidth={1.5} />,
+  <Medal key="2nd" className="w-5 h-5 text-gray-400" strokeWidth={1.5} />,
+  <Medal key="3rd" className="w-5 h-5 text-amber-600" strokeWidth={1.5} />,
+];
 
 export default function LeaderboardPage() {
   return (
@@ -87,9 +93,7 @@ function LeaderboardContent() {
 
       {/* Own streak display */}
       <div className="text-center animate-slideUp">
-        <div className={`text-6xl mb-3 inline-block ${child.streak_days > 0 ? "animate-streakPulse" : ""}`}>
-          🔥
-        </div>
+        <Flame className={`w-16 h-16 text-orange-500 mx-auto mb-3 ${child.streak_days > 0 ? "animate-streakPulse" : ""}`} strokeWidth={1.5} />
         <div className="text-4xl font-bold text-zinc-900">
           {child.streak_days} day{child.streak_days !== 1 ? "s" : ""}
         </div>
@@ -120,7 +124,7 @@ function LeaderboardContent() {
                 >
                   <div className="w-8 text-center flex-shrink-0">
                     {i < 3 ? (
-                      <span className="text-lg">{RANK_ICONS[i]}</span>
+                      <span>{RANK_ICONS[i]}</span>
                     ) : (
                       <span className="text-sm font-bold text-zinc-400">#{i + 1}</span>
                     )}
@@ -132,7 +136,7 @@ function LeaderboardContent() {
                     </span>
                   </div>
                   <div className="flex items-center gap-1.5 flex-shrink-0">
-                    <span className="text-sm">🔥</span>
+                    <Flame className="w-4 h-4 text-orange-500" strokeWidth={1.5} />
                     <span className={`text-sm font-bold ${isMe ? "text-indigo-700" : "text-zinc-900"}`}>
                       {entry.streak_days}
                     </span>
@@ -144,7 +148,7 @@ function LeaderboardContent() {
         </div>
       ) : (
         <div className="rounded-2xl border border-zinc-200 bg-white p-8 text-center dash-slide-up-1">
-          <div className="text-4xl mb-3">🌱</div>
+          <Sprout className="w-10 h-10 text-emerald-500 mx-auto mb-3" strokeWidth={1.5} />
           <h3 className="font-bold text-zinc-900">No streaks yet!</h3>
           <p className="text-sm text-zinc-500 mt-1">
             Start your streak today by completing a lesson!

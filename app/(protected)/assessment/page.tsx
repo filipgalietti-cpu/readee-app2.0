@@ -20,12 +20,17 @@ import { CategorySort } from "@/app/components/practice/CategorySort";
 import { SentenceBuild } from "@/app/components/practice/SentenceBuild";
 import { MissingWord } from "@/app/components/practice/MissingWord";
 import { useAudio } from "@/lib/audio/use-audio";
+import { FileText, Sparkles, Star, Target } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
 const CORRECT_MESSAGES = [
   "Amazing!", "Great job!", "You got it!", "Nice catch!",
   "Super smart!", "Wonderful!", "Nailed it!", "Brilliant!",
 ];
-const CORRECT_EMOJIS = ["⭐", "🎉", "✨", "🌟", "💫", "🎯"];
+const CORRECT_EMOJIS = ["star", "sparkles", "sparkle", "star2", "zap", "target"];
+const FEEDBACK_ICON_MAP: Record<string, LucideIcon> = {
+  star: Star, sparkles: Sparkles, sparkle: Sparkles, star2: Star, zap: Target, target: Target,
+};
 const INCORRECT_MESSAGES = [
   "Not quite!", "Almost!", "Good try!", "Keep going!",
 ];
@@ -204,8 +209,8 @@ function AssessmentContent() {
   if (phase === "intro") {
     return (
       <div className="max-w-lg mx-auto text-center py-16 px-4 space-y-8">
-        <div className="w-24 h-24 rounded-2xl bg-indigo-50 mx-auto flex items-center justify-center text-5xl">
-          📝
+        <div className="w-24 h-24 rounded-2xl bg-indigo-50 mx-auto flex items-center justify-center">
+          <FileText className="w-12 h-12 text-indigo-500" strokeWidth={1.5} />
         </div>
         <div>
           <h1 className="text-2xl font-bold text-zinc-900 tracking-tight">
@@ -452,8 +457,8 @@ function AssessmentContent() {
             <div className="max-w-lg mx-auto px-5 py-5 safe-area-bottom">
               <div className="flex items-center gap-3">
                 {matchFeedback.isCorrect ? (
-                  <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-xl">
-                    {matchFeedback.emoji}
+                  <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+                    {(() => { const FI = FEEDBACK_ICON_MAP[matchFeedback.emoji] || Star; return <FI className="w-5 h-5 text-white" strokeWidth={1.5} />; })()}
                   </div>
                 ) : (
                   <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
@@ -488,7 +493,7 @@ function AssessmentContent() {
           />
         ))}
 
-        <div className="text-6xl">🎉</div>
+        <Sparkles className="w-16 h-16 text-indigo-500 mx-auto" strokeWidth={1.5} />
 
         <h1 className="text-3xl font-bold text-zinc-900 tracking-tight">
           Awesome, {child.first_name}!

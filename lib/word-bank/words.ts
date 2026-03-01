@@ -4,8 +4,16 @@ export interface WordEntry {
   audio: string;
 }
 
+const SUPABASE_AUDIO =
+  process.env.NEXT_PUBLIC_SUPABASE_URL
+    ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audio`
+    : "";
+
 function w(word: string, tags: string[]): WordEntry {
-  return { word, tags, audio: `/audio/words/${word}.mp3` };
+  const audio = SUPABASE_AUDIO
+    ? `${SUPABASE_AUDIO}/words/${word}.mp3`
+    : `/audio/words/${word}.mp3`;
+  return { word, tags, audio };
 }
 
 export const wordBank: WordEntry[] = [

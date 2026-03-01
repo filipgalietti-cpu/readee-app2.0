@@ -5,6 +5,7 @@ import { useEffect, useState, useRef } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { useChildStore } from "@/lib/stores/child-store";
+import { Carrot, Star } from "lucide-react";
 
 export default function NavAuth() {
   const pathname = usePathname();
@@ -132,7 +133,7 @@ export default function NavAuth() {
                 Analytics
               </Link>
               <Link href={activeChild ? `/shop?child=${activeChild.id}` : "/shop"} className={linkClass("/shop")}>
-                🥕 Shop
+                <Carrot className="w-4 h-4 inline-block align-text-bottom" strokeWidth={1.5} /> Shop
               </Link>
               <Link href="/word-bank" className={linkClass("/word-bank")}>
                 Word Bank
@@ -147,7 +148,7 @@ export default function NavAuth() {
                   className="relative text-sm font-bold px-4 py-1.5 rounded-full bg-gradient-to-r from-indigo-600 to-violet-500 text-white hover:from-indigo-700 hover:to-violet-600 transition-all duration-200 shadow-sm hover:shadow-md hover:scale-105 flex items-center gap-1.5 overflow-hidden group nav-shine"
                 >
                   <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
-                  <span className="relative">⭐</span>
+                  <Star className="relative w-4 h-4" strokeWidth={1.5} />
                   <span className="relative font-extrabold">Upgrade</span>
                 </Link>
               ) : (
@@ -155,7 +156,7 @@ export default function NavAuth() {
                   href="/settings"
                   className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-sm font-bold shadow-sm hover:shadow-md hover:scale-105 transition-all duration-200"
                 >
-                  <span className="text-sm">⭐</span>
+                  <Star className="w-4 h-4" strokeWidth={1.5} />
                   Readee+
                 </Link>
               )}
@@ -255,7 +256,7 @@ export default function NavAuth() {
                 Analytics
               </Link>
               <Link href={activeChild ? `/shop?child=${activeChild.id}` : "/shop"} className={`block py-2.5 px-3 rounded-lg text-sm font-medium transition-all duration-200 ${isActive("/shop") ? "text-indigo-700 bg-indigo-50 dark:text-indigo-300 dark:bg-indigo-950" : "text-zinc-700 dark:text-slate-300 hover:text-indigo-700 dark:hover:text-indigo-300 hover:bg-indigo-50/60 dark:hover:bg-slate-800"}`}>
-                🥕 Shop
+                <Carrot className="w-4 h-4 inline-block align-text-bottom" strokeWidth={1.5} /> Shop
               </Link>
               <Link href="/word-bank" className={`block py-2.5 px-3 rounded-lg text-sm font-medium transition-all duration-200 ${isActive("/word-bank") ? "text-indigo-700 bg-indigo-50 dark:text-indigo-300 dark:bg-indigo-950" : "text-zinc-700 dark:text-slate-300 hover:text-indigo-700 dark:hover:text-indigo-300 hover:bg-indigo-50/60 dark:hover:bg-slate-800"}`}>
                 Word Bank
@@ -269,14 +270,14 @@ export default function NavAuth() {
                   className="relative block my-2 px-4 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-sm font-bold text-center hover:from-indigo-700 hover:to-violet-600 transition-all shadow-sm overflow-hidden group"
                 >
                   <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
-                  <span className="relative">⭐ Upgrade to Readee+</span>
+                  <span className="relative flex items-center justify-center gap-1.5"><Star className="w-4 h-4" strokeWidth={1.5} /> Upgrade to Readee+</span>
                 </Link>
               ) : (
                 <Link
                   href="/settings"
                   className="flex items-center justify-center gap-2 my-2 px-4 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-sm font-bold shadow-sm"
                 >
-                  <span>⭐</span>
+                  <Star className="w-4 h-4" strokeWidth={1.5} />
                   Readee+ Member
                 </Link>
               )}

@@ -12,6 +12,8 @@ import { ChildSchema } from "@/lib/schemas";
 import { getAllStandards as fetchAllStandards } from "@/lib/data/all-standards";
 import { useChildStore } from "@/lib/stores/child-store";
 import { getChildAvatar } from "@/lib/utils/get-child-avatar";
+import { BookOpen, Newspaper, Type, MessageCircle, BarChart3, Rocket, TrendingUp, Zap, Sprout, Star, FileText, Target, Carrot } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
 /* ─── Types ──────────────────────────────────────────── */
 
@@ -38,11 +40,11 @@ type DateRange = "week" | "month" | "all";
 /* ─── Constants ──────────────────────────────────────── */
 
 
-const DOMAIN_META: Record<string, { emoji: string; color: string; darkColor: string; bg: string; darkBg: string; border: string; barColor: string; total: number }> = {
-  "Reading Literature":         { emoji: "📖", color: "text-violet-700",  darkColor: "dark:text-violet-400",  bg: "bg-violet-50",  darkBg: "dark:bg-violet-950/30", border: "border-violet-200",  barColor: "#8b5cf6", total: 8 },
-  "Reading Informational Text": { emoji: "📰", color: "text-blue-700",   darkColor: "dark:text-blue-400",   bg: "bg-blue-50",    darkBg: "dark:bg-blue-950/30",   border: "border-blue-200",    barColor: "#3b82f6", total: 9 },
-  "Foundational Skills":        { emoji: "🔤", color: "text-emerald-700", darkColor: "dark:text-emerald-400", bg: "bg-emerald-50", darkBg: "dark:bg-emerald-950/30", border: "border-emerald-200", barColor: "#10b981", total: 14 },
-  "Language":                   { emoji: "💬", color: "text-amber-700",  darkColor: "dark:text-amber-400",  bg: "bg-amber-50",   darkBg: "dark:bg-amber-950/30",  border: "border-amber-200",   barColor: "#f59e0b", total: 5 },
+const DOMAIN_META: Record<string, { icon: LucideIcon; color: string; darkColor: string; bg: string; darkBg: string; border: string; barColor: string; total: number }> = {
+  "Reading Literature":         { icon: BookOpen,       color: "text-violet-700",  darkColor: "dark:text-violet-400",  bg: "bg-violet-50",  darkBg: "dark:bg-violet-950/30", border: "border-violet-200",  barColor: "#8b5cf6", total: 8 },
+  "Reading Informational Text": { icon: Newspaper,      color: "text-blue-700",   darkColor: "dark:text-blue-400",   bg: "bg-blue-50",    darkBg: "dark:bg-blue-950/30",   border: "border-blue-200",    barColor: "#3b82f6", total: 9 },
+  "Foundational Skills":        { icon: Type,            color: "text-emerald-700", darkColor: "dark:text-emerald-400", bg: "bg-emerald-50", darkBg: "dark:bg-emerald-950/30", border: "border-emerald-200", barColor: "#10b981", total: 14 },
+  "Language":                   { icon: MessageCircle,   color: "text-amber-700",  darkColor: "dark:text-amber-400",  bg: "bg-amber-50",   darkBg: "dark:bg-amber-950/30",  border: "border-amber-200",   barColor: "#f59e0b", total: 5 },
 };
 
 /* ─── Helpers ────────────────────────────────────────── */
@@ -197,7 +199,7 @@ function AnalyticsLoader() {
   if (!child) {
     return (
       <div className="max-w-md mx-auto py-16 text-center space-y-4">
-        <div className="text-4xl">📊</div>
+        <BarChart3 className="w-10 h-10 text-indigo-500" strokeWidth={1.5} />
         <h1 className="text-xl font-bold text-zinc-900 dark:text-slate-100">No reader selected</h1>
         <Link href="/dashboard" className="text-sm text-indigo-600 hover:text-indigo-700 font-medium">
           &larr; Back to Dashboard
@@ -398,7 +400,7 @@ function AnalyticsDashboard({ child }: { child: Child }) {
         </motion.div>
 
         <motion.div variants={slideUp} className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-8 shadow-sm">
-          <div className="text-5xl mb-4">🚀</div>
+          <Rocket className="w-12 h-12 text-indigo-500 mx-auto mb-4" strokeWidth={1.5} />
           <h2 className="text-lg font-bold text-zinc-900 dark:text-slate-100 mb-2">
             Ready to get started?
           </h2>
@@ -467,9 +469,9 @@ function AnalyticsDashboard({ child }: { child: Child }) {
 
       {/* ═══ Section 2 — Key Stats ═══ */}
       <motion.div variants={slideUp} className="grid grid-cols-3 gap-3 mb-6">
-        <StatCard label="Questions Answered" value={totals.attempted} icon="📝" />
+        <StatCard label="Questions Answered" value={totals.attempted} icon={<FileText className="w-5 h-5 text-indigo-500" strokeWidth={1.5} />} />
         <AccuracyCard accuracy={totals.accuracy} />
-        <StatCard label="Practice Sessions" value={totals.sessions} icon="🎯" />
+        <StatCard label="Practice Sessions" value={totals.sessions} icon={<Target className="w-5 h-5 text-indigo-500" strokeWidth={1.5} />} />
       </motion.div>
 
       {/* ═══ Premium Analytics Gate ═══ */}
@@ -533,8 +535,8 @@ function AnalyticsDashboard({ child }: { child: Child }) {
           {/* Upgrade overlay */}
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-center px-6 py-8 max-w-sm">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-violet-100 to-indigo-100 dark:from-violet-900/40 dark:to-indigo-900/40 mx-auto mb-4 flex items-center justify-center text-3xl shadow-sm">
-                📊
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-violet-100 to-indigo-100 dark:from-violet-900/40 dark:to-indigo-900/40 mx-auto mb-4 flex items-center justify-center shadow-sm">
+                <BarChart3 className="w-8 h-8 text-violet-600 dark:text-violet-400" strokeWidth={1.5} />
               </div>
               <h2 className="text-xl font-extrabold text-zinc-900 dark:text-slate-100 mb-2">
                 Unlock Deep Analytics
@@ -547,7 +549,7 @@ function AnalyticsDashboard({ child }: { child: Child }) {
                 className="relative inline-flex items-center gap-2 px-7 py-3 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-bold text-sm hover:from-violet-700 hover:to-indigo-700 transition-all shadow-lg hover:shadow-xl hover:scale-105 overflow-hidden group"
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
-                <span className="relative">⭐</span>
+                <Star className="relative w-4 h-4" strokeWidth={1.5} />
                 <span className="relative">Upgrade to Readee+</span>
               </Link>
             </div>
@@ -564,7 +566,7 @@ function AnalyticsDashboard({ child }: { child: Child }) {
               <AccuracyChart data={chartData} />
             ) : (
               <div className="text-center py-8">
-                <div className="text-3xl mb-2">📈</div>
+                <TrendingUp className="w-8 h-8 text-indigo-500 mx-auto mb-2" strokeWidth={1.5} />
                 <p className="text-sm text-zinc-500 dark:text-slate-400">
                   Complete a few more sessions to see your progress trend!
                 </p>
@@ -578,15 +580,15 @@ function AnalyticsDashboard({ child }: { child: Child }) {
               {/* Strengths */}
               <div className="rounded-2xl border border-emerald-200 dark:border-emerald-800/40 bg-gradient-to-b from-emerald-50/80 to-white dark:from-emerald-950/20 dark:to-slate-800 p-5 shadow-sm">
                 <h3 className="text-base font-bold text-zinc-900 dark:text-slate-100 mb-3">
-                  Strengths 💪
+                  Strengths <Zap className="w-4 h-4 inline-block text-emerald-500" strokeWidth={1.5} />
                 </h3>
                 <div className="space-y-3">
                   {domainsByStrength.map((d) => {
                     const meta = DOMAIN_META[d.domain];
                     return (
                       <div key={d.domain} className="flex items-start gap-3">
-                        <div className="w-7 h-7 rounded-full bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center flex-shrink-0 text-sm">
-                          {meta?.emoji ?? "📚"}
+                        <div className="w-7 h-7 rounded-full bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center flex-shrink-0">
+                          {meta ? <meta.icon className="w-3.5 h-3.5" strokeWidth={1.5} /> : <BookOpen className="w-3.5 h-3.5" strokeWidth={1.5} />}
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="text-sm font-medium text-zinc-800 dark:text-slate-200">{d.domain}</div>
@@ -604,15 +606,15 @@ function AnalyticsDashboard({ child }: { child: Child }) {
               {/* Weaknesses */}
               <div className="rounded-2xl border border-amber-200 dark:border-amber-800/40 bg-gradient-to-b from-amber-50/80 to-white dark:from-amber-950/20 dark:to-slate-800 p-5 shadow-sm">
                 <h3 className="text-base font-bold text-zinc-900 dark:text-slate-100 mb-3">
-                  Keep Practicing 🌱
+                  Keep Practicing <Sprout className="w-4 h-4 inline-block text-amber-500" strokeWidth={1.5} />
                 </h3>
                 <div className="space-y-3">
                   {domainsByWeakness.map((d) => {
                     const meta = DOMAIN_META[d.domain];
                     return (
                       <div key={d.domain} className="flex items-start gap-3">
-                        <div className="w-7 h-7 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center flex-shrink-0 text-sm">
-                          {meta?.emoji ?? "📚"}
+                        <div className="w-7 h-7 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center flex-shrink-0">
+                          {meta ? <meta.icon className="w-3.5 h-3.5" strokeWidth={1.5} /> : <BookOpen className="w-3.5 h-3.5" strokeWidth={1.5} />}
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="text-sm font-medium text-zinc-800 dark:text-slate-200">{d.domain}</div>
@@ -659,7 +661,7 @@ function AnalyticsDashboard({ child }: { child: Child }) {
                   <div key={dp.domain}>
                     <div className="flex items-center justify-between mb-1">
                       <div className="flex items-center gap-2">
-                        <span className="text-sm">{dp.emoji}</span>
+                        <dp.icon className="w-4 h-4" strokeWidth={1.5} />
                         <span className={`text-sm font-medium ${dp.color} ${dp.darkColor}`}>{dp.domain}</span>
                       </div>
                       <span className="text-xs text-zinc-500 dark:text-slate-400 font-medium">{dp.practiced}/{dp.total}</span>
@@ -699,7 +701,7 @@ function AnalyticsDashboard({ child }: { child: Child }) {
                       {r.questions_correct}/{r.questions_attempted}
                     </div>
                     <div className="text-xs font-medium text-amber-600 dark:text-amber-400 flex-shrink-0">
-                      +{r.carrots_earned} 🥕
+                      +{r.carrots_earned} <Carrot className="w-3 h-3 inline-block align-text-bottom" strokeWidth={1.5} />
                     </div>
                   </div>
                 ))}
@@ -729,12 +731,12 @@ function AnalyticsDashboard({ child }: { child: Child }) {
 /*  Stat Card                                              */
 /* ═══════════════════════════════════════════════════════ */
 
-function StatCard({ label, value, icon }: { label: string; value: number; icon: string }) {
+function StatCard({ label, value, icon }: { label: string; value: number; icon: React.ReactNode }) {
   const { value: animated, ref } = useCountUp(value);
 
   return (
     <div ref={ref} className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 text-center shadow-sm">
-      <div className="text-xl mb-1">{icon}</div>
+      <div className="flex justify-center mb-1">{icon}</div>
       <div className="text-2xl font-bold text-zinc-900 dark:text-slate-100">{animated}</div>
       <div className="text-[11px] text-zinc-500 dark:text-slate-400 mt-0.5 font-medium">{label}</div>
     </div>
