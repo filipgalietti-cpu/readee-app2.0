@@ -626,12 +626,15 @@ function ChildDashboard({
   };
 
   return (
+    <div
+      className={bgImage ? "min-h-screen -mx-6 -my-8 px-6 py-8" : ""}
+      style={bgImage ? { backgroundImage: `url(${bgImage})`, backgroundSize: "cover", backgroundPosition: "center", backgroundAttachment: "fixed" } : undefined}
+    >
     <motion.div
-      className={`max-w-3xl mx-auto space-y-6 pb-12 px-4${bgImage ? " min-h-screen rounded-3xl pt-6" : ""}`}
+      className="max-w-3xl mx-auto space-y-6 pb-12 px-4"
       variants={staggerContainer}
       initial="hidden"
       animate="visible"
-      {...(bgImage ? { style: { backgroundImage: `url(${bgImage})`, backgroundSize: "cover", backgroundPosition: "center", backgroundAttachment: "fixed" } } : {})}
     >
       {/* Nav */}
       {hasMultiple && (
@@ -1037,6 +1040,7 @@ function ChildDashboard({
         )}
       </motion.div>
     </motion.div>
+    </div>
   );
 }
 
