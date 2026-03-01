@@ -125,7 +125,7 @@ export default function Signup() {
   };
 
   return (
-    <AuthCard title="Create Your Parent Account" banner="Start Free - Upgrade Anytime">
+    <AuthCard title="Create Your Account">
       <GoogleButton />
       <Divider />
       {errors.general && (
@@ -176,7 +176,7 @@ export default function Signup() {
           {isLoading ? "Creating Account..." : "Create Account"}
         </button>
       </form>
-      <p className="mt-6 text-center text-sm text-zinc-700">
+      <p className="mt-6 text-center text-sm text-indigo-900">
         Already have an account?{" "}
         <Link
           href="/login"
