@@ -69,10 +69,10 @@ export function MysteryBoxOpener({
               transition={{ duration: 1.4, ease: "easeInOut" }}
             >
               <img
-                src="/images/shop/mystery-box-closed.png"
+                src="/images/shop/mystery-box-closed-noshadow.png"
                 alt="Mystery Box"
                 className="w-full h-full object-contain"
-                style={{ filter: "drop-shadow(0 8px 30px rgba(245, 158, 11, 0.4))" }}
+                style={{}}
               />
               {/* Golden sparkles during wobble */}
               {sparkles.map((s) => (
@@ -103,10 +103,10 @@ export function MysteryBoxOpener({
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
               <motion.img
-                src="/images/shop/mystery-box-open.png"
+                src="/images/shop/mystery-box-closed-noshadow.png"
                 alt="Mystery Box Opening"
                 className="w-full h-full object-contain"
-                style={{ filter: "drop-shadow(0 8px 40px rgba(245, 158, 11, 0.5))" }}
+                style={{}}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.15 }}
