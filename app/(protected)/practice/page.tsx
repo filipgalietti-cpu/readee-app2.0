@@ -789,8 +789,8 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
 
         {/* ── Passage — context before the question ── */}
         {passage && (
-          <motion.div variants={fadeUp} className="mb-5 rounded-xl bg-zinc-50 border border-zinc-200 dark:bg-slate-800/80 dark:border-slate-700 px-3 py-2">
-            <p className="text-base md:text-lg leading-relaxed text-gray-700 dark:text-slate-300 italic whitespace-pre-line">{passage}</p>
+          <motion.div variants={fadeUp} className="mb-5 rounded-2xl bg-amber-50 border border-amber-200 dark:bg-amber-950/30 dark:border-amber-800/50 p-6">
+            <p className="text-xl md:text-2xl leading-loose font-semibold text-gray-800 dark:text-slate-200 tracking-wide whitespace-pre-line">{passage}</p>
           </motion.div>
         )}
 
