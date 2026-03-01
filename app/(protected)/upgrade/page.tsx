@@ -276,6 +276,9 @@ function UpgradeContent() {
         <p className="text-zinc-500 dark:text-slate-400 max-w-md mx-auto">
           42+ structured lessons, audio narration, and a full K-4th grade curriculum — all aligned to Common Core ELA standards.
         </p>
+        <div className="inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-indigo-50 px-4 py-1.5 text-xs font-semibold text-indigo-700">
+          One Readee+ household plan covers up to 5 children
+        </div>
       </motion.div>
 
       {/* ── ANIMATED STAT COUNTERS ── */}
@@ -354,6 +357,9 @@ function UpgradeContent() {
         <h2 className="text-xl font-bold text-zinc-900 dark:text-slate-100 text-center">
           Choose your plan
         </h2>
+        <p className="text-center text-sm text-zinc-500 dark:text-slate-400 -mt-3">
+          Built for families: same price whether you have 1 child or multiple readers.
+        </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
           {/* Monthly card */}
@@ -369,7 +375,7 @@ function UpgradeContent() {
                 <span className="text-sm text-zinc-400 dark:text-slate-500">/month</span>
               </div>
               <p className="text-xs text-zinc-500 dark:text-slate-400 pt-1">Billed monthly</p>
-              <p className="text-xs text-zinc-400 dark:text-slate-500 pt-2">Flexibility to cancel anytime</p>
+              <p className="text-xs text-zinc-400 dark:text-slate-500 pt-2">Includes up to 5 child profiles</p>
             </div>
 
             <button
@@ -403,6 +409,7 @@ function UpgradeContent() {
               <span className="inline-block mt-2 px-2.5 py-1 rounded-full text-[11px] font-bold bg-emerald-400/20 text-emerald-100 border border-emerald-300/30">
                 Save 40%
               </span>
+              <p className="text-xs text-white/70 pt-2">Includes up to 5 child profiles</p>
             </div>
 
             <button

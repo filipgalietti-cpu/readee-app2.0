@@ -507,6 +507,7 @@ function LessonContent() {
   const [child, setChild] = useState<Child | null>(null);
   const [lesson, setLesson] = useState<LessonRaw | null>(null);
   const [phase, setPhase] = useState<Phase>("loading");
+  const [userPlan, setUserPlan] = useState<string>("free");
 
   // Learn state (flashcard)
   const [learnIdx, setLearnIdx] = useState(0);
@@ -566,20 +567,25 @@ function LessonContent() {
       const c = data as Child;
       setChild(c);
 
+      let plan = "free";
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      if (user) {
+        const { data: profile } = await supabase
+          .from("profiles")
+          .select("plan")
+          .eq("id", user.id)
+          .single();
+        plan = (profile as { plan?: string } | null)?.plan || "free";
+        setUserPlan(plan);
+      }
+
       // Gating: check if lesson requires premium
       if (lessonId && !isLessonFree(lessonId)) {
-        const { data: { user } } = await supabase.auth.getUser();
-        if (user) {
-          const { data: profile } = await supabase
-            .from("profiles")
-            .select("plan")
-            .eq("id", user.id)
-            .single();
-          const plan = (profile as { plan?: string } | null)?.plan || "free";
-          if (plan !== "premium") {
-            router.replace(`/upgrade?child=${childId}`);
-            return;
-          }
+        if (plan !== "premium") {
+          router.replace(`/upgrade?child=${childId}`);
+          return;
         }
       }
 
@@ -1356,6 +1362,21 @@ function LessonContent() {
      COMPLETE PHASE
      ═══════════════════════════════════════════════════════ */
   if (phase === "complete") {
+    const practiceTotal = lesson.practice.questions.length;
+    const readTotal = lesson.read.questions.length;
+    const practiceAccuracy = practiceTotal > 0 ? Math.round((practiceCorrect / practiceTotal) * 100) : 100;
+    const readAccuracy = readTotal > 0 ? Math.round((readCorrect / readTotal) * 100) : 100;
+    const overallAccuracy = Math.round((practiceAccuracy + readAccuracy) / 2);
+    const strongestArea = practiceAccuracy >= readAccuracy ? "skill practice" : "reading comprehension";
+    const weakestArea = practiceAccuracy < readAccuracy ? "skill practice" : "reading comprehension";
+    const nextFocus =
+      overallAccuracy >= 90
+        ? "Great momentum. Keep daily sessions short and consistent to lock in fluency."
+        : overallAccuracy >= 75
+        ? `Strong progress today. Repeat one extra ${weakestArea} activity tomorrow for faster gains.`
+        : `Good effort today. Focus tomorrow on ${weakestArea} with a slower pace and audio support turned on.`;
+    const nextLessonLocked = !!nextLessonId && !isLessonFree(nextLessonId) && userPlan !== "premium";
+
     return (
       <div className={`${pageWrapper} relative overflow-hidden`}>
         <div className="max-w-lg mx-auto text-center py-16 px-4 space-y-6 relative">
@@ -1422,6 +1443,49 @@ function LessonContent() {
                   <div className="text-sm font-bold text-yellow-800">{newBadge}</div>
                 </div>
               </div>
+            </div>
+          )}
+
+          {/* Parent value proof */}
+          <div className="text-left rounded-2xl border border-indigo-200 bg-gradient-to-r from-indigo-50/80 to-violet-50/80 p-4 space-y-3">
+            <div className="flex items-center justify-between">
+              <p className="text-sm font-semibold text-zinc-900">Parent Progress Snapshot</p>
+              <span className="px-2 py-1 rounded-full text-[11px] font-bold bg-white text-indigo-700 border border-indigo-100">
+                {overallAccuracy}% accuracy
+              </span>
+            </div>
+            <div className="grid grid-cols-3 gap-2 text-center">
+              <div className="rounded-lg bg-white border border-indigo-100 px-2 py-2">
+                <p className="text-[11px] text-zinc-500">Skill Practice</p>
+                <p className="text-sm font-bold text-zinc-900">{practiceAccuracy}%</p>
+              </div>
+              <div className="rounded-lg bg-white border border-indigo-100 px-2 py-2">
+                <p className="text-[11px] text-zinc-500">Reading</p>
+                <p className="text-sm font-bold text-zinc-900">{readAccuracy}%</p>
+              </div>
+              <div className="rounded-lg bg-white border border-indigo-100 px-2 py-2">
+                <p className="text-[11px] text-zinc-500">Strongest Area</p>
+                <p className="text-sm font-bold text-zinc-900 capitalize">{strongestArea}</p>
+              </div>
+            </div>
+            <p className="text-xs text-zinc-600">
+              <span className="font-semibold text-zinc-800">Next step:</span> {nextFocus}
+            </p>
+          </div>
+
+          {/* Conversion nudge at high intent moment */}
+          {nextLessonLocked && (
+            <div className="text-left rounded-2xl border border-amber-200 bg-gradient-to-r from-amber-50 to-orange-50 p-4">
+              <p className="text-sm font-semibold text-zinc-900">Next lesson is ready in Readee+</p>
+              <p className="text-xs text-zinc-600 mt-1">
+                Keep this momentum going with full lessons, detailed parent progress tracking, and up to 5 child profiles on one household plan.
+              </p>
+              <Link
+                href={`/upgrade?child=${child.id}`}
+                className="mt-3 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-sm font-bold hover:from-indigo-700 hover:to-violet-600 transition-all shadow-md"
+              >
+                Unlock Readee+
+              </Link>
             </div>
           )}
 

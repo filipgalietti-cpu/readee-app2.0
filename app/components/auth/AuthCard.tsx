@@ -28,14 +28,14 @@ export default function AuthCard({ title, banner, children }: AuthCardProps) {
           }`}
         >
           {banner && (
-            <span className="inline-block px-5 py-2 rounded-full bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-sm font-bold shadow-md">
+            <span className="inline-block px-5 py-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 text-white text-sm font-semibold shadow-md">
               {banner}
             </span>
           )}
         </div>
-        <div className="bg-white p-8 rounded-2xl border-2 border-purple-300 shadow-lg">
+        <div className="bg-white p-8 rounded-3xl border border-zinc-200/80 shadow-[0_14px_40px_rgba(17,24,39,0.08)]">
           <img src="/readee-logo.png" alt="Readee - Learn to Read" style={{ width: 200 }} className="h-auto mx-auto mb-4" />
-          <h1 className="text-3xl font-bold text-purple-700 mb-6 text-center">
+          <h1 className="text-3xl font-bold text-zinc-900 mb-6 text-center tracking-tight">
             {title}
           </h1>
           {children}

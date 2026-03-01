@@ -53,10 +53,10 @@ export default function FormField({
     <div>
       <label
         htmlFor={id}
-        className="block text-sm font-medium text-purple-700 mb-2"
+        className="block text-sm font-medium text-zinc-700 mb-2"
       >
         {label}
-        {required && <span className="text-pink-500 ml-1">*</span>}
+        {required && <span className="text-rose-500 ml-1">*</span>}
       </label>
       <div className="relative">
         <input
@@ -65,9 +65,9 @@ export default function FormField({
           name={name}
           value={value}
           onChange={onChange}
-          className={`w-full px-3 py-2 border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent ${
+          className={`w-full px-3 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-indigo-300 ${
             isPassword ? "pr-10" : ""
-          } ${error ? "border-pink-500" : "border-purple-300"}`}
+          } ${error ? "border-rose-400" : "border-zinc-300"}`}
           placeholder={placeholder}
           required={required}
           aria-invalid={error ? "true" : "false"}
@@ -85,7 +85,7 @@ export default function FormField({
         )}
       </div>
       {error && (
-        <p id={`${id}-error`} className="mt-1 text-sm text-pink-500">
+        <p id={`${id}-error`} className="mt-1 text-sm text-rose-500">
           {error}
         </p>
       )}

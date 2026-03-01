@@ -541,7 +541,7 @@ export default function Settings() {
                     </div>
                     <div>
                       <p className="text-sm font-semibold text-zinc-900">Add more readers with Readee+</p>
-                      <p className="text-xs text-zinc-500 mt-0.5">Track up to 5 children with detailed progress reports for each.</p>
+                      <p className="text-xs text-zinc-500 mt-0.5">Single household plan: up to 5 children with detailed progress reports.</p>
                     </div>
                   </div>
                   <Link
@@ -623,7 +623,7 @@ export default function Settings() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-zinc-900 dark:text-slate-100">Readee+ Premium</p>
-                <p className="text-xs text-zinc-500 dark:text-slate-400 mt-0.5">All lessons, unlimited assessments, up to 5 readers, parent reports</p>
+                <p className="text-xs text-zinc-500 dark:text-slate-400 mt-0.5">Single household plan: all lessons, unlimited assessments, up to 5 readers.</p>
               </div>
               <span className="px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-indigo-100 to-violet-100 text-indigo-700">Active</span>
             </div>
@@ -652,8 +652,8 @@ export default function Settings() {
             >
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-semibold text-indigo-900">Readee+ — $9.99/mo</p>
-                  <p className="text-xs text-indigo-600 mt-0.5">25+ lessons, unlimited assessments, up to 5 readers, parent reports</p>
+                  <p className="text-sm font-semibold text-indigo-900">Readee+ Household — $9.99/mo</p>
+                  <p className="text-xs text-indigo-600 mt-0.5">40+ lessons, unlimited assessments, and up to 5 readers.</p>
                 </div>
                 <span className="px-3 py-1.5 rounded-lg bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-xs font-bold whitespace-nowrap">
                   Upgrade

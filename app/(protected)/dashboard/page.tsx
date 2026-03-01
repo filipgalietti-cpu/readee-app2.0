@@ -107,6 +107,7 @@ function getGreeting(): { text: string; icon: ReactNode } {
 }
 
 export default function Dashboard() {
+  const router = useRouter();
   const children = useChildStore((s) => s.children);
   const selectedChild = useChildStore((s) => s.childData);
   const setStoreChildren = useChildStore((s) => s.setChildren);
@@ -124,6 +125,9 @@ export default function Dashboard() {
         data: { user },
       } = await supabase.auth.getUser();
       if (!user) {
+        setStoreChildren([]);
+        setStoreChildData(null);
+        router.replace("/login");
         setLoading(false);
         return;
       }
@@ -152,12 +156,19 @@ export default function Dashboard() {
       setStoreChildren(kids);
       if (kids.length === 1) {
         setStoreChildData(kids[0]);
+      } else if (kids.length > 1) {
+        const existingSelected = useChildStore.getState().childData;
+        const selectedStillValid = existingSelected && kids.some((k) => k.id === existingSelected.id);
+        if (!selectedStillValid) {
+          setStoreChildData(null);
+        }
+      } else {
+        setStoreChildData(null);
       }
       setLoading(false);
     }
     fetchChildren();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [router, setStoreChildData, setStoreChildren]);
 
   if (loading) {
     return (
@@ -272,6 +283,14 @@ function AddChildrenForm({ userPlan, onDone }: { userPlan: string; onDone: (kids
       </div>
 
       <div className="space-y-4">
+        {userPlan !== "premium" && (
+          <div className="rounded-2xl border border-indigo-200 bg-gradient-to-r from-indigo-50/80 to-violet-50/80 p-4">
+            <p className="text-sm font-semibold text-zinc-900">Family plan option available</p>
+            <p className="text-xs text-zinc-600 mt-1">
+              Free includes 1 reader profile. Readee+ Household unlocks up to 5 reader profiles plus the full curriculum.
+            </p>
+          </div>
+        )}
         {rows.map((row, index) => (
           <div key={index} className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 space-y-3">
             <div className="flex items-center justify-between">
@@ -1090,6 +1109,8 @@ function LessonPath({
   const file = lessonsData as unknown as LessonsFile;
   const level = file.levels[gradeKey];
   const lessons = level?.lessons || [];
+  const freeLessons = lessons.filter((l) => isLessonFree(l.id));
+  const lockedLessonsCount = lessons.filter((l) => !isLessonFree(l.id)).length;
 
   const isLessonComplete = (lessonId: string) => {
     const sections = lessonProgress.filter((p) => p.lesson_id === lessonId);
@@ -1105,6 +1126,13 @@ function LessonPath({
     }
   }
 
+  const completedFreeCount = freeLessons.filter((l) => isLessonComplete(l.id)).length;
+  const freeProgressPct = freeLessons.length > 0
+    ? Math.min(100, Math.round((completedFreeCount / freeLessons.length) * 100))
+    : 0;
+  const nearPaywall = userPlan !== "premium" && lockedLessonsCount > 0 && completedFreeCount >= Math.max(1, freeLessons.length - 1);
+  const paywallLabel = readingLevel ? `${readingLevel} level` : "this level";
+
   return (
     <div className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 space-y-4">
       <div className="flex items-center justify-between">
@@ -1115,6 +1143,31 @@ function LessonPath({
           </span>
         )}
       </div>
+
+      {userPlan !== "premium" && lockedLessonsCount > 0 && (
+        <div className={`rounded-xl border p-4 ${nearPaywall ? "border-indigo-300 bg-gradient-to-r from-indigo-50 to-violet-50" : "border-indigo-200 bg-indigo-50/60"}`}>
+          <div className="flex items-start justify-between gap-3">
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-semibold text-zinc-900">
+                {nearPaywall ? "Nice momentum - keep it going with Readee+" : "Starter lessons in progress"}
+              </p>
+              <p className="text-xs text-zinc-600 mt-1">
+                You&apos;ve completed {completedFreeCount} of {freeLessons.length} free lessons in {paywallLabel}.
+                Unlock {lockedLessonsCount} more lessons in this level and full access across all levels.
+              </p>
+              <div className="mt-3 h-2.5 rounded-full bg-white/80 border border-indigo-100 overflow-hidden">
+                <div className="h-full rounded-full bg-gradient-to-r from-indigo-500 to-violet-500" style={{ width: `${freeProgressPct}%` }} />
+              </div>
+            </div>
+            <Link
+              href={`/upgrade?child=${child.id}`}
+              className="px-3 py-2 rounded-lg bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-xs font-bold hover:from-indigo-700 hover:to-violet-600 transition-all whitespace-nowrap shadow-sm"
+            >
+              Unlock Readee+
+            </Link>
+          </div>
+        </div>
+      )}
 
       <div className="space-y-3">
         {lessons.map((lesson, i) => {

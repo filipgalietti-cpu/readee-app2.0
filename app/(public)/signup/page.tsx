@@ -125,7 +125,20 @@ export default function Signup() {
   };
 
   return (
-    <AuthCard title="Create Your Account" banner="7-Day Free Trial — No Credit Card Required!">
+    <AuthCard title="Create Your Parent Account" banner="Start Free - Upgrade Anytime">
+      <div className="mb-5 rounded-xl border border-indigo-100 bg-gradient-to-r from-indigo-50/80 to-sky-50/80 p-3.5">
+        <p className="text-[13px] font-semibold text-indigo-900 mb-1">Built for families</p>
+        <div className="grid grid-cols-2 gap-2 text-[12px]">
+          <div className="rounded-lg border border-indigo-100 bg-white p-2.5">
+            <p className="font-semibold text-zinc-900">Free</p>
+            <p className="text-zinc-600 mt-0.5">1 child profile</p>
+          </div>
+          <div className="rounded-lg border border-indigo-200 bg-white p-2.5">
+            <p className="font-semibold text-indigo-900">Readee+ - $9.99/mo</p>
+            <p className="text-zinc-600 mt-0.5">Up to 5 child profiles</p>
+          </div>
+        </div>
+      </div>
       <GoogleButton />
       <Divider />
       {errors.general && (
@@ -171,12 +184,12 @@ export default function Signup() {
         <button
           type="submit"
           disabled={!tosAccepted || isLoading}
-          className="w-full bg-gradient-to-r from-indigo-600 to-violet-500 text-white py-3 rounded-lg font-medium hover:from-indigo-700 hover:to-violet-600 transition-all focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
+          className="w-full bg-gradient-to-r from-indigo-600 to-sky-500 text-white py-3 rounded-lg font-medium hover:from-indigo-700 hover:to-sky-600 transition-all focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
         >
           {isLoading ? "Creating Account..." : "Create Account"}
         </button>
       </form>
-      <p className="mt-6 text-center text-sm text-indigo-900">
+      <p className="mt-6 text-center text-sm text-zinc-700">
         Already have an account?{" "}
         <Link
           href="/login"
