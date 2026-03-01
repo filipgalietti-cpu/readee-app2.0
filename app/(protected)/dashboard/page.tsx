@@ -682,7 +682,7 @@ function ChildDashboard({
             </svg>
           </div>
         </div>
-        <h1 className="text-3xl font-bold text-zinc-900 dark:text-slate-100 tracking-tight">
+        <h1 className="text-3xl font-bold text-indigo-600 dark:text-indigo-400 tracking-tight">
           {greeting.text}, {currentChild.first_name}! <span className="animate-wave">{greeting.emoji}</span>
         </h1>
         <p className="text-zinc-500 dark:text-slate-400 mt-1 text-sm">{motivation}</p>
