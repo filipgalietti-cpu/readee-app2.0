@@ -218,6 +218,24 @@ function ShopContent({
               <div className="absolute inset-0 overflow-hidden rounded-xl pointer-events-none">
                 <div className="absolute -inset-full animate-[shine_3s_ease-in-out_infinite] bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-[-20deg]" />
               </div>
+              {/* Sparkles */}
+              {[
+                { top: "5%", left: "10%", delay: 0, size: "text-sm" },
+                { top: "15%", right: "5%", delay: 0.8, size: "text-xs" },
+                { bottom: "20%", left: "5%", delay: 1.6, size: "text-xs" },
+                { top: "0%", right: "20%", delay: 0.4, size: "text-sm" },
+                { bottom: "10%", right: "10%", delay: 1.2, size: "text-[10px]" },
+              ].map((s, i) => (
+                <motion.span
+                  key={i}
+                  className={`absolute pointer-events-none ${s.size}`}
+                  style={{ top: s.top, left: s.left, right: s.right, bottom: s.bottom }}
+                  animate={{ opacity: [0, 1, 0], scale: [0.5, 1.2, 0.5] }}
+                  transition={{ duration: 1.5, delay: s.delay, repeat: Infinity, repeatDelay: 1 }}
+                >
+                  ✦
+                </motion.span>
+              ))}
             </motion.div>
             <div>
               <div className="font-bold text-zinc-900 dark:text-white">Mystery Box</div>
