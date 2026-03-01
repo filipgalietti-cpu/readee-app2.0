@@ -90,7 +90,7 @@ export function MysteryBoxOpener({
               transition={{ duration: 1.4, ease: "easeInOut" }}
             >
               <img
-                src="/images/shop/mystery-box-closed-noshadow.png"
+                src="/images/shop/mystery-box-closed.png"
                 alt="Mystery Box"
                 className="w-full h-full object-contain"
 
