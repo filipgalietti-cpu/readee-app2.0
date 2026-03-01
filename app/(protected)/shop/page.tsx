@@ -202,16 +202,16 @@ function ShopContent({
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 }}
-        className="rounded-2xl border-2 border-amber-300 dark:border-amber-700 bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30 p-6 mb-6 flex flex-col items-center text-center"
+        className="rounded-2xl border-2 border-amber-300 dark:border-amber-700 bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30 p-5 mb-6"
       >
-        {/* Box image — large, floating */}
+        <div className="flex items-center justify-between">
+        <div className="flex items-center gap-3">
         <motion.div
-          className="w-52 h-52 sm:w-64 sm:h-64 relative cursor-pointer mb-4"
-          animate={{ y: [0, -8, 0] }}
+          className="w-36 h-36 -my-6 relative cursor-pointer"
+          animate={{ y: [0, -4, 0] }}
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
           whileHover={{ scale: 1.08 }}
           whileTap={{ scale: 0.95 }}
-          onClick={child.carrots >= MYSTERY_BOX_PRICE ? handleBuyMysteryBox : () => setShowGetMore({ id: "mystery_box", name: "Mystery Box", emoji: "🎁", category: "avatars", price: MYSTERY_BOX_PRICE, description: "Mystery Box" })}
         >
           <img src="/images/shop/mystery-box-closed.png" alt="Mystery Box" className="w-full h-full object-contain" style={{ filter: "drop-shadow(0 4px 20px rgba(245, 158, 11, 0.3))" }} />
           {/* Shine sweep */}
@@ -240,26 +240,29 @@ function ShopContent({
           ))}
         </motion.div>
 
-        {/* Text + button */}
-        <div className="font-bold text-lg text-zinc-900 dark:text-white mb-1">Mystery Box</div>
-        <div className="text-sm text-zinc-500 dark:text-slate-400 mb-4">
-          Win carrots, items, or multipliers!
+            <div>
+              <div className="font-bold text-zinc-900 dark:text-white">Mystery Box</div>
+              <div className="text-xs text-zinc-500 dark:text-slate-400">
+                Win carrots, items, or multipliers!
+              </div>
+            </div>
+          </div>
+          <button
+            onClick={child.carrots >= MYSTERY_BOX_PRICE ? handleBuyMysteryBox : () => setShowGetMore({ id: "mystery_box", name: "Mystery Box", emoji: "🎁", category: "avatars", price: MYSTERY_BOX_PRICE, description: "Mystery Box" })}
+            disabled={buyingMystery}
+            className={`px-5 py-2.5 rounded-xl text-sm font-bold transition-all active:scale-[0.97] ${
+              child.carrots >= MYSTERY_BOX_PRICE
+                ? "bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-sm hover:from-amber-600 hover:to-orange-600"
+                : "bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 hover:bg-amber-200 dark:hover:bg-amber-900/50"
+            }`}
+          >
+            {buyingMystery ? (
+              <span className="inline-block h-4 w-4 rounded-full border-2 border-white/40 border-t-white animate-spin" />
+            ) : (
+              <span>{MYSTERY_BOX_PRICE} 🥕</span>
+            )}
+          </button>
         </div>
-        <button
-          onClick={child.carrots >= MYSTERY_BOX_PRICE ? handleBuyMysteryBox : () => setShowGetMore({ id: "mystery_box", name: "Mystery Box", emoji: "🎁", category: "avatars", price: MYSTERY_BOX_PRICE, description: "Mystery Box" })}
-          disabled={buyingMystery}
-          className={`px-8 py-3 rounded-xl text-base font-bold transition-all active:scale-[0.97] ${
-            child.carrots >= MYSTERY_BOX_PRICE
-              ? "bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-md hover:from-amber-600 hover:to-orange-600 hover:shadow-lg"
-              : "bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 hover:bg-amber-200 dark:hover:bg-amber-900/50"
-          }`}
-        >
-          {buyingMystery ? (
-            <span className="inline-block h-5 w-5 rounded-full border-2 border-white/40 border-t-white animate-spin" />
-          ) : (
-            <span>Open for {MYSTERY_BOX_PRICE} 🥕</span>
-          )}
-        </button>
       </motion.div>
 
       {/* Category tabs */}
