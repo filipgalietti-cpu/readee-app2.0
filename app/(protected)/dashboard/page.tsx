@@ -15,8 +15,7 @@ import { ChildSchema } from "@/lib/schemas";
 import { staggerContainer, slideUp, staggerFast } from "@/lib/motion/variants";
 import { getStandardsForGrade } from "@/lib/data/all-standards";
 import { getChildAvatar, DEFAULT_AVATARS } from "@/lib/utils/get-child-avatar";
-import { getItemsByCategory, BACKGROUND_STYLES } from "@/lib/data/shop-items";
-import { useThemeStore } from "@/lib/stores/theme-store";
+import { getItemsByCategory, BACKGROUND_IMAGES } from "@/lib/data/shop-items";
 import type { ShopPurchase, EquippedItems } from "@/lib/db/types";
 
 /* ─── Count-up animation hook ─────────────────────────── */
@@ -601,12 +600,9 @@ function ChildDashboard({
   const ownedAvatarIds = new Set(purchases.filter((p) => p.item_id.startsWith("avatar_")).map((p) => p.item_id));
   const equippedAvatarId = currentChild.equipped_items?.avatar ?? null;
 
-  // Equipped background gradient — applied inline on the wrapper div
-  const darkMode = useThemeStore((s) => s.darkMode);
+  // Equipped background image — applied inline on the wrapper div
   const equippedBgId = currentChild.equipped_items?.background ?? null;
-  const bgGradient = equippedBgId && BACKGROUND_STYLES[equippedBgId]
-    ? (darkMode ? BACKGROUND_STYLES[equippedBgId].dark : BACKGROUND_STYLES[equippedBgId].light)
-    : null;
+  const bgImage = equippedBgId ? BACKGROUND_IMAGES[equippedBgId] ?? null : null;
 
   const handleEquipAvatar = async (avatarId: string | null) => {
     const newEquipped: EquippedItems = {
@@ -631,11 +627,11 @@ function ChildDashboard({
 
   return (
     <motion.div
-      className={`max-w-3xl mx-auto space-y-6 pb-12 px-4${bgGradient ? " min-h-screen rounded-3xl" : ""}`}
+      className={`max-w-3xl mx-auto space-y-6 pb-12 px-4${bgImage ? " min-h-screen rounded-3xl pt-6" : ""}`}
       variants={staggerContainer}
       initial="hidden"
       animate="visible"
-      {...(bgGradient ? { style: { background: bgGradient } } : {})}
+      {...(bgImage ? { style: { backgroundImage: `url(${bgImage})`, backgroundSize: "cover", backgroundPosition: "center", backgroundAttachment: "fixed" } } : {})}
     >
       {/* Nav */}
       {hasMultiple && (
