@@ -18,7 +18,10 @@ export default function AuthCard({ title, banner, children }: AuthCardProps) {
   }, [banner]);
 
   return (
-    <div className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div
+      className="flex items-center justify-center min-h-screen py-12 px-4 sm:px-6 lg:px-8 bg-repeat bg-[length:400px]"
+      style={{ backgroundImage: "url('/images/auth-bg.png')" }}
+    >
       <div className="w-full max-w-md">
         <div
           className={`mb-4 text-center transition-all duration-500 ease-out ${
