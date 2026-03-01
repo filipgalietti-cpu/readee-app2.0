@@ -245,6 +245,7 @@ function getStars(correct: number, total: number): number {
 const SUPABASE_STORAGE = "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public";
 
 const GRADE_FOLDER: Record<string, string> = {
+  "pre-k": "kindergarten",
   kindergarten: "kindergarten",
   "1st": "1st-grade",
   "2nd": "2nd-grade",
