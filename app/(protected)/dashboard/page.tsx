@@ -781,7 +781,7 @@ function ChildDashboard({
           className="block"
         >
           <div className="min-h-[140px] rounded-3xl bg-gradient-to-br from-indigo-600 to-violet-500 dark:from-indigo-700 dark:to-violet-600 p-5 flex flex-col items-center justify-center text-center shadow-lg hover:scale-[1.03] active:scale-[0.97] transition-transform duration-200 cursor-pointer">
-            <img src="/images/dashboard/bullseye.png" alt="Practice" className="w-16 h-16 object-contain mb-2" />
+            <img src="/images/dashboard/bullseye.png" alt="Practice" className="w-16 h-16 object-contain mb-2 drop-shadow-sm" style={{ mixBlendMode: "multiply" }} />
             <span className="text-lg font-extrabold text-white">Practice</span>
           </div>
         </Link>
@@ -792,7 +792,7 @@ function ChildDashboard({
           className="block"
         >
           <div className="min-h-[140px] rounded-3xl bg-gradient-to-br from-amber-500 to-orange-500 dark:from-amber-600 dark:to-orange-600 p-5 flex flex-col items-center justify-center text-center shadow-lg hover:scale-[1.03] active:scale-[0.97] transition-transform duration-200 cursor-pointer">
-            <img src="/images/dashboard/puzzle-piece.png" alt="Games" className="w-16 h-16 object-contain mb-2" />
+            <img src="/images/dashboard/puzzle-piece.png" alt="Games" className="w-16 h-16 object-contain mb-2 drop-shadow-sm" style={{ mixBlendMode: "multiply" }} />
             <span className="text-lg font-extrabold text-white">Games</span>
           </div>
         </Link>
@@ -800,7 +800,7 @@ function ChildDashboard({
         {/* Stories */}
         <Link href={`/stories?child=${child.id}`} className="block">
           <div className="min-h-[140px] rounded-3xl bg-gradient-to-br from-emerald-500 to-teal-500 dark:from-emerald-600 dark:to-teal-600 p-5 flex flex-col items-center justify-center text-center shadow-lg hover:scale-[1.03] active:scale-[0.97] transition-transform duration-200 cursor-pointer">
-            <img src="/images/dashboard/books.png" alt="Stories" className="w-16 h-16 object-contain mb-2" />
+            <img src="/images/dashboard/books.png" alt="Stories" className="w-16 h-16 object-contain mb-2 drop-shadow-sm" style={{ mixBlendMode: "multiply" }} />
             <span className="text-lg font-extrabold text-white">Stories</span>
           </div>
         </Link>
@@ -808,7 +808,7 @@ function ChildDashboard({
         {/* My Journey */}
         <Link href={`/roadmap?child=${child.id}`} className="block">
           <div className="min-h-[140px] rounded-3xl bg-gradient-to-br from-pink-500 to-rose-500 dark:from-pink-600 dark:to-rose-600 p-5 flex flex-col items-center justify-center text-center shadow-lg hover:scale-[1.03] active:scale-[0.97] transition-transform duration-200 cursor-pointer">
-            <img src="/images/dashboard/world-map.png" alt="My Journey" className="w-16 h-16 object-contain mb-2" />
+            <img src="/images/dashboard/world-map.png" alt="My Journey" className="w-16 h-16 object-contain mb-2 drop-shadow-sm" style={{ mixBlendMode: "multiply" }} />
             <span className="text-lg font-extrabold text-white">My Journey</span>
           </div>
         </Link>
@@ -837,7 +837,7 @@ function ChildDashboard({
         {/* Streak Card */}
         <Link href={`/leaderboard?child=${child.id}`} className="block">
           <div className="rounded-2xl border border-gray-200 dark:border-slate-700 bg-gradient-to-b from-orange-50 to-white dark:from-orange-950/30 dark:to-slate-800 p-4 min-h-[120px] flex flex-col items-center justify-center text-center hover:shadow-md hover:scale-[1.02] transition-all duration-200 group cursor-pointer">
-            <img src="/images/dashboard/fire.png" alt="Streak" className={`w-12 h-12 object-contain mb-1 ${child.streak_days > 0 ? "animate-fireGlow" : ""}`} />
+            <img src="/images/dashboard/fire.png" alt="Streak" className={`w-12 h-12 object-contain mb-1 ${child.streak_days > 0 ? "animate-fireGlow" : ""}`} style={{ mixBlendMode: "multiply" }} />
             <div ref={streakCount.ref} className="text-3xl font-extrabold text-zinc-900 dark:text-slate-100">{streakCount.value}</div>
             <div className="text-sm text-zinc-500 dark:text-slate-400 mt-0.5 font-medium">Day Streak</div>
           </div>
