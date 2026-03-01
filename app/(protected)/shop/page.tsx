@@ -333,13 +333,16 @@ function ShopItemCard({
   return (
     <motion.div
       layout
-      className={`rounded-2xl border p-4 flex flex-col items-center text-center transition-all ${
+      whileHover={{ scale: 1.04, y: -4 }}
+      whileTap={{ scale: 0.97 }}
+      transition={{ type: "spring", stiffness: 400, damping: 20 }}
+      className={`rounded-2xl border p-4 flex flex-col items-center text-center cursor-pointer transition-shadow ${
         owned
           ? equipped
             ? "border-orange-300 bg-orange-50 dark:bg-orange-950/20 dark:border-orange-700"
             : "border-green-200 bg-green-50/50 dark:bg-green-950/20 dark:border-green-800"
           : canAfford
-          ? "border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-orange-300 dark:hover:border-orange-700 hover:shadow-md"
+          ? "border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-orange-300 dark:hover:border-orange-700 hover:shadow-lg"
           : "border-zinc-100 dark:border-slate-800 bg-zinc-50 dark:bg-slate-900 opacity-70 hover:opacity-100"
       }`}
     >
