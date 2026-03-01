@@ -58,6 +58,27 @@ export function MysteryBoxOpener({
         className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm"
       >
         <div className="relative w-full max-w-md mx-4 text-center flex flex-col items-center">
+          {/* Spotlight beam shining down on the box */}
+          {(phase === "wobble" || phase === "open") && (
+            <motion.div
+              className="absolute pointer-events-none"
+              style={{
+                top: "-40vh",
+                left: "50%",
+                transform: "translateX(-50%)",
+                width: 0,
+                height: 0,
+                borderLeft: "120px solid transparent",
+                borderRight: "120px solid transparent",
+                borderTop: "60vh solid rgba(251, 191, 36, 0.12)",
+                filter: "blur(20px)",
+              }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: phase === "open" ? [1, 1.3, 0.8] : 1 }}
+              transition={{ duration: phase === "open" ? 0.8 : 0.6 }}
+            />
+          )}
+
           {/* Phase 1: Wobbling closed box — big and dramatic */}
           {phase === "wobble" && (
             <motion.div
@@ -72,7 +93,7 @@ export function MysteryBoxOpener({
                 src="/images/shop/mystery-box-closed-noshadow.png"
                 alt="Mystery Box"
                 className="w-full h-full object-contain"
-                style={{}}
+
               />
               {/* Golden sparkles during wobble */}
               {sparkles.map((s) => (
@@ -106,7 +127,7 @@ export function MysteryBoxOpener({
                 src="/images/shop/mystery-box-closed-noshadow.png"
                 alt="Mystery Box Opening"
                 className="w-full h-full object-contain"
-                style={{}}
+
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.15 }}
