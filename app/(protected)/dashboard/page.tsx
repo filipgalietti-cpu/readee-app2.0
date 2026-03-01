@@ -17,6 +17,7 @@ import { getStandardsForGrade } from "@/lib/data/all-standards";
 import { getChildAvatar, DEFAULT_AVATARS } from "@/lib/utils/get-child-avatar";
 import { getItemsByCategory, BACKGROUND_IMAGES } from "@/lib/data/shop-items";
 import type { ShopPurchase, EquippedItems } from "@/lib/db/types";
+import { Target, Puzzle, BookOpen, Map, Carrot, Flame } from "lucide-react";
 
 /* ─── Count-up animation hook ─────────────────────────── */
 
@@ -781,7 +782,7 @@ function ChildDashboard({
           className="block"
         >
           <div className="min-h-[140px] rounded-3xl bg-gradient-to-br from-indigo-600 to-violet-500 dark:from-indigo-700 dark:to-violet-600 p-5 flex flex-col items-center justify-center text-center shadow-lg hover:scale-[1.03] active:scale-[0.97] transition-transform duration-200 cursor-pointer">
-            <img src="/images/dashboard/bullseye.png" alt="Practice" className="w-16 h-16 object-contain mb-2" />
+            <Target className="w-16 h-16 text-white mb-2" strokeWidth={1.5} />
             <span className="text-lg font-extrabold text-white">Practice</span>
           </div>
         </Link>
@@ -792,7 +793,7 @@ function ChildDashboard({
           className="block"
         >
           <div className="min-h-[140px] rounded-3xl bg-gradient-to-br from-amber-500 to-orange-500 dark:from-amber-600 dark:to-orange-600 p-5 flex flex-col items-center justify-center text-center shadow-lg hover:scale-[1.03] active:scale-[0.97] transition-transform duration-200 cursor-pointer">
-            <img src="/images/dashboard/puzzle-piece.png" alt="Games" className="w-16 h-16 object-contain mb-2" />
+            <Puzzle className="w-16 h-16 text-white mb-2" strokeWidth={1.5} />
             <span className="text-lg font-extrabold text-white">Games</span>
           </div>
         </Link>
@@ -800,7 +801,7 @@ function ChildDashboard({
         {/* Stories */}
         <Link href={`/stories?child=${child.id}`} className="block">
           <div className="min-h-[140px] rounded-3xl bg-gradient-to-br from-emerald-500 to-teal-500 dark:from-emerald-600 dark:to-teal-600 p-5 flex flex-col items-center justify-center text-center shadow-lg hover:scale-[1.03] active:scale-[0.97] transition-transform duration-200 cursor-pointer">
-            <img src="/images/dashboard/books.png" alt="Stories" className="w-16 h-16 object-contain mb-2" />
+            <BookOpen className="w-16 h-16 text-white mb-2" strokeWidth={1.5} />
             <span className="text-lg font-extrabold text-white">Stories</span>
           </div>
         </Link>
@@ -808,7 +809,7 @@ function ChildDashboard({
         {/* My Journey */}
         <Link href={`/roadmap?child=${child.id}`} className="block">
           <div className="min-h-[140px] rounded-3xl bg-gradient-to-br from-pink-500 to-rose-500 dark:from-pink-600 dark:to-rose-600 p-5 flex flex-col items-center justify-center text-center shadow-lg hover:scale-[1.03] active:scale-[0.97] transition-transform duration-200 cursor-pointer">
-            <img src="/images/dashboard/world-map.png" alt="My Journey" className="w-16 h-16 object-contain mb-2" />
+            <Map className="w-16 h-16 text-white mb-2" strokeWidth={1.5} />
             <span className="text-lg font-extrabold text-white">My Journey</span>
           </div>
         </Link>
@@ -819,7 +820,7 @@ function ChildDashboard({
         {/* Carrots Card */}
         <Link href={`/carrot-rewards?child=${child.id}`} className="block">
           <div className="rounded-2xl border border-gray-200 dark:border-slate-700 bg-gradient-to-b from-amber-50 to-white dark:from-amber-950/30 dark:to-slate-800 p-4 min-h-[120px] flex flex-col items-center justify-center text-center hover:shadow-md hover:scale-[1.02] transition-all duration-200 group cursor-pointer">
-            <div className="text-4xl mb-1 group-hover:animate-subtleBounce">🥕</div>
+            <Carrot className="w-10 h-10 text-amber-500 dark:text-amber-400 mb-1 group-hover:animate-subtleBounce" strokeWidth={1.5} />
             <div ref={carrotCount.ref} className="text-3xl font-extrabold text-zinc-900 dark:text-slate-100">{carrotCount.value}</div>
             <div className="text-sm text-zinc-500 dark:text-slate-400 mt-0.5 font-medium">Carrots</div>
           </div>
@@ -828,7 +829,7 @@ function ChildDashboard({
         {/* Stories Card */}
         <Link href={`/stories?child=${child.id}`} className="block">
           <div className="rounded-2xl border border-gray-200 dark:border-slate-700 bg-gradient-to-b from-indigo-50 to-white dark:from-indigo-950/30 dark:to-slate-800 p-4 min-h-[120px] flex flex-col items-center justify-center text-center hover:shadow-md hover:scale-[1.02] transition-all duration-200 group cursor-pointer">
-            <div className="text-4xl mb-1 group-hover:animate-subtleBounce">📚</div>
+            <BookOpen className="w-10 h-10 text-indigo-500 dark:text-indigo-400 mb-1 group-hover:animate-subtleBounce" strokeWidth={1.5} />
             <div ref={storiesCount.ref} className="text-3xl font-extrabold text-zinc-900 dark:text-slate-100">{storiesCount.value}</div>
             <div className="text-sm text-zinc-500 dark:text-slate-400 mt-0.5 font-medium">Stories</div>
           </div>
@@ -837,7 +838,7 @@ function ChildDashboard({
         {/* Streak Card */}
         <Link href={`/leaderboard?child=${child.id}`} className="block">
           <div className="rounded-2xl border border-gray-200 dark:border-slate-700 bg-gradient-to-b from-orange-50 to-white dark:from-orange-950/30 dark:to-slate-800 p-4 min-h-[120px] flex flex-col items-center justify-center text-center hover:shadow-md hover:scale-[1.02] transition-all duration-200 group cursor-pointer">
-            <img src="/images/dashboard/fire.png" alt="Streak" className={`w-12 h-12 object-contain mb-1 ${child.streak_days > 0 ? "animate-fireGlow" : ""}`} />
+            <Flame className={`w-10 h-10 text-orange-500 dark:text-orange-400 mb-1 ${child.streak_days > 0 ? "animate-fireGlow" : ""}`} strokeWidth={1.5} />
             <div ref={streakCount.ref} className="text-3xl font-extrabold text-zinc-900 dark:text-slate-100">{streakCount.value}</div>
             <div className="text-sm text-zinc-500 dark:text-slate-400 mt-0.5 font-medium">Day Streak</div>
           </div>
