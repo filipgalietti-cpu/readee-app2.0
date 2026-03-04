@@ -782,7 +782,7 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
             <img
               src={questionImageUrl(q.id, gradeKey)}
               alt=""
-              className="max-h-[220px] md:max-h-[300px] w-auto object-contain rounded-2xl shadow-md border-2 border-white dark:border-slate-700"
+              className="max-h-[180px] sm:max-h-[220px] md:max-h-[300px] lg:max-h-[380px] w-auto object-contain rounded-2xl shadow-md border-2 border-white dark:border-slate-700"
               onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = 'none'; }}
             />
           </motion.div>

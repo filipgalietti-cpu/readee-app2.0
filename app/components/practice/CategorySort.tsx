@@ -94,6 +94,7 @@ export function CategorySort({
   const [bucketFlash, setBucketFlash] = useState<Record<string, "correct" | "incorrect" | null>>(
     () => Object.fromEntries(categories.map((c) => [c, null]))
   );
+  const [selectedBankItem, setSelectedBankItem] = useState<string | null>(null);
 
   // Items still in the bank
   const bankItems = items.filter(
@@ -133,6 +134,7 @@ export function CategorySort({
   const handleDragEnd = useCallback(
     (item: string, _event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
       setDraggingOver(null);
+      setSelectedBankItem(null);
       if (answered || result !== null) return;
 
       for (const cat of categories) {
@@ -173,6 +175,37 @@ export function CategorySort({
       }));
     },
     [answered, result]
+  );
+
+  /** Tap a bank item to select it (toggle) */
+  const handleTapBankItem = useCallback(
+    (item: string) => {
+      if (answered || result !== null) return;
+      setSelectedBankItem((prev) => (prev === item ? null : item));
+      playWord(item);
+    },
+    [answered, result]
+  );
+
+  /** Tap a bucket to place the selected bank item */
+  const handleTapBucket = useCallback(
+    (cat: string) => {
+      if (!selectedBankItem || answered || result !== null) return;
+      const correctItems = categoryItems[cat] ?? [];
+      if (correctItems.includes(selectedBankItem)) {
+        setBuckets((prev) => ({
+          ...prev,
+          [cat]: [...prev[cat], selectedBankItem],
+        }));
+        flashBucket(cat, "correct");
+        onCorrectPlace?.();
+      } else {
+        flashBucket(cat, "incorrect");
+        onIncorrectPlace?.();
+      }
+      setSelectedBankItem(null);
+    },
+    [selectedBankItem, answered, result, categoryItems, flashBucket, onCorrectPlace, onIncorrectPlace]
   );
 
   const handleCheck = useCallback(() => {
@@ -227,6 +260,7 @@ export function CategorySort({
             <motion.div
               key={cat}
               ref={(el) => { bucketRefs.current[cat] = el; }}
+              onClick={() => handleTapBucket(cat)}
               className={`rounded-2xl border-2 overflow-hidden transition-all duration-150 ${style.body} ${
                 flash === "correct"
                   ? style.correctFlash
@@ -234,6 +268,8 @@ export function CategorySort({
                   ? style.incorrectFlash
                   : isHovered
                   ? style.glow
+                  : selectedBankItem
+                  ? "border-dashed"
                   : ""
               }`}
               animate={
@@ -277,7 +313,7 @@ export function CategorySort({
                 </AnimatePresence>
                 {buckets[cat].length === 0 && (
                   <span className="text-xs text-zinc-400 dark:text-slate-500 px-1 py-1">
-                    Drag words here
+                    Drag or tap words here
                   </span>
                 )}
               </div>
@@ -298,12 +334,15 @@ export function CategorySort({
               onDragStart={() => playWord(item)}
               onDrag={handleDrag}
               onDragEnd={(event, info) => handleDragEnd(item, event, info)}
+              onTap={() => handleTapBankItem(item)}
               whileDrag={{ scale: 1.12, zIndex: 50, boxShadow: "0 8px 24px rgba(0,0,0,0.2)" }}
               className={`px-4 py-2 rounded-xl border-2 font-semibold text-base select-none touch-none ${
                 answered || result !== null
                   ? "opacity-40"
                   : "cursor-grab active:cursor-grabbing"
-              } ${BANK_CHIP_COLORS[idx % BANK_CHIP_COLORS.length]}`}
+              } ${BANK_CHIP_COLORS[idx % BANK_CHIP_COLORS.length]} ${
+                selectedBankItem === item ? "ring-2 ring-indigo-500 ring-offset-2" : ""
+              }`}
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.8 }}

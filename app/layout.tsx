@@ -1,9 +1,13 @@
 import ClientProviders from "./_components/ClientProviders";
 import PageTransition from "./_components/PageTransition";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Link from "next/link";
 import NavAuth from "./_components/NavAuth";
+
+export const viewport: Viewport = {
+  viewportFit: "cover",
+};
 
 export const metadata: Metadata = {
   title: "Readee",
@@ -30,13 +34,13 @@ export default function RootLayout({
         <NavAuth />
 
         {/* Page content */}
-        <main className="flex-1 mx-auto w-full max-w-6xl px-6 py-8">
+        <main className="flex-1 mx-auto w-full max-w-6xl px-4 sm:px-6 py-4 sm:py-8">
           <PageTransition>{children}</PageTransition>
         </main>
 
         {/* Footer */}
         <footer className="bg-[#1e1b4b] mt-auto">
-          <div className="mx-auto max-w-6xl px-6 py-10">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6 py-10">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
               <div className="flex items-center gap-6">
                 <span className="text-xl font-extrabold tracking-tight text-white">read<span className="text-indigo-300">ee</span></span>

@@ -1081,7 +1081,7 @@ function LessonContent() {
                 <img
                   src={`https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/${lessonId}/q${practiceIdx + 1}.png`}
                   alt=""
-                  className="max-h-[150px] md:max-h-[200px] w-auto rounded-2xl shadow-md object-cover"
+                  className="max-h-[120px] sm:max-h-[150px] md:max-h-[220px] lg:max-h-[280px] w-auto rounded-2xl shadow-md object-cover"
                   onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = 'none'; }}
                 />
               </div>
@@ -1262,7 +1262,7 @@ function LessonContent() {
             <img
               src={`https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/${lessonId}/rq${readQIdx + 1}.png`}
               alt=""
-              className="max-h-[150px] md:max-h-[200px] w-auto rounded-2xl shadow-md object-cover"
+              className="max-h-[120px] sm:max-h-[150px] md:max-h-[220px] lg:max-h-[280px] w-auto rounded-2xl shadow-md object-cover"
               onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = 'none'; }}
             />
           </div>
