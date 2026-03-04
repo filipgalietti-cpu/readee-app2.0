@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://learn.readee.app"),
   title: { default: "Readee", template: "%s | Readee" },
   description:
-    "Readee helps children in K through 4th grade build reading comprehension skills with standards-aligned practice and the Science of Reading.",
+    "Fun, science-backed reading for K–4th grade.",
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "16x16 32x32", type: "image/x-icon" },
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     siteName: "Readee",
     title: "Readee — Unlock Reading",
     description:
-      "Readee helps children in K through 4th grade build reading comprehension skills with standards-aligned practice and the Science of Reading.",
+      "Fun, science-backed reading for K–4th grade.",
     url: "https://learn.readee.app",
     images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Readee" }],
   },
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Readee — Unlock Reading",
     description:
-      "Readee helps children in K through 4th grade build reading comprehension skills with standards-aligned practice and the Science of Reading.",
+      "Fun, science-backed reading for K–4th grade.",
     images: ["/og-image.png"],
   },
 };

@@ -5,7 +5,7 @@ export default function JsonLd() {
     name: "Readee",
     url: "https://learn.readee.app",
     description:
-      "Readee helps children in K through 4th grade build reading comprehension skills with standards-aligned practice and the Science of Reading.",
+      "Fun, science-backed reading for K–4th grade.",
     applicationCategory: "EducationalApplication",
     operatingSystem: "Any",
     offers: {
