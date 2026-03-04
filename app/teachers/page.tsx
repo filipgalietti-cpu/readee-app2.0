@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { School, Target, ClipboardList, BarChart3, Microscope } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "For Educators — Readee",
+  title: "For Educators",
   description:
     "Bring the Science of Reading to your classroom with Readee. Structured phonics lessons for K through 4th grade.",
 };

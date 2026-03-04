@@ -5,7 +5,7 @@ import { Target, Puzzle, TrendingUp, Type, Ear, BookOpen, MessageCircle, Brain, 
 import type { ReactNode } from "react";
 
 export const metadata: Metadata = {
-  title: "About Readee",
+  title: "About",
   description:
     "Learn how Readee uses the Science of Reading to help your child become a confident reader.",
 };

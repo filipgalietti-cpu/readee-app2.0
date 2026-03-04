@@ -1,5 +1,6 @@
 import ClientProviders from "./_components/ClientProviders";
 import PageTransition from "./_components/PageTransition";
+import JsonLd from "./_components/JsonLd";
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Link from "next/link";
@@ -10,8 +11,10 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Readee",
-  description: "Early reading, done right",
+  metadataBase: new URL("https://learn.readee.app"),
+  title: { default: "Readee", template: "%s | Readee" },
+  description:
+    "Readee helps children in K through 4th grade build reading comprehension skills with standards-aligned practice and the Science of Reading.",
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "16x16 32x32", type: "image/x-icon" },
@@ -19,6 +22,23 @@ export const metadata: Metadata = {
       { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
     ],
     apple: "/apple-touch-icon.png",
+  },
+  manifest: "/manifest.json",
+  openGraph: {
+    type: "website",
+    siteName: "Readee",
+    title: "Readee — Early reading, done right",
+    description:
+      "Readee helps children in K through 4th grade build reading comprehension skills with standards-aligned practice and the Science of Reading.",
+    url: "https://learn.readee.app",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Readee" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Readee — Early reading, done right",
+    description:
+      "Readee helps children in K through 4th grade build reading comprehension skills with standards-aligned practice and the Science of Reading.",
+    images: ["/og-image.png"],
   },
 };
 
@@ -29,6 +49,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <JsonLd />
+      </head>
       <body className="antialiased min-h-screen flex flex-col">
 <ClientProviders>
         <NavAuth />

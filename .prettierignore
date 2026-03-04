@@ -1,0 +1,7 @@
+node_modules
+.next
+public
+app/data
+scripts/master_manifest.json
+scripts/master_tts.csv
+scripts/master_image_prompts.csv
