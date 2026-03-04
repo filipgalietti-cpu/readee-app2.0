@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "Readee",
-    title: "Readee — Early reading, done right",
+    title: "Readee — Unlock Reading",
     description:
       "Readee helps children in K through 4th grade build reading comprehension skills with standards-aligned practice and the Science of Reading.",
     url: "https://learn.readee.app",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Readee — Early reading, done right",
+    title: "Readee — Unlock Reading",
     description:
       "Readee helps children in K through 4th grade build reading comprehension skills with standards-aligned practice and the Science of Reading.",
     images: ["/og-image.png"],
