@@ -13,6 +13,16 @@ const SUPABASE_AUDIO_BASE =
 let currentAudio: HTMLAudioElement | null = null;
 
 /**
+ * Build a Supabase audio URL from folder + filename.
+ * Does NOT play — just returns the URL string.
+ */
+export function getAudioUrl(folder: string, filename: string): string {
+  return SUPABASE_AUDIO_BASE
+    ? `${SUPABASE_AUDIO_BASE}/${folder}/${filename}.mp3`
+    : `/audio/${folder}/${filename}.mp3`;
+}
+
+/**
  * Play a static audio file by folder + name.
  * Uses Supabase Storage URL in production, falls back to local /audio/ path.
  *
@@ -20,10 +30,7 @@ let currentAudio: HTMLAudioElement | null = null;
  * @param filename  File stem without extension, e.g. "RL.K.1-q1", "correct-1"
  */
 export function playAudio(folder: string, filename: string): Promise<void> {
-  const src = SUPABASE_AUDIO_BASE
-    ? `${SUPABASE_AUDIO_BASE}/${folder}/${filename}.mp3`
-    : `/audio/${folder}/${filename}.mp3`;
-  return playAudioUrl(src);
+  return playAudioUrl(getAudioUrl(folder, filename));
 }
 
 /**

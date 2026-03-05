@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
 import { useAudio } from "@/lib/audio/use-audio";
-import { playAudio as playStaticAudio, playAudioUrl, stopAudio as stopStaticAudio } from "@/lib/audio";
+import { getAudioUrl } from "@/lib/audio";
 import { usePracticeStore } from "@/lib/stores/practice-store";
 import { useThemeStore } from "@/lib/stores/theme-store";
 import { safeValidate } from "@/lib/validate";
@@ -380,7 +380,7 @@ function PracticeLoader() {
 
 function PracticeSession({ child, standard, gradeStandards }: { child: Child; standard: Standard; gradeStandards: Standard[] }) {
   const router = useRouter();
-  const { unlockAudio, stop, playCorrectChime, playIncorrectBuzz } = useAudio();
+  const { unlockAudio, stop, playUrl, playCorrectChime, playIncorrectBuzz } = useAudio();
   const gradeKey = levelNameToGradeKey(child?.reading_level ?? null);
 
   // Zustand store
@@ -440,10 +440,10 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
   /* ── Play static audio when question loads ── */
   useEffect(() => {
     if (phase !== "playing" || !audioReady) return;
-    // Play question audio from audio_url in JSON (fails silently if not found)
+    // Play question audio from audio_url in JSON (via Howler — AudioContext already unlocked)
     const url = q.audio_url;
-    if (url) playAudioUrl(url);
-    return () => { stopStaticAudio(); };
+    if (url) playUrl(url);
+    return () => { stop(); };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentIdx, phase, audioReady]);
 
@@ -452,10 +452,10 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
     if (phase !== "feedback") return;
     if (isCorrect) {
       const file = CORRECT_AUDIO[Math.floor(Math.random() * CORRECT_AUDIO.length)];
-      playStaticAudio("feedback", file);
+      playUrl(getAudioUrl("feedback", file));
     } else {
       const file = INCORRECT_AUDIO[Math.floor(Math.random() * INCORRECT_AUDIO.length)];
-      playStaticAudio("feedback", file);
+      playUrl(getAudioUrl("feedback", file));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase]);
@@ -463,16 +463,14 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
   /* ── Replay audio ── */
   const handleReplay = useCallback(() => {
     stop();
-    stopStaticAudio();
     const url = q.audio_url;
-    if (url) playAudioUrl(url);
-  }, [q.audio_url, stop]);
+    if (url) playUrl(url);
+  }, [q.audio_url, stop, playUrl]);
 
   /* ── Handle answer selection ── */
   const handleAnswer = useCallback((choice: string) => {
     if (selected !== null) return;
     stop();
-    stopStaticAudio();
     const correct = choice === q.correct;
 
     if (correct) {
@@ -494,7 +492,6 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
   const handleSentenceBuildAnswer = useCallback((isCorrect: boolean, placedSentence: string) => {
     if (selected !== null) return;
     stop();
-    stopStaticAudio();
 
     if (isCorrect) {
       const newConsecutive = consecutiveCorrect + 1;
@@ -515,7 +512,6 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
   const handleCategorySortAnswer = useCallback((isCorrect: boolean, answer: string) => {
     if (selected !== null) return;
     stop();
-    stopStaticAudio();
 
     if (isCorrect) {
       const newConsecutive = consecutiveCorrect + 1;
@@ -1039,6 +1035,7 @@ function CompletionScreen({
 }) {
   const [saved, setSaved] = useState(false);
   const darkMode = useThemeStore((s) => s.darkMode);
+  const { playUrl: playCompletionUrl } = useAudio();
   const totalQ = questions.length;
   const stars = getStars(correctCount, totalQ);
   const nextStandard = getNextStandard(standard.standard_id, gradeStandards);
@@ -1087,7 +1084,7 @@ function CompletionScreen({
     } else {
       file = pick(["complete-try-1", "complete-try-2", "complete-try-3"]);
     }
-    playStaticAudio("feedback", file);
+    playCompletionUrl(getAudioUrl("feedback", file));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
