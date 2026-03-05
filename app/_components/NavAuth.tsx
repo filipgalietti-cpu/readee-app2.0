@@ -134,7 +134,7 @@ export default function NavAuth() {
                 Analytics
               </Link>
               <Link href={activeChild ? `/shop?child=${activeChild.id}` : "/shop"} className={linkClass("/shop")}>
-                <Carrot className="w-4 h-4 inline-block align-text-bottom" strokeWidth={1.5} /> Shop
+                <Carrot className="w-4 h-4 inline-block align-text-bottom text-orange-500" strokeWidth={1.5} /> Shop
               </Link>
               <Link href="/word-bank" className={linkClass("/word-bank")}>
                 Word Bank
@@ -261,7 +261,7 @@ export default function NavAuth() {
                 Analytics
               </Link>
               <Link href={activeChild ? `/shop?child=${activeChild.id}` : "/shop"} className={`block py-2.5 px-3 rounded-lg text-sm font-medium transition-all duration-200 ${isActive("/shop") ? "text-indigo-700 bg-indigo-50 dark:text-indigo-300 dark:bg-indigo-950" : "text-zinc-700 dark:text-slate-300 hover:text-indigo-700 dark:hover:text-indigo-300 hover:bg-indigo-50/60 dark:hover:bg-slate-800"}`}>
-                <Carrot className="w-4 h-4 inline-block align-text-bottom" strokeWidth={1.5} /> Shop
+                <Carrot className="w-4 h-4 inline-block align-text-bottom text-orange-500" strokeWidth={1.5} /> Shop
               </Link>
               <Link href="/word-bank" className={`block py-2.5 px-3 rounded-lg text-sm font-medium transition-all duration-200 ${isActive("/word-bank") ? "text-indigo-700 bg-indigo-50 dark:text-indigo-300 dark:bg-indigo-950" : "text-zinc-700 dark:text-slate-300 hover:text-indigo-700 dark:hover:text-indigo-300 hover:bg-indigo-50/60 dark:hover:bg-slate-800"}`}>
                 Word Bank
