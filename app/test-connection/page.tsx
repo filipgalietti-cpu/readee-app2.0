@@ -32,7 +32,7 @@ export default async function TestConnectionPage() {
       padding: '20px',
       fontFamily: 'system-ui, sans-serif'
     }}>
-      <h1 style={{ fontSize: '32px', marginBottom: '10px' }}>🔍 Supabase Connection Test</h1>
+      <h1 style={{ fontSize: '32px', marginBottom: '10px' }}>Supabase Connection Test</h1>
       <p style={{ color: '#666', marginBottom: '30px' }}>
         Tests both regular client and admin client connections
       </p>

@@ -17,7 +17,7 @@ export function getChildAvatar(child: Child, index: number): string {
     }
     // Shop item
     const item = getItemById(equippedId);
-    if (item) return item.emoji;
+    if (item) return item.name;
   }
   return DEFAULT_AVATARS[index % DEFAULT_AVATARS.length];
 }

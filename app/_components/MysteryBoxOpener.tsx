@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Coins, Zap, Carrot } from "lucide-react";
+import { getShopIcon } from "@/lib/data/shop-icons";
 import type { MysteryReward } from "@/lib/data/mystery-box";
 
 type Phase = "wobble" | "open" | "reveal";
@@ -24,14 +26,14 @@ export function MysteryBoxOpener({
     };
   }, []);
 
-  const rewardEmoji =
+  const RewardIcon =
     reward.type === "jackpot"
-      ? "\uD83D\uDCB0"
+      ? Coins
       : reward.type === "multiplier"
-      ? "\u26A1"
+      ? Zap
       : reward.type === "item"
-      ? reward.item.emoji
-      : "\uD83E\uDD55";
+      ? getShopIcon(reward.item.icon)
+      : Carrot;
 
   const confetti = Array.from({ length: 40 }, (_, i) => ({
     id: i,
@@ -176,11 +178,10 @@ export function MysteryBoxOpener({
                 className="space-y-5"
               >
                 <motion.div
-                  className="text-8xl"
                   animate={{ scale: [1, 1.15, 1] }}
                   transition={{ duration: 0.6, delay: 0.2 }}
                 >
-                  {rewardEmoji}
+                  <RewardIcon className="w-20 h-20 text-amber-400" strokeWidth={1.5} />
                 </motion.div>
 
                 <div className="rounded-2xl bg-white dark:bg-slate-800 p-6 shadow-2xl">

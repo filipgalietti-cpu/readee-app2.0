@@ -19,16 +19,8 @@ import { MYSTERY_BOX_PRICE, rollMysteryBox, MysteryReward } from "@/lib/data/mys
 import { MysteryBoxOpener } from "@/app/_components/MysteryBoxOpener";
 import { GetMoreCarrotsModal } from "@/app/_components/GetMoreCarrotsModal";
 import { usePracticeStore } from "@/lib/stores/practice-store";
-import { Carrot, Smile, Crown, Palette, Star, Image as ImageIcon } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
-
-const CATEGORY_ICON: Record<string, LucideIcon> = {
-  avatars: Smile,
-  outfits: Crown,
-  themes: Palette,
-  stickers: Star,
-  backgrounds: ImageIcon,
-};
+import { Carrot } from "lucide-react";
+import { getShopIcon } from "@/lib/data/shop-icons";
 
 export default function ShopPage() {
   return (
@@ -258,7 +250,7 @@ function ShopContent({
             </div>
           </div>
           <button
-            onClick={child.carrots >= MYSTERY_BOX_PRICE ? handleBuyMysteryBox : () => setShowGetMore({ id: "mystery_box", name: "Mystery Box", emoji: "🎁", category: "avatars", price: MYSTERY_BOX_PRICE, description: "Mystery Box" })}
+            onClick={child.carrots >= MYSTERY_BOX_PRICE ? handleBuyMysteryBox : () => setShowGetMore({ id: "mystery_box", name: "Mystery Box", icon: "gift", category: "avatars", price: MYSTERY_BOX_PRICE, description: "Mystery Box" })}
             disabled={buyingMystery}
             className={`px-5 py-2.5 rounded-xl text-sm font-bold transition-all active:scale-[0.97] ${
               child.carrots >= MYSTERY_BOX_PRICE
@@ -287,7 +279,7 @@ function ShopContent({
                 : "bg-zinc-100 dark:bg-slate-800 text-zinc-600 dark:text-slate-300 hover:bg-zinc-200 dark:hover:bg-slate-700"
             }`}
           >
-            {(() => { const CI = CATEGORY_ICON[cat.key]; return CI ? <CI className="w-4 h-4 inline-block" strokeWidth={1.5} /> : null; })()} {cat.label}
+            {(() => { const CI = getShopIcon(cat.icon); return <CI className="w-4 h-4 inline-block" strokeWidth={1.5} />; })()} {cat.label}
           </button>
         ))}
       </div>
@@ -377,13 +369,13 @@ function ShopItemCard({
           : "border-zinc-100 dark:border-slate-800 bg-zinc-50 dark:bg-slate-900 opacity-70 hover:opacity-100"
       }`}
     >
-      {/* Emoji */}
+      {/* Icon */}
       <motion.div
-        className="text-4xl mb-2"
+        className="mb-2"
         animate={justBought ? { scale: [1, 1.4, 1], rotate: [0, 10, -10, 0] } : {}}
         transition={{ duration: 0.5 }}
       >
-        {item.emoji}
+        {(() => { const ItemIcon = getShopIcon(item.icon); return <ItemIcon className="w-10 h-10 text-indigo-500" strokeWidth={1.5} />; })()}
       </motion.div>
 
       {/* Name */}

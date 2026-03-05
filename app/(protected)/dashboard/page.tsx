@@ -19,6 +19,7 @@ import { getItemsByCategory, BACKGROUND_IMAGES } from "@/lib/data/shop-items";
 import type { ShopPurchase, EquippedItems } from "@/lib/db/types";
 import { Target, Puzzle, BookOpen, Map, Carrot, Flame, Sun, CloudSun, Moon, Sparkles, Star, Rocket, Trophy, BarChart3, Sprout } from "lucide-react";
 import type { ReactNode } from "react";
+import { getShopIcon } from "@/lib/data/shop-icons";
 
 /* ─── Count-up animation hook ─────────────────────────── */
 
@@ -774,7 +775,7 @@ function ChildDashboard({
                       }`}
                       title={owned ? item.name : `${item.name} — ${item.price} carrots`}
                     >
-                      {item.emoji}
+                      {(() => { const SI = getShopIcon(item.icon); return <SI className="w-7 h-7 text-indigo-500" strokeWidth={1.5} />; })()}
                       {!owned && (
                         <span className="absolute bottom-0.5 right-0.5">
                           <svg className="w-2.5 h-2.5 text-zinc-400" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" /></svg>

@@ -26,7 +26,7 @@ export function rollMysteryBox(ownedItemIds: Set<string>): MysteryReward {
     const unowned = SHOP_ITEMS.filter((item) => !ownedItemIds.has(item.id));
     if (unowned.length > 0) {
       const item = unowned[Math.floor(Math.random() * unowned.length)];
-      return { type: "item", item, label: `${item.emoji} ${item.name}!` };
+      return { type: "item", item, label: `${item.name}!` };
     }
     // Fallback: 40 carrots
     return { type: "carrots", amount: 40, label: "+40 carrots!" };
