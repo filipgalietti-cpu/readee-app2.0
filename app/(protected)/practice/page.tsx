@@ -3,6 +3,7 @@
 import { Suspense, useEffect, useState, useMemo, useCallback, useRef } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
@@ -14,7 +15,7 @@ import { safeValidate } from "@/lib/validate";
 import { PracticeResultSchema } from "@/lib/schemas";
 import { levelNameToGradeKey } from "@/lib/assessment/questions";
 import { getStandardsForGrade, findStandardById } from "@/lib/data/all-standards";
-import { fadeUp, staggerContainer, feedbackSlideUp, popIn, scaleIn } from "@/lib/motion/variants";
+import { fadeUp, fadeIn, staggerContainer, feedbackSlideUp, popIn, scaleIn } from "@/lib/motion/variants";
 import { SentenceBuild } from "@/app/components/practice/SentenceBuild";
 import { CategorySort } from "@/app/components/practice/CategorySort";
 import { MissingWord } from "@/app/components/practice/MissingWord";
@@ -577,95 +578,213 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
     const LessonIcon = DOMAIN_ICON[standard.domain] ?? BookOpen;
     const maxCarrots = totalQ * CARROTS_PER_CORRECT;
 
+    /* sparkle positions for animated dots */
+    const sparkles = [
+      { top: "8%", left: "10%", size: 6, delay: 0 },
+      { top: "15%", left: "75%", size: 5, delay: 0.3 },
+      { top: "25%", left: "85%", size: 4, delay: 0.6 },
+      { top: "60%", left: "5%", size: 5, delay: 0.9 },
+      { top: "70%", left: "90%", size: 4, delay: 0.2 },
+      { top: "85%", left: "15%", size: 6, delay: 0.5 },
+      { top: "90%", left: "80%", size: 5, delay: 0.8 },
+      { top: "40%", left: "3%", size: 4, delay: 1.1 },
+      { top: "50%", left: "95%", size: 5, delay: 0.4 },
+    ];
+
     return (
-      <div className="min-h-[100dvh] bg-gray-50 dark:bg-[#0f172a] flex flex-col items-center justify-center px-6">
-        <motion.div
-          className="w-full max-w-sm"
-          initial={{ opacity: 0, scale: 0.95, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-        >
+      <div className="min-h-[100dvh] bg-gray-50 dark:bg-[#0f172a] flex flex-col items-center justify-center px-6 relative overflow-hidden">
+        {/* ── Background floating particles ── */}
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+          {sparkles.map((s, i) => (
+            <motion.div
+              key={i}
+              className="absolute rounded-full bg-indigo-400/15 dark:bg-indigo-400/10"
+              style={{ top: s.top, left: s.left, width: s.size, height: s.size }}
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{
+                opacity: [0, 0.6, 0.3, 0.6],
+                scale: [0, 1, 0.8, 1],
+                y: [0, -8, 0, -8],
+              }}
+              transition={{
+                duration: 3,
+                delay: s.delay,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+          ))}
+        </div>
+
+        <div className="w-full max-w-sm relative z-10">
+          {/* ── Bunny mascot ── */}
+          <motion.div
+            className="flex justify-center mb-[-20px] relative z-20"
+            variants={popIn}
+            initial="hidden"
+            animate="visible"
+            transition={{ type: "spring", stiffness: 300, damping: 15, delay: 0.1 }}
+          >
+            <motion.div
+              animate={{ y: [0, -6, 0] }}
+              transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <Image
+                src="/images/bunny-hero.png"
+                alt="Readee bunny"
+                width={140}
+                height={140}
+                className="drop-shadow-lg w-[120px] h-[120px] sm:w-[140px] sm:h-[140px]"
+                priority
+              />
+            </motion.div>
+          </motion.div>
+
           {/* ── Elevated card ── */}
-          <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-xl overflow-hidden">
+          <motion.div
+            className="bg-white dark:bg-slate-800 rounded-3xl shadow-xl overflow-hidden"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut", delay: 0.3 }}
+          >
             {/* ── Gradient header strip ── */}
             <div
               className="relative px-6 pt-8 pb-10 text-center overflow-hidden"
               style={{ background: "linear-gradient(135deg, #6366f1, #8b5cf6)" }}
             >
-              {/* Decorative dots / sparkles */}
+              {/* Animated sparkles in header */}
               <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-                <div className="absolute top-3 left-4 w-2 h-2 rounded-full bg-white/15" />
-                <div className="absolute top-6 left-12 w-1.5 h-1.5 rounded-full bg-white/10" />
-                <div className="absolute top-4 right-6 w-2.5 h-2.5 rounded-full bg-white/12" />
-                <div className="absolute top-8 right-14 w-1.5 h-1.5 rounded-full bg-white/10" />
-                <div className="absolute bottom-4 left-8 w-2 h-2 rounded-full bg-white/10" />
-                <div className="absolute bottom-6 right-10 w-1 h-1 rounded-full bg-white/15" />
-                <div className="absolute top-2 left-1/2 w-1 h-1 rounded-full bg-white/20" />
-                <div className="absolute bottom-3 left-1/3 w-1.5 h-1.5 rounded-full bg-white/8" />
+                {[
+                  { top: "12%", left: "10%", size: 6, delay: 0.5 },
+                  { top: "20%", left: "80%", size: 5, delay: 0.8 },
+                  { top: "65%", left: "15%", size: 4, delay: 1.1 },
+                  { top: "50%", left: "88%", size: 5, delay: 0.6 },
+                  { top: "30%", left: "50%", size: 3, delay: 1.0 },
+                  { top: "75%", left: "70%", size: 4, delay: 0.7 },
+                  { top: "10%", left: "40%", size: 3, delay: 0.9 },
+                  { top: "80%", left: "30%", size: 5, delay: 1.2 },
+                ].map((dot, i) => (
+                  <motion.div
+                    key={i}
+                    className="absolute rounded-full bg-white/20"
+                    style={{ top: dot.top, left: dot.left, width: dot.size, height: dot.size }}
+                    animate={{
+                      opacity: [0.1, 0.4, 0.1],
+                      scale: [0.8, 1.2, 0.8],
+                      y: [0, -4, 0],
+                    }}
+                    transition={{
+                      duration: 2.5,
+                      delay: dot.delay,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  />
+                ))}
               </div>
 
-              <div className="relative w-20 h-20 mx-auto mb-4 rounded-full bg-white/20 backdrop-blur flex items-center justify-center">
+              <motion.div
+                className="relative w-20 h-20 mx-auto mb-4 rounded-full bg-white/20 backdrop-blur flex items-center justify-center"
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: 0.5 }}
+              >
                 <LessonIcon className="w-10 h-10 text-white" strokeWidth={1.5} />
-              </div>
-              <h2 className="relative text-xl font-extrabold text-white">
+              </motion.div>
+              <motion.h2
+                className="relative text-xl font-extrabold text-white"
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: 0.6 }}
+              >
                 Let&apos;s go, {child.first_name}!
-              </h2>
+              </motion.h2>
             </div>
 
             {/* ── Content area ── */}
-            <div className="px-6 pt-6 pb-6">
-              <h3 className="text-lg font-bold text-zinc-800 dark:text-white mb-2">
+            <motion.div
+              className="px-6 pt-6 pb-6"
+              variants={staggerContainer}
+              initial="hidden"
+              animate="visible"
+              transition={{ delayChildren: 0.6 }}
+            >
+              <motion.h3
+                className="text-lg font-bold text-zinc-800 dark:text-white mb-2"
+                variants={fadeUp}
+              >
                 {lessonTitle}
-              </h3>
-              <p className="text-zinc-500 dark:text-slate-400 text-sm leading-relaxed mb-5">
+              </motion.h3>
+              <motion.p
+                className="text-zinc-500 dark:text-slate-400 text-sm leading-relaxed mb-5"
+                variants={fadeUp}
+              >
                 {lessonPrompt}
-              </p>
+              </motion.p>
 
-              {/* Info row */}
-              <div className="flex flex-col gap-2 text-xs text-zinc-400 dark:text-slate-500 mb-6">
-                <div className="flex items-center gap-4">
-                  <span className="flex items-center gap-1.5">
-                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01" />
-                    </svg>
-                    {totalQ} questions
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" />
-                    </svg>
-                    Audio enabled
-                  </span>
-                </div>
-                <span className="text-orange-500 dark:text-orange-400 font-medium">
-                  Earn up to {maxCarrots} XP <Carrot className="w-4 h-4 inline-block align-text-bottom" strokeWidth={1.5} />
+              {/* Info pills */}
+              <motion.div className="flex flex-wrap gap-2 mb-6" variants={fadeUp}>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-indigo-50 dark:bg-indigo-500/10 text-xs font-medium text-indigo-600 dark:text-indigo-400">
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01" />
+                  </svg>
+                  {totalQ} questions
                 </span>
-              </div>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-500/10 text-xs font-medium text-emerald-600 dark:text-emerald-400">
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" />
+                  </svg>
+                  Audio enabled
+                </span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-orange-50 dark:bg-orange-500/10 text-xs font-medium text-orange-600 dark:text-orange-400">
+                  <Carrot className="w-3.5 h-3.5" strokeWidth={2} />
+                  Earn up to {maxCarrots} XP
+                </span>
+              </motion.div>
 
-              {/* Start button */}
-              <button
+              {/* Start button with pulse glow */}
+              <motion.button
                 onClick={handleStart}
-                className="w-full py-4 rounded-2xl font-extrabold text-lg text-white transition-all hover:scale-[1.02] active:scale-[0.97]"
+                className="relative w-full py-4 rounded-2xl font-extrabold text-lg text-white transition-all hover:scale-[1.02] active:scale-[0.97]"
                 style={{
                   background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
                   boxShadow: "0 4px 0 0 #4f46e5",
                 }}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: 0.8 }}
               >
+                <motion.span
+                  className="absolute inset-0 rounded-2xl"
+                  animate={{
+                    boxShadow: [
+                      "0 0 0 0 rgba(99,102,241,0)",
+                      "0 0 0 8px rgba(99,102,241,0.15)",
+                      "0 0 0 0 rgba(99,102,241,0)",
+                    ],
+                  }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
+                />
                 Tap to Start
-              </button>
-            </div>
-          </div>
+              </motion.button>
+            </motion.div>
+          </motion.div>
 
           {/* ── Back link (below card) ── */}
-          <div className="text-center mt-5">
+          <motion.div
+            className="text-center mt-5"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1 }}
+          >
             <button
               onClick={handleExit}
               className="text-sm text-zinc-400 dark:text-slate-500 hover:text-zinc-600 dark:hover:text-slate-300 transition-colors"
             >
               &larr; Back
             </button>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     );
   }
