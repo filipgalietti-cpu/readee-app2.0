@@ -8,37 +8,58 @@
         "type": "mcq",
         "difficulty": "medium",
         "standard": "RF.K.1d",
-        "prompt": "Which letter is M?",
+        "ttsIntro": "Let's find a letter! Look at each letter carefully.",
+        "prompt": "Which one is the letter M?",
         "choices": ["N", "M", "W", "H"],
-        "correct": "M"
+        "correct": "M",
+        "imagePromptOverride": "Cartoon picture of a cheerful child pointing at colorful alphabet blocks. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "K_M_02",
-        "type": "mcq",
+        "type": "category_sort",
         "difficulty": "medium",
         "standard": "RF.K.2a",
-        "ttsIntro": "Rhyming words sound alike at the end, like cat and hat.",
-        "prompt": "Which two words rhyme?",
-        "choices": ["cat/hat", "dog/map", "sun/sit", "pen/top"],
-        "correct": "cat/hat"
+        "prompt": "Sort the rhyming words.",
+        "categories": ["Rhyme with cat", "Rhyme with sun"],
+        "categoryDefinitions": {
+          "Rhyme with cat": "These words sound like cat at the end.",
+          "Rhyme with sun": "These words sound like sun at the end."
+        },
+        "categoryItems": {
+          "Rhyme with cat": ["hat", "bat"],
+          "Rhyme with sun": ["fun", "run"]
+        },
+        "items": ["hat", "fun", "bat", "run"],
+        "imagePromptOverride": "Cartoon picture of a cheerful child clapping and listening to words, with musical notes around them. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "K_E_03",
         "type": "mcq",
         "difficulty": "easy",
         "standard": "RF.K.3b",
+        "ttsIntro": "Every letter makes a special sound. Listen carefully!",
         "prompt": "Which letter makes the t sound?",
         "choices": ["t", "m", "s", "b"],
-        "correct": "t"
+        "correct": "t",
+        "imagePromptOverride": "Cartoon picture of a cheerful child with a big smile, cupping a hand to their ear to listen. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "K_E_04",
-        "type": "mcq",
+        "type": "category_sort",
         "difficulty": "easy",
         "standard": "L.K.5a",
-        "prompt": "Which word is a color?",
-        "choices": ["run", "blue", "jump", "sing"],
-        "correct": "blue"
+        "prompt": "Sort the words.",
+        "categories": ["Colors", "Not Colors"],
+        "categoryDefinitions": {
+          "Colors": "Colors are words that name a color, like red or blue.",
+          "Not Colors": "These words are not colors."
+        },
+        "categoryItems": {
+          "Colors": ["red", "blue", "green"],
+          "Not Colors": ["run", "jump", "sing"]
+        },
+        "items": ["red", "run", "blue", "jump", "green", "sing"],
+        "imagePromptOverride": "Cartoon picture of a rainbow with bright colors in a sunny sky. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "K_H_05",
@@ -79,7 +100,8 @@
           "Animals": ["cat", "dog", "fish"],
           "Colors": ["red", "blue", "green"]
         },
-        "items": ["blue", "cat", "fish", "green", "dog", "red"]
+        "items": ["blue", "cat", "fish", "green", "dog", "red"],
+        "imagePromptOverride": "Cartoon picture of a cat and a dog playing together next to colorful paint splashes. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "K_I_08",
@@ -96,13 +118,15 @@
           "Food": ["apple", "bread", "cookie"],
           "Toys": ["ball", "kite", "doll"]
         },
-        "items": ["kite", "bread", "doll", "apple", "cookie", "ball"]
+        "items": ["kite", "bread", "doll", "apple", "cookie", "ball"],
+        "imagePromptOverride": "Cartoon picture of food items and toys spread out on a table, including an apple, bread, a ball, and a kite. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "K_I_09",
         "type": "missing_word",
         "difficulty": "medium",
         "standard": "RF.K.2d",
+        "ttsIntro": "Words start with a special sound. Listen to each sound and pick the one that makes a real word!",
         "prompt": "Pick the beginning sound that completes the word.",
         "sentenceWords": ["_", "at"],
         "blankIndex": 0,
@@ -146,7 +170,7 @@
         "type": "mcq",
         "difficulty": "medium",
         "standard": "RF.1.3b",
-        "ttsIntro": "The short a sound is the a in words like cat and map.",
+        "ttsIntro": "The short a sound is the a in words like cat and hat.",
         "prompt": "Which word has a short a sound?",
         "choices": ["cake", "map", "bike", "home"],
         "correct": "map"
@@ -175,14 +199,21 @@
       },
       {
         "id": "G1_E_04",
-        "type": "mcq",
+        "type": "category_sort",
         "difficulty": "easy",
         "standard": "L.1.5a",
-        "ttsIntro": "Opposites are words that mean different things, like hot and cold.",
-        "prompt": "Which two words are opposites?",
-        "choices": ["hot/cold", "run/jog", "happy/glad", "big/large"],
-        "correct": "hot/cold",
-        "imagePromptOverride": "Cartoon picture of two scenes side by side, one child sweating in summer heat with a bright sun, and one child bundled up in winter cold with snowflakes. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
+        "prompt": "Sort the word pairs.",
+        "categories": ["Opposites", "Synonyms"],
+        "categoryDefinitions": {
+          "Opposites": "Opposites are words that mean different things, like hot and cold.",
+          "Synonyms": "Synonyms are words that mean the same thing, like big and large."
+        },
+        "categoryItems": {
+          "Opposites": ["hot", "cold", "up", "down"],
+          "Synonyms": ["happy", "glad", "big", "large"]
+        },
+        "items": ["hot", "glad", "up", "big", "cold", "happy", "down", "large"],
+        "imagePromptOverride": "Cartoon picture of two children side by side, one sweating in summer heat with a sun, and one bundled up in winter cold with snowflakes. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "G1_H_05",
@@ -222,7 +253,8 @@
           "Nouns": ["book", "dog", "house"],
           "Verbs": ["run", "jump", "sing"]
         },
-        "items": ["sing", "book", "house", "jump", "dog", "run"]
+        "items": ["sing", "book", "house", "jump", "dog", "run"],
+        "imagePromptOverride": "Cartoon picture of a child reading a book while a dog jumps playfully nearby. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "G1_I_08",
@@ -239,7 +271,8 @@
           "Happy": ["glad", "joyful"],
           "Not Happy": ["sad", "upset"]
         },
-        "items": ["glad", "sad", "upset", "joyful"]
+        "items": ["glad", "sad", "upset", "joyful"],
+        "imagePromptOverride": "Cartoon picture of a child with different facial expressions showing happy, sad, and thoughtful emotions. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "G1_I_09",
@@ -288,7 +321,7 @@
         "type": "mcq",
         "difficulty": "medium",
         "standard": "RF.2.3a",
-        "ttsIntro": "The letters ea can make different sounds. Sometimes ea says ee, like in the word clean.",
+        "ttsIntro": "The letters ea can make different sounds. Sometimes ea says ee, like in the word team.",
         "prompt": "Which word has ea saying ee?",
         "choices": ["bread", "head", "clean", "ready"],
         "correct": "clean"
@@ -363,7 +396,8 @@
           "Verbs": ["write", "climb", "draw"],
           "Emotions": ["nervous", "happy", "proud"]
         },
-        "items": ["nervous", "climb", "draw", "happy", "proud", "write"]
+        "items": ["nervous", "climb", "draw", "happy", "proud", "write"],
+        "imagePromptOverride": "Cartoon picture of a child climbing a tree with a happy expression. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "G2_I_08",
@@ -380,7 +414,8 @@
           "Long a": ["rain", "play"],
           "Short a": ["map", "cat"]
         },
-        "items": ["rain", "map", "play", "cat"]
+        "items": ["rain", "map", "play", "cat"],
+        "imagePromptOverride": "Cartoon picture of a child playing in the rain with a cat nearby. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "G2_I_09",
@@ -463,7 +498,7 @@
         "type": "mcq",
         "difficulty": "easy",
         "standard": "L.3.5a",
-        "ttsIntro": "A simile compares two things using the words like or as.",
+        "ttsIntro": "A simile is a way to compare two things using the words like or as. For example, he is as fast as a cheetah is a simile.",
         "prompt": "Which is a simile?",
         "choices": ["The wind whispered", "She ran like the wind", "The moon is a lantern", "The sun smiled"],
         "correct": "She ran like the wind"
@@ -506,7 +541,8 @@
           "re- (again)": ["rewrite", "rebuild"],
           "un- (not)": ["unsafe", "unfair"]
         },
-        "items": ["rewrite", "unfair", "unsafe", "rebuild"]
+        "items": ["rewrite", "unfair", "unsafe", "rebuild"],
+        "imagePromptOverride": "Cartoon picture of a child building with blocks while another child writes in a notebook. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "G3_I_08",
@@ -516,14 +552,15 @@
         "prompt": "Sort the examples.",
         "categories": ["Simile", "Literal"],
         "categoryDefinitions": {
-          "Simile": "A simile compares two things using the words like or as.",
-          "Literal": "Literal language means exactly what it says, with no comparison."
+          "Simile": "A simile is a way to compare two things using the words like or as. For example, she is as brave as a lion.",
+          "Literal": "Literal language means exactly what it says, with no comparison. For example, the sky is blue."
         },
         "categoryItems": {
           "Simile": ["as bright as the sun", "like a rocket"],
           "Literal": ["the sun is bright", "the car is fast"]
         },
-        "items": ["the car is fast", "as bright as the sun", "like a rocket", "the sun is bright"]
+        "items": ["the car is fast", "as bright as the sun", "like a rocket", "the sun is bright"],
+        "imagePromptOverride": "Cartoon picture of a child reading a book with a thought bubble showing a bright sun and a rocket. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "G3_I_09",
@@ -651,7 +688,8 @@
           "Fact": ["Fish live in water", "Plants need sunlight", "Birds have feathers"],
           "Opinion": ["Fish are boring", "Roses smell the best", "Birds are the cutest"]
         },
-        "items": ["Plants need sunlight", "Birds are the cutest", "Fish are boring", "Birds have feathers", "Roses smell the best", "Fish live in water"]
+        "items": ["Plants need sunlight", "Birds are the cutest", "Fish are boring", "Birds have feathers", "Roses smell the best", "Fish live in water"],
+        "imagePromptOverride": "Cartoon picture of a child sitting and thinking with a finger on their chin, looking thoughtful. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "G4_I_08",
@@ -668,7 +706,8 @@
           "Cause and Effect": ["because", "therefore"],
           "Compare and Contrast": ["however", "similarly"]
         },
-        "items": ["because", "similarly", "however", "therefore"]
+        "items": ["because", "similarly", "however", "therefore"],
+        "imagePromptOverride": "Cartoon picture of a child at a desk organizing colorful word cards into groups. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "G4_I_09",
