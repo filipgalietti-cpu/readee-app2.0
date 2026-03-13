@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
+import { useAudio } from "@/lib/audio/use-audio";
 
 import manifestRaw from "@/scripts/assessment_mixed_manifest.json";
 import bankRaw from "@/lib/assessment/mixed-bank-k4.json";
@@ -114,8 +115,9 @@ export default function AssessmentAuditPage() {
   const [showImagePrompt, setShowImagePrompt] = useState(false);
   const [playingUrl, setPlayingUrl] = useState<string | null>(null);
   const [comment, setComment] = useState("");
-  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const audioUnlockedRef = useRef(false);
 
+  const { playUrl: rawPlayUrl, isSpeaking, unlockAudio, stop } = useAudio();
   const { reviews: allItemReviews, myReviews, loading: reviewsLoading, userId, upsertReview, deleteReview, exportCsv } = useAuditReviews("assessment");
 
   // Filter questions
@@ -171,34 +173,19 @@ export default function AssessmentAuditPage() {
   }, [goPrev, goNext]);
 
   // Audio playback
-  const playingUrlRef = useRef<string | null>(null);
   const playAudio = useCallback((url: string) => {
-    if (audioRef.current) {
-      audioRef.current.pause();
-      audioRef.current = null;
-    }
-    if (playingUrlRef.current === url) {
-      playingUrlRef.current = null;
-      setPlayingUrl(null);
-      return;
-    }
-    const audio = new Audio(url);
-    audioRef.current = audio;
-    playingUrlRef.current = url;
+    if (!audioUnlockedRef.current) { unlockAudio(); audioUnlockedRef.current = true; }
     setPlayingUrl(url);
-    audio.onended = () => { playingUrlRef.current = null; setPlayingUrl(null); audioRef.current = null; };
-    audio.onerror = () => { playingUrlRef.current = null; setPlayingUrl(null); audioRef.current = null; };
-    audio.play().catch(() => { playingUrlRef.current = null; setPlayingUrl(null); audioRef.current = null; });
-  }, []);
+    rawPlayUrl(url);
+  }, [rawPlayUrl, unlockAudio]);
+
+  useEffect(() => { if (!isSpeaking) setPlayingUrl(null); }, [isSpeaking]);
 
   // Stop audio on question change
   useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.pause();
-      audioRef.current = null;
-      setPlayingUrl(null);
-    }
-  }, [currentIndex]);
+    stop();
+    setPlayingUrl(null);
+  }, [currentIndex, stop]);
 
   // Rating handlers — map "good" → "pass", "flagged" → "flag" for DB storage
   const rate = useCallback((rating: Rating) => {
