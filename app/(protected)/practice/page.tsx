@@ -19,6 +19,9 @@ import { fadeUp, fadeIn, staggerContainer, feedbackSlideUp, popIn, scaleIn } fro
 import { SentenceBuild } from "@/app/components/practice/SentenceBuild";
 import { CategorySort } from "@/app/components/practice/CategorySort";
 import { MissingWord } from "@/app/components/practice/MissingWord";
+import { TapToPair } from "@/app/components/practice/TapToPair";
+import { SoundMachine } from "@/app/components/practice/SoundMachine";
+import { SpaceInsertion } from "@/app/components/practice/SpaceInsertion";
 import { getDailyMultiplier, getSessionStreakTier } from "@/lib/carrots/multipliers";
 import { StreakFire } from "@/app/_components/StreakFire";
 import { BookOpen, Newspaper, Type, MessageCircle, Star, Sparkles, Target, Carrot, Search } from "lucide-react";
@@ -36,12 +39,20 @@ interface Question {
   difficulty: number;
   audio_url?: string;
   hint_audio_url?: string;
+  choices_audio_urls?: (string | null)[];
   words?: string[];
   sentence_hint?: string;
   sentence_audio_url?: string;
   categories?: string[];
   category_items?: Record<string, string[]>;
   items?: string[];
+  left_items?: string[];
+  right_items?: string[];
+  correct_pairs?: Record<string, string>;
+  target_word?: string;
+  phonemes?: string[];
+  distractors?: string[];
+  jumbled?: string;
 }
 
 interface Standard {
@@ -402,6 +413,7 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
   const [carrotFlash, setCarrotFlash] = useState(false);
   const [consecutiveCorrect, setConsecutiveCorrect] = useState(0);
   const [showHint, setShowHint] = useState(false);
+  const [previewedChoice, setPreviewedChoice] = useState<string | null>(null);
   const mysteryBoxMultiplier = usePracticeStore((s) => s.mysteryBoxMultiplier);
   const clearMysteryBoxMultiplier = usePracticeStore((s) => s.clearMysteryBoxMultiplier);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -432,6 +444,10 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
   const q = questions[currentIdx];
   const totalQ = questions.length;
 
+  const hasChoiceAudio = useMemo(() => {
+    return q.choices_audio_urls?.some(url => url && url.startsWith("https://")) ?? false;
+  }, [q.choices_audio_urls]);
+
   /** Handle "Tap to Start" — unlock audio, then begin */
   const handleStart = useCallback(async () => {
     await unlockAudio();
@@ -441,6 +457,7 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
   /* ── Play static audio when question loads ── */
   useEffect(() => {
     if (phase !== "playing" || !audioReady) return;
+    setPreviewedChoice(null);
     // Play question audio from audio_url in JSON (via Howler — AudioContext already unlocked)
     const url = q.audio_url;
     if (url) playUrl(url);
@@ -460,6 +477,17 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase]);
+
+  /* ── Play word-level audio (for CategorySort / TapToPair tiles) ── */
+  const playWordAudio = useCallback((word: string) => {
+    const clean = word.replace(/[^a-zA-Z0-9 ]/g, "").toLowerCase().replace(/\s+/g, "_");
+    if (!clean) return;
+    const base = process.env.NEXT_PUBLIC_SUPABASE_URL
+      ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audio`
+      : "";
+    const src = base ? `${base}/words/${clean}.mp3` : `/audio/words/${clean}.mp3`;
+    playUrl(src);
+  }, [playUrl]);
 
   /* ── Replay audio ── */
   const handleReplay = useCallback(() => {
@@ -873,6 +901,7 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
             sentenceWords={(q as any).sentence_words}
             blankIndex={(q as any).blank_index}
             choices={(q as any).missing_choices}
+            correct={q.correct}
             sentenceHint={(q as any).sentence_hint}
             sentenceAudioUrl={(q as any).sentence_audio_url}
             answered={selected !== null}
@@ -888,6 +917,34 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
             onAnswer={handleCategorySortAnswer}
             onCorrectPlace={playCorrectChime}
             onIncorrectPlace={playIncorrectBuzz}
+            onPlayItem={playWordAudio}
+          />
+        ) : q.type === "tap_to_pair" && q.left_items && q.right_items && q.correct_pairs ? (
+          <TapToPair
+            prompt={question}
+            leftItems={q.left_items}
+            rightItems={q.right_items}
+            correctPairs={q.correct_pairs}
+            answered={selected !== null}
+            onAnswer={(isCorrect, answer) => handleSentenceBuildAnswer(isCorrect, answer)}
+            onPlayItem={playWordAudio}
+          />
+        ) : q.type === "sound_machine" && q.target_word && q.phonemes ? (
+          <SoundMachine
+            prompt={question}
+            targetWord={q.target_word}
+            phonemes={q.phonemes}
+            distractors={q.distractors}
+            answered={selected !== null}
+            onAnswer={(isCorrect, answer) => handleSentenceBuildAnswer(isCorrect, answer)}
+          />
+        ) : q.type === "space_insertion" && q.jumbled ? (
+          <SpaceInsertion
+            prompt={question}
+            jumbled={q.jumbled}
+            correctSentence={q.correct}
+            answered={selected !== null}
+            onAnswer={(isCorrect, answer) => handleSentenceBuildAnswer(isCorrect, answer)}
           />
         ) : (
         <>
@@ -965,7 +1022,9 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
             let textColor = "";
             let extra = "";
 
-            if (!answered && isSelected) {
+            if (!answered && previewedChoice === choice) {
+              extra = "ring-2 ring-offset-2 ring-indigo-500 animate-pulse";
+            } else if (!answered && isSelected) {
               extra = "ring-2 ring-offset-2 ring-indigo-500";
             } else if (answered) {
               if (isSelected && isCorrect) {
@@ -994,7 +1053,23 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
                     : {}
                 }
                 whileTap={!answered ? { scale: 0.95, transition: { duration: 0.1 } } : undefined}
-                onClick={() => handleAnswer(choice)}
+                onClick={() => {
+                  if (answered) return;
+                  if (hasChoiceAudio) {
+                    if (previewedChoice === choice) {
+                      handleAnswer(choice);
+                    } else {
+                      setPreviewedChoice(choice);
+                      const audioUrl = q.choices_audio_urls?.[i];
+                      if (audioUrl) {
+                        stop();
+                        playUrl(audioUrl, 0);
+                      }
+                    }
+                  } else {
+                    handleAnswer(choice);
+                  }
+                }}
                 disabled={answered}
                 className={`
                   flex items-center justify-center px-3 py-3 rounded-2xl border-2 relative

@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
-import { createClient } from '@/lib/supabase/client'
 import { createAdminClient } from '@/lib/supabase/admin'
+import { createClient as createServerClient } from '@/lib/supabase/server'
 
 interface TestResult {
   name: string
@@ -20,7 +20,22 @@ interface TestResults {
   }
 }
 
+function getErrorMessage(error: unknown): string {
+  if (error instanceof Error) return error.message;
+  return String(error);
+}
+
 export async function GET() {
+  if (process.env.NODE_ENV === "production") {
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
+  }
+
+  const serverClient = await createServerClient();
+  const { data: { user }, error: authError } = await serverClient.auth.getUser();
+  if (authError || !user) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
   const results: TestResults = {
     timestamp: new Date().toISOString(),
     tests: [],
@@ -29,7 +44,7 @@ export async function GET() {
 
   // Test 1: Regular Client Connection
   try {
-    const client = createClient()
+    const client = await createServerClient()
     const { data, error } = await client.auth.getSession()
     
     if (error) {
@@ -49,11 +64,12 @@ export async function GET() {
       })
       results.summary.passed++
     }
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const message = getErrorMessage(error);
     results.tests.push({
       name: 'Regular Client Connection',
       status: 'failed',
-      message: error.message,
+      message,
       details: 'Failed to create or test regular client'
     })
     results.summary.failed++
@@ -62,7 +78,7 @@ export async function GET() {
   // Test 2: Admin Client Connection
   try {
     const admin = createAdminClient()
-    const { data, error } = await admin.auth.admin.listUsers({ page: 1, perPage: 1 })
+    const { error } = await admin.auth.admin.listUsers({ page: 1, perPage: 1 })
     
     if (error) {
       results.tests.push({
@@ -83,8 +99,9 @@ export async function GET() {
       })
       results.summary.passed++
     }
-  } catch (error: any) {
-    if (error.message.includes('SUPABASE_SERVICE_ROLE_KEY')) {
+  } catch (error: unknown) {
+    const message = getErrorMessage(error);
+    if (message.includes('SUPABASE_SERVICE_ROLE_KEY')) {
       results.tests.push({
         name: 'Admin Client Connection',
         status: 'warning',
@@ -96,7 +113,7 @@ export async function GET() {
       results.tests.push({
         name: 'Admin Client Connection',
         status: 'failed',
-        message: error.message,
+        message,
         details: 'Failed to create or test admin client'
       })
       results.summary.failed++

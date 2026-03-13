@@ -6,16 +6,20 @@ import { CURRENT_TOS_VERSION } from "@/lib/tos";
 import TosCheckbox from "@/app/components/auth/TosCheckbox";
 
 type Status = "loading" | "accepted" | "needs-consent";
+const TOS_LOCAL_STORAGE_KEY = "readee-tos-consent";
+const PROFILE_MISSING_CACHE_KEY = "readee-profile-row-missing";
+
+function isNoRowError(error: unknown): boolean {
+  if (!error || typeof error !== "object") return false;
+  const err = error as { code?: string; message?: string };
+  return err.code === "PGRST116" || Boolean(err.message?.toLowerCase().includes("no rows"));
+}
 
 export default function TosGate({ children }: { children: ReactNode }) {
   const [status, setStatus] = useState<Status>("loading");
   const [userId, setUserId] = useState<string | null>(null);
   const [checked, setChecked] = useState(false);
   const [saving, setSaving] = useState(false);
-
-  useEffect(() => {
-    checkConsent();
-  }, []);
 
   async function checkConsent() {
     const supabase = createClient();
@@ -31,43 +35,54 @@ export default function TosGate({ children }: { children: ReactNode }) {
 
     setUserId(user.id);
 
-    const { data: profile } = await supabase
+    const { data: profile, error: profileError } = await supabase
       .from("profiles")
       .select("tos_version")
       .eq("id", user.id)
-      .single();
+      .maybeSingle();
+
+    if (profileError && !isNoRowError(profileError)) {
+      console.error("Error checking ToS consent:", profileError);
+      // Avoid locking users out on transient network/API errors.
+      setStatus("accepted");
+      return;
+    }
 
     // Already accepted current version
     if (profile?.tos_version === CURRENT_TOS_VERSION) {
+      localStorage.removeItem(PROFILE_MISSING_CACHE_KEY);
       setStatus("accepted");
       return;
     }
 
     // Check localStorage for consent stashed during signup
-    const stored = localStorage.getItem("readee-tos-consent");
+    const stored = localStorage.getItem(TOS_LOCAL_STORAGE_KEY);
     if (stored) {
       try {
         const consent = JSON.parse(stored);
         if (consent.tos_version === CURRENT_TOS_VERSION) {
-          // Write to DB
-          await supabase
-            .from("profiles")
-            .update({
-              tos_accepted_at: consent.tos_accepted_at,
-              tos_version: consent.tos_version,
-            })
-            .eq("id", user.id);
-          localStorage.removeItem("readee-tos-consent");
+          // Write to DB when profile exists.
+          if (profile) {
+            await supabase
+              .from("profiles")
+              .update({
+                tos_accepted_at: consent.tos_accepted_at,
+                tos_version: consent.tos_version,
+              })
+              .eq("id", user.id);
+            localStorage.removeItem(TOS_LOCAL_STORAGE_KEY);
+          }
           setStatus("accepted");
           return;
         }
       } catch {
-        localStorage.removeItem("readee-tos-consent");
+        localStorage.removeItem(TOS_LOCAL_STORAGE_KEY);
       }
     }
 
     // No profile row yet (brand-new Google OAuth user before onboarding)
     if (!profile) {
+      localStorage.setItem(PROFILE_MISSING_CACHE_KEY, "1");
       setStatus("needs-consent");
       return;
     }
@@ -81,18 +96,40 @@ export default function TosGate({ children }: { children: ReactNode }) {
 
     const supabase = createClient();
     const now = new Date().toISOString();
+    const consentPayload = { tos_accepted_at: now, tos_version: CURRENT_TOS_VERSION };
+    let saved = false;
 
-    await supabase
-      .from("profiles")
-      .update({
-        tos_accepted_at: now,
-        tos_version: CURRENT_TOS_VERSION,
-      })
-      .eq("id", userId);
+    if (localStorage.getItem(PROFILE_MISSING_CACHE_KEY) !== "1") {
+      const { error } = await supabase
+        .from("profiles")
+        .update(consentPayload)
+        .eq("id", userId);
+
+      if (!error) {
+        saved = true;
+      } else if (isNoRowError(error)) {
+        localStorage.setItem(PROFILE_MISSING_CACHE_KEY, "1");
+      } else {
+        console.error("Failed to save ToS consent:", error);
+      }
+    }
+
+    if (!saved) {
+      localStorage.setItem(TOS_LOCAL_STORAGE_KEY, JSON.stringify(consentPayload));
+    } else {
+      localStorage.removeItem(TOS_LOCAL_STORAGE_KEY);
+    }
 
     setStatus("accepted");
     setSaving(false);
   }
+
+  useEffect(() => {
+    const timerId = window.setTimeout(() => {
+      void checkConsent();
+    }, 0);
+    return () => window.clearTimeout(timerId);
+  }, []);
 
   if (status === "loading") {
     return (

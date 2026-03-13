@@ -185,6 +185,7 @@ export function generateMissingWord(
     sentenceWords: displayWords.map(capitalize),
     blankIndex: s.blank,
     missingChoices: choices.map(capitalize),
+    correct: capitalize(correctWord),
     sentenceHint: s.hint,
     sentenceAudioUrl: sentenceAudioUrl(s.words),
   };

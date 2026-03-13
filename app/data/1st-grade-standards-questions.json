@@ -1696,7 +1696,13 @@
           "hint": "Say 'map' slowly — what sound comes first?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2c/RF.1.2c-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2c/RF.1.2c-Q1-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2c/RF.1.2c-Q1-hint.mp3",
+          "choices_audio_urls": [
+            "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/phonemes/p.mp3",
+            "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/phonemes/short_a.mp3",
+            "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/phonemes/m.mp3",
+            "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/phonemes/s.mp3"
+          ]
         },
         {
           "id": "RF.1.2c-Q2",
@@ -1712,23 +1718,35 @@
           "hint": "Say b-i-g slowly — what sound is in the middle?",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2c/RF.1.2c-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2c/RF.1.2c-Q2-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2c/RF.1.2c-Q2-hint.mp3",
+          "choices_audio_urls": [
+            "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/phonemes/short_a.mp3",
+            "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/phonemes/short_i.mp3",
+            "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/phonemes/b.mp3",
+            "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/phonemes/g.mp3"
+          ]
         },
         {
           "id": "RF.1.2c-Q3",
           "type": "multiple_choice",
           "prompt": "What is the LAST sound in the word **cup**?",
           "choices": [
-            "/c/",
             "/k/",
             "/u/",
-            "/p/"
+            "/p/",
+            "/t/"
           ],
           "correct": "/p/",
           "hint": "Say 'cup' — what sound do you hear at the very end?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2c/RF.1.2c-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2c/RF.1.2c-Q3-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2c/RF.1.2c-Q3-hint.mp3",
+          "choices_audio_urls": [
+            "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/phonemes/k.mp3",
+            "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/phonemes/short_u.mp3",
+            "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/phonemes/p.mp3",
+            "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/phonemes/t.mp3"
+          ]
         },
         {
           "id": "RF.1.2c-Q4",

@@ -7,43 +7,180 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import { z } from 'zod';
 import { supabaseAdmin } from '@/lib/supabase/admin';
 
 function getResend() {
   return new Resend(process.env.RESEND_API_KEY);
 }
 
-const CORS_HEADERS = {
-  'Access-Control-Allow-Origin': '*',
+const DEFAULT_ALLOWED_ORIGINS = [
+  'https://learn.readee.app',
+  'https://readee.app',
+  'https://www.readee.app',
+  'http://localhost:3000',
+  'http://127.0.0.1:3000',
+];
+
+const SIGNUP_WINDOW_MS = 60 * 60 * 1000; // 1 hour
+const EMAIL_WINDOW_MS = 24 * 60 * 60 * 1000; // 24 hours
+const MAX_PER_IP_PER_HOUR = 5;
+const MAX_PER_EMAIL_PER_DAY = 3;
+
+const BASE_CORS_HEADERS = {
   'Access-Control-Allow-Methods': 'POST, OPTIONS',
   'Access-Control-Allow-Headers': 'Content-Type',
 };
 
-export async function OPTIONS() {
-  return new NextResponse(null, { status: 204, headers: CORS_HEADERS });
+const signupSchema = z.object({
+  role: z.enum(['parent', 'teacher']),
+  first_name: z.string().trim().min(1).max(80),
+  last_name: z.string().trim().min(1).max(80),
+  email: z.email().max(254).transform((v) => v.trim().toLowerCase()),
+  school_name: z.string().trim().max(160).optional().nullable(),
+  grades: z.array(z.string().trim().max(30)).max(8).optional().nullable(),
+  class_size: z.union([z.number().int().min(1).max(500), z.string().trim().max(30)]).optional().nullable(),
+  notes: z.string().trim().max(2000).optional().nullable(),
+  children: z.array(z.object({
+    name: z.string().trim().min(1).max(80).optional(),
+    grade: z.string().trim().max(30).optional().nullable(),
+  })).max(5).optional().nullable(),
+  captcha_token: z.string().trim().max(4096).optional(),
+  website: z.string().optional(), // honeypot
+});
+
+type TurnstileResponse = {
+  success: boolean;
+  "error-codes"?: string[];
+};
+
+function getAllowedOrigins(): string[] {
+  const raw = process.env.SIGNUPS_ALLOWED_ORIGINS;
+  if (!raw) return DEFAULT_ALLOWED_ORIGINS;
+  return raw.split(',').map((v) => v.trim()).filter(Boolean);
+}
+
+function getOrigin(request: NextRequest): string {
+  const origin = request.headers.get('origin');
+  return origin && origin !== 'null' ? origin : '';
+}
+
+function buildCorsHeaders(origin: string) {
+  const allowed = getAllowedOrigins();
+  const isAllowed = origin && allowed.includes(origin);
+  return {
+    ...BASE_CORS_HEADERS,
+    'Vary': 'Origin',
+    ...(isAllowed ? { 'Access-Control-Allow-Origin': origin } : {}),
+  };
+}
+
+function getClientIp(request: NextRequest): string {
+  const xff = request.headers.get('x-forwarded-for');
+  if (xff) return xff.split(',')[0].trim();
+  return request.headers.get('x-real-ip')?.trim() || '';
+}
+
+async function verifyTurnstileToken(token: string | undefined, remoteIp: string): Promise<boolean> {
+  const secret = process.env.TURNSTILE_SECRET_KEY;
+  // If Turnstile is not configured, do not block non-production environments.
+  if (!secret) {
+    return process.env.NODE_ENV !== 'production';
+  }
+  if (!token) return false;
+
+  const payload = new URLSearchParams();
+  payload.append('secret', secret);
+  payload.append('response', token);
+  if (remoteIp) payload.append('remoteip', remoteIp);
+
+  const verifyRes = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: payload,
+  });
+
+  if (!verifyRes.ok) return false;
+  const data = (await verifyRes.json()) as TurnstileResponse;
+  return Boolean(data.success);
+}
+
+export async function OPTIONS(request: NextRequest) {
+  const origin = getOrigin(request);
+  return new NextResponse(null, { status: 204, headers: buildCorsHeaders(origin) });
 }
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
-
-    const { role, first_name, last_name, email } = body;
-
-    if (!role || !first_name || !last_name || !email) {
+    const origin = getOrigin(request);
+    const corsHeaders = buildCorsHeaders(origin);
+    if (!corsHeaders['Access-Control-Allow-Origin']) {
       return NextResponse.json(
-        { success: false, error: 'Missing required fields: role, first_name, last_name, email' },
-        { status: 400, headers: CORS_HEADERS }
+        { success: false, error: 'Origin not allowed' },
+        { status: 403, headers: corsHeaders }
       );
     }
 
-    if (!['parent', 'teacher'].includes(role)) {
+    const parsed = signupSchema.safeParse(await request.json());
+    if (!parsed.success) {
       return NextResponse.json(
-        { success: false, error: 'Invalid role. Must be parent or teacher' },
-        { status: 400, headers: CORS_HEADERS }
+        { success: false, error: 'Invalid signup payload' },
+        { status: 400, headers: corsHeaders }
+      );
+    }
+    const body = parsed.data;
+    const { role, first_name, last_name, email } = body;
+
+    // Honeypot for basic bot traffic
+    if (body.website && body.website.trim().length > 0) {
+      return NextResponse.json({ success: true }, { status: 202, headers: corsHeaders });
+    }
+
+    const sourceIp = getClientIp(request);
+    const userAgent = request.headers.get('user-agent') || null;
+    const captchaOk = await verifyTurnstileToken(body.captcha_token, sourceIp);
+    if (!captchaOk) {
+      return NextResponse.json(
+        { success: false, error: 'Captcha verification failed.' },
+        { status: 400, headers: corsHeaders }
       );
     }
 
     const admin = supabaseAdmin();
+    const ipSince = new Date(Date.now() - SIGNUP_WINDOW_MS).toISOString();
+    const emailSince = new Date(Date.now() - EMAIL_WINDOW_MS).toISOString();
+
+    if (sourceIp) {
+      const { count: recentByIp, error: ipLimitError } = await admin
+        .from('signups')
+        .select('id', { count: 'exact', head: true })
+        .eq('source_ip', sourceIp)
+        .gte('created_at', ipSince);
+
+      if (ipLimitError) {
+        console.error('Error checking IP rate limit:', ipLimitError);
+      } else if ((recentByIp ?? 0) >= MAX_PER_IP_PER_HOUR) {
+        return NextResponse.json(
+          { success: false, error: 'Too many requests. Please try again later.' },
+          { status: 429, headers: corsHeaders }
+        );
+      }
+    }
+
+    const { count: recentByEmail, error: emailLimitError } = await admin
+      .from('signups')
+      .select('id', { count: 'exact', head: true })
+      .eq('email', email)
+      .gte('created_at', emailSince);
+
+    if (emailLimitError) {
+      console.error('Error checking email rate limit:', emailLimitError);
+    } else if ((recentByEmail ?? 0) >= MAX_PER_EMAIL_PER_DAY) {
+      return NextResponse.json(
+        { success: false, error: 'Too many submissions for this email. Please try again tomorrow.' },
+        { status: 429, headers: corsHeaders }
+      );
+    }
 
     const { data, error } = await admin
       .from('signups')
@@ -57,6 +194,8 @@ export async function POST(request: NextRequest) {
         class_size: body.class_size ?? null,
         notes: body.notes ?? null,
         children: body.children ?? null,
+        source_ip: sourceIp || null,
+        user_agent: userAgent,
       })
       .select()
       .single();
@@ -65,7 +204,7 @@ export async function POST(request: NextRequest) {
       console.error('Error inserting signup:', error);
       return NextResponse.json(
         { success: false, error: 'Failed to save signup' },
-        { status: 500, headers: CORS_HEADERS }
+        { status: 500, headers: corsHeaders }
       );
     }
 
@@ -385,16 +524,18 @@ export async function POST(request: NextRequest) {
         signup: data,
         ...(existingAccount && { message: 'An account with this email already exists. You can log in with your existing account.' }),
       },
-      { status: 201, headers: CORS_HEADERS }
+      { status: 201, headers: corsHeaders }
     );
   } catch (error) {
     console.error('Error processing signup:', error);
+    const origin = getOrigin(request);
+    const corsHeaders = buildCorsHeaders(origin);
     return NextResponse.json(
       {
         success: false,
         error: error instanceof Error ? error.message : 'Internal server error',
       },
-      { status: 500, headers: CORS_HEADERS }
+      { status: 500, headers: corsHeaders }
     );
   }
 }

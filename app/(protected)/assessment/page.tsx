@@ -83,7 +83,17 @@ function AssessmentContent() {
     msg: string;
     emoji: string;
   }>({ show: false, isCorrect: false, msg: "", emoji: "" });
-  const { playCorrectChime, playIncorrectBuzz } = useAudio();
+  const { playCorrectChime, playIncorrectBuzz, playUrl } = useAudio();
+
+  const playWordAudio = useCallback((word: string) => {
+    const clean = word.replace(/[^a-zA-Z0-9 ]/g, "").toLowerCase().replace(/\s+/g, "_");
+    if (!clean) return;
+    const base = process.env.NEXT_PUBLIC_SUPABASE_URL
+      ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audio`
+      : "";
+    const src = base ? `${base}/words/${clean}.mp3` : `/audio/words/${clean}.mp3`;
+    playUrl(src);
+  }, [playUrl]);
 
   // Load child data
   useEffect(() => {
@@ -414,6 +424,7 @@ function AssessmentContent() {
             onAnswer={(isCorrect) => advanceMatch(isCorrect)}
             onCorrectPlace={playCorrectChime}
             onIncorrectPlace={playIncorrectBuzz}
+            onPlayItem={playWordAudio}
           />
         )}
 
@@ -438,6 +449,7 @@ function AssessmentContent() {
             sentenceWords={mq.sentenceWords}
             blankIndex={mq.blankIndex}
             choices={mq.missingChoices}
+            correct={mq.correct || (mq.sentenceWords && mq.blankIndex !== undefined ? mq.sentenceWords[mq.blankIndex] : "")}
             sentenceHint={mq.sentenceHint}
             sentenceAudioUrl={mq.sentenceAudioUrl}
             answered={matchAnswered}

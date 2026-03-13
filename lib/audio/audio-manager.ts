@@ -24,7 +24,7 @@ class AudioManager {
   }
 
   /** Play audio from a URL via Howler with fade-in */
-  play(url: string): Promise<void> {
+  play(url: string, fadeMs = 300): Promise<void> {
     const { isMuted } = useAudioStore.getState();
     if (isMuted) return Promise.resolve();
 
@@ -43,7 +43,12 @@ class AudioManager {
       howl.off("end").off("loaderror").off("playerror");
 
       this.currentHowl = howl;
-      howl.volume(0);
+
+      if (fadeMs > 0) {
+        howl.volume(0);
+      } else {
+        howl.volume(1);
+      }
 
       howl.once("end", () => {
         if (this.currentHowl === howl) this.currentHowl = null;
@@ -59,7 +64,7 @@ class AudioManager {
       });
 
       howl.play();
-      howl.fade(0, 1, 300);
+      if (fadeMs > 0) howl.fade(0, 1, fadeMs);
     });
   }
 

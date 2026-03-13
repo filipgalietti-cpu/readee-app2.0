@@ -370,6 +370,7 @@ function QuestionCard({
                 sentenceWords={q.sentenceWords}
                 blankIndex={q.blankIndex}
                 choices={q.missingChoices}
+                correct={q.correct || q.sentenceWords[q.blankIndex]}
                 sentenceHint={q.sentenceHint}
                 sentenceAudioUrl={q.sentenceAudioUrl}
                 answered={false}

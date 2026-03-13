@@ -10,6 +10,15 @@ import { createProfile, profileExists, updateProfile } from '@/lib/db/repositori
 import { saveOnboardingPreferences } from '@/lib/db/repositories/onboarding';
 import { OnboardingCompleteRequest, OnboardingCompleteResponse } from '@/lib/db/types';
 
+function isMissingOnboardingPreferencesTableError(error: unknown): boolean {
+  if (!(error instanceof Error)) return false;
+  return (
+    error.message.includes("onboarding_preferences") ||
+    error.message.includes("PGRST205") ||
+    error.message.includes("42P01")
+  );
+}
+
 export async function POST(request: NextRequest) {
   try {
     // Get authenticated user
@@ -64,12 +73,21 @@ export async function POST(request: NextRequest) {
     // Save onboarding preferences if provided
     let preferences = undefined;
     if (body.favoriteColor || body.favoriteColorHex || body.interests) {
-      preferences = await saveOnboardingPreferences({
-        userId: user.id,
-        favoriteColor: body.favoriteColor,
-        favoriteColorHex: body.favoriteColorHex,
-        interests: body.interests,
-      });
+      try {
+        preferences = await saveOnboardingPreferences({
+          userId: user.id,
+          favoriteColor: body.favoriteColor,
+          favoriteColorHex: body.favoriteColorHex,
+          interests: body.interests,
+        });
+      } catch (error) {
+        // Keep onboarding flow unblocked even if a deployment is missing this table.
+        if (isMissingOnboardingPreferencesTableError(error)) {
+          console.warn('Skipping onboarding_preferences save: table is missing in current database schema');
+        } else {
+          throw error;
+        }
+      }
     }
     
     const response: OnboardingCompleteResponse = {

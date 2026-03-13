@@ -22,6 +22,8 @@ type Standard = {
     difficulty: number;
     audio_url?: string;
     hint_audio_url?: string;
+    passage_audio_url?: string;
+    choices_audio_urls?: (string | null)[];
     words?: string[];
     sentence_hint?: string;
     sentence_audio_url?: string;

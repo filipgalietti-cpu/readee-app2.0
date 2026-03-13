@@ -2,21 +2,33 @@ import { z } from "zod";
 
 export const QuestionSchema = z.object({
   id: z.string(),
-  type: z.string(),                           // "multiple_choice" | "sentence_build"
+  type: z.string(),
   prompt: z.string(),
-  choices: z.array(z.string()).optional(),     // not used by sentence_build
+  choices: z.array(z.string()).optional(),
   correct: z.string(),
   hint: z.string(),
   difficulty: z.number(),
   audio_url: z.string().optional(),
   hint_audio_url: z.string().optional(),
-  words: z.array(z.string()).optional(),       // scrambled word chips for sentence_build
-  sentence_hint: z.string().optional(),        // contextual hint for sentence_build
-  sentence_audio_url: z.string().optional(),  // audio of completed sentence
-  categories: z.array(z.string()).optional(),  // bucket names for category_sort
-  category_items: z.record(z.string(), z.array(z.string())).optional(), // correct mapping
-  items: z.array(z.string()).optional(),       // flat shuffled list for category_sort
-});
+  passage_audio_url: z.string().optional(),
+  choices_audio_urls: z.array(z.union([z.string(), z.null()])).optional(),
+  words: z.array(z.string()).optional(),
+  sentence_hint: z.string().optional(),
+  sentence_audio_url: z.string().optional(),
+  categories: z.array(z.string()).optional(),
+  category_items: z.record(z.string(), z.array(z.string())).optional(),
+  items: z.array(z.string()).optional(),
+  left_items: z.array(z.string()).optional(),
+  right_items: z.array(z.string()).optional(),
+  correct_pairs: z.record(z.string(), z.string()).optional(),
+  target_word: z.string().optional(),
+  phonemes: z.array(z.string()).optional(),
+  distractors: z.array(z.string()).optional(),
+  sentence_words: z.array(z.string()).optional(),
+  missing_choices: z.array(z.string()).optional(),
+  blank_index: z.number().optional(),
+  jumbled: z.string().optional(),              // space_insertion: no-space string
+}).passthrough();                               // preserve any future fields
 
 export const StandardSchema = z.object({
   standard_id: z.string(),

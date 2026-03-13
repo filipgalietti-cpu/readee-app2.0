@@ -100,7 +100,7 @@ function sleep(ms) {
 function progressBar(completed, total, failures) {
   const width = 30;
   const pct = total > 0 ? completed / total : 0;
-  const filled = Math.round(width * pct);
+  const filled = Math.min(width, Math.round(width * pct));
   const bar = "█".repeat(filled) + "░".repeat(width - filled);
   const pctStr = (pct * 100).toFixed(1).padStart(5);
   const failStr = failures > 0 ? ` | ${failures} failed` : "";
@@ -143,8 +143,9 @@ async function processCSV(csvName, progress, state) {
   const rows = parseCSV(csvContent);
   const total = rows.length;
   let failures = 0;
+  let completed = 0;
   console.log(`\n--- ${csvName}: ${total} prompts ---\n`);
-  progressBar(progress.completed.length, total, 0);
+  progressBar(0, total, 0);
 
   for (let i = 0; i < rows.length; i++) {
     if (state.requestCount >= MAX_REQUESTS) {
@@ -160,11 +161,15 @@ async function processCSV(csvName, progress, state) {
 
     // Skip if already exists on disk
     if (fs.existsSync(outPath)) {
+      completed++;
+      progressBar(completed, total, failures);
       continue;
     }
 
     // Skip if marked complete in progress
     if (progress.completed.includes(key)) {
+      completed++;
+      progressBar(completed, total, failures);
       continue;
     }
 
@@ -179,8 +184,9 @@ async function processCSV(csvName, progress, state) {
       saveProgress(progress);
       state.requestCount++;
       state.consecutiveRateLimits = 0;
+      completed++;
 
-      progressBar(progress.completed.length, total, failures);
+      progressBar(completed, total, failures);
     } catch (err) {
       const msg = err.message || "";
       if (msg.includes("429") || msg.includes("RESOURCE_EXHAUSTED")) {
@@ -196,7 +202,8 @@ async function processCSV(csvName, progress, state) {
         continue;
       }
       failures++;
-      progressBar(progress.completed.length, total, failures);
+      completed++;
+      progressBar(completed, total, failures);
     }
 
     // Delay between requests

@@ -28,6 +28,7 @@ export interface MatchingQuestion {
   sentenceWords?: string[];   // Full sentence as word array, e.g. ["The", "Dog", "Can", "Run"]
   blankIndex?: number;        // Which word is blanked out
   missingChoices?: string[];  // 4 choices (shuffled, including correct)
+  correct?: string;           // The correct answer
 }
 
 export interface GradeAssessment {

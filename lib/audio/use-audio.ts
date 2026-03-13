@@ -15,10 +15,10 @@ export function useAudio() {
   }, []);
 
   const playUrl = useCallback(
-    (url: string) => {
+    (url: string, fadeMs?: number) => {
       if (!audioManager) return;
       setIsSpeaking(true);
-      audioManager.play(url).finally(() => {
+      audioManager.play(url, fadeMs).finally(() => {
         if (mountedRef.current) setIsSpeaking(false);
       });
     },
