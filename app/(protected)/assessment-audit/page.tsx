@@ -171,22 +171,25 @@ export default function AssessmentAuditPage() {
   }, [goPrev, goNext]);
 
   // Audio playback
+  const playingUrlRef = useRef<string | null>(null);
   const playAudio = useCallback((url: string) => {
     if (audioRef.current) {
       audioRef.current.pause();
       audioRef.current = null;
     }
-    if (playingUrl === url) {
+    if (playingUrlRef.current === url) {
+      playingUrlRef.current = null;
       setPlayingUrl(null);
       return;
     }
     const audio = new Audio(url);
     audioRef.current = audio;
+    playingUrlRef.current = url;
     setPlayingUrl(url);
-    audio.onended = () => { setPlayingUrl(null); audioRef.current = null; };
-    audio.onerror = () => { setPlayingUrl(null); audioRef.current = null; };
-    audio.play().catch(() => { setPlayingUrl(null); audioRef.current = null; });
-  }, [playingUrl]);
+    audio.onended = () => { playingUrlRef.current = null; setPlayingUrl(null); audioRef.current = null; };
+    audio.onerror = () => { playingUrlRef.current = null; setPlayingUrl(null); audioRef.current = null; };
+    audio.play().catch(() => { playingUrlRef.current = null; setPlayingUrl(null); audioRef.current = null; });
+  }, []);
 
   // Stop audio on question change
   useEffect(() => {
