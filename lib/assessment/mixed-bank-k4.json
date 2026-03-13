@@ -50,7 +50,7 @@
         "prompt": "Where did Mia find the ball?",
         "choices": ["in a box", "under the bed", "at school", "in the yard"],
         "correct": "under the bed",
-        "imagePromptOverride": "Cartoon picture of a red ball under a wooden bed in a cozy bedroom. A child peeks under the bed. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names."
+        "imagePromptOverride": "Cartoon picture of a girl looking underneath a bed in a cozy bedroom, searching for something. A red ball is visible under the bed. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "K_H_06",
@@ -60,9 +60,9 @@
         "stimulus": "Ben was sad because his kite ripped. Mom helped him fix it. Ben smiled.",
         "stimulus_type": "sentence",
         "prompt": "How did Ben feel at the end?",
-        "choices": ["sad", "angry", "happy", "scared"],
-        "correct": "happy",
-        "imagePromptOverride": "Cartoon picture of a boy with a ripped kite looking sad, then his mom helping fix it, then the boy smiling. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names."
+        "choices": ["Sad", "Angry", "Happy", "Scared"],
+        "correct": "Happy",
+        "imagePromptOverride": "Cartoon picture of a boy and his mom fixing a colorful kite together in a sunny park, both smiling. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "K_I_07",
@@ -76,10 +76,10 @@
           "Colors": "Colors are words that name a color, like red or blue."
         },
         "categoryItems": {
-          "Animals": ["cat", "dog"],
-          "Colors": ["red", "blue"]
+          "Animals": ["cat", "dog", "fish"],
+          "Colors": ["red", "blue", "green"]
         },
-        "items": ["blue", "cat", "dog", "red"]
+        "items": ["blue", "cat", "fish", "green", "dog", "red"]
       },
       {
         "id": "K_I_08",
@@ -93,10 +93,10 @@
           "Toys": "Toys are things you play with."
         },
         "categoryItems": {
-          "Food": ["apple", "bread"],
-          "Toys": ["ball", "kite"]
+          "Food": ["apple", "bread", "cookie"],
+          "Toys": ["ball", "kite", "doll"]
         },
-        "items": ["kite", "bread", "apple", "ball"]
+        "items": ["kite", "bread", "doll", "apple", "cookie", "ball"]
       },
       {
         "id": "K_I_09",
@@ -136,7 +136,8 @@
         "standard": "L.K.1f",
         "prompt": "Put the words in order.",
         "words": ["is", "hot", "The", "sun"],
-        "correctSentence": "The sun is hot"
+        "correctSentence": "The sun is hot",
+        "imagePromptOverride": "Cartoon picture of a bright yellow sun shining in a clear blue sky. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       }
     ],
     "1st": [
@@ -160,7 +161,7 @@
         "prompt": "What did Lina do every day?",
         "choices": ["picked the flower", "watered the seed", "moved the pot", "cut the plant"],
         "correct": "watered the seed",
-        "imagePromptOverride": "Cartoon picture of a girl planting a seed and watering it, with a flower growing in a pot. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names."
+        "imagePromptOverride": "Cartoon picture of a happy girl planting flowers in a garden, smiling while watering them with a watering can. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "G1_E_03",
@@ -169,7 +170,8 @@
         "standard": "RF.1.3a",
         "prompt": "Which word starts with sh?",
         "choices": ["ship", "sip", "chip", "slip"],
-        "correct": "ship"
+        "correct": "ship",
+        "imagePromptOverride": "Cartoon picture of a colorful ship sailing on blue ocean waves under a sunny sky. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "G1_E_04",
@@ -179,19 +181,20 @@
         "ttsIntro": "Opposites are words that mean different things, like hot and cold.",
         "prompt": "Which two words are opposites?",
         "choices": ["hot/cold", "run/jog", "happy/glad", "big/large"],
-        "correct": "hot/cold"
+        "correct": "hot/cold",
+        "imagePromptOverride": "Cartoon picture of two scenes side by side, one child sweating in summer heat with a bright sun, and one child bundled up in winter cold with snowflakes. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "G1_H_05",
         "type": "mcq",
         "difficulty": "hard",
         "standard": "RL.1.2",
-        "stimulus": "Tom forgot to feed his fish. He made a chart to remember. Now he feeds it daily.",
+        "stimulus": "Max forgot to feed his fish. He made a chart to remember. Now he feeds it daily.",
         "stimulus_type": "sentence",
-        "prompt": "What lesson did Tom learn?",
+        "prompt": "What lesson did Max learn?",
         "choices": ["Fish don't need food", "It helps to remember responsibilities", "Charts are only for school", "Pets are too hard"],
         "correct": "It helps to remember responsibilities",
-        "imagePromptOverride": "Cartoon picture of a boy looking at a feeding chart on the wall next to a goldfish bowl with a happy fish. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names."
+        "imagePromptOverride": "Cartoon picture of a boy looking at a feeding chart on the wall next to a goldfish bowl with a happy fish. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "G1_H_06",
@@ -299,7 +302,8 @@
         "stimulus_type": "sentence",
         "prompt": "What is the main topic?",
         "choices": ["frog life cycle", "bird migration", "fish habitats", "plant roots"],
-        "correct": "frog life cycle"
+        "correct": "frog life cycle",
+        "imagePromptOverride": "Cartoon picture of a happy green frog sitting on a lily pad in a pond, smiling. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "G2_E_03",
@@ -316,10 +320,11 @@
         "type": "mcq",
         "difficulty": "easy",
         "standard": "L.2.5a",
-        "ttsIntro": "A synonym is a word that means the same as another word.",
+        "ttsIntro": "A synonym is a word that means the same thing as another word. For example, big and large are synonyms.",
         "prompt": "Which is a synonym for quick?",
         "choices": ["slow", "fast", "loud", "tiny"],
-        "correct": "fast"
+        "correct": "fast",
+        "imagePromptOverride": "Cartoon picture of a child sitting comfortably and reading a colorful book with a happy expression. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "G2_H_05",
@@ -340,7 +345,8 @@
         "prompt": "Which text feature helps you find topics with page numbers?",
         "choices": ["caption", "glossary", "index", "heading"],
         "correct": "index",
-        "hint": "Think about which part of a book lists topics and their page numbers."
+        "hint": "Think about which part of a book lists topics and their page numbers.",
+        "imagePromptOverride": "Cartoon picture of a child sitting at a desk with a finger on their chin, looking curious and thoughtful. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "G2_I_07",
@@ -427,18 +433,20 @@
         "stimulus_type": "sentence",
         "prompt": "How do penguins stay warm?",
         "choices": ["They wear fur coats", "They have blubber and waterproof feathers", "They sleep underground", "They flap constantly"],
-        "correct": "They have blubber and waterproof feathers"
+        "correct": "They have blubber and waterproof feathers",
+        "imagePromptOverride": "Cartoon picture of a cute fluffy penguin standing on ice, looking happy. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "G3_M_02",
         "type": "mcq",
         "difficulty": "medium",
         "standard": "RL.3.1",
-        "stimulus": "Jalen stared at the dark cave entrance. His hands shook, but he stepped forward to help his friend.",
+        "stimulus": "The boy stared at the dark cave entrance. His hands shook, but he stepped forward to help his friend.",
         "stimulus_type": "sentence",
-        "prompt": "Which detail best shows Jalen is brave?",
+        "prompt": "Which detail best shows the boy is brave?",
         "choices": ["The cave is dark", "His hands shook", "He stepped forward to help", "He stared at the entrance"],
-        "correct": "He stepped forward to help"
+        "correct": "He stepped forward to help",
+        "imagePromptOverride": "Cartoon picture of a brave child standing at the entrance of a dark cave, looking determined. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "G3_E_03",
@@ -481,7 +489,7 @@
         "prompt": "What is the main idea?",
         "choices": ["Plastic is always bad", "Recycling reduces waste by reusing materials", "Only paper can recycle", "Metal is expensive"],
         "correct": "Recycling reduces waste by reusing materials",
-        "imagePromptOverride": "Cartoon picture of children happily sorting colorful recycling bins labeled with pictures of paper, plastic bottles, and metal cans in a sunny schoolyard. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names."
+        "imagePromptOverride": "Cartoon picture of a colorful recycling bin with a recycling symbol on it. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "G3_I_07",
@@ -570,7 +578,7 @@
         "prompt": "Which statement is supported by the text?",
         "choices": ["Solar panels work only at night", "Solar panels create heavy smoke", "Solar panels generate electricity without direct air pollution while operating", "Solar panels are always cheapest"],
         "correct": "Solar panels generate electricity without direct air pollution while operating",
-        "imagePromptOverride": "Cartoon picture of shiny blue solar panels on a rooftop under a bright yellow sun with clean energy rays beaming down. A happy family looks up at the panels. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names."
+        "imagePromptOverride": "Cartoon picture of a house with blue solar panels on the roof under a bright sunny sky. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "G4_M_02",
@@ -598,20 +606,24 @@
         "type": "mcq",
         "difficulty": "easy",
         "standard": "L.4.5b",
-        "ttsIntro": "A metaphor says something is something else, without using like or as.",
+        "ttsIntro": "A metaphor is when you say something is something else, without using the words like or as. For example, time is money is a metaphor.",
         "prompt": "Which sentence uses a metaphor?",
         "choices": ["She ran like the wind", "Her ideas were seeds", "The rain was cold", "We walked home"],
         "correct": "Her ideas were seeds",
-        "hint": "A metaphor says something IS something else. Which sentence compares two things without using like or as?"
+        "hint": "A metaphor says something IS something else. Which sentence compares two things without using like or as?",
+        "imagePromptOverride": "Cartoon picture of a child sitting at a desk reading a book with a thoughtful expression and a lightbulb above their head. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "G4_H_05",
         "type": "mcq",
         "difficulty": "hard",
         "standard": "RI.4.9",
-        "prompt": "Text A says city trees reduce heat. Text B says city trees improve air quality. What is the best synthesis?",
-        "choices": ["Trees are decorative only", "Trees provide multiple environmental benefits", "Heat and air quality are unrelated", "City trees are harmful"],
-        "correct": "Trees provide multiple environmental benefits"
+        "stimulus": "Text A: City trees provide shade that cools streets and buildings, reducing heat. Text B: City trees filter the air, removing pollutants and producing fresh oxygen.",
+        "stimulus_type": "sentence",
+        "prompt": "Based on both texts, what is the best conclusion about city trees?",
+        "choices": ["Trees are just for decoration", "Trees provide multiple environmental benefits", "Heat and air quality are not connected", "City trees cause problems"],
+        "correct": "Trees provide multiple environmental benefits",
+        "imagePromptOverride": "Cartoon picture of a city street lined with big green trees providing shade, with a bright sunny sky. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "G4_H_06",
@@ -678,7 +690,8 @@
         "sentenceWords": ["The", "evidence", "was", "___", "and", "clear"],
         "blankIndex": 3,
         "missingChoices": ["convincing", "purple", "silent", "tiny"],
-        "correctSentence": "The evidence was convincing and clear"
+        "correctSentence": "The evidence was convincing and clear",
+        "imagePromptOverride": "Cartoon picture of a student confidently presenting to classmates in a classroom. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "G4_I_11",
