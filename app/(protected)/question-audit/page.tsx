@@ -104,7 +104,7 @@ export default function QuestionAuditPage() {
   const [tab, setTab] = useState<FilterTab>("all");
   const [commentDraft, setCommentDraft] = useState<Record<string, string>>({});
   const [imgErrors, setImgErrors] = useState<Set<string>>(new Set());
-  const [useLocal, setUseLocal] = useState(true);
+  const [useLocal, setUseLocal] = useState(false);
   const [playingUrl, setPlayingUrl] = useState<string | null>(null);
   const audioUnlockedRef = useRef(false);
 
