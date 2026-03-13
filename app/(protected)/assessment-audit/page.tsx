@@ -11,9 +11,10 @@ import { MigrateLocalStorage } from "@/app/components/audit/MigrateLocalStorage"
 
 /* ── Types ────────────────────────────────────────────── */
 
-type QuestionType = "mcq" | "category_sort" | "missing_word" | "sentence_build";
+type QuestionType = "mcq" | "category_sort" | "missing_word" | "sentence_build" | "tap_to_pair";
 type GradeFilter = "all" | "kindergarten" | "1st" | "2nd" | "3rd" | "4th";
 type TypeFilter = "all" | QuestionType;
+
 type Rating = "good" | "flagged";
 
 interface AuditQuestion {
@@ -25,8 +26,12 @@ interface AuditQuestion {
   difficulty: string;
   prompt: string;
   stimulus: string;
+  stimulus2: string;
   choices: string[];
   categories: string[];
+  left_items: string[];
+  right_items: string[];
+  correct_pairs: Record<string, string>;
   categoryItems?: Record<string, string[]>;
   items: string[];
   sentence_words: string[];
@@ -52,7 +57,14 @@ function buildQuestions(): AuditQuestion[] {
 
   return (manifestRaw as any[]).map((m: any) => {
     const bankQ = bankLookup[m.id];
-    return { ...m, categoryItems: bankQ?.categoryItems ?? undefined };
+    return {
+      ...m,
+      categoryItems: bankQ?.categoryItems ?? undefined,
+      left_items: m.left_items ?? [],
+      right_items: m.right_items ?? [],
+      correct_pairs: m.correct_pairs ?? {},
+      stimulus2: m.stimulus2 ?? "",
+    };
   });
 }
 
@@ -75,6 +87,7 @@ const TYPE_LABELS: { key: TypeFilter; label: string }[] = [
   { key: "category_sort", label: "Category Sort" },
   { key: "missing_word", label: "Missing Word" },
   { key: "sentence_build", label: "Sentence Build" },
+  { key: "tap_to_pair", label: "Tap to Pair" },
 ];
 
 const TYPE_BADGE: Record<QuestionType, { bg: string; text: string }> = {
@@ -82,6 +95,7 @@ const TYPE_BADGE: Record<QuestionType, { bg: string; text: string }> = {
   category_sort: { bg: "bg-purple-100 dark:bg-purple-900/50", text: "text-purple-700 dark:text-purple-300" },
   missing_word: { bg: "bg-amber-100 dark:bg-amber-900/50", text: "text-amber-700 dark:text-amber-300" },
   sentence_build: { bg: "bg-emerald-100 dark:bg-emerald-900/50", text: "text-emerald-700 dark:text-emerald-300" },
+  tap_to_pair: { bg: "bg-pink-100 dark:bg-pink-900/50", text: "text-pink-700 dark:text-pink-300" },
 };
 
 const DIFFICULTY_BADGE: Record<string, string> = {
@@ -433,11 +447,29 @@ export default function AssessmentAuditPage() {
             </div>
 
             {/* Stimulus (if present) */}
-            {q.stimulus && (
+            {q.stimulus && !q.stimulus2 && (
               <div className="px-4 pt-3">
                 <div className="rounded-xl bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-700 p-4 text-center">
                   <p className="text-lg text-indigo-800 dark:text-indigo-200 leading-relaxed italic whitespace-pre-line">
                     {q.stimulus}
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {/* Dual text stimulus */}
+            {q.stimulus && q.stimulus2 && (
+              <div className="px-4 pt-3 space-y-2">
+                <div className="rounded-xl bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-700 p-4">
+                  <p className="text-xs font-bold text-indigo-500 dark:text-indigo-400 uppercase mb-1">Text A</p>
+                  <p className="text-base text-indigo-800 dark:text-indigo-200 leading-relaxed italic">
+                    {q.stimulus}
+                  </p>
+                </div>
+                <div className="rounded-xl bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-700 p-4">
+                  <p className="text-xs font-bold text-purple-500 dark:text-purple-400 uppercase mb-1">Text B</p>
+                  <p className="text-base text-purple-800 dark:text-purple-200 leading-relaxed italic">
+                    {q.stimulus2}
                   </p>
                 </div>
               </div>
@@ -449,6 +481,7 @@ export default function AssessmentAuditPage() {
               {q.type === "category_sort" && <CategorySortView q={q} />}
               {q.type === "missing_word" && <MissingWordView q={q} />}
               {q.type === "sentence_build" && <SentenceBuildView q={q} />}
+              {q.type === "tap_to_pair" && <TapToPairView q={q} />}
             </div>
 
             {/* Rating buttons */}
@@ -750,6 +783,64 @@ function MissingWordView({ q }: { q: AuditQuestion }) {
       <div className="text-center">
         <p className="text-xs font-semibold text-zinc-400 dark:text-slate-500 uppercase mb-1">Correct sentence</p>
         <p className="text-base font-medium text-zinc-700 dark:text-slate-300">{q.correct}</p>
+      </div>
+    </div>
+  );
+}
+
+/* ── Tap to Pair View ─────────────────────────────────── */
+
+function TapToPairView({ q }: { q: AuditQuestion }) {
+  const LEFT_COLOR = "bg-blue-50 border-blue-200 dark:bg-blue-900/30 dark:border-blue-700";
+  const RIGHT_COLOR = "bg-emerald-50 border-emerald-200 dark:bg-emerald-900/30 dark:border-emerald-700";
+
+  return (
+    <div className="space-y-3">
+      <div className="grid grid-cols-2 gap-4">
+        {/* Left column */}
+        <div className="space-y-2">
+          <p className="text-xs font-semibold text-zinc-400 dark:text-slate-500 uppercase text-center">Left</p>
+          {q.left_items.map((word) => (
+            <div
+              key={word}
+              className={`rounded-xl border-2 px-3 py-2.5 text-center text-sm font-semibold text-zinc-700 dark:text-slate-200 ${LEFT_COLOR}`}
+            >
+              {word}
+            </div>
+          ))}
+        </div>
+
+        {/* Right column */}
+        <div className="space-y-2">
+          <p className="text-xs font-semibold text-zinc-400 dark:text-slate-500 uppercase text-center">Right</p>
+          {q.right_items.map((word) => (
+            <div
+              key={word}
+              className={`rounded-xl border-2 px-3 py-2.5 text-center text-sm font-semibold text-zinc-700 dark:text-slate-200 ${RIGHT_COLOR}`}
+            >
+              {word}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Correct pairs */}
+      <div>
+        <p className="text-xs font-semibold text-zinc-400 dark:text-slate-500 uppercase mb-1.5">Correct Pairs</p>
+        <div className="space-y-1.5">
+          {Object.entries(q.correct_pairs).map(([left, right]) => (
+            <div
+              key={left}
+              className="flex items-center justify-center gap-2 rounded-xl border-2 border-emerald-300 bg-emerald-50 dark:bg-emerald-900/20 dark:border-emerald-600 px-3 py-2"
+            >
+              <span className="text-sm font-bold text-emerald-700 dark:text-emerald-300">{left}</span>
+              <svg className="w-4 h-4 text-emerald-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+              </svg>
+              <span className="text-sm font-bold text-emerald-700 dark:text-emerald-300">{right}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

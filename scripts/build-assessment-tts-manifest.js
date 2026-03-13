@@ -173,6 +173,11 @@ function buildImagePrompt(item) {
     return "";
   }
 
+  // Tap to pair → use override or no image
+  if (item.type === "tap_to_pair") {
+    return "";
+  }
+
   // Missing word → illustrate the sentence context
   if (item.type === "missing_word") {
     const choices = Array.isArray(item.missingChoices) ? item.missingChoices : [];
@@ -214,27 +219,41 @@ function buildMCQ_SSML(item) {
     ssml += "<break time='400ms'/>";
   }
 
+  // Second stimulus for dual_text
+  if (item.stimulus2) {
+    const escaped2 = speakText(item.stimulus2);
+    const endsWithPunctuation2 = /[.!?]["']?$/.test(escaped2.trim());
+    ssml += ` ${escaped2}${endsWithPunctuation2 ? "" : "."}`;
+    ssml += "<break time='400ms'/>";
+  }
+
   ssml += ` <emphasis level='moderate'>${speakText(item.prompt)}</emphasis>`;
   ssml += "<break time='400ms'/>";
 
-  const choices = Array.isArray(item.choices) ? item.choices : [];
-  // Detect single-letter choices → read as letter names via say-as
-  const allSingleChar = choices.length > 0 && choices.every((c) => c.length === 1);
-  choices.forEach((choice, i) => {
-    const spoken = allSingleChar
-      ? `<say-as interpret-as="characters">${escapeSSML(choice)}</say-as>`
-      : speakLabel(choice);
-    if (i < choices.length - 1) {
-      ssml += ` ${spoken}? <break time='400ms'/>`;
-    } else {
-      ssml += ` or ${spoken}? <break time='400ms'/>`;
-    }
-  });
+  if (!item.skipChoiceAudio) {
+    const choices = Array.isArray(item.choices) ? item.choices : [];
+    // Detect single-letter choices → read as letter names via say-as
+    const allSingleChar = choices.length > 0 && choices.every((c) => c.length === 1);
+    choices.forEach((choice, i) => {
+      const spoken = allSingleChar
+        ? `<say-as interpret-as="characters">${escapeSSML(choice)}</say-as>`
+        : speakLabel(choice);
+      if (i < choices.length - 1) {
+        ssml += ` ${spoken}? <break time='400ms'/>`;
+      } else {
+        ssml += ` or ${spoken}? <break time='400ms'/>`;
+      }
+    });
+  }
   ssml += " What do you think?</speak>";
   return applyFlowFix(ssml);
 }
 
 function buildCategorySort_SSML(item) {
+  if (item.ttsOverride) {
+    return applyFlowFix(`<speak>${escapeSSML(item.ttsOverride)}</speak>`);
+  }
+
   let ssml = "<speak>";
 
   ssml += ` <emphasis level='moderate'>${speakText(item.prompt)}</emphasis>`;
@@ -335,6 +354,20 @@ function buildSentenceBuild_SSML(item) {
   return applyFlowFix(ssml);
 }
 
+function buildTapToPair_SSML(item) {
+  let ssml = "<speak>";
+
+  if (item.ttsIntro) {
+    ssml += ` ${escapeSSML(item.ttsIntro)}`;
+    ssml += "<break time='400ms'/>";
+  }
+
+  ssml += ` <emphasis level='moderate'>${speakText(item.prompt)}</emphasis>`;
+  ssml += "<break time='400ms'/>";
+  ssml += " Tap a word on the left, then tap the matching word on the right.</speak>";
+  return applyFlowFix(ssml);
+}
+
 function buildQuestionSSML(item) {
   switch (item.type) {
     case "mcq":
@@ -345,6 +378,8 @@ function buildQuestionSSML(item) {
       return buildMissingWord_SSML(item);
     case "sentence_build":
       return buildSentenceBuild_SSML(item);
+    case "tap_to_pair":
+      return buildTapToPair_SSML(item);
     default:
       return `<speak>${speakText(item.prompt)}</speak>`;
   }
@@ -416,6 +451,8 @@ function buildHintSSML(item) {
       : "Read the sentence with each choice and pick the one that sounds right.";
   } else if (item.type === "sentence_build") {
     hint = "Which word sounds like it comes first? Start there and read it out loud.";
+  } else if (item.type === "tap_to_pair") {
+    hint = "Say each word out loud and listen for the ones that go together.";
   } else {
     hint = "Take your time and use the clues in the question.";
   }
@@ -472,8 +509,8 @@ function verifyManifest(manifest) {
       issues.push({ id: item.id, issue: "Empty SSML body" });
     }
 
-    // Image prompt sanity (category_sort doesn't need images)
-    if (!item.image_prompt && item.type !== "category_sort") {
+    // Image prompt sanity (category_sort and tap_to_pair don't need images)
+    if (!item.image_prompt && item.type !== "category_sort" && item.type !== "tap_to_pair") {
       issues.push({ id: item.id, issue: "Missing image prompt" });
     }
     if (item.image_url && !item.image_url.includes("/assessment/")) {
@@ -525,11 +562,15 @@ function main() {
         difficulty: item.difficulty,
         prompt: item.prompt,
         stimulus: item.stimulus || "",
+        stimulus2: item.stimulus2 || "",
         choices: collectChoices(item),
         categories: Array.isArray(item.categories) ? item.categories : [],
         items: Array.isArray(item.items) ? item.items : [],
         sentence_words: Array.isArray(item.sentenceWords) ? item.sentenceWords : [],
         words: Array.isArray(item.words) ? item.words : [],
+        left_items: Array.isArray(item.leftItems) ? item.leftItems : [],
+        right_items: Array.isArray(item.rightItems) ? item.rightItems : [],
+        correct_pairs: item.correctPairs || {},
         correct: item.correct || item.correctSentence || "",
         tts_ssml: ttsSSML,
         tts_voice_direction: grade.voiceDirection,
@@ -583,6 +624,10 @@ function main() {
       for (const word of m.items) {
         allWords.add(word);
       }
+    }
+    if (m.type === "tap_to_pair") {
+      for (const word of m.left_items) allWords.add(word);
+      for (const word of m.right_items) allWords.add(word);
     }
   }
 

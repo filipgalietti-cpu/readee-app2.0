@@ -9,39 +9,24 @@
         "difficulty": "medium",
         "standard": "RF.K.1d",
         "ttsIntro": "Let's find a letter! Look at each letter carefully.",
-        "prompt": "Which one is the letter M?",
+        "stimulus": "M",
+        "stimulus_type": "large_letter",
+        "prompt": "What letter do you see?",
         "choices": ["N", "M", "W", "H"],
         "correct": "M",
-        "imagePromptOverride": "Cartoon picture of a cheerful child pointing at colorful alphabet blocks. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
+        "skipChoiceAudio": true,
+        "imagePromptOverride": "Cartoon picture of a child looking at a big colorful letter on a classroom wall, pointing at it with a smile. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "K_M_02",
-        "type": "category_sort",
+        "type": "tap_to_pair",
         "difficulty": "medium",
         "standard": "RF.K.2a",
-        "prompt": "Sort the rhyming words.",
-        "categories": ["Rhyme with cat", "Rhyme with sun"],
-        "categoryDefinitions": {
-          "Rhyme with cat": "These words sound like cat at the end.",
-          "Rhyme with sun": "These words sound like sun at the end."
-        },
-        "categoryItems": {
-          "Rhyme with cat": ["hat", "bat"],
-          "Rhyme with sun": ["fun", "run"]
-        },
-        "items": ["hat", "fun", "bat", "run"],
-        "imagePromptOverride": "Cartoon picture of a cheerful child clapping and listening to words, with musical notes around them. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
-      },
-      {
-        "id": "K_E_03",
-        "type": "mcq",
-        "difficulty": "easy",
-        "standard": "RF.K.3b",
-        "ttsIntro": "Every letter makes a special sound. Listen carefully!",
-        "prompt": "Which letter makes the t sound?",
-        "choices": ["t", "m", "s", "b"],
-        "correct": "t",
-        "imagePromptOverride": "Cartoon picture of a cheerful child with a big smile, cupping a hand to their ear to listen. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
+        "prompt": "Match the rhyming words.",
+        "leftItems": ["cat", "sun"],
+        "rightItems": ["hat", "fun"],
+        "correctPairs": { "cat": "hat", "sun": "fun" },
+        "imagePromptOverride": "Cartoon picture of a cheerful child clapping and listening to rhyming words, with colorful musical notes floating around them. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "K_E_04",
@@ -59,6 +44,7 @@
           "Not Colors": ["run", "jump", "sing"]
         },
         "items": ["red", "run", "blue", "jump", "green", "sing"],
+        "ttsOverride": "Sort the words. Colors or Not Colors? Click each word to hear how it sounds.",
         "imagePromptOverride": "Cartoon picture of a rainbow with bright colors in a sunny sky. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
@@ -101,6 +87,7 @@
           "Colors": ["red", "blue", "green"]
         },
         "items": ["blue", "cat", "fish", "green", "dog", "red"],
+        "ttsOverride": "Sort the words. Animals or Colors? Click each word to hear how it sounds.",
         "imagePromptOverride": "Cartoon picture of a cat and a dog playing together next to colorful paint splashes. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
@@ -131,7 +118,8 @@
         "sentenceWords": ["_", "at"],
         "blankIndex": 0,
         "missingChoices": ["c", "m", "r", "s"],
-        "correctSentence": "c at"
+        "correctSentence": "c at",
+        "imagePromptOverride": "Cartoon picture of a cute penguin sitting and thinking with a finger on its chin, looking curious. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "K_I_10",
@@ -173,7 +161,8 @@
         "ttsIntro": "The short a sound is the a in words like cat and hat.",
         "prompt": "Which word has a short a sound?",
         "choices": ["cake", "map", "bike", "home"],
-        "correct": "map"
+        "correct": "map",
+        "imagePromptOverride": "Cartoon picture of a child sitting at a desk with headphones, listening carefully and thinking. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "G1_M_02",
@@ -195,24 +184,17 @@
         "prompt": "Which word starts with sh?",
         "choices": ["ship", "sip", "chip", "slip"],
         "correct": "ship",
-        "imagePromptOverride": "Cartoon picture of a colorful ship sailing on blue ocean waves under a sunny sky. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
+        "imagePromptOverride": "Cartoon picture of a child thinking with a thought bubble showing different objects. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "G1_E_04",
-        "type": "category_sort",
+        "type": "tap_to_pair",
         "difficulty": "easy",
         "standard": "L.1.5a",
-        "prompt": "Sort the word pairs.",
-        "categories": ["Opposites", "Synonyms"],
-        "categoryDefinitions": {
-          "Opposites": "Opposites are words that mean different things, like hot and cold.",
-          "Synonyms": "Synonyms are words that mean the same thing, like big and large."
-        },
-        "categoryItems": {
-          "Opposites": ["hot", "cold", "up", "down"],
-          "Synonyms": ["happy", "glad", "big", "large"]
-        },
-        "items": ["hot", "glad", "up", "big", "cold", "happy", "down", "large"],
+        "prompt": "Match the word pairs.",
+        "leftItems": ["hot", "happy", "big", "up"],
+        "rightItems": ["cold", "glad", "large", "down"],
+        "correctPairs": { "hot": "cold", "happy": "glad", "big": "large", "up": "down" },
         "imagePromptOverride": "Cartoon picture of two children side by side, one sweating in summer heat with a sun, and one bundled up in winter cold with snowflakes. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
@@ -272,7 +254,7 @@
           "Not Happy": ["sad", "upset"]
         },
         "items": ["glad", "sad", "upset", "joyful"],
-        "imagePromptOverride": "Cartoon picture of a child with different facial expressions showing happy, sad, and thoughtful emotions. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
+        "imagePromptOverride": "Cartoon picture of a child with different facial expressions showing various emotions, smiling and frowning. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "G1_I_09",
@@ -336,7 +318,7 @@
         "prompt": "What is the main topic?",
         "choices": ["frog life cycle", "bird migration", "fish habitats", "plant roots"],
         "correct": "frog life cycle",
-        "imagePromptOverride": "Cartoon picture of a happy green frog sitting on a lily pad in a pond, smiling. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
+        "imagePromptOverride": "Cartoon picture of a happy frog sitting on a lily pad in a pond with water lilies, smiling wide. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "G2_E_03",
@@ -368,7 +350,8 @@
         "stimulus_type": "sentence",
         "prompt": "What is the central message?",
         "choices": ["Crayons are messy", "Be kind to others", "Never share", "Always work alone"],
-        "correct": "Be kind to others"
+        "correct": "Be kind to others",
+        "imagePromptOverride": "Cartoon picture of two children helping each other pick up scattered crayons from the floor, both smiling. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "G2_H_06",
@@ -394,9 +377,9 @@
         },
         "categoryItems": {
           "Verbs": ["write", "climb", "draw"],
-          "Emotions": ["nervous", "happy", "proud"]
+          "Emotions": ["nervous", "excited", "proud"]
         },
-        "items": ["nervous", "climb", "draw", "happy", "proud", "write"],
+        "items": ["nervous", "climb", "draw", "excited", "proud", "write"],
         "imagePromptOverride": "Cartoon picture of a child climbing a tree with a happy expression. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
@@ -407,8 +390,8 @@
         "prompt": "Sort words by vowel sound.",
         "categories": ["Long a", "Short a"],
         "categoryDefinitions": {
-          "Long a": "A long a sounds like the a in rain or play.",
-          "Short a": "A short a sounds like the a in cat or map."
+          "Long a": "A long a sounds like the a in cake or day.",
+          "Short a": "A short a sounds like the a in bag or fan."
         },
         "categoryItems": {
           "Long a": ["rain", "play"],
@@ -469,7 +452,7 @@
         "prompt": "How do penguins stay warm?",
         "choices": ["They wear fur coats", "They have blubber and waterproof feathers", "They sleep underground", "They flap constantly"],
         "correct": "They have blubber and waterproof feathers",
-        "imagePromptOverride": "Cartoon picture of a cute fluffy penguin standing on ice, looking happy. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
+        "imagePromptOverride": "Cartoon picture of a cute penguin standing on ice with snowflakes falling, looking happy and warm. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "G3_M_02",
@@ -501,7 +484,8 @@
         "ttsIntro": "A simile is a way to compare two things using the words like or as. For example, he is as fast as a cheetah is a simile.",
         "prompt": "Which is a simile?",
         "choices": ["The wind whispered", "She ran like the wind", "The moon is a lantern", "The sun smiled"],
-        "correct": "She ran like the wind"
+        "correct": "She ran like the wind",
+        "imagePromptOverride": "Cartoon picture of a child running fast outdoors with wind blowing through their hair, looking excited. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "G3_H_05",
@@ -535,7 +519,7 @@
         "categories": ["re- (again)", "un- (not)"],
         "categoryDefinitions": {
           "re- (again)": "The prefix re means again. For example, redo means do again.",
-          "un- (not)": "The prefix un means not. For example, unfair means not fair."
+          "un- (not)": "The prefix un means not. For example, unkind means not kind."
         },
         "categoryItems": {
           "re- (again)": ["rewrite", "rebuild"],
@@ -592,7 +576,8 @@
         "ttsIntro": "A conjunction is a word that joins two ideas together, like and, but, or so.",
         "prompt": "Build the sentence with a conjunction.",
         "words": ["and", "write", "I", "read", "I"],
-        "correctSentence": "I read and I write"
+        "correctSentence": "I read and I write",
+        "imagePromptOverride": "Cartoon picture of a child sitting at a desk reading a book and writing in a notebook, looking focused. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "G3_I_12",
@@ -648,15 +633,16 @@
         "choices": ["She ran like the wind", "Her ideas were seeds", "The rain was cold", "We walked home"],
         "correct": "Her ideas were seeds",
         "hint": "A metaphor says something IS something else. Which sentence compares two things without using like or as?",
-        "imagePromptOverride": "Cartoon picture of a child sitting at a desk reading a book with a thoughtful expression and a lightbulb above their head. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
+        "imagePromptOverride": "Cartoon picture of a child sitting at a desk with a lightbulb above their head, having an idea while reading. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "G4_H_05",
         "type": "mcq",
         "difficulty": "hard",
         "standard": "RI.4.9",
-        "stimulus": "Text A: City trees provide shade that cools streets and buildings, reducing heat. Text B: City trees filter the air, removing pollutants and producing fresh oxygen.",
-        "stimulus_type": "sentence",
+        "stimulus": "City trees provide shade that cools streets and buildings, reducing heat.",
+        "stimulus2": "City trees filter the air, removing pollutants and producing fresh oxygen.",
+        "stimulus_type": "dual_text",
         "prompt": "Based on both texts, what is the best conclusion about city trees?",
         "choices": ["Trees are just for decoration", "Trees provide multiple environmental benefits", "Heat and air quality are not connected", "City trees cause problems"],
         "correct": "Trees provide multiple environmental benefits",
@@ -703,10 +689,10 @@
           "Compare and Contrast": "Compare and contrast words show how things are alike or different."
         },
         "categoryItems": {
-          "Cause and Effect": ["because", "therefore"],
-          "Compare and Contrast": ["however", "similarly"]
+          "Cause and Effect": ["because", "therefore", "consequently"],
+          "Compare and Contrast": ["however", "similarly", "although"]
         },
-        "items": ["because", "similarly", "however", "therefore"],
+        "items": ["because", "similarly", "however", "therefore", "consequently", "although"],
         "imagePromptOverride": "Cartoon picture of a child at a desk organizing colorful word cards into groups. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
