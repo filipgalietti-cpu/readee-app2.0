@@ -12,6 +12,7 @@ interface CategorySortProps {
   onAnswer: (isCorrect: boolean, answer: string) => void;
   onCorrectPlace?: () => void;
   onIncorrectPlace?: () => void;
+  onPlayItem?: (word: string) => void;
 }
 
 const BUCKET_STYLES = [
@@ -51,14 +52,16 @@ const BANK_CHIP_COLORS = [
   "bg-orange-100 text-orange-800 border-orange-300 dark:bg-orange-900/60 dark:text-orange-200 dark:border-orange-700",
 ];
 
-/** Play a word's audio file */
+/** Play a word/phrase audio file */
 function playWord(word: string) {
+  const clean = word.replace(/[^a-zA-Z0-9 ]/g, "").toLowerCase().replace(/\s+/g, "_");
+  if (!clean) return;
   const base = process.env.NEXT_PUBLIC_SUPABASE_URL
     ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audio`
     : "";
   const src = base
-    ? `${base}/words/${word.toLowerCase()}.mp3`
-    : `/audio/words/${word.toLowerCase()}.mp3`;
+    ? `${base}/words/${clean}.mp3`
+    : `/audio/words/${clean}.mp3`;
   const audio = new Audio(src);
   audio.play().catch(() => {});
 }
@@ -82,6 +85,7 @@ export function CategorySort({
   onAnswer,
   onCorrectPlace,
   onIncorrectPlace,
+  onPlayItem,
 }: CategorySortProps) {
   const bucketRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const [buckets, setBuckets] = useState<Record<string, string[]>>(() =>
@@ -182,9 +186,9 @@ export function CategorySort({
     (item: string) => {
       if (answered || result !== null) return;
       setSelectedBankItem((prev) => (prev === item ? null : item));
-      playWord(item);
+      (onPlayItem || playWord)(item);
     },
-    [answered, result]
+    [answered, result, onPlayItem]
   );
 
   /** Tap a bucket to place the selected bank item */
@@ -313,7 +317,7 @@ export function CategorySort({
                 </AnimatePresence>
                 {buckets[cat].length === 0 && (
                   <span className="text-xs text-zinc-400 dark:text-slate-500 px-1 py-1">
-                    Drag or tap words here
+                    {selectedBankItem ? "Tap here to place!" : "Tap a word, then tap here"}
                   </span>
                 )}
               </div>
@@ -331,7 +335,7 @@ export function CategorySort({
               drag={!(answered || result !== null)}
               dragSnapToOrigin
               dragMomentum={false}
-              onDragStart={() => playWord(item)}
+              onDragStart={() => (onPlayItem || playWord)(item)}
               onDrag={handleDrag}
               onDragEnd={(event, info) => handleDragEnd(item, event, info)}
               onTap={() => handleTapBankItem(item)}

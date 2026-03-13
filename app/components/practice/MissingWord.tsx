@@ -8,6 +8,7 @@ interface MissingWordProps {
   sentenceWords: string[];
   blankIndex: number;
   choices: string[];
+  correct: string;
   sentenceHint?: string;
   sentenceAudioUrl?: string;
   answered: boolean;
@@ -35,6 +36,7 @@ export function MissingWord({
   sentenceWords,
   blankIndex,
   choices,
+  correct,
   sentenceHint,
   sentenceAudioUrl,
   answered,
@@ -42,7 +44,7 @@ export function MissingWord({
 }: MissingWordProps) {
   const [selected, setSelected] = useState<string | null>(null);
   const [result, setResult] = useState<"correct" | "incorrect" | null>(null);
-  const correctWord = sentenceWords[blankIndex];
+  const correctWord = correct;
 
   const handleChoice = useCallback(
     async (choice: string) => {

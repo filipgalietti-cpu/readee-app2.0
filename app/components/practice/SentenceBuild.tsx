@@ -171,9 +171,8 @@ export function SentenceBuild({
           <AnimatePresence mode="popLayout">
             {placed.map((wordIdx, posIdx) => (
               <motion.button
-                key={`answer-${wordIdx}`}
-                layoutId={`word-${wordIdx}`}
-                onClick={() => handleTapAnswer(posIdx)}
+                key={`answer-${posIdx}-${wordIdx}`}
+                                onClick={() => handleTapAnswer(posIdx)}
                 disabled={answered || result !== null}
                 className={`px-4 py-2 rounded-xl border-2 font-semibold text-base transition-all
                   ${answered || result !== null ? "cursor-default" : "cursor-pointer active:scale-95"}
@@ -202,8 +201,7 @@ export function SentenceBuild({
           {bankIndices.map((wordIdx) => (
             <motion.button
               key={`bank-${wordIdx}`}
-              layoutId={`word-${wordIdx}`}
-              onClick={() => handleTapBank(wordIdx)}
+                            onClick={() => handleTapBank(wordIdx)}
               disabled={answered || result !== null}
               className={`px-4 py-2 rounded-xl border-2 font-semibold text-base transition-all
                 ${answered || result !== null ? "cursor-default opacity-40" : "cursor-pointer hover:scale-105 active:scale-95"}

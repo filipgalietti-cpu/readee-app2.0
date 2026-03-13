@@ -1,0 +1,703 @@
+{
+  "version": "mixed_k4_v2",
+  "description": "Core-aligned mixed-format starter bank (K-4), difficulty-tagged for adaptive routing.",
+  "grades": {
+    "kindergarten": [
+      {
+        "id": "K_M_01",
+        "type": "mcq",
+        "difficulty": "medium",
+        "standard": "RF.K.1d",
+        "prompt": "Which letter is M?",
+        "choices": ["N", "M", "W", "H"],
+        "correct": "M"
+      },
+      {
+        "id": "K_M_02",
+        "type": "mcq",
+        "difficulty": "medium",
+        "standard": "RF.K.2a",
+        "ttsIntro": "Rhyming words sound alike at the end, like cat and hat.",
+        "prompt": "Which two words rhyme?",
+        "choices": ["cat/hat", "dog/map", "sun/sit", "pen/top"],
+        "correct": "cat/hat"
+      },
+      {
+        "id": "K_E_03",
+        "type": "mcq",
+        "difficulty": "easy",
+        "standard": "RF.K.3b",
+        "prompt": "Which letter makes the t sound?",
+        "choices": ["t", "m", "s", "b"],
+        "correct": "t"
+      },
+      {
+        "id": "K_E_04",
+        "type": "mcq",
+        "difficulty": "easy",
+        "standard": "L.K.5a",
+        "prompt": "Which word is a color?",
+        "choices": ["run", "blue", "jump", "sing"],
+        "correct": "blue"
+      },
+      {
+        "id": "K_H_05",
+        "type": "mcq",
+        "difficulty": "hard",
+        "standard": "RL.K.1",
+        "stimulus": "Mia lost her red ball. She looked under the bed. She found it.",
+        "stimulus_type": "sentence",
+        "prompt": "Where did Mia find the ball?",
+        "choices": ["in a box", "under the bed", "at school", "in the yard"],
+        "correct": "under the bed",
+        "imagePromptOverride": "Cartoon picture of a red ball under a wooden bed in a cozy bedroom. A child peeks under the bed. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names."
+      },
+      {
+        "id": "K_H_06",
+        "type": "mcq",
+        "difficulty": "hard",
+        "standard": "RL.K.3",
+        "stimulus": "Ben was sad because his kite ripped. Mom helped him fix it. Ben smiled.",
+        "stimulus_type": "sentence",
+        "prompt": "How did Ben feel at the end?",
+        "choices": ["sad", "angry", "happy", "scared"],
+        "correct": "happy",
+        "imagePromptOverride": "Cartoon picture of a boy with a ripped kite looking sad, then his mom helping fix it, then the boy smiling. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names."
+      },
+      {
+        "id": "K_I_07",
+        "type": "category_sort",
+        "difficulty": "easy",
+        "standard": "L.K.5a",
+        "prompt": "Sort the words.",
+        "categories": ["Animals", "Colors"],
+        "categoryDefinitions": {
+          "Animals": "Animals are living creatures, like pets or wild animals.",
+          "Colors": "Colors are words that name a color, like red or blue."
+        },
+        "categoryItems": {
+          "Animals": ["cat", "dog"],
+          "Colors": ["red", "blue"]
+        },
+        "items": ["blue", "cat", "dog", "red"]
+      },
+      {
+        "id": "K_I_08",
+        "type": "category_sort",
+        "difficulty": "medium",
+        "standard": "L.K.5a",
+        "prompt": "Sort the words.",
+        "categories": ["Food", "Toys"],
+        "categoryDefinitions": {
+          "Food": "Food is something you eat.",
+          "Toys": "Toys are things you play with."
+        },
+        "categoryItems": {
+          "Food": ["apple", "bread"],
+          "Toys": ["ball", "kite"]
+        },
+        "items": ["kite", "bread", "apple", "ball"]
+      },
+      {
+        "id": "K_I_09",
+        "type": "missing_word",
+        "difficulty": "medium",
+        "standard": "RF.K.2d",
+        "prompt": "Pick the beginning sound that completes the word.",
+        "sentenceWords": ["_", "at"],
+        "blankIndex": 0,
+        "missingChoices": ["c", "m", "r", "s"],
+        "correctSentence": "c at"
+      },
+      {
+        "id": "K_I_10",
+        "type": "missing_word",
+        "difficulty": "hard",
+        "standard": "RF.K.3b",
+        "prompt": "Choose the missing word.",
+        "sentenceWords": ["I", "see", "a", "___"],
+        "blankIndex": 3,
+        "missingChoices": ["dog", "run", "blue", "jump"],
+        "correctSentence": "I see a dog"
+      },
+      {
+        "id": "K_I_11",
+        "type": "sentence_build",
+        "difficulty": "medium",
+        "standard": "L.K.1f",
+        "prompt": "Put the words in order.",
+        "words": ["read", "I", "can"],
+        "correctSentence": "I can read"
+      },
+      {
+        "id": "K_I_12",
+        "type": "sentence_build",
+        "difficulty": "hard",
+        "standard": "L.K.1f",
+        "prompt": "Put the words in order.",
+        "words": ["is", "hot", "The", "sun"],
+        "correctSentence": "The sun is hot"
+      }
+    ],
+    "1st": [
+      {
+        "id": "G1_M_01",
+        "type": "mcq",
+        "difficulty": "medium",
+        "standard": "RF.1.3b",
+        "ttsIntro": "The short a sound is the a in words like cat and map.",
+        "prompt": "Which word has a short a sound?",
+        "choices": ["cake", "map", "bike", "home"],
+        "correct": "map"
+      },
+      {
+        "id": "G1_M_02",
+        "type": "mcq",
+        "difficulty": "medium",
+        "standard": "RL.1.1",
+        "stimulus": "Lina planted a seed. She watered it every day. Soon, a flower grew.",
+        "stimulus_type": "sentence",
+        "prompt": "What did Lina do every day?",
+        "choices": ["picked the flower", "watered the seed", "moved the pot", "cut the plant"],
+        "correct": "watered the seed",
+        "imagePromptOverride": "Cartoon picture of a girl planting a seed and watering it, with a flower growing in a pot. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names."
+      },
+      {
+        "id": "G1_E_03",
+        "type": "mcq",
+        "difficulty": "easy",
+        "standard": "RF.1.3a",
+        "prompt": "Which word starts with sh?",
+        "choices": ["ship", "sip", "chip", "slip"],
+        "correct": "ship"
+      },
+      {
+        "id": "G1_E_04",
+        "type": "mcq",
+        "difficulty": "easy",
+        "standard": "L.1.5a",
+        "ttsIntro": "Opposites are words that mean different things, like hot and cold.",
+        "prompt": "Which two words are opposites?",
+        "choices": ["hot/cold", "run/jog", "happy/glad", "big/large"],
+        "correct": "hot/cold"
+      },
+      {
+        "id": "G1_H_05",
+        "type": "mcq",
+        "difficulty": "hard",
+        "standard": "RL.1.2",
+        "stimulus": "Tom forgot to feed his fish. He made a chart to remember. Now he feeds it daily.",
+        "stimulus_type": "sentence",
+        "prompt": "What lesson did Tom learn?",
+        "choices": ["Fish don't need food", "It helps to remember responsibilities", "Charts are only for school", "Pets are too hard"],
+        "correct": "It helps to remember responsibilities",
+        "imagePromptOverride": "Cartoon picture of a boy looking at a feeding chart on the wall next to a goldfish bowl with a happy fish. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names."
+      },
+      {
+        "id": "G1_H_06",
+        "type": "mcq",
+        "difficulty": "hard",
+        "standard": "RI.1.2",
+        "stimulus": "Bees collect nectar from flowers. They make honey in hives.",
+        "stimulus_type": "sentence",
+        "prompt": "What is this mostly about?",
+        "choices": ["how bees make honey", "how to plant flowers", "where birds live", "why rain falls"],
+        "correct": "how bees make honey"
+      },
+      {
+        "id": "G1_I_07",
+        "type": "category_sort",
+        "difficulty": "easy",
+        "standard": "L.1.1b",
+        "prompt": "Sort the words.",
+        "categories": ["Nouns", "Verbs"],
+        "categoryDefinitions": {
+          "Nouns": "A noun is a person, place, or thing.",
+          "Verbs": "A verb is an action word, something you can do."
+        },
+        "categoryItems": {
+          "Nouns": ["book", "dog", "house"],
+          "Verbs": ["run", "jump", "sing"]
+        },
+        "items": ["sing", "book", "house", "jump", "dog", "run"]
+      },
+      {
+        "id": "G1_I_08",
+        "type": "category_sort",
+        "difficulty": "medium",
+        "standard": "L.1.5a",
+        "prompt": "Sort the words by meaning.",
+        "categories": ["Happy", "Not Happy"],
+        "categoryDefinitions": {
+          "Happy": "Synonyms are words that mean the same thing. These words all mean happy.",
+          "Not Happy": "Antonyms are words that mean the opposite. These words are the opposite of happy."
+        },
+        "categoryItems": {
+          "Happy": ["glad", "joyful"],
+          "Not Happy": ["sad", "upset"]
+        },
+        "items": ["glad", "sad", "upset", "joyful"]
+      },
+      {
+        "id": "G1_I_09",
+        "type": "missing_word",
+        "difficulty": "medium",
+        "standard": "L.1.1j",
+        "prompt": "Choose the missing word.",
+        "sentenceWords": ["The", "cat", "can", "___"],
+        "blankIndex": 3,
+        "missingChoices": ["run", "blue", "happy", "book"],
+        "correctSentence": "The cat can run"
+      },
+      {
+        "id": "G1_I_10",
+        "type": "missing_word",
+        "difficulty": "hard",
+        "standard": "L.1.4a",
+        "prompt": "Choose the best word for the sentence.",
+        "sentenceWords": ["The", "tiny", "puppy", "is", "___"],
+        "blankIndex": 4,
+        "missingChoices": ["small", "loud", "cold", "round"],
+        "correctSentence": "The tiny puppy is small"
+      },
+      {
+        "id": "G1_I_11",
+        "type": "sentence_build",
+        "difficulty": "medium",
+        "standard": "L.1.1j",
+        "prompt": "Build the sentence.",
+        "words": ["to", "read", "We", "like"],
+        "correctSentence": "We like to read"
+      },
+      {
+        "id": "G1_I_12",
+        "type": "sentence_build",
+        "difficulty": "hard",
+        "standard": "L.1.1j",
+        "prompt": "Build the sentence.",
+        "words": ["soccer", "My", "plays", "friend"],
+        "correctSentence": "My friend plays soccer"
+      }
+    ],
+    "2nd": [
+      {
+        "id": "G2_M_01",
+        "type": "mcq",
+        "difficulty": "medium",
+        "standard": "RF.2.3a",
+        "ttsIntro": "The letters ea can make different sounds. Sometimes ea says ee, like in the word clean.",
+        "prompt": "Which word has ea saying ee?",
+        "choices": ["bread", "head", "clean", "ready"],
+        "correct": "clean"
+      },
+      {
+        "id": "G2_M_02",
+        "type": "mcq",
+        "difficulty": "medium",
+        "standard": "RI.2.2",
+        "stimulus": "Frogs begin as eggs, become tadpoles, then grow legs and become adult frogs.",
+        "stimulus_type": "sentence",
+        "prompt": "What is the main topic?",
+        "choices": ["frog life cycle", "bird migration", "fish habitats", "plant roots"],
+        "correct": "frog life cycle"
+      },
+      {
+        "id": "G2_E_03",
+        "type": "mcq",
+        "difficulty": "easy",
+        "standard": "L.2.4b",
+        "ttsIntro": "A prefix is a group of letters added to the beginning of a word to change its meaning.",
+        "prompt": "What does un- mean in unhappy?",
+        "choices": ["again", "not", "before", "full of"],
+        "correct": "not"
+      },
+      {
+        "id": "G2_E_04",
+        "type": "mcq",
+        "difficulty": "easy",
+        "standard": "L.2.5a",
+        "ttsIntro": "A synonym is a word that means the same as another word.",
+        "prompt": "Which is a synonym for quick?",
+        "choices": ["slow", "fast", "loud", "tiny"],
+        "correct": "fast"
+      },
+      {
+        "id": "G2_H_05",
+        "type": "mcq",
+        "difficulty": "hard",
+        "standard": "RL.2.2",
+        "stimulus": "Eli laughed when his sister dropped crayons. Later, he dropped his own and she helped him. Eli apologized.",
+        "stimulus_type": "sentence",
+        "prompt": "What is the central message?",
+        "choices": ["Crayons are messy", "Be kind to others", "Never share", "Always work alone"],
+        "correct": "Be kind to others"
+      },
+      {
+        "id": "G2_H_06",
+        "type": "mcq",
+        "difficulty": "hard",
+        "standard": "RI.2.5",
+        "prompt": "Which text feature helps you find topics with page numbers?",
+        "choices": ["caption", "glossary", "index", "heading"],
+        "correct": "index",
+        "hint": "Think about which part of a book lists topics and their page numbers."
+      },
+      {
+        "id": "G2_I_07",
+        "type": "category_sort",
+        "difficulty": "easy",
+        "standard": "L.2.4e",
+        "prompt": "Sort the words.",
+        "categories": ["Verbs", "Emotions"],
+        "categoryDefinitions": {
+          "Verbs": "A verb is an action word, something you can do.",
+          "Emotions": "An emotion is a feeling, like happy or scared."
+        },
+        "categoryItems": {
+          "Verbs": ["write", "climb", "draw"],
+          "Emotions": ["nervous", "happy", "proud"]
+        },
+        "items": ["nervous", "climb", "draw", "happy", "proud", "write"]
+      },
+      {
+        "id": "G2_I_08",
+        "type": "category_sort",
+        "difficulty": "medium",
+        "standard": "RF.2.3",
+        "prompt": "Sort words by vowel sound.",
+        "categories": ["Long a", "Short a"],
+        "categoryDefinitions": {
+          "Long a": "A long a sounds like the a in rain or play.",
+          "Short a": "A short a sounds like the a in cat or map."
+        },
+        "categoryItems": {
+          "Long a": ["rain", "play"],
+          "Short a": ["map", "cat"]
+        },
+        "items": ["rain", "map", "play", "cat"]
+      },
+      {
+        "id": "G2_I_09",
+        "type": "missing_word",
+        "difficulty": "medium",
+        "standard": "L.2.4a",
+        "prompt": "Choose the best missing word.",
+        "sentenceWords": ["The", "road", "was", "___", "after", "rain"],
+        "blankIndex": 3,
+        "missingChoices": ["slippery", "square", "hungry", "tiny"],
+        "correctSentence": "The road was slippery after rain"
+      },
+      {
+        "id": "G2_I_10",
+        "type": "missing_word",
+        "difficulty": "hard",
+        "standard": "RI.2.1",
+        "prompt": "Choose the best detail word.",
+        "sentenceWords": ["Penguins", "have", "___", "feathers"],
+        "blankIndex": 2,
+        "missingChoices": ["waterproof", "paper", "glass", "heavy"],
+        "correctSentence": "Penguins have waterproof feathers"
+      },
+      {
+        "id": "G2_I_11",
+        "type": "sentence_build",
+        "difficulty": "medium",
+        "standard": "L.2.1f",
+        "prompt": "Build the sentence.",
+        "words": ["the", "park", "We", "went", "to"],
+        "correctSentence": "We went to the park"
+      },
+      {
+        "id": "G2_I_12",
+        "type": "sentence_build",
+        "difficulty": "hard",
+        "standard": "L.2.1f",
+        "prompt": "Build the sentence.",
+        "words": ["can", "bird", "The", "fly", "small"],
+        "correctSentence": "The small bird can fly"
+      }
+    ],
+    "3rd": [
+      {
+        "id": "G3_M_01",
+        "type": "mcq",
+        "difficulty": "medium",
+        "standard": "RI.3.1",
+        "stimulus": "Penguins have waterproof feathers and a thick layer of fat called blubber.",
+        "stimulus_type": "sentence",
+        "prompt": "How do penguins stay warm?",
+        "choices": ["They wear fur coats", "They have blubber and waterproof feathers", "They sleep underground", "They flap constantly"],
+        "correct": "They have blubber and waterproof feathers"
+      },
+      {
+        "id": "G3_M_02",
+        "type": "mcq",
+        "difficulty": "medium",
+        "standard": "RL.3.1",
+        "stimulus": "Jalen stared at the dark cave entrance. His hands shook, but he stepped forward to help his friend.",
+        "stimulus_type": "sentence",
+        "prompt": "Which detail best shows Jalen is brave?",
+        "choices": ["The cave is dark", "His hands shook", "He stepped forward to help", "He stared at the entrance"],
+        "correct": "He stepped forward to help"
+      },
+      {
+        "id": "G3_E_03",
+        "type": "mcq",
+        "difficulty": "easy",
+        "standard": "RF.3.3a",
+        "ttsIntro": "The prefix re means again. For example, redo means to do again.",
+        "prompt": "Which word uses re- meaning again?",
+        "choices": ["replay", "player", "plain", "place"],
+        "correct": "replay"
+      },
+      {
+        "id": "G3_E_04",
+        "type": "mcq",
+        "difficulty": "easy",
+        "standard": "L.3.5a",
+        "ttsIntro": "A simile compares two things using the words like or as.",
+        "prompt": "Which is a simile?",
+        "choices": ["The wind whispered", "She ran like the wind", "The moon is a lantern", "The sun smiled"],
+        "correct": "She ran like the wind"
+      },
+      {
+        "id": "G3_H_05",
+        "type": "mcq",
+        "difficulty": "hard",
+        "standard": "RL.3.2",
+        "stimulus": "Maya wanted to win every race. After helping an injured runner, she learned kindness mattered more than winning.",
+        "stimulus_type": "sentence",
+        "prompt": "What is the theme?",
+        "choices": ["Winning is everything", "Kindness matters more than winning", "Never race", "Injuries always end races"],
+        "correct": "Kindness matters more than winning"
+      },
+      {
+        "id": "G3_H_06",
+        "type": "mcq",
+        "difficulty": "hard",
+        "standard": "RI.3.2",
+        "stimulus": "Recycling programs collect paper, plastic, and metal so materials can be reused.",
+        "stimulus_type": "sentence",
+        "prompt": "What is the main idea?",
+        "choices": ["Plastic is always bad", "Recycling reduces waste by reusing materials", "Only paper can recycle", "Metal is expensive"],
+        "correct": "Recycling reduces waste by reusing materials",
+        "imagePromptOverride": "Cartoon picture of children happily sorting colorful recycling bins labeled with pictures of paper, plastic bottles, and metal cans in a sunny schoolyard. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names."
+      },
+      {
+        "id": "G3_I_07",
+        "type": "category_sort",
+        "difficulty": "easy",
+        "standard": "L.3.4b",
+        "prompt": "Sort by prefix meaning.",
+        "categories": ["re- (again)", "un- (not)"],
+        "categoryDefinitions": {
+          "re- (again)": "The prefix re means again. For example, redo means do again.",
+          "un- (not)": "The prefix un means not. For example, unfair means not fair."
+        },
+        "categoryItems": {
+          "re- (again)": ["rewrite", "rebuild"],
+          "un- (not)": ["unsafe", "unfair"]
+        },
+        "items": ["rewrite", "unfair", "unsafe", "rebuild"]
+      },
+      {
+        "id": "G3_I_08",
+        "type": "category_sort",
+        "difficulty": "medium",
+        "standard": "L.3.5a",
+        "prompt": "Sort the examples.",
+        "categories": ["Simile", "Literal"],
+        "categoryDefinitions": {
+          "Simile": "A simile compares two things using the words like or as.",
+          "Literal": "Literal language means exactly what it says, with no comparison."
+        },
+        "categoryItems": {
+          "Simile": ["as bright as the sun", "like a rocket"],
+          "Literal": ["the sun is bright", "the car is fast"]
+        },
+        "items": ["the car is fast", "as bright as the sun", "like a rocket", "the sun is bright"]
+      },
+      {
+        "id": "G3_I_09",
+        "type": "missing_word",
+        "difficulty": "medium",
+        "standard": "L.3.4a",
+        "prompt": "Choose the context word.",
+        "sentenceWords": ["The", "desert", "is", "very", "___", "and", "dry"],
+        "blankIndex": 4,
+        "missingChoices": ["hot", "sleepy", "round", "tiny"],
+        "correctSentence": "The desert is very hot and dry"
+      },
+      {
+        "id": "G3_I_10",
+        "type": "missing_word",
+        "difficulty": "hard",
+        "standard": "RI.3.4",
+        "prompt": "Choose the best meaning word from context.",
+        "sentenceWords": ["The", "climate", "there", "is", "___", "with", "little", "rain"],
+        "blankIndex": 4,
+        "missingChoices": ["arid", "noisy", "crowded", "muddy"],
+        "correctSentence": "The climate there is arid with little rain"
+      },
+      {
+        "id": "G3_I_11",
+        "type": "sentence_build",
+        "difficulty": "medium",
+        "standard": "L.3.1i",
+        "ttsIntro": "A conjunction is a word that joins two ideas together, like and, but, or so.",
+        "prompt": "Build the sentence with a conjunction.",
+        "words": ["and", "write", "I", "read", "I"],
+        "correctSentence": "I read and I write"
+      },
+      {
+        "id": "G3_I_12",
+        "type": "sentence_build",
+        "difficulty": "hard",
+        "standard": "L.3.1i",
+        "prompt": "Build the sentence.",
+        "words": ["we", "inside", "Because", "rained", "stayed", "it"],
+        "correctSentence": "Because it rained we stayed inside"
+      }
+    ],
+    "4th": [
+      {
+        "id": "G4_M_01",
+        "type": "mcq",
+        "difficulty": "medium",
+        "standard": "RI.4.1",
+        "stimulus": "Solar panels generate electricity from sunlight. They produce no direct air pollution during use.",
+        "stimulus_type": "sentence",
+        "prompt": "Which statement is supported by the text?",
+        "choices": ["Solar panels work only at night", "Solar panels create heavy smoke", "Solar panels generate electricity without direct air pollution while operating", "Solar panels are always cheapest"],
+        "correct": "Solar panels generate electricity without direct air pollution while operating",
+        "imagePromptOverride": "Cartoon picture of shiny blue solar panels on a rooftop under a bright yellow sun with clean energy rays beaming down. A happy family looks up at the panels. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names."
+      },
+      {
+        "id": "G4_M_02",
+        "type": "mcq",
+        "difficulty": "medium",
+        "standard": "RL.4.1",
+        "stimulus": "Amara reread the map three times before choosing the steep mountain path. 'This is risky, but it saves a day,' she said.",
+        "stimulus_type": "sentence",
+        "prompt": "Which detail best shows that Amara is careful and brave?",
+        "choices": ["She had a map", "She reread the map and chose the risky shortcut", "The path was steep", "She spoke out loud"],
+        "correct": "She reread the map and chose the risky shortcut"
+      },
+      {
+        "id": "G4_E_03",
+        "type": "mcq",
+        "difficulty": "easy",
+        "standard": "L.4.4b",
+        "ttsIntro": "A prefix is a group of letters at the beginning of a word that changes its meaning.",
+        "prompt": "What does tele- mean in telephone?",
+        "choices": ["small", "far", "under", "not"],
+        "correct": "far"
+      },
+      {
+        "id": "G4_E_04",
+        "type": "mcq",
+        "difficulty": "easy",
+        "standard": "L.4.5b",
+        "ttsIntro": "A metaphor says something is something else, without using like or as.",
+        "prompt": "Which sentence uses a metaphor?",
+        "choices": ["She ran like the wind", "Her ideas were seeds", "The rain was cold", "We walked home"],
+        "correct": "Her ideas were seeds",
+        "hint": "A metaphor says something IS something else. Which sentence compares two things without using like or as?"
+      },
+      {
+        "id": "G4_H_05",
+        "type": "mcq",
+        "difficulty": "hard",
+        "standard": "RI.4.9",
+        "prompt": "Text A says city trees reduce heat. Text B says city trees improve air quality. What is the best synthesis?",
+        "choices": ["Trees are decorative only", "Trees provide multiple environmental benefits", "Heat and air quality are unrelated", "City trees are harmful"],
+        "correct": "Trees provide multiple environmental benefits"
+      },
+      {
+        "id": "G4_H_06",
+        "type": "mcq",
+        "difficulty": "hard",
+        "standard": "RL.4.2",
+        "stimulus": "After failing to build the bridge once, the class tested new designs and finally succeeded.",
+        "stimulus_type": "sentence",
+        "prompt": "What is the likely theme?",
+        "choices": ["Bridges are easy", "Teamwork and persistence lead to success", "Science is not useful", "Failure should always be avoided"],
+        "correct": "Teamwork and persistence lead to success"
+      },
+      {
+        "id": "G4_I_07",
+        "type": "category_sort",
+        "difficulty": "easy",
+        "standard": "RI.4.5",
+        "prompt": "Sort the statements.",
+        "categories": ["Fact", "Opinion"],
+        "categoryDefinitions": {
+          "Fact": "A fact is something that is true and can be proven.",
+          "Opinion": "An opinion is what someone thinks or feels. It cannot be proven."
+        },
+        "categoryItems": {
+          "Fact": ["Fish live in water", "Plants need sunlight", "Birds have feathers"],
+          "Opinion": ["Fish are boring", "Roses smell the best", "Birds are the cutest"]
+        },
+        "items": ["Plants need sunlight", "Birds are the cutest", "Fish are boring", "Birds have feathers", "Roses smell the best", "Fish live in water"]
+      },
+      {
+        "id": "G4_I_08",
+        "type": "category_sort",
+        "difficulty": "medium",
+        "standard": "RI.4.3",
+        "prompt": "Sort the signal words.",
+        "categories": ["Cause and Effect", "Compare and Contrast"],
+        "categoryDefinitions": {
+          "Cause and Effect": "Cause and effect words show why something happens or what happens as a result.",
+          "Compare and Contrast": "Compare and contrast words show how things are alike or different."
+        },
+        "categoryItems": {
+          "Cause and Effect": ["because", "therefore"],
+          "Compare and Contrast": ["however", "similarly"]
+        },
+        "items": ["because", "similarly", "however", "therefore"]
+      },
+      {
+        "id": "G4_I_09",
+        "type": "missing_word",
+        "difficulty": "medium",
+        "standard": "L.4.4a",
+        "prompt": "Choose the best context word.",
+        "sentenceWords": ["The", "scientist", "gave", "a", "___", "explanation"],
+        "blankIndex": 4,
+        "missingChoices": ["concise", "gigantic", "sleepy", "round"],
+        "correctSentence": "The scientist gave a concise explanation"
+      },
+      {
+        "id": "G4_I_10",
+        "type": "missing_word",
+        "difficulty": "hard",
+        "standard": "RI.4.4",
+        "prompt": "Choose the best academic word.",
+        "sentenceWords": ["The", "evidence", "was", "___", "and", "clear"],
+        "blankIndex": 3,
+        "missingChoices": ["convincing", "purple", "silent", "tiny"],
+        "correctSentence": "The evidence was convincing and clear"
+      },
+      {
+        "id": "G4_I_11",
+        "type": "sentence_build",
+        "difficulty": "medium",
+        "standard": "L.4.1f",
+        "prompt": "Build a complete sentence.",
+        "words": ["their", "finished", "The", "project", "students"],
+        "correctSentence": "The students finished their project"
+      },
+      {
+        "id": "G4_I_12",
+        "type": "sentence_build",
+        "difficulty": "hard",
+        "standard": "L.4.1f",
+        "prompt": "Build a complex sentence.",
+        "words": ["finished", "Although", "practice", "we", "it", "rained"],
+        "correctSentence": "Although it rained we finished practice"
+      }
+    ]
+  }
+}

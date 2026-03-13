@@ -10,6 +10,7 @@ interface TapToPairProps {
   correctPairs: Record<string, string>;
   answered: boolean;
   onAnswer: (isCorrect: boolean, userAnswer: string) => void;
+  onPlayItem?: (word: string) => void;
 }
 
 const LEFT_COLORS = [
@@ -34,6 +35,20 @@ interface MatchedPair {
   correct: boolean;
 }
 
+/** Play a word/phrase audio file */
+function playWord(word: string) {
+  const clean = word.replace(/[^a-zA-Z0-9 ]/g, "").toLowerCase().replace(/\s+/g, "_");
+  if (!clean) return;
+  const base = process.env.NEXT_PUBLIC_SUPABASE_URL
+    ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audio`
+    : "";
+  const src = base
+    ? `${base}/words/${clean}.mp3`
+    : `/audio/words/${clean}.mp3`;
+  const audio = new Audio(src);
+  audio.play().catch(() => {});
+}
+
 export function TapToPair({
   prompt,
   leftItems,
@@ -41,10 +56,12 @@ export function TapToPair({
   correctPairs,
   answered,
   onAnswer,
+  onPlayItem,
 }: TapToPairProps) {
   const [selectedLeft, setSelectedLeft] = useState<string | null>(null);
   const [matches, setMatches] = useState<MatchedPair[]>([]);
   const [shakingRight, setShakingRight] = useState<string | null>(null);
+  const [flashingPair, setFlashingPair] = useState<{ left: string; right: string } | null>(null);
   const [done, setDone] = useState(false);
 
   const leftRefs = useRef<Record<string, HTMLButtonElement | null>>({});
@@ -87,6 +104,7 @@ export function TapToPair({
   const handleTapLeft = useCallback(
     (item: string) => {
       if (answered || done || matchedLeftItems.has(item)) return;
+      (onPlayItem || playWord)(item);
       setSelectedLeft((prev) => (prev === item ? null : item));
     },
     [answered, done, matchedLeftItems]
@@ -98,16 +116,23 @@ export function TapToPair({
       const isCorrect = correctPairs[selectedLeft] === item;
 
       if (isCorrect) {
+        (onPlayItem || playWord)(item);
         const newMatches = [...matches, { left: selectedLeft, right: item, correct: true }];
         setMatches(newMatches);
         setSelectedLeft(null);
 
+        // Celebration flash
+        setFlashingPair({ left: selectedLeft, right: item });
+        setTimeout(() => setFlashingPair(null), 600);
+
         // Check if all pairs matched
         if (newMatches.length === leftItems.length) {
-          setDone(true);
-          const allCorrect = newMatches.every((m) => m.correct);
-          const answer = newMatches.map((m) => `${m.left}→${m.right}`).join(", ");
-          onAnswer(allCorrect, answer);
+          setTimeout(() => {
+            setDone(true);
+            const allCorrect = newMatches.every((m) => m.correct);
+            const answer = newMatches.map((m) => `${m.left}→${m.right}`).join(", ");
+            onAnswer(allCorrect, answer);
+          }, 400);
         }
       } else {
         // Wrong match — shake and reject
@@ -154,6 +179,7 @@ export function TapToPair({
               const isSelected = selectedLeft === item;
               let style = LEFT_COLORS[i % LEFT_COLORS.length];
 
+              const isFlashing = flashingPair?.left === item;
               if (isMatched) {
                 style =
                   "bg-emerald-100 text-emerald-800 border-emerald-400 dark:bg-emerald-900/40 dark:text-emerald-200 dark:border-emerald-500 opacity-70";
@@ -176,7 +202,11 @@ export function TapToPair({
                       : "cursor-pointer active:scale-95 hover:scale-105"
                   } ${style}`}
                   initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
+                  animate={
+                    isFlashing
+                      ? { opacity: 1, x: 0, scale: [1, 1.15, 1], transition: { duration: 0.5 } }
+                      : { opacity: 1, x: 0 }
+                  }
                   transition={{ delay: i * 0.05 }}
                 >
                   {item}
@@ -192,6 +222,7 @@ export function TapToPair({
               const isShaking = shakingRight === item;
               let style = RIGHT_COLORS[i % RIGHT_COLORS.length];
 
+              const isFlashing = flashingPair?.right === item;
               if (isMatched) {
                 style =
                   "bg-emerald-100 text-emerald-800 border-emerald-400 dark:bg-emerald-900/40 dark:text-emerald-200 dark:border-emerald-500 opacity-70";
@@ -214,7 +245,9 @@ export function TapToPair({
                   } ${style}`}
                   initial={{ opacity: 0, x: 10 }}
                   animate={
-                    isShaking
+                    isFlashing
+                      ? { opacity: 1, x: 0, scale: [1, 1.15, 1], transition: { duration: 0.5 } }
+                      : isShaking
                       ? { x: [0, -8, 8, -6, 6, -3, 3, 0] }
                       : { opacity: 1, x: 0 }
                   }
