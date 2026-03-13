@@ -5,6 +5,7 @@ import { getAllStandards } from "@/lib/data/all-standards";
 import { useAudio } from "@/lib/audio/use-audio";
 import { useAuditReviews } from "@/lib/audit/use-audit-reviews";
 import { ReviewList } from "@/app/components/audit/ReviewList";
+import { MigrateLocalStorage } from "@/app/components/audit/MigrateLocalStorage";
 
 /* ── Types ──────────────────────────────────────────── */
 
@@ -213,6 +214,42 @@ export default function QuestionAuditPage() {
           <span className="text-red-500 font-medium">{thumbsDown} flagged</span>
         )}
       </p>
+
+      <MigrateLocalStorage
+        localStorageKey="readee_question_audit_v2"
+        itemType="question"
+        parseEntry={(key, value) => {
+          if (!value || (!value.rating && !value.comment)) return null;
+          const stdMatch = key.match(/^([A-Z]+\.[A-Z0-9]+\.\d+[a-z]?)/i);
+          const standardId = stdMatch ? stdMatch[1] : undefined;
+          const gradeMatch = key.match(/\.([^.]+)\./);
+          const gradeKey = gradeMatch ? gradeMatch[1] : "K";
+          const gradeFolder: Record<string, string> = { K: "kindergarten", "1": "1st-grade", "2": "2nd-grade", "3": "3rd-grade", "4": "4th-grade" };
+          return {
+            item_id: key,
+            status: value.rating === "up" ? "up" : value.rating === "down" ? "down" : null,
+            comment: value.comment || "",
+            grade: gradeFolder[gradeKey],
+            standard_id: standardId,
+          };
+        }}
+      />
+
+      <MigrateLocalStorage
+        localStorageKey="readee_k_audit_v1"
+        itemType="question"
+        parseEntry={(key, value) => {
+          if (!value || (!value.rating && !value.comment)) return null;
+          const stdMatch = key.match(/^([A-Z]+\.[A-Z0-9]+\.\d+[a-z]?)/i);
+          return {
+            item_id: key,
+            status: value.rating === "up" ? "up" : value.rating === "down" ? "down" : null,
+            comment: value.comment || "",
+            grade: "kindergarten",
+            standard_id: stdMatch ? stdMatch[1] : undefined,
+          };
+        }}
+      />
 
       {/* Controls row */}
       <div className="flex items-center gap-3 mb-3">

@@ -6,6 +6,7 @@ import manifestRaw from "@/scripts/assessment_mixed_manifest.json";
 import bankRaw from "@/lib/assessment/mixed-bank-k4.json";
 import { useAuditReviews } from "@/lib/audit/use-audit-reviews";
 import { ReviewList } from "@/app/components/audit/ReviewList";
+import { MigrateLocalStorage } from "@/app/components/audit/MigrateLocalStorage";
 
 /* ── Types ────────────────────────────────────────────── */
 
@@ -264,6 +265,19 @@ export default function AssessmentAuditPage() {
             Export
           </button>
         </div>
+
+        <MigrateLocalStorage
+          localStorageKey="readee_assessment_audit"
+          itemType="assessment"
+          parseEntry={(key, value) => {
+            if (!value || (!value.rating && !value.comment)) return null;
+            return {
+              item_id: key,
+              status: value.rating === "good" ? "pass" : value.rating === "flagged" ? "flag" : null,
+              comment: value.comment || "",
+            };
+          }}
+        />
 
         {/* Progress bar */}
         <div className="flex items-center gap-3 mb-4 text-xs text-zinc-500 dark:text-slate-400">

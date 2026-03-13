@@ -5,6 +5,7 @@ import lessonsData from "@/app/data/sample-lessons.json";
 import { useAudio } from "@/lib/audio/use-audio";
 import { useAuditReviews } from "@/lib/audit/use-audit-reviews";
 import { ReviewList } from "@/app/components/audit/ReviewList";
+import { MigrateLocalStorage } from "@/app/components/audit/MigrateLocalStorage";
 
 const SUPABASE_STORAGE =
   process.env.NEXT_PUBLIC_SUPABASE_URL
@@ -196,6 +197,21 @@ export default function LessonAuditPage() {
           </span>
         )}
       </p>
+
+      <MigrateLocalStorage
+        localStorageKey="readee_lesson_audit"
+        itemType="lesson_slide"
+        parseEntry={(key, value) => {
+          if (!value || (!value.rating && !value.comment)) return null;
+          const stdMatch = key.match(/^([A-Z]+\.[A-Z0-9]+\.\d+[a-z]?)/i);
+          return {
+            item_id: key,
+            status: value.rating === "up" ? "up" : value.rating === "down" ? "down" : null,
+            comment: value.comment || "",
+            standard_id: stdMatch ? stdMatch[1] : undefined,
+          };
+        }}
+      />
 
       {/* Source toggle + Export */}
       <div className="flex gap-2 mb-3">

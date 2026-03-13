@@ -5,6 +5,7 @@ import { getStandardsForGrade } from "@/lib/data/all-standards";
 import { useAudio } from "@/lib/audio/use-audio";
 import { useAuditReviews } from "@/lib/audit/use-audit-reviews";
 import { ReviewList } from "@/app/components/audit/ReviewList";
+import { MigrateLocalStorage } from "@/app/components/audit/MigrateLocalStorage";
 import { MissingWord } from "@/app/components/practice/MissingWord";
 import { SentenceBuild } from "@/app/components/practice/SentenceBuild";
 import { CategorySort } from "@/app/components/practice/CategorySort";
@@ -255,6 +256,29 @@ export default function KInteractiveAuditPage() {
         {" "}| <span className="text-gray-400">{untestedCount} untested</span>
         {Object.values(myReviews).filter(r => r.comment).length > 0 && <> | <span className="text-amber-600 font-medium">{Object.values(myReviews).filter(r => r.comment).length} comments</span></>}
       </p>
+
+      <MigrateLocalStorage
+        localStorageKey="readee_k_interactive_audit_v1"
+        itemType="question"
+        parseBulk={(data) => {
+          const results = data.results || {};
+          const comments = data.comments || {};
+          const allIds = new Set([...Object.keys(results), ...Object.keys(comments)]);
+          const rows: { item_id: string; status: string | null; comment: string; grade: string }[] = [];
+          for (const id of allIds) {
+            const r = results[id];
+            const c = comments[id];
+            if (!r && !c) continue;
+            rows.push({
+              item_id: id,
+              status: r === "pass" ? "pass" : r === "fail" ? "fail" : null,
+              comment: c || "",
+              grade: "kindergarten",
+            });
+          }
+          return rows;
+        }}
+      />
 
       {/* Type filter */}
       <div className="flex flex-wrap gap-2 mb-6">
