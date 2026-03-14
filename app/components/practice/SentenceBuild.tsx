@@ -88,7 +88,9 @@ export function SentenceBuild({
   const handleTapBank = useCallback(
     (wordIdx: number) => {
       if (answered || result !== null) return;
-      (onPlayItem || playWord)(filteredWords[wordIdx]);
+      const word = filteredWords[wordIdx];
+      console.log("[SentenceBuild] tap:", word, "onPlayItem?", !!onPlayItem);
+      (onPlayItem || playWord)(word);
       setPlaced((prev) => [...prev, wordIdx]);
     },
     [answered, result, filteredWords, onPlayItem]

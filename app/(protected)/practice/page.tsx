@@ -489,11 +489,12 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
       ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audio`
       : "";
     const src = base ? `${base}/words/${clean}.mp3` : `/audio/words/${clean}.mp3`;
+    console.log("[playWordAudio]", word, "→", src);
     stop();
     if (tileAudioRef.current) { tileAudioRef.current.pause(); tileAudioRef.current = null; }
     const audio = new Audio(src);
     tileAudioRef.current = audio;
-    audio.play().catch(() => {});
+    audio.play().then(() => console.log("[playWordAudio] playing OK")).catch((err) => console.error("[playWordAudio] FAILED:", err));
   }, [stop]);
 
   /* ── Play phoneme audio (for SoundMachine tiles) ── */
