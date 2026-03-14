@@ -59,8 +59,10 @@ export function TapToPair({
   onPlayItem,
 }: TapToPairProps) {
   const [selectedLeft, setSelectedLeft] = useState<string | null>(null);
+  const [selectedRight, setSelectedRight] = useState<string | null>(null);
   const [matches, setMatches] = useState<MatchedPair[]>([]);
   const [shakingRight, setShakingRight] = useState<string | null>(null);
+  const [shakingLeft, setShakingLeft] = useState<string | null>(null);
   const [flashingPair, setFlashingPair] = useState<{ left: string; right: string } | null>(null);
   const [done, setDone] = useState(false);
 
@@ -101,31 +103,20 @@ export function TapToPair({
     return () => window.removeEventListener("resize", updateLines);
   }, [updateLines]);
 
-  const handleTapLeft = useCallback(
-    (item: string) => {
-      if (answered || done || matchedLeftItems.has(item)) return;
-      (onPlayItem || playWord)(item);
-      setSelectedLeft((prev) => (prev === item ? null : item));
-    },
-    [answered, done, matchedLeftItems]
-  );
-
-  const handleTapRight = useCallback(
-    (item: string) => {
-      if (answered || done || !selectedLeft || matchedRightItems.has(item)) return;
-      const isCorrect = correctPairs[selectedLeft] === item;
-
+  /** Complete a match — shared by both directions */
+  const completeMatch = useCallback(
+    (left: string, right: string) => {
+      const isCorrect = correctPairs[left] === right;
       if (isCorrect) {
-        (onPlayItem || playWord)(item);
-        const newMatches = [...matches, { left: selectedLeft, right: item, correct: true }];
+        (onPlayItem || playWord)(right);
+        const newMatches = [...matches, { left, right, correct: true }];
         setMatches(newMatches);
         setSelectedLeft(null);
+        setSelectedRight(null);
 
-        // Celebration flash
-        setFlashingPair({ left: selectedLeft, right: item });
+        setFlashingPair({ left, right });
         setTimeout(() => setFlashingPair(null), 600);
 
-        // Check if all pairs matched
         if (newMatches.length === leftItems.length) {
           setTimeout(() => {
             setDone(true);
@@ -135,13 +126,49 @@ export function TapToPair({
           }, 400);
         }
       } else {
-        // Wrong match — shake and reject
-        setShakingRight(item);
-        setTimeout(() => setShakingRight(null), 500);
+        // Wrong match — shake the second-tapped side
+        setShakingRight(right);
+        setShakingLeft(left);
+        setTimeout(() => { setShakingRight(null); setShakingLeft(null); }, 500);
+        setSelectedLeft(null);
+        setSelectedRight(null);
+      }
+    },
+    [correctPairs, matches, leftItems.length, onAnswer, onPlayItem]
+  );
+
+  const handleTapLeft = useCallback(
+    (item: string) => {
+      if (answered || done || matchedLeftItems.has(item)) return;
+      (onPlayItem || playWord)(item);
+
+      if (selectedRight) {
+        // Right already selected — try to match
+        completeMatch(item, selectedRight);
+      } else {
+        // Just select this left item (toggle)
+        setSelectedLeft((prev) => (prev === item ? null : item));
+        setSelectedRight(null);
+      }
+    },
+    [answered, done, matchedLeftItems, selectedRight, completeMatch, onPlayItem]
+  );
+
+  const handleTapRight = useCallback(
+    (item: string) => {
+      if (answered || done || matchedRightItems.has(item)) return;
+      (onPlayItem || playWord)(item);
+
+      if (selectedLeft) {
+        // Left already selected — try to match
+        completeMatch(selectedLeft, item);
+      } else {
+        // Just select this right item (toggle)
+        setSelectedRight((prev) => (prev === item ? null : item));
         setSelectedLeft(null);
       }
     },
-    [answered, done, selectedLeft, matchedRightItems, correctPairs, matches, leftItems.length, onAnswer]
+    [answered, done, matchedRightItems, selectedLeft, completeMatch, onPlayItem]
   );
 
   return (
@@ -177,6 +204,7 @@ export function TapToPair({
             {leftItems.map((item, i) => {
               const isMatched = matchedLeftItems.has(item);
               const isSelected = selectedLeft === item;
+              const isShaking = shakingLeft === item;
               let style = LEFT_COLORS[i % LEFT_COLORS.length];
 
               const isFlashing = flashingPair?.left === item;
@@ -205,9 +233,11 @@ export function TapToPair({
                   animate={
                     isFlashing
                       ? { opacity: 1, x: 0, scale: [1, 1.15, 1], transition: { duration: 0.5 } }
+                      : isShaking
+                      ? { x: [0, -8, 8, -6, 6, -3, 3, 0] }
                       : { opacity: 1, x: 0 }
                   }
-                  transition={{ delay: i * 0.05 }}
+                  transition={isShaking ? { duration: 0.5 } : { delay: i * 0.05 }}
                 >
                   {item}
                 </motion.button>
@@ -220,12 +250,16 @@ export function TapToPair({
             {rightItems.map((item, i) => {
               const isMatched = matchedRightItems.has(item);
               const isShaking = shakingRight === item;
+              const isSelected = selectedRight === item;
               let style = RIGHT_COLORS[i % RIGHT_COLORS.length];
 
               const isFlashing = flashingPair?.right === item;
               if (isMatched) {
                 style =
                   "bg-emerald-100 text-emerald-800 border-emerald-400 dark:bg-emerald-900/40 dark:text-emerald-200 dark:border-emerald-500 opacity-70";
+              } else if (isSelected) {
+                style =
+                  "bg-indigo-200 text-indigo-900 border-indigo-500 ring-2 ring-indigo-400/50 dark:bg-indigo-800 dark:text-indigo-100 dark:border-indigo-400";
               }
 
               return (
@@ -235,12 +269,10 @@ export function TapToPair({
                     rightRefs.current[item] = el;
                   }}
                   onClick={() => handleTapRight(item)}
-                  disabled={answered || done || isMatched || !selectedLeft}
+                  disabled={answered || done || isMatched}
                   className={`px-4 py-4 rounded-xl border-2 font-bold text-lg text-center transition-all ${
                     isMatched || answered || done
                       ? "cursor-default"
-                      : !selectedLeft
-                      ? "cursor-default opacity-70"
                       : "cursor-pointer active:scale-95 hover:scale-105"
                   } ${style}`}
                   initial={{ opacity: 0, x: 10 }}

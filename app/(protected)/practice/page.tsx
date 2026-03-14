@@ -489,6 +489,32 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
     playUrl(src);
   }, [playUrl]);
 
+  /* ── Play phoneme audio (for SoundMachine tiles) ── */
+  const playPhonemeAudio = useCallback((phoneme: string) => {
+    const PHONEME_ID_MAP: Record<string, string> = {
+      "/b/": "b", "/k/": "c_hard", "/s/": "s", "/d/": "d", "/f/": "f",
+      "/g/": "g", "/h/": "h", "/j/": "j", "/l/": "l", "/m/": "m",
+      "/n/": "n", "/p/": "p", "/r/": "r", "/t/": "t", "/v/": "v",
+      "/w/": "w", "/z/": "z", "/a/": "short_a", "/e/": "short_e",
+      "/i/": "short_i", "/o/": "short_o", "/u/": "short_u",
+      "/ch/": "ch", "/sh/": "sh", "/th/": "th_unvoiced",
+    };
+    const id = PHONEME_ID_MAP[phoneme];
+    if (!id) return;
+    const base = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    if (!base) return;
+    playUrl(`${base}/storage/v1/object/public/audio/phonemes/${id}.mp3`);
+  }, [playUrl]);
+
+  /* ── Smart item audio: detects /phoneme/ format and routes accordingly ── */
+  const playItemSmart = useCallback((item: string) => {
+    if (/^\/[a-z]{1,3}\/$/.test(item)) {
+      playPhonemeAudio(item);
+    } else {
+      playWordAudio(item);
+    }
+  }, [playPhonemeAudio, playWordAudio]);
+
   /* ── Replay audio ── */
   const handleReplay = useCallback(() => {
     stop();
@@ -894,6 +920,8 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
             sentenceAudioUrl={q.sentence_audio_url}
             answered={selected !== null}
             onAnswer={handleSentenceBuildAnswer}
+            onPlayItem={playWordAudio}
+            ordered={(q as any).ordered}
           />
         ) : q.type === "missing_word" && (q as any).sentence_words && (q as any).missing_choices && (q as any).blank_index !== undefined ? (
           <MissingWord
@@ -927,7 +955,7 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
             correctPairs={q.correct_pairs}
             answered={selected !== null}
             onAnswer={(isCorrect, answer) => handleSentenceBuildAnswer(isCorrect, answer)}
-            onPlayItem={playWordAudio}
+            onPlayItem={playItemSmart}
           />
         ) : q.type === "sound_machine" && q.target_word && q.phonemes ? (
           <SoundMachine
@@ -937,6 +965,8 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
             distractors={q.distractors}
             answered={selected !== null}
             onAnswer={(isCorrect, answer) => handleSentenceBuildAnswer(isCorrect, answer)}
+            onPlayPhoneme={playPhonemeAudio}
+            onPlayWord={playWordAudio}
           />
         ) : q.type === "space_insertion" && q.jumbled ? (
           <SpaceInsertion

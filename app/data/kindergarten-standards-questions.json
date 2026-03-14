@@ -3340,7 +3340,7 @@
         {
           "id": "RF.K.3d-Q1",
           "type": "tap_to_pair",
-          "prompt": "Match each word to the word that looks almost the same!",
+          "prompt": "Match each word to the word that differs by one letter!",
           "left_items": [
             "CAT",
             "PAN",
@@ -3900,13 +3900,14 @@
         {
           "id": "K.L.5-Q5",
           "type": "sentence_build",
+          "ordered": true,
           "prompt": "Put these in order from LEAST happy to MOST happy.",
           "words": [
-            "laugh",
-            "smile",
-            "giggle"
+            "Laugh",
+            "Smile",
+            "Giggle"
           ],
-          "correct": "Smile Giggle Laugh.",
+          "correct": "Smile Giggle Laugh",
           "hint": "A smile is quiet, a giggle is bigger, and a laugh is the biggest!",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.5/K.L.5-Q5.mp3",

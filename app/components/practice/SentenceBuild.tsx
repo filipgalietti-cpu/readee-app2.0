@@ -12,6 +12,8 @@ interface SentenceBuildProps {
   sentenceAudioUrl?: string;
   answered: boolean;
   onAnswer: (isCorrect: boolean, placedSentence: string) => void;
+  onPlayItem?: (word: string) => void;
+  ordered?: boolean;
 }
 
 const PUNCTUATION = new Set([".", "!", "?"]);
@@ -38,6 +40,21 @@ function playAudioAsync(url: string): Promise<void> {
   });
 }
 
+/** Speak a sentence using browser SpeechSynthesis (fallback when no audio URL) */
+function speakSentence(text: string): Promise<void> {
+  return new Promise((resolve) => {
+    if (typeof window === "undefined" || !window.speechSynthesis) {
+      resolve();
+      return;
+    }
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.rate = 0.85;
+    utterance.onend = () => resolve();
+    utterance.onerror = () => resolve();
+    window.speechSynthesis.speak(utterance);
+  });
+}
+
 const CHIP_COLORS = [
   "bg-blue-100 text-blue-800 border-blue-300 dark:bg-blue-900/60 dark:text-blue-200 dark:border-blue-700",
   "bg-purple-100 text-purple-800 border-purple-300 dark:bg-purple-900/60 dark:text-purple-200 dark:border-purple-700",
@@ -57,6 +74,8 @@ export function SentenceBuild({
   sentenceAudioUrl,
   answered,
   onAnswer,
+  onPlayItem,
+  ordered,
 }: SentenceBuildProps) {
   // Filter out any stray punctuation from words (backward compat)
   const filteredWords = useMemo(
@@ -84,10 +103,10 @@ export function SentenceBuild({
   const handleTapBank = useCallback(
     (wordIdx: number) => {
       if (answered || result !== null) return;
-      playWord(filteredWords[wordIdx]);
+      (onPlayItem || playWord)(filteredWords[wordIdx]);
       setPlaced((prev) => [...prev, wordIdx]);
     },
-    [answered, result, filteredWords]
+    [answered, result, filteredWords, onPlayItem]
   );
 
   const handleTapAnswer = useCallback(
@@ -100,8 +119,10 @@ export function SentenceBuild({
 
   const handleCheck = useCallback(async () => {
     if (!allPlaced || answered || result !== null) return;
-    const sentence = placed.map((i) => filteredWords[i]).join(" ") + trailingPunctuation;
-    const isCorrect = sentence === correctSentence;
+    const suffix = ordered ? "" : trailingPunctuation;
+    const sentence = placed.map((i) => filteredWords[i]).join(" ") + suffix;
+    const target = ordered ? correctSentence.replace(/[.!?]$/, "") : correctSentence;
+    const isCorrect = sentence === target;
     setResult(isCorrect ? "correct" : "incorrect");
 
     if (!isCorrect) {
@@ -114,11 +135,13 @@ export function SentenceBuild({
     }
 
     // Correct — play sentence audio first, then fire callback
-    if (sentenceAudioUrl) {
+    if (sentenceAudioUrl && sentenceAudioUrl.startsWith("https://")) {
       await playAudioAsync(sentenceAudioUrl);
+    } else {
+      await speakSentence(correctSentence);
     }
     onAnswer(true, sentence);
-  }, [allPlaced, answered, result, placed, filteredWords, trailingPunctuation, correctSentence, sentenceAudioUrl, onAnswer]);
+  }, [allPlaced, answered, result, placed, filteredWords, trailingPunctuation, correctSentence, sentenceAudioUrl, onAnswer, ordered]);
 
   return (
     <div className="flex flex-col gap-6">
@@ -147,51 +170,97 @@ export function SentenceBuild({
 
       {/* Answer area + trailing punctuation */}
       <div className="flex items-center gap-1">
-        <motion.div
-          className={`flex-1 min-h-[72px] rounded-2xl border-2 border-dashed p-3 flex flex-wrap gap-2 items-center transition-colors ${
-            result === "correct"
-              ? "border-emerald-400 bg-emerald-50/50 dark:bg-emerald-900/20 dark:border-emerald-500"
-              : result === "incorrect"
-              ? "border-red-400 bg-red-50/50 dark:bg-red-900/20 dark:border-red-500"
-              : "border-zinc-300 bg-white dark:border-slate-600 dark:bg-slate-800/50"
-          }`}
-          animate={
-            shaking
-              ? { x: [0, -8, 8, -6, 6, -3, 3, 0], transition: { duration: 0.5 } }
-              : result === "correct"
-              ? { scale: [1, 1.02, 1], transition: { duration: 0.3 } }
-              : {}
-          }
-        >
-          {placed.length === 0 && (
-            <span className="text-zinc-400 dark:text-slate-500 text-sm px-2">
-              Tap words below to build your sentence
-            </span>
-          )}
-          <AnimatePresence mode="popLayout">
-            {placed.map((wordIdx, posIdx) => (
-              <motion.button
-                key={`answer-${posIdx}-${wordIdx}`}
-                                onClick={() => handleTapAnswer(posIdx)}
-                disabled={answered || result !== null}
-                className={`px-4 py-2 rounded-xl border-2 font-semibold text-base transition-all
-                  ${answered || result !== null ? "cursor-default" : "cursor-pointer active:scale-95"}
-                  ${CHIP_COLORS[wordIdx % CHIP_COLORS.length]}`}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ type: "spring", stiffness: 500, damping: 30 }}
-              >
-                {filteredWords[wordIdx]}
-              </motion.button>
-            ))}
-          </AnimatePresence>
-        </motion.div>
-        {/* Fixed trailing punctuation — outside the dashed box */}
-        {trailingPunctuation && (
-          <span className="text-2xl font-bold text-zinc-700 dark:text-slate-300 select-none px-1">
-            {trailingPunctuation}
-          </span>
+        {ordered ? (
+          /* Ordered mode — numbered slots */
+          <motion.div
+            className="flex-1 flex gap-3 justify-center"
+            animate={
+              shaking
+                ? { x: [0, -8, 8, -6, 6, -3, 3, 0], transition: { duration: 0.5 } }
+                : result === "correct"
+                ? { scale: [1, 1.02, 1], transition: { duration: 0.3 } }
+                : {}
+            }
+          >
+            {filteredWords.map((_, slotIdx) => {
+              const wordIdx = placed[slotIdx] as number | undefined;
+              const filled = wordIdx !== undefined;
+              return (
+                <motion.button
+                  key={`slot-${slotIdx}`}
+                  onClick={() => filled ? handleTapAnswer(slotIdx) : undefined}
+                  disabled={answered || result !== null || !filled}
+                  className={`w-24 h-16 rounded-xl border-2 flex flex-col items-center justify-center text-base font-semibold transition-all ${
+                    filled
+                      ? `border-solid cursor-pointer active:scale-95 ${CHIP_COLORS[wordIdx % CHIP_COLORS.length]}`
+                      : `border-dashed ${
+                          result === "correct"
+                            ? "border-emerald-400 bg-emerald-50/50 dark:bg-emerald-900/20 dark:border-emerald-500"
+                            : result === "incorrect"
+                            ? "border-red-400 bg-red-50/50 dark:bg-red-900/20 dark:border-red-500"
+                            : "border-zinc-300 bg-white dark:border-slate-600 dark:bg-slate-800/50"
+                        }`
+                  } ${answered || result !== null ? "cursor-default" : ""}`}
+                >
+                  {filled ? (
+                    <span>{filteredWords[wordIdx]}</span>
+                  ) : (
+                    <span className="text-zinc-400 dark:text-slate-500 text-lg font-bold">{slotIdx + 1}</span>
+                  )}
+                </motion.button>
+              );
+            })}
+          </motion.div>
+        ) : (
+          /* Standard mode — dashed box */
+          <>
+            <motion.div
+              className={`flex-1 min-h-[72px] rounded-2xl border-2 border-dashed p-3 flex flex-wrap gap-2 items-center transition-colors ${
+                result === "correct"
+                  ? "border-emerald-400 bg-emerald-50/50 dark:bg-emerald-900/20 dark:border-emerald-500"
+                  : result === "incorrect"
+                  ? "border-red-400 bg-red-50/50 dark:bg-red-900/20 dark:border-red-500"
+                  : "border-zinc-300 bg-white dark:border-slate-600 dark:bg-slate-800/50"
+              }`}
+              animate={
+                shaking
+                  ? { x: [0, -8, 8, -6, 6, -3, 3, 0], transition: { duration: 0.5 } }
+                  : result === "correct"
+                  ? { scale: [1, 1.02, 1], transition: { duration: 0.3 } }
+                  : {}
+              }
+            >
+              {placed.length === 0 && (
+                <span className="text-zinc-400 dark:text-slate-500 text-sm px-2">
+                  Tap words below to build your sentence
+                </span>
+              )}
+              <AnimatePresence mode="popLayout">
+                {placed.map((wordIdx, posIdx) => (
+                  <motion.button
+                    key={`answer-${posIdx}-${wordIdx}`}
+                    onClick={() => handleTapAnswer(posIdx)}
+                    disabled={answered || result !== null}
+                    className={`px-4 py-2 rounded-xl border-2 font-semibold text-base transition-all
+                      ${answered || result !== null ? "cursor-default" : "cursor-pointer active:scale-95"}
+                      ${CHIP_COLORS[wordIdx % CHIP_COLORS.length]}`}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                  >
+                    {filteredWords[wordIdx]}
+                  </motion.button>
+                ))}
+              </AnimatePresence>
+            </motion.div>
+            {/* Fixed trailing punctuation — outside the dashed box */}
+            {trailingPunctuation && (
+              <span className="text-2xl font-bold text-zinc-700 dark:text-slate-300 select-none px-1">
+                {trailingPunctuation}
+              </span>
+            )}
+          </>
         )}
       </div>
 

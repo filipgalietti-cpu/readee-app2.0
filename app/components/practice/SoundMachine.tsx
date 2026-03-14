@@ -10,6 +10,8 @@ interface SoundMachineProps {
   distractors?: string[];
   answered: boolean;
   onAnswer: (isCorrect: boolean, userAnswer: string) => void;
+  onPlayPhoneme?: (phoneme: string) => void;
+  onPlayWord?: (word: string) => void;
 }
 
 const CHIP_COLORS = [
@@ -29,6 +31,8 @@ export function SoundMachine({
   distractors = [],
   answered,
   onAnswer,
+  onPlayPhoneme,
+  onPlayWord,
 }: SoundMachineProps) {
   const slotCount = phonemes.length;
 
@@ -66,13 +70,14 @@ export function SoundMachine({
   const handleTapBank = useCallback(
     (soundIdx: number) => {
       if (answered || result !== null || nextEmptySlot === -1) return;
+      onPlayPhoneme?.(allSounds[soundIdx]);
       setPlaced((prev) => {
         const next = [...prev];
         next[nextEmptySlot] = soundIdx;
         return next;
       });
     },
-    [answered, result, nextEmptySlot]
+    [answered, result, nextEmptySlot, onPlayPhoneme, allSounds]
   );
 
   const handleTapSlot = useCallback(
@@ -88,7 +93,7 @@ export function SoundMachine({
     [answered, result, placed]
   );
 
-  const handleCheck = useCallback(() => {
+  const handleCheck = useCallback(async () => {
     if (!allSlotsFilled || answered || result !== null) return;
     const userPhonemes = placed.map((i) => allSounds[i]);
     const isCorrect = userPhonemes.every((s, i) => s === phonemes[i]);
@@ -105,8 +110,14 @@ export function SoundMachine({
       return;
     }
 
+    // Correct — play target word audio, then fire callback
+    if (onPlayWord) {
+      onPlayWord(targetWord);
+      // Give the word audio a moment to play before advancing
+      await new Promise((r) => setTimeout(r, 1200));
+    }
     onAnswer(true, userAnswer);
-  }, [allSlotsFilled, answered, result, placed, allSounds, phonemes, onAnswer]);
+  }, [allSlotsFilled, answered, result, placed, allSounds, phonemes, onAnswer, onPlayWord, targetWord]);
 
   return (
     <div className="flex flex-col gap-6">

@@ -66,13 +66,13 @@ function playWord(word: string) {
   audio.play().catch(() => {});
 }
 
-/** Check if a point is inside a DOMRect */
-function hitTest(point: { x: number; y: number }, rect: DOMRect) {
+/** Check if a point is inside a DOMRect (with optional margin for touch tolerance) */
+function hitTest(point: { x: number; y: number }, rect: DOMRect, margin = 0) {
   return (
-    point.x >= rect.left &&
-    point.x <= rect.right &&
-    point.y >= rect.top &&
-    point.y <= rect.bottom
+    point.x >= rect.left - margin &&
+    point.x <= rect.right + margin &&
+    point.y >= rect.top - margin &&
+    point.y <= rect.bottom + margin
   );
 }
 
@@ -123,7 +123,7 @@ export function CategorySort({
         const el = bucketRefs.current[cat];
         if (el) {
           const rect = el.getBoundingClientRect();
-          if (hitTest(info.point, rect)) {
+          if (hitTest(info.point, rect, 20)) {
             found = cat;
             break;
           }
@@ -145,7 +145,7 @@ export function CategorySort({
         const el = bucketRefs.current[cat];
         if (el) {
           const rect = el.getBoundingClientRect();
-          if (hitTest(info.point, rect)) {
+          if (hitTest(info.point, rect, 20)) {
             const correctItems = categoryItems[cat] ?? [];
             if (correctItems.includes(item)) {
               // Correct bucket — place it
