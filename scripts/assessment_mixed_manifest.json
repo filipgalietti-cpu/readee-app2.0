@@ -6,8 +6,8 @@
     "standard": "RF.K.1d",
     "type": "mcq",
     "difficulty": "medium",
-    "prompt": "What letter do you see?",
-    "stimulus": "M",
+    "prompt": "Which one is the letter M?",
+    "stimulus": "",
     "stimulus2": "",
     "choices": [
       "N",
@@ -23,15 +23,15 @@
     "right_items": [],
     "correct_pairs": {},
     "correct": "M",
-    "tts_ssml": "<speak> Let's find a letter! Look at each letter carefully.<break time='400ms'/> M.<break time='400ms'/> <emphasis level='moderate'>What letter do you see?</emphasis><break time='400ms'/> What do you think?</speak>",
+    "tts_ssml": "<speak> Let's find a letter! Look at each letter carefully.<break time='400ms'/> <emphasis level='moderate'>Which one is the letter M?</emphasis><break time='400ms'/> What do you think?</speak>",
     "tts_voice_direction": "Read this like a cheerful, clear elementary school teacher reading to a small child:",
-    "hint_tts_ssml": "<speak>Here's a hint! Listen to the story again and look for clues that help answer the question.</speak>",
+    "hint_tts_ssml": "<speak>Here's a hint! Say each choice out loud and listen carefully.</speak>",
     "hint_tts_voice_direction": "Read this like a cheerful, clear elementary school teacher reading to a small child:",
     "audio_filename": "K_M_01.mp3",
     "hint_audio_filename": "K_M_01-hint.mp3",
     "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/assessment/kindergarten/RF.K.1d/K_M_01.mp3",
     "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/assessment/kindergarten/RF.K.1d/K_M_01-hint.mp3",
-    "image_prompt": "Cartoon picture of a child looking at a big colorful letter on a classroom wall, pointing at it with a smile. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+    "image_prompt": "Cartoon picture of a young child sitting and thinking with a finger on their chin, looking curious. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
     "image_filename": "K_M_01.png",
     "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/assessment/kindergarten/RF.K.1d/K_M_01.png"
   },
@@ -52,15 +52,18 @@
     "words": [],
     "left_items": [
       "cat",
-      "sun"
+      "sun",
+      "bed"
     ],
     "right_items": [
+      "red",
       "hat",
       "fun"
     ],
     "correct_pairs": {
       "cat": "hat",
-      "sun": "fun"
+      "sun": "fun",
+      "bed": "red"
     },
     "correct": "",
     "tts_ssml": "<speak> <emphasis level='moderate'>Match the rhyming words.</emphasis><break time='400ms'/> Tap a word on the left, then tap the matching word on the right.</speak>",
@@ -71,7 +74,7 @@
     "hint_audio_filename": "K_M_02-hint.mp3",
     "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/assessment/kindergarten/RF.K.2a/K_M_02.mp3",
     "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/assessment/kindergarten/RF.K.2a/K_M_02-hint.mp3",
-    "image_prompt": "Cartoon picture of a cheerful child clapping and listening to rhyming words, with colorful musical notes floating around them. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+    "image_prompt": "Cartoon picture of a young child sitting and thinking with a finger on their chin, looking curious. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
     "image_filename": "K_M_02.png",
     "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/assessment/kindergarten/RF.K.2a/K_M_02.png"
   },
@@ -525,7 +528,7 @@
     "hint_audio_filename": "G1_E_03-hint.mp3",
     "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/assessment/1st-grade/RF.1.3a/G1_E_03.mp3",
     "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/assessment/1st-grade/RF.1.3a/G1_E_03-hint.mp3",
-    "image_prompt": "Cartoon picture of a child thinking with a thought bubble showing different objects. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+    "image_prompt": "Cartoon picture of a young girl sitting and thinking with a finger on her chin, looking curious and thoughtful. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
     "image_filename": "G1_E_03.png",
     "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/assessment/1st-grade/RF.1.3a/G1_E_03.png"
   },
@@ -536,7 +539,7 @@
     "standard": "L.1.5a",
     "type": "tap_to_pair",
     "difficulty": "easy",
-    "prompt": "Match the word pairs.",
+    "prompt": "Match the Synonyms.",
     "stimulus": "",
     "stimulus2": "",
     "choices": [],
@@ -545,16 +548,16 @@
     "sentence_words": [],
     "words": [],
     "left_items": [
-      "hot",
       "happy",
       "big",
+      "hot",
       "up"
     ],
     "right_items": [
-      "cold",
+      "down",
       "glad",
-      "large",
-      "down"
+      "cold",
+      "large"
     ],
     "correct_pairs": {
       "hot": "cold",
@@ -563,7 +566,7 @@
       "up": "down"
     },
     "correct": "",
-    "tts_ssml": "<speak> <emphasis level='moderate'>Match the word pairs.</emphasis><break time='400ms'/> Tap a word on the left, then tap the matching word on the right.</speak>",
+    "tts_ssml": "<speak> A synonym is a word that means the same thing as another word.<break time='400ms'/> <emphasis level='moderate'>Match the Synonyms.</emphasis><break time='400ms'/> Tap a word on the left, then tap the matching word on the right.</speak>",
     "tts_voice_direction": "Read this like a friendly, clear teacher reading to a student:",
     "hint_tts_ssml": "<speak>Here's a hint! Say each word out loud and listen for the ones that go together.</speak>",
     "hint_tts_voice_direction": "Read this like a friendly, clear teacher reading to a student:",
@@ -723,7 +726,7 @@
     "hint_audio_filename": "G1_I_08-hint.mp3",
     "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/assessment/1st-grade/L.1.5a/G1_I_08.mp3",
     "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/assessment/1st-grade/L.1.5a/G1_I_08-hint.mp3",
-    "image_prompt": "Cartoon picture of a child with different facial expressions showing various emotions, smiling and frowning. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+    "image_prompt": "Cartoon picture of a young child sitting and thinking with a finger on their chin, looking curious and thoughtful. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
     "image_filename": "G1_I_08.png",
     "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/assessment/1st-grade/L.1.5a/G1_I_08.png"
   },
@@ -1158,7 +1161,9 @@
       "rain",
       "map",
       "play",
-      "cat"
+      "cat",
+      "make",
+      "hat"
     ],
     "sentence_words": [],
     "words": [],
@@ -1368,7 +1373,7 @@
     "hint_audio_filename": "G3_M_01-hint.mp3",
     "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/assessment/3rd-grade/RI.3.1/G3_M_01.mp3",
     "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/assessment/3rd-grade/RI.3.1/G3_M_01-hint.mp3",
-    "image_prompt": "Cartoon picture of a cute penguin standing on ice with snowflakes falling, looking happy and warm. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+    "image_prompt": "Cartoon picture of a cute adorable penguin with big eyes, standing and smiling. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
     "image_filename": "G3_M_01.png",
     "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/assessment/3rd-grade/RI.3.1/G3_M_01.png"
   },
@@ -1476,7 +1481,7 @@
     "hint_audio_filename": "G3_E_04-hint.mp3",
     "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/assessment/3rd-grade/L.3.5a/G3_E_04.mp3",
     "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/assessment/3rd-grade/L.3.5a/G3_E_04-hint.mp3",
-    "image_prompt": "Cartoon picture of a child running fast outdoors with wind blowing through their hair, looking excited. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+    "image_prompt": "Cartoon picture of a young child sitting comfortably and reading a colorful book with a happy expression. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
     "image_filename": "G3_E_04.png",
     "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/assessment/3rd-grade/L.3.5a/G3_E_04.png"
   },
@@ -1752,7 +1757,7 @@
     "hint_audio_filename": "G3_I_11-hint.mp3",
     "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/assessment/3rd-grade/L.3.1i/G3_I_11.mp3",
     "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/assessment/3rd-grade/L.3.1i/G3_I_11-hint.mp3",
-    "image_prompt": "Cartoon picture of a child sitting at a desk reading a book and writing in a notebook, looking focused. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+    "image_prompt": "Cartoon picture of a young child sitting and thinking with a finger on their chin, looking curious. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
     "image_filename": "G3_I_11.png",
     "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/assessment/3rd-grade/L.3.1i/G3_I_11.png"
   },
@@ -1934,7 +1939,7 @@
     "hint_audio_filename": "G4_E_04-hint.mp3",
     "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/assessment/4th-grade/L.4.5b/G4_E_04.mp3",
     "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/assessment/4th-grade/L.4.5b/G4_E_04-hint.mp3",
-    "image_prompt": "Cartoon picture of a child sitting at a desk with a lightbulb above their head, having an idea while reading. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+    "image_prompt": "Cartoon picture of a young child sitting and thinking with a finger on their chin, looking curious and thoughtful. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
     "image_filename": "G4_E_04.png",
     "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/assessment/4th-grade/L.4.5b/G4_E_04.png"
   },

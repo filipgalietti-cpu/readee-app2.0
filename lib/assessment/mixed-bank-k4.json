@@ -9,13 +9,11 @@
         "difficulty": "medium",
         "standard": "RF.K.1d",
         "ttsIntro": "Let's find a letter! Look at each letter carefully.",
-        "stimulus": "M",
-        "stimulus_type": "large_letter",
-        "prompt": "What letter do you see?",
+        "prompt": "Which one is the letter M?",
         "choices": ["N", "M", "W", "H"],
         "correct": "M",
         "skipChoiceAudio": true,
-        "imagePromptOverride": "Cartoon picture of a child looking at a big colorful letter on a classroom wall, pointing at it with a smile. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
+        "imagePromptOverride": "Cartoon picture of a young child sitting and thinking with a finger on their chin, looking curious. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "K_M_02",
@@ -23,10 +21,10 @@
         "difficulty": "medium",
         "standard": "RF.K.2a",
         "prompt": "Match the rhyming words.",
-        "leftItems": ["cat", "sun"],
-        "rightItems": ["hat", "fun"],
-        "correctPairs": { "cat": "hat", "sun": "fun" },
-        "imagePromptOverride": "Cartoon picture of a cheerful child clapping and listening to rhyming words, with colorful musical notes floating around them. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
+        "leftItems": ["cat", "sun", "bed"],
+        "rightItems": ["red", "hat", "fun"],
+        "correctPairs": { "cat": "hat", "sun": "fun", "bed": "red" },
+        "imagePromptOverride": "Cartoon picture of a young child sitting and thinking with a finger on their chin, looking curious. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "K_E_04",
@@ -184,16 +182,17 @@
         "prompt": "Which word starts with sh?",
         "choices": ["ship", "sip", "chip", "slip"],
         "correct": "ship",
-        "imagePromptOverride": "Cartoon picture of a child thinking with a thought bubble showing different objects. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
+        "imagePromptOverride": "Cartoon picture of a young girl sitting and thinking with a finger on her chin, looking curious and thoughtful. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "G1_E_04",
         "type": "tap_to_pair",
         "difficulty": "easy",
         "standard": "L.1.5a",
-        "prompt": "Match the word pairs.",
-        "leftItems": ["hot", "happy", "big", "up"],
-        "rightItems": ["cold", "glad", "large", "down"],
+        "ttsIntro": "A synonym is a word that means the same thing as another word.",
+        "prompt": "Match the Synonyms.",
+        "leftItems": ["happy", "big", "hot", "up"],
+        "rightItems": ["down", "glad", "cold", "large"],
         "correctPairs": { "hot": "cold", "happy": "glad", "big": "large", "up": "down" },
         "imagePromptOverride": "Cartoon picture of two children side by side, one sweating in summer heat with a sun, and one bundled up in winter cold with snowflakes. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
@@ -254,7 +253,7 @@
           "Not Happy": ["sad", "upset"]
         },
         "items": ["glad", "sad", "upset", "joyful"],
-        "imagePromptOverride": "Cartoon picture of a child with different facial expressions showing various emotions, smiling and frowning. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
+        "imagePromptOverride": "Cartoon picture of a young child sitting and thinking with a finger on their chin, looking curious and thoughtful. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "G1_I_09",
@@ -394,10 +393,10 @@
           "Short a": "A short a sounds like the a in bag or fan."
         },
         "categoryItems": {
-          "Long a": ["rain", "play"],
-          "Short a": ["map", "cat"]
+          "Long a": ["rain", "play", "make"],
+          "Short a": ["map", "cat", "hat"]
         },
-        "items": ["rain", "map", "play", "cat"],
+        "items": ["rain", "map", "play", "cat", "make", "hat"],
         "imagePromptOverride": "Cartoon picture of a child playing in the rain with a cat nearby. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
@@ -452,7 +451,7 @@
         "prompt": "How do penguins stay warm?",
         "choices": ["They wear fur coats", "They have blubber and waterproof feathers", "They sleep underground", "They flap constantly"],
         "correct": "They have blubber and waterproof feathers",
-        "imagePromptOverride": "Cartoon picture of a cute penguin standing on ice with snowflakes falling, looking happy and warm. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
+        "imagePromptOverride": "Cartoon picture of a cute adorable penguin with big eyes, standing and smiling. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "G3_M_02",
@@ -485,7 +484,7 @@
         "prompt": "Which is a simile?",
         "choices": ["The wind whispered", "She ran like the wind", "The moon is a lantern", "The sun smiled"],
         "correct": "She ran like the wind",
-        "imagePromptOverride": "Cartoon picture of a child running fast outdoors with wind blowing through their hair, looking excited. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
+        "imagePromptOverride": "Cartoon picture of a young child sitting comfortably and reading a colorful book with a happy expression. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "G3_H_05",
@@ -577,7 +576,7 @@
         "prompt": "Build the sentence with a conjunction.",
         "words": ["and", "write", "I", "read", "I"],
         "correctSentence": "I read and I write",
-        "imagePromptOverride": "Cartoon picture of a child sitting at a desk reading a book and writing in a notebook, looking focused. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
+        "imagePromptOverride": "Cartoon picture of a young child sitting and thinking with a finger on their chin, looking curious. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "G3_I_12",
@@ -633,7 +632,7 @@
         "choices": ["She ran like the wind", "Her ideas were seeds", "The rain was cold", "We walked home"],
         "correct": "Her ideas were seeds",
         "hint": "A metaphor says something IS something else. Which sentence compares two things without using like or as?",
-        "imagePromptOverride": "Cartoon picture of a child sitting at a desk with a lightbulb above their head, having an idea while reading. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
+        "imagePromptOverride": "Cartoon picture of a young child sitting and thinking with a finger on their chin, looking curious and thoughtful. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "G4_H_05",
