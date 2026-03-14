@@ -920,6 +920,7 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
             sentenceAudioUrl={q.sentence_audio_url}
             answered={selected !== null}
             onAnswer={handleSentenceBuildAnswer}
+            onPlayItem={playWordAudio}
             ordered={(q as any).ordered}
           />
         ) : q.type === "missing_word" && (q as any).sentence_words && (q as any).missing_choices && (q as any).blank_index !== undefined ? (

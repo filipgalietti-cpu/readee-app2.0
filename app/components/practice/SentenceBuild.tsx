@@ -18,13 +18,16 @@ interface SentenceBuildProps {
 
 const PUNCTUATION = new Set([".", "!", "?"]);
 
-/** Speak a single word using browser SpeechSynthesis */
-function speakWord(word: string) {
-  if (typeof window === "undefined" || !window.speechSynthesis) return;
-  window.speechSynthesis.cancel();
-  const utterance = new SpeechSynthesisUtterance(word);
-  utterance.rate = 0.85;
-  window.speechSynthesis.speak(utterance);
+/** Play a word's audio file */
+function playWord(word: string) {
+  const base = process.env.NEXT_PUBLIC_SUPABASE_URL
+    ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audio`
+    : "";
+  const src = base
+    ? `${base}/words/${word.toLowerCase()}.mp3`
+    : `/audio/words/${word.toLowerCase()}.mp3`;
+  const audio = new Audio(src);
+  audio.play().catch(() => {});
 }
 
 /** Play an audio URL and return a promise that resolves when it ends */
@@ -34,21 +37,6 @@ function playAudioAsync(url: string): Promise<void> {
     audio.addEventListener("ended", () => resolve());
     audio.addEventListener("error", () => resolve());
     audio.play().catch(() => resolve());
-  });
-}
-
-/** Speak a sentence using browser SpeechSynthesis (fallback when no audio URL) */
-function speakSentence(text: string): Promise<void> {
-  return new Promise((resolve) => {
-    if (typeof window === "undefined" || !window.speechSynthesis) {
-      resolve();
-      return;
-    }
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.rate = 0.85;
-    utterance.onend = () => resolve();
-    utterance.onerror = () => resolve();
-    window.speechSynthesis.speak(utterance);
   });
 }
 
@@ -100,7 +88,7 @@ export function SentenceBuild({
   const handleTapBank = useCallback(
     (wordIdx: number) => {
       if (answered || result !== null) return;
-      (onPlayItem || speakWord)(filteredWords[wordIdx]);
+      (onPlayItem || playWord)(filteredWords[wordIdx]);
       setPlaced((prev) => [...prev, wordIdx]);
     },
     [answered, result, filteredWords, onPlayItem]
@@ -132,10 +120,8 @@ export function SentenceBuild({
     }
 
     // Correct — play sentence audio first, then fire callback
-    if (sentenceAudioUrl && sentenceAudioUrl.startsWith("https://")) {
+    if (sentenceAudioUrl) {
       await playAudioAsync(sentenceAudioUrl);
-    } else {
-      await speakSentence(correctSentence);
     }
     onAnswer(true, sentence);
   }, [allPlaced, answered, result, placed, filteredWords, trailingPunctuation, correctSentence, sentenceAudioUrl, onAnswer, ordered]);
