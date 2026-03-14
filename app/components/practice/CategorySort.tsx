@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback, useRef } from "react";
-import { motion, AnimatePresence, PanInfo } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface CategorySortProps {
   prompt: string;
@@ -66,13 +66,13 @@ function playWord(word: string) {
   audio.play().catch(() => {});
 }
 
-/** Check if a point is inside a DOMRect (with optional margin for touch tolerance) */
-function hitTest(point: { x: number; y: number }, rect: DOMRect, margin = 0) {
+/** Check if two rects overlap (with margin) */
+function rectsOverlap(a: DOMRect, b: DOMRect, margin = 0) {
   return (
-    point.x >= rect.left - margin &&
-    point.x <= rect.right + margin &&
-    point.y >= rect.top - margin &&
-    point.y <= rect.bottom + margin
+    a.left < b.right + margin &&
+    a.right > b.left - margin &&
+    a.top < b.bottom + margin &&
+    a.bottom > b.top - margin
   );
 }
 
@@ -88,6 +88,7 @@ export function CategorySort({
   onPlayItem,
 }: CategorySortProps) {
   const bucketRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const bankItemRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const [buckets, setBuckets] = useState<Record<string, string[]>>(() =>
     Object.fromEntries(categories.map((c) => [c, []]))
   );
@@ -115,58 +116,57 @@ export function CategorySort({
     }, 500);
   }, []);
 
-  /** While dragging, highlight whichever bucket the pointer is over */
-  const handleDrag = useCallback(
-    (_event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
-      let found: string | null = null;
+  /** Find which bucket a dragged item overlaps with */
+  const findOverlappingBucket = useCallback(
+    (item: string): string | null => {
+      const draggedEl = bankItemRefs.current[item];
+      if (!draggedEl) return null;
+      const draggedRect = draggedEl.getBoundingClientRect();
       for (const cat of categories) {
         const el = bucketRefs.current[cat];
         if (el) {
           const rect = el.getBoundingClientRect();
-          if (hitTest(info.point, rect, 20)) {
-            found = cat;
-            break;
-          }
+          if (rectsOverlap(draggedRect, rect, 10)) return cat;
         }
       }
-      setDraggingOver(found);
+      return null;
     },
     [categories]
   );
 
-  /** On drop, place item into whichever bucket it lands on */
+  /** While dragging, highlight whichever bucket the tile overlaps */
+  const handleDrag = useCallback(
+    (item: string) => {
+      setDraggingOver(findOverlappingBucket(item));
+    },
+    [findOverlappingBucket]
+  );
+
+  /** On drop, place item into whichever bucket the tile overlaps */
   const handleDragEnd = useCallback(
-    (item: string, _event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
+    (item: string) => {
       setDraggingOver(null);
       setSelectedBankItem(null);
       if (answered || result !== null) return;
 
-      for (const cat of categories) {
-        const el = bucketRefs.current[cat];
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          if (hitTest(info.point, rect, 20)) {
-            const correctItems = categoryItems[cat] ?? [];
-            if (correctItems.includes(item)) {
-              // Correct bucket — place it
-              setBuckets((prev) => ({
-                ...prev,
-                [cat]: [...prev[cat], item],
-              }));
-              flashBucket(cat, "correct");
-              onCorrectPlace?.();
-            } else {
-              // Wrong bucket — reject it (snaps back via dragSnapToOrigin)
-              flashBucket(cat, "incorrect");
-              onIncorrectPlace?.();
-            }
-            return;
-          }
+      const cat = findOverlappingBucket(item);
+      if (cat) {
+        const correctItems = categoryItems[cat] ?? [];
+        if (correctItems.includes(item)) {
+          setBuckets((prev) => ({
+            ...prev,
+            [cat]: [...prev[cat], item],
+          }));
+          flashBucket(cat, "correct");
+          onCorrectPlace?.();
+        } else {
+          flashBucket(cat, "incorrect");
+          onIncorrectPlace?.();
         }
       }
       // Not dropped on a bucket — snaps back automatically
     },
-    [answered, result, categories, categoryItems, flashBucket, onCorrectPlace, onIncorrectPlace]
+    [answered, result, findOverlappingBucket, categoryItems, flashBucket, onCorrectPlace, onIncorrectPlace]
   );
 
   /** Tap an item in a bucket to send it back */
@@ -332,12 +332,13 @@ export function CategorySort({
           {bankItems.map((item, idx) => (
             <motion.div
               key={`bank-${item}`}
+              ref={(el) => { bankItemRefs.current[item] = el as HTMLDivElement | null; }}
               drag={!(answered || result !== null)}
               dragSnapToOrigin
               dragMomentum={false}
               onDragStart={() => (onPlayItem || playWord)(item)}
-              onDrag={handleDrag}
-              onDragEnd={(event, info) => handleDragEnd(item, event, info)}
+              onDrag={() => handleDrag(item)}
+              onDragEnd={() => handleDragEnd(item)}
               onTap={() => handleTapBankItem(item)}
               whileDrag={{ scale: 1.12, zIndex: 50, boxShadow: "0 8px 24px rgba(0,0,0,0.2)" }}
               className={`px-4 py-2 rounded-xl border-2 font-semibold text-base select-none touch-none ${
