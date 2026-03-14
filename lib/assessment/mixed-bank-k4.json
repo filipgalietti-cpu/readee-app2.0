@@ -8,7 +8,7 @@
         "type": "mcq",
         "difficulty": "medium",
         "standard": "RF.K.1d",
-        "ttsIntro": "Let's find a letter! Look at each letter carefully.",
+        "ttsOverride": "Which is the letter M?",
         "prompt": "Which one is the letter M?",
         "choices": ["N", "M", "W", "H"],
         "correct": "M",
@@ -108,16 +108,15 @@
       },
       {
         "id": "K_I_09",
-        "type": "missing_word",
+        "type": "tap_to_pair",
         "difficulty": "medium",
         "standard": "RF.K.2d",
-        "ttsIntro": "Words start with a special sound. Listen to each sound and pick the one that makes a real word!",
-        "prompt": "Pick the beginning sound that completes the word.",
-        "sentenceWords": ["_", "at"],
-        "blankIndex": 0,
-        "missingChoices": ["c", "m", "r", "s"],
-        "correctSentence": "c at",
-        "imagePromptOverride": "Cartoon picture of a cute penguin sitting and thinking with a finger on its chin, looking curious. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
+        "ttsIntro": "Match each beginning sound to the word it makes!",
+        "prompt": "Match the sound to the word.",
+        "leftItems": ["c", "h", "m"],
+        "rightItems": ["mat", "cat", "hat"],
+        "correctPairs": { "c": "cat", "h": "hat", "m": "mat" },
+        "imagePromptOverride": "Cartoon picture of a young child sitting and thinking with a finger on their chin, looking curious. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "K_I_10",
@@ -182,7 +181,7 @@
         "prompt": "Which word starts with sh?",
         "choices": ["ship", "sip", "chip", "slip"],
         "correct": "ship",
-        "imagePromptOverride": "Cartoon picture of a young girl sitting and thinking with a finger on her chin, looking curious and thoughtful. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
+        "imagePromptOverride": "Cartoon picture of a girl thinking. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
         "id": "G1_E_04",
@@ -249,10 +248,10 @@
           "Not Happy": "Antonyms are words that mean the opposite. These words are the opposite of happy."
         },
         "categoryItems": {
-          "Happy": ["glad", "joyful"],
-          "Not Happy": ["sad", "upset"]
+          "Happy": ["glad", "joyful", "cheerful"],
+          "Not Happy": ["sad", "upset", "grumpy"]
         },
-        "items": ["glad", "sad", "upset", "joyful"],
+        "items": ["glad", "sad", "upset", "joyful", "cheerful", "grumpy"],
         "imagePromptOverride": "Cartoon picture of a young child sitting and thinking with a finger on their chin, looking curious and thoughtful. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {

@@ -1,1 +1,3 @@
 lesson_id,filename,script_text,voice_direction
+words,cheerful.mp3,<speak>cheerful</speak>,"Read this like a friendly, clear teacher reading to a student:"
+words,grumpy.mp3,<speak>grumpy</speak>,"Read this like a friendly, clear teacher reading to a student:"

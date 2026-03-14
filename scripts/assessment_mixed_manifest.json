@@ -23,7 +23,7 @@
     "right_items": [],
     "correct_pairs": {},
     "correct": "M",
-    "tts_ssml": "<speak> Let's find a letter! Look at each letter carefully.<break time='400ms'/> <emphasis level='moderate'>Which one is the letter M?</emphasis><break time='400ms'/> What do you think?</speak>",
+    "tts_ssml": "<speak>Which is the letter M?</speak>",
     "tts_voice_direction": "Read this like a cheerful, clear elementary school teacher reading to a small child:",
     "hint_tts_ssml": "<speak>Here's a hint! Say each choice out loud and listen carefully.</speak>",
     "hint_tts_voice_direction": "Read this like a cheerful, clear elementary school teacher reading to a small child:",
@@ -278,37 +278,41 @@
     "level": "Kindergarten",
     "grade_key": "kindergarten",
     "standard": "RF.K.2d",
-    "type": "missing_word",
+    "type": "tap_to_pair",
     "difficulty": "medium",
-    "prompt": "Pick the beginning sound that completes the word.",
+    "prompt": "Match the sound to the word.",
     "stimulus": "",
     "stimulus2": "",
-    "choices": [
-      "c",
-      "m",
-      "r",
-      "s"
-    ],
+    "choices": [],
     "categories": [],
     "items": [],
-    "sentence_words": [
-      "_",
-      "at"
-    ],
+    "sentence_words": [],
     "words": [],
-    "left_items": [],
-    "right_items": [],
-    "correct_pairs": {},
-    "correct": "c at",
-    "tts_ssml": "<speak> Words start with a special sound. Listen to each sound and pick the one that makes a real word!<break time='400ms'/> <emphasis level='moderate'>Pick the beginning sound that completes the word.</emphasis><break time='400ms'/> What is the beginning sound in the word cat?<break time='400ms'/> c? <break time='400ms'/> m? <break time='400ms'/> r? <break time='400ms'/> or s? <break time='400ms'/> Which sound completes the word?</speak>",
+    "left_items": [
+      "c",
+      "h",
+      "m"
+    ],
+    "right_items": [
+      "mat",
+      "cat",
+      "hat"
+    ],
+    "correct_pairs": {
+      "c": "cat",
+      "h": "hat",
+      "m": "mat"
+    },
+    "correct": "",
+    "tts_ssml": "<speak> Match each beginning sound to the word it makes!<break time='400ms'/> <emphasis level='moderate'>Match the sound to the word.</emphasis><break time='400ms'/> Tap a word on the left, then tap the matching word on the right.</speak>",
     "tts_voice_direction": "Read this like a cheerful, clear elementary school teacher reading to a small child:",
-    "hint_tts_ssml": "<speak>Here's a hint! Try each sound at the beginning and see which one makes a real word.</speak>",
+    "hint_tts_ssml": "<speak>Here's a hint! Say each word out loud and listen for the ones that go together.</speak>",
     "hint_tts_voice_direction": "Read this like a cheerful, clear elementary school teacher reading to a small child:",
     "audio_filename": "K_I_09.mp3",
     "hint_audio_filename": "K_I_09-hint.mp3",
     "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/assessment/kindergarten/RF.K.2d/K_I_09.mp3",
     "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/assessment/kindergarten/RF.K.2d/K_I_09-hint.mp3",
-    "image_prompt": "Cartoon picture of a cute penguin sitting and thinking with a finger on its chin, looking curious. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+    "image_prompt": "Cartoon picture of a young child sitting and thinking with a finger on their chin, looking curious. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
     "image_filename": "K_I_09.png",
     "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/assessment/kindergarten/RF.K.2d/K_I_09.png"
   },
@@ -528,7 +532,7 @@
     "hint_audio_filename": "G1_E_03-hint.mp3",
     "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/assessment/1st-grade/RF.1.3a/G1_E_03.mp3",
     "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/assessment/1st-grade/RF.1.3a/G1_E_03-hint.mp3",
-    "image_prompt": "Cartoon picture of a young girl sitting and thinking with a finger on her chin, looking curious and thoughtful. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+    "image_prompt": "Cartoon picture of a girl thinking. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
     "image_filename": "G1_E_03.png",
     "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/assessment/1st-grade/RF.1.3a/G1_E_03.png"
   },
@@ -710,7 +714,9 @@
       "glad",
       "sad",
       "upset",
-      "joyful"
+      "joyful",
+      "cheerful",
+      "grumpy"
     ],
     "sentence_words": [],
     "words": [],

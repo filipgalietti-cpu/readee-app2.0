@@ -203,6 +203,10 @@ function buildImagePrompt(item) {
 /* ── SSML builders (per question type) ─────────────── */
 
 function buildMCQ_SSML(item) {
+  if (item.ttsOverride) {
+    return applyFlowFix(`<speak>${escapeSSML(item.ttsOverride)}</speak>`);
+  }
+
   let ssml = "<speak>";
 
   // Optional intro (definitions like "A synonym is a word that means the same.")
