@@ -9,7 +9,7 @@
         "difficulty": "medium",
         "standard": "RF.K.1d",
         "ttsOverride": "Which is the letter M?",
-        "prompt": "Which one is the letter M?",
+        "prompt": "Find the correct letter.",
         "choices": ["N", "M", "W", "H"],
         "correct": "M",
         "skipChoiceAudio": true,
