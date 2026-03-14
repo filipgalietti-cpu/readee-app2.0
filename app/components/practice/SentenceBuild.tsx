@@ -18,16 +18,13 @@ interface SentenceBuildProps {
 
 const PUNCTUATION = new Set([".", "!", "?"]);
 
-/** Play a word's audio file */
-function playWord(word: string) {
-  const base = process.env.NEXT_PUBLIC_SUPABASE_URL
-    ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audio`
-    : "";
-  const src = base
-    ? `${base}/words/${word.toLowerCase()}.mp3`
-    : `/audio/words/${word.toLowerCase()}.mp3`;
-  const audio = new Audio(src);
-  audio.play().catch(() => {});
+/** Speak a single word using browser SpeechSynthesis */
+function speakWord(word: string) {
+  if (typeof window === "undefined" || !window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  const utterance = new SpeechSynthesisUtterance(word);
+  utterance.rate = 0.85;
+  window.speechSynthesis.speak(utterance);
 }
 
 /** Play an audio URL and return a promise that resolves when it ends */
@@ -103,7 +100,7 @@ export function SentenceBuild({
   const handleTapBank = useCallback(
     (wordIdx: number) => {
       if (answered || result !== null) return;
-      (onPlayItem || playWord)(filteredWords[wordIdx]);
+      (onPlayItem || speakWord)(filteredWords[wordIdx]);
       setPlaced((prev) => [...prev, wordIdx]);
     },
     [answered, result, filteredWords, onPlayItem]
