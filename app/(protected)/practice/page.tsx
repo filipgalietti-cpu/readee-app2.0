@@ -478,7 +478,7 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase]);
 
-  /* ── Play word-level audio (for CategorySort / TapToPair tiles) ── */
+  /* ── Play word-level audio (for CategorySort / TapToPair / SentenceBuild tiles) ── */
   const playWordAudio = useCallback((word: string) => {
     const clean = word.replace(/[^a-zA-Z0-9 ]/g, "").toLowerCase().replace(/\s+/g, "_");
     if (!clean) return;
@@ -486,7 +486,7 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
       ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audio`
       : "";
     const src = base ? `${base}/words/${clean}.mp3` : `/audio/words/${clean}.mp3`;
-    playUrl(src);
+    playUrl(src, 0);
   }, [playUrl]);
 
   /* ── Play phoneme audio (for SoundMachine tiles) ── */
@@ -503,7 +503,7 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
     if (!id) return;
     const base = process.env.NEXT_PUBLIC_SUPABASE_URL;
     if (!base) return;
-    playUrl(`${base}/storage/v1/object/public/audio/phonemes/${id}.mp3`);
+    playUrl(`${base}/storage/v1/object/public/audio/phonemes/${id}.mp3`, 0);
   }, [playUrl]);
 
   /* ── Smart item audio: detects /phoneme/ format and routes accordingly ── */
