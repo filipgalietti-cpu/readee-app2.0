@@ -173,8 +173,8 @@ function buildImagePrompt(item) {
     return "";
   }
 
-  // Tap to pair → use override or no image
-  if (item.type === "tap_to_pair") {
+  // Tap to pair / word builder → use override or no image
+  if (item.type === "tap_to_pair" || item.type === "word_builder") {
     return "";
   }
 
@@ -372,6 +372,16 @@ function buildTapToPair_SSML(item) {
   return applyFlowFix(ssml);
 }
 
+function buildWordBuilder_SSML(item) {
+  if (item.ttsOverride) {
+    return applyFlowFix(`<speak>${escapeSSML(item.ttsOverride)}</speak>`);
+  }
+  let ssml = "<speak>";
+  ssml += ` <emphasis level='moderate'>${speakText(item.prompt)}</emphasis>`;
+  ssml += "</speak>";
+  return applyFlowFix(ssml);
+}
+
 function buildQuestionSSML(item) {
   switch (item.type) {
     case "mcq":
@@ -384,6 +394,8 @@ function buildQuestionSSML(item) {
       return buildSentenceBuild_SSML(item);
     case "tap_to_pair":
       return buildTapToPair_SSML(item);
+    case "word_builder":
+      return buildWordBuilder_SSML(item);
     default:
       return `<speak>${speakText(item.prompt)}</speak>`;
   }
@@ -457,6 +469,8 @@ function buildHintSSML(item) {
     hint = "Which word sounds like it comes first? Start there and read it out loud.";
   } else if (item.type === "tap_to_pair") {
     hint = "Say each word out loud and listen for the ones that go together.";
+  } else if (item.type === "word_builder") {
+    hint = `Try different letters at the beginning. Which ones make a real word that ends with ${speakText(item.wordEnding || "at")}?`;
   } else {
     hint = "Take your time and use the clues in the question.";
   }
@@ -514,7 +528,7 @@ function verifyManifest(manifest) {
     }
 
     // Image prompt sanity (category_sort and tap_to_pair don't need images)
-    if (!item.image_prompt && item.type !== "category_sort" && item.type !== "tap_to_pair") {
+    if (!item.image_prompt && item.type !== "category_sort" && item.type !== "tap_to_pair" && item.type !== "word_builder") {
       issues.push({ id: item.id, issue: "Missing image prompt" });
     }
     if (item.image_url && !item.image_url.includes("/assessment/")) {
@@ -575,6 +589,9 @@ function main() {
         left_items: Array.isArray(item.leftItems) ? item.leftItems : [],
         right_items: Array.isArray(item.rightItems) ? item.rightItems : [],
         correct_pairs: item.correctPairs || {},
+        word_ending: item.wordEnding || "",
+        valid_words: Array.isArray(item.validWords) ? item.validWords : [],
+        max_attempts: item.maxAttempts || 0,
         correct: item.correct || item.correctSentence || "",
         tts_ssml: ttsSSML,
         tts_voice_direction: grade.voiceDirection,

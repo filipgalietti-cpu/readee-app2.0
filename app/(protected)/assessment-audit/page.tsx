@@ -11,7 +11,7 @@ import { MigrateLocalStorage } from "@/app/components/audit/MigrateLocalStorage"
 
 /* ── Types ────────────────────────────────────────────── */
 
-type QuestionType = "mcq" | "category_sort" | "missing_word" | "sentence_build" | "tap_to_pair";
+type QuestionType = "mcq" | "category_sort" | "missing_word" | "sentence_build" | "tap_to_pair" | "word_builder";
 type GradeFilter = "all" | "kindergarten" | "1st" | "2nd" | "3rd" | "4th";
 type TypeFilter = "all" | QuestionType;
 
@@ -32,6 +32,9 @@ interface AuditQuestion {
   left_items: string[];
   right_items: string[];
   correct_pairs: Record<string, string>;
+  word_ending: string;
+  valid_words: string[];
+  max_attempts: number;
   categoryItems?: Record<string, string[]>;
   items: string[];
   sentence_words: string[];
@@ -64,6 +67,9 @@ function buildQuestions(): AuditQuestion[] {
       right_items: m.right_items ?? [],
       correct_pairs: m.correct_pairs ?? {},
       stimulus2: m.stimulus2 ?? "",
+      word_ending: m.word_ending ?? "",
+      valid_words: m.valid_words ?? [],
+      max_attempts: m.max_attempts ?? 0,
     };
   });
 }
@@ -88,6 +94,7 @@ const TYPE_LABELS: { key: TypeFilter; label: string }[] = [
   { key: "missing_word", label: "Missing Word" },
   { key: "sentence_build", label: "Sentence Build" },
   { key: "tap_to_pair", label: "Tap to Pair" },
+  { key: "word_builder", label: "Word Builder" },
 ];
 
 const TYPE_BADGE: Record<QuestionType, { bg: string; text: string }> = {
@@ -96,6 +103,7 @@ const TYPE_BADGE: Record<QuestionType, { bg: string; text: string }> = {
   missing_word: { bg: "bg-amber-100 dark:bg-amber-900/50", text: "text-amber-700 dark:text-amber-300" },
   sentence_build: { bg: "bg-emerald-100 dark:bg-emerald-900/50", text: "text-emerald-700 dark:text-emerald-300" },
   tap_to_pair: { bg: "bg-pink-100 dark:bg-pink-900/50", text: "text-pink-700 dark:text-pink-300" },
+  word_builder: { bg: "bg-cyan-100 dark:bg-cyan-900/50", text: "text-cyan-700 dark:text-cyan-300" },
 };
 
 const DIFFICULTY_BADGE: Record<string, string> = {
@@ -482,6 +490,7 @@ export default function AssessmentAuditPage() {
               {q.type === "missing_word" && <MissingWordView q={q} />}
               {q.type === "sentence_build" && <SentenceBuildView q={q} />}
               {q.type === "tap_to_pair" && <TapToPairView q={q} />}
+              {q.type === "word_builder" && <WordBuilderView q={q} />}
             </div>
 
             {/* Rating buttons */}
@@ -841,6 +850,48 @@ function TapToPairView({ q }: { q: AuditQuestion }) {
             </div>
           ))}
         </div>
+      </div>
+    </div>
+  );
+}
+
+/* ── Word Builder View ────────────────────────────────── */
+
+function WordBuilderView({ q }: { q: AuditQuestion }) {
+  return (
+    <div className="space-y-4">
+      {/* Blank + ending display */}
+      <div className="flex items-center justify-center gap-1">
+        <span className="inline-flex items-center justify-center w-12 h-12 rounded-lg border-2 border-dashed border-indigo-400 bg-indigo-50 dark:bg-indigo-900/20 text-lg font-bold text-indigo-500">
+          _
+        </span>
+        <span className="text-2xl font-bold text-zinc-800 dark:text-slate-200">
+          {q.word_ending}
+        </span>
+      </div>
+
+      {/* Valid words */}
+      <div>
+        <p className="text-xs font-semibold text-zinc-400 dark:text-slate-500 uppercase mb-1.5">
+          Valid words ({q.valid_words.length})
+        </p>
+        <div className="flex flex-wrap gap-1.5 justify-center">
+          {q.valid_words.map((word) => (
+            <span
+              key={word}
+              className="rounded-lg px-3 py-1.5 text-sm font-semibold border-2 border-emerald-300 bg-emerald-50 text-emerald-700 dark:bg-emerald-900/20 dark:text-emerald-300 dark:border-emerald-600"
+            >
+              {word}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* Max attempts */}
+      <div className="text-center">
+        <p className="text-xs text-zinc-400 dark:text-slate-500">
+          Max attempts: <span className="font-bold">{q.max_attempts}</span> &middot; Kid types a letter + enter, word validated as real or nonsense
+        </p>
       </div>
     </div>
   );

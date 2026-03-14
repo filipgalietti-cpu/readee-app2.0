@@ -108,14 +108,14 @@
       },
       {
         "id": "K_I_09",
-        "type": "tap_to_pair",
+        "type": "word_builder",
         "difficulty": "medium",
         "standard": "RF.K.2d",
-        "ttsIntro": "Match each beginning sound to the word it makes!",
-        "prompt": "Match the sound to the word.",
-        "leftItems": ["c", "h", "m"],
-        "rightItems": ["mat", "cat", "hat"],
-        "correctPairs": { "c": "cat", "h": "hat", "m": "mat" },
+        "ttsOverride": "Make as many words that end with at as possible.",
+        "prompt": "Make words that end with -at.",
+        "wordEnding": "at",
+        "validWords": ["bat", "cat", "fat", "hat", "mat", "pat", "rat", "sat", "vat"],
+        "maxAttempts": 10,
         "imagePromptOverride": "Cartoon picture of a young child sitting and thinking with a finger on their chin, looking curious. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels."
       },
       {
