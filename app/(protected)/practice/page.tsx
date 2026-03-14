@@ -478,6 +478,9 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase]);
 
+  /* ── Ref for standalone word/phoneme audio (bypasses Howler) ── */
+  const tileAudioRef = useRef<HTMLAudioElement | null>(null);
+
   /* ── Play word-level audio (for CategorySort / TapToPair / SentenceBuild tiles) ── */
   const playWordAudio = useCallback((word: string) => {
     const clean = word.replace(/[^a-zA-Z0-9 ]/g, "").toLowerCase().replace(/\s+/g, "_");
@@ -486,8 +489,12 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
       ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audio`
       : "";
     const src = base ? `${base}/words/${clean}.mp3` : `/audio/words/${clean}.mp3`;
-    playUrl(src, 0);
-  }, [playUrl]);
+    stop();
+    if (tileAudioRef.current) { tileAudioRef.current.pause(); tileAudioRef.current = null; }
+    const audio = new Audio(src);
+    tileAudioRef.current = audio;
+    audio.play().catch(() => {});
+  }, [stop]);
 
   /* ── Play phoneme audio (for SoundMachine tiles) ── */
   const playPhonemeAudio = useCallback((phoneme: string) => {
@@ -503,8 +510,12 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
     if (!id) return;
     const base = process.env.NEXT_PUBLIC_SUPABASE_URL;
     if (!base) return;
-    playUrl(`${base}/storage/v1/object/public/audio/phonemes/${id}.mp3`, 0);
-  }, [playUrl]);
+    stop();
+    if (tileAudioRef.current) { tileAudioRef.current.pause(); tileAudioRef.current = null; }
+    const audio = new Audio(`${base}/storage/v1/object/public/audio/phonemes/${id}.mp3`);
+    tileAudioRef.current = audio;
+    audio.play().catch(() => {});
+  }, [stop]);
 
   /* ── Smart item audio: detects /phoneme/ format and routes accordingly ── */
   const playItemSmart = useCallback((item: string) => {
