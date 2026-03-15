@@ -71,8 +71,8 @@ export function SentenceBuild({
   const [result, setResult] = useState<"correct" | "incorrect" | null>(null);
   const [shaking, setShaking] = useState(false);
 
-  // Ref to track current word audio element
-  const wordAudioRef = useRef<HTMLAudioElement | null>(null);
+  // DOM-embedded audio element for reliable playback
+  const audioElRef = useRef<HTMLAudioElement | null>(null);
 
   const bankIndices = filteredWords
     .map((_, i) => i)
@@ -80,34 +80,27 @@ export function SentenceBuild({
 
   const allPlaced = placed.length === filteredWords.length;
 
-  /** Play a word directly via native Audio — no Howler, no props */
+  /** Play a word via the DOM-embedded <audio> element */
   const playWordDirect = useCallback((word: string) => {
-    // Stop any previous word audio
-    if (wordAudioRef.current) {
-      wordAudioRef.current.pause();
-      wordAudioRef.current = null;
-    }
+    const el = audioElRef.current;
+    if (!el) return;
     const clean = word.replace(/[^a-zA-Z0-9 ]/g, "").toLowerCase().replace(/\s+/g, "_");
     if (!clean) return;
     const src = SUPABASE_AUDIO_BASE
       ? `${SUPABASE_AUDIO_BASE}/words/${clean}.mp3`
       : `/audio/words/${clean}.mp3`;
-    const audio = new Audio(src);
-    wordAudioRef.current = audio;
-    audio.play().catch(() => {});
+    el.src = src;
+    el.play().catch(() => {});
   }, []);
 
   const handleTapBank = useCallback(
     (wordIdx: number) => {
       if (answered || result !== null) return;
       const word = filteredWords[wordIdx];
-      // Play audio directly — don't rely on prop chain
       playWordDirect(word);
-      // Also notify parent if callback exists
-      if (onPlayItem) onPlayItem(word);
       setPlaced((prev) => [...prev, wordIdx]);
     },
-    [answered, result, filteredWords, onPlayItem, playWordDirect]
+    [answered, result, filteredWords, playWordDirect]
   );
 
   const handleTapAnswer = useCallback(
@@ -310,6 +303,9 @@ export function SentenceBuild({
           CHECK
         </motion.button>
       )}
+      {/* Hidden audio element for word playback */}
+      {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
+      <audio ref={audioElRef} preload="none" className="hidden" />
     </div>
   );
 }
