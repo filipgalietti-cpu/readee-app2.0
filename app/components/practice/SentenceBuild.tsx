@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useMemo } from "react";
+import { useState, useCallback, useMemo, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface SentenceBuildProps {
@@ -18,17 +18,9 @@ interface SentenceBuildProps {
 
 const PUNCTUATION = new Set([".", "!", "?"]);
 
-/** Play a word's audio file */
-function playWord(word: string) {
-  const base = process.env.NEXT_PUBLIC_SUPABASE_URL
-    ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audio`
-    : "";
-  const src = base
-    ? `${base}/words/${word.toLowerCase()}.mp3`
-    : `/audio/words/${word.toLowerCase()}.mp3`;
-  const audio = new Audio(src);
-  audio.play().catch(() => {});
-}
+const SUPABASE_AUDIO_BASE = process.env.NEXT_PUBLIC_SUPABASE_URL
+  ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audio`
+  : "";
 
 /** Play an audio URL and return a promise that resolves when it ends */
 function playAudioAsync(url: string): Promise<void> {
@@ -79,21 +71,43 @@ export function SentenceBuild({
   const [result, setResult] = useState<"correct" | "incorrect" | null>(null);
   const [shaking, setShaking] = useState(false);
 
+  // Ref to track current word audio element
+  const wordAudioRef = useRef<HTMLAudioElement | null>(null);
+
   const bankIndices = filteredWords
     .map((_, i) => i)
     .filter((i) => !placed.includes(i));
 
   const allPlaced = placed.length === filteredWords.length;
 
+  /** Play a word directly via native Audio — no Howler, no props */
+  const playWordDirect = useCallback((word: string) => {
+    // Stop any previous word audio
+    if (wordAudioRef.current) {
+      wordAudioRef.current.pause();
+      wordAudioRef.current = null;
+    }
+    const clean = word.replace(/[^a-zA-Z0-9 ]/g, "").toLowerCase().replace(/\s+/g, "_");
+    if (!clean) return;
+    const src = SUPABASE_AUDIO_BASE
+      ? `${SUPABASE_AUDIO_BASE}/words/${clean}.mp3`
+      : `/audio/words/${clean}.mp3`;
+    const audio = new Audio(src);
+    wordAudioRef.current = audio;
+    audio.play().catch(() => {});
+  }, []);
+
   const handleTapBank = useCallback(
     (wordIdx: number) => {
       if (answered || result !== null) return;
       const word = filteredWords[wordIdx];
-      console.log("[SentenceBuild] tap:", word, "onPlayItem?", !!onPlayItem);
-      (onPlayItem || playWord)(word);
+      // Play audio directly — don't rely on prop chain
+      playWordDirect(word);
+      // Also notify parent if callback exists
+      if (onPlayItem) onPlayItem(word);
       setPlaced((prev) => [...prev, wordIdx]);
     },
-    [answered, result, filteredWords, onPlayItem]
+    [answered, result, filteredWords, onPlayItem, playWordDirect]
   );
 
   const handleTapAnswer = useCallback(
@@ -222,10 +236,11 @@ export function SentenceBuild({
               )}
               <AnimatePresence mode="popLayout">
                 {placed.map((wordIdx, posIdx) => (
-                  <motion.div
+                  <motion.button
                     key={`answer-${posIdx}-${wordIdx}`}
-                    onTap={() => { if (!(answered || result !== null)) handleTapAnswer(posIdx); }}
-                    className={`px-4 py-2 rounded-xl border-2 font-semibold text-base transition-all select-none
+                    onClick={() => handleTapAnswer(posIdx)}
+                    disabled={answered || result !== null}
+                    className={`px-4 py-2 rounded-xl border-2 font-semibold text-base transition-all
                       ${answered || result !== null ? "cursor-default" : "cursor-pointer active:scale-95"}
                       ${CHIP_COLORS[wordIdx % CHIP_COLORS.length]}`}
                     initial={{ opacity: 0, scale: 0.8 }}
@@ -234,7 +249,7 @@ export function SentenceBuild({
                     transition={{ type: "spring", stiffness: 500, damping: 30 }}
                   >
                     {filteredWords[wordIdx]}
-                  </motion.div>
+                  </motion.button>
                 ))}
               </AnimatePresence>
             </motion.div>
@@ -252,10 +267,11 @@ export function SentenceBuild({
       <div className="flex flex-wrap gap-2 justify-center min-h-[48px]">
         <AnimatePresence mode="popLayout">
           {bankIndices.map((wordIdx) => (
-            <motion.div
+            <motion.button
               key={`bank-${wordIdx}`}
-              onTap={() => { if (!(answered || result !== null)) handleTapBank(wordIdx); }}
-              className={`px-4 py-2 rounded-xl border-2 font-semibold text-base transition-all select-none
+              onClick={() => handleTapBank(wordIdx)}
+              disabled={answered || result !== null}
+              className={`px-4 py-2 rounded-xl border-2 font-semibold text-base transition-all
                 ${answered || result !== null ? "cursor-default opacity-40" : "cursor-pointer hover:scale-105 active:scale-95"}
                 ${CHIP_COLORS[wordIdx % CHIP_COLORS.length]}`}
               initial={{ opacity: 0, scale: 0.8 }}
@@ -264,7 +280,7 @@ export function SentenceBuild({
               transition={{ type: "spring", stiffness: 500, damping: 30 }}
             >
               {filteredWords[wordIdx]}
-            </motion.div>
+            </motion.button>
           ))}
         </AnimatePresence>
       </div>
