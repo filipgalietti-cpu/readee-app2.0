@@ -186,8 +186,10 @@ export default function KInteractiveAuditPage() {
             words={q.words || []}
             correctSentence={q.correct}
             sentenceHint={q.sentence_hint}
+            questionId={q.id}
             answered={answered}
             onAnswer={(isCorrect) => onAnswer(isCorrect)}
+            onPlayItem={playWordAudio}
           />
         );
       case "category_sort":
