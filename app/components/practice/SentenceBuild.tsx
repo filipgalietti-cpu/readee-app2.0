@@ -100,6 +100,9 @@ export function SentenceBuild({
     const sentence = placed.map((i) => filteredWords[i]).join(" ") + suffix;
     const target = ordered ? correctSentence.replace(/[.!?]$/, "") : correctSentence;
     const isCorrect = sentence === target;
+
+    console.log("[SentenceBuild CHECK]", { sentence, target, isCorrect, sentenceAudioUrl });
+
     setResult(isCorrect ? "correct" : "incorrect");
 
     if (!isCorrect) {
@@ -111,14 +114,14 @@ export function SentenceBuild({
       return;
     }
 
-    // Correct — play sentence readback via Howler, then advance
+    // Correct — play sentence readback via Howler (fire-and-forget, same pattern as tile audio)
     if (sentenceAudioUrl) {
-      const howl = new Howl({ src: [sentenceAudioUrl] });
-      howl.once("end", () => onAnswer(true, sentence));
-      howl.once("loaderror", () => onAnswer(true, sentence));
-      howl.once("playerror", () => onAnswer(true, sentence));
-      howl.play();
+      console.log("[SentenceBuild] playing readback:", sentenceAudioUrl);
+      new Howl({ src: [sentenceAudioUrl] }).play();
+      // Advance after delay to let the sentence play out
+      setTimeout(() => onAnswer(true, sentence), 2500);
     } else {
+      console.log("[SentenceBuild] no sentenceAudioUrl, advancing immediately");
       onAnswer(true, sentence);
     }
   }, [allPlaced, answered, result, placed, filteredWords, trailingPunctuation, correctSentence, sentenceAudioUrl, onAnswer, ordered]);
