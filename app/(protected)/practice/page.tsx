@@ -929,7 +929,7 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
             correctSentence={q.correct}
             sentenceHint={q.sentence_hint}
             sentenceAudioUrl={q.sentence_audio_url}
-            questionAudioUrl={q.audio_url}
+            questionId={q.id}
             answered={selected !== null}
             onAnswer={handleSentenceBuildAnswer}
             onPlayItem={playWordAudio}

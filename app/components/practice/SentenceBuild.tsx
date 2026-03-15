@@ -11,7 +11,7 @@ interface SentenceBuildProps {
   correctSentence: string;
   sentenceHint?: string;
   sentenceAudioUrl?: string;
-  questionAudioUrl?: string;
+  questionId?: string;
   answered: boolean;
   onAnswer: (isCorrect: boolean, placedSentence: string) => void;
   onPlayItem?: (word: string) => void;
@@ -42,7 +42,7 @@ export function SentenceBuild({
   correctSentence,
   sentenceHint,
   sentenceAudioUrl,
-  questionAudioUrl,
+  questionId,
   answered,
   onAnswer,
   onPlayItem,
@@ -115,14 +115,20 @@ export function SentenceBuild({
     }
 
     // Correct — play sentence readback via Howler (fire-and-forget, same as tile audio)
-    const readbackUrl = sentenceAudioUrl || (questionAudioUrl ? questionAudioUrl.replace(/\.mp3$/, "-sentence.mp3") : null);
+    // Build URL the same way tile audio works: SUPABASE_AUDIO_BASE + path
+    // e.g. RF.K.1a-Q6 → kindergarten/RF.K.1a/RF.K.1a-Q6-sentence.mp3
+    let readbackUrl = sentenceAudioUrl;
+    if (!readbackUrl && questionId && SUPABASE_AUDIO_BASE) {
+      const standard = questionId.replace(/-Q\d+$/, ""); // RF.K.1a-Q6 → RF.K.1a
+      readbackUrl = `${SUPABASE_AUDIO_BASE}/kindergarten/${standard}/${questionId}-sentence.mp3`;
+    }
     if (readbackUrl) {
       new Howl({ src: [readbackUrl] }).play();
       setTimeout(() => onAnswer(true, sentence), 2500);
     } else {
       onAnswer(true, sentence);
     }
-  }, [allPlaced, answered, result, placed, filteredWords, trailingPunctuation, correctSentence, sentenceAudioUrl, onAnswer, ordered]);
+  }, [allPlaced, answered, result, placed, filteredWords, trailingPunctuation, correctSentence, sentenceAudioUrl, questionId, onAnswer, ordered]);
 
   return (
     <div className="flex flex-col gap-6">
