@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useCallback, useMemo, useRef } from "react";
+import { useState, useCallback, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Howl } from "howler";
 
 interface SentenceBuildProps {
   prompt: string;
@@ -22,13 +23,14 @@ const SUPABASE_AUDIO_BASE = process.env.NEXT_PUBLIC_SUPABASE_URL
   ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audio`
   : "";
 
-/** Play an audio URL and return a promise that resolves when it ends */
+/** Play an audio URL via Howler and return a promise that resolves when it ends */
 function playAudioAsync(url: string): Promise<void> {
   return new Promise((resolve) => {
-    const audio = new Audio(url);
-    audio.addEventListener("ended", () => resolve());
-    audio.addEventListener("error", () => resolve());
-    audio.play().catch(() => resolve());
+    const howl = new Howl({ src: [url] });
+    howl.once("end", () => resolve());
+    howl.once("loaderror", () => resolve());
+    howl.once("playerror", () => resolve());
+    howl.play();
   });
 }
 
@@ -71,36 +73,27 @@ export function SentenceBuild({
   const [result, setResult] = useState<"correct" | "incorrect" | null>(null);
   const [shaking, setShaking] = useState(false);
 
-  // DOM-embedded audio element for reliable playback
-  const audioElRef = useRef<HTMLAudioElement | null>(null);
-
   const bankIndices = filteredWords
     .map((_, i) => i)
     .filter((i) => !placed.includes(i));
 
   const allPlaced = placed.length === filteredWords.length;
 
-  /** Play a word via the DOM-embedded <audio> element */
-  const playWordDirect = useCallback((word: string) => {
-    const el = audioElRef.current;
-    if (!el) return;
-    const clean = word.replace(/[^a-zA-Z0-9 ]/g, "").toLowerCase().replace(/\s+/g, "_");
-    if (!clean) return;
-    const src = SUPABASE_AUDIO_BASE
-      ? `${SUPABASE_AUDIO_BASE}/words/${clean}.mp3`
-      : `/audio/words/${clean}.mp3`;
-    el.src = src;
-    el.play().catch(() => {});
-  }, []);
-
   const handleTapBank = useCallback(
     (wordIdx: number) => {
       if (answered || result !== null) return;
       const word = filteredWords[wordIdx];
-      playWordDirect(word);
+      // Play word via Howler (same engine that plays question TTS)
+      const clean = word.replace(/[^a-zA-Z0-9 ]/g, "").toLowerCase().replace(/\s+/g, "_");
+      if (clean) {
+        const src = SUPABASE_AUDIO_BASE
+          ? `${SUPABASE_AUDIO_BASE}/words/${clean}.mp3`
+          : `/audio/words/${clean}.mp3`;
+        new Howl({ src: [src] }).play();
+      }
       setPlaced((prev) => [...prev, wordIdx]);
     },
-    [answered, result, filteredWords, playWordDirect]
+    [answered, result, filteredWords]
   );
 
   const handleTapAnswer = useCallback(
@@ -303,9 +296,6 @@ export function SentenceBuild({
           CHECK
         </motion.button>
       )}
-      {/* Hidden audio element for word playback */}
-      {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
-      <audio ref={audioElRef} preload="none" className="hidden" />
     </div>
   );
 }
