@@ -222,11 +222,10 @@ export function SentenceBuild({
               )}
               <AnimatePresence mode="popLayout">
                 {placed.map((wordIdx, posIdx) => (
-                  <motion.button
+                  <motion.div
                     key={`answer-${posIdx}-${wordIdx}`}
-                    onClick={() => handleTapAnswer(posIdx)}
-                    disabled={answered || result !== null}
-                    className={`px-4 py-2 rounded-xl border-2 font-semibold text-base transition-all
+                    onTap={() => { if (!(answered || result !== null)) handleTapAnswer(posIdx); }}
+                    className={`px-4 py-2 rounded-xl border-2 font-semibold text-base transition-all select-none
                       ${answered || result !== null ? "cursor-default" : "cursor-pointer active:scale-95"}
                       ${CHIP_COLORS[wordIdx % CHIP_COLORS.length]}`}
                     initial={{ opacity: 0, scale: 0.8 }}
@@ -235,7 +234,7 @@ export function SentenceBuild({
                     transition={{ type: "spring", stiffness: 500, damping: 30 }}
                   >
                     {filteredWords[wordIdx]}
-                  </motion.button>
+                  </motion.div>
                 ))}
               </AnimatePresence>
             </motion.div>
@@ -253,11 +252,10 @@ export function SentenceBuild({
       <div className="flex flex-wrap gap-2 justify-center min-h-[48px]">
         <AnimatePresence mode="popLayout">
           {bankIndices.map((wordIdx) => (
-            <motion.button
+            <motion.div
               key={`bank-${wordIdx}`}
-                            onClick={() => handleTapBank(wordIdx)}
-              disabled={answered || result !== null}
-              className={`px-4 py-2 rounded-xl border-2 font-semibold text-base transition-all
+              onTap={() => { if (!(answered || result !== null)) handleTapBank(wordIdx); }}
+              className={`px-4 py-2 rounded-xl border-2 font-semibold text-base transition-all select-none
                 ${answered || result !== null ? "cursor-default opacity-40" : "cursor-pointer hover:scale-105 active:scale-95"}
                 ${CHIP_COLORS[wordIdx % CHIP_COLORS.length]}`}
               initial={{ opacity: 0, scale: 0.8 }}
@@ -266,7 +264,7 @@ export function SentenceBuild({
               transition={{ type: "spring", stiffness: 500, damping: 30 }}
             >
               {filteredWords[wordIdx]}
-            </motion.button>
+            </motion.div>
           ))}
         </AnimatePresence>
       </div>
