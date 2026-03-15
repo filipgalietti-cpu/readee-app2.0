@@ -23,16 +23,6 @@ const SUPABASE_AUDIO_BASE = process.env.NEXT_PUBLIC_SUPABASE_URL
   ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audio`
   : "";
 
-/** Play an audio URL via Howler and return a promise that resolves when it ends */
-function playAudioAsync(url: string): Promise<void> {
-  return new Promise((resolve) => {
-    const howl = new Howl({ src: [url] });
-    howl.once("end", () => resolve());
-    howl.once("loaderror", () => resolve());
-    howl.once("playerror", () => resolve());
-    howl.play();
-  });
-}
 
 const CHIP_COLORS = [
   "bg-blue-100 text-blue-800 border-blue-300 dark:bg-blue-900/60 dark:text-blue-200 dark:border-blue-700",
@@ -104,13 +94,12 @@ export function SentenceBuild({
     [answered, result]
   );
 
-  const handleCheck = useCallback(async () => {
+  const handleCheck = useCallback(() => {
     if (!allPlaced || answered || result !== null) return;
     const suffix = ordered ? "" : trailingPunctuation;
     const sentence = placed.map((i) => filteredWords[i]).join(" ") + suffix;
     const target = ordered ? correctSentence.replace(/[.!?]$/, "") : correctSentence;
     const isCorrect = sentence === target;
-    console.log("[SentenceBuild] check:", { sentence, target, isCorrect, sentenceAudioUrl });
     setResult(isCorrect ? "correct" : "incorrect");
 
     if (!isCorrect) {
@@ -122,13 +111,16 @@ export function SentenceBuild({
       return;
     }
 
-    // Correct — play sentence readback, then fire callback
+    // Correct — play sentence readback via Howler, then advance
     if (sentenceAudioUrl) {
-      console.log("[SentenceBuild] playing sentence audio:", sentenceAudioUrl);
-      await playAudioAsync(sentenceAudioUrl);
-      console.log("[SentenceBuild] sentence audio done");
+      const howl = new Howl({ src: [sentenceAudioUrl] });
+      howl.once("end", () => onAnswer(true, sentence));
+      howl.once("loaderror", () => onAnswer(true, sentence));
+      howl.once("playerror", () => onAnswer(true, sentence));
+      howl.play();
+    } else {
+      onAnswer(true, sentence);
     }
-    onAnswer(true, sentence);
   }, [allPlaced, answered, result, placed, filteredWords, trailingPunctuation, correctSentence, sentenceAudioUrl, onAnswer, ordered]);
 
   return (
