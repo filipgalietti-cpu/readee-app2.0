@@ -928,7 +928,8 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
             words={q.words}
             correctSentence={q.correct}
             sentenceHint={q.sentence_hint}
-            sentenceAudioUrl={q.sentence_audio_url || (q.audio_url ? q.audio_url.replace(/\.mp3$/, "-sentence.mp3") : undefined)}
+            sentenceAudioUrl={q.sentence_audio_url}
+            questionAudioUrl={q.audio_url}
             answered={selected !== null}
             onAnswer={handleSentenceBuildAnswer}
             onPlayItem={playWordAudio}

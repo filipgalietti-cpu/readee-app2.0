@@ -11,6 +11,7 @@ interface SentenceBuildProps {
   correctSentence: string;
   sentenceHint?: string;
   sentenceAudioUrl?: string;
+  questionAudioUrl?: string;
   answered: boolean;
   onAnswer: (isCorrect: boolean, placedSentence: string) => void;
   onPlayItem?: (word: string) => void;
@@ -41,6 +42,7 @@ export function SentenceBuild({
   correctSentence,
   sentenceHint,
   sentenceAudioUrl,
+  questionAudioUrl,
   answered,
   onAnswer,
   onPlayItem,
@@ -101,8 +103,6 @@ export function SentenceBuild({
     const target = ordered ? correctSentence.replace(/[.!?]$/, "") : correctSentence;
     const isCorrect = sentence === target;
 
-    console.log("[SentenceBuild CHECK]", { sentence, target, isCorrect, sentenceAudioUrl });
-
     setResult(isCorrect ? "correct" : "incorrect");
 
     if (!isCorrect) {
@@ -114,14 +114,12 @@ export function SentenceBuild({
       return;
     }
 
-    // Correct — play sentence readback via Howler (fire-and-forget, same pattern as tile audio)
-    if (sentenceAudioUrl) {
-      console.log("[SentenceBuild] playing readback:", sentenceAudioUrl);
-      new Howl({ src: [sentenceAudioUrl] }).play();
-      // Advance after delay to let the sentence play out
+    // Correct — play sentence readback via Howler (fire-and-forget, same as tile audio)
+    const readbackUrl = sentenceAudioUrl || (questionAudioUrl ? questionAudioUrl.replace(/\.mp3$/, "-sentence.mp3") : null);
+    if (readbackUrl) {
+      new Howl({ src: [readbackUrl] }).play();
       setTimeout(() => onAnswer(true, sentence), 2500);
     } else {
-      console.log("[SentenceBuild] no sentenceAudioUrl, advancing immediately");
       onAnswer(true, sentence);
     }
   }, [allPlaced, answered, result, placed, filteredWords, trailingPunctuation, correctSentence, sentenceAudioUrl, onAnswer, ordered]);
