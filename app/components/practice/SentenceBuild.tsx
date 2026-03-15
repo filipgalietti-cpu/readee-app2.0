@@ -110,6 +110,7 @@ export function SentenceBuild({
     const sentence = placed.map((i) => filteredWords[i]).join(" ") + suffix;
     const target = ordered ? correctSentence.replace(/[.!?]$/, "") : correctSentence;
     const isCorrect = sentence === target;
+    console.log("[SentenceBuild] check:", { sentence, target, isCorrect, sentenceAudioUrl });
     setResult(isCorrect ? "correct" : "incorrect");
 
     if (!isCorrect) {
@@ -121,9 +122,11 @@ export function SentenceBuild({
       return;
     }
 
-    // Correct — play sentence audio first, then fire callback
+    // Correct — play sentence readback, then fire callback
     if (sentenceAudioUrl) {
+      console.log("[SentenceBuild] playing sentence audio:", sentenceAudioUrl);
       await playAudioAsync(sentenceAudioUrl);
+      console.log("[SentenceBuild] sentence audio done");
     }
     onAnswer(true, sentence);
   }, [allPlaced, answered, result, placed, filteredWords, trailingPunctuation, correctSentence, sentenceAudioUrl, onAnswer, ordered]);
