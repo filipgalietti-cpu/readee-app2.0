@@ -2762,7 +2762,8 @@
           "hint": "Put the /k/ sound first, then /a/, then /t/!",
           "difficulty": 1,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2c/RF.K.2c-Q1-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2c/RF.K.2c-Q1.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2c/RF.K.2c-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.2c/RF.K.2c-Q1.png"
         },
         {
           "id": "RF.K.2c-Q2",
@@ -2782,7 +2783,8 @@
           "hint": "Start with the /s/ sound, then /u/, then /n/!",
           "difficulty": 1,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2c/RF.K.2c-Q2-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2c/RF.K.2c-Q2.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2c/RF.K.2c-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.2c/RF.K.2c-Q2.png"
         },
         {
           "id": "RF.K.2c-Q3",
@@ -2802,7 +2804,8 @@
           "hint": "Start with /m/, then /o/, then /p/!",
           "difficulty": 1,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2c/RF.K.2c-Q3-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2c/RF.K.2c-Q3.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2c/RF.K.2c-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.2c/RF.K.2c-Q3.png"
         },
         {
           "id": "RF.K.2c-Q4",
@@ -2822,7 +2825,8 @@
           "hint": "Start with /b/, then /a/, then /t/!",
           "difficulty": 1,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2c/RF.K.2c-Q4-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2c/RF.K.2c-Q4.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2c/RF.K.2c-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.2c/RF.K.2c-Q4.png"
         },
         {
           "id": "RF.K.2c-Q5",
@@ -2842,7 +2846,8 @@
           "hint": "Start with /t/, then /o/, then /p/!",
           "difficulty": 1,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2c/RF.K.2c-Q5-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2c/RF.K.2c-Q5.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2c/RF.K.2c-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.2c/RF.K.2c-Q5.png"
         }
       ]
     },

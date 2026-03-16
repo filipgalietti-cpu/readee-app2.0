@@ -250,6 +250,7 @@ export default function KInteractiveAuditPage() {
             targetWord={q.target_word || ""}
             phonemes={q.phonemes || []}
             distractors={q.distractors || []}
+            imageUrl={(q as any).image_url}
             answered={answered}
             onAnswer={(isCorrect) => onAnswer(isCorrect)}
             onPlayPhoneme={playPhonemeAudio}

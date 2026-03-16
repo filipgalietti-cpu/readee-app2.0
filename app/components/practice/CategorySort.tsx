@@ -336,7 +336,7 @@ export function CategorySort({
               drag={!(answered || result !== null)}
               dragSnapToOrigin
               dragMomentum={false}
-              onDragStart={() => (onPlayItem || playWord)(item)}
+              onDragStart={() => {}}
               onDrag={() => handleDrag(item)}
               onDragEnd={() => handleDragEnd(item)}
               onTap={() => handleTapBankItem(item)}

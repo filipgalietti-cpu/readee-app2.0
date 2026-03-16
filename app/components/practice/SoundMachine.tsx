@@ -8,6 +8,7 @@ interface SoundMachineProps {
   targetWord: string;
   phonemes: string[];
   distractors?: string[];
+  imageUrl?: string;
   answered: boolean;
   onAnswer: (isCorrect: boolean, userAnswer: string) => void;
   onPlayPhoneme?: (phoneme: string) => void;
@@ -29,6 +30,7 @@ export function SoundMachine({
   targetWord,
   phonemes,
   distractors = [],
+  imageUrl,
   answered,
   onAnswer,
   onPlayPhoneme,
@@ -125,6 +127,17 @@ export function SoundMachine({
       <h2 className="text-[22px] font-bold text-zinc-900 dark:text-white leading-snug text-center">
         {prompt}
       </h2>
+
+      {/* Target word image */}
+      {imageUrl && (
+        <div className="flex justify-center">
+          <img
+            src={imageUrl}
+            alt={targetWord}
+            className="w-32 h-32 object-contain rounded-xl"
+          />
+        </div>
+      )}
 
       {/* Machine */}
       <motion.div

@@ -126,36 +126,46 @@ export function MissingWord({
             : {}
         }
       >
-        <p className="text-2xl font-bold text-zinc-900 dark:text-white leading-relaxed flex flex-wrap items-center justify-center gap-2">
-          {sentenceWords.map((word, idx) => {
-            if (idx === blankIndex) {
-              // Show the selected answer or blank
-              if (selected) {
-                const isCorrectChoice = selected.toLowerCase() === correctWord.toLowerCase();
-                return (
-                  <span
-                    key={idx}
-                    className={`inline-block px-3 py-1 rounded-lg font-extrabold ${
-                      isCorrectChoice
-                        ? "bg-emerald-200 text-emerald-800 dark:bg-emerald-800 dark:text-emerald-100"
-                        : "bg-red-200 text-red-800 dark:bg-red-800 dark:text-red-100"
-                    }`}
-                  >
-                    {isCorrectChoice ? selected : correctWord}
-                  </span>
-                );
-              }
-              return (
-                <span
-                  key={idx}
-                  className="inline-block w-24 h-10 rounded-lg border-2 border-dashed border-indigo-400 bg-indigo-50 dark:bg-indigo-900/30 dark:border-indigo-500"
-                />
-              );
-            }
-            return <span key={idx}>{word}</span>;
-          })}
-          <span>.</span>
-        </p>
+        {(() => {
+          // Extract trailing punctuation from the blank marker (e.g. "___?" → "?")
+          const blankMarker = sentenceWords[blankIndex] || "___";
+          const trailingPunct = blankMarker.match(/([.!?,;:]+)$/)?.[1] || "";
+          // If the correct answer IS punctuation, don't append extra trailing punct
+          const answerIsPunct = /^[.!?,;:]$/.test(correctWord);
+          const endPunct = answerIsPunct ? "" : (trailingPunct || ".");
+
+          return (
+            <p className="text-2xl font-bold text-zinc-900 dark:text-white leading-relaxed flex flex-wrap items-center justify-center gap-2">
+              {sentenceWords.map((word, idx) => {
+                if (idx === blankIndex) {
+                  if (selected) {
+                    const isCorrectChoice = selected.toLowerCase() === correctWord.toLowerCase();
+                    return (
+                      <span
+                        key={idx}
+                        className={`inline-block px-3 py-1 rounded-lg font-extrabold ${
+                          isCorrectChoice
+                            ? "bg-emerald-200 text-emerald-800 dark:bg-emerald-800 dark:text-emerald-100"
+                            : "bg-red-200 text-red-800 dark:bg-red-800 dark:text-red-100"
+                        }`}
+                      >
+                        {isCorrectChoice ? selected : correctWord}
+                      </span>
+                    );
+                  }
+                  return (
+                    <span
+                      key={idx}
+                      className="inline-block w-24 h-10 rounded-lg border-2 border-dashed border-indigo-400 bg-indigo-50 dark:bg-indigo-900/30 dark:border-indigo-500"
+                    />
+                  );
+                }
+                return <span key={idx}>{word}</span>;
+              })}
+              {endPunct && <span>{endPunct}</span>}
+            </p>
+          );
+        })()}
       </motion.div>
 
       {/* Word choices */}
