@@ -220,7 +220,7 @@ export function SoundMachine({
                 <span className="text-zinc-400 dark:text-slate-500 text-sm">{slotIdx + 1}</span>
               ) : (
                 <motion.span
-                  layoutId={`sound-${soundIdx}`}
+                  layoutId={`sound-${targetWord}-${soundIdx}`}
                   transition={{ type: "spring", stiffness: 500, damping: 30 }}
                 >
                   {allSounds[soundIdx]}
@@ -266,7 +266,7 @@ export function SoundMachine({
               transition={{ type: "spring", stiffness: 500, damping: 30 }}
             >
               <motion.span
-                layoutId={`sound-${soundIdx}`}
+                layoutId={`sound-${targetWord}-${soundIdx}`}
                 transition={{ type: "spring", stiffness: 500, damping: 30 }}
               >
                 {allSounds[soundIdx]}
