@@ -38,13 +38,21 @@ export function SoundMachine({
 }: SoundMachineProps) {
   const slotCount = phonemes.length;
 
-  // All available sounds with stable indices for color mapping
+  // All available sounds, deterministically shuffled so correct order isn't obvious
   const allSounds = useMemo(() => {
-    const combined = [...phonemes, ...distractors];
-    // Shuffle deterministically based on the target word
-    const seeded = combined.map((s, i) => ({ s, sort: hashCode(`${targetWord}-${i}`) }));
-    seeded.sort((a, b) => a.sort - b.sort);
-    return seeded.map((x) => x.s);
+    const arr = [...phonemes, ...distractors];
+    // Seeded Fisher-Yates shuffle
+    let seed = Math.abs(hashCode(targetWord));
+    const rand = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 0xffffffff; };
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(rand() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    // If correct phonemes ended up in order, rotate to break the pattern
+    if (phonemes.length > 1 && arr.slice(0, phonemes.length).every((s, i) => s === phonemes[i])) {
+      arr.push(arr.shift()!);
+    }
+    return arr;
   }, [phonemes, distractors, targetWord]);
 
   // Map each sound in allSounds back to its original index for color consistency
