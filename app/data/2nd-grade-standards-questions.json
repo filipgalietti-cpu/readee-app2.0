@@ -2,7 +2,7 @@
   "grade": "2nd",
   "grade_label": "2nd Grade",
   "total_standards": 40,
-  "total_questions": 200,
+  "total_questions": 187,
   "standards": [
     {
       "domain": "Reading Literature",
@@ -2033,22 +2033,6 @@
       "parent_tip": "Teach your child that 'un-' means 'not' and '-ful' means 'full of' to help decode new words.",
       "questions": [
         {
-          "id": "RF.2.3d-Q1",
-          "type": "multiple_choice",
-          "prompt": "What does **unkind** mean?",
-          "choices": [
-            "Kind again",
-            "Not kind",
-            "A type of kind",
-            "Very kind"
-          ],
-          "correct": "Not kind",
-          "hint": "The prefix 'un-' means 'not.' So un + kind = ?",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.3d/RF.2.3d-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.3d/RF.2.3d-Q1-hint.mp3"
-        },
-        {
           "id": "RF.2.3d-Q2",
           "type": "multiple_choice",
           "prompt": "The suffix **-ful** in **hopeful** means —",
@@ -2063,22 +2047,6 @@
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.3d/RF.2.3d-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.3d/RF.2.3d-Q2-hint.mp3"
-        },
-        {
-          "id": "RF.2.3d-Q3",
-          "type": "multiple_choice",
-          "prompt": "What does **reread** mean?",
-          "choices": [
-            "Read again",
-            "Not reading",
-            "Read for the first time",
-            "Stop reading"
-          ],
-          "correct": "Read again",
-          "hint": "The prefix 're-' means 'again.' So re + read = ?",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.3d/RF.2.3d-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.3d/RF.2.3d-Q3-hint.mp3"
         },
         {
           "id": "RF.2.3d-Q4",
@@ -2097,20 +2065,27 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.3d/RF.2.3d-Q4-hint.mp3"
         },
         {
-          "id": "RF.2.3d-Q5",
-          "type": "multiple_choice",
-          "prompt": "If **care** means to look after something, what does **careless** mean?",
-          "choices": [
-            "Caring again",
-            "Very caring",
-            "Full of care",
+          "id": "RF.2.3d-Q6",
+          "type": "tap_to_pair",
+          "prompt": "Match each word to its meaning!",
+          "left_items": [
+            "unkind",
+            "reread",
+            "careless"
+          ],
+          "right_items": [
+            "Not kind",
+            "Read again",
             "Not careful"
           ],
-          "correct": "Not careful",
-          "hint": "The suffix '-less' means 'without.' Without care = ?",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.3d/RF.2.3d-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.3d/RF.2.3d-Q5-hint.mp3"
+          "correct_pairs": {
+            "unkind": "Not kind",
+            "reread": "Read again",
+            "careless": "Not careful"
+          },
+          "correct": "unkind→Not kind, reread→Read again, careless→Not careful",
+          "hint": "Look at the prefix or suffix for clues!",
+          "difficulty": 1
         }
       ],
       "standard_id": "RF.2.3d",
@@ -2578,9 +2553,18 @@
         },
         {
           "id": "RF.2.4c-Q2",
-          "type": "multiple_choice",
-          "prompt": "\"The bird flew to its ____.\" Which word fits best?",
-          "choices": [
+          "type": "missing_word",
+          "prompt": "Pick the right word to fill the blank.",
+          "sentence_words": [
+            "The",
+            "bird",
+            "flew",
+            "to",
+            "its",
+            "___"
+          ],
+          "blank_index": 5,
+          "missing_choices": [
             "Best",
             "Test",
             "Desk",
@@ -2588,7 +2572,7 @@
           ],
           "correct": "Nest",
           "hint": "Where do birds live? Use the rest of the sentence to decide.",
-          "difficulty": "easy",
+          "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.4c/RF.2.4c-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.4c/RF.2.4c-Q2-hint.mp3"
         },
@@ -2610,9 +2594,19 @@
         },
         {
           "id": "RF.2.4c-Q4",
-          "type": "multiple_choice",
-          "prompt": "\"The cat climbed up the tall ___.\" Which word makes the most sense?",
-          "choices": [
+          "type": "missing_word",
+          "prompt": "Pick the right word to fill the blank.",
+          "sentence_words": [
+            "The",
+            "cat",
+            "climbed",
+            "up",
+            "the",
+            "tall",
+            "___"
+          ],
+          "blank_index": 6,
+          "missing_choices": [
             "Tree",
             "Cloud",
             "Book",
@@ -2620,15 +2614,28 @@
           ],
           "correct": "Tree",
           "hint": "What tall thing can a cat climb?",
-          "difficulty": "easy",
+          "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.4c/RF.2.4c-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.4c/RF.2.4c-Q4-hint.mp3"
         },
         {
           "id": "RF.2.4c-Q5",
-          "type": "multiple_choice",
-          "prompt": "You read a word as **horse** but the sentence says: \"The family lives in a big _____ on the hill.\" What should the word probably be?",
-          "choices": [
+          "type": "missing_word",
+          "prompt": "Pick the right word to fill the blank.",
+          "sentence_words": [
+            "The",
+            "family",
+            "lives",
+            "in",
+            "a",
+            "big",
+            "___",
+            "on",
+            "the",
+            "hill."
+          ],
+          "blank_index": 6,
+          "missing_choices": [
             "Hope",
             "House",
             "Hose",
@@ -2636,7 +2643,7 @@
           ],
           "correct": "House",
           "hint": "A family lives in a ____. Which word makes sense?",
-          "difficulty": "medium",
+          "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.4c/RF.2.4c-Q5.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.4c/RF.2.4c-Q5-hint.mp3"
         }
@@ -2649,84 +2656,33 @@
       "parent_tip": "When your child encounters an unknown word, help them use the sentence around it as a clue.",
       "questions": [
         {
-          "id": "L.2.4-Q1",
-          "type": "multiple_choice",
-          "prompt": "\"The tiny kitten was so small it fit in my hand.\"\n\nWhat does **tiny** mean?",
-          "choices": [
-            "Very big",
-            "Very loud",
+          "id": "L.2.4-Q6",
+          "type": "tap_to_pair",
+          "prompt": "Match each word to its meaning!",
+          "left_items": [
+            "tiny",
+            "bat",
+            "exhausted",
+            "ring",
+            "bright"
+          ],
+          "right_items": [
             "Very small",
-            "Very fast"
-          ],
-          "correct": "Very small",
-          "hint": "The sentence says the kitten was so small it fit in a hand. 'Tiny' means the same as 'small.'",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4/L.2.4-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4/L.2.4-Q1-hint.mp3"
-        },
-        {
-          "id": "L.2.4-Q2",
-          "type": "multiple_choice",
-          "prompt": "The word **bat** can mean a flying animal OR a stick used in baseball. In this sentence, what does **bat** mean?\n\n\"Jake swung the bat and hit the ball.\"",
-          "choices": [
             "A stick for hitting a ball",
-            "A cave",
-            "A flying animal",
-            "A type of bird"
-          ],
-          "correct": "A stick for hitting a ball",
-          "hint": "Jake swung it and hit a ball — that's baseball!",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4/L.2.4-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4/L.2.4-Q2-hint.mp3"
-        },
-        {
-          "id": "L.2.4-Q3",
-          "type": "multiple_choice",
-          "prompt": "\"The exhausted runner sat down after the race.\"\n\nWhat does **exhausted** most likely mean?",
-          "choices": [
-            "Hungry",
             "Very tired",
-            "Excited",
-            "Happy"
-          ],
-          "correct": "Very tired",
-          "hint": "After a race, how would a runner feel? The sentence gives you context.",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4/L.2.4-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4/L.2.4-Q3-hint.mp3"
-        },
-        {
-          "id": "L.2.4-Q4",
-          "type": "multiple_choice",
-          "prompt": "What does **ring** mean in this sentence?\n\n\"Did you hear the phone ring?\"",
-          "choices": [
             "To make a sound",
-            "Jewelry worn on a finger",
-            "A circle shape",
-            "A boxing area"
+            "Shining with a lot of light"
           ],
-          "correct": "To make a sound",
-          "hint": "You can 'hear' a ring — so it must be a sound!",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4/L.2.4-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4/L.2.4-Q4-hint.mp3"
-        },
-        {
-          "id": "L.2.4-Q5",
-          "type": "multiple_choice",
-          "prompt": "\"The bright sun made everything glow.\"\n\nWhat does **bright** mean here?",
-          "choices": [
-            "Shining with a lot of light",
-            "Dark",
-            "Smart",
-            "Colorful"
-          ],
-          "correct": "Shining with a lot of light",
-          "hint": "The sun is shining — 'bright' describes how much light it gives off.",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4/L.2.4-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4/L.2.4-Q5-hint.mp3"
+          "correct_pairs": {
+            "tiny": "Very small",
+            "bat": "A stick for hitting a ball",
+            "exhausted": "Very tired",
+            "ring": "To make a sound",
+            "bright": "Shining with a lot of light"
+          },
+          "correct": "tiny→Very small, bat→A stick for hitting a ball, exhausted→Very tired, ring→To make a sound, bright→Shining with a lot of light",
+          "hint": "Think about what each word means in context!",
+          "difficulty": 1
         }
       ],
       "standard_id": "L.2.4",
@@ -2753,38 +2709,6 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4a/L.2.4a-Q1-hint.mp3"
         },
         {
-          "id": "L.2.4a-Q2",
-          "type": "multiple_choice",
-          "prompt": "\"The children were famished after playing all day, so they ate a huge dinner.\"\n\nWhat does **famished** mean?",
-          "choices": [
-            "Tired",
-            "Silly",
-            "Very hungry",
-            "Happy"
-          ],
-          "correct": "Very hungry",
-          "hint": "They ate a huge dinner after playing all day. How did they feel before eating?",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4a/L.2.4a-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4a/L.2.4a-Q2-hint.mp3"
-        },
-        {
-          "id": "L.2.4a-Q3",
-          "type": "multiple_choice",
-          "prompt": "\"Be cautious when crossing the street — look both ways first.\"\n\nWhat does **cautious** mean?",
-          "choices": [
-            "Happy",
-            "Loud",
-            "Careful",
-            "Fast"
-          ],
-          "correct": "Careful",
-          "hint": "Looking both ways before crossing is something you do to be safe and careful.",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4a/L.2.4a-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4a/L.2.4a-Q3-hint.mp3"
-        },
-        {
           "id": "L.2.4a-Q4",
           "type": "multiple_choice",
           "prompt": "\"The frigid wind made everyone shiver and bundle up in their coats.\"\n\nThe word **frigid** means —",
@@ -2801,20 +2725,27 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4a/L.2.4a-Q4-hint.mp3"
         },
         {
-          "id": "L.2.4a-Q5",
-          "type": "multiple_choice",
-          "prompt": "\"Mom said the movie was hilarious — she couldn't stop laughing!\"\n\nWhat does **hilarious** mean?",
-          "choices": [
-            "Very funny",
-            "Sad",
-            "Scary",
-            "Boring"
+          "id": "L.2.4a-Q6",
+          "type": "tap_to_pair",
+          "prompt": "Match each word to its meaning!",
+          "left_items": [
+            "famished",
+            "cautious",
+            "hilarious"
           ],
-          "correct": "Very funny",
-          "hint": "She couldn't stop LAUGHING. What word describes something that makes you laugh?",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4a/L.2.4a-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4a/L.2.4a-Q5-hint.mp3"
+          "right_items": [
+            "Very hungry",
+            "Careful",
+            "Very funny"
+          ],
+          "correct_pairs": {
+            "famished": "Very hungry",
+            "cautious": "Careful",
+            "hilarious": "Very funny"
+          },
+          "correct": "famished→Very hungry, cautious→Careful, hilarious→Very funny",
+          "hint": "Use clues from the sentence to figure out the meaning!",
+          "difficulty": 1
         }
       ],
       "standard_id": "L.2.4a",
@@ -2824,38 +2755,6 @@
       "domain": "Language",
       "parent_tip": "Practice prefix meanings: 'un-' = not, 're-' = again, 'pre-' = before.",
       "questions": [
-        {
-          "id": "L.2.4b-Q1",
-          "type": "multiple_choice",
-          "prompt": "If **happy** means feeling good, what does **unhappy** mean?",
-          "choices": [
-            "Very happy",
-            "Happy again",
-            "Not happy",
-            "Happy before"
-          ],
-          "correct": "Not happy",
-          "hint": "The prefix 'un-' means 'not.'",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4b/L.2.4b-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4b/L.2.4b-Q1-hint.mp3"
-        },
-        {
-          "id": "L.2.4b-Q2",
-          "type": "multiple_choice",
-          "prompt": "What does **retell** mean?",
-          "choices": [
-            "Tell before",
-            "Tell again",
-            "Not tell",
-            "Tell for the first time"
-          ],
-          "correct": "Tell again",
-          "hint": "The prefix 're-' means 'again.' Re + tell = ?",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4b/L.2.4b-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4b/L.2.4b-Q2-hint.mp3"
-        },
         {
           "id": "L.2.4b-Q3",
           "type": "multiple_choice",
@@ -2873,36 +2772,30 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4b/L.2.4b-Q3-hint.mp3"
         },
         {
-          "id": "L.2.4b-Q4",
-          "type": "multiple_choice",
-          "prompt": "If **lock** means to close with a key, what does **unlock** mean?",
-          "choices": [
-            "Lock it again",
-            "Lock it tighter",
+          "id": "L.2.4b-Q6",
+          "type": "tap_to_pair",
+          "prompt": "Match each word to its meaning!",
+          "left_items": [
+            "unhappy",
+            "retell",
+            "unlock",
+            "disagree"
+          ],
+          "right_items": [
+            "Not happy",
+            "Tell again",
             "Open with a key",
-            "A broken lock"
+            "To not agree"
           ],
-          "correct": "Open with a key",
-          "hint": "'Un-' means 'not' or 'the opposite.' The opposite of locking is...?",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4b/L.2.4b-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4b/L.2.4b-Q4-hint.mp3"
-        },
-        {
-          "id": "L.2.4b-Q5",
-          "type": "multiple_choice",
-          "prompt": "What does **disagree** mean?",
-          "choices": [
-            "To not agree",
-            "To agree before",
-            "To agree strongly",
-            "To agree again"
-          ],
-          "correct": "To not agree",
-          "hint": "The prefix 'dis-' means 'not' or 'opposite of.'",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4b/L.2.4b-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4b/L.2.4b-Q5-hint.mp3"
+          "correct_pairs": {
+            "unhappy": "Not happy",
+            "retell": "Tell again",
+            "unlock": "Open with a key",
+            "disagree": "To not agree"
+          },
+          "correct": "unhappy→Not happy, retell→Tell again, unlock→Open with a key, disagree→To not agree",
+          "hint": "'Un-' means not, 're-' means again, 'dis-' means not!",
+          "difficulty": 1
         }
       ],
       "standard_id": "L.2.4b",
@@ -2929,22 +2822,6 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4c/L.2.4c-Q1-hint.mp3"
         },
         {
-          "id": "L.2.4c-Q2",
-          "type": "multiple_choice",
-          "prompt": "You know that **paint** means to put color on something. What does **painter** mean?",
-          "choices": [
-            "A type of paint",
-            "Paint that is old",
-            "A person who paints",
-            "A painting on a wall"
-          ],
-          "correct": "A person who paints",
-          "hint": "The '-er' ending often means 'a person who does something.'",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4c/L.2.4c-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4c/L.2.4c-Q2-hint.mp3"
-        },
-        {
           "id": "L.2.4c-Q3",
           "type": "multiple_choice",
           "prompt": "The root word **help** is in all of these words EXCEPT —",
@@ -2961,36 +2838,27 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4c/L.2.4c-Q3-hint.mp3"
         },
         {
-          "id": "L.2.4c-Q4",
-          "type": "multiple_choice",
-          "prompt": "If **joy** means happiness, what does **joyful** mean?",
-          "choices": [
+          "id": "L.2.4c-Q6",
+          "type": "tap_to_pair",
+          "prompt": "Match each word to its meaning!",
+          "left_items": [
+            "painter",
+            "joyful",
+            "movement"
+          ],
+          "right_items": [
+            "A person who paints",
             "Full of joy",
-            "Before joy",
-            "Without joy",
-            "Joy again"
+            "The act of moving"
           ],
-          "correct": "Full of joy",
-          "hint": "The root is 'joy' and the suffix '-ful' means 'full of.'",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4c/L.2.4c-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4c/L.2.4c-Q4-hint.mp3"
-        },
-        {
-          "id": "L.2.4c-Q5",
-          "type": "multiple_choice",
-          "prompt": "You know **move** means to go from one place to another. What does **movement** mean?",
-          "choices": [
-            "Moving fast",
-            "A place to move",
-            "The act of moving",
-            "Not moving"
-          ],
-          "correct": "The act of moving",
-          "hint": "The root word 'move' plus '-ment' means 'the act of' something.",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4c/L.2.4c-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4c/L.2.4c-Q5-hint.mp3"
+          "correct_pairs": {
+            "painter": "A person who paints",
+            "joyful": "Full of joy",
+            "movement": "The act of moving"
+          },
+          "correct": "painter→A person who paints, joyful→Full of joy, movement→The act of moving",
+          "hint": "Look at the suffix: '-er' means a person who, '-ful' means full of, '-ment' means the act of!",
+          "difficulty": 1
         }
       ],
       "standard_id": "L.2.4c",
@@ -3210,17 +3078,35 @@
         },
         {
           "id": "L.2.5-Q3",
-          "type": "multiple_choice",
-          "prompt": "Which group of words are all related to **weather**?",
-          "choices": [
-            "Run, jump, skip",
-            "Book, pen, paper",
-            "Dog, cat, fish",
-            "Rain, snow, sunny"
+          "type": "category_sort",
+          "prompt": "Sort the words — which ones are about weather?",
+          "categories": [
+            "Weather",
+            "Not Weather"
           ],
-          "correct": "Rain, snow, sunny",
-          "hint": "Which group has words you'd hear in a weather report?",
-          "difficulty": "easy",
+          "category_items": {
+            "Weather": [
+              "Rain",
+              "Snow",
+              "Sunny"
+            ],
+            "Not Weather": [
+              "Jump",
+              "Book",
+              "Dog"
+            ]
+          },
+          "items": [
+            "Rain",
+            "Jump",
+            "Snow",
+            "Book",
+            "Sunny",
+            "Dog"
+          ],
+          "correct": "correct",
+          "hint": "Which words would you hear in a weather report?",
+          "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.5/L.2.5-Q3.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.5/L.2.5-Q3-hint.mp3"
         },
@@ -3354,17 +3240,17 @@
       "questions": [
         {
           "id": "L.2.5b-Q1",
-          "type": "multiple_choice",
-          "prompt": "Put these words in order from LEAST strong to MOST strong: toss, hurl, throw",
-          "choices": [
-            "Toss → throw → hurl",
-            "Hurl → throw → toss",
-            "Toss → hurl → throw",
-            "Throw → toss → hurl"
+          "type": "sentence_build",
+          "prompt": "Put in order from least strong to most strong",
+          "words": [
+            "toss",
+            "throw",
+            "hurl"
           ],
-          "correct": "Toss → throw → hurl",
+          "correct": "toss throw hurl",
           "hint": "Tossing is gentle, throwing is normal, hurling is very powerful!",
-          "difficulty": "medium",
+          "ordered": true,
+          "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.5b/L.2.5b-Q1.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.5b/L.2.5b-Q1-hint.mp3"
         },
@@ -3402,17 +3288,17 @@
         },
         {
           "id": "L.2.5b-Q4",
-          "type": "multiple_choice",
-          "prompt": "Put these words in order from quietest to loudest: yell, whisper, talk",
-          "choices": [
-            "Talk → yell → whisper",
-            "Yell → talk → whisper",
-            "Whisper → yell → talk",
-            "Whisper → talk → yell"
+          "type": "sentence_build",
+          "prompt": "Put in order from quietest to loudest",
+          "words": [
+            "whisper",
+            "talk",
+            "yell"
           ],
-          "correct": "Whisper → talk → yell",
+          "correct": "whisper talk yell",
           "hint": "Start with the softest voice and end with the loudest.",
-          "difficulty": "easy",
+          "ordered": true,
+          "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.5b/L.2.5b-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.5b/L.2.5b-Q4-hint.mp3"
         },
@@ -3474,17 +3360,26 @@
         },
         {
           "id": "L.2.6-Q3",
-          "type": "multiple_choice",
-          "prompt": "Fill in the blank with the best adjective:\n\n\"The ____ storm knocked down trees.\"",
-          "choices": [
+          "type": "missing_word",
+          "prompt": "Pick the best adjective to fill the blank.",
+          "sentence_words": [
+            "The",
+            "___",
+            "storm",
+            "knocked",
+            "down",
+            "trees."
+          ],
+          "blank_index": 1,
+          "missing_choices": [
             "Happily",
             "Powerful",
             "Gently",
             "Slowly"
           ],
           "correct": "Powerful",
-          "hint": "You need a word that describes the storm (a noun). Which word tells you what kind of storm?",
-          "difficulty": "easy",
+          "hint": "You need a word that describes the storm. Which word tells you what kind of storm?",
+          "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.6/L.2.6-Q3.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.6/L.2.6-Q3-hint.mp3"
         },

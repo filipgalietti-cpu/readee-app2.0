@@ -2,7 +2,7 @@
   "grade": "1st",
   "standard_framework": "Common Core ELA",
   "total_standards": 33,
-  "total_questions": 165,
+  "total_questions": 149,
   "standards": [
     {
       "standard_id": "RL.1.1",
@@ -363,38 +363,6 @@
       "parent_tip": "When picking books, ask: Is this a made-up story or does it teach us real facts?",
       "questions": [
         {
-          "id": "RL.1.5-Q1",
-          "type": "multiple_choice",
-          "prompt": "A book about a talking rabbit who goes on an adventure is what type of book?",
-          "choices": [
-            "Informational",
-            "Cookbook",
-            "Storybook",
-            "Dictionary"
-          ],
-          "correct": "Storybook",
-          "hint": "Can rabbits really talk? If it's made up, it's a story.",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.5/RL.1.5-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.5/RL.1.5-Q1-hint.mp3"
-        },
-        {
-          "id": "RL.1.5-Q2",
-          "type": "multiple_choice",
-          "prompt": "A book with facts about how plants grow is what type of book?",
-          "choices": [
-            "Informational book",
-            "Storybook",
-            "Fairy tale",
-            "Poem"
-          ],
-          "correct": "Informational book",
-          "hint": "Does this book teach real facts or tell a made-up story?",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.5/RL.1.5-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.5/RL.1.5-Q2-hint.mp3"
-        },
-        {
           "id": "RL.1.5-Q3",
           "type": "multiple_choice",
           "prompt": "Which is TRUE about storybooks?",
@@ -427,20 +395,32 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.5/RL.1.5-Q4-hint.mp3"
         },
         {
-          "id": "RL.1.5-Q5",
-          "type": "multiple_choice",
-          "prompt": "Once upon a time, a brave knight saved a dragon.\n\nIs this from a story or an informational book?",
-          "choices": [
-            "Textbook",
-            "Informational book",
-            "News article",
-            "Story"
+          "id": "RL.1.5-Q6",
+          "type": "category_sort",
+          "prompt": "Sort each description into the right category!",
+          "categories": [
+            "Storybook",
+            "Informational"
           ],
-          "correct": "Story",
-          "hint": "'Once upon a time' is a clue! Real fact books don't start this way.",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.5/RL.1.5-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.5/RL.1.5-Q5-hint.mp3"
+          "category_items": {
+            "Storybook": [
+              "A talking rabbit who goes on an adventure",
+              "Once upon a time, a brave knight saved a dragon"
+            ],
+            "Informational": [
+              "Facts about how plants grow",
+              "A book that teaches about the water cycle"
+            ]
+          },
+          "items": [
+            "A talking rabbit who goes on an adventure",
+            "Facts about how plants grow",
+            "Once upon a time, a brave knight saved a dragon",
+            "A book that teaches about the water cycle"
+          ],
+          "correct": "correct",
+          "hint": "Stories are made up with characters. Informational books teach real facts!",
+          "difficulty": 1
         }
       ]
     },
@@ -979,54 +959,6 @@
       "parent_tip": "When you find a tricky word, read the sentence around it together and guess what it means.",
       "questions": [
         {
-          "id": "RI.1.4-Q1",
-          "type": "multiple_choice",
-          "prompt": "Hibernation is a long, deep sleep that some animals take in winter.\n\nWhat does hibernation mean?",
-          "choices": [
-            "Playing in snow",
-            "Eating a lot",
-            "A long winter sleep",
-            "Running fast"
-          ],
-          "correct": "A long winter sleep",
-          "hint": "The sentence tells you the meaning right after the word.",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.4/RI.1.4-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.4/RI.1.4-Q1-hint.mp3"
-        },
-        {
-          "id": "RI.1.4-Q2",
-          "type": "multiple_choice",
-          "prompt": "The enormous elephant was the biggest animal at the zoo.\n\nWhat does enormous mean?",
-          "choices": [
-            "Tiny",
-            "Fast",
-            "Quiet",
-            "Very big"
-          ],
-          "correct": "Very big",
-          "hint": "The sentence says 'biggest' — that's a clue.",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.4/RI.1.4-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.4/RI.1.4-Q2-hint.mp3"
-        },
-        {
-          "id": "RI.1.4-Q3",
-          "type": "multiple_choice",
-          "prompt": "Nocturnal animals are awake at night and sleep during the day.\n\nWhat does nocturnal mean?",
-          "choices": [
-            "Active at night",
-            "Very loud",
-            "Active during the day",
-            "Always sleeping"
-          ],
-          "correct": "Active at night",
-          "hint": "The sentence explains when nocturnal animals are awake.",
-          "difficulty": 2,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.4/RI.1.4-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.4/RI.1.4-Q3-hint.mp3"
-        },
-        {
           "id": "RI.1.4-Q4",
           "type": "multiple_choice",
           "prompt": "The habitat is the place where an animal lives. A fish's habitat is water.\n\nWhat is a habitat?",
@@ -1043,20 +975,30 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.4/RI.1.4-Q4-hint.mp3"
         },
         {
-          "id": "RI.1.4-Q5",
-          "type": "multiple_choice",
-          "prompt": "The cheetah sprinted across the field. It was the fastest animal there.\n\nWhat does sprinted mean?",
-          "choices": [
-            "Walked slowly",
-            "Sat down",
-            "Ran very fast",
-            "Jumped high"
+          "id": "RI.1.4-Q6",
+          "type": "tap_to_pair",
+          "prompt": "Match each word to its meaning!",
+          "left_items": [
+            "hibernation",
+            "enormous",
+            "nocturnal",
+            "sprinted"
           ],
-          "correct": "Ran very fast",
-          "hint": "The next sentence says 'fastest' — that's your clue.",
-          "difficulty": 2,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.4/RI.1.4-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.4/RI.1.4-Q5-hint.mp3"
+          "right_items": [
+            "A long winter sleep",
+            "Very big",
+            "Active at night",
+            "Ran very fast"
+          ],
+          "correct_pairs": {
+            "hibernation": "A long winter sleep",
+            "enormous": "Very big",
+            "nocturnal": "Active at night",
+            "sprinted": "Ran very fast"
+          },
+          "correct": "hibernation→A long winter sleep, enormous→Very big, nocturnal→Active at night, sprinted→Ran very fast",
+          "hint": "Match each word to what it means!",
+          "difficulty": 1
         }
       ]
     },
@@ -1596,81 +1538,110 @@
       "questions": [
         {
           "id": "RF.1.2b-Q1",
-          "type": "multiple_choice",
-          "prompt": "Blend these sounds together: /s/ /i/ /t/. What word do you get?",
-          "choices": [
-            "Set",
-            "Sip",
-            "Sit",
-            "Sat"
+          "type": "sound_machine",
+          "prompt": "Blend these sounds to make a word!",
+          "target_word": "sit",
+          "phonemes": [
+            "/s/",
+            "/i/",
+            "/t/"
           ],
-          "correct": "Sit",
+          "distractors": [
+            "/a/",
+            "/p/"
+          ],
+          "correct": "/s/ /i/ /t/",
           "hint": "Say each sound, then push them together fast.",
           "difficulty": 1,
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.2b/RF.1.2b-Q1.png",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2b/RF.1.2b-Q1.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2b/RF.1.2b-Q1-hint.mp3"
         },
         {
           "id": "RF.1.2b-Q2",
-          "type": "multiple_choice",
-          "prompt": "Blend these sounds: /f/ /l/ /a/ /g/. What word?",
-          "choices": [
-            "Flat",
-            "Flag",
-            "Flap",
-            "Frog"
+          "type": "sound_machine",
+          "prompt": "Blend these sounds to make a word!",
+          "target_word": "flag",
+          "phonemes": [
+            "/f/",
+            "/l/",
+            "/a/",
+            "/g/"
           ],
-          "correct": "Flag",
+          "distractors": [
+            "/s/",
+            "/p/"
+          ],
+          "correct": "/f/ /l/ /a/ /g/",
           "hint": "Say /f/ /l/ together, then /a/ /g/.",
           "difficulty": 2,
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.2b/RF.1.2b-Q2.png",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2b/RF.1.2b-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2b/RF.1.2b-Q2-hint.mp3"
         },
         {
           "id": "RF.1.2b-Q3",
-          "type": "multiple_choice",
-          "prompt": "Blend these sounds: /s/ /t/ /o/ /p/. What word?",
-          "choices": [
-            "Stomp",
-            "Step",
-            "Stop",
-            "Stop"
+          "type": "sound_machine",
+          "prompt": "Blend these sounds to make a word!",
+          "target_word": "stop",
+          "phonemes": [
+            "/s/",
+            "/t/",
+            "/o/",
+            "/p/"
           ],
-          "correct": "Stop",
+          "distractors": [
+            "/a/",
+            "/m/"
+          ],
+          "correct": "/s/ /t/ /o/ /p/",
           "hint": "/s/ /t/ blend together, then /o/ /p/.",
           "difficulty": 2,
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.2b/RF.1.2b-Q3.png",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2b/RF.1.2b-Q3.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2b/RF.1.2b-Q3-hint.mp3"
         },
         {
           "id": "RF.1.2b-Q4",
-          "type": "multiple_choice",
-          "prompt": "Blend: /d/ /r/ /i/ /p/. What word?",
-          "choices": [
-            "Drop",
-            "Trap",
-            "Trip",
-            "Drip"
+          "type": "sound_machine",
+          "prompt": "Blend these sounds to make a word!",
+          "target_word": "drip",
+          "phonemes": [
+            "/d/",
+            "/r/",
+            "/i/",
+            "/p/"
           ],
-          "correct": "Drip",
+          "distractors": [
+            "/a/",
+            "/t/"
+          ],
+          "correct": "/d/ /r/ /i/ /p/",
           "hint": "Start with /d/ /r/ together, then add /i/ /p/.",
           "difficulty": 2,
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.2b/RF.1.2b-Q4.png",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2b/RF.1.2b-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2b/RF.1.2b-Q4-hint.mp3"
         },
         {
           "id": "RF.1.2b-Q5",
-          "type": "multiple_choice",
-          "prompt": "Blend: /g/ /r/ /a/ /b/. What word?",
-          "choices": [
-            "Grab",
-            "Grub",
-            "Crab",
-            "Grid"
+          "type": "sound_machine",
+          "prompt": "Blend these sounds to make a word!",
+          "target_word": "grab",
+          "phonemes": [
+            "/g/",
+            "/r/",
+            "/a/",
+            "/b/"
           ],
-          "correct": "Grab",
+          "distractors": [
+            "/u/",
+            "/s/"
+          ],
+          "correct": "/g/ /r/ /a/ /b/",
           "hint": "/g/ /r/ together, then /a/ /b/.",
           "difficulty": 2,
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.2b/RF.1.2b-Q5.png",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2b/RF.1.2b-Q5.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2b/RF.1.2b-Q5-hint.mp3"
         }
@@ -1966,9 +1937,18 @@
       "questions": [
         {
           "id": "RF.1.4c-Q1",
-          "type": "multiple_choice",
-          "prompt": "The bird flew over the _____.\n\nWhich word makes sense?",
-          "choices": [
+          "type": "missing_word",
+          "prompt": "Pick the right word to fill the blank.",
+          "sentence_words": [
+            "The",
+            "bird",
+            "flew",
+            "over",
+            "the",
+            "___"
+          ],
+          "blank_index": 5,
+          "missing_choices": [
             "Tree",
             "Chair",
             "Book",
@@ -1998,9 +1978,18 @@
         },
         {
           "id": "RF.1.4c-Q3",
-          "type": "multiple_choice",
-          "prompt": "I drank a glass of _____.\n\nWhich word makes sense?",
-          "choices": [
+          "type": "missing_word",
+          "prompt": "Pick the right word to fill the blank.",
+          "sentence_words": [
+            "I",
+            "drank",
+            "a",
+            "glass",
+            "of",
+            "___"
+          ],
+          "blank_index": 5,
+          "missing_choices": [
             "Rocks",
             "Paper",
             "Milk",
@@ -2030,9 +2019,17 @@
         },
         {
           "id": "RF.1.4c-Q5",
-          "type": "multiple_choice",
-          "prompt": "The sun is very _____.\n\nWhich word fits?",
-          "choices": [
+          "type": "missing_word",
+          "prompt": "Pick the right word to fill the blank.",
+          "sentence_words": [
+            "The",
+            "sun",
+            "is",
+            "very",
+            "___"
+          ],
+          "blank_index": 4,
+          "missing_choices": [
             "Wet",
             "Cold",
             "Dark",
@@ -2053,38 +2050,6 @@
       "parent_tip": "When your child finds a tricky word, say: Let's read the sentence again and figure out what it means.",
       "questions": [
         {
-          "id": "L.1.4-Q1",
-          "type": "multiple_choice",
-          "prompt": "The tiny ant carried a big crumb.\n\nWhat does tiny mean?",
-          "choices": [
-            "Very small",
-            "Big",
-            "Fast",
-            "Old"
-          ],
-          "correct": "Very small",
-          "hint": "Ants are very small — tiny means the same thing.",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4/L.1.4-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4/L.1.4-Q1-hint.mp3"
-        },
-        {
-          "id": "L.1.4-Q2",
-          "type": "multiple_choice",
-          "prompt": "She was furious when someone broke her toy.\n\nWhat does furious mean?",
-          "choices": [
-            "Silly",
-            "Sleepy",
-            "Happy",
-            "Very angry"
-          ],
-          "correct": "Very angry",
-          "hint": "How would YOU feel if someone broke your toy?",
-          "difficulty": 2,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4/L.1.4-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4/L.1.4-Q2-hint.mp3"
-        },
-        {
           "id": "L.1.4-Q3",
           "type": "multiple_choice",
           "prompt": "The word **bat** can mean more than one thing. Which two are correct?",
@@ -2101,36 +2066,30 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4/L.1.4-Q3-hint.mp3"
         },
         {
-          "id": "L.1.4-Q4",
-          "type": "multiple_choice",
-          "prompt": "The road was slippery after the rain.\n\nWhat does slippery mean?",
-          "choices": [
+          "id": "L.1.4-Q6",
+          "type": "tap_to_pair",
+          "prompt": "Match each word to its meaning!",
+          "left_items": [
+            "tiny",
+            "furious",
+            "slippery",
+            "peeked"
+          ],
+          "right_items": [
+            "Very small",
+            "Very angry",
             "Easy to slide on",
-            "Dark",
-            "Dry",
-            "Very long"
+            "Looked quickly"
           ],
-          "correct": "Easy to slide on",
-          "hint": "What happens to roads after rain? They get wet and you might slip.",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4/L.1.4-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4/L.1.4-Q4-hint.mp3"
-        },
-        {
-          "id": "L.1.4-Q5",
-          "type": "multiple_choice",
-          "prompt": "She peeked through the window to see if it was raining.\n\nWhat does peeked mean?",
-          "choices": [
-            "Looked quickly",
-            "Cleaned the window",
-            "Opened the window",
-            "Listened carefully"
-          ],
-          "correct": "Looked quickly",
-          "hint": "When you peek, you take a quick look.",
-          "difficulty": 2,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4/L.1.4-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4/L.1.4-Q5-hint.mp3"
+          "correct_pairs": {
+            "tiny": "Very small",
+            "furious": "Very angry",
+            "slippery": "Easy to slide on",
+            "peeked": "Looked quickly"
+          },
+          "correct": "tiny→Very small, furious→Very angry, slippery→Easy to slide on, peeked→Looked quickly",
+          "hint": "Think about what each word means!",
+          "difficulty": 1
         }
       ]
     },
@@ -2141,84 +2100,33 @@
       "parent_tip": "Teach your child to be a word detective — the clues to a word's meaning are in the sentence around it!",
       "questions": [
         {
-          "id": "L.1.4a-Q1",
-          "type": "multiple_choice",
-          "prompt": "The dog was famished, so he ate all his food very fast.\n\nWhat does famished mean?",
-          "choices": [
-            "Angry",
-            "Full",
+          "id": "L.1.4a-Q6",
+          "type": "tap_to_pair",
+          "prompt": "Match each word to its meaning!",
+          "left_items": [
+            "famished",
+            "sweltering",
+            "cheerful",
+            "exhausted",
+            "timid"
+          ],
+          "right_items": [
             "Very hungry",
-            "Tired"
-          ],
-          "correct": "Very hungry",
-          "hint": "He ate all his food fast — he must have been very...?",
-          "difficulty": 2,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4a/L.1.4a-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4a/L.1.4a-Q1-hint.mp3"
-        },
-        {
-          "id": "L.1.4a-Q2",
-          "type": "multiple_choice",
-          "prompt": "It was sweltering outside, so we stayed in the cool house.\n\nWhat does sweltering mean?",
-          "choices": [
-            "Very cold",
-            "Very windy",
-            "Very dark",
-            "Very hot"
-          ],
-          "correct": "Very hot",
-          "hint": "They went inside to be cool — so outside must have been...?",
-          "difficulty": 2,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4a/L.1.4a-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4a/L.1.4a-Q2-hint.mp3"
-        },
-        {
-          "id": "L.1.4a-Q3",
-          "type": "multiple_choice",
-          "prompt": "The cheerful girl was always smiling and laughing.\n\nWhat does cheerful mean?",
-          "choices": [
-            "Sad",
-            "Angry",
-            "Quiet",
-            "Happy"
-          ],
-          "correct": "Happy",
-          "hint": "Smiling and laughing — what kind of person does that?",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4a/L.1.4a-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4a/L.1.4a-Q3-hint.mp3"
-        },
-        {
-          "id": "L.1.4a-Q4",
-          "type": "multiple_choice",
-          "prompt": "He was exhausted after running all day, so he went straight to bed.\n\nWhat does exhausted mean?",
-          "choices": [
-            "Scared",
-            "Excited",
+            "Very hot",
+            "Happy",
             "Very tired",
-            "Hungry"
+            "Shy or scared"
           ],
-          "correct": "Very tired",
-          "hint": "He ran all day and went to bed — he must have been...?",
-          "difficulty": 2,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4a/L.1.4a-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4a/L.1.4a-Q4-hint.mp3"
-        },
-        {
-          "id": "L.1.4a-Q5",
-          "type": "multiple_choice",
-          "prompt": "The timid rabbit hid behind the bush when it heard a loud noise.\n\nWhat does timid mean?",
-          "choices": [
-            "Brave",
-            "Shy or scared",
-            "Strong",
-            "Fast"
-          ],
-          "correct": "Shy or scared",
-          "hint": "It hid when it heard a noise — that sounds shy or scared.",
-          "difficulty": 2,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4a/L.1.4a-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4a/L.1.4a-Q5-hint.mp3"
+          "correct_pairs": {
+            "famished": "Very hungry",
+            "sweltering": "Very hot",
+            "cheerful": "Happy",
+            "exhausted": "Very tired",
+            "timid": "Shy or scared"
+          },
+          "correct": "famished→Very hungry, sweltering→Very hot, cheerful→Happy, exhausted→Very tired, timid→Shy or scared",
+          "hint": "Use clues from the word to figure out the meaning!",
+          "difficulty": 1
         }
       ]
     },
@@ -2228,54 +2136,6 @@
       "domain": "Language",
       "parent_tip": "Teach word parts: 'un' means not (unhappy = not happy), 're' means again (redo = do again).",
       "questions": [
-        {
-          "id": "L.1.4b-Q1",
-          "type": "multiple_choice",
-          "prompt": "What does **unhappy** mean?",
-          "choices": [
-            "Kind of happy",
-            "Very happy",
-            "Happy again",
-            "Not happy"
-          ],
-          "correct": "Not happy",
-          "hint": "'Un-' at the beginning means NOT.",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4b/L.1.4b-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4b/L.1.4b-Q1-hint.mp3"
-        },
-        {
-          "id": "L.1.4b-Q2",
-          "type": "multiple_choice",
-          "prompt": "What does **redo** mean?",
-          "choices": [
-            "Stop doing",
-            "Do before",
-            "Do again",
-            "Not do"
-          ],
-          "correct": "Do again",
-          "hint": "'Re-' at the beginning means AGAIN.",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4b/L.1.4b-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4b/L.1.4b-Q2-hint.mp3"
-        },
-        {
-          "id": "L.1.4b-Q3",
-          "type": "multiple_choice",
-          "prompt": "If **un-** means NOT, what does **unkind** mean?",
-          "choices": [
-            "Always kind",
-            "Kind again",
-            "Not kind",
-            "Very kind"
-          ],
-          "correct": "Not kind",
-          "hint": "Un + kind = not kind.",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4b/L.1.4b-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4b/L.1.4b-Q3-hint.mp3"
-        },
         {
           "id": "L.1.4b-Q4",
           "type": "multiple_choice",
@@ -2293,20 +2153,30 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4b/L.1.4b-Q4-hint.mp3"
         },
         {
-          "id": "L.1.4b-Q5",
-          "type": "multiple_choice",
-          "prompt": "What does **reread** mean?",
-          "choices": [
-            "Stop reading",
-            "Not read",
-            "Read again",
-            "Read fast"
+          "id": "L.1.4b-Q6",
+          "type": "tap_to_pair",
+          "prompt": "Match each word to its meaning!",
+          "left_items": [
+            "unhappy",
+            "redo",
+            "unkind",
+            "reread"
           ],
-          "correct": "Read again",
-          "hint": "Re- means AGAIN. Re + read = ?",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4b/L.1.4b-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4b/L.1.4b-Q5-hint.mp3"
+          "right_items": [
+            "Not happy",
+            "Do again",
+            "Not kind",
+            "Read again"
+          ],
+          "correct_pairs": {
+            "unhappy": "Not happy",
+            "redo": "Do again",
+            "unkind": "Not kind",
+            "reread": "Read again"
+          },
+          "correct": "unhappy→Not happy, redo→Do again, unkind→Not kind, reread→Read again",
+          "hint": "'Un-' means not. 'Re-' means again.",
+          "difficulty": 1
         }
       ]
     },
@@ -2470,16 +2340,34 @@
         },
         {
           "id": "L.1.5-Q5",
-          "type": "multiple_choice",
-          "prompt": "Which group of words goes together? Apple, banana, grape OR apple, chair, banana?",
-          "choices": [
-            "Dog, cat, apple",
-            "Apple, chair, banana",
-            "Apple, banana, grape",
-            "Chair, table, grape"
+          "type": "category_sort",
+          "prompt": "Sort the words — which ones are fruits?",
+          "categories": [
+            "Fruits",
+            "Not Fruits"
           ],
-          "correct": "Apple, banana, grape",
-          "hint": "Which group has items that are all the same type of thing?",
+          "category_items": {
+            "Fruits": [
+              "Apple",
+              "Banana",
+              "Grape"
+            ],
+            "Not Fruits": [
+              "Chair",
+              "Book",
+              "Lamp"
+            ]
+          },
+          "items": [
+            "Apple",
+            "Chair",
+            "Banana",
+            "Book",
+            "Grape",
+            "Lamp"
+          ],
+          "correct": "correct",
+          "hint": "Fruits grow on trees or vines and you can eat them!",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5/L.1.5-Q5.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5/L.1.5-Q5-hint.mp3"
@@ -2492,22 +2380,6 @@
       "domain": "Language",
       "parent_tip": "Practice sorting: 'Let's put all the animals in one group and all the foods in another!'",
       "questions": [
-        {
-          "id": "L.1.5a-Q1",
-          "type": "multiple_choice",
-          "prompt": "Which word does NOT belong in the group: red, blue, green, dog?",
-          "choices": [
-            "Red",
-            "Blue",
-            "Green",
-            "Dog"
-          ],
-          "correct": "Dog",
-          "hint": "Three of these are colors. Which one isn't?",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5a/L.1.5a-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5a/L.1.5a-Q1-hint.mp3"
-        },
         {
           "id": "L.1.5a-Q2",
           "type": "multiple_choice",
@@ -2523,22 +2395,6 @@
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5a/L.1.5a-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5a/L.1.5a-Q2-hint.mp3"
-        },
-        {
-          "id": "L.1.5a-Q3",
-          "type": "multiple_choice",
-          "prompt": "Which word belongs in the **fruit** category: carrot, apple, bread, cheese?",
-          "choices": [
-            "Carrot",
-            "Cheese",
-            "Bread",
-            "Apple"
-          ],
-          "correct": "Apple",
-          "hint": "Which one grows on a tree and is sweet?",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5a/L.1.5a-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5a/L.1.5a-Q3-hint.mp3"
         },
         {
           "id": "L.1.5a-Q4",
@@ -2571,6 +2427,38 @@
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5a/L.1.5a-Q5.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5a/L.1.5a-Q5-hint.mp3"
+        },
+        {
+          "id": "L.1.5a-Q6",
+          "type": "category_sort",
+          "prompt": "Sort the words — which ones are colors?",
+          "categories": [
+            "Colors",
+            "Not Colors"
+          ],
+          "category_items": {
+            "Colors": [
+              "Red",
+              "Blue",
+              "Green"
+            ],
+            "Not Colors": [
+              "Dog",
+              "Apple",
+              "Chair"
+            ]
+          },
+          "items": [
+            "Red",
+            "Dog",
+            "Blue",
+            "Apple",
+            "Green",
+            "Chair"
+          ],
+          "correct": "correct",
+          "hint": "Red, blue, and green are all colors!",
+          "difficulty": 1
         }
       ]
     },
@@ -2774,16 +2662,16 @@
         },
         {
           "id": "L.1.5d-Q2",
-          "type": "multiple_choice",
-          "prompt": "Put these in order from quietest to loudest: talk, whisper, shout",
-          "choices": [
-            "Talk, whisper, shout",
-            "Shout, talk, whisper",
-            "Whisper, shout, talk",
-            "Whisper, talk, shout"
+          "type": "sentence_build",
+          "prompt": "Put in order from quietest to loudest",
+          "words": [
+            "whisper",
+            "talk",
+            "shout"
           ],
-          "correct": "Whisper, talk, shout",
+          "correct": "whisper talk shout",
           "hint": "Which is the quietest? Which is the loudest?",
+          "ordered": true,
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5d/L.1.5d-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5d/L.1.5d-Q2-hint.mp3"
@@ -2822,16 +2710,16 @@
         },
         {
           "id": "L.1.5d-Q5",
-          "type": "multiple_choice",
-          "prompt": "Put these in order from coldest to hottest: warm, freezing, hot",
-          "choices": [
-            "Freezing, warm, hot",
-            "Warm, freezing, hot",
-            "Hot, freezing, warm",
-            "Hot, warm, freezing"
+          "type": "sentence_build",
+          "prompt": "Put in order from coldest to hottest",
+          "words": [
+            "freezing",
+            "warm",
+            "hot"
           ],
-          "correct": "Freezing, warm, hot",
+          "correct": "freezing warm hot",
           "hint": "Start with the coldest temperature and end with the hottest.",
+          "ordered": true,
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5d/L.1.5d-Q5.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5d/L.1.5d-Q5-hint.mp3"
@@ -2846,9 +2734,20 @@
       "questions": [
         {
           "id": "L.1.6-Q1",
-          "type": "multiple_choice",
-          "prompt": "Which word best completes: \"The _____ elephant sprayed water with its trunk.\"",
-          "choices": [
+          "type": "missing_word",
+          "prompt": "Pick the best word to complete the sentence.",
+          "sentence_words": [
+            "The",
+            "___",
+            "elephant",
+            "sprayed",
+            "water",
+            "with",
+            "its",
+            "trunk."
+          ],
+          "blank_index": 1,
+          "missing_choices": [
             "Quiet",
             "Enormous",
             "Tiny",
@@ -2878,9 +2777,20 @@
         },
         {
           "id": "L.1.6-Q3",
-          "type": "multiple_choice",
-          "prompt": "Which word best completes: \"She was _____ to get a new puppy.\"",
-          "choices": [
+          "type": "missing_word",
+          "prompt": "Pick the best word to complete the sentence.",
+          "sentence_words": [
+            "She",
+            "was",
+            "___",
+            "to",
+            "get",
+            "a",
+            "new",
+            "puppy."
+          ],
+          "blank_index": 2,
+          "missing_choices": [
             "Excited",
             "Bored",
             "Sad",

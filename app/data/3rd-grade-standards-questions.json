@@ -2,7 +2,7 @@
   "grade": "3rd",
   "grade_label": "3rd Grade",
   "total_standards": 38,
-  "total_questions": 190,
+  "total_questions": 175,
   "standards": [
     {
       "domain": "Reading Literature",
@@ -273,38 +273,6 @@
       "parent_tip": "When your child reads phrases like 'raining cats and dogs,' ask 'Does that REALLY mean animals are falling from the sky?'",
       "questions": [
         {
-          "id": "RL.3.4-Q1",
-          "type": "multiple_choice",
-          "prompt": "After winning the race, Kenji was on top of the world.\n\nWhat does **on top of the world** mean?",
-          "choices": [
-            "He was very tall",
-            "He was standing on a globe",
-            "He was extremely happy",
-            "He climbed a mountain"
-          ],
-          "correct": "He was extremely happy",
-          "hint": "This is figurative language — it doesn't literally mean he's on top of the world!",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.4/RL.3.4-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.4/RL.3.4-Q1-hint.mp3"
-        },
-        {
-          "id": "RL.3.4-Q2",
-          "type": "multiple_choice",
-          "prompt": "\"Don't let the cat out of the bag,\" whispered Mom before the surprise party.\n\nWhat does \"let the cat out of the bag\" mean?",
-          "choices": [
-            "Release an actual cat",
-            "Feed a pet",
-            "Reveal a secret",
-            "Open a bag"
-          ],
-          "correct": "Reveal a secret",
-          "hint": "Mom is talking about keeping the surprise party a secret!",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.4/RL.3.4-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.4/RL.3.4-Q2-hint.mp3"
-        },
-        {
           "id": "RL.3.4-Q3",
           "type": "multiple_choice",
           "prompt": "Which sentence uses LITERAL language?",
@@ -337,20 +305,27 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.4/RL.3.4-Q4-hint.mp3"
         },
         {
-          "id": "RL.3.4-Q5",
-          "type": "multiple_choice",
-          "prompt": "The icy wind bit at their faces as they walked to school.\n\nWhat does **bit at their faces** mean?",
-          "choices": [
-            "Their faces were frozen solid",
-            "They were eating something cold",
-            "The wind felt sharp and painful on their skin",
-            "An animal bit them"
+          "id": "RL.3.4-Q6",
+          "type": "tap_to_pair",
+          "prompt": "Match each expression to its meaning!",
+          "left_items": [
+            "on top of the world",
+            "let the cat out of the bag",
+            "bit at their faces"
           ],
-          "correct": "The wind felt sharp and painful on their skin",
-          "hint": "Wind can't actually bite! The author is describing how the cold FELT.",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.4/RL.3.4-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.4/RL.3.4-Q5-hint.mp3"
+          "right_items": [
+            "Extremely happy",
+            "Reveal a secret",
+            "Sharp and painful"
+          ],
+          "correct_pairs": {
+            "on top of the world": "Extremely happy",
+            "let the cat out of the bag": "Reveal a secret",
+            "bit at their faces": "Sharp and painful"
+          },
+          "correct": "on top of the world→Extremely happy, let the cat out of the bag→Reveal a secret, bit at their faces→Sharp and painful",
+          "hint": "These are figurative expressions — they don't mean what they literally say!",
+          "difficulty": 2
         }
       ],
       "standard_id": "RL.3.4",
@@ -378,9 +353,23 @@
         },
         {
           "id": "RL.3.5-Q2",
-          "type": "multiple_choice",
-          "prompt": "In a play, when the setting or time changes, a new ____ begins.",
-          "choices": [
+          "type": "missing_word",
+          "prompt": "Pick the right word to fill the blank.",
+          "sentence_words": [
+            "In",
+            "a",
+            "play,",
+            "when",
+            "the",
+            "setting",
+            "changes,",
+            "a",
+            "new",
+            "___",
+            "begins."
+          ],
+          "blank_index": 9,
+          "missing_choices": [
             "Scene",
             "Chapter",
             "Paragraph",
@@ -388,7 +377,7 @@
           ],
           "correct": "Scene",
           "hint": "Plays are divided into acts and these smaller parts.",
-          "difficulty": "easy",
+          "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.5/RL.3.5-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.5/RL.3.5-Q2-hint.mp3"
         },
@@ -426,17 +415,38 @@
         },
         {
           "id": "RL.3.5-Q5",
-          "type": "multiple_choice",
-          "prompt": "Which text type uses the word **scene** to describe its parts?",
-          "choices": [
-            "A newspaper article",
-            "A novel",
-            "A play or drama",
-            "A poem"
+          "type": "category_sort",
+          "prompt": "Match each structural part to its text type!",
+          "categories": [
+            "Play/Drama",
+            "Poem",
+            "Novel"
           ],
-          "correct": "A play or drama",
-          "hint": "When actors perform on stage, each part of the show is a...?",
-          "difficulty": "easy",
+          "category_items": {
+            "Play/Drama": [
+              "Scene",
+              "Stage directions"
+            ],
+            "Poem": [
+              "Stanza",
+              "Verse"
+            ],
+            "Novel": [
+              "Chapter",
+              "Paragraph"
+            ]
+          },
+          "items": [
+            "Scene",
+            "Stanza",
+            "Chapter",
+            "Stage directions",
+            "Verse",
+            "Paragraph"
+          ],
+          "correct": "correct",
+          "hint": "Plays use scenes, poems use stanzas, and novels use chapters!",
+          "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.5/RL.3.5-Q5.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.5/RL.3.5-Q5-hint.mp3"
         }
@@ -1009,38 +1019,6 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q2-hint.mp3"
         },
         {
-          "id": "RI.3.3-Q3",
-          "type": "multiple_choice",
-          "prompt": "The words **because,** \"as a result,\" and **therefore** signal what type of relationship?",
-          "choices": [
-            "Chronological order",
-            "Problem and solution",
-            "Cause and effect",
-            "Compare and contrast"
-          ],
-          "correct": "Cause and effect",
-          "hint": "These words show that one thing CAUSED another thing to happen.",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q3-hint.mp3"
-        },
-        {
-          "id": "RI.3.3-Q4",
-          "type": "multiple_choice",
-          "prompt": "Scientists noticed that temperatures were rising globally. This led to melting ice caps, which caused sea levels to rise.\n\nWhat is the EFFECT of melting ice caps?",
-          "choices": [
-            "Ice caps grow larger",
-            "Temperatures rise",
-            "Sea levels rise",
-            "More snow falls"
-          ],
-          "correct": "Sea levels rise",
-          "hint": "Melting ice caps CAUSED what to happen next?",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q4-hint.mp3"
-        },
-        {
           "id": "RI.3.3-Q5",
           "type": "multiple_choice",
           "prompt": "After the Great Fire of London in 1666, the city was rebuilt with stone and brick instead of wood. This made buildings much safer from future fires.\n\nHow are these two events connected?",
@@ -1055,6 +1033,34 @@
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q5.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q5-hint.mp3"
+        },
+        {
+          "id": "RI.3.3-Q6",
+          "type": "category_sort",
+          "prompt": "Sort these into Cause or Effect!",
+          "categories": [
+            "Cause",
+            "Effect"
+          ],
+          "category_items": {
+            "Cause": [
+              "Temperatures rose globally",
+              "Ice caps melted"
+            ],
+            "Effect": [
+              "Sea levels rose",
+              "Coastal flooding increased"
+            ]
+          },
+          "items": [
+            "Temperatures rose globally",
+            "Sea levels rose",
+            "Ice caps melted",
+            "Coastal flooding increased"
+          ],
+          "correct": "correct",
+          "hint": "A cause is what MAKES something happen. An effect is what HAPPENS as a result.",
+          "difficulty": 2
         }
       ],
       "standard_id": "RI.3.3",
@@ -2418,9 +2424,22 @@
         },
         {
           "id": "RF.3.4c-Q3",
-          "type": "multiple_choice",
-          "prompt": "\"The scientist used a microscope to examine the tiny ____.\" Which word fits best?",
-          "choices": [
+          "type": "missing_word",
+          "prompt": "Pick the right word to fill the blank.",
+          "sentence_words": [
+            "The",
+            "scientist",
+            "used",
+            "a",
+            "microscope",
+            "to",
+            "examine",
+            "the",
+            "tiny",
+            "___"
+          ],
+          "blank_index": 9,
+          "missing_choices": [
             "Mountain",
             "Building",
             "Organisms",
@@ -2428,7 +2447,7 @@
           ],
           "correct": "Organisms",
           "hint": "A microscope looks at TINY things. Which answer is something tiny a scientist would study?",
-          "difficulty": "medium",
+          "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.4c/RF.3.4c-Q3.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.4c/RF.3.4c-Q3-hint.mp3"
         },
@@ -2489,68 +2508,30 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4/L.3.4-Q1-hint.mp3"
         },
         {
-          "id": "L.3.4-Q2",
-          "type": "multiple_choice",
-          "prompt": "The word **light** can mean many things. What does it mean here?\n\n\"Please light the candle.\"",
-          "choices": [
-            "Bright",
-            "A shade of color",
+          "id": "L.3.4-Q6",
+          "type": "tap_to_pair",
+          "prompt": "Match each word to its meaning in context!",
+          "left_items": [
+            "light (candle)",
+            "elaborate",
+            "current (river)",
+            "parched"
+          ],
+          "right_items": [
             "To set fire to",
-            "Not heavy"
-          ],
-          "correct": "To set fire to",
-          "hint": "You 'light' a candle by giving it a flame.",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4/L.3.4-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4/L.3.4-Q2-hint.mp3"
-        },
-        {
-          "id": "L.3.4-Q3",
-          "type": "multiple_choice",
-          "prompt": "The magician performed an elaborate trick with scarves, rings, and hidden mirrors.\n\nWhat does **elaborate** mean?",
-          "choices": [
-            "Simple and quick",
             "Complex and detailed",
-            "Invisible",
-            "Boring"
-          ],
-          "correct": "Complex and detailed",
-          "hint": "The trick used scarves, rings, AND hidden mirrors — that's not simple!",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4/L.3.4-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4/L.3.4-Q3-hint.mp3"
-        },
-        {
-          "id": "L.3.4-Q4",
-          "type": "multiple_choice",
-          "prompt": "What does **current** mean in this sentence?\n\n\"The strong current carried the boat downstream.\"",
-          "choices": [
             "The flow of water",
-            "Happening now",
-            "Electricity",
-            "A type of fruit"
+            "Extremely dry"
           ],
-          "correct": "The flow of water",
-          "hint": "A current in a river is the moving water that can carry things downstream.",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4/L.3.4-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4/L.3.4-Q4-hint.mp3"
-        },
-        {
-          "id": "L.3.4-Q5",
-          "type": "multiple_choice",
-          "prompt": "After the long drought, the parched earth cracked and split.\n\nWhat does **parched** mean?",
-          "choices": [
-            "Cold",
-            "Wet",
-            "Extremely dry",
-            "Flat"
-          ],
-          "correct": "Extremely dry",
-          "hint": "A drought means no rain. If the earth is cracking, it must be very dry!",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4/L.3.4-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4/L.3.4-Q5-hint.mp3"
+          "correct_pairs": {
+            "light (candle)": "To set fire to",
+            "elaborate": "Complex and detailed",
+            "current (river)": "The flow of water",
+            "parched": "Extremely dry"
+          },
+          "correct": "light (candle)→To set fire to, elaborate→Complex and detailed, current (river)→The flow of water, parched→Extremely dry",
+          "hint": "Think about how each word is used in the sentence!",
+          "difficulty": 2
         }
       ],
       "standard_id": "L.3.4",
@@ -2560,70 +2541,6 @@
       "domain": "Language",
       "parent_tip": "When your child hits an unknown word, say 'Read the whole sentence — what clues help you figure it out?'",
       "questions": [
-        {
-          "id": "L.3.4a-Q1",
-          "type": "multiple_choice",
-          "prompt": "The benevolent king gave food to every poor family in his kingdom.\n\nWhat does **benevolent** most likely mean?",
-          "choices": [
-            "Lazy",
-            "Wealthy",
-            "Kind and generous",
-            "Mean"
-          ],
-          "correct": "Kind and generous",
-          "hint": "A king who gives food to poor families sounds kind and generous!",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4a/L.3.4a-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4a/L.3.4a-Q1-hint.mp3"
-        },
-        {
-          "id": "L.3.4a-Q2",
-          "type": "multiple_choice",
-          "prompt": "The abandoned house was empty, with broken windows and weeds growing through the porch.\n\nWhat does **abandoned** mean?",
-          "choices": [
-            "Brand new",
-            "Very large",
-            "Recently painted",
-            "Left behind and empty"
-          ],
-          "correct": "Left behind and empty",
-          "hint": "Empty, broken windows, weeds — nobody lives there anymore!",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4a/L.3.4a-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4a/L.3.4a-Q2-hint.mp3"
-        },
-        {
-          "id": "L.3.4a-Q3",
-          "type": "multiple_choice",
-          "prompt": "The camouflaged lizard blended perfectly with the brown leaves on the ground.\n\nWhat does **camouflaged** mean?",
-          "choices": [
-            "Disguised to blend in",
-            "Very large",
-            "Poisonous",
-            "Brightly colored"
-          ],
-          "correct": "Disguised to blend in",
-          "hint": "It 'blended perfectly' — camouflage means hiding by looking like your surroundings.",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4a/L.3.4a-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4a/L.3.4a-Q3-hint.mp3"
-        },
-        {
-          "id": "L.3.4a-Q4",
-          "type": "multiple_choice",
-          "prompt": "The fragile vase shattered into a hundred pieces when it hit the floor.\n\nWhat does **fragile** mean?",
-          "choices": [
-            "Expensive",
-            "Strong",
-            "Easily broken",
-            "Heavy"
-          ],
-          "correct": "Easily broken",
-          "hint": "It shattered into pieces — so it must break easily!",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4a/L.3.4a-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4a/L.3.4a-Q4-hint.mp3"
-        },
         {
           "id": "L.3.4a-Q5",
           "type": "multiple_choice",
@@ -2639,6 +2556,32 @@
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4a/L.3.4a-Q5.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4a/L.3.4a-Q5-hint.mp3"
+        },
+        {
+          "id": "L.3.4a-Q6",
+          "type": "tap_to_pair",
+          "prompt": "Match each word to its meaning!",
+          "left_items": [
+            "benevolent",
+            "abandoned",
+            "camouflaged",
+            "fragile"
+          ],
+          "right_items": [
+            "Kind and generous",
+            "Left behind",
+            "Disguised to blend in",
+            "Easily broken"
+          ],
+          "correct_pairs": {
+            "benevolent": "Kind and generous",
+            "abandoned": "Left behind",
+            "camouflaged": "Disguised to blend in",
+            "fragile": "Easily broken"
+          },
+          "correct": "benevolent→Kind and generous, abandoned→Left behind, camouflaged→Disguised to blend in, fragile→Easily broken",
+          "hint": "Use context clues to match each word to its definition!",
+          "difficulty": 2
         }
       ],
       "standard_id": "L.3.4a",
@@ -2648,38 +2591,6 @@
       "domain": "Language",
       "parent_tip": "Practice: 'If agree means to think the same, what does disagree mean? What about agreeable?'",
       "questions": [
-        {
-          "id": "L.3.4b-Q1",
-          "type": "multiple_choice",
-          "prompt": "If **comfort** means a state of ease, what does **uncomfortable** mean?",
-          "choices": [
-            "Comfortable again",
-            "Very comfortable",
-            "Comfortable before",
-            "Not comfortable"
-          ],
-          "correct": "Not comfortable",
-          "hint": "'Un-' means not. So un + comfortable = not comfortable.",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4b/L.3.4b-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4b/L.3.4b-Q1-hint.mp3"
-        },
-        {
-          "id": "L.3.4b-Q2",
-          "type": "multiple_choice",
-          "prompt": "What does **misspell** mean?",
-          "choices": [
-            "To spell wrongly",
-            "To spell before",
-            "To spell correctly",
-            "To spell again"
-          ],
-          "correct": "To spell wrongly",
-          "hint": "'Mis-' means wrongly. Mis + spell = spell wrongly!",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4b/L.3.4b-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4b/L.3.4b-Q2-hint.mp3"
-        },
         {
           "id": "L.3.4b-Q3",
           "type": "multiple_choice",
@@ -2697,36 +2608,30 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4b/L.3.4b-Q3-hint.mp3"
         },
         {
-          "id": "L.3.4b-Q4",
-          "type": "multiple_choice",
-          "prompt": "If **courage** means bravery, what does **encourage** mean?",
-          "choices": [
-            "To take away courage",
-            "To give courage or support to someone",
-            "To be scared",
-            "To have no courage"
+          "id": "L.3.4b-Q6",
+          "type": "tap_to_pair",
+          "prompt": "Match each word to its meaning!",
+          "left_items": [
+            "uncomfortable",
+            "misspell",
+            "encourage",
+            "disappearance"
           ],
-          "correct": "To give courage or support to someone",
-          "hint": "'En-' means to put into. Encourage = put courage INTO someone!",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4b/L.3.4b-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4b/L.3.4b-Q4-hint.mp3"
-        },
-        {
-          "id": "L.3.4b-Q5",
-          "type": "multiple_choice",
-          "prompt": "What does **disappearance** mean?",
-          "choices": [
-            "Very visible",
-            "The act of disappearing",
-            "Appearing before",
-            "Appearing again"
+          "right_items": [
+            "Not comfortable",
+            "To spell wrongly",
+            "To give courage",
+            "The act of disappearing"
           ],
-          "correct": "The act of disappearing",
-          "hint": "Dis + appear + ance. 'Dis-' means opposite, '-ance' means the act of.",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4b/L.3.4b-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4b/L.3.4b-Q5-hint.mp3"
+          "correct_pairs": {
+            "uncomfortable": "Not comfortable",
+            "misspell": "To spell wrongly",
+            "encourage": "To give courage",
+            "disappearance": "The act of disappearing"
+          },
+          "correct": "uncomfortable→Not comfortable, misspell→To spell wrongly, encourage→To give courage, disappearance→The act of disappearing",
+          "hint": "Break each word into its prefix, root, and suffix for clues!",
+          "difficulty": 2
         }
       ],
       "standard_id": "L.3.4b",
@@ -2736,38 +2641,6 @@
       "domain": "Language",
       "parent_tip": "Show your child how 'sign' connects to 'signal,' 'signature,' and 'design.'",
       "questions": [
-        {
-          "id": "L.3.4c-Q1",
-          "type": "multiple_choice",
-          "prompt": "If **act** means to do something, what does **action** mean?",
-          "choices": [
-            "The process of doing something",
-            "Not doing anything",
-            "A type of movie",
-            "Doing something before"
-          ],
-          "correct": "The process of doing something",
-          "hint": "Act + ion. The root 'act' means to do, and '-ion' makes it a noun.",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4c/L.3.4c-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4c/L.3.4c-Q1-hint.mp3"
-        },
-        {
-          "id": "L.3.4c-Q2",
-          "type": "multiple_choice",
-          "prompt": "The root word **port** means \"to carry.\" What does **transport** most likely mean?",
-          "choices": [
-            "A type of door",
-            "To carry across or from one place to another",
-            "To stay in one place",
-            "To drop something"
-          ],
-          "correct": "To carry across or from one place to another",
-          "hint": "'Trans' means across. 'Port' means carry. Transport = carry across!",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4c/L.3.4c-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4c/L.3.4c-Q2-hint.mp3"
-        },
         {
           "id": "L.3.4c-Q3",
           "type": "multiple_choice",
@@ -2785,36 +2658,30 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4c/L.3.4c-Q3-hint.mp3"
         },
         {
-          "id": "L.3.4c-Q4",
-          "type": "multiple_choice",
-          "prompt": "If **cycle** means **circle** or **wheel,** what does **bicycle** mean?",
-          "choices": [
-            "One wheel",
+          "id": "L.3.4c-Q6",
+          "type": "tap_to_pair",
+          "prompt": "Match each root or word to its meaning!",
+          "left_items": [
+            "-action",
+            "transport",
+            "bicycle",
+            "companion"
+          ],
+          "right_items": [
+            "The process of doing",
+            "To carry across",
             "Two wheels",
-            "Three wheels",
-            "No wheels"
+            "Being together"
           ],
-          "correct": "Two wheels",
-          "hint": "'Bi' means two. 'Cycle' means wheel. Bicycle = two wheels!",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4c/L.3.4c-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4c/L.3.4c-Q4-hint.mp3"
-        },
-        {
-          "id": "L.3.4c-Q5",
-          "type": "multiple_choice",
-          "prompt": "The words **company** and **companion** share the root **compan-** which means \"together with bread.\" Both words relate to —",
-          "choices": [
-            "Traveling alone",
-            "Cooking food",
-            "Being together or having company",
-            "Baking"
-          ],
-          "correct": "Being together or having company",
-          "hint": "Sharing bread = being together. Both words are about togetherness!",
-          "difficulty": "hard",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4c/L.3.4c-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4c/L.3.4c-Q5-hint.mp3"
+          "correct_pairs": {
+            "-action": "The process of doing",
+            "transport": "To carry across",
+            "bicycle": "Two wheels",
+            "companion": "Being together"
+          },
+          "correct": "-action→The process of doing, transport→To carry across, bicycle→Two wheels, companion→Being together",
+          "hint": "Latin and Greek roots give clues: '-tion' = process, 'trans-' = across, 'bi-' = two, 'com-' = together!",
+          "difficulty": 2
         }
       ],
       "standard_id": "L.3.4c",
@@ -3178,17 +3045,17 @@
       "questions": [
         {
           "id": "L.3.5c-Q1",
-          "type": "multiple_choice",
-          "prompt": "Put these words in order from LEAST certain to MOST certain: knew, suspected, wondered",
-          "choices": [
-            "Wondered → suspected → knew",
-            "Knew → suspected → wondered",
-            "Wondered → knew → suspected",
-            "Suspected → wondered → knew"
+          "type": "sentence_build",
+          "prompt": "Put in order from least certain to most certain",
+          "words": [
+            "wondered",
+            "suspected",
+            "knew"
           ],
-          "correct": "Wondered → suspected → knew",
+          "correct": "wondered suspected knew",
           "hint": "Wondering is just curious. Suspecting is thinking it might be true. Knowing is being certain!",
-          "difficulty": "medium",
+          "ordered": true,
+          "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.5c/L.3.5c-Q1.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.5c/L.3.5c-Q1-hint.mp3"
         },
@@ -3210,17 +3077,17 @@
         },
         {
           "id": "L.3.5c-Q3",
-          "type": "multiple_choice",
-          "prompt": "Put these in order from LEAST scared to MOST scared: terrified, nervous, uneasy",
-          "choices": [
-            "Nervous → uneasy → terrified",
-            "Terrified → nervous → uneasy",
-            "Uneasy → nervous → terrified",
-            "Uneasy → terrified → nervous"
+          "type": "sentence_build",
+          "prompt": "Put in order from least scared to most scared",
+          "words": [
+            "uneasy",
+            "nervous",
+            "terrified"
           ],
-          "correct": "Uneasy → nervous → terrified",
+          "correct": "uneasy nervous terrified",
           "hint": "Uneasy is mild, nervous is moderate, terrified is extreme fear!",
-          "difficulty": "medium",
+          "ordered": true,
+          "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.5c/L.3.5c-Q3.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.5c/L.3.5c-Q3-hint.mp3"
         },
@@ -3298,17 +3165,26 @@
         },
         {
           "id": "L.3.6-Q3",
-          "type": "multiple_choice",
-          "prompt": "Which word is a better replacement for **said** in this sentence?\n\n\"'I can't believe it!\" ____ Maria.\"",
-          "choices": [
+          "type": "missing_word",
+          "prompt": "Pick the best word to replace 'said' in this sentence.",
+          "sentence_words": [
+            "\"I",
+            "can't",
+            "believe",
+            "it!\"",
+            "___",
+            "Maria."
+          ],
+          "blank_index": 4,
+          "missing_choices": [
             "Whispered",
             "Said",
             "Exclaimed",
             "Mumbled"
           ],
           "correct": "Exclaimed",
-          "hint": "She can't believe it! That shows surprise and excitement. Which word matches that energy?",
-          "difficulty": "easy",
+          "hint": "She can't believe it! That shows surprise and excitement.",
+          "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.6/L.3.6-Q3.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.6/L.3.6-Q3-hint.mp3"
         },
@@ -3330,17 +3206,27 @@
         },
         {
           "id": "L.3.6-Q5",
-          "type": "multiple_choice",
-          "prompt": "Choose the MOST specific word to complete this sentence:\n\n\"The ____ cheetah sprinted across the savanna.\"",
-          "choices": [
+          "type": "missing_word",
+          "prompt": "Pick the most specific word to complete the sentence.",
+          "sentence_words": [
+            "The",
+            "___",
+            "cheetah",
+            "sprinted",
+            "across",
+            "the",
+            "savanna."
+          ],
+          "blank_index": 1,
+          "missing_choices": [
             "Nice",
             "Fast",
             "Quick",
             "Swift"
           ],
           "correct": "Swift",
-          "hint": "All could work, but 'swift' is the most vivid and precise for describing a cheetah's speed.",
-          "difficulty": "medium",
+          "hint": "'Swift' is the most vivid and precise for describing a cheetah's speed.",
+          "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.6/L.3.6-Q5.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.6/L.3.6-Q5-hint.mp3"
         }

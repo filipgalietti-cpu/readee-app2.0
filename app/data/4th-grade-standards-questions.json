@@ -2,7 +2,7 @@
   "grade": "4th",
   "grade_label": "4th Grade",
   "total_standards": 31,
-  "total_questions": 155,
+  "total_questions": 135,
   "standards": [
     {
       "domain": "Reading Literature",
@@ -378,17 +378,27 @@
         },
         {
           "id": "RL.4.5-Q2",
-          "type": "multiple_choice",
-          "prompt": "A poem is organized into stanzas. Stanzas are similar to ____ in prose.",
-          "choices": [
+          "type": "missing_word",
+          "prompt": "Pick the right word to fill the blank.",
+          "sentence_words": [
+            "Stanzas",
+            "are",
+            "similar",
+            "to",
+            "___",
+            "in",
+            "prose."
+          ],
+          "blank_index": 4,
+          "missing_choices": [
             "Sentences",
             "Titles",
             "Paragraphs",
             "Chapters"
           ],
           "correct": "Paragraphs",
-          "hint": "Stanzas group lines in a poem, just like paragraphs group sentences in prose.",
-          "difficulty": "easy",
+          "hint": "Stanzas group lines in a poem, just like ___ group sentences in prose.",
+          "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.5/RL.4.5-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.5/RL.4.5-Q2-hint.mp3"
         },
@@ -426,17 +436,33 @@
         },
         {
           "id": "RL.4.5-Q5",
-          "type": "multiple_choice",
-          "prompt": "A verse in a poem is most similar to a ____ in a novel.",
-          "choices": [
+          "type": "missing_word",
+          "prompt": "Pick the right word to fill the blank.",
+          "sentence_words": [
+            "A",
+            "verse",
+            "in",
+            "a",
+            "poem",
+            "is",
+            "similar",
+            "to",
+            "a",
+            "___",
+            "in",
+            "a",
+            "novel."
+          ],
+          "blank_index": 9,
+          "missing_choices": [
             "Chapter",
             "Setting",
             "Line or sentence",
             "Character"
           ],
           "correct": "Line or sentence",
-          "hint": "A verse is a single line of poetry — similar to how a sentence is a unit in prose.",
-          "difficulty": "medium",
+          "hint": "A verse is a single line of poetry — similar to a sentence in prose.",
+          "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.5/RL.4.5-Q5.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.5/RL.4.5-Q5-hint.mp3"
         }
@@ -994,17 +1020,17 @@
         },
         {
           "id": "RI.4.3-Q2",
-          "type": "multiple_choice",
-          "prompt": "Vaccines work by introducing a weakened or inactive form of a virus to the body. The immune system learns to recognize and fight the virus. If the person is later exposed to the real virus, their body already knows how to defeat it.\n\nExplain the SEQUENCE of how vaccines work:",
-          "choices": [
-            "Real virus enters → immune system fights → vaccine given",
-            "Vaccine introduces weak virus → immune system learns to fight it → body is prepared for the real virus",
-            "Body gets sick → takes medicine → feels better",
-            "Immune system attacks → virus enters → vaccine helps"
+          "type": "sentence_build",
+          "prompt": "Put the vaccine steps in the correct order",
+          "words": [
+            "Vaccine introduces weak virus",
+            "Immune system learns to fight it",
+            "Body is prepared for the real virus"
           ],
-          "correct": "Vaccine introduces weak virus → immune system learns to fight it → body is prepared for the real virus",
-          "hint": "Follow the order: introduce weak virus first, then the body learns, then it's ready.",
-          "difficulty": "medium",
+          "correct": "Vaccine introduces weak virus Immune system learns to fight it Body is prepared for the real virus",
+          "hint": "First comes the vaccine, then the body learns, then it's ready.",
+          "ordered": true,
+          "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.3/RI.4.3-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.3/RI.4.3-Q2-hint.mp3"
         },
@@ -1065,22 +1091,6 @@
       "parent_tip": "Help your child use context clues, word parts, and reference tools together to unlock tough vocabulary.",
       "questions": [
         {
-          "id": "RI.4.4-Q1",
-          "type": "multiple_choice",
-          "prompt": "The archaeologist carefully excavated the site, removing layers of dirt to reveal ancient pottery buried for thousands of years.\n\nWhat does **excavated** mean?",
-          "choices": [
-            "Covered up",
-            "Photographed",
-            "Dug up carefully",
-            "Destroyed"
-          ],
-          "correct": "Dug up carefully",
-          "hint": "She's removing layers of dirt to reveal things — that's careful digging.",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.4/RI.4.4-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.4/RI.4.4-Q1-hint.mp3"
-        },
-        {
           "id": "RI.4.4-Q2",
           "type": "multiple_choice",
           "prompt": "The legislative branch of government is responsible for making laws. Congress, made up of the Senate and House of Representatives, is the legislative branch.\n\nWhat does **legislative** relate to?",
@@ -1097,52 +1107,30 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.4/RI.4.4-Q2-hint.mp3"
         },
         {
-          "id": "RI.4.4-Q3",
-          "type": "multiple_choice",
-          "prompt": "The ecosystem was thriving — diverse species of plants and animals coexisted in a balanced, interdependent community.\n\nWhat does **interdependent** mean?",
-          "choices": [
-            "Fighting each other",
-            "Independent",
+          "id": "RI.4.4-Q6",
+          "type": "tap_to_pair",
+          "prompt": "Match each word to its meaning!",
+          "left_items": [
+            "excavated",
+            "interdependent",
+            "metamorphosis",
+            "famine"
+          ],
+          "right_items": [
+            "Dug up carefully",
             "Depending on each other",
-            "Living alone"
+            "A dramatic change in form",
+            "Extreme widespread hunger"
           ],
-          "correct": "Depending on each other",
-          "hint": "'Inter' means between/among. 'Dependent' means relying on. Together = relying on each other.",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.4/RI.4.4-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.4/RI.4.4-Q3-hint.mp3"
-        },
-        {
-          "id": "RI.4.4-Q4",
-          "type": "multiple_choice",
-          "prompt": "The metamorphosis of a caterpillar into a butterfly involves a complete transformation of the insect's body.\n\nWhat does **metamorphosis** mean?",
-          "choices": [
-            "A type of butterfly",
-            "A cocoon",
-            "A type of insect",
-            "A dramatic change in form"
-          ],
-          "correct": "A dramatic change in form",
-          "hint": "The text says 'complete transformation' right after — that defines metamorphosis!",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.4/RI.4.4-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.4/RI.4.4-Q4-hint.mp3"
-        },
-        {
-          "id": "RI.4.4-Q5",
-          "type": "multiple_choice",
-          "prompt": "The drought caused widespread famine. Crops withered in the fields, and livestock had no grass to eat. Thousands of people faced severe hunger.\n\nWhat does **famine** mean?",
-          "choices": [
-            "Extreme widespread hunger",
-            "Hot weather",
-            "A farming technique",
-            "A type of storm"
-          ],
-          "correct": "Extreme widespread hunger",
-          "hint": "Crops died, animals starved, thousands faced severe hunger — famine means extreme hunger on a large scale.",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.4/RI.4.4-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.4/RI.4.4-Q5-hint.mp3"
+          "correct_pairs": {
+            "excavated": "Dug up carefully",
+            "interdependent": "Depending on each other",
+            "metamorphosis": "A dramatic change in form",
+            "famine": "Extreme widespread hunger"
+          },
+          "correct": "excavated→Dug up carefully, interdependent→Depending on each other, metamorphosis→A dramatic change in form, famine→Extreme widespread hunger",
+          "hint": "Use context clues and word parts to match each word!",
+          "difficulty": 2
         }
       ],
       "standard_id": "RI.4.4",
@@ -1152,70 +1140,6 @@
       "domain": "Reading Informational Text",
       "parent_tip": "Help your child identify text structures: is the author comparing, showing cause/effect, describing a sequence, or presenting a problem and solution?",
       "questions": [
-        {
-          "id": "RI.4.5-Q1",
-          "type": "multiple_choice",
-          "prompt": "A passage first describes a problem (too much trash in the ocean) and then explains ways to fix it (recycling programs, beach cleanups). This text structure is —",
-          "choices": [
-            "Problem and solution",
-            "Chronological order",
-            "Cause and effect",
-            "Compare and contrast"
-          ],
-          "correct": "Problem and solution",
-          "hint": "Problem presented → solution offered. Classic problem/solution structure!",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q1-hint.mp3"
-        },
-        {
-          "id": "RI.4.5-Q2",
-          "type": "multiple_choice",
-          "prompt": "Signal words like \"first, next, then, finally\" indicate which text structure?",
-          "choices": [
-            "Cause and effect",
-            "Chronological/sequential order",
-            "Compare and contrast",
-            "Description"
-          ],
-          "correct": "Chronological/sequential order",
-          "hint": "These words show ORDER — things happening in sequence.",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q2-hint.mp3"
-        },
-        {
-          "id": "RI.4.5-Q3",
-          "type": "multiple_choice",
-          "prompt": "A passage about hurricanes and tornadoes uses words like **similarly,** \"however,\" and \"on the other hand.\" This structure is —",
-          "choices": [
-            "Cause and effect",
-            "Compare and contrast",
-            "Chronological order",
-            "Problem and solution"
-          ],
-          "correct": "Compare and contrast",
-          "hint": "'Similarly' shows likeness; 'however' and 'on the other hand' show differences.",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q3-hint.mp3"
-        },
-        {
-          "id": "RI.4.5-Q4",
-          "type": "multiple_choice",
-          "prompt": "Because the temperature dropped below freezing, the pipes burst. As a result, the basement flooded.\n\nThis is an example of —",
-          "choices": [
-            "Cause and effect",
-            "Compare and contrast",
-            "Description",
-            "Problem and solution"
-          ],
-          "correct": "Cause and effect",
-          "hint": "'Because' and 'as a result' are cause-and-effect signal words.",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q4-hint.mp3"
-        },
         {
           "id": "RI.4.5-Q5",
           "type": "multiple_choice",
@@ -1231,6 +1155,40 @@
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q5.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q5-hint.mp3"
+        },
+        {
+          "id": "RI.4.5-Q6",
+          "type": "category_sort",
+          "prompt": "Sort each passage description into its text structure!",
+          "categories": [
+            "Problem & Solution",
+            "Chronological",
+            "Compare & Contrast",
+            "Cause & Effect"
+          ],
+          "category_items": {
+            "Problem & Solution": [
+              "Too much trash in the ocean → recycling programs"
+            ],
+            "Chronological": [
+              "First, next, then, finally"
+            ],
+            "Compare & Contrast": [
+              "Hurricanes vs tornadoes: similarly, however"
+            ],
+            "Cause & Effect": [
+              "Temperature dropped → pipes burst → basement flooded"
+            ]
+          },
+          "items": [
+            "Too much trash in the ocean → recycling programs",
+            "First, next, then, finally",
+            "Hurricanes vs tornadoes: similarly, however",
+            "Temperature dropped → pipes burst → basement flooded"
+          ],
+          "correct": "correct",
+          "hint": "Look for signal words: problem/solution, first/next/then, similarly/however, because/as a result!",
+          "difficulty": 2
         }
       ],
       "standard_id": "RI.4.5",
@@ -2033,54 +1991,6 @@
       "parent_tip": "Model this strategy: 'I don't know this word, but the rest of the sentence tells me...'",
       "questions": [
         {
-          "id": "L.4.4a-Q1",
-          "type": "multiple_choice",
-          "prompt": "The unprecedented snowstorm shut down the entire city — nothing like it had ever happened before.\n\nWhat does **unprecedented** mean?",
-          "choices": [
-            "Never happened before",
-            "Very cold",
-            "Predicted by scientists",
-            "Expected"
-          ],
-          "correct": "Never happened before",
-          "hint": "The text literally says 'nothing like it had ever happened before' — that defines unprecedented!",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4a/L.4.4a-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4a/L.4.4a-Q1-hint.mp3"
-        },
-        {
-          "id": "L.4.4a-Q2",
-          "type": "multiple_choice",
-          "prompt": "The resilient community rebuilt their homes after the hurricane, stronger than before.\n\nWhat does **resilient** mean?",
-          "choices": [
-            "Able to recover and bounce back",
-            "Moving to a new place",
-            "Angry and upset",
-            "Weak and defeated"
-          ],
-          "correct": "Able to recover and bounce back",
-          "hint": "They rebuilt stronger than before — that's bouncing back from difficulty!",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4a/L.4.4a-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4a/L.4.4a-Q2-hint.mp3"
-        },
-        {
-          "id": "L.4.4a-Q3",
-          "type": "multiple_choice",
-          "prompt": "Her meticulous notes included every detail — dates, names, page numbers, and color-coded tabs.\n\nWhat does **meticulous** mean?",
-          "choices": [
-            "Messy and disorganized",
-            "Simple and basic",
-            "Quick and careless",
-            "Extremely careful and thorough"
-          ],
-          "correct": "Extremely careful and thorough",
-          "hint": "Every detail, color-coded tabs — that's extremely thorough and careful work!",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4a/L.4.4a-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4a/L.4.4a-Q3-hint.mp3"
-        },
-        {
           "id": "L.4.4a-Q4",
           "type": "multiple_choice",
           "prompt": "The two countries formed an alliance, agreeing to protect each other in times of war.\n\nAn **alliance** is —",
@@ -2097,20 +2007,30 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4a/L.4.4a-Q4-hint.mp3"
         },
         {
-          "id": "L.4.4a-Q5",
-          "type": "multiple_choice",
-          "prompt": "The verbose speaker went on for two hours, using far more words than necessary to make simple points.\n\nWhat does **verbose** mean?",
-          "choices": [
-            "Quiet",
-            "Nervous",
-            "Using too many words",
-            "Funny"
+          "id": "L.4.4a-Q6",
+          "type": "tap_to_pair",
+          "prompt": "Match each word to its meaning!",
+          "left_items": [
+            "unprecedented",
+            "resilient",
+            "meticulous",
+            "verbose"
           ],
-          "correct": "Using too many words",
-          "hint": "Two hours and 'far more words than necessary' — verbose means overly wordy!",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4a/L.4.4a-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4a/L.4.4a-Q5-hint.mp3"
+          "right_items": [
+            "Never happened before",
+            "Able to recover",
+            "Extremely careful",
+            "Using too many words"
+          ],
+          "correct_pairs": {
+            "unprecedented": "Never happened before",
+            "resilient": "Able to recover",
+            "meticulous": "Extremely careful",
+            "verbose": "Using too many words"
+          },
+          "correct": "unprecedented→Never happened before, resilient→Able to recover, meticulous→Extremely careful, verbose→Using too many words",
+          "hint": "Use context clues from the sentence around each word!",
+          "difficulty": 2
         }
       ],
       "standard_id": "L.4.4a",
@@ -2120,54 +2040,6 @@
       "domain": "Language",
       "parent_tip": "Learn root words together: graph = write, port = carry, rupt = break, dict = say.",
       "questions": [
-        {
-          "id": "L.4.4b-Q1",
-          "type": "multiple_choice",
-          "prompt": "The Latin root **dict** means \"to say or speak.\" What does **predict** mean?",
-          "choices": [
-            "To say after",
-            "To say wrongly",
-            "To say before — to tell what will happen in advance",
-            "To say again"
-          ],
-          "correct": "To say before — to tell what will happen in advance",
-          "hint": "Pre (before) + dict (say) = say before it happens = predict!",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4b/L.4.4b-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4b/L.4.4b-Q1-hint.mp3"
-        },
-        {
-          "id": "L.4.4b-Q2",
-          "type": "multiple_choice",
-          "prompt": "The Greek root **graph** means \"to write.\" Which word means \"a person's own handwriting of their name\"?",
-          "choices": [
-            "Autograph",
-            "Telegraph",
-            "Geography",
-            "Photograph"
-          ],
-          "correct": "Autograph",
-          "hint": "Auto (self) + graph (write) = self-writing = your own signature!",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4b/L.4.4b-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4b/L.4.4b-Q2-hint.mp3"
-        },
-        {
-          "id": "L.4.4b-Q3",
-          "type": "multiple_choice",
-          "prompt": "The Latin root **rupt** means \"to break.\" What does **interrupt** mean?",
-          "choices": [
-            "To speak quietly",
-            "To build something",
-            "To fix something broken",
-            "To break into a conversation or process"
-          ],
-          "correct": "To break into a conversation or process",
-          "hint": "Inter (between) + rupt (break) = break into the middle of something.",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4b/L.4.4b-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4b/L.4.4b-Q3-hint.mp3"
-        },
         {
           "id": "L.4.4b-Q4",
           "type": "multiple_choice",
@@ -2185,20 +2057,30 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4b/L.4.4b-Q4-hint.mp3"
         },
         {
-          "id": "L.4.4b-Q5",
-          "type": "multiple_choice",
-          "prompt": "If **bene-** means **good** and **mal-** means **bad,** which word means \"a person who does good\"?",
-          "choices": [
-            "Malfunction",
-            "Benefactor",
-            "Malefactor",
-            "Beneficial"
+          "id": "L.4.4b-Q6",
+          "type": "tap_to_pair",
+          "prompt": "Match each word to its root meaning!",
+          "left_items": [
+            "predict (dict=say)",
+            "autograph (graph=write)",
+            "interrupt (rupt=break)",
+            "benefactor (bene=good)"
           ],
-          "correct": "Benefactor",
-          "hint": "Bene (good) + factor (doer) = a person who does good (like donating money).",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4b/L.4.4b-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4b/L.4.4b-Q5-hint.mp3"
+          "right_items": [
+            "To say before",
+            "Own handwriting of name",
+            "To break into",
+            "A person who does good"
+          ],
+          "correct_pairs": {
+            "predict (dict=say)": "To say before",
+            "autograph (graph=write)": "Own handwriting of name",
+            "interrupt (rupt=break)": "To break into",
+            "benefactor (bene=good)": "A person who does good"
+          },
+          "correct": "predict→To say before, autograph→Own handwriting of name, interrupt→To break into, benefactor→A person who does good",
+          "hint": "Use the Latin/Greek root in parentheses to figure out the meaning!",
+          "difficulty": 2
         }
       ],
       "standard_id": "L.4.4b",
@@ -2385,70 +2267,6 @@
       "parent_tip": "Ask 'What two things are being compared? What do they have in common?'",
       "questions": [
         {
-          "id": "L.4.5a-Q1",
-          "type": "multiple_choice",
-          "prompt": "Her smile was as bright as the sun.\n\nThis simile compares —",
-          "choices": [
-            "The sun to a lamp",
-            "Her teeth to stars",
-            "Her smile to the moon",
-            "Her smile to sunlight — both are bright and warm"
-          ],
-          "correct": "Her smile to sunlight — both are bright and warm",
-          "hint": "'As bright as the sun' — her smile is being compared to the sun's brightness.",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5a/L.4.5a-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5a/L.4.5a-Q1-hint.mp3"
-        },
-        {
-          "id": "L.4.5a-Q2",
-          "type": "multiple_choice",
-          "prompt": "Time is money.\n\nThis metaphor means —",
-          "choices": [
-            "Time is valuable and shouldn't be wasted, just like money",
-            "Clocks are expensive",
-            "Money takes time to earn",
-            "You can buy time"
-          ],
-          "correct": "Time is valuable and shouldn't be wasted, just like money",
-          "hint": "The metaphor says time IS money — meaning time is just as valuable as money.",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5a/L.4.5a-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5a/L.4.5a-Q2-hint.mp3"
-        },
-        {
-          "id": "L.4.5a-Q3",
-          "type": "multiple_choice",
-          "prompt": "The dancer moved like water flowing over rocks.\n\nWhat quality of the dancer does this simile highlight?",
-          "choices": [
-            "She was cold",
-            "She was fast",
-            "She moved smoothly and gracefully",
-            "She was wet"
-          ],
-          "correct": "She moved smoothly and gracefully",
-          "hint": "Water flowing over rocks is smooth and graceful — that's how the dancer moved.",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5a/L.4.5a-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5a/L.4.5a-Q3-hint.mp3"
-        },
-        {
-          "id": "L.4.5a-Q4",
-          "type": "multiple_choice",
-          "prompt": "He has a heart of stone.\n\nThis metaphor means —",
-          "choices": [
-            "He needs a doctor",
-            "He collects rocks",
-            "He is very strong",
-            "He is cold, uncaring, and unfeeling"
-          ],
-          "correct": "He is cold, uncaring, and unfeeling",
-          "hint": "Stone is hard and cold. A heart of stone = a person who doesn't show emotions or compassion.",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5a/L.4.5a-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5a/L.4.5a-Q4-hint.mp3"
-        },
-        {
           "id": "L.4.5a-Q5",
           "type": "multiple_choice",
           "prompt": "How do you tell the difference between a simile and a metaphor?",
@@ -2463,6 +2281,32 @@
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5a/L.4.5a-Q5.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5a/L.4.5a-Q5-hint.mp3"
+        },
+        {
+          "id": "L.4.5a-Q6",
+          "type": "tap_to_pair",
+          "prompt": "Match each simile or metaphor to its meaning!",
+          "left_items": [
+            "smile bright as sun",
+            "time is money",
+            "dancer like water",
+            "heart of stone"
+          ],
+          "right_items": [
+            "Both are bright and warm",
+            "Time is valuable",
+            "Smooth and graceful",
+            "Cold and unfeeling"
+          ],
+          "correct_pairs": {
+            "smile bright as sun": "Both are bright and warm",
+            "time is money": "Time is valuable",
+            "dancer like water": "Smooth and graceful",
+            "heart of stone": "Cold and unfeeling"
+          },
+          "correct": "smile bright as sun→Both are bright and warm, time is money→Time is valuable, dancer like water→Smooth and graceful, heart of stone→Cold and unfeeling",
+          "hint": "Think about what the two things being compared have in common!",
+          "difficulty": 2
         }
       ],
       "standard_id": "L.4.5a",
@@ -2472,54 +2316,6 @@
       "domain": "Language",
       "parent_tip": "Collect idioms as a family: 'Actions speak louder than words' — discuss what they really mean.",
       "questions": [
-        {
-          "id": "L.4.5b-Q1",
-          "type": "multiple_choice",
-          "prompt": "What does the proverb \"Don't judge a book by its cover\" mean?",
-          "choices": [
-            "Don't evaluate things or people based only on appearance",
-            "Book covers are ugly",
-            "Covers are important",
-            "Always read the whole book"
-          ],
-          "correct": "Don't evaluate things or people based only on appearance",
-          "hint": "A book (or person) might look one way on the outside but be completely different inside.",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5b/L.4.5b-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5b/L.4.5b-Q1-hint.mp3"
-        },
-        {
-          "id": "L.4.5b-Q2",
-          "type": "multiple_choice",
-          "prompt": "What does the adage \"Actions speak louder than words\" mean?",
-          "choices": [
-            "Actions make noise",
-            "Talk loudly",
-            "What you DO matters more than what you SAY",
-            "Words are quiet"
-          ],
-          "correct": "What you DO matters more than what you SAY",
-          "hint": "Anyone can SAY they'll help, but actually DOING it is what counts.",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5b/L.4.5b-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5b/L.4.5b-Q2-hint.mp3"
-        },
-        {
-          "id": "L.4.5b-Q3",
-          "type": "multiple_choice",
-          "prompt": "What does the idiom \"costs an arm and a leg\" mean?",
-          "choices": [
-            "It causes pain",
-            "You have to lose body parts",
-            "Something is very expensive",
-            "It requires physical strength"
-          ],
-          "correct": "Something is very expensive",
-          "hint": "You wouldn't literally give an arm and leg — this means the price is extremely high!",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5b/L.4.5b-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5b/L.4.5b-Q3-hint.mp3"
-        },
         {
           "id": "L.4.5b-Q4",
           "type": "multiple_choice",
@@ -2537,20 +2333,30 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5b/L.4.5b-Q4-hint.mp3"
         },
         {
-          "id": "L.4.5b-Q5",
-          "type": "multiple_choice",
-          "prompt": "What does \"When it rains, it pours\" mean?",
-          "choices": [
-            "Rain is always heavy",
-            "Always carry an umbrella",
-            "When problems happen, they tend to come all at once",
-            "Pouring is worse than raining"
+          "id": "L.4.5b-Q6",
+          "type": "tap_to_pair",
+          "prompt": "Match each idiom or proverb to its meaning!",
+          "left_items": [
+            "book by cover",
+            "actions > words",
+            "arm and leg",
+            "when it rains"
           ],
-          "correct": "When problems happen, they tend to come all at once",
-          "hint": "It's not about weather — it means difficulties tend to pile up all at the same time.",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5b/L.4.5b-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5b/L.4.5b-Q5-hint.mp3"
+          "right_items": [
+            "Don't judge by appearance",
+            "What you do matters more",
+            "Very expensive",
+            "Problems come all at once"
+          ],
+          "correct_pairs": {
+            "book by cover": "Don't judge by appearance",
+            "actions > words": "What you do matters more",
+            "arm and leg": "Very expensive",
+            "when it rains": "Problems come all at once"
+          },
+          "correct": "book by cover→Don't judge by appearance, actions > words→What you do matters more, arm and leg→Very expensive, when it rains→Problems come all at once",
+          "hint": "These sayings have hidden meanings — think about what they really teach!",
+          "difficulty": 2
         }
       ],
       "standard_id": "L.4.5b",
@@ -2560,38 +2366,6 @@
       "domain": "Language",
       "parent_tip": "Play synonym/antonym games: 'What's a fancier word for happy? What's the opposite of generous?'",
       "questions": [
-        {
-          "id": "L.4.5c-Q1",
-          "type": "multiple_choice",
-          "prompt": "Which word is a SYNONYM for **courageous**?",
-          "choices": [
-            "Brave",
-            "Cowardly",
-            "Weak",
-            "Frightened"
-          ],
-          "correct": "Brave",
-          "hint": "A synonym has a similar meaning. Courageous and brave both mean showing courage.",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5c/L.4.5c-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5c/L.4.5c-Q1-hint.mp3"
-        },
-        {
-          "id": "L.4.5c-Q2",
-          "type": "multiple_choice",
-          "prompt": "Which word is an ANTONYM for **generous**?",
-          "choices": [
-            "Kind",
-            "Wealthy",
-            "Giving",
-            "Selfish"
-          ],
-          "correct": "Selfish",
-          "hint": "An antonym is the opposite. The opposite of giving freely (generous) is keeping everything for yourself (selfish).",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5c/L.4.5c-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5c/L.4.5c-Q2-hint.mp3"
-        },
         {
           "id": "L.4.5c-Q3",
           "type": "multiple_choice",
@@ -2610,35 +2384,50 @@
         },
         {
           "id": "L.4.5c-Q4",
-          "type": "multiple_choice",
-          "prompt": "Which word BEST replaces **said** to show the character is angry?\n\n\"'That's not fair!\" ____ Marcus.\"",
-          "choices": [
+          "type": "missing_word",
+          "prompt": "Pick the best word to replace 'said' — the character is angry!",
+          "sentence_words": [
+            "\"That's",
+            "not",
+            "fair!\"",
+            "___",
+            "Marcus."
+          ],
+          "blank_index": 3,
+          "missing_choices": [
             "Whispered",
             "Sighed",
             "Mumbled",
             "Shouted"
           ],
           "correct": "Shouted",
-          "hint": "An angry person saying 'That's not fair!' would most likely raise their voice — shout!",
-          "difficulty": "easy",
+          "hint": "An angry person saying 'That's not fair!' would most likely raise their voice!",
+          "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5c/L.4.5c-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5c/L.4.5c-Q4-hint.mp3"
         },
         {
-          "id": "L.4.5c-Q5",
-          "type": "multiple_choice",
-          "prompt": "Which pair are antonyms?",
-          "choices": [
-            "Ancient and old",
-            "Quick and fast",
-            "Brave and courageous",
-            "Expand and contract"
+          "id": "L.4.5c-Q6",
+          "type": "tap_to_pair",
+          "prompt": "Match each word to its synonym or antonym!",
+          "left_items": [
+            "courageous",
+            "generous",
+            "expand"
           ],
-          "correct": "Expand and contract",
-          "hint": "Expand = get bigger. Contract = get smaller. Those are opposites!",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5c/L.4.5c-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5c/L.4.5c-Q5-hint.mp3"
+          "right_items": [
+            "Brave (synonym)",
+            "Selfish (antonym)",
+            "Contract (antonym)"
+          ],
+          "correct_pairs": {
+            "courageous": "Brave (synonym)",
+            "generous": "Selfish (antonym)",
+            "expand": "Contract (antonym)"
+          },
+          "correct": "courageous→Brave (synonym), generous→Selfish (antonym), expand→Contract (antonym)",
+          "hint": "Synonyms mean the same, antonyms mean the opposite!",
+          "difficulty": 2
         }
       ],
       "standard_id": "L.4.5c",
@@ -2682,9 +2471,24 @@
         },
         {
           "id": "L.4.6-Q3",
-          "type": "multiple_choice",
-          "prompt": "Replace **nice** with a more precise word:\n\n\"The ____ sunset painted the sky in shades of orange and pink.\"",
-          "choices": [
+          "type": "missing_word",
+          "prompt": "Replace 'nice' with a more precise word.",
+          "sentence_words": [
+            "The",
+            "___",
+            "sunset",
+            "painted",
+            "the",
+            "sky",
+            "in",
+            "shades",
+            "of",
+            "orange",
+            "and",
+            "pink."
+          ],
+          "blank_index": 1,
+          "missing_choices": [
             "Good",
             "Nice",
             "Spectacular",
@@ -2692,7 +2496,7 @@
           ],
           "correct": "Spectacular",
           "hint": "A sunset that paints the sky deserves a more vivid word than 'nice'!",
-          "difficulty": "easy",
+          "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.6/L.4.6-Q3.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.6/L.4.6-Q3-hint.mp3"
         },
