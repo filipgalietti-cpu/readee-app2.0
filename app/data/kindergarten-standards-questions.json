@@ -1455,7 +1455,7 @@
           "type": "tap_to_pair",
           "prompt": "Match each book part to where you find it!",
           "left_items": [
-            "Title",
+            "Book Name",
             "Author Name",
             "Summary"
           ],
@@ -1465,12 +1465,12 @@
             "Title Page"
           ],
           "correct_pairs": {
-            "Title": "Front Cover",
+            "Book Name": "Front Cover",
             "Author Name": "Title Page",
             "Summary": "Back Cover"
           },
-          "correct": "Title→Front Cover, Author Name→Title Page, Summary→Back Cover",
-          "hint": "The title is on the front, the author's full name is on the title page inside, and the summary is on the back!",
+          "correct": "Book Name→Front Cover, Author Name→Title Page, Summary→Back Cover",
+          "hint": "The book name is on the front, the author's full name is on the title page inside, and the summary is on the back!",
           "difficulty": 1,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q1-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q1.mp3"
@@ -3340,7 +3340,7 @@
         {
           "id": "RF.K.3d-Q1",
           "type": "tap_to_pair",
-          "prompt": "Match each word to the word that differs by one letter!",
+          "prompt": "Match words that look almost the same! Only ONE letter is different.",
           "left_items": [
             "CAT",
             "PAN",
@@ -3357,7 +3357,7 @@
             "MAP": "MOP"
           },
           "correct": "CAT→BAT, PAN→PEN, MAP→MOP",
-          "hint": "Each pair has almost the same letters — one letter is different!",
+          "hint": "Look at each word carefully — which two words share the most letters?",
           "difficulty": 1,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3d/RF.K.3d-Q1-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3d/RF.K.3d-Q1.mp3"
