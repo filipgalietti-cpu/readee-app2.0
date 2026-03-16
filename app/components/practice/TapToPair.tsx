@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Howl } from "howler";
 
 interface TapToPairProps {
   prompt: string;
@@ -45,8 +46,7 @@ function playWord(word: string) {
   const src = base
     ? `${base}/words/${clean}.mp3`
     : `/audio/words/${clean}.mp3`;
-  const audio = new Audio(src);
-  audio.play().catch(() => {});
+  new Howl({ src: [src] }).play();
 }
 
 export function TapToPair({

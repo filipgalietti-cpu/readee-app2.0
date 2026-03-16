@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Howl } from "howler";
 
 interface CategorySortProps {
   prompt: string;
@@ -62,8 +63,7 @@ function playWord(word: string) {
   const src = base
     ? `${base}/words/${clean}.mp3`
     : `/audio/words/${clean}.mp3`;
-  const audio = new Audio(src);
-  audio.play().catch(() => {});
+  new Howl({ src: [src] }).play();
 }
 
 /** Check if two rects overlap (with margin) */
@@ -126,7 +126,7 @@ export function CategorySort({
         const el = bucketRefs.current[cat];
         if (el) {
           const rect = el.getBoundingClientRect();
-          if (rectsOverlap(draggedRect, rect, 10)) return cat;
+          if (rectsOverlap(draggedRect, rect, 30)) return cat;
         }
       }
       return null;

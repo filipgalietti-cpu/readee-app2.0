@@ -146,15 +146,40 @@ export default function KInteractiveAuditPage() {
     setCommentDraft(d => ({ ...d, [qId]: "" }));
   }
 
+  const AUDIO_BASE = process.env.NEXT_PUBLIC_SUPABASE_URL
+    ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audio`
+    : "";
+
   const playWordAudio = useCallback((word: string) => {
     const clean = word.replace(/[^a-zA-Z0-9 ]/g, "").toLowerCase().replace(/\s+/g, "_");
     if (!clean) return;
-    const base = process.env.NEXT_PUBLIC_SUPABASE_URL
-      ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audio`
-      : "";
-    const src = base ? `${base}/words/${clean}.mp3` : `/audio/words/${clean}.mp3`;
+    const src = AUDIO_BASE ? `${AUDIO_BASE}/words/${clean}.mp3` : `/audio/words/${clean}.mp3`;
     playAudio(src);
-  }, [playAudio]);
+  }, [playAudio, AUDIO_BASE]);
+
+  // Phoneme→file ID mapping
+  const PHONEME_MAP: Record<string, string> = {
+    "/b/": "b", "/k/": "c_hard", "/s/": "s", "/d/": "d", "/f/": "f", "/g/": "g",
+    "/h/": "h", "/j/": "j", "/l/": "l", "/m/": "m", "/n/": "n", "/p/": "p",
+    "/r/": "r", "/t/": "t", "/v/": "v", "/w/": "w", "/z/": "z",
+    "/a/": "short_a", "/e/": "short_e", "/i/": "short_i", "/o/": "short_o", "/u/": "short_u",
+    "/ch/": "ch", "/sh/": "sh", "/th/": "th_unvoiced",
+  };
+
+  const playPhonemeAudio = useCallback((phoneme: string) => {
+    const id = PHONEME_MAP[phoneme];
+    if (!id || !AUDIO_BASE) return;
+    playAudio(`${AUDIO_BASE}/phonemes/${id}.mp3`);
+  }, [playAudio, AUDIO_BASE]);
+
+  /** Smart play: routes phonemes (/x/) to phoneme audio, words to word audio */
+  const playItemSmart = useCallback((item: string) => {
+    if (/^\/[a-z]+\/$/.test(item)) {
+      playPhonemeAudio(item);
+    } else {
+      playWordAudio(item);
+    }
+  }, [playPhonemeAudio, playWordAudio]);
 
   function resetQuestion(qId: string) {
     setAnsweredMap(prev => ({ ...prev, [qId]: false }));
@@ -174,6 +199,7 @@ export default function KInteractiveAuditPage() {
             choices={q.missing_choices || []}
             correct={q.correct}
             sentenceHint={q.sentence_hint}
+            questionId={q.id}
             answered={answered}
             onAnswer={(isCorrect) => onAnswer(isCorrect)}
           />
@@ -190,6 +216,7 @@ export default function KInteractiveAuditPage() {
             answered={answered}
             onAnswer={(isCorrect) => onAnswer(isCorrect)}
             onPlayItem={playWordAudio}
+            ordered={(q as any).ordered}
           />
         );
       case "category_sort":
@@ -213,7 +240,7 @@ export default function KInteractiveAuditPage() {
             correctPairs={q.correct_pairs || {}}
             answered={answered}
             onAnswer={(isCorrect) => onAnswer(isCorrect)}
-            onPlayItem={playWordAudio}
+            onPlayItem={playItemSmart}
           />
         );
       case "sound_machine":
@@ -225,6 +252,8 @@ export default function KInteractiveAuditPage() {
             distractors={q.distractors || []}
             answered={answered}
             onAnswer={(isCorrect) => onAnswer(isCorrect)}
+            onPlayPhoneme={playPhonemeAudio}
+            onPlayWord={playWordAudio}
           />
         );
       case "space_insertion":
@@ -233,6 +262,7 @@ export default function KInteractiveAuditPage() {
             prompt={q.prompt}
             jumbled={q.jumbled || ""}
             correctSentence={q.correct}
+            questionId={q.id}
             answered={answered}
             onAnswer={(isCorrect) => onAnswer(isCorrect)}
           />

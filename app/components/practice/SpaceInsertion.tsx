@@ -2,11 +2,17 @@
 
 import { useState, useCallback, useMemo } from "react";
 import { motion } from "framer-motion";
+import { Howl } from "howler";
+
+const SUPABASE_AUDIO_BASE = process.env.NEXT_PUBLIC_SUPABASE_URL
+  ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audio`
+  : "";
 
 interface SpaceInsertionProps {
   prompt: string;
   jumbled: string;        // e.g. "Mydogisbig."
   correctSentence: string; // e.g. "My dog is big."
+  questionId?: string;
   answered: boolean;
   onAnswer: (isCorrect: boolean, result: string) => void;
 }
@@ -22,6 +28,7 @@ export function SpaceInsertion({
   prompt,
   jumbled,
   correctSentence,
+  questionId,
   answered,
   onAnswer,
 }: SpaceInsertionProps) {
@@ -75,8 +82,16 @@ export function SpaceInsertion({
       return;
     }
 
-    onAnswer(true, currentAttempt);
-  }, [hasSpaces, answered, result, currentAttempt, correctSentence, onAnswer]);
+    // Correct — play sentence readback
+    if (questionId && SUPABASE_AUDIO_BASE) {
+      const standard = questionId.replace(/-Q\d+$/, "");
+      const readbackUrl = `${SUPABASE_AUDIO_BASE}/kindergarten/${standard}/${questionId}-sentence.mp3`;
+      new Howl({ src: [readbackUrl] }).play();
+      setTimeout(() => onAnswer(true, currentAttempt), 2500);
+    } else {
+      onAnswer(true, currentAttempt);
+    }
+  }, [hasSpaces, answered, result, currentAttempt, correctSentence, questionId, onAnswer]);
 
   return (
     <div className="flex flex-col gap-6">

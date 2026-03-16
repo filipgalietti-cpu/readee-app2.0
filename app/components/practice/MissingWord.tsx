@@ -2,6 +2,7 @@
 
 import { useState, useCallback } from "react";
 import { motion } from "framer-motion";
+import { Howl } from "howler";
 
 interface MissingWordProps {
   prompt: string;
@@ -11,18 +12,14 @@ interface MissingWordProps {
   correct: string;
   sentenceHint?: string;
   sentenceAudioUrl?: string;
+  questionId?: string;
   answered: boolean;
   onAnswer: (isCorrect: boolean, selected: string) => void;
 }
 
-function playAudioAsync(url: string): Promise<void> {
-  return new Promise((resolve) => {
-    const audio = new Audio(url);
-    audio.addEventListener("ended", () => resolve());
-    audio.addEventListener("error", () => resolve());
-    audio.play().catch(() => resolve());
-  });
-}
+const SUPABASE_AUDIO_BASE = process.env.NEXT_PUBLIC_SUPABASE_URL
+  ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audio`
+  : "";
 
 const CHOICE_COLORS = [
   "bg-blue-100 text-blue-800 border-blue-300 dark:bg-blue-900/60 dark:text-blue-200 dark:border-blue-700",
@@ -39,6 +36,7 @@ export function MissingWord({
   correct,
   sentenceHint,
   sentenceAudioUrl,
+  questionId,
   answered,
   onAnswer,
 }: MissingWordProps) {
@@ -47,27 +45,40 @@ export function MissingWord({
   const correctWord = correct;
 
   const handleChoice = useCallback(
-    async (choice: string) => {
+    (choice: string) => {
       if (selected !== null || answered) return;
       setSelected(choice);
       const isCorrect = choice.toLowerCase() === correctWord.toLowerCase();
       setResult(isCorrect ? "correct" : "incorrect");
 
-      if (isCorrect && sentenceAudioUrl) {
-        await playAudioAsync(sentenceAudioUrl);
+      if (isCorrect) {
+        // Play sentence readback via Howler
+        let readbackUrl = sentenceAudioUrl;
+        if (!readbackUrl && questionId && SUPABASE_AUDIO_BASE) {
+          const standard = questionId.replace(/-Q\d+$/, "");
+          readbackUrl = `${SUPABASE_AUDIO_BASE}/kindergarten/${standard}/${questionId}-sentence.mp3`;
+        }
+        if (readbackUrl) {
+          new Howl({ src: [readbackUrl] }).play();
+        }
+        setTimeout(() => onAnswer(true, choice), 2500);
+      } else {
+        onAnswer(false, choice);
       }
-
-      onAnswer(isCorrect, choice);
     },
-    [selected, answered, correctWord, sentenceAudioUrl, onAnswer]
+    [selected, answered, correctWord, sentenceAudioUrl, questionId, onAnswer]
   );
 
   const handleReplay = useCallback(() => {
-    if (sentenceAudioUrl) {
-      const audio = new Audio(sentenceAudioUrl);
-      audio.play().catch(() => {});
+    let readbackUrl = sentenceAudioUrl;
+    if (!readbackUrl && questionId && SUPABASE_AUDIO_BASE) {
+      const standard = questionId.replace(/-Q\d+$/, "");
+      readbackUrl = `${SUPABASE_AUDIO_BASE}/kindergarten/${standard}/${questionId}-sentence.mp3`;
     }
-  }, [sentenceAudioUrl]);
+    if (readbackUrl) {
+      new Howl({ src: [readbackUrl] }).play();
+    }
+  }, [sentenceAudioUrl, questionId]);
 
   return (
     <div className="flex flex-col gap-6">
