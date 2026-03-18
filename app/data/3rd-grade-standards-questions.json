@@ -309,21 +309,21 @@
           "type": "tap_to_pair",
           "prompt": "Match each expression to its meaning!",
           "left_items": [
-            "on top of the world",
-            "let the cat out of the bag",
-            "bit at their faces"
+            "On top of the world",
+            "Let the cat out of the bag",
+            "Bit at their faces"
           ],
           "right_items": [
+            "Sharp and painful",
             "Extremely happy",
-            "Reveal a secret",
-            "Sharp and painful"
+            "Reveal a secret"
           ],
           "correct_pairs": {
-            "on top of the world": "Extremely happy",
-            "let the cat out of the bag": "Reveal a secret",
-            "bit at their faces": "Sharp and painful"
+            "On top of the world": "Extremely happy",
+            "Let the cat out of the bag": "Reveal a secret",
+            "Bit at their faces": "Sharp and painful"
           },
-          "correct": "on top of the world→Extremely happy, let the cat out of the bag→Reveal a secret, bit at their faces→Sharp and painful",
+          "correct": "On top of the world→Extremely happy, Let the cat out of the bag→Reveal a secret, Bit at their faces→Sharp and painful",
           "hint": "These are figurative expressions — they don't mean what they literally say!",
           "difficulty": 2
         }
@@ -2512,24 +2512,24 @@
           "type": "tap_to_pair",
           "prompt": "Match each word to its meaning in context!",
           "left_items": [
-            "light (candle)",
-            "elaborate",
-            "current (river)",
-            "parched"
+            "Light (candle)",
+            "Elaborate",
+            "Current (river)",
+            "Parched"
           ],
           "right_items": [
-            "To set fire to",
             "Complex and detailed",
+            "Extremely dry",
             "The flow of water",
-            "Extremely dry"
+            "To set fire to"
           ],
           "correct_pairs": {
-            "light (candle)": "To set fire to",
-            "elaborate": "Complex and detailed",
-            "current (river)": "The flow of water",
-            "parched": "Extremely dry"
+            "Light (candle)": "To set fire to",
+            "Elaborate": "Complex and detailed",
+            "Current (river)": "The flow of water",
+            "Parched": "Extremely dry"
           },
-          "correct": "light (candle)→To set fire to, elaborate→Complex and detailed, current (river)→The flow of water, parched→Extremely dry",
+          "correct": "Light (candle)→To set fire to, Elaborate→Complex and detailed, Current (river)→The flow of water, Parched→Extremely dry",
           "hint": "Think about how each word is used in the sentence!",
           "difficulty": 2
         }
@@ -2562,24 +2562,24 @@
           "type": "tap_to_pair",
           "prompt": "Match each word to its meaning!",
           "left_items": [
-            "benevolent",
-            "abandoned",
-            "camouflaged",
-            "fragile"
+            "Benevolent",
+            "Abandoned",
+            "Camouflaged",
+            "Fragile"
           ],
           "right_items": [
-            "Kind and generous",
             "Left behind",
+            "Easily broken",
             "Disguised to blend in",
-            "Easily broken"
+            "Kind and generous"
           ],
           "correct_pairs": {
-            "benevolent": "Kind and generous",
-            "abandoned": "Left behind",
-            "camouflaged": "Disguised to blend in",
-            "fragile": "Easily broken"
+            "Benevolent": "Kind and generous",
+            "Abandoned": "Left behind",
+            "Camouflaged": "Disguised to blend in",
+            "Fragile": "Easily broken"
           },
-          "correct": "benevolent→Kind and generous, abandoned→Left behind, camouflaged→Disguised to blend in, fragile→Easily broken",
+          "correct": "Benevolent→Kind and generous, Abandoned→Left behind, Camouflaged→Disguised to blend in, Fragile→Easily broken",
           "hint": "Use context clues to match each word to its definition!",
           "difficulty": 2
         }
@@ -2612,24 +2612,24 @@
           "type": "tap_to_pair",
           "prompt": "Match each word to its meaning!",
           "left_items": [
-            "uncomfortable",
-            "misspell",
-            "encourage",
-            "disappearance"
+            "Uncomfortable",
+            "Misspell",
+            "Encourage",
+            "Disappearance"
           ],
           "right_items": [
-            "Not comfortable",
-            "To spell wrongly",
             "To give courage",
-            "The act of disappearing"
+            "The act of disappearing",
+            "To spell wrongly",
+            "Not comfortable"
           ],
           "correct_pairs": {
-            "uncomfortable": "Not comfortable",
-            "misspell": "To spell wrongly",
-            "encourage": "To give courage",
-            "disappearance": "The act of disappearing"
+            "Uncomfortable": "Not comfortable",
+            "Misspell": "To spell wrongly",
+            "Encourage": "To give courage",
+            "Disappearance": "The act of disappearing"
           },
-          "correct": "uncomfortable→Not comfortable, misspell→To spell wrongly, encourage→To give courage, disappearance→The act of disappearing",
+          "correct": "Uncomfortable→Not comfortable, Misspell→To spell wrongly, Encourage→To give courage, Disappearance→The act of disappearing",
           "hint": "Break each word into its prefix, root, and suffix for clues!",
           "difficulty": 2
         }
@@ -2663,23 +2663,23 @@
           "prompt": "Match each root or word to its meaning!",
           "left_items": [
             "-action",
-            "transport",
-            "bicycle",
-            "companion"
+            "Transport",
+            "Bicycle",
+            "Companion"
           ],
           "right_items": [
-            "The process of doing",
             "To carry across",
             "Two wheels",
-            "Being together"
+            "Being together",
+            "The process of doing"
           ],
           "correct_pairs": {
             "-action": "The process of doing",
-            "transport": "To carry across",
-            "bicycle": "Two wheels",
-            "companion": "Being together"
+            "Transport": "To carry across",
+            "Bicycle": "Two wheels",
+            "Companion": "Being together"
           },
-          "correct": "-action→The process of doing, transport→To carry across, bicycle→Two wheels, companion→Being together",
+          "correct": "-action→The process of doing, Transport→To carry across, Bicycle→Two wheels, Companion→Being together",
           "hint": "Latin and Greek roots give clues: '-tion' = process, 'trans-' = across, 'bi-' = two, 'com-' = together!",
           "difficulty": 2
         }
@@ -3048,9 +3048,9 @@
           "type": "sentence_build",
           "prompt": "Put in order from least certain to most certain",
           "words": [
-            "wondered",
             "suspected",
-            "knew"
+            "knew",
+            "wondered"
           ],
           "correct": "wondered suspected knew",
           "hint": "Wondering is just curious. Suspecting is thinking it might be true. Knowing is being certain!",
@@ -3080,9 +3080,9 @@
           "type": "sentence_build",
           "prompt": "Put in order from least scared to most scared",
           "words": [
-            "uneasy",
             "nervous",
-            "terrified"
+            "terrified",
+            "uneasy"
           ],
           "correct": "uneasy nervous terrified",
           "hint": "Uneasy is mild, nervous is moderate, terrified is extreme fear!",

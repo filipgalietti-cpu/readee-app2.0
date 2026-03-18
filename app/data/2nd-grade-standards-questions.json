@@ -2069,21 +2069,21 @@
           "type": "tap_to_pair",
           "prompt": "Match each word to its meaning!",
           "left_items": [
-            "unkind",
-            "reread",
-            "careless"
+            "Unkind",
+            "Reread",
+            "Careless"
           ],
           "right_items": [
+            "Not careful",
             "Not kind",
-            "Read again",
-            "Not careful"
+            "Read again"
           ],
           "correct_pairs": {
-            "unkind": "Not kind",
-            "reread": "Read again",
-            "careless": "Not careful"
+            "Unkind": "Not kind",
+            "Reread": "Read again",
+            "Careless": "Not careful"
           },
-          "correct": "unkind→Not kind, reread→Read again, careless→Not careful",
+          "correct": "Unkind→Not kind, Reread→Read again, Careless→Not careful",
           "hint": "Look at the prefix or suffix for clues!",
           "difficulty": 1
         }
@@ -2660,27 +2660,27 @@
           "type": "tap_to_pair",
           "prompt": "Match each word to its meaning!",
           "left_items": [
-            "tiny",
-            "bat",
-            "exhausted",
-            "ring",
-            "bright"
+            "Tiny",
+            "Bat",
+            "Exhausted",
+            "Ring",
+            "Bright"
           ],
           "right_items": [
-            "Very small",
             "A stick for hitting a ball",
             "Very tired",
             "To make a sound",
-            "Shining with a lot of light"
+            "Shining with a lot of light",
+            "Very small"
           ],
           "correct_pairs": {
-            "tiny": "Very small",
-            "bat": "A stick for hitting a ball",
-            "exhausted": "Very tired",
-            "ring": "To make a sound",
-            "bright": "Shining with a lot of light"
+            "Tiny": "Very small",
+            "Bat": "A stick for hitting a ball",
+            "Exhausted": "Very tired",
+            "Ring": "To make a sound",
+            "Bright": "Shining with a lot of light"
           },
-          "correct": "tiny→Very small, bat→A stick for hitting a ball, exhausted→Very tired, ring→To make a sound, bright→Shining with a lot of light",
+          "correct": "Tiny→Very small, Bat→A stick for hitting a ball, Exhausted→Very tired, Ring→To make a sound, Bright→Shining with a lot of light",
           "hint": "Think about what each word means in context!",
           "difficulty": 1
         }
@@ -2729,21 +2729,21 @@
           "type": "tap_to_pair",
           "prompt": "Match each word to its meaning!",
           "left_items": [
-            "famished",
-            "cautious",
-            "hilarious"
+            "Famished",
+            "Cautious",
+            "Hilarious"
           ],
           "right_items": [
-            "Very hungry",
             "Careful",
+            "Very hungry",
             "Very funny"
           ],
           "correct_pairs": {
-            "famished": "Very hungry",
-            "cautious": "Careful",
-            "hilarious": "Very funny"
+            "Famished": "Very hungry",
+            "Cautious": "Careful",
+            "Hilarious": "Very funny"
           },
-          "correct": "famished→Very hungry, cautious→Careful, hilarious→Very funny",
+          "correct": "Famished→Very hungry, Cautious→Careful, Hilarious→Very funny",
           "hint": "Use clues from the sentence to figure out the meaning!",
           "difficulty": 1
         }
@@ -2776,24 +2776,24 @@
           "type": "tap_to_pair",
           "prompt": "Match each word to its meaning!",
           "left_items": [
-            "unhappy",
-            "retell",
-            "unlock",
-            "disagree"
+            "Unhappy",
+            "Retell",
+            "Unlock",
+            "Disagree"
           ],
           "right_items": [
-            "Not happy",
             "Tell again",
             "Open with a key",
-            "To not agree"
+            "To not agree",
+            "Not happy"
           ],
           "correct_pairs": {
-            "unhappy": "Not happy",
-            "retell": "Tell again",
-            "unlock": "Open with a key",
-            "disagree": "To not agree"
+            "Unhappy": "Not happy",
+            "Retell": "Tell again",
+            "Unlock": "Open with a key",
+            "Disagree": "To not agree"
           },
-          "correct": "unhappy→Not happy, retell→Tell again, unlock→Open with a key, disagree→To not agree",
+          "correct": "Unhappy→Not happy, Retell→Tell again, Unlock→Open with a key, Disagree→To not agree",
           "hint": "'Un-' means not, 're-' means again, 'dis-' means not!",
           "difficulty": 1
         }
@@ -2842,21 +2842,21 @@
           "type": "tap_to_pair",
           "prompt": "Match each word to its meaning!",
           "left_items": [
-            "painter",
-            "joyful",
-            "movement"
+            "Painter",
+            "Joyful",
+            "Movement"
           ],
           "right_items": [
-            "A person who paints",
             "Full of joy",
-            "The act of moving"
+            "The act of moving",
+            "A person who paints"
           ],
           "correct_pairs": {
-            "painter": "A person who paints",
-            "joyful": "Full of joy",
-            "movement": "The act of moving"
+            "Painter": "A person who paints",
+            "Joyful": "Full of joy",
+            "Movement": "The act of moving"
           },
-          "correct": "painter→A person who paints, joyful→Full of joy, movement→The act of moving",
+          "correct": "Painter→A person who paints, Joyful→Full of joy, Movement→The act of moving",
           "hint": "Look at the suffix: '-er' means a person who, '-ful' means full of, '-ment' means the act of!",
           "difficulty": 1
         }
@@ -3243,8 +3243,8 @@
           "type": "sentence_build",
           "prompt": "Put in order from least strong to most strong",
           "words": [
-            "toss",
             "throw",
+            "toss",
             "hurl"
           ],
           "correct": "toss throw hurl",
@@ -3291,8 +3291,8 @@
           "type": "sentence_build",
           "prompt": "Put in order from quietest to loudest",
           "words": [
-            "whisper",
             "talk",
+            "whisper",
             "yell"
           ],
           "correct": "whisper talk yell",

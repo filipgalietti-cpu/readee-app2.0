@@ -979,24 +979,24 @@
           "type": "tap_to_pair",
           "prompt": "Match each word to its meaning!",
           "left_items": [
-            "hibernation",
-            "enormous",
-            "nocturnal",
-            "sprinted"
+            "Hibernation",
+            "Enormous",
+            "Nocturnal",
+            "Sprinted"
           ],
           "right_items": [
-            "A long winter sleep",
-            "Very big",
             "Active at night",
-            "Ran very fast"
+            "Ran very fast",
+            "Very big",
+            "A long winter sleep"
           ],
           "correct_pairs": {
-            "hibernation": "A long winter sleep",
-            "enormous": "Very big",
-            "nocturnal": "Active at night",
-            "sprinted": "Ran very fast"
+            "Hibernation": "A long winter sleep",
+            "Enormous": "Very big",
+            "Nocturnal": "Active at night",
+            "Sprinted": "Ran very fast"
           },
-          "correct": "hibernation→A long winter sleep, enormous→Very big, nocturnal→Active at night, sprinted→Ran very fast",
+          "correct": "Hibernation→A long winter sleep, Enormous→Very big, Nocturnal→Active at night, Sprinted→Ran very fast",
           "hint": "Match each word to what it means!",
           "difficulty": 1
         }
@@ -2070,24 +2070,24 @@
           "type": "tap_to_pair",
           "prompt": "Match each word to its meaning!",
           "left_items": [
-            "tiny",
-            "furious",
-            "slippery",
-            "peeked"
+            "Tiny",
+            "Furious",
+            "Slippery",
+            "Peeked"
           ],
           "right_items": [
-            "Very small",
             "Very angry",
+            "Looked quickly",
             "Easy to slide on",
-            "Looked quickly"
+            "Very small"
           ],
           "correct_pairs": {
-            "tiny": "Very small",
-            "furious": "Very angry",
-            "slippery": "Easy to slide on",
-            "peeked": "Looked quickly"
+            "Tiny": "Very small",
+            "Furious": "Very angry",
+            "Slippery": "Easy to slide on",
+            "Peeked": "Looked quickly"
           },
-          "correct": "tiny→Very small, furious→Very angry, slippery→Easy to slide on, peeked→Looked quickly",
+          "correct": "Tiny→Very small, Furious→Very angry, Slippery→Easy to slide on, Peeked→Looked quickly",
           "hint": "Think about what each word means!",
           "difficulty": 1
         }
@@ -2104,27 +2104,27 @@
           "type": "tap_to_pair",
           "prompt": "Match each word to its meaning!",
           "left_items": [
-            "famished",
-            "sweltering",
-            "cheerful",
-            "exhausted",
-            "timid"
+            "Famished",
+            "Sweltering",
+            "Cheerful",
+            "Exhausted",
+            "Timid"
           ],
           "right_items": [
-            "Very hungry",
-            "Very hot",
-            "Happy",
+            "Shy or scared",
             "Very tired",
-            "Shy or scared"
+            "Happy",
+            "Very hungry",
+            "Very hot"
           ],
           "correct_pairs": {
-            "famished": "Very hungry",
-            "sweltering": "Very hot",
-            "cheerful": "Happy",
-            "exhausted": "Very tired",
-            "timid": "Shy or scared"
+            "Famished": "Very hungry",
+            "Sweltering": "Very hot",
+            "Cheerful": "Happy",
+            "Exhausted": "Very tired",
+            "Timid": "Shy or scared"
           },
-          "correct": "famished→Very hungry, sweltering→Very hot, cheerful→Happy, exhausted→Very tired, timid→Shy or scared",
+          "correct": "Famished→Very hungry, Sweltering→Very hot, Cheerful→Happy, Exhausted→Very tired, Timid→Shy or scared",
           "hint": "Use clues from the word to figure out the meaning!",
           "difficulty": 1
         }
@@ -2157,24 +2157,24 @@
           "type": "tap_to_pair",
           "prompt": "Match each word to its meaning!",
           "left_items": [
-            "unhappy",
-            "redo",
-            "unkind",
-            "reread"
+            "Unhappy",
+            "Redo",
+            "Unkind",
+            "Reread"
           ],
           "right_items": [
-            "Not happy",
-            "Do again",
             "Not kind",
-            "Read again"
+            "Read again",
+            "Do again",
+            "Not happy"
           ],
           "correct_pairs": {
-            "unhappy": "Not happy",
-            "redo": "Do again",
-            "unkind": "Not kind",
-            "reread": "Read again"
+            "Unhappy": "Not happy",
+            "Redo": "Do again",
+            "Unkind": "Not kind",
+            "Reread": "Read again"
           },
-          "correct": "unhappy→Not happy, redo→Do again, unkind→Not kind, reread→Read again",
+          "correct": "Unhappy→Not happy, Redo→Do again, Unkind→Not kind, Reread→Read again",
           "hint": "'Un-' means not. 'Re-' means again.",
           "difficulty": 1
         }
@@ -2665,9 +2665,9 @@
           "type": "sentence_build",
           "prompt": "Put in order from quietest to loudest",
           "words": [
-            "whisper",
             "talk",
-            "shout"
+            "shout",
+            "whisper"
           ],
           "correct": "whisper talk shout",
           "hint": "Which is the quietest? Which is the loudest?",
@@ -2713,9 +2713,9 @@
           "type": "sentence_build",
           "prompt": "Put in order from coldest to hottest",
           "words": [
+            "hot",
             "freezing",
-            "warm",
-            "hot"
+            "warm"
           ],
           "correct": "freezing warm hot",
           "hint": "Start with the coldest temperature and end with the hottest.",

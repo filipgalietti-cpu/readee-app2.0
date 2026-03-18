@@ -1023,9 +1023,9 @@
           "type": "sentence_build",
           "prompt": "Put the vaccine steps in the correct order",
           "words": [
-            "Vaccine introduces weak virus",
             "Immune system learns to fight it",
-            "Body is prepared for the real virus"
+            "Body is prepared for the real virus",
+            "Vaccine introduces weak virus"
           ],
           "correct": "Vaccine introduces weak virus Immune system learns to fight it Body is prepared for the real virus",
           "hint": "First comes the vaccine, then the body learns, then it's ready.",
@@ -1111,24 +1111,24 @@
           "type": "tap_to_pair",
           "prompt": "Match each word to its meaning!",
           "left_items": [
-            "excavated",
-            "interdependent",
-            "metamorphosis",
-            "famine"
+            "Excavated",
+            "Interdependent",
+            "Metamorphosis",
+            "Famine"
           ],
           "right_items": [
-            "Dug up carefully",
             "Depending on each other",
+            "Extreme widespread hunger",
             "A dramatic change in form",
-            "Extreme widespread hunger"
+            "Dug up carefully"
           ],
           "correct_pairs": {
-            "excavated": "Dug up carefully",
-            "interdependent": "Depending on each other",
-            "metamorphosis": "A dramatic change in form",
-            "famine": "Extreme widespread hunger"
+            "Excavated": "Dug up carefully",
+            "Interdependent": "Depending on each other",
+            "Metamorphosis": "A dramatic change in form",
+            "Famine": "Extreme widespread hunger"
           },
-          "correct": "excavated→Dug up carefully, interdependent→Depending on each other, metamorphosis→A dramatic change in form, famine→Extreme widespread hunger",
+          "correct": "Excavated→Dug up carefully, Interdependent→Depending on each other, Metamorphosis→A dramatic change in form, Famine→Extreme widespread hunger",
           "hint": "Use context clues and word parts to match each word!",
           "difficulty": 2
         }
@@ -2011,24 +2011,24 @@
           "type": "tap_to_pair",
           "prompt": "Match each word to its meaning!",
           "left_items": [
-            "unprecedented",
-            "resilient",
-            "meticulous",
-            "verbose"
+            "Unprecedented",
+            "Resilient",
+            "Meticulous",
+            "Verbose"
           ],
           "right_items": [
-            "Never happened before",
             "Able to recover",
+            "Using too many words",
             "Extremely careful",
-            "Using too many words"
+            "Never happened before"
           ],
           "correct_pairs": {
-            "unprecedented": "Never happened before",
-            "resilient": "Able to recover",
-            "meticulous": "Extremely careful",
-            "verbose": "Using too many words"
+            "Unprecedented": "Never happened before",
+            "Resilient": "Able to recover",
+            "Meticulous": "Extremely careful",
+            "Verbose": "Using too many words"
           },
-          "correct": "unprecedented→Never happened before, resilient→Able to recover, meticulous→Extremely careful, verbose→Using too many words",
+          "correct": "Unprecedented→Never happened before, Resilient→Able to recover, Meticulous→Extremely careful, Verbose→Using too many words",
           "hint": "Use context clues from the sentence around each word!",
           "difficulty": 2
         }
@@ -2061,24 +2061,24 @@
           "type": "tap_to_pair",
           "prompt": "Match each word to its root meaning!",
           "left_items": [
-            "predict (dict=say)",
-            "autograph (graph=write)",
-            "interrupt (rupt=break)",
-            "benefactor (bene=good)"
+            "Predict (dict=say)",
+            "Autograph (graph=write)",
+            "Interrupt (rupt=break)",
+            "Benefactor (bene=good)"
           ],
           "right_items": [
-            "To say before",
             "Own handwriting of name",
+            "A person who does good",
             "To break into",
-            "A person who does good"
+            "To say before"
           ],
           "correct_pairs": {
-            "predict (dict=say)": "To say before",
-            "autograph (graph=write)": "Own handwriting of name",
-            "interrupt (rupt=break)": "To break into",
-            "benefactor (bene=good)": "A person who does good"
+            "Predict (dict=say)": "To say before",
+            "Autograph (graph=write)": "Own handwriting of name",
+            "Interrupt (rupt=break)": "To break into",
+            "Benefactor (bene=good)": "A person who does good"
           },
-          "correct": "predict→To say before, autograph→Own handwriting of name, interrupt→To break into, benefactor→A person who does good",
+          "correct": "Predict (dict=say)→To say before, Autograph (graph=write)→Own handwriting of name, Interrupt (rupt=break)→To break into, Benefactor (bene=good)→A person who does good",
           "hint": "Use the Latin/Greek root in parentheses to figure out the meaning!",
           "difficulty": 2
         }
@@ -2287,24 +2287,24 @@
           "type": "tap_to_pair",
           "prompt": "Match each simile or metaphor to its meaning!",
           "left_items": [
-            "smile bright as sun",
-            "time is money",
-            "dancer like water",
-            "heart of stone"
+            "Smile bright as sun",
+            "Time is money",
+            "Dancer like water",
+            "Heart of stone"
           ],
           "right_items": [
-            "Both are bright and warm",
             "Time is valuable",
+            "Cold and unfeeling",
             "Smooth and graceful",
-            "Cold and unfeeling"
+            "Both are bright and warm"
           ],
           "correct_pairs": {
-            "smile bright as sun": "Both are bright and warm",
-            "time is money": "Time is valuable",
-            "dancer like water": "Smooth and graceful",
-            "heart of stone": "Cold and unfeeling"
+            "Smile bright as sun": "Both are bright and warm",
+            "Time is money": "Time is valuable",
+            "Dancer like water": "Smooth and graceful",
+            "Heart of stone": "Cold and unfeeling"
           },
-          "correct": "smile bright as sun→Both are bright and warm, time is money→Time is valuable, dancer like water→Smooth and graceful, heart of stone→Cold and unfeeling",
+          "correct": "Smile bright as sun→Both are bright and warm, Time is money→Time is valuable, Dancer like water→Smooth and graceful, Heart of stone→Cold and unfeeling",
           "hint": "Think about what the two things being compared have in common!",
           "difficulty": 2
         }
@@ -2337,24 +2337,24 @@
           "type": "tap_to_pair",
           "prompt": "Match each idiom or proverb to its meaning!",
           "left_items": [
-            "book by cover",
-            "actions > words",
-            "arm and leg",
-            "when it rains"
+            "Book by cover",
+            "Actions > words",
+            "Arm and leg",
+            "When it rains"
           ],
           "right_items": [
-            "Don't judge by appearance",
-            "What you do matters more",
             "Very expensive",
-            "Problems come all at once"
+            "Problems come all at once",
+            "What you do matters more",
+            "Don't judge by appearance"
           ],
           "correct_pairs": {
-            "book by cover": "Don't judge by appearance",
-            "actions > words": "What you do matters more",
-            "arm and leg": "Very expensive",
-            "when it rains": "Problems come all at once"
+            "Book by cover": "Don't judge by appearance",
+            "Actions > words": "What you do matters more",
+            "Arm and leg": "Very expensive",
+            "When it rains": "Problems come all at once"
           },
-          "correct": "book by cover→Don't judge by appearance, actions > words→What you do matters more, arm and leg→Very expensive, when it rains→Problems come all at once",
+          "correct": "Book by cover→Don't judge by appearance, Actions > words→What you do matters more, Arm and leg→Very expensive, When it rains→Problems come all at once",
           "hint": "These sayings have hidden meanings — think about what they really teach!",
           "difficulty": 2
         }
@@ -2411,21 +2411,21 @@
           "type": "tap_to_pair",
           "prompt": "Match each word to its synonym or antonym!",
           "left_items": [
-            "courageous",
-            "generous",
-            "expand"
+            "Courageous",
+            "Generous",
+            "Expand"
           ],
           "right_items": [
+            "Contract (antonym)",
             "Brave (synonym)",
-            "Selfish (antonym)",
-            "Contract (antonym)"
+            "Selfish (antonym)"
           ],
           "correct_pairs": {
-            "courageous": "Brave (synonym)",
-            "generous": "Selfish (antonym)",
-            "expand": "Contract (antonym)"
+            "Courageous": "Brave (synonym)",
+            "Generous": "Selfish (antonym)",
+            "Expand": "Contract (antonym)"
           },
-          "correct": "courageous→Brave (synonym), generous→Selfish (antonym), expand→Contract (antonym)",
+          "correct": "Courageous→Brave (synonym), Generous→Selfish (antonym), Expand→Contract (antonym)",
           "hint": "Synonyms mean the same, antonyms mean the opposite!",
           "difficulty": 2
         }
