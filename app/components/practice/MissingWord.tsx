@@ -21,6 +21,15 @@ const SUPABASE_AUDIO_BASE = process.env.NEXT_PUBLIC_SUPABASE_URL
   ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audio`
   : "";
 
+/** Infer Supabase grade folder from question ID (e.g. RF.1.4c-Q1 → 1st-grade) */
+function gradeFolder(questionId: string): string {
+  const m = questionId.match(/\.(\d|K)\./i);
+  if (!m) return "kindergarten";
+  const g = m[1].toUpperCase();
+  if (g === "K") return "kindergarten";
+  return `${g}${g === "1" ? "st" : g === "2" ? "nd" : g === "3" ? "rd" : "th"}-grade`;
+}
+
 const CHOICE_COLORS = [
   "bg-blue-100 text-blue-800 border-blue-300 dark:bg-blue-900/60 dark:text-blue-200 dark:border-blue-700",
   "bg-purple-100 text-purple-800 border-purple-300 dark:bg-purple-900/60 dark:text-purple-200 dark:border-purple-700",
@@ -56,7 +65,7 @@ export function MissingWord({
         let readbackUrl = sentenceAudioUrl;
         if (!readbackUrl && questionId && SUPABASE_AUDIO_BASE) {
           const standard = questionId.replace(/-Q\d+$/, "");
-          readbackUrl = `${SUPABASE_AUDIO_BASE}/kindergarten/${standard}/${questionId}-sentence.mp3`;
+          readbackUrl = `${SUPABASE_AUDIO_BASE}/${gradeFolder(questionId)}/${standard}/${questionId}-sentence.mp3`;
         }
         if (readbackUrl) {
           new Howl({ src: [readbackUrl] }).play();
@@ -73,7 +82,7 @@ export function MissingWord({
     let readbackUrl = sentenceAudioUrl;
     if (!readbackUrl && questionId && SUPABASE_AUDIO_BASE) {
       const standard = questionId.replace(/-Q\d+$/, "");
-      readbackUrl = `${SUPABASE_AUDIO_BASE}/kindergarten/${standard}/${questionId}-sentence.mp3`;
+      readbackUrl = `${SUPABASE_AUDIO_BASE}/${gradeFolder(questionId)}/${standard}/${questionId}-sentence.mp3`;
     }
     if (readbackUrl) {
       new Howl({ src: [readbackUrl] }).play();
