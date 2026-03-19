@@ -530,8 +530,8 @@ function LearnSession({
 
         {/* Passage */}
         {passage && (
-          <motion.div variants={fadeUp} className="mb-5 rounded-2xl bg-amber-50 border border-amber-200 dark:bg-amber-950/30 dark:border-amber-800/50 p-6">
-            <p className="text-xl md:text-2xl leading-loose font-semibold text-gray-800 dark:text-slate-200 tracking-wide whitespace-pre-line">{passage}</p>
+          <motion.div variants={fadeUp} className="mb-5 rounded-2xl bg-amber-50 border border-amber-200 dark:bg-amber-950/30 dark:border-amber-800/50 px-5 py-4">
+            <p className="text-xl md:text-2xl leading-relaxed font-semibold text-gray-800 dark:text-slate-200 tracking-wide whitespace-pre-line text-center">{passage}</p>
           </motion.div>
         )}
 
