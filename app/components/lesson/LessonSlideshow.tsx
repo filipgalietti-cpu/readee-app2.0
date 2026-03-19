@@ -638,7 +638,8 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
             </div>
           </div>
 
-          {/* ── Heading + speaker ── */}
+          {/* ── Heading + speaker (hides when content appears) ── */}
+          {textsVisible.size === 0 && partsVisible.size === 0 && (
           <div className="flex-shrink-0 px-6 pt-1 pb-0 flex items-center justify-center gap-2">
             <motion.h1
               initial={{ opacity: 0, y: 8 }}
@@ -658,6 +659,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
               </motion.div>
             )}
           </div>
+          )}
 
           {/* ── Content ── */}
           <div className="flex-1 min-h-0 overflow-hidden flex items-center justify-center px-6">
