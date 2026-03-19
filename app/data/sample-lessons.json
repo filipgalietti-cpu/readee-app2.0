@@ -127,14 +127,14 @@
             "displayParts": [
               {
                 "text": "Who?",
-                "delay": 3000
+                "delay": 4500
               },
               {
                 "text": "Max the dog!",
-                "delay": 7000
+                "delay": 8000
               }
             ],
-            "interaction": "'Who? Max the dog!' highlights/pops on screen with a little checkmark animation."
+            "interaction": "'Who? Max the dog!' highlights with a checkmark."
           },
           {
             "sub": "d",
@@ -618,8 +618,14 @@
             "displayText": "",
             "interaction": "'Where? Cold places!' highlights with a checkmark.",
             "displayParts": [
-              { "text": "Where?", "delay": 1000 },
-              { "text": "Cold places!", "delay": 3000 }
+              {
+                "text": "Where?",
+                "delay": 1000
+              },
+              {
+                "text": "Cold places!",
+                "delay": 3000
+              }
             ]
           },
           {
@@ -629,8 +635,14 @@
             "displayText": "",
             "interaction": "'What do they eat? Fish!' highlights with a checkmark.",
             "displayParts": [
-              { "text": "What do they eat?", "delay": 500 },
-              { "text": "Fish!", "delay": 2200 }
+              {
+                "text": "What do they eat?",
+                "delay": 500
+              },
+              {
+                "text": "Fish!",
+                "delay": 2200
+              }
             ]
           },
           {
@@ -640,8 +652,14 @@
             "displayText": "",
             "interaction": "'Can they fly? No!' highlights. Celebration burst. Tap to continue.",
             "displayParts": [
-              { "text": "Can they fly?", "delay": 500 },
-              { "text": "No!", "delay": 1800 }
+              {
+                "text": "Can they fly?",
+                "delay": 500
+              },
+              {
+                "text": "No!",
+                "delay": 1800
+              }
             ]
           }
         ],
@@ -7347,6 +7365,760 @@
         "slide": 10,
         "type": "mcq",
         "mcqId": "K.L.6-Q5"
+      }
+    ]
+  },
+  {
+    "standardId": "RI.1.4",
+    "grade": "1st Grade",
+    "domain": "Reading Informational Text",
+    "title": "Ocean Words and What They Mean",
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "heading": "Dive Into New Words!",
+        "imagePrompt": "A cartoon child wearing snorkel gear diving underwater surrounded by colorful tropical fish and bubbles. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+        "imageFile": "images/lessons/RI.1.4/S1.png",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.1.4/S1a.mp3",
+            "ttsScript": "Hey there, ocean explorer! Today we're diving into something exciting!",
+            "displayText": "",
+            "interaction": "Screen fades in with underwater bubbles."
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.1.4/S1b.mp3",
+            "ttsScript": "When we read books about real things, like the ocean, we find special words we might not know yet. Today we'll learn how to figure out what those words mean!",
+            "displayText": "What Do New Words Mean?",
+            "displayDelay": 5000,
+            "interaction": "Heading pops in with a splash effect."
+          }
+        ]
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "heading": "Clues Are All Around!",
+        "imagePrompt": "A cartoon magnifying glass looking at a colorful coral reef with arrows pointing to different sea creatures, bright ocean background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+        "imageFile": "images/lessons/RI.1.4/S2.png",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.1.4/S2a.mp3",
+            "ttsScript": "When you see a word you don't know, don't worry! Look at the words around it. They give you clues!",
+            "displayText": "Look at the words around it!",
+            "displayDelay": 4000,
+            "interaction": "A sentence appears with a highlighted mystery word."
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.1.4/S2b.mp3",
+            "ttsScript": "Sometimes the book even tells you what the word means. You might see words like: that means, which is, or also called.",
+            "displayText": "",
+            "displayParts": [
+              {
+                "text": "\"that means\"",
+                "delay": 3500
+              },
+              {
+                "text": "\"which is\"",
+                "delay": 6000
+              },
+              {
+                "text": "\"also called\"",
+                "delay": 8000
+              }
+            ],
+            "interaction": "Signal phrases pop in one by one."
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.1.4/S2c.mp3",
+            "ttsScript": "You can also look at pictures! If the book shows a picture next to a word, the picture can help you understand what the word means.",
+            "displayText": "Pictures help too!",
+            "displayDelay": 3000,
+            "interaction": "An image icon glows next to a word."
+          }
+        ]
+      },
+      {
+        "slide": 3,
+        "type": "example",
+        "heading": "Let's Try It!",
+        "imagePrompt": "A cute cartoon octopus with eight tentacles waving, surrounded by bubbles and small fish in a bright ocean scene. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+        "imageFile": "images/lessons/RI.1.4/S3.png",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.1.4/S3a.mp3",
+            "ttsScript": "Here's a sentence from an ocean book. Listen carefully!",
+            "displayText": "",
+            "interaction": "A mini book opens on screen."
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.1.4/S3b.mp3",
+            "ttsScript": "An octopus has eight tentacles, which are long arms it uses to grab food.",
+            "displayText": "",
+            "displayParts": [
+              {
+                "text": "An octopus has eight tentacles,",
+                "delay": 0
+              },
+              {
+                "text": "which are long arms it uses to grab food.",
+                "delay": 3500
+              }
+            ],
+            "interaction": "Sentence appears line by line."
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.1.4/S3c.mp3",
+            "ttsScript": "What does tentacles mean? The sentence says which are long arms. So tentacles are long arms! The clue was right there in the sentence. Nice work!",
+            "displayText": "",
+            "displayParts": [
+              {
+                "text": "tentacles = ?",
+                "delay": 1000
+              },
+              {
+                "text": "tentacles = long arms!",
+                "delay": 6000
+              }
+            ],
+            "interaction": "The word 'tentacles' highlights, then the definition reveals. Confetti."
+          }
+        ]
+      },
+      {
+        "slide": 4,
+        "type": "practice-intro",
+        "heading": "Your Turn, Explorer!",
+        "imagePrompt": "A happy cartoon child standing on a boat deck pointing excitedly at the ocean, wearing a life jacket, with dolphins jumping in the background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+        "imageFile": "images/lessons/RI.1.4/S4.png",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.1.4/S4a.mp3",
+            "ttsScript": "Awesome! You know how to find clues to figure out new words!",
+            "displayText": "",
+            "interaction": "Stars celebration."
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.1.4/S4b.mp3",
+            "ttsScript": "Let's practice with more ocean words. Read carefully and use the clues! Ready?",
+            "displayText": "Dive in!",
+            "displayDelay": 3500,
+            "interaction": "A 'Let's Go!' button pulses."
+          }
+        ]
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RI.1.4-Q3"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RI.1.4-Q4"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RI.1.4-Q5"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RI.1.4-Q6"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RI.1.4-Q7"
+      }
+    ]
+  },
+  {
+    "standardId": "RI.2.3",
+    "grade": "2nd Grade",
+    "domain": "Reading Informational Text",
+    "title": "How Ocean Events Connect",
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "heading": "Connections in the Ocean!",
+        "imagePrompt": "A cartoon coral reef ecosystem showing fish, seaweed, a sea turtle, and a crab all connected in a colorful underwater scene with light rays from above. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+        "imageFile": "images/lessons/RI.2.3/S1.png",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.2.3/S1a.mp3",
+            "ttsScript": "Welcome back to The Blue Fin! Today we're exploring how things in the ocean are connected!",
+            "displayText": "",
+            "interaction": "Underwater scene fades in."
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.2.3/S1b.mp3",
+            "ttsScript": "When we read about real events, ideas, or steps, they're connected to each other. One thing leads to another!",
+            "displayText": "Events Connect!",
+            "displayDelay": 4000,
+            "interaction": "Heading pops in with chain-link animation."
+          }
+        ]
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "heading": "How Are They Connected?",
+        "imagePrompt": "Three cartoon puzzle pieces fitting together, each showing a different ocean scene: a wave, a fish, and a coral. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+        "imageFile": "images/lessons/RI.2.3/S2.png",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.2.3/S2a.mp3",
+            "ttsScript": "Events can connect in different ways. Sometimes one event causes another. That's called cause and effect!",
+            "displayText": "",
+            "displayParts": [
+              {
+                "text": "Cause",
+                "delay": 3500
+              },
+              {
+                "text": "→",
+                "delay": 5500
+              },
+              {
+                "text": "Effect",
+                "delay": 6500
+              }
+            ],
+            "interaction": "Cause arrow Effect chain appears."
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.2.3/S2b.mp3",
+            "ttsScript": "Sometimes events happen in order — first, next, then, finally. That's called a sequence!",
+            "displayText": "",
+            "displayParts": [
+              {
+                "text": "First →",
+                "delay": 2000
+              },
+              {
+                "text": "Next →",
+                "delay": 4000
+              },
+              {
+                "text": "Then →",
+                "delay": 5500
+              },
+              {
+                "text": "Finally!",
+                "delay": 7000
+              }
+            ],
+            "interaction": "Sequence steps appear in a row."
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.2.3/S2c.mp3",
+            "ttsScript": "Look for signal words like because, so, first, next, and then. They tell you how events are connected!",
+            "displayText": "Signal words help you!",
+            "displayDelay": 2000,
+            "interaction": "Signal words highlight."
+          }
+        ]
+      },
+      {
+        "slide": 3,
+        "type": "example",
+        "heading": "Sea Turtle Example",
+        "imagePrompt": "A cartoon sea turtle swimming from a sandy beach toward the ocean, with small baby turtles following behind, bright sunrise in the background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+        "imageFile": "images/lessons/RI.2.3/S3.png",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.2.3/S3a.mp3",
+            "ttsScript": "Let's read about sea turtles and find the connections!",
+            "displayText": "",
+            "interaction": "Mini book opens."
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.2.3/S3b.mp3",
+            "ttsScript": "First, the mother turtle digs a nest in the sand. Next, she lays her eggs. Then, she covers the eggs and returns to the ocean. Finally, the baby turtles hatch and crawl to the sea!",
+            "displayText": "",
+            "displayParts": [
+              {
+                "text": "First, digs a nest.",
+                "delay": 0
+              },
+              {
+                "text": "Next, lays eggs.",
+                "delay": 4000
+              },
+              {
+                "text": "Then, covers eggs and leaves.",
+                "delay": 7000
+              },
+              {
+                "text": "Finally, babies hatch!",
+                "delay": 11000
+              }
+            ],
+            "interaction": "Four steps appear in sequence."
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.2.3/S3c.mp3",
+            "ttsScript": "See the signal words? First, next, then, finally! These steps happen in order. Each one connects to the next. That's a sequence!",
+            "displayText": "Sequence!",
+            "displayDelay": 5000,
+            "interaction": "Signal words highlight in each step. Confetti."
+          }
+        ]
+      },
+      {
+        "slide": 4,
+        "type": "practice-intro",
+        "heading": "Time to Practice!",
+        "imagePrompt": "A cartoon child on a boat deck looking through binoculars at the ocean, excited expression, with seagulls and waves. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+        "imageFile": "images/lessons/RI.2.3/S4.png",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.2.3/S4a.mp3",
+            "ttsScript": "You're a connection detective now! Let's practice finding how events connect in ocean texts.",
+            "displayText": "",
+            "interaction": "Stars celebration."
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.2.3/S4b.mp3",
+            "ttsScript": "Read each passage carefully and look for those signal words. Ready to dive in?",
+            "displayText": "Find the connections!",
+            "displayDelay": 3000,
+            "interaction": "Pulsing button."
+          }
+        ]
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RI.2.3-Q6"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RI.2.3-Q7"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RI.2.3-Q8"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RI.2.3-Q9"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RI.2.3-Q10"
+      }
+    ]
+  },
+  {
+    "standardId": "RI.3.3",
+    "grade": "3rd Grade",
+    "domain": "Reading Informational Text",
+    "title": "Cause and Effect in the Ocean",
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "heading": "What Causes What?",
+        "imagePrompt": "A cartoon ocean scene showing a big wave pushing a small boat, with cause-and-effect arrows shown as playful curved lines between them. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+        "imageFile": "images/lessons/RI.3.3/S1.png",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.3.3/S1a.mp3",
+            "ttsScript": "Ahoy, third-grade explorer! Today on The Blue Fin, we're asking a really important question.",
+            "displayText": "",
+            "interaction": "Ocean scene fades in."
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.3.3/S1b.mp3",
+            "ttsScript": "Why do things happen? In informational texts, events don't just happen randomly. One event often causes another, or one idea leads to the next.",
+            "displayText": "Why Do Things Happen?",
+            "displayDelay": 3000,
+            "interaction": "Heading appears with a chain-reaction animation."
+          }
+        ]
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "heading": "Cause, Effect, and Sequence",
+        "imagePrompt": "A cartoon diagram showing dominos falling in a row on an ocean dock, each domino painted as a different sea creature. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+        "imageFile": "images/lessons/RI.3.3/S2.png",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.3.3/S2a.mp3",
+            "ttsScript": "A cause is the reason something happens. An effect is what happens because of it. Think of it like dominos — the first one knocks over the next!",
+            "displayText": "",
+            "displayParts": [
+              {
+                "text": "Cause = Why it happens",
+                "delay": 1000
+              },
+              {
+                "text": "Effect = What happens",
+                "delay": 5000
+              }
+            ],
+            "interaction": "Domino animation."
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.3.3/S2b.mp3",
+            "ttsScript": "Look for these signal words: because, since, as a result, therefore, so, and due to. They point you right to the cause or the effect!",
+            "displayText": "",
+            "displayParts": [
+              {
+                "text": "because, since",
+                "delay": 2500
+              },
+              {
+                "text": "as a result, therefore",
+                "delay": 5000
+              },
+              {
+                "text": "so, due to",
+                "delay": 7500
+              }
+            ],
+            "interaction": "Signal words pop in."
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.3.3/S2c.mp3",
+            "ttsScript": "Sometimes an author also describes steps in a process — like how a coral reef forms over time. Each step leads to the next in order.",
+            "displayText": "Steps in a process = sequence",
+            "displayDelay": 4000,
+            "interaction": "Step diagram appears."
+          }
+        ]
+      },
+      {
+        "slide": 3,
+        "type": "example",
+        "heading": "Coral Reef Example",
+        "imagePrompt": "A cross-section cartoon view of a coral reef showing layers of coral growing on top of each other, with fish swimming around, bright underwater colors. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+        "imageFile": "images/lessons/RI.3.3/S3.png",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.3.3/S3a.mp3",
+            "ttsScript": "Let's read a passage about coral reefs and find the cause and effect!",
+            "displayText": "",
+            "interaction": "Book opens."
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.3.3/S3b.mp3",
+            "ttsScript": "When ocean water gets too warm, the tiny algae that live inside coral leave. As a result, the coral turns white. This is called coral bleaching. If the water stays warm for too long, the coral can die.",
+            "displayText": "",
+            "displayParts": [
+              {
+                "text": "Water gets too warm →",
+                "delay": 0
+              },
+              {
+                "text": "Algae leave the coral →",
+                "delay": 4500
+              },
+              {
+                "text": "Coral turns white →",
+                "delay": 8000
+              },
+              {
+                "text": "Coral can die.",
+                "delay": 12000
+              }
+            ],
+            "interaction": "Chain of events appears step by step."
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.3.3/S3c.mp3",
+            "ttsScript": "See how each event causes the next one? Warm water causes the algae to leave. The algae leaving causes the coral to turn white. That's a cause and effect chain! And the signal words 'as a result' and 'if' helped us spot it.",
+            "displayText": "Cause → Effect → Effect!",
+            "displayDelay": 7000,
+            "interaction": "Arrows between events glow. Confetti."
+          }
+        ]
+      },
+      {
+        "slide": 4,
+        "type": "practice-intro",
+        "heading": "Show What You Know!",
+        "imagePrompt": "A cartoon child on a glass-bottom boat looking down at a vibrant coral reef below, pointing excitedly with a clipboard. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+        "imageFile": "images/lessons/RI.3.3/S4.png",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.3.3/S4a.mp3",
+            "ttsScript": "You're a cause and effect expert now! Let's see if you can find the connections in some ocean passages.",
+            "displayText": "",
+            "interaction": "Stars celebration."
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.3.3/S4b.mp3",
+            "ttsScript": "Remember to look for signal words! Ready?",
+            "displayText": "Find the connections!",
+            "displayDelay": 2000,
+            "interaction": "Pulsing button."
+          }
+        ]
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RI.3.3-Q5"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RI.3.3-Q6"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RI.3.3-Q7"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RI.3.3-Q8"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RI.3.3-Q9"
+      }
+    ]
+  },
+  {
+    "standardId": "RI.4.5",
+    "grade": "4th Grade",
+    "domain": "Reading Informational Text",
+    "title": "Text Structures in Ocean Science",
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "heading": "How Authors Organize Ideas",
+        "imagePrompt": "A cartoon scientist on a research boat deck with charts, maps, and folders organized neatly, ocean in the background with a whale tail visible. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+        "imageFile": "images/lessons/RI.4.5/S1.png",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.4.5/S1a.mp3",
+            "ttsScript": "Welcome aboard, fourth-grade explorer! Captain Ava has a question for you.",
+            "displayText": "",
+            "interaction": "Ocean research scene fades in."
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.4.5/S1b.mp3",
+            "ttsScript": "Have you ever noticed that authors organize their writing in different ways? The way an author structures a text helps you understand the information better. Today we'll learn about four common text structures!",
+            "displayText": "Text Structures",
+            "displayDelay": 7000,
+            "interaction": "Heading appears."
+          }
+        ]
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "heading": "Four Text Structures",
+        "imagePrompt": "Four colorful cartoon filing cabinets on a boat deck, each a different color, with ocean waves in the background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+        "imageFile": "images/lessons/RI.4.5/S2.png",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.4.5/S2a.mp3",
+            "ttsScript": "Chronological means events are told in the order they happened. Look for words like first, next, then, and finally.",
+            "displayText": "",
+            "displayParts": [
+              {
+                "text": "Chronological",
+                "delay": 0
+              },
+              {
+                "text": "= In time order",
+                "delay": 3000
+              }
+            ],
+            "interaction": "First structure card reveals."
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.4.5/S2b.mp3",
+            "ttsScript": "Compare and contrast shows how two things are alike and different. Look for words like similarly, however, both, and unlike.",
+            "displayText": "",
+            "displayParts": [
+              {
+                "text": "Compare & Contrast",
+                "delay": 0
+              },
+              {
+                "text": "= Alike and different",
+                "delay": 3500
+              }
+            ],
+            "interaction": "Second card reveals."
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.4.5/S2c.mp3",
+            "ttsScript": "Cause and effect explains why something happened and what happened because of it. Look for words like because, as a result, therefore, and so.",
+            "displayText": "",
+            "displayParts": [
+              {
+                "text": "Cause & Effect",
+                "delay": 0
+              },
+              {
+                "text": "= Why and what happened",
+                "delay": 3500
+              }
+            ],
+            "interaction": "Third card reveals."
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RI.4.5/S2d.mp3",
+            "ttsScript": "Problem and solution describes a problem and how it was solved. Look for words like the problem is, one solution, as a result, and resolved.",
+            "displayText": "",
+            "displayParts": [
+              {
+                "text": "Problem & Solution",
+                "delay": 0
+              },
+              {
+                "text": "= Issue and fix",
+                "delay": 3500
+              }
+            ],
+            "interaction": "Fourth card reveals. All four glow."
+          }
+        ]
+      },
+      {
+        "slide": 3,
+        "type": "example",
+        "heading": "Ocean Examples",
+        "imagePrompt": "A split-scene cartoon showing a whale and a dolphin side by side underwater, each in their own section with different colored water. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+        "imageFile": "images/lessons/RI.4.5/S3.png",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.4.5/S3a.mp3",
+            "ttsScript": "Let's see text structures in action with ocean science!",
+            "displayText": "",
+            "interaction": "Book opens."
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.4.5/S3b.mp3",
+            "ttsScript": "Both whales and dolphins are mammals that breathe air. However, whales are much larger and can dive deeper than dolphins.",
+            "displayText": "",
+            "displayParts": [
+              {
+                "text": "Both whales and dolphins are mammals.",
+                "delay": 0
+              },
+              {
+                "text": "However, whales are larger and dive deeper.",
+                "delay": 4500
+              }
+            ],
+            "interaction": "Passage appears."
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.4.5/S3c.mp3",
+            "ttsScript": "What structure is this? The signal words 'both' and 'however' tell us this is compare and contrast! The author is showing how whales and dolphins are alike and different.",
+            "displayText": "Compare & Contrast!",
+            "displayDelay": 5000,
+            "interaction": "Signal words highlight. Structure label appears. Confetti."
+          }
+        ]
+      },
+      {
+        "slide": 4,
+        "type": "practice-intro",
+        "heading": "Structure Detective Time!",
+        "imagePrompt": "A cartoon child wearing a detective hat and holding a magnifying glass on a boat deck, with ocean research papers floating around. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+        "imageFile": "images/lessons/RI.4.5/S4.png",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.4.5/S4a.mp3",
+            "ttsScript": "You now know four text structures and their signal words. Time to put your skills to the test!",
+            "displayText": "",
+            "interaction": "Stars celebration."
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.4.5/S4b.mp3",
+            "ttsScript": "Read each passage and figure out which text structure the author used. Let's go!",
+            "displayText": "Identify the structure!",
+            "displayDelay": 3000,
+            "interaction": "Pulsing button."
+          }
+        ]
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RI.4.5-Q3"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RI.4.5-Q4"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RI.4.5-Q5"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RI.4.5-Q6"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RI.4.5-Q7"
       }
     ]
   }

@@ -272,7 +272,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
 
   const getFeedback = (step: Step) => {
     const int = step.interaction?.toLowerCase() ?? "";
-    const isPositive = int.includes("checkmark") || (int.includes("celebration") && !int.includes("stars"));
+    const isPositive = int.includes("checkmark") || int.includes("highlights") || (int.includes("celebration") && !int.includes("stars"));
     const isNegative = int.includes("red x") || int.includes("don't match");
     if (isPositive) return "positive" as const;
     if (isNegative) return "negative" as const;
@@ -305,13 +305,13 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
           initial="hidden"
           animate="visible"
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="flex items-center justify-center gap-3"
+          className="flex items-center justify-center gap-3 w-full"
         >
           <motion.span
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ type: "spring", stiffness: 400, damping: 15 }}
-            className={`rounded-full px-5 py-1.5 text-xl font-bold shadow-sm ${qaPillColor}`}
+            className={`rounded-full px-5 py-1.5 text-xl font-bold shadow-sm flex-shrink-0 ${qaPillColor}`}
           >
             {parts[0].text}
           </motion.span>
@@ -330,7 +330,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ type: "spring", stiffness: 500, damping: 15, delay: 0.15 }}
-              className="text-2xl text-green-500"
+              className="text-2xl text-green-500 flex-shrink-0"
             >
               ✓
             </motion.span>
