@@ -173,7 +173,7 @@ export function TapToPair({
 
   return (
     <div className="flex flex-col gap-6">
-      <h2 className="text-[22px] font-bold text-zinc-900 dark:text-white leading-snug text-center">
+      <h2 className="text-[22px] font-bold text-zinc-900 dark:text-white leading-snug text-center mb-2">
         {prompt}
       </h2>
 
