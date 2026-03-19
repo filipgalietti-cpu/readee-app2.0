@@ -673,6 +673,81 @@
       },
       {
         "slide": 4,
+        "type": "example",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.K.1/S4a.mp3",
+            "ttsScript": "Now you try! Here are some facts about sea otters. Listen carefully!",
+            "displayText": "",
+            "interaction": "Sea otter illustration appears on screen."
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.K.1/S4b.mp3",
+            "ttsScript": "Sea otters live in the ocean. They hold hands when they sleep. They use rocks to open shells.",
+            "displayText": "Sea otters live in the ocean.\nThey hold hands when they sleep.\nThey use rocks to open shells.",
+            "interaction": "Text appears line by line as the audio reads each sentence.",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.K.1/S4c.mp3",
+            "ttsScript": "Where do sea otters live? The ocean! You found a key detail!",
+            "displayText": "",
+            "interaction": "'Where? The ocean!' highlights with a checkmark.",
+            "displayParts": [
+              {
+                "text": "Where?",
+                "delay": 1000
+              },
+              {
+                "text": "The ocean!",
+                "delay": 2500
+              }
+            ]
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RI.K.1/S4d.mp3",
+            "ttsScript": "What do they do when they sleep? They hold hands! Isn't that cute? Another key detail!",
+            "displayText": "",
+            "interaction": "'What do they do? Hold hands!' highlights with a checkmark.",
+            "displayParts": [
+              {
+                "text": "What do they do?",
+                "delay": 500
+              },
+              {
+                "text": "Hold hands!",
+                "delay": 2800
+              }
+            ]
+          },
+          {
+            "sub": "e",
+            "audioFile": "audio/lessons/RI.K.1/S4e.mp3",
+            "ttsScript": "What do they use to open shells? Rocks! Great job, you found all the key details!",
+            "displayText": "",
+            "interaction": "'What do they use? Rocks!' highlights. Celebration burst. Tap to continue.",
+            "displayParts": [
+              {
+                "text": "What do they use?",
+                "delay": 500
+              },
+              {
+                "text": "Rocks!",
+                "delay": 2500
+              }
+            ]
+          }
+        ],
+        "heading": "Your Turn!",
+        "imagePrompt": "A pair of adorable cartoon sea otters floating on their backs in a calm blue ocean, holding hands, with a small rock and seashell nearby, kelp in the background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.K.1/S4.png"
+      },
+      {
+        "slide": 5,
         "type": "practice-intro",
         "steps": [
           {
@@ -696,27 +771,27 @@
         "imageFile": "images/lessons/RI.K.1/S5.png"
       },
       {
-        "slide": 5,
+        "slide": 6,
         "type": "mcq",
         "mcqId": "RI.K.1-Q1"
       },
       {
-        "slide": 6,
+        "slide": 7,
         "type": "mcq",
         "mcqId": "RI.K.1-Q2"
       },
       {
-        "slide": 7,
+        "slide": 8,
         "type": "mcq",
         "mcqId": "RI.K.1-Q3"
       },
       {
-        "slide": 8,
+        "slide": 9,
         "type": "mcq",
         "mcqId": "RI.K.1-Q4"
       },
       {
-        "slide": 9,
+        "slide": 10,
         "type": "mcq",
         "mcqId": "RI.K.1-Q5"
       }
