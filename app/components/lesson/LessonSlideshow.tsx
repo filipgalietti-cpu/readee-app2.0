@@ -305,18 +305,18 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
           initial="hidden"
           animate="visible"
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="grid w-full gap-2"
-          style={{ gridTemplateColumns: "5.5rem 1fr auto" }}
+          className="grid w-full items-center gap-x-3"
+          style={{ gridTemplateColumns: "6.5rem 1fr 1.5rem" }}
         >
           <motion.span
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ type: "spring", stiffness: 400, damping: 15 }}
-            className={`rounded-full px-4 py-1.5 text-xl font-bold shadow-sm text-center ${qaPillColor}`}
+            className={`rounded-full py-2 text-lg font-bold shadow-sm text-center ${qaPillColor}`}
           >
             {parts[0].text}
           </motion.span>
-          <span className="text-2xl font-semibold text-zinc-700 dark:text-zinc-200 flex items-center">
+          <span className="text-xl font-semibold text-zinc-700 dark:text-zinc-200 min-h-[2.5rem] flex items-center">
             {aVisible && (
               <motion.span
                 initial={{ opacity: 0, x: 8 }}
@@ -327,13 +327,13 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
               </motion.span>
             )}
           </span>
-          <span className="flex items-center justify-center w-8">
+          <span className="flex items-center justify-center">
             {showCheck && (
               <motion.span
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ type: "spring", stiffness: 500, damping: 15, delay: 0.15 }}
-                className="text-2xl text-green-500"
+                className="text-xl text-green-500"
               >
                 ✓
               </motion.span>
