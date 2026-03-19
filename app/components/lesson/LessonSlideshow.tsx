@@ -23,6 +23,7 @@ interface Step {
   displayText: string;
   displayDelay?: number;       // ms delay before showing displayText
   displayParts?: DisplayPart[]; // staggered text reveals within one step
+  feedbackDelay?: number;      // ms delay before showing ✓/✗ after both parts visible
   interaction: string;
 }
 
@@ -137,6 +138,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const textTimersRef = useRef<ReturnType<typeof setTimeout>[]>([]);
   const runIdRef = useRef(0);
+  const scheduledFeedbackRef = useRef<Set<string>>(new Set());
 
   const slide = teachingSlides[currentSlide];
   const steps = slide?.steps ?? [];
@@ -234,6 +236,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
     setPartsVisible(new Set());
     setShowNext(false);
     setIsPlaying(false);
+    scheduledFeedbackRef.current = new Set();
     timerRef.current = setTimeout(() => {
       if (runIdRef.current !== runId) return;
       scheduleStep(0, runId, steps);
@@ -347,7 +350,22 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
     if (isPair && !isQA && !parts[0].text.includes(" ") && !parts[1].text.includes(" ")) {
       const bothVisible = partsVisible.has(`${i}-0`) && partsVisible.has(`${i}-1`);
       const feedback = getFeedback(step);
-      const showFeedback = bothVisible && feedback !== null;
+      // Delay feedback reveal until audio confirms (use feedbackDelay from data, default 3s after second word)
+      const feedbackDelayMs = step.feedbackDelay ?? 3000;
+      const feedbackKey = `${i}-feedback`;
+      const showFeedback = bothVisible && feedback !== null && partsVisible.has(feedbackKey);
+
+      // Schedule feedback reveal once when both words are visible
+      if (bothVisible && feedback !== null && !partsVisible.has(feedbackKey) && !scheduledFeedbackRef.current.has(feedbackKey)) {
+        scheduledFeedbackRef.current.add(feedbackKey);
+        const runId = runIdRef.current;
+        const t = setTimeout(() => {
+          if (runIdRef.current !== runId) return;
+          setPartsVisible((prev) => new Set(prev).add(feedbackKey));
+        }, feedbackDelayMs);
+        textTimersRef.current.push(t);
+      }
+
       const ringClass = showFeedback
         ? feedback === "positive"
           ? "ring-2 ring-green-400 ring-offset-2"
@@ -364,7 +382,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ type: "spring", stiffness: 400, damping: 15 }}
-                className={`rounded-full px-8 py-3 text-2xl font-bold text-center shadow-sm ${PILL_COLORS[p % PILL_COLORS.length]} ${ringClass}`}
+                className={`rounded-full px-8 py-3 text-2xl font-bold text-center shadow-sm ${PILL_COLORS[p % PILL_COLORS.length]} ${showFeedback ? ringClass : ""}`}
               >
                 {part.text}
               </motion.span>
@@ -374,7 +392,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
             <motion.span
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ type: "spring", stiffness: 500, damping: 15, delay: feedback === "positive" ? 0.15 : 0.6 }}
+              transition={{ type: "spring", stiffness: 500, damping: 15 }}
               className={`text-2xl ${feedback === "positive" ? "text-green-500" : "text-red-500"}`}
             >
               {feedback === "positive" ? "✓" : "✗"}

@@ -390,6 +390,7 @@
             "audioFile": "audio/lessons/RF.K.2a/S3b.mp3",
             "ttsScript": "Cake and lake. Cake, lake. Do they rhyme? Yes! They both end with the 'ake' sound. Nice job!",
             "interaction": "'Cake' and 'Lake' fill in the bubbles. A big green checkmark appears. Celebration sparkle.",
+            "feedbackDelay": 3500,
             "displayParts": [
               {
                 "text": "Cake",
@@ -406,6 +407,7 @@
             "audioFile": "audio/lessons/RF.K.2a/S3c.mp3",
             "ttsScript": "Now try this one. Cake and dog. Cake, dog. Do they rhyme? Nope! Those endings sound totally different.",
             "interaction": "'Cake' and 'Dog' appear. A red X appears. The endings '-ake' and '-og' show they don't match.",
+            "feedbackDelay": 4000,
             "displayParts": [
               {
                 "text": "Cake",
