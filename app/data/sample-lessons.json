@@ -785,7 +785,7 @@
             "ttsScript": "That is called retelling! When we retell a story, we say what happened in our own words.",
             "interaction": "'Retelling' appears in big sparkly letters.",
             "displayText": "Retelling",
-            "displayDelay": 4080
+            "displayDelay": 2000
           },
           {
             "sub": "c",
@@ -827,25 +827,34 @@
             "sub": "b",
             "audioFile": "audio/lessons/RL.K.2/S2b.mp3",
             "ttsScript": "First, what happened at the beginning of the story?",
-            "interaction": "Pill: [Beginning] pops in blue.",
-            "displayText": "Beginning",
-            "displayDelay": 2250
+            "interaction": "Number 1 appears, then 'Beginning' fills in.",
+            "displayText": "",
+            "displayParts": [
+              {"text": "1.", "delay": 0},
+              {"text": "Beginning", "delay": 2250}
+            ]
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RL.K.2/S2c.mp3",
             "ttsScript": "Next, what happened in the middle?",
-            "interaction": "Pill: [Middle] pops in green.",
-            "displayText": "Middle",
-            "displayDelay": 800
+            "interaction": "Number 2 appears, then 'Middle' fills in.",
+            "displayText": "",
+            "displayParts": [
+              {"text": "2.", "delay": 0},
+              {"text": "Middle", "delay": 800}
+            ]
           },
           {
             "sub": "d",
             "audioFile": "audio/lessons/RL.K.2/S2d.mp3",
             "ttsScript": "And last, how did the story end? That's it! Beginning, middle, end. You've got this!",
-            "interaction": "Pill: [End] pops in orange. All three glow together.",
-            "displayText": "End",
-            "displayDelay": 3750
+            "interaction": "Number 3 appears, then 'End' fills in. All three glow together.",
+            "displayText": "",
+            "displayParts": [
+              {"text": "3.", "delay": 0},
+              {"text": "End", "delay": 3750}
+            ]
           }
         ],
         "heading": "How Do We Retell a Story?",
@@ -875,11 +884,11 @@
               },
               {
                 "text": "Then she laid three eggs.",
-                "delay": 2133
+                "delay": 3500
               },
               {
                 "text": "At last, the baby birds hatched!",
-                "delay": 4267
+                "delay": 7000
               }
             ]
           },
@@ -887,28 +896,37 @@
             "sub": "c",
             "audioFile": "audio/lessons/RL.K.2/S3c.mp3",
             "ttsScript": "Now let's retell it! What happened first? First, a bird built a nest!",
-            "interaction": "Pill: [First: Built a nest] appears with checkmark.",
-            "displayText": "First: Built a nest",
-            "displayDelay": 3250
+            "interaction": "'First: Built a nest' highlights with a checkmark.",
+            "displayText": "",
+            "displayParts": [
+              {"text": "First", "delay": 1500},
+              {"text": "Built a nest", "delay": 3250}
+            ]
           },
           {
             "sub": "d",
             "audioFile": "audio/lessons/RL.K.2/S3d.mp3",
             "ttsScript": "What happened next? Next, she laid eggs!",
-            "interaction": "Pill: [Next: Laid eggs] appears with checkmark.",
-            "displayText": "Next: Laid eggs",
-            "displayDelay": 1750
+            "interaction": "'Next: Laid eggs' highlights with a checkmark.",
+            "displayText": "",
+            "displayParts": [
+              {"text": "Next", "delay": 500},
+              {"text": "Laid eggs", "delay": 1750}
+            ]
           },
           {
             "sub": "e",
             "audioFile": "audio/lessons/RL.K.2/S3e.mp3",
             "ttsScript": "And last? The babies hatched! You just retold a whole story! Amazing!",
-            "interaction": "Pill: [Last: Babies hatched] appears. Confetti burst.",
-            "displayText": "Last: Babies hatched",
-            "displayDelay": 3000
+            "interaction": "'Last: Babies hatched' highlights with a checkmark.",
+            "displayText": "",
+            "displayParts": [
+              {"text": "Last", "delay": 500},
+              {"text": "Babies hatched!", "delay": 3000}
+            ]
           }
         ],
-        "heading": "Let's Try One Together!",
+        "heading": "",
         "imagePrompt": "A smiling cartoon mother bird sitting on a nest in a tree with three baby birds poking their heads out of cracked eggs. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RL.K.2/S3.png"
       },
@@ -976,7 +994,7 @@
           }
         ],
         "heading": "Time to Practice!",
-        "imagePrompt": "A confident cartoon child standing at a small podium retelling a story to smiling stuffed animals. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A happy cartoon child giving a big thumbs up with colorful stars and sparkles around them. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RL.K.2/S5.png"
       },
       {

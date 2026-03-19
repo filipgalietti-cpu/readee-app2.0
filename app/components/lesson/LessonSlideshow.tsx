@@ -349,6 +349,46 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
       );
     }
 
+    // ── Numbered pair: [①] Beginning ──
+    if (isPair && /^\d+\.$/.test(parts[0].text.trim())) {
+      const aVisible = partsVisible.has(`${i}-1`);
+      const num = parts[0].text.replace(".", "");
+      const pillColor = PILL_COLORS[i % PILL_COLORS.length];
+
+      return (
+        <motion.div
+          key={`${currentSlide}-${step.sub}`}
+          variants={revealVariants}
+          initial="hidden"
+          animate="visible"
+          transition={{ duration: 0.3, ease: "easeOut" }}
+          className="grid w-full items-center gap-x-3"
+          style={{ gridTemplateColumns: "2.5rem 1fr" }}
+        >
+          <motion.span
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ type: "spring", stiffness: 400, damping: 15 }}
+            className="w-9 h-9 rounded-full bg-indigo-500 text-white flex items-center justify-center text-lg font-bold shadow-sm"
+          >
+            {num}
+          </motion.span>
+          <span className="min-h-[2.5rem] flex items-center">
+            {aVisible && (
+              <motion.span
+                initial={{ opacity: 0, x: 8 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                className={`rounded-full px-6 py-2 text-xl font-bold shadow-sm ${pillColor}`}
+              >
+                {parts[1].text}
+              </motion.span>
+            )}
+          </span>
+        </motion.div>
+      );
+    }
+
     // ── Word pair: side-by-side colorful pills (Cat + Hat) ──
     if (isPair && !isQA && !parts[0].text.includes(" ") && !parts[1].text.includes(" ")) {
       const bothVisible = partsVisible.has(`${i}-0`) && partsVisible.has(`${i}-1`);
@@ -402,6 +442,61 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
             </motion.span>
           )}
         </div>
+      );
+    }
+
+    // ── Labeled pair: [First] Built a nest ✓ ──
+    if (isPair && !isQA && parts[0].text.length <= 8 && !parts[0].text.includes(" ") && parts[1].text.includes(" ")) {
+      const qVisible = partsVisible.has(`${i}-0`);
+      const aVisible = partsVisible.has(`${i}-1`);
+      if (!qVisible) return null;
+
+      const pillColor = PILL_COLORS[i % PILL_COLORS.length];
+      const feedback = getFeedback(step);
+      const showCheck = aVisible && feedback === "positive";
+
+      return (
+        <motion.div
+          key={`${currentSlide}-${step.sub}`}
+          variants={revealVariants}
+          initial="hidden"
+          animate="visible"
+          transition={{ duration: 0.3, ease: "easeOut" }}
+          className="grid w-full items-center gap-x-3"
+          style={{ gridTemplateColumns: "5.5rem 1fr 1.5rem" }}
+        >
+          <motion.span
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ type: "spring", stiffness: 400, damping: 15 }}
+            className={`rounded-full py-2 text-lg font-bold shadow-sm text-center ${pillColor}`}
+          >
+            {parts[0].text}
+          </motion.span>
+          <span className="text-xl font-semibold text-zinc-700 dark:text-zinc-200 min-h-[2.5rem] flex items-center">
+            {aVisible && (
+              <motion.span
+                initial={{ opacity: 0, x: 8 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ type: "spring", stiffness: 400, damping: 15 }}
+              >
+                {parts[1].text}
+              </motion.span>
+            )}
+          </span>
+          <span className="flex items-center justify-center">
+            {showCheck && (
+              <motion.span
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ type: "spring", stiffness: 500, damping: 15, delay: 0.15 }}
+                className="text-xl text-green-500"
+              >
+                ✓
+              </motion.span>
+            )}
+          </span>
+        </motion.div>
       );
     }
 
@@ -640,16 +735,18 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
 
           {/* ── Heading + speaker ── */}
           <div className="flex-shrink-0 px-6 pt-1 pb-0 flex items-center justify-center gap-2">
-            <motion.h1
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.15, type: "spring", stiffness: 200 }}
-              className={`font-bold text-center tracking-wide leading-snug ${theme.text} ${
-                textsVisible.size > 0 || partsVisible.size > 0 ? "text-xl" : "text-3xl"
-              }`}
-            >
-              {slide.heading}
-            </motion.h1>
+            {slide.heading && (
+              <motion.h1
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.15, type: "spring", stiffness: 200 }}
+                className={`font-bold text-center tracking-wide leading-snug ${theme.text} ${
+                  textsVisible.size > 0 || partsVisible.size > 0 ? "text-xl" : "text-3xl"
+                }`}
+              >
+                {slide.heading}
+              </motion.h1>
+            )}
             {isPlaying && !isMuted && (
               <motion.div
                 animate={{ scale: [1, 1.25, 1] }}
@@ -663,7 +760,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
 
           {/* ── Content ── */}
           <div className="flex-1 min-h-0 overflow-hidden flex items-center justify-center px-6">
-            <div className={`w-full max-w-sm flex flex-col items-center gap-2 ${theme.contentBg}`}>
+            <div className={`w-full max-w-sm flex flex-col items-center gap-3 ${theme.contentBg}`}>
               {steps.map((step, i) => {
                 if (step.displayParts && step.displayParts.length > 0) {
                   return renderParts(step, i);
