@@ -552,7 +552,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
               key={`${currentSlide}-${step.sub}-${p}`}
               initial={{ opacity: 0, scale: 0.5 }}
               animate={nextStepPlaying
-                ? { opacity: 1, y: [0, -3, 0] }
+                ? { opacity: 1, scale: 1, y: [0, -3, 0] }
                 : { opacity: 1, scale: 1, y: 0 }
               }
               transition={nextStepPlaying

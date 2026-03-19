@@ -949,11 +949,11 @@
             "displayParts": [
               {
                 "text": "First",
-                "delay": 300
+                "delay": 2000
               },
               {
                 "text": "Next",
-                "delay": 2400
+                "delay": 3500
               },
               {
                 "text": "Last",
