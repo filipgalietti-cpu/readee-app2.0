@@ -209,12 +209,13 @@ const FEEDBACK_ICON_MAP: Record<string, LucideIcon> = {
 };
 
 const INCORRECT_MESSAGES = [
-  "Not quite!", "Almost!", "Good try!", "Keep learning!",
+  "Not quite!", "Almost!", "Good try!", "Keep learning!", "So close!",
+  "Try again!", "You'll get it!", "Oops, not that one!", "Nice effort!", "Don't give up!",
 ];
 
 // Feedback audio files (static .mp3 in /audio/feedback/)
 const CORRECT_AUDIO = ["correct-1", "correct-2", "correct-3", "correct-4", "correct-5", "correct-6", "correct-7", "correct-8", "correct-9", "correct-10", "correct-11", "correct-12"];
-const INCORRECT_AUDIO = ["incorrect-1", "incorrect-2", "incorrect-3"];
+const INCORRECT_AUDIO = ["incorrect-1", "incorrect-2", "incorrect-3", "incorrect-4", "incorrect-5", "incorrect-6", "incorrect-7", "incorrect-8", "incorrect-9", "incorrect-10"];
 
 const ACCENT_COLORS = ["#60a5fa", "#4ade80", "#fb923c", "#a78bfa"]; // blue, green, orange, purple
 
