@@ -853,7 +853,7 @@
             "displayText": "",
             "displayParts": [
               {"text": "3.", "delay": 0},
-              {"text": "End", "delay": 3750}
+              {"text": "End", "delay": 2000}
             ]
           }
         ],

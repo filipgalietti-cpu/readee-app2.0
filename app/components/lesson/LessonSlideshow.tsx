@@ -138,6 +138,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
   const [partsVisible, setPartsVisible] = useState<Set<string>>(new Set());
   const [showNext, setShowNext] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [playingStep, setPlayingStep] = useState(-1);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const textTimersRef = useRef<ReturnType<typeof setTimeout>[]>([]);
   const runIdRef = useRef(0);
@@ -177,6 +178,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
     (stepIdx: number, runId: number, slideSteps: Step[]) => {
       if (stepIdx >= slideSteps.length) {
         setIsPlaying(false);
+        setPlayingStep(-1);
         setShowNext(true);
         return;
       }
@@ -184,6 +186,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
       const step = slideSteps[stepIdx];
       setStepsRevealed(stepIdx + 1);
       setIsPlaying(true);
+      setPlayingStep(stepIdx);
 
       if (step.displayText) {
         const delay = step.displayDelay ?? 0;
@@ -236,6 +239,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
     const runId = ++runIdRef.current;
     setStepsRevealed(0);
     setTextsVisible(new Set());
+    setPlayingStep(-1);
     setPartsVisible(new Set());
     setShowNext(false);
     setIsPlaying(false);
@@ -269,6 +273,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
     setTextsVisible(allTexts);
     setPartsVisible(allParts);
     setIsPlaying(false);
+    setPlayingStep(-1);
     setShowNext(true);
   }, [steps, clearTimer]);
 
@@ -536,6 +541,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
     }
 
     // ── 3+ items: colorful horizontal pills ──
+    const nextStepPlaying = i + 1 < steps.length && playingStep === i + 1;
     return (
       <div key={`${currentSlide}-${step.sub}`} className="flex flex-wrap items-center justify-center gap-3">
         {parts.map((part, p) => {
@@ -544,8 +550,17 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
             <motion.span
               key={`${currentSlide}-${step.sub}-${p}`}
               initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ type: "spring", stiffness: 400, damping: 15 }}
+              animate={nextStepPlaying
+                ? { opacity: 1, scale: [1, 1.1, 1], y: [0, -4, 0] }
+                : { opacity: 1, scale: 1, y: 0 }
+              }
+              transition={nextStepPlaying
+                ? {
+                    scale: { duration: 1.5, delay: p * 0.5, repeat: Infinity, ease: "easeInOut" },
+                    y: { duration: 1.5, delay: p * 0.5, repeat: Infinity, ease: "easeInOut" },
+                  }
+                : { type: "spring", stiffness: 400, damping: 15 }
+              }
               className={`rounded-full px-5 py-2 text-xl font-bold text-center shadow-sm ${PILL_COLORS[p % PILL_COLORS.length]}`}
             >
               {part.text}
