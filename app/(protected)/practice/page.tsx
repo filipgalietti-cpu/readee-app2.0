@@ -81,27 +81,19 @@ const CHOICE_COLORS = [
   "bg-emerald-100 text-emerald-800 border-emerald-300 dark:bg-emerald-900/60 dark:text-emerald-200 dark:border-emerald-700",
 ];
 
-/* ─── Highlight proper nouns in question text ───────── */
+/* ─── Highlight question words in question text ───────── */
 
-const QUESTION_SKIP_WORDS = new Set([
-  "What","Who","Where","When","Why","How","Which","Does","Do","Did",
-  "Is","Are","Was","Were","Can","Could","Will","Would","Should",
-  "The","A","An","In","On","At","If","It","Read","Look","Find",
-  "Pick","Choose","Tell","That","This","These","Those","Each",
-  "Every","Some","Many","Most","All","Both","Have","Has","Had",
+const QUESTION_WORDS = new Set([
+  "What","Who","Where","When","Why","How","Which",
 ]);
 
 function highlightQuestion(text: string): React.ReactNode[] {
   // Split on word boundaries, keeping separators
   return text.split(/(\s+|(?=[.,!?;:])|(?<=[.,!?;:]))/).map((part, i) => {
     const clean = part.replace(/[^a-zA-Z']/g, "");
-    // Highlight capitalized words that aren't common question/sentence starters
-    if (
-      clean.length > 1 &&
-      /^[A-Z]/.test(clean) &&
-      !QUESTION_SKIP_WORDS.has(clean)
-    ) {
-      return <span key={i} className="text-indigo-600 dark:text-indigo-400">{part}</span>;
+    // Highlight question words (Who, What, Where, etc.)
+    if (clean.length > 1 && QUESTION_WORDS.has(clean)) {
+      return <span key={i} className="text-indigo-600 dark:text-indigo-400 font-extrabold">{part}</span>;
     }
     return part;
   });
@@ -195,8 +187,9 @@ const DOMAIN_ICON: Record<string, LucideIcon> = {
 };
 
 const CORRECT_MESSAGES = [
-  "Amazing!", "Great job!", "You got it!", "Nice catch!",
-  "Super smart!", "Wonderful!", "Nailed it!", "Brilliant!",
+  "Great job!", "You got it!", "Amazing!", "That's right!",
+  "Way to go!", "Awesome!", "You're so smart!", "Nailed it!",
+  "Super!", "Excellent!", "You're on fire!", "Fantastic!",
 ];
 const CORRECT_EMOJIS = ["star", "sparkles", "sparkle", "star2", "zap", "target"];
 
@@ -214,7 +207,7 @@ const INCORRECT_MESSAGES = [
 ];
 
 // Feedback audio files (static .mp3 in /audio/feedback/)
-const CORRECT_AUDIO = ["correct-1", "correct-2", "correct-3", "correct-4", "correct-5"];
+const CORRECT_AUDIO = ["correct-1", "correct-2", "correct-3", "correct-4", "correct-5", "correct-6", "correct-7", "correct-8", "correct-9", "correct-10", "correct-11", "correct-12"];
 const INCORRECT_AUDIO = ["incorrect-1", "incorrect-2", "incorrect-3"];
 
 const ACCENT_COLORS = ["#60a5fa", "#4ade80", "#fb923c", "#a78bfa"]; // blue, green, orange, purple
@@ -1004,8 +997,8 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
 
         {/* ── Passage — context before the question ── */}
         {passage && (
-          <motion.div variants={fadeUp} className="mb-5 rounded-2xl bg-amber-50 border border-amber-200 dark:bg-amber-950/30 dark:border-amber-800/50 p-6">
-            <p className="text-xl md:text-2xl leading-loose font-semibold text-gray-800 dark:text-slate-200 tracking-wide whitespace-pre-line">{passage}</p>
+          <motion.div variants={fadeUp} className="mb-5 rounded-2xl bg-amber-50 border border-amber-200 dark:bg-amber-950/30 dark:border-amber-800/50 px-5 py-4">
+            <p className="text-xl md:text-2xl leading-relaxed font-semibold text-gray-800 dark:text-slate-200 tracking-wide whitespace-pre-line text-center">{passage}</p>
           </motion.div>
         )}
 
