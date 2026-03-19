@@ -492,7 +492,6 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
 
       targets.forEach(({ idx }, order) => {
         const checkKey = `${idx}-check`;
-        if (partsVisible.has(checkKey)) return;
         const t = setTimeout(() => {
           if (runIdRef.current !== runId) return;
           setPartsVisible((prev) => new Set(prev).add(checkKey));
@@ -500,7 +499,8 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
         textTimersRef.current.push(t);
       });
     });
-  }, [textsVisible, steps, partsVisible]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [textsVisible, steps]);
 
   const renderText = (step: Step, i: number) => {
     if (!textsVisible.has(i) || !step.displayText) return null;
@@ -638,14 +638,15 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
             </div>
           </div>
 
-          {/* ── Heading + speaker (hides when content appears) ── */}
-          {textsVisible.size === 0 && partsVisible.size === 0 && (
+          {/* ── Heading + speaker ── */}
           <div className="flex-shrink-0 px-6 pt-1 pb-0 flex items-center justify-center gap-2">
             <motion.h1
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15, type: "spring", stiffness: 200 }}
-              className={`text-3xl font-bold text-center tracking-wide leading-snug ${theme.text}`}
+              className={`font-bold text-center tracking-wide leading-snug ${theme.text} ${
+                textsVisible.size > 0 || partsVisible.size > 0 ? "text-xl" : "text-3xl"
+              }`}
             >
               {slide.heading}
             </motion.h1>
@@ -659,7 +660,6 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
               </motion.div>
             )}
           </div>
-          )}
 
           {/* ── Content ── */}
           <div className="flex-1 min-h-0 overflow-hidden flex items-center justify-center px-6">
