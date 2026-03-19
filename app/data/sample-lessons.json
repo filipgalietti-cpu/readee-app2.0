@@ -337,11 +337,11 @@
             "displayParts": [
               {
                 "text": "Dog",
-                "delay": 3500
+                "delay": 300
               },
               {
                 "text": "Log",
-                "delay": 5500
+                "delay": 1500
               }
             ]
           },
@@ -353,11 +353,11 @@
             "displayParts": [
               {
                 "text": "Sun",
-                "delay": 3000
+                "delay": 300
               },
               {
                 "text": "Fun",
-                "delay": 5000
+                "delay": 1500
               }
             ]
           },
@@ -393,11 +393,11 @@
             "displayParts": [
               {
                 "text": "Cake",
-                "delay": 4320
+                "delay": 300
               },
               {
                 "text": "Lake",
-                "delay": 6320
+                "delay": 1500
               }
             ]
           },
@@ -409,11 +409,11 @@
             "displayParts": [
               {
                 "text": "Cake",
-                "delay": 4320
+                "delay": 300
               },
               {
                 "text": "Dog",
-                "delay": 6320
+                "delay": 1500
               }
             ]
           },
@@ -423,7 +423,7 @@
             "ttsScript": "See? You just have to listen to the ends of the words. You're getting so good at this!",
             "displayText": "Listen to the endings!",
             "interaction": "Stars float up. Tap to continue.",
-            "displayDelay": 4320
+            "displayDelay": 2000
           }
         ],
         "heading": "Let's Try Some Together!",
@@ -447,7 +447,7 @@
             "ttsScript": "Say two words out loud and listen really carefully to the ends. If they sound the same at the end, they rhyme!",
             "displayText": "Listen to the endings!",
             "interaction": "Two words appear. The endings glow and pulse as 'listen to the ends' is emphasized.",
-            "displayDelay": 5280
+            "displayDelay": 2500
           },
           {
             "sub": "c",
@@ -455,7 +455,7 @@
             "ttsScript": "Try it with your own name! What rhymes with your name? Think about it!",
             "displayText": "What rhymes with YOUR name?",
             "interaction": "A thought bubble appears with a question mark, inviting the kid to think. Tap to continue.",
-            "displayDelay": 3500
+            "displayDelay": 1500
           }
         ],
         "heading": "A Helpful Trick!",

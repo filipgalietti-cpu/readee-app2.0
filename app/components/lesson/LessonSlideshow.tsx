@@ -374,7 +374,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
             <motion.span
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ type: "spring", stiffness: 500, damping: 15, delay: 0.15 }}
+              transition={{ type: "spring", stiffness: 500, damping: 15, delay: feedback === "positive" ? 0.15 : 0.6 }}
               className={`text-2xl ${feedback === "positive" ? "text-green-500" : "text-red-500"}`}
             >
               {feedback === "positive" ? "✓" : "✗"}
