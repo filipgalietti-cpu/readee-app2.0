@@ -25,6 +25,8 @@ interface Step {
   displayParts?: DisplayPart[]; // staggered text reveals within one step
   feedbackDelay?: number;      // ms delay before showing ✓/✗ after both parts visible
   checkmarkDelay?: number;     // ms delay before showing ✓ on displayText pill (after text visible)
+  checkmarkTriggerDelay?: number;   // when this step's text appears, trigger ALL checkmarks after this base delay
+  checkmarkTriggerStagger?: number; // ms between each checkmark (default 400)
   interaction: string;
 }
 
@@ -471,6 +473,35 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
     return map;
   }, [steps]);
 
+  // When a step with checkmarkTriggerDelay becomes visible, schedule ALL checkmarks in order
+  useEffect(() => {
+    steps.forEach((step, i) => {
+      if (step.checkmarkTriggerDelay === undefined || !textsVisible.has(i)) return;
+      const triggerKey = `trigger-${i}`;
+      if (scheduledFeedbackRef.current.has(triggerKey)) return;
+      scheduledFeedbackRef.current.add(triggerKey);
+
+      const baseDelay = step.checkmarkTriggerDelay;
+      const stagger = step.checkmarkTriggerStagger ?? 400;
+      const runId = runIdRef.current;
+
+      // Collect all displayText steps with positive feedback, in order
+      const targets = steps
+        .map((s, idx) => ({ s, idx }))
+        .filter(({ s }) => s.displayText && getFeedback(s) === "positive");
+
+      targets.forEach(({ idx }, order) => {
+        const checkKey = `${idx}-check`;
+        if (partsVisible.has(checkKey)) return;
+        const t = setTimeout(() => {
+          if (runIdRef.current !== runId) return;
+          setPartsVisible((prev) => new Set(prev).add(checkKey));
+        }, baseDelay + order * stagger);
+        textTimersRef.current.push(t);
+      });
+    });
+  }, [textsVisible, steps, partsVisible]);
+
   const renderText = (step: Step, i: number) => {
     if (!textsVisible.has(i) || !step.displayText) return null;
 
@@ -478,14 +509,15 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
     const pillColor = PILL_COLORS[pillIdx % PILL_COLORS.length];
     const feedback = getFeedback(step);
 
-    // Delayed checkmark support for displayText pills
+    // Checkmark visible if scheduled via checkmarkTrigger or checkmarkDelay, or immediate
     const checkKey = `${i}-check`;
-    const hasCheckDelay = step.checkmarkDelay !== undefined && step.checkmarkDelay > 0;
-    const showCheck = hasCheckDelay
+    const hasDelayedCheck = step.checkmarkDelay !== undefined || steps.some(s => s.checkmarkTriggerDelay !== undefined);
+    const showCheck = hasDelayedCheck
       ? feedback === "positive" && partsVisible.has(checkKey)
       : feedback === "positive";
 
-    if (hasCheckDelay && feedback === "positive" && !partsVisible.has(checkKey) && !scheduledFeedbackRef.current.has(checkKey)) {
+    // Individual checkmarkDelay (fallback if no trigger on another step)
+    if (step.checkmarkDelay && step.checkmarkDelay > 0 && feedback === "positive" && !partsVisible.has(checkKey) && !scheduledFeedbackRef.current.has(checkKey)) {
       scheduledFeedbackRef.current.add(checkKey);
       const runId = runIdRef.current;
       const t = setTimeout(() => {
