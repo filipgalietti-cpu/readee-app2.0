@@ -551,14 +551,11 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
               key={`${currentSlide}-${step.sub}-${p}`}
               initial={{ opacity: 0, scale: 0.5 }}
               animate={nextStepPlaying
-                ? { opacity: 1, scale: [1, 1.1, 1], y: [0, -4, 0] }
+                ? { opacity: 1, y: [0, -3, 0] }
                 : { opacity: 1, scale: 1, y: 0 }
               }
               transition={nextStepPlaying
-                ? {
-                    scale: { duration: 1.5, delay: p * 0.5, repeat: Infinity, ease: "easeInOut" },
-                    y: { duration: 1.5, delay: p * 0.5, repeat: Infinity, ease: "easeInOut" },
-                  }
+                ? { y: { duration: 2, delay: p * 0.7, repeat: Infinity, ease: "easeInOut" } }
                 : { type: "spring", stiffness: 400, damping: 15 }
               }
               className={`rounded-full px-5 py-2 text-xl font-bold text-center shadow-sm ${PILL_COLORS[p % PILL_COLORS.length]}`}
