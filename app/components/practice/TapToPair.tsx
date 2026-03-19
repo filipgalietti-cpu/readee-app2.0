@@ -123,7 +123,7 @@ export function TapToPair({
             const allCorrect = newMatches.every((m) => m.correct);
             const answer = newMatches.map((m) => `${m.left}→${m.right}`).join(", ");
             onAnswer(allCorrect, answer);
-          }, 1200);
+          }, 2000);
         }
       } else {
         // Wrong match — shake the second-tapped side
