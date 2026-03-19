@@ -541,7 +541,8 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
     }
 
     // ── 3+ items: colorful horizontal pills ──
-    const nextStepPlaying = i + 1 < steps.length && playingStep === i + 1;
+    const isShortPills = parts.every(p => p.text.length <= 10);
+    const nextStepPlaying = isShortPills && i + 1 < steps.length && playingStep === i + 1;
     return (
       <div key={`${currentSlide}-${step.sub}`} className="flex flex-wrap items-center justify-center gap-3">
         {parts.map((part, p) => {
