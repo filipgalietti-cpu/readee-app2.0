@@ -390,7 +390,7 @@
             "audioFile": "audio/lessons/RF.K.2a/S3b.mp3",
             "ttsScript": "Cake and lake. Cake, lake. Do they rhyme? Yes! They both end with the 'ake' sound. Nice job!",
             "interaction": "'Cake' and 'Lake' fill in the bubbles. A big green checkmark appears. Celebration sparkle.",
-            "feedbackDelay": 4500,
+            "feedbackDelay": 6000,
             "displayParts": [
               {
                 "text": "Cake",
