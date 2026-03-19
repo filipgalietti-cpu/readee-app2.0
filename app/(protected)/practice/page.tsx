@@ -81,21 +81,27 @@ const CHOICE_COLORS = [
   "bg-emerald-100 text-emerald-800 border-emerald-300 dark:bg-emerald-900/60 dark:text-emerald-200 dark:border-emerald-700",
 ];
 
-/* ─── Highlight question words in question text ───────── */
+/* ─── Highlight key words in question text ───────── */
 
 const QUESTION_WORDS = new Set([
   "What","Who","Where","When","Why","How","Which",
 ]);
 
 function highlightQuestion(text: string): React.ReactNode[] {
-  // Split on word boundaries, keeping separators
-  return text.split(/(\s+|(?=[.,!?;:])|(?<=[.,!?;:]))/).map((part, i) => {
-    const clean = part.replace(/[^a-zA-Z']/g, "");
-    // Highlight question words (Who, What, Where, etc.)
-    if (clean.length > 1 && QUESTION_WORDS.has(clean)) {
-      return <span key={i} className="text-indigo-600 dark:text-indigo-400 font-extrabold">{part}</span>;
+  // First highlight quoted words, then question words
+  return text.split(/("[^"]+"|"[^"]+")/).map((segment, si) => {
+    // Quoted segments get highlighted
+    if (/^[""][^""]+[""]$/.test(segment)) {
+      return <span key={si} className="text-indigo-600 dark:text-indigo-400 font-extrabold">{segment}</span>;
     }
-    return part;
+    // Non-quoted segments: highlight question words
+    return segment.split(/(\s+|(?=[.,!?;:])|(?<=[.,!?;:]))/).map((part, pi) => {
+      const clean = part.replace(/[^a-zA-Z']/g, "");
+      if (clean.length > 1 && QUESTION_WORDS.has(clean)) {
+        return <span key={`${si}-${pi}`} className="text-indigo-600 dark:text-indigo-400 font-extrabold">{part}</span>;
+      }
+      return part;
+    });
   });
 }
 

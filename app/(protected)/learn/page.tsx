@@ -128,12 +128,17 @@ function questionImageUrl(questionId: string, gradeKey?: string): string {
 }
 
 function highlightQuestion(text: string): React.ReactNode[] {
-  return text.split(/(\s+|(?=[.,!?;:])|(?<=[.,!?;:]))/).map((part, i) => {
-    const clean = part.replace(/[^a-zA-Z']/g, "");
-    if (clean.length > 1 && QUESTION_WORDS.has(clean)) {
-      return <span key={i} className="text-indigo-600 dark:text-indigo-400 font-extrabold">{part}</span>;
+  return text.split(/("[^"]+"|"[^"]+")/).map((segment, si) => {
+    if (/^[""][^""]+[""]$/.test(segment)) {
+      return <span key={si} className="text-indigo-600 dark:text-indigo-400 font-extrabold">{segment}</span>;
     }
-    return part;
+    return segment.split(/(\s+|(?=[.,!?;:])|(?<=[.,!?;:]))/).map((part, pi) => {
+      const clean = part.replace(/[^a-zA-Z']/g, "");
+      if (clean.length > 1 && QUESTION_WORDS.has(clean)) {
+        return <span key={`${si}-${pi}`} className="text-indigo-600 dark:text-indigo-400 font-extrabold">{part}</span>;
+      }
+      return part;
+    });
   });
 }
 
