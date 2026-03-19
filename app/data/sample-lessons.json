@@ -899,8 +899,8 @@
             "interaction": "'First: Built a nest' highlights with a checkmark.",
             "displayText": "",
             "displayParts": [
-              {"text": "First", "delay": 1500},
-              {"text": "Built a nest", "delay": 3250}
+              {"text": "First", "delay": 2500},
+              {"text": "Built a nest", "delay": 4500}
             ]
           },
           {
