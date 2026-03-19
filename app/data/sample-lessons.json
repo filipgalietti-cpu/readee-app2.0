@@ -613,7 +613,7 @@
             "ttsScript": "Penguins live in cold places. They eat fish. They cannot fly.",
             "displayText": "Penguins live in cold places.\nThey eat fish.\nThey cannot fly.",
             "interaction": "Text appears line by line as the audio reads each sentence.",
-            "displayDelay": 2750
+            "displayDelay": 1500
           },
           {
             "sub": "c",
@@ -628,7 +628,7 @@
               },
               {
                 "text": "Cold places!",
-                "delay": 3000
+                "delay": 4000
               }
             ]
           },
