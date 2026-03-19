@@ -100,12 +100,8 @@ const GRADE_FOLDER: Record<string, string> = {
   "4th": "4th-grade",
 };
 
-const QUESTION_SKIP_WORDS = new Set([
-  "What","Who","Where","When","Why","How","Which","Does","Do","Did",
-  "Is","Are","Was","Were","Can","Could","Will","Would","Should",
-  "The","A","An","In","On","At","If","It","Read","Look","Find",
-  "Pick","Choose","Tell","That","This","These","Those","Each",
-  "Every","Some","Many","Most","All","Both","Have","Has","Had",
+const QUESTION_WORDS = new Set([
+  "What","Who","Where","When","Why","How","Which",
 ]);
 
 /* ─── Helpers ──────────────────────────────────────────── */
@@ -134,8 +130,8 @@ function questionImageUrl(questionId: string, gradeKey?: string): string {
 function highlightQuestion(text: string): React.ReactNode[] {
   return text.split(/(\s+|(?=[.,!?;:])|(?<=[.,!?;:]))/).map((part, i) => {
     const clean = part.replace(/[^a-zA-Z']/g, "");
-    if (clean.length > 1 && /^[A-Z]/.test(clean) && !QUESTION_SKIP_WORDS.has(clean)) {
-      return <span key={i} className="text-indigo-600 dark:text-indigo-400">{part}</span>;
+    if (clean.length > 1 && QUESTION_WORDS.has(clean)) {
+      return <span key={i} className="text-indigo-600 dark:text-indigo-400 font-extrabold">{part}</span>;
     }
     return part;
   });
