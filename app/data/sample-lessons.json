@@ -546,7 +546,7 @@
             "ttsScript": "Just like storybooks, fact books have key details too. Let's find out how to spot them!",
             "displayText": "Fact books have key details too!",
             "interaction": "A magnifying glass sweeps across the book. Tap to continue.",
-            "displayDelay": 3840
+            "displayDelay": 2000
           }
         ],
         "heading": "Let's Find Key Details in Facts!",
