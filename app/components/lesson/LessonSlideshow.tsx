@@ -305,36 +305,40 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
           initial="hidden"
           animate="visible"
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="flex items-center justify-center gap-3 w-full"
+          className="grid w-full gap-2"
+          style={{ gridTemplateColumns: "5.5rem 1fr auto" }}
         >
           <motion.span
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ type: "spring", stiffness: 400, damping: 15 }}
-            className={`rounded-full px-5 py-1.5 text-xl font-bold shadow-sm flex-shrink-0 ${qaPillColor}`}
+            className={`rounded-full px-4 py-1.5 text-xl font-bold shadow-sm text-center ${qaPillColor}`}
           >
             {parts[0].text}
           </motion.span>
-          {aVisible && (
-            <motion.span
-              initial={{ opacity: 0, x: 8 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ type: "spring", stiffness: 400, damping: 15 }}
-              className="text-2xl font-semibold text-zinc-700 dark:text-zinc-200"
-            >
-              {parts[1].text}
-            </motion.span>
-          )}
-          {showCheck && (
-            <motion.span
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ type: "spring", stiffness: 500, damping: 15, delay: 0.15 }}
-              className="text-2xl text-green-500 flex-shrink-0"
-            >
-              ✓
-            </motion.span>
-          )}
+          <span className="text-2xl font-semibold text-zinc-700 dark:text-zinc-200 flex items-center">
+            {aVisible && (
+              <motion.span
+                initial={{ opacity: 0, x: 8 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ type: "spring", stiffness: 400, damping: 15 }}
+              >
+                {parts[1].text}
+              </motion.span>
+            )}
+          </span>
+          <span className="flex items-center justify-center w-8">
+            {showCheck && (
+              <motion.span
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ type: "spring", stiffness: 500, damping: 15, delay: 0.15 }}
+                className="text-2xl text-green-500"
+              >
+                ✓
+              </motion.span>
+            )}
+          </span>
         </motion.div>
       );
     }
