@@ -673,77 +673,33 @@
       },
       {
         "slide": 4,
-        "type": "example",
+        "type": "tip",
         "steps": [
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.K.1/S4a.mp3",
-            "ttsScript": "Now you try! Here are some facts about sea otters. Listen carefully!",
+            "ttsScript": "Want to hear some fun facts about sea otters? Check out this real picture!",
             "displayText": "",
-            "interaction": "Sea otter illustration appears on screen."
+            "interaction": "Real photo of a sea otter appears."
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RI.K.1/S4b.mp3",
-            "ttsScript": "Sea otters live in the ocean. They hold hands when they sleep. They use rocks to open shells.",
-            "displayText": "Sea otters live in the ocean.\nThey hold hands when they sleep.\nThey use rocks to open shells.",
-            "interaction": "Text appears line by line as the audio reads each sentence.",
-            "displayDelay": 2500
+            "ttsScript": "Sea otters have the thickest fur of any animal. They hold hands when they sleep so they don't float away. And they use rocks to open their food!",
+            "displayText": "Thickest fur of any animal!\nThey hold hands when they sleep!\nThey use rocks to open food!",
+            "interaction": "Fun facts appear as text.",
+            "displayDelay": 1500
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RI.K.1/S4c.mp3",
-            "ttsScript": "Where do sea otters live? The ocean! You found a key detail!",
+            "ttsScript": "Wow! Aren't otters amazing? Now let's go practice finding key details on your own!",
             "displayText": "",
-            "interaction": "'Where? The ocean!' highlights with a checkmark.",
-            "displayParts": [
-              {
-                "text": "Where?",
-                "delay": 1000
-              },
-              {
-                "text": "The ocean!",
-                "delay": 2500
-              }
-            ]
-          },
-          {
-            "sub": "d",
-            "audioFile": "audio/lessons/RI.K.1/S4d.mp3",
-            "ttsScript": "What do they do when they sleep? They hold hands! Isn't that cute? Another key detail!",
-            "displayText": "",
-            "interaction": "'What do they do? Hold hands!' highlights with a checkmark.",
-            "displayParts": [
-              {
-                "text": "What do they do?",
-                "delay": 500
-              },
-              {
-                "text": "Hold hands!",
-                "delay": 2800
-              }
-            ]
-          },
-          {
-            "sub": "e",
-            "audioFile": "audio/lessons/RI.K.1/S4e.mp3",
-            "ttsScript": "What do they use to open shells? Rocks! Great job, you found all the key details!",
-            "displayText": "",
-            "interaction": "'What do they use? Rocks!' highlights. Celebration burst. Tap to continue.",
-            "displayParts": [
-              {
-                "text": "What do they use?",
-                "delay": 500
-              },
-              {
-                "text": "Rocks!",
-                "delay": 2500
-              }
-            ]
+            "interaction": "Stars float up. Tap to continue."
           }
         ],
-        "heading": "Your Turn!",
-        "imagePrompt": "A pair of adorable cartoon sea otters floating on their backs in a calm blue ocean, holding hands, with a small rock and seashell nearby, kelp in the background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "heading": "Fun Facts About Otters!",
+        "imagePrompt": "A beautiful high-quality photograph of a cute sea otter floating on its back in calm ocean water, looking directly at the camera with its paws up. Photorealistic wildlife photography.",
         "imageFile": "images/lessons/RI.K.1/S4.png"
       },
       {
