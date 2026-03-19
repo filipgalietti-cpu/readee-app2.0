@@ -678,28 +678,37 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.K.1/S4a.mp3",
-            "ttsScript": "Want to hear some fun facts about sea otters? Check out this real picture!",
+            "ttsScript": "Want to hear some fun facts about sea otters? Look at this!",
             "displayText": "",
             "interaction": "Real photo of a sea otter appears."
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RI.K.1/S4b.mp3",
-            "ttsScript": "Sea otters have the thickest fur of any animal. They hold hands when they sleep so they don't float away. And they use rocks to open their food!",
-            "displayText": "Thickest fur of any animal!\nThey hold hands when they sleep!\nThey use rocks to open food!",
-            "interaction": "Fun facts appear as text.",
-            "displayDelay": 1500
+            "ttsScript": "They have the thickest fur of any animal!",
+            "displayText": "Thickest fur of any animal!",
+            "interaction": "First fun fact pill appears.",
+            "displayDelay": 500
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RI.K.1/S4c.mp3",
-            "ttsScript": "Wow! Aren't otters amazing? Now let's go practice finding key details on your own!",
-            "displayText": "",
-            "interaction": "Stars float up. Tap to continue."
+            "ttsScript": "They hold hands when they sleep so they don't float away!",
+            "displayText": "They hold hands when they sleep!",
+            "interaction": "Second fun fact pill appears.",
+            "displayDelay": 500
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RI.K.1/S4d.mp3",
+            "ttsScript": "And they use rocks to crack open their food! How cool is that?",
+            "displayText": "They use rocks to open food!",
+            "interaction": "Third fun fact pill appears. Tap to continue.",
+            "displayDelay": 500
           }
         ],
         "heading": "Fun Facts About Otters!",
-        "imagePrompt": "A beautiful high-quality photograph of a cute sea otter floating on its back in calm ocean water, looking directly at the camera with its paws up. Photorealistic wildlife photography.",
+        "imagePrompt": "Award-winning National Geographic photograph of a single cute sea otter floating on its back in calm blue ocean water. Professional wildlife photography.",
         "imageFile": "images/lessons/RI.K.1/S4.png"
       },
       {
