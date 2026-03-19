@@ -132,9 +132,14 @@ function highlightQuestion(text: string): React.ReactNode[] {
     if (/^[""][^""]+[""]$/.test(segment)) {
       return <span key={si} className="text-indigo-600 dark:text-indigo-400 font-extrabold">{segment}</span>;
     }
+    const hasEmphasis = /\b[A-Z]{3,}\b/.test(segment);
     return segment.split(/(\s+|(?=[.,!?;:])|(?<=[.,!?;:]))/).map((part, pi) => {
       const clean = part.replace(/[^a-zA-Z']/g, "");
-      if (clean.length > 1 && QUESTION_WORDS.has(clean)) {
+      if (hasEmphasis) {
+        if (/^[A-Z]{3,}$/.test(clean)) {
+          return <span key={`${si}-${pi}`} className="text-indigo-600 dark:text-indigo-400 font-extrabold">{part}</span>;
+        }
+      } else if (clean.length > 1 && QUESTION_WORDS.has(clean)) {
         return <span key={`${si}-${pi}`} className="text-indigo-600 dark:text-indigo-400 font-extrabold">{part}</span>;
       }
       return part;
