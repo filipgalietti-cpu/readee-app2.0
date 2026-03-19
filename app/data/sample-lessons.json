@@ -678,14 +678,14 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.K.1/S4a.mp3",
-            "ttsScript": "Want to hear some fun facts about sea otters? Look at this!",
+            "ttsScript": "Here are some fun facts about sea otters.",
             "displayText": "",
             "interaction": "Real photo of a sea otter appears."
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RI.K.1/S4b.mp3",
-            "ttsScript": "They have the thickest fur of any animal!",
+            "ttsScript": "They have the thickest fur of any animal.",
             "displayText": "Thickest fur of any animal!",
             "interaction": "First fun fact pill appears.",
             "displayDelay": 500
@@ -693,7 +693,7 @@
           {
             "sub": "c",
             "audioFile": "audio/lessons/RI.K.1/S4c.mp3",
-            "ttsScript": "They hold hands when they sleep so they don't float away!",
+            "ttsScript": "When they sleep, they hold hands so they don't float away.",
             "displayText": "They hold hands when they sleep!",
             "interaction": "Second fun fact pill appears.",
             "displayDelay": 500
@@ -701,7 +701,7 @@
           {
             "sub": "d",
             "audioFile": "audio/lessons/RI.K.1/S4d.mp3",
-            "ttsScript": "And they use rocks to crack open their food! How cool is that?",
+            "ttsScript": "They even use rocks to crack open their food.",
             "displayText": "They use rocks to open food!",
             "interaction": "Third fun fact pill appears. Tap to continue.",
             "displayDelay": 500
