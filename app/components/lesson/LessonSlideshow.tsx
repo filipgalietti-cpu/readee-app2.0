@@ -355,7 +355,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
         : "";
 
       return (
-        <div key={`${currentSlide}-${step.sub}`} className="flex flex-wrap items-center justify-center gap-3">
+        <div key={`${currentSlide}-${step.sub}`} className="flex flex-wrap items-center justify-center gap-4">
           {parts.map((part, p) => {
             if (!partsVisible.has(`${i}-${p}`)) return null;
             return (
@@ -364,7 +364,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ type: "spring", stiffness: 400, damping: 15 }}
-                className={`rounded-full px-5 py-2 text-xl font-bold text-center shadow-sm ${PILL_COLORS[p % PILL_COLORS.length]} ${ringClass}`}
+                className={`rounded-full px-8 py-3 text-2xl font-bold text-center shadow-sm ${PILL_COLORS[p % PILL_COLORS.length]} ${ringClass}`}
               >
                 {part.text}
               </motion.span>
