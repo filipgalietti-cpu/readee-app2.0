@@ -24,6 +24,7 @@ interface Step {
   displayDelay?: number;       // ms delay before showing displayText
   displayParts?: DisplayPart[]; // staggered text reveals within one step
   feedbackDelay?: number;      // ms delay before showing ✓/✗ after both parts visible
+  checkmarkDelay?: number;     // ms delay before showing ✓ on displayText pill (after text visible)
   interaction: string;
 }
 
@@ -477,6 +478,23 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
     const pillColor = PILL_COLORS[pillIdx % PILL_COLORS.length];
     const feedback = getFeedback(step);
 
+    // Delayed checkmark support for displayText pills
+    const checkKey = `${i}-check`;
+    const hasCheckDelay = step.checkmarkDelay !== undefined && step.checkmarkDelay > 0;
+    const showCheck = hasCheckDelay
+      ? feedback === "positive" && partsVisible.has(checkKey)
+      : feedback === "positive";
+
+    if (hasCheckDelay && feedback === "positive" && !partsVisible.has(checkKey) && !scheduledFeedbackRef.current.has(checkKey)) {
+      scheduledFeedbackRef.current.add(checkKey);
+      const runId = runIdRef.current;
+      const t = setTimeout(() => {
+        if (runIdRef.current !== runId) return;
+        setPartsVisible((prev) => new Set(prev).add(checkKey));
+      }, step.checkmarkDelay!);
+      textTimersRef.current.push(t);
+    }
+
     const pill = (
       <motion.span
         key={`${currentSlide}-${step.sub}`}
@@ -484,14 +502,14 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
         animate={{ opacity: 1, scale: 1 }}
         transition={{ type: "spring", stiffness: 400, damping: 15 }}
         className={`rounded-full ${isPracticeIntro ? "px-7 py-3 text-2xl" : "px-5 py-2 text-xl"} font-bold text-center shadow-sm ${pillColor} ${
-          feedback === "positive" ? "ring-2 ring-green-400 ring-offset-2" : ""
+          showCheck ? "ring-2 ring-green-400 ring-offset-2" : ""
         }`}
       >
         {step.displayText}
       </motion.span>
     );
 
-    if (feedback === "positive") {
+    if (showCheck) {
       return (
         <div key={`${currentSlide}-${step.sub}-wrap`} className="flex items-center justify-center gap-2">
           {pill}

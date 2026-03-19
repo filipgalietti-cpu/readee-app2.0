@@ -571,7 +571,8 @@
             "ttsScript": "They answer questions like: What is it?",
             "displayText": "What is it?",
             "interaction": "'What is it?' pops onto the checklist. Checkmark appears.",
-            "displayDelay": 1000
+            "displayDelay": 1000,
+            "checkmarkDelay": 9000
           },
           {
             "sub": "c",
@@ -579,7 +580,8 @@
             "ttsScript": "What does it do?",
             "displayText": "What does it do?",
             "interaction": "'What does it do?' pops onto the checklist. Checkmark appears.",
-            "displayDelay": 800
+            "displayDelay": 800,
+            "checkmarkDelay": 6500
           },
           {
             "sub": "d",
@@ -587,7 +589,8 @@
             "ttsScript": "And where does it live? When you can answer questions like these, you've found the key details!",
             "displayText": "Where does it live?",
             "interaction": "'Where does it live?' pops on. All three get checkmarks. Tap to continue.",
-            "displayDelay": 4080
+            "displayDelay": 4080,
+            "checkmarkDelay": 3500
           }
         ],
         "heading": "Key Details in Fact Books",
