@@ -7,7 +7,10 @@ import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
 import { useSpeech } from "@/app/_components/SpeechContext";
 import lessonsData from "@/lib/data/lessons.json";
+import { gradeOrder, grades, levelNameToGradeKey } from "@/lib/assessment/questions";
 import { getDailyMultiplier, getSessionStreakTier } from "@/lib/carrots/multipliers";
+
+const PASS_THRESHOLD = 3;
 import { StreakFire } from "@/app/_components/StreakFire";
 import { Star, Sparkles, Rocket, Zap, Trophy, Target, Medal, Gem, Crown, Type, FileText, Search, Eye, CheckCircle, PenTool, BookOpen, MessageSquare, Flame, Carrot } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
@@ -32,7 +35,7 @@ function emojiToIcon(emoji: string): React.ReactNode {
   return <BookOpen className="w-12 h-12 text-indigo-500" strokeWidth={1.5} />;
 }
 
-type Phase = "loading" | "learn" | "practice" | "read" | "read-transition" | "complete";
+type Phase = "loading" | "learn" | "practice" | "complete";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 interface LessonRaw {
@@ -240,30 +243,23 @@ function MiniConfetti() {
   );
 }
 
-/* ─── 3-Section Progress Bar ─────────────────────────── */
+/* ─── 2-Section Progress Bar ─────────────────────────── */
 function SectionProgressBar({
   phase,
   practiceIdx,
   practiceTotal,
-  readQIdx,
-  readTotal,
-  showReadQuestions,
 }: {
   phase: Phase;
   practiceIdx: number;
   practiceTotal: number;
-  readQIdx: number;
-  readTotal: number;
-  showReadQuestions: boolean;
 }) {
   const sections = [
     { label: "Learn", key: "learn" },
     { label: "Practice", key: "practice" },
-    { label: "Read", key: "read" },
   ];
 
-  const phaseOrder = ["learn", "practice", "read"];
-  const currentIdx = phaseOrder.indexOf(phase === "read-transition" ? "read" : phase === "complete" ? "read" : phase);
+  const phaseOrder = ["learn", "practice"];
+  const currentIdx = phaseOrder.indexOf(phase === "complete" ? "practice" : phase);
 
   return (
     <div className="space-y-2">
@@ -301,11 +297,6 @@ function SectionProgressBar({
         {phase === "practice" && (
           <span className="text-zinc-400">
             Question {practiceIdx + 1} of {practiceTotal}
-          </span>
-        )}
-        {(phase === "read" || phase === "read-transition") && showReadQuestions && (
-          <span className="text-zinc-400">
-            Question {readQIdx + 1} of {readTotal}
           </span>
         )}
         {phase === "learn" && (
@@ -525,18 +516,6 @@ function LessonContent() {
   const [practiceAnswers, setPracticeAnswers] = useState<Array<{ question_id: string; correct: boolean; selected: string; time_ms: number }>>([]);
   const questionStartRef = useRef(Date.now());
 
-  // Read state
-  const [showReadQuestions, setShowReadQuestions] = useState(false);
-  const [readQIdx, setReadQIdx] = useState(0);
-  const [readCorrect, setReadCorrect] = useState(0);
-  const [readSelected, setReadSelected] = useState<string | null>(null);
-  const [readWrongChoices, setReadWrongChoices] = useState<Set<string>>(new Set());
-  const [readWrongAttempts, setReadWrongAttempts] = useState(0);
-  const [readFeedback, setReadFeedback] = useState<{ text: string; type: "correct" | "wrong" | "reveal" } | null>(null);
-  const [showReadMiniConfetti, setShowReadMiniConfetti] = useState(false);
-  const [readAnswers, setReadAnswers] = useState<Array<{ question_id: string; correct: boolean; selected: string; time_ms: number }>>([]);
-  const readQuestionStartRef = useRef(Date.now());
-
   // Streak multiplier state
   const [consecutiveCorrect, setConsecutiveCorrect] = useState(0);
 
@@ -549,6 +528,8 @@ function LessonContent() {
   const [newBadge, setNewBadge] = useState<string | null>(null);
   const [nextLessonId, setNextLessonId] = useState<string | null>(null);
   const [celebrationMsg, setCelebrationMsg] = useState("");
+  const [showLevelUp, setShowLevelUp] = useState(false);
+  const [newLevelName, setNewLevelName] = useState("");
 
   // Load child and lesson data
   useEffect(() => {
@@ -597,9 +578,7 @@ function LessonContent() {
       }
       if (found) {
         setLesson(found);
-        if (found.learn.items.length === 0 && found.practice.questions.length === 0) {
-          setPhase("read");
-        } else if (found.learn.items.length === 0) {
+        if (found.learn.items.length === 0) {
           setPhase("practice");
         } else {
           setPhase("learn");
@@ -652,22 +631,6 @@ function LessonContent() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase, learnIdx]);
 
-  /* ─── Auto-play: Read phase (story title) ── */
-  useEffect(() => {
-    if (phase !== "read" || !lesson || !lessonId || showReadQuestions) return;
-    playAudio(lessonId, "story");
-    return () => stop();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [phase, showReadQuestions]);
-
-  /* ─── Auto-play: Read questions ── */
-  useEffect(() => {
-    if (phase !== "read" || !lesson || !lessonId || !showReadQuestions) return;
-    playAudio(lessonId, `read-q${readQIdx + 1}`);
-    return () => stop();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [readQIdx, showReadQuestions]);
-
   /* ─── Auto-play: Practice questions ── */
   useEffect(() => {
     if (phase !== "practice" || !lesson || !lessonId) return;
@@ -719,11 +682,17 @@ function LessonContent() {
       questionStartRef.current = Date.now();
     } else {
       const score = Math.round((practiceCorrect / lesson.practice.questions.length) * 100);
+      const passed = practiceCorrect >= PASS_THRESHOLD;
       saveProgress("practice", score);
-      const mysteryMult = parseFloat(typeof window !== "undefined" ? localStorage.getItem("readee_mystery_multiplier") || "1" : "1") || 1;
-      const daily = getDailyMultiplier(child?.streak_days ?? 0);
-      awardCarrots(Math.floor(5 * daily.multiplier * mysteryMult));
-      setPhase("read");
+
+      if (passed) {
+        const mysteryMult = parseFloat(typeof window !== "undefined" ? localStorage.getItem("readee_mystery_multiplier") || "1" : "1") || 1;
+        const daily = getDailyMultiplier(child?.streak_days ?? 0);
+        awardCarrots(Math.floor(5 * daily.multiplier * mysteryMult));
+        finishLesson();
+      } else {
+        setPhase("complete"); // shows retry screen
+      }
     }
   }, [lesson, practiceIdx, practiceCorrect, saveProgress, awardCarrots]);
 
@@ -768,68 +737,18 @@ function LessonContent() {
     }
   };
 
-  /* ─── Read Handlers ──────────────────────────────────── */
-  const advanceRead = useCallback(() => {
-    if (!lesson) return;
-    setReadSelected(null);
-    setReadFeedback(null);
-    setReadWrongChoices(new Set());
-    setReadWrongAttempts(0);
-    setShowReadMiniConfetti(false);
-    if (readQIdx + 1 < lesson.read.questions.length) {
-      setReadQIdx((prev) => prev + 1);
-      readQuestionStartRef.current = Date.now();
-    } else {
-      // Lesson complete!
-      const score = Math.round((readCorrect / lesson.read.questions.length) * 100);
-      saveProgress("read", score);
-      const mysteryMult = parseFloat(typeof window !== "undefined" ? localStorage.getItem("readee_mystery_multiplier") || "1" : "1") || 1;
-      const daily = getDailyMultiplier(child?.streak_days ?? 0);
-      awardCarrots(Math.floor(10 * daily.multiplier * mysteryMult));
-      finishLesson();
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [lesson, readQIdx, readCorrect, saveProgress, awardCarrots]);
-
-  const handleReadAnswer = (choice: string) => {
-    if (readSelected || !lesson || readWrongChoices.has(choice)) return;
-
-    const q = lesson.read.questions[readQIdx];
-    const isCorrect = choice === q.correct;
-    const timeMs = Date.now() - readQuestionStartRef.current;
-
-    if (isCorrect) {
-      const newConsecutive = consecutiveCorrect + 1;
-      setConsecutiveCorrect(newConsecutive);
-      setReadSelected(choice);
-      setReadCorrect((prev) => prev + 1);
-      // Per-question bonus carrot with multipliers
-      const daily = getDailyMultiplier(child?.streak_days ?? 0);
-      const session = getSessionStreakTier(newConsecutive);
-      const mysteryMult = parseFloat(typeof window !== "undefined" ? localStorage.getItem("readee_mystery_multiplier") || "1" : "1") || 1;
-      const bonus = Math.floor(1 * daily.multiplier * session.multiplier * mysteryMult);
-      if (bonus > 0) awardCarrots(bonus);
-      setReadFeedback({ text: CORRECT_MSGS[Math.floor(Math.random() * CORRECT_MSGS.length)], type: "correct" });
-      setShowReadMiniConfetti(true);
-      setReadAnswers((prev) => [...prev, { question_id: q.question_id || "", correct: true, selected: choice, time_ms: timeMs }]);
-      setTimeout(() => advanceRead(), 1500);
-    } else {
-      setConsecutiveCorrect(0);
-      const newAttempts = readWrongAttempts + 1;
-      setReadWrongAttempts(newAttempts);
-      setReadWrongChoices((prev) => new Set(prev).add(choice));
-
-      if (newAttempts >= 2) {
-        setReadSelected(q.correct);
-        setReadFeedback({ text: `The answer is "${q.correct}"`, type: "reveal" });
-        setReadAnswers((prev) => [...prev, { question_id: q.question_id || "", correct: false, selected: choice, time_ms: timeMs }]);
-        setTimeout(() => advanceRead(), 2000);
-      } else {
-        setReadFeedback({ text: "Almost! Try again", type: "wrong" });
-        setTimeout(() => setReadFeedback(null), 1200);
-      }
-    }
-  };
+  const handleRetry = useCallback(() => {
+    setPracticeIdx(0);
+    setPracticeCorrect(0);
+    setSelectedChoice(null);
+    setFeedback(null);
+    setWrongChoices(new Set());
+    setWrongAttempts(0);
+    setShowMiniConfetti(false);
+    setConsecutiveCorrect(0);
+    setPracticeAnswers([]);
+    setPhase("practice");
+  }, []);
 
   const finishLesson = async () => {
     // Clear mystery box multiplier after lesson
@@ -895,6 +814,35 @@ function LessonContent() {
       }
     }
 
+    // Check if ALL lessons in current grade now have passing practice scores
+    const currentGradeKey = levelNameToGradeKey(child.reading_level);
+    const gradeLessons = file.levels[currentGradeKey]?.lessons || [];
+
+    const { data: allProgress } = await supabase
+      .from("lessons_progress")
+      .select("lesson_id, section, score")
+      .eq("child_id", child.id);
+
+    const allPassed = gradeLessons.length > 0 && gradeLessons.every((gl) =>
+      allProgress?.some(
+        (p) => p.lesson_id === gl.id && p.section === "practice" && p.score >= 60
+      )
+    );
+
+    if (allPassed) {
+      const currentIdx = gradeOrder.indexOf(currentGradeKey);
+      if (currentIdx >= 0 && currentIdx < gradeOrder.length - 1) {
+        const nextGrade = gradeOrder[currentIdx + 1];
+        const nextLevelName = grades[nextGrade].reading_level_name;
+        await supabase
+          .from("children")
+          .update({ reading_level: nextLevelName })
+          .eq("id", child.id);
+        setShowLevelUp(true);
+        setNewLevelName(nextLevelName);
+      }
+    }
+
     setCelebrationMsg(CELEBRATION_MESSAGES[Math.floor(Math.random() * CELEBRATION_MESSAGES.length)]);
 
     const pieces = Array.from({ length: 60 }, (_, i) => ({
@@ -937,9 +885,6 @@ function LessonContent() {
                 phase={phase}
                 practiceIdx={0}
                 practiceTotal={lesson.practice.questions.length}
-                readQIdx={0}
-                readTotal={lesson.read.questions.length}
-                showReadQuestions={false}
               />
             </div>
             <LessonMuteToggle />
@@ -1039,9 +984,6 @@ function LessonContent() {
                 phase={phase}
                 practiceIdx={practiceIdx}
                 practiceTotal={lesson.practice.questions.length}
-                readQIdx={0}
-                readTotal={lesson.read.questions.length}
-                showReadQuestions={false}
               />
             </div>
             <LessonMuteToggle />
@@ -1180,203 +1122,67 @@ function LessonContent() {
   }
 
   /* ═══════════════════════════════════════════════════════
-     READ PHASE — Story + Comprehension
+     COMPLETE PHASE — Pass / Fail
      ═══════════════════════════════════════════════════════ */
-  if (phase === "read" || phase === "read-transition") {
-    if (!showReadQuestions) {
-      const storyLines = lesson.read.text.split("\n").filter((l) => l.trim());
+  if (phase === "complete") {
+    const practiceTotal = lesson.practice.questions.length;
+    const practiceAccuracy = practiceTotal > 0 ? Math.round((practiceCorrect / practiceTotal) * 100) : 100;
+    const passed = practiceCorrect >= PASS_THRESHOLD;
+    const nextLessonLocked = !!nextLessonId && !isLessonFree(nextLessonId) && userPlan !== "premium";
+    const nextFocus =
+      practiceAccuracy >= 90
+        ? "Great momentum. Keep daily sessions short and consistent to lock in fluency."
+        : practiceAccuracy >= 75
+        ? "Strong progress today. Try one more practice session tomorrow for faster gains."
+        : "Good effort today. Try again with a slower pace and audio support turned on.";
 
+    /* ── Failed: retry screen ── */
+    if (!passed) {
       return (
-        <div className={pageWrapper}>
-          <div className="max-w-2xl mx-auto py-8 px-4 space-y-6">
-            <div className="flex items-center gap-2">
-              <div className="flex-1">
-                <SectionProgressBar
-                  phase="read"
-                  practiceIdx={0}
-                  practiceTotal={lesson.practice.questions.length}
-                  readQIdx={0}
-                  readTotal={lesson.read.questions.length}
-                  showReadQuestions={false}
-                />
+        <div className={`${pageWrapper} relative overflow-hidden`}>
+          <div className="max-w-lg mx-auto text-center py-16 px-4 space-y-6 relative">
+            <div className="flex justify-center">
+              <div className="w-20 h-20 rounded-full bg-amber-50 flex items-center justify-center">
+                <Target className="w-10 h-10 text-amber-500" strokeWidth={1.5} />
               </div>
-              <LessonMuteToggle />
             </div>
 
-            <div className="text-center">
-              <div className="flex items-center justify-center gap-2">
-                <h1 className="text-2xl font-bold text-zinc-900 tracking-tight">
-                  {lesson.read.title}
-                </h1>
-                <LessonSpeakerButton lessonId={lessonId!} audioFile="story" light />
+            <h1 className="text-3xl font-bold text-zinc-900 tracking-tight">
+              Almost there!
+            </h1>
+
+            <p className="text-zinc-500 max-w-xs mx-auto">
+              You got {practiceCorrect} out of {practiceTotal} — you need {PASS_THRESHOLD} to pass!
+            </p>
+
+            {/* Carrots earned (kept across retries) */}
+            {totalCarrots > 0 && (
+              <div className="inline-block rounded-2xl bg-gradient-to-r from-orange-500 to-amber-500 px-6 py-3 text-white">
+                <div className="text-sm font-medium text-orange-200">You earned</div>
+                <div className="text-2xl font-bold mt-1 flex items-center justify-center gap-2">+{totalCarrots} <Carrot className="w-6 h-6" strokeWidth={1.5} /></div>
               </div>
-              <p className="text-zinc-500 mt-1 text-sm">Read the story below</p>
-            </div>
+            )}
 
-            <div className="rounded-2xl border border-zinc-200 bg-white p-6 space-y-3">
-              {storyLines.map((line, i) => (
-                <div key={i} className="flex items-start gap-1 animate-storyLineIn" style={{ animationDelay: `${i * 0.15}s` }}>
-                  <p className="text-lg leading-relaxed text-zinc-800 flex-1">
-                    {line}
-                  </p>
-                  <LessonSpeakerButton lessonId={lessonId!} audioFile={`story-line-${i + 1}`} light />
-                </div>
-              ))}
+            <div className="space-y-3 pt-4">
+              <button
+                onClick={handleRetry}
+                className="block w-full py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white font-bold text-lg hover:from-indigo-700 hover:to-violet-600 transition-all shadow-lg"
+              >
+                Try Again
+              </button>
+              <Link
+                href="/dashboard"
+                className="block text-sm text-zinc-400 hover:text-zinc-600 transition-colors pt-2"
+              >
+                Back to Dashboard
+              </Link>
             </div>
-
-            <button
-              onClick={() => {
-                setShowReadQuestions(true);
-                readQuestionStartRef.current = Date.now();
-              }}
-              className="w-full py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white font-bold text-lg hover:from-indigo-700 hover:to-violet-600 transition-all shadow-lg animate-gentleBounce"
-            >
-              Let&apos;s check what you remember!
-            </button>
           </div>
         </div>
       );
     }
 
-    const q = lesson.read.questions[readQIdx];
-
-    return (
-      <div className={pageWrapper}>
-        <div className="max-w-2xl mx-auto py-8 px-4 space-y-6">
-          <div className="flex items-center gap-2">
-            <div className="flex-1">
-              <SectionProgressBar
-                phase="read"
-                practiceIdx={0}
-                practiceTotal={lesson.practice.questions.length}
-                readQIdx={readQIdx}
-                readTotal={lesson.read.questions.length}
-                showReadQuestions={true}
-              />
-            </div>
-            <LessonMuteToggle />
-          </div>
-
-          {/* Question image — compact on mobile */}
-          <div className="flex justify-center">
-            <img
-              src={`https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/${lessonId}/rq${readQIdx + 1}.png`}
-              alt=""
-              className="max-h-[120px] sm:max-h-[150px] md:max-h-[220px] lg:max-h-[280px] w-auto rounded-2xl shadow-md object-cover"
-              onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = 'none'; }}
-            />
-          </div>
-
-          <div className="flex items-center justify-center gap-2">
-            <h2 className="text-lg md:text-xl font-bold text-zinc-900 text-center leading-snug">
-              {q.prompt}
-            </h2>
-            <LessonSpeakerButton lessonId={lessonId!} audioFile={`read-q${readQIdx + 1}`} light />
-          </div>
-
-          {/* Streak fire indicator */}
-          {consecutiveCorrect >= 3 && (
-            <div className="flex justify-center">
-              <StreakFire consecutiveCorrect={consecutiveCorrect} />
-            </div>
-          )}
-
-          {/* Feedback */}
-          {readFeedback && (
-            <div className={`text-center py-2 px-4 rounded-xl text-sm font-bold relative overflow-hidden ${
-              readFeedback.type === "correct"
-                ? "bg-green-50 text-green-700 border border-green-200"
-                : readFeedback.type === "reveal"
-                ? "bg-indigo-50 text-indigo-700 border border-indigo-200"
-                : "bg-amber-50 text-amber-700 border border-amber-200"
-            }`}>
-              {readFeedback.text}
-              {showReadMiniConfetti && <MiniConfetti />}
-            </div>
-          )}
-
-          <div className="grid grid-cols-2 gap-2.5">
-            {q.choices.map((choice: string, i: number) => {
-              const isSelected = readSelected === choice;
-              const isCorrect = choice === q.correct;
-              const isWrong = readWrongChoices.has(choice);
-              const showCorrect = readSelected !== null;
-              const letters = ["A", "B", "C", "D"];
-
-              return (
-                <button
-                  key={i}
-                  onClick={() => handleReadAnswer(choice)}
-                  disabled={!!readSelected || isWrong}
-                  className={`
-                    relative text-left rounded-2xl border-2 min-h-[52px] p-3 transition-all duration-200
-                    ${
-                      showCorrect && isCorrect
-                        ? "border-green-500 bg-green-50 scale-[1.02]"
-                        : isWrong
-                        ? "border-red-200 bg-red-50/50 opacity-50"
-                        : "border-zinc-200 bg-white hover:border-indigo-300 hover:shadow-md active:scale-[0.98]"
-                    }
-                    ${isWrong && !showCorrect ? "animate-wrongShake" : ""}
-                    disabled:cursor-default
-                  `}
-                >
-                  <div className="flex items-center gap-2">
-                    <div
-                      className={`
-                      w-8 h-8 rounded-xl flex items-center justify-center text-sm font-bold flex-shrink-0
-                      ${
-                        showCorrect && isCorrect
-                          ? "bg-green-600 text-white"
-                          : isWrong
-                          ? "bg-red-200 text-red-500"
-                          : "bg-zinc-100 text-zinc-500"
-                      }
-                    `}
-                    >
-                      {showCorrect && isCorrect ? "✓" : letters[i]}
-                    </div>
-                    <span
-                      className={`font-medium text-sm flex-1 leading-tight ${
-                        showCorrect && isCorrect
-                          ? "text-green-700"
-                          : isWrong
-                          ? "text-red-400 line-through"
-                          : "text-zinc-800"
-                      }`}
-                    >
-                      {choice}
-                    </span>
-                    <LessonSpeakerButton lessonId={lessonId!} audioFile={`read-q${readQIdx + 1}-c${i + 1}`} light />
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  /* ═══════════════════════════════════════════════════════
-     COMPLETE PHASE
-     ═══════════════════════════════════════════════════════ */
-  if (phase === "complete") {
-    const practiceTotal = lesson.practice.questions.length;
-    const readTotal = lesson.read.questions.length;
-    const practiceAccuracy = practiceTotal > 0 ? Math.round((practiceCorrect / practiceTotal) * 100) : 100;
-    const readAccuracy = readTotal > 0 ? Math.round((readCorrect / readTotal) * 100) : 100;
-    const overallAccuracy = Math.round((practiceAccuracy + readAccuracy) / 2);
-    const strongestArea = practiceAccuracy >= readAccuracy ? "skill practice" : "reading comprehension";
-    const weakestArea = practiceAccuracy < readAccuracy ? "skill practice" : "reading comprehension";
-    const nextFocus =
-      overallAccuracy >= 90
-        ? "Great momentum. Keep daily sessions short and consistent to lock in fluency."
-        : overallAccuracy >= 75
-        ? `Strong progress today. Repeat one extra ${weakestArea} activity tomorrow for faster gains.`
-        : `Good effort today. Focus tomorrow on ${weakestArea} with a slower pace and audio support turned on.`;
-    const nextLessonLocked = !!nextLessonId && !isLessonFree(nextLessonId) && userPlan !== "premium";
-
+    /* ── Passed: celebration screen ── */
     return (
       <div className={`${pageWrapper} relative overflow-hidden`}>
         <div className="max-w-lg mx-auto text-center py-16 px-4 space-y-6 relative">
@@ -1446,26 +1252,35 @@ function LessonContent() {
             </div>
           )}
 
+          {/* Level Up overlay */}
+          {showLevelUp && (
+            <div className="animate-badgeUnlock">
+              <div className="inline-flex items-center gap-2 px-6 py-4 rounded-2xl bg-gradient-to-r from-violet-100 to-indigo-100 border border-violet-200">
+                <Rocket className="w-7 h-7 text-violet-600" strokeWidth={1.5} />
+                <div className="text-left">
+                  <div className="text-xs font-medium text-violet-600">You leveled up!</div>
+                  <div className="text-sm font-bold text-violet-800">{newLevelName}</div>
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* Parent value proof */}
           <div className="text-left rounded-2xl border border-indigo-200 bg-gradient-to-r from-indigo-50/80 to-violet-50/80 p-4 space-y-3">
             <div className="flex items-center justify-between">
               <p className="text-sm font-semibold text-zinc-900">Parent Progress Snapshot</p>
               <span className="px-2 py-1 rounded-full text-[11px] font-bold bg-white text-indigo-700 border border-indigo-100">
-                {overallAccuracy}% accuracy
+                {practiceAccuracy}% accuracy
               </span>
             </div>
-            <div className="grid grid-cols-3 gap-2 text-center">
+            <div className="grid grid-cols-2 gap-2 text-center">
               <div className="rounded-lg bg-white border border-indigo-100 px-2 py-2">
-                <p className="text-[11px] text-zinc-500">Skill Practice</p>
+                <p className="text-[11px] text-zinc-500">Score</p>
+                <p className="text-sm font-bold text-zinc-900">{practiceCorrect}/{practiceTotal}</p>
+              </div>
+              <div className="rounded-lg bg-white border border-indigo-100 px-2 py-2">
+                <p className="text-[11px] text-zinc-500">Accuracy</p>
                 <p className="text-sm font-bold text-zinc-900">{practiceAccuracy}%</p>
-              </div>
-              <div className="rounded-lg bg-white border border-indigo-100 px-2 py-2">
-                <p className="text-[11px] text-zinc-500">Reading</p>
-                <p className="text-sm font-bold text-zinc-900">{readAccuracy}%</p>
-              </div>
-              <div className="rounded-lg bg-white border border-indigo-100 px-2 py-2">
-                <p className="text-[11px] text-zinc-500">Strongest Area</p>
-                <p className="text-sm font-bold text-zinc-900 capitalize">{strongestArea}</p>
               </div>
             </div>
             <p className="text-xs text-zinc-600">
@@ -1490,18 +1305,25 @@ function LessonContent() {
           )}
 
           <div className="space-y-3 pt-4">
-            {nextLessonId && (
+            {showLevelUp ? (
+              <Link
+                href="/dashboard"
+                className="block w-full py-4 rounded-2xl bg-gradient-to-r from-violet-600 to-indigo-500 text-white font-bold text-lg hover:from-violet-700 hover:to-indigo-600 transition-all shadow-lg"
+              >
+                Level Up!
+              </Link>
+            ) : nextLessonId ? (
               <Link
                 href={`/lesson?child=${child.id}&lesson=${nextLessonId}`}
                 className="block w-full py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white font-bold text-lg hover:from-indigo-700 hover:to-violet-600 transition-all shadow-lg"
               >
                 Next Lesson →
               </Link>
-            )}
+            ) : null}
             <Link
               href="/dashboard"
               className={`block w-full py-4 rounded-2xl font-bold text-lg transition-all ${
-                nextLessonId
+                nextLessonId || showLevelUp
                   ? "bg-white border-2 border-zinc-200 text-zinc-700 hover:bg-zinc-50"
                   : "bg-gradient-to-r from-indigo-600 to-violet-500 text-white hover:from-indigo-700 hover:to-violet-600 shadow-lg"
               }`}

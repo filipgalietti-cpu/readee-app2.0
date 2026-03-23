@@ -522,9 +522,9 @@ function ChildDashboard({
   const lessons = level?.lessons || [];
 
   const isLessonComplete = (lessonId: string) => {
-    const sections = lessonProgress.filter((p) => p.lesson_id === lessonId);
-    const completedSections = new Set(sections.map((s) => s.section));
-    return completedSections.has("learn") && completedSections.has("practice") && completedSections.has("read");
+    return lessonProgress.some(
+      (p) => p.lesson_id === lessonId && p.section === "practice" && p.score >= 60
+    );
   };
 
   const completedCount = lessons.filter((l) => isLessonComplete(l.id)).length;
@@ -1114,9 +1114,9 @@ function LessonPath({
   const lockedLessonsCount = lessons.filter((l) => !isLessonFree(l.id)).length;
 
   const isLessonComplete = (lessonId: string) => {
-    const sections = lessonProgress.filter((p) => p.lesson_id === lessonId);
-    const completedSections = new Set(sections.map((s) => s.section));
-    return completedSections.has("learn") && completedSections.has("practice") && completedSections.has("read");
+    return lessonProgress.some(
+      (p) => p.lesson_id === lessonId && p.section === "practice" && p.score >= 60
+    );
   };
 
   let firstIncomplete = -1;
@@ -1249,7 +1249,7 @@ function LessonPath({
                 )}
                 {!isLocked && isNext && (
                   <Link
-                    href={`/practice?child=${child.id}&standard=${lesson.standards?.[0] || 'RF.K.1a'}`}
+                    href={`/lesson?child=${child.id}&lesson=${lesson.id}`}
                     className="px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-xs font-bold hover:from-indigo-700 hover:to-violet-600 transition-all shadow-sm hover:shadow-md"
                   >
                     Start
@@ -1285,9 +1285,9 @@ function CurriculumOverview({
   const currentGradeKey = readingLevel ? levelNameToGradeKey(readingLevel) : null;
 
   const isLessonComplete = (lessonId: string) => {
-    const sections = lessonProgress.filter((p) => p.lesson_id === lessonId);
-    const completedSections = new Set(sections.map((s) => s.section));
-    return completedSections.has("learn") && completedSections.has("practice") && completedSections.has("read");
+    return lessonProgress.some(
+      (p) => p.lesson_id === lessonId && p.section === "practice" && p.score >= 60
+    );
   };
 
   function handleToggle() {
