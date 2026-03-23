@@ -278,6 +278,10 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
   }, [steps, clearTimer]);
 
   const imageUrl = slide?.imageFile ? `${SUPABASE_STORAGE}/${slide.imageFile}` : "";
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  // Reset image loaded state on slide change
+  useEffect(() => { setImageLoaded(false); }, [currentSlide]);
 
   /* ─── Render helpers ─── */
 
@@ -734,13 +738,23 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
           {/* ── Image ── */}
           <div className="flex-shrink-0 flex justify-center px-6 pt-1">
             <div
-              className={`rounded-2xl overflow-hidden shadow-lg ${isPracticeIntro ? "max-h-[45vh]" : "max-h-[38vh]"}`}
+              className={`relative rounded-2xl overflow-hidden shadow-lg ${isPracticeIntro ? "max-h-[45vh]" : "max-h-[38vh]"}`}
               style={{ aspectRatio: "1" }}
             >
+              {!imageLoaded && imageUrl && (
+                <div className="absolute inset-0 flex items-center justify-center bg-gray-100 dark:bg-slate-800">
+                  <motion.div
+                    className="w-8 h-8 rounded-full border-3 border-indigo-200 dark:border-indigo-800 border-t-indigo-500 dark:border-t-indigo-400"
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
+                  />
+                </div>
+              )}
               <img
                 src={imageUrl}
                 alt=""
-                className="w-full h-full object-cover"
+                className={`w-full h-full object-cover transition-opacity duration-300 ${imageLoaded ? "opacity-100" : "opacity-0"}`}
+                onLoad={() => setImageLoaded(true)}
                 onError={(e) => { (e.currentTarget as HTMLImageElement).parentElement!.style.display = "none"; }}
               />
             </div>
