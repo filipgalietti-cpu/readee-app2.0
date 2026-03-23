@@ -4,6 +4,7 @@ import { Suspense, useEffect, useState, useMemo, useCallback, useRef } from "rea
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
+import { LoadingImage } from "@/app/components/ui/LoadingImage";
 import { motion, AnimatePresence } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
@@ -999,11 +1000,9 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
         {/* ── Image — prominent at top ── */}
         {questionImageUrl(q.id, gradeKey) && (
           <motion.div variants={fadeUp} className="flex justify-center mb-3">
-            <img
+            <LoadingImage
               src={questionImageUrl(q.id, gradeKey)}
-              alt=""
               className="max-h-[180px] sm:max-h-[220px] md:max-h-[300px] lg:max-h-[380px] w-auto object-contain rounded-2xl shadow-md border-2 border-white dark:border-slate-700"
-              onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = 'none'; }}
             />
           </motion.div>
         )}

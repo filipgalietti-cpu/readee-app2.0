@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { LoadingImage } from "@/app/components/ui/LoadingImage";
 
 interface SoundMachineProps {
   prompt: string;
@@ -139,7 +140,7 @@ export function SoundMachine({
       {/* Target word image */}
       {imageUrl && (
         <div className="flex justify-center">
-          <img
+          <LoadingImage
             src={imageUrl}
             alt={targetWord}
             className="w-32 h-32 object-contain rounded-xl"
