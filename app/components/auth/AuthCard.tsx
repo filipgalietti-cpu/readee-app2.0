@@ -19,10 +19,10 @@ export default function AuthCard({ title, banner, children }: AuthCardProps) {
 
   return (
     <div
-      className="flex items-center justify-center min-h-screen py-12 px-4 sm:px-6 lg:px-8 bg-repeat bg-[length:400px] -mx-6 -my-8 w-screen relative left-1/2 -translate-x-1/2"
+      className="fixed inset-0 flex items-center justify-center px-4 sm:px-6 bg-repeat bg-[length:400px] overflow-y-auto"
       style={{ backgroundImage: "url('/images/auth-bg.png')" }}
     >
-      <div className="w-full max-w-md">
+      <div className="w-full max-w-md my-8">
         <div
           className={`mb-4 text-center transition-all duration-500 ease-out ${
             showBanner
@@ -36,9 +36,9 @@ export default function AuthCard({ title, banner, children }: AuthCardProps) {
             </span>
           )}
         </div>
-        <div className="bg-white p-8 rounded-3xl border border-zinc-200/80 shadow-[0_14px_40px_rgba(17,24,39,0.08)]">
-          <img src="/readee-logo.png" alt="Readee - Learn to Read" style={{ width: 200 }} className="h-auto mx-auto mb-4" />
-          <h1 className="text-3xl font-bold text-zinc-900 mb-6 text-center tracking-tight">
+        <div className="bg-white p-6 sm:p-8 rounded-3xl border border-zinc-200/80 shadow-[0_14px_40px_rgba(17,24,39,0.08)]">
+          <img src="/readee-logo.png" alt="Readee - Learn to Read" className="w-[160px] sm:w-[200px] h-auto mx-auto mb-4" />
+          <h1 className="text-2xl sm:text-3xl font-bold text-zinc-900 mb-6 text-center tracking-tight">
             {title}
           </h1>
           {children}
