@@ -243,7 +243,7 @@ export function CategorySort({
 
   const gridCols =
     categories.length === 2
-      ? "grid-cols-2"
+      ? "grid-cols-1 sm:grid-cols-2"
       : "grid-cols-1 sm:grid-cols-3";
 
   return (

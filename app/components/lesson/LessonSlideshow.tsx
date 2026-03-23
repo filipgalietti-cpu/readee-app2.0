@@ -431,7 +431,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ type: "spring", stiffness: 400, damping: 15 }}
-                className={`rounded-full px-8 py-3 text-2xl font-bold text-center shadow-sm ${PILL_COLORS[p % PILL_COLORS.length]} ${showFeedback ? ringClass : ""}`}
+                className={`rounded-full px-5 sm:px-8 py-2 sm:py-3 text-lg sm:text-2xl font-bold text-center shadow-sm ${PILL_COLORS[p % PILL_COLORS.length]} ${showFeedback ? ringClass : ""}`}
               >
                 {part.text}
               </motion.span>
@@ -642,7 +642,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ type: "spring", stiffness: 400, damping: 15 }}
-        className={`rounded-full ${isPracticeIntro ? "px-7 py-3 text-2xl" : "px-7 py-3 text-2xl"} font-bold text-center shadow-sm ${pillColor} ${
+        className={`rounded-full ${isPracticeIntro ? "px-5 sm:px-7 py-2 sm:py-3 text-lg sm:text-2xl" : "px-5 sm:px-7 py-2 sm:py-3 text-lg sm:text-2xl"} font-bold text-center shadow-sm ${pillColor} ${
           showCheck ? "ring-2 ring-green-400 ring-offset-2" : ""
         }`}
       >

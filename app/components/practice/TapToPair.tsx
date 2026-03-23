@@ -198,7 +198,7 @@ export function TapToPair({
         </svg>
 
         {/* Two columns */}
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-2 sm:gap-4">
           {/* Left column */}
           <div className="flex flex-col gap-3">
             {leftItems.map((item, i) => {
@@ -224,7 +224,7 @@ export function TapToPair({
                   }}
                   onClick={() => handleTapLeft(item)}
                   disabled={answered || done || isMatched}
-                  className={`px-4 py-4 rounded-xl border-2 font-bold text-lg text-center transition-all ${
+                  className={`px-3 sm:px-4 py-3 sm:py-4 rounded-xl border-2 font-bold text-base sm:text-lg text-center transition-all ${
                     isMatched || answered || done
                       ? "cursor-default"
                       : "cursor-pointer active:scale-95 hover:scale-105"
@@ -270,7 +270,7 @@ export function TapToPair({
                   }}
                   onClick={() => handleTapRight(item)}
                   disabled={answered || done || isMatched}
-                  className={`px-4 py-4 rounded-xl border-2 font-bold text-lg text-center transition-all ${
+                  className={`px-3 sm:px-4 py-3 sm:py-4 rounded-xl border-2 font-bold text-base sm:text-lg text-center transition-all ${
                     isMatched || answered || done
                       ? "cursor-default"
                       : "cursor-pointer active:scale-95 hover:scale-105"

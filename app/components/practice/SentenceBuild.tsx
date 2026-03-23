@@ -160,7 +160,7 @@ export function SentenceBuild({
         {ordered ? (
           /* Ordered mode — numbered slots */
           <motion.div
-            className="flex-1 flex gap-3 justify-center"
+            className="flex-1 flex gap-3 justify-center flex-wrap"
             animate={
               shaking
                 ? { x: [0, -8, 8, -6, 6, -3, 3, 0], transition: { duration: 0.5 } }
@@ -177,7 +177,7 @@ export function SentenceBuild({
                   key={`slot-${slotIdx}`}
                   onClick={() => filled ? handleTapAnswer(slotIdx) : undefined}
                   disabled={answered || result !== null || !filled}
-                  className={`w-24 h-16 rounded-xl border-2 flex flex-col items-center justify-center text-base font-semibold transition-all ${
+                  className={`w-20 sm:w-24 h-14 sm:h-16 rounded-xl border-2 flex flex-col items-center justify-center text-sm sm:text-base font-semibold transition-all ${
                     filled
                       ? `border-solid cursor-pointer active:scale-95 ${CHIP_COLORS[wordIdx % CHIP_COLORS.length]}`
                       : `border-dashed ${
