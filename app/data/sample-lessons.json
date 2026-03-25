@@ -626,6 +626,7 @@
             "audioFile": "audio/lessons/RI.K.1/S3b.mp3",
             "ttsScript": "Penguins live in cold places. They eat fish. They cannot fly.",
             "displayText": "Penguins live in cold places.\nThey eat fish.\nThey cannot fly.",
+            "displayStyle": "passage",
             "interaction": "Text appears line by line as the audio reads each sentence.",
             "displayDelay": 1500
           },
@@ -1386,6 +1387,7 @@
             "ttsScript": "The bunny was famished, so he ate five carrots.",
             "interaction": "Story text appears. The word 'famished' glows/highlights.",
             "displayText": "The bunny was famished, so he ate five carrots.",
+            "displayStyle": "passage",
             "displayDelay": 0
           },
           {

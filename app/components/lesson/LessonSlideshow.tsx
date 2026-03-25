@@ -27,6 +27,7 @@ interface Step {
   audioFile: string;
   ttsScript: string;
   displayText: string;
+  displayStyle?: "pill" | "passage"; // "passage" renders as a quote card instead of a pill
   displayDelay?: number;       // ms delay before showing displayText
   displayParts?: DisplayPart[]; // staggered text reveals within one step
   feedbackDelay?: number;      // ms delay before showing ✓/✗ after both parts visible
@@ -690,6 +691,23 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
         setPartsVisible((prev) => new Set(prev).add(checkKey));
       }, step.checkmarkDelay!);
       textTimersRef.current.push(t);
+    }
+
+    // Passage style — compact quote card for full sentences
+    if (step.displayStyle === "passage") {
+      return (
+        <motion.div
+          key={`${currentSlide}-${step.sub}`}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ type: "spring", stiffness: 400, damping: 20 }}
+          className="w-full rounded-2xl bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-800 px-5 py-4 text-center"
+        >
+          <p className="text-lg sm:text-xl font-semibold text-zinc-800 dark:text-zinc-200 leading-relaxed whitespace-pre-line">
+            &ldquo;{step.displayText}&rdquo;
+          </p>
+        </motion.div>
+      );
     }
 
     const pill = (
