@@ -6565,11 +6565,11 @@
             "displayParts": [
               {
                 "text": "The cat",
-                "delay": 300
+                "delay": 3000
               },
               {
                 "text": "runs",
-                "delay": 2400
+                "delay": 3800
               }
             ]
           }
@@ -6602,7 +6602,7 @@
             "audioFile": "audio/lessons/K.L.1/S3c.mp3",
             "ttsScript": "What's the verb? Jumps! Jumping is an action, so it's a verb!",
             "interaction": "Pill: [jumps = Verb ✓] pops in green. Stars.",
-            "displayText": "jumps are Verb",
+            "displayText": "jumps = Verb",
             "displayDelay": 3000
           }
         ],
