@@ -1045,25 +1045,29 @@
             "sub": "b",
             "audioFile": "audio/lessons/RL.K.3/S1b.mp3",
             "ttsScript": "Characters, settings, and events! Characters are who the story is about.",
-            "interaction": "Pill: [Characters] pops in blue.",
-            "displayText": "Characters",
-            "displayDelay": 2750
+            "interaction": "All 3 pills pop in together, Characters bounces while discussed.",
+            "displayText": "",
+            "displayParts": [
+              {
+                "text": "Characters",
+                "delay": 500
+              },
+              {
+                "text": "Setting",
+                "delay": 800
+              },
+              {
+                "text": "Events",
+                "delay": 1100
+              }
+            ]
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RL.K.3/S1c.mp3",
             "ttsScript": "The setting is where it happens. And events are what happens. Let's learn about all three!",
-            "interaction": "Pills: [Setting] in green, [Events] in orange pop in. Tap to continue.",
-            "displayParts": [
-              {
-                "text": "Setting",
-                "delay": 300
-              },
-              {
-                "text": "Events",
-                "delay": 3200
-              }
-            ]
+            "interaction": "Setting pill bounces, then Events pill bounces.",
+            "displayText": ""
           }
         ],
         "heading": "Let's Learn About Stories!",
@@ -1079,23 +1083,42 @@
             "audioFile": "audio/lessons/RL.K.3/S2a.mp3",
             "ttsScript": "Let's break it down! Characters can be people or animals in a story.",
             "interaction": "Heading appears. Puzzle piece illustration.",
-            "displayText": ""
+            "displayText": "Characters = people or animals",
+            "displayDelay": 1800
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.K.3/S2b.mp3",
             "ttsScript": "The setting is the place and time. Like a school, a beach, or a forest!",
-            "interaction": "Pill: [Setting = Place & Time] pops in.",
-            "displayText": "Setting means Place & Time",
-            "displayDelay": 3750
+            "interaction": "Labeled pair: [Setting] Place & Time — school, beach, forest!",
+            "displayText": "",
+            "displayParts": [
+              {
+                "text": "Setting",
+                "delay": 500
+              },
+              {
+                "text": "Place & Time — school, beach, forest!",
+                "delay": 2500
+              }
+            ]
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RL.K.3/S2c.mp3",
             "ttsScript": "Events are the things that happen in the story. Like a race, a party, or an adventure!",
-            "interaction": "Pill: [Events = What Happens] pops in.",
-            "displayText": "Events are What Happens",
-            "displayDelay": 4080
+            "interaction": "Labeled pair: [Events] What Happens — race, party, adventure!",
+            "displayText": "",
+            "displayParts": [
+              {
+                "text": "Events",
+                "delay": 500
+              },
+              {
+                "text": "What Happens — race, party, adventure!",
+                "delay": 2800
+              }
+            ]
           },
           {
             "sub": "d",
@@ -1111,62 +1134,6 @@
       },
       {
         "slide": 3,
-        "type": "example",
-        "steps": [
-          {
-            "sub": "a",
-            "audioFile": "audio/lessons/RL.K.3/S3a.mp3",
-            "ttsScript": "Here's a little story. Ready?",
-            "interaction": "Heading appears. Beach scene visible.",
-            "displayText": ""
-          },
-          {
-            "sub": "b",
-            "audioFile": "audio/lessons/RL.K.3/S3b.mp3",
-            "ttsScript": "Lily played at the beach. She built a sandcastle.",
-            "interaction": "Story text appears line by line.",
-            "displayParts": [
-              {
-                "text": "Lily played at the beach.",
-                "delay": 0
-              },
-              {
-                "text": "She built a sandcastle.",
-                "delay": 1800
-              }
-            ]
-          },
-          {
-            "sub": "c",
-            "audioFile": "audio/lessons/RL.K.3/S3c.mp3",
-            "ttsScript": "Who is the character? That's right — Lily!",
-            "interaction": "Pill: [Character: Lily] pops in blue with checkmark.",
-            "displayText": "Character: Lily",
-            "displayDelay": 2000
-          },
-          {
-            "sub": "d",
-            "audioFile": "audio/lessons/RL.K.3/S3d.mp3",
-            "ttsScript": "What's the setting? The beach!",
-            "interaction": "Pill: [Setting: The beach] pops in green with checkmark.",
-            "displayText": "Setting: The beach",
-            "displayDelay": 800
-          },
-          {
-            "sub": "e",
-            "audioFile": "audio/lessons/RL.K.3/S3e.mp3",
-            "ttsScript": "And the event? She built a sandcastle! You found all three parts!",
-            "interaction": "Pill: [Event: Built a sandcastle] pops in orange. Confetti burst.",
-            "displayText": "Event: Built a sandcastle",
-            "displayDelay": 3000
-          }
-        ],
-        "heading": "Let's Try One Together!",
-        "imagePrompt": "A smiling cartoon girl with a sun hat kneeling on a sandy beach, building a tall sandcastle with a little flag on top. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
-        "imageFile": "images/lessons/RL.K.3/S3.png"
-      },
-      {
-        "slide": 4,
         "type": "tip",
         "steps": [
           {
@@ -1209,7 +1176,7 @@
         "imageFile": "images/lessons/RL.K.3/S4.png"
       },
       {
-        "slide": 5,
+        "slide": 4,
         "type": "practice-intro",
         "steps": [
           {
@@ -1233,27 +1200,27 @@
         "imageFile": "images/lessons/RL.K.3/S5.png"
       },
       {
-        "slide": 6,
+        "slide": 5,
         "type": "mcq",
         "mcqId": "RL.K.3-Q1"
       },
       {
-        "slide": 7,
+        "slide": 6,
         "type": "mcq",
         "mcqId": "RL.K.3-Q2"
       },
       {
-        "slide": 8,
+        "slide": 7,
         "type": "mcq",
         "mcqId": "RL.K.3-Q3"
       },
       {
-        "slide": 9,
+        "slide": 8,
         "type": "mcq",
         "mcqId": "RL.K.3-Q4"
       },
       {
-        "slide": 10,
+        "slide": 9,
         "type": "mcq",
         "mcqId": "RL.K.3-Q5"
       }

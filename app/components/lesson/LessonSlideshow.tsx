@@ -543,21 +543,23 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
 
     // ── 3+ items: colorful horizontal pills ──
     const isShortPills = parts.every(p => p.text.length <= 10);
-    const nextStepPlaying = isShortPills && i + 1 < steps.length && playingStep === i + 1;
+    // Per-pill highlight: offset 0 → pill 0 bounces, offset 1 → pill 1+ bounce, etc.
+    const pillStepOffset = isShortPills && playingStep >= i ? playingStep - i : -1;
     return (
       <div key={`${currentSlide}-${step.sub}`} className="flex flex-wrap items-center justify-center gap-3">
         {parts.map((part, p) => {
           if (!partsVisible.has(`${i}-${p}`)) return null;
+          const isBouncing = pillStepOffset === 0 ? p === 0 : pillStepOffset > 0 && p >= pillStepOffset;
           return (
             <motion.span
-              key={`${currentSlide}-${step.sub}-${p}`}
+              key={`${currentSlide}-${step.sub}-${p}-${isBouncing}`}
               initial={{ opacity: 0, scale: 0.5 }}
-              animate={nextStepPlaying
-                ? { opacity: 1, scale: 1, y: [0, -3, 0] }
+              animate={isBouncing
+                ? { opacity: 1, scale: 1.1, y: [0, -5, 0] }
                 : { opacity: 1, scale: 1, y: 0 }
               }
-              transition={nextStepPlaying
-                ? { y: { duration: 2, delay: p * 0.7, repeat: Infinity, ease: "easeInOut" } }
+              transition={isBouncing
+                ? { scale: { duration: 0.3 }, y: { duration: 1.2, repeat: Infinity, ease: "easeInOut" } }
                 : { type: "spring", stiffness: 400, damping: 15 }
               }
               className={`rounded-full px-5 py-2 text-xl font-bold text-center shadow-sm ${PILL_COLORS[p % PILL_COLORS.length]}`}
