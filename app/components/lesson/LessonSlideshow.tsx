@@ -65,13 +65,13 @@ interface LessonSlideshowProps {
 
 const SUPABASE_STORAGE = "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public";
 
-// Colorful pill backgrounds — bold, high-contrast for kids
+// Soft pastel pill backgrounds — clean, educational feel
 const PILL_COLORS = [
-  "bg-blue-500 text-white",
-  "bg-green-500 text-white",
-  "bg-orange-500 text-white",
-  "bg-pink-500 text-white",
-  "bg-purple-500 text-white",
+  "bg-indigo-100 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300",
+  "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300",
+  "bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300",
+  "bg-rose-100 text-rose-700 dark:bg-rose-900/40 dark:text-rose-300",
+  "bg-violet-100 text-violet-700 dark:bg-violet-900/40 dark:text-violet-300",
 ];
 
 const SLIDE_THEMES: Record<string, {
@@ -583,11 +583,11 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
               key={`${currentSlide}-${step.sub}-${p}-${isBouncing}`}
               initial={{ opacity: 0, scale: 0.5 }}
               animate={isBouncing
-                ? { opacity: 1, scale: 1.1, y: [0, -5, 0] }
+                ? { opacity: 1, scale: [1, 1.06, 1], y: 0 }
                 : { opacity: 1, scale: 1, y: 0 }
               }
               transition={isBouncing
-                ? { scale: { duration: 0.3 }, y: { duration: 1.2, repeat: Infinity, ease: "easeInOut" } }
+                ? { scale: { duration: 1.4, repeat: Infinity, ease: "easeInOut" } }
                 : { type: "spring", stiffness: 400, damping: 15 }
               }
               className={`rounded-full px-5 py-2 text-xl font-bold text-center shadow-sm ${PILL_COLORS[p % PILL_COLORS.length]}`}

@@ -44,9 +44,18 @@
               }
             ],
             "highlightPills": [
-              { "pill": 0, "delay": 1200 },
-              { "pill": 1, "delay": 3200 },
-              { "pill": 2, "delay": 5000 }
+              {
+                "pill": 0,
+                "delay": 1200
+              },
+              {
+                "pill": 1,
+                "delay": 3200
+              },
+              {
+                "pill": 2,
+                "delay": 5000
+              }
             ],
             "interaction": "Three icons pop in one by one: a person icon (Who), an action icon (What), a map pin (Where). Tap to continue."
           }
@@ -835,8 +844,14 @@
             "interaction": "Number 1 appears, then 'Beginning' fills in.",
             "displayText": "",
             "displayParts": [
-              {"text": "1.", "delay": 0},
-              {"text": "Beginning", "delay": 2250}
+              {
+                "text": "1.",
+                "delay": 0
+              },
+              {
+                "text": "Beginning",
+                "delay": 2250
+              }
             ]
           },
           {
@@ -846,8 +861,14 @@
             "interaction": "Number 2 appears, then 'Middle' fills in.",
             "displayText": "",
             "displayParts": [
-              {"text": "2.", "delay": 0},
-              {"text": "Middle", "delay": 800}
+              {
+                "text": "2.",
+                "delay": 0
+              },
+              {
+                "text": "Middle",
+                "delay": 800
+              }
             ]
           },
           {
@@ -857,8 +878,14 @@
             "interaction": "Number 3 appears, then 'End' fills in. All three glow together.",
             "displayText": "",
             "displayParts": [
-              {"text": "3.", "delay": 0},
-              {"text": "End", "delay": 2000}
+              {
+                "text": "3.",
+                "delay": 0
+              },
+              {
+                "text": "End",
+                "delay": 2000
+              }
             ]
           }
         ],
@@ -904,8 +931,14 @@
             "interaction": "'First: Built a nest' highlights with a checkmark.",
             "displayText": "",
             "displayParts": [
-              {"text": "First", "delay": 2500},
-              {"text": "Built a nest", "delay": 4500}
+              {
+                "text": "First",
+                "delay": 2500
+              },
+              {
+                "text": "Built a nest",
+                "delay": 4500
+              }
             ]
           },
           {
@@ -915,8 +948,14 @@
             "interaction": "'Next: Laid eggs' highlights with a checkmark.",
             "displayText": "",
             "displayParts": [
-              {"text": "Next", "delay": 500},
-              {"text": "Laid eggs", "delay": 1750}
+              {
+                "text": "Next",
+                "delay": 500
+              },
+              {
+                "text": "Laid eggs",
+                "delay": 1750
+              }
             ]
           },
           {
@@ -926,8 +965,14 @@
             "interaction": "'Last: Babies hatched' highlights with a checkmark.",
             "displayText": "",
             "displayParts": [
-              {"text": "Last", "delay": 500},
-              {"text": "Babies hatched!", "delay": 3000}
+              {
+                "text": "Last",
+                "delay": 500
+              },
+              {
+                "text": "Babies hatched!",
+                "delay": 3000
+              }
             ]
           }
         ],
@@ -1067,7 +1112,10 @@
               }
             ],
             "highlightPills": [
-              { "pill": 0, "delay": 3500 }
+              {
+                "pill": 0,
+                "delay": 3500
+              }
             ]
           },
           {
@@ -1077,8 +1125,14 @@
             "interaction": "Setting pill bounces, then Events pill bounces.",
             "displayText": "",
             "highlightPills": [
-              { "pill": 1, "delay": 0 },
-              { "pill": 2, "delay": 2500 }
+              {
+                "pill": 1,
+                "delay": 0
+              },
+              {
+                "pill": 2,
+                "delay": 2500
+              }
             ]
           }
         ],
@@ -1097,7 +1151,10 @@
             "interaction": "Heading appears. Table row 1 appears.",
             "displayText": "Characters",
             "displayDelay": 1800,
-            "displayTableRow": { "label": "Characters", "value": "people or animals" }
+            "displayTableRow": {
+              "label": "Characters",
+              "value": "people or animals"
+            }
           },
           {
             "sub": "b",
@@ -1106,7 +1163,10 @@
             "interaction": "Table row 2 appears.",
             "displayText": "Setting",
             "displayDelay": 500,
-            "displayTableRow": { "label": "Setting", "value": "Place & Time — school, beach, forest!" }
+            "displayTableRow": {
+              "label": "Setting",
+              "value": "Place & Time — school, beach, forest!"
+            }
           },
           {
             "sub": "c",
@@ -1115,7 +1175,10 @@
             "interaction": "Table row 3 appears.",
             "displayText": "Events",
             "displayDelay": 500,
-            "displayTableRow": { "label": "Events", "value": "What Happens — race, party, adventure!" }
+            "displayTableRow": {
+              "label": "Events",
+              "value": "What Happens — race, party, adventure!"
+            }
           },
           {
             "sub": "d",
@@ -1484,7 +1547,10 @@
             "interaction": "Table row: Storybook = Beginning → Middle → End.",
             "displayText": "Storybook",
             "displayDelay": 3250,
-            "displayTableRow": { "label": "Storybook", "value": "Beginning → Middle → End" }
+            "displayTableRow": {
+              "label": "Storybook",
+              "value": "Beginning → Middle → End"
+            }
           },
           {
             "sub": "c",
@@ -1493,7 +1559,10 @@
             "interaction": "Table row: Poem = Rhymes & Special Words.",
             "displayText": "Poem",
             "displayDelay": 4320,
-            "displayTableRow": { "label": "Poem", "value": "Rhymes & Special Words" }
+            "displayTableRow": {
+              "label": "Poem",
+              "value": "Rhymes & Special Words"
+            }
           },
           {
             "sub": "d",
@@ -1663,8 +1732,14 @@
               }
             ],
             "highlightPills": [
-              { "pill": 0, "delay": 1500 },
-              { "pill": 1, "delay": 3500 }
+              {
+                "pill": 0,
+                "delay": 1500
+              },
+              {
+                "pill": 1,
+                "delay": 3500
+              }
             ]
           },
           {
@@ -1697,7 +1772,10 @@
             "interaction": "Table row: Author = Writes the words.",
             "displayText": "Author",
             "displayDelay": 500,
-            "displayTableRow": { "label": "Author", "value": "Writes the words" }
+            "displayTableRow": {
+              "label": "Author",
+              "value": "Writes the words"
+            }
           },
           {
             "sub": "c",
@@ -1706,7 +1784,10 @@
             "interaction": "Table row: Illustrator = Draws the pictures.",
             "displayText": "Illustrator",
             "displayDelay": 3500,
-            "displayTableRow": { "label": "Illustrator", "value": "Draws the pictures" }
+            "displayTableRow": {
+              "label": "Illustrator",
+              "value": "Draws the pictures"
+            }
           },
           {
             "sub": "d",
@@ -1865,7 +1946,7 @@
             "ttsScript": "Even before you read the words, the pictures give you clues about the story!",
             "interaction": "'Pictures = Clues!' pops up in sparkly text.",
             "displayText": "Pictures are Clues!",
-            "displayDelay": 3500
+            "displayDelay": 3800
           },
           {
             "sub": "c",
@@ -1977,11 +2058,11 @@
             "displayParts": [
               {
                 "text": "What's happening?",
-                "delay": 300
+                "delay": 800
               },
               {
                 "text": "How do they feel?",
-                "delay": 2000
+                "delay": 2200
               }
             ]
           },
@@ -2014,7 +2095,7 @@
             "ttsScript": "Let's practice looking at pictures and figuring out what's happening in the story. Let's go!",
             "interaction": "'Let's Go!' button pulses.",
             "displayText": "Let's look at the pictures!",
-            "displayDelay": 3750
+            "displayDelay": 4500
           }
         ],
         "heading": "Time to Practice!",
@@ -2073,11 +2154,11 @@
             "displayParts": [
               {
                 "text": "Same",
-                "delay": 300
+                "delay": 1500
               },
               {
                 "text": "Different",
-                "delay": 2000
+                "delay": 3200
               }
             ]
           },
@@ -2110,7 +2191,7 @@
             "ttsScript": "Maybe they both like the same thing. Or they both go on an adventure!",
             "interaction": "Pill: [Same = What they share] pops in purple.",
             "displayText": "Same are What they share",
-            "displayDelay": 3500
+            "displayDelay": 3000
           },
           {
             "sub": "c",
@@ -2190,11 +2271,11 @@
             "displayParts": [
               {
                 "text": "Same?",
-                "delay": 300
+                "delay": 1200
               },
               {
                 "text": "Different?",
-                "delay": 2400
+                "delay": 2600
               }
             ]
           },
@@ -2227,7 +2308,7 @@
             "ttsScript": "Let's practice comparing some characters. Find what's the same and what's different. Let's go!",
             "interaction": "'Let's Go!' button pulses.",
             "displayText": "Let's find the characters!",
-            "displayDelay": 3500
+            "displayDelay": 4200
           }
         ],
         "heading": "Time to Practice!",
@@ -2325,7 +2406,7 @@
               },
               {
                 "text": "how fish swim",
-                "delay": 3000
+                "delay": 4200
               }
             ]
           },
@@ -2530,7 +2611,7 @@
             "ttsScript": "Connections help us understand why things happen and how things are related!",
             "interaction": "Pill: [Connections = How things go together] pops in.",
             "displayText": "Connections are How things go together",
-            "displayDelay": 3000
+            "displayDelay": 3500
           }
         ],
         "heading": "How Do Facts Connect?",
@@ -2916,7 +2997,11 @@
             "ttsScript": "The title tells you what the book is about. It's like the book's name!",
             "interaction": "Pill: [Front Cover = Title + Picture] pops in blue.",
             "displayText": "Front Cover means Title + Picture",
-            "displayDelay": 3500
+            "displayDelay": 3500,
+            "displayTableRow": {
+              "label": "Front Cover",
+              "value": "Title + Picture"
+            }
           },
           {
             "sub": "c",
@@ -2924,7 +3009,11 @@
             "ttsScript": "The back cover is on the other side. It might tell you a little bit about the book.",
             "interaction": "Pill: [Back Cover = Book info] pops in green.",
             "displayText": "Back Cover means Book info",
-            "displayDelay": 4320
+            "displayDelay": 4320,
+            "displayTableRow": {
+              "label": "Back Cover",
+              "value": "Book info"
+            }
           },
           {
             "sub": "d",
@@ -2932,7 +3021,11 @@
             "ttsScript": "The title page is inside the book. It shows the title, author, and illustrator!",
             "interaction": "Pill: [Title Page = Title + Author + Illustrator] pops in purple.",
             "displayText": "Title Page means Title + Author + Illustrator",
-            "displayDelay": 3500
+            "displayDelay": 4200,
+            "displayTableRow": {
+              "label": "Title Page",
+              "value": "Title + Author + Illustrator"
+            }
           }
         ],
         "heading": "The Parts of a Book",
@@ -2966,7 +3059,7 @@
             "displayParts": [
               {
                 "text": "Back Cover ✓",
-                "delay": 300
+                "delay": 500
               },
               {
                 "text": "Title Page ✓",
@@ -3437,7 +3530,7 @@
             "ttsScript": "Reasons help us understand why the author thinks something is true.",
             "interaction": "'Reasons = Why!' pops up in bold.",
             "displayText": "Reasons are Why!",
-            "displayDelay": 2750
+            "displayDelay": 3000
           },
           {
             "sub": "c",
@@ -3478,11 +3571,11 @@
             "displayParts": [
               {
                 "text": "Dogs are loyal",
-                "delay": 300
+                "delay": 1200
               },
               {
                 "text": "Fun to play with",
-                "delay": 3600
+                "delay": 4200
               }
             ]
           }
@@ -3517,19 +3610,19 @@
             "displayParts": [
               {
                 "text": "Energy",
-                "delay": 300
+                "delay": 1500
               },
               {
                 "text": "Vitamins",
-                "delay": 1600
+                "delay": 2800
               },
               {
                 "text": "Yummy",
-                "delay": 3200
+                "delay": 4100
               },
               {
                 "text": "Fruit is good for you!",
-                "delay": 4800
+                "delay": 5200
               }
             ]
           }
@@ -3650,7 +3743,7 @@
             "ttsScript": "Let's learn how to compare them!",
             "interaction": "'Compare' text pops in. Tap to continue.",
             "displayText": "Compare",
-            "displayDelay": 800
+            "displayDelay": 1200
           }
         ],
         "heading": "Let's Compare Fact Books!",
@@ -3682,7 +3775,7 @@
             "ttsScript": "What's different? Maybe one book has different facts or different pictures!",
             "interaction": "Pill: [Different = Different facts or details] pops in orange.",
             "displayText": "Different are Different facts or details",
-            "displayDelay": 2750
+            "displayDelay": 3000
           }
         ],
         "heading": "How Do We Compare Fact Books?",
@@ -3715,11 +3808,11 @@
             "displayParts": [
               {
                 "text": "Same: About bears",
-                "delay": 500
+                "delay": 1800
               },
               {
                 "text": "Different: Eating vs Sleeping",
-                "delay": 2400
+                "delay": 3500
               }
             ]
           }
@@ -3747,19 +3840,19 @@
             "displayParts": [
               {
                 "text": "Book 1 facts",
-                "delay": 300
+                "delay": 1800
               },
               {
                 "text": "Book 2 facts",
-                "delay": 2000
+                "delay": 3800
               },
               {
                 "text": "Same?",
-                "delay": 4000
+                "delay": 5400
               },
               {
                 "text": "Different?",
-                "delay": 6000
+                "delay": 7000
               }
             ]
           },
@@ -3879,7 +3972,7 @@
             "ttsScript": "Start on the left side of the page. Then move your eyes across to the right side.",
             "interaction": "Pill: [Left → Right] pops in with animated arrow.",
             "displayText": "Left → Right",
-            "displayDelay": 4080
+            "displayDelay": 1500
           },
           {
             "sub": "c",
@@ -3887,7 +3980,7 @@
             "ttsScript": "When you get to the end of a line, what do you do? You go down to the next line and start on the left again!",
             "interaction": "Pill: [End of line → Next line → Start left again!] pops in.",
             "displayText": "End of line → Next line → Start left again!",
-            "displayDelay": 6240
+            "displayDelay": 2800
           }
         ],
         "heading": "How Do We Read?",
@@ -3941,7 +4034,7 @@
             "ttsScript": "Put your finger under the first word on the left, then slide it to the right as you read!",
             "interaction": "Pill: [Finger under words → Slide right!] pops in.",
             "displayText": "Finger under words → Slide right!",
-            "displayDelay": 4560
+            "displayDelay": 2000
           },
           {
             "sub": "c",
@@ -4029,7 +4122,7 @@
             "ttsScript": "The letters come together to make a word. C, A, T makes cat!",
             "interaction": "Letters C, A, T pop in one at a time, then merge into 'CAT'.",
             "displayText": "CAT",
-            "displayDelay": 3250
+            "displayDelay": 1800
           },
           {
             "sub": "c",
@@ -4060,7 +4153,7 @@
             "ttsScript": "Some words are short — like 'at.' That's just two letters! A and T.",
             "interaction": "Pill: [A + T = at] pops in with two letter blocks.",
             "displayText": "A + T make at",
-            "displayDelay": 3500
+            "displayDelay": 1500
           },
           {
             "sub": "c",
@@ -4068,7 +4161,7 @@
             "ttsScript": "Some words are longer — like 'dog.' That's three letters! D, O, G.",
             "interaction": "Pill: [D + O + G = dog] pops in.",
             "displayText": "D + O + G make dog",
-            "displayDelay": 3250
+            "displayDelay": 1500
           },
           {
             "sub": "d",
@@ -4099,7 +4192,7 @@
             "ttsScript": "S... U... N! That's three letters. S, U, N makes sun!",
             "interaction": "Each letter highlights as counted: S(1), U(2), N(3). Pill: [3 letters!] pops in.",
             "displayText": "3 letters!",
-            "displayDelay": 2750
+            "displayDelay": 1800
           },
           {
             "sub": "c",
@@ -4131,7 +4224,7 @@
             "ttsScript": "Touch each letter as you say it. That helps you see how the word is built!",
             "interaction": "Pill: [Touch and count each letter!] pops in.",
             "displayText": "Touch and count each letter!",
-            "displayDelay": 3840
+            "displayDelay": 1800
           },
           {
             "sub": "c",
@@ -4219,7 +4312,7 @@
             "ttsScript": "Spaces help us see where one word ends and the next word begins!",
             "interaction": "'Spaces' appears between two word blocks, separating them.",
             "displayText": "Spaces",
-            "displayDelay": 3250
+            "displayDelay": 1500
           },
           {
             "sub": "c",
@@ -4250,7 +4343,7 @@
             "ttsScript": "Now look: the cat sat. So much easier! The spaces tell us each word.",
             "interaction": "Text transforms: 'thecatsat' splits into 'the cat sat' with spaces. Pill: [Spaces separate words!] pops in.",
             "displayText": "Spaces separate words!",
-            "displayDelay": 3500
+            "displayDelay": 1500
           },
           {
             "sub": "c",
@@ -4258,7 +4351,7 @@
             "ttsScript": "Every word needs a space before the next word starts. One finger space!",
             "interaction": "Pill: [One finger space between words!] pops in.",
             "displayText": "One finger space between words!",
-            "displayDelay": 3250
+            "displayDelay": 1500
           }
         ],
         "heading": "Why Do We Need Spaces?",
@@ -4288,15 +4381,15 @@
               },
               {
                 "text": "like",
-                "delay": 1200
+                "delay": 900
               },
               {
                 "text": "dogs",
-                "delay": 2400
+                "delay": 1600
               },
               {
                 "text": "3 words!",
-                "delay": 3600
+                "delay": 2200
               }
             ]
           },
@@ -4329,7 +4422,7 @@
             "ttsScript": "Put your finger down after writing a word, then start the next word after your finger. Perfect spaces every time!",
             "interaction": "Pill: [Finger space trick!] pops in.",
             "displayText": "Finger space trick!",
-            "displayDelay": 4800
+            "displayDelay": 2200
           },
           {
             "sub": "c",
@@ -4419,11 +4512,11 @@
             "displayParts": [
               {
                 "text": "Uppercase = BIG",
-                "delay": 300
+                "delay": 1000
               },
               {
                 "text": "Lowercase = little",
-                "delay": 2800
+                "delay": 2000
               }
             ]
           },
@@ -4456,7 +4549,7 @@
             "ttsScript": "Uppercase letters are the tall ones. We use them at the start of sentences and for names!",
             "interaction": "Pill: [Uppercase: Start of sentences & names] pops in.",
             "displayText": "Uppercase: Start of sentences & names",
-            "displayDelay": 4080
+            "displayDelay": 1800
           },
           {
             "sub": "c",
@@ -4464,7 +4557,7 @@
             "ttsScript": "Lowercase letters are the small ones. We use them most of the time!",
             "interaction": "Pill: [Lowercase: Used most of the time] pops in.",
             "displayText": "Lowercase: Used most of the time",
-            "displayDelay": 3250
+            "displayDelay": 1500
           },
           {
             "sub": "d",
@@ -4495,7 +4588,7 @@
             "ttsScript": "B and b — they match! One is big and one is small, but they're the same letter!",
             "interaction": "B and b connect with a line. Pill: [B = b ✓] pops in.",
             "displayText": "B means b",
-            "displayDelay": 4320
+            "displayDelay": 1500
           },
           {
             "sub": "c",
@@ -4526,7 +4619,7 @@
             "ttsScript": "When you see a letter, try to say its name. Is it uppercase or lowercase?",
             "interaction": "Pill: [See a letter → Say its name → Big or small?] pops in.",
             "displayText": "See a letter → Say its name → Big or small?",
-            "displayDelay": 3750
+            "displayDelay": 1800
           },
           {
             "sub": "c",
@@ -4653,7 +4746,7 @@
             "ttsScript": "Some words have one beat — like 'cat.' Just one clap! Cat!",
             "interaction": "Pill: [Cat = 1 clap] pops in with hand clap icon.",
             "displayText": "Cat has 1 clap",
-            "displayDelay": 3000
+            "displayDelay": 2250
           },
           {
             "sub": "c",
@@ -4661,7 +4754,7 @@
             "ttsScript": "Some words have two beats — like 'apple.' Ap-ple! Two claps!",
             "interaction": "Pill: [Ap-ple = 2 claps] pops in.",
             "displayText": "Ap-ple has 2 claps",
-            "displayDelay": 2750
+            "displayDelay": 2500
           },
           {
             "sub": "d",
@@ -4693,7 +4786,7 @@
             "ttsScript": "Dog. One clap! Dog has one syllable.",
             "interaction": "One clap animation. Pill: [Dog = 1] pops in.",
             "displayText": "Dog has 1",
-            "displayDelay": 1750
+            "displayDelay": 1600
           },
           {
             "sub": "c",
@@ -4701,7 +4794,7 @@
             "ttsScript": "Mon-key. Two claps! Monkey has two syllables!",
             "interaction": "Two clap animation. Pill: [Mon-key = 2] pops in.",
             "displayText": "Mon-key has 2",
-            "displayDelay": 1750
+            "displayDelay": 1500
           },
           {
             "sub": "d",
@@ -4827,7 +4920,7 @@
               },
               {
                 "text": "End: /g/",
-                "delay": 2800
+                "delay": 2600
               }
             ]
           },
@@ -4860,7 +4953,7 @@
             "ttsScript": "Say 'ball.' What's the first sound? Buh! The beginning sound is /b/!",
             "interaction": "Pill: [Ball → Starts with /b/] pops in blue.",
             "displayText": "Ball → Starts with /b/",
-            "displayDelay": 3000
+            "displayDelay": 2750
           },
           {
             "sub": "c",
@@ -4868,7 +4961,7 @@
             "ttsScript": "Now the ending sound is the very last sound. Say 'ball.' What's the last sound? Lll! The ending sound is /l/!",
             "interaction": "Pill: [Ball → Ends with /l/] pops in orange.",
             "displayText": "Ball → Ends with /l/",
-            "displayDelay": 5040
+            "displayDelay": 6500
           },
           {
             "sub": "d",
@@ -4938,7 +5031,7 @@
             "ttsScript": "Say the word really slowly. Ssss-uuu-nnn. The first sound pops out and the last sound pops out!",
             "interaction": "Pill: [Stretch it out → Hear first and last!] pops in.",
             "displayText": "Stretch it out → Hear first and last!",
-            "displayDelay": 4080
+            "displayDelay": 4500
           },
           {
             "sub": "c",
@@ -5056,7 +5149,7 @@
             "ttsScript": "Say 'dog' slowly. /d/ /o/ /g/. That's three sounds!",
             "interaction": "Pill: [Dog → /d/ /o/ /g/ = 3 sounds] pops in.",
             "displayText": "Dog → /d/ /o/ /g/ has 3 sounds",
-            "displayDelay": 2250
+            "displayDelay": 2000
           },
           {
             "sub": "c",
@@ -5095,7 +5188,7 @@
             "ttsScript": "Map. Mmm-aaa-puh. /m/ /a/ /p/. Hold up three fingers! Three sounds!",
             "interaction": "Three fingers pop up. Pill: [Map = 3 sounds ✓] pops in.",
             "displayText": "Map has 3 sounds",
-            "displayDelay": 2750
+            "displayDelay": 2500
           },
           {
             "sub": "c",
@@ -5103,7 +5196,7 @@
             "ttsScript": "Now try 'it.' Ih-tuh. /i/ /t/. Two fingers! Two sounds!",
             "interaction": "Two fingers pop up. Pill: [It = 2 sounds ✓] pops in. Stars.",
             "displayText": "It has 2 sounds",
-            "displayDelay": 2500
+            "displayDelay": 2200
           }
         ],
         "heading": "Let's Count Sounds Together!",
@@ -5127,7 +5220,7 @@
             "ttsScript": "Say the word slowly and pop up a finger for each sound. That's how you count them!",
             "interaction": "Pill: [Slow + Fingers = Sound counting!] pops in.",
             "displayText": "Slow + Fingers make Sound counting!",
-            "displayDelay": 4080
+            "displayDelay": 4500
           },
           {
             "sub": "c",
@@ -5221,7 +5314,7 @@
               },
               {
                 "text": "bat",
-                "delay": 2000
+                "delay": 2200
               }
             ]
           },
@@ -5254,7 +5347,7 @@
             "ttsScript": "You can change the beginning sound. 'Mat' becomes 'sat' if you change /m/ to /s/!",
             "interaction": "Pill: [Change beginning: mat → sat] pops in blue.",
             "displayText": "Change beginning: mat → sat",
-            "displayDelay": 3750
+            "displayDelay": 3500
           },
           {
             "sub": "c",
@@ -5262,7 +5355,7 @@
             "ttsScript": "You can change the ending sound too! 'Cat' becomes 'can' if you change /t/ to /n/!",
             "interaction": "Pill: [Change ending: cat → can] pops in green.",
             "displayText": "Change ending: cat → can",
-            "displayDelay": 3840
+            "displayDelay": 3600
           },
           {
             "sub": "d",
@@ -5293,7 +5386,7 @@
             "ttsScript": "Start with 'hop.' Change the /h/ to /m/. What do you get? Mop!",
             "interaction": "'hop' transforms to 'mop'. Pill: [hop → mop ✓] pops in.",
             "displayText": "hop → mop",
-            "displayDelay": 3250
+            "displayDelay": 3000
           },
           {
             "sub": "c",
@@ -5301,7 +5394,7 @@
             "ttsScript": "Start with 'big.' Change the /b/ to /d/. What do you get? Dig!",
             "interaction": "'big' transforms to 'dig'. Pill: [big → dig ✓] pops in. Stars.",
             "displayText": "big → dig",
-            "displayDelay": 3250
+            "displayDelay": 3000
           }
         ],
         "heading": "Let's Make New Words!",
@@ -5325,7 +5418,7 @@
             "ttsScript": "Take away the old sound, put in the new sound, and say the whole word. You'll hear the new word right away!",
             "interaction": "Pill: [Remove old sound + Add new sound = New word!] pops in.",
             "displayText": "Remove old sound + Add new sound make New word!",
-            "displayDelay": 5280
+            "displayDelay": 7500
           },
           {
             "sub": "c",
@@ -5525,11 +5618,11 @@
             "displayParts": [
               {
                 "text": "A = Apple = /a/",
-                "delay": 300
+                "delay": 1500
               },
               {
                 "text": "B = Ball = /b/",
-                "delay": 3200
+                "delay": 3000
               }
             ]
           },
@@ -5652,7 +5745,7 @@
             "displayParts": [
               {
                 "text": "E = /e/ egg",
-                "delay": 300
+                "delay": 600
               },
               {
                 "text": "I = /i/ igloo",
@@ -5668,7 +5761,7 @@
             "displayParts": [
               {
                 "text": "O = /o/ octopus",
-                "delay": 300
+                "delay": 600
               },
               {
                 "text": "U = /u/ umbrella",
@@ -5835,7 +5928,7 @@
             "displayParts": [
               {
                 "text": "the",
-                "delay": 300
+                "delay": 1000
               },
               {
                 "text": "is",
@@ -5879,15 +5972,15 @@
             "audioFile": "audio/lessons/RF.K.3c/S2b.mp3",
             "ttsScript": "You don't sound them out — you just know them! Like how you know your own name.",
             "interaction": "Pill: [Sight words = Know them by heart!] pops in.",
-            "displayText": "Sight words are Know them by heart!",
-            "displayDelay": 4080
+            "displayText": "Sight words = Know them by heart!",
+            "displayDelay": 2800
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.3c/S2c.mp3",
             "ttsScript": "The more sight words you know, the faster you can read! They're reading superpowers!",
             "interaction": "Pill: [More sight words = Faster reading!] pops in.",
-            "displayText": "More sight words are Faster reading!",
+            "displayText": "More sight words = Faster reading!",
             "displayDelay": 3500
           }
         ],
@@ -5952,7 +6045,7 @@
             "ttsScript": "You can put them on flashcards, stick them on the fridge, or find them in your books!",
             "interaction": "Pill: [Practice every day!] pops in.",
             "displayText": "Practice every day!",
-            "displayDelay": 4080
+            "displayDelay": 2500
           },
           {
             "sub": "c",
@@ -6046,7 +6139,7 @@
               },
               {
                 "text": "saw",
-                "delay": 1500
+                "delay": 2200
               }
             ]
           },
@@ -6079,7 +6172,7 @@
             "ttsScript": "Look carefully at the beginning of the word. That's usually where the difference is!",
             "interaction": "Pill: [Check the beginning first!] pops in blue.",
             "displayText": "Check the beginning first!",
-            "displayDelay": 3500
+            "displayDelay": 2200
           },
           {
             "sub": "c",
@@ -6087,7 +6180,7 @@
             "ttsScript": "Then check the ending. Read each letter one by one to make sure you've got the right word!",
             "interaction": "Pill: [Then check the ending!] pops in green.",
             "displayText": "Then check the ending!",
-            "displayDelay": 4320
+            "displayDelay": 500
           }
         ],
         "heading": "How to Tell Them Apart",
@@ -6120,11 +6213,11 @@
             "displayParts": [
               {
                 "text": "on = O first",
-                "delay": 300
+                "delay": 1200
               },
               {
                 "text": "no = N first",
-                "delay": 2800
+                "delay": 3200
               }
             ]
           }
@@ -6233,7 +6326,7 @@
             "ttsScript": "Reading with purpose means knowing what we're looking for. It makes reading even better!",
             "interaction": "'Reading with Purpose!' pops up sparkly.",
             "displayText": "Reading with Purpose!",
-            "displayDelay": 3500
+            "displayDelay": 1500
           },
           {
             "sub": "c",
@@ -6264,7 +6357,7 @@
             "ttsScript": "If it's a storybook, you might be reading for fun! To enjoy the adventure!",
             "interaction": "Pill: [Storybook → Reading for fun!] pops in blue.",
             "displayText": "Storybook → Reading for fun!",
-            "displayDelay": 3500
+            "displayDelay": 2500
           },
           {
             "sub": "c",
@@ -6272,7 +6365,7 @@
             "ttsScript": "If it's a fact book, you might be reading to learn new things!",
             "interaction": "Pill: [Fact book → Reading to learn!] pops in green.",
             "displayText": "Fact book → Reading to learn!",
-            "displayDelay": 3250
+            "displayDelay": 2800
           },
           {
             "sub": "d",
@@ -6303,7 +6396,7 @@
             "ttsScript": "Maybe you want to learn where tigers live. That's your purpose! Now when you read, you look for that!",
             "interaction": "Pill: [Purpose: Where do tigers live?] pops in with magnifying glass.",
             "displayText": "Purpose: Where do tigers live?",
-            "displayDelay": 4560
+            "displayDelay": 2500
           },
           {
             "sub": "c",
@@ -6311,7 +6404,7 @@
             "ttsScript": "And you find it: Tigers live in forests and jungles! You found what you were looking for!",
             "interaction": "Pill: [Answer: Forests and jungles!] pops in with checkmark. Stars.",
             "displayText": "Answer: Forests and jungles!",
-            "displayDelay": 4080
+            "displayDelay": 2500
           }
         ],
         "heading": "Let's Try It!",
@@ -6677,7 +6770,7 @@
             "ttsScript": "And at the end of a sentence, we put a period. It's like saying 'The end!' for that thought.",
             "interaction": "Pill: [Period (.) = End of sentence] pops in green.",
             "displayText": "Period (.) means End of sentence",
-            "displayDelay": 4560
+            "displayDelay": 3200
           },
           {
             "sub": "d",
@@ -6725,7 +6818,7 @@
             "ttsScript": "And we need a period at the end! The cat is big. Period! Now it's perfect!",
             "interaction": "Period appears at end. Pill: [Period ✓] pops in. Stars.",
             "displayText": "Period",
-            "displayDelay": 3840
+            "displayDelay": 2200
           }
         ],
         "heading": "Let's Fix a Sentence!",
@@ -6876,7 +6969,7 @@
             "ttsScript": "The words before and after give you clues about what the new word means.",
             "interaction": "Pill: [Listen to words around it] pops in blue.",
             "displayText": "Listen to words around it",
-            "displayDelay": 3500
+            "displayDelay": 2000
           },
           {
             "sub": "c",
@@ -6915,7 +7008,7 @@
             "ttsScript": "What does 'swift' mean? Look at the clue — it ran very fast!",
             "interaction": "'ran very fast' highlights as a context clue.",
             "displayText": "ran very fast",
-            "displayDelay": 3250
+            "displayDelay": 2000
           },
           {
             "sub": "c",
@@ -6947,7 +7040,7 @@
             "ttsScript": "Read the sentence again, look at pictures, and try to guess. You'll be right more than you think!",
             "interaction": "Pill: [Re-read → Look → Guess → Solve!] pops in.",
             "displayText": "Re-read → Look → Guess → Solve!",
-            "displayDelay": 4320
+            "displayDelay": 3500
           },
           {
             "sub": "c",
@@ -7041,7 +7134,7 @@
               },
               {
                 "text": "Similar words",
-                "delay": 3600
+                "delay": 4200
               }
             ]
           },
@@ -7082,7 +7175,7 @@
             "ttsScript": "Words can also belong to groups. 'Dog,' 'cat,' and 'fish' are all animals!",
             "interaction": "Pill: [Categories = Word groups] pops in blue.",
             "displayText": "Categories are Word groups",
-            "displayDelay": 3250
+            "displayDelay": 2000
           },
           {
             "sub": "d",
@@ -7122,7 +7215,7 @@
             "ttsScript": "Now, which group does 'apple' belong in? It's a fruit! Just like banana and orange!",
             "interaction": "Pill: [Apple → Fruit category!] pops in with checkmark. Stars.",
             "displayText": "Apple → Fruit category!",
-            "displayDelay": 3750
+            "displayDelay": 2500
           }
         ],
         "heading": "Let's Find the Connections!",
@@ -7234,7 +7327,7 @@
             "ttsScript": "When you use new words when you talk and write, your vocabulary grows bigger and bigger!",
             "interaction": "'Vocabulary' grows in size on screen with sparkle.",
             "displayText": "Vocabulary",
-            "displayDelay": 3840
+            "displayDelay": 3000
           },
           {
             "sub": "c",
@@ -7304,7 +7397,7 @@
             "ttsScript": "Can you use it in a sentence? How about: I was delighted to see my friend!",
             "interaction": "Sentence appears: 'I was delighted to see my friend!' Pill: [Delighted = Very Happy ✓].",
             "displayText": "Delighted means Very Happy",
-            "displayDelay": 3840
+            "displayDelay": 2500
           },
           {
             "sub": "c",
@@ -7341,11 +7434,11 @@
               },
               {
                 "text": "2. Write",
-                "delay": 2400
+                "delay": 3500
               },
               {
                 "text": "3. At home",
-                "delay": 4800
+                "delay": 5200
               }
             ]
           },
