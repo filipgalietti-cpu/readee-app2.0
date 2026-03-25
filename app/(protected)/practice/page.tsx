@@ -399,7 +399,7 @@ function PracticeLoader() {
 
 function PracticeSession({ child, standard, gradeStandards }: { child: Child; standard: Standard; gradeStandards: Standard[] }) {
   const router = useRouter();
-  const { unlockAudio, stop, playUrl, playCorrectChime, playIncorrectBuzz } = useAudio();
+  const { unlockAudio, stop, playUrl, playSequence, playCorrectChime, playIncorrectBuzz } = useAudio();
   const gradeKey = levelNameToGradeKey(child?.reading_level ?? null);
 
   // Zustand store
@@ -479,8 +479,17 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
       const file = CORRECT_AUDIO[Math.floor(Math.random() * CORRECT_AUDIO.length)];
       playUrl(getAudioUrl("feedback", file));
     } else {
-      const file = INCORRECT_AUDIO[Math.floor(Math.random() * INCORRECT_AUDIO.length)];
-      playUrl(getAudioUrl("feedback", file));
+      const prefixFile = INCORRECT_AUDIO[Math.floor(Math.random() * INCORRECT_AUDIO.length)];
+      const prefixUrl = getAudioUrl("feedback", prefixFile);
+      // For MCQ questions, chain prefix + correct answer audio
+      const answerUrl = q.type === "multiple_choice" && q.audio_url
+        ? q.audio_url.replace(/\.mp3$/, "-incorrect.mp3")
+        : null;
+      if (answerUrl) {
+        playSequence([{ url: prefixUrl }, { delayMs: 200 }, { url: answerUrl }]);
+      } else {
+        playUrl(prefixUrl);
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase]);

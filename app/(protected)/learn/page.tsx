@@ -273,7 +273,7 @@ function LearnSession({
   devMode?: boolean;
 }) {
   const router = useRouter();
-  const { unlockAudio, stop, playUrl, playCorrectChime, playIncorrectBuzz } = useAudio();
+  const { unlockAudio, stop, playUrl, playSequence, playCorrectChime, playIncorrectBuzz } = useAudio();
   const gradeKey = levelNameToGradeKey(child?.reading_level ?? null);
 
   const [phase, setPhase] = useState<Phase>("slideshow");
@@ -315,7 +315,16 @@ function LearnSession({
     if (isCorrect) {
       playUrl(getAudioUrl("feedback", pickRandom(CORRECT_AUDIO)));
     } else {
-      playUrl(getAudioUrl("feedback", pickRandom(INCORRECT_AUDIO)));
+      const prefixUrl = getAudioUrl("feedback", pickRandom(INCORRECT_AUDIO));
+      // For MCQ questions, chain prefix + correct answer audio
+      const answerUrl = q.type === "multiple_choice" && q.audio_url
+        ? q.audio_url.replace(/\.mp3$/, "-incorrect.mp3")
+        : null;
+      if (answerUrl) {
+        playSequence([{ url: prefixUrl }, { delayMs: 200 }, { url: answerUrl }]);
+      } else {
+        playUrl(prefixUrl);
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [showFeedback]);
