@@ -824,7 +824,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
 
           {/* ── Content ── */}
           <div className="flex-1 min-h-0 overflow-hidden flex items-center justify-center px-6">
-            <div className={`w-full max-w-sm flex flex-col items-center gap-3 ${theme.contentBg}`}>
+            <div className={`w-full ${steps.some((s) => s.displayTableRow) ? "max-w-lg" : "max-w-sm"} flex flex-col items-center gap-3 ${theme.contentBg}`}>
               {(() => {
                 const hasTable = steps.some((s) => s.displayTableRow);
                 let tableRendered = false;
@@ -840,16 +840,19 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
                     if (!anyVisible) return null;
                     const hasExamples = tableSteps.some((ts) => ts.step.displayTableRow?.example);
                     const headers = tableSteps.find((ts) => ts.step.displayTableRow?.tableHeaders)?.step.displayTableRow?.tableHeaders;
+                    const cols3 = "8.5rem 1fr 1fr";
+                    const cols2 = "8.5rem 1fr";
+                    const gridCols = hasExamples ? cols3 : cols2;
                     return (
-                      <div key={`${currentSlide}-table`} className="w-full space-y-2">
+                      <div key={`${currentSlide}-table`} className="w-full space-y-4">
                         {/* Header row */}
                         {hasExamples && headers && (
                           <div
-                            className="grid items-center gap-x-3 pb-1 border-b border-zinc-200 dark:border-zinc-700"
-                            style={{ gridTemplateColumns: hasExamples ? "6.5rem 1fr 1fr" : "6.5rem 1fr" }}
+                            className="grid items-center gap-x-4 pb-2 border-b-2 border-zinc-200 dark:border-zinc-700"
+                            style={{ gridTemplateColumns: gridCols }}
                           >
                             {headers.map((h, hi) => (
-                              <span key={hi} className="text-xs font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500 text-center">
+                              <span key={hi} className="text-sm font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500 text-center">
                                 {h}
                               </span>
                             ))}
@@ -867,15 +870,15 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
                               initial={{ opacity: 0, y: 10 }}
                               animate={{ opacity: 1, y: 0 }}
                               transition={{ type: "spring", stiffness: 400, damping: 20 }}
-                              className="grid items-center gap-x-3"
-                              style={{ gridTemplateColumns: hasExamples ? "6.5rem 1fr 1fr" : "6.5rem 1fr" }}
+                              className="grid items-center gap-x-4"
+                              style={{ gridTemplateColumns: gridCols }}
                             >
                               <span
-                                className={`rounded-full py-2 text-base font-bold shadow-sm text-center ${PILL_COLORS[colorIdx % PILL_COLORS.length]}`}
+                                className={`rounded-xl py-3 text-lg font-bold shadow-sm text-center ${PILL_COLORS[colorIdx % PILL_COLORS.length]}`}
                               >
                                 {row.label}
                               </span>
-                              <span className="text-sm font-semibold text-zinc-700 dark:text-zinc-200">
+                              <span className="text-lg font-semibold text-zinc-700 dark:text-zinc-200">
                                 {row.value}
                               </span>
                               {hasExamples && (
@@ -883,7 +886,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
                                   initial={{ opacity: 0 }}
                                   animate={{ opacity: exampleShown ? 1 : 0 }}
                                   transition={{ duration: 0.4 }}
-                                  className="text-sm text-zinc-500 dark:text-zinc-400 italic"
+                                  className="text-base text-zinc-500 dark:text-zinc-400 italic"
                                 >
                                   {row.example ?? ""}
                                 </motion.span>
