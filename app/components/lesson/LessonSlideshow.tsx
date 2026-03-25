@@ -34,7 +34,13 @@ interface Step {
   checkmarkTriggerDelay?: number;   // when this step's text appears, trigger ALL checkmarks after this base delay
   checkmarkTriggerStagger?: number; // ms between each checkmark (default 400)
   highlightPills?: HighlightPill[]; // schedule per-pill bounce during this step's audio
-  displayTableRow?: { label: string; value: string }; // renders as a row in a shared table
+  displayTableRow?: {
+    label: string;
+    value: string;
+    example?: string;
+    exampleDelay?: number; // ms after row appears before example column shows
+    tableHeaders?: [string, string, string]; // column titles (only on first row)
+  };
   interaction: string;
 }
 
@@ -144,6 +150,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
   const [stepsRevealed, setStepsRevealed] = useState(0);
   const [textsVisible, setTextsVisible] = useState<Set<number>>(new Set());
   const [partsVisible, setPartsVisible] = useState<Set<string>>(new Set());
+  const [examplesVisible, setExamplesVisible] = useState<Set<number>>(new Set());
   const [showNext, setShowNext] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [playingStep, setPlayingStep] = useState(-1);
@@ -231,6 +238,21 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
         }
       }
 
+      // Schedule table example column reveal
+      if (step.displayTableRow?.example) {
+        const rowDelay = step.displayDelay ?? 0;
+        const exDelay = rowDelay + (step.displayTableRow.exampleDelay ?? 0);
+        if (exDelay > 0) {
+          const t = setTimeout(() => {
+            if (runIdRef.current !== runId) return;
+            setExamplesVisible((prev) => new Set(prev).add(stepIdx));
+          }, exDelay);
+          textTimersRef.current.push(t);
+        } else {
+          setExamplesVisible((prev) => new Set(prev).add(stepIdx));
+        }
+      }
+
       if (step.displayParts) {
         for (let p = 0; p < step.displayParts.length; p++) {
           const part = step.displayParts[p];
@@ -269,6 +291,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
     const runId = ++runIdRef.current;
     setStepsRevealed(0);
     setTextsVisible(new Set());
+    setExamplesVisible(new Set());
     setPlayingStep(-1);
     setHighlightedPill(-1);
     setPartsVisible(new Set());
@@ -297,12 +320,15 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
     setStepsRevealed(steps.length);
     const allTexts = new Set<number>();
     const allParts = new Set<string>();
+    const allExamples = new Set<number>();
     steps.forEach((step, i) => {
       if (step.displayText) allTexts.add(i);
       step.displayParts?.forEach((_, p) => allParts.add(`${i}-${p}`));
+      if (step.displayTableRow?.example) allExamples.add(i);
     });
     setTextsVisible(allTexts);
     setPartsVisible(allParts);
+    setExamplesVisible(allExamples);
     setIsPlaying(false);
     setPlayingStep(-1);
     setHighlightedPill(-1);
@@ -812,13 +838,29 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
                       .filter(Boolean) as { step: Step; idx: number }[];
                     const anyVisible = tableSteps.some((ts) => textsVisible.has(ts.idx));
                     if (!anyVisible) return null;
+                    const hasExamples = tableSteps.some((ts) => ts.step.displayTableRow?.example);
+                    const headers = tableSteps.find((ts) => ts.step.displayTableRow?.tableHeaders)?.step.displayTableRow?.tableHeaders;
                     return (
                       <div key={`${currentSlide}-table`} className="w-full space-y-2">
+                        {/* Header row */}
+                        {hasExamples && headers && (
+                          <div
+                            className="grid items-center gap-x-3 pb-1 border-b border-zinc-200 dark:border-zinc-700"
+                            style={{ gridTemplateColumns: hasExamples ? "6.5rem 1fr 1fr" : "6.5rem 1fr" }}
+                          >
+                            {headers.map((h, hi) => (
+                              <span key={hi} className="text-xs font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500 text-center">
+                                {h}
+                              </span>
+                            ))}
+                          </div>
+                        )}
                         {tableSteps.map((ts) => {
                           const visible = textsVisible.has(ts.idx);
                           if (!visible) return null;
                           const row = ts.step.displayTableRow!;
                           const colorIdx = tableSteps.indexOf(ts);
+                          const exampleShown = examplesVisible.has(ts.idx);
                           return (
                             <motion.div
                               key={`${currentSlide}-table-${ts.idx}`}
@@ -826,16 +868,26 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
                               animate={{ opacity: 1, y: 0 }}
                               transition={{ type: "spring", stiffness: 400, damping: 20 }}
                               className="grid items-center gap-x-3"
-                              style={{ gridTemplateColumns: "6.5rem 1fr" }}
+                              style={{ gridTemplateColumns: hasExamples ? "6.5rem 1fr 1fr" : "6.5rem 1fr" }}
                             >
                               <span
                                 className={`rounded-full py-2 text-base font-bold shadow-sm text-center ${PILL_COLORS[colorIdx % PILL_COLORS.length]}`}
                               >
                                 {row.label}
                               </span>
-                              <span className="text-lg font-semibold text-zinc-700 dark:text-zinc-200">
+                              <span className="text-sm font-semibold text-zinc-700 dark:text-zinc-200">
                                 {row.value}
                               </span>
+                              {hasExamples && (
+                                <motion.span
+                                  initial={{ opacity: 0 }}
+                                  animate={{ opacity: exampleShown ? 1 : 0 }}
+                                  transition={{ duration: 0.4 }}
+                                  className="text-sm text-zinc-500 dark:text-zinc-400 italic"
+                                >
+                                  {row.example ?? ""}
+                                </motion.span>
+                              )}
                             </motion.div>
                           );
                         })}
