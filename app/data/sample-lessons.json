@@ -1246,7 +1246,7 @@
             "ttsScript": "We can use clues in the story to figure out what new words mean. It's like being a word detective!",
             "interaction": "'Word Detective!' pops up in sparkly letters.",
             "displayText": "Word Detective!",
-            "displayDelay": 4800
+            "displayDelay": 5000
           },
           {
             "sub": "c",
@@ -1324,7 +1324,7 @@
             "ttsScript": "Hmm, what does famished mean? Let's look at the clues. He ate FIVE carrots! That's a lot!",
             "interaction": "'Five carrots' highlights. Magnifying glass circles the clue.",
             "displayText": "Five carrots",
-            "displayDelay": 4080
+            "displayDelay": 4500
           },
           {
             "sub": "d",
@@ -1446,7 +1446,7 @@
             "displayParts": [
               {
                 "text": "Storybooks",
-                "delay": 300
+                "delay": 500
               },
               {
                 "text": "Poems",
@@ -1481,17 +1481,19 @@
             "sub": "b",
             "audioFile": "audio/lessons/RL.K.5/S2b.mp3",
             "ttsScript": "It usually has a beginning, a middle, and an end. Like an adventure!",
-            "interaction": "Pill: [Storybook = Beginning → Middle → End] pops in blue.",
-            "displayText": "Storybook means Beginning → Middle → End",
-            "displayDelay": 3250
+            "interaction": "Table row: Storybook = Beginning → Middle → End.",
+            "displayText": "Storybook",
+            "displayDelay": 3250,
+            "displayTableRow": { "label": "Storybook", "value": "Beginning → Middle → End" }
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RL.K.5/S2c.mp3",
             "ttsScript": "A poem uses special words that sometimes rhyme! Poems can be short and fun to read out loud.",
-            "interaction": "Pill: [Poem = Rhymes & Special Words] pops in pink.",
-            "displayText": "Poem means Rhymes & Special Words",
-            "displayDelay": 4320
+            "interaction": "Table row: Poem = Rhymes & Special Words.",
+            "displayText": "Poem",
+            "displayDelay": 4320,
+            "displayTableRow": { "label": "Poem", "value": "Rhymes & Special Words" }
           },
           {
             "sub": "d",
@@ -1593,7 +1595,7 @@
             "ttsScript": "Now let's practice telling them apart. Pay attention to how the words look and sound. Let's go!",
             "interaction": "'Let's Go!' button pulses.",
             "displayText": "Let's sort the books!",
-            "displayDelay": 4080
+            "displayDelay": 4500
           }
         ],
         "heading": "Time to Practice!",
@@ -1648,8 +1650,22 @@
             "sub": "b",
             "audioFile": "audio/lessons/RL.K.6/S1b.mp3",
             "ttsScript": "One person writes the words. Another person draws the pictures. They work together!",
-            "interaction": "Two character icons appear: a pencil (writer) and paintbrush (drawer).",
-            "displayText": ""
+            "interaction": "Two pills appear timed to audio, each bouncing when spoken.",
+            "displayText": "",
+            "displayParts": [
+              {
+                "text": "Writes Words",
+                "delay": 1500
+              },
+              {
+                "text": "Draws Pictures",
+                "delay": 3500
+              }
+            ],
+            "highlightPills": [
+              { "pill": 0, "delay": 1500 },
+              { "pill": 1, "delay": 3500 }
+            ]
           },
           {
             "sub": "c",
@@ -1678,17 +1694,19 @@
             "sub": "b",
             "audioFile": "audio/lessons/RL.K.6/S2b.mp3",
             "ttsScript": "The author thinks up the characters, the setting, and everything that happens!",
-            "interaction": "Pill: [Author = Writes the words] pops in blue.",
-            "displayText": "Author means Writes the words",
-            "displayDelay": 3000
+            "interaction": "Table row: Author = Writes the words.",
+            "displayText": "Author",
+            "displayDelay": 500,
+            "displayTableRow": { "label": "Author", "value": "Writes the words" }
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RL.K.6/S2c.mp3",
             "ttsScript": "The person who draws the pictures is called the illustrator.",
-            "interaction": "Pill: [Illustrator = Draws the pictures] pops in green.",
-            "displayText": "Illustrator means Draws the pictures",
-            "displayDelay": 2500
+            "interaction": "Table row: Illustrator = Draws the pictures.",
+            "displayText": "Illustrator",
+            "displayDelay": 3500,
+            "displayTableRow": { "label": "Illustrator", "value": "Draws the pictures" }
           },
           {
             "sub": "d",
