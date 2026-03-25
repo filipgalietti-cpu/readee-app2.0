@@ -1150,7 +1150,7 @@
             "ttsScript": "Let's break it down! Characters can be people or animals in a story.",
             "interaction": "Heading appears. Table row 1 appears.",
             "displayText": "Characters",
-            "displayDelay": 1500,
+            "displayDelay": 1200,
             "displayTableRow": {
               "label": "Characters",
               "value": "Who is in the story",
@@ -1165,12 +1165,12 @@
             "ttsScript": "The setting is the place and time. Like a school, a beach, or a forest!",
             "interaction": "Table row 2 appears.",
             "displayText": "Setting",
-            "displayDelay": 1200,
+            "displayDelay": 500,
             "displayTableRow": {
               "label": "Setting",
               "value": "Place and time",
               "example": "school, beach, forest",
-              "exampleDelay": 1500
+              "exampleDelay": 1700
             }
           },
           {
@@ -1179,12 +1179,12 @@
             "ttsScript": "Events are the things that happen in the story. Like a race, a party, or an adventure!",
             "interaction": "Table row 3 appears.",
             "displayText": "Events",
-            "displayDelay": 800,
+            "displayDelay": 400,
             "displayTableRow": {
               "label": "Events",
               "value": "What happens",
               "example": "race, party, adventure",
-              "exampleDelay": 1700
+              "exampleDelay": 2400
             }
           },
           {
