@@ -848,11 +848,11 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
                         {/* Header row */}
                         {hasExamples && headers && (
                           <div
-                            className="grid items-center gap-x-4 pb-2 border-b-2 border-zinc-200 dark:border-zinc-700"
+                            className="grid items-center gap-x-4 pb-2 border-b-2 border-indigo-200 dark:border-indigo-700"
                             style={{ gridTemplateColumns: gridCols }}
                           >
                             {headers.map((h, hi) => (
-                              <span key={hi} className="text-sm font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500 text-center">
+                              <span key={hi} className="text-sm font-bold uppercase tracking-wider text-indigo-500 dark:text-indigo-400 text-center">
                                 {h}
                               </span>
                             ))}
