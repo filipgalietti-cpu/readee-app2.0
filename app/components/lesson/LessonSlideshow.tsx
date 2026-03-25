@@ -35,6 +35,7 @@ interface Step {
   checkmarkTriggerDelay?: number;   // when this step's text appears, trigger ALL checkmarks after this base delay
   checkmarkTriggerStagger?: number; // ms between each checkmark (default 400)
   highlightPills?: HighlightPill[]; // schedule per-pill bounce during this step's audio
+  highlightWord?: { word: string; delay: number }; // underline a word in a visible passage after delay
   displayTableRow?: {
     label: string;
     value: string;
@@ -156,6 +157,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
   const [isPlaying, setIsPlaying] = useState(false);
   const [playingStep, setPlayingStep] = useState(-1);
   const [highlightedPill, setHighlightedPill] = useState(-1);
+  const [highlightedWord, setHighlightedWord] = useState<string | null>(null);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const textTimersRef = useRef<ReturnType<typeof setTimeout>[]>([]);
   const runIdRef = useRef(0);
@@ -224,6 +226,16 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
             textTimersRef.current.push(t);
           }
         }
+      }
+
+      // Schedule word highlight (underline) in a visible passage
+      if (step.highlightWord) {
+        const hw = step.highlightWord;
+        const t = setTimeout(() => {
+          if (runIdRef.current !== runId) return;
+          setHighlightedWord(hw.word);
+        }, hw.delay);
+        textTimersRef.current.push(t);
       }
 
       if (step.displayText) {
@@ -295,6 +307,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
     setExamplesVisible(new Set());
     setPlayingStep(-1);
     setHighlightedPill(-1);
+    setHighlightedWord(null);
     setPartsVisible(new Set());
     setShowNext(false);
     setIsPlaying(false);
@@ -695,6 +708,25 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
 
     // Passage style — compact quote card for full sentences
     if (step.displayStyle === "passage") {
+      const text = step.displayText!;
+      const renderPassageText = () => {
+        if (!highlightedWord) return <>&ldquo;{text}&rdquo;</>;
+        const regex = new RegExp(`(${highlightedWord})`, "i");
+        const segments = text.split(regex);
+        return (
+          <>
+            &ldquo;
+            {segments.map((seg, si) =>
+              regex.test(seg) ? (
+                <span key={si} className="underline decoration-2 decoration-indigo-500 underline-offset-4">{seg}</span>
+              ) : (
+                <span key={si}>{seg}</span>
+              )
+            )}
+            &rdquo;
+          </>
+        );
+      };
       return (
         <motion.div
           key={`${currentSlide}-${step.sub}`}
@@ -704,7 +736,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
           className="w-full rounded-2xl bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-800 px-5 py-4 text-center"
         >
           <p className="text-lg sm:text-xl font-semibold text-zinc-800 dark:text-zinc-200 leading-relaxed whitespace-pre-line">
-            &ldquo;{step.displayText}&rdquo;
+            {renderPassageText()}
           </p>
         </motion.div>
       );

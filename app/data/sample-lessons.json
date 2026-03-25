@@ -1395,6 +1395,7 @@
             "audioFile": "audio/lessons/RL.K.4/S3c.mp3",
             "ttsScript": "Hmm, what does famished mean? Let's look at the clues. He ate FIVE carrots! That's a lot!",
             "interaction": "'Five carrots' highlights. Magnifying glass circles the clue.",
+            "highlightWord": { "word": "famished", "delay": 1200 },
             "displayText": "Five carrots",
             "displayDelay": 5500
           },
