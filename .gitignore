@@ -38,6 +38,7 @@ yarn-error.log*
 !/public/images/backgrounds/
 !/public/images/shop/
 !/public/images/dashboard/
+!/public/images/avatars/
 !/public/images/auth-bg.png
 !/public/images/bunny-hero.png
 /public/audio/
