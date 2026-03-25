@@ -1396,7 +1396,7 @@
             "ttsScript": "Hmm, what does famished mean? Let's look at the clues. He ate FIVE carrots! That's a lot!",
             "interaction": "'Five carrots' highlights. Magnifying glass circles the clue.",
             "displayText": "Five carrots",
-            "displayDelay": 4500
+            "displayDelay": 5500
           },
           {
             "sub": "d",

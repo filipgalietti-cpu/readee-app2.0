@@ -807,13 +807,19 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
           className="flex-1 flex flex-col min-h-0"
         >
           {/* ── Image ── */}
-          <div className="flex-shrink-0 flex justify-center px-6 pt-1">
-            <LoadingImage
-              src={imageUrl}
-              className={`w-full h-full object-cover ${isPracticeIntro ? "max-h-[45vh]" : "max-h-[38vh]"}`}
-              containerClassName={`rounded-2xl overflow-hidden shadow-lg ${isPracticeIntro ? "max-h-[45vh]" : "max-h-[38vh]"}`}
-            />
-          </div>
+          {(() => {
+            const contentItems = steps.filter(s => s.displayText || (s.displayParts && s.displayParts.length > 0) || s.displayTableRow).length;
+            const imgH = isPracticeIntro ? "max-h-[45vh]" : contentItems >= 3 ? "max-h-[25vh]" : "max-h-[38vh]";
+            return (
+              <div className="flex-shrink-0 flex justify-center px-6 pt-1">
+                <LoadingImage
+                  src={imageUrl}
+                  className={`w-full h-full object-cover ${imgH}`}
+                  containerClassName={`rounded-2xl overflow-hidden shadow-lg ${imgH}`}
+                />
+              </div>
+            );
+          })()}
 
           {/* ── Heading + speaker ── */}
           <div className="flex-shrink-0 px-6 pt-1 pb-0 flex items-center justify-center gap-2">
