@@ -21,6 +21,7 @@ import { GetMoreCarrotsModal } from "@/app/_components/GetMoreCarrotsModal";
 import { usePracticeStore } from "@/lib/stores/practice-store";
 import { Carrot } from "lucide-react";
 import { getShopIcon } from "@/lib/data/shop-icons";
+import { AVATAR_IMAGES } from "@/lib/utils/get-child-avatar";
 
 export default function ShopPage() {
   return (
@@ -369,13 +370,19 @@ function ShopItemCard({
           : "border-zinc-100 dark:border-slate-800 bg-zinc-50 dark:bg-slate-900 opacity-70 hover:opacity-100"
       }`}
     >
-      {/* Icon */}
+      {/* Icon / Avatar image */}
       <motion.div
         className="mb-2"
         animate={justBought ? { scale: [1, 1.4, 1], rotate: [0, 10, -10, 0] } : {}}
         transition={{ duration: 0.5 }}
       >
-        {(() => { const ItemIcon = getShopIcon(item.icon); return <ItemIcon className="w-10 h-10 text-indigo-500" strokeWidth={1.5} />; })()}
+        {AVATAR_IMAGES[item.id] ? (
+          <div className="w-14 h-14 rounded-xl overflow-hidden">
+            <img src={AVATAR_IMAGES[item.id]} alt={item.name} className="w-full h-full object-cover" draggable={false} />
+          </div>
+        ) : (
+          (() => { const ItemIcon = getShopIcon(item.icon); return <ItemIcon className="w-10 h-10 text-indigo-500" strokeWidth={1.5} />; })()
+        )}
       </motion.div>
 
       {/* Name */}

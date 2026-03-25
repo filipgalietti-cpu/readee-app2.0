@@ -14,7 +14,7 @@ import { safeValidate } from "@/lib/validate";
 import { ChildSchema } from "@/lib/schemas";
 import { staggerContainer, slideUp, staggerFast } from "@/lib/motion/variants";
 import { getStandardsForGrade } from "@/lib/data/all-standards";
-import { getChildAvatar, DEFAULT_AVATARS } from "@/lib/utils/get-child-avatar";
+import { getChildAvatarImage, AVATAR_IMAGES, DEFAULT_AVATARS } from "@/lib/utils/get-child-avatar";
 import { getItemsByCategory, BACKGROUND_IMAGES } from "@/lib/data/shop-items";
 import type { ShopPurchase, EquippedItems } from "@/lib/db/types";
 import { Target, Puzzle, BookOpen, Map, Carrot, Flame, Sun, CloudSun, Moon, Sparkles, Star, Rocket, Trophy, BarChart3, Sprout } from "lucide-react";
@@ -386,8 +386,8 @@ function ChildSelector({
           >
             <div className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 hover:border-indigo-300 dark:hover:border-indigo-700 hover:shadow-md transition-all duration-200 group-hover:scale-[1.02] space-y-4">
               <div className="flex items-center gap-4">
-                <div className="w-14 h-14 rounded-xl bg-indigo-50 flex items-center justify-center text-2xl flex-shrink-0">
-                  {getChildAvatar(child, index)}
+                <div className="w-14 h-14 rounded-xl bg-indigo-50 flex items-center justify-center flex-shrink-0 overflow-hidden">
+                  <img src={getChildAvatarImage(child, index)} alt={child.first_name} className="w-full h-full object-cover" draggable={false} />
                 </div>
                 <div className="flex-1 min-w-0">
                   <h2 className="text-lg font-bold text-zinc-900 dark:text-slate-100 truncate">
@@ -441,7 +441,7 @@ function ChildDashboard({
   const [currentChild, setCurrentChild] = useState(child);
   const [avatarPickerOpen, setAvatarPickerOpen] = useState(false);
   const [purchases, setPurchases] = useState<ShopPurchase[]>([]);
-  const avatar = getChildAvatar(currentChild, childIndex);
+  const avatarSrc = getChildAvatarImage(currentChild, childIndex);
   const hasMultiple = children.length > 1;
   const greeting = getGreeting();
   const motivation = useMemo(() => MOTIVATIONAL[Math.floor(Math.random() * MOTIVATIONAL.length)], []);
@@ -680,7 +680,7 @@ function ChildDashboard({
           >
             {children.map((c, i) => (
               <option key={c.id} value={c.id}>
-                {getChildAvatar(c, i)} {c.first_name}
+                {c.first_name}
               </option>
             ))}
           </select>
@@ -692,10 +692,10 @@ function ChildDashboard({
         <div className="relative mx-auto mb-4 w-24">
           <button
             onClick={() => setAvatarPickerOpen(true)}
-            className="w-24 h-24 rounded-2xl bg-gradient-to-br from-indigo-50 to-violet-50 flex items-center justify-center text-5xl shadow-sm hover:shadow-md hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
+            className="w-24 h-24 rounded-2xl bg-gradient-to-br from-indigo-50 to-violet-50 flex items-center justify-center shadow-sm hover:shadow-md hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer overflow-hidden"
             aria-label="Change avatar"
           >
-            {avatar}
+            <img src={avatarSrc} alt={currentChild.first_name} className="w-full h-full object-cover" draggable={false} />
           </button>
           <div className="absolute -bottom-1 -right-1 w-7 h-7 rounded-full bg-indigo-600 flex items-center justify-center shadow-md pointer-events-none">
             <svg className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -735,38 +735,40 @@ function ChildDashboard({
             <div className="px-6 pb-2">
               <p className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3">Defaults</p>
               <div className="grid grid-cols-5 gap-3">
-                {DEFAULT_AVATARS.map((emoji, i) => {
+                {DEFAULT_AVATARS.map((_emoji, i) => {
                   const id = `default_${i}`;
+                  const imgSrc = AVATAR_IMAGES[id];
                   const isActive = equippedAvatarId === id || (!equippedAvatarId && i === childIndex % DEFAULT_AVATARS.length);
                   return (
                     <button
                       key={id}
                       onClick={() => handleEquipAvatar(i === childIndex % DEFAULT_AVATARS.length ? null : id)}
-                      className={`aspect-square rounded-2xl flex items-center justify-center text-3xl transition-all duration-200 ${
+                      className={`aspect-square rounded-2xl flex items-center justify-center overflow-hidden transition-all duration-200 ${
                         isActive
                           ? "bg-indigo-100 ring-2 ring-indigo-500 scale-110"
                           : "bg-zinc-100 hover:bg-zinc-200 hover:scale-105"
                       }`}
                     >
-                      {emoji}
+                      <img src={imgSrc} alt={`Avatar ${i + 1}`} className="w-full h-full object-cover" draggable={false} />
                     </button>
                   );
                 })}
               </div>
             </div>
 
-            <div className="px-6 pt-4 pb-6">
+            <div className="px-6 pt-4 pb-6 max-h-[40vh] overflow-y-auto">
               <p className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3">Shop Avatars</p>
               <div className="grid grid-cols-5 gap-3">
                 {shopAvatars.map((item) => {
                   const owned = ownedAvatarIds.has(item.id);
                   const isActive = equippedAvatarId === item.id;
+                  const imgSrc = AVATAR_IMAGES[item.id];
                   return (
                     <button
                       key={item.id}
                       onClick={() => owned && handleEquipAvatar(item.id)}
                       disabled={!owned}
-                      className={`aspect-square rounded-2xl flex items-center justify-center text-3xl relative transition-all duration-200 ${
+                      className={`aspect-square rounded-2xl flex items-center justify-center relative overflow-hidden transition-all duration-200 ${
                         isActive
                           ? "bg-indigo-100 ring-2 ring-indigo-500 scale-110"
                           : owned
@@ -775,7 +777,11 @@ function ChildDashboard({
                       }`}
                       title={owned ? item.name : `${item.name} — ${item.price} carrots`}
                     >
-                      {(() => { const SI = getShopIcon(item.icon); return <SI className="w-7 h-7 text-indigo-500" strokeWidth={1.5} />; })()}
+                      {imgSrc ? (
+                        <img src={imgSrc} alt={item.name} className="w-full h-full object-cover" draggable={false} />
+                      ) : (
+                        (() => { const SI = getShopIcon(item.icon); return <SI className="w-7 h-7 text-indigo-500" strokeWidth={1.5} />; })()
+                      )}
                       {!owned && (
                         <span className="absolute bottom-0.5 right-0.5">
                           <svg className="w-2.5 h-2.5 text-zinc-400" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" /></svg>

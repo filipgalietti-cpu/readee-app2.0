@@ -10,6 +10,7 @@ import {
   Smile, Palette, Image, Gift, Zap, Carrot,
   Sunset, Sunrise, CircleDot, Tent, Telescope,
   MountainSnow, Palmtree, TreePalm,
+  Rabbit, Swords, Gamepad2,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -70,6 +71,9 @@ export const ICON_MAP: Record<string, LucideIcon> = {
   "mountain-snow": MountainSnow,
   palmtree: Palmtree,
   "tree-palm": TreePalm,
+  rabbit: Rabbit,
+  swords: Swords,
+  "gamepad-2": Gamepad2,
 };
 
 export function getShopIcon(name: string): LucideIcon {

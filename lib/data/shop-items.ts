@@ -19,12 +19,21 @@ export const SHOP_CATEGORIES: { key: ShopCategory; label: string; icon: string }
 
 export const SHOP_ITEMS: ShopItem[] = [
   // ── Avatars ──
-  { id: "avatar_fox",       name: "Fox",        icon: "cat",      category: "avatars", price: 25,  description: "A clever little fox" },
-  { id: "avatar_owl",       name: "Owl",        icon: "bird",     category: "avatars", price: 50,  description: "A wise reading owl" },
-  { id: "avatar_unicorn",   name: "Unicorn",    icon: "sparkles", category: "avatars", price: 75,  description: "A magical unicorn" },
-  { id: "avatar_dragon",    name: "Dragon",     icon: "flame",    category: "avatars", price: 100, description: "A friendly book dragon" },
-  { id: "avatar_astronaut", name: "Astronaut",  icon: "rocket",   category: "avatars", price: 125, description: "A space explorer" },
-  { id: "avatar_robot",     name: "Robot",      icon: "bot",      category: "avatars", price: 150, description: "A reading robot" },
+  { id: "avatar_fox",       name: "Rusty",      icon: "cat",      category: "avatars", price: 25,  description: "A cool fox with a scarf" },
+  { id: "avatar_rabbit",    name: "Dash",       icon: "rabbit",   category: "avatars", price: 30,  description: "A speedy little rabbit" },
+  { id: "avatar_fish",      name: "Bubbles",    icon: "fish",     category: "avatars", price: 40,  description: "A colorful tropical fish" },
+  { id: "avatar_owl",       name: "Hoot",       icon: "bird",     category: "avatars", price: 50,  description: "A wise owl with glasses" },
+  { id: "avatar_unicorn",   name: "Sparkle",    icon: "sparkles", category: "avatars", price: 75,  description: "A magical rainbow unicorn" },
+  { id: "avatar_phoenix",   name: "Ember",      icon: "flame",    category: "avatars", price: 75,  description: "An adorable baby phoenix" },
+  { id: "avatar_dragon",    name: "Blaze",      icon: "flame",    category: "avatars", price: 100, description: "A friendly baby dragon" },
+  { id: "avatar_pirate",    name: "Captain",    icon: "skull",    category: "avatars", price: 100, description: "A swashbuckling pirate kid" },
+  { id: "avatar_astronaut", name: "Nova",       icon: "rocket",   category: "avatars", price: 125, description: "A brave space explorer" },
+  { id: "avatar_ninja",     name: "Shadow",     icon: "swords",   category: "avatars", price: 125, description: "A stealthy ninja kid" },
+  { id: "avatar_robot",     name: "Bolt",       icon: "bot",      category: "avatars", price: 150, description: "A friendly reading robot" },
+  { id: "avatar_leopard",   name: "Frost",      icon: "snowflake", category: "avatars", price: 150, description: "A majestic snow leopard" },
+  { id: "avatar_dino",      name: "Rex",        icon: "bone",     category: "avatars", price: 175, description: "A goofy friendly dinosaur" },
+  { id: "avatar_pixel",     name: "Pixel",      icon: "gamepad-2", category: "avatars", price: 200, description: "A retro game character" },
+  { id: "avatar_lion",      name: "King Leo",   icon: "crown",    category: "avatars", price: 250, description: "A regal lion with a crown" },
 
   // ── Readee Outfits ──
   { id: "outfit_cape",       name: "Cape",        icon: "shield",   category: "outfits", price: 30,  description: "A hero's cape for Readee" },

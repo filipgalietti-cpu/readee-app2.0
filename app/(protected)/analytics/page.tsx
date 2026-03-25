@@ -11,7 +11,7 @@ import { safeValidate } from "@/lib/validate";
 import { ChildSchema } from "@/lib/schemas";
 import { getAllStandards as fetchAllStandards } from "@/lib/data/all-standards";
 import { useChildStore } from "@/lib/stores/child-store";
-import { getChildAvatar } from "@/lib/utils/get-child-avatar";
+import { getChildAvatarImage } from "@/lib/utils/get-child-avatar";
 import { BookOpen, Newspaper, Type, MessageCircle, BarChart3, Rocket, TrendingUp, Zap, Sprout, Star, FileText, Target, Carrot } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -223,7 +223,7 @@ function AnalyticsDashboard({ child }: { child: Child }) {
   const [userPlan, setUserPlan] = useState<string>("free");
   const storeChildren = useChildStore((s) => s.children);
   const childIndex = storeChildren.findIndex((c) => c.id === child.id);
-  const avatar = getChildAvatar(child, childIndex === -1 ? 0 : childIndex);
+  const avatarSrc = getChildAvatarImage(child, childIndex === -1 ? 0 : childIndex);
 
   // Build standard friendly name map
   const standardNameMap = useMemo(() => {
@@ -390,7 +390,7 @@ function AnalyticsDashboard({ child }: { child: Child }) {
         animate="visible"
       >
         <motion.div variants={slideUp}>
-          <div className="text-6xl mb-4">{avatar}</div>
+          <div className="w-20 h-20 rounded-2xl overflow-hidden mx-auto mb-4"><img src={avatarSrc} alt={child.first_name} className="w-full h-full object-cover" draggable={false} /></div>
           <h1 className="text-2xl font-bold text-zinc-900 dark:text-slate-100 mb-2">
             {child.first_name}&apos;s Analytics
           </h1>
@@ -429,8 +429,8 @@ function AnalyticsDashboard({ child }: { child: Child }) {
       {/* ═══ Section 1 — Header ═══ */}
       <motion.div variants={slideUp} className="pt-6 mb-6">
         <div className="flex items-center gap-4 mb-4">
-          <div className="w-14 h-14 rounded-2xl bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-3xl flex-shrink-0">
-            {avatar}
+          <div className="w-14 h-14 rounded-2xl bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center flex-shrink-0 overflow-hidden">
+            <img src={avatarSrc} alt={child.first_name} className="w-full h-full object-cover" draggable={false} />
           </div>
           <div className="flex-1 min-w-0">
             <h1 className="text-2xl font-bold text-zinc-900 dark:text-slate-100 tracking-tight">
