@@ -17,6 +17,11 @@ interface DisplayPart {
   delay: number; // ms from step start
 }
 
+interface HighlightPill {
+  pill: number;  // index of pill to bounce
+  delay: number; // ms from step start
+}
+
 interface Step {
   sub: string;
   audioFile: string;
@@ -28,6 +33,7 @@ interface Step {
   checkmarkDelay?: number;     // ms delay before showing ✓ on displayText pill (after text visible)
   checkmarkTriggerDelay?: number;   // when this step's text appears, trigger ALL checkmarks after this base delay
   checkmarkTriggerStagger?: number; // ms between each checkmark (default 400)
+  highlightPills?: HighlightPill[]; // schedule per-pill bounce during this step's audio
   interaction: string;
 }
 
@@ -140,6 +146,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
   const [showNext, setShowNext] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [playingStep, setPlayingStep] = useState(-1);
+  const [highlightedPill, setHighlightedPill] = useState(-1);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const textTimersRef = useRef<ReturnType<typeof setTimeout>[]>([]);
   const runIdRef = useRef(0);
@@ -180,6 +187,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
       if (stepIdx >= slideSteps.length) {
         setIsPlaying(false);
         setPlayingStep(-1);
+        setHighlightedPill(-1);
         setShowNext(true);
         return;
       }
@@ -188,6 +196,26 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
       setStepsRevealed(stepIdx + 1);
       setIsPlaying(true);
       setPlayingStep(stepIdx);
+
+      // Clear previous highlight unless this step has its own schedule
+      if (!step.highlightPills) {
+        setHighlightedPill(-1);
+      }
+
+      // Schedule per-pill highlights
+      if (step.highlightPills) {
+        for (const hp of step.highlightPills) {
+          if (hp.delay === 0) {
+            setHighlightedPill(hp.pill);
+          } else {
+            const t = setTimeout(() => {
+              if (runIdRef.current !== runId) return;
+              setHighlightedPill(hp.pill);
+            }, hp.delay);
+            textTimersRef.current.push(t);
+          }
+        }
+      }
 
       if (step.displayText) {
         const delay = step.displayDelay ?? 0;
@@ -241,6 +269,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
     setStepsRevealed(0);
     setTextsVisible(new Set());
     setPlayingStep(-1);
+    setHighlightedPill(-1);
     setPartsVisible(new Set());
     setShowNext(false);
     setIsPlaying(false);
@@ -275,6 +304,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
     setPartsVisible(allParts);
     setIsPlaying(false);
     setPlayingStep(-1);
+    setHighlightedPill(-1);
     setShowNext(true);
   }, [steps, clearTimer]);
 
@@ -542,14 +572,11 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
     }
 
     // ── 3+ items: colorful horizontal pills ──
-    const isShortPills = parts.every(p => p.text.length <= 10);
-    // Per-pill highlight: offset 0 → pill 0 bounces, offset 1 → pill 1+ bounce, etc.
-    const pillStepOffset = isShortPills && playingStep >= i ? playingStep - i : -1;
     return (
       <div key={`${currentSlide}-${step.sub}`} className="flex flex-wrap items-center justify-center gap-3">
         {parts.map((part, p) => {
           if (!partsVisible.has(`${i}-${p}`)) return null;
-          const isBouncing = pillStepOffset === 0 ? p === 0 : pillStepOffset > 0 && p >= pillStepOffset;
+          const isBouncing = highlightedPill === p;
           return (
             <motion.span
               key={`${currentSlide}-${step.sub}-${p}-${isBouncing}`}

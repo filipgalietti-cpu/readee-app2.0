@@ -1060,6 +1060,9 @@
                 "text": "Events",
                 "delay": 1100
               }
+            ],
+            "highlightPills": [
+              { "pill": 0, "delay": 2000 }
             ]
           },
           {
@@ -1067,7 +1070,11 @@
             "audioFile": "audio/lessons/RL.K.3/S1c.mp3",
             "ttsScript": "The setting is where it happens. And events are what happens. Let's learn about all three!",
             "interaction": "Setting pill bounces, then Events pill bounces.",
-            "displayText": ""
+            "displayText": "",
+            "highlightPills": [
+              { "pill": 1, "delay": 0 },
+              { "pill": 2, "delay": 2500 }
+            ]
           }
         ],
         "heading": "Let's Learn About Stories!",
