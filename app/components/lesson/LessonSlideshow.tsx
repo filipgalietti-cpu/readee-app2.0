@@ -34,6 +34,7 @@ interface Step {
   checkmarkTriggerDelay?: number;   // when this step's text appears, trigger ALL checkmarks after this base delay
   checkmarkTriggerStagger?: number; // ms between each checkmark (default 400)
   highlightPills?: HighlightPill[]; // schedule per-pill bounce during this step's audio
+  displayTableRow?: { label: string; value: string }; // renders as a row in a shared table
   interaction: string;
 }
 
@@ -798,12 +799,58 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
           {/* ── Content ── */}
           <div className="flex-1 min-h-0 overflow-hidden flex items-center justify-center px-6">
             <div className={`w-full max-w-sm flex flex-col items-center gap-3 ${theme.contentBg}`}>
-              {steps.map((step, i) => {
-                if (step.displayParts && step.displayParts.length > 0) {
-                  return renderParts(step, i);
-                }
-                return renderText(step, i);
-              })}
+              {(() => {
+                const hasTable = steps.some((s) => s.displayTableRow);
+                let tableRendered = false;
+                return steps.map((step, i) => {
+                  if (step.displayTableRow) {
+                    if (tableRendered) return null;
+                    tableRendered = true;
+                    // Collect all table rows
+                    const tableSteps = steps
+                      .map((s, idx) => (s.displayTableRow ? { step: s, idx } : null))
+                      .filter(Boolean) as { step: Step; idx: number }[];
+                    const anyVisible = tableSteps.some((ts) => textsVisible.has(ts.idx));
+                    if (!anyVisible) return null;
+                    return (
+                      <div key={`${currentSlide}-table`} className="w-full space-y-2">
+                        {tableSteps.map((ts) => {
+                          const visible = textsVisible.has(ts.idx);
+                          if (!visible) return null;
+                          const row = ts.step.displayTableRow!;
+                          const colorIdx = tableSteps.indexOf(ts);
+                          return (
+                            <motion.div
+                              key={`${currentSlide}-table-${ts.idx}`}
+                              initial={{ opacity: 0, y: 10 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ type: "spring", stiffness: 400, damping: 20 }}
+                              className="grid items-center gap-x-3"
+                              style={{ gridTemplateColumns: "6.5rem 1fr" }}
+                            >
+                              <span
+                                className={`rounded-full py-2 text-base font-bold shadow-sm text-center ${PILL_COLORS[colorIdx % PILL_COLORS.length]}`}
+                              >
+                                {row.label}
+                              </span>
+                              <span className="text-lg font-semibold text-zinc-700 dark:text-zinc-200">
+                                {row.value}
+                              </span>
+                            </motion.div>
+                          );
+                        })}
+                      </div>
+                    );
+                  }
+                  if (!hasTable && step.displayParts && step.displayParts.length > 0) {
+                    return renderParts(step, i);
+                  }
+                  if (!step.displayTableRow) {
+                    return renderText(step, i);
+                  }
+                  return null;
+                });
+              })()}
             </div>
           </div>
 

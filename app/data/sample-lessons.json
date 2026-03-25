@@ -43,6 +43,11 @@
                 "delay": 5000
               }
             ],
+            "highlightPills": [
+              { "pill": 0, "delay": 1200 },
+              { "pill": 1, "delay": 3200 },
+              { "pill": 2, "delay": 5000 }
+            ],
             "interaction": "Three icons pop in one by one: a person icon (Who), an action icon (What), a map pin (Where). Tap to continue."
           }
         ],
@@ -1054,15 +1059,15 @@
               },
               {
                 "text": "Setting",
-                "delay": 800
+                "delay": 1500
               },
               {
                 "text": "Events",
-                "delay": 1100
+                "delay": 2500
               }
             ],
             "highlightPills": [
-              { "pill": 0, "delay": 2000 }
+              { "pill": 0, "delay": 3500 }
             ]
           },
           {
@@ -1089,43 +1094,28 @@
             "sub": "a",
             "audioFile": "audio/lessons/RL.K.3/S2a.mp3",
             "ttsScript": "Let's break it down! Characters can be people or animals in a story.",
-            "interaction": "Heading appears. Puzzle piece illustration.",
-            "displayText": "Characters = people or animals",
-            "displayDelay": 1800
+            "interaction": "Heading appears. Table row 1 appears.",
+            "displayText": "Characters",
+            "displayDelay": 1800,
+            "displayTableRow": { "label": "Characters", "value": "people or animals" }
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.K.3/S2b.mp3",
             "ttsScript": "The setting is the place and time. Like a school, a beach, or a forest!",
-            "interaction": "Labeled pair: [Setting] Place & Time — school, beach, forest!",
-            "displayText": "",
-            "displayParts": [
-              {
-                "text": "Setting",
-                "delay": 500
-              },
-              {
-                "text": "Place & Time — school, beach, forest!",
-                "delay": 2500
-              }
-            ]
+            "interaction": "Table row 2 appears.",
+            "displayText": "Setting",
+            "displayDelay": 500,
+            "displayTableRow": { "label": "Setting", "value": "Place & Time — school, beach, forest!" }
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RL.K.3/S2c.mp3",
             "ttsScript": "Events are the things that happen in the story. Like a race, a party, or an adventure!",
-            "interaction": "Labeled pair: [Events] What Happens — race, party, adventure!",
-            "displayText": "",
-            "displayParts": [
-              {
-                "text": "Events",
-                "delay": 500
-              },
-              {
-                "text": "What Happens — race, party, adventure!",
-                "delay": 2800
-              }
-            ]
+            "interaction": "Table row 3 appears.",
+            "displayText": "Events",
+            "displayDelay": 500,
+            "displayTableRow": { "label": "Events", "value": "What Happens — race, party, adventure!" }
           },
           {
             "sub": "d",
