@@ -322,7 +322,7 @@
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.2a/S1c.mp3",
             "ttsScript": "Rhyming is so much fun, and it helps us play with sounds. Let's learn more!",
-            "displayText": "Same ending sound = Rhyme!",
+            "displayText": "Same ending sound means Rhyme!",
             "interaction": "Colorful sound bubbles float up. Tap to continue.",
             "displayDelay": 3750
           }
@@ -4511,11 +4511,11 @@
             "interaction": "Pill: [Uppercase = BIG] pops in blue. Pill: [Lowercase = little] pops in green.",
             "displayParts": [
               {
-                "text": "Uppercase = BIG",
+                "text": "Uppercase is BIG",
                 "delay": 1000
               },
               {
-                "text": "Lowercase = little",
+                "text": "Lowercase is little",
                 "delay": 2000
               }
             ]
@@ -5536,7 +5536,7 @@
             "audioFile": "audio/lessons/RF.K.3a/S2b.mp3",
             "ttsScript": "The letter M says mmmm, like when something tastes yummy!",
             "interaction": "Pill: [M = /m/ mmm] pops in with yummy face icon.",
-            "displayText": "M = /m/ mmm",
+            "displayText": "M says /m/ mmm",
             "displayDelay": 2500
           },
           {
@@ -5544,7 +5544,7 @@
             "audioFile": "audio/lessons/RF.K.3a/S2c.mp3",
             "ttsScript": "The letter T says tuh, like a ticking clock!",
             "interaction": "Pill: [T = /t/ tuh] pops in with clock icon.",
-            "displayText": "T = /t/ tuh",
+            "displayText": "T says /t/ tuh",
             "displayDelay": 2250
           },
           {
@@ -5575,7 +5575,7 @@
             "audioFile": "audio/lessons/RF.K.3a/S3b.mp3",
             "ttsScript": "B! What sound does B make? Buh! Great job!",
             "interaction": "B card flips. Pill: [B = /b/ buh ✓] pops in.",
-            "displayText": "B = /b/ buh ✓",
+            "displayText": "B says /b/ buh ✓",
             "displayDelay": 2250
           },
           {
@@ -5585,11 +5585,11 @@
             "interaction": "D and F flip. Pills: [D = /d/] [F = /f/] pop in. Stars.",
             "displayParts": [
               {
-                "text": "D = /d/",
+                "text": "D says /d/",
                 "delay": 300
               },
               {
-                "text": "F = /f/",
+                "text": "F says /f/",
                 "delay": 1600
               }
             ]
@@ -5617,11 +5617,11 @@
             "interaction": "Pills: [A = Apple = /a/] [B = Ball = /b/] pop in.",
             "displayParts": [
               {
-                "text": "A = Apple = /a/",
+                "text": "A is for Apple, /a/",
                 "delay": 1500
               },
               {
-                "text": "B = Ball = /b/",
+                "text": "B is for Ball, /b/",
                 "delay": 3000
               }
             ]
@@ -5744,11 +5744,11 @@
             "interaction": "Pills: [E = /e/ egg] [I = /i/ igloo] pop in.",
             "displayParts": [
               {
-                "text": "E = /e/ egg",
+                "text": "E says /e/ egg",
                 "delay": 600
               },
               {
-                "text": "I = /i/ igloo",
+                "text": "I says /i/ igloo",
                 "delay": 2400
               }
             ]
@@ -5760,11 +5760,11 @@
             "interaction": "Pills: [O = /o/ octopus] [U = /u/ umbrella] pop in.",
             "displayParts": [
               {
-                "text": "O = /o/ octopus",
+                "text": "O says /o/ octopus",
                 "delay": 600
               },
               {
-                "text": "U = /u/ umbrella",
+                "text": "U says /u/ umbrella",
                 "delay": 2400
               }
             ]
@@ -5972,7 +5972,7 @@
             "audioFile": "audio/lessons/RF.K.3c/S2b.mp3",
             "ttsScript": "You don't sound them out — you just know them! Like how you know your own name.",
             "interaction": "Pill: [Sight words = Know them by heart!] pops in.",
-            "displayText": "Sight words = Know them by heart!",
+            "displayText": "Sight words: Know them by heart!",
             "displayDelay": 2800
           },
           {
@@ -5980,7 +5980,7 @@
             "audioFile": "audio/lessons/RF.K.3c/S2c.mp3",
             "ttsScript": "The more sight words you know, the faster you can read! They're reading superpowers!",
             "interaction": "Pill: [More sight words = Faster reading!] pops in.",
-            "displayText": "More sight words = Faster reading!",
+            "displayText": "More sight words means Faster reading!",
             "displayDelay": 3500
           }
         ],
@@ -6212,11 +6212,11 @@
             "interaction": "Pills: [on = O first] [no = N first] pop in. Stars.",
             "displayParts": [
               {
-                "text": "on = O first",
+                "text": "on starts with O",
                 "delay": 1200
               },
               {
-                "text": "no = N first",
+                "text": "no starts with N",
                 "delay": 3200
               }
             ]
@@ -6602,7 +6602,7 @@
             "audioFile": "audio/lessons/K.L.1/S3c.mp3",
             "ttsScript": "What's the verb? Jumps! Jumping is an action, so it's a verb!",
             "interaction": "Pill: [jumps = Verb ✓] pops in green. Stars.",
-            "displayText": "jumps = Verb",
+            "displayText": "jumps is a Verb",
             "displayDelay": 3000
           }
         ],
@@ -6779,11 +6779,11 @@
             "interaction": "Pills: [? = Question] [! = Excited] pop in.",
             "displayParts": [
               {
-                "text": "? = Question",
+                "text": "? means Question",
                 "delay": 300
               },
               {
-                "text": "! = Excited",
+                "text": "! means Excited",
                 "delay": 3200
               }
             ]
