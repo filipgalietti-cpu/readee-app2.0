@@ -39,7 +39,7 @@ export default function IncorrectAudioAuditPage() {
   const [playing, setPlaying] = useState<string | null>(null);
   const [notes, setNotes] = useState<Record<string, string>>({});
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const sequenceAbort = useRef<boolean>(false);
+  const seqId = useRef(0); // incremented on each play to cancel stale sequences
 
   const save = useCallback((next: Ratings) => {
     setRatings(next);
@@ -47,7 +47,7 @@ export default function IncorrectAudioAuditPage() {
   }, []);
 
   const stopAudio = useCallback(() => {
-    sequenceAbort.current = true;
+    seqId.current++;
     if (audioRef.current) {
       audioRef.current.pause();
       audioRef.current = null;
@@ -57,47 +57,43 @@ export default function IncorrectAudioAuditPage() {
 
   const playFile = useCallback((url: string): Promise<void> => {
     return new Promise((resolve) => {
+      if (audioRef.current) { audioRef.current.pause(); audioRef.current = null; }
       const audio = new Audio(url);
       audioRef.current = audio;
       audio.onended = () => resolve();
-      audio.onerror = () => resolve();
-      audio.play().catch(() => resolve());
+      audio.onerror = () => { console.error("[audit] audio error:", url); resolve(); };
+      audio.play().catch((err) => { console.error("[audit] play failed:", url, err); resolve(); });
     });
   }, []);
 
   /* Play just the answer audio */
   const playAnswer = useCallback((item: typeof ITEMS[0]) => {
     stopAudio();
-    if (playing === item.id) return;
-    sequenceAbort.current = false;
+    const id = ++seqId.current;
     setPlaying(item.id);
     const url = `/audio/${item.path}/${item.id}.mp3`;
     playFile(url).then(() => {
-      if (!sequenceAbort.current) setPlaying(null);
+      if (seqId.current === id) setPlaying(null);
     });
-  }, [playing, stopAudio, playFile]);
+  }, [stopAudio, playFile]);
 
   /* Play full sequence: random prefix + gap + answer */
-  const playFull = useCallback((item: typeof ITEMS[0]) => {
+  const playFull = useCallback(async (item: typeof ITEMS[0]) => {
     stopAudio();
-    if (playing === `full-${item.id}`) return;
-    sequenceAbort.current = false;
+    const id = ++seqId.current;
     setPlaying(`full-${item.id}`);
 
     const prefix = PREFIX_FILES[Math.floor(Math.random() * PREFIX_FILES.length)];
     const prefixUrl = `/audio/feedback/${prefix}.mp3`;
     const answerUrl = `/audio/${item.path}/${item.id}.mp3`;
 
-    playFile(prefixUrl).then(() => {
-      if (sequenceAbort.current) return;
-      return new Promise<void>((resolve) => setTimeout(resolve, 250));
-    }).then(() => {
-      if (sequenceAbort.current) return;
-      return playFile(answerUrl);
-    }).then(() => {
-      if (!sequenceAbort.current) setPlaying(null);
-    });
-  }, [playing, stopAudio, playFile]);
+    await playFile(prefixUrl);
+    if (seqId.current !== id) return;
+    await new Promise<void>((r) => setTimeout(r, 250));
+    if (seqId.current !== id) return;
+    await playFile(answerUrl);
+    if (seqId.current === id) setPlaying(null);
+  }, [stopAudio, playFile]);
 
   const toggleRating = useCallback((id: string, r: "good" | "bad") => {
     const current = ratings[id];
