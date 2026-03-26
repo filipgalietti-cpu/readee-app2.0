@@ -2,8 +2,8 @@
 
 import { useEffect, useState, useMemo, useRef } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { motion } from "framer-motion";
+import { useRouter, usePathname } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child, LessonProgress } from "@/lib/db/types";
 import { levelNameToGradeKey } from "@/lib/assessment/questions";
@@ -17,7 +17,7 @@ import { getStandardsForGrade } from "@/lib/data/all-standards";
 import { getChildAvatarImage, AVATAR_IMAGES, DEFAULT_AVATARS } from "@/lib/utils/get-child-avatar";
 import { getItemsByCategory, BACKGROUND_IMAGES } from "@/lib/data/shop-items";
 import type { ShopPurchase, EquippedItems } from "@/lib/db/types";
-import { Target, Puzzle, BookOpen, Map, Carrot, Flame, Sun, CloudSun, Moon, Sparkles, Star, Rocket, Trophy, BarChart3, Sprout } from "lucide-react";
+import { Target, Puzzle, BookOpen, Map, Carrot, Flame, Sun, CloudSun, Moon, Sparkles, Star, Rocket, Trophy, BarChart3, Sprout, ChevronDown, Lock, User, CreditCard, Bell, LogOut, ChevronsUpDown, Home, BookText, ListChecks } from "lucide-react";
 import type { ReactNode } from "react";
 import { getShopIcon } from "@/lib/data/shop-icons";
 
@@ -441,7 +441,18 @@ function ChildDashboard({
   const [currentChild, setCurrentChild] = useState(child);
   const [avatarPickerOpen, setAvatarPickerOpen] = useState(false);
   const [purchases, setPurchases] = useState<ShopPurchase[]>([]);
+  const [parentMode, setParentMode] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const avatarSrc = getChildAvatarImage(currentChild, childIndex);
+
+  // Remove main container constraints so sidebar can be flush left
+  useEffect(() => {
+    const main = document.querySelector("main");
+    if (main) { main.style.padding = "0"; main.style.maxWidth = "none"; }
+    return () => {
+      if (main) { main.style.padding = ""; main.style.maxWidth = ""; }
+    };
+  }, []);
   const hasMultiple = children.length > 1;
   const greeting = getGreeting();
   const motivation = useMemo(() => MOTIVATIONAL[Math.floor(Math.random() * MOTIVATIONAL.length)], []);
@@ -513,8 +524,6 @@ function ChildDashboard({
     fetchPurchases();
   }, [child.id]);
 
-  // Reading level is now settings-only — removed handleReadingLevelChange
-
   // Compute lesson data for CTA
   const file = lessonsData as unknown as LessonsFile;
   const gradeKey = levelNameToGradeKey(readingLevel);
@@ -559,7 +568,7 @@ function ChildDashboard({
   // Weekly progress: Carrots earned per day this week
   const weeklyCarrots = useMemo(() => {
     const now = new Date();
-    const dayOfWeek = now.getDay(); // 0 = Sunday
+    const dayOfWeek = now.getDay();
     const mondayOffset = dayOfWeek === 0 ? -6 : 1 - dayOfWeek;
     const monday = new Date(now);
     monday.setDate(now.getDate() + mondayOffset);
@@ -573,7 +582,6 @@ function ChildDashboard({
       if (d >= monday) {
         const diff = Math.floor((d.getTime() - monday.getTime()) / (1000 * 60 * 60 * 24));
         if (diff >= 0 && diff < 7) {
-          // Estimate carrots from section: learn=5, practice=5, read=10
           const carrots = p.section === "read" ? 10 : 5;
           carrotsPerDay[diff] += carrots;
         }
@@ -581,7 +589,7 @@ function ChildDashboard({
     }
 
     const todayIdx = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
-    const maxCarrots = Math.max(...carrotsPerDay, 20); // 20 as minimum max for bar scale
+    const maxCarrots = Math.max(...carrotsPerDay, 20);
 
     return days.map((day, i) => ({
       day,
@@ -609,10 +617,7 @@ function ChildDashboard({
     checkDailyPractice();
   }, [child.id]);
 
-  // Carrot milestone
   const carrots = Number(child.carrots) || 0;
-
-  // Count-up animations for stats
   const carrotCount = useCountUp(carrots);
   const storiesCount = useCountUp(child.stories_read);
   const streakCount = useCountUp(child.streak_days);
@@ -622,7 +627,7 @@ function ChildDashboard({
   const ownedAvatarIds = new Set(purchases.filter((p) => p.item_id.startsWith("avatar_")).map((p) => p.item_id));
   const equippedAvatarId = currentChild.equipped_items?.avatar ?? null;
 
-  // Equipped background image — applied inline on the wrapper div
+  // Equipped background image
   const equippedBgId = currentChild.equipped_items?.background ?? null;
   const bgImage = equippedBgId ? BACKGROUND_IMAGES[equippedBgId] ?? null : null;
 
@@ -640,7 +645,6 @@ function ChildDashboard({
     if (!error) {
       const updated = { ...currentChild, equipped_items: newEquipped };
       setCurrentChild(updated);
-      // Sync zustand store: update selected child + children array
       setStoreChildData(updated);
       setStoreChildren(children.map((c) => (c.id === updated.id ? updated : c)));
     }
@@ -655,59 +659,381 @@ function ChildDashboard({
         style={{ backgroundImage: `url(${bgImage})`, backgroundSize: "cover", backgroundPosition: "center" }}
       />
     )}
-    <motion.div
-      className="max-w-3xl mx-auto space-y-6 pb-12 px-4"
-      variants={staggerContainer}
-      initial="hidden"
-      animate="visible"
-    >
-      {/* Nav */}
-      {hasMultiple && (
-        <motion.div variants={slideUp} className="flex items-center justify-between">
-          <button
-            onClick={onBack}
-            className="text-sm text-indigo-600 hover:text-indigo-700 font-medium transition-colors"
-          >
-            &larr; All Readers
-          </button>
-          <select
-            value={child.id}
-            onChange={(e) => {
-              const next = children.find((c) => c.id === e.target.value);
-              if (next) onSwitch(next);
-            }}
-            className="text-sm border border-zinc-200 dark:border-slate-600 rounded-lg px-3 py-1.5 bg-white dark:bg-slate-800 text-zinc-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          >
-            {children.map((c, i) => (
-              <option key={c.id} value={c.id}>
-                {c.first_name}
-              </option>
-            ))}
-          </select>
-        </motion.div>
-      )}
 
-      {/* ── Greeting (enlarged) ── */}
-      <motion.div variants={slideUp} className="text-center pt-4">
-        <div className="relative mx-auto mb-4 w-24">
-          <button
-            onClick={() => setAvatarPickerOpen(true)}
-            className="w-24 h-24 rounded-2xl bg-gradient-to-br from-indigo-50 to-violet-50 flex items-center justify-center shadow-sm hover:shadow-md hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer overflow-hidden"
-            aria-label="Change avatar"
+    {/* ── Mobile Parent Sidebar Overlay ── */}
+    <AnimatePresence>
+      {parentMode && (
+        <div className="fixed inset-0 z-40 lg:hidden">
+          <div className="absolute inset-0 bg-black/50" onClick={() => setParentMode(false)} />
+          <motion.aside
+            initial={{ x: -280, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: -280, opacity: 0 }}
+            transition={{ type: "spring", damping: 28, stiffness: 350 }}
+            className="absolute top-0 left-0 bottom-0 w-[272px] bg-white shadow-2xl overflow-hidden border-r border-zinc-200"
           >
-            <img src={avatarSrc} alt={currentChild.first_name} className="w-full h-full object-cover" draggable={false} />
-          </button>
-          <div className="absolute -bottom-1 -right-1 w-7 h-7 rounded-full bg-indigo-600 flex items-center justify-center shadow-md pointer-events-none">
-            <svg className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-            </svg>
-          </div>
+            <ParentSidebar
+              child={child}
+              currentChild={currentChild}
+              childIndex={childIndex}
+              hasAssessment={hasAssessment}
+              readingLevel={readingLevel}
+              lessonProgress={lessonProgress}
+              userPlan={userPlan}
+              weeklyCarrots={weeklyCarrots}
+              recentCompleted={recentCompleted}
+              getCompletionDate={getCompletionDate}
+              showCurriculum={showCurriculum}
+              setShowCurriculum={setShowCurriculum}
+              expandedGrade={expandedGrade}
+              setExpandedGrade={setExpandedGrade}
+              onClose={() => setParentMode(false)}
+            />
+          </motion.aside>
         </div>
-        <h1 className="text-3xl font-bold text-indigo-600 dark:text-indigo-400 tracking-tight">
-          {greeting.text}, {currentChild.first_name}! <span className="animate-wave inline-block">{greeting.icon}</span>
-        </h1>
-        <p className="text-zinc-500 dark:text-slate-400 mt-1 text-sm">{motivation}</p>
-      </motion.div>
+      )}
+    </AnimatePresence>
+
+    {/* Fixed sidebar (desktop) */}
+    <aside
+      className={`hidden lg:flex flex-col fixed top-[76px] left-0 bottom-0 z-30 bg-white/80 backdrop-blur-sm border-r border-zinc-200 transition-[width] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+        sidebarOpen ? "w-[272px]" : "w-[72px]"
+      }`}
+    >
+      <div className="flex flex-col h-full">
+          {sidebarOpen ? (
+            <motion.div
+              key="expanded"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.2, delay: 0.1 }}
+              className="flex-1 overflow-y-auto overflow-x-hidden"
+            >
+              <ParentSidebar
+                child={child}
+                currentChild={currentChild}
+                childIndex={childIndex}
+                hasAssessment={hasAssessment}
+                readingLevel={readingLevel}
+                lessonProgress={lessonProgress}
+                userPlan={userPlan}
+                weeklyCarrots={weeklyCarrots}
+                recentCompleted={recentCompleted}
+                getCompletionDate={getCompletionDate}
+                showCurriculum={showCurriculum}
+                setShowCurriculum={setShowCurriculum}
+                expandedGrade={expandedGrade}
+                setExpandedGrade={setExpandedGrade}
+                onToggle={() => setSidebarOpen(false)}
+              />
+            </motion.div>
+          ) : (
+            <motion.div
+              key="collapsed"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.2, delay: 0.1 }}
+              className="flex flex-col items-center h-full py-3"
+            >
+              <button
+                onClick={() => setSidebarOpen(true)}
+                className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-zinc-100 transition-colors mb-2"
+                aria-label="Expand sidebar"
+              >
+                <ChevronDown className="w-5 h-5 text-zinc-400 rotate-90" strokeWidth={2} />
+              </button>
+
+              {/* Main */}
+              <div className="space-y-1">
+                <SidebarTooltip label="Dashboard">
+                  <Link href="/dashboard" className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-zinc-100 transition-colors">
+                    <Home className="w-5 h-5 text-zinc-500" strokeWidth={1.5} />
+                  </Link>
+                </SidebarTooltip>
+                <SidebarTooltip label="Analytics">
+                  <Link href={`/analytics?child=${child.id}`} className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-zinc-100 transition-colors">
+                    <BarChart3 className="w-5 h-5 text-zinc-500" strokeWidth={1.5} />
+                  </Link>
+                </SidebarTooltip>
+              </div>
+
+              <div className="w-5 h-px bg-zinc-200 my-2" />
+
+              {/* Learning */}
+              <div className="space-y-1">
+                <SidebarTooltip label="Word Bank">
+                  <Link href="/word-bank" className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-zinc-100 transition-colors">
+                    <BookText className="w-5 h-5 text-zinc-500" strokeWidth={1.5} />
+                  </Link>
+                </SidebarTooltip>
+                <SidebarTooltip label="Question Bank">
+                  <Link href="/question-bank" className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-zinc-100 transition-colors">
+                    <ListChecks className="w-5 h-5 text-zinc-500" strokeWidth={1.5} />
+                  </Link>
+                </SidebarTooltip>
+                <SidebarTooltip label="Reading Journey">
+                  <Link href={`/roadmap?child=${child.id}`} className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-zinc-100 transition-colors">
+                    <Map className="w-5 h-5 text-zinc-500" strokeWidth={1.5} />
+                  </Link>
+                </SidebarTooltip>
+              </div>
+
+              <div className="w-5 h-px bg-zinc-200 my-2" />
+
+              {/* Fun */}
+              <div className="space-y-1">
+                <SidebarTooltip label="Shop">
+                  <Link href={`/shop?child=${child.id}`} className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-zinc-100 transition-colors">
+                    <Carrot className="w-[19px] h-[19px] text-orange-500" strokeWidth={1.5} />
+                  </Link>
+                </SidebarTooltip>
+                <SidebarTooltip label="Leaderboard">
+                  <Link href={`/leaderboard?child=${child.id}`} className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-zinc-100 transition-colors">
+                    <Trophy className="w-5 h-5 text-zinc-500" strokeWidth={1.5} />
+                  </Link>
+                </SidebarTooltip>
+              </div>
+
+              {/* Avatar at bottom */}
+              <div className="mt-auto">
+                <SidebarTooltip label={currentChild.first_name}>
+                  <button
+                    onClick={() => setSidebarOpen(true)}
+                    className="w-10 h-10 rounded-lg overflow-hidden ring-2 ring-zinc-200 hover:ring-indigo-300 transition-all"
+                  >
+                    <img src={avatarSrc} alt={currentChild.first_name} className="w-full h-full object-cover" draggable={false} />
+                  </button>
+                </SidebarTooltip>
+              </div>
+            </motion.div>
+          )}
+        </div>
+    </aside>
+
+    {/* Main content with left margin to account for fixed sidebar */}
+    <div className={`w-screen transition-[margin] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${sidebarOpen ? "lg:ml-[272px]" : "lg:ml-[72px]"}`}>
+      <motion.div
+        className="max-w-3xl mx-auto px-4 pb-12"
+        variants={staggerContainer}
+        initial="hidden"
+        animate="visible"
+      >
+        {/* ── Nav bar (multi-child) ── */}
+        {hasMultiple && (
+          <motion.div variants={slideUp} className="flex items-center justify-between pt-2">
+            <button
+              onClick={onBack}
+              className="text-sm text-indigo-600 hover:text-indigo-700 font-medium transition-colors"
+            >
+              &larr; All Readers
+            </button>
+            <select
+              value={child.id}
+              onChange={(e) => {
+                const next = children.find((c) => c.id === e.target.value);
+                if (next) onSwitch(next);
+              }}
+              className="text-sm border border-zinc-200 dark:border-slate-600 rounded-lg px-3 py-1.5 bg-white dark:bg-slate-800 text-zinc-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            >
+              {children.map((c) => (
+                <option key={c.id} value={c.id}>
+                  {c.first_name}
+                </option>
+              ))}
+            </select>
+          </motion.div>
+        )}
+
+        {/* ── Avatar + Greeting ── */}
+        <motion.div variants={slideUp} className="text-center pt-6 pb-2">
+          <div className="relative mx-auto mb-4 w-28">
+            <button
+              onClick={() => setAvatarPickerOpen(true)}
+              className="w-28 h-28 rounded-full bg-gradient-to-br from-indigo-100 to-violet-100 dark:from-indigo-900/40 dark:to-violet-900/40 flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer overflow-hidden ring-4 ring-white dark:ring-slate-800"
+              aria-label="Change avatar"
+            >
+              <img src={avatarSrc} alt={currentChild.first_name} className="w-full h-full object-cover" draggable={false} />
+            </button>
+            <div className="absolute -bottom-1 -right-1 w-8 h-8 rounded-full bg-indigo-600 flex items-center justify-center shadow-md pointer-events-none ring-2 ring-white dark:ring-slate-800">
+              <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+              </svg>
+            </div>
+          </div>
+          <h1 className="text-3xl font-extrabold text-zinc-900 dark:text-slate-100 tracking-tight">
+            {greeting.text}, {currentChild.first_name}!
+          </h1>
+          <p className="text-zinc-500 dark:text-slate-400 mt-1 text-sm flex items-center justify-center gap-1.5">
+            <span className="animate-wave inline-block">{greeting.icon}</span>
+            {motivation}
+          </p>
+        </motion.div>
+
+        {/* ── Stats Strip — horizontal bar ── */}
+        <motion.div variants={slideUp} className="flex items-center justify-center gap-6 py-4">
+          <Link href={`/carrot-rewards?child=${child.id}`} className="flex items-center gap-1.5 group">
+            <Carrot className="w-5 h-5 text-amber-500 group-hover:animate-subtleBounce" strokeWidth={1.5} />
+            <span ref={carrotCount.ref} className="text-lg font-extrabold text-zinc-900 dark:text-slate-100">{carrotCount.value}</span>
+          </Link>
+          <div className="w-px h-6 bg-zinc-200 dark:bg-slate-700" />
+          <Link href={`/leaderboard?child=${child.id}`} className="flex items-center gap-1.5 group">
+            <Flame className={`w-5 h-5 text-orange-500 ${child.streak_days > 0 ? "animate-fireGlow" : ""}`} strokeWidth={1.5} />
+            <span ref={streakCount.ref} className="text-lg font-extrabold text-zinc-900 dark:text-slate-100">{streakCount.value}</span>
+            <span className="text-xs text-zinc-400 font-medium">day streak</span>
+          </Link>
+          <div className="w-px h-6 bg-zinc-200 dark:bg-slate-700" />
+          <Link href={`/stories?child=${child.id}`} className="flex items-center gap-1.5 group">
+            <BookOpen className="w-5 h-5 text-indigo-500 group-hover:animate-subtleBounce" strokeWidth={1.5} />
+            <span ref={storiesCount.ref} className="text-lg font-extrabold text-zinc-900 dark:text-slate-100">{storiesCount.value}</span>
+          </Link>
+        </motion.div>
+
+        {/* ── Daily Goal + Next Action ── */}
+        <motion.div variants={slideUp} className="space-y-4">
+          {/* Daily Goal */}
+          <div className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 flex items-center gap-4">
+            <div className="relative w-16 h-16 flex-shrink-0">
+              <svg viewBox="0 0 100 100" className="w-full h-full -rotate-90">
+                <circle cx="50" cy="50" r="40" fill="none" stroke="#e5e7eb" strokeWidth="10" className="dark:stroke-slate-700" />
+                <circle
+                  cx="50" cy="50" r="40" fill="none"
+                  stroke={dailyGoalMet ? "#10b981" : "#6366f1"}
+                  strokeWidth="10"
+                  strokeLinecap="round"
+                  strokeDasharray="251"
+                  strokeDashoffset={dailyGoalMet ? 0 : 251}
+                  className="transition-all duration-1000"
+                />
+              </svg>
+              <div className="absolute inset-0 flex items-center justify-center">
+                {dailyGoalMet ? <Sparkles className="w-6 h-6 text-emerald-500" strokeWidth={1.5} /> : <Target className="w-6 h-6 text-indigo-500" strokeWidth={1.5} />}
+              </div>
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="font-bold text-zinc-900 dark:text-slate-100">
+                {dailyGoalMet ? "You did it!" : "Today's Goal"}
+              </div>
+              <div className="text-sm text-zinc-500 dark:text-slate-400">
+                {dailyGoalMet
+                  ? "Amazing work! Come back tomorrow for more."
+                  : "Do 1 lesson today!"}
+              </div>
+            </div>
+          </div>
+
+          {/* Primary CTA: Assessment or Next Lesson */}
+          {hasAssessment === false && (
+            <Link href={`/assessment?child=${child.id}`} className="block">
+              <div className="rounded-3xl bg-gradient-to-r from-indigo-600 to-violet-500 p-6 text-center text-white hover:from-indigo-700 hover:to-violet-600 transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] cursor-pointer">
+                <Target className="w-14 h-14 text-white mx-auto mb-3" strokeWidth={1.5} />
+                <div className="text-xl font-extrabold">Take Your Reading Quiz!</div>
+                <div className="text-indigo-200 text-sm mt-1">
+                  A fun 10-question quiz to find your reading level
+                </div>
+              </div>
+            </Link>
+          )}
+
+          {hasAssessment && nextLesson && (
+            <Link href={`/lesson?child=${child.id}&lesson=${nextLesson.id}`} className="block">
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="rounded-3xl bg-gradient-to-r from-indigo-600 to-violet-500 p-5 text-white shadow-lg cursor-pointer"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="w-16 h-16 rounded-2xl bg-white/20 flex items-center justify-center flex-shrink-0">
+                    {completedCount === 0 ? <Rocket className="w-9 h-9 text-white" strokeWidth={1.5} /> : <BookOpen className="w-9 h-9 text-white" strokeWidth={1.5} />}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="text-indigo-200 text-xs font-semibold uppercase tracking-wider">
+                      {completedCount === 0 ? "Start Your Adventure!" : `Lesson ${nextLessonIdx + 1} of ${lessons.length}`}
+                    </div>
+                    <div className="text-white font-extrabold text-xl leading-tight truncate mt-0.5">
+                      {nextLesson.title}
+                    </div>
+                  </div>
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 3l14 9-14 9V3z" />
+                    </svg>
+                  </div>
+                </div>
+              </motion.div>
+            </Link>
+          )}
+
+          {hasAssessment && !nextLesson && lessons.length > 0 && (
+            <div className="rounded-3xl bg-gradient-to-r from-emerald-500 to-teal-500 p-6 text-center text-white shadow-lg">
+              <Trophy className="w-14 h-14 text-white mx-auto mb-3" strokeWidth={1.5} />
+              <div className="text-xl font-extrabold">All Lessons Complete!</div>
+              <div className="text-emerald-100 text-sm mt-1">
+                {child.first_name} has finished all {lessons.length} lessons. Amazing!
+              </div>
+            </div>
+          )}
+        </motion.div>
+
+        {/* ── Hero Tiles — 2×2 grid ── */}
+        <motion.div variants={slideUp} className="grid grid-cols-2 gap-4 pt-4">
+          <Link
+            href={hasAssessment ? `/practice?child=${child.id}&standard=${nextPracticeStandard.standard_id}` : `/assessment?child=${child.id}`}
+            className="block"
+          >
+            <motion.div
+              whileHover={{ scale: 1.05, y: -4 }}
+              whileTap={{ scale: 0.95 }}
+              className="h-[150px] rounded-3xl bg-gradient-to-br from-indigo-500 to-violet-600 p-5 flex flex-col items-center justify-center text-center shadow-lg cursor-pointer"
+            >
+              <Target className="w-14 h-14 text-white mb-2" strokeWidth={1.5} />
+              <span className="text-lg font-extrabold text-white">Practice</span>
+            </motion.div>
+          </Link>
+
+          <Link href={`/practice?child=${child.id}&types=sentence_build,category_sort`} className="block">
+            <motion.div
+              whileHover={{ scale: 1.05, y: -4 }}
+              whileTap={{ scale: 0.95 }}
+              className="h-[150px] rounded-3xl bg-gradient-to-br from-amber-400 to-orange-500 p-5 flex flex-col items-center justify-center text-center shadow-lg cursor-pointer"
+            >
+              <Puzzle className="w-14 h-14 text-white mb-2" strokeWidth={1.5} />
+              <span className="text-lg font-extrabold text-white">Games</span>
+            </motion.div>
+          </Link>
+
+          <Link href={`/stories?child=${child.id}`} className="block">
+            <motion.div
+              whileHover={{ scale: 1.05, y: -4 }}
+              whileTap={{ scale: 0.95 }}
+              className="h-[150px] rounded-3xl bg-gradient-to-br from-emerald-400 to-teal-500 p-5 flex flex-col items-center justify-center text-center shadow-lg cursor-pointer"
+            >
+              <BookOpen className="w-14 h-14 text-white mb-2" strokeWidth={1.5} />
+              <span className="text-lg font-extrabold text-white">Stories</span>
+            </motion.div>
+          </Link>
+
+          <Link href={`/roadmap?child=${child.id}`} className="block">
+            <motion.div
+              whileHover={{ scale: 1.05, y: -4 }}
+              whileTap={{ scale: 0.95 }}
+              className="h-[150px] rounded-3xl bg-gradient-to-br from-pink-400 to-rose-500 p-5 flex flex-col items-center justify-center text-center shadow-lg cursor-pointer"
+            >
+              <Map className="w-14 h-14 text-white mb-2" strokeWidth={1.5} />
+              <span className="text-lg font-extrabold text-white">My Journey</span>
+            </motion.div>
+          </Link>
+        </motion.div>
+
+        {/* ── Mobile: Parent Dashboard toggle ── */}
+        <motion.div variants={slideUp} className="pt-4 lg:hidden">
+          <button
+            onClick={() => setParentMode(true)}
+            className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold text-zinc-400 dark:text-slate-500 hover:text-zinc-600 dark:hover:text-slate-300 hover:bg-zinc-50 dark:hover:bg-slate-800/50 transition-all border border-zinc-200 dark:border-slate-700"
+          >
+            <Lock className="w-3.5 h-3.5" strokeWidth={2} />
+            <span>Parent Dashboard</span>
+          </button>
+        </motion.div>
 
       {/* ── Avatar Picker Modal ── */}
       {avatarPickerOpen && (
@@ -716,14 +1042,14 @@ function ChildDashboard({
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            className="relative w-full max-w-md mx-4 mb-4 sm:mb-0 rounded-3xl bg-white shadow-2xl overflow-hidden"
+            className="relative w-full max-w-md mx-4 mb-4 sm:mb-0 rounded-3xl bg-white dark:bg-slate-800 shadow-2xl overflow-hidden"
           >
             <div className="p-6 pb-2">
               <div className="flex items-center justify-between">
-                <h2 className="text-lg font-bold text-zinc-900">Choose Your Avatar</h2>
+                <h2 className="text-lg font-bold text-zinc-900 dark:text-slate-100">Choose Your Avatar</h2>
                 <button
                   onClick={() => setAvatarPickerOpen(false)}
-                  className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-zinc-100 transition-colors"
+                  className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-zinc-100 dark:hover:bg-slate-700 transition-colors"
                 >
                   <svg className="w-5 h-5 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -745,11 +1071,11 @@ function ChildDashboard({
                       onClick={() => handleEquipAvatar(i === childIndex % DEFAULT_AVATARS.length ? null : id)}
                       className={`aspect-square rounded-2xl flex items-center justify-center overflow-hidden transition-all duration-200 ${
                         isActive
-                          ? "bg-indigo-100 ring-2 ring-indigo-500 scale-110"
-                          : "bg-zinc-100 hover:bg-zinc-200 hover:scale-105"
+                          ? "ring-3 ring-indigo-500 scale-110"
+                          : "hover:scale-105"
                       }`}
                     >
-                      <img src={imgSrc} alt={`Avatar ${i + 1}`} className="w-full h-full object-cover" draggable={false} />
+                      <img src={imgSrc} alt={`Avatar ${i + 1}`} className="w-full h-full object-cover rounded-2xl" draggable={false} />
                     </button>
                   );
                 })}
@@ -770,21 +1096,21 @@ function ChildDashboard({
                       disabled={!owned}
                       className={`aspect-square rounded-2xl flex items-center justify-center relative overflow-hidden transition-all duration-200 ${
                         isActive
-                          ? "bg-indigo-100 ring-2 ring-indigo-500 scale-110"
+                          ? "ring-3 ring-indigo-500 scale-110"
                           : owned
-                            ? "bg-zinc-100 hover:bg-zinc-200 hover:scale-105"
-                            : "bg-zinc-50 opacity-40 cursor-not-allowed"
+                            ? "hover:scale-105"
+                            : "opacity-40 cursor-not-allowed grayscale"
                       }`}
                       title={owned ? item.name : `${item.name} — ${item.price} carrots`}
                     >
                       {imgSrc ? (
-                        <img src={imgSrc} alt={item.name} className="w-full h-full object-cover" draggable={false} />
+                        <img src={imgSrc} alt={item.name} className="w-full h-full object-cover rounded-2xl" draggable={false} />
                       ) : (
                         (() => { const SI = getShopIcon(item.icon); return <SI className="w-7 h-7 text-indigo-500" strokeWidth={1.5} />; })()
                       )}
                       {!owned && (
                         <span className="absolute bottom-0.5 right-0.5">
-                          <svg className="w-2.5 h-2.5 text-zinc-400" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" /></svg>
+                          <Lock className="w-3 h-3 text-zinc-500" strokeWidth={2} />
                         </span>
                       )}
                     </button>
@@ -800,278 +1126,366 @@ function ChildDashboard({
           </motion.div>
         </div>
       )}
+    </motion.div>
+    </div>
+    </>
+  );
+}
 
-      {/* ── Hero Tiles — 2×2 grid ── */}
-      <motion.div variants={slideUp} className="grid grid-cols-2 gap-4">
-        {/* Practice */}
-        <Link
-          href={hasAssessment ? `/practice?child=${child.id}&standard=${nextPracticeStandard.standard_id}` : `/assessment?child=${child.id}`}
-          className="block"
-        >
-          <div className="min-h-[140px] rounded-3xl bg-gradient-to-br from-indigo-600 to-violet-500 dark:from-indigo-700 dark:to-violet-600 p-5 flex flex-col items-center justify-center text-center shadow-lg hover:scale-[1.03] active:scale-[0.97] transition-transform duration-200 cursor-pointer">
-            <Target className="w-16 h-16 text-white mb-2" strokeWidth={1.5} />
-            <span className="text-lg font-extrabold text-white">Practice</span>
-          </div>
-        </Link>
+/* ─── Sidebar Tooltip (hover card for collapsed rail) ─── */
 
-        {/* Games */}
-        <Link
-          href={`/practice?child=${child.id}&types=sentence_build,category_sort`}
-          className="block"
-        >
-          <div className="min-h-[140px] rounded-3xl bg-gradient-to-br from-amber-500 to-orange-500 dark:from-amber-600 dark:to-orange-600 p-5 flex flex-col items-center justify-center text-center shadow-lg hover:scale-[1.03] active:scale-[0.97] transition-transform duration-200 cursor-pointer">
-            <Puzzle className="w-16 h-16 text-white mb-2" strokeWidth={1.5} />
-            <span className="text-lg font-extrabold text-white">Games</span>
-          </div>
-        </Link>
+function SidebarTooltip({ label, children }: { label: string; children: React.ReactNode }) {
+  const [show, setShow] = useState(false);
+  const timeout = useRef<ReturnType<typeof setTimeout>>(null);
 
-        {/* Stories */}
-        <Link href={`/stories?child=${child.id}`} className="block">
-          <div className="min-h-[140px] rounded-3xl bg-gradient-to-br from-emerald-500 to-teal-500 dark:from-emerald-600 dark:to-teal-600 p-5 flex flex-col items-center justify-center text-center shadow-lg hover:scale-[1.03] active:scale-[0.97] transition-transform duration-200 cursor-pointer">
-            <BookOpen className="w-16 h-16 text-white mb-2" strokeWidth={1.5} />
-            <span className="text-lg font-extrabold text-white">Stories</span>
-          </div>
-        </Link>
+  const handleEnter = () => {
+    timeout.current = setTimeout(() => setShow(true), 200);
+  };
+  const handleLeave = () => {
+    if (timeout.current) clearTimeout(timeout.current);
+    setShow(false);
+  };
 
-        {/* My Journey */}
-        <Link href={`/roadmap?child=${child.id}`} className="block">
-          <div className="min-h-[140px] rounded-3xl bg-gradient-to-br from-pink-500 to-rose-500 dark:from-pink-600 dark:to-rose-600 p-5 flex flex-col items-center justify-center text-center shadow-lg hover:scale-[1.03] active:scale-[0.97] transition-transform duration-200 cursor-pointer">
-            <Map className="w-16 h-16 text-white mb-2" strokeWidth={1.5} />
-            <span className="text-lg font-extrabold text-white">My Journey</span>
+  return (
+    <div className="relative" onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
+      {children}
+      {show && (
+        <div className="absolute left-full top-1/2 -translate-y-1/2 ml-3 z-50 pointer-events-none">
+          <div className="px-3 py-1.5 rounded-lg bg-zinc-900 text-white text-xs font-medium shadow-lg whitespace-nowrap">
+            {label}
           </div>
-        </Link>
-      </motion.div>
+          {/* Arrow */}
+          <div className="absolute top-1/2 -translate-y-1/2 -left-1 w-2 h-2 bg-zinc-900 rotate-45" />
+        </div>
+      )}
+    </div>
+  );
+}
 
-      {/* ── Stats Row — chunky stat cards ── */}
-      <motion.div variants={slideUp} className="grid grid-cols-3 gap-4">
-        {/* Carrots Card */}
-        <Link href={`/carrot-rewards?child=${child.id}`} className="block">
-          <div className="rounded-2xl border border-gray-200 dark:border-slate-700 bg-gradient-to-b from-amber-50 to-white dark:from-amber-950/30 dark:to-slate-800 p-4 min-h-[120px] flex flex-col items-center justify-center text-center hover:shadow-md hover:scale-[1.02] transition-all duration-200 group cursor-pointer">
-            <Carrot className="w-10 h-10 text-amber-500 dark:text-amber-400 mb-1 group-hover:animate-subtleBounce" strokeWidth={1.5} />
-            <div ref={carrotCount.ref} className="text-3xl font-extrabold text-zinc-900 dark:text-slate-100">{carrotCount.value}</div>
-            <div className="text-sm text-zinc-500 dark:text-slate-400 mt-0.5 font-medium">Carrots</div>
-          </div>
-        </Link>
+/* ─── Parent Sidebar ──────────────────────────────────── */
 
-        {/* Stories Card */}
-        <Link href={`/stories?child=${child.id}`} className="block">
-          <div className="rounded-2xl border border-gray-200 dark:border-slate-700 bg-gradient-to-b from-indigo-50 to-white dark:from-indigo-950/30 dark:to-slate-800 p-4 min-h-[120px] flex flex-col items-center justify-center text-center hover:shadow-md hover:scale-[1.02] transition-all duration-200 group cursor-pointer">
-            <BookOpen className="w-10 h-10 text-indigo-500 dark:text-indigo-400 mb-1 group-hover:animate-subtleBounce" strokeWidth={1.5} />
-            <div ref={storiesCount.ref} className="text-3xl font-extrabold text-zinc-900 dark:text-slate-100">{storiesCount.value}</div>
-            <div className="text-sm text-zinc-500 dark:text-slate-400 mt-0.5 font-medium">Stories</div>
-          </div>
-        </Link>
+interface ParentSidebarProps {
+  child: Child;
+  currentChild: Child;
+  childIndex: number;
+  hasAssessment: boolean | null;
+  readingLevel: string | null;
+  lessonProgress: LessonProgress[];
+  userPlan: string;
+  weeklyCarrots: { day: string; carrots: number; pct: number; isToday: boolean; isPast: boolean }[];
+  recentCompleted: { lesson: LessonData; idx: number }[];
+  getCompletionDate: (lessonId: string) => string | null;
+  showCurriculum: boolean;
+  setShowCurriculum: (v: boolean) => void;
+  expandedGrade: string | null;
+  setExpandedGrade: (v: string | null) => void;
+  onClose?: () => void;
+  onToggle?: () => void;
+}
 
-        {/* Streak Card */}
-        <Link href={`/leaderboard?child=${child.id}`} className="block">
-          <div className="rounded-2xl border border-gray-200 dark:border-slate-700 bg-gradient-to-b from-orange-50 to-white dark:from-orange-950/30 dark:to-slate-800 p-4 min-h-[120px] flex flex-col items-center justify-center text-center hover:shadow-md hover:scale-[1.02] transition-all duration-200 group cursor-pointer">
-            <Flame className={`w-10 h-10 text-orange-500 dark:text-orange-400 mb-1 ${child.streak_days > 0 ? "animate-fireGlow" : ""}`} strokeWidth={1.5} />
-            <div ref={streakCount.ref} className="text-3xl font-extrabold text-zinc-900 dark:text-slate-100">{streakCount.value}</div>
-            <div className="text-sm text-zinc-500 dark:text-slate-400 mt-0.5 font-medium">Day Streak</div>
-          </div>
-        </Link>
-      </motion.div>
+function ParentSidebar({
+  child,
+  currentChild,
+  childIndex,
+  hasAssessment,
+  readingLevel,
+  lessonProgress,
+  userPlan,
+  weeklyCarrots,
+  recentCompleted,
+  getCompletionDate,
+  showCurriculum,
+  setShowCurriculum,
+  expandedGrade,
+  setExpandedGrade,
+  onClose,
+  onToggle,
+}: ParentSidebarProps) {
+  const avatarSrc = getChildAvatarImage(currentChild, childIndex);
+  const pathname = usePathname();
+  const dismiss = onClose || onToggle;
 
-      {/* ── Daily Goal (simplified, full-width tile) ── */}
-      <motion.div variants={slideUp} className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 flex items-center gap-5">
-        <div className="relative w-20 h-20 flex-shrink-0">
-          <svg viewBox="0 0 100 100" className="w-full h-full -rotate-90">
-            <circle cx="50" cy="50" r="40" fill="none" stroke="#e5e7eb" strokeWidth="8" className="dark:stroke-slate-700" />
-            <circle
-              cx="50" cy="50" r="40" fill="none"
-              stroke={dailyGoalMet ? "#10b981" : "#6366f1"}
-              strokeWidth="8"
-              strokeLinecap="round"
-              strokeDasharray="251"
-              strokeDashoffset={dailyGoalMet ? 0 : 251}
-              className="transition-all duration-1000"
-            />
-          </svg>
-          <div className="absolute inset-0 flex items-center justify-center">
-            {dailyGoalMet ? <Sparkles className="w-7 h-7 text-emerald-500" strokeWidth={1.5} /> : <Target className="w-7 h-7 text-indigo-500" strokeWidth={1.5} />}
-          </div>
+  const isActive = (href: string) => {
+    const base = href.split("?")[0];
+    return pathname === base;
+  };
+
+  const navLinkClass = (href: string) =>
+    `flex items-center gap-2.5 px-2 py-1.5 rounded-lg text-[13px] transition-colors ${
+      isActive(href)
+        ? "bg-indigo-50 text-indigo-700 font-medium"
+        : "text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900"
+    }`;
+
+  const navIconClass = (href: string) =>
+    `w-4 h-4 ${isActive(href) ? "text-indigo-500" : "text-zinc-400"}`;
+
+  const NAV_SECTIONS = [
+    {
+      label: "Main",
+      items: [
+        { href: "/dashboard", icon: Home, label: "Dashboard" },
+        { href: `/analytics?child=${child.id}`, icon: BarChart3, label: "Analytics" },
+      ],
+    },
+    {
+      label: "Learning",
+      items: [
+        { href: "/word-bank", icon: BookText, label: "Word Bank" },
+        { href: "/question-bank", icon: ListChecks, label: "Question Bank" },
+        { href: `/roadmap?child=${child.id}`, icon: Map, label: "Reading Journey" },
+      ],
+    },
+    {
+      label: "Fun",
+      items: [
+        { href: `/shop?child=${child.id}`, icon: Carrot, label: "Shop", iconColor: "w-[17px] h-[17px] text-orange-500" },
+        { href: `/leaderboard?child=${child.id}`, icon: Trophy, label: "Leaderboard" },
+      ],
+    },
+  ];
+
+  return (
+    <div className="flex flex-col h-full">
+      {/* ── Header ── */}
+      <div className="px-3 pt-3 pb-2 flex items-center gap-2.5">
+        <div className="w-8 h-8 rounded-lg overflow-hidden flex-shrink-0 ring-1 ring-zinc-200">
+          <img src={avatarSrc} alt={currentChild.first_name} className="w-full h-full object-cover" draggable={false} />
         </div>
         <div className="flex-1 min-w-0">
-          <div className="font-bold text-zinc-900 dark:text-slate-100 text-base">
-            {dailyGoalMet ? "You did it!" : "Today's Goal"}
+          <div className="text-sm font-semibold text-zinc-900 truncate leading-tight">{currentChild.first_name}</div>
+          {readingLevel && (
+            <div className="text-[11px] text-zinc-500 leading-tight">{readingLevel}</div>
+          )}
+        </div>
+        {dismiss && (
+          <button
+            onClick={dismiss}
+            className="w-7 h-7 rounded-lg flex items-center justify-center hover:bg-zinc-100 transition-colors"
+            aria-label="Collapse"
+          >
+            <ChevronDown className="w-4 h-4 text-zinc-400 -rotate-90" strokeWidth={2} />
+          </button>
+        )}
+      </div>
+
+      {/* ── Separator ── */}
+      <div className="mx-3 h-px bg-zinc-200" />
+
+      {/* ── Scrollable content ── */}
+      <div className="flex-1 overflow-y-auto py-2 space-y-4">
+        {/* Navigation sections */}
+        {NAV_SECTIONS.map(({ label, items }) => (
+          <div key={label} className="px-3">
+            <p className="px-2 mb-1 text-[11px] font-semibold text-zinc-400 uppercase tracking-widest">{label}</p>
+            <nav className="space-y-0.5">
+              {items.map(({ href, icon: Icon, label: itemLabel, iconColor }: any) => (
+                <Link key={href} href={href} onClick={onClose} className={navLinkClass(href)}>
+                  <Icon className={iconColor || navIconClass(href)} strokeWidth={1.5} />
+                  <span>{itemLabel}</span>
+                </Link>
+              ))}
+            </nav>
           </div>
-          <div className="text-sm text-zinc-500 dark:text-slate-400 mt-0.5">
-            {dailyGoalMet
-              ? "Amazing work! Come back tomorrow for more."
-              : "Do 1 lesson today!"}
+        ))}
+
+        {/* Reading Path */}
+        {hasAssessment && (
+          <>
+            <div className="mx-3 h-px bg-zinc-200" />
+            <div className="px-3">
+              <p className="px-2 mb-1.5 text-[11px] font-semibold text-zinc-400 uppercase tracking-widest">Reading Path</p>
+              <LessonPath child={child} readingLevel={readingLevel} lessonProgress={lessonProgress} userPlan={userPlan} />
+            </div>
+          </>
+        )}
+
+        {/* Separator */}
+        <div className="mx-3 h-px bg-zinc-200" />
+
+        {/* This Week */}
+        <div className="px-3">
+          <p className="px-2 mb-1.5 text-[11px] font-semibold text-zinc-400 uppercase tracking-widest">This Week</p>
+          <div className="px-2 space-y-1">
+            {weeklyCarrots.map(({ day, carrots: dayCarrots, pct, isToday }) => (
+              <div key={day} className="flex items-center gap-2 h-5">
+                <span className={`w-7 text-[11px] tabular-nums ${isToday ? "text-zinc-900 font-semibold" : "text-zinc-400"}`}>
+                  {day}
+                </span>
+                <div className="flex-1 h-1.5 bg-zinc-100 rounded-full overflow-hidden">
+                  <div
+                    className={`h-full rounded-full transition-all duration-500 ${
+                      dayCarrots > 0
+                        ? "bg-emerald-500"
+                        : isToday
+                        ? "bg-indigo-200"
+                        : ""
+                    }`}
+                    style={{ width: dayCarrots > 0 ? `${Math.max(pct, 8)}%` : isToday ? "4%" : "0%" }}
+                  />
+                </div>
+                {dayCarrots > 0 && (
+                  <span className="w-5 text-right text-[10px] font-medium text-emerald-600 tabular-nums">{dayCarrots}</span>
+                )}
+              </div>
+            ))}
           </div>
         </div>
-      </motion.div>
 
-      {/* ── Primary CTA: Assessment or Next Lesson (enlarged) ── */}
-      {hasAssessment === false && (
-        <motion.div variants={slideUp}>
-          <Link href={`/assessment?child=${child.id}`} className="block">
-            <div className="rounded-3xl bg-gradient-to-r from-indigo-600 to-violet-500 p-7 text-center text-white hover:from-indigo-700 hover:to-violet-600 transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] cursor-pointer">
-              <Target className="w-12 h-12 text-white mx-auto mb-3" strokeWidth={1.5} />
-              <div className="text-xl font-extrabold">Take Your Reading Quiz!</div>
-              <div className="text-indigo-200 text-base mt-1">
-                A fun 10-question quiz to find {child.first_name}&apos;s reading level
-              </div>
-            </div>
-          </Link>
-        </motion.div>
-      )}
+        {/* Separator */}
+        <div className="mx-3 h-px bg-zinc-200" />
 
-      {hasAssessment && nextLesson && (
-        <motion.div variants={slideUp}>
-          <Link href={`/lesson?child=${child.id}&lesson=${nextLesson.id}`} className="block">
-            <div className="rounded-3xl bg-gradient-to-r from-indigo-600 to-violet-500 p-6 text-white hover:from-indigo-700 hover:to-violet-600 transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] cursor-pointer">
-              <div className="flex items-center gap-4">
-                <div className="w-16 h-16 rounded-2xl bg-white/20 flex items-center justify-center flex-shrink-0">
-                  {completedCount === 0 ? <Rocket className="w-9 h-9 text-white" strokeWidth={1.5} /> : <BookOpen className="w-9 h-9 text-white" strokeWidth={1.5} />}
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="text-indigo-200 text-sm font-medium">
-                    {completedCount === 0 ? "Begin Your Reading Adventure!" : `Continue: Lesson ${nextLessonIdx + 1}`}
+        {/* Recent Activity */}
+        <div className="px-3">
+          <p className="px-2 mb-1.5 text-[11px] font-semibold text-zinc-400 uppercase tracking-widest">Recent Activity</p>
+          {recentCompleted.length > 0 ? (
+            <div className="space-y-0.5">
+              {recentCompleted.map(({ lesson }) => {
+                const date = getCompletionDate(lesson.id);
+                return (
+                  <div key={lesson.id} className="flex items-center gap-2 px-2 py-1 rounded-lg">
+                    <svg className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className="flex-1 min-w-0 text-[13px] text-zinc-700 truncate">{lesson.title}</span>
+                    {date && <span className="text-[10px] text-zinc-400 flex-shrink-0 tabular-nums">{date}</span>}
                   </div>
-                  <div className="text-white font-extrabold text-xl leading-tight truncate">
-                    {nextLesson.title}
-                  </div>
-                  <div className="text-indigo-200 text-sm mt-1">
-                    {completedCount} of {lessons.length} lessons complete
-                  </div>
-                </div>
-                <div className="flex-shrink-0 text-white/80">
-                  <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </div>
-              </div>
+                );
+              })}
             </div>
-          </Link>
-        </motion.div>
-      )}
+          ) : (
+            <p className="px-2 py-1 text-[13px] text-zinc-400">No activity yet</p>
+          )}
+        </div>
+      </div>
 
-      {hasAssessment && !nextLesson && lessons.length > 0 && (
-        <motion.div variants={slideUp}>
-          <div className="rounded-3xl bg-gradient-to-r from-emerald-500 to-teal-500 p-7 text-center text-white shadow-lg">
-            <Trophy className="w-12 h-12 text-white mx-auto mb-3" strokeWidth={1.5} />
-            <div className="text-xl font-extrabold">All Lessons Complete!</div>
-            <div className="text-emerald-100 text-base mt-1">
-              {child.first_name} has finished all {lessons.length} lessons. Amazing!
-            </div>
-          </div>
-        </motion.div>
-      )}
+      {/* ── Footer — avatar with popover menu ── */}
+      <div className="mx-3 h-px bg-zinc-200" />
+      <SidebarUserMenu
+        avatarSrc={avatarSrc}
+        name={currentChild.first_name}
+        plan={userPlan}
+      />
+    </div>
+  );
+}
 
-      {/* ── For Parents divider ── */}
-      <motion.div variants={slideUp} className="flex items-center gap-3 pt-2">
-        <div className="flex-1 h-px bg-zinc-200 dark:bg-slate-700" />
-        <span className="text-xs font-semibold text-zinc-400 dark:text-slate-500 uppercase tracking-wider">For Parents</span>
-        <div className="flex-1 h-px bg-zinc-200 dark:bg-slate-700" />
-      </motion.div>
+/* ─── Sidebar User Menu (popover) ─────────────────────── */
 
-      {/* ── Analytics Link ── */}
-      <motion.div variants={slideUp}>
-        <Link href={`/analytics?child=${child.id}`} className="block">
-          <div className="rounded-2xl border border-violet-200 dark:border-violet-800/40 bg-gradient-to-r from-violet-50 to-purple-50 dark:from-violet-950/30 dark:to-purple-950/30 p-4 hover:border-violet-300 dark:hover:border-violet-700 hover:shadow-md transition-all duration-200 cursor-pointer group">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-white dark:bg-slate-700 flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform">
-                <BarChart3 className="w-5 h-5 text-violet-600 dark:text-violet-400" strokeWidth={1.5} />
+function SidebarUserMenu({ avatarSrc, name, plan }: { avatarSrc: string; name: string; plan: string }) {
+  const router = useRouter();
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  // Close on outside click
+  useEffect(() => {
+    if (!open) return;
+    function handleClick(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    }
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, [open]);
+
+  // Close on Escape
+  useEffect(() => {
+    if (!open) return;
+    function handleKey(e: KeyboardEvent) {
+      if (e.key === "Escape") setOpen(false);
+    }
+    document.addEventListener("keydown", handleKey);
+    return () => document.removeEventListener("keydown", handleKey);
+  }, [open]);
+
+  const handleLogout = async () => {
+    const supabase = supabaseBrowser();
+    await supabase.auth.signOut();
+    router.replace("/login");
+  };
+
+  return (
+    <div ref={ref} className="relative px-3 py-2">
+      {/* Trigger */}
+      <button
+        onClick={() => setOpen(!open)}
+        className="w-full flex items-center gap-2.5 p-1.5 rounded-lg hover:bg-zinc-100 transition-colors"
+      >
+        <div className="w-8 h-8 rounded-lg overflow-hidden flex-shrink-0 ring-1 ring-zinc-200">
+          <img src={avatarSrc} alt={name} className="w-full h-full object-cover" draggable={false} />
+        </div>
+        <div className="flex-1 min-w-0 text-left">
+          <div className="text-[13px] font-medium text-zinc-900 truncate">{name}</div>
+          <div className="text-[11px] text-zinc-400">{plan === "premium" ? "Readee+" : "Free Plan"}</div>
+        </div>
+        <ChevronsUpDown className="w-4 h-4 text-zinc-400 flex-shrink-0" strokeWidth={1.5} />
+      </button>
+
+      {/* Popover (opens upward) */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: 8, scale: 0.96 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 8, scale: 0.96 }}
+            transition={{ duration: 0.15 }}
+            className="absolute bottom-full left-3 right-3 mb-2 rounded-xl border border-zinc-200 bg-white shadow-lg overflow-hidden z-50"
+          >
+            {/* User info */}
+            <div className="px-3 py-3 flex items-center gap-2.5">
+              <div className="w-9 h-9 rounded-lg overflow-hidden flex-shrink-0 ring-1 ring-zinc-200">
+                <img src={avatarSrc} alt={name} className="w-full h-full object-cover" draggable={false} />
               </div>
               <div className="flex-1 min-w-0">
-                <div className="font-bold text-sm text-zinc-900 dark:text-slate-100">Progress Report</div>
-                <div className="text-[11px] text-zinc-500 dark:text-slate-400 mt-0.5">Performance analytics</div>
+                <div className="text-sm font-semibold text-zinc-900 truncate">{name}</div>
+                <div className={`text-[11px] ${plan === "premium" ? "text-violet-500 font-medium" : "text-zinc-500"}`}>{plan === "premium" ? "Readee+ Member" : "Free Plan"}</div>
               </div>
             </div>
-          </div>
-        </Link>
-      </motion.div>
 
-      {/* ── Lesson Path ── */}
-      {hasAssessment && (
-        <motion.div variants={slideUp}>
-          <LessonPath child={child} readingLevel={readingLevel} lessonProgress={lessonProgress} userPlan={userPlan} />
-        </motion.div>
-      )}
+            <div className="h-px bg-zinc-100" />
 
-      {/* ── Curriculum Overview ── */}
-      <motion.div variants={slideUp}>
-        <CurriculumOverview
-          readingLevel={readingLevel}
-          lessonProgress={lessonProgress}
-          showCurriculum={showCurriculum}
-          setShowCurriculum={setShowCurriculum}
-          expandedGrade={expandedGrade}
-          setExpandedGrade={setExpandedGrade}
-        />
-      </motion.div>
-
-      {/* ── Weekly Progress ── */}
-      <motion.div variants={slideUp} className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6">
-        <h3 className="text-base font-bold text-zinc-900 dark:text-slate-100 mb-4">Weekly Progress</h3>
-        <div className="space-y-2.5">
-          {weeklyCarrots.map(({ day, carrots, pct, isToday, isPast }) => (
-            <div key={day} className="flex items-center gap-3">
-              <span className={`w-10 text-xs font-semibold ${isToday ? "text-indigo-600" : "text-zinc-500"}`}>
-                {day}
-              </span>
-              <div className="flex-1 h-2.5 bg-zinc-100 dark:bg-slate-700 rounded-full overflow-hidden">
-                <div
-                  className={`h-full rounded-full transition-all duration-700 ${
-                    carrots > 0
-                      ? "bg-gradient-to-r from-emerald-400 to-emerald-500"
-                      : isToday
-                      ? "bg-indigo-200"
-                      : ""
-                  }`}
-                  style={{ width: carrots > 0 ? `${Math.max(pct, 8)}%` : isToday ? "4%" : "0%" }}
-                />
-              </div>
-              <span className={`w-14 text-right text-xs font-medium ${
-                carrots > 0 ? "text-emerald-600" : isToday ? "text-indigo-400" : isPast ? "text-zinc-300" : "text-zinc-300"
-              }`}>
-                {carrots > 0 ? <>{carrots} <Carrot className="w-3 h-3 inline-block text-orange-500" strokeWidth={1.5} /></> : isToday ? "Today" : "—"}
-              </span>
+            {/* Menu items */}
+            <div className="py-1 px-1">
+              <Link
+                href="/account"
+                onClick={() => setOpen(false)}
+                className="flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm text-zinc-700 hover:bg-zinc-100 transition-colors"
+              >
+                <User className="w-4 h-4 text-zinc-400" strokeWidth={1.5} />
+                Account
+              </Link>
+              <Link
+                href="/billing"
+                onClick={() => setOpen(false)}
+                className="flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm text-zinc-700 hover:bg-zinc-100 transition-colors"
+              >
+                <CreditCard className="w-4 h-4 text-zinc-400" strokeWidth={1.5} />
+                Billing
+              </Link>
+              <Link
+                href="/notifications"
+                onClick={() => setOpen(false)}
+                className="flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm text-zinc-700 hover:bg-zinc-100 transition-colors"
+              >
+                <Bell className="w-4 h-4 text-zinc-400" strokeWidth={1.5} />
+                Notifications
+              </Link>
             </div>
-          ))}
-        </div>
-      </motion.div>
 
-      {/* ── Recent Activity ── */}
-      <motion.div variants={slideUp} className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6">
-        <h3 className="text-base font-bold text-zinc-900 dark:text-slate-100 mb-4">Recent Activity</h3>
-        {recentCompleted.length > 0 ? (
-          <div className="space-y-3">
-            {recentCompleted.map(({ lesson, idx }) => {
-              const date = getCompletionDate(lesson.id);
-              return (
-                <div key={lesson.id} className="flex items-center gap-3 group">
-                  <div className="w-8 h-8 rounded-lg bg-green-100 flex items-center justify-center text-green-600 text-sm font-bold flex-shrink-0">
-                    ✓
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="text-sm font-medium text-zinc-900 dark:text-slate-200 truncate">
-                      Lesson {idx + 1}: {lesson.title}
-                    </div>
-                    <div className="text-xs text-zinc-400 dark:text-slate-500">
-                      {formatSkillName(lesson.skill)}
-                    </div>
-                  </div>
-                  {date && (
-                    <span className="text-xs text-zinc-400 flex-shrink-0">{date}</span>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-        ) : (
-          <div className="text-center py-6">
-            <Sprout className="w-6 h-6 text-emerald-500 mx-auto mb-2" strokeWidth={1.5} />
-            <p className="text-sm text-zinc-400">
-              No activity yet. Start your first lesson to see progress here!
-            </p>
-          </div>
+            <div className="h-px bg-zinc-100" />
+
+            <div className="py-1 px-1">
+              <button
+                onClick={handleLogout}
+                className="w-full flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm text-zinc-700 hover:bg-zinc-100 transition-colors"
+              >
+                <LogOut className="w-4 h-4 text-zinc-400" strokeWidth={1.5} />
+                Log out
+              </button>
+            </div>
+          </motion.div>
         )}
-      </motion.div>
-    </motion.div>
-    </>
+      </AnimatePresence>
+    </div>
   );
 }
 
@@ -1141,130 +1555,93 @@ function LessonPath({
   const paywallLabel = readingLevel ? `${readingLevel} level` : "this level";
 
   return (
-    <div className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 space-y-4">
-      <div className="flex items-center justify-between">
-        <h3 className="text-base font-bold text-zinc-900 dark:text-slate-100">Your Reading Path</h3>
-        {readingLevel && (
-          <span className="px-3 py-1 rounded-full text-xs font-semibold bg-violet-50 text-violet-700">
-            {readingLevel}
+    <div className="space-y-3">
+      {/* Progress summary */}
+      {readingLevel && (
+        <div className="flex items-center gap-2 px-1">
+          <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-violet-50 text-violet-700">{readingLevel}</span>
+          <span className="text-[11px] text-zinc-400">
+            {lessons.filter((l) => isLessonComplete(l.id)).length}/{lessons.length} complete
           </span>
-        )}
-      </div>
-
-      {userPlan !== "premium" && lockedLessonsCount > 0 && (
-        <div className={`rounded-xl border p-4 ${nearPaywall ? "border-indigo-300 bg-gradient-to-r from-indigo-50 to-violet-50" : "border-indigo-200 bg-indigo-50/60"}`}>
-          <div className="flex items-start justify-between gap-3">
-            <div className="flex-1 min-w-0">
-              <p className="text-sm font-semibold text-zinc-900">
-                {nearPaywall ? "Nice momentum - keep it going with Readee+" : "Starter lessons in progress"}
-              </p>
-              <p className="text-xs text-zinc-600 mt-1">
-                You&apos;ve completed {completedFreeCount} of {freeLessons.length} free lessons in {paywallLabel}.
-                Unlock {lockedLessonsCount} more lessons in this level and full access across all levels.
-              </p>
-              <div className="mt-3 h-2.5 rounded-full bg-white/80 border border-indigo-100 overflow-hidden">
-                <div className="h-full rounded-full bg-gradient-to-r from-indigo-500 to-violet-500" style={{ width: `${freeProgressPct}%` }} />
-              </div>
-            </div>
-            <Link
-              href={`/upgrade?child=${child.id}`}
-              className="px-3 py-2 rounded-lg bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-xs font-bold hover:from-indigo-700 hover:to-violet-600 transition-all whitespace-nowrap shadow-sm"
-            >
-              Unlock Readee+
-            </Link>
-          </div>
         </div>
       )}
 
-      <div className="space-y-3">
-        {lessons.map((lesson, i) => {
-          const complete = isLessonComplete(lesson.id);
-          const isNext = i === firstIncomplete;
-          const isFuture = !complete && !isNext;
-          const isFree = isLessonFree(lesson.id);
-          const isLocked = !isFree && userPlan !== "premium";
+      {/* Upgrade banner (compact) */}
+      {userPlan !== "premium" && lockedLessonsCount > 0 && (
+        <Link
+          href={`/upgrade?child=${child.id}`}
+          className="flex items-center gap-2 px-2.5 py-2 rounded-lg bg-indigo-50 hover:bg-indigo-100 transition-colors"
+        >
+          <Star className="w-3.5 h-3.5 text-indigo-500" fill="currentColor" strokeWidth={0} />
+          <span className="text-[12px] font-medium text-indigo-700">Unlock {lockedLessonsCount} more lessons</span>
+        </Link>
+      )}
 
-          return (
-            <div
-              key={lesson.id}
-              className={`rounded-xl border p-4 transition-all duration-200 relative ${
-                isLocked
-                  ? "border-zinc-200 dark:border-slate-700 bg-zinc-50/80 dark:bg-slate-800/50 opacity-75"
-                  : complete
-                  ? "border-green-200 dark:border-green-800/40 bg-green-50/50 dark:bg-green-950/20"
-                  : isNext
-                  ? "border-indigo-300 dark:border-indigo-700 bg-indigo-50/50 dark:bg-indigo-950/20 shadow-sm"
-                  : "border-zinc-100 dark:border-slate-700 bg-zinc-50/50 dark:bg-slate-800/50 opacity-60"
-              } ${!isFuture && !isLocked ? "hover:shadow-md" : ""}`}
-            >
-              <div className="flex items-center gap-3">
-                <div
-                  className={`w-10 h-10 rounded-xl flex items-center justify-center text-sm font-bold flex-shrink-0 ${
-                    isLocked
-                      ? "bg-zinc-100 text-zinc-400"
-                      : complete
-                      ? "bg-green-100 text-green-600"
-                      : isNext
-                      ? "bg-indigo-100 text-indigo-600"
-                      : "bg-zinc-100 text-zinc-400"
-                  }`}
-                >
-                  {isLocked ? (
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                    </svg>
-                  ) : complete ? "✓" : i + 1}
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2">
-                    <span className={`font-semibold text-sm ${isLocked || isFuture ? "text-zinc-400 dark:text-slate-500" : "text-zinc-900 dark:text-slate-100"}`}>
-                      Lesson {i + 1}: {lesson.title}
-                    </span>
-                    {isLocked && (
-                      <span className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-gradient-to-r from-indigo-100 to-violet-100 text-indigo-600">
-                        Readee+
-                      </span>
-                    )}
-                  </div>
-                  <div className={`text-xs mt-0.5 ${isLocked || isFuture ? "text-zinc-300 dark:text-slate-600" : "text-zinc-500 dark:text-slate-400"}`}>
-                    {formatSkillName(lesson.skill)}
-                  </div>
-                  {lesson.standards && lesson.standards.length > 0 && (
-                    <div className="flex flex-wrap gap-1 mt-1">
-                      {lesson.standards.map((s) => (
-                        <span key={s} className={`text-[10px] px-1.5 py-0.5 rounded ${isLocked || isFuture ? "bg-zinc-100 dark:bg-slate-700 text-zinc-300 dark:text-slate-600" : "bg-zinc-100 dark:bg-slate-700 text-zinc-400 dark:text-slate-500"}`}>
-                          {s}
-                        </span>
-                      ))}
+      {/* Timeline stepper */}
+      <div className="max-h-[280px] overflow-y-auto pr-1">
+        <div className="relative pl-5">
+          {/* Vertical line */}
+          <div className="absolute left-[9px] top-2 bottom-2 w-px bg-zinc-200" />
+
+          {lessons.map((lesson, i) => {
+            const complete = isLessonComplete(lesson.id);
+            const isNext = i === firstIncomplete;
+            const isFuture = !complete && !isNext;
+            const isFree = isLessonFree(lesson.id);
+            const isLocked = !isFree && userPlan !== "premium";
+            const isLast = i === lessons.length - 1;
+
+            return (
+              <div key={lesson.id} className={`relative flex items-start gap-2.5 ${isLast ? "" : "pb-2"}`}>
+                {/* Dot */}
+                <div className="absolute left-[-20px] top-[3px]">
+                  {complete ? (
+                    <div className="w-[18px] h-[18px] rounded-full bg-emerald-500 flex items-center justify-center">
+                      <svg className="w-2.5 h-2.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
                     </div>
+                  ) : isNext ? (
+                    <div className="w-[18px] h-[18px] rounded-full bg-indigo-500 ring-4 ring-indigo-100 flex items-center justify-center">
+                      <div className="w-1.5 h-1.5 rounded-full bg-white" />
+                    </div>
+                  ) : isLocked ? (
+                    <div className="w-[18px] h-[18px] rounded-full bg-zinc-200 flex items-center justify-center">
+                      <Lock className="w-2 h-2 text-zinc-400" strokeWidth={2.5} />
+                    </div>
+                  ) : (
+                    <div className="w-[18px] h-[18px] rounded-full border-2 border-zinc-200 bg-white" />
                   )}
                 </div>
-                {isLocked && (
-                  <Link
-                    href={`/upgrade?child=${child.id}`}
-                    className="px-3 py-1.5 rounded-lg bg-gradient-to-r from-indigo-500 to-violet-500 text-white text-[11px] font-bold hover:from-indigo-600 hover:to-violet-600 transition-all shadow-sm flex items-center gap-1"
-                  >
-                    <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                    Unlock
-                  </Link>
-                )}
-                {!isLocked && complete && (
-                  <span className="text-xs font-semibold text-green-600">Completed</span>
-                )}
-                {!isLocked && isNext && (
-                  <Link
-                    href={`/lesson?child=${child.id}&lesson=${lesson.id}`}
-                    className="px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-xs font-bold hover:from-indigo-700 hover:to-violet-600 transition-all shadow-sm hover:shadow-md"
-                  >
-                    Start
-                  </Link>
-                )}
+
+                {/* Content */}
+                <Link
+                  href={isLocked ? `/upgrade?child=${child.id}` : `/lesson?child=${child.id}&lesson=${lesson.id}`}
+                  className={`flex-1 min-w-0 rounded-lg px-2 py-1.5 -mx-1 transition-colors ${
+                    isNext
+                      ? "bg-indigo-50 hover:bg-indigo-100"
+                      : isLocked
+                      ? "opacity-50"
+                      : "hover:bg-zinc-50"
+                  }`}
+                >
+                  <div className="flex items-center gap-1.5">
+                    <span className={`text-[11px] font-bold tabular-nums ${
+                      complete ? "text-emerald-600" : isNext ? "text-indigo-600" : "text-zinc-400"
+                    }`}>
+                      {i + 1}
+                    </span>
+                    <span className={`text-[12px] font-medium truncate ${
+                      isLocked || isFuture ? "text-zinc-400" : isNext ? "text-indigo-900" : "text-zinc-700"
+                    }`}>
+                      {lesson.title}
+                    </span>
+                  </div>
+                </Link>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </div>
   );
@@ -1346,14 +1723,10 @@ function CurriculumOverview({
                       </span>
                     )}
                   </div>
-                  <svg
+                  <ChevronDown
                     className={`w-4 h-4 text-zinc-400 transition-transform flex-shrink-0 ${isExpanded ? "rotate-180" : ""}`}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
+                    strokeWidth={2}
+                  />
                 </button>
 
                 {isExpanded && (
