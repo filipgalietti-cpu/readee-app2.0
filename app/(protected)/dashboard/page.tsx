@@ -107,6 +107,21 @@ function getGreeting(): { text: string; icon: ReactNode } {
   return { text: "Good evening", icon: <Moon className="w-8 h-8 text-indigo-400" strokeWidth={1.5} /> };
 }
 
+function DashboardBackdrop({ src }: { src: string }) {
+  const [loaded, setLoaded] = useState(false);
+
+  return (
+    <>
+      <img src={src} alt="" className="hidden" onLoad={() => setLoaded(true)} />
+      {!loaded && <div className="fixed inset-0 -z-10 skeleton-shimmer" />}
+      <div
+        className={`fixed inset-0 -z-10 transition-opacity duration-700 ${loaded ? "opacity-100" : "opacity-0"}`}
+        style={{ backgroundImage: `url(${src})`, backgroundSize: "cover", backgroundPosition: "center" }}
+      />
+    </>
+  );
+}
+
 export default function Dashboard() {
   const router = useRouter();
   const children = useChildStore((s) => s.children);
@@ -653,12 +668,7 @@ function ChildDashboard({
 
   return (
     <>
-    {bgImage && (
-      <div
-        className="fixed inset-0 -z-10"
-        style={{ backgroundImage: `url(${bgImage})`, backgroundSize: "cover", backgroundPosition: "center" }}
-      />
-    )}
+    {bgImage && <DashboardBackdrop src={bgImage} />}
 
     {/* ── Mobile Parent Sidebar Overlay ── */}
     <AnimatePresence>

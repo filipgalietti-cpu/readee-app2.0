@@ -389,6 +389,24 @@ body {
   90%, 100% { transform: translateX(200%) skewX(-20deg); }
 }
 
+/* Skeleton shimmer for image loading */
+@keyframes skeletonShimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(90deg, #e4e4e7 25%, #f4f4f5 50%, #e4e4e7 75%); /* zinc-200 → zinc-100 → zinc-200 */
+  background-size: 200% 100%;
+  animation: skeletonShimmer 1.5s ease-in-out infinite;
+}
+
+.dark .skeleton-shimmer {
+  background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%); /* slate-800 → slate-700 → slate-800 */
+  background-size: 200% 100%;
+  animation: skeletonShimmer 1.5s ease-in-out infinite;
+}
+
 .nav-shine::after {
   content: "";
   position: absolute;

@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
 interface LoadingImageProps {
   src: string;
@@ -15,23 +14,23 @@ export function LoadingImage({ src, alt = "", className = "", containerClassName
   const [loaded, setLoaded] = useState(false);
   const [errored, setErrored] = useState(false);
 
+  // Reset when src changes (e.g. slide transitions)
+  useEffect(() => {
+    setLoaded(false);
+    setErrored(false);
+  }, [src]);
+
   if (errored || !src) return null;
 
   return (
     <div className={`relative ${containerClassName}`}>
       {!loaded && (
-        <div className="absolute inset-0 flex items-center justify-center bg-gray-100 dark:bg-slate-800 rounded-2xl">
-          <motion.div
-            className="w-8 h-8 rounded-full border-3 border-indigo-200 dark:border-indigo-800 border-t-indigo-500 dark:border-t-indigo-400"
-            animate={{ rotate: 360 }}
-            transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
-          />
-        </div>
+        <div className="absolute inset-0 skeleton-shimmer rounded-2xl" />
       )}
       <img
         src={src}
         alt={alt}
-        className={`transition-opacity duration-300 ${loaded ? "opacity-100" : "opacity-0"} ${className}`}
+        className={`transition-opacity duration-500 ${loaded ? "opacity-100" : "opacity-0"} ${className}`}
         onLoad={() => setLoaded(true)}
         onError={(e) => {
           setErrored(true);
