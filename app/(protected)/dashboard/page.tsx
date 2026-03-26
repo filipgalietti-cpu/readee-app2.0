@@ -811,7 +811,7 @@ function ChildDashboard({
     </aside>
 
     {/* Main content with left margin to account for fixed sidebar */}
-    <div className={`w-screen transition-[margin] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${sidebarOpen ? "lg:ml-[272px]" : "lg:ml-[72px]"}`}>
+    <div className={`min-h-screen transition-[margin] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${sidebarOpen ? "lg:ml-[272px]" : "lg:ml-[72px]"}`}>
       <motion.div
         className="max-w-3xl mx-auto px-4 pb-12"
         variants={staggerContainer}
@@ -1579,9 +1579,9 @@ function LessonPath({
 
       {/* Timeline stepper */}
       <div className="max-h-[280px] overflow-y-auto pr-1">
-        <div className="relative pl-5">
+        <div className="relative pl-7">
           {/* Vertical line */}
-          <div className="absolute left-[9px] top-2 bottom-2 w-px bg-zinc-200" />
+          <div className="absolute left-[17px] top-2 bottom-2 w-px bg-zinc-200" />
 
           {lessons.map((lesson, i) => {
             const complete = isLessonComplete(lesson.id);
