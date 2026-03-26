@@ -29,8 +29,6 @@ const GRADE_FILES = [
   { file: "4th-grade-standards-questions.json", folder: "4th-grade" },
 ];
 
-const LETTERS = ["A", "B", "C", "D", "E", "F"];
-
 const VOICE_DIRECTION =
   "Say this in a warm, encouraging tone like a supportive teacher. Speak naturally and gently, like you're helping a child learn the right answer:";
 
@@ -52,15 +50,8 @@ function main() {
     for (const std of standards) {
       for (const q of std.questions) {
         if (q.type !== "multiple_choice") continue;
-        if (!q.choices || !q.correct) continue;
+        if (!q.correct) continue;
 
-        const correctIdx = q.choices.indexOf(q.correct);
-        if (correctIdx === -1) {
-          console.warn(`  WARN: correct answer not found in choices for ${q.id}`);
-          continue;
-        }
-
-        const letter = LETTERS[correctIdx];
         // Lowercase the answer start for natural speech flow, unless it's
         // a proper noun (e.g. "Bear", "Lily") or "I".
         let answer = q.correct;
@@ -70,7 +61,7 @@ function main() {
         }
         // Strip trailing period/punctuation to avoid double periods
         answer = answer.replace(/[.!]+$/, "");
-        const scriptText = `The correct answer is ${letter}, ${answer}.`;
+        const scriptText = `The correct answer is ${answer}.`;
         const lessonId = `${folder}/${std.standard_id}`;
         const filename = `${q.id}-incorrect`;
 

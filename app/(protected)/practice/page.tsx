@@ -223,6 +223,7 @@ const INCORRECT_MESSAGES = [
 // Feedback audio files (static .mp3 in /audio/feedback/)
 const CORRECT_AUDIO = ["correct-1", "correct-2", "correct-3", "correct-4", "correct-5", "correct-6", "correct-7", "correct-8", "correct-9", "correct-10", "correct-11", "correct-12"];
 const INCORRECT_AUDIO = ["incorrect-1", "incorrect-2", "incorrect-3", "incorrect-4", "incorrect-5", "incorrect-6", "incorrect-7", "incorrect-8", "incorrect-9", "incorrect-10"];
+const ENCOURAGE_AUDIO = ["encourage-1", "encourage-2", "encourage-3", "encourage-4", "encourage-5", "encourage-6"];
 
 const ACCENT_COLORS = ["#60a5fa", "#4ade80", "#fb923c", "#a78bfa"]; // blue, green, orange, purple
 
@@ -485,10 +486,12 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
       const answerUrl = q.type === "multiple_choice" && q.audio_url
         ? q.audio_url.replace(/\.mp3$/, "-incorrect.mp3")
         : null;
+      const encourageFile = ENCOURAGE_AUDIO[Math.floor(Math.random() * ENCOURAGE_AUDIO.length)];
+      const encourageUrl = getAudioUrl("feedback", encourageFile);
       if (answerUrl) {
-        playSequence([{ url: prefixUrl }, { delayMs: 200 }, { url: answerUrl }]);
+        playSequence([{ url: prefixUrl }, { delayMs: 200 }, { url: answerUrl }, { delayMs: 300 }, { url: encourageUrl }]);
       } else {
-        playUrl(prefixUrl);
+        playSequence([{ url: prefixUrl }, { delayMs: 300 }, { url: encourageUrl }]);
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

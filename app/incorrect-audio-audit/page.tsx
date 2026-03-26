@@ -4,21 +4,25 @@ import { useState, useRef, useCallback } from "react";
 
 /* ── Audit data for the 10 generated samples ── */
 const ITEMS = [
-  { id: "RL.K.1-Q1-incorrect", path: "kindergarten/RL.K.1", script: "The correct answer is C, a red ball." },
-  { id: "RL.K.1-Q2-incorrect", path: "kindergarten/RL.K.1", script: "The correct answer is D, to school." },
-  { id: "RL.K.1-Q3-incorrect", path: "kindergarten/RL.K.1", script: "The correct answer is D, 6." },
-  { id: "RL.K.1-Q4-incorrect", path: "kindergarten/RL.K.1", script: "The correct answer is A, Gray with white paws." },
-  { id: "RL.K.1-Q5-incorrect", path: "kindergarten/RL.K.1", script: "The correct answer is D, his grandma." },
-  { id: "RL.K.2-Q1-incorrect", path: "kindergarten/RL.K.2", script: "The correct answer is B, Bear was hungry, found honey in a tree, and ate it." },
-  { id: "RL.K.2-Q2-incorrect", path: "kindergarten/RL.K.2", script: "The correct answer is B, Frog wanted to cross the pond." },
-  { id: "RL.K.2-Q3-incorrect", path: "kindergarten/RL.K.2", script: "The correct answer is A, Mia forgot her lunch, so Leo shared with her." },
-  { id: "RL.K.2-Q4-incorrect", path: "kindergarten/RL.K.2", script: "The correct answer is B, Turtle won the race." },
-  { id: "RL.K.2-Q5-incorrect", path: "kindergarten/RL.K.2", script: "The correct answer is C, a rainbow appeared." },
+  { id: "RL.K.1-Q1-incorrect", path: "kindergarten/RL.K.1", script: "The correct answer is a red ball." },
+  { id: "RL.K.1-Q2-incorrect", path: "kindergarten/RL.K.1", script: "The correct answer is to school." },
+  { id: "RL.K.1-Q3-incorrect", path: "kindergarten/RL.K.1", script: "The correct answer is 6." },
+  { id: "RL.K.1-Q4-incorrect", path: "kindergarten/RL.K.1", script: "The correct answer is Gray with white paws." },
+  { id: "RL.K.1-Q5-incorrect", path: "kindergarten/RL.K.1", script: "The correct answer is his grandma." },
+  { id: "RL.K.2-Q1-incorrect", path: "kindergarten/RL.K.2", script: "The correct answer is Bear was hungry, found honey in a tree, and ate it." },
+  { id: "RL.K.2-Q2-incorrect", path: "kindergarten/RL.K.2", script: "The correct answer is Frog wanted to cross the pond." },
+  { id: "RL.K.2-Q3-incorrect", path: "kindergarten/RL.K.2", script: "The correct answer is Mia forgot her lunch, so Leo shared with her." },
+  { id: "RL.K.2-Q4-incorrect", path: "kindergarten/RL.K.2", script: "The correct answer is Turtle won the race." },
+  { id: "RL.K.2-Q5-incorrect", path: "kindergarten/RL.K.2", script: "The correct answer is a rainbow appeared." },
 ];
 
 const PREFIX_FILES = [
   "incorrect-1", "incorrect-2", "incorrect-3", "incorrect-4", "incorrect-5",
   "incorrect-6", "incorrect-7", "incorrect-8", "incorrect-9", "incorrect-10",
+];
+
+const ENCOURAGE_FILES = [
+  "encourage-1", "encourage-2", "encourage-3", "encourage-4", "encourage-5", "encourage-6",
 ];
 
 const STORAGE_KEY = "readee_incorrect_audio_audit";
@@ -87,11 +91,18 @@ export default function IncorrectAudioAuditPage() {
     const prefixUrl = `/audio/feedback/${prefix}.mp3`;
     const answerUrl = `/audio/${item.path}/${item.id}.mp3`;
 
+    const encourage = ENCOURAGE_FILES[Math.floor(Math.random() * ENCOURAGE_FILES.length)];
+    const encourageUrl = `/audio/feedback/${encourage}.mp3`;
+
     await playFile(prefixUrl);
     if (seqId.current !== id) return;
     await new Promise<void>((r) => setTimeout(r, 250));
     if (seqId.current !== id) return;
     await playFile(answerUrl);
+    if (seqId.current !== id) return;
+    await new Promise<void>((r) => setTimeout(r, 300));
+    if (seqId.current !== id) return;
+    await playFile(encourageUrl);
     if (seqId.current === id) setPlaying(null);
   }, [stopAudio, playFile]);
 

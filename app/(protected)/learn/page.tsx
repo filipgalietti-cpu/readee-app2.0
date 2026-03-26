@@ -85,6 +85,7 @@ const INCORRECT_MESSAGES = [
 const CORRECT_EMOJIS = ["star", "sparkles", "sparkle", "star2", "zap", "target"];
 const CORRECT_AUDIO = ["correct-1", "correct-2", "correct-3", "correct-4", "correct-5"];
 const INCORRECT_AUDIO = ["incorrect-1", "incorrect-2", "incorrect-3"];
+const ENCOURAGE_AUDIO = ["encourage-1", "encourage-2", "encourage-3", "encourage-4", "encourage-5", "encourage-6"];
 
 const FEEDBACK_ICON_MAP: Record<string, typeof Star> = {
   star: Star, sparkles: Star, sparkle: Star, star2: Star, zap: Star, target: Star,
@@ -320,10 +321,11 @@ function LearnSession({
       const answerUrl = q.type === "multiple_choice" && q.audio_url
         ? q.audio_url.replace(/\.mp3$/, "-incorrect.mp3")
         : null;
+      const encourageUrl = getAudioUrl("feedback", pickRandom(ENCOURAGE_AUDIO));
       if (answerUrl) {
-        playSequence([{ url: prefixUrl }, { delayMs: 200 }, { url: answerUrl }]);
+        playSequence([{ url: prefixUrl }, { delayMs: 200 }, { url: answerUrl }, { delayMs: 300 }, { url: encourageUrl }]);
       } else {
-        playUrl(prefixUrl);
+        playSequence([{ url: prefixUrl }, { delayMs: 300 }, { url: encourageUrl }]);
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
