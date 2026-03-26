@@ -128,7 +128,7 @@ function WordBankContent() {
 
             return (
               <button
-                key={entry.word}
+                key={`${entry.word}-${idx}`}
                 onClick={() => !isLocked && playWord(entry)}
                 disabled={isLocked}
                 className={`relative rounded-xl border-2 p-3 text-center transition-all duration-200 ${
