@@ -854,7 +854,7 @@ function ChildDashboard({
               className="w-28 h-28 rounded-full bg-gradient-to-br from-indigo-100 to-violet-100 dark:from-indigo-900/40 dark:to-violet-900/40 flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer overflow-hidden ring-4 ring-white dark:ring-slate-800"
               aria-label="Change avatar"
             >
-              <img src={avatarSrc} alt={currentChild.first_name} className="w-full h-full object-cover" draggable={false} />
+              <img src={avatarSrc} alt={currentChild.first_name} className="w-[85%] h-[85%] object-contain" draggable={false} />
             </button>
             <div className="absolute -bottom-1 -right-1 w-8 h-8 rounded-full bg-indigo-600 flex items-center justify-center shadow-md pointer-events-none ring-2 ring-white dark:ring-slate-800">
               <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
