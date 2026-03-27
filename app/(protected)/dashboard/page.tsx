@@ -463,9 +463,9 @@ function ChildDashboard({
   // Remove main container constraints so sidebar can be flush left
   useEffect(() => {
     const main = document.querySelector("main");
-    if (main) { main.style.padding = "0"; main.style.maxWidth = "none"; }
+    if (main) { main.style.paddingLeft = "0"; main.style.paddingRight = "0"; main.style.paddingBottom = "0"; main.style.maxWidth = "none"; }
     return () => {
-      if (main) { main.style.padding = ""; main.style.maxWidth = ""; }
+      if (main) { main.style.paddingLeft = ""; main.style.paddingRight = ""; main.style.paddingBottom = ""; main.style.maxWidth = ""; }
     };
   }, []);
   const hasMultiple = children.length > 1;
