@@ -2,7 +2,7 @@
   "grade": "3rd",
   "grade_label": "3rd Grade",
   "total_standards": 38,
-  "total_questions": 175,
+  "total_questions": 183,
   "standards": [
     {
       "domain": "Reading Literature",
@@ -1061,6 +1061,181 @@
           "correct": "correct",
           "hint": "A cause is what MAKES something happen. An effect is what HAPPENS as a result.",
           "difficulty": 2
+        },
+        {
+          "id": "RI.3.3-Q7",
+          "type": "sentence_build",
+          "prompt": "Put the steps of the ocean food chain in order.",
+          "words": [
+            "Big fish eat small fish",
+            "Tiny plants grow using sunlight",
+            "Small fish eat tiny animals",
+            "Tiny animals eat the plants"
+          ],
+          "correct": "Tiny plants grow using sunlight Tiny animals eat the plants Small fish eat tiny animals Big fish eat small fish",
+          "ordered": true,
+          "hint": "Start with the smallest — tiny plants need sunlight to grow!",
+          "difficulty": "medium",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q7.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q7-hint.mp3"
+        },
+        {
+          "id": "RI.3.3-Q8",
+          "type": "multiple_choice",
+          "prompt": "Mangrove trees grow along tropical coastlines. Their roots extend into the water and slow down waves. Due to this, mangroves prevent erosion and protect the shore during storms.\n\nWhat is the EFFECT of mangrove roots slowing down waves?",
+          "choices": [
+            "The trees grow taller",
+            "Fish cannot swim",
+            "The shore is protected from erosion",
+            "The water gets warmer"
+          ],
+          "correct": "The shore is protected from erosion",
+          "hint": "Look for the signal phrase 'due to this' — what comes after it is the effect!",
+          "difficulty": "hard",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q8.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q8-hint.mp3"
+        },
+        {
+          "id": "RI.3.3-Q9",
+          "type": "category_sort",
+          "prompt": "Sort each signal word — does it show cause and effect, or sequence?",
+          "categories": [
+            "Cause & Effect",
+            "Sequence"
+          ],
+          "category_items": {
+            "Cause & Effect": [
+              "because",
+              "as a result",
+              "therefore"
+            ],
+            "Sequence": [
+              "first",
+              "next",
+              "finally"
+            ]
+          },
+          "items": [
+            "first",
+            "because",
+            "next",
+            "as a result",
+            "finally",
+            "therefore"
+          ],
+          "correct": "correct",
+          "hint": "Sequence words tell you the order. Cause and effect words tell you why!",
+          "difficulty": "medium",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q9.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q9-hint.mp3"
+        },
+        {
+          "id": "RI.3.3-Q10",
+          "type": "missing_word",
+          "prompt": "Pick the right signal word to fill the blank.",
+          "sentence_words": [
+            "The",
+            "oil",
+            "spill",
+            "poisoned",
+            "the",
+            "water.",
+            "___,",
+            "many",
+            "fish",
+            "and",
+            "birds",
+            "became",
+            "sick."
+          ],
+          "blank_index": 6,
+          "missing_choices": [
+            "As a result",
+            "First",
+            "However",
+            "Meanwhile"
+          ],
+          "correct": "As a result",
+          "hint": "The fish getting sick is the effect of the oil spill. Which words show cause and effect?",
+          "difficulty": "medium",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q10.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q10-hint.mp3"
+        },
+        {
+          "id": "RI.3.3-Q11",
+          "type": "multiple_choice",
+          "prompt": "To study whale migration, scientists first attach a small tracking device to the whale. Next, they monitor the whale's location using satellites. Then, they record the data over several months. Finally, they compare routes from different years.\n\nWhat do scientists do IMMEDIATELY AFTER attaching the tracking device?",
+          "choices": [
+            "Compare routes from different years",
+            "Record data for months",
+            "Monitor the whale's location using satellites",
+            "Catch the whale again"
+          ],
+          "correct": "Monitor the whale's location using satellites",
+          "hint": "Look for the word 'Next' — it tells you what comes right after the first step!",
+          "difficulty": "easy",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q11.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q11-hint.mp3"
+        },
+        {
+          "id": "RI.3.3-Q12",
+          "type": "tap_to_pair",
+          "prompt": "Match each ocean cause to its effect!",
+          "left_items": [
+            "Warmer ocean water",
+            "Oil spill in the sea",
+            "Overfishing of sharks",
+            "Mangrove trees removed"
+          ],
+          "right_items": [
+            "Shore erodes faster",
+            "Coral bleaching",
+            "Smaller fish overpopulate",
+            "Marine animals get sick"
+          ],
+          "correct_pairs": {
+            "Warmer ocean water": "Coral bleaching",
+            "Oil spill in the sea": "Marine animals get sick",
+            "Overfishing of sharks": "Smaller fish overpopulate",
+            "Mangrove trees removed": "Shore erodes faster"
+          },
+          "correct": "Warmer ocean water→Coral bleaching, Oil spill in the sea→Marine animals get sick, Overfishing of sharks→Smaller fish overpopulate, Mangrove trees removed→Shore erodes faster",
+          "hint": "Think about what each event would directly cause!",
+          "difficulty": "hard",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q12.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q12-hint.mp3"
+        },
+        {
+          "id": "RI.3.3-Q13",
+          "type": "multiple_choice",
+          "prompt": "Plastic breaks down into tiny pieces called microplastics. Since microplastics are so small, fish mistake them for food and eat them. Consequently, the chemicals in the plastic enter the food chain.\n\nWhat causes the chemicals to enter the food chain?",
+          "choices": [
+            "Waves break the plastic",
+            "Fish eat the microplastics",
+            "The plastic floats away",
+            "Birds drop the plastic"
+          ],
+          "correct": "Fish eat the microplastics",
+          "hint": "Follow the chain: plastic becomes tiny, fish eat it, then the chemicals enter the food chain!",
+          "difficulty": "hard",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q13.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q13-hint.mp3"
+        },
+        {
+          "id": "RI.3.3-Q14",
+          "type": "multiple_choice",
+          "prompt": "After a hurricane passes over the ocean, the strong winds push huge waves onto the shore. These waves carry sand, shells, and debris inland. In the following weeks, the beach slowly rebuilds as calmer waves bring sand back.\n\nWhat happens FIRST in this process?",
+          "choices": [
+            "The beach rebuilds",
+            "Calm waves bring sand back",
+            "A hurricane's winds push waves onto shore",
+            "Sand returns to the beach"
+          ],
+          "correct": "A hurricane's winds push waves onto shore",
+          "hint": "Read the passage from the beginning — what event starts the whole process?",
+          "difficulty": "easy",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q14.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q14-hint.mp3"
         }
       ],
       "standard_id": "RI.3.3",

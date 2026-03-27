@@ -2,7 +2,7 @@
   "grade": "2nd",
   "grade_label": "2nd Grade",
   "total_standards": 40,
-  "total_questions": 187,
+  "total_questions": 197,
   "standards": [
     {
       "domain": "Reading Literature",
@@ -1055,6 +1055,202 @@
           "difficulty": "hard",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q5.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q5-hint.mp3"
+        },
+        {
+          "id": "RI.2.3-Q6",
+          "type": "multiple_choice",
+          "prompt": "First, the ocean water near the shore gets warm from the sun. Then, the warm water evaporates and rises into the air. Finally, it forms clouds that bring rain.\n\nWhat happens AFTER the water evaporates?",
+          "choices": [
+            "The sun goes down",
+            "It forms clouds",
+            "Fish swim away",
+            "The shore gets bigger"
+          ],
+          "correct": "It forms clouds",
+          "hint": "Look at what happens in the last step — after the water rises, what does it form?",
+          "difficulty": "easy",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q6.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q6-hint.mp3"
+        },
+        {
+          "id": "RI.2.3-Q7",
+          "type": "multiple_choice",
+          "prompt": "Sea otters eat sea urchins. When there are fewer sea otters, the number of sea urchins grows. As a result, the sea urchins eat too much kelp, and the kelp forests disappear.\n\nWhat causes the kelp forests to disappear?",
+          "choices": [
+            "Too many sea otters",
+            "Too many sea urchins eating the kelp",
+            "Strong ocean waves",
+            "Cold water"
+          ],
+          "correct": "Too many sea urchins eating the kelp",
+          "hint": "Follow the chain: fewer otters means more urchins. What do the urchins do?",
+          "difficulty": "medium",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q7.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q7-hint.mp3"
+        },
+        {
+          "id": "RI.2.3-Q8",
+          "type": "sentence_build",
+          "prompt": "Put the ocean events in order from first to last.",
+          "words": [
+            "Clouds form",
+            "Water evaporates",
+            "Sun heats the ocean",
+            "Rain falls"
+          ],
+          "correct": "Sun heats the ocean Water evaporates Clouds form Rain falls",
+          "ordered": true,
+          "hint": "The sun starts it all! Then water rises, makes clouds, and rain falls.",
+          "difficulty": "medium",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q8.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q8-hint.mp3"
+        },
+        {
+          "id": "RI.2.3-Q9",
+          "type": "multiple_choice",
+          "prompt": "Clownfish live inside sea anemones. The anemone's stinging tentacles protect the clownfish from predators. In return, the clownfish cleans the anemone and brings it food.\n\nHow are the clownfish and anemone connected?",
+          "choices": [
+            "They fight each other",
+            "They help each other",
+            "They live far apart",
+            "One eats the other"
+          ],
+          "correct": "They help each other",
+          "hint": "The anemone protects the clownfish, and the clownfish helps the anemone. That's a two-way connection!",
+          "difficulty": "medium",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q9.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q9-hint.mp3"
+        },
+        {
+          "id": "RI.2.3-Q10",
+          "type": "category_sort",
+          "prompt": "Sort each phrase — is it a cause or an effect?",
+          "categories": [
+            "Cause",
+            "Effect"
+          ],
+          "category_items": {
+            "Cause": [
+              "Ocean water gets warmer",
+              "A storm hits the reef"
+            ],
+            "Effect": [
+              "Coral turns white",
+              "Waves break the coral"
+            ]
+          },
+          "items": [
+            "Coral turns white",
+            "Ocean water gets warmer",
+            "Waves break the coral",
+            "A storm hits the reef"
+          ],
+          "correct": "correct",
+          "hint": "A cause is why something happens. An effect is what happens because of it!",
+          "difficulty": "hard",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q10.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q10-hint.mp3"
+        },
+        {
+          "id": "RI.2.3-Q11",
+          "type": "multiple_choice",
+          "prompt": "To make sea salt, workers first pump ocean water into shallow pools. Next, the sun heats the water until it evaporates. Then, only the salt is left behind. Finally, workers collect the salt.\n\nWhat is the SECOND step in making sea salt?",
+          "choices": [
+            "Workers collect the salt",
+            "The sun heats the water",
+            "The salt is left behind",
+            "Workers pump ocean water"
+          ],
+          "correct": "The sun heats the water",
+          "hint": "Look for the word 'Next' — that's the second step!",
+          "difficulty": "easy",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q11.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q11-hint.mp3"
+        },
+        {
+          "id": "RI.2.3-Q12",
+          "type": "missing_word",
+          "prompt": "Pick the right word to fill the blank.",
+          "sentence_words": [
+            "Because",
+            "the",
+            "water",
+            "got",
+            "warmer,",
+            "the",
+            "coral",
+            "turned",
+            "___."
+          ],
+          "blank_index": 8,
+          "missing_choices": [
+            "white",
+            "bigger",
+            "green",
+            "deeper"
+          ],
+          "correct": "white",
+          "hint": "When coral gets too warm, it loses its color. What color does it turn?",
+          "difficulty": "medium",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q12.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q12-hint.mp3"
+        },
+        {
+          "id": "RI.2.3-Q13",
+          "type": "multiple_choice",
+          "prompt": "Plastic bags look like jellyfish in the water. Because of this, sea turtles sometimes eat the plastic by mistake. This can make them very sick.\n\nWhy do sea turtles eat plastic bags?",
+          "choices": [
+            "They are hungry for plastic",
+            "The bags look like jellyfish",
+            "Other turtles told them to",
+            "They like the taste"
+          ],
+          "correct": "The bags look like jellyfish",
+          "hint": "The passage says the bags LOOK like something turtles normally eat!",
+          "difficulty": "easy",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q13.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q13-hint.mp3"
+        },
+        {
+          "id": "RI.2.3-Q14",
+          "type": "tap_to_pair",
+          "prompt": "Match each cause to its effect!",
+          "left_items": [
+            "Water gets warm",
+            "Trash in the ocean",
+            "Storm hits the coast"
+          ],
+          "right_items": [
+            "Waves crash on shore",
+            "Animals get sick",
+            "Coral bleaches"
+          ],
+          "correct_pairs": {
+            "Water gets warm": "Coral bleaches",
+            "Trash in the ocean": "Animals get sick",
+            "Storm hits the coast": "Waves crash on shore"
+          },
+          "correct": "Water gets warm→Coral bleaches, Trash in the ocean→Animals get sick, Storm hits the coast→Waves crash on shore",
+          "hint": "Think about what each event would cause to happen!",
+          "difficulty": "hard",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q14.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q14-hint.mp3"
+        },
+        {
+          "id": "RI.2.3-Q15",
+          "type": "multiple_choice",
+          "prompt": "Since the ocean near the shore is shallow, sunlight can reach the bottom. This allows plants to grow on the ocean floor. Many small fish eat those plants.\n\nWhat allows plants to grow on the ocean floor?",
+          "choices": [
+            "Cold water",
+            "Deep water",
+            "Sunlight reaching the bottom",
+            "Strong currents"
+          ],
+          "correct": "Sunlight reaching the bottom",
+          "hint": "Look for the signal word 'since' — it tells you the cause!",
+          "difficulty": "medium",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q15.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q15-hint.mp3"
         }
       ],
       "standard_id": "RI.2.3",

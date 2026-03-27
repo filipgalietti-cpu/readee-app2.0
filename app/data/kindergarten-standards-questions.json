@@ -2,7 +2,7 @@
   "grade": "kindergarten",
   "standard_framework": "Common Core State Standards — English Language Arts",
   "total_standards": 36,
-  "total_questions": 175,
+  "total_questions": 185,
   "standards": [
     {
       "standard_id": "RL.K.1",
@@ -1474,6 +1474,203 @@
           "difficulty": 1,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q1-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q1.mp3"
+        },
+        {
+          "id": "RI.K.5-Q2",
+          "type": "multiple_choice",
+          "prompt": "Captain Ava picked up her ocean book. She turned it over to read what the book is about.\n\nWhich part of the book did Captain Ava look at?",
+          "choices": [
+            "The front cover",
+            "The title page",
+            "The back cover",
+            "The first page"
+          ],
+          "correct": "The back cover",
+          "hint": "She turned the book over — the back tells you what the book is about!",
+          "difficulty": 1,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q2.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q2-hint.mp3"
+        },
+        {
+          "id": "RI.K.5-Q3",
+          "type": "multiple_choice",
+          "prompt": "The explorer opened the book and saw the name of the book and who wrote it on the very first page inside.\n\nWhat is that page called?",
+          "choices": [
+            "The back cover",
+            "The title page",
+            "The last page",
+            "The front cover"
+          ],
+          "correct": "The title page",
+          "hint": "The page inside that shows the book's name and the author is called the title page!",
+          "difficulty": 1,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q3.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q3-hint.mp3"
+        },
+        {
+          "id": "RI.K.5-Q4",
+          "type": "tap_to_pair",
+          "prompt": "Match each book part to what it shows!",
+          "left_items": [
+            "Front Cover",
+            "Title Page",
+            "Back Cover"
+          ],
+          "right_items": [
+            "What the book is about",
+            "Book name + picture",
+            "Book name + author"
+          ],
+          "correct_pairs": {
+            "Front Cover": "Book name + picture",
+            "Title Page": "Book name + author",
+            "Back Cover": "What the book is about"
+          },
+          "correct": "Front Cover→Book name + picture, Title Page→Book name + author, Back Cover→What the book is about",
+          "hint": "The front shows the picture and title, the inside page lists the author, and the back describes the book!",
+          "difficulty": 1,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q4.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q4-hint.mp3"
+        },
+        {
+          "id": "RI.K.5-Q5",
+          "type": "multiple_choice",
+          "prompt": "The explorer wanted to know who wrote the book about dolphins. She opened the book and looked at the first page inside.\n\nWhere did she find the author's name?",
+          "choices": [
+            "The back cover",
+            "The front cover",
+            "The title page",
+            "The last page"
+          ],
+          "correct": "The title page",
+          "hint": "The author's name is on the title page inside the book!",
+          "difficulty": 2,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q5.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q5-hint.mp3"
+        },
+        {
+          "id": "RI.K.5-Q6",
+          "type": "category_sort",
+          "prompt": "Sort each thing to the right book part!",
+          "categories": [
+            "Front Cover",
+            "Back Cover"
+          ],
+          "category_items": {
+            "Front Cover": [
+              "Big picture",
+              "Book title"
+            ],
+            "Back Cover": [
+              "What the book is about",
+              "A short summary"
+            ]
+          },
+          "items": [
+            "What the book is about",
+            "Big picture",
+            "A short summary",
+            "Book title"
+          ],
+          "correct": "correct",
+          "hint": "The front has the picture and title. The back tells you what the book is about!",
+          "difficulty": 2,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q6.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q6-hint.mp3"
+        },
+        {
+          "id": "RI.K.5-Q7",
+          "type": "multiple_choice",
+          "prompt": "The explorer looked at the outside of a book and saw a big picture of a whale and the name of the book.\n\nWhich part was she looking at?",
+          "choices": [
+            "The title page",
+            "The front cover",
+            "The back cover",
+            "The middle"
+          ],
+          "correct": "The front cover",
+          "hint": "The outside with the big picture and book name is the front cover!",
+          "difficulty": 1,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q7.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q7-hint.mp3"
+        },
+        {
+          "id": "RI.K.5-Q8",
+          "type": "sentence_build",
+          "prompt": "Put the words in order to make a sentence about books.",
+          "words": [
+            "has",
+            "A",
+            "cover",
+            "book",
+            "a",
+            "front"
+          ],
+          "correct": "A book has a front cover.",
+          "sentence_hint": "A book has something on the outside...",
+          "hint": "Start with 'A' and end with 'cover'!",
+          "difficulty": 1,
+          "choices": [],
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q8.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q8-hint.mp3"
+        },
+        {
+          "id": "RI.K.5-Q9",
+          "type": "missing_word",
+          "prompt": "Pick the right word to fill the blank.",
+          "sentence_words": [
+            "The",
+            "___",
+            "page",
+            "is",
+            "inside",
+            "the",
+            "book."
+          ],
+          "blank_index": 1,
+          "missing_choices": [
+            "title",
+            "back",
+            "last",
+            "top"
+          ],
+          "correct": "title",
+          "hint": "The page inside that shows the book name and author is the ___ page!",
+          "difficulty": 1,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q9.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q9-hint.mp3"
+        },
+        {
+          "id": "RI.K.5-Q10",
+          "type": "multiple_choice",
+          "prompt": "Which part of a book would you look at FIRST to decide if you want to read it?",
+          "choices": [
+            "The last page",
+            "The title page",
+            "The front cover",
+            "The middle"
+          ],
+          "correct": "The front cover",
+          "hint": "Before you open a book, you see the outside first!",
+          "difficulty": 2,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q10.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q10-hint.mp3"
+        },
+        {
+          "id": "RI.K.5-Q11",
+          "type": "multiple_choice",
+          "prompt": "The explorer turned the book over and read about all the fun ocean facts inside.\n\nWhich part of the book helped her know what was inside?",
+          "choices": [
+            "The front cover",
+            "The title page",
+            "The back cover",
+            "The first chapter"
+          ],
+          "correct": "The back cover",
+          "hint": "Turning a book over means looking at the back. The back cover tells you what the book is about!",
+          "difficulty": 2,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q11.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q11-hint.mp3"
         }
       ]
     },

@@ -2,7 +2,7 @@
   "grade": "4th",
   "grade_label": "4th Grade",
   "total_standards": 31,
-  "total_questions": 135,
+  "total_questions": 143,
   "standards": [
     {
       "domain": "Reading Literature",
@@ -1189,6 +1189,161 @@
           "correct": "correct",
           "hint": "Look for signal words: problem/solution, first/next/then, similarly/however, because/as a result!",
           "difficulty": 2
+        },
+        {
+          "id": "RI.4.5-Q3",
+          "type": "multiple_choice",
+          "prompt": "Plastic pollution is a growing threat to ocean life. Millions of tons of plastic enter the ocean each year, harming sea turtles, fish, and birds. One solution is to reduce single-use plastics. Another is to organize beach cleanups that remove trash before it reaches the water.\n\nWhat text structure does this passage use?",
+          "choices": [
+            "Chronological",
+            "Compare and contrast",
+            "Problem and solution",
+            "Cause and effect"
+          ],
+          "correct": "Problem and solution",
+          "hint": "The passage describes a problem (plastic pollution) and then offers solutions. What structure is that?",
+          "difficulty": "medium",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q3.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q3-hint.mp3"
+        },
+        {
+          "id": "RI.4.5-Q4",
+          "type": "multiple_choice",
+          "prompt": "Both dolphins and porpoises are marine mammals that breathe air and nurse their young. However, dolphins tend to be larger with longer snouts, while porpoises are smaller with rounded faces. Similarly, both travel in groups, but dolphin groups are usually much larger.\n\nWhat text structure does this passage use?",
+          "choices": [
+            "Problem and solution",
+            "Chronological",
+            "Compare and contrast",
+            "Cause and effect"
+          ],
+          "correct": "Compare and contrast",
+          "hint": "Look for the signal words 'both,' 'however,' and 'similarly' — they show likenesses and differences!",
+          "difficulty": "easy",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q4.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q4-hint.mp3"
+        },
+        {
+          "id": "RI.4.5-Q7",
+          "type": "multiple_choice",
+          "prompt": "Rising ocean temperatures have caused many coral reefs to bleach. Because the coral loses the algae it depends on for food, it turns white and can eventually die. As a result, thousands of species that rely on coral reefs for shelter are now in danger.\n\nWhat text structure does this passage use?",
+          "choices": [
+            "Chronological",
+            "Compare and contrast",
+            "Problem and solution",
+            "Cause and effect"
+          ],
+          "correct": "Cause and effect",
+          "hint": "Look for 'caused,' 'because,' and 'as a result' — those are cause and effect signal words!",
+          "difficulty": "easy",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q7.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q7-hint.mp3"
+        },
+        {
+          "id": "RI.4.5-Q8",
+          "type": "tap_to_pair",
+          "prompt": "Match each signal word to the text structure it belongs to!",
+          "left_items": [
+            "First, next, finally",
+            "Because, as a result",
+            "Both, however, unlike",
+            "The problem is, one solution"
+          ],
+          "right_items": [
+            "Problem & Solution",
+            "Chronological",
+            "Compare & Contrast",
+            "Cause & Effect"
+          ],
+          "correct_pairs": {
+            "First, next, finally": "Chronological",
+            "Because, as a result": "Cause & Effect",
+            "Both, however, unlike": "Compare & Contrast",
+            "The problem is, one solution": "Problem & Solution"
+          },
+          "correct": "First, next, finally→Chronological, Because, as a result→Cause & Effect, Both, however, unlike→Compare & Contrast, The problem is, one solution→Problem & Solution",
+          "hint": "Each set of signal words belongs to exactly one text structure!",
+          "difficulty": "medium",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q8.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q8-hint.mp3"
+        },
+        {
+          "id": "RI.4.5-Q9",
+          "type": "missing_word",
+          "prompt": "Pick the right text structure name to fill the blank.",
+          "sentence_words": [
+            "A",
+            "passage",
+            "that",
+            "tells",
+            "events",
+            "in",
+            "time",
+            "order",
+            "uses",
+            "___",
+            "structure."
+          ],
+          "blank_index": 9,
+          "missing_choices": [
+            "chronological",
+            "cause and effect",
+            "compare and contrast",
+            "problem and solution"
+          ],
+          "correct": "chronological",
+          "hint": "Events told in the order they happened = in time order. What's that called?",
+          "difficulty": "easy",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q9.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q9-hint.mp3"
+        },
+        {
+          "id": "RI.4.5-Q10",
+          "type": "multiple_choice",
+          "prompt": "Overfishing threatens many ocean species. In some areas, fish populations have dropped by more than half. To address this, several countries have created marine protected areas where fishing is limited. These zones have helped fish populations recover significantly.\n\nWhat text structure does this passage use?",
+          "choices": [
+            "Cause and effect",
+            "Chronological",
+            "Compare and contrast",
+            "Problem and solution"
+          ],
+          "correct": "Problem and solution",
+          "hint": "The passage describes a problem (overfishing) and then explains what was done to fix it!",
+          "difficulty": "medium",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q10.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q10-hint.mp3"
+        },
+        {
+          "id": "RI.4.5-Q11",
+          "type": "multiple_choice",
+          "prompt": "In 1960, Jacques Piccard and Don Walsh descended to the deepest point in the ocean — the Mariana Trench. Decades later, in 2012, filmmaker James Cameron made the journey alone. Then in 2019, explorer Victor Vescovo reached the bottom five times in a single expedition.\n\nWhat text structure does this passage use?",
+          "choices": [
+            "Compare and contrast",
+            "Problem and solution",
+            "Cause and effect",
+            "Chronological"
+          ],
+          "correct": "Chronological",
+          "hint": "Notice the years: 1960, 2012, 2019 — the events are told in time order!",
+          "difficulty": "easy",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q11.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q11-hint.mp3"
+        },
+        {
+          "id": "RI.4.5-Q12",
+          "type": "sentence_build",
+          "prompt": "Put in order from first to last: how a coral reef forms.",
+          "words": [
+            "Coral colony grows over thousands of years",
+            "Tiny coral larvae attach to rock",
+            "A full reef ecosystem develops",
+            "Layers of coral build up"
+          ],
+          "correct": "Tiny coral larvae attach to rock Coral colony grows over thousands of years Layers of coral build up A full reef ecosystem develops",
+          "ordered": true,
+          "hint": "It starts small — tiny larvae first, then growth, then layers, then a full reef!",
+          "difficulty": "hard",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q12.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q12-hint.mp3"
         }
       ],
       "standard_id": "RI.4.5",

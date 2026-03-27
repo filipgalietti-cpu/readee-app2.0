@@ -15,7 +15,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: background-color 0.3s ease, color 0.3s ease;
-  padding-top: env(safe-area-inset-top);
+  padding-top: calc(76px + env(safe-area-inset-top));
   padding-bottom: env(safe-area-inset-bottom);
 }
 

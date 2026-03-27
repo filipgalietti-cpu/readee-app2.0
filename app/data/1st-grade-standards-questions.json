@@ -2,7 +2,7 @@
   "grade": "1st",
   "standard_framework": "Common Core ELA",
   "total_standards": 33,
-  "total_questions": 149,
+  "total_questions": 157,
   "standards": [
     {
       "standard_id": "RL.1.1",
@@ -999,6 +999,179 @@
           "correct": "Hibernation→A long winter sleep, Enormous→Very big, Nocturnal→Active at night, Sprinted→Ran very fast",
           "hint": "Match each word to what it means!",
           "difficulty": 1
+        },
+        {
+          "id": "RI.1.4-Q3",
+          "type": "multiple_choice",
+          "prompt": "Dolphins use echolocation, which means they make sounds that bounce off things to find food in the dark water.\n\nWhat does echolocation mean?",
+          "choices": [
+            "Swimming fast",
+            "Making sounds that bounce off things",
+            "Eating fish",
+            "Diving deep"
+          ],
+          "correct": "Making sounds that bounce off things",
+          "hint": "The sentence tells you what echolocation means right after the word — look for 'which means'!",
+          "difficulty": "easy",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.4/RI.1.4-Q3.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.4/RI.1.4-Q3-hint.mp3"
+        },
+        {
+          "id": "RI.1.4-Q5",
+          "type": "tap_to_pair",
+          "prompt": "Match each ocean word to its meaning!",
+          "left_items": [
+            "Tentacles",
+            "Gills",
+            "Fin"
+          ],
+          "right_items": [
+            "Helps a fish swim",
+            "Long arms of an octopus",
+            "How fish breathe underwater"
+          ],
+          "correct_pairs": {
+            "Tentacles": "Long arms of an octopus",
+            "Gills": "How fish breathe underwater",
+            "Fin": "Helps a fish swim"
+          },
+          "correct": "Tentacles→Long arms of an octopus, Gills→How fish breathe underwater, Fin→Helps a fish swim",
+          "hint": "Think about what each body part does for the animal!",
+          "difficulty": "medium",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.4/RI.1.4-Q5.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.4/RI.1.4-Q5-hint.mp3"
+        },
+        {
+          "id": "RI.1.4-Q7",
+          "type": "multiple_choice",
+          "prompt": "A habitat is the place where an animal lives. A coral reef is a habitat for many ocean animals.\n\nWhat does habitat mean?",
+          "choices": [
+            "A type of food",
+            "The place where an animal lives",
+            "A baby animal",
+            "A kind of fish"
+          ],
+          "correct": "The place where an animal lives",
+          "hint": "The very first sentence tells you what a habitat is!",
+          "difficulty": "easy",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.4/RI.1.4-Q7.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.4/RI.1.4-Q7-hint.mp3"
+        },
+        {
+          "id": "RI.1.4-Q8",
+          "type": "multiple_choice",
+          "prompt": "The hermit crab needed a new shell because it had outgrown its old one. Outgrown means it got too big for it.\n\nWhat does outgrown mean?",
+          "choices": [
+            "Lost it",
+            "Painted it",
+            "Got too big for it",
+            "Found it"
+          ],
+          "correct": "Got too big for it",
+          "hint": "The sentence tells you the meaning right after the word!",
+          "difficulty": "easy",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.4/RI.1.4-Q8.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.4/RI.1.4-Q8-hint.mp3"
+        },
+        {
+          "id": "RI.1.4-Q9",
+          "type": "category_sort",
+          "prompt": "Sort each word — is it a word about ocean animals or ocean places?",
+          "categories": [
+            "Ocean Animals",
+            "Ocean Places"
+          ],
+          "category_items": {
+            "Ocean Animals": [
+              "Dolphin",
+              "Jellyfish",
+              "Sea turtle"
+            ],
+            "Ocean Places": [
+              "Coral reef",
+              "Tide pool",
+              "Deep sea"
+            ]
+          },
+          "items": [
+            "Coral reef",
+            "Dolphin",
+            "Tide pool",
+            "Jellyfish",
+            "Deep sea",
+            "Sea turtle"
+          ],
+          "correct": "correct",
+          "hint": "Animals are living creatures. Places are locations where they live!",
+          "difficulty": "easy",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.4/RI.1.4-Q9.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.4/RI.1.4-Q9-hint.mp3"
+        },
+        {
+          "id": "RI.1.4-Q10",
+          "type": "sentence_build",
+          "prompt": "Put the words in order to make a sentence.",
+          "words": [
+            "in",
+            "Whales",
+            "the",
+            "live",
+            "ocean"
+          ],
+          "correct": "Whales live in the ocean.",
+          "sentence_hint": "Whales live somewhere...",
+          "hint": "Start with 'Whales' and think about where they live!",
+          "difficulty": "easy",
+          "choices": [],
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.4/RI.1.4-Q10.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.4/RI.1.4-Q10-hint.mp3"
+        },
+        {
+          "id": "RI.1.4-Q11",
+          "type": "multiple_choice",
+          "prompt": "Starfish can regenerate, which means they can grow back a lost arm.\n\nWhat does regenerate mean?",
+          "choices": [
+            "Swim faster",
+            "Hide from predators",
+            "Grow back a lost arm",
+            "Change color"
+          ],
+          "correct": "Grow back a lost arm",
+          "hint": "Look for the words 'which means' — they tell you the definition!",
+          "difficulty": "medium",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.4/RI.1.4-Q11.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.4/RI.1.4-Q11-hint.mp3"
+        },
+        {
+          "id": "RI.1.4-Q12",
+          "type": "missing_word",
+          "prompt": "Pick the right word to fill the blank.",
+          "sentence_words": [
+            "A",
+            "___",
+            "is",
+            "a",
+            "small",
+            "pool",
+            "of",
+            "ocean",
+            "water",
+            "on",
+            "the",
+            "rocks."
+          ],
+          "blank_index": 1,
+          "missing_choices": [
+            "tide pool",
+            "deep sea",
+            "river",
+            "lake"
+          ],
+          "correct": "tide pool",
+          "hint": "It's a small pool of ocean water found on rocks near the shore!",
+          "difficulty": "medium",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.4/RI.1.4-Q12.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.4/RI.1.4-Q12-hint.mp3"
         }
       ]
     },
