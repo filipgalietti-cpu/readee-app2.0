@@ -37,7 +37,7 @@ export default function AuthCard({ title, banner, children }: AuthCardProps) {
           )}
         </div>
         <div className="bg-white p-6 sm:p-8 rounded-3xl border border-zinc-200/80 shadow-[0_14px_40px_rgba(17,24,39,0.08)]">
-          <img src="/readee-logo.png" alt="Readee - Learn to Read" className="w-[160px] sm:w-[200px] h-auto mx-auto mb-4" />
+          <img src="/readee-logo.png" alt="Readee - Learn to Read" width={612} height={408} className="w-[160px] sm:w-[200px] h-auto mx-auto mb-4" />
           <h1 className="text-2xl sm:text-3xl font-bold text-zinc-900 mb-6 text-center tracking-tight">
             {title}
           </h1>
