@@ -3,30 +3,49 @@
 import { useEffect, useState, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { Suspense } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
-import { staggerContainer, slideUp, fadeUp } from "@/lib/motion/variants";
 import CelebrationOverlay from "@/app/_components/CelebrationOverlay";
 import { safeValidate } from "@/lib/validate";
 import { ChildSchema } from "@/lib/schemas";
 import { Child } from "@/lib/db/types";
 import { levelNameToGradeKey } from "@/lib/assessment/questions";
 import lessonsData from "@/lib/data/lessons.json";
-import { Rocket, Lock, ShieldCheck, BadgeDollarSign } from "lucide-react";
+import { getChildAvatarImage } from "@/lib/utils/get-child-avatar";
+import {
+  Lock,
+  ShieldCheck,
+  BadgeDollarSign,
+  BookOpen,
+  Star,
+  Users,
+  Headphones,
+  BarChart3,
+  GraduationCap,
+  ChevronRight,
+} from "lucide-react";
 
-const COMPARISON_ROWS = [
-  { feature: "Diagnostic assessment", free: true, premium: true },
-  { feature: "First 2 lessons per level", free: true, premium: true },
-  { feature: "1 child profile", free: true, premium: true },
-  { feature: "Basic progress tracking", free: true, premium: true },
-  { feature: "Full curriculum (40+ lessons)", free: false, premium: true },
-  { feature: "All 5 reading levels (K–4th)", free: false, premium: true },
-  { feature: "Up to 5 child profiles", free: false, premium: true },
-  { feature: "Detailed parent reports", free: false, premium: true },
-  { feature: "Audio narration for every question", free: false, premium: true },
-  { feature: "Standards-aligned practice", free: false, premium: true },
+/* ─── Data ─────────────────────────────────────────── */
+
+const BENEFIT_CARDS = [
+  { icon: BookOpen, title: "42+ structured lessons", description: "Guided reading practice from phonics to comprehension" },
+  { icon: Headphones, title: "Audio narration", description: "Every question read aloud so kids stay independent" },
+  { icon: Users, title: "5 child profiles", description: "One household plan covers every reader in your family" },
+  { icon: BarChart3, title: "Parent reports", description: "See exactly where your child is growing and what needs work" },
+  { icon: Star, title: "5 reading levels", description: "Kindergarten through 4th grade, each with its own curriculum" },
+  { icon: GraduationCap, title: "Standards-aligned", description: "Built on Common Core ELA so practice matches what school expects" },
 ];
+
+const ICON_BG: Record<string, string> = {
+  BookOpen: "bg-blue-100 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400",
+  Headphones: "bg-violet-100 dark:bg-violet-950/40 text-violet-600 dark:text-violet-400",
+  Users: "bg-emerald-100 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400",
+  BarChart3: "bg-amber-100 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400",
+  Star: "bg-rose-100 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400",
+  GraduationCap: "bg-indigo-100 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400",
+};
 
 const TESTIMONIALS = [
   {
@@ -44,7 +63,14 @@ const TESTIMONIALS = [
     name: "David K.",
     detail: "Dad of two early readers",
   },
+  {
+    quote: "We tried three other apps before Readee. This is the only one my daughter actually asks to open. The lessons feel like games but she's actually learning.",
+    name: "Amanda T.",
+    detail: "Mom of a 2nd grader",
+  },
 ];
+
+const TESTIMONIAL_BORDER_COLORS = ["#6366f1", "#6d28d9", "#8b5cf6", "#a78bfa"];
 
 const FAQS = [
   {
@@ -67,10 +93,13 @@ const FAQS = [
     q: "What ages is Readee designed for?",
     a: "Readee covers kindergarten through 4th grade reading levels. The diagnostic assessment places your child at exactly the right level, regardless of their age.",
   },
+  {
+    q: "How is Readee different from other reading apps?",
+    a: "Readee is built on real Common Core ELA standards — the same ones teachers use in school. Every lesson is structured with learn, practice, and read sections so kids build skills in order. Most apps are just random quizzes. Readee is a full curriculum.",
+  },
 ];
 
-const ACCENT_COLORS = ["#60a5fa", "#4ade80", "#fb923c", "#a78bfa"];
-const TESTIMONIAL_BORDER_COLORS = ["#6366f1", "#6d28d9", "#8b5cf6"];
+/* ─── Types ────────────────────────────────────────── */
 
 interface LessonData {
   id: string;
@@ -93,41 +122,30 @@ function isLessonFree(lessonId: string): boolean {
   return parseInt(match[1]) <= 2;
 }
 
-/* ─── useCountUp ─────────────────────────────────────── */
+/* ─── CountUp hook ─────────────────────────────────── */
 
-function useCountUp(target: number, duration = 800) {
+function useCountUp(target: number, inView: boolean, duration = 700) {
   const [value, setValue] = useState(0);
-  const ref = useRef<HTMLDivElement>(null);
   const counted = useRef(false);
 
   useEffect(() => {
-    if (counted.current || target === 0) { setValue(target); return; }
-    const el = ref.current;
-    if (!el) { setValue(target); return; }
+    if (!inView || counted.current || target === 0) {
+      if (target === 0) setValue(0);
+      return;
+    }
+    counted.current = true;
+    const start = performance.now();
+    function tick(now: number) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setValue(Math.round(eased * target));
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }, [inView, target, duration]);
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !counted.current) {
-          counted.current = true;
-          const start = performance.now();
-          function tick(now: number) {
-            const elapsed = now - start;
-            const progress = Math.min(elapsed / duration, 1);
-            const eased = 1 - Math.pow(1 - progress, 3);
-            setValue(Math.round(eased * target));
-            if (progress < 1) requestAnimationFrame(tick);
-          }
-          requestAnimationFrame(tick);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.3 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [target, duration]);
-
-  return { value, ref };
+  return value;
 }
 
 /* ═══════════════════════════════════════════════════════ */
@@ -168,6 +186,10 @@ function UpgradeContent() {
   const [promoCode, setPromoCode] = useState("");
   const [promoLoading, setPromoLoading] = useState(false);
   const [promoResult, setPromoResult] = useState<{ success: boolean; message: string } | null>(null);
+
+  // Refs for scroll-triggered sections
+  const statsRef = useRef<HTMLDivElement>(null);
+  const statsInView = useInView(statsRef, { once: true, amount: 0.5 });
 
   useEffect(() => {
     async function load() {
@@ -223,7 +245,6 @@ function UpgradeContent() {
       });
       const data = await res.json();
       setPromoResult({ success: data.success, message: data.message });
-      // Celebration overlay handles navigation via "Go to Dashboard" button
     } catch {
       setPromoResult({ success: false, message: "Something went wrong. Please try again." });
     }
@@ -235,10 +256,17 @@ function UpgradeContent() {
   const gradeKey = child?.reading_level ? levelNameToGradeKey(child.reading_level) : "kindergarten";
   const currentLessons = file.levels[gradeKey]?.lessons || [];
   const lockedLessons = currentLessons.filter((l) => !isLessonFree(l.id));
-  const totalLessons = Object.values(file.levels).reduce((sum, l) => sum + l.lessons.length, 0);
   const totalLockedLessons = Object.values(file.levels)
     .flatMap((l) => l.lessons)
     .filter((l) => !isLessonFree(l.id)).length;
+
+  const childName = child?.first_name;
+  const avatarSrc = child ? getChildAvatarImage(child, 0) : null;
+
+  // CountUp values (only used when child exists)
+  const storiesCount = useCountUp(child?.stories_read ?? 0, statsInView);
+  const streakCount = useCountUp(child?.streak_days ?? 0, statsInView);
+  const waitingCount = useCountUp(lockedLessons.length, statsInView);
 
   if (loading) {
     return (
@@ -249,124 +277,230 @@ function UpgradeContent() {
   }
 
   return (
-    <motion.div
-      className="max-w-3xl mx-auto py-8 px-4 pb-16 space-y-8 min-h-screen bg-gradient-to-b from-white via-indigo-50/30 to-white dark:from-slate-900 dark:via-slate-900 dark:to-slate-900"
-      variants={staggerContainer}
-      initial="hidden"
-      animate="visible"
-    >
-      {/* ── HERO ── */}
-      <motion.div variants={fadeUp} className="text-center space-y-4">
-        <div className="flex justify-center"><Rocket className="w-12 h-12 text-indigo-500" strokeWidth={1.5} /></div>
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-zinc-900 dark:text-slate-100 tracking-tight leading-tight">
-          Give your child the{" "}
-          <span className="bg-gradient-to-r from-indigo-600 to-violet-500 bg-clip-text text-transparent">
-            reading superpowers
-          </span>{" "}
-          they deserve with{" "}
-          <span className="relative inline-block">
-            <span className="bg-gradient-to-r from-violet-600 via-purple-500 to-indigo-500 bg-clip-text text-transparent">
-              Readee+
-            </span>
-            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent bg-[length:200%_100%] bg-clip-text text-transparent animate-textShimmer pointer-events-none" aria-hidden="true">
-              Readee+
-            </span>
-          </span>
-        </h1>
-        <p className="text-zinc-500 dark:text-slate-400 max-w-md mx-auto">
-          42+ structured lessons, audio narration, and a full K-4th grade curriculum — all aligned to Common Core ELA standards.
-        </p>
-        <div className="inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-indigo-50 px-4 py-1.5 text-xs font-semibold text-indigo-700">
+    <div className="max-w-3xl mx-auto py-8 px-4 pb-16 space-y-10 min-h-screen bg-gradient-to-b from-white via-indigo-50/30 to-white dark:from-slate-900 dark:via-slate-900 dark:to-slate-900">
+
+      {/* ── PERSONALIZED HERO ── */}
+      <div className="text-center space-y-5">
+        {avatarSrc ? (
+          <motion.div
+            className="flex justify-center"
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.1 }}
+          >
+            <Image
+              src={avatarSrc}
+              alt={`${childName}'s avatar`}
+              width={64}
+              height={64}
+              className="w-16 h-16 rounded-full border-2 border-indigo-200 dark:border-indigo-700 shadow-lg"
+            />
+          </motion.div>
+        ) : null}
+
+        <motion.h1
+          className="text-3xl sm:text-4xl font-extrabold text-zinc-900 dark:text-slate-100 tracking-tight leading-tight"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          {childName ? (
+            <>
+              {childName} is ready for the next step in their{" "}
+              <span className="bg-gradient-to-r from-indigo-600 to-violet-500 bg-clip-text text-transparent">
+                reading journey
+              </span>
+            </>
+          ) : (
+            <>
+              Unlock the full{" "}
+              <span className="bg-gradient-to-r from-indigo-600 to-violet-500 bg-clip-text text-transparent">
+                reading journey
+              </span>{" "}
+              with{" "}
+              <span className="relative inline-block">
+                <span className="bg-gradient-to-r from-violet-600 via-purple-500 to-indigo-500 bg-clip-text text-transparent">
+                  Readee+
+                </span>
+                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent bg-[length:200%_100%] bg-clip-text text-transparent animate-textShimmer pointer-events-none" aria-hidden="true">
+                  Readee+
+                </span>
+              </span>
+            </>
+          )}
+        </motion.h1>
+
+        <motion.p
+          className="text-zinc-500 dark:text-slate-400 max-w-md mx-auto"
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.4 }}
+        >
+          {childName && child?.reading_level
+            ? `${childName} is at the ${child.reading_level} level. Readee+ unlocks the full curriculum so they can keep growing.`
+            : "42+ structured lessons, audio narration, and a full K\u20134th grade curriculum \u2014 all aligned to Common Core ELA standards."}
+        </motion.p>
+
+        <motion.div
+          className="inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-indigo-50 px-4 py-1.5 text-xs font-semibold text-indigo-700 dark:border-indigo-800 dark:bg-indigo-950/30 dark:text-indigo-300"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.3, delay: 0.55 }}
+        >
           One Readee+ household plan covers up to 5 children
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
 
-      {/* ── ANIMATED STAT COUNTERS ── */}
-      <motion.div variants={fadeUp} className="grid grid-cols-3 gap-4">
-        <CountUpStatCard target={totalLessons} suffix="+" label="Lessons" />
-        <CountUpStatCard target={5} label="Reading levels" />
-        <CountUpStatCard target={36} label="Standards covered" />
-      </motion.div>
+      {/* ── CHILD PROGRESS SNAPSHOT (counting numbers) ── */}
+      {child && (
+        <motion.div
+          ref={statsRef}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.5 }}
+          className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5"
+        >
+          <div className="grid grid-cols-3 divide-x divide-zinc-100 dark:divide-slate-700">
+            {[
+              { value: storiesCount, label: "lessons completed" },
+              { value: streakCount, label: "day streak" },
+              { value: waitingCount, label: "lessons waiting" },
+            ].map((stat, i) => (
+              <motion.div
+                key={stat.label}
+                className="text-center px-2"
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.15 * i }}
+              >
+                <div className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">{stat.value}</div>
+                <div className="text-xs text-zinc-500 dark:text-slate-400 mt-0.5">{stat.label}</div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      )}
 
-
-      {/* ── LOCKED LESSONS PREVIEW ── */}
-      <motion.div variants={slideUp} className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 space-y-4">
-        <h2 className="text-lg font-bold text-zinc-900 dark:text-slate-100 text-center">
-          What your child will unlock
-        </h2>
+      {/* ── LOCKED LESSONS PREVIEW (staggered rows) ── */}
+      <div className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 space-y-4">
+        <motion.h2
+          className="text-lg font-bold text-zinc-900 dark:text-slate-100 text-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
+        >
+          {childName ? `Lessons waiting for ${childName}` : "What your child will unlock"}
+        </motion.h2>
 
         <div className="space-y-2">
-          {lockedLessons.slice(0, 3).map((lesson) => (
-            <div
+          {lockedLessons.slice(0, 5).map((lesson, i) => (
+            <motion.div
               key={lesson.id}
-              className="flex items-center gap-3 px-4 py-3 rounded-xl bg-zinc-50 dark:bg-slate-700 border border-zinc-100 dark:border-slate-600"
+              className="group flex items-center gap-3 px-4 py-3 rounded-xl bg-zinc-50 dark:bg-slate-700 border border-zinc-100 dark:border-slate-600"
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.1 * i, ease: "easeOut" }}
             >
-              <svg className="w-4 h-4 text-zinc-300 dark:text-slate-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
-              </svg>
-              <span className="text-sm font-medium text-zinc-600 dark:text-slate-300 truncate">
+              <Lock className="w-4 h-4 text-zinc-300 dark:text-slate-500 flex-shrink-0 transition-colors group-hover:text-indigo-500 dark:group-hover:text-indigo-400" strokeWidth={2} />
+              <span className="text-sm font-medium text-zinc-600 dark:text-slate-300 truncate flex-1">
                 {lesson.title}
               </span>
-            </div>
+              <ChevronRight className="w-4 h-4 text-zinc-300 dark:text-slate-500 flex-shrink-0 transition-colors group-hover:text-indigo-500 dark:group-hover:text-indigo-400" strokeWidth={2} />
+            </motion.div>
           ))}
         </div>
 
-        {totalLockedLessons > 3 && (
-          <p className="text-sm text-zinc-400 dark:text-slate-500 text-center">
-            +{totalLockedLessons - 3} more lessons across 5 reading levels
-          </p>
+        {totalLockedLessons > 5 && (
+          <motion.p
+            className="text-sm text-zinc-400 dark:text-slate-500 text-center"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.6 }}
+          >
+            +{totalLockedLessons - 5} more lessons across 5 reading levels
+          </motion.p>
         )}
-      </motion.div>
+      </div>
 
-      {/* ── COMPARISON TABLE: Free vs Readee+ ── */}
-      <motion.div variants={slideUp} className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 overflow-hidden">
-        <table className="w-full">
-          <thead>
-            <tr className="border-b border-zinc-100 dark:border-slate-700">
-              <th className="px-4 py-3 text-left text-sm font-bold text-zinc-700 dark:text-slate-300">Feature</th>
-              <th className="w-20 sm:w-24 px-2 py-3 text-center text-sm font-bold text-zinc-500 dark:text-slate-400">Free</th>
-              <th className="w-20 sm:w-24 px-2 py-3 text-center text-sm font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/30">Readee+</th>
-            </tr>
-          </thead>
-          <tbody>
-            {COMPARISON_ROWS.map((row, i) => (
-              <tr key={i} className={i < COMPARISON_ROWS.length - 1 ? "border-b border-zinc-50 dark:border-slate-700/50" : ""}>
-                <td className="px-4 py-3 text-left text-sm text-zinc-600 dark:text-slate-300">{row.feature}</td>
-                <td className="px-2 py-3 text-center">
-                  {row.free ? (
-                    <svg className="w-5 h-5 text-green-500 dark:text-green-400 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                    </svg>
-                  ) : (
-                    <span className="inline-block w-4 h-0.5 bg-zinc-200 dark:bg-slate-600 rounded" />
-                  )}
-                </td>
-                <td className="px-2 py-3 text-center bg-indigo-50/50 dark:bg-indigo-950/10">
-                  <svg className="w-5 h-5 text-indigo-600 dark:text-indigo-400 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                  </svg>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </motion.div>
+      {/* ── BENEFIT CARDS (staggered pop-in) ── */}
+      <div className="space-y-4">
+        <motion.h2
+          className="text-lg font-bold text-zinc-900 dark:text-slate-100 text-center"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
+        >
+          Everything included with Readee+
+        </motion.h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {BENEFIT_CARDS.map((card, i) => {
+            const Icon = card.icon;
+            const colorClass = ICON_BG[card.icon.displayName || Icon.name] || ICON_BG.BookOpen;
+            return (
+              <motion.div
+                key={card.title}
+                initial={{ opacity: 0, scale: 0.85, y: 20 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.4, delay: 0.08 * i, ease: "easeOut" }}
+                whileHover={{ y: -3, boxShadow: "0 8px 24px rgba(99,102,241,0.12)" }}
+                className="flex items-start gap-3 p-4 rounded-xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 transition-shadow"
+              >
+                <motion.div
+                  className={`w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 ${colorClass}`}
+                  initial={{ rotate: -15, scale: 0.7 }}
+                  whileInView={{ rotate: 0, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ type: "spring", stiffness: 250, damping: 15, delay: 0.08 * i + 0.15 }}
+                >
+                  <Icon className="w-4.5 h-4.5" strokeWidth={1.8} />
+                </motion.div>
+                <div>
+                  <div className="text-sm font-bold text-zinc-800 dark:text-slate-200">{card.title}</div>
+                  <div className="text-xs text-zinc-500 dark:text-slate-400 mt-0.5 leading-relaxed">{card.description}</div>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
 
-      {/* ── PRICING — SIDE BY SIDE ── */}
-      <motion.div variants={slideUp} className="space-y-6">
-        <h2 className="text-xl font-bold text-zinc-900 dark:text-slate-100 text-center">
-          Choose your plan
-        </h2>
-        <p className="text-center text-sm text-zinc-500 dark:text-slate-400 -mt-3">
-          Built for families: same price whether you have 1 child or multiple readers.
-        </p>
+      {/* ── PRICING — SIDE BY SIDE (slide from opposite sides) ── */}
+      <div className="space-y-6">
+        <motion.h2
+          className="text-xl font-bold text-zinc-900 dark:text-slate-100 text-center"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
+        >
+          {childName ? `Give ${childName} everything they need` : "Choose your plan"}
+        </motion.h2>
+        <motion.p
+          className="text-center text-sm text-zinc-500 dark:text-slate-400 -mt-3"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.3, delay: 0.15 }}
+        >
+          7-day free trial. Cancel anytime. One plan covers your whole family.
+        </motion.p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-          {/* Monthly card */}
+          {/* Monthly card — slides from left */}
           <motion.div
             className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-7 flex flex-col justify-between space-y-6 order-2 md:order-1"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
             whileHover={{ y: -4 }}
-            transition={{ duration: 0.2 }}
           >
             <div className="space-y-1">
               <div className="text-sm font-semibold text-zinc-500 dark:text-slate-400">Monthly</div>
@@ -386,17 +520,25 @@ function UpgradeContent() {
             </button>
           </motion.div>
 
-          {/* Annual card (recommended) */}
+          {/* Annual card — slides from right */}
           <motion.div
             className="relative rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 p-7 flex flex-col justify-between space-y-6 order-1 md:order-2 md:-mt-2 shadow-xl shadow-indigo-300/40 dark:shadow-indigo-900/50"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.5, delay: 0.12, ease: "easeOut" }}
             whileHover={{ y: -6 }}
-            animate={{ y: [0, -4, 0] }}
-            transition={{ y: { duration: 3, repeat: Infinity, ease: "easeInOut" } }}
           >
             {/* Best Value badge */}
-            <div className="absolute -top-3 -right-2 px-3 py-1 rounded-full text-[11px] font-bold bg-amber-500 text-white shadow-md">
+            <motion.div
+              className="absolute -top-3 -right-2 px-3 py-1 rounded-full text-[11px] font-bold bg-amber-500 text-white shadow-md"
+              initial={{ scale: 0, rotate: -20 }}
+              whileInView={{ scale: 1, rotate: 0 }}
+              viewport={{ once: true }}
+              transition={{ type: "spring", stiffness: 400, damping: 15, delay: 0.5 }}
+            >
               Best Value
-            </div>
+            </motion.div>
 
             <div className="space-y-1">
               <div className="text-sm font-semibold text-white/80">Annual</div>
@@ -421,22 +563,40 @@ function UpgradeContent() {
           </motion.div>
         </div>
 
-        <p className="text-center text-xs text-zinc-400 dark:text-slate-500">
+        <motion.p
+          className="text-center text-xs text-zinc-400 dark:text-slate-500"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.3, delay: 0.3 }}
+        >
           7 days free, then your selected plan. Cancel anytime.
-        </p>
+        </motion.p>
 
         {/* Trust badges */}
-        <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs text-zinc-500 dark:text-slate-400">
+        <motion.div
+          className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs text-zinc-500 dark:text-slate-400"
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.3, delay: 0.4 }}
+        >
           <span className="inline-flex items-center gap-1"><Lock className="w-3.5 h-3.5" strokeWidth={1.5} /> Secure payment</span>
-          <span className="text-zinc-300 dark:text-slate-600">·</span>
+          <span className="text-zinc-300 dark:text-slate-600">&middot;</span>
           <span className="inline-flex items-center gap-1"><ShieldCheck className="w-3.5 h-3.5" strokeWidth={1.5} /> Cancel anytime</span>
-          <span className="text-zinc-300 dark:text-slate-600">·</span>
+          <span className="text-zinc-300 dark:text-slate-600">&middot;</span>
           <span className="inline-flex items-center gap-1"><BadgeDollarSign className="w-3.5 h-3.5" strokeWidth={1.5} /> 30-day money back</span>
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
 
       {/* ── PROMO CODE ── */}
-      <motion.div variants={fadeUp} className="text-center">
+      <motion.div
+        className="text-center"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.3 }}
+      >
         {!showPromo ? (
           <button
             onClick={() => setShowPromo(true)}
@@ -445,7 +605,12 @@ function UpgradeContent() {
             Have a promo code?
           </button>
         ) : (
-          <div className="max-w-sm mx-auto space-y-3">
+          <motion.div
+            className="max-w-sm mx-auto space-y-3"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            transition={{ duration: 0.3 }}
+          >
             <div className="flex gap-2">
               <input
                 type="text"
@@ -474,37 +639,96 @@ function UpgradeContent() {
                 {promoResult.message}
               </div>
             )}
-          </div>
+          </motion.div>
         )}
       </motion.div>
 
-      {/* ── TESTIMONIAL CAROUSEL ── */}
-      <motion.div variants={slideUp}>
-        <TestimonialCarousel />
-      </motion.div>
+      {/* ── TESTIMONIALS (staggered, alternating slide) ── */}
+      <div className="space-y-4">
+        <motion.h3
+          className="text-lg font-bold text-zinc-900 dark:text-slate-100 text-center"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
+        >
+          Trusted by parents and teachers
+        </motion.h3>
 
-      {/* ── FAQ ── */}
-      <motion.div variants={slideUp} className="space-y-3">
-        <h3 className="text-lg font-bold text-zinc-900 dark:text-slate-100 text-center mb-4">
-          Frequently asked questions
-        </h3>
+        <div className="space-y-3">
+          {TESTIMONIALS.map((t, i) => (
+            <motion.div
+              key={i}
+              className="relative rounded-xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 space-y-2"
+              style={{ borderLeftWidth: 3, borderLeftColor: TESTIMONIAL_BORDER_COLORS[i % TESTIMONIAL_BORDER_COLORS.length] }}
+              initial={{ opacity: 0, x: i % 2 === 0 ? -40 : 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.45, delay: 0.1 * i, ease: "easeOut" }}
+            >
+              <span className="absolute top-1 right-3 text-5xl font-serif leading-none text-indigo-100 dark:text-indigo-900/40 pointer-events-none select-none">&ldquo;</span>
+              <div className="flex gap-0.5">
+                {Array.from({ length: 5 }).map((_, j) => (
+                  <motion.svg
+                    key={j}
+                    className="w-3.5 h-3.5 text-amber-400"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    initial={{ opacity: 0, scale: 0 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.2, delay: 0.1 * i + 0.05 * j + 0.2 }}
+                  >
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </motion.svg>
+                ))}
+              </div>
+              <p className="text-sm text-zinc-700 dark:text-slate-300 leading-relaxed relative z-10">
+                &ldquo;{t.quote}&rdquo;
+              </p>
+              <div className="text-xs text-zinc-500 dark:text-slate-400">
+                <span className="font-semibold text-zinc-700 dark:text-slate-300">{t.name}</span> &middot; {t.detail}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
+      {/* ── FAQ (staggered from right) ── */}
+      <div className="space-y-3">
+        <motion.h3
+          className="text-lg font-bold text-zinc-900 dark:text-slate-100 text-center mb-4"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
+        >
+          Questions parents ask
+        </motion.h3>
         {FAQS.map((faq, i) => (
-          <div key={i} className="rounded-xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 overflow-hidden">
+          <motion.div
+            key={i}
+            className="rounded-xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 overflow-hidden"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.35, delay: 0.07 * i, ease: "easeOut" }}
+          >
             <button
               onClick={() => setOpenFaq(openFaq === i ? null : i)}
               className="w-full flex items-center justify-between p-4 text-left hover:bg-zinc-50 dark:hover:bg-slate-700/50 transition-colors"
             >
               <span className="text-sm font-medium text-zinc-800 dark:text-slate-200">{faq.q}</span>
-              <svg
-                className={`w-4 h-4 text-zinc-400 dark:text-slate-500 transition-transform flex-shrink-0 ml-2 ${
-                  openFaq === i ? "rotate-180" : ""
-                }`}
+              <motion.svg
+                className="w-4 h-4 text-zinc-400 dark:text-slate-500 flex-shrink-0 ml-2"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
+                animate={{ rotate: openFaq === i ? 180 : 0 }}
+                transition={{ duration: 0.25 }}
               >
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </svg>
+              </motion.svg>
             </button>
             <AnimatePresence>
               {openFaq === i && (
@@ -512,7 +736,7 @@ function UpgradeContent() {
                   initial={{ height: 0, opacity: 0 }}
                   animate={{ height: "auto", opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
+                  transition={{ duration: 0.25 }}
                   className="overflow-hidden"
                 >
                   <div className="px-4 pb-4">
@@ -521,28 +745,42 @@ function UpgradeContent() {
                 </motion.div>
               )}
             </AnimatePresence>
-          </div>
+          </motion.div>
         ))}
-      </motion.div>
+      </div>
 
-      {/* ── FINAL CTA ── */}
-      <motion.div variants={slideUp} className="rounded-2xl bg-gradient-to-br from-indigo-600 to-violet-600 p-8 text-center space-y-4 shadow-xl shadow-indigo-200/40 dark:shadow-indigo-900/40">
+      {/* ── FINAL CTA (scale up) ── */}
+      <motion.div
+        className="rounded-2xl bg-gradient-to-br from-indigo-600 to-violet-600 p-8 text-center space-y-4 shadow-xl shadow-indigo-200/40 dark:shadow-indigo-900/40"
+        initial={{ opacity: 0, scale: 0.88 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ type: "spring", stiffness: 200, damping: 20 }}
+      >
         <h2 className="text-xl sm:text-2xl font-bold text-white">
-          Start your child&apos;s reading journey today
+          {childName ? `${childName}\u2019s reading adventure starts here` : "Start your child\u2019s reading journey today"}
         </h2>
         <p className="text-white/80 text-sm max-w-md mx-auto">
           7 days free, then just $6.67/month with the annual plan. Cancel anytime — no risk, no commitment.
         </p>
-        <button
+        <motion.button
           onClick={() => handleOpenModal("annual")}
           className="px-8 py-4 rounded-xl bg-white text-indigo-600 font-bold text-sm hover:bg-indigo-50 transition-all shadow-md"
+          whileHover={{ scale: 1.04 }}
+          whileTap={{ scale: 0.97 }}
         >
           Start 7-Day Free Trial
-        </button>
+        </motion.button>
       </motion.div>
 
       {/* ── Secondary Exit ── */}
-      <motion.div variants={fadeUp} className="text-center pt-2 pb-4">
+      <motion.div
+        className="text-center pt-2 pb-4"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.4, delay: 0.2 }}
+      >
         <Link
           href="/dashboard"
           className="text-sm text-zinc-400 dark:text-slate-500 hover:text-zinc-600 dark:hover:text-slate-300 transition-colors"
@@ -642,90 +880,6 @@ function UpgradeContent() {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.div>
-  );
-}
-
-/* ═══════════════════════════════════════════════════════ */
-/*  CountUp Stat Card                                      */
-/* ═══════════════════════════════════════════════════════ */
-
-function CountUpStatCard({ target, suffix, label }: { target: number; suffix?: string; label: string }) {
-  const { value, ref } = useCountUp(target);
-
-  return (
-    <div ref={ref} className="text-center py-3 rounded-xl bg-indigo-50/60 dark:bg-indigo-950/20 border border-indigo-100 dark:border-indigo-900/30">
-      <div className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">{value}{suffix || ""}</div>
-      <div className="text-xs text-zinc-500 dark:text-slate-400 mt-0.5">{label}</div>
-    </div>
-  );
-}
-
-/* ═══════════════════════════════════════════════════════ */
-/*  Testimonial Carousel                                   */
-/* ═══════════════════════════════════════════════════════ */
-
-function TestimonialCarousel() {
-  const [current, setCurrent] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrent((c) => (c + 1) % TESTIMONIALS.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, []);
-
-  return (
-    <div className="space-y-4">
-      <h3 className="text-lg font-bold text-zinc-900 dark:text-slate-100 text-center">
-        Parents love Readee
-      </h3>
-
-      <div className="relative overflow-hidden rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={current}
-            initial={{ opacity: 0, x: 60 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -60 }}
-            transition={{ duration: 0.35, ease: "easeInOut" }}
-            className="p-6 space-y-3 relative"
-            style={{ borderLeft: `3px solid ${TESTIMONIAL_BORDER_COLORS[current % TESTIMONIAL_BORDER_COLORS.length]}` }}
-          >
-            {/* Quotation mark graphic */}
-            <span className="absolute top-2 right-4 text-6xl font-serif leading-none text-indigo-100 dark:text-indigo-900/40 pointer-events-none select-none">&ldquo;</span>
-            {/* Stars */}
-            <div className="flex gap-0.5">
-              {Array.from({ length: 5 }).map((_, j) => (
-                <svg key={j} className="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                </svg>
-              ))}
-            </div>
-            <p className="text-sm text-zinc-700 dark:text-slate-300 leading-relaxed relative z-10">
-              &ldquo;{TESTIMONIALS[current].quote}&rdquo;
-            </p>
-            <div className="text-xs text-zinc-500 dark:text-slate-400">
-              <span className="font-semibold text-zinc-700 dark:text-slate-300">{TESTIMONIALS[current].name}</span> &middot; {TESTIMONIALS[current].detail}
-            </div>
-          </motion.div>
-        </AnimatePresence>
-
-        {/* Dots */}
-        <div className="flex justify-center gap-2 pb-4">
-          {TESTIMONIALS.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setCurrent(i)}
-              className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                i === current
-                  ? "bg-indigo-600 dark:bg-indigo-400 w-6"
-                  : "bg-zinc-300 dark:bg-slate-600 hover:bg-zinc-400 dark:hover:bg-slate-500"
-              }`}
-            />
-          ))}
-        </div>
-      </div>
     </div>
   );
 }
