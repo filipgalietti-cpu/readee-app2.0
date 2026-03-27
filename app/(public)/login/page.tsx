@@ -10,6 +10,27 @@ import FormField from "@/app/components/auth/FormField";
 import GoogleButton from "@/app/components/auth/GoogleButton";
 import Divider from "@/app/components/auth/Divider";
 
+/* ── Search-param banners (isolated to avoid suspending the whole form) */
+function ParamBanners() {
+  const searchParams = useSearchParams();
+  const message = searchParams.get("message");
+  const errorParam = searchParams.get("error");
+  return (
+    <>
+      {message && (
+        <div className="mb-4 p-3 bg-green-50 border border-green-200 text-green-700 rounded-lg text-sm">
+          {message}
+        </div>
+      )}
+      {errorParam && (
+        <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded-lg text-sm">
+          {errorParam}
+        </div>
+      )}
+    </>
+  );
+}
+
 interface FormData {
   email: string;
   password: string;
@@ -140,9 +161,6 @@ function ForgotPasswordView({ onBack }: { onBack: () => void }) {
 
 function LoginForm() {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const message = searchParams.get("message");
-  const errorParam = searchParams.get("error");
 
   const [formData, setFormData] = useState<FormData>({
     email: "",
@@ -225,16 +243,9 @@ function LoginForm() {
     <AuthCard title="Welcome Back">
       <GoogleButton />
       <Divider />
-      {message && (
-        <div className="mb-4 p-3 bg-green-50 border border-green-200 text-green-700 rounded-lg text-sm">
-          {message}
-        </div>
-      )}
-      {errorParam && (
-        <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded-lg text-sm">
-          {errorParam}
-        </div>
-      )}
+      <Suspense fallback={null}>
+        <ParamBanners />
+      </Suspense>
       {errors.general && (
         <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded-lg text-sm">
           {errors.general}
@@ -296,19 +307,5 @@ function LoginForm() {
 }
 
 export default function Login() {
-  return (
-    <Suspense fallback={
-      <AuthCard title="Welcome Back">
-        <div className="space-y-6 animate-pulse">
-          <div className="h-11 bg-zinc-100 rounded-lg" />
-          <div className="flex items-center gap-3"><div className="flex-1 h-px bg-zinc-100" /><div className="w-8 h-4 bg-zinc-100 rounded" /><div className="flex-1 h-px bg-zinc-100" /></div>
-          <div className="space-y-2"><div className="h-4 w-12 bg-zinc-100 rounded" /><div className="h-11 bg-zinc-100 rounded-lg" /></div>
-          <div className="space-y-2"><div className="h-4 w-16 bg-zinc-100 rounded" /><div className="h-11 bg-zinc-100 rounded-lg" /></div>
-          <div className="h-12 bg-zinc-100 rounded-lg" />
-        </div>
-      </AuthCard>
-    }>
-      <LoginForm />
-    </Suspense>
-  );
+  return <LoginForm />;
 }
