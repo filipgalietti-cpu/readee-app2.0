@@ -8,6 +8,7 @@ import { Child } from "@/lib/db/types";
 import { useSpeech } from "@/app/_components/SpeechContext";
 import lessonsData from "@/lib/data/lessons.json";
 import { gradeOrder, grades, levelNameToGradeKey } from "@/lib/assessment/questions";
+import { usePlanStore } from "@/lib/stores/plan-store";
 import { getDailyMultiplier, getSessionStreakTier } from "@/lib/carrots/multipliers";
 
 const PASS_THRESHOLD = 3;
@@ -498,7 +499,8 @@ function LessonContent() {
   const [child, setChild] = useState<Child | null>(null);
   const [lesson, setLesson] = useState<LessonRaw | null>(null);
   const [phase, setPhase] = useState<Phase>("loading");
-  const [userPlan, setUserPlan] = useState<string>("free");
+  const userPlan = usePlanStore((s) => s.plan);
+  const fetchPlan = usePlanStore((s) => s.fetch);
 
   // Learn state (flashcard)
   const [learnIdx, setLearnIdx] = useState(0);
@@ -548,19 +550,8 @@ function LessonContent() {
       const c = data as Child;
       setChild(c);
 
-      let plan = "free";
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
-      if (user) {
-        const { data: profile } = await supabase
-          .from("profiles")
-          .select("plan")
-          .eq("id", user.id)
-          .single();
-        plan = (profile as { plan?: string } | null)?.plan || "free";
-        setUserPlan(plan);
-      }
+      await fetchPlan();
+      const plan = usePlanStore.getState().plan;
 
       // Gating: check if lesson requires premium
       if (lessonId && !isLessonFree(lessonId)) {

@@ -3,6 +3,7 @@
 import { Suspense, useEffect, useState, useMemo } from "react";
 import Link from "next/link";
 import { supabaseBrowser } from "@/lib/supabase/client";
+import { usePlanStore } from "@/lib/stores/plan-store";
 import { wordBank, type WordEntry } from "@/lib/word-bank/words";
 import { BookOpen, Star } from "lucide-react";
 
@@ -34,30 +35,18 @@ export default function WordBankPage() {
 }
 
 function WordBankContent() {
-  const [userPlan, setUserPlan] = useState<string>("free");
+  const userPlan = usePlanStore((s) => s.plan) ?? "free";
+  const fetchPlan = usePlanStore((s) => s.fetch);
   const [loading, setLoading] = useState(true);
   const [activeFilter, setActiveFilter] = useState<string | null>(null);
   const [playingWord, setPlayingWord] = useState<string | null>(null);
 
   useEffect(() => {
-    async function fetchPlan() {
-      const supabase = supabaseBrowser();
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
-      if (user) {
-        const { data: profile } = await supabase
-          .from("profiles")
-          .select("plan")
-          .eq("id", user.id)
-          .single();
-        setUserPlan(
-          (profile as { plan?: string } | null)?.plan || "free"
-        );
-      }
+    async function loadData() {
+      await fetchPlan();
       setLoading(false);
     }
-    fetchPlan();
+    loadData();
   }, []);
 
   const filteredWords = useMemo(() => {

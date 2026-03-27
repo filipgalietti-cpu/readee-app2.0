@@ -5,7 +5,19 @@ import { useEffect, useState, useRef } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { useChildStore } from "@/lib/stores/child-store";
-import { Carrot, Star } from "lucide-react";
+import { getChildAvatarImage } from "@/lib/utils/get-child-avatar";
+import { Star, Bell, HelpCircle, Menu } from "lucide-react";
+import { useSidebarStore } from "@/lib/stores/sidebar-store";
+import { usePlanStore } from "@/lib/stores/plan-store";
+
+interface Notification {
+  id: string;
+  title: string;
+  message: string;
+  type: string;
+  read: boolean;
+  created_at: string;
+}
 
 export default function NavAuth() {
   const pathname = usePathname();
@@ -13,26 +25,52 @@ export default function NavAuth() {
 
   // Hide navbar completely on immersive/auth pages
   if (pathname === "/practice" || pathname === "/login" || pathname === "/signup") return null;
+
   const [loggedIn, setLoggedIn] = useState<boolean | null>(null);
-  const [userPlan, setUserPlan] = useState<string>("free");
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const userPlan = usePlanStore((s) => s.plan);
+  const fetchPlan = usePlanStore((s) => s.fetch);
+  const [userName, setUserName] = useState<string>("");
+  const [userAvatar, setUserAvatar] = useState<string | null>(null);
   const [navHidden, setNavHidden] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null);
+  const [notifications, setNotifications] = useState<Notification[]>([]);
+  const [notifOpen, setNotifOpen] = useState(false);
+  const notifRef = useRef<HTMLDivElement>(null);
   const lastScrollY = useRef(0);
+
+  const childData = useChildStore((s) => s.childData);
+  const storeChildren = useChildStore((s) => s.children);
+  const activeChild = childData || storeChildren[0] || null;
 
   useEffect(() => {
     const supabase = createClient();
     supabase.auth.getSession().then(({ data }) => {
       setLoggedIn(!!data.session);
       if (data.session?.user) {
+        const uid = data.session.user.id;
+        const u = data.session.user;
+        setUserName(u.user_metadata?.full_name || u.email || "");
+        setUserAvatar(u.user_metadata?.avatar_url || u.user_metadata?.picture || null);
+
+        fetchPlan();
         supabase
           .from("profiles")
-          .select("plan")
-          .eq("id", data.session.user.id)
+          .select("display_name")
+          .eq("id", uid)
           .single()
           .then(({ data: profile }) => {
-            setUserPlan((profile as { plan?: string } | null)?.plan || "free");
+            const p = profile as any;
+            if (p?.display_name) setUserName(p.display_name);
+          });
+
+        // Fetch notifications
+        supabase
+          .from("notifications")
+          .select("*")
+          .eq("user_id", uid)
+          .order("created_at", { ascending: false })
+          .limit(20)
+          .then(({ data: notifs }) => {
+            if (notifs) setNotifications(notifs as Notification[]);
           });
       }
     });
@@ -44,21 +82,19 @@ export default function NavAuth() {
     };
   }, []);
 
-  // Close dropdown on outside click
+  // Close notif dropdown on outside click
   useEffect(() => {
+    if (!notifOpen) return;
     function handleClick(e: MouseEvent) {
-      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
-        setMenuOpen(false);
-      }
+      if (notifRef.current && !notifRef.current.contains(e.target as Node)) setNotifOpen(false);
     }
     document.addEventListener("mousedown", handleClick);
     return () => document.removeEventListener("mousedown", handleClick);
-  }, []);
+  }, [notifOpen]);
 
-  // Close mobile menu on route change
+  // Close on route change
   useEffect(() => {
-    setMobileOpen(false);
-    setMenuOpen(false);
+    setNotifOpen(false);
     setNavHidden(false);
   }, [pathname]);
 
@@ -69,7 +105,7 @@ export default function NavAuth() {
       const y = window.scrollY;
       if (y > lastScrollY.current && y > 80) {
         setNavHidden(true);
-        setMobileOpen(false);
+        setNotifOpen(false);
       } else {
         setNavHidden(false);
       }
@@ -79,243 +115,199 @@ export default function NavAuth() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleLogout = async () => {
+  const markAsRead = async (id: string) => {
     const supabase = createClient();
-    await supabase.auth.signOut();
-    setMenuOpen(false);
-    router.push("/");
+    await supabase.from("notifications").update({ read: true }).eq("id", id);
+    setNotifications((prev) => prev.map((n) => n.id === id ? { ...n, read: true } : n));
   };
 
-  const childData = useChildStore((s) => s.childData);
-  const storeChildren = useChildStore((s) => s.children);
-  const activeChild = childData || storeChildren[0] || null;
-  const analyticsHref = activeChild ? `/analytics?child=${activeChild.id}` : "/analytics";
+  const markAllRead = async () => {
+    const supabase = createClient();
+    const unreadIds = notifications.filter((n) => !n.read).map((n) => n.id);
+    if (unreadIds.length === 0) return;
+    await supabase.from("notifications").update({ read: true }).in("id", unreadIds);
+    setNotifications((prev) => prev.map((n) => ({ ...n, read: true })));
+  };
 
+  const unreadCount = notifications.filter((n) => !n.read).length;
   const isAuthPage = pathname === "/login" || pathname === "/signup";
-  const isActive = (href: string) => pathname === href;
 
-  const linkClass = (href: string) =>
-    `text-sm font-medium transition-all duration-200 px-3 py-1.5 rounded-lg ${
-      isActive(href)
-        ? "text-indigo-700 bg-indigo-50 dark:text-indigo-300 dark:bg-indigo-950"
-        : "text-zinc-600 hover:text-indigo-700 hover:bg-indigo-50/60 dark:text-slate-300 dark:hover:text-indigo-300 dark:hover:bg-slate-800"
-    }`;
+  // Avatar: prefer child avatar, fall back to parent initial
+  const childAvatarSrc = activeChild ? getChildAvatarImage(activeChild, storeChildren.indexOf(activeChild)) : null;
+  const displayInitial = activeChild?.first_name?.charAt(0)?.toUpperCase()
+    || userName?.charAt(0)?.toUpperCase()
+    || "U";
+
+  // Format relative time
+  const timeAgo = (dateStr: string) => {
+    const diff = Date.now() - new Date(dateStr).getTime();
+    const mins = Math.floor(diff / 60000);
+    if (mins < 1) return "Just now";
+    if (mins < 60) return `${mins}m ago`;
+    const hrs = Math.floor(mins / 60);
+    if (hrs < 24) return `${hrs}h ago`;
+    const days = Math.floor(hrs / 24);
+    if (days < 7) return `${days}d ago`;
+    return new Date(dateStr).toLocaleDateString("en-US", { month: "short", day: "numeric" });
+  };
 
   // Avoid flicker
   if (loggedIn === null) {
     return (
-      <nav className="sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm border-b border-zinc-200 dark:border-slate-700 transition-transform duration-300 md:translate-y-0" style={{ transform: navHidden ? "translateY(-100%)" : undefined }}>
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6 h-16 md:h-20">
-          <img src="/readee-logo.png" alt="Readee - Learn to Read" className="w-[120px] sm:w-[150px] h-auto" />
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-slate-900 border-b border-zinc-200 dark:border-slate-700">
+        <div className="flex items-center justify-between px-4 sm:px-6 h-[76px]">
+          <div className="flex items-center gap-3">
+            <img src="/readee-logo.png" alt="Readee" className="w-[140px] sm:w-[160px] h-auto" />
+            <span className="hidden sm:inline text-[13px] text-violet-500 font-medium"><span className="font-bold">Unlock</span> Reading</span>
+          </div>
         </div>
       </nav>
     );
   }
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm border-b border-zinc-200 dark:border-slate-700 transition-transform duration-300 md:translate-y-0" style={{ transform: navHidden ? "translateY(-100%)" : undefined }}>
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6 h-16 md:h-20">
-        {/* Logo */}
-        <Link
-          href={loggedIn ? "/dashboard" : "/"}
-          className="hover:opacity-80 transition-opacity"
-        >
-          <img src="/readee-logo.png" alt="Readee - Learn to Read" className="w-[120px] sm:w-[150px] h-auto" />
+    <nav
+      className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-slate-900 border-b border-zinc-200 dark:border-slate-700 transition-transform duration-300"
+      style={{ transform: navHidden ? "translateY(-100%)" : undefined }}
+    >
+      <div className="flex items-center justify-between px-5 sm:px-8 h-[76px]">
+        {/* Logo + motto */}
+        <Link href={loggedIn ? "/dashboard" : "/"} className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+          <img src="/readee-logo.png" alt="Readee" className="w-[140px] sm:w-[160px] h-auto" />
+          <span className="hidden sm:inline text-sm text-violet-500 font-medium"><span className="font-bold">Unlock</span> Reading</span>
         </Link>
 
-        {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-6">
+        {/* Right side */}
+        <div className="flex items-center gap-2 sm:gap-3">
           {loggedIn ? (
             <>
-              <Link href="/dashboard" className={linkClass("/dashboard")}>
-                Dashboard
-              </Link>
-              <Link href={analyticsHref} className={linkClass("/analytics")}>
-                Analytics
-              </Link>
-              <Link href={activeChild ? `/shop?child=${activeChild.id}` : "/shop"} className={linkClass("/shop")}>
-                <Carrot className="w-4 h-4 inline-block align-text-bottom text-orange-500" strokeWidth={1.5} /> Shop
-              </Link>
-              <Link href="/word-bank" className={linkClass("/word-bank")}>
-                Word Bank
-              </Link>
-              <Link href="/question-bank" className={linkClass("/question-bank")}>
-                Question Bank
-              </Link>
+              {/* Mobile hamburger (opens sidebar overlay) */}
+              <button
+                onClick={() => useSidebarStore.getState().setMobileOpen(true)}
+                className="lg:hidden w-10 h-10 rounded-lg flex items-center justify-center text-zinc-500 hover:text-zinc-700 hover:bg-zinc-100 dark:text-slate-400 dark:hover:text-slate-200 dark:hover:bg-slate-800 transition-colors"
+                aria-label="Menu"
+              >
+                <Menu className="w-5 h-5" strokeWidth={1.5} />
+              </button>
 
-              {userPlan !== "premium" ? (
+              {/* Upgrade (free users only — hidden while plan is loading) */}
+              {userPlan === "free" && (
                 <Link
                   href="/upgrade"
-                  className="relative text-sm font-bold px-4 py-1.5 rounded-full bg-gradient-to-r from-indigo-600 to-violet-500 text-white hover:from-indigo-700 hover:to-violet-600 transition-all duration-200 shadow-sm hover:shadow-md hover:scale-105 flex items-center gap-1.5 overflow-hidden group nav-shine"
+                  className="relative text-sm font-bold px-3 sm:px-4 py-1.5 rounded-full bg-gradient-to-r from-indigo-600 to-violet-500 text-white hover:from-indigo-700 hover:to-violet-600 transition-all duration-200 shadow-sm hover:shadow-md hover:scale-105 flex items-center gap-1.5 overflow-hidden group"
                 >
                   <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
                   <Star className="relative w-4 h-4" strokeWidth={1.5} />
-                  <span className="relative font-extrabold">Upgrade</span>
-                </Link>
-              ) : (
-                <Link
-                  href="/settings"
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-sm font-bold shadow-sm hover:shadow-md hover:scale-105 transition-all duration-200"
-                >
-                  <Star className="w-4 h-4" strokeWidth={1.5} />
-                  Readee+
+                  <span className="relative font-extrabold hidden sm:inline">Upgrade</span>
                 </Link>
               )}
 
-              {/* Profile dropdown */}
-              <div className="relative" ref={menuRef}>
+              {/* Help */}
+              <Link
+                href="/contact-us"
+                className="flex items-center gap-1.5 px-2.5 sm:px-3 py-2 rounded-lg text-indigo-500 hover:text-indigo-700 hover:bg-indigo-50 transition-colors"
+              >
+                <HelpCircle className="w-5 h-5" strokeWidth={1.5} />
+                <span className="text-sm font-semibold hidden sm:inline">Help</span>
+              </Link>
+
+              {/* Notifications bell */}
+              <div className="relative" ref={notifRef}>
                 <button
-                  onClick={() => setMenuOpen(!menuOpen)}
-                  className="w-9 h-9 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center hover:bg-indigo-200 dark:hover:bg-indigo-800/50 transition-colors"
-                  aria-label="Profile menu"
+                  onClick={() => setNotifOpen(!notifOpen)}
+                  className="relative w-10 h-10 rounded-lg flex items-center justify-center text-indigo-500 hover:text-indigo-700 hover:bg-indigo-50 transition-colors"
+                  aria-label="Notifications"
                 >
-                  <svg
-                    className="w-5 h-5 text-indigo-600 dark:text-indigo-400"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                    />
-                  </svg>
+                  <Bell className="w-5 h-5" strokeWidth={1.5} />
+                  {unreadCount > 0 && (
+                    <span className="absolute -top-0.5 -right-0.5 min-w-[16px] h-4 px-1 rounded-full bg-red-500 text-white text-[10px] font-bold flex items-center justify-center">
+                      {unreadCount > 9 ? "9+" : unreadCount}
+                    </span>
+                  )}
                 </button>
 
-                {menuOpen && (
-                  <div className="absolute right-0 mt-2 w-48 rounded-xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-lg py-1">
-                    <Link
-                      href="/settings"
-                      className="block px-4 py-2.5 text-sm text-zinc-700 dark:text-slate-200 hover:bg-zinc-50 dark:hover:bg-slate-700 transition-colors"
-                    >
-                      Settings
-                    </Link>
-                    <Link
-                      href="/contact-us"
-                      className="block px-4 py-2.5 text-sm text-zinc-700 dark:text-slate-200 hover:bg-zinc-50 dark:hover:bg-slate-700 transition-colors"
-                    >
-                      Help & Support
-                    </Link>
-                    <div className="border-t border-zinc-100 dark:border-slate-700 my-1" />
-                    <button
-                      onClick={handleLogout}
-                      className="block w-full text-left px-4 py-2.5 text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/30 transition-colors"
-                    >
-                      Log Out
-                    </button>
+                {/* Notifications dropdown */}
+                {notifOpen && (
+                  <div className="absolute right-0 mt-2 w-80 sm:w-96 rounded-xl border border-zinc-200 bg-white shadow-xl overflow-hidden z-50">
+                    <div className="flex items-center justify-between px-4 py-3 border-b border-zinc-100">
+                      <h3 className="text-sm font-semibold text-zinc-900">Notifications</h3>
+                      {unreadCount > 0 && (
+                        <button
+                          onClick={markAllRead}
+                          className="text-[11px] font-medium text-indigo-600 hover:text-indigo-700 transition-colors"
+                        >
+                          Mark all read
+                        </button>
+                      )}
+                    </div>
+
+                    <div className="max-h-80 overflow-y-auto">
+                      {notifications.length > 0 ? (
+                        notifications.map((n) => (
+                          <button
+                            key={n.id}
+                            onClick={() => !n.read && markAsRead(n.id)}
+                            className={`w-full text-left px-4 py-3 border-b border-zinc-50 last:border-0 hover:bg-zinc-50 transition-colors ${
+                              n.read ? "opacity-60" : ""
+                            }`}
+                          >
+                            <div className="flex items-start gap-3">
+                              {!n.read && (
+                                <div className="w-2 h-2 rounded-full bg-indigo-500 flex-shrink-0 mt-1.5" />
+                              )}
+                              <div className={`flex-1 min-w-0 ${n.read ? "pl-5" : ""}`}>
+                                <div className="text-sm font-medium text-zinc-900 leading-tight">{n.title}</div>
+                                <div className="text-xs text-zinc-500 mt-0.5 leading-snug">{n.message}</div>
+                                <div className="text-[10px] text-zinc-400 mt-1">{timeAgo(n.created_at)}</div>
+                              </div>
+                            </div>
+                          </button>
+                        ))
+                      ) : (
+                        <div className="px-4 py-8 text-center">
+                          <Bell className="w-6 h-6 text-zinc-300 mx-auto mb-2" strokeWidth={1.5} />
+                          <p className="text-sm text-zinc-400">No notifications yet</p>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 )}
               </div>
-            </>
-          ) : (
-            <>
-              {!isAuthPage && (
-                <>
-                  <Link
-                    href="/login"
-                    className={linkClass("/login")}
-                  >
-                    Log In
-                  </Link>
-                  <Link
-                    href="/signup"
-                    className="text-sm font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors"
-                  >
-                    Sign Up for Free!
-                  </Link>
-                </>
-              )}
-            </>
-          )}
-        </div>
 
-        {/* Mobile hamburger */}
-        <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden w-9 h-9 flex items-center justify-center rounded-lg hover:bg-zinc-100 dark:hover:bg-slate-800 transition-colors"
-          aria-label="Menu"
-        >
-          {mobileOpen ? (
-            <svg className="w-5 h-5 text-zinc-700 dark:text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          ) : (
-            <svg className="w-5 h-5 text-zinc-700 dark:text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          )}
-        </button>
-      </div>
-
-      {/* Mobile menu */}
-      {mobileOpen && (
-        <div className="md:hidden border-t border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-6 py-4 space-y-1">
-          {loggedIn ? (
-            <>
-              <Link href="/dashboard" className={`block py-2.5 px-3 rounded-lg text-sm font-medium transition-all duration-200 ${isActive("/dashboard") ? "text-indigo-700 bg-indigo-50 dark:text-indigo-300 dark:bg-indigo-950" : "text-zinc-700 dark:text-slate-300 hover:text-indigo-700 dark:hover:text-indigo-300 hover:bg-indigo-50/60 dark:hover:bg-slate-800"}`}>
-                Dashboard
-              </Link>
-              <Link href={analyticsHref} className={`block py-2.5 px-3 rounded-lg text-sm font-medium transition-all duration-200 ${isActive("/analytics") ? "text-indigo-700 bg-indigo-50 dark:text-indigo-300 dark:bg-indigo-950" : "text-zinc-700 dark:text-slate-300 hover:text-indigo-700 dark:hover:text-indigo-300 hover:bg-indigo-50/60 dark:hover:bg-slate-800"}`}>
-                Analytics
-              </Link>
-              <Link href={activeChild ? `/shop?child=${activeChild.id}` : "/shop"} className={`block py-2.5 px-3 rounded-lg text-sm font-medium transition-all duration-200 ${isActive("/shop") ? "text-indigo-700 bg-indigo-50 dark:text-indigo-300 dark:bg-indigo-950" : "text-zinc-700 dark:text-slate-300 hover:text-indigo-700 dark:hover:text-indigo-300 hover:bg-indigo-50/60 dark:hover:bg-slate-800"}`}>
-                <Carrot className="w-4 h-4 inline-block align-text-bottom text-orange-500" strokeWidth={1.5} /> Shop
-              </Link>
-              <Link href="/word-bank" className={`block py-2.5 px-3 rounded-lg text-sm font-medium transition-all duration-200 ${isActive("/word-bank") ? "text-indigo-700 bg-indigo-50 dark:text-indigo-300 dark:bg-indigo-950" : "text-zinc-700 dark:text-slate-300 hover:text-indigo-700 dark:hover:text-indigo-300 hover:bg-indigo-50/60 dark:hover:bg-slate-800"}`}>
-                Word Bank
-              </Link>
-              <Link href="/question-bank" className={`block py-2.5 px-3 rounded-lg text-sm font-medium transition-all duration-200 ${isActive("/question-bank") ? "text-indigo-700 bg-indigo-50 dark:text-indigo-300 dark:bg-indigo-950" : "text-zinc-700 dark:text-slate-300 hover:text-indigo-700 dark:hover:text-indigo-300 hover:bg-indigo-50/60 dark:hover:bg-slate-800"}`}>
-                Question Bank
-              </Link>
-              {userPlan !== "premium" ? (
-                <Link
-                  href="/upgrade"
-                  className="relative block my-2 px-4 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-sm font-bold text-center hover:from-indigo-700 hover:to-violet-600 transition-all shadow-sm overflow-hidden group"
-                >
-                  <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
-                  <span className="relative flex items-center justify-center gap-1.5"><Star className="w-4 h-4" strokeWidth={1.5} /> Upgrade to Readee+</span>
-                </Link>
-              ) : (
-                <Link
-                  href="/settings"
-                  className="flex items-center justify-center gap-2 my-2 px-4 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-sm font-bold shadow-sm"
-                >
-                  <Star className="w-4 h-4" strokeWidth={1.5} />
-                  Readee+ Member
-                </Link>
-              )}
-              <Link href="/settings" className="block py-2.5 text-sm font-medium text-zinc-700 dark:text-slate-300 hover:text-indigo-700 dark:hover:text-indigo-300">
-                Settings
-              </Link>
-              <Link href="/contact-us" className="block py-2.5 text-sm font-medium text-zinc-700 dark:text-slate-300 hover:text-indigo-700 dark:hover:text-indigo-300">
-                Help & Support
-              </Link>
-              <div className="border-t border-zinc-100 dark:border-slate-700 my-2" />
+              {/* Profile avatar */}
               <button
-                onClick={handleLogout}
-                className="block w-full text-left py-2.5 text-sm font-medium text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300"
+                onClick={() => router.push("/account")}
+                className="w-10 h-10 rounded-full flex items-center justify-center overflow-hidden transition-all hover:ring-2 hover:ring-indigo-200"
+                aria-label="Account"
               >
-                Log Out
+                {childAvatarSrc ? (
+                  <img src={childAvatarSrc} alt={activeChild?.first_name || ""} className="w-full h-full object-cover" draggable={false} />
+                ) : (
+                  <div className="w-full h-full rounded-full bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center text-white text-sm font-bold">
+                    {displayInitial}
+                  </div>
+                )}
               </button>
             </>
           ) : (
             <>
               {!isAuthPage && (
-                <>
-                  <Link href="/login" className="block py-2.5 text-sm font-medium text-zinc-700 dark:text-slate-300 hover:text-indigo-700 dark:hover:text-indigo-300">
+                <div className="flex items-center gap-3">
+                  <Link href="/login" className="text-sm font-medium text-zinc-600 hover:text-indigo-700 transition-colors">
                     Log In
                   </Link>
-                  <Link href="/signup" className="block py-2.5 text-sm font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300">
-                    Sign Up for Free!
+                  <Link
+                    href="/signup"
+                    className="text-sm font-semibold px-4 py-1.5 rounded-full bg-indigo-600 text-white hover:bg-indigo-700 transition-colors"
+                  >
+                    Sign Up Free
                   </Link>
-                </>
+                </div>
               )}
             </>
           )}
         </div>
-      )}
+      </div>
     </nav>
   );
 }

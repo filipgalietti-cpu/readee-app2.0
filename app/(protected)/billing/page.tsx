@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { CreditCard, Star, Check, Sparkles, BookOpen, Target, Puzzle, Map, Zap } from "lucide-react";
 import SettingsShell from "@/app/_components/SettingsShell";
+import { usePlanStore } from "@/lib/stores/plan-store";
 
 interface BillingData {
   plan: string;
@@ -51,8 +52,10 @@ export default function BillingPage() {
 
       const redemption = promo?.[0] as any;
 
+      const plan = prof?.plan ?? "free";
+      usePlanStore.getState().setPlan(plan);
       setBilling({
-        plan: prof?.plan ?? "free",
+        plan,
         display_name: prof?.display_name || "User",
         promo_code: redemption?.promo_codes?.code || null,
         redeemed_at: redemption?.redeemed_at || null,

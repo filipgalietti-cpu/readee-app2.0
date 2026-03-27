@@ -8,6 +8,7 @@ import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
 import { safeValidate } from "@/lib/validate";
 import { ChildSchema } from "@/lib/schemas";
+import { usePlanStore } from "@/lib/stores/plan-store";
 import { getStandardsForGrade } from "@/lib/data/all-standards";
 import { levelNameToGradeKey } from "@/lib/assessment/questions";
 import { BookOpen, Newspaper, Type, MessageCircle, Map as MapIcon, Trophy, Carrot, Star, Rabbit, Squirrel, Dog, Lock } from "lucide-react";
@@ -435,7 +436,8 @@ function RoadmapLoader() {
   const params = useSearchParams();
   const childId = params.get("child");
   const [child, setChild] = useState<Child | null>(null);
-  const [userPlan, setUserPlan] = useState<string>("free");
+  const userPlan = usePlanStore((s) => s.plan) ?? "free";
+  const fetchPlan = usePlanStore((s) => s.fetch);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -446,20 +448,12 @@ function RoadmapLoader() {
       const { data } = await supabase.from("children").select("*").eq("id", childId).single();
       if (data) setChild(safeValidate(ChildSchema, data) as Child);
 
-      const { data: { user } } = await supabase.auth.getUser();
-      if (user) {
-        const { data: profile } = await supabase
-          .from("profiles")
-          .select("plan")
-          .eq("id", user.id)
-          .single();
-        setUserPlan((profile as { plan?: string } | null)?.plan || "free");
-      }
+      fetchPlan();
 
       setLoading(false);
     }
     load();
-  }, [childId]);
+  }, [childId, fetchPlan]);
 
   if (loading) return <Spinner />;
 

@@ -3,7 +3,7 @@
 import { Suspense, useEffect, useState, useMemo, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
 import { staggerContainer, slideUp, fadeUp } from "@/lib/motion/variants";
@@ -11,6 +11,7 @@ import { safeValidate } from "@/lib/validate";
 import { ChildSchema } from "@/lib/schemas";
 import { getAllStandards as fetchAllStandards } from "@/lib/data/all-standards";
 import { useChildStore } from "@/lib/stores/child-store";
+import { usePlanStore } from "@/lib/stores/plan-store";
 import { getChildAvatarImage } from "@/lib/utils/get-child-avatar";
 import { BookOpen, Newspaper, Type, MessageCircle, BarChart3, Rocket, TrendingUp, Zap, Sprout, Star, FileText, Target, Carrot } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
@@ -90,17 +91,37 @@ function getDateCutoff(range: DateRange): Date | null {
 function useCountUp(target: number, duration = 800) {
   const [value, setValue] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
-  const counted = useRef(false);
+  const prevTarget = useRef(0);
+  const visible = useRef(false);
 
   useEffect(() => {
-    if (counted.current || target === 0) { setValue(target); return; }
     const el = ref.current;
     if (!el) { setValue(target); return; }
 
+    // If already visible, animate from current value to new target
+    if (visible.current) {
+      const from = prevTarget.current;
+      prevTarget.current = target;
+      if (from === target) return;
+      const start = performance.now();
+      let raf: number;
+      function tick(now: number) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        setValue(Math.round(from + (target - from) * eased));
+        if (progress < 1) raf = requestAnimationFrame(tick);
+      }
+      raf = requestAnimationFrame(tick);
+      return () => cancelAnimationFrame(raf);
+    }
+
+    // First time: wait for intersection then animate from 0
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !counted.current) {
-          counted.current = true;
+        if (entry.isIntersecting && !visible.current) {
+          visible.current = true;
+          prevTarget.current = target;
           const start = performance.now();
           function tick(now: number) {
             const elapsed = now - start;
@@ -220,7 +241,8 @@ function AnalyticsDashboard({ child }: { child: Child }) {
   const [dateRange, setDateRange] = useState<DateRange>("all");
   const [practiceResults, setPracticeResults] = useState<PracticeResult[]>([]);
   const [loadingData, setLoadingData] = useState(true);
-  const [userPlan, setUserPlan] = useState<string>("free");
+  const userPlan = usePlanStore((s) => s.plan) ?? "free";
+  const fetchPlan = usePlanStore((s) => s.fetch);
   const storeChildren = useChildStore((s) => s.children);
   const childIndex = storeChildren.findIndex((c) => c.id === child.id);
   const avatarSrc = getChildAvatarImage(child, childIndex === -1 ? 0 : childIndex);
@@ -248,16 +270,7 @@ function AnalyticsDashboard({ child }: { child: Child }) {
     async function fetchResults() {
       const supabase = supabaseBrowser();
 
-      // Fetch user plan
-      const { data: { user } } = await supabase.auth.getUser();
-      if (user) {
-        const { data: profile } = await supabase
-          .from("profiles")
-          .select("plan")
-          .eq("id", user.id)
-          .single();
-        setUserPlan((profile as { plan?: string } | null)?.plan || "free");
-      }
+      fetchPlan();
 
       const { data } = await supabase
         .from("practice_results")
@@ -750,9 +763,10 @@ function StatCard({ label, value, icon }: { label: string; value: number; icon: 
 function AccuracyCard({ accuracy }: { accuracy: number }) {
   const ringColor = accuracy >= 70 ? "#10b981" : accuracy >= 50 ? "#f59e0b" : "#ef4444";
   const circumference = 2 * Math.PI * 28; // r=28
+  const { value: animatedAccuracy, ref } = useCountUp(accuracy);
 
   return (
-    <div className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 text-center shadow-sm">
+    <div ref={ref} className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 text-center shadow-sm">
       <div className="relative w-16 h-16 mx-auto mb-1">
         <svg viewBox="0 0 64 64" className="w-16 h-16 -rotate-90">
           <circle cx="32" cy="32" r="28" fill="none" stroke="currentColor" strokeWidth="4" className="text-zinc-100 dark:text-slate-700" />
@@ -760,13 +774,12 @@ function AccuracyCard({ accuracy }: { accuracy: number }) {
             cx="32" cy="32" r="28" fill="none" stroke={ringColor} strokeWidth="4"
             strokeLinecap="round"
             strokeDasharray={circumference}
-            initial={{ strokeDashoffset: circumference }}
             animate={{ strokeDashoffset: circumference - (circumference * accuracy / 100) }}
-            transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           />
         </svg>
         <span className="absolute inset-0 flex items-center justify-center text-lg font-bold text-zinc-900 dark:text-slate-100">
-          {accuracy}%
+          {animatedAccuracy}%
         </span>
       </div>
       <div className="text-[11px] text-zinc-500 dark:text-slate-400 font-medium">Accuracy</div>
@@ -775,38 +788,85 @@ function AccuracyCard({ accuracy }: { accuracy: number }) {
 }
 
 /* ═══════════════════════════════════════════════════════ */
-/*  Accuracy Chart (pure SVG)                              */
+/*  Accuracy Chart (morphing SVG)                          */
 /* ═══════════════════════════════════════════════════════ */
+
+const MORPH_N = 14;
+const MORPH_MS = 600;
+
+/** Resample variable-length data to a fixed number of evenly-spaced points */
+function resampleChart(
+  data: { label: string; accuracy: number; attempted: number }[],
+  n: number,
+) {
+  if (data.length === 0) return Array.from({ length: n }, () => ({ label: "", accuracy: 0, attempted: 0 }));
+  if (data.length === 1) return Array.from({ length: n }, () => ({ ...data[0] }));
+  return Array.from({ length: n }, (_, i) => {
+    const t = i / (n - 1);
+    const idx = t * (data.length - 1);
+    const lo = Math.floor(idx);
+    const hi = Math.min(lo + 1, data.length - 1);
+    const frac = idx - lo;
+    return {
+      accuracy: data[lo].accuracy + (data[hi].accuracy - data[lo].accuracy) * frac,
+      label: data[Math.round(idx)].label,
+      attempted: data[Math.round(idx)].attempted,
+    };
+  });
+}
+
+function buildPaths(
+  accuracies: number[],
+  padL: number, padT: number, chartW: number, chartH: number,
+) {
+  const pts = accuracies.map((a, i) => ({
+    x: padL + (i / (accuracies.length - 1)) * chartW,
+    y: padT + chartH - (a / 100) * chartH,
+  }));
+  const line = pts.reduce((p, pt, i) => {
+    if (i === 0) return `M ${pt.x} ${pt.y}`;
+    const prev = pts[i - 1];
+    const cx1 = prev.x + (pt.x - prev.x) * 0.4;
+    const cx2 = pt.x - (pt.x - prev.x) * 0.4;
+    return `${p} C ${cx1} ${prev.y}, ${cx2} ${pt.y}, ${pt.x} ${pt.y}`;
+  }, "");
+  const area = `${line} L ${pts[pts.length - 1].x} ${padT + chartH} L ${pts[0].x} ${padT + chartH} Z`;
+  return { pts, line, area };
+}
 
 function AccuracyChart({ data }: { data: { label: string; accuracy: number; attempted: number }[] }) {
   const [hovered, setHovered] = useState<number | null>(null);
-  const W = 600;
-  const H = 220;
-  const PAD_L = 36;
-  const PAD_R = 16;
-  const PAD_T = 28;
-  const PAD_B = 32;
+  const W = 600, H = 220;
+  const PAD_L = 46, PAD_R = 16, PAD_T = 28, PAD_B = 32;
   const chartW = W - PAD_L - PAD_R;
   const chartH = H - PAD_T - PAD_B;
-
-  const maxY = 100;
   const yTicks = [0, 25, 50, 75, 100];
 
-  const points = data.map((d, i) => ({
-    x: PAD_L + (i / Math.max(data.length - 1, 1)) * chartW,
-    y: PAD_T + chartH - (d.accuracy / maxY) * chartH,
-    ...d,
-  }));
+  const resampled = useMemo(() => resampleChart(data, MORPH_N), [data]);
+  const targets = useMemo(() => resampled.map((d) => d.accuracy), [resampled]);
 
-  const linePath = points.reduce((path, pt, i) => {
-    if (i === 0) return `M ${pt.x} ${pt.y}`;
-    const prev = points[i - 1];
-    const cpx1 = prev.x + (pt.x - prev.x) * 0.4;
-    const cpx2 = pt.x - (pt.x - prev.x) * 0.4;
-    return `${path} C ${cpx1} ${prev.y}, ${cpx2} ${pt.y}, ${pt.x} ${pt.y}`;
-  }, "");
+  // Animated accuracies that morph between states
+  const [animated, setAnimated] = useState(targets);
+  const prevRef = useRef(targets);
 
-  const areaPath = `${linePath} L ${points[points.length - 1].x} ${PAD_T + chartH} L ${points[0].x} ${PAD_T + chartH} Z`;
+  useEffect(() => {
+    const from = prevRef.current;
+    const to = targets;
+    prevRef.current = to;
+    if (from.every((v, i) => v === to[i])) { setAnimated(to); return; }
+    const start = performance.now();
+    let raf: number;
+    function tick(now: number) {
+      const t = Math.min((now - start) / MORPH_MS, 1);
+      const e = 1 - Math.pow(1 - t, 3);
+      setAnimated(from.map((f, i) => f + (to[i] - f) * e));
+      if (t < 1) raf = requestAnimationFrame(tick);
+    }
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [targets]);
+
+  const { pts, line, area } = buildPaths(animated, PAD_L, PAD_T, chartW, chartH);
 
   return (
     <div className="w-full overflow-x-auto">
@@ -828,7 +888,7 @@ function AccuracyChart({ data }: { data: { label: string; accuracy: number; atte
 
         {/* Grid lines */}
         {yTicks.map((tick) => {
-          const y = PAD_T + chartH - (tick / maxY) * chartH;
+          const y = PAD_T + chartH - (tick / 100) * chartH;
           return (
             <g key={tick}>
               <line x1={PAD_L} y1={y} x2={W - PAD_R} y2={y} stroke="#f4f4f5" strokeWidth="1" className="dark:stroke-slate-700" />
@@ -840,35 +900,34 @@ function AccuracyChart({ data }: { data: { label: string; accuracy: number; atte
         })}
 
         {/* Area fill */}
-        <path d={areaPath} fill="url(#chartGrad)" />
+        <path d={area} fill="url(#chartGrad)" />
 
-        {/* Line — animated draw */}
-        <motion.path
-          d={linePath}
+        {/* Line */}
+        <path
+          d={line}
           fill="none"
           stroke="#6366f1"
           strokeWidth="2.5"
           strokeLinecap="round"
           strokeLinejoin="round"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{ duration: 1.5, ease: "easeInOut" }}
         />
 
         {/* Hover vertical guide */}
         {hovered !== null && (
           <line
-            x1={points[hovered].x} y1={PAD_T}
-            x2={points[hovered].x} y2={PAD_T + chartH}
+            x1={pts[hovered].x} y1={PAD_T}
+            x2={pts[hovered].x} y2={PAD_T + chartH}
             stroke="#6366f1" strokeWidth="1" strokeDasharray="4 3" opacity="0.4"
           />
         )}
 
         {/* Dots + hit areas */}
-        {points.map((pt, i) => {
+        {pts.map((pt, i) => {
           const isHovered = hovered === i;
-          const isEndpoint = i === 0 || i === points.length - 1;
+          const isEndpoint = i === 0 || i === pts.length - 1;
           const showLabel = isHovered || isEndpoint;
+          const acc = Math.round(animated[i]);
+          const meta = resampled[i];
 
           return (
             <g key={i}>
@@ -890,7 +949,7 @@ function AccuracyChart({ data }: { data: { label: string; accuracy: number; atte
                 className={isHovered ? "fill-indigo-600" : "fill-zinc-400 dark:fill-slate-500"}
                 fontSize="10" fontWeight={isHovered ? "bold" : "normal"}
               >
-                {pt.label}
+                {meta.label}
               </text>
               {/* Tooltip */}
               {showLabel && (
@@ -902,16 +961,16 @@ function AccuracyChart({ data }: { data: { label: string; accuracy: number; atte
                         fill="white" stroke="#e5e7eb" strokeWidth="1" filter="url(#tooltipShadow)"
                       />
                       <text x={pt.x} y={pt.y - 30} textAnchor="middle" className="fill-indigo-700" fontSize="13" fontWeight="bold">
-                        {pt.accuracy}%
+                        {acc}%
                       </text>
                       <text x={pt.x} y={pt.y - 17} textAnchor="middle" className="fill-zinc-400" fontSize="9">
-                        {pt.attempted} questions
+                        {meta.attempted} questions
                       </text>
                     </>
                   )}
                   {!isHovered && isEndpoint && (
                     <text x={pt.x} y={pt.y - 10} textAnchor="middle" className="fill-indigo-600" fontSize="10" fontWeight="bold">
-                      {pt.accuracy}%
+                      {acc}%
                     </text>
                   )}
                 </g>

@@ -12,6 +12,7 @@ import CelebrationOverlay from "@/app/_components/CelebrationOverlay";
 import { ChildCreateSchema, ChildUpdateSchema } from "@/lib/schemas";
 import { BACKGROUND_IMAGES, SHOP_ITEMS } from "@/lib/data/shop-items";
 import { Carrot } from "lucide-react";
+import { usePlanStore } from "@/lib/stores/plan-store";
 
 function displayGrade(grade: string): string {
   if (grade.toLowerCase() === "pre-k") return "Foundational";
@@ -49,7 +50,9 @@ export default function Settings() {
   const [levelChangeChild, setLevelChangeChild] = useState<{ id: string; name: string; newLevel: string } | null>(null);
 
   // Plan
-  const [userPlan, setUserPlan] = useState<string>("free");
+  const userPlan = usePlanStore((s) => s.plan) ?? "free";
+  const fetchPlan = usePlanStore((s) => s.fetch);
+  const setStorePlan = usePlanStore((s) => s.setPlan);
 
   // Promo code
   const [showPromo, setShowPromo] = useState(false);
@@ -92,13 +95,7 @@ export default function Settings() {
       setEmail(user.email || "");
       setUserId(user.id);
 
-      // Fetch plan
-      const { data: profile } = await supabase
-        .from("profiles")
-        .select("plan")
-        .eq("id", user.id)
-        .single();
-      setUserPlan((profile as { plan?: string } | null)?.plan || "free");
+      fetchPlan();
 
       await loadChildren(user.id);
       setLoading(false);
@@ -242,7 +239,7 @@ export default function Settings() {
       const data = await res.json();
       setPromoResult({ success: data.success, message: data.message });
       if (data.success) {
-        setUserPlan("premium");
+        setStorePlan("premium");
       }
     } catch {
       setPromoResult({ success: false, message: "Something went wrong. Please try again." });
@@ -254,7 +251,7 @@ export default function Settings() {
     setResettingPremium(true);
     try {
       await fetch("/api/admin/reset-premium", { method: "POST" });
-      setUserPlan("free");
+      setStorePlan("free");
       setPromoCode("");
       setPromoResult(null);
       setShowPromo(false);

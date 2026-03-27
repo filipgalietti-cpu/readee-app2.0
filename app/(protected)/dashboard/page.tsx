@@ -10,6 +10,8 @@ import { levelNameToGradeKey } from "@/lib/assessment/questions";
 import lessonsData from "@/lib/data/lessons.json";
 import LevelProgressBar, { GRADES } from "@/app/_components/LevelProgressBar";
 import { useChildStore } from "@/lib/stores/child-store";
+import { useSidebarStore } from "@/lib/stores/sidebar-store";
+import { usePlanStore } from "@/lib/stores/plan-store";
 import { safeValidate } from "@/lib/validate";
 import { ChildSchema } from "@/lib/schemas";
 import { staggerContainer, slideUp, staggerFast } from "@/lib/motion/variants";
@@ -129,7 +131,8 @@ export default function Dashboard() {
   const setStoreChildren = useChildStore((s) => s.setChildren);
   const setStoreChildData = useChildStore((s) => s.setChildData);
   const [loading, setLoading] = useState(true);
-  const [userPlan, setUserPlan] = useState<string>("free");
+  const userPlan = usePlanStore((s) => s.plan) ?? "free";
+  const fetchPlan = usePlanStore((s) => s.fetch);
 
   const setChildren = (kids: Child[]) => setStoreChildren(kids);
   const setSelectedChild = (child: Child | null) => setStoreChildData(child);
@@ -149,12 +152,7 @@ export default function Dashboard() {
       }
 
       // Fetch user plan
-      const { data: profile } = await supabase
-        .from("profiles")
-        .select("plan")
-        .eq("id", user.id)
-        .single();
-      setUserPlan((profile as { plan?: string } | null)?.plan || "free");
+      fetchPlan();
 
       const { data, error } = await supabase
         .from("children")
@@ -449,7 +447,8 @@ function ChildDashboard({
   const [lessonProgress, setLessonProgress] = useState<LessonProgress[]>([]);
   const [showCurriculum, setShowCurriculum] = useState(false);
   const [expandedGrade, setExpandedGrade] = useState<string | null>(null);
-  const [userPlan, setUserPlan] = useState<string>("free");
+  const userPlan = usePlanStore((s) => s.plan) ?? "free";
+  const fetchPlan = usePlanStore((s) => s.fetch);
   const setStoreChildren = useChildStore((s) => s.setChildren);
   const setStoreChildData = useChildStore((s) => s.setChildData);
   const childIndex = children.findIndex((c) => c.id === child.id);
@@ -457,7 +456,8 @@ function ChildDashboard({
   const [avatarPickerOpen, setAvatarPickerOpen] = useState(false);
   const [purchases, setPurchases] = useState<ShopPurchase[]>([]);
   const [parentMode, setParentMode] = useState(false);
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const sidebarOpen = useSidebarStore((s) => s.open);
+  const setSidebarOpen = useSidebarStore((s) => s.setOpen);
   const avatarSrc = getChildAvatarImage(currentChild, childIndex);
 
   // Remove main container constraints so sidebar can be flush left
@@ -485,15 +485,7 @@ function ChildDashboard({
       const supabase = supabaseBrowser();
 
       // Fetch user plan
-      const { data: { user } } = await supabase.auth.getUser();
-      if (user) {
-        const { data: profile } = await supabase
-          .from("profiles")
-          .select("plan")
-          .eq("id", user.id)
-          .single();
-        setUserPlan((profile as { plan?: string } | null)?.plan || "free");
-      }
+      fetchPlan();
 
       const { data, error } = await supabase
         .from("assessments")
@@ -706,7 +698,7 @@ function ChildDashboard({
 
     {/* Fixed sidebar (desktop) */}
     <aside
-      className={`hidden lg:flex flex-col fixed top-[76px] left-0 bottom-0 z-30 bg-white/80 backdrop-blur-sm border-r border-zinc-200 transition-[width] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+      className={`hidden lg:flex flex-col fixed top-[76px] left-0 bottom-0 z-30 bg-white dark:bg-slate-900 border-r border-zinc-200 dark:border-slate-700 transition-[width] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${
         sidebarOpen ? "w-[272px]" : "w-[72px]"
       }`}
     >
@@ -756,8 +748,8 @@ function ChildDashboard({
               {/* Main */}
               <div className="space-y-1">
                 <SidebarTooltip label="Dashboard">
-                  <Link href="/dashboard" className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-zinc-100 transition-colors">
-                    <Home className="w-5 h-5 text-zinc-500" strokeWidth={1.5} />
+                  <Link href="/dashboard" className="w-10 h-10 rounded-lg flex items-center justify-center bg-indigo-50 transition-colors">
+                    <Home className="w-5 h-5 text-indigo-500" strokeWidth={1.5} />
                   </Link>
                 </SidebarTooltip>
                 <SidebarTooltip label="Analytics">
@@ -823,7 +815,7 @@ function ChildDashboard({
     {/* Main content with left margin to account for fixed sidebar */}
     <div className={`min-h-screen transition-[margin] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${sidebarOpen ? "lg:ml-[272px]" : "lg:ml-[72px]"}`}>
       <motion.div
-        className="max-w-3xl mx-auto px-4 pb-12"
+        className="max-w-3xl mx-auto px-4 pt-10 pb-12"
         variants={staggerContainer}
         initial="hidden"
         animate="visible"
