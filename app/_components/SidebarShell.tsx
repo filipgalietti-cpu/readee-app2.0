@@ -10,6 +10,10 @@ const HIDDEN_PAGES = new Set([
   "/assessment",
   "/learn",
   "/lesson",
+  "/billing",
+  "/notifications",
+  "/account",
+  "/settings",
 ]);
 
 export default function SidebarShell({ children }: { children: React.ReactNode }) {
