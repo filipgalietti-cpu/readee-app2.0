@@ -298,13 +298,15 @@ function LoginForm() {
 export default function Login() {
   return (
     <Suspense fallback={
-      <div className="flex items-center justify-center min-h-screen" role="status" aria-live="polite">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto" aria-hidden="true"></div>
-          <p className="mt-4 text-gray-600">Loading...</p>
-          <span className="sr-only">Loading login page</span>
+      <AuthCard title="Welcome Back">
+        <div className="space-y-6 animate-pulse">
+          <div className="h-11 bg-zinc-100 rounded-lg" />
+          <div className="flex items-center gap-3"><div className="flex-1 h-px bg-zinc-100" /><div className="w-8 h-4 bg-zinc-100 rounded" /><div className="flex-1 h-px bg-zinc-100" /></div>
+          <div className="space-y-2"><div className="h-4 w-12 bg-zinc-100 rounded" /><div className="h-11 bg-zinc-100 rounded-lg" /></div>
+          <div className="space-y-2"><div className="h-4 w-16 bg-zinc-100 rounded" /><div className="h-11 bg-zinc-100 rounded-lg" /></div>
+          <div className="h-12 bg-zinc-100 rounded-lg" />
         </div>
-      </div>
+      </AuthCard>
     }>
       <LoginForm />
     </Suspense>
