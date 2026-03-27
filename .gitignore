@@ -40,6 +40,7 @@ yarn-error.log*
 !/public/images/dashboard/
 !/public/images/avatars/
 !/public/images/auth-bg.png
+!/public/images/auth-bg.webp
 !/public/images/bunny-hero.png
 /public/audio/
 /scripts/image-progress.json

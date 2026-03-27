@@ -20,7 +20,7 @@ export default function AuthCard({ title, banner, children }: AuthCardProps) {
   return (
     <div
       className="fixed inset-0 flex items-center justify-center px-4 sm:px-6 bg-repeat bg-[length:400px] overflow-y-auto"
-      style={{ backgroundImage: "url('/images/auth-bg.png')" }}
+      style={{ backgroundImage: "url('/images/auth-bg.webp')" }}
     >
       <div className="w-full max-w-md my-8">
         <div
