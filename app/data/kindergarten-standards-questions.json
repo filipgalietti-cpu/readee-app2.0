@@ -504,7 +504,7 @@
         {
           "id": "RL.K.5-Q2",
           "type": "multiple_choice",
-          "prompt": "Twinkle, twinkle, little star / How I wonder what you are / Up above the world so high / Like a diamond in the sky\n\nWhat kind of text is this?",
+          "prompt": "Twinkle, twinkle, little star / How I wonder what you are / Up above the world so high / Like a diamond in the sky\n\nWhat kind of TEXT is this?",
           "choices": [
             "A storybook",
             "A recipe",
