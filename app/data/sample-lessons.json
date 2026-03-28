@@ -1668,9 +1668,9 @@
             "checkmarkDelay": 3000,
             "displayTableRow": {
               "label": "Story",
-              "value": "Once upon a time...",
+              "value": "Starts with \"once upon a time\"",
               "tableHeaders": ["Type", "Clue", "Think..."],
-              "example": "Adventure!",
+              "example": "A whole adventure!",
               "exampleDelay": 3000
             }
           },
@@ -1684,8 +1684,8 @@
             "checkmarkDelay": 3000,
             "displayTableRow": {
               "label": "Poem",
-              "value": "Rhymes at the end",
-              "example": "Song!",
+              "value": "Words sound alike at the end",
+              "example": "A little song!",
               "exampleDelay": 3000
             }
           }
