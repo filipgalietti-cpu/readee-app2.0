@@ -1,13 +1,12 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { createClient } from "@/lib/supabase/server";
-import { Target, Puzzle, TrendingUp, Type, Ear, BookOpen, MessageCircle, Brain, GraduationCap, Zap, Home } from "lucide-react";
-import type { ReactNode } from "react";
+import { BookOpen, PenLine, Trophy, Users, Heart, GraduationCap, Sparkles, School } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Learn how Readee uses the Science of Reading to help your child become a confident reader.",
+    "Meet the team behind Readee — built by a reading specialist and developer to help every child become a confident reader.",
 };
 
 export default async function About() {
@@ -15,204 +14,219 @@ export default async function About() {
   const {
     data: { user },
   } = await supabase.auth.getUser();
+
   return (
     <div className="max-w-4xl mx-auto pb-16 px-4">
-      {/* Hero */}
-      <div className="text-center py-16 space-y-4">
-        <h1 className="text-4xl font-bold text-zinc-900 tracking-tight">
-          How Readee Helps Your Child Read
+      {/* ── Hero ── */}
+      <div className="text-center py-16 space-y-5">
+        <div className="w-24 h-24 mx-auto mb-2">
+          <img
+            src="/readee-logo.png"
+            alt="Readee"
+            width={612}
+            height={408}
+            className="w-full h-auto"
+          />
+        </div>
+        <h1 className="text-4xl sm:text-5xl font-extrabold text-zinc-900 tracking-tight">
+          Unlock Reading with{" "}
+          <span className="bg-gradient-to-r from-indigo-600 to-violet-500 bg-clip-text text-transparent">
+            Readee
+          </span>
         </h1>
-        <p className="text-lg text-zinc-600 max-w-2xl mx-auto leading-relaxed">
-          Readee uses the Science of Reading — the most researched, proven
-          approach to teaching kids how to read — to build a personalized
-          learning path that actually works.
+        <p className="text-lg sm:text-xl text-zinc-500 max-w-xl mx-auto leading-relaxed font-medium">
+          Built by Educators, for Education.
         </p>
       </div>
 
-      {/* What Makes Readee Different */}
-      <section className="rounded-2xl bg-gradient-to-br from-indigo-50 to-violet-50 border border-indigo-100 p-8 space-y-6 mb-8">
-        <h2 className="text-2xl font-bold text-zinc-900 tracking-tight">
-          What Makes Readee Different
-        </h2>
+      {/* ── Our Story ── */}
+      <section className="rounded-2xl bg-gradient-to-br from-indigo-50 to-violet-50 border border-indigo-100 p-8 sm:p-10 space-y-5 mb-8">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-white border border-indigo-100 flex items-center justify-center">
+            <Heart className="w-5 h-5 text-indigo-500" strokeWidth={1.5} />
+          </div>
+          <h2 className="text-2xl font-bold text-zinc-900 tracking-tight">
+            Our Story
+          </h2>
+        </div>
+        <div className="space-y-4 text-[15px] text-zinc-700 leading-relaxed">
+          <p>
+            Readee was founded by <strong>Filip Galietti</strong> and{" "}
+            <strong>Jennifer Klingerman</strong>, a certified reading specialist
+            and 3rd grade teacher. Jennifer saw firsthand how kids were falling
+            behind in reading — and knew a better approach was possible.
+          </p>
+          <p>
+            Together, we set out to build an app that brings real teaching
+            methodology to the screen. Not flashy gimmicks or mindless
+            screen time — but structured, science-backed lessons that actually
+            move the needle.
+          </p>
+          <p className="text-indigo-700 font-semibold">
+            We&apos;re a small team of two with a big passion for reading.
+          </p>
+        </div>
+      </section>
+
+      {/* ── Our Approach ── */}
+      <section className="rounded-2xl border border-zinc-200 bg-white p-8 sm:p-10 space-y-6 mb-8">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center">
+            <Sparkles className="w-5 h-5 text-indigo-500" strokeWidth={1.5} />
+          </div>
+          <div>
+            <h2 className="text-2xl font-bold text-zinc-900 tracking-tight">
+              Our Approach
+            </h2>
+            <p className="text-sm text-zinc-500 mt-0.5">
+              Three steps, one confident reader.
+            </p>
+          </div>
+        </div>
+
         <div className="grid sm:grid-cols-3 gap-4">
           {[
             {
-              icon: <Target className="w-6 h-6 text-indigo-500" strokeWidth={1.5} />,
-              title: "Meets Them Where They Are",
-              desc: "A diagnostic assessment finds your child's exact reading level so every lesson is just right — never too easy, never too hard.",
-            },
-            {
-              icon: <Puzzle className="w-6 h-6 text-indigo-500" strokeWidth={1.5} />,
-              title: "Structured & Sequential",
-              desc: "Skills build on each other in a logical order. No skipping ahead, no gaps — just steady, confident progress.",
-            },
-            {
-              icon: <TrendingUp className="w-6 h-6 text-indigo-500" strokeWidth={1.5} />,
-              title: "Real, Measurable Growth",
-              desc: "Track carrots earned, completed lessons, and mastered skills. You'll always know exactly where your child stands.",
-            },
-          ].map((item) => (
-            <div
-              key={item.title}
-              className="rounded-xl bg-white border border-indigo-100 p-5"
-            >
-              <div className="mb-3">{item.icon}</div>
-              <h3 className="font-semibold text-zinc-900 text-sm mb-1">
-                {item.title}
-              </h3>
-              <p className="text-sm text-zinc-600 leading-relaxed">
-                {item.desc}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* The Science of Reading */}
-      <section className="rounded-2xl border border-zinc-200 bg-white p-8 space-y-6 mb-8">
-        <div>
-          <h2 className="text-2xl font-bold text-zinc-900 tracking-tight">
-            Built on the Science of Reading
-          </h2>
-          <p className="text-zinc-500 mt-1 text-sm">
-            Decades of research show how children actually learn to read.
-            Every Readee lesson weaves these five pillars together.
-          </p>
-        </div>
-
-        <div className="grid sm:grid-cols-2 gap-4">
-          {[
-            {
-              icon: <Type className="w-5 h-5 text-indigo-500" strokeWidth={1.5} />,
-              title: "Systematic Phonics",
-              desc: "Learning the sounds letters make and how to blend them into words — the foundation of reading.",
-            },
-            {
-              icon: <Ear className="w-5 h-5 text-indigo-500" strokeWidth={1.5} />,
-              title: "Phonemic Awareness",
-              desc: "Hearing and playing with the individual sounds in words, like rhyming and segmenting.",
-            },
-            {
-              icon: <BookOpen className="w-5 h-5 text-indigo-500" strokeWidth={1.5} />,
-              title: "Fluency",
-              desc: "Reading smoothly and with expression so kids can focus on understanding, not just decoding.",
-            },
-            {
-              icon: <MessageCircle className="w-5 h-5 text-indigo-500" strokeWidth={1.5} />,
-              title: "Vocabulary",
-              desc: "Building a rich word bank so new words in stories feel familiar and meaningful.",
-            },
-            {
-              icon: <Brain className="w-5 h-5 text-indigo-500" strokeWidth={1.5} />,
-              title: "Comprehension",
-              desc: "Understanding what they read — finding main ideas, making connections, and thinking critically.",
-            },
-          ].map((item) => (
-            <div
-              key={item.title}
-              className="rounded-xl border border-zinc-100 bg-zinc-50/50 p-4"
-            >
-              <div className="flex items-center gap-3 mb-2">
-                {item.icon}
-                <h3 className="font-semibold text-zinc-900 text-sm">
-                  {item.title}
-                </h3>
-              </div>
-              <p className="text-sm text-zinc-600 leading-relaxed">
-                {item.desc}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* How Each Lesson Works */}
-      <section className="rounded-2xl border border-zinc-200 bg-white p-8 space-y-6 mb-8">
-        <h2 className="text-2xl font-bold text-zinc-900 tracking-tight">
-          How Each Lesson Works
-        </h2>
-        <div className="space-y-5">
-          {[
-            {
               step: 1,
-              title: "Learn",
-              desc: "Your child is introduced to a new skill — like a letter sound, a blending pattern, or a sight word — with clear, simple instruction.",
+              icon: BookOpen,
+              title: "Lesson",
+              color: "from-indigo-600 to-indigo-500",
+              desc: "Teacher-led instruction with hours of recorded educator dialogue. Real teaching, on screen.",
             },
             {
               step: 2,
+              icon: PenLine,
               title: "Practice",
-              desc: "Interactive questions reinforce the new skill. Immediate feedback helps your child correct mistakes and build confidence.",
+              color: "from-violet-600 to-violet-500",
+              desc: "Guided practice problems to reinforce what was learned. Immediate feedback builds confidence.",
             },
             {
               step: 3,
-              title: "Read",
-              desc: "A short story puts the skill into context. Comprehension checks make sure your child understands what they've read.",
-            },
-          ].map((item) => (
-            <div key={item.step} className="flex gap-4">
-              <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-600 to-violet-500 text-white flex items-center justify-center font-bold text-sm">
-                {item.step}
-              </div>
-              <div>
-                <h3 className="font-semibold text-zinc-900">{item.title}</h3>
-                <p className="text-sm text-zinc-600 mt-1 leading-relaxed">
-                  {item.desc}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-        <p className="text-sm text-zinc-500 leading-relaxed">
-          Each lesson takes about 10 minutes — perfect for building a daily
-          reading habit without screen fatigue.
-        </p>
-      </section>
-
-      {/* Who It's For */}
-      <section className="rounded-2xl border border-zinc-200 bg-white p-8 space-y-6 mb-8">
-        <h2 className="text-2xl font-bold text-zinc-900 tracking-tight">
-          Designed for Ages 5–10
-        </h2>
-        <div className="grid sm:grid-cols-2 gap-4">
-          {[
-            {
-              icon: <GraduationCap className="w-6 h-6 text-indigo-500" strokeWidth={1.5} />,
-              title: "K through 4th Grade",
-              desc: "Covers the critical years when reading skills are built — from letter sounds to independent reading.",
-            },
-            {
-              icon: <Zap className="w-6 h-6 text-indigo-500" strokeWidth={1.5} />,
-              title: "Kids Who Struggle with Reading",
-              desc: "Structured, systematic lessons that meet them where they are and build confidence step by step.",
-            },
-            {
-              icon: <BookOpen className="w-6 h-6 text-indigo-500" strokeWidth={1.5} />,
-              title: "Kids Who Need Extra Practice",
-              desc: "A supplement to school that reinforces skills with engaging, bite-sized lessons at home.",
-            },
-            {
-              icon: <Home className="w-6 h-6 text-indigo-500" strokeWidth={1.5} />,
-              title: "Homeschool Families",
-              desc: "A complete reading curriculum your child can follow with your guidance.",
+              icon: Trophy,
+              title: "Excel",
+              color: "from-purple-600 to-purple-500",
+              desc: "Mastery activities that push kids to the next level. Prove it, own it, move on.",
             },
           ].map((item) => (
             <div
-              key={item.title}
-              className="rounded-xl border border-zinc-100 bg-zinc-50/50 p-5"
+              key={item.step}
+              className="rounded-xl border border-zinc-100 bg-zinc-50/50 p-5 text-center space-y-3"
             >
-              <div className="mb-2">{item.icon}</div>
-              <h3 className="font-semibold text-zinc-900 text-sm mb-1">
-                {item.title}
-              </h3>
+              <div
+                className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${item.color} text-white flex items-center justify-center mx-auto shadow-md`}
+              >
+                <item.icon className="w-6 h-6" strokeWidth={1.5} />
+              </div>
+              <div>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-400">
+                  Step {item.step}
+                </span>
+                <h3 className="font-bold text-zinc-900 text-lg">{item.title}</h3>
+              </div>
               <p className="text-sm text-zinc-600 leading-relaxed">
                 {item.desc}
               </p>
             </div>
           ))}
         </div>
+
+        <div className="rounded-xl bg-indigo-50/60 border border-indigo-100 p-4">
+          <p className="text-sm text-indigo-800 leading-relaxed text-center">
+            Every student starts with a <strong>diagnostic assessment</strong> so
+            we meet them where they are, then moves through Lesson &rarr; Practice
+            &rarr; Excel at their own pace.
+          </p>
+        </div>
       </section>
 
-      {/* CTA */}
+      {/* ── Who Readee Is For ── */}
+      <section className="rounded-2xl border border-zinc-200 bg-white p-8 sm:p-10 space-y-6 mb-8">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center">
+            <Users className="w-5 h-5 text-indigo-500" strokeWidth={1.5} />
+          </div>
+          <h2 className="text-2xl font-bold text-zinc-900 tracking-tight">
+            Who Readee Is For
+          </h2>
+        </div>
+
+        <div className="grid sm:grid-cols-3 gap-4">
+          {[
+            {
+              icon: GraduationCap,
+              title: "Early Readers",
+              subtitle: "Pre-K through 4th Grade",
+              desc: "Covering the critical years when reading skills are built — from letter sounds to independent reading.",
+            },
+            {
+              icon: Heart,
+              title: "Learning Differences",
+              subtitle: "Dyslexia & Reading Disabilities",
+              desc: "Structured, systematic lessons designed to support children who learn differently.",
+            },
+            {
+              icon: Trophy,
+              title: "Families Who Want More",
+              subtitle: "At or Above Grade Level",
+              desc: "Whether your child needs to catch up or get ahead, Readee can get them there.",
+            },
+          ].map((item) => (
+            <div
+              key={item.title}
+              className="rounded-xl border border-zinc-100 bg-zinc-50/50 p-5 space-y-2"
+            >
+              <div className="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center">
+                <item.icon
+                  className="w-5 h-5 text-indigo-500"
+                  strokeWidth={1.5}
+                />
+              </div>
+              <h3 className="font-semibold text-zinc-900">{item.title}</h3>
+              <p className="text-xs font-medium text-indigo-500">
+                {item.subtitle}
+              </p>
+              <p className="text-sm text-zinc-600 leading-relaxed">
+                {item.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <div className="rounded-xl bg-zinc-50 border border-zinc-100 p-4">
+          <p className="text-sm text-zinc-600 leading-relaxed text-center">
+            Our program is grounded in the{" "}
+            <strong className="text-zinc-900">Science of Reading</strong> and
+            aligned to{" "}
+            <strong className="text-zinc-900">
+              Common Core ELA standards
+            </strong>
+            .
+          </p>
+        </div>
+      </section>
+
+      {/* ── Coming Soon: Readee Classroom ── */}
+      <section className="rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 p-8 sm:p-10 mb-8 text-center space-y-3">
+        <div className="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center mx-auto">
+          <School className="w-6 h-6 text-white" strokeWidth={1.5} />
+        </div>
+        <h2 className="text-2xl font-bold text-white tracking-tight">
+          Readee Classroom — Coming Soon
+        </h2>
+        <p className="text-indigo-100 max-w-lg mx-auto leading-relaxed">
+          Bringing Readee to schools and classrooms everywhere. Teacher
+          dashboards, student progress tracking, and structured phonics
+          instruction — built for the way classrooms actually work.
+        </p>
+        <Link
+          href="/teachers"
+          className="inline-block mt-2 px-6 py-2.5 rounded-xl bg-white text-indigo-700 font-bold text-sm hover:bg-indigo-50 transition-colors shadow-md"
+        >
+          Learn More for Educators
+        </Link>
+      </section>
+
+      {/* ── CTA ── */}
       {user ? (
         <div className="text-center py-8 space-y-4">
           <h2 className="text-2xl font-bold text-zinc-900 tracking-tight">
@@ -241,7 +255,7 @@ export default async function About() {
             href="/signup"
             className="inline-block px-8 py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white font-bold text-lg hover:from-indigo-700 hover:to-violet-600 transition-all shadow-lg"
           >
-            Sign Up for Free!
+            Sign Up for Free
           </Link>
         </div>
       )}
