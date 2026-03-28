@@ -559,7 +559,7 @@ function LearnSession({
         {/* Question + replay */}
         <motion.div variants={fadeUp} className="mb-3">
           <div className="flex items-center gap-2 max-w-[600px] mx-auto justify-center">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white leading-snug text-center">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white leading-snug text-center whitespace-pre-line">
               {highlightQuestion(question)}
             </h2>
             <button

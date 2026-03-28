@@ -470,7 +470,7 @@
         {
           "id": "RL.K.5-Q1",
           "type": "category_sort",
-          "prompt": "Sort each text into the right category. Is it part of a storybook? Or a poem?",
+          "prompt": "Sort each text into the right category.\nIs it a STORYBOOK? Or a POEM?",
           "categories": [
             "Storybook",
             "Poem"
