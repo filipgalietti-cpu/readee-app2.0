@@ -1509,21 +1509,22 @@
             "audioFile": "audio/lessons/RL.K.5/S1a.mp3",
             "ttsScript": "Did you know there are different kinds of books? Some tell stories and some have poems!",
             "interaction": "Heading fades in. Bookshelf visible.",
-            "displayText": ""
+            "displayText": "There are different kinds of books!",
+            "displayDelay": 1500
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.K.5/S1b.mp3",
             "ttsScript": "Learning to tell them apart makes reading even more fun!",
-            "interaction": "'Storybooks' and 'Poems' labels appear on different sides.",
+            "interaction": "'Storybooks' and 'Poems' labels appear after TTS mentions them.",
             "displayParts": [
               {
                 "text": "Storybooks",
-                "delay": 500
+                "delay": 2000
               },
               {
                 "text": "Poems",
-                "delay": 2500
+                "delay": 4000
               }
             ]
           },
@@ -1532,7 +1533,8 @@
             "audioFile": "audio/lessons/RL.K.5/S1c.mp3",
             "ttsScript": "Let's find out how to tell if something is a story or a poem!",
             "interaction": "Book icons sort into two groups. Tap to continue.",
-            "displayText": ""
+            "displayText": "Let's find out!",
+            "displayDelay": 2500
           }
         ],
         "heading": "Let's Learn About Types of Books!",
@@ -1548,7 +1550,8 @@
             "audioFile": "audio/lessons/RL.K.5/S2a.mp3",
             "ttsScript": "A storybook tells a story with characters and events from beginning to end.",
             "interaction": "Heading appears. Storybook vs poem illustration.",
-            "displayText": ""
+            "displayText": "A storybook tells a story!",
+            "displayDelay": 1500
           },
           {
             "sub": "b",
@@ -1556,7 +1559,7 @@
             "ttsScript": "It usually has a beginning, a middle, and an end. Like an adventure!",
             "interaction": "Table row: Storybook = Beginning → Middle → End.",
             "displayText": "Storybook",
-            "displayDelay": 3250,
+            "displayDelay": 2000,
             "displayTableRow": {
               "label": "Storybook",
               "value": "Beginning → Middle → End"
@@ -1568,7 +1571,7 @@
             "ttsScript": "A poem uses special words that sometimes rhyme! Poems can be short and fun to read out loud.",
             "interaction": "Table row: Poem = Rhymes & Special Words.",
             "displayText": "Poem",
-            "displayDelay": 4320,
+            "displayDelay": 2000,
             "displayTableRow": {
               "label": "Poem",
               "value": "Rhymes & Special Words"
@@ -1579,7 +1582,8 @@
             "audioFile": "audio/lessons/RL.K.5/S2d.mp3",
             "ttsScript": "So storybooks are longer adventures, and poems are short and musical!",
             "interaction": "Both pills side by side. Tap to continue.",
-            "displayText": ""
+            "displayText": "Storybooks = adventures, Poems = musical!",
+            "displayDelay": 1500
           }
         ],
         "heading": "Storybooks and Poems",
@@ -1594,31 +1598,41 @@
             "sub": "a",
             "audioFile": "audio/lessons/RL.K.5/S3a.mp3",
             "ttsScript": "Let me show you an example of each!",
-            "interaction": "Heading appears. Two cards ready to reveal.",
-            "displayText": ""
+            "interaction": "Heading appears. Table ready to reveal.",
+            "displayText": "Let's look at examples!",
+            "displayDelay": 1500
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.K.5/S3b.mp3",
             "ttsScript": "Once upon a time, a frog found a crown. That's from a storybook! It's telling a story.",
-            "interaction": "Story card reveals: 'Once upon a time...' Pill: [Storybook!] in blue.",
-            "displayText": "Storybook!",
-            "displayDelay": 4080
+            "interaction": "Table row: 'Once upon a time...' = Story.",
+            "displayText": "Story",
+            "displayDelay": 5000,
+            "displayTableRow": {
+              "label": "Story",
+              "value": "Once upon a time..."
+            }
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RL.K.5/S3c.mp3",
             "ttsScript": "Roses are red, violets are blue. That's a poem! Hear how red and blue kinda sound alike?",
-            "interaction": "Poem card reveals: 'Roses are red...' Pill: [Poem!] in pink.",
-            "displayText": "Poem!",
-            "displayDelay": 4080
+            "interaction": "Table row: 'Roses are red...' = Poem.",
+            "displayText": "Poem",
+            "displayDelay": 5000,
+            "displayTableRow": {
+              "label": "Poem",
+              "value": "Roses are red, violets are blue..."
+            }
           },
           {
             "sub": "d",
             "audioFile": "audio/lessons/RL.K.5/S3d.mp3",
             "ttsScript": "See? You can totally tell the difference! You're so smart!",
-            "interaction": "Both pills glow. Stars float up.",
-            "displayText": ""
+            "interaction": "Both rows glow. Stars float up.",
+            "displayText": "You can tell the difference!",
+            "displayDelay": 1500
           }
         ],
         "heading": "Let's See the Difference!",
@@ -1634,23 +1648,32 @@
             "audioFile": "audio/lessons/RL.K.5/S4a.mp3",
             "ttsScript": "Here's an easy way to tell storybooks and poems apart.",
             "interaction": "Heading with sparkle. Signpost illustration.",
-            "displayText": ""
+            "displayText": "An easy way to remember!",
+            "displayDelay": 1500
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.K.5/S4b.mp3",
             "ttsScript": "Storybooks usually start with words like 'once upon a time.' They're longer and tell a whole adventure.",
-            "interaction": "Pill: [Once upon a time... = Story!] pops in.",
-            "displayText": "Once upon a time... are Story!",
-            "displayDelay": 4080
+            "interaction": "Table row: Once upon a time... = Story!",
+            "displayText": "Story",
+            "displayDelay": 4000,
+            "displayTableRow": {
+              "label": "Story",
+              "value": "Once upon a time..."
+            }
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RL.K.5/S4c.mp3",
             "ttsScript": "Poems are shorter and have words that sound alike at the end of each line. Like a little song!",
-            "interaction": "Pill: [Rhymes at the end = Poem!] pops in. Tap to continue.",
-            "displayText": "Rhymes at the end are Poem!",
-            "displayDelay": 4560
+            "interaction": "Table row: Rhymes at the end = Poem!",
+            "displayText": "Poem",
+            "displayDelay": 4500,
+            "displayTableRow": {
+              "label": "Poem",
+              "value": "Rhymes at the end"
+            }
           }
         ],
         "heading": "A Helpful Trick!",
