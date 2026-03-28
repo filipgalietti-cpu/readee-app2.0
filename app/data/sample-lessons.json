@@ -1511,12 +1511,12 @@
             "interaction": "Heading fades in. Storybooks + Poems appear when TTS says them.",
             "displayParts": [
               {
-                "text": "Storybooks",
-                "delay": 3500
+                "text": "Story",
+                "delay": 4000
               },
               {
-                "text": "Poems",
-                "delay": 5000
+                "text": "Poem",
+                "delay": 5500
               }
             ]
           },
