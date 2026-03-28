@@ -326,6 +326,13 @@ export function CategorySort({
         })}
       </div>
 
+      {/* Tap hint */}
+      {bankItems.length > 0 && !answered && result === null && (
+        <p className="text-center text-xs text-zinc-400 dark:text-zinc-500">
+          Tap a tile to hear what it sounds like
+        </p>
+      )}
+
       {/* Draggable item bank */}
       <div className="flex flex-wrap gap-2 justify-center min-h-[48px]">
         <AnimatePresence>
