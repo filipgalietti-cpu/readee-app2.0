@@ -840,8 +840,12 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
         >
           {/* ── Image ── */}
           {(() => {
-            const contentItems = steps.filter(s => s.displayText || (s.displayParts && s.displayParts.length > 0) || s.displayTableRow).length;
-            const imgH = isPracticeIntro ? "max-h-[45vh]" : contentItems >= 3 ? "max-h-[25vh]" : "max-h-[38vh]";
+            const visibleContent = steps.filter((s, i) =>
+              (textsVisible.has(i) && s.displayText) ||
+              (s.displayParts && s.displayParts.some((_, p) => partsVisible.has(`${i}-${p}`))) ||
+              (textsVisible.has(i) && s.displayTableRow)
+            ).length;
+            const imgH = isPracticeIntro ? "max-h-[45vh]" : visibleContent >= 3 ? "max-h-[25vh]" : "max-h-[38vh]";
             return (
               <div className="flex-shrink-0 flex justify-center px-6 pt-1">
                 <LoadingImage

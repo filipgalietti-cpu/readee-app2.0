@@ -1508,33 +1508,31 @@
             "sub": "a",
             "audioFile": "audio/lessons/RL.K.5/S1a.mp3",
             "ttsScript": "Did you know there are different kinds of books? Some tell stories and some have poems!",
-            "interaction": "Heading fades in. Bookshelf visible.",
-            "displayText": "There are different kinds of books!",
-            "displayDelay": 1500
+            "interaction": "Heading fades in. Storybooks + Poems appear when TTS says them.",
+            "displayParts": [
+              {
+                "text": "Storybooks",
+                "delay": 3500
+              },
+              {
+                "text": "Poems",
+                "delay": 5000
+              }
+            ]
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.K.5/S1b.mp3",
             "ttsScript": "Learning to tell them apart makes reading even more fun!",
-            "interaction": "'Storybooks' and 'Poems' labels appear after TTS mentions them.",
-            "displayParts": [
-              {
-                "text": "Storybooks",
-                "delay": 2000
-              },
-              {
-                "text": "Poems",
-                "delay": 4000
-              }
-            ]
+            "interaction": "Labels stay visible. Tap to continue.",
+            "displayText": ""
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RL.K.5/S1c.mp3",
             "ttsScript": "Let's find out how to tell if something is a story or a poem!",
             "interaction": "Book icons sort into two groups. Tap to continue.",
-            "displayText": "Let's find out!",
-            "displayDelay": 2500
+            "displayText": ""
           }
         ],
         "heading": "Let's Learn About Types of Books!",
@@ -1550,19 +1548,21 @@
             "audioFile": "audio/lessons/RL.K.5/S2a.mp3",
             "ttsScript": "A storybook tells a story with characters and events from beginning to end.",
             "interaction": "Heading appears. Storybook vs poem illustration.",
-            "displayText": "A storybook tells a story!",
-            "displayDelay": 1500
+            "displayText": ""
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.K.5/S2b.mp3",
             "ttsScript": "It usually has a beginning, a middle, and an end. Like an adventure!",
-            "interaction": "Table row: Storybook = Beginning → Middle → End.",
+            "interaction": "Table row: Storybook = Characters & Adventures.",
             "displayText": "Storybook",
             "displayDelay": 2000,
             "displayTableRow": {
               "label": "Storybook",
-              "value": "Beginning → Middle → End"
+              "value": "Characters & Adventures",
+              "tableHeaders": ["Type", "What It Has", "Sounds Like"],
+              "example": "Beginning → Middle → End",
+              "exampleDelay": 2000
             }
           },
           {
@@ -1574,16 +1574,17 @@
             "displayDelay": 2000,
             "displayTableRow": {
               "label": "Poem",
-              "value": "Rhymes & Special Words"
+              "value": "Rhymes & Special Words",
+              "example": "Short & Musical",
+              "exampleDelay": 2500
             }
           },
           {
             "sub": "d",
             "audioFile": "audio/lessons/RL.K.5/S2d.mp3",
             "ttsScript": "So storybooks are longer adventures, and poems are short and musical!",
-            "interaction": "Both pills side by side. Tap to continue.",
-            "displayText": "Storybooks = adventures, Poems = musical!",
-            "displayDelay": 1500
+            "interaction": "Both rows visible. Tap to continue.",
+            "displayText": ""
           }
         ],
         "heading": "Storybooks and Poems",
@@ -1599,40 +1600,45 @@
             "audioFile": "audio/lessons/RL.K.5/S3a.mp3",
             "ttsScript": "Let me show you an example of each!",
             "interaction": "Heading appears. Table ready to reveal.",
-            "displayText": "Let's look at examples!",
-            "displayDelay": 1500
+            "displayText": ""
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.K.5/S3b.mp3",
             "ttsScript": "Once upon a time, a frog found a crown. That's from a storybook! It's telling a story.",
-            "interaction": "Table row: 'Once upon a time...' = Story.",
+            "interaction": "Table row with checkmark after completion.",
             "displayText": "Story",
-            "displayDelay": 5000,
+            "displayDelay": 4000,
+            "checkmarkDelay": 2000,
             "displayTableRow": {
               "label": "Story",
-              "value": "Once upon a time..."
+              "value": "Once upon a time...",
+              "tableHeaders": ["Type", "Clue", "It's an..."],
+              "example": "Adventure!",
+              "exampleDelay": 2500
             }
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RL.K.5/S3c.mp3",
             "ttsScript": "Roses are red, violets are blue. That's a poem! Hear how red and blue kinda sound alike?",
-            "interaction": "Table row: 'Roses are red...' = Poem.",
+            "interaction": "Table row with checkmark after completion.",
             "displayText": "Poem",
-            "displayDelay": 5000,
+            "displayDelay": 4000,
+            "checkmarkDelay": 2000,
             "displayTableRow": {
               "label": "Poem",
-              "value": "Roses are red, violets are blue..."
+              "value": "Roses are red...",
+              "example": "Song!",
+              "exampleDelay": 2500
             }
           },
           {
             "sub": "d",
             "audioFile": "audio/lessons/RL.K.5/S3d.mp3",
             "ttsScript": "See? You can totally tell the difference! You're so smart!",
-            "interaction": "Both rows glow. Stars float up.",
-            "displayText": "You can tell the difference!",
-            "displayDelay": 1500
+            "interaction": "Both rows glow with checkmarks. Stars float up.",
+            "displayText": ""
           }
         ],
         "heading": "Let's See the Difference!",
@@ -1648,31 +1654,37 @@
             "audioFile": "audio/lessons/RL.K.5/S4a.mp3",
             "ttsScript": "Here's an easy way to tell storybooks and poems apart.",
             "interaction": "Heading with sparkle. Signpost illustration.",
-            "displayText": "An easy way to remember!",
-            "displayDelay": 1500
+            "displayText": ""
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.K.5/S4b.mp3",
             "ttsScript": "Storybooks usually start with words like 'once upon a time.' They're longer and tell a whole adventure.",
-            "interaction": "Table row: Once upon a time... = Story!",
+            "interaction": "Table row with 3 columns.",
             "displayText": "Story",
-            "displayDelay": 4000,
+            "displayDelay": 3500,
+            "checkmarkDelay": 3000,
             "displayTableRow": {
               "label": "Story",
-              "value": "Once upon a time..."
+              "value": "Once upon a time...",
+              "tableHeaders": ["Type", "Clue", "Think..."],
+              "example": "Adventure!",
+              "exampleDelay": 3000
             }
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RL.K.5/S4c.mp3",
             "ttsScript": "Poems are shorter and have words that sound alike at the end of each line. Like a little song!",
-            "interaction": "Table row: Rhymes at the end = Poem!",
+            "interaction": "Table row with 3 columns.",
             "displayText": "Poem",
-            "displayDelay": 4500,
+            "displayDelay": 3500,
+            "checkmarkDelay": 3000,
             "displayTableRow": {
               "label": "Poem",
-              "value": "Rhymes at the end"
+              "value": "Rhymes at the end",
+              "example": "Song!",
+              "exampleDelay": 3000
             }
           }
         ],
