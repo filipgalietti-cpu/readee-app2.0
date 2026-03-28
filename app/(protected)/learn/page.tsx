@@ -305,7 +305,12 @@ function LearnSession({
   useEffect(() => {
     if (phase !== "practice" || showFeedback || !audioUnlocked || !q) return;
     const url = q.audio_url;
-    if (url) playUrl(url);
+    if (url && q.type === "category_sort") {
+      const hintUrl = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audio/ui/category-sort-hint.mp3`;
+      playSequence([{ url }, { delayMs: 400 }, { url: hintUrl }]);
+    } else if (url) {
+      playUrl(url);
+    }
     return () => { stop(); };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentIdx, phase, showFeedback, audioUnlocked]);
