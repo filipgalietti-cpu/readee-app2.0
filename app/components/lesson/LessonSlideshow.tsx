@@ -652,10 +652,10 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
     return map;
   }, [steps]);
 
-  // When a step with checkmarkTriggerDelay becomes visible, schedule ALL checkmarks in order
+  // When a step with checkmarkTriggerDelay becomes visible OR starts playing, schedule ALL checkmarks in order
   useEffect(() => {
     steps.forEach((step, i) => {
-      if (step.checkmarkTriggerDelay === undefined || !textsVisible.has(i)) return;
+      if (step.checkmarkTriggerDelay === undefined || (!textsVisible.has(i) && playingStep !== i)) return;
       const triggerKey = `trigger-${i}`;
       if (scheduledFeedbackRef.current.has(triggerKey)) return;
       scheduledFeedbackRef.current.add(triggerKey);
@@ -679,7 +679,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
       });
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [textsVisible, steps]);
+  }, [textsVisible, steps, playingStep]);
 
   const renderText = (step: Step, i: number) => {
     if (!textsVisible.has(i) || !step.displayText) return null;
@@ -897,16 +897,17 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
                       .map((s, idx) => (s.displayTableRow ? { step: s, idx } : null))
                       .filter(Boolean) as { step: Step; idx: number }[];
                     const anyVisible = tableSteps.some((ts) => textsVisible.has(ts.idx));
-                    if (!anyVisible) return null;
                     const hasExamples = tableSteps.some((ts) => ts.step.displayTableRow?.example);
                     const headers = tableSteps.find((ts) => ts.step.displayTableRow?.tableHeaders)?.step.displayTableRow?.tableHeaders;
+                    // Show headers immediately when slide loads if headers exist, even before rows
+                    if (!anyVisible && !headers) return null;
                     const cols3 = "8.5rem 1fr 1fr";
                     const cols2 = "8.5rem 1fr";
                     const gridCols = hasExamples ? cols3 : cols2;
                     return (
                       <div key={`${currentSlide}-table`} className="w-full space-y-4">
                         {/* Header row */}
-                        {hasExamples && headers && (
+                        {headers && (
                           <div
                             className="grid items-center gap-x-4 pb-2 border-b-2 border-indigo-200 dark:border-indigo-700"
                             style={{ gridTemplateColumns: gridCols }}
@@ -924,19 +925,37 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
                           const row = ts.step.displayTableRow!;
                           const colorIdx = tableSteps.indexOf(ts);
                           const exampleShown = examplesVisible.has(ts.idx);
+                          const checkKey = `${ts.idx}-check`;
+                          const rowHighlighted = partsVisible.has(checkKey);
                           return (
                             <motion.div
                               key={`${currentSlide}-table-${ts.idx}`}
                               initial={{ opacity: 0, y: 10 }}
-                              animate={{ opacity: 1, y: 0 }}
+                              animate={{
+                                opacity: 1,
+                                y: 0,
+                                scale: rowHighlighted ? [1, 1.03, 1] : 1,
+                              }}
                               transition={{ type: "spring", stiffness: 400, damping: 20 }}
-                              className="grid items-center gap-x-4"
+                              className={`grid items-center gap-x-4 rounded-xl px-2 py-1 transition-colors duration-500 ${
+                                rowHighlighted ? "bg-emerald-50 dark:bg-emerald-950/20 ring-2 ring-emerald-300 dark:ring-emerald-700" : ""
+                              }`}
                               style={{ gridTemplateColumns: gridCols }}
                             >
                               <span
                                 className={`rounded-xl py-3 text-lg font-bold shadow-sm text-center ${PILL_COLORS[colorIdx % PILL_COLORS.length]}`}
                               >
                                 {row.label}
+                                {rowHighlighted && (
+                                  <motion.span
+                                    initial={{ scale: 0 }}
+                                    animate={{ scale: 1 }}
+                                    transition={{ type: "spring", stiffness: 500, damping: 15 }}
+                                    className="ml-1.5 inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-500 text-white text-xs"
+                                  >
+                                    ✓
+                                  </motion.span>
+                                )}
                               </span>
                               <span className="text-lg font-semibold text-zinc-700 dark:text-zinc-200">
                                 {row.value}

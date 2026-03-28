@@ -1547,44 +1547,46 @@
             "sub": "a",
             "audioFile": "audio/lessons/RL.K.5/S2a.mp3",
             "ttsScript": "A storybook tells a story with characters and events from beginning to end.",
-            "interaction": "Heading appears. Storybook vs poem illustration.",
+            "interaction": "Heading appears. Table headers visible from the jump.",
             "displayText": ""
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.K.5/S2b.mp3",
             "ttsScript": "It usually has a beginning, a middle, and an end. Like an adventure!",
-            "interaction": "Table row: Storybook = Characters & Adventures.",
+            "interaction": "Storybook row fills in immediately when step starts.",
             "displayText": "Storybook",
-            "displayDelay": 2000,
+            "displayDelay": 0,
             "displayTableRow": {
               "label": "Storybook",
               "value": "Characters & Adventures",
               "tableHeaders": ["Type", "What It Has", "Sounds Like"],
               "example": "Beginning → Middle → End",
-              "exampleDelay": 2000
+              "exampleDelay": 2500
             }
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RL.K.5/S2c.mp3",
             "ttsScript": "A poem uses special words that sometimes rhyme! Poems can be short and fun to read out loud.",
-            "interaction": "Table row: Poem = Rhymes & Special Words.",
+            "interaction": "Poem row fills in immediately when step starts.",
             "displayText": "Poem",
-            "displayDelay": 2000,
+            "displayDelay": 0,
             "displayTableRow": {
               "label": "Poem",
               "value": "Rhymes & Special Words",
               "example": "Short & Musical",
-              "exampleDelay": 2500
+              "exampleDelay": 3000
             }
           },
           {
             "sub": "d",
             "audioFile": "audio/lessons/RL.K.5/S2d.mp3",
             "ttsScript": "So storybooks are longer adventures, and poems are short and musical!",
-            "interaction": "Both rows visible. Tap to continue.",
-            "displayText": ""
+            "interaction": "Highlights Storybook at 1.5s, Poem at 3.5s via checkmark trigger.",
+            "displayText": "",
+            "checkmarkTriggerDelay": 1500,
+            "checkmarkTriggerStagger": 2000
           }
         ],
         "heading": "Storybooks and Poems",
