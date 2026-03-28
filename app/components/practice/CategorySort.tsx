@@ -1,10 +1,8 @@
 "use client";
 
-import { useState, useCallback, useRef, useEffect } from "react";
+import { useState, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Howl } from "howler";
-
-const HINT_AUDIO_URL = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audio/ui/category-sort-hint.mp3`;
 
 interface CategorySortProps {
   prompt: string;
@@ -109,13 +107,6 @@ export function CategorySort({
   );
 
   const allPlaced = bankItems.length === 0;
-
-  // Play hint audio once on mount
-  useEffect(() => {
-    const hint = new Howl({ src: [HINT_AUDIO_URL], volume: 0.8 });
-    const timer = setTimeout(() => hint.play(), 600);
-    return () => { clearTimeout(timer); hint.unload(); };
-  }, []);
 
   /** Flash a bucket green/red briefly */
   const flashBucket = useCallback((cat: string, type: "correct" | "incorrect") => {
