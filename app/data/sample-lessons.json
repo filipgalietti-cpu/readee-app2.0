@@ -1766,26 +1766,15 @@
             "sub": "b",
             "audioFile": "audio/lessons/RL.K.6/S1b.mp3",
             "ttsScript": "One person writes the words. Another person draws the pictures. They work together!",
-            "interaction": "Two pills appear timed to audio, each bouncing when spoken.",
-            "displayText": "",
+            "interaction": "Author and Illustrator pills appear when TTS says each.",
             "displayParts": [
               {
-                "text": "Writes Words",
-                "delay": 1500
+                "text": "Author",
+                "delay": 1200
               },
               {
-                "text": "Draws Pictures",
-                "delay": 3500
-              }
-            ],
-            "highlightPills": [
-              {
-                "pill": 0,
-                "delay": 1500
-              },
-              {
-                "pill": 1,
-                "delay": 3500
+                "text": "Illustrator",
+                "delay": 3200
               }
             ]
           },
@@ -1793,7 +1782,7 @@
             "sub": "c",
             "audioFile": "audio/lessons/RL.K.6/S1c.mp3",
             "ttsScript": "Let's find out what we call these amazing people!",
-            "interaction": "Question marks float above the characters. Tap to continue.",
+            "interaction": "Tap to continue.",
             "displayText": ""
           }
         ],
@@ -1809,39 +1798,46 @@
             "sub": "a",
             "audioFile": "audio/lessons/RL.K.6/S2a.mp3",
             "ttsScript": "The person who writes the story is called the author.",
-            "interaction": "Heading appears. Author/illustrator illustration.",
+            "interaction": "Table headers visible from jump. Author/illustrator illustration.",
             "displayText": ""
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.K.6/S2b.mp3",
             "ttsScript": "The author thinks up the characters, the setting, and everything that happens!",
-            "interaction": "Table row: Author = Writes the words.",
+            "interaction": "Author row fills in when step starts.",
             "displayText": "Author",
-            "displayDelay": 500,
+            "displayDelay": 0,
             "displayTableRow": {
               "label": "Author",
-              "value": "Writes the words"
+              "value": "Writes the words",
+              "tableHeaders": ["Who", "What They Do", "Think..."],
+              "example": "Characters & story",
+              "exampleDelay": 2500
             }
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RL.K.6/S2c.mp3",
             "ttsScript": "The person who draws the pictures is called the illustrator.",
-            "interaction": "Table row: Illustrator = Draws the pictures.",
+            "interaction": "Illustrator row fills in when step starts.",
             "displayText": "Illustrator",
-            "displayDelay": 3500,
+            "displayDelay": 0,
             "displayTableRow": {
               "label": "Illustrator",
-              "value": "Draws the pictures"
+              "value": "Draws the pictures",
+              "example": "Art & colors",
+              "exampleDelay": 2500
             }
           },
           {
             "sub": "d",
             "audioFile": "audio/lessons/RL.K.6/S2d.mp3",
             "ttsScript": "Together, the author and illustrator make a whole book! Pretty amazing, right?",
-            "interaction": "Both pills glow together with a book icon between them.",
-            "displayText": ""
+            "interaction": "Highlights Author at 1.5s, Illustrator at 3.5s.",
+            "displayText": "",
+            "checkmarkTriggerDelay": 1500,
+            "checkmarkTriggerStagger": 2000
           }
         ],
         "heading": "Authors and Illustrators",
@@ -1856,30 +1852,45 @@
             "sub": "a",
             "audioFile": "audio/lessons/RL.K.6/S3a.mp3",
             "ttsScript": "Look at a book. Can you find who made it?",
-            "interaction": "Heading appears. Book cover illustration.",
+            "interaction": "Heading appears. Table ready.",
             "displayText": ""
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.K.6/S3b.mp3",
             "ttsScript": "On the cover, it says 'Written by' — that's the author! They wrote all the words.",
-            "interaction": "Pill: [Written by = Author] highlights with checkmark.",
-            "displayText": "Written by means Author",
-            "displayDelay": 3840
+            "interaction": "Table row: Written by = Author with checkmark.",
+            "displayText": "Author",
+            "displayDelay": 4000,
+            "checkmarkDelay": 2000,
+            "displayTableRow": {
+              "label": "Author",
+              "value": "\"Written by\"",
+              "tableHeaders": ["Who", "Look For", "They Made..."],
+              "example": "The words!",
+              "exampleDelay": 2500
+            }
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RL.K.6/S3c.mp3",
             "ttsScript": "And it says 'Illustrated by' — that's the illustrator! They drew all the pictures.",
-            "interaction": "Pill: [Illustrated by = Illustrator] highlights with checkmark.",
-            "displayText": "Illustrated by means Illustrator",
-            "displayDelay": 3500
+            "interaction": "Table row: Illustrated by = Illustrator with checkmark.",
+            "displayText": "Illustrator",
+            "displayDelay": 4000,
+            "checkmarkDelay": 2000,
+            "displayTableRow": {
+              "label": "Illustrator",
+              "value": "\"Illustrated by\"",
+              "example": "The pictures!",
+              "exampleDelay": 2500
+            }
           },
           {
             "sub": "d",
             "audioFile": "audio/lessons/RL.K.6/S3d.mp3",
             "ttsScript": "Now you know how to find out who made any book. Detective skills!",
-            "interaction": "Stars and sparkle effect.",
+            "interaction": "Both rows glow. Stars float up.",
             "displayText": ""
           }
         ],
@@ -1895,28 +1906,43 @@
             "sub": "a",
             "audioFile": "audio/lessons/RL.K.6/S4a.mp3",
             "ttsScript": "Next time you pick up a book, look at the cover!",
-            "interaction": "Heading with sparkle.",
+            "interaction": "Heading with sparkle. Table headers from jump.",
             "displayText": ""
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.K.6/S4b.mp3",
             "ttsScript": "Find the name after 'by' or 'written by' — that's the author.",
-            "interaction": "Pill: [Look for 'Written by'] pops in.",
-            "displayText": "Look for 'Written by'",
-            "displayDelay": 3000
+            "interaction": "Table row: Author = Look for 'Written by'.",
+            "displayText": "Author",
+            "displayDelay": 3000,
+            "checkmarkDelay": 3000,
+            "displayTableRow": {
+              "label": "Author",
+              "value": "Look for \"Written by\"",
+              "tableHeaders": ["Who", "How to Find Them", "They Made..."],
+              "example": "The story!",
+              "exampleDelay": 2500
+            }
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RL.K.6/S4c.mp3",
             "ttsScript": "Find the name after 'illustrated by' or 'pictures by' — that's the illustrator. Easy!",
-            "interaction": "Pill: [Look for 'Illustrated by'] pops in. Tap to continue.",
-            "displayText": "Look for 'Illustrated by'",
-            "displayDelay": 3500
+            "interaction": "Table row: Illustrator = Look for 'Illustrated by'.",
+            "displayText": "Illustrator",
+            "displayDelay": 3500,
+            "checkmarkDelay": 3000,
+            "displayTableRow": {
+              "label": "Illustrator",
+              "value": "Look for \"Illustrated by\"",
+              "example": "The pictures!",
+              "exampleDelay": 3000
+            }
           }
         ],
         "heading": "A Helpful Trick!",
-        "imagePrompt": "A cartoon child holding an open storybook, with two thought bubbles above — one showing a person writing at a desk, the other showing a person painting at an easel. Both thought bubbles sparkle. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A cartoon magnifying glass hovering over the bottom of a book cover, with sparkles highlighting where the author and illustrator names would be. A happy cartoon bunny detective with a small hat peeks from behind the book. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RL.K.6/S4.png"
       },
       {
