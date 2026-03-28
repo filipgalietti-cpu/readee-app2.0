@@ -62,6 +62,22 @@ export default function NavAuth() {
             if (p?.display_name) setUserName(p.display_name);
           });
 
+        // Populate child store if empty so avatar shows
+        if (useChildStore.getState().children.length === 0) {
+          supabase
+            .from("children")
+            .select("*")
+            .eq("parent_id", uid)
+            .order("created_at", { ascending: true })
+            .then(({ data: kids }) => {
+              if (kids && kids.length > 0) {
+                const store = useChildStore.getState();
+                store.setChildren(kids as any);
+                if (!store.childData) store.setChildData(kids[0] as any);
+              }
+            });
+        }
+
         // Fetch notifications
         supabase
           .from("notifications")
