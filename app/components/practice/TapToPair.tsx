@@ -12,6 +12,8 @@ interface TapToPairProps {
   answered: boolean;
   onAnswer: (isCorrect: boolean, userAnswer: string) => void;
   onPlayItem?: (word: string) => void;
+  /** In assessment mode, all pairings are accepted (no rejection on wrong match) */
+  assessmentMode?: boolean;
 }
 
 const LEFT_COLORS = [
@@ -57,6 +59,7 @@ export function TapToPair({
   answered,
   onAnswer,
   onPlayItem,
+  assessmentMode = false,
 }: TapToPairProps) {
   const [selectedLeft, setSelectedLeft] = useState<string | null>(null);
   const [selectedRight, setSelectedRight] = useState<string | null>(null);
@@ -107,15 +110,16 @@ export function TapToPair({
   const completeMatch = useCallback(
     (left: string, right: string) => {
       const isCorrect = correctPairs[left] === right;
-      if (isCorrect) {
-        // Don't play here — the tap handler already played the word
-        const newMatches = [...matches, { left, right, correct: true }];
+      if (isCorrect || assessmentMode) {
+        const newMatches = [...matches, { left, right, correct: isCorrect }];
         setMatches(newMatches);
         setSelectedLeft(null);
         setSelectedRight(null);
 
-        setFlashingPair({ left, right });
-        setTimeout(() => setFlashingPair(null), 600);
+        if (!assessmentMode) {
+          setFlashingPair({ left, right });
+          setTimeout(() => setFlashingPair(null), 600);
+        }
 
         if (newMatches.length === leftItems.length) {
           setTimeout(() => {
@@ -123,7 +127,7 @@ export function TapToPair({
             const allCorrect = newMatches.every((m) => m.correct);
             const answer = newMatches.map((m) => `${m.left}→${m.right}`).join(", ");
             onAnswer(allCorrect, answer);
-          }, 2000);
+          }, assessmentMode ? 500 : 2000);
         }
       } else {
         // Wrong match — shake the second-tapped side

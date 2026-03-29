@@ -728,6 +728,7 @@ function AssessmentContent() {
             correctPairs={q.correct_pairs}
             answered={false}
             onAnswer={handleInteractiveAnswer}
+            assessmentMode
           />
         )}
 
