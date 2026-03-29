@@ -437,9 +437,9 @@ function AssessmentContent() {
         >
           {/* Bunny peeking from bottom-left of card */}
           <motion.div
-            className="absolute -bottom-6 -left-16 z-10 hidden sm:block"
-            initial={{ opacity: 0, x: -20, rotate: -15 }}
-            animate={{ opacity: 1, x: 0, rotate: -8 }}
+            className="absolute -bottom-8 -left-16 z-10 hidden sm:block"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.6, type: "spring", bounce: 0.4 }}
           >
             <Image
@@ -447,7 +447,7 @@ function AssessmentContent() {
               alt="Readee bunny"
               width={818}
               height={1436}
-              className="drop-shadow-[0_4px_12px_rgba(0,0,0,0.1)] w-[75px] sm:w-[90px] h-auto"
+              className="drop-shadow-[0_4px_12px_rgba(0,0,0,0.1)] w-[100px] sm:w-[120px] h-auto"
             />
           </motion.div>
 
