@@ -698,6 +698,7 @@ function AssessmentContent() {
             items={q.items}
             answered={false}
             onAnswer={handleInteractiveAnswer}
+            assessmentMode
           />
         )}
 

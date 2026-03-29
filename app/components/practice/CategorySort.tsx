@@ -14,6 +14,8 @@ interface CategorySortProps {
   onCorrectPlace?: () => void;
   onIncorrectPlace?: () => void;
   onPlayItem?: (word: string) => void;
+  /** In assessment mode, all placements are accepted (no rejection on wrong bucket) */
+  assessmentMode?: boolean;
 }
 
 const BUCKET_STYLES = [
@@ -86,6 +88,7 @@ export function CategorySort({
   onCorrectPlace,
   onIncorrectPlace,
   onPlayItem,
+  assessmentMode = false,
 }: CategorySortProps) {
   const bucketRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const bankItemRefs = useRef<Record<string, HTMLDivElement | null>>({});
@@ -152,13 +155,16 @@ export function CategorySort({
       const cat = findOverlappingBucket(item);
       if (cat) {
         const correctItems = categoryItems[cat] ?? [];
-        if (correctItems.includes(item)) {
+        const isCorrectPlacement = correctItems.includes(item);
+        if (assessmentMode || isCorrectPlacement) {
           setBuckets((prev) => ({
             ...prev,
             [cat]: [...prev[cat], item],
           }));
-          flashBucket(cat, "correct");
-          onCorrectPlace?.();
+          if (!assessmentMode) {
+            flashBucket(cat, "correct");
+            onCorrectPlace?.();
+          }
         } else {
           flashBucket(cat, "incorrect");
           onIncorrectPlace?.();
@@ -196,13 +202,16 @@ export function CategorySort({
     (cat: string) => {
       if (!selectedBankItem || answered || result !== null) return;
       const correctItems = categoryItems[cat] ?? [];
-      if (correctItems.includes(selectedBankItem)) {
+      const isCorrectPlacement = correctItems.includes(selectedBankItem);
+      if (assessmentMode || isCorrectPlacement) {
         setBuckets((prev) => ({
           ...prev,
           [cat]: [...prev[cat], selectedBankItem],
         }));
-        flashBucket(cat, "correct");
-        onCorrectPlace?.();
+        if (!assessmentMode) {
+          flashBucket(cat, "correct");
+          onCorrectPlace?.();
+        }
       } else {
         flashBucket(cat, "incorrect");
         onIncorrectPlace?.();
