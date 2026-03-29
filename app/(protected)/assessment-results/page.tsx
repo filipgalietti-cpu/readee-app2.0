@@ -9,7 +9,7 @@ import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
 import { grades, gradeToKey, type GradeKey } from "@/lib/assessment/questions";
 import {
-  ClipboardCheck, TrendingUp, TrendingDown, Minus,
+  ClipboardCheck,
   BarChart3, CheckCircle2, XCircle, RotateCcw, ChevronDown,
 } from "lucide-react";
 
@@ -41,16 +41,14 @@ for (const q of manifestRaw as any[]) {
 
 /* ── Helpers ───────────────────────────────────────── */
 
-function placementIcon(gradeKey: GradeKey, gradeTested: string) {
-  const testedKey = gradeToKey(gradeTested);
-  const gradeOrder = ["pre-k", "kindergarten", "1st", "2nd", "3rd", "4th"];
-  const placedIdx = gradeOrder.indexOf(gradeKey);
-  const testedIdx = gradeOrder.indexOf(testedKey);
-
-  if (placedIdx > testedIdx) return { icon: TrendingUp, label: "Above Grade Level", color: "text-emerald-600 bg-emerald-50" };
-  if (placedIdx < testedIdx) return { icon: TrendingDown, label: "Below Grade Level", color: "text-amber-600 bg-amber-50" };
-  return { icon: Minus, label: "On Grade Level", color: "text-indigo-600 bg-indigo-50" };
-}
+const LEVEL_STEPS = [
+  { key: "pre-k", label: "Emerging Reader", gradeLabel: "Pre-K", color: "#f59e0b" },
+  { key: "kindergarten", label: "Beginning Reader", gradeLabel: "Kindergarten", color: "#f97316" },
+  { key: "1st", label: "Developing Reader", gradeLabel: "1st Grade", color: "#8b5cf6" },
+  { key: "2nd", label: "Growing Reader", gradeLabel: "2nd Grade", color: "#6366f1" },
+  { key: "3rd", label: "Independent Reader", gradeLabel: "3rd Grade", color: "#3b82f6" },
+  { key: "4th", label: "Advanced Reader", gradeLabel: "4th Grade", color: "#10b981" },
+];
 
 function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString("en-US", {
@@ -150,19 +148,13 @@ function AssessmentResultsContent() {
 
   const gk = gradeToKey(assessment.grade_tested) as GradeKey;
   const gradeLabel = grades[gk]?.grade_label || assessment.grade_tested;
-  const placement = placementIcon(
-    gradeToKey(assessment.reading_level_placed === "Emerging Reader" ? "pre-k"
-      : assessment.reading_level_placed === "Beginning Reader" ? "kindergarten"
-      : assessment.reading_level_placed === "Developing Reader" ? "1st"
-      : assessment.reading_level_placed === "Growing Reader" ? "2nd"
-      : assessment.reading_level_placed === "Independent Reader" ? "3rd"
-      : "4th") as GradeKey,
-    assessment.grade_tested
-  );
-  const PlacementIcon = placement.icon;
 
   const totalCorrect = assessment.answers.filter((a) => a.is_correct).length;
   const totalQuestions = assessment.answers.length;
+
+  // Find where the child placed on the meter
+  const placedIdx = LEVEL_STEPS.findIndex((s) => s.label === assessment.reading_level_placed);
+  const testedIdx = LEVEL_STEPS.findIndex((s) => s.key === gradeToKey(assessment.grade_tested));
 
   // Group answers by type
   const byType: Record<string, { correct: number; total: number }> = {};
@@ -197,40 +189,63 @@ function AssessmentResultsContent() {
         </p>
       </motion.div>
 
-      {/* Score + Level cards */}
+      {/* Reading Level Meter */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 }}
-        className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+        className="rounded-2xl bg-white shadow-md p-6"
       >
-        {/* Reading Level */}
-        <div className="rounded-2xl overflow-hidden shadow-md">
-          <div
-            className="px-6 py-6 text-center text-white"
-            style={{ background: "linear-gradient(135deg, #818cf8, #a78bfa, #c4b5fd)" }}
-          >
-            <p className="text-white text-xs font-medium uppercase tracking-wider mb-1">Reading Level</p>
-            <p className="text-2xl font-extrabold">{assessment.reading_level_placed}</p>
-          </div>
-          <div className="px-6 py-3 bg-white flex items-center justify-center gap-2">
-            <PlacementIcon className={`w-4 h-4 ${placement.color.split(" ")[0]}`} />
-            <span className={`text-sm font-semibold ${placement.color.split(" ")[0]}`}>
-              {placement.label}
-            </span>
-          </div>
-        </div>
+        <p className="text-xs font-medium text-zinc-400 uppercase tracking-wider text-center mb-1">
+          Reading Level
+        </p>
+        <p className="text-2xl font-extrabold text-zinc-900 text-center mb-1">
+          {assessment.reading_level_placed}
+        </p>
+        <p className="text-sm text-zinc-500 text-center mb-6">
+          {assessment.score_percent}% &middot; {totalCorrect} of {totalQuestions} correct &middot; Tested at {gradeLabel}
+        </p>
 
-        {/* Score */}
-        <div className="rounded-2xl bg-white shadow-md p-6 text-center">
-          <p className="text-xs font-medium text-zinc-400 uppercase tracking-wider mb-1">Score</p>
-          <p className="text-4xl font-extrabold text-zinc-900">{assessment.score_percent}%</p>
-          <p className="text-sm text-zinc-500 mt-1">
-            {totalCorrect} of {totalQuestions} correct
-          </p>
-          <p className="text-xs text-zinc-400 mt-2">
-            Tested at {gradeLabel} level
-          </p>
+        {/* Meter */}
+        <div className="relative">
+          {/* Track */}
+          <div className="flex gap-1">
+            {LEVEL_STEPS.map((step, i) => {
+              const isPlaced = i === placedIdx;
+              const isTested = i === testedIdx;
+              const isPast = i <= placedIdx;
+              return (
+                <div key={step.key} className="flex-1 flex flex-col items-center">
+                  {/* Bar segment */}
+                  <div
+                    className={`w-full h-3 rounded-full transition-all duration-500 ${
+                      isPast ? "" : "bg-zinc-100"
+                    }`}
+                    style={isPast ? { backgroundColor: step.color } : undefined}
+                  />
+                  {/* Marker */}
+                  {isPlaced && (
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ delay: 0.4, type: "spring", bounce: 0.5 }}
+                      className="w-5 h-5 -mt-4 rounded-full border-[3px] border-white shadow-md"
+                      style={{ backgroundColor: step.color }}
+                    />
+                  )}
+                  {/* Labels */}
+                  <p className={`text-[10px] mt-2 text-center leading-tight ${
+                    isPlaced ? "font-bold text-zinc-900" : "text-zinc-400"
+                  }`}>
+                    {step.gradeLabel}
+                  </p>
+                  {isTested && !isPlaced && (
+                    <p className="text-[9px] text-indigo-400 font-medium">tested</p>
+                  )}
+                </div>
+              );
+            })}
+          </div>
         </div>
       </motion.div>
 
