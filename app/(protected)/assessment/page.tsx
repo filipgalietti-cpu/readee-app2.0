@@ -669,7 +669,6 @@ function AssessmentContent() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {q.choices.map((choice, i) => {
               const isSelected = selectedChoice === choice;
-              const letters = ["A", "B", "C", "D"];
               const color = CHOICE_COLORS[i % CHOICE_COLORS.length];
 
               return (
@@ -684,14 +683,7 @@ function AssessmentContent() {
                     disabled:cursor-default
                   `}
                 >
-                  <div className="flex items-center gap-3">
-                    <div
-                      className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold flex-shrink-0 text-white ${color.badge}`}
-                    >
-                      {letters[i]}
-                    </div>
-                    <span className={`font-medium ${color.text}`}>{choice}</span>
-                  </div>
+                  <span className={`font-semibold text-base ${color.text}`}>{choice}</span>
                 </button>
               );
             })}
