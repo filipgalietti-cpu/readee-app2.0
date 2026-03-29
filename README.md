@@ -33,8 +33,18 @@ Six custom interactive formats beyond standard multiple choice:
 * **Sound Machine** — phoneme identification with audio playback
 * **Space Insertion** — tap between words to add missing spaces
 
-### Assessment System
-Diagnostic placement assessment that scores children and assigns the right reading level. Covers all 5 levels with score-based placement logic (80%+ = grade level, 50–79% = one below, <50% = two below).
+### Placement Test (`/assessment`)
+Full diagnostic placement test that determines a child's reading level on first signup. 59 questions across K–4th grade using all 6 interactive types with audio narration and illustrations. No right/wrong feedback during the test — answers are recorded silently. Weighted scoring gives partial credit for category sort and word builder questions. Animated "calculating" transition before revealing results.
+
+**Results Page** (`/assessment-results`) — parent-facing dashboard with:
+* Reading level meter showing placement across K–4th grade
+* Animated score counters and skill breakdown bars
+* Three skill categories: Phonics & Word Skills, Reading Comprehension, Vocabulary & Grammar
+* Collapsible question-by-question detail view
+* Plain-English reading level descriptions
+* Retake option
+
+Placement logic: 80%+ = on grade, 50–79% = one below, <50% = two below.
 
 ### Audio Narration
 Every question has TTS audio (Gemini, Autonoe voice) — both the question prompt and the hint. Children can listen independently without needing a parent to read. Phoneme audio covers all 45 sounds (26 letters + digraphs/vowel variants) with isolated sound production.
@@ -78,6 +88,7 @@ Stories unlocked via progress milestones. Page-by-page rendering with audio high
 
 ### Audit Tools
 * `/question-audit` — holistic question review (image, audio, text, answers)
+* `/assessment-audit` — QA tool for all 59 placement test questions
 * `/phoneme-audit` — play, rate, and export CSV for all 45 phoneme sounds
 * `/interactive-audit` — verify all interactive question types
 * `/k-audit` — kindergarten-specific lesson audit
