@@ -191,7 +191,7 @@ export function TapToPair({
               y1={line.y1}
               x2={line.x2}
               y2={line.y2}
-              stroke={line.correct ? "#10b981" : "#ef4444"}
+              stroke={assessmentMode ? "#818cf8" : line.correct ? "#10b981" : "#ef4444"}
               strokeWidth={3}
               strokeLinecap="round"
               initial={{ pathLength: 0 }}
