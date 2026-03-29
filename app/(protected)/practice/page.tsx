@@ -3,7 +3,6 @@
 import { Suspense, useEffect, useState, useMemo, useCallback, useRef } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 import { LoadingImage } from "@/app/components/ui/LoadingImage";
 import { motion, AnimatePresence } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
@@ -707,29 +706,6 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
         </div>
 
         <div className="w-full max-w-sm relative z-10">
-          {/* ── Bunny mascot ── */}
-          <motion.div
-            className="flex justify-center mb-[-20px] relative z-20"
-            variants={popIn}
-            initial="hidden"
-            animate="visible"
-            transition={{ type: "spring", stiffness: 300, damping: 15, delay: 0.1 }}
-          >
-            <motion.div
-              animate={{ y: [0, -6, 0] }}
-              transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <Image
-                src="/images/bunny-hero.png"
-                alt="Readee bunny"
-                width={140}
-                height={140}
-                className="drop-shadow-lg w-[120px] h-[120px] sm:w-[140px] sm:h-[140px]"
-                priority
-              />
-            </motion.div>
-          </motion.div>
-
           {/* ── Elevated card ── */}
           <motion.div
             className="bg-white dark:bg-slate-800 rounded-3xl shadow-xl overflow-hidden"
