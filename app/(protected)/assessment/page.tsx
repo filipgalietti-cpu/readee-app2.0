@@ -270,12 +270,7 @@ function AssessmentContent() {
     if (phase !== "quiz" || !audioReady || !questions.length) return;
     const q = questions[currentIdx];
     if (q.audio_url) {
-      if (q.type === "category_sort") {
-        const hintUrl = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audio/ui/category-sort-hint.mp3`;
-        playSequence([{ url: q.audio_url }, { delayMs: 400 }, { url: hintUrl }]);
-      } else {
-        playUrl(q.audio_url);
-      }
+      playUrl(q.audio_url);
     }
     return () => { stop(); };
     // eslint-disable-next-line react-hooks/exhaustive-deps
