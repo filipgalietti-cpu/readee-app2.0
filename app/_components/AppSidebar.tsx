@@ -21,7 +21,7 @@ function getNavSections(childId: string | null) {
       label: "Main",
       items: [
         { href: "/dashboard", icon: Home, label: "Dashboard" },
-        { href: `/assessment${q}`, icon: ClipboardCheck, label: "Placement Test", emphasis: true },
+        { href: `/assessment-results${q}`, icon: ClipboardCheck, label: "Placement Test" },
         { href: `/analytics${q}`, icon: BarChart3, label: "Analytics" },
       ],
     },
