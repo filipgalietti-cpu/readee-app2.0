@@ -913,7 +913,7 @@ function AssessmentContent() {
           </motion.div>
 
           <motion.p
-            className="text-zinc-500 text-base max-w-xs mx-auto"
+            className="text-zinc-900 text-base max-w-xs mx-auto font-medium"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8 }}
