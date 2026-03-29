@@ -752,6 +752,16 @@ function ChildDashboard({
                     <Home className="w-5 h-5 text-indigo-500" strokeWidth={1.5} />
                   </Link>
                 </SidebarTooltip>
+                <SidebarTooltip label={hasAssessment ? "Placement Test Results" : "Take Placement Test"}>
+                  <Link
+                    href={hasAssessment ? `/assessment-results?child=${child.id}` : `/assessment?child=${child.id}`}
+                    className={`w-10 h-10 rounded-lg flex items-center justify-center transition-colors ${
+                      !hasAssessment ? "bg-indigo-50" : "hover:bg-zinc-100"
+                    }`}
+                  >
+                    <ClipboardCheck className={`w-5 h-5 ${!hasAssessment ? "text-indigo-500" : "text-zinc-500"}`} strokeWidth={1.5} />
+                  </Link>
+                </SidebarTooltip>
                 <SidebarTooltip label="Analytics">
                   <Link href={`/analytics?child=${child.id}`} className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-zinc-100 transition-colors">
                     <BarChart3 className="w-5 h-5 text-zinc-500" strokeWidth={1.5} />
