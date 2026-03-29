@@ -69,6 +69,8 @@ interface AnswerRecord {
   selected: string;
   correct: string;
   is_correct: boolean;
+  /** 0-1 partial credit for weighted types (category_sort, word_builder) */
+  score_weight?: number;
 }
 
 /* ── Build merged questions from manifest + bank ───────── */
@@ -305,11 +307,15 @@ function AssessmentContent() {
       setSaving(true);
       setPhase("calculating");
 
-      const correct = finalAnswers.filter((a) => a.is_correct).length;
-      const pct = Math.round((correct / finalAnswers.length) * 100);
+      // Weighted scoring: category_sort and word_builder use partial credit
+      const totalScore = finalAnswers.reduce((sum, a) => {
+        if (a.score_weight !== undefined) return sum + a.score_weight;
+        return sum + (a.is_correct ? 1 : 0);
+      }, 0);
+      const pct = Math.round((totalScore / finalAnswers.length) * 100);
       const placement = getPlacement(pct, gradeKey);
 
-      setScore(correct);
+      setScore(finalAnswers.filter((a) => a.is_correct).length);
       setLevelName(placement.levelName);
 
       // Confetti
@@ -391,19 +397,44 @@ function AssessmentContent() {
   const handleInteractiveAnswer = useCallback(
     (isCorrect: boolean, answer: string) => {
       const q = questions[currentIdx];
-      if (!q) return; // guard against out-of-bounds
+      if (!q) return;
 
       let correctStr = q.correct || "";
+      let scoreWeight: number | undefined;
+
       if (q.type === "category_sort" && q.categoryItems) {
         correctStr = Object.entries(q.categoryItems)
           .map(([cat, items]) => `${cat}: ${items.join(", ")}`)
           .join(" | ");
+        // Partial credit: count items in correct buckets
+        const totalItems = q.items.length;
+        if (totalItems > 0) {
+          // Parse the answer string "Colors: red, blue | Not Colors: run" to count correct placements
+          let correctCount = 0;
+          const parts = answer.split(" | ");
+          for (const part of parts) {
+            const colonIdx = part.indexOf(": ");
+            if (colonIdx === -1) continue;
+            const cat = part.substring(0, colonIdx);
+            const placedItems = part.substring(colonIdx + 2).split(", ").filter(Boolean);
+            const correctItems = q.categoryItems[cat] ?? [];
+            for (const item of placedItems) {
+              if (correctItems.includes(item)) correctCount++;
+            }
+          }
+          scoreWeight = correctCount / totalItems;
+        }
       } else if (q.type === "tap_to_pair") {
         correctStr = Object.entries(q.correct_pairs)
           .map(([l, r]) => `${l}->${r}`)
           .join(", ");
       } else if (q.type === "word_builder") {
         correctStr = q.valid_words.join(", ");
+        // Partial credit: count valid words found out of total valid
+        const attempted = answer.split(", ").filter(Boolean);
+        const validLower = q.valid_words.map((w) => w.toLowerCase());
+        const validFound = attempted.filter((w) => validLower.includes(w.toLowerCase()));
+        scoreWeight = q.valid_words.length > 0 ? validFound.length / q.valid_words.length : 0;
       }
 
       const record: AnswerRecord = {
@@ -411,6 +442,7 @@ function AssessmentContent() {
         selected: answer,
         correct: correctStr,
         is_correct: isCorrect,
+        score_weight: scoreWeight,
       };
 
       advance(record);
@@ -727,6 +759,7 @@ function AssessmentContent() {
             correct={missingCorrectWord}
             answered={false}
             onAnswer={handleInteractiveAnswer}
+            assessmentMode
           />
         )}
 
@@ -739,6 +772,7 @@ function AssessmentContent() {
             correctSentence={q.correct}
             answered={false}
             onAnswer={handleInteractiveAnswer}
+            assessmentMode
           />
         )}
 

@@ -15,6 +15,8 @@ interface MissingWordProps {
   questionId?: string;
   answered: boolean;
   onAnswer: (isCorrect: boolean, selected: string) => void;
+  /** In assessment mode, no visual feedback (green/red/shake) */
+  assessmentMode?: boolean;
 }
 
 const SUPABASE_AUDIO_BASE = process.env.NEXT_PUBLIC_SUPABASE_URL
@@ -48,6 +50,7 @@ export function MissingWord({
   questionId,
   answered,
   onAnswer,
+  assessmentMode = false,
 }: MissingWordProps) {
   const [selected, setSelected] = useState<string | null>(null);
   const [result, setResult] = useState<"correct" | "incorrect" | null>(null);
@@ -59,6 +62,11 @@ export function MissingWord({
       setSelected(choice);
       const isCorrect = choice.toLowerCase() === correctWord.toLowerCase();
       setResult(isCorrect ? "correct" : "incorrect");
+
+      if (assessmentMode) {
+        onAnswer(isCorrect, choice);
+        return;
+      }
 
       if (isCorrect) {
         // Play sentence readback via Howler
@@ -121,16 +129,16 @@ export function MissingWord({
       {/* Sentence with blank */}
       <motion.div
         className={`rounded-2xl border-2 p-5 text-center transition-colors ${
-          result === "correct"
+          result === "correct" && !assessmentMode
             ? "border-emerald-400 bg-emerald-50/50 dark:bg-emerald-900/20 dark:border-emerald-500"
-            : result === "incorrect"
+            : result === "incorrect" && !assessmentMode
             ? "border-red-400 bg-red-50/50 dark:bg-red-900/20 dark:border-red-500"
             : "border-zinc-300 bg-white dark:border-slate-600 dark:bg-slate-800/50"
         }`}
         animate={
-          result === "incorrect"
+          !assessmentMode && result === "incorrect"
             ? { x: [0, -8, 8, -6, 6, -3, 3, 0], transition: { duration: 0.5 } }
-            : result === "correct"
+            : !assessmentMode && result === "correct"
             ? { scale: [1, 1.02, 1], transition: { duration: 0.3 } }
             : {}
         }
@@ -153,12 +161,14 @@ export function MissingWord({
                       <span
                         key={idx}
                         className={`inline-block px-3 py-1 rounded-lg font-extrabold ${
-                          isCorrectChoice
+                          assessmentMode
+                            ? "bg-indigo-100 text-indigo-800 dark:bg-indigo-800 dark:text-indigo-100"
+                            : isCorrectChoice
                             ? "bg-emerald-200 text-emerald-800 dark:bg-emerald-800 dark:text-emerald-100"
                             : "bg-red-200 text-red-800 dark:bg-red-800 dark:text-red-100"
                         }`}
                       >
-                        {isCorrectChoice ? selected : correctWord}
+                        {assessmentMode ? selected : isCorrectChoice ? selected : correctWord}
                       </span>
                     );
                   }
@@ -186,7 +196,13 @@ export function MissingWord({
 
           let style = CHOICE_COLORS[i % CHOICE_COLORS.length];
           if (done) {
-            if (isSelected && result === "correct") {
+            if (assessmentMode) {
+              if (isSelected) {
+                style = "bg-indigo-200 text-indigo-900 border-indigo-500 ring-2 ring-indigo-400/40 dark:bg-indigo-800 dark:text-indigo-100 dark:border-indigo-500";
+              } else {
+                style += " opacity-40";
+              }
+            } else if (isSelected && result === "correct") {
               style = "bg-emerald-200 text-emerald-900 border-emerald-500 ring-2 ring-emerald-400/40 dark:bg-emerald-800 dark:text-emerald-100 dark:border-emerald-500";
             } else if (isSelected && result === "incorrect") {
               style = "bg-red-200 text-red-900 border-red-500 ring-2 ring-red-400/40 dark:bg-red-800 dark:text-red-100 dark:border-red-500";

@@ -211,10 +211,11 @@ export function TapToPair({
               const isShaking = shakingLeft === item;
               let style = LEFT_COLORS[i % LEFT_COLORS.length];
 
-              const isFlashing = flashingPair?.left === item;
+              const isFlashing = !assessmentMode && flashingPair?.left === item;
               if (isMatched) {
-                style =
-                  "bg-emerald-100 text-emerald-800 border-emerald-400 dark:bg-emerald-900/40 dark:text-emerald-200 dark:border-emerald-500 opacity-70";
+                style = assessmentMode
+                  ? style + " opacity-60"
+                  : "bg-emerald-100 text-emerald-800 border-emerald-400 dark:bg-emerald-900/40 dark:text-emerald-200 dark:border-emerald-500 opacity-70";
               } else if (isSelected) {
                 style =
                   "bg-indigo-200 text-indigo-900 border-indigo-500 ring-2 ring-indigo-400/50 dark:bg-indigo-800 dark:text-indigo-100 dark:border-indigo-400";
@@ -257,10 +258,11 @@ export function TapToPair({
               const isSelected = selectedRight === item;
               let style = RIGHT_COLORS[i % RIGHT_COLORS.length];
 
-              const isFlashing = flashingPair?.right === item;
+              const isFlashing = !assessmentMode && flashingPair?.right === item;
               if (isMatched) {
-                style =
-                  "bg-emerald-100 text-emerald-800 border-emerald-400 dark:bg-emerald-900/40 dark:text-emerald-200 dark:border-emerald-500 opacity-70";
+                style = assessmentMode
+                  ? style + " opacity-60"
+                  : "bg-emerald-100 text-emerald-800 border-emerald-400 dark:bg-emerald-900/40 dark:text-emerald-200 dark:border-emerald-500 opacity-70";
               } else if (isSelected) {
                 style =
                   "bg-indigo-200 text-indigo-900 border-indigo-500 ring-2 ring-indigo-400/50 dark:bg-indigo-800 dark:text-indigo-100 dark:border-indigo-400";

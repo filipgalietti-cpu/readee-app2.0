@@ -282,9 +282,9 @@ export function CategorySort({
               ref={(el) => { bucketRefs.current[cat] = el; }}
               onClick={() => handleTapBucket(cat)}
               className={`rounded-2xl border-2 overflow-hidden transition-all duration-150 ${style.body} ${
-                flash === "correct"
+                !assessmentMode && flash === "correct"
                   ? style.correctFlash
-                  : flash === "incorrect"
+                  : !assessmentMode && flash === "incorrect"
                   ? style.incorrectFlash
                   : isHovered
                   ? style.glow
@@ -293,7 +293,9 @@ export function CategorySort({
                   : ""
               }`}
               animate={
-                flash === "incorrect"
+                assessmentMode
+                  ? {}
+                  : flash === "incorrect"
                   ? { x: [0, -6, 6, -4, 4, 0], transition: { duration: 0.4 } }
                   : flash === "correct"
                   ? { scale: [1, 1.04, 1], transition: { duration: 0.3 } }

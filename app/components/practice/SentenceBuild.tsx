@@ -16,6 +16,8 @@ interface SentenceBuildProps {
   onAnswer: (isCorrect: boolean, placedSentence: string) => void;
   onPlayItem?: (word: string) => void;
   ordered?: boolean;
+  /** In assessment mode, no visual feedback (green/red/shake) */
+  assessmentMode?: boolean;
 }
 
 const PUNCTUATION = new Set([".", "!", "?"]);
@@ -47,6 +49,7 @@ export function SentenceBuild({
   onAnswer,
   onPlayItem,
   ordered,
+  assessmentMode = false,
 }: SentenceBuildProps) {
   // Filter out any stray punctuation from words (backward compat)
   const filteredWords = useMemo(
@@ -103,6 +106,12 @@ export function SentenceBuild({
     const target = ordered ? correctSentence.replace(/[.!?]$/, "") : correctSentence;
     const isCorrect = sentence === target;
 
+    if (assessmentMode) {
+      setResult(isCorrect ? "correct" : "incorrect");
+      onAnswer(isCorrect, sentence);
+      return;
+    }
+
     setResult(isCorrect ? "correct" : "incorrect");
 
     if (!isCorrect) {
@@ -115,8 +124,6 @@ export function SentenceBuild({
     }
 
     // Correct — play sentence readback via Howler (fire-and-forget, same as tile audio)
-    // Build URL the same way tile audio works: SUPABASE_AUDIO_BASE + path
-    // e.g. RF.K.1a-Q6 → kindergarten/RF.K.1a/RF.K.1a-Q6-sentence.mp3
     let readbackUrl = sentenceAudioUrl;
     if (!readbackUrl && questionId && SUPABASE_AUDIO_BASE) {
       const standard = questionId.replace(/-Q\d+$/, ""); // RF.K.1a-Q6 → RF.K.1a
@@ -181,9 +188,9 @@ export function SentenceBuild({
                     filled
                       ? `border-solid cursor-pointer active:scale-95 ${CHIP_COLORS[wordIdx % CHIP_COLORS.length]}`
                       : `border-dashed ${
-                          result === "correct"
+                          result === "correct" && !assessmentMode
                             ? "border-emerald-400 bg-emerald-50/50 dark:bg-emerald-900/20 dark:border-emerald-500"
-                            : result === "incorrect"
+                            : result === "incorrect" && !assessmentMode
                             ? "border-red-400 bg-red-50/50 dark:bg-red-900/20 dark:border-red-500"
                             : "border-zinc-300 bg-white dark:border-slate-600 dark:bg-slate-800/50"
                         }`
