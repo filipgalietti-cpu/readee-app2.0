@@ -194,7 +194,7 @@ function WordBuilderInline({
       )}
 
       <div className="text-sm text-zinc-400">
-        {allAttempts.length} / {maxAttempts} tries &middot; {foundWords.length} words found
+        {allAttempts.length} / {maxAttempts} tries
       </div>
 
       <button
