@@ -906,8 +906,8 @@ function AssessmentContent() {
               className="px-8 py-8"
               style={{ background: "linear-gradient(135deg, #818cf8, #a78bfa, #c4b5fd)" }}
             >
-              <Sparkles className="w-8 h-8 mx-auto mb-3 text-white/70" />
-              <p className="text-white/80 text-sm font-medium">Your reading level</p>
+              <Sparkles className="w-8 h-8 mx-auto mb-3 text-white" />
+              <p className="text-white text-sm font-medium">Your reading level</p>
               <p className="text-3xl font-extrabold mt-1 text-white">{levelName}</p>
             </div>
           </motion.div>
