@@ -9,7 +9,7 @@ import { useChildStore } from "@/lib/stores/child-store";
 import { getChildAvatarImage } from "@/lib/utils/get-child-avatar";
 import {
   Home, BarChart3, BookText, ListChecks, Map,
-  Carrot, Trophy, ChevronDown,
+  Carrot, Trophy, ChevronDown, ClipboardCheck,
 } from "lucide-react";
 
 /* ─── Nav items ──────────────────────────────────── */
@@ -21,6 +21,7 @@ function getNavSections(childId: string | null) {
       label: "Main",
       items: [
         { href: "/dashboard", icon: Home, label: "Dashboard" },
+        { href: `/assessment${q}`, icon: ClipboardCheck, label: "Placement Test", emphasis: true },
         { href: `/analytics${q}`, icon: BarChart3, label: "Analytics" },
       ],
     },
@@ -48,7 +49,10 @@ function isActive(pathname: string, href: string) {
   return pathname === href.split("?")[0];
 }
 
-function navLinkClass(pathname: string, href: string) {
+function navLinkClass(pathname: string, href: string, emphasis?: boolean) {
+  if (emphasis && !isActive(pathname, href)) {
+    return "flex items-center gap-2.5 px-2 py-1.5 rounded-lg text-[13px] font-semibold transition-colors bg-indigo-50 text-indigo-700 hover:bg-indigo-100 dark:bg-indigo-950/40 dark:text-indigo-300 dark:hover:bg-indigo-950/60";
+  }
   return `flex items-center gap-2.5 px-2 py-1.5 rounded-lg text-[13px] transition-colors ${
     isActive(pathname, href)
       ? "bg-indigo-50 text-indigo-700 font-medium dark:bg-indigo-950/40 dark:text-indigo-300"
@@ -270,9 +274,9 @@ function ExpandedNav({
           <div key={label} className="px-3">
             <p className="px-2 mb-1 text-[11px] font-semibold text-zinc-400 dark:text-slate-500 uppercase tracking-widest">{label}</p>
             <nav className="space-y-0.5">
-              {items.map(({ href, icon: Icon, label: itemLabel, iconColor }: any) => (
-                <Link key={href} href={href} onClick={onClose} className={navLinkClass(pathname, href)}>
-                  <Icon className={iconColor || navIconClass(pathname, href)} strokeWidth={1.5} />
+              {items.map(({ href, icon: Icon, label: itemLabel, iconColor, emphasis }: any) => (
+                <Link key={href} href={href} onClick={onClose} className={navLinkClass(pathname, href, emphasis)}>
+                  <Icon className={iconColor || (emphasis && !isActive(pathname, href) ? "w-4 h-4 text-indigo-500" : navIconClass(pathname, href))} strokeWidth={1.5} />
                   <span>{itemLabel}</span>
                 </Link>
               ))}
