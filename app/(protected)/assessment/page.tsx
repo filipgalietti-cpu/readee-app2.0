@@ -445,9 +445,9 @@ function AssessmentContent() {
             <Image
               src="/images/bunny-hero.png"
               alt="Readee bunny"
-              width={130}
-              height={130}
-              className="drop-shadow-[0_4px_12px_rgba(0,0,0,0.1)] w-[110px] h-[110px] sm:w-[130px] sm:h-[130px]"
+              width={818}
+              height={1436}
+              className="drop-shadow-[0_4px_12px_rgba(0,0,0,0.1)] w-[75px] sm:w-[90px] h-auto"
             />
           </motion.div>
 
