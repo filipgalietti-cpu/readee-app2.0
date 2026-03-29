@@ -1,0 +1,2 @@
+lesson_id,filename,script_text,voice_direction
+assessment-ui,assessment-intro,"<speak>Hi there! Ready for a reading adventure? <break time='300ms'/> Answer some fun questions so we can find the best reading level for you! <break time='200ms'/> Just try your best. You got this!</speak>","Read this like a cheerful, warm, encouraging elementary school teacher talking directly to a young child. Be excited and supportive:"

@@ -279,8 +279,8 @@ function AssessmentContent() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentIdx, phase, audioReady]);
 
-  const handleStart = useCallback(async () => {
-    await unlockAudio();
+  const handleStart = useCallback(() => {
+    unlockAudio();
     setAudioReady(true);
     setPhase("quiz");
   }, [unlockAudio]);
@@ -499,6 +499,21 @@ function AssessmentContent() {
 
           {/* Content area */}
           <div className="px-6 pt-6 pb-7 text-center">
+            {/* Listen button */}
+            <motion.button
+              onClick={() => {
+                unlockAudio();
+                playUrl(`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audio/ui/assessment-intro.mp3`);
+              }}
+              className="mx-auto mb-4 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 text-indigo-600 font-semibold text-sm hover:bg-indigo-100 transition-colors"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.6 }}
+            >
+              <Volume2 className="w-4 h-4" />
+              Tap to listen
+            </motion.button>
+
             <motion.p
               className="text-lg font-semibold text-zinc-700 mb-2"
               initial={{ opacity: 0, y: 10 }}
