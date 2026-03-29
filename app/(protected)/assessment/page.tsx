@@ -15,8 +15,9 @@ import { safeValidate } from "@/lib/validate";
 import { AssessmentResultSchema } from "@/lib/schemas";
 import { useAudio } from "@/lib/audio/use-audio";
 import { LoadingImage } from "@/app/components/ui/LoadingImage";
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { BookOpen, Sparkles, Volume2, Clock, HelpCircle, Headphones } from "lucide-react";
+import { Sparkles, Volume2, Clock, HelpCircle, Headphones } from "lucide-react";
 
 import { CategorySort } from "@/app/components/practice/CategorySort";
 import { MissingWord } from "@/app/components/practice/MissingWord";
@@ -462,12 +463,18 @@ function AssessmentContent() {
             </div>
 
             <motion.div
-              className="relative w-20 h-20 mx-auto mb-4 rounded-full bg-white/20 backdrop-blur flex items-center justify-center"
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4, delay: 0.4 }}
+              className="relative mx-auto mb-2"
+              initial={{ opacity: 0, scale: 0.5, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4, type: "spring", bounce: 0.4 }}
             >
-              <BookOpen className="w-10 h-10 text-white" strokeWidth={1.5} />
+              <Image
+                src="/images/bunny-hero.png"
+                alt="Readee bunny"
+                width={140}
+                height={140}
+                className="drop-shadow-lg w-[120px] h-[120px] sm:w-[140px] sm:h-[140px]"
+              />
             </motion.div>
 
             <motion.h1
