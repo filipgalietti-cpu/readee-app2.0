@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 
 import manifestRaw from "@/scripts/assessment_mixed_manifest.json";
+import bankRaw from "@/lib/assessment/mixed-bank-k4.json";
 
 /* ── Types ─────────────────────────────────────────── */
 
@@ -34,9 +35,32 @@ interface AssessmentRecord {
 
 /* ── Question lookup ───────────────────────────────── */
 
-const questionLookup: Record<string, { prompt: string; type: string }> = {};
+const bankLookup: Record<string, any> = {};
+for (const qs of Object.values((bankRaw as { grades: Record<string, any[]> }).grades)) {
+  for (const q of qs) bankLookup[q.id] = q;
+}
+
+interface QuestionMeta {
+  prompt: string;
+  type: string;
+  standard: string;
+  skill: string;
+}
+
+const SKILL_MAP: Record<string, { label: string; icon: string }> = {
+  RF: { label: "Phonics & Word Skills", icon: "🔤" },
+  RL: { label: "Reading Comprehension", icon: "📖" },
+  RI: { label: "Reading Comprehension", icon: "📖" },
+  L:  { label: "Vocabulary & Grammar", icon: "💬" },
+};
+
+const questionLookup: Record<string, QuestionMeta> = {};
 for (const q of manifestRaw as any[]) {
-  questionLookup[q.id] = { prompt: q.prompt, type: q.type };
+  const bank = bankLookup[q.id];
+  const standard = bank?.standard || q.standard || "";
+  const domain = standard.split(".")[0]; // RF, RL, RI, L
+  const skill = SKILL_MAP[domain]?.label || "General";
+  questionLookup[q.id] = { prompt: q.prompt, type: q.type, standard, skill };
 }
 
 /* ── Helpers ───────────────────────────────────────── */
@@ -60,17 +84,6 @@ function formatDate(iso: string) {
   });
 }
 
-function typeLabel(type: string) {
-  const labels: Record<string, string> = {
-    mcq: "Multiple Choice",
-    category_sort: "Category Sort",
-    missing_word: "Missing Word",
-    sentence_build: "Sentence Build",
-    tap_to_pair: "Tap to Pair",
-    word_builder: "Word Builder",
-  };
-  return labels[type] || type;
-}
 
 /* ── Page ──────────────────────────────────────────── */
 
@@ -156,14 +169,16 @@ function AssessmentResultsContent() {
   const placedIdx = LEVEL_STEPS.findIndex((s) => s.label === assessment.reading_level_placed);
   const testedIdx = LEVEL_STEPS.findIndex((s) => s.key === gradeToKey(assessment.grade_tested));
 
-  // Group answers by type
-  const byType: Record<string, { correct: number; total: number }> = {};
+  // Group answers by reading skill
+  const bySkill: Record<string, { correct: number; total: number; icon: string }> = {};
   for (const a of assessment.answers) {
     const q = questionLookup[a.question_id];
-    const type = q?.type || "unknown";
-    if (!byType[type]) byType[type] = { correct: 0, total: 0 };
-    byType[type].total++;
-    if (a.is_correct) byType[type].correct++;
+    const skill = q?.skill || "General";
+    const domain = q?.standard?.split(".")[0] || "";
+    const icon = SKILL_MAP[domain]?.icon || "📝";
+    if (!bySkill[skill]) bySkill[skill] = { correct: 0, total: 0, icon };
+    bySkill[skill].total++;
+    if (a.is_correct) bySkill[skill].correct++;
   }
 
   return (
@@ -249,35 +264,51 @@ function AssessmentResultsContent() {
         </div>
       </motion.div>
 
-      {/* Performance by type */}
+      {/* Performance by Skill */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
         className="rounded-2xl bg-white shadow-md p-6"
       >
-        <div className="flex items-center gap-2 mb-4">
+        <div className="flex items-center gap-2 mb-5">
           <BarChart3 className="w-5 h-5 text-indigo-500" />
-          <h2 className="text-lg font-bold text-zinc-900">Performance by Skill</h2>
+          <h2 className="text-lg font-bold text-zinc-900">Skill Breakdown</h2>
         </div>
-        <div className="space-y-3">
-          {Object.entries(byType).map(([type, stats]) => {
+        <div className="space-y-4">
+          {Object.entries(bySkill).map(([skill, stats]) => {
             const pct = Math.round((stats.correct / stats.total) * 100);
+            const barColor = pct >= 80 ? "#10b981" : pct >= 50 ? "#f59e0b" : "#ef4444";
+            const label = pct >= 80 ? "Strong" : pct >= 50 ? "Developing" : "Needs Practice";
             return (
-              <div key={type}>
-                <div className="flex justify-between text-sm mb-1">
-                  <span className="font-medium text-zinc-700">{typeLabel(type)}</span>
-                  <span className="text-zinc-500">{stats.correct}/{stats.total}</span>
+              <div key={skill}>
+                <div className="flex items-center justify-between mb-1.5">
+                  <div className="flex items-center gap-2">
+                    <span className="text-lg">{stats.icon}</span>
+                    <span className="font-semibold text-sm text-zinc-800">{skill}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span
+                      className="text-[11px] font-semibold px-2 py-0.5 rounded-full"
+                      style={{ color: barColor, backgroundColor: barColor + "18" }}
+                    >
+                      {label}
+                    </span>
+                    <span className="text-xs text-zinc-400 w-8 text-right">{pct}%</span>
+                  </div>
                 </div>
                 <div className="h-2.5 bg-zinc-100 rounded-full overflow-hidden">
-                  <div
-                    className="h-full rounded-full transition-all duration-500"
-                    style={{
-                      width: `${pct}%`,
-                      background: pct >= 80 ? "#10b981" : pct >= 50 ? "#f59e0b" : "#ef4444",
-                    }}
+                  <motion.div
+                    className="h-full rounded-full"
+                    style={{ backgroundColor: barColor }}
+                    initial={{ width: 0 }}
+                    animate={{ width: `${pct}%` }}
+                    transition={{ duration: 0.8, delay: 0.3 }}
                   />
                 </div>
+                <p className="text-[11px] text-zinc-400 mt-1">
+                  {stats.correct} of {stats.total} correct
+                </p>
               </div>
             );
           })}
@@ -325,7 +356,7 @@ function AssessmentResultsContent() {
                         {i + 1}. {q?.prompt || a.question_id}
                       </p>
                       <p className="text-xs text-zinc-500 mt-0.5">
-                        {q ? typeLabel(q.type) : ""}
+                        {q?.skill || ""}
                       </p>
                       {!a.is_correct && (
                         <div className="mt-1.5 text-xs space-y-0.5">
