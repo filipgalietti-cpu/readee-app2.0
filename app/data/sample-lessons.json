@@ -2104,7 +2104,7 @@
             "ttsScript": "I see a kid playing outside. What's the setting? It looks like a rainy day!",
             "interaction": "Setting row fills in with checkmark.",
             "displayText": "Setting",
-            "displayDelay": 3500,
+            "displayDelay": 6000,
             "checkmarkDelay": 2000,
             "displayTableRow": {
               "label": "Setting",
@@ -2120,7 +2120,7 @@
             "ttsScript": "How does the kid feel? Look at that big smile — happy and having fun!",
             "interaction": "Feeling row fills in with checkmark.",
             "displayText": "Feeling",
-            "displayDelay": 3500,
+            "displayDelay": 5000,
             "checkmarkDelay": 2000,
             "displayTableRow": {
               "label": "Feeling",
@@ -2156,7 +2156,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RL.K.7/S4b.mp3",
             "ttsScript": "What do I see happening? And how do the characters feel?",
-            "interaction": "Both rows fill in timed to TTS.",
+            "interaction": "Setting row fills in immediately.",
             "displayText": "Setting",
             "displayDelay": 0,
             "displayTableRow": {
@@ -2169,9 +2169,9 @@
           },
           {
             "sub": "c",
-            "audioFile": "audio/lessons/RL.K.7/S4b.mp3",
+            "audioFile": "",
             "ttsScript": "",
-            "interaction": "Feeling row appears synced to 'how do the characters feel'.",
+            "interaction": "Feeling row appears at 2.2s into step b audio.",
             "displayText": "Feeling",
             "displayDelay": 2200,
             "displayTableRow": {
