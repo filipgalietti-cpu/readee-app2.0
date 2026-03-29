@@ -133,7 +133,7 @@ function AssessmentResultsContent() {
     return (
       <div className="max-w-md mx-auto text-center py-20 px-4">
         <ClipboardCheck className="w-16 h-16 text-zinc-300 mx-auto mb-4" />
-        <h1 className="text-2xl font-bold text-zinc-900 mb-2">No Assessment Found</h1>
+        <h1 className="text-2xl font-bold text-zinc-900 mb-2">No Placement Test Found</h1>
         <p className="text-zinc-500 mb-6">
           {child?.first_name || "This child"} hasn&apos;t taken the placement test yet.
         </p>
@@ -190,7 +190,7 @@ function AssessmentResultsContent() {
           className="mx-auto w-[80px] h-auto mb-4"
         />
         <h1 className="text-2xl font-extrabold text-zinc-900">
-          {child.first_name}&apos;s Assessment Results
+          {child.first_name}&apos;s Placement Test Results
         </h1>
         <p className="text-zinc-500 text-sm mt-1">
           Completed {formatDate(assessment.completed_at)}
@@ -343,7 +343,7 @@ function AssessmentResultsContent() {
           className="flex-1 flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl border-2 border-indigo-200 text-indigo-700 font-bold hover:bg-indigo-50 transition-colors"
         >
           <RotateCcw className="w-5 h-5" />
-          Retake Assessment
+          Retake Placement Test
         </Link>
         <Link
           href="/dashboard"

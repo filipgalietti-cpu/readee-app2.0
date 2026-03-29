@@ -1228,7 +1228,7 @@ function ParentSidebar({
       items: [
         { href: "/dashboard", icon: Home, label: "Dashboard" },
         hasAssessment
-          ? { href: `/assessment-results?child=${child.id}`, icon: ClipboardCheck, label: "Assessment Results" }
+          ? { href: `/assessment-results?child=${child.id}`, icon: ClipboardCheck, label: "Placement Test Results" }
           : { href: `/assessment?child=${child.id}`, icon: ClipboardCheck, label: "Take Placement Test", emphasis: true },
         { href: `/analytics?child=${child.id}`, icon: BarChart3, label: "Analytics" },
       ],
