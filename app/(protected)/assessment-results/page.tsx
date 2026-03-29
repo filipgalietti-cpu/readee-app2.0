@@ -168,6 +168,14 @@ function AssessmentResultsContent() {
     load();
   }, [childId]);
 
+  // Hooks must be called before any early returns
+  const scorePct = useCountUp(assessment?.score_percent ?? 0, 1200, 400);
+  const correctCount = useCountUp(
+    assessment?.answers?.filter((a) => a.is_correct).length ?? 0,
+    800,
+    400
+  );
+
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
@@ -220,9 +228,6 @@ function AssessmentResultsContent() {
     bySkill[skill].total++;
     if (a.is_correct) bySkill[skill].correct++;
   }
-
-  const scorePct = useCountUp(assessment.score_percent, 1200, 400);
-  const correctCount = useCountUp(totalCorrect, 800, 400);
 
   return (
     <div className="max-w-2xl mx-auto py-8 px-4 space-y-6">
