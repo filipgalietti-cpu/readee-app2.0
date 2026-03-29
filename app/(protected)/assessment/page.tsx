@@ -428,7 +428,23 @@ function AssessmentContent() {
     ];
 
     return (
-      <div className="max-w-md mx-auto py-10 px-4">
+      <div className="max-w-md mx-auto pt-10 pb-10 px-4">
+        {/* Bunny sitting on top of the card */}
+        <motion.div
+          className="relative z-10 flex justify-center -mb-14"
+          initial={{ opacity: 0, scale: 0.5, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1, type: "spring", bounce: 0.4 }}
+        >
+          <Image
+            src="/images/bunny-hero.png"
+            alt="Readee bunny"
+            width={140}
+            height={140}
+            className="drop-shadow-lg w-[120px] h-[120px] sm:w-[140px] sm:h-[140px]"
+          />
+        </motion.div>
+
         <motion.div
           className="bg-white rounded-3xl shadow-xl overflow-hidden"
           initial={{ opacity: 0, y: 40 }}
@@ -437,7 +453,7 @@ function AssessmentContent() {
         >
           {/* Gradient header */}
           <div
-            className="relative px-6 pt-10 pb-12 text-center overflow-hidden"
+            className="relative px-6 pt-16 pb-10 text-center overflow-hidden"
             style={{ background: "linear-gradient(135deg, #6366f1, #8b5cf6, #a78bfa)" }}
           >
             {/* Floating sparkles */}
@@ -461,21 +477,6 @@ function AssessmentContent() {
                 />
               ))}
             </div>
-
-            <motion.div
-              className="relative mx-auto mb-2"
-              initial={{ opacity: 0, scale: 0.5, y: 10 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4, type: "spring", bounce: 0.4 }}
-            >
-              <Image
-                src="/images/bunny-hero.png"
-                alt="Readee bunny"
-                width={140}
-                height={140}
-                className="drop-shadow-lg w-[120px] h-[120px] sm:w-[140px] sm:h-[140px]"
-              />
-            </motion.div>
 
             <motion.h1
               className="relative text-2xl font-extrabold text-white"
