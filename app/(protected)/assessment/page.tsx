@@ -86,8 +86,10 @@ function buildBankLookup(): Record<string, any> {
 const BANK_LOOKUP = buildBankLookup();
 
 function buildMergedQuestions(gradeKey: string): MergedQuestion[] {
+  // Pre-k has no assessment questions in the manifest — use kindergarten
+  const key = gradeKey === "pre-k" ? "kindergarten" : gradeKey;
   return (manifestRaw as any[])
-    .filter((m: any) => m.grade_key === gradeKey)
+    .filter((m: any) => m.grade_key === key)
     .map((m: any) => {
       const bank = BANK_LOOKUP[m.id] || {};
       return {
