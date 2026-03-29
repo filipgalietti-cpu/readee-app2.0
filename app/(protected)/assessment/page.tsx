@@ -692,6 +692,7 @@ function AssessmentContent() {
 
         {q.type === "category_sort" && q.categoryItems && (
           <CategorySort
+            key={q.id}
             prompt=""
             categories={q.categories}
             categoryItems={q.categoryItems}
@@ -704,6 +705,7 @@ function AssessmentContent() {
 
         {q.type === "missing_word" && blankIndex >= 0 && (
           <MissingWord
+            key={q.id}
             prompt=""
             sentenceWords={q.sentence_words}
             blankIndex={blankIndex}
@@ -716,6 +718,7 @@ function AssessmentContent() {
 
         {q.type === "sentence_build" && q.words.length > 0 && (
           <SentenceBuild
+            key={q.id}
             prompt=""
             passage={q.stimulus || null}
             words={q.words}
@@ -727,6 +730,7 @@ function AssessmentContent() {
 
         {q.type === "tap_to_pair" && q.left_items.length > 0 && (
           <TapToPair
+            key={q.id}
             prompt=""
             leftItems={q.left_items}
             rightItems={q.right_items}

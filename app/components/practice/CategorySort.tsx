@@ -106,7 +106,7 @@ export function CategorySort({
 
   // Items still in the bank
   const bankItems = items.filter(
-    (item) => !categories.some((c) => buckets[c].includes(item))
+    (item) => !categories.some((c) => (buckets[c] ?? []).includes(item))
   );
 
   const allPlaced = bankItems.length === 0;
