@@ -101,6 +101,15 @@ const LEVEL_STEPS = [
   { key: "4th", label: "Advanced Reader", gradeLabel: "4th Grade", color: "#10b981" },
 ];
 
+const LEVEL_DESCRIPTIONS: Record<string, string> = {
+  "Emerging Reader": "Learning the basics — letter names, letter sounds, and print awareness. Building the foundation for reading.",
+  "Beginning Reader": "Starting to sound out simple words, recognizing common sight words, and understanding short sentences.",
+  "Developing Reader": "Reading short passages with some help, blending sounds, and starting to understand what they read.",
+  "Growing Reader": "Reading chapter books and longer texts, building vocabulary, and answering questions about stories.",
+  "Independent Reader": "Reading on their own with confidence, understanding main ideas, and making connections across texts.",
+  "Advanced Reader": "Reading complex texts, analyzing themes, using context clues, and thinking critically about what they read.",
+};
+
 function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString("en-US", {
     month: "short",
@@ -248,10 +257,13 @@ function AssessmentResultsContent() {
         <p className="text-xs font-medium text-zinc-400 uppercase tracking-wider text-center mb-1">
           Reading Level
         </p>
-        <p className="text-2xl font-extrabold text-zinc-900 text-center mb-1">
+        <p className="text-2xl font-extrabold text-zinc-900 text-center mb-2">
           {assessment.reading_level_placed}
         </p>
-        <p className="text-sm text-zinc-500 text-center mb-6">
+        <p className="text-sm text-zinc-600 text-center mb-3 max-w-sm mx-auto leading-relaxed">
+          {LEVEL_DESCRIPTIONS[assessment.reading_level_placed] || ""}
+        </p>
+        <p className="text-sm text-zinc-400 text-center mb-6">
           Scored <span ref={scorePct.ref} className="font-semibold text-zinc-700">{scorePct.value}%</span> &middot; <span ref={correctCount.ref} className="font-semibold text-zinc-700">{correctCount.value}</span> of {totalQuestions} correct
         </p>
 
