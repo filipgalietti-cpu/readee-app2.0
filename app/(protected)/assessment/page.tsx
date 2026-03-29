@@ -122,19 +122,22 @@ function WordBuilderInline({
   onAnswer: (isCorrect: boolean, answer: string) => void;
 }) {
   const [input, setInput] = useState("");
-  const [found, setFound] = useState<string[]>([]);
-  const [attempts, setAttempts] = useState(0);
+  const [allAttempts, setAllAttempts] = useState<{ word: string; valid: boolean }[]>([]);
   const [shake, setShake] = useState(false);
-  const done = attempts >= maxAttempts;
+  const done = allAttempts.length >= maxAttempts;
+  const validLower = validWords.map((w) => w.toLowerCase());
+  const foundWords = allAttempts.filter((a) => a.valid);
 
   const handleTry = () => {
-    const word = (input.trim() + wordEnding).toLowerCase();
+    const typed = input.trim().toLowerCase();
+    if (!typed) return;
+    const word = typed + wordEnding;
     setInput("");
-    setAttempts((a) => a + 1);
 
-    if (validWords.map((w) => w.toLowerCase()).includes(word) && !found.includes(word)) {
-      setFound((f) => [...f, word]);
-    } else {
+    const isValid = validLower.includes(word) && !allAttempts.some((a) => a.word === word);
+    setAllAttempts((prev) => [...prev, { word, valid: isValid }]);
+
+    if (!isValid) {
       setShake(true);
       setTimeout(() => setShake(false), 400);
     }
@@ -142,7 +145,8 @@ function WordBuilderInline({
 
   const handleDone = () => {
     const threshold = Math.ceil(validWords.length / 2);
-    onAnswer(found.length >= threshold, found.join(", "));
+    const allWords = allAttempts.map((a) => a.word).join(", ");
+    onAnswer(foundWords.length >= threshold, allWords);
   };
 
   return (
@@ -172,18 +176,25 @@ function WordBuilderInline({
         </button>
       </div>
 
-      {found.length > 0 && (
+      {allAttempts.length > 0 && (
         <div className="flex flex-wrap justify-center gap-2">
-          {found.map((w) => (
-            <span key={w} className="px-3 py-1.5 rounded-full bg-emerald-100 text-emerald-700 font-semibold text-sm">
-              {w}
+          {allAttempts.map((a, i) => (
+            <span
+              key={i}
+              className={`px-3 py-1.5 rounded-full font-semibold text-sm ${
+                a.valid
+                  ? "bg-indigo-100 text-indigo-700"
+                  : "bg-zinc-100 text-zinc-400 line-through"
+              }`}
+            >
+              {a.word}
             </span>
           ))}
         </div>
       )}
 
       <div className="text-sm text-zinc-400">
-        {attempts} / {maxAttempts} tries &middot; {found.length} words found
+        {allAttempts.length} / {maxAttempts} tries &middot; {foundWords.length} words found
       </div>
 
       <button
