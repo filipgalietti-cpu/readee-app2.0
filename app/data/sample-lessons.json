@@ -2041,32 +2041,46 @@
             "sub": "a",
             "audioFile": "audio/lessons/RL.K.7/S2a.mp3",
             "ttsScript": "Pictures in a storybook show us what the characters look like and what they're doing.",
-            "interaction": "Heading appears.",
+            "interaction": "Table headers visible from jump.",
             "displayText": ""
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.K.7/S2b.mp3",
             "ttsScript": "They show us the setting — where the story is happening!",
-            "interaction": "Pill: [Pictures show the setting] pops in blue.",
-            "displayText": "Pictures show the setting",
-            "displayDelay": 2750
+            "interaction": "Setting row fills in.",
+            "displayText": "Setting",
+            "displayDelay": 0,
+            "displayTableRow": {
+              "label": "Setting",
+              "value": "Where is the story happening?",
+              "tableHeaders": ["Look For", "Ask Yourself", "Example"],
+              "example": "A park, a school, the ocean",
+              "exampleDelay": 2000
+            }
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RL.K.7/S2c.mp3",
             "ttsScript": "And they show us how the characters feel. Is the character happy? Sad? Excited?",
-            "interaction": "Pill: [Pictures show feelings] pops in green.",
-            "displayText": "Pictures show feelings",
-            "displayDelay": 3500
+            "interaction": "Feelings row fills in.",
+            "displayText": "Feelings",
+            "displayDelay": 0,
+            "displayTableRow": {
+              "label": "Feelings",
+              "value": "How do the characters feel?",
+              "example": "Happy, sad, scared, excited",
+              "exampleDelay": 2500
+            }
           },
           {
             "sub": "d",
             "audioFile": "audio/lessons/RL.K.7/S2d.mp3",
             "ttsScript": "So pictures and words work together to tell the whole story!",
-            "interaction": "Pill: [Words + Pictures = Full Story] pops in purple.",
-            "displayText": "Words + Pictures make Full Story",
-            "displayDelay": 2750
+            "interaction": "Highlights Setting at 1s, Feelings at 3s.",
+            "displayText": "",
+            "checkmarkTriggerDelay": 1000,
+            "checkmarkTriggerStagger": 2000
           }
         ],
         "heading": "How Do Pictures Help?",
@@ -2081,30 +2095,45 @@
             "sub": "a",
             "audioFile": "audio/lessons/RL.K.7/S3a.mp3",
             "ttsScript": "Look at this picture. What can you tell me about it?",
-            "interaction": "Heading appears. Image of child in rain.",
+            "interaction": "Heading appears. Table headers from jump. Image of child in rain.",
             "displayText": ""
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.K.7/S3b.mp3",
             "ttsScript": "I see a kid playing outside. What's the setting? It looks like a rainy day!",
-            "interaction": "Pill: [Setting: Rainy day outside] pops in with checkmark.",
-            "displayText": "Setting: Rainy day outside",
-            "displayDelay": 3750
+            "interaction": "Setting row fills in with checkmark.",
+            "displayText": "Setting",
+            "displayDelay": 3500,
+            "checkmarkDelay": 2000,
+            "displayTableRow": {
+              "label": "Setting",
+              "value": "Rainy day outside",
+              "tableHeaders": ["Look For", "What I See", "How I Know"],
+              "example": "Rain, puddles, boots",
+              "exampleDelay": 2000
+            }
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RL.K.7/S3c.mp3",
             "ttsScript": "How does the kid feel? Look at that big smile — happy and having fun!",
-            "interaction": "Pill: [Feeling: Happy!] pops in with checkmark.",
-            "displayText": "Feeling: Happy!",
-            "displayDelay": 3750
+            "interaction": "Feeling row fills in with checkmark.",
+            "displayText": "Feeling",
+            "displayDelay": 3500,
+            "checkmarkDelay": 2000,
+            "displayTableRow": {
+              "label": "Feeling",
+              "value": "Happy!",
+              "example": "Big smile, jumping",
+              "exampleDelay": 2000
+            }
           },
           {
             "sub": "d",
             "audioFile": "audio/lessons/RL.K.7/S3d.mp3",
             "ttsScript": "See how much we learned just from one picture? You're amazing at this!",
-            "interaction": "Stars and confetti burst.",
+            "interaction": "Both rows glow. Stars float up.",
             "displayText": ""
           }
         ],
@@ -2120,35 +2149,50 @@
             "sub": "a",
             "audioFile": "audio/lessons/RL.K.7/S4a.mp3",
             "ttsScript": "Whenever you see a picture in a book, ask yourself two things.",
-            "interaction": "Heading with sparkle.",
+            "interaction": "Table headers from jump.",
             "displayText": ""
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.K.7/S4b.mp3",
             "ttsScript": "What do I see happening? And how do the characters feel?",
-            "interaction": "Two pills: [What's happening?] [How do they feel?] pop in.",
-            "displayParts": [
-              {
-                "text": "What's happening?",
-                "delay": 800
-              },
-              {
-                "text": "How do they feel?",
-                "delay": 2200
-              }
-            ]
+            "interaction": "Both rows fill in timed to TTS.",
+            "displayText": "Setting",
+            "displayDelay": 0,
+            "displayTableRow": {
+              "label": "Setting",
+              "value": "What's happening?",
+              "tableHeaders": ["Look For", "Ask Yourself", "It Tells You..."],
+              "example": "Where & what",
+              "exampleDelay": 1500
+            }
           },
           {
             "sub": "c",
+            "audioFile": "audio/lessons/RL.K.7/S4b.mp3",
+            "ttsScript": "",
+            "interaction": "Feeling row appears synced to 'how do the characters feel'.",
+            "displayText": "Feeling",
+            "displayDelay": 2200,
+            "displayTableRow": {
+              "label": "Feeling",
+              "value": "How do they feel?",
+              "example": "Emotions & mood",
+              "exampleDelay": 1500
+            }
+          },
+          {
+            "sub": "d",
             "audioFile": "audio/lessons/RL.K.7/S4c.mp3",
             "ttsScript": "If you do that, you'll understand the story even better!",
-            "interaction": "Pills glow. Tap to continue.",
-            "displayText": ""
+            "interaction": "Highlights both rows.",
+            "displayText": "",
+            "checkmarkTriggerDelay": 1000,
+            "checkmarkTriggerStagger": 1500
           }
         ],
         "heading": "A Helpful Trick!",
-        "imagePrompt": "Two large cartoon magnifying glasses, one over a character and one over a background scene. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A happy cartoon bunny with a magnifying glass looking at a storybook illustration, with thought bubbles showing a sunny park and a smiling face. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RL.K.7/S4.png"
       },
       {
