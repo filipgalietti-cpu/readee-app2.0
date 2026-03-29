@@ -102,13 +102,37 @@ const LEVEL_STEPS = [
   { key: "4th", label: "Advanced Reader", gradeLabel: "4th Grade", color: "#10b981" },
 ];
 
-const LEVEL_DESCRIPTIONS: Record<string, string> = {
-  "Emerging Reader": "Learning the basics — letter names, letter sounds, and print awareness. Building the foundation for reading.",
-  "Beginning Reader": "Starting to sound out simple words, recognizing common sight words, and understanding short sentences.",
-  "Developing Reader": "Reading short passages with some help, blending sounds, and starting to understand what they read.",
-  "Growing Reader": "Reading chapter books and longer texts, building vocabulary, and answering questions about stories.",
-  "Independent Reader": "Reading on their own with confidence, understanding main ideas, and making connections across texts.",
-  "Advanced Reader": "Reading complex texts, analyzing themes, using context clues, and thinking critically about what they read.",
+const LEVEL_INFO: Record<string, { grade: string; summary: string; details: string }> = {
+  "Emerging Reader": {
+    grade: "Pre-Kindergarten",
+    summary: "Just getting started with reading",
+    details: "Your child is learning the building blocks — recognizing letters, hearing sounds in words, and understanding how books work. This is a normal starting point and we'll build from here!",
+  },
+  "Beginning Reader": {
+    grade: "Kindergarten",
+    summary: "Learning to read words and short sentences",
+    details: "Your child can recognize some letters and sounds, and is starting to read simple words. We'll work on sounding out words, learning sight words, and reading short sentences.",
+  },
+  "Developing Reader": {
+    grade: "1st Grade",
+    summary: "Reading simple stories with some help",
+    details: "Your child can sound out many words, read short passages, and answer basic questions about what they read. We'll keep building fluency and comprehension skills.",
+  },
+  "Growing Reader": {
+    grade: "2nd Grade",
+    summary: "Reading longer stories and learning new words",
+    details: "Your child reads with growing confidence, understands stories with multiple paragraphs, and is building a strong vocabulary. We'll focus on deeper comprehension and word skills.",
+  },
+  "Independent Reader": {
+    grade: "3rd Grade",
+    summary: "Reading on their own with good understanding",
+    details: "Your child reads chapter-level texts independently, identifies main ideas, and makes connections across what they read. We'll work on critical thinking and advanced comprehension.",
+  },
+  "Advanced Reader": {
+    grade: "4th Grade",
+    summary: "Reading complex texts and thinking critically",
+    details: "Your child reads challenging material, analyzes themes and author's purpose, and uses context to figure out new words. We'll push into higher-level analysis and writing connections.",
+  },
 };
 
 function formatDate(iso: string) {
@@ -260,15 +284,29 @@ function AssessmentResultsContent() {
         transition={{ delay: 0.1 }}
         className="rounded-2xl bg-white shadow-md p-6"
       >
-        <p className="text-xs font-medium text-zinc-400 uppercase tracking-wider text-center mb-1">
-          Reading Level
-        </p>
-        <p className="text-2xl font-extrabold text-zinc-900 text-center mb-2">
-          {assessment.reading_level_placed}
-        </p>
-        <p className="text-sm text-zinc-600 text-center mb-3 max-w-sm mx-auto leading-relaxed">
-          {LEVEL_DESCRIPTIONS[assessment.reading_level_placed] || ""}
-        </p>
+        {(() => {
+          const info = LEVEL_INFO[assessment.reading_level_placed];
+          return info ? (
+            <>
+              <p className="text-xs font-medium text-zinc-400 uppercase tracking-wider text-center mb-1">
+                Reading at a
+              </p>
+              <p className="text-2xl font-extrabold text-zinc-900 text-center">
+                {info.grade} Level
+              </p>
+              <p className="text-base font-semibold text-indigo-600 text-center mt-1 mb-2">
+                {info.summary}
+              </p>
+              <p className="text-sm text-zinc-600 text-center mb-4 max-w-md mx-auto leading-relaxed">
+                {info.details}
+              </p>
+            </>
+          ) : (
+            <p className="text-2xl font-extrabold text-zinc-900 text-center mb-4">
+              {assessment.reading_level_placed}
+            </p>
+          );
+        })()}
         <p className="text-sm text-zinc-400 text-center mb-6">
           Scored <span ref={scorePct.ref} className="font-semibold text-zinc-700">{scorePct.value}%</span> &middot; <span ref={correctCount.ref} className="font-semibold text-zinc-700">{correctCount.value}</span> of {totalQuestions} correct
         </p>
