@@ -429,31 +429,36 @@ function AssessmentContent() {
 
     return (
       <div className="max-w-md mx-auto pt-10 pb-10 px-4">
-        {/* Bunny sitting on top of the card */}
         <motion.div
-          className="relative z-10 flex justify-center -mb-14"
-          initial={{ opacity: 0, scale: 0.5, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1, type: "spring", bounce: 0.4 }}
-        >
-          <Image
-            src="/images/bunny-hero.png"
-            alt="Readee bunny"
-            width={140}
-            height={140}
-            className="drop-shadow-lg w-[120px] h-[120px] sm:w-[140px] sm:h-[140px]"
-          />
-        </motion.div>
-
-        <motion.div
-          className="bg-white rounded-3xl shadow-xl overflow-hidden"
+          className="relative bg-white rounded-3xl shadow-xl overflow-visible"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
         >
+          {/* Bunny peeking from bottom-left of card */}
+          <motion.div
+            className="absolute -bottom-6 -left-8 z-10 hidden sm:block"
+            initial={{ opacity: 0, x: -20, rotate: -15 }}
+            animate={{ opacity: 1, x: 0, rotate: -8 }}
+            transition={{ duration: 0.5, delay: 0.6, type: "spring", bounce: 0.4 }}
+          >
+            <motion.div
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <Image
+                src="/images/bunny-hero.png"
+                alt="Readee bunny"
+                width={130}
+                height={130}
+                className="drop-shadow-[0_4px_12px_rgba(0,0,0,0.1)] w-[110px] h-[110px] sm:w-[130px] sm:h-[130px]"
+              />
+            </motion.div>
+          </motion.div>
+
           {/* Gradient header */}
           <div
-            className="relative px-6 pt-16 pb-10 text-center overflow-hidden"
+            className="relative px-6 pt-10 pb-10 text-center overflow-hidden rounded-t-3xl"
             style={{ background: "linear-gradient(135deg, #6366f1, #8b5cf6, #a78bfa)" }}
           >
             {/* Floating sparkles */}
