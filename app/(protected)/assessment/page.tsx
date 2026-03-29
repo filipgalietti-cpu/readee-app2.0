@@ -878,11 +878,11 @@ function AssessmentContent() {
             transition={{ type: "spring", bounce: 0.5, delay: 0.2 }}
           >
             <Image
-              src="/images/bunny-hero.png"
-              alt="Readee bunny"
-              width={818}
-              height={1436}
-              className="mx-auto w-[100px] h-auto drop-shadow-lg"
+              src="/images/ui/bunny-celebrate.png"
+              alt="Readee bunny celebrating"
+              width={512}
+              height={512}
+              className="mx-auto w-[140px] sm:w-[160px] h-auto drop-shadow-lg"
             />
           </motion.div>
 
