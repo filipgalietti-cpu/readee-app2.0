@@ -1,10 +1,10 @@
 "use client";
 
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useState, useRef, useCallback } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
 import { grades, gradeToKey, type GradeKey } from "@/lib/assessment/questions";
@@ -12,6 +12,33 @@ import {
   ClipboardCheck,
   BarChart3, CheckCircle2, XCircle, RotateCcw, ChevronDown,
 } from "lucide-react";
+
+/* ── Animated counter hook ─────────────────────────── */
+
+function useCountUp(target: number, duration = 1200, delay = 300) {
+  const [value, setValue] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true });
+
+  useEffect(() => {
+    if (!inView) return;
+    const timeout = setTimeout(() => {
+      const start = performance.now();
+      const tick = (now: number) => {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        // Ease out cubic
+        const eased = 1 - Math.pow(1 - progress, 3);
+        setValue(Math.round(eased * target));
+        if (progress < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    }, delay);
+    return () => clearTimeout(timeout);
+  }, [inView, target, duration, delay]);
+
+  return { value, ref };
+}
 
 import manifestRaw from "@/scripts/assessment_mixed_manifest.json";
 import bankRaw from "@/lib/assessment/mixed-bank-k4.json";
@@ -66,11 +93,10 @@ for (const q of manifestRaw as any[]) {
 /* ── Helpers ───────────────────────────────────────── */
 
 const LEVEL_STEPS = [
-  { key: "pre-k", label: "Emerging Reader", gradeLabel: "Pre-K", color: "#f59e0b" },
-  { key: "kindergarten", label: "Beginning Reader", gradeLabel: "Kindergarten", color: "#f97316" },
-  { key: "1st", label: "Developing Reader", gradeLabel: "1st Grade", color: "#8b5cf6" },
-  { key: "2nd", label: "Growing Reader", gradeLabel: "2nd Grade", color: "#6366f1" },
-  { key: "3rd", label: "Independent Reader", gradeLabel: "3rd Grade", color: "#3b82f6" },
+  { key: "kindergarten", label: "Beginning Reader", gradeLabel: "Kindergarten", color: "#f59e0b" },
+  { key: "1st", label: "Developing Reader", gradeLabel: "1st Grade", color: "#f97316" },
+  { key: "2nd", label: "Growing Reader", gradeLabel: "2nd Grade", color: "#8b5cf6" },
+  { key: "3rd", label: "Independent Reader", gradeLabel: "3rd Grade", color: "#6366f1" },
   { key: "4th", label: "Advanced Reader", gradeLabel: "4th Grade", color: "#10b981" },
 ];
 
@@ -159,15 +185,19 @@ function AssessmentResultsContent() {
     );
   }
 
-  const gk = gradeToKey(assessment.grade_tested) as GradeKey;
-  const gradeLabel = grades[gk]?.grade_label || assessment.grade_tested;
+  // Pre-k kids take K questions, so show "Kindergarten" as tested grade
+  const rawGk = gradeToKey(assessment.grade_tested);
+  const effectiveGk = (rawGk === "pre-k" ? "kindergarten" : rawGk) as GradeKey;
+  const gradeLabel = grades[effectiveGk]?.grade_label || assessment.grade_tested;
 
   const totalCorrect = assessment.answers.filter((a) => a.is_correct).length;
   const totalQuestions = assessment.answers.length;
 
   // Find where the child placed on the meter
-  const placedIdx = LEVEL_STEPS.findIndex((s) => s.label === assessment.reading_level_placed);
-  const testedIdx = LEVEL_STEPS.findIndex((s) => s.key === gradeToKey(assessment.grade_tested));
+  // "Emerging Reader" (pre-k placement) maps to below K — clamp to 0
+  const placedLevel = assessment.reading_level_placed;
+  const placedIdx = Math.max(0, LEVEL_STEPS.findIndex((s) => s.label === placedLevel));
+  const testedIdx = LEVEL_STEPS.findIndex((s) => s.key === effectiveGk);
 
   // Group answers by reading skill
   const bySkill: Record<string, { correct: number; total: number; icon: string }> = {};
@@ -180,6 +210,9 @@ function AssessmentResultsContent() {
     bySkill[skill].total++;
     if (a.is_correct) bySkill[skill].correct++;
   }
+
+  const scorePct = useCountUp(assessment.score_percent, 1200, 400);
+  const correctCount = useCountUp(totalCorrect, 800, 400);
 
   return (
     <div className="max-w-2xl mx-auto py-8 px-4 space-y-6">
@@ -218,7 +251,7 @@ function AssessmentResultsContent() {
           {assessment.reading_level_placed}
         </p>
         <p className="text-sm text-zinc-500 text-center mb-6">
-          {assessment.score_percent}% &middot; {totalCorrect} of {totalQuestions} correct &middot; Tested at {gradeLabel}
+          Scored <span ref={scorePct.ref} className="font-semibold text-zinc-700">{scorePct.value}%</span> &middot; <span ref={correctCount.ref} className="font-semibold text-zinc-700">{correctCount.value}</span> of {totalQuestions} correct
         </p>
 
         {/* Meter */}
@@ -232,11 +265,12 @@ function AssessmentResultsContent() {
               return (
                 <div key={step.key} className="flex-1 flex flex-col items-center">
                   {/* Bar segment */}
-                  <div
-                    className={`w-full h-3 rounded-full transition-all duration-500 ${
-                      isPast ? "" : "bg-zinc-100"
-                    }`}
+                  <motion.div
+                    className={`w-full h-3 rounded-full ${isPast ? "" : "bg-zinc-100"}`}
                     style={isPast ? { backgroundColor: step.color } : undefined}
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{ duration: 0.4, delay: 0.2 + i * 0.1, ease: "easeOut" }}
                   />
                   {/* Marker */}
                   {isPlaced && (
@@ -276,40 +310,49 @@ function AssessmentResultsContent() {
           <h2 className="text-lg font-bold text-zinc-900">Skill Breakdown</h2>
         </div>
         <div className="space-y-4">
-          {Object.entries(bySkill).map(([skill, stats]) => {
+          {Object.entries(bySkill).map(([skill, stats], skillIdx) => {
             const pct = Math.round((stats.correct / stats.total) * 100);
             const barColor = pct >= 80 ? "#10b981" : pct >= 50 ? "#f59e0b" : "#ef4444";
             const label = pct >= 80 ? "Strong" : pct >= 50 ? "Developing" : "Needs Practice";
+            const staggerDelay = 0.3 + skillIdx * 0.2;
             return (
-              <div key={skill}>
+              <motion.div
+                key={skill}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: staggerDelay, duration: 0.4 }}
+              >
                 <div className="flex items-center justify-between mb-1.5">
                   <div className="flex items-center gap-2">
                     <span className="text-lg">{stats.icon}</span>
                     <span className="font-semibold text-sm text-zinc-800">{skill}</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span
+                    <motion.span
                       className="text-[11px] font-semibold px-2 py-0.5 rounded-full"
                       style={{ color: barColor, backgroundColor: barColor + "18" }}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: staggerDelay + 0.5, type: "spring", bounce: 0.4 }}
                     >
                       {label}
-                    </span>
+                    </motion.span>
                     <span className="text-xs text-zinc-400 w-8 text-right">{pct}%</span>
                   </div>
                 </div>
-                <div className="h-2.5 bg-zinc-100 rounded-full overflow-hidden">
+                <div className="h-3 bg-zinc-100 rounded-full overflow-hidden">
                   <motion.div
                     className="h-full rounded-full"
                     style={{ backgroundColor: barColor }}
                     initial={{ width: 0 }}
                     animate={{ width: `${pct}%` }}
-                    transition={{ duration: 0.8, delay: 0.3 }}
+                    transition={{ duration: 1, delay: staggerDelay + 0.1, ease: "easeOut" }}
                   />
                 </div>
                 <p className="text-[11px] text-zinc-400 mt-1">
                   {stats.correct} of {stats.total} correct
                 </p>
-              </div>
+              </motion.div>
             );
           })}
         </div>
