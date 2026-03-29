@@ -11,6 +11,7 @@ import { grades, gradeToKey, type GradeKey } from "@/lib/assessment/questions";
 import {
   ClipboardCheck,
   BarChart3, CheckCircle2, XCircle, RotateCcw, ChevronDown,
+  AudioLines, BookOpen, MessageSquareText,
 } from "lucide-react";
 
 /* ── Animated counter hook ─────────────────────────── */
@@ -74,11 +75,11 @@ interface QuestionMeta {
   skill: string;
 }
 
-const SKILL_MAP: Record<string, { label: string; icon: string }> = {
-  RF: { label: "Phonics & Word Skills", icon: "🔤" },
-  RL: { label: "Reading Comprehension", icon: "📖" },
-  RI: { label: "Reading Comprehension", icon: "📖" },
-  L:  { label: "Vocabulary & Grammar", icon: "💬" },
+const SKILL_MAP: Record<string, { label: string; Icon: typeof AudioLines }> = {
+  RF: { label: "Phonics & Word Skills", Icon: AudioLines },
+  RL: { label: "Reading Comprehension", Icon: BookOpen },
+  RI: { label: "Reading Comprehension", Icon: BookOpen },
+  L:  { label: "Vocabulary & Grammar", Icon: MessageSquareText },
 };
 
 const questionLookup: Record<string, QuestionMeta> = {};
@@ -200,13 +201,13 @@ function AssessmentResultsContent() {
   const testedIdx = LEVEL_STEPS.findIndex((s) => s.key === effectiveGk);
 
   // Group answers by reading skill
-  const bySkill: Record<string, { correct: number; total: number; icon: string }> = {};
+  const bySkill: Record<string, { correct: number; total: number; Icon: typeof AudioLines }> = {};
   for (const a of assessment.answers) {
     const q = questionLookup[a.question_id];
     const skill = q?.skill || "General";
     const domain = q?.standard?.split(".")[0] || "";
-    const icon = SKILL_MAP[domain]?.icon || "📝";
-    if (!bySkill[skill]) bySkill[skill] = { correct: 0, total: 0, icon };
+    const Icon = SKILL_MAP[domain]?.Icon || BookOpen;
+    if (!bySkill[skill]) bySkill[skill] = { correct: 0, total: 0, Icon };
     bySkill[skill].total++;
     if (a.is_correct) bySkill[skill].correct++;
   }
@@ -324,7 +325,7 @@ function AssessmentResultsContent() {
               >
                 <div className="flex items-center justify-between mb-1.5">
                   <div className="flex items-center gap-2">
-                    <span className="text-lg">{stats.icon}</span>
+                    <stats.Icon className="w-4 h-4 text-indigo-500" strokeWidth={1.5} />
                     <span className="font-semibold text-sm text-zinc-800">{skill}</span>
                   </div>
                   <div className="flex items-center gap-2">
