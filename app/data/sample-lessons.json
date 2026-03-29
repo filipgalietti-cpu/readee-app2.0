@@ -1928,7 +1928,7 @@
           {
             "sub": "c",
             "audioFile": "audio/lessons/RL.K.6/S4c.mp3",
-            "ttsScript": "Find the name after 'illustrated by' or 'pictures by' — that's the illustrator. Easy!",
+            "ttsScript": "Now look for 'illustrated by.' That's the illustrator! They drew all the pictures.",
             "interaction": "Table row: Illustrator = Look for 'Illustrated by'.",
             "displayText": "Illustrator",
             "displayDelay": 3500,
