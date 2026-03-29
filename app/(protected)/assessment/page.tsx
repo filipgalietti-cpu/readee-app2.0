@@ -437,23 +437,18 @@ function AssessmentContent() {
         >
           {/* Bunny peeking from bottom-left of card */}
           <motion.div
-            className="absolute -bottom-6 -left-8 z-10 hidden sm:block"
+            className="absolute -bottom-6 -left-16 z-10 hidden sm:block"
             initial={{ opacity: 0, x: -20, rotate: -15 }}
             animate={{ opacity: 1, x: 0, rotate: -8 }}
             transition={{ duration: 0.5, delay: 0.6, type: "spring", bounce: 0.4 }}
           >
-            <motion.div
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <Image
-                src="/images/bunny-hero.png"
-                alt="Readee bunny"
-                width={130}
-                height={130}
-                className="drop-shadow-[0_4px_12px_rgba(0,0,0,0.1)] w-[110px] h-[110px] sm:w-[130px] sm:h-[130px]"
-              />
-            </motion.div>
+            <Image
+              src="/images/bunny-hero.png"
+              alt="Readee bunny"
+              width={130}
+              height={130}
+              className="drop-shadow-[0_4px_12px_rgba(0,0,0,0.1)] w-[110px] h-[110px] sm:w-[130px] sm:h-[130px]"
+            />
           </motion.div>
 
           {/* Gradient header */}
