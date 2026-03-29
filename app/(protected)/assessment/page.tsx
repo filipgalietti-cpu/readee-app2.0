@@ -29,7 +29,7 @@ import bankRaw from "@/lib/assessment/mixed-bank-k4.json";
 
 /* ── Types ─────────────────────────────────────────────── */
 
-type Phase = "loading" | "intro" | "quiz" | "results";
+type Phase = "loading" | "intro" | "quiz" | "calculating" | "results";
 type QuestionType = "mcq" | "category_sort" | "missing_word" | "sentence_build" | "tap_to_pair" | "word_builder";
 
 interface MergedQuestion {
@@ -303,6 +303,7 @@ function AssessmentContent() {
     async (finalAnswers: AnswerRecord[]) => {
       if (!child) return;
       setSaving(true);
+      setPhase("calculating");
 
       const correct = finalAnswers.filter((a) => a.is_correct).length;
       const pct = Math.round((correct / finalAnswers.length) * 100);
@@ -323,8 +324,8 @@ function AssessmentContent() {
         }))
       );
 
+      // Save to Supabase in background
       const supabase = supabaseBrowser();
-
       const assessmentPayload = safeValidate(AssessmentResultSchema, {
         child_id: child.id,
         grade_tested: gradeKey,
@@ -333,11 +334,13 @@ function AssessmentContent() {
         answers: finalAnswers,
       });
       await supabase.from("assessments").insert(assessmentPayload);
-
       await supabase
         .from("children")
         .update({ reading_level: placement.levelName })
         .eq("id", child.id);
+
+      // Show calculating screen for at least 3s
+      await new Promise((r) => setTimeout(r, 3000));
 
       setSaving(false);
       setPhase("results");
@@ -765,10 +768,56 @@ function AssessmentContent() {
     );
   }
 
+  /* ── Calculating ──────────────────────────────────────── */
+  if (phase === "calculating") {
+    const steps = [
+      "Checking your answers...",
+      "Finding your reading level...",
+      "Building your reading path...",
+    ];
+    return (
+      <div className="max-w-md mx-auto text-center py-20 px-4">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.4 }}
+          className="space-y-8"
+        >
+          {/* Animated spinner */}
+          <div className="relative w-24 h-24 mx-auto">
+            <motion.div
+              className="absolute inset-0 rounded-full border-4 border-indigo-200"
+              animate={{ rotate: 360 }}
+              transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+              style={{ borderTopColor: "#6366f1", borderRightColor: "#8b5cf6" }}
+            />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <Sparkles className="w-8 h-8 text-indigo-500" />
+            </div>
+          </div>
+
+          <div className="space-y-3">
+            {steps.map((step, i) => (
+              <motion.p
+                key={i}
+                className="text-lg font-semibold text-zinc-700"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.8, duration: 0.4 }}
+              >
+                {step}
+              </motion.p>
+            ))}
+          </div>
+        </motion.div>
+      </div>
+    );
+  }
+
   /* ── Results ─────────────────────────────────────────── */
   if (phase === "results") {
     return (
-      <div className="max-w-lg mx-auto text-center py-16 px-4 space-y-8 relative overflow-hidden">
+      <div className="max-w-md mx-auto text-center py-12 px-4 relative overflow-hidden">
         {/* Confetti */}
         {confettiPieces.map((p) => (
           <div
@@ -782,40 +831,81 @@ function AssessmentContent() {
           />
         ))}
 
-        <Sparkles className="w-16 h-16 text-indigo-500 mx-auto" strokeWidth={1.5} />
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="space-y-6"
+        >
+          {/* Bunny celebration */}
+          <motion.div
+            initial={{ scale: 0, rotate: -10 }}
+            animate={{ scale: 1, rotate: 0 }}
+            transition={{ type: "spring", bounce: 0.5, delay: 0.2 }}
+          >
+            <Image
+              src="/images/bunny-hero.png"
+              alt="Readee bunny"
+              width={818}
+              height={1436}
+              className="mx-auto w-[100px] h-auto drop-shadow-lg"
+            />
+          </motion.div>
 
-        <h1 className="text-3xl font-bold text-zinc-900 tracking-tight">
-          Awesome, {child.first_name}!
-        </h1>
+          <motion.h1
+            className="text-3xl font-extrabold text-zinc-900"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+          >
+            Great job, {child.first_name}!
+          </motion.h1>
 
-        {/* Level badge */}
-        <div className="inline-block rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 px-8 py-5 text-white">
-          <div className="text-sm font-medium text-indigo-200">You are a</div>
-          <div className="text-2xl font-bold mt-1">{levelName}</div>
-        </div>
+          {/* Level badge card */}
+          <motion.div
+            className="rounded-3xl overflow-hidden shadow-xl"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.6, type: "spring", bounce: 0.3 }}
+          >
+            <div
+              className="px-8 py-8 text-white"
+              style={{ background: "linear-gradient(135deg, #6366f1, #8b5cf6, #a78bfa)" }}
+            >
+              <Sparkles className="w-8 h-8 mx-auto mb-3 text-indigo-200" />
+              <p className="text-indigo-200 text-sm font-medium">Your reading level</p>
+              <p className="text-3xl font-extrabold mt-1">{levelName}</p>
+            </div>
+          </motion.div>
 
-        <p className="text-zinc-500 max-w-xs mx-auto">
-          We&apos;ve built a personalized reading path just for {child.first_name}!
-        </p>
+          <motion.p
+            className="text-zinc-500 text-base max-w-xs mx-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.8 }}
+          >
+            We&apos;ve built a reading path just for you. Let&apos;s start your adventure!
+          </motion.p>
 
-        {saving ? (
-          <p className="text-zinc-400 text-sm">Setting up your reading path...</p>
-        ) : (
-          <div className="space-y-3 pt-4">
+          <motion.div
+            className="space-y-3 pt-2"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1 }}
+          >
             <Link
               href="/dashboard"
-              className="block w-full py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white font-bold text-lg hover:from-indigo-700 hover:to-violet-600 transition-all shadow-lg"
+              className="flex items-center justify-center gap-3 w-full py-4 rounded-2xl font-extrabold text-xl text-white transition-all hover:scale-[1.02] active:scale-[0.97]"
+              style={{
+                background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
+                boxShadow: "0 4px 0 0 #4f46e5",
+              }}
             >
-              Let&apos;s Start Reading &rarr;
+              <span>Let&apos;s Start Reading</span>
+              <Rocket className="w-6 h-6" />
             </Link>
-            <Link
-              href="/dashboard"
-              className="block text-sm text-indigo-600 hover:text-indigo-700 font-medium"
-            >
-              Back to Dashboard
-            </Link>
-          </div>
-        )}
+          </motion.div>
+        </motion.div>
       </div>
     );
   }
