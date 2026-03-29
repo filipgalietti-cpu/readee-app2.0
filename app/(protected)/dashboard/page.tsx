@@ -19,7 +19,7 @@ import { getStandardsForGrade } from "@/lib/data/all-standards";
 import { getChildAvatarImage, AVATAR_IMAGES, DEFAULT_AVATARS } from "@/lib/utils/get-child-avatar";
 import { getItemsByCategory, BACKGROUND_IMAGES } from "@/lib/data/shop-items";
 import type { ShopPurchase, EquippedItems } from "@/lib/db/types";
-import { Target, Puzzle, BookOpen, Map, Carrot, Flame, Sun, CloudSun, Moon, Sparkles, Star, Rocket, Trophy, BarChart3, Sprout, ChevronDown, Lock, User, CreditCard, Bell, LogOut, ChevronsUpDown, Home, BookText, ListChecks } from "lucide-react";
+import { Target, Puzzle, BookOpen, Map, Carrot, Flame, Sun, CloudSun, Moon, Sparkles, Star, Rocket, Trophy, BarChart3, Sprout, ChevronDown, Lock, User, CreditCard, Bell, LogOut, ChevronsUpDown, Home, BookText, ListChecks, ClipboardCheck } from "lucide-react";
 import type { ReactNode } from "react";
 import { getShopIcon } from "@/lib/data/shop-icons";
 
@@ -1227,6 +1227,7 @@ function ParentSidebar({
       label: "Main",
       items: [
         { href: "/dashboard", icon: Home, label: "Dashboard" },
+        { href: `/assessment?child=${child.id}`, icon: ClipboardCheck, label: "Placement Test", emphasis: true },
         { href: `/analytics?child=${child.id}`, icon: BarChart3, label: "Analytics" },
       ],
     },
@@ -1281,9 +1282,17 @@ function ParentSidebar({
           <div key={label} className="px-3">
             <p className="px-2 mb-1 text-[11px] font-semibold text-zinc-400 uppercase tracking-widest">{label}</p>
             <nav className="space-y-0.5">
-              {items.map(({ href, icon: Icon, label: itemLabel, iconColor }: any) => (
-                <Link key={href} href={href} onClick={onClose} className={navLinkClass(href)}>
-                  <Icon className={iconColor || navIconClass(href)} strokeWidth={1.5} />
+              {items.map(({ href, icon: Icon, label: itemLabel, iconColor, emphasis }: any) => (
+                <Link
+                  key={href}
+                  href={href}
+                  onClick={onClose}
+                  className={emphasis && !isActive(href)
+                    ? "flex items-center gap-2.5 px-2 py-1.5 rounded-lg text-[13px] font-semibold transition-colors bg-indigo-50 text-indigo-700 hover:bg-indigo-100"
+                    : navLinkClass(href)
+                  }
+                >
+                  <Icon className={iconColor || (emphasis && !isActive(href) ? "w-4 h-4 text-indigo-500" : navIconClass(href))} strokeWidth={1.5} />
                   <span>{itemLabel}</span>
                 </Link>
               ))}
