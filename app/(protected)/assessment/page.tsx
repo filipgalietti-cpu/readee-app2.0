@@ -437,7 +437,7 @@ function AssessmentContent() {
         >
           {/* Bunny peeking from bottom-left of card */}
           <motion.div
-            className="absolute -bottom-8 -left-16 z-10 hidden sm:block"
+            className="absolute -bottom-8 -left-24 z-10 hidden sm:block"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.6, type: "spring", bounce: 0.4 }}
