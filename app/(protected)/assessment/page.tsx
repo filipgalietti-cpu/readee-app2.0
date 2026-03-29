@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useEffect, useState, useCallback } from "react";
+import { Suspense, useEffect, useState, useCallback, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { supabaseBrowser } from "@/lib/supabase/client";
@@ -10,13 +10,58 @@ import {
   gradeToKey,
   getPlacement,
   type GradeKey,
-  type AssessmentQuestion,
 } from "@/lib/assessment/questions";
 import { safeValidate } from "@/lib/validate";
 import { AssessmentResultSchema } from "@/lib/schemas";
-import { FileText, Sparkles } from "lucide-react";
+import { useAudio } from "@/lib/audio/use-audio";
+import { LoadingImage } from "@/app/components/ui/LoadingImage";
+import { motion } from "framer-motion";
+import { BookOpen, Sparkles, Volume2, Clock, HelpCircle, Headphones } from "lucide-react";
+
+import { CategorySort } from "@/app/components/practice/CategorySort";
+import { MissingWord } from "@/app/components/practice/MissingWord";
+import { SentenceBuild } from "@/app/components/practice/SentenceBuild";
+import { TapToPair } from "@/app/components/practice/TapToPair";
+
+import manifestRaw from "@/scripts/assessment_mixed_manifest.json";
+import bankRaw from "@/lib/assessment/mixed-bank-k4.json";
+
+/* ── Types ─────────────────────────────────────────────── */
 
 type Phase = "loading" | "intro" | "quiz" | "results";
+type QuestionType = "mcq" | "category_sort" | "missing_word" | "sentence_build" | "tap_to_pair" | "word_builder";
+
+interface MergedQuestion {
+  id: string;
+  grade_key: string;
+  type: QuestionType;
+  difficulty: string;
+  prompt: string;
+  stimulus: string;
+  stimulus2: string;
+  audio_url: string;
+  hint_audio_url: string;
+  image_url: string;
+  // mcq
+  choices: string[];
+  correct: string;
+  // category_sort
+  categories: string[];
+  categoryItems?: Record<string, string[]>;
+  items: string[];
+  // missing_word
+  sentence_words: string[];
+  // sentence_build
+  words: string[];
+  // tap_to_pair
+  left_items: string[];
+  right_items: string[];
+  correct_pairs: Record<string, string>;
+  // word_builder
+  word_ending: string;
+  valid_words: string[];
+  max_attempts: number;
+}
 
 interface AnswerRecord {
   question_id: string;
@@ -25,13 +70,149 @@ interface AnswerRecord {
   is_correct: boolean;
 }
 
+/* ── Build merged questions from manifest + bank ───────── */
+
+function buildBankLookup(): Record<string, any> {
+  const lookup: Record<string, any> = {};
+  for (const qs of Object.values(
+    (bankRaw as { grades: Record<string, any[]> }).grades
+  )) {
+    for (const q of qs) lookup[q.id] = q;
+  }
+  return lookup;
+}
+
+const BANK_LOOKUP = buildBankLookup();
+
+function buildMergedQuestions(gradeKey: string): MergedQuestion[] {
+  return (manifestRaw as any[])
+    .filter((m: any) => m.grade_key === gradeKey)
+    .map((m: any) => {
+      const bank = BANK_LOOKUP[m.id] || {};
+      return {
+        ...m,
+        categoryItems: bank.categoryItems ?? undefined,
+        left_items: m.left_items ?? [],
+        right_items: m.right_items ?? [],
+        correct_pairs: m.correct_pairs ?? {},
+        stimulus2: m.stimulus2 ?? "",
+        word_ending: m.word_ending ?? bank.wordEnding ?? "",
+        valid_words: m.valid_words?.length ? m.valid_words : bank.validWords ?? [],
+        max_attempts: m.max_attempts || bank.maxAttempts || 10,
+      } as MergedQuestion;
+    });
+}
+
+/* ── Word Builder (inline, only 1 question in bank) ────── */
+
+function WordBuilderInline({
+  prompt,
+  wordEnding,
+  validWords,
+  maxAttempts,
+  onAnswer,
+}: {
+  prompt: string;
+  wordEnding: string;
+  validWords: string[];
+  maxAttempts: number;
+  onAnswer: (isCorrect: boolean, answer: string) => void;
+}) {
+  const [input, setInput] = useState("");
+  const [found, setFound] = useState<string[]>([]);
+  const [attempts, setAttempts] = useState(0);
+  const [shake, setShake] = useState(false);
+  const done = attempts >= maxAttempts;
+
+  const handleTry = () => {
+    const word = (input.trim() + wordEnding).toLowerCase();
+    setInput("");
+    setAttempts((a) => a + 1);
+
+    if (validWords.map((w) => w.toLowerCase()).includes(word) && !found.includes(word)) {
+      setFound((f) => [...f, word]);
+    } else {
+      setShake(true);
+      setTimeout(() => setShake(false), 400);
+    }
+  };
+
+  const handleDone = () => {
+    const threshold = Math.ceil(validWords.length / 2);
+    onAnswer(found.length >= threshold, found.join(", "));
+  };
+
+  return (
+    <div className="space-y-6 text-center">
+      <h2 className="text-xl font-bold text-zinc-900">{prompt}</h2>
+
+      <div className="text-5xl font-bold text-indigo-600 tracking-wider">-{wordEnding}</div>
+
+      <div className={`flex items-center justify-center gap-2 ${shake ? "animate-shake" : ""}`}>
+        <input
+          type="text"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && input.trim() && handleTry()}
+          placeholder="Type letters..."
+          className="w-32 text-center text-2xl font-bold border-2 border-indigo-300 rounded-xl px-3 py-2 focus:outline-none focus:border-indigo-500"
+          disabled={done}
+          autoFocus
+        />
+        <span className="text-2xl font-bold text-zinc-400">-{wordEnding}</span>
+        <button
+          onClick={handleTry}
+          disabled={!input.trim() || done}
+          className="px-4 py-2 rounded-xl bg-indigo-600 text-white font-bold disabled:opacity-40"
+        >
+          Try
+        </button>
+      </div>
+
+      {found.length > 0 && (
+        <div className="flex flex-wrap justify-center gap-2">
+          {found.map((w) => (
+            <span key={w} className="px-3 py-1.5 rounded-full bg-emerald-100 text-emerald-700 font-semibold text-sm">
+              {w}
+            </span>
+          ))}
+        </div>
+      )}
+
+      <div className="text-sm text-zinc-400">
+        {attempts} / {maxAttempts} tries &middot; {found.length} words found
+      </div>
+
+      <button
+        onClick={handleDone}
+        className="px-8 py-3 rounded-2xl bg-indigo-600 text-white font-bold text-lg hover:bg-indigo-700 transition-colors"
+      >
+        I&apos;m Done
+      </button>
+    </div>
+  );
+}
+
+/* ── MCQ choice colors ─────────────────────────────────── */
+
+const CHOICE_COLORS = [
+  { bg: "bg-blue-50 hover:bg-blue-100 border-blue-200", selected: "bg-blue-100 border-blue-500", badge: "bg-blue-600", text: "text-blue-800" },
+  { bg: "bg-amber-50 hover:bg-amber-100 border-amber-200", selected: "bg-amber-100 border-amber-500", badge: "bg-amber-600", text: "text-amber-800" },
+  { bg: "bg-emerald-50 hover:bg-emerald-100 border-emerald-200", selected: "bg-emerald-100 border-emerald-500", badge: "bg-emerald-600", text: "text-emerald-800" },
+  { bg: "bg-rose-50 hover:bg-rose-100 border-rose-200", selected: "bg-rose-100 border-rose-500", badge: "bg-rose-600", text: "text-rose-800" },
+];
+
+/* ── Main page ─────────────────────────────────────────── */
+
 export default function AssessmentPage() {
   return (
-    <Suspense fallback={
-      <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="h-10 w-10 rounded-full border-4 border-indigo-200 border-t-indigo-600 animate-spin" />
-      </div>
-    }>
+    <Suspense
+      fallback={
+        <div className="flex items-center justify-center min-h-[60vh]">
+          <div className="h-10 w-10 rounded-full border-4 border-indigo-200 border-t-indigo-600 animate-spin" />
+        </div>
+      }
+    >
       <AssessmentContent />
     </Suspense>
   );
@@ -41,16 +222,19 @@ function AssessmentContent() {
   const searchParams = useSearchParams();
   const childId = searchParams.get("child");
 
+  const { playUrl, playSequence, stop, unlockAudio } = useAudio();
+
   const [child, setChild] = useState<Child | null>(null);
   const [phase, setPhase] = useState<Phase>("loading");
   const [gradeKey, setGradeKey] = useState<GradeKey>("kindergarten");
-  const [questions, setQuestions] = useState<AssessmentQuestion[]>([]);
+  const [questions, setQuestions] = useState<MergedQuestion[]>([]);
   const [currentIdx, setCurrentIdx] = useState(0);
   const [answers, setAnswers] = useState<AnswerRecord[]>([]);
   const [selectedChoice, setSelectedChoice] = useState<string | null>(null);
   const [score, setScore] = useState(0);
   const [levelName, setLevelName] = useState("");
   const [saving, setSaving] = useState(false);
+  const [audioReady, setAudioReady] = useState(false);
   const [confettiPieces, setConfettiPieces] = useState<
     { id: number; left: number; color: string; delay: number }[]
   >([]);
@@ -58,10 +242,7 @@ function AssessmentContent() {
   // Load child data
   useEffect(() => {
     async function load() {
-      if (!childId) {
-        setPhase("loading");
-        return;
-      }
+      if (!childId) return;
       const supabase = supabaseBrowser();
       const { data } = await supabase
         .from("children")
@@ -74,12 +255,39 @@ function AssessmentContent() {
         setChild(c);
         const gk = gradeToKey(c.grade);
         setGradeKey(gk);
-        setQuestions(grades[gk].questions);
+        setQuestions(buildMergedQuestions(gk));
         setPhase("intro");
       }
     }
     load();
   }, [childId]);
+
+  // Auto-play question audio
+  useEffect(() => {
+    if (phase !== "quiz" || !audioReady || !questions.length) return;
+    const q = questions[currentIdx];
+    if (q.audio_url) {
+      if (q.type === "category_sort") {
+        const hintUrl = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audio/ui/category-sort-hint.mp3`;
+        playSequence([{ url: q.audio_url }, { delayMs: 400 }, { url: hintUrl }]);
+      } else {
+        playUrl(q.audio_url);
+      }
+    }
+    return () => { stop(); };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentIdx, phase, audioReady]);
+
+  const handleStart = useCallback(async () => {
+    await unlockAudio();
+    setAudioReady(true);
+    setPhase("quiz");
+  }, [unlockAudio]);
+
+  const handleReplay = useCallback(() => {
+    const q = questions[currentIdx];
+    if (q?.audio_url) playUrl(q.audio_url);
+  }, [questions, currentIdx, playUrl]);
 
   // Save results
   const saveResults = useCallback(
@@ -94,20 +302,20 @@ function AssessmentContent() {
       setScore(correct);
       setLevelName(placement.levelName);
 
-      // Spawn confetti
-      const pieces = Array.from({ length: 40 }, (_, i) => ({
-        id: i,
-        left: Math.random() * 100,
-        color: ["#4338ca", "#8b5cf6", "#f59e0b", "#10b981", "#ef4444", "#ec4899"][
-          Math.floor(Math.random() * 6)
-        ],
-        delay: Math.random() * 1.5,
-      }));
-      setConfettiPieces(pieces);
+      // Confetti
+      setConfettiPieces(
+        Array.from({ length: 40 }, (_, i) => ({
+          id: i,
+          left: Math.random() * 100,
+          color: ["#4338ca", "#8b5cf6", "#f59e0b", "#10b981", "#ef4444", "#ec4899"][
+            Math.floor(Math.random() * 6)
+          ],
+          delay: Math.random() * 1.5,
+        }))
+      );
 
       const supabase = supabaseBrowser();
 
-      // Save assessment — validate payload
       const assessmentPayload = safeValidate(AssessmentResultSchema, {
         child_id: child.id,
         grade_tested: gradeKey,
@@ -117,7 +325,6 @@ function AssessmentContent() {
       });
       await supabase.from("assessments").insert(assessmentPayload);
 
-      // Update child's reading level
       await supabase
         .from("children")
         .update({ reading_level: placement.levelName })
@@ -129,32 +336,75 @@ function AssessmentContent() {
     [child, gradeKey]
   );
 
-  const handleAnswer = (choice: string) => {
-    if (selectedChoice) return; // prevent double-click
-    setSelectedChoice(choice);
-
-    const q = questions[currentIdx];
-    const record: AnswerRecord = {
-      question_id: q.id,
-      selected: choice,
-      correct: q.correct,
-      is_correct: choice === q.correct,
-    };
-
-    const newAnswers = [...answers, record];
-    setAnswers(newAnswers);
-
-    // Brief pause for animation, then advance
-    setTimeout(() => {
+  // Advance to next question or save
+  const advance = useCallback(
+    (record: AnswerRecord) => {
+      const newAnswers = [...answers, record];
+      setAnswers(newAnswers);
       setSelectedChoice(null);
+
       if (currentIdx + 1 < questions.length) {
         setCurrentIdx(currentIdx + 1);
       } else {
         saveResults(newAnswers);
       }
-    }, 600);
-  };
+    },
+    [answers, currentIdx, questions.length, saveResults]
+  );
 
+  // MCQ answer handler
+  const handleMcqAnswer = useCallback(
+    (choice: string) => {
+      if (selectedChoice) return;
+      setSelectedChoice(choice);
+
+      const q = questions[currentIdx];
+      const record: AnswerRecord = {
+        question_id: q.id,
+        selected: choice,
+        correct: q.correct,
+        is_correct: choice === q.correct,
+      };
+
+      setTimeout(() => advance(record), 600);
+    },
+    [selectedChoice, questions, currentIdx, advance]
+  );
+
+  // Interactive type answer handler
+  const handleInteractiveAnswer = useCallback(
+    (isCorrect: boolean, answer: string) => {
+      const q = questions[currentIdx];
+
+      let correctStr = q.correct;
+      if (q.type === "category_sort" && q.categoryItems) {
+        correctStr = Object.entries(q.categoryItems)
+          .map(([cat, items]) => `${cat}: ${items.join(", ")}`)
+          .join(" | ");
+      } else if (q.type === "tap_to_pair") {
+        correctStr = Object.entries(q.correct_pairs)
+          .map(([l, r]) => `${l}->${r}`)
+          .join(", ");
+      } else if (q.type === "word_builder") {
+        correctStr = q.valid_words.join(", ");
+      }
+
+      const record: AnswerRecord = {
+        question_id: q.id,
+        selected: answer,
+        correct: correctStr,
+        is_correct: isCorrect,
+      };
+
+      advance(record);
+    },
+    [questions, currentIdx, advance]
+  );
+
+  // Current question helper
+  const q = questions[currentIdx] ?? null;
+
+  /* ── Loading ─────────────────────────────────────────── */
   if (phase === "loading" || !child) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
@@ -163,64 +413,187 @@ function AssessmentContent() {
     );
   }
 
-  /* ─── Intro ──────────────────────────────────────────── */
+  /* ── Intro ───────────────────────────────────────────── */
   if (phase === "intro") {
+    const sparkles = [
+      { top: "10%", left: "8%", size: 6, delay: 0.4 },
+      { top: "18%", left: "82%", size: 5, delay: 0.7 },
+      { top: "60%", left: "12%", size: 4, delay: 1.0 },
+      { top: "45%", left: "90%", size: 5, delay: 0.5 },
+      { top: "28%", left: "52%", size: 3, delay: 0.9 },
+      { top: "72%", left: "75%", size: 4, delay: 0.6 },
+      { top: "8%", left: "38%", size: 3, delay: 1.1 },
+      { top: "82%", left: "25%", size: 5, delay: 1.3 },
+    ];
+
     return (
-      <div className="max-w-lg mx-auto text-center py-16 px-4 space-y-8">
-        <div className="w-24 h-24 rounded-2xl bg-indigo-50 mx-auto flex items-center justify-center">
-          <FileText className="w-12 h-12 text-indigo-500" strokeWidth={1.5} />
-        </div>
-        <div>
-          <h1 className="text-2xl font-bold text-zinc-900 tracking-tight">
-            Let&apos;s see where {child.first_name} is!
-          </h1>
-          <p className="text-zinc-500 mt-2 max-w-sm mx-auto">
-            Take a quick {questions.length}-question reading quiz. No pressure — just
-            a fun way to find the right starting level.
-          </p>
-        </div>
-        <div className="space-y-3">
-          <div className="inline-block px-4 py-1.5 rounded-full bg-indigo-50 text-indigo-700 text-sm font-semibold">
-            {grades[gradeKey].grade_label} Level
-          </div>
-          <div className="text-sm text-zinc-400">
-            {questions.length} questions &middot; About 3 minutes
-          </div>
-        </div>
-        <button
-          onClick={() => setPhase("quiz")}
-          className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white font-bold text-lg hover:from-indigo-700 hover:to-violet-600 transition-all shadow-lg hover:shadow-xl"
+      <div className="max-w-md mx-auto py-10 px-4">
+        <motion.div
+          className="bg-white rounded-3xl shadow-xl overflow-hidden"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
         >
-          Start Quiz
-        </button>
-        <div>
-          <Link
-            href="/dashboard"
-            className="text-sm text-zinc-400 hover:text-zinc-600 transition-colors"
+          {/* Gradient header */}
+          <div
+            className="relative px-6 pt-10 pb-12 text-center overflow-hidden"
+            style={{ background: "linear-gradient(135deg, #6366f1, #8b5cf6, #a78bfa)" }}
           >
-            Skip for now
-          </Link>
-        </div>
+            {/* Floating sparkles */}
+            <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+              {sparkles.map((dot, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute rounded-full bg-white/25"
+                  style={{ top: dot.top, left: dot.left, width: dot.size, height: dot.size }}
+                  animate={{
+                    opacity: [0.1, 0.5, 0.1],
+                    scale: [0.8, 1.3, 0.8],
+                    y: [0, -5, 0],
+                  }}
+                  transition={{
+                    duration: 2.5,
+                    delay: dot.delay,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                />
+              ))}
+            </div>
+
+            <motion.div
+              className="relative w-20 h-20 mx-auto mb-4 rounded-full bg-white/20 backdrop-blur flex items-center justify-center"
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4, delay: 0.4 }}
+            >
+              <BookOpen className="w-10 h-10 text-white" strokeWidth={1.5} />
+            </motion.div>
+
+            <motion.h1
+              className="relative text-2xl font-extrabold text-white"
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: 0.5 }}
+            >
+              Hey {child.first_name}, let&apos;s go!
+            </motion.h1>
+
+            <motion.p
+              className="relative text-indigo-100 text-sm mt-2 max-w-[260px] mx-auto"
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: 0.6 }}
+            >
+              Quick reading quiz to find your perfect starting level
+            </motion.p>
+          </div>
+
+          {/* Content area */}
+          <div className="px-6 pt-6 pb-6">
+            {/* Grade badge */}
+            <motion.div
+              className="flex justify-center mb-5"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.3, delay: 0.6 }}
+            >
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 text-indigo-700 text-sm font-bold">
+                <Sparkles className="w-4 h-4" />
+                {grades[gradeKey].grade_label} Level
+              </span>
+            </motion.div>
+
+            {/* Info pills */}
+            <motion.div
+              className="flex flex-wrap justify-center gap-2 mb-6"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: 0.7 }}
+            >
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-zinc-100 text-xs font-medium text-zinc-600">
+                <HelpCircle className="w-3.5 h-3.5" />
+                {questions.length} questions
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-zinc-100 text-xs font-medium text-zinc-600">
+                <Clock className="w-3.5 h-3.5" />
+                ~3 minutes
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-zinc-100 text-xs font-medium text-zinc-600">
+                <Headphones className="w-3.5 h-3.5" />
+                Audio enabled
+              </span>
+            </motion.div>
+
+            {/* Reassurance */}
+            <motion.p
+              className="text-center text-zinc-400 text-xs mb-6"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8 }}
+            >
+              No pressure — just answer your best. There are no wrong answers here!
+            </motion.p>
+
+            {/* Start button with pulse glow */}
+            <motion.button
+              onClick={handleStart}
+              className="relative w-full py-4 rounded-2xl font-extrabold text-lg text-white transition-all hover:scale-[1.02] active:scale-[0.97]"
+              style={{
+                background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
+                boxShadow: "0 4px 0 0 #4f46e5",
+              }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4, delay: 0.9 }}
+            >
+              <motion.span
+                className="absolute inset-0 rounded-2xl"
+                animate={{
+                  boxShadow: [
+                    "0 0 0 0 rgba(99,102,241,0.4)",
+                    "0 0 0 10px rgba(99,102,241,0)",
+                  ],
+                }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+              />
+              Start Quiz
+            </motion.button>
+
+            <div className="text-center mt-4">
+              <Link
+                href="/dashboard"
+                className="text-sm text-zinc-400 hover:text-zinc-600 transition-colors"
+              >
+                Skip for now
+              </Link>
+            </div>
+          </div>
+        </motion.div>
       </div>
     );
   }
 
-  /* ─── Quiz ───────────────────────────────────────────── */
-  if (phase === "quiz") {
-    const q = questions[currentIdx];
-    const progress = ((currentIdx) / questions.length) * 100;
+  /* ── Quiz ────────────────────────────────────────────── */
+  if (phase === "quiz" && q) {
+    const progress = (currentIdx / questions.length) * 100;
+    const blankIndex = q.sentence_words?.indexOf("___") ?? -1;
+
+    // Derive correct word for missing_word (not the full sentence)
+    const missingCorrectWord =
+      q.type === "missing_word" && blankIndex >= 0
+        ? q.correct.split(/\s+/)[blankIndex] ?? q.correct
+        : q.correct;
 
     return (
-      <div className="max-w-2xl mx-auto py-8 px-4 space-y-8">
+      <div className="max-w-2xl mx-auto py-8 px-4 space-y-6">
         {/* Progress */}
         <div className="space-y-2">
           <div className="flex justify-between text-sm">
             <span className="font-medium text-indigo-600">
               Question {currentIdx + 1} of {questions.length}
             </span>
-            <span className="text-zinc-400">
-              {grades[gradeKey].grade_label}
-            </span>
+            <span className="text-zinc-400">{grades[gradeKey].grade_label}</span>
           </div>
           <div className="h-2 bg-zinc-100 rounded-full overflow-hidden">
             <div
@@ -230,84 +603,160 @@ function AssessmentContent() {
           </div>
         </div>
 
-        {/* Stimulus */}
-        {q.stimulus && (
+        {/* Image */}
+        {q.image_url && (
+          <div className="flex justify-center">
+            <LoadingImage
+              src={q.image_url}
+              className="max-h-[180px] sm:max-h-[220px] md:max-h-[300px] w-auto object-contain rounded-2xl shadow-md border-2 border-white"
+            />
+          </div>
+        )}
+
+        {/* Stimulus (MCQ passages/words) */}
+        {q.type === "mcq" && q.stimulus && (
           <div className="rounded-2xl bg-indigo-50 border border-indigo-100 p-6 text-center">
-            {q.stimulus_type === "large_letter" || q.stimulus_type === "segmented_word" ? (
-              <div className="text-5xl font-bold text-indigo-700 tracking-widest">
-                {q.stimulus}
-              </div>
-            ) : q.stimulus_type === "word_display" ? (
-              <div className="text-4xl font-bold text-indigo-700 tracking-wide">
-                {q.stimulus}
-              </div>
-            ) : q.stimulus_type === "passage" ? (
-              <p className="text-lg text-zinc-700 leading-relaxed text-left italic">
-                &ldquo;{q.stimulus}&rdquo;
+            <p className="text-lg text-zinc-700 leading-relaxed italic">
+              {q.stimulus}
+            </p>
+            {q.stimulus2 && (
+              <p className="text-lg text-zinc-700 leading-relaxed italic mt-4 pt-4 border-t border-indigo-200">
+                {q.stimulus2}
               </p>
-            ) : q.stimulus_type === "sentence" ? (
-              <p className="text-xl text-zinc-800 font-medium">
-                {q.stimulus}
-              </p>
-            ) : (
-              <div className="text-4xl">{q.stimulus}</div>
             )}
           </div>
         )}
 
-        {/* Prompt */}
-        <h2 className="text-xl font-bold text-zinc-900 text-center leading-relaxed">
-          {q.prompt}
-        </h2>
+        {/* Prompt + replay */}
+        <div className="flex items-center gap-2 justify-center">
+          <h2 className="text-xl font-bold text-zinc-900 text-center leading-relaxed">
+            {q.prompt}
+          </h2>
+          {q.audio_url && (
+            <button
+              onClick={handleReplay}
+              className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-indigo-50 hover:bg-indigo-100 transition-colors flex-shrink-0"
+              aria-label="Replay audio"
+            >
+              <Volume2 className="w-5 h-5 text-indigo-600" />
+            </button>
+          )}
+        </div>
 
-        {/* Choices */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          {q.choices.map((choice, i) => {
-            const isSelected = selectedChoice === choice;
-            const letters = ["A", "B", "C", "D"];
-
+        {/* Progress dots */}
+        <div className="flex items-center justify-center gap-2">
+          {questions.map((_, i) => {
+            const isCurrent = i === currentIdx;
+            const answered = i < answers.length;
             return (
-              <button
+              <div
                 key={i}
-                onClick={() => handleAnswer(choice)}
-                disabled={!!selectedChoice}
-                className={`
-                  relative text-left rounded-2xl border-2 p-4 transition-all duration-200
-                  ${
-                    isSelected
-                      ? "border-indigo-500 bg-indigo-50 scale-[1.02]"
-                      : "border-zinc-200 bg-white hover:border-indigo-300 hover:shadow-md"
-                  }
-                  ${selectedChoice && !isSelected ? "opacity-50" : ""}
-                  disabled:cursor-default
-                `}
-              >
-                <div className="flex items-center gap-3">
-                  <div
-                    className={`
-                    w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold flex-shrink-0
-                    ${isSelected ? "bg-indigo-600 text-white" : "bg-zinc-100 text-zinc-500"}
-                  `}
-                  >
-                    {letters[i]}
-                  </div>
-                  <span
-                    className={`font-medium ${
-                      isSelected ? "text-indigo-700" : "text-zinc-800"
-                    }`}
-                  >
-                    {choice}
-                  </span>
-                </div>
-              </button>
+                className={`rounded-full transition-all duration-300 ${
+                  answered
+                    ? "bg-indigo-400"
+                    : isCurrent
+                    ? "bg-indigo-500"
+                    : "bg-zinc-300"
+                } ${isCurrent ? "w-3.5 h-3.5" : "w-2.5 h-2.5"}`}
+              />
             );
           })}
         </div>
+
+        {/* ── Question type renderers ── */}
+
+        {q.type === "mcq" && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {q.choices.map((choice, i) => {
+              const isSelected = selectedChoice === choice;
+              const letters = ["A", "B", "C", "D"];
+              const color = CHOICE_COLORS[i % CHOICE_COLORS.length];
+
+              return (
+                <button
+                  key={i}
+                  onClick={() => handleMcqAnswer(choice)}
+                  disabled={!!selectedChoice}
+                  className={`
+                    relative text-left rounded-2xl border-2 p-4 transition-all duration-200
+                    ${isSelected ? color.selected + " scale-[1.02]" : color.bg}
+                    ${selectedChoice && !isSelected ? "opacity-50" : ""}
+                    disabled:cursor-default
+                  `}
+                >
+                  <div className="flex items-center gap-3">
+                    <div
+                      className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold flex-shrink-0 text-white ${color.badge}`}
+                    >
+                      {letters[i]}
+                    </div>
+                    <span className={`font-medium ${color.text}`}>{choice}</span>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        )}
+
+        {q.type === "category_sort" && q.categoryItems && (
+          <CategorySort
+            prompt=""
+            categories={q.categories}
+            categoryItems={q.categoryItems}
+            items={q.items}
+            answered={false}
+            onAnswer={handleInteractiveAnswer}
+          />
+        )}
+
+        {q.type === "missing_word" && blankIndex >= 0 && (
+          <MissingWord
+            prompt=""
+            sentenceWords={q.sentence_words}
+            blankIndex={blankIndex}
+            choices={q.choices}
+            correct={missingCorrectWord}
+            answered={false}
+            onAnswer={handleInteractiveAnswer}
+          />
+        )}
+
+        {q.type === "sentence_build" && q.words.length > 0 && (
+          <SentenceBuild
+            prompt=""
+            passage={q.stimulus || null}
+            words={q.words}
+            correctSentence={q.correct}
+            answered={false}
+            onAnswer={handleInteractiveAnswer}
+          />
+        )}
+
+        {q.type === "tap_to_pair" && q.left_items.length > 0 && (
+          <TapToPair
+            prompt=""
+            leftItems={q.left_items}
+            rightItems={q.right_items}
+            correctPairs={q.correct_pairs}
+            answered={false}
+            onAnswer={handleInteractiveAnswer}
+          />
+        )}
+
+        {q.type === "word_builder" && (
+          <WordBuilderInline
+            prompt=""
+            wordEnding={q.word_ending}
+            validWords={q.valid_words}
+            maxAttempts={q.max_attempts}
+            onAnswer={handleInteractiveAnswer}
+          />
+        )}
       </div>
     );
   }
 
-  /* ─── Results ────────────────────────────────────────── */
+  /* ── Results ─────────────────────────────────────────── */
   if (phase === "results") {
     return (
       <div className="max-w-lg mx-auto text-center py-16 px-4 space-y-8 relative overflow-hidden">
@@ -332,9 +781,7 @@ function AssessmentContent() {
 
         {/* Level badge */}
         <div className="inline-block rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 px-8 py-5 text-white">
-          <div className="text-sm font-medium text-indigo-200">
-            You are a
-          </div>
+          <div className="text-sm font-medium text-indigo-200">You are a</div>
           <div className="text-2xl font-bold mt-1">{levelName}</div>
         </div>
 
