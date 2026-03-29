@@ -21,6 +21,14 @@ export default function Error({
       <p className="text-zinc-600 mb-8 max-w-md">
         An unexpected error occurred. We&apos;ve been notified and are looking into it.
       </p>
+      {process.env.NODE_ENV !== "production" && (
+        <pre className="text-left text-xs text-red-600 bg-red-50 p-4 rounded-lg mb-8 max-w-lg overflow-auto">
+          {error.message}
+          {"\n"}
+          {error.stack}
+        </pre>
+      )}
+      <p className="text-zinc-400 text-xs mb-4 max-w-md font-mono">{error.message}</p>
       <div className="flex gap-4">
         <button
           onClick={reset}
