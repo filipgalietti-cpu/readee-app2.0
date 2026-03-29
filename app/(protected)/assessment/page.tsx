@@ -337,14 +337,18 @@ function AssessmentContent() {
   // Advance to next question or save
   const advance = useCallback(
     (record: AnswerRecord) => {
-      const newAnswers = [...answers, record];
-      setAnswers(newAnswers);
-      setSelectedChoice(null);
+      try {
+        const newAnswers = [...answers, record];
+        setAnswers(newAnswers);
+        setSelectedChoice(null);
 
-      if (currentIdx + 1 < questions.length) {
-        setCurrentIdx(currentIdx + 1);
-      } else {
-        saveResults(newAnswers);
+        if (currentIdx + 1 < questions.length) {
+          setCurrentIdx(currentIdx + 1);
+        } else {
+          saveResults(newAnswers);
+        }
+      } catch (err) {
+        console.error("[assessment] advance error:", err);
       }
     },
     [answers, currentIdx, questions.length, saveResults]
@@ -373,8 +377,9 @@ function AssessmentContent() {
   const handleInteractiveAnswer = useCallback(
     (isCorrect: boolean, answer: string) => {
       const q = questions[currentIdx];
+      if (!q) return; // guard against out-of-bounds
 
-      let correctStr = q.correct;
+      let correctStr = q.correct || "";
       if (q.type === "category_sort" && q.categoryItems) {
         correctStr = Object.entries(q.categoryItems)
           .map(([cat, items]) => `${cat}: ${items.join(", ")}`)

@@ -172,7 +172,7 @@ export function CategorySort({
       }
       // Not dropped on a bucket — snaps back automatically
     },
-    [answered, result, findOverlappingBucket, categoryItems, flashBucket, onCorrectPlace, onIncorrectPlace]
+    [answered, result, findOverlappingBucket, categoryItems, flashBucket, onCorrectPlace, onIncorrectPlace, assessmentMode]
   );
 
   /** Tap an item in a bucket to send it back */
@@ -218,7 +218,7 @@ export function CategorySort({
       }
       setSelectedBankItem(null);
     },
-    [selectedBankItem, answered, result, categoryItems, flashBucket, onCorrectPlace, onIncorrectPlace]
+    [selectedBankItem, answered, result, categoryItems, flashBucket, onCorrectPlace, onIncorrectPlace, assessmentMode]
   );
 
   const handleCheck = useCallback(() => {
@@ -234,6 +234,17 @@ export function CategorySort({
       return true;
     });
 
+    const answer = categories
+      .map((c) => `${c}: ${buckets[c].join(", ")}`)
+      .join(" | ");
+
+    if (assessmentMode) {
+      // No feedback — submit immediately
+      setResult(isCorrect ? "correct" : "incorrect");
+      onAnswer(isCorrect, answer);
+      return;
+    }
+
     setResult(isCorrect ? "correct" : "incorrect");
 
     if (!isCorrect) {
@@ -241,14 +252,10 @@ export function CategorySort({
       setTimeout(() => setShaking(false), 500);
     }
 
-    const answer = categories
-      .map((c) => `${c}: ${buckets[c].join(", ")}`)
-      .join(" | ");
-
     setTimeout(() => {
       onAnswer(isCorrect, answer);
     }, 400);
-  }, [allPlaced, answered, result, categories, buckets, categoryItems, onAnswer]);
+  }, [allPlaced, answered, result, categories, buckets, categoryItems, onAnswer, assessmentMode]);
 
   const gridCols =
     categories.length === 2
