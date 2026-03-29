@@ -17,7 +17,7 @@ import { useAudio } from "@/lib/audio/use-audio";
 import { LoadingImage } from "@/app/components/ui/LoadingImage";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Sparkles, Volume2, Clock, HelpCircle, Headphones } from "lucide-react";
+import { Sparkles, Volume2, Rocket } from "lucide-react";
 
 import { CategorySort } from "@/app/components/practice/CategorySort";
 import { MissingWord } from "@/app/components/practice/MissingWord";
@@ -453,7 +453,7 @@ function AssessmentContent() {
 
           {/* Gradient header */}
           <div
-            className="relative px-6 pt-10 pb-10 text-center overflow-hidden rounded-t-3xl"
+            className="relative px-6 pt-10 pb-8 text-center overflow-hidden rounded-t-3xl"
             style={{ background: "linear-gradient(135deg, #6366f1, #8b5cf6, #a78bfa)" }}
           >
             {/* Floating sparkles */}
@@ -479,81 +479,55 @@ function AssessmentContent() {
             </div>
 
             <motion.h1
-              className="relative text-2xl font-extrabold text-white"
+              className="relative text-3xl font-extrabold text-white"
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.5 }}
             >
-              Hey {child.first_name}, let&apos;s go!
+              Hi {child.first_name}!
             </motion.h1>
 
             <motion.p
-              className="relative text-indigo-100 text-sm mt-2 max-w-[260px] mx-auto"
+              className="relative text-indigo-100 text-base mt-2 font-medium"
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.6 }}
             >
-              Quick reading quiz to find your perfect starting level
+              Ready for a reading adventure?
             </motion.p>
           </div>
 
           {/* Content area */}
-          <div className="px-6 pt-6 pb-6">
-            {/* Grade badge */}
-            <motion.div
-              className="flex justify-center mb-5"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.3, delay: 0.6 }}
-            >
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 text-indigo-700 text-sm font-bold">
-                <Sparkles className="w-4 h-4" />
-                {grades[gradeKey].grade_label} Level
-              </span>
-            </motion.div>
-
-            {/* Info pills */}
-            <motion.div
-              className="flex flex-wrap justify-center gap-2 mb-6"
+          <div className="px-6 pt-6 pb-7 text-center">
+            <motion.p
+              className="text-lg font-semibold text-zinc-700 mb-2"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.7 }}
+              transition={{ delay: 0.65 }}
             >
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-zinc-100 text-xs font-medium text-zinc-600">
-                <HelpCircle className="w-3.5 h-3.5" />
-                {questions.length} questions
-              </span>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-zinc-100 text-xs font-medium text-zinc-600">
-                <Clock className="w-3.5 h-3.5" />
-                ~3 minutes
-              </span>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-zinc-100 text-xs font-medium text-zinc-600">
-                <Headphones className="w-3.5 h-3.5" />
-                Audio enabled
-              </span>
-            </motion.div>
-
-            {/* Reassurance */}
-            <motion.p
-              className="text-center text-zinc-400 text-xs mb-6"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.8 }}
-            >
-              No pressure — just answer your best. There are no wrong answers here!
+              Answer some fun questions so we can find the best reading level for you!
             </motion.p>
 
-            {/* Start button with pulse glow */}
+            <motion.p
+              className="text-zinc-400 text-sm mb-6"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.75 }}
+            >
+              Just try your best — you got this!
+            </motion.p>
+
+            {/* Let's Go button */}
             <motion.button
               onClick={handleStart}
-              className="relative w-full py-4 rounded-2xl font-extrabold text-lg text-white transition-all hover:scale-[1.02] active:scale-[0.97]"
+              className="relative w-full py-4 rounded-2xl font-extrabold text-xl text-white transition-all hover:scale-[1.02] active:scale-[0.97] flex items-center justify-center gap-3"
               style={{
                 background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
                 boxShadow: "0 4px 0 0 #4f46e5",
               }}
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4, delay: 0.9 }}
+              transition={{ duration: 0.4, delay: 0.85 }}
             >
               <motion.span
                 className="absolute inset-0 rounded-2xl"
@@ -565,15 +539,16 @@ function AssessmentContent() {
                 }}
                 transition={{ duration: 1.5, repeat: Infinity }}
               />
-              Start Quiz
+              <span className="relative">Let&apos;s Go!</span>
+              <Rocket className="relative w-6 h-6" />
             </motion.button>
 
-            <div className="text-center mt-4">
+            <div className="mt-4">
               <Link
                 href="/dashboard"
                 className="text-sm text-zinc-400 hover:text-zinc-600 transition-colors"
               >
-                Skip for now
+                Maybe later
               </Link>
             </div>
           </div>
