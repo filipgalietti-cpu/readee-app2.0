@@ -108,7 +108,7 @@ export function TapToPair({
     (left: string, right: string) => {
       const isCorrect = correctPairs[left] === right;
       if (isCorrect) {
-        (onPlayItem || playWord)(right);
+        // Don't play here — the tap handler already played the word
         const newMatches = [...matches, { left, right, correct: true }];
         setMatches(newMatches);
         setSelectedLeft(null);
