@@ -10,7 +10,7 @@ import { levelNameToGradeKey, gradeOrder, type GradeKey } from "@/lib/assessment
 import { usePlanStore } from "@/lib/stores/plan-store";
 import lessonsData from "@/lib/data/lessons.json";
 import {
-  Flame, Star, ChevronDown, Play,
+  Flame, Carrot, ChevronDown, Play,
   BookOpen, Type, Newspaper, MessageCircle, BookMarked,
 } from "lucide-react";
 
@@ -281,7 +281,7 @@ function JourneyContent() {
           </div>
           <div className="flex gap-4 mt-3 text-xs text-white/80">
             <span className="flex items-center gap-1"><Flame className="w-3.5 h-3.5" /> {child.streak_days || 0} day streak</span>
-            <span className="flex items-center gap-1"><Star className="w-3.5 h-3.5" /> {child.carrots || 0} carrots</span>
+            <span className="flex items-center gap-1"><Carrot className="w-3.5 h-3.5 text-orange-300" /> {child.carrots || 0} carrots</span>
           </div>
         </motion.div>
 
