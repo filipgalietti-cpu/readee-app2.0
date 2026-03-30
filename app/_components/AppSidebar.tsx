@@ -30,7 +30,7 @@ function getNavSections(childId: string | null) {
       items: [
         { href: "/word-bank", icon: BookText, label: "Word Bank" },
         { href: "/question-bank", icon: ListChecks, label: "Question Bank" },
-        { href: `/roadmap${q}`, icon: Map, label: "Reading Journey" },
+        { href: `/journey${q}`, icon: Map, label: "Reading Journey" },
       ],
     },
     {

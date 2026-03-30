@@ -784,7 +784,7 @@ function ChildDashboard({
                   </Link>
                 </SidebarTooltip>
                 <SidebarTooltip label="Reading Journey">
-                  <Link href={`/roadmap?child=${child.id}`} className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-zinc-100 transition-colors">
+                  <Link href={`/journey?child=${child.id}`} className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-zinc-100 transition-colors">
                     <Map className="w-5 h-5 text-zinc-500" strokeWidth={1.5} />
                   </Link>
                 </SidebarTooltip>
@@ -1024,7 +1024,7 @@ function ChildDashboard({
             </motion.div>
           </Link>
 
-          <Link href={`/roadmap?child=${child.id}`} className="block">
+          <Link href={`/journey?child=${child.id}`} className="block">
             <motion.div
               whileHover={{ scale: 1.05, y: -4 }}
               whileTap={{ scale: 0.95 }}
@@ -1248,7 +1248,7 @@ function ParentSidebar({
       items: [
         { href: "/word-bank", icon: BookText, label: "Word Bank" },
         { href: "/question-bank", icon: ListChecks, label: "Question Bank" },
-        { href: `/roadmap?child=${child.id}`, icon: Map, label: "Reading Journey" },
+        { href: `/journey?child=${child.id}`, icon: Map, label: "Reading Journey" },
       ],
     },
     {
