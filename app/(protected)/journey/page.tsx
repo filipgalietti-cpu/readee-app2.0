@@ -10,9 +10,27 @@ import { levelNameToGradeKey, gradeOrder, type GradeKey } from "@/lib/assessment
 import { usePlanStore } from "@/lib/stores/plan-store";
 import lessonsData from "@/lib/data/lessons.json";
 import {
-  CheckCircle2, Lock, Flame, Play, Star, ChevronDown,
+  Flame, Star, ChevronDown, Play,
   BookOpen, Type, Newspaper, MessageCircle, BookMarked,
 } from "lucide-react";
+
+/* ── Solid SVG icons (Heroicons solid) ─────────────── */
+
+function CheckCircleSolid({ className }: { className?: string }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className={className}>
+      <path fillRule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z" clipRule="evenodd"/>
+    </svg>
+  );
+}
+
+function LockSolid({ className }: { className?: string }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={className}>
+      <path fillRule="evenodd" d="M10 1a4.5 4.5 0 0 0-4.5 4.5V9H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-.5V5.5A4.5 4.5 0 0 0 10 1Zm3 8V5.5a3 3 0 1 0-6 0V9h6Z" clipRule="evenodd"/>
+    </svg>
+  );
+}
 
 /* ── Types ─────────────────────────────────────────── */
 
@@ -406,7 +424,7 @@ function LessonRow({
   const node = {
     completed: (
       <div className="absolute -left-6 top-1/2 -translate-y-1/2 w-[14px] h-[14px] rounded-full bg-emerald-500 border-2 border-white shadow flex items-center justify-center">
-        <CheckCircle2 className="w-3 h-3 text-white" />
+        <CheckCircleSolid className="w-3 h-3 text-white" />
       </div>
     ),
     started: (
@@ -482,7 +500,7 @@ function LessonRow({
         )}
         {status === "completed" && (
           <div className="flex items-center gap-1 text-emerald-500">
-            <CheckCircle2 className="w-5 h-5" />
+            <CheckCircleSolid className="w-5 h-5 text-emerald-500" />
           </div>
         )}
         {status === "premium" && (
@@ -491,7 +509,7 @@ function LessonRow({
           </span>
         )}
         {status === "locked" && (
-          <Lock className="w-4 h-4 text-zinc-300 flex-shrink-0" />
+          <LockSolid className="w-4 h-4 text-zinc-300 flex-shrink-0" />
         )}
       </div>
     </motion.div>
