@@ -413,7 +413,7 @@ function LessonRow({
 
   // All nodes centered at the rail (parent pl-7 = 28px, rail at left-[10px] = center at 11px)
   // Node center should be at -17px from content left (28px - 11px = 17px)
-  const nodeBase = "absolute top-1/2 -translate-y-1/2 -translate-x-1/2";
+  const nodeBase = "absolute top-1/2 -translate-y-1/2 -translate-x-1/2 z-10 bg-white rounded-full";
   const nodeLeft = "left-[-17px]";
 
   const node = {
