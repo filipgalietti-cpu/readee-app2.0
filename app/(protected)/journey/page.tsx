@@ -3,15 +3,15 @@
 import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
 import { levelNameToGradeKey } from "@/lib/assessment/questions";
 import { usePlanStore } from "@/lib/stores/plan-store";
 import lessonsData from "@/lib/data/lessons.json";
 import {
-  CheckCircle2, Lock, ChevronDown, BookOpen, Flame,
-  Sparkles, Play, RotateCcw, Star,
+  CheckCircle2, Lock, BookOpen, Flame,
+  Play, RotateCcw, Star,
 } from "lucide-react";
 
 /* ── Types ─────────────────────────────────────────── */
@@ -21,81 +21,15 @@ interface LessonData {
   title: string;
   skill: string;
   description: string;
-  standards?: string[];
 }
 
 interface ProgressRecord {
   lesson_id: string;
   section: string;
   score: number;
-  completed_at: string;
 }
 
 type LessonStatus = "completed" | "current" | "locked" | "premium";
-
-interface LessonWithStatus extends LessonData {
-  status: LessonStatus;
-  idx: number;
-}
-
-interface Section {
-  name: string;
-  lessons: LessonWithStatus[];
-  completedCount: number;
-}
-
-/* ── Skill → Section mapping ───────────────────────── */
-
-const SKILL_SECTIONS: Record<string, string> = {
-  letter_recognition: "Letters & Sounds",
-  letter_sounds: "Letters & Sounds",
-  short_vowels: "Letters & Sounds",
-  phoneme_sounds: "Letters & Sounds",
-  cvc_blending: "Words & Reading",
-  word_families: "Words & Reading",
-  sight_words: "Words & Reading",
-  syllable_awareness: "Words & Reading",
-  print_concepts: "Words & Reading",
-  decodable_story: "Stories",
-  reading: "Stories",
-  // 1st grade
-  blends: "Phonics",
-  digraphs: "Phonics",
-  cvce: "Phonics",
-  fluency: "Reading & Fluency",
-  word_endings: "Words & Vocabulary",
-  long_short_vowels: "Phonics",
-  multisyllabic: "Words & Vocabulary",
-  // 2nd grade
-  vowel_teams: "Phonics",
-  compound_words: "Words & Vocabulary",
-  prefixes: "Words & Vocabulary",
-  suffixes: "Words & Vocabulary",
-  inferences: "Comprehension",
-  sight_words_advanced: "Words & Vocabulary",
-  // 3rd+
-  spelling_patterns: "Phonics",
-  main_idea: "Comprehension",
-  context_clues: "Comprehension",
-  fact_opinion: "Comprehension",
-  story_structure: "Comprehension",
-  latin_suffixes: "Words & Vocabulary",
-  poetry: "Reading & Fluency",
-  point_of_view: "Comprehension",
-  // 4th
-  greek_latin: "Words & Vocabulary",
-  figurative_language: "Comprehension",
-  idioms: "Words & Vocabulary",
-  text_structure: "Comprehension",
-  theme: "Comprehension",
-  author_purpose: "Comprehension",
-  character_analysis: "Comprehension",
-  summarizing: "Comprehension",
-};
-
-function getSectionName(skill: string): string {
-  return SKILL_SECTIONS[skill] || "Reading";
-}
 
 const FREE_LESSON_COUNT = 5;
 
@@ -124,22 +58,17 @@ function JourneyContent() {
   const [child, setChild] = useState<Child | null>(null);
   const [progress, setProgress] = useState<ProgressRecord[]>([]);
   const [loading, setLoading] = useState(true);
-  const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set());
 
-  useEffect(() => {
-    fetchPlan();
-  }, [fetchPlan]);
+  useEffect(() => { fetchPlan(); }, [fetchPlan]);
 
   useEffect(() => {
     async function load() {
       if (!childId) return;
       const supabase = supabaseBrowser();
-
       const [childRes, progressRes] = await Promise.all([
         supabase.from("children").select("*").eq("id", childId).single(),
-        supabase.from("lessons_progress").select("*").eq("child_id", childId),
+        supabase.from("lessons_progress").select("lesson_id, section, score").eq("child_id", childId),
       ]);
-
       if (childRes.data) setChild(childRes.data as Child);
       if (progressRes.data) setProgress(progressRes.data as ProgressRecord[]);
       setLoading(false);
@@ -155,72 +84,26 @@ function JourneyContent() {
     );
   }
 
-  // Load lessons for child's reading level
   const gradeKey = levelNameToGradeKey(child.reading_level);
-  const file = lessonsData as any;
-  const level = file.levels[gradeKey];
+  const level = (lessonsData as any).levels[gradeKey];
   const lessons: LessonData[] = level?.lessons || [];
 
-  // Determine status for each lesson
-  const isComplete = (lessonId: string) =>
-    progress.some((p) => p.lesson_id === lessonId && p.section === "practice" && p.score >= 60);
+  const isComplete = (id: string) =>
+    progress.some((p) => p.lesson_id === id && p.section === "practice" && p.score >= 60);
 
   let foundCurrent = false;
-  const lessonsWithStatus: LessonWithStatus[] = lessons.map((lesson, idx) => {
-    if (isComplete(lesson.id)) {
-      return { ...lesson, status: "completed" as const, idx };
-    }
-    if (!foundCurrent) {
-      foundCurrent = true;
-      return { ...lesson, status: "current" as const, idx };
-    }
-    // Check premium lock
-    if (idx >= FREE_LESSON_COUNT && plan !== "premium") {
-      return { ...lesson, status: "premium" as const, idx };
-    }
-    return { ...lesson, status: "locked" as const, idx };
+  const statuses: LessonStatus[] = lessons.map((lesson, idx) => {
+    if (isComplete(lesson.id)) return "completed";
+    if (!foundCurrent) { foundCurrent = true; return "current"; }
+    if (idx >= FREE_LESSON_COUNT && plan !== "premium") return "premium";
+    return "locked";
   });
 
-  // Group into sections
-  const sectionMap = new Map<string, LessonWithStatus[]>();
-  for (const lesson of lessonsWithStatus) {
-    const section = getSectionName(lesson.skill);
-    if (!sectionMap.has(section)) sectionMap.set(section, []);
-    sectionMap.get(section)!.push(lesson);
-  }
-
-  const sections: Section[] = Array.from(sectionMap.entries()).map(([name, sectionLessons]) => ({
-    name,
-    lessons: sectionLessons,
-    completedCount: sectionLessons.filter((l) => l.status === "completed").length,
-  }));
-
-  // Auto-expand the section containing the current lesson
-  const currentSection = sections.find((s) => s.lessons.some((l) => l.status === "current"));
-
-  // Stats
-  const totalLessons = lessons.length;
-  const completedLessons = lessonsWithStatus.filter((l) => l.status === "completed").length;
-  const pct = totalLessons > 0 ? Math.round((completedLessons / totalLessons) * 100) : 0;
-
-  const toggleSection = (name: string) => {
-    setExpandedSections((prev) => {
-      const next = new Set(prev);
-      if (next.has(name)) next.delete(name);
-      else next.add(name);
-      return next;
-    });
-  };
-
-  const isSectionExpanded = (name: string) => {
-    if (expandedSections.has(name)) return true;
-    // Default: expand current section
-    if (currentSection?.name === name && expandedSections.size === 0) return true;
-    return false;
-  };
+  const completedCount = statuses.filter((s) => s === "completed").length;
+  const pct = lessons.length > 0 ? Math.round((completedCount / lessons.length) * 100) : 0;
 
   return (
-    <div className="max-w-2xl mx-auto py-6 px-4 space-y-5">
+    <div className="max-w-lg mx-auto py-6 px-4 space-y-5">
       {/* ── Progress Banner ── */}
       <motion.div
         initial={{ opacity: 0, y: -10 }}
@@ -230,11 +113,10 @@ function JourneyContent() {
       >
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-sm font-medium text-indigo-200">{child.first_name}&apos;s Reading Journey</p>
-            <p className="text-2xl font-extrabold mt-0.5">{completedLessons} of {totalLessons} lessons</p>
+            <p className="text-sm font-medium text-indigo-200">{child.first_name}&apos;s Lessons</p>
+            <p className="text-2xl font-extrabold mt-0.5">{completedCount} of {lessons.length}</p>
           </div>
-          {/* Progress ring */}
-          <div className="relative w-16 h-16">
+          <div className="relative w-14 h-14">
             <svg viewBox="0 0 36 36" className="w-full h-full -rotate-90">
               <circle cx="18" cy="18" r="15" fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="3" />
               <circle
@@ -243,7 +125,7 @@ function JourneyContent() {
                 strokeDasharray={`${pct * 0.94} 94`}
               />
             </svg>
-            <span className="absolute inset-0 flex items-center justify-center text-sm font-bold">{pct}%</span>
+            <span className="absolute inset-0 flex items-center justify-center text-xs font-bold">{pct}%</span>
           </div>
         </div>
         <div className="flex gap-4 mt-3 text-xs text-indigo-200">
@@ -252,94 +134,29 @@ function JourneyContent() {
         </div>
       </motion.div>
 
-      {/* ── Sections ── */}
-      {sections.map((section, sIdx) => {
-        const expanded = isSectionExpanded(section.name);
-        const sectionPct = section.lessons.length > 0
-          ? Math.round((section.completedCount / section.lessons.length) * 100)
-          : 0;
-        const hasCurrent = section.lessons.some((l) => l.status === "current");
+      {/* ── Lesson List ── */}
+      <div className="relative">
+        {/* Vertical connector */}
+        <div className="absolute left-[22px] top-6 bottom-6 w-0.5 bg-zinc-100 rounded-full" />
 
-        return (
-          <motion.div
-            key={section.name}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: sIdx * 0.05 }}
-            className="rounded-2xl bg-white shadow-sm border border-zinc-100 overflow-hidden"
-          >
-            {/* Section header */}
-            <button
-              onClick={() => toggleSection(section.name)}
-              className="w-full px-5 py-4 flex items-center gap-3 hover:bg-zinc-50 transition-colors"
-            >
-              <div className={`w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 ${
-                sectionPct === 100
-                  ? "bg-emerald-50 text-emerald-600"
-                  : hasCurrent
-                  ? "bg-indigo-50 text-indigo-600"
-                  : "bg-zinc-100 text-zinc-400"
-              }`}>
-                <BookOpen className="w-4.5 h-4.5" strokeWidth={1.5} />
-              </div>
-              <div className="flex-1 text-left min-w-0">
-                <p className="text-sm font-bold text-zinc-900">{section.name}</p>
-                <div className="flex items-center gap-2 mt-1">
-                  <div className="flex-1 h-1.5 bg-zinc-100 rounded-full overflow-hidden">
-                    <div
-                      className="h-full rounded-full transition-all duration-500"
-                      style={{
-                        width: `${sectionPct}%`,
-                        backgroundColor: sectionPct === 100 ? "#10b981" : "#6366f1",
-                      }}
-                    />
-                  </div>
-                  <span className="text-[11px] text-zinc-400 flex-shrink-0">
-                    {section.completedCount}/{section.lessons.length}
-                  </span>
-                </div>
-              </div>
-              <ChevronDown
-                className={`w-5 h-5 text-zinc-400 transition-transform flex-shrink-0 ${expanded ? "rotate-180" : ""}`}
+        <div className="space-y-2">
+          {lessons.map((lesson, idx) => {
+            const status = statuses[idx];
+            return (
+              <LessonRow
+                key={lesson.id}
+                lesson={lesson}
+                status={status}
+                childId={childId!}
+                number={idx + 1}
+                delay={idx * 0.03}
               />
-            </button>
+            );
+          })}
+        </div>
+      </div>
 
-            {/* Lesson rows */}
-            <AnimatePresence initial={false}>
-              {expanded && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.25 }}
-                  className="overflow-hidden"
-                >
-                  <div className="px-5 pb-4">
-                    <div className="relative">
-                      {/* Vertical connector line */}
-                      <div className="absolute left-[18px] top-3 bottom-3 w-0.5 bg-zinc-100" />
-
-                      <div className="space-y-1">
-                        {section.lessons.map((lesson, lIdx) => (
-                          <LessonRow
-                            key={lesson.id}
-                            lesson={lesson}
-                            childId={childId!}
-                            lessonNumber={lesson.idx + 1}
-                            delay={lIdx * 0.04}
-                          />
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </motion.div>
-        );
-      })}
-
-      {/* ── Review Mode stub ── */}
+      {/* ── Review stub ── */}
       <div className="pt-2 pb-8">
         <button
           disabled
@@ -356,18 +173,18 @@ function JourneyContent() {
 
 function LessonRow({
   lesson,
+  status,
   childId,
-  lessonNumber,
+  number,
   delay,
 }: {
-  lesson: LessonWithStatus;
+  lesson: LessonData;
+  status: LessonStatus;
   childId: string;
-  lessonNumber: number;
+  number: number;
   delay: number;
 }) {
-  const { status } = lesson;
-
-  const statusIcon = {
+  const icon = {
     completed: <CheckCircle2 className="w-5 h-5 text-emerald-500" />,
     current: (
       <div className="w-5 h-5 rounded-full bg-indigo-600 flex items-center justify-center">
@@ -385,37 +202,37 @@ function LessonRow({
     ? `/upgrade?child=${childId}`
     : "#";
 
-  const content = (
+  const row = (
     <motion.div
       initial={{ opacity: 0, x: -10 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ delay }}
-      className={`relative flex items-center gap-3 py-3 px-2 rounded-xl transition-colors ${
+      className={`relative flex items-center gap-3 py-3.5 px-3 rounded-xl transition-colors ${
         status === "current"
-          ? "bg-indigo-50 border border-indigo-200"
+          ? "bg-indigo-50 border border-indigo-200 shadow-sm"
           : status === "completed"
           ? "hover:bg-zinc-50"
           : "opacity-50"
       }`}
     >
-      {/* Status dot on connector */}
-      <div className="relative z-10 flex-shrink-0 w-9 flex justify-center">
-        {statusIcon}
+      {/* Icon on connector */}
+      <div className="relative z-10 w-[26px] flex justify-center flex-shrink-0">
+        {icon}
       </div>
 
       {/* Content */}
       <div className="flex-1 min-w-0">
-        <p className={`text-sm font-semibold leading-tight ${
+        <p className={`text-sm font-bold leading-tight ${
           status === "locked" || status === "premium" ? "text-zinc-400" : "text-zinc-900"
         }`}>
-          {lessonNumber}. {lesson.title}
+          Lesson {number}: {lesson.title}
         </p>
         <p className="text-xs text-zinc-400 mt-0.5 truncate">{lesson.description}</p>
       </div>
 
-      {/* Right side */}
+      {/* Action */}
       {status === "current" && (
-        <span className="flex-shrink-0 px-3 py-1 rounded-lg bg-indigo-600 text-white text-xs font-bold">
+        <span className="flex-shrink-0 px-3.5 py-1.5 rounded-lg bg-indigo-600 text-white text-xs font-bold">
           Start
         </span>
       )}
@@ -431,7 +248,7 @@ function LessonRow({
   );
 
   if (isClickable || status === "premium") {
-    return <Link href={href}>{content}</Link>;
+    return <Link href={href}>{row}</Link>;
   }
-  return content;
+  return row;
 }
