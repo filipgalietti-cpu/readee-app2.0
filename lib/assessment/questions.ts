@@ -187,6 +187,15 @@ export function gradeToKey(grade: string | null): GradeKey {
   return "4th";
 }
 
+/** Determine reading level from adaptive exam weighted points */
+export function getAdaptivePlacement(points: number): { levelName: string; gradeKey: GradeKey } {
+  if (points >= 71) return { levelName: grades["4th"].reading_level_name, gradeKey: "4th" };
+  if (points >= 46) return { levelName: grades["3rd"].reading_level_name, gradeKey: "3rd" };
+  if (points >= 26) return { levelName: grades["2nd"].reading_level_name, gradeKey: "2nd" };
+  if (points >= 11) return { levelName: grades["1st"].reading_level_name, gradeKey: "1st" };
+  return { levelName: grades["kindergarten"].reading_level_name, gradeKey: "kindergarten" };
+}
+
 /** Determine reading level placement based on score */
 export function getPlacement(
   scorePercent: number,

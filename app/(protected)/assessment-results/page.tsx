@@ -228,19 +228,12 @@ function AssessmentResultsContent() {
     );
   }
 
-  // Pre-k kids take K questions, so show "Kindergarten" as tested grade
-  const rawGk = gradeToKey(assessment.grade_tested);
-  const effectiveGk = (rawGk === "pre-k" ? "kindergarten" : rawGk) as GradeKey;
-  const gradeLabel = grades[effectiveGk]?.grade_label || assessment.grade_tested;
-
   const totalCorrect = assessment.answers.filter((a) => a.is_correct).length;
   const totalQuestions = assessment.answers.length;
 
   // Find where the child placed on the meter
-  // "Emerging Reader" (pre-k placement) maps to below K — clamp to 0
   const placedLevel = assessment.reading_level_placed;
   const placedIdx = Math.max(0, LEVEL_STEPS.findIndex((s) => s.label === placedLevel));
-  const testedIdx = LEVEL_STEPS.findIndex((s) => s.key === effectiveGk);
 
   // Group answers by reading skill
   const bySkill: Record<string, { correct: number; total: number; Icon: typeof AudioLines }> = {};
@@ -317,7 +310,6 @@ function AssessmentResultsContent() {
           <div className="flex gap-1">
             {LEVEL_STEPS.map((step, i) => {
               const isPlaced = i === placedIdx;
-              const isTested = i === testedIdx;
               const isPast = i <= placedIdx;
               return (
                 <div key={step.key} className="flex-1 flex flex-col items-center">
@@ -345,9 +337,6 @@ function AssessmentResultsContent() {
                   }`}>
                     {step.gradeLabel}
                   </p>
-                  {isTested && !isPlaced && (
-                    <p className="text-[9px] text-indigo-400 font-medium">tested</p>
-                  )}
                 </div>
               );
             })}

@@ -8,7 +8,7 @@ import { Child } from "@/lib/db/types";
 import {
   grades,
   gradeToKey,
-  getPlacement,
+  getAdaptivePlacement,
   type GradeKey,
 } from "@/lib/assessment/questions";
 import { safeValidate } from "@/lib/validate";
@@ -37,6 +37,7 @@ interface MergedQuestion {
   grade_key: string;
   type: QuestionType;
   difficulty: string;
+  weight: number;
   prompt: string;
   stimulus: string;
   stimulus2: string;
@@ -87,25 +88,62 @@ function buildBankLookup(): Record<string, any> {
 
 const BANK_LOOKUP = buildBankLookup();
 
-function buildMergedQuestions(gradeKey: string): MergedQuestion[] {
-  // Pre-k has no assessment questions in the manifest — use kindergarten
-  const key = gradeKey === "pre-k" ? "kindergarten" : gradeKey;
-  return (manifestRaw as any[])
-    .filter((m: any) => m.grade_key === key)
-    .map((m: any) => {
-      const bank = BANK_LOOKUP[m.id] || {};
-      return {
-        ...m,
-        categoryItems: bank.categoryItems ?? undefined,
-        left_items: m.left_items ?? [],
-        right_items: m.right_items ?? [],
-        correct_pairs: m.correct_pairs ?? {},
-        stimulus2: m.stimulus2 ?? "",
-        word_ending: m.word_ending ?? bank.wordEnding ?? "",
-        valid_words: m.valid_words?.length ? m.valid_words : bank.validWords ?? [],
-        max_attempts: m.max_attempts || bank.maxAttempts || 10,
-      } as MergedQuestion;
-    });
+/* ── Adaptive exam: 20 curated questions, K-easy → 4th-hard ── */
+
+const ADAPTIVE_SEQUENCE: { id: string; weight: number }[] = [
+  // K easy/medium (weight 1)
+  { id: "K_E_04", weight: 1 },   // category_sort: Sort colors vs not colors
+  { id: "K_M_01", weight: 1 },   // mcq: Find the correct letter
+  // K medium/hard (weight 2)
+  { id: "K_M_02", weight: 2 },   // tap_to_pair: Match rhyming words
+  { id: "K_H_05", weight: 2 },   // mcq: Where did Mia find the ball?
+  // 1st easy/medium (weight 3)
+  { id: "G1_E_03", weight: 3 },  // mcq: Which word starts with sh?
+  { id: "G1_M_02", weight: 3 },  // mcq: What did Lina do every day?
+  // 1st medium/hard (weight 4)
+  { id: "G1_I_09", weight: 4 },  // missing_word: Choose the missing word
+  { id: "G1_H_05", weight: 4 },  // mcq: What lesson did Max learn?
+  // 2nd easy/medium (weight 5)
+  { id: "G2_E_04", weight: 5 },  // mcq: Which is a synonym for quick?
+  { id: "G2_M_02", weight: 5 },  // mcq: What is the main topic?
+  // 2nd medium/hard (weight 6)
+  { id: "G2_I_09", weight: 6 },  // missing_word: Choose the best missing word
+  { id: "G2_H_05", weight: 6 },  // mcq: What is the central message?
+  // 3rd easy/medium (weight 7)
+  { id: "G3_E_03", weight: 7 },  // mcq: Which word uses re- meaning again?
+  { id: "G3_M_01", weight: 7 },  // mcq: How do penguins stay warm?
+  // 3rd medium/hard (weight 8)
+  { id: "G3_I_09", weight: 8 },  // missing_word: Choose the context word
+  { id: "G3_H_05", weight: 8 },  // mcq: What is the theme?
+  // 4th easy/medium (weight 9)
+  { id: "G4_E_03", weight: 9 },  // mcq: What does tele- mean?
+  { id: "G4_M_01", weight: 9 },  // mcq: Which statement is supported?
+  // 4th medium/hard (weight 10)
+  { id: "G4_I_09", weight: 10 }, // missing_word: Choose the best context word
+  { id: "G4_H_06", weight: 10 }, // mcq: What is the likely theme?
+];
+
+const MANIFEST_LOOKUP: Record<string, any> = {};
+for (const m of manifestRaw as any[]) MANIFEST_LOOKUP[m.id] = m;
+
+function buildAdaptiveExam(): MergedQuestion[] {
+  return ADAPTIVE_SEQUENCE.map(({ id, weight }) => {
+    const m = MANIFEST_LOOKUP[id];
+    if (!m) return null;
+    const bank = BANK_LOOKUP[id] || {};
+    return {
+      ...m,
+      weight,
+      categoryItems: bank.categoryItems ?? undefined,
+      left_items: m.left_items ?? [],
+      right_items: m.right_items ?? [],
+      correct_pairs: m.correct_pairs ?? {},
+      stimulus2: m.stimulus2 ?? "",
+      word_ending: m.word_ending ?? bank.wordEnding ?? "",
+      valid_words: m.valid_words?.length ? m.valid_words : bank.validWords ?? [],
+      max_attempts: m.max_attempts || bank.maxAttempts || 10,
+    } as MergedQuestion;
+  }).filter(Boolean) as MergedQuestion[];
 }
 
 /* ── Word Builder (inline, only 1 question in bank) ────── */
@@ -242,11 +280,11 @@ function AssessmentContent() {
 
   const [child, setChild] = useState<Child | null>(null);
   const [phase, setPhase] = useState<Phase>("loading");
-  const [gradeKey, setGradeKey] = useState<GradeKey>("kindergarten");
   const [questions, setQuestions] = useState<MergedQuestion[]>([]);
   const [currentIdx, setCurrentIdx] = useState(0);
   const [answers, setAnswers] = useState<AnswerRecord[]>([]);
   const [selectedChoice, setSelectedChoice] = useState<string | null>(null);
+  const [consecutiveWrong, setConsecutiveWrong] = useState(0);
   const [score, setScore] = useState(0);
   const [levelName, setLevelName] = useState("");
   const [saving, setSaving] = useState(false);
@@ -267,11 +305,8 @@ function AssessmentContent() {
         .single();
 
       if (data) {
-        const c = data as Child;
-        setChild(c);
-        const gk = gradeToKey(c.grade);
-        setGradeKey(gk);
-        setQuestions(buildMergedQuestions(gk));
+        setChild(data as Child);
+        setQuestions(buildAdaptiveExam());
         setPhase("intro");
       }
     }
@@ -307,13 +342,15 @@ function AssessmentContent() {
       setSaving(true);
       setPhase("calculating");
 
-      // Weighted scoring: category_sort and word_builder use partial credit
-      const totalScore = finalAnswers.reduce((sum, a) => {
-        if (a.score_weight !== undefined) return sum + a.score_weight;
-        return sum + (a.is_correct ? 1 : 0);
+      // Weighted scoring: each question has a weight, partial credit for interactive types
+      const weightedPoints = finalAnswers.reduce((sum, a, i) => {
+        const qWeight = questions[i]?.weight ?? 1;
+        if (a.score_weight !== undefined) return sum + a.score_weight * qWeight;
+        return sum + (a.is_correct ? qWeight : 0);
       }, 0);
-      const pct = Math.round((totalScore / finalAnswers.length) * 100);
-      const placement = getPlacement(pct, gradeKey);
+      const maxPoints = questions.reduce((sum, q) => sum + q.weight, 0);
+      const pct = Math.round((weightedPoints / maxPoints) * 100);
+      const placement = getAdaptivePlacement(weightedPoints);
 
       setScore(finalAnswers.filter((a) => a.is_correct).length);
       setLevelName(placement.levelName);
@@ -334,7 +371,7 @@ function AssessmentContent() {
       const supabase = supabaseBrowser();
       const assessmentPayload = safeValidate(AssessmentResultSchema, {
         child_id: child.id,
-        grade_tested: gradeKey,
+        grade_tested: "adaptive",
         score_percent: pct,
         reading_level_placed: placement.levelName,
         answers: finalAnswers,
@@ -351,7 +388,7 @@ function AssessmentContent() {
       setSaving(false);
       setPhase("results");
     },
-    [child, gradeKey]
+    [child, questions]
   );
 
   // Advance to next question or save
@@ -362,16 +399,21 @@ function AssessmentContent() {
         setAnswers(newAnswers);
         setSelectedChoice(null);
 
-        if (currentIdx + 1 < questions.length) {
-          setCurrentIdx(currentIdx + 1);
-        } else {
+        // Track consecutive wrong for early stop
+        const newConsecutive = record.is_correct ? 0 : consecutiveWrong + 1;
+        setConsecutiveWrong(newConsecutive);
+
+        // Stop if 3 wrong in a row OR no more questions
+        if (newConsecutive >= 3 || currentIdx + 1 >= questions.length) {
           saveResults(newAnswers);
+        } else {
+          setCurrentIdx(currentIdx + 1);
         }
       } catch (err) {
         console.error("[assessment] advance error:", err);
       }
     },
-    [answers, currentIdx, questions.length, saveResults]
+    [answers, currentIdx, questions.length, saveResults, consecutiveWrong]
   );
 
   // MCQ answer handler
@@ -639,7 +681,7 @@ function AssessmentContent() {
             <span className="font-medium text-indigo-600">
               Question {currentIdx + 1} of {questions.length}
             </span>
-            <span className="text-zinc-400">{grades[gradeKey].grade_label}</span>
+            <span className="text-zinc-400">Placement Test</span>
           </div>
           <div className="h-2 bg-zinc-100 rounded-full overflow-hidden">
             <div
