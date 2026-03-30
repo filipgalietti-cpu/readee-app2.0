@@ -436,12 +436,6 @@ function JourneyContent() {
           );
         })}
 
-        {/* ── Review stub ── */}
-        <div className="pt-2 pb-8">
-          <button disabled className="w-full py-3.5 rounded-2xl border-2 border-dashed border-zinc-300 text-zinc-400 font-semibold text-sm cursor-not-allowed bg-white/60">
-            Review Mode — Coming Soon
-          </button>
-        </div>
       </div>
     </div>
   );
