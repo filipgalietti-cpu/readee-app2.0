@@ -256,7 +256,7 @@ function JourneyContent() {
   });
 
   return (
-    <div className="min-h-screen bg-indigo-50/30">
+    <div className="min-h-screen">
       <div className="max-w-[640px] mx-auto py-6 px-4 space-y-4">
         {/* ── Progress Banner ── */}
         <motion.div
