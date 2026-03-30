@@ -17,7 +17,7 @@ import { useAudio } from "@/lib/audio/use-audio";
 import { LoadingImage } from "@/app/components/ui/LoadingImage";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Sparkles, Volume2, Rocket } from "lucide-react";
+import { Sparkles, Volume2, Rocket, BookOpen, Trophy, Headphones } from "lucide-react";
 
 import { CategorySort } from "@/app/components/practice/CategorySort";
 import { MissingWord } from "@/app/components/practice/MissingWord";
@@ -892,8 +892,29 @@ function AssessmentContent() {
 
   /* ── Results ─────────────────────────────────────────── */
   if (phase === "results") {
+    const NEXT_STEPS = [
+      {
+        Icon: BookOpen,
+        title: "Learn",
+        desc: "Short, fun lessons that teach you new reading skills step by step.",
+        color: "bg-indigo-50 text-indigo-600",
+      },
+      {
+        Icon: Headphones,
+        title: "Practice",
+        desc: "Interactive questions with audio — drag, tap, and build answers.",
+        color: "bg-violet-50 text-violet-600",
+      },
+      {
+        Icon: Trophy,
+        title: "Earn Rewards",
+        desc: "Get carrots for every lesson, unlock items in the shop, and climb the leaderboard.",
+        color: "bg-amber-50 text-amber-600",
+      },
+    ];
+
     return (
-      <div className="max-w-md mx-auto text-center py-12 px-4 relative overflow-hidden">
+      <div className="max-w-md mx-auto text-center py-10 px-4 relative overflow-hidden">
         {/* Confetti */}
         {confettiPieces.map((p) => (
           <div
@@ -911,7 +932,7 @@ function AssessmentContent() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="space-y-6"
+          className="space-y-5"
         >
           {/* Bunny celebration */}
           <motion.div
@@ -924,7 +945,7 @@ function AssessmentContent() {
               alt="Readee bunny celebrating"
               width={512}
               height={512}
-              className="mx-auto w-[140px] sm:w-[160px] h-auto drop-shadow-lg"
+              className="mx-auto w-[120px] sm:w-[140px] h-auto drop-shadow-lg"
             />
           </motion.div>
 
@@ -932,39 +953,67 @@ function AssessmentContent() {
             className="text-3xl font-extrabold text-zinc-900"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
+            transition={{ delay: 0.3 }}
           >
             Great job, {child.first_name}!
           </motion.h1>
 
-          {/* Level badge card */}
-          <motion.div
-            className="rounded-3xl overflow-hidden shadow-xl"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.6, type: "spring", bounce: 0.3 }}
+          <motion.p
+            className="text-zinc-600 text-base font-medium"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
           >
-            <div
-              className="px-8 py-8"
-              style={{ background: "linear-gradient(135deg, #818cf8, #a78bfa, #c4b5fd)" }}
-            >
-              <Sparkles className="w-8 h-8 mx-auto mb-3 text-white" />
-              <p className="text-white text-sm font-medium">Your reading level</p>
-              <p className="text-3xl font-extrabold mt-1 text-white">{levelName}</p>
+            We found the perfect starting level for you.
+          </motion.p>
+
+          {/* Listen button for results TTS */}
+          <motion.button
+            onClick={() => {
+              playUrl(`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audio/ui/assessment-results.mp3?v=1`);
+            }}
+            className="mx-auto inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 text-indigo-600 font-semibold text-sm hover:bg-indigo-100 transition-colors"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.45 }}
+          >
+            <Volume2 className="w-4 h-4" />
+            Tap to listen
+          </motion.button>
+
+          {/* What's next section */}
+          <motion.div
+            className="rounded-2xl bg-white shadow-md overflow-hidden text-left"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+          >
+            <div className="px-5 pt-5 pb-3">
+              <p className="text-sm font-bold text-zinc-900 mb-3">Here&apos;s how Readee works:</p>
+            </div>
+            <div className="px-5 pb-5 space-y-3">
+              {NEXT_STEPS.map((step, i) => (
+                <motion.div
+                  key={step.title}
+                  className="flex items-start gap-3"
+                  initial={{ opacity: 0, x: -15 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.6 + i * 0.15 }}
+                >
+                  <div className={`w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 ${step.color}`}>
+                    <step.Icon className="w-4.5 h-4.5" strokeWidth={1.5} />
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-zinc-900">{step.title}</p>
+                    <p className="text-xs text-zinc-500 leading-relaxed">{step.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </motion.div>
 
-          <motion.p
-            className="text-zinc-900 text-base max-w-xs mx-auto font-medium"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8 }}
-          >
-            We&apos;ve built a reading path just for you. Let&apos;s start your adventure!
-          </motion.p>
-
+          {/* CTA */}
           <motion.div
-            className="space-y-3 pt-2"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1 }}
