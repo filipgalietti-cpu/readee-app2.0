@@ -6,12 +6,11 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
-import { levelNameToGradeKey, gradeOrder, type GradeKey } from "@/lib/assessment/questions";
 import { usePlanStore } from "@/lib/stores/plan-store";
-import lessonsData from "@/lib/data/lessons.json";
+import sampleLessons from "@/app/data/sample-lessons.json";
 import {
   Flame, Carrot, ChevronDown, Play,
-  BookOpen, Type, Newspaper, MessageCircle, BookMarked,
+  BookOpen, Type, Newspaper, MessageCircle,
 } from "lucide-react";
 
 /* ── Solid SVG icons ───────────────────────────────── */
@@ -34,15 +33,21 @@ function LockSolid({ className }: { className?: string }) {
 
 /* ── Types ─────────────────────────────────────────── */
 
-interface LessonData {
-  id: string;
+interface SampleLesson {
+  standardId: string;
+  grade: string;
+  domain: string;
   title: string;
-  skill: string;
-  description: string;
-  standards?: string[];
+  slides: any[];
 }
 
 interface ProgressRecord {
+  standard_id: string;
+  questions_correct: number;
+  questions_attempted: number;
+}
+
+interface LessonProgressRecord {
   lesson_id: string;
   section: string;
   score: number;
@@ -50,43 +55,13 @@ interface ProgressRecord {
 
 type LessonStatus = "completed" | "started" | "current" | "locked" | "premium";
 
-interface LessonWithStatus extends LessonData {
+interface LessonWithStatus extends SampleLesson {
   status: LessonStatus;
-  grade: string;
-  globalIdx: number;
+  idx: number;
 }
 
-/* ── Constants ─────────────────────────────────────── */
-
-const FREE_LESSON_COUNT = 5;
-
-const GRADE_LABELS: Record<string, string> = {
-  kindergarten: "Kindergarten",
-  "1st": "1st Grade",
-  "2nd": "2nd Grade",
-  "3rd": "3rd Grade",
-  "4th": "4th Grade",
-};
-
-const SUBJECT_META: Record<string, { name: string; Icon: typeof BookOpen }> = {
-  RF: { name: "Foundational Skills", Icon: Type },
-  RL: { name: "Reading Literature", Icon: BookOpen },
-  RI: { name: "Informational Text", Icon: Newspaper },
-  L: { name: "Language", Icon: MessageCircle },
-  story: { name: "Stories", Icon: BookMarked },
-};
-
-function getSubjectKey(lesson: LessonData): string {
-  if (lesson.skill === "decodable_story" || lesson.skill === "reading") return "story";
-  const std = lesson.standards?.[0] || "";
-  return std.split(".")[0] || "story";
-}
-
-/* ── Build data ────────────────────────────────────── */
-
-interface Subject {
-  key: string;
-  name: string;
+interface DomainGroup {
+  domain: string;
   Icon: typeof BookOpen;
   lessons: LessonWithStatus[];
   completedCount: number;
@@ -94,23 +69,21 @@ interface Subject {
 
 interface GradeGroup {
   grade: string;
-  label: string;
-  subjects: Subject[];
+  domains: DomainGroup[];
   totalLessons: number;
   completedCount: number;
 }
 
-function buildAllLessons(startGrade: GradeKey): (LessonData & { grade: string })[] {
-  const startIdx = gradeOrder.indexOf(startGrade);
-  const all: (LessonData & { grade: string })[] = [];
-  for (let i = startIdx; i < gradeOrder.length; i++) {
-    const gk = gradeOrder[i];
-    if (gk === "pre-k") continue;
-    const level = (lessonsData as any).levels[gk];
-    for (const l of (level?.lessons || []) as LessonData[]) all.push({ ...l, grade: gk });
-  }
-  return all;
-}
+/* ── Constants ─────────────────────────────────────── */
+
+const FREE_LESSON_COUNT = 10;
+
+const DOMAIN_ICONS: Record<string, typeof BookOpen> = {
+  "Reading Literature": BookOpen,
+  "Reading Informational Text": Newspaper,
+  "Foundational Skills": Type,
+  "Language": MessageCircle,
+};
 
 /* ── Page ──────────────────────────────────────────── */
 
@@ -135,10 +108,11 @@ function JourneyContent() {
   const fetchPlan = usePlanStore((s) => s.fetch);
 
   const [child, setChild] = useState<Child | null>(null);
-  const [progress, setProgress] = useState<ProgressRecord[]>([]);
+  const [practiceProgress, setPracticeProgress] = useState<ProgressRecord[]>([]);
+  const [lessonProgress, setLessonProgress] = useState<LessonProgressRecord[]>([]);
   const [loading, setLoading] = useState(true);
   const [openGrades, setOpenGrades] = useState<Set<string> | null>(null);
-  const [openSubjects, setOpenSubjects] = useState<Set<string> | null>(null);
+  const [openDomains, setOpenDomains] = useState<Set<string> | null>(null);
 
   useEffect(() => { fetchPlan(); }, [fetchPlan]);
 
@@ -146,12 +120,14 @@ function JourneyContent() {
     async function load() {
       if (!childId) return;
       const supabase = supabaseBrowser();
-      const [childRes, progressRes] = await Promise.all([
+      const [childRes, practiceRes, lessonRes] = await Promise.all([
         supabase.from("children").select("*").eq("id", childId).single(),
+        supabase.from("practice_results").select("standard_id, questions_correct, questions_attempted").eq("child_id", childId),
         supabase.from("lessons_progress").select("lesson_id, section, score").eq("child_id", childId),
       ]);
       if (childRes.data) setChild(childRes.data as Child);
-      if (progressRes.data) setProgress(progressRes.data as ProgressRecord[]);
+      if (practiceRes.data) setPracticeProgress(practiceRes.data as ProgressRecord[]);
+      if (lessonRes.data) setLessonProgress(lessonRes.data as LessonProgressRecord[]);
       setLoading(false);
     }
     load();
@@ -165,99 +141,99 @@ function JourneyContent() {
     );
   }
 
-  const gradeKey = levelNameToGradeKey(child.reading_level);
-  const allRaw = buildAllLessons(gradeKey);
+  const allLessons = sampleLessons as SampleLesson[];
 
-  // Determine statuses
-  const hasLearn = (id: string) => progress.some((p) => p.lesson_id === id && p.section === "learn");
-  const hasPractice = (id: string) => progress.some((p) => p.lesson_id === id && p.section === "practice" && p.score >= 60);
+  // Check completion: practice_results has standard_id with good score, OR lessons_progress
+  const hasCompleted = (standardId: string) =>
+    practiceProgress.some((p) => p.standard_id === standardId && p.questions_correct >= 3) ||
+    lessonProgress.some((p) => p.lesson_id === standardId && p.section === "practice" && p.score >= 60);
+  const hasStarted = (standardId: string) =>
+    lessonProgress.some((p) => p.lesson_id === standardId && p.section === "learn");
 
+  // Assign statuses
   let foundCurrent = false;
-  const allLessons: LessonWithStatus[] = allRaw.map((l, idx) => {
+  const lessonsWithStatus: LessonWithStatus[] = allLessons.map((lesson, idx) => {
     let status: LessonStatus;
-    if (hasPractice(l.id)) status = "completed";
-    else if (hasLearn(l.id)) { if (!foundCurrent) foundCurrent = true; status = "started"; }
-    else if (!foundCurrent) { foundCurrent = true; status = "current"; }
-    else if (idx >= FREE_LESSON_COUNT && plan !== "premium") status = "premium";
-    else status = "locked";
-    return { ...l, status, globalIdx: idx };
+    if (hasCompleted(lesson.standardId)) {
+      status = "completed";
+    } else if (hasStarted(lesson.standardId)) {
+      if (!foundCurrent) foundCurrent = true;
+      status = "started";
+    } else if (!foundCurrent) {
+      foundCurrent = true;
+      status = "current";
+    } else if (idx >= FREE_LESSON_COUNT && plan !== "premium") {
+      status = "premium";
+    } else {
+      status = "locked";
+    }
+    return { ...lesson, status, idx };
   });
 
-  // Group: grade → subjects → lessons
-  const gradeGroups: GradeGroup[] = [];
+  // Group by grade → domain
   const gradeMap = new Map<string, LessonWithStatus[]>();
-  for (const l of allLessons) {
-    if (!gradeMap.has(l.grade)) gradeMap.set(l.grade, []);
+  const gradeOrder: string[] = [];
+  for (const l of lessonsWithStatus) {
+    if (!gradeMap.has(l.grade)) { gradeMap.set(l.grade, []); gradeOrder.push(l.grade); }
     gradeMap.get(l.grade)!.push(l);
   }
 
-  for (const [grade, lessons] of gradeMap) {
-    const subjectMap = new Map<string, LessonWithStatus[]>();
-    const subjectOrder: string[] = [];
+  const gradeGroups: GradeGroup[] = gradeOrder.map((grade) => {
+    const lessons = gradeMap.get(grade)!;
+    const domainMap = new Map<string, LessonWithStatus[]>();
+    const domainOrder: string[] = [];
     for (const l of lessons) {
-      const sk = getSubjectKey(l);
-      if (!subjectMap.has(sk)) { subjectMap.set(sk, []); subjectOrder.push(sk); }
-      subjectMap.get(sk)!.push(l);
+      if (!domainMap.has(l.domain)) { domainMap.set(l.domain, []); domainOrder.push(l.domain); }
+      domainMap.get(l.domain)!.push(l);
     }
-
-    const subjects: Subject[] = subjectOrder.map((sk) => {
-      const sLessons = subjectMap.get(sk)!;
-      const meta = SUBJECT_META[sk] || { name: sk, Icon: BookOpen };
+    const domains: DomainGroup[] = domainOrder.map((domain) => {
+      const dLessons = domainMap.get(domain)!;
       return {
-        key: `${grade}-${sk}`,
-        name: meta.name,
-        Icon: meta.Icon,
-        lessons: sLessons,
-        completedCount: sLessons.filter((l) => l.status === "completed").length,
+        domain,
+        Icon: DOMAIN_ICONS[domain] || BookOpen,
+        lessons: dLessons,
+        completedCount: dLessons.filter((l) => l.status === "completed").length,
       };
     });
-
-    gradeGroups.push({
+    return {
       grade,
-      label: GRADE_LABELS[grade] || grade,
-      subjects,
+      domains,
       totalLessons: lessons.length,
       completedCount: lessons.filter((l) => l.status === "completed").length,
-    });
-  }
+    };
+  });
 
-  // Auto-open the grade + subject containing the current lesson (once)
+  // Auto-open on first render
   if (openGrades === null) {
-    const initial = new Set<string>();
-    const initialSubs = new Set<string>();
+    const initGrades = new Set<string>();
+    const initDomains = new Set<string>();
     const currentGrade = gradeGroups.find((g) =>
-      g.subjects.some((s) => s.lessons.some((l) => l.status === "current" || l.status === "started"))
+      g.domains.some((d) => d.lessons.some((l) => l.status === "current" || l.status === "started"))
     );
     if (currentGrade) {
-      initial.add(currentGrade.grade);
-      const currentSubject = currentGrade.subjects.find((s) =>
-        s.lessons.some((l) => l.status === "current" || l.status === "started")
+      initGrades.add(currentGrade.grade);
+      const currentDomain = currentGrade.domains.find((d) =>
+        d.lessons.some((l) => l.status === "current" || l.status === "started")
       );
-      if (currentSubject) initialSubs.add(currentSubject.key);
+      if (currentDomain) initDomains.add(`${currentGrade.grade}-${currentDomain.domain}`);
     }
-    setOpenGrades(initial);
-    setOpenSubjects(initialSubs);
-    return null; // re-render with initialized state
+    setOpenGrades(initGrades);
+    setOpenDomains(initDomains);
+    return null;
   }
 
-  const completedTotal = allLessons.filter((l) => l.status === "completed").length;
-  const pct = allLessons.length > 0 ? Math.round((completedTotal / allLessons.length) * 100) : 0;
+  const completedTotal = lessonsWithStatus.filter((l) => l.status === "completed").length;
+  const pct = lessonsWithStatus.length > 0 ? Math.round((completedTotal / lessonsWithStatus.length) * 100) : 0;
 
-  const toggleGrade = (g: string) => setOpenGrades((prev) => {
-    const next = new Set(prev || []);
-    if (next.has(g)) next.delete(g); else next.add(g);
-    return next;
-  });
-
-  const toggleSubject = (k: string) => setOpenSubjects((prev) => {
-    const next = new Set(prev || []);
-    if (next.has(k)) next.delete(k); else next.add(k);
-    return next;
-  });
+  const toggle = (set: Set<string> | null, setter: (s: Set<string>) => void, key: string) => {
+    const next = new Set(set || []);
+    if (next.has(key)) next.delete(key); else next.add(key);
+    setter(next);
+  };
 
   return (
     <div className="min-h-screen">
-      <div className="max-w-[640px] mx-auto py-6 px-4 space-y-4">
+      <div className="max-w-[640px] mx-auto py-6 px-4 space-y-3">
         {/* ── Progress Banner ── */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
@@ -268,7 +244,7 @@ function JourneyContent() {
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-white/80">{child.first_name}&apos;s Reading Journey</p>
-              <p className="text-2xl font-extrabold text-white mt-0.5">{completedTotal} of {allLessons.length} lessons</p>
+              <p className="text-2xl font-extrabold text-white mt-0.5">{completedTotal} of {lessonsWithStatus.length} lessons</p>
             </div>
             <div className="relative w-14 h-14">
               <svg viewBox="0 0 36 36" className="w-full h-full -rotate-90">
@@ -286,57 +262,46 @@ function JourneyContent() {
         </motion.div>
 
         {/* ── Grade Accordions ── */}
-        {gradeGroups.map((gradeGroup, gIdx) => {
-          const gradeOpen = openGrades?.has(gradeGroup.grade) ?? false;
-          const gradePct = gradeGroup.totalLessons > 0
-            ? Math.round((gradeGroup.completedCount / gradeGroup.totalLessons) * 100) : 0;
-          const hasCurrent = gradeGroup.subjects.some((s) =>
-            s.lessons.some((l) => l.status === "current" || l.status === "started")
-          );
-          const allDone = gradeGroup.completedCount === gradeGroup.totalLessons && gradeGroup.totalLessons > 0;
+        {gradeGroups.map((gg, gIdx) => {
+          const gradeOpen = openGrades?.has(gg.grade) ?? false;
+          const gradePct = gg.totalLessons > 0 ? Math.round((gg.completedCount / gg.totalLessons) * 100) : 0;
+          const allDone = gg.completedCount === gg.totalLessons && gg.totalLessons > 0;
 
           return (
             <motion.div
-              key={gradeGroup.grade}
-              initial={{ opacity: 0, y: 15 }}
+              key={gg.grade}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: gIdx * 0.05 }}
+              transition={{ delay: gIdx * 0.04 }}
               className="rounded-2xl bg-white shadow-sm overflow-hidden"
             >
               {/* Grade header */}
-              <button onClick={() => toggleGrade(gradeGroup.grade)} className="w-full text-left">
-                <div
-                  className="px-5 py-4 flex items-center gap-3 transition-colors"
-                  style={
-                    gradeOpen
-                      ? { background: "linear-gradient(135deg, #6366f1, #8b5cf6)" }
-                      : allDone
-                      ? { background: "linear-gradient(135deg, #059669, #10b981)" }
-                      : undefined
-                  }
-                >
+              <button
+                onClick={() => toggle(openGrades, setOpenGrades, gg.grade)}
+                className="w-full text-left"
+              >
+                <div className={`px-5 py-4 flex items-center gap-3 transition-colors ${
+                  gradeOpen ? "bg-gradient-to-r from-indigo-600 to-violet-500" : allDone ? "bg-gradient-to-r from-emerald-600 to-emerald-500" : ""
+                }`}>
                   <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-sm font-extrabold ${
                     gradeOpen || allDone ? "bg-white/20 text-white" : "bg-indigo-50 text-indigo-600"
                   }`}>
-                    {allDone ? <CheckCircleSolid className="w-5 h-5 text-white" /> : gradeGroup.label.charAt(0)}
+                    {allDone ? <CheckCircleSolid className="w-5 h-5" /> : gg.grade.charAt(0).toUpperCase()}
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className={`text-sm font-bold ${gradeOpen || allDone ? "text-white" : "text-zinc-900"}`}>
-                      {gradeGroup.label}
+                      {gg.grade}
                     </p>
                     <div className="flex items-center gap-2 mt-1">
                       <div className={`flex-1 h-1.5 rounded-full overflow-hidden ${
                         gradeOpen || allDone ? "bg-white/20" : "bg-zinc-100"
                       }`}>
                         <div className="h-full rounded-full transition-all duration-500"
-                          style={{ width: `${gradePct}%`, backgroundColor: gradeOpen || allDone ? "white" : "#6366f1" }}
-                        />
+                          style={{ width: `${gradePct}%`, backgroundColor: gradeOpen || allDone ? "white" : "#6366f1" }} />
                       </div>
                       <span className={`text-[11px] font-medium flex-shrink-0 ${
                         gradeOpen || allDone ? "text-white/70" : "text-zinc-400"
-                      }`}>
-                        {gradeGroup.completedCount}/{gradeGroup.totalLessons}
-                      </span>
+                      }`}>{gg.completedCount}/{gg.totalLessons}</span>
                     </div>
                   </div>
                   <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${
@@ -345,7 +310,7 @@ function JourneyContent() {
                 </div>
               </button>
 
-              {/* Subjects inside grade */}
+              {/* Domains */}
               <AnimatePresence initial={false}>
                 {gradeOpen && (
                   <motion.div
@@ -356,40 +321,33 @@ function JourneyContent() {
                     className="overflow-hidden"
                   >
                     <div className="px-3 py-2 space-y-1">
-                      {gradeGroup.subjects.map((subject) => {
-                        const subOpen = openSubjects?.has(subject.key) ?? false;
-                        const subPct = subject.lessons.length > 0
-                          ? Math.round((subject.completedCount / subject.lessons.length) * 100) : 0;
-                        const subDone = subject.completedCount === subject.lessons.length && subject.lessons.length > 0;
-                        const subHasCurrent = subject.lessons.some((l) => l.status === "current" || l.status === "started");
-                        const SIcon = subject.Icon;
+                      {gg.domains.map((domain) => {
+                        const domainKey = `${gg.grade}-${domain.domain}`;
+                        const domOpen = openDomains?.has(domainKey) ?? false;
+                        const domPct = domain.lessons.length > 0
+                          ? Math.round((domain.completedCount / domain.lessons.length) * 100) : 0;
+                        const domDone = domain.completedCount === domain.lessons.length;
+                        const domHasCurrent = domain.lessons.some((l) => l.status === "current" || l.status === "started");
+                        const DIcon = domain.Icon;
 
                         return (
-                          <div key={subject.key} className="rounded-xl overflow-hidden">
-                            {/* Subject header */}
+                          <div key={domainKey} className="rounded-xl overflow-hidden">
                             <button
-                              onClick={() => toggleSubject(subject.key)}
-                              className={`w-full px-4 py-3 flex items-center gap-3 transition-colors rounded-xl ${
-                                subOpen ? "bg-indigo-50" : subDone ? "bg-emerald-50/50" : "hover:bg-zinc-50"
+                              onClick={() => toggle(openDomains, setOpenDomains, domainKey)}
+                              className={`w-full px-4 py-3 flex items-center gap-3 rounded-xl transition-colors ${
+                                domOpen ? "bg-indigo-50" : domDone ? "bg-emerald-50/50" : "hover:bg-zinc-50"
                               }`}
                             >
-                              <SIcon className={`w-4 h-4 flex-shrink-0 ${
-                                subDone ? "text-emerald-500" : subHasCurrent ? "text-indigo-500" : "text-zinc-400"
+                              <DIcon className={`w-4 h-4 flex-shrink-0 ${
+                                domDone ? "text-emerald-500" : domHasCurrent ? "text-indigo-500" : "text-zinc-400"
                               }`} strokeWidth={1.5} />
-                              <div className="flex-1 min-w-0 text-left">
-                                <p className="text-[13px] font-semibold text-zinc-800">{subject.name}</p>
-                              </div>
-                              <span className="text-[11px] text-zinc-400 font-medium flex-shrink-0 mr-1">
-                                {subject.completedCount}/{subject.lessons.length}
-                              </span>
-                              <ChevronDown className={`w-4 h-4 text-zinc-400 flex-shrink-0 transition-transform duration-200 ${
-                                subOpen ? "rotate-180" : ""
-                              }`} />
+                              <p className="flex-1 text-left text-[13px] font-semibold text-zinc-800">{domain.domain}</p>
+                              <span className="text-[11px] text-zinc-400 font-medium mr-1">{domain.completedCount}/{domain.lessons.length}</span>
+                              <ChevronDown className={`w-4 h-4 text-zinc-400 flex-shrink-0 transition-transform duration-200 ${domOpen ? "rotate-180" : ""}`} />
                             </button>
 
-                            {/* Lessons inside subject */}
                             <AnimatePresence initial={false}>
-                              {subOpen && (
+                              {domOpen && (
                                 <motion.div
                                   initial={{ height: 0, opacity: 0 }}
                                   animate={{ height: "auto", opacity: 1 }}
@@ -404,20 +362,20 @@ function JourneyContent() {
                                       <motion.div
                                         className="absolute top-0 left-0 right-0 bg-indigo-400 rounded-full"
                                         initial={{ height: 0 }}
-                                        animate={{ height: `${subPct}%` }}
+                                        animate={{ height: `${domPct}%` }}
                                         transition={{ duration: 0.5, delay: 0.1 }}
                                       />
                                     </div>
 
                                     <div className="space-y-1">
-                                      {subject.lessons.map((lesson, lIdx) => (
+                                      {domain.lessons.map((lesson, lIdx) => (
                                         <LessonRow
-                                          key={lesson.id}
+                                          key={lesson.standardId}
                                           lesson={lesson}
                                           childId={childId!}
                                           number={lIdx + 1}
-                                          delay={lIdx * 0.04}
-                                          prevTitle={lIdx > 0 ? subject.lessons[lIdx - 1].title : null}
+                                          delay={lIdx * 0.03}
+                                          prevTitle={lIdx > 0 ? domain.lessons[lIdx - 1].title : null}
                                         />
                                       ))}
                                     </div>
@@ -435,7 +393,6 @@ function JourneyContent() {
             </motion.div>
           );
         })}
-
       </div>
     </div>
   );
@@ -472,7 +429,7 @@ function LessonRow({
 
   const isClickable = status === "completed" || status === "current" || status === "started";
   const href = isClickable
-    ? `/lesson?child=${childId}&lesson=${lesson.id}`
+    ? `/learn?child=${childId}&standard=${lesson.standardId}`
     : status === "premium" ? `/upgrade?child=${childId}` : "#";
 
   const row = (
@@ -495,7 +452,7 @@ function LessonRow({
           }`}>
             {number}. {lesson.title}
           </p>
-          <p className="text-[11px] text-zinc-400 mt-0.5 line-clamp-1">{lesson.description}</p>
+          <p className="text-[11px] text-zinc-400 mt-0.5">{lesson.standardId}</p>
           {status === "locked" && prevTitle && (
             <p className="text-[10px] text-zinc-300 mt-0.5">Complete &ldquo;{prevTitle}&rdquo; first</p>
           )}
