@@ -167,7 +167,7 @@ function JourneyContent() {
         </div>
         <div className="flex gap-4 mt-3 text-xs text-white">
           <span className="flex items-center gap-1"><Flame className="w-3.5 h-3.5" /> {child.streak_days || 0} day streak</span>
-          <span className="flex items-center gap-1"><Star className="w-3.5 h-3.5" /> {child.carrots || 0} XP</span>
+          <span className="flex items-center gap-1"><Star className="w-3.5 h-3.5" /> {child.carrots || 0} carrots</span>
         </div>
       </motion.div>
 
