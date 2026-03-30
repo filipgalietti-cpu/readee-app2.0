@@ -355,10 +355,10 @@ function JourneyContent() {
                                   transition={{ duration: 0.2 }}
                                   className="overflow-hidden"
                                 >
-                                  <div className="relative ml-6 pl-5 py-1">
-                                    {/* Progress rail */}
-                                    <div className="absolute left-0 top-2 bottom-2 w-[3px] rounded-full overflow-hidden">
-                                      <div className="absolute inset-0 bg-zinc-100" />
+                                  <div className="relative ml-4 pl-7 py-1">
+                                    {/* Progress rail — centered at left-[11px] to align with node centers */}
+                                    <div className="absolute left-[10px] top-2 bottom-2 w-[2px] rounded-full overflow-hidden">
+                                      <div className="absolute inset-0 bg-zinc-200" />
                                       <motion.div
                                         className="absolute top-0 left-0 right-0 bg-indigo-400 rounded-full"
                                         initial={{ height: 0 }}
@@ -411,20 +411,25 @@ function LessonRow({
 }) {
   const { status } = lesson;
 
+  // All nodes centered at the rail (parent pl-7 = 28px, rail at left-[10px] = center at 11px)
+  // Node center should be at -17px from content left (28px - 11px = 17px)
+  const nodeBase = "absolute top-1/2 -translate-y-1/2 -translate-x-1/2";
+  const nodeLeft = "left-[-17px]";
+
   const node = {
-    completed: <div className="absolute -left-[19px] top-1/2 -translate-y-1/2"><CheckCircleSolid className="w-[14px] h-[14px] text-emerald-500" /></div>,
-    started: <div className="absolute -left-[16px] top-1/2 -translate-y-1/2 w-[10px] h-[10px] rounded-full bg-amber-400 border-2 border-white shadow" />,
+    completed: <div className={`${nodeBase} ${nodeLeft}`}><CheckCircleSolid className="w-[14px] h-[14px] text-emerald-500" /></div>,
+    started: <div className={`${nodeBase} ${nodeLeft} w-[10px] h-[10px] rounded-full bg-amber-400 border-2 border-white shadow`} />,
     current: (
       <motion.div
-        className="absolute -left-[19px] top-1/2 -translate-y-1/2 w-[16px] h-[16px] rounded-full bg-indigo-600 border-[3px] border-white shadow-md flex items-center justify-center"
+        className={`${nodeBase} ${nodeLeft} w-[16px] h-[16px] rounded-full bg-indigo-600 border-[3px] border-white shadow-md flex items-center justify-center`}
         animate={{ scale: [1, 1.2, 1] }}
         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
       >
         <Play className="w-[7px] h-[7px] text-white ml-[1px]" fill="white" />
       </motion.div>
     ),
-    locked: <div className="absolute -left-[16px] top-1/2 -translate-y-1/2 w-[10px] h-[10px] rounded-full bg-zinc-200 border-2 border-white" />,
-    premium: <div className="absolute -left-[16px] top-1/2 -translate-y-1/2 w-[10px] h-[10px] rounded-full bg-violet-300 border-2 border-white" />,
+    locked: <div className={`${nodeBase} ${nodeLeft} w-[10px] h-[10px] rounded-full bg-zinc-200 border-2 border-white`} />,
+    premium: <div className={`${nodeBase} ${nodeLeft} w-[10px] h-[10px] rounded-full bg-violet-300 border-2 border-white`} />,
   }[status];
 
   const isClickable = status === "completed" || status === "current" || status === "started";
