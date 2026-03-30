@@ -137,8 +137,8 @@ function JourneyContent() {
   const [child, setChild] = useState<Child | null>(null);
   const [progress, setProgress] = useState<ProgressRecord[]>([]);
   const [loading, setLoading] = useState(true);
-  const [openGrades, setOpenGrades] = useState<Set<string>>(new Set());
-  const [openSubjects, setOpenSubjects] = useState<Set<string>>(new Set());
+  const [openGrades, setOpenGrades] = useState<Set<string> | null>(null);
+  const [openSubjects, setOpenSubjects] = useState<Set<string> | null>(null);
 
   useEffect(() => { fetchPlan(); }, [fetchPlan]);
 
@@ -221,31 +221,36 @@ function JourneyContent() {
     });
   }
 
-  // Auto-open the grade + subject containing the current lesson
-  if (openGrades.size === 0) {
+  // Auto-open the grade + subject containing the current lesson (once)
+  if (openGrades === null) {
+    const initial = new Set<string>();
+    const initialSubs = new Set<string>();
     const currentGrade = gradeGroups.find((g) =>
       g.subjects.some((s) => s.lessons.some((l) => l.status === "current" || l.status === "started"))
     );
     if (currentGrade) {
-      openGrades.add(currentGrade.grade);
+      initial.add(currentGrade.grade);
       const currentSubject = currentGrade.subjects.find((s) =>
         s.lessons.some((l) => l.status === "current" || l.status === "started")
       );
-      if (currentSubject) openSubjects.add(currentSubject.key);
+      if (currentSubject) initialSubs.add(currentSubject.key);
     }
+    setOpenGrades(initial);
+    setOpenSubjects(initialSubs);
+    return null; // re-render with initialized state
   }
 
   const completedTotal = allLessons.filter((l) => l.status === "completed").length;
   const pct = allLessons.length > 0 ? Math.round((completedTotal / allLessons.length) * 100) : 0;
 
   const toggleGrade = (g: string) => setOpenGrades((prev) => {
-    const next = new Set(prev);
+    const next = new Set(prev || []);
     if (next.has(g)) next.delete(g); else next.add(g);
     return next;
   });
 
   const toggleSubject = (k: string) => setOpenSubjects((prev) => {
-    const next = new Set(prev);
+    const next = new Set(prev || []);
     if (next.has(k)) next.delete(k); else next.add(k);
     return next;
   });
@@ -282,7 +287,7 @@ function JourneyContent() {
 
         {/* ── Grade Accordions ── */}
         {gradeGroups.map((gradeGroup, gIdx) => {
-          const gradeOpen = openGrades.has(gradeGroup.grade);
+          const gradeOpen = openGrades?.has(gradeGroup.grade) ?? false;
           const gradePct = gradeGroup.totalLessons > 0
             ? Math.round((gradeGroup.completedCount / gradeGroup.totalLessons) * 100) : 0;
           const hasCurrent = gradeGroup.subjects.some((s) =>
@@ -352,7 +357,7 @@ function JourneyContent() {
                   >
                     <div className="px-3 py-2 space-y-1">
                       {gradeGroup.subjects.map((subject) => {
-                        const subOpen = openSubjects.has(subject.key);
+                        const subOpen = openSubjects?.has(subject.key) ?? false;
                         const subPct = subject.lessons.length > 0
                           ? Math.round((subject.completedCount / subject.lessons.length) * 100) : 0;
                         const subDone = subject.completedCount === subject.lessons.length && subject.lessons.length > 0;
