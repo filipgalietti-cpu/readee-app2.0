@@ -713,7 +713,7 @@ function TopProgressBar({ pct, completedCount, totalStandards, totalCarrots, str
   streakDays: number;
 }) {
   return (
-    <div className="rounded-2xl bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 p-4 shadow-lg">
+    <div className="rounded-2xl bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 p-4 shadow-lg relative z-20">
       <div className="flex items-center gap-3 mb-3">
         <div className="relative w-12 h-12 flex-shrink-0">
           <svg viewBox="0 0 100 100" className="w-12 h-12 -rotate-90">
