@@ -29,7 +29,7 @@ function getNavSections(childId: string | null) {
       label: "Learning",
       items: [
         { href: "/word-bank", icon: BookText, label: "Word Bank" },
-        { href: "/question-bank", icon: ListChecks, label: "Question Bank" },
+        { href: `/practice-hub${q}`, icon: ListChecks, label: "Practice" },
         { href: `/journey${q}`, icon: Map, label: "Reading Journey" },
       ],
     },

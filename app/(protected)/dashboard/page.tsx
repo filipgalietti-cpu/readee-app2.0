@@ -778,8 +778,8 @@ function ChildDashboard({
                     <BookText className="w-5 h-5 text-zinc-500" strokeWidth={1.5} />
                   </Link>
                 </SidebarTooltip>
-                <SidebarTooltip label="Question Bank">
-                  <Link href="/question-bank" className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-zinc-100 transition-colors">
+                <SidebarTooltip label="Practice">
+                  <Link href={`/practice-hub?child=${child.id}`} className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-zinc-100 transition-colors">
                     <ListChecks className="w-5 h-5 text-zinc-500" strokeWidth={1.5} />
                   </Link>
                 </SidebarTooltip>
@@ -1247,7 +1247,7 @@ function ParentSidebar({
       label: "Learning",
       items: [
         { href: "/word-bank", icon: BookText, label: "Word Bank" },
-        { href: "/question-bank", icon: ListChecks, label: "Question Bank" },
+        { href: `/practice-hub?child=${child.id}`, icon: ListChecks, label: "Practice" },
         { href: `/journey?child=${child.id}`, icon: Map, label: "Reading Journey" },
       ],
     },
