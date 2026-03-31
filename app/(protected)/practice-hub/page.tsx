@@ -221,7 +221,8 @@ function PracticeHubContent() {
                               <p className="text-sm font-semibold text-zinc-800 group-hover:text-indigo-700 transition-colors">
                                 {name}
                               </p>
-                              <p className="text-[11px] text-zinc-400">{qCount} questions</p>
+                              <p className="text-[11px] text-zinc-500 mt-0.5 line-clamp-1">{std.standard_description}</p>
+                              <p className="text-[10px] text-zinc-400 mt-0.5">{std.standard_id} &middot; {qCount} questions</p>
                             </div>
                             <ChevronRight className="w-4 h-4 text-zinc-300 group-hover:text-indigo-400 flex-shrink-0 transition-colors" />
                           </Link>
