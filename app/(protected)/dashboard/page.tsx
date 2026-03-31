@@ -989,7 +989,7 @@ function ChildDashboard({
         {/* ── Hero Tiles — 2×2 grid ── */}
         <motion.div variants={slideUp} className="grid grid-cols-2 gap-4 pt-4">
           <Link
-            href={hasAssessment ? `/practice?child=${child.id}&standard=${nextPracticeStandard.standard_id}` : `/assessment?child=${child.id}`}
+            href={hasAssessment ? `/practice-hub?child=${child.id}` : `/assessment?child=${child.id}`}
             className="block"
           >
             <motion.div
@@ -1002,7 +1002,7 @@ function ChildDashboard({
             </motion.div>
           </Link>
 
-          <Link href={`/practice?child=${child.id}&types=sentence_build,category_sort`} className="block">
+          <Link href={`/practice-hub?child=${child.id}`} className="block">
             <motion.div
               whileHover={{ scale: 1.05, y: -4 }}
               whileTap={{ scale: 0.95 }}
