@@ -37,12 +37,8 @@ const GRADE_LABELS: Record<string, string> = {
   "4th": "4th Grade",
 };
 
-function storyImageUrl(story: Story, thumbnail = false) {
-  const base = `${SUPABASE_BASE}/images/stories/${story.grade}/${story.id}.png`;
-  if (thumbnail && SUPABASE_BASE) {
-    return base.replace('/object/public/', '/render/image/public/') + '?width=300&quality=75&v=2';
-  }
-  return base + '?v=2';
+function storyImageUrl(story: Story) {
+  return `${SUPABASE_BASE}/images/stories/${story.grade}/${story.id}.png?v=2`;
 }
 
 function storyAudioUrl(story: Story) {
@@ -308,7 +304,7 @@ function StoriesContent() {
                       >
                         <div className="relative">
                           <LoadingImage
-                            src={storyImageUrl(s, true)}
+                            src={storyImageUrl(s)}
                             className="w-full h-36 sm:h-40 object-cover rounded-t-xl"
                           />
                           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
