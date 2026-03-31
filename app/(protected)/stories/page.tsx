@@ -141,8 +141,24 @@ function StoriesContent() {
       setShowResult(true);
     };
 
-    const handleNext = () => {
+    const handleNext = async () => {
       if (isLastQ) {
+        // Save story completion to database
+        if (childId) {
+          try {
+            const supabase = supabaseBrowser();
+            const finalCorrect = correctCount + (selectedAnswer === q.correct ? 1 : 0);
+            await supabase.from("practice_results").insert({
+              child_id: childId,
+              standard_id: story.id,
+              questions_attempted: story.questions.length,
+              questions_correct: finalCorrect,
+              xp_earned: finalCorrect * 5,
+            });
+          } catch (e) {
+            console.error("[stories] Failed to save progress:", e);
+          }
+        }
         closeStory();
         return;
       }
