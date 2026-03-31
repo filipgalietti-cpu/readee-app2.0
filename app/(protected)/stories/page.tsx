@@ -38,11 +38,11 @@ const GRADE_LABELS: Record<string, string> = {
 };
 
 function storyImageUrl(story: Story) {
-  return `${SUPABASE_BASE}/images/stories/${story.grade}/${story.id}.png?v=3`;
+  return `${SUPABASE_BASE}/images/stories/${story.grade}/${story.id}.png?v=4`;
 }
 
 function storyAudioUrl(story: Story) {
-  return `${SUPABASE_BASE}/audio/stories/${story.grade}/${story.id}-story.mp3?v=3`;
+  return `${SUPABASE_BASE}/audio/stories/${story.grade}/${story.id}-story.mp3?v=4`;
 }
 
 /* ── Page ──────────────────────────────────────────── */
