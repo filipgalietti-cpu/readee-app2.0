@@ -1,42 +1,51 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Suspense } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
-import { Child, LessonProgress } from "@/lib/db/types";
+import { Child } from "@/lib/db/types";
 import { levelNameToGradeKey } from "@/lib/assessment/questions";
-import lessonsData from "@/lib/data/lessons.json";
-import { BookOpen, Lock, CheckCircle } from "lucide-react";
+import { useAudio } from "@/lib/audio/use-audio";
+import { LoadingImage } from "@/app/components/ui/LoadingImage";
+import storiesBank from "@/scripts/stories-bank.json";
+import { BookOpen, Lock, ChevronDown, Play, Volume2 } from "lucide-react";
 
-const GRADE_KEYS = ["pre-k", "kindergarten", "1st", "2nd", "3rd", "4th"] as const;
+/* ── Types ─────────────────────────────────────────── */
+
+interface Story {
+  id: string;
+  grade: string;
+  title: string;
+  skill: string;
+  text: string;
+  questions: { prompt: string; choices: string[]; correct: string }[];
+}
+
+const SUPABASE_BASE = process.env.NEXT_PUBLIC_SUPABASE_URL
+  ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public`
+  : "";
+
+const GRADE_ORDER = ["kindergarten", "1st", "2nd", "3rd", "4th"];
 const GRADE_LABELS: Record<string, string> = {
-  "pre-k": "Foundational",
-  "kindergarten": "Kindergarten",
+  kindergarten: "Kindergarten",
   "1st": "1st Grade",
   "2nd": "2nd Grade",
   "3rd": "3rd Grade",
   "4th": "4th Grade",
 };
 
-interface LessonRaw {
-  id: string;
-  title: string;
-  skill: string;
-  read: { type: string; title: string; text: string; questions: unknown[] };
+function storyImageUrl(story: Story) {
+  return `${SUPABASE_BASE}/images/stories/${story.grade}/${story.id}.png`;
 }
 
-interface LevelData {
-  level_name: string;
-  level_number: number;
-  focus: string;
-  lessons: LessonRaw[];
+function storyAudioUrl(story: Story) {
+  return `${SUPABASE_BASE}/audio/stories/${story.grade}/${story.id}-story.mp3`;
 }
 
-interface LessonsFile {
-  levels: Record<string, LevelData>;
-}
+/* ── Page ──────────────────────────────────────────── */
 
 export default function StoriesPage() {
   return (
@@ -55,32 +64,52 @@ export default function StoriesPage() {
 function StoriesContent() {
   const searchParams = useSearchParams();
   const childId = searchParams.get("child");
+  const { playUrl, stop, unlockAudio } = useAudio();
+
   const [child, setChild] = useState<Child | null>(null);
-  const [progress, setProgress] = useState<LessonProgress[]>([]);
   const [loading, setLoading] = useState(true);
   const [expandedGrade, setExpandedGrade] = useState<string | null>(null);
+  const [activeStory, setActiveStory] = useState<string | null>(null);
+  const [currentQ, setCurrentQ] = useState(0);
+  const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
+  const [showResult, setShowResult] = useState(false);
+  const [correctCount, setCorrectCount] = useState(0);
 
   useEffect(() => {
     async function load() {
       if (!childId) return;
       const supabase = supabaseBrowser();
-
-      const [{ data: childData }, { data: progressData }] = await Promise.all([
-        supabase.from("children").select("*").eq("id", childId).single(),
-        supabase.from("lessons_progress").select("*").eq("child_id", childId),
-      ]);
-
-      if (childData) setChild(childData as Child);
-      if (progressData) setProgress(progressData as LessonProgress[]);
-
-      // Auto-expand current grade
-      if (childData?.reading_level) {
-        setExpandedGrade(levelNameToGradeKey(childData.reading_level));
+      const { data } = await supabase.from("children").select("*").eq("id", childId).single();
+      if (data) {
+        setChild(data as Child);
+        setExpandedGrade(levelNameToGradeKey(data.reading_level) || "kindergarten");
       }
       setLoading(false);
     }
     load();
   }, [childId]);
+
+  const allStories = (storiesBank as { stories: Story[] }).stories;
+  const gradeGroups = GRADE_ORDER.map((grade) => ({
+    grade,
+    label: GRADE_LABELS[grade],
+    stories: allStories.filter((s) => s.grade === grade),
+  }));
+
+  const openStory = useCallback((story: Story) => {
+    unlockAudio();
+    setActiveStory(story.id);
+    setCurrentQ(0);
+    setSelectedAnswer(null);
+    setShowResult(false);
+    setCorrectCount(0);
+    playUrl(storyAudioUrl(story));
+  }, [unlockAudio, playUrl]);
+
+  const closeStory = useCallback(() => {
+    stop();
+    setActiveStory(null);
+  }, [stop]);
 
   if (loading || !child) {
     return (
@@ -90,187 +119,209 @@ function StoriesContent() {
     );
   }
 
-  const file = lessonsData as unknown as LessonsFile;
   const childGradeKey = levelNameToGradeKey(child.reading_level);
-  const childGradeIdx = GRADE_KEYS.indexOf(childGradeKey as typeof GRADE_KEYS[number]);
+  const childGradeIdx = GRADE_ORDER.indexOf(childGradeKey);
 
-  const isReadComplete = (lessonId: string) => {
-    return progress.some((p) => p.lesson_id === lessonId && p.section === "read");
-  };
+  // Active story view
+  const story = activeStory ? allStories.find((s) => s.id === activeStory) : null;
+  if (story) {
+    const q = story.questions[currentQ];
+    const isLastQ = currentQ >= story.questions.length - 1;
 
-  const isLessonComplete = (lessonId: string) => {
-    const sections = progress.filter((p) => p.lesson_id === lessonId);
-    const completedSections = new Set(sections.map((s) => s.section));
-    return completedSections.has("learn") && completedSections.has("practice") && completedSections.has("read");
-  };
+    const handleAnswer = (choice: string) => {
+      if (selectedAnswer) return;
+      setSelectedAnswer(choice);
+      if (choice === q.correct) setCorrectCount((c) => c + 1);
+      setShowResult(true);
+    };
 
-  const totalStories = Object.values(file.levels).reduce((sum, l) => sum + l.lessons.length, 0);
-  const completedStories = Object.values(file.levels)
-    .flatMap((l) => l.lessons)
-    .filter((l) => isReadComplete(l.id)).length;
+    const handleNext = () => {
+      if (isLastQ) {
+        closeStory();
+        return;
+      }
+      setCurrentQ((c) => c + 1);
+      setSelectedAnswer(null);
+      setShowResult(false);
+    };
 
-  return (
-    <div className="max-w-2xl mx-auto py-8 px-4 space-y-8 pb-16">
-      {/* Header */}
-      <div className="flex items-center gap-3">
-        <Link
-          href="/dashboard"
-          className="text-sm text-indigo-600 hover:text-indigo-700 font-medium transition-colors"
+    return (
+      <div className="max-w-lg mx-auto py-6 px-4">
+        <button onClick={closeStory} className="text-sm text-indigo-600 font-medium mb-4">
+          &larr; Back to Stories
+        </button>
+
+        {/* Story card */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="rounded-2xl bg-white shadow-md overflow-hidden mb-6"
         >
-          &larr; Back
-        </Link>
-      </div>
-
-      <div className="text-center animate-slideUp">
-        <BookOpen className="w-12 h-12 text-indigo-500 mx-auto mb-3" strokeWidth={1.5} />
-        <h1 className="text-2xl font-bold text-zinc-900 tracking-tight">Stories Library</h1>
-        <p className="text-zinc-500 mt-1">
-          {completedStories} of {totalStories} stories read
-        </p>
-      </div>
-
-      {/* Progress bar */}
-      <div className="rounded-2xl border border-zinc-200 bg-white p-4 dash-slide-up-1">
-        <div className="h-3 bg-zinc-100 rounded-full overflow-hidden">
-          <div
-            className="h-full bg-gradient-to-r from-indigo-500 to-violet-500 rounded-full transition-all duration-700"
-            style={{ width: `${totalStories > 0 ? Math.round((completedStories / totalStories) * 100) : 0}%` }}
+          <LoadingImage
+            src={storyImageUrl(story)}
+            className="w-full h-48 object-cover"
           />
-        </div>
-      </div>
+          <div className="p-5">
+            <h1 className="text-xl font-extrabold text-zinc-900 mb-3">{story.title}</h1>
+            <p className="text-base text-zinc-700 leading-relaxed whitespace-pre-line">{story.text}</p>
+            <button
+              onClick={() => playUrl(storyAudioUrl(story))}
+              className="mt-3 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-50 text-indigo-600 text-sm font-medium hover:bg-indigo-100 transition-colors"
+            >
+              <Volume2 className="w-4 h-4" /> Listen again
+            </button>
+          </div>
+        </motion.div>
 
-      {/* Grade sections */}
-      <div className="space-y-3 dash-slide-up-2">
-        {GRADE_KEYS.map((gradeKey, gradeIdx) => {
-          const level = file.levels[gradeKey];
-          if (!level) return null;
-          const isExpanded = expandedGrade === gradeKey;
-          const isCurrent = gradeKey === childGradeKey;
-          const isLocked = gradeIdx > childGradeIdx;
-          const gradeCompleted = level.lessons.filter((l) => isReadComplete(l.id)).length;
+        {/* Question */}
+        <motion.div
+          key={currentQ}
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          className="rounded-2xl bg-white shadow-md p-5"
+        >
+          <p className="text-xs text-zinc-400 font-medium mb-2">
+            Question {currentQ + 1} of {story.questions.length}
+          </p>
+          <p className="text-base font-bold text-zinc-900 mb-4">{q.prompt}</p>
 
-          return (
-            <div key={gradeKey}>
-              <button
-                onClick={() => setExpandedGrade(isExpanded ? null : gradeKey)}
-                className={`w-full flex items-center justify-between p-4 rounded-xl text-left transition-all ${
-                  isCurrent
-                    ? "bg-indigo-50 border border-indigo-200"
-                    : isLocked
-                    ? "bg-zinc-50 border border-zinc-100 opacity-60"
-                    : "bg-white border border-zinc-200 hover:bg-zinc-50"
-                }`}
-              >
-                <div className="flex items-center gap-3">
-                  <span className="text-lg">
-                    {isLocked ? (
-                      <Lock className="w-5 h-5 text-zinc-400" strokeWidth={1.5} />
-                    ) : isCurrent ? (
-                      <BookOpen className="w-5 h-5 text-indigo-600" strokeWidth={1.5} />
-                    ) : (
-                      <CheckCircle className="w-5 h-5 text-green-500" strokeWidth={1.5} />
-                    )}
-                  </span>
-                  <div>
-                    <span className={`text-sm font-bold ${isCurrent ? "text-indigo-700" : "text-zinc-700"}`}>
-                      {GRADE_LABELS[gradeKey]}
-                    </span>
-                    <span className="text-xs text-zinc-400 ml-2">
-                      {gradeCompleted}/{level.lessons.length} stories
-                    </span>
-                    {isCurrent && (
-                      <span className="text-[10px] font-semibold text-indigo-600 bg-indigo-100 px-1.5 py-0.5 rounded-full ml-2">
-                        Current
-                      </span>
-                    )}
-                  </div>
-                </div>
-                <svg
-                  className={`w-4 h-4 text-zinc-400 transition-transform flex-shrink-0 ${isExpanded ? "rotate-180" : ""}`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+          <div className="space-y-2">
+            {q.choices.map((choice) => {
+              let style = "border-zinc-200 bg-white hover:bg-zinc-50";
+              if (showResult) {
+                if (choice === q.correct) style = "border-emerald-400 bg-emerald-50";
+                else if (choice === selectedAnswer) style = "border-red-300 bg-red-50";
+                else style = "border-zinc-100 opacity-50";
+              }
+              return (
+                <button
+                  key={choice}
+                  onClick={() => handleAnswer(choice)}
+                  disabled={!!selectedAnswer}
+                  className={`w-full text-left px-4 py-3 rounded-xl border-2 text-sm font-medium transition-all ${style}`}
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
+                  {choice}
+                </button>
+              );
+            })}
+          </div>
 
+          {showResult && (
+            <motion.button
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              onClick={handleNext}
+              className="w-full mt-4 py-3 rounded-xl bg-indigo-600 text-white font-bold text-sm hover:bg-indigo-700 transition-colors"
+            >
+              {isLastQ ? "Done" : "Next Question"}
+            </motion.button>
+          )}
+        </motion.div>
+      </div>
+    );
+  }
+
+  // Library view
+  return (
+    <div className="max-w-2xl mx-auto py-6 px-4 space-y-4">
+      {/* Header */}
+      <motion.div
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="text-center mb-2"
+      >
+        <BookOpen className="w-10 h-10 text-indigo-500 mx-auto mb-2" strokeWidth={1.5} />
+        <h1 className="text-2xl font-extrabold text-zinc-900">Stories Library</h1>
+        <p className="text-sm text-zinc-500 mt-1">{allStories.length} stories across {GRADE_ORDER.length} grades</p>
+      </motion.div>
+
+      {/* Grade accordions */}
+      {gradeGroups.map((group, gIdx) => {
+        const isExpanded = expandedGrade === group.grade;
+        const isLocked = GRADE_ORDER.indexOf(group.grade) > childGradeIdx;
+
+        return (
+          <motion.div
+            key={group.grade}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: gIdx * 0.04 }}
+            className="rounded-2xl bg-white shadow-sm overflow-hidden"
+          >
+            <button
+              onClick={() => !isLocked && setExpandedGrade(isExpanded ? null : group.grade)}
+              className={`w-full text-left ${isLocked ? "opacity-50 cursor-not-allowed" : ""}`}
+            >
+              <div className={`px-5 py-4 flex items-center gap-3 ${
+                isExpanded ? "bg-gradient-to-r from-indigo-600 to-violet-500" : ""
+              }`}>
+                <div className={`w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 ${
+                  isExpanded ? "bg-white/20" : isLocked ? "bg-zinc-100" : "bg-indigo-50"
+                }`}>
+                  {isLocked
+                    ? <Lock className="w-4 h-4 text-zinc-400" />
+                    : <BookOpen className={`w-4 h-4 ${isExpanded ? "text-white" : "text-indigo-600"}`} strokeWidth={1.5} />
+                  }
+                </div>
+                <div className="flex-1">
+                  <p className={`text-sm font-bold ${isExpanded ? "text-white" : "text-zinc-900"}`}>
+                    {group.label}
+                  </p>
+                  <p className={`text-xs ${isExpanded ? "text-white/70" : "text-zinc-400"}`}>
+                    {group.stories.length} stories
+                  </p>
+                </div>
+                {!isLocked && (
+                  <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform ${
+                    isExpanded ? "text-white/60 rotate-180" : "text-zinc-400"
+                  }`} />
+                )}
+              </div>
+            </button>
+
+            <AnimatePresence initial={false}>
               {isExpanded && (
-                <div className="mt-2 space-y-2 pl-2">
-                  {level.lessons.map((lesson) => {
-                    const completed = isReadComplete(lesson.id);
-                    const fullyComplete = isLessonComplete(lesson.id);
-                    const available = !isLocked;
-                    const preview = lesson.read.text.slice(0, 80) + (lesson.read.text.length > 80 ? "..." : "");
-
-                    return (
-                      <div
-                        key={lesson.id}
-                        className={`rounded-xl border p-4 transition-all ${
-                          completed
-                            ? "border-green-200 bg-green-50/50"
-                            : available
-                            ? "border-zinc-200 bg-white hover:shadow-sm"
-                            : "border-zinc-100 bg-zinc-50 opacity-50"
-                        }`}
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.25 }}
+                  className="overflow-hidden"
+                >
+                  <div className="px-4 py-3 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {group.stories.map((s, sIdx) => (
+                      <motion.button
+                        key={s.id}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: sIdx * 0.05 }}
+                        onClick={() => openStory(s)}
+                        className="rounded-xl overflow-hidden bg-zinc-50 hover:bg-zinc-100 transition-colors text-left group"
                       >
-                        <div className="flex items-start gap-3">
-                          <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm flex-shrink-0 mt-0.5 ${
-                            completed ? "bg-green-100 text-green-600" : available ? "bg-indigo-100 text-indigo-600" : "bg-zinc-100 text-zinc-400"
-                          }`}>
-                            {completed ? (
-                              <CheckCircle className="w-4 h-4" strokeWidth={2} />
-                            ) : isLocked ? (
-                              <Lock className="w-4 h-4" strokeWidth={1.5} />
-                            ) : (
-                              <BookOpen className="w-4 h-4" strokeWidth={1.5} />
-                            )}
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <div className={`font-semibold text-sm ${isLocked ? "text-zinc-400" : "text-zinc-900"}`}>
-                              {lesson.read.title}
+                        <div className="relative">
+                          <LoadingImage
+                            src={storyImageUrl(s)}
+                            className="w-full h-32 object-cover"
+                          />
+                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+                            <div className="w-10 h-10 rounded-full bg-white/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow">
+                              <Play className="w-5 h-5 text-indigo-600 ml-0.5" fill="currentColor" />
                             </div>
-                            <p className="text-xs text-zinc-400 mt-0.5 line-clamp-2">{preview}</p>
-                            <div className="flex items-center gap-2 mt-2">
-                              <span className="text-[10px] px-1.5 py-0.5 rounded bg-zinc-100 text-zinc-400">
-                                {GRADE_LABELS[gradeKey]}
-                              </span>
-                              {fullyComplete && (
-                                <span className="text-[10px] px-1.5 py-0.5 rounded bg-green-100 text-green-600 font-medium">
-                                  Complete
-                                </span>
-                              )}
-                            </div>
-                          </div>
-                          <div className="flex-shrink-0">
-                            {completed && available ? (
-                              <Link
-                                href={`/lesson?child=${child.id}&lesson=${lesson.id}`}
-                                className="px-3 py-1.5 rounded-lg text-xs font-medium bg-green-100 text-green-700 hover:bg-green-200 transition-colors"
-                              >
-                                Read Again
-                              </Link>
-                            ) : available ? (
-                              <Link
-                                href={`/lesson?child=${child.id}&lesson=${lesson.id}`}
-                                className="px-3 py-1.5 rounded-lg text-xs font-medium bg-indigo-100 text-indigo-700 hover:bg-indigo-200 transition-colors"
-                              >
-                                Read
-                              </Link>
-                            ) : (
-                              <span className="text-[10px] text-zinc-300">Keep learning!</span>
-                            )}
                           </div>
                         </div>
-                      </div>
-                    );
-                  })}
-                </div>
+                        <div className="p-3">
+                          <p className="text-sm font-bold text-zinc-900 leading-tight">{s.title}</p>
+                          <p className="text-[11px] text-zinc-400 mt-1 line-clamp-2">{s.text.slice(0, 60)}...</p>
+                        </div>
+                      </motion.button>
+                    ))}
+                  </div>
+                </motion.div>
               )}
-            </div>
-          );
-        })}
-      </div>
+            </AnimatePresence>
+          </motion.div>
+        );
+      })}
     </div>
   );
 }
