@@ -42,7 +42,7 @@ function storyImageUrl(story: Story) {
 }
 
 function storyAudioUrl(story: Story) {
-  return `${SUPABASE_BASE}/audio/stories/${story.grade}/${story.id}-story.mp3`;
+  return `${SUPABASE_BASE}/audio/stories/${story.grade}/${story.id}-story.mp3?v=2`;
 }
 
 /* ── Page ──────────────────────────────────────────── */
