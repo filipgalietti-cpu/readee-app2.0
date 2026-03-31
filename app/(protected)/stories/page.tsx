@@ -236,7 +236,6 @@ function StoriesContent() {
       >
         <BookOpen className="w-10 h-10 text-indigo-500 mx-auto mb-2" strokeWidth={1.5} />
         <h1 className="text-2xl font-extrabold text-zinc-900">Stories Library</h1>
-        <p className="text-sm text-zinc-500 mt-1">{allStories.length} stories across {GRADE_ORDER.length} grades</p>
       </motion.div>
 
       {/* Grade accordions */}
