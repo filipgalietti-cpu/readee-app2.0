@@ -159,7 +159,7 @@ function StoriesContent() {
         >
           <LoadingImage
             src={storyImageUrl(story)}
-            className="w-full h-48 object-cover"
+            className="w-full aspect-square object-contain bg-indigo-50"
           />
           <div className="p-5">
             <h1 className="text-xl font-extrabold text-zinc-900 mb-3">{story.title}</h1>
