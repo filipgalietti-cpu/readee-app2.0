@@ -5,6 +5,7 @@ import Link from "next/link";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { usePlanStore } from "@/lib/stores/plan-store";
 import { wordBank, type WordEntry } from "@/lib/word-bank/words";
+import { useAudio } from "@/lib/audio/use-audio";
 import { BookOpen, Star } from "lucide-react";
 
 const CATEGORY_FILTERS = [
@@ -56,12 +57,13 @@ function WordBankContent() {
 
   const isPremium = userPlan === "premium";
 
+  const { playUrl, unlockAudio } = useAudio();
+
   function playWord(entry: WordEntry) {
+    unlockAudio();
     setPlayingWord(entry.word);
-    const audio = new Audio(entry.audio);
-    audio.addEventListener("ended", () => setPlayingWord(null));
-    audio.addEventListener("error", () => setPlayingWord(null));
-    audio.play().catch(() => setPlayingWord(null));
+    playUrl(entry.audio);
+    setTimeout(() => setPlayingWord(null), 1500);
   }
 
   if (loading) {
