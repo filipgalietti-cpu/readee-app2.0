@@ -1,0 +1,1004 @@
+{
+  "stories": [
+    {
+      "id": "story-k-1",
+      "grade": "kindergarten",
+      "title": "The Big Red Hat",
+      "skill": "cvc_words",
+      "text": "Sam has a big red hat. The hat sat on the mat. A cat sat on the hat! Sam got the hat. The cat ran.",
+      "image_prompt": "A cheerful child holding a big red hat, with a playful orange cat running away from a doormat. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+      "questions": [
+        {
+          "prompt": "What color is the hat?",
+          "choices": [
+            "Blue",
+            "Red",
+            "Green",
+            "Yellow"
+          ],
+          "correct": "Red"
+        },
+        {
+          "prompt": "Where did the hat sit?",
+          "choices": [
+            "On a bed",
+            "On a mat",
+            "On a dog",
+            "On a box"
+          ],
+          "correct": "On a mat"
+        },
+        {
+          "prompt": "What sat on the hat?",
+          "choices": [
+            "A dog",
+            "A bug",
+            "A cat",
+            "A pig"
+          ],
+          "correct": "A cat"
+        }
+      ]
+    },
+    {
+      "id": "story-k-2",
+      "grade": "kindergarten",
+      "title": "Dan and the Dog",
+      "skill": "cvc_words",
+      "text": "Dan has a dog. The dog can dig. Dan and the dog dug in the mud. Mom was not glad! Dan and the dog got a bath.",
+      "image_prompt": "A happy boy and his brown dog covered in mud, standing near a hole they dug in a yard. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+      "questions": [
+        {
+          "prompt": "What can the dog do?",
+          "choices": [
+            "Run",
+            "Dig",
+            "Swim",
+            "Fly"
+          ],
+          "correct": "Dig"
+        },
+        {
+          "prompt": "Where did they dig?",
+          "choices": [
+            "In sand",
+            "In mud",
+            "In snow",
+            "In grass"
+          ],
+          "correct": "In mud"
+        },
+        {
+          "prompt": "What did Dan and the dog get?",
+          "choices": [
+            "A nap",
+            "A bath",
+            "A treat",
+            "A hat"
+          ],
+          "correct": "A bath"
+        }
+      ]
+    },
+    {
+      "id": "story-k-3",
+      "grade": "kindergarten",
+      "title": "I Can Do It",
+      "skill": "sight_words",
+      "text": "I can go to the park. You can go with me! We can run and play. Are you fast? I am! She is fast too. We are all fast.",
+      "image_prompt": "Three happy kids running together in a sunny park with green grass and a playground in the background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+      "questions": [
+        {
+          "prompt": "Where do they go?",
+          "choices": [
+            "The zoo",
+            "The park",
+            "The shop",
+            "The beach"
+          ],
+          "correct": "The park"
+        },
+        {
+          "prompt": "What can they do?",
+          "choices": [
+            "Swim",
+            "Fly",
+            "Run and play",
+            "Cook"
+          ],
+          "correct": "Run and play"
+        },
+        {
+          "prompt": "Are they fast?",
+          "choices": [
+            "No",
+            "Yes",
+            "Maybe",
+            "We don't know"
+          ],
+          "correct": "Yes"
+        }
+      ]
+    },
+    {
+      "id": "story-k-4",
+      "grade": "kindergarten",
+      "title": "A Bug on a Rug",
+      "skill": "cvc_words",
+      "text": "A bug sat on a rug. The bug did a jig! It hid in a mug. Mom got the bug. She set it on a log.",
+      "image_prompt": "A tiny cute bug dancing on a colorful rug in a living room, with a coffee mug nearby. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+      "questions": [
+        {
+          "prompt": "Where did the bug sit?",
+          "choices": [
+            "On a log",
+            "On a rug",
+            "On a bed",
+            "On a cup"
+          ],
+          "correct": "On a rug"
+        },
+        {
+          "prompt": "What did the bug do?",
+          "choices": [
+            "A jig",
+            "A nap",
+            "A flip",
+            "A run"
+          ],
+          "correct": "A jig"
+        },
+        {
+          "prompt": "Where did Mom put the bug?",
+          "choices": [
+            "In a box",
+            "On a log",
+            "In a bag",
+            "On a mat"
+          ],
+          "correct": "On a log"
+        }
+      ]
+    },
+    {
+      "id": "story-k-5",
+      "grade": "kindergarten",
+      "title": "My Dog and Me",
+      "skill": "sight_words",
+      "text": "My dog is big. He and I go to the pond. Do you see the ducks? I do! We sit and look. He is my best pal.",
+      "image_prompt": "A child and a big friendly dog sitting together by a pond watching ducks swim. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+      "questions": [
+        {
+          "prompt": "Where do they go?",
+          "choices": [
+            "The park",
+            "The pond",
+            "The zoo",
+            "The hill"
+          ],
+          "correct": "The pond"
+        },
+        {
+          "prompt": "What do they see?",
+          "choices": [
+            "Fish",
+            "Frogs",
+            "Ducks",
+            "Cats"
+          ],
+          "correct": "Ducks"
+        },
+        {
+          "prompt": "Who is the dog?",
+          "choices": [
+            "A pet",
+            "A pal",
+            "A toy",
+            "A cat"
+          ],
+          "correct": "A pal"
+        }
+      ]
+    },
+    {
+      "id": "story-1-1",
+      "grade": "1st",
+      "title": "Frog on a Stump",
+      "skill": "blends",
+      "text": "A green frog sat on a stump. He saw a dragonfly zip past. The frog jumped and snapped! He missed. He tried again and got it. What a great snack!",
+      "image_prompt": "A green frog sitting on a tree stump trying to catch a dragonfly in a pond setting. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+      "questions": [
+        {
+          "prompt": "Where did the frog sit?",
+          "choices": [
+            "On a rock",
+            "On a stump",
+            "On a leaf",
+            "On a log"
+          ],
+          "correct": "On a stump"
+        },
+        {
+          "prompt": "What flew past the frog?",
+          "choices": [
+            "A bee",
+            "A bird",
+            "A dragonfly",
+            "A moth"
+          ],
+          "correct": "A dragonfly"
+        },
+        {
+          "prompt": "Did the frog catch it the first time?",
+          "choices": [
+            "Yes",
+            "No",
+            "Maybe",
+            "We don't know"
+          ],
+          "correct": "No"
+        }
+      ]
+    },
+    {
+      "id": "story-1-2",
+      "grade": "1st",
+      "title": "The Big Ship",
+      "skill": "digraphs",
+      "text": "Chad and his mom went on a big ship. The ship had a flag. Chad saw fish splash in the water. Then the ship went past a whale! Chad was so thrilled.",
+      "image_prompt": "A boy and his mom on the deck of a big ship, watching a whale splash nearby with a flag waving. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+      "questions": [
+        {
+          "prompt": "Where did Chad go?",
+          "choices": [
+            "On a bus",
+            "On a ship",
+            "On a plane",
+            "On a train"
+          ],
+          "correct": "On a ship"
+        },
+        {
+          "prompt": "What did Chad see splash?",
+          "choices": [
+            "Dogs",
+            "Cats",
+            "Fish",
+            "Birds"
+          ],
+          "correct": "Fish"
+        },
+        {
+          "prompt": "What big animal did they see?",
+          "choices": [
+            "A shark",
+            "A whale",
+            "A dolphin",
+            "A turtle"
+          ],
+          "correct": "A whale"
+        }
+      ]
+    },
+    {
+      "id": "story-1-3",
+      "grade": "1st",
+      "title": "Jake and the Cake",
+      "skill": "cvce",
+      "text": "Jake made a cake. He put it on a plate. His snake Pete came close. Pete ate a grape, not the cake! Jake smiled and ate a huge slice.",
+      "image_prompt": "A boy with a chocolate cake on a plate, and a friendly pet snake nearby eating a grape. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+      "questions": [
+        {
+          "prompt": "What did Jake make?",
+          "choices": [
+            "A pie",
+            "A cake",
+            "A cookie",
+            "A muffin"
+          ],
+          "correct": "A cake"
+        },
+        {
+          "prompt": "What is the snake's name?",
+          "choices": [
+            "Pat",
+            "Pete",
+            "Paul",
+            "Phil"
+          ],
+          "correct": "Pete"
+        },
+        {
+          "prompt": "What did Pete eat?",
+          "choices": [
+            "The cake",
+            "A grape",
+            "A cookie",
+            "A chip"
+          ],
+          "correct": "A grape"
+        }
+      ]
+    },
+    {
+      "id": "story-1-4",
+      "grade": "1st",
+      "title": "Brave Crab",
+      "skill": "blends",
+      "text": "A small crab lived by the creek. One day, a crow dropped a stick near him. The crab grabbed the stick and dragged it to his home. Now he had a bridge!",
+      "image_prompt": "A small crab dragging a stick across a creek to make a bridge, with a crow flying above. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+      "questions": [
+        {
+          "prompt": "Where did the crab live?",
+          "choices": [
+            "By a lake",
+            "By a creek",
+            "In a cave",
+            "On a hill"
+          ],
+          "correct": "By a creek"
+        },
+        {
+          "prompt": "What did the crow drop?",
+          "choices": [
+            "A rock",
+            "A leaf",
+            "A stick",
+            "A seed"
+          ],
+          "correct": "A stick"
+        },
+        {
+          "prompt": "What did the crab make?",
+          "choices": [
+            "A nest",
+            "A bridge",
+            "A boat",
+            "A house"
+          ],
+          "correct": "A bridge"
+        }
+      ]
+    },
+    {
+      "id": "story-1-5",
+      "grade": "1st",
+      "title": "Chip the Chipmunk",
+      "skill": "digraphs",
+      "text": "Chip the chipmunk had a plan. He checked every path for chestnuts. He found three under a thick bush. Chip shoved them in his cheeks and rushed home.",
+      "image_prompt": "A cute chipmunk with puffy cheeks full of chestnuts, standing near a thick green bush. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+      "questions": [
+        {
+          "prompt": "What is the chipmunk's name?",
+          "choices": [
+            "Chuck",
+            "Chip",
+            "Chad",
+            "Chase"
+          ],
+          "correct": "Chip"
+        },
+        {
+          "prompt": "What was Chip looking for?",
+          "choices": [
+            "Berries",
+            "Acorns",
+            "Chestnuts",
+            "Seeds"
+          ],
+          "correct": "Chestnuts"
+        },
+        {
+          "prompt": "How many did he find?",
+          "choices": [
+            "One",
+            "Two",
+            "Three",
+            "Four"
+          ],
+          "correct": "Three"
+        }
+      ]
+    },
+    {
+      "id": "story-2-1",
+      "grade": "2nd",
+      "title": "The Rain Train",
+      "skill": "vowel_teams",
+      "text": "It rained all day. Dean waited by the train. The train was late! He read his book and ate a snack. When the train came, Dean cheered. He had a seat by the window.",
+      "image_prompt": "A boy sitting by a rainy train station window reading a book, with a train arriving in the background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+      "questions": [
+        {
+          "prompt": "What was the weather like?",
+          "choices": [
+            "Sunny",
+            "Snowy",
+            "Rainy",
+            "Windy"
+          ],
+          "correct": "Rainy"
+        },
+        {
+          "prompt": "Was the train on time?",
+          "choices": [
+            "Yes",
+            "No",
+            "We don't know",
+            "Maybe"
+          ],
+          "correct": "No"
+        },
+        {
+          "prompt": "Where did Dean sit?",
+          "choices": [
+            "By the door",
+            "By the window",
+            "In the back",
+            "On the floor"
+          ],
+          "correct": "By the window"
+        }
+      ]
+    },
+    {
+      "id": "story-2-2",
+      "grade": "2nd",
+      "title": "The Snowboat",
+      "skill": "vowel_teams",
+      "text": "Joan found an old boat in the snow. She loaded it with her coat and a loaf of bread. She floated down the snowy road like it was a river! Her goat followed behind.",
+      "image_prompt": "A girl riding in a small boat sliding down a snowy road, with a goat running behind her. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+      "questions": [
+        {
+          "prompt": "What did Joan find?",
+          "choices": [
+            "A sled",
+            "A boat",
+            "A bike",
+            "A cart"
+          ],
+          "correct": "A boat"
+        },
+        {
+          "prompt": "What did she bring?",
+          "choices": [
+            "A coat and bread",
+            "A hat and milk",
+            "A ball and bat",
+            "A map and pen"
+          ],
+          "correct": "A coat and bread"
+        },
+        {
+          "prompt": "Who followed Joan?",
+          "choices": [
+            "A dog",
+            "A cat",
+            "A goat",
+            "A duck"
+          ],
+          "correct": "A goat"
+        }
+      ]
+    },
+    {
+      "id": "story-2-3",
+      "grade": "2nd",
+      "title": "The Unkind Wind",
+      "skill": "prefixes",
+      "text": "The wind was unkind today. It undid Rosa's braids. It unzipped her backpack. Papers flew everywhere! Rosa was unhappy but she refilled her bag and retied her hair.",
+      "image_prompt": "A girl in a windy park trying to catch papers flying from her unzipped backpack, her hair blowing wild. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+      "questions": [
+        {
+          "prompt": "What did the wind undo?",
+          "choices": [
+            "Her shoes",
+            "Her braids",
+            "Her hat",
+            "Her coat"
+          ],
+          "correct": "Her braids"
+        },
+        {
+          "prompt": "How did Rosa feel?",
+          "choices": [
+            "Happy",
+            "Unhappy",
+            "Sleepy",
+            "Scared"
+          ],
+          "correct": "Unhappy"
+        },
+        {
+          "prompt": "What does 'retied' mean?",
+          "choices": [
+            "Tied for the first time",
+            "Tied again",
+            "Untied",
+            "Never tied"
+          ],
+          "correct": "Tied again"
+        }
+      ]
+    },
+    {
+      "id": "story-2-4",
+      "grade": "2nd",
+      "title": "Beehive Street",
+      "skill": "vowel_teams",
+      "text": "Lee lived on Beehive Street. Each week, she would peek at the bees. They worked as a team to feed the queen. Lee felt proud to keep the bees safe.",
+      "image_prompt": "A girl watching bees buzzing around a beehive in her backyard garden. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+      "questions": [
+        {
+          "prompt": "Where did Lee live?",
+          "choices": [
+            "Maple Lane",
+            "Beehive Street",
+            "Oak Road",
+            "Elm Drive"
+          ],
+          "correct": "Beehive Street"
+        },
+        {
+          "prompt": "What did the bees feed?",
+          "choices": [
+            "The king",
+            "The queen",
+            "The baby",
+            "The dog"
+          ],
+          "correct": "The queen"
+        },
+        {
+          "prompt": "How did Lee feel?",
+          "choices": [
+            "Sad",
+            "Proud",
+            "Angry",
+            "Bored"
+          ],
+          "correct": "Proud"
+        }
+      ]
+    },
+    {
+      "id": "story-2-5",
+      "grade": "2nd",
+      "title": "The Butterfly Garden",
+      "skill": "compound_words",
+      "text": "In the backyard, sunflowers grew tall. A butterfly landed on a flowerpot. It was beautiful! Emma set up a birdbath nearby. Soon, dragonflies came too. Her backyard was a little rainforest.",
+      "image_prompt": "A girl in a colorful backyard garden with sunflowers, a butterfly on a flowerpot, and a birdbath with dragonflies. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+      "questions": [
+        {
+          "prompt": "What grew tall in the backyard?",
+          "choices": [
+            "Roses",
+            "Sunflowers",
+            "Tulips",
+            "Trees"
+          ],
+          "correct": "Sunflowers"
+        },
+        {
+          "prompt": "Where did the butterfly land?",
+          "choices": [
+            "On a tree",
+            "On a flowerpot",
+            "On a bench",
+            "On a rock"
+          ],
+          "correct": "On a flowerpot"
+        },
+        {
+          "prompt": "What is a compound word in the story?",
+          "choices": [
+            "Beautiful",
+            "Garden",
+            "Butterfly",
+            "Nearby"
+          ],
+          "correct": "Butterfly"
+        }
+      ]
+    },
+    {
+      "id": "story-3-1",
+      "grade": "3rd",
+      "title": "The Secret Tide Pool",
+      "skill": "comprehension",
+      "text": "Maya discovered a tide pool behind the rocks. Tiny crabs scurried across the sand. A purple starfish clung to a stone. She noticed the water was remarkably clear. Maya decided to return every weekend to study the creatures.",
+      "image_prompt": "A girl kneeling beside a tide pool full of crabs and a purple starfish on a rocky beach. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+      "questions": [
+        {
+          "prompt": "Where was the tide pool?",
+          "choices": [
+            "By a river",
+            "Behind the rocks",
+            "In the park",
+            "Near a lake"
+          ],
+          "correct": "Behind the rocks"
+        },
+        {
+          "prompt": "What does 'remarkably' mean?",
+          "choices": [
+            "A little",
+            "Very",
+            "Not at all",
+            "Somewhat"
+          ],
+          "correct": "Very"
+        },
+        {
+          "prompt": "What did Maya decide to do?",
+          "choices": [
+            "Move away",
+            "Return every weekend",
+            "Build a wall",
+            "Catch the crabs"
+          ],
+          "correct": "Return every weekend"
+        }
+      ]
+    },
+    {
+      "id": "story-3-2",
+      "grade": "3rd",
+      "title": "The Missing Compass",
+      "skill": "context_clues",
+      "text": "Leo's compass vanished from his desk. He searched his entire room. Under the bed, he found dust bunnies. Behind the bookshelf, he found an old photograph. Finally, his little sister returned it with a sheepish grin.",
+      "image_prompt": "A boy searching under his bed for a missing compass, with his little sister behind him hiding it and grinning. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+      "questions": [
+        {
+          "prompt": "What does 'vanished' mean?",
+          "choices": [
+            "Appeared",
+            "Disappeared",
+            "Broke",
+            "Changed color"
+          ],
+          "correct": "Disappeared"
+        },
+        {
+          "prompt": "Who had the compass?",
+          "choices": [
+            "His mom",
+            "His dog",
+            "His sister",
+            "His friend"
+          ],
+          "correct": "His sister"
+        },
+        {
+          "prompt": "What does 'sheepish' mean here?",
+          "choices": [
+            "Angry",
+            "Embarrassed",
+            "Excited",
+            "Confused"
+          ],
+          "correct": "Embarrassed"
+        }
+      ]
+    },
+    {
+      "id": "story-3-3",
+      "grade": "3rd",
+      "title": "The Impossible Garden",
+      "skill": "prefixes",
+      "text": "Nora's neighbors said nothing could grow in rocky soil. She disagreed. She replanted seeds three times. She was patient and responsible. By summer, her impossible garden was full of tomatoes and peppers.",
+      "image_prompt": "A determined girl standing proudly in front of a garden full of tomatoes and peppers growing from rocky soil. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+      "questions": [
+        {
+          "prompt": "What did the neighbors say?",
+          "choices": [
+            "The soil was great",
+            "Nothing could grow",
+            "Seeds were too small",
+            "It would rain soon"
+          ],
+          "correct": "Nothing could grow"
+        },
+        {
+          "prompt": "How many times did Nora plant seeds?",
+          "choices": [
+            "One",
+            "Two",
+            "Three",
+            "Four"
+          ],
+          "correct": "Three"
+        },
+        {
+          "prompt": "What is the main lesson?",
+          "choices": [
+            "Give up early",
+            "Listen to neighbors",
+            "Keep trying",
+            "Rocky soil is bad"
+          ],
+          "correct": "Keep trying"
+        }
+      ]
+    },
+    {
+      "id": "story-3-4",
+      "grade": "3rd",
+      "title": "Two Points of View",
+      "skill": "point_of_view",
+      "text": "Kai thought the storm was exciting. Thunder boomed and lightning flashed. His dog Biscuit felt differently. She hid under the table and whimpered. Kai hugged her tight. \"It's okay, Biscuit. I'll keep you safe.\"",
+      "image_prompt": "A boy hugging his scared dog under a table during a thunderstorm, lightning visible through a window. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+      "questions": [
+        {
+          "prompt": "How did Kai feel about the storm?",
+          "choices": [
+            "Scared",
+            "Bored",
+            "Excited",
+            "Angry"
+          ],
+          "correct": "Excited"
+        },
+        {
+          "prompt": "How did Biscuit feel?",
+          "choices": [
+            "Happy",
+            "Excited",
+            "Scared",
+            "Hungry"
+          ],
+          "correct": "Scared"
+        },
+        {
+          "prompt": "What did Kai do for Biscuit?",
+          "choices": [
+            "Fed her",
+            "Hugged her",
+            "Left her alone",
+            "Played with her"
+          ],
+          "correct": "Hugged her"
+        }
+      ]
+    },
+    {
+      "id": "story-3-5",
+      "grade": "3rd",
+      "title": "The Helpful Robot",
+      "skill": "main_idea",
+      "text": "Omar built a robot for the science fair. It could sort recycling into different bins. Paper went left, plastic went right. The judges were impressed. Omar won first place because his invention helped the environment.",
+      "image_prompt": "A boy at a science fair showing off a small robot sorting recycling into bins, with impressed judges watching. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+      "questions": [
+        {
+          "prompt": "What could the robot do?",
+          "choices": [
+            "Cook food",
+            "Sort recycling",
+            "Play music",
+            "Clean floors"
+          ],
+          "correct": "Sort recycling"
+        },
+        {
+          "prompt": "What is the main idea?",
+          "choices": [
+            "Robots are scary",
+            "Science fairs are boring",
+            "Inventions can help the world",
+            "Omar likes to play"
+          ],
+          "correct": "Inventions can help the world"
+        },
+        {
+          "prompt": "What place did Omar win?",
+          "choices": [
+            "Second",
+            "Third",
+            "First",
+            "Last"
+          ],
+          "correct": "First"
+        }
+      ]
+    },
+    {
+      "id": "story-4-1",
+      "grade": "4th",
+      "title": "The Lighthouse Keeper's Journal",
+      "skill": "text_structure",
+      "text": "March 14: The fog rolled in at dawn. I lit the beacon at precisely 5:47 AM. Three fishing boats returned safely because of the light. Without the lighthouse, they might have crashed against the jagged rocks. This job may be lonely, but it matters.",
+      "image_prompt": "A lighthouse keeper writing in a journal inside a lighthouse tower at dawn, with fog and fishing boats visible through the window. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+      "questions": [
+        {
+          "prompt": "What text structure is this?",
+          "choices": [
+            "A poem",
+            "A recipe",
+            "A journal entry",
+            "A letter"
+          ],
+          "correct": "A journal entry"
+        },
+        {
+          "prompt": "Why does the keeper think the job matters?",
+          "choices": [
+            "It pays well",
+            "It keeps boats safe",
+            "It's exciting",
+            "It's easy"
+          ],
+          "correct": "It keeps boats safe"
+        },
+        {
+          "prompt": "What does 'precisely' mean?",
+          "choices": [
+            "About",
+            "Exactly",
+            "Almost",
+            "Never"
+          ],
+          "correct": "Exactly"
+        }
+      ]
+    },
+    {
+      "id": "story-4-2",
+      "grade": "4th",
+      "title": "The Underground Library",
+      "skill": "theme",
+      "text": "In 1960, a group of children in a small town were told they couldn't use the public library. Instead of giving up, they started their own in an abandoned basement. They collected donated books and took turns being librarian. Within a year, their collection had grown to over 500 books.",
+      "image_prompt": "Children in 1960s clothing reading books in a cozy basement library with homemade bookshelves, a warm lamp, and a hand-painted 'Library' sign. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+      "questions": [
+        {
+          "prompt": "What is the theme of this story?",
+          "choices": [
+            "Libraries are boring",
+            "When people say no, find another way",
+            "Reading is hard",
+            "Basements are fun"
+          ],
+          "correct": "When people say no, find another way"
+        },
+        {
+          "prompt": "Where did they build the library?",
+          "choices": [
+            "In a school",
+            "In a park",
+            "In a basement",
+            "In a garage"
+          ],
+          "correct": "In a basement"
+        },
+        {
+          "prompt": "How many books did they collect?",
+          "choices": [
+            "100",
+            "200",
+            "Over 500",
+            "50"
+          ],
+          "correct": "Over 500"
+        }
+      ]
+    },
+    {
+      "id": "story-4-3",
+      "grade": "4th",
+      "title": "Desert vs. Tundra",
+      "skill": "text_structure",
+      "text": "Deserts and tundras are both extreme environments, but they differ in important ways. Deserts are scorching hot during the day, while tundras remain frozen year-round. However, both have one thing in common: very little rainfall. Animals in both places have adapted in remarkable ways to survive harsh conditions.",
+      "image_prompt": "A split scene showing a hot desert with cacti and a lizard on the left, and a frozen tundra with snow and an arctic fox on the right. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+      "questions": [
+        {
+          "prompt": "What text structure is used?",
+          "choices": [
+            "Cause and effect",
+            "Compare and contrast",
+            "Chronological order",
+            "Problem and solution"
+          ],
+          "correct": "Compare and contrast"
+        },
+        {
+          "prompt": "What do deserts and tundras have in common?",
+          "choices": [
+            "Both are hot",
+            "Both have snow",
+            "Very little rainfall",
+            "Lots of trees"
+          ],
+          "correct": "Very little rainfall"
+        },
+        {
+          "prompt": "What does 'adapted' mean?",
+          "choices": [
+            "Moved away",
+            "Changed to survive",
+            "Stayed the same",
+            "Gave up"
+          ],
+          "correct": "Changed to survive"
+        }
+      ]
+    },
+    {
+      "id": "story-4-4",
+      "grade": "4th",
+      "title": "The Invention That Changed Breakfast",
+      "skill": "author_purpose",
+      "text": "Before the toaster was invented in 1893, people held bread over an open flame with a fork. It was slow, dangerous, and often resulted in burnt toast. Albert Marsh created the first electric toaster, and breakfast was never the same. Today, over 75 million American homes have one.",
+      "image_prompt": "A timeline-style illustration showing someone toasting bread over a flame on the left, and a modern toaster with golden toast popping up on the right. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+      "questions": [
+        {
+          "prompt": "What is the author's purpose?",
+          "choices": [
+            "To entertain",
+            "To persuade you to buy a toaster",
+            "To inform about toaster history",
+            "To scare you"
+          ],
+          "correct": "To inform about toaster history"
+        },
+        {
+          "prompt": "When was the toaster invented?",
+          "choices": [
+            "1776",
+            "1893",
+            "1950",
+            "2001"
+          ],
+          "correct": "1893"
+        },
+        {
+          "prompt": "How did people toast bread before?",
+          "choices": [
+            "In an oven",
+            "Over a flame",
+            "In the sun",
+            "They didn't"
+          ],
+          "correct": "Over a flame"
+        }
+      ]
+    },
+    {
+      "id": "story-4-5",
+      "grade": "4th",
+      "title": "The Letter",
+      "skill": "character_analysis",
+      "text": "Amara stared at the letter for a long time. Her grandmother had written it years ago but Amara had never opened it. Her hands trembled as she unfolded the paper. \"Dear Amara, if you're reading this, you're brave enough to face anything. Love always, Grandma.\" Amara smiled through her tears.",
+      "image_prompt": "A girl sitting on a bed reading an old letter with tears in her eyes but a gentle smile, warm golden light from a window. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters, no names, no labels.",
+      "questions": [
+        {
+          "prompt": "Why were Amara's hands trembling?",
+          "choices": [
+            "She was cold",
+            "She was nervous or emotional",
+            "She was angry",
+            "She was tired"
+          ],
+          "correct": "She was nervous or emotional"
+        },
+        {
+          "prompt": "Who wrote the letter?",
+          "choices": [
+            "Her mom",
+            "Her teacher",
+            "Her grandmother",
+            "Her friend"
+          ],
+          "correct": "Her grandmother"
+        },
+        {
+          "prompt": "How did Amara feel at the end?",
+          "choices": [
+            "Angry",
+            "Confused",
+            "Touched and brave",
+            "Bored"
+          ],
+          "correct": "Touched and brave"
+        }
+      ]
+    }
+  ]
+}
