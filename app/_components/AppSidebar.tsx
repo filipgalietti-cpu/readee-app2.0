@@ -7,6 +7,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useSidebarStore } from "@/lib/stores/sidebar-store";
 import { useChildStore } from "@/lib/stores/child-store";
 import { getChildAvatarImage } from "@/lib/utils/get-child-avatar";
+import { usePlanStore } from "@/lib/stores/plan-store";
+import { SidebarUserMenu } from "./SidebarUserMenu";
 import {
   Home, BarChart3, BookText, ListChecks, Map,
   Carrot, Trophy, ChevronDown, ClipboardCheck,
@@ -116,6 +118,10 @@ export default function AppSidebar() {
   const childIndex = activeChild ? storeChildren.indexOf(activeChild) : 0;
   const avatarSrc = activeChild ? getChildAvatarImage(activeChild, childIndex === -1 ? 0 : childIndex) : null;
 
+  const plan = usePlanStore((s) => s.plan);
+  const fetchPlan = usePlanStore((s) => s.fetch);
+  useEffect(() => { fetchPlan(); }, [fetchPlan]);
+
   const sections = getNavSections(activeChild?.id || null);
 
   // Close mobile overlay on route change
@@ -140,6 +146,7 @@ export default function AppSidebar() {
                 sections={sections}
                 avatarSrc={avatarSrc}
                 childName={activeChild?.first_name || null}
+                plan={plan || "free"}
                 onClose={() => setMobileOpen(false)}
               />
             </motion.aside>
@@ -167,6 +174,7 @@ export default function AppSidebar() {
                 sections={sections}
                 avatarSrc={avatarSrc}
                 childName={activeChild?.first_name || null}
+                plan={plan || "free"}
                 onToggle={() => setOpen(false)}
               />
             </motion.div>
@@ -229,6 +237,7 @@ function ExpandedNav({
   sections,
   avatarSrc,
   childName,
+  plan,
   onClose,
   onToggle,
 }: {
@@ -236,6 +245,7 @@ function ExpandedNav({
   sections: ReturnType<typeof getNavSections>;
   avatarSrc: string | null;
   childName: string | null;
+  plan: string;
   onClose?: () => void;
   onToggle?: () => void;
 }) {
@@ -284,6 +294,18 @@ function ExpandedNav({
           </div>
         ))}
       </div>
+
+      {/* Account menu */}
+      {avatarSrc && (
+        <>
+          <div className="mx-3 h-px bg-zinc-200 dark:bg-slate-700" />
+          <SidebarUserMenu
+            avatarSrc={avatarSrc}
+            name={childName || "Reader"}
+            plan={plan}
+          />
+        </>
+      )}
     </div>
   );
 }
