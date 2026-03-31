@@ -163,7 +163,11 @@ function StoriesContent() {
           />
           <div className="p-5">
             <h1 className="text-xl font-extrabold text-zinc-900 mb-3">{story.title}</h1>
-            <p className="text-base text-zinc-700 leading-relaxed whitespace-pre-line">{story.text}</p>
+            <div className="space-y-2">
+              {story.text.split(/(?<=[.!?])\s+/).map((sentence, i) => (
+                <p key={i} className="text-base text-zinc-700 leading-relaxed">{sentence}</p>
+              ))}
+            </div>
             <button
               onClick={() => playUrl(storyAudioUrl(story))}
               className="mt-3 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-50 text-indigo-600 text-sm font-medium hover:bg-indigo-100 transition-colors"
