@@ -11,6 +11,8 @@ import { levelNameToGradeKey } from "@/lib/assessment/questions";
 import { useAudio } from "@/lib/audio/use-audio";
 import { LoadingImage } from "@/app/components/ui/LoadingImage";
 import storiesBank from "@/scripts/stories-bank.json";
+import { usePlanStore } from "@/lib/stores/plan-store";
+import { getLimits } from "@/lib/plan/limits";
 import { BookOpen, Lock, ChevronDown, Play, Volume2 } from "lucide-react";
 
 /* ── Types ─────────────────────────────────────────── */
@@ -68,6 +70,10 @@ function StoriesContent() {
 
   const [child, setChild] = useState<Child | null>(null);
   const [loading, setLoading] = useState(true);
+  const plan = usePlanStore((s) => s.plan);
+  const fetchPlan = usePlanStore((s) => s.fetch);
+  useEffect(() => { fetchPlan(); }, [fetchPlan]);
+
   const [expandedGrade, setExpandedGrade] = useState<string | null>(null);
   const [activeStory, setActiveStory] = useState<string | null>(null);
   const [currentQ, setCurrentQ] = useState(0);
@@ -292,7 +298,36 @@ function StoriesContent() {
                   className="overflow-hidden"
                 >
                   <div className="px-4 py-3 grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {group.stories.map((s, sIdx) => (
+                    {group.stories.map((s, sIdx) => {
+                      const limits = getLimits(plan);
+                      const isStoryLocked = sIdx >= limits.storiesPerGrade;
+
+                      if (isStoryLocked) {
+                        return (
+                          <Link key={s.id} href={`/upgrade?child=${childId}`}>
+                            <motion.div
+                              initial={{ opacity: 0, y: 10 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ delay: sIdx * 0.05 }}
+                              className="rounded-xl overflow-hidden bg-zinc-50 text-left opacity-50 relative"
+                            >
+                              <div className="relative">
+                                <LoadingImage src={storyImageUrl(s)} className="w-full h-36 sm:h-40 object-cover rounded-t-xl grayscale" />
+                                <div className="absolute inset-0 flex items-center justify-center">
+                                  <div className="px-3 py-1.5 rounded-lg bg-violet-100 text-violet-700 text-xs font-bold flex items-center gap-1">
+                                    <Lock className="w-3 h-3" /> Readee+
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="p-3">
+                                <p className="text-sm font-bold text-zinc-400 leading-tight">{s.title}</p>
+                              </div>
+                            </motion.div>
+                          </Link>
+                        );
+                      }
+
+                      return (
                       <motion.button
                         key={s.id}
                         initial={{ opacity: 0, y: 10 }}
@@ -317,7 +352,8 @@ function StoriesContent() {
                           <p className="text-[11px] text-zinc-400 mt-1 line-clamp-2">{s.text.slice(0, 60)}...</p>
                         </div>
                       </motion.button>
-                    ))}
+                      );
+                    })}
                   </div>
                 </motion.div>
               )}

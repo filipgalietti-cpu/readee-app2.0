@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
 import { usePlanStore } from "@/lib/stores/plan-store";
+import { getLimits } from "@/lib/plan/limits";
 import sampleLessons from "@/app/data/sample-lessons.json";
 import {
   Flame, Carrot, ChevronDown, Play,
@@ -76,7 +77,7 @@ interface GradeGroup {
 
 /* ── Constants ─────────────────────────────────────── */
 
-const FREE_LESSON_COUNT = 10;
+// FREE_LESSON_COUNT now comes from getLimits()
 
 const DOMAIN_ICONS: Record<string, typeof BookOpen> = {
   "Reading Literature": BookOpen,
@@ -162,7 +163,7 @@ function JourneyContent() {
     } else if (!foundCurrent) {
       foundCurrent = true;
       status = "current";
-    } else if (idx >= FREE_LESSON_COUNT && plan !== "premium") {
+    } else if (idx >= getLimits(plan).lessons && plan !== "premium") {
       status = "premium";
     } else {
       status = "locked";
