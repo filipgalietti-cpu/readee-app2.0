@@ -26,20 +26,43 @@ const GRADE_DATA: Record<string, any> = {
 
 /* ── Kid-friendly names ────────────────────────────── */
 
-const KID_NAMES: Record<string, string> = {
-  "RL.K.1": "Key Details", "RL.K.2": "Retelling", "RL.K.3": "Story People",
-  "RL.K.4": "New Words", "RL.K.5": "Book Types", "RL.K.6": "Authors",
-  "RL.K.7": "Story Art", "RL.K.9": "Compare Stories",
-  "RI.K.1": "Info Details", "RI.K.2": "Main Topic", "RI.K.3": "Linking Ideas",
-  "RI.K.4": "Info Words", "RI.K.5": "Book Parts", "RI.K.6": "Who Wrote?",
-  "RI.K.7": "Art & Text", "RI.K.8": "Author's Why", "RI.K.9": "Compare Texts",
-  "RF.K.1a": "Word Tracking", "RF.K.1b": "Print Concepts", "RF.K.1c": "Word Spaces",
-  "RF.K.1d": "ABCs", "RF.K.2a": "Rhyming", "RF.K.2b": "Syllables",
-  "RF.K.2c": "Blending", "RF.K.2d": "Sound Out", "RF.K.2e": "New Sounds",
-  "RF.K.3a": "Letter Sounds", "RF.K.3b": "Vowel Sounds", "RF.K.3c": "Sight Words",
-  "RF.K.3d": "Spelling Clues", "RF.K.4": "Reading Time",
-  "K.L.1": "Grammar", "K.L.2": "Punctuation", "K.L.4": "Word Meaning",
-  "K.L.5": "Word Play", "K.L.6": "Vocabulary",
+const KID_NAMES: Record<string, { name: string; desc: string }> = {
+  "RL.K.1": { name: "Key Details", desc: "Find details in a story" },
+  "RL.K.2": { name: "Retelling", desc: "Retell a story" },
+  "RL.K.3": { name: "Story People", desc: "Characters, settings, events" },
+  "RL.K.4": { name: "New Words", desc: "Learn unknown words" },
+  "RL.K.5": { name: "Book Types", desc: "Stories vs. poems" },
+  "RL.K.6": { name: "Authors", desc: "Who wrote it?" },
+  "RL.K.7": { name: "Story Art", desc: "Pictures tell the story" },
+  "RL.K.9": { name: "Compare Stories", desc: "Two stories, same topic" },
+  "RI.K.1": { name: "Info Details", desc: "Facts in nonfiction" },
+  "RI.K.2": { name: "Main Topic", desc: "What's it mostly about?" },
+  "RI.K.3": { name: "Linking Ideas", desc: "Connect ideas in a text" },
+  "RI.K.4": { name: "Info Words", desc: "Words in nonfiction" },
+  "RI.K.5": { name: "Book Parts", desc: "Cover, title, pages" },
+  "RI.K.6": { name: "Who Wrote?", desc: "Author vs. illustrator" },
+  "RI.K.7": { name: "Art & Text", desc: "Pictures help explain" },
+  "RI.K.8": { name: "Author's Why", desc: "Reasons and support" },
+  "RI.K.9": { name: "Compare Texts", desc: "Two texts, same topic" },
+  "RF.K.1a": { name: "Word Tracking", desc: "Read left to right" },
+  "RF.K.1b": { name: "Print Concepts", desc: "Words are made of letters" },
+  "RF.K.1c": { name: "Word Spaces", desc: "Spaces between words" },
+  "RF.K.1d": { name: "ABCs", desc: "Know your letters" },
+  "RF.K.2a": { name: "Rhyming", desc: "Words that sound alike" },
+  "RF.K.2b": { name: "Syllables", desc: "Clap the parts" },
+  "RF.K.2c": { name: "Blending", desc: "First and last sounds" },
+  "RF.K.2d": { name: "Sound Out", desc: "Sounds in words" },
+  "RF.K.2e": { name: "New Sounds", desc: "Change a sound, new word" },
+  "RF.K.3a": { name: "Letter Sounds", desc: "Letters make sounds" },
+  "RF.K.3b": { name: "Vowel Sounds", desc: "A, E, I, O, U" },
+  "RF.K.3c": { name: "Sight Words", desc: "Words to know by heart" },
+  "RF.K.3d": { name: "Spelling Clues", desc: "Similar-looking words" },
+  "RF.K.4": { name: "Reading Time", desc: "Read with purpose" },
+  "K.L.1": { name: "Grammar", desc: "Nouns, verbs, sentences" },
+  "K.L.2": { name: "Punctuation", desc: "Capitals and periods" },
+  "K.L.4": { name: "Word Meaning", desc: "Figure out new words" },
+  "K.L.5": { name: "Word Play", desc: "Word relationships" },
+  "K.L.6": { name: "Vocabulary", desc: "Use new words" },
 };
 
 const DOMAIN_META: Record<string, { Icon: typeof BookOpen; color: string; bg: string }> = {
@@ -203,7 +226,9 @@ function PracticeHubContent() {
                 >
                   <div className="px-4 pb-3 space-y-1">
                     {stds.map((std, sIdx) => {
-                      const name = KID_NAMES[std.standard_id] || std.standard_id;
+                      const meta = KID_NAMES[std.standard_id];
+                      const name = meta?.name || std.standard_id;
+                      const desc = meta?.desc || "";
                       const qCount = std.questions?.length || 0;
 
                       return (
@@ -219,9 +244,8 @@ function PracticeHubContent() {
                           >
                             <div className="flex-1 min-w-0">
                               <p className="text-sm font-semibold text-zinc-800 group-hover:text-indigo-700 transition-colors">
-                                {name}
+                                {name} <span className="font-normal text-zinc-400">— {desc}</span>
                               </p>
-                              <p className="text-[11px] text-zinc-500 mt-0.5 line-clamp-1">{std.standard_description}</p>
                               <p className="text-[10px] text-zinc-400 mt-0.5">{std.standard_id} &middot; {qCount} questions</p>
                             </div>
                             <ChevronRight className="w-4 h-4 text-zinc-300 group-hover:text-indigo-400 flex-shrink-0 transition-colors" />
