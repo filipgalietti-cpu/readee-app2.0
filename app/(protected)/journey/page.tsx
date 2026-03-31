@@ -13,6 +13,7 @@ import {
   Flame, Carrot, ChevronDown, Play,
   BookOpen, Type, Newspaper, MessageCircle,
 } from "lucide-react";
+import { PaywallModal } from "@/app/_components/PaywallModal";
 
 /* ── Solid SVG icons ───────────────────────────────── */
 
@@ -114,6 +115,7 @@ function JourneyContent() {
   const [loading, setLoading] = useState(true);
   const [openGrades, setOpenGrades] = useState<Set<string> | null>(null);
   const [openDomains, setOpenDomains] = useState<Set<string> | null>(null);
+  const [showPaywall, setShowPaywall] = useState(false);
 
   useEffect(() => { fetchPlan(); }, [fetchPlan]);
 
@@ -262,6 +264,14 @@ function JourneyContent() {
           </div>
         </motion.div>
 
+        <PaywallModal
+          open={showPaywall}
+          onClose={() => setShowPaywall(false)}
+          childId={childId}
+          childName={child.first_name}
+          trigger="lesson"
+        />
+
         {/* ── Grade Accordions ── */}
         {gradeGroups.map((gg, gIdx) => {
           const gradeOpen = openGrades?.has(gg.grade) ?? false;
@@ -377,6 +387,7 @@ function JourneyContent() {
                                           number={lIdx + 1}
                                           delay={lIdx * 0.03}
                                           prevTitle={lIdx > 0 ? domain.lessons[lIdx - 1].title : null}
+                                          onPaywall={() => setShowPaywall(true)}
                                         />
                                       ))}
                                     </div>
@@ -402,13 +413,14 @@ function JourneyContent() {
 /* ── Lesson Row ────────────────────────────────────── */
 
 function LessonRow({
-  lesson, childId, number, delay, prevTitle,
+  lesson, childId, number, delay, prevTitle, onPaywall,
 }: {
   lesson: LessonWithStatus;
   childId: string;
   number: number;
   delay: number;
   prevTitle: string | null;
+  onPaywall?: () => void;
 }) {
   const { status } = lesson;
 
@@ -436,7 +448,7 @@ function LessonRow({
   const isClickable = status === "completed" || status === "current" || status === "started";
   const href = isClickable
     ? `/learn?child=${childId}&standard=${lesson.standardId}`
-    : status === "premium" ? `/upgrade?child=${childId}` : "#";
+    : "#";
 
   const row = (
     <motion.div
@@ -478,6 +490,7 @@ function LessonRow({
     </motion.div>
   );
 
-  if (isClickable || status === "premium") return <Link href={href}>{row}</Link>;
+  if (isClickable) return <Link href={href}>{row}</Link>;
+  if (status === "premium") return <div onClick={onPaywall} className="cursor-pointer">{row}</div>;
   return row;
 }

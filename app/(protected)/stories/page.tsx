@@ -14,6 +14,7 @@ import storiesBank from "@/scripts/stories-bank.json";
 import { usePlanStore } from "@/lib/stores/plan-store";
 import { getLimits } from "@/lib/plan/limits";
 import { BookOpen, Lock, ChevronDown, Play, Volume2 } from "lucide-react";
+import { PaywallModal } from "@/app/_components/PaywallModal";
 
 /* ── Types ─────────────────────────────────────────── */
 
@@ -75,6 +76,7 @@ function StoriesContent() {
   useEffect(() => { fetchPlan(); }, [fetchPlan]);
 
   const [expandedGrade, setExpandedGrade] = useState<string | null>(null);
+  const [showPaywall, setShowPaywall] = useState(false);
   const [activeStory, setActiveStory] = useState<string | null>(null);
   const [currentQ, setCurrentQ] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
@@ -250,6 +252,14 @@ function StoriesContent() {
   // Library view
   return (
     <div className="max-w-2xl mx-auto py-6 px-4 space-y-4">
+      <PaywallModal
+        open={showPaywall}
+        onClose={() => setShowPaywall(false)}
+        childId={childId}
+        childName={child.first_name}
+        trigger="story"
+      />
+
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: -10 }}
@@ -320,7 +330,7 @@ function StoriesContent() {
 
                       if (isStoryLocked) {
                         return (
-                          <Link key={s.id} href={`/upgrade?child=${childId}`}>
+                          <div key={s.id} onClick={() => setShowPaywall(true)} className="cursor-pointer">
                             <motion.div
                               initial={{ opacity: 0, y: 10 }}
                               animate={{ opacity: 1, y: 0 }}
@@ -339,7 +349,7 @@ function StoriesContent() {
                                 <p className="text-sm font-bold text-zinc-400 leading-tight">{s.title}</p>
                               </div>
                             </motion.div>
-                          </Link>
+                          </div>
                         );
                       }
 
