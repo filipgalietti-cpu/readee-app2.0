@@ -9,10 +9,19 @@ import { Child } from "@/lib/db/types";
 import { usePlanStore } from "@/lib/stores/plan-store";
 import { getLimits } from "@/lib/plan/limits";
 import sampleLessons from "@/app/data/sample-lessons.json";
+import Image from "next/image";
 import {
   Flame, Carrot, ChevronDown, Play,
   BookOpen, Type, Newspaper, MessageCircle,
 } from "lucide-react";
+
+const GRADE_BADGES: Record<string, string> = {
+  kindergarten: "/images/ui/grades/grade-k.png",
+  "1st": "/images/ui/grades/grade-1.png",
+  "2nd": "/images/ui/grades/grade-2.png",
+  "3rd": "/images/ui/grades/grade-3.png",
+  "4th": "/images/ui/grades/grade-4.png",
+};
 import { PaywallModal } from "@/app/_components/PaywallModal";
 
 /* ── Solid SVG icons ───────────────────────────────── */
@@ -294,10 +303,20 @@ function JourneyContent() {
                 <div className={`px-5 py-4 flex items-center gap-3 transition-colors ${
                   gradeOpen ? "bg-gradient-to-r from-indigo-600 to-violet-500" : allDone ? "bg-gradient-to-r from-emerald-600 to-emerald-500" : ""
                 }`}>
-                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-sm font-extrabold ${
-                    gradeOpen || allDone ? "bg-white/20 text-white" : "bg-indigo-50 text-indigo-600"
-                  }`}>
-                    {allDone ? <CheckCircleSolid className="w-5 h-5" /> : gg.grade.charAt(0).toUpperCase()}
+                  <div className="w-10 h-10 rounded-xl overflow-hidden flex-shrink-0">
+                    {allDone ? (
+                      <div className="w-full h-full bg-emerald-500 flex items-center justify-center">
+                        <CheckCircleSolid className="w-5 h-5 text-white" />
+                      </div>
+                    ) : (
+                      <Image
+                        src={GRADE_BADGES[gg.grade] || ""}
+                        alt={gg.grade}
+                        width={40}
+                        height={40}
+                        className="w-full h-full object-cover"
+                      />
+                    )}
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className={`text-sm font-bold ${gradeOpen || allDone ? "text-white" : "text-zinc-900"}`}>

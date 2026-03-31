@@ -7,10 +7,19 @@ import { motion, AnimatePresence } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
 import { levelNameToGradeKey } from "@/lib/assessment/questions";
+import Image from "next/image";
 import {
   Shuffle, BookOpen, Type, Newspaper, MessageCircle,
   ChevronDown, ChevronRight, Zap,
 } from "lucide-react";
+
+const GRADE_BADGES: Record<string, string> = {
+  kindergarten: "/images/ui/grades/grade-k.png",
+  "1st": "/images/ui/grades/grade-1.png",
+  "2nd": "/images/ui/grades/grade-2.png",
+  "3rd": "/images/ui/grades/grade-3.png",
+  "4th": "/images/ui/grades/grade-4.png",
+};
 
 /* ── Load standards data per grade ─────────────────── */
 
@@ -377,10 +386,14 @@ function PracticeHubContent() {
                 gradeOpen ? "bg-gradient-to-r from-indigo-600 to-violet-500" : "hover:bg-zinc-50"
               }`}
             >
-              <div className={`w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 text-sm font-extrabold ${
-                gradeOpen ? "bg-white/20 text-white" : "bg-indigo-50 text-indigo-600"
-              }`}>
-                {grade.label.charAt(0)}
+              <div className="w-9 h-9 rounded-xl overflow-hidden flex-shrink-0">
+                <Image
+                  src={GRADE_BADGES[grade.gradeKey] || ""}
+                  alt={grade.label}
+                  width={36}
+                  height={36}
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="flex-1 min-w-0">
                 <p className={`text-sm font-bold ${gradeOpen ? "text-white" : "text-zinc-900"}`}>{grade.label}</p>
