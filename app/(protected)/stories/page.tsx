@@ -39,11 +39,10 @@ const GRADE_LABELS: Record<string, string> = {
 
 function storyImageUrl(story: Story, thumbnail = false) {
   const base = `${SUPABASE_BASE}/images/stories/${story.grade}/${story.id}.png`;
-  // Use Supabase image transformation for thumbnails (300px wide, webp)
   if (thumbnail && SUPABASE_BASE) {
-    return base.replace('/object/public/', '/render/image/public/') + '?width=300&quality=75';
+    return base.replace('/object/public/', '/render/image/public/') + '?width=300&quality=75&v=2';
   }
-  return base;
+  return base + '?v=2';
 }
 
 function storyAudioUrl(story: Story) {
