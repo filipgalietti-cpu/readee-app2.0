@@ -681,7 +681,7 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
     ];
 
     return (
-      <div className="min-h-[100dvh] bg-gray-50 dark:bg-[#0f172a] flex flex-col items-center justify-center px-6 relative overflow-hidden">
+      <div className="min-h-[100dvh] bg-white dark:bg-[#0f172a] flex flex-col items-center justify-center px-6 relative overflow-hidden">
         {/* ── Background floating particles ── */}
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
           {sparkles.map((s, i) => (
@@ -856,7 +856,7 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
   }
 
   return (
-    <div ref={scrollRef} className="min-h-[100dvh] bg-gray-50 dark:bg-[#0f172a] flex flex-col overflow-y-auto">
+    <div ref={scrollRef} className="min-h-[100dvh] bg-white dark:bg-[#0f172a] flex flex-col overflow-y-auto">
       {/* ── Top bar: progress + close ── */}
       <div className="flex items-center gap-3 px-4 pt-4 pb-2 flex-shrink-0">
         <button
@@ -1363,7 +1363,7 @@ function CompletionScreen({
   }, [saved, saving, child.id, standard.standard_id, totalQ, correctCount, carrotsEarned, setSaving]);
 
   return (
-    <div className="min-h-[100dvh] bg-gray-50 dark:bg-[#0f172a] relative overflow-hidden flex flex-col">
+    <div className="min-h-[100dvh] bg-white dark:bg-[#0f172a] relative overflow-hidden flex flex-col">
       {/* Confetti */}
       {confettiPieces.map((c) => (
         <motion.div
