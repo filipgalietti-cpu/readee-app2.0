@@ -261,6 +261,7 @@ function PracticeHubContent() {
   const [child, setChild] = useState<Child | null>(null);
   const [loading, setLoading] = useState(true);
   const [openDomains, setOpenDomains] = useState<Set<string>>(new Set());
+  const [openGrades, setOpenGrades] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     async function load() {
@@ -313,10 +314,13 @@ function PracticeHubContent() {
     if (s) router.push(`/practice?child=${childId}&standard=${s.standard_id}`);
   };
 
-  const [openGrades, setOpenGrades] = useState<Set<string>>(() => {
-    const gk = levelNameToGradeKey(child.reading_level);
-    return new Set([gk]);
-  });
+  // Auto-open child's grade on first load
+  useEffect(() => {
+    if (child && openGrades.size === 0) {
+      const gk = levelNameToGradeKey(child.reading_level);
+      setOpenGrades(new Set([gk]));
+    }
+  }, [child]);
 
   const toggleGrade = (g: string) => {
     setOpenGrades((prev) => {
