@@ -986,8 +986,8 @@ function ChildDashboard({
           )}
         </motion.div>
 
-        {/* ── Hero Tiles — 2×2 grid ── */}
-        <motion.div variants={slideUp} className="grid grid-cols-2 gap-4 pt-4">
+        {/* ── Hero Tiles — 3 columns ── */}
+        <motion.div variants={slideUp} className="grid grid-cols-3 gap-3 pt-4">
           <Link
             href={hasAssessment ? `/practice-hub?child=${child.id}` : `/assessment?child=${child.id}`}
             className="block"
@@ -995,21 +995,10 @@ function ChildDashboard({
             <motion.div
               whileHover={{ scale: 1.05, y: -4 }}
               whileTap={{ scale: 0.95 }}
-              className="h-[150px] rounded-3xl bg-gradient-to-br from-indigo-500 to-violet-600 p-5 flex flex-col items-center justify-center text-center shadow-lg cursor-pointer"
+              className="h-[130px] rounded-3xl bg-gradient-to-br from-indigo-500 to-violet-600 p-4 flex flex-col items-center justify-center text-center shadow-lg cursor-pointer"
             >
-              <Target className="w-14 h-14 text-white mb-2" strokeWidth={1.5} />
-              <span className="text-lg font-extrabold text-white">Practice</span>
-            </motion.div>
-          </Link>
-
-          <Link href={`/practice-hub?child=${child.id}`} className="block">
-            <motion.div
-              whileHover={{ scale: 1.05, y: -4 }}
-              whileTap={{ scale: 0.95 }}
-              className="h-[150px] rounded-3xl bg-gradient-to-br from-amber-400 to-orange-500 p-5 flex flex-col items-center justify-center text-center shadow-lg cursor-pointer"
-            >
-              <Puzzle className="w-14 h-14 text-white mb-2" strokeWidth={1.5} />
-              <span className="text-lg font-extrabold text-white">Games</span>
+              <Target className="w-10 h-10 text-white mb-2" strokeWidth={1.5} />
+              <span className="text-sm font-extrabold text-white">Practice</span>
             </motion.div>
           </Link>
 
@@ -1017,10 +1006,10 @@ function ChildDashboard({
             <motion.div
               whileHover={{ scale: 1.05, y: -4 }}
               whileTap={{ scale: 0.95 }}
-              className="h-[150px] rounded-3xl bg-gradient-to-br from-emerald-400 to-teal-500 p-5 flex flex-col items-center justify-center text-center shadow-lg cursor-pointer"
+              className="h-[130px] rounded-3xl bg-gradient-to-br from-emerald-400 to-teal-500 p-4 flex flex-col items-center justify-center text-center shadow-lg cursor-pointer"
             >
-              <BookOpen className="w-14 h-14 text-white mb-2" strokeWidth={1.5} />
-              <span className="text-lg font-extrabold text-white">Stories</span>
+              <BookOpen className="w-10 h-10 text-white mb-2" strokeWidth={1.5} />
+              <span className="text-sm font-extrabold text-white">Stories</span>
             </motion.div>
           </Link>
 
@@ -1028,10 +1017,10 @@ function ChildDashboard({
             <motion.div
               whileHover={{ scale: 1.05, y: -4 }}
               whileTap={{ scale: 0.95 }}
-              className="h-[150px] rounded-3xl bg-gradient-to-br from-pink-400 to-rose-500 p-5 flex flex-col items-center justify-center text-center shadow-lg cursor-pointer"
+              className="h-[130px] rounded-3xl bg-gradient-to-br from-pink-400 to-rose-500 p-4 flex flex-col items-center justify-center text-center shadow-lg cursor-pointer"
             >
-              <Map className="w-14 h-14 text-white mb-2" strokeWidth={1.5} />
-              <span className="text-lg font-extrabold text-white">My Journey</span>
+              <Map className="w-10 h-10 text-white mb-2" strokeWidth={1.5} />
+              <span className="text-sm font-extrabold text-white">My Journey</span>
             </motion.div>
           </Link>
         </motion.div>
