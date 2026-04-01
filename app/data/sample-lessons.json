@@ -2314,11 +2314,11 @@
             "displayParts": [
               {
                 "text": "Same",
-                "delay": 1500
+                "delay": 6490
               },
               {
                 "text": "Different",
-                "delay": 3200
+                "delay": 8490
               }
             ]
           },
@@ -2436,7 +2436,7 @@
               },
               {
                 "text": "Different?",
-                "delay": 2600
+                "delay": 3300
               }
             ]
           },
@@ -2559,15 +2559,15 @@
             "displayParts": [
               {
                 "text": "where fish live",
-                "delay": 0
+                "delay": 1790
               },
               {
                 "text": "what fish eat",
-                "delay": 1500
+                "delay": 3990
               },
               {
                 "text": "how fish swim",
-                "delay": 4200
+                "delay": 6290
               }
             ]
           },
@@ -2603,15 +2603,15 @@
             "displayParts": [
               {
                 "text": "Apples grow on trees.",
-                "delay": 0
+                "delay": 10
               },
               {
                 "text": "Apples can be red, green, or yellow.",
-                "delay": 1867
+                "delay": 2300
               },
               {
                 "text": "Apples taste sweet!",
-                "delay": 3733
+                "delay": 6190
               }
             ]
           },
@@ -3774,19 +3774,19 @@
             "displayParts": [
               {
                 "text": "Energy",
-                "delay": 1500
+                "delay": 5990
               },
               {
                 "text": "Vitamins",
-                "delay": 2800
+                "delay": 7300
               },
               {
                 "text": "Yummy",
-                "delay": 4100
+                "delay": 8900
               },
               {
                 "text": "Fruit is good for you!",
-                "delay": 5200
+                "delay": 1990
               }
             ]
           }
@@ -3972,7 +3972,7 @@
             "displayParts": [
               {
                 "text": "Same: About bears",
-                "delay": 1800
+                "delay": 2090
               },
               {
                 "text": "Different: Eating vs Sleeping",
@@ -4543,19 +4543,19 @@
             "displayParts": [
               {
                 "text": "I",
-                "delay": 300
+                "delay": 100
               },
               {
                 "text": "like",
-                "delay": 900
+                "delay": 1200
               },
               {
                 "text": "dogs",
-                "delay": 1600
+                "delay": 2400
               },
               {
                 "text": "3 words!",
-                "delay": 2200
+                "delay": 7000
               }
             ]
           },
@@ -4678,11 +4678,11 @@
             "displayParts": [
               {
                 "text": "Uppercase is BIG",
-                "delay": 1000
+                "delay": 780
               },
               {
                 "text": "Lowercase is little",
-                "delay": 2000
+                "delay": 4000
               }
             ]
           },
@@ -4876,11 +4876,11 @@
             "displayParts": [
               {
                 "text": "Ti",
-                "delay": 0
+                "delay": 2090
               },
               {
                 "text": "ger",
-                "delay": 1500
+                "delay": 2700
               }
             ]
           },
@@ -5084,11 +5084,11 @@
             "displayParts": [
               {
                 "text": "Start: /d/",
-                "delay": 500
+                "delay": 2490
               },
               {
                 "text": "End: /g/",
-                "delay": 2600
+                "delay": 5000
               }
             ]
           },
@@ -5479,11 +5479,11 @@
             "displayParts": [
               {
                 "text": "cat",
-                "delay": 300
+                "delay": 900
               },
               {
                 "text": "bat",
-                "delay": 2200
+                "delay": 5200
               }
             ]
           },
@@ -5757,11 +5757,11 @@
             "displayParts": [
               {
                 "text": "D says /d/",
-                "delay": 300
+                "delay": 0
               },
               {
                 "text": "F says /f/",
-                "delay": 1600
+                "delay": 3000
               }
             ]
           }
@@ -5966,11 +5966,11 @@
             "displayParts": [
               {
                 "text": "Which vowel do you hear in 'cat'?",
-                "delay": 300
+                "delay": 10
               },
               {
                 "text": "Listen: c-a-t.",
-                "delay": 1885
+                "delay": 3790
               }
             ]
           },
@@ -6014,7 +6014,7 @@
             "displayParts": [
               {
                 "text": "A E I O U",
-                "delay": 3250
+                "delay": 4000
               },
               {
                 "text": "I love you!",
@@ -6318,11 +6318,11 @@
             "displayParts": [
               {
                 "text": "was",
-                "delay": 0
+                "delay": 600
               },
               {
                 "text": "saw",
-                "delay": 2200
+                "delay": 1800
               }
             ]
           },
@@ -6396,11 +6396,11 @@
             "displayParts": [
               {
                 "text": "on starts with O",
-                "delay": 1200
+                "delay": 0
               },
               {
                 "text": "no starts with N",
-                "delay": 3200
+                "delay": 2990
               }
             ]
           }
@@ -6763,11 +6763,11 @@
             "displayParts": [
               {
                 "text": "The cat",
-                "delay": 3000
+                "delay": 5390
               },
               {
                 "text": "runs",
-                "delay": 3800
+                "delay": 6300
               }
             ]
           }
@@ -7043,11 +7043,11 @@
             "displayParts": [
               {
                 "text": "1. Capital at start?",
-                "delay": 300
+                "delay": 1700
               },
               {
                 "text": "2. Punctuation at end?",
-                "delay": 3200
+                "delay": 6600
               }
             ]
           },
@@ -7330,11 +7330,11 @@
             "displayParts": [
               {
                 "text": "Opposites",
-                "delay": 300
+                "delay": 1490
               },
               {
                 "text": "Similar words",
-                "delay": 4200
+                "delay": 6300
               }
             ]
           },

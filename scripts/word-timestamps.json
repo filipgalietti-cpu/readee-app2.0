@@ -1,0 +1,339 @@
+[
+  {
+    "lessonId": "RL.K.3",
+    "slide": 3,
+    "step": "b",
+    "timestamps": [
+      {
+        "phrase": "Who",
+        "startMs": 100
+      },
+      {
+        "phrase": "Where",
+        "startMs": 2000
+      },
+      {
+        "phrase": "What",
+        "startMs": 3500
+      }
+    ]
+  },
+  {
+    "lessonId": "RL.K.9",
+    "slide": 1,
+    "step": "b",
+    "timestamps": [
+      {
+        "phrase": "Same",
+        "startMs": 6490
+      },
+      {
+        "phrase": "Different",
+        "startMs": 8490
+      }
+    ]
+  },
+  {
+    "lessonId": "RL.K.9",
+    "slide": 4,
+    "step": "b",
+    "timestamps": [
+      {
+        "phrase": "Different?",
+        "startMs": 3300
+      }
+    ]
+  },
+  {
+    "lessonId": "RI.K.2",
+    "slide": 2,
+    "step": "b",
+    "timestamps": [
+      {
+        "phrase": "where fish live",
+        "startMs": 1790
+      },
+      {
+        "phrase": "what fish eat",
+        "startMs": 3990
+      },
+      {
+        "phrase": "how fish swim",
+        "startMs": 6290
+      }
+    ]
+  },
+  {
+    "lessonId": "RI.K.2",
+    "slide": 3,
+    "step": "b",
+    "timestamps": [
+      {
+        "phrase": "Apples grow on trees.",
+        "startMs": 10
+      },
+      {
+        "phrase": "Apples can be red, green, or yellow.",
+        "startMs": 2300
+      },
+      {
+        "phrase": "Apples taste sweet!",
+        "startMs": 6190
+      }
+    ]
+  },
+  {
+    "lessonId": "RI.K.5",
+    "slide": 3,
+    "step": "c",
+    "timestamps": [
+      {
+        "phrase": "Back Cover",
+        "startMs": 2590
+      },
+      {
+        "phrase": "Title Page",
+        "startMs": 6790
+      }
+    ]
+  },
+  {
+    "lessonId": "RI.K.8",
+    "slide": 3,
+    "step": "c",
+    "timestamps": [
+      {
+        "phrase": "Energy",
+        "startMs": 5990
+      },
+      {
+        "phrase": "Vitamins",
+        "startMs": 7300
+      },
+      {
+        "phrase": "Yummy",
+        "startMs": 8900
+      },
+      {
+        "phrase": "Fruit is good for you!",
+        "startMs": 1990
+      }
+    ]
+  },
+  {
+    "lessonId": "RI.K.9",
+    "slide": 3,
+    "step": "c",
+    "timestamps": [
+      {
+        "phrase": "Same: About bears",
+        "startMs": 2090
+      }
+    ]
+  },
+  {
+    "lessonId": "RF.K.1c",
+    "slide": 3,
+    "step": "b",
+    "timestamps": [
+      {
+        "phrase": "I",
+        "startMs": 100
+      },
+      {
+        "phrase": "like",
+        "startMs": 1200
+      },
+      {
+        "phrase": "dogs",
+        "startMs": 2400
+      },
+      {
+        "phrase": "3 words!",
+        "startMs": 7000
+      }
+    ]
+  },
+  {
+    "lessonId": "RF.K.1d",
+    "slide": 1,
+    "step": "b",
+    "timestamps": [
+      {
+        "phrase": "Uppercase is BIG",
+        "startMs": 780
+      },
+      {
+        "phrase": "Lowercase is little",
+        "startMs": 4000
+      }
+    ]
+  },
+  {
+    "lessonId": "RF.K.2b",
+    "slide": 1,
+    "step": "b",
+    "timestamps": [
+      {
+        "phrase": "Ti",
+        "startMs": 2090
+      },
+      {
+        "phrase": "ger",
+        "startMs": 2700
+      }
+    ]
+  },
+  {
+    "lessonId": "RF.K.2c",
+    "slide": 1,
+    "step": "b",
+    "timestamps": [
+      {
+        "phrase": "Start: /d/",
+        "startMs": 2490
+      },
+      {
+        "phrase": "End: /g/",
+        "startMs": 5000
+      }
+    ]
+  },
+  {
+    "lessonId": "RF.K.2e",
+    "slide": 1,
+    "step": "b",
+    "timestamps": [
+      {
+        "phrase": "cat",
+        "startMs": 900
+      },
+      {
+        "phrase": "bat",
+        "startMs": 5200
+      }
+    ]
+  },
+  {
+    "lessonId": "RF.K.3a",
+    "slide": 3,
+    "step": "c",
+    "timestamps": [
+      {
+        "phrase": "D says /d/",
+        "startMs": 0
+      },
+      {
+        "phrase": "F says /f/",
+        "startMs": 3000
+      }
+    ]
+  },
+  {
+    "lessonId": "RF.K.3b",
+    "slide": 3,
+    "step": "a",
+    "timestamps": [
+      {
+        "phrase": "Which vowel do you hear in 'cat'?",
+        "startMs": 10
+      },
+      {
+        "phrase": "Listen: c-a-t.",
+        "startMs": 3790
+      }
+    ]
+  },
+  {
+    "lessonId": "RF.K.3b",
+    "slide": 4,
+    "step": "b",
+    "timestamps": [
+      {
+        "phrase": "A E I O U",
+        "startMs": 4000
+      }
+    ]
+  },
+  {
+    "lessonId": "RF.K.3d",
+    "slide": 1,
+    "step": "b",
+    "timestamps": [
+      {
+        "phrase": "was",
+        "startMs": 600
+      },
+      {
+        "phrase": "saw",
+        "startMs": 1800
+      }
+    ]
+  },
+  {
+    "lessonId": "RF.K.3d",
+    "slide": 3,
+    "step": "c",
+    "timestamps": [
+      {
+        "phrase": "on starts with O",
+        "startMs": 0
+      },
+      {
+        "phrase": "no starts with N",
+        "startMs": 2990
+      }
+    ]
+  },
+  {
+    "lessonId": "K.L.1",
+    "slide": 2,
+    "step": "d",
+    "timestamps": [
+      {
+        "phrase": "The cat",
+        "startMs": 5390
+      },
+      {
+        "phrase": "runs",
+        "startMs": 6300
+      }
+    ]
+  },
+  {
+    "lessonId": "K.L.2",
+    "slide": 1,
+    "step": "b",
+    "timestamps": []
+  },
+  {
+    "lessonId": "K.L.2",
+    "slide": 4,
+    "step": "b",
+    "timestamps": [
+      {
+        "phrase": "1. Capital at start?",
+        "startMs": 1700
+      },
+      {
+        "phrase": "2. Punctuation at end?",
+        "startMs": 6600
+      }
+    ]
+  },
+  {
+    "lessonId": "K.L.5",
+    "slide": 1,
+    "step": "b",
+    "timestamps": [
+      {
+        "phrase": "Opposites",
+        "startMs": 1490
+      },
+      {
+        "phrase": "Similar words",
+        "startMs": 6300
+      }
+    ]
+  }
+]
