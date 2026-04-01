@@ -19,7 +19,7 @@ export default function PrivacyPolicyPage() {
             Introduction
           </h2>
           <p className="text-zinc-600 leading-relaxed">
-            Readee (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) is
+            Readee Learning LLC (&quot;Readee,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) is
             committed to protecting the privacy of our users, especially the
             children who use our platform. This Privacy Policy explains what
             information we collect, how we use it, and your rights regarding your

@@ -143,7 +143,7 @@ export default function RootLayout({
 
             {/* ── Bottom bar ── */}
             <div className="mt-10 pt-6 border-t border-white/[0.08]">
-              <span className="text-xs text-white">&copy; {new Date().getFullYear()} Readee. All rights reserved.</span>
+              <span className="text-xs text-white">&copy; {new Date().getFullYear()} Readee Learning LLC. All rights reserved.</span>
             </div>
           </div>
         </footer>

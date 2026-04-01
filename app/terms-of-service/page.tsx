@@ -19,7 +19,7 @@ export default function TermsOfServicePage() {
             Agreement to Terms
           </h2>
           <p className="text-zinc-600 leading-relaxed">
-            By accessing or using Readee (&quot;the Service&quot;), you agree to
+            By accessing or using Readee, operated by Readee Learning LLC (&quot;the Service&quot;), you agree to
             be bound by these Terms of Service. If you do not agree to these
             terms, please do not use the Service. If you are creating an account
             on behalf of a child, you represent that you are the child&apos;s
