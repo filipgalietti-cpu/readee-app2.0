@@ -1151,13 +1151,17 @@
             "ttsScript": "Let's break it down! Characters can be people or animals in a story.",
             "interaction": "Heading appears. Table row 1 appears.",
             "displayText": "Characters",
-            "displayDelay": 1200,
+            "displayDelay": 1008,
             "displayTableRow": {
               "label": "Characters",
               "value": "Who is in the story",
               "example": "people, animals",
               "exampleDelay": 1000,
-              "tableHeaders": ["Story Word", "Definition", "Example"]
+              "tableHeaders": [
+                "Story Word",
+                "Definition",
+                "Example"
+              ]
             }
           },
           {
@@ -1180,7 +1184,7 @@
             "ttsScript": "Events are the things that happen in the story. Like a race, a party, or an adventure!",
             "interaction": "Table row 3 appears.",
             "displayText": "Events",
-            "displayDelay": 400,
+            "displayDelay": 500,
             "displayTableRow": {
               "label": "Events",
               "value": "What happens",
@@ -1348,7 +1352,7 @@
             "ttsScript": "You can look at the other words in the sentence. They can give you hints!",
             "interaction": "Pill: [Read the sentence] pops in blue.",
             "displayText": "Read the sentence",
-            "displayDelay": 3750
+            "displayDelay": 1163
           },
           {
             "sub": "c",
@@ -1356,7 +1360,7 @@
             "ttsScript": "You can also look at the pictures. Pictures are great clues!",
             "interaction": "Pill: [Look at pictures] pops in green.",
             "displayText": "Look at pictures",
-            "displayDelay": 2750
+            "displayDelay": 853
           },
           {
             "sub": "d",
@@ -1395,7 +1399,10 @@
             "audioFile": "audio/lessons/RL.K.4/S3c.mp3",
             "ttsScript": "Hmm, what does famished mean? Let's look at the clues. He ate FIVE carrots! That's a lot!",
             "interaction": "'Five carrots' highlights. Magnifying glass circles the clue.",
-            "highlightWord": { "word": "famished", "delay": 1200 },
+            "highlightWord": {
+              "word": "famished",
+              "delay": 1200
+            },
             "displayText": "Five carrots",
             "displayDelay": 5500
           },
@@ -1429,7 +1436,7 @@
             "ttsScript": "Read the sentence again. Look at what's happening in the story.",
             "interaction": "Pill: [Re-read the sentence] pops in.",
             "displayText": "Re-read the sentence",
-            "displayDelay": 2750
+            "displayDelay": 853
           },
           {
             "sub": "c",
@@ -1560,7 +1567,11 @@
             "displayTableRow": {
               "label": "Storybook",
               "value": "Characters & Adventures",
-              "tableHeaders": ["Type", "What It Has", "Sounds Like"],
+              "tableHeaders": [
+                "Type",
+                "What It Has",
+                "Sounds Like"
+              ],
               "example": "Beginning → Middle → End",
               "exampleDelay": 2500
             }
@@ -1615,7 +1626,11 @@
             "displayTableRow": {
               "label": "Story",
               "value": "Once upon a time...",
-              "tableHeaders": ["Type", "Clue", "It's an..."],
+              "tableHeaders": [
+                "Type",
+                "Clue",
+                "It's an..."
+              ],
               "example": "Adventure!",
               "exampleDelay": 2500
             }
@@ -1669,7 +1684,11 @@
             "displayTableRow": {
               "label": "Story",
               "value": "Starts with \"once upon a time\"",
-              "tableHeaders": ["Type", "Clue", "Think..."],
+              "tableHeaders": [
+                "Type",
+                "Clue",
+                "Think..."
+              ],
               "example": "A whole adventure!",
               "exampleDelay": 3000
             }
@@ -1811,7 +1830,11 @@
             "displayTableRow": {
               "label": "Author",
               "value": "Writes the words",
-              "tableHeaders": ["Who", "What They Do", "Think..."],
+              "tableHeaders": [
+                "Who",
+                "What They Do",
+                "Think..."
+              ],
               "example": "Characters & story",
               "exampleDelay": 2500
             }
@@ -1866,7 +1889,11 @@
             "displayTableRow": {
               "label": "Author",
               "value": "\"Written by\"",
-              "tableHeaders": ["Who", "Look For", "They Made..."],
+              "tableHeaders": [
+                "Who",
+                "Look For",
+                "They Made..."
+              ],
               "example": "The words!",
               "exampleDelay": 2500
             }
@@ -1915,12 +1942,16 @@
             "ttsScript": "Find the name after 'by' or 'written by' — that's the author.",
             "interaction": "Table row: Author = Look for 'Written by'.",
             "displayText": "Author",
-            "displayDelay": 3000,
+            "displayDelay": 930,
             "checkmarkDelay": 3000,
             "displayTableRow": {
               "label": "Author",
               "value": "Look for \"Written by\"",
-              "tableHeaders": ["Who", "How to Find Them", "They Made..."],
+              "tableHeaders": [
+                "Who",
+                "How to Find Them",
+                "They Made..."
+              ],
               "example": "The story!",
               "exampleDelay": 2500
             }
@@ -1931,7 +1962,7 @@
             "ttsScript": "Now look for 'illustrated by.' That's the illustrator! They drew all the pictures.",
             "interaction": "Table row: Illustrator = Look for 'Illustrated by'.",
             "displayText": "Illustrator",
-            "displayDelay": 3500,
+            "displayDelay": 1008,
             "checkmarkDelay": 3000,
             "displayTableRow": {
               "label": "Illustrator",
@@ -2054,7 +2085,11 @@
             "displayTableRow": {
               "label": "Setting",
               "value": "Where is the story happening?",
-              "tableHeaders": ["Look For", "Ask Yourself", "Example"],
+              "tableHeaders": [
+                "Look For",
+                "Ask Yourself",
+                "Example"
+              ],
               "example": "A park, a school, the ocean",
               "exampleDelay": 2000
             }
@@ -2109,7 +2144,11 @@
             "displayTableRow": {
               "label": "Setting",
               "value": "Rainy day outside",
-              "tableHeaders": ["Look For", "What I See", "How I Know"],
+              "tableHeaders": [
+                "Look For",
+                "What I See",
+                "How I Know"
+              ],
               "example": "Rain, puddles, boots",
               "exampleDelay": 2000
             }
@@ -2162,7 +2201,11 @@
             "displayTableRow": {
               "label": "Setting",
               "value": "What's happening?",
-              "tableHeaders": ["Look For", "Ask Yourself", "It Tells You..."],
+              "tableHeaders": [
+                "Look For",
+                "Ask Yourself",
+                "It Tells You..."
+              ],
               "example": "Where & what",
               "exampleDelay": 1500
             }
@@ -2173,7 +2216,7 @@
             "ttsScript": "",
             "interaction": "Feeling row appears at 2.2s into step b audio.",
             "displayText": "Feeling",
-            "displayDelay": 2200,
+            "displayDelay": 500,
             "displayTableRow": {
               "label": "Feeling",
               "value": "How do they feel?",
@@ -2284,7 +2327,8 @@
             "audioFile": "audio/lessons/RL.K.9/S1c.mp3",
             "ttsScript": "This is so fun. Let's do it!",
             "interaction": "Characters high-five animation. Tap to continue.",
-            "displayText": ""
+            "displayText": "This is so fun. Let's do it!",
+            "displayDelay": 1000
           }
         ],
         "heading": "Let's Compare Characters!",
@@ -2308,7 +2352,7 @@
             "ttsScript": "Maybe they both like the same thing. Or they both go on an adventure!",
             "interaction": "Pill: [Same = What they share] pops in purple.",
             "displayText": "Same are What they share",
-            "displayDelay": 3000
+            "displayDelay": 1085
           },
           {
             "sub": "c",
@@ -2316,7 +2360,7 @@
             "ttsScript": "We also look at what's different. Maybe one is brave and the other is shy!",
             "interaction": "Pill: [Different = What's not the same] pops in orange.",
             "displayText": "Different are What's not the same",
-            "displayDelay": 3750
+            "displayDelay": 1163
           },
           {
             "sub": "d",
@@ -2533,7 +2577,7 @@
             "ttsScript": "Fish! All the facts are about fish. So the main topic is fish!",
             "interaction": "Pill: [Main Topic: Fish!] pops in with checkmark. All bubbles connect to it.",
             "displayText": "Main Topic: Fish!",
-            "displayDelay": 3250
+            "displayDelay": 1008
           }
         ],
         "heading": "What Is the Main Topic?",
@@ -2601,7 +2645,7 @@
             "ttsScript": "Look at what keeps coming up again and again. That thing is the main topic!",
             "interaction": "Pill: [What comes up again and again?] pops in.",
             "displayText": "What comes up again and again?",
-            "displayDelay": 3750
+            "displayDelay": 1163
           },
           {
             "sub": "c",
@@ -2696,7 +2740,8 @@
             "audioFile": "audio/lessons/RI.K.3/S1c.mp3",
             "ttsScript": "Let's learn how to connect facts!",
             "interaction": "Puzzle pieces click together animation. Tap to continue.",
-            "displayText": ""
+            "displayText": "Let's learn how to connect facts!",
+            "displayDelay": 1000
           }
         ],
         "heading": "Let's Make Connections!",
@@ -2720,7 +2765,7 @@
             "ttsScript": "Like: The sun is hot. Plants need the sun to grow. See? The sun connects to the plants!",
             "interaction": "Arrow connects 'Sun is hot' to 'Plants need sun'. Pill: [Connected!] pops in.",
             "displayText": "Connected!",
-            "displayDelay": 4320
+            "displayDelay": 1395
           },
           {
             "sub": "c",
@@ -2728,7 +2773,7 @@
             "ttsScript": "Connections help us understand why things happen and how things are related!",
             "interaction": "Pill: [Connections = How things go together] pops in.",
             "displayText": "Connections are How things go together",
-            "displayDelay": 3500
+            "displayDelay": 930
           }
         ],
         "heading": "How Do Facts Connect?",
@@ -2889,7 +2934,8 @@
             "audioFile": "audio/lessons/RI.K.4/S1c.mp3",
             "ttsScript": "Let's learn how to be word explorers!",
             "interaction": "Explorer hat appears on character. Tap to continue.",
-            "displayText": ""
+            "displayText": "Let's learn how to be word explorers!",
+            "displayDelay": 1000
           }
         ],
         "heading": "Let's Learn New Words in Fact Books!",
@@ -2913,7 +2959,7 @@
             "ttsScript": "The sentence around the word can tell you what it means.",
             "interaction": "Pill: [Read the sentence for clues] pops in blue.",
             "displayText": "Read the sentence for clues",
-            "displayDelay": 2750
+            "displayDelay": 853
           },
           {
             "sub": "c",
@@ -2921,7 +2967,7 @@
             "ttsScript": "And pictures in fact books are amazing helpers! They show you what the word is about.",
             "interaction": "Pill: [Look at the pictures] pops in green.",
             "displayText": "Look at the pictures",
-            "displayDelay": 3840
+            "displayDelay": 1240
           },
           {
             "sub": "d",
@@ -3090,7 +3136,8 @@
             "audioFile": "audio/lessons/RI.K.5/S1c.mp3",
             "ttsScript": "Let's learn what each part does!",
             "interaction": "Book flips open animation. Tap to continue.",
-            "displayText": ""
+            "displayText": "Let's learn what each part does!",
+            "displayDelay": 1000
           }
         ],
         "heading": "Let's Learn About Parts of a Book!",
@@ -3114,7 +3161,7 @@
             "ttsScript": "The title tells you what the book is about. It's like the book's name!",
             "interaction": "Pill: [Front Cover = Title + Picture] pops in blue.",
             "displayText": "Front Cover means Title + Picture",
-            "displayDelay": 3500,
+            "displayDelay": 1085,
             "displayTableRow": {
               "label": "Front Cover",
               "value": "Title + Picture"
@@ -3126,7 +3173,7 @@
             "ttsScript": "The back cover is on the other side. It might tell you a little bit about the book.",
             "interaction": "Pill: [Back Cover = Book info] pops in green.",
             "displayText": "Back Cover means Book info",
-            "displayDelay": 4320,
+            "displayDelay": 1395,
             "displayTableRow": {
               "label": "Back Cover",
               "value": "Book info"
@@ -3138,7 +3185,7 @@
             "ttsScript": "The title page is inside the book. It shows the title, author, and illustrator!",
             "interaction": "Pill: [Title Page = Title + Author + Illustrator] pops in purple.",
             "displayText": "Title Page means Title + Author + Illustrator",
-            "displayDelay": 4200,
+            "displayDelay": 1085,
             "displayTableRow": {
               "label": "Title Page",
               "value": "Title + Author + Illustrator"
@@ -3313,7 +3360,7 @@
             "ttsScript": "You can find the author's name on the front cover or the title page.",
             "interaction": "Pill: [Author's name → Cover or Title Page] pops in blue.",
             "displayText": "Author's name → Cover or Title Page",
-            "displayDelay": 3500
+            "displayDelay": 1085
           },
           {
             "sub": "c",
@@ -3321,7 +3368,7 @@
             "ttsScript": "The author picks the topic, does research, and writes it all down for you to read!",
             "interaction": "Pill: [Author: Picks topic → Researches → Writes] pops in green.",
             "displayText": "Author: Picks topic → Researches → Writes",
-            "displayDelay": 3840
+            "displayDelay": 1240
           }
         ],
         "heading": "Who Is the Author?",
@@ -3377,7 +3424,7 @@
             "ttsScript": "What is the author trying to teach me? That helps you understand the whole book better!",
             "interaction": "Pill: [What is the author teaching me?] pops in.",
             "displayText": "What is the author teaching me?",
-            "displayDelay": 3840
+            "displayDelay": 1240
           },
           {
             "sub": "c",
@@ -3496,7 +3543,7 @@
             "ttsScript": "If a book says elephants are big — the picture shows you just HOW big they are!",
             "interaction": "Pill: [Pictures show what things look like] pops in blue.",
             "displayText": "Pictures show what things look like",
-            "displayDelay": 4080
+            "displayDelay": 1318
           },
           {
             "sub": "c",
@@ -3504,7 +3551,7 @@
             "ttsScript": "Pictures can also show us steps in order, or parts of something. They're like visual helpers!",
             "interaction": "Pill: [Pictures explain things words can't] pops in green.",
             "displayText": "Pictures explain things words can't",
-            "displayDelay": 3840
+            "displayDelay": 1240
           }
         ],
         "heading": "How Do Pictures Help?",
@@ -3559,7 +3606,7 @@
             "ttsScript": "Always stop and look at every picture. Ask yourself: What is this picture showing me?",
             "interaction": "Pill: [Stop and look! What does the picture show?] pops in.",
             "displayText": "Stop and look! What does the picture show?",
-            "displayDelay": 3750
+            "displayDelay": 1163
           },
           {
             "sub": "c",
@@ -3678,7 +3725,7 @@
             "ttsScript": "Reasons are the facts that back up what the author says.",
             "interaction": "Pill: [Reason = Why something is true] pops in blue.",
             "displayText": "Reason means Why something is true",
-            "displayDelay": 2750
+            "displayDelay": 853
           },
           {
             "sub": "c",
@@ -3765,7 +3812,7 @@
             "ttsScript": "Those are usually the reasons! They explain why the author's point makes sense.",
             "interaction": "Pill: [Look for 'because' and examples] pops in.",
             "displayText": "Look for 'because' and examples",
-            "displayDelay": 3250
+            "displayDelay": 1008
           },
           {
             "sub": "c",
@@ -3884,7 +3931,7 @@
             "ttsScript": "What's the same? Maybe both books are about the same animal or the same topic!",
             "interaction": "Pill: [Same = Same topic or facts] pops in purple.",
             "displayText": "Same are Same topic or facts",
-            "displayDelay": 3750
+            "displayDelay": 1163
           },
           {
             "sub": "c",
@@ -3892,7 +3939,7 @@
             "ttsScript": "What's different? Maybe one book has different facts or different pictures!",
             "interaction": "Pill: [Different = Different facts or details] pops in orange.",
             "displayText": "Different are Different facts or details",
-            "displayDelay": 3000
+            "displayDelay": 853
           }
         ],
         "heading": "How Do We Compare Fact Books?",
@@ -4065,7 +4112,8 @@
             "audioFile": "audio/lessons/RF.K.1a/S1c.mp3",
             "ttsScript": "Let's practice reading the right way!",
             "interaction": "Arrow bounces. Tap to continue.",
-            "displayText": ""
+            "displayText": "Let's practice reading the right way!",
+            "displayDelay": 1000
           }
         ],
         "heading": "Let's Learn to Read Left to Right!",
@@ -4089,7 +4137,7 @@
             "ttsScript": "Start on the left side of the page. Then move your eyes across to the right side.",
             "interaction": "Pill: [Left → Right] pops in with animated arrow.",
             "displayText": "Left → Right",
-            "displayDelay": 1500
+            "displayDelay": 1318
           },
           {
             "sub": "c",
@@ -4097,7 +4145,7 @@
             "ttsScript": "When you get to the end of a line, what do you do? You go down to the next line and start on the left again!",
             "interaction": "Pill: [End of line → Next line → Start left again!] pops in.",
             "displayText": "End of line → Next line → Start left again!",
-            "displayDelay": 2800
+            "displayDelay": 2015
           }
         ],
         "heading": "How Do We Read?",
@@ -4151,7 +4199,7 @@
             "ttsScript": "Put your finger under the first word on the left, then slide it to the right as you read!",
             "interaction": "Pill: [Finger under words → Slide right!] pops in.",
             "displayText": "Finger under words → Slide right!",
-            "displayDelay": 2000
+            "displayDelay": 1473
           },
           {
             "sub": "c",
@@ -4246,7 +4294,8 @@
             "audioFile": "audio/lessons/RF.K.1b/S1c.mp3",
             "ttsScript": "Let's learn about how letters build words!",
             "interaction": "Building blocks stack animation. Tap to continue.",
-            "displayText": ""
+            "displayText": "Let's learn about how letters build words!",
+            "displayDelay": 1000
           }
         ],
         "heading": "Words Are Made of Letters!",
@@ -4270,7 +4319,7 @@
             "ttsScript": "Some words are short — like 'at.' That's just two letters! A and T.",
             "interaction": "Pill: [A + T = at] pops in with two letter blocks.",
             "displayText": "A + T make at",
-            "displayDelay": 1500
+            "displayDelay": 1085
           },
           {
             "sub": "c",
@@ -4278,7 +4327,7 @@
             "ttsScript": "Some words are longer — like 'dog.' That's three letters! D, O, G.",
             "interaction": "Pill: [D + O + G = dog] pops in.",
             "displayText": "D + O + G make dog",
-            "displayDelay": 1500
+            "displayDelay": 1008
           },
           {
             "sub": "d",
@@ -4341,7 +4390,7 @@
             "ttsScript": "Touch each letter as you say it. That helps you see how the word is built!",
             "interaction": "Pill: [Touch and count each letter!] pops in.",
             "displayText": "Touch and count each letter!",
-            "displayDelay": 1800
+            "displayDelay": 1240
           },
           {
             "sub": "c",
@@ -4460,7 +4509,7 @@
             "ttsScript": "Now look: the cat sat. So much easier! The spaces tell us each word.",
             "interaction": "Text transforms: 'thecatsat' splits into 'the cat sat' with spaces. Pill: [Spaces separate words!] pops in.",
             "displayText": "Spaces separate words!",
-            "displayDelay": 1500
+            "displayDelay": 1085
           },
           {
             "sub": "c",
@@ -4468,7 +4517,7 @@
             "ttsScript": "Every word needs a space before the next word starts. One finger space!",
             "interaction": "Pill: [One finger space between words!] pops in.",
             "displayText": "One finger space between words!",
-            "displayDelay": 1500
+            "displayDelay": 1008
           }
         ],
         "heading": "Why Do We Need Spaces?",
@@ -4539,7 +4588,7 @@
             "ttsScript": "Put your finger down after writing a word, then start the next word after your finger. Perfect spaces every time!",
             "interaction": "Pill: [Finger space trick!] pops in.",
             "displayText": "Finger space trick!",
-            "displayDelay": 2200
+            "displayDelay": 1550
           },
           {
             "sub": "c",
@@ -4642,7 +4691,8 @@
             "audioFile": "audio/lessons/RF.K.1d/S1c.mp3",
             "ttsScript": "Let's learn to recognize both!",
             "interaction": "Letters float around playfully. Tap to continue.",
-            "displayText": ""
+            "displayText": "Let's learn to recognize both!",
+            "displayDelay": 1000
           }
         ],
         "heading": "Let's Learn Our Letters!",
@@ -4666,7 +4716,7 @@
             "ttsScript": "Uppercase letters are the tall ones. We use them at the start of sentences and for names!",
             "interaction": "Pill: [Uppercase: Start of sentences & names] pops in.",
             "displayText": "Uppercase: Start of sentences & names",
-            "displayDelay": 1800
+            "displayDelay": 1318
           },
           {
             "sub": "c",
@@ -4674,7 +4724,7 @@
             "ttsScript": "Lowercase letters are the small ones. We use them most of the time!",
             "interaction": "Pill: [Lowercase: Used most of the time] pops in.",
             "displayText": "Lowercase: Used most of the time",
-            "displayDelay": 1500
+            "displayDelay": 1008
           },
           {
             "sub": "d",
@@ -4736,7 +4786,7 @@
             "ttsScript": "When you see a letter, try to say its name. Is it uppercase or lowercase?",
             "interaction": "Pill: [See a letter → Say its name → Big or small?] pops in.",
             "displayText": "See a letter → Say its name → Big or small?",
-            "displayDelay": 1800
+            "displayDelay": 1163
           },
           {
             "sub": "c",
@@ -4839,7 +4889,8 @@
             "audioFile": "audio/lessons/RF.K.2b/S1c.mp3",
             "ttsScript": "Let's learn to clap out syllables in words!",
             "interaction": "Clapping hands animation. Tap to continue.",
-            "displayText": ""
+            "displayText": "Let's learn to clap out syllables in words!",
+            "displayDelay": 1000
           }
         ],
         "heading": "Let's Clap Syllables!",
@@ -4863,7 +4914,7 @@
             "ttsScript": "Some words have one beat — like 'cat.' Just one clap! Cat!",
             "interaction": "Pill: [Cat = 1 clap] pops in with hand clap icon.",
             "displayText": "Cat has 1 clap",
-            "displayDelay": 2250
+            "displayDelay": 930
           },
           {
             "sub": "c",
@@ -4871,7 +4922,7 @@
             "ttsScript": "Some words have two beats — like 'apple.' Ap-ple! Two claps!",
             "interaction": "Pill: [Ap-ple = 2 claps] pops in.",
             "displayText": "Ap-ple has 2 claps",
-            "displayDelay": 2500
+            "displayDelay": 853
           },
           {
             "sub": "d",
@@ -4879,7 +4930,7 @@
             "ttsScript": "And some have three or more — like 'banana.' Ba-na-na! Three claps!",
             "interaction": "Pill: [Ba-na-na = 3 claps] pops in.",
             "displayText": "Ba-na-na has 3 claps",
-            "displayDelay": 3000
+            "displayDelay": 930
           }
         ],
         "heading": "What Are Syllables?",
@@ -4943,7 +4994,7 @@
             "ttsScript": "Every time your chin drops down, that's one syllable! Your chin knows the beats!",
             "interaction": "Pill: [Chin drops = 1 syllable] pops in.",
             "displayText": "Chin drops has 1 syllable",
-            "displayDelay": 3500
+            "displayDelay": 1085
           },
           {
             "sub": "c",
@@ -5070,7 +5121,7 @@
             "ttsScript": "Say 'ball.' What's the first sound? Buh! The beginning sound is /b/!",
             "interaction": "Pill: [Ball → Starts with /b/] pops in blue.",
             "displayText": "Ball → Starts with /b/",
-            "displayDelay": 2750
+            "displayDelay": 930
           },
           {
             "sub": "c",
@@ -5078,7 +5129,7 @@
             "ttsScript": "Now the ending sound is the very last sound. Say 'ball.' What's the last sound? Lll! The ending sound is /l/!",
             "interaction": "Pill: [Ball → Ends with /l/] pops in orange.",
             "displayText": "Ball → Ends with /l/",
-            "displayDelay": 6500
+            "displayDelay": 1628
           },
           {
             "sub": "d",
@@ -5148,7 +5199,7 @@
             "ttsScript": "Say the word really slowly. Ssss-uuu-nnn. The first sound pops out and the last sound pops out!",
             "interaction": "Pill: [Stretch it out → Hear first and last!] pops in.",
             "displayText": "Stretch it out → Hear first and last!",
-            "displayDelay": 4500
+            "displayDelay": 1318
           },
           {
             "sub": "c",
@@ -5235,7 +5286,8 @@
             "audioFile": "audio/lessons/RF.K.2d/S1b.mp3",
             "ttsScript": "Like 'cat' has three sounds: /c/ /a/ /t/! Can you hear them?",
             "interaction": "Three sound bubbles pop in one at a time: /c/ /a/ /t/.",
-            "displayText": ""
+            "displayText": "cat",
+            "displayDelay": 1000
           },
           {
             "sub": "c",
@@ -5266,7 +5318,7 @@
             "ttsScript": "Say 'dog' slowly. /d/ /o/ /g/. That's three sounds!",
             "interaction": "Pill: [Dog → /d/ /o/ /g/ = 3 sounds] pops in.",
             "displayText": "Dog → /d/ /o/ /g/ has 3 sounds",
-            "displayDelay": 2000
+            "displayDelay": 698
           },
           {
             "sub": "c",
@@ -5274,7 +5326,7 @@
             "ttsScript": "Try 'go.' /g/ /o/. That's two sounds!",
             "interaction": "Pill: [Go → /g/ /o/ = 2 sounds] pops in.",
             "displayText": "Go → /g/ /o/ has 2 sounds",
-            "displayDelay": 1750
+            "displayDelay": 543
           },
           {
             "sub": "d",
@@ -5337,7 +5389,7 @@
             "ttsScript": "Say the word slowly and pop up a finger for each sound. That's how you count them!",
             "interaction": "Pill: [Slow + Fingers = Sound counting!] pops in.",
             "displayText": "Slow + Fingers make Sound counting!",
-            "displayDelay": 4500
+            "displayDelay": 1318
           },
           {
             "sub": "c",
@@ -5440,7 +5492,8 @@
             "audioFile": "audio/lessons/RF.K.2e/S1c.mp3",
             "ttsScript": "Let's learn how changing sounds makes new words!",
             "interaction": "Magic wand sparkle. Tap to continue.",
-            "displayText": ""
+            "displayText": "Let's learn how changing sounds makes new words!",
+            "displayDelay": 1000
           }
         ],
         "heading": "Changing Sounds, Changing Words!",
@@ -5464,7 +5517,7 @@
             "ttsScript": "You can change the beginning sound. 'Mat' becomes 'sat' if you change /m/ to /s/!",
             "interaction": "Pill: [Change beginning: mat → sat] pops in blue.",
             "displayText": "Change beginning: mat → sat",
-            "displayDelay": 3500
+            "displayDelay": 1163
           },
           {
             "sub": "c",
@@ -5472,7 +5525,7 @@
             "ttsScript": "You can change the ending sound too! 'Cat' becomes 'can' if you change /t/ to /n/!",
             "interaction": "Pill: [Change ending: cat → can] pops in green.",
             "displayText": "Change ending: cat → can",
-            "displayDelay": 3600
+            "displayDelay": 1240
           },
           {
             "sub": "d",
@@ -5535,7 +5588,7 @@
             "ttsScript": "Take away the old sound, put in the new sound, and say the whole word. You'll hear the new word right away!",
             "interaction": "Pill: [Remove old sound + Add new sound = New word!] pops in.",
             "displayText": "Remove old sound + Add new sound make New word!",
-            "displayDelay": 7500
+            "displayDelay": 1705
           },
           {
             "sub": "c",
@@ -5630,7 +5683,8 @@
             "audioFile": "audio/lessons/RF.K.3a/S1c.mp3",
             "ttsScript": "Let's learn some letter sounds!",
             "interaction": "Letters bounce. Tap to continue.",
-            "displayText": ""
+            "displayText": "Let's learn some letter sounds!",
+            "displayDelay": 1000
           }
         ],
         "heading": "Letters and Their Sounds!",
@@ -5654,7 +5708,7 @@
             "ttsScript": "The letter M says mmmm, like when something tastes yummy!",
             "interaction": "Pill: [M = /m/ mmm] pops in with yummy face icon.",
             "displayText": "M says /m/ mmm",
-            "displayDelay": 2500
+            "displayDelay": 775
           },
           {
             "sub": "c",
@@ -5662,7 +5716,7 @@
             "ttsScript": "The letter T says tuh, like a ticking clock!",
             "interaction": "Pill: [T = /t/ tuh] pops in with clock icon.",
             "displayText": "T says /t/ tuh",
-            "displayDelay": 2250
+            "displayDelay": 698
           },
           {
             "sub": "d",
@@ -5836,7 +5890,8 @@
             "audioFile": "audio/lessons/RF.K.3b/S1c.mp3",
             "ttsScript": "Let's learn their sounds!",
             "interaction": "Vowels do a little dance. Tap to continue.",
-            "displayText": ""
+            "displayText": "Let's learn their sounds!",
+            "displayDelay": 1000
           }
         ],
         "heading": "Let's Learn About Vowels!",
@@ -5906,8 +5961,18 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.3b/S3a.mp3",
             "ttsScript": "Which vowel do you hear in 'cat'? Listen: c-a-t.",
-            "interaction": "Heading appears.",
-            "displayText": ""
+            "interaction": "Heading appears. Highlights with a checkmark.",
+            "displayText": "",
+            "displayParts": [
+              {
+                "text": "Which vowel do you hear in 'cat'?",
+                "delay": 300
+              },
+              {
+                "text": "Listen: c-a-t.",
+                "delay": 1885
+              }
+            ]
           },
           {
             "sub": "b",
@@ -6066,7 +6131,8 @@
             "audioFile": "audio/lessons/RF.K.3c/S1c.mp3",
             "ttsScript": "Let's learn to recognize them super fast!",
             "interaction": "Speed lines around the words. Tap to continue.",
-            "displayText": ""
+            "displayText": "Let's learn to recognize them super fast!",
+            "displayDelay": 1000
           }
         ],
         "heading": "Let's Learn Sight Words!",
@@ -6090,7 +6156,7 @@
             "ttsScript": "You don't sound them out — you just know them! Like how you know your own name.",
             "interaction": "Pill: [Sight words = Know them by heart!] pops in.",
             "displayText": "Sight words: Know them by heart!",
-            "displayDelay": 2800
+            "displayDelay": 1318
           },
           {
             "sub": "c",
@@ -6098,7 +6164,7 @@
             "ttsScript": "The more sight words you know, the faster you can read! They're reading superpowers!",
             "interaction": "Pill: [More sight words = Faster reading!] pops in.",
             "displayText": "More sight words means Faster reading!",
-            "displayDelay": 3500
+            "displayDelay": 1085
           }
         ],
         "heading": "What Are Sight Words?",
@@ -6162,7 +6228,7 @@
             "ttsScript": "You can put them on flashcards, stick them on the fridge, or find them in your books!",
             "interaction": "Pill: [Practice every day!] pops in.",
             "displayText": "Practice every day!",
-            "displayDelay": 2500
+            "displayDelay": 1318
           },
           {
             "sub": "c",
@@ -6289,7 +6355,7 @@
             "ttsScript": "Look carefully at the beginning of the word. That's usually where the difference is!",
             "interaction": "Pill: [Check the beginning first!] pops in blue.",
             "displayText": "Check the beginning first!",
-            "displayDelay": 2200
+            "displayDelay": 1085
           },
           {
             "sub": "c",
@@ -6360,7 +6426,7 @@
             "ttsScript": "Say each letter as you point. That slows you down and helps you read the right word!",
             "interaction": "Pill: [Point → Say each letter → Read correctly!] pops in.",
             "displayText": "Point → Say each letter → Read correctly!",
-            "displayDelay": 4080
+            "displayDelay": 1318
           },
           {
             "sub": "c",
@@ -6450,7 +6516,8 @@
             "audioFile": "audio/lessons/RF.K.4/S1c.mp3",
             "ttsScript": "Let's learn how to read with purpose!",
             "interaction": "Lightbulb turns on. Tap to continue.",
-            "displayText": ""
+            "displayText": "Let's learn how to read with purpose!",
+            "displayDelay": 1000
           }
         ],
         "heading": "Let's Read with Purpose!",
@@ -6474,7 +6541,7 @@
             "ttsScript": "If it's a storybook, you might be reading for fun! To enjoy the adventure!",
             "interaction": "Pill: [Storybook → Reading for fun!] pops in blue.",
             "displayText": "Storybook → Reading for fun!",
-            "displayDelay": 2500
+            "displayDelay": 1085
           },
           {
             "sub": "c",
@@ -6482,7 +6549,7 @@
             "ttsScript": "If it's a fact book, you might be reading to learn new things!",
             "interaction": "Pill: [Fact book → Reading to learn!] pops in green.",
             "displayText": "Fact book → Reading to learn!",
-            "displayDelay": 2800
+            "displayDelay": 1008
           },
           {
             "sub": "d",
@@ -6545,7 +6612,7 @@
             "ttsScript": "Then look for the answer while you read! That gives you a mission!",
             "interaction": "Pill: [Ask a question → Read to find the answer!] pops in.",
             "displayText": "Ask a question → Read to find the answer!",
-            "displayDelay": 3250
+            "displayDelay": 1008
           },
           {
             "sub": "c",
@@ -6640,7 +6707,8 @@
             "audioFile": "audio/lessons/K.L.1/S1c.mp3",
             "ttsScript": "Let's learn some basic grammar rules!",
             "interaction": "Word blocks arrange themselves. Tap to continue.",
-            "displayText": ""
+            "displayText": "Let's learn some basic grammar rules!",
+            "displayDelay": 1000
           }
         ],
         "heading": "Let's Learn Grammar Basics!",
@@ -6664,7 +6732,20 @@
             "ttsScript": "These are called nouns! A noun names a person, place, or thing.",
             "interaction": "Pill: [Noun = Person, Place, or Thing] pops in blue.",
             "displayText": "Noun means Person, Place, or Thing",
-            "displayDelay": 3000
+            "displayParts": [
+              {
+                "text": "Noun means Person",
+                "delay": 300
+              },
+              {
+                "text": "Place",
+                "delay": 610
+              },
+              {
+                "text": "or Thing",
+                "delay": 920
+              }
+            ]
           },
           {
             "sub": "c",
@@ -6672,7 +6753,7 @@
             "ttsScript": "Other words show action — like 'run,' 'jump,' or 'eat.' These are verbs!",
             "interaction": "Pill: [Verb = Action Word] pops in green.",
             "displayText": "Verb means Action Word",
-            "displayDelay": 3250
+            "displayDelay": 1008
           },
           {
             "sub": "d",
@@ -6855,7 +6936,8 @@
             "audioFile": "audio/lessons/K.L.2/S1c.mp3",
             "ttsScript": "Let's learn the rules of capitals and punctuation!",
             "interaction": "Crown and sunglasses animation. Tap to continue.",
-            "displayText": ""
+            "displayText": "Let's learn the rules of capitals and punctuation!",
+            "displayDelay": 1000
           }
         ],
         "heading": "Capitals and Punctuation!",
@@ -6879,7 +6961,7 @@
             "ttsScript": "We also use capitals for names. Like Max, Anna, or your name!",
             "interaction": "Pill: [Capitals: Start of sentences + Names] pops in blue.",
             "displayText": "Capitals: Start of sentences + Names",
-            "displayDelay": 3000
+            "displayDelay": 930
           },
           {
             "sub": "c",
@@ -6887,7 +6969,7 @@
             "ttsScript": "And at the end of a sentence, we put a period. It's like saying 'The end!' for that thought.",
             "interaction": "Pill: [Period (.) = End of sentence] pops in green.",
             "displayText": "Period (.) means End of sentence",
-            "displayDelay": 3200
+            "displayDelay": 1473
           },
           {
             "sub": "d",
@@ -7062,7 +7144,8 @@
             "audioFile": "audio/lessons/K.L.4/S1c.mp3",
             "ttsScript": "Let's learn how to crack the code!",
             "interaction": "Magnifying glass animation. Tap to continue.",
-            "displayText": ""
+            "displayText": "Let's learn how to crack the code!",
+            "displayDelay": 1000
           }
         ],
         "heading": "Let's Figure Out Word Meanings!",
@@ -7086,7 +7169,7 @@
             "ttsScript": "The words before and after give you clues about what the new word means.",
             "interaction": "Pill: [Listen to words around it] pops in blue.",
             "displayText": "Listen to words around it",
-            "displayDelay": 2000
+            "displayDelay": 1085
           },
           {
             "sub": "c",
@@ -7094,7 +7177,7 @@
             "ttsScript": "You can also ask a grown-up, or look at pictures for help!",
             "interaction": "Pill: [Ask someone or look at pictures] pops in green.",
             "displayText": "Ask someone or look at pictures",
-            "displayDelay": 3000
+            "displayDelay": 930
           },
           {
             "sub": "d",
@@ -7157,7 +7240,7 @@
             "ttsScript": "Read the sentence again, look at pictures, and try to guess. You'll be right more than you think!",
             "interaction": "Pill: [Re-read → Look → Guess → Solve!] pops in.",
             "displayText": "Re-read → Look → Guess → Solve!",
-            "displayDelay": 3500
+            "displayDelay": 1395
           },
           {
             "sub": "c",
@@ -7260,7 +7343,8 @@
             "audioFile": "audio/lessons/K.L.5/S1c.mp3",
             "ttsScript": "Let's explore how words are connected!",
             "interaction": "Connection lines animate. Tap to continue.",
-            "displayText": ""
+            "displayText": "Let's explore how words are connected!",
+            "displayDelay": 1000
           }
         ],
         "heading": "Let's Learn About Word Relationships!",
@@ -7284,7 +7368,7 @@
             "ttsScript": "They're like two sides of a coin!",
             "interaction": "Pill: [Opposites = Complete reverse] pops in red.",
             "displayText": "Opposites are Complete reverse",
-            "displayDelay": 1750
+            "displayDelay": 543
           },
           {
             "sub": "c",
@@ -7292,7 +7376,7 @@
             "ttsScript": "Words can also belong to groups. 'Dog,' 'cat,' and 'fish' are all animals!",
             "interaction": "Pill: [Categories = Word groups] pops in blue.",
             "displayText": "Categories are Word groups",
-            "displayDelay": 2000
+            "displayDelay": 1008
           },
           {
             "sub": "d",
@@ -7300,7 +7384,7 @@
             "ttsScript": "And some words mean almost the same thing! 'Big' and 'large' are alike!",
             "interaction": "Pill: [Similar = Almost the same meaning] pops in green.",
             "displayText": "Similar means Almost the same meaning",
-            "displayDelay": 3250
+            "displayDelay": 1008
           }
         ],
         "heading": "Opposites and Categories",
@@ -7356,7 +7440,7 @@
             "ttsScript": "Connecting words to other words helps you remember them better!",
             "interaction": "Pill: [Connect words → Remember better!] pops in.",
             "displayText": "Connect words → Remember better!",
-            "displayDelay": 2500
+            "displayDelay": 775
           },
           {
             "sub": "c",
@@ -7451,7 +7535,8 @@
             "audioFile": "audio/lessons/K.L.6/S1c.mp3",
             "ttsScript": "Let's practice using new words in sentences!",
             "interaction": "Word blocks build into a tall tower. Tap to continue.",
-            "displayText": ""
+            "displayText": "Let's practice using new words in sentences!",
+            "displayDelay": 1000
           }
         ],
         "heading": "Let's Use New Words!",
@@ -7475,7 +7560,7 @@
             "ttsScript": "Like if you learn the word 'enormous,' try saying: That building is enormous!",
             "interaction": "Pill: [New word: enormous → Use it: That building is enormous!] pops in.",
             "displayText": "New word: enormous → Use it: That building is enormous!",
-            "displayDelay": 3250
+            "displayDelay": 1008
           },
           {
             "sub": "c",
@@ -7483,7 +7568,7 @@
             "ttsScript": "The more you use a word, the better you remember it!",
             "interaction": "Pill: [Use it → Remember it!] pops in.",
             "displayText": "Use it → Remember it!",
-            "displayDelay": 2750
+            "displayDelay": 853
           },
           {
             "sub": "d",
