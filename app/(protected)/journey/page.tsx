@@ -303,7 +303,7 @@ function JourneyContent() {
                 <div className={`px-5 py-4 flex items-center gap-3 transition-colors ${
                   gradeOpen ? "bg-gradient-to-r from-indigo-600 to-violet-500" : allDone ? "bg-gradient-to-r from-emerald-600 to-emerald-500" : ""
                 }`}>
-                  <div className="w-10 h-10 rounded-xl overflow-hidden flex-shrink-0">
+                  <div className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 shadow-sm">
                     {allDone ? (
                       <div className="w-full h-full bg-emerald-500 flex items-center justify-center">
                         <CheckCircleSolid className="w-5 h-5 text-white" />
