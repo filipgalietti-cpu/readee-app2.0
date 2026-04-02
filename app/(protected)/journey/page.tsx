@@ -16,11 +16,11 @@ import {
 } from "lucide-react";
 
 const GRADE_BADGES: Record<string, string> = {
-  kindergarten: "/images/ui/grades/grade-k.png",
-  "1st": "/images/ui/grades/grade-1.png",
-  "2nd": "/images/ui/grades/grade-2.png",
-  "3rd": "/images/ui/grades/grade-3.png",
-  "4th": "/images/ui/grades/grade-4.png",
+  "Kindergarten": "/images/ui/grades/grade-k.png",
+  "1st Grade": "/images/ui/grades/grade-1.png",
+  "2nd Grade": "/images/ui/grades/grade-2.png",
+  "3rd Grade": "/images/ui/grades/grade-3.png",
+  "4th Grade": "/images/ui/grades/grade-4.png",
 };
 import { PaywallModal } from "@/app/_components/PaywallModal";
 
