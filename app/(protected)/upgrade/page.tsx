@@ -69,7 +69,7 @@ const FAQS = [
   },
   {
     q: "What's included in the free plan?",
-    a: "The diagnostic assessment, your first 5 lessons per level, 1 child profile, and unlimited practice questions. Upgrade to unlock everything.",
+    a: "The diagnostic assessment, your first lesson per level, 1 child profile, and practice questions. Upgrade to unlock everything.",
   },
   {
     q: "What happens to my child's progress if I cancel?",

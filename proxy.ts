@@ -20,6 +20,7 @@ const PREMIUM_ONLY_ROUTES: Record<string, string> = {
 /** Routes that require authentication — redirect to /login */
 const AUTH_REQUIRED_PREFIXES = [
   "/learn",
+  "/lesson",
   "/practice",
   "/practice-hub",
   "/journey",
@@ -31,6 +32,12 @@ const AUTH_REQUIRED_PREFIXES = [
   "/billing",
   "/word-bank",
   "/upgrade",
+  "/roadmap",
+  "/shop",
+  "/leaderboard",
+  "/notifications",
+  "/assessment-results",
+  "/carrot-rewards",
 ];
 
 export async function proxy(request: NextRequest) {

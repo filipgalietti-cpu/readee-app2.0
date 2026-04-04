@@ -9,6 +9,7 @@ import { useSpeech } from "@/app/_components/SpeechContext";
 import lessonsData from "@/lib/data/lessons.json";
 import { gradeOrder, grades, levelNameToGradeKey } from "@/lib/assessment/questions";
 import { usePlanStore } from "@/lib/stores/plan-store";
+import { FREE_LIMITS } from "@/lib/plan/limits";
 import { getDailyMultiplier, getSessionStreakTier } from "@/lib/carrots/multipliers";
 
 const PASS_THRESHOLD = 3;
@@ -486,7 +487,8 @@ export default function LessonPage() {
 function isLessonFree(lessonId: string): boolean {
   const match = lessonId.match(/L(\d+)$/);
   if (!match) return true;
-  return parseInt(match[1]) <= 2;
+  // L1 = index 0, L2 = index 1, etc. Check against centralized limit.
+  return parseInt(match[1]) - 1 < FREE_LIMITS.lessons;
 }
 
 function LessonContent() {

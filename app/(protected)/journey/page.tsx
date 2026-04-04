@@ -162,9 +162,17 @@ function JourneyContent() {
   const hasStarted = (standardId: string) =>
     lessonProgress.some((p) => p.lesson_id === standardId && p.section === "learn");
 
+  // Build per-grade index map for free tier gating
+  const gradeIndexMap = new Map<string, number>();
+  const gradeCounters = new Map<string, number>();
+
   // Assign statuses
   let foundCurrent = false;
   const lessonsWithStatus: LessonWithStatus[] = allLessons.map((lesson, idx) => {
+    // Track per-grade index
+    const gradeIdx = gradeCounters.get(lesson.grade) ?? 0;
+    gradeCounters.set(lesson.grade, gradeIdx + 1);
+
     let status: LessonStatus;
     if (hasCompleted(lesson.standardId)) {
       status = "completed";
@@ -174,7 +182,7 @@ function JourneyContent() {
     } else if (!foundCurrent) {
       foundCurrent = true;
       status = "current";
-    } else if (idx >= getLimits(plan).lessons && plan !== "premium") {
+    } else if (gradeIdx >= getLimits(plan).lessons && plan !== "premium") {
       status = "premium";
     } else {
       status = "locked";
