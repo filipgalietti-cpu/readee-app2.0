@@ -27,6 +27,8 @@ import { LessonSlideshow } from "@/app/components/lesson/LessonSlideshow";
 import type { SampleLesson } from "@/app/components/lesson/LessonSlideshow";
 import sampleLessons from "@/app/data/sample-lessons.json";
 import { Star, Carrot } from "lucide-react";
+import { usePlanStore } from "@/lib/stores/plan-store";
+import { getLimits } from "@/lib/plan/limits";
 
 /* ─── Types ──────────────────────────────────────────── */
 
@@ -190,6 +192,10 @@ function LearnLoader() {
   const childId = params.get("child");
   const devMode = params.get("dev") === "1";
 
+  const plan = usePlanStore((s) => s.plan);
+  const fetchPlan = usePlanStore((s) => s.fetch);
+  useEffect(() => { fetchPlan(); }, [fetchPlan]);
+
   const [child, setChild] = useState<Child | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -198,6 +204,20 @@ function LearnLoader() {
     if (!standardId) return null;
     return (sampleLessons as SampleLesson[]).find((l) => l.standardId === standardId) ?? null;
   }, [standardId]);
+
+  // Plan gating — check if this lesson is beyond free tier
+  const lessonIndex = useMemo(() => {
+    if (!lesson) return 0;
+    const allLessons = sampleLessons as SampleLesson[];
+    const gradeLessons = allLessons.filter((l) => l.grade === lesson.grade);
+    return gradeLessons.findIndex((l) => l.standardId === lesson.standardId);
+  }, [lesson]);
+
+  useEffect(() => {
+    if (plan !== null && plan !== "premium" && lessonIndex >= getLimits(plan).lessons) {
+      router.replace(`/upgrade?reason=lesson`);
+    }
+  }, [plan, lessonIndex, router]);
 
   // Find MCQ questions from standard data
   const mcqQuestions = useMemo(() => {
