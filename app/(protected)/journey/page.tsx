@@ -369,7 +369,7 @@ function JourneyContent() {
                               }`}
                             >
                               <DIcon className={`w-4 h-4 flex-shrink-0 ${
-                                domDone ? "text-emerald-500" : domHasCurrent ? "text-indigo-500" : "text-zinc-400"
+                                domDone ? "text-emerald-500" : "text-indigo-500"
                               }`} strokeWidth={1.5} />
                               <p className="flex-1 text-left text-[13px] font-semibold text-zinc-800">{domain.domain}</p>
                               <span className="text-[11px] text-zinc-400 font-medium mr-1">{domain.completedCount}/{domain.lessons.length}</span>
