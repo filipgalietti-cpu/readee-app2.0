@@ -558,7 +558,7 @@ function LessonContent() {
       // Gating: check if lesson requires premium
       if (lessonId && !isLessonFree(lessonId)) {
         if (plan !== "premium") {
-          router.replace(`/upgrade?child=${childId}`);
+          router.replace(`/upgrade?reason=lesson`);
           return;
         }
       }

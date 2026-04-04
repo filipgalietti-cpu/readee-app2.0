@@ -25,6 +25,8 @@ import { SpaceInsertion } from "@/app/components/practice/SpaceInsertion";
 import { getDailyMultiplier, getSessionStreakTier } from "@/lib/carrots/multipliers";
 import { StreakFire } from "@/app/_components/StreakFire";
 import { BookOpen, Newspaper, Type, MessageCircle, Star, Sparkles, Target, Carrot, Search } from "lucide-react";
+import { usePlanStore } from "@/lib/stores/plan-store";
+import { getLimits } from "@/lib/plan/limits";
 import type { LucideIcon } from "lucide-react";
 
 /* ─── Types ──────────────────────────────────────────── */
@@ -330,11 +332,17 @@ function LoadingScreen() {
 
 function PracticeLoader() {
   const params = useSearchParams();
+  const router = useRouter();
   const childId = params.get("child");
   const standardId = params.get("standard");
   const typesParam = params.get("types"); // e.g. "sentence_build,category_sort"
   const [child, setChild] = useState<Child | null>(null);
   const [loading, setLoading] = useState(true);
+  const [blocked, setBlocked] = useState(false);
+
+  const plan = usePlanStore((s) => s.plan);
+  const fetchPlan = usePlanStore((s) => s.fetch);
+  useEffect(() => { fetchPlan(); }, [fetchPlan]);
 
   useEffect(() => {
     async function load() {
@@ -342,12 +350,32 @@ function PracticeLoader() {
       const supabase = supabaseBrowser();
       const { data } = await supabase.from("children").select("*").eq("id", childId).single();
       if (data) setChild(data as Child);
+
+      // Check practice limit for free users
+      if (plan !== null && plan !== "premium" && standardId) {
+        const { data: results } = await supabase
+          .from("practice_results")
+          .select("questions_attempted")
+          .eq("child_id", childId)
+          .eq("standard_id", standardId)
+          .single();
+
+        const attempted = results?.questions_attempted ?? 0;
+        if (attempted >= getLimits(plan).practicePerStandard) {
+          setBlocked(true);
+        }
+      }
+
       setLoading(false);
     }
     load();
-  }, [childId]);
+  }, [childId, plan, standardId]);
 
-  if (loading) return <LoadingScreen />;
+  useEffect(() => {
+    if (blocked) router.replace("/upgrade?reason=practice");
+  }, [blocked, router]);
+
+  if (loading || blocked) return <LoadingScreen />;
 
   // Determine grade from child's reading level, then load the right standards
   const gradeKey = levelNameToGradeKey(child?.reading_level ?? null);
