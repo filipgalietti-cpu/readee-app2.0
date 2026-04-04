@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { BookOpen, Newspaper, Type, MessageCircle, Carrot, Star, Lock } from "lucide-react";
+import { BookOpen, Newspaper, Type, MessageCircle, Carrot, Star, Lock, Rabbit } from "lucide-react";
 
 /* ─── Demo Data ──────────────────────────────────────── */
 
@@ -269,7 +269,7 @@ export default function RoadmapDemoPage() {
                 transform: `scale(${0.5 + avatarP * 0.5})`,
               }}
             >
-              🐰
+              <Rabbit className="w-8 h-8 text-indigo-500" />
             </div>
             <h1 className="text-2xl font-bold text-zinc-900 tracking-tight drop-shadow-sm">
               {CHILD_NAME}&apos;s Reading Journey

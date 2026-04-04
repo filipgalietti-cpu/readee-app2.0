@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useCallback } from "react";
+import { ThumbsUp } from "lucide-react";
 
 /* ── Audit data for the 10 generated samples ── */
 const ITEMS = [
@@ -200,7 +201,7 @@ export default function IncorrectAudioAuditPage() {
                   }`}
                   title="Sounds good"
                 >
-                  👍
+                  <ThumbsUp className="w-4 h-4" />
                 </button>
                 <button
                   onClick={() => toggleRating(item.id, "bad")}

@@ -133,7 +133,7 @@ export default async function TestConnectionPage() {
             borderRadius: '8px',
             border: '1px solid #4a90e2'
           }}>
-            <h3 style={{ margin: '0 0 10px 0' }}>💡 About This Test</h3>
+            <h3 style={{ margin: '0 0 10px 0' }}>About This Test</h3>
             <ul style={{ margin: 0, paddingLeft: '20px' }}>
               <li>This page tests your Supabase connection configuration</li>
               <li>Regular client uses anonymous key for public access</li>

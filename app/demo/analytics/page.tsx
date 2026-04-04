@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { Rabbit } from "lucide-react";
 
 /* ─── Fake data for demo ─────────────────────────────── */
 const CHILD_NAME = "Emma";
@@ -250,7 +251,7 @@ export default function AnalyticsDemoPage() {
           <div className={`pt-6 mb-6 transition-all duration-700 ${showHeader ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
             <div className="flex items-center gap-4 mb-4">
               <div className="w-14 h-14 rounded-2xl bg-indigo-100 flex items-center justify-center text-3xl flex-shrink-0">
-                🐰
+                <Rabbit className="w-8 h-8 text-indigo-500" />
               </div>
               <div className="flex-1 min-w-0">
                 <h1 className="text-2xl font-bold text-zinc-900 tracking-tight">

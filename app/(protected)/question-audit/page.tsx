@@ -6,6 +6,7 @@ import { useAudio } from "@/lib/audio/use-audio";
 import { useAuditReviews } from "@/lib/audit/use-audit-reviews";
 import { ReviewList } from "@/app/components/audit/ReviewList";
 import { MigrateLocalStorage } from "@/app/components/audit/MigrateLocalStorage";
+import { ThumbsUp } from "lucide-react";
 
 /* ── Types ──────────────────────────────────────────── */
 
@@ -345,7 +346,7 @@ export default function QuestionAuditPage() {
                         className={`p-1.5 rounded-lg transition-colors text-lg ${
                           review?.status === "up" ? "bg-emerald-200 text-emerald-700" : "hover:bg-gray-100 text-gray-400"
                         }`}
-                      >👍</button>
+                      ><ThumbsUp className="w-4 h-4" /></button>
                       <button
                         onClick={() => toggleRating(key, "down", s.standard_id)}
                         className={`p-1.5 rounded-lg transition-colors text-lg ${
@@ -507,7 +508,7 @@ export default function QuestionAuditPage() {
                       <button onClick={() => toggleRating(key, "up", standard.standard_id)}
                         className={`p-1.5 rounded-lg transition-colors text-lg ${
                           review?.status === "up" ? "bg-emerald-200 text-emerald-700" : "hover:bg-gray-100 text-gray-400"
-                        }`}>👍</button>
+                        }`}><ThumbsUp className="w-4 h-4" /></button>
                       <button onClick={() => toggleRating(key, "down", standard.standard_id)}
                         className={`p-1.5 rounded-lg transition-colors text-lg ${
                           review?.status === "down" ? "bg-red-200 text-red-700" : "hover:bg-gray-100 text-gray-400"
