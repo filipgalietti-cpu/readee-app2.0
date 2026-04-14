@@ -123,9 +123,27 @@ function UpgradeContent() {
 
   const reasonCopy = reason ? REASON_COPY[reason] : null;
 
+  const [checkoutLoading, setCheckoutLoading] = useState(false);
+
   async function handleStartTrial() {
-    // Stripe checkout placeholder
-    console.log(`Starting 7-day free trial — ${billing} plan`);
+    setCheckoutLoading(true);
+    try {
+      const res = await fetch("/api/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ billing }),
+      });
+      const data = await res.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        console.error("Checkout error:", data.error);
+        setCheckoutLoading(false);
+      }
+    } catch {
+      console.error("Checkout request failed");
+      setCheckoutLoading(false);
+    }
   }
 
   async function handleRedeemPromo() {
@@ -250,9 +268,10 @@ function UpgradeContent() {
 
           <button
             onClick={handleStartTrial}
-            className="w-full mt-6 py-3.5 rounded-xl bg-indigo-600 text-white font-bold text-sm hover:bg-indigo-700 transition-colors shadow-sm"
+            disabled={checkoutLoading}
+            className="w-full mt-6 py-3.5 rounded-xl bg-indigo-600 text-white font-bold text-sm hover:bg-indigo-700 transition-colors shadow-sm disabled:opacity-50"
           >
-            Start 7-Day Free Trial
+            {checkoutLoading ? "Redirecting..." : "Start 7-Day Free Trial"}
           </button>
 
           <p className="text-xs text-zinc-400 mt-3">
@@ -388,9 +407,10 @@ function UpgradeContent() {
       <div className="space-y-3 text-center pb-4">
         <button
           onClick={handleStartTrial}
-          className="w-full py-3.5 rounded-xl bg-indigo-600 text-white font-bold text-sm hover:bg-indigo-700 transition-colors shadow-sm"
+          disabled={checkoutLoading}
+          className="w-full py-3.5 rounded-xl bg-indigo-600 text-white font-bold text-sm hover:bg-indigo-700 transition-colors shadow-sm disabled:opacity-50"
         >
-          Start 7-Day Free Trial
+          {checkoutLoading ? "Redirecting..." : "Start 7-Day Free Trial"}
         </button>
         <Link
           href="/dashboard"

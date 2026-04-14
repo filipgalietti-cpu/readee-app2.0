@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useMemo, useRef } from "react";
 import Link from "next/link";
-import { useRouter, usePathname } from "next/navigation";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child, LessonProgress } from "@/lib/db/types";
@@ -126,6 +126,7 @@ function DashboardBackdrop({ src }: { src: string }) {
 
 export default function Dashboard() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const children = useChildStore((s) => s.children);
   const selectedChild = useChildStore((s) => s.childData);
   const setStoreChildren = useChildStore((s) => s.setChildren);
@@ -133,6 +134,15 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true);
   const userPlan = usePlanStore((s) => s.plan) ?? "free";
   const fetchPlan = usePlanStore((s) => s.fetch);
+  const [showCheckoutSuccess, setShowCheckoutSuccess] = useState(false);
+
+  useEffect(() => {
+    if (searchParams.get("checkout") === "success") {
+      setShowCheckoutSuccess(true);
+      fetchPlan();
+      router.replace("/dashboard", { scroll: false });
+    }
+  }, [searchParams, fetchPlan, router]);
 
   const setChildren = (kids: Child[]) => setStoreChildren(kids);
   const setSelectedChild = (child: Child | null) => setStoreChildData(child);
@@ -661,6 +671,35 @@ function ChildDashboard({
   return (
     <>
     {bgImage && <DashboardBackdrop src={bgImage} />}
+
+    {/* ── Checkout Success Banner ── */}
+    <AnimatePresence>
+      {showCheckoutSuccess && (
+        <motion.div
+          initial={{ opacity: 0, y: -12 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -12 }}
+          className="fixed top-20 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-md"
+        >
+          <div className="flex items-center gap-3 rounded-xl bg-emerald-50 border border-emerald-200 px-5 py-4 shadow-lg">
+            <div className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
+              <Sparkles className="w-4 h-4 text-emerald-600" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-semibold text-emerald-900">Welcome to Readee+!</p>
+              <p className="text-xs text-emerald-600">Your 7-day free trial has started. Enjoy full access!</p>
+            </div>
+            <button
+              onClick={() => setShowCheckoutSuccess(false)}
+              className="text-emerald-400 hover:text-emerald-600 text-lg leading-none flex-shrink-0"
+              aria-label="Dismiss"
+            >
+              &times;
+            </button>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
 
     {/* ── Mobile Parent Sidebar Overlay ── */}
     <AnimatePresence>
