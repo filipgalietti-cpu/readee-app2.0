@@ -24,7 +24,8 @@
           "hint": "Read the first sentence again — how many apples?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.1/RL.1.1-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.1/RL.1.1-Q1-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.1/RL.1.1-Q1-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RL.1.1/RL.1.1-Q1.png"
         },
         {
           "id": "RL.1.1-Q2",
@@ -40,7 +41,8 @@
           "hint": "Look at the first sentence — where did the frog sit?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.1/RL.1.1-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.1/RL.1.1-Q2-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.1/RL.1.1-Q2-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RL.1.1/RL.1.1-Q2.png"
         },
         {
           "id": "RL.1.1-Q3",
@@ -56,7 +58,8 @@
           "hint": "Read the first sentence — who walked with Emma?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.1/RL.1.1-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.1/RL.1.1-Q3-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.1/RL.1.1-Q3-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RL.1.1/RL.1.1-Q3.png"
         },
         {
           "id": "RL.1.1-Q4",
@@ -72,7 +75,8 @@
           "hint": "Read the second sentence — what went on top?",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.1/RL.1.1-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.1/RL.1.1-Q4-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.1/RL.1.1-Q4-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RL.1.1/RL.1.1-Q4.png"
         },
         {
           "id": "RL.1.1-Q5",
@@ -88,7 +92,8 @@
           "hint": "The second sentence tells you how the kitten felt.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.1/RL.1.1-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.1/RL.1.1-Q5-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.1/RL.1.1-Q5-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RL.1.1/RL.1.1-Q5.png"
         }
       ]
     },
@@ -112,7 +117,8 @@
           "hint": "What did Tom do before the race that helped him win?",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.2/RL.1.2-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.2/RL.1.2-Q1-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.2/RL.1.2-Q1-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RL.1.2/RL.1.2-Q1.png"
         },
         {
           "id": "RL.1.2-Q2",
@@ -128,7 +134,8 @@
           "hint": "What happened when Mia didn't share?",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.2/RL.1.2-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.2/RL.1.2-Q2-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.2/RL.1.2-Q2-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RL.1.2/RL.1.2-Q2.png"
         },
         {
           "id": "RL.1.2-Q3",
@@ -144,7 +151,8 @@
           "hint": "Who was ready for winter and why?",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.2/RL.1.2-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.2/RL.1.2-Q3-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.2/RL.1.2-Q3-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RL.1.2/RL.1.2-Q3.png"
         },
         {
           "id": "RL.1.2-Q4",
@@ -160,7 +168,8 @@
           "hint": "What happened at the beginning before he learned?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.2/RL.1.2-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.2/RL.1.2-Q4-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.2/RL.1.2-Q4-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RL.1.2/RL.1.2-Q4.png"
         },
         {
           "id": "RL.1.2-Q5",
@@ -176,7 +185,8 @@
           "hint": "How did Sara feel after she told the truth vs. the lie?",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.2/RL.1.2-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.2/RL.1.2-Q5-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.2/RL.1.2-Q5-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RL.1.2/RL.1.2-Q5.png"
         }
       ]
     },
@@ -200,7 +210,8 @@
           "hint": "Look for the words that tell you where the woman lives.",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.3/RL.1.3-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.3/RL.1.3-Q1-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.3/RL.1.3-Q1-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RL.1.3/RL.1.3-Q1.png"
         },
         {
           "id": "RL.1.3-Q2",
@@ -216,7 +227,8 @@
           "hint": "Think about what Ben does — helping and sharing.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.3/RL.1.3-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.3/RL.1.3-Q2-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.3/RL.1.3-Q2-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RL.1.3/RL.1.3-Q2.png"
         },
         {
           "id": "RL.1.3-Q3",
@@ -232,7 +244,8 @@
           "hint": "The setting is WHERE and WHEN the story happens.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.3/RL.1.3-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.3/RL.1.3-Q3-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.3/RL.1.3-Q3-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RL.1.3/RL.1.3-Q3.png"
         },
         {
           "id": "RL.1.3-Q4",
@@ -248,7 +261,8 @@
           "hint": "What is the most important thing that happened?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.3/RL.1.3-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.3/RL.1.3-Q4-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.3/RL.1.3-Q4-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RL.1.3/RL.1.3-Q4.png"
         },
         {
           "id": "RL.1.3-Q5",
@@ -264,7 +278,8 @@
           "hint": "How is Gus different at the end compared to the beginning?",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.3/RL.1.3-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.3/RL.1.3-Q5-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.3/RL.1.3-Q5-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RL.1.3/RL.1.3-Q5.png"
         }
       ]
     },
@@ -288,7 +303,8 @@
           "hint": "Which word helps you imagine what the sun looks and feels like?",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.4/RL.1.4-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.4/RL.1.4-Q1-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.4/RL.1.4-Q1-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RL.1.4/RL.1.4-Q1.png"
         },
         {
           "id": "RL.1.4-Q2",
@@ -304,7 +320,8 @@
           "hint": "What does 'whimpered' sound like? Happy or sad?",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.4/RL.1.4-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.4/RL.1.4-Q2-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.4/RL.1.4-Q2-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RL.1.4/RL.1.4-Q2.png"
         },
         {
           "id": "RL.1.4-Q3",
@@ -320,7 +337,8 @@
           "hint": "Which words describe how the cookies smell?",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.4/RL.1.4-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.4/RL.1.4-Q3-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.4/RL.1.4-Q3-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RL.1.4/RL.1.4-Q3.png"
         },
         {
           "id": "RL.1.4-Q4",
@@ -336,7 +354,8 @@
           "hint": "When people stomp and cross their arms, how do they usually feel?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.4/RL.1.4-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.4/RL.1.4-Q4-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.4/RL.1.4-Q4-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RL.1.4/RL.1.4-Q4.png"
         },
         {
           "id": "RL.1.4-Q5",
@@ -352,7 +371,8 @@
           "hint": "Which words describe what the blanket feels like when you touch it?",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.4/RL.1.4-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.4/RL.1.4-Q5-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.4/RL.1.4-Q5-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RL.1.4/RL.1.4-Q5.png"
         }
       ]
     },
@@ -376,7 +396,8 @@
           "hint": "Stories come from someone's imagination.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.5/RL.1.5-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.5/RL.1.5-Q3-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.5/RL.1.5-Q3-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RL.1.5/RL.1.5-Q3.png"
         },
         {
           "id": "RL.1.5-Q4",
@@ -392,7 +413,8 @@
           "hint": "Informational means it gives you real information.",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.5/RL.1.5-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.5/RL.1.5-Q4-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.5/RL.1.5-Q4-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RL.1.5/RL.1.5-Q4.png"
         },
         {
           "id": "RL.1.5-Q6",
@@ -444,7 +466,8 @@
           "hint": "Look at the word 'I' — who is the 'I' in the story?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.6/RL.1.6-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.6/RL.1.6-Q1-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.6/RL.1.6-Q1-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RL.1.6/RL.1.6-Q1.png"
         },
         {
           "id": "RL.1.6-Q2",
@@ -460,7 +483,8 @@
           "hint": "The story says 'He' not 'I' — someone else is telling us about Sam.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.6/RL.1.6-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.6/RL.1.6-Q2-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.6/RL.1.6-Q2-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RL.1.6/RL.1.6-Q2.png"
         },
         {
           "id": "RL.1.6-Q3",
@@ -476,7 +500,8 @@
           "hint": "Look at the words inside the quotation marks and who 'said' them.",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.6/RL.1.6-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.6/RL.1.6-Q3-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.6/RL.1.6-Q3-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RL.1.6/RL.1.6-Q3.png"
         },
         {
           "id": "RL.1.6-Q4",
@@ -492,7 +517,8 @@
           "hint": "When you see 'I' and 'my,' a character is talking about themselves.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.6/RL.1.6-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.6/RL.1.6-Q4-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.6/RL.1.6-Q4-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RL.1.6/RL.1.6-Q4.png"
         },
         {
           "id": "RL.1.6-Q5",
@@ -508,7 +534,8 @@
           "hint": "Look at who 'called' those words.",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.6/RL.1.6-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.6/RL.1.6-Q5-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.6/RL.1.6-Q5-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RL.1.6/RL.1.6-Q5.png"
         }
       ]
     },
@@ -532,7 +559,8 @@
           "hint": "What do smiles and trophies usually mean?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.7/RL.1.7-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.7/RL.1.7-Q1-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.7/RL.1.7-Q1-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RL.1.7/RL.1.7-Q1.png"
         },
         {
           "id": "RL.1.7-Q2",
@@ -548,7 +576,8 @@
           "hint": "Snow and coats are clues about the season.",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.7/RL.1.7-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.7/RL.1.7-Q2-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.7/RL.1.7-Q2-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RL.1.7/RL.1.7-Q2.png"
         },
         {
           "id": "RL.1.7-Q3",
@@ -564,7 +593,8 @@
           "hint": "The picture gives us more detail than just 'big.'",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.7/RL.1.7-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.7/RL.1.7-Q3-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.7/RL.1.7-Q3-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RL.1.7/RL.1.7-Q3.png"
         },
         {
           "id": "RL.1.7-Q4",
@@ -580,7 +610,8 @@
           "hint": "Pictures give us extra information the words might not say.",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.7/RL.1.7-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.7/RL.1.7-Q4-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.7/RL.1.7-Q4-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RL.1.7/RL.1.7-Q4.png"
         },
         {
           "id": "RL.1.7-Q5",
@@ -596,7 +627,8 @@
           "hint": "Tears and a broken toy — what feeling does that show?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.7/RL.1.7-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.7/RL.1.7-Q5-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.7/RL.1.7-Q5-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RL.1.7/RL.1.7-Q5.png"
         }
       ]
     },
@@ -620,7 +652,8 @@
           "hint": "What topic do both stories share?",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.9/RL.1.9-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.9/RL.1.9-Q1-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.9/RL.1.9-Q1-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RL.1.9/RL.1.9-Q1.png"
         },
         {
           "id": "RL.1.9-Q2",
@@ -636,7 +669,8 @@
           "hint": "What trait do both characters share?",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.9/RL.1.9-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.9/RL.1.9-Q2-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.9/RL.1.9-Q2-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RL.1.9/RL.1.9-Q2.png"
         },
         {
           "id": "RL.1.9-Q3",
@@ -652,7 +686,8 @@
           "hint": "Where does each animal spend the day?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.9/RL.1.9-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.9/RL.1.9-Q3-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.9/RL.1.9-Q3-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RL.1.9/RL.1.9-Q3.png"
         },
         {
           "id": "RL.1.9-Q4",
@@ -668,7 +703,8 @@
           "hint": "Compare means to find what's similar.",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.9/RL.1.9-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.9/RL.1.9-Q4-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.9/RL.1.9-Q4-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RL.1.9/RL.1.9-Q4.png"
         },
         {
           "id": "RL.1.9-Q5",
@@ -684,7 +720,8 @@
           "hint": "Contrast means to find what's not the same.",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.9/RL.1.9-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.9/RL.1.9-Q5-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.9/RL.1.9-Q5-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RL.1.9/RL.1.9-Q5.png"
         }
       ]
     },
@@ -708,7 +745,8 @@
           "hint": "The first sentence tells you where penguins live.",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.1/RI.1.1-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.1/RI.1.1-Q1-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.1/RI.1.1-Q1-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.1/RI.1.1-Q1.png"
         },
         {
           "id": "RI.1.1-Q2",
@@ -724,7 +762,8 @@
           "hint": "The last sentence tells you who leads.",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.1/RI.1.1-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.1/RI.1.1-Q2-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.1/RI.1.1-Q2-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.1/RI.1.1-Q2.png"
         },
         {
           "id": "RI.1.1-Q3",
@@ -740,7 +779,8 @@
           "hint": "Read the second sentence carefully.",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.1/RI.1.1-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.1/RI.1.1-Q3-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.1/RI.1.1-Q3-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.1/RI.1.1-Q3.png"
         },
         {
           "id": "RI.1.1-Q4",
@@ -756,7 +796,8 @@
           "hint": "Both sentences tell you what dogs need.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.1/RI.1.1-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.1/RI.1.1-Q4-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.1/RI.1.1-Q4-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.1/RI.1.1-Q4.png"
         },
         {
           "id": "RI.1.1-Q5",
@@ -772,7 +813,8 @@
           "hint": "Look at the order: eggs, then what?",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.1/RI.1.1-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.1/RI.1.1-Q5-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.1/RI.1.1-Q5-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.1/RI.1.1-Q5.png"
         }
       ]
     },
@@ -796,7 +838,8 @@
           "hint": "Every sentence is about the same thing — what is it?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.2/RI.1.2-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.2/RI.1.2-Q1-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.2/RI.1.2-Q1-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.2/RI.1.2-Q1.png"
         },
         {
           "id": "RI.1.2-Q2",
@@ -812,7 +855,8 @@
           "hint": "What is every sentence about?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.2/RI.1.2-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.2/RI.1.2-Q2-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.2/RI.1.2-Q2-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.2/RI.1.2-Q2.png"
         },
         {
           "id": "RI.1.2-Q3",
@@ -828,7 +872,8 @@
           "hint": "Which fact was actually in the passage?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.2/RI.1.2-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.2/RI.1.2-Q3-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.2/RI.1.2-Q3-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.2/RI.1.2-Q3.png"
         },
         {
           "id": "RI.1.2-Q4",
@@ -844,7 +889,8 @@
           "hint": "All the sentences tell us about the same place.",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.2/RI.1.2-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.2/RI.1.2-Q4-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.2/RI.1.2-Q4-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.2/RI.1.2-Q4.png"
         },
         {
           "id": "RI.1.2-Q5",
@@ -860,7 +906,8 @@
           "hint": "Read the second sentence for a key detail.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.2/RI.1.2-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.2/RI.1.2-Q5-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.2/RI.1.2-Q5-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.2/RI.1.2-Q5.png"
         }
       ]
     },
@@ -884,7 +931,8 @@
           "hint": "What happened first that caused the puddles?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.3/RI.1.3-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.3/RI.1.3-Q1-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.3/RI.1.3-Q1-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.3/RI.1.3-Q1.png"
         },
         {
           "id": "RI.1.3-Q2",
@@ -900,7 +948,8 @@
           "hint": "What does the farmer do that helps the seeds?",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.3/RI.1.3-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.3/RI.1.3-Q2-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.3/RI.1.3-Q2-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.3/RI.1.3-Q2.png"
         },
         {
           "id": "RI.1.3-Q3",
@@ -916,7 +965,8 @@
           "hint": "What happens AFTER they eat a lot?",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.3/RI.1.3-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.3/RI.1.3-Q3-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.3/RI.1.3-Q3-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.3/RI.1.3-Q3.png"
         },
         {
           "id": "RI.1.3-Q4",
@@ -932,7 +982,8 @@
           "hint": "The second sentence tells what he did before.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.3/RI.1.3-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.3/RI.1.3-Q4-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.3/RI.1.3-Q4-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.3/RI.1.3-Q4.png"
         },
         {
           "id": "RI.1.3-Q5",
@@ -948,7 +999,8 @@
           "hint": "Follow the order: eats, then what?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.3/RI.1.3-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.3/RI.1.3-Q5-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.3/RI.1.3-Q5-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.3/RI.1.3-Q5.png"
         }
       ]
     },
@@ -972,7 +1024,8 @@
           "hint": "The first sentence defines the word for you.",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.4/RI.1.4-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.4/RI.1.4-Q4-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.4/RI.1.4-Q4-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.4/RI.1.4-Q4.png"
         },
         {
           "id": "RI.1.4-Q6",
@@ -1014,7 +1067,8 @@
           "hint": "The sentence tells you what echolocation means right after the word — look for 'which means'!",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.4/RI.1.4-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.4/RI.1.4-Q3-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.4/RI.1.4-Q3-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.4/RI.1.4-Q3.png"
         },
         {
           "id": "RI.1.4-Q5",
@@ -1039,7 +1093,8 @@
           "hint": "Think about what each body part does for the animal!",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.4/RI.1.4-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.4/RI.1.4-Q5-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.4/RI.1.4-Q5-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.4/RI.1.4-Q5.png"
         },
         {
           "id": "RI.1.4-Q7",
@@ -1195,7 +1250,8 @@
           "hint": "The table of contents lists chapters and their page numbers.",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.5/RI.1.5-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.5/RI.1.5-Q1-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.5/RI.1.5-Q1-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.5/RI.1.5-Q1.png"
         },
         {
           "id": "RI.1.5-Q2",
@@ -1211,7 +1267,8 @@
           "hint": "Headings are like titles for each section.",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.5/RI.1.5-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.5/RI.1.5-Q2-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.5/RI.1.5-Q2-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.5/RI.1.5-Q2.png"
         },
         {
           "id": "RI.1.5-Q3",
@@ -1227,7 +1284,8 @@
           "hint": "A glossary is like a mini dictionary at the back.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.5/RI.1.5-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.5/RI.1.5-Q3-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.5/RI.1.5-Q3-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.5/RI.1.5-Q3.png"
         },
         {
           "id": "RI.1.5-Q4",
@@ -1243,7 +1301,8 @@
           "hint": "Authors make words bold to show they are important.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.5/RI.1.5-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.5/RI.1.5-Q4-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.5/RI.1.5-Q4-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.5/RI.1.5-Q4.png"
         },
         {
           "id": "RI.1.5-Q5",
@@ -1259,7 +1318,8 @@
           "hint": "Use text features to find topics quickly without reading everything.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.5/RI.1.5-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.5/RI.1.5-Q5-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.5/RI.1.5-Q5-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.5/RI.1.5-Q5.png"
         }
       ]
     },
@@ -1283,7 +1343,8 @@
           "hint": "What extra detail do you see in the picture that the words don't say?",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.6/RI.1.6-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.6/RI.1.6-Q1-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.6/RI.1.6-Q1-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.6/RI.1.6-Q1.png"
         },
         {
           "id": "RI.1.6-Q2",
@@ -1299,7 +1360,8 @@
           "hint": "Pictures let you SEE things — what can you see that's hard to describe?",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.6/RI.1.6-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.6/RI.1.6-Q2-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.6/RI.1.6-Q2-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.6/RI.1.6-Q2.png"
         },
         {
           "id": "RI.1.6-Q3",
@@ -1315,7 +1377,8 @@
           "hint": "The words didn't mention the color — where did you learn that?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.6/RI.1.6-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.6/RI.1.6-Q3-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.6/RI.1.6-Q3-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.6/RI.1.6-Q3.png"
         },
         {
           "id": "RI.1.6-Q4",
@@ -1331,7 +1394,8 @@
           "hint": "Diagrams use pictures AND labels to teach you about parts.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.6/RI.1.6-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.6/RI.1.6-Q4-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.6/RI.1.6-Q4-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.6/RI.1.6-Q4.png"
         },
         {
           "id": "RI.1.6-Q5",
@@ -1347,7 +1411,8 @@
           "hint": "The picture shows details about what 'old' looks like.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.6/RI.1.6-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.6/RI.1.6-Q5-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.6/RI.1.6-Q5-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.6/RI.1.6-Q5.png"
         }
       ]
     },
@@ -1371,7 +1436,8 @@
           "hint": "Snow and bare trees are clues about which season.",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.7/RI.1.7-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.7/RI.1.7-Q1-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.7/RI.1.7-Q1-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.7/RI.1.7-Q1.png"
         },
         {
           "id": "RI.1.7-Q2",
@@ -1387,7 +1453,8 @@
           "hint": "The picture shows you an example of healthy eating.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.7/RI.1.7-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.7/RI.1.7-Q2-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.7/RI.1.7-Q2-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.7/RI.1.7-Q2.png"
         },
         {
           "id": "RI.1.7-Q3",
@@ -1403,7 +1470,8 @@
           "hint": "Maps show locations — where things are.",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.7/RI.1.7-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.7/RI.1.7-Q3-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.7/RI.1.7-Q3-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.7/RI.1.7-Q3.png"
         },
         {
           "id": "RI.1.7-Q4",
@@ -1419,7 +1487,8 @@
           "hint": "Arrows show direction and order — what happens first, next, last.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.7/RI.1.7-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.7/RI.1.7-Q4-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.7/RI.1.7-Q4-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.7/RI.1.7-Q4.png"
         },
         {
           "id": "RI.1.7-Q5",
@@ -1435,7 +1504,8 @@
           "hint": "Pictures in informational books have a purpose — they teach!",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.7/RI.1.7-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.7/RI.1.7-Q5-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.7/RI.1.7-Q5-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.7/RI.1.7-Q5.png"
         }
       ]
     },
@@ -1459,7 +1529,8 @@
           "hint": "The author gives a reason WHY — look for it after the first sentence.",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.8/RI.1.8-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.8/RI.1.8-Q1-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.8/RI.1.8-Q1-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.8/RI.1.8-Q1.png"
         },
         {
           "id": "RI.1.8-Q2",
@@ -1475,7 +1546,8 @@
           "hint": "The author lists reasons after saying dogs are great pets.",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.8/RI.1.8-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.8/RI.1.8-Q2-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.8/RI.1.8-Q2-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.8/RI.1.8-Q2.png"
         },
         {
           "id": "RI.1.8-Q3",
@@ -1491,7 +1563,8 @@
           "hint": "The point is the main thing the author wants you to believe.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.8/RI.1.8-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.8/RI.1.8-Q3-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.8/RI.1.8-Q3-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.8/RI.1.8-Q3.png"
         },
         {
           "id": "RI.1.8-Q4",
@@ -1507,7 +1580,8 @@
           "hint": "The second sentence gives the reasons.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.8/RI.1.8-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.8/RI.1.8-Q4-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.8/RI.1.8-Q4-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.8/RI.1.8-Q4.png"
         },
         {
           "id": "RI.1.8-Q5",
@@ -1523,7 +1597,8 @@
           "hint": "What GOOD things does the author say happen when you read?",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.8/RI.1.8-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.8/RI.1.8-Q5-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.8/RI.1.8-Q5-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.8/RI.1.8-Q5.png"
         }
       ]
     },
@@ -1547,7 +1622,8 @@
           "hint": "Walks and exercise — are those similar?",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.9/RI.1.9-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.9/RI.1.9-Q1-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.9/RI.1.9-Q1-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.9/RI.1.9-Q1.png"
         },
         {
           "id": "RI.1.9-Q2",
@@ -1563,7 +1639,8 @@
           "hint": "Both books tell us something the sun does — so it must be important.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.9/RI.1.9-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.9/RI.1.9-Q2-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.9/RI.1.9-Q2-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.9/RI.1.9-Q2.png"
         },
         {
           "id": "RI.1.9-Q3",
@@ -1579,7 +1656,8 @@
           "hint": "One animal lives with people, the other doesn't.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.9/RI.1.9-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.9/RI.1.9-Q3-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.9/RI.1.9-Q3-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.9/RI.1.9-Q3.png"
         },
         {
           "id": "RI.1.9-Q4",
@@ -1595,7 +1673,8 @@
           "hint": "What topic do they share?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.9/RI.1.9-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.9/RI.1.9-Q4-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.9/RI.1.9-Q4-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.9/RI.1.9-Q4.png"
         },
         {
           "id": "RI.1.9-Q5",
@@ -1611,7 +1690,8 @@
           "hint": "Comparing means finding what's alike and different.",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.9/RI.1.9-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.9/RI.1.9-Q5-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.9/RI.1.9-Q5-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.9/RI.1.9-Q5.png"
         }
       ]
     },
@@ -1635,7 +1715,8 @@
           "hint": "Look at the first letter of this question!",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.1a/RF.1.1a-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.1a/RF.1.1a-Q1-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.1a/RF.1.1a-Q1-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.1a/RF.1.1a-Q1.png"
         },
         {
           "id": "RF.1.1a-Q2",
@@ -1651,7 +1732,8 @@
           "hint": "What mark goes at the very end?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.1a/RF.1.1a-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.1a/RF.1.1a-Q2-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.1a/RF.1.1a-Q2-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.1a/RF.1.1a-Q2.png"
         },
         {
           "id": "RF.1.1a-Q3",
@@ -1667,7 +1749,8 @@
           "hint": "Capital letter at the start + period at the end = sentence.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.1a/RF.1.1a-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.1a/RF.1.1a-Q3-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.1a/RF.1.1a-Q3-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.1a/RF.1.1a-Q3.png"
         },
         {
           "id": "RF.1.1a-Q4",
@@ -1683,7 +1766,8 @@
           "hint": "Every sentence begins with a capital letter.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.1a/RF.1.1a-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.1a/RF.1.1a-Q4-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.1a/RF.1.1a-Q4-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.1a/RF.1.1a-Q4.png"
         },
         {
           "id": "RF.1.1a-Q5",
@@ -1699,7 +1783,8 @@
           "hint": "A sentence needs to make sense, start with a capital, and end with punctuation.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.1a/RF.1.1a-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.1a/RF.1.1a-Q5-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.1a/RF.1.1a-Q5-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.1a/RF.1.1a-Q5.png"
         }
       ]
     },
@@ -1846,7 +1931,8 @@
             "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/phonemes/short_a.mp3",
             "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/phonemes/m.mp3",
             "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/phonemes/s.mp3"
-          ]
+          ],
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.2c/RF.1.2c-Q1.png"
         },
         {
           "id": "RF.1.2c-Q2",
@@ -1868,7 +1954,8 @@
             "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/phonemes/short_i.mp3",
             "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/phonemes/b.mp3",
             "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/phonemes/g.mp3"
-          ]
+          ],
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.2c/RF.1.2c-Q2.png"
         },
         {
           "id": "RF.1.2c-Q3",
@@ -1890,7 +1977,8 @@
             "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/phonemes/short_u.mp3",
             "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/phonemes/p.mp3",
             "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/phonemes/t.mp3"
-          ]
+          ],
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.2c/RF.1.2c-Q3.png"
         },
         {
           "id": "RF.1.2c-Q4",
@@ -1906,7 +1994,8 @@
           "hint": "Say 'top' and 'ten' — do they start the same?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2c/RF.1.2c-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2c/RF.1.2c-Q4-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2c/RF.1.2c-Q4-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.2c/RF.1.2c-Q4.png"
         },
         {
           "id": "RF.1.2c-Q5",
@@ -1922,7 +2011,8 @@
           "hint": "Cat has /a/ in the middle. Which other word has /a/?",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2c/RF.1.2c-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2c/RF.1.2c-Q5-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2c/RF.1.2c-Q5-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.2c/RF.1.2c-Q5.png"
         }
       ]
     },
@@ -1946,7 +2036,8 @@
           "hint": "C-A-T: /k/ /a/ /t/ — count each sound.",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2d/RF.1.2d-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2d/RF.1.2d-Q1-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2d/RF.1.2d-Q1-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.2d/RF.1.2d-Q1.png"
         },
         {
           "id": "RF.1.2d-Q2",
@@ -1962,7 +2053,8 @@
           "hint": "'Sh' makes ONE sound: /sh/ /i/ /p/ = 3 sounds.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2d/RF.1.2d-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2d/RF.1.2d-Q2-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2d/RF.1.2d-Q2-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.2d/RF.1.2d-Q2.png"
         },
         {
           "id": "RF.1.2d-Q3",
@@ -1978,7 +2070,8 @@
           "hint": "Say 'fun' very slowly and listen to each sound.",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2d/RF.1.2d-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2d/RF.1.2d-Q3-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2d/RF.1.2d-Q3-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.2d/RF.1.2d-Q3.png"
         },
         {
           "id": "RF.1.2d-Q4",
@@ -1994,7 +2087,8 @@
           "hint": "/s/ /t/ /o/ /p/ — each letter makes its own sound here.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2d/RF.1.2d-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2d/RF.1.2d-Q4-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2d/RF.1.2d-Q4-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.2d/RF.1.2d-Q4.png"
         },
         {
           "id": "RF.1.2d-Q5",
@@ -2010,7 +2104,8 @@
           "hint": "'Th' makes ONE sound together, so: /th/ /e/ /m/ = 3 sounds.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2d/RF.1.2d-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2d/RF.1.2d-Q5-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2d/RF.1.2d-Q5-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.2d/RF.1.2d-Q5.png"
         }
       ]
     },
@@ -2034,7 +2129,8 @@
           "hint": "Exclamation points mean strong feelings!",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4b/RF.1.4b-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4b/RF.1.4b-Q1-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4b/RF.1.4b-Q1-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.4b/RF.1.4b-Q1.png"
         },
         {
           "id": "RF.1.4b-Q2",
@@ -2050,7 +2146,8 @@
           "hint": "Try asking 'Really?' — hear how your voice goes up?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4b/RF.1.4b-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4b/RF.1.4b-Q2-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4b/RF.1.4b-Q2-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.4b/RF.1.4b-Q2.png"
         },
         {
           "id": "RF.1.4b-Q3",
@@ -2066,7 +2163,8 @@
           "hint": "Read like you're telling someone a story.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4b/RF.1.4b-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4b/RF.1.4b-Q3-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4b/RF.1.4b-Q3-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.4b/RF.1.4b-Q3.png"
         },
         {
           "id": "RF.1.4b-Q4",
@@ -2082,7 +2180,8 @@
           "hint": "The mouse is crying for help — that sounds scared!",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4b/RF.1.4b-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4b/RF.1.4b-Q4-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4b/RF.1.4b-Q4-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.4b/RF.1.4b-Q4.png"
         },
         {
           "id": "RF.1.4b-Q5",
@@ -2098,7 +2197,8 @@
           "hint": "Expression means making your voice match what's happening.",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4b/RF.1.4b-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4b/RF.1.4b-Q5-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4b/RF.1.4b-Q5-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.4b/RF.1.4b-Q5.png"
         }
       ]
     },
@@ -2131,7 +2231,8 @@
           "hint": "Where do birds usually fly over?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4c/RF.1.4c-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4c/RF.1.4c-Q1-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4c/RF.1.4c-Q1-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.4c/RF.1.4c-Q1.png"
         },
         {
           "id": "RF.1.4c-Q2",
@@ -2147,7 +2248,8 @@
           "hint": "Good readers go back and fix mistakes so the sentence makes sense.",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4c/RF.1.4c-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4c/RF.1.4c-Q2-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4c/RF.1.4c-Q2-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.4c/RF.1.4c-Q2.png"
         },
         {
           "id": "RF.1.4c-Q3",
@@ -2172,7 +2274,8 @@
           "hint": "What do people drink?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4c/RF.1.4c-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4c/RF.1.4c-Q3-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4c/RF.1.4c-Q3-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.4c/RF.1.4c-Q3.png"
         },
         {
           "id": "RF.1.4c-Q4",
@@ -2188,7 +2291,8 @@
           "hint": "Good readers check: 'Does that make sense?' and try again.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4c/RF.1.4c-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4c/RF.1.4c-Q4-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4c/RF.1.4c-Q4-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.4c/RF.1.4c-Q4.png"
         },
         {
           "id": "RF.1.4c-Q5",
@@ -2212,7 +2316,8 @@
           "hint": "Think about what the sun is like — does it give light?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4c/RF.1.4c-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4c/RF.1.4c-Q5-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4c/RF.1.4c-Q5-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.4c/RF.1.4c-Q5.png"
         }
       ]
     },
@@ -2236,7 +2341,8 @@
           "hint": "Think about baseball and think about animals that fly at night.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4/L.1.4-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4/L.1.4-Q3-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4/L.1.4-Q3-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.4/L.1.4-Q3.png"
         },
         {
           "id": "L.1.4-Q6",
@@ -2323,7 +2429,8 @@
           "hint": "Teach + er = one who teaches.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4b/L.1.4b-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4b/L.1.4b-Q4-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4b/L.1.4b-Q4-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.4b/L.1.4b-Q4.png"
         },
         {
           "id": "L.1.4b-Q6",
@@ -2373,7 +2480,8 @@
           "hint": "Take away the -ing. What's left?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4c/L.1.4c-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4c/L.1.4c-Q1-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4c/L.1.4c-Q1-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.4c/L.1.4c-Q1.png"
         },
         {
           "id": "L.1.4c-Q2",
@@ -2389,7 +2497,8 @@
           "hint": "Take away the -ed ending.",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4c/L.1.4c-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4c/L.1.4c-Q2-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4c/L.1.4c-Q2-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.4c/L.1.4c-Q2.png"
         },
         {
           "id": "L.1.4c-Q3",
@@ -2405,7 +2514,8 @@
           "hint": "Which group keeps 'look' as the base and just adds endings?",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4c/L.1.4c-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4c/L.1.4c-Q3-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4c/L.1.4c-Q3-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.4c/L.1.4c-Q3.png"
         },
         {
           "id": "L.1.4c-Q4",
@@ -2421,7 +2531,8 @@
           "hint": "Remove the -s to find the root.",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4c/L.1.4c-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4c/L.1.4c-Q4-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4c/L.1.4c-Q4-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.4c/L.1.4c-Q4.png"
         },
         {
           "id": "L.1.4c-Q5",
@@ -2437,7 +2548,8 @@
           "hint": "What word is hiding inside all three words?",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4c/L.1.4c-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4c/L.1.4c-Q5-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4c/L.1.4c-Q5-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.4c/L.1.4c-Q5.png"
         }
       ]
     },
@@ -2461,7 +2573,8 @@
           "hint": "If hot means very warm, the opposite would be very not warm.",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5/L.1.5-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5/L.1.5-Q1-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5/L.1.5-Q1-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.5/L.1.5-Q1.png"
         },
         {
           "id": "L.1.5-Q2",
@@ -2477,7 +2590,8 @@
           "hint": "Big and large both describe something that is not small.",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5/L.1.5-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5/L.1.5-Q2-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5/L.1.5-Q2-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.5/L.1.5-Q2.png"
         },
         {
           "id": "L.1.5-Q3",
@@ -2493,7 +2607,8 @@
           "hint": "Fast means quick. The opposite would be...not quick.",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5/L.1.5-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5/L.1.5-Q3-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5/L.1.5-Q3-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.5/L.1.5-Q3.png"
         },
         {
           "id": "L.1.5-Q4",
@@ -2509,7 +2624,8 @@
           "hint": "Which one is a living creature?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5/L.1.5-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5/L.1.5-Q4-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5/L.1.5-Q4-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.5/L.1.5-Q4.png"
         },
         {
           "id": "L.1.5-Q5",
@@ -2543,7 +2659,8 @@
           "hint": "Fruits grow on trees or vines and you can eat them!",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5/L.1.5-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5/L.1.5-Q5-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5/L.1.5-Q5-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.5/L.1.5-Q5.png"
         }
       ]
     },
@@ -2567,7 +2684,8 @@
           "hint": "What do all four have in common?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5a/L.1.5a-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5a/L.1.5a-Q2-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5a/L.1.5a-Q2-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.5a/L.1.5a-Q2.png"
         },
         {
           "id": "L.1.5a-Q4",
@@ -2583,7 +2701,8 @@
           "hint": "You wear all of these — what category is that?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5a/L.1.5a-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5a/L.1.5a-Q4-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5a/L.1.5a-Q4-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.5a/L.1.5a-Q4.png"
         },
         {
           "id": "L.1.5a-Q5",
@@ -2599,7 +2718,8 @@
           "hint": "Car, bus, and train are all types of transportation. What else is?",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5a/L.1.5a-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5a/L.1.5a-Q5-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5a/L.1.5a-Q5-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.5a/L.1.5a-Q5.png"
         },
         {
           "id": "L.1.5a-Q6",
@@ -2655,7 +2775,8 @@
           "hint": "Think about what makes a dog special compared to other animals.",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5b/L.1.5b-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5b/L.1.5b-Q1-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5b/L.1.5b-Q1-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.5b/L.1.5b-Q1.png"
         },
         {
           "id": "L.1.5b-Q2",
@@ -2671,7 +2792,8 @@
           "hint": "Think about what apples look like.",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5b/L.1.5b-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5b/L.1.5b-Q2-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5b/L.1.5b-Q2-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.5b/L.1.5b-Q2.png"
         },
         {
           "id": "L.1.5b-Q3",
@@ -2687,7 +2809,8 @@
           "hint": "What do people use a hammer for?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5b/L.1.5b-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5b/L.1.5b-Q3-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5b/L.1.5b-Q3-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.5b/L.1.5b-Q3.png"
         },
         {
           "id": "L.1.5b-Q4",
@@ -2703,7 +2826,8 @@
           "hint": "What makes penguins different from most birds?",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5b/L.1.5b-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5b/L.1.5b-Q4-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5b/L.1.5b-Q4-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.5b/L.1.5b-Q4.png"
         },
         {
           "id": "L.1.5b-Q5",
@@ -2719,7 +2843,8 @@
           "hint": "What is a fire truck's special job?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5b/L.1.5b-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5b/L.1.5b-Q5-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5b/L.1.5b-Q5-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.5b/L.1.5b-Q5.png"
         }
       ]
     },
@@ -2743,7 +2868,8 @@
           "hint": "Cozy means warm and comfortable. Which one feels like that?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5c/L.1.5c-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5c/L.1.5c-Q1-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5c/L.1.5c-Q1-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.5c/L.1.5c-Q1.png"
         },
         {
           "id": "L.1.5c-Q2",
@@ -2759,7 +2885,8 @@
           "hint": "Crunchy means it makes a sound when you bite it.",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5c/L.1.5c-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5c/L.1.5c-Q2-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5c/L.1.5c-Q2-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.5c/L.1.5c-Q2.png"
         },
         {
           "id": "L.1.5c-Q3",
@@ -2775,7 +2902,8 @@
           "hint": "Chilly means a little cold. Where would you feel cold?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5c/L.1.5c-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5c/L.1.5c-Q3-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5c/L.1.5c-Q3-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.5c/L.1.5c-Q3.png"
         },
         {
           "id": "L.1.5c-Q4",
@@ -2791,7 +2919,8 @@
           "hint": "Enormous means very, very big.",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5c/L.1.5c-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5c/L.1.5c-Q4-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5c/L.1.5c-Q4-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.5c/L.1.5c-Q4.png"
         },
         {
           "id": "L.1.5c-Q5",
@@ -2807,7 +2936,8 @@
           "hint": "Proud means feeling good about something you did.",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5c/L.1.5c-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5c/L.1.5c-Q5-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5c/L.1.5c-Q5-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.5c/L.1.5c-Q5.png"
         }
       ]
     },
@@ -2831,7 +2961,8 @@
           "hint": "Gigantic means really, really big — even bigger than big.",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5d/L.1.5d-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5d/L.1.5d-Q1-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5d/L.1.5d-Q1-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.5d/L.1.5d-Q1.png"
         },
         {
           "id": "L.1.5d-Q2",
@@ -2847,7 +2978,8 @@
           "ordered": true,
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5d/L.1.5d-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5d/L.1.5d-Q2-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5d/L.1.5d-Q2-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.5d/L.1.5d-Q2.png"
         },
         {
           "id": "L.1.5d-Q3",
@@ -2863,7 +2995,8 @@
           "hint": "Walking is medium speed. What's faster?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5d/L.1.5d-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5d/L.1.5d-Q3-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5d/L.1.5d-Q3-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.5d/L.1.5d-Q3.png"
         },
         {
           "id": "L.1.5d-Q4",
@@ -2879,7 +3012,8 @@
           "hint": "Thrilled means extremely happy — even more than just happy.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5d/L.1.5d-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5d/L.1.5d-Q4-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5d/L.1.5d-Q4-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.5d/L.1.5d-Q4.png"
         },
         {
           "id": "L.1.5d-Q5",
@@ -2895,7 +3029,8 @@
           "ordered": true,
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5d/L.1.5d-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5d/L.1.5d-Q5-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5d/L.1.5d-Q5-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.5d/L.1.5d-Q5.png"
         }
       ]
     },
@@ -2930,7 +3065,8 @@
           "hint": "Elephants are very big. Which word means very big?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.6/L.1.6-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.6/L.1.6-Q1-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.6/L.1.6-Q1-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.6/L.1.6-Q1.png"
         },
         {
           "id": "L.1.6-Q2",
@@ -2946,7 +3082,8 @@
           "hint": "'I wore a coat BECAUSE it was cold.' Because gives the reason.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.6/L.1.6-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.6/L.1.6-Q2-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.6/L.1.6-Q2-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.6/L.1.6-Q2.png"
         },
         {
           "id": "L.1.6-Q3",
@@ -2973,7 +3110,8 @@
           "hint": "Getting a new puppy is a happy thing!",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.6/L.1.6-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.6/L.1.6-Q3-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.6/L.1.6-Q3-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.6/L.1.6-Q3.png"
         },
         {
           "id": "L.1.6-Q4",
@@ -2989,7 +3127,8 @@
           "hint": "'I wanted ice cream. However, the store was closed.' — this means BUT.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.6/L.1.6-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.6/L.1.6-Q4-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.6/L.1.6-Q4-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.6/L.1.6-Q4.png"
         },
         {
           "id": "L.1.6-Q5",
@@ -3005,7 +3144,8 @@
           "hint": "Beautiful describes something — it needs a noun after it.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.6/L.1.6-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.6/L.1.6-Q5-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.6/L.1.6-Q5-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.6/L.1.6-Q5.png"
         }
       ]
     }

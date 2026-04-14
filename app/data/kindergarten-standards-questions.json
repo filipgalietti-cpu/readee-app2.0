@@ -24,7 +24,8 @@
           "hint": "Look at the second sentence — what did Max play fetch with?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.1/RL.K.1-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.1/RL.K.1-Q1-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.1/RL.K.1-Q1-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.1/RL.K.1-Q1.png"
         },
         {
           "id": "RL.K.1-Q2",
@@ -40,7 +41,8 @@
           "hint": "Read the end of the second sentence carefully!",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.1/RL.K.1-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.1/RL.K.1-Q2-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.1/RL.K.1-Q2-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.1/RL.K.1-Q2.png"
         },
         {
           "id": "RL.K.1-Q3",
@@ -56,7 +58,8 @@
           "hint": "The story tells you a number — what is it?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.1/RL.K.1-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.1/RL.K.1-Q3-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.1/RL.K.1-Q3-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.1/RL.K.1-Q3.png"
         },
         {
           "id": "RL.K.1-Q4",
@@ -72,7 +75,8 @@
           "hint": "The second sentence describes what the kitten looked like.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.1/RL.K.1-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.1/RL.K.1-Q4-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.1/RL.K.1-Q4-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.1/RL.K.1-Q4.png"
         },
         {
           "id": "RL.K.1-Q5",
@@ -88,7 +92,8 @@
           "hint": "Look at the very first word of the story!",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.1/RL.K.1-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.1/RL.K.1-Q5-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.1/RL.K.1-Q5-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.1/RL.K.1-Q5.png"
         }
       ]
     },
@@ -119,7 +124,8 @@
             "/audio/kindergarten/RL.K.2-q1-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.2/RL.K.2-Q1-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.2/RL.K.2-Q1.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.2/RL.K.2-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.2/RL.K.2-Q1.png"
         },
         {
           "id": "RL.K.2-Q2",
@@ -142,7 +148,8 @@
             "/audio/kindergarten/RL.K.2-q2-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.2/RL.K.2-Q2-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.2/RL.K.2-Q2.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.2/RL.K.2-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.2/RL.K.2-Q2.png"
         },
         {
           "id": "RL.K.2-Q3",
@@ -165,7 +172,8 @@
             "/audio/kindergarten/RL.K.2-q3-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.2/RL.K.2-Q3-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.2/RL.K.2-Q3.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.2/RL.K.2-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.2/RL.K.2-Q3.png"
         },
         {
           "id": "RL.K.2-Q4",
@@ -188,7 +196,8 @@
             "/audio/kindergarten/RL.K.2-q4-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.2/RL.K.2-Q4-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.2/RL.K.2-Q4.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.2/RL.K.2-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.2/RL.K.2-Q4.png"
         },
         {
           "id": "RL.K.2-Q5",
@@ -211,7 +220,8 @@
             "/audio/kindergarten/RL.K.2-q5-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.2/RL.K.2-Q5-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.2/RL.K.2-Q5.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.2/RL.K.2-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.2/RL.K.2-Q5.png"
         }
       ]
     },
@@ -242,7 +252,8 @@
             "/audio/kindergarten/RL.K.3-q1-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.3/RL.K.3-Q1-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.3/RL.K.3-Q1.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.3/RL.K.3-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.3/RL.K.3-Q1.png"
         },
         {
           "id": "RL.K.3-Q2",
@@ -265,7 +276,8 @@
             "/audio/kindergarten/RL.K.3-q2-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.3/RL.K.3-Q2-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.3/RL.K.3-Q2.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.3/RL.K.3-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.3/RL.K.3-Q2.png"
         },
         {
           "id": "RL.K.3-Q3",
@@ -288,7 +300,8 @@
             "/audio/kindergarten/RL.K.3-q3-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.3/RL.K.3-Q3-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.3/RL.K.3-Q3.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.3/RL.K.3-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.3/RL.K.3-Q3.png"
         },
         {
           "id": "RL.K.3-Q4",
@@ -311,7 +324,8 @@
             "/audio/kindergarten/RL.K.3-q4-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.3/RL.K.3-Q4-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.3/RL.K.3-Q4.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.3/RL.K.3-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.3/RL.K.3-Q4.png"
         },
         {
           "id": "RL.K.3-Q5",
@@ -334,7 +348,8 @@
             "/audio/kindergarten/RL.K.3-q5-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.3/RL.K.3-Q5-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.3/RL.K.3-Q5.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.3/RL.K.3-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.3/RL.K.3-Q5.png"
         }
       ]
     },
@@ -365,7 +380,8 @@
             "/audio/kindergarten/RL.K.4-q1-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.4/RL.K.4-Q1-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.4/RL.K.4-Q1.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.4/RL.K.4-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.4/RL.K.4-Q1.png"
         },
         {
           "id": "RL.K.4-Q2",
@@ -388,7 +404,8 @@
             "/audio/kindergarten/RL.K.4-q2-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.4/RL.K.4-Q2-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.4/RL.K.4-Q2.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.4/RL.K.4-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.4/RL.K.4-Q2.png"
         },
         {
           "id": "RL.K.4-Q3",
@@ -411,7 +428,8 @@
             "/audio/kindergarten/RL.K.4-q3-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.4/RL.K.4-Q3-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.4/RL.K.4-Q3.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.4/RL.K.4-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.4/RL.K.4-Q3.png"
         },
         {
           "id": "RL.K.4-Q4",
@@ -434,7 +452,8 @@
             "/audio/kindergarten/RL.K.4-q4-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.4/RL.K.4-Q4-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.4/RL.K.4-Q4.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.4/RL.K.4-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.4/RL.K.4-Q4.png"
         },
         {
           "id": "RL.K.4-Q5",
@@ -457,7 +476,8 @@
             "/audio/kindergarten/RL.K.4-q5-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.4/RL.K.4-Q5-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.4/RL.K.4-Q5.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.4/RL.K.4-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.4/RL.K.4-Q5.png"
         }
       ]
     },
@@ -499,7 +519,8 @@
             "Twinkle, twinkle, little star",
             "A boy found a puppy.",
             "Humpty Dumpty sat on a wall"
-          ]
+          ],
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.5/RL.K.5-Q1.png"
         },
         {
           "id": "RL.K.5-Q2",
@@ -522,7 +543,8 @@
             "/audio/kindergarten/RL.K.5-q2-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.5/RL.K.5-Q2-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.5/RL.K.5-Q2.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.5/RL.K.5-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.5/RL.K.5-Q2.png"
         },
         {
           "id": "RL.K.5-Q3",
@@ -544,7 +566,8 @@
             "/audio/kindergarten/RL.K.5-q3-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.5/RL.K.5-Q3-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.5/RL.K.5-Q3.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.5/RL.K.5-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.5/RL.K.5-Q3.png"
         },
         {
           "id": "RL.K.5-Q4",
@@ -567,7 +590,8 @@
             "/audio/kindergarten/RL.K.5-q4-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.5/RL.K.5-Q4-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.5/RL.K.5-Q4.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.5/RL.K.5-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.5/RL.K.5-Q4.png"
         },
         {
           "id": "RL.K.5-Q5",
@@ -590,7 +614,8 @@
             "/audio/kindergarten/RL.K.5-q5-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.5/RL.K.5-Q5-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.5/RL.K.5-Q5.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.5/RL.K.5-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.5/RL.K.5-Q5.png"
         }
       ]
     },
@@ -620,7 +645,8 @@
             "/audio/kindergarten/RL.K.6-q1-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.6/RL.K.6-Q1-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.6/RL.K.6-Q1.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.6/RL.K.6-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.6/RL.K.6-Q1.png"
         },
         {
           "id": "RL.K.6-Q2",
@@ -642,7 +668,8 @@
             "/audio/kindergarten/RL.K.6-q2-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.6/RL.K.6-Q2-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.6/RL.K.6-Q2.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.6/RL.K.6-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.6/RL.K.6-Q2.png"
         },
         {
           "id": "RL.K.6-Q3",
@@ -665,7 +692,8 @@
             "/audio/kindergarten/RL.K.6-q3-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.6/RL.K.6-Q3-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.6/RL.K.6-Q3.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.6/RL.K.6-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.6/RL.K.6-Q3.png"
         },
         {
           "id": "RL.K.6-Q4",
@@ -687,7 +715,8 @@
             "/audio/kindergarten/RL.K.6-q4-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.6/RL.K.6-Q4-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.6/RL.K.6-Q4.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.6/RL.K.6-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.6/RL.K.6-Q4.png"
         },
         {
           "id": "RL.K.6-Q5",
@@ -710,7 +739,8 @@
             "/audio/kindergarten/RL.K.6-q5-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.6/RL.K.6-Q5-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.6/RL.K.6-Q5.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.6/RL.K.6-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.6/RL.K.6-Q5.png"
         }
       ]
     },
@@ -741,7 +771,8 @@
             "/audio/kindergarten/RL.K.7-q1-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.7/RL.K.7-Q1-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.7/RL.K.7-Q1.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.7/RL.K.7-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.7/RL.K.7-Q1.png"
         },
         {
           "id": "RL.K.7-Q2",
@@ -764,7 +795,8 @@
             "/audio/kindergarten/RL.K.7-q2-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.7/RL.K.7-Q2-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.7/RL.K.7-Q2.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.7/RL.K.7-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.7/RL.K.7-Q2.png"
         },
         {
           "id": "RL.K.7-Q3",
@@ -787,7 +819,8 @@
             "/audio/kindergarten/RL.K.7-q3-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.7/RL.K.7-Q3-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.7/RL.K.7-Q3.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.7/RL.K.7-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.7/RL.K.7-Q3.png"
         },
         {
           "id": "RL.K.7-Q4",
@@ -810,7 +843,8 @@
             "/audio/kindergarten/RL.K.7-q4-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.7/RL.K.7-Q4-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.7/RL.K.7-Q4.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.7/RL.K.7-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.7/RL.K.7-Q4.png"
         },
         {
           "id": "RL.K.7-Q5",
@@ -832,7 +866,8 @@
             "/audio/kindergarten/RL.K.7-q5-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.7/RL.K.7-Q5-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.7/RL.K.7-Q5.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.7/RL.K.7-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.7/RL.K.7-Q5.png"
         }
       ]
     },
@@ -863,7 +898,8 @@
             "/audio/kindergarten/RL.K.9-q1-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.9/RL.K.9-Q1-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.9/RL.K.9-Q1.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.9/RL.K.9-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.9/RL.K.9-Q1.png"
         },
         {
           "id": "RL.K.9-Q2",
@@ -886,7 +922,8 @@
             "/audio/kindergarten/RL.K.9-q2-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.9/RL.K.9-Q2-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.9/RL.K.9-Q2.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.9/RL.K.9-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.9/RL.K.9-Q2.png"
         },
         {
           "id": "RL.K.9-Q3",
@@ -909,7 +946,8 @@
             "/audio/kindergarten/RL.K.9-q3-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.9/RL.K.9-Q3-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.9/RL.K.9-Q3.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.9/RL.K.9-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.9/RL.K.9-Q3.png"
         },
         {
           "id": "RL.K.9-Q4",
@@ -932,7 +970,8 @@
             "/audio/kindergarten/RL.K.9-q4-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.9/RL.K.9-Q4-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.9/RL.K.9-Q4.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.9/RL.K.9-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.9/RL.K.9-Q4.png"
         },
         {
           "id": "RL.K.9-Q5",
@@ -955,7 +994,8 @@
             "/audio/kindergarten/RL.K.9-q5-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.9/RL.K.9-Q5-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.9/RL.K.9-Q5.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.9/RL.K.9-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.9/RL.K.9-Q5.png"
         }
       ]
     },
@@ -986,7 +1026,8 @@
             "/audio/kindergarten/RI.K.1-q1-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.1/RI.K.1-Q1-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.1/RI.K.1-Q1.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.1/RI.K.1-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.1/RI.K.1-Q1.png"
         },
         {
           "id": "RI.K.1-Q2",
@@ -1009,7 +1050,8 @@
             "/audio/kindergarten/RI.K.1-q2-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.1/RI.K.1-Q2-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.1/RI.K.1-Q2.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.1/RI.K.1-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.1/RI.K.1-Q2.png"
         },
         {
           "id": "RI.K.1-Q3",
@@ -1032,7 +1074,8 @@
             "/audio/kindergarten/RI.K.1-q3-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.1/RI.K.1-Q3-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.1/RI.K.1-Q3.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.1/RI.K.1-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.1/RI.K.1-Q3.png"
         },
         {
           "id": "RI.K.1-Q4",
@@ -1055,7 +1098,8 @@
             "/audio/kindergarten/RI.K.1-q4-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.1/RI.K.1-Q4-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.1/RI.K.1-Q4.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.1/RI.K.1-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.1/RI.K.1-Q4.png"
         },
         {
           "id": "RI.K.1-Q5",
@@ -1078,7 +1122,8 @@
             "/audio/kindergarten/RI.K.1-q5-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.1/RI.K.1-Q5-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.1/RI.K.1-Q5.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.1/RI.K.1-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.1/RI.K.1-Q5.png"
         }
       ]
     },
@@ -1109,7 +1154,8 @@
             "/audio/kindergarten/RI.K.2-q1-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.2/RI.K.2-Q1-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.2/RI.K.2-Q1.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.2/RI.K.2-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.2/RI.K.2-Q1.png"
         },
         {
           "id": "RI.K.2-Q2",
@@ -1132,7 +1178,8 @@
             "/audio/kindergarten/RI.K.2-q2-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.2/RI.K.2-Q2-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.2/RI.K.2-Q2.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.2/RI.K.2-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.2/RI.K.2-Q2.png"
         },
         {
           "id": "RI.K.2-Q3",
@@ -1155,7 +1202,8 @@
             "/audio/kindergarten/RI.K.2-q3-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.2/RI.K.2-Q3-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.2/RI.K.2-Q3.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.2/RI.K.2-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.2/RI.K.2-Q3.png"
         },
         {
           "id": "RI.K.2-Q4",
@@ -1178,7 +1226,8 @@
             "/audio/kindergarten/RI.K.2-q4-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.2/RI.K.2-Q4-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.2/RI.K.2-Q4.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.2/RI.K.2-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.2/RI.K.2-Q4.png"
         },
         {
           "id": "RI.K.2-Q5",
@@ -1201,7 +1250,8 @@
             "/audio/kindergarten/RI.K.2-q5-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.2/RI.K.2-Q5-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.2/RI.K.2-Q5.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.2/RI.K.2-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.2/RI.K.2-Q5.png"
         }
       ]
     },
@@ -1232,7 +1282,8 @@
             "/audio/kindergarten/RI.K.3-q1-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.3/RI.K.3-Q1-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.3/RI.K.3-Q1.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.3/RI.K.3-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.3/RI.K.3-Q1.png"
         },
         {
           "id": "RI.K.3-Q2",
@@ -1255,7 +1306,8 @@
             "/audio/kindergarten/RI.K.3-q2-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.3/RI.K.3-Q2-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.3/RI.K.3-Q2.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.3/RI.K.3-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.3/RI.K.3-Q2.png"
         },
         {
           "id": "RI.K.3-Q3",
@@ -1278,7 +1330,8 @@
             "/audio/kindergarten/RI.K.3-q3-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.3/RI.K.3-Q3-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.3/RI.K.3-Q3.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.3/RI.K.3-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.3/RI.K.3-Q3.png"
         },
         {
           "id": "RI.K.3-Q4",
@@ -1294,7 +1347,8 @@
           "hint": "Think about what comes NEXT — they sleep all winter. They need energy!",
           "difficulty": 2,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.3/RI.K.3-Q4-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.3/RI.K.3-Q4.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.3/RI.K.3-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.3/RI.K.3-Q4.png"
         },
         {
           "id": "RI.K.3-Q5",
@@ -1317,7 +1371,8 @@
             "/audio/kindergarten/RI.K.3-q5-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.3/RI.K.3-Q5-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.3/RI.K.3-Q5.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.3/RI.K.3-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.3/RI.K.3-Q5.png"
         }
       ]
     },
@@ -1348,7 +1403,8 @@
             "/audio/kindergarten/RI.K.4-q1-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.4/RI.K.4-Q1-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.4/RI.K.4-Q1.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.4/RI.K.4-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.4/RI.K.4-Q1.png"
         },
         {
           "id": "RI.K.4-Q2",
@@ -1371,7 +1427,8 @@
             "/audio/kindergarten/RI.K.4-q2-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.4/RI.K.4-Q2-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.4/RI.K.4-Q2.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.4/RI.K.4-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.4/RI.K.4-Q2.png"
         },
         {
           "id": "RI.K.4-Q3",
@@ -1394,7 +1451,8 @@
             "/audio/kindergarten/RI.K.4-q3-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.4/RI.K.4-Q3-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.4/RI.K.4-Q3.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.4/RI.K.4-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.4/RI.K.4-Q3.png"
         },
         {
           "id": "RI.K.4-Q4",
@@ -1417,7 +1475,8 @@
             "/audio/kindergarten/RI.K.4-q4-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.4/RI.K.4-Q4-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.4/RI.K.4-Q4.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.4/RI.K.4-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.4/RI.K.4-Q4.png"
         },
         {
           "id": "RI.K.4-Q5",
@@ -1440,7 +1499,8 @@
             "/audio/kindergarten/RI.K.4-q5-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.4/RI.K.4-Q5-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.4/RI.K.4-Q5.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.4/RI.K.4-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.4/RI.K.4-Q5.png"
         }
       ]
     },
@@ -1473,7 +1533,8 @@
           "hint": "The book name is on the front, the author's full name is on the title page inside, and the summary is on the back!",
           "difficulty": 1,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q1-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q1.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.5/RI.K.5-Q1.png"
         },
         {
           "id": "RI.K.5-Q2",
@@ -1489,7 +1550,8 @@
           "hint": "She turned the book over — the back tells you what the book is about!",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q2-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q2-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.5/RI.K.5-Q2.png"
         },
         {
           "id": "RI.K.5-Q3",
@@ -1505,7 +1567,8 @@
           "hint": "The page inside that shows the book's name and the author is called the title page!",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q3-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q3-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.5/RI.K.5-Q3.png"
         },
         {
           "id": "RI.K.5-Q4",
@@ -1530,7 +1593,8 @@
           "hint": "The front shows the picture and title, the inside page lists the author, and the back describes the book!",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q4-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q4-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.5/RI.K.5-Q4.png"
         },
         {
           "id": "RI.K.5-Q5",
@@ -1546,7 +1610,8 @@
           "hint": "The author's name is on the title page inside the book!",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q5-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q5-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.5/RI.K.5-Q5.png"
         },
         {
           "id": "RI.K.5-Q6",
@@ -1701,7 +1766,8 @@
             "/audio/kindergarten/RI.K.6-q1-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.6/RI.K.6-Q1-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.6/RI.K.6-Q1.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.6/RI.K.6-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.6/RI.K.6-Q1.png"
         },
         {
           "id": "RI.K.6-Q2",
@@ -1723,7 +1789,8 @@
             "/audio/kindergarten/RI.K.6-q2-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.6/RI.K.6-Q2-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.6/RI.K.6-Q2.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.6/RI.K.6-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.6/RI.K.6-Q2.png"
         },
         {
           "id": "RI.K.6-Q3",
@@ -1746,7 +1813,8 @@
             "/audio/kindergarten/RI.K.6-q3-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.6/RI.K.6-Q3-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.6/RI.K.6-Q3.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.6/RI.K.6-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.6/RI.K.6-Q3.png"
         },
         {
           "id": "RI.K.6-Q4",
@@ -1768,7 +1836,8 @@
             "/audio/kindergarten/RI.K.6-q4-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.6/RI.K.6-Q4-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.6/RI.K.6-Q4.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.6/RI.K.6-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.6/RI.K.6-Q4.png"
         },
         {
           "id": "RI.K.6-Q5",
@@ -1790,7 +1859,8 @@
             "/audio/kindergarten/RI.K.6-q5-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.6/RI.K.6-Q5-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.6/RI.K.6-Q5.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.6/RI.K.6-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.6/RI.K.6-Q5.png"
         }
       ]
     },
@@ -1821,7 +1891,8 @@
             "/audio/kindergarten/RI.K.7-q1-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.7/RI.K.7-Q1-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.7/RI.K.7-Q1.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.7/RI.K.7-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.7/RI.K.7-Q1.png"
         },
         {
           "id": "RI.K.7-Q2",
@@ -1844,7 +1915,8 @@
             "/audio/kindergarten/RI.K.7-q2-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.7/RI.K.7-Q2-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.7/RI.K.7-Q2.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.7/RI.K.7-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.7/RI.K.7-Q2.png"
         },
         {
           "id": "RI.K.7-Q3",
@@ -1867,7 +1939,8 @@
             "/audio/kindergarten/RI.K.7-q3-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.7/RI.K.7-Q3-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.7/RI.K.7-Q3.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.7/RI.K.7-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.7/RI.K.7-Q3.png"
         },
         {
           "id": "RI.K.7-Q4",
@@ -1890,7 +1963,8 @@
             "/audio/kindergarten/RI.K.7-q4-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.7/RI.K.7-Q4-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.7/RI.K.7-Q4.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.7/RI.K.7-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.7/RI.K.7-Q4.png"
         },
         {
           "id": "RI.K.7-Q5",
@@ -1913,7 +1987,8 @@
             "/audio/kindergarten/RI.K.7-q5-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.7/RI.K.7-Q5-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.7/RI.K.7-Q5.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.7/RI.K.7-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.7/RI.K.7-Q5.png"
         }
       ]
     },
@@ -1944,7 +2019,8 @@
             "/audio/kindergarten/RI.K.8-q1-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.8/RI.K.8-Q1-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.8/RI.K.8-Q1.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.8/RI.K.8-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.8/RI.K.8-Q1.png"
         },
         {
           "id": "RI.K.8-Q2",
@@ -1967,7 +2043,8 @@
             "/audio/kindergarten/RI.K.8-q2-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.8/RI.K.8-Q2-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.8/RI.K.8-Q2.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.8/RI.K.8-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.8/RI.K.8-Q2.png"
         },
         {
           "id": "RI.K.8-Q3",
@@ -1990,7 +2067,8 @@
             "/audio/kindergarten/RI.K.8-q3-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.8/RI.K.8-Q3-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.8/RI.K.8-Q3.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.8/RI.K.8-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.8/RI.K.8-Q3.png"
         },
         {
           "id": "RI.K.8-Q4",
@@ -2013,7 +2091,8 @@
             "/audio/kindergarten/RI.K.8-q4-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.8/RI.K.8-Q4-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.8/RI.K.8-Q4.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.8/RI.K.8-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.8/RI.K.8-Q4.png"
         },
         {
           "id": "RI.K.8-Q5",
@@ -2036,7 +2115,8 @@
             "/audio/kindergarten/RI.K.8-q5-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.8/RI.K.8-Q5-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.8/RI.K.8-Q5.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.8/RI.K.8-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.8/RI.K.8-Q5.png"
         }
       ]
     },
@@ -2067,7 +2147,8 @@
             "/audio/kindergarten/RI.K.9-q1-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.9/RI.K.9-Q1-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.9/RI.K.9-Q1.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.9/RI.K.9-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.9/RI.K.9-Q1.png"
         },
         {
           "id": "RI.K.9-Q2",
@@ -2090,7 +2171,8 @@
             "/audio/kindergarten/RI.K.9-q2-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.9/RI.K.9-Q2-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.9/RI.K.9-Q2.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.9/RI.K.9-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.9/RI.K.9-Q2.png"
         },
         {
           "id": "RI.K.9-Q3",
@@ -2113,7 +2195,8 @@
             "/audio/kindergarten/RI.K.9-q3-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.9/RI.K.9-Q3-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.9/RI.K.9-Q3.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.9/RI.K.9-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.9/RI.K.9-Q3.png"
         },
         {
           "id": "RI.K.9-Q4",
@@ -2136,7 +2219,8 @@
             "/audio/kindergarten/RI.K.9-q4-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.9/RI.K.9-Q4-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.9/RI.K.9-Q4.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.9/RI.K.9-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.9/RI.K.9-Q4.png"
         },
         {
           "id": "RI.K.9-Q5",
@@ -2159,7 +2243,8 @@
             "/audio/kindergarten/RI.K.9-q5-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.9/RI.K.9-Q5-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.9/RI.K.9-Q5.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.9/RI.K.9-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.9/RI.K.9-Q5.png"
         }
       ]
     },
@@ -2189,7 +2274,8 @@
             "/audio/kindergarten/RF.K.1a-q1-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q1-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q1.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.1a/RF.K.1a-Q1.png"
         },
         {
           "id": "RF.K.1a-Q2",
@@ -2211,7 +2297,8 @@
             "/audio/kindergarten/RF.K.1a-q2-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q2-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q2.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.1a/RF.K.1a-Q2.png"
         },
         {
           "id": "RF.K.1a-Q3",
@@ -2233,7 +2320,8 @@
             "/audio/kindergarten/RF.K.1a-q3-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q3-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q3.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.1a/RF.K.1a-Q3.png"
         },
         {
           "id": "RF.K.1a-Q4",
@@ -2255,7 +2343,8 @@
             "/audio/kindergarten/RF.K.1a-q4-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q4-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q4.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.1a/RF.K.1a-Q4.png"
         },
         {
           "id": "RF.K.1a-Q5",
@@ -2277,7 +2366,8 @@
             "/audio/kindergarten/RF.K.1a-q5-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q5-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q5.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.1a/RF.K.1a-Q5.png"
         },
         {
           "id": "RF.K.1a-Q6",
@@ -2298,7 +2388,8 @@
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q6.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q6-hint.mp3",
           "sentence_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q6-sentence.mp3",
-          "choices": []
+          "choices": [],
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.1a/RF.K.1a-Q6.png"
         },
         {
           "id": "RF.K.1a-Q7",
@@ -2317,7 +2408,8 @@
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q7.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q7-hint.mp3",
           "sentence_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q7-sentence.mp3",
-          "choices": []
+          "choices": [],
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.1a/RF.K.1a-Q7.png"
         },
         {
           "id": "RF.K.1a-Q8",
@@ -2336,7 +2428,8 @@
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q8.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q8-hint.mp3",
           "sentence_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q8-sentence.mp3",
-          "choices": []
+          "choices": [],
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.1a/RF.K.1a-Q8.png"
         }
       ]
     },
@@ -2367,7 +2460,8 @@
           "hint": "The word 'cat' uses the letters C, A, and T in that order!",
           "difficulty": 1,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1b/RF.K.1b-Q1-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1b/RF.K.1b-Q1.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1b/RF.K.1b-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.1b/RF.K.1b-Q1.png"
         },
         {
           "id": "RF.K.1b-Q2",
@@ -2389,7 +2483,8 @@
             "/audio/kindergarten/RF.K.1b-q2-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1b/RF.K.1b-Q2-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1b/RF.K.1b-Q2.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1b/RF.K.1b-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.1b/RF.K.1b-Q2.png"
         },
         {
           "id": "RF.K.1b-Q3",
@@ -2414,7 +2509,8 @@
           "hint": "Sound it out: /d/ - /o/ - /g/. What letters make those sounds?",
           "difficulty": 1,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1b/RF.K.1b-Q3-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1b/RF.K.1b-Q3.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1b/RF.K.1b-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.1b/RF.K.1b-Q3.png"
         },
         {
           "id": "RF.K.1b-Q4",
@@ -2436,7 +2532,8 @@
             "/audio/kindergarten/RF.K.1b-q4-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1b/RF.K.1b-Q4-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1b/RF.K.1b-Q4.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1b/RF.K.1b-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.1b/RF.K.1b-Q4.png"
         },
         {
           "id": "RF.K.1b-Q5",
@@ -2458,7 +2555,8 @@
             "/audio/kindergarten/RF.K.1b-q5-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1b/RF.K.1b-Q5-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1b/RF.K.1b-Q5.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1b/RF.K.1b-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.1b/RF.K.1b-Q5.png"
         }
       ]
     },
@@ -2488,7 +2586,8 @@
             "/audio/kindergarten/RF.K.1c-q1-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1c/RF.K.1c-Q1-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1c/RF.K.1c-Q1.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1c/RF.K.1c-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.1c/RF.K.1c-Q1.png"
         },
         {
           "id": "RF.K.1c-Q2",
@@ -2510,7 +2609,8 @@
             "/audio/kindergarten/RF.K.1c-q2-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1c/RF.K.1c-Q2-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1c/RF.K.1c-Q2.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1c/RF.K.1c-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.1c/RF.K.1c-Q2.png"
         },
         {
           "id": "RF.K.1c-Q3",
@@ -2532,7 +2632,8 @@
             "/audio/kindergarten/RF.K.1c-q3-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1c/RF.K.1c-Q3-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1c/RF.K.1c-Q3.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1c/RF.K.1c-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.1c/RF.K.1c-Q3.png"
         },
         {
           "id": "RF.K.1c-Q4",
@@ -2554,7 +2655,8 @@
             "/audio/kindergarten/RF.K.1c-q4-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1c/RF.K.1c-Q4-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1c/RF.K.1c-Q4.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1c/RF.K.1c-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.1c/RF.K.1c-Q4.png"
         },
         {
           "id": "RF.K.1c-Q5",
@@ -2565,7 +2667,8 @@
           "hint": "Put a space between each word!",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1c/RF.K.1c-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1c/RF.K.1c-Q5-hint.mp3"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1c/RF.K.1c-Q5-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.1c/RF.K.1c-Q5.png"
         }
       ]
     },
@@ -2595,7 +2698,8 @@
             "/audio/kindergarten/RF.K.1d-q1-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1d/RF.K.1d-Q1-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1d/RF.K.1d-Q1.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1d/RF.K.1d-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.1d/RF.K.1d-Q1.png"
         },
         {
           "id": "RF.K.1d-Q2",
@@ -2617,7 +2721,8 @@
             "/audio/kindergarten/RF.K.1d-q2-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1d/RF.K.1d-Q2-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1d/RF.K.1d-Q2.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1d/RF.K.1d-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.1d/RF.K.1d-Q2.png"
         },
         {
           "id": "RF.K.1d-Q3",
@@ -2648,7 +2753,8 @@
           "hint": "Match the big letter to the same small letter!",
           "difficulty": 2,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1d/RF.K.1d-Q3-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1d/RF.K.1d-Q3.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1d/RF.K.1d-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.1d/RF.K.1d-Q3.png"
         },
         {
           "id": "RF.K.1d-Q4",
@@ -2670,7 +2776,8 @@
             "/audio/kindergarten/RF.K.1d-q4-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1d/RF.K.1d-Q4-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1d/RF.K.1d-Q4.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1d/RF.K.1d-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.1d/RF.K.1d-Q4.png"
         },
         {
           "id": "RF.K.1d-Q5",
@@ -2692,7 +2799,8 @@
             "/audio/kindergarten/RF.K.1d-q5-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1d/RF.K.1d-Q5-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1d/RF.K.1d-Q5.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1d/RF.K.1d-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.1d/RF.K.1d-Q5.png"
         }
       ]
     },
@@ -2722,7 +2830,8 @@
             "/audio/kindergarten/RF.K.2a-q1-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2a/RF.K.2a-Q1-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2a/RF.K.2a-Q1.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2a/RF.K.2a-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.2a/RF.K.2a-Q1.png"
         },
         {
           "id": "RF.K.2a-Q2",
@@ -2744,7 +2853,8 @@
             "/audio/kindergarten/RF.K.2a-q2-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2a/RF.K.2a-Q2-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2a/RF.K.2a-Q2.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2a/RF.K.2a-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.2a/RF.K.2a-Q2.png"
         },
         {
           "id": "RF.K.2a-Q3",
@@ -2766,7 +2876,8 @@
             "/audio/kindergarten/RF.K.2a-q3-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2a/RF.K.2a-Q3-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2a/RF.K.2a-Q3.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2a/RF.K.2a-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.2a/RF.K.2a-Q3.png"
         },
         {
           "id": "RF.K.2a-Q4",
@@ -2791,7 +2902,8 @@
           "hint": "Rhyming words end with the same sound!",
           "difficulty": 1,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2a/RF.K.2a-Q4-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2a/RF.K.2a-Q4.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2a/RF.K.2a-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.2a/RF.K.2a-Q4.png"
         },
         {
           "id": "RF.K.2a-Q5",
@@ -2813,7 +2925,8 @@
             "/audio/kindergarten/RF.K.2a-q5-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2a/RF.K.2a-Q5-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2a/RF.K.2a-Q5.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2a/RF.K.2a-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.2a/RF.K.2a-Q5.png"
         }
       ]
     },
@@ -2843,7 +2956,8 @@
             "/audio/kindergarten/RF.K.2b-q1-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2b/RF.K.2b-Q1-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2b/RF.K.2b-Q1.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2b/RF.K.2b-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.2b/RF.K.2b-Q1.png"
         },
         {
           "id": "RF.K.2b-Q2",
@@ -2865,7 +2979,8 @@
             "/audio/kindergarten/RF.K.2b-q2-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2b/RF.K.2b-Q2-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2b/RF.K.2b-Q2.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2b/RF.K.2b-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.2b/RF.K.2b-Q2.png"
         },
         {
           "id": "RF.K.2b-Q3",
@@ -2887,7 +3002,8 @@
             "/audio/kindergarten/RF.K.2b-q3-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2b/RF.K.2b-Q3-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2b/RF.K.2b-Q3.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2b/RF.K.2b-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.2b/RF.K.2b-Q3.png"
         },
         {
           "id": "RF.K.2b-Q4",
@@ -2909,7 +3025,8 @@
             "/audio/kindergarten/RF.K.2b-q4-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2b/RF.K.2b-Q4-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2b/RF.K.2b-Q4.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2b/RF.K.2b-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.2b/RF.K.2b-Q4.png"
         },
         {
           "id": "RF.K.2b-Q5",
@@ -2931,7 +3048,8 @@
             "/audio/kindergarten/RF.K.2b-q5-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2b/RF.K.2b-Q5-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2b/RF.K.2b-Q5.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2b/RF.K.2b-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.2b/RF.K.2b-Q5.png"
         }
       ]
     },
@@ -3074,7 +3192,8 @@
             "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/phonemes/p.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2d/RF.K.2d-Q1-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2d/RF.K.2d-Q1.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2d/RF.K.2d-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.2d/RF.K.2d-Q1.png"
         },
         {
           "id": "RF.K.2d-Q2",
@@ -3096,7 +3215,8 @@
             "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/phonemes/short_u.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2d/RF.K.2d-Q2-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2d/RF.K.2d-Q2.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2d/RF.K.2d-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.2d/RF.K.2d-Q2.png"
         },
         {
           "id": "RF.K.2d-Q3",
@@ -3118,7 +3238,8 @@
             "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/phonemes/p.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2d/RF.K.2d-Q3-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2d/RF.K.2d-Q3.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2d/RF.K.2d-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.2d/RF.K.2d-Q3.png"
         },
         {
           "id": "RF.K.2d-Q4",
@@ -3140,7 +3261,8 @@
             "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/phonemes/n.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2d/RF.K.2d-Q4-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2d/RF.K.2d-Q4.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2d/RF.K.2d-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.2d/RF.K.2d-Q4.png"
         },
         {
           "id": "RF.K.2d-Q5",
@@ -3162,7 +3284,8 @@
             "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/phonemes/d.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2d/RF.K.2d-Q5-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2d/RF.K.2d-Q5.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2d/RF.K.2d-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.2d/RF.K.2d-Q5.png"
         }
       ]
     },
@@ -3186,7 +3309,8 @@
           "hint": "Take away the 'c' sound and put in a 'b' sound: b-at!",
           "difficulty": 1,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2e/RF.K.2e-Q1-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2e/RF.K.2e-Q1.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2e/RF.K.2e-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.2e/RF.K.2e-Q1.png"
         },
         {
           "id": "RF.K.2e-Q2",
@@ -3202,7 +3326,8 @@
           "hint": "Replace the /h/ with /t/: t-op!",
           "difficulty": 1,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2e/RF.K.2e-Q2-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2e/RF.K.2e-Q2.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2e/RF.K.2e-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.2e/RF.K.2e-Q2.png"
         },
         {
           "id": "RF.K.2e-Q3",
@@ -3218,7 +3343,8 @@
           "hint": "Keep the 'm' and 'n' but change the middle sound to /e/!",
           "difficulty": 2,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2e/RF.K.2e-Q3-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2e/RF.K.2e-Q3.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2e/RF.K.2e-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.2e/RF.K.2e-Q3.png"
         },
         {
           "id": "RF.K.2e-Q4",
@@ -3234,7 +3360,8 @@
           "hint": "Keep 'si-' and change the ending to /p/!",
           "difficulty": 2,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2e/RF.K.2e-Q4-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2e/RF.K.2e-Q4.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2e/RF.K.2e-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.2e/RF.K.2e-Q4.png"
         },
         {
           "id": "RF.K.2e-Q5",
@@ -3250,7 +3377,8 @@
           "hint": "Put /s/ right before 'top': s-top!",
           "difficulty": 2,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2e/RF.K.2e-Q5-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2e/RF.K.2e-Q5.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2e/RF.K.2e-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.2e/RF.K.2e-Q5.png"
         }
       ]
     },
@@ -3289,7 +3417,8 @@
           "hint": "Think of a word that starts with each letter to hear the sound!",
           "difficulty": 1,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3a/RF.K.3a-Q1-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3a/RF.K.3a-Q1.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3a/RF.K.3a-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.3a/RF.K.3a-Q1.png"
         }
       ]
     },
@@ -3320,7 +3449,8 @@
             "/audio/kindergarten/RF.K.3b-q1-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3b/RF.K.3b-Q1-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3b/RF.K.3b-Q1.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3b/RF.K.3b-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.3b/RF.K.3b-Q1.png"
         },
         {
           "id": "RF.K.3b-Q2",
@@ -3342,7 +3472,8 @@
             "/audio/kindergarten/RF.K.3b-q2-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3b/RF.K.3b-Q2-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3b/RF.K.3b-Q2.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3b/RF.K.3b-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.3b/RF.K.3b-Q2.png"
         },
         {
           "id": "RF.K.3b-Q3",
@@ -3364,7 +3495,8 @@
             "/audio/kindergarten/RF.K.3b-q3-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3b/RF.K.3b-Q3-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3b/RF.K.3b-Q3.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3b/RF.K.3b-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.3b/RF.K.3b-Q3.png"
         },
         {
           "id": "RF.K.3b-Q4",
@@ -3386,7 +3518,8 @@
             "/audio/kindergarten/RF.K.3b-q4-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3b/RF.K.3b-Q4-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3b/RF.K.3b-Q4.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3b/RF.K.3b-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.3b/RF.K.3b-Q4.png"
         },
         {
           "id": "RF.K.3b-Q5",
@@ -3408,7 +3541,8 @@
             "/audio/kindergarten/RF.K.3b-q5-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3b/RF.K.3b-Q5-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3b/RF.K.3b-Q5.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3b/RF.K.3b-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.3b/RF.K.3b-Q5.png"
         }
       ]
     },
@@ -3439,7 +3573,8 @@
           "hint": "Which little word fits before 'moon'?",
           "difficulty": 1,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3c/RF.K.3c-Q1-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3c/RF.K.3c-Q1.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3c/RF.K.3c-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.3c/RF.K.3c-Q1.png"
         },
         {
           "id": "RF.K.3c-Q2",
@@ -3462,7 +3597,8 @@
           "hint": "This common word is spelled: d-o!",
           "difficulty": 1,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3c/RF.K.3c-Q2-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3c/RF.K.3c-Q2.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3c/RF.K.3c-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.3c/RF.K.3c-Q2.png"
         },
         {
           "id": "RF.K.3c-Q3",
@@ -3484,7 +3620,8 @@
           "hint": "The word 'is' is spelled: i-s!",
           "difficulty": 1,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3c/RF.K.3c-Q3-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3c/RF.K.3c-Q3.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3c/RF.K.3c-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.3c/RF.K.3c-Q3.png"
         },
         {
           "id": "RF.K.3c-Q4",
@@ -3506,7 +3643,8 @@
           "hint": "The word 'you' is spelled: y-o-u!",
           "difficulty": 1,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3c/RF.K.3c-Q4-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3c/RF.K.3c-Q4.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3c/RF.K.3c-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.3c/RF.K.3c-Q4.png"
         },
         {
           "id": "RF.K.3c-Q5",
@@ -3529,7 +3667,8 @@
             "/audio/kindergarten/RF.K.3c-q5-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3c/RF.K.3c-Q5-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3c/RF.K.3c-Q5.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3c/RF.K.3c-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.3c/RF.K.3c-Q5.png"
         }
       ]
     },
@@ -3562,7 +3701,8 @@
           "hint": "Look at each word carefully — which two words share the most letters?",
           "difficulty": 1,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3d/RF.K.3d-Q1-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3d/RF.K.3d-Q1.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3d/RF.K.3d-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.3d/RF.K.3d-Q1.png"
         },
         {
           "id": "RF.K.3d-Q3",
@@ -3582,7 +3722,8 @@
             "/audio/kindergarten/RF.K.3d-q3-choice2.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3d/RF.K.3d-Q3-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3d/RF.K.3d-Q3.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3d/RF.K.3d-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.3d/RF.K.3d-Q3.png"
         },
         {
           "id": "RF.K.3d-Q5",
@@ -3604,7 +3745,8 @@
             "/audio/kindergarten/RF.K.3d-q5-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3d/RF.K.3d-Q5-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3d/RF.K.3d-Q5.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3d/RF.K.3d-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.3d/RF.K.3d-Q5.png"
         }
       ]
     },
@@ -3635,7 +3777,8 @@
             "/audio/kindergarten/RF.K.4-q1-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.4/RF.K.4-Q1-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.4/RF.K.4-Q1.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.4/RF.K.4-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.4/RF.K.4-Q1.png"
         },
         {
           "id": "RF.K.4-Q2",
@@ -3658,7 +3801,8 @@
             "/audio/kindergarten/RF.K.4-q2-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.4/RF.K.4-Q2-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.4/RF.K.4-Q2.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.4/RF.K.4-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.4/RF.K.4-Q2.png"
         },
         {
           "id": "RF.K.4-Q3",
@@ -3681,7 +3825,8 @@
             "/audio/kindergarten/RF.K.4-q3-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.4/RF.K.4-Q3-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.4/RF.K.4-Q3.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.4/RF.K.4-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.4/RF.K.4-Q3.png"
         },
         {
           "id": "RF.K.4-Q4",
@@ -3704,7 +3849,8 @@
             "/audio/kindergarten/RF.K.4-q4-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.4/RF.K.4-Q4-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.4/RF.K.4-Q4.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.4/RF.K.4-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.4/RF.K.4-Q4.png"
         },
         {
           "id": "RF.K.4-Q5",
@@ -3727,7 +3873,8 @@
             "/audio/kindergarten/RF.K.4-q5-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.4/RF.K.4-Q5-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.4/RF.K.4-Q5.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.4/RF.K.4-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.4/RF.K.4-Q5.png"
         }
       ]
     },
@@ -3757,7 +3904,8 @@
             "/audio/kindergarten/K.L.1-q1-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.1/K.L.1-Q1-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.1/K.L.1-Q1.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.1/K.L.1-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/K.L.1/K.L.1-Q1.png"
         },
         {
           "id": "K.L.1-Q2",
@@ -3779,7 +3927,8 @@
             "/audio/kindergarten/K.L.1-q2-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.1/K.L.1-Q2-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.1/K.L.1-Q2.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.1/K.L.1-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/K.L.1/K.L.1-Q2.png"
         },
         {
           "id": "K.L.1-Q3",
@@ -3801,7 +3950,8 @@
             "/audio/kindergarten/K.L.1-q3-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.1/K.L.1-Q3-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.1/K.L.1-Q3.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.1/K.L.1-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/K.L.1/K.L.1-Q3.png"
         },
         {
           "id": "K.L.1-Q4",
@@ -3823,7 +3973,8 @@
             "/audio/kindergarten/K.L.1-q4-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.1/K.L.1-Q4-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.1/K.L.1-Q4.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.1/K.L.1-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/K.L.1/K.L.1-Q4.png"
         },
         {
           "id": "K.L.1-Q5",
@@ -3845,7 +3996,8 @@
             "/audio/kindergarten/K.L.1-q5-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.1/K.L.1-Q5-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.1/K.L.1-Q5.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.1/K.L.1-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/K.L.1/K.L.1-Q5.png"
         }
       ]
     },
@@ -3875,7 +4027,8 @@
           "hint": "The first word of a sentence starts with a CAPITAL letter!",
           "difficulty": 1,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.2/K.L.2-Q1-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.2/K.L.2-Q1.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.2/K.L.2-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/K.L.2/K.L.2-Q1.png"
         },
         {
           "id": "K.L.2-Q2",
@@ -3899,7 +4052,8 @@
           "hint": "A telling sentence (statement) ends with a period!",
           "difficulty": 1,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.2/K.L.2-Q2-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.2/K.L.2-Q2.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.2/K.L.2-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/K.L.2/K.L.2-Q2.png"
         },
         {
           "id": "K.L.2-Q3",
@@ -3921,7 +4075,8 @@
             "/audio/kindergarten/K.L.2-q3-choice4.mp3"
           ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.2/K.L.2-Q3-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.2/K.L.2-Q3.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.2/K.L.2-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/K.L.2/K.L.2-Q3.png"
         },
         {
           "id": "K.L.2-Q4",
@@ -3937,7 +4092,8 @@
           "hint": "People's names ALWAYS start with a capital letter!",
           "difficulty": 1,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.2/K.L.2-Q4-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.2/K.L.2-Q4.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.2/K.L.2-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/K.L.2/K.L.2-Q4.png"
         }
       ]
     },
@@ -3961,7 +4117,8 @@
           "hint": "The ending '-ed' means something already happened — in the past!",
           "difficulty": 2,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.4/K.L.4-Q1-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.4/K.L.4-Q1.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.4/K.L.4-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/K.L.4/K.L.4-Q1.png"
         },
         {
           "id": "K.L.4-Q2",
@@ -3977,7 +4134,8 @@
           "hint": "Un- means 'not.' So unhappy means NOT happy!",
           "difficulty": 2,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.4/K.L.4-Q2-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.4/K.L.4-Q2.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.4/K.L.4-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/K.L.4/K.L.4-Q2.png"
         },
         {
           "id": "K.L.4-Q3",
@@ -3993,7 +4151,8 @@
           "hint": "Adding '-s' usually means there is more than one!",
           "difficulty": 1,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.4/K.L.4-Q3-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.4/K.L.4-Q3.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.4/K.L.4-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/K.L.4/K.L.4-Q3.png"
         },
         {
           "id": "K.L.4-Q4",
@@ -4009,7 +4168,8 @@
           "hint": "-ful means 'full of.' So helpful means full of help!",
           "difficulty": 2,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.4/K.L.4-Q4-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.4/K.L.4-Q4.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.4/K.L.4-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/K.L.4/K.L.4-Q4.png"
         },
         {
           "id": "K.L.4-Q5",
@@ -4025,7 +4185,8 @@
           "hint": "-less means 'without.' Careless = without care (not being careful)!",
           "difficulty": 2,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.4/K.L.4-Q5-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.4/K.L.4-Q5.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.4/K.L.4-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/K.L.4/K.L.4-Q5.png"
         }
       ]
     },
@@ -4049,7 +4210,8 @@
           "hint": "These are all things you eat that grow on trees or bushes — they're all types of...",
           "difficulty": 1,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.5/K.L.5-Q1-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.5/K.L.5-Q1.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.5/K.L.5-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/K.L.5/K.L.5-Q1.png"
         },
         {
           "id": "K.L.5-Q2",
@@ -4065,7 +4227,8 @@
           "hint": "Opposites are as different as can be. If something isn't hot, it's...",
           "difficulty": 1,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.5/K.L.5-Q2-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.5/K.L.5-Q2.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.5/K.L.5-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/K.L.5/K.L.5-Q2.png"
         },
         {
           "id": "K.L.5-Q3",
@@ -4081,7 +4244,8 @@
           "hint": "Think of a peacock walking proudly — that's strutting!",
           "difficulty": 2,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.5/K.L.5-Q3-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.5/K.L.5-Q3.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.5/K.L.5-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/K.L.5/K.L.5-Q3.png"
         },
         {
           "id": "K.L.5-Q4",
@@ -4097,7 +4261,8 @@
           "hint": "They are all living creatures — what group do they belong to?",
           "difficulty": 1,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.5/K.L.5-Q4-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.5/K.L.5-Q4.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.5/K.L.5-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/K.L.5/K.L.5-Q4.png"
         },
         {
           "id": "K.L.5-Q5",
@@ -4114,7 +4279,8 @@
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.5/K.L.5-Q5.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.5/K.L.5-Q5-hint.mp3",
-          "sentence_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.5/K.L.5-Q5-sentence.mp3"
+          "sentence_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.5/K.L.5-Q5-sentence.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/K.L.5/K.L.5-Q5.png"
         },
         {
           "id": "K.L.5-Q6",
@@ -4149,7 +4315,8 @@
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.5/K.L.5-Q6.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.5/K.L.5-Q6-hint.mp3",
-          "choices": []
+          "choices": [],
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/K.L.5/K.L.5-Q6.png"
         },
         {
           "id": "K.L.5-Q7",
@@ -4184,7 +4351,8 @@
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.5/K.L.5-Q7.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.5/K.L.5-Q7-hint.mp3",
-          "choices": []
+          "choices": [],
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/K.L.5/K.L.5-Q7.png"
         },
         {
           "id": "K.L.5-Q8",
@@ -4219,7 +4387,8 @@
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.5/K.L.5-Q8.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.5/K.L.5-Q8-hint.mp3",
-          "choices": []
+          "choices": [],
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/K.L.5/K.L.5-Q8.png"
         }
       ]
     },
@@ -4243,7 +4412,8 @@
           "hint": "Think about what you learned from the ocean book!",
           "difficulty": 1,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.6/K.L.6-Q1-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.6/K.L.6-Q1.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.6/K.L.6-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/K.L.6/K.L.6-Q1.png"
         },
         {
           "id": "K.L.6-Q2",
@@ -4259,7 +4429,8 @@
           "hint": "When things are 'in a row,' they make a straight line!",
           "difficulty": 1,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.6/K.L.6-Q2-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.6/K.L.6-Q2.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.6/K.L.6-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/K.L.6/K.L.6-Q2.png"
         },
         {
           "id": "K.L.6-Q3",
@@ -4275,7 +4446,8 @@
           "hint": "Bears go to sleep for the whole winter — that's hibernating!",
           "difficulty": 2,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.6/K.L.6-Q3-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.6/K.L.6-Q3.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.6/K.L.6-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/K.L.6/K.L.6-Q3.png"
         },
         {
           "id": "K.L.6-Q4",
@@ -4291,7 +4463,8 @@
           "hint": "If something is tricky, you really have to think to solve it!",
           "difficulty": 1,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.6/K.L.6-Q4-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.6/K.L.6-Q4.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.6/K.L.6-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/K.L.6/K.L.6-Q4.png"
         },
         {
           "id": "K.L.6-Q5",
@@ -4307,7 +4480,8 @@
           "hint": "Think about what you know about fall — what happens to the trees?",
           "difficulty": 2,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.6/K.L.6-Q5-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.6/K.L.6-Q5.mp3"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.6/K.L.6-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/K.L.6/K.L.6-Q5.png"
         }
       ]
     }
