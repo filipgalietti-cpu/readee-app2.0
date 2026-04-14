@@ -339,9 +339,9 @@ function AddChildrenForm({ userPlan, onDone }: { userPlan: string; onDone: (kids
       <div className="space-y-4">
         {userPlan !== "premium" && (
           <div className="rounded-2xl border border-indigo-200 bg-gradient-to-r from-indigo-50/80 to-violet-50/80 p-4">
-            <p className="text-sm font-semibold text-zinc-900">Family plan option available</p>
+            <p className="text-sm font-semibold text-zinc-900">Unlock the full curriculum</p>
             <p className="text-xs text-zinc-600 mt-1">
-              Free includes 1 reader profile. Readee+ Household unlocks up to 5 reader profiles plus the full curriculum.
+              Free includes starter lessons. Upgrade to Readee+ for all 57 lessons, unlimited practice, and parent analytics.
             </p>
           </div>
         )}
@@ -391,7 +391,7 @@ function AddChildrenForm({ userPlan, onDone }: { userPlan: string; onDone: (kids
       ) : userPlan !== "premium" && (
         <Link href="/upgrade" className="block">
           <div className="w-full py-3 rounded-xl border-2 border-dashed border-indigo-200 bg-indigo-50/50 text-center text-sm font-medium text-indigo-600 hover:border-indigo-300 hover:bg-indigo-50 transition-colors">
-            <Star className="w-4 h-4 inline-block" strokeWidth={1.5} /> Upgrade to Readee+ for up to 5 children
+            <Star className="w-4 h-4 inline-block" strokeWidth={1.5} /> Upgrade to Readee+ for the full curriculum
           </div>
         </Link>
       )}

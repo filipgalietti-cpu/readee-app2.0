@@ -580,7 +580,7 @@ export default function Settings() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-zinc-900 dark:text-slate-100">Readee+ Premium</p>
-                <p className="text-xs text-zinc-500 dark:text-slate-400 mt-0.5">Single household plan: all lessons, unlimited assessments, up to 5 readers.</p>
+                <p className="text-xs text-zinc-500 dark:text-slate-400 mt-0.5">Full access to all lessons, stories, practice, and analytics.</p>
               </div>
               <span className="px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-indigo-100 to-violet-100 text-indigo-700">Active</span>
             </div>
@@ -610,7 +610,7 @@ export default function Settings() {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-semibold text-indigo-900">Readee+ Household — $9.99/mo</p>
-                  <p className="text-xs text-indigo-600 mt-0.5">40+ lessons, unlimited assessments, and up to 5 readers.</p>
+                  <p className="text-xs text-indigo-600 mt-0.5">57 lessons, unlimited practice, all stories, and parent analytics.</p>
                 </div>
                 <span className="px-3 py-1.5 rounded-lg bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-xs font-bold whitespace-nowrap">
                   Upgrade

@@ -4,13 +4,14 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { supabaseBrowser } from "@/lib/supabase/client";
-import { CreditCard, Star, Check, Sparkles, BookOpen, Target, Puzzle, Map, Zap } from "lucide-react";
+import { CreditCard, Star, Check, Sparkles, BookOpen, Target, Puzzle, Map, Zap, ExternalLink } from "lucide-react";
 import SettingsShell from "@/app/_components/SettingsShell";
 import { usePlanStore } from "@/lib/stores/plan-store";
 
 interface BillingData {
   plan: string;
-  display_name: string;
+  stripe_customer_id: string | null;
+  stripe_subscription_id: string | null;
   promo_code: string | null;
   redeemed_at: string | null;
 }
@@ -20,14 +21,15 @@ const PREMIUM_FEATURES = [
   { icon: Target, label: "Unlimited practice questions" },
   { icon: Puzzle, label: "All interactive game types" },
   { icon: Map, label: "Complete reading journey & roadmap" },
-  { icon: Sparkles, label: "Up to 5 reader profiles" },
-  { icon: Zap, label: "Priority support" },
+  { icon: Sparkles, label: "Detailed parent analytics" },
+  { icon: Zap, label: "All 25 stories with comprehension questions" },
 ];
 
 export default function BillingPage() {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [billing, setBilling] = useState<BillingData | null>(null);
+  const [portalLoading, setPortalLoading] = useState(false);
 
   useEffect(() => {
     async function load() {
@@ -37,7 +39,7 @@ export default function BillingPage() {
 
       const { data: profRows } = await supabase
         .from("profiles")
-        .select("display_name, plan")
+        .select("plan, stripe_customer_id, stripe_subscription_id")
         .eq("id", user.id)
         .limit(1);
 
@@ -56,7 +58,8 @@ export default function BillingPage() {
       usePlanStore.getState().setPlan(plan);
       setBilling({
         plan,
-        display_name: prof?.display_name || "User",
+        stripe_customer_id: prof?.stripe_customer_id || null,
+        stripe_subscription_id: prof?.stripe_subscription_id || null,
         promo_code: redemption?.promo_codes?.code || null,
         redeemed_at: redemption?.redeemed_at || null,
       });
@@ -64,6 +67,20 @@ export default function BillingPage() {
     }
     load();
   }, [router]);
+
+  async function handleManageSubscription() {
+    setPortalLoading(true);
+    try {
+      const res = await fetch("/api/billing/portal", { method: "POST" });
+      const data = await res.json();
+      if (data.url) {
+        window.location.href = data.url;
+      }
+    } catch {
+      console.error("Failed to open billing portal");
+    }
+    setPortalLoading(false);
+  }
 
   if (loading || !billing) {
     return (
@@ -76,6 +93,8 @@ export default function BillingPage() {
   }
 
   const isPremium = billing.plan === "premium";
+  const hasStripe = !!billing.stripe_customer_id;
+  const hasPromo = !!billing.promo_code;
   const activatedDate = billing.redeemed_at
     ? new Date(billing.redeemed_at).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })
     : null;
@@ -113,24 +132,45 @@ export default function BillingPage() {
                     {isPremium ? "ACTIVE" : "CURRENT"}
                   </span>
                 </div>
-                {isPremium && activatedDate && (
+                {isPremium && hasPromo && activatedDate && (
                   <p className="text-sm text-violet-600/70 mt-1">Activated on {activatedDate}</p>
                 )}
-                {isPremium && billing.promo_code && (
+                {isPremium && hasPromo && (
                   <p className="text-xs text-violet-500 mt-0.5">Via promo code: {billing.promo_code}</p>
                 )}
               </div>
               {isPremium && <Star className="w-10 h-10 text-violet-400" fill="currentColor" strokeWidth={0} />}
             </div>
 
-            {isPremium ? (
+            {isPremium && hasStripe && (
+              <div className="space-y-3">
+                <div className="rounded-xl bg-white/60 border border-violet-100 p-4">
+                  <p className="text-sm font-medium text-violet-900 mb-1">Subscription Active</p>
+                  <p className="text-xs text-violet-600/70">
+                    Your Readee+ subscription is managed through Stripe. You can update your payment method, change plans, or cancel anytime.
+                  </p>
+                </div>
+                <button
+                  onClick={handleManageSubscription}
+                  disabled={portalLoading}
+                  className="flex items-center justify-center gap-2 w-full py-3 rounded-xl border border-violet-200 text-sm font-semibold text-violet-700 hover:bg-violet-50 transition-colors disabled:opacity-50"
+                >
+                  <ExternalLink className="w-4 h-4" />
+                  {portalLoading ? "Opening..." : "Manage Subscription"}
+                </button>
+              </div>
+            )}
+
+            {isPremium && hasPromo && !hasStripe && (
               <div className="rounded-xl bg-white/60 border border-violet-100 p-4">
-                <p className="text-sm font-medium text-violet-900 mb-1">Lifetime Access</p>
+                <p className="text-sm font-medium text-violet-900 mb-1">Promo Access</p>
                 <p className="text-xs text-violet-600/70">
-                  Your Readee+ plan was activated via promotional code. You have full access to all features with no recurring charges.
+                  Your Readee+ plan was activated via promotional code. You have full access to all features.
                 </p>
               </div>
-            ) : (
+            )}
+
+            {!isPremium && (
               <p className="text-sm text-zinc-500">
                 You&apos;re on the free plan with access to starter lessons. Upgrade to unlock the full curriculum.
               </p>
@@ -169,7 +209,19 @@ export default function BillingPage() {
           {/* Billing History */}
           <section className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
             <h2 className="text-base font-semibold text-zinc-900 mb-4">Billing History</h2>
-            {isPremium && activatedDate ? (
+            {isPremium && hasStripe ? (
+              <div className="rounded-xl bg-zinc-50 border border-zinc-100 p-4 text-center">
+                <p className="text-sm text-zinc-600">View your invoices and payment history in the Stripe portal.</p>
+                <button
+                  onClick={handleManageSubscription}
+                  disabled={portalLoading}
+                  className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-indigo-600 hover:text-indigo-700 transition-colors disabled:opacity-50"
+                >
+                  <ExternalLink className="w-3.5 h-3.5" />
+                  {portalLoading ? "Opening..." : "View in Stripe"}
+                </button>
+              </div>
+            ) : isPremium && hasPromo && activatedDate ? (
               <div className="rounded-xl border border-zinc-100 overflow-hidden">
                 <table className="w-full text-sm">
                   <thead>

@@ -241,7 +241,8 @@ function AnalyticsDashboard({ child }: { child: Child }) {
   const [dateRange, setDateRange] = useState<DateRange>("all");
   const [practiceResults, setPracticeResults] = useState<PracticeResult[]>([]);
   const [loadingData, setLoadingData] = useState(true);
-  const userPlan = usePlanStore((s) => s.plan) ?? "free";
+  const rawPlan = usePlanStore((s) => s.plan);
+  const userPlan = rawPlan ?? "free";
   const fetchPlan = usePlanStore((s) => s.fetch);
   const storeChildren = useChildStore((s) => s.children);
   const childIndex = storeChildren.findIndex((c) => c.id === child.id);
@@ -488,7 +489,7 @@ function AnalyticsDashboard({ child }: { child: Child }) {
       </motion.div>
 
       {/* ═══ Premium Analytics Gate ═══ */}
-      {userPlan !== "premium" ? (
+      {rawPlan !== null && userPlan !== "premium" ? (
         <div className="relative">
           {/* Blurred preview */}
           <div className="select-none pointer-events-none blur-[6px] opacity-70 space-y-6">
