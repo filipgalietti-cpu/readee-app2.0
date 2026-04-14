@@ -1,0 +1,45 @@
+phoneme_id,ipa,type,sound_label,common_spellings,example_words,tts_script,filename
+p01,/p/,consonant,p,"p, pp",pig pat cup,"The sound /p/. P says puh. Like in pig, pat, cup.",p.mp3
+p02,/b/,consonant,b,"b, bb",bat ball cub,"The sound /b/. B says buh. Like in bat, ball, cub.",b.mp3
+p03,/t/,consonant,t,"t, tt",top tap hat,"The sound /t/. T says tuh. Like in top, tap, hat.",t.mp3
+p04,/d/,consonant,d,"d, dd",dog dig bed,"The sound /d/. D says duh. Like in dog, dig, bed.",d.mp3
+p05,/k/,consonant,k,"c, k, ck",cat kite duck,"The sound /k/. C and K say kuh. Like in cat, kite, duck.",k.mp3
+p06,/g/,consonant,g,"g, gg",go big dog,"The sound /g/. G says guh. Like in go, big, dog.",g.mp3
+p07,/f/,consonant,f,"f, ff, ph",fun fish off,"The sound /f/. F says fff. Like in fun, fish, off.",f.mp3
+p08,/v/,consonant,v,"v, ve",van vest live,"The sound /v/. V says vvv. Like in van, vest, live.",v.mp3
+p09,/θ/,consonant,th_unvoiced,"th",thin math path,"The sound /th/. Th says thh. Like in thin, math, path.",th_unvoiced.mp3
+p10,/ð/,consonant,th_voiced,"th",this that the,"The sound /th/. Th says thh. Like in this, that, the.",th_voiced.mp3
+p11,/s/,consonant,s,"s, ss, ce, ci",sun sit miss,"The sound /s/. S says sss. Like in sun, sit, miss.",s.mp3
+p12,/z/,consonant,z,"z, zz, s",zip buzz has,"The sound /z/. Z says zzz. Like in zip, buzz, has.",z.mp3
+p13,/ʃ/,consonant,sh,"sh, ti, ci",ship fish wish,"The sound /sh/. Sh says shh. Like in ship, fish, wish.",sh.mp3
+p14,/ʒ/,consonant,zh,"s, si, ge",treasure vision beige,"The sound /zh/. Like the middle sound in treasure and vision.",zh.mp3
+p15,/tʃ/,consonant,ch,"ch, tch",chip much catch,"The sound /ch/. Ch says chh. Like in chip, much, catch.",ch.mp3
+p16,/dʒ/,consonant,j,"j, g, ge, dge",jam gem judge,"The sound /j/. J says juh. Like in jam, gem, judge.",j.mp3
+p17,/m/,consonant,m,"m, mm",map mom ham,"The sound /m/. M says mmm. Like in map, mom, ham.",m.mp3
+p18,/n/,consonant,n,"n, nn, kn",nap sun know,"The sound /n/. N says nnn. Like in nap, sun, know.",n.mp3
+p19,/ŋ/,consonant,ng,"ng, n",ring song think,"The sound /ng/. Ng says nng. Like in ring, song, think.",ng.mp3
+p20,/l/,consonant,l,"l, ll",lip let ball,"The sound /l/. L says lll. Like in lip, let, ball.",l.mp3
+p21,/r/,consonant,r,"r, rr, wr",run red write,"The sound /r/. R says rrr. Like in run, red, write.",r.mp3
+p22,/w/,consonant,w,"w, wh",wet win whale,"The sound /w/. W says wuh. Like in wet, win, whale.",w.mp3
+p23,/j/,consonant,y,"y",yes yam you,"The sound /y/. Y says yuh. Like in yes, yam, you.",y.mp3
+p24,/h/,consonant,h,"h",hat hop him,"The sound /h/. H says huh. Like in hat, hop, him.",h.mp3
+p25,/æ/,short_vowel,short_a,"a",cat map bag,"The short A sound. A says /æ/ like ah. Like in cat, map, bag.",short_a.mp3
+p26,/ɛ/,short_vowel,short_e,"e, ea",bed pet head,"The short E sound. E says /ɛ/ like eh. Like in bed, pet, head.",short_e.mp3
+p27,/ɪ/,short_vowel,short_i,"i",sit pig big,"The short I sound. I says /ɪ/ like ih. Like in sit, pig, big.",short_i.mp3
+p28,/ɒ/,short_vowel,short_o,"o",hot dog mop,"The short O sound. O says /ɒ/ like oh. Like in hot, dog, mop.",short_o.mp3
+p29,/ʌ/,short_vowel,short_u,"u",cup bus fun,"The short U sound. U says /ʌ/ like uh. Like in cup, bus, fun.",short_u.mp3
+p30,/eɪ/,long_vowel,long_a,"a_e, ai, ay",cake rain play,"The long A sound. A says its name, ay. Like in cake, rain, play.",long_a.mp3
+p31,/iː/,long_vowel,long_e,"e_e, ee, ea, ey",tree meat key,"The long E sound. E says its name, ee. Like in tree, meat, key.",long_e.mp3
+p32,/aɪ/,long_vowel,long_i,"i_e, igh, y",bike night fly,"The long I sound. I says its name, eye. Like in bike, night, fly.",long_i.mp3
+p33,/oʊ/,long_vowel,long_o,"o_e, oa, ow",bone boat snow,"The long O sound. O says its name, oh. Like in bone, boat, snow.",long_o.mp3
+p34,/juː/,long_vowel,long_u,"u_e, ue, ew",cute blue new,"The long U sound. U says its name, you. Like in cute, blue, new.",long_u.mp3
+p35,/uː/,vowel_other,oo_long,"oo, ue, ew",moon food blue,"The /oo/ sound. Like in moon, food, blue.",oo_long.mp3
+p36,/ʊ/,vowel_other,oo_short,"oo, u",book foot put,"The short /oo/ sound. Like in book, foot, put.",oo_short.mp3
+p37,/ɔɪ/,diphthong,oi,"oi, oy",coin boy toy,"The /oi/ sound. Like in coin, boy, toy.",oi.mp3
+p38,/aʊ/,diphthong,ou,"ou, ow",out cow house,"The /ow/ sound. Like in out, cow, house.",ou.mp3
+p39,/ɔː/,vowel_other,aw,"aw, au, al",saw caught ball,"The /aw/ sound. Like in saw, caught, ball.",aw.mp3
+p40,/ɑːr/,r_controlled,ar,"ar",car star farm,"The /ar/ sound. Like in car, star, farm.",ar.mp3
+p41,/ɜːr/,r_controlled,er,"er, ir, ur",her bird turn,"The /er/ sound. Like in her, bird, turn.",er.mp3
+p42,/ɔːr/,r_controlled,or,"or, ore",for more store,"The /or/ sound. Like in for, more, store.",or.mp3
+p43,/ɛər/,r_controlled,air,"air, are, ear",fair care bear,"The /air/ sound. Like in fair, care, bear.",air.mp3
+p44,/ə/,vowel_other,schwa,"a, e, i, o, u",about taken pencil,"The schwa sound. A lazy /uh/ sound. Like the A in about or the E in taken.",schwa.mp3

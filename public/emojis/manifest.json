@@ -1,0 +1,1066 @@
+{
+  "🌀": {
+    "name": "cyclone",
+    "path": "/emojis/indigo/cyclone.svg"
+  },
+  "🌅": {
+    "name": "sunrise",
+    "path": "/emojis/indigo/sunrise.svg"
+  },
+  "🌈": {
+    "name": "rainbow",
+    "path": "/emojis/indigo/rainbow.svg"
+  },
+  "🌊": {
+    "name": "water wave",
+    "path": "/emojis/indigo/water-wave.svg"
+  },
+  "🌋": {
+    "name": "volcano",
+    "path": "/emojis/indigo/volcano.svg"
+  },
+  "🌌": {
+    "name": "milky way",
+    "path": "/emojis/indigo/milky-way.svg"
+  },
+  "🌍": {
+    "name": "globe showing Europe-Africa",
+    "path": "/emojis/indigo/globe-showing-europe-africa.svg"
+  },
+  "🌙": {
+    "name": "crescent moon",
+    "path": "/emojis/indigo/crescent-moon.svg"
+  },
+  "🌞": {
+    "name": "sun with face",
+    "path": "/emojis/indigo/sun-with-face.svg"
+  },
+  "🌟": {
+    "name": "glowing star",
+    "path": "/emojis/indigo/glowing-star.svg"
+  },
+  "🌡": {
+    "name": "thermometer",
+    "path": "/emojis/indigo/thermometer.svg"
+  },
+  "🌤": {
+    "name": "sun behind small cloud",
+    "path": "/emojis/indigo/sun-behind-small-cloud.svg"
+  },
+  "🌧": {
+    "name": "cloud with rain",
+    "path": "/emojis/indigo/cloud-with-rain.svg"
+  },
+  "🌱": {
+    "name": "seedling",
+    "path": "/emojis/indigo/seedling.svg"
+  },
+  "🌲": {
+    "name": "evergreen tree",
+    "path": "/emojis/indigo/evergreen-tree.svg"
+  },
+  "🌳": {
+    "name": "deciduous tree",
+    "path": "/emojis/indigo/deciduous-tree.svg"
+  },
+  "🌸": {
+    "name": "cherry blossom",
+    "path": "/emojis/indigo/cherry-blossom.svg"
+  },
+  "🌺": {
+    "name": "hibiscus",
+    "path": "/emojis/indigo/hibiscus.svg"
+  },
+  "🌻": {
+    "name": "sunflower",
+    "path": "/emojis/indigo/sunflower.svg"
+  },
+  "🌿": {
+    "name": "herb",
+    "path": "/emojis/indigo/herb.svg"
+  },
+  "🍂": {
+    "name": "fallen leaf",
+    "path": "/emojis/indigo/fallen-leaf.svg"
+  },
+  "🍇": {
+    "name": "grapes",
+    "path": "/emojis/indigo/grapes.svg"
+  },
+  "🍊": {
+    "name": "tangerine",
+    "path": "/emojis/indigo/tangerine.svg"
+  },
+  "🍌": {
+    "name": "banana",
+    "path": "/emojis/indigo/banana.svg"
+  },
+  "🍎": {
+    "name": "red apple",
+    "path": "/emojis/indigo/red-apple.svg"
+  },
+  "🍞": {
+    "name": "bread",
+    "path": "/emojis/indigo/bread.svg"
+  },
+  "🍦": {
+    "name": "soft ice cream",
+    "path": "/emojis/indigo/soft-ice-cream.svg"
+  },
+  "🍭": {
+    "name": "lollipop",
+    "path": "/emojis/indigo/lollipop.svg"
+  },
+  "🍰": {
+    "name": "shortcake",
+    "path": "/emojis/indigo/shortcake.svg"
+  },
+  "🍽": {
+    "name": "fork and knife with plate",
+    "path": "/emojis/indigo/fork-and-knife-with-plate.svg"
+  },
+  "🎁": {
+    "name": "wrapped gift",
+    "path": "/emojis/indigo/wrapped-gift.svg"
+  },
+  "🎂": {
+    "name": "birthday cake",
+    "path": "/emojis/indigo/birthday-cake.svg"
+  },
+  "🎉": {
+    "name": "party popper",
+    "path": "/emojis/indigo/party-popper.svg"
+  },
+  "🎒": {
+    "name": "backpack",
+    "path": "/emojis/indigo/backpack.svg"
+  },
+  "🎓": {
+    "name": "graduation cap",
+    "path": "/emojis/indigo/graduation-cap.svg"
+  },
+  "🎤": {
+    "name": "microphone",
+    "path": "/emojis/indigo/microphone.svg"
+  },
+  "🎨": {
+    "name": "artist palette",
+    "path": "/emojis/indigo/artist-palette.svg"
+  },
+  "🎩": {
+    "name": "top hat",
+    "path": "/emojis/indigo/top-hat.svg"
+  },
+  "🎪": {
+    "name": "circus tent",
+    "path": "/emojis/indigo/circus-tent.svg"
+  },
+  "🎬": {
+    "name": "clapper board",
+    "path": "/emojis/indigo/clapper-board.svg"
+  },
+  "🎭": {
+    "name": "performing arts",
+    "path": "/emojis/indigo/performing-arts.svg"
+  },
+  "🎮": {
+    "name": "video game",
+    "path": "/emojis/indigo/video-game.svg"
+  },
+  "🎯": {
+    "name": "bullseye",
+    "path": "/emojis/indigo/bullseye.svg"
+  },
+  "🎵": {
+    "name": "musical note",
+    "path": "/emojis/indigo/musical-note.svg"
+  },
+  "🎶": {
+    "name": "musical notes",
+    "path": "/emojis/indigo/musical-notes.svg"
+  },
+  "🎸": {
+    "name": "guitar",
+    "path": "/emojis/indigo/guitar.svg"
+  },
+  "🎻": {
+    "name": "violin",
+    "path": "/emojis/indigo/violin.svg"
+  },
+  "🏃": {
+    "name": "person running",
+    "path": "/emojis/indigo/person-running.svg"
+  },
+  "🏅": {
+    "name": "sports medal",
+    "path": "/emojis/indigo/sports-medal.svg"
+  },
+  "🏆": {
+    "name": "trophy",
+    "path": "/emojis/indigo/trophy.svg"
+  },
+  "🏈": {
+    "name": "american football",
+    "path": "/emojis/indigo/american-football.svg"
+  },
+  "🏊": {
+    "name": "person swimming",
+    "path": "/emojis/indigo/person-swimming.svg"
+  },
+  "🏔": {
+    "name": "snow-capped mountain",
+    "path": "/emojis/indigo/snow-capped-mountain.svg"
+  },
+  "🏖": {
+    "name": "beach with umbrella",
+    "path": "/emojis/indigo/beach-with-umbrella.svg"
+  },
+  "🏗": {
+    "name": "building construction",
+    "path": "/emojis/indigo/building-construction.svg"
+  },
+  "🏠": {
+    "name": "house",
+    "path": "/emojis/indigo/house.svg"
+  },
+  "🏫": {
+    "name": "school",
+    "path": "/emojis/indigo/school.svg"
+  },
+  "🏰": {
+    "name": "castle",
+    "path": "/emojis/indigo/castle.svg"
+  },
+  "🏴": {
+    "name": "black flag",
+    "path": "/emojis/indigo/black-flag.svg"
+  },
+  "🐀": {
+    "name": "rat",
+    "path": "/emojis/indigo/rat.svg"
+  },
+  "🐂": {
+    "name": "ox",
+    "path": "/emojis/indigo/ox.svg"
+  },
+  "🐈": {
+    "name": "cat",
+    "path": "/emojis/indigo/cat.svg"
+  },
+  "🐉": {
+    "name": "dragon",
+    "path": "/emojis/indigo/dragon.svg"
+  },
+  "🐋": {
+    "name": "whale",
+    "path": "/emojis/indigo/whale.svg"
+  },
+  "🐍": {
+    "name": "snake",
+    "path": "/emojis/indigo/snake.svg"
+  },
+  "🐐": {
+    "name": "goat",
+    "path": "/emojis/indigo/goat.svg"
+  },
+  "🐔": {
+    "name": "chicken",
+    "path": "/emojis/indigo/chicken.svg"
+  },
+  "🐕": {
+    "name": "dog",
+    "path": "/emojis/indigo/dog.svg"
+  },
+  "🐘": {
+    "name": "elephant",
+    "path": "/emojis/indigo/elephant.svg"
+  },
+  "🐙": {
+    "name": "octopus",
+    "path": "/emojis/indigo/octopus.svg"
+  },
+  "🐚": {
+    "name": "spiral shell",
+    "path": "/emojis/indigo/spiral-shell.svg"
+  },
+  "🐛": {
+    "name": "bug",
+    "path": "/emojis/indigo/bug.svg"
+  },
+  "🐜": {
+    "name": "ant",
+    "path": "/emojis/indigo/ant.svg"
+  },
+  "🐝": {
+    "name": "honeybee",
+    "path": "/emojis/indigo/honeybee.svg"
+  },
+  "🐟": {
+    "name": "fish",
+    "path": "/emojis/indigo/fish.svg"
+  },
+  "🐠": {
+    "name": "tropical fish",
+    "path": "/emojis/indigo/tropical-fish.svg"
+  },
+  "🐢": {
+    "name": "turtle",
+    "path": "/emojis/indigo/turtle.svg"
+  },
+  "🐧": {
+    "name": "penguin",
+    "path": "/emojis/indigo/penguin.svg"
+  },
+  "🐭": {
+    "name": "mouse face",
+    "path": "/emojis/indigo/mouse-face.svg"
+  },
+  "🐯": {
+    "name": "tiger face",
+    "path": "/emojis/indigo/tiger-face.svg"
+  },
+  "🐰": {
+    "name": "rabbit face",
+    "path": "/emojis/indigo/rabbit-face.svg"
+  },
+  "🐱": {
+    "name": "cat face",
+    "path": "/emojis/indigo/cat-face.svg"
+  },
+  "🐵": {
+    "name": "monkey face",
+    "path": "/emojis/indigo/monkey-face.svg"
+  },
+  "🐶": {
+    "name": "dog face",
+    "path": "/emojis/indigo/dog-face.svg"
+  },
+  "🐷": {
+    "name": "pig face",
+    "path": "/emojis/indigo/pig-face.svg"
+  },
+  "🐸": {
+    "name": "frog",
+    "path": "/emojis/indigo/frog.svg"
+  },
+  "🐺": {
+    "name": "wolf",
+    "path": "/emojis/indigo/wolf.svg"
+  },
+  "🐻": {
+    "name": "bear",
+    "path": "/emojis/indigo/bear.svg"
+  },
+  "🐾": {
+    "name": "paw prints",
+    "path": "/emojis/indigo/paw-prints.svg"
+  },
+  "🐿": {
+    "name": "chipmunk",
+    "path": "/emojis/indigo/chipmunk.svg"
+  },
+  "👀": {
+    "name": "eyes",
+    "path": "/emojis/indigo/eyes.svg"
+  },
+  "👁": {
+    "name": "eye",
+    "path": "/emojis/indigo/eye.svg"
+  },
+  "👂": {
+    "name": "ear",
+    "path": "/emojis/indigo/ear.svg"
+  },
+  "👄": {
+    "name": "mouth",
+    "path": "/emojis/indigo/mouth.svg"
+  },
+  "👉": {
+    "name": "backhand index pointing right",
+    "path": "/emojis/indigo/backhand-index-pointing-right.svg"
+  },
+  "👋": {
+    "name": "waving hand",
+    "path": "/emojis/indigo/waving-hand.svg"
+  },
+  "👏": {
+    "name": "clapping hands",
+    "path": "/emojis/indigo/clapping-hands.svg"
+  },
+  "👑": {
+    "name": "crown",
+    "path": "/emojis/indigo/crown.svg"
+  },
+  "👔": {
+    "name": "necktie",
+    "path": "/emojis/indigo/necktie.svg"
+  },
+  "👟": {
+    "name": "running shoe",
+    "path": "/emojis/indigo/running-shoe.svg"
+  },
+  "👤": {
+    "name": "bust in silhouette",
+    "path": "/emojis/indigo/bust-in-silhouette.svg"
+  },
+  "👥": {
+    "name": "busts in silhouette",
+    "path": "/emojis/indigo/busts-in-silhouette.svg"
+  },
+  "👦": {
+    "name": "boy",
+    "path": "/emojis/indigo/boy.svg"
+  },
+  "👧": {
+    "name": "girl",
+    "path": "/emojis/indigo/girl.svg"
+  },
+  "👨": {
+    "name": "man",
+    "path": "/emojis/indigo/man.svg"
+  },
+  "👩": {
+    "name": "woman",
+    "path": "/emojis/indigo/woman.svg"
+  },
+  "👵": {
+    "name": "old woman",
+    "path": "/emojis/indigo/old-woman.svg"
+  },
+  "👶": {
+    "name": "baby",
+    "path": "/emojis/indigo/baby.svg"
+  },
+  "💎": {
+    "name": "gem stone",
+    "path": "/emojis/indigo/gem-stone.svg"
+  },
+  "💛": {
+    "name": "yellow heart",
+    "path": "/emojis/indigo/yellow-heart.svg"
+  },
+  "💜": {
+    "name": "purple heart",
+    "path": "/emojis/indigo/purple-heart.svg"
+  },
+  "💡": {
+    "name": "light bulb",
+    "path": "/emojis/indigo/light-bulb.svg"
+  },
+  "💥": {
+    "name": "collision",
+    "path": "/emojis/indigo/collision.svg"
+  },
+  "💧": {
+    "name": "droplet",
+    "path": "/emojis/indigo/droplet.svg"
+  },
+  "💨": {
+    "name": "dashing away",
+    "path": "/emojis/indigo/dashing-away.svg"
+  },
+  "💪": {
+    "name": "flexed biceps",
+    "path": "/emojis/indigo/flexed-biceps.svg"
+  },
+  "💫": {
+    "name": "dizzy",
+    "path": "/emojis/indigo/dizzy.svg"
+  },
+  "💬": {
+    "name": "speech balloon",
+    "path": "/emojis/indigo/speech-balloon.svg"
+  },
+  "💭": {
+    "name": "thought balloon",
+    "path": "/emojis/indigo/thought-balloon.svg"
+  },
+  "💰": {
+    "name": "money bag",
+    "path": "/emojis/indigo/money-bag.svg"
+  },
+  "💻": {
+    "name": "laptop",
+    "path": "/emojis/indigo/laptop.svg"
+  },
+  "💼": {
+    "name": "briefcase",
+    "path": "/emojis/indigo/briefcase.svg"
+  },
+  "📂": {
+    "name": "open file folder",
+    "path": "/emojis/indigo/open-file-folder.svg"
+  },
+  "📄": {
+    "name": "page facing up",
+    "path": "/emojis/indigo/page-facing-up.svg"
+  },
+  "📅": {
+    "name": "calendar",
+    "path": "/emojis/indigo/calendar.svg"
+  },
+  "📈": {
+    "name": "chart increasing",
+    "path": "/emojis/indigo/chart-increasing.svg"
+  },
+  "📊": {
+    "name": "bar chart",
+    "path": "/emojis/indigo/bar-chart.svg"
+  },
+  "📋": {
+    "name": "clipboard",
+    "path": "/emojis/indigo/clipboard.svg"
+  },
+  "📌": {
+    "name": "pushpin",
+    "path": "/emojis/indigo/pushpin.svg"
+  },
+  "📏": {
+    "name": "straight ruler",
+    "path": "/emojis/indigo/straight-ruler.svg"
+  },
+  "📕": {
+    "name": "closed book",
+    "path": "/emojis/indigo/closed-book.svg"
+  },
+  "📖": {
+    "name": "open book",
+    "path": "/emojis/indigo/open-book.svg"
+  },
+  "📗": {
+    "name": "green book",
+    "path": "/emojis/indigo/green-book.svg"
+  },
+  "📘": {
+    "name": "blue book",
+    "path": "/emojis/indigo/blue-book.svg"
+  },
+  "📚": {
+    "name": "books",
+    "path": "/emojis/indigo/books.svg"
+  },
+  "📜": {
+    "name": "scroll",
+    "path": "/emojis/indigo/scroll.svg"
+  },
+  "📝": {
+    "name": "memo",
+    "path": "/emojis/indigo/memo.svg"
+  },
+  "📦": {
+    "name": "package",
+    "path": "/emojis/indigo/package.svg"
+  },
+  "📬": {
+    "name": "open mailbox with raised flag",
+    "path": "/emojis/indigo/open-mailbox-with-raised-flag.svg"
+  },
+  "📰": {
+    "name": "newspaper",
+    "path": "/emojis/indigo/newspaper.svg"
+  },
+  "📷": {
+    "name": "camera",
+    "path": "/emojis/indigo/camera.svg"
+  },
+  "📸": {
+    "name": "camera with flash",
+    "path": "/emojis/indigo/camera-with-flash.svg"
+  },
+  "🔄": {
+    "name": "counterclockwise arrows button",
+    "path": "/emojis/indigo/counterclockwise-arrows-button.svg"
+  },
+  "🔊": {
+    "name": "speaker high volume",
+    "path": "/emojis/indigo/speaker-high-volume.svg"
+  },
+  "🔍": {
+    "name": "magnifying glass tilted left",
+    "path": "/emojis/indigo/magnifying-glass-tilted-left.svg"
+  },
+  "🔎": {
+    "name": "magnifying glass tilted right",
+    "path": "/emojis/indigo/magnifying-glass-tilted-right.svg"
+  },
+  "🔐": {
+    "name": "locked with key",
+    "path": "/emojis/indigo/locked-with-key.svg"
+  },
+  "🔒": {
+    "name": "locked",
+    "path": "/emojis/indigo/locked.svg"
+  },
+  "🔗": {
+    "name": "link",
+    "path": "/emojis/indigo/link.svg"
+  },
+  "🔠": {
+    "name": "input latin uppercase",
+    "path": "/emojis/indigo/input-latin-uppercase.svg"
+  },
+  "🔡": {
+    "name": "input latin lowercase",
+    "path": "/emojis/indigo/input-latin-lowercase.svg"
+  },
+  "🔤": {
+    "name": "input latin letters",
+    "path": "/emojis/indigo/input-latin-letters.svg"
+  },
+  "🔥": {
+    "name": "fire",
+    "path": "/emojis/indigo/fire.svg"
+  },
+  "🔧": {
+    "name": "wrench",
+    "path": "/emojis/indigo/wrench.svg"
+  },
+  "🔬": {
+    "name": "microscope",
+    "path": "/emojis/indigo/microscope.svg"
+  },
+  "🔭": {
+    "name": "telescope",
+    "path": "/emojis/indigo/telescope.svg"
+  },
+  "🔮": {
+    "name": "crystal ball",
+    "path": "/emojis/indigo/crystal-ball.svg"
+  },
+  "🔵": {
+    "name": "blue circle",
+    "path": "/emojis/indigo/blue-circle.svg"
+  },
+  "🕵": {
+    "name": "detective",
+    "path": "/emojis/indigo/detective.svg"
+  },
+  "🖼": {
+    "name": "framed picture",
+    "path": "/emojis/indigo/framed-picture.svg"
+  },
+  "🗣": {
+    "name": "speaking head",
+    "path": "/emojis/indigo/speaking-head.svg"
+  },
+  "🗳": {
+    "name": "ballot box with ballot",
+    "path": "/emojis/indigo/ballot-box-with-ballot.svg"
+  },
+  "🗺": {
+    "name": "world map",
+    "path": "/emojis/indigo/world-map.svg"
+  },
+  "😁": {
+    "name": "beaming face with smiling eyes",
+    "path": "/emojis/indigo/beaming-face-with-smiling-eyes.svg"
+  },
+  "😂": {
+    "name": "face with tears of joy",
+    "path": "/emojis/indigo/face-with-tears-of-joy.svg"
+  },
+  "😊": {
+    "name": "smiling face with smiling eyes",
+    "path": "/emojis/indigo/smiling-face-with-smiling-eyes.svg"
+  },
+  "😍": {
+    "name": "smiling face with heart-eyes",
+    "path": "/emojis/indigo/smiling-face-with-heart-eyes.svg"
+  },
+  "😐": {
+    "name": "neutral face",
+    "path": "/emojis/indigo/neutral-face.svg"
+  },
+  "😓": {
+    "name": "downcast face with sweat",
+    "path": "/emojis/indigo/downcast-face-with-sweat.svg"
+  },
+  "😕": {
+    "name": "confused face",
+    "path": "/emojis/indigo/confused-face.svg"
+  },
+  "😞": {
+    "name": "disappointed face",
+    "path": "/emojis/indigo/disappointed-face.svg"
+  },
+  "😫": {
+    "name": "tired face",
+    "path": "/emojis/indigo/tired-face.svg"
+  },
+  "😰": {
+    "name": "anxious face with sweat",
+    "path": "/emojis/indigo/anxious-face-with-sweat.svg"
+  },
+  "😴": {
+    "name": "sleeping face",
+    "path": "/emojis/indigo/sleeping-face.svg"
+  },
+  "🙂": {
+    "name": "slightly smiling face",
+    "path": "/emojis/indigo/slightly-smiling-face.svg"
+  },
+  "🚀": {
+    "name": "rocket",
+    "path": "/emojis/indigo/rocket.svg"
+  },
+  "🚂": {
+    "name": "locomotive",
+    "path": "/emojis/indigo/locomotive.svg"
+  },
+  "🚐": {
+    "name": "minibus",
+    "path": "/emojis/indigo/minibus.svg"
+  },
+  "🚒": {
+    "name": "fire engine",
+    "path": "/emojis/indigo/fire-engine.svg"
+  },
+  "🚢": {
+    "name": "ship",
+    "path": "/emojis/indigo/ship.svg"
+  },
+  "🚧": {
+    "name": "construction",
+    "path": "/emojis/indigo/construction.svg"
+  },
+  "🚲": {
+    "name": "bicycle",
+    "path": "/emojis/indigo/bicycle.svg"
+  },
+  "🚶": {
+    "name": "person walking",
+    "path": "/emojis/indigo/person-walking.svg"
+  },
+  "🛁": {
+    "name": "bathtub",
+    "path": "/emojis/indigo/bathtub.svg"
+  },
+  "🛍": {
+    "name": "shopping bags",
+    "path": "/emojis/indigo/shopping-bags.svg"
+  },
+  "🛏": {
+    "name": "bed",
+    "path": "/emojis/indigo/bed.svg"
+  },
+  "🛝": {
+    "name": "playground slide",
+    "path": "/emojis/indigo/playground-slide.svg"
+  },
+  "🛠": {
+    "name": "hammer and wrench",
+    "path": "/emojis/indigo/hammer-and-wrench.svg"
+  },
+  "🛣": {
+    "name": "motorway",
+    "path": "/emojis/indigo/motorway.svg"
+  },
+  "🟢": {
+    "name": "green circle",
+    "path": "/emojis/indigo/green-circle.svg"
+  },
+  "🤖": {
+    "name": "robot",
+    "path": "/emojis/indigo/robot.svg"
+  },
+  "🤝": {
+    "name": "handshake",
+    "path": "/emojis/indigo/handshake.svg"
+  },
+  "🤣": {
+    "name": "rolling on the floor laughing",
+    "path": "/emojis/indigo/rolling-on-the-floor-laughing.svg"
+  },
+  "🤲": {
+    "name": "palms up together",
+    "path": "/emojis/indigo/palms-up-together.svg"
+  },
+  "🥁": {
+    "name": "drum",
+    "path": "/emojis/indigo/drum.svg"
+  },
+  "🥇": {
+    "name": "1st place medal",
+    "path": "/emojis/indigo/1st-place-medal.svg"
+  },
+  "🥈": {
+    "name": "2nd place medal",
+    "path": "/emojis/indigo/2nd-place-medal.svg"
+  },
+  "🥉": {
+    "name": "3rd place medal",
+    "path": "/emojis/indigo/3rd-place-medal.svg"
+  },
+  "🥓": {
+    "name": "bacon",
+    "path": "/emojis/indigo/bacon.svg"
+  },
+  "🥕": {
+    "name": "carrot",
+    "path": "/emojis/indigo/carrot.svg"
+  },
+  "🥚": {
+    "name": "egg",
+    "path": "/emojis/indigo/egg.svg"
+  },
+  "🥢": {
+    "name": "chopsticks",
+    "path": "/emojis/indigo/chopsticks.svg"
+  },
+  "🥦": {
+    "name": "broccoli",
+    "path": "/emojis/indigo/broccoli.svg"
+  },
+  "🥶": {
+    "name": "cold face",
+    "path": "/emojis/indigo/cold-face.svg"
+  },
+  "🦁": {
+    "name": "lion",
+    "path": "/emojis/indigo/lion.svg"
+  },
+  "🦄": {
+    "name": "unicorn",
+    "path": "/emojis/indigo/unicorn.svg"
+  },
+  "🦇": {
+    "name": "bat",
+    "path": "/emojis/indigo/bat.svg"
+  },
+  "🦉": {
+    "name": "owl",
+    "path": "/emojis/indigo/owl.svg"
+  },
+  "🦊": {
+    "name": "fox",
+    "path": "/emojis/indigo/fox.svg"
+  },
+  "🦋": {
+    "name": "butterfly",
+    "path": "/emojis/indigo/butterfly.svg"
+  },
+  "🦎": {
+    "name": "lizard",
+    "path": "/emojis/indigo/lizard.svg"
+  },
+  "🦓": {
+    "name": "zebra",
+    "path": "/emojis/indigo/zebra.svg"
+  },
+  "🦕": {
+    "name": "sauropod",
+    "path": "/emojis/indigo/sauropod.svg"
+  },
+  "🦡": {
+    "name": "badger",
+    "path": "/emojis/indigo/badger.svg"
+  },
+  "🦴": {
+    "name": "bone",
+    "path": "/emojis/indigo/bone.svg"
+  },
+  "🦵": {
+    "name": "leg",
+    "path": "/emojis/indigo/leg.svg"
+  },
+  "🦶": {
+    "name": "foot",
+    "path": "/emojis/indigo/foot.svg"
+  },
+  "🦷": {
+    "name": "tooth",
+    "path": "/emojis/indigo/tooth.svg"
+  },
+  "🦸": {
+    "name": "superhero",
+    "path": "/emojis/indigo/superhero.svg"
+  },
+  "🧀": {
+    "name": "cheese wedge",
+    "path": "/emojis/indigo/cheese-wedge.svg"
+  },
+  "🧁": {
+    "name": "cupcake",
+    "path": "/emojis/indigo/cupcake.svg"
+  },
+  "🧃": {
+    "name": "beverage box",
+    "path": "/emojis/indigo/beverage-box.svg"
+  },
+  "🧊": {
+    "name": "ice",
+    "path": "/emojis/indigo/ice.svg"
+  },
+  "🧑": {
+    "name": "person",
+    "path": "/emojis/indigo/person.svg"
+  },
+  "🧒": {
+    "name": "child",
+    "path": "/emojis/indigo/child.svg"
+  },
+  "🧙": {
+    "name": "mage",
+    "path": "/emojis/indigo/mage.svg"
+  },
+  "🧝": {
+    "name": "elf",
+    "path": "/emojis/indigo/elf.svg"
+  },
+  "🧠": {
+    "name": "brain",
+    "path": "/emojis/indigo/brain.svg"
+  },
+  "🧥": {
+    "name": "coat",
+    "path": "/emojis/indigo/coat.svg"
+  },
+  "🧩": {
+    "name": "puzzle piece",
+    "path": "/emojis/indigo/puzzle-piece.svg"
+  },
+  "🧵": {
+    "name": "thread",
+    "path": "/emojis/indigo/thread.svg"
+  },
+  "🧺": {
+    "name": "basket",
+    "path": "/emojis/indigo/basket.svg"
+  },
+  "🪀": {
+    "name": "yo-yo",
+    "path": "/emojis/indigo/yo-yo.svg"
+  },
+  "🪁": {
+    "name": "kite",
+    "path": "/emojis/indigo/kite.svg"
+  },
+  "🪞": {
+    "name": "mirror",
+    "path": "/emojis/indigo/mirror.svg"
+  },
+  "🪹": {
+    "name": "empty nest",
+    "path": "/emojis/indigo/empty-nest.svg"
+  },
+  "⏰": {
+    "name": "alarm clock",
+    "path": "/emojis/indigo/alarm-clock.svg"
+  },
+  "⏱": {
+    "name": "stopwatch",
+    "path": "/emojis/indigo/stopwatch.svg"
+  },
+  "☀": {
+    "name": "sun",
+    "path": "/emojis/indigo/sun.svg"
+  },
+  "☁": {
+    "name": "cloud",
+    "path": "/emojis/indigo/cloud.svg"
+  },
+  "☂": {
+    "name": "umbrella",
+    "path": "/emojis/indigo/umbrella.svg"
+  },
+  "☕": {
+    "name": "hot beverage",
+    "path": "/emojis/indigo/hot-beverage.svg"
+  },
+  "☠": {
+    "name": "skull and crossbones",
+    "path": "/emojis/indigo/skull-and-crossbones.svg"
+  },
+  "♀": {
+    "name": "female sign",
+    "path": "/emojis/indigo/female-sign.svg"
+  },
+  "♂": {
+    "name": "male sign",
+    "path": "/emojis/indigo/male-sign.svg"
+  },
+  "♿": {
+    "name": "wheelchair symbol",
+    "path": "/emojis/indigo/wheelchair-symbol.svg"
+  },
+  "⚖": {
+    "name": "balance scale",
+    "path": "/emojis/indigo/balance-scale.svg"
+  },
+  "⚙": {
+    "name": "gear",
+    "path": "/emojis/indigo/gear.svg"
+  },
+  "⚠": {
+    "name": "warning",
+    "path": "/emojis/indigo/warning.svg"
+  },
+  "⚡": {
+    "name": "high voltage",
+    "path": "/emojis/indigo/high-voltage.svg"
+  },
+  "⚽": {
+    "name": "soccer ball",
+    "path": "/emojis/indigo/soccer-ball.svg"
+  },
+  "⛈": {
+    "name": "cloud with lightning and rain",
+    "path": "/emojis/indigo/cloud-with-lightning-and-rain.svg"
+  },
+  "⛵": {
+    "name": "sailboat",
+    "path": "/emojis/indigo/sailboat.svg"
+  },
+  "✂": {
+    "name": "scissors",
+    "path": "/emojis/indigo/scissors.svg"
+  },
+  "✅": {
+    "name": "check mark button",
+    "path": "/emojis/indigo/check-mark-button.svg"
+  },
+  "✉": {
+    "name": "envelope",
+    "path": "/emojis/indigo/envelope.svg"
+  },
+  "✋": {
+    "name": "raised hand",
+    "path": "/emojis/indigo/raised-hand.svg"
+  },
+  "✍": {
+    "name": "writing hand",
+    "path": "/emojis/indigo/writing-hand.svg"
+  },
+  "✏": {
+    "name": "pencil",
+    "path": "/emojis/indigo/pencil.svg"
+  },
+  "✨": {
+    "name": "sparkles",
+    "path": "/emojis/indigo/sparkles.svg"
+  },
+  "❄": {
+    "name": "snowflake",
+    "path": "/emojis/indigo/snowflake.svg"
+  },
+  "❌": {
+    "name": "cross mark",
+    "path": "/emojis/indigo/cross-mark.svg"
+  },
+  "❓": {
+    "name": "red question mark",
+    "path": "/emojis/indigo/red-question-mark.svg"
+  },
+  "❗": {
+    "name": "red exclamation mark",
+    "path": "/emojis/indigo/red-exclamation-mark.svg"
+  },
+  "➕": {
+    "name": "plus",
+    "path": "/emojis/indigo/plus.svg"
+  },
+  "➡": {
+    "name": "right arrow",
+    "path": "/emojis/indigo/right-arrow.svg"
+  }
+}
