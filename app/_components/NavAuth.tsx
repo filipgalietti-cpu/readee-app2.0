@@ -114,10 +114,11 @@ export default function NavAuth() {
     setNavHidden(false);
   }, [pathname]);
 
-  // Auto-hide nav on scroll down (mobile only)
+  // Auto-hide nav on scroll down (mobile only, disabled when sidebar is open)
+  const mobileOpen = useSidebarStore((s) => s.mobileOpen);
   useEffect(() => {
     function handleScroll() {
-      if (window.innerWidth >= 768) { setNavHidden(false); return; }
+      if (window.innerWidth >= 768 || mobileOpen) { setNavHidden(false); return; }
       const y = window.scrollY;
       if (y > lastScrollY.current && y > 80) {
         setNavHidden(true);
@@ -129,7 +130,7 @@ export default function NavAuth() {
     }
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [mobileOpen]);
 
   const markAsRead = async (id: string) => {
     const supabase = createClient();
@@ -244,7 +245,7 @@ export default function NavAuth() {
 
                 {/* Notifications dropdown */}
                 {notifOpen && (
-                  <div className="absolute right-0 mt-2 w-80 sm:w-96 rounded-xl border border-zinc-200 bg-white shadow-xl overflow-hidden z-50">
+                  <div className="absolute right-0 mt-2 w-[calc(100vw-2rem)] sm:w-96 max-w-[384px] rounded-xl border border-zinc-200 bg-white shadow-xl overflow-hidden z-50">
                     <div className="flex items-center justify-between px-4 py-3 border-b border-zinc-100">
                       <h3 className="text-sm font-semibold text-zinc-900">Notifications</h3>
                       {unreadCount > 0 && (

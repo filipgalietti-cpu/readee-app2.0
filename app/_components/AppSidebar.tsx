@@ -105,7 +105,7 @@ function SidebarTooltip({ label, children }: { label: string; children: React.Re
 /*  AppSidebar                                         */
 /* ═══════════════════════════════════════════════════ */
 
-export default function AppSidebar() {
+export default function AppSidebar({ mobileOnly = false }: { mobileOnly?: boolean }) {
   const pathname = usePathname();
   const open = useSidebarStore((s) => s.open);
   const setOpen = useSidebarStore((s) => s.setOpen);
@@ -126,6 +126,16 @@ export default function AppSidebar() {
 
   // Close mobile overlay on route change
   useEffect(() => { setMobileOpen(false); }, [pathname, setMobileOpen]);
+
+  // Lock body scroll when mobile sidebar is open
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileOpen]);
 
   return (
     <>
@@ -155,7 +165,7 @@ export default function AppSidebar() {
       </AnimatePresence>
 
       {/* ── Desktop fixed sidebar ── */}
-      <aside
+      {!mobileOnly && <aside
         className={`hidden lg:flex flex-col fixed top-[76px] left-0 bottom-0 z-30 bg-white dark:bg-slate-900 border-r border-zinc-200 dark:border-slate-700 transition-[width] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${
           open ? "w-[272px]" : "w-[72px]"
         }`}
@@ -225,7 +235,7 @@ export default function AppSidebar() {
             </motion.div>
           )}
         </div>
-      </aside>
+      </aside>}
     </>
   );
 }
