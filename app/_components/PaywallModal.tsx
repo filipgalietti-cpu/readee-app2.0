@@ -28,8 +28,8 @@ const TRIGGERS: Record<string, { title: string; subtitle: string }> = {
     subtitle: "Detailed progress reports and analytics are available with Readee+.",
   },
   child: {
-    title: "Add more readers",
-    subtitle: "Readee+ lets you create up to 5 child profiles — perfect for siblings.",
+    title: "Unlock more features",
+    subtitle: "Get full access to all lessons, stories, and progress reports with Readee+.",
   },
 };
 
@@ -37,7 +37,7 @@ const FEATURES = [
   { Icon: BookOpen, text: "All lessons across K–4th grade" },
   { Icon: Headphones, text: "Every story with audio narration" },
   { Icon: BarChart3, text: "Detailed progress reports" },
-  { Icon: Users, text: "Up to 5 child profiles" },
+  { Icon: Users, text: "Full parent analytics dashboard" },
 ];
 
 export function PaywallModal({ open, onClose, childId, childName, trigger = "lesson" }: PaywallModalProps) {

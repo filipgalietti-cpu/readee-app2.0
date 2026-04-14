@@ -10,6 +10,7 @@ Readee is a full-stack reading comprehension app for children in **kindergarten 
 * **Framework:** Next.js 16 (App Router)
 * **Frontend:** React 19, Tailwind CSS v4, Framer Motion
 * **Backend/Auth:** Supabase (PostgreSQL, Storage, Auth)
+* **Payments:** Stripe (Checkout, Webhooks, Customer Portal)
 * **Language:** TypeScript (strict)
 * **AI Services:** Google Gemini TTS (audio), Google Imagen 4.0 (illustrations)
 * **Middleware:** Custom auth guards & proxy logic
@@ -58,11 +59,21 @@ Per-question audio that says the correct answer after a wrong attempt (e.g., "Th
 ### Parent Dashboard (`/dashboard`)
 Overview of each child's progress: lessons completed, day streak, reading level, and per-standard breakdowns. Sidebar with reading path, weekly activity, and recent sessions.
 
-### Upgrade Page (`/upgrade`)
-Conversion-focused page with scroll-driven animations (Framer Motion `whileInView`). Personalizes copy when a child ID is passed — shows the child's avatar, name, stats, and locked lessons. Staggered card reveals, counting numbers, alternating slide directions, spring-scale CTA.
+### Subscription & Payments (Stripe)
+Readee uses a freemium model with **Readee+** as the premium tier ($9.99/month or $6.99/month billed annually).
+
+**Free tier limits:** 1 lesson per grade, 2 stories per grade, 10 practice questions per standard, 1 child profile, no analytics.
+
+**Stripe integration:**
+* **Checkout** (`/api/checkout`) — creates a Stripe Checkout Session with a 7-day free trial
+* **Webhooks** (`/api/webhooks/stripe`) — handles `subscription.created`, `subscription.updated`, and `subscription.deleted` events to flip `profiles.plan` between `'free'` and `'premium'`
+* **Customer Portal** (`/api/billing/portal`) — lets users manage or cancel their subscription
+* **Upgrade page** (`/upgrade`) — conversion-focused page with monthly/annual toggle, contextual hero copy via `?reason=` param, promo code redemption, Jennifer's credentials as trust signal, and FAQ accordion
+* **Paywall gating** — proxy-level redirects for premium routes, client-side plan checks via Zustand store, all gates redirect to `/upgrade?reason=X`
+* Plan state stored in `profiles.plan` column (`'free'` | `'premium'`), with `stripe_customer_id` and `stripe_subscription_id` for Stripe linkage
 
 ### Child Profiles & Avatar System
-Up to 5 child profiles per household. Avatar system with default + shop avatars (fox, owl, unicorn, dragon, etc.). Equipped items persist in the database.
+One child profile per account. Avatar system with default + shop avatars (fox, owl, unicorn, dragon, etc.). Equipped items persist in the database.
 
 ### Decodable Library & Reader
 Stories unlocked via progress milestones. Page-by-page rendering with audio highlighting and grade-level metadata.
@@ -101,7 +112,7 @@ Stories unlocked via progress milestones. Page-by-page rendering with audio high
 app/                    Next.js App Router
   (protected)/          Auth-guarded routes (dashboard, lessons, upgrade, etc.)
   _components/          Shared components (NavAuth, Sidebar, CelebrationOverlay)
-  api/                  API routes (waitlist, promo, admin)
+  api/                  API routes (checkout, webhooks, billing, promo, admin)
   data/                 Grade-level question JSON files
   components/lesson/    Lesson slideshow + interactive renderers
 
@@ -110,7 +121,8 @@ lib/                    Core logic
   data/                 lessons.json (curriculum structure)
   db/                   Database types
   motion/               Framer Motion animation variants
-  stores/               Zustand stores (sidebar)
+  plan/                 Free/premium limits, server-side plan check
+  stores/               Zustand stores (sidebar, plan, child)
   supabase/             Supabase client helpers
   utils/                Avatar resolution, validators
 
@@ -128,11 +140,24 @@ cd readee-app2.0
 npm install
 ```
 
-Copy `.env.local.example` to `.env.local` and fill in your Supabase credentials.
+Copy `.env.local.example` to `.env.local` and fill in your Supabase and Stripe credentials:
+
+```
+NEXT_PUBLIC_SUPABASE_URL=...
+NEXT_PUBLIC_SUPABASE_ANON_KEY=...
+SUPABASE_SERVICE_ROLE_KEY=...
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_...
+STRIPE_SECRET_KEY=sk_test_...
+STRIPE_PRICE_MONTHLY=price_...
+STRIPE_PRICE_ANNUAL=price_...
+STRIPE_WEBHOOK_SECRET=whsec_...
+```
 
 ```bash
 npm run dev
 ```
+
+For Stripe webhooks in development, run `stripe listen --forward-to localhost:3000/api/webhooks/stripe` in a separate terminal.
 
 Visit `http://localhost:3000/test-connection` to verify your database setup.
 

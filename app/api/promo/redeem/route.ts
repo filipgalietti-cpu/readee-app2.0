@@ -140,7 +140,7 @@ export async function POST(req: NextRequest) {
             </tr>
             <tr>
               <td style="padding:6px 12px 6px 0;vertical-align:top;width:24px;font-size:16px;">\u2705</td>
-              <td style="padding:6px 0;font-size:14px;line-height:1.6;color:#374151;">Up to <strong>5 child profiles</strong> with detailed progress tracking</td>
+              <td style="padding:6px 0;font-size:14px;line-height:1.6;color:#374151;">Detailed <strong>parent analytics</strong> and progress tracking</td>
             </tr>
             <tr>
               <td style="padding:6px 12px 6px 0;vertical-align:top;width:24px;font-size:16px;">\u2705</td>

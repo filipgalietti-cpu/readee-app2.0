@@ -30,7 +30,7 @@ const FEATURES = [
   { icon: GraduationCap, text: "Full Reading Journey with progress tracking" },
   { icon: Flame, text: "XP system, streaks, and daily rewards" },
   { icon: Palette, text: "Avatar customization and backgrounds" },
-  { icon: Users, text: "Up to 5 child profiles per household" },
+  { icon: Users, text: "Unlimited practice across every standard" },
   { icon: BarChart3, text: "Detailed parent analytics and reports" },
   { icon: Star, text: "25 original stories with comprehension questions" },
 ];
@@ -53,8 +53,8 @@ const REASON_COPY: Record<string, { title: string; subtitle: string }> = {
     subtitle: "Free accounts include 2 stories per grade. Upgrade for the full library.",
   },
   child: {
-    title: "Add another reader",
-    subtitle: "Free accounts support 1 child profile. Upgrade to add up to 5.",
+    title: "Unlock more features",
+    subtitle: "Get full access to all lessons, stories, and progress reports with Readee+.",
   },
 };
 

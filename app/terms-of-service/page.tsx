@@ -81,7 +81,7 @@ export default function TermsOfServicePage() {
             </li>
             <li>
               <strong>Readee+ ($9.99/month or $79.99/year):</strong> Includes the
-              full lesson library, unlimited assessments, up to 5 child profiles,
+              full lesson library, unlimited assessments, parent analytics,
               detailed parent reports, and additional features as they become
               available.
             </li>

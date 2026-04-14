@@ -1286,7 +1286,7 @@ function LessonContent() {
             <div className="text-left rounded-2xl border border-amber-200 bg-gradient-to-r from-amber-50 to-orange-50 p-4">
               <p className="text-sm font-semibold text-zinc-900">Next lesson is ready in Readee+</p>
               <p className="text-xs text-zinc-600 mt-1">
-                Keep this momentum going with full lessons, detailed parent progress tracking, and up to 5 child profiles on one household plan.
+                Keep this momentum going with full lessons, detailed parent progress tracking, and unlimited practice.
               </p>
               <Link
                 href={`/upgrade?child=${child.id}`}

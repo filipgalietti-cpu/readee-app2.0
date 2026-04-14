@@ -5,8 +5,6 @@ export const FREE_LIMITS = {
   lessons: 1,
   /** Number of stories per grade on free plan */
   storiesPerGrade: 2,
-  /** Number of child profiles on free plan */
-  children: 1,
   /** Practice questions per standard on free plan */
   practicePerStandard: 10,
   /** Placement test — available on free */
@@ -18,7 +16,6 @@ export const FREE_LIMITS = {
 export const PREMIUM_LIMITS = {
   lessons: Infinity,
   storiesPerGrade: Infinity,
-  children: 5,
   practicePerStandard: Infinity,
   placementTest: true,
   analytics: true,
