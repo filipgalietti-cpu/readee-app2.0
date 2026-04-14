@@ -1,13 +1,44 @@
-import type { Metadata } from "next";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Contact Us",
-  description: "Get in touch with the Readee team.",
-};
+import { useState } from "react";
+import { Users, BookOpen, Mail, Send } from "lucide-react";
 
 export default function ContactUsPage() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [sending, setSending] = useState(false);
+  const [result, setResult] = useState<{ success: boolean; message: string } | null>(null);
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!name.trim() || !email.trim() || !message.trim()) return;
+
+    setSending(true);
+    setResult(null);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: name.trim(), email: email.trim(), message: message.trim() }),
+      });
+      const data = await res.json();
+      setResult({ success: data.success, message: data.message });
+      if (data.success) {
+        setName("");
+        setEmail("");
+        setMessage("");
+      }
+    } catch {
+      setResult({ success: false, message: "Something went wrong. Please try again." });
+    }
+
+    setSending(false);
+  }
+
   return (
-    <div className="max-w-3xl mx-auto py-8">
+    <div className="max-w-3xl mx-auto py-8 px-4">
       <h1 className="text-3xl font-bold text-zinc-900 tracking-tight mb-2">
         Get in Touch
       </h1>
@@ -21,58 +52,62 @@ export default function ContactUsPage() {
           <h2 className="text-lg font-bold text-zinc-900 mb-4">
             Send Us a Message
           </h2>
-          <form className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label
-                htmlFor="name"
-                className="block text-sm font-medium text-zinc-700 mb-1"
-              >
+              <label htmlFor="name" className="block text-sm font-medium text-zinc-700 mb-1">
                 Name
               </label>
               <input
                 type="text"
                 id="name"
-                name="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 placeholder="Your name"
+                required
                 className="w-full px-4 py-2.5 rounded-xl border border-zinc-200 text-sm text-zinc-900 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-300"
               />
             </div>
             <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-zinc-700 mb-1"
-              >
+              <label htmlFor="email" className="block text-sm font-medium text-zinc-700 mb-1">
                 Email
               </label>
               <input
                 type="email"
                 id="email"
-                name="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@example.com"
+                required
                 className="w-full px-4 py-2.5 rounded-xl border border-zinc-200 text-sm text-zinc-900 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-300"
               />
             </div>
             <div>
-              <label
-                htmlFor="message"
-                className="block text-sm font-medium text-zinc-700 mb-1"
-              >
+              <label htmlFor="message" className="block text-sm font-medium text-zinc-700 mb-1">
                 Message
               </label>
               <textarea
                 id="message"
-                name="message"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
                 rows={4}
                 placeholder="How can we help?"
+                required
                 className="w-full px-4 py-2.5 rounded-xl border border-zinc-200 text-sm text-zinc-900 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-300 resize-none"
               />
             </div>
             <button
               type="submit"
-              className="w-full py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white font-semibold text-sm hover:from-indigo-700 hover:to-violet-600 transition-all shadow-sm"
+              disabled={sending}
+              className="w-full py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white font-semibold text-sm hover:from-indigo-700 hover:to-violet-600 transition-all shadow-sm disabled:opacity-50 flex items-center justify-center gap-2"
             >
-              Send Message
+              <Send className="w-4 h-4" />
+              {sending ? "Sending..." : "Send Message"}
             </button>
+            {result && (
+              <p className={`text-sm text-center ${result.success ? "text-emerald-600" : "text-red-500"}`}>
+                {result.message}
+              </p>
+            )}
           </form>
         </div>
 
@@ -81,19 +116,7 @@ export default function ContactUsPage() {
           <div className="rounded-2xl border border-zinc-200 bg-white p-6">
             <div className="flex items-start gap-3">
               <div className="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center flex-shrink-0">
-                <svg
-                  className="w-5 h-5 text-indigo-600"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"
-                  />
-                </svg>
+                <Users className="w-5 h-5 text-indigo-600" />
               </div>
               <div>
                 <h3 className="font-bold text-zinc-900 mb-1">Parents</h3>
@@ -108,19 +131,7 @@ export default function ContactUsPage() {
           <div className="rounded-2xl border border-zinc-200 bg-white p-6">
             <div className="flex items-start gap-3">
               <div className="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center flex-shrink-0">
-                <svg
-                  className="w-5 h-5 text-indigo-600"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                  />
-                </svg>
+                <BookOpen className="w-5 h-5 text-indigo-600" />
               </div>
               <div>
                 <h3 className="font-bold text-zinc-900 mb-1">Educators</h3>
@@ -134,19 +145,7 @@ export default function ContactUsPage() {
           <div className="rounded-2xl border border-zinc-200 bg-white p-6">
             <div className="flex items-start gap-3">
               <div className="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center flex-shrink-0">
-                <svg
-                  className="w-5 h-5 text-indigo-600"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                  />
-                </svg>
+                <Mail className="w-5 h-5 text-indigo-600" />
               </div>
               <div>
                 <h3 className="font-bold text-zinc-900 mb-1">General</h3>
