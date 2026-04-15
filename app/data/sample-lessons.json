@@ -2880,7 +2880,7 @@
           {
             "sub": "c",
             "audioFile": "audio/lessons/RI.K.3/S4c.mp3",
-            "ttsScript": "The word so tells us WHAT HAPPENED.",
+            "ttsScript": "Our next word is so. It tells us WHAT HAPPENED!",
             "interaction": "So row fills in.",
             "displayText": "so",
             "displayDelay": 1000,
@@ -3017,25 +3017,36 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RI.K.4/S2b.mp3",
-            "ttsScript": "The sentence around the word can tell you what it means.",
-            "interaction": "Pill: [Read the sentence for clues] pops in blue.",
-            "displayText": "Read the sentence for clues",
-            "displayDelay": 853
+            "ttsScript": "Read the sentence around the word. It can tell you what the word means!",
+            "interaction": "Sentence row fills in.",
+            "displayText": "Sentence",
+            "displayDelay": 1000,
+            "displayTableRow": {
+              "label": "Sentence",
+              "value": "Tells you what it means",
+              "tableHeaders": ["Clue", "How It Helps"]
+            }
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RI.K.4/S2c.mp3",
-            "ttsScript": "And pictures in fact books are amazing helpers! They show you what the word is about.",
-            "interaction": "Pill: [Look at the pictures] pops in green.",
-            "displayText": "Look at the pictures",
-            "displayDelay": 1240
+            "ttsScript": "Look at the pictures. They show you what the word is about!",
+            "interaction": "Pictures row fills in.",
+            "displayText": "Pictures",
+            "displayDelay": 1000,
+            "displayTableRow": {
+              "label": "Pictures",
+              "value": "Shows you the word"
+            }
           },
           {
             "sub": "d",
             "audioFile": "audio/lessons/RI.K.4/S2d.mp3",
             "ttsScript": "Sentences plus pictures equal word power!",
-            "interaction": "Both pills connect to a lightning bolt icon.",
-            "displayText": ""
+            "interaction": "Both rows glow.",
+            "displayText": "",
+            "checkmarkTriggerDelay": 1000,
+            "checkmarkTriggerStagger": 1200
           }
         ],
         "heading": "How to Figure Out New Words",
@@ -3049,7 +3060,7 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.K.4/S3a.mp3",
-            "ttsScript": "Here's a sentence from a fact book. Listen!",
+            "ttsScript": "Let's try one! Read along and listen for a new word.",
             "interaction": "Heading appears.",
             "displayText": ""
           },
@@ -3057,17 +3068,30 @@
             "sub": "b",
             "audioFile": "audio/lessons/RI.K.4/S3b.mp3",
             "ttsScript": "The Arctic is very frigid. Animals need thick fur to stay warm there.",
-            "interaction": "Text appears. 'Frigid' glows and highlights.",
-            "displayText": "Frigid",
-            "displayDelay": 3250
+            "interaction": "Sentence passage card appears. 'Frigid' underlines mid-read.",
+            "displayText": "The Arctic is very frigid. Animals need thick fur to stay warm there.",
+            "displayStyle": "passage",
+            "displayDelay": 500,
+            "highlightWord": { "word": "frigid", "delay": 2500 }
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RI.K.4/S3c.mp3",
-            "ttsScript": "What does frigid mean? Well, animals need thick fur. And it shows ice and snow. Frigid must mean really, really cold!",
-            "interaction": "Pill: [Frigid = Very Cold!] pops in with checkmark and stars.",
+            "ttsScript": "Look at the clues! Thick fur means animals stay warm. And the Arctic has ice and snow.",
+            "interaction": "Two clue pills appear.",
+            "displayParts": [
+              { "text": "Thick fur", "delay": 1200 },
+              { "text": "Ice & snow", "delay": 4200 }
+            ]
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RI.K.4/S3d.mp3",
+            "ttsScript": "So frigid must mean really, really cold!",
+            "interaction": "Reveal pill pops in with checkmark.",
             "displayText": "Frigid means Very Cold!",
-            "displayDelay": 5040
+            "displayDelay": 1200,
+            "checkmarkDelay": 2000
           }
         ],
         "heading": "Let's Figure One Out!",
@@ -3138,7 +3162,7 @@
           }
         ],
         "heading": "Time to Practice!",
-        "imagePrompt": "A cartoon child with an explorer hat standing on top of a mountain of fact books, planting a flag. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A joyful cartoon child in an explorer hat jumping in celebration, arms raised high, surrounded by floating magnifying glasses, bright stars, and colorful sparkles. A big compass and a treasure map float in the background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no letters, no words.",
         "imageFile": "images/lessons/RI.K.4/S5.png"
       },
       {
