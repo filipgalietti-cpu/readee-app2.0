@@ -2867,29 +2867,48 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RI.K.3/S4b.mp3",
-            "ttsScript": "Look for words like 'because,' 'so,' and 'then.' These words show connections!",
-            "interaction": "Three pills: [because] [so] [then] pop in as connection words.",
-            "displayParts": [
-              {
-                "text": "because",
-                "delay": 300
-              },
-              {
-                "text": "so",
-                "delay": 1600
-              },
-              {
-                "text": "then",
-                "delay": 3200
-              }
-            ]
+            "ttsScript": "The word because tells us WHY something happened.",
+            "interaction": "Because row fills in.",
+            "displayText": "because",
+            "displayDelay": 1000,
+            "displayTableRow": {
+              "label": "because",
+              "value": "Tells you WHY",
+              "tableHeaders": ["Word", "Tells You..."]
+            }
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RI.K.3/S4c.mp3",
+            "ttsScript": "The word so tells us WHAT HAPPENED next.",
+            "interaction": "So row fills in.",
+            "displayText": "so",
+            "displayDelay": 1000,
+            "displayTableRow": {
+              "label": "so",
+              "value": "Tells you WHAT HAPPENED"
+            }
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RI.K.3/S4d.mp3",
+            "ttsScript": "The word then tells us WHAT COMES next.",
+            "interaction": "Then row fills in.",
+            "displayText": "then",
+            "displayDelay": 1000,
+            "displayTableRow": {
+              "label": "then",
+              "value": "Tells you WHAT COMES NEXT"
+            }
+          },
+          {
+            "sub": "e",
+            "audioFile": "audio/lessons/RI.K.3/S4e.mp3",
             "ttsScript": "You're a connection master!",
-            "interaction": "Chain link icon glows. Tap to continue.",
-            "displayText": ""
+            "interaction": "All rows glow. Chain link icon appears.",
+            "displayText": "",
+            "checkmarkTriggerDelay": 1000,
+            "checkmarkTriggerStagger": 1200
           }
         ],
         "heading": "A Helpful Trick!",
