@@ -7,19 +7,10 @@ interface LoadingImageProps {
   alt?: string;
   className?: string;
   containerClassName?: string;
-  /** CSS aspect-ratio for the skeleton (defaults to "1 / 1" for square question images). */
-  aspectRatio?: string;
   onError?: (e: React.SyntheticEvent<HTMLImageElement>) => void;
 }
 
-export function LoadingImage({
-  src,
-  alt = "",
-  className = "",
-  containerClassName = "",
-  aspectRatio = "1 / 1",
-  onError,
-}: LoadingImageProps) {
+export function LoadingImage({ src, alt = "", className = "", containerClassName = "", onError }: LoadingImageProps) {
   const [loaded, setLoaded] = useState(false);
   const [errored, setErrored] = useState(false);
   const imgRef = useRef<HTMLImageElement>(null);
@@ -41,18 +32,15 @@ export function LoadingImage({
   if (errored || !src) return null;
 
   return (
-    <div
-      className={`relative inline-block overflow-hidden rounded-2xl ${containerClassName}`}
-      style={{ aspectRatio }}
-    >
-      <div
-        className={`absolute inset-0 skeleton-shimmer rounded-2xl pointer-events-none transition-opacity duration-300 ${loaded ? "opacity-0" : "opacity-100"}`}
-      />
+    <div className={`relative ${containerClassName}`}>
+      {!loaded && (
+        <div className="absolute inset-0 skeleton-shimmer rounded-2xl pointer-events-none" />
+      )}
       <img
         ref={imgRef}
         src={src}
         alt={alt}
-        className={`absolute inset-0 w-full h-full transition-opacity duration-500 ease-out ${loaded ? "opacity-100" : "opacity-0"} ${className}`}
+        className={`transition-opacity duration-500 ease-out ${loaded ? "opacity-100" : "opacity-0"} ${className}`}
         onLoad={() => setLoaded(true)}
         onError={(e) => {
           setErrored(true);
