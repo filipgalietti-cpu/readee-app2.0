@@ -4035,17 +4035,26 @@
             "sub": "b",
             "audioFile": "audio/lessons/RI.K.9/S2b.mp3",
             "ttsScript": "What's the same? Maybe both books are about the same animal or the same topic!",
-            "interaction": "Pill: [Same = Same topic or facts] pops in purple.",
-            "displayText": "Same are Same topic or facts",
-            "displayDelay": 1163
+            "interaction": "Same row fills in.",
+            "displayText": "Same",
+            "displayDelay": 1500,
+            "displayTableRow": {
+              "label": "Same",
+              "value": "Same topic or facts",
+              "tableHeaders": ["Compare", "Means..."]
+            }
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RI.K.9/S2c.mp3",
             "ttsScript": "What's different? Maybe one book has different facts or different pictures!",
-            "interaction": "Pill: [Different = Different facts or details] pops in orange.",
-            "displayText": "Different are Different facts or details",
-            "displayDelay": 853
+            "interaction": "Different row fills in.",
+            "displayText": "Different",
+            "displayDelay": 1500,
+            "displayTableRow": {
+              "label": "Different",
+              "value": "Different facts or details"
+            }
           }
         ],
         "heading": "How Do We Compare Fact Books?",
@@ -6836,30 +6845,26 @@
             "sub": "b",
             "audioFile": "audio/lessons/K.L.1/S2b.mp3",
             "ttsScript": "These are called nouns! A noun names a person, place, or thing.",
-            "interaction": "Pill: [Noun = Person, Place, or Thing] pops in blue.",
-            "displayText": "Noun means Person, Place, or Thing",
-            "displayParts": [
-              {
-                "text": "Noun means Person",
-                "delay": 300
-              },
-              {
-                "text": "Place",
-                "delay": 610
-              },
-              {
-                "text": "or Thing",
-                "delay": 920
-              }
-            ]
+            "interaction": "Noun row fills in.",
+            "displayText": "Noun",
+            "displayDelay": 1500,
+            "displayTableRow": {
+              "label": "Noun",
+              "value": "Person, Place, or Thing",
+              "tableHeaders": ["Word Type", "Means..."]
+            }
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/K.L.1/S2c.mp3",
             "ttsScript": "Other words show action — like 'run,' 'jump,' or 'eat.' These are verbs!",
-            "interaction": "Pill: [Verb = Action Word] pops in green.",
-            "displayText": "Verb means Action Word",
-            "displayDelay": 1008
+            "interaction": "Verb row fills in.",
+            "displayText": "Verb",
+            "displayDelay": 1500,
+            "displayTableRow": {
+              "label": "Verb",
+              "value": "Action Word"
+            }
           },
           {
             "sub": "d",
@@ -7472,25 +7477,38 @@
             "sub": "b",
             "audioFile": "audio/lessons/K.L.5/S2b.mp3",
             "ttsScript": "They're like two sides of a coin!",
-            "interaction": "Pill: [Opposites = Complete reverse] pops in red.",
-            "displayText": "Opposites are Complete reverse",
-            "displayDelay": 543
+            "interaction": "Opposites row fills in.",
+            "displayText": "Opposites",
+            "displayDelay": 1200,
+            "displayTableRow": {
+              "label": "Opposites",
+              "value": "Complete reverse",
+              "tableHeaders": ["Relationship", "Meaning"]
+            }
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/K.L.5/S2c.mp3",
             "ttsScript": "Words can also belong to groups. 'Dog,' 'cat,' and 'fish' are all animals!",
-            "interaction": "Pill: [Categories = Word groups] pops in blue.",
-            "displayText": "Categories are Word groups",
-            "displayDelay": 1008
+            "interaction": "Categories row fills in.",
+            "displayText": "Categories",
+            "displayDelay": 1500,
+            "displayTableRow": {
+              "label": "Categories",
+              "value": "Word groups"
+            }
           },
           {
             "sub": "d",
             "audioFile": "audio/lessons/K.L.5/S2d.mp3",
             "ttsScript": "And some words mean almost the same thing! 'Big' and 'large' are alike!",
-            "interaction": "Pill: [Similar = Almost the same meaning] pops in green.",
-            "displayText": "Similar means Almost the same meaning",
-            "displayDelay": 1008
+            "interaction": "Similar row fills in.",
+            "displayText": "Similar",
+            "displayDelay": 1500,
+            "displayTableRow": {
+              "label": "Similar",
+              "value": "Almost the same"
+            }
           }
         ],
         "heading": "Opposites and Categories",
