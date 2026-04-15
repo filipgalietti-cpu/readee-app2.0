@@ -1023,10 +1023,10 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
         {/* ── Image — prominent at top ── */}
         {(q.image_url || questionImageUrl(q.id, gradeKey)) && (
           <motion.div variants={fadeUp} className="flex justify-center mb-3">
-            <img
+            <LoadingImage
               src={q.image_url || questionImageUrl(q.id, gradeKey)}
-              alt=""
-              className="max-h-[180px] sm:max-h-[220px] md:max-h-[300px] lg:max-h-[380px] w-auto object-contain rounded-2xl shadow-md border-2 border-white dark:border-slate-700"
+              containerClassName="h-[180px] sm:h-[220px] md:h-[300px] lg:h-[380px] shadow-md border-2 border-white dark:border-slate-700"
+              className="object-contain"
             />
           </motion.div>
         )}
