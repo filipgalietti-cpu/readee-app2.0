@@ -2129,7 +2129,7 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RL.K.7/S3a.mp3",
-            "ttsScript": "Look at this picture. What can you tell me about it?",
+            "ttsScript": "Let's try this together! We'll look for clues, say what we see, and tell how we know.",
             "interaction": "Heading appears. Table headers from jump. Image of child in rain.",
             "displayText": ""
           },
@@ -2194,10 +2194,10 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.K.7/S4b.mp3",
-            "ttsScript": "What do I see happening? And how do the characters feel?",
-            "interaction": "Setting row fills in immediately.",
+            "ttsScript": "First, ask: What's happening in the picture?",
+            "interaction": "Setting row fills in.",
             "displayText": "Setting",
-            "displayDelay": 0,
+            "displayDelay": 1000,
             "displayTableRow": {
               "label": "Setting",
               "value": "What's happening?",
@@ -2212,11 +2212,11 @@
           },
           {
             "sub": "c",
-            "audioFile": "",
-            "ttsScript": "",
-            "interaction": "Feeling row appears at 2.2s into step b audio.",
+            "audioFile": "audio/lessons/RL.K.7/S4c.mp3",
+            "ttsScript": "Then ask: How do the characters feel?",
+            "interaction": "Feeling row fills in.",
             "displayText": "Feeling",
-            "displayDelay": 500,
+            "displayDelay": 1000,
             "displayTableRow": {
               "label": "Feeling",
               "value": "How do they feel?",
@@ -2226,7 +2226,7 @@
           },
           {
             "sub": "d",
-            "audioFile": "audio/lessons/RL.K.7/S4c.mp3",
+            "audioFile": "audio/lessons/RL.K.7/S4d.mp3",
             "ttsScript": "If you do that, you'll understand the story even better!",
             "interaction": "Highlights both rows.",
             "displayText": "",
@@ -2350,17 +2350,26 @@
             "sub": "b",
             "audioFile": "audio/lessons/RL.K.9/S2b.mp3",
             "ttsScript": "Maybe they both like the same thing. Or they both go on an adventure!",
-            "interaction": "Pill: [Same = What they share] pops in purple.",
-            "displayText": "Same are What they share",
-            "displayDelay": 1085
+            "interaction": "Same row fills in.",
+            "displayText": "Same",
+            "displayDelay": 1085,
+            "displayTableRow": {
+              "label": "Same",
+              "value": "What they share",
+              "tableHeaders": ["Compare", "Means..."]
+            }
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RL.K.9/S2c.mp3",
             "ttsScript": "We also look at what's different. Maybe one is brave and the other is shy!",
-            "interaction": "Pill: [Different = What's not the same] pops in orange.",
-            "displayText": "Different are What's not the same",
-            "displayDelay": 1163
+            "interaction": "Different row fills in.",
+            "displayText": "Different",
+            "displayDelay": 1163,
+            "displayTableRow": {
+              "label": "Different",
+              "value": "What's not the same"
+            }
           },
           {
             "sub": "d",
@@ -2389,24 +2398,37 @@
             "sub": "b",
             "audioFile": "audio/lessons/RL.K.9/S3b.mp3",
             "ttsScript": "What's the same? They both love honey!",
-            "interaction": "Pill: [Same: Both love honey!] pops in purple with checkmark.",
-            "displayText": "Same: Both love honey!",
-            "displayDelay": 1750
+            "interaction": "Same row fills in with checkmark.",
+            "displayText": "Same",
+            "displayDelay": 1750,
+            "checkmarkDelay": 2000,
+            "displayTableRow": {
+              "label": "Same",
+              "value": "Both love honey!",
+              "tableHeaders": ["Compare", "What I Found"]
+            }
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RL.K.9/S3c.mp3",
             "ttsScript": "What's different? The bear eats honey, but the bee makes honey!",
-            "interaction": "Pill: [Different: Bear eats it, Bee makes it] pops in orange with checkmark.",
-            "displayText": "Different: Bear eats it, Bee makes it",
-            "displayDelay": 2750
+            "interaction": "Different row fills in with checkmark.",
+            "displayText": "Different",
+            "displayDelay": 2750,
+            "checkmarkDelay": 2500,
+            "displayTableRow": {
+              "label": "Different",
+              "value": "Bear eats, Bee makes"
+            }
           },
           {
             "sub": "d",
             "audioFile": "audio/lessons/RL.K.9/S3d.mp3",
             "ttsScript": "See? Comparing is just finding what's the same and what's different. You nailed it!",
-            "interaction": "Stars and confetti.",
-            "displayText": ""
+            "interaction": "Both rows glow. Stars float up.",
+            "displayText": "",
+            "checkmarkTriggerDelay": 1000,
+            "checkmarkTriggerStagger": 1500
           }
         ],
         "heading": "Let's Try It!",
@@ -2427,25 +2449,44 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.K.9/S4b.mp3",
-            "ttsScript": "Ask: What do they have in common? And what makes them different?",
-            "interaction": "Two pills: [Same?] [Different?] pop in.",
-            "displayParts": [
-              {
-                "text": "Same?",
-                "delay": 1200
-              },
-              {
-                "text": "Different?",
-                "delay": 3300
-              }
-            ]
+            "ttsScript": "First ask: What's the same? What do they share?",
+            "interaction": "Same row fills in.",
+            "displayText": "Same?",
+            "displayDelay": 1000,
+            "displayTableRow": {
+              "label": "Same?",
+              "value": "What they share",
+              "tableHeaders": [
+                "Ask Yourself",
+                "Think About",
+                "Example"
+              ],
+              "example": "Both like honey",
+              "exampleDelay": 2000
+            }
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RL.K.9/S4c.mp3",
+            "ttsScript": "Then ask: What's different? What makes each one special?",
+            "interaction": "Different row fills in.",
+            "displayText": "Different?",
+            "displayDelay": 1000,
+            "displayTableRow": {
+              "label": "Different?",
+              "value": "What's unique",
+              "example": "One eats, one makes",
+              "exampleDelay": 2000
+            }
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RL.K.9/S4d.mp3",
             "ttsScript": "Those two questions make you a comparing champion!",
-            "interaction": "Trophy icon appears. Tap to continue.",
-            "displayText": ""
+            "interaction": "Highlights both rows. Trophy icon appears.",
+            "displayText": "",
+            "checkmarkTriggerDelay": 1000,
+            "checkmarkTriggerStagger": 1500
           }
         ],
         "heading": "A Helpful Trick!",
@@ -2619,9 +2660,10 @@
             "sub": "c",
             "audioFile": "audio/lessons/RI.K.2/S3c.mp3",
             "ttsScript": "What are all these facts about? Apples! The main topic is apples!",
-            "interaction": "Pill: [Main Topic: Apples!] pops in with confetti.",
+            "interaction": "Pill: [Main Topic: Apples!] pops in with checkmark.",
             "displayText": "Main Topic: Apples!",
-            "displayDelay": 3000
+            "displayDelay": 8000,
+            "checkmarkDelay": 2000
           }
         ],
         "heading": "Let's Try One Together!",

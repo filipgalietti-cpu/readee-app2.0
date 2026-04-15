@@ -41,7 +41,7 @@ interface Step {
     value: string;
     example?: string;
     exampleDelay?: number; // ms after row appears before example column shows
-    tableHeaders?: [string, string, string]; // column titles (only on first row)
+    tableHeaders?: string[]; // column titles (only on first row, 2 or 3 items)
   };
   interaction: string;
 }
