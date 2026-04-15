@@ -2880,7 +2880,7 @@
           {
             "sub": "c",
             "audioFile": "audio/lessons/RI.K.3/S4c.mp3",
-            "ttsScript": "The word so tells us WHAT HAPPENED next.",
+            "ttsScript": "The word so tells us WHAT HAPPENED.",
             "interaction": "So row fills in.",
             "displayText": "so",
             "displayDelay": 1000,
