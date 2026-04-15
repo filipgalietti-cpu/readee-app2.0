@@ -3332,18 +3332,24 @@
           {
             "sub": "c",
             "audioFile": "audio/lessons/RI.K.5/S3c.mp3",
-            "ttsScript": "If we flip it over, we see the back cover. And if we open it up, there's the title page inside!",
-            "interaction": "Back Cover + Title Page pills pop in sequentially with checkmarks.",
-            "displayParts": [
-              { "text": "Back Cover", "delay": 1000 },
-              { "text": "Title Page", "delay": 5000 }
-            ],
-            "checkmarkTriggerDelay": 3000,
-            "checkmarkTriggerStagger": 4000
+            "ttsScript": "If we flip it over, we see the back cover!",
+            "interaction": "Back Cover pill pops in with checkmark.",
+            "displayText": "Back Cover",
+            "displayDelay": 1000,
+            "checkmarkDelay": 2000
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RI.K.5/S3d.mp3",
+            "ttsScript": "And if we open it up, we see the title page inside!",
+            "interaction": "Title Page pill pops in with checkmark.",
+            "displayText": "Title Page",
+            "displayDelay": 1000,
+            "checkmarkDelay": 2500
           }
         ],
         "heading": "Let's Find the Parts!",
-        "imagePrompt": "Two views of a children's picture book side by side on a wooden table. LEFT: FRONT cover — a smiling blue cartoon whale swimming with bubbles on a light blue ocean background; the title \"Ocean Animals\" is centered at the top in large friendly rounded kid-book letters; no other text of any kind. RIGHT: BACK cover — plain light blue background with a cute cartoon starfish in the center and a small simple barcode rectangle in the bottom right corner; absolutely no text, no writing, no words, no letters anywhere on the back cover. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors.",
+        "imagePrompt": "Three views of a children's picture book side by side on a wooden table, evenly spaced. LEFT: closed FRONT cover — a smiling blue cartoon whale swimming with bubbles on a light blue background; the title \"Ocean Animals\" centered at the top in large friendly rounded kid-book letters; no other text. MIDDLE: the same book opened flat to reveal its TITLE PAGE — a plain white page with a small cartoon whale doodle in the middle; absolutely NO text, NO words, NO letters on the page. RIGHT: closed BACK cover — plain light blue background with a cute cartoon starfish in the center and a small simple barcode rectangle in the bottom right corner; absolutely no text, no writing. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors.",
         "imageFile": "images/lessons/RI.K.5/S3.png"
       },
       {
