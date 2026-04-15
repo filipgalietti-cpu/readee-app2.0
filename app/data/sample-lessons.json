@@ -3081,7 +3081,7 @@
             "interaction": "Two clue pills appear.",
             "displayParts": [
               { "text": "Thick fur", "delay": 1200 },
-              { "text": "Ice & snow", "delay": 4200 }
+              { "text": "Ice & snow", "delay": 6500 }
             ]
           },
           {
