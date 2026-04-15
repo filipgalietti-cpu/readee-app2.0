@@ -81,13 +81,16 @@ const CHOICE_COLORS = [
 const CORRECT_MESSAGES = [
   "Amazing!", "Great job!", "You got it!", "Nice catch!",
   "Super smart!", "Wonderful!", "Nailed it!", "Brilliant!",
+  "That's right!", "Way to go!", "Awesome!", "Super!",
+  "Excellent!", "You're on fire!", "Fantastic!", "You're so smart!",
 ];
 const INCORRECT_MESSAGES = [
-  "Not quite!", "Almost!", "Good try!", "Keep learning!",
+  "Not quite!", "Almost!", "Good try!", "Keep learning!", "So close!",
+  "Try again!", "You'll get it!", "Oops, not that one!", "Nice effort!", "Don't give up!",
 ];
 const CORRECT_EMOJIS = ["star", "sparkles", "sparkle", "star2", "zap", "target"];
-const CORRECT_AUDIO = ["correct-1", "correct-2", "correct-3", "correct-4", "correct-5"];
-const INCORRECT_AUDIO = ["incorrect-1", "incorrect-2", "incorrect-3"];
+const CORRECT_AUDIO = ["correct-1", "correct-2", "correct-3", "correct-4", "correct-5", "correct-6", "correct-7", "correct-8", "correct-9", "correct-10", "correct-11", "correct-12"];
+const INCORRECT_AUDIO = ["incorrect-1", "incorrect-2", "incorrect-3", "incorrect-4", "incorrect-5", "incorrect-6", "incorrect-7", "incorrect-8", "incorrect-9", "incorrect-10"];
 const ENCOURAGE_AUDIO = ["encourage-1", "encourage-2", "encourage-3", "encourage-4", "encourage-5", "encourage-6"];
 
 const FEEDBACK_ICON_MAP: Record<string, typeof Star> = {

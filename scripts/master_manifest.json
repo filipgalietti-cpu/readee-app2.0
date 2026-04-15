@@ -1071,7 +1071,7 @@
     "tts_voice_direction": "Read this like a cheerful, clear elementary school teacher reading to a small child:",
     "hint_tts_ssml": "<speak>Here's a hint! What did each kid DO when they lost their toy?</speak>",
     "hint_tts_voice_direction": "Read this like a cheerful, clear elementary school teacher reading to a small child:",
-    "image_prompt": "A little girl character with tears in her eyes holding an empty hand, next to a little boy character happily searching under a sofa for a lost toy. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+    "image_prompt": "A split scene inside a cozy kindergarten room. On the left side, a sad cartoon girl sits on the floor crying with big tears, empty hands in her lap. On the right side, a cheerful cartoon boy on hands and knees searches confidently on the floor looking for a toy. Two distinct characters clearly visible, balanced and centered composition, not cropped, not squished. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
     "image_filename": "RL.K.9-Q5.png",
     "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.9/RL.K.9-Q5.png",
     "audio_filename": "RL.K.9-Q5.mp3",
