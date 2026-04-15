@@ -3265,36 +3265,43 @@
             "sub": "b",
             "audioFile": "audio/lessons/RI.K.5/S2b.mp3",
             "ttsScript": "The title tells you what the book is about. It's like the book's name!",
-            "interaction": "Pill: [Front Cover = Title + Picture] pops in blue.",
-            "displayText": "Front Cover means Title + Picture",
+            "interaction": "Front Cover row fills in.",
+            "displayText": "Front Cover",
             "displayDelay": 1085,
             "displayTableRow": {
               "label": "Front Cover",
-              "value": "Title + Picture"
+              "value": "Title + Picture",
+              "example": "Front",
+              "exampleDelay": 2500,
+              "tableHeaders": ["Book Part", "Has...", "Located"]
             }
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RI.K.5/S2c.mp3",
             "ttsScript": "The back cover is on the other side. It might tell you a little bit about the book.",
-            "interaction": "Pill: [Back Cover = Book info] pops in green.",
-            "displayText": "Back Cover means Book info",
+            "interaction": "Back Cover row fills in.",
+            "displayText": "Back Cover",
             "displayDelay": 1395,
             "displayTableRow": {
               "label": "Back Cover",
-              "value": "Book info"
+              "value": "Book info",
+              "example": "Back",
+              "exampleDelay": 2500
             }
           },
           {
             "sub": "d",
             "audioFile": "audio/lessons/RI.K.5/S2d.mp3",
             "ttsScript": "The title page is inside the book. It shows the title, author, and illustrator!",
-            "interaction": "Pill: [Title Page = Title + Author + Illustrator] pops in purple.",
-            "displayText": "Title Page means Title + Author + Illustrator",
+            "interaction": "Title Page row fills in.",
+            "displayText": "Title Page",
             "displayDelay": 1085,
             "displayTableRow": {
               "label": "Title Page",
-              "value": "Title + Author + Illustrator"
+              "value": "Title + Author + Illustrator",
+              "example": "Inside",
+              "exampleDelay": 2500
             }
           }
         ],
