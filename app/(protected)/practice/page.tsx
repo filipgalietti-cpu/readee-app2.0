@@ -41,6 +41,7 @@ interface Question {
   difficulty: number;
   audio_url?: string;
   hint_audio_url?: string;
+  image_url?: string;
   choices_audio_urls?: (string | null)[];
   words?: string[];
   sentence_hint?: string;
@@ -1020,10 +1021,11 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
         ) : (
         <>
         {/* ── Image — prominent at top ── */}
-        {questionImageUrl(q.id, gradeKey) && (
+        {(q.image_url || questionImageUrl(q.id, gradeKey)) && (
           <motion.div variants={fadeUp} className="flex justify-center mb-3">
-            <LoadingImage
-              src={questionImageUrl(q.id, gradeKey)}
+            <img
+              src={q.image_url || questionImageUrl(q.id, gradeKey)}
+              alt=""
               className="max-h-[180px] sm:max-h-[220px] md:max-h-[300px] lg:max-h-[380px] w-auto object-contain rounded-2xl shadow-md border-2 border-white dark:border-slate-700"
             />
           </motion.div>

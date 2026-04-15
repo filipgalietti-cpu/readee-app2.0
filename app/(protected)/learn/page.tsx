@@ -42,6 +42,7 @@ interface Question {
   difficulty: number;
   audio_url?: string;
   hint_audio_url?: string;
+  image_url?: string;
   words?: string[];
   sentence_hint?: string;
   sentence_audio_url?: string;
@@ -559,11 +560,12 @@ function LearnSession({
           />
         ) : (
         <>
-        {/* Image */}
-        {questionImageUrl(q.id, gradeKey) && (
+        {/* Image — use q.image_url first, fallback to constructed URL */}
+        {(q.image_url || questionImageUrl(q.id, gradeKey)) && (
           <motion.div variants={fadeUp} className="flex justify-center mb-3 mt-2">
-            <LoadingImage
-              src={questionImageUrl(q.id, gradeKey)}
+            <img
+              src={q.image_url || questionImageUrl(q.id, gradeKey)}
+              alt=""
               className="max-h-[180px] sm:max-h-[220px] md:max-h-[300px] w-auto object-contain rounded-2xl shadow-md border-2 border-white dark:border-slate-700"
             />
           </motion.div>
