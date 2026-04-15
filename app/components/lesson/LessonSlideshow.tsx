@@ -965,7 +965,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
                                   initial={{ opacity: 0 }}
                                   animate={{ opacity: exampleShown ? 1 : 0 }}
                                   transition={{ duration: 0.4 }}
-                                  className="text-base text-zinc-500 dark:text-zinc-400 italic"
+                                  className="text-base text-zinc-500 dark:text-zinc-400 italic text-center"
                                 >
                                   {row.example ?? ""}
                                 </motion.span>
