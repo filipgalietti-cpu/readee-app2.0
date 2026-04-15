@@ -957,7 +957,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
                                   </motion.span>
                                 )}
                               </span>
-                              <span className="text-lg font-semibold text-zinc-700 dark:text-zinc-200">
+                              <span className="text-lg font-semibold text-zinc-700 dark:text-zinc-200 text-center">
                                 {row.value}
                               </span>
                               {hasExamples && (
