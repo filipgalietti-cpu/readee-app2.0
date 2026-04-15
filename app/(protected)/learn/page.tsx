@@ -563,9 +563,8 @@ function LearnSession({
         {/* Image — use q.image_url first, fallback to constructed URL */}
         {(q.image_url || questionImageUrl(q.id, gradeKey)) && (
           <motion.div variants={fadeUp} className="flex justify-center mb-3 mt-2">
-            <img
+            <LoadingImage
               src={q.image_url || questionImageUrl(q.id, gradeKey)}
-              alt=""
               className="max-h-[180px] sm:max-h-[220px] md:max-h-[300px] w-auto object-contain rounded-2xl shadow-md border-2 border-white dark:border-slate-700"
             />
           </motion.div>
