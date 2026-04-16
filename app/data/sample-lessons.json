@@ -4367,8 +4367,8 @@
           }
         ],
         "heading": "How Do We Read?",
-        "imagePrompt": "A large open cartoon picture book on a plain cream background. Each of the two inner pages shows exactly three horizontal gray bars stacked vertically. Above each gray bar, one bold bright green arrow points from LEFT to RIGHT with a clear arrowhead. Six identical green arrows total, all pointing right. The gray bars and arrows are plain shapes only. Absolutely no text, no letters, no words, no labels anywhere. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors.",
-        "imageFile": "images/lessons/RF.K.1a/S2.png"
+        "imagePrompt": "Animated GIF built from one Imagen base workbook (S2-base.png) with green bars composited onto rows 1 and 2 via sharp. Cycles: blank → top row highlighted → top + middle rows highlighted. Guarantees identical workbook across frames.",
+        "imageFile": "images/lessons/RF.K.1a/S2.gif"
       },
       {
         "slide": 3,
