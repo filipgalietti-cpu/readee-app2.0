@@ -4816,8 +4816,8 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.1c/S4b.mp3",
             "ttsScript": "Put your finger down after writing a word, then start the next word after your finger. Perfect spaces every time!",
-            "interaction": "Pill: [Finger space trick!] pops in.",
-            "displayText": "Finger space trick!",
+            "interaction": "Pill: [👆 Finger space trick!] pops in.",
+            "displayText": "👆 Finger space trick!",
             "displayDelay": 1550
           },
           {
