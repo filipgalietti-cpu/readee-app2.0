@@ -3727,7 +3727,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RI.K.7/S2b.mp3",
-            "ttsScript": "If a book says elephants are big \u2014 the picture shows you just HOW big they are!",
+            "ttsScript": "When a fact book says elephants are ENORMOUS, the picture shows you just HOW big they really are!",
             "interaction": "Pill: [Pictures show what things look like] pops in blue.",
             "displayText": "Pictures show what things look like",
             "displayDelay": 1318
