@@ -4937,7 +4937,7 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.1d/S2a.mp3",
-            "ttsScript": "Every letter has a big version and a small version. Like A and a \u2014 same letter, different size!",
+            "ttsScript": "Every letter has a big version and a small version. Like big B and small b. Same letter, different size!",
             "interaction": "Heading appears.",
             "displayText": ""
           },
