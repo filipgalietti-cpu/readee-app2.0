@@ -1921,15 +1921,15 @@
         {
           "id": "RI.K.7-Q3",
           "type": "multiple_choice",
-          "prompt": "The text says: \"A caterpillar becomes a butterfly.\" The picture shows: Egg → Caterpillar → Cocoon → Butterfly.\n\nThe picture shows...",
+          "prompt": "The text says: \"A caterpillar becomes a butterfly.\" The picture shows egg, caterpillar, cocoon, and butterfly.\n\nHow does the PICTURE help?",
           "choices": [
-            "Only the butterfly",
-            "All the steps in order",
-            "Something different from the text",
-            "Just one step"
+            "It shows all the steps in order",
+            "It only shows the butterfly",
+            "It shows something different from the text",
+            "It doesn't help at all"
           ],
-          "correct": "All the steps in order",
-          "hint": "The picture gives you MORE information — it shows each step!",
+          "correct": "It shows all the steps in order",
+          "hint": "The picture gives MORE details — it shows each step!",
           "difficulty": 2,
           "passage_audio_url": "/audio/kindergarten/RI.K.7-q3-passage.mp3",
           "choices_audio_urls": [
