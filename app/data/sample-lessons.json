@@ -4727,29 +4727,32 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.1c/S2a.mp3",
             "ttsScript": "Look at this: thecatsat. Can you read that? It's so hard!",
-            "interaction": "Heading appears.",
-            "displayText": ""
+            "interaction": "Shows 'thecatsat' squished in a red ✗ card.",
+            "displayText": "",
+            "imageFile": "images/lessons/RF.K.1c/S2-a.png"
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.1c/S2b.mp3",
             "ttsScript": "Now look: the cat sat. So much easier! The spaces tell us each word.",
-            "interaction": "Text transforms: 'thecatsat' splits into 'the cat sat' with spaces. Pill: [Spaces separate words!] pops in.",
+            "interaction": "Animates 'thecatsat' spreading apart into 'the cat sat' (red → green).",
             "displayText": "Spaces separate words!",
-            "displayDelay": 1085
+            "displayDelay": 1085,
+            "imageFile": "images/lessons/RF.K.1c/S2-b.gif"
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.1c/S2c.mp3",
             "ttsScript": "Every word needs a space before the next word starts. One finger space!",
-            "interaction": "Pill: [One finger space between words!] pops in.",
+            "interaction": "Shows 'the • cat • sat' with yellow space-dots + green ✓.",
             "displayText": "One finger space between words!",
-            "displayDelay": 1008
+            "displayDelay": 1008,
+            "imageFile": "images/lessons/RF.K.1c/S2-c.png"
           }
         ],
         "heading": "Why Do We Need Spaces?",
-        "imagePrompt": "On the left, a jumbled pile of colorful blocks crammed together with a confused face. On the right, the same blocks neatly spaced apart with a happy face. An arrow points from messy to neat. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
-        "imageFile": "images/lessons/RF.K.1c/S2.png"
+        "imagePrompt": "Code-generated per-step visuals (see scripts/make-rfk1c-s2-gif.js). S2-a.png squished 'thecatsat' red state. S2-b.gif animates letters spreading apart into 'the cat sat'. S2-c.png final green state with yellow space-dot markers.",
+        "imageFile": "images/lessons/RF.K.1c/S2-a.png"
       },
       {
         "slide": 3,
