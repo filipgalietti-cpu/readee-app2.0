@@ -55,10 +55,15 @@ class AudioManager {
         resolve();
       });
       howl.once("loaderror", () => {
+        // Evict the failed Howl from the cache so a subsequent play attempt
+        // (e.g. after the asset has since been uploaded to Supabase) tries
+        // a fresh fetch instead of re-using the broken cached instance.
+        this.cache.delete(url);
         if (this.currentHowl === howl) this.currentHowl = null;
         resolve();
       });
       howl.once("playerror", () => {
+        this.cache.delete(url);
         if (this.currentHowl === howl) this.currentHowl = null;
         resolve();
       });
