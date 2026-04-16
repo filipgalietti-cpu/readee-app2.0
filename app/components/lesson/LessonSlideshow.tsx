@@ -771,7 +771,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
         }`}
       >
         {step.displayText.split(/(\s+)/).map((seg, si) =>
-          /^[A-Z]{3,}[!?.,]?$/.test(seg) ? (
+          /^[A-Z]{2,}[!?.,]?$/.test(seg) ? (
             <span key={si} className="text-emerald-700 dark:text-emerald-300 font-extrabold">{seg}</span>
           ) : (
             <span key={si}>{seg}</span>
@@ -989,7 +989,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
                               </span>
                               <span className="text-lg font-semibold text-zinc-700 dark:text-zinc-200 text-center">
                                 {row.value.split(/(\s+)/).map((seg, si) =>
-                                  /^[A-Z]{3,}$/.test(seg) ? (
+                                  /^[A-Z]{2,}$/.test(seg) ? (
                                     <span key={si} className="text-indigo-600 dark:text-indigo-400 font-extrabold">{seg}</span>
                                   ) : (
                                     <span key={si}>{seg}</span>

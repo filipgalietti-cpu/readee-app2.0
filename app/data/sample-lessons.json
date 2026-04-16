@@ -4545,7 +4545,7 @@
             "audioFile": "audio/lessons/RF.K.1b/S2b.mp3",
             "ttsScript": "Some words are short \u2014 like 'at.' That's just two letters! A and T.",
             "interaction": "Pill: [A + T = at] pops in with two letter blocks.",
-            "displayText": "A + T make at",
+            "displayText": "A + T make AT",
             "displayDelay": 1085
           },
           {
@@ -4553,7 +4553,7 @@
             "audioFile": "audio/lessons/RF.K.1b/S2c.mp3",
             "ttsScript": "Some words are longer \u2014 like 'dog.' That's three letters! D, O, G.",
             "interaction": "Pill: [D + O + G = dog] pops in.",
-            "displayText": "D + O + G make dog",
+            "displayText": "D + O + G make DOG",
             "displayDelay": 1008
           },
           {
