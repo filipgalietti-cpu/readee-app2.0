@@ -516,10 +516,16 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
     } else {
       const prefixFile = INCORRECT_AUDIO[Math.floor(Math.random() * INCORRECT_AUDIO.length)];
       const prefixUrl = getAudioUrl("feedback", prefixFile);
-      // For MCQ questions, chain prefix + correct answer audio
-      const answerUrl = q.type === "multiple_choice" && q.audio_url
-        ? q.audio_url.replace(/\.mp3$/, "-incorrect.mp3")
-        : null;
+      // After "Try again!" prefix, chain the correct-answer readback for any
+      // question type that has one available.
+      let answerUrl: string | null = null;
+      if (q.type === "multiple_choice" && q.audio_url) {
+        answerUrl = q.audio_url.replace(/\.mp3$/, "-incorrect.mp3");
+      } else if (q.type === "missing_word" && q.id) {
+        const folder = GRADE_FOLDER[gradeKey] || gradeKey || "kindergarten";
+        const standard = q.id.replace(/-Q\d+$/, "");
+        answerUrl = `${SUPABASE_STORAGE}/audio/${folder}/${standard}/${q.id}-sentence.mp3`;
+      }
       const encourageFile = ENCOURAGE_AUDIO[Math.floor(Math.random() * ENCOURAGE_AUDIO.length)];
       const encourageUrl = getAudioUrl("feedback", encourageFile);
       if (answerUrl) {
