@@ -4367,8 +4367,8 @@
           }
         ],
         "heading": "How Do We Read?",
-        "imagePrompt": "A cheerful cartoon girl sitting cross-legged reading a large open book in her lap. The pages of the book show three horizontal rows of plain gray horizontal bars representing lines of text. Overlaid across the page are three bright arrows forming a zigzag reading path: a green arrow pointing rightward along the top bar, a purple curved arrow swooping back to the left to start the second line, and an orange arrow pointing rightward along the second bar. The arrows are pure solid-colored shapes with NO text, NO labels, NO words, NO letters — only the arrow silhouettes themselves. Absolutely no writing anywhere in the image. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors.",
-        "imageFile": "images/lessons/RF.K.1a/S2.png"
+        "imagePrompt": "Custom SVG illustration (see S2.svg): three gray text-line bars on a cream page, with green left-to-right arrows over each line and purple curved arrows swooping back to the start of the next line.",
+        "imageFile": "images/lessons/RF.K.1a/S2.svg"
       },
       {
         "slide": 3,
@@ -4428,8 +4428,8 @@
           }
         ],
         "heading": "A Helpful Trick!",
-        "imagePrompt": "A big friendly cartoon hand with a pointing finger resting under a clear row of simple gray horizontal bars (representing words on a line — NOT real letters or text). A bright green arrow shows the finger sliding from LEFT to RIGHT across the row of bars. Clean, simple close-up composition with a plain white page background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters anywhere.",
-        "imageFile": "images/lessons/RF.K.1a/S4.png"
+        "imagePrompt": "Custom SVG illustration (see S4.svg): two gray text-line bars on a cream page, with a cartoon finger pointing under the first line and a green left-to-right arrow showing the slide motion.",
+        "imageFile": "images/lessons/RF.K.1a/S4.svg"
       },
       {
         "slide": 5,
