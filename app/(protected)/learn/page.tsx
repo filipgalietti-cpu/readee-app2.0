@@ -370,7 +370,7 @@ function LearnSession({
 
   const playWordAudio = useCallback((word: string) => {
     const clean = word.replace(/[^a-zA-Z0-9 ]/g, "").toLowerCase().replace(/\s+/g, "_");
-    if (!clean) return;
+    if (!clean || clean.length <= 1) return;
     const base = process.env.NEXT_PUBLIC_SUPABASE_URL
       ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audio`
       : "";

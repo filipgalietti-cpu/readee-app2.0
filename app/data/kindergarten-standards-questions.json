@@ -2738,7 +2738,7 @@
             "E": "e"
           },
           "correct": "A\u2192a, B\u2192b, C\u2192c, D\u2192d, E\u2192e",
-          "hint": "Match the big letter to the same small letter!",
+          "hint": "Match each uppercase letter to the same lowercase letter!",
           "difficulty": 2,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1d/RF.K.1d-Q3-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1d/RF.K.1d-Q3.mp3",
