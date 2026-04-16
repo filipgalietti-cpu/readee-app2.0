@@ -3505,22 +3505,24 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RI.K.6/S3b.mp3",
-            "ttsScript": "Right there on the cover — that's the author's name! They wrote all the cool facts about space inside.",
-            "interaction": "Author name highlights. Pill: [Author found!] with checkmark.",
-            "displayText": "Author found!",
-            "displayDelay": 4560
+            "ttsScript": "Right there on the cover — by Dr. Mia Orion! That's the author's name.",
+            "interaction": "Author name pill pops in with checkmark.",
+            "displayText": "Dr. Mia Orion",
+            "displayDelay": 1500,
+            "checkmarkDelay": 3000
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RI.K.6/S3c.mp3",
-            "ttsScript": "The author wanted us to learn about planets and rockets. That's their message to us!",
-            "interaction": "Pill: [Author's message: Learn about space!] pops in. Stars.",
-            "displayText": "Author's message: Learn about space!",
-            "displayDelay": 3750
+            "ttsScript": "Dr. Orion wants us to learn about planets and rockets. That's her message!",
+            "interaction": "Message pill pops in with checkmark.",
+            "displayText": "Learn about space!",
+            "displayDelay": 1500,
+            "checkmarkDelay": 3000
           }
         ],
         "heading": "Let's Find the Author!",
-        "imagePrompt": "A simple cartoon book cover about outer space showing colorful planets, stars, and a rocket. Below the illustration, a cartoon person sits at a desk writing with a pencil, smiling. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A children's picture book standing upright on a wooden table. The FRONT cover shows a large friendly cartoon rocket blasting off past colorful planets and bright stars. Near the TOP of the cover, the title text \"All About Space\" appears clearly and legibly in large bold friendly kid-book letters. Near the BOTTOM of the cover, the byline \"by Dr. Mia Orion\" appears clearly and legibly in slightly smaller letters. The cover background is deep space navy with sparkles. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors.",
         "imageFile": "images/lessons/RI.K.6/S3.png"
       },
       {
@@ -3530,24 +3532,43 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.K.6/S4a.mp3",
-            "ttsScript": "When you read a fact book, think about this question.",
-            "interaction": "Heading with sparkle.",
+            "ttsScript": "When you read a fact book, ask yourself two questions!",
+            "interaction": "Heading and table headers appear.",
             "displayText": ""
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RI.K.6/S4b.mp3",
-            "ttsScript": "What is the author trying to teach me? That helps you understand the whole book better!",
-            "interaction": "Pill: [What is the author teaching me?] pops in.",
-            "displayText": "What is the author teaching me?",
-            "displayDelay": 1240
+            "ttsScript": "First ask: Who wrote it? That tells you the AUTHOR!",
+            "interaction": "Who wrote it? row fills in.",
+            "displayText": "Who wrote it?",
+            "displayDelay": 1500,
+            "displayTableRow": {
+              "label": "Who wrote it?",
+              "value": "The AUTHOR",
+              "tableHeaders": ["Ask Yourself", "That Tells You..."]
+            }
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RI.K.6/S4c.mp3",
-            "ttsScript": "And always check — who wrote this book?",
-            "interaction": "Author icon with a checkmark. Tap to continue.",
-            "displayText": ""
+            "ttsScript": "Then ask: What are they teaching me? That's their MESSAGE!",
+            "interaction": "Message row fills in.",
+            "displayText": "What are they teaching?",
+            "displayDelay": 1500,
+            "displayTableRow": {
+              "label": "What are they teaching?",
+              "value": "The MESSAGE"
+            }
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RI.K.6/S4d.mp3",
+            "ttsScript": "Those two questions help you understand any fact book!",
+            "interaction": "Both rows glow.",
+            "displayText": "",
+            "checkmarkTriggerDelay": 1000,
+            "checkmarkTriggerStagger": 1500
           }
         ],
         "heading": "A Helpful Trick!",
