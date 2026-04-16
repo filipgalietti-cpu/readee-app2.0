@@ -4411,28 +4411,30 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.1a/S4a.mp3",
             "ttsScript": "Use your finger to help you!",
-            "interaction": "Heading with sparkle.",
-            "displayText": ""
+            "interaction": "Finger shown at the start of the row (no motion yet).",
+            "displayText": "",
+            "imageFile": "images/lessons/RF.K.1a/S4-a.png"
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.1a/S4b.mp3",
             "ttsScript": "Put your finger under the first word. Then slide it to the right as you read!",
-            "interaction": "Pill: [Finger under words \u2192 Slide right!] pops in.",
-            "displayText": "Finger under words \u2192 Slide right!",
-            "displayDelay": 1473
+            "interaction": "Finger slides left to right under 'The cat sat' in time with the TTS.",
+            "displayText": "",
+            "imageFile": "images/lessons/RF.K.1a/S4-b.gif"
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.1a/S4c.mp3",
             "ttsScript": "Your finger is like a reading guide. It helps your eyes know where to go!",
-            "interaction": "Guide icon glows. Tap to continue.",
-            "displayText": ""
+            "interaction": "Finger at end of row with a green checkmark.",
+            "displayText": "",
+            "imageFile": "images/lessons/RF.K.1a/S4-c.png"
           }
         ],
         "heading": "A Helpful Trick!",
-        "imagePrompt": "Custom SVG illustration (see S4.svg): two gray text-line bars on a cream page, with a cartoon finger pointing under the first line and a green left-to-right arrow showing the slide motion.",
-        "imageFile": "images/lessons/RF.K.1a/S4.svg"
+        "imagePrompt": "Code-generated per-step visuals (see scripts/make-rfk1a-s4-gif.js). S4-a.png: finger at start. S4-b.gif: finger slides left-to-right under 'The cat sat', synced to TTS (~3s hold then ~4s slide). S4-c.png: finger at end with a green checkmark.",
+        "imageFile": "images/lessons/RF.K.1a/S4-a.png"
       },
       {
         "slide": 5,
