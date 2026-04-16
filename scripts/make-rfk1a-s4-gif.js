@@ -62,33 +62,35 @@ function frameSVG(row, fingerPosition, showCheck = false) {
     `<polygon points="${rowRightX - headW},${arrowY - 22} ${rowRightX},${arrowY} ${rowRightX - headW},${arrowY + 22}" fill="#16a34a"/>`
   );
 
-  // Cartoon pointing hand positioned along the row (pointing up at the words)
+  // Cartoon pointing hand positioned along the row (pointing up at the words).
+  // Layout: index finger on the LEFT side of the palm, thumb wrapping further left,
+  // three curled fingers stacked on the RIGHT of the palm — reads as an emoji-style 👆.
   if (fingerPosition !== null) {
     const travelLeft = rowLeftX + 10;
     const travelRight = rowRightX - headW - 10;
     const tipX = travelLeft + (travelRight - travelLeft) * fingerPosition;
-    const tipY = arrowY + 15; // fingertip touches just under the arrow
-    // Cartoon hand: palm + extended index finger pointing up + thumb + curled fingers
-    // Whole hand is ~80 wide x 130 tall. Translate so the index fingertip lands at (tipX, tipY).
+    const tipY = arrowY + 15;
+    // Coordinates anchor at the index fingertip (tipX, tipY).
     parts.push(
-      `<g transform="translate(${tipX - 40}, ${tipY})">
-        <!-- Curled fingers (behind, to the right of the palm) -->
-        <path d="M 62 62 Q 78 58 78 75 L 78 100 Q 78 114 62 114 Z" fill="#f8c999" stroke="#8b4513" stroke-width="2.5"/>
-        <path d="M 55 56 Q 70 52 72 70 L 72 105 Q 72 119 56 119 Z" fill="#fcd9b6" stroke="#8b4513" stroke-width="2.5"/>
+      `<g transform="translate(${tipX - 22}, ${tipY})">
+        <!-- Three curled fingers on the RIGHT of the palm, stacked like knuckle bumps -->
+        <path d="M 38 62 Q 58 60 58 76 L 58 92 Q 58 104 40 104 Z" fill="#f2c08a" stroke="#8b4513" stroke-width="2.5"/>
+        <path d="M 36 78 Q 60 76 60 92 L 60 108 Q 60 120 40 120 Z" fill="#f8c999" stroke="#8b4513" stroke-width="2.5"/>
+        <path d="M 34 94 Q 56 92 56 108 L 56 122 Q 56 134 38 134 Z" fill="#f2c08a" stroke="#8b4513" stroke-width="2.5"/>
+        <!-- Thumb: wraps up from the left side of the palm -->
+        <path d="M 2 88 Q -10 72 4 60 Q 18 52 26 70 L 26 96 Q 20 100 12 98 Z"
+              fill="#fcd9b6" stroke="#8b4513" stroke-width="3"/>
         <!-- Palm / back of hand -->
-        <path d="M 22 65 Q 22 48 40 48 L 56 48 Q 72 48 72 72 L 72 115 Q 72 135 50 135 L 30 135 Q 22 135 22 120 Z"
+        <path d="M 4 90 Q 4 70 22 65 L 40 65 Q 60 65 60 90 L 60 125 Q 60 145 36 145 L 16 145 Q 4 145 4 128 Z"
               fill="#fcd9b6" stroke="#8b4513" stroke-width="3"/>
-        <!-- Index finger (extended UP) -->
-        <rect x="30" y="-8" width="24" height="68" rx="12" fill="#fcd9b6" stroke="#8b4513" stroke-width="3"/>
+        <!-- Index finger (extended UP) on the LEFT side of the palm -->
+        <rect x="10" y="-6" width="24" height="74" rx="12" fill="#fcd9b6" stroke="#8b4513" stroke-width="3"/>
         <!-- Fingertip dome highlight -->
-        <ellipse cx="42" cy="-2" rx="7" ry="4" fill="#fff3e0" opacity="0.9"/>
+        <ellipse cx="22" cy="0" rx="7" ry="4" fill="#fff3e0" opacity="0.9"/>
         <!-- Knuckle crease on finger -->
-        <line x1="33" y1="28" x2="51" y2="28" stroke="#8b4513" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
-        <!-- Thumb (curved, on left side of palm) -->
-        <path d="M 22 78 Q 4 82 6 100 Q 8 118 22 118 L 22 80 Z"
-              fill="#fcd9b6" stroke="#8b4513" stroke-width="3"/>
-        <!-- Wrist cuff (subtle) -->
-        <rect x="24" y="130" width="44" height="14" rx="7" fill="#a78bfa" stroke="#6d28d9" stroke-width="2.5"/>
+        <line x1="13" y1="32" x2="31" y2="32" stroke="#8b4513" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+        <!-- Wrist cuff -->
+        <rect x="4" y="140" width="56" height="14" rx="7" fill="#a78bfa" stroke="#6d28d9" stroke-width="2.5"/>
       </g>`
     );
   }
