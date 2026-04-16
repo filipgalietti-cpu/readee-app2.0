@@ -145,37 +145,45 @@ async function stitchGif(segments, outGif) {
   await svgToPng(frameSVG(layout, null), `${OUT_DIR}/S3-a.png`);
 
   // ── Step b: line 1 karaoke (The → cat → sat) ──
-  // Audio is ~6.6s: "I start here on the left. (2.5s) I read (0.8s) the cat sat. (2.5s) [tail ~0.8s]"
-  // Keep the sentence blank while the intro plays, then highlight each word
-  // starting right before the narrator says it, and hold on "sat" to the tail.
-  await svgToPng(frameSVG(layout, null), `${OUT_DIR}/S3-b0.png`);        // blank intro
+  // Timings derived from ffmpeg silencedetect on S3b.mp3 (6.6s total):
+  //   0.19-2.28s  "I start here on the left."
+  //   2.84-3.59s  "I read."
+  //   4.13-5.08s  "the cat"     (spoken as a phrase; "The" starts at 4.13)
+  //   5.46-6.08s  "sat"
+  //   6.08-6.61s  tail silence
+  await svgToPng(frameSVG(layout, null), `${OUT_DIR}/S3-b0.png`);
   await svgToPng(frameSVG(layout, { li: 0, wi: 0 }), `${OUT_DIR}/S3-b1.png`); // "The"
   await svgToPng(frameSVG(layout, { li: 0, wi: 1 }), `${OUT_DIR}/S3-b2.png`); // "cat"
   await svgToPng(frameSVG(layout, { li: 0, wi: 2 }), `${OUT_DIR}/S3-b3.png`); // "sat"
   await stitchGif(
     [
-      { file: `${OUT_DIR}/S3-b0.png`, duration: 3.3 }, // "I start here on the left. I read"
-      { file: `${OUT_DIR}/S3-b1.png`, duration: 0.8 }, // "the"
-      { file: `${OUT_DIR}/S3-b2.png`, duration: 0.8 }, // "cat"
-      { file: `${OUT_DIR}/S3-b3.png`, duration: 1.7 }, // "sat" + tail hold
+      { file: `${OUT_DIR}/S3-b0.png`, duration: 4.13 }, // blank through "I read"
+      { file: `${OUT_DIR}/S3-b1.png`, duration: 0.35 }, // "The"
+      { file: `${OUT_DIR}/S3-b2.png`, duration: 1.0 },  // "cat" (covers pause before "sat")
+      { file: `${OUT_DIR}/S3-b3.png`, duration: 1.15 }, // "sat" + tail
     ],
     "S3-b.gif"
   );
 
   // ── Step c: line 1 grayed + line 2 karaoke (on → a → mat) ──
-  // Audio is ~9.3s: "Now I drop down to the next line. (3s) I start on the left again. (2.5s)
-  //                  On a mat. (2s) [tail ~1.8s]"
+  // Timings from S3c.mp3 (9.3s):
+  //   0.24-3.75s  "Now I drop down to the next line."
+  //   4.42-6.09s  "I start on the left again."
+  //   6.79-7.36s  "On"
+  //   7.63-8.04s  "a"
+  //   8.26-8.64s  "mat"
+  //   8.90+       tail silence
   const completed = new Set([0]);
-  await svgToPng(frameSVG(layout, null, completed),           `${OUT_DIR}/S3-c0.png`);
-  await svgToPng(frameSVG(layout, { li: 1, wi: 0 }, completed),`${OUT_DIR}/S3-c1.png`); // "on"
-  await svgToPng(frameSVG(layout, { li: 1, wi: 1 }, completed),`${OUT_DIR}/S3-c2.png`); // "a"
-  await svgToPng(frameSVG(layout, { li: 1, wi: 2 }, completed),`${OUT_DIR}/S3-c3.png`); // "mat"
+  await svgToPng(frameSVG(layout, null, completed),            `${OUT_DIR}/S3-c0.png`);
+  await svgToPng(frameSVG(layout, { li: 1, wi: 0 }, completed), `${OUT_DIR}/S3-c1.png`); // "on"
+  await svgToPng(frameSVG(layout, { li: 1, wi: 1 }, completed), `${OUT_DIR}/S3-c2.png`); // "a"
+  await svgToPng(frameSVG(layout, { li: 1, wi: 2 }, completed), `${OUT_DIR}/S3-c3.png`); // "mat"
   await stitchGif(
     [
-      { file: `${OUT_DIR}/S3-c0.png`, duration: 5.5 }, // "Now I drop down... start on the left again."
-      { file: `${OUT_DIR}/S3-c1.png`, duration: 0.7 }, // "on"
-      { file: `${OUT_DIR}/S3-c2.png`, duration: 0.6 }, // "a"
-      { file: `${OUT_DIR}/S3-c3.png`, duration: 2.5 }, // "mat" + tail hold
+      { file: `${OUT_DIR}/S3-c0.png`, duration: 6.79 }, // blank through "start on the left again"
+      { file: `${OUT_DIR}/S3-c1.png`, duration: 0.84 }, // "On"
+      { file: `${OUT_DIR}/S3-c2.png`, duration: 0.63 }, // "a"
+      { file: `${OUT_DIR}/S3-c3.png`, duration: 1.05 }, // "mat" + tail
     ],
     "S3-c.gif"
   );
