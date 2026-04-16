@@ -3783,28 +3783,47 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.K.7/S4a.mp3",
-            "ttsScript": "Don't skip the pictures in fact books!",
-            "interaction": "Heading with sparkle.",
+            "ttsScript": "When you read a fact book, ask yourself two questions about every picture!",
+            "interaction": "Heading and table headers appear.",
             "displayText": ""
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RI.K.7/S4b.mp3",
-            "ttsScript": "Always stop and look at every picture. Ask yourself: What is this picture showing me?",
-            "interaction": "Pill: [Stop and look! What does the picture show?] pops in.",
-            "displayText": "Stop and look! What does the picture show?",
-            "displayDelay": 1163
+            "ttsScript": "First ask: What do I see? That shows you what things LOOK like!",
+            "interaction": "First row fills in.",
+            "displayText": "What do I see?",
+            "displayDelay": 1500,
+            "displayTableRow": {
+              "label": "What do I see?",
+              "value": "What things LOOK like",
+              "tableHeaders": ["Ask Yourself", "The Picture Shows You..."]
+            }
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RI.K.7/S4c.mp3",
-            "ttsScript": "Pictures are your secret weapon for learning!",
-            "interaction": "Superhero cape on magnifying glass. Tap to continue.",
-            "displayText": ""
+            "ttsScript": "Then ask: What is it teaching me? That shows you what the words MEAN!",
+            "interaction": "Second row fills in.",
+            "displayText": "What is it teaching?",
+            "displayDelay": 1500,
+            "displayTableRow": {
+              "label": "What is it teaching?",
+              "value": "What the words MEAN"
+            }
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RI.K.7/S4d.mp3",
+            "ttsScript": "Those two questions help you learn from every picture!",
+            "interaction": "Both rows glow.",
+            "displayText": "",
+            "checkmarkTriggerDelay": 1000,
+            "checkmarkTriggerStagger": 1200
           }
         ],
         "heading": "A Helpful Trick!",
-        "imagePrompt": "A cartoon child looking closely at a framed picture of a rainforest scene with a magnifying glass. Bright lightbulb icons float around the child's head, showing discovery. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A cheerful cartoon child sitting cross-legged on the floor reading a large open picture book. Their finger points at a bright illustration inside the book. A thought bubble above their head shows a glowing lightbulb. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RI.K.7/S4.png"
       },
       {
