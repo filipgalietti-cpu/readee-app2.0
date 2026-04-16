@@ -70,7 +70,7 @@ interface AnswerRecord {
 
 /* ─── Constants ──────────────────────────────────────── */
 
-const QUESTIONS_PER_SESSION = 5;
+const QUESTIONS_PER_SESSION = 6;
 const CARROTS_PER_CORRECT = 5;
 
 const CHOICE_COLORS = [
