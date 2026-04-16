@@ -2681,7 +2681,7 @@
         {
           "id": "RF.K.1d-Q1",
           "type": "multiple_choice",
-          "prompt": "Which is the UPPERCASE (capital) version of the letter a?",
+          "prompt": "Which is the UPPERCASE (capital) version of the letter \"a\"?",
           "choices": [
             "A",
             "B",
