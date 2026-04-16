@@ -4410,7 +4410,7 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.1a/S4a.mp3",
-            "ttsScript": "Use your finger to help you!",
+            "ttsScript": "Here's a trick to help you read.",
             "interaction": "Finger shown at the start of the row (no motion yet).",
             "displayText": "",
             "imageFile": "images/lessons/RF.K.1a/S4-a.png"
@@ -4418,7 +4418,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.1a/S4b.mp3",
-            "ttsScript": "Put your finger under the first word. Then slide it to the right as you read!",
+            "ttsScript": "Put your finger under the first word. Then slide it to the right as you read.",
             "interaction": "Finger slides left to right under 'The cat sat' in time with the TTS.",
             "displayText": "",
             "imageFile": "images/lessons/RF.K.1a/S4-b.gif"
@@ -4426,7 +4426,7 @@
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.1a/S4c.mp3",
-            "ttsScript": "Your finger is like a reading guide. It helps your eyes know where to go!",
+            "ttsScript": "Your finger helps your eyes know where to go.",
             "interaction": "Finger at end of row with a green checkmark.",
             "displayText": "",
             "imageFile": "images/lessons/RF.K.1a/S4-c.png"

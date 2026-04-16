@@ -62,22 +62,33 @@ function frameSVG(row, fingerPosition, showCheck = false) {
     `<polygon points="${rowRightX - headW},${arrowY - 22} ${rowRightX},${arrowY} ${rowRightX - headW},${arrowY + 22}" fill="#16a34a"/>`
   );
 
-  // Cartoon finger positioned along the row
+  // Cartoon pointing hand positioned along the row (pointing up at the words)
   if (fingerPosition !== null) {
     const travelLeft = rowLeftX + 10;
     const travelRight = rowRightX - headW - 10;
     const tipX = travelLeft + (travelRight - travelLeft) * fingerPosition;
-    const tipY = arrowY + 30; // slightly below the arrow
+    const tipY = arrowY + 15; // fingertip touches just under the arrow
+    // Cartoon hand: palm + extended index finger pointing up + thumb + curled fingers
+    // Whole hand is ~80 wide x 130 tall. Translate so the index fingertip lands at (tipX, tipY).
     parts.push(
-      `<g transform="translate(${tipX - 18}, ${tipY})">
-        <!-- Fingertip -->
-        <circle cx="18" cy="0" r="14" fill="#fcd9b6" stroke="#b45309" stroke-width="3"/>
-        <!-- Finger body -->
-        <rect x="4" y="10" width="28" height="70" rx="14" fill="#fcd9b6" stroke="#b45309" stroke-width="3"/>
-        <!-- Thumb hint -->
-        <ellipse cx="-6" cy="40" rx="10" ry="14" fill="#fcd9b6" stroke="#b45309" stroke-width="3"/>
-        <!-- Fingernail highlight -->
-        <ellipse cx="18" cy="-4" rx="6" ry="4" fill="#fff1dd"/>
+      `<g transform="translate(${tipX - 40}, ${tipY})">
+        <!-- Curled fingers (behind, to the right of the palm) -->
+        <path d="M 62 62 Q 78 58 78 75 L 78 100 Q 78 114 62 114 Z" fill="#f8c999" stroke="#8b4513" stroke-width="2.5"/>
+        <path d="M 55 56 Q 70 52 72 70 L 72 105 Q 72 119 56 119 Z" fill="#fcd9b6" stroke="#8b4513" stroke-width="2.5"/>
+        <!-- Palm / back of hand -->
+        <path d="M 22 65 Q 22 48 40 48 L 56 48 Q 72 48 72 72 L 72 115 Q 72 135 50 135 L 30 135 Q 22 135 22 120 Z"
+              fill="#fcd9b6" stroke="#8b4513" stroke-width="3"/>
+        <!-- Index finger (extended UP) -->
+        <rect x="30" y="-8" width="24" height="68" rx="12" fill="#fcd9b6" stroke="#8b4513" stroke-width="3"/>
+        <!-- Fingertip dome highlight -->
+        <ellipse cx="42" cy="-2" rx="7" ry="4" fill="#fff3e0" opacity="0.9"/>
+        <!-- Knuckle crease on finger -->
+        <line x1="33" y1="28" x2="51" y2="28" stroke="#8b4513" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+        <!-- Thumb (curved, on left side of palm) -->
+        <path d="M 22 78 Q 4 82 6 100 Q 8 118 22 118 L 22 80 Z"
+              fill="#fcd9b6" stroke="#8b4513" stroke-width="3"/>
+        <!-- Wrist cuff (subtle) -->
+        <rect x="24" y="130" width="44" height="14" rx="7" fill="#a78bfa" stroke="#6d28d9" stroke-width="2.5"/>
       </g>`
     );
   }
@@ -133,13 +144,14 @@ async function stitchGif(segments, outGif) {
   await svgToPng(frameSVG(row, 0), `${OUT_DIR}/S4-a.png`);
 
   // S4b: animate finger from left to right.
-  // Audio 9.2s: "Put your finger under the first word." (3s) "Then slide it to the right as you read!" (~4s) + tail ~2s
-  // Hold on left for 3s while narrator says "put your finger under the first word",
-  // then slide across in ~4s, then hold at right.
+  // Measured from ffmpeg silencedetect on new S4b (7.78s total):
+  //   0.27-3.31s  "Put your finger under the first word."
+  //   3.99-7.23s  "Then slide it to the right as you read."
+  //   7.23+       tail silence (0.55s)
   const FRAMES = 30; // smoothness of slide
-  const slideStart = 3.0; // seconds — finger starts moving after "put your finger…"
-  const slideDur = 4.0;   // seconds to reach the right edge
-  const holdTail = 2.2;   // hold at end for tail silence
+  const slideStart = 4.0; // finger begins moving when narrator says "Then slide it…"
+  const slideDur = 3.2;   // reach right edge by end of second sentence (~7.2s)
+  const holdTail = 0.58;  // short hold at right during tail silence
 
   // Write a hold frame at position 0, then a sequence of frames from 0→1.
   await svgToPng(frameSVG(row, 0), `${OUT_DIR}/S4-bhold.png`);
