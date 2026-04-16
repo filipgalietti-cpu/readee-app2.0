@@ -4703,16 +4703,17 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.1c/S1b.mp3",
             "ttsScript": "Spaces help us see where one word ends and the next word begins!",
-            "interaction": "'Spaces' appears between two word blocks, separating them.",
-            "displayText": "Spaces",
+            "interaction": "Pill pops in with meaning.",
+            "displayText": "Spaces help us see each WORD!",
             "displayDelay": 1500
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.1c/S1c.mp3",
             "ttsScript": "Without spaces, everything would be all mushed together! Let's learn more!",
-            "interaction": "Mushed text example briefly appears then separates. Tap to continue.",
-            "displayText": ""
+            "interaction": "Pill pops in.",
+            "displayText": "Without spaces? Total MUSH!",
+            "displayDelay": 1500
           }
         ],
         "heading": "Spaces Between Words!",
