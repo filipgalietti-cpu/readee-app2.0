@@ -754,7 +754,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
       >
         {step.displayText.split(/(\s+)/).map((seg, si) =>
           /^[A-Z]{3,}[!?.,]?$/.test(seg) ? (
-            <span key={si} className="text-indigo-700 dark:text-indigo-300 font-extrabold">{seg}</span>
+            <span key={si} className="text-emerald-700 dark:text-emerald-300 font-extrabold">{seg}</span>
           ) : (
             <span key={si}>{seg}</span>
           )
