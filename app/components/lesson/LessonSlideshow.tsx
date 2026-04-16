@@ -371,6 +371,13 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
 
   /* ─── Render helpers ─── */
 
+  const highlightCaps = (text: string, cls = "text-blue-700 dark:text-blue-300 font-extrabold") =>
+    text.split(/(\s+)/).map((seg, si) =>
+      /^[A-Z]{2,}[!?.,]?$/.test(seg)
+        ? <span key={si} className={cls}>{seg}</span>
+        : <span key={si}>{seg}</span>
+    );
+
   const getFeedback = (step: Step) => {
     const int = step.interaction?.toLowerCase() ?? "";
     const isPositive = int.includes("checkmark") || int.includes("highlights") || (int.includes("celebration") && !int.includes("stars"));
@@ -522,7 +529,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
                 transition={{ type: "spring", stiffness: 400, damping: 15 }}
                 className={`rounded-full px-5 sm:px-8 py-2 sm:py-3 text-lg sm:text-2xl font-bold text-center shadow-sm ${PILL_COLORS[p % PILL_COLORS.length]} ${showFeedback ? ringClass : ""}`}
               >
-                {part.text}
+                {highlightCaps(part.text)}
               </motion.span>
             );
           })}
@@ -622,7 +629,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
                   isExample ? "text-zinc-700 dark:text-zinc-200" : theme.cardText
                 }`}
               >
-                {part.text}
+                {highlightCaps(part.text)}
               </motion.p>
             );
           })}
@@ -650,7 +657,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
               }
               className={`rounded-full px-5 py-2 text-xl font-bold text-center shadow-sm ${PILL_COLORS[p % PILL_COLORS.length]}`}
             >
-              {part.text}
+              {highlightCaps(part.text)}
             </motion.span>
           );
         })}
