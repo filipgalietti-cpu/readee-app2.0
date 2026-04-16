@@ -2704,7 +2704,7 @@
         {
           "id": "RF.K.1d-Q2",
           "type": "multiple_choice",
-          "prompt": "Which is the LOWERCASE (small) version of the letter G?",
+          "prompt": "Which is the LOWERCASE version of the letter \"G\"?",
           "choices": [
             "g",
             "j",
