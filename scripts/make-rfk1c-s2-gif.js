@@ -9,13 +9,23 @@
 
 const sharp = require("sharp");
 const fs = require("fs");
+const path = require("path");
 const { execSync } = require("child_process");
 
 const OUT_DIR = "public/images/lessons/RF.K.1c";
 const W = 900;
-const H = 420;
+const H = 480;
 const FONT = "'Comic Sans MS', 'Comic Neue', 'Baloo 2', 'Chalkboard SE', Arial, sans-serif";
 const LETTER_SIZE = 90;
+
+// Yellow Twemoji 👆 — reused from scripts/hand-pointer.svg for the "one finger space" marker.
+const HAND_SVG_RAW = fs.readFileSync(path.resolve(__dirname, "hand-pointer.svg"), "utf-8");
+const HAND_INNER = HAND_SVG_RAW
+  .replace(/^[\s\S]*?<svg[^>]*>/, "")
+  .replace(/<\/svg>\s*$/, "");
+const HAND_NATIVE = 80;
+const HAND_TIP_X = 35;
+const HAND_TIP_Y = 6;
 
 const LETTERS = ["t", "h", "e", "c", "a", "t", "s", "a", "t"];
 // Which letters are the START of a word (indexes in LETTERS).
@@ -81,13 +91,22 @@ function frameSVG({ state, gap = 0, showSpaceDots = false }) {
     `;
   }
 
-  // Space markers between word boundaries
+  // "One finger space" markers — small Twemoji pointing hands sit in the gap
+  // between each pair of words.
   let spaceDots = "";
   if (showSpaceDots && gap > 0) {
+    const HAND_DISPLAY = 72;
+    const scale = HAND_DISPLAY / HAND_NATIVE;
     for (let i = 1; i < LETTERS.length; i++) {
       if (!WORD_STARTS.includes(i)) continue;
       const midX = (positions[i - 1] + positions[i]) / 2 + LETTER_SIZE * 0.14;
-      spaceDots += `<circle cx="${midX}" cy="${letterY - 2}" r="10" fill="#facc15" stroke="#ca8a04" stroke-width="3"/>`;
+      // Anchor the fingertip just below the text baseline so the hand sits in
+      // the gap pointing up at the space.
+      const tipX = midX;
+      const tipY = letterY + 30;
+      const offsetX = tipX - HAND_TIP_X * scale;
+      const offsetY = tipY - HAND_TIP_Y * scale;
+      spaceDots += `<g transform="translate(${offsetX} ${offsetY}) scale(${scale})">${HAND_INNER}</g>`;
     }
   }
 

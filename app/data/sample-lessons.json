@@ -4751,8 +4751,8 @@
           }
         ],
         "heading": "Why Do We Need Spaces?",
-        "imagePrompt": "Code-generated per-step visuals (see scripts/make-rfk1c-s2-gif.js). S2-a.png squished 'thecatsat' red state. S2-b.gif animates letters spreading apart into 'the cat sat'. S2-c.png final green state with yellow space-dot markers.",
-        "imageFile": "images/lessons/RF.K.1c/S2-a.png"
+        "imagePrompt": "Code-generated per-step visuals (see scripts/make-rfk1c-s2-gif.js). S2-a.png squished 'thecatsat' red state. S2-b.gif animates letters spreading apart into 'the cat sat'. S2-c.png final green state with Twemoji 👆 finger-space markers between words.",
+        "imageFile": "images/lessons/RF.K.1c/S2-c.png"
       },
       {
         "slide": 3,
