@@ -4367,7 +4367,7 @@
           }
         ],
         "heading": "How Do We Read?",
-        "imagePrompt": "A cheerful cartoon hand with a pointing finger following a bright colorful arrow that goes from left to right across the screen. The arrow is rainbow-colored with sparkle trails. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A cheerful cartoon girl sitting cross-legged reading a large open book in her lap. The pages of the book show three horizontal rows of plain gray horizontal bars representing lines of text. Overlaid across the page are three bright arrows forming a zigzag reading path: a green arrow pointing rightward along the top bar, a purple curved arrow swooping back to the left to start the second line, and an orange arrow pointing rightward along the second bar. The arrows are pure solid-colored shapes with NO text, NO labels, NO words, NO letters — only the arrow silhouettes themselves. Absolutely no writing anywhere in the image. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors.",
         "imageFile": "images/lessons/RF.K.1a/S2.png"
       },
       {
@@ -4414,7 +4414,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.1a/S4b.mp3",
-            "ttsScript": "Put your finger under the first word on the left, then slide it to the right as you read!",
+            "ttsScript": "Put your finger under the first word. Then slide it to the right as you read!",
             "interaction": "Pill: [Finger under words \u2192 Slide right!] pops in.",
             "displayText": "Finger under words \u2192 Slide right!",
             "displayDelay": 1473
@@ -4428,7 +4428,7 @@
           }
         ],
         "heading": "A Helpful Trick!",
-        "imagePrompt": "A cartoon child pointing finger at a book page with a dotted line showing the reading path from left to right. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A big friendly cartoon hand with a pointing finger resting under a clear row of simple gray horizontal bars (representing words on a line — NOT real letters or text). A bright green arrow shows the finger sliding from LEFT to RIGHT across the row of bars. Clean, simple close-up composition with a plain white page background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters anywhere.",
         "imageFile": "images/lessons/RF.K.1a/S4.png"
       },
       {
@@ -4452,7 +4452,7 @@
           }
         ],
         "heading": "Time to Practice!",
-        "imagePrompt": "A cartoon child proudly reading a book with a straight left-to-right arrow above the page, surrounded by stars. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A joyful cartoon kindergartener jumping with excitement, holding up a book high above their head with both hands. Bright stars, sparkles, and colorful confetti burst around them. A plain light background. Clean, celebratory composition. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters anywhere.",
         "imageFile": "images/lessons/RF.K.1a/S5.png"
       },
       {
