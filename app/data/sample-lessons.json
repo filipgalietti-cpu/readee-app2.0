@@ -4345,14 +4345,14 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.1a/S2a.mp3",
-            "ttsScript": "We read from left to right, just like this!",
+            "ttsScript": "When we read, we start on the LEFT side of the page. Then we move across to the RIGHT side.",
             "interaction": "Heading appears.",
             "displayText": ""
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.1a/S2b.mp3",
-            "ttsScript": "Start on the left side of the page. Then move your eyes across to the right side.",
+            "ttsScript": "Left to right! That's how we read every single line.",
             "interaction": "Pill: [Left \u2192 Right] pops in with animated arrow.",
             "displayText": "Left \u2192 Right",
             "displayDelay": 1318
@@ -4360,7 +4360,7 @@
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.1a/S2c.mp3",
-            "ttsScript": "When you get to the end of a line, what do you do? You go down to the next line and start on the left again!",
+            "ttsScript": "When you reach the end of a line, go down and start at the LEFT of the next line. Keep going — left to right, line by line!",
             "interaction": "Pill: [End of line \u2192 Next line \u2192 Start left again!] pops in.",
             "displayText": "End of line \u2192 Next line \u2192 Start left again!",
             "displayDelay": 2015
