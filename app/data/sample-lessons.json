@@ -136,7 +136,7 @@
           {
             "sub": "c",
             "audioFile": "audio/lessons/RL.K.1/S3c.mp3",
-            "ttsScript": "Now let's find the key details! Who is the story about? That's right — Max the dog!",
+            "ttsScript": "Now let's find the key details! Who is the story about? That's right \u2014 Max the dog!",
             "displayText": "",
             "displayParts": [
               {
@@ -305,7 +305,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.2a/S1b.mp3",
-            "ttsScript": "Rhyming words are words that sound the same at the end. Like cat and hat! Listen — cat, hat. Hear how they match?",
+            "ttsScript": "Rhyming words are words that sound the same at the end. Like cat and hat! Listen \u2014 cat, hat. Hear how they match?",
             "interaction": "'Cat' and 'Hat' appear on screen and bounce together. A sound wave connects them.",
             "displayParts": [
               {
@@ -667,7 +667,7 @@
           {
             "sub": "e",
             "audioFile": "audio/lessons/RI.K.1/S3e.mp3",
-            "ttsScript": "Can they fly? Nope! That's an important fact too. Look at you — you found all the key details!",
+            "ttsScript": "Can they fly? Nope! That's an important fact too. Look at you \u2014 you found all the key details!",
             "displayText": "",
             "interaction": "'Can they fly? No!' highlights. Celebration burst. Tap to continue.",
             "displayParts": [
@@ -1021,7 +1021,7 @@
           }
         ],
         "heading": "A Secret Trick!",
-        "imagePrompt": "Three colorful stepping stones in a row — a gold stone with one star, a blue stone with two stars, and a green stone with three stars. A cartoon child hops across them happily. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "Three colorful stepping stones in a row \u2014 a gold stone with one star, a blue stone with two stars, and a green stone with three stars. A cartoon child hops across them happily. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RL.K.2/S4.png"
       },
       {
@@ -1038,7 +1038,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.K.2/S5b.mp3",
-            "ttsScript": "Now let's practice retelling some short stories. Remember — beginning, middle, end. Let's go!",
+            "ttsScript": "Now let's practice retelling some short stories. Remember \u2014 beginning, middle, end. Let's go!",
             "interaction": "'Let's Go!' button pulses.",
             "displayText": "Let's retell some stories!",
             "displayDelay": 3500
@@ -1572,7 +1572,7 @@
                 "What It Has",
                 "Sounds Like"
               ],
-              "example": "Beginning → Middle → End",
+              "example": "Beginning \u2192 Middle \u2192 End",
               "exampleDelay": 2500
             }
           },
@@ -1734,7 +1734,7 @@
           }
         ],
         "heading": "Time to Practice!",
-        "imagePrompt": "A cartoon child happily organizing colorful storybooks into two bright bins — one red bin and one blue bin. The books are different colors and sizes. Gold stars float around. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A cartoon child happily organizing colorful storybooks into two bright bins \u2014 one red bin and one blue bin. The books are different colors and sizes. Gold stars float around. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RL.K.5/S5.png"
       },
       {
@@ -1881,7 +1881,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.K.6/S3b.mp3",
-            "ttsScript": "On the cover, it says 'Written by' — that's the author! They wrote all the words.",
+            "ttsScript": "On the cover, it says 'Written by' \u2014 that's the author! They wrote all the words.",
             "interaction": "Table row: Written by = Author with checkmark.",
             "displayText": "Author",
             "displayDelay": 4000,
@@ -1901,7 +1901,7 @@
           {
             "sub": "c",
             "audioFile": "audio/lessons/RL.K.6/S3c.mp3",
-            "ttsScript": "And it says 'Illustrated by' — that's the illustrator! They drew all the pictures.",
+            "ttsScript": "And it says 'Illustrated by' \u2014 that's the illustrator! They drew all the pictures.",
             "interaction": "Table row: Illustrated by = Illustrator with checkmark.",
             "displayText": "Illustrator",
             "displayDelay": 4000,
@@ -1939,7 +1939,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.K.6/S4b.mp3",
-            "ttsScript": "Find the name after 'by' or 'written by' — that's the author.",
+            "ttsScript": "Find the name after 'by' or 'written by' \u2014 that's the author.",
             "interaction": "Table row: Author = Look for 'Written by'.",
             "displayText": "Author",
             "displayDelay": 930,
@@ -2078,7 +2078,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.K.7/S2b.mp3",
-            "ttsScript": "They show us the setting — where the story is happening!",
+            "ttsScript": "They show us the setting \u2014 where the story is happening!",
             "interaction": "Setting row fills in.",
             "displayText": "Setting",
             "displayDelay": 0,
@@ -2156,7 +2156,7 @@
           {
             "sub": "c",
             "audioFile": "audio/lessons/RL.K.7/S3c.mp3",
-            "ttsScript": "How does the kid feel? Look at that big smile — happy and having fun!",
+            "ttsScript": "How does the kid feel? Look at that big smile \u2014 happy and having fun!",
             "interaction": "Feeling row fills in with checkmark.",
             "displayText": "Feeling",
             "displayDelay": 5000,
@@ -2377,7 +2377,7 @@
           {
             "sub": "d",
             "audioFile": "audio/lessons/RL.K.9/S2d.mp3",
-            "ttsScript": "Same and different — that's comparing! Easy, right?",
+            "ttsScript": "Same and different \u2014 that's comparing! Easy, right?",
             "interaction": "Both pills side by side. Tap to continue.",
             "displayText": ""
           }
@@ -2570,7 +2570,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RI.K.2/S1b.mp3",
-            "ttsScript": "Like a book about dogs — the main topic is dogs! Everything in it tells us about dogs.",
+            "ttsScript": "Like a book about dogs \u2014 the main topic is dogs! Everything in it tells us about dogs.",
             "interaction": "'Main Topic' pops up in big sparkly letters.",
             "displayText": "Main Topic",
             "displayDelay": 4320
@@ -2601,7 +2601,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RI.K.2/S2b.mp3",
-            "ttsScript": "If a book talks about where fish live, what fish eat, and how fish swim — what's the main topic?",
+            "ttsScript": "If a book talks about where fish live, what fish eat, and how fish swim \u2014 what's the main topic?",
             "interaction": "Three fact bubbles appear: 'where fish live', 'what fish eat', 'how fish swim'.",
             "displayParts": [
               {
@@ -2673,7 +2673,7 @@
           }
         ],
         "heading": "Let's Try One Together!",
-        "imagePrompt": "A basket full of colorful cartoon apples — red, green, and yellow — on a farm table with an orchard in the background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A basket full of colorful cartoon apples \u2014 red, green, and yellow \u2014 on a farm table with an orchard in the background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RI.K.2/S3.png"
       },
       {
@@ -2793,7 +2793,7 @@
           }
         ],
         "heading": "Let's Make Connections!",
-        "imagePrompt": "Colorful cartoon puzzle pieces fitting together, each showing a different nature scene — sun, rain, flowers growing. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "Colorful cartoon puzzle pieces fitting together, each showing a different nature scene \u2014 sun, rain, flowers growing. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RI.K.3/S1.png"
       },
       {
@@ -2850,8 +2850,8 @@
             "sub": "c",
             "audioFile": "audio/lessons/RI.K.3/S3c.mp3",
             "ttsScript": "The connection? Eating leaves helps the caterpillar grow so it can become a butterfly!",
-            "interaction": "Arrow connects the two facts. Pill: [Eating → Growing → Butterfly!] pops in with stars.",
-            "displayText": "Eating → Growing → Butterfly!",
+            "interaction": "Arrow connects the two facts. Pill: [Eating \u2192 Growing \u2192 Butterfly!] pops in with stars.",
+            "displayText": "Eating \u2192 Growing \u2192 Butterfly!",
             "displayDelay": 3500
           }
         ],
@@ -2995,7 +2995,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RI.K.4/S1b.mp3",
-            "ttsScript": "But don't worry — the book gives us clues to figure out what those new words mean!",
+            "ttsScript": "But don't worry \u2014 the book gives us clues to figure out what those new words mean!",
             "interaction": "'New Words' bubbles float up with question marks.",
             "displayText": ""
           },
@@ -3273,7 +3273,11 @@
               "value": "Title + Picture",
               "example": "Front",
               "exampleDelay": 2500,
-              "tableHeaders": ["Book Part", "Has...", "Located"]
+              "tableHeaders": [
+                "Book Part",
+                "Has...",
+                "Located"
+              ]
             }
           },
           {
@@ -3349,7 +3353,7 @@
           }
         ],
         "heading": "Let's Find the Parts!",
-        "imagePrompt": "Three views of a children's picture book side by side on a wooden table, evenly spaced. LEFT: closed FRONT cover — a smiling blue cartoon whale swimming with bubbles on a light blue background; the title \"Ocean Animals\" centered at the top in large friendly rounded kid-book letters; no other text. MIDDLE: the same book opened flat to reveal its TITLE PAGE — a plain white page with a small cartoon whale doodle in the middle; absolutely NO text, NO words, NO letters on the page. RIGHT: closed BACK cover — plain light blue background with a cute cartoon starfish in the center and a small simple barcode rectangle in the bottom right corner; absolutely no text, no writing. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors.",
+        "imagePrompt": "Three views of a children's picture book side by side on a wooden table, evenly spaced. LEFT: closed FRONT cover \u2014 a smiling blue cartoon whale swimming with bubbles on a light blue background; the title \"Ocean Animals\" centered at the top in large friendly rounded kid-book letters; no other text. MIDDLE: the same book opened flat to reveal its TITLE PAGE \u2014 a plain white page with a small cartoon whale doodle in the middle; absolutely NO text, NO words, NO letters on the page. RIGHT: closed BACK cover \u2014 plain light blue background with a cute cartoon starfish in the center and a small simple barcode rectangle in the bottom right corner; absolutely no text, no writing. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors.",
         "imageFile": "images/lessons/RI.K.5/S3.png"
       },
       {
@@ -3367,14 +3371,14 @@
             "sub": "b",
             "audioFile": "audio/lessons/RI.K.5/S4b.mp3",
             "ttsScript": "Look at the front cover to learn what the book is about. Check the title page for who made it!",
-            "interaction": "Pills: [Front Cover → What it's about] [Title Page → Who made it] pop in.",
+            "interaction": "Pills: [Front Cover \u2192 What it's about] [Title Page \u2192 Who made it] pop in.",
             "displayParts": [
               {
-                "text": "Front Cover → What it's about",
+                "text": "Front Cover \u2192 What it's about",
                 "delay": 300
               },
               {
-                "text": "Title Page → Who made it",
+                "text": "Title Page \u2192 Who made it",
                 "delay": 4000
               }
             ]
@@ -3430,43 +3434,12 @@
     "slides": [
       {
         "slide": 1,
-        "type": "intro",
-        "steps": [
-          {
-            "sub": "a",
-            "audioFile": "audio/lessons/RI.K.6/S1a.mp3",
-            "ttsScript": "Every fact book was made by a real person who wanted to share what they know!",
-            "interaction": "Heading fades in.",
-            "displayText": ""
-          },
-          {
-            "sub": "b",
-            "audioFile": "audio/lessons/RI.K.6/S1b.mp3",
-            "ttsScript": "That person is called the author. The author is the one who wrote all the facts!",
-            "interaction": "Pill: [Author = The writer] pops in.",
-            "displayText": "Author means The writer",
-            "displayDelay": 3840
-          },
-          {
-            "sub": "c",
-            "audioFile": "audio/lessons/RI.K.6/S1c.mp3",
-            "ttsScript": "Let's learn how to find out who the author is and what they're telling us!",
-            "interaction": "Detective magnifying glass sweeps. Tap to continue.",
-            "displayText": ""
-          }
-        ],
-        "heading": "Who Made This Fact Book?",
-        "imagePrompt": "A cartoon author sitting at a desk surrounded by research books, photos, and notes, writing a fact book with a big smile. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
-        "imageFile": "images/lessons/RI.K.6/S1.png"
-      },
-      {
-        "slide": 2,
         "type": "teach",
         "steps": [
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.K.6/S2a.mp3",
-            "ttsScript": "Every fact book has two important people — the author and the illustrator!",
+            "ttsScript": "Every fact book has two important people \u2014 the author and the illustrator!",
             "interaction": "Heading and table headers appear.",
             "displayText": ""
           },
@@ -3480,7 +3453,10 @@
             "displayTableRow": {
               "label": "Author",
               "value": "Writes the WORDS",
-              "tableHeaders": ["Who?", "What They Do"]
+              "tableHeaders": [
+                "Who?",
+                "What They Do"
+              ]
             }
           },
           {
@@ -3510,7 +3486,7 @@
         "imageFile": "images/lessons/RI.K.6/S2.png"
       },
       {
-        "slide": 3,
+        "slide": 2,
         "type": "example",
         "steps": [
           {
@@ -3523,7 +3499,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RI.K.6/S3b.mp3",
-            "ttsScript": "Right there on the cover — by Dr. Mia Orion! That's the author's name.",
+            "ttsScript": "Right there on the cover \u2014 by Dr. Mia Orion! That's the author's name.",
             "interaction": "Author name pill pops in with checkmark.",
             "displayText": "Dr. Mia Orion",
             "displayDelay": 1500,
@@ -3544,13 +3520,47 @@
         "imageFile": "images/lessons/RI.K.6/S3.png"
       },
       {
+        "slide": 3,
+        "type": "example",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.K.6/Sill-a.mp3",
+            "ttsScript": "Look at this book about jungle animals. Who drew the pictures?",
+            "interaction": "Heading appears.",
+            "displayText": ""
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.K.6/Sill-b.mp3",
+            "ttsScript": "Right there on the cover \u2014 pictures by Leo Bright! That's the illustrator's name.",
+            "interaction": "Illustrator name pill pops in with checkmark.",
+            "displayText": "Leo Bright",
+            "displayDelay": 1500,
+            "checkmarkDelay": 3000
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.K.6/Sill-c.mp3",
+            "ttsScript": "Leo drew lions, tigers, and monkeys so we could see the jungle animals!",
+            "interaction": "Message pill pops in with checkmark.",
+            "displayText": "Drew the jungle!",
+            "displayDelay": 1500,
+            "checkmarkDelay": 3000
+          }
+        ],
+        "heading": "Let's Find the Illustrator!",
+        "imagePrompt": "A children's picture book standing upright on a wooden table. The FRONT cover shows a cheerful cartoon lion, tiger, and monkey together among leafy green jungle plants with sunshine. Near the TOP of the cover, the title text \"Jungle Friends\" appears clearly and legibly in large bold friendly kid-book letters. Near the BOTTOM of the cover, the byline \"pictures by Leo Bright\" appears clearly and legibly in slightly smaller letters. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors.",
+        "imageFile": "images/lessons/RI.K.6/Sill.png"
+      },
+      {
         "slide": 4,
         "type": "tip",
         "steps": [
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.K.6/S4a.mp3",
-            "ttsScript": "When you read a fact book, ask yourself two questions!",
+            "ttsScript": "When you read a fact book, ask yourself three questions!",
             "interaction": "Heading and table headers appear.",
             "displayText": ""
           },
@@ -3558,19 +3568,34 @@
             "sub": "b",
             "audioFile": "audio/lessons/RI.K.6/S4b.mp3",
             "ttsScript": "First ask: Who wrote it? That tells you the AUTHOR!",
-            "interaction": "Who wrote it? row fills in.",
+            "interaction": "Author row fills in.",
             "displayText": "Who wrote it?",
             "displayDelay": 1500,
             "displayTableRow": {
               "label": "Who wrote it?",
               "value": "The AUTHOR",
-              "tableHeaders": ["Ask Yourself", "That Tells You..."]
+              "tableHeaders": [
+                "Ask Yourself",
+                "That Tells You..."
+              ]
             }
           },
           {
             "sub": "c",
-            "audioFile": "audio/lessons/RI.K.6/S4c.mp3",
-            "ttsScript": "Then ask: What are they teaching me? That's their MESSAGE!",
+            "audioFile": "audio/lessons/RI.K.6/S4c-ill.mp3",
+            "ttsScript": "Next ask: Who drew the pictures? That tells you the ILLUSTRATOR!",
+            "interaction": "Illustrator row fills in.",
+            "displayText": "Who drew the pictures?",
+            "displayDelay": 1500,
+            "displayTableRow": {
+              "label": "Who drew the pictures?",
+              "value": "The ILLUSTRATOR"
+            }
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RI.K.6/S4d.mp3",
+            "ttsScript": "Last ask: What are they teaching me? That's the MESSAGE!",
             "interaction": "Message row fills in.",
             "displayText": "What are they teaching?",
             "displayDelay": 1500,
@@ -3580,13 +3605,13 @@
             }
           },
           {
-            "sub": "d",
-            "audioFile": "audio/lessons/RI.K.6/S4d.mp3",
-            "ttsScript": "Those two questions help you understand any fact book!",
-            "interaction": "Both rows glow.",
+            "sub": "e",
+            "audioFile": "audio/lessons/RI.K.6/S4e.mp3",
+            "ttsScript": "Those three questions help you understand any fact book!",
+            "interaction": "All rows glow.",
             "displayText": "",
             "checkmarkTriggerDelay": 1000,
-            "checkmarkTriggerStagger": 1500
+            "checkmarkTriggerStagger": 1200
           }
         ],
         "heading": "A Helpful Trick!",
@@ -3600,14 +3625,14 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.K.6/S5a.mp3",
-            "ttsScript": "You're awesome at finding authors and their messages!",
+            "ttsScript": "You're awesome at finding authors, illustrators, and their messages!",
             "interaction": "Stars celebration.",
             "displayText": ""
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RI.K.6/S5b.mp3",
-            "ttsScript": "Let's practice figuring out who wrote the book and what they want us to learn!",
+            "ttsScript": "Let's practice figuring out who wrote the book, who drew the pictures, and what they want us to learn!",
             "interaction": "'Let's Go!' button pulses.",
             "displayText": "Let's find who made the book!",
             "displayDelay": 3750
@@ -3657,7 +3682,7 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.K.7/S1a.mp3",
-            "ttsScript": "Fact books don't just have words — they have pictures too! And those pictures are super helpful.",
+            "ttsScript": "Fact books don't just have words \u2014 they have pictures too! And those pictures are super helpful.",
             "interaction": "Heading fades in.",
             "displayText": ""
           },
@@ -3695,7 +3720,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RI.K.7/S2b.mp3",
-            "ttsScript": "If a book says elephants are big — the picture shows you just HOW big they are!",
+            "ttsScript": "If a book says elephants are big \u2014 the picture shows you just HOW big they are!",
             "interaction": "Pill: [Pictures show what things look like] pops in blue.",
             "displayText": "Pictures show what things look like",
             "displayDelay": 1318
@@ -3796,7 +3821,7 @@
           }
         ],
         "heading": "Time to Practice!",
-        "imagePrompt": "A cartoon child surrounded by fact book pictures floating around them — animals, planets, plants — all teaching something. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A cartoon child surrounded by fact book pictures floating around them \u2014 animals, planets, plants \u2014 all teaching something. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RI.K.7/S5.png"
       },
       {
@@ -3900,7 +3925,7 @@
           }
         ],
         "heading": "What Are Reasons?",
-        "imagePrompt": "A cartoon dog doing tricks — sitting, shaking paw, fetching ball — with a 'why dogs are great' theme. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A cartoon dog doing tricks \u2014 sitting, shaking paw, fetching ball \u2014 with a 'why dogs are great' theme. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RI.K.8/S2.png"
       },
       {
@@ -4090,7 +4115,10 @@
             "displayTableRow": {
               "label": "Same",
               "value": "Same topic or facts",
-              "tableHeaders": ["Compare", "Means..."]
+              "tableHeaders": [
+                "Compare",
+                "Means..."
+              ]
             }
           },
           {
@@ -4299,16 +4327,16 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.1a/S2b.mp3",
             "ttsScript": "Start on the left side of the page. Then move your eyes across to the right side.",
-            "interaction": "Pill: [Left → Right] pops in with animated arrow.",
-            "displayText": "Left → Right",
+            "interaction": "Pill: [Left \u2192 Right] pops in with animated arrow.",
+            "displayText": "Left \u2192 Right",
             "displayDelay": 1318
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.1a/S2c.mp3",
             "ttsScript": "When you get to the end of a line, what do you do? You go down to the next line and start on the left again!",
-            "interaction": "Pill: [End of line → Next line → Start left again!] pops in.",
-            "displayText": "End of line → Next line → Start left again!",
+            "interaction": "Pill: [End of line \u2192 Next line \u2192 Start left again!] pops in.",
+            "displayText": "End of line \u2192 Next line \u2192 Start left again!",
             "displayDelay": 2015
           }
         ],
@@ -4361,8 +4389,8 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.1a/S4b.mp3",
             "ttsScript": "Put your finger under the first word on the left, then slide it to the right as you read!",
-            "interaction": "Pill: [Finger under words → Slide right!] pops in.",
-            "displayText": "Finger under words → Slide right!",
+            "interaction": "Pill: [Finger under words \u2192 Slide right!] pops in.",
+            "displayText": "Finger under words \u2192 Slide right!",
             "displayDelay": 1473
           },
           {
@@ -4384,7 +4412,7 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.1a/S5a.mp3",
-            "ttsScript": "You know exactly how to read — left to right!",
+            "ttsScript": "You know exactly how to read \u2014 left to right!",
             "interaction": "Stars celebration.",
             "displayText": ""
           },
@@ -4480,7 +4508,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.1b/S2b.mp3",
-            "ttsScript": "Some words are short — like 'at.' That's just two letters! A and T.",
+            "ttsScript": "Some words are short \u2014 like 'at.' That's just two letters! A and T.",
             "interaction": "Pill: [A + T = at] pops in with two letter blocks.",
             "displayText": "A + T make at",
             "displayDelay": 1085
@@ -4488,7 +4516,7 @@
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.1b/S2c.mp3",
-            "ttsScript": "Some words are longer — like 'dog.' That's three letters! D, O, G.",
+            "ttsScript": "Some words are longer \u2014 like 'dog.' That's three letters! D, O, G.",
             "interaction": "Pill: [D + O + G = dog] pops in.",
             "displayText": "D + O + G make dog",
             "displayDelay": 1008
@@ -4732,7 +4760,7 @@
           }
         ],
         "heading": "Let's Find the Words!",
-        "imagePrompt": "Three cartoon puppies sitting in a row with clear gaps between each one — a brown puppy, a white puppy, and a spotted puppy. Each puppy sits on its own colorful mat. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "Three cartoon puppies sitting in a row with clear gaps between each one \u2014 a brown puppy, a white puppy, and a spotted puppy. Each puppy sits on its own colorful mat. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RF.K.1c/S3.png"
       },
       {
@@ -4837,7 +4865,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.1d/S1b.mp3",
-            "ttsScript": "There are uppercase letters — the big ones! And lowercase letters — the little ones!",
+            "ttsScript": "There are uppercase letters \u2014 the big ones! And lowercase letters \u2014 the little ones!",
             "interaction": "Pill: [Uppercase = BIG] pops in blue. Pill: [Lowercase = little] pops in green.",
             "displayParts": [
               {
@@ -4870,7 +4898,7 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.1d/S2a.mp3",
-            "ttsScript": "Every letter has a big version and a small version. Like A and a — same letter, different size!",
+            "ttsScript": "Every letter has a big version and a small version. Like A and a \u2014 same letter, different size!",
             "interaction": "Heading appears.",
             "displayText": ""
           },
@@ -4916,15 +4944,15 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.1d/S3b.mp3",
-            "ttsScript": "B and b — they match! One is big and one is small, but they're the same letter!",
-            "interaction": "B and b connect with a line. Pill: [B = b ✓] pops in.",
+            "ttsScript": "B and b \u2014 they match! One is big and one is small, but they're the same letter!",
+            "interaction": "B and b connect with a line. Pill: [B = b \u2713] pops in.",
             "displayText": "B means b",
             "displayDelay": 1500
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.1d/S3c.mp3",
-            "ttsScript": "D and d — match! S and s — match! You're a letter matching pro!",
+            "ttsScript": "D and d \u2014 match! S and s \u2014 match! You're a letter matching pro!",
             "interaction": "D/d and S/s connect. Stars and confetti.",
             "displayText": ""
           }
@@ -4948,8 +4976,8 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.1d/S4b.mp3",
             "ttsScript": "When you see a letter, try to say its name. Is it uppercase or lowercase?",
-            "interaction": "Pill: [See a letter → Say its name → Big or small?] pops in.",
-            "displayText": "See a letter → Say its name → Big or small?",
+            "interaction": "Pill: [See a letter \u2192 Say its name \u2192 Big or small?] pops in.",
+            "displayText": "See a letter \u2192 Say its name \u2192 Big or small?",
             "displayDelay": 1163
           },
           {
@@ -5035,7 +5063,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.2b/S1b.mp3",
-            "ttsScript": "Like the word 'tiger' — ti-ger! That's two claps, two syllables!",
+            "ttsScript": "Like the word 'tiger' \u2014 ti-ger! That's two claps, two syllables!",
             "interaction": "'Ti' and 'ger' appear as two separate blocks with clap icons.",
             "displayParts": [
               {
@@ -5075,7 +5103,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.2b/S2b.mp3",
-            "ttsScript": "Some words have one beat — like 'cat.' Just one clap! Cat!",
+            "ttsScript": "Some words have one beat \u2014 like 'cat.' Just one clap! Cat!",
             "interaction": "Pill: [Cat = 1 clap] pops in with hand clap icon.",
             "displayText": "Cat has 1 clap",
             "displayDelay": 930
@@ -5083,7 +5111,7 @@
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.2b/S2c.mp3",
-            "ttsScript": "Some words have two beats — like 'apple.' Ap-ple! Two claps!",
+            "ttsScript": "Some words have two beats \u2014 like 'apple.' Ap-ple! Two claps!",
             "interaction": "Pill: [Ap-ple = 2 claps] pops in.",
             "displayText": "Ap-ple has 2 claps",
             "displayDelay": 853
@@ -5091,14 +5119,14 @@
           {
             "sub": "d",
             "audioFile": "audio/lessons/RF.K.2b/S2d.mp3",
-            "ttsScript": "And some have three or more — like 'banana.' Ba-na-na! Three claps!",
+            "ttsScript": "And some have three or more \u2014 like 'banana.' Ba-na-na! Three claps!",
             "interaction": "Pill: [Ba-na-na = 3 claps] pops in.",
             "displayText": "Ba-na-na has 3 claps",
             "displayDelay": 930
           }
         ],
         "heading": "What Are Syllables?",
-        "imagePrompt": "A cartoon drum with word parts bouncing off it like beats — 'ba-na-na' shown as three drum hits. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A cartoon drum with word parts bouncing off it like beats \u2014 'ba-na-na' shown as three drum hits. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RF.K.2b/S2.png"
       },
       {
@@ -5243,7 +5271,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.2c/S1b.mp3",
-            "ttsScript": "Like 'dog' — it starts with the duh sound and ends with the guh sound!",
+            "ttsScript": "Like 'dog' \u2014 it starts with the duh sound and ends with the guh sound!",
             "interaction": "Pill: [Start: /d/] pops in blue. Pill: [End: /g/] pops in orange.",
             "displayParts": [
               {
@@ -5283,16 +5311,16 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.2c/S2b.mp3",
             "ttsScript": "Say 'ball.' What's the first sound? Buh! The beginning sound is /b/!",
-            "interaction": "Pill: [Ball → Starts with /b/] pops in blue.",
-            "displayText": "Ball → Starts with /b/",
+            "interaction": "Pill: [Ball \u2192 Starts with /b/] pops in blue.",
+            "displayText": "Ball \u2192 Starts with /b/",
             "displayDelay": 930
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.2c/S2c.mp3",
             "ttsScript": "Now the ending sound is the very last sound. Say 'ball.' What's the last sound? Lll! The ending sound is /l/!",
-            "interaction": "Pill: [Ball → Ends with /l/] pops in orange.",
-            "displayText": "Ball → Ends with /l/",
+            "interaction": "Pill: [Ball \u2192 Ends with /l/] pops in orange.",
+            "displayText": "Ball \u2192 Ends with /l/",
             "displayDelay": 1628
           },
           {
@@ -5361,8 +5389,8 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.2c/S4b.mp3",
             "ttsScript": "Say the word really slowly. Ssss-uuu-nnn. The first sound pops out and the last sound pops out!",
-            "interaction": "Pill: [Stretch it out → Hear first and last!] pops in.",
-            "displayText": "Stretch it out → Hear first and last!",
+            "interaction": "Pill: [Stretch it out \u2192 Hear first and last!] pops in.",
+            "displayText": "Stretch it out \u2192 Hear first and last!",
             "displayDelay": 1318
           },
           {
@@ -5480,16 +5508,16 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.2d/S2b.mp3",
             "ttsScript": "Say 'dog' slowly. /d/ /o/ /g/. That's three sounds!",
-            "interaction": "Pill: [Dog → /d/ /o/ /g/ = 3 sounds] pops in.",
-            "displayText": "Dog → /d/ /o/ /g/ has 3 sounds",
+            "interaction": "Pill: [Dog \u2192 /d/ /o/ /g/ = 3 sounds] pops in.",
+            "displayText": "Dog \u2192 /d/ /o/ /g/ has 3 sounds",
             "displayDelay": 698
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.2d/S2c.mp3",
             "ttsScript": "Try 'go.' /g/ /o/. That's two sounds!",
-            "interaction": "Pill: [Go → /g/ /o/ = 2 sounds] pops in.",
-            "displayText": "Go → /g/ /o/ has 2 sounds",
+            "interaction": "Pill: [Go \u2192 /g/ /o/ = 2 sounds] pops in.",
+            "displayText": "Go \u2192 /g/ /o/ has 2 sounds",
             "displayDelay": 543
           },
           {
@@ -5519,7 +5547,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.2d/S3b.mp3",
             "ttsScript": "Map. Mmm-aaa-puh. /m/ /a/ /p/. Hold up three fingers! Three sounds!",
-            "interaction": "Three fingers pop up. Pill: [Map = 3 sounds ✓] pops in.",
+            "interaction": "Three fingers pop up. Pill: [Map = 3 sounds \u2713] pops in.",
             "displayText": "Map has 3 sounds",
             "displayDelay": 2500
           },
@@ -5527,7 +5555,7 @@
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.2d/S3c.mp3",
             "ttsScript": "Now try 'it.' Ih-tuh. /i/ /t/. Two fingers! Two sounds!",
-            "interaction": "Two fingers pop up. Pill: [It = 2 sounds ✓] pops in. Stars.",
+            "interaction": "Two fingers pop up. Pill: [It = 2 sounds \u2713] pops in. Stars.",
             "displayText": "It has 2 sounds",
             "displayDelay": 2200
           }
@@ -5638,7 +5666,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.2e/S1b.mp3",
-            "ttsScript": "Like 'cat' — change the /c/ to /b/ and you get 'bat!' It's like magic!",
+            "ttsScript": "Like 'cat' \u2014 change the /c/ to /b/ and you get 'bat!' It's like magic!",
             "interaction": "'cat' transforms to 'bat' with sparkle animation. The C swaps to B.",
             "displayParts": [
               {
@@ -5679,16 +5707,16 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.2e/S2b.mp3",
             "ttsScript": "You can change the beginning sound. 'Mat' becomes 'sat' if you change /m/ to /s/!",
-            "interaction": "Pill: [Change beginning: mat → sat] pops in blue.",
-            "displayText": "Change beginning: mat → sat",
+            "interaction": "Pill: [Change beginning: mat \u2192 sat] pops in blue.",
+            "displayText": "Change beginning: mat \u2192 sat",
             "displayDelay": 1163
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.2e/S2c.mp3",
             "ttsScript": "You can change the ending sound too! 'Cat' becomes 'can' if you change /t/ to /n/!",
-            "interaction": "Pill: [Change ending: cat → can] pops in green.",
-            "displayText": "Change ending: cat → can",
+            "interaction": "Pill: [Change ending: cat \u2192 can] pops in green.",
+            "displayText": "Change ending: cat \u2192 can",
             "displayDelay": 1240
           },
           {
@@ -5718,16 +5746,16 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.2e/S3b.mp3",
             "ttsScript": "Start with 'hop.' Change the /h/ to /m/. What do you get? Mop!",
-            "interaction": "'hop' transforms to 'mop'. Pill: [hop → mop ✓] pops in.",
-            "displayText": "hop → mop",
+            "interaction": "'hop' transforms to 'mop'. Pill: [hop \u2192 mop \u2713] pops in.",
+            "displayText": "hop \u2192 mop",
             "displayDelay": 3000
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.2e/S3c.mp3",
             "ttsScript": "Start with 'big.' Change the /b/ to /d/. What do you get? Dig!",
-            "interaction": "'big' transforms to 'dig'. Pill: [big → dig ✓] pops in. Stars.",
-            "displayText": "big → dig",
+            "interaction": "'big' transforms to 'dig'. Pill: [big \u2192 dig \u2713] pops in. Stars.",
+            "displayText": "big \u2192 dig",
             "displayDelay": 3000
           }
         ],
@@ -5852,7 +5880,7 @@
           }
         ],
         "heading": "Letters and Their Sounds!",
-        "imagePrompt": "A cheerful cartoon child sitting in a circle of colorful musical instruments — a red drum, a blue xylophone, a green tambourine, a yellow triangle. Musical notes float around. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A cheerful cartoon child sitting in a circle of colorful musical instruments \u2014 a red drum, a blue xylophone, a green tambourine, a yellow triangle. Musical notes float around. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RF.K.3a/S1.png"
       },
       {
@@ -5909,8 +5937,8 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.3a/S3b.mp3",
             "ttsScript": "B! What sound does B make? Buh! Great job!",
-            "interaction": "B card flips. Pill: [B = /b/ buh ✓] pops in.",
-            "displayText": "B says /b/ buh ✓",
+            "interaction": "B card flips. Pill: [B = /b/ buh \u2713] pops in.",
+            "displayText": "B says /b/ buh \u2713",
             "displayDelay": 2250
           },
           {
@@ -5948,7 +5976,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.3a/S4b.mp3",
-            "ttsScript": "A is for apple — /a/! B is for ball — /b/! The picture helps you remember!",
+            "ttsScript": "A is for apple \u2014 /a/! B is for ball \u2014 /b/! The picture helps you remember!",
             "interaction": "Pills: [A = Apple = /a/] [B = Ball = /b/] pop in.",
             "displayParts": [
               {
@@ -5970,7 +5998,7 @@
           }
         ],
         "heading": "A Helpful Trick!",
-        "imagePrompt": "Cartoon letter A next to an apple, letter B next to a ball, letter C next to a cat — each pair connected. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "Cartoon letter A next to an apple, letter B next to a ball, letter C next to a cat \u2014 each pair connected. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RF.K.3a/S4.png"
       },
       {
@@ -6142,16 +6170,16 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.3b/S3b.mp3",
             "ttsScript": "The /a/ sound! The vowel in cat is A!",
-            "interaction": "Pill: [Cat → Vowel: A!] pops in with checkmark.",
-            "displayText": "Cat → Vowel: A!",
+            "interaction": "Pill: [Cat \u2192 Vowel: A!] pops in with checkmark.",
+            "displayText": "Cat \u2192 Vowel: A!",
             "displayDelay": 2250
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.3b/S3c.mp3",
             "ttsScript": "What about 'dog'? D-o-g. The /o/ sound! The vowel is O!",
-            "interaction": "Pill: [Dog → Vowel: O!] pops in with checkmark. Stars.",
-            "displayText": "Dog → Vowel: O!",
+            "interaction": "Pill: [Dog \u2192 Vowel: O!] pops in with checkmark. Stars.",
+            "displayText": "Dog \u2192 Vowel: O!",
             "displayDelay": 2750
           }
         ],
@@ -6166,7 +6194,7 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.3b/S4a.mp3",
-            "ttsScript": "Remember the five vowels with this: A, E, I, O, U — I love you!",
+            "ttsScript": "Remember the five vowels with this: A, E, I, O, U \u2014 I love you!",
             "interaction": "Heading with sparkle.",
             "displayText": ""
           },
@@ -6174,7 +6202,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.3b/S4b.mp3",
             "ttsScript": "That silly rhyme helps you remember all five! A, E, I, O, U!",
-            "interaction": "Pill: [A E I O U — I love you!] pops in with heart.",
+            "interaction": "Pill: [A E I O U \u2014 I love you!] pops in with heart.",
             "displayParts": [
               {
                 "text": "A E I O U",
@@ -6269,7 +6297,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.3c/S1b.mp3",
-            "ttsScript": "Words like 'the,' 'is,' 'I,' and 'a' — you'll see them everywhere!",
+            "ttsScript": "Words like 'the,' 'is,' 'I,' and 'a' \u2014 you'll see them everywhere!",
             "interaction": "Sight word pills pop in: [the] [is] [I] [a].",
             "displayParts": [
               {
@@ -6300,7 +6328,7 @@
           }
         ],
         "heading": "Let's Learn Sight Words!",
-        "imagePrompt": "A cartoon child surrounded by floating sparkly flashcards of different bright colors — each card glows with a star pattern. The child reaches up to grab one with delight. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A cartoon child surrounded by floating sparkly flashcards of different bright colors \u2014 each card glows with a star pattern. The child reaches up to grab one with delight. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RF.K.3c/S1.png"
       },
       {
@@ -6317,7 +6345,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.3c/S2b.mp3",
-            "ttsScript": "You don't sound them out — you just know them! Like how you know your own name.",
+            "ttsScript": "You don't sound them out \u2014 you just know them! Like how you know your own name.",
             "interaction": "Pill: [Sight words = Know them by heart!] pops in.",
             "displayText": "Sight words: Know them by heart!",
             "displayDelay": 1318
@@ -6477,7 +6505,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.3d/S1b.mp3",
-            "ttsScript": "Like 'was' and 'saw' — the letters are the same but in a different order!",
+            "ttsScript": "Like 'was' and 'saw' \u2014 the letters are the same but in a different order!",
             "interaction": "'was' and 'saw' appear side by side with letters highlighted.",
             "displayParts": [
               {
@@ -6499,7 +6527,7 @@
           }
         ],
         "heading": "Look-Alike Words!",
-        "imagePrompt": "Two cartoon characters who look almost identical — same outfit but one wears a red hat and the other a blue hat — standing next to a mirror and looking confused at their reflections. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "Two cartoon characters who look almost identical \u2014 same outfit but one wears a red hat and the other a blue hat \u2014 standing next to a mirror and looking confused at their reflections. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RF.K.3d/S1.png"
       },
       {
@@ -6548,7 +6576,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.3d/S3b.mp3",
-            "ttsScript": "'On' and 'no.' They have the same letters — O and N — but in different order!",
+            "ttsScript": "'On' and 'no.' They have the same letters \u2014 O and N \u2014 but in different order!",
             "interaction": "Letters highlight showing O-N vs N-O.",
             "displayText": ""
           },
@@ -6588,8 +6616,8 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.3d/S4b.mp3",
             "ttsScript": "Say each letter as you point. That slows you down and helps you read the right word!",
-            "interaction": "Pill: [Point → Say each letter → Read correctly!] pops in.",
-            "displayText": "Point → Say each letter → Read correctly!",
+            "interaction": "Pill: [Point \u2192 Say each letter \u2192 Read correctly!] pops in.",
+            "displayText": "Point \u2192 Say each letter \u2192 Read correctly!",
             "displayDelay": 1318
           },
           {
@@ -6703,16 +6731,16 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.4/S2b.mp3",
             "ttsScript": "If it's a storybook, you might be reading for fun! To enjoy the adventure!",
-            "interaction": "Pill: [Storybook → Reading for fun!] pops in blue.",
-            "displayText": "Storybook → Reading for fun!",
+            "interaction": "Pill: [Storybook \u2192 Reading for fun!] pops in blue.",
+            "displayText": "Storybook \u2192 Reading for fun!",
             "displayDelay": 1085
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.4/S2c.mp3",
             "ttsScript": "If it's a fact book, you might be reading to learn new things!",
-            "interaction": "Pill: [Fact book → Reading to learn!] pops in green.",
-            "displayText": "Fact book → Reading to learn!",
+            "interaction": "Pill: [Fact book \u2192 Reading to learn!] pops in green.",
+            "displayText": "Fact book \u2192 Reading to learn!",
             "displayDelay": 1008
           },
           {
@@ -6724,7 +6752,7 @@
           }
         ],
         "heading": "Why Are We Reading?",
-        "imagePrompt": "A cartoon child sitting with a book, with two thought bubbles — one showing 'for fun' with a smiley and one showing 'to learn' with a brain. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A cartoon child sitting with a book, with two thought bubbles \u2014 one showing 'for fun' with a smiley and one showing 'to learn' with a brain. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RF.K.4/S2.png"
       },
       {
@@ -6756,7 +6784,7 @@
           }
         ],
         "heading": "Let's Try It!",
-        "imagePrompt": "A cartoon child looking at a book about tigers with thought bubbles showing facts about tigers — stripes, habitat, food. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A cartoon child looking at a book about tigers with thought bubbles showing facts about tigers \u2014 stripes, habitat, food. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RF.K.4/S3.png"
       },
       {
@@ -6774,8 +6802,8 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.4/S4b.mp3",
             "ttsScript": "Then look for the answer while you read! That gives you a mission!",
-            "interaction": "Pill: [Ask a question → Read to find the answer!] pops in.",
-            "displayText": "Ask a question → Read to find the answer!",
+            "interaction": "Pill: [Ask a question \u2192 Read to find the answer!] pops in.",
+            "displayText": "Ask a question \u2192 Read to find the answer!",
             "displayDelay": 1008
           },
           {
@@ -6886,7 +6914,7 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/K.L.1/S2a.mp3",
-            "ttsScript": "Did you know that words have different jobs? Some words name things — like 'cat' or 'ball.'",
+            "ttsScript": "Did you know that words have different jobs? Some words name things \u2014 like 'cat' or 'ball.'",
             "interaction": "Heading appears.",
             "displayText": ""
           },
@@ -6900,13 +6928,16 @@
             "displayTableRow": {
               "label": "Noun",
               "value": "Person, Place, or Thing",
-              "tableHeaders": ["Word Type", "Means..."]
+              "tableHeaders": [
+                "Word Type",
+                "Means..."
+              ]
             }
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/K.L.1/S2c.mp3",
-            "ttsScript": "Other words show action — like 'run,' 'jump,' or 'eat.' These are verbs!",
+            "ttsScript": "Other words show action \u2014 like 'run,' 'jump,' or 'eat.' These are verbs!",
             "interaction": "Verb row fills in.",
             "displayText": "Verb",
             "displayDelay": 1500,
@@ -6933,7 +6964,7 @@
           }
         ],
         "heading": "Words Have Jobs!",
-        "imagePrompt": "Cartoon characters doing different jobs — a dog carrying a bone, a cat jumping over a fence, a bird flying with a worm. Each character wears a tiny colorful hard hat. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "Cartoon characters doing different jobs \u2014 a dog carrying a bone, a cat jumping over a fence, a bird flying with a worm. Each character wears a tiny colorful hard hat. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/K.L.1/S2.png"
       },
       {
@@ -6951,7 +6982,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/K.L.1/S3b.mp3",
             "ttsScript": "What's the noun? The dog! Dog is a thing, so it's a noun!",
-            "interaction": "Pill: [dog = Noun ✓] pops in blue.",
+            "interaction": "Pill: [dog = Noun \u2713] pops in blue.",
             "displayText": "dog means Noun",
             "displayDelay": 3250
           },
@@ -6959,7 +6990,7 @@
             "sub": "c",
             "audioFile": "audio/lessons/K.L.1/S3c.mp3",
             "ttsScript": "What's the verb? Jumps! Jumping is an action, so it's a verb!",
-            "interaction": "Pill: [jumps = Verb ✓] pops in green. Stars.",
+            "interaction": "Pill: [jumps = Verb \u2713] pops in green. Stars.",
             "displayText": "jumps is a Verb",
             "displayDelay": 3000
           }
@@ -6983,14 +7014,14 @@
             "sub": "b",
             "audioFile": "audio/lessons/K.L.1/S4b.mp3",
             "ttsScript": "To find a verb, ask: Can I do it? If yes, it's a verb!",
-            "interaction": "Pills: [Can I touch it? → Noun!] [Can I do it? → Verb!] pop in.",
+            "interaction": "Pills: [Can I touch it? \u2192 Noun!] [Can I do it? \u2192 Verb!] pop in.",
             "displayParts": [
               {
-                "text": "Can I touch it? → Noun!",
+                "text": "Can I touch it? \u2192 Noun!",
                 "delay": 300
               },
               {
-                "text": "Can I do it? → Verb!",
+                "text": "Can I do it? \u2192 Verb!",
                 "delay": 2800
               }
             ]
@@ -7004,7 +7035,7 @@
           }
         ],
         "heading": "A Helpful Trick!",
-        "imagePrompt": "A cartoon child pointing at different objects around them — a bright red ball, a tall green tree, and a friend waving. Each object has a sparkling highlight around it. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A cartoon child pointing at different objects around them \u2014 a bright red ball, a tall green tree, and a friend waving. Each object has a sparkling highlight around it. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/K.L.1/S4.png"
       },
       {
@@ -7028,7 +7059,7 @@
           }
         ],
         "heading": "Time to Practice!",
-        "imagePrompt": "A cartoon child happily sorting colorful toy figures into two bright boxes — action figures (jumping, running) in one box and object toys (ball, car, teddy bear) in the other. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A cartoon child happily sorting colorful toy figures into two bright boxes \u2014 action figures (jumping, running) in one box and object toys (ball, car, teddy bear) in the other. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/K.L.1/S5.png"
       },
       {
@@ -7111,7 +7142,7 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/K.L.2/S2a.mp3",
-            "ttsScript": "Every sentence starts with a capital letter — that's the big, tall version of the letter!",
+            "ttsScript": "Every sentence starts with a capital letter \u2014 that's the big, tall version of the letter!",
             "interaction": "Heading appears.",
             "displayText": ""
           },
@@ -7166,8 +7197,8 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/K.L.2/S3b.mp3",
-            "ttsScript": "the cat is big. Hmm — 'the' needs a capital T at the beginning!",
-            "interaction": "'the' transforms to 'The' with sparkle. Pill: [Capital T ✓] pops in.",
+            "ttsScript": "the cat is big. Hmm \u2014 'the' needs a capital T at the beginning!",
+            "interaction": "'the' transforms to 'The' with sparkle. Pill: [Capital T \u2713] pops in.",
             "displayText": "Capital T",
             "displayDelay": 3500
           },
@@ -7175,7 +7206,7 @@
             "sub": "c",
             "audioFile": "audio/lessons/K.L.2/S3c.mp3",
             "ttsScript": "And we need a period at the end! The cat is big. Period! Now it's perfect!",
-            "interaction": "Period appears at end. Pill: [Period ✓] pops in. Stars.",
+            "interaction": "Period appears at end. Pill: [Period \u2713] pops in. Stars.",
             "displayText": "Period",
             "displayDelay": 2200
           }
@@ -7342,7 +7373,7 @@
           {
             "sub": "d",
             "audioFile": "audio/lessons/K.L.4/S2d.mp3",
-            "ttsScript": "Context clues plus pictures plus asking — that's the triple combo!",
+            "ttsScript": "Context clues plus pictures plus asking \u2014 that's the triple combo!",
             "interaction": "Three pills connect. Tap to continue.",
             "displayText": ""
           }
@@ -7365,7 +7396,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/K.L.4/S3b.mp3",
-            "ttsScript": "What does 'swift' mean? Look at the clue — it ran very fast!",
+            "ttsScript": "What does 'swift' mean? Look at the clue \u2014 it ran very fast!",
             "interaction": "'ran very fast' highlights as a context clue.",
             "displayText": "ran very fast",
             "displayDelay": 2000
@@ -7398,8 +7429,8 @@
             "sub": "b",
             "audioFile": "audio/lessons/K.L.4/S4b.mp3",
             "ttsScript": "Read the sentence again, look at pictures, and try to guess. You'll be right more than you think!",
-            "interaction": "Pill: [Re-read → Look → Guess → Solve!] pops in.",
-            "displayText": "Re-read → Look → Guess → Solve!",
+            "interaction": "Pill: [Re-read \u2192 Look \u2192 Guess \u2192 Solve!] pops in.",
+            "displayText": "Re-read \u2192 Look \u2192 Guess \u2192 Solve!",
             "displayDelay": 1395
           },
           {
@@ -7485,7 +7516,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/K.L.5/S1b.mp3",
-            "ttsScript": "Some words are opposites — like 'hot' and 'cold.' Some words are similar — like 'happy' and 'glad!'",
+            "ttsScript": "Some words are opposites \u2014 like 'hot' and 'cold.' Some words are similar \u2014 like 'happy' and 'glad!'",
             "interaction": "Pill: [Opposites] pops in red. Pill: [Similar words] pops in blue.",
             "displayParts": [
               {
@@ -7532,7 +7563,10 @@
             "displayTableRow": {
               "label": "Opposites",
               "value": "Complete reverse",
-              "tableHeaders": ["Relationship", "Meaning"]
+              "tableHeaders": [
+                "Relationship",
+                "Meaning"
+              ]
             }
           },
           {
@@ -7579,21 +7613,21 @@
             "sub": "b",
             "audioFile": "audio/lessons/K.L.5/S3b.mp3",
             "ttsScript": "Sad! Happy and sad are opposites!",
-            "interaction": "Pill: [Happy ↔ Sad = Opposites!] pops in with checkmark.",
-            "displayText": "Happy ↔ Sad are Opposites!",
+            "interaction": "Pill: [Happy \u2194 Sad = Opposites!] pops in with checkmark.",
+            "displayText": "Happy \u2194 Sad are Opposites!",
             "displayDelay": 800
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/K.L.5/S3c.mp3",
             "ttsScript": "Now, which group does 'apple' belong in? It's a fruit! Just like banana and orange!",
-            "interaction": "Pill: [Apple → Fruit category!] pops in with checkmark. Stars.",
-            "displayText": "Apple → Fruit category!",
+            "interaction": "Pill: [Apple \u2192 Fruit category!] pops in with checkmark. Stars.",
+            "displayText": "Apple \u2192 Fruit category!",
             "displayDelay": 2500
           }
         ],
         "heading": "Let's Find the Connections!",
-        "imagePrompt": "Two cartoon faces side by side — one smiling happily and one frowning sadly, with a double arrow between them. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "Two cartoon faces side by side \u2014 one smiling happily and one frowning sadly, with a double arrow between them. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/K.L.5/S3.png"
       },
       {
@@ -7611,8 +7645,8 @@
             "sub": "b",
             "audioFile": "audio/lessons/K.L.5/S4b.mp3",
             "ttsScript": "Connecting words to other words helps you remember them better!",
-            "interaction": "Pill: [Connect words → Remember better!] pops in.",
-            "displayText": "Connect words → Remember better!",
+            "interaction": "Pill: [Connect words \u2192 Remember better!] pops in.",
+            "displayText": "Connect words \u2192 Remember better!",
             "displayDelay": 775
           },
           {
@@ -7624,7 +7658,7 @@
           }
         ],
         "heading": "A Helpful Trick!",
-        "imagePrompt": "A cartoon child with two thought bubbles — one showing an opposite pair and one showing a category group. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A cartoon child with two thought bubbles \u2014 one showing an opposite pair and one showing a category group. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/K.L.5/S4.png"
       },
       {
@@ -7731,16 +7765,16 @@
             "sub": "b",
             "audioFile": "audio/lessons/K.L.6/S2b.mp3",
             "ttsScript": "Like if you learn the word 'enormous,' try saying: That building is enormous!",
-            "interaction": "Pill: [New word: enormous → Use it: That building is enormous!] pops in.",
-            "displayText": "New word: enormous → Use it: That building is enormous!",
+            "interaction": "Pill: [New word: enormous \u2192 Use it: That building is enormous!] pops in.",
+            "displayText": "New word: enormous \u2192 Use it: That building is enormous!",
             "displayDelay": 1008
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/K.L.6/S2c.mp3",
             "ttsScript": "The more you use a word, the better you remember it!",
-            "interaction": "Pill: [Use it → Remember it!] pops in.",
-            "displayText": "Use it → Remember it!",
+            "interaction": "Pill: [Use it \u2192 Remember it!] pops in.",
+            "displayText": "Use it \u2192 Remember it!",
             "displayDelay": 853
           },
           {
@@ -7770,7 +7804,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/K.L.6/S3b.mp3",
             "ttsScript": "Can you use it in a sentence? How about: I was delighted to see my friend!",
-            "interaction": "Sentence appears: 'I was delighted to see my friend!' Pill: [Delighted = Very Happy ✓].",
+            "interaction": "Sentence appears: 'I was delighted to see my friend!' Pill: [Delighted = Very Happy \u2713].",
             "displayText": "Delighted means Very Happy",
             "displayDelay": 2500
           },
