@@ -524,7 +524,7 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
       } else if (q.type === "missing_word" && q.id) {
         const folder = GRADE_FOLDER[gradeKey] || gradeKey || "kindergarten";
         const standard = q.id.replace(/-Q\d+$/, "");
-        answerUrl = `${SUPABASE_STORAGE}/audio/${folder}/${standard}/${q.id}-sentence.mp3`;
+        answerUrl = `${SUPABASE_STORAGE}/audio/${folder}/${standard}/${q.id}-incorrect.mp3`;
       }
       const encourageFile = ENCOURAGE_AUDIO[Math.floor(Math.random() * ENCOURAGE_AUDIO.length)];
       const encourageUrl = getAudioUrl("feedback", encourageFile);
