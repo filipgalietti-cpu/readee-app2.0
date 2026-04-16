@@ -4335,7 +4335,7 @@
           }
         ],
         "heading": "Let's Learn to Read Left to Right!",
-        "imagePrompt": "A cartoon child sitting at a desk following words with their finger across a big open book, with an arrow showing left to right direction. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A joyful cartoon child standing beside a huge bright green arrow that points from LEFT to RIGHT across the screen. The child is smiling and pointing along the arrow. Plain cream background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no letters, no words.",
         "imageFile": "images/lessons/RF.K.1a/S1.png"
       },
       {
@@ -4367,8 +4367,8 @@
           }
         ],
         "heading": "How Do We Read?",
-        "imagePrompt": "Custom SVG illustration (see S2.svg): three gray text-line bars on a cream page, with green left-to-right arrows over each line and purple curved arrows swooping back to the start of the next line.",
-        "imageFile": "images/lessons/RF.K.1a/S2.svg"
+        "imagePrompt": "A large open cartoon picture book on a plain cream background. Each of the two inner pages shows exactly three horizontal gray bars stacked vertically. Above each gray bar, one bold bright green arrow points from LEFT to RIGHT with a clear arrowhead. Six identical green arrows total, all pointing right. The gray bars and arrows are plain shapes only. Absolutely no text, no letters, no words, no labels anywhere. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors.",
+        "imageFile": "images/lessons/RF.K.1a/S2.png"
       },
       {
         "slide": 3,
