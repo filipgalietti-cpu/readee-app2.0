@@ -3767,8 +3767,8 @@
             "sub": "c",
             "audioFile": "audio/lessons/RI.K.7/S3c.mp3",
             "ttsScript": "The picture makes it so easy to understand! Way easier than just reading words about it.",
-            "interaction": "Pill: [Picture teaches: How frogs grow!] pops in with stars.",
-            "displayText": "Picture teaches: How frogs grow!",
+            "interaction": "Pill: [Picture teaches: HOW FROGS GROW!] pops in with stars.",
+            "displayText": "Picture teaches: HOW FROGS GROW!",
             "displayDelay": 3840
           }
         ],

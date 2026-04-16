@@ -752,7 +752,13 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
           showCheck ? "ring-2 ring-green-400 ring-offset-2" : ""
         }`}
       >
-        {step.displayText}
+        {step.displayText.split(/(\s+)/).map((seg, si) =>
+          /^[A-Z]{3,}[!?.,]?$/.test(seg) ? (
+            <span key={si} className="text-indigo-700 dark:text-indigo-300 font-extrabold">{seg}</span>
+          ) : (
+            <span key={si}>{seg}</span>
+          )
+        )}
       </motion.span>
     );
 
