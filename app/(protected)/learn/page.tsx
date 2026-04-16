@@ -23,6 +23,7 @@ import { CategorySort } from "@/app/components/practice/CategorySort";
 import { MissingWord } from "@/app/components/practice/MissingWord";
 import { TapToPair } from "@/app/components/practice/TapToPair";
 import { SoundMachine } from "@/app/components/practice/SoundMachine";
+import { SpaceInsertion } from "@/app/components/practice/SpaceInsertion";
 import { LessonSlideshow } from "@/app/components/lesson/LessonSlideshow";
 import type { SampleLesson } from "@/app/components/lesson/LessonSlideshow";
 import sampleLessons from "@/app/data/sample-lessons.json";
@@ -58,6 +59,7 @@ interface Question {
   target_word?: string;
   phonemes?: string[];
   distractors?: string[];
+  jumbled?: string;
 }
 
 interface AnswerRecord {
@@ -565,6 +567,17 @@ function LearnSession({
             targetWord={q.target_word}
             phonemes={q.phonemes}
             distractors={q.distractors}
+            answered={selected !== null}
+            onAnswer={(isCorrect, answer) => handleInteractiveAnswer(isCorrect, answer)}
+          />
+        ) : q.type === "space_insertion" && q.jumbled ? (
+          <SpaceInsertion
+            prompt={question}
+            jumbled={q.jumbled}
+            correctSentence={q.correct}
+            hint={q.hint}
+            hintAudioUrl={q.hint_audio_url}
+            questionId={q.id}
             answered={selected !== null}
             onAnswer={(isCorrect, answer) => handleInteractiveAnswer(isCorrect, answer)}
           />
