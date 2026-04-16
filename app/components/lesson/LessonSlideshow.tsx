@@ -908,7 +908,13 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
 
           {/* ── Content ── */}
           <div className="flex-1 min-h-0 overflow-hidden flex items-center justify-center px-6">
-            <div className={`w-full ${steps.some((s) => s.displayTableRow) ? "max-w-lg" : "max-w-sm"} flex flex-col items-center gap-3 ${theme.contentBg}`}>
+            {(() => {
+              const hasContent = steps.some(
+                (s) => s.displayText || (s.displayParts && s.displayParts.length > 0) || s.displayTableRow
+              );
+              const bgClass = hasContent ? theme.contentBg : "";
+              return (
+            <div className={`w-full ${steps.some((s) => s.displayTableRow) ? "max-w-lg" : "max-w-sm"} flex flex-col items-center gap-3 ${bgClass}`}>
               {(() => {
                 const hasTable = steps.some((s) => s.displayTableRow);
                 let tableRendered = false;
@@ -1016,6 +1022,8 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
                 });
               })()}
             </div>
+              );
+            })()}
           </div>
 
           {/* ── Next button (always visible, disabled during audio) ── */}
