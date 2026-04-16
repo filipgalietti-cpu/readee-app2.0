@@ -209,7 +209,7 @@ export function SentenceBuild({
           /* Standard mode — dashed box */
           <>
             <motion.div
-              className={`flex-1 min-h-[72px] rounded-2xl border-2 border-dashed p-3 flex flex-wrap gap-2 items-center transition-colors ${
+              className={`flex-1 min-h-[72px] rounded-2xl border-2 border-dashed p-3 flex flex-wrap gap-2 items-center justify-center transition-colors ${
                 result === "correct"
                   ? "border-emerald-400 bg-emerald-50/50 dark:bg-emerald-900/20 dark:border-emerald-500"
                   : result === "incorrect"
@@ -247,13 +247,13 @@ export function SentenceBuild({
                   </motion.button>
                 ))}
               </AnimatePresence>
+              {/* Trailing punctuation inside the box, after last word */}
+              {trailingPunctuation && placed.length > 0 && (
+                <span className="text-xl font-bold text-zinc-700 dark:text-slate-300 select-none">
+                  {trailingPunctuation}
+                </span>
+              )}
             </motion.div>
-            {/* Fixed trailing punctuation — outside the dashed box */}
-            {trailingPunctuation && (
-              <span className="text-2xl font-bold text-zinc-700 dark:text-slate-300 select-none px-1">
-                {trailingPunctuation}
-              </span>
-            )}
           </>
         )}
       </div>
