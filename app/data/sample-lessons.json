@@ -4508,9 +4508,13 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.1b/S1b.mp3",
             "ttsScript": "The letters come together to make a word. C, A, T makes cat!",
-            "interaction": "Letters C, A, T pop in one at a time, then merge into 'CAT'.",
-            "displayText": "CAT",
-            "displayDelay": 1800
+            "interaction": "Letters C, A, T pop in one at a time as the narrator names each letter.",
+            "displayText": "",
+            "displayParts": [
+              { "text": "C", "delay": 3670 },
+              { "text": "A", "delay": 4630 },
+              { "text": "T", "delay": 5380 }
+            ]
           },
           {
             "sub": "c",
