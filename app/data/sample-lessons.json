@@ -3797,7 +3797,10 @@
             "displayTableRow": {
               "label": "What do I see?",
               "value": "What things LOOK like",
-              "tableHeaders": ["Ask Yourself", "The Picture Shows You..."]
+              "tableHeaders": [
+                "Ask Yourself",
+                "The Picture Shows You..."
+              ]
             }
           },
           {
@@ -3998,7 +4001,7 @@
           }
         ],
         "heading": "Let's Find the Reasons!",
-        "imagePrompt": "A simple colorful cartoon arrangement of fresh fruit on a clean light background: a bright red apple, a yellow banana, a bunch of purple grapes, juicy red strawberries, and an orange orange. The fruit is plain and realistic in style — NO faces, NO eyes, NO mouths, NO expressions on any of the fruit. Just clean inanimate fruit. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A simple colorful cartoon arrangement of fresh fruit on a clean light background: a bright red apple, a yellow banana, a bunch of purple grapes, juicy red strawberries, and an orange orange. The fruit is plain and realistic in style \u2014 NO faces, NO eyes, NO mouths, NO expressions on any of the fruit. Just clean inanimate fruit. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RI.K.8/S3.png"
       },
       {
@@ -4367,7 +4370,7 @@
           }
         ],
         "heading": "How Do We Read?",
-        "imagePrompt": "Animated GIF built from one Imagen base workbook (S2-base.png) with green bars composited onto rows 1 and 2 via sharp. Cycles: blank → top row highlighted → top + middle rows highlighted. Guarantees identical workbook across frames.",
+        "imagePrompt": "Animated GIF built from one Imagen base workbook (S2-base.png) with green bars composited onto rows 1 and 2 via sharp. Cycles: blank \u2192 top row highlighted \u2192 top + middle rows highlighted. Guarantees identical workbook across frames.",
         "imageFile": "images/lessons/RF.K.1a/S2.gif"
       },
       {
@@ -4386,7 +4389,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.1a/S3b.mp3",
             "ttsScript": "I start here on the left. I read the cat sat.",
-            "interaction": "Line 1 karaoke animation plays: The → cat → sat.",
+            "interaction": "Line 1 karaoke animation plays: The \u2192 cat \u2192 sat.",
             "displayText": "",
             "imageFile": "images/lessons/RF.K.1a/S3-b.gif"
           },
@@ -4394,7 +4397,7 @@
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.1a/S3c.mp3",
             "ttsScript": "Now I drop down to the next line. I start on the left again. On a mat.",
-            "interaction": "Line 2 karaoke animation plays: on → a → mat. Line 1 shown grayed.",
+            "interaction": "Line 2 karaoke animation plays: on \u2192 a \u2192 mat. Line 1 shown grayed.",
             "displayText": "",
             "imageFile": "images/lessons/RF.K.1a/S3-c.gif"
           }
@@ -4484,6 +4487,11 @@
         "slide": 10,
         "type": "mcq",
         "mcqId": "RF.K.1a-Q5"
+      },
+      {
+        "slide": 11,
+        "type": "mcq",
+        "mcqId": "RF.K.1a-Q9"
       }
     ]
   },
@@ -4511,9 +4519,18 @@
             "interaction": "Letters C, A, T pop in one at a time as the narrator names each letter.",
             "displayText": "",
             "displayParts": [
-              { "text": "C", "delay": 3670 },
-              { "text": "A", "delay": 4630 },
-              { "text": "T", "delay": 5380 }
+              {
+                "text": "C",
+                "delay": 3670
+              },
+              {
+                "text": "A",
+                "delay": 4630
+              },
+              {
+                "text": "T",
+                "delay": 5380
+              }
             ]
           },
           {
@@ -4728,7 +4745,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.1c/S2a.mp3",
             "ttsScript": "Look at this: thecatsat. Can you read that? It's so hard!",
-            "interaction": "Shows 'thecatsat' squished in a red ✗ card.",
+            "interaction": "Shows 'thecatsat' squished in a red \u2717 card.",
             "displayText": "",
             "imageFile": "images/lessons/RF.K.1c/S2-a.png"
           },
@@ -4736,7 +4753,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.1c/S2b.mp3",
             "ttsScript": "Now look: the cat sat. So much easier! The spaces tell us each word.",
-            "interaction": "Animates 'thecatsat' spreading apart into 'the cat sat' (red → green).",
+            "interaction": "Animates 'thecatsat' spreading apart into 'the cat sat' (red \u2192 green).",
             "displayText": "Spaces separate words!",
             "displayDelay": 1085,
             "imageFile": "images/lessons/RF.K.1c/S2-b.gif"
@@ -4745,14 +4762,14 @@
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.1c/S2c.mp3",
             "ttsScript": "Every word needs a space before the next word starts. One finger space!",
-            "interaction": "Shows 'the • cat • sat' with yellow space-dots + green ✓.",
+            "interaction": "Shows 'the \u2022 cat \u2022 sat' with yellow space-dots + green \u2713.",
             "displayText": "One finger space between words!",
             "displayDelay": 1008,
             "imageFile": "images/lessons/RF.K.1c/S2-c.png"
           }
         ],
         "heading": "Why Do We Need Spaces?",
-        "imagePrompt": "Code-generated per-step visuals (see scripts/make-rfk1c-s2-gif.js). S2-a.png squished 'thecatsat' red state. S2-b.gif animates letters spreading apart into 'the cat sat'. S2-c.png final green state with Twemoji 👆 finger-space markers between words.",
+        "imagePrompt": "Code-generated per-step visuals (see scripts/make-rfk1c-s2-gif.js). S2-a.png squished 'thecatsat' red state. S2-b.gif animates letters spreading apart into 'the cat sat'. S2-c.png final green state with Twemoji \ud83d\udc46 finger-space markers between words.",
         "imageFile": "images/lessons/RF.K.1c/S2-c.png"
       },
       {
@@ -4817,8 +4834,8 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.1c/S4b.mp3",
             "ttsScript": "Put your finger down after writing a word, then start the next word after your finger. Perfect spaces every time!",
-            "interaction": "Pill: [👆 Finger space trick!] pops in.",
-            "displayText": "👆 Finger space trick!",
+            "interaction": "Pill: [\ud83d\udc46 Finger space trick!] pops in.",
+            "displayText": "\ud83d\udc46 Finger space trick!",
             "displayDelay": 1550
           },
           {
@@ -5016,8 +5033,8 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.1d/S4b.mp3",
             "ttsScript": "When you see a letter, try to say its name. Is it uppercase or lowercase?",
-            "interaction": "Pill: [See a letter → Say its name → Uppercase? Lowercase?] pops in.",
-            "displayText": "See a letter → Say its name → UPPERCASE? LOWERCASE?",
+            "interaction": "Pill: [See a letter \u2192 Say its name \u2192 Uppercase? Lowercase?] pops in.",
+            "displayText": "See a letter \u2192 Say its name \u2192 UPPERCASE? LOWERCASE?",
             "displayDelay": 1163
           },
           {

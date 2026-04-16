@@ -2387,9 +2387,7 @@
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q6.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q6-hint.mp3",
-          "sentence_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q6-sentence.mp3",
-          "choices": [],
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.1a/RF.K.1a-Q6.png"
+          "sentence_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q6-sentence.mp3"
         },
         {
           "id": "RF.K.1a-Q7",
@@ -2430,6 +2428,24 @@
           "sentence_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q8-sentence.mp3",
           "choices": [],
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.1a/RF.K.1a-Q8.png"
+        },
+        {
+          "id": "RF.K.1a-Q9",
+          "type": "sentence_build",
+          "prompt": "Tap each word in READING order \u2014 left to right!",
+          "words": [
+            "I",
+            "like",
+            "to",
+            "read"
+          ],
+          "correct": "I like to read.",
+          "sentence_hint": "Which word comes FIRST when you read left to right?",
+          "hint": "Start on the LEFT! Read each word going to the RIGHT.",
+          "difficulty": 1,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q9.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q9-hint.mp3",
+          "sentence_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q9-sentence.mp3"
         }
       ]
     },
