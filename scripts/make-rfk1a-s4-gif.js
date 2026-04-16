@@ -9,11 +9,24 @@
 
 const sharp = require("sharp");
 const fs = require("fs");
+const path = require("path");
 const { execSync } = require("child_process");
 
 const OUT_DIR = "public/images/lessons/RF.K.1a";
 const W = 800;
 const H = 500;
+
+// Inlined from Downloads/backhand-index-pointing-up-svgrepo-com.svg (SVG Repo, free-to-use).
+// Strip the outer <svg>…</svg> wrapper and keep the inner content so we can translate+scale it.
+const HAND_SVG_RAW = fs.readFileSync(path.resolve(__dirname, "hand-pointer.svg"), "utf-8");
+const HAND_INNER = HAND_SVG_RAW
+  .replace(/^[\s\S]*?<svg[^>]*>/, "")
+  .replace(/<\/svg>\s*$/, "");
+// Natural viewBox is 80x80 with the index fingertip at roughly (35, 6).
+const HAND_NATIVE = 80;
+const HAND_TIP_X = 35;   // x coord of the fingertip inside the 80x80 viewBox
+const HAND_TIP_Y = 6;    // y coord of the fingertip
+const HAND_DISPLAY_SIZE = 120; // final on-slide size in px
 
 const FONT = "'Comic Sans MS', 'Comic Neue', 'Baloo 2', 'Chalkboard SE', Arial, sans-serif";
 const FONT_SIZE = 70;
@@ -62,36 +75,17 @@ function frameSVG(row, fingerPosition, showCheck = false) {
     `<polygon points="${rowRightX - headW},${arrowY - 22} ${rowRightX},${arrowY} ${rowRightX - headW},${arrowY + 22}" fill="#16a34a"/>`
   );
 
-  // Cartoon pointing hand positioned along the row (pointing up at the words).
-  // Layout: index finger on the LEFT side of the palm, thumb wrapping further left,
-  // three curled fingers stacked on the RIGHT of the palm — reads as an emoji-style 👆.
+  // Cartoon pointing hand (Twemoji 👆) positioned so the fingertip lands on the arrow.
   if (fingerPosition !== null) {
     const travelLeft = rowLeftX + 10;
     const travelRight = rowRightX - headW - 10;
     const tipX = travelLeft + (travelRight - travelLeft) * fingerPosition;
-    const tipY = arrowY + 15;
-    // Coordinates anchor at the index fingertip (tipX, tipY).
+    const tipY = arrowY + 15; // fingertip sits just under the arrow
+    const scale = HAND_DISPLAY_SIZE / HAND_NATIVE;
+    const offsetX = tipX - HAND_TIP_X * scale;
+    const offsetY = tipY - HAND_TIP_Y * scale;
     parts.push(
-      `<g transform="translate(${tipX - 22}, ${tipY})">
-        <!-- Three curled fingers on the RIGHT of the palm, stacked like knuckle bumps -->
-        <path d="M 38 62 Q 58 60 58 76 L 58 92 Q 58 104 40 104 Z" fill="#f2c08a" stroke="#8b4513" stroke-width="2.5"/>
-        <path d="M 36 78 Q 60 76 60 92 L 60 108 Q 60 120 40 120 Z" fill="#f8c999" stroke="#8b4513" stroke-width="2.5"/>
-        <path d="M 34 94 Q 56 92 56 108 L 56 122 Q 56 134 38 134 Z" fill="#f2c08a" stroke="#8b4513" stroke-width="2.5"/>
-        <!-- Thumb: wraps up from the left side of the palm -->
-        <path d="M 2 88 Q -10 72 4 60 Q 18 52 26 70 L 26 96 Q 20 100 12 98 Z"
-              fill="#fcd9b6" stroke="#8b4513" stroke-width="3"/>
-        <!-- Palm / back of hand -->
-        <path d="M 4 90 Q 4 70 22 65 L 40 65 Q 60 65 60 90 L 60 125 Q 60 145 36 145 L 16 145 Q 4 145 4 128 Z"
-              fill="#fcd9b6" stroke="#8b4513" stroke-width="3"/>
-        <!-- Index finger (extended UP) on the LEFT side of the palm -->
-        <rect x="10" y="-6" width="24" height="74" rx="12" fill="#fcd9b6" stroke="#8b4513" stroke-width="3"/>
-        <!-- Fingertip dome highlight -->
-        <ellipse cx="22" cy="0" rx="7" ry="4" fill="#fff3e0" opacity="0.9"/>
-        <!-- Knuckle crease on finger -->
-        <line x1="13" y1="32" x2="31" y2="32" stroke="#8b4513" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
-        <!-- Wrist cuff -->
-        <rect x="4" y="140" width="56" height="14" rx="7" fill="#a78bfa" stroke="#6d28d9" stroke-width="2.5"/>
-      </g>`
+      `<g transform="translate(${offsetX} ${offsetY}) scale(${scale})">${HAND_INNER}</g>`
     );
   }
 
