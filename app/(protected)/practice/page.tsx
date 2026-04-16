@@ -543,7 +543,19 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
   /* ── Play word-level audio (for CategorySort / TapToPair / SentenceBuild tiles) ── */
   const playWordAudio = useCallback((word: string) => {
     const clean = word.replace(/[^a-zA-Z0-9 ]/g, "").toLowerCase().replace(/\s+/g, "_");
-    if (!clean || clean.length <= 1) return;
+    if (!clean) return;
+    // Single letters use letter-name audio (audio/letters/a.mp3) not phoneme audio
+    if (clean.length === 1) {
+      const letterBase = process.env.NEXT_PUBLIC_SUPABASE_URL
+        ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audio`
+        : "";
+      const letterSrc = letterBase ? `${letterBase}/letters/${clean}.mp3` : `/audio/letters/${clean}.mp3`;
+      if (tileAudioRef.current) { tileAudioRef.current.pause(); tileAudioRef.current = null; }
+      const audio = new Audio(letterSrc);
+      tileAudioRef.current = audio;
+      audio.play().catch(() => {});
+      return;
+    }
     const base = process.env.NEXT_PUBLIC_SUPABASE_URL
       ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audio`
       : "";
