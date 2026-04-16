@@ -371,7 +371,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
 
   /* ─── Render helpers ─── */
 
-  const highlightCaps = (text: string, cls = "text-blue-700 dark:text-blue-300 font-extrabold") =>
+  const highlightCaps = (text: string, cls = "text-rose-600 dark:text-rose-400 font-extrabold") =>
     text.split(/(\s+)/).map((seg, si) =>
       /^[A-Z]{2,}[!?.,]?$/.test(seg)
         ? <span key={si} className={cls}>{seg}</span>
