@@ -356,6 +356,19 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
   const effectiveImageFile = activeStepImage ?? slide?.imageFile;
   const imageUrl = effectiveImageFile ? `${SUPABASE_STORAGE}/${effectiveImageFile}` : "";
 
+  // Preload every per-step image as soon as the slide mounts so transitions
+  // between beats don't flash the LoadingImage skeleton.
+  useEffect(() => {
+    const urls = new Set<string>();
+    steps.forEach((s) => {
+      if (s.imageFile) urls.add(`${SUPABASE_STORAGE}/${s.imageFile}`);
+    });
+    urls.forEach((u) => {
+      const img = new Image();
+      img.src = u;
+    });
+  }, [steps]);
+
   /* ─── Render helpers ─── */
 
   const getFeedback = (step: Step) => {
