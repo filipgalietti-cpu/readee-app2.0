@@ -4378,27 +4378,30 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.1a/S3a.mp3",
             "ttsScript": "Watch my finger! I'll show you how to follow the words.",
-            "interaction": "Heading appears.",
-            "displayText": ""
+            "interaction": "Heading appears; sentence shown blank (no highlights).",
+            "displayText": "",
+            "imageFile": "images/lessons/RF.K.1a/S3-a.png"
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.1a/S3b.mp3",
-            "ttsScript": "I start here on the left. I read the cat sat. Then I move right. On a mat!",
-            "interaction": "Finger traces left to right across example text, highlighting each word.",
-            "displayText": ""
+            "ttsScript": "I start here on the left. I read the cat sat.",
+            "interaction": "Line 1 karaoke animation plays: The → cat → sat.",
+            "displayText": "",
+            "imageFile": "images/lessons/RF.K.1a/S3-b.gif"
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.1a/S3c.mp3",
-            "ttsScript": "Now drop down to the next line, start on the left again! You try it too!",
-            "interaction": "Finger drops down and traces next line. Stars sparkle as it goes.",
-            "displayText": ""
+            "ttsScript": "Now I drop down to the next line. I start on the left again. On a mat.",
+            "interaction": "Line 2 karaoke animation plays: on → a → mat. Line 1 shown grayed.",
+            "displayText": "",
+            "imageFile": "images/lessons/RF.K.1a/S3-c.gif"
           }
         ],
         "heading": "Let's Try It Together!",
-        "imagePrompt": "Code-generated karaoke GIF (see scripts/make-rfk1a-s3-gif.js). Renders 'The cat sat / on a mat' as SVG and animates a yellow highlight + green arrow through each word top-to-bottom left-to-right. Past words fade gray, active word is bold green.",
-        "imageFile": "images/lessons/RF.K.1a/S3.gif"
+        "imagePrompt": "Code-generated karaoke animation (see scripts/make-rfk1a-s3-gif.js). Per-step images: S3-a.png blank sentence, S3-b.gif line 1 karaoke, S3-c.gif line 2 karaoke with line 1 grayed.",
+        "imageFile": "images/lessons/RF.K.1a/S3-a.png"
       },
       {
         "slide": 4,

@@ -36,6 +36,7 @@ interface Step {
   checkmarkTriggerStagger?: number; // ms between each checkmark (default 400)
   highlightPills?: HighlightPill[]; // schedule per-pill bounce during this step's audio
   highlightWord?: { word: string; delay: number }; // underline a word in a visible passage after delay
+  imageFile?: string; // per-step image override — swaps the slide image while this step is playing
   displayTableRow?: {
     label: string;
     value: string;
@@ -349,7 +350,11 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
     setShowNext(true);
   }, [steps, clearTimer]);
 
-  const imageUrl = slide?.imageFile ? `${SUPABASE_STORAGE}/${slide.imageFile}` : "";
+  // Per-step image override: when the currently-playing step has its own imageFile,
+  // swap to it so the visual advances with the audio.
+  const activeStepImage = playingStep >= 0 ? steps[playingStep]?.imageFile : undefined;
+  const effectiveImageFile = activeStepImage ?? slide?.imageFile;
+  const imageUrl = effectiveImageFile ? `${SUPABASE_STORAGE}/${effectiveImageFile}` : "";
 
   /* ─── Render helpers ─── */
 
