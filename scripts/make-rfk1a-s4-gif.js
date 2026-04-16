@@ -158,6 +158,10 @@ async function stitchGif(segments, outGif) {
     await svgToPng(frameSVG(row, t), path);
     slideFrames.push(path);
   }
+  // Final frame variant WITH the checkmark — used to end S4-b.gif and as S4-c.png.
+  // Makes the step b → step c image swap seamless (both show finger-at-end + check).
+  const bFinalChecked = `${OUT_DIR}/S4-bfinal-check.png`;
+  await svgToPng(frameSVG(row, 1, true), bFinalChecked);
 
   const segments = [
     { file: `${OUT_DIR}/S4-bhold.png`, duration: slideStart },
@@ -165,12 +169,15 @@ async function stitchGif(segments, outGif) {
   for (let i = 0; i < slideFrames.length; i++) {
     segments.push({ file: slideFrames[i], duration: slideDur / FRAMES });
   }
-  // Hold the final frame
-  segments.push({ file: slideFrames[slideFrames.length - 1], duration: holdTail });
+  // Short beat at the right edge without the check, then flip to the checked frame
+  // for the remainder of the tail so the transition to S4-c.png is seamless.
+  segments.push({ file: slideFrames[slideFrames.length - 1], duration: 0.15 });
+  segments.push({ file: bFinalChecked, duration: Math.max(0.05, holdTail - 0.15) });
   await stitchGif(segments, "S4-b.gif");
 
-  // S4c: finger at end of row + checkmark (proud summary)
-  await svgToPng(frameSVG(row, 1, true), `${OUT_DIR}/S4-c.png`);
+  // S4c PNG: identical to the last frame of the GIF so there's no visual change
+  // on the image-file swap.
+  fs.copyFileSync(bFinalChecked, `${OUT_DIR}/S4-c.png`);
 
   console.log(`Done. S4-a.png + S4-b.gif + S4-c.png written.`);
 })();
