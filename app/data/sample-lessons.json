@@ -3466,29 +3466,47 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.K.6/S2a.mp3",
-            "ttsScript": "The author is the person who wrote the book. They chose what facts to share with you!",
-            "interaction": "Heading appears.",
+            "ttsScript": "Every fact book has two important people — the author and the illustrator!",
+            "interaction": "Heading and table headers appear.",
             "displayText": ""
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RI.K.6/S2b.mp3",
-            "ttsScript": "You can find the author's name on the front cover or the title page.",
-            "interaction": "Pill: [Author's name → Cover or Title Page] pops in blue.",
-            "displayText": "Author's name → Cover or Title Page",
-            "displayDelay": 1085
+            "ttsScript": "The author writes the WORDS. They chose all the facts for you!",
+            "interaction": "Author row fills in.",
+            "displayText": "Author",
+            "displayDelay": 1500,
+            "displayTableRow": {
+              "label": "Author",
+              "value": "Writes the WORDS",
+              "tableHeaders": ["Who?", "What They Do"]
+            }
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RI.K.6/S2c.mp3",
-            "ttsScript": "The author picks the topic, does research, and writes it all down for you to read!",
-            "interaction": "Pill: [Author: Picks topic → Researches → Writes] pops in green.",
-            "displayText": "Author: Picks topic → Researches → Writes",
-            "displayDelay": 1240
+            "ttsScript": "The illustrator draws the PICTURES. They show you what the words say!",
+            "interaction": "Illustrator row fills in.",
+            "displayText": "Illustrator",
+            "displayDelay": 1500,
+            "displayTableRow": {
+              "label": "Illustrator",
+              "value": "Draws the PICTURES"
+            }
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RI.K.6/S2d.mp3",
+            "ttsScript": "Together, they teach you everything in the book!",
+            "interaction": "Both rows glow.",
+            "displayText": "",
+            "checkmarkTriggerDelay": 1000,
+            "checkmarkTriggerStagger": 1200
           }
         ],
-        "heading": "Who Is the Author?",
-        "imagePrompt": "A cartoon book with a spotlight shining on the author's name, with a small portrait of a friendly author waving. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "heading": "Who Made This Book?",
+        "imagePrompt": "A split scene showing two cartoon people making a book together. Left side: a cheerful cartoon author sitting at a desk writing with a pencil, surrounded by a stack of research notes. Right side: a cheerful cartoon illustrator at an easel painting a big colorful picture of a planet. A sparkling book is shown between them. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RI.K.6/S2.png"
       },
       {
