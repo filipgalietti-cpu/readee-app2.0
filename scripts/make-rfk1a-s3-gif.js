@@ -109,18 +109,28 @@ async function svgToPng(svg, outPath) {
   await sharp(svg).png().toFile(outPath);
 }
 
-async function stitchGif(framePrefix, outGif, framerate = 1.2, holdLastFrames = 2) {
-  // Duplicate the last frame a few times to hold on final word.
-  const files = fs.readdirSync(OUT_DIR).filter((f) => f.startsWith(framePrefix) && f.endsWith(".png"));
-  files.sort();
-  const last = files[files.length - 1];
-  for (let i = 1; i <= holdLastFrames; i++) {
-    fs.copyFileSync(`${OUT_DIR}/${last}`, `${OUT_DIR}/${framePrefix}hold${i}.png`);
-  }
+/**
+ * Stitch a sequence of PNGs into a GIF using ffmpeg's concat demuxer
+ * so each frame can have its own duration.
+ *   segments = [{ file: "framePath.png", duration: secondsToHold }, ...]
+ * The last segment's duration is the hold on the final frame.
+ */
+async function stitchGif(segments, outGif) {
+  const listPath = `${OUT_DIR}/.concat.txt`;
+  const lines = [];
+  segments.forEach((seg, i) => {
+    lines.push(`file '${seg.file.replace(OUT_DIR + "/", "")}'`);
+    lines.push(`duration ${seg.duration.toFixed(3)}`);
+  });
+  // concat demuxer requires the last file listed twice without a duration.
+  lines.push(`file '${segments[segments.length - 1].file.replace(OUT_DIR + "/", "")}'`);
+  fs.writeFileSync(listPath, lines.join("\n"));
+
   execSync(
-    `ffmpeg -y -framerate ${framerate} -pattern_type glob -i "${OUT_DIR}/${framePrefix}*.png" -vf "fps=15,scale=640:-1:flags=lanczos,split[s0][s1];[s0]palettegen=max_colors=96[p];[s1][p]paletteuse=dither=bayer" -loop 0 ${OUT_DIR}/${outGif}`,
+    `ffmpeg -y -f concat -safe 0 -i ${listPath} -vf "fps=15,scale=640:-1:flags=lanczos,split[s0][s1];[s0]palettegen=max_colors=96[p];[s1][p]paletteuse=dither=bayer" -loop 0 ${OUT_DIR}/${outGif}`,
     { stdio: "inherit" }
   );
+  fs.unlinkSync(listPath);
 }
 
 (async () => {
@@ -135,26 +145,40 @@ async function stitchGif(framePrefix, outGif, framerate = 1.2, holdLastFrames = 
   await svgToPng(frameSVG(layout, null), `${OUT_DIR}/S3-a.png`);
 
   // ── Step b: line 1 karaoke (The → cat → sat) ──
-  // Frames: word 1, word 2, word 3
-  const bFrames = [];
-  LINES[0].forEach((_, wi) => {
-    bFrames.push(frameSVG(layout, { li: 0, wi }));
-  });
-  for (let i = 0; i < bFrames.length; i++) {
-    await svgToPng(bFrames[i], `${OUT_DIR}/S3-bframe${i}.png`);
-  }
-  await stitchGif("S3-bframe", "S3-b.gif", 1.0, 4);
+  // Audio is ~6.6s: "I start here on the left. (2.5s) I read (0.8s) the cat sat. (2.5s) [tail ~0.8s]"
+  // Keep the sentence blank while the intro plays, then highlight each word
+  // starting right before the narrator says it, and hold on "sat" to the tail.
+  await svgToPng(frameSVG(layout, null), `${OUT_DIR}/S3-b0.png`);        // blank intro
+  await svgToPng(frameSVG(layout, { li: 0, wi: 0 }), `${OUT_DIR}/S3-b1.png`); // "The"
+  await svgToPng(frameSVG(layout, { li: 0, wi: 1 }), `${OUT_DIR}/S3-b2.png`); // "cat"
+  await svgToPng(frameSVG(layout, { li: 0, wi: 2 }), `${OUT_DIR}/S3-b3.png`); // "sat"
+  await stitchGif(
+    [
+      { file: `${OUT_DIR}/S3-b0.png`, duration: 3.3 }, // "I start here on the left. I read"
+      { file: `${OUT_DIR}/S3-b1.png`, duration: 0.8 }, // "the"
+      { file: `${OUT_DIR}/S3-b2.png`, duration: 0.8 }, // "cat"
+      { file: `${OUT_DIR}/S3-b3.png`, duration: 1.7 }, // "sat" + tail hold
+    ],
+    "S3-b.gif"
+  );
 
   // ── Step c: line 1 grayed + line 2 karaoke (on → a → mat) ──
+  // Audio is ~9.3s: "Now I drop down to the next line. (3s) I start on the left again. (2.5s)
+  //                  On a mat. (2s) [tail ~1.8s]"
   const completed = new Set([0]);
-  const cFrames = [];
-  LINES[1].forEach((_, wi) => {
-    cFrames.push(frameSVG(layout, { li: 1, wi }, completed));
-  });
-  for (let i = 0; i < cFrames.length; i++) {
-    await svgToPng(cFrames[i], `${OUT_DIR}/S3-cframe${i}.png`);
-  }
-  await stitchGif("S3-cframe", "S3-c.gif", 1.0, 4);
+  await svgToPng(frameSVG(layout, null, completed),           `${OUT_DIR}/S3-c0.png`);
+  await svgToPng(frameSVG(layout, { li: 1, wi: 0 }, completed),`${OUT_DIR}/S3-c1.png`); // "on"
+  await svgToPng(frameSVG(layout, { li: 1, wi: 1 }, completed),`${OUT_DIR}/S3-c2.png`); // "a"
+  await svgToPng(frameSVG(layout, { li: 1, wi: 2 }, completed),`${OUT_DIR}/S3-c3.png`); // "mat"
+  await stitchGif(
+    [
+      { file: `${OUT_DIR}/S3-c0.png`, duration: 5.5 }, // "Now I drop down... start on the left again."
+      { file: `${OUT_DIR}/S3-c1.png`, duration: 0.7 }, // "on"
+      { file: `${OUT_DIR}/S3-c2.png`, duration: 0.6 }, // "a"
+      { file: `${OUT_DIR}/S3-c3.png`, duration: 2.5 }, // "mat" + tail hold
+    ],
+    "S3-c.gif"
+  );
 
   console.log(`Done. S3-a.png + S3-b.gif + S3-c.gif written to ${OUT_DIR}`);
 })();
