@@ -4397,8 +4397,8 @@
           }
         ],
         "heading": "Let's Try It Together!",
-        "imagePrompt": "A cartoon child sitting at a desk, using their finger to trace along a colorful rainbow path from left to right. The path has butterflies and flowers along it. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
-        "imageFile": "images/lessons/RF.K.1a/S3.png"
+        "imagePrompt": "Code-generated karaoke GIF (see scripts/make-rfk1a-s3-gif.js). Renders 'The cat sat / on a mat' as SVG and animates a yellow highlight + green arrow through each word top-to-bottom left-to-right. Past words fade gray, active word is bold green.",
+        "imageFile": "images/lessons/RF.K.1a/S3.gif"
       },
       {
         "slide": 4,
