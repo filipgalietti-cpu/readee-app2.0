@@ -974,6 +974,7 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
             correct={q.correct}
             sentenceHint={(q as any).sentence_hint}
             sentenceAudioUrl={(q as any).sentence_audio_url}
+            questionId={q.id}
             answered={selected !== null}
             onAnswer={(isCorrect, choice) => handleSentenceBuildAnswer(isCorrect, choice)}
           />

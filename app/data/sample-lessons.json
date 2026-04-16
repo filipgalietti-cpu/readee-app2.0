@@ -4607,28 +4607,28 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.1b/S4a.mp3",
-            "ttsScript": "Point to each letter in a word and count them!",
+            "ttsScript": "Here's a fun trick. Think about your own name!",
             "interaction": "Heading with sparkle.",
             "displayText": ""
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.1b/S4b.mp3",
-            "ttsScript": "Touch each letter as you say it. That helps you see how the word is built!",
-            "interaction": "Pill: [Touch and count each letter!] pops in.",
-            "displayText": "Touch and count each letter!",
-            "displayDelay": 1240
+            "ttsScript": "How many letters are in YOUR name? Count them with your finger!",
+            "interaction": "Pill pops in.",
+            "displayText": "How many letters in YOUR NAME?",
+            "displayDelay": 1500
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.1b/S4c.mp3",
-            "ttsScript": "You're a word builder now!",
+            "ttsScript": "Every name is made of letters, just like every word!",
             "interaction": "Builder hard hat icon. Tap to continue.",
             "displayText": ""
           }
         ],
         "heading": "A Helpful Trick!",
-        "imagePrompt": "A cartoon finger pointing at each letter in a word one by one, with numbers 1, 2, 3 appearing above each letter. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A joyful cartoon child with a big smile pointing at themselves with both thumbs. Colorful sparkles, stars, and question marks float around their head as if they're proudly thinking about their own name. Plain cream background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words anywhere.",
         "imageFile": "images/lessons/RF.K.1b/S4.png"
       },
       {

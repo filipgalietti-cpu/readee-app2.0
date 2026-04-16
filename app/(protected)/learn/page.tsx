@@ -529,6 +529,7 @@ function LearnSession({
             correct={q.correct}
             sentenceHint={q.sentence_hint}
             sentenceAudioUrl={q.sentence_audio_url}
+            questionId={q.id}
             answered={selected !== null}
             onAnswer={(isCorrect, choice) => handleInteractiveAnswer(isCorrect, choice)}
           />
