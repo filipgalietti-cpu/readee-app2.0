@@ -3438,13 +3438,20 @@
         "steps": [
           {
             "sub": "a",
-            "audioFile": "audio/lessons/RI.K.6/S2a.mp3",
-            "ttsScript": "Every fact book has two important people \u2014 the author and the illustrator!",
-            "interaction": "Heading and table headers appear.",
+            "audioFile": "audio/lessons/RI.K.6/S1-intro.mp3",
+            "ttsScript": "Have you ever wondered who makes the fact books you read? Let's find out!",
+            "interaction": "Heading fades in.",
             "displayText": ""
           },
           {
             "sub": "b",
+            "audioFile": "audio/lessons/RI.K.6/S2a.mp3",
+            "ttsScript": "Every fact book has two important people \u2014 the author and the illustrator!",
+            "interaction": "Table headers appear.",
+            "displayText": ""
+          },
+          {
+            "sub": "c",
             "audioFile": "audio/lessons/RI.K.6/S2b.mp3",
             "ttsScript": "The author writes the WORDS. They chose all the facts for you!",
             "interaction": "Author row fills in.",
@@ -3460,7 +3467,7 @@
             }
           },
           {
-            "sub": "c",
+            "sub": "d",
             "audioFile": "audio/lessons/RI.K.6/S2c.mp3",
             "ttsScript": "The illustrator draws the PICTURES. They show you what the words say!",
             "interaction": "Illustrator row fills in.",
@@ -3472,7 +3479,7 @@
             }
           },
           {
-            "sub": "d",
+            "sub": "e",
             "audioFile": "audio/lessons/RI.K.6/S2d.mp3",
             "ttsScript": "Together, they teach you everything in the book!",
             "interaction": "Both rows glow.",
