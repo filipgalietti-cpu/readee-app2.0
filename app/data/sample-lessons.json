@@ -4983,17 +4983,18 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.1d/S3b.mp3",
-            "ttsScript": "B and b \u2014 they match! One is big and one is small, but they're the same letter!",
-            "interaction": "B and b connect with a line. Pill: [B = b \u2713] pops in.",
-            "displayText": "B means b",
-            "displayDelay": 1500
+            "ttsScript": "Look at the picture. The big letter and the small letter match. Same letter, different size!",
+            "interaction": "Pill pops in.",
+            "displayText": "Same letter, different SIZE!",
+            "displayDelay": 2000
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.1d/S3c.mp3",
-            "ttsScript": "D and d \u2014 match! S and s \u2014 match! You're a letter matching pro!",
-            "interaction": "D/d and S/s connect. Stars and confetti.",
-            "displayText": ""
+            "ttsScript": "Each pair matches. The uppercase on top, the lowercase on the bottom. You're a letter matching pro!",
+            "interaction": "Stars and confetti.",
+            "displayText": "UPPERCASE on top, LOWERCASE on bottom!",
+            "displayDelay": 2000
           }
         ],
         "heading": "Let's Match Some Letters!",
@@ -5015,8 +5016,8 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.1d/S4b.mp3",
             "ttsScript": "When you see a letter, try to say its name. Is it uppercase or lowercase?",
-            "interaction": "Pill: [See a letter \u2192 Say its name \u2192 Big or small?] pops in.",
-            "displayText": "See a letter \u2192 Say its name \u2192 Big or small?",
+            "interaction": "Pill: [See a letter → Say its name → Uppercase? Lowercase?] pops in.",
+            "displayText": "See a letter → Say its name → UPPERCASE? LOWERCASE?",
             "displayDelay": 1163
           },
           {

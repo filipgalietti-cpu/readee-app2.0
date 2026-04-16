@@ -2328,12 +2328,12 @@
           "type": "multiple_choice",
           "prompt": "Which arrow shows the direction we READ words?",
           "choices": [
-            "→  Left to right",
-            "←  Right to left",
-            "↓  Top to bottom",
-            "↑  Bottom to top"
+            "\u2192  Left to right",
+            "\u2190  Right to left",
+            "\u2193  Top to bottom",
+            "\u2191  Bottom to top"
           ],
-          "correct": "→  Left to right",
+          "correct": "\u2192  Left to right",
           "hint": "In English, our eyes go from the LEFT side to the RIGHT side!",
           "difficulty": 1,
           "choices_audio_urls": [
@@ -2681,7 +2681,7 @@
         {
           "id": "RF.K.1d-Q1",
           "type": "multiple_choice",
-          "prompt": "Which is the UPPERCASE (capital) version of the letter **a**?",
+          "prompt": "Which is the UPPERCASE (capital) version of the letter a?",
           "choices": [
             "A",
             "B",
@@ -2704,7 +2704,7 @@
         {
           "id": "RF.K.1d-Q2",
           "type": "multiple_choice",
-          "prompt": "Which is the LOWERCASE (small) version of the letter **G**?",
+          "prompt": "Which is the LOWERCASE (small) version of the letter G?",
           "choices": [
             "g",
             "j",
@@ -2759,7 +2759,7 @@
         {
           "id": "RF.K.1d-Q4",
           "type": "multiple_choice",
-          "prompt": "What letter comes AFTER **M** in the alphabet?",
+          "prompt": "What letter comes AFTER M in the alphabet?",
           "choices": [
             "L",
             "N",
