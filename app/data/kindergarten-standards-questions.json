@@ -2691,12 +2691,6 @@
           "correct": "A",
           "hint": "Uppercase letters are BIG letters \u2014 the capital version of 'a' is...",
           "difficulty": 1,
-          "choices_audio_urls": [
-            "/audio/kindergarten/RF.K.1d-q1-choice1.mp3",
-            "/audio/kindergarten/RF.K.1d-q1-choice2.mp3",
-            "/audio/kindergarten/RF.K.1d-q1-choice3.mp3",
-            "/audio/kindergarten/RF.K.1d-q1-choice4.mp3"
-          ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1d/RF.K.1d-Q1-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1d/RF.K.1d-Q1.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.1d/RF.K.1d-Q1.png"
@@ -2714,12 +2708,6 @@
           "correct": "g",
           "hint": "Lowercase letters are small letters. The small 'G' looks like 'g.'",
           "difficulty": 1,
-          "choices_audio_urls": [
-            "/audio/kindergarten/RF.K.1d-q2-choice1.mp3",
-            "/audio/kindergarten/RF.K.1d-q2-choice2.mp3",
-            "/audio/kindergarten/RF.K.1d-q2-choice3.mp3",
-            "/audio/kindergarten/RF.K.1d-q2-choice4.mp3"
-          ],
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1d/RF.K.1d-Q2-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1d/RF.K.1d-Q2.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.1d/RF.K.1d-Q2.png"
