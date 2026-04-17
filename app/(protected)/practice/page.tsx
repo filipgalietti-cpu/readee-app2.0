@@ -538,6 +538,32 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase]);
 
+  /* ── Play any audio URL via raw HTMLAudioElement (bulletproof, full logging) ── */
+  const playAudioUrl = useCallback((url: string, label: string) => {
+    console.log(`[${label}] attempting`, url);
+    if (audioManager) audioManager.stop();
+    try {
+      const audio = new Audio(url);
+      audio.volume = 1.0;
+      audio.addEventListener("error", () => {
+        const err = audio.error;
+        console.error(`[${label}] audio error code=${err?.code} msg=${err?.message}`);
+      });
+      const playPromise = audio.play();
+      if (playPromise && typeof playPromise.then === "function") {
+        playPromise
+          .then(() => console.log(`[${label}] playing`))
+          .catch((err) => {
+            console.error(`[${label}] play rejected: ${err.name} — ${err.message}`);
+            if (audioManager) audioManager.playOneshot(url);
+          });
+      }
+    } catch (e) {
+      console.error(`[${label}] exception:`, e);
+      if (audioManager) audioManager.playOneshot(url);
+    }
+  }, []);
+
   /* ── Play word-level audio (for CategorySort / TapToPair / SentenceBuild / SoundMachine tiles) ── */
   const playWordAudio = useCallback((word: string) => {
     const clean = word.replace(/[^a-zA-Z0-9 ]/g, "").toLowerCase().replace(/\s+/g, "_");
@@ -546,12 +572,8 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
     if (!base) { console.warn("[playWordAudio] NEXT_PUBLIC_SUPABASE_URL missing"); return; }
     const folder = clean.length === 1 ? "letters" : "words";
     const url = `${base}/storage/v1/object/public/audio/${folder}/${clean}.mp3`;
-    console.log("[playWordAudio]", word, "→", url);
-    if (audioManager) {
-      audioManager.stop();
-      audioManager.playOneshot(url);
-    }
-  }, []);
+    playAudioUrl(url, "playWordAudio");
+  }, [playAudioUrl]);
 
   /* ── Play phoneme audio (for SoundMachine tiles) ── */
   const playPhonemeAudio = useCallback((phoneme: string) => {
@@ -572,12 +594,8 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
     const base = process.env.NEXT_PUBLIC_SUPABASE_URL;
     if (!base) { console.warn("[playPhonemeAudio] NEXT_PUBLIC_SUPABASE_URL missing"); return; }
     const url = `${base}/storage/v1/object/public/audio/phonemes/${id}.mp3`;
-    console.log("[playPhonemeAudio]", phoneme, "→", url);
-    if (audioManager) {
-      audioManager.stop();
-      audioManager.playOneshot(url);
-    }
-  }, []);
+    playAudioUrl(url, "playPhonemeAudio");
+  }, [playAudioUrl]);
 
   /* ── Smart item audio: detects /phoneme/ format and routes accordingly ── */
   const playItemSmart = useCallback((item: string) => {

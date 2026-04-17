@@ -130,6 +130,12 @@ export function SoundMachine({
     onAnswer(true, userAnswer);
   }, [allSlotsFilled, answered, result, placed, allSounds, phonemes, onAnswer, onPlayWord, targetWord]);
 
+  // Log imageUrl on mount so we can tell from the console whether the prop
+  // actually arrived when something looks missing.
+  if (typeof window !== "undefined") {
+    console.log("[SoundMachine] targetWord=", targetWord, "imageUrl=", imageUrl);
+  }
+
   return (
     <div className="flex flex-col gap-6">
       {/* Prompt */}
@@ -138,13 +144,20 @@ export function SoundMachine({
       </h2>
 
       {/* Target word image */}
-      {imageUrl && (
+      {imageUrl ? (
         <div className="flex justify-center">
-          <LoadingImage
+          <img
             src={imageUrl}
             alt={targetWord}
-            className="w-32 h-32 object-contain rounded-xl"
+            className="w-40 h-40 object-contain rounded-2xl border-2 border-white dark:border-slate-700 shadow-md bg-white/60 dark:bg-slate-800/60"
+            onError={(e) => console.error("[SoundMachine] image failed to load:", imageUrl, e)}
           />
+        </div>
+      ) : (
+        <div className="flex justify-center">
+          <div className="w-40 h-40 rounded-2xl bg-zinc-100 dark:bg-slate-800 flex items-center justify-center text-4xl font-black uppercase text-indigo-600 dark:text-indigo-300">
+            {targetWord}
+          </div>
         </div>
       )}
 
