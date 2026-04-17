@@ -5133,8 +5133,8 @@
               }
             ],
             "sfxClaps": [
-              { "delay": 2090 },
-              { "delay": 2700 }
+              { "delay": 2550 },
+              { "delay": 3350 }
             ]
           },
           {
@@ -5169,7 +5169,7 @@
             "displayText": "Cat has 1 clap",
             "displayDelay": 930,
             "sfxClaps": [
-              { "delay": 3300 }
+              { "delay": 6600 }
             ]
           },
           {
@@ -5180,8 +5180,8 @@
             "displayText": "Ap-ple has 2 claps",
             "displayDelay": 853,
             "sfxClaps": [
-              { "delay": 2200 },
-              { "delay": 2800 }
+              { "delay": 5400 },
+              { "delay": 6300 }
             ]
           },
           {
@@ -5192,9 +5192,9 @@
             "displayText": "Ba-na-na has 3 claps",
             "displayDelay": 930,
             "sfxClaps": [
-              { "delay": 2400 },
-              { "delay": 2900 },
-              { "delay": 3400 }
+              { "delay": 4900 },
+              { "delay": 5700 },
+              { "delay": 6600 }
             ]
           }
         ],
@@ -5221,7 +5221,7 @@
             "displayText": "Dog has 1",
             "displayDelay": 1600,
             "sfxClaps": [
-              { "delay": 500 }
+              { "delay": 800 }
             ]
           },
           {
@@ -5232,8 +5232,8 @@
             "displayText": "Mon-key has 2",
             "displayDelay": 1500,
             "sfxClaps": [
-              { "delay": 400 },
-              { "delay": 800 }
+              { "delay": 500 },
+              { "delay": 1400 }
             ]
           },
           {
@@ -5244,9 +5244,9 @@
             "displayText": "El-e-phant has 3",
             "displayDelay": 2500,
             "sfxClaps": [
-              { "delay": 400 },
-              { "delay": 800 },
-              { "delay": 1200 }
+              { "delay": 500 },
+              { "delay": 1100 },
+              { "delay": 1900 }
             ]
           }
         ],
@@ -5306,7 +5306,7 @@
           }
         ],
         "heading": "Time to Practice!",
-        "imagePrompt": "A cartoon child on a small stage clapping and counting syllables, with an audience of stuffed animals cheering. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A cheerful cartoon Black boy with short curly hair and warm brown skin, on a small stage clapping his hands and counting syllables, with an audience of stuffed animals cheering. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RF.K.2b/S5.png"
       },
       {
