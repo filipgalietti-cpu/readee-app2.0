@@ -39,17 +39,44 @@ export function SoundMachine({
 }: SoundMachineProps) {
   const slotCount = phonemes.length;
 
-  // All available sounds, deterministically shuffled so correct order isn't obvious
+  // All available sounds, deterministically shuffled + spread so the correct
+  // phonemes aren't clumped together in the bank.
   const allSounds = useMemo(() => {
     const arr = [...phonemes, ...distractors];
-    // Seeded Fisher-Yates shuffle
     let seed = Math.abs(hashCode(targetWord));
     const rand = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 0xffffffff; };
+
+    // Fisher-Yates shuffle
     for (let i = arr.length - 1; i > 0; i--) {
       const j = Math.floor(rand() * (i + 1));
       [arr[i], arr[j]] = [arr[j], arr[i]];
     }
-    // If correct phonemes ended up in order, rotate to break the pattern
+
+    // Separation pass: if two correct phonemes landed adjacent, swap one out
+    // for a distractor that isn't touching another correct phoneme. Repeats
+    // until stable or we run out of viable moves.
+    const correctSet = new Set(phonemes);
+    for (let pass = 0; pass < 20; pass++) {
+      let changed = false;
+      for (let i = 0; i < arr.length - 1; i++) {
+        if (!correctSet.has(arr[i]) || !correctSet.has(arr[i + 1])) continue;
+        let swapJ = -1;
+        for (let j = 0; j < arr.length; j++) {
+          if (j === i || j === i + 1) continue;
+          if (correctSet.has(arr[j])) continue;
+          const leftOk = j === 0 || !correctSet.has(arr[j - 1]);
+          const rightOk = j === arr.length - 1 || !correctSet.has(arr[j + 1]);
+          if (leftOk && rightOk) { swapJ = j; break; }
+        }
+        if (swapJ !== -1) {
+          [arr[i + 1], arr[swapJ]] = [arr[swapJ], arr[i + 1]];
+          changed = true;
+        }
+      }
+      if (!changed) break;
+    }
+
+    // If correct phonemes ended up in their answer order at the start, rotate
     if (phonemes.length > 1 && arr.slice(0, phonemes.length).every((s, i) => s === phonemes[i])) {
       arr.push(arr.shift()!);
     }
