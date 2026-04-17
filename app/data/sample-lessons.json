@@ -5360,17 +5360,15 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.2c/S1b.mp3",
             "ttsScript": "Like 'dog' \u2014 it starts with the duh sound and ends with the guh sound!",
-            "interaction": "Pill: [Starts with d] pops in blue. Pill: [Ends with g] pops in orange.",
-            "displayParts": [
-              {
-                "text": "Starts with d",
-                "delay": 2490
-              },
-              {
-                "text": "Ends with g",
-                "delay": 5000
-              }
-            ],
+            "interaction": "D-O-G diagram appears with Start label on D and End label on G.",
+            "displayDiagram": {
+              "letters": [
+                { "text": "D", "role": "start" },
+                { "text": "O" },
+                { "text": "G", "role": "end" }
+              ],
+              "delay": 2490
+            },
             "afterPhonemes": ["d", "g"]
           },
           {
@@ -5400,18 +5398,32 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.2c/S2b.mp3",
             "ttsScript": "Say 'ball.' What's the first sound? Buh! The beginning sound is /b/!",
-            "interaction": "Pill: [Ball \u2192 Starts with b] pops in blue.",
-            "displayText": "Ball \u2192 Starts with b",
-            "displayDelay": 930,
+            "interaction": "B-A-L-L diagram appears with Start label on B.",
+            "displayDiagram": {
+              "letters": [
+                { "text": "B", "role": "start" },
+                { "text": "A" },
+                { "text": "L" },
+                { "text": "L" }
+              ],
+              "delay": 930
+            },
             "afterPhonemes": ["b"]
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.2c/S2c.mp3",
             "ttsScript": "Now the ending sound is the very last sound. Say 'ball.' What's the last sound? Lll! The ending sound is /l/!",
-            "interaction": "Pill: [Ball \u2192 Ends with l] pops in orange.",
-            "displayText": "Ball \u2192 Ends with l",
-            "displayDelay": 1628,
+            "interaction": "B-A-L-L diagram appears with End label on last L.",
+            "displayDiagram": {
+              "letters": [
+                { "text": "B" },
+                { "text": "A" },
+                { "text": "L" },
+                { "text": "L", "role": "end" }
+              ],
+              "delay": 1628
+            },
             "afterPhonemes": ["l"]
           },
           {
@@ -5441,18 +5453,30 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.2c/S3b.mp3",
             "ttsScript": "Sun. What's the beginning sound? Sss! It starts with /s/!",
-            "interaction": "Pill: [Starts with s] pops in blue with checkmark.",
-            "displayText": "Starts with s",
-            "displayDelay": 2500,
+            "interaction": "S-U-N diagram appears with Start label on S.",
+            "displayDiagram": {
+              "letters": [
+                { "text": "S", "role": "start" },
+                { "text": "U" },
+                { "text": "N" }
+              ],
+              "delay": 2500
+            },
             "afterPhonemes": ["s"]
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.2c/S3c.mp3",
             "ttsScript": "And the ending sound? Nnn! It ends with /n/!",
-            "interaction": "Pill: [Ends with n] pops in orange with checkmark.",
-            "displayText": "Ends with n",
-            "displayDelay": 2250,
+            "interaction": "S-U-N diagram appears with End label on N.",
+            "displayDiagram": {
+              "letters": [
+                { "text": "S" },
+                { "text": "U" },
+                { "text": "N", "role": "end" }
+              ],
+              "delay": 2250
+            },
             "afterPhonemes": ["n"]
           },
           {
@@ -5482,7 +5506,8 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.2c/S4b.mp3",
             "ttsScript": "Say the word really slowly. Ssss-uuu-nnn. The first sound pops out and the last sound pops out!",
-            "interaction": "Letters S, u, n appear one at a time as narrator stretches the word.",
+            "interaction": "Sun image appears; letters S, u, n appear one at a time as narrator stretches the word.",
+            "imageFile": "images/lessons/RF.K.2c/S3.png",
             "displayParts": [
               { "text": "S", "delay": 5940 },
               { "text": "u", "delay": 6500 },

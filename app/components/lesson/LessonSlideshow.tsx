@@ -38,6 +38,11 @@ interface Step {
   highlightWord?: { word: string; delay: number }; // underline a word in a visible passage after delay
   sfxClaps?: Array<{ delay: number }>; // schedule clap sound effects at ms offsets from step start
   afterPhonemes?: string[]; // phoneme IDs (e.g. "s", "short_u") to play in sequence AFTER the step TTS finishes
+  displayDiagram?: {
+    // Letter row with optional "start"/"end" labels above tagged letters
+    letters: Array<{ text: string; role?: "start" | "end" }>;
+    delay: number;
+  };
   imageFile?: string; // per-step image override — swaps the slide image while this step is playing
   displayTableRow?: {
     label: string;
@@ -254,6 +259,20 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
 
       if (step.displayText) {
         const delay = step.displayDelay ?? 0;
+        if (delay > 0) {
+          const t = setTimeout(() => {
+            if (runIdRef.current !== runId) return;
+            setTextsVisible((prev) => new Set(prev).add(stepIdx));
+          }, delay);
+          textTimersRef.current.push(t);
+        } else {
+          setTextsVisible((prev) => new Set(prev).add(stepIdx));
+        }
+      }
+
+      // Schedule diagram reveal — reuses textsVisible as the visibility gate
+      if (step.displayDiagram) {
+        const delay = step.displayDiagram.delay ?? 0;
         if (delay > 0) {
           const t = setTimeout(() => {
             if (runIdRef.current !== runId) return;
@@ -729,6 +748,57 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [textsVisible, steps, playingStep]);
 
+  const renderDiagram = (step: Step, i: number) => {
+    if (!textsVisible.has(i) || !step.displayDiagram) return null;
+    const { letters } = step.displayDiagram;
+    return (
+      <motion.div
+        key={`${currentSlide}-${step.sub}-diagram`}
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ type: "spring", stiffness: 400, damping: 20 }}
+        className="w-full flex items-end justify-center gap-3 sm:gap-4"
+      >
+        {letters.map((l, li) => {
+          const isStart = l.role === "start";
+          const isEnd = l.role === "end";
+          const tileColor = isStart
+            ? "bg-blue-100 text-blue-700 ring-4 ring-blue-400 dark:bg-blue-900/40 dark:text-blue-200"
+            : isEnd
+            ? "bg-amber-100 text-amber-700 ring-4 ring-amber-400 dark:bg-amber-900/40 dark:text-amber-200"
+            : "bg-zinc-100 text-zinc-500 dark:bg-slate-800 dark:text-slate-400";
+          const labelColor = isStart
+            ? "text-blue-600 dark:text-blue-300"
+            : "text-amber-600 dark:text-amber-300";
+          return (
+            <div key={li} className="flex flex-col items-center gap-1">
+              {(isStart || isEnd) ? (
+                <motion.span
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.15, type: "spring", stiffness: 400, damping: 20 }}
+                  className={`text-xs sm:text-sm font-bold uppercase tracking-wide ${labelColor}`}
+                >
+                  {isStart ? "Start" : "End"}
+                </motion.span>
+              ) : (
+                <span className="text-xs sm:text-sm font-bold opacity-0">·</span>
+              )}
+              <motion.span
+                initial={{ opacity: 0, scale: 0.6 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ type: "spring", stiffness: 500, damping: 18, delay: li * 0.05 }}
+                className={`w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center text-3xl sm:text-4xl font-extrabold shadow-sm ${tileColor}`}
+              >
+                {l.text}
+              </motion.span>
+            </div>
+          );
+        })}
+      </motion.div>
+    );
+  };
+
   const renderText = (step: Step, i: number) => {
     if (!textsVisible.has(i) || !step.displayText) return null;
 
@@ -1041,6 +1111,9 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
                         })}
                       </div>
                     );
+                  }
+                  if (step.displayDiagram) {
+                    return renderDiagram(step, i);
                   }
                   if (!hasTable && step.displayParts && step.displayParts.length > 0) {
                     return renderParts(step, i);
