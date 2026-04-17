@@ -3302,7 +3302,7 @@
         {
           "id": "RF.K.2e-Q1",
           "type": "multiple_choice",
-          "prompt": "Start with \"cat.\" Change the /c/ to /b/. What new word do you get?",
+          "prompt": "Start with \"cat.\" Change the /k/ to /b/. What new word do you get?",
           "choices": [
             "Sat",
             "Bat",
