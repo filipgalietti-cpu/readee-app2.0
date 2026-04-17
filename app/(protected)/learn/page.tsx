@@ -387,6 +387,27 @@ function LearnSession({
     playUrl(src);
   }, [playUrl]);
 
+  const playPhonemeAudio = useCallback((phoneme: string) => {
+    const PHONEME_ID_MAP: Record<string, string> = {
+      "/b/": "b", "/k/": "c_hard", "/s/": "s", "/d/": "d", "/f/": "f",
+      "/g/": "g", "/h/": "h", "/j/": "j", "/l/": "l", "/m/": "m",
+      "/n/": "n", "/p/": "p", "/q/": "q", "/r/": "r", "/t/": "t", "/v/": "v",
+      "/w/": "w", "/x/": "x", "/y/": "y", "/z/": "z",
+      "/a/": "short_a", "/e/": "short_e", "/i/": "short_i", "/o/": "short_o", "/u/": "short_u",
+      "/\u0101/": "long_a", "/\u0113/": "long_e", "/\u012B/": "long_i", "/\u014D/": "long_o", "/\u016B/": "long_u",
+      "/ch/": "ch", "/sh/": "sh", "/th/": "th_unvoiced",
+      "/ar/": "ar", "/er/": "er", "/or/": "or", "/ear/": "ear",
+      "/ow/": "ow", "/oi/": "oi", "/oo/": "oo_long", "/aw/": "aw",
+      "/kw/": "q",
+    };
+    const id = PHONEME_ID_MAP[phoneme];
+    if (!id) { console.warn("[playPhonemeAudio] no mapping for", phoneme); return; }
+    const base = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    if (!base) return;
+    const url = `${base}/storage/v1/object/public/audio/phonemes/${id}.mp3`;
+    playUrl(url);
+  }, [playUrl]);
+
   const handleReplay = useCallback(() => {
     stop();
     const url = q?.audio_url;
@@ -576,8 +597,17 @@ function LearnSession({
             targetWord={q.target_word}
             phonemes={q.phonemes}
             distractors={q.distractors}
+            imageUrl={(() => {
+              const m = q.id.match(/^(.+)-Q\d+$/);
+              if (!m) return q.image_url;
+              const standardId = m[1];
+              const folder = GRADE_FOLDER[gradeKey] || gradeKey || "kindergarten";
+              return `${SUPABASE_STORAGE}/images/${folder}/${standardId}/${q.id}.png`;
+            })()}
             answered={selected !== null}
             onAnswer={(isCorrect, answer) => handleInteractiveAnswer(isCorrect, answer)}
+            onPlayPhoneme={playPhonemeAudio}
+            onPlayWord={playWordAudio}
           />
         ) : q.type === "space_insertion" && q.jumbled ? (
           <SpaceInsertion
