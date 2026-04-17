@@ -6247,30 +6247,19 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.3b/S1b.mp3",
-            "ttsScript": "Every word needs at least one vowel. They're like the stars of the alphabet!",
-            "interaction": "Five vowel pills pop in one at a time in different colors: [A] [E] [I] [O] [U].",
-            "displayParts": [
-              {
-                "text": "A",
-                "delay": 300
-              },
-              {
-                "text": "E",
-                "delay": 800
-              },
-              {
-                "text": "I",
-                "delay": 1600
-              },
-              {
-                "text": "O",
-                "delay": 2400
-              },
-              {
-                "text": "U",
-                "delay": 3200
-              }
-            ]
+            "ttsScript": "Every word needs at least one vowel.",
+            "interaction": "Five vowel tiles appear; each pulses as its short-vowel phoneme plays.",
+            "displayDiagram": {
+              "letters": [
+                { "text": "A" },
+                { "text": "E" },
+                { "text": "I" },
+                { "text": "O" },
+                { "text": "U" }
+              ],
+              "delay": 1500
+            },
+            "afterPhonemes": ["short_a", "short_e", "short_i", "short_o", "short_u"]
           },
           {
             "sub": "c",
@@ -6292,41 +6281,35 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.3b/S2a.mp3",
-            "ttsScript": "Each vowel makes a short sound. A says /a/ like in apple!",
-            "interaction": "Heading appears.",
-            "displayText": ""
+            "ttsScript": "Each vowel makes a short sound. A is for apple.",
+            "interaction": "A tile appears; phoneme audio plays the short A sound.",
+            "displayDiagram": {
+              "letters": [{ "text": "A" }],
+              "delay": 2500
+            },
+            "afterPhonemes": ["short_a"]
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.3b/S2b.mp3",
-            "ttsScript": "E says /e/ like in egg! I says /i/ like in igloo!",
-            "interaction": "Pills: [E = /e/ egg] [I = /i/ igloo] pop in.",
-            "displayParts": [
-              {
-                "text": "E says /e/ egg",
-                "delay": 600
-              },
-              {
-                "text": "I says /i/ igloo",
-                "delay": 2400
-              }
-            ]
+            "ttsScript": "E is for egg. I is for igloo.",
+            "interaction": "E and I tiles appear; phonemes play in sequence highlighting each.",
+            "displayDiagram": {
+              "letters": [{ "text": "E" }, { "text": "I" }],
+              "delay": 1500
+            },
+            "afterPhonemes": ["short_e", "short_i"]
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.3b/S2c.mp3",
-            "ttsScript": "O says /o/ like in octopus! U says /u/ like in umbrella!",
-            "interaction": "Pills: [O = /o/ octopus] [U = /u/ umbrella] pop in.",
-            "displayParts": [
-              {
-                "text": "O says /o/ octopus",
-                "delay": 600
-              },
-              {
-                "text": "U says /u/ umbrella",
-                "delay": 2400
-              }
-            ]
+            "ttsScript": "O is for octopus. U is for umbrella.",
+            "interaction": "O and U tiles appear; phonemes play in sequence highlighting each.",
+            "displayDiagram": {
+              "letters": [{ "text": "O" }, { "text": "U" }],
+              "delay": 1500
+            },
+            "afterPhonemes": ["short_o", "short_u"]
           },
           {
             "sub": "d",
@@ -6337,7 +6320,7 @@
           }
         ],
         "heading": "The Vowel Sounds",
-        "imagePrompt": "A cartoon apple next to a large letter A, with sound waves showing the short 'a' sound. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A cheerful arrangement of cartoon objects representing each short vowel: a bright red apple, a sunny-side-up egg, a small white igloo, a smiling pink octopus, and a polka-dot umbrella, grouped together on a clean background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RF.K.3b/S2.png"
       },
       {
@@ -6347,39 +6330,38 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.3b/S3a.mp3",
-            "ttsScript": "Which vowel do you hear in 'cat'? Listen: c-a-t.",
-            "interaction": "Heading appears. Highlights with a checkmark.",
-            "displayText": "",
-            "displayParts": [
-              {
-                "text": "Which vowel do you hear in 'cat'?",
-                "delay": 10
-              },
-              {
-                "text": "Listen: c-a-t.",
-                "delay": 3790
-              }
-            ]
+            "ttsScript": "Which vowel do you hear in the word 'cat'?",
+            "interaction": "Question text appears.",
+            "displayText": "Which vowel is in 'cat'?",
+            "displayDelay": 100
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.3b/S3b.mp3",
-            "ttsScript": "The /a/ sound! The vowel in cat is A!",
-            "interaction": "Pill: [Cat \u2192 Vowel: A!] pops in with checkmark.",
-            "displayText": "Cat \u2192 Vowel: A!",
-            "displayDelay": 2250
+            "ttsScript": "The vowel in cat is A.",
+            "interaction": "C-A-T diagram appears; A tile pulses violet as its phoneme plays.",
+            "displayDiagram": {
+              "letters": [{ "text": "C" }, { "text": "A" }, { "text": "T" }],
+              "delay": 1500
+            },
+            "afterPhonemes": ["short_a"],
+            "phonemeLetterIndices": [1]
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.3b/S3c.mp3",
-            "ttsScript": "What about 'dog'? D-o-g. The /o/ sound! The vowel is O!",
-            "interaction": "Pill: [Dog \u2192 Vowel: O!] pops in with checkmark. Stars.",
-            "displayText": "Dog \u2192 Vowel: O!",
-            "displayDelay": 2750
+            "ttsScript": "What about 'dog'? The vowel is O.",
+            "interaction": "D-O-G diagram appears; O tile pulses as its phoneme plays.",
+            "displayDiagram": {
+              "letters": [{ "text": "D" }, { "text": "O" }, { "text": "G" }],
+              "delay": 1500
+            },
+            "afterPhonemes": ["short_o"],
+            "phonemeLetterIndices": [1]
           }
         ],
         "heading": "Let's Find the Vowels!",
-        "imagePrompt": "A cartoon cat sitting next to the word CAT with the letter A highlighted in gold and pulsing. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A cheerful cartoon orange tabby cat sitting up and smiling, with bright eyes and whiskers. Simple clean background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RF.K.3b/S3.png"
       },
       {
