@@ -537,56 +537,41 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase]);
 
-  /* ── Ref for standalone word/phoneme audio (bypasses Howler) ── */
-  const tileAudioRef = useRef<HTMLAudioElement | null>(null);
-
-  /* ── Play word-level audio (for CategorySort / TapToPair / SentenceBuild tiles) ── */
+  /* ── Play word-level audio (for CategorySort / TapToPair / SentenceBuild / SoundMachine tiles) ── */
   const playWordAudio = useCallback((word: string) => {
     const clean = word.replace(/[^a-zA-Z0-9 ]/g, "").toLowerCase().replace(/\s+/g, "_");
     if (!clean) return;
+    const base = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    if (!base) { console.warn("[playWordAudio] NEXT_PUBLIC_SUPABASE_URL missing"); return; }
     // Single letters use letter-name audio (audio/letters/a.mp3) not phoneme audio
-    if (clean.length === 1) {
-      const letterBase = process.env.NEXT_PUBLIC_SUPABASE_URL
-        ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audio`
-        : "";
-      const letterSrc = letterBase ? `${letterBase}/letters/${clean}.mp3` : `/audio/letters/${clean}.mp3`;
-      if (tileAudioRef.current) { tileAudioRef.current.pause(); tileAudioRef.current = null; }
-      const audio = new Audio(letterSrc);
-      tileAudioRef.current = audio;
-      audio.play().catch(() => {});
-      return;
-    }
-    const base = process.env.NEXT_PUBLIC_SUPABASE_URL
-      ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audio`
-      : "";
-    const src = base ? `${base}/words/${clean}.mp3` : `/audio/words/${clean}.mp3`;
-    console.log("[playWordAudio]", word, "→", src);
-    if (tileAudioRef.current) { tileAudioRef.current.pause(); tileAudioRef.current = null; }
-    const audio = new Audio(src);
-    tileAudioRef.current = audio;
-    audio.play().then(() => console.log("[playWordAudio] playing OK")).catch((err) => console.error("[playWordAudio] FAILED:", err));
-  }, []);
+    const folder = clean.length === 1 ? "letters" : "words";
+    const url = `${base}/storage/v1/object/public/audio/${folder}/${clean}.mp3`;
+    console.log("[playWordAudio]", word, "→", url);
+    playUrl(url, 0);
+  }, [playUrl]);
 
   /* ── Play phoneme audio (for SoundMachine tiles) ── */
   const playPhonemeAudio = useCallback((phoneme: string) => {
     const PHONEME_ID_MAP: Record<string, string> = {
       "/b/": "b", "/k/": "c_hard", "/s/": "s", "/d/": "d", "/f/": "f",
       "/g/": "g", "/h/": "h", "/j/": "j", "/l/": "l", "/m/": "m",
-      "/n/": "n", "/p/": "p", "/r/": "r", "/t/": "t", "/v/": "v",
-      "/w/": "w", "/z/": "z", "/a/": "short_a", "/e/": "short_e",
-      "/i/": "short_i", "/o/": "short_o", "/u/": "short_u",
+      "/n/": "n", "/p/": "p", "/q/": "q", "/r/": "r", "/t/": "t", "/v/": "v",
+      "/w/": "w", "/x/": "x", "/y/": "y", "/z/": "z",
+      "/a/": "short_a", "/e/": "short_e", "/i/": "short_i", "/o/": "short_o", "/u/": "short_u",
+      "/\u0101/": "long_a", "/\u0113/": "long_e", "/\u012B/": "long_i", "/\u014D/": "long_o", "/\u016B/": "long_u",
       "/ch/": "ch", "/sh/": "sh", "/th/": "th_unvoiced",
+      "/ar/": "ar", "/er/": "er", "/or/": "or", "/ear/": "ear",
+      "/ow/": "ow", "/oi/": "oi", "/oo/": "oo_long", "/aw/": "aw",
+      "/kw/": "q",
     };
     const id = PHONEME_ID_MAP[phoneme];
-    if (!id) return;
+    if (!id) { console.warn("[playPhonemeAudio] no mapping for", phoneme); return; }
     const base = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    if (!base) return;
-    stop();
-    if (tileAudioRef.current) { tileAudioRef.current.pause(); tileAudioRef.current = null; }
-    const audio = new Audio(`${base}/storage/v1/object/public/audio/phonemes/${id}.mp3`);
-    tileAudioRef.current = audio;
-    audio.play().catch(() => {});
-  }, [stop]);
+    if (!base) { console.warn("[playPhonemeAudio] NEXT_PUBLIC_SUPABASE_URL missing"); return; }
+    const url = `${base}/storage/v1/object/public/audio/phonemes/${id}.mp3`;
+    console.log("[playPhonemeAudio]", phoneme, "→", url);
+    playUrl(url, 0);
+  }, [playUrl]);
 
   /* ── Smart item audio: detects /phoneme/ format and routes accordingly ── */
   const playItemSmart = useCallback((item: string) => {

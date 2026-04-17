@@ -124,8 +124,8 @@ export function SoundMachine({
     // Correct — play target word audio, then fire callback
     if (onPlayWord) {
       onPlayWord(targetWord);
-      // Give the word audio a moment to play before advancing
-      await new Promise((r) => setTimeout(r, 1200));
+      // Word audio is ~1.3-1.5s — wait long enough to avoid stop() cutting it off
+      await new Promise((r) => setTimeout(r, 2000));
     }
     onAnswer(true, userAnswer);
   }, [allSlotsFilled, answered, result, placed, allSounds, phonemes, onAnswer, onPlayWord, targetWord]);
