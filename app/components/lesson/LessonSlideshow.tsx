@@ -380,6 +380,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
     const allExamples = new Set<number>();
     steps.forEach((step, i) => {
       if (step.displayText) allTexts.add(i);
+      if (step.displayDiagram) allTexts.add(i);
       step.displayParts?.forEach((_, p) => allParts.add(`${i}-${p}`));
       if (step.displayTableRow?.example) allExamples.add(i);
     });
@@ -1034,7 +1035,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
           <div className="flex-1 min-h-0 overflow-hidden flex items-center justify-center px-6">
             {(() => {
               const hasContent = steps.some(
-                (s) => s.displayText || (s.displayParts && s.displayParts.length > 0) || s.displayTableRow
+                (s) => s.displayText || (s.displayParts && s.displayParts.length > 0) || s.displayTableRow || s.displayDiagram
               );
               const bgClass = hasContent ? theme.contentBg : "";
               return (

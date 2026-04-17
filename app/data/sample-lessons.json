@@ -5506,13 +5506,16 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.2c/S4b.mp3",
             "ttsScript": "Say the word really slowly. Ssss-uuu-nnn. The first sound pops out and the last sound pops out!",
-            "interaction": "Sun image appears; letters S, u, n appear one at a time as narrator stretches the word.",
+            "interaction": "Sun image appears; S-U-N diagram appears with Start on S and End on N.",
             "imageFile": "images/lessons/RF.K.2c/S3.png",
-            "displayParts": [
-              { "text": "S", "delay": 5940 },
-              { "text": "u", "delay": 6500 },
-              { "text": "n", "delay": 7200 }
-            ]
+            "displayDiagram": {
+              "letters": [
+                { "text": "S", "role": "start" },
+                { "text": "U" },
+                { "text": "N", "role": "end" }
+              ],
+              "delay": 500
+            }
           },
           {
             "sub": "c",
