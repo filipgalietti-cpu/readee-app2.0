@@ -5397,7 +5397,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.2c/S2b.mp3",
-            "ttsScript": "Say 'ball.' What's the first sound? Buh! The beginning sound is /b/!",
+            "ttsScript": "Say 'ball.' Ball starts with the letter B.",
             "interaction": "B-A-L-L diagram appears with Start label on B.",
             "displayDiagram": {
               "letters": [
@@ -5406,14 +5406,14 @@
                 { "text": "L" },
                 { "text": "L" }
               ],
-              "delay": 930
+              "delay": 1410
             },
             "afterPhonemes": ["b"]
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.2c/S2c.mp3",
-            "ttsScript": "Now the ending sound is the very last sound. Say 'ball.' What's the last sound? Lll! The ending sound is /l/!",
+            "ttsScript": "The ending sound is the very last sound. Say 'ball.' Ball ends with the letter L.",
             "interaction": "B-A-L-L diagram appears with End label on last L.",
             "displayDiagram": {
               "letters": [
@@ -5422,7 +5422,7 @@
                 { "text": "L" },
                 { "text": "L", "role": "end" }
               ],
-              "delay": 1628
+              "delay": 3630
             },
             "afterPhonemes": ["l"]
           },
@@ -5452,7 +5452,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.2c/S3b.mp3",
-            "ttsScript": "Sun. What's the beginning sound? Sss! It starts with /s/!",
+            "ttsScript": "Say 'sun.' Sun starts with the letter S.",
             "interaction": "S-U-N diagram appears with Start label on S.",
             "displayDiagram": {
               "letters": [
@@ -5460,14 +5460,14 @@
                 { "text": "U" },
                 { "text": "N" }
               ],
-              "delay": 2500
+              "delay": 1490
             },
             "afterPhonemes": ["s"]
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.2c/S3c.mp3",
-            "ttsScript": "And the ending sound? Nnn! It ends with /n/!",
+            "ttsScript": "Sun ends with the letter N.",
             "interaction": "S-U-N diagram appears with End label on N.",
             "displayDiagram": {
               "letters": [
@@ -5475,7 +5475,7 @@
                 { "text": "U" },
                 { "text": "N", "role": "end" }
               ],
-              "delay": 2250
+              "delay": 250
             },
             "afterPhonemes": ["n"]
           },
