@@ -184,9 +184,10 @@ export function SoundMachine({
       {/* Target word image */}
       {imageUrl && (
         <div className="flex justify-center">
-          <img
+          <LoadingImage
             src={imageUrl}
             alt={targetWord}
+            containerClassName="w-40 h-40"
             className="w-40 h-40 object-contain rounded-2xl border-2 border-white dark:border-slate-700 shadow-md bg-white/60 dark:bg-slate-800/60"
             onError={() => console.error("[SoundMachine] image failed:", imageUrl)}
           />
