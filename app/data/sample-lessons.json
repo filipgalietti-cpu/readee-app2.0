@@ -6505,7 +6505,7 @@
           }
         ],
         "heading": "Let's Learn Sight Words!",
-        "imagePrompt": "A cartoon child surrounded by floating sparkly flashcards of different bright colors \u2014 each card glows with a star pattern. The child reaches up to grab one with delight. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A cheerful cartoon child holding an open book with a bright sparkle effect around it, looking delighted. Simple clean background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RF.K.3c/S1.png"
       },
       {
@@ -6554,7 +6554,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.3c/S3b.mp3",
-            "ttsScript": "The! You see this word in almost every book. T-H-E, the!",
+            "ttsScript": "The. You see this word in almost every book.",
             "interaction": "Pill: [the] pops in large with sparkle.",
             "displayText": "the",
             "displayDelay": 2750
@@ -6562,7 +6562,7 @@
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.3c/S3c.mp3",
-            "ttsScript": "I! That's the word for yourself. Just one letter! I!",
+            "ttsScript": "I. The word you use for yourself.",
             "interaction": "Pill: [I] pops in large.",
             "displayText": "I",
             "displayDelay": 2500
@@ -6570,14 +6570,14 @@
           {
             "sub": "d",
             "audioFile": "audio/lessons/RF.K.3c/S3d.mp3",
-            "ttsScript": "And! This word connects things together. Cats AND dogs. A, N, D, and!",
+            "ttsScript": "And. This word connects things together. Cats and dogs.",
             "interaction": "Pill: [and] pops in large. Stars.",
             "displayText": "and",
             "displayDelay": 3250
           }
         ],
         "heading": "Let's Learn Some!",
-        "imagePrompt": "A cartoon child sitting cross-legged on a colorful rug, holding up a bright yellow card with a big smile. A small neat stack of colorful cards sits beside them. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A cheerful cartoon child reading from an open colorful picture book, holding it open with both hands and smiling. Simple clean background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RF.K.3c/S3.png"
       },
       {
@@ -6632,7 +6632,7 @@
           }
         ],
         "heading": "Time to Practice!",
-        "imagePrompt": "A cartoon child with a treasure chest full of golden sight word cards, looking proud. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A cheerful cartoon child standing proudly with both arms raised in celebration, big bright smile. Simple clean background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RF.K.3c/S5.png"
       },
       {
@@ -6753,9 +6753,12 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.3d/S3b.mp3",
-            "ttsScript": "'On' and 'no.' They have the same letters \u2014 O and N \u2014 but in different order!",
-            "interaction": "Letters highlight showing O-N vs N-O.",
-            "displayText": ""
+            "ttsScript": "'On' and 'no.' They have the same letters in a different order.",
+            "interaction": "Both words appear as side-by-side pills.",
+            "displayParts": [
+              { "text": "on", "delay": 800 },
+              { "text": "no", "delay": 2200 }
+            ]
           },
           {
             "sub": "c",
@@ -6775,7 +6778,7 @@
           }
         ],
         "heading": "Spot the Difference!",
-        "imagePrompt": "Two cartoon chameleons facing each other, one orange and one green, with a playful 'VS' lightning bolt between them. They look friendly but competitive. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "Two cheerful cartoon chameleons facing each other in a friendly way, one orange and one green, with curious expressions. Simple clean leafy background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RF.K.3d/S3.png"
       },
       {
