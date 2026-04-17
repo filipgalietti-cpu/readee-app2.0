@@ -5192,9 +5192,9 @@
             "displayText": "Ba-na-na has 3 claps",
             "displayDelay": 930,
             "sfxClaps": [
-              { "delay": 4900 },
+              { "delay": 4850 },
               { "delay": 5700 },
-              { "delay": 6600 }
+              { "delay": 6500 }
             ]
           }
         ],
