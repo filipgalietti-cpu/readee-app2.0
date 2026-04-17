@@ -308,6 +308,7 @@ function LearnSession({
   const [answers, setAnswers] = useState<AnswerRecord[]>([]);
   const [sessionCarrots, setSessionCarrots] = useState(0);
   const [selected, setSelected] = useState<string | null>(null);
+  const [previewedChoice, setPreviewedChoice] = useState<string | null>(null);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [feedbackMsg, setFeedbackMsg] = useState("");
   const [feedbackEmoji, setFeedbackEmoji] = useState("");
@@ -473,6 +474,7 @@ function LearnSession({
     setShowHint(false);
     setShowFeedback(false);
     setSelected(null);
+    setPreviewedChoice(null);
     setIsCorrect(null);
     setFeedbackMsg("");
     setFeedbackEmoji("");
@@ -699,7 +701,9 @@ function LearnSession({
             let textColor = "";
             let extra = "";
 
-            if (!answered && isSelected) {
+            if (!answered && previewedChoice === choice) {
+              extra = "ring-2 ring-offset-2 ring-indigo-500 animate-pulse";
+            } else if (!answered && isSelected) {
               extra = "ring-2 ring-offset-2 ring-indigo-500";
             } else if (answered) {
               if (isSelected && isCorrect) {
@@ -728,7 +732,20 @@ function LearnSession({
                     : {}
                 }
                 whileTap={!answered ? { scale: 0.95, transition: { duration: 0.1 } } : undefined}
-                onClick={() => handleAnswer(choice)}
+                onClick={() => {
+                  if (answered) return;
+                  const isPhoneme = /^\/[a-zA-Z]{1,3}\/$/.test(choice);
+                  if (isPhoneme) {
+                    if (previewedChoice === choice) {
+                      handleAnswer(choice);
+                    } else {
+                      setPreviewedChoice(choice);
+                      playPhonemeAudio(choice);
+                    }
+                  } else {
+                    handleAnswer(choice);
+                  }
+                }}
                 disabled={answered}
                 className={`
                   flex items-center justify-center px-3 py-3 rounded-2xl border-2 relative

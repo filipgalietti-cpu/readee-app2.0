@@ -485,6 +485,12 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
     return q.choices_audio_urls?.some(url => url && url.startsWith("https://")) ?? false;
   }, [q.choices_audio_urls]);
 
+  // Also enable two-tap preview when the choices are phoneme strings like "/g/"
+  // — we can play them directly from the shared phoneme library.
+  const choicesArePhonemes = useMemo(() => {
+    return !!q.choices && q.choices.length > 0 && q.choices.every(c => /^\/[a-zA-Z]{1,3}\/$/.test(c));
+  }, [q.choices]);
+
   /** Handle "Tap to Start" — unlock audio, then begin */
   const handleStart = useCallback(async () => {
     await unlockAudio();
@@ -1158,6 +1164,13 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
                         stop();
                         playUrl(audioUrl, 0);
                       }
+                    }
+                  } else if (choicesArePhonemes) {
+                    if (previewedChoice === choice) {
+                      handleAnswer(choice);
+                    } else {
+                      setPreviewedChoice(choice);
+                      playPhonemeAudio(choice);
                     }
                   } else {
                     handleAnswer(choice);
