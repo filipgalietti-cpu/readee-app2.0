@@ -601,7 +601,14 @@ function LearnSession({
               const m = q.id.match(/^(.+)-Q\d+$/);
               if (!m) return q.image_url;
               const standardId = m[1];
-              const folder = GRADE_FOLDER[gradeKey] || gradeKey || "kindergarten";
+              // Derive folder from the standard ID itself (e.g. "RF.K.2c" → kindergarten),
+              // not the child's reading level — a K lesson shouldn't look in /4th-grade/.
+              const gradeMatch = standardId.match(/^[A-Z]+\.(K|1|2|3|4)\./);
+              const gradeChar = gradeMatch?.[1];
+              const folderByStandard: Record<string, string> = {
+                K: "kindergarten", "1": "1st-grade", "2": "2nd-grade", "3": "3rd-grade", "4": "4th-grade",
+              };
+              const folder = (gradeChar && folderByStandard[gradeChar]) || "kindergarten";
               return `${SUPABASE_STORAGE}/images/${folder}/${standardId}/${q.id}.png`;
             })()}
             answered={selected !== null}

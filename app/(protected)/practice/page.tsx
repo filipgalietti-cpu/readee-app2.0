@@ -1012,12 +1012,17 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
             phonemes={q.phonemes}
             distractors={q.distractors}
             imageUrl={(() => {
-              // Build the image URL directly from the question ID to avoid
-              // any data-pipeline quirks stripping q.image_url.
               const m = q.id.match(/^(.+)-Q\d+$/);
               if (!m) return q.image_url;
               const standardId = m[1];
-              const folder = GRADE_FOLDER[gradeKey] || gradeKey || "kindergarten";
+              // Grade folder must come from the standard ID (e.g. RF.K.2c → kindergarten),
+              // NOT from the child's reading level.
+              const gradeMatch = standardId.match(/^[A-Z]+\.(K|1|2|3|4)\./);
+              const gradeChar = gradeMatch?.[1];
+              const folderByStandard: Record<string, string> = {
+                K: "kindergarten", "1": "1st-grade", "2": "2nd-grade", "3": "3rd-grade", "4": "4th-grade",
+              };
+              const folder = (gradeChar && folderByStandard[gradeChar]) || "kindergarten";
               return `${SUPABASE_STORAGE}/images/${folder}/${standardId}/${q.id}.png`;
             })()}
             answered={selected !== null}
