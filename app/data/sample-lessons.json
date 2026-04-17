@@ -5600,10 +5600,17 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.2d/S1b.mp3",
-            "ttsScript": "Like 'cat' has three sounds: /c/ /a/ /t/! Can you hear them?",
-            "interaction": "Three sound bubbles pop in one at a time: /c/ /a/ /t/.",
-            "displayText": "cat",
-            "displayDelay": 1000
+            "ttsScript": "Like the word 'cat.' Cat has three sounds.",
+            "interaction": "C-A-T diagram appears. Phoneme audio plays each sound.",
+            "displayDiagram": {
+              "letters": [
+                { "text": "C" },
+                { "text": "A" },
+                { "text": "T" }
+              ],
+              "delay": 1000
+            },
+            "afterPhonemes": ["c_hard", "short_a", "t"]
           },
           {
             "sub": "c",
@@ -5614,7 +5621,7 @@
           }
         ],
         "heading": "Let's Find Sounds in Words!",
-        "imagePrompt": "A cartoon word 'cat' exploding gently into three floating letters C, A, T, each surrounded by a colorful sound bubble. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A cheerful cartoon child with one hand cupped behind their ear, leaning forward to listen carefully. Simple clean background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RF.K.2d/S1.png"
       },
       {
@@ -5631,18 +5638,31 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.2d/S2b.mp3",
-            "ttsScript": "Say 'dog' slowly. /d/ /o/ /g/. That's three sounds!",
-            "interaction": "Pill: [Dog \u2192 /d/ /o/ /g/ = 3 sounds] pops in.",
-            "displayText": "Dog \u2192 /d/ /o/ /g/ has 3 sounds",
-            "displayDelay": 698
+            "ttsScript": "The word 'dog' has three sounds.",
+            "interaction": "D-O-G diagram appears. Phoneme audio plays each sound.",
+            "displayDiagram": {
+              "letters": [
+                { "text": "D" },
+                { "text": "O" },
+                { "text": "G" }
+              ],
+              "delay": 698
+            },
+            "afterPhonemes": ["d", "short_o", "g"]
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.2d/S2c.mp3",
-            "ttsScript": "Try 'go.' /g/ /o/. That's two sounds!",
-            "interaction": "Pill: [Go \u2192 /g/ /o/ = 2 sounds] pops in.",
-            "displayText": "Go \u2192 /g/ /o/ has 2 sounds",
-            "displayDelay": 543
+            "ttsScript": "The word 'go' has two sounds.",
+            "interaction": "G-O diagram appears. Phoneme audio plays each sound.",
+            "displayDiagram": {
+              "letters": [
+                { "text": "G" },
+                { "text": "O" }
+              ],
+              "delay": 543
+            },
+            "afterPhonemes": ["g", "short_o"]
           },
           {
             "sub": "d",
@@ -5670,18 +5690,31 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.2d/S3b.mp3",
-            "ttsScript": "Map. Mmm-aaa-puh. /m/ /a/ /p/. Hold up three fingers! Three sounds!",
-            "interaction": "Three fingers pop up. Pill: [Map = 3 sounds \u2713] pops in.",
-            "displayText": "Map has 3 sounds",
-            "displayDelay": 2500
+            "ttsScript": "Let's try 'map.' Map has three sounds.",
+            "interaction": "M-A-P diagram appears. Phoneme audio plays each sound.",
+            "displayDiagram": {
+              "letters": [
+                { "text": "M" },
+                { "text": "A" },
+                { "text": "P" }
+              ],
+              "delay": 1000
+            },
+            "afterPhonemes": ["m", "short_a", "p"]
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.2d/S3c.mp3",
-            "ttsScript": "Now try 'it.' Ih-tuh. /i/ /t/. Two fingers! Two sounds!",
-            "interaction": "Two fingers pop up. Pill: [It = 2 sounds \u2713] pops in. Stars.",
-            "displayText": "It has 2 sounds",
-            "displayDelay": 2200
+            "ttsScript": "Now try 'it.' It has two sounds.",
+            "interaction": "I-T diagram appears. Phoneme audio plays each sound.",
+            "displayDiagram": {
+              "letters": [
+                { "text": "I" },
+                { "text": "T" }
+              ],
+              "delay": 900
+            },
+            "afterPhonemes": ["short_i", "t"]
           }
         ],
         "heading": "Let's Count Sounds Together!",
@@ -5740,7 +5773,7 @@
           }
         ],
         "heading": "Time to Practice!",
-        "imagePrompt": "A cartoon child wearing colorful headphones with eyes closed, surrounded by floating colorful musical bubbles. Each bubble contains a different musical instrument: drum, bell, triangle. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A cheerful cartoon child giving a thumbs up with a big confident smile. Simple clean background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RF.K.2d/S5.png"
       },
       {
