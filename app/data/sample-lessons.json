@@ -5220,6 +5220,7 @@
             "interaction": "One clap animation. Pill: [Dog = 1] pops in.",
             "displayText": "Dog has 1",
             "displayDelay": 1600,
+            "imageFile": "images/lessons/RF.K.2b/S3b.png",
             "sfxClaps": [
               { "delay": 800 }
             ]
@@ -5231,6 +5232,7 @@
             "interaction": "Two clap animation. Pill: [Mon-key = 2] pops in.",
             "displayText": "Mon-key has 2",
             "displayDelay": 1500,
+            "imageFile": "images/lessons/RF.K.2b/S3c.png",
             "sfxClaps": [
               { "delay": 500 },
               { "delay": 1400 }
@@ -5243,6 +5245,7 @@
             "interaction": "Three clap animation. Pill: [El-e-phant = 3] pops in. Stars.",
             "displayText": "El-e-phant has 3",
             "displayDelay": 2500,
+            "imageFile": "images/lessons/RF.K.2b/S3d.png",
             "sfxClaps": [
               { "delay": 500 },
               { "delay": 1100 },
