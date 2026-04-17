@@ -36,6 +36,7 @@ interface Step {
   checkmarkTriggerStagger?: number; // ms between each checkmark (default 400)
   highlightPills?: HighlightPill[]; // schedule per-pill bounce during this step's audio
   highlightWord?: { word: string; delay: number }; // underline a word in a visible passage after delay
+  sfxClaps?: Array<{ delay: number }>; // schedule clap sound effects at ms offsets from step start
   imageFile?: string; // per-step image override — swaps the slide image while this step is playing
   displayTableRow?: {
     label: string;
@@ -226,6 +227,17 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
             }, hp.delay);
             textTimersRef.current.push(t);
           }
+        }
+      }
+
+      // Schedule clap SFX bursts
+      if (step.sfxClaps) {
+        for (const c of step.sfxClaps) {
+          const t = setTimeout(() => {
+            if (runIdRef.current !== runId) return;
+            audioManager?.playClap();
+          }, c.delay);
+          textTimersRef.current.push(t);
         }
       }
 

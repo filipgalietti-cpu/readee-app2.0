@@ -178,6 +178,36 @@ class AudioManager {
     ], "sine");
   }
 
+  /** Play clap: short filtered noise burst */
+  playClap(): void {
+    const { isMuted } = useAudioStore.getState();
+    if (isMuted) return;
+    try {
+      const ctx = this.getAudioCtx();
+      const duration = 0.09;
+      const bufferSize = Math.floor(ctx.sampleRate * duration);
+      const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+      const data = buffer.getChannelData(0);
+      for (let i = 0; i < bufferSize; i++) {
+        data[i] = Math.random() * 2 - 1;
+      }
+      const src = ctx.createBufferSource();
+      src.buffer = buffer;
+      const bandpass = ctx.createBiquadFilter();
+      bandpass.type = "bandpass";
+      bandpass.frequency.value = 1800;
+      bandpass.Q.value = 0.7;
+      const gain = ctx.createGain();
+      gain.gain.setValueAtTime(0.9, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
+      src.connect(bandpass);
+      bandpass.connect(gain);
+      gain.connect(ctx.destination);
+      src.start(ctx.currentTime);
+      src.stop(ctx.currentTime + duration);
+    } catch {}
+  }
+
   /** Play whoosh: quick descending sweep */
   playWhoosh(): void {
     const { isMuted } = useAudioStore.getState();

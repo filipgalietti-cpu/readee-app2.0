@@ -5131,6 +5131,10 @@
                 "text": "ger",
                 "delay": 2700
               }
+            ],
+            "sfxClaps": [
+              { "delay": 2090 },
+              { "delay": 2700 }
             ]
           },
           {
@@ -5163,7 +5167,10 @@
             "ttsScript": "Some words have one beat \u2014 like 'cat.' Just one clap! Cat!",
             "interaction": "Pill: [Cat = 1 clap] pops in with hand clap icon.",
             "displayText": "Cat has 1 clap",
-            "displayDelay": 930
+            "displayDelay": 930,
+            "sfxClaps": [
+              { "delay": 3300 }
+            ]
           },
           {
             "sub": "c",
@@ -5171,7 +5178,11 @@
             "ttsScript": "Some words have two beats \u2014 like 'apple.' Ap-ple! Two claps!",
             "interaction": "Pill: [Ap-ple = 2 claps] pops in.",
             "displayText": "Ap-ple has 2 claps",
-            "displayDelay": 853
+            "displayDelay": 853,
+            "sfxClaps": [
+              { "delay": 2200 },
+              { "delay": 2800 }
+            ]
           },
           {
             "sub": "d",
@@ -5179,7 +5190,12 @@
             "ttsScript": "And some have three or more \u2014 like 'banana.' Ba-na-na! Three claps!",
             "interaction": "Pill: [Ba-na-na = 3 claps] pops in.",
             "displayText": "Ba-na-na has 3 claps",
-            "displayDelay": 930
+            "displayDelay": 930,
+            "sfxClaps": [
+              { "delay": 2400 },
+              { "delay": 2900 },
+              { "delay": 3400 }
+            ]
           }
         ],
         "heading": "What Are Syllables?",
@@ -5203,7 +5219,10 @@
             "ttsScript": "Dog. One clap! Dog has one syllable.",
             "interaction": "One clap animation. Pill: [Dog = 1] pops in.",
             "displayText": "Dog has 1",
-            "displayDelay": 1600
+            "displayDelay": 1600,
+            "sfxClaps": [
+              { "delay": 500 }
+            ]
           },
           {
             "sub": "c",
@@ -5211,7 +5230,11 @@
             "ttsScript": "Mon-key. Two claps! Monkey has two syllables!",
             "interaction": "Two clap animation. Pill: [Mon-key = 2] pops in.",
             "displayText": "Mon-key has 2",
-            "displayDelay": 1500
+            "displayDelay": 1500,
+            "sfxClaps": [
+              { "delay": 400 },
+              { "delay": 800 }
+            ]
           },
           {
             "sub": "d",
@@ -5219,7 +5242,12 @@
             "ttsScript": "El-e-phant. Three claps! Elephant has three syllables! You're clapping champ!",
             "interaction": "Three clap animation. Pill: [El-e-phant = 3] pops in. Stars.",
             "displayText": "El-e-phant has 3",
-            "displayDelay": 2500
+            "displayDelay": 2500,
+            "sfxClaps": [
+              { "delay": 400 },
+              { "delay": 800 },
+              { "delay": 1200 }
+            ]
           }
         ],
         "heading": "Let's Clap Together!",
