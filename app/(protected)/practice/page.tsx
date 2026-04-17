@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
 import { useAudio } from "@/lib/audio/use-audio";
+import { audioManager } from "@/lib/audio/audio-manager";
 import { getAudioUrl } from "@/lib/audio";
 import { usePracticeStore } from "@/lib/stores/practice-store";
 import { useThemeStore } from "@/lib/stores/theme-store";
@@ -543,12 +544,14 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
     if (!clean) return;
     const base = process.env.NEXT_PUBLIC_SUPABASE_URL;
     if (!base) { console.warn("[playWordAudio] NEXT_PUBLIC_SUPABASE_URL missing"); return; }
-    // Single letters use letter-name audio (audio/letters/a.mp3) not phoneme audio
     const folder = clean.length === 1 ? "letters" : "words";
     const url = `${base}/storage/v1/object/public/audio/${folder}/${clean}.mp3`;
     console.log("[playWordAudio]", word, "→", url);
-    playUrl(url, 0);
-  }, [playUrl]);
+    if (audioManager) {
+      audioManager.stop();
+      audioManager.playOneshot(url);
+    }
+  }, []);
 
   /* ── Play phoneme audio (for SoundMachine tiles) ── */
   const playPhonemeAudio = useCallback((phoneme: string) => {
@@ -570,8 +573,11 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
     if (!base) { console.warn("[playPhonemeAudio] NEXT_PUBLIC_SUPABASE_URL missing"); return; }
     const url = `${base}/storage/v1/object/public/audio/phonemes/${id}.mp3`;
     console.log("[playPhonemeAudio]", phoneme, "→", url);
-    playUrl(url, 0);
-  }, [playUrl]);
+    if (audioManager) {
+      audioManager.stop();
+      audioManager.playOneshot(url);
+    }
+  }, []);
 
   /* ── Smart item audio: detects /phoneme/ format and routes accordingly ── */
   const playItemSmart = useCallback((item: string) => {
@@ -1009,6 +1015,7 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
             targetWord={q.target_word}
             phonemes={q.phonemes}
             distractors={q.distractors}
+            imageUrl={q.image_url || questionImageUrl(q.id, gradeKey)}
             answered={selected !== null}
             onAnswer={(isCorrect, answer) => handleSentenceBuildAnswer(isCorrect, answer)}
             onPlayPhoneme={playPhonemeAudio}

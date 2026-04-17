@@ -183,10 +183,16 @@ class AudioManager {
     const { isMuted } = useAudioStore.getState();
     if (isMuted) return Promise.resolve();
     return new Promise((resolve) => {
-      const howl = new Howl({ src: [url], volume: 1 });
+      const howl = new Howl({ src: [url], volume: 1, html5: false });
       howl.once("end", () => resolve());
-      howl.once("loaderror", () => resolve());
-      howl.once("playerror", () => resolve());
+      howl.once("loaderror", (_id, err) => {
+        console.error("[playOneshot] loaderror", url, err);
+        resolve();
+      });
+      howl.once("playerror", (_id, err) => {
+        console.error("[playOneshot] playerror", url, err);
+        resolve();
+      });
       howl.play();
     });
   }
