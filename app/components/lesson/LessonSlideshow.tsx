@@ -37,6 +37,7 @@ interface Step {
   highlightPills?: HighlightPill[]; // schedule per-pill bounce during this step's audio
   highlightWord?: { word: string; delay: number }; // underline a word in a visible passage after delay
   sfxClaps?: Array<{ delay: number }>; // schedule clap sound effects at ms offsets from step start
+  afterPhonemes?: string[]; // phoneme IDs (e.g. "s", "short_u") to play in sequence AFTER the step TTS finishes
   imageFile?: string; // per-step image override — swaps the slide image while this step is playing
   displayTableRow?: {
     label: string;
@@ -295,10 +296,20 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
         scheduleStep(stepIdx + 1, runId, slideSteps);
       };
 
+      const playPhonemesThenAdvance = async () => {
+        if (step.afterPhonemes && audioManager) {
+          for (const id of step.afterPhonemes) {
+            if (runIdRef.current !== runId) return;
+            await audioManager.playOneshot(`${SUPABASE_STORAGE}/audio/phonemes/${id}.mp3`);
+          }
+        }
+        advance();
+      };
+
       if (!isMuted && audioManager) {
         const audioUrl = `${SUPABASE_STORAGE}/${step.audioFile}`;
         audioManager.play(audioUrl)
-          .then(() => { advance(); })
+          .then(() => { playPhonemesThenAdvance(); })
           .catch(() => {
             const wordCount = step.ttsScript.split(/\s+/).length;
             timerRef.current = setTimeout(advance, Math.max(wordCount * 460, 2500));

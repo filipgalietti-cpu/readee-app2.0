@@ -178,6 +178,19 @@ class AudioManager {
     ], "sine");
   }
 
+  /** Play a one-shot audio file that overlays — doesn't stop current playback */
+  playOneshot(url: string): Promise<void> {
+    const { isMuted } = useAudioStore.getState();
+    if (isMuted) return Promise.resolve();
+    return new Promise((resolve) => {
+      const howl = new Howl({ src: [url], volume: 1 });
+      howl.once("end", () => resolve());
+      howl.once("loaderror", () => resolve());
+      howl.once("playerror", () => resolve());
+      howl.play();
+    });
+  }
+
   /** Play clap: short filtered noise burst */
   playClap(): void {
     const { isMuted } = useAudioStore.getState();

@@ -5360,17 +5360,18 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.2c/S1b.mp3",
             "ttsScript": "Like 'dog' \u2014 it starts with the duh sound and ends with the guh sound!",
-            "interaction": "Pill: [Start: /d/] pops in blue. Pill: [End: /g/] pops in orange.",
+            "interaction": "Pill: [Starts with d] pops in blue. Pill: [Ends with g] pops in orange.",
             "displayParts": [
               {
-                "text": "Start: /d/",
+                "text": "Starts with d",
                 "delay": 2490
               },
               {
-                "text": "End: /g/",
+                "text": "Ends with g",
                 "delay": 5000
               }
-            ]
+            ],
+            "afterPhonemes": ["d", "g"]
           },
           {
             "sub": "c",
@@ -5381,7 +5382,7 @@
           }
         ],
         "heading": "Beginning and Ending Sounds!",
-        "imagePrompt": "A cartoon word 'dog' with the D glowing bright at the start and the G glowing at the end, with arrows pointing to each. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A cheerful cartoon dog sitting upright with a wagging tail and a big friendly smile. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Simple clean background. No text, no words, no letters.",
         "imageFile": "images/lessons/RF.K.2c/S1.png"
       },
       {
@@ -5399,17 +5400,19 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.2c/S2b.mp3",
             "ttsScript": "Say 'ball.' What's the first sound? Buh! The beginning sound is /b/!",
-            "interaction": "Pill: [Ball \u2192 Starts with /b/] pops in blue.",
-            "displayText": "Ball \u2192 Starts with /b/",
-            "displayDelay": 930
+            "interaction": "Pill: [Ball \u2192 Starts with b] pops in blue.",
+            "displayText": "Ball \u2192 Starts with b",
+            "displayDelay": 930,
+            "afterPhonemes": ["b"]
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.2c/S2c.mp3",
             "ttsScript": "Now the ending sound is the very last sound. Say 'ball.' What's the last sound? Lll! The ending sound is /l/!",
-            "interaction": "Pill: [Ball \u2192 Ends with /l/] pops in orange.",
-            "displayText": "Ball \u2192 Ends with /l/",
-            "displayDelay": 1628
+            "interaction": "Pill: [Ball \u2192 Ends with l] pops in orange.",
+            "displayText": "Ball \u2192 Ends with l",
+            "displayDelay": 1628,
+            "afterPhonemes": ["l"]
           },
           {
             "sub": "d",
@@ -5438,17 +5441,19 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.2c/S3b.mp3",
             "ttsScript": "Sun. What's the beginning sound? Sss! It starts with /s/!",
-            "interaction": "Pill: [Starts with /s/] pops in blue with checkmark.",
-            "displayText": "Starts with /s/",
-            "displayDelay": 2500
+            "interaction": "Pill: [Starts with s] pops in blue with checkmark.",
+            "displayText": "Starts with s",
+            "displayDelay": 2500,
+            "afterPhonemes": ["s"]
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.2c/S3c.mp3",
             "ttsScript": "And the ending sound? Nnn! It ends with /n/!",
-            "interaction": "Pill: [Ends with /n/] pops in orange with checkmark.",
-            "displayText": "Ends with /n/",
-            "displayDelay": 2250
+            "interaction": "Pill: [Ends with n] pops in orange with checkmark.",
+            "displayText": "Ends with n",
+            "displayDelay": 2250,
+            "afterPhonemes": ["n"]
           },
           {
             "sub": "d",
@@ -5459,7 +5464,7 @@
           }
         ],
         "heading": "Let's Practice Listening!",
-        "imagePrompt": "A cartoon sun with the letter S glowing at the start and N glowing at the end, with rays of sound coming from each. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A bright cheerful cartoon sun with a smiling face and rays beaming outward. Simple clean blue sky background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RF.K.2c/S3.png"
       },
       {
@@ -5477,9 +5482,12 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.2c/S4b.mp3",
             "ttsScript": "Say the word really slowly. Ssss-uuu-nnn. The first sound pops out and the last sound pops out!",
-            "interaction": "Pill: [Stretch it out \u2192 Hear first and last!] pops in.",
-            "displayText": "Stretch it out \u2192 Hear first and last!",
-            "displayDelay": 1318
+            "interaction": "Letters S, u, n appear one at a time as narrator stretches the word.",
+            "displayParts": [
+              { "text": "S", "delay": 5940 },
+              { "text": "u", "delay": 6500 },
+              { "text": "n", "delay": 7200 }
+            ]
           },
           {
             "sub": "c",
@@ -5514,7 +5522,7 @@
           }
         ],
         "heading": "Time to Practice!",
-        "imagePrompt": "A cartoon child wearing giant sparkly headphones, surrounded by floating musical notes and colorful sound bubbles. Each bubble has a different musical instrument inside. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A cheerful cartoon child cupping a hand behind one ear, listening carefully with a happy smile. Simple clean background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RF.K.2c/S5.png"
       },
       {
