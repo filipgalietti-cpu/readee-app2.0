@@ -5830,18 +5830,15 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.2e/S1b.mp3",
-            "ttsScript": "Like 'cat' \u2014 change the /c/ to /b/ and you get 'bat!' It's like magic!",
-            "interaction": "'cat' transforms to 'bat' with sparkle animation. The C swaps to B.",
-            "displayParts": [
-              {
-                "text": "cat",
-                "delay": 900
-              },
-              {
-                "text": "bat",
-                "delay": 5200
-              }
-            ]
+            "ttsScript": "Like the word 'cat.' Change the C to B and you get 'bat!'",
+            "interaction": "CAT diagram appears, then the C tile morphs into B in place.",
+            "displayDiagramSwap": {
+              "letters": ["C", "A", "T"],
+              "swapAt": 0,
+              "toLetter": "B",
+              "delay": 1500,
+              "swapDelay": 6500
+            }
           },
           {
             "sub": "c",
@@ -5870,18 +5867,28 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.2e/S2b.mp3",
-            "ttsScript": "You can change the beginning sound. 'Mat' becomes 'sat' if you change /m/ to /s/!",
-            "interaction": "Pill: [Change beginning: mat \u2192 sat] pops in blue.",
-            "displayText": "Change beginning: mat \u2192 sat",
-            "displayDelay": 1163
+            "ttsScript": "You can change the beginning sound. 'Mat' becomes 'sat' when M changes to S.",
+            "interaction": "MAT diagram, then M morphs into S.",
+            "displayDiagramSwap": {
+              "letters": ["M", "A", "T"],
+              "swapAt": 0,
+              "toLetter": "S",
+              "delay": 2500,
+              "swapDelay": 5000
+            }
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.2e/S2c.mp3",
-            "ttsScript": "You can change the ending sound too! 'Cat' becomes 'can' if you change /t/ to /n/!",
-            "interaction": "Pill: [Change ending: cat \u2192 can] pops in green.",
-            "displayText": "Change ending: cat \u2192 can",
-            "displayDelay": 1240
+            "ttsScript": "Change the ending sound too. 'Cat' becomes 'can' when T changes to N.",
+            "interaction": "CAT diagram, then T morphs into N.",
+            "displayDiagramSwap": {
+              "letters": ["C", "A", "T"],
+              "swapAt": 2,
+              "toLetter": "N",
+              "delay": 1500,
+              "swapDelay": 3000
+            }
           },
           {
             "sub": "d",
@@ -5909,18 +5916,28 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.2e/S3b.mp3",
-            "ttsScript": "Start with 'hop.' Change the /h/ to /m/. What do you get? Mop!",
-            "interaction": "'hop' transforms to 'mop'. Pill: [hop \u2192 mop \u2713] pops in.",
-            "displayText": "hop \u2192 mop",
-            "displayDelay": 3000
+            "ttsScript": "Start with 'hop.' Change the H to M. What new word do you get? Mop!",
+            "interaction": "HOP shows; the H tile flips to M when narrator says 'Mop!'",
+            "displayDiagramSwap": {
+              "letters": ["H", "O", "P"],
+              "swapAt": 0,
+              "toLetter": "M",
+              "delay": 1000,
+              "swapDelay": 7400
+            }
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.2e/S3c.mp3",
-            "ttsScript": "Start with 'big.' Change the /b/ to /d/. What do you get? Dig!",
-            "interaction": "'big' transforms to 'dig'. Pill: [big \u2192 dig \u2713] pops in. Stars.",
-            "displayText": "big \u2192 dig",
-            "displayDelay": 3000
+            "ttsScript": "Start with 'big.' Change the B to D. What new word do you get? Dig!",
+            "interaction": "BIG shows; the B tile flips to D when narrator says 'Dig!'",
+            "displayDiagramSwap": {
+              "letters": ["B", "I", "G"],
+              "swapAt": 0,
+              "toLetter": "D",
+              "delay": 1000,
+              "swapDelay": 7700
+            }
           }
         ],
         "heading": "Let's Make New Words!",
@@ -5941,10 +5958,15 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.2e/S4b.mp3",
-            "ttsScript": "Take away the old sound, put in the new sound, and say the whole word. You'll hear the new word right away!",
-            "interaction": "Pill: [Remove old sound + Add new sound = New word!] pops in.",
-            "displayText": "Remove old sound + Add new sound make New word!",
-            "displayDelay": 1705
+            "ttsScript": "Try it. Start with 'top.' Change the T to a P and you get 'pop!'",
+            "interaction": "TOP diagram appears, then T morphs into P.",
+            "displayDiagramSwap": {
+              "letters": ["T", "O", "P"],
+              "swapAt": 0,
+              "toLetter": "P",
+              "delay": 2000,
+              "swapDelay": 8500
+            }
           },
           {
             "sub": "c",

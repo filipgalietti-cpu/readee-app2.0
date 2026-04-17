@@ -44,6 +44,14 @@ interface Step {
     letters: Array<{ text: string; role?: "start" | "end" }>;
     delay: number;
   };
+  displayDiagramSwap?: {
+    // Letter row that morphs one tile in place (e.g. CAT → BAT)
+    letters: string[];     // initial letters, e.g. ["C","A","T"]
+    swapAt: number;        // index of the tile that will change
+    toLetter: string;      // what it morphs into
+    delay: number;         // ms before the diagram first appears (original word)
+    swapDelay: number;     // ms before the swap animation triggers
+  };
   imageFile?: string; // per-step image override — swaps the slide image while this step is playing
   displayTableRow?: {
     label: string;
@@ -168,6 +176,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
   const [highlightedPill, setHighlightedPill] = useState(-1);
   const [highlightedWord, setHighlightedWord] = useState<string | null>(null);
   const [activePhoneme, setActivePhoneme] = useState<{ stepIdx: number; letterIdx: number } | null>(null);
+  const [swapTriggered, setSwapTriggered] = useState<Set<number>>(new Set());
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const textTimersRef = useRef<ReturnType<typeof setTimeout>[]>([]);
   const runIdRef = useRef(0);
@@ -286,6 +295,26 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
         }
       }
 
+      // Schedule swap-diagram appearance + delayed in-place letter morph
+      if (step.displayDiagramSwap) {
+        const showAt = step.displayDiagramSwap.delay ?? 0;
+        const swapAt = step.displayDiagramSwap.swapDelay ?? showAt + 1500;
+        if (showAt > 0) {
+          const t1 = setTimeout(() => {
+            if (runIdRef.current !== runId) return;
+            setTextsVisible((prev) => new Set(prev).add(stepIdx));
+          }, showAt);
+          textTimersRef.current.push(t1);
+        } else {
+          setTextsVisible((prev) => new Set(prev).add(stepIdx));
+        }
+        const t2 = setTimeout(() => {
+          if (runIdRef.current !== runId) return;
+          setSwapTriggered((prev) => new Set(prev).add(stepIdx));
+        }, swapAt);
+        textTimersRef.current.push(t2);
+      }
+
       // Schedule table example column reveal
       if (step.displayTableRow?.example) {
         const rowDelay = step.displayDelay ?? 0;
@@ -358,6 +387,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
     setHighlightedPill(-1);
     setHighlightedWord(null);
     setActivePhoneme(null);
+    setSwapTriggered(new Set());
     setPartsVisible(new Set());
     setShowNext(false);
     setIsPlaying(false);
@@ -388,9 +418,13 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
     steps.forEach((step, i) => {
       if (step.displayText) allTexts.add(i);
       if (step.displayDiagram) allTexts.add(i);
+      if (step.displayDiagramSwap) allTexts.add(i);
       step.displayParts?.forEach((_, p) => allParts.add(`${i}-${p}`));
       if (step.displayTableRow?.example) allExamples.add(i);
     });
+    const allSwaps = new Set<number>();
+    steps.forEach((step, i) => { if (step.displayDiagramSwap) allSwaps.add(i); });
+    setSwapTriggered(allSwaps);
     setTextsVisible(allTexts);
     setPartsVisible(allParts);
     setExamplesVisible(allExamples);
@@ -837,6 +871,51 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
     );
   };
 
+  const renderDiagramSwap = (step: Step, i: number) => {
+    if (!textsVisible.has(i) || !step.displayDiagramSwap) return null;
+    const { letters, swapAt, toLetter } = step.displayDiagramSwap;
+    const swapped = swapTriggered.has(i);
+    return (
+      <motion.div
+        key={`${currentSlide}-${step.sub}-swap`}
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ type: "spring", stiffness: 400, damping: 20 }}
+        className="w-full flex items-center justify-center gap-3 sm:gap-4"
+      >
+        {letters.map((baseLetter, li) => {
+          const isSwapTile = li === swapAt;
+          const currentLetter = isSwapTile && swapped ? toLetter : baseLetter;
+          const tileColor = isSwapTile && swapped
+            ? "bg-violet-100 text-violet-700 ring-4 ring-violet-500 dark:bg-violet-900/40 dark:text-violet-200"
+            : "bg-zinc-100 text-zinc-600 dark:bg-slate-800 dark:text-slate-400";
+          return (
+            <motion.div
+              key={li}
+              animate={isSwapTile && swapped ? { scale: [1, 1.18, 1] } : { scale: 1 }}
+              transition={{ duration: 0.5 }}
+              className={`relative w-14 h-14 sm:w-16 sm:h-16 rounded-2xl shadow-sm overflow-hidden ${tileColor}`}
+            >
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.span
+                  key={currentLetter}
+                  initial={{ opacity: 0, rotateX: -90 }}
+                  animate={{ opacity: 1, rotateX: 0 }}
+                  exit={{ opacity: 0, rotateX: 90 }}
+                  transition={{ duration: 0.35, ease: "easeOut" }}
+                  className="absolute inset-0 flex items-center justify-center text-3xl sm:text-4xl font-extrabold"
+                  style={{ transformStyle: "preserve-3d", backfaceVisibility: "hidden" }}
+                >
+                  {currentLetter}
+                </motion.span>
+              </AnimatePresence>
+            </motion.div>
+          );
+        })}
+      </motion.div>
+    );
+  };
+
   const renderText = (step: Step, i: number) => {
     if (!textsVisible.has(i) || !step.displayText) return null;
 
@@ -1048,7 +1127,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
           <div className="flex-1 min-h-0 overflow-hidden flex items-center justify-center px-6">
             {(() => {
               const hasContent = steps.some(
-                (s) => s.displayText || (s.displayParts && s.displayParts.length > 0) || s.displayTableRow || s.displayDiagram
+                (s) => s.displayText || (s.displayParts && s.displayParts.length > 0) || s.displayTableRow || s.displayDiagram || s.displayDiagramSwap
               );
               const bgClass = hasContent ? theme.contentBg : "";
               return (
@@ -1149,6 +1228,9 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
                         })}
                       </div>
                     );
+                  }
+                  if (step.displayDiagramSwap) {
+                    return renderDiagramSwap(step, i);
                   }
                   if (step.displayDiagram) {
                     return renderDiagram(step, i);
