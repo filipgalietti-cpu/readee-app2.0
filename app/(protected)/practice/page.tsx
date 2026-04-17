@@ -547,9 +547,9 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
     const folder = clean.length === 1 ? "letters" : "words";
     const url = `${base}/storage/v1/object/public/audio/${folder}/${clean}.mp3`;
     console.log("[playWordAudio]", word, url);
-    unlockAudio();
+    if (audioManager) audioManager.resumeContextSync();
     playUrl(url, 0);
-  }, [unlockAudio, playUrl]);
+  }, [playUrl]);
 
   /* ── Play phoneme audio (for SoundMachine tiles) ── */
   const playPhonemeAudio = useCallback((phoneme: string) => {
@@ -571,9 +571,9 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
     if (!base) return;
     const url = `${base}/storage/v1/object/public/audio/phonemes/${id}.mp3`;
     console.log("[playPhonemeAudio] CLICKED", phoneme, "url:", url);
-    unlockAudio();
+    if (audioManager) audioManager.resumeContextSync();
     playUrl(url, 0);
-  }, [unlockAudio, playUrl]);
+  }, [playUrl]);
 
   /* ── Smart item audio: detects /phoneme/ format and routes accordingly ── */
   const playItemSmart = useCallback((item: string) => {

@@ -23,6 +23,15 @@ class AudioManager {
     } catch {}
   }
 
+  /** Synchronously kick AudioContext resume — call from inside a user gesture handler */
+  resumeContextSync(): void {
+    try {
+      const ctx = this.getAudioCtx();
+      if (ctx.state === "suspended") ctx.resume();
+      if (Howler.ctx && Howler.ctx.state === "suspended") Howler.ctx.resume();
+    } catch {}
+  }
+
   /** Play audio from a URL via Howler with fade-in */
   play(url: string, fadeMs = 300): Promise<void> {
     const { isMuted } = useAudioStore.getState();
