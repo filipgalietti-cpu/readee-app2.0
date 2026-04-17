@@ -547,10 +547,11 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
     const folder = clean.length === 1 ? "letters" : "words";
     const url = `${base}/storage/v1/object/public/audio/${folder}/${clean}.mp3`;
     console.log("[playWordAudio]", word, url);
+    unlockAudio();
     if (audioManager) audioManager.stop();
     const audio = new Audio(url);
     audio.play().catch((err) => console.error("[playWordAudio] failed:", err));
-  }, []);
+  }, [unlockAudio]);
 
   /* ── Play phoneme audio (for SoundMachine tiles) ── */
   const playPhonemeAudio = useCallback((phoneme: string) => {
@@ -572,12 +573,13 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
     if (!base) return;
     const url = `${base}/storage/v1/object/public/audio/phonemes/${id}.mp3`;
     console.log("[playPhonemeAudio] CLICKED", phoneme, "url:", url);
+    unlockAudio();
     if (audioManager) audioManager.stop();
     const audio = new Audio(url);
     audio.play()
       .then(() => console.log("[playPhonemeAudio] PLAYING"))
       .catch((err) => console.error("[playPhonemeAudio] FAILED:", err.name, err.message));
-  }, []);
+  }, [unlockAudio]);
 
   /* ── Smart item audio: detects /phoneme/ format and routes accordingly ── */
   const playItemSmart = useCallback((item: string) => {
@@ -1015,7 +1017,15 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
             targetWord={q.target_word}
             phonemes={q.phonemes}
             distractors={q.distractors}
-            imageUrl={q.image_url || questionImageUrl(q.id, gradeKey)}
+            imageUrl={(() => {
+              // Build the image URL directly from the question ID to avoid
+              // any data-pipeline quirks stripping q.image_url.
+              const m = q.id.match(/^(.+)-Q\d+$/);
+              if (!m) return q.image_url;
+              const standardId = m[1];
+              const folder = GRADE_FOLDER[gradeKey] || gradeKey || "kindergarten";
+              return `${SUPABASE_STORAGE}/images/${folder}/${standardId}/${q.id}.png`;
+            })()}
             answered={selected !== null}
             onAnswer={(isCorrect, answer) => handleSentenceBuildAnswer(isCorrect, answer)}
             onPlayPhoneme={playPhonemeAudio}
