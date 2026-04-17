@@ -80,8 +80,11 @@ export function SoundMachine({
 
   const handleTapBank = useCallback(
     (soundIdx: number) => {
-      if (answered || result !== null || nextEmptySlot === -1) return;
+      console.log("[SoundMachine] bank tap idx=", soundIdx, "sound=", allSounds[soundIdx], "answered=", answered, "result=", result, "nextEmptySlot=", nextEmptySlot);
+      if (answered || result !== null) return;
+      // Always play the sound on tap (even when all slots are filled, so kids can preview)
       onPlayPhoneme?.(allSounds[soundIdx]);
+      if (nextEmptySlot === -1) return;
       setPlaced((prev) => {
         const next = [...prev];
         next[nextEmptySlot] = soundIdx;
@@ -94,14 +97,17 @@ export function SoundMachine({
   const handleTapSlot = useCallback(
     (slotIdx: number) => {
       if (answered || result !== null) return;
-      if (placed[slotIdx] === -1) return;
+      const soundIdx = placed[slotIdx];
+      if (soundIdx === -1) return;
+      // Play the sound, then return it to the bank
+      onPlayPhoneme?.(allSounds[soundIdx]);
       setPlaced((prev) => {
         const next = [...prev];
         next[slotIdx] = -1;
         return next;
       });
     },
-    [answered, result, placed]
+    [answered, result, placed, onPlayPhoneme, allSounds]
   );
 
   const handleCheck = useCallback(async () => {
