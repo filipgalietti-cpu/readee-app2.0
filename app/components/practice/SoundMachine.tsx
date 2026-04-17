@@ -80,10 +80,15 @@ export function SoundMachine({
 
   const handleTapBank = useCallback(
     (soundIdx: number) => {
-      console.log("[SoundMachine] bank tap idx=", soundIdx, "sound=", allSounds[soundIdx], "answered=", answered, "result=", result, "nextEmptySlot=", nextEmptySlot);
+      console.log("[SoundMachine:v3] bank tap idx=", soundIdx, "sound=", allSounds[soundIdx], "onPlayPhoneme_type=", typeof onPlayPhoneme);
       if (answered || result !== null) return;
-      // Always play the sound on tap (even when all slots are filled, so kids can preview)
-      onPlayPhoneme?.(allSounds[soundIdx]);
+      console.log("[SoundMachine:v3] calling onPlayPhoneme with:", allSounds[soundIdx]);
+      try {
+        onPlayPhoneme?.(allSounds[soundIdx]);
+        console.log("[SoundMachine:v3] onPlayPhoneme returned OK");
+      } catch (err) {
+        console.error("[SoundMachine:v3] onPlayPhoneme THREW:", err);
+      }
       if (nextEmptySlot === -1) return;
       setPlaced((prev) => {
         const next = [...prev];
