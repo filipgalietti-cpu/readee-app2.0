@@ -5662,7 +5662,7 @@
               ],
               "delay": 543
             },
-            "afterPhonemes": ["g", "short_o"]
+            "afterPhonemes": ["g", "long_o"]
           },
           {
             "sub": "d",
@@ -5718,7 +5718,7 @@
           }
         ],
         "heading": "Let's Count Sounds Together!",
-        "imagePrompt": "A cartoon child holding up three fingers with a big proud smile. Each finger has a tiny colorful star on top. Background is a simple sunny sky. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A cheerful cartoon child sitting cross-legged and smiling warmly at the viewer, hands resting on their knees. Simple clean background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RF.K.2d/S3.png"
       },
       {
@@ -5735,10 +5735,17 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.2d/S4b.mp3",
-            "ttsScript": "Say the word slowly and pop up a finger for each sound. That's how you count them!",
-            "interaction": "Pill: [Slow + Fingers = Sound counting!] pops in.",
-            "displayText": "Slow + Fingers make Sound counting!",
-            "displayDelay": 1318
+            "ttsScript": "Say 'cat' slowly. Raise a finger for each sound you hear.",
+            "interaction": "C-A-T diagram appears; phoneme audio plays each sound.",
+            "displayDiagram": {
+              "letters": [
+                { "text": "C" },
+                { "text": "A" },
+                { "text": "T" }
+              ],
+              "delay": 1500
+            },
+            "afterPhonemes": ["c_hard", "short_a", "t"]
           },
           {
             "sub": "c",
@@ -5749,7 +5756,7 @@
           }
         ],
         "heading": "A Helpful Trick!",
-        "imagePrompt": "A cartoon child holding up fingers and smiling, with sound bubbles popping above each raised finger. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A cheerful cartoon child holding up one hand with three fingers raised proudly, smiling warmly. Simple clean background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RF.K.2d/S4.png"
       },
       {

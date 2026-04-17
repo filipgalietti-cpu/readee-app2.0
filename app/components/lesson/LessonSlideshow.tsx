@@ -38,6 +38,7 @@ interface Step {
   highlightWord?: { word: string; delay: number }; // underline a word in a visible passage after delay
   sfxClaps?: Array<{ delay: number }>; // schedule clap sound effects at ms offsets from step start
   afterPhonemes?: string[]; // phoneme IDs (e.g. "s", "short_u") to play in sequence AFTER the step TTS finishes
+  phonemeLetterIndices?: number[]; // which displayDiagram letter each afterPhoneme corresponds to; defaults to [0,1,2,...]
   displayDiagram?: {
     // Letter row with optional "start"/"end" labels above tagged letters
     letters: Array<{ text: string; role?: "start" | "end" }>;
@@ -166,6 +167,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
   const [playingStep, setPlayingStep] = useState(-1);
   const [highlightedPill, setHighlightedPill] = useState(-1);
   const [highlightedWord, setHighlightedWord] = useState<string | null>(null);
+  const [activePhoneme, setActivePhoneme] = useState<{ stepIdx: number; letterIdx: number } | null>(null);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const textTimersRef = useRef<ReturnType<typeof setTimeout>[]>([]);
   const runIdRef = useRef(0);
@@ -317,10 +319,14 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
 
       const playPhonemesThenAdvance = async () => {
         if (step.afterPhonemes && audioManager) {
-          for (const id of step.afterPhonemes) {
+          const letterMap = step.phonemeLetterIndices ?? step.afterPhonemes.map((_, i) => i);
+          for (let p = 0; p < step.afterPhonemes.length; p++) {
             if (runIdRef.current !== runId) return;
-            await audioManager.playOneshot(`${SUPABASE_STORAGE}/audio/phonemes/${id}.mp3`);
+            const letterIdx = letterMap[p] ?? p;
+            setActivePhoneme({ stepIdx, letterIdx });
+            await audioManager.playOneshot(`${SUPABASE_STORAGE}/audio/phonemes/${step.afterPhonemes[p]}.mp3`);
           }
+          if (runIdRef.current === runId) setActivePhoneme(null);
         }
         advance();
       };
@@ -351,6 +357,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
     setPlayingStep(-1);
     setHighlightedPill(-1);
     setHighlightedWord(null);
+    setActivePhoneme(null);
     setPartsVisible(new Set());
     setShowNext(false);
     setIsPlaying(false);
@@ -787,7 +794,10 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
         {letters.map((l, li) => {
           const isStart = l.role === "start";
           const isEnd = l.role === "end";
-          const tileColor = isStart
+          const isActive = activePhoneme?.stepIdx === i && activePhoneme?.letterIdx === li;
+          const tileColor = isActive
+            ? "bg-violet-100 text-violet-700 ring-4 ring-violet-500 dark:bg-violet-900/40 dark:text-violet-200"
+            : isStart
             ? "bg-blue-100 text-blue-700 ring-4 ring-blue-400 dark:bg-blue-900/40 dark:text-blue-200"
             : isEnd
             ? "bg-amber-100 text-amber-700 ring-4 ring-amber-400 dark:bg-amber-900/40 dark:text-amber-200"
@@ -811,9 +821,12 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
               )}
               <motion.span
                 initial={{ opacity: 0, scale: 0.6 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ type: "spring", stiffness: 500, damping: 18, delay: li * 0.05 }}
-                className={`w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center text-3xl sm:text-4xl font-extrabold shadow-sm ${tileColor}`}
+                animate={isActive ? { opacity: 1, scale: [1, 1.15, 1] } : { opacity: 1, scale: 1 }}
+                transition={isActive
+                  ? { scale: { duration: 0.5, ease: "easeOut" } }
+                  : { type: "spring", stiffness: 500, damping: 18, delay: li * 0.05 }
+                }
+                className={`w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center text-3xl sm:text-4xl font-extrabold shadow-sm transition-colors ${tileColor}`}
               >
                 {l.text}
               </motion.span>
