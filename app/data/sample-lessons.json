@@ -136,7 +136,7 @@
           {
             "sub": "c",
             "audioFile": "audio/lessons/RL.K.1/S3c.mp3",
-            "ttsScript": "Now let's find the key details! Who is the story about? That's right \u2014 Max the dog!",
+            "ttsScript": "Now let's find the key details! Who is the story about? That's right — Max the dog!",
             "displayText": "",
             "displayParts": [
               {
@@ -305,7 +305,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.2a/S1b.mp3",
-            "ttsScript": "Rhyming words are words that sound the same at the end. Like cat and hat! Listen \u2014 cat, hat. Hear how they match?",
+            "ttsScript": "Rhyming words are words that sound the same at the end. Like cat and hat! Listen — cat, hat. Hear how they match?",
             "interaction": "'Cat' and 'Hat' appear on screen and bounce together. A sound wave connects them.",
             "displayParts": [
               {
@@ -667,7 +667,7 @@
           {
             "sub": "e",
             "audioFile": "audio/lessons/RI.K.1/S3e.mp3",
-            "ttsScript": "Can they fly? Nope! That's an important fact too. Look at you \u2014 you found all the key details!",
+            "ttsScript": "Can they fly? Nope! That's an important fact too. Look at you — you found all the key details!",
             "displayText": "",
             "interaction": "'Can they fly? No!' highlights. Celebration burst. Tap to continue.",
             "displayParts": [
@@ -1021,7 +1021,7 @@
           }
         ],
         "heading": "A Secret Trick!",
-        "imagePrompt": "Three colorful stepping stones in a row \u2014 a gold stone with one star, a blue stone with two stars, and a green stone with three stars. A cartoon child hops across them happily. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "Three colorful stepping stones in a row — a gold stone with one star, a blue stone with two stars, and a green stone with three stars. A cartoon child hops across them happily. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RL.K.2/S4.png"
       },
       {
@@ -1038,7 +1038,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.K.2/S5b.mp3",
-            "ttsScript": "Now let's practice retelling some short stories. Remember \u2014 beginning, middle, end. Let's go!",
+            "ttsScript": "Now let's practice retelling some short stories. Remember — beginning, middle, end. Let's go!",
             "interaction": "'Let's Go!' button pulses.",
             "displayText": "Let's retell some stories!",
             "displayDelay": 3500
@@ -1572,7 +1572,7 @@
                 "What It Has",
                 "Sounds Like"
               ],
-              "example": "Beginning \u2192 Middle \u2192 End",
+              "example": "Beginning → Middle → End",
               "exampleDelay": 2500
             }
           },
@@ -1734,7 +1734,7 @@
           }
         ],
         "heading": "Time to Practice!",
-        "imagePrompt": "A cartoon child happily organizing colorful storybooks into two bright bins \u2014 one red bin and one blue bin. The books are different colors and sizes. Gold stars float around. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A cartoon child happily organizing colorful storybooks into two bright bins — one red bin and one blue bin. The books are different colors and sizes. Gold stars float around. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RL.K.5/S5.png"
       },
       {
@@ -1881,7 +1881,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.K.6/S3b.mp3",
-            "ttsScript": "On the cover, it says 'Written by' \u2014 that's the author! They wrote all the words.",
+            "ttsScript": "On the cover, it says 'Written by' — that's the author! They wrote all the words.",
             "interaction": "Table row: Written by = Author with checkmark.",
             "displayText": "Author",
             "displayDelay": 4000,
@@ -1901,7 +1901,7 @@
           {
             "sub": "c",
             "audioFile": "audio/lessons/RL.K.6/S3c.mp3",
-            "ttsScript": "And it says 'Illustrated by' \u2014 that's the illustrator! They drew all the pictures.",
+            "ttsScript": "And it says 'Illustrated by' — that's the illustrator! They drew all the pictures.",
             "interaction": "Table row: Illustrated by = Illustrator with checkmark.",
             "displayText": "Illustrator",
             "displayDelay": 4000,
@@ -1939,7 +1939,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.K.6/S4b.mp3",
-            "ttsScript": "Find the name after 'by' or 'written by' \u2014 that's the author.",
+            "ttsScript": "Find the name after 'by' or 'written by' — that's the author.",
             "interaction": "Table row: Author = Look for 'Written by'.",
             "displayText": "Author",
             "displayDelay": 930,
@@ -2078,7 +2078,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.K.7/S2b.mp3",
-            "ttsScript": "They show us the setting \u2014 where the story is happening!",
+            "ttsScript": "They show us the setting — where the story is happening!",
             "interaction": "Setting row fills in.",
             "displayText": "Setting",
             "displayDelay": 0,
@@ -2156,7 +2156,7 @@
           {
             "sub": "c",
             "audioFile": "audio/lessons/RL.K.7/S3c.mp3",
-            "ttsScript": "How does the kid feel? Look at that big smile \u2014 happy and having fun!",
+            "ttsScript": "How does the kid feel? Look at that big smile — happy and having fun!",
             "interaction": "Feeling row fills in with checkmark.",
             "displayText": "Feeling",
             "displayDelay": 5000,
@@ -2377,7 +2377,7 @@
           {
             "sub": "d",
             "audioFile": "audio/lessons/RL.K.9/S2d.mp3",
-            "ttsScript": "Same and different \u2014 that's comparing! Easy, right?",
+            "ttsScript": "Same and different — that's comparing! Easy, right?",
             "interaction": "Both pills side by side. Tap to continue.",
             "displayText": ""
           }
@@ -2570,7 +2570,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RI.K.2/S1b.mp3",
-            "ttsScript": "Like a book about dogs \u2014 the main topic is dogs! Everything in it tells us about dogs.",
+            "ttsScript": "Like a book about dogs — the main topic is dogs! Everything in it tells us about dogs.",
             "interaction": "'Main Topic' pops up in big sparkly letters.",
             "displayText": "Main Topic",
             "displayDelay": 4320
@@ -2601,7 +2601,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RI.K.2/S2b.mp3",
-            "ttsScript": "If a book talks about where fish live, what fish eat, and how fish swim \u2014 what's the main topic?",
+            "ttsScript": "If a book talks about where fish live, what fish eat, and how fish swim — what's the main topic?",
             "interaction": "Three fact bubbles appear: 'where fish live', 'what fish eat', 'how fish swim'.",
             "displayParts": [
               {
@@ -2673,7 +2673,7 @@
           }
         ],
         "heading": "Let's Try One Together!",
-        "imagePrompt": "A basket full of colorful cartoon apples \u2014 red, green, and yellow \u2014 on a farm table with an orchard in the background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A basket full of colorful cartoon apples — red, green, and yellow — on a farm table with an orchard in the background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RI.K.2/S3.png"
       },
       {
@@ -2793,7 +2793,7 @@
           }
         ],
         "heading": "Let's Make Connections!",
-        "imagePrompt": "Colorful cartoon puzzle pieces fitting together, each showing a different nature scene \u2014 sun, rain, flowers growing. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "Colorful cartoon puzzle pieces fitting together, each showing a different nature scene — sun, rain, flowers growing. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RI.K.3/S1.png"
       },
       {
@@ -2850,8 +2850,8 @@
             "sub": "c",
             "audioFile": "audio/lessons/RI.K.3/S3c.mp3",
             "ttsScript": "The connection? Eating leaves helps the caterpillar grow so it can become a butterfly!",
-            "interaction": "Arrow connects the two facts. Pill: [Eating \u2192 Growing \u2192 Butterfly!] pops in with stars.",
-            "displayText": "Eating \u2192 Growing \u2192 Butterfly!",
+            "interaction": "Arrow connects the two facts. Pill: [Eating → Growing → Butterfly!] pops in with stars.",
+            "displayText": "Eating → Growing → Butterfly!",
             "displayDelay": 3500
           }
         ],
@@ -2995,7 +2995,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RI.K.4/S1b.mp3",
-            "ttsScript": "But don't worry \u2014 the book gives us clues to figure out what those new words mean!",
+            "ttsScript": "But don't worry — the book gives us clues to figure out what those new words mean!",
             "interaction": "'New Words' bubbles float up with question marks.",
             "displayText": ""
           },
@@ -3353,7 +3353,7 @@
           }
         ],
         "heading": "Let's Find the Parts!",
-        "imagePrompt": "Three views of a children's picture book side by side on a wooden table, evenly spaced. LEFT: closed FRONT cover \u2014 a smiling blue cartoon whale swimming with bubbles on a light blue background; the title \"Ocean Animals\" centered at the top in large friendly rounded kid-book letters; no other text. MIDDLE: the same book opened flat to reveal its TITLE PAGE \u2014 a plain white page with a small cartoon whale doodle in the middle; absolutely NO text, NO words, NO letters on the page. RIGHT: closed BACK cover \u2014 plain light blue background with a cute cartoon starfish in the center and a small simple barcode rectangle in the bottom right corner; absolutely no text, no writing. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors.",
+        "imagePrompt": "Three views of a children's picture book side by side on a wooden table, evenly spaced. LEFT: closed FRONT cover — a smiling blue cartoon whale swimming with bubbles on a light blue background; the title \"Ocean Animals\" centered at the top in large friendly rounded kid-book letters; no other text. MIDDLE: the same book opened flat to reveal its TITLE PAGE — a plain white page with a small cartoon whale doodle in the middle; absolutely NO text, NO words, NO letters on the page. RIGHT: closed BACK cover — plain light blue background with a cute cartoon starfish in the center and a small simple barcode rectangle in the bottom right corner; absolutely no text, no writing. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors.",
         "imageFile": "images/lessons/RI.K.5/S3.png"
       },
       {
@@ -3371,14 +3371,14 @@
             "sub": "b",
             "audioFile": "audio/lessons/RI.K.5/S4b.mp3",
             "ttsScript": "Look at the front cover to learn what the book is about. Check the title page for who made it!",
-            "interaction": "Pills: [Front Cover \u2192 What it's about] [Title Page \u2192 Who made it] pop in.",
+            "interaction": "Pills: [Front Cover → What it's about] [Title Page → Who made it] pop in.",
             "displayParts": [
               {
-                "text": "Front Cover \u2192 What it's about",
+                "text": "Front Cover → What it's about",
                 "delay": 300
               },
               {
-                "text": "Title Page \u2192 Who made it",
+                "text": "Title Page → Who made it",
                 "delay": 4000
               }
             ]
@@ -3446,7 +3446,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RI.K.6/S2a.mp3",
-            "ttsScript": "Every fact book has two important people \u2014 the author and the illustrator!",
+            "ttsScript": "Every fact book has two important people — the author and the illustrator!",
             "interaction": "Table headers appear.",
             "displayText": ""
           },
@@ -3506,7 +3506,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RI.K.6/S3b.mp3",
-            "ttsScript": "Right there on the cover \u2014 by Dr. Mia Orion! That's the author's name.",
+            "ttsScript": "Right there on the cover — by Dr. Mia Orion! That's the author's name.",
             "interaction": "Author name pill pops in with checkmark.",
             "displayText": "Dr. Mia Orion",
             "displayDelay": 1500,
@@ -3540,7 +3540,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RI.K.6/Sill-b.mp3",
-            "ttsScript": "Right there on the cover \u2014 pictures by Leo Bright! That's the illustrator's name.",
+            "ttsScript": "Right there on the cover — pictures by Leo Bright! That's the illustrator's name.",
             "interaction": "Illustrator name pill pops in with checkmark.",
             "displayText": "Leo Bright",
             "displayDelay": 1500,
@@ -3689,7 +3689,7 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.K.7/S1a.mp3",
-            "ttsScript": "Fact books don't just have words \u2014 they have pictures too! And those pictures are super helpful.",
+            "ttsScript": "Fact books don't just have words — they have pictures too! And those pictures are super helpful.",
             "interaction": "Heading fades in.",
             "displayText": ""
           },
@@ -3850,7 +3850,7 @@
           }
         ],
         "heading": "Time to Practice!",
-        "imagePrompt": "A cartoon child surrounded by fact book pictures floating around them \u2014 animals, planets, plants \u2014 all teaching something. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A cartoon child surrounded by fact book pictures floating around them — animals, planets, plants — all teaching something. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RI.K.7/S5.png"
       },
       {
@@ -4001,7 +4001,7 @@
           }
         ],
         "heading": "Let's Find the Reasons!",
-        "imagePrompt": "A simple colorful cartoon arrangement of fresh fruit on a clean light background: a bright red apple, a yellow banana, a bunch of purple grapes, juicy red strawberries, and an orange orange. The fruit is plain and realistic in style \u2014 NO faces, NO eyes, NO mouths, NO expressions on any of the fruit. Just clean inanimate fruit. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A simple colorful cartoon arrangement of fresh fruit on a clean light background: a bright red apple, a yellow banana, a bunch of purple grapes, juicy red strawberries, and an orange orange. The fruit is plain and realistic in style — NO faces, NO eyes, NO mouths, NO expressions on any of the fruit. Just clean inanimate fruit. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RI.K.8/S3.png"
       },
       {
@@ -4356,21 +4356,21 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.1a/S2b.mp3",
             "ttsScript": "Left to right. That is how we read every line.",
-            "interaction": "Pill: [Left \u2192 Right] pops in with animated arrow.",
-            "displayText": "Left \u2192 Right",
+            "interaction": "Pill: [Left → Right] pops in with animated arrow.",
+            "displayText": "Left → Right",
             "displayDelay": 1318
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.1a/S2c.mp3",
             "ttsScript": "When you get to the end of a line, go down. Then start on the left of the next line.",
-            "interaction": "Pill: [End of line \u2192 Next line \u2192 Start left again!] pops in.",
-            "displayText": "End of line \u2192 Next line \u2192 Start left again!",
+            "interaction": "Pill: [End of line → Next line → Start left again!] pops in.",
+            "displayText": "End of line → Next line → Start left again!",
             "displayDelay": 2015
           }
         ],
         "heading": "How Do We Read?",
-        "imagePrompt": "Animated GIF built from one Imagen base workbook (S2-base.png) with green bars composited onto rows 1 and 2 via sharp. Cycles: blank \u2192 top row highlighted \u2192 top + middle rows highlighted. Guarantees identical workbook across frames.",
+        "imagePrompt": "Animated GIF built from one Imagen base workbook (S2-base.png) with green bars composited onto rows 1 and 2 via sharp. Cycles: blank → top row highlighted → top + middle rows highlighted. Guarantees identical workbook across frames.",
         "imageFile": "images/lessons/RF.K.1a/S2.gif"
       },
       {
@@ -4389,7 +4389,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.1a/S3b.mp3",
             "ttsScript": "I start here on the left. I read the cat sat.",
-            "interaction": "Line 1 karaoke animation plays: The \u2192 cat \u2192 sat.",
+            "interaction": "Line 1 karaoke animation plays: The → cat → sat.",
             "displayText": "",
             "imageFile": "images/lessons/RF.K.1a/S3-b.gif"
           },
@@ -4397,7 +4397,7 @@
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.1a/S3c.mp3",
             "ttsScript": "Now I drop down to the next line. I start on the left again. On a mat.",
-            "interaction": "Line 2 karaoke animation plays: on \u2192 a \u2192 mat. Line 1 shown grayed.",
+            "interaction": "Line 2 karaoke animation plays: on → a → mat. Line 1 shown grayed.",
             "displayText": "",
             "imageFile": "images/lessons/RF.K.1a/S3-c.gif"
           }
@@ -4446,7 +4446,7 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.1a/S5a.mp3",
-            "ttsScript": "You know exactly how to read \u2014 left to right!",
+            "ttsScript": "You know exactly how to read — left to right!",
             "interaction": "Stars celebration.",
             "displayText": ""
           },
@@ -4560,7 +4560,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.1b/S2b.mp3",
-            "ttsScript": "Some words are short \u2014 like 'at.' That's just two letters! A and T.",
+            "ttsScript": "Some words are short — like 'at.' That's just two letters! A and T.",
             "interaction": "Pill: [A + T = at] pops in with two letter blocks.",
             "displayText": "A + T make AT",
             "displayDelay": 1085
@@ -4568,7 +4568,7 @@
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.1b/S2c.mp3",
-            "ttsScript": "Some words are longer \u2014 like 'dog.' That's three letters! D, O, G.",
+            "ttsScript": "Some words are longer — like 'dog.' That's three letters! D, O, G.",
             "interaction": "Pill: [D + O + G = dog] pops in.",
             "displayText": "D + O + G make DOG",
             "displayDelay": 1008
@@ -4745,7 +4745,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.1c/S2a.mp3",
             "ttsScript": "Look at this: thecatsat. Can you read that? It's so hard!",
-            "interaction": "Shows 'thecatsat' squished in a red \u2717 card.",
+            "interaction": "Shows 'thecatsat' squished in a red ✗ card.",
             "displayText": "",
             "imageFile": "images/lessons/RF.K.1c/S2-a.png"
           },
@@ -4753,7 +4753,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.1c/S2b.mp3",
             "ttsScript": "Now look: the cat sat. So much easier! The spaces tell us each word.",
-            "interaction": "Animates 'thecatsat' spreading apart into 'the cat sat' (red \u2192 green).",
+            "interaction": "Animates 'thecatsat' spreading apart into 'the cat sat' (red → green).",
             "displayText": "Spaces separate words!",
             "displayDelay": 1085,
             "imageFile": "images/lessons/RF.K.1c/S2-b.gif"
@@ -4762,14 +4762,14 @@
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.1c/S2c.mp3",
             "ttsScript": "Every word needs a space before the next word starts. One finger space!",
-            "interaction": "Shows 'the \u2022 cat \u2022 sat' with yellow space-dots + green \u2713.",
+            "interaction": "Shows 'the • cat • sat' with yellow space-dots + green ✓.",
             "displayText": "One finger space between words!",
             "displayDelay": 1008,
             "imageFile": "images/lessons/RF.K.1c/S2-c.png"
           }
         ],
         "heading": "Why Do We Need Spaces?",
-        "imagePrompt": "Code-generated per-step visuals (see scripts/make-rfk1c-s2-gif.js). S2-a.png squished 'thecatsat' red state. S2-b.gif animates letters spreading apart into 'the cat sat'. S2-c.png final green state with Twemoji \ud83d\udc46 finger-space markers between words.",
+        "imagePrompt": "Code-generated per-step visuals (see scripts/make-rfk1c-s2-gif.js). S2-a.png squished 'thecatsat' red state. S2-b.gif animates letters spreading apart into 'the cat sat'. S2-c.png final green state with Twemoji 👆 finger-space markers between words.",
         "imageFile": "images/lessons/RF.K.1c/S2-c.png"
       },
       {
@@ -4816,7 +4816,7 @@
           }
         ],
         "heading": "Let's Find the Words!",
-        "imagePrompt": "Three cartoon puppies sitting in a row with clear gaps between each one \u2014 a brown puppy, a white puppy, and a spotted puppy. Each puppy sits on its own colorful mat. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "Three cartoon puppies sitting in a row with clear gaps between each one — a brown puppy, a white puppy, and a spotted puppy. Each puppy sits on its own colorful mat. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RF.K.1c/S3.png"
       },
       {
@@ -4834,8 +4834,8 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.1c/S4b.mp3",
             "ttsScript": "Put your finger down after writing a word, then start the next word after your finger. Perfect spaces every time!",
-            "interaction": "Pill: [\ud83d\udc46 Finger space trick!] pops in.",
-            "displayText": "\ud83d\udc46 Finger space trick!",
+            "interaction": "Pill: [👆 Finger space trick!] pops in.",
+            "displayText": "👆 Finger space trick!",
             "displayDelay": 1550
           },
           {
@@ -4921,7 +4921,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.1d/S1b.mp3",
-            "ttsScript": "There are uppercase letters \u2014 the big ones! And lowercase letters \u2014 the little ones!",
+            "ttsScript": "There are uppercase letters — the big ones! And lowercase letters — the little ones!",
             "interaction": "Pill: [Uppercase = BIG] pops in blue. Pill: [Lowercase = little] pops in green.",
             "displayParts": [
               {
@@ -5033,8 +5033,8 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.1d/S4b.mp3",
             "ttsScript": "When you see a letter, try to say its name. Is it uppercase or lowercase?",
-            "interaction": "Pill: [See a letter \u2192 Say its name \u2192 Uppercase? Lowercase?] pops in.",
-            "displayText": "See a letter \u2192 Say its name \u2192 UPPERCASE? LOWERCASE?",
+            "interaction": "Pill: [See a letter → Say its name → Uppercase? Lowercase?] pops in.",
+            "displayText": "See a letter → Say its name → UPPERCASE? LOWERCASE?",
             "displayDelay": 1163
           },
           {
@@ -5120,7 +5120,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.2b/S1b.mp3",
-            "ttsScript": "Like the word 'tiger' \u2014 ti-ger! That's two claps, two syllables!",
+            "ttsScript": "Like the word 'tiger' — ti-ger! That's two claps, two syllables!",
             "interaction": "'Ti' and 'ger' appear as two separate blocks with clap icons.",
             "displayParts": [
               {
@@ -5133,8 +5133,12 @@
               }
             ],
             "sfxClaps": [
-              { "delay": 2550 },
-              { "delay": 3350 }
+              {
+                "delay": 2550
+              },
+              {
+                "delay": 3350
+              }
             ]
           },
           {
@@ -5164,42 +5168,54 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.2b/S2b.mp3",
-            "ttsScript": "Some words have one beat \u2014 like 'cat.' Just one clap! Cat!",
+            "ttsScript": "Some words have one beat — like 'cat.' Just one clap! Cat!",
             "interaction": "Pill: [Cat = 1 clap] pops in with hand clap icon.",
             "displayText": "Cat has 1 clap",
             "displayDelay": 930,
             "sfxClaps": [
-              { "delay": 6600 }
+              {
+                "delay": 6600
+              }
             ]
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.2b/S2c.mp3",
-            "ttsScript": "Some words have two beats \u2014 like 'apple.' Ap-ple! Two claps!",
+            "ttsScript": "Some words have two beats — like 'apple.' Ap-ple! Two claps!",
             "interaction": "Pill: [Ap-ple = 2 claps] pops in.",
             "displayText": "Ap-ple has 2 claps",
             "displayDelay": 853,
             "sfxClaps": [
-              { "delay": 5400 },
-              { "delay": 6300 }
+              {
+                "delay": 5400
+              },
+              {
+                "delay": 6300
+              }
             ]
           },
           {
             "sub": "d",
             "audioFile": "audio/lessons/RF.K.2b/S2d.mp3",
-            "ttsScript": "And some have three or more \u2014 like 'banana.' Ba-na-na! Three claps!",
+            "ttsScript": "And some have three or more — like 'banana.' Ba-na-na! Three claps!",
             "interaction": "Pill: [Ba-na-na = 3 claps] pops in.",
             "displayText": "Ba-na-na has 3 claps",
             "displayDelay": 930,
             "sfxClaps": [
-              { "delay": 4850 },
-              { "delay": 5700 },
-              { "delay": 6500 }
+              {
+                "delay": 4850
+              },
+              {
+                "delay": 5700
+              },
+              {
+                "delay": 6500
+              }
             ]
           }
         ],
         "heading": "What Are Syllables?",
-        "imagePrompt": "A cartoon drum with word parts bouncing off it like beats \u2014 'ba-na-na' shown as three drum hits. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A cartoon drum with word parts bouncing off it like beats — 'ba-na-na' shown as three drum hits. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RF.K.2b/S2.png"
       },
       {
@@ -5222,7 +5238,9 @@
             "displayDelay": 1600,
             "imageFile": "images/lessons/RF.K.2b/S3b.png",
             "sfxClaps": [
-              { "delay": 800 }
+              {
+                "delay": 800
+              }
             ]
           },
           {
@@ -5234,8 +5252,12 @@
             "displayDelay": 1500,
             "imageFile": "images/lessons/RF.K.2b/S3c.png",
             "sfxClaps": [
-              { "delay": 500 },
-              { "delay": 1400 }
+              {
+                "delay": 500
+              },
+              {
+                "delay": 1400
+              }
             ]
           },
           {
@@ -5247,9 +5269,15 @@
             "displayDelay": 2500,
             "imageFile": "images/lessons/RF.K.2b/S3d.png",
             "sfxClaps": [
-              { "delay": 500 },
-              { "delay": 1100 },
-              { "delay": 1900 }
+              {
+                "delay": 500
+              },
+              {
+                "delay": 1100
+              },
+              {
+                "delay": 1900
+              }
             ]
           }
         ],
@@ -5359,17 +5387,28 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.2c/S1b.mp3",
-            "ttsScript": "Like 'dog' \u2014 it starts with the duh sound and ends with the guh sound!",
+            "ttsScript": "Like 'dog' — it starts with the duh sound and ends with the guh sound!",
             "interaction": "D-O-G diagram appears with Start label on D and End label on G.",
             "displayDiagram": {
               "letters": [
-                { "text": "D", "role": "start" },
-                { "text": "O" },
-                { "text": "G", "role": "end" }
+                {
+                  "text": "D",
+                  "role": "start"
+                },
+                {
+                  "text": "O"
+                },
+                {
+                  "text": "G",
+                  "role": "end"
+                }
               ],
               "delay": 2490
             },
-            "afterPhonemes": ["d", "g"]
+            "afterPhonemes": [
+              "d",
+              "g"
+            ]
           },
           {
             "sub": "c",
@@ -5401,14 +5440,25 @@
             "interaction": "B-A-L-L diagram appears with Start label on B.",
             "displayDiagram": {
               "letters": [
-                { "text": "B", "role": "start" },
-                { "text": "A" },
-                { "text": "L" },
-                { "text": "L" }
+                {
+                  "text": "B",
+                  "role": "start"
+                },
+                {
+                  "text": "A"
+                },
+                {
+                  "text": "L"
+                },
+                {
+                  "text": "L"
+                }
               ],
               "delay": 1410
             },
-            "afterPhonemes": ["b"]
+            "afterPhonemes": [
+              "b"
+            ]
           },
           {
             "sub": "c",
@@ -5417,14 +5467,25 @@
             "interaction": "B-A-L-L diagram appears with End label on last L.",
             "displayDiagram": {
               "letters": [
-                { "text": "B" },
-                { "text": "A" },
-                { "text": "L" },
-                { "text": "L", "role": "end" }
+                {
+                  "text": "B"
+                },
+                {
+                  "text": "A"
+                },
+                {
+                  "text": "L"
+                },
+                {
+                  "text": "L",
+                  "role": "end"
+                }
               ],
               "delay": 3630
             },
-            "afterPhonemes": ["l"]
+            "afterPhonemes": [
+              "l"
+            ]
           },
           {
             "sub": "d",
@@ -5456,13 +5517,22 @@
             "interaction": "S-U-N diagram appears with Start label on S.",
             "displayDiagram": {
               "letters": [
-                { "text": "S", "role": "start" },
-                { "text": "U" },
-                { "text": "N" }
+                {
+                  "text": "S",
+                  "role": "start"
+                },
+                {
+                  "text": "U"
+                },
+                {
+                  "text": "N"
+                }
               ],
               "delay": 1490
             },
-            "afterPhonemes": ["s"]
+            "afterPhonemes": [
+              "s"
+            ]
           },
           {
             "sub": "c",
@@ -5471,13 +5541,22 @@
             "interaction": "S-U-N diagram appears with End label on N.",
             "displayDiagram": {
               "letters": [
-                { "text": "S" },
-                { "text": "U" },
-                { "text": "N", "role": "end" }
+                {
+                  "text": "S"
+                },
+                {
+                  "text": "U"
+                },
+                {
+                  "text": "N",
+                  "role": "end"
+                }
               ],
               "delay": 250
             },
-            "afterPhonemes": ["n"]
+            "afterPhonemes": [
+              "n"
+            ]
           },
           {
             "sub": "d",
@@ -5510,9 +5589,17 @@
             "imageFile": "images/lessons/RF.K.2c/S3.png",
             "displayDiagram": {
               "letters": [
-                { "text": "S", "role": "start" },
-                { "text": "U" },
-                { "text": "N", "role": "end" }
+                {
+                  "text": "S",
+                  "role": "start"
+                },
+                {
+                  "text": "U"
+                },
+                {
+                  "text": "N",
+                  "role": "end"
+                }
               ],
               "delay": 500
             }
@@ -5604,13 +5691,23 @@
             "interaction": "C-A-T diagram appears. Phoneme audio plays each sound.",
             "displayDiagram": {
               "letters": [
-                { "text": "C" },
-                { "text": "A" },
-                { "text": "T" }
+                {
+                  "text": "C"
+                },
+                {
+                  "text": "A"
+                },
+                {
+                  "text": "T"
+                }
               ],
               "delay": 1000
             },
-            "afterPhonemes": ["c_hard", "short_a", "t"]
+            "afterPhonemes": [
+              "c_hard",
+              "short_a",
+              "t"
+            ]
           },
           {
             "sub": "c",
@@ -5642,13 +5739,23 @@
             "interaction": "D-O-G diagram appears. Phoneme audio plays each sound.",
             "displayDiagram": {
               "letters": [
-                { "text": "D" },
-                { "text": "O" },
-                { "text": "G" }
+                {
+                  "text": "D"
+                },
+                {
+                  "text": "O"
+                },
+                {
+                  "text": "G"
+                }
               ],
               "delay": 698
             },
-            "afterPhonemes": ["d", "short_o", "g"]
+            "afterPhonemes": [
+              "d",
+              "short_o",
+              "g"
+            ]
           },
           {
             "sub": "c",
@@ -5657,12 +5764,19 @@
             "interaction": "G-O diagram appears. Phoneme audio plays each sound.",
             "displayDiagram": {
               "letters": [
-                { "text": "G" },
-                { "text": "O" }
+                {
+                  "text": "G"
+                },
+                {
+                  "text": "O"
+                }
               ],
               "delay": 543
             },
-            "afterPhonemes": ["g", "long_o"]
+            "afterPhonemes": [
+              "g",
+              "long_o"
+            ]
           },
           {
             "sub": "d",
@@ -5694,13 +5808,23 @@
             "interaction": "M-A-P diagram appears. Phoneme audio plays each sound.",
             "displayDiagram": {
               "letters": [
-                { "text": "M" },
-                { "text": "A" },
-                { "text": "P" }
+                {
+                  "text": "M"
+                },
+                {
+                  "text": "A"
+                },
+                {
+                  "text": "P"
+                }
               ],
               "delay": 1000
             },
-            "afterPhonemes": ["m", "short_a", "p"]
+            "afterPhonemes": [
+              "m",
+              "short_a",
+              "p"
+            ]
           },
           {
             "sub": "c",
@@ -5709,12 +5833,19 @@
             "interaction": "I-T diagram appears. Phoneme audio plays each sound.",
             "displayDiagram": {
               "letters": [
-                { "text": "I" },
-                { "text": "T" }
+                {
+                  "text": "I"
+                },
+                {
+                  "text": "T"
+                }
               ],
               "delay": 900
             },
-            "afterPhonemes": ["short_i", "t"]
+            "afterPhonemes": [
+              "short_i",
+              "t"
+            ]
           }
         ],
         "heading": "Let's Count Sounds Together!",
@@ -5739,13 +5870,23 @@
             "interaction": "C-A-T diagram appears; phoneme audio plays each sound.",
             "displayDiagram": {
               "letters": [
-                { "text": "C" },
-                { "text": "A" },
-                { "text": "T" }
+                {
+                  "text": "C"
+                },
+                {
+                  "text": "A"
+                },
+                {
+                  "text": "T"
+                }
               ],
               "delay": 1500
             },
-            "afterPhonemes": ["c_hard", "short_a", "t"]
+            "afterPhonemes": [
+              "c_hard",
+              "short_a",
+              "t"
+            ]
           },
           {
             "sub": "c",
@@ -5833,7 +5974,11 @@
             "ttsScript": "Like the word 'cat.' Change the C to B and you get 'bat!'",
             "interaction": "CAT diagram appears, then the C tile morphs into B in place.",
             "displayDiagramSwap": {
-              "letters": ["C", "A", "T"],
+              "letters": [
+                "C",
+                "A",
+                "T"
+              ],
               "swapAt": 0,
               "toLetter": "B",
               "delay": 1500,
@@ -5870,7 +6015,11 @@
             "ttsScript": "You can change the beginning sound. 'Mat' becomes 'sat' when M changes to S.",
             "interaction": "MAT diagram, then M morphs into S.",
             "displayDiagramSwap": {
-              "letters": ["M", "A", "T"],
+              "letters": [
+                "M",
+                "A",
+                "T"
+              ],
               "swapAt": 0,
               "toLetter": "S",
               "delay": 2500,
@@ -5883,7 +6032,11 @@
             "ttsScript": "Change the ending sound too. 'Cat' becomes 'can' when T changes to N.",
             "interaction": "CAT diagram, then T morphs into N.",
             "displayDiagramSwap": {
-              "letters": ["C", "A", "T"],
+              "letters": [
+                "C",
+                "A",
+                "T"
+              ],
               "swapAt": 2,
               "toLetter": "N",
               "delay": 1500,
@@ -5919,7 +6072,11 @@
             "ttsScript": "Start with 'hop.' Change the H to M. What new word do you get? Mop!",
             "interaction": "HOP shows; the H tile flips to M when narrator says 'Mop!'",
             "displayDiagramSwap": {
-              "letters": ["H", "O", "P"],
+              "letters": [
+                "H",
+                "O",
+                "P"
+              ],
               "swapAt": 0,
               "toLetter": "M",
               "delay": 1000,
@@ -5932,7 +6089,11 @@
             "ttsScript": "Start with 'big.' Change the B to D. What new word do you get? Dig!",
             "interaction": "BIG shows; the B tile flips to D when narrator says 'Dig!'",
             "displayDiagramSwap": {
-              "letters": ["B", "I", "G"],
+              "letters": [
+                "B",
+                "I",
+                "G"
+              ],
               "swapAt": 0,
               "toLetter": "D",
               "delay": 1000,
@@ -5961,7 +6122,11 @@
             "ttsScript": "Try it. Start with 'top.' Change the T to a P and you get 'pop!'",
             "interaction": "TOP diagram appears, then T morphs into P.",
             "displayDiagramSwap": {
-              "letters": ["T", "O", "P"],
+              "letters": [
+                "T",
+                "O",
+                "P"
+              ],
               "swapAt": 0,
               "toLetter": "P",
               "delay": 2000,
@@ -6066,7 +6231,7 @@
           }
         ],
         "heading": "Letters and Their Sounds!",
-        "imagePrompt": "A cheerful cartoon child sitting in a circle of colorful musical instruments \u2014 a red drum, a blue xylophone, a green tambourine, a yellow triangle. Musical notes float around. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A cheerful cartoon child sitting in a circle of colorful musical instruments — a red drum, a blue xylophone, a green tambourine, a yellow triangle. Musical notes float around. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RF.K.3a/S1.png"
       },
       {
@@ -6079,10 +6244,16 @@
             "ttsScript": "Look at the letter S. It hisses like a snake.",
             "interaction": "S tile appears, then phoneme audio plays.",
             "displayDiagram": {
-              "letters": [{ "text": "S" }],
+              "letters": [
+                {
+                  "text": "S"
+                }
+              ],
               "delay": 1000
             },
-            "afterPhonemes": ["s"]
+            "afterPhonemes": [
+              "s"
+            ]
           },
           {
             "sub": "b",
@@ -6090,10 +6261,16 @@
             "ttsScript": "The letter M. Like something yummy.",
             "interaction": "M tile appears, then phoneme audio plays.",
             "displayDiagram": {
-              "letters": [{ "text": "M" }],
+              "letters": [
+                {
+                  "text": "M"
+                }
+              ],
               "delay": 800
             },
-            "afterPhonemes": ["m"]
+            "afterPhonemes": [
+              "m"
+            ]
           },
           {
             "sub": "c",
@@ -6101,10 +6278,16 @@
             "ttsScript": "The letter T. Like a ticking clock.",
             "interaction": "T tile appears, then phoneme audio plays.",
             "displayDiagram": {
-              "letters": [{ "text": "T" }],
+              "letters": [
+                {
+                  "text": "T"
+                }
+              ],
               "delay": 800
             },
-            "afterPhonemes": ["t"]
+            "afterPhonemes": [
+              "t"
+            ]
           },
           {
             "sub": "d",
@@ -6135,10 +6318,16 @@
             "ttsScript": "Look at the letter B. What sound does B make?",
             "interaction": "B tile appears, then phoneme audio plays.",
             "displayDiagram": {
-              "letters": [{ "text": "B" }],
+              "letters": [
+                {
+                  "text": "B"
+                }
+              ],
               "delay": 1500
             },
-            "afterPhonemes": ["b"]
+            "afterPhonemes": [
+              "b"
+            ]
           },
           {
             "sub": "c",
@@ -6146,10 +6335,20 @@
             "ttsScript": "Now the letters D and F. Listen to each sound.",
             "interaction": "D and F tiles appear; phoneme audio plays each in turn, highlighting tiles.",
             "displayDiagram": {
-              "letters": [{ "text": "D" }, { "text": "F" }],
+              "letters": [
+                {
+                  "text": "D"
+                },
+                {
+                  "text": "F"
+                }
+              ],
               "delay": 1500
             },
-            "afterPhonemes": ["d", "f"]
+            "afterPhonemes": [
+              "d",
+              "f"
+            ]
           }
         ],
         "heading": "Let's Practice Some Sounds!",
@@ -6182,7 +6381,10 @@
                 "delay": 3500
               }
             ],
-            "afterPhonemes": ["short_a", "b"]
+            "afterPhonemes": [
+              "short_a",
+              "b"
+            ]
           },
           {
             "sub": "c",
@@ -6251,15 +6453,31 @@
             "interaction": "Five vowel tiles appear; each pulses as its short-vowel phoneme plays.",
             "displayDiagram": {
               "letters": [
-                { "text": "A" },
-                { "text": "E" },
-                { "text": "I" },
-                { "text": "O" },
-                { "text": "U" }
+                {
+                  "text": "A"
+                },
+                {
+                  "text": "E"
+                },
+                {
+                  "text": "I"
+                },
+                {
+                  "text": "O"
+                },
+                {
+                  "text": "U"
+                }
               ],
               "delay": 1500
             },
-            "afterPhonemes": ["short_a", "short_e", "short_i", "short_o", "short_u"]
+            "afterPhonemes": [
+              "short_a",
+              "short_e",
+              "short_i",
+              "short_o",
+              "short_u"
+            ]
           },
           {
             "sub": "c",
@@ -6284,10 +6502,16 @@
             "ttsScript": "Each vowel makes a short sound. A is for apple.",
             "interaction": "A tile appears; phoneme audio plays the short A sound.",
             "displayDiagram": {
-              "letters": [{ "text": "A" }],
+              "letters": [
+                {
+                  "text": "A"
+                }
+              ],
               "delay": 2500
             },
-            "afterPhonemes": ["short_a"]
+            "afterPhonemes": [
+              "short_a"
+            ]
           },
           {
             "sub": "b",
@@ -6295,10 +6519,20 @@
             "ttsScript": "E is for egg. I is for igloo.",
             "interaction": "E and I tiles appear; phonemes play in sequence highlighting each.",
             "displayDiagram": {
-              "letters": [{ "text": "E" }, { "text": "I" }],
+              "letters": [
+                {
+                  "text": "E"
+                },
+                {
+                  "text": "I"
+                }
+              ],
               "delay": 1500
             },
-            "afterPhonemes": ["short_e", "short_i"]
+            "afterPhonemes": [
+              "short_e",
+              "short_i"
+            ]
           },
           {
             "sub": "c",
@@ -6306,10 +6540,20 @@
             "ttsScript": "O is for octopus. U is for umbrella.",
             "interaction": "O and U tiles appear; phonemes play in sequence highlighting each.",
             "displayDiagram": {
-              "letters": [{ "text": "O" }, { "text": "U" }],
+              "letters": [
+                {
+                  "text": "O"
+                },
+                {
+                  "text": "U"
+                }
+              ],
               "delay": 1500
             },
-            "afterPhonemes": ["short_o", "short_u"]
+            "afterPhonemes": [
+              "short_o",
+              "short_u"
+            ]
           },
           {
             "sub": "d",
@@ -6341,11 +6585,25 @@
             "ttsScript": "The vowel in cat is A.",
             "interaction": "C-A-T diagram appears; A tile pulses violet as its phoneme plays.",
             "displayDiagram": {
-              "letters": [{ "text": "C" }, { "text": "A" }, { "text": "T" }],
+              "letters": [
+                {
+                  "text": "C"
+                },
+                {
+                  "text": "A"
+                },
+                {
+                  "text": "T"
+                }
+              ],
               "delay": 1500
             },
-            "afterPhonemes": ["short_a"],
-            "phonemeLetterIndices": [1]
+            "afterPhonemes": [
+              "short_a"
+            ],
+            "phonemeLetterIndices": [
+              1
+            ]
           },
           {
             "sub": "c",
@@ -6353,11 +6611,25 @@
             "ttsScript": "What about 'dog'? The vowel is O.",
             "interaction": "D-O-G diagram appears; O tile pulses as its phoneme plays.",
             "displayDiagram": {
-              "letters": [{ "text": "D" }, { "text": "O" }, { "text": "G" }],
+              "letters": [
+                {
+                  "text": "D"
+                },
+                {
+                  "text": "O"
+                },
+                {
+                  "text": "G"
+                }
+              ],
               "delay": 1500
             },
-            "afterPhonemes": ["short_o"],
-            "phonemeLetterIndices": [1]
+            "afterPhonemes": [
+              "short_o"
+            ],
+            "phonemeLetterIndices": [
+              1
+            ]
           }
         ],
         "heading": "Let's Find the Vowels!",
@@ -6371,7 +6643,7 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.3b/S4a.mp3",
-            "ttsScript": "Remember the five vowels with this: A, E, I, O, U \u2014 I love you!",
+            "ttsScript": "Remember the five vowels with this: A, E, I, O, U — I love you!",
             "interaction": "Heading with sparkle.",
             "displayText": ""
           },
@@ -6379,7 +6651,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.3b/S4b.mp3",
             "ttsScript": "That silly rhyme helps you remember all five! A, E, I, O, U!",
-            "interaction": "Pill: [A E I O U \u2014 I love you!] pops in with heart.",
+            "interaction": "Pill: [A E I O U — I love you!] pops in with heart.",
             "displayParts": [
               {
                 "text": "A E I O U",
@@ -6474,7 +6746,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.3c/S1b.mp3",
-            "ttsScript": "Words like 'the,' 'is,' 'I,' and 'a' \u2014 you'll see them everywhere!",
+            "ttsScript": "Words like 'the,' 'is,' 'I,' and 'a' — you'll see them everywhere!",
             "interaction": "Sight word pills pop in: [the] [is] [I] [a].",
             "displayParts": [
               {
@@ -6522,7 +6794,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.3c/S2b.mp3",
-            "ttsScript": "You don't sound them out \u2014 you just know them! Like how you know your own name.",
+            "ttsScript": "You don't sound them out — you just know them! Like how you know your own name.",
             "interaction": "Pill: [Sight words = Know them by heart!] pops in.",
             "displayText": "Sight words: Know them by heart!",
             "displayDelay": 1318
@@ -6682,7 +6954,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.3d/S1b.mp3",
-            "ttsScript": "Like 'was' and 'saw' \u2014 the letters are the same but in a different order!",
+            "ttsScript": "Like 'was' and 'saw' — the letters are the same but in a different order!",
             "interaction": "'was' and 'saw' appear side by side with letters highlighted.",
             "displayParts": [
               {
@@ -6704,7 +6976,7 @@
           }
         ],
         "heading": "Look-Alike Words!",
-        "imagePrompt": "Two cartoon characters who look almost identical \u2014 same outfit but one wears a red hat and the other a blue hat \u2014 standing next to a mirror and looking confused at their reflections. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "Two cartoon characters who look almost identical — same outfit but one wears a red hat and the other a blue hat — standing next to a mirror and looking confused at their reflections. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RF.K.3d/S1.png"
       },
       {
@@ -6756,8 +7028,14 @@
             "ttsScript": "'On' and 'no.' They have the same letters in a different order.",
             "interaction": "Both words appear as side-by-side pills.",
             "displayParts": [
-              { "text": "on", "delay": 800 },
-              { "text": "no", "delay": 2200 }
+              {
+                "text": "on",
+                "delay": 800
+              },
+              {
+                "text": "no",
+                "delay": 2200
+              }
             ]
           },
           {
@@ -6796,8 +7074,8 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.3d/S4b.mp3",
             "ttsScript": "Say each letter as you point. That slows you down and helps you read the right word!",
-            "interaction": "Pill: [Point \u2192 Say each letter \u2192 Read correctly!] pops in.",
-            "displayText": "Point \u2192 Say each letter \u2192 Read correctly!",
+            "interaction": "Pill: [Point → Say each letter → Read correctly!] pops in.",
+            "displayText": "Point → Say each letter → Read correctly!",
             "displayDelay": 1318
           },
           {
@@ -6911,16 +7189,16 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.4/S2b.mp3",
             "ttsScript": "If it's a storybook, you might be reading for fun! To enjoy the adventure!",
-            "interaction": "Pill: [Storybook \u2192 Reading for fun!] pops in blue.",
-            "displayText": "Storybook \u2192 Reading for fun!",
+            "interaction": "Pill: [Storybook → Reading for fun!] pops in blue.",
+            "displayText": "Storybook → Reading for fun!",
             "displayDelay": 1085
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.4/S2c.mp3",
             "ttsScript": "If it's a fact book, you might be reading to learn new things!",
-            "interaction": "Pill: [Fact book \u2192 Reading to learn!] pops in green.",
-            "displayText": "Fact book \u2192 Reading to learn!",
+            "interaction": "Pill: [Fact book → Reading to learn!] pops in green.",
+            "displayText": "Fact book → Reading to learn!",
             "displayDelay": 1008
           },
           {
@@ -6982,8 +7260,8 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.4/S4b.mp3",
             "ttsScript": "Then look for the answer while you read! That gives you a mission!",
-            "interaction": "Pill: [Ask a question \u2192 Read to find the answer!] pops in.",
-            "displayText": "Ask a question \u2192 Read to find the answer!",
+            "interaction": "Pill: [Ask a question → Read to find the answer!] pops in.",
+            "displayText": "Ask a question → Read to find the answer!",
             "displayDelay": 1008
           },
           {
@@ -7094,7 +7372,7 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/K.L.1/S2a.mp3",
-            "ttsScript": "Did you know that words have different jobs? Some words name things \u2014 like 'cat' or 'ball.'",
+            "ttsScript": "Did you know that words have different jobs? Some words name things — like 'cat' or 'ball.'",
             "interaction": "Heading appears.",
             "displayText": ""
           },
@@ -7117,7 +7395,7 @@
           {
             "sub": "c",
             "audioFile": "audio/lessons/K.L.1/S2c.mp3",
-            "ttsScript": "Other words show action \u2014 like 'run,' 'jump,' or 'eat.' These are verbs!",
+            "ttsScript": "Other words show action — like 'run,' 'jump,' or 'eat.' These are verbs!",
             "interaction": "Verb row fills in.",
             "displayText": "Verb",
             "displayDelay": 1500,
@@ -7144,7 +7422,7 @@
           }
         ],
         "heading": "Words Have Jobs!",
-        "imagePrompt": "Cartoon characters doing different jobs \u2014 a dog carrying a bone, a cat jumping over a fence, a bird flying with a worm. Each character wears a tiny colorful hard hat. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "Cartoon characters doing different jobs — a dog carrying a bone, a cat jumping over a fence, a bird flying with a worm. Each character wears a tiny colorful hard hat. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/K.L.1/S2.png"
       },
       {
@@ -7162,7 +7440,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/K.L.1/S3b.mp3",
             "ttsScript": "What's the noun? The dog! Dog is a thing, so it's a noun!",
-            "interaction": "Pill: [dog = Noun \u2713] pops in blue.",
+            "interaction": "Pill: [dog = Noun ✓] pops in blue.",
             "displayText": "dog means Noun",
             "displayDelay": 3250
           },
@@ -7170,7 +7448,7 @@
             "sub": "c",
             "audioFile": "audio/lessons/K.L.1/S3c.mp3",
             "ttsScript": "What's the verb? Jumps! Jumping is an action, so it's a verb!",
-            "interaction": "Pill: [jumps = Verb \u2713] pops in green. Stars.",
+            "interaction": "Pill: [jumps = Verb ✓] pops in green. Stars.",
             "displayText": "jumps is a Verb",
             "displayDelay": 3000
           }
@@ -7194,14 +7472,14 @@
             "sub": "b",
             "audioFile": "audio/lessons/K.L.1/S4b.mp3",
             "ttsScript": "To find a verb, ask: Can I do it? If yes, it's a verb!",
-            "interaction": "Pills: [Can I touch it? \u2192 Noun!] [Can I do it? \u2192 Verb!] pop in.",
+            "interaction": "Pills: [Can I touch it? → Noun!] [Can I do it? → Verb!] pop in.",
             "displayParts": [
               {
-                "text": "Can I touch it? \u2192 Noun!",
+                "text": "Can I touch it? → Noun!",
                 "delay": 300
               },
               {
-                "text": "Can I do it? \u2192 Verb!",
+                "text": "Can I do it? → Verb!",
                 "delay": 2800
               }
             ]
@@ -7215,7 +7493,7 @@
           }
         ],
         "heading": "A Helpful Trick!",
-        "imagePrompt": "A cartoon child pointing at different objects around them \u2014 a bright red ball, a tall green tree, and a friend waving. Each object has a sparkling highlight around it. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A cartoon child pointing at different objects around them — a bright red ball, a tall green tree, and a friend waving. Each object has a sparkling highlight around it. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/K.L.1/S4.png"
       },
       {
@@ -7239,7 +7517,7 @@
           }
         ],
         "heading": "Time to Practice!",
-        "imagePrompt": "A cartoon child happily sorting colorful toy figures into two bright boxes \u2014 action figures (jumping, running) in one box and object toys (ball, car, teddy bear) in the other. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A cartoon child happily sorting colorful toy figures into two bright boxes — action figures (jumping, running) in one box and object toys (ball, car, teddy bear) in the other. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/K.L.1/S5.png"
       },
       {
@@ -7322,7 +7600,7 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/K.L.2/S2a.mp3",
-            "ttsScript": "Every sentence starts with a capital letter \u2014 that's the big, tall version of the letter!",
+            "ttsScript": "Every sentence starts with a capital letter — that's the big, tall version of the letter!",
             "interaction": "Heading appears.",
             "displayText": ""
           },
@@ -7377,8 +7655,8 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/K.L.2/S3b.mp3",
-            "ttsScript": "the cat is big. Hmm \u2014 'the' needs a capital T at the beginning!",
-            "interaction": "'the' transforms to 'The' with sparkle. Pill: [Capital T \u2713] pops in.",
+            "ttsScript": "the cat is big. Hmm — 'the' needs a capital T at the beginning!",
+            "interaction": "'the' transforms to 'The' with sparkle. Pill: [Capital T ✓] pops in.",
             "displayText": "Capital T",
             "displayDelay": 3500
           },
@@ -7386,7 +7664,7 @@
             "sub": "c",
             "audioFile": "audio/lessons/K.L.2/S3c.mp3",
             "ttsScript": "And we need a period at the end! The cat is big. Period! Now it's perfect!",
-            "interaction": "Period appears at end. Pill: [Period \u2713] pops in. Stars.",
+            "interaction": "Period appears at end. Pill: [Period ✓] pops in. Stars.",
             "displayText": "Period",
             "displayDelay": 2200
           }
@@ -7553,7 +7831,7 @@
           {
             "sub": "d",
             "audioFile": "audio/lessons/K.L.4/S2d.mp3",
-            "ttsScript": "Context clues plus pictures plus asking \u2014 that's the triple combo!",
+            "ttsScript": "Context clues plus pictures plus asking — that's the triple combo!",
             "interaction": "Three pills connect. Tap to continue.",
             "displayText": ""
           }
@@ -7576,7 +7854,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/K.L.4/S3b.mp3",
-            "ttsScript": "What does 'swift' mean? Look at the clue \u2014 it ran very fast!",
+            "ttsScript": "What does 'swift' mean? Look at the clue — it ran very fast!",
             "interaction": "'ran very fast' highlights as a context clue.",
             "displayText": "ran very fast",
             "displayDelay": 2000
@@ -7609,8 +7887,8 @@
             "sub": "b",
             "audioFile": "audio/lessons/K.L.4/S4b.mp3",
             "ttsScript": "Read the sentence again, look at pictures, and try to guess. You'll be right more than you think!",
-            "interaction": "Pill: [Re-read \u2192 Look \u2192 Guess \u2192 Solve!] pops in.",
-            "displayText": "Re-read \u2192 Look \u2192 Guess \u2192 Solve!",
+            "interaction": "Pill: [Re-read → Look → Guess → Solve!] pops in.",
+            "displayText": "Re-read → Look → Guess → Solve!",
             "displayDelay": 1395
           },
           {
@@ -7696,7 +7974,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/K.L.5/S1b.mp3",
-            "ttsScript": "Some words are opposites \u2014 like 'hot' and 'cold.' Some words are similar \u2014 like 'happy' and 'glad!'",
+            "ttsScript": "Some words are opposites — like 'hot' and 'cold.' Some words are similar — like 'happy' and 'glad!'",
             "interaction": "Pill: [Opposites] pops in red. Pill: [Similar words] pops in blue.",
             "displayParts": [
               {
@@ -7793,21 +8071,21 @@
             "sub": "b",
             "audioFile": "audio/lessons/K.L.5/S3b.mp3",
             "ttsScript": "Sad! Happy and sad are opposites!",
-            "interaction": "Pill: [Happy \u2194 Sad = Opposites!] pops in with checkmark.",
-            "displayText": "Happy \u2194 Sad are Opposites!",
+            "interaction": "Pill: [Happy ↔ Sad = Opposites!] pops in with checkmark.",
+            "displayText": "Happy ↔ Sad are Opposites!",
             "displayDelay": 800
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/K.L.5/S3c.mp3",
             "ttsScript": "Now, which group does 'apple' belong in? It's a fruit! Just like banana and orange!",
-            "interaction": "Pill: [Apple \u2192 Fruit category!] pops in with checkmark. Stars.",
-            "displayText": "Apple \u2192 Fruit category!",
+            "interaction": "Pill: [Apple → Fruit category!] pops in with checkmark. Stars.",
+            "displayText": "Apple → Fruit category!",
             "displayDelay": 2500
           }
         ],
         "heading": "Let's Find the Connections!",
-        "imagePrompt": "Two cartoon faces side by side \u2014 one smiling happily and one frowning sadly, with a double arrow between them. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "Two cartoon faces side by side — one smiling happily and one frowning sadly, with a double arrow between them. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/K.L.5/S3.png"
       },
       {
@@ -7825,8 +8103,8 @@
             "sub": "b",
             "audioFile": "audio/lessons/K.L.5/S4b.mp3",
             "ttsScript": "Connecting words to other words helps you remember them better!",
-            "interaction": "Pill: [Connect words \u2192 Remember better!] pops in.",
-            "displayText": "Connect words \u2192 Remember better!",
+            "interaction": "Pill: [Connect words → Remember better!] pops in.",
+            "displayText": "Connect words → Remember better!",
             "displayDelay": 775
           },
           {
@@ -7838,7 +8116,7 @@
           }
         ],
         "heading": "A Helpful Trick!",
-        "imagePrompt": "A cartoon child with two thought bubbles \u2014 one showing an opposite pair and one showing a category group. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A cartoon child with two thought bubbles — one showing an opposite pair and one showing a category group. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/K.L.5/S4.png"
       },
       {
@@ -7945,16 +8223,16 @@
             "sub": "b",
             "audioFile": "audio/lessons/K.L.6/S2b.mp3",
             "ttsScript": "Like if you learn the word 'enormous,' try saying: That building is enormous!",
-            "interaction": "Pill: [New word: enormous \u2192 Use it: That building is enormous!] pops in.",
-            "displayText": "New word: enormous \u2192 Use it: That building is enormous!",
+            "interaction": "Pill: [New word: enormous → Use it: That building is enormous!] pops in.",
+            "displayText": "New word: enormous → Use it: That building is enormous!",
             "displayDelay": 1008
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/K.L.6/S2c.mp3",
             "ttsScript": "The more you use a word, the better you remember it!",
-            "interaction": "Pill: [Use it \u2192 Remember it!] pops in.",
-            "displayText": "Use it \u2192 Remember it!",
+            "interaction": "Pill: [Use it → Remember it!] pops in.",
+            "displayText": "Use it → Remember it!",
             "displayDelay": 853
           },
           {
@@ -7984,7 +8262,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/K.L.6/S3b.mp3",
             "ttsScript": "Can you use it in a sentence? How about: I was delighted to see my friend!",
-            "interaction": "Sentence appears: 'I was delighted to see my friend!' Pill: [Delighted = Very Happy \u2713].",
+            "interaction": "Sentence appears: 'I was delighted to see my friend!' Pill: [Delighted = Very Happy ✓].",
             "displayText": "Delighted means Very Happy",
             "displayDelay": 2500
           },
@@ -8093,5 +8371,999 @@
         "mcqId": "K.L.6-Q5"
       }
     ]
+  },
+  {
+    "standardId": "RL.1.1",
+    "grade": "1st Grade",
+    "domain": "Reading Literature",
+    "title": "Asking Story Questions",
+    "slides": []
+  },
+  {
+    "standardId": "RL.1.2",
+    "grade": "1st Grade",
+    "domain": "Reading Literature",
+    "title": "Retelling Stories",
+    "slides": []
+  },
+  {
+    "standardId": "RL.1.3",
+    "grade": "1st Grade",
+    "domain": "Reading Literature",
+    "title": "Characters, Settings, and Events",
+    "slides": []
+  },
+  {
+    "standardId": "RL.1.4",
+    "grade": "1st Grade",
+    "domain": "Reading Literature",
+    "title": "Words That Show Feelings",
+    "slides": []
+  },
+  {
+    "standardId": "RL.1.5",
+    "grade": "1st Grade",
+    "domain": "Reading Literature",
+    "title": "Story Books vs Fact Books",
+    "slides": []
+  },
+  {
+    "standardId": "RL.1.6",
+    "grade": "1st Grade",
+    "domain": "Reading Literature",
+    "title": "Who's Telling the Story?",
+    "slides": []
+  },
+  {
+    "standardId": "RL.1.7",
+    "grade": "1st Grade",
+    "domain": "Reading Literature",
+    "title": "Pictures and Stories Together",
+    "slides": []
+  },
+  {
+    "standardId": "RL.1.9",
+    "grade": "1st Grade",
+    "domain": "Reading Literature",
+    "title": "Comparing Story Adventures",
+    "slides": []
+  },
+  {
+    "standardId": "RI.1.1",
+    "grade": "1st Grade",
+    "domain": "Reading Informational Text",
+    "title": "Asking Fact Questions",
+    "slides": []
+  },
+  {
+    "standardId": "RI.1.2",
+    "grade": "1st Grade",
+    "domain": "Reading Informational Text",
+    "title": "Main Topic and Key Details",
+    "slides": []
+  },
+  {
+    "standardId": "RI.1.3",
+    "grade": "1st Grade",
+    "domain": "Reading Informational Text",
+    "title": "Connecting Ideas in Facts",
+    "slides": []
+  },
+  {
+    "standardId": "RI.1.4",
+    "grade": "1st Grade",
+    "domain": "Reading Informational Text",
+    "title": "Figuring Out New Words",
+    "slides": []
+  },
+  {
+    "standardId": "RI.1.5",
+    "grade": "1st Grade",
+    "domain": "Reading Informational Text",
+    "title": "Parts of a Fact Book",
+    "slides": []
+  },
+  {
+    "standardId": "RI.1.6",
+    "grade": "1st Grade",
+    "domain": "Reading Informational Text",
+    "title": "Pictures vs Words",
+    "slides": []
+  },
+  {
+    "standardId": "RI.1.7",
+    "grade": "1st Grade",
+    "domain": "Reading Informational Text",
+    "title": "Pictures Show Key Ideas",
+    "slides": []
+  },
+  {
+    "standardId": "RI.1.8",
+    "grade": "1st Grade",
+    "domain": "Reading Informational Text",
+    "title": "Reasons the Author Gives",
+    "slides": []
+  },
+  {
+    "standardId": "RI.1.9",
+    "grade": "1st Grade",
+    "domain": "Reading Informational Text",
+    "title": "Comparing Two Fact Books",
+    "slides": []
+  },
+  {
+    "standardId": "RF.1.1a",
+    "grade": "1st Grade",
+    "domain": "Foundational Skills",
+    "title": "What Makes a Sentence",
+    "slides": []
+  },
+  {
+    "standardId": "RF.1.2b",
+    "grade": "1st Grade",
+    "domain": "Foundational Skills",
+    "title": "Blending Sounds Into Words",
+    "slides": []
+  },
+  {
+    "standardId": "RF.1.2c",
+    "grade": "1st Grade",
+    "domain": "Foundational Skills",
+    "title": "First, Middle, and Last Sounds",
+    "slides": []
+  },
+  {
+    "standardId": "RF.1.2d",
+    "grade": "1st Grade",
+    "domain": "Foundational Skills",
+    "title": "Breaking Words Into Sounds",
+    "slides": []
+  },
+  {
+    "standardId": "RF.1.4b",
+    "grade": "1st Grade",
+    "domain": "Foundational Skills",
+    "title": "Reading Out Loud",
+    "slides": []
+  },
+  {
+    "standardId": "RF.1.4c",
+    "grade": "1st Grade",
+    "domain": "Foundational Skills",
+    "title": "Using Clues to Read",
+    "slides": []
+  },
+  {
+    "standardId": "L.1.4",
+    "grade": "1st Grade",
+    "domain": "Language",
+    "title": "Word Meaning Detective",
+    "slides": []
+  },
+  {
+    "standardId": "L.1.4a",
+    "grade": "1st Grade",
+    "domain": "Language",
+    "title": "Sentence Clues",
+    "slides": []
+  },
+  {
+    "standardId": "L.1.4b",
+    "grade": "1st Grade",
+    "domain": "Language",
+    "title": "Word Beginnings and Endings",
+    "slides": []
+  },
+  {
+    "standardId": "L.1.4c",
+    "grade": "1st Grade",
+    "domain": "Language",
+    "title": "Root Word Magic",
+    "slides": []
+  },
+  {
+    "standardId": "L.1.5",
+    "grade": "1st Grade",
+    "domain": "Language",
+    "title": "How Words Connect",
+    "slides": []
+  },
+  {
+    "standardId": "L.1.5a",
+    "grade": "1st Grade",
+    "domain": "Language",
+    "title": "Sorting Words Into Groups",
+    "slides": []
+  },
+  {
+    "standardId": "L.1.5b",
+    "grade": "1st Grade",
+    "domain": "Language",
+    "title": "Defining Words",
+    "slides": []
+  },
+  {
+    "standardId": "L.1.5c",
+    "grade": "1st Grade",
+    "domain": "Language",
+    "title": "Real-Life Word Connections",
+    "slides": []
+  },
+  {
+    "standardId": "L.1.5d",
+    "grade": "1st Grade",
+    "domain": "Language",
+    "title": "Strong vs Mild Words",
+    "slides": []
+  },
+  {
+    "standardId": "L.1.6",
+    "grade": "1st Grade",
+    "domain": "Language",
+    "title": "Using Big Words",
+    "slides": []
+  },
+  {
+    "standardId": "RL.2.1",
+    "grade": "2nd Grade",
+    "domain": "Reading Literature",
+    "title": "Story Detective Questions",
+    "slides": []
+  },
+  {
+    "standardId": "RL.2.2",
+    "grade": "2nd Grade",
+    "domain": "Reading Literature",
+    "title": "Tales and Their Lessons",
+    "slides": []
+  },
+  {
+    "standardId": "RL.2.3",
+    "grade": "2nd Grade",
+    "domain": "Reading Literature",
+    "title": "How Characters React",
+    "slides": []
+  },
+  {
+    "standardId": "RL.2.4",
+    "grade": "2nd Grade",
+    "domain": "Reading Literature",
+    "title": "Words That Sing",
+    "slides": []
+  },
+  {
+    "standardId": "RL.2.5",
+    "grade": "2nd Grade",
+    "domain": "Reading Literature",
+    "title": "The Shape of a Story",
+    "slides": []
+  },
+  {
+    "standardId": "RL.2.6",
+    "grade": "2nd Grade",
+    "domain": "Reading Literature",
+    "title": "Different Points of View",
+    "slides": []
+  },
+  {
+    "standardId": "RL.2.7",
+    "grade": "2nd Grade",
+    "domain": "Reading Literature",
+    "title": "Pictures Tell More",
+    "slides": []
+  },
+  {
+    "standardId": "RL.2.9",
+    "grade": "2nd Grade",
+    "domain": "Reading Literature",
+    "title": "Same Story, Different Versions",
+    "slides": []
+  },
+  {
+    "standardId": "RL.2.10",
+    "grade": "2nd Grade",
+    "domain": "Reading Literature",
+    "title": "Reading Stories All Year",
+    "slides": []
+  },
+  {
+    "standardId": "RI.2.1",
+    "grade": "2nd Grade",
+    "domain": "Reading Informational Text",
+    "title": "Asking Smart Fact Questions",
+    "slides": []
+  },
+  {
+    "standardId": "RI.2.2",
+    "grade": "2nd Grade",
+    "domain": "Reading Informational Text",
+    "title": "Finding the Big Idea",
+    "slides": []
+  },
+  {
+    "standardId": "RI.2.3",
+    "grade": "2nd Grade",
+    "domain": "Reading Informational Text",
+    "title": "Connecting History and Science",
+    "slides": []
+  },
+  {
+    "standardId": "RI.2.4",
+    "grade": "2nd Grade",
+    "domain": "Reading Informational Text",
+    "title": "Word Meanings in Texts",
+    "slides": []
+  },
+  {
+    "standardId": "RI.2.5",
+    "grade": "2nd Grade",
+    "domain": "Reading Informational Text",
+    "title": "Finding Information Fast",
+    "slides": []
+  },
+  {
+    "standardId": "RI.2.6",
+    "grade": "2nd Grade",
+    "domain": "Reading Informational Text",
+    "title": "Why Did the Author Write This?",
+    "slides": []
+  },
+  {
+    "standardId": "RI.2.7",
+    "grade": "2nd Grade",
+    "domain": "Reading Informational Text",
+    "title": "Pictures Help Explain",
+    "slides": []
+  },
+  {
+    "standardId": "RI.2.8",
+    "grade": "2nd Grade",
+    "domain": "Reading Informational Text",
+    "title": "How Authors Back Up Their Points",
+    "slides": []
+  },
+  {
+    "standardId": "RI.2.9",
+    "grade": "2nd Grade",
+    "domain": "Reading Informational Text",
+    "title": "Comparing Two Fact Books",
+    "slides": []
+  },
+  {
+    "standardId": "RI.2.10",
+    "grade": "2nd Grade",
+    "domain": "Reading Informational Text",
+    "title": "Reading Facts All Year",
+    "slides": []
+  },
+  {
+    "standardId": "RF.2.3",
+    "grade": "2nd Grade",
+    "domain": "Foundational Skills",
+    "title": "Phonics and Word Skills",
+    "slides": []
+  },
+  {
+    "standardId": "RF.2.3a",
+    "grade": "2nd Grade",
+    "domain": "Foundational Skills",
+    "title": "Long and Short Vowels",
+    "slides": []
+  },
+  {
+    "standardId": "RF.2.3b",
+    "grade": "2nd Grade",
+    "domain": "Foundational Skills",
+    "title": "Vowel Team Sounds",
+    "slides": []
+  },
+  {
+    "standardId": "RF.2.3c",
+    "grade": "2nd Grade",
+    "domain": "Foundational Skills",
+    "title": "Two-Syllable Words",
+    "slides": []
+  },
+  {
+    "standardId": "RF.2.3d",
+    "grade": "2nd Grade",
+    "domain": "Foundational Skills",
+    "title": "Prefixes and Suffixes",
+    "slides": []
+  },
+  {
+    "standardId": "RF.2.3e",
+    "grade": "2nd Grade",
+    "domain": "Foundational Skills",
+    "title": "Tricky Spellings",
+    "slides": []
+  },
+  {
+    "standardId": "RF.2.3f",
+    "grade": "2nd Grade",
+    "domain": "Foundational Skills",
+    "title": "Sight Words 2",
+    "slides": []
+  },
+  {
+    "standardId": "RF.2.4",
+    "grade": "2nd Grade",
+    "domain": "Foundational Skills",
+    "title": "Reading with Flow",
+    "slides": []
+  },
+  {
+    "standardId": "RF.2.4a",
+    "grade": "2nd Grade",
+    "domain": "Foundational Skills",
+    "title": "Reading with Purpose",
+    "slides": []
+  },
+  {
+    "standardId": "RF.2.4b",
+    "grade": "2nd Grade",
+    "domain": "Foundational Skills",
+    "title": "Smooth Out-Loud Reading",
+    "slides": []
+  },
+  {
+    "standardId": "RF.2.4c",
+    "grade": "2nd Grade",
+    "domain": "Foundational Skills",
+    "title": "Self-Correcting While Reading",
+    "slides": []
+  },
+  {
+    "standardId": "L.2.4",
+    "grade": "2nd Grade",
+    "domain": "Language",
+    "title": "Word Meaning Detective",
+    "slides": []
+  },
+  {
+    "standardId": "L.2.4a",
+    "grade": "2nd Grade",
+    "domain": "Language",
+    "title": "Sentence Clues",
+    "slides": []
+  },
+  {
+    "standardId": "L.2.4b",
+    "grade": "2nd Grade",
+    "domain": "Language",
+    "title": "Prefix Power",
+    "slides": []
+  },
+  {
+    "standardId": "L.2.4c",
+    "grade": "2nd Grade",
+    "domain": "Language",
+    "title": "Root Word Help",
+    "slides": []
+  },
+  {
+    "standardId": "L.2.4d",
+    "grade": "2nd Grade",
+    "domain": "Language",
+    "title": "Compound Word Power",
+    "slides": []
+  },
+  {
+    "standardId": "L.2.4e",
+    "grade": "2nd Grade",
+    "domain": "Language",
+    "title": "Using a Glossary",
+    "slides": []
+  },
+  {
+    "standardId": "L.2.5",
+    "grade": "2nd Grade",
+    "domain": "Language",
+    "title": "Word Connections",
+    "slides": []
+  },
+  {
+    "standardId": "L.2.5a",
+    "grade": "2nd Grade",
+    "domain": "Language",
+    "title": "Words in Real Life",
+    "slides": []
+  },
+  {
+    "standardId": "L.2.5b",
+    "grade": "2nd Grade",
+    "domain": "Language",
+    "title": "Shades of Meaning",
+    "slides": []
+  },
+  {
+    "standardId": "L.2.6",
+    "grade": "2nd Grade",
+    "domain": "Language",
+    "title": "Using Smart Words",
+    "slides": []
+  },
+  {
+    "standardId": "RL.3.1",
+    "grade": "3rd Grade",
+    "domain": "Reading Literature",
+    "title": "Asking Smart Story Questions",
+    "slides": []
+  },
+  {
+    "standardId": "RL.3.2",
+    "grade": "3rd Grade",
+    "domain": "Reading Literature",
+    "title": "Folktales and Their Lessons",
+    "slides": []
+  },
+  {
+    "standardId": "RL.3.3",
+    "grade": "3rd Grade",
+    "domain": "Reading Literature",
+    "title": "What Characters Are Like",
+    "slides": []
+  },
+  {
+    "standardId": "RL.3.4",
+    "grade": "3rd Grade",
+    "domain": "Reading Literature",
+    "title": "Word Meanings in Stories",
+    "slides": []
+  },
+  {
+    "standardId": "RL.3.5",
+    "grade": "3rd Grade",
+    "domain": "Reading Literature",
+    "title": "Parts of Stories and Poems",
+    "slides": []
+  },
+  {
+    "standardId": "RL.3.6",
+    "grade": "3rd Grade",
+    "domain": "Reading Literature",
+    "title": "My View vs the Narrator's",
+    "slides": []
+  },
+  {
+    "standardId": "RL.3.7",
+    "grade": "3rd Grade",
+    "domain": "Reading Literature",
+    "title": "Pictures and Mood",
+    "slides": []
+  },
+  {
+    "standardId": "RL.3.9",
+    "grade": "3rd Grade",
+    "domain": "Reading Literature",
+    "title": "Comparing Themes and Plots",
+    "slides": []
+  },
+  {
+    "standardId": "RL.3.10",
+    "grade": "3rd Grade",
+    "domain": "Reading Literature",
+    "title": "Reading Stories All Year",
+    "slides": []
+  },
+  {
+    "standardId": "RI.3.1",
+    "grade": "3rd Grade",
+    "domain": "Reading Informational Text",
+    "title": "Asking Smart Fact Questions",
+    "slides": []
+  },
+  {
+    "standardId": "RI.3.2",
+    "grade": "3rd Grade",
+    "domain": "Reading Informational Text",
+    "title": "Main Idea and Key Details",
+    "slides": []
+  },
+  {
+    "standardId": "RI.3.3",
+    "grade": "3rd Grade",
+    "domain": "Reading Informational Text",
+    "title": "Connecting Events and Ideas",
+    "slides": []
+  },
+  {
+    "standardId": "RI.3.4",
+    "grade": "3rd Grade",
+    "domain": "Reading Informational Text",
+    "title": "Academic Word Meanings",
+    "slides": []
+  },
+  {
+    "standardId": "RI.3.5",
+    "grade": "3rd Grade",
+    "domain": "Reading Informational Text",
+    "title": "Using Text Features",
+    "slides": []
+  },
+  {
+    "standardId": "RI.3.6",
+    "grade": "3rd Grade",
+    "domain": "Reading Informational Text",
+    "title": "Author's Point of View",
+    "slides": []
+  },
+  {
+    "standardId": "RI.3.7",
+    "grade": "3rd Grade",
+    "domain": "Reading Informational Text",
+    "title": "Illustrations Tell Stories Too",
+    "slides": []
+  },
+  {
+    "standardId": "RI.3.8",
+    "grade": "3rd Grade",
+    "domain": "Reading Informational Text",
+    "title": "Logical Connections",
+    "slides": []
+  },
+  {
+    "standardId": "RI.3.9",
+    "grade": "3rd Grade",
+    "domain": "Reading Informational Text",
+    "title": "Comparing Two Texts",
+    "slides": []
+  },
+  {
+    "standardId": "RI.3.10",
+    "grade": "3rd Grade",
+    "domain": "Reading Informational Text",
+    "title": "Reading Facts All Year",
+    "slides": []
+  },
+  {
+    "standardId": "RF.3.3",
+    "grade": "3rd Grade",
+    "domain": "Foundational Skills",
+    "title": "Word Analysis Skills",
+    "slides": []
+  },
+  {
+    "standardId": "RF.3.3a",
+    "grade": "3rd Grade",
+    "domain": "Foundational Skills",
+    "title": "Common Prefixes and Suffixes",
+    "slides": []
+  },
+  {
+    "standardId": "RF.3.3b",
+    "grade": "3rd Grade",
+    "domain": "Foundational Skills",
+    "title": "Latin Suffixes",
+    "slides": []
+  },
+  {
+    "standardId": "RF.3.3c",
+    "grade": "3rd Grade",
+    "domain": "Foundational Skills",
+    "title": "Multisyllable Words",
+    "slides": []
+  },
+  {
+    "standardId": "RF.3.3d",
+    "grade": "3rd Grade",
+    "domain": "Foundational Skills",
+    "title": "Tricky Spelling Patterns",
+    "slides": []
+  },
+  {
+    "standardId": "RF.3.4",
+    "grade": "3rd Grade",
+    "domain": "Foundational Skills",
+    "title": "Reading with Flow",
+    "slides": []
+  },
+  {
+    "standardId": "RF.3.4a",
+    "grade": "3rd Grade",
+    "domain": "Foundational Skills",
+    "title": "Reading with Purpose",
+    "slides": []
+  },
+  {
+    "standardId": "RF.3.4b",
+    "grade": "3rd Grade",
+    "domain": "Foundational Skills",
+    "title": "Reading Prose and Poetry",
+    "slides": []
+  },
+  {
+    "standardId": "RF.3.4c",
+    "grade": "3rd Grade",
+    "domain": "Foundational Skills",
+    "title": "Self-Correcting While Reading",
+    "slides": []
+  },
+  {
+    "standardId": "L.3.4",
+    "grade": "3rd Grade",
+    "domain": "Language",
+    "title": "Word Meaning Detective",
+    "slides": []
+  },
+  {
+    "standardId": "L.3.4a",
+    "grade": "3rd Grade",
+    "domain": "Language",
+    "title": "Sentence Clues",
+    "slides": []
+  },
+  {
+    "standardId": "L.3.4b",
+    "grade": "3rd Grade",
+    "domain": "Language",
+    "title": "Prefix Power",
+    "slides": []
+  },
+  {
+    "standardId": "L.3.4c",
+    "grade": "3rd Grade",
+    "domain": "Language",
+    "title": "Root Word Help",
+    "slides": []
+  },
+  {
+    "standardId": "L.3.4d",
+    "grade": "3rd Grade",
+    "domain": "Language",
+    "title": "Using a Dictionary",
+    "slides": []
+  },
+  {
+    "standardId": "L.3.5",
+    "grade": "3rd Grade",
+    "domain": "Language",
+    "title": "Words With Hidden Meanings",
+    "slides": []
+  },
+  {
+    "standardId": "L.3.5a",
+    "grade": "3rd Grade",
+    "domain": "Language",
+    "title": "Real and Imaginary Meanings",
+    "slides": []
+  },
+  {
+    "standardId": "L.3.5b",
+    "grade": "3rd Grade",
+    "domain": "Language",
+    "title": "Words in Real Life",
+    "slides": []
+  },
+  {
+    "standardId": "L.3.5c",
+    "grade": "3rd Grade",
+    "domain": "Language",
+    "title": "Word Strength Levels",
+    "slides": []
+  },
+  {
+    "standardId": "L.3.6",
+    "grade": "3rd Grade",
+    "domain": "Language",
+    "title": "Using Conversation Words",
+    "slides": []
+  },
+  {
+    "standardId": "RL.4.1",
+    "grade": "4th Grade",
+    "domain": "Reading Literature",
+    "title": "Finding Story Details",
+    "slides": []
+  },
+  {
+    "standardId": "RL.4.2",
+    "grade": "4th Grade",
+    "domain": "Reading Literature",
+    "title": "Discovering Themes",
+    "slides": []
+  },
+  {
+    "standardId": "RL.4.3",
+    "grade": "4th Grade",
+    "domain": "Reading Literature",
+    "title": "Deep Character Detail",
+    "slides": []
+  },
+  {
+    "standardId": "RL.4.4",
+    "grade": "4th Grade",
+    "domain": "Reading Literature",
+    "title": "Word Meanings in Stories",
+    "slides": []
+  },
+  {
+    "standardId": "RL.4.5",
+    "grade": "4th Grade",
+    "domain": "Reading Literature",
+    "title": "Poems, Drama, and Prose",
+    "slides": []
+  },
+  {
+    "standardId": "RL.4.6",
+    "grade": "4th Grade",
+    "domain": "Reading Literature",
+    "title": "Different Storytelling Voices",
+    "slides": []
+  },
+  {
+    "standardId": "RL.4.7",
+    "grade": "4th Grade",
+    "domain": "Reading Literature",
+    "title": "Stories Across Mediums",
+    "slides": []
+  },
+  {
+    "standardId": "RL.4.9",
+    "grade": "4th Grade",
+    "domain": "Reading Literature",
+    "title": "Same Theme, Different Cultures",
+    "slides": []
+  },
+  {
+    "standardId": "RL.4.10",
+    "grade": "4th Grade",
+    "domain": "Reading Literature",
+    "title": "Reading Big Stories",
+    "slides": []
+  },
+  {
+    "standardId": "RI.4.1",
+    "grade": "4th Grade",
+    "domain": "Reading Informational Text",
+    "title": "Finding Fact Details",
+    "slides": []
+  },
+  {
+    "standardId": "RI.4.2",
+    "grade": "4th Grade",
+    "domain": "Reading Informational Text",
+    "title": "Main Idea Mastery",
+    "slides": []
+  },
+  {
+    "standardId": "RI.4.3",
+    "grade": "4th Grade",
+    "domain": "Reading Informational Text",
+    "title": "Explaining Procedures",
+    "slides": []
+  },
+  {
+    "standardId": "RI.4.4",
+    "grade": "4th Grade",
+    "domain": "Reading Informational Text",
+    "title": "Academic Word Meanings",
+    "slides": []
+  },
+  {
+    "standardId": "RI.4.5",
+    "grade": "4th Grade",
+    "domain": "Reading Informational Text",
+    "title": "How Texts Are Built",
+    "slides": []
+  },
+  {
+    "standardId": "RI.4.6",
+    "grade": "4th Grade",
+    "domain": "Reading Informational Text",
+    "title": "Firsthand vs Secondhand",
+    "slides": []
+  },
+  {
+    "standardId": "RI.4.7",
+    "grade": "4th Grade",
+    "domain": "Reading Informational Text",
+    "title": "Information Across Forms",
+    "slides": []
+  },
+  {
+    "standardId": "RI.4.8",
+    "grade": "4th Grade",
+    "domain": "Reading Informational Text",
+    "title": "Author's Reasons and Evidence",
+    "slides": []
+  },
+  {
+    "standardId": "RI.4.9",
+    "grade": "4th Grade",
+    "domain": "Reading Informational Text",
+    "title": "Combining Two Texts",
+    "slides": []
+  },
+  {
+    "standardId": "RI.4.10",
+    "grade": "4th Grade",
+    "domain": "Reading Informational Text",
+    "title": "Reading Big Facts",
+    "slides": []
+  },
+  {
+    "standardId": "RF.4.3",
+    "grade": "4th Grade",
+    "domain": "Foundational Skills",
+    "title": "Word Decoding Skills",
+    "slides": []
+  },
+  {
+    "standardId": "RF.4.3a",
+    "grade": "4th Grade",
+    "domain": "Foundational Skills",
+    "title": "Letter-Sound Combos",
+    "slides": []
+  },
+  {
+    "standardId": "RF.4.4",
+    "grade": "4th Grade",
+    "domain": "Foundational Skills",
+    "title": "Smooth Reading Skills",
+    "slides": []
+  },
+  {
+    "standardId": "L.4.4",
+    "grade": "4th Grade",
+    "domain": "Language",
+    "title": "Word Meaning Detective",
+    "slides": []
+  },
+  {
+    "standardId": "L.4.4a",
+    "grade": "4th Grade",
+    "domain": "Language",
+    "title": "Sentence Clues",
+    "slides": []
+  },
+  {
+    "standardId": "L.4.4b",
+    "grade": "4th Grade",
+    "domain": "Language",
+    "title": "Greek and Latin Roots",
+    "slides": []
+  },
+  {
+    "standardId": "L.4.4c",
+    "grade": "4th Grade",
+    "domain": "Language",
+    "title": "Reference Materials",
+    "slides": []
+  },
+  {
+    "standardId": "L.4.5",
+    "grade": "4th Grade",
+    "domain": "Language",
+    "title": "Figurative Language",
+    "slides": []
+  },
+  {
+    "standardId": "L.4.5a",
+    "grade": "4th Grade",
+    "domain": "Language",
+    "title": "Similes and Metaphors",
+    "slides": []
+  },
+  {
+    "standardId": "L.4.5b",
+    "grade": "4th Grade",
+    "domain": "Language",
+    "title": "Idioms and Sayings",
+    "slides": []
+  },
+  {
+    "standardId": "L.4.5c",
+    "grade": "4th Grade",
+    "domain": "Language",
+    "title": "Word Strength Levels",
+    "slides": []
+  },
+  {
+    "standardId": "L.4.6",
+    "grade": "4th Grade",
+    "domain": "Language",
+    "title": "Using Big Vocabulary",
+    "slides": []
   }
 ]
