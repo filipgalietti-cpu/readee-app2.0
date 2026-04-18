@@ -9365,5 +9365,166 @@
     "domain": "Language",
     "title": "Using Big Vocabulary",
     "slides": []
+  },
+  {
+    "standardId": "RF.1.3a",
+    "grade": "1st Grade",
+    "domain": "Foundational Skills",
+    "title": "Two-Letter Sounds",
+    "slides": []
+  },
+  {
+    "standardId": "RF.1.3b",
+    "grade": "1st Grade",
+    "domain": "Foundational Skills",
+    "title": "Sounding Out Short Words",
+    "slides": []
+  },
+  {
+    "standardId": "RF.1.3c",
+    "grade": "1st Grade",
+    "domain": "Foundational Skills",
+    "title": "The Magic E",
+    "slides": []
+  },
+  {
+    "standardId": "RF.1.3d",
+    "grade": "1st Grade",
+    "domain": "Foundational Skills",
+    "title": "Counting Syllables",
+    "slides": []
+  },
+  {
+    "standardId": "RF.1.3e",
+    "grade": "1st Grade",
+    "domain": "Foundational Skills",
+    "title": "Two-Syllable Words",
+    "slides": []
+  },
+  {
+    "standardId": "RF.1.3f",
+    "grade": "1st Grade",
+    "domain": "Foundational Skills",
+    "title": "Word Endings",
+    "slides": []
+  },
+  {
+    "standardId": "RF.1.3g",
+    "grade": "1st Grade",
+    "domain": "Foundational Skills",
+    "title": "Tricky Sight Words",
+    "slides": []
+  },
+  {
+    "standardId": "RF.1.4a",
+    "grade": "1st Grade",
+    "domain": "Foundational Skills",
+    "title": "Reading with Purpose",
+    "slides": []
+  },
+  {
+    "standardId": "L.1.1",
+    "grade": "1st Grade",
+    "domain": "Language",
+    "title": "Grammar Power",
+    "slides": []
+  },
+  {
+    "standardId": "L.1.2",
+    "grade": "1st Grade",
+    "domain": "Language",
+    "title": "Capitals and Periods",
+    "slides": []
+  },
+  {
+    "standardId": "L.2.1",
+    "grade": "2nd Grade",
+    "domain": "Language",
+    "title": "Sentence Skills",
+    "slides": []
+  },
+  {
+    "standardId": "L.2.2",
+    "grade": "2nd Grade",
+    "domain": "Language",
+    "title": "Apostrophes and Commas",
+    "slides": []
+  },
+  {
+    "standardId": "L.2.3",
+    "grade": "2nd Grade",
+    "domain": "Language",
+    "title": "Choosing Words to Sound Right",
+    "slides": []
+  },
+  {
+    "standardId": "L.3.1",
+    "grade": "3rd Grade",
+    "domain": "Language",
+    "title": "Verb Tenses and More",
+    "slides": []
+  },
+  {
+    "standardId": "L.3.2",
+    "grade": "3rd Grade",
+    "domain": "Language",
+    "title": "Quotes and Commas",
+    "slides": []
+  },
+  {
+    "standardId": "L.3.3",
+    "grade": "3rd Grade",
+    "domain": "Language",
+    "title": "Picking the Best Words",
+    "slides": []
+  },
+  {
+    "standardId": "L.4.1",
+    "grade": "4th Grade",
+    "domain": "Language",
+    "title": "Pronouns and Grammar Rules",
+    "slides": []
+  },
+  {
+    "standardId": "L.4.2",
+    "grade": "4th Grade",
+    "domain": "Language",
+    "title": "Punctuation Mastery",
+    "slides": []
+  },
+  {
+    "standardId": "L.4.3",
+    "grade": "4th Grade",
+    "domain": "Language",
+    "title": "Word Choice for Style",
+    "slides": []
+  },
+  {
+    "standardId": "RL.K.10",
+    "grade": "Kindergarten",
+    "domain": "Reading Literature",
+    "title": "Storytime All Year",
+    "slides": []
+  },
+  {
+    "standardId": "RI.K.10",
+    "grade": "Kindergarten",
+    "domain": "Reading Informational Text",
+    "title": "Fact Books All Year",
+    "slides": []
+  },
+  {
+    "standardId": "RL.1.10",
+    "grade": "1st Grade",
+    "domain": "Reading Literature",
+    "title": "Storytime All Year",
+    "slides": []
+  },
+  {
+    "standardId": "RI.1.10",
+    "grade": "1st Grade",
+    "domain": "Reading Informational Text",
+    "title": "Fact Books All Year",
+    "slides": []
   }
 ]
