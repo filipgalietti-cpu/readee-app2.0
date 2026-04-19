@@ -735,12 +735,20 @@ function LearnSession({
                 onClick={() => {
                   if (answered) return;
                   const isPhoneme = /^\/[a-zA-Z]{1,3}\/$/.test(choice);
+                  const isWord = !isPhoneme && /^[A-Za-z]{1,8}$/.test(choice);
                   if (isPhoneme) {
                     if (previewedChoice === choice) {
                       handleAnswer(choice);
                     } else {
                       setPreviewedChoice(choice);
                       playPhonemeAudio(choice);
+                    }
+                  } else if (isWord) {
+                    if (previewedChoice === choice) {
+                      handleAnswer(choice);
+                    } else {
+                      setPreviewedChoice(choice);
+                      playWordAudio(choice);
                     }
                   } else {
                     handleAnswer(choice);

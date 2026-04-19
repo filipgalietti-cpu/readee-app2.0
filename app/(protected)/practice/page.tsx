@@ -491,6 +491,14 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
     return !!q.choices && q.choices.length > 0 && q.choices.every(c => /^\/[a-zA-Z]{1,3}\/$/.test(c));
   }, [q.choices]);
 
+  // Single short words like "Sip" or "Stop" — preview via the words/ audio library.
+  const choicesAreWords = useMemo(() => {
+    return !choicesArePhonemes
+      && !!q.choices
+      && q.choices.length > 0
+      && q.choices.every(c => /^[A-Za-z]{1,8}$/.test(c));
+  }, [q.choices, choicesArePhonemes]);
+
   /** Handle "Tap to Start" — unlock audio, then begin */
   const handleStart = useCallback(async () => {
     await unlockAudio();
@@ -1171,6 +1179,13 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
                     } else {
                       setPreviewedChoice(choice);
                       playPhonemeAudio(choice);
+                    }
+                  } else if (choicesAreWords) {
+                    if (previewedChoice === choice) {
+                      handleAnswer(choice);
+                    } else {
+                      setPreviewedChoice(choice);
+                      playWordAudio(choice);
                     }
                   } else {
                     handleAnswer(choice);
