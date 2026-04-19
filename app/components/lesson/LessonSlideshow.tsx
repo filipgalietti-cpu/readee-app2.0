@@ -52,6 +52,10 @@ interface Step {
     delay: number;         // ms before the diagram first appears (original word)
     swapDelay: number;     // ms before the swap animation triggers
   };
+  displayAlphabetGrid?: {
+    // 26 tappable letter tiles. Tap plays letter name + phoneme.
+    delay: number;
+  };
   imageFile?: string; // per-step image override — swaps the slide image while this step is playing
   displayTableRow?: {
     label: string;
@@ -295,6 +299,20 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
         }
       }
 
+      // Schedule alphabet-grid reveal
+      if (step.displayAlphabetGrid) {
+        const delay = step.displayAlphabetGrid.delay ?? 0;
+        if (delay > 0) {
+          const t = setTimeout(() => {
+            if (runIdRef.current !== runId) return;
+            setTextsVisible((prev) => new Set(prev).add(stepIdx));
+          }, delay);
+          textTimersRef.current.push(t);
+        } else {
+          setTextsVisible((prev) => new Set(prev).add(stepIdx));
+        }
+      }
+
       // Schedule swap-diagram appearance + delayed in-place letter morph
       if (step.displayDiagramSwap) {
         const showAt = step.displayDiagramSwap.delay ?? 0;
@@ -419,6 +437,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
       if (step.displayText) allTexts.add(i);
       if (step.displayDiagram) allTexts.add(i);
       if (step.displayDiagramSwap) allTexts.add(i);
+      if (step.displayAlphabetGrid) allTexts.add(i);
       step.displayParts?.forEach((_, p) => allParts.add(`${i}-${p}`));
       if (step.displayTableRow?.example) allExamples.add(i);
     });
@@ -871,6 +890,53 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
     );
   };
 
+  const ALPHABET_PHONEME_MAP: Record<string, string> = {
+    A: "short_a", B: "b", C: "c_hard", D: "d", E: "short_e", F: "f",
+    G: "g", H: "h", I: "short_i", J: "j", K: "k", L: "l", M: "m",
+    N: "n", O: "short_o", P: "p", Q: "q", R: "r", S: "s", T: "t",
+    U: "short_u", V: "v", W: "w", X: "x", Y: "y", Z: "z",
+  };
+  const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+
+  const playLetterThenPhoneme = useCallback(async (letter: string) => {
+    if (!audioManager) return;
+    const lower = letter.toLowerCase();
+    const phonemeId = ALPHABET_PHONEME_MAP[letter.toUpperCase()];
+    audioManager.stop();
+    await audioManager.playOneshot(`${SUPABASE_STORAGE}/audio/letters/${lower}.mp3`);
+    if (phonemeId) {
+      await audioManager.playOneshot(`${SUPABASE_STORAGE}/audio/phonemes/${phonemeId}.mp3`);
+    }
+  }, []);
+
+  const renderAlphabetGrid = (step: Step, i: number) => {
+    if (!textsVisible.has(i) || !step.displayAlphabetGrid) return null;
+    return (
+      <motion.div
+        key={`${currentSlide}-${step.sub}-grid`}
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ type: "spring", stiffness: 400, damping: 20 }}
+        className="grid grid-cols-6 sm:grid-cols-7 gap-2 sm:gap-3 w-full max-w-md mx-auto"
+      >
+        {ALPHABET.map((letter, idx) => (
+          <motion.button
+            key={letter}
+            initial={{ opacity: 0, scale: 0.6 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ type: "spring", stiffness: 500, damping: 18, delay: idx * 0.02 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={() => playLetterThenPhoneme(letter)}
+            className="aspect-square rounded-xl flex items-center justify-center text-xl sm:text-2xl font-extrabold shadow-sm bg-indigo-50 text-indigo-700 hover:bg-indigo-100 active:bg-indigo-200 transition-colors dark:bg-indigo-900/40 dark:text-indigo-200 dark:hover:bg-indigo-900/60"
+            aria-label={`Letter ${letter}`}
+          >
+            {letter}
+          </motion.button>
+        ))}
+      </motion.div>
+    );
+  };
+
   const renderDiagramSwap = (step: Step, i: number) => {
     if (!textsVisible.has(i) || !step.displayDiagramSwap) return null;
     const { letters, swapAt, toLetter } = step.displayDiagramSwap;
@@ -1127,7 +1193,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
           <div className="flex-1 min-h-0 overflow-hidden flex items-center justify-center px-6">
             {(() => {
               const hasContent = steps.some(
-                (s) => s.displayText || (s.displayParts && s.displayParts.length > 0) || s.displayTableRow || s.displayDiagram || s.displayDiagramSwap
+                (s) => s.displayText || (s.displayParts && s.displayParts.length > 0) || s.displayTableRow || s.displayDiagram || s.displayDiagramSwap || s.displayAlphabetGrid
               );
               const bgClass = hasContent ? theme.contentBg : "";
               return (
@@ -1228,6 +1294,9 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
                         })}
                       </div>
                     );
+                  }
+                  if (step.displayAlphabetGrid) {
+                    return renderAlphabetGrid(step, i);
                   }
                   if (step.displayDiagramSwap) {
                     return renderDiagramSwap(step, i);

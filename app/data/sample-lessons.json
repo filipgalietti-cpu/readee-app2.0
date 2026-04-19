@@ -6365,29 +6365,18 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.3a/S4a.mp3",
-            "ttsScript": "Think of a word that starts with the letter. That helps you remember its sound!",
+            "ttsScript": "Here is the whole alphabet! Tap any letter to hear its name and sound.",
             "interaction": "Heading with sparkle.",
             "displayText": ""
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.3a/S4b.mp3",
-            "ttsScript": "A is for apple. B is for ball. The picture helps you remember the sound.",
-            "interaction": "Two pairing pills appear in sequence; phoneme audio plays each letter sound after.",
-            "displayParts": [
-              {
-                "text": "A is for Apple",
-                "delay": 1500
-              },
-              {
-                "text": "B is for Ball",
-                "delay": 3500
-              }
-            ],
-            "afterPhonemes": [
-              "short_a",
-              "b"
-            ]
+            "ttsScript": "Try a few. Each letter says its name, then makes its sound.",
+            "interaction": "26-button alphabet grid appears; tapping any letter plays its name then phoneme.",
+            "displayAlphabetGrid": {
+              "delay": 1000
+            }
           },
           {
             "sub": "c",
@@ -6397,8 +6386,8 @@
             "displayText": ""
           }
         ],
-        "heading": "A Helpful Trick!",
-        "imagePrompt": "A cheerful cartoon child sitting cross-legged with a bright red apple in one hand and a bouncy blue ball at their side, smiling warmly. Simple clean background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "heading": "Try Every Letter!",
+        "imagePrompt": "A cheerful cartoon Black boy with short curly hair and warm brown skin, smiling brightly and pointing toward something with one hand. Simple clean background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RF.K.3a/S4.png"
       },
       {
