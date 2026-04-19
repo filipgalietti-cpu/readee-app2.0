@@ -13,49 +13,44 @@ const ENDPOINT = `https://${LOCATION}-aiplatform.googleapis.com/v1/projects/${PR
 const PHONEME_DIR = path.resolve(__dirname, "..", "public/audio/phonemes");
 const TMP = path.resolve(__dirname, "..", ".tmp-splice");
 fs.mkdirSync(TMP, { recursive: true });
-const VOICE_DIR = "Warm calm kindergarten teacher voice. Read with natural pacing. Emphasize words shown in ALL CAPS as the target word.";
+const VOICE_DIR = "";
 
 // User-confirmed format:
 //   "Start with WORD." + [phoneme] + "to" + [phoneme]
 //   then "What new word do you get? A, B, C, or D. What do you think?"
 const QS = {
   "RF.K.2e-Q1": [
-    { tts: "Start with CAT." },
-    { tts: "Change the" },
+    { tts: "Start with Cat. Change the" },
     { phoneme: "c_hard" },
     { tts: "sound to the" },
     { phoneme: "b" },
-    { tts: "sound. What new word do you get? Sat, Bat, Mat, or Hat. What do you think?" },
+    { tts: "sound. What new word do you get? Sat, Bat, Mat, and Hat. What do you think?" },
   ],
   "RF.K.2e-Q2": [
-    { tts: "Start with HOP." },
-    { tts: "Change the" },
+    { tts: "Start with Hop. Change the" },
     { phoneme: "h" },
     { tts: "sound to the" },
     { phoneme: "t" },
-    { tts: "sound. What new word do you get? Mop, Top, Hop, or Pop. What do you think?" },
+    { tts: "sound. What new word do you get? Mop, Top, Hop, and Pop. What do you think?" },
   ],
   "RF.K.2e-Q3": [
-    { tts: "Start with MAN." },
-    { tts: "Change the" },
+    { tts: "Start with Man. Change the" },
     { phoneme: "short_a" },
     { tts: "sound to the" },
     { phoneme: "short_e" },
-    { tts: "sound. What new word do you get? Mat, Mit, Met, or Min. What do you think?" },
+    { tts: "sound. What new word do you get? Mat, Mit, Met, and Min. What do you think?" },
   ],
   "RF.K.2e-Q4": [
-    { tts: "Start with SIT." },
-    { tts: "Change the" },
+    { tts: "Start with Sit. Change the" },
     { phoneme: "t" },
     { tts: "sound to the" },
     { phoneme: "p" },
-    { tts: "sound. What new word do you get? Sip, Set, Sat, or Sap. What do you think?" },
+    { tts: "sound. What new word do you get? Sip, Set, Sat, and Sap. What do you think?" },
   ],
   "RF.K.2e-Q5": [
-    { tts: "Start with TOP." },
-    { tts: "Add the" },
+    { tts: "Start with Top. Add the" },
     { phoneme: "s" },
-    { tts: "sound to the beginning. What word do you get? Spot, Stop, Step, or Tops. What do you think?" },
+    { tts: "sound to the beginning. What word do you get? Spot, Stop, Step, and Tops. What do you think?" },
   ],
 };
 
@@ -66,7 +61,8 @@ async function getToken() {
   const c = await auth.getClient(); const t = await c.getAccessToken(); _token = t.token; return _token;
 }
 async function genTTS(text, out) {
-  const body = { contents: [{ role: "user", parts: [{ text: VOICE_DIR + " " + text }] }],
+  const fullText = VOICE_DIR ? VOICE_DIR + " " + text : text;
+  const body = { contents: [{ role: "user", parts: [{ text: fullText }] }],
     generationConfig: { responseModalities: ["AUDIO"], speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: VOICE } } } } };
   for (let attempt = 0; attempt < 6; attempt++) {
     const tok = await getToken();
