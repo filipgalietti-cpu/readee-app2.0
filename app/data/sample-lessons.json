@@ -6241,8 +6241,9 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.3a/S2a.mp3",
-            "ttsScript": "Look at the letter S. It hisses like a snake.",
-            "interaction": "S tile appears, then phoneme audio plays.",
+            "ttsScript": "Look at the letter ess. It hisses like a snake.",
+            "interaction": "Snake image + S tile + phoneme audio.",
+            "imageFile": "images/lessons/RF.K.3a/S2a.png",
             "displayDiagram": {
               "letters": [
                 {
@@ -6258,8 +6259,9 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.3a/S2b.mp3",
-            "ttsScript": "The letter M. Like something yummy.",
-            "interaction": "M tile appears, then phoneme audio plays.",
+            "ttsScript": "The letter em. Like something yummy.",
+            "interaction": "Yummy treat image + M tile + phoneme audio.",
+            "imageFile": "images/lessons/RF.K.3a/S2b.png",
             "displayDiagram": {
               "letters": [
                 {
@@ -6275,8 +6277,9 @@
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.3a/S2c.mp3",
-            "ttsScript": "The letter T. Like a ticking clock.",
-            "interaction": "T tile appears, then phoneme audio plays.",
+            "ttsScript": "The letter tee. Like a ticking clock.",
+            "interaction": "Clock image + T tile + phoneme audio.",
+            "imageFile": "images/lessons/RF.K.3a/S2c.png",
             "displayDiagram": {
               "letters": [
                 {
@@ -6315,7 +6318,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.3a/S3b.mp3",
-            "ttsScript": "Look at the letter B. What sound does B make?",
+            "ttsScript": "Look at the letter bee. What sound does bee make?",
             "interaction": "B tile appears, then phoneme audio plays.",
             "displayDiagram": {
               "letters": [
@@ -6332,7 +6335,7 @@
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.3a/S3c.mp3",
-            "ttsScript": "Now the letters D and F. Listen to each sound.",
+            "ttsScript": "Now the letters dee and eff. Listen to each sound.",
             "interaction": "D and F tiles appear; phoneme audio plays each in turn, highlighting tiles.",
             "displayDiagram": {
               "letters": [
@@ -6352,7 +6355,7 @@
           }
         ],
         "heading": "Let's Practice Some Sounds!",
-        "imagePrompt": "A cheerful cartoon child smiling with hand raised in a confident high-five gesture. Simple clean background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A cheerful cartoon Black girl with two big braided pigtails and warm brown skin, smiling brightly with one hand raised in a confident high-five gesture. Simple clean background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RF.K.3a/S3.png"
       },
       {
