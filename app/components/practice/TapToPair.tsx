@@ -12,6 +12,10 @@ interface TapToPairProps {
   answered: boolean;
   onAnswer: (isCorrect: boolean, userAnswer: string) => void;
   onPlayItem?: (word: string) => void;
+  /** Fired on each correct individual match (for the per-pair chime) */
+  onCorrectMatch?: () => void;
+  /** Fired on each incorrect individual match */
+  onIncorrectMatch?: () => void;
   /** In assessment mode, all pairings are accepted (no rejection on wrong match) */
   assessmentMode?: boolean;
 }
@@ -59,6 +63,8 @@ export function TapToPair({
   answered,
   onAnswer,
   onPlayItem,
+  onCorrectMatch,
+  onIncorrectMatch,
   assessmentMode = false,
 }: TapToPairProps) {
   const [selectedLeft, setSelectedLeft] = useState<string | null>(null);
@@ -121,6 +127,11 @@ export function TapToPair({
           setTimeout(() => setFlashingPair(null), 600);
         }
 
+        // Per-match ka-ching (after left/right tap audio has had a moment to play)
+        if (isCorrect && !assessmentMode && onCorrectMatch) {
+          setTimeout(() => onCorrectMatch(), 700);
+        }
+
         if (newMatches.length === leftItems.length) {
           setTimeout(() => {
             setDone(true);
@@ -136,9 +147,10 @@ export function TapToPair({
         setTimeout(() => { setShakingRight(null); setShakingLeft(null); }, 500);
         setSelectedLeft(null);
         setSelectedRight(null);
+        if (onIncorrectMatch) setTimeout(() => onIncorrectMatch(), 700);
       }
     },
-    [correctPairs, matches, leftItems.length, onAnswer, onPlayItem]
+    [correctPairs, matches, leftItems.length, onAnswer, onPlayItem, onCorrectMatch, onIncorrectMatch, assessmentMode]
   );
 
   const handleTapLeft = useCallback(

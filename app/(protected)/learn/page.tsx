@@ -600,6 +600,8 @@ function LearnSession({
             answered={selected !== null}
             onAnswer={(isCorrect, answer) => handleInteractiveAnswer(isCorrect, answer)}
             onPlayItem={playItemSmart}
+            onCorrectMatch={playCorrectChime}
+            onIncorrectMatch={playIncorrectBuzz}
           />
         ) : q.type === "sound_machine" && q.target_word && q.phonemes ? (
           <SoundMachine
