@@ -409,6 +409,14 @@ function LearnSession({
     playUrl(url);
   }, [playUrl]);
 
+  const playItemSmart = useCallback((item: string) => {
+    if (/^\/[a-z]{1,3}\/$/.test(item)) {
+      playPhonemeAudio(item);
+    } else {
+      playWordAudio(item);
+    }
+  }, [playPhonemeAudio, playWordAudio]);
+
   const handleReplay = useCallback(() => {
     stop();
     const url = q?.audio_url;
@@ -591,7 +599,7 @@ function LearnSession({
             correctPairs={q.correct_pairs}
             answered={selected !== null}
             onAnswer={(isCorrect, answer) => handleInteractiveAnswer(isCorrect, answer)}
-            onPlayItem={playWordAudio}
+            onPlayItem={playItemSmart}
           />
         ) : q.type === "sound_machine" && q.target_word && q.phonemes ? (
           <SoundMachine
