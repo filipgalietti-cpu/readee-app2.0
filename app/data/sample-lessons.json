@@ -6435,8 +6435,17 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.3b/S1a.mp3",
             "ttsScript": "There are five super special letters called vowels. A, E, I, O, U!",
-            "interaction": "Heading fades in.",
-            "displayText": ""
+            "interaction": "Vowel tiles appear one-by-one as the TTS names each vowel.",
+            "displayDiagram": {
+              "letters": [
+                { "text": "A" },
+                { "text": "E" },
+                { "text": "I" },
+                { "text": "O" },
+                { "text": "U" }
+              ],
+              "delay": 2500
+            }
           },
           {
             "sub": "b",
@@ -6503,7 +6512,8 @@
             },
             "afterPhonemes": [
               "short_a"
-            ]
+            ],
+            "imageFile": "images/lessons/RF.K.3b/S2a.png"
           },
           {
             "sub": "b",
@@ -6524,7 +6534,8 @@
             "afterPhonemes": [
               "short_e",
               "short_i"
-            ]
+            ],
+            "imageFile": "images/lessons/RF.K.3b/S2b.png"
           },
           {
             "sub": "c",
@@ -6545,7 +6556,8 @@
             "afterPhonemes": [
               "short_o",
               "short_u"
-            ]
+            ],
+            "imageFile": "images/lessons/RF.K.3b/S2c.png"
           },
           {
             "sub": "d",
@@ -6621,7 +6633,8 @@
             ],
             "phonemeLetterIndices": [
               1
-            ]
+            ],
+            "imageFile": "images/lessons/RF.K.3b/S3c.png"
           }
         ],
         "heading": "Let's Find the Vowels!",
@@ -6635,36 +6648,32 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.3b/S4a.mp3",
-            "ttsScript": "Remember the five vowels with this: A, E, I, O, U — I love you!",
-            "interaction": "Heading with sparkle.",
+            "ttsScript": "Here is a helpful trick about vowels.",
+            "interaction": "Heading fades in with sparkle.",
             "displayText": ""
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.3b/S4b.mp3",
-            "ttsScript": "That silly rhyme helps you remember all five! A, E, I, O, U!",
-            "interaction": "Pill: [A E I O U — I love you!] pops in with heart.",
+            "ttsScript": "Every single word must have at least one vowel! A, E, I, O, U.",
+            "interaction": "Pill: [A E I O U] pops in.",
             "displayParts": [
               {
                 "text": "A E I O U",
-                "delay": 4000
-              },
-              {
-                "text": "I love you!",
-                "delay": 5250
+                "delay": 3500
               }
             ]
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.3b/S4c.mp3",
-            "ttsScript": "Every word has at least one of these superstars in it!",
+            "ttsScript": "That is why these five letters are super important. Every word needs one!",
             "interaction": "Superhero capes flutter. Tap to continue.",
             "displayText": ""
           }
         ],
         "heading": "A Helpful Trick!",
-        "imagePrompt": "Five cartoon vowel characters holding hands in a line with a heart floating above them. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "Five cheerful cartoon vowel superheroes A, E, I, O, U standing in a friendly group pose wearing matching capes. Bright clean background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RF.K.3b/S4.png"
       },
       {
