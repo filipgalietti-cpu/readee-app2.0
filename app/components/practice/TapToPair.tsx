@@ -129,7 +129,7 @@ export function TapToPair({
 
         // Per-match ka-ching (after left/right tap audio has had a moment to play)
         if (isCorrect && !assessmentMode && onCorrectMatch) {
-          setTimeout(() => onCorrectMatch(), 700);
+          setTimeout(() => onCorrectMatch(), 1400);
         }
 
         if (newMatches.length === leftItems.length) {
@@ -138,7 +138,7 @@ export function TapToPair({
             const allCorrect = newMatches.every((m) => m.correct);
             const answer = newMatches.map((m) => `${m.left}→${m.right}`).join(", ");
             onAnswer(allCorrect, answer);
-          }, assessmentMode ? 500 : 2000);
+          }, assessmentMode ? 500 : 2800);
         }
       } else {
         // Wrong match — shake the second-tapped side
@@ -147,7 +147,7 @@ export function TapToPair({
         setTimeout(() => { setShakingRight(null); setShakingLeft(null); }, 500);
         setSelectedLeft(null);
         setSelectedRight(null);
-        if (onIncorrectMatch) setTimeout(() => onIncorrectMatch(), 700);
+        if (onIncorrectMatch) setTimeout(() => onIncorrectMatch(), 1400);
       }
     },
     [correctPairs, matches, leftItems.length, onAnswer, onPlayItem, onCorrectMatch, onIncorrectMatch, assessmentMode]
