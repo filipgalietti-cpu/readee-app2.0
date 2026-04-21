@@ -7408,50 +7408,26 @@
       },
       {
         "slide": 5,
-        "type": "practice-intro",
-        "steps": [
-          {
-            "sub": "a",
-            "audioFile": "audio/lessons/RF.K.3c/S5a.mp3",
-            "ttsScript": "You're building your sight word collection!",
-            "interaction": "Stars celebration.",
-            "displayText": ""
-          },
-          {
-            "sub": "b",
-            "audioFile": "audio/lessons/RF.K.3c/S5b.mp3",
-            "ttsScript": "Let's practice reading sight words quickly. Let's go!",
-            "interaction": "'Let's Go!' button pulses.",
-            "displayText": "Let's read the words!",
-            "displayDelay": 2000
-          }
-        ],
-        "heading": "Time to Practice!",
-        "imagePrompt": "A cheerful cartoon child standing proudly with both arms raised in celebration, big bright smile. Simple clean background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
-        "imageFile": "images/lessons/RF.K.3c/S5.png"
-      },
-      {
-        "slide": 6,
         "type": "mcq",
         "mcqId": "RF.K.3c-Q1"
       },
       {
-        "slide": 7,
+        "slide": 6,
         "type": "mcq",
         "mcqId": "RF.K.3c-Q2"
       },
       {
-        "slide": 8,
+        "slide": 7,
         "type": "mcq",
         "mcqId": "RF.K.3c-Q3"
       },
       {
-        "slide": 9,
+        "slide": 8,
         "type": "mcq",
         "mcqId": "RF.K.3c-Q4"
       },
       {
-        "slide": 10,
+        "slide": 9,
         "type": "mcq",
         "mcqId": "RF.K.3c-Q5"
       }
