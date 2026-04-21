@@ -15827,70 +15827,2029 @@
     "grade": "1st Grade",
     "domain": "Foundational Skills",
     "title": "Two-Letter Sounds",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.3a/S1a.mp3",
+            "ttsScript": "Sometimes two letters team up to make just one sound!",
+            "interaction": "",
+            "displayText": "Two letters, one sound",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.3a/S1b.mp3",
+            "ttsScript": "The letters are not each saying their own sound anymore.",
+            "interaction": "",
+            "displayText": "Not by themselves",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.3a/S1c.mp3",
+            "ttsScript": "They make a brand new sound together!",
+            "interaction": "",
+            "displayText": "A new sound!",
+            "displayDelay": 2000
+          }
+        ],
+        "heading": "Two Letters, One Sound",
+        "imagePrompt": "A cheerful cartoon pair of colorful letter-tile characters holding hands, each smiling, tiny sparkles between them. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.3a/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.3a/S2a.mp3",
+            "ttsScript": "When S and H team up, they make the \"shhh\" sound.",
+            "interaction": "",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "S"
+                },
+                {
+                  "text": "H"
+                }
+              ],
+              "delay": 1500,
+              "revealCount": 2
+            }
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.3a/S2b.mp3",
+            "ttsScript": "Like in the word ship. Sh-ip.",
+            "interaction": "",
+            "displayText": "ship",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.3a/S2c.mp3",
+            "ttsScript": "Or shell, shop, and shoe. All start with the \"shhh\" sound.",
+            "interaction": "",
+            "displayText": "shell, shop, shoe",
+            "displayDelay": 2800
+          }
+        ],
+        "heading": "Meet SH",
+        "imagePrompt": "A cheerful cartoon red sailboat with a big smiling white sail floating on blue waves, a tiny sun in the sky. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.3a/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.3a/S3a.mp3",
+            "ttsScript": "C and H together make the \"chh\" sound. Like in chip.",
+            "interaction": "",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "C"
+                },
+                {
+                  "text": "H"
+                }
+              ],
+              "delay": 1500,
+              "revealCount": 2
+            }
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.3a/S3b.mp3",
+            "ttsScript": "Chip. Chop. Cheese. Hear the \"chh\"?",
+            "interaction": "",
+            "displayText": "chip, chop, cheese",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.3a/S3c.mp3",
+            "ttsScript": "And T and H make the \"thh\" sound. Like in thumb.",
+            "interaction": "",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "T"
+                },
+                {
+                  "text": "H"
+                }
+              ],
+              "delay": 1500,
+              "revealCount": 2
+            }
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RF.1.3a/S3d.mp3",
+            "ttsScript": "Thumb. Thin. Think. Feel your tongue?",
+            "interaction": "",
+            "displayText": "thumb, thin, think",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Meet CH and TH",
+        "imagePrompt": "Three cheerful cartoon friendly letter pair characters in a row, each a different bright color with happy faces. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.3a/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.3a/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A digraph trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.3a/S4b.mp3",
+            "ttsScript": "When you see S-H, C-H, or T-H together, they make one sound, not two.",
+            "interaction": "",
+            "displayText": "SH, CH, TH = one sound",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.3a/S4c.mp3",
+            "ttsScript": "Now you are ready to spot two-letter sounds!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Listen for Team Sounds",
+        "imagePrompt": "A cheerful cartoon ear character with small listening waves, a tiny smile, surrounded by tiny letter pairs floating. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.3a/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RF.1.3a-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RF.1.3a-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RF.1.3a-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RF.1.3a-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RF.1.3a-Q5"
+      }
+    ]
   },
   {
     "standardId": "RF.1.3b",
     "grade": "1st Grade",
     "domain": "Foundational Skills",
     "title": "Sounding Out Short Words",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.3b/S1a.mp3",
+            "ttsScript": "Short words are made of just a few sounds.",
+            "interaction": "",
+            "displayText": "Few sounds",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.3b/S1b.mp3",
+            "ttsScript": "When you sound them out, you read each one in order.",
+            "interaction": "",
+            "displayText": "One at a time",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.3b/S1c.mp3",
+            "ttsScript": "Then you blend them together. That is reading!",
+            "interaction": "",
+            "displayText": "Blend = reading",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Sound It Out",
+        "imagePrompt": "A cheerful cartoon child with big headphones carefully reading a short word card, lightbulb above their head. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.3b/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.3b/S2a.mp3",
+            "ttsScript": "Let us read this word.",
+            "interaction": "",
+            "displayText": "Read this",
+            "displayDelay": 1500,
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "C"
+                },
+                {
+                  "text": "A"
+                },
+                {
+                  "text": "T"
+                }
+              ],
+              "delay": 1500,
+              "revealCount": 3
+            }
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.3b/S2b.mp3",
+            "ttsScript": "First sound.",
+            "interaction": "",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "C"
+                },
+                {
+                  "text": "A"
+                },
+                {
+                  "text": "T"
+                }
+              ],
+              "delay": 0,
+              "revealCount": 3
+            },
+            "afterPhonemes": [
+              "c_hard"
+            ],
+            "phonemeLetterIndices": [
+              0
+            ]
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.3b/S2c.mp3",
+            "ttsScript": "Middle sound.",
+            "interaction": "",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "C"
+                },
+                {
+                  "text": "A"
+                },
+                {
+                  "text": "T"
+                }
+              ],
+              "delay": 0,
+              "revealCount": 3
+            },
+            "afterPhonemes": [
+              "short_a"
+            ],
+            "phonemeLetterIndices": [
+              1
+            ]
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RF.1.3b/S2d.mp3",
+            "ttsScript": "Last sound.",
+            "interaction": "",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "C"
+                },
+                {
+                  "text": "A"
+                },
+                {
+                  "text": "T"
+                }
+              ],
+              "delay": 0,
+              "revealCount": 3
+            },
+            "afterPhonemes": [
+              "t"
+            ],
+            "phonemeLetterIndices": [
+              2
+            ]
+          },
+          {
+            "sub": "e",
+            "audioFile": "audio/lessons/RF.1.3b/S2e.mp3",
+            "ttsScript": "Now blend. Cat!",
+            "interaction": "",
+            "displayText": "Cat!",
+            "displayDelay": 1500,
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "C"
+                },
+                {
+                  "text": "A"
+                },
+                {
+                  "text": "T"
+                }
+              ],
+              "delay": 0,
+              "revealCount": 3
+            }
+          }
+        ],
+        "heading": "Read CAT",
+        "imagePrompt": "A cheerful cartoon orange cat sitting upright, smiling, tail curled. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.3b/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "example",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.3b/S3a.mp3",
+            "ttsScript": "Your turn.",
+            "interaction": "",
+            "displayText": "Your turn!",
+            "displayDelay": 1500,
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "D"
+                },
+                {
+                  "text": "O"
+                },
+                {
+                  "text": "G"
+                }
+              ],
+              "delay": 1500,
+              "revealCount": 3
+            }
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.3b/S3b.mp3",
+            "ttsScript": "First.",
+            "interaction": "",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "D"
+                },
+                {
+                  "text": "O"
+                },
+                {
+                  "text": "G"
+                }
+              ],
+              "delay": 0,
+              "revealCount": 3
+            },
+            "afterPhonemes": [
+              "d"
+            ],
+            "phonemeLetterIndices": [
+              0
+            ]
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.3b/S3c.mp3",
+            "ttsScript": "Middle.",
+            "interaction": "",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "D"
+                },
+                {
+                  "text": "O"
+                },
+                {
+                  "text": "G"
+                }
+              ],
+              "delay": 0,
+              "revealCount": 3
+            },
+            "afterPhonemes": [
+              "short_o"
+            ],
+            "phonemeLetterIndices": [
+              1
+            ]
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RF.1.3b/S3d.mp3",
+            "ttsScript": "Last.",
+            "interaction": "",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "D"
+                },
+                {
+                  "text": "O"
+                },
+                {
+                  "text": "G"
+                }
+              ],
+              "delay": 0,
+              "revealCount": 3
+            },
+            "afterPhonemes": [
+              "g"
+            ],
+            "phonemeLetterIndices": [
+              2
+            ]
+          },
+          {
+            "sub": "e",
+            "audioFile": "audio/lessons/RF.1.3b/S3e.mp3",
+            "ttsScript": "Blend! Dog!",
+            "interaction": "",
+            "displayText": "Dog!",
+            "displayDelay": 1500,
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "D"
+                },
+                {
+                  "text": "O"
+                },
+                {
+                  "text": "G"
+                }
+              ],
+              "delay": 0,
+              "revealCount": 3
+            }
+          }
+        ],
+        "heading": "Your Turn: DOG",
+        "imagePrompt": "A cheerful cartoon brown dog with big eyes and floppy ears, sitting. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.3b/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.3b/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A decoding trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.3b/S4b.mp3",
+            "ttsScript": "Say each sound slowly. Then say them faster and faster until they snap together!",
+            "interaction": "",
+            "displayText": "Slow, then snap",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.3b/S4c.mp3",
+            "ttsScript": "Now you are ready to sound out short words!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Stretch, Then Snap",
+        "imagePrompt": "A cheerful cartoon rubber band character stretching with a smile, then snapping back, with friendly motion lines. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.3b/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RF.1.3b-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RF.1.3b-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RF.1.3b-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RF.1.3b-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RF.1.3b-Q5"
+      }
+    ]
   },
   {
     "standardId": "RF.1.3c",
     "grade": "1st Grade",
     "domain": "Foundational Skills",
     "title": "The Magic E",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.3c/S1a.mp3",
+            "ttsScript": "Here is a magical trick in reading. It is called Magic E.",
+            "interaction": "",
+            "displayText": "Magic E!",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.3c/S1b.mp3",
+            "ttsScript": "Add an E to the end of a word, and something magical happens.",
+            "interaction": "",
+            "displayText": "Add an E",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.3c/S1c.mp3",
+            "ttsScript": "The vowel starts to say its name.",
+            "interaction": "",
+            "displayText": "Vowel says its name!",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Magic E",
+        "imagePrompt": "A cheerful cartoon letter E character wearing a tall wizard hat, holding a tiny wand with sparkles coming from the tip. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.3c/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.3c/S2a.mp3",
+            "ttsScript": "The word cap has a short A sound.",
+            "interaction": "",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "C"
+                },
+                {
+                  "text": "A"
+                },
+                {
+                  "text": "P"
+                }
+              ],
+              "delay": 1500,
+              "revealCount": 3
+            },
+            "afterPhonemes": [
+              "short_a"
+            ],
+            "phonemeLetterIndices": [
+              1
+            ]
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.3c/S2b.mp3",
+            "ttsScript": "Watch. Add an E to the end. Cap becomes cape!",
+            "interaction": "",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "C"
+                },
+                {
+                  "text": "A"
+                },
+                {
+                  "text": "P"
+                },
+                {
+                  "text": "E"
+                }
+              ],
+              "delay": 2500,
+              "revealCount": 4
+            },
+            "afterPhonemes": [
+              "long_a"
+            ],
+            "phonemeLetterIndices": [
+              1
+            ]
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.3c/S2c.mp3",
+            "ttsScript": "The E is silent, but it makes the A say its name: AY!",
+            "interaction": "",
+            "displayText": "A says AY!",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Cap Becomes Cape",
+        "imagePrompt": "A cheerful cartoon baseball cap next to a small red superhero cape, with a tiny letter E floating between them. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.3c/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.3c/S3a.mp3",
+            "ttsScript": "The word kit has a short I sound.",
+            "interaction": "",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "K"
+                },
+                {
+                  "text": "I"
+                },
+                {
+                  "text": "T"
+                }
+              ],
+              "delay": 1500,
+              "revealCount": 3
+            },
+            "afterPhonemes": [
+              "short_i"
+            ],
+            "phonemeLetterIndices": [
+              1
+            ]
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.3c/S3b.mp3",
+            "ttsScript": "Add a Magic E. Kit becomes kite!",
+            "interaction": "",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "K"
+                },
+                {
+                  "text": "I"
+                },
+                {
+                  "text": "T"
+                },
+                {
+                  "text": "E"
+                }
+              ],
+              "delay": 2500,
+              "revealCount": 4
+            },
+            "afterPhonemes": [
+              "long_i"
+            ],
+            "phonemeLetterIndices": [
+              1
+            ]
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.3c/S3c.mp3",
+            "ttsScript": "Now the I says its name: EYE!",
+            "interaction": "",
+            "displayText": "I says EYE!",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Kit Becomes Kite",
+        "imagePrompt": "A small cartoon toolkit next to a colorful flying kite with a ribbon tail, a tiny letter E floating between them. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.3c/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.3c/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A Magic E trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.3c/S4b.mp3",
+            "ttsScript": "The Magic E is silent. But it is super powerful. It changes the vowel!",
+            "interaction": "",
+            "displayText": "Silent but powerful",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.3c/S4c.mp3",
+            "ttsScript": "Now you are ready to spot Magic E words!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Silent but Powerful",
+        "imagePrompt": "A cheerful cartoon letter E with one finger on its lips making a shh gesture, tiny sparkles around it. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.3c/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RF.1.3c-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RF.1.3c-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RF.1.3c-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RF.1.3c-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RF.1.3c-Q5"
+      }
+    ]
   },
   {
     "standardId": "RF.1.3d",
     "grade": "1st Grade",
     "domain": "Foundational Skills",
     "title": "Counting Syllables",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.3d/S1a.mp3",
+            "ttsScript": "Every word has beats inside it. We call them syllables.",
+            "interaction": "",
+            "displayText": "Beats = syllables",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.3d/S1b.mp3",
+            "ttsScript": "You can clap a word to find the beats!",
+            "interaction": "",
+            "displayText": "Clap it out",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.3d/S1c.mp3",
+            "ttsScript": "Let us try some together.",
+            "interaction": "",
+            "displayText": "Let us clap",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Clap Out the Beats",
+        "imagePrompt": "A cheerful cartoon child clapping happily with sparkles flying out of their hands, a musical note floating nearby. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.3d/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.3d/S2a.mp3",
+            "ttsScript": "Listen. Cat.",
+            "interaction": "",
+            "displayText": "Cat",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.3d/S2b.mp3",
+            "ttsScript": "One clap! Cat has one beat. One syllable.",
+            "interaction": "",
+            "displayText": "1 syllable",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Cat Is One Beat",
+        "imagePrompt": "A cheerful cartoon cat sitting up with one big clap emoji next to it. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.3d/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.3d/S3a.mp3",
+            "ttsScript": "Listen. Rab-bit.",
+            "interaction": "",
+            "displayText": "Rab-bit",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.3d/S3b.mp3",
+            "ttsScript": "Two claps! Rabbit has two beats. Two syllables.",
+            "interaction": "",
+            "displayText": "2 syllables",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.3d/S3c.mp3",
+            "ttsScript": "Every syllable needs a vowel. Rabbit has A and I. Two vowels, two syllables.",
+            "interaction": "",
+            "displayText": "Vowel in each beat",
+            "displayDelay": 3000
+          }
+        ],
+        "heading": "Rabbit Is Two Beats",
+        "imagePrompt": "A cheerful cartoon rabbit with big floppy ears standing tall, with two clap emojis next to it. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.3d/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.3d/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A syllable trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.3d/S4b.mp3",
+            "ttsScript": "Put your hand under your chin. Each time your chin drops, that is one syllable!",
+            "interaction": "",
+            "displayText": "Chin drops = syllable",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.3d/S4c.mp3",
+            "ttsScript": "Now you are ready to count syllables!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Your Hand Knows",
+        "imagePrompt": "A cheerful cartoon hand character with a smile, clapping to a beat. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.3d/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RF.1.3d-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RF.1.3d-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RF.1.3d-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RF.1.3d-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RF.1.3d-Q5"
+      }
+    ]
   },
   {
     "standardId": "RF.1.3e",
     "grade": "1st Grade",
     "domain": "Foundational Skills",
     "title": "Two-Syllable Words",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.3e/S1a.mp3",
+            "ttsScript": "Some words have two beats. Two syllables.",
+            "interaction": "",
+            "displayText": "Two beats!",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.3e/S1b.mp3",
+            "ttsScript": "Long words can feel tricky. But we can split them into smaller pieces.",
+            "interaction": "",
+            "displayText": "Split them up",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.3e/S1c.mp3",
+            "ttsScript": "Then read each piece!",
+            "interaction": "",
+            "displayText": "Piece by piece",
+            "displayDelay": 1800
+          }
+        ],
+        "heading": "Bigger Words, Two Beats",
+        "imagePrompt": "A cheerful cartoon child looking at a long word on a card, two clap emojis around them. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.3e/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.3e/S2a.mp3",
+            "ttsScript": "If there are two of the same consonants in the middle, split between them.",
+            "interaction": "",
+            "displayText": "Split the middle",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.3e/S2b.mp3",
+            "ttsScript": "Rabbit becomes rab and bit.",
+            "interaction": "",
+            "displayText": "rab | bit",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.3e/S2c.mp3",
+            "ttsScript": "Napkin becomes nap and kin.",
+            "interaction": "",
+            "displayText": "nap | kin",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Split Between the Letters",
+        "imagePrompt": "A cheerful cartoon pair of scissors cutting right between two letters on a word tile, tiny sparkles where it cuts. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.3e/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "example",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.3e/S3a.mp3",
+            "ttsScript": "Let us read pencil together.",
+            "interaction": "",
+            "displayText": "pencil",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.3e/S3b.mp3",
+            "ttsScript": "Split. Pen and cil.",
+            "interaction": "",
+            "displayText": "pen | cil",
+            "displayDelay": 2200
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.3e/S3c.mp3",
+            "ttsScript": "Read each piece. Pen. Cil.",
+            "interaction": "",
+            "displayText": "pen | cil",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RF.1.3e/S3d.mp3",
+            "ttsScript": "Now blend. Pencil!",
+            "interaction": "",
+            "displayText": "pencil!",
+            "displayDelay": 2200
+          }
+        ],
+        "heading": "Read PENCIL",
+        "imagePrompt": "A cheerful cartoon yellow pencil with a smiling face, upright on a table. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.3e/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.3e/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A two-syllable trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.3e/S4b.mp3",
+            "ttsScript": "Split the word. Read each piece. Then blend them back together!",
+            "interaction": "",
+            "displayText": "Split, read, blend",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.3e/S4c.mp3",
+            "ttsScript": "Now you are ready to read two-syllable words!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Two Pieces, One Word",
+        "imagePrompt": "Two cheerful cartoon puzzle pieces fitting together, with a word tile forming from them, tiny sparkles in the middle. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.3e/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RF.1.3e-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RF.1.3e-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RF.1.3e-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RF.1.3e-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RF.1.3e-Q5"
+      }
+    ]
   },
   {
     "standardId": "RF.1.3f",
     "grade": "1st Grade",
     "domain": "Foundational Skills",
     "title": "Word Endings",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.3f/S1a.mp3",
+            "ttsScript": "Little endings can change what a word means.",
+            "interaction": "",
+            "displayText": "Endings matter!",
+            "displayDelay": 2200
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.3f/S1b.mp3",
+            "ttsScript": "They tell us how many, or when.",
+            "interaction": "",
+            "displayText": "How many. When.",
+            "displayDelay": 2200
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.3f/S1c.mp3",
+            "ttsScript": "Let us meet three of the most common ones.",
+            "interaction": "",
+            "displayText": "Three big ones",
+            "displayDelay": 2000
+          }
+        ],
+        "heading": "Little Endings Change Meaning",
+        "imagePrompt": "A cheerful cartoon word-tile character with three little ending tiles floating next to it, each a different color. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.3f/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.3f/S2a.mp3",
+            "ttsScript": "The S ending means more than one.",
+            "interaction": "",
+            "displayText": "-s = more than 1",
+            "displayDelay": 2200
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.3f/S2b.mp3",
+            "ttsScript": "One cat. Two cats.",
+            "interaction": "",
+            "displayText": "cat -> cats",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.3f/S2c.mp3",
+            "ttsScript": "Dog becomes dogs. Apple becomes apples.",
+            "interaction": "",
+            "displayText": "dogs, apples",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "The -s Ending",
+        "imagePrompt": "A cheerful cartoon single cat next to a cheerful group of three cats, a tiny plus-S symbol between them. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.3f/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.3f/S3a.mp3",
+            "ttsScript": "The ending E D means it already happened.",
+            "interaction": "",
+            "displayText": "-ed = before",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.3f/S3b.mp3",
+            "ttsScript": "Yesterday, I jumped. Already happened!",
+            "interaction": "",
+            "displayText": "jumped = past",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.3f/S3c.mp3",
+            "ttsScript": "The ending I N G means happening right now.",
+            "interaction": "",
+            "displayText": "-ing = now",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RF.1.3f/S3d.mp3",
+            "ttsScript": "I am jumping. Happening now!",
+            "interaction": "",
+            "displayText": "jumping = now",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "The -ed and -ing Endings",
+        "imagePrompt": "A cheerful cartoon clock with two arrows, one pointing left labeled with a small yesterday-sun, one pointing right labeled with a small now-star. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.3f/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.3f/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "An endings trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.3f/S4b.mp3",
+            "ttsScript": "Look at the last letters. The ending tells you when or how many!",
+            "interaction": "",
+            "displayText": "Last letters = clue",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.3f/S4c.mp3",
+            "ttsScript": "Now you are ready to read word endings!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Spot the Ending",
+        "imagePrompt": "A cheerful cartoon magnifying glass zooming in on the last two letters of a word tile, tiny sparkles around the ending. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.3f/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RF.1.3f-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RF.1.3f-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RF.1.3f-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RF.1.3f-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RF.1.3f-Q5"
+      }
+    ]
   },
   {
     "standardId": "RF.1.3g",
     "grade": "1st Grade",
     "domain": "Foundational Skills",
     "title": "Tricky Sight Words",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.3g/S1a.mp3",
+            "ttsScript": "Most words you can sound out. But a few are tricky!",
+            "interaction": "",
+            "displayText": "Some words are tricky",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.3g/S1b.mp3",
+            "ttsScript": "These words do not follow the usual rules.",
+            "interaction": "",
+            "displayText": "No rules!",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.3g/S1c.mp3",
+            "ttsScript": "The best way? Memorize them by sight.",
+            "interaction": "",
+            "displayText": "Memorize them",
+            "displayDelay": 2200
+          }
+        ],
+        "heading": "Words That Break the Rules",
+        "imagePrompt": "A cheerful cartoon child holding a colorful word card that has a tiny magical sparkle around it, looking puzzled but curious. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.3g/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.3g/S2a.mp3",
+            "ttsScript": "Look at this word. Said.",
+            "interaction": "",
+            "displayText": "said",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.3g/S2b.mp3",
+            "ttsScript": "It is spelled S-A-I-D. But it sounds like sed!",
+            "interaction": "",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "s"
+                },
+                {
+                  "text": "a"
+                },
+                {
+                  "text": "i"
+                },
+                {
+                  "text": "d"
+                }
+              ],
+              "delay": 1800,
+              "revealCount": 4
+            }
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.3g/S2c.mp3",
+            "ttsScript": "It breaks the rules! So we just memorize it.",
+            "interaction": "",
+            "displayText": "Just memorize",
+            "displayDelay": 2200
+          }
+        ],
+        "heading": "Said",
+        "imagePrompt": "A cheerful cartoon child with a speech bubble above their head containing a happy face. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.3g/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.3g/S3a.mp3",
+            "ttsScript": "Was. Were. Have.",
+            "interaction": "",
+            "displayText": "was, were, have",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.3g/S3b.mp3",
+            "ttsScript": "Was sounds like wuz, but it ends in s.",
+            "interaction": "",
+            "displayText": "was = sounds tricky",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.3g/S3c.mp3",
+            "ttsScript": "Were has a silent E that helps it end in R.",
+            "interaction": "",
+            "displayText": "were = silent E",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RF.1.3g/S3d.mp3",
+            "ttsScript": "Have ends in a silent E too. Tricky words stick together.",
+            "interaction": "",
+            "displayText": "have = silent E",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Was, Were, Have",
+        "imagePrompt": "Three cheerful cartoon word tiles in a friendly row, each with a different color and a tiny smile. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.3g/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.3g/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A sight word trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.3g/S4b.mp3",
+            "ttsScript": "The more often you see a tricky word, the faster you know it. Flash cards help!",
+            "interaction": "",
+            "displayText": "Flash them often",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.3g/S4c.mp3",
+            "ttsScript": "Now you are ready to read tricky sight words!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "See Them Every Day",
+        "imagePrompt": "A cheerful cartoon word-flashcard character with a friendly smile, stars sparkling around it. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.3g/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RF.1.3g-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RF.1.3g-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RF.1.3g-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RF.1.3g-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RF.1.3g-Q5"
+      }
+    ]
   },
   {
     "standardId": "RF.1.4a",
     "grade": "1st Grade",
     "domain": "Foundational Skills",
     "title": "Reading with Purpose",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.4a/S1a.mp3",
+            "ttsScript": "Great readers think before they read.",
+            "interaction": "",
+            "displayText": "Think first",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.4a/S1b.mp3",
+            "ttsScript": "They ask, why am I reading this book?",
+            "interaction": "",
+            "displayText": "Why am I reading?",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.4a/S1c.mp3",
+            "ttsScript": "That question is called your purpose.",
+            "interaction": "",
+            "displayText": "Purpose = your why",
+            "displayDelay": 2200
+          }
+        ],
+        "heading": "Know Why You Read",
+        "imagePrompt": "A cheerful cartoon child holding an open book with a tiny target or goal symbol floating above the page, smiling confidently. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.4a/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.4a/S2a.mp3",
+            "ttsScript": "We read for two big reasons.",
+            "interaction": "",
+            "displayText": "Two big reasons",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.4a/S2b.mp3",
+            "ttsScript": "A storybook. We read it for fun!",
+            "interaction": "",
+            "displayText": "Storybook = fun",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.4a/S2c.mp3",
+            "ttsScript": "A fact book. We read it to learn!",
+            "interaction": "",
+            "displayText": "Fact book = learn",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Two Big Reasons",
+        "imagePrompt": "Two cheerful cartoon open books side by side, one a whimsical storybook with a tiny dragon, one a fact book with a tiny globe. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.4a/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "example",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.4a/S3a.mp3",
+            "ttsScript": "Imagine you want to learn how butterflies fly.",
+            "interaction": "",
+            "displayText": "Goal: learn about butterflies",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.4a/S3b.mp3",
+            "ttsScript": "Which book fits? A fact book about butterflies!",
+            "interaction": "",
+            "displayText": "Pick the fact book",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.4a/S3c.mp3",
+            "ttsScript": "Now imagine you want a bedtime story.",
+            "interaction": "",
+            "displayText": "Goal: a story",
+            "displayDelay": 2200
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RF.1.4a/S3d.mp3",
+            "ttsScript": "A storybook! Your purpose picks your book.",
+            "interaction": "",
+            "displayText": "Purpose picks the book",
+            "displayDelay": 2800
+          }
+        ],
+        "heading": "Picking a Book",
+        "imagePrompt": "A cheerful cartoon child looking at a bookshelf with many colorful books, pointing at one thoughtfully. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.4a/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.4a/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A purpose trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.4a/S4b.mp3",
+            "ttsScript": "Before you open a book, ask yourself: what do I want from this book?",
+            "interaction": "",
+            "displayText": "What do I want?",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.4a/S4c.mp3",
+            "ttsScript": "Now you are ready to read with purpose!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Pause Before You Start",
+        "imagePrompt": "A cheerful cartoon child pausing with a finger on their chin, a tiny lightbulb blinking above their head. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.4a/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RF.1.4a-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RF.1.4a-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RF.1.4a-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RF.1.4a-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RF.1.4a-Q5"
+      }
+    ]
   },
   {
     "standardId": "L.1.1",
     "grade": "1st Grade",
     "domain": "Language",
     "title": "Grammar Power",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.1.1/S1a.mp3",
+            "ttsScript": "Every word in a sentence has a job.",
+            "interaction": "",
+            "displayText": "Every word has a job",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/L.1.1/S1b.mp3",
+            "ttsScript": "Some words name things. Some show action. Some describe.",
+            "interaction": "",
+            "displayText": "Name. Do. Describe.",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/L.1.1/S1c.mp3",
+            "ttsScript": "Knowing the jobs helps us talk and write clearly!",
+            "interaction": "",
+            "displayText": "Clear talking + writing",
+            "displayDelay": 2800
+          }
+        ],
+        "heading": "Word Jobs",
+        "imagePrompt": "A cheerful cartoon group of colorful word-tile characters standing in a friendly row, each with a different smiling face. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.1.1/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.1.1/S2a.mp3",
+            "ttsScript": "A noun names a person, place, or thing.",
+            "interaction": "",
+            "displayText": "Noun = name",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/L.1.1/S2b.mp3",
+            "ttsScript": "Dog. Tree. School. Mom. All nouns!",
+            "interaction": "",
+            "displayText": "dog, tree, school, mom",
+            "displayDelay": 3000
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/L.1.1/S2c.mp3",
+            "ttsScript": "If you can point to it, it is usually a noun.",
+            "interaction": "",
+            "displayText": "Point = noun",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Nouns Name Things",
+        "imagePrompt": "Three cheerful cartoon items in a friendly row, a smiling dog, a tree, and a small house. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.1.1/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.1.1/S3a.mp3",
+            "ttsScript": "A verb shows action. What someone is doing.",
+            "interaction": "",
+            "displayText": "Verb = action",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/L.1.1/S3b.mp3",
+            "ttsScript": "Run. Jump. Clap. Eat. All verbs!",
+            "interaction": "",
+            "displayText": "run, jump, clap, eat",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/L.1.1/S3c.mp3",
+            "ttsScript": "Every sentence needs a verb to tell what is happening.",
+            "interaction": "",
+            "displayText": "Need a verb",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Verbs Show Action",
+        "imagePrompt": "Three cheerful cartoon action scenes in a row, a child running, a child jumping, and a child clapping. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.1.1/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.1.1/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A grammar trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/L.1.1/S4b.mp3",
+            "ttsScript": "Ask: what names a thing? That is the noun. What shows action? That is the verb!",
+            "interaction": "",
+            "displayText": "Name vs action",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/L.1.1/S4c.mp3",
+            "ttsScript": "Now you are ready to spot grammar jobs!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Spot the Jobs",
+        "imagePrompt": "A cheerful cartoon detective child with a magnifying glass hovering over a sentence card, tiny sparkles where they look. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.1.1/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "L.1.1-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "L.1.1-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "L.1.1-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "L.1.1-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "L.1.1-Q5"
+      }
+    ]
   },
   {
     "standardId": "L.1.2",
     "grade": "1st Grade",
     "domain": "Language",
     "title": "Capitals and Periods",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.1.2/S1a.mp3",
+            "ttsScript": "When we write, we follow a few important rules.",
+            "interaction": "",
+            "displayText": "Writing rules",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/L.1.2/S1b.mp3",
+            "ttsScript": "The rules help our readers understand us.",
+            "interaction": "",
+            "displayText": "Help readers",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/L.1.2/S1c.mp3",
+            "ttsScript": "Let us learn two big ones.",
+            "interaction": "",
+            "displayText": "Two big rules",
+            "displayDelay": 2000
+          }
+        ],
+        "heading": "Writing Rules",
+        "imagePrompt": "A cheerful cartoon child writing on a sheet of paper with a big yellow pencil, smiling, stars floating above the paper. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.1.2/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.1.2/S2a.mp3",
+            "ttsScript": "Every sentence starts with a capital letter.",
+            "interaction": "",
+            "displayText": "Start with a capital",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/L.1.2/S2b.mp3",
+            "ttsScript": "The dog runs. See the big T?",
+            "interaction": "",
+            "displayText": "The dog runs.",
+            "displayDelay": 2200
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/L.1.2/S2c.mp3",
+            "ttsScript": "Names also start with capitals. Maya, not maya.",
+            "interaction": "",
+            "displayText": "Names too!",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Rule 1: Start Big",
+        "imagePrompt": "A cheerful cartoon capital letter T character wearing a small gold crown, standing at the front of a line of lowercase letters. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.1.2/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.1.2/S3a.mp3",
+            "ttsScript": "Every sentence ends with a mark.",
+            "interaction": "",
+            "displayText": "End with a mark",
+            "displayDelay": 2200
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/L.1.2/S3b.mp3",
+            "ttsScript": "A period for telling. A question mark for asking. An exclamation mark for excited.",
+            "interaction": "",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "."
+                },
+                {
+                  "text": "?"
+                },
+                {
+                  "text": "!"
+                }
+              ],
+              "delay": 1500,
+              "revealCount": 3
+            }
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/L.1.2/S3c.mp3",
+            "ttsScript": "Pick the mark that fits your sentence!",
+            "interaction": "",
+            "displayText": "Pick the right mark",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Rule 2: End With a Mark",
+        "imagePrompt": "Three cheerful cartoon punctuation mark characters in a row, a period, a question mark, and an exclamation mark, all waving. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.1.2/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.1.2/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A writing trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/L.1.2/S4b.mp3",
+            "ttsScript": "When you write, check the start and the end of every sentence.",
+            "interaction": "",
+            "displayText": "Check start + end",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/L.1.2/S4c.mp3",
+            "ttsScript": "Now you are ready to use capitals and periods!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Check Both Ends",
+        "imagePrompt": "A cheerful cartoon sentence card with a capital letter glowing at the start and a period glowing at the end, tiny sparkles. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.1.2/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "L.1.2-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "L.1.2-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "L.1.2-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "L.1.2-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "L.1.2-Q5"
+      }
+    ]
   },
   {
     "standardId": "L.2.1",
@@ -15972,15 +17931,331 @@
   {
     "standardId": "RL.1.10",
     "grade": "1st Grade",
-    "domain": "Reading Literature",
+    "domain": "Literature",
     "title": "Storytime All Year",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.1.10/S1a.mp3",
+            "ttsScript": "Reading a little every day is like a superpower.",
+            "interaction": "",
+            "displayText": "Read every day",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.1.10/S1b.mp3",
+            "ttsScript": "The more stories and poems you read, the stronger your reading gets.",
+            "interaction": "",
+            "displayText": "Stronger reader",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.1.10/S1c.mp3",
+            "ttsScript": "Let us see how to read all year long.",
+            "interaction": "",
+            "displayText": "All year long!",
+            "displayDelay": 2000
+          }
+        ],
+        "heading": "Read Every Day",
+        "imagePrompt": "A cheerful cartoon calendar with a tiny bookmark on each month, and a friendly child reading next to it. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.1.10/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.1.10/S2a.mp3",
+            "ttsScript": "Pick stories about different things.",
+            "interaction": "",
+            "displayText": "Different stories",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.1.10/S2b.mp3",
+            "ttsScript": "Funny ones. Scary ones. Adventure ones. Poems too!",
+            "interaction": "",
+            "displayText": "Funny. Scary. Adventure. Poems.",
+            "displayDelay": 3000
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.1.10/S2c.mp3",
+            "ttsScript": "New stories teach you new words and new ideas.",
+            "interaction": "",
+            "displayText": "New words + ideas",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Mix It Up",
+        "imagePrompt": "A cheerful cartoon bookshelf full of different-colored books and a child picking one out, with others ready to choose. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.1.10/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.1.10/S3a.mp3",
+            "ttsScript": "Sometimes a story has tricky words or long sentences.",
+            "interaction": "",
+            "displayText": "Some are tricky",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.1.10/S3b.mp3",
+            "ttsScript": "That is a good thing! Growing readers try hard books.",
+            "interaction": "",
+            "displayText": "Tricky = growing",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.1.10/S3c.mp3",
+            "ttsScript": "When you need help, ask a grown-up or friend. That is smart!",
+            "interaction": "",
+            "displayText": "Ask for help",
+            "displayDelay": 2800
+          }
+        ],
+        "heading": "When It Gets Tricky",
+        "imagePrompt": "A cheerful cartoon child with a puzzled look, raising a hand with a tiny lightbulb above them, a grown-up smiling nearby. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.1.10/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.1.10/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A routine trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.1.10/S4b.mp3",
+            "ttsScript": "Pick a time to read every day. Bedtime, after lunch, or right when you wake up.",
+            "interaction": "",
+            "displayText": "Same time daily",
+            "displayDelay": 3000
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.1.10/S4c.mp3",
+            "ttsScript": "Now you are ready to enjoy stories all year long!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "A Reading Routine",
+        "imagePrompt": "A cheerful cartoon clock with hearts around it, a child in pajamas sitting on a bed reading a book. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.1.10/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RL.1.10-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RL.1.10-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RL.1.10-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RL.1.10-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RL.1.10-Q5"
+      }
+    ]
   },
   {
     "standardId": "RI.1.10",
     "grade": "1st Grade",
-    "domain": "Reading Informational Text",
+    "domain": "Informational",
     "title": "Fact Books All Year",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.1.10/S1a.mp3",
+            "ttsScript": "Fact books are full of real things from our world.",
+            "interaction": "",
+            "displayText": "Real things",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.1.10/S1b.mp3",
+            "ttsScript": "They can be about anything! Animals, space, weather, food.",
+            "interaction": "",
+            "displayText": "Anything real",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.1.10/S1c.mp3",
+            "ttsScript": "Let us learn how to read fact books all year.",
+            "interaction": "",
+            "displayText": "All year!",
+            "displayDelay": 2000
+          }
+        ],
+        "heading": "Facts Are Fun",
+        "imagePrompt": "A cheerful cartoon child standing on a colorful rug surrounded by different fact books, each open with a tiny diagram, smiling excitedly. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.1.10/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.1.10/S2a.mp3",
+            "ttsScript": "Pick fact books about things you love.",
+            "interaction": "",
+            "displayText": "What do you love?",
+            "displayDelay": 2200
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.1.10/S2b.mp3",
+            "ttsScript": "Love bugs? Read about insects. Love space? Read about planets.",
+            "interaction": "",
+            "displayText": "Bugs? Space? Anything!",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.1.10/S2c.mp3",
+            "ttsScript": "You will have so much more fun when it is your favorite topic.",
+            "interaction": "",
+            "displayText": "More fun that way",
+            "displayDelay": 2800
+          }
+        ],
+        "heading": "Pick What You Love",
+        "imagePrompt": "A cheerful cartoon child thinking, with three tiny thought bubbles around them showing a bug, a planet, and a sports ball. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.1.10/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.1.10/S3a.mp3",
+            "ttsScript": "Fact books have helpers built in.",
+            "interaction": "",
+            "displayText": "Fact book helpers",
+            "displayDelay": 2200
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.1.10/S3b.mp3",
+            "ttsScript": "Headings. Pictures. Labels. Use them to find facts fast.",
+            "interaction": "",
+            "displayText": "Headings + pics + labels",
+            "displayDelay": 3000
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.1.10/S3c.mp3",
+            "ttsScript": "They are like a roadmap through the book!",
+            "interaction": "",
+            "displayText": "Like a roadmap",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Use the Parts",
+        "imagePrompt": "A cheerful cartoon open fact book with a colorful heading, a friendly diagram of a plant with tiny labels, and a smiling caption. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.1.10/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.1.10/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A fact book trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.1.10/S4b.mp3",
+            "ttsScript": "Try a new topic each week. You will discover something you did not know!",
+            "interaction": "",
+            "displayText": "New topic, new facts",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.1.10/S4c.mp3",
+            "ttsScript": "Now you are ready to explore fact books all year!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "New Topic Every Week",
+        "imagePrompt": "A cheerful cartoon calendar with tiny themed stickers on each week, a kid reading next to it. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.1.10/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RI.1.10-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RI.1.10-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RI.1.10-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RI.1.10-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RI.1.10-Q5"
+      }
+    ]
   }
 ]

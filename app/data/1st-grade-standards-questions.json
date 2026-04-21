@@ -3148,6 +3148,1122 @@
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.6/L.1.6-Q5.png"
         }
       ]
+    },
+    {
+      "standard_id": "RF.1.3a",
+      "standard_description": "Know the spelling-sound correspondences for common consonant digraphs",
+      "domain": "Foundational Skills",
+      "parent_tip": "Two letters can spell one sound! Point them out while reading ('look, sh says shhh!').",
+      "questions": [
+        {
+          "id": "RF.1.3a-Q1",
+          "type": "multiple_choice",
+          "prompt": "Which two letters make the \"shhh\" sound?",
+          "choices": [
+            "sh",
+            "ch",
+            "th",
+            "wh"
+          ],
+          "correct": "sh",
+          "hint": "Think of ship! Sh sh ship!",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3a/RF.1.3a-Q1-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3a/RF.1.3a-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.3a/RF.1.3a-Q1.png"
+        },
+        {
+          "id": "RF.1.3a-Q2",
+          "type": "multiple_choice",
+          "prompt": "Which two letters make the \"chh\" sound like in **chip**?",
+          "choices": [
+            "ch",
+            "sh",
+            "th",
+            "ph"
+          ],
+          "correct": "ch",
+          "hint": "Chip starts with the \"chh\" sound!",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3a/RF.1.3a-Q2-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3a/RF.1.3a-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.3a/RF.1.3a-Q2.png"
+        },
+        {
+          "id": "RF.1.3a-Q3",
+          "type": "multiple_choice",
+          "prompt": "Which word starts with the **th** sound?",
+          "choices": [
+            "thumb",
+            "chimp",
+            "shell",
+            "what"
+          ],
+          "correct": "thumb",
+          "hint": "Put your tongue behind your teeth and say thuh!",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3a/RF.1.3a-Q3-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3a/RF.1.3a-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.3a/RF.1.3a-Q3.png"
+        },
+        {
+          "id": "RF.1.3a-Q4",
+          "type": "multiple_choice",
+          "prompt": "Look at the word **ship**. What two letters spell one sound?",
+          "choices": [
+            "sh",
+            "hi",
+            "ip",
+            "si"
+          ],
+          "correct": "sh",
+          "hint": "The first two letters make the \"shhh\" sound together.",
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3a/RF.1.3a-Q4-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3a/RF.1.3a-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.3a/RF.1.3a-Q4.png"
+        },
+        {
+          "id": "RF.1.3a-Q5",
+          "type": "multiple_choice",
+          "prompt": "Which word has the **ch** sound at the end?",
+          "choices": [
+            "beach",
+            "fish",
+            "bath",
+            "moth"
+          ],
+          "correct": "beach",
+          "hint": "Listen to the very last sound in each word.",
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3a/RF.1.3a-Q5-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3a/RF.1.3a-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.3a/RF.1.3a-Q5.png"
+        }
+      ]
+    },
+    {
+      "standard_id": "RF.1.3b",
+      "standard_description": "Decode regularly spelled one-syllable words",
+      "domain": "Foundational Skills",
+      "parent_tip": "Three-letter words are the foundation. Stretch each sound, then snap them together.",
+      "questions": [
+        {
+          "id": "RF.1.3b-Q1",
+          "type": "multiple_choice",
+          "prompt": "Sound out this word: **c-a-t**. What word is it?",
+          "choices": [
+            "cat",
+            "cap",
+            "cup",
+            "cot"
+          ],
+          "correct": "cat",
+          "hint": "Blend the sounds together: kuh-ah-tuh!",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3b/RF.1.3b-Q1-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3b/RF.1.3b-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.3b/RF.1.3b-Q1.png"
+        },
+        {
+          "id": "RF.1.3b-Q2",
+          "type": "multiple_choice",
+          "prompt": "What three sounds are in the word **dog**?",
+          "choices": [
+            "d-o-g",
+            "d-u-g",
+            "g-o-d",
+            "d-a-g"
+          ],
+          "correct": "d-o-g",
+          "hint": "Stretch each letter out: duh...oh...guh.",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3b/RF.1.3b-Q2-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3b/RF.1.3b-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.3b/RF.1.3b-Q2.png"
+        },
+        {
+          "id": "RF.1.3b-Q3",
+          "type": "multiple_choice",
+          "prompt": "Sound out: **s-u-n**. What word is it?",
+          "choices": [
+            "sun",
+            "sit",
+            "sum",
+            "son"
+          ],
+          "correct": "sun",
+          "hint": "Blend: sss-uh-n. The big bright thing in the sky!",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3b/RF.1.3b-Q3-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3b/RF.1.3b-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.3b/RF.1.3b-Q3.png"
+        },
+        {
+          "id": "RF.1.3b-Q4",
+          "type": "multiple_choice",
+          "prompt": "Which word has these sounds: **b-i-g**?",
+          "choices": [
+            "big",
+            "bug",
+            "bag",
+            "beg"
+          ],
+          "correct": "big",
+          "hint": "Blend: buh-ih-guh.",
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3b/RF.1.3b-Q4-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3b/RF.1.3b-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.3b/RF.1.3b-Q4.png"
+        },
+        {
+          "id": "RF.1.3b-Q5",
+          "type": "multiple_choice",
+          "prompt": "Sound out: **h-o-p**. What word is it?",
+          "choices": [
+            "hop",
+            "hip",
+            "hat",
+            "hug"
+          ],
+          "correct": "hop",
+          "hint": "Blend the sounds: huh-oh-puh!",
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3b/RF.1.3b-Q5-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3b/RF.1.3b-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.3b/RF.1.3b-Q5.png"
+        }
+      ]
+    },
+    {
+      "standard_id": "RF.1.3c",
+      "standard_description": "Know final -e and common vowel team conventions for representing long vowel sounds",
+      "domain": "Foundational Skills",
+      "parent_tip": "Magic E changes the vowel to say its name. Practice cap/cape, hop/hope, cub/cube.",
+      "questions": [
+        {
+          "id": "RF.1.3c-Q1",
+          "type": "multiple_choice",
+          "prompt": "Add an E to the end of **cap**. What word do you get?",
+          "choices": [
+            "cape",
+            "caps",
+            "cop",
+            "cup"
+          ],
+          "correct": "cape",
+          "hint": "The E makes the A say its name: AY!",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3c/RF.1.3c-Q1-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3c/RF.1.3c-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.3c/RF.1.3c-Q1.png"
+        },
+        {
+          "id": "RF.1.3c-Q2",
+          "type": "multiple_choice",
+          "prompt": "What does **hop** become with a Magic E at the end?",
+          "choices": [
+            "hope",
+            "hops",
+            "hope",
+            "hot"
+          ],
+          "correct": "hope",
+          "hint": "Hop plus e = hope. The O says OH!",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3c/RF.1.3c-Q2-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3c/RF.1.3c-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.3c/RF.1.3c-Q2.png"
+        },
+        {
+          "id": "RF.1.3c-Q3",
+          "type": "multiple_choice",
+          "prompt": "Which word has a Magic E?",
+          "choices": [
+            "cake",
+            "cat",
+            "cup",
+            "can"
+          ],
+          "correct": "cake",
+          "hint": "Magic E is at the end. It makes the vowel say its name!",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3c/RF.1.3c-Q3-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3c/RF.1.3c-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.3c/RF.1.3c-Q3.png"
+        },
+        {
+          "id": "RF.1.3c-Q4",
+          "type": "multiple_choice",
+          "prompt": "The word **kite** has which vowel sound?",
+          "choices": [
+            "long I (eye)",
+            "short i (ih)",
+            "long E (ee)",
+            "short a (ah)"
+          ],
+          "correct": "long I (eye)",
+          "hint": "Magic E makes I say its name: EYE!",
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3c/RF.1.3c-Q4-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3c/RF.1.3c-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.3c/RF.1.3c-Q4.png"
+        },
+        {
+          "id": "RF.1.3c-Q5",
+          "type": "multiple_choice",
+          "prompt": "What happens to the E in a Magic E word?",
+          "choices": [
+            "It is silent",
+            "It is loud",
+            "It changes to an A",
+            "It disappears"
+          ],
+          "correct": "It is silent",
+          "hint": "Magic E does not make a sound. But it changes the vowel before it!",
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3c/RF.1.3c-Q5-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3c/RF.1.3c-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.3c/RF.1.3c-Q5.png"
+        }
+      ]
+    },
+    {
+      "standard_id": "RF.1.3d",
+      "standard_description": "Use knowledge that every syllable must have a vowel sound to determine the number of syllables in a printed word",
+      "domain": "Foundational Skills",
+      "parent_tip": "Clap along with words! Each clap is one syllable.",
+      "questions": [
+        {
+          "id": "RF.1.3d-Q1",
+          "type": "multiple_choice",
+          "prompt": "How many syllables are in the word **cat**?",
+          "choices": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "correct": "1",
+          "hint": "Clap it out: cat! Just one clap.",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3d/RF.1.3d-Q1-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3d/RF.1.3d-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.3d/RF.1.3d-Q1.png"
+        },
+        {
+          "id": "RF.1.3d-Q2",
+          "type": "multiple_choice",
+          "prompt": "How many syllables are in **rabbit**? Clap it out: rab-bit!",
+          "choices": [
+            "2",
+            "1",
+            "3",
+            "4"
+          ],
+          "correct": "2",
+          "hint": "Rab... bit. Two claps!",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3d/RF.1.3d-Q2-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3d/RF.1.3d-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.3d/RF.1.3d-Q2.png"
+        },
+        {
+          "id": "RF.1.3d-Q3",
+          "type": "multiple_choice",
+          "prompt": "How many syllables: **but-ter-fly**?",
+          "choices": [
+            "3",
+            "2",
+            "1",
+            "4"
+          ],
+          "correct": "3",
+          "hint": "But-ter-fly. Three claps!",
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3d/RF.1.3d-Q3-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3d/RF.1.3d-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.3d/RF.1.3d-Q3.png"
+        },
+        {
+          "id": "RF.1.3d-Q4",
+          "type": "multiple_choice",
+          "prompt": "Every syllable must have at least one of what?",
+          "choices": [
+            "a vowel sound",
+            "a letter B",
+            "a period",
+            "a word"
+          ],
+          "correct": "a vowel sound",
+          "hint": "A, E, I, O, U! Every syllable needs one.",
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3d/RF.1.3d-Q4-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3d/RF.1.3d-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.3d/RF.1.3d-Q4.png"
+        },
+        {
+          "id": "RF.1.3d-Q5",
+          "type": "multiple_choice",
+          "prompt": "How many syllables in **apple**?",
+          "choices": [
+            "2",
+            "1",
+            "3",
+            "4"
+          ],
+          "correct": "2",
+          "hint": "Ap-ple. Two parts, two claps!",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3d/RF.1.3d-Q5-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3d/RF.1.3d-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.3d/RF.1.3d-Q5.png"
+        }
+      ]
+    },
+    {
+      "standard_id": "RF.1.3e",
+      "standard_description": "Decode two-syllable words following basic patterns by breaking the words into syllables",
+      "domain": "Foundational Skills",
+      "parent_tip": "Split longer words between the two middle consonants: nap-kin, ham-ster.",
+      "questions": [
+        {
+          "id": "RF.1.3e-Q1",
+          "type": "multiple_choice",
+          "prompt": "How do you break **napkin** into syllables?",
+          "choices": [
+            "nap-kin",
+            "nap-ki-n",
+            "na-pkin",
+            "nap-k-in"
+          ],
+          "correct": "nap-kin",
+          "hint": "Split between the two middle consonants.",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3e/RF.1.3e-Q1-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3e/RF.1.3e-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.3e/RF.1.3e-Q1.png"
+        },
+        {
+          "id": "RF.1.3e-Q2",
+          "type": "multiple_choice",
+          "prompt": "How do you break **rabbit** into syllables?",
+          "choices": [
+            "rab-bit",
+            "ra-bbit",
+            "rabb-it",
+            "rabbi-t"
+          ],
+          "correct": "rab-bit",
+          "hint": "Split between the two B's.",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3e/RF.1.3e-Q2-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3e/RF.1.3e-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.3e/RF.1.3e-Q2.png"
+        },
+        {
+          "id": "RF.1.3e-Q3",
+          "type": "multiple_choice",
+          "prompt": "Read each syllable separately: **pen-cil**. What word is this?",
+          "choices": [
+            "pencil",
+            "pencel",
+            "penzil",
+            "pansil"
+          ],
+          "correct": "pencil",
+          "hint": "Put the two syllables together!",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3e/RF.1.3e-Q3-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3e/RF.1.3e-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.3e/RF.1.3e-Q3.png"
+        },
+        {
+          "id": "RF.1.3e-Q4",
+          "type": "multiple_choice",
+          "prompt": "Which word has two syllables?",
+          "choices": [
+            "mitten",
+            "cat",
+            "dog",
+            "fish"
+          ],
+          "correct": "mitten",
+          "hint": "Clap it out! Mit-ten has two beats.",
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3e/RF.1.3e-Q4-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3e/RF.1.3e-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.3e/RF.1.3e-Q4.png"
+        },
+        {
+          "id": "RF.1.3e-Q5",
+          "type": "multiple_choice",
+          "prompt": "Break the word **basket** into syllables.",
+          "choices": [
+            "bas-ket",
+            "ba-sket",
+            "bask-et",
+            "basket-"
+          ],
+          "correct": "bas-ket",
+          "hint": "Split between the S and K.",
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3e/RF.1.3e-Q5-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3e/RF.1.3e-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.3e/RF.1.3e-Q5.png"
+        }
+      ]
+    },
+    {
+      "standard_id": "RF.1.3f",
+      "standard_description": "Read words with inflectional endings",
+      "domain": "Foundational Skills",
+      "parent_tip": "-s makes it more than one. -ed means it already happened. -ing means it is happening now.",
+      "questions": [
+        {
+          "id": "RF.1.3f-Q1",
+          "type": "multiple_choice",
+          "prompt": "What does the **-s** at the end of **cats** mean?",
+          "choices": [
+            "more than one",
+            "it happened before",
+            "it is happening now",
+            "it is very small"
+          ],
+          "correct": "more than one",
+          "hint": "One cat. Two cats. The S means more than one!",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3f/RF.1.3f-Q1-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3f/RF.1.3f-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.3f/RF.1.3f-Q1.png"
+        },
+        {
+          "id": "RF.1.3f-Q2",
+          "type": "multiple_choice",
+          "prompt": "What ending means \"happening right now\"?",
+          "choices": [
+            "-ing",
+            "-ed",
+            "-s",
+            "-er"
+          ],
+          "correct": "-ing",
+          "hint": "Running, jumping, playing. All happening now!",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3f/RF.1.3f-Q2-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3f/RF.1.3f-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.3f/RF.1.3f-Q2.png"
+        },
+        {
+          "id": "RF.1.3f-Q3",
+          "type": "multiple_choice",
+          "prompt": "**Jumped** has which ending?",
+          "choices": [
+            "-ed",
+            "-ing",
+            "-s",
+            "-ly"
+          ],
+          "correct": "-ed",
+          "hint": "The last two letters are e-d. That means it already happened.",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3f/RF.1.3f-Q3-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3f/RF.1.3f-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.3f/RF.1.3f-Q3.png"
+        },
+        {
+          "id": "RF.1.3f-Q4",
+          "type": "multiple_choice",
+          "prompt": "What is the root word in **playing**?",
+          "choices": [
+            "play",
+            "playi",
+            "ing",
+            "plays"
+          ],
+          "correct": "play",
+          "hint": "Take off the -ing. What is left?",
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3f/RF.1.3f-Q4-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3f/RF.1.3f-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.3f/RF.1.3f-Q4.png"
+        },
+        {
+          "id": "RF.1.3f-Q5",
+          "type": "multiple_choice",
+          "prompt": "Add **-ed** to **walk**. What word do you get?",
+          "choices": [
+            "walked",
+            "walks",
+            "walking",
+            "walker"
+          ],
+          "correct": "walked",
+          "hint": "Walk plus e-d means you already did it!",
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3f/RF.1.3f-Q5-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3f/RF.1.3f-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.3f/RF.1.3f-Q5.png"
+        }
+      ]
+    },
+    {
+      "standard_id": "RF.1.3g",
+      "standard_description": "Recognize and read grade-appropriate irregularly spelled words",
+      "domain": "Foundational Skills",
+      "parent_tip": "Some words just can't be sounded out. Memorize 'said', 'was', 'were', 'have'.",
+      "questions": [
+        {
+          "id": "RF.1.3g-Q1",
+          "type": "multiple_choice",
+          "prompt": "The word **said** is tricky. How is it spelled?",
+          "choices": [
+            "s-a-i-d",
+            "s-e-d",
+            "s-a-d",
+            "s-i-d"
+          ],
+          "correct": "s-a-i-d",
+          "hint": "Four letters: s-a-i-d. But it sounds like \"sed\"!",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3g/RF.1.3g-Q1-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3g/RF.1.3g-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.3g/RF.1.3g-Q1.png"
+        },
+        {
+          "id": "RF.1.3g-Q2",
+          "type": "multiple_choice",
+          "prompt": "Which tricky word means \"in the past\"?",
+          "choices": [
+            "was",
+            "is",
+            "now",
+            "do"
+          ],
+          "correct": "was",
+          "hint": "Yesterday I was happy. Was = past!",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3g/RF.1.3g-Q2-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3g/RF.1.3g-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.3g/RF.1.3g-Q2.png"
+        },
+        {
+          "id": "RF.1.3g-Q3",
+          "type": "multiple_choice",
+          "prompt": "How is the tricky word **have** spelled?",
+          "choices": [
+            "h-a-v-e",
+            "h-a-v",
+            "h-a-f",
+            "h-a-p-e"
+          ],
+          "correct": "h-a-v-e",
+          "hint": "Have ends with a silent E!",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3g/RF.1.3g-Q3-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3g/RF.1.3g-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.3g/RF.1.3g-Q3.png"
+        },
+        {
+          "id": "RF.1.3g-Q4",
+          "type": "multiple_choice",
+          "prompt": "Which tricky word means \"more than one person was\"?",
+          "choices": [
+            "were",
+            "was",
+            "are",
+            "is"
+          ],
+          "correct": "were",
+          "hint": "We were here yesterday. Were = past for many!",
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3g/RF.1.3g-Q4-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3g/RF.1.3g-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.3g/RF.1.3g-Q4.png"
+        },
+        {
+          "id": "RF.1.3g-Q5",
+          "type": "multiple_choice",
+          "prompt": "Why are words like **said** and **have** called tricky?",
+          "choices": [
+            "You cannot sound them out",
+            "They have too many letters",
+            "They are very long",
+            "They mean nothing"
+          ],
+          "correct": "You cannot sound them out",
+          "hint": "Tricky words don't follow the usual sound rules. You just memorize them!",
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3g/RF.1.3g-Q5-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3g/RF.1.3g-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.3g/RF.1.3g-Q5.png"
+        }
+      ]
+    },
+    {
+      "standard_id": "RF.1.4a",
+      "standard_description": "Read on-level text with purpose and understanding",
+      "domain": "Foundational Skills",
+      "parent_tip": "Before reading, ask: why am I reading this? What do I want to know?",
+      "questions": [
+        {
+          "id": "RF.1.4a-Q1",
+          "type": "multiple_choice",
+          "prompt": "Why might you read a storybook?",
+          "choices": [
+            "for fun",
+            "to find your lost toy",
+            "to buy groceries",
+            "to build a house"
+          ],
+          "correct": "for fun",
+          "hint": "Storybooks tell adventures! We read them to enjoy.",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4a/RF.1.4a-Q1-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4a/RF.1.4a-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.4a/RF.1.4a-Q1.png"
+        },
+        {
+          "id": "RF.1.4a-Q2",
+          "type": "multiple_choice",
+          "prompt": "Why might you read a book about sharks?",
+          "choices": [
+            "to learn about sharks",
+            "to cook dinner",
+            "to go to bed",
+            "to brush teeth"
+          ],
+          "correct": "to learn about sharks",
+          "hint": "Fact books teach us real information.",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4a/RF.1.4a-Q2-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4a/RF.1.4a-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.4a/RF.1.4a-Q2.png"
+        },
+        {
+          "id": "RF.1.4a-Q3",
+          "type": "multiple_choice",
+          "prompt": "Before you start reading, a smart reader asks:",
+          "choices": [
+            "Why am I reading this?",
+            "What time is it?",
+            "What is for dinner?",
+            "Is it cold outside?"
+          ],
+          "correct": "Why am I reading this?",
+          "hint": "Knowing why gives your reading a purpose!",
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4a/RF.1.4a-Q3-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4a/RF.1.4a-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.4a/RF.1.4a-Q3.png"
+        },
+        {
+          "id": "RF.1.4a-Q4",
+          "type": "multiple_choice",
+          "prompt": "Reading **with purpose** means:",
+          "choices": [
+            "knowing why you are reading",
+            "reading as fast as possible",
+            "skipping every other word",
+            "closing your eyes"
+          ],
+          "correct": "knowing why you are reading",
+          "hint": "Purpose = a reason or a goal!",
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4a/RF.1.4a-Q4-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4a/RF.1.4a-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.4a/RF.1.4a-Q4.png"
+        },
+        {
+          "id": "RF.1.4a-Q5",
+          "type": "multiple_choice",
+          "prompt": "You want to find out how butterflies fly. Which book is best?",
+          "choices": [
+            "a fact book about butterflies",
+            "a storybook about pirates",
+            "a cookbook",
+            "a song book"
+          ],
+          "correct": "a fact book about butterflies",
+          "hint": "Fact books teach real information!",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4a/RF.1.4a-Q5-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4a/RF.1.4a-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.4a/RF.1.4a-Q5.png"
+        }
+      ]
+    },
+    {
+      "standard_id": "RL.1.10",
+      "standard_description": "With prompting and support, read prose and poetry of appropriate complexity for grade 1",
+      "domain": "Literature",
+      "parent_tip": "Read a little every day. Mix old favorites with new, trickier books.",
+      "questions": [
+        {
+          "id": "RL.1.10-Q1",
+          "type": "multiple_choice",
+          "prompt": "Why is it important to read lots of different stories?",
+          "choices": [
+            "It makes your brain stronger",
+            "It makes you taller",
+            "It makes you loud",
+            "It makes you tired"
+          ],
+          "correct": "It makes your brain stronger",
+          "hint": "Different stories build different reading muscles!",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.10/RL.1.10-Q1-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.10/RL.1.10-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RL.1.10/RL.1.10-Q1.png"
+        },
+        {
+          "id": "RL.1.10-Q2",
+          "type": "multiple_choice",
+          "prompt": "Which is a great way to get better at reading?",
+          "choices": [
+            "read a little every day",
+            "read only once a month",
+            "never read",
+            "read only one book over and over"
+          ],
+          "correct": "read a little every day",
+          "hint": "A little every day adds up fast!",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.10/RL.1.10-Q2-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.10/RL.1.10-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RL.1.10/RL.1.10-Q2.png"
+        },
+        {
+          "id": "RL.1.10-Q3",
+          "type": "multiple_choice",
+          "prompt": "What should you do when a story gets tricky?",
+          "choices": [
+            "ask for help",
+            "give up forever",
+            "skip every page",
+            "close the book and never open it"
+          ],
+          "correct": "ask for help",
+          "hint": "Growing readers ask questions when stuck!",
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.10/RL.1.10-Q3-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.10/RL.1.10-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RL.1.10/RL.1.10-Q3.png"
+        },
+        {
+          "id": "RL.1.10-Q4",
+          "type": "multiple_choice",
+          "prompt": "A poem is a special kind of:",
+          "choices": [
+            "story or writing",
+            "toy",
+            "food",
+            "song on the radio"
+          ],
+          "correct": "story or writing",
+          "hint": "Poems are stories told with rhythm and feeling!",
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.10/RL.1.10-Q4-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.10/RL.1.10-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RL.1.10/RL.1.10-Q4.png"
+        },
+        {
+          "id": "RL.1.10-Q5",
+          "type": "multiple_choice",
+          "prompt": "Why try stories that are a little harder than before?",
+          "choices": [
+            "to grow as a reader",
+            "to show off",
+            "to get tired quickly",
+            "to skip reading"
+          ],
+          "correct": "to grow as a reader",
+          "hint": "A little stretch helps you grow!",
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.10/RL.1.10-Q5-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.10/RL.1.10-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RL.1.10/RL.1.10-Q5.png"
+        }
+      ]
+    },
+    {
+      "standard_id": "RI.1.10",
+      "standard_description": "With prompting and support, read informational texts of appropriate complexity for grade 1",
+      "domain": "Informational",
+      "parent_tip": "Mix in fact books about the child's interests — animals, weather, sports.",
+      "questions": [
+        {
+          "id": "RI.1.10-Q1",
+          "type": "multiple_choice",
+          "prompt": "Fact books teach you about:",
+          "choices": [
+            "the real world",
+            "dragons and magic",
+            "your dreams",
+            "made-up animals"
+          ],
+          "correct": "the real world",
+          "hint": "Fact = true! Fact books are about real things.",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.10/RI.1.10-Q1-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.10/RI.1.10-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.10/RI.1.10-Q1.png"
+        },
+        {
+          "id": "RI.1.10-Q2",
+          "type": "multiple_choice",
+          "prompt": "You love bugs! Which fact book should you pick?",
+          "choices": [
+            "a book about insects",
+            "a cookbook",
+            "a storybook about pirates",
+            "a song book"
+          ],
+          "correct": "a book about insects",
+          "hint": "Pick a fact book on what you love!",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.10/RI.1.10-Q2-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.10/RI.1.10-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.10/RI.1.10-Q2.png"
+        },
+        {
+          "id": "RI.1.10-Q3",
+          "type": "multiple_choice",
+          "prompt": "What is a good way to find facts in a book?",
+          "choices": [
+            "look at headings and pictures",
+            "close your eyes",
+            "eat a snack",
+            "skip every page"
+          ],
+          "correct": "look at headings and pictures",
+          "hint": "Headings tell you what each part is about!",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.10/RI.1.10-Q3-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.10/RI.1.10-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.10/RI.1.10-Q3.png"
+        },
+        {
+          "id": "RI.1.10-Q4",
+          "type": "multiple_choice",
+          "prompt": "Why might a fact book have tricky words?",
+          "choices": [
+            "it teaches new words",
+            "to trick you",
+            "to slow you down",
+            "to make you quit"
+          ],
+          "correct": "it teaches new words",
+          "hint": "Tricky words usually name new things you are learning about!",
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.10/RI.1.10-Q4-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.10/RI.1.10-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.10/RI.1.10-Q4.png"
+        },
+        {
+          "id": "RI.1.10-Q5",
+          "type": "multiple_choice",
+          "prompt": "Reading lots of different fact books helps you:",
+          "choices": [
+            "learn about the world",
+            "run faster",
+            "grow taller",
+            "make loud noises"
+          ],
+          "correct": "learn about the world",
+          "hint": "Every fact book teaches you something new!",
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.10/RI.1.10-Q5-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.10/RI.1.10-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.10/RI.1.10-Q5.png"
+        }
+      ]
+    },
+    {
+      "standard_id": "L.1.1",
+      "standard_description": "Demonstrate command of the conventions of standard English grammar and usage when writing or speaking",
+      "domain": "Language",
+      "parent_tip": "Nouns name things. Verbs show action. Point them out in everyday sentences.",
+      "questions": [
+        {
+          "id": "L.1.1-Q1",
+          "type": "multiple_choice",
+          "prompt": "Which word is a **noun** (a thing or person)?",
+          "choices": [
+            "dog",
+            "jumps",
+            "fast",
+            "happily"
+          ],
+          "correct": "dog",
+          "hint": "A noun is a person, place, or thing. Dog is a thing!",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.1/L.1.1-Q1-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.1/L.1.1-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.1/L.1.1-Q1.png"
+        },
+        {
+          "id": "L.1.1-Q2",
+          "type": "multiple_choice",
+          "prompt": "Which word is a **verb** (an action)?",
+          "choices": [
+            "runs",
+            "cat",
+            "red",
+            "tree"
+          ],
+          "correct": "runs",
+          "hint": "A verb shows action. Runs is something you do!",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.1/L.1.1-Q2-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.1/L.1.1-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.1/L.1.1-Q2.png"
+        },
+        {
+          "id": "L.1.1-Q3",
+          "type": "multiple_choice",
+          "prompt": "Which word fits: \"I ___ happy today.\"",
+          "choices": [
+            "am",
+            "is",
+            "are",
+            "be"
+          ],
+          "correct": "am",
+          "hint": "Use \"I am\" for yourself!",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.1/L.1.1-Q3-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.1/L.1.1-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.1/L.1.1-Q3.png"
+        },
+        {
+          "id": "L.1.1-Q4",
+          "type": "multiple_choice",
+          "prompt": "Pick the right word: \"She ___ to school.\"",
+          "choices": [
+            "walks",
+            "walk",
+            "walked",
+            "walking"
+          ],
+          "correct": "walks",
+          "hint": "She walks. When it is one person doing it now, add an s!",
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.1/L.1.1-Q4-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.1/L.1.1-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.1/L.1.1-Q4.png"
+        },
+        {
+          "id": "L.1.1-Q5",
+          "type": "multiple_choice",
+          "prompt": "Which word is an **adjective** (describes a thing)?",
+          "choices": [
+            "fluffy",
+            "cat",
+            "jumps",
+            "quickly"
+          ],
+          "correct": "fluffy",
+          "hint": "An adjective tells what something is like. Fluffy describes!",
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.1/L.1.1-Q5-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.1/L.1.1-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.1/L.1.1-Q5.png"
+        }
+      ]
+    },
+    {
+      "standard_id": "L.1.2",
+      "standard_description": "Demonstrate command of the conventions of standard English capitalization, punctuation, and spelling when writing",
+      "domain": "Language",
+      "parent_tip": "Two simple rules: sentences start with a capital and end with a mark. People's names always capital.",
+      "questions": [
+        {
+          "id": "L.1.2-Q1",
+          "type": "multiple_choice",
+          "prompt": "Which sentence is written correctly?",
+          "choices": [
+            "The dog runs fast.",
+            "the dog runs fast.",
+            "The dog runs fast",
+            "the dog runs fast"
+          ],
+          "correct": "The dog runs fast.",
+          "hint": "Look for the capital letter at the start AND the period at the end.",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.2/L.1.2-Q1-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.2/L.1.2-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.2/L.1.2-Q1.png"
+        },
+        {
+          "id": "L.1.2-Q2",
+          "type": "multiple_choice",
+          "prompt": "What does every sentence need at the end?",
+          "choices": [
+            "a mark like . ? or !",
+            "a number",
+            "a color",
+            "a letter"
+          ],
+          "correct": "a mark like . ? or !",
+          "hint": "Sentences always end with punctuation!",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.2/L.1.2-Q2-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.2/L.1.2-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.2/L.1.2-Q2.png"
+        },
+        {
+          "id": "L.1.2-Q3",
+          "type": "multiple_choice",
+          "prompt": "Which name is written correctly?",
+          "choices": [
+            "Maya",
+            "maya",
+            "MAYA",
+            "mAyA"
+          ],
+          "correct": "Maya",
+          "hint": "Names always start with a capital letter!",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.2/L.1.2-Q3-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.2/L.1.2-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.2/L.1.2-Q3.png"
+        },
+        {
+          "id": "L.1.2-Q4",
+          "type": "multiple_choice",
+          "prompt": "What ending mark do you use for a question?",
+          "choices": [
+            "?",
+            ".",
+            "!",
+            ","
+          ],
+          "correct": "?",
+          "hint": "Questions end with a question mark!",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.2/L.1.2-Q4-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.2/L.1.2-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.2/L.1.2-Q4.png"
+        },
+        {
+          "id": "L.1.2-Q5",
+          "type": "multiple_choice",
+          "prompt": "Fix this: **ben and maya play.** What is wrong?",
+          "choices": [
+            "Names need capitals",
+            "It needs a number",
+            "It has too many words",
+            "Nothing is wrong"
+          ],
+          "correct": "Names need capitals",
+          "hint": "Ben and Maya are names. Start them with capitals!",
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.2/L.1.2-Q5-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.2/L.1.2-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.2/L.1.2-Q5.png"
+        }
+      ]
     }
   ]
 }
