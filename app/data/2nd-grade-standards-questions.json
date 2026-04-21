@@ -3796,6 +3796,285 @@
       ],
       "standard_id": "L.2.6",
       "standard_description": "Use words and phrases acquired through conversations, reading, and being read to, including adjectives and adverbs."
+    },
+    {
+      "standard_id": "L.2.1",
+      "standard_description": "Demonstrate command of the conventions of standard English grammar and usage",
+      "domain": "Language",
+      "parent_tip": "Collective nouns (group, team) act as one thing. Irregular verbs like ran, flew just have to be memorized.",
+      "questions": [
+        {
+          "id": "L.2.1-Q1",
+          "type": "multiple_choice",
+          "prompt": "Pick the right word: The team ___ to the field.",
+          "choices": [
+            "runs",
+            "run",
+            "running",
+            "ran to"
+          ],
+          "correct": "runs",
+          "hint": "Team is one group, so use runs!",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.1/L.2.1-Q1-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.1/L.2.1-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/L.2.1/L.2.1-Q1.png"
+        },
+        {
+          "id": "L.2.1-Q2",
+          "type": "multiple_choice",
+          "prompt": "Which is the past tense of **fly**?",
+          "choices": [
+            "flew",
+            "flied",
+            "flyed",
+            "flying"
+          ],
+          "correct": "flew",
+          "hint": "Fly is irregular. Yesterday it flew!",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.1/L.2.1-Q2-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.1/L.2.1-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/L.2.1/L.2.1-Q2.png"
+        },
+        {
+          "id": "L.2.1-Q3",
+          "type": "multiple_choice",
+          "prompt": "Which sentence is correct?",
+          "choices": [
+            "I am happy today.",
+            "I happy today.",
+            "Me am happy.",
+            "I is happy."
+          ],
+          "correct": "I am happy today.",
+          "hint": "Use \"I am\" for yourself!",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.1/L.2.1-Q3-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.1/L.2.1-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/L.2.1/L.2.1-Q3.png"
+        },
+        {
+          "id": "L.2.1-Q4",
+          "type": "multiple_choice",
+          "prompt": "What is a **collective noun**?",
+          "choices": [
+            "a word for a group",
+            "a long sentence",
+            "a big letter",
+            "a verb"
+          ],
+          "correct": "a word for a group",
+          "hint": "Team, herd, flock — words that name groups.",
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.1/L.2.1-Q4-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.1/L.2.1-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/L.2.1/L.2.1-Q4.png"
+        },
+        {
+          "id": "L.2.1-Q5",
+          "type": "multiple_choice",
+          "prompt": "Past tense of **eat**?",
+          "choices": [
+            "ate",
+            "eated",
+            "eats",
+            "eating"
+          ],
+          "correct": "ate",
+          "hint": "Eat is irregular! Yesterday I ate.",
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.1/L.2.1-Q5-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.1/L.2.1-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/L.2.1/L.2.1-Q5.png"
+        }
+      ]
+    },
+    {
+      "standard_id": "L.2.2",
+      "standard_description": "Demonstrate command of the conventions of capitalization, punctuation, and spelling when writing",
+      "domain": "Language",
+      "parent_tip": "An apostrophe shows ownership (dog's bone) or a contraction (can't). Commas separate items in a list.",
+      "questions": [
+        {
+          "id": "L.2.2-Q1",
+          "type": "multiple_choice",
+          "prompt": "Which shows the dog owns the bone?",
+          "choices": [
+            "the dog's bone",
+            "the dogs bone",
+            "the dog bone",
+            "the dogs' bone"
+          ],
+          "correct": "the dog's bone",
+          "hint": "Apostrophe + S shows one dog owns it!",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.2/L.2.2-Q1-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.2/L.2.2-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/L.2.2/L.2.2-Q1.png"
+        },
+        {
+          "id": "L.2.2-Q2",
+          "type": "multiple_choice",
+          "prompt": "What does **can't** mean?",
+          "choices": [
+            "can not",
+            "could not",
+            "will not",
+            "cannot yet"
+          ],
+          "correct": "can not",
+          "hint": "The apostrophe replaces the missing letters from cannot.",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.2/L.2.2-Q2-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.2/L.2.2-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/L.2.2/L.2.2-Q2.png"
+        },
+        {
+          "id": "L.2.2-Q3",
+          "type": "multiple_choice",
+          "prompt": "Which sentence uses commas correctly?",
+          "choices": [
+            "I like apples, bananas, and grapes.",
+            "I like apples bananas and grapes.",
+            "I, like apples, bananas, and, grapes.",
+            "I like, apples, bananas, and grapes."
+          ],
+          "correct": "I like apples, bananas, and grapes.",
+          "hint": "Commas separate items in a list!",
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.2/L.2.2-Q3-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.2/L.2.2-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/L.2.2/L.2.2-Q3.png"
+        },
+        {
+          "id": "L.2.2-Q4",
+          "type": "multiple_choice",
+          "prompt": "**Let's** is short for:",
+          "choices": [
+            "let us",
+            "let is",
+            "let as",
+            "let it"
+          ],
+          "correct": "let us",
+          "hint": "The apostrophe replaces the U in us.",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.2/L.2.2-Q4-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.2/L.2.2-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/L.2.2/L.2.2-Q4.png"
+        },
+        {
+          "id": "L.2.2-Q5",
+          "type": "multiple_choice",
+          "prompt": "Where do you put a comma in a list?",
+          "choices": [
+            "between each item",
+            "at the start",
+            "at the end",
+            "never"
+          ],
+          "correct": "between each item",
+          "hint": "Commas live between each item to keep them apart!",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.2/L.2.2-Q5-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.2/L.2.2-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/L.2.2/L.2.2-Q5.png"
+        }
+      ]
+    },
+    {
+      "standard_id": "L.2.3",
+      "standard_description": "Use knowledge of language and its conventions when writing, speaking, reading, or listening",
+      "domain": "Language",
+      "parent_tip": "Formal vs casual. Match your words to your reader.",
+      "questions": [
+        {
+          "id": "L.2.3-Q1",
+          "type": "multiple_choice",
+          "prompt": "If you are writing to a teacher, which sounds best?",
+          "choices": [
+            "Thank you for your help.",
+            "Thanks a bunch!",
+            "Thx a lot.",
+            "Yo thanks."
+          ],
+          "correct": "Thank you for your help.",
+          "hint": "Teachers appreciate formal words!",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.3/L.2.3-Q1-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.3/L.2.3-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/L.2.3/L.2.3-Q1.png"
+        },
+        {
+          "id": "L.2.3-Q2",
+          "type": "multiple_choice",
+          "prompt": "Which word is most formal?",
+          "choices": [
+            "assist",
+            "help",
+            "lend a hand",
+            "back up"
+          ],
+          "correct": "assist",
+          "hint": "Assist is a formal way to say help.",
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.3/L.2.3-Q2-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.3/L.2.3-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/L.2.3/L.2.3-Q2.png"
+        },
+        {
+          "id": "L.2.3-Q3",
+          "type": "multiple_choice",
+          "prompt": "Which sentence sounds too casual for a school essay?",
+          "choices": [
+            "Yeah, it's super cool.",
+            "It is very interesting.",
+            "It was a fine experience.",
+            "I enjoyed it."
+          ],
+          "correct": "Yeah, it's super cool.",
+          "hint": "Yeah and super cool sound like talking with friends.",
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.3/L.2.3-Q3-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.3/L.2.3-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/L.2.3/L.2.3-Q3.png"
+        },
+        {
+          "id": "L.2.3-Q4",
+          "type": "multiple_choice",
+          "prompt": "Which word is a stronger way to say **big**?",
+          "choices": [
+            "enormous",
+            "kinda big",
+            "big-ish",
+            "medium"
+          ],
+          "correct": "enormous",
+          "hint": "Enormous means very, very big!",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.3/L.2.3-Q4-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.3/L.2.3-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/L.2.3/L.2.3-Q4.png"
+        },
+        {
+          "id": "L.2.3-Q5",
+          "type": "multiple_choice",
+          "prompt": "Why does word choice matter?",
+          "choices": [
+            "words carry different feelings",
+            "to look smart",
+            "to be funny",
+            "to use long words"
+          ],
+          "correct": "words carry different feelings",
+          "hint": "Each word has a tone and feeling!",
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.3/L.2.3-Q5-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.3/L.2.3-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/L.2.3/L.2.3-Q5.png"
+        }
+      ]
     }
   ]
 }
