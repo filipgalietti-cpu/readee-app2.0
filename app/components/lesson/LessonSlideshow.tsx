@@ -815,31 +815,28 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
   const renderDiagram = (step: Step, i: number) => {
     if (!textsVisible.has(i) || !step.displayDiagram) return null;
 
-    // Consolidate: if an earlier visible step has the same letter sequence,
-    // its render handles the diagram — skip this one.
+    // Only the LATEST visible step with a displayDiagram renders. Earlier
+    // diagrams (regardless of letter sequence) are replaced by the latest one.
+    for (let j = i + 1; j < steps.length; j++) {
+      if (steps[j]?.displayDiagram && textsVisible.has(j)) return null;
+    }
+
     const currentTexts = step.displayDiagram.letters.map((l) => l.text).join("|");
+    const letters = step.displayDiagram.letters.map((l) => ({ ...l }));
+    let revealCount = step.displayDiagram.revealCount ?? letters.length;
+
+    // Merge roles + max revealCount from EARLIER visible steps that share the same letter sequence
+    // (so a progressive reveal across siblings keeps the highest count without restarting).
     for (let j = 0; j < i; j++) {
       const prev = steps[j];
       if (prev?.displayDiagram && textsVisible.has(j)) {
         const prevTexts = prev.displayDiagram.letters.map((l) => l.text).join("|");
-        if (prevTexts === currentTexts) return null;
-      }
-    }
-
-    // Merge roles from this step + any later visible steps with the same letters
-    const letters = step.displayDiagram.letters.map((l) => ({ ...l }));
-    // For shared-row reveal: take the maximum revealCount among visible steps with the same letter sequence.
-    let revealCount = step.displayDiagram.revealCount ?? letters.length;
-    for (let j = i + 1; j < steps.length; j++) {
-      const later = steps[j];
-      if (later?.displayDiagram && textsVisible.has(j)) {
-        const laterTexts = later.displayDiagram.letters.map((l) => l.text).join("|");
-        if (laterTexts === currentTexts) {
-          later.displayDiagram.letters.forEach((l, li) => {
+        if (prevTexts === currentTexts) {
+          prev.displayDiagram.letters.forEach((l, li) => {
             if (l.role && !letters[li].role) letters[li].role = l.role;
           });
-          const laterCount = later.displayDiagram.revealCount ?? letters.length;
-          if (laterCount > revealCount) revealCount = laterCount;
+          const prevCount = prev.displayDiagram.revealCount ?? letters.length;
+          if (prevCount > revealCount) revealCount = prevCount;
         }
       }
     }

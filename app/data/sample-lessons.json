@@ -6771,9 +6771,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.3b/S3sl-a.mp3",
             "ttsScript": "Vowels can make two sounds: a short sound and a long sound.",
-            "interaction": "Heading fades in.",
-            "displayText": "Short sounds & long sounds",
-            "displayDelay": 1500
+            "interaction": "Heading fades in. No body text."
           },
           {
             "sub": "b",
@@ -6834,17 +6832,7 @@
             "sub": "d",
             "audioFile": "audio/lessons/RF.K.3b/S3sl-d.mp3",
             "ttsScript": "Hear the difference? Cat. Cake. Short A and long A.",
-            "interaction": "Both words pop side by side. Tap to continue.",
-            "displayParts": [
-              {
-                "text": "cat",
-                "delay": 1000
-              },
-              {
-                "text": "cake",
-                "delay": 2400
-              }
-            ]
+            "interaction": "Image (cat + cake) and CAKE diagram visible. Tap to continue."
           }
         ],
         "heading": "Short Sounds & Long Sounds",
@@ -6859,33 +6847,68 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.3b/S4me-a.mp3",
             "ttsScript": "Here is a magic trick called Magic E.",
-            "interaction": "Heading fades in.",
-            "displayText": "Magic E",
-            "displayDelay": 1500
+            "interaction": "Heading fades in."
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.3b/S4me-b.mp3",
-            "ttsScript": "Add an E to the end of cat. Cat becomes cake. The E is silent, but it makes the A say its name!",
-            "interaction": "C-A-T morphs to C-A-K-E with sparkle on the new E.",
-            "displayDiagramSwap": {
+            "ttsScript": "The word hat has a short A sound.",
+            "interaction": "H-A-T diagram appears; A pulses as short_a phoneme plays.",
+            "displayDiagram": {
               "letters": [
-                "C",
-                "A",
-                "T"
+                {
+                  "text": "H"
+                },
+                {
+                  "text": "A"
+                },
+                {
+                  "text": "T"
+                }
               ],
-              "swapAt": 2,
-              "toLetter": "KE",
-              "delay": 1500,
-              "swapDelay": 5000
-            }
+              "delay": 1500
+            },
+            "afterPhonemes": [
+              "short_a"
+            ],
+            "phonemeLetterIndices": [
+              1
+            ]
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.3b/S4me-c.mp3",
+            "ttsScript": "Watch this magic! Add an E to the end. Hat becomes hate. The E is silent, but it makes the A say its name.",
+            "interaction": "H-A-T-E diagram replaces H-A-T; A pulses as long_a phoneme plays.",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "H"
+                },
+                {
+                  "text": "A"
+                },
+                {
+                  "text": "T"
+                },
+                {
+                  "text": "E"
+                }
+              ],
+              "delay": 2500
+            },
+            "afterPhonemes": [
+              "long_a"
+            ],
+            "phonemeLetterIndices": [
+              1
+            ]
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RF.K.3b/S4me-d.mp3",
             "ttsScript": "That is Magic E. Silent at the end, but it changes the vowel sound!",
-            "interaction": "Sparkles around the E. Tap to continue.",
-            "displayText": ""
+            "interaction": "Sparkles around the E. Tap to continue."
           }
         ],
         "heading": "A Magic Trick: Silent E",
