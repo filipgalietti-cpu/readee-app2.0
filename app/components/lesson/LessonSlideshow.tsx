@@ -886,7 +886,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
                   ? { scale: { duration: 0.5, ease: "easeOut" } }
                   : { type: "spring", stiffness: 500, damping: 18, delay: li * 0.05 }
                 }
-                className={`w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center text-3xl sm:text-4xl font-extrabold shadow-sm transition-colors ${tileColor}`}
+                className={`min-w-14 sm:min-w-16 h-14 sm:h-16 px-3 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl font-extrabold shadow-sm transition-colors ${tileColor}`}
               >
                 {l.text}
               </motion.span>

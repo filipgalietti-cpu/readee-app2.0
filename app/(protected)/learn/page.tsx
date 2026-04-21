@@ -346,7 +346,10 @@ function LearnSession({
   useEffect(() => {
     if (!showFeedback) return;
     if (isCorrect) {
-      playUrl(getAudioUrl("feedback", pickRandom(CORRECT_AUDIO)));
+      // Delay so the correct chime finishes before the spoken "That's right!" starts
+      const correctUrl = getAudioUrl("feedback", pickRandom(CORRECT_AUDIO));
+      const t = setTimeout(() => playUrl(correctUrl), 700);
+      return () => clearTimeout(t);
     } else {
       const prefixUrl = getAudioUrl("feedback", pickRandom(INCORRECT_AUDIO));
       // After "Try again!" prefix, chain the correct-answer readback for any

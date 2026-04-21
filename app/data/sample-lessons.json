@@ -7095,45 +7095,45 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.3c/S1a.mp3",
-            "ttsScript": "Some words are used SO much that we need to know them by heart. These are called sight words!",
-            "interaction": "Heading fades in.",
-            "displayText": ""
+            "ttsScript": "Some words show up in almost every book you read.",
+            "interaction": "Heading fades in."
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.3c/S1b.mp3",
-            "ttsScript": "Words like 'the,' 'is,' 'I,' and 'a' — you'll see them everywhere!",
-            "interaction": "Sight word pills pop in: [the] [is] [I] [a].",
-            "displayParts": [
-              {
-                "text": "the",
-                "delay": 1000
-              },
-              {
-                "text": "is",
-                "delay": 1200
-              },
-              {
-                "text": "I",
-                "delay": 2400
-              },
-              {
-                "text": "a",
-                "delay": 3600
-              }
-            ]
+            "ttsScript": "Words like the, I, do, is, and you.",
+            "interaction": "Sight word tiles appear in a row.",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "the"
+                },
+                {
+                  "text": "I"
+                },
+                {
+                  "text": "do"
+                },
+                {
+                  "text": "is"
+                },
+                {
+                  "text": "you"
+                }
+              ],
+              "delay": 1500,
+              "revealCount": 5
+            }
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.3c/S1c.mp3",
-            "ttsScript": "Let's learn to recognize them super fast!",
-            "interaction": "Speed lines around the words. Tap to continue.",
-            "displayText": "Let's learn to recognize them super fast!",
-            "displayDelay": 1000
+            "ttsScript": "We call them sight words. Let us learn them!",
+            "interaction": "Tap to continue."
           }
         ],
         "heading": "Let's Learn Sight Words!",
-        "imagePrompt": "A cheerful cartoon child holding an open book with a bright sparkle effect around it, looking delighted. Simple clean background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A cheerful cartoon child sitting with an open picture book on their lap, bright colorful paper sight-word tiles floating out of the pages with small sparkles around them. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RF.K.3c/S1.png"
       },
       {
@@ -7144,28 +7144,23 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.3c/S2a.mp3",
             "ttsScript": "Sight words are words you learn to read right away, just by looking at them.",
-            "interaction": "Heading appears.",
-            "displayText": ""
+            "interaction": "Heading appears."
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.3c/S2b.mp3",
             "ttsScript": "You don't sound them out — you just know them! Like how you know your own name.",
-            "interaction": "Pill: [Sight words = Know them by heart!] pops in.",
-            "displayText": "Sight words: Know them by heart!",
-            "displayDelay": 1318
+            "interaction": "Pill: [Sight words = Know them by heart!] pops in."
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.3c/S2c.mp3",
             "ttsScript": "The more sight words you know, the faster you can read! They're reading superpowers!",
-            "interaction": "Pill: [More sight words = Faster reading!] pops in.",
-            "displayText": "More sight words means Faster reading!",
-            "displayDelay": 1085
+            "interaction": "Pill: [More sight words = Faster reading!] pops in."
           }
         ],
         "heading": "What Are Sight Words?",
-        "imagePrompt": "A large friendly cartoon eye looking straight ahead with a bright golden glow in the center. Simple clean gradient background from light blue to soft purple. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A cartoon child pointing at a row of colorful sight-word flashcards fanned out on a cozy table, smiling confidently. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RF.K.3c/S2.png"
       },
       {
@@ -7175,33 +7170,185 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.3c/S3a.mp3",
-            "ttsScript": "Here are some of the most important sight words. Let's read them together!",
-            "interaction": "Heading appears.",
-            "displayText": ""
+            "ttsScript": "Here are some important sight words. Let us read them together!",
+            "interaction": "Heading."
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.3c/S3b.mp3",
             "ttsScript": "The. You see this word in almost every book.",
-            "interaction": "Pill: [the] pops in large with sparkle.",
-            "displayText": "the",
-            "displayDelay": 2750
+            "interaction": "the tile highlights.",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "the"
+                },
+                {
+                  "text": "I"
+                },
+                {
+                  "text": "do"
+                },
+                {
+                  "text": "is"
+                },
+                {
+                  "text": "you"
+                }
+              ],
+              "delay": 1200,
+              "revealCount": 1
+            },
+            "phonemeLetterIndices": [
+              0
+            ]
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.3c/S3c.mp3",
-            "ttsScript": "I. The word you use for yourself.",
-            "interaction": "Pill: [I] pops in large.",
-            "displayText": "I",
-            "displayDelay": 2500
+            "ttsScript": "I. That is what you call yourself.",
+            "interaction": "I tile highlights.",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "the"
+                },
+                {
+                  "text": "I"
+                },
+                {
+                  "text": "do"
+                },
+                {
+                  "text": "is"
+                },
+                {
+                  "text": "you"
+                }
+              ],
+              "delay": 1200,
+              "revealCount": 2
+            },
+            "phonemeLetterIndices": [
+              1
+            ]
           },
           {
             "sub": "d",
             "audioFile": "audio/lessons/RF.K.3c/S3d.mp3",
-            "ttsScript": "And. This word connects things together. Cats and dogs.",
-            "interaction": "Pill: [and] pops in large. Stars.",
-            "displayText": "and",
-            "displayDelay": 3250
+            "ttsScript": "Do. Like in, I do it!",
+            "interaction": "do tile highlights.",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "the"
+                },
+                {
+                  "text": "I"
+                },
+                {
+                  "text": "do"
+                },
+                {
+                  "text": "is"
+                },
+                {
+                  "text": "you"
+                }
+              ],
+              "delay": 1200,
+              "revealCount": 3
+            },
+            "phonemeLetterIndices": [
+              2
+            ]
+          },
+          {
+            "sub": "e",
+            "audioFile": "audio/lessons/RF.K.3c/S3e.mp3",
+            "ttsScript": "Is. Like in, he is here.",
+            "interaction": "is tile highlights.",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "the"
+                },
+                {
+                  "text": "I"
+                },
+                {
+                  "text": "do"
+                },
+                {
+                  "text": "is"
+                },
+                {
+                  "text": "you"
+                }
+              ],
+              "delay": 1200,
+              "revealCount": 4
+            },
+            "phonemeLetterIndices": [
+              3
+            ]
+          },
+          {
+            "sub": "f",
+            "audioFile": "audio/lessons/RF.K.3c/S3f.mp3",
+            "ttsScript": "You. Talking to someone, you!",
+            "interaction": "you tile highlights.",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "the"
+                },
+                {
+                  "text": "I"
+                },
+                {
+                  "text": "do"
+                },
+                {
+                  "text": "is"
+                },
+                {
+                  "text": "you"
+                }
+              ],
+              "delay": 1200,
+              "revealCount": 5
+            },
+            "phonemeLetterIndices": [
+              4
+            ]
+          },
+          {
+            "sub": "g",
+            "audioFile": "audio/lessons/RF.K.3c/S3g.mp3",
+            "ttsScript": "Those are five sight words you will see everywhere. Nice work!",
+            "interaction": "All five tiles glow. Tap to continue.",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "the"
+                },
+                {
+                  "text": "I"
+                },
+                {
+                  "text": "do"
+                },
+                {
+                  "text": "is"
+                },
+                {
+                  "text": "you"
+                }
+              ],
+              "delay": 0,
+              "revealCount": 5
+            }
           }
         ],
         "heading": "Let's Learn Some!",

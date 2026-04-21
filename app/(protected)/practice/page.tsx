@@ -518,8 +518,11 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
   useEffect(() => {
     if (phase !== "feedback") return;
     if (isCorrect) {
+      // Delay so the correct chime finishes before the spoken "That's right!" starts
       const file = CORRECT_AUDIO[Math.floor(Math.random() * CORRECT_AUDIO.length)];
-      playUrl(getAudioUrl("feedback", file));
+      const correctUrl = getAudioUrl("feedback", file);
+      const t = setTimeout(() => playUrl(correctUrl), 700);
+      return () => clearTimeout(t);
     } else {
       const prefixFile = INCORRECT_AUDIO[Math.floor(Math.random() * INCORRECT_AUDIO.length)];
       const prefixUrl = getAudioUrl("feedback", prefixFile);
