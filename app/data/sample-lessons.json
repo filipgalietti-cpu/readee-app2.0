@@ -6645,9 +6645,22 @@
               "letters": [
                 {
                   "text": "A"
+                },
+                {
+                  "text": "E"
+                },
+                {
+                  "text": "I"
+                },
+                {
+                  "text": "O"
+                },
+                {
+                  "text": "U"
                 }
               ],
-              "delay": 2500
+              "delay": 2500,
+              "revealCount": 1
             },
             "afterPhonemes": [
               "short_a"
@@ -6662,13 +6675,23 @@
             "displayDiagram": {
               "letters": [
                 {
+                  "text": "A"
+                },
+                {
                   "text": "E"
                 },
                 {
                   "text": "I"
+                },
+                {
+                  "text": "O"
+                },
+                {
+                  "text": "U"
                 }
               ],
-              "delay": 1500
+              "delay": 1500,
+              "revealCount": 3
             },
             "afterPhonemes": [
               "short_e",
@@ -6684,13 +6707,23 @@
             "displayDiagram": {
               "letters": [
                 {
+                  "text": "A"
+                },
+                {
+                  "text": "E"
+                },
+                {
+                  "text": "I"
+                },
+                {
                   "text": "O"
                 },
                 {
                   "text": "U"
                 }
               ],
-              "delay": 1500
+              "delay": 1500,
+              "revealCount": 5
             },
             "afterPhonemes": [
               "short_o",
@@ -6721,7 +6754,8 @@
                   "text": "U"
                 }
               ],
-              "delay": 2500
+              "delay": 2500,
+              "revealCount": 5
             }
           }
         ],
