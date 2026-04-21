@@ -10287,65 +10287,1583 @@
   {
     "standardId": "RI.1.1",
     "grade": "1st Grade",
-    "domain": "Reading Informational Text",
+    "domain": "Informational",
     "title": "Asking Fact Questions",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.1.1/S1a.mp3",
+            "ttsScript": "Fact books are full of real information.",
+            "interaction": "",
+            "displayText": "Real information",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.1.1/S1b.mp3",
+            "ttsScript": "Great readers ask questions and find the answers in the words.",
+            "interaction": "",
+            "displayText": "Ask and find",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.1.1/S1c.mp3",
+            "ttsScript": "Let us learn to be fact finders!",
+            "interaction": "",
+            "displayText": "Fact finders!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Fact Finders",
+        "imagePrompt": "A cheerful cartoon child in a small explorer hat holding a clipboard, looking curiously at a friendly cartoon penguin waddling on snow. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.1.1/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.1.1/S2a.mp3",
+            "ttsScript": "Fact finders ask five big questions.",
+            "interaction": "",
+            "displayText": "Five big questions",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.1.1/S2b.mp3",
+            "ttsScript": "Who is it about?",
+            "interaction": "",
+            "displayText": "Who?",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.1.1/S2c.mp3",
+            "ttsScript": "What is happening?",
+            "interaction": "",
+            "displayText": "What?",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RI.1.1/S2d.mp3",
+            "ttsScript": "Where? And when?",
+            "interaction": "",
+            "displayText": "Where? When?",
+            "displayDelay": 1800
+          },
+          {
+            "sub": "e",
+            "audioFile": "audio/lessons/RI.1.1/S2e.mp3",
+            "ttsScript": "And why does it happen?",
+            "interaction": "",
+            "displayText": "Why?",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Five Big Questions",
+        "imagePrompt": "Five cheerful cartoon question mark characters in a friendly row, each a different bright color, with little smiling faces. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.1.1/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "example",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.1.1/S3a.mp3",
+            "ttsScript": "Listen to this fact.",
+            "interaction": "",
+            "displayText": "Listen...",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.1.1/S3b.mp3",
+            "ttsScript": "Penguins live in very cold places. They cannot fly, but they are great swimmers.",
+            "interaction": "",
+            "displayText": "Penguins live in cold places",
+            "displayDelay": 3500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.1.1/S3c.mp3",
+            "ttsScript": "Where do penguins live? Very cold places!",
+            "interaction": "",
+            "displayText": "Cold places",
+            "displayDelay": 2200
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RI.1.1/S3d.mp3",
+            "ttsScript": "Can penguins fly? No. But they swim great!",
+            "interaction": "",
+            "displayText": "They swim!",
+            "displayDelay": 2200
+          }
+        ],
+        "heading": "Penguins Live Where?",
+        "imagePrompt": "A cheerful cartoon penguin with bright orange feet sliding happily on soft snowy ice, bright blue sky and a tiny iceberg behind. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.1.1/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.1.1/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A fact finder trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.1.1/S4b.mp3",
+            "ttsScript": "If you are not sure, look back at the words. The answer is hiding there.",
+            "interaction": "",
+            "displayText": "Look back at the words",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.1.1/S4c.mp3",
+            "ttsScript": "Now you are ready to answer fact questions!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Look Back for the Answer",
+        "imagePrompt": "A friendly cartoon magnifying glass character with a big smile sweeping over an open fact book with diagrams. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.1.1/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RI.1.1-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RI.1.1-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RI.1.1-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RI.1.1-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RI.1.1-Q5"
+      }
+    ]
   },
   {
     "standardId": "RI.1.2",
     "grade": "1st Grade",
-    "domain": "Reading Informational Text",
+    "domain": "Informational",
     "title": "Main Topic and Key Details",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.1.2/S1a.mp3",
+            "ttsScript": "Every fact book is mostly about one big idea.",
+            "interaction": "",
+            "displayText": "One big idea",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.1.2/S1b.mp3",
+            "ttsScript": "That big idea is called the main topic.",
+            "interaction": "",
+            "displayText": "Main topic",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.1.2/S1c.mp3",
+            "ttsScript": "The smaller facts we learn are called key details.",
+            "interaction": "",
+            "displayText": "Key details",
+            "displayDelay": 2200
+          }
+        ],
+        "heading": "The Big Idea",
+        "imagePrompt": "A cheerful cartoon tree with colorful apples, with a tiny bright sparkle around the main trunk, and a few apples fallen on the grass. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.1.2/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.1.2/S2a.mp3",
+            "ttsScript": "Listen to this.",
+            "interaction": "",
+            "displayText": "Listen...",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.1.2/S2b.mp3",
+            "ttsScript": "Apples can be red, green, or yellow. They grow on trees. Apples are a healthy snack.",
+            "interaction": "",
+            "displayText": "Apples can be many colors",
+            "displayDelay": 3800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.1.2/S2c.mp3",
+            "ttsScript": "What is the main topic? Apples!",
+            "interaction": "",
+            "displayText": "Main topic: apples",
+            "displayDelay": 2200
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RI.1.2/S2d.mp3",
+            "ttsScript": "Key details? Colors, where they grow, and healthy.",
+            "interaction": "",
+            "displayText": "Details: colors, trees, healthy",
+            "displayDelay": 3000
+          }
+        ],
+        "heading": "Topic vs Detail",
+        "imagePrompt": "A cheerful cartoon big apple character with a smiling face on a pedestal, with three smaller colorful apples below it on a shelf. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.1.2/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "example",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.1.2/S3a.mp3",
+            "ttsScript": "Listen.",
+            "interaction": "",
+            "displayText": "Listen...",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.1.2/S3b.mp3",
+            "ttsScript": "Firefighters wear special gear. They drive fire trucks. They put out fires and help people.",
+            "interaction": "",
+            "displayText": "Firefighters at work",
+            "displayDelay": 4000
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.1.2/S3c.mp3",
+            "ttsScript": "Main topic? Firefighters!",
+            "interaction": "",
+            "displayText": "Main topic: firefighters",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RI.1.2/S3d.mp3",
+            "ttsScript": "Key details? Gear, fire trucks, and helping.",
+            "interaction": "",
+            "displayText": "Details: gear, trucks, help",
+            "displayDelay": 2800
+          }
+        ],
+        "heading": "Try This One",
+        "imagePrompt": "A cheerful cartoon firefighter with a friendly smile wearing a bright red helmet and yellow uniform, standing next to a small red fire truck. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.1.2/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.1.2/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A main-topic trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.1.2/S4b.mp3",
+            "ttsScript": "Ask yourself: what word shows up the most? That is usually the main topic!",
+            "interaction": "",
+            "displayText": "What word repeats?",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.1.2/S4c.mp3",
+            "ttsScript": "Now you are ready to find the main topic and key details!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Ask: What Is It About?",
+        "imagePrompt": "A cheerful cartoon owl with round glasses pointing at a book, with a thought bubble containing a tiny question mark. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.1.2/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RI.1.2-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RI.1.2-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RI.1.2-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RI.1.2-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RI.1.2-Q5"
+      }
+    ]
   },
   {
     "standardId": "RI.1.3",
     "grade": "1st Grade",
-    "domain": "Reading Informational Text",
+    "domain": "Informational",
     "title": "Connecting Ideas in Facts",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.1.3/S1a.mp3",
+            "ttsScript": "Facts in a book often connect to each other.",
+            "interaction": "",
+            "displayText": "Facts connect",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.1.3/S1b.mp3",
+            "ttsScript": "One thing happens. Then another thing happens because of it.",
+            "interaction": "",
+            "displayText": "This... then that",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.1.3/S1c.mp3",
+            "ttsScript": "Let us learn how to connect the dots!",
+            "interaction": "",
+            "displayText": "Connect the dots",
+            "displayDelay": 2000
+          }
+        ],
+        "heading": "Ideas Connect",
+        "imagePrompt": "Two cheerful cartoon puzzle pieces fitting together, each a different bright color, with tiny sparkles where they meet. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.1.3/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.1.3/S2a.mp3",
+            "ttsScript": "Listen. It rained all day. The next morning, puddles were everywhere.",
+            "interaction": "",
+            "displayText": "Rain -> puddles",
+            "displayDelay": 3000
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.1.3/S2b.mp3",
+            "ttsScript": "The rain caused the puddles. That is called cause and effect.",
+            "interaction": "",
+            "displayText": "Cause and effect",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.1.3/S2c.mp3",
+            "ttsScript": "The cause is what happened first. The effect is what happened next.",
+            "interaction": "",
+            "displayText": "First, then next",
+            "displayDelay": 2800
+          }
+        ],
+        "heading": "Cause and Effect",
+        "imagePrompt": "A cheerful cartoon rain cloud pouring rain on a sunny patch of grass, with friendly puddles forming below. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.1.3/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "example",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.1.3/S3a.mp3",
+            "ttsScript": "Seeds need water and sunlight to grow.",
+            "interaction": "",
+            "displayText": "Seeds + water + sun",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.1.3/S3b.mp3",
+            "ttsScript": "A farmer waters the seeds every day.",
+            "interaction": "",
+            "displayText": "Farmer waters",
+            "displayDelay": 2200
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.1.3/S3c.mp3",
+            "ttsScript": "Soon, small plants appear!",
+            "interaction": "",
+            "displayText": "Plants grow!",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RI.1.3/S3d.mp3",
+            "ttsScript": "What caused the plants? The water and sun! See the connection?",
+            "interaction": "",
+            "displayText": "Connection found!",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Seeds and Sun",
+        "imagePrompt": "A cheerful cartoon farmer watering small green sprouts growing from brown soil, bright sunshine above and a tiny smiling sunflower. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.1.3/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.1.3/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A connection trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.1.3/S4b.mp3",
+            "ttsScript": "Ask, why did this happen? The answer is usually the cause.",
+            "interaction": "",
+            "displayText": "Ask: why?",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.1.3/S4c.mp3",
+            "ttsScript": "Now you are ready to connect ideas in fact books!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Ask Why",
+        "imagePrompt": "A friendly cartoon question mark character with a smiling face, surrounded by tiny arrows pointing between two colorful boxes. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.1.3/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RI.1.3-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RI.1.3-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RI.1.3-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RI.1.3-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RI.1.3-Q5"
+      }
+    ]
   },
   {
     "standardId": "RI.1.4",
     "grade": "1st Grade",
-    "domain": "Reading Informational Text",
+    "domain": "Informational",
     "title": "Figuring Out New Words",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.1.4/S1a.mp3",
+            "ttsScript": "Fact books sometimes have new words you do not know.",
+            "interaction": "",
+            "displayText": "New words? Okay!",
+            "displayDelay": 2200
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.1.4/S1b.mp3",
+            "ttsScript": "That is totally fine. Good readers are curious.",
+            "interaction": "",
+            "displayText": "Be curious",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.1.4/S1c.mp3",
+            "ttsScript": "Let us learn how to figure them out!",
+            "interaction": "",
+            "displayText": "Figure it out",
+            "displayDelay": 1800
+          }
+        ],
+        "heading": "New Word? No Problem",
+        "imagePrompt": "A cheerful cartoon child shrugging with a tiny lightbulb turning on above their head, looking curiously at an open fact book. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.1.4/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.1.4/S2a.mp3",
+            "ttsScript": "When you meet a new word, look at the words around it.",
+            "interaction": "",
+            "displayText": "Look around",
+            "displayDelay": 2200
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.1.4/S2b.mp3",
+            "ttsScript": "The other words give you clues about what it means.",
+            "interaction": "",
+            "displayText": "Other words = clues",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.1.4/S2c.mp3",
+            "ttsScript": "Sometimes the book will even tell you!",
+            "interaction": "",
+            "displayText": "Sometimes it tells you!",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Look for Clues",
+        "imagePrompt": "A cheerful cartoon detective child with a magnifying glass pointing at a sentence on a page, a tiny question mark above their head. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.1.4/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "example",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.1.4/S3a.mp3",
+            "ttsScript": "Listen. The habitat is the place where an animal lives.",
+            "interaction": "",
+            "displayText": "Habitat = where it lives",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.1.4/S3b.mp3",
+            "ttsScript": "A fish habitat is water.",
+            "interaction": "",
+            "displayText": "Fish -> water",
+            "displayDelay": 2200
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.1.4/S3c.mp3",
+            "ttsScript": "What is a habitat? The place where an animal lives! The book told us right in the sentence.",
+            "interaction": "",
+            "displayText": "The book told us!",
+            "displayDelay": 3000
+          }
+        ],
+        "heading": "What Is a Habitat?",
+        "imagePrompt": "A cheerful cartoon blue fish swimming happily in clear water with friendly underwater plants and a tiny bubble trail. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.1.4/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.1.4/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A word trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.1.4/S4b.mp3",
+            "ttsScript": "If you still do not know the word, ask someone or check a dictionary!",
+            "interaction": "",
+            "displayText": "Ask or look it up",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.1.4/S4c.mp3",
+            "ttsScript": "Now you are ready to figure out new words!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Ask Questions",
+        "imagePrompt": "A cheerful cartoon owl wearing big round glasses, holding a tiny dictionary with a question mark floating nearby. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.1.4/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RI.1.4-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RI.1.4-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RI.1.4-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RI.1.4-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RI.1.4-Q5"
+      }
+    ]
   },
   {
     "standardId": "RI.1.5",
     "grade": "1st Grade",
-    "domain": "Reading Informational Text",
+    "domain": "Informational",
     "title": "Parts of a Fact Book",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.1.5/S1a.mp3",
+            "ttsScript": "Fact books are built with special parts to help you find stuff.",
+            "interaction": "",
+            "displayText": "Special parts",
+            "displayDelay": 2200
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.1.5/S1b.mp3",
+            "ttsScript": "Once you know the parts, finding facts is fast!",
+            "interaction": "",
+            "displayText": "Find facts fast",
+            "displayDelay": 2200
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.1.5/S1c.mp3",
+            "ttsScript": "Let us meet them!",
+            "interaction": "",
+            "displayText": "Meet the parts",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Fact Book Parts",
+        "imagePrompt": "A cheerful cartoon open fact book with a table of contents on one page and friendly diagrams on the other, colorful bookmarks sticking out. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.1.5/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.1.5/S2a.mp3",
+            "ttsScript": "The table of contents is up front.",
+            "interaction": "",
+            "displayText": "Table of contents",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.1.5/S2b.mp3",
+            "ttsScript": "It lists every chapter and what page it starts on.",
+            "interaction": "",
+            "displayText": "Chapters + pages",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.1.5/S2c.mp3",
+            "ttsScript": "Want chapter three? Look here first!",
+            "interaction": "",
+            "displayText": "Look here first",
+            "displayDelay": 2200
+          }
+        ],
+        "heading": "Table of Contents",
+        "imagePrompt": "A cheerful cartoon open book with a colorful table of contents, each line a different bright color with tiny icons next to them. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.1.5/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.1.5/S3a.mp3",
+            "ttsScript": "A heading is the big words at the top of a page.",
+            "interaction": "",
+            "displayText": "Heading = big words up top",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.1.5/S3b.mp3",
+            "ttsScript": "It tells you what that page is about.",
+            "interaction": "",
+            "displayText": "Tells you about the page",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.1.5/S3c.mp3",
+            "ttsScript": "Labels are little words that point to parts of a picture.",
+            "interaction": "",
+            "displayText": "Labels point at parts",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Headings and Labels",
+        "imagePrompt": "A cheerful cartoon fact book page with a big colorful heading at the top, a friendly diagram of a butterfly with tiny labeled parts pointed out with arrows. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.1.5/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.1.5/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A book-parts trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.1.5/S4b.mp3",
+            "ttsScript": "Before you read, look at the headings and pictures. They tell you what is coming!",
+            "interaction": "",
+            "displayText": "Peek first!",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.1.5/S4c.mp3",
+            "ttsScript": "Now you are ready to find facts using book parts!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Use the Helpers",
+        "imagePrompt": "A cheerful cartoon child holding an open fact book and pointing at a colorful heading, looking proud. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.1.5/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RI.1.5-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RI.1.5-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RI.1.5-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RI.1.5-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RI.1.5-Q5"
+      }
+    ]
   },
   {
     "standardId": "RI.1.6",
     "grade": "1st Grade",
-    "domain": "Reading Informational Text",
+    "domain": "Informational",
     "title": "Pictures vs Words",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.1.6/S1a.mp3",
+            "ttsScript": "Fact books give us two kinds of clues.",
+            "interaction": "",
+            "displayText": "Two kinds of clues",
+            "displayDelay": 2200
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.1.6/S1b.mp3",
+            "ttsScript": "The words tell us facts.",
+            "interaction": "",
+            "displayText": "Words = facts",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.1.6/S1c.mp3",
+            "ttsScript": "The pictures show us how it looks.",
+            "interaction": "",
+            "displayText": "Pictures = how it looks",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Two Kinds of Clues",
+        "imagePrompt": "A cheerful cartoon child looking at an open fact book, with one speech bubble showing a tiny photo and another showing tiny words. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.1.6/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.1.6/S2a.mp3",
+            "ttsScript": "Listen. The text says ladybugs are small insects.",
+            "interaction": "",
+            "displayText": "Words: small insect",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.1.6/S2b.mp3",
+            "ttsScript": "The picture shows a ladybug on a green leaf.",
+            "interaction": "",
+            "displayText": "Picture: red, black spots, leaf",
+            "displayDelay": 3000
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.1.6/S2c.mp3",
+            "ttsScript": "The picture shows us the colors, size, and shape. The words told us what kind of bug.",
+            "interaction": "",
+            "displayText": "Both together = whole story",
+            "displayDelay": 3000
+          }
+        ],
+        "heading": "Words Tell, Pictures Show",
+        "imagePrompt": "A cheerful cartoon red ladybug with black spots sitting on a bright green leaf, smiling. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.1.6/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.1.6/S3a.mp3",
+            "ttsScript": "Some things are hard to tell in words.",
+            "interaction": "",
+            "displayText": "Hard in words",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.1.6/S3b.mp3",
+            "ttsScript": "The exact color of an animal.",
+            "interaction": "",
+            "displayText": "Exact colors",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.1.6/S3c.mp3",
+            "ttsScript": "The shape of its spots. How tall it is.",
+            "interaction": "",
+            "displayText": "Shape, size",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RI.1.6/S3d.mp3",
+            "ttsScript": "Pictures show us those right away!",
+            "interaction": "",
+            "displayText": "Pictures show it fast",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "What Only Pictures Can Show",
+        "imagePrompt": "A cheerful cartoon giraffe with bright yellow fur and brown spots, smiling with a long neck reaching for a leaf. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.1.6/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.1.6/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A fact-book trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.1.6/S4b.mp3",
+            "ttsScript": "Read the words and look at the pictures. Together, they give you the whole story.",
+            "interaction": "",
+            "displayText": "Read + look",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.1.6/S4c.mp3",
+            "ttsScript": "Now you are ready to use both pictures and words!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Use Both",
+        "imagePrompt": "A cheerful cartoon child with a smiling face looking at an open fact book, eyes sparkling, two tiny thought bubbles over their head, one with words, one with a picture. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.1.6/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RI.1.6-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RI.1.6-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RI.1.6-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RI.1.6-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RI.1.6-Q5"
+      }
+    ]
   },
   {
     "standardId": "RI.1.7",
     "grade": "1st Grade",
-    "domain": "Reading Informational Text",
+    "domain": "Informational",
     "title": "Pictures Show Key Ideas",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.1.7/S1a.mp3",
+            "ttsScript": "In fact books, pictures are not just decoration.",
+            "interaction": "",
+            "displayText": "Not just decoration",
+            "displayDelay": 2200
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.1.7/S1b.mp3",
+            "ttsScript": "They give us important information.",
+            "interaction": "",
+            "displayText": "Important info",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.1.7/S1c.mp3",
+            "ttsScript": "Let us learn how to read a picture!",
+            "interaction": "",
+            "displayText": "Read pictures too",
+            "displayDelay": 2000
+          }
+        ],
+        "heading": "Pictures Teach Us",
+        "imagePrompt": "A cheerful cartoon child looking at an open fact book, with big colorful illustrations leaping off the page with tiny sparkles. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.1.7/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.1.7/S2a.mp3",
+            "ttsScript": "A book about seasons shows this picture.",
+            "interaction": "",
+            "displayText": "Look at the picture",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.1.7/S2b.mp3",
+            "ttsScript": "Bare trees. Snow on the ground. A kid in a coat and hat.",
+            "interaction": "",
+            "displayText": "Snow + coat + hat",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.1.7/S2c.mp3",
+            "ttsScript": "What season is it? Winter!",
+            "interaction": "",
+            "displayText": "Winter!",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RI.1.7/S2d.mp3",
+            "ttsScript": "The picture told us, even without any words.",
+            "interaction": "",
+            "displayText": "Picture told us",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "What Season?",
+        "imagePrompt": "A cheerful cartoon scene with bare tree branches, soft falling snow, and a little cartoon child in a bright puffy coat, mittens, and a cozy hat. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.1.7/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.1.7/S3a.mp3",
+            "ttsScript": "A book about healthy food shows a plate.",
+            "interaction": "",
+            "displayText": "A healthy plate",
+            "displayDelay": 2200
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.1.7/S3b.mp3",
+            "ttsScript": "It has fruits, vegetables, and grains.",
+            "interaction": "",
+            "displayText": "Fruits + veggies + grains",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.1.7/S3c.mp3",
+            "ttsScript": "The picture shows us what a balanced meal looks like.",
+            "interaction": "",
+            "displayText": "Balanced meal",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Healthy Food Picture",
+        "imagePrompt": "A cheerful cartoon plate divided into colorful sections showing fruits, vegetables, and grains arranged neatly, with a tiny smiley face. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.1.7/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.1.7/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A picture trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.1.7/S4b.mp3",
+            "ttsScript": "Slow down on the pictures. Ask, what is this showing me?",
+            "interaction": "",
+            "displayText": "Ask: what is this?",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.1.7/S4c.mp3",
+            "ttsScript": "Now you are ready to use pictures to learn key ideas!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Slow Down and Look",
+        "imagePrompt": "A cheerful cartoon child with a magnifying glass peering at a colorful picture in a book, eyes wide with discovery. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.1.7/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RI.1.7-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RI.1.7-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RI.1.7-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RI.1.7-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RI.1.7-Q5"
+      }
+    ]
   },
   {
     "standardId": "RI.1.8",
     "grade": "1st Grade",
-    "domain": "Reading Informational Text",
+    "domain": "Informational",
     "title": "Reasons the Author Gives",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.1.8/S1a.mp3",
+            "ttsScript": "Authors sometimes try to convince us of something.",
+            "interaction": "",
+            "displayText": "Authors convince",
+            "displayDelay": 2200
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.1.8/S1b.mp3",
+            "ttsScript": "They make a point, then give us reasons why.",
+            "interaction": "",
+            "displayText": "Point + reasons",
+            "displayDelay": 2200
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.1.8/S1c.mp3",
+            "ttsScript": "Good readers spot the reasons!",
+            "interaction": "",
+            "displayText": "Spot the reasons",
+            "displayDelay": 2000
+          }
+        ],
+        "heading": "Why Should I?",
+        "imagePrompt": "A cheerful cartoon child with a thought bubble containing a small smiling lightbulb, tilted head as if asking a question. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.1.8/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.1.8/S2a.mp3",
+            "ttsScript": "Listen. You should drink water every day.",
+            "interaction": "",
+            "displayText": "Drink water daily",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.1.8/S2b.mp3",
+            "ttsScript": "Water helps your body work well.",
+            "interaction": "",
+            "displayText": "Reason 1: body works well",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.1.8/S2c.mp3",
+            "ttsScript": "And it keeps you from getting thirsty.",
+            "interaction": "",
+            "displayText": "Reason 2: no thirst",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RI.1.8/S2d.mp3",
+            "ttsScript": "Two reasons! That is how authors back up their point.",
+            "interaction": "",
+            "displayText": "Two reasons found!",
+            "displayDelay": 2800
+          }
+        ],
+        "heading": "Drink Water",
+        "imagePrompt": "A cheerful cartoon glass of water with a smiling face, condensation drops around it, on a bright table. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.1.8/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "example",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.1.8/S3a.mp3",
+            "ttsScript": "Dogs make great pets. Here is why.",
+            "interaction": "",
+            "displayText": "Dogs = great pets",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.1.8/S3b.mp3",
+            "ttsScript": "They are loyal.",
+            "interaction": "",
+            "displayText": "Loyal",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.1.8/S3c.mp3",
+            "ttsScript": "They are playful.",
+            "interaction": "",
+            "displayText": "Playful",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RI.1.8/S3d.mp3",
+            "ttsScript": "And they love their owners.",
+            "interaction": "",
+            "displayText": "Loving",
+            "displayDelay": 1800
+          },
+          {
+            "sub": "e",
+            "audioFile": "audio/lessons/RI.1.8/S3e.mp3",
+            "ttsScript": "Three reasons that back up the point!",
+            "interaction": "",
+            "displayText": "Three reasons!",
+            "displayDelay": 2200
+          }
+        ],
+        "heading": "Great Pets",
+        "imagePrompt": "A cheerful cartoon golden retriever dog with a happy smile sitting next to a smiling child, both looking cheerful. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.1.8/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.1.8/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A reasons trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.1.8/S4b.mp3",
+            "ttsScript": "When the author says because, for example, or first and second, those are reasons!",
+            "interaction": "",
+            "displayText": "Listen for clue words",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.1.8/S4c.mp3",
+            "ttsScript": "Now you are ready to find author reasons!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Count the Reasons",
+        "imagePrompt": "A cheerful cartoon child counting on friendly fingers, smiling confidently, tiny stars floating around their hand. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.1.8/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RI.1.8-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RI.1.8-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RI.1.8-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RI.1.8-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RI.1.8-Q5"
+      }
+    ]
   },
   {
     "standardId": "RI.1.9",
     "grade": "1st Grade",
-    "domain": "Reading Informational Text",
+    "domain": "Informational",
     "title": "Comparing Two Fact Books",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.1.9/S1a.mp3",
+            "ttsScript": "Two books can be about the same topic.",
+            "interaction": "",
+            "displayText": "Same topic",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.1.9/S1b.mp3",
+            "ttsScript": "But they might share different facts!",
+            "interaction": "",
+            "displayText": "Different facts",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.1.9/S1c.mp3",
+            "ttsScript": "Let us learn how to compare them.",
+            "interaction": "",
+            "displayText": "Let us compare",
+            "displayDelay": 1800
+          }
+        ],
+        "heading": "Two Books, One Topic",
+        "imagePrompt": "Two cheerful cartoon open fact books sitting side by side, each with friendly diagrams, a tiny bridge of arrows between them. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.1.9/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.1.9/S2a.mp3",
+            "ttsScript": "Book one says: dogs need walks.",
+            "interaction": "",
+            "displayText": "Book 1: walks",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.1.9/S2b.mp3",
+            "ttsScript": "Book two says: dogs need exercise.",
+            "interaction": "",
+            "displayText": "Book 2: exercise",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.1.9/S2c.mp3",
+            "ttsScript": "These books agree! Walks are one kind of exercise.",
+            "interaction": "",
+            "displayText": "They agree!",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Dogs in Two Books",
+        "imagePrompt": "A cheerful cartoon dog jogging happily on a leash held by a smiling child, a sunny park scene with a small ball nearby. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.1.9/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.1.9/S3a.mp3",
+            "ttsScript": "Book one says: the sun is hot.",
+            "interaction": "",
+            "displayText": "Book 1: hot",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.1.9/S3b.mp3",
+            "ttsScript": "Book two says: the sun gives Earth light.",
+            "interaction": "",
+            "displayText": "Book 2: gives light",
+            "displayDelay": 2200
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.1.9/S3c.mp3",
+            "ttsScript": "Both books are about the sun!",
+            "interaction": "",
+            "displayText": "Same topic: sun",
+            "displayDelay": 2200
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RI.1.9/S3d.mp3",
+            "ttsScript": "Together, we learn even more.",
+            "interaction": "",
+            "displayText": "Together = more info",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Two Books on the Sun",
+        "imagePrompt": "A cheerful cartoon smiling yellow sun shining brightly over a tiny Earth, soft rays of light extending outward. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.1.9/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.1.9/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A comparing trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.1.9/S4b.mp3",
+            "ttsScript": "Reading two books on the same topic gives you more facts than just one!",
+            "interaction": "",
+            "displayText": "Two books = more facts",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.1.9/S4c.mp3",
+            "ttsScript": "Now you are ready to compare fact books!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Same Topic, More Info",
+        "imagePrompt": "A friendly cartoon Venn diagram with two overlapping circles, tiny happy faces inside each, and a tiny star in the middle overlap. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.1.9/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RI.1.9-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RI.1.9-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RI.1.9-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RI.1.9-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RI.1.9-Q5"
+      }
+    ]
   },
   {
     "standardId": "RF.1.1a",
