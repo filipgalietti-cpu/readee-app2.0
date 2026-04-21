@@ -6445,11 +6445,15 @@
             "interaction": "A tile appears; saved short-A phoneme plays.",
             "displayDiagram": {
               "letters": [
-                { "text": "A" }
+                {
+                  "text": "A"
+                }
               ],
               "delay": 1200
             },
-            "afterPhonemes": ["short_a"]
+            "afterPhonemes": [
+              "short_a"
+            ]
           },
           {
             "sub": "c",
@@ -6458,13 +6462,21 @@
             "interaction": "E tile joins; short-E phoneme plays on E.",
             "displayDiagram": {
               "letters": [
-                { "text": "A" },
-                { "text": "E" }
+                {
+                  "text": "A"
+                },
+                {
+                  "text": "E"
+                }
               ],
               "delay": 1200
             },
-            "afterPhonemes": ["short_e"],
-            "phonemeLetterIndices": [1]
+            "afterPhonemes": [
+              "short_e"
+            ],
+            "phonemeLetterIndices": [
+              1
+            ]
           },
           {
             "sub": "d",
@@ -6473,14 +6485,24 @@
             "interaction": "I tile joins; short-I phoneme plays on I.",
             "displayDiagram": {
               "letters": [
-                { "text": "A" },
-                { "text": "E" },
-                { "text": "I" }
+                {
+                  "text": "A"
+                },
+                {
+                  "text": "E"
+                },
+                {
+                  "text": "I"
+                }
               ],
               "delay": 1200
             },
-            "afterPhonemes": ["short_i"],
-            "phonemeLetterIndices": [2]
+            "afterPhonemes": [
+              "short_i"
+            ],
+            "phonemeLetterIndices": [
+              2
+            ]
           },
           {
             "sub": "e",
@@ -6489,15 +6511,27 @@
             "interaction": "O tile joins; short-O phoneme plays on O.",
             "displayDiagram": {
               "letters": [
-                { "text": "A" },
-                { "text": "E" },
-                { "text": "I" },
-                { "text": "O" }
+                {
+                  "text": "A"
+                },
+                {
+                  "text": "E"
+                },
+                {
+                  "text": "I"
+                },
+                {
+                  "text": "O"
+                }
               ],
               "delay": 1200
             },
-            "afterPhonemes": ["short_o"],
-            "phonemeLetterIndices": [3]
+            "afterPhonemes": [
+              "short_o"
+            ],
+            "phonemeLetterIndices": [
+              3
+            ]
           },
           {
             "sub": "f",
@@ -6506,16 +6540,30 @@
             "interaction": "U tile joins; short-U phoneme plays on U.",
             "displayDiagram": {
               "letters": [
-                { "text": "A" },
-                { "text": "E" },
-                { "text": "I" },
-                { "text": "O" },
-                { "text": "U" }
+                {
+                  "text": "A"
+                },
+                {
+                  "text": "E"
+                },
+                {
+                  "text": "I"
+                },
+                {
+                  "text": "O"
+                },
+                {
+                  "text": "U"
+                }
               ],
               "delay": 1200
             },
-            "afterPhonemes": ["short_u"],
-            "phonemeLetterIndices": [4]
+            "afterPhonemes": [
+              "short_u"
+            ],
+            "phonemeLetterIndices": [
+              4
+            ]
           },
           {
             "sub": "g",
@@ -6524,11 +6572,21 @@
             "interaction": "All five tiles dance. Tap to continue.",
             "displayDiagram": {
               "letters": [
-                { "text": "A" },
-                { "text": "E" },
-                { "text": "I" },
-                { "text": "O" },
-                { "text": "U" }
+                {
+                  "text": "A"
+                },
+                {
+                  "text": "E"
+                },
+                {
+                  "text": "I"
+                },
+                {
+                  "text": "O"
+                },
+                {
+                  "text": "U"
+                }
               ],
               "delay": 0
             }
@@ -6611,11 +6669,21 @@
             "interaction": "All five vowel tiles line up cleanly. Tap to continue.",
             "displayDiagram": {
               "letters": [
-                { "text": "A" },
-                { "text": "E" },
-                { "text": "I" },
-                { "text": "O" },
-                { "text": "U" }
+                {
+                  "text": "A"
+                },
+                {
+                  "text": "E"
+                },
+                {
+                  "text": "I"
+                },
+                {
+                  "text": "O"
+                },
+                {
+                  "text": "U"
+                }
               ],
               "delay": 2500
             }
@@ -6627,6 +6695,135 @@
       },
       {
         "slide": 3,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.K.3b/S3sl-a.mp3",
+            "ttsScript": "Vowels can make two sounds: a short sound and a long sound.",
+            "interaction": "Heading fades in.",
+            "displayText": "Short sounds & long sounds",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.K.3b/S3sl-b.mp3",
+            "ttsScript": "The short A sound. Like in cat.",
+            "interaction": "C-A-T diagram appears; A pulses as short_a phoneme plays.",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "C"
+                },
+                {
+                  "text": "A"
+                },
+                {
+                  "text": "T"
+                }
+              ],
+              "delay": 1500
+            },
+            "afterPhonemes": [
+              "short_a"
+            ],
+            "phonemeLetterIndices": [
+              1
+            ]
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.K.3b/S3sl-c.mp3",
+            "ttsScript": "The long A sound. Like in cake. The long sound says its name!",
+            "interaction": "C-A-K-E diagram replaces C-A-T; A pulses as long_a phoneme plays.",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "C"
+                },
+                {
+                  "text": "A"
+                },
+                {
+                  "text": "K"
+                },
+                {
+                  "text": "E"
+                }
+              ],
+              "delay": 1500
+            },
+            "afterPhonemes": [
+              "long_a"
+            ],
+            "phonemeLetterIndices": [
+              1
+            ]
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RF.K.3b/S3sl-d.mp3",
+            "ttsScript": "Hear the difference? Cat. Cake. Short A and long A.",
+            "interaction": "Both words pop side by side. Tap to continue.",
+            "displayParts": [
+              {
+                "text": "cat",
+                "delay": 1000
+              },
+              {
+                "text": "cake",
+                "delay": 2400
+              }
+            ]
+          }
+        ],
+        "heading": "Short Sounds & Long Sounds",
+        "imagePrompt": "A friendly cartoon orange tabby cat sitting next to a bright pink frosted birthday cake with one candle, both smiling. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.K.3b/S3sl.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.K.3b/S4me-a.mp3",
+            "ttsScript": "Here is a magic trick called Magic E.",
+            "interaction": "Heading fades in.",
+            "displayText": "Magic E",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.K.3b/S4me-b.mp3",
+            "ttsScript": "Add an E to the end of cat. Cat becomes cake. The E is silent, but it makes the A say its name!",
+            "interaction": "C-A-T morphs to C-A-K-E with sparkle on the new E.",
+            "displayDiagramSwap": {
+              "letters": [
+                "C",
+                "A",
+                "T"
+              ],
+              "swapAt": 2,
+              "toLetter": "KE",
+              "delay": 1500,
+              "swapDelay": 5000
+            }
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.K.3b/S4me-c.mp3",
+            "ttsScript": "That is Magic E. Silent at the end, but it changes the vowel sound!",
+            "interaction": "Sparkles around the E. Tap to continue.",
+            "displayText": ""
+          }
+        ],
+        "heading": "A Magic Trick: Silent E",
+        "imagePrompt": "A cartoon letter E character wearing a tall purple wizard hat with stars, holding a small magic wand with sparkles trailing, smiling brightly. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.K.3b/S4me.png"
+      },
+      {
+        "slide": 5,
         "type": "example",
         "steps": [
           {
@@ -6696,7 +6893,7 @@
         "imageFile": "images/lessons/RF.K.3b/S3.png"
       },
       {
-        "slide": 4,
+        "slide": 6,
         "type": "tip",
         "steps": [
           {
@@ -6731,7 +6928,7 @@
         "imageFile": "images/lessons/RF.K.3b/S4.png"
       },
       {
-        "slide": 5,
+        "slide": 7,
         "type": "practice-intro",
         "steps": [
           {
@@ -6755,27 +6952,27 @@
         "imageFile": "images/lessons/RF.K.3b/S5.png"
       },
       {
-        "slide": 6,
+        "slide": 8,
         "type": "mcq",
         "mcqId": "RF.K.3b-Q1"
       },
       {
-        "slide": 7,
+        "slide": 9,
         "type": "mcq",
         "mcqId": "RF.K.3b-Q2"
       },
       {
-        "slide": 8,
+        "slide": 10,
         "type": "mcq",
         "mcqId": "RF.K.3b-Q3"
       },
       {
-        "slide": 9,
+        "slide": 11,
         "type": "mcq",
         "mcqId": "RF.K.3b-Q4"
       },
       {
-        "slide": 10,
+        "slide": 12,
         "type": "mcq",
         "mcqId": "RF.K.3b-Q5"
       }
