@@ -8873,58 +8873,1416 @@
   {
     "standardId": "RL.1.1",
     "grade": "1st Grade",
-    "domain": "Reading Literature",
+    "domain": "Literature",
     "title": "Asking Story Questions",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.1.1/S1a.mp3",
+            "ttsScript": "Great readers are like detectives. They look for clues in a story.",
+            "interaction": "",
+            "displayText": "Readers = detectives",
+            "displayDelay": 2200
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.1.1/S1b.mp3",
+            "ttsScript": "They ask questions and hunt for answers in the words.",
+            "interaction": "",
+            "displayText": "Ask, then find",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.1.1/S1c.mp3",
+            "ttsScript": "Let us learn some detective questions to ask!",
+            "interaction": "",
+            "displayText": "Let us ask!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Story Detectives",
+        "imagePrompt": "A cheerful cartoon child detective with a tiny deerstalker hat and a magnifying glass, sitting next to an open picture book, smiling curiously. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.1.1/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.1.1/S2a.mp3",
+            "ttsScript": "Good detectives ask five big questions.",
+            "interaction": "",
+            "displayText": "Five big questions",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.1.1/S2b.mp3",
+            "ttsScript": "Who is the story about?",
+            "interaction": "",
+            "displayText": "Who?",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.1.1/S2c.mp3",
+            "ttsScript": "What are they doing?",
+            "interaction": "",
+            "displayText": "What?",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RL.1.1/S2d.mp3",
+            "ttsScript": "Where are they? And when?",
+            "interaction": "",
+            "displayText": "Where? When?",
+            "displayDelay": 1800
+          },
+          {
+            "sub": "e",
+            "audioFile": "audio/lessons/RL.1.1/S2e.mp3",
+            "ttsScript": "And why did it happen?",
+            "interaction": "",
+            "displayText": "Why?",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Five Big Questions",
+        "imagePrompt": "Five cheerful cartoon question mark characters in different colors standing in a friendly row, each with a happy face. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.1.1/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "example",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.1.1/S3a.mp3",
+            "ttsScript": "Listen to this little story.",
+            "interaction": "",
+            "displayText": "Listen...",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.1.1/S3b.mp3",
+            "ttsScript": "Bella picked three red apples from the tree. She put them in her basket.",
+            "interaction": "",
+            "displayText": "Bella picked 3 apples.",
+            "displayDelay": 3000
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.1.1/S3c.mp3",
+            "ttsScript": "Who is the story about? Bella!",
+            "interaction": "",
+            "displayText": "Who? Bella",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RL.1.1/S3d.mp3",
+            "ttsScript": "What did she do? She picked apples.",
+            "interaction": "",
+            "displayText": "What? Picked apples",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "e",
+            "audioFile": "audio/lessons/RL.1.1/S3e.mp3",
+            "ttsScript": "How many apples? Three. We found the answer in the words!",
+            "interaction": "",
+            "displayText": "How many? 3",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Let Us Try One",
+        "imagePrompt": "A cheerful cartoon girl with brown skin and two braided pigtails, holding a basket with three red apples, standing near a green apple tree. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.1.1/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.1.1/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A detective trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.1.1/S4b.mp3",
+            "ttsScript": "When you finish reading, go back and find the answer in the words.",
+            "interaction": "",
+            "displayText": "Find it in the words",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.1.1/S4c.mp3",
+            "ttsScript": "Now you are ready to practice answering story questions!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "A Detective Trick",
+        "imagePrompt": "A friendly cartoon magnifying glass character with a smiling face, a tiny detective hat, and sparkles around it. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.1.1/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RL.1.1-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RL.1.1-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RL.1.1-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RL.1.1-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RL.1.1-Q5"
+      }
+    ]
   },
   {
     "standardId": "RL.1.2",
     "grade": "1st Grade",
-    "domain": "Reading Literature",
+    "domain": "Literature",
     "title": "Retelling Stories",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.1.2/S1a.mp3",
+            "ttsScript": "Retelling means telling a story in your own words.",
+            "interaction": "",
+            "displayText": "Tell it your way",
+            "displayDelay": 2200
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.1.2/S1b.mp3",
+            "ttsScript": "You keep the most important parts.",
+            "interaction": "",
+            "displayText": "Keep the big parts",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.1.2/S1c.mp3",
+            "ttsScript": "And you leave out the tiny details.",
+            "interaction": "",
+            "displayText": "Skip the tiny bits",
+            "displayDelay": 2000
+          }
+        ],
+        "heading": "Retell the Story",
+        "imagePrompt": "A small group of cheerful cartoon kids of different skin tones sitting in a circle, one child telling a story with animated hands while the others listen with big smiles. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.1.2/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.1.2/S2a.mp3",
+            "ttsScript": "Every story has three big parts.",
+            "interaction": "",
+            "displayText": "Three big parts",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.1.2/S2b.mp3",
+            "ttsScript": "The beginning. Who is in the story and what is happening?",
+            "interaction": "",
+            "displayText": "Beginning: who and what",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.1.2/S2c.mp3",
+            "ttsScript": "The middle. What is the problem or the big event?",
+            "interaction": "",
+            "displayText": "Middle: the problem",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RL.1.2/S2d.mp3",
+            "ttsScript": "The end. How does it all work out?",
+            "interaction": "",
+            "displayText": "End: how it works out",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Beginning, Middle, End",
+        "imagePrompt": "Three cheerful cartoon open books in a row, the first labeled with a sunrise icon, the middle with a little star, the last with a sunset icon, all colorful. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.1.2/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "example",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.1.2/S3a.mp3",
+            "ttsScript": "Listen. Tom wanted to win the race. He practiced every day. On race day, he came in first!",
+            "interaction": "",
+            "displayText": "Tom ran, practiced, won",
+            "displayDelay": 3500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.1.2/S3b.mp3",
+            "ttsScript": "Beginning. Tom wanted to win a race.",
+            "interaction": "",
+            "displayText": "Beginning",
+            "displayDelay": 1800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.1.2/S3c.mp3",
+            "ttsScript": "Middle. He practiced every single day.",
+            "interaction": "",
+            "displayText": "Middle",
+            "displayDelay": 1800
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RL.1.2/S3d.mp3",
+            "ttsScript": "End. He won! The lesson? Practice helps!",
+            "interaction": "",
+            "displayText": "End: Practice helps!",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Retell Tom's Story",
+        "imagePrompt": "A cheerful cartoon boy with curly brown hair crossing a finish line with arms raised, a gold medal around his neck, bright confetti around him. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.1.2/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.1.2/S4a.mp3",
+            "ttsScript": "Many stories teach a lesson.",
+            "interaction": "",
+            "displayText": "Stories teach lessons",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.1.2/S4b.mp3",
+            "ttsScript": "Ask yourself, what did the character learn? That is the lesson.",
+            "interaction": "",
+            "displayText": "What did they learn?",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.1.2/S4c.mp3",
+            "ttsScript": "Now you are ready to practice retelling stories!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "The Story Lesson",
+        "imagePrompt": "A friendly cartoon owl wearing a small graduation cap, sitting on a stack of colorful books and smiling warmly. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.1.2/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RL.1.2-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RL.1.2-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RL.1.2-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RL.1.2-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RL.1.2-Q5"
+      }
+    ]
   },
   {
     "standardId": "RL.1.3",
     "grade": "1st Grade",
-    "domain": "Reading Literature",
+    "domain": "Literature",
     "title": "Characters, Settings, and Events",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.1.3/S1a.mp3",
+            "ttsScript": "Every story has three big pieces.",
+            "interaction": "",
+            "displayText": "Three big pieces",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.1.3/S1b.mp3",
+            "ttsScript": "Characters. The people or animals in the story.",
+            "interaction": "",
+            "displayText": "Characters",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.1.3/S1c.mp3",
+            "ttsScript": "Setting. Where and when the story takes place.",
+            "interaction": "",
+            "displayText": "Setting",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RL.1.3/S1d.mp3",
+            "ttsScript": "Events. The things that happen!",
+            "interaction": "",
+            "displayText": "Events",
+            "displayDelay": 1800
+          }
+        ],
+        "heading": "Three Parts of a Story",
+        "imagePrompt": "A cheerful cartoon child sitting inside an open pop-up storybook, surrounded by tiny paper trees, a small castle, and a small friendly dragon. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.1.3/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.1.3/S2a.mp3",
+            "ttsScript": "Characters are the who of the story.",
+            "interaction": "",
+            "displayText": "Characters = who",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.1.3/S2b.mp3",
+            "ttsScript": "Listen. The kind old woman fed the birds every morning.",
+            "interaction": "",
+            "displayText": "A kind old woman",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.1.3/S2c.mp3",
+            "ttsScript": "Who is the character? The kind old woman!",
+            "interaction": "",
+            "displayText": "Character: old woman",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RL.1.3/S2d.mp3",
+            "ttsScript": "What is she like? Kind and caring. We can tell by what she does.",
+            "interaction": "",
+            "displayText": "She is kind",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Meet the Character",
+        "imagePrompt": "A friendly cartoon elderly woman with a kind smile, warm brown skin, silver hair, wearing a cozy patterned shawl, holding a little basket with seeds for birds. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.1.3/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.1.3/S3a.mp3",
+            "ttsScript": "The setting is where and when it happens.",
+            "interaction": "",
+            "displayText": "Setting = where + when",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.1.3/S3b.mp3",
+            "ttsScript": "The old woman lived by the sea, in a tiny cottage. That is the setting!",
+            "interaction": "",
+            "displayText": "By the sea",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.1.3/S3c.mp3",
+            "ttsScript": "Events are what happens in the story.",
+            "interaction": "",
+            "displayText": "Events = what happens",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RL.1.3/S3d.mp3",
+            "ttsScript": "Feeding the birds every morning. That is an event!",
+            "interaction": "",
+            "displayText": "Event: feeding birds",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Setting and Events",
+        "imagePrompt": "A cheerful cartoon little seaside cottage with a red roof, next to a sandy beach with gentle waves, flowers blooming around the door, and seabirds flying in the sky. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.1.3/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.1.3/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A story trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.1.3/S4b.mp3",
+            "ttsScript": "When you read, picture the character, the setting, and the events in your mind.",
+            "interaction": "",
+            "displayText": "Picture it all!",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.1.3/S4c.mp3",
+            "ttsScript": "Now you are ready to practice finding story parts!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Picture It",
+        "imagePrompt": "A friendly cartoon thought bubble with three little icons floating inside: a tiny smiling face, a tiny sun over grass, and a tiny waving hand. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.1.3/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RL.1.3-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RL.1.3-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RL.1.3-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RL.1.3-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RL.1.3-Q5"
+      }
+    ]
   },
   {
     "standardId": "RL.1.4",
     "grade": "1st Grade",
-    "domain": "Reading Literature",
+    "domain": "Literature",
     "title": "Words That Show Feelings",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.1.4/S1a.mp3",
+            "ttsScript": "Writers choose special words to make us feel something.",
+            "interaction": "",
+            "displayText": "Words make feelings",
+            "displayDelay": 2200
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.1.4/S1b.mp3",
+            "ttsScript": "Some words help us hear, see, or touch a story in our mind.",
+            "interaction": "",
+            "displayText": "Feel the story",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.1.4/S1c.mp3",
+            "ttsScript": "Let us find some feeling words!",
+            "interaction": "",
+            "displayText": "Find the feelings",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Feeling Words",
+        "imagePrompt": "A cheerful cartoon child with a thought cloud above their head containing a tiny smiling sun, a tiny sad raincloud, and a tiny excited star. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.1.4/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.1.4/S2a.mp3",
+            "ttsScript": "Some words help us use our senses.",
+            "interaction": "",
+            "displayText": "Use your senses",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.1.4/S2b.mp3",
+            "ttsScript": "Warm, soft, bright. These help us feel and see.",
+            "interaction": "",
+            "displayText": "Warm. Soft. Bright.",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.1.4/S2c.mp3",
+            "ttsScript": "Whisper, crash, boom. These help us hear.",
+            "interaction": "",
+            "displayText": "Whisper. Crash. Boom.",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RL.1.4/S2d.mp3",
+            "ttsScript": "Listen for sense-y words as you read!",
+            "interaction": "",
+            "displayText": "Listen for them",
+            "displayDelay": 2000
+          }
+        ],
+        "heading": "Sense-y Words",
+        "imagePrompt": "Four cheerful cartoon sensory icons arranged in a square, a small ear, a small eye, a tiny hand, and a tiny nose, each with a friendly face. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.1.4/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "example",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.1.4/S3a.mp3",
+            "ttsScript": "Listen. The bright sun warmed her face.",
+            "interaction": "",
+            "displayText": "The bright sun warmed her face.",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.1.4/S3b.mp3",
+            "ttsScript": "Which word helps us feel the sun? Warmed!",
+            "interaction": "",
+            "displayText": "Warmed",
+            "displayDelay": 2200
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.1.4/S3c.mp3",
+            "ttsScript": "That word makes us feel the sun on our own skin.",
+            "interaction": "",
+            "displayText": "We feel it too",
+            "displayDelay": 2200
+          }
+        ],
+        "heading": "Warm Sun",
+        "imagePrompt": "A cheerful cartoon girl with braided pigtails, warm brown skin, eyes closed, smiling with her face tilted up toward a bright smiling sun. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.1.4/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.1.4/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A feelings trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.1.4/S4b.mp3",
+            "ttsScript": "When you read a feeling word, stop and feel it for a moment.",
+            "interaction": "",
+            "displayText": "Pause and feel it",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.1.4/S4c.mp3",
+            "ttsScript": "Now you are ready to practice finding feeling words!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Read It and Feel It",
+        "imagePrompt": "A cheerful cartoon child with their hand over their heart, eyes closed, smiling gently. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.1.4/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RL.1.4-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RL.1.4-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RL.1.4-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RL.1.4-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RL.1.4-Q5"
+      }
+    ]
   },
   {
     "standardId": "RL.1.5",
     "grade": "1st Grade",
-    "domain": "Reading Literature",
+    "domain": "Literature",
     "title": "Story Books vs Fact Books",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.1.5/S1a.mp3",
+            "ttsScript": "Did you know there are two big kinds of books?",
+            "interaction": "",
+            "displayText": "Two kinds of books",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.1.5/S1b.mp3",
+            "ttsScript": "Story books tell made-up stories.",
+            "interaction": "",
+            "displayText": "Story = made up",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.1.5/S1c.mp3",
+            "ttsScript": "Fact books give us real information.",
+            "interaction": "",
+            "displayText": "Fact = real",
+            "displayDelay": 2000
+          }
+        ],
+        "heading": "Two Kinds of Books",
+        "imagePrompt": "Two cheerful cartoon open books sitting side by side on a wooden shelf, one sparkling with a tiny dragon and a castle, the other showing a friendly diagram of the planets. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.1.5/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.1.5/S2a.mp3",
+            "ttsScript": "Story books are full of adventures.",
+            "interaction": "",
+            "displayText": "Adventures!",
+            "displayDelay": 1800
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.1.5/S2b.mp3",
+            "ttsScript": "They have characters, a setting, and events that someone imagined.",
+            "interaction": "",
+            "displayText": "Characters + events",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.1.5/S2c.mp3",
+            "ttsScript": "Dragons, talking animals, magic. Anything goes in a story book!",
+            "interaction": "",
+            "displayText": "Anything goes",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Story Books",
+        "imagePrompt": "A cheerful whimsical cartoon storybook open in a field of flowers, a tiny dragon peeking out of one page, a unicorn on the other, sparkles floating around. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.1.5/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.1.5/S3a.mp3",
+            "ttsScript": "Fact books teach us about the real world.",
+            "interaction": "",
+            "displayText": "Real world facts",
+            "displayDelay": 2200
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.1.5/S3b.mp3",
+            "ttsScript": "Animals, planets, weather, history. All true things!",
+            "interaction": "",
+            "displayText": "All true",
+            "displayDelay": 2200
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.1.5/S3c.mp3",
+            "ttsScript": "Fact books often have photos, diagrams, and labels.",
+            "interaction": "",
+            "displayText": "Pictures + labels",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Fact Books",
+        "imagePrompt": "A cheerful cartoon nonfiction fact book open on a table, with friendly diagrams of planets, animals, and a tiny dinosaur illustration, a small magnifying glass on the page. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.1.5/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.1.5/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A book trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.1.5/S4b.mp3",
+            "ttsScript": "Could this really happen in real life? Fact book. Made up? Story book!",
+            "interaction": "",
+            "displayText": "Real? Or made up?",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.1.5/S4c.mp3",
+            "ttsScript": "Now you are ready to practice telling them apart!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Which One?",
+        "imagePrompt": "A cheerful cartoon child holding one book in each hand, one labeled with a tiny dragon icon and the other with a tiny globe icon, smiling and looking back and forth. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.1.5/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RL.1.5-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RL.1.5-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RL.1.5-Q3"
+      }
+    ]
   },
   {
     "standardId": "RL.1.6",
     "grade": "1st Grade",
-    "domain": "Reading Literature",
-    "title": "Who's Telling the Story?",
-    "slides": []
+    "domain": "Literature",
+    "title": "Who's Telling the Story",
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.1.6/S1a.mp3",
+            "ttsScript": "Every story has a storyteller.",
+            "interaction": "",
+            "displayText": "Every story has one",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.1.6/S1b.mp3",
+            "ttsScript": "Sometimes it is a character in the story. Sometimes it is a voice outside.",
+            "interaction": "",
+            "displayText": "Inside or outside?",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.1.6/S1c.mp3",
+            "ttsScript": "Let us learn how to tell!",
+            "interaction": "",
+            "displayText": "How to tell",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Who Is the Storyteller?",
+        "imagePrompt": "A cheerful cartoon child sitting in a small armchair, holding an open book, talking to an imaginary audience with friendly gestures. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.1.6/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.1.6/S2a.mp3",
+            "ttsScript": "If the story uses the word I, a character is telling it.",
+            "interaction": "",
+            "displayText": "I = character tells",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.1.6/S2b.mp3",
+            "ttsScript": "Listen. I went to the store with my mom.",
+            "interaction": "",
+            "displayText": "I went to the store...",
+            "displayDelay": 2200
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.1.6/S2c.mp3",
+            "ttsScript": "The person saying I is the one telling the story. We call that first person.",
+            "interaction": "",
+            "displayText": "First person",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "The I Clue",
+        "imagePrompt": "A cheerful cartoon child pointing to themselves with a big smile, a tiny speech bubble containing a friendly capital I next to them. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.1.6/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.1.6/S3a.mp3",
+            "ttsScript": "If the story uses he, she, or they, a voice outside is telling it.",
+            "interaction": "",
+            "displayText": "He / she / they",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.1.6/S3b.mp3",
+            "ttsScript": "Listen. Sam ran to the park. He played on the swings.",
+            "interaction": "",
+            "displayText": "Sam ran. He played.",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.1.6/S3c.mp3",
+            "ttsScript": "Someone is watching Sam and telling us. That is the narrator.",
+            "interaction": "",
+            "displayText": "A narrator",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "The He She They Clue",
+        "imagePrompt": "A cheerful cartoon narrator character in a small director's chair, gesturing at two cartoon characters in the distance, a friendly boy and a friendly girl playing together. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.1.6/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.1.6/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A storyteller trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.1.6/S4b.mp3",
+            "ttsScript": "Look at the first sentence. Does it say I, or does it say he, she, or they?",
+            "interaction": "",
+            "displayText": "Look at the words!",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.1.6/S4c.mp3",
+            "ttsScript": "Now you are ready to spot the storyteller!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Listen for the Clue",
+        "imagePrompt": "A cheerful cartoon owl with one wing cupped to its ear, listening carefully, with a tiny word bubble showing a capital I nearby. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.1.6/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RL.1.6-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RL.1.6-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RL.1.6-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RL.1.6-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RL.1.6-Q5"
+      }
+    ]
   },
   {
     "standardId": "RL.1.7",
     "grade": "1st Grade",
-    "domain": "Reading Literature",
+    "domain": "Literature",
     "title": "Pictures and Stories Together",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.1.7/S1a.mp3",
+            "ttsScript": "Pictures in a book are not just decoration.",
+            "interaction": "",
+            "displayText": "Not just decoration",
+            "displayDelay": 2200
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.1.7/S1b.mp3",
+            "ttsScript": "They give us clues about characters, places, and feelings!",
+            "interaction": "",
+            "displayText": "Pictures give clues",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.1.7/S1c.mp3",
+            "ttsScript": "Let us learn what to look for.",
+            "interaction": "",
+            "displayText": "Look for clues",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Pictures Tell Stories Too",
+        "imagePrompt": "A cheerful cartoon child holding an open picture book with colorful illustrations that seem to leap off the page, small sparkles around the book. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.1.7/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.1.7/S2a.mp3",
+            "ttsScript": "Look at this picture.",
+            "interaction": "",
+            "displayText": "Look closely",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.1.7/S2b.mp3",
+            "ttsScript": "A girl with a big smile, holding a trophy.",
+            "interaction": "",
+            "displayText": "Big smile + trophy",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.1.7/S2c.mp3",
+            "ttsScript": "How does she probably feel? Happy! Proud!",
+            "interaction": "",
+            "displayText": "Happy! Proud!",
+            "displayDelay": 2200
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RL.1.7/S2d.mp3",
+            "ttsScript": "The picture told us. We did not even need words.",
+            "interaction": "",
+            "displayText": "No words needed!",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "A Happy Face Tells a Lot",
+        "imagePrompt": "A cheerful cartoon girl with warm brown skin, two pigtails, holding a shiny gold trophy, beaming with a big smile, sparkles around the trophy. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.1.7/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.1.7/S3a.mp3",
+            "ttsScript": "Pictures also show us where and when.",
+            "interaction": "",
+            "displayText": "Where and when",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.1.7/S3b.mp3",
+            "ttsScript": "Snow on the ground. Kids in coats and hats. What season is it?",
+            "interaction": "",
+            "displayText": "What season?",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.1.7/S3c.mp3",
+            "ttsScript": "Winter! The picture showed us.",
+            "interaction": "",
+            "displayText": "Winter!",
+            "displayDelay": 2000
+          }
+        ],
+        "heading": "Pictures Show the Setting",
+        "imagePrompt": "A cozy cartoon winter scene with kids in bright puffy coats and hats building a snowman on soft white snow, pine trees nearby. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.1.7/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.1.7/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A picture trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.1.7/S4b.mp3",
+            "ttsScript": "Look at the picture and read the words. Both tell the story together.",
+            "interaction": "",
+            "displayText": "Look + read",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.1.7/S4c.mp3",
+            "ttsScript": "Now you are ready to practice using pictures as clues!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Look and Read Together",
+        "imagePrompt": "A cheerful cartoon child reading a book while their eyes sparkle, two thought clouds above them, one showing words and one showing a picture. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.1.7/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RL.1.7-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RL.1.7-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RL.1.7-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RL.1.7-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RL.1.7-Q5"
+      }
+    ]
   },
   {
     "standardId": "RL.1.9",
     "grade": "1st Grade",
-    "domain": "Reading Literature",
+    "domain": "Literature",
     "title": "Comparing Story Adventures",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.1.9/S1a.mp3",
+            "ttsScript": "Two stories can be alike in some ways and different in others.",
+            "interaction": "",
+            "displayText": "Alike + different",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.1.9/S1b.mp3",
+            "ttsScript": "We compare to see what is the same.",
+            "interaction": "",
+            "displayText": "Compare = same",
+            "displayDelay": 2200
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.1.9/S1c.mp3",
+            "ttsScript": "We contrast to see what is different.",
+            "interaction": "",
+            "displayText": "Contrast = different",
+            "displayDelay": 2200
+          }
+        ],
+        "heading": "Same and Different",
+        "imagePrompt": "Two cheerful cartoon open picture books side by side, one with a forest scene and a bear, the other with a beehive and flowers, with a tiny bridge of arrows between them. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.1.9/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.1.9/S2a.mp3",
+            "ttsScript": "Story one. A bear looks for honey.",
+            "interaction": "",
+            "displayText": "Bear finds honey",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.1.9/S2b.mp3",
+            "ttsScript": "Story two. A bee makes honey.",
+            "interaction": "",
+            "displayText": "Bee makes honey",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.1.9/S2c.mp3",
+            "ttsScript": "What is the same? Both are about honey!",
+            "interaction": "",
+            "displayText": "Same: honey",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RL.1.9/S2d.mp3",
+            "ttsScript": "What is different? One finds it, one makes it.",
+            "interaction": "",
+            "displayText": "Different: find vs make",
+            "displayDelay": 2800
+          }
+        ],
+        "heading": "Two Honey Stories",
+        "imagePrompt": "A cheerful cartoon brown bear licking its paw smiling, next to a tiny friendly cartoon bee buzzing around a honeycomb, both in a soft sunny forest scene. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.1.9/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.1.9/S3a.mp3",
+            "ttsScript": "Story one. Amy is brave and climbs a mountain.",
+            "interaction": "",
+            "displayText": "Amy climbs",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.1.9/S3b.mp3",
+            "ttsScript": "Story two. Bob is brave and swims a lake.",
+            "interaction": "",
+            "displayText": "Bob swims",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.1.9/S3c.mp3",
+            "ttsScript": "Same? Both are brave adventures!",
+            "interaction": "",
+            "displayText": "Same: brave",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RL.1.9/S3d.mp3",
+            "ttsScript": "Different? One climbs, one swims.",
+            "interaction": "",
+            "displayText": "Different: how",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Two Brave Friends",
+        "imagePrompt": "A cheerful cartoon girl with curly black hair climbing a small mountain, smiling bravely, next to a cheerful cartoon boy with red hair swimming across a blue lake, smiling. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.1.9/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.1.9/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A comparing trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.1.9/S4b.mp3",
+            "ttsScript": "Ask, what do both stories share? Then ask, what is special about each one?",
+            "interaction": "",
+            "displayText": "Share? Special?",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.1.9/S4c.mp3",
+            "ttsScript": "Now you are ready to practice comparing stories!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "A Comparing Trick",
+        "imagePrompt": "A friendly cartoon Venn diagram with two overlapping circles, each colored softly, small happy faces inside and a tiny star in the middle overlap. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.1.9/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RL.1.9-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RL.1.9-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RL.1.9-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RL.1.9-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RL.1.9-Q5"
+      }
+    ]
   },
   {
     "standardId": "RI.1.1",
