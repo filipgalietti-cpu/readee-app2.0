@@ -6447,9 +6447,22 @@
               "letters": [
                 {
                   "text": "A"
+                },
+                {
+                  "text": "E"
+                },
+                {
+                  "text": "I"
+                },
+                {
+                  "text": "O"
+                },
+                {
+                  "text": "U"
                 }
               ],
-              "delay": 1200
+              "delay": 1200,
+              "revealCount": 1
             },
             "afterPhonemes": [
               "short_a"
@@ -6467,9 +6480,19 @@
                 },
                 {
                   "text": "E"
+                },
+                {
+                  "text": "I"
+                },
+                {
+                  "text": "O"
+                },
+                {
+                  "text": "U"
                 }
               ],
-              "delay": 1200
+              "delay": 1200,
+              "revealCount": 2
             },
             "afterPhonemes": [
               "short_e"
@@ -6493,9 +6516,16 @@
                 },
                 {
                   "text": "I"
+                },
+                {
+                  "text": "O"
+                },
+                {
+                  "text": "U"
                 }
               ],
-              "delay": 1200
+              "delay": 1200,
+              "revealCount": 3
             },
             "afterPhonemes": [
               "short_i"
@@ -6522,9 +6552,13 @@
                 },
                 {
                   "text": "O"
+                },
+                {
+                  "text": "U"
                 }
               ],
-              "delay": 1200
+              "delay": 1200,
+              "revealCount": 4
             },
             "afterPhonemes": [
               "short_o"
@@ -6556,7 +6590,8 @@
                   "text": "U"
                 }
               ],
-              "delay": 1200
+              "delay": 1200,
+              "revealCount": 5
             },
             "afterPhonemes": [
               "short_u"
@@ -6588,7 +6623,8 @@
                   "text": "U"
                 }
               ],
-              "delay": 0
+              "delay": 0,
+              "revealCount": 5
             }
           }
         ],

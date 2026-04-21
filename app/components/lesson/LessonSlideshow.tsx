@@ -43,6 +43,9 @@ interface Step {
     // Letter row with optional "start"/"end" labels above tagged letters
     letters: Array<{ text: string; role?: "start" | "end" }>;
     delay: number;
+    // If set, only the first N letters render filled — the rest render as faint placeholders.
+    // Lets multiple steps share one identical diagram row that fills in over time.
+    revealCount?: number;
   };
   displayDiagramSwap?: {
     // Letter row that morphs one tile in place (e.g. CAT → BAT)
@@ -825,6 +828,8 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
 
     // Merge roles from this step + any later visible steps with the same letters
     const letters = step.displayDiagram.letters.map((l) => ({ ...l }));
+    // For shared-row reveal: take the maximum revealCount among visible steps with the same letter sequence.
+    let revealCount = step.displayDiagram.revealCount ?? letters.length;
     for (let j = i + 1; j < steps.length; j++) {
       const later = steps[j];
       if (later?.displayDiagram && textsVisible.has(j)) {
@@ -833,6 +838,8 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
           later.displayDiagram.letters.forEach((l, li) => {
             if (l.role && !letters[li].role) letters[li].role = l.role;
           });
+          const laterCount = later.displayDiagram.revealCount ?? letters.length;
+          if (laterCount > revealCount) revealCount = laterCount;
         }
       }
     }
@@ -848,7 +855,10 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
           const isStart = l.role === "start";
           const isEnd = l.role === "end";
           const isActive = activePhoneme?.stepIdx === i && activePhoneme?.letterIdx === li;
-          const tileColor = isActive
+          const isRevealed = li < revealCount;
+          const tileColor = !isRevealed
+            ? "bg-zinc-50 text-zinc-300 border-2 border-dashed border-zinc-200 dark:bg-slate-900/40 dark:text-slate-600 dark:border-slate-700"
+            : isActive
             ? "bg-violet-100 text-violet-700 ring-4 ring-violet-500 dark:bg-violet-900/40 dark:text-violet-200"
             : isStart
             ? "bg-blue-100 text-blue-700 ring-4 ring-blue-400 dark:bg-blue-900/40 dark:text-blue-200"
