@@ -851,7 +851,12 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
         {letters.map((l, li) => {
           const isStart = l.role === "start";
           const isEnd = l.role === "end";
-          const isActive = activePhoneme?.stepIdx === i && activePhoneme?.letterIdx === li;
+          // Active = explicit phoneme highlight, OR (no phoneme this step) the newest revealed tile
+          // so each new reveal pulses violet during the TTS that introduces it.
+          const stepHasPhoneme = !!step.afterPhonemes && step.afterPhonemes.length > 0;
+          const isActive = activePhoneme?.stepIdx === i && activePhoneme?.letterIdx === li
+            ? true
+            : !stepHasPhoneme && li === revealCount - 1 && playingStep === i;
           const isRevealed = li < revealCount;
           const tileColor = !isRevealed
             ? "bg-zinc-50 text-zinc-300 border-2 border-dashed border-zinc-200 dark:bg-slate-900/40 dark:text-slate-600 dark:border-slate-700"

@@ -7095,7 +7095,7 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.3c/S1a.mp3",
-            "ttsScript": "Some words show up in almost every book you read.",
+            "ttsScript": "Look! Some words show up in almost every single book.",
             "interaction": "Heading fades in."
           },
           {
@@ -7132,7 +7132,7 @@
             "interaction": "Tap to continue."
           }
         ],
-        "heading": "Let's Learn Sight Words!",
+        "heading": "Sight Words",
         "imagePrompt": "A cheerful cartoon child sitting with an open picture book on their lap, bright colorful paper sight-word tiles floating out of the pages with small sparkles around them. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RF.K.3c/S1.png"
       },
@@ -7150,13 +7150,55 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.3c/S2b.mp3",
             "ttsScript": "You don't sound them out — you just know them! Like how you know your own name.",
-            "interaction": "Pill: [Sight words = Know them by heart!] pops in."
+            "interaction": "Pill: [Sight words = Know them by heart!] pops in.",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "the"
+                },
+                {
+                  "text": "I"
+                },
+                {
+                  "text": "do"
+                },
+                {
+                  "text": "is"
+                },
+                {
+                  "text": "you"
+                }
+              ],
+              "delay": 1500,
+              "revealCount": 3
+            }
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.3c/S2c.mp3",
             "ttsScript": "The more sight words you know, the faster you can read! They're reading superpowers!",
-            "interaction": "Pill: [More sight words = Faster reading!] pops in."
+            "interaction": "Pill: [More sight words = Faster reading!] pops in.",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "the"
+                },
+                {
+                  "text": "I"
+                },
+                {
+                  "text": "do"
+                },
+                {
+                  "text": "is"
+                },
+                {
+                  "text": "you"
+                }
+              ],
+              "delay": 1000,
+              "revealCount": 5
+            }
           }
         ],
         "heading": "What Are Sight Words?",
@@ -7296,7 +7338,7 @@
           {
             "sub": "f",
             "audioFile": "audio/lessons/RF.K.3c/S3f.mp3",
-            "ttsScript": "You. Talking to someone, you!",
+            "ttsScript": "You. Like in, how are you?",
             "interaction": "you tile highlights.",
             "displayDiagram": {
               "letters": [
