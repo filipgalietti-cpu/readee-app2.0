@@ -9202,7 +9202,337 @@
     "grade": "1st Grade",
     "domain": "Foundational Skills",
     "title": "Blending Sounds Into Words",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.2b/S1a.mp3",
+            "ttsScript": "Listen! Words are made of sounds pushed together.",
+            "interaction": "",
+            "displayText": "Sounds become words!",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.2b/S1b.mp3",
+            "ttsScript": "When we put the sounds together, we call that blending.",
+            "interaction": "",
+            "displayText": "Blending",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.2b/S1c.mp3",
+            "ttsScript": "Let us try it. It is like a fun puzzle!",
+            "interaction": "",
+            "displayText": "A sound puzzle",
+            "displayDelay": 2000
+          }
+        ],
+        "heading": "Blending Sounds",
+        "imagePrompt": "A cheerful cartoon child with big round headphones smiling and listening carefully, with colorful musical-note-like sound symbols floating around their head. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.2b/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.2b/S2a.mp3",
+            "ttsScript": "Listen to these three sounds.",
+            "interaction": "Three dashes shown."
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.2b/S2b.mp3",
+            "ttsScript": "First sound.",
+            "interaction": "",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "C"
+                },
+                {
+                  "text": "A"
+                },
+                {
+                  "text": "T"
+                }
+              ],
+              "delay": 1200,
+              "revealCount": 1
+            },
+            "afterPhonemes": [
+              "c_hard"
+            ],
+            "phonemeLetterIndices": [
+              0
+            ]
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.2b/S2c.mp3",
+            "ttsScript": "Middle sound.",
+            "interaction": "",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "C"
+                },
+                {
+                  "text": "A"
+                },
+                {
+                  "text": "T"
+                }
+              ],
+              "delay": 0,
+              "revealCount": 2
+            },
+            "afterPhonemes": [
+              "short_a"
+            ],
+            "phonemeLetterIndices": [
+              1
+            ]
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RF.1.2b/S2d.mp3",
+            "ttsScript": "Last sound.",
+            "interaction": "",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "C"
+                },
+                {
+                  "text": "A"
+                },
+                {
+                  "text": "T"
+                }
+              ],
+              "delay": 0,
+              "revealCount": 3
+            },
+            "afterPhonemes": [
+              "t"
+            ],
+            "phonemeLetterIndices": [
+              2
+            ]
+          },
+          {
+            "sub": "e",
+            "audioFile": "audio/lessons/RF.1.2b/S2e.mp3",
+            "ttsScript": "Push them all together. Cat!",
+            "interaction": "",
+            "displayText": "Cat!",
+            "displayDelay": 1500,
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "C"
+                },
+                {
+                  "text": "A"
+                },
+                {
+                  "text": "T"
+                }
+              ],
+              "delay": 0,
+              "revealCount": 3
+            }
+          }
+        ],
+        "heading": "Three Sounds Make a Word",
+        "imagePrompt": "A friendly cartoon orange tabby cat sitting up and smiling, with three tiny colorful sound bubbles floating above its head. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.2b/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "example",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.2b/S3a.mp3",
+            "ttsScript": "Your turn. Listen to three sounds.",
+            "interaction": "Heading."
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.2b/S3b.mp3",
+            "ttsScript": "First sound.",
+            "interaction": "",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "S"
+                },
+                {
+                  "text": "U"
+                },
+                {
+                  "text": "N"
+                }
+              ],
+              "delay": 1200,
+              "revealCount": 1
+            },
+            "afterPhonemes": [
+              "s"
+            ],
+            "phonemeLetterIndices": [
+              0
+            ]
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.2b/S3c.mp3",
+            "ttsScript": "Middle sound.",
+            "interaction": "",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "S"
+                },
+                {
+                  "text": "U"
+                },
+                {
+                  "text": "N"
+                }
+              ],
+              "delay": 0,
+              "revealCount": 2
+            },
+            "afterPhonemes": [
+              "short_u"
+            ],
+            "phonemeLetterIndices": [
+              1
+            ]
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RF.1.2b/S3d.mp3",
+            "ttsScript": "Last sound.",
+            "interaction": "",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "S"
+                },
+                {
+                  "text": "U"
+                },
+                {
+                  "text": "N"
+                }
+              ],
+              "delay": 0,
+              "revealCount": 3
+            },
+            "afterPhonemes": [
+              "n"
+            ],
+            "phonemeLetterIndices": [
+              2
+            ]
+          },
+          {
+            "sub": "e",
+            "audioFile": "audio/lessons/RF.1.2b/S3e.mp3",
+            "ttsScript": "Blend them. Sun! You got it!",
+            "interaction": "",
+            "displayText": "Sun!",
+            "displayDelay": 1500,
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "S"
+                },
+                {
+                  "text": "U"
+                },
+                {
+                  "text": "N"
+                }
+              ],
+              "delay": 0,
+              "revealCount": 3
+            }
+          }
+        ],
+        "heading": "Blend This One!",
+        "imagePrompt": "A cheerful cartoon yellow sun with a smiling face and friendly rays, shining brightly. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.2b/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.2b/S4a.mp3",
+            "ttsScript": "Here is a helpful trick for blending.",
+            "interaction": "",
+            "displayText": "A blending trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.2b/S4b.mp3",
+            "ttsScript": "Say each sound out loud. Then say them faster and faster until they snap together.",
+            "interaction": "",
+            "displayText": "Slow, then fast!",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.2b/S4c.mp3",
+            "ttsScript": "Now you are ready to practice blending sounds!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "A Blending Trick",
+        "imagePrompt": "A cheerful cartoon child with glasses pointing at a row of three colorful puzzle pieces fitting together. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.2b/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RF.1.2b-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RF.1.2b-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RF.1.2b-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RF.1.2b-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RF.1.2b-Q5"
+      }
+    ]
   },
   {
     "standardId": "RF.1.2c",
