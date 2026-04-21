@@ -7096,19 +7096,25 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.3c/S1a.mp3",
             "ttsScript": "There are some words you will see in almost every book.",
-            "interaction": "Heading fades in."
+            "interaction": "Heading fades in.",
+            "displayText": "Every book!",
+            "displayDelay": 2200
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.3c/S1b.mp3",
             "ttsScript": "These special words are called sight words.",
-            "interaction": "Image stays."
+            "interaction": "Image stays.",
+            "displayText": "Sight words",
+            "displayDelay": 1700
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.3c/S1c.mp3",
             "ttsScript": "Soon you will know them just by looking. Tap to keep going.",
-            "interaction": "Tap to continue."
+            "interaction": "Tap to continue.",
+            "displayText": "Just by looking!",
+            "displayDelay": 2300
           }
         ],
         "heading": "Sight Words",
