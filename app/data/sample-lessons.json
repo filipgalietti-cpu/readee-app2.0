@@ -9864,21 +9864,729 @@
     "grade": "1st Grade",
     "domain": "Foundational Skills",
     "title": "Breaking Words Into Sounds",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.2d/S1a.mp3",
+            "ttsScript": "Look! Words are built from smaller sounds.",
+            "interaction": "",
+            "displayText": "Words are built from sounds",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.2d/S1b.mp3",
+            "ttsScript": "When we take a word apart sound by sound, we call that breaking.",
+            "interaction": "",
+            "displayText": "Breaking a word",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.2d/S1c.mp3",
+            "ttsScript": "Let us break some words together!",
+            "interaction": "",
+            "displayText": "Let us break some!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Break It Apart",
+        "imagePrompt": "A cheerful cartoon child gently pulling apart a puzzle word shape into three colorful pieces, smiling. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.2d/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.2d/S2a.mp3",
+            "ttsScript": "Here is the word cat.",
+            "interaction": "",
+            "displayText": "Cat",
+            "displayDelay": 1500,
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "C"
+                },
+                {
+                  "text": "A"
+                },
+                {
+                  "text": "T"
+                }
+              ],
+              "delay": 1800,
+              "revealCount": 3
+            }
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.2d/S2b.mp3",
+            "ttsScript": "Break it into three sounds.",
+            "interaction": "",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "C"
+                },
+                {
+                  "text": "A"
+                },
+                {
+                  "text": "T"
+                }
+              ],
+              "delay": 0,
+              "revealCount": 3
+            }
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.2d/S2c.mp3",
+            "ttsScript": "The first.",
+            "interaction": "",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "C"
+                },
+                {
+                  "text": "A"
+                },
+                {
+                  "text": "T"
+                }
+              ],
+              "delay": 0,
+              "revealCount": 3
+            },
+            "afterPhonemes": [
+              "c_hard"
+            ],
+            "phonemeLetterIndices": [
+              0
+            ]
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RF.1.2d/S2d.mp3",
+            "ttsScript": "The middle.",
+            "interaction": "",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "C"
+                },
+                {
+                  "text": "A"
+                },
+                {
+                  "text": "T"
+                }
+              ],
+              "delay": 0,
+              "revealCount": 3
+            },
+            "afterPhonemes": [
+              "short_a"
+            ],
+            "phonemeLetterIndices": [
+              1
+            ]
+          },
+          {
+            "sub": "e",
+            "audioFile": "audio/lessons/RF.1.2d/S2e.mp3",
+            "ttsScript": "And the last. Three sounds!",
+            "interaction": "",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "C"
+                },
+                {
+                  "text": "A"
+                },
+                {
+                  "text": "T"
+                }
+              ],
+              "delay": 0,
+              "revealCount": 3
+            },
+            "afterPhonemes": [
+              "t"
+            ],
+            "phonemeLetterIndices": [
+              2
+            ]
+          }
+        ],
+        "heading": "Break the Word CAT",
+        "imagePrompt": "A friendly cartoon orange tabby cat lifting its paw in a little wave, with three colorful sound bubbles floating above its head. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.2d/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "example",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.2d/S3a.mp3",
+            "ttsScript": "How about the word fish?",
+            "interaction": "",
+            "displayText": "Fish",
+            "displayDelay": 1500,
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "F"
+                },
+                {
+                  "text": "I"
+                },
+                {
+                  "text": "SH"
+                }
+              ],
+              "delay": 1800,
+              "revealCount": 3
+            }
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.2d/S3b.mp3",
+            "ttsScript": "Let us break it.",
+            "interaction": "",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "F"
+                },
+                {
+                  "text": "I"
+                },
+                {
+                  "text": "SH"
+                }
+              ],
+              "delay": 0,
+              "revealCount": 3
+            }
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.2d/S3c.mp3",
+            "ttsScript": "First.",
+            "interaction": "",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "F"
+                },
+                {
+                  "text": "I"
+                },
+                {
+                  "text": "SH"
+                }
+              ],
+              "delay": 0,
+              "revealCount": 3
+            },
+            "afterPhonemes": [
+              "f"
+            ],
+            "phonemeLetterIndices": [
+              0
+            ]
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RF.1.2d/S3d.mp3",
+            "ttsScript": "Middle.",
+            "interaction": "",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "F"
+                },
+                {
+                  "text": "I"
+                },
+                {
+                  "text": "SH"
+                }
+              ],
+              "delay": 0,
+              "revealCount": 3
+            },
+            "afterPhonemes": [
+              "short_i"
+            ],
+            "phonemeLetterIndices": [
+              1
+            ]
+          },
+          {
+            "sub": "e",
+            "audioFile": "audio/lessons/RF.1.2d/S3e.mp3",
+            "ttsScript": "Last. Fish has three sounds, even though it has four letters!",
+            "interaction": "",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "F"
+                },
+                {
+                  "text": "I"
+                },
+                {
+                  "text": "SH"
+                }
+              ],
+              "delay": 0,
+              "revealCount": 3
+            },
+            "afterPhonemes": [
+              "sh"
+            ],
+            "phonemeLetterIndices": [
+              2
+            ]
+          }
+        ],
+        "heading": "Count the Sounds",
+        "imagePrompt": "A cheerful cartoon smiling fish with big friendly eyes swimming next to three colorful counting bubbles. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.2d/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.2d/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A breaking trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.2d/S4b.mp3",
+            "ttsScript": "Say the word slowly. Tap one finger for each sound you hear.",
+            "interaction": "",
+            "displayText": "Tap for each sound",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.2d/S4c.mp3",
+            "ttsScript": "Now you are ready to break words into sounds!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "A Breaking Trick",
+        "imagePrompt": "A cheerful cartoon child carefully counting on three colorful fingers, smiling with eyes closed in concentration. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.2d/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RF.1.2d-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RF.1.2d-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RF.1.2d-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RF.1.2d-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RF.1.2d-Q5"
+      }
+    ]
   },
   {
     "standardId": "RF.1.4b",
     "grade": "1st Grade",
     "domain": "Foundational Skills",
     "title": "Reading Out Loud",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.4b/S1a.mp3",
+            "ttsScript": "Reading out loud is like telling a story.",
+            "interaction": "",
+            "displayText": "Tell the story!",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.4b/S1b.mp3",
+            "ttsScript": "Good readers use their voice to make the words come alive.",
+            "interaction": "",
+            "displayText": "Make it come alive",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.4b/S1c.mp3",
+            "ttsScript": "Let us learn a few tricks to read out loud like a star!",
+            "interaction": "",
+            "displayText": "Three reading tricks",
+            "displayDelay": 2000
+          }
+        ],
+        "heading": "Read With Expression",
+        "imagePrompt": "A cheerful cartoon child standing on a small wooden stage, holding an open storybook and reading with a big happy expression, soft spotlight on them. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.4b/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.4b/S2a.mp3",
+            "ttsScript": "The ending mark tells your voice what to do.",
+            "interaction": "",
+            "displayText": "The mark is a clue!",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.4b/S2b.mp3",
+            "ttsScript": "A period means stop. Your voice comes down. The dog runs.",
+            "interaction": "",
+            "displayText": "Period. Voice down.",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.4b/S2c.mp3",
+            "ttsScript": "A question mark means your voice goes up. Is the dog fast?",
+            "interaction": "",
+            "displayText": "Question. Voice up!",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RF.1.4b/S2d.mp3",
+            "ttsScript": "An exclamation mark means excited! The dog is so fast!",
+            "interaction": "",
+            "displayText": "Exclaim. Feel excited!",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Match the Mark",
+        "imagePrompt": "Three cheerful cartoon punctuation mark characters in a row, a period, a question mark, and an exclamation mark, each wearing a matching expressive face. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.4b/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.4b/S3a.mp3",
+            "ttsScript": "Good readers read at just the right speed.",
+            "interaction": "",
+            "displayText": "Just right speed",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.4b/S3b.mp3",
+            "ttsScript": "Not too fast. The words get jumbled.",
+            "interaction": "",
+            "displayText": "Not too fast",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.4b/S3c.mp3",
+            "ttsScript": "Not too slow. The words lose their meaning.",
+            "interaction": "",
+            "displayText": "Not too slow",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RF.1.4b/S3d.mp3",
+            "ttsScript": "Nice and smooth, like talking to a friend.",
+            "interaction": "",
+            "displayText": "Smooth like talking",
+            "displayDelay": 2000
+          }
+        ],
+        "heading": "Not Too Fast, Not Too Slow",
+        "imagePrompt": "A cheerful cartoon turtle and a cartoon rabbit reading books side by side, the turtle smiling calmly, the rabbit looking thoughtful. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.4b/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.4b/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A fluency trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.4b/S4b.mp3",
+            "ttsScript": "Pretend you are reading to someone you love. Use your voice!",
+            "interaction": "",
+            "displayText": "Read with feeling",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.4b/S4c.mp3",
+            "ttsScript": "Now you are ready to practice reading out loud!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Sound It Out Like a Star",
+        "imagePrompt": "A cheerful cartoon microphone character with a friendly face, sparkles shining around it as if on a stage. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.4b/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RF.1.4b-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RF.1.4b-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RF.1.4b-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RF.1.4b-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RF.1.4b-Q5"
+      }
+    ]
   },
   {
     "standardId": "RF.1.4c",
     "grade": "1st Grade",
     "domain": "Foundational Skills",
     "title": "Using Clues to Read",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.4c/S1a.mp3",
+            "ttsScript": "Good readers are a little like detectives.",
+            "interaction": "",
+            "displayText": "Readers = detectives!",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.4c/S1b.mp3",
+            "ttsScript": "When a sentence does not make sense, they look for clues.",
+            "interaction": "",
+            "displayText": "Look for clues",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.4c/S1c.mp3",
+            "ttsScript": "Then they try the word again. Let us see how!",
+            "interaction": "",
+            "displayText": "Try again",
+            "displayDelay": 2000
+          }
+        ],
+        "heading": "Does It Make Sense?",
+        "imagePrompt": "A cheerful cartoon detective child wearing a little deerstalker hat and holding a magnifying glass, looking thoughtful and curious. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.4c/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.4c/S2a.mp3",
+            "ttsScript": "Here are three steps for when a word does not make sense.",
+            "interaction": "",
+            "displayText": "Three steps",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.4c/S2b.mp3",
+            "ttsScript": "Step one. Stop.",
+            "interaction": "",
+            "displayText": "Step 1: Stop",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.4c/S2c.mp3",
+            "ttsScript": "Step two. Think. Does that word fit the rest of the sentence?",
+            "interaction": "",
+            "displayText": "Step 2: Think",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RF.1.4c/S2d.mp3",
+            "ttsScript": "Step three. Try again with a word that makes sense.",
+            "interaction": "",
+            "displayText": "Step 3: Try again",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Stop, Think, Try Again",
+        "imagePrompt": "A cheerful cartoon child with a thought bubble above their head containing a tiny lightbulb, looking down at a book thoughtfully. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.4c/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "example",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.4c/S3a.mp3",
+            "ttsScript": "Listen. You read, the cat sat on the mat.",
+            "interaction": "",
+            "displayText": "The cat sat on the mat.",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.4c/S3b.mp3",
+            "ttsScript": "But you said, the cat sat on the map. Uh oh!",
+            "interaction": "",
+            "displayText": "...on the map? Uh oh.",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.4c/S3c.mp3",
+            "ttsScript": "Does a cat sit on a map? Stop. Think. That does not make sense.",
+            "interaction": "",
+            "displayText": "That does not fit",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RF.1.4c/S3d.mp3",
+            "ttsScript": "Try again. The cat sat on the mat. That makes sense!",
+            "interaction": "",
+            "displayText": "Mat! That makes sense",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Spot the Mix-Up",
+        "imagePrompt": "A cheerful cartoon orange tabby cat sitting on a soft green rug in a cozy living room. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.4c/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.4c/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A reader's trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.4c/S4b.mp3",
+            "ttsScript": "After every sentence, ask yourself, did that make sense?",
+            "interaction": "",
+            "displayText": "Did that make sense?",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.4c/S4c.mp3",
+            "ttsScript": "Now you are ready to practice using clues to read!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Always Ask",
+        "imagePrompt": "A friendly cartoon owl wearing round glasses, tilting its head as if asking a question, with a tiny thought bubble containing a question mark. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.4c/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RF.1.4c-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RF.1.4c-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RF.1.4c-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RF.1.4c-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RF.1.4c-Q5"
+      }
+    ]
   },
   {
     "standardId": "L.1.4",
