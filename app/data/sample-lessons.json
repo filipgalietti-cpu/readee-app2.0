@@ -6863,7 +6863,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.3b/S4me-b.mp3",
-            "ttsScript": "The word cap has a short A sound.",
+            "ttsScript": "Look. We have the word cap. Cap has a short A sound.",
             "interaction": "C-A-P diagram appears; A pulses as short_a phoneme plays.",
             "displayDiagram": {
               "letters": [
@@ -6922,7 +6922,7 @@
             "interaction": "Sparkles around the E. Tap to continue."
           }
         ],
-        "heading": "A Magic Trick: Silent E",
+        "heading": "Magic E",
         "imagePrompt": "A cartoon letter E character wearing a tall purple wizard hat with stars, holding a small magic wand with sparkles trailing, smiling brightly. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RF.K.3b/S4me.png"
       },
