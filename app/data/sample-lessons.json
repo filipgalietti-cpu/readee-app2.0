@@ -7676,7 +7676,7 @@
           }
         ],
         "heading": "Let's Read with Purpose!",
-        "imagePrompt": "A cheerful cartoon child sitting cross-legged with a colorful storybook in one hand and a friendly fact book in the other, big curious smile. Simple clean background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A small group of cheerful cartoon kids of different skin tones and hair styles sitting around a pile of colorful books, each holding a different book and smiling. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RF.K.4/S1.png"
       },
       {
@@ -7696,7 +7696,8 @@
             "ttsScript": "If it's a storybook, you might be reading for fun! To enjoy the adventure!",
             "interaction": "Pill: [Storybook → Reading for fun!] pops in blue.",
             "displayText": "Storybook → Reading for fun!",
-            "displayDelay": 1085
+            "displayDelay": 1085,
+            "imageFile": "images/lessons/RF.K.4/S2b.png"
           },
           {
             "sub": "c",
@@ -7704,7 +7705,8 @@
             "ttsScript": "If it's a fact book, you might be reading to learn new things!",
             "interaction": "Pill: [Fact book → Reading to learn!] pops in green.",
             "displayText": "Fact book → Reading to learn!",
-            "displayDelay": 1008
+            "displayDelay": 1008,
+            "imageFile": "images/lessons/RF.K.4/S2c.png"
           },
           {
             "sub": "d",
@@ -7725,23 +7727,22 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.4/S3a.mp3",
-            "ttsScript": "Imagine you have a book about tigers. Why would you read it?",
-            "interaction": "Heading appears.",
-            "displayText": ""
+            "ttsScript": "Imagine you pick up a book about tigers. Why would you read it?",
+            "interaction": "Heading."
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.4/S3b.mp3",
-            "ttsScript": "Maybe you want to learn where tigers live. That's your purpose! Now when you read, you look for that!",
-            "interaction": "Pill: [Purpose: Where do tigers live?] pops in with magnifying glass.",
+            "ttsScript": "Our purpose is to find out where tigers live. That is what we are looking for as we read.",
+            "interaction": "Pill: Purpose: Where do tigers live?",
             "displayText": "Purpose: Where do tigers live?",
             "displayDelay": 2500
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.4/S3c.mp3",
-            "ttsScript": "And you find it: Tigers live in forests and jungles! You found what you were looking for!",
-            "interaction": "Pill: [Answer: Forests and jungles!] pops in with checkmark. Stars.",
+            "ttsScript": "And here is the answer! Tigers live in forests and jungles. We found what we were looking for!",
+            "interaction": "Pill: Answer: Forests and jungles!",
             "displayText": "Answer: Forests and jungles!",
             "displayDelay": 2500
           }
