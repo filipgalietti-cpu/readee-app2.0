@@ -9539,7 +9539,325 @@
     "grade": "1st Grade",
     "domain": "Foundational Skills",
     "title": "First, Middle, and Last Sounds",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.2c/S1a.mp3",
+            "ttsScript": "Listen! Every word has sounds in a special order.",
+            "interaction": "",
+            "displayText": "Sounds in order",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.2c/S1b.mp3",
+            "ttsScript": "A first sound, a middle sound, and a last sound.",
+            "interaction": "",
+            "displayText": "First, middle, last",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.2c/S1c.mp3",
+            "ttsScript": "Let us find each one!",
+            "interaction": "",
+            "displayText": "Find the sounds",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Sounds Have a Place",
+        "imagePrompt": "A cheerful cartoon child wearing big round headphones, smiling and pointing to a row of three colorful glowing sound bubbles. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.2c/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.2c/S2a.mp3",
+            "ttsScript": "Here is the word map.",
+            "interaction": "",
+            "displayText": "Map",
+            "displayDelay": 1500,
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "M"
+                },
+                {
+                  "text": "A"
+                },
+                {
+                  "text": "P"
+                }
+              ],
+              "delay": 1800,
+              "revealCount": 3
+            }
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.2c/S2b.mp3",
+            "ttsScript": "The first sound is at the beginning.",
+            "interaction": "",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "M"
+                },
+                {
+                  "text": "A"
+                },
+                {
+                  "text": "P"
+                }
+              ],
+              "delay": 0,
+              "revealCount": 3
+            },
+            "afterPhonemes": [
+              "m"
+            ],
+            "phonemeLetterIndices": [
+              0
+            ]
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.2c/S2c.mp3",
+            "ttsScript": "The middle sound is in the middle.",
+            "interaction": "",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "M"
+                },
+                {
+                  "text": "A"
+                },
+                {
+                  "text": "P"
+                }
+              ],
+              "delay": 0,
+              "revealCount": 3
+            },
+            "afterPhonemes": [
+              "short_a"
+            ],
+            "phonemeLetterIndices": [
+              1
+            ]
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RF.1.2c/S2d.mp3",
+            "ttsScript": "And the last sound is at the end.",
+            "interaction": "",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "M"
+                },
+                {
+                  "text": "A"
+                },
+                {
+                  "text": "P"
+                }
+              ],
+              "delay": 0,
+              "revealCount": 3
+            },
+            "afterPhonemes": [
+              "p"
+            ],
+            "phonemeLetterIndices": [
+              2
+            ]
+          }
+        ],
+        "heading": "Meet MAP",
+        "imagePrompt": "A friendly cartoon open treasure map on a wooden table, with a curly red path and a small gold star marking a spot. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.2c/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "example",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.2c/S3a.mp3",
+            "ttsScript": "Your turn. The word is sun.",
+            "interaction": "",
+            "displayText": "Sun",
+            "displayDelay": 1500,
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "S"
+                },
+                {
+                  "text": "U"
+                },
+                {
+                  "text": "N"
+                }
+              ],
+              "delay": 1800,
+              "revealCount": 3
+            }
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.2c/S3b.mp3",
+            "ttsScript": "First sound.",
+            "interaction": "",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "S"
+                },
+                {
+                  "text": "U"
+                },
+                {
+                  "text": "N"
+                }
+              ],
+              "delay": 0,
+              "revealCount": 3
+            },
+            "afterPhonemes": [
+              "s"
+            ],
+            "phonemeLetterIndices": [
+              0
+            ]
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.2c/S3c.mp3",
+            "ttsScript": "Middle sound.",
+            "interaction": "",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "S"
+                },
+                {
+                  "text": "U"
+                },
+                {
+                  "text": "N"
+                }
+              ],
+              "delay": 0,
+              "revealCount": 3
+            },
+            "afterPhonemes": [
+              "short_u"
+            ],
+            "phonemeLetterIndices": [
+              1
+            ]
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RF.1.2c/S3d.mp3",
+            "ttsScript": "Last sound.",
+            "interaction": "",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "S"
+                },
+                {
+                  "text": "U"
+                },
+                {
+                  "text": "N"
+                }
+              ],
+              "delay": 0,
+              "revealCount": 3
+            },
+            "afterPhonemes": [
+              "n"
+            ],
+            "phonemeLetterIndices": [
+              2
+            ]
+          }
+        ],
+        "heading": "Try This One",
+        "imagePrompt": "A cheerful cartoon orange sun with a smiling face and friendly rays. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.2c/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.1.2c/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A listening trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.1.2c/S4b.mp3",
+            "ttsScript": "Say the word slowly. Stretch each sound out.",
+            "interaction": "",
+            "displayText": "Stretch it out!",
+            "displayDelay": 2200
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.1.2c/S4c.mp3",
+            "ttsScript": "Now you are ready to find first, middle, and last sounds!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "A Listening Trick",
+        "imagePrompt": "A friendly cartoon fox cupping its paw to its ear, eyes closed, listening carefully with small sound waves around it. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.1.2c/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RF.1.2c-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RF.1.2c-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RF.1.2c-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RF.1.2c-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RF.1.2c-Q5"
+      }
+    ]
   },
   {
     "standardId": "RF.1.2d",
