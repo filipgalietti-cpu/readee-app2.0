@@ -6665,7 +6665,10 @@
             "afterPhonemes": [
               "short_a"
             ],
-            "imageFile": "images/lessons/RF.K.3b/S2a.png"
+            "imageFile": "images/lessons/RF.K.3b/S2a.png",
+            "phonemeLetterIndices": [
+              0
+            ]
           },
           {
             "sub": "b",
@@ -6697,7 +6700,11 @@
               "short_e",
               "short_i"
             ],
-            "imageFile": "images/lessons/RF.K.3b/S2b.png"
+            "imageFile": "images/lessons/RF.K.3b/S2b.png",
+            "phonemeLetterIndices": [
+              1,
+              2
+            ]
           },
           {
             "sub": "c",
@@ -6729,7 +6736,11 @@
               "short_o",
               "short_u"
             ],
-            "imageFile": "images/lessons/RF.K.3b/S2c.png"
+            "imageFile": "images/lessons/RF.K.3b/S2c.png",
+            "phonemeLetterIndices": [
+              3,
+              4
+            ]
           },
           {
             "sub": "d",
@@ -6852,18 +6863,18 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.3b/S4me-b.mp3",
-            "ttsScript": "The word hat has a short A sound.",
-            "interaction": "H-A-T diagram appears; A pulses as short_a phoneme plays.",
+            "ttsScript": "The word cap has a short A sound.",
+            "interaction": "C-A-P diagram appears; A pulses as short_a phoneme plays.",
             "displayDiagram": {
               "letters": [
                 {
-                  "text": "H"
+                  "text": "C"
                 },
                 {
                   "text": "A"
                 },
                 {
-                  "text": "T"
+                  "text": "P"
                 }
               ],
               "delay": 1500
@@ -6878,18 +6889,18 @@
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.3b/S4me-c.mp3",
-            "ttsScript": "Watch this magic! Add an E to the end. Hat becomes hate. The E is silent, but it makes the A say its name.",
-            "interaction": "H-A-T-E diagram replaces H-A-T; A pulses as long_a phoneme plays.",
+            "ttsScript": "Watch this magic! Add an E to the end. Cap becomes cape. The E is silent, but it makes the A say its name.",
+            "interaction": "C-A-P-E diagram replaces C-A-P; A pulses as long_a phoneme plays.",
             "displayDiagram": {
               "letters": [
                 {
-                  "text": "H"
+                  "text": "C"
                 },
                 {
                   "text": "A"
                 },
                 {
-                  "text": "T"
+                  "text": "P"
                 },
                 {
                   "text": "E"
