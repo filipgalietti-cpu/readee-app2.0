@@ -1209,7 +1209,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
               );
               const bgClass = hasContent ? theme.contentBg : "";
               return (
-            <div className={`w-full ${steps.some((s) => s.displayTableRow) ? "max-w-lg" : "max-w-sm"} flex flex-col items-center gap-3 ${bgClass}`}>
+            <div className={`w-full ${steps.some((s) => s.displayTableRow) || steps.some((s) => s.displayDiagram?.letters?.some((l) => l.text.length > 1)) ? "max-w-lg" : "max-w-sm"} flex flex-col items-center gap-3 ${bgClass}`}>
               {(() => {
                 const hasTable = steps.some((s) => s.displayTableRow);
                 let tableRendered = false;
