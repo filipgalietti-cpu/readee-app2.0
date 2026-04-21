@@ -7431,32 +7431,54 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.3d/S1a.mp3",
-            "ttsScript": "Some words look almost the same but are actually different! Tricky, right?",
-            "interaction": "Heading fades in.",
-            "displayText": ""
+            "ttsScript": "Some words look almost the same, but they are different!",
+            "interaction": "Heading."
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.3d/S1b.mp3",
-            "ttsScript": "Like 'was' and 'saw' — the letters are the same but in a different order!",
-            "interaction": "'was' and 'saw' appear side by side with letters highlighted.",
-            "displayParts": [
-              {
-                "text": "was",
-                "delay": 600
-              },
-              {
-                "text": "saw",
-                "delay": 1800
-              }
-            ]
+            "ttsScript": "Look at the word was.",
+            "interaction": "WAS diagram appears.",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "W"
+                },
+                {
+                  "text": "A"
+                },
+                {
+                  "text": "S"
+                }
+              ],
+              "delay": 1500
+            }
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.3d/S1c.mp3",
-            "ttsScript": "Let's learn how to spot the difference between look-alike words!",
-            "interaction": "Magnifying glass sweeps. Tap to continue.",
-            "displayText": ""
+            "ttsScript": "Now flip the letters around. Same letters, but now it says saw!",
+            "interaction": "WAS diagram swaps to SAW.",
+            "displayDiagram": {
+              "letters": [
+                {
+                  "text": "S"
+                },
+                {
+                  "text": "A"
+                },
+                {
+                  "text": "W"
+                }
+              ],
+              "delay": 2500
+            }
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RF.K.3d/S1d.mp3",
+            "ttsScript": "Let us learn how to spot the difference between look-alike words.",
+            "interaction": "Tap to continue."
           }
         ],
         "heading": "Look-Alike Words!",
@@ -7470,29 +7492,28 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.3d/S2a.mp3",
-            "ttsScript": "Look-alike words have similar letters but they're in a different order or slightly different.",
-            "interaction": "Heading appears.",
-            "displayText": ""
+            "ttsScript": "Two tricks help us tell look-alike words apart.",
+            "interaction": "Heading."
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.3d/S2b.mp3",
-            "ttsScript": "Look carefully at the beginning of the word. That's usually where the difference is!",
-            "interaction": "Pill: [Check the beginning first!] pops in blue.",
-            "displayText": "Check the beginning first!",
-            "displayDelay": 1085
+            "ttsScript": "Trick one. Look at the very first letter. That tells you a lot!",
+            "interaction": "Pill: Start with the first letter.",
+            "displayText": "Trick 1: Check the first letter",
+            "displayDelay": 1500
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.3d/S2c.mp3",
-            "ttsScript": "Then check the ending. Read each letter one by one to make sure you've got the right word!",
-            "interaction": "Pill: [Then check the ending!] pops in green.",
-            "displayText": "Then check the ending!",
-            "displayDelay": 500
+            "ttsScript": "Trick two. Then read the rest of the letters, one at a time.",
+            "interaction": "Pill: Then read the rest.",
+            "displayText": "Trick 2: Read the rest, in order",
+            "displayDelay": 1500
           }
         ],
         "heading": "How to Tell Them Apart",
-        "imagePrompt": "Two nearly identical cartoon butterflies being examined by a child with a magnifying glass. One butterfly has blue spots, the other has red spots. The differences glow brightly. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A friendly cartoon child holding a big magnifying glass over a notebook, eyes wide with focus, looking carefully at the page. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RF.K.3d/S2.png"
       },
       {
