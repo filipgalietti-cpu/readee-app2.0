@@ -6434,8 +6434,76 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.3b/S1a.mp3",
-            "ttsScript": "There are five super special letters called vowels. A, E, I, O, U!",
-            "interaction": "Vowel tiles appear one-by-one as the TTS names each vowel.",
+            "ttsScript": "There are five super special letters called vowels!",
+            "interaction": "Heading fades in.",
+            "displayText": ""
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.K.3b/S1b.mp3",
+            "ttsScript": "First, the letter A.",
+            "interaction": "A tile appears; saved short-A phoneme plays.",
+            "displayDiagram": {
+              "letters": [
+                { "text": "A" }
+              ],
+              "delay": 1200
+            },
+            "afterPhonemes": ["short_a"]
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.K.3b/S1c.mp3",
+            "ttsScript": "Next, E.",
+            "interaction": "E tile joins; short-E phoneme plays on E.",
+            "displayDiagram": {
+              "letters": [
+                { "text": "A" },
+                { "text": "E" }
+              ],
+              "delay": 1200
+            },
+            "afterPhonemes": ["short_e"],
+            "phonemeLetterIndices": [1]
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RF.K.3b/S1d.mp3",
+            "ttsScript": "Then, I.",
+            "interaction": "I tile joins; short-I phoneme plays on I.",
+            "displayDiagram": {
+              "letters": [
+                { "text": "A" },
+                { "text": "E" },
+                { "text": "I" }
+              ],
+              "delay": 1200
+            },
+            "afterPhonemes": ["short_i"],
+            "phonemeLetterIndices": [2]
+          },
+          {
+            "sub": "e",
+            "audioFile": "audio/lessons/RF.K.3b/S1e.mp3",
+            "ttsScript": "Now, O.",
+            "interaction": "O tile joins; short-O phoneme plays on O.",
+            "displayDiagram": {
+              "letters": [
+                { "text": "A" },
+                { "text": "E" },
+                { "text": "I" },
+                { "text": "O" }
+              ],
+              "delay": 1200
+            },
+            "afterPhonemes": ["short_o"],
+            "phonemeLetterIndices": [3]
+          },
+          {
+            "sub": "f",
+            "audioFile": "audio/lessons/RF.K.3b/S1f.mp3",
+            "ttsScript": "And finally, U.",
+            "interaction": "U tile joins; short-U phoneme plays on U.",
             "displayDiagram": {
               "letters": [
                 { "text": "A" },
@@ -6444,49 +6512,26 @@
                 { "text": "O" },
                 { "text": "U" }
               ],
-              "delay": 2500
-            }
+              "delay": 1200
+            },
+            "afterPhonemes": ["short_u"],
+            "phonemeLetterIndices": [4]
           },
           {
-            "sub": "b",
-            "audioFile": "audio/lessons/RF.K.3b/S1b.mp3",
-            "ttsScript": "Every word needs at least one vowel.",
-            "interaction": "Five vowel tiles appear; each pulses as its short-vowel phoneme plays.",
+            "sub": "g",
+            "audioFile": "audio/lessons/RF.K.3b/S1g.mp3",
+            "ttsScript": "These are your five vowels! Let's learn more about them.",
+            "interaction": "All five tiles dance. Tap to continue.",
             "displayDiagram": {
               "letters": [
-                {
-                  "text": "A"
-                },
-                {
-                  "text": "E"
-                },
-                {
-                  "text": "I"
-                },
-                {
-                  "text": "O"
-                },
-                {
-                  "text": "U"
-                }
+                { "text": "A" },
+                { "text": "E" },
+                { "text": "I" },
+                { "text": "O" },
+                { "text": "U" }
               ],
-              "delay": 1500
-            },
-            "afterPhonemes": [
-              "short_a",
-              "short_e",
-              "short_i",
-              "short_o",
-              "short_u"
-            ]
-          },
-          {
-            "sub": "c",
-            "audioFile": "audio/lessons/RF.K.3b/S1c.mp3",
-            "ttsScript": "Let's learn their sounds!",
-            "interaction": "Vowels do a little dance. Tap to continue.",
-            "displayText": "Let's learn their sounds!",
-            "displayDelay": 1000
+              "delay": 0
+            }
           }
         ],
         "heading": "Let's Learn About Vowels!",
@@ -6563,8 +6608,17 @@
             "sub": "d",
             "audioFile": "audio/lessons/RF.K.3b/S2d.mp3",
             "ttsScript": "Five vowels, five sounds! A, E, I, O, U!",
-            "interaction": "All five pills glow in rainbow. Tap to continue.",
-            "displayText": ""
+            "interaction": "All five vowel tiles line up cleanly. Tap to continue.",
+            "displayDiagram": {
+              "letters": [
+                { "text": "A" },
+                { "text": "E" },
+                { "text": "I" },
+                { "text": "O" },
+                { "text": "U" }
+              ],
+              "delay": 2500
+            }
           }
         ],
         "heading": "The Vowel Sounds",
@@ -6673,7 +6727,7 @@
           }
         ],
         "heading": "A Helpful Trick!",
-        "imagePrompt": "Five cheerful cartoon vowel superheroes A, E, I, O, U standing in a friendly group pose wearing matching capes. Bright clean background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imagePrompt": "A friendly cartoon owl wearing a graduation cap, sitting on a stack of colorful books and pointing upward with a wing, clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
         "imageFile": "images/lessons/RF.K.3b/S4.png"
       },
       {
