@@ -7686,34 +7686,26 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.4/S2a.mp3",
-            "ttsScript": "Before you start reading, think: Why am I reading this?",
-            "interaction": "Heading appears.",
-            "displayText": ""
+            "ttsScript": "There are two big reasons we read a book!",
+            "interaction": "Heading lands."
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.4/S2b.mp3",
-            "ttsScript": "If it's a storybook, you might be reading for fun! To enjoy the adventure!",
-            "interaction": "Pill: [Storybook → Reading for fun!] pops in blue.",
-            "displayText": "Storybook → Reading for fun!",
-            "displayDelay": 1085,
+            "ttsScript": "Number one. A storybook. We read it for fun!",
+            "interaction": "Storybook image swaps in. Pill: For fun!",
+            "displayText": "Storybook = For fun!",
+            "displayDelay": 2200,
             "imageFile": "images/lessons/RF.K.4/S2b.png"
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.4/S2c.mp3",
-            "ttsScript": "If it's a fact book, you might be reading to learn new things!",
-            "interaction": "Pill: [Fact book → Reading to learn!] pops in green.",
-            "displayText": "Fact book → Reading to learn!",
-            "displayDelay": 1008,
+            "ttsScript": "Number two. A fact book. We read it to learn!",
+            "interaction": "Fact book image swaps in. Pill: To learn!",
+            "displayText": "Fact book = To learn!",
+            "displayDelay": 2200,
             "imageFile": "images/lessons/RF.K.4/S2c.png"
-          },
-          {
-            "sub": "d",
-            "audioFile": "audio/lessons/RF.K.4/S2d.mp3",
-            "ttsScript": "Knowing your purpose helps you pay attention to the right things!",
-            "interaction": "Both pills connect to a 'focus' icon.",
-            "displayText": ""
           }
         ],
         "heading": "Why Are We Reading?",
