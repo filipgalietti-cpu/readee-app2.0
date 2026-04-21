@@ -7095,40 +7095,19 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.3c/S1a.mp3",
-            "ttsScript": "Look! Some words show up in almost every single book.",
+            "ttsScript": "There are some words you will see in almost every book.",
             "interaction": "Heading fades in."
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.3c/S1b.mp3",
-            "ttsScript": "Words like the, I, do, is, and you.",
-            "interaction": "Sight word tiles appear in a row.",
-            "displayDiagram": {
-              "letters": [
-                {
-                  "text": "the"
-                },
-                {
-                  "text": "I"
-                },
-                {
-                  "text": "do"
-                },
-                {
-                  "text": "is"
-                },
-                {
-                  "text": "you"
-                }
-              ],
-              "delay": 1500,
-              "revealCount": 5
-            }
+            "ttsScript": "These special words are called sight words.",
+            "interaction": "Image stays."
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.3c/S1c.mp3",
-            "ttsScript": "We call them sight words. Let us learn them!",
+            "ttsScript": "Soon you will know them just by looking. Tap to keep going.",
             "interaction": "Tap to continue."
           }
         ],
