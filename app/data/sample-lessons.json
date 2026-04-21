@@ -7149,56 +7149,34 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.3c/S2b.mp3",
-            "ttsScript": "You don't sound them out — you just know them! Like how you know your own name.",
-            "interaction": "Pill: [Sight words = Know them by heart!] pops in.",
-            "displayDiagram": {
-              "letters": [
-                {
-                  "text": "the"
-                },
-                {
-                  "text": "I"
-                },
-                {
-                  "text": "do"
-                },
-                {
-                  "text": "is"
-                },
-                {
-                  "text": "you"
-                }
-              ],
-              "delay": 1500,
-              "revealCount": 3
-            }
+            "ttsScript": "You do not sound them out, you just know them! Like how you know your own name.",
+            "interaction": "Two pills stagger in: Just look. -> Just know.",
+            "displayParts": [
+              {
+                "text": "Just look.",
+                "delay": 1800
+              },
+              {
+                "text": "Just know.",
+                "delay": 3500
+              }
+            ]
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.3c/S2c.mp3",
-            "ttsScript": "The more sight words you know, the faster you can read! They're reading superpowers!",
-            "interaction": "Pill: [More sight words = Faster reading!] pops in.",
-            "displayDiagram": {
-              "letters": [
-                {
-                  "text": "the"
-                },
-                {
-                  "text": "I"
-                },
-                {
-                  "text": "do"
-                },
-                {
-                  "text": "is"
-                },
-                {
-                  "text": "you"
-                }
-              ],
-              "delay": 1000,
-              "revealCount": 5
-            }
+            "ttsScript": "The more sight words you know, the faster you can read! They are reading superpowers!",
+            "interaction": "Two pills stagger in: More words -> Faster reading!",
+            "displayParts": [
+              {
+                "text": "More words",
+                "delay": 1500
+              },
+              {
+                "text": "Faster reading!",
+                "delay": 3200
+              }
+            ]
           }
         ],
         "heading": "What Are Sight Words?",
