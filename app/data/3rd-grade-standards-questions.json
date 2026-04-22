@@ -3577,6 +3577,285 @@
       ],
       "standard_id": "L.3.6",
       "standard_description": "Acquire and use accurately conversational, general academic, and domain-specific words and phrases."
+    },
+    {
+      "standard_id": "L.3.1",
+      "standard_description": "Demonstrate command of the conventions of standard English grammar and usage when writing or speaking",
+      "domain": "Language",
+      "parent_tip": "Verb tenses, subject-verb agreement, comparatives.",
+      "questions": [
+        {
+          "id": "L.3.1-Q1",
+          "type": "multiple_choice",
+          "prompt": "Pick the right verb: Yesterday, I ___ to the park.",
+          "choices": [
+            "went",
+            "goed",
+            "gone",
+            "go"
+          ],
+          "correct": "went",
+          "hint": "Yesterday means past. The past of go is went!",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.1/L.3.1-Q1-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.1/L.3.1-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.1/L.3.1-Q1.png"
+        },
+        {
+          "id": "L.3.1-Q2",
+          "type": "multiple_choice",
+          "prompt": "Which sentence agrees correctly?",
+          "choices": [
+            "The dogs run fast.",
+            "The dogs runs fast.",
+            "The dog run fast.",
+            "The dog runned fast."
+          ],
+          "correct": "The dogs run fast.",
+          "hint": "Dogs is plural — use run, not runs.",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.1/L.3.1-Q2-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.1/L.3.1-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.1/L.3.1-Q2.png"
+        },
+        {
+          "id": "L.3.1-Q3",
+          "type": "multiple_choice",
+          "prompt": "What is the comparative form of **fast**?",
+          "choices": [
+            "faster",
+            "fastest",
+            "more fast",
+            "fastly"
+          ],
+          "correct": "faster",
+          "hint": "Add -er to compare two things!",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.1/L.3.1-Q3-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.1/L.3.1-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.1/L.3.1-Q3.png"
+        },
+        {
+          "id": "L.3.1-Q4",
+          "type": "multiple_choice",
+          "prompt": "Which is the superlative form of **happy**?",
+          "choices": [
+            "happiest",
+            "happier",
+            "more happy",
+            "happily"
+          ],
+          "correct": "happiest",
+          "hint": "Use -est when comparing three or more.",
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.1/L.3.1-Q4-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.1/L.3.1-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.1/L.3.1-Q4.png"
+        },
+        {
+          "id": "L.3.1-Q5",
+          "type": "multiple_choice",
+          "prompt": "Which sentence uses the right verb tense?",
+          "choices": [
+            "I am eating an apple now.",
+            "I were eating an apple now.",
+            "I am eat an apple now.",
+            "I am ate an apple now."
+          ],
+          "correct": "I am eating an apple now.",
+          "hint": "Now means present. Use am eating!",
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.1/L.3.1-Q5-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.1/L.3.1-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.1/L.3.1-Q5.png"
+        }
+      ]
+    },
+    {
+      "standard_id": "L.3.2",
+      "standard_description": "Demonstrate command of the conventions of standard English capitalization, punctuation, and spelling",
+      "domain": "Language",
+      "parent_tip": "Quotation marks for talking, commas for lists and dates.",
+      "questions": [
+        {
+          "id": "L.3.2-Q1",
+          "type": "multiple_choice",
+          "prompt": "Which uses quotation marks correctly?",
+          "choices": [
+            "Maya said, \"Hi!\"",
+            "Maya said Hi",
+            "\"Maya said\" Hi",
+            "Maya, said Hi!"
+          ],
+          "correct": "Maya said, \"Hi!\"",
+          "hint": "Wrap the spoken words in quotation marks!",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.2/L.3.2-Q1-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.2/L.3.2-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.2/L.3.2-Q1.png"
+        },
+        {
+          "id": "L.3.2-Q2",
+          "type": "multiple_choice",
+          "prompt": "What punctuation is needed in a date like **March 5 2026**?",
+          "choices": [
+            "a comma between day and year",
+            "no punctuation",
+            "a period after each",
+            "a question mark"
+          ],
+          "correct": "a comma between day and year",
+          "hint": "Always put a comma between the day and year!",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.2/L.3.2-Q2-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.2/L.3.2-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.2/L.3.2-Q2.png"
+        },
+        {
+          "id": "L.3.2-Q3",
+          "type": "multiple_choice",
+          "prompt": "Which sentence is punctuated correctly?",
+          "choices": [
+            "I bought apples, bananas, and grapes.",
+            "I bought apples bananas and grapes.",
+            "I bought, apples, bananas, and, grapes.",
+            "I bought apples; bananas; and grapes."
+          ],
+          "correct": "I bought apples, bananas, and grapes.",
+          "hint": "Use commas to separate items in a list!",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.2/L.3.2-Q3-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.2/L.3.2-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.2/L.3.2-Q3.png"
+        },
+        {
+          "id": "L.3.2-Q4",
+          "type": "multiple_choice",
+          "prompt": "Which is **possessive** (shows owning)?",
+          "choices": [
+            "the kid's bag",
+            "the kids bag",
+            "the kids bags",
+            "the kid bags"
+          ],
+          "correct": "the kid's bag",
+          "hint": "Apostrophe + S shows owning!",
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.2/L.3.2-Q4-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.2/L.3.2-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.2/L.3.2-Q4.png"
+        },
+        {
+          "id": "L.3.2-Q5",
+          "type": "multiple_choice",
+          "prompt": "Where do quotation marks go in: She said hello?",
+          "choices": [
+            "She said, \"hello.\"",
+            "She, said hello",
+            "She said \"hello\"",
+            "She said hello,"
+          ],
+          "correct": "She said, \"hello.\"",
+          "hint": "Spoken words go inside quotation marks!",
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.2/L.3.2-Q5-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.2/L.3.2-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.2/L.3.2-Q5.png"
+        }
+      ]
+    },
+    {
+      "standard_id": "L.3.3",
+      "standard_description": "Use knowledge of language and its conventions when writing, speaking, reading, or listening",
+      "domain": "Language",
+      "parent_tip": "Pick words that match your audience and purpose.",
+      "questions": [
+        {
+          "id": "L.3.3-Q1",
+          "type": "multiple_choice",
+          "prompt": "Which is the strongest way to say **good**?",
+          "choices": [
+            "fantastic",
+            "fine",
+            "okay",
+            "not bad"
+          ],
+          "correct": "fantastic",
+          "hint": "Fantastic means really, really good!",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.3/L.3.3-Q1-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.3/L.3.3-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.3/L.3.3-Q1.png"
+        },
+        {
+          "id": "L.3.3-Q2",
+          "type": "multiple_choice",
+          "prompt": "You are writing to a friend. Which is best?",
+          "choices": [
+            "Hey, what's up?",
+            "To whom it may concern,",
+            "Dear sir or madam,",
+            "Esteemed colleague,"
+          ],
+          "correct": "Hey, what's up?",
+          "hint": "Friends use casual greetings!",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.3/L.3.3-Q2-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.3/L.3.3-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.3/L.3.3-Q2.png"
+        },
+        {
+          "id": "L.3.3-Q3",
+          "type": "multiple_choice",
+          "prompt": "Which word adds the most picture to **walked**?",
+          "choices": [
+            "strolled",
+            "went",
+            "moved",
+            "came"
+          ],
+          "correct": "strolled",
+          "hint": "Strolled means walked in a relaxed way!",
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.3/L.3.3-Q3-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.3/L.3.3-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.3/L.3.3-Q3.png"
+        },
+        {
+          "id": "L.3.3-Q4",
+          "type": "multiple_choice",
+          "prompt": "Why do writers choose specific words?",
+          "choices": [
+            "to give a clearer picture",
+            "to use the longest words",
+            "to fill space",
+            "because it sounds smart"
+          ],
+          "correct": "to give a clearer picture",
+          "hint": "Specific words paint clearer pictures.",
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.3/L.3.3-Q4-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.3/L.3.3-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.3/L.3.3-Q4.png"
+        },
+        {
+          "id": "L.3.3-Q5",
+          "type": "multiple_choice",
+          "prompt": "Which sentence has the strongest verb?",
+          "choices": [
+            "The cat pounced on the toy.",
+            "The cat went on the toy.",
+            "The cat sat on the toy.",
+            "The cat was on the toy."
+          ],
+          "correct": "The cat pounced on the toy.",
+          "hint": "Pounced shows action vividly!",
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.3/L.3.3-Q5-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.3/L.3.3-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.3/L.3.3-Q5.png"
+        }
+      ]
     }
   ]
 }
