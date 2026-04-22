@@ -13,8 +13,8 @@
           "type": "multiple_choice",
           "prompt": "Elena clutched her telescope and crept onto the rooftop. The city lights dimmed the stars, but she knew exactly where to look. At 9:47 PM, a streak of light raced across the sky — the comet her grandfather had told her about.\n\nWhat can you infer about Elena's grandfather?",
           "choices": [
-            "He shared his knowledge of astronomy with Elena",
             "He doesn't like stars",
+            "He shared his knowledge of astronomy with Elena",
             "He has never seen a comet",
             "He lives on the rooftop"
           ],
@@ -31,8 +31,8 @@
           "prompt": "The letter had been folded and refolded so many times that the creases were soft as fabric. Marcus kept it in his front pocket, close to his chest, even though he'd memorized every word.\n\nWhat can you infer about how Marcus feels about the letter?",
           "choices": [
             "He wants to throw it away",
-            "It's extremely important and meaningful to him",
             "He just received it today",
+            "It's extremely important and meaningful to him",
             "He can't read it"
           ],
           "correct": "It's extremely important and meaningful to him",
@@ -47,9 +47,9 @@
           "type": "multiple_choice",
           "prompt": "Priya practiced her free throws every morning before school and every evening after dinner. On the day of tryouts, she was the only one who made all ten shots.\n\nWhat detail from the text BEST supports the idea that hard work pays off?",
           "choices": [
+            "She practiced before school and after dinner",
             "She goes to school",
             "She shoots free throws",
-            "She practiced before school and after dinner",
             "She went to tryouts"
           ],
           "correct": "She practiced before school and after dinner",
@@ -66,8 +66,8 @@
           "choices": [
             "He's happy and excited",
             "He's tired from driving",
-            "He's hungry",
-            "He's upset or frustrated about something"
+            "He's upset or frustrated about something",
+            "He's hungry"
           ],
           "correct": "He's upset or frustrated about something",
           "hint": "Silent, tight grip, clenched jaw, deep sigh — those are all signs of frustration.",
@@ -81,8 +81,8 @@
           "type": "multiple_choice",
           "prompt": "The old bookshop smelled of leather and dust. Mrs. Tanaka knew every book by heart — where it sat, what it was about, who had loved it last. When the city announced the building would be torn down, she simply said, \"Books always find a new home.\"\n\nWhat does Mrs. Tanaka's response reveal about her character?",
           "choices": [
-            "She's optimistic and resilient even in difficult times",
             "She wants a new building",
+            "She's optimistic and resilient even in difficult times",
             "She doesn't like books",
             "She doesn't care about the bookshop"
           ],
@@ -106,8 +106,8 @@
           "type": "multiple_choice",
           "prompt": "Kai wanted to win the science fair more than anything. He worked alone, refusing help from his classmates. His project looked impressive but had a major flaw he hadn't noticed. Meanwhile, the team next to him — who had shared ideas and caught each other's mistakes — won first place.\n\nWhat is the theme?",
           "choices": [
-            "Working alone is always best",
             "Collaboration leads to better results than working alone",
+            "Working alone is always best",
             "Science fairs are unfair",
             "Winning is everything"
           ],
@@ -124,8 +124,8 @@
           "prompt": "Amara was embarrassed by her grandmother's accent and old-fashioned clothes. She asked Grandma not to come to the school play. After the show, Amara saw her classmates laughing with their grandparents and felt a deep ache. She called Grandma that night and said, \"Next time, front row.\"\n\nWhat is the theme?",
           "choices": [
             "Clothes matter more than people",
-            "Grandparents shouldn't visit schools",
             "Don't be ashamed of your family — appreciate them",
+            "Grandparents shouldn't visit schools",
             "School plays are boring"
           ],
           "correct": "Don't be ashamed of your family — appreciate them",
@@ -157,9 +157,9 @@
           "type": "multiple_choice",
           "prompt": "The tiny seed was carried by the wind past tall trees and mighty oaks. It landed in a crack between two rocks where nothing grew. But the seed pushed through anyway, and years later it became the only tree on that rocky hill.\n\nWhat is the theme?",
           "choices": [
-            "Determination can help you thrive even in difficult conditions",
             "Seeds need good soil",
             "Trees are stronger than rocks",
+            "Determination can help you thrive even in difficult conditions",
             "Wind is powerful"
           ],
           "correct": "Determination can help you thrive even in difficult conditions",
@@ -175,8 +175,8 @@
           "prompt": "Which is the BEST summary of a story?",
           "choices": [
             "Just the ending",
-            "A brief retelling of the main character, problem, key events, and resolution",
             "A copy of the first paragraph",
+            "A brief retelling of the main character, problem, key events, and resolution",
             "A list of every single event that happened"
           ],
           "correct": "A brief retelling of the main character, problem, key events, and resolution",
@@ -200,8 +200,8 @@
           "prompt": "Coach Reyes never raised her voice. When a player made a mistake, she'd kneel down, look them in the eye, and say, \"Tell me what you were thinking.\" By season's end, every player said she was the best coach they'd ever had.\n\nWhich word BEST describes Coach Reyes?",
           "choices": [
             "Strict",
-            "Impatient",
             "Respectful",
+            "Impatient",
             "Careless"
           ],
           "correct": "Respectful",
@@ -217,9 +217,9 @@
           "prompt": "The marketplace buzzed with voices in a dozen languages. Spices piled in colorful mountains — saffron yellow, paprika red, turmeric orange. Somewhere a radio played scratchy music, and the smell of roasting lamb drifted through the narrow aisles.\n\nThe author uses these details to create a setting that feels —",
           "choices": [
             "Modern and high-tech",
+            "Vibrant, busy, and full of sensory experiences",
             "Quiet and lonely",
-            "Cold and frightening",
-            "Vibrant, busy, and full of sensory experiences"
+            "Cold and frightening"
           ],
           "correct": "Vibrant, busy, and full of sensory experiences",
           "hint": "Voices, colors, music, smells — the author hits sight, sound, and smell to bring it alive.",
@@ -233,9 +233,9 @@
           "type": "multiple_choice",
           "prompt": "Jordan's hands trembled as he opened the envelope. His eyes scanned the page, then widened. He read it again. Then a third time. Then he let out a whoop so loud the neighbors\" dog started barking.\n\nWhat can you infer about the letter's contents?",
           "choices": [
-            "Very good news",
             "Bad news",
             "A grocery list",
+            "Very good news",
             "A homework assignment"
           ],
           "correct": "Very good news",
@@ -250,8 +250,8 @@
           "type": "multiple_choice",
           "prompt": "When describing a character **in depth,** you should include —",
           "choices": [
-            "Just their name and age",
             "Their traits, motivations, thoughts, words, and actions",
+            "Just their name and age",
             "Only what other characters say about them",
             "Only what they look like"
           ],
@@ -267,9 +267,9 @@
           "type": "multiple_choice",
           "prompt": "The abandoned lighthouse stood at the edge of the cliff, its paint peeling like sunburned skin. Waves crashed against the rocks below, sending spray twenty feet into the air. Inside, the spiral staircase groaned under the weight of years.\n\nThe setting creates a mood that is —",
           "choices": [
+            "Eerie and isolated",
             "Busy and crowded",
             "Cheerful and bright",
-            "Eerie and isolated",
             "Warm and cozy"
           ],
           "correct": "Eerie and isolated",
@@ -293,9 +293,9 @@
           "prompt": "She had the Midas touch — every business she started turned into gold.\n\nThis allusion to King Midas means —",
           "choices": [
             "She was a queen",
+            "Everything she did became successful",
             "She was greedy",
-            "She literally turned things to gold",
-            "Everything she did became successful"
+            "She literally turned things to gold"
           ],
           "correct": "Everything she did became successful",
           "hint": "King Midas turned everything to gold. This phrase means everything she touches succeeds.",
@@ -327,8 +327,8 @@
           "prompt": "The morning light tiptoed through the curtains.\n\nWhat does **tiptoed** suggest about the light?",
           "choices": [
             "It was nighttime",
-            "It entered gently and softly",
             "It was very bright and harsh",
+            "It entered gently and softly",
             "The curtains were open"
           ],
           "correct": "It entered gently and softly",
@@ -344,8 +344,8 @@
           "prompt": "His Achilles\" heel was his temper — it always got him into trouble.\n\nAn **Achilles** heel\" refers to —",
           "choices": [
             "A type of shoe",
-            "A battle strategy",
             "A person's greatest weakness or vulnerability",
+            "A battle strategy",
             "A foot injury"
           ],
           "correct": "A person's greatest weakness or vulnerability",
@@ -362,8 +362,8 @@
           "choices": [
             "People were cooking in the library",
             "Someone had a knife in the library",
-            "The library was noisy",
-            "The silence was intense and heavy"
+            "The silence was intense and heavy",
+            "The library was noisy"
           ],
           "correct": "The silence was intense and heavy",
           "hint": "This is figurative — the silence felt so strong and present it was almost physical.",
@@ -385,10 +385,10 @@
           "type": "multiple_choice",
           "prompt": "Which structural element is found in a drama (play) but NOT in prose (a regular story)?",
           "choices": [
-            "Stage directions",
             "Chapters",
             "Paragraphs",
-            "A title"
+            "A title",
+            "Stage directions"
           ],
           "correct": "Stage directions",
           "hint": "Stage directions (in italics or brackets) tell actors how to move and speak — only plays have these.",
@@ -429,8 +429,8 @@
           "type": "multiple_choice",
           "prompt": "How is dialogue presented differently in a play versus a novel?",
           "choices": [
-            "Novels don't have dialogue",
             "In plays, the character's name appears before their lines; novels use quotation marks",
+            "Novels don't have dialogue",
             "There's no difference",
             "Plays don't have dialogue"
           ],
@@ -505,9 +505,9 @@
           "prompt": "I couldn't believe my eyes when I opened the door.\n\nThis is written in —",
           "choices": [
             "No point of view",
+            "First person",
             "Third person",
-            "Second person",
-            "First person"
+            "Second person"
           ],
           "correct": "First person",
           "hint": "The word 'I' is the key clue — the narrator is telling their own story.",
@@ -521,8 +521,8 @@
           "type": "multiple_choice",
           "prompt": "Sarah couldn't believe her eyes when she opened the door.\n\nThis is written in —",
           "choices": [
-            "Third person",
             "Second person",
+            "Third person",
             "First person",
             "No point of view"
           ],
@@ -539,9 +539,9 @@
           "prompt": "How does first-person narration affect a story compared to third-person?",
           "choices": [
             "There's no difference",
-            "First person limits you to one character's perspective and feelings",
             "Third person is always more honest",
-            "First person gives you access to every character's thoughts"
+            "First person gives you access to every character's thoughts",
+            "First person limits you to one character's perspective and feelings"
           ],
           "correct": "First person limits you to one character's perspective and feelings",
           "hint": "With 'I,' you only know what THAT character knows and feels.",
@@ -572,10 +572,10 @@
           "type": "multiple_choice",
           "prompt": "The same event is described two ways: Version A: \"I scored the winning goal and felt like a hero.\" Version B: \"Jake scored the winning goal. His teammates cheered, but the other team walked away in silence.\"\n\nHow does the point of view change what the reader learns?",
           "choices": [
+            "Version A shows Jake's feelings; Version B shows both teams' reactions",
             "Version B is better written",
             "Both versions give the same information",
-            "Version A has more details",
-            "Version A shows Jake's feelings; Version B shows both teams' reactions"
+            "Version A has more details"
           ],
           "correct": "Version A shows Jake's feelings; Version B shows both teams' reactions",
           "hint": "First person (A) gives inner feelings. Third person (B) gives a wider view of the scene.",
@@ -597,8 +597,8 @@
           "type": "multiple_choice",
           "prompt": "A student reads a chapter about a thunderstorm, then watches a movie version with dramatic music and dark lighting. The movie version adds —",
           "choices": [
-            "Mood and atmosphere through sound and visuals",
             "New characters",
+            "Mood and atmosphere through sound and visuals",
             "A different ending",
             "More dialogue"
           ],
@@ -633,8 +633,8 @@
           "choices": [
             "More chapters",
             "More words",
-            "Facial expressions, tone of voice, and body language of actors",
-            "Longer descriptions"
+            "Longer descriptions",
+            "Facial expressions, tone of voice, and body language of actors"
           ],
           "correct": "Facial expressions, tone of voice, and body language of actors",
           "hint": "Actors bring characters to life with their faces, voices, and movements.",
@@ -649,9 +649,9 @@
           "prompt": "A book describes a character as \"a tall woman with kind eyes.\" In the movie, the actress has a warm smile and speaks softly. How does the movie expand on the text?",
           "choices": [
             "It contradicts the book",
+            "It shows specific visual and audio details that bring 'kind eyes' to life",
             "It removes the description",
-            "It changes the character completely",
-            "It shows specific visual and audio details that bring 'kind eyes' to life"
+            "It changes the character completely"
           ],
           "correct": "It shows specific visual and audio details that bring 'kind eyes' to life",
           "hint": "The movie translates 'kind eyes' into a warm smile and soft voice — making it real.",
@@ -665,8 +665,8 @@
           "type": "multiple_choice",
           "prompt": "Why might a reader prefer the book version over the movie?",
           "choices": [
-            "The reader's imagination creates a personal version of the story",
             "Movies don't have stories",
+            "The reader's imagination creates a personal version of the story",
             "Books have more special effects",
             "Books are always better"
           ],
@@ -800,10 +800,10 @@
           "type": "multiple_choice",
           "prompt": "The treaty was signed on a Tuesday. By Wednesday, the two kingdoms had already broken it. **Peace,** the old queen muttered, \"is harder to keep than to promise.\"\n\nWhat is the queen's message about peace?",
           "choices": [
+            "Making peace is simple but maintaining it is the real challenge",
             "Tuesdays are unlucky",
             "Treaties always work",
-            "Peace is easy",
-            "Making peace is simple but maintaining it is the real challenge"
+            "Peace is easy"
           ],
           "correct": "Making peace is simple but maintaining it is the real challenge",
           "hint": "They signed peace easily but broke it immediately — keeping peace is the hard part.",
@@ -835,9 +835,9 @@
           "prompt": "Zuri had two rules: never break a promise, and always carry a pencil. **You never know,** she said, \"when you'll need to write something down before you forget it — or before someone tries to make you forget.\"\n\nWhat does the second rule suggest about Zuri?",
           "choices": [
             "She forgets everything",
-            "She values truth and recording important things",
             "She's a teacher",
-            "She likes drawing"
+            "She likes drawing",
+            "She values truth and recording important things"
           ],
           "correct": "She values truth and recording important things",
           "hint": "She writes things down so they can't be changed or forgotten — she values accuracy and truth.",
@@ -876,10 +876,10 @@
           "type": "multiple_choice",
           "prompt": "The International Space Station orbits Earth at approximately 17,500 miles per hour. At this speed, astronauts experience 16 sunrises and 16 sunsets every 24 hours.\n\nWhat detail explains why astronauts see so many sunrises?",
           "choices": [
+            "It orbits at 17,500 mph, completing an orbit roughly every 90 minutes",
             "Astronauts sleep less",
             "The sun moves faster in space",
-            "The station is large",
-            "It orbits at 17,500 mph, completing an orbit roughly every 90 minutes"
+            "The station is large"
           ],
           "correct": "It orbits at 17,500 mph, completing an orbit roughly every 90 minutes",
           "hint": "The extreme speed means it circles Earth many times a day — each orbit brings a new sunrise.",
@@ -893,8 +893,8 @@
           "type": "multiple_choice",
           "prompt": "Jane Goodall arrived in Tanzania in 1960 with no formal training in science. Within months, she observed chimpanzees using sticks as tools to extract termites — a discovery that changed our understanding of what makes humans unique.\n\nWhat inference can you make about why this discovery was so important?",
           "choices": [
-            "Scientists previously believed only humans used tools",
             "Tanzania is a new country",
+            "Scientists previously believed only humans used tools",
             "People didn't know about termites before",
             "Chimpanzees are smarter than humans"
           ],
@@ -927,9 +927,9 @@
           "type": "multiple_choice",
           "prompt": "During the California Gold Rush of 1849, most miners didn't get rich from gold. However, merchants who sold pickaxes, shovels, and jeans to the miners made fortunes.\n\nWhat can you infer from this passage?",
           "choices": [
+            "Selling supplies to miners was more profitable than mining itself",
             "The Gold Rush lasted one year",
             "Merchants also mined for gold",
-            "Selling supplies to miners was more profitable than mining itself",
             "Gold was easy to find"
           ],
           "correct": "Selling supplies to miners was more profitable than mining itself",
@@ -986,8 +986,8 @@
           "type": "multiple_choice",
           "prompt": "Ancient Rome's road system was an engineering marvel. Roman roads were built in layers — gravel, sand, and paving stones — designed to last centuries. Over 250,000 miles of roads connected the empire. Many of these roads are still visible today.\n\nWhich detail BEST supports the main idea that Roman roads were remarkable?",
           "choices": [
-            "Roads were made of gravel",
             "Many roads are still visible centuries later",
+            "Roads were made of gravel",
             "Rome had an empire",
             "Roads connected cities"
           ],
@@ -1003,9 +1003,9 @@
           "type": "multiple_choice",
           "prompt": "A good summary of an informational text includes —",
           "choices": [
+            "The main idea and the most important supporting details in your own words",
             "Just the title and author",
             "Only your personal opinion",
-            "The main idea and the most important supporting details in your own words",
             "Every single detail from the text"
           ],
           "correct": "The main idea and the most important supporting details in your own words",
@@ -1020,10 +1020,10 @@
           "type": "multiple_choice",
           "prompt": "Exercise benefits the brain in multiple ways. Physical activity increases blood flow to the brain, delivering more oxygen. It also triggers the release of chemicals that improve mood and focus. Studies show students who exercise regularly perform better academically.\n\nHow does the detail about students support the main idea?",
           "choices": [
+            "It provides real-world evidence that exercise helps brains work better",
             "It's about schools, not brains",
             "It contradicts the main idea",
-            "It changes the topic",
-            "It provides real-world evidence that exercise helps brains work better"
+            "It changes the topic"
           ],
           "correct": "It provides real-world evidence that exercise helps brains work better",
           "hint": "Better academic performance = proof that exercise benefits the brain. It's concrete evidence!",
@@ -1037,10 +1037,10 @@
           "type": "multiple_choice",
           "prompt": "Paragraph 1: Renewable energy sources like solar and wind are growing rapidly. Paragraph 2: Solar panel costs have dropped 89% since 2010. Paragraph 3: Wind energy now powers millions of homes.\n\nThe main idea of the ENTIRE passage is —",
           "choices": [
-            "Renewable energy is growing and becoming more accessible",
             "Energy is expensive",
             "Wind energy is popular",
-            "Solar panels are cheap"
+            "Solar panels are cheap",
+            "Renewable energy is growing and becoming more accessible"
           ],
           "correct": "Renewable energy is growing and becoming more accessible",
           "hint": "Both paragraphs 2 and 3 give specific examples supporting the big idea in paragraph 1.",
@@ -1063,9 +1063,9 @@
           "prompt": "In 1773, American colonists were furious about being taxed by Britain without representation in Parliament. A group of colonists disguised as Native Americans boarded British ships and dumped 342 chests of tea into Boston Harbor.\n\nWhat caused the Boston Tea Party?",
           "choices": [
             "The ships were blocking the harbor",
-            "Anger over taxation without representation",
             "The colonists wanted free tea",
-            "Britain declared war"
+            "Britain declared war",
+            "Anger over taxation without representation"
           ],
           "correct": "Anger over taxation without representation",
           "hint": "The first sentence states the cause — being taxed without having a voice in government.",
@@ -1096,9 +1096,9 @@
           "type": "multiple_choice",
           "prompt": "The invention of the printing press in 1440 made books affordable for the first time. Before that, books were copied by hand, making them rare and expensive. As books became accessible, literacy rates soared across Europe.\n\nWhat was the EFFECT of the printing press on literacy?",
           "choices": [
+            "Literacy rates soared because books became accessible",
             "Literacy decreased",
             "Nothing changed",
-            "Literacy rates soared because books became accessible",
             "People stopped reading"
           ],
           "correct": "Literacy rates soared because books became accessible",
@@ -1206,9 +1206,9 @@
           "type": "multiple_choice",
           "prompt": "Why is it helpful to identify a text's structure?",
           "choices": [
+            "It helps you understand how the author organized ideas and find information more easily",
             "It makes the text shorter",
             "It's only important for fiction",
-            "It helps you understand how the author organized ideas and find information more easily",
             "It changes the meaning of the text"
           ],
           "correct": "It helps you understand how the author organized ideas and find information more easily",
@@ -1259,8 +1259,8 @@
           "choices": [
             "Chronological",
             "Compare and contrast",
-            "Cause and effect",
-            "Problem and solution"
+            "Problem and solution",
+            "Cause and effect"
           ],
           "correct": "Problem and solution",
           "hint": "The passage describes a problem (plastic pollution) and then offers solutions. What structure is that?",
@@ -1274,9 +1274,9 @@
           "type": "multiple_choice",
           "prompt": "Both dolphins and porpoises are marine mammals that breathe air and nurse their young. However, dolphins tend to be larger with longer snouts, while porpoises are smaller with rounded faces. Similarly, both travel in groups, but dolphin groups are usually much larger.\n\nWhat text structure does this passage use?",
           "choices": [
-            "Compare and contrast",
             "Problem and solution",
             "Chronological",
+            "Compare and contrast",
             "Cause and effect"
           ],
           "correct": "Compare and contrast",
@@ -1292,9 +1292,9 @@
           "prompt": "Rising ocean temperatures have caused many coral reefs to bleach. Because the coral loses the algae it depends on for food, it turns white and can eventually die. As a result, thousands of species that rely on coral reefs for shelter are now in danger.\n\nWhat text structure does this passage use?",
           "choices": [
             "Chronological",
-            "Cause and effect",
             "Compare and contrast",
-            "Problem and solution"
+            "Problem and solution",
+            "Cause and effect"
           ],
           "correct": "Cause and effect",
           "hint": "Look for 'caused,' 'because,' and 'as a result' — those are cause and effect signal words!",
@@ -1367,8 +1367,8 @@
           "choices": [
             "Cause and effect",
             "Chronological",
-            "Problem and solution",
-            "Compare and contrast"
+            "Compare and contrast",
+            "Problem and solution"
           ],
           "correct": "Problem and solution",
           "hint": "The passage describes a problem (overfishing) and then explains what was done to fix it!",
@@ -1422,8 +1422,8 @@
           "type": "multiple_choice",
           "prompt": "A firsthand account is written by someone who —",
           "choices": [
-            "Was actually there and experienced it",
             "Heard about it from a friend",
+            "Was actually there and experienced it",
             "Read about the event in a book",
             "Watched a documentary about it"
           ],
@@ -1439,8 +1439,8 @@
           "type": "multiple_choice",
           "prompt": "Which is a firsthand account?",
           "choices": [
-            "A textbook chapter about the Civil War",
             "A soldier's diary from the Civil War battlefield",
+            "A textbook chapter about the Civil War",
             "A Wikipedia article about a battle",
             "A movie about the war"
           ],
@@ -1456,9 +1456,9 @@
           "type": "multiple_choice",
           "prompt": "How might a firsthand account DIFFER from a secondhand account of the same event?",
           "choices": [
+            "Firsthand accounts include personal feelings and experiences; secondhand accounts are more objective",
             "Secondhand accounts have more feelings",
             "They're always exactly the same",
-            "Firsthand accounts include personal feelings and experiences; secondhand accounts are more objective",
             "Firsthand accounts are always shorter"
           ],
           "correct": "Firsthand accounts include personal feelings and experiences; secondhand accounts are more objective",
@@ -1474,9 +1474,9 @@
           "prompt": "Account A: \"I could feel the ground shaking under my feet. Dust filled the air and I couldn't see.\" Account B: \"The earthquake measured 6.7 on the Richter scale and caused significant structural damage.\"\n\nWhich is firsthand?",
           "choices": [
             "Account B",
+            "Account A",
             "Both",
-            "Neither",
-            "Account A"
+            "Neither"
           ],
           "correct": "Account A",
           "hint": "Account A uses 'I' and describes personal sensory experiences. That's firsthand!",
@@ -1515,8 +1515,8 @@
           "type": "multiple_choice",
           "prompt": "A bar graph shows that the school recycled 200 pounds in January, 350 in February, and 500 in March. What trend does the graph show?",
           "choices": [
-            "The school stopped recycling",
             "Recycling increased each month",
+            "The school stopped recycling",
             "Recycling decreased each month",
             "Recycling stayed the same"
           ],
@@ -1534,8 +1534,8 @@
           "choices": [
             "Learn about geography",
             "Understand the exact words people said",
-            "See the sequence and spacing of events over time",
-            "Read faster"
+            "Read faster",
+            "See the sequence and spacing of events over time"
           ],
           "correct": "See the sequence and spacing of events over time",
           "hint": "Timelines show WHEN things happened and how much time passed between events.",
@@ -1566,8 +1566,8 @@
           "type": "multiple_choice",
           "prompt": "How does a diagram of the human digestive system help a reader MORE than a written description alone?",
           "choices": [
-            "It shows the physical layout and connections between organs that are hard to describe in words",
             "It adds color to the page",
+            "It shows the physical layout and connections between organs that are hard to describe in words",
             "It replaces the need to read",
             "It makes the text longer"
           ],
@@ -1609,8 +1609,8 @@
           "prompt": "Schools should offer more art classes. Studies show that students in art programs score higher on standardized tests. Art also teaches creativity, problem-solving, and collaboration.\n\nThe author supports their point with —",
           "choices": [
             "No evidence",
-            "Personal opinions only",
             "Research studies and specific skills art teaches",
+            "Personal opinions only",
             "A story about an artist"
           ],
           "correct": "Research studies and specific skills art teaches",
@@ -1642,9 +1642,9 @@
           "type": "multiple_choice",
           "prompt": "Endangered species need stronger legal protections. The bald eagle was nearly extinct until the Endangered Species Act helped its population recover from 417 pairs in 1963 to over 316,000 today.\n\nHow does the bald eagle example support the author's point?",
           "choices": [
-            "It proves that legal protections actually work to save species",
             "It changes the topic to birds",
             "It shows eagles are pretty",
+            "It proves that legal protections actually work to save species",
             "It's just an interesting fact"
           ],
           "correct": "It proves that legal protections actually work to save species",
@@ -1659,8 +1659,8 @@
           "type": "multiple_choice",
           "prompt": "When evaluating an author's argument, you should ask —",
           "choices": [
-            "Does it have pictures?",
             "Does the evidence actually support the point being made?",
+            "Does it have pictures?",
             "Is the text long enough?",
             "Is the author famous?"
           ],
@@ -1678,8 +1678,8 @@
           "choices": [
             "Students who eat nutritious lunches concentrate better",
             "Childhood obesity rates are rising",
-            "The cafeteria was painted blue last year",
-            "Processed foods are linked to health problems"
+            "Processed foods are linked to health problems",
+            "The cafeteria was painted blue last year"
           ],
           "correct": "The cafeteria was painted blue last year",
           "hint": "The paint color has nothing to do with how healthy the food is — it's irrelevant evidence.",
@@ -1703,8 +1703,8 @@
           "choices": [
             "Ignore both and use your own knowledge",
             "Only use Text A",
-            "Only use Text B",
-            "Combine information from both texts"
+            "Combine information from both texts",
+            "Only use Text B"
           ],
           "correct": "Combine information from both texts",
           "hint": "Each text contributes different pieces. Together, they give you a complete picture.",
@@ -1735,8 +1735,8 @@
           "type": "multiple_choice",
           "prompt": "When integrating information from two sources, what should you watch for?",
           "choices": [
-            "Which text has better pictures",
             "Whether the sources agree, disagree, or provide complementary information",
+            "Which text has better pictures",
             "Which text is longer",
             "Which was written first"
           ],
@@ -1752,9 +1752,9 @@
           "type": "multiple_choice",
           "prompt": "Text A says wolves were removed from Yellowstone in the 1920s. Text B says after wolves were reintroduced in 1995, the elk population became healthier and rivers changed course. Combining these texts helps you understand —",
           "choices": [
+            "The long-term impact of removing and then restoring a species to an ecosystem",
             "Wolves are dangerous",
             "1995 was an important year",
-            "The long-term impact of removing and then restoring a species to an ecosystem",
             "Rivers always change course"
           ],
           "correct": "The long-term impact of removing and then restoring a species to an ecosystem",
@@ -1769,10 +1769,10 @@
           "type": "multiple_choice",
           "prompt": "Why is using multiple sources better than using just one?",
           "choices": [
+            "Multiple sources provide different perspectives, details, and a more complete understanding",
             "One source always has errors",
             "You should always use exactly one source",
-            "More sources means a longer report",
-            "Multiple sources provide different perspectives, details, and a more complete understanding"
+            "More sources means a longer report"
           ],
           "correct": "Multiple sources provide different perspectives, details, and a more complete understanding",
           "hint": "Each source might cover different angles or details. Together, your understanding is richer.",
@@ -1794,10 +1794,10 @@
           "type": "multiple_choice",
           "prompt": "The human brain weighs about three pounds but uses roughly 20% of the body's total energy. It contains approximately 86 billion neurons, each connected to thousands of others, forming a network more complex than any computer ever built.\n\nWhat comparison does the author make to emphasize the brain's complexity?",
           "choices": [
-            "Comparing it to a computer",
             "Comparing it to the heart",
             "Comparing it to a muscle",
-            "Comparing it to other organs"
+            "Comparing it to other organs",
+            "Comparing it to a computer"
           ],
           "correct": "Comparing it to a computer",
           "hint": "The author says the brain's network is 'more complex than any computer ever built.'",
@@ -1812,9 +1812,9 @@
           "prompt": "The Dead Sea, located between Israel and Jordan, is nearly ten times saltier than the ocean. This extreme salinity means no fish or plants can survive in it — hence the name. However, the mineral-rich mud and water have been used for health treatments for thousands of years.\n\nWhat is ironic about the Dead Sea?",
           "choices": [
             "It's between two countries",
-            "Despite being called 'dead,' it has been valuable for human health for millennia",
             "It's very salty",
-            "It's not really a sea"
+            "It's not really a sea",
+            "Despite being called 'dead,' it has been valuable for human health for millennia"
           ],
           "correct": "Despite being called 'dead,' it has been valuable for human health for millennia",
           "hint": "Called 'dead' because nothing lives in it — yet it HELPS living humans. That's ironic!",
@@ -1829,8 +1829,8 @@
           "prompt": "In 1983, Dr. Sally Ride became the first American woman in space. She later founded Sally Ride Science, an organization encouraging girls to pursue careers in science, technology, engineering, and math.\n\nWhat does this tell you about Dr. Ride's priorities?",
           "choices": [
             "She only cared about her own career",
-            "She stopped working after 1983",
             "She wanted to inspire the next generation, especially girls, to follow in her footsteps",
+            "She stopped working after 1983",
             "She didn't like science"
           ],
           "correct": "She wanted to inspire the next generation, especially girls, to follow in her footsteps",
@@ -1845,10 +1845,10 @@
           "type": "multiple_choice",
           "prompt": "Bamboo is one of the fastest-growing plants on Earth, capable of growing up to 35 inches in a single day. It's also incredibly strong — pound for pound, bamboo has a greater tensile strength than steel.\n\nWhy might bamboo be considered a **super-plant**?",
           "choices": [
+            "It grows extremely fast AND is stronger than steel by weight",
             "It's green",
             "It grows in Asia",
-            "It's a type of tree",
-            "It grows extremely fast AND is stronger than steel by weight"
+            "It's a type of tree"
           ],
           "correct": "It grows extremely fast AND is stronger than steel by weight",
           "hint": "Two extraordinary qualities: incredible growth speed AND incredible strength.",
@@ -1862,9 +1862,9 @@
           "type": "multiple_choice",
           "prompt": "The Library of Alexandria, built around 300 BCE in Egypt, was the ancient world's greatest center of learning. Scholars from across the Mediterranean came to study its estimated 400,000 scrolls. When it was eventually destroyed, countless works of ancient knowledge were lost forever.\n\nWhat makes the Library's destruction significant?",
           "choices": [
-            "Irreplaceable knowledge accumulated over centuries was permanently lost",
             "Libraries are expensive to build",
             "It had too many scrolls",
+            "Irreplaceable knowledge accumulated over centuries was permanently lost",
             "It was in Egypt"
           ],
           "correct": "Irreplaceable knowledge accumulated over centuries was permanently lost",
@@ -1887,8 +1887,8 @@
           "type": "multiple_choice",
           "prompt": "The word **autobiography** can be broken into: auto + bio + graph + y. Using these parts, what does it mean?",
           "choices": [
-            "A book about cars",
             "A life story written by the person themselves",
+            "A book about cars",
             "A drawing of a machine",
             "A type of photograph"
           ],
@@ -1921,10 +1921,10 @@
           "type": "multiple_choice",
           "prompt": "How many syllables are in the word **communication**?",
           "choices": [
+            "5",
             "4",
             "6",
-            "3",
-            "5"
+            "3"
           ],
           "correct": "5",
           "hint": "Clap it: com-mu-ni-ca-tion. Five beats!",
@@ -1981,8 +1981,8 @@
           "prompt": "You encounter the unfamiliar word \"transportation.\" What's the BEST first step?",
           "choices": [
             "Ask someone immediately",
-            "Guess from the first letter",
             "Break it into parts: trans + port + a + tion",
+            "Guess from the first letter",
             "Skip it"
           ],
           "correct": "Break it into parts: trans + port + a + tion",
@@ -1999,8 +1999,8 @@
           "choices": [
             "Inter + nat + ional",
             "In + tern + at + ional",
-            "Interna + tional",
-            "In + ter + nation + al"
+            "In + ter + nation + al",
+            "Interna + tional"
           ],
           "correct": "In + ter + nation + al",
           "hint": "Inter (between) + nation + al (relating to) = between nations.",
@@ -2014,10 +2014,10 @@
           "type": "multiple_choice",
           "prompt": "If you know that **-ology** means **study of,** what does **biology** study?",
           "choices": [
-            "Living things (bio = life)",
             "Rocks",
             "Stars",
-            "Weather"
+            "Weather",
+            "Living things (bio = life)"
           ],
           "correct": "Living things (bio = life)",
           "hint": "Bio = life. -ology = study of. Biology = study of life!",
@@ -2031,8 +2031,8 @@
           "type": "multiple_choice",
           "prompt": "How many syllables are in **extraordinary**?",
           "choices": [
-            "5",
             "6",
+            "5",
             "7",
             "4"
           ],
@@ -2108,9 +2108,9 @@
           "prompt": "When reading a passage with technical vocabulary, a good reader should —",
           "choices": [
             "Speed up to get through it faster",
-            "Slow down and use context clues to understand unfamiliar terms",
             "Stop reading",
-            "Skip the technical words"
+            "Skip the technical words",
+            "Slow down and use context clues to understand unfamiliar terms"
           ],
           "correct": "Slow down and use context clues to understand unfamiliar terms",
           "hint": "Hard vocabulary = slow down, not speed up. Use context to figure out the meaning.",
@@ -2126,8 +2126,8 @@
           "choices": [
             "Skipping every other word to read faster",
             "ReadingsoFASSthatnobodycanunderstand",
-            "Reading smoothly with natural pauses at commas and periods, and expression that matches the content",
-            "Reading... each... word... one... at... a... time..."
+            "Reading... each... word... one... at... a... time...",
+            "Reading smoothly with natural pauses at commas and periods, and expression that matches the content"
           ],
           "correct": "Reading smoothly with natural pauses at commas and periods, and expression that matches the content",
           "hint": "Fluent reading flows naturally — not too choppy, not too rushed.",
@@ -2141,10 +2141,10 @@
           "type": "multiple_choice",
           "prompt": "Self-monitoring while reading means —",
           "choices": [
+            "Checking your own understanding as you read and going back when something doesn't make sense",
             "Reading out loud",
             "Having someone else check your reading",
-            "Timing how fast you read",
-            "Checking your own understanding as you read and going back when something doesn't make sense"
+            "Timing how fast you read"
           ],
           "correct": "Checking your own understanding as you read and going back when something doesn't make sense",
           "hint": "Good readers constantly ask themselves 'Does this make sense?' as they read.",
@@ -2166,8 +2166,8 @@
           "type": "multiple_choice",
           "prompt": "The company decided to table the discussion until next week's meeting.\n\nIn this sentence, **table** means —",
           "choices": [
-            "To postpone or delay",
             "To organize neatly",
+            "To postpone or delay",
             "A piece of furniture",
             "To serve food"
           ],
@@ -2183,8 +2183,8 @@
           "type": "multiple_choice",
           "prompt": "After the long hike, the exhausted climbers sought refuge in a mountain cabin.\n\nWhat does **refuge** mean?",
           "choices": [
-            "A type of mountain",
             "A safe place or shelter",
+            "A type of mountain",
             "Food",
             "A dangerous path"
           ],
@@ -2200,9 +2200,9 @@
           "type": "multiple_choice",
           "prompt": "The word **scale** has many meanings. What does it mean here?\n\n\"The fish's scale shimmered in the sunlight.\"",
           "choices": [
+            "A thin plate covering a fish's body",
             "To climb",
             "A weighing device",
-            "A thin plate covering a fish's body",
             "A musical sequence"
           ],
           "correct": "A thin plate covering a fish's body",
@@ -2218,9 +2218,9 @@
           "prompt": "The philanthropist donated millions to build schools in underserved communities.\n\nUsing the Greek roots **phil** (love) and **anthrop** (human), a philanthropist is someone who —",
           "choices": [
             "Collects stamps",
+            "Loves helping humanity through generous donations",
             "Studies philosophy",
-            "Teaches at a school",
-            "Loves helping humanity through generous donations"
+            "Teaches at a school"
           ],
           "correct": "Loves helping humanity through generous donations",
           "hint": "Phil = love + anthrop = human. A lover of humanity who helps through generosity!",
@@ -2260,8 +2260,8 @@
           "prompt": "The two countries formed an alliance, agreeing to protect each other in times of war.\n\nAn **alliance** is —",
           "choices": [
             "A type of weapon",
-            "A partnership or agreement to work together",
             "A battle between countries",
+            "A partnership or agreement to work together",
             "A border between nations"
           ],
           "correct": "A partnership or agreement to work together",
@@ -2310,9 +2310,9 @@
           "type": "multiple_choice",
           "prompt": "The Greek prefix **micro-** means \"small.\" What does **microscope** let you see?",
           "choices": [
+            "Very small things",
             "Things in the dark",
             "Things far away",
-            "Very small things",
             "Very large things"
           ],
           "correct": "Very small things",
@@ -2361,10 +2361,10 @@
           "type": "multiple_choice",
           "prompt": "A dictionary entry shows: \"ar·chi·pel·a·go (ar-kuh-PEL-uh-go) n. a group of islands.\" What does the entry in parentheses tell you?",
           "choices": [
+            "How to pronounce the word",
             "A synonym",
             "When to use the word",
-            "The word's origin",
-            "How to pronounce the word"
+            "The word's origin"
           ],
           "correct": "How to pronounce the word",
           "hint": "The syllable breakdown and capitalized stress show you how to SAY the word.",
@@ -2414,8 +2414,8 @@
           "choices": [
             "Definition 2",
             "Definition 1",
-            "Definition 3",
-            "All three"
+            "All three",
+            "Definition 3"
           ],
           "correct": "Definition 3",
           "hint": "She stretched her neck to see — that matches definition 3!",
@@ -2430,9 +2430,9 @@
           "prompt": "When should you consult a reference material instead of relying only on context clues?",
           "choices": [
             "Never — context clues are always sufficient",
+            "When context clues aren't enough to determine the precise meaning",
             "Only during tests",
-            "Always — context clues never work",
-            "When context clues aren't enough to determine the precise meaning"
+            "Always — context clues never work"
           ],
           "correct": "When context clues aren't enough to determine the precise meaning",
           "hint": "Context clues are the first strategy, but sometimes you need the exact definition — that's when you grab a dictionary.",
@@ -2454,8 +2454,8 @@
           "type": "multiple_choice",
           "prompt": "The news hit her like a ton of bricks.\n\nThis is an example of —",
           "choices": [
-            "A simile",
             "A metaphor",
+            "A simile",
             "Personification",
             "An idiom"
           ],
@@ -2472,9 +2472,9 @@
           "prompt": "The world is a stage, and we are merely players.\n\nThis is an example of —",
           "choices": [
             "Onomatopoeia",
-            "A metaphor",
             "Alliteration",
-            "A simile"
+            "A simile",
+            "A metaphor"
           ],
           "correct": "A metaphor",
           "hint": "It says the world IS a stage — direct comparison without 'like' or 'as.' That's a metaphor.",
@@ -2489,8 +2489,8 @@
           "prompt": "What does the idiom \"hit the nail on the head\" mean?",
           "choices": [
             "To hammer something",
-            "To build something",
             "To be exactly right",
+            "To build something",
             "To hurt yourself"
           ],
           "correct": "To be exactly right",
@@ -2505,10 +2505,10 @@
           "type": "multiple_choice",
           "prompt": "The old car coughed and sputtered before finally dying on the side of the road.\n\nThis is an example of —",
           "choices": [
+            "Personification",
             "Simile",
             "Alliteration",
-            "Hyperbole",
-            "Personification"
+            "Hyperbole"
           ],
           "correct": "Personification",
           "hint": "Cars can't cough, sputter, or die — those are human/living qualities given to a non-living thing.",
@@ -2522,9 +2522,9 @@
           "type": "multiple_choice",
           "prompt": "Which pair of words shows the GREATEST difference in intensity?",
           "choices": [
-            "Upset and furious",
             "Big and large",
             "Walk and stroll",
+            "Upset and furious",
             "Warm and hot"
           ],
           "correct": "Upset and furious",
@@ -2547,8 +2547,8 @@
           "type": "multiple_choice",
           "prompt": "How do you tell the difference between a simile and a metaphor?",
           "choices": [
-            "Similes are longer than metaphors",
             "Similes use 'like' or 'as'; metaphors make a direct comparison without them",
+            "Similes are longer than metaphors",
             "There is no difference",
             "Metaphors are always about animals"
           ],
@@ -2599,8 +2599,8 @@
           "prompt": "What does the proverb \"The early bird catches the worm\" teach?",
           "choices": [
             "Worms are best in the morning",
-            "Birds wake up early",
             "Those who act first or prepare early have an advantage",
+            "Birds wake up early",
             "Sleeping late is healthy"
           ],
           "correct": "Those who act first or prepare early have an advantage",
@@ -2722,9 +2722,9 @@
           "type": "multiple_choice",
           "prompt": "Which sentence uses the most precise language?",
           "choices": [
-            "The rocket accelerated through the atmosphere at tremendous speed.",
             "Something moved quickly up there.",
             "It went really, really fast.",
+            "The rocket accelerated through the atmosphere at tremendous speed.",
             "The thing went fast."
           ],
           "correct": "The rocket accelerated through the atmosphere at tremendous speed.",
@@ -2739,8 +2739,8 @@
           "type": "multiple_choice",
           "prompt": "In social studies, the word **democracy** means —",
           "choices": [
-            "A military government",
             "A system where citizens have the power to make decisions through voting",
+            "A military government",
             "A type of economy",
             "Rule by one king"
           ],
@@ -2789,8 +2789,8 @@
           "prompt": "The academic phrase **in contrast** signals that the author is about to —",
           "choices": [
             "Give an example",
-            "Summarize",
             "Show a difference",
+            "Summarize",
             "Conclude"
           ],
           "correct": "Show a difference",
@@ -2806,9 +2806,9 @@
           "prompt": "Which word BEST describes someone who stammered, looked at the floor, and spoke in a shaky voice?",
           "choices": [
             "Excited",
+            "Nervous",
             "Bored",
-            "Confident",
-            "Nervous"
+            "Confident"
           ],
           "correct": "Nervous",
           "hint": "Stammering, avoiding eye contact, shaky voice — classic signs of nervousness!",
@@ -2849,8 +2849,8 @@
           "type": "multiple_choice",
           "prompt": "What kind of word is **may** in: You may go now?",
           "choices": [
-            "noun",
             "modal verb",
+            "noun",
             "adjective",
             "adverb"
           ],
@@ -2866,9 +2866,9 @@
           "type": "multiple_choice",
           "prompt": "Which sentence has a **preposition**?",
           "choices": [
+            "The book is on the desk.",
             "She runs fast.",
             "He smiled.",
-            "The book is on the desk.",
             "They ate."
           ],
           "correct": "The book is on the desk.",
@@ -2883,10 +2883,10 @@
           "type": "multiple_choice",
           "prompt": "Which is a **run-on sentence**?",
           "choices": [
+            "I love to read I read every day.",
             "I love to read.",
             "I read every day, and I love it.",
-            "Reading is fun.",
-            "I love to read I read every day."
+            "Reading is fun."
           ],
           "correct": "I love to read I read every day.",
           "hint": "Run-ons combine sentences without proper punctuation.",
@@ -2925,8 +2925,8 @@
           "type": "multiple_choice",
           "prompt": "Where does the comma go? I went to the store ___ I bought a book.",
           "choices": [
-            "after I",
             "after store, before I",
+            "after I",
             "after went",
             "no comma needed"
           ],
@@ -2942,9 +2942,9 @@
           "type": "multiple_choice",
           "prompt": "How do you write a book title?",
           "choices": [
+            "Capitalize the important words",
             "All lowercase",
             "All uppercase",
-            "Capitalize the important words",
             "Just first letter only"
           ],
           "correct": "Capitalize the important words",
@@ -2959,10 +2959,10 @@
           "type": "multiple_choice",
           "prompt": "Which is correctly punctuated dialogue?",
           "choices": [
+            "\"Hello,\" she said.",
             "Hello, she said.",
             "\"Hello, she said.\"",
-            "Hello \"she said\".",
-            "\"Hello,\" she said."
+            "Hello \"she said\"."
           ],
           "correct": "\"Hello,\" she said.",
           "hint": "The comma goes inside the quotation marks!",
@@ -2993,8 +2993,8 @@
           "type": "multiple_choice",
           "prompt": "Which is the correct possessive: That is the ___ ball.",
           "choices": [
-            "dogs",
             "dog's",
+            "dogs",
             "dogs'",
             "dog"
           ],
@@ -3018,9 +3018,9 @@
           "type": "multiple_choice",
           "prompt": "Which sentence is most precise?",
           "choices": [
+            "The puppy bounded across the meadow.",
             "The dog went over the grass.",
             "The animal moved on the field.",
-            "The puppy bounded across the meadow.",
             "The thing went somewhere."
           ],
           "correct": "The puppy bounded across the meadow.",
@@ -3035,10 +3035,10 @@
           "type": "multiple_choice",
           "prompt": "What is **style** in writing?",
           "choices": [
+            "the way an author writes",
             "the type of paper used",
             "the font",
-            "the ink color",
-            "the way an author writes"
+            "the ink color"
           ],
           "correct": "the way an author writes",
           "hint": "Style is the author's unique voice!",
@@ -3069,8 +3069,8 @@
           "type": "multiple_choice",
           "prompt": "Match the style: writing to a friend versus writing a book report. The friend version should be:",
           "choices": [
-            "more formal",
             "more casual",
+            "more formal",
             "longer",
             "in another language"
           ],
@@ -3086,9 +3086,9 @@
           "type": "multiple_choice",
           "prompt": "Which word adds the strongest detail in: She felt ___?",
           "choices": [
+            "thrilled",
             "good",
             "fine",
-            "thrilled",
             "okay"
           ],
           "correct": "thrilled",

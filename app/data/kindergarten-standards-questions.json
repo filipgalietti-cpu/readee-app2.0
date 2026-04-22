@@ -15,9 +15,9 @@
           "type": "multiple_choice",
           "prompt": "Max the dog ran to the park. He played fetch with a red ball.\n\nWhat did Max PLAY with?",
           "choices": [
-            "A red ball",
             "A stick",
             "A toy car",
+            "A red ball",
             "A bone"
           ],
           "correct": "A red ball",
@@ -33,9 +33,9 @@
           "prompt": "Lily put on her yellow raincoat. She splashed in every puddle on the way to school.\n\nWhere was Lily going?",
           "choices": [
             "To bed",
-            "To school",
             "To the store",
-            "To the park"
+            "To the park",
+            "To school"
           ],
           "correct": "To school",
           "hint": "Read the end of the second sentence carefully!",
@@ -51,8 +51,8 @@
           "choices": [
             "5",
             "7",
-            "6",
-            "8"
+            "8",
+            "6"
           ],
           "correct": "6",
           "hint": "The story tells you a number — what is it?",
@@ -66,10 +66,10 @@
           "type": "multiple_choice",
           "prompt": "Sam found a tiny kitten under the porch. The kitten was gray with white paws. Sam named her Mittens.\n\nWhat COLOR was the kitten?",
           "choices": [
+            "Gray with white paws",
             "All white",
             "Black with white spots",
-            "Orange and fluffy",
-            "Gray with white paws"
+            "Orange and fluffy"
           ],
           "correct": "Gray with white paws",
           "hint": "The second sentence describes what the kitten looked like.",
@@ -83,10 +83,10 @@
           "type": "multiple_choice",
           "prompt": "Grandma and Ben planted sunflower seeds in the garden. They watered them every day. Soon, tall yellow flowers grew!\n\nWho helped Ben plant the seeds?",
           "choices": [
-            "His grandma",
             "His dad",
             "His teacher",
-            "His mom"
+            "His mom",
+            "His grandma"
           ],
           "correct": "His grandma",
           "hint": "Look at the very first word of the story!",
@@ -1339,9 +1339,9 @@
           "prompt": "Bears eat a LOT of food in the fall. Then they sleep all winter long. This is called hibernation.\n\nWHY do bears eat a lot in the fall?",
           "choices": [
             "Because they like cooking",
-            "To get ready for their long winter sleep",
             "Because they are bored",
-            "Because the food tastes bad"
+            "Because the food tastes bad",
+            "To get ready for their long winter sleep"
           ],
           "correct": "To get ready for their long winter sleep",
           "hint": "Think about what comes NEXT — they sleep all winter. They need energy!",
@@ -1559,9 +1559,9 @@
           "prompt": "The explorer opened the book and saw the name of the book and who wrote it on the very first page inside.\n\nWhat is that PAGE called?",
           "choices": [
             "The back cover",
+            "The title page",
             "The last page",
-            "The front cover",
-            "The title page"
+            "The front cover"
           ],
           "correct": "The title page",
           "hint": "The page inside that shows the book's name and the author is called the title page!",
@@ -1601,9 +1601,9 @@
           "type": "multiple_choice",
           "prompt": "The explorer wanted to know who wrote the book about dolphins. She opened the book and looked at the first page inside.\n\nWhere did she find the AUTHOR's name?",
           "choices": [
-            "The title page",
             "The back cover",
             "The front cover",
+            "The title page",
             "The last page"
           ],
           "correct": "The title page",
@@ -1728,8 +1728,8 @@
           "choices": [
             "The front cover",
             "The title page",
-            "The first chapter",
-            "The back cover"
+            "The back cover",
+            "The first chapter"
           ],
           "correct": "The back cover",
           "hint": "Turning a book over means looking at the back. The back cover tells you what the book is about!",
@@ -2716,8 +2716,8 @@
           "type": "multiple_choice",
           "prompt": "Which is the LOWERCASE version of the letter \"G\"?",
           "choices": [
-            "j",
             "g",
+            "j",
             "q",
             "p"
           ],
@@ -3305,8 +3305,8 @@
           "prompt": "Start with \"cat.\" Change the /k/ to /b/. What new word do you get?",
           "choices": [
             "Sat",
-            "Mat",
             "Bat",
+            "Mat",
             "Hat"
           ],
           "correct": "Bat",
@@ -3321,10 +3321,10 @@
           "type": "multiple_choice",
           "prompt": "Start with \"hop.\" Change the /h/ to /t/. What word do you get?",
           "choices": [
+            "Top",
             "Pop",
             "Cop",
-            "Mop",
-            "Top"
+            "Mop"
           ],
           "correct": "Top",
           "hint": "Replace the /h/ with /t/: t-op!",
@@ -3338,10 +3338,10 @@
           "type": "multiple_choice",
           "prompt": "Start with \"man.\" Change the a to e. What word do you get?",
           "choices": [
-            "Men",
             "Mun",
             "Mon",
-            "Min"
+            "Min",
+            "Men"
           ],
           "correct": "Men",
           "hint": "Keep the 'm' and 'n' but change the middle sound to /e/!",
@@ -3355,8 +3355,8 @@
           "type": "multiple_choice",
           "prompt": "Start with \"sit.\" Change the /t/ to /p/. What word do you get?",
           "choices": [
-            "Set",
             "Sip",
+            "Set",
             "Sat",
             "Sap"
           ],
@@ -3373,8 +3373,8 @@
           "prompt": "Add /s/ to the beginning of \"top.\" What word do you get?",
           "choices": [
             "Spot",
-            "Step",
             "Stop",
+            "Step",
             "Tops"
           ],
           "correct": "Stop",
@@ -4089,8 +4089,8 @@
           "choices": [
             "SAm",
             "SaM",
-            "sAm",
-            "Sam"
+            "Sam",
+            "sAm"
           ],
           "correct": "Sam",
           "hint": "People's names ALWAYS start with a capital letter!",
@@ -4112,8 +4112,8 @@
           "type": "multiple_choice",
           "prompt": "The boy JUMPED. He went up in the air.\n\nThe **-ed** at the end of \"jumped\" tells us...",
           "choices": [
-            "It already happened",
             "It will happen later.",
+            "It already happened",
             "It's happening right now.",
             "It never happened"
           ],
@@ -4148,8 +4148,8 @@
           "choices": [
             "A big dog",
             "A small dog",
-            "More than one dog",
-            "One dog"
+            "One dog",
+            "More than one dog"
           ],
           "correct": "More than one dog",
           "hint": "Adding '-s' usually means there is more than one!",
@@ -4165,8 +4165,8 @@
           "choices": [
             "Never helping",
             "A little help",
-            "Without help",
-            "Full of help"
+            "Full of help",
+            "Without help"
           ],
           "correct": "Full of help",
           "hint": "-ful means 'full of.' So helpful means full of help!",
@@ -4180,9 +4180,9 @@
           "type": "multiple_choice",
           "prompt": "The CARELESS boy spilled his milk.\n\nThe **-less** in **careless** means...",
           "choices": [
-            "Without care",
             "Full of care",
             "Lots of care",
+            "Without care",
             "More care"
           ],
           "correct": "Without care",
@@ -4223,8 +4223,8 @@
           "prompt": "What is the OPPOSITE of \"hot\"?",
           "choices": [
             "Warm",
-            "Wet",
             "Cold",
+            "Wet",
             "Big"
           ],
           "correct": "Cold",
@@ -4239,10 +4239,10 @@
           "type": "multiple_choice",
           "prompt": "Which word means to walk in a PROUD, fancy way?",
           "choices": [
+            "Strut",
             "Crawl",
             "Tiptoe",
-            "Stumble",
-            "Strut"
+            "Stumble"
           ],
           "correct": "Strut",
           "hint": "Think of a peacock walking proudly — that's strutting!",
@@ -4426,8 +4426,8 @@
           "choices": [
             "In a circle",
             "Running around",
-            "One behind the other in a line",
-            "Sitting down"
+            "Sitting down",
+            "One behind the other in a line"
           ],
           "correct": "One behind the other in a line",
           "hint": "When things are 'in a row,' they make a straight line!",
@@ -4476,8 +4476,8 @@
           "prompt": "What happens to leaves in FALL?",
           "choices": [
             "They stay the same.",
-            "They change color and fall down.",
             "They turn into flowers.",
+            "They change color and fall down.",
             "They grow bigger"
           ],
           "correct": "They change color and fall down.",
@@ -4500,9 +4500,9 @@
           "type": "multiple_choice",
           "prompt": "What helps your reading get stronger?",
           "choices": [
+            "reading every day",
             "reading once a year",
             "skipping books",
-            "reading every day",
             "closing the book"
           ],
           "correct": "reading every day",
@@ -4517,10 +4517,10 @@
           "type": "multiple_choice",
           "prompt": "What should you do when a story gets tricky?",
           "choices": [
+            "ask for help",
             "give up",
             "stop reading forever",
-            "throw the book",
-            "ask for help"
+            "throw the book"
           ],
           "correct": "ask for help",
           "hint": "Asking for help is what smart readers do!",
@@ -4551,8 +4551,8 @@
           "type": "multiple_choice",
           "prompt": "When listening to a story, you should:",
           "choices": [
-            "talk to a friend",
             "pay attention",
+            "talk to a friend",
             "look away",
             "fall asleep"
           ],
@@ -4568,9 +4568,9 @@
           "type": "multiple_choice",
           "prompt": "A great reader is someone who:",
           "choices": [
+            "keeps trying new books",
             "only reads one book",
             "never opens a book",
-            "keeps trying new books",
             "tears pages"
           ],
           "correct": "keeps trying new books",
@@ -4593,10 +4593,10 @@
           "type": "multiple_choice",
           "prompt": "Fact books teach you about:",
           "choices": [
+            "real things",
             "made up monsters",
             "fairy tales",
-            "dreams",
-            "real things"
+            "dreams"
           ],
           "correct": "real things",
           "hint": "Fact = true. Fact books are about real things!",
@@ -4627,8 +4627,8 @@
           "type": "multiple_choice",
           "prompt": "What helps you find facts in a book?",
           "choices": [
-            "shaking the book",
             "headings and pictures",
+            "shaking the book",
             "closing your eyes",
             "humming"
           ],
@@ -4644,9 +4644,9 @@
           "type": "multiple_choice",
           "prompt": "When you read a fact book, what should you do?",
           "choices": [
+            "look closely at pictures",
             "skip every page",
             "rip the pages",
-            "look closely at pictures",
             "throw the book"
           ],
           "correct": "look closely at pictures",
@@ -4661,10 +4661,10 @@
           "type": "multiple_choice",
           "prompt": "Reading fact books helps you:",
           "choices": [
+            "learn about the world",
             "make loud noises",
             "go faster",
-            "get bigger",
-            "learn about the world"
+            "get bigger"
           ],
           "correct": "learn about the world",
           "hint": "Every fact book teaches you something new!",
