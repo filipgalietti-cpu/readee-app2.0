@@ -33166,16 +33166,332 @@
   {
     "standardId": "RL.K.10",
     "grade": "Kindergarten",
-    "domain": "Reading Literature",
+    "domain": "Literature",
     "title": "Storytime All Year",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.K.10/S1a.mp3",
+            "ttsScript": "Look! Reading stories every day is so much fun.",
+            "interaction": "",
+            "displayText": "Read every day!",
+            "displayDelay": 2200
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.K.10/S1b.mp3",
+            "ttsScript": "Each story takes you on a new adventure.",
+            "interaction": "",
+            "displayText": "New adventures",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.K.10/S1c.mp3",
+            "ttsScript": "Let us see how to enjoy stories all year long.",
+            "interaction": "",
+            "displayText": "All year long!",
+            "displayDelay": 2000
+          }
+        ],
+        "heading": "Stories Every Day",
+        "imagePrompt": "A cheerful cartoon calendar with a tiny smiling book on each month, a happy reader sitting beside it. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.K.10/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.K.10/S2a.mp3",
+            "ttsScript": "There are so many kinds of stories!",
+            "interaction": "",
+            "displayText": "So many kinds!",
+            "displayDelay": 2000
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.K.10/S2b.mp3",
+            "ttsScript": "Funny ones. Brave ones. Silly ones. Sweet ones.",
+            "interaction": "",
+            "displayText": "Funny, brave, silly, sweet",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.K.10/S2c.mp3",
+            "ttsScript": "Try a new kind every week. You will find favorites!",
+            "interaction": "",
+            "displayText": "Find favorites",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Try Different Stories",
+        "imagePrompt": "A cheerful cartoon bookshelf with many colorful books, a small smiling child picking one out. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.K.10/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.K.10/S3a.mp3",
+            "ttsScript": "When someone reads to you, listen closely.",
+            "interaction": "",
+            "displayText": "Listen closely",
+            "displayDelay": 2200
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.K.10/S3b.mp3",
+            "ttsScript": "Look at the pictures. They are part of the story too!",
+            "interaction": "",
+            "displayText": "Look at pictures",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.K.10/S3c.mp3",
+            "ttsScript": "Ask questions if something is tricky.",
+            "interaction": "",
+            "displayText": "Ask questions",
+            "displayDelay": 2200
+          }
+        ],
+        "heading": "Listen and Look",
+        "imagePrompt": "A cheerful cartoon child listening attentively to a smiling adult reading from a picture book. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.K.10/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.K.10/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A reading trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.K.10/S4b.mp3",
+            "ttsScript": "Pick a cozy spot just for reading. Curl up there every day.",
+            "interaction": "",
+            "displayText": "Cozy spot daily",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.K.10/S4c.mp3",
+            "ttsScript": "Now you are ready to enjoy stories all year long!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Make a Reading Spot",
+        "imagePrompt": "A cheerful cartoon cozy reading nook with pillows, a soft blanket, and a small lamp glowing warmly. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.K.10/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RL.K.10-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RL.K.10-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RL.K.10-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RL.K.10-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RL.K.10-Q5"
+      }
+    ]
   },
   {
     "standardId": "RI.K.10",
     "grade": "Kindergarten",
-    "domain": "Reading Informational Text",
+    "domain": "Informational",
     "title": "Fact Books All Year",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.K.10/S1a.mp3",
+            "ttsScript": "Look! Fact books are full of real, true things.",
+            "interaction": "",
+            "displayText": "Real things!",
+            "displayDelay": 2200
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.K.10/S1b.mp3",
+            "ttsScript": "They can be about anything. Bugs, planets, food, weather.",
+            "interaction": "",
+            "displayText": "Anything!",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.K.10/S1c.mp3",
+            "ttsScript": "Let us learn how to enjoy fact books all year.",
+            "interaction": "",
+            "displayText": "All year!",
+            "displayDelay": 2000
+          }
+        ],
+        "heading": "Facts Are Fun",
+        "imagePrompt": "A cheerful cartoon child sitting cross-legged with several open fact books around them, eyes wide with wonder. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.K.10/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.K.10/S2a.mp3",
+            "ttsScript": "Pick fact books about things you love.",
+            "interaction": "",
+            "displayText": "What you love!",
+            "displayDelay": 2200
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.K.10/S2b.mp3",
+            "ttsScript": "Love dinosaurs? Read about dinosaurs! Love space? Read about space!",
+            "interaction": "",
+            "displayText": "Love it = read it",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.K.10/S2c.mp3",
+            "ttsScript": "When you love the topic, learning is fun.",
+            "interaction": "",
+            "displayText": "Love = fun",
+            "displayDelay": 2200
+          }
+        ],
+        "heading": "Pick What You Love",
+        "imagePrompt": "A cheerful cartoon child thinking, with three tiny thought bubbles showing a dinosaur, a planet, and a soccer ball. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.K.10/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.K.10/S3a.mp3",
+            "ttsScript": "Fact books have pictures, labels, and big words at the top.",
+            "interaction": "",
+            "displayText": "Pictures + labels",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.K.10/S3b.mp3",
+            "ttsScript": "Slow down and look at each one.",
+            "interaction": "",
+            "displayText": "Slow + look",
+            "displayDelay": 2200
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.K.10/S3c.mp3",
+            "ttsScript": "Pictures teach you facts the words might not say.",
+            "interaction": "",
+            "displayText": "Pictures teach too",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Look and Listen",
+        "imagePrompt": "A cheerful cartoon child pointing at a labeled diagram of a flower in a fact book. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.K.10/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.K.10/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A fact book trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.K.10/S4b.mp3",
+            "ttsScript": "Pick a new topic each week. You will discover something cool!",
+            "interaction": "",
+            "displayText": "New topic weekly",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.K.10/S4c.mp3",
+            "ttsScript": "Now you are ready to read fact books all year!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "A New Topic Each Week",
+        "imagePrompt": "A cheerful cartoon calendar with a different colorful sticker on each week, a smiling child reading next to it. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.K.10/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RI.K.10-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RI.K.10-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RI.K.10-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RI.K.10-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RI.K.10-Q5"
+      }
+    ]
   },
   {
     "standardId": "RL.1.10",
