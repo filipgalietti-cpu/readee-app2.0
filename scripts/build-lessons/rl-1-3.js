@@ -14,10 +14,10 @@ build({
       heading: "Three Parts of a Story",
       imagePrompt: `A cheerful cartoon child sitting inside an open pop-up storybook, surrounded by tiny paper trees, a small castle, and a small friendly dragon. Clean pastel background. ${IMG}`,
       steps: [
-        { sub: "a", tts: "Every story has three big pieces.", displayText: "Three big pieces", displayDelay: 2000 },
-        { sub: "b", tts: "Characters. The people or animals in the story.", displayText: "Characters", displayDelay: 2500 },
-        { sub: "c", tts: "Setting. Where and when the story takes place.", displayText: "Setting", displayDelay: 2500 },
-        { sub: "d", tts: "Events. The things that happen!", displayText: "Events", displayDelay: 1800 },
+        { sub: "a", tts: "Every story is built from three big pieces.", displayText: "Three big pieces", displayDelay: 2000 },
+        { sub: "b", tts: "Characters, setting, and events. The who, where, and what.", displayText: "Characters", displayDelay: 1800,
+          displayDiagram: { letters: [{ text: "Characters" }, { text: "Setting" }, { text: "Events" }], delay: 2200, revealCount: 3 } },
+        { sub: "c", tts: "Let us look at each one.", displayText: "Let us look", displayDelay: 1500 },
       ],
     },
     {
@@ -27,8 +27,7 @@ build({
       steps: [
         { sub: "a", tts: "Characters are the who of the story.", displayText: "Characters = who", displayDelay: 2000 },
         { sub: "b", tts: "Listen. The kind old woman fed the birds every morning.", displayText: "A kind old woman", displayDelay: 2500 },
-        { sub: "c", tts: "Who is the character? The kind old woman!", displayText: "Character: old woman", displayDelay: 2500 },
-        { sub: "d", tts: "What is she like? Kind and caring. We can tell by what she does.", displayText: "She is kind", displayDelay: 2500 },
+        { sub: "c", tts: "We can tell she is kind and caring just from what she does.", displayText: "Kind and caring", displayDelay: 2500 },
       ],
     },
     {
