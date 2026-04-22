@@ -16,7 +16,9 @@
 const fs = require("fs");
 const path = require("path");
 
-const GRADES = ["kindergarten", "1st-grade", "2nd-grade", "3rd-grade", "4th-grade"];
+// Allow grades to be passed as CLI args, e.g. node balance-mcq-choices.js 1st-grade 2nd-grade 4th-grade
+const ALL_GRADES = ["kindergarten", "1st-grade", "2nd-grade", "3rd-grade", "4th-grade"];
+const GRADES = process.argv.slice(2).length > 0 ? process.argv.slice(2) : ALL_GRADES;
 
 // Round-robin: distribute correct answers across A/B/C/D slots evenly per grade
 function rebalance(grade) {
