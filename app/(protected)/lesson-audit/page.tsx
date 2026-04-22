@@ -90,9 +90,19 @@ function reviewKey(standardId: string, slide: number) {
   return `${standardId}-S${slide}`;
 }
 
+const GRADE_ORDER = ["Kindergarten", "1st Grade", "2nd Grade", "3rd Grade", "4th Grade"];
+const GRADE_LABELS: Record<string, string> = {
+  Kindergarten: "K",
+  "1st Grade": "1st",
+  "2nd Grade": "2nd",
+  "3rd Grade": "3rd",
+  "4th Grade": "4th",
+};
+
 export default function LessonAuditPage() {
   const [selectedLesson, setSelectedLesson] = useState<string | null>(null);
   const [filter, setFilter] = useState<string>("all");
+  const [gradeFilter, setGradeFilter] = useState<string>("all");
   const [imgErrors, setImgErrors] = useState<Set<string>>(new Set());
   const [commentDraft, setCommentDraft] = useState<Record<string, string>>({});
   const [source, setSource] = useState<"local" | "supabase">("supabase");
@@ -153,6 +163,9 @@ export default function LessonAuditPage() {
 
   const filtered = useMemo(() => {
     let list = lessons;
+    if (gradeFilter !== "all") {
+      list = list.filter((l) => l.grade === gradeFilter);
+    }
     if (filter !== "all") {
       list = list.filter((l) => l.domain === filter);
     }
@@ -173,7 +186,18 @@ export default function LessonAuditPage() {
       );
     }
     return list;
-  }, [filter, tab, myReviews]);
+  }, [filter, gradeFilter, tab, myReviews]);
+
+  // Group filtered lessons by grade for the grid view
+  const lessonsByGrade = useMemo(() => {
+    const buckets = new Map<string, Lesson[]>();
+    for (const g of GRADE_ORDER) buckets.set(g, []);
+    for (const l of filtered) {
+      if (!buckets.has(l.grade)) buckets.set(l.grade, []);
+      buckets.get(l.grade)!.push(l);
+    }
+    return Array.from(buckets.entries()).filter(([, ls]) => ls.length > 0);
+  }, [filtered]);
 
   const lesson = selectedLesson
     ? lessons.find((l) => l.standardId === selectedLesson)
@@ -257,6 +281,27 @@ export default function LessonAuditPage() {
         ))}
       </div>
 
+      {/* Grade filter */}
+      <div className="flex flex-wrap gap-2 mb-3">
+        {["all", ...GRADE_ORDER].map((g) => {
+          const count = g === "all" ? lessons.length : lessons.filter((l) => l.grade === g).length;
+          return (
+            <button
+              key={g}
+              onClick={() => setGradeFilter(g)}
+              className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
+                gradeFilter === g
+                  ? "bg-indigo-600 text-white"
+                  : "bg-white text-gray-600 border hover:bg-gray-100"
+              }`}
+            >
+              {g === "all" ? "All Grades" : GRADE_LABELS[g] || g}
+              <span className="ml-1.5 text-xs opacity-70">{count}</span>
+            </button>
+          );
+        })}
+      </div>
+
       {/* Domain filter */}
       <div className="flex flex-wrap gap-2 mb-6">
         {domains.map((d) => (
@@ -269,7 +314,7 @@ export default function LessonAuditPage() {
                 : "bg-white text-gray-600 border hover:bg-gray-100"
             }`}
           >
-            {d === "all" ? "All" : d}
+            {d === "all" ? "All Domains" : d}
           </button>
         ))}
       </div>
@@ -424,74 +469,105 @@ export default function LessonAuditPage() {
         </div>
       )}
 
-      {/* Lesson grid */}
+      {/* Lesson grid — grouped by grade */}
       {!lesson && tab !== "thumbs-down" && (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3">
-          {filtered.map((l) => {
-            const imgPath = getImageUrl(`images/lessons/${l.standardId}/S1.png`);
-            const hasError = imgErrors.has(l.standardId);
-            const slideKeys = l.slides
-              .filter((s) => s.type !== "mcq")
-              .map((s) => reviewKey(l.standardId, s.slide));
-            const allReviewed = slideKeys.every(
-              (k) => myReviews[k]?.status,
-            );
-            const hasFlagged = slideKeys.some(
-              (k) => myReviews[k]?.status === "down",
-            );
+        <div className="space-y-8">
+          {lessonsByGrade.map(([grade, gradeLessons]) => {
+            const reviewedInGrade = gradeLessons.filter((l) =>
+              l.slides
+                .filter((s) => s.type !== "mcq")
+                .every((s) => myReviews[reviewKey(l.standardId, s.slide)]?.status)
+            ).length;
+            const flaggedInGrade = gradeLessons.filter((l) =>
+              l.slides
+                .filter((s) => s.type !== "mcq")
+                .some((s) => myReviews[reviewKey(l.standardId, s.slide)]?.status === "down")
+            ).length;
             return (
-              <button
-                key={l.standardId}
-                onClick={() => setSelectedLesson(l.standardId)}
-                className={`rounded-lg shadow-sm border hover:shadow-md transition-shadow p-2 text-left ${
-                  hasFlagged
-                    ? "bg-red-50 border-red-200"
-                    : allReviewed
-                      ? "bg-emerald-50 border-emerald-200"
-                      : "bg-white"
-                }`}
-              >
-                <div className="aspect-square relative rounded-md overflow-hidden bg-gray-100 mb-2">
-                  {!hasError ? (
-                    <img
-                      src={imgPath}
-                      alt={l.title}
-                      className="object-cover absolute inset-0 w-full h-full"
-                      onError={() =>
-                        setImgErrors((s) => new Set(s).add(l.standardId))
-                      }
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center text-gray-400 text-xs">
-                      No image
-                    </div>
+              <section key={grade}>
+                <div className="flex items-baseline gap-3 mb-3 border-b border-gray-200 pb-2">
+                  <h2 className="text-lg font-bold text-gray-800">{grade}</h2>
+                  <span className="text-sm text-gray-500">{gradeLessons.length} lessons</span>
+                  {reviewedInGrade > 0 && (
+                    <span className="text-sm text-emerald-600 font-medium">
+                      {reviewedInGrade} reviewed
+                    </span>
                   )}
-                  {/* Status badge */}
-                  {allReviewed && !hasFlagged && (
-                    <div className="absolute top-1 right-1 bg-emerald-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
-                      ✓
-                    </div>
-                  )}
-                  {hasFlagged && (
-                    <div className="absolute top-1 right-1 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
-                      !
-                    </div>
+                  {flaggedInGrade > 0 && (
+                    <span className="text-sm text-red-500 font-medium">
+                      {flaggedInGrade} flagged
+                    </span>
                   )}
                 </div>
-                <div className="flex items-center justify-between gap-1">
-                  <p className="font-semibold text-xs text-gray-800 truncate">
-                    {l.standardId}
-                  </p>
-                  <a
-                    href={`/learn?standard=${l.standardId}&child=${TEST_CHILD_ID}&dev=1`}
-                    onClick={(e) => e.stopPropagation()}
-                    className="shrink-0 px-2 py-0.5 text-[10px] font-bold bg-indigo-600 text-white rounded hover:bg-indigo-700"
-                  >
-                    ▶ Play
-                  </a>
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3">
+                  {gradeLessons.map((l) => {
+                    const imgPath = getImageUrl(`images/lessons/${l.standardId}/S1.png`);
+                    const hasError = imgErrors.has(l.standardId);
+                    const slideKeys = l.slides
+                      .filter((s) => s.type !== "mcq")
+                      .map((s) => reviewKey(l.standardId, s.slide));
+                    const allReviewed = slideKeys.every(
+                      (k) => myReviews[k]?.status,
+                    );
+                    const hasFlagged = slideKeys.some(
+                      (k) => myReviews[k]?.status === "down",
+                    );
+                    return (
+                      <button
+                        key={l.standardId}
+                        onClick={() => setSelectedLesson(l.standardId)}
+                        className={`rounded-lg shadow-sm border hover:shadow-md transition-shadow p-2 text-left ${
+                          hasFlagged
+                            ? "bg-red-50 border-red-200"
+                            : allReviewed
+                              ? "bg-emerald-50 border-emerald-200"
+                              : "bg-white"
+                        }`}
+                      >
+                        <div className="aspect-square relative rounded-md overflow-hidden bg-gray-100 mb-2">
+                          {!hasError ? (
+                            <img
+                              src={imgPath}
+                              alt={l.title}
+                              className="object-cover absolute inset-0 w-full h-full"
+                              onError={() =>
+                                setImgErrors((s) => new Set(s).add(l.standardId))
+                              }
+                            />
+                          ) : (
+                            <div className="w-full h-full flex items-center justify-center text-gray-400 text-xs">
+                              No image
+                            </div>
+                          )}
+                          {allReviewed && !hasFlagged && (
+                            <div className="absolute top-1 right-1 bg-emerald-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
+                              ✓
+                            </div>
+                          )}
+                          {hasFlagged && (
+                            <div className="absolute top-1 right-1 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
+                              !
+                            </div>
+                          )}
+                        </div>
+                        <div className="flex items-center justify-between gap-1">
+                          <p className="font-semibold text-xs text-gray-800 truncate">
+                            {l.standardId}
+                          </p>
+                          <a
+                            href={`/learn?standard=${l.standardId}&child=${TEST_CHILD_ID}&dev=1`}
+                            onClick={(e) => e.stopPropagation()}
+                            className="shrink-0 px-2 py-0.5 text-[10px] font-bold bg-indigo-600 text-white rounded hover:bg-indigo-700"
+                          >
+                            ▶ Play
+                          </a>
+                        </div>
+                        <p className="text-xs text-gray-500 truncate">{l.title}</p>
+                      </button>
+                    );
+                  })}
                 </div>
-                <p className="text-xs text-gray-500 truncate">{l.title}</p>
-              </button>
+              </section>
             );
           })}
         </div>
