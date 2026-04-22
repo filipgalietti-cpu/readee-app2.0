@@ -26214,219 +26214,3672 @@
   {
     "standardId": "RL.4.1",
     "grade": "4th Grade",
-    "domain": "Reading Literature",
+    "domain": "Literature",
     "title": "Finding Story Details",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.4.1/S1a.mp3",
+            "ttsScript": "Fourth grade readers use specific details from the text as evidence.",
+            "interaction": "",
+            "displayText": "Details = evidence",
+            "displayDelay": 2800
+          }
+        ],
+        "heading": "Details Are Evidence",
+        "imagePrompt": "A cheerful cartoon detective kid examining a glowing line in a book with a magnifying glass. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.4.1/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.4.1/S2a.mp3",
+            "ttsScript": "When you make a claim, quote the exact words from the text.",
+            "interaction": "",
+            "displayText": "Quote the words",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Quote the Text",
+        "imagePrompt": "A cheerful cartoon kid pointing to a sentence in a book with quote marks around it. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.4.1/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "example",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.4.1/S3a.mp3",
+            "ttsScript": "Sometimes the answer is not stated directly. We infer it from the details.",
+            "interaction": "",
+            "displayText": "Infer = put clues together",
+            "displayDelay": 2800
+          }
+        ],
+        "heading": "Make Inferences",
+        "imagePrompt": "A cheerful cartoon kid with a thought bubble showing a tiny inference puzzle solved. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.4.1/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.4.1/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A details trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.4.1/S4b.mp3",
+            "ttsScript": "When you answer, say: the text says... and quote a line!",
+            "interaction": "",
+            "displayText": "The text says...",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.4.1/S4c.mp3",
+            "ttsScript": "Now you are ready to find story details!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Always Cite",
+        "imagePrompt": "A cheerful cartoon highlighter character with sparkles. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.4.1/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RL.4.1-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RL.4.1-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RL.4.1-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RL.4.1-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RL.4.1-Q5"
+      }
+    ]
   },
   {
     "standardId": "RL.4.2",
     "grade": "4th Grade",
-    "domain": "Reading Literature",
+    "domain": "Literature",
     "title": "Discovering Themes",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.4.2/S1a.mp3",
+            "ttsScript": "A theme is the big idea or life lesson the story shares.",
+            "interaction": "",
+            "displayText": "Theme = big lesson",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.4.2/S1b.mp3",
+            "ttsScript": "Themes are not stated. You discover them.",
+            "interaction": "",
+            "displayText": "Discover them",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "What Is the Big Lesson?",
+        "imagePrompt": "A cheerful cartoon book glowing with a heart at the center. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.4.2/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.4.2/S2a.mp3",
+            "ttsScript": "What did the character learn? What changed at the end?",
+            "interaction": "",
+            "displayText": "Learned + changed",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Look at Choices and Endings",
+        "imagePrompt": "A cheerful cartoon book with a fork in the path inside. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.4.2/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "example",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.4.2/S3a.mp3",
+            "ttsScript": "Friendship matters. Bravery wins. Be kind. Never give up. Big themes!",
+            "interaction": "",
+            "displayText": "Friendship, bravery, kindness",
+            "displayDelay": 3000
+          }
+        ],
+        "heading": "Common Themes",
+        "imagePrompt": "A cheerful cartoon group of theme labels: friendship, bravery, kindness. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.4.2/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.4.2/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A theme trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.4.2/S4b.mp3",
+            "ttsScript": "Say the theme in one short sentence. If you can do that, you found it!",
+            "interaction": "",
+            "displayText": "One sentence theme",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.4.2/S4c.mp3",
+            "ttsScript": "Now you are ready to discover themes!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "In Your Own Words",
+        "imagePrompt": "A cheerful cartoon kid writing in a journal. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.4.2/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RL.4.2-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RL.4.2-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RL.4.2-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RL.4.2-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RL.4.2-Q5"
+      }
+    ]
   },
   {
     "standardId": "RL.4.3",
     "grade": "4th Grade",
-    "domain": "Reading Literature",
+    "domain": "Literature",
     "title": "Deep Character Detail",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.4.3/S1a.mp3",
+            "ttsScript": "Fourth grade readers go deep into characters.",
+            "interaction": "",
+            "displayText": "Go deep",
+            "displayDelay": 2200
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.4.3/S1b.mp3",
+            "ttsScript": "They look at thoughts, words, and actions.",
+            "interaction": "",
+            "displayText": "Thoughts + words + actions",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Look Deep",
+        "imagePrompt": "A cheerful cartoon kid looking at a character with a magnifying glass over its heart. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.4.3/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.4.3/S2a.mp3",
+            "ttsScript": "Authors show traits through action, not just labels.",
+            "interaction": "",
+            "displayText": "Show through action",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.4.3/S2b.mp3",
+            "ttsScript": "He helped the lost child means kind, even without saying kind.",
+            "interaction": "",
+            "displayText": "Action = trait",
+            "displayDelay": 2800
+          }
+        ],
+        "heading": "Show Versus Tell",
+        "imagePrompt": "A cheerful cartoon kid acting brave next to a label that says brave. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.4.3/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "example",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.4.3/S3a.mp3",
+            "ttsScript": "Many characters change through the story. Notice the growth!",
+            "interaction": "",
+            "displayText": "Notice growth",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Watch the Change",
+        "imagePrompt": "A cheerful cartoon kid changing from shy to confident over time. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.4.3/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.4.3/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A character trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.4.3/S4b.mp3",
+            "ttsScript": "Back up traits with a line. He is generous because he gave away his lunch.",
+            "interaction": "",
+            "displayText": "Trait + because + line",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.4.3/S4c.mp3",
+            "ttsScript": "Now you are ready to describe characters deeply!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Cite Specific Lines",
+        "imagePrompt": "A cheerful cartoon highlighter character. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.4.3/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RL.4.3-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RL.4.3-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RL.4.3-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RL.4.3-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RL.4.3-Q5"
+      }
+    ]
   },
   {
     "standardId": "RL.4.4",
     "grade": "4th Grade",
-    "domain": "Reading Literature",
+    "domain": "Literature",
     "title": "Word Meanings in Stories",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.4.4/S1a.mp3",
+            "ttsScript": "Authors use words for more than just their basic meaning.",
+            "interaction": "",
+            "displayText": "More than basic",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.4.4/S1b.mp3",
+            "ttsScript": "Mythological references, allusions, and figurative language all show up.",
+            "interaction": "",
+            "displayText": "Big literary tools",
+            "displayDelay": 2800
+          }
+        ],
+        "heading": "Meaning Beyond the Word",
+        "imagePrompt": "A cheerful cartoon word transforming into a tiny picture. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.4.4/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.4.4/S2a.mp3",
+            "ttsScript": "An allusion is a quick reference to a story or myth everyone knows.",
+            "interaction": "",
+            "displayText": "Allusion = reference",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.4.4/S2b.mp3",
+            "ttsScript": "Calling someone a Hercules means they are super strong!",
+            "interaction": "",
+            "displayText": "Hercules = strong",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Allusions",
+        "imagePrompt": "A cheerful cartoon book with a tiny ancient figure peeking out. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.4.4/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.4.4/S3a.mp3",
+            "ttsScript": "Words like soared, drowning, or melting often mean something figurative.",
+            "interaction": "",
+            "displayText": "Figurative",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Figurative Meanings",
+        "imagePrompt": "A cheerful cartoon kite floating up with a tiny dream cloud. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.4.4/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.4.4/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A meaning trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.4.4/S4b.mp3",
+            "ttsScript": "If a word seems too big or strange, look it up. Or use context to guess.",
+            "interaction": "",
+            "displayText": "Look up + context",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.4.4/S4c.mp3",
+            "ttsScript": "Now you are ready to unlock story word meanings!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Look It Up",
+        "imagePrompt": "A cheerful cartoon dictionary with sparkles. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.4.4/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RL.4.4-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RL.4.4-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RL.4.4-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RL.4.4-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RL.4.4-Q5"
+      }
+    ]
   },
   {
     "standardId": "RL.4.5",
     "grade": "4th Grade",
-    "domain": "Reading Literature",
+    "domain": "Literature",
     "title": "Poems, Drama, and Prose",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.4.5/S1a.mp3",
+            "ttsScript": "Stories come in three big forms: poems, drama, and prose.",
+            "interaction": "",
+            "displayText": "Poems / drama / prose",
+            "displayDelay": 2800
+          }
+        ],
+        "heading": "Three Story Forms",
+        "imagePrompt": "A cheerful cartoon poem scroll, theater mask, and open book in a row. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.4.5/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.4.5/S2a.mp3",
+            "ttsScript": "Poems have lines, stanzas, and often rhythm or rhyme.",
+            "interaction": "",
+            "displayText": "Lines + stanzas + rhythm",
+            "displayDelay": 2800
+          }
+        ],
+        "heading": "Poems",
+        "imagePrompt": "A cheerful cartoon scroll with poetic lines and tiny musical notes. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.4.5/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.4.5/S3a.mp3",
+            "ttsScript": "Drama is meant to be acted out. It uses scenes and dialogue.",
+            "interaction": "",
+            "displayText": "Drama = scenes + dialogue",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.4.5/S3b.mp3",
+            "ttsScript": "Prose is regular sentences and paragraphs.",
+            "interaction": "",
+            "displayText": "Prose = paragraphs",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Drama and Prose",
+        "imagePrompt": "A cheerful cartoon stage with two characters acting and a storybook nearby. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.4.5/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.4.5/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A form trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.4.5/S4b.mp3",
+            "ttsScript": "Use the right words for each form: stanza, scene, paragraph.",
+            "interaction": "",
+            "displayText": "Stanza / scene / paragraph",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.4.5/S4c.mp3",
+            "ttsScript": "Now you are ready to know poems, drama, and prose!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Use the Right Words",
+        "imagePrompt": "A cheerful cartoon kid pointing at a labeled diagram. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.4.5/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RL.4.5-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RL.4.5-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RL.4.5-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RL.4.5-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RL.4.5-Q5"
+      }
+    ]
   },
   {
     "standardId": "RL.4.6",
     "grade": "4th Grade",
-    "domain": "Reading Literature",
+    "domain": "Literature",
     "title": "Different Storytelling Voices",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.4.6/S1a.mp3",
+            "ttsScript": "Stories can be told in different voices.",
+            "interaction": "",
+            "displayText": "Different voices",
+            "displayDelay": 2200
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.4.6/S1b.mp3",
+            "ttsScript": "First person uses I. Third person uses he, she, they.",
+            "interaction": "",
+            "displayText": "I vs he/she/they",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Whose Voice?",
+        "imagePrompt": "A cheerful cartoon kid wearing a director's headset directing different narrators. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.4.6/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.4.6/S2a.mp3",
+            "ttsScript": "First person makes you feel close to the character.",
+            "interaction": "",
+            "displayText": "Close = first person",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "First Person",
+        "imagePrompt": "A cheerful cartoon kid pointing to themselves with a thought bubble. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.4.6/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.4.6/S3a.mp3",
+            "ttsScript": "Third person feels more like watching from outside.",
+            "interaction": "",
+            "displayText": "Outside = third person",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Third Person",
+        "imagePrompt": "A cheerful cartoon narrator in a director's chair watching characters. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.4.6/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.4.6/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A voice trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.4.6/S4b.mp3",
+            "ttsScript": "Look at the pronouns in the first sentence. They tell you the voice.",
+            "interaction": "",
+            "displayText": "Pronouns = voice",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.4.6/S4c.mp3",
+            "ttsScript": "Now you are ready to spot storytelling voices!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Notice the Pronouns",
+        "imagePrompt": "A cheerful cartoon highlighter circling pronouns. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.4.6/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RL.4.6-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RL.4.6-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RL.4.6-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RL.4.6-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RL.4.6-Q5"
+      }
+    ]
   },
   {
     "standardId": "RL.4.7",
     "grade": "4th Grade",
-    "domain": "Reading Literature",
+    "domain": "Literature",
     "title": "Stories Across Mediums",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.4.7/S1a.mp3",
+            "ttsScript": "A story can be a book, a movie, a play, or even a song.",
+            "interaction": "",
+            "displayText": "Book / movie / play / song",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.4.7/S1b.mp3",
+            "ttsScript": "Each medium tells the story differently.",
+            "interaction": "",
+            "displayText": "Each is different",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Same Story, Different Form",
+        "imagePrompt": "A cheerful cartoon book and a movie reel side by side. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.4.7/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.4.7/S2a.mp3",
+            "ttsScript": "A movie shows you visuals and sounds directly. A book lets you imagine them.",
+            "interaction": "",
+            "displayText": "Movie shows / book imagines",
+            "displayDelay": 2800
+          }
+        ],
+        "heading": "Book vs Movie",
+        "imagePrompt": "A cheerful cartoon kid with one eye on a book and one eye on a movie screen. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.4.7/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "example",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.4.7/S3a.mp3",
+            "ttsScript": "Movies often cut parts of the book to fit the time.",
+            "interaction": "",
+            "displayText": "Cuts to fit time",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.4.7/S3b.mp3",
+            "ttsScript": "Sometimes they add scenes too!",
+            "interaction": "",
+            "displayText": "Sometimes add scenes",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "What Got Cut?",
+        "imagePrompt": "A cheerful cartoon film reel with a few frames missing. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.4.7/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.4.7/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A medium trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.4.7/S4b.mp3",
+            "ttsScript": "Make a list of what is same and what is different between book and movie.",
+            "interaction": "",
+            "displayText": "Same vs different",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.4.7/S4c.mp3",
+            "ttsScript": "Now you are ready to compare stories across mediums!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Compare and Contrast",
+        "imagePrompt": "A cheerful cartoon Venn diagram with one circle a book and one a movie. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.4.7/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RL.4.7-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RL.4.7-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RL.4.7-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RL.4.7-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RL.4.7-Q5"
+      }
+    ]
   },
   {
     "standardId": "RL.4.9",
     "grade": "4th Grade",
-    "domain": "Reading Literature",
+    "domain": "Literature",
     "title": "Same Theme, Different Cultures",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.4.9/S1a.mp3",
+            "ttsScript": "Big ideas like courage, family, and home appear in stories all over the world.",
+            "interaction": "",
+            "displayText": "Themes are universal",
+            "displayDelay": 3000
+          }
+        ],
+        "heading": "Themes Travel",
+        "imagePrompt": "A cheerful cartoon globe with story books from different cultures around it. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.4.9/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.4.9/S2a.mp3",
+            "ttsScript": "Many cultures have trickster characters who teach lessons through cleverness.",
+            "interaction": "",
+            "displayText": "Tricksters = lessons",
+            "displayDelay": 2800
+          }
+        ],
+        "heading": "Trickster Tales",
+        "imagePrompt": "A cheerful cartoon trickster fox with a sly smile. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.4.9/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.4.9/S3a.mp3",
+            "ttsScript": "Hero stories show up everywhere. Greek myths, African folktales, Japanese legends.",
+            "interaction": "",
+            "displayText": "Heroes everywhere",
+            "displayDelay": 2800
+          }
+        ],
+        "heading": "Hero Journeys",
+        "imagePrompt": "A cheerful cartoon kid hero character at the start of a path with a backpack. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.4.9/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.4.9/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A culture trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.4.9/S4b.mp3",
+            "ttsScript": "When reading a story from another culture, ask: what big lesson does it share with stories I know?",
+            "interaction": "",
+            "displayText": "Shared lesson?",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.4.9/S4c.mp3",
+            "ttsScript": "Now you are ready to compare themes across cultures!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Notice the Shared Heart",
+        "imagePrompt": "A cheerful cartoon two books with a glowing heart between them. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.4.9/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RL.4.9-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RL.4.9-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RL.4.9-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RL.4.9-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RL.4.9-Q5"
+      }
+    ]
   },
   {
     "standardId": "RL.4.10",
     "grade": "4th Grade",
-    "domain": "Reading Literature",
+    "domain": "Literature",
     "title": "Reading Big Stories",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.4.10/S1a.mp3",
+            "ttsScript": "Fourth graders take on longer, more complex stories.",
+            "interaction": "",
+            "displayText": "Longer + more complex",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.4.10/S1b.mp3",
+            "ttsScript": "Chapter books, novels, and longer poems!",
+            "interaction": "",
+            "displayText": "Chapter books + novels",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Bigger Books, Bigger Adventures",
+        "imagePrompt": "A cheerful cartoon kid carrying a tall stack of books with a confident smile. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.4.10/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.4.10/S2a.mp3",
+            "ttsScript": "Long books need a steady pace. A chapter or two a day works great.",
+            "interaction": "",
+            "displayText": "Steady pace",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Pace Yourself",
+        "imagePrompt": "A cheerful cartoon kid with a bookmark inside a thick book. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.4.10/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.4.10/S3a.mp3",
+            "ttsScript": "Take quick notes about characters and big events.",
+            "interaction": "",
+            "displayText": "Notes help",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Take Notes",
+        "imagePrompt": "A cheerful cartoon kid jotting in a notebook with sticky notes on a book. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.4.10/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.4.10/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A daily trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.4.10/S4b.mp3",
+            "ttsScript": "Daily reading turns hard books into easy adventures over time!",
+            "interaction": "",
+            "displayText": "Daily = easier",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.4.10/S4c.mp3",
+            "ttsScript": "Now you are ready for big stories!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Read Daily",
+        "imagePrompt": "A cheerful cartoon clock with a book inside. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RL.4.10/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RL.4.10-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RL.4.10-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RL.4.10-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RL.4.10-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RL.4.10-Q5"
+      }
+    ]
   },
   {
     "standardId": "RI.4.1",
     "grade": "4th Grade",
-    "domain": "Reading Informational Text",
+    "domain": "Informational",
     "title": "Finding Fact Details",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.4.1/S1a.mp3",
+            "ttsScript": "Fourth grade nonfiction readers back up answers with text evidence.",
+            "interaction": "",
+            "displayText": "Text evidence",
+            "displayDelay": 2800
+          }
+        ],
+        "heading": "Evidence Matters",
+        "imagePrompt": "A cheerful cartoon detective kid with a magnifying glass over a fact book. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.4.1/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.4.1/S2a.mp3",
+            "ttsScript": "Quote the exact words or summarize the line.",
+            "interaction": "",
+            "displayText": "Quote or summarize",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Cite Specifically",
+        "imagePrompt": "A cheerful cartoon kid with a quote bubble citing a paragraph. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.4.1/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "example",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.4.1/S3a.mp3",
+            "ttsScript": "Sometimes the answer is implied. Use details to infer it.",
+            "interaction": "",
+            "displayText": "Implied = infer",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Inferences From Details",
+        "imagePrompt": "A cheerful cartoon kid putting two clue puzzle pieces together. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.4.1/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.4.1/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A details trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.4.1/S4b.mp3",
+            "ttsScript": "Always say: according to the text, before your answer.",
+            "interaction": "",
+            "displayText": "According to the text...",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.4.1/S4c.mp3",
+            "ttsScript": "Now you are ready to find fact details!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Use the Text",
+        "imagePrompt": "A cheerful cartoon highlighter with sparkles. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.4.1/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RI.4.1-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RI.4.1-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RI.4.1-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RI.4.1-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RI.4.1-Q5"
+      }
+    ]
   },
   {
     "standardId": "RI.4.2",
     "grade": "4th Grade",
-    "domain": "Reading Informational Text",
+    "domain": "Informational",
     "title": "Main Idea Mastery",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.4.2/S1a.mp3",
+            "ttsScript": "Main idea is the umbrella. Details are the rain underneath.",
+            "interaction": "",
+            "displayText": "Main = umbrella",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Main Idea + Details",
+        "imagePrompt": "A cheerful cartoon glowing umbrella with details raining down. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.4.2/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.4.2/S2a.mp3",
+            "ttsScript": "Summarize: main idea plus the most important details.",
+            "interaction": "",
+            "displayText": "Main + key details",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Summarize",
+        "imagePrompt": "A cheerful cartoon pencil writing a one-sentence summary. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.4.2/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "example",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.4.2/S3a.mp3",
+            "ttsScript": "In long texts, find the main idea that ties paragraphs together.",
+            "interaction": "",
+            "displayText": "Tie paragraphs together",
+            "displayDelay": 2800
+          }
+        ],
+        "heading": "Across Multiple Paragraphs",
+        "imagePrompt": "A cheerful cartoon stack of three paragraphs glowing together. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.4.2/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.4.2/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A summary trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.4.2/S4b.mp3",
+            "ttsScript": "Try to summarize the whole text in two sentences. Forces you to find the heart!",
+            "interaction": "",
+            "displayText": "Two-sentence summary",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.4.2/S4c.mp3",
+            "ttsScript": "Now you are ready to master main ideas!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Two-Sentence Test",
+        "imagePrompt": "A cheerful cartoon kid holding up two fingers next to a book. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.4.2/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RI.4.2-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RI.4.2-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RI.4.2-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RI.4.2-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RI.4.2-Q5"
+      }
+    ]
   },
   {
     "standardId": "RI.4.3",
     "grade": "4th Grade",
-    "domain": "Reading Informational Text",
+    "domain": "Informational",
     "title": "Explaining Procedures",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.4.3/S1a.mp3",
+            "ttsScript": "Some texts explain how things work or how to do something.",
+            "interaction": "",
+            "displayText": "How things work",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Procedures and Sequences",
+        "imagePrompt": "A cheerful cartoon flowchart with step boxes connected by arrows. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.4.3/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.4.3/S2a.mp3",
+            "ttsScript": "Watch for first, next, then, finally.",
+            "interaction": "",
+            "displayText": "First / next / then / finally",
+            "displayDelay": 2800
+          }
+        ],
+        "heading": "Look for Steps",
+        "imagePrompt": "A cheerful cartoon kid with three numbered cards. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.4.3/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "example",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.4.3/S3a.mp3",
+            "ttsScript": "First a seed is planted. Then it sprouts. Finally it becomes a plant.",
+            "interaction": "",
+            "displayText": "Seed -> sprout -> plant",
+            "displayDelay": 2800
+          }
+        ],
+        "heading": "How a Plant Grows",
+        "imagePrompt": "A cheerful cartoon plant cycle: seed, sprout, plant. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.4.3/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.4.3/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A procedure trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.4.3/S4b.mp3",
+            "ttsScript": "As you read, number each step in the margin. Helps you remember the order!",
+            "interaction": "",
+            "displayText": "Number the steps",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.4.3/S4c.mp3",
+            "ttsScript": "Now you are ready to explain procedures!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Number Each Step",
+        "imagePrompt": "A cheerful cartoon pencil writing tiny numbers next to lines. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.4.3/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RI.4.3-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RI.4.3-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RI.4.3-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RI.4.3-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RI.4.3-Q5"
+      }
+    ]
   },
   {
     "standardId": "RI.4.4",
     "grade": "4th Grade",
-    "domain": "Reading Informational Text",
+    "domain": "Informational",
     "title": "Academic Word Meanings",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.4.4/S1a.mp3",
+            "ttsScript": "Academic words are the formal words used in school subjects.",
+            "interaction": "",
+            "displayText": "Subject-specific words",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "School Words",
+        "imagePrompt": "A cheerful cartoon kid with a tiny notebook of academic words. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.4.4/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.4.4/S2a.mp3",
+            "ttsScript": "Use context plus root word knowledge.",
+            "interaction": "",
+            "displayText": "Context + roots",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Use Context and Roots",
+        "imagePrompt": "A cheerful cartoon word being broken into root parts. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.4.4/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.4.4/S3a.mp3",
+            "ttsScript": "Science: ecosystem. Math: equation. History: revolution.",
+            "interaction": "",
+            "displayText": "Subject vocabulary",
+            "displayDelay": 2800
+          }
+        ],
+        "heading": "Subject Words",
+        "imagePrompt": "A cheerful cartoon kid with three labels: science, math, history. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.4.4/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.4.4/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A vocab trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.4.4/S4b.mp3",
+            "ttsScript": "Make a word wall in your notebook. Add new words as you read.",
+            "interaction": "",
+            "displayText": "Word wall",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.4.4/S4c.mp3",
+            "ttsScript": "Now you are ready for academic words!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Build a Word Wall",
+        "imagePrompt": "A cheerful cartoon kid putting word cards on a wall. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.4.4/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RI.4.4-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RI.4.4-Q2"
+      }
+    ]
   },
   {
     "standardId": "RI.4.5",
     "grade": "4th Grade",
-    "domain": "Reading Informational Text",
+    "domain": "Informational",
     "title": "How Texts Are Built",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.4.5/S1a.mp3",
+            "ttsScript": "Texts are organized in patterns. Cause / effect, sequence, problem / solution.",
+            "interaction": "",
+            "displayText": "Patterns of organization",
+            "displayDelay": 2800
+          }
+        ],
+        "heading": "Text Structures",
+        "imagePrompt": "A cheerful cartoon blueprint of a paragraph with labeled parts. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.4.5/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.4.5/S2a.mp3",
+            "ttsScript": "Compare and contrast structure shows similarities and differences.",
+            "interaction": "",
+            "displayText": "Same + different",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Compare and Contrast",
+        "imagePrompt": "A cheerful cartoon Venn diagram with two overlapping circles. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.4.5/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.4.5/S3a.mp3",
+            "ttsScript": "Problem and solution texts state an issue, then show how to fix it.",
+            "interaction": "",
+            "displayText": "Issue -> fix",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Problem and Solution",
+        "imagePrompt": "A cheerful cartoon kid pointing to a problem on the left and a solution on the right. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.4.5/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.4.5/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A structure trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.4.5/S4b.mp3",
+            "ttsScript": "Words like however, also, because, and finally signal the structure.",
+            "interaction": "",
+            "displayText": "Signal words = structure",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.4.5/S4c.mp3",
+            "ttsScript": "Now you are ready to spot text structures!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Look for Clue Words",
+        "imagePrompt": "A cheerful cartoon magnifying glass over signal words. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.4.5/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RI.4.5-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RI.4.5-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RI.4.5-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RI.4.5-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RI.4.5-Q5"
+      }
+    ]
   },
   {
     "standardId": "RI.4.6",
     "grade": "4th Grade",
-    "domain": "Reading Informational Text",
+    "domain": "Informational",
     "title": "Firsthand vs Secondhand",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.4.6/S1a.mp3",
+            "ttsScript": "A firsthand account is from someone who was there.",
+            "interaction": "",
+            "displayText": "Firsthand = there",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.4.6/S1b.mp3",
+            "ttsScript": "A secondhand account is from someone who learned about it.",
+            "interaction": "",
+            "displayText": "Secondhand = learned about",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Two Kinds of Accounts",
+        "imagePrompt": "A cheerful cartoon kid telling a story vs another reading about it. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.4.6/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.4.6/S2a.mp3",
+            "ttsScript": "A diary entry is firsthand. A history article is usually secondhand.",
+            "interaction": "",
+            "displayText": "Diary vs article",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Diary vs Article",
+        "imagePrompt": "A cheerful cartoon diary and a newspaper side by side. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.4.6/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "example",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.4.6/S3a.mp3",
+            "ttsScript": "Firsthand has personal feelings and senses. Secondhand has more facts and dates.",
+            "interaction": "",
+            "displayText": "Feelings vs facts",
+            "displayDelay": 2800
+          }
+        ],
+        "heading": "Different Details",
+        "imagePrompt": "A cheerful cartoon kid comparing two written accounts. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.4.6/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.4.6/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A source trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.4.6/S4b.mp3",
+            "ttsScript": "Ask: was the writer actually there? If yes, firsthand!",
+            "interaction": "",
+            "displayText": "Were they there?",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.4.6/S4c.mp3",
+            "ttsScript": "Now you are ready to tell firsthand from secondhand!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Ask: Were They There?",
+        "imagePrompt": "A cheerful cartoon kid pointing at the author bio of a book. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.4.6/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RI.4.6-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RI.4.6-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RI.4.6-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RI.4.6-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RI.4.6-Q5"
+      }
+    ]
   },
   {
     "standardId": "RI.4.7",
     "grade": "4th Grade",
-    "domain": "Reading Informational Text",
+    "domain": "Informational",
     "title": "Information Across Forms",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.4.7/S1a.mp3",
+            "ttsScript": "Information can come in text, charts, diagrams, photos, or videos.",
+            "interaction": "",
+            "displayText": "Many forms",
+            "displayDelay": 2800
+          }
+        ],
+        "heading": "Info Comes in Many Forms",
+        "imagePrompt": "A cheerful cartoon collage of a graph, a photo, a video icon, and a paragraph. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.4.7/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.4.7/S2a.mp3",
+            "ttsScript": "A chart shows numbers. A photo shows something real. Words explain.",
+            "interaction": "",
+            "displayText": "Each adds info",
+            "displayDelay": 2800
+          }
+        ],
+        "heading": "Each Form Adds Something",
+        "imagePrompt": "A cheerful cartoon graph next to a paragraph with arrows showing connection. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.4.7/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "example",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.4.7/S3a.mp3",
+            "ttsScript": "Combine all the info to get the full picture.",
+            "interaction": "",
+            "displayText": "Full picture",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Combine Them",
+        "imagePrompt": "A cheerful cartoon kid combining different info pieces into one notebook. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.4.7/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.4.7/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A multimedia trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.4.7/S4b.mp3",
+            "ttsScript": "When researching, use multiple sources. They each show different angles.",
+            "interaction": "",
+            "displayText": "Multiple sources",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.4.7/S4c.mp3",
+            "ttsScript": "Now you are ready to use info from many forms!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Use Every Source",
+        "imagePrompt": "A cheerful cartoon kid with a clipboard checking off info sources. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.4.7/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RI.4.7-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RI.4.7-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RI.4.7-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RI.4.7-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RI.4.7-Q5"
+      }
+    ]
   },
   {
     "standardId": "RI.4.8",
     "grade": "4th Grade",
-    "domain": "Reading Informational Text",
+    "domain": "Informational",
     "title": "Author's Reasons and Evidence",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.4.8/S1a.mp3",
+            "ttsScript": "Authors give reasons for their points. Strong writers also give evidence.",
+            "interaction": "",
+            "displayText": "Reasons + evidence",
+            "displayDelay": 2800
+          }
+        ],
+        "heading": "Reasons and Evidence",
+        "imagePrompt": "A cheerful cartoon judge weighing reasons on a scale. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.4.8/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.4.8/S2a.mp3",
+            "ttsScript": "A reason is the why behind the point.",
+            "interaction": "",
+            "displayText": "Reason = why",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Reasons Tell Why",
+        "imagePrompt": "A cheerful cartoon question mark next to a thought bubble. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.4.8/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.4.8/S3a.mp3",
+            "ttsScript": "Evidence is proof. Facts. Examples. Statistics.",
+            "interaction": "",
+            "displayText": "Facts + examples",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Evidence Backs It Up",
+        "imagePrompt": "A cheerful cartoon kid pointing to a graph as proof. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.4.8/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.4.8/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A reasons trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.4.8/S4b.mp3",
+            "ttsScript": "Highlight reasons one color and evidence another. See how they connect!",
+            "interaction": "",
+            "displayText": "Two colors = see links",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.4.8/S4c.mp3",
+            "ttsScript": "Now you are ready to spot reasons and evidence!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Highlight Both",
+        "imagePrompt": "A cheerful cartoon highlighter circling a reason and a fact. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.4.8/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RI.4.8-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RI.4.8-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RI.4.8-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RI.4.8-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RI.4.8-Q5"
+      }
+    ]
   },
   {
     "standardId": "RI.4.9",
     "grade": "4th Grade",
-    "domain": "Reading Informational Text",
+    "domain": "Informational",
     "title": "Combining Two Texts",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.4.9/S1a.mp3",
+            "ttsScript": "Reading two texts on the same topic gives a stronger understanding.",
+            "interaction": "",
+            "displayText": "Two = stronger",
+            "displayDelay": 2800
+          }
+        ],
+        "heading": "Two Texts Stronger Than One",
+        "imagePrompt": "Two cheerful cartoon books glowing brighter when held together. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.4.9/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.4.9/S2a.mp3",
+            "ttsScript": "Use facts from both texts to write a stronger summary.",
+            "interaction": "",
+            "displayText": "Stronger summary",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Combine Information",
+        "imagePrompt": "A cheerful cartoon kid blending two bowls of ingredients. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.4.9/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.4.9/S3a.mp3",
+            "ttsScript": "Each text might focus on a different angle. Notice both.",
+            "interaction": "",
+            "displayText": "Different angles",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Spot Different Angles",
+        "imagePrompt": "A cheerful cartoon mountain seen from two angles. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.4.9/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.4.9/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A combining trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.4.9/S4b.mp3",
+            "ttsScript": "Take the best ideas from each text. Combine them into your own picture.",
+            "interaction": "",
+            "displayText": "Mix the best",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.4.9/S4c.mp3",
+            "ttsScript": "Now you are ready to combine two texts!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Mix the Best",
+        "imagePrompt": "A cheerful cartoon kid combining notes into one big idea web. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.4.9/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RI.4.9-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RI.4.9-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RI.4.9-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RI.4.9-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RI.4.9-Q5"
+      }
+    ]
   },
   {
     "standardId": "RI.4.10",
     "grade": "4th Grade",
-    "domain": "Reading Informational Text",
+    "domain": "Informational",
     "title": "Reading Big Facts",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.4.10/S1a.mp3",
+            "ttsScript": "Fourth graders take on longer fact books and articles.",
+            "interaction": "",
+            "displayText": "Longer + harder",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Long Nonfiction",
+        "imagePrompt": "A cheerful cartoon kid carrying a thick fact book confidently. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.4.10/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.4.10/S2a.mp3",
+            "ttsScript": "Big facts are easier to remember when you take notes.",
+            "interaction": "",
+            "displayText": "Notes help",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Take Notes",
+        "imagePrompt": "A cheerful cartoon kid jotting notes from a fact book. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.4.10/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.4.10/S3a.mp3",
+            "ttsScript": "Try slightly harder books. They grow your reading muscles.",
+            "interaction": "",
+            "displayText": "Stretch = grow",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Stretch Books",
+        "imagePrompt": "A cheerful cartoon kid stretching to reach a high bookshelf. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.4.10/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RI.4.10/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A daily trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.4.10/S4b.mp3",
+            "ttsScript": "Twenty minutes a day, all year. You will read so many big fact books!",
+            "interaction": "",
+            "displayText": "20 min daily = lots",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.4.10/S4c.mp3",
+            "ttsScript": "Now you are ready to read big facts!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Daily Reading",
+        "imagePrompt": "A cheerful cartoon clock with a book inside. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RI.4.10/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RI.4.10-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RI.4.10-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RI.4.10-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RI.4.10-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RI.4.10-Q5"
+      }
+    ]
   },
   {
     "standardId": "RF.4.3",
     "grade": "4th Grade",
     "domain": "Foundational Skills",
     "title": "Word Decoding Skills",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.4.3/S1a.mp3",
+            "ttsScript": "Fourth grade decoding works on long, tricky words.",
+            "interaction": "",
+            "displayText": "Long + tricky",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Decoding Power",
+        "imagePrompt": "A cheerful cartoon kid holding a key opening a long word. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.4.3/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.4.3/S2a.mp3",
+            "ttsScript": "Use phonics, syllables, and word part knowledge together.",
+            "interaction": "",
+            "displayText": "All your tools",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Use All Your Tools",
+        "imagePrompt": "A cheerful cartoon toolbox with reading tools labeled phonics, roots, prefixes. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.4.3/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "example",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.4.3/S3a.mp3",
+            "ttsScript": "Break it into chunks. Read each chunk. Then blend.",
+            "interaction": "",
+            "displayText": "Chunk + read + blend",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Multisyllable Strategy",
+        "imagePrompt": "A cheerful cartoon kid drawing slashes between syllables. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.4.3/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.4.3/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A decoding trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.4.3/S4b.mp3",
+            "ttsScript": "After decoding, reread the whole sentence. The meaning often clicks.",
+            "interaction": "",
+            "displayText": "Reread for meaning",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.4.3/S4c.mp3",
+            "ttsScript": "Now you are ready to decode powerful words!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Read in Context",
+        "imagePrompt": "A cheerful cartoon kid reading a sentence with the new word. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.4.3/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RF.4.3-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RF.4.3-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RF.4.3-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RF.4.3-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RF.4.3-Q5"
+      }
+    ]
   },
   {
     "standardId": "RF.4.3a",
     "grade": "4th Grade",
     "domain": "Foundational Skills",
     "title": "Letter-Sound Combos",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.4.3a/S1a.mp3",
+            "ttsScript": "In long words, look for letter-sound combos you already know.",
+            "interaction": "",
+            "displayText": "Combos you know",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Big Word Combos",
+        "imagePrompt": "A cheerful cartoon multi-letter combo character. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.4.3a/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.4.3a/S2a.mp3",
+            "ttsScript": "PH says F. GH can be silent. CH can sound like K in some words.",
+            "interaction": "",
+            "displayText": "PH = F, GH silent, CH = K sometimes",
+            "displayDelay": 3000
+          }
+        ],
+        "heading": "PH, GH, and CH",
+        "imagePrompt": "Three cheerful cartoon letter combos with smiles. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.4.3a/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.4.3a/S3a.mp3",
+            "ttsScript": "Vowel combos like EA, EE, OA, OU show up everywhere.",
+            "interaction": "",
+            "displayText": "EA / EE / OA / OU",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Vowel Combos",
+        "imagePrompt": "A cheerful cartoon vowel pair holding hands. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.4.3a/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.4.3a/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A combo trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.4.3a/S4b.mp3",
+            "ttsScript": "When decoding, scan for known combos first. They are anchor points.",
+            "interaction": "",
+            "displayText": "Anchor points",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.4.3a/S4c.mp3",
+            "ttsScript": "Now you are ready for letter-sound combos!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Spot the Combos",
+        "imagePrompt": "A cheerful cartoon magnifying glass over a vowel pair. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.4.3a/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RF.4.3a-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RF.4.3a-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RF.4.3a-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RF.4.3a-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RF.4.3a-Q5"
+      }
+    ]
   },
   {
     "standardId": "RF.4.4",
     "grade": "4th Grade",
     "domain": "Foundational Skills",
     "title": "Smooth Reading Skills",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.4.4/S1a.mp3",
+            "ttsScript": "Smooth reading helps you understand more deeply.",
+            "interaction": "",
+            "displayText": "Smooth = deeper",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Fluent Reading Pays Off",
+        "imagePrompt": "A cheerful cartoon kid reading on a stage with confident posture. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.4.4/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.4.4/S2a.mp3",
+            "ttsScript": "Slow down for tricky parts. Speed up for action.",
+            "interaction": "",
+            "displayText": "Adjust pace",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Pace Matches Content",
+        "imagePrompt": "A cheerful cartoon metronome adjusting tempo. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.4.4/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.4.4/S3a.mp3",
+            "ttsScript": "Group words into phrases. Use your voice to match the meaning.",
+            "interaction": "",
+            "displayText": "Phrasing + voice",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Expression and Phrasing",
+        "imagePrompt": "A cheerful cartoon microphone with notes coming out. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.4.4/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RF.4.4/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A fluency trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.4.4/S4b.mp3",
+            "ttsScript": "Read aloud to anyone — friend, family, even a pet. Builds smoothness fast!",
+            "interaction": "",
+            "displayText": "Read aloud daily",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.4.4/S4c.mp3",
+            "ttsScript": "Now you are ready for smooth reading!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Read Aloud Often",
+        "imagePrompt": "A cheerful cartoon kid reading to a smiling pet. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/RF.4.4/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "RF.4.4-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "RF.4.4-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "RF.4.4-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "RF.4.4-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "RF.4.4-Q5"
+      }
+    ]
   },
   {
     "standardId": "L.4.4",
     "grade": "4th Grade",
     "domain": "Language",
     "title": "Word Meaning Detective",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.4.4/S1a.mp3",
+            "ttsScript": "Use sentence clues, word parts, and reference materials together.",
+            "interaction": "",
+            "displayText": "All your tools",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Crack New Words",
+        "imagePrompt": "A cheerful cartoon detective kid with a magnifying glass over a glowing word. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.4.4/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.4.4/S2a.mp3",
+            "ttsScript": "Try context first. Then word parts. Then look it up if you are still stuck.",
+            "interaction": "",
+            "displayText": "Context -> parts -> lookup",
+            "displayDelay": 2800
+          }
+        ],
+        "heading": "Combine Strategies",
+        "imagePrompt": "A cheerful cartoon kid holding three tool icons together. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.4.4/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "example",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.4.4/S3a.mp3",
+            "ttsScript": "Endings like -ing, -ed, -s tell you tense and number.",
+            "interaction": "",
+            "displayText": "-ing / -ed / -s",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Inflectional Endings",
+        "imagePrompt": "A cheerful cartoon word tile with an -ing suffix snapping on. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.4.4/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.4.4/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A vocab trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/L.4.4/S4b.mp3",
+            "ttsScript": "Keep a vocab notebook. Definition, sentence, and a tiny picture for each word.",
+            "interaction": "",
+            "displayText": "Notebook + picture",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/L.4.4/S4c.mp3",
+            "ttsScript": "Now you are ready to detect word meanings!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Track Your Words",
+        "imagePrompt": "A cheerful cartoon vocabulary notebook. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.4.4/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "L.4.4-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "L.4.4-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "L.4.4-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "L.4.4-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "L.4.4-Q5"
+      }
+    ]
   },
   {
     "standardId": "L.4.4a",
     "grade": "4th Grade",
     "domain": "Language",
     "title": "Sentence Clues",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.4.4a/S1a.mp3",
+            "ttsScript": "Sentence clues are everywhere if you slow down.",
+            "interaction": "",
+            "displayText": "Slow down to see",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Clues in Context",
+        "imagePrompt": "A cheerful cartoon magnifying glass over a glowing sentence. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.4.4a/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.4.4a/S2a.mp3",
+            "ttsScript": "Look for synonyms. Like, in other words, that is. These signal a definition!",
+            "interaction": "",
+            "displayText": "Like / that is = synonym",
+            "displayDelay": 2800
+          }
+        ],
+        "heading": "Synonyms and Examples",
+        "imagePrompt": "A cheerful cartoon equals sign between two word tiles. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.4.4a/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "example",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.4.4a/S3a.mp3",
+            "ttsScript": "Sometimes the opposite is given. Unlike, but, however.",
+            "interaction": "",
+            "displayText": "Unlike / but / however",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Antonyms Help Too",
+        "imagePrompt": "A cheerful cartoon happy face vs sad face linked by an opposite arrow. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.4.4a/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.4.4a/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A clue trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/L.4.4a/S4b.mp3",
+            "ttsScript": "Circle signal words like for example, in other words, however!",
+            "interaction": "",
+            "displayText": "Circle signals",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/L.4.4a/S4c.mp3",
+            "ttsScript": "Now you are ready to use sentence clues!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Hunt the Hint",
+        "imagePrompt": "A cheerful cartoon detective with sparkles. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.4.4a/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "L.4.4a-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "L.4.4a-Q2"
+      }
+    ]
   },
   {
     "standardId": "L.4.4b",
     "grade": "4th Grade",
     "domain": "Language",
     "title": "Greek and Latin Roots",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.4.4b/S1a.mp3",
+            "ttsScript": "Many big English words come from Greek and Latin roots.",
+            "interaction": "",
+            "displayText": "Greek + Latin",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/L.4.4b/S1b.mp3",
+            "ttsScript": "Knowing roots unlocks tons of vocabulary!",
+            "interaction": "",
+            "displayText": "Unlock vocab",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Roots From Long Ago",
+        "imagePrompt": "A cheerful cartoon scroll with Greek and Latin letters. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.4.4b/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.4.4b/S2a.mp3",
+            "ttsScript": "Bio means life. Photo means light. Telephone — far sound.",
+            "interaction": "",
+            "displayText": "bio / photo / tele",
+            "displayDelay": 2800
+          }
+        ],
+        "heading": "Common Roots",
+        "imagePrompt": "A cheerful cartoon root system with labels glowing. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.4.4b/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.4.4b/S3a.mp3",
+            "ttsScript": "Aqua means water. Aquarium = water place.",
+            "interaction": "",
+            "displayText": "aqua = water",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/L.4.4b/S3b.mp3",
+            "ttsScript": "Geo means earth. Geography = writing about earth.",
+            "interaction": "",
+            "displayText": "geo = earth",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Aqua and Geo",
+        "imagePrompt": "A cheerful cartoon water droplet and earth globe characters. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.4.4b/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.4.4b/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A root trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/L.4.4b/S4b.mp3",
+            "ttsScript": "One root unlocks many words. Aqua: aquarium, aquatic, aqueduct!",
+            "interaction": "",
+            "displayText": "One root = many words",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/L.4.4b/S4c.mp3",
+            "ttsScript": "Now you are ready for Greek and Latin roots!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Learn Roots, Win Big",
+        "imagePrompt": "A cheerful cartoon kid with a gold trophy of vocab. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.4.4b/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "L.4.4b-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "L.4.4b-Q2"
+      }
+    ]
   },
   {
     "standardId": "L.4.4c",
     "grade": "4th Grade",
     "domain": "Language",
     "title": "Reference Materials",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.4.4c/S1a.mp3",
+            "ttsScript": "Dictionaries, thesauri, and glossaries each help differently.",
+            "interaction": "",
+            "displayText": "Different references",
+            "displayDelay": 2800
+          }
+        ],
+        "heading": "Use the Right Reference",
+        "imagePrompt": "A cheerful cartoon shelf with a dictionary, thesaurus, and glossary. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.4.4c/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.4.4c/S2a.mp3",
+            "ttsScript": "A dictionary gives meaning, sound, and how to use the word.",
+            "interaction": "",
+            "displayText": "Meaning + sound + use",
+            "displayDelay": 2800
+          }
+        ],
+        "heading": "Dictionary",
+        "imagePrompt": "A cheerful cartoon dictionary with sparkles. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.4.4c/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.4.4c/S3a.mp3",
+            "ttsScript": "A thesaurus gives synonyms — words with similar meanings.",
+            "interaction": "",
+            "displayText": "Thesaurus = synonyms",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Thesaurus",
+        "imagePrompt": "A cheerful cartoon thesaurus character offering synonyms in a list. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.4.4c/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.4.4c/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A reference trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/L.4.4c/S4b.mp3",
+            "ttsScript": "Need a meaning? Dictionary. Need a different word? Thesaurus.",
+            "interaction": "",
+            "displayText": "Meaning vs synonym",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/L.4.4c/S4c.mp3",
+            "ttsScript": "Now you are ready to use reference materials!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Pick the Right One",
+        "imagePrompt": "A cheerful cartoon kid choosing between three reference books. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.4.4c/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "L.4.4c-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "L.4.4c-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "L.4.4c-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "L.4.4c-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "L.4.4c-Q5"
+      }
+    ]
   },
   {
     "standardId": "L.4.5",
     "grade": "4th Grade",
     "domain": "Language",
     "title": "Figurative Language",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.4.5/S1a.mp3",
+            "ttsScript": "Figurative language paints pictures with words.",
+            "interaction": "",
+            "displayText": "Paints with words",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Beyond Literal",
+        "imagePrompt": "A cheerful cartoon word transforming into a tiny picture. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.4.5/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.4.5/S2a.mp3",
+            "ttsScript": "Similes use like or as. Metaphors say it is. Idioms have hidden meanings.",
+            "interaction": "",
+            "displayText": "Simile / metaphor / idiom",
+            "displayDelay": 3000
+          }
+        ],
+        "heading": "Three Common Tools",
+        "imagePrompt": "A cheerful cartoon toolbox labeled simile, metaphor, idiom. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.4.5/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "example",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.4.5/S3a.mp3",
+            "ttsScript": "He ran like a cheetah. Simile.",
+            "interaction": "",
+            "displayText": "like cheetah = simile",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/L.4.5/S3b.mp3",
+            "ttsScript": "Time is money. Metaphor.",
+            "interaction": "",
+            "displayText": "is money = metaphor",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/L.4.5/S3c.mp3",
+            "ttsScript": "Piece of cake. Idiom for easy.",
+            "interaction": "",
+            "displayText": "cake = easy = idiom",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Examples",
+        "imagePrompt": "A cheerful cartoon cheetah with a kid running fast next to it. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.4.5/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.4.5/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A figurative trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/L.4.5/S4b.mp3",
+            "ttsScript": "When words sound weird literally, they are usually figurative!",
+            "interaction": "",
+            "displayText": "Weird literal = figurative",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/L.4.5/S4c.mp3",
+            "ttsScript": "Now you are ready for figurative language!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Hunt the Picture",
+        "imagePrompt": "A cheerful cartoon thought cloud with a tiny image inside. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.4.5/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "L.4.5-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "L.4.5-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "L.4.5-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "L.4.5-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "L.4.5-Q5"
+      }
+    ]
   },
   {
     "standardId": "L.4.5a",
     "grade": "4th Grade",
     "domain": "Language",
     "title": "Similes and Metaphors",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.4.5a/S1a.mp3",
+            "ttsScript": "Similes and metaphors compare two things to paint a picture.",
+            "interaction": "",
+            "displayText": "Compare = picture",
+            "displayDelay": 2800
+          }
+        ],
+        "heading": "Comparing With Pictures",
+        "imagePrompt": "A cheerful cartoon two objects connected by an equals sign with sparkles. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.4.5a/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.4.5a/S2a.mp3",
+            "ttsScript": "A simile uses like or as. As busy as a bee.",
+            "interaction": "",
+            "displayText": "Like / as = simile",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Simile = Like or As",
+        "imagePrompt": "A cheerful cartoon kid as quiet as a mouse. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.4.5a/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.4.5a/S3a.mp3",
+            "ttsScript": "A metaphor says one thing IS another. My heart is a star.",
+            "interaction": "",
+            "displayText": "X is Y = metaphor",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Metaphor = Is",
+        "imagePrompt": "A cheerful cartoon kid with a glowing star labeled my heart. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.4.5a/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.4.5a/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A figurative trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/L.4.5a/S4b.mp3",
+            "ttsScript": "See like or as? Simile. See is or are connecting unlike things? Metaphor.",
+            "interaction": "",
+            "displayText": "Bridge word check",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/L.4.5a/S4c.mp3",
+            "ttsScript": "Now you are ready for similes and metaphors!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Spot the Bridge Word",
+        "imagePrompt": "A cheerful cartoon bridge connecting two cliffs labeled like. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.4.5a/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "L.4.5a-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "L.4.5a-Q2"
+      }
+    ]
   },
   {
     "standardId": "L.4.5b",
     "grade": "4th Grade",
     "domain": "Language",
     "title": "Idioms and Sayings",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.4.5b/S1a.mp3",
+            "ttsScript": "Idioms are sayings whose meaning is hidden.",
+            "interaction": "",
+            "displayText": "Hidden meaning",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Sayings With Hidden Meaning",
+        "imagePrompt": "A cheerful cartoon idiom card with a hidden picture behind it. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.4.5b/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.4.5b/S2a.mp3",
+            "ttsScript": "Means it is raining hard, not actually animals!",
+            "interaction": "",
+            "displayText": "Means rain hard",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "It's Raining Cats and Dogs",
+        "imagePrompt": "A cheerful cartoon rain with friendly cartoon cats and dogs. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.4.5b/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.4.5b/S3a.mp3",
+            "ttsScript": "Means good luck before a performance!",
+            "interaction": "",
+            "displayText": "Means good luck",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Break a Leg",
+        "imagePrompt": "A cheerful cartoon performer on a stage smiling. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.4.5b/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.4.5b/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "An idiom trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/L.4.5b/S4b.mp3",
+            "ttsScript": "Idioms must be learned as phrases. Memorize a few each week!",
+            "interaction": "",
+            "displayText": "Memorize phrases",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/L.4.5b/S4c.mp3",
+            "ttsScript": "Now you are ready for idioms and sayings!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Learn Them as Phrases",
+        "imagePrompt": "A cheerful cartoon kid memorizing phrase cards. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.4.5b/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "L.4.5b-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "L.4.5b-Q2"
+      }
+    ]
   },
   {
     "standardId": "L.4.5c",
     "grade": "4th Grade",
     "domain": "Language",
     "title": "Word Strength Levels",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.4.5c/S1a.mp3",
+            "ttsScript": "Synonyms have shades of strength.",
+            "interaction": "",
+            "displayText": "Shades of strength",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Levels of Words",
+        "imagePrompt": "A cheerful cartoon dial showing three strengths of color. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.4.5c/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.4.5c/S2a.mp3",
+            "ttsScript": "Glance is quick. Look is normal. Stare is intense!",
+            "interaction": "",
+            "displayText": "glance / look / stare",
+            "displayDelay": 2800
+          }
+        ],
+        "heading": "Glance, Look, Stare",
+        "imagePrompt": "A cheerful cartoon eye with three intensities. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.4.5c/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.4.5c/S3a.mp3",
+            "ttsScript": "Whisper is soft. Talk is normal. Yell is loud!",
+            "interaction": "",
+            "displayText": "whisper / talk / yell",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Whisper, Talk, Yell",
+        "imagePrompt": "Three cheerful cartoon kids with rising voice loudness. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.4.5c/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.4.5c/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A strength trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/L.4.5c/S4b.mp3",
+            "ttsScript": "Pick the word strength that matches the actual feeling.",
+            "interaction": "",
+            "displayText": "Match the feeling",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/L.4.5c/S4c.mp3",
+            "ttsScript": "Now you are ready for word strength levels!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Match the Intensity",
+        "imagePrompt": "A cheerful cartoon kid choosing the right shade from a palette. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.4.5c/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "L.4.5c-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "L.4.5c-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "L.4.5c-Q3"
+      }
+    ]
   },
   {
     "standardId": "L.4.6",
     "grade": "4th Grade",
     "domain": "Language",
     "title": "Using Big Vocabulary",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.4.6/S1a.mp3",
+            "ttsScript": "Knowing big words helps. Using them helps even more.",
+            "interaction": "",
+            "displayText": "Use them!",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Use Your Big Words",
+        "imagePrompt": "A cheerful cartoon kid wearing a wizard hat throwing word sparkles. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.4.6/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.4.6/S2a.mp3",
+            "ttsScript": "Try new words in your speaking and writing.",
+            "interaction": "",
+            "displayText": "Speak + write",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/L.4.6/S2b.mp3",
+            "ttsScript": "They become yours after you use them.",
+            "interaction": "",
+            "displayText": "Use = own",
+            "displayDelay": 2200
+          }
+        ],
+        "heading": "Try New Words Out",
+        "imagePrompt": "A cheerful cartoon kid testing a new word with a smile. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.4.6/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.4.6/S3a.mp3",
+            "ttsScript": "Casual for chats. Academic for school.",
+            "interaction": "",
+            "displayText": "Casual vs academic",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Match Words to Setting",
+        "imagePrompt": "A cheerful cartoon kid switching between casual and formal hats. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.4.6/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.4.6/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A vocab trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/L.4.6/S4b.mp3",
+            "ttsScript": "One new word a day. Use it three times!",
+            "interaction": "",
+            "displayText": "One a day, use 3x",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/L.4.6/S4c.mp3",
+            "ttsScript": "Now you are ready to use big vocabulary!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Word a Day",
+        "imagePrompt": "A cheerful cartoon calendar with a new word on each day. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.4.6/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "L.4.6-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "L.4.6-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "L.4.6-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "L.4.6-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "L.4.6-Q5"
+      }
+    ]
   },
   {
     "standardId": "RF.1.3a",
@@ -29324,21 +32777,391 @@
     "grade": "4th Grade",
     "domain": "Language",
     "title": "Pronouns and Grammar Rules",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.4.1/S1a.mp3",
+            "ttsScript": "Fourth grade grammar dives into pronouns, modals, prepositions, and run-ons.",
+            "interaction": "",
+            "displayText": "Pronouns / modals / preps / run-ons",
+            "displayDelay": 3000
+          }
+        ],
+        "heading": "Grammar Detail",
+        "imagePrompt": "A cheerful cartoon kid with grammar tools and a clipboard. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.4.1/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.4.1/S2a.mp3",
+            "ttsScript": "Pronouns like I, she, he, we replace nouns.",
+            "interaction": "",
+            "displayText": "I / she / he / we",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/L.4.1/S2b.mp3",
+            "ttsScript": "Use them so we do not repeat names too much!",
+            "interaction": "",
+            "displayText": "Avoid repeats",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Pronouns Replace Nouns",
+        "imagePrompt": "A cheerful cartoon noun being swapped for a pronoun. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.4.1/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.4.1/S3a.mp3",
+            "ttsScript": "Modals like can, may, must show possibility or permission.",
+            "interaction": "",
+            "displayText": "can / may / must",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/L.4.1/S3b.mp3",
+            "ttsScript": "Run-on sentences cram two ideas without punctuation. Fix with a period or comma.",
+            "interaction": "",
+            "displayText": "Fix run-ons",
+            "displayDelay": 2800
+          }
+        ],
+        "heading": "Modals and Run-Ons",
+        "imagePrompt": "A cheerful cartoon train with too many cars labeled run-on. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.4.1/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.4.1/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A grammar trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/L.4.1/S4b.mp3",
+            "ttsScript": "Read aloud. If you run out of breath, it might be a run-on!",
+            "interaction": "",
+            "displayText": "Out of breath = run-on",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/L.4.1/S4c.mp3",
+            "ttsScript": "Now you are ready for pronouns and grammar rules!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Read It Aloud",
+        "imagePrompt": "A cheerful cartoon kid reading their own sentence out loud. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.4.1/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "L.4.1-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "L.4.1-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "L.4.1-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "L.4.1-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "L.4.1-Q5"
+      }
+    ]
   },
   {
     "standardId": "L.4.2",
     "grade": "4th Grade",
     "domain": "Language",
     "title": "Punctuation Mastery",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.4.2/S1a.mp3",
+            "ttsScript": "Fourth graders master punctuation rules.",
+            "interaction": "",
+            "displayText": "Master the marks",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Master the Marks",
+        "imagePrompt": "A cheerful cartoon punctuation orchestra all playing together. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.4.2/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.4.2/S2a.mp3",
+            "ttsScript": "When two complete sentences join with and, or, but — use a comma before the conjunction.",
+            "interaction": "",
+            "displayText": "Comma + conjunction",
+            "displayDelay": 3000
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/L.4.2/S2b.mp3",
+            "ttsScript": "I went to the park, and I had fun.",
+            "interaction": "",
+            "displayText": "...park, and I...",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Compound Sentence Commas",
+        "imagePrompt": "A cheerful cartoon comma joining two sentence trains. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.4.2/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.4.2/S3a.mp3",
+            "ttsScript": "In dialogue, commas and periods go inside the quotation marks.",
+            "interaction": "",
+            "displayText": "Marks inside quotes",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/L.4.2/S3b.mp3",
+            "ttsScript": "In titles, capitalize all important words.",
+            "interaction": "",
+            "displayText": "Capitalize important words",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Dialogue and Titles",
+        "imagePrompt": "A cheerful cartoon book cover with a capitalized title. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.4.2/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.4.2/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A proofreading trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/L.4.2/S4b.mp3",
+            "ttsScript": "Read your work backwards, sentence by sentence. Catches more errors!",
+            "interaction": "",
+            "displayText": "Read backwards",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/L.4.2/S4c.mp3",
+            "ttsScript": "Now you are ready for punctuation mastery!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Proofread Carefully",
+        "imagePrompt": "A cheerful cartoon kid with a pencil rereading their own writing. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.4.2/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "L.4.2-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "L.4.2-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "L.4.2-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "L.4.2-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "L.4.2-Q5"
+      }
+    ]
   },
   {
     "standardId": "L.4.3",
     "grade": "4th Grade",
     "domain": "Language",
     "title": "Word Choice for Style",
-    "slides": []
+    "slides": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.4.3/S1a.mp3",
+            "ttsScript": "Style is the way you choose to write.",
+            "interaction": "",
+            "displayText": "Style = your way",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Find Your Style",
+        "imagePrompt": "A cheerful cartoon kid holding a paint palette of word choices. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.4.3/S1.png"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.4.3/S2a.mp3",
+            "ttsScript": "Precise words paint clearer pictures. Bounded beats went.",
+            "interaction": "",
+            "displayText": "Precise > vague",
+            "displayDelay": 2500
+          }
+        ],
+        "heading": "Precise Words",
+        "imagePrompt": "A cheerful cartoon kid swapping a vague word for a precise one. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.4.3/S2.png"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.4.3/S3a.mp3",
+            "ttsScript": "Mix short and long sentences. It keeps writing fresh.",
+            "interaction": "",
+            "displayText": "Mix lengths",
+            "displayDelay": 2500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/L.4.3/S3b.mp3",
+            "ttsScript": "A short sentence. Hits hard. Then a longer one weaves the idea together more gently.",
+            "interaction": "",
+            "displayText": "Short = punch. Long = flow.",
+            "displayDelay": 3000
+          }
+        ],
+        "heading": "Vary Sentence Length",
+        "imagePrompt": "A cheerful cartoon row of sentences of different lengths. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.4.3/S3.png"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/L.4.3/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "interaction": "",
+            "displayText": "A style trick",
+            "displayDelay": 1500
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/L.4.3/S4b.mp3",
+            "ttsScript": "Match your style to your reader. Casual for friends. Formal for school.",
+            "interaction": "",
+            "displayText": "Match the reader",
+            "displayDelay": 2800
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/L.4.3/S4c.mp3",
+            "ttsScript": "Now you are ready to choose words for style!",
+            "interaction": "",
+            "displayText": "You got it!",
+            "displayDelay": 1500
+          }
+        ],
+        "heading": "Match Audience",
+        "imagePrompt": "A cheerful cartoon kid switching between casual and formal letters. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "imageFile": "images/lessons/L.4.3/S4.png"
+      },
+      {
+        "slide": 5,
+        "type": "mcq",
+        "mcqId": "L.4.3-Q1"
+      },
+      {
+        "slide": 6,
+        "type": "mcq",
+        "mcqId": "L.4.3-Q2"
+      },
+      {
+        "slide": 7,
+        "type": "mcq",
+        "mcqId": "L.4.3-Q3"
+      },
+      {
+        "slide": 8,
+        "type": "mcq",
+        "mcqId": "L.4.3-Q4"
+      },
+      {
+        "slide": 9,
+        "type": "mcq",
+        "mcqId": "L.4.3-Q5"
+      }
+    ]
   },
   {
     "standardId": "RL.K.10",

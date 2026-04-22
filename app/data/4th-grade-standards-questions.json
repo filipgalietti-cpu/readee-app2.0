@@ -2820,6 +2820,285 @@
       ],
       "standard_id": "L.4.6",
       "standard_description": "Acquire and use accurately grade-appropriate general academic and domain-specific words and phrases."
+    },
+    {
+      "standard_id": "L.4.1",
+      "standard_description": "Demonstrate command of the conventions of standard English grammar and usage when writing or speaking",
+      "domain": "Language",
+      "parent_tip": "Pronouns, modal verbs (can, may, must), prepositions, and run-on sentences.",
+      "questions": [
+        {
+          "id": "L.4.1-Q1",
+          "type": "multiple_choice",
+          "prompt": "Which is the correct **pronoun**: ___ went to the store.",
+          "choices": [
+            "She",
+            "Her",
+            "Hers",
+            "Hims"
+          ],
+          "correct": "She",
+          "hint": "She is a subject pronoun!",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.1/L.4.1-Q1-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.1/L.4.1-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.1/L.4.1-Q1.png"
+        },
+        {
+          "id": "L.4.1-Q2",
+          "type": "multiple_choice",
+          "prompt": "What kind of word is **may** in: You may go now?",
+          "choices": [
+            "modal verb",
+            "noun",
+            "adjective",
+            "adverb"
+          ],
+          "correct": "modal verb",
+          "hint": "Modal verbs help other verbs (can, may, must)!",
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.1/L.4.1-Q2-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.1/L.4.1-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.1/L.4.1-Q2.png"
+        },
+        {
+          "id": "L.4.1-Q3",
+          "type": "multiple_choice",
+          "prompt": "Which sentence has a **preposition**?",
+          "choices": [
+            "The book is on the desk.",
+            "She runs fast.",
+            "He smiled.",
+            "They ate."
+          ],
+          "correct": "The book is on the desk.",
+          "hint": "On is a preposition showing where!",
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.1/L.4.1-Q3-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.1/L.4.1-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.1/L.4.1-Q3.png"
+        },
+        {
+          "id": "L.4.1-Q4",
+          "type": "multiple_choice",
+          "prompt": "Which is a **run-on sentence**?",
+          "choices": [
+            "I love to read I read every day.",
+            "I love to read.",
+            "I read every day, and I love it.",
+            "Reading is fun."
+          ],
+          "correct": "I love to read I read every day.",
+          "hint": "Run-ons combine sentences without proper punctuation.",
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.1/L.4.1-Q4-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.1/L.4.1-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.1/L.4.1-Q4.png"
+        },
+        {
+          "id": "L.4.1-Q5",
+          "type": "multiple_choice",
+          "prompt": "Pick the right pronoun: My friend and ___ went to the park.",
+          "choices": [
+            "I",
+            "me",
+            "mine",
+            "my"
+          ],
+          "correct": "I",
+          "hint": "Use I as the subject!",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.1/L.4.1-Q5-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.1/L.4.1-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.1/L.4.1-Q5.png"
+        }
+      ]
+    },
+    {
+      "standard_id": "L.4.2",
+      "standard_description": "Demonstrate command of the conventions of standard English capitalization, punctuation, and spelling",
+      "domain": "Language",
+      "parent_tip": "Commas in compound sentences, quotation marks, capitalize titles.",
+      "questions": [
+        {
+          "id": "L.4.2-Q1",
+          "type": "multiple_choice",
+          "prompt": "Where does the comma go? I went to the store ___ I bought a book.",
+          "choices": [
+            "after store, before I",
+            "after I",
+            "after went",
+            "no comma needed"
+          ],
+          "correct": "after store, before I",
+          "hint": "Use a comma before a conjunction in a compound sentence!",
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.2/L.4.2-Q1-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.2/L.4.2-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.2/L.4.2-Q1.png"
+        },
+        {
+          "id": "L.4.2-Q2",
+          "type": "multiple_choice",
+          "prompt": "How do you write a book title?",
+          "choices": [
+            "Capitalize the important words",
+            "All lowercase",
+            "All uppercase",
+            "Just first letter only"
+          ],
+          "correct": "Capitalize the important words",
+          "hint": "Most words in a title get capitalized!",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.2/L.4.2-Q2-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.2/L.4.2-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.2/L.4.2-Q2.png"
+        },
+        {
+          "id": "L.4.2-Q3",
+          "type": "multiple_choice",
+          "prompt": "Which is correctly punctuated dialogue?",
+          "choices": [
+            "\"Hello,\" she said.",
+            "Hello, she said.",
+            "\"Hello, she said.\"",
+            "Hello \"she said\"."
+          ],
+          "correct": "\"Hello,\" she said.",
+          "hint": "The comma goes inside the quotation marks!",
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.2/L.4.2-Q3-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.2/L.4.2-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.2/L.4.2-Q3.png"
+        },
+        {
+          "id": "L.4.2-Q4",
+          "type": "multiple_choice",
+          "prompt": "What needs a capital letter?",
+          "choices": [
+            "proper nouns like names and places",
+            "every other word",
+            "just verbs",
+            "nothing in the middle"
+          ],
+          "correct": "proper nouns like names and places",
+          "hint": "Names and places always get capitals!",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.2/L.4.2-Q4-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.2/L.4.2-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.2/L.4.2-Q4.png"
+        },
+        {
+          "id": "L.4.2-Q5",
+          "type": "multiple_choice",
+          "prompt": "Which is the correct possessive: That is the ___ ball.",
+          "choices": [
+            "dog's",
+            "dogs",
+            "dogs'",
+            "dog"
+          ],
+          "correct": "dog's",
+          "hint": "Apostrophe + S shows one dog owns it!",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.2/L.4.2-Q5-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.2/L.4.2-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.2/L.4.2-Q5.png"
+        }
+      ]
+    },
+    {
+      "standard_id": "L.4.3",
+      "standard_description": "Use knowledge of language and its conventions when writing, speaking, reading, or listening",
+      "domain": "Language",
+      "parent_tip": "Match style to audience. Vary sentence length. Use precise words.",
+      "questions": [
+        {
+          "id": "L.4.3-Q1",
+          "type": "multiple_choice",
+          "prompt": "Which sentence is most precise?",
+          "choices": [
+            "The puppy bounded across the meadow.",
+            "The dog went over the grass.",
+            "The animal moved on the field.",
+            "The thing went somewhere."
+          ],
+          "correct": "The puppy bounded across the meadow.",
+          "hint": "Precise words paint a clearer picture!",
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.3/L.4.3-Q1-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.3/L.4.3-Q1.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.3/L.4.3-Q1.png"
+        },
+        {
+          "id": "L.4.3-Q2",
+          "type": "multiple_choice",
+          "prompt": "What is **style** in writing?",
+          "choices": [
+            "the way an author writes",
+            "the type of paper used",
+            "the font",
+            "the ink color"
+          ],
+          "correct": "the way an author writes",
+          "hint": "Style is the author's unique voice!",
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.3/L.4.3-Q2-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.3/L.4.3-Q2.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.3/L.4.3-Q2.png"
+        },
+        {
+          "id": "L.4.3-Q3",
+          "type": "multiple_choice",
+          "prompt": "Why might a writer use a short, snappy sentence?",
+          "choices": [
+            "for emphasis or impact",
+            "because they ran out of words",
+            "by accident",
+            "to confuse the reader"
+          ],
+          "correct": "for emphasis or impact",
+          "hint": "Short sentences hit hard!",
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.3/L.4.3-Q3-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.3/L.4.3-Q3.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.3/L.4.3-Q3.png"
+        },
+        {
+          "id": "L.4.3-Q4",
+          "type": "multiple_choice",
+          "prompt": "Match the style: writing to a friend versus writing a book report. The friend version should be:",
+          "choices": [
+            "more casual",
+            "more formal",
+            "longer",
+            "in another language"
+          ],
+          "correct": "more casual",
+          "hint": "Friends like casual!",
+          "difficulty": 1,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.3/L.4.3-Q4-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.3/L.4.3-Q4.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.3/L.4.3-Q4.png"
+        },
+        {
+          "id": "L.4.3-Q5",
+          "type": "multiple_choice",
+          "prompt": "Which word adds the strongest detail in: She felt ___?",
+          "choices": [
+            "thrilled",
+            "good",
+            "fine",
+            "okay"
+          ],
+          "correct": "thrilled",
+          "hint": "Thrilled is more vivid than good!",
+          "difficulty": 2,
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.3/L.4.3-Q5-hint.mp3",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.3/L.4.3-Q5.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.3/L.4.3-Q5.png"
+        }
+      ]
     }
   ]
 }
