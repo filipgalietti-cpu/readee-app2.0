@@ -7,6 +7,7 @@ import {
   BookOpen,
   ClipboardList,
   Target,
+  Download,
 } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/lib/auth/helpers";
@@ -161,6 +162,14 @@ export default async function SchoolAdminPage({
             initialState={s.state ?? null}
           />
           <AddAdminButton scope="school" schoolId={schoolId} label="Add school admin" />
+          <a
+            href={`/api/admin/school/${schoolId}/export`}
+            className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-white px-3 py-1.5 text-xs font-semibold text-zinc-700 transition hover:border-indigo-300 hover:text-indigo-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
+            title="Download school-wide progress as CSV"
+          >
+            <Download className="h-3.5 w-3.5" />
+            Export CSV
+          </a>
         </div>
       </div>
 
