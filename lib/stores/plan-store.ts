@@ -3,6 +3,7 @@ import { createClient } from "@/lib/supabase/client";
 
 interface PlanState {
   plan: string | null;      // null = loading, "free" | "premium"
+  role: string | null;      // null = loading, "parent" | "child" | "student" | "educator"
   loaded: boolean;
   fetch: () => Promise<void>;
   setPlan: (plan: string) => void;
@@ -10,6 +11,7 @@ interface PlanState {
 
 export const usePlanStore = create<PlanState>((set, get) => ({
   plan: null,
+  role: null,
   loaded: false,
 
   fetch: async () => {
@@ -17,15 +19,19 @@ export const usePlanStore = create<PlanState>((set, get) => ({
     const supabase = createClient();
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) {
-      set({ plan: "free", loaded: true });
+      set({ plan: "free", role: null, loaded: true });
       return;
     }
     const { data } = await supabase
       .from("profiles")
-      .select("plan")
+      .select("plan, role")
       .eq("id", user.id)
       .single();
-    set({ plan: (data as any)?.plan || "free", loaded: true });
+    set({
+      plan: (data as any)?.plan || "free",
+      role: (data as any)?.role || null,
+      loaded: true,
+    });
   },
 
   setPlan: (plan) => set({ plan, loaded: true }),

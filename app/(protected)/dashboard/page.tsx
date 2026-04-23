@@ -22,6 +22,7 @@ import type { ShopPurchase, EquippedItems } from "@/lib/db/types";
 import { Target, Puzzle, BookOpen, Map, Carrot, Flame, Sun, CloudSun, Moon, Sparkles, Star, Rocket, Trophy, BarChart3, Sprout, ChevronDown, Lock, User, CreditCard, Bell, LogOut, ChevronsUpDown, Home, BookText, ListChecks, ClipboardCheck } from "lucide-react";
 import type { ReactNode } from "react";
 import { getShopIcon } from "@/lib/data/shop-icons";
+import TeacherAssignmentsCard from "@/app/_components/TeacherAssignmentsCard";
 
 /* ─── Count-up animation hook ─────────────────────────── */
 
@@ -938,6 +939,11 @@ function ChildDashboard({
             <BookOpen className="w-5 h-5 text-indigo-500 group-hover:animate-subtleBounce" strokeWidth={1.5} />
             <span ref={storiesCount.ref} className="text-lg font-extrabold text-zinc-900 dark:text-slate-100">{storiesCount.value}</span>
           </Link>
+        </motion.div>
+
+        {/* ── From Your Teacher (only if classroom membership + open work) ── */}
+        <motion.div variants={slideUp}>
+          <TeacherAssignmentsCard childId={child.id} />
         </motion.div>
 
         {/* ── Daily Goal + Next Action ── */}
