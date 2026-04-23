@@ -1019,6 +1019,40 @@ function CompletionScreen({
         }
       }
 
+      // Mark classroom assignments as complete if this lesson matches one.
+      const { data: memberships } = await supabase
+        .from("classroom_memberships")
+        .select("classroom_id")
+        .eq("child_id", child.id);
+
+      const classroomIds = (memberships ?? []).map((m: any) => m.classroom_id);
+      if (classroomIds.length > 0) {
+        const { data: matching } = await supabase
+          .from("assignments")
+          .select("id")
+          .in("classroom_id", classroomIds)
+          .eq("kind", "readee_lesson")
+          .eq("source_id", lesson.standardId);
+
+        const scorePercent = totalQ > 0 ? Math.round((correctCount / totalQ) * 100) : 0;
+        const completedAt = new Date().toISOString();
+
+        for (const a of matching ?? []) {
+          await supabase
+            .from("assignment_submissions")
+            .upsert(
+              {
+                assignment_id: a.id,
+                child_id: child.id,
+                completed_at: completedAt,
+                score_percent: scorePercent,
+                carrots_earned: carrotsEarned,
+              },
+              { onConflict: "assignment_id,child_id" },
+            );
+        }
+      }
+
       setSaved(true);
       setSaving(false);
     }
