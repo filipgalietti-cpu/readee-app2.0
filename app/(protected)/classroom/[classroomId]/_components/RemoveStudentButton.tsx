@@ -43,11 +43,12 @@ export default function RemoveStudentButton({
         type="button"
         onClick={submit}
         disabled={pending}
-        className="inline-flex h-7 w-7 items-center justify-center rounded-lg text-zinc-400 transition hover:bg-red-50 hover:text-red-600 disabled:opacity-50 dark:hover:bg-red-950/40"
+        className="inline-flex items-center gap-1.5 rounded-full border border-red-300 bg-red-50 px-3 py-1 text-xs font-semibold text-red-700 transition hover:border-red-400 hover:bg-red-100 disabled:opacity-50 dark:border-red-900 dark:bg-red-950/40 dark:text-red-300 dark:hover:bg-red-950/60"
         aria-label={`Remove ${firstName}`}
         title={`Remove ${firstName} from class`}
       >
-        {pending ? <Loader2 className="h-4 w-4 animate-spin" /> : <UserMinus className="h-4 w-4" />}
+        {pending ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <UserMinus className="h-3.5 w-3.5" />}
+        Remove
       </button>
       {err && <span className="ml-2 text-xs text-red-600">{err}</span>}
     </>
