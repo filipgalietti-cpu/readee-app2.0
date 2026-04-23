@@ -12,6 +12,7 @@ import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/lib/auth/helpers";
 import AddAdminButton from "../../_components/AddAdminButton";
 import AdminList from "../../_components/AdminList";
+import EditScopeButton from "../../_components/EditScopeButton";
 
 export const dynamic = "force-dynamic";
 
@@ -152,6 +153,13 @@ export default async function SchoolAdminPage({
           )}
         </div>
         <div className="flex flex-wrap items-center gap-2 pt-2">
+          <EditScopeButton
+            kind="school"
+            id={schoolId}
+            initialName={s.name}
+            initialCity={s.city ?? null}
+            initialState={s.state ?? null}
+          />
           <AddAdminButton scope="school" schoolId={schoolId} label="Add school admin" />
         </div>
       </div>

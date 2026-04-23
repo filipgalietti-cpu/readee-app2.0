@@ -6,6 +6,7 @@ import { requireProfile } from "@/lib/auth/helpers";
 import CreateSchoolButton from "../../_components/CreateSchoolButton";
 import AddAdminButton from "../../_components/AddAdminButton";
 import AdminList from "../../_components/AdminList";
+import EditScopeButton from "../../_components/EditScopeButton";
 
 export const dynamic = "force-dynamic";
 
@@ -137,6 +138,12 @@ export default async function DistrictAdminPage({
           )}
         </div>
         <div className="flex flex-wrap items-center gap-2 pt-2">
+          <EditScopeButton
+            kind="district"
+            id={districtId}
+            initialName={d.name}
+            initialState={d.state ?? null}
+          />
           <CreateSchoolButton districtId={districtId} />
           <AddAdminButton scope="district" districtId={districtId} label="Add district admin" />
         </div>

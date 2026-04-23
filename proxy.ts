@@ -38,6 +38,8 @@ const AUTH_REQUIRED_PREFIXES = [
   "/notifications",
   "/assessment-results",
   "/carrot-rewards",
+  "/classroom",
+  "/admin",
 ];
 
 export async function proxy(request: NextRequest) {

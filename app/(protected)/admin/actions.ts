@@ -234,6 +234,97 @@ export async function grantAdminScope(input: {
   return { ok: true };
 }
 
+export async function updateDistrict(input: {
+  districtId: string;
+  name?: string;
+  state?: string | null;
+}): Promise<{ ok: true } | { ok: false; error: string }> {
+  const profile = await requireProfile();
+  const supabase = await createClient();
+
+  const { data: self } = await supabase
+    .from("admin_memberships")
+    .select("id")
+    .eq("profile_id", profile.id)
+    .eq("scope", "district")
+    .eq("district_id", input.districtId)
+    .maybeSingle();
+  if (!self) return { ok: false, error: "You are not a district admin here." };
+
+  const patch: Record<string, unknown> = {};
+  if (input.name !== undefined) {
+    const n = input.name.trim();
+    if (!n) return { ok: false, error: "Name cannot be empty." };
+    patch.name = n.slice(0, 120);
+  }
+  if (input.state !== undefined) patch.state = normalizeState(input.state);
+  if (Object.keys(patch).length === 0) return { ok: true };
+
+  const { error } = await supabase
+    .from("districts")
+    .update(patch)
+    .eq("id", input.districtId);
+  if (error) return { ok: false, error: error.message };
+  revalidatePath(`/admin/district/${input.districtId}`);
+  revalidatePath("/admin");
+  return { ok: true };
+}
+
+export async function updateSchool(input: {
+  schoolId: string;
+  name?: string;
+  city?: string | null;
+  state?: string | null;
+}): Promise<{ ok: true } | { ok: false; error: string }> {
+  const profile = await requireProfile();
+  const supabase = await createClient();
+
+  // Caller must be a school admin (direct or via parent district).
+  const { data: selfDirect } = await supabase
+    .from("admin_memberships")
+    .select("id")
+    .eq("profile_id", profile.id)
+    .eq("scope", "school")
+    .eq("school_id", input.schoolId)
+    .maybeSingle();
+  if (!selfDirect) {
+    const { data: school } = await supabase
+      .from("schools")
+      .select("district_id")
+      .eq("id", input.schoolId)
+      .maybeSingle();
+    const districtId = (school as any)?.district_id;
+    if (!districtId) return { ok: false, error: "Not allowed." };
+    const { data: selfDistrict } = await supabase
+      .from("admin_memberships")
+      .select("id")
+      .eq("profile_id", profile.id)
+      .eq("scope", "district")
+      .eq("district_id", districtId)
+      .maybeSingle();
+    if (!selfDistrict) return { ok: false, error: "Not allowed." };
+  }
+
+  const patch: Record<string, unknown> = {};
+  if (input.name !== undefined) {
+    const n = input.name.trim();
+    if (!n) return { ok: false, error: "Name cannot be empty." };
+    patch.name = n.slice(0, 120);
+  }
+  if (input.city !== undefined) patch.city = input.city?.trim() || null;
+  if (input.state !== undefined) patch.state = normalizeState(input.state);
+  if (Object.keys(patch).length === 0) return { ok: true };
+
+  const { error } = await supabase
+    .from("schools")
+    .update(patch)
+    .eq("id", input.schoolId);
+  if (error) return { ok: false, error: error.message };
+  revalidatePath(`/admin/school/${input.schoolId}`);
+  revalidatePath("/admin");
+  return { ok: true };
+}
+
 export async function revokeAdminScope(input: { membershipId: string }): Promise<
   { ok: true } | { ok: false; error: string }
 > {
