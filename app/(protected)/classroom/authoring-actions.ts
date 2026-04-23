@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/lib/auth/helpers";
+import { generateMCQQuestions, type GeneratedMCQ } from "@/lib/ai/readee-ai";
 
 type QuestionInput =
   | {
@@ -284,4 +285,112 @@ export async function removeQuestionFromQuiz(input: {
 
   revalidatePath(`/classroom/authoring/quiz/${input.quizId}`);
   return { ok: true };
+}
+
+/**
+ * Readee.ai: generate MCQ questions for the teacher to review and
+ * optionally add to a custom quiz. Does NOT save the questions — the
+ * teacher reviews a preview and chooses which to keep.
+ */
+export async function aiGenerateQuestions(input: {
+  topic: string;
+  gradeLevel?: string | null;
+  count: number;
+}): Promise<
+  { ok: true; questions: GeneratedMCQ[] } | { ok: false; error: string }
+> {
+  const profile = await requireProfile();
+  if (profile.role !== "educator") {
+    return { ok: false, error: "Only educators can use Readee.ai." };
+  }
+  return generateMCQQuestions({
+    teacherId: profile.id,
+    topic: input.topic,
+    gradeLevel: input.gradeLevel ?? null,
+    count: input.count,
+  });
+}
+
+/**
+ * Bulk-add a batch of AI-generated (or teacher-approved) MCQs to an
+ * existing quiz. Runs validation per question via the same path as
+ * addQuestionToQuiz.
+ */
+export async function addManyQuestionsToQuiz(input: {
+  quizId: string;
+  questions: {
+    kind: "multiple_choice";
+    prompt: string;
+    choices: string[];
+    correct: string;
+    hint?: string | null;
+  }[];
+}): Promise<
+  { ok: true; added: number } | { ok: false; error: string }
+> {
+  const profile = await requireProfile();
+  if (profile.role !== "educator") {
+    return { ok: false, error: "Only educators can edit quizzes." };
+  }
+
+  const supabase = await createClient();
+  const { data: quiz } = await supabase
+    .from("custom_quizzes")
+    .select("id")
+    .eq("id", input.quizId)
+    .eq("teacher_id", profile.id)
+    .maybeSingle();
+  if (!quiz) return { ok: false, error: "Quiz not found." };
+
+  let added = 0;
+  const { data: maxRow } = await supabase
+    .from("custom_quiz_questions")
+    .select("position")
+    .eq("quiz_id", input.quizId)
+    .order("position", { ascending: false })
+    .limit(1)
+    .maybeSingle();
+  let nextPosition = ((maxRow as any)?.position ?? 0) + 1;
+
+  for (const q of input.questions) {
+    const prompt = q.prompt?.trim();
+    const choices = Array.isArray(q.choices)
+      ? q.choices.map((c) => String(c).trim()).filter(Boolean)
+      : [];
+    const correct = q.correct?.trim();
+    if (!prompt || choices.length < 2 || choices.length > 6) continue;
+    if (!correct || !choices.includes(correct)) continue;
+
+    const { data: qRow, error: qErr } = await supabase
+      .from("custom_questions")
+      .insert({
+        teacher_id: profile.id,
+        kind: "multiple_choice",
+        prompt,
+        choices,
+        correct,
+        hint: q.hint?.trim() || null,
+      })
+      .select("id")
+      .single();
+    if (qErr || !qRow) continue;
+
+    const { error: junctionErr } = await supabase
+      .from("custom_quiz_questions")
+      .insert({
+        quiz_id: input.quizId,
+        question_id: (qRow as any).id,
+        position: nextPosition,
+      });
+    if (junctionErr) continue;
+    nextPosition += 1;
+    added += 1;
+  }
+
+  if (added === 0) {
+    return { ok: false, error: "No questions could be added." };
+  }
+
+  revalidatePath(`/classroom/authoring/quiz/${input.quizId}`);
+  return { ok: true, added };
 }

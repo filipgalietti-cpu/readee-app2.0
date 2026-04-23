@@ -10,6 +10,7 @@ import {
   deleteCustomQuiz,
   updateCustomQuiz,
 } from "../../../../authoring-actions";
+import AIGenerateButton from "./AIGenerateButton";
 
 type QuestionKind = "multiple_choice" | "true_false" | "fill_in_blank";
 
@@ -50,18 +51,21 @@ export default function QuizBuilder({
       />
 
       <section>
-        <div className="flex items-center justify-between">
+        <div className="flex flex-wrap items-center justify-between gap-2">
           <h2 className="text-sm font-bold uppercase tracking-widest text-zinc-500 dark:text-slate-400">
             Questions
           </h2>
-          <button
-            type="button"
-            onClick={() => setCreating(true)}
-            className="inline-flex items-center gap-1.5 rounded-full bg-indigo-600 px-4 py-1.5 text-xs font-semibold text-white transition hover:bg-indigo-700"
-          >
-            <Plus className="h-3.5 w-3.5" />
-            Add question
-          </button>
+          <div className="flex flex-wrap items-center gap-2">
+            <AIGenerateButton quizId={quizId} gradeHint={initialGradeLevel || null} />
+            <button
+              type="button"
+              onClick={() => setCreating(true)}
+              className="inline-flex items-center gap-1.5 rounded-full bg-indigo-600 px-4 py-1.5 text-xs font-semibold text-white transition hover:bg-indigo-700"
+            >
+              <Plus className="h-3.5 w-3.5" />
+              Add question
+            </button>
+          </div>
         </div>
 
         {questions.length === 0 ? (
