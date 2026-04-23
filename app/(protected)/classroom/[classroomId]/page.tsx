@@ -1,6 +1,6 @@
 import { notFound, redirect } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, Users, ClipboardList, BarChart3, Settings } from "lucide-react";
+import { ArrowLeft, Users, ClipboardList, BarChart3, Settings, AlertTriangle } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/lib/auth/helpers";
 import StudentsTab from "./_tabs/StudentsTab";
@@ -26,10 +26,10 @@ export default async function ClassroomPage({
   searchParams,
 }: {
   params: Promise<{ classroomId: string }>;
-  searchParams: Promise<{ tab?: string }>;
+  searchParams: Promise<{ tab?: string; google_error?: string }>;
 }) {
   const { classroomId } = await params;
-  const { tab } = await searchParams;
+  const { tab, google_error: googleError } = await searchParams;
   const active: TabKey = (["students", "assignments", "insights", "settings"] as TabKey[]).includes(
     tab as TabKey,
   )
@@ -60,6 +60,28 @@ export default async function ClassroomPage({
         <ArrowLeft className="h-4 w-4" />
         All classes
       </Link>
+
+      {googleError && (
+        <div className="mt-4 flex items-start gap-3 rounded-2xl border border-amber-300 bg-amber-50 p-4 dark:border-amber-900/60 dark:bg-amber-950/20">
+          <AlertTriangle className="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-700 dark:text-amber-400" />
+          <div className="text-sm">
+            <div className="font-bold text-amber-900 dark:text-amber-200">
+              Google Classroom isn&apos;t hooked up yet
+            </div>
+            <div className="mt-1 text-xs text-amber-800 dark:text-amber-300">
+              {googleError === "not_configured"
+                ? "The operator needs to set GOOGLE_OAUTH_CLIENT_ID and GOOGLE_OAUTH_CLIENT_SECRET in Vercel, and add https://learn.readee.app/api/classroom/google/callback as an authorized redirect URI in Google Cloud Console."
+                : googleError === "token_exchange"
+                ? "Google accepted the sign-in but token exchange failed. Double-check the client ID + secret match between GCP Credentials and the Vercel env vars."
+                : googleError === "bad_state" || googleError === "missing_params"
+                ? "OAuth state was lost in the redirect. Try the Continue with Google button again."
+                : googleError === "authorize_url"
+                ? "Couldn't build the Google sign-in URL. Check server logs."
+                : `Google error: ${googleError}`}
+            </div>
+          </div>
+        </div>
+      )}
 
       <div className="mt-4 flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
         <div>
