@@ -37,6 +37,9 @@ function assignmentHref(a: Assignment): string {
   if (a.kind === "readee_lesson") {
     return `/student/learn?standard=${encodeURIComponent(a.source_id)}`;
   }
+  if (a.kind === "custom_quiz") {
+    return `/student/quiz?id=${encodeURIComponent(a.source_id)}`;
+  }
   return `/student`;
 }
 

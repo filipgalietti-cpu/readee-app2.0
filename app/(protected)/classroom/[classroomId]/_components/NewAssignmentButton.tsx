@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useMemo, useState, useTransition } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, X, Search, Check, Target } from "lucide-react";
+import { Plus, X, Search, Check, Target, BookOpen, ClipboardPen } from "lucide-react";
 import { createAssignment } from "../../actions";
 import kJson from "@/app/data/kindergarten-standards-questions.json";
 import g1Json from "@/app/data/1st-grade-standards-questions.json";
@@ -16,6 +17,14 @@ type LessonRef = {
   grade: string;
   title: string;
   domain: string;
+};
+
+type CustomQuizRef = {
+  id: string;
+  title: string;
+  description: string | null;
+  grade_level: string | null;
+  question_count: number;
 };
 
 type StandardQuestion = {
@@ -39,15 +48,19 @@ function findStandardQuestions(standardId: string): StandardQuestion[] {
 export default function NewAssignmentButton({
   classroomId,
   lessons,
+  customQuizzes,
 }: {
   classroomId: string;
   lessons: LessonRef[];
+  customQuizzes?: CustomQuizRef[];
 }) {
   const [open, setOpen] = useState(false);
+  const [source, setSource] = useState<"readee" | "custom">("readee");
   const [step, setStep] = useState<Step>("pick");
   const [query, setQuery] = useState("");
   const [gradeFilter, setGradeFilter] = useState<string>("All");
   const [picked, setPicked] = useState<LessonRef | null>(null);
+  const [pickedQuiz, setPickedQuiz] = useState<CustomQuizRef | null>(null);
   const [note, setNote] = useState("");
   const [dueAt, setDueAt] = useState<string>("");
   const [passThreshold, setPassThreshold] = useState<number | null>(null);
@@ -88,10 +101,12 @@ export default function NewAssignmentButton({
   }, [picked?.standardId]);
 
   function reset() {
+    setSource("readee");
     setStep("pick");
     setQuery("");
     setGradeFilter("All");
     setPicked(null);
+    setPickedQuiz(null);
     setNote("");
     setDueAt("");
     setPassThreshold(null);
@@ -122,34 +137,60 @@ export default function NewAssignmentButton({
   }
 
   function submit() {
-    if (!picked) return;
-    if (includedCount === 0) {
-      setErr("Pick at least one question.");
-      return;
-    }
     setErr(null);
-    start(async () => {
-      const subsetIds =
-        includedQuestionIds === null
-          ? null
-          : Array.from(includedQuestionIds).filter((id) => questions.some((q) => q.id === id));
-      const res = await createAssignment({
-        classroomId,
-        kind: "readee_lesson",
-        sourceId: picked.standardId,
-        title: picked.title,
-        note: note.trim() || null,
-        dueAt: dueAt ? new Date(dueAt).toISOString() : null,
-        passThreshold,
-        questionIds: subsetIds,
-      });
-      if (!res.ok) {
-        setErr(res.error);
+    if (source === "readee") {
+      if (!picked) return;
+      if (includedCount === 0) {
+        setErr("Pick at least one question.");
         return;
       }
-      close();
-      router.refresh();
-    });
+      start(async () => {
+        const subsetIds =
+          includedQuestionIds === null
+            ? null
+            : Array.from(includedQuestionIds).filter((id) => questions.some((q) => q.id === id));
+        const res = await createAssignment({
+          classroomId,
+          kind: "readee_lesson",
+          sourceId: picked.standardId,
+          title: picked.title,
+          note: note.trim() || null,
+          dueAt: dueAt ? new Date(dueAt).toISOString() : null,
+          passThreshold,
+          questionIds: subsetIds,
+        });
+        if (!res.ok) {
+          setErr(res.error);
+          return;
+        }
+        close();
+        router.refresh();
+      });
+    } else {
+      if (!pickedQuiz) return;
+      if (pickedQuiz.question_count === 0) {
+        setErr("That quiz has no questions yet. Add some before assigning.");
+        return;
+      }
+      start(async () => {
+        const res = await createAssignment({
+          classroomId,
+          kind: "custom_quiz",
+          sourceId: pickedQuiz.id,
+          title: pickedQuiz.title,
+          note: note.trim() || null,
+          dueAt: dueAt ? new Date(dueAt).toISOString() : null,
+          passThreshold,
+          questionIds: null,
+        });
+        if (!res.ok) {
+          setErr(res.error);
+          return;
+        }
+        close();
+        router.refresh();
+      });
+    }
   }
 
   return (
@@ -195,30 +236,109 @@ export default function NewAssignmentButton({
 
               {step === "pick" ? (
                 <>
-                  <div className="flex items-center gap-2 border-b border-zinc-100 px-6 py-3 dark:border-slate-800">
-                    <div className="relative flex-1">
-                      <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-400" />
-                      <input
-                        value={query}
-                        onChange={(e) => setQuery(e.target.value)}
-                        placeholder="Search by title, standard, or domain"
-                        className="block w-full rounded-xl border border-zinc-200 bg-white py-2 pl-9 pr-3 text-sm text-zinc-900 placeholder:text-zinc-400 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
-                      />
-                    </div>
-                    <select
-                      value={gradeFilter}
-                      onChange={(e) => setGradeFilter(e.target.value)}
-                      className="rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm font-semibold text-zinc-700 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300"
+                  <div className="flex gap-1 border-b border-zinc-100 px-6 pt-3 text-xs font-semibold dark:border-slate-800">
+                    <button
+                      type="button"
+                      onClick={() => setSource("readee")}
+                      className={`inline-flex items-center gap-1.5 border-b-2 px-3 py-2 transition ${
+                        source === "readee"
+                          ? "border-indigo-600 text-indigo-700 dark:text-indigo-300"
+                          : "border-transparent text-zinc-500 hover:text-zinc-800 dark:text-slate-400"
+                      }`}
                     >
-                      {grades.map((g) => (
-                        <option key={g} value={g}>
-                          {g}
-                        </option>
-                      ))}
-                    </select>
+                      <BookOpen className="h-3.5 w-3.5" />
+                      Readee lessons
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setSource("custom")}
+                      className={`inline-flex items-center gap-1.5 border-b-2 px-3 py-2 transition ${
+                        source === "custom"
+                          ? "border-indigo-600 text-indigo-700 dark:text-indigo-300"
+                          : "border-transparent text-zinc-500 hover:text-zinc-800 dark:text-slate-400"
+                      }`}
+                    >
+                      <ClipboardPen className="h-3.5 w-3.5" />
+                      My quizzes{" "}
+                      {customQuizzes && customQuizzes.length > 0 && (
+                        <span className="ml-0.5 rounded-full bg-indigo-100 px-1.5 py-0.5 text-[10px] text-indigo-700 dark:bg-indigo-950/40 dark:text-indigo-300">
+                          {customQuizzes.length}
+                        </span>
+                      )}
+                    </button>
                   </div>
 
-                  <ul className="flex-1 overflow-y-auto">
+                  {source === "readee" && (
+                    <div className="flex items-center gap-2 border-b border-zinc-100 px-6 py-3 dark:border-slate-800">
+                      <div className="relative flex-1">
+                        <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-400" />
+                        <input
+                          value={query}
+                          onChange={(e) => setQuery(e.target.value)}
+                          placeholder="Search by title, standard, or domain"
+                          className="block w-full rounded-xl border border-zinc-200 bg-white py-2 pl-9 pr-3 text-sm text-zinc-900 placeholder:text-zinc-400 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                        />
+                      </div>
+                      <select
+                        value={gradeFilter}
+                        onChange={(e) => setGradeFilter(e.target.value)}
+                        className="rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm font-semibold text-zinc-700 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300"
+                      >
+                        {grades.map((g) => (
+                          <option key={g} value={g}>
+                            {g}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  )}
+
+                  {source === "custom" && (
+                    <ul className="flex-1 overflow-y-auto">
+                      {(customQuizzes ?? []).map((cq) => {
+                        const chosen = pickedQuiz?.id === cq.id;
+                        return (
+                          <li key={cq.id}>
+                            <button
+                              type="button"
+                              onClick={() => setPickedQuiz(cq)}
+                              className={`flex w-full items-start gap-3 border-b border-zinc-100 px-6 py-3 text-left transition last:border-0 hover:bg-zinc-50 dark:border-slate-800 dark:hover:bg-slate-800/40 ${
+                                chosen ? "bg-indigo-50 dark:bg-indigo-950/30" : ""
+                              }`}
+                            >
+                              <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full border border-zinc-300 dark:border-slate-600">
+                                {chosen && <Check className="h-3.5 w-3.5 text-indigo-600" />}
+                              </span>
+                              <span className="min-w-0 flex-1">
+                                <span className="block text-sm font-bold text-zinc-900 dark:text-white">
+                                  {cq.title}
+                                </span>
+                                <span className="mt-0.5 block text-xs text-zinc-500 dark:text-slate-400">
+                                  {cq.question_count} question
+                                  {cq.question_count === 1 ? "" : "s"}
+                                  {cq.grade_level ? ` · ${cq.grade_level}` : ""}
+                                </span>
+                              </span>
+                            </button>
+                          </li>
+                        );
+                      })}
+                      {(!customQuizzes || customQuizzes.length === 0) && (
+                        <li className="px-6 py-10 text-center text-sm text-zinc-500 dark:text-slate-400">
+                          No custom quizzes yet.{" "}
+                          <Link
+                            href="/classroom/authoring"
+                            className="font-semibold text-indigo-600 underline"
+                          >
+                            Create one
+                          </Link>{" "}
+                          — then assign it from here.
+                        </li>
+                      )}
+                    </ul>
+                  )}
+
+                  {source === "readee" && <ul className="flex-1 overflow-y-auto">
                     {filtered.map((l) => {
                       const chosen = picked?.standardId === l.standardId;
                       return (
@@ -250,15 +370,17 @@ export default function NewAssignmentButton({
                         No lessons match your search.
                       </li>
                     )}
-                  </ul>
+                  </ul>}
 
                   <footer className="flex items-center justify-between border-t border-zinc-100 bg-zinc-50 px-6 py-3 dark:border-slate-800 dark:bg-slate-900/60">
                     <p className="text-xs text-zinc-500 dark:text-slate-400">
-                      {filtered.length} lesson{filtered.length === 1 ? "" : "s"}
+                      {source === "readee"
+                        ? `${filtered.length} lesson${filtered.length === 1 ? "" : "s"}`
+                        : `${customQuizzes?.length ?? 0} quiz${(customQuizzes?.length ?? 0) === 1 ? "" : "zes"}`}
                     </p>
                     <button
                       type="button"
-                      disabled={!picked}
+                      disabled={source === "readee" ? !picked : !pickedQuiz}
                       onClick={() => setStep("details")}
                       className="rounded-full bg-indigo-600 px-5 py-2 text-sm font-semibold text-white transition hover:bg-indigo-700 disabled:cursor-not-allowed disabled:bg-indigo-400"
                     >
@@ -273,12 +395,27 @@ export default function NewAssignmentButton({
                       <div className="text-xs font-semibold uppercase tracking-wider text-indigo-600 dark:text-indigo-300">
                         Assigning
                       </div>
-                      <div className="mt-0.5 font-bold text-indigo-900 dark:text-indigo-100">
-                        {picked?.title}
-                      </div>
-                      <div className="text-xs text-indigo-700/70 dark:text-indigo-300/70">
-                        {picked?.grade} · {picked?.standardId}
-                      </div>
+                      {source === "readee" ? (
+                        <>
+                          <div className="mt-0.5 font-bold text-indigo-900 dark:text-indigo-100">
+                            {picked?.title}
+                          </div>
+                          <div className="text-xs text-indigo-700/70 dark:text-indigo-300/70">
+                            {picked?.grade} · {picked?.standardId}
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          <div className="mt-0.5 font-bold text-indigo-900 dark:text-indigo-100">
+                            {pickedQuiz?.title}
+                          </div>
+                          <div className="text-xs text-indigo-700/70 dark:text-indigo-300/70">
+                            Custom quiz · {pickedQuiz?.question_count ?? 0} question
+                            {pickedQuiz?.question_count === 1 ? "" : "s"}
+                            {pickedQuiz?.grade_level ? ` · ${pickedQuiz.grade_level}` : ""}
+                          </div>
+                        </>
+                      )}
                     </div>
 
                     <div>
@@ -351,7 +488,7 @@ export default function NewAssignmentButton({
                       </div>
                     </div>
 
-                    {questions.length > 0 && (
+                    {source === "readee" && questions.length > 0 && (
                       <div>
                         <div className="flex items-center justify-between">
                           <label className="text-sm font-semibold text-zinc-700 dark:text-slate-300">
@@ -422,10 +559,18 @@ export default function NewAssignmentButton({
                     <button
                       type="button"
                       onClick={submit}
-                      disabled={pending || includedCount === 0}
+                      disabled={
+                        pending ||
+                        (source === "readee" && includedCount === 0) ||
+                        (source === "custom" && (pickedQuiz?.question_count ?? 0) === 0)
+                      }
                       className="rounded-full bg-indigo-600 px-5 py-2 text-sm font-semibold text-white transition hover:bg-indigo-700 disabled:cursor-not-allowed disabled:bg-indigo-400"
                     >
-                      {pending ? "Assigning…" : `Assign to class (${includedCount} Q)`}
+                      {pending
+                        ? "Assigning…"
+                        : source === "readee"
+                        ? `Assign to class (${includedCount} Q)`
+                        : `Assign to class (${pickedQuiz?.question_count ?? 0} Q)`}
                     </button>
                   </footer>
                 </>

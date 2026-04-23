@@ -1,4 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
+import { requireProfile } from "@/lib/auth/helpers";
 import { ClipboardList, Clock, CheckCircle2, CircleDashed, Target, ListChecks } from "lucide-react";
 import NewAssignmentButton from "../_components/NewAssignmentButton";
 import AssignmentActions from "../_components/AssignmentActions";
@@ -47,7 +48,34 @@ function dueLabel(dueAt: string | null): { text: string; tone: string } | null {
 }
 
 export default async function AssignmentsTab({ classroomId }: { classroomId: string }) {
+  const profile = await requireProfile();
   const supabase = await createClient();
+
+  // Load teacher's own custom quizzes so the New Assignment button can
+  // offer them as an assignment source.
+  const { data: customQuizzesRaw } = await supabase
+    .from("custom_quizzes")
+    .select("id, title, description, grade_level")
+    .eq("teacher_id", profile.id)
+    .order("updated_at", { ascending: false });
+  const customQuizIds = ((customQuizzesRaw ?? []) as any[]).map((q) => q.id);
+  const { data: customQuizCounts } = customQuizIds.length
+    ? await supabase
+        .from("custom_quiz_questions")
+        .select("quiz_id")
+        .in("quiz_id", customQuizIds)
+    : { data: [] as any[] };
+  const countByQuiz = new Map<string, number>();
+  (customQuizCounts ?? []).forEach((r: any) => {
+    countByQuiz.set(r.quiz_id, (countByQuiz.get(r.quiz_id) ?? 0) + 1);
+  });
+  const customQuizzes = ((customQuizzesRaw ?? []) as any[]).map((q) => ({
+    id: q.id as string,
+    title: q.title as string,
+    description: (q.description ?? null) as string | null,
+    grade_level: (q.grade_level ?? null) as string | null,
+    question_count: countByQuiz.get(q.id) ?? 0,
+  }));
 
   const { data: assignments } = await supabase
     .from("assignments")
@@ -97,7 +125,7 @@ export default async function AssignmentsTab({ classroomId }: { classroomId: str
           {list.length} assignment{list.length === 1 ? "" : "s"} ·{" "}
           {total} student{total === 1 ? "" : "s"}
         </p>
-        <NewAssignmentButton classroomId={classroomId} lessons={LESSON_INDEX} />
+        <NewAssignmentButton classroomId={classroomId} lessons={LESSON_INDEX} customQuizzes={customQuizzes} />
       </div>
 
       {list.length === 0 ? (
@@ -113,7 +141,7 @@ export default async function AssignmentsTab({ classroomId }: { classroomId: str
             pinned at the top of their home.
           </p>
           <div className="mt-6">
-            <NewAssignmentButton classroomId={classroomId} lessons={LESSON_INDEX} />
+            <NewAssignmentButton classroomId={classroomId} lessons={LESSON_INDEX} customQuizzes={customQuizzes} />
           </div>
         </div>
       ) : (
