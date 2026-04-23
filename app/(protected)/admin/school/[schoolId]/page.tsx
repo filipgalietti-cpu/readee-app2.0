@@ -14,6 +14,7 @@ import { requireProfile } from "@/lib/auth/helpers";
 import AddAdminButton from "../../_components/AddAdminButton";
 import AdminList from "../../_components/AdminList";
 import EditScopeButton from "../../_components/EditScopeButton";
+import SchoolJoinCodePanel from "../../_components/SchoolJoinCodePanel";
 
 export const dynamic = "force-dynamic";
 
@@ -28,7 +29,7 @@ export default async function SchoolAdminPage({
 
   const { data: school } = await supabase
     .from("schools")
-    .select("id, name, city, state, district_id")
+    .select("id, name, city, state, district_id, join_code")
     .eq("id", schoolId)
     .maybeSingle();
 
@@ -171,6 +172,10 @@ export default async function SchoolAdminPage({
             Export CSV
           </a>
         </div>
+      </div>
+
+      <div className="mt-6">
+        <SchoolJoinCodePanel schoolId={schoolId} initialCode={s.join_code} />
       </div>
 
       <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">

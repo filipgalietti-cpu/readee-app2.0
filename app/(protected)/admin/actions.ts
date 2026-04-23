@@ -18,6 +18,15 @@ function normalizeState(s?: string | null): string | null {
   return STATES.has(up) ? up : null;
 }
 
+const CODE_ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+function randomCode(len = 6): string {
+  let out = "";
+  for (let i = 0; i < len; i++) {
+    out += CODE_ALPHABET[Math.floor(Math.random() * CODE_ALPHABET.length)];
+  }
+  return out;
+}
+
 /**
  * Create a new district and make the caller a district admin. Open to any
  * authenticated user today; long-term this becomes gated by a "is an
@@ -96,20 +105,35 @@ export async function createSchool(input: {
     }
   }
 
-  const { data: school, error } = await supabase
-    .from("schools")
-    .insert({
-      name,
-      district_id: input.districtId ?? null,
-      city: input.city?.trim() || null,
-      state: normalizeState(input.state),
-      created_by: profile.id,
-    })
-    .select("id")
-    .single();
-
-  if (error || !school) {
-    return { ok: false, error: error?.message ?? "Could not create school." };
+  let school: { id: string } | null = null;
+  let createErr: any = null;
+  for (let attempt = 0; attempt < 5; attempt++) {
+    const joinCode = randomCode();
+    const { data, error } = await supabase
+      .from("schools")
+      .insert({
+        name,
+        district_id: input.districtId ?? null,
+        city: input.city?.trim() || null,
+        state: normalizeState(input.state),
+        created_by: profile.id,
+        join_code: joinCode,
+      })
+      .select("id")
+      .single();
+    if (!error && data) {
+      school = data as { id: string };
+      break;
+    }
+    if (error?.code === "23505" && error.message.includes("join_code")) {
+      createErr = error;
+      continue;
+    }
+    createErr = error;
+    break;
+  }
+  if (!school) {
+    return { ok: false, error: createErr?.message ?? "Could not create school." };
   }
 
   const schoolId = (school as any).id as string;
@@ -232,6 +256,59 @@ export async function grantAdminScope(input: {
   if (input.scope === "district") revalidatePath(`/admin/district/${input.districtId}`);
   else revalidatePath(`/admin/school/${input.schoolId}`);
   return { ok: true };
+}
+
+/**
+ * Rotate a school's join code. School admin (direct or parent-district)
+ * only. Useful if a teacher's code has been shared too widely.
+ */
+export async function rotateSchoolJoinCode(input: {
+  schoolId: string;
+}): Promise<{ ok: true; code: string } | { ok: false; error: string }> {
+  const profile = await requireProfile();
+  const supabase = await createClient();
+
+  const { data: selfDirect } = await supabase
+    .from("admin_memberships")
+    .select("id")
+    .eq("profile_id", profile.id)
+    .eq("scope", "school")
+    .eq("school_id", input.schoolId)
+    .maybeSingle();
+  if (!selfDirect) {
+    const { data: school } = await supabase
+      .from("schools")
+      .select("district_id")
+      .eq("id", input.schoolId)
+      .maybeSingle();
+    const districtId = (school as any)?.district_id;
+    if (!districtId) return { ok: false, error: "Not allowed." };
+    const { data: selfDistrict } = await supabase
+      .from("admin_memberships")
+      .select("id")
+      .eq("profile_id", profile.id)
+      .eq("scope", "district")
+      .eq("district_id", districtId)
+      .maybeSingle();
+    if (!selfDistrict) return { ok: false, error: "Not allowed." };
+  }
+
+  for (let attempt = 0; attempt < 5; attempt++) {
+    const code = randomCode();
+    const { data, error } = await supabase
+      .from("schools")
+      .update({ join_code: code })
+      .eq("id", input.schoolId)
+      .select("join_code")
+      .maybeSingle();
+    if (!error && data) {
+      revalidatePath(`/admin/school/${input.schoolId}`);
+      return { ok: true, code: (data as any).join_code as string };
+    }
+    if (error?.code === "23505") continue;
+    return { ok: false, error: error?.message ?? "Could not rotate code." };
+  }
+  return { ok: false, error: "Could not rotate code — try again." };
 }
 
 export async function updateDistrict(input: {

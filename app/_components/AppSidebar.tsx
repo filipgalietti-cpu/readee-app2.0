@@ -16,34 +16,16 @@ import {
 
 /* ─── Nav items ──────────────────────────────────── */
 
-function getNavSections(childId: string | null, role: string | null, hasAdminScope: boolean) {
+function getNavSections(
+  childId: string | null,
+  role: string | null,
+  hasAdminScope: boolean,
+  hasChildren: boolean,
+) {
   const q = childId ? `?child=${childId}` : "";
-  const sections = [
-    {
-      label: "Main",
-      items: [
-        { href: "/dashboard", icon: Home, label: "Dashboard" },
-        { href: `/assessment-results${q}`, icon: ClipboardCheck, label: "Placement Test" },
-        { href: `/analytics${q}`, icon: BarChart3, label: "Analytics" },
-      ],
-    },
-    {
-      label: "Learning",
-      items: [
-        { href: "/word-bank", icon: BookText, label: "Word Bank" },
-        { href: `/practice-hub${q}`, icon: ListChecks, label: "Practice" },
-        { href: `/journey${q}`, icon: Map, label: "Reading Journey" },
-      ],
-    },
-    {
-      label: "Fun",
-      items: [
-        { href: `/shop${q}`, icon: Carrot, label: "Shop", iconColor: "w-[17px] h-[17px] text-orange-500" },
-        { href: `/leaderboard${q}`, icon: Trophy, label: "Leaderboard" },
-      ],
-    },
-  ];
+  const sections: { label: string; items: { href: string; icon: any; label: string; iconColor?: string }[] }[] = [];
 
+  // Teach section first for educators — this is their home.
   if (role === "educator") {
     const teachItems: { href: string; icon: any; label: string }[] = [
       { href: "/classroom", icon: GraduationCap, label: "Classroom" },
@@ -51,15 +33,46 @@ function getNavSections(childId: string | null, role: string | null, hasAdminSco
     if (hasAdminScope) {
       teachItems.push({ href: "/admin", icon: Building2, label: "Admin" });
     }
-    sections.unshift({
+    sections.push({
       label: "Teach",
       items: teachItems,
     });
   } else if (hasAdminScope) {
-    sections.unshift({
+    sections.push({
       label: "Admin",
       items: [{ href: "/admin", icon: Building2, label: "Admin" }],
     });
+  }
+
+  // Kid-facing sections only for users who actually have children under
+  // their care. Educators without kids get a clean teacher sidebar and
+  // don't bounce into the parent dashboard when they click around.
+  if (hasChildren) {
+    sections.push(
+      {
+        label: "Main",
+        items: [
+          { href: "/dashboard", icon: Home, label: role === "educator" ? "Parent view" : "Dashboard" },
+          { href: `/assessment-results${q}`, icon: ClipboardCheck, label: "Placement Test" },
+          { href: `/analytics${q}`, icon: BarChart3, label: "Analytics" },
+        ],
+      },
+      {
+        label: "Learning",
+        items: [
+          { href: "/word-bank", icon: BookText, label: "Word Bank" },
+          { href: `/practice-hub${q}`, icon: ListChecks, label: "Practice" },
+          { href: `/journey${q}`, icon: Map, label: "Reading Journey" },
+        ],
+      },
+      {
+        label: "Fun",
+        items: [
+          { href: `/shop${q}`, icon: Carrot, label: "Shop", iconColor: "w-[17px] h-[17px] text-orange-500" },
+          { href: `/leaderboard${q}`, icon: Trophy, label: "Leaderboard" },
+        ],
+      },
+    );
   }
 
   return sections;
@@ -144,7 +157,12 @@ export default function AppSidebar({ mobileOnly = false }: { mobileOnly?: boolea
   const fetchPlan = usePlanStore((s) => s.fetch);
   useEffect(() => { fetchPlan(); }, [fetchPlan]);
 
-  const sections = getNavSections(activeChild?.id || null, role, hasAdminScope);
+  const sections = getNavSections(
+    activeChild?.id || null,
+    role,
+    hasAdminScope,
+    storeChildren.length > 0,
+  );
 
   // Close mobile overlay on route change
   useEffect(() => { setMobileOpen(false); }, [pathname, setMobileOpen]);

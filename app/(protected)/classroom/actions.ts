@@ -165,6 +165,56 @@ export async function updateClassroom(input: {
 }
 
 /**
+ * Teacher-side: link a classroom to a school using a 6-char school join
+ * code. Bypasses the "must be admin of that school" restriction in
+ * setClassroomSchool() — the code itself is the authorization.
+ */
+export async function joinSchoolWithCode(input: {
+  classroomId: string;
+  code: string;
+}): Promise<
+  { ok: true; schoolId: string; schoolName: string } | { ok: false; error: string }
+> {
+  const profile = await requireProfile();
+  if (profile.role !== "educator") {
+    return { ok: false, error: "Only educators can link a classroom to a school." };
+  }
+
+  const code = input.code.trim().toUpperCase();
+  if (!/^[A-Z0-9]{6}$/.test(code)) {
+    return { ok: false, error: "School codes are 6 letters/numbers." };
+  }
+
+  const supabase = await createClient();
+
+  const { data: classroom } = await supabase
+    .from("classrooms")
+    .select("id")
+    .eq("id", input.classroomId)
+    .eq("teacher_id", profile.id)
+    .maybeSingle();
+  if (!classroom) return { ok: false, error: "Classroom not found." };
+
+  const { data: lookup, error: lookupErr } = await supabase
+    .rpc("find_school_by_join_code", { p_code: code })
+    .maybeSingle();
+  if (lookupErr) return { ok: false, error: lookupErr.message };
+  if (!lookup) return { ok: false, error: "No school matches that code." };
+
+  const school = lookup as { id: string; name: string };
+
+  const { error } = await supabase
+    .from("classrooms")
+    .update({ school_id: school.id })
+    .eq("id", input.classroomId)
+    .eq("teacher_id", profile.id);
+
+  if (error) return { ok: false, error: error.message };
+  revalidatePath(`/classroom/${input.classroomId}`);
+  return { ok: true, schoolId: school.id, schoolName: school.name };
+}
+
+/**
  * Attach a classroom to a school (or detach). Admins wire this up so
  * school/district dashboards can roll up the classroom's data.
  */
