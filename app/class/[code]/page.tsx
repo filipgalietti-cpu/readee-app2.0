@@ -10,6 +10,7 @@ type ClassroomLookup = {
   name: string;
   grade_level: string | null;
   archived_at: string | null;
+  student_pin: string | null;
 };
 
 type StudentTile = {
@@ -30,7 +31,7 @@ export default async function ClassCodePage({
 
   const { data: classroom } = await admin
     .from("classrooms")
-    .select("id, name, grade_level, archived_at")
+    .select("id, name, grade_level, archived_at, student_pin")
     .eq("join_code", code)
     .maybeSingle();
 
@@ -76,7 +77,12 @@ export default async function ClassCodePage({
         </div>
       ) : (
         <div className="mt-8">
-          <StudentNamePicker code={code} classroomId={c.id} students={tiles} />
+          <StudentNamePicker
+            code={code}
+            classroomId={c.id}
+            students={tiles}
+            pinRequired={!!c.student_pin}
+          />
         </div>
       )}
 

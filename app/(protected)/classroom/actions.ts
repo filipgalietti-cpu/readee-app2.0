@@ -113,12 +113,16 @@ export async function archiveClassroom(
 }
 
 /**
- * Update classroom metadata (name, grade level). Teacher-only.
+ * Update classroom metadata (name, grade level, student PIN). Teacher-only.
+ *
+ * studentPin: pass a 4-digit string to enable, empty string or null to
+ * disable. Anything else is rejected.
  */
 export async function updateClassroom(input: {
   classroomId: string;
   name?: string;
   gradeLevel?: GradeLevel | null;
+  studentPin?: string | null;
 }): Promise<{ ok: true } | { ok: false; error: string }> {
   const profile = await requireProfile();
   if (profile.role !== "educator") {
@@ -134,6 +138,15 @@ export async function updateClassroom(input: {
   }
   if (input.gradeLevel !== undefined) {
     patch.grade_level = input.gradeLevel;
+  }
+  if (input.studentPin !== undefined) {
+    if (input.studentPin === null || input.studentPin === "") {
+      patch.student_pin = null;
+    } else if (/^[0-9]{4}$/.test(input.studentPin)) {
+      patch.student_pin = input.studentPin;
+    } else {
+      return { ok: false, error: "PIN must be 4 digits." };
+    }
   }
   if (Object.keys(patch).length === 0) return { ok: true };
 

@@ -15,7 +15,7 @@ import { setStudentCookie } from "@/lib/auth/student-session";
  * cookie (readee_student) and the client redirects to /student.
  */
 export async function POST(req: Request) {
-  let body: { code?: string; classroomId?: string; childId?: string };
+  let body: { code?: string; classroomId?: string; childId?: string; pin?: string };
   try {
     body = await req.json();
   } catch {
@@ -25,6 +25,7 @@ export async function POST(req: Request) {
   const code = (body.code ?? "").trim().toUpperCase();
   const classroomId = body.classroomId;
   const childId = body.childId;
+  const pin = (body.pin ?? "").trim();
 
   if (!/^[A-Z0-9]{6}$/.test(code) || !classroomId || !childId) {
     return NextResponse.json({ error: "Missing or invalid fields." }, { status: 400 });
@@ -34,19 +35,32 @@ export async function POST(req: Request) {
 
   const { data: classroom } = await admin
     .from("classrooms")
-    .select("id, join_code, archived_at")
+    .select("id, join_code, archived_at, student_pin")
     .eq("id", classroomId)
     .maybeSingle();
 
   if (!classroom) {
     return NextResponse.json({ error: "Class not found." }, { status: 404 });
   }
-  const c = classroom as { id: string; join_code: string; archived_at: string | null };
+  const c = classroom as {
+    id: string;
+    join_code: string;
+    archived_at: string | null;
+    student_pin: string | null;
+  };
   if (c.archived_at) {
     return NextResponse.json({ error: "This class was archived." }, { status: 410 });
   }
   if (c.join_code !== code) {
     return NextResponse.json({ error: "Class code does not match." }, { status: 403 });
+  }
+  if (c.student_pin) {
+    if (!/^[0-9]{4}$/.test(pin) || pin !== c.student_pin) {
+      return NextResponse.json(
+        { error: "pin_required", message: "Enter the 4-digit class PIN." },
+        { status: 403 },
+      );
+    }
   }
 
   const { data: child } = await admin

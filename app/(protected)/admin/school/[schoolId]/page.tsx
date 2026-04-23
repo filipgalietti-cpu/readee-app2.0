@@ -11,6 +11,7 @@ import {
 import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/lib/auth/helpers";
 import AddAdminButton from "../../_components/AddAdminButton";
+import AdminList from "../../_components/AdminList";
 
 export const dynamic = "force-dynamic";
 
@@ -171,6 +172,16 @@ export default async function SchoolAdminPage({
           hint="school-wide accuracy"
         />
       </div>
+
+      <section className="mt-10">
+        <div className="mb-3 flex items-center gap-2">
+          <Users2 className="h-4 w-4 text-indigo-600" />
+          <h2 className="text-sm font-bold uppercase tracking-widest text-zinc-500 dark:text-slate-400">
+            School admins
+          </h2>
+        </div>
+        <AdminList scope="school" scopeId={schoolId} selfProfileId={profile.id} />
+      </section>
 
       <section className="mt-10">
         <div className="flex items-center gap-2">

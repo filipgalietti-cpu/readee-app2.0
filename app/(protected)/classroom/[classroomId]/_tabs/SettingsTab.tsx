@@ -9,6 +9,7 @@ type ClassroomRow = {
   name: string;
   grade_level: "K" | "1st" | "2nd" | "3rd" | "4th" | "Mixed" | null;
   school_id: string | null;
+  student_pin: string | null;
 };
 
 type SchoolOption = { id: string; name: string };
@@ -19,7 +20,7 @@ export default async function SettingsTab({ classroomId }: { classroomId: string
 
   const { data: classroom } = await supabase
     .from("classrooms")
-    .select("id, name, grade_level, school_id")
+    .select("id, name, grade_level, school_id, student_pin")
     .eq("id", classroomId)
     .maybeSingle();
 
@@ -81,6 +82,7 @@ export default async function SettingsTab({ classroomId }: { classroomId: string
             classroomId={c.id}
             initialName={c.name}
             initialGradeLevel={c.grade_level}
+            initialStudentPin={c.student_pin}
           />
         </div>
       </section>

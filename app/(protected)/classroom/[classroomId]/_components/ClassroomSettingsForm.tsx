@@ -2,7 +2,7 @@
 
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { Check, Loader2 } from "lucide-react";
+import { Check, Loader2, Lock } from "lucide-react";
 import { updateClassroom } from "../../actions";
 import type { GradeLevel } from "@/lib/db/types";
 
@@ -20,22 +20,35 @@ export default function ClassroomSettingsForm({
   classroomId,
   initialName,
   initialGradeLevel,
+  initialStudentPin,
 }: {
   classroomId: string;
   initialName: string;
   initialGradeLevel: GradeLevel | null;
+  initialStudentPin?: string | null;
 }) {
   const router = useRouter();
   const [name, setName] = useState(initialName);
   const [gradeLevel, setGradeLevel] = useState<GradeLevel | "">(initialGradeLevel ?? "");
+  const [pinEnabled, setPinEnabled] = useState(!!initialStudentPin);
+  const [pin, setPin] = useState(initialStudentPin ?? "");
   const [err, setErr] = useState<string | null>(null);
   const [savedAt, setSavedAt] = useState<number | null>(null);
   const [pending, start] = useTransition();
 
-  const dirty = name.trim() !== initialName || (gradeLevel || null) !== (initialGradeLevel ?? null);
+  const effectivePin = pinEnabled ? pin : "";
+  const initialPinValue = initialStudentPin ?? "";
+  const dirty =
+    name.trim() !== initialName ||
+    (gradeLevel || null) !== (initialGradeLevel ?? null) ||
+    effectivePin !== initialPinValue;
 
   function submit() {
     if (!dirty) return;
+    if (pinEnabled && !/^[0-9]{4}$/.test(pin)) {
+      setErr("PIN must be exactly 4 digits.");
+      return;
+    }
     setErr(null);
     setSavedAt(null);
     start(async () => {
@@ -43,6 +56,7 @@ export default function ClassroomSettingsForm({
         classroomId,
         name: name.trim(),
         gradeLevel: (gradeLevel || null) as GradeLevel | null,
+        studentPin: pinEnabled ? pin : null,
       });
       if (!res.ok) {
         setErr(res.error);
@@ -88,6 +102,38 @@ export default function ClassroomSettingsForm({
             </option>
           ))}
         </select>
+      </div>
+
+      <div className="rounded-xl border border-zinc-200 bg-zinc-50/60 p-3 dark:border-slate-800 dark:bg-slate-900/60">
+        <label className="flex cursor-pointer items-center gap-2">
+          <input
+            type="checkbox"
+            checked={pinEnabled}
+            onChange={(e) => {
+              setPinEnabled(e.target.checked);
+              if (!e.target.checked) setPin("");
+            }}
+            className="h-4 w-4 accent-indigo-600"
+          />
+          <span className="inline-flex items-center gap-1 text-sm font-semibold text-zinc-800 dark:text-slate-200">
+            <Lock className="h-3.5 w-3.5 text-indigo-600" />
+            Require a 4-digit class PIN
+          </span>
+        </label>
+        <p className="mt-1 text-xs text-zinc-500 dark:text-slate-400">
+          Useful for shared classroom devices — students enter this PIN
+          after tapping their name tile. Leave off for kiosk-style use.
+        </p>
+        {pinEnabled && (
+          <input
+            value={pin}
+            onChange={(e) => setPin(e.target.value.replace(/\D/g, "").slice(0, 4))}
+            inputMode="numeric"
+            maxLength={4}
+            placeholder="••••"
+            className="mt-3 w-28 rounded-xl border border-zinc-200 bg-white px-3 py-2 text-center font-mono text-xl font-extrabold tracking-[0.3em] text-indigo-700 focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-indigo-200"
+          />
+        )}
       </div>
 
       <div className="flex items-center gap-3 pt-1">
