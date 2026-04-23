@@ -329,6 +329,8 @@ export async function updateAssignment(input: {
   title?: string;
   note?: string | null;
   dueAt?: string | null;
+  passThreshold?: number | null;
+  questionIds?: string[] | null;
 }): Promise<{ ok: true } | { ok: false; error: string }> {
   const profile = await requireProfile();
   if (profile.role !== "educator") {
@@ -343,6 +345,28 @@ export async function updateAssignment(input: {
   }
   if (input.note !== undefined) patch.note = input.note;
   if (input.dueAt !== undefined) patch.due_at = input.dueAt;
+  if (input.passThreshold !== undefined) {
+    if (input.passThreshold === null) {
+      patch.pass_threshold = null;
+    } else if (
+      typeof input.passThreshold === "number" &&
+      input.passThreshold >= 0 &&
+      input.passThreshold <= 100
+    ) {
+      patch.pass_threshold = Math.round(input.passThreshold);
+    } else {
+      return { ok: false, error: "Pass threshold must be 0-100 or null." };
+    }
+  }
+  if (input.questionIds !== undefined) {
+    if (input.questionIds === null || input.questionIds.length === 0) {
+      patch.question_ids = null;
+    } else {
+      patch.question_ids = input.questionIds
+        .filter((q) => typeof q === "string")
+        .slice(0, 200);
+    }
+  }
   if (Object.keys(patch).length === 0) return { ok: true };
 
   const supabase = await createClient();
@@ -450,6 +474,10 @@ export async function joinClassroom(input: {
 
 /**
  * Create an assignment against a classroom the caller owns.
+ *
+ * passThreshold: 0-100, null = no threshold (any completion counts as done)
+ * questionIds:   array of specific Q ids to include (e.g. "RL.K.1-Q2"),
+ *                null/empty = all questions in the standard
  */
 export async function createAssignment(input: {
   classroomId: string;
@@ -458,6 +486,8 @@ export async function createAssignment(input: {
   title: string;
   note?: string | null;
   dueAt?: string | null;
+  passThreshold?: number | null;
+  questionIds?: string[] | null;
 }): Promise<{ ok: true; assignmentId: string } | { ok: false; error: string }> {
   const profile = await requireProfile();
   if (profile.role !== "educator") {
@@ -475,6 +505,15 @@ export async function createAssignment(input: {
     .maybeSingle();
   if (!classroom) return { ok: false, error: "Classroom not found." };
 
+  const passThreshold =
+    typeof input.passThreshold === "number" && input.passThreshold >= 0 && input.passThreshold <= 100
+      ? Math.round(input.passThreshold)
+      : null;
+  const questionIds =
+    Array.isArray(input.questionIds) && input.questionIds.length > 0
+      ? input.questionIds.filter((q) => typeof q === "string").slice(0, 200)
+      : null;
+
   const { data, error } = await supabase
     .from("assignments")
     .insert({
@@ -485,6 +524,8 @@ export async function createAssignment(input: {
       title: input.title,
       note: input.note ?? null,
       due_at: input.dueAt ?? null,
+      pass_threshold: passThreshold,
+      question_ids: questionIds,
     })
     .select("id")
     .single();

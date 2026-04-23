@@ -1,5 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
-import { ClipboardList, Clock, CheckCircle2, CircleDashed } from "lucide-react";
+import { ClipboardList, Clock, CheckCircle2, CircleDashed, Target, ListChecks } from "lucide-react";
 import NewAssignmentButton from "../_components/NewAssignmentButton";
 import AssignmentActions from "../_components/AssignmentActions";
 import type { Assignment } from "@/lib/db/types";
@@ -174,6 +174,20 @@ export default async function AssignmentsTab({ classroomId }: { classroomId: str
                         {a.note}
                       </p>
                     )}
+                    <div className="mt-1 flex flex-wrap items-center gap-2 text-[11px] text-zinc-500 dark:text-slate-400">
+                      {(a as any).pass_threshold != null && (
+                        <span className="inline-flex items-center gap-1">
+                          <Target className="h-3 w-3 text-indigo-600" />
+                          {Number((a as any).pass_threshold)}% to pass
+                        </span>
+                      )}
+                      {Array.isArray((a as any).question_ids) && (a as any).question_ids.length > 0 && (
+                        <span className="inline-flex items-center gap-1">
+                          <ListChecks className="h-3 w-3 text-indigo-600" />
+                          {(a as any).question_ids.length} specific questions
+                        </span>
+                      )}
+                    </div>
                   </div>
                   <div className="flex flex-shrink-0 items-start gap-3">
                     <div className="text-right">

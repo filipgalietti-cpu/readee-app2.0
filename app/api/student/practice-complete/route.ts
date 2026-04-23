@@ -74,21 +74,25 @@ export async function POST(req: Request) {
 
   const { data: matching } = await admin
     .from("assignments")
-    .select("id")
+    .select("id, pass_threshold")
     .eq("classroom_id", session.classroomId)
     .eq("kind", "readee_lesson")
     .eq("source_id", standardId);
 
   const scorePercent = attempted > 0 ? Math.round((correct / attempted) * 100) : 0;
 
-  for (const a of (matching ?? []) as { id: string }[]) {
+  for (const a of (matching ?? []) as { id: string; pass_threshold: number | null }[]) {
+    // If a pass threshold is set and the student didn't hit it, keep
+    // completed_at null so the assignment stays open for retake. Score
+    // still gets recorded on the submission row.
+    const passed = a.pass_threshold == null || scorePercent >= a.pass_threshold;
     await admin
       .from("assignment_submissions")
       .upsert(
         {
           assignment_id: a.id,
           child_id: session.childId,
-          completed_at: nowIso,
+          completed_at: passed ? nowIso : null,
           score_percent: scorePercent,
           carrots_earned: carrotsEarned,
         },

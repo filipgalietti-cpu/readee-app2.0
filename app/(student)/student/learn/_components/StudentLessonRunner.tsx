@@ -46,11 +46,13 @@ export default function StudentLessonRunner({
   lessonTitle,
   slides,
   mcqs,
+  passThreshold,
 }: {
   standardId: string;
   lessonTitle: string;
   slides: LessonSlide[];
   mcqs: MCQ[];
+  passThreshold?: number | null;
 }) {
   const hasSlides = slides.length > 0;
   const [phase, setPhase] = useState<Phase>(hasSlides ? "slides" : "practice");
@@ -168,13 +170,28 @@ export default function StudentLessonRunner({
     const total = mcqs.length;
     const pct = total === 0 ? 100 : Math.round((correctCount / total) * 100);
     const carrots = correctCount * 5;
+    const hasThreshold = typeof passThreshold === "number";
+    const passed = !hasThreshold || pct >= (passThreshold ?? 0);
+    const heading = passed ? "Great work!" : "Almost there!";
     return (
-      <div className="rounded-3xl border border-green-200 bg-gradient-to-br from-green-50 to-emerald-50 p-8 text-center dark:border-green-900/40 dark:from-green-950/30 dark:to-emerald-950/30">
-        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-amber-400 to-orange-500 text-white shadow-lg">
+      <div
+        className={`rounded-3xl border p-8 text-center ${
+          passed
+            ? "border-green-200 bg-gradient-to-br from-green-50 to-emerald-50 dark:border-green-900/40 dark:from-green-950/30 dark:to-emerald-950/30"
+            : "border-amber-200 bg-gradient-to-br from-amber-50 to-orange-50 dark:border-amber-900/40 dark:from-amber-950/30 dark:to-orange-950/30"
+        }`}
+      >
+        <div
+          className={`mx-auto flex h-16 w-16 items-center justify-center rounded-full text-white shadow-lg ${
+            passed
+              ? "bg-gradient-to-br from-amber-400 to-orange-500"
+              : "bg-gradient-to-br from-amber-500 to-orange-600"
+          }`}
+        >
           <Trophy className="h-8 w-8" />
         </div>
         <h2 className="mt-4 text-2xl font-extrabold text-zinc-900 dark:text-white">
-          Great work!
+          {heading}
         </h2>
         {total > 0 && (
           <>
@@ -184,6 +201,17 @@ export default function StudentLessonRunner({
             <div className="text-sm font-semibold text-zinc-500 dark:text-slate-400">
               {pct}% correct
             </div>
+            {hasThreshold && (
+              <div
+                className={`mt-2 inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-bold ${
+                  passed
+                    ? "bg-green-100 text-green-700 dark:bg-green-950/40 dark:text-green-300"
+                    : "bg-amber-100 text-amber-800 dark:bg-amber-950/40 dark:text-amber-300"
+                }`}
+              >
+                Goal: {passThreshold}% · {passed ? "Hit it!" : "Try again to pass"}
+              </div>
+            )}
           </>
         )}
         {carrots > 0 && (

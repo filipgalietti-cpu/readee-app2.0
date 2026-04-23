@@ -2,6 +2,7 @@ import { notFound, redirect } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { getStudentSession } from "@/lib/auth/student-session";
+import { supabaseAdmin } from "@/lib/supabase/admin";
 import StudentLessonRunner from "./_components/StudentLessonRunner";
 import kJson from "@/app/data/kindergarten-standards-questions.json";
 import g1Json from "@/app/data/1st-grade-standards-questions.json";
@@ -78,9 +79,30 @@ export default async function StudentLearnPage({
   const lesson = findLesson(standardId);
   const slides = (lesson?.slides ?? []).filter((s) => (s.steps ?? []).length > 0);
 
-  const mcqs = standard.questions.filter(
+  // Find the most relevant open assignment for this student + standard so
+  // we can respect teacher-configured subset + pass threshold.
+  const admin = supabaseAdmin();
+  const { data: assignmentRow } = await admin
+    .from("assignments")
+    .select("id, question_ids, pass_threshold")
+    .eq("classroom_id", session.classroomId)
+    .eq("kind", "readee_lesson")
+    .eq("source_id", standardId)
+    .order("assigned_at", { ascending: false })
+    .limit(1)
+    .maybeSingle();
+
+  const questionIdsFilter = (assignmentRow as any)?.question_ids as string[] | null | undefined;
+  const passThreshold = (assignmentRow as any)?.pass_threshold as number | null | undefined;
+
+  let mcqs = standard.questions.filter(
     (q) => q.type === "multiple_choice" && Array.isArray(q.choices) && (q.choices?.length ?? 0) >= 2,
   );
+  if (Array.isArray(questionIdsFilter) && questionIdsFilter.length > 0) {
+    const allow = new Set(questionIdsFilter);
+    const filtered = mcqs.filter((q) => allow.has(q.id));
+    if (filtered.length > 0) mcqs = filtered;
+  }
 
   return (
     <div>
@@ -106,6 +128,7 @@ export default async function StudentLearnPage({
           lessonTitle={lesson?.title ?? standard.standard_description}
           slides={slides}
           mcqs={mcqs}
+          passThreshold={passThreshold ?? null}
         />
       </div>
     </div>
