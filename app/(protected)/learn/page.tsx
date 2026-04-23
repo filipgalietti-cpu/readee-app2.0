@@ -1005,6 +1005,7 @@ function CompletionScreen({
 
       await supabase.from("practice_results").insert(payload);
 
+      const nowIso = new Date().toISOString();
       if (carrotsEarned > 0) {
         const { data: current } = await supabase
           .from("children")
@@ -1014,9 +1015,17 @@ function CompletionScreen({
         if (current) {
           await supabase
             .from("children")
-            .update({ carrots: (current.carrots || 0) + carrotsEarned })
+            .update({
+              carrots: (current.carrots || 0) + carrotsEarned,
+              last_lesson_at: nowIso,
+            })
             .eq("id", child.id);
         }
+      } else {
+        await supabase
+          .from("children")
+          .update({ last_lesson_at: nowIso })
+          .eq("id", child.id);
       }
 
       // Mark classroom assignments as complete if this lesson matches one.
