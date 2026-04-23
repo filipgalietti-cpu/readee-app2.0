@@ -2,7 +2,10 @@ import { z } from "zod";
 
 export const ChildSchema = z.object({
   id: z.string(),
-  parent_id: z.string(),
+  parent_id: z.string().nullable(),
+  owner_type: z.enum(["parent", "classroom"]).default("parent"),
+  owner_classroom_id: z.string().nullable().default(null),
+  created_by_teacher: z.string().nullable().default(null),
   first_name: z.string(),
   grade: z.string().nullable(),
   reading_level: z.string().nullable(),

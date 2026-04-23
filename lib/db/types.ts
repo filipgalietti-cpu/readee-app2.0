@@ -24,9 +24,24 @@ export interface EquippedItems {
   theme?: string | null;
 }
 
+export type ChildOwnerType = 'parent' | 'classroom';
+
 export interface Child {
   id: string; // UUID
-  parent_id: string; // UUID - references auth.users.id
+  /**
+   * Parent owner. Null when `owner_type === 'classroom'` — in that case
+   * the student is owned by a teacher's classroom and never has a parent
+   * account. Guaranteed non-null when `owner_type === 'parent'` (CHECK
+   * constraint enforced in migration 027).
+   */
+  parent_id: string | null;
+  owner_type: ChildOwnerType;
+  /**
+   * Set only when `owner_type === 'classroom'`. References classrooms.id.
+   * CHECK constraint ensures this pairs correctly with owner_type.
+   */
+  owner_classroom_id: string | null;
+  created_by_teacher: string | null;
   first_name: string;
   grade: string | null;
   reading_level: string | null;
