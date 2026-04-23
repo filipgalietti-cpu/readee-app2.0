@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
-import { UserRound, Flame, Carrot, BookOpen, AlertTriangle, Sparkles, Mail, MailX } from "lucide-react";
+import { UserRound, Flame, Carrot, BookOpen, AlertTriangle, Sparkles, Mail, MailX, Download } from "lucide-react";
 import RemoveStudentButton from "../_components/RemoveStudentButton";
 import InviteStudentsButton from "../_components/InviteStudentsButton";
 import PendingInviteRowActions from "../_components/PendingInviteRowActions";
@@ -154,12 +154,34 @@ export default async function StudentsTab({ classroomId }: { classroomId: string
         <ClassLoginBanner code={joinCode} baseUrl={base} />
       )}
 
-      <div className="flex items-center justify-between">
+      <div className="flex flex-wrap items-center justify-between gap-2">
         <p className="text-sm text-zinc-500 dark:text-slate-400">
           {roster.length} student{roster.length === 1 ? "" : "s"}
           {pending.length > 0 && <> · {pending.length} pending</>}
         </p>
-        <InviteStudentsButton classroomId={classroomId} />
+        <div className="flex flex-wrap items-center gap-2">
+          {roster.length > 0 && (
+            <>
+              <a
+                href={`/api/classroom/${classroomId}/export?type=roster`}
+                className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-white px-3 py-1.5 text-xs font-semibold text-zinc-700 transition hover:border-indigo-300 hover:text-indigo-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
+                title="Download class roster as CSV"
+              >
+                <Download className="h-3.5 w-3.5" />
+                Roster CSV
+              </a>
+              <a
+                href={`/api/classroom/${classroomId}/export?type=assignments`}
+                className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-white px-3 py-1.5 text-xs font-semibold text-zinc-700 transition hover:border-indigo-300 hover:text-indigo-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
+                title="Download per-assignment completions as CSV"
+              >
+                <Download className="h-3.5 w-3.5" />
+                Assignments CSV
+              </a>
+            </>
+          )}
+          <InviteStudentsButton classroomId={classroomId} />
+        </div>
       </div>
 
       {roster.length === 0 && pending.length === 0 ? (
