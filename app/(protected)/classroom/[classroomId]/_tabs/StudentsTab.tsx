@@ -3,11 +3,14 @@ import { UserRound, Flame, Carrot, BookOpen, AlertTriangle, Sparkles, Mail, Mail
 import RemoveStudentButton from "../_components/RemoveStudentButton";
 import InviteStudentsButton from "../_components/InviteStudentsButton";
 import PendingInviteRowActions from "../_components/PendingInviteRowActions";
+import ClassLoginBanner from "../_components/ClassLoginBanner";
+import EditStudentButton from "../_components/EditStudentButton";
 
 type RosterRow = {
   child_id: string;
   first_name: string;
   grade: string | null;
+  owner_type: string;
   carrots: number;
   streak_days: number;
   last_lesson_at: string | null;
@@ -50,7 +53,7 @@ async function loadRoster(classroomId: string): Promise<RosterRow[]> {
 
   const { data: memberships } = await supabase
     .from("classroom_memberships")
-    .select("child_id, children(id, first_name, grade, carrots, streak_days, last_lesson_at)")
+    .select("child_id, children(id, first_name, grade, carrots, streak_days, last_lesson_at, owner_type)")
     .eq("classroom_id", classroomId);
 
   const childIds = (memberships ?? [])
@@ -91,6 +94,7 @@ async function loadRoster(classroomId: string): Promise<RosterRow[]> {
         id: string;
         first_name: string;
         grade: string | null;
+        owner_type: string;
         carrots: number;
         streak_days: number;
         last_lesson_at: string | null;
@@ -102,6 +106,7 @@ async function loadRoster(classroomId: string): Promise<RosterRow[]> {
       child_id: c.id,
       first_name: c.first_name,
       grade: c.grade,
+      owner_type: c.owner_type,
       carrots: c.carrots ?? 0,
       streak_days: c.streak_days ?? 0,
       last_lesson_at: c.last_lesson_at,
@@ -131,15 +136,23 @@ function baseUrl(): string {
 }
 
 export default async function StudentsTab({ classroomId }: { classroomId: string }) {
-  const [roster, pending] = await Promise.all([
+  const supabase = await createClient();
+  const [{ data: classroomData }, roster, pending] = await Promise.all([
+    supabase.from("classrooms").select("join_code").eq("id", classroomId).maybeSingle(),
     loadRoster(classroomId),
     loadPendingInvites(classroomId),
   ]);
 
   const base = baseUrl();
+  const joinCode = (classroomData as any)?.join_code as string | undefined;
+  const hasClassroomStudents = roster.some((r) => r.owner_type === "classroom");
 
   return (
     <div className="space-y-5">
+      {joinCode && (roster.length > 0 || hasClassroomStudents) && (
+        <ClassLoginBanner code={joinCode} baseUrl={base} />
+      )}
+
       <div className="flex items-center justify-between">
         <p className="text-sm text-zinc-500 dark:text-slate-400">
           {roster.length} student{roster.length === 1 ? "" : "s"}
@@ -225,11 +238,19 @@ export default async function StudentsTab({ classroomId }: { classroomId: string
                           </span>
                         </td>
                         <td className="px-3 py-3 text-right">
-                          <RemoveStudentButton
-                            classroomId={classroomId}
-                            childId={r.child_id}
-                            firstName={r.first_name}
-                          />
+                          <div className="inline-flex items-center gap-1.5">
+                            <EditStudentButton
+                              studentId={r.child_id}
+                              firstName={r.first_name}
+                              grade={r.grade}
+                              ownerType={r.owner_type}
+                            />
+                            <RemoveStudentButton
+                              classroomId={classroomId}
+                              childId={r.child_id}
+                              firstName={r.first_name}
+                            />
+                          </div>
                         </td>
                       </tr>
                     );

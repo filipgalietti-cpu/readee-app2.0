@@ -152,6 +152,77 @@ export async function updateClassroom(input: {
 }
 
 /**
+ * Attach a classroom to a school (or detach). Admins wire this up so
+ * school/district dashboards can roll up the classroom's data.
+ */
+export async function setClassroomSchool(input: {
+  classroomId: string;
+  schoolId: string | null;
+}): Promise<{ ok: true } | { ok: false; error: string }> {
+  const profile = await requireProfile();
+  if (profile.role !== "educator") {
+    return { ok: false, error: "Only educators can change this." };
+  }
+
+  const supabase = await createClient();
+  const { error } = await supabase
+    .from("classrooms")
+    .update({ school_id: input.schoolId })
+    .eq("id", input.classroomId)
+    .eq("teacher_id", profile.id);
+
+  if (error) return { ok: false, error: error.message };
+  revalidatePath(`/classroom/${input.classroomId}`);
+  return { ok: true };
+}
+
+/**
+ * Edit a classroom-owned student's first name or grade. Parent-owned
+ * students are managed by parents; this action is scoped to
+ * owner_type='classroom'.
+ */
+export async function updateClassroomStudent(input: {
+  studentId: string;
+  firstName?: string;
+  grade?: string | null;
+}): Promise<{ ok: true } | { ok: false; error: string }> {
+  const profile = await requireProfile();
+  if (profile.role !== "educator") {
+    return { ok: false, error: "Only educators can edit students." };
+  }
+
+  const supabase = await createClient();
+
+  const { data: student } = await supabase
+    .from("children")
+    .select("id, owner_type, owner_classroom_id")
+    .eq("id", input.studentId)
+    .maybeSingle();
+  if (!student) return { ok: false, error: "Student not found." };
+  if ((student as any).owner_type !== "classroom") {
+    return { ok: false, error: "This student is managed by a parent." };
+  }
+
+  const patch: Record<string, unknown> = {};
+  if (input.firstName !== undefined) {
+    const n = input.firstName.trim();
+    if (!n) return { ok: false, error: "First name cannot be empty." };
+    patch.first_name = n.slice(0, 60);
+  }
+  if (input.grade !== undefined) patch.grade = input.grade;
+  if (Object.keys(patch).length === 0) return { ok: true };
+
+  const { error } = await supabase
+    .from("children")
+    .update(patch)
+    .eq("id", input.studentId);
+
+  if (error) return { ok: false, error: error.message };
+  revalidatePath(`/classroom/${(student as any).owner_classroom_id}`);
+  return { ok: true };
+}
+
+/**
  * Remove a student from a classroom. Preserves their submission history
  * (assignment_submissions are not cascaded).
  */

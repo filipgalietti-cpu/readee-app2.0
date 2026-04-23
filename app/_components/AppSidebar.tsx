@@ -11,12 +11,12 @@ import { usePlanStore } from "@/lib/stores/plan-store";
 import { SidebarUserMenu } from "./SidebarUserMenu";
 import {
   Home, BarChart3, BookText, ListChecks, Map,
-  Carrot, Trophy, ChevronDown, ClipboardCheck, GraduationCap,
+  Carrot, Trophy, ChevronDown, ClipboardCheck, GraduationCap, Building2,
 } from "lucide-react";
 
 /* ─── Nav items ──────────────────────────────────── */
 
-function getNavSections(childId: string | null, role: string | null) {
+function getNavSections(childId: string | null, role: string | null, hasAdminScope: boolean) {
   const q = childId ? `?child=${childId}` : "";
   const sections = [
     {
@@ -45,11 +45,20 @@ function getNavSections(childId: string | null, role: string | null) {
   ];
 
   if (role === "educator") {
+    const teachItems: { href: string; icon: any; label: string }[] = [
+      { href: "/classroom", icon: GraduationCap, label: "Classroom" },
+    ];
+    if (hasAdminScope) {
+      teachItems.push({ href: "/admin", icon: Building2, label: "Admin" });
+    }
     sections.unshift({
       label: "Teach",
-      items: [
-        { href: "/classroom", icon: GraduationCap, label: "Classroom" },
-      ],
+      items: teachItems,
+    });
+  } else if (hasAdminScope) {
+    sections.unshift({
+      label: "Admin",
+      items: [{ href: "/admin", icon: Building2, label: "Admin" }],
     });
   }
 
@@ -131,10 +140,11 @@ export default function AppSidebar({ mobileOnly = false }: { mobileOnly?: boolea
 
   const plan = usePlanStore((s) => s.plan);
   const role = usePlanStore((s) => s.role);
+  const hasAdminScope = usePlanStore((s) => s.hasAdminScope);
   const fetchPlan = usePlanStore((s) => s.fetch);
   useEffect(() => { fetchPlan(); }, [fetchPlan]);
 
-  const sections = getNavSections(activeChild?.id || null, role);
+  const sections = getNavSections(activeChild?.id || null, role, hasAdminScope);
 
   // Close mobile overlay on route change
   useEffect(() => { setMobileOpen(false); }, [pathname, setMobileOpen]);
