@@ -1,4 +1,4 @@
-import Anthropic from "@anthropic-ai/sdk";
+import { GoogleGenAI, Type } from "@google/genai";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 
 /**
@@ -6,13 +6,16 @@ import { supabaseAdmin } from "@/lib/supabase/admin";
  * and decodable passages. Rate-limited per teacher (hourly rolling cap)
  * and audit-logged to ai_usage_log.
  *
- * Requires ANTHROPIC_API_KEY in the environment. Falls back to a clear
- * error when missing so the teacher gets an actionable message instead
- * of a 500.
+ * Uses Gemini 2.5 Flash via the Google GenAI SDK. Auth is GEMINI_API_KEY
+ * — the same Google account that powers the TTS + image pipelines.
+ *
+ * Model choice: Flash is ~10x cheaper than Pro and plenty strong for
+ * constrained MCQ generation with a JSON response schema. Upgrade to
+ * Pro later if output quality isn't hitting Jennifer's bar.
  */
 
 const HOURLY_CAP_PER_TEACHER = 10;
-const MODEL_ID = "claude-opus-4-7";
+const MODEL_ID = "gemini-2.5-flash";
 
 export type GeneratedMCQ = {
   prompt: string;
@@ -21,12 +24,12 @@ export type GeneratedMCQ = {
   hint: string | null;
 };
 
-function getClient(): Anthropic {
-  const apiKey = process.env.ANTHROPIC_API_KEY;
+function getClient(): GoogleGenAI {
+  const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
-    throw new Error("ANTHROPIC_API_KEY is not configured on the server.");
+    throw new Error("GEMINI_API_KEY is not configured on the server.");
   }
-  return new Anthropic({ apiKey });
+  return new GoogleGenAI({ apiKey });
 }
 
 export async function checkRateLimit(
@@ -80,19 +83,31 @@ Rules:
 - Make the correct answer unambiguous — no trick questions, no "all of the above", no "none of the above".
 - Keep prompts under 350 characters. If a passage is needed, include it inline.
 - Write a short hint (one sentence) that helps a struggling student re-read for the answer.
-- Output ONLY valid JSON in the exact schema below. No preamble, no trailing text, no markdown fences.
+- The "correct" field must match one of the choices exactly, character-for-character.`;
 
-Schema:
-{
-  "questions": [
-    {
-      "prompt": "string",
-      "choices": ["string", "string", "string", "string"],
-      "correct": "string (must exactly match one of the choices)",
-      "hint": "string"
-    }
-  ]
-}`;
+const MCQ_SCHEMA = {
+  type: Type.OBJECT,
+  properties: {
+    questions: {
+      type: Type.ARRAY,
+      items: {
+        type: Type.OBJECT,
+        properties: {
+          prompt: { type: Type.STRING },
+          choices: {
+            type: Type.ARRAY,
+            items: { type: Type.STRING },
+          },
+          correct: { type: Type.STRING },
+          hint: { type: Type.STRING },
+        },
+        required: ["prompt", "choices", "correct", "hint"],
+        propertyOrdering: ["prompt", "choices", "correct", "hint"],
+      },
+    },
+  },
+  required: ["questions"],
+};
 
 type RawOutput = {
   questions?: {
@@ -102,23 +117,6 @@ type RawOutput = {
     hint?: string;
   }[];
 };
-
-function extractJson(text: string): unknown {
-  const trimmed = text.trim();
-  try {
-    return JSON.parse(trimmed);
-  } catch {
-    const match = trimmed.match(/\{[\s\S]*\}/);
-    if (match) {
-      try {
-        return JSON.parse(match[0]);
-      } catch {
-        /* ignore */
-      }
-    }
-    throw new Error("Model output was not valid JSON.");
-  }
-}
 
 export async function generateMCQQuestions(input: {
   teacherId: string;
@@ -137,7 +135,7 @@ export async function generateMCQQuestions(input: {
     };
   }
 
-  let client: Anthropic;
+  let client: GoogleGenAI;
   try {
     client = getClient();
   } catch (e: any) {
@@ -159,30 +157,24 @@ export async function generateMCQQuestions(input: {
 
 Topic / focus: ${input.topic.trim()}
 
-Generate ${count} multiple-choice question${count === 1 ? "" : "s"} following the schema.`;
+Generate exactly ${count} multiple-choice question${count === 1 ? "" : "s"} following the schema. Each question needs 4 choices with one correct answer.`;
 
   try {
-    const response = await client.messages.create({
+    const response = await client.models.generateContent({
       model: MODEL_ID,
-      max_tokens: 16000,
-      thinking: { type: "adaptive" },
-      output_config: { effort: "medium" },
-      system: [
-        {
-          type: "text",
-          text: MCQ_SYSTEM,
-          cache_control: { type: "ephemeral" },
-        },
-      ],
-      messages: [{ role: "user", content: userPrompt }],
+      contents: userPrompt,
+      config: {
+        systemInstruction: MCQ_SYSTEM,
+        responseMimeType: "application/json",
+        responseSchema: MCQ_SCHEMA,
+        temperature: 0.7,
+      },
     });
 
-    const textBlock = response.content.find(
-      (b): b is Anthropic.TextBlock => b.type === "text",
-    );
-    if (!textBlock) throw new Error("Empty response from the model.");
+    const text = response.text;
+    if (!text) throw new Error("Empty response from the model.");
 
-    const parsed = extractJson(textBlock.text) as RawOutput;
+    const parsed = JSON.parse(text) as RawOutput;
     const raw = parsed.questions ?? [];
 
     const questions: GeneratedMCQ[] = [];
@@ -194,12 +186,7 @@ Generate ${count} multiple-choice question${count === 1 ? "" : "s"} following th
       const correct = (q.correct ?? "").trim();
       const hint = q.hint ? String(q.hint).trim() : null;
       if (!prompt || choices.length < 2 || !choices.includes(correct)) continue;
-      questions.push({
-        prompt,
-        choices,
-        correct,
-        hint: hint || null,
-      });
+      questions.push({ prompt, choices, correct, hint: hint || null });
     }
 
     if (questions.length === 0) {
@@ -210,8 +197,8 @@ Generate ${count} multiple-choice question${count === 1 ? "" : "s"} following th
       teacherId: input.teacherId,
       kind: "quiz_generation",
       model: MODEL_ID,
-      inputTokens: response.usage?.input_tokens,
-      outputTokens: response.usage?.output_tokens,
+      inputTokens: response.usageMetadata?.promptTokenCount,
+      outputTokens: response.usageMetadata?.candidatesTokenCount,
       success: true,
       requestSummary: input.topic.slice(0, 200),
     });
