@@ -11,7 +11,7 @@ import { usePlanStore } from "@/lib/stores/plan-store";
 import { SidebarUserMenu } from "./SidebarUserMenu";
 import {
   Home, BarChart3, BookText, ListChecks, Map,
-  Carrot, Trophy, ChevronDown, ClipboardCheck, GraduationCap, Building2,
+  Carrot, Trophy, ChevronDown, ClipboardCheck, GraduationCap, Building2, ClipboardPen,
 } from "lucide-react";
 
 /* ─── Nav items ──────────────────────────────────── */
@@ -29,6 +29,7 @@ function getNavSections(
   if (role === "educator") {
     const teachItems: { href: string; icon: any; label: string }[] = [
       { href: "/classroom", icon: GraduationCap, label: "Classroom" },
+      { href: "/classroom/authoring", icon: ClipboardPen, label: "Quizzes" },
     ];
     if (hasAdminScope) {
       teachItems.push({ href: "/admin", icon: Building2, label: "Admin" });
