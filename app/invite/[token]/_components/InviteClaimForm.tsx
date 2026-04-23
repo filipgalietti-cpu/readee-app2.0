@@ -23,12 +23,18 @@ export default function InviteClaimForm({
   function submit() {
     setErr(null);
     start(async () => {
-      const res = await claimInvite({
-        token,
-        mode: selected === "__new__" ? "create" : "existing",
-        existingChildId: selected === "__new__" ? undefined : selected,
-        newChildFirstName: selected === "__new__" ? newName.trim() : undefined,
-      });
+      const res =
+        selected === "__new__"
+          ? await claimInvite({
+              token,
+              mode: "create",
+              newChildFirstName: newName.trim(),
+            })
+          : await claimInvite({
+              token,
+              mode: "existing",
+              existingChildId: selected,
+            });
       if (!res.ok) {
         setErr(res.error);
         return;

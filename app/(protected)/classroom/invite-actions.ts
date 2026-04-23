@@ -68,6 +68,11 @@ export async function createInvites(input: {
     .maybeSingle();
   if (!classroom) return { ok: false, error: "Classroom not found." };
 
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  const teacherEmail = user?.email ?? "your teacher";
+
   const rows: {
     classroom_id: string;
     invited_by: string;
@@ -122,7 +127,7 @@ export async function createInvites(input: {
       {
         classroomName: (classroom as any).name,
         joinCode: (classroom as any).join_code,
-        teacherEmail: profile.email ?? "your teacher",
+        teacherEmail,
       },
     );
   }
@@ -182,6 +187,11 @@ export async function resendInvite(input: { inviteId: string }): Promise<
   if (row.status !== "pending") return { ok: false, error: "Invite is not pending." };
   if (!row.parent_email) return { ok: false, error: "No parent email on this invite." };
 
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  const teacherEmail = user?.email ?? "your teacher";
+
   await dispatchInviteEmails(
     [
       {
@@ -194,7 +204,7 @@ export async function resendInvite(input: { inviteId: string }): Promise<
     {
       classroomName: row.classrooms.name,
       joinCode: row.classrooms.join_code,
-      teacherEmail: profile.email ?? "your teacher",
+      teacherEmail,
     },
   );
 
