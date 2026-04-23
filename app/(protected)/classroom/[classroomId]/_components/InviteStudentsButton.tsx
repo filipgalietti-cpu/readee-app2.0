@@ -2,8 +2,9 @@
 
 import { useMemo, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { UserPlus, Loader2, X, Plus, Check, FileSpreadsheet, Pencil, Trash2, Users, Mail } from "lucide-react";
+import { UserPlus, Loader2, X, Plus, Check, FileSpreadsheet, Pencil, Trash2, Users, Mail, School } from "lucide-react";
 import { createInvites, createClassroomStudents } from "../../invite-actions";
+import GoogleClassroomImport, { type ImportedStudent } from "./GoogleClassroomImport";
 
 type DraftRow = {
   firstName: string;
@@ -49,7 +50,7 @@ export default function InviteStudentsButton({ classroomId }: { classroomId: str
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [flow, setFlow] = useState<"direct" | "parent">("direct");
-  const [mode, setMode] = useState<"manual" | "csv">("manual");
+  const [mode, setMode] = useState<"manual" | "csv" | "gc">("manual");
   const [rows, setRows] = useState<DraftRow[]>([emptyRow()]);
   const [csvText, setCsvText] = useState("");
   const [sendEmails, setSendEmails] = useState(true);
@@ -94,6 +95,18 @@ export default function InviteStudentsButton({ classroomId }: { classroomId: str
 
   function removeRow(i: number) {
     setRows((prev) => (prev.length === 1 ? [emptyRow()] : prev.filter((_, idx) => idx !== i)));
+  }
+
+  function importGoogleRoster(imported: ImportedStudent[]) {
+    if (imported.length === 0) return;
+    setRows(
+      imported.map((r) => ({
+        firstName: r.firstName,
+        lastInitial: r.lastInitial,
+        parentEmail: "",
+      })),
+    );
+    setMode("manual");
   }
 
   function submit() {
@@ -227,10 +240,27 @@ export default function InviteStudentsButton({ classroomId }: { classroomId: str
                 <FileSpreadsheet className="h-3.5 w-3.5" />
                 Paste CSV
               </button>
+              <button
+                type="button"
+                onClick={() => setMode("gc")}
+                className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 transition ${
+                  mode === "gc"
+                    ? "bg-white text-indigo-700 shadow dark:bg-slate-800 dark:text-indigo-300"
+                    : "text-zinc-500 dark:text-slate-400"
+                }`}
+              >
+                <School className="h-3.5 w-3.5" />
+                Google Classroom
+              </button>
             </div>
 
             <div className="mt-4 max-h-[50vh] overflow-y-auto rounded-xl border border-zinc-200 p-3 dark:border-slate-800">
-              {mode === "manual" ? (
+              {mode === "gc" ? (
+                <GoogleClassroomImport
+                  classroomId={classroomId}
+                  onImport={importGoogleRoster}
+                />
+              ) : mode === "manual" ? (
                 <div className="space-y-2">
                   <div
                     className={`grid items-center gap-2 px-1 text-[11px] font-semibold uppercase tracking-wider text-zinc-500 dark:text-slate-400 ${
