@@ -1,22 +1,24 @@
 import { notFound, redirect } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, Users, ClipboardList, BarChart3 } from "lucide-react";
+import { ArrowLeft, Users, ClipboardList, BarChart3, Settings } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/lib/auth/helpers";
 import StudentsTab from "./_tabs/StudentsTab";
 import AssignmentsTab from "./_tabs/AssignmentsTab";
 import InsightsTab from "./_tabs/InsightsTab";
+import SettingsTab from "./_tabs/SettingsTab";
 import JoinCodePanel from "./_components/JoinCodePanel";
 import type { Classroom } from "@/lib/db/types";
 
 export const dynamic = "force-dynamic";
 
-type TabKey = "students" | "assignments" | "insights";
+type TabKey = "students" | "assignments" | "insights" | "settings";
 
 const TABS: { key: TabKey; label: string; icon: typeof Users }[] = [
   { key: "students", label: "Students", icon: Users },
   { key: "assignments", label: "Assignments", icon: ClipboardList },
   { key: "insights", label: "Insights", icon: BarChart3 },
+  { key: "settings", label: "Settings", icon: Settings },
 ];
 
 export default async function ClassroomPage({
@@ -28,7 +30,7 @@ export default async function ClassroomPage({
 }) {
   const { classroomId } = await params;
   const { tab } = await searchParams;
-  const active: TabKey = (["students", "assignments", "insights"] as TabKey[]).includes(
+  const active: TabKey = (["students", "assignments", "insights", "settings"] as TabKey[]).includes(
     tab as TabKey,
   )
     ? (tab as TabKey)
@@ -105,6 +107,7 @@ export default async function ClassroomPage({
         {active === "students" && <StudentsTab classroomId={c.id} />}
         {active === "assignments" && <AssignmentsTab classroomId={c.id} />}
         {active === "insights" && <InsightsTab classroomId={c.id} />}
+        {active === "settings" && <SettingsTab classroomId={c.id} />}
       </div>
     </div>
   );

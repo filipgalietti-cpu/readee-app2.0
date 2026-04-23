@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import { UserRound, Flame, Carrot, BookOpen, AlertTriangle, Sparkles } from "lucide-react";
+import RemoveStudentButton from "../_components/RemoveStudentButton";
 
 type RosterRow = {
   child_id: string;
@@ -131,6 +132,7 @@ export default async function StudentsTab({ classroomId }: { classroomId: string
             <th className="px-5 py-3 text-right font-semibold">Lessons this week</th>
             <th className="px-5 py-3 text-right font-semibold">Streak</th>
             <th className="px-5 py-3 text-right font-semibold">Carrots</th>
+            <th className="px-5 py-3 font-semibold sr-only">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -179,6 +181,13 @@ export default async function StudentsTab({ classroomId }: { classroomId: string
                     <Carrot className="h-3.5 w-3.5 text-orange-500" />
                     {r.carrots}
                   </span>
+                </td>
+                <td className="px-3 py-3 text-right">
+                  <RemoveStudentButton
+                    classroomId={classroomId}
+                    childId={r.child_id}
+                    firstName={r.first_name}
+                  />
                 </td>
               </tr>
             );

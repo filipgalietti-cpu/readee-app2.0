@@ -113,6 +113,157 @@ export async function archiveClassroom(
 }
 
 /**
+ * Update classroom metadata (name, grade level). Teacher-only.
+ */
+export async function updateClassroom(input: {
+  classroomId: string;
+  name?: string;
+  gradeLevel?: GradeLevel | null;
+}): Promise<{ ok: true } | { ok: false; error: string }> {
+  const profile = await requireProfile();
+  if (profile.role !== "educator") {
+    return { ok: false, error: "Only educators can edit classrooms." };
+  }
+
+  const patch: Record<string, unknown> = {};
+  if (input.name !== undefined) {
+    const name = input.name.trim();
+    if (!name) return { ok: false, error: "Name cannot be empty." };
+    if (name.length > 80) return { ok: false, error: "Name is too long." };
+    patch.name = name;
+  }
+  if (input.gradeLevel !== undefined) {
+    patch.grade_level = input.gradeLevel;
+  }
+  if (Object.keys(patch).length === 0) return { ok: true };
+
+  const supabase = await createClient();
+  const { error } = await supabase
+    .from("classrooms")
+    .update(patch)
+    .eq("id", input.classroomId)
+    .eq("teacher_id", profile.id);
+
+  if (error) return { ok: false, error: error.message };
+
+  revalidatePath(`/classroom/${input.classroomId}`);
+  revalidatePath("/classroom");
+  return { ok: true };
+}
+
+/**
+ * Remove a student from a classroom. Preserves their submission history
+ * (assignment_submissions are not cascaded).
+ */
+export async function removeStudent(input: {
+  classroomId: string;
+  childId: string;
+}): Promise<{ ok: true } | { ok: false; error: string }> {
+  const profile = await requireProfile();
+  if (profile.role !== "educator") {
+    return { ok: false, error: "Only educators can remove students." };
+  }
+
+  const supabase = await createClient();
+
+  // Verify teacher owns this classroom (RLS enforces too).
+  const { data: classroom } = await supabase
+    .from("classrooms")
+    .select("id")
+    .eq("id", input.classroomId)
+    .eq("teacher_id", profile.id)
+    .maybeSingle();
+  if (!classroom) return { ok: false, error: "Classroom not found." };
+
+  const { error } = await supabase
+    .from("classroom_memberships")
+    .delete()
+    .eq("classroom_id", input.classroomId)
+    .eq("child_id", input.childId);
+
+  if (error) return { ok: false, error: error.message };
+
+  revalidatePath(`/classroom/${input.classroomId}`);
+  return { ok: true };
+}
+
+/**
+ * Update an existing assignment (title, note, due date).
+ */
+export async function updateAssignment(input: {
+  assignmentId: string;
+  title?: string;
+  note?: string | null;
+  dueAt?: string | null;
+}): Promise<{ ok: true } | { ok: false; error: string }> {
+  const profile = await requireProfile();
+  if (profile.role !== "educator") {
+    return { ok: false, error: "Only educators can edit assignments." };
+  }
+
+  const patch: Record<string, unknown> = {};
+  if (input.title !== undefined) {
+    const t = input.title.trim();
+    if (!t) return { ok: false, error: "Title cannot be empty." };
+    patch.title = t;
+  }
+  if (input.note !== undefined) patch.note = input.note;
+  if (input.dueAt !== undefined) patch.due_at = input.dueAt;
+  if (Object.keys(patch).length === 0) return { ok: true };
+
+  const supabase = await createClient();
+
+  // Verify teacher owns this assignment's classroom via RLS on assignments.
+  const { data: existing } = await supabase
+    .from("assignments")
+    .select("classroom_id")
+    .eq("id", input.assignmentId)
+    .maybeSingle();
+  if (!existing) return { ok: false, error: "Assignment not found." };
+
+  const { error } = await supabase
+    .from("assignments")
+    .update(patch)
+    .eq("id", input.assignmentId);
+
+  if (error) return { ok: false, error: error.message };
+
+  revalidatePath(`/classroom/${existing.classroom_id}`);
+  return { ok: true };
+}
+
+/**
+ * Delete an assignment. Cascades to assignment_submissions per the FK.
+ */
+export async function deleteAssignment(input: {
+  assignmentId: string;
+}): Promise<{ ok: true } | { ok: false; error: string }> {
+  const profile = await requireProfile();
+  if (profile.role !== "educator") {
+    return { ok: false, error: "Only educators can delete assignments." };
+  }
+
+  const supabase = await createClient();
+
+  const { data: existing } = await supabase
+    .from("assignments")
+    .select("classroom_id")
+    .eq("id", input.assignmentId)
+    .maybeSingle();
+  if (!existing) return { ok: false, error: "Assignment not found." };
+
+  const { error } = await supabase
+    .from("assignments")
+    .delete()
+    .eq("id", input.assignmentId);
+
+  if (error) return { ok: false, error: error.message };
+
+  revalidatePath(`/classroom/${existing.classroom_id}`);
+  return { ok: true };
+}
+
+/**
  * Parent-side: add one of their children to a classroom using a join code.
  * Called from /classroom-join.
  */

@@ -1,6 +1,7 @@
 import { createClient } from "@/lib/supabase/server";
 import { ClipboardList, Clock, CheckCircle2, CircleDashed } from "lucide-react";
 import NewAssignmentButton from "../_components/NewAssignmentButton";
+import AssignmentActions from "../_components/AssignmentActions";
 import type { Assignment } from "@/lib/db/types";
 import lessons from "@/app/data/sample-lessons.json";
 
@@ -174,18 +175,26 @@ export default async function AssignmentsTab({ classroomId }: { classroomId: str
                       </p>
                     )}
                   </div>
-                  <div className="flex-shrink-0 text-right">
-                    <div className="font-mono text-sm font-bold text-zinc-900 dark:text-white">
-                      {doneCount}/{total}
-                    </div>
-                    <div className="text-[11px] font-medium uppercase tracking-wider text-zinc-400 dark:text-slate-500">
-                      complete
-                    </div>
-                    {avgScore !== null && (
-                      <div className="mt-1 font-mono text-xs font-semibold text-indigo-600 dark:text-indigo-300">
-                        Avg {avgScore}%
+                  <div className="flex flex-shrink-0 items-start gap-3">
+                    <div className="text-right">
+                      <div className="font-mono text-sm font-bold text-zinc-900 dark:text-white">
+                        {doneCount}/{total}
                       </div>
-                    )}
+                      <div className="text-[11px] font-medium uppercase tracking-wider text-zinc-400 dark:text-slate-500">
+                        complete
+                      </div>
+                      {avgScore !== null && (
+                        <div className="mt-1 font-mono text-xs font-semibold text-indigo-600 dark:text-indigo-300">
+                          Avg {avgScore}%
+                        </div>
+                      )}
+                    </div>
+                    <AssignmentActions
+                      assignmentId={a.id}
+                      initialTitle={a.title}
+                      initialNote={a.note}
+                      initialDueAt={a.due_at}
+                    />
                   </div>
                 </div>
 
