@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { UserRound, Flame, Carrot, BookOpen, AlertTriangle, Sparkles, Mail, MailX } from "lucide-react";
 import RemoveStudentButton from "../_components/RemoveStudentButton";
@@ -201,14 +202,19 @@ export default async function StudentsTab({ classroomId }: { classroomId: string
                         className="border-b border-zinc-100 last:border-0 hover:bg-zinc-50/60 dark:border-slate-800 dark:hover:bg-slate-900/60"
                       >
                         <td className="px-5 py-3">
-                          <div className="font-semibold text-zinc-900 dark:text-white">
-                            {r.first_name}
-                          </div>
-                          {r.grade && (
-                            <div className="text-xs text-zinc-500 dark:text-slate-400">
-                              {r.grade}
-                            </div>
-                          )}
+                          <Link
+                            href={`/classroom/${classroomId}/students/${r.child_id}`}
+                            className="group inline-flex flex-col"
+                          >
+                            <span className="font-semibold text-zinc-900 group-hover:text-indigo-600 group-hover:underline dark:text-white">
+                              {r.first_name}
+                            </span>
+                            {r.grade && (
+                              <span className="text-xs text-zinc-500 dark:text-slate-400">
+                                {r.grade}
+                              </span>
+                            )}
+                          </Link>
                         </td>
                         <td className="px-5 py-3">
                           <span className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold ${tone}`}>

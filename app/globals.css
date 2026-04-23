@@ -415,3 +415,24 @@ body {
   animation: navShine 3s ease-in-out infinite;
   pointer-events: none;
 }
+
+/* ── Print: strip decoration, force light backgrounds ── */
+@media print {
+  html, body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  nav, header.print\:hidden, .print\:hidden {
+    display: none !important;
+  }
+  a {
+    color: inherit !important;
+    text-decoration: none !important;
+  }
+  .no-print-shadow, [class*="shadow"] {
+    box-shadow: none !important;
+  }
+  .print\:break-inside-avoid {
+    break-inside: avoid;
+  }
+}
