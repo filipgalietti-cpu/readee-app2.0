@@ -3,7 +3,7 @@
  * These types match the Supabase schema defined in migrations/001_initial_schema.sql
  */
 
-export type UserRole = 'parent' | 'child' | 'educator';
+export type UserRole = 'parent' | 'child' | 'student' | 'educator';
 
 export interface Profile {
   id: string; // UUID - matches auth.users.id
@@ -95,6 +95,54 @@ export interface ReadingProgress {
   started_at: string;
   updated_at: string;
   completed_at: string | null;
+}
+
+// ═══════════════════════════════════════════════════════════
+// Classroom (teacher-facing product) — v1, migration 022
+// ═══════════════════════════════════════════════════════════
+
+export type GradeLevel = 'K' | '1st' | '2nd' | '3rd' | '4th' | 'Mixed';
+
+export interface Classroom {
+  id: string;
+  teacher_id: string;
+  name: string;
+  grade_level: GradeLevel | null;
+  join_code: string;
+  archived_at: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface ClassroomMembership {
+  id: string;
+  classroom_id: string;
+  child_id: string;
+  joined_at: string;
+}
+
+export type AssignmentKind = 'readee_lesson' | 'custom_quiz';
+
+export interface Assignment {
+  id: string;
+  classroom_id: string;
+  assigned_by: string;
+  kind: AssignmentKind;
+  source_id: string; // lesson id for 'readee_lesson', quiz id for 'custom_quiz'
+  title: string;
+  note: string | null;
+  due_at: string | null;
+  assigned_at: string;
+}
+
+export interface AssignmentSubmission {
+  id: string;
+  assignment_id: string;
+  child_id: string;
+  started_at: string | null;
+  completed_at: string | null;
+  score_percent: number | null;
+  carrots_earned: number;
 }
 
 // ═══════════════════════════════════════════════════════════
