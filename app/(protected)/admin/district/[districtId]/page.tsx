@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, Building2, School, Users2, GraduationCap, Target } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/lib/auth/helpers";
+import CreateSchoolButton from "../../_components/CreateSchoolButton";
+import AddAdminButton from "../../_components/AddAdminButton";
 
 export const dynamic = "force-dynamic";
 
@@ -120,17 +122,23 @@ export default async function DistrictAdminPage({
         All scopes
       </Link>
 
-      <div className="mt-3">
-        <div className="text-[11px] font-bold uppercase tracking-widest text-violet-700 dark:text-violet-300">
-          District admin
+      <div className="mt-3 flex flex-wrap items-start justify-between gap-3">
+        <div>
+          <div className="text-[11px] font-bold uppercase tracking-widest text-violet-700 dark:text-violet-300">
+            District admin
+          </div>
+          <h1 className="mt-1 flex items-center gap-3 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+            <Building2 className="h-7 w-7 text-violet-600" />
+            {d.name}
+          </h1>
+          {d.state && (
+            <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">{d.state}</p>
+          )}
         </div>
-        <h1 className="mt-1 flex items-center gap-3 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
-          <Building2 className="h-7 w-7 text-violet-600" />
-          {d.name}
-        </h1>
-        {d.state && (
-          <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">{d.state}</p>
-        )}
+        <div className="flex flex-wrap items-center gap-2 pt-2">
+          <CreateSchoolButton districtId={districtId} />
+          <AddAdminButton scope="district" districtId={districtId} label="Add district admin" />
+        </div>
       </div>
 
       <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">

@@ -3,6 +3,8 @@ import { redirect } from "next/navigation";
 import { Building2, School, Users2, ArrowRight, ShieldOff } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/lib/auth/helpers";
+import CreateDistrictButton from "./_components/CreateDistrictButton";
+import CreateSchoolButton from "./_components/CreateSchoolButton";
 
 export const dynamic = "force-dynamic";
 
@@ -30,22 +32,28 @@ export default async function AdminHomePage() {
           <ShieldOff className="h-7 w-7" />
         </div>
         <h1 className="mt-5 text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
-          No admin scope assigned
+          No admin scope yet
         </h1>
         <p className="mt-2 text-sm text-zinc-500 dark:text-slate-400">
-          School and district admin access is assigned by Readee when a
-          contract is signed. If your district just signed up, email{" "}
-          <a href="mailto:hello@readee.app" className="font-semibold text-indigo-600 underline">
-            hello@readee.app
-          </a>{" "}
-          — we&apos;ll grant access within one business day.
+          Create a district or a standalone school to get started. You
+          become the admin automatically, and can add more admins from
+          there.
         </p>
-        <Link
-          href="/classroom"
-          className="mt-6 inline-flex items-center gap-1.5 rounded-full bg-indigo-600 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-indigo-700"
-        >
-          Back to my classrooms
-        </Link>
+        <div className="mt-6 flex flex-col items-center gap-2 sm:flex-row sm:justify-center">
+          <CreateDistrictButton />
+          <CreateSchoolButton />
+        </div>
+        <div className="mt-6 text-xs text-zinc-400">
+          Need something else?{" "}
+          <a href="mailto:hello@readee.app" className="font-semibold text-indigo-600 underline">
+            Email the team
+          </a>{" "}
+          or{" "}
+          <Link href="/classroom" className="font-semibold text-indigo-600 underline">
+            head back to your classrooms
+          </Link>
+          .
+        </div>
       </div>
     );
   }
@@ -79,12 +87,20 @@ export default async function AdminHomePage() {
         <Users2 className="h-4 w-4" />
         Admin
       </div>
-      <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
-        Your scopes
-      </h1>
-      <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">
-        You have admin access to the places below. Pick one to dive in.
-      </p>
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <div>
+          <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+            Your scopes
+          </h1>
+          <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">
+            You have admin access to the places below. Pick one to dive in.
+          </p>
+        </div>
+        <div className="flex flex-wrap items-center gap-2 pt-2">
+          <CreateDistrictButton />
+          <CreateSchoolButton />
+        </div>
+      </div>
 
       <div className="mt-8 space-y-3">
         {(districts ?? []).map((d: any) => (

@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/lib/auth/helpers";
+import AddAdminButton from "../../_components/AddAdminButton";
 
 export const dynamic = "force-dynamic";
 
@@ -135,7 +136,7 @@ export default async function SchoolAdminPage({
         All scopes
       </Link>
 
-      <div className="mt-3 flex items-start justify-between gap-4">
+      <div className="mt-3 flex flex-wrap items-start justify-between gap-3">
         <div>
           <div className="text-[11px] font-bold uppercase tracking-widest text-indigo-700 dark:text-indigo-300">
             School admin
@@ -148,6 +149,9 @@ export default async function SchoolAdminPage({
               {[s.city, s.state].filter(Boolean).join(", ")}
             </p>
           )}
+        </div>
+        <div className="flex flex-wrap items-center gap-2 pt-2">
+          <AddAdminButton scope="school" schoolId={schoolId} label="Add school admin" />
         </div>
       </div>
 
