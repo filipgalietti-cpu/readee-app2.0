@@ -165,6 +165,100 @@ export async function revokeInvite(input: { inviteId: string }): Promise<
   return { ok: true };
 }
 
+/**
+ * District-sales flow: teacher creates classroom-owned student records
+ * directly. No parent email, no invite, no claim step. Students log in
+ * via /class/[join_code] with the class code + name tile picker.
+ */
+export async function createClassroomStudents(input: {
+  classroomId: string;
+  students: { firstName: string; lastInitial?: string | null }[];
+  source?: "manual" | "csv" | "google_classroom";
+}): Promise<
+  | { ok: true; created: number; invalid: number }
+  | { ok: false; error: string }
+> {
+  const profile = await requireProfile();
+  if (profile.role !== "educator") {
+    return { ok: false, error: "Only educators can add students." };
+  }
+  if (input.students.length === 0) {
+    return { ok: false, error: "No students provided." };
+  }
+  if (input.students.length > MAX_BULK_INVITES) {
+    return { ok: false, error: `Max ${MAX_BULK_INVITES} students per batch.` };
+  }
+
+  const supabase = await createClient();
+
+  const { data: classroom } = await supabase
+    .from("classrooms")
+    .select("id, teacher_id")
+    .eq("id", input.classroomId)
+    .eq("teacher_id", profile.id)
+    .maybeSingle();
+  if (!classroom) return { ok: false, error: "Classroom not found." };
+
+  const rows: {
+    owner_type: "classroom";
+    owner_classroom_id: string;
+    parent_id: null;
+    created_by_teacher: string;
+    first_name: string;
+    grade: string | null;
+  }[] = [];
+  let invalid = 0;
+
+  for (const s of input.students) {
+    const firstName = s.firstName?.trim();
+    if (!firstName) {
+      invalid++;
+      continue;
+    }
+    const display = s.lastInitial?.trim()
+      ? `${firstName} ${s.lastInitial.trim().charAt(0).toUpperCase()}.`
+      : firstName;
+    rows.push({
+      owner_type: "classroom",
+      owner_classroom_id: input.classroomId,
+      parent_id: null,
+      created_by_teacher: profile.id,
+      first_name: display.slice(0, 60),
+      grade: null,
+    });
+  }
+
+  if (rows.length === 0) {
+    return { ok: false, error: "No valid students to add." };
+  }
+
+  const { error } = await supabase.from("children").insert(rows);
+  if (error) return { ok: false, error: error.message };
+
+  // Auto-enroll the newly created students in the classroom.
+  const { data: created } = await supabase
+    .from("children")
+    .select("id")
+    .eq("owner_classroom_id", input.classroomId)
+    .eq("owner_type", "classroom")
+    .eq("created_by_teacher", profile.id)
+    .order("created_at", { ascending: false })
+    .limit(rows.length);
+
+  if (created && created.length > 0) {
+    const memberships = (created as { id: string }[]).map((c) => ({
+      classroom_id: input.classroomId,
+      child_id: c.id,
+    }));
+    await supabase
+      .from("classroom_memberships")
+      .upsert(memberships, { onConflict: "classroom_id,child_id" });
+  }
+
+  revalidatePath(`/classroom/${input.classroomId}`);
+  return { ok: true, created: rows.length, invalid };
+}
+
 export async function resendInvite(input: { inviteId: string }): Promise<
   { ok: true } | { ok: false; error: string }
 > {
