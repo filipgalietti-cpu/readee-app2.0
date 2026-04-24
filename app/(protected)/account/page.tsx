@@ -10,6 +10,7 @@ import { getChildAvatarImage } from "@/lib/utils/get-child-avatar";
 import type { Child } from "@/lib/db/types";
 import { usePlanStore } from "@/lib/stores/plan-store";
 import SettingsShell from "@/app/_components/SettingsShell";
+import ChildLanguagePicker from "@/app/_components/ChildLanguagePicker";
 
 interface ProfileData {
   display_name: string;
@@ -210,19 +211,28 @@ export default function AccountPage() {
             {children.length > 0 ? (
               <div className="space-y-2.5">
                 {children.map((child, i) => (
-                  <div key={child.id} className="flex items-center gap-3 p-3 rounded-xl bg-zinc-50 hover:bg-zinc-100 transition-colors">
-                    <div className="w-10 h-10 rounded-lg overflow-hidden flex-shrink-0 ring-1 ring-zinc-200">
-                      <img src={getChildAvatarImage(child, i)} alt={child.first_name} className="w-full h-full object-cover" draggable={false} />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="text-sm font-medium text-zinc-900">{child.first_name}</div>
-                      <div className="text-xs text-zinc-500">
-                        {child.grade || "No grade set"}{child.reading_level ? ` · ${child.reading_level}` : ""}
+                  <div key={child.id} className="rounded-xl bg-zinc-50 p-3">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-lg overflow-hidden flex-shrink-0 ring-1 ring-zinc-200">
+                        <img src={getChildAvatarImage(child, i)} alt={child.first_name} className="w-full h-full object-cover" draggable={false} />
                       </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="text-sm font-medium text-zinc-900">{child.first_name}</div>
+                        <div className="text-xs text-zinc-500">
+                          {child.grade || "No grade set"}{child.reading_level ? ` · ${child.reading_level}` : ""}
+                        </div>
+                      </div>
+                      <Link href="/settings" className="text-xs text-indigo-600 hover:text-indigo-700 font-medium">
+                        Manage
+                      </Link>
                     </div>
-                    <Link href="/settings" className="text-xs text-indigo-600 hover:text-indigo-700 font-medium">
-                      Manage
-                    </Link>
+                    <div className="mt-3 border-t border-zinc-200 pt-3">
+                      <ChildLanguagePicker
+                        childId={child.id}
+                        childName={child.first_name}
+                        current={(((child as any).language as "en" | "es") ?? "en")}
+                      />
+                    </div>
                   </div>
                 ))}
               </div>

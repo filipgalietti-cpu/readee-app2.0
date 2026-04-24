@@ -47,6 +47,8 @@ export interface Child {
   first_name: string;
   grade: string | null;
   reading_level: string | null;
+  /** Content language preference. Defaults to 'en' if not set. */
+  language?: "en" | "es";
   carrots: number;
   stories_read: number;
   streak_days: number;
