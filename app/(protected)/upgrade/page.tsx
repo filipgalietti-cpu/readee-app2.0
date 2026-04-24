@@ -20,6 +20,7 @@ import {
   ChevronDown,
   ShieldCheck,
   ArrowLeft,
+  Sparkles,
 } from "lucide-react";
 
 /* ─── Constants ───────────────────────────────────────── */
@@ -55,6 +56,14 @@ const REASON_COPY: Record<string, { title: string; subtitle: string }> = {
   child: {
     title: "Unlock more features",
     subtitle: "Get full access to all lessons, stories, and progress reports with Readee+.",
+  },
+  ask_readee: {
+    title: "Unlock Ask Readee",
+    subtitle: "Generate personalized reading passages, comprehension questions, and read-aloud audio for your child — at their exact grade level.",
+  },
+  teacher_solo: {
+    title: "Teach with Readee",
+    subtitle: "Run your classroom with all of Readee.ai: decodable passages, quiz wizards, custom images, and read-aloud audio — without waiting for your district.",
   },
 };
 
@@ -121,17 +130,25 @@ function UpgradeContent() {
   const annualTotal = 83.88;
   const savings = Math.round(((monthlyPrice - annualMonthly) / monthlyPrice) * 100);
 
+  // Teacher Solo pricing
+  const teacherMonthly = 19;
+  const teacherAnnualMonthly = 15;
+  const teacherAnnualTotal = 180;
+
+  // If the user landed here with reason=teacher_solo, lead with that tier.
+  const leadWithTeacher = reason === "teacher_solo";
+
   const reasonCopy = reason ? REASON_COPY[reason] : null;
 
   const [checkoutLoading, setCheckoutLoading] = useState(false);
 
-  async function handleStartTrial() {
+  async function handleStartTrial(sku: "premium" | "teacher_solo" = "premium") {
     setCheckoutLoading(true);
     try {
       const res = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ billing }),
+        body: JSON.stringify({ billing, sku }),
       });
       const data = await res.json();
       if (data.url) {
@@ -167,15 +184,18 @@ function UpgradeContent() {
     setPromoLoading(false);
   }
 
-  // If already premium, show confirmation
-  if (plan === "premium") {
+  // If already on a paid plan, show confirmation tailored to the tier.
+  if (plan === "premium" || plan === "teacher_solo") {
+    const planLabel = plan === "teacher_solo" ? "Teacher Solo" : "Readee+";
     return (
       <div className="max-w-lg mx-auto py-16 px-4 text-center space-y-4">
         <div className="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center mx-auto">
           <Check className="w-8 h-8 text-emerald-600" />
         </div>
-        <h1 className="text-2xl font-bold text-zinc-900">You have Readee+</h1>
-        <p className="text-zinc-500">You have full access to all lessons, stories, and features.</p>
+        <h1 className="text-2xl font-bold text-zinc-900">You have {planLabel}</h1>
+        <p className="text-zinc-500">
+          You have full access to everything your plan includes.
+        </p>
         <Link
           href="/dashboard"
           className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-indigo-600 text-white font-semibold text-sm hover:bg-indigo-700 transition-colors"
@@ -251,33 +271,125 @@ function UpgradeContent() {
           </button>
         </div>
 
-        {/* Price Card */}
-        <div className="rounded-2xl border-2 border-indigo-200 bg-white p-8 text-center shadow-sm">
-          <p className="text-sm font-semibold text-indigo-600 mb-2">Readee+</p>
-          <div className="flex items-baseline justify-center gap-1">
-            <span className="text-5xl font-extrabold text-zinc-900">
-              ${billing === "annual" ? annualMonthly.toFixed(2) : monthlyPrice.toFixed(2)}
-            </span>
-            <span className="text-zinc-400 text-sm">/month</span>
-          </div>
-          {billing === "annual" && (
-            <p className="text-xs text-zinc-400 mt-1">
-              ${annualTotal.toFixed(2)} billed annually
-            </p>
-          )}
-
-          <button
-            onClick={handleStartTrial}
-            disabled={checkoutLoading}
-            className="w-full mt-6 py-3.5 rounded-xl bg-indigo-600 text-white font-bold text-sm hover:bg-indigo-700 transition-colors shadow-sm disabled:opacity-50"
+        {/* Price Cards — two side-by-side for parent vs teacher */}
+        <div className="grid gap-4 sm:grid-cols-2">
+          {/* Readee+ for parents */}
+          <div
+            className={`rounded-2xl border-2 p-6 text-left shadow-sm transition ${
+              leadWithTeacher
+                ? "border-zinc-200 bg-white"
+                : "border-indigo-300 bg-white ring-2 ring-indigo-100"
+            }`}
           >
-            {checkoutLoading ? "Redirecting..." : "Start 7-Day Free Trial"}
-          </button>
+            <div className="flex items-start justify-between gap-2">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-widest text-indigo-600">Readee+</p>
+                <p className="text-sm text-zinc-500 mt-0.5">For families</p>
+              </div>
+              {!leadWithTeacher && (
+                <span className="rounded-full bg-indigo-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-indigo-700">
+                  Most parents
+                </span>
+              )}
+            </div>
+            <div className="mt-4 flex items-baseline gap-1">
+              <span className="text-4xl font-extrabold text-zinc-900">
+                ${billing === "annual" ? annualMonthly.toFixed(2) : monthlyPrice.toFixed(2)}
+              </span>
+              <span className="text-zinc-400 text-sm">/mo</span>
+            </div>
+            {billing === "annual" && (
+              <p className="text-xs text-zinc-400 mt-0.5">
+                ${annualTotal.toFixed(2)} billed annually
+              </p>
+            )}
+            <ul className="mt-4 space-y-1.5 text-xs text-zinc-600">
+              <li className="flex items-start gap-1.5">
+                <Check className="mt-0.5 h-3 w-3 flex-shrink-0 text-emerald-500" />
+                All K-4 lessons, stories, and practice
+              </li>
+              <li className="flex items-start gap-1.5">
+                <Check className="mt-0.5 h-3 w-3 flex-shrink-0 text-emerald-500" />
+                Parent analytics and progress reports
+              </li>
+              <li className="flex items-start gap-1.5">
+                <Sparkles className="mt-0.5 h-3 w-3 flex-shrink-0 text-violet-500" />
+                Ask Readee — 200 AI credits/mo
+              </li>
+            </ul>
+            <button
+              onClick={() => handleStartTrial("premium")}
+              disabled={checkoutLoading}
+              className="w-full mt-5 py-3 rounded-xl bg-indigo-600 text-white font-bold text-sm hover:bg-indigo-700 transition-colors shadow-sm disabled:opacity-50"
+            >
+              {checkoutLoading ? "Redirecting..." : "Start 7-day trial"}
+            </button>
+          </div>
 
-          <p className="text-xs text-zinc-400 mt-3">
-            Cancel anytime &middot; No commitment
-          </p>
+          {/* Teacher Solo for individual teachers */}
+          <div
+            className={`rounded-2xl border-2 p-6 text-left shadow-sm transition ${
+              leadWithTeacher
+                ? "border-violet-300 bg-white ring-2 ring-violet-100"
+                : "border-zinc-200 bg-white"
+            }`}
+          >
+            <div className="flex items-start justify-between gap-2">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-widest text-violet-600">Teacher Solo</p>
+                <p className="text-sm text-zinc-500 mt-0.5">For individual teachers</p>
+              </div>
+              {leadWithTeacher && (
+                <span className="rounded-full bg-violet-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-violet-700">
+                  Recommended
+                </span>
+              )}
+            </div>
+            <div className="mt-4 flex items-baseline gap-1">
+              <span className="text-4xl font-extrabold text-zinc-900">
+                ${billing === "annual" ? teacherAnnualMonthly : teacherMonthly}
+              </span>
+              <span className="text-zinc-400 text-sm">/mo</span>
+            </div>
+            {billing === "annual" && (
+              <p className="text-xs text-zinc-400 mt-0.5">
+                ${teacherAnnualTotal} billed annually
+              </p>
+            )}
+            <ul className="mt-4 space-y-1.5 text-xs text-zinc-600">
+              <li className="flex items-start gap-1.5">
+                <Check className="mt-0.5 h-3 w-3 flex-shrink-0 text-emerald-500" />
+                Up to 2 classrooms, 40 students
+              </li>
+              <li className="flex items-start gap-1.5">
+                <Check className="mt-0.5 h-3 w-3 flex-shrink-0 text-emerald-500" />
+                Classroom tools, rosters, live quizzes
+              </li>
+              <li className="flex items-start gap-1.5">
+                <Sparkles className="mt-0.5 h-3 w-3 flex-shrink-0 text-violet-500" />
+                Full Readee.ai — 500 credits/mo
+              </li>
+              <li className="flex items-start gap-1.5">
+                <Check className="mt-0.5 h-3 w-3 flex-shrink-0 text-emerald-500" />
+                Assignment wizard, quizzes, Google Classroom
+              </li>
+            </ul>
+            <button
+              onClick={() => handleStartTrial("teacher_solo")}
+              disabled={checkoutLoading}
+              className="w-full mt-5 py-3 rounded-xl bg-violet-600 text-white font-bold text-sm hover:bg-violet-700 transition-colors shadow-sm disabled:opacity-50"
+            >
+              {checkoutLoading ? "Redirecting..." : "Start 7-day trial"}
+            </button>
+          </div>
         </div>
+
+        <p className="text-center text-xs text-zinc-400">
+          Cancel anytime &middot; No commitment &middot;{" "}
+          <Link href="/schools" className="underline hover:text-zinc-600">
+            Running a school or district? See our Schools plan.
+          </Link>
+        </p>
       </motion.div>
 
       {/* ── Features ── */}
@@ -406,11 +518,19 @@ function UpgradeContent() {
       {/* ── Bottom CTA ── */}
       <div className="space-y-3 text-center pb-4">
         <button
-          onClick={handleStartTrial}
+          onClick={() => handleStartTrial(leadWithTeacher ? "teacher_solo" : "premium")}
           disabled={checkoutLoading}
-          className="w-full py-3.5 rounded-xl bg-indigo-600 text-white font-bold text-sm hover:bg-indigo-700 transition-colors shadow-sm disabled:opacity-50"
+          className={`w-full py-3.5 rounded-xl text-white font-bold text-sm transition-colors shadow-sm disabled:opacity-50 ${
+            leadWithTeacher
+              ? "bg-violet-600 hover:bg-violet-700"
+              : "bg-indigo-600 hover:bg-indigo-700"
+          }`}
         >
-          {checkoutLoading ? "Redirecting..." : "Start 7-Day Free Trial"}
+          {checkoutLoading
+            ? "Redirecting..."
+            : leadWithTeacher
+            ? "Start Teacher Solo trial"
+            : "Start 7-Day Free Trial"}
         </button>
         <Link
           href="/dashboard"

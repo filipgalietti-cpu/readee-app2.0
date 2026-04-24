@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { stripe } from "@/lib/stripe";
+import { stripe, planFromPriceId } from "@/lib/stripe";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import Stripe from "stripe";
 
@@ -40,10 +40,16 @@ export async function POST(req: NextRequest) {
         subscription.status === "active" ||
         subscription.status === "trialing";
 
+      // Inspect the subscribed price to choose the plan tier. Teacher
+      // Solo and Readee+ are separate products in Stripe, so we have to
+      // map the price ID → plan string explicitly.
+      const priceId = subscription.items.data[0]?.price?.id ?? null;
+      const tier = planFromPriceId(priceId) ?? "premium";
+
       await admin
         .from("profiles")
         .update({
-          plan: isActive ? "premium" : "free",
+          plan: isActive ? tier : "free",
           stripe_subscription_id: subscription.id,
         })
         .eq("stripe_customer_id", customerId);

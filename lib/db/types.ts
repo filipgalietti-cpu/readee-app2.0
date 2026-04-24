@@ -9,7 +9,7 @@ export interface Profile {
   id: string; // UUID - matches auth.users.id
   display_name: string;
   role: UserRole;
-  plan: "free" | "premium";
+  plan: "free" | "premium" | "teacher_solo";
   onboarding_complete: boolean;
   tos_accepted_at: string | null;
   tos_version: string | null;

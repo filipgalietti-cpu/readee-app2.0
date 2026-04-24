@@ -13,8 +13,25 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
   }
 
-  const { billing } = (await req.json()) as { billing: "monthly" | "annual" };
-  const priceId = billing === "annual" ? PRICES.annual : PRICES.monthly;
+  const { billing, sku } = (await req.json()) as {
+    billing: "monthly" | "annual";
+    sku?: "premium" | "teacher_solo";
+  };
+  const plan = sku ?? "premium";
+  const priceId =
+    plan === "teacher_solo"
+      ? billing === "annual"
+        ? PRICES.teacherSoloAnnual
+        : PRICES.teacherSoloMonthly
+      : billing === "annual"
+      ? PRICES.annual
+      : PRICES.monthly;
+  if (!priceId) {
+    return NextResponse.json(
+      { error: `Price not configured for ${plan} ${billing}` },
+      { status: 500 },
+    );
+  }
 
   // Check if user already has a Stripe customer ID
   const admin = supabaseAdmin();
