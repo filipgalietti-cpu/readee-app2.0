@@ -1,5 +1,6 @@
 import TosGate from "@/app/_components/TosGate";
 import SidebarShell from "@/app/_components/SidebarShell";
+import FeedbackButton from "@/app/_components/FeedbackButton";
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 
@@ -20,6 +21,7 @@ export default async function ProtectedLayout({
   return (
     <TosGate>
       <SidebarShell>{children}</SidebarShell>
+      <FeedbackButton />
     </TosGate>
   );
 }
