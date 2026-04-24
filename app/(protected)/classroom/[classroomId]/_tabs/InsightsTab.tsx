@@ -79,6 +79,11 @@ export default async function InsightsTab({ classroomId }: { classroomId: string
     totalCorrect += r.questions_correct;
     if (r.completed_at >= sevenDaysAgo) activeChildren.add(r.child_id);
 
+    // Custom quizzes use "custom:<quizId>" as standard_id — they inflate overall
+    // volume/mastery (correctly) but don't belong in the CCSS mastery heatmap
+    // because they're teacher-authored, not curriculum-standard aligned.
+    if (r.standard_id.startsWith("custom:")) continue;
+
     const cur = byStandard.get(r.standard_id) ?? { attempted: 0, correct: 0 };
     cur.attempted += r.questions_attempted;
     cur.correct += r.questions_correct;

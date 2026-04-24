@@ -99,8 +99,31 @@ export default async function StudentDetailPage({
     ((submissions ?? []) as any[]).map((s) => [s.assignment_id as string, s]),
   );
 
-  // Aggregate by standard.
+  // Resolve custom quiz IDs referenced in practice_results (custom:<quizId>)
+  // to their human titles so the activity feed and any custom section render
+  // as "Friday phonics check" instead of "custom:abc-123".
+  const customQuizIds = Array.from(
+    new Set(
+      practiceRows
+        .filter((p) => p.standard_id.startsWith("custom:"))
+        .map((p) => p.standard_id.slice("custom:".length))
+        .filter(Boolean),
+    ),
+  );
+  const { data: customQuizRows } = customQuizIds.length
+    ? await supabase
+        .from("custom_quizzes")
+        .select("id, title")
+        .in("id", customQuizIds)
+    : { data: [] as any[] };
+  const customQuizTitleById = new Map<string, string>(
+    ((customQuizRows ?? []) as any[]).map((q) => [q.id, q.title]),
+  );
+
+  // Aggregate by standard — CCSS rows only. Custom quizzes go in their own
+  // bucket below so they don't skew the mastery heatmap.
   const byStandard = new Map<string, { attempted: number; correct: number; lastAt: string | null }>();
+  const byCustomQuiz = new Map<string, { attempted: number; correct: number; lastAt: string | null }>();
   let totalAttempted = 0;
   let totalCorrect = 0;
   let totalCarrotsEarned = 0;
@@ -111,13 +134,37 @@ export default async function StudentDetailPage({
     totalAttempted += p.questions_attempted;
     totalCorrect += p.questions_correct;
     totalCarrotsEarned += p.carrots_earned || 0;
-    if (p.completed_at >= sevenDaysAgoIso) recent7dIds.add(p.standard_id);
+    if (p.completed_at >= sevenDaysAgoIso && !p.standard_id.startsWith("custom:")) {
+      recent7dIds.add(p.standard_id);
+    }
+
+    if (p.standard_id.startsWith("custom:")) {
+      const quizId = p.standard_id.slice("custom:".length);
+      const cur = byCustomQuiz.get(quizId) ?? { attempted: 0, correct: 0, lastAt: null };
+      cur.attempted += p.questions_attempted;
+      cur.correct += p.questions_correct;
+      if (!cur.lastAt || p.completed_at > cur.lastAt) cur.lastAt = p.completed_at;
+      byCustomQuiz.set(quizId, cur);
+      continue;
+    }
+
     const cur = byStandard.get(p.standard_id) ?? { attempted: 0, correct: 0, lastAt: null };
     cur.attempted += p.questions_attempted;
     cur.correct += p.questions_correct;
     if (!cur.lastAt || p.completed_at > cur.lastAt) cur.lastAt = p.completed_at;
     byStandard.set(p.standard_id, cur);
   }
+
+  const customQuizRowsFormatted = Array.from(byCustomQuiz.entries())
+    .map(([quizId, v]) => ({
+      quizId,
+      title: customQuizTitleById.get(quizId) ?? "Deleted quiz",
+      attempted: v.attempted,
+      correct: v.correct,
+      accuracy: v.attempted > 0 ? Math.round((v.correct / v.attempted) * 100) : 0,
+      lastAt: v.lastAt,
+    }))
+    .sort((a, b) => a.accuracy - b.accuracy);
 
   const standardRows = Array.from(byStandard.entries())
     .map(([sid, v]) => {
@@ -339,6 +386,49 @@ export default async function StudentDetailPage({
         )}
       </section>
 
+      {/* Custom quizzes — separate from CCSS mastery */}
+      {customQuizRowsFormatted.length > 0 && (
+        <section className="mt-6">
+          <h2 className="text-sm font-bold uppercase tracking-widest text-zinc-500 dark:text-slate-400 print:text-black">
+            Custom quizzes
+          </h2>
+          <div className="mt-3 overflow-hidden rounded-2xl border border-zinc-200 dark:border-slate-800 print:border-black">
+            <table className="w-full text-sm">
+              <thead className="bg-zinc-50 text-left text-[11px] uppercase tracking-wider text-zinc-500 dark:bg-slate-900/60 dark:text-slate-400 print:bg-white print:text-black">
+                <tr>
+                  <th className="px-4 py-2 font-semibold">Quiz</th>
+                  <th className="px-4 py-2 text-right font-semibold">Correct</th>
+                  <th className="px-4 py-2 text-right font-semibold">Accuracy</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-zinc-100 dark:divide-slate-800">
+                {customQuizRowsFormatted.map((r) => (
+                  <tr key={r.quizId}>
+                    <td className="px-4 py-2 font-semibold text-zinc-900 dark:text-white print:text-black">
+                      {r.title}
+                    </td>
+                    <td className="px-4 py-2 text-right font-mono text-zinc-700 dark:text-slate-300 print:text-black">
+                      {r.correct}/{r.attempted}
+                    </td>
+                    <td
+                      className={`px-4 py-2 text-right font-mono font-bold ${
+                        r.accuracy < 60
+                          ? "text-red-600"
+                          : r.accuracy < 75
+                          ? "text-amber-600"
+                          : "text-green-600"
+                      } print:text-black`}
+                    >
+                      {r.accuracy}%
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      )}
+
       {/* Recent activity */}
       <section className="mt-6 print:break-inside-avoid">
         <h2 className="text-sm font-bold uppercase tracking-widest text-zinc-500 dark:text-slate-400 print:text-black">
@@ -351,7 +441,13 @@ export default async function StudentDetailPage({
         ) : (
           <ul className="mt-3 space-y-1.5">
             {recentActivity.map((p, i) => {
-              const meta = STANDARD_META.get(p.standard_id);
+              const isCustom = p.standard_id.startsWith("custom:");
+              const customId = isCustom ? p.standard_id.slice("custom:".length) : null;
+              const meta = isCustom ? null : STANDARD_META.get(p.standard_id);
+              const label = isCustom
+                ? customQuizTitleById.get(customId!) ?? "Deleted quiz"
+                : meta?.standard_description ?? p.standard_id;
+              const ref = isCustom ? "Custom quiz" : p.standard_id;
               const accuracy = p.questions_attempted > 0 ? Math.round((p.questions_correct / p.questions_attempted) * 100) : 0;
               return (
                 <li
@@ -360,14 +456,14 @@ export default async function StudentDetailPage({
                 >
                   <div className="min-w-0">
                     <div className="truncate font-semibold text-zinc-900 dark:text-white print:text-black">
-                      {meta?.standard_description ?? p.standard_id}
+                      {label}
                     </div>
                     <div className="text-[11px] text-zinc-400 print:text-black">
                       {new Date(p.completed_at).toLocaleDateString("en-US", {
                         month: "short",
                         day: "numeric",
                       })}{" "}
-                      · {p.standard_id}
+                      · {ref}
                     </div>
                   </div>
                   <div className="flex-shrink-0 text-right font-mono text-xs">
