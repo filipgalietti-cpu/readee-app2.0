@@ -12,7 +12,7 @@ import { useViewModeStore, resolveViewMode, type ViewMode } from "@/lib/stores/v
 import { SidebarUserMenu } from "./SidebarUserMenu";
 import {
   Home, BarChart3, BookText, ListChecks, Map,
-  Carrot, Trophy, ChevronDown, ChevronRight, ClipboardCheck, GraduationCap, Building2, ClipboardPen, Library, Sparkles,
+  Carrot, Trophy, ChevronDown, ChevronRight, ClipboardCheck, GraduationCap, Building2, ClipboardPen, Library, Sparkles, Users,
 } from "lucide-react";
 
 /* ─── Nav items ──────────────────────────────────── */
@@ -52,7 +52,10 @@ function getNavSections(
     if (hasAdminScope) {
       sections.push({
         label: "Admin",
-        items: [{ href: "/admin", icon: Building2, label: "Admin" }],
+        items: [
+          { href: "/admin", icon: Building2, label: "Admin" },
+          { href: "/admin/community", icon: Users, label: "Community review" },
+        ],
       });
     }
 
@@ -81,7 +84,10 @@ function getNavSections(
   if (hasAdminScope) {
     sections.push({
       label: "Admin",
-      items: [{ href: "/admin", icon: Building2, label: "Admin" }],
+      items: [
+        { href: "/admin", icon: Building2, label: "Admin" },
+        { href: "/admin/community", icon: Users, label: "Community review" },
+      ],
     });
   }
 
@@ -106,6 +112,7 @@ function getNavSections(
         items: [
           { href: "/word-bank", icon: BookText, label: "Word Bank" },
           { href: `/practice-hub${q}`, icon: ListChecks, label: "Practice" },
+          { href: "/practice-hub/community", icon: Users, label: "Community library" },
           { href: `/journey${q}`, icon: Map, label: "Reading Journey" },
         ],
       },

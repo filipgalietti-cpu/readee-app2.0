@@ -8,6 +8,10 @@ import {
   type ParentAiBrief,
   MONTHLY_PARENT_CREDIT_LIMIT,
 } from "@/lib/ai/build-parent-content";
+import {
+  submitForCommunityReview,
+  withdrawCommunitySubmission,
+} from "@/lib/ai/community";
 
 /**
  * Parent-only. Gated on plan === "premium" — free parents get bounced
@@ -61,6 +65,8 @@ export async function toggleShareContent(input: {
 }): Promise<{ ok: true } | { ok: false; error: string }> {
   const profile = await requireProfile();
   const supabase = await createClient();
+
+  // Persist the intent on the source row first.
   const { error } = await supabase
     .from("child_ai_content")
     .update({
@@ -70,6 +76,30 @@ export async function toggleShareContent(input: {
     .eq("id", input.contentId)
     .eq("parent_id", profile.id);
   if (error) return { ok: false, error: error.message };
+
+  // If opting in, run the content through anonymization + enqueue for
+  // admin review. If opting out, withdraw any pending/approved copy.
+  if (input.shared) {
+    const submit = await submitForCommunityReview({
+      parentId: profile.id,
+      contentId: input.contentId,
+    });
+    if (!submit.ok) {
+      // Roll back the intent flag so the UI doesn't lie.
+      await supabase
+        .from("child_ai_content")
+        .update({ shared: false, shared_at: null })
+        .eq("id", input.contentId)
+        .eq("parent_id", profile.id);
+      return { ok: false, error: submit.error };
+    }
+  } else {
+    await withdrawCommunitySubmission({
+      parentId: profile.id,
+      sourceContentId: input.contentId,
+    });
+  }
+
   revalidatePath(`/dashboard/ask-readee`);
   return { ok: true };
 }
