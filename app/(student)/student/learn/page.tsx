@@ -85,7 +85,9 @@ export default async function StudentLearnPage({
   const admin = supabaseAdmin();
   const { data: assignmentRow } = await admin
     .from("assignments")
-    .select("id, question_ids, pass_threshold, audio_prompt_enabled, audio_choices_enabled")
+    .select(
+      "id, question_ids, pass_threshold, audio_prompt_enabled, audio_choices_enabled, shuffle_questions, shuffle_choices, reveal_correct_immediately",
+    )
     .eq("classroom_id", session.classroomId)
     .eq("kind", "readee_lesson")
     .eq("source_id", standardId)
@@ -97,6 +99,9 @@ export default async function StudentLearnPage({
   const passThreshold = (assignmentRow as any)?.pass_threshold as number | null | undefined;
   const audioPromptEnabled = (assignmentRow as any)?.audio_prompt_enabled !== false;
   const audioChoicesEnabled = (assignmentRow as any)?.audio_choices_enabled === true;
+  const shuffleQuestions = (assignmentRow as any)?.shuffle_questions === true;
+  const shuffleChoices = (assignmentRow as any)?.shuffle_choices !== false;
+  const revealImmediately = (assignmentRow as any)?.reveal_correct_immediately !== false;
 
   let mcqs = standard.questions.filter(
     (q) => q.type === "multiple_choice" && Array.isArray(q.choices) && (q.choices?.length ?? 0) >= 2,
@@ -105,6 +110,25 @@ export default async function StudentLearnPage({
     const allow = new Set(questionIdsFilter);
     const filtered = mcqs.filter((q) => allow.has(q.id));
     if (filtered.length > 0) mcqs = filtered;
+  }
+
+  // Fisher-Yates shuffle for question order + per-question choice order.
+  // Done server-side so each request's render is stable but differs across
+  // students (request-bound randomness).
+  function shuffle<T>(arr: T[]): T[] {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+  if (shuffleQuestions) mcqs = shuffle(mcqs);
+  if (shuffleChoices) {
+    mcqs = mcqs.map((q) => ({
+      ...q,
+      choices: Array.isArray(q.choices) ? shuffle(q.choices) : q.choices,
+    }));
   }
 
   return (
@@ -141,6 +165,7 @@ export default async function StudentLearnPage({
           passThreshold={passThreshold ?? null}
           audioPromptEnabled={audioPromptEnabled}
           audioChoicesEnabled={audioChoicesEnabled}
+          revealImmediately={revealImmediately}
         />
       </div>
     </div>

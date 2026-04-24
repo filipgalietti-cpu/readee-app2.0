@@ -4,8 +4,9 @@ import { useEffect, useMemo, useState, useTransition } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, X, Search, Check, Target, BookOpen, ClipboardPen, Volume2 } from "lucide-react";
+import { Plus, X, Search, Check, Target, BookOpen, ClipboardPen, Volume2, Settings2, Shuffle, Eye, RotateCcw } from "lucide-react";
 import { createAssignment } from "../../actions";
+import YesNoToggle from "@/app/_components/YesNoToggle";
 import kJson from "@/app/data/kindergarten-standards-questions.json";
 import g1Json from "@/app/data/1st-grade-standards-questions.json";
 import g2Json from "@/app/data/2nd-grade-standards-questions.json";
@@ -67,6 +68,10 @@ export default function NewAssignmentButton({
   const [includedQuestionIds, setIncludedQuestionIds] = useState<Set<string> | null>(null); // null = all
   const [audioPrompt, setAudioPrompt] = useState(true);
   const [audioChoices, setAudioChoices] = useState(false);
+  const [shuffleQuestions, setShuffleQuestions] = useState(false);
+  const [shuffleChoices, setShuffleChoices] = useState(true);
+  const [revealImmediately, setRevealImmediately] = useState(true);
+  const [attemptsAllowed, setAttemptsAllowed] = useState<number | null>(null);
   const [err, setErr] = useState<string | null>(null);
   const [pending, start] = useTransition();
   const router = useRouter();
@@ -115,6 +120,10 @@ export default function NewAssignmentButton({
     setIncludedQuestionIds(null);
     setAudioPrompt(true);
     setAudioChoices(false);
+    setShuffleQuestions(false);
+    setShuffleChoices(true);
+    setRevealImmediately(true);
+    setAttemptsAllowed(null);
     setErr(null);
   }
 
@@ -164,6 +173,10 @@ export default function NewAssignmentButton({
           questionIds: subsetIds,
           audioPromptEnabled: audioPrompt,
           audioChoicesEnabled: audioChoices,
+          shuffleQuestions,
+          shuffleChoices,
+          revealCorrectImmediately: revealImmediately,
+          attemptsAllowed,
         });
         if (!res.ok) {
           setErr(res.error);
@@ -190,6 +203,10 @@ export default function NewAssignmentButton({
           questionIds: null,
           audioPromptEnabled: audioPrompt,
           audioChoicesEnabled: audioChoices,
+          shuffleQuestions,
+          shuffleChoices,
+          revealCorrectImmediately: revealImmediately,
+          attemptsAllowed,
         });
         if (!res.ok) {
           setErr(res.error);
@@ -501,43 +518,69 @@ export default function NewAssignmentButton({
                         <Volume2 className="h-4 w-4 text-indigo-600" />
                         Audio
                       </label>
-                      <p className="mt-0.5 text-xs text-zinc-500 dark:text-slate-400">
-                        Control whether audio plays automatically when students see each question.
-                      </p>
-                      <div className="mt-3 space-y-2">
-                        <label className="flex cursor-pointer items-center gap-2 rounded-lg border border-zinc-200 bg-white p-2.5 text-sm dark:border-slate-700 dark:bg-slate-900">
-                          <input
-                            type="checkbox"
-                            checked={audioPrompt}
-                            onChange={(e) => setAudioPrompt(e.target.checked)}
-                            className="h-4 w-4 accent-indigo-600"
-                          />
-                          <div className="flex-1">
-                            <div className="font-semibold text-zinc-900 dark:text-white">
-                              Autoplay question audio
-                            </div>
-                            <div className="text-[11px] text-zinc-500 dark:text-slate-400">
-                              Reads the prompt aloud when available. Recommended for K-2.
-                            </div>
+                      <div className="mt-2 space-y-2">
+                        <YesNoToggle
+                          value={audioPrompt}
+                          onChange={setAudioPrompt}
+                          label="Autoplay question audio"
+                          helper="Reads the prompt aloud when available. Recommended for K-2."
+                        />
+                        <YesNoToggle
+                          value={audioChoices}
+                          onChange={setAudioChoices}
+                          label="Tap to preview choice audio"
+                          helper="Tap once to hear a choice, tap again to pick. Useful for phoneme / letter-sound questions."
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="flex items-center gap-1.5 text-sm font-semibold text-zinc-700 dark:text-slate-300">
+                        <Settings2 className="h-4 w-4 text-indigo-600" />
+                        Behavior
+                      </label>
+                      <div className="mt-2 space-y-2">
+                        <YesNoToggle
+                          value={shuffleQuestions}
+                          onChange={setShuffleQuestions}
+                          label="Shuffle question order"
+                          helper="Randomize the order each student sees. Leave off if you want the whole class on the same rhythm."
+                        />
+                        <YesNoToggle
+                          value={shuffleChoices}
+                          onChange={setShuffleChoices}
+                          label="Shuffle answer choices"
+                          helper="Randomize A/B/C/D per student so kids can't compare tiles."
+                        />
+                        <YesNoToggle
+                          value={revealImmediately}
+                          onChange={setRevealImmediately}
+                          label="Reveal correct answer after each question"
+                          helper="Turn off for test-mode (show only the final score, no per-question feedback)."
+                        />
+                      </div>
+                      <div className="mt-3 flex items-start justify-between gap-3 rounded-xl border border-zinc-200 bg-white p-3 dark:border-slate-700 dark:bg-slate-900">
+                        <div className="min-w-0 flex-1">
+                          <div className="flex items-center gap-1.5 text-sm font-semibold text-zinc-900 dark:text-white">
+                            <RotateCcw className="h-3.5 w-3.5 text-indigo-600" />
+                            Attempts allowed
                           </div>
-                        </label>
-                        <label className="flex cursor-pointer items-center gap-2 rounded-lg border border-zinc-200 bg-white p-2.5 text-sm dark:border-slate-700 dark:bg-slate-900">
-                          <input
-                            type="checkbox"
-                            checked={audioChoices}
-                            onChange={(e) => setAudioChoices(e.target.checked)}
-                            className="h-4 w-4 accent-indigo-600"
-                          />
-                          <div className="flex-1">
-                            <div className="font-semibold text-zinc-900 dark:text-white">
-                              Tap to preview choice audio
-                            </div>
-                            <div className="text-[11px] text-zinc-500 dark:text-slate-400">
-                              Students tap once to hear a choice, tap again to pick. Useful for
-                              phoneme and letter-sound questions.
-                            </div>
+                          <div className="mt-0.5 text-[11px] text-zinc-500 dark:text-slate-400">
+                            Unlimited lets a struggling student keep practicing until they pass the threshold.
                           </div>
-                        </label>
+                        </div>
+                        <select
+                          value={attemptsAllowed ?? ""}
+                          onChange={(e) =>
+                            setAttemptsAllowed(e.target.value === "" ? null : Number(e.target.value))
+                          }
+                          className="flex-shrink-0 rounded-full border border-zinc-200 bg-white px-3 py-1 text-xs font-semibold focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                        >
+                          <option value="">Unlimited</option>
+                          <option value="1">1 attempt</option>
+                          <option value="2">2 attempts</option>
+                          <option value="3">3 attempts</option>
+                        </select>
                       </div>
                     </div>
 

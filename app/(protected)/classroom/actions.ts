@@ -490,6 +490,10 @@ export async function createAssignment(input: {
   questionIds?: string[] | null;
   audioPromptEnabled?: boolean;
   audioChoicesEnabled?: boolean;
+  shuffleQuestions?: boolean;
+  shuffleChoices?: boolean;
+  revealCorrectImmediately?: boolean;
+  attemptsAllowed?: number | null;
 }): Promise<{ ok: true; assignmentId: string } | { ok: false; error: string }> {
   const profile = await requireProfile();
   if (profile.role !== "educator") {
@@ -530,6 +534,13 @@ export async function createAssignment(input: {
       question_ids: questionIds,
       audio_prompt_enabled: input.audioPromptEnabled ?? true,
       audio_choices_enabled: input.audioChoicesEnabled ?? false,
+      shuffle_questions: input.shuffleQuestions ?? false,
+      shuffle_choices: input.shuffleChoices ?? true,
+      reveal_correct_immediately: input.revealCorrectImmediately ?? true,
+      attempts_allowed:
+        typeof input.attemptsAllowed === "number" && input.attemptsAllowed > 0
+          ? input.attemptsAllowed
+          : null,
     })
     .select("id")
     .single();

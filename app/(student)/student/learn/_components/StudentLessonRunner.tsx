@@ -55,6 +55,7 @@ export default function StudentLessonRunner({
   passThreshold,
   audioPromptEnabled = true,
   audioChoicesEnabled = false,
+  revealImmediately = true,
 }: {
   standardId: string;
   lessonTitle: string;
@@ -63,6 +64,7 @@ export default function StudentLessonRunner({
   passThreshold?: number | null;
   audioPromptEnabled?: boolean;
   audioChoicesEnabled?: boolean;
+  revealImmediately?: boolean;
 }) {
   const hasSlides = slides.length > 0;
   const [phase, setPhase] = useState<Phase>(hasSlides ? "slides" : "practice");
@@ -157,8 +159,21 @@ export default function StudentLessonRunner({
 
   function mcqCheck() {
     if (!picked || revealed) return;
+    const wasCorrect = mcqCorrectSet.has(picked);
+    if (wasCorrect) setCorrectCount((n) => n + 1);
+    // Test mode: skip the reveal screen and jump straight to the next
+    // question (or finish). Students never see whether they were right
+    // until the final score screen.
+    if (!revealImmediately) {
+      if (mcqIdx + 1 >= mcqs.length) {
+        completeLesson(mcqs.length, correctCount + (wasCorrect ? 1 : 0));
+        return;
+      }
+      setMcqIdx(mcqIdx + 1);
+      setPicked(null);
+      return;
+    }
     setRevealed(true);
-    if (mcqCorrectSet.has(picked)) setCorrectCount((n) => n + 1);
   }
 
   function mcqNext() {
