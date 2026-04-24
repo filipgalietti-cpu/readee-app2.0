@@ -8,6 +8,7 @@ import { useSidebarStore } from "@/lib/stores/sidebar-store";
 import { useChildStore } from "@/lib/stores/child-store";
 import { getChildAvatarImage } from "@/lib/utils/get-child-avatar";
 import { usePlanStore } from "@/lib/stores/plan-store";
+import { useViewModeStore, resolveViewMode, type ViewMode } from "@/lib/stores/view-mode-store";
 import { SidebarUserMenu } from "./SidebarUserMenu";
 import {
   Home, BarChart3, BookText, ListChecks, Map,
@@ -21,17 +22,18 @@ type NavSection = { label: string; items: NavItem[]; collapsible?: boolean };
 
 function getNavSections(
   childId: string | null,
-  role: string | null,
-  hasAdminScope: boolean,
-  hasChildren: boolean,
+  viewMode: ViewMode,
+  capabilities: {
+    ownsClassroom: boolean;
+    hasChildren: boolean;
+    hasAdminScope: boolean;
+  },
 ): NavSection[] {
   const q = childId ? `?child=${childId}` : "";
   const sections: NavSection[] = [];
+  const { ownsClassroom, hasChildren, hasAdminScope } = capabilities;
 
-  // Teach section first for educators — this is their home. "Build with
-  // AI" is emphasized at the top because it's the fastest path to a new
-  // assignment and we want it discoverable, not buried under Quizzes.
-  if (role === "educator") {
+  if (viewMode === "teacher" && ownsClassroom) {
     sections.push({
       label: "Teach",
       items: [
@@ -46,22 +48,17 @@ function getNavSections(
         { href: "/classroom/authoring", icon: ClipboardPen, label: "Quizzes" },
       ],
     });
-  }
 
-  // Admin gets its own section for anyone who has the scope — consistent
-  // placement regardless of role, so admins don't hunt for it.
-  if (hasAdminScope) {
-    sections.push({
-      label: "Admin",
-      items: [{ href: "/admin", icon: Building2, label: "Admin" }],
-    });
-  }
+    if (hasAdminScope) {
+      sections.push({
+        label: "Admin",
+        items: [{ href: "/admin", icon: Building2, label: "Admin" }],
+      });
+    }
 
-  // Kid-facing nav. For pure parents this is the whole sidebar; for
-  // educator-who-also-has-kids we collapse it into one "Family" group so
-  // the Teach section is visually dominant.
-  if (hasChildren) {
-    if (role === "educator") {
+    // Hybrid teachers also get a collapsed "Family" group so they can pop
+    // over to the parent side without switching views.
+    if (hasChildren) {
       sections.push({
         label: "Family",
         collapsible: true,
@@ -76,32 +73,62 @@ function getNavSections(
           { href: `/leaderboard${q}`, icon: Trophy, label: "Leaderboard" },
         ],
       });
-    } else {
-      sections.push(
-        {
-          label: "Main",
-          items: [
-            { href: "/dashboard", icon: Home, label: "Dashboard" },
-            { href: `/assessment-results${q}`, icon: ClipboardCheck, label: "Placement Test" },
-            { href: `/analytics${q}`, icon: BarChart3, label: "Analytics" },
-          ],
-        },
-        {
-          label: "Learning",
-          items: [
-            { href: "/word-bank", icon: BookText, label: "Word Bank" },
-            { href: `/practice-hub${q}`, icon: ListChecks, label: "Practice" },
-            { href: `/journey${q}`, icon: Map, label: "Reading Journey" },
-          ],
-        },
-        {
-          label: "Fun",
-          items: [
-            { href: `/shop${q}`, icon: Carrot, label: "Shop", iconColor: "w-[17px] h-[17px] text-orange-500" },
-            { href: `/leaderboard${q}`, icon: Trophy, label: "Leaderboard" },
-          ],
-        },
-      );
+    }
+    return sections;
+  }
+
+  // Parent view.
+  if (hasAdminScope) {
+    sections.push({
+      label: "Admin",
+      items: [{ href: "/admin", icon: Building2, label: "Admin" }],
+    });
+  }
+
+  if (hasChildren) {
+    sections.push(
+      {
+        label: "Main",
+        items: [
+          { href: "/dashboard", icon: Home, label: "Dashboard" },
+          {
+            href: "/dashboard/ask-readee",
+            icon: Sparkles,
+            label: "Ask Readee",
+            emphasis: true,
+          },
+          { href: `/assessment-results${q}`, icon: ClipboardCheck, label: "Placement Test" },
+          { href: `/analytics${q}`, icon: BarChart3, label: "Analytics" },
+        ],
+      },
+      {
+        label: "Learning",
+        items: [
+          { href: "/word-bank", icon: BookText, label: "Word Bank" },
+          { href: `/practice-hub${q}`, icon: ListChecks, label: "Practice" },
+          { href: `/journey${q}`, icon: Map, label: "Reading Journey" },
+        ],
+      },
+      {
+        label: "Fun",
+        items: [
+          { href: `/shop${q}`, icon: Carrot, label: "Shop", iconColor: "w-[17px] h-[17px] text-orange-500" },
+          { href: `/leaderboard${q}`, icon: Trophy, label: "Leaderboard" },
+        ],
+      },
+    );
+
+    // Hybrid parent-in-parent-view gets a "Teach" shortcut too.
+    if (ownsClassroom) {
+      sections.push({
+        label: "Teach",
+        collapsible: true,
+        items: [
+          { href: "/classroom", icon: GraduationCap, label: "Classroom" },
+          { href: "/classroom/authoring", icon: ClipboardPen, label: "Quizzes" },
+          { href: "/classroom/library", icon: Library, label: "Library" },
+        ],
+      });
     }
   }
 
@@ -182,36 +209,51 @@ export default function AppSidebar({ mobileOnly = false }: { mobileOnly?: boolea
   const avatarSrc = activeChild ? getChildAvatarImage(activeChild, childIndex === -1 ? 0 : childIndex) : null;
 
   const plan = usePlanStore((s) => s.plan);
-  const role = usePlanStore((s) => s.role);
   const hasAdminScope = usePlanStore((s) => s.hasAdminScope);
+  const ownsClassroom = usePlanStore((s) => s.ownsClassroom);
+  const planHasChildren = usePlanStore((s) => s.hasChildren);
   const displayName = usePlanStore((s) => s.displayName);
   const email = usePlanStore((s) => s.email);
   const fetchPlan = usePlanStore((s) => s.fetch);
   useEffect(() => { fetchPlan(); }, [fetchPlan]);
 
+  const savedViewMode = useViewModeStore((s) => s.mode);
+  const setViewMode = useViewModeStore((s) => s.setMode);
+
+  // children may live in the dedicated store; also fall back to the plan
+  // store flag for first-render (when child list hasn't loaded yet).
+  const hasChildren = storeChildren.length > 0 || planHasChildren;
+
+  const viewMode = resolveViewMode({
+    ownsClassroom,
+    hasChildren,
+    saved: savedViewMode,
+  });
+  const isHybrid = ownsClassroom && hasChildren;
+
   const sections = getNavSections(
     activeChild?.id || null,
-    role,
-    hasAdminScope,
-    storeChildren.length > 0,
+    viewMode,
+    { ownsClassroom, hasChildren, hasAdminScope },
   );
 
-  // For educators, the sidebar identity is the teacher — not the child.
-  // Pure parents keep the current child-forward sidebar.
-  const isEducator = role === "educator";
-  const sidebarName = isEducator
+  // Sidebar identity derives from view mode. Teacher view shows the
+  // logged-in user's name; Parent view falls back to the child-forward
+  // identity (preserves parent UX).
+  const showTeacherIdentity = viewMode === "teacher";
+  const sidebarName = showTeacherIdentity
     ? displayName || "Teacher"
-    : activeChild?.first_name || "Reader";
-  const sidebarAvatarSrc = isEducator ? null : avatarSrc;
-  // Subtitle = role label for teachers (never "Free Plan" — that refers
-  // to the consumer $9.99 subscription and is misleading for teachers
-  // whose seat is paid via district). Email shows in the dropdown detail.
-  const sidebarSubtitle = isEducator
+    : activeChild?.first_name || displayName || "Reader";
+  const sidebarAvatarSrc = showTeacherIdentity ? null : avatarSrc;
+  // Subtitle: teacher label for teacher view (never "Free Plan" — that
+  // refers to consumer $9.99 and is misleading for district-paid teacher
+  // seats). Parent view keeps plan badge behavior.
+  const sidebarSubtitle = showTeacherIdentity
     ? hasAdminScope
       ? "Teacher · Admin"
       : "Teacher"
     : undefined;
-  const sidebarDetail = isEducator ? email ?? null : null;
+  const sidebarDetail = showTeacherIdentity ? email ?? null : null;
 
   // Close mobile overlay on route change
   useEffect(() => { setMobileOpen(false); }, [pathname, setMobileOpen]);
@@ -248,6 +290,9 @@ export default function AppSidebar({ mobileOnly = false }: { mobileOnly?: boolea
                 plan={plan || "free"}
                 subtitle={sidebarSubtitle}
                 detail={sidebarDetail}
+                viewMode={viewMode}
+                isHybrid={isHybrid}
+                onViewModeChange={(m) => setViewMode(m)}
                 onClose={() => setMobileOpen(false)}
               />
             </motion.aside>
@@ -278,6 +323,9 @@ export default function AppSidebar({ mobileOnly = false }: { mobileOnly?: boolea
                 plan={plan || "free"}
                 subtitle={sidebarSubtitle}
                 detail={sidebarDetail}
+                viewMode={viewMode}
+                isHybrid={isHybrid}
+                onViewModeChange={(m) => setViewMode(m)}
                 onToggle={() => setOpen(false)}
               />
             </motion.div>
@@ -448,6 +496,9 @@ function ExpandedNav({
   plan,
   subtitle,
   detail,
+  viewMode,
+  isHybrid,
+  onViewModeChange,
   onClose,
   onToggle,
 }: {
@@ -458,6 +509,9 @@ function ExpandedNav({
   plan: string;
   subtitle?: string;
   detail?: string | null;
+  viewMode?: ViewMode;
+  isHybrid?: boolean;
+  onViewModeChange?: (m: ViewMode) => void;
   onClose?: () => void;
   onToggle?: () => void;
 }) {
@@ -506,6 +560,28 @@ function ExpandedNav({
       </div>
 
       <div className="mx-3 h-px bg-zinc-200 dark:bg-slate-700" />
+
+      {/* Hybrid view toggle — only for users who have both capabilities. */}
+      {isHybrid && viewMode && onViewModeChange && (
+        <div className="px-3 pt-2">
+          <div className="inline-flex w-full rounded-full border border-zinc-200 bg-zinc-50 p-0.5 text-[11px] font-semibold dark:border-slate-700 dark:bg-slate-950">
+            {(["teacher", "parent"] as ViewMode[]).map((m) => (
+              <button
+                key={m}
+                type="button"
+                onClick={() => onViewModeChange(m)}
+                className={`flex-1 rounded-full px-2 py-1 transition ${
+                  viewMode === m
+                    ? "bg-white text-indigo-700 shadow-sm dark:bg-slate-800 dark:text-indigo-300"
+                    : "text-zinc-500 hover:text-zinc-700 dark:hover:text-slate-300"
+                }`}
+              >
+                {m === "teacher" ? "Teacher view" : "Parent view"}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Nav links */}
       <div className="flex-1 overflow-y-auto py-2 space-y-4">
