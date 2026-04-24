@@ -13,6 +13,7 @@ import {
   aiGenerateAudio,
 } from "../../../../authoring-actions";
 import TopUpCreditsButton from "@/app/_components/TopUpCreditsButton";
+import CsvImportButton from "./CsvImportButton";
 
 type QuestionKind = "multiple_choice" | "true_false" | "fill_in_blank";
 
@@ -60,6 +61,7 @@ export default function QuizBuilder({
             Questions
           </h2>
           <div className="flex flex-wrap items-center gap-2">
+            <CsvImportButton quizId={quizId} />
             <button
               type="button"
               onClick={() => setCreating(true)}

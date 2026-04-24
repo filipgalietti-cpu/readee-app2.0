@@ -522,3 +522,111 @@ export async function addManyQuestionsToQuiz(input: {
   revalidatePath(`/classroom/authoring/quiz/${input.quizId}`);
   return { ok: true, added };
 }
+
+/**
+ * Bulk-import questions from a CSV upload. Caller validates client-side,
+ * server validates again before any insert. Cap at 100 rows / upload.
+ *
+ * Returns the count imported plus per-row errors. Errors don't abort —
+ * we import everything that's valid and report what wasn't.
+ */
+export async function bulkImportQuestionsFromCsv(input: {
+  quizId: string;
+  csvText: string;
+}): Promise<
+  | {
+      ok: true;
+      imported: number;
+      errors: { row: number; message: string }[];
+    }
+  | { ok: false; error: string }
+> {
+  const profile = await requireProfile();
+  if (profile.role !== "educator") {
+    return { ok: false, error: "Only educators can edit quizzes." };
+  }
+  if (!input.csvText || input.csvText.length > 500_000) {
+    return { ok: false, error: "CSV is empty or too large (max ~500KB)." };
+  }
+
+  const { parseCsv } = await import("@/lib/csv/parse");
+  const { normalizeRows } = await import("@/lib/csv/quiz-template");
+  const rows = parseCsv(input.csvText);
+  const { questions, errors } = normalizeRows(rows);
+
+  if (questions.length > 100) {
+    return {
+      ok: false,
+      error: `Found ${questions.length} questions but the per-upload cap is 100. Split into multiple files.`,
+    };
+  }
+
+  const supabase = await createClient();
+  const { data: quiz } = await supabase
+    .from("custom_quizzes")
+    .select("id")
+    .eq("id", input.quizId)
+    .eq("teacher_id", profile.id)
+    .maybeSingle();
+  if (!quiz) return { ok: false, error: "Quiz not found." };
+
+  const { data: maxRow } = await supabase
+    .from("custom_quiz_questions")
+    .select("position")
+    .eq("quiz_id", input.quizId)
+    .order("position", { ascending: false })
+    .limit(1)
+    .maybeSingle();
+  let nextPosition = ((maxRow as any)?.position ?? 0) + 1;
+
+  let imported = 0;
+  for (let i = 0; i < questions.length; i++) {
+    const q = questions[i];
+    const choicesValue =
+      q.kind === "multiple_choice"
+        ? q.choices
+        : q.kind === "true_false"
+        ? ["True", "False"]
+        : null;
+    const correctValue =
+      q.kind === "fill_in_blank" ? q.correct : (q.correct as string);
+
+    const { data: qRow, error: qErr } = await supabase
+      .from("custom_questions")
+      .insert({
+        teacher_id: profile.id,
+        kind: q.kind,
+        prompt: q.prompt,
+        choices: choicesValue,
+        correct: correctValue,
+        hint: q.hint,
+        image_url: q.imageUrl,
+        audio_url: q.audioUrl,
+      })
+      .select("id")
+      .single();
+    if (qErr || !qRow) {
+      errors.push({
+        row: i + 2,
+        message: `DB insert failed: ${qErr?.message ?? "unknown error"}`,
+      });
+      continue;
+    }
+    const { error: jErr } = await supabase
+      .from("custom_quiz_questions")
+      .insert({
+        quiz_id: input.quizId,
+        question_id: (qRow as any).id,
+        position: nextPosition,
+      });
+    if (jErr) {
+      errors.push({ row: i + 2, message: `Couldn't attach to quiz: ${jErr.message}` });
+      continue;
+    }
+    nextPosition += 1;
+    imported += 1;
+  }
+
+  revalidatePath(`/classroom/authoring/quiz/${input.quizId}`);
+  return { ok: true, imported, errors };
+}
