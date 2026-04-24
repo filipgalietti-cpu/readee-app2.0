@@ -26,6 +26,7 @@ type Item = {
   created_at: string;
   reviewed_at: string | null;
   source_parent_id: string;
+  auto_approved?: boolean;
 };
 
 export default function CommunityReviewList({
@@ -112,6 +113,11 @@ function ReviewCard({ item }: { item: Item }) {
             {item.phonics_pattern && (
               <span className="rounded-full bg-indigo-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-indigo-700 dark:bg-indigo-950/40 dark:text-indigo-300">
                 {item.phonics_pattern}
+              </span>
+            )}
+            {item.auto_approved && (
+              <span className="rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-amber-800 dark:bg-amber-950/40 dark:text-amber-300">
+                Auto-approved · Trusted parent
               </span>
             )}
             <span className="text-[11px] text-zinc-400">

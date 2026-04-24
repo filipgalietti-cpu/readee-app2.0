@@ -26,7 +26,7 @@ export default async function CommunityModerationPage({
   const { data: rows } = await admin
     .from("community_passages")
     .select(
-      "id, title, passage_text, questions, image_url, grade_level, topic, phonics_pattern, status, rejection_reason, created_at, reviewed_at, reviewed_by, source_parent_id, view_count, play_count, completion_count",
+      "id, title, passage_text, questions, image_url, grade_level, topic, phonics_pattern, status, rejection_reason, created_at, reviewed_at, reviewed_by, source_parent_id, view_count, play_count, completion_count, auto_approved",
     )
     .eq("status", status)
     .order("created_at", { ascending: false })

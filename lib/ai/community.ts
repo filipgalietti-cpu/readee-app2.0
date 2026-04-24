@@ -19,6 +19,14 @@
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { containsUnsafeContent } from "@/lib/ai/safety";
 
+/**
+ * Once a parent has TRUSTED_THRESHOLD successful community approvals,
+ * their subsequent submissions auto-approve and skip the admin queue.
+ * An admin can still demote them via profile_trust_flags if quality
+ * drops.
+ */
+export const TRUSTED_THRESHOLD = 5;
+
 // Conservative generic-name whitelist. If a proper-noun-looking token in
 // the passage ISN'T in this set, we replace it with Alex / Sam / Jamie
 // rotationally. Kid reading passages normally stick to a small cast, so
@@ -154,6 +162,28 @@ export async function submitForCommunityReview(input: {
     .eq("source_content_id", input.contentId)
     .eq("status", "pending");
 
+  // Trusted-parent check. Either:
+  //   - Admin has explicitly flagged them as trusted via
+  //     profile_trust_flags.is_trusted_parent = true, OR
+  //   - They've accumulated >= TRUSTED_THRESHOLD approved submissions.
+  // A demotion (admin sets is_trusted_parent=false) overrides the
+  // automatic count, so the check honors the explicit flag first.
+  const [flagRow, countRow] = await Promise.all([
+    admin
+      .from("profile_trust_flags")
+      .select("is_trusted_parent")
+      .eq("profile_id", input.parentId)
+      .maybeSingle(),
+    admin.rpc("parent_approved_submission_count", {
+      p_parent_id: input.parentId,
+    }),
+  ]);
+  const explicitTrust = (flagRow.data as any)?.is_trusted_parent;
+  const approvedCount = Number((countRow.data as any) ?? 0);
+  const isTrusted =
+    explicitTrust === true ||
+    (explicitTrust !== false && approvedCount >= TRUSTED_THRESHOLD);
+
   const { data: inserted, error: insErr } = await admin
     .from("community_passages")
     .insert({
@@ -167,7 +197,9 @@ export async function submitForCommunityReview(input: {
       grade_level: c.grade_level ?? "2nd",
       topic: c.topic,
       phonics_pattern: c.phonics_pattern ?? null,
-      status: "pending",
+      status: isTrusted ? "approved" : "pending",
+      auto_approved: isTrusted,
+      reviewed_at: isTrusted ? new Date().toISOString() : null,
     })
     .select("id")
     .single();
