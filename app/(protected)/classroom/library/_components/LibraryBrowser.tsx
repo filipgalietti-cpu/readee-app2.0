@@ -1,7 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { Search, Check, Filter } from "lucide-react";
+import { useMemo, useRef, useState } from "react";
+import { Search, Check, Filter, Volume2, ImageOff } from "lucide-react";
 
 type LibraryQuestion = {
   id: string;
@@ -14,6 +14,8 @@ type LibraryQuestion = {
   choices: string[] | null;
   correct: string | null;
   difficulty: number | null;
+  imageUrl: string;
+  audioUrl: string | null;
 };
 
 const GRADE_OPTIONS = ["All", "K", "1st", "2nd", "3rd", "4th"];
@@ -33,6 +35,25 @@ export default function LibraryBrowser({ questions }: { questions: LibraryQuesti
   const [type, setType] = useState<string>("All");
   const [query, setQuery] = useState("");
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
+  const [imageErrors, setImageErrors] = useState<Set<string>>(new Set());
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [playingId, setPlayingId] = useState<string | null>(null);
+
+  function playAudio(questionId: string, url: string) {
+    if (!audioRef.current) return;
+    if (playingId === questionId) {
+      audioRef.current.pause();
+      setPlayingId(null);
+      return;
+    }
+    audioRef.current.pause();
+    audioRef.current.src = url;
+    audioRef.current.currentTime = 0;
+    audioRef.current.play().catch(() => {
+      setPlayingId(null);
+    });
+    setPlayingId(questionId);
+  }
 
   const typeOptions = useMemo(() => {
     const s = new Set<string>();
@@ -86,6 +107,15 @@ export default function LibraryBrowser({ questions }: { questions: LibraryQuesti
 
   return (
     <div>
+      <audio
+        ref={audioRef}
+        preload="none"
+        onEnded={() => setPlayingId(null)}
+        onPause={() => {
+          // Keep UI in sync if the audio stops for any reason
+          if (audioRef.current && audioRef.current.ended) setPlayingId(null);
+        }}
+      />
       {/* Filter bar */}
       <div className="space-y-3 rounded-2xl border border-zinc-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900/40">
         <div className="relative">
@@ -188,46 +218,85 @@ export default function LibraryBrowser({ questions }: { questions: LibraryQuesti
 
                 {isExpanded && (
                   <ul className="divide-y divide-zinc-100 border-t border-zinc-100 bg-zinc-50/40 dark:divide-slate-800 dark:border-slate-800 dark:bg-slate-950/30">
-                    {info.items.map((qn) => (
-                      <li key={qn.id} className="px-4 py-3">
-                        <div className="flex items-start gap-3">
-                          <span className="mt-0.5 inline-flex items-center gap-1 rounded-full bg-white px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-zinc-600 dark:bg-slate-900 dark:text-slate-400">
-                            {TYPE_LABELS[qn.type] ?? qn.type}
-                          </span>
-                          <span className="font-mono text-[10px] text-zinc-400">
-                            {qn.id}
-                          </span>
-                          {qn.difficulty && (
-                            <span className="text-[10px] text-zinc-400">
-                              diff {qn.difficulty}
-                            </span>
-                          )}
-                        </div>
-                        <div className="mt-1.5 whitespace-pre-line text-sm text-zinc-800 dark:text-slate-200">
-                          {qn.prompt}
-                        </div>
-                        {qn.choices && qn.choices.length > 0 && (
-                          <ul className="mt-2 space-y-1 text-xs">
-                            {qn.choices.map((c) => {
-                              const isCorrect = qn.correct === c;
-                              return (
-                                <li
-                                  key={c}
-                                  className={`inline-flex items-center gap-1.5 rounded-lg px-2 py-0.5 ${
-                                    isCorrect
-                                      ? "bg-green-50 font-semibold text-green-800 dark:bg-green-950/30 dark:text-green-300"
-                                      : "bg-white text-zinc-600 dark:bg-slate-900 dark:text-slate-400"
-                                  }`}
-                                >
-                                  {isCorrect && <Check className="h-3 w-3" />}
-                                  {c}
-                                </li>
-                              );
-                            })}
-                          </ul>
-                        )}
-                      </li>
-                    ))}
+                    {info.items.map((qn) => {
+                      const imgFailed = imageErrors.has(qn.id);
+                      const isPlaying = playingId === qn.id;
+                      return (
+                        <li key={qn.id} className="px-4 py-3">
+                          <div className="flex items-start gap-3">
+                            {/* Thumbnail */}
+                            <div className="flex h-20 w-20 flex-shrink-0 items-center justify-center overflow-hidden rounded-xl border border-zinc-200 bg-white dark:border-slate-700 dark:bg-slate-900">
+                              {imgFailed ? (
+                                <ImageOff className="h-5 w-5 text-zinc-300" />
+                              ) : (
+                                <img
+                                  src={qn.imageUrl}
+                                  alt=""
+                                  loading="lazy"
+                                  onError={() =>
+                                    setImageErrors((prev) => new Set(prev).add(qn.id))
+                                  }
+                                  className="h-full w-full object-cover"
+                                />
+                              )}
+                            </div>
+
+                            <div className="min-w-0 flex-1">
+                              <div className="flex flex-wrap items-center gap-2">
+                                <span className="inline-flex items-center gap-1 rounded-full bg-white px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-zinc-600 dark:bg-slate-900 dark:text-slate-400">
+                                  {TYPE_LABELS[qn.type] ?? qn.type}
+                                </span>
+                                <span className="font-mono text-[10px] text-zinc-400">
+                                  {qn.id}
+                                </span>
+                                {qn.difficulty && (
+                                  <span className="text-[10px] text-zinc-400">
+                                    diff {qn.difficulty}
+                                  </span>
+                                )}
+                                {qn.audioUrl && (
+                                  <button
+                                    type="button"
+                                    onClick={() => playAudio(qn.id, qn.audioUrl!)}
+                                    className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-bold transition ${
+                                      isPlaying
+                                        ? "bg-indigo-600 text-white"
+                                        : "border border-indigo-200 bg-white text-indigo-700 hover:bg-indigo-50 dark:border-indigo-900 dark:bg-slate-900 dark:text-indigo-300"
+                                    }`}
+                                  >
+                                    <Volume2 className="h-3 w-3" />
+                                    {isPlaying ? "Stop" : "Play"}
+                                  </button>
+                                )}
+                              </div>
+                              <div className="mt-1.5 whitespace-pre-line text-sm text-zinc-800 dark:text-slate-200">
+                                {qn.prompt}
+                              </div>
+                              {qn.choices && qn.choices.length > 0 && (
+                                <ul className="mt-2 flex flex-wrap gap-1 text-xs">
+                                  {qn.choices.map((c) => {
+                                    const isCorrect = qn.correct === c;
+                                    return (
+                                      <li
+                                        key={c}
+                                        className={`inline-flex items-center gap-1.5 rounded-lg px-2 py-0.5 ${
+                                          isCorrect
+                                            ? "bg-green-50 font-semibold text-green-800 dark:bg-green-950/30 dark:text-green-300"
+                                            : "bg-white text-zinc-600 dark:bg-slate-900 dark:text-slate-400"
+                                        }`}
+                                      >
+                                        {isCorrect && <Check className="h-3 w-3" />}
+                                        {c}
+                                      </li>
+                                    );
+                                  })}
+                                </ul>
+                              )}
+                            </div>
+                          </div>
+                        </li>
+                      );
+                    })}
                   </ul>
                 )}
               </li>

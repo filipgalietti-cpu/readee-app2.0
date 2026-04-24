@@ -23,6 +23,7 @@ type Standard = {
     choices?: string[];
     correct?: string | string[];
     difficulty?: number;
+    audio_url?: string;
   }[];
 };
 
@@ -37,7 +38,21 @@ type LibraryQuestion = {
   choices: string[] | null;
   correct: string | null;
   difficulty: number | null;
+  imageUrl: string;
+  audioUrl: string | null;
 };
+
+const SUPABASE_STORAGE =
+  "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public";
+
+function gradeFolder(grade: string): string {
+  if (grade === "K") return "kindergarten";
+  if (grade === "1st") return "1st-grade";
+  if (grade === "2nd") return "2nd-grade";
+  if (grade === "3rd") return "3rd-grade";
+  if (grade === "4th") return "4th-grade";
+  return grade;
+}
 
 export default async function LibraryPage() {
   const profile = await requireProfile();
@@ -59,6 +74,7 @@ export default async function LibraryPage() {
   for (const { grade, bank } of banks) {
     const standards = (bank.standards ?? []) as Standard[];
     perGradeStandards[grade] = standards.length;
+    const folder = gradeFolder(grade);
     for (const s of standards) {
       for (const q of s.questions ?? []) {
         all.push({
@@ -76,6 +92,8 @@ export default async function LibraryPage() {
             ? q.correct
             : null,
           difficulty: typeof q.difficulty === "number" ? q.difficulty : null,
+          imageUrl: `${SUPABASE_STORAGE}/images/${folder}/${s.standard_id}/${q.id}.png`,
+          audioUrl: typeof q.audio_url === "string" ? q.audio_url : null,
         });
         byTypeTotals[q.type] = (byTypeTotals[q.type] ?? 0) + 1;
         perGrade[grade] = (perGrade[grade] ?? 0) + 1;
