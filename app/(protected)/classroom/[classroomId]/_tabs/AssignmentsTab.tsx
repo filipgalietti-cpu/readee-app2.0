@@ -3,6 +3,7 @@ import { requireProfile } from "@/lib/auth/helpers";
 import { ClipboardList, Clock, CheckCircle2, CircleDashed, Target, ListChecks } from "lucide-react";
 import NewAssignmentButton from "../_components/NewAssignmentButton";
 import AssignmentActions from "../_components/AssignmentActions";
+import StartLiveQuizButton from "../_components/StartLiveQuizButton";
 import type { Assignment } from "@/lib/db/types";
 import lessons from "@/app/data/sample-lessons.json";
 
@@ -125,7 +126,17 @@ export default async function AssignmentsTab({ classroomId }: { classroomId: str
           {list.length} assignment{list.length === 1 ? "" : "s"} ·{" "}
           {total} student{total === 1 ? "" : "s"}
         </p>
-        <NewAssignmentButton classroomId={classroomId} lessons={LESSON_INDEX} customQuizzes={customQuizzes} />
+        <div className="flex items-center gap-2">
+          <StartLiveQuizButton
+            classroomId={classroomId}
+            customQuizzes={customQuizzes.map((q) => ({
+              id: q.id,
+              title: q.title,
+              question_count: q.question_count,
+            }))}
+          />
+          <NewAssignmentButton classroomId={classroomId} lessons={LESSON_INDEX} customQuizzes={customQuizzes} />
+        </div>
       </div>
 
       {list.length === 0 ? (
