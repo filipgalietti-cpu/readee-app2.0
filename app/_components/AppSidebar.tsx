@@ -203,9 +203,15 @@ export default function AppSidebar({ mobileOnly = false }: { mobileOnly?: boolea
     ? displayName || "Teacher"
     : activeChild?.first_name || "Reader";
   const sidebarAvatarSrc = isEducator ? null : avatarSrc;
+  // Subtitle = role label for teachers (never "Free Plan" — that refers
+  // to the consumer $9.99 subscription and is misleading for teachers
+  // whose seat is paid via district). Email shows in the dropdown detail.
   const sidebarSubtitle = isEducator
-    ? email ?? (hasAdminScope ? "Teacher · Admin" : "Teacher")
+    ? hasAdminScope
+      ? "Teacher · Admin"
+      : "Teacher"
     : undefined;
+  const sidebarDetail = isEducator ? email ?? null : null;
 
   // Close mobile overlay on route change
   useEffect(() => { setMobileOpen(false); }, [pathname, setMobileOpen]);
@@ -241,6 +247,7 @@ export default function AppSidebar({ mobileOnly = false }: { mobileOnly?: boolea
                 sidebarName={sidebarName}
                 plan={plan || "free"}
                 subtitle={sidebarSubtitle}
+                detail={sidebarDetail}
                 onClose={() => setMobileOpen(false)}
               />
             </motion.aside>
@@ -270,6 +277,7 @@ export default function AppSidebar({ mobileOnly = false }: { mobileOnly?: boolea
                 sidebarName={sidebarName}
                 plan={plan || "free"}
                 subtitle={sidebarSubtitle}
+                detail={sidebarDetail}
                 onToggle={() => setOpen(false)}
               />
             </motion.div>
@@ -439,6 +447,7 @@ function ExpandedNav({
   sidebarName,
   plan,
   subtitle,
+  detail,
   onClose,
   onToggle,
 }: {
@@ -448,6 +457,7 @@ function ExpandedNav({
   sidebarName: string;
   plan: string;
   subtitle?: string;
+  detail?: string | null;
   onClose?: () => void;
   onToggle?: () => void;
 }) {
@@ -516,6 +526,7 @@ function ExpandedNav({
         name={sidebarName}
         plan={plan}
         subtitle={subtitle}
+        detail={detail ?? undefined}
       />
     </div>
   );

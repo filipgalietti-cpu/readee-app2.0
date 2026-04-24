@@ -12,13 +12,16 @@ export function SidebarUserMenu({
   name,
   plan,
   subtitle,
+  detail,
 }: {
   /** Pass a URL to show an image, or null to render initials from `name`. */
   avatarSrc: string | null;
   name: string;
   plan: string;
-  /** Overrides the plan label (used for teacher identity → show email). */
+  /** Overrides the plan label (used for teacher identity → role label). */
   subtitle?: string;
+  /** Extra detail line shown in the expanded dropdown (e.g. email). */
+  detail?: string;
 }) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
@@ -118,6 +121,11 @@ export function SidebarUserMenu({
                 >
                   {subtitle ?? (plan === "premium" ? "Readee+ Member" : "Free Plan")}
                 </div>
+                {detail && (
+                  <div className="text-[11px] text-zinc-400 dark:text-slate-500 truncate">
+                    {detail}
+                  </div>
+                )}
               </div>
             </div>
 
