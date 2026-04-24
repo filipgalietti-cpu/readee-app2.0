@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/lib/auth/helpers";
+import { csvEscape, safeExportFilename } from "@/lib/util/csv";
 
 /**
  * GET /api/admin/school/[schoolId]/export
@@ -127,20 +128,13 @@ export async function GET(
 
   const csv = lines.join("\r\n");
   const s = school as any;
-  const clean = (s.name as string).replace(/[^a-zA-Z0-9\- ]/g, "").trim().replace(/\s+/g, "_");
-  const date = new Date().toISOString().slice(0, 10);
   return new NextResponse(csv, {
     status: 200,
     headers: {
       "content-type": "text/csv; charset=utf-8",
-      "content-disposition": `attachment; filename="${clean || "school"}-progress-${date}.csv"`,
+      "content-disposition": `attachment; filename="${safeExportFilename(s.name as string, "progress")}"`,
     },
   });
 }
 
-function csvEscape(v: string | number | null | undefined): string {
-  if (v === null || v === undefined) return "";
-  const s = String(v);
-  if (/[",\n\r]/.test(s)) return `"${s.replace(/"/g, '""')}"`;
-  return s;
-}
+// csvEscape + safeExportFilename live in lib/util/csv.ts

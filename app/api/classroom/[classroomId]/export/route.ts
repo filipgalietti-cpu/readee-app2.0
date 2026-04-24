@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/lib/auth/helpers";
+import { csvEscape, safeExportFilename } from "@/lib/util/csv";
 
 /**
  * GET /api/classroom/[classroomId]/export?type=roster|assignments
@@ -33,18 +34,7 @@ export async function GET(
   return NextResponse.json({ error: "Unknown type" }, { status: 400 });
 }
 
-function csvEscape(v: string | number | null | undefined): string {
-  if (v === null || v === undefined) return "";
-  const s = String(v);
-  if (/[",\n\r]/.test(s)) return `"${s.replace(/"/g, '""')}"`;
-  return s;
-}
-
-function filename(classroomName: string, suffix: string): string {
-  const clean = classroomName.replace(/[^a-zA-Z0-9\- ]/g, "").trim().replace(/\s+/g, "_");
-  const date = new Date().toISOString().slice(0, 10);
-  return `${clean || "classroom"}-${suffix}-${date}.csv`;
-}
+// csvEscape + safeExportFilename live in lib/util/csv.ts
 
 async function rosterCsv(
   supabase: Awaited<ReturnType<typeof createClient>>,
@@ -108,7 +98,7 @@ async function rosterCsv(
     status: 200,
     headers: {
       "content-type": "text/csv; charset=utf-8",
-      "content-disposition": `attachment; filename="${filename(classroom.name, "roster")}"`,
+      "content-disposition": `attachment; filename="${safeExportFilename(classroom.name, "roster")}"`,
     },
   });
 }
@@ -177,7 +167,7 @@ async function assignmentsCsv(
     status: 200,
     headers: {
       "content-type": "text/csv; charset=utf-8",
-      "content-disposition": `attachment; filename="${filename(classroom.name, "assignments")}"`,
+      "content-disposition": `attachment; filename="${safeExportFilename(classroom.name, "assignments")}"`,
     },
   });
 }
