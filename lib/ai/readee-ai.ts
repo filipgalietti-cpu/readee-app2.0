@@ -1,5 +1,6 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { supabaseAdmin } from "@/lib/supabase/admin";
+import { trackError } from "@/lib/observability/track";
 
 /**
  * Readee.ai — teacher-facing AI assistant for generating MCQ questions
@@ -205,6 +206,12 @@ Generate exactly ${count} multiple-choice question${count === 1 ? "" : "s"} foll
 
     return { ok: true, questions };
   } catch (e: any) {
+    trackError(e, {
+      route: "readee-ai.generateMCQQuestions",
+      userId: input.teacherId,
+      tags: { model: MODEL_ID, kind: "quiz_generation" },
+      extra: { topic: input.topic.slice(0, 200), count },
+    });
     await logUsage({
       teacherId: input.teacherId,
       kind: "quiz_generation",

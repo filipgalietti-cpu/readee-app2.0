@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { listCourseStudents } from "@/lib/classroom/google";
+import { trackError } from "@/lib/observability/track";
 
 export async function GET(req: Request) {
   const supabase = await createClient();
@@ -18,6 +19,11 @@ export async function GET(req: Request) {
     return NextResponse.json({ students });
   } catch (e: any) {
     console.error(e);
+    trackError(e, {
+      route: "api.classroom.google.roster",
+      userId: user.id,
+      extra: { courseId },
+    });
     return NextResponse.json({ error: "Failed to fetch roster." }, { status: 500 });
   }
 }

@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { exchangeCodeForTokens, upsertConnection } from "@/lib/classroom/google";
+import { trackError } from "@/lib/observability/track";
 
 export async function GET(req: Request) {
   const url = new URL(req.url);
@@ -43,6 +44,11 @@ export async function GET(req: Request) {
     tokens = await exchangeCodeForTokens(code);
   } catch (e) {
     console.error("Google token exchange failed:", e);
+    trackError(e, {
+      route: "api.classroom.google.callback",
+      userId: user.id,
+      tags: { stage: "token_exchange" },
+    });
     return NextResponse.redirect(
       new URL(`/classroom?google_error=token_exchange`, req.url),
     );

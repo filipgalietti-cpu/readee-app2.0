@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { listCourses } from "@/lib/classroom/google";
+import { trackError } from "@/lib/observability/track";
 
 export async function GET() {
   const supabase = await createClient();
@@ -17,6 +18,10 @@ export async function GET() {
       return NextResponse.json({ error: "not_connected" }, { status: 409 });
     }
     console.error(e);
+    trackError(e, {
+      route: "api.classroom.google.courses",
+      userId: user.id,
+    });
     return NextResponse.json({ error: "Failed to list courses." }, { status: 500 });
   }
 }

@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { createClient } from "@/lib/supabase/server";
+import { trackError } from "@/lib/observability/track";
 
 export async function POST(req: Request) {
   const supabase = await createClient();
@@ -68,6 +69,10 @@ export async function POST(req: Request) {
       });
     } catch (e) {
       console.error("Feedback email alert failed:", e);
+      trackError(e, {
+        route: "api.feedback.email_alert",
+        userId: user.id,
+      });
     }
   }
 
