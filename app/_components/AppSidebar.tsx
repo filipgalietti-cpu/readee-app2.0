@@ -11,70 +11,98 @@ import { usePlanStore } from "@/lib/stores/plan-store";
 import { SidebarUserMenu } from "./SidebarUserMenu";
 import {
   Home, BarChart3, BookText, ListChecks, Map,
-  Carrot, Trophy, ChevronDown, ClipboardCheck, GraduationCap, Building2, ClipboardPen, Library,
+  Carrot, Trophy, ChevronDown, ChevronRight, ClipboardCheck, GraduationCap, Building2, ClipboardPen, Library, Sparkles,
 } from "lucide-react";
 
 /* ─── Nav items ──────────────────────────────────── */
+
+type NavItem = { href: string; icon: any; label: string; iconColor?: string; emphasis?: boolean };
+type NavSection = { label: string; items: NavItem[]; collapsible?: boolean };
 
 function getNavSections(
   childId: string | null,
   role: string | null,
   hasAdminScope: boolean,
   hasChildren: boolean,
-) {
+): NavSection[] {
   const q = childId ? `?child=${childId}` : "";
-  const sections: { label: string; items: { href: string; icon: any; label: string; iconColor?: string }[] }[] = [];
+  const sections: NavSection[] = [];
 
-  // Teach section first for educators — this is their home.
+  // Teach section first for educators — this is their home. "Build with
+  // AI" is emphasized at the top because it's the fastest path to a new
+  // assignment and we want it discoverable, not buried under Quizzes.
   if (role === "educator") {
-    const teachItems: { href: string; icon: any; label: string }[] = [
-      { href: "/classroom", icon: GraduationCap, label: "Classroom" },
-      { href: "/classroom/library", icon: Library, label: "Library" },
-      { href: "/classroom/authoring", icon: ClipboardPen, label: "Quizzes" },
-    ];
-    if (hasAdminScope) {
-      teachItems.push({ href: "/admin", icon: Building2, label: "Admin" });
-    }
     sections.push({
       label: "Teach",
-      items: teachItems,
+      items: [
+        {
+          href: "/classroom/authoring/wizard",
+          icon: Sparkles,
+          label: "Build with AI",
+          emphasis: true,
+        },
+        { href: "/classroom", icon: GraduationCap, label: "Classroom" },
+        { href: "/classroom/library", icon: Library, label: "Library" },
+        { href: "/classroom/authoring", icon: ClipboardPen, label: "Quizzes" },
+      ],
     });
-  } else if (hasAdminScope) {
+  }
+
+  // Admin gets its own section for anyone who has the scope — consistent
+  // placement regardless of role, so admins don't hunt for it.
+  if (hasAdminScope) {
     sections.push({
       label: "Admin",
       items: [{ href: "/admin", icon: Building2, label: "Admin" }],
     });
   }
 
-  // Kid-facing sections only for users who actually have children under
-  // their care. Educators without kids get a clean teacher sidebar and
-  // don't bounce into the parent dashboard when they click around.
+  // Kid-facing nav. For pure parents this is the whole sidebar; for
+  // educator-who-also-has-kids we collapse it into one "Family" group so
+  // the Teach section is visually dominant.
   if (hasChildren) {
-    sections.push(
-      {
-        label: "Main",
+    if (role === "educator") {
+      sections.push({
+        label: "Family",
+        collapsible: true,
         items: [
-          { href: "/dashboard", icon: Home, label: role === "educator" ? "Parent view" : "Dashboard" },
+          { href: "/dashboard", icon: Home, label: "Parent view" },
           { href: `/assessment-results${q}`, icon: ClipboardCheck, label: "Placement Test" },
           { href: `/analytics${q}`, icon: BarChart3, label: "Analytics" },
-        ],
-      },
-      {
-        label: "Learning",
-        items: [
           { href: "/word-bank", icon: BookText, label: "Word Bank" },
           { href: `/practice-hub${q}`, icon: ListChecks, label: "Practice" },
           { href: `/journey${q}`, icon: Map, label: "Reading Journey" },
-        ],
-      },
-      {
-        label: "Fun",
-        items: [
           { href: `/shop${q}`, icon: Carrot, label: "Shop", iconColor: "w-[17px] h-[17px] text-orange-500" },
           { href: `/leaderboard${q}`, icon: Trophy, label: "Leaderboard" },
         ],
-      },
-    );
+      });
+    } else {
+      sections.push(
+        {
+          label: "Main",
+          items: [
+            { href: "/dashboard", icon: Home, label: "Dashboard" },
+            { href: `/assessment-results${q}`, icon: ClipboardCheck, label: "Placement Test" },
+            { href: `/analytics${q}`, icon: BarChart3, label: "Analytics" },
+          ],
+        },
+        {
+          label: "Learning",
+          items: [
+            { href: "/word-bank", icon: BookText, label: "Word Bank" },
+            { href: `/practice-hub${q}`, icon: ListChecks, label: "Practice" },
+            { href: `/journey${q}`, icon: Map, label: "Reading Journey" },
+          ],
+        },
+        {
+          label: "Fun",
+          items: [
+            { href: `/shop${q}`, icon: Carrot, label: "Shop", iconColor: "w-[17px] h-[17px] text-orange-500" },
+            { href: `/leaderboard${q}`, icon: Trophy, label: "Leaderboard" },
+          ],
+        },
+      );
+    }
   }
 
   return sections;
@@ -312,6 +340,96 @@ export default function AppSidebar({ mobileOnly = false }: { mobileOnly?: boolea
   );
 }
 
+/* ─── NavSectionBlock — renders one section, collapsible when flagged ── */
+
+function NavSectionBlock({
+  section,
+  pathname,
+  onClose,
+}: {
+  section: NavSection;
+  pathname: string;
+  onClose?: () => void;
+}) {
+  const childHrefs = section.items.map((i) => i.href.split("?")[0]);
+  const containsActive = childHrefs.some((h) => pathname === h);
+  // Start expanded if user is currently on a route inside this section.
+  const [open, setOpen] = useState(
+    !section.collapsible || containsActive,
+  );
+
+  if (!section.collapsible) {
+    return (
+      <div className="px-3">
+        <p className="px-2 mb-1 text-[11px] font-semibold text-zinc-400 dark:text-slate-500 uppercase tracking-widest">
+          {section.label}
+        </p>
+        <nav className="space-y-0.5">
+          {section.items.map(({ href, icon: Icon, label: itemLabel, iconColor, emphasis }) => (
+            <Link
+              key={href}
+              href={href}
+              onClick={onClose}
+              className={navLinkClass(pathname, href, emphasis)}
+            >
+              <Icon
+                className={
+                  iconColor ||
+                  (emphasis && !isActive(pathname, href)
+                    ? "w-4 h-4 text-indigo-500"
+                    : navIconClass(pathname, href))
+                }
+                strokeWidth={1.5}
+              />
+              <span>{itemLabel}</span>
+            </Link>
+          ))}
+        </nav>
+      </div>
+    );
+  }
+
+  return (
+    <div className="px-3">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        className="flex w-full items-center gap-1 px-2 mb-1 text-[11px] font-semibold text-zinc-400 dark:text-slate-500 uppercase tracking-widest hover:text-zinc-600 dark:hover:text-slate-300"
+        aria-expanded={open}
+      >
+        <ChevronRight
+          className={`w-3 h-3 transition-transform ${open ? "rotate-90" : ""}`}
+          strokeWidth={2}
+        />
+        {section.label}
+      </button>
+      {open && (
+        <nav className="space-y-0.5">
+          {section.items.map(({ href, icon: Icon, label: itemLabel, iconColor, emphasis }) => (
+            <Link
+              key={href}
+              href={href}
+              onClick={onClose}
+              className={navLinkClass(pathname, href, emphasis)}
+            >
+              <Icon
+                className={
+                  iconColor ||
+                  (emphasis && !isActive(pathname, href)
+                    ? "w-4 h-4 text-indigo-500"
+                    : navIconClass(pathname, href))
+                }
+                strokeWidth={1.5}
+              />
+              <span>{itemLabel}</span>
+            </Link>
+          ))}
+        </nav>
+      )}
+    </div>
+  );
+}
+
 /* ─── Expanded nav content (shared by mobile + desktop) ── */
 
 function ExpandedNav({
@@ -381,18 +499,13 @@ function ExpandedNav({
 
       {/* Nav links */}
       <div className="flex-1 overflow-y-auto py-2 space-y-4">
-        {sections.map(({ label, items }) => (
-          <div key={label} className="px-3">
-            <p className="px-2 mb-1 text-[11px] font-semibold text-zinc-400 dark:text-slate-500 uppercase tracking-widest">{label}</p>
-            <nav className="space-y-0.5">
-              {items.map(({ href, icon: Icon, label: itemLabel, iconColor, emphasis }: any) => (
-                <Link key={href} href={href} onClick={onClose} className={navLinkClass(pathname, href, emphasis)}>
-                  <Icon className={iconColor || (emphasis && !isActive(pathname, href) ? "w-4 h-4 text-indigo-500" : navIconClass(pathname, href))} strokeWidth={1.5} />
-                  <span>{itemLabel}</span>
-                </Link>
-              ))}
-            </nav>
-          </div>
+        {sections.map((section) => (
+          <NavSectionBlock
+            key={section.label}
+            section={section}
+            pathname={pathname}
+            onClose={onClose}
+          />
         ))}
       </div>
 
