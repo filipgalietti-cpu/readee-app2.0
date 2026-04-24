@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { School, Users2, GraduationCap, FileText, Check, Download, Shield, DollarSign, Award } from "lucide-react";
+import AdvisoryBoardSection from "@/app/_components/AdvisoryBoardSection";
 
 export const metadata: Metadata = {
   title: "Readee for Schools & Districts",
@@ -167,6 +168,10 @@ export default function SchoolsPage() {
           </div>
         </div>
       </section>
+
+      <div className="mt-10">
+        <AdvisoryBoardSection variant="compact" />
+      </div>
 
       {/* Procurement */}
       <section className="mt-14">

@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { createClient } from "@/lib/supabase/server";
 import { BookOpen, PenLine, Trophy, Users, Heart, GraduationCap, Sparkles, School } from "lucide-react";
+import AdvisoryBoardSection from "@/app/_components/AdvisoryBoardSection";
 
 export const metadata: Metadata = {
   title: "About",
@@ -204,6 +205,8 @@ export default async function About() {
           </p>
         </div>
       </section>
+
+      <AdvisoryBoardSection />
 
       {/* ── Coming Soon: Readee Classroom ── */}
       <section className="rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 p-8 sm:p-10 mb-8 text-center space-y-3">
