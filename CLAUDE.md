@@ -136,7 +136,7 @@ All gating is complete. When Stripe is added, only the webhook needs to update `
 ## Content & Data
 
 ### Lesson Data
-- `app/data/sample-lessons.json` — 36 K lessons + 4 stubs for grades 1-4 (lessons for G1-4 still need to be created)
+- `app/data/sample-lessons.json` — 201 lessons covering K-4 (38 K + 45 G1 + 43 G2 + 41 G3 + 34 G4), all wired to MCQs as of Apr 21 2026
 - `app/data/*-standards-questions.json` — 911 practice questions across K-4 (rebuilt from master manifest)
 - `lib/data/lessons.json` — lesson metadata by grade level
 - `scripts/stories-bank.json` — 25 stories with cover images, text, and comprehension questions
