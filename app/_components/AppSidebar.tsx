@@ -12,7 +12,7 @@ import { useViewModeStore, resolveViewMode, type ViewMode } from "@/lib/stores/v
 import { SidebarUserMenu } from "./SidebarUserMenu";
 import {
   Home, BarChart3, BookText, ListChecks, Map,
-  Carrot, Trophy, ChevronDown, ChevronRight, ClipboardCheck, GraduationCap, Building2, ClipboardPen, Library, Sparkles, Users,
+  Carrot, Trophy, ChevronDown, ChevronRight, ClipboardCheck, GraduationCap, Building2, ClipboardPen, Library, Sparkles, Users, Brain,
 } from "lucide-react";
 
 /* ─── Nav items ──────────────────────────────────── */
@@ -68,6 +68,7 @@ function getNavSections(
         collapsible: true,
         items: [
           { href: "/dashboard", icon: Home, label: "Parent view" },
+          { href: `/review${q}`, icon: Brain, label: "Today's review" },
           { href: `/assessment-results${q}`, icon: ClipboardCheck, label: "Placement Test" },
           { href: `/analytics${q}`, icon: BarChart3, label: "Analytics" },
           { href: "/word-bank", icon: BookText, label: "Word Bank" },
@@ -111,6 +112,7 @@ function getNavSections(
       {
         label: "Learning",
         items: [
+          { href: `/review${q}`, icon: Brain, label: "Today's review", emphasis: true },
           { href: "/word-bank", icon: BookText, label: "Word Bank" },
           { href: `/practice-hub${q}`, icon: ListChecks, label: "Practice" },
           { href: "/practice-hub/community", icon: Users, label: "Community library" },
