@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createServerClient } from "@supabase/ssr";
+import { decodePlayCookie, PLAY_COOKIE_NAME } from "@/lib/auth/play-mode";
 
 /**
  * Proxy (Next.js 16 middleware).
@@ -8,9 +9,28 @@ import { createServerClient } from "@supabase/ssr";
  * 2. Supabase session refresh
  * 3. Auth gating: unauthenticated → /login
  * 4. Plan gating: free users on premium-only routes → /upgrade?reason=X
+ * 5. Play-mode gating: device locked to a kid → adult routes blocked
  *
  * Page-level gating handles partial access (lesson 1 free, first 10 questions, etc.)
  */
+
+/**
+ * Routes that are always blocked when this device is in kid play-mode.
+ * If a kid clicks any of these (or types the URL), they get bounced
+ * back to the kid surface for their child. Exit requires PIN/password
+ * via /api/play/exit.
+ */
+const PLAY_MODE_BLOCKED_PREFIXES = [
+  "/classroom",
+  "/admin",
+  "/account",
+  "/billing",
+  "/upgrade",
+  "/dashboard/ask-readee",
+  "/dashboard",
+  "/notifications",
+  "/settings",
+];
 
 /** Routes that require premium — redirect free users to /upgrade */
 const PREMIUM_ONLY_ROUTES: Record<string, string> = {
@@ -40,6 +60,7 @@ const AUTH_REQUIRED_PREFIXES = [
   "/carrot-rewards",
   "/classroom",
   "/admin",
+  "/play",
 ];
 
 export async function proxy(request: NextRequest) {
@@ -109,6 +130,32 @@ export async function proxy(request: NextRequest) {
     url.pathname = "/login";
     url.searchParams.set("redirect", pathname);
     return NextResponse.redirect(url);
+  }
+
+  // ── Play-mode gating (per-device lock to a kid) ───────────────────
+  // If this device has an active play cookie, block adult routes and
+  // bounce the kid back to their lesson home. The /api/play/exit
+  // endpoint clears the cookie after PIN/password validation.
+  const playCookie = request.cookies.get(PLAY_COOKIE_NAME)?.value;
+  const playLock = decodePlayCookie(playCookie);
+  if (playLock) {
+    const isBlocked = PLAY_MODE_BLOCKED_PREFIXES.some(
+      (p) => pathname === p || pathname.startsWith(p + "/"),
+    );
+    // Don't block /play/* itself, /api/play/exit, /api/play/setup,
+    // /login (so a parent can still log out), or /logout.
+    const isAllowedAlways =
+      pathname === "/login" ||
+      pathname === "/logout" ||
+      pathname.startsWith("/play/") ||
+      pathname === "/play" ||
+      pathname.startsWith("/api/play/");
+    if (isBlocked && !isAllowedAlways) {
+      const url = request.nextUrl.clone();
+      url.pathname = `/play/${playLock.childId}`;
+      url.search = "";
+      return NextResponse.redirect(url);
+    }
   }
 
   // ── Plan gating (premium-only routes) ─────────────────────────────

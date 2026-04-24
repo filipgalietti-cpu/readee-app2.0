@@ -432,38 +432,51 @@ function ChildSelector({
 
       <motion.div className="grid grid-cols-1 sm:grid-cols-2 gap-5" variants={staggerFast} initial="hidden" animate="visible">
         {children.map((child, index) => (
-          <motion.button
+          <motion.div
             key={child.id}
-            onClick={() => onSelect(child)}
             className="group text-left w-full"
             variants={slideUp}
           >
-            <div className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 hover:border-indigo-300 dark:hover:border-indigo-700 hover:shadow-md transition-all duration-200 group-hover:scale-[1.02] space-y-4">
-              <div className="flex items-center gap-4">
-                <div className="w-14 h-14 rounded-xl bg-indigo-50 flex items-center justify-center flex-shrink-0 overflow-hidden">
-                  <img src={getChildAvatarImage(child, index)} alt={child.first_name} className="w-full h-full object-cover" draggable={false} />
+            <div className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 hover:border-indigo-300 dark:hover:border-indigo-700 hover:shadow-md transition-all duration-200 space-y-4">
+              <button
+                type="button"
+                onClick={() => onSelect(child)}
+                className="w-full text-left"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="w-14 h-14 rounded-xl bg-indigo-50 flex items-center justify-center flex-shrink-0 overflow-hidden">
+                    <img src={getChildAvatarImage(child, index)} alt={child.first_name} className="w-full h-full object-cover" draggable={false} />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h2 className="text-lg font-bold text-zinc-900 dark:text-slate-100 truncate">
+                      {child.first_name}
+                    </h2>
+                    {child.grade && (
+                      <span className="text-xs font-medium text-indigo-600">
+                        {GRADE_LABELS[child.grade] || child.grade}
+                      </span>
+                    )}
+                  </div>
+                  <div className="text-right text-xs text-zinc-400 space-y-1">
+                    <div className="flex items-center gap-0.5">{Number(child.carrots) || 0} <Carrot className="w-3 h-3 text-orange-500" strokeWidth={1.5} /></div>
+                    <div>{child.streak_days}d streak</div>
+                  </div>
                 </div>
-                <div className="flex-1 min-w-0">
-                  <h2 className="text-lg font-bold text-zinc-900 dark:text-slate-100 truncate">
-                    {child.first_name}
-                  </h2>
-                  {child.grade && (
-                    <span className="text-xs font-medium text-indigo-600">
-                      {GRADE_LABELS[child.grade] || child.grade}
-                    </span>
-                  )}
+                <div className="mt-3">
+                  <LevelProgressBar
+                    currentLevel={child.reading_level}
+                    readOnly
+                  />
                 </div>
-                <div className="text-right text-xs text-zinc-400 space-y-1">
-                  <div className="flex items-center gap-0.5">{Number(child.carrots) || 0} <Carrot className="w-3 h-3 text-orange-500" strokeWidth={1.5} /></div>
-                  <div>{child.streak_days}d streak</div>
-                </div>
-              </div>
-              <LevelProgressBar
-                currentLevel={child.reading_level}
-                readOnly
-              />
+              </button>
+              <a
+                href={`/play/${child.id}`}
+                className="inline-flex w-full items-center justify-center gap-1.5 rounded-full bg-gradient-to-r from-indigo-600 to-violet-600 px-4 py-2 text-xs font-bold text-white shadow-sm transition hover:from-indigo-700 hover:to-violet-700"
+              >
+                Hand the device to {child.first_name}
+              </a>
             </div>
-          </motion.button>
+          </motion.div>
         ))}
       </motion.div>
     </div>

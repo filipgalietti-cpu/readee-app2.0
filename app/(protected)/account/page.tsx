@@ -11,6 +11,7 @@ import type { Child } from "@/lib/db/types";
 import { usePlanStore } from "@/lib/stores/plan-store";
 import SettingsShell from "@/app/_components/SettingsShell";
 import ChildLanguagePicker from "@/app/_components/ChildLanguagePicker";
+import ParentPinCard from "@/app/_components/ParentPinCard";
 
 interface ProfileData {
   display_name: string;
@@ -32,6 +33,7 @@ export default function AccountPage() {
   const [deleteModal, setDeleteModal] = useState(false);
   const [deleteConfirm, setDeleteConfirm] = useState("");
   const [children, setChildren] = useState<Child[]>([]);
+  const [hasParentPin, setHasParentPin] = useState(false);
 
   useEffect(() => {
     async function load() {
@@ -50,10 +52,11 @@ export default function AccountPage() {
 
       const { data: profDetail } = await supabase
         .from("profiles")
-        .select("display_name, created_at")
+        .select("display_name, created_at, parent_pin_hash")
         .eq("id", user.id)
         .single();
       const prof = profDetail as any;
+      setHasParentPin(!!prof?.parent_pin_hash);
 
       const googleAvatar = user.user_metadata?.avatar_url || user.user_metadata?.picture || null;
 
@@ -240,6 +243,9 @@ export default function AccountPage() {
               <p className="text-sm text-zinc-400">No readers linked to this account yet.</p>
             )}
           </section>
+
+          {/* Grown-up PIN — exit gate for kid play mode */}
+          <ParentPinCard initialHasPin={hasParentPin} />
 
           {/* Plan Section */}
           <section className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
