@@ -22,10 +22,12 @@ import {
   generateImage,
   generateSpeech,
   logUsage,
+  settleBatchAgainstTopUp,
 } from "@/lib/ai/readee-ai";
 import { CREDIT_COST } from "@/lib/ai/credits";
 import { trackError } from "@/lib/observability/track";
 import { assertSafePrompt } from "@/lib/ai/safety";
+import { getTopUpBalance } from "@/lib/ai/credit-balance";
 
 export const MONTHLY_PARENT_CREDIT_LIMIT = 200;
 export const HOURLY_PARENT_CREDIT_LIMIT = 60;
@@ -76,18 +78,22 @@ async function parentBudget(teacherId: string): Promise<{
   reason?: "hourly" | "monthly";
   hourlyUsed: number;
   monthlyUsed: number;
+  topUpBalance: number;
 }> {
   const admin = supabaseAdmin();
   const now = Date.now();
   const oneHourAgo = new Date(now - 60 * 60 * 1000).toISOString();
   const thirtyDaysAgo = new Date(now - 30 * 24 * 60 * 60 * 1000).toISOString();
 
-  const { data: rows } = await admin
-    .from("ai_usage_log")
-    .select("credits_used, created_at")
-    .eq("teacher_id", teacherId)
-    .eq("success", true)
-    .gte("created_at", thirtyDaysAgo);
+  const [{ data: rows }, topUpBalance] = await Promise.all([
+    admin
+      .from("ai_usage_log")
+      .select("credits_used, created_at")
+      .eq("teacher_id", teacherId)
+      .eq("success", true)
+      .gte("created_at", thirtyDaysAgo),
+    getTopUpBalance(teacherId, "parent"),
+  ]);
 
   let hourlyUsed = 0;
   let monthlyUsed = 0;
@@ -96,18 +102,21 @@ async function parentBudget(teacherId: string): Promise<{
     monthlyUsed += c;
     if (r.created_at >= oneHourAgo) hourlyUsed += c;
   }
+
+  const effectiveMonthlyLimit = MONTHLY_PARENT_CREDIT_LIMIT + topUpBalance;
   return {
     allowed:
-      monthlyUsed < MONTHLY_PARENT_CREDIT_LIMIT &&
+      monthlyUsed < effectiveMonthlyLimit &&
       hourlyUsed < HOURLY_PARENT_CREDIT_LIMIT,
     reason:
-      monthlyUsed >= MONTHLY_PARENT_CREDIT_LIMIT
+      monthlyUsed >= effectiveMonthlyLimit
         ? "monthly"
         : hourlyUsed >= HOURLY_PARENT_CREDIT_LIMIT
         ? "hourly"
         : undefined,
     hourlyUsed,
     monthlyUsed,
+    topUpBalance,
   };
 }
 
@@ -148,12 +157,15 @@ export async function buildParentContent(input: {
     };
   }
   const budget = await parentBudget(parentId);
-  if (budget.monthlyUsed + projected > MONTHLY_PARENT_CREDIT_LIMIT) {
+  const effectiveLimit = MONTHLY_PARENT_CREDIT_LIMIT + budget.topUpBalance;
+  if (budget.monthlyUsed + projected > effectiveLimit) {
     return {
       ok: false,
       error: `Not enough credits this month. You need ${projected}, ${
-        MONTHLY_PARENT_CREDIT_LIMIT - budget.monthlyUsed
-      } remain. Credits reset on a rolling 30-day window.`,
+        effectiveLimit - budget.monthlyUsed
+      } remain${
+        budget.topUpBalance > 0 ? ` (${budget.topUpBalance} from top-ups)` : ""
+      }. Top up to keep generating.`,
     };
   }
   if (!budget.allowed && budget.reason === "hourly") {
@@ -162,6 +174,7 @@ export async function buildParentContent(input: {
       error: `You've generated a lot in the last hour. Try again in a bit — this cap resets continuously.`,
     };
   }
+  const monthlyUsedBefore = budget.monthlyUsed;
 
   const admin = supabaseAdmin();
 
@@ -320,6 +333,15 @@ export async function buildParentContent(input: {
       error: insErr?.message ?? "Couldn't save the generated content.",
     };
   }
+
+  // Debit the parent top-up pool for any spend past the monthly cap.
+  await settleBatchAgainstTopUp({
+    profileId: parentId,
+    pool: "parent",
+    monthlyUsedBefore,
+    creditsConsumed: creditsUsed,
+    monthlyLimit: MONTHLY_PARENT_CREDIT_LIMIT,
+  });
 
   return {
     ok: true,

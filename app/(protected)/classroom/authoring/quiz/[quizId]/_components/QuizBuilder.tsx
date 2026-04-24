@@ -12,6 +12,7 @@ import {
   aiGenerateImage,
   aiGenerateAudio,
 } from "../../../../authoring-actions";
+import TopUpCreditsButton from "@/app/_components/TopUpCreditsButton";
 
 type QuestionKind = "multiple_choice" | "true_false" | "fill_in_blank";
 
@@ -567,6 +568,7 @@ function QuestionFormModal({
           </h3>
           <div className="flex items-center gap-2">
             <AiBudgetBadge refreshKey={imageUrl ?? audioUrl ?? ""} />
+            <TopUpCreditsButton pool="teacher" label="Top up" />
             <button
               onClick={onClose}
               className="inline-flex h-7 w-7 items-center justify-center rounded-lg text-zinc-500 hover:bg-zinc-100 dark:hover:bg-slate-800"

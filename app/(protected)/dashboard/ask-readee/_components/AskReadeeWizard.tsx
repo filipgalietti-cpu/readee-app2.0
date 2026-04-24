@@ -23,6 +23,7 @@ import {
   type ParentAiBrief,
 } from "@/lib/ai/build-parent-content";
 import { CREDIT_COST } from "@/lib/ai/credits";
+import TopUpCreditsButton from "@/app/_components/TopUpCreditsButton";
 
 type Step = 1 | 2 | 3;
 
@@ -591,9 +592,12 @@ function CostFooter({
         )}
       </div>
       {exceedsRemaining && (
-        <div className="mt-2 text-red-700 dark:text-red-300">
-          This would exceed your monthly credit pool. Turn off audio
-          options or reduce the question count.
+        <div className="mt-2 flex items-center justify-between gap-3">
+          <div className="text-red-700 dark:text-red-300">
+            Over your monthly pool. Reduce options — or top up for more
+            credits.
+          </div>
+          <TopUpCreditsButton pool="parent" label="Top up" />
         </div>
       )}
     </div>

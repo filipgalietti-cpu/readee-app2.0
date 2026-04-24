@@ -7,6 +7,7 @@ import {
   CREDIT_COST,
   estimatedDollarCost,
 } from "@/lib/ai/credits";
+import { getTopUpBalance } from "@/lib/ai/credit-balance";
 
 export const dynamic = "force-dynamic";
 
@@ -36,6 +37,9 @@ export async function GET() {
     if (r.created_at >= oneHourAgo) hourlyUsed += c;
   }
 
+  const topUpBalance = await getTopUpBalance(profile.id, "teacher");
+  const effectiveLimit = MONTHLY_CREDIT_LIMIT + topUpBalance;
+
   return NextResponse.json({
     hourly: {
       used: hourlyUsed,
@@ -44,8 +48,10 @@ export async function GET() {
     },
     monthly: {
       used: monthlyUsed,
-      limit: MONTHLY_CREDIT_LIMIT,
-      remaining: Math.max(0, MONTHLY_CREDIT_LIMIT - monthlyUsed),
+      limit: effectiveLimit,
+      entitlement: MONTHLY_CREDIT_LIMIT,
+      topUpBalance,
+      remaining: Math.max(0, effectiveLimit - monthlyUsed),
       estimatedCostUsd: estimatedDollarCost(monthlyUsed),
     },
     cost: CREDIT_COST,

@@ -20,6 +20,7 @@ import {
   type AssignmentBrief,
 } from "@/lib/ai/build-assignment";
 import { CREDIT_COST, MONTHLY_CREDIT_LIMIT } from "@/lib/ai/credits";
+import TopUpCreditsButton from "@/app/_components/TopUpCreditsButton";
 
 type Step = 1 | 2 | 3 | 4;
 
@@ -663,9 +664,12 @@ function CostFooter({
         )}
       </div>
       {exceedsRemaining && (
-        <div className="mt-2 text-red-700 dark:text-red-300">
-          This build would put you over the monthly cap. Reduce the
-          question count or turn off per-question audio.
+        <div className="mt-2 flex flex-wrap items-center justify-between gap-3">
+          <div className="text-red-700 dark:text-red-300">
+            Over your monthly cap. Reduce options — or top up for more
+            credits.
+          </div>
+          <TopUpCreditsButton pool="teacher" label="Top up" />
         </div>
       )}
     </div>

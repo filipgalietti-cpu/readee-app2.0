@@ -13,6 +13,7 @@ import {
   MONTHLY_CREDIT_LIMIT,
   type AiKind,
 } from "@/lib/ai/credits";
+import { getTopUpBalance, spendTopUp } from "@/lib/ai/credit-balance";
 
 /**
  * Readee.ai — teacher-facing AI assistant for generating MCQ questions
@@ -56,6 +57,7 @@ export type BudgetCheck = {
   monthlyUsed: number;
   hourlyLimit: number;
   monthlyLimit: number;
+  topUpBalance: number;
 };
 
 /**
@@ -77,12 +79,15 @@ export async function checkRateLimit(
 
   const cost = CREDIT_COST[kind] ?? 1;
 
-  const { data: rows } = await admin
-    .from("ai_usage_log")
-    .select("credits_used, created_at")
-    .eq("teacher_id", teacherId)
-    .eq("success", true)
-    .gte("created_at", thirtyDaysAgo);
+  const [{ data: rows }, topUpBalance] = await Promise.all([
+    admin
+      .from("ai_usage_log")
+      .select("credits_used, created_at")
+      .eq("teacher_id", teacherId)
+      .eq("success", true)
+      .gte("created_at", thirtyDaysAgo),
+    getTopUpBalance(teacherId, "teacher"),
+  ]);
 
   let hourlyUsed = 0;
   let monthlyUsed = 0;
@@ -92,7 +97,11 @@ export async function checkRateLimit(
     if (r.created_at >= oneHourAgo) hourlyUsed += c;
   }
 
-  if (monthlyUsed + cost > MONTHLY_CREDIT_LIMIT) {
+  // Effective monthly pool = entitlement + top-ups. Top-ups don't apply
+  // to the hourly rate limit (which is abuse control, not economic).
+  const effectiveMonthlyLimit = MONTHLY_CREDIT_LIMIT + topUpBalance;
+
+  if (monthlyUsed + cost > effectiveMonthlyLimit) {
     return {
       allowed: false,
       reason: "monthly",
@@ -101,6 +110,7 @@ export async function checkRateLimit(
       monthlyUsed,
       hourlyLimit: HOURLY_CREDIT_LIMIT,
       monthlyLimit: MONTHLY_CREDIT_LIMIT,
+      topUpBalance,
     };
   }
   if (hourlyUsed + cost > HOURLY_CREDIT_LIMIT) {
@@ -112,6 +122,7 @@ export async function checkRateLimit(
       monthlyUsed,
       hourlyLimit: HOURLY_CREDIT_LIMIT,
       monthlyLimit: MONTHLY_CREDIT_LIMIT,
+      topUpBalance,
     };
   }
   return {
@@ -121,12 +132,15 @@ export async function checkRateLimit(
     monthlyUsed,
     hourlyLimit: HOURLY_CREDIT_LIMIT,
     monthlyLimit: MONTHLY_CREDIT_LIMIT,
+    topUpBalance,
   };
 }
 
 function budgetError(rl: BudgetCheck): string {
   if (rl.reason === "monthly") {
-    return `You've used this month's Readee.ai budget (${rl.monthlyUsed}/${rl.monthlyLimit} credits). Your admin can top up the classroom's credits to unlock more.`;
+    return `You've used this month's Readee.ai budget (${rl.monthlyUsed}/${rl.monthlyLimit} credits${
+      rl.topUpBalance > 0 ? ` + ${rl.topUpBalance} top-up credits` : ""
+    }). Top up your credits from the Readee.ai menu to keep building.`;
   }
   return `You've generated a lot in the last hour (${rl.hourlyUsed}/${rl.hourlyLimit} credits). Try again in a bit — this limit resets continuously.`;
 }
@@ -153,6 +167,32 @@ export async function logUsage(input: {
     success: input.success,
     error: input.error ?? null,
     request_summary: input.requestSummary ?? null,
+  });
+}
+
+/**
+ * After an orchestrator completes a batch, detect whether the total
+ * spend pushed the user past their pool's monthly entitlement and
+ * debit the overflow from their top-up balance. Call once per batch
+ * with the pre-batch monthly-used value and the just-consumed total.
+ */
+export async function settleBatchAgainstTopUp(input: {
+  profileId: string;
+  pool: "teacher" | "parent";
+  monthlyUsedBefore: number;
+  creditsConsumed: number;
+  monthlyLimit: number;
+}): Promise<void> {
+  if (input.creditsConsumed <= 0) return;
+  const overflow = Math.max(
+    0,
+    input.monthlyUsedBefore + input.creditsConsumed - input.monthlyLimit,
+  );
+  if (overflow <= 0) return;
+  await spendTopUp({
+    profileId: input.profileId,
+    pool: input.pool,
+    amount: Math.min(overflow, input.creditsConsumed),
   });
 }
 

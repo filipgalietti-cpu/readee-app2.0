@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { stripe, planFromPriceId } from "@/lib/stripe";
 import { supabaseAdmin } from "@/lib/supabase/admin";
+import { grantTopUp } from "@/lib/ai/credit-balance";
 import Stripe from "stripe";
 
 export async function POST(req: NextRequest) {
@@ -73,6 +74,35 @@ export async function POST(req: NextRequest) {
         })
         .eq("stripe_customer_id", customerId);
 
+      break;
+    }
+
+    // One-time credit pack checkout — mode:"payment", not subscription.
+    case "checkout.session.completed": {
+      const session = event.data.object as Stripe.Checkout.Session;
+      if (session.metadata?.kind !== "ai_credit_pack") break;
+      if (session.payment_status !== "paid") break;
+
+      const userId = session.metadata.supabase_user_id as string | undefined;
+      const pool = session.metadata.pool as "teacher" | "parent" | undefined;
+      const credits = Number(session.metadata.credits ?? 0);
+      if (!userId || !pool || !credits) break;
+
+      const paymentIntentId =
+        typeof session.payment_intent === "string"
+          ? session.payment_intent
+          : session.payment_intent?.id ?? null;
+
+      await grantTopUp({
+        profileId: userId,
+        pool,
+        credits,
+        source: "purchase",
+        stripeCheckoutSessionId: session.id,
+        stripePaymentIntentId: paymentIntentId ?? undefined,
+        amountPaidUsdCents: session.amount_total ?? undefined,
+        notes: `SKU ${session.metadata.sku}`,
+      });
       break;
     }
 

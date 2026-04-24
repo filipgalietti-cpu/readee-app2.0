@@ -32,6 +32,7 @@ import {
   generateSpeech,
   pairsToMCQs,
   checkRateLimit,
+  settleBatchAgainstTopUp,
 } from "@/lib/ai/readee-ai";
 import { CREDIT_COST, MONTHLY_CREDIT_LIMIT } from "@/lib/ai/credits";
 import { trackError } from "@/lib/observability/track";
@@ -173,14 +174,16 @@ export async function buildAssignment(input: {
     };
   }
   const budget = await checkRateLimit(teacherId, "quiz_generation");
-  if (budget.monthlyUsed + projected > MONTHLY_CREDIT_LIMIT) {
+  const effectiveLimit = MONTHLY_CREDIT_LIMIT + budget.topUpBalance;
+  if (budget.monthlyUsed + projected > effectiveLimit) {
     return {
       ok: false,
       error: `Not enough credits this month. You'd need ${projected}, but only ${
-        MONTHLY_CREDIT_LIMIT - budget.monthlyUsed
-      } remain. Ask your admin to top up.`,
+        effectiveLimit - budget.monthlyUsed
+      } remain (${budget.topUpBalance} from top-ups). Top up more credits to keep building.`,
     };
   }
+  const monthlyUsedBefore = budget.monthlyUsed;
 
   const admin = supabaseAdmin();
   const warnings: string[] = [];
@@ -399,6 +402,15 @@ export async function buildAssignment(input: {
       }
     }
   }
+
+  // Debit the top-up pool for any credits spent past the monthly cap.
+  await settleBatchAgainstTopUp({
+    profileId: teacherId,
+    pool: "teacher",
+    monthlyUsedBefore,
+    creditsConsumed: creditsUsed,
+    monthlyLimit: MONTHLY_CREDIT_LIMIT,
+  });
 
   return { ok: true, quizId, warnings, creditsUsed };
 }
