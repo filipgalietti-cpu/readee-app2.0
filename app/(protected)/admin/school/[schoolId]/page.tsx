@@ -8,6 +8,7 @@ import {
   ClipboardList,
   Target,
   Download,
+  ChevronRight,
 } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/lib/auth/helpers";
@@ -233,10 +234,16 @@ export default async function SchoolAdminPage({
                 {classroomList.map((c) => (
                   <tr
                     key={c.id}
-                    className="border-b border-zinc-100 last:border-0 hover:bg-zinc-50/60 dark:border-slate-800 dark:hover:bg-slate-900/60"
+                    className="border-b border-zinc-100 last:border-0 hover:bg-indigo-50/40 dark:border-slate-800 dark:hover:bg-indigo-950/20"
                   >
-                    <td className="px-5 py-3 font-semibold text-zinc-900 dark:text-white">
-                      {c.name}
+                    <td className="px-5 py-3">
+                      <Link
+                        href={`/admin/classroom/${c.id}`}
+                        className="group inline-flex items-center gap-1 font-semibold text-zinc-900 hover:text-indigo-700 hover:underline dark:text-white dark:hover:text-indigo-300"
+                      >
+                        {c.name}
+                        <ChevronRight className="h-3.5 w-3.5 text-zinc-400 transition group-hover:translate-x-0.5 group-hover:text-indigo-600" />
+                      </Link>
                     </td>
                     <td className="px-5 py-3 text-zinc-600 dark:text-slate-400">
                       {c.grade_level ?? "—"}
