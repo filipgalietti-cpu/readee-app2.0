@@ -64,7 +64,7 @@ export default async function ClassroomIndex() {
           </p>
           <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
             {hasClass
-              ? `Welcome back, ${profile.display_name || "teacher"}.`
+              ? `Welcome back, ${profile.display_name || profile.email?.split("@")[0] || "teacher"}.`
               : "Welcome to Readee Classroom"}
           </h1>
           <p className="mt-2 max-w-lg text-sm text-zinc-500 dark:text-slate-400">

@@ -46,6 +46,7 @@ function getNavSections(
         { href: "/classroom", icon: GraduationCap, label: "Classroom" },
         { href: "/classroom/library", icon: Library, label: "Library" },
         { href: "/classroom/authoring", icon: ClipboardPen, label: "Quizzes" },
+        { href: "/classroom/refer", icon: Users, label: "Refer a teacher" },
       ],
     });
 

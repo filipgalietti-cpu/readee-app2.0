@@ -7,7 +7,8 @@ export type UserRole = 'parent' | 'child' | 'student' | 'educator';
 
 export interface Profile {
   id: string; // UUID - matches auth.users.id
-  display_name: string;
+  email: string | null;
+  display_name: string | null;
   role: UserRole;
   plan: "free" | "premium" | "teacher_solo";
   onboarding_complete: boolean;

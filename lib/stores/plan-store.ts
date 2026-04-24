@@ -57,7 +57,7 @@ export const usePlanStore = create<PlanState>((set, get) => ({
     ] = await Promise.all([
       supabase
         .from("profiles")
-        .select("plan, role, display_name")
+        .select("plan, role, email, display_name")
         .eq("id", user.id)
         .single(),
       supabase
@@ -79,7 +79,11 @@ export const usePlanStore = create<PlanState>((set, get) => ({
       hasAdminScope: (adminCount ?? 0) > 0,
       ownsClassroom: (classroomCount ?? 0) > 0,
       hasChildren: (childCount ?? 0) > 0,
-      displayName: (profile as any)?.display_name ?? null,
+      displayName:
+        (profile as any)?.display_name ??
+        (profile as any)?.email?.split("@")[0] ??
+        user.email?.split("@")[0] ??
+        null,
       email: user.email ?? null,
       loaded: true,
     });

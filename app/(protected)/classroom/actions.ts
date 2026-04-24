@@ -1,8 +1,10 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { cookies } from "next/headers";
 import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/lib/auth/helpers";
+import { redeemReferralOnSignup } from "@/lib/referrals/teacher-referrals";
 import type { Classroom, GradeLevel } from "@/lib/db/types";
 
 const CODE_ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"; // no 0/O/1/I — avoid user confusion
@@ -49,6 +51,29 @@ export async function createClassroom(input: {
       .single();
 
     if (!error && data) {
+      // First-classroom milestone redeems a referral cookie if present.
+      // Safe to call unconditionally — redeemReferralOnSignup is
+      // idempotent and a no-op when there's no cookie or the code is
+      // already redeemed.
+      const cookieStore = await cookies();
+      const refCode = cookieStore.get("readee_referral_code")?.value;
+      if (refCode) {
+        const res = await redeemReferralOnSignup({
+          inviteeId: profile.id,
+          inviteeEmail: profile.email ?? null,
+          code: refCode,
+        });
+        if (res.ok) {
+          // Clear the cookie so it doesn't double-redeem on later
+          // classroom creates.
+          cookieStore.set({
+            name: "readee_referral_code",
+            value: "",
+            path: "/",
+            maxAge: 0,
+          });
+        }
+      }
       revalidatePath("/classroom");
       return { ok: true, classroom: data as Classroom };
     }
