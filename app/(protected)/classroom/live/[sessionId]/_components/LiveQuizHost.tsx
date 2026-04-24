@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { supabaseBrowser } from "@/lib/supabase/client";
-import { Users, Play, ArrowRight, Square, Loader2, Trophy } from "lucide-react";
+import { Users, Play, ArrowRight, Square, Loader2, Trophy, Volume2, VolumeX } from "lucide-react";
 import Link from "next/link";
 import { advanceLiveQuiz, endLiveQuiz } from "../../../live-actions";
 
@@ -12,6 +12,7 @@ type Question = {
   prompt: string;
   choices: string[];
   correct: string;
+  audioUrl: string | null;
 };
 
 type ParticipantRow = {
@@ -48,7 +49,9 @@ export default function LiveQuizHost({
   const [participants, setParticipants] = useState<ParticipantRow[]>([]);
   const [answers, setAnswers] = useState<AnswerRow[]>([]);
   const [err, setErr] = useState<string | null>(null);
+  const [muted, setMuted] = useState(false);
   const pollRef = useRef<NodeJS.Timeout | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   // Poll participants + answers for the current question. In a future
   // upgrade, swap to Supabase Realtime on these tables.
@@ -126,6 +129,28 @@ export default function LiveQuizHost({
   }, [sessionId]);
 
   const currentQ = status === "running" ? questions[idx] : null;
+
+  // When the question changes, play its audio through the teacher's
+  // laptop speakers — the classroom projector + speakers means everyone
+  // hears it without each kid's device playing on top of each other.
+  useEffect(() => {
+    if (muted) return;
+    if (!currentQ?.audioUrl) return;
+    if (!audioRef.current) return;
+    audioRef.current.pause();
+    audioRef.current.src = currentQ.audioUrl;
+    audioRef.current.currentTime = 0;
+    audioRef.current.play().catch(() => {
+      /* autoplay blocked on fresh load; teacher clicks Listen to start */
+    });
+  }, [currentQ?.audioUrl, muted]);
+
+  function replayAudio() {
+    if (audioRef.current && audioRef.current.src) {
+      audioRef.current.currentTime = 0;
+      audioRef.current.play().catch(() => {});
+    }
+  }
   const answersForCurrent = useMemo(
     () => answers.filter((a) => a.question_idx === idx),
     [answers, idx],
@@ -277,13 +302,42 @@ export default function LiveQuizHost({
     const total = participants.length;
     return (
       <div className="space-y-6">
+        <audio ref={audioRef} preload="auto" />
         <div className="flex items-center justify-between text-sm">
           <div className="font-semibold text-indigo-600">
             Question {idx + 1} of {questions.length}
           </div>
-          <div className="inline-flex items-center gap-2 rounded-full bg-indigo-100 px-3 py-1 font-mono text-xs font-bold text-indigo-700 dark:bg-indigo-950/40 dark:text-indigo-300">
-            <Users className="h-3 w-3" />
-            {answered}/{total} answered
+          <div className="flex items-center gap-2">
+            {currentQ.audioUrl && (
+              <>
+                <button
+                  type="button"
+                  onClick={replayAudio}
+                  disabled={muted}
+                  className="inline-flex items-center gap-1 rounded-full border border-indigo-200 bg-white px-2.5 py-1 text-[11px] font-semibold text-indigo-700 transition hover:bg-indigo-50 disabled:opacity-40 dark:border-indigo-900 dark:bg-slate-900 dark:text-indigo-300"
+                  title="Play audio through classroom speakers"
+                >
+                  <Volume2 className="h-3 w-3" />
+                  Play audio
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setMuted((m) => !m)}
+                  className={`inline-flex h-7 w-7 items-center justify-center rounded-full border ${
+                    muted
+                      ? "border-red-200 bg-red-50 text-red-700 dark:border-red-900 dark:bg-red-950/30 dark:text-red-300"
+                      : "border-zinc-200 bg-white text-zinc-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
+                  }`}
+                  title={muted ? "Unmute — audio will play on next question" : "Mute host audio"}
+                >
+                  {muted ? <VolumeX className="h-3.5 w-3.5" /> : <Volume2 className="h-3.5 w-3.5" />}
+                </button>
+              </>
+            )}
+            <div className="inline-flex items-center gap-2 rounded-full bg-indigo-100 px-3 py-1 font-mono text-xs font-bold text-indigo-700 dark:bg-indigo-950/40 dark:text-indigo-300">
+              <Users className="h-3 w-3" />
+              {answered}/{total} answered
+            </div>
           </div>
         </div>
 

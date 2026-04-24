@@ -17,6 +17,7 @@ type QRef = {
   prompt: string;
   choices: string[];
   correct: string;
+  audioUrl: string | null;
 };
 
 function resolveReadeeQuestions(standardId: string, questionIds: string[]): QRef[] {
@@ -36,6 +37,7 @@ function resolveReadeeQuestions(standardId: string, questionIds: string[]): QRef
         prompt: q.prompt,
         choices: q.choices,
         correct,
+        audioUrl: typeof q.audio_url === "string" ? q.audio_url : null,
       });
     }
     // Preserve the teacher's ordering if question_ids was specified.
@@ -92,6 +94,7 @@ export default async function LiveQuizHostPage({
         prompt: q.prompt,
         choices: q.choices,
         correct,
+        audioUrl: null,
       });
     }
   }
