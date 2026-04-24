@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { School, Users2, GraduationCap, FileText, Check, Download, Shield } from "lucide-react";
+import { School, Users2, GraduationCap, FileText, Check, Download, Shield, DollarSign, Award } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Readee for Schools & Districts",
@@ -99,6 +99,75 @@ export default function SchoolsPage() {
         </div>
       </section>
 
+      {/* Funding */}
+      <section className="mt-14">
+        <h2 className="text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+          Funding your purchase
+        </h2>
+        <p className="mt-1 max-w-2xl text-sm text-zinc-500 dark:text-slate-400">
+          Readee fits inside several federal and state funding streams.
+          Pull a one-pager for your business manager or grant writer.
+        </p>
+        <div className="mt-6 grid gap-3 sm:grid-cols-2">
+          <FundingCard
+            title="Title I, Part A"
+            body="Supplemental instruction for low-income schools. Readee qualifies as a supplemental literacy intervention tool."
+          />
+          <FundingCard
+            title="Title II, Part A"
+            body="Teacher training + instructional technology. Readee.ai assignment wizard + teacher dashboards qualify."
+          />
+          <FundingCard
+            title="Title IV, Part A"
+            body="Well-rounded education, safe &amp; healthy schools, effective use of technology. Reading is well-rounded."
+          />
+          <FundingCard
+            title="IDEA, Part B"
+            body="Supplementary aids for students with IEPs. Read-aloud audio + dyslexia-friendly design qualify."
+          />
+          <FundingCard
+            title="State reading grants"
+            body="Many states have dedicated K-3 reading proficiency funds. Readee aligns to the Science of Reading."
+          />
+          <FundingCard
+            title="Curriculum adoption funds"
+            body="Readee works as a supplement to your core ELA curriculum — purchasable under your annual adoption budget."
+          />
+        </div>
+        <div className="mt-5">
+          <Link
+            href="/schools/funding-guide"
+            className="inline-flex items-center gap-2 rounded-full bg-indigo-600 px-5 py-2 text-sm font-bold text-white transition hover:bg-indigo-700"
+          >
+            <Download className="h-4 w-4" />
+            Open the printable funding guide
+          </Link>
+        </div>
+      </section>
+
+      {/* Trust / privacy pledge */}
+      <section className="mt-14 rounded-3xl border border-emerald-200 bg-gradient-to-br from-emerald-50 to-indigo-50 p-6 dark:border-emerald-900/40 dark:from-emerald-950/30 dark:to-indigo-950/30">
+        <div className="flex items-start gap-4">
+          <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-emerald-100 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300">
+            <Award className="h-6 w-6" />
+          </div>
+          <div className="flex-1">
+            <div className="font-bold text-zinc-900 dark:text-white">
+              Student Privacy Pledge signatory
+            </div>
+            <p className="mt-1 text-sm text-zinc-600 dark:text-slate-400">
+              Readee is a signatory of the Student Privacy Pledge (SDPC).
+              We commit to not sell student information, not use student
+              data for targeted advertising, and to disclose our data
+              practices in plain English.{" "}
+              <Link href="/privacy-for-schools" className="font-semibold text-emerald-700 hover:underline dark:text-emerald-300">
+                Read our full privacy commitments →
+              </Link>
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Procurement */}
       <section className="mt-14">
         <h2 className="text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
@@ -123,8 +192,8 @@ export default function SchoolsPage() {
           <PaperworkLink
             icon={Shield}
             title="Data Privacy Agreement"
-            body="We sign SDPC Standard DPA + state exhibits. Turnaround 5-10 business days."
-            href="/privacy-for-schools#dpa"
+            body="SDPC Standard DPA + state exhibits. Download the printable template or email to countersign."
+            href="/schools/dpa"
           />
           <PaperworkLink
             icon={Download}
@@ -249,6 +318,23 @@ function PricingCard({
       >
         {cta}
       </Link>
+    </div>
+  );
+}
+
+function FundingCard({ title, body }: { title: string; body: string }) {
+  return (
+    <div className="flex items-start gap-3 rounded-2xl border border-zinc-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900/40">
+      <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-emerald-100 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300">
+        <DollarSign className="h-4 w-4" />
+      </div>
+      <div>
+        <div className="font-bold text-zinc-900 dark:text-white">{title}</div>
+        <div
+          className="mt-0.5 text-xs text-zinc-500 dark:text-slate-400"
+          dangerouslySetInnerHTML={{ __html: body }}
+        />
+      </div>
     </div>
   );
 }

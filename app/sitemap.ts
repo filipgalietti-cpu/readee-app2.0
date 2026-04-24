@@ -10,6 +10,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: BASE, lastModified: now, changeFrequency: "weekly", priority: 1.0 },
     { url: `${BASE}/standards`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${BASE}/schools`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE}/schools/funding-guide`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE}/schools/dpa`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
     { url: `${BASE}/upgrade`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/teachers`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
