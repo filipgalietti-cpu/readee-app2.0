@@ -7,6 +7,8 @@ import {
   generateMCQQuestions,
   generateMatchingPairs,
   generatePassage,
+  generateImage,
+  generateSpeech,
   pairsToMCQs,
   type GeneratedMCQ,
   type GeneratedPair,
@@ -20,18 +22,24 @@ type QuestionInput =
       choices: string[];
       correct: string;
       hint?: string | null;
+      imageUrl?: string | null;
+      audioUrl?: string | null;
     }
   | {
       kind: "true_false";
       prompt: string;
       correct: "True" | "False";
       hint?: string | null;
+      imageUrl?: string | null;
+      audioUrl?: string | null;
     }
   | {
       kind: "fill_in_blank";
       prompt: string;
       correct: string[];
       hint?: string | null;
+      imageUrl?: string | null;
+      audioUrl?: string | null;
     };
 
 export async function createCustomQuiz(input: {
@@ -143,7 +151,11 @@ function serializeQuestion(input: QuestionInput): {
   choices: any;
   correct: any;
   hint: string | null;
+  image_url: string | null;
+  audio_url: string | null;
 } {
+  const image_url = input.imageUrl?.trim() || null;
+  const audio_url = input.audioUrl?.trim() || null;
   if (input.kind === "multiple_choice") {
     return {
       kind: "multiple_choice",
@@ -151,6 +163,8 @@ function serializeQuestion(input: QuestionInput): {
       choices: input.choices.map((c) => c.trim()),
       correct: input.correct.trim(),
       hint: input.hint?.trim() || null,
+      image_url,
+      audio_url,
     };
   }
   if (input.kind === "true_false") {
@@ -160,6 +174,8 @@ function serializeQuestion(input: QuestionInput): {
       choices: ["True", "False"],
       correct: input.correct,
       hint: input.hint?.trim() || null,
+      image_url,
+      audio_url,
     };
   }
   return {
@@ -168,6 +184,8 @@ function serializeQuestion(input: QuestionInput): {
     choices: null,
     correct: input.correct.map((a) => a.trim()).filter(Boolean),
     hint: input.hint?.trim() || null,
+    image_url,
+    audio_url,
   };
 }
 
@@ -199,6 +217,8 @@ export async function addQuestionToQuiz(input: {
       choices: q.choices,
       correct: q.correct,
       hint: q.hint,
+      image_url: q.image_url,
+      audio_url: q.audio_url,
     })
     .select("id")
     .single();
@@ -248,6 +268,8 @@ export async function updateCustomQuestion(input: {
       choices: q.choices,
       correct: q.correct,
       hint: q.hint,
+      image_url: q.image_url,
+      audio_url: q.audio_url,
       updated_at: new Date().toISOString(),
     })
     .eq("id", input.questionId)
@@ -348,6 +370,54 @@ export async function aiGenerateMatchingPairs(input: {
     hint: q.hint,
   }));
   return { ok: true, pairs: res.pairs, mcqs };
+}
+
+export async function aiGenerateImage(input: { prompt: string }): Promise<
+  { ok: true; imageUrl: string } | { ok: false; error: string }
+> {
+  const profile = await requireProfile();
+  if (profile.role !== "educator") {
+    return { ok: false, error: "Only educators can use Readee.ai." };
+  }
+  const res = await generateImage({
+    teacherId: profile.id,
+    prompt: input.prompt,
+  });
+  if (!res.ok) return res;
+  return { ok: true, imageUrl: res.imageUrl };
+}
+
+export async function aiBuildAssignment(input: {
+  brief: import("@/lib/ai/build-assignment").AssignmentBrief;
+}): Promise<
+  | { ok: true; quizId: string; warnings: string[]; creditsUsed: number }
+  | { ok: false; error: string }
+> {
+  const profile = await requireProfile();
+  if (profile.role !== "educator") {
+    return { ok: false, error: "Only educators can use Readee.ai." };
+  }
+  const { buildAssignment } = await import("@/lib/ai/build-assignment");
+  const res = await buildAssignment({ teacherId: profile.id, brief: input.brief });
+  if (res.ok) {
+    revalidatePath("/classroom/authoring");
+  }
+  return res;
+}
+
+export async function aiGenerateAudio(input: { text: string }): Promise<
+  { ok: true; audioUrl: string } | { ok: false; error: string }
+> {
+  const profile = await requireProfile();
+  if (profile.role !== "educator") {
+    return { ok: false, error: "Only educators can use Readee.ai." };
+  }
+  const res = await generateSpeech({
+    teacherId: profile.id,
+    text: input.text,
+  });
+  if (!res.ok) return res;
+  return { ok: true, audioUrl: res.audioUrl };
 }
 
 export async function aiGeneratePassage(input: {

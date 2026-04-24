@@ -18,6 +18,7 @@ type QRef = {
   choices: string[];
   correct: string;
   audioUrl: string | null;
+  imageUrl: string | null;
 };
 
 function resolveReadeeQuestions(standardId: string, questionIds: string[]): QRef[] {
@@ -38,6 +39,7 @@ function resolveReadeeQuestions(standardId: string, questionIds: string[]): QRef
         choices: q.choices,
         correct,
         audioUrl: typeof q.audio_url === "string" ? q.audio_url : null,
+        imageUrl: typeof q.image_url === "string" ? q.image_url : null,
       });
     }
     // Preserve the teacher's ordering if question_ids was specified.
@@ -81,7 +83,7 @@ export default async function LiveQuizHostPage({
   } else if (s.source_kind === "custom_quiz") {
     const { data: cqs } = await supabase
       .from("custom_quiz_questions")
-      .select("position, custom_questions(id, prompt, choices, correct, kind)")
+      .select("position, custom_questions(id, prompt, choices, correct, kind, image_url, audio_url)")
       .eq("quiz_id", s.source_id)
       .order("position", { ascending: true });
     for (const row of (cqs ?? []) as any[]) {
@@ -94,7 +96,8 @@ export default async function LiveQuizHostPage({
         prompt: q.prompt,
         choices: q.choices,
         correct,
-        audioUrl: null,
+        audioUrl: typeof q.audio_url === "string" ? q.audio_url : null,
+        imageUrl: typeof q.image_url === "string" ? q.image_url : null,
       });
     }
   }

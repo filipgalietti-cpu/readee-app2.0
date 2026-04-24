@@ -43,7 +43,7 @@ export default async function StudentQuizPage({
 
   const { data: junction } = await admin
     .from("custom_quiz_questions")
-    .select("position, custom_questions(id, kind, prompt, choices, correct, hint)")
+    .select("position, custom_questions(id, kind, prompt, choices, correct, hint, image_url, audio_url)")
     .eq("quiz_id", quizId)
     .order("position", { ascending: true });
 
@@ -56,6 +56,8 @@ export default async function StudentQuizPage({
       choices: (q.choices ?? null) as string[] | null,
       correct: q.correct,
       hint: (q.hint ?? null) as string | null,
+      imageUrl: (q.image_url ?? null) as string | null,
+      audioUrl: (q.audio_url ?? null) as string | null,
     };
   });
 

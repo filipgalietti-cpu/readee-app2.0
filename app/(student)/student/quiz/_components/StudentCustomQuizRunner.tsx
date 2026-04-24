@@ -1,8 +1,8 @@
 "use client";
 
-import { useMemo, useState, useTransition } from "react";
+import { useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { ArrowRight, Check, X, Loader2, Trophy, Carrot } from "lucide-react";
+import { ArrowRight, Check, X, Loader2, Trophy, Carrot, Volume2 } from "lucide-react";
 
 type QuestionKind = "multiple_choice" | "true_false" | "fill_in_blank";
 
@@ -13,6 +13,8 @@ type Question = {
   choices: string[] | null;
   correct: any;
   hint: string | null;
+  imageUrl?: string | null;
+  audioUrl?: string | null;
 };
 
 function normalizeAnswer(s: string): string {
@@ -182,8 +184,19 @@ export default function StudentCustomQuizRunner({
       </div>
 
       <div className="mt-6 rounded-3xl border border-zinc-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900/40">
-        <div className="whitespace-pre-line text-base font-semibold leading-relaxed text-zinc-900 dark:text-white">
-          {q.prompt}
+        {q.imageUrl && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={q.imageUrl}
+            alt=""
+            className="mb-4 max-h-56 w-full rounded-2xl object-contain"
+          />
+        )}
+        <div className="flex items-start gap-3">
+          <div className="whitespace-pre-line text-base font-semibold leading-relaxed text-zinc-900 dark:text-white">
+            {q.prompt}
+          </div>
+          {q.audioUrl && <PromptAudioButton src={q.audioUrl} autoplayKey={q.id} />}
         </div>
 
         <div className="mt-5 space-y-2">
@@ -302,5 +315,59 @@ export default function StudentCustomQuizRunner({
         </div>
       </div>
     </div>
+  );
+}
+
+function PromptAudioButton({ src, autoplayKey }: { src: string; autoplayKey: string }) {
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [playing, setPlaying] = useState(false);
+
+  useEffect(() => {
+    const a = audioRef.current;
+    if (!a) return;
+    a.currentTime = 0;
+    const p = a.play();
+    if (p) {
+      p.then(() => setPlaying(true)).catch(() => {
+        // autoplay may be blocked; teachers / students can tap the button.
+        setPlaying(false);
+      });
+    }
+  }, [autoplayKey, src]);
+
+  function toggle() {
+    const a = audioRef.current;
+    if (!a) return;
+    if (a.paused) {
+      a.currentTime = 0;
+      a.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
+    } else {
+      a.pause();
+      setPlaying(false);
+    }
+  }
+
+  return (
+    <>
+      <audio
+        ref={audioRef}
+        src={src}
+        onEnded={() => setPlaying(false)}
+        onPause={() => setPlaying(false)}
+        onPlay={() => setPlaying(true)}
+      />
+      <button
+        type="button"
+        onClick={toggle}
+        aria-label={playing ? "Pause audio" : "Play audio"}
+        className={`inline-flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full transition ${
+          playing
+            ? "bg-violet-600 text-white"
+            : "border border-violet-300 text-violet-600 hover:bg-violet-50 dark:border-violet-700 dark:text-violet-300 dark:hover:bg-violet-950/30"
+        }`}
+      >
+        <Volume2 className="h-4 w-4" />
+      </button>
+    </>
   );
 }

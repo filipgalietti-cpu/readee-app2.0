@@ -13,6 +13,7 @@ type Question = {
   choices: string[];
   correct: string;
   audioUrl: string | null;
+  imageUrl: string | null;
 };
 
 type ParticipantRow = {
@@ -342,6 +343,14 @@ export default function LiveQuizHost({
         </div>
 
         <div className="rounded-3xl border-2 border-indigo-200 bg-white p-8 shadow-lg dark:border-indigo-900/50 dark:bg-slate-900">
+          {currentQ.imageUrl && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={currentQ.imageUrl}
+              alt=""
+              className="mx-auto mb-4 max-h-64 rounded-2xl object-contain"
+            />
+          )}
           <div className="text-center text-2xl font-extrabold leading-tight text-zinc-900 dark:text-white sm:text-3xl">
             {currentQ.prompt}
           </div>

@@ -1,16 +1,17 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { Pencil, Trash2, Plus, Loader2, X, Check, AlertCircle, Lightbulb } from "lucide-react";
+import { Pencil, Trash2, Plus, Loader2, X, Check, AlertCircle, Lightbulb, ImagePlus, Sparkles, Volume2, RefreshCw } from "lucide-react";
 import {
   addQuestionToQuiz,
   updateCustomQuestion,
   removeQuestionFromQuiz,
   deleteCustomQuiz,
   updateCustomQuiz,
+  aiGenerateImage,
+  aiGenerateAudio,
 } from "../../../../authoring-actions";
-import AIGenerateButton from "./AIGenerateButton";
 
 type QuestionKind = "multiple_choice" | "true_false" | "fill_in_blank";
 
@@ -22,6 +23,8 @@ type Question = {
   choices: string[] | null;
   correct: any;
   hint: string | null;
+  imageUrl: string | null;
+  audioUrl: string | null;
 };
 
 export default function QuizBuilder({
@@ -56,7 +59,6 @@ export default function QuizBuilder({
             Questions
           </h2>
           <div className="flex flex-wrap items-center gap-2">
-            <AIGenerateButton quizId={quizId} gradeHint={initialGradeLevel || null} />
             <button
               type="button"
               onClick={() => setCreating(true)}
@@ -88,11 +90,26 @@ export default function QuizBuilder({
                         {kindLabel(q.kind)}
                       </span>
                       <span className="text-xs text-zinc-400">Q{i + 1}</span>
+                      {q.audioUrl && (
+                        <Volume2 className="h-3 w-3 text-violet-500" aria-label="Has audio" />
+                      )}
                     </div>
-                    <div className="mt-1.5 whitespace-pre-line text-sm font-semibold text-zinc-900 dark:text-white">
-                      {q.prompt}
+                    <div className="mt-1.5 flex items-start gap-3">
+                      {q.imageUrl && (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                          src={q.imageUrl}
+                          alt=""
+                          className="h-16 w-16 flex-shrink-0 rounded-lg border border-zinc-200 object-cover dark:border-slate-700"
+                        />
+                      )}
+                      <div className="min-w-0 flex-1">
+                        <div className="whitespace-pre-line text-sm font-semibold text-zinc-900 dark:text-white">
+                          {q.prompt}
+                        </div>
+                        {renderChoices(q)}
+                      </div>
                     </div>
-                    {renderChoices(q)}
                     {q.hint && (
                       <div className="mt-2 inline-flex items-start gap-1.5 text-xs text-amber-700 dark:text-amber-400">
                         <Lightbulb className="mt-0.5 h-3 w-3 flex-shrink-0" />
@@ -409,8 +426,56 @@ function QuestionFormModal({
       ? (initial.correct as string[]).join(", ")
       : "",
   );
+  const [imageUrl, setImageUrl] = useState<string | null>(initial?.imageUrl ?? null);
+  const [visualPrompt, setVisualPrompt] = useState("");
+  const [imgPending, setImgPending] = useState(false);
+  const [imgErr, setImgErr] = useState<string | null>(null);
+  const [audioUrl, setAudioUrl] = useState<string | null>(initial?.audioUrl ?? null);
+  const [ttsPending, setTtsPending] = useState(false);
+  const [ttsErr, setTtsErr] = useState<string | null>(null);
   const [err, setErr] = useState<string | null>(null);
   const [pending, start] = useTransition();
+
+  async function generateImage(overridePrompt?: string) {
+    const vp = (overridePrompt ?? visualPrompt).trim();
+    if (!vp) {
+      setImgErr("Describe what you'd like to see.");
+      return;
+    }
+    setImgErr(null);
+    setImgPending(true);
+    try {
+      const res = await aiGenerateImage({ prompt: vp });
+      if (!res.ok) {
+        setImgErr(res.error);
+        return;
+      }
+      setImageUrl(res.imageUrl);
+      // keep visualPrompt around so "Regenerate" works without retyping
+    } finally {
+      setImgPending(false);
+    }
+  }
+
+  async function generateAudio() {
+    const text = prompt.trim();
+    if (!text) {
+      setTtsErr("Add a prompt first — we read that aloud.");
+      return;
+    }
+    setTtsErr(null);
+    setTtsPending(true);
+    try {
+      const res = await aiGenerateAudio({ text });
+      if (!res.ok) {
+        setTtsErr(res.error);
+        return;
+      }
+      setAudioUrl(res.audioUrl);
+    } finally {
+      setTtsPending(false);
+    }
+  }
 
   function submit() {
     setErr(null);
@@ -432,13 +497,15 @@ function QuestionFormModal({
   }
 
   function buildPayload():
-    | { kind: "multiple_choice"; prompt: string; choices: string[]; correct: string; hint?: string | null }
-    | { kind: "true_false"; prompt: string; correct: "True" | "False"; hint?: string | null }
-    | { kind: "fill_in_blank"; prompt: string; correct: string[]; hint?: string | null }
+    | { kind: "multiple_choice"; prompt: string; choices: string[]; correct: string; hint?: string | null; imageUrl?: string | null; audioUrl?: string | null }
+    | { kind: "true_false"; prompt: string; correct: "True" | "False"; hint?: string | null; imageUrl?: string | null; audioUrl?: string | null }
+    | { kind: "fill_in_blank"; prompt: string; correct: string[]; hint?: string | null; imageUrl?: string | null; audioUrl?: string | null }
     | string {
     const p = prompt.trim();
     if (!p) return "Prompt is required.";
     const hintVal = hint.trim() || null;
+    const imageVal = imageUrl || null;
+    const audioVal = audioUrl || null;
     if (kind === "multiple_choice") {
       const c = choices.map((x) => x.trim()).filter(Boolean);
       if (c.length < 2) return "Add at least 2 choices.";
@@ -450,6 +517,8 @@ function QuestionFormModal({
         choices: c,
         correct: correctMcq.trim(),
         hint: hintVal,
+        imageUrl: imageVal,
+        audioUrl: audioVal,
       };
     }
     if (kind === "true_false") {
@@ -458,6 +527,8 @@ function QuestionFormModal({
         prompt: p,
         correct: correctTf,
         hint: hintVal,
+        imageUrl: imageVal,
+        audioUrl: audioVal,
       };
     }
     const answers = fillAnswers
@@ -470,6 +541,8 @@ function QuestionFormModal({
       prompt: p,
       correct: answers,
       hint: hintVal,
+      imageUrl: imageVal,
+      audioUrl: audioVal,
     };
   }
 
@@ -492,13 +565,16 @@ function QuestionFormModal({
           <h3 className="text-base font-bold text-zinc-900 dark:text-white">
             {isEdit ? "Edit question" : "New question"}
           </h3>
-          <button
-            onClick={onClose}
-            className="inline-flex h-7 w-7 items-center justify-center rounded-lg text-zinc-500 hover:bg-zinc-100 dark:hover:bg-slate-800"
-            aria-label="Close"
-          >
-            <X className="h-4 w-4" />
-          </button>
+          <div className="flex items-center gap-2">
+            <AiBudgetBadge refreshKey={imageUrl ?? audioUrl ?? ""} />
+            <button
+              onClick={onClose}
+              className="inline-flex h-7 w-7 items-center justify-center rounded-lg text-zinc-500 hover:bg-zinc-100 dark:hover:bg-slate-800"
+              aria-label="Close"
+            >
+              <X className="h-4 w-4" />
+            </button>
+          </div>
         </div>
 
         <div className="flex-1 space-y-4 overflow-y-auto p-5">
@@ -639,6 +715,152 @@ function QuestionFormModal({
             />
           </label>
 
+          <div>
+            <div className="flex items-center gap-2">
+              <ImagePlus className="h-3.5 w-3.5 text-zinc-500 dark:text-slate-400" />
+              <span className="text-xs font-semibold text-zinc-500 dark:text-slate-400">
+                Image (optional)
+              </span>
+            </div>
+            {imageUrl ? (
+              <div className="mt-2 space-y-2">
+                <div className="flex items-start gap-3 rounded-xl border border-zinc-200 bg-white p-2 dark:border-slate-700 dark:bg-slate-900">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={imageUrl}
+                    alt=""
+                    className="h-24 w-24 flex-shrink-0 rounded-lg border border-zinc-200 object-cover dark:border-slate-700"
+                  />
+                  <div className="flex-1 text-xs text-zinc-500 dark:text-slate-400">
+                    Attached to this question.
+                    <div className="mt-2 flex flex-wrap gap-1.5">
+                      <button
+                        type="button"
+                        onClick={() => generateImage()}
+                        disabled={imgPending || !visualPrompt.trim()}
+                        className="inline-flex items-center gap-1 rounded-full border border-violet-300 bg-white px-2 py-0.5 text-[11px] font-semibold text-violet-700 hover:bg-violet-50 disabled:opacity-50 dark:border-violet-700 dark:bg-slate-900 dark:text-violet-300 dark:hover:bg-violet-950/30"
+                        title={visualPrompt.trim() ? "Regenerate with the same prompt" : "Edit prompt to regenerate"}
+                      >
+                        {imgPending ? (
+                          <Loader2 className="h-3 w-3 animate-spin" />
+                        ) : (
+                          <RefreshCw className="h-3 w-3" />
+                        )}
+                        Regenerate
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setImageUrl(null)}
+                        className="inline-flex items-center gap-1 rounded-full border border-zinc-200 px-2 py-0.5 text-[11px] font-semibold text-zinc-600 hover:bg-red-50 hover:text-red-600 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-red-950/40"
+                      >
+                        <Trash2 className="h-3 w-3" /> Remove
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <input
+                  value={visualPrompt}
+                  onChange={(e) => setVisualPrompt(e.target.value)}
+                  placeholder="Change the description and click Regenerate"
+                  disabled={imgPending}
+                  className="w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-indigo-400 focus:outline-none disabled:opacity-50 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                />
+                {imgErr && (
+                  <p className="text-xs font-semibold text-red-600">{imgErr}</p>
+                )}
+              </div>
+            ) : (
+              <div className="mt-2 space-y-2">
+                <input
+                  value={visualPrompt}
+                  onChange={(e) => setVisualPrompt(e.target.value)}
+                  placeholder="Describe the image — e.g. a red apple on a white plate"
+                  disabled={imgPending}
+                  className="w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-indigo-400 focus:outline-none disabled:opacity-50 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                />
+                <button
+                  type="button"
+                  onClick={() => generateImage()}
+                  disabled={imgPending || !visualPrompt.trim()}
+                  className="inline-flex items-center gap-1.5 rounded-full bg-violet-600 px-4 py-1.5 text-xs font-semibold text-white transition hover:bg-violet-700 disabled:opacity-50"
+                >
+                  {imgPending ? (
+                    <Loader2 className="h-3.5 w-3.5 animate-spin" />
+                  ) : (
+                    <Sparkles className="h-3.5 w-3.5" />
+                  )}
+                  Generate with Readee.ai
+                </button>
+                {imgErr && (
+                  <p className="text-xs font-semibold text-red-600">{imgErr}</p>
+                )}
+              </div>
+            )}
+          </div>
+
+          <div>
+            <div className="flex items-center gap-2">
+              <Volume2 className="h-3.5 w-3.5 text-zinc-500 dark:text-slate-400" />
+              <span className="text-xs font-semibold text-zinc-500 dark:text-slate-400">
+                Prompt audio (optional)
+              </span>
+            </div>
+            {audioUrl ? (
+              <div className="mt-2 space-y-2">
+                <div className="flex flex-wrap items-center gap-3 rounded-xl border border-zinc-200 bg-white p-2 dark:border-slate-700 dark:bg-slate-900">
+                  <audio src={audioUrl} controls className="min-w-0 flex-1" />
+                  <div className="flex gap-1.5">
+                    <button
+                      type="button"
+                      onClick={generateAudio}
+                      disabled={ttsPending || !prompt.trim()}
+                      className="inline-flex items-center gap-1 rounded-full border border-violet-300 bg-white px-2 py-0.5 text-[11px] font-semibold text-violet-700 hover:bg-violet-50 disabled:opacity-50 dark:border-violet-700 dark:bg-slate-900 dark:text-violet-300 dark:hover:bg-violet-950/30"
+                      title="Regenerate audio from the current prompt"
+                    >
+                      {ttsPending ? (
+                        <Loader2 className="h-3 w-3 animate-spin" />
+                      ) : (
+                        <RefreshCw className="h-3 w-3" />
+                      )}
+                      Regenerate
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setAudioUrl(null)}
+                      className="inline-flex items-center gap-1 rounded-full border border-zinc-200 px-2 py-0.5 text-[11px] font-semibold text-zinc-600 hover:bg-red-50 hover:text-red-600 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-red-950/40"
+                    >
+                      <Trash2 className="h-3 w-3" /> Remove
+                    </button>
+                  </div>
+                </div>
+                {ttsErr && <p className="text-xs font-semibold text-red-600">{ttsErr}</p>}
+              </div>
+            ) : (
+              <div className="mt-2 space-y-2">
+                <p className="text-xs text-zinc-500 dark:text-slate-400">
+                  Generates a warm read-aloud of the prompt above. Regenerate
+                  if you edit the prompt text.
+                </p>
+                <button
+                  type="button"
+                  onClick={generateAudio}
+                  disabled={ttsPending || !prompt.trim()}
+                  className="inline-flex items-center gap-1.5 rounded-full bg-violet-600 px-4 py-1.5 text-xs font-semibold text-white transition hover:bg-violet-700 disabled:opacity-50"
+                >
+                  {ttsPending ? (
+                    <Loader2 className="h-3.5 w-3.5 animate-spin" />
+                  ) : (
+                    <Sparkles className="h-3.5 w-3.5" />
+                  )}
+                  Read prompt aloud with Readee.ai
+                </button>
+                {ttsErr && (
+                  <p className="text-xs font-semibold text-red-600">{ttsErr}</p>
+                )}
+              </div>
+            )}
+          </div>
+
           {err && (
             <div className="flex items-start gap-2 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700 dark:bg-red-950/30 dark:text-red-300">
               <AlertCircle className="mt-0.5 h-4 w-4" />
@@ -667,5 +889,42 @@ function QuestionFormModal({
         </div>
       </div>
     </div>
+  );
+}
+
+function AiBudgetBadge({ refreshKey }: { refreshKey: string }) {
+  const [data, setData] = useState<{
+    monthly: { used: number; limit: number; remaining: number };
+  } | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetch("/api/classroom/ai-budget")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => {
+        if (!cancelled && d) setData(d);
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, [refreshKey]);
+
+  if (!data) return null;
+  const { used, limit, remaining } = data.monthly;
+  const pct = limit === 0 ? 0 : Math.round((used / limit) * 100);
+  const warn = pct >= 80;
+  return (
+    <span
+      className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${
+        warn
+          ? "bg-amber-100 text-amber-800 dark:bg-amber-950/40 dark:text-amber-300"
+          : "bg-violet-100 text-violet-700 dark:bg-violet-950/40 dark:text-violet-300"
+      }`}
+      title={`Readee.ai credits this month — ${used} of ${limit} used, ${remaining} remaining.`}
+    >
+      <Sparkles className="h-3 w-3" />
+      {remaining} / {limit}
+    </span>
   );
 }

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ClipboardPen, Plus, ArrowRight } from "lucide-react";
+import { ClipboardPen, ArrowRight, Sparkles } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/lib/auth/helpers";
 import CreateQuizButton from "./_components/CreateQuizButton";
@@ -51,26 +51,43 @@ export default async function AuthoringHomePage() {
             Your custom quizzes
           </h1>
           <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">
-            Write your own multiple-choice, true/false, and fill-in-blank
-            questions. Assign any quiz to your classroom.
+            Let Readee.ai build a full assignment — passage, questions, audio,
+            and visuals — or write one from scratch.
           </p>
         </div>
-        <CreateQuizButton />
+        <div className="flex flex-wrap items-center gap-2">
+          <Link
+            href="/classroom/authoring/wizard"
+            className="inline-flex items-center gap-2 rounded-full bg-violet-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-violet-700"
+          >
+            <Sparkles className="h-4 w-4" />
+            Build with Readee.ai
+          </Link>
+          <CreateQuizButton />
+        </div>
       </div>
 
       {list.length === 0 ? (
         <div className="mt-10 rounded-3xl border-2 border-dashed border-zinc-200 bg-white p-12 text-center dark:border-slate-800 dark:bg-slate-900/40">
-          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-indigo-100 text-indigo-600 dark:bg-indigo-950/40 dark:text-indigo-300">
-            <ClipboardPen className="h-7 w-7" />
+          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500 to-indigo-600 text-white">
+            <Sparkles className="h-7 w-7" />
           </div>
           <h2 className="mt-4 text-lg font-bold text-zinc-900 dark:text-white">
-            No quizzes yet
+            Your first assignment
           </h2>
           <p className="mx-auto mt-2 max-w-sm text-sm text-zinc-500 dark:text-slate-400">
-            Build a quick quiz from scratch. Readee&apos;s 900+ standards-aligned
-            questions are always available separately via New Assignment.
+            Start with Readee.ai — describe the topic and we&apos;ll write
+            the passage, questions, and audio in one pass. You can also
+            build an empty quiz and author questions yourself.
           </p>
-          <div className="mt-6">
+          <div className="mt-6 flex items-center justify-center gap-2">
+            <Link
+              href="/classroom/authoring/wizard"
+              className="inline-flex items-center gap-2 rounded-full bg-violet-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-violet-700"
+            >
+              <Sparkles className="h-4 w-4" />
+              Build with Readee.ai
+            </Link>
             <CreateQuizButton />
           </div>
         </div>

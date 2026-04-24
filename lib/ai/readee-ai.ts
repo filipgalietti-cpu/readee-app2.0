@@ -1,6 +1,18 @@
 import { GoogleGenAI, Type } from "@google/genai";
+import { randomUUID } from "node:crypto";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { trackError } from "@/lib/observability/track";
+import {
+  assertSafePrompt,
+  assertSafeOutput,
+  IMAGE_SAFETY_PREFIX,
+} from "@/lib/ai/safety";
+import {
+  CREDIT_COST,
+  HOURLY_CREDIT_LIMIT,
+  MONTHLY_CREDIT_LIMIT,
+  type AiKind,
+} from "@/lib/ai/credits";
 
 /**
  * Readee.ai — teacher-facing AI assistant for generating MCQ questions
@@ -15,8 +27,11 @@ import { trackError } from "@/lib/observability/track";
  * Pro later if output quality isn't hitting Jennifer's bar.
  */
 
-const HOURLY_CAP_PER_TEACHER = 10;
 const MODEL_ID = "gemini-2.5-flash";
+const IMAGE_MODEL_ID = "gemini-2.5-flash-image-preview";
+const TTS_MODEL_ID = "gemini-2.5-flash-preview-tts";
+const TTS_VOICE = "Autonoe";
+const TTS_SAMPLE_RATE = 24000;
 
 export type GeneratedMCQ = {
   prompt: string;
@@ -33,26 +48,92 @@ function getClient(): GoogleGenAI {
   return new GoogleGenAI({ apiKey });
 }
 
+export type BudgetCheck = {
+  allowed: boolean;
+  reason?: "hourly" | "monthly";
+  costCredits: number;
+  hourlyUsed: number;
+  monthlyUsed: number;
+  hourlyLimit: number;
+  monthlyLimit: number;
+};
+
+/**
+ * Check whether a teacher can spend `CREDIT_COST[kind]` more credits
+ * without blowing the hourly or monthly cap. This is the single budget
+ * gate for all Readee.ai generators.
+ *
+ * Only successful calls (success = true in ai_usage_log) count against
+ * the budget, so a failed request doesn't punish the teacher.
+ */
 export async function checkRateLimit(
   teacherId: string,
-  kind: "quiz_generation" | "image_generation" | "tts_generation" | "passage_generation",
-): Promise<{ allowed: boolean; used: number; remaining: number }> {
+  kind: AiKind,
+): Promise<BudgetCheck> {
   const admin = supabaseAdmin();
-  const oneHourAgo = new Date(Date.now() - 60 * 60 * 1000).toISOString();
-  const { count } = await admin
+  const now = Date.now();
+  const oneHourAgo = new Date(now - 60 * 60 * 1000).toISOString();
+  const thirtyDaysAgo = new Date(now - 30 * 24 * 60 * 60 * 1000).toISOString();
+
+  const cost = CREDIT_COST[kind] ?? 1;
+
+  const { data: rows } = await admin
     .from("ai_usage_log")
-    .select("id", { count: "exact", head: true })
+    .select("credits_used, created_at")
     .eq("teacher_id", teacherId)
-    .eq("kind", kind)
-    .gte("created_at", oneHourAgo);
-  const used = count ?? 0;
-  const remaining = Math.max(0, HOURLY_CAP_PER_TEACHER - used);
-  return { allowed: remaining > 0, used, remaining };
+    .eq("success", true)
+    .gte("created_at", thirtyDaysAgo);
+
+  let hourlyUsed = 0;
+  let monthlyUsed = 0;
+  for (const r of (rows ?? []) as any[]) {
+    const c = Number(r.credits_used ?? 0);
+    monthlyUsed += c;
+    if (r.created_at >= oneHourAgo) hourlyUsed += c;
+  }
+
+  if (monthlyUsed + cost > MONTHLY_CREDIT_LIMIT) {
+    return {
+      allowed: false,
+      reason: "monthly",
+      costCredits: cost,
+      hourlyUsed,
+      monthlyUsed,
+      hourlyLimit: HOURLY_CREDIT_LIMIT,
+      monthlyLimit: MONTHLY_CREDIT_LIMIT,
+    };
+  }
+  if (hourlyUsed + cost > HOURLY_CREDIT_LIMIT) {
+    return {
+      allowed: false,
+      reason: "hourly",
+      costCredits: cost,
+      hourlyUsed,
+      monthlyUsed,
+      hourlyLimit: HOURLY_CREDIT_LIMIT,
+      monthlyLimit: MONTHLY_CREDIT_LIMIT,
+    };
+  }
+  return {
+    allowed: true,
+    costCredits: cost,
+    hourlyUsed,
+    monthlyUsed,
+    hourlyLimit: HOURLY_CREDIT_LIMIT,
+    monthlyLimit: MONTHLY_CREDIT_LIMIT,
+  };
+}
+
+function budgetError(rl: BudgetCheck): string {
+  if (rl.reason === "monthly") {
+    return `You've used this month's Readee.ai budget (${rl.monthlyUsed}/${rl.monthlyLimit} credits). Your admin can top up the classroom's credits to unlock more.`;
+  }
+  return `You've generated a lot in the last hour (${rl.hourlyUsed}/${rl.hourlyLimit} credits). Try again in a bit — this limit resets continuously.`;
 }
 
 export async function logUsage(input: {
   teacherId: string;
-  kind: "quiz_generation" | "image_generation" | "tts_generation" | "passage_generation";
+  kind: AiKind;
   model?: string;
   inputTokens?: number;
   outputTokens?: number;
@@ -178,12 +259,12 @@ export async function generateMCQQuestions(input: {
   if (!input.topic.trim()) return { ok: false, error: "Topic is required." };
   const count = Math.max(1, Math.min(10, Math.floor(input.count)));
 
+  const safety = assertSafePrompt(input.topic);
+  if (!safety.ok) return { ok: false, error: safety.error };
+
   const rl = await checkRateLimit(input.teacherId, "quiz_generation");
   if (!rl.allowed) {
-    return {
-      ok: false,
-      error: `Hourly AI limit reached (${HOURLY_CAP_PER_TEACHER} generations/hr). Try again in a bit.`,
-    };
+    return { ok: false, error: budgetError(rl) };
   }
 
   let client: GoogleGenAI;
@@ -244,12 +325,20 @@ Generate exactly ${count} multiple-choice question${count === 1 ? "" : "s"} foll
       throw new Error("The model returned no usable questions. Try rephrasing the topic.");
     }
 
+    const outputSafety = assertSafeOutput(
+      questions.flatMap((qq) => [qq.prompt, ...qq.choices, qq.hint ?? ""]),
+    );
+    if (!outputSafety.ok) {
+      throw new Error(outputSafety.error);
+    }
+
     await logUsage({
       teacherId: input.teacherId,
       kind: "quiz_generation",
       model: MODEL_ID,
       inputTokens: response.usageMetadata?.promptTokenCount,
       outputTokens: response.usageMetadata?.candidatesTokenCount,
+      creditsUsed: CREDIT_COST.quiz_generation,
       success: true,
       requestSummary: input.topic.slice(0, 200),
     });
@@ -292,12 +381,12 @@ export async function generateMatchingPairs(input: {
   if (!input.topic.trim()) return { ok: false, error: "Topic is required." };
   const count = Math.max(2, Math.min(8, Math.floor(input.count)));
 
+  const safety = assertSafePrompt(input.topic);
+  if (!safety.ok) return { ok: false, error: safety.error };
+
   const rl = await checkRateLimit(input.teacherId, "quiz_generation");
   if (!rl.allowed) {
-    return {
-      ok: false,
-      error: `Hourly AI limit reached (${HOURLY_CAP_PER_TEACHER} generations/hr). Try again in a bit.`,
-    };
+    return { ok: false, error: budgetError(rl) };
   }
 
   let client: GoogleGenAI;
@@ -353,12 +442,18 @@ export async function generateMatchingPairs(input: {
       throw new Error("Could not produce enough distinct pairs. Try rephrasing.");
     }
 
+    const outputSafety = assertSafeOutput(pairs.flatMap((p) => [p.left, p.right]));
+    if (!outputSafety.ok) {
+      throw new Error(outputSafety.error);
+    }
+
     await logUsage({
       teacherId: input.teacherId,
       kind: "quiz_generation",
       model: MODEL_ID,
       inputTokens: response.usageMetadata?.promptTokenCount,
       outputTokens: response.usageMetadata?.candidatesTokenCount,
+      creditsUsed: CREDIT_COST.quiz_generation,
       success: true,
       requestSummary: `pairs: ${input.topic.slice(0, 150)}`,
     });
@@ -429,6 +524,269 @@ export type GeneratedPassage = {
   suggestedQuestions: string[];
 };
 
+// ═══ Image generation (Gemini 2.5 Flash Image) ══════════════════════
+
+const IMAGE_STYLE_PREFIX =
+  "Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors, kid-friendly, no text, no watermarks. ";
+
+export async function generateImage(input: {
+  teacherId: string;
+  prompt: string;
+}): Promise<
+  { ok: true; imageUrl: string; storagePath: string } | { ok: false; error: string }
+> {
+  if (!input.prompt.trim()) return { ok: false, error: "Prompt is required." };
+
+  const safety = assertSafePrompt(input.prompt);
+  if (!safety.ok) return { ok: false, error: safety.error };
+
+  const rl = await checkRateLimit(input.teacherId, "image_generation");
+  if (!rl.allowed) {
+    return { ok: false, error: budgetError(rl) };
+  }
+
+  let client: GoogleGenAI;
+  try {
+    client = getClient();
+  } catch (e: any) {
+    await logUsage({
+      teacherId: input.teacherId,
+      kind: "image_generation",
+      success: false,
+      error: e.message,
+      requestSummary: input.prompt.slice(0, 200),
+    });
+    return { ok: false, error: e.message ?? "AI is not configured." };
+  }
+
+  try {
+    const fullPrompt = IMAGE_SAFETY_PREFIX + IMAGE_STYLE_PREFIX + input.prompt.trim();
+    const response = await client.models.generateContent({
+      model: IMAGE_MODEL_ID,
+      contents: fullPrompt,
+    });
+
+    // The image comes back as an inline_data part on the candidate.
+    const parts = (response as any)?.candidates?.[0]?.content?.parts ?? [];
+    let imageBase64: string | null = null;
+    let mimeType = "image/png";
+    for (const p of parts) {
+      if (p.inlineData?.data) {
+        imageBase64 = p.inlineData.data;
+        mimeType = p.inlineData.mimeType ?? mimeType;
+        break;
+      }
+    }
+    if (!imageBase64) {
+      throw new Error("The model didn't return an image. Try rephrasing.");
+    }
+
+    const buffer = Buffer.from(imageBase64, "base64");
+    const ext = mimeType.includes("png")
+      ? "png"
+      : mimeType.includes("jpeg") || mimeType.includes("jpg")
+      ? "jpg"
+      : mimeType.includes("webp")
+      ? "webp"
+      : "png";
+    const uuid = randomUUID();
+    const storagePath = `custom/${input.teacherId}/${uuid}.${ext}`;
+
+    const admin = supabaseAdmin();
+    const upload = await admin.storage
+      .from("images")
+      .upload(storagePath, buffer, {
+        contentType: mimeType,
+        upsert: false,
+      });
+    if (upload.error) {
+      throw new Error(`Upload failed: ${upload.error.message}`);
+    }
+
+    const { data: publicUrl } = admin.storage.from("images").getPublicUrl(storagePath);
+    const imageUrl = publicUrl?.publicUrl;
+    if (!imageUrl) {
+      throw new Error("Could not resolve a public URL for the image.");
+    }
+
+    await logUsage({
+      teacherId: input.teacherId,
+      kind: "image_generation",
+      model: IMAGE_MODEL_ID,
+      inputTokens: response.usageMetadata?.promptTokenCount,
+      outputTokens: response.usageMetadata?.candidatesTokenCount,
+      creditsUsed: CREDIT_COST.image_generation,
+      success: true,
+      requestSummary: input.prompt.slice(0, 200),
+    });
+
+    return { ok: true, imageUrl, storagePath };
+  } catch (e: any) {
+    trackError(e, {
+      route: "readee-ai.generateImage",
+      userId: input.teacherId,
+      tags: { model: IMAGE_MODEL_ID, kind: "image_generation" },
+      extra: { prompt: input.prompt.slice(0, 200) },
+    });
+    await logUsage({
+      teacherId: input.teacherId,
+      kind: "image_generation",
+      model: IMAGE_MODEL_ID,
+      success: false,
+      error: e.message,
+      requestSummary: input.prompt.slice(0, 200),
+    });
+    return {
+      ok: false,
+      error: e?.message ?? "Image generation failed.",
+    };
+  }
+}
+
+// ═══ Speech generation (Gemini TTS) ═════════════════════════════════
+
+function pcmToWav(pcm: Buffer, sampleRate: number): Buffer {
+  const numChannels = 1;
+  const bitsPerSample = 16;
+  const byteRate = (sampleRate * numChannels * bitsPerSample) / 8;
+  const blockAlign = (numChannels * bitsPerSample) / 8;
+  const dataSize = pcm.length;
+  const buffer = Buffer.alloc(44 + dataSize);
+  buffer.write("RIFF", 0);
+  buffer.writeUInt32LE(36 + dataSize, 4);
+  buffer.write("WAVE", 8);
+  buffer.write("fmt ", 12);
+  buffer.writeUInt32LE(16, 16);
+  buffer.writeUInt16LE(1, 20);
+  buffer.writeUInt16LE(numChannels, 22);
+  buffer.writeUInt32LE(sampleRate, 24);
+  buffer.writeUInt32LE(byteRate, 28);
+  buffer.writeUInt16LE(blockAlign, 32);
+  buffer.writeUInt16LE(bitsPerSample, 34);
+  buffer.write("data", 36);
+  buffer.writeUInt32LE(dataSize, 40);
+  pcm.copy(buffer, 44);
+  return buffer;
+}
+
+export async function generateSpeech(input: {
+  teacherId: string;
+  text: string;
+}): Promise<
+  { ok: true; audioUrl: string; storagePath: string } | { ok: false; error: string }
+> {
+  const text = input.text.trim();
+  if (!text) return { ok: false, error: "Text is required." };
+  if (text.length > 1200) {
+    return { ok: false, error: "Keep the text under 1,200 characters for audio." };
+  }
+
+  const safety = assertSafePrompt(text);
+  if (!safety.ok) return { ok: false, error: safety.error };
+
+  const rl = await checkRateLimit(input.teacherId, "tts_generation");
+  if (!rl.allowed) {
+    return { ok: false, error: budgetError(rl) };
+  }
+
+  let client: GoogleGenAI;
+  try {
+    client = getClient();
+  } catch (e: any) {
+    await logUsage({
+      teacherId: input.teacherId,
+      kind: "tts_generation",
+      success: false,
+      error: e.message,
+      requestSummary: text.slice(0, 200),
+    });
+    return { ok: false, error: e.message ?? "AI is not configured." };
+  }
+
+  try {
+    const response = await client.models.generateContent({
+      model: TTS_MODEL_ID,
+      contents: `Read this warmly for a young student, clearly and unhurried: ${text}`,
+      config: {
+        responseModalities: ["AUDIO"],
+        speechConfig: {
+          voiceConfig: {
+            prebuiltVoiceConfig: { voiceName: TTS_VOICE },
+          },
+        },
+      } as any,
+    });
+
+    const parts = (response as any)?.candidates?.[0]?.content?.parts ?? [];
+    let pcmBase64: string | null = null;
+    for (const p of parts) {
+      if (p.inlineData?.data) {
+        pcmBase64 = p.inlineData.data;
+        break;
+      }
+    }
+    if (!pcmBase64) {
+      throw new Error("The model didn't return audio. Try again.");
+    }
+
+    const pcm = Buffer.from(pcmBase64, "base64");
+    const wav = pcmToWav(pcm, TTS_SAMPLE_RATE);
+    const uuid = randomUUID();
+    const storagePath = `custom/${input.teacherId}/${uuid}.wav`;
+
+    const admin = supabaseAdmin();
+    const upload = await admin.storage
+      .from("audio")
+      .upload(storagePath, wav, {
+        contentType: "audio/wav",
+        upsert: false,
+      });
+    if (upload.error) {
+      throw new Error(`Upload failed: ${upload.error.message}`);
+    }
+
+    const { data: publicUrl } = admin.storage.from("audio").getPublicUrl(storagePath);
+    const audioUrl = publicUrl?.publicUrl;
+    if (!audioUrl) {
+      throw new Error("Could not resolve a public URL for the audio.");
+    }
+
+    await logUsage({
+      teacherId: input.teacherId,
+      kind: "tts_generation",
+      model: TTS_MODEL_ID,
+      inputTokens: response.usageMetadata?.promptTokenCount,
+      outputTokens: response.usageMetadata?.candidatesTokenCount,
+      creditsUsed: CREDIT_COST.tts_generation,
+      success: true,
+      requestSummary: text.slice(0, 200),
+    });
+
+    return { ok: true, audioUrl, storagePath };
+  } catch (e: any) {
+    trackError(e, {
+      route: "readee-ai.generateSpeech",
+      userId: input.teacherId,
+      tags: { model: TTS_MODEL_ID, kind: "tts_generation" },
+      extra: { text: text.slice(0, 200) },
+    });
+    await logUsage({
+      teacherId: input.teacherId,
+      kind: "tts_generation",
+      model: TTS_MODEL_ID,
+      success: false,
+      error: e.message,
+      requestSummary: text.slice(0, 200),
+    });
+    return {
+      ok: false,
+      error: e?.message ?? "Audio generation failed.",
+    };
+  }
+}
+
+// ═══ Passage writer ═════════════════════════════════════════════════
+
 export async function generatePassage(input: {
   teacherId: string;
   topic: string;
@@ -437,12 +795,14 @@ export async function generatePassage(input: {
 }): Promise<{ ok: true; passage: GeneratedPassage } | { ok: false; error: string }> {
   if (!input.topic.trim()) return { ok: false, error: "Topic is required." };
 
+  const safety = assertSafePrompt(
+    [input.topic, input.phonicsPattern ?? ""].join(" "),
+  );
+  if (!safety.ok) return { ok: false, error: safety.error };
+
   const rl = await checkRateLimit(input.teacherId, "passage_generation");
   if (!rl.allowed) {
-    return {
-      ok: false,
-      error: `Hourly passage limit reached (${HOURLY_CAP_PER_TEACHER}/hr). Try again in a bit.`,
-    };
+    return { ok: false, error: budgetError(rl) };
   }
 
   let client: GoogleGenAI;
@@ -497,12 +857,18 @@ export async function generatePassage(input: {
       throw new Error("The model didn't return a complete passage. Try again.");
     }
 
+    const outputSafety = assertSafeOutput([title, passage, ...suggested]);
+    if (!outputSafety.ok) {
+      throw new Error(outputSafety.error);
+    }
+
     await logUsage({
       teacherId: input.teacherId,
       kind: "passage_generation",
       model: MODEL_ID,
       inputTokens: response.usageMetadata?.promptTokenCount,
       outputTokens: response.usageMetadata?.candidatesTokenCount,
+      creditsUsed: CREDIT_COST.passage_generation,
       success: true,
       requestSummary: `passage: ${input.topic.slice(0, 150)}`,
     });

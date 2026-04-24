@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ClipboardPen, ListChecks } from "lucide-react";
+import { ArrowLeft, ClipboardPen, ListChecks, Sparkles } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/lib/auth/helpers";
 import QuizBuilder from "./_components/QuizBuilder";
@@ -9,10 +9,13 @@ export const dynamic = "force-dynamic";
 
 export default async function QuizBuilderPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ quizId: string }>;
+  searchParams: Promise<{ built?: string }>;
 }) {
   const { quizId } = await params;
+  const { built } = await searchParams;
   const profile = await requireProfile();
   if (profile.role !== "educator") notFound();
 
@@ -28,22 +31,9 @@ export default async function QuizBuilderPage({
 
   const { data: junction } = await supabase
     .from("custom_quiz_questions")
-    .select("position, question_id, custom_questions(id, kind, prompt, choices, correct, hint)")
+    .select("position, question_id, custom_questions(id, kind, prompt, choices, correct, hint, image_url, audio_url)")
     .eq("quiz_id", quizId)
     .order("position", { ascending: true });
-
-  type Junction = {
-    position: number;
-    question_id: string;
-    custom_questions: {
-      id: string;
-      kind: "multiple_choice" | "true_false" | "fill_in_blank";
-      prompt: string;
-      choices: string[] | null;
-      correct: any;
-      hint: string | null;
-    };
-  };
 
   const questions = (junction ?? []).map((j: any) => {
     const q = j.custom_questions;
@@ -55,6 +45,8 @@ export default async function QuizBuilderPage({
       choices: (q.choices ?? null) as string[] | null,
       correct: q.correct,
       hint: (q.hint ?? null) as string | null,
+      imageUrl: (q.image_url ?? null) as string | null,
+      audioUrl: (q.audio_url ?? null) as string | null,
     };
   });
 
@@ -86,6 +78,19 @@ export default async function QuizBuilderPage({
           {q.grade_level ? ` · ${q.grade_level}` : ""}
         </div>
       </div>
+
+      {built === "1" && (
+        <div className="mt-5 flex items-start gap-2 rounded-2xl border border-violet-200 bg-gradient-to-r from-violet-50 to-indigo-50 p-4 text-sm text-violet-900 dark:border-violet-900/40 dark:from-violet-950/30 dark:to-indigo-950/30 dark:text-violet-100">
+          <Sparkles className="mt-0.5 h-4 w-4 flex-shrink-0 text-violet-600 dark:text-violet-300" />
+          <div>
+            <div className="font-bold">Your assignment is ready.</div>
+            <div className="mt-0.5 text-xs text-violet-800 dark:text-violet-200">
+              Review, edit, or reorder anything below. When you&apos;re
+              happy, assign it from your classroom&apos;s Assignments tab.
+            </div>
+          </div>
+        </div>
+      )}
 
       <div className="mt-8">
         <QuizBuilder
