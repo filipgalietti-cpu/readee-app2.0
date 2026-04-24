@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState, useTransition } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, X, Search, Check, Target, BookOpen, ClipboardPen } from "lucide-react";
+import { Plus, X, Search, Check, Target, BookOpen, ClipboardPen, Volume2 } from "lucide-react";
 import { createAssignment } from "../../actions";
 import kJson from "@/app/data/kindergarten-standards-questions.json";
 import g1Json from "@/app/data/1st-grade-standards-questions.json";
@@ -65,6 +65,8 @@ export default function NewAssignmentButton({
   const [dueAt, setDueAt] = useState<string>("");
   const [passThreshold, setPassThreshold] = useState<number | null>(null);
   const [includedQuestionIds, setIncludedQuestionIds] = useState<Set<string> | null>(null); // null = all
+  const [audioPrompt, setAudioPrompt] = useState(true);
+  const [audioChoices, setAudioChoices] = useState(false);
   const [err, setErr] = useState<string | null>(null);
   const [pending, start] = useTransition();
   const router = useRouter();
@@ -111,6 +113,8 @@ export default function NewAssignmentButton({
     setDueAt("");
     setPassThreshold(null);
     setIncludedQuestionIds(null);
+    setAudioPrompt(true);
+    setAudioChoices(false);
     setErr(null);
   }
 
@@ -158,6 +162,8 @@ export default function NewAssignmentButton({
           dueAt: dueAt ? new Date(dueAt).toISOString() : null,
           passThreshold,
           questionIds: subsetIds,
+          audioPromptEnabled: audioPrompt,
+          audioChoicesEnabled: audioChoices,
         });
         if (!res.ok) {
           setErr(res.error);
@@ -182,6 +188,8 @@ export default function NewAssignmentButton({
           dueAt: dueAt ? new Date(dueAt).toISOString() : null,
           passThreshold,
           questionIds: null,
+          audioPromptEnabled: audioPrompt,
+          audioChoicesEnabled: audioChoices,
         });
         if (!res.ok) {
           setErr(res.error);
@@ -485,6 +493,51 @@ export default function NewAssignmentButton({
                         >
                           Off
                         </button>
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="flex items-center gap-1.5 text-sm font-semibold text-zinc-700 dark:text-slate-300">
+                        <Volume2 className="h-4 w-4 text-indigo-600" />
+                        Audio
+                      </label>
+                      <p className="mt-0.5 text-xs text-zinc-500 dark:text-slate-400">
+                        Control whether audio plays automatically when students see each question.
+                      </p>
+                      <div className="mt-3 space-y-2">
+                        <label className="flex cursor-pointer items-center gap-2 rounded-lg border border-zinc-200 bg-white p-2.5 text-sm dark:border-slate-700 dark:bg-slate-900">
+                          <input
+                            type="checkbox"
+                            checked={audioPrompt}
+                            onChange={(e) => setAudioPrompt(e.target.checked)}
+                            className="h-4 w-4 accent-indigo-600"
+                          />
+                          <div className="flex-1">
+                            <div className="font-semibold text-zinc-900 dark:text-white">
+                              Autoplay question audio
+                            </div>
+                            <div className="text-[11px] text-zinc-500 dark:text-slate-400">
+                              Reads the prompt aloud when available. Recommended for K-2.
+                            </div>
+                          </div>
+                        </label>
+                        <label className="flex cursor-pointer items-center gap-2 rounded-lg border border-zinc-200 bg-white p-2.5 text-sm dark:border-slate-700 dark:bg-slate-900">
+                          <input
+                            type="checkbox"
+                            checked={audioChoices}
+                            onChange={(e) => setAudioChoices(e.target.checked)}
+                            className="h-4 w-4 accent-indigo-600"
+                          />
+                          <div className="flex-1">
+                            <div className="font-semibold text-zinc-900 dark:text-white">
+                              Tap to preview choice audio
+                            </div>
+                            <div className="text-[11px] text-zinc-500 dark:text-slate-400">
+                              Students tap once to hear a choice, tap again to pick. Useful for
+                              phoneme and letter-sound questions.
+                            </div>
+                          </div>
+                        </label>
                       </div>
                     </div>
 

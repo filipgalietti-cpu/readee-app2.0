@@ -20,6 +20,7 @@ type StandardQuestion = {
   choices?: string[];
   correct?: string | string[];
   hint?: string;
+  audio_url?: string;
 };
 
 type Standard = {
@@ -84,7 +85,7 @@ export default async function StudentLearnPage({
   const admin = supabaseAdmin();
   const { data: assignmentRow } = await admin
     .from("assignments")
-    .select("id, question_ids, pass_threshold")
+    .select("id, question_ids, pass_threshold, audio_prompt_enabled, audio_choices_enabled")
     .eq("classroom_id", session.classroomId)
     .eq("kind", "readee_lesson")
     .eq("source_id", standardId)
@@ -94,6 +95,8 @@ export default async function StudentLearnPage({
 
   const questionIdsFilter = (assignmentRow as any)?.question_ids as string[] | null | undefined;
   const passThreshold = (assignmentRow as any)?.pass_threshold as number | null | undefined;
+  const audioPromptEnabled = (assignmentRow as any)?.audio_prompt_enabled !== false;
+  const audioChoicesEnabled = (assignmentRow as any)?.audio_choices_enabled === true;
 
   let mcqs = standard.questions.filter(
     (q) => q.type === "multiple_choice" && Array.isArray(q.choices) && (q.choices?.length ?? 0) >= 2,
@@ -127,8 +130,17 @@ export default async function StudentLearnPage({
           standardId={standardId}
           lessonTitle={lesson?.title ?? standard.standard_description}
           slides={slides}
-          mcqs={mcqs}
+          mcqs={mcqs.map((q) => ({
+            id: q.id,
+            prompt: q.prompt,
+            choices: q.choices,
+            correct: q.correct,
+            hint: q.hint,
+            audioUrl: q.audio_url ?? null,
+          }))}
           passThreshold={passThreshold ?? null}
+          audioPromptEnabled={audioPromptEnabled}
+          audioChoicesEnabled={audioChoicesEnabled}
         />
       </div>
     </div>

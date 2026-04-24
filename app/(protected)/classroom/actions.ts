@@ -488,6 +488,8 @@ export async function createAssignment(input: {
   dueAt?: string | null;
   passThreshold?: number | null;
   questionIds?: string[] | null;
+  audioPromptEnabled?: boolean;
+  audioChoicesEnabled?: boolean;
 }): Promise<{ ok: true; assignmentId: string } | { ok: false; error: string }> {
   const profile = await requireProfile();
   if (profile.role !== "educator") {
@@ -526,6 +528,8 @@ export async function createAssignment(input: {
       due_at: input.dueAt ?? null,
       pass_threshold: passThreshold,
       question_ids: questionIds,
+      audio_prompt_enabled: input.audioPromptEnabled ?? true,
+      audio_choices_enabled: input.audioChoicesEnabled ?? false,
     })
     .select("id")
     .single();

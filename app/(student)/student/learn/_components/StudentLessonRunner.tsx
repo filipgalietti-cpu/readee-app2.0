@@ -14,6 +14,11 @@ import {
   Carrot,
 } from "lucide-react";
 
+// audioChoicesEnabled (two-tap preview) is accepted + stored but not yet
+// consumed by the runner UI — needs choices_audio_urls threaded through
+// from the standards JSON into the MCQ type + a tap-once-to-preview,
+// tap-twice-to-pick interaction. Tracked as a follow-up.
+
 const SUPABASE_STORAGE =
   "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public";
 
@@ -36,7 +41,8 @@ type MCQ = {
   prompt: string;
   choices?: string[];
   correct?: string | string[];
-  hint?: string;
+  hint?: string | null;
+  audioUrl?: string | null;
 };
 
 type Phase = "slides" | "practice" | "done";
@@ -47,12 +53,16 @@ export default function StudentLessonRunner({
   slides,
   mcqs,
   passThreshold,
+  audioPromptEnabled = true,
+  audioChoicesEnabled = false,
 }: {
   standardId: string;
   lessonTitle: string;
   slides: LessonSlide[];
   mcqs: MCQ[];
   passThreshold?: number | null;
+  audioPromptEnabled?: boolean;
+  audioChoicesEnabled?: boolean;
 }) {
   const hasSlides = slides.length > 0;
   const [phase, setPhase] = useState<Phase>(hasSlides ? "slides" : "practice");
@@ -128,6 +138,22 @@ export default function StudentLessonRunner({
     if (typeof c === "string") return new Set([c]);
     return new Set<string>();
   }, [currentMcq]);
+
+  // Autoplay the MCQ prompt audio when the question changes (if the
+  // assignment enables it and the question has an audio_url).
+  useEffect(() => {
+    if (phase !== "practice") return;
+    if (!audioPromptEnabled) return;
+    const url = currentMcq?.audioUrl;
+    if (!url) return;
+    if (!audioRef.current) return;
+    audioRef.current.pause();
+    audioRef.current.src = url;
+    audioRef.current.currentTime = 0;
+    audioRef.current.play().catch(() => {
+      /* autoplay may be blocked — ignore */
+    });
+  }, [phase, mcqIdx, audioPromptEnabled, currentMcq?.audioUrl]);
 
   function mcqCheck() {
     if (!picked || revealed) return;
@@ -337,12 +363,29 @@ export default function StudentLessonRunner({
 
   return (
     <div>
+      {/* Shared audio element (also used in the slides phase). Kept at
+          the top of the practice view so the MCQ autoplay effect has a
+          DOM node to target. */}
+      <audio ref={audioRef} preload="auto" />
       <div className="mb-3 flex items-center justify-between">
         <div className="text-xs font-semibold text-indigo-600">
           Practice — Question {mcqIdx + 1} of {total}
         </div>
-        <div className="font-mono text-xs font-bold text-green-700 dark:text-green-300">
-          ✓ {correctCount}
+        <div className="flex items-center gap-2">
+          {audioPromptEnabled && currentMcq?.audioUrl && (
+            <button
+              type="button"
+              onClick={replayAudio}
+              className="inline-flex items-center gap-1 rounded-full border border-indigo-200 bg-indigo-50 px-2 py-0.5 text-[11px] font-semibold text-indigo-700 hover:bg-indigo-100 dark:border-indigo-900 dark:bg-indigo-950/30 dark:text-indigo-300"
+              title="Listen again"
+            >
+              <Volume2 className="h-3 w-3" />
+              Listen
+            </button>
+          )}
+          <div className="font-mono text-xs font-bold text-green-700 dark:text-green-300">
+            ✓ {correctCount}
+          </div>
         </div>
       </div>
       <div className="h-1.5 overflow-hidden rounded-full bg-zinc-100 dark:bg-slate-800">
