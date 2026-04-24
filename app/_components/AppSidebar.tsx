@@ -156,6 +156,8 @@ export default function AppSidebar({ mobileOnly = false }: { mobileOnly?: boolea
   const plan = usePlanStore((s) => s.plan);
   const role = usePlanStore((s) => s.role);
   const hasAdminScope = usePlanStore((s) => s.hasAdminScope);
+  const displayName = usePlanStore((s) => s.displayName);
+  const email = usePlanStore((s) => s.email);
   const fetchPlan = usePlanStore((s) => s.fetch);
   useEffect(() => { fetchPlan(); }, [fetchPlan]);
 
@@ -165,6 +167,17 @@ export default function AppSidebar({ mobileOnly = false }: { mobileOnly?: boolea
     hasAdminScope,
     storeChildren.length > 0,
   );
+
+  // For educators, the sidebar identity is the teacher — not the child.
+  // Pure parents keep the current child-forward sidebar.
+  const isEducator = role === "educator";
+  const sidebarName = isEducator
+    ? displayName || "Teacher"
+    : activeChild?.first_name || "Reader";
+  const sidebarAvatarSrc = isEducator ? null : avatarSrc;
+  const sidebarSubtitle = isEducator
+    ? email ?? (hasAdminScope ? "Teacher · Admin" : "Teacher")
+    : undefined;
 
   // Close mobile overlay on route change
   useEffect(() => { setMobileOpen(false); }, [pathname, setMobileOpen]);
@@ -196,9 +209,10 @@ export default function AppSidebar({ mobileOnly = false }: { mobileOnly?: boolea
               <ExpandedNav
                 pathname={pathname}
                 sections={sections}
-                avatarSrc={avatarSrc}
-                childName={activeChild?.first_name || null}
+                avatarSrc={sidebarAvatarSrc}
+                sidebarName={sidebarName}
                 plan={plan || "free"}
+                subtitle={sidebarSubtitle}
                 onClose={() => setMobileOpen(false)}
               />
             </motion.aside>
@@ -224,9 +238,10 @@ export default function AppSidebar({ mobileOnly = false }: { mobileOnly?: boolea
               <ExpandedNav
                 pathname={pathname}
                 sections={sections}
-                avatarSrc={avatarSrc}
-                childName={activeChild?.first_name || null}
+                avatarSrc={sidebarAvatarSrc}
+                sidebarName={sidebarName}
                 plan={plan || "free"}
+                subtitle={sidebarSubtitle}
                 onToggle={() => setOpen(false)}
               />
             </motion.div>
@@ -261,19 +276,34 @@ export default function AppSidebar({ mobileOnly = false }: { mobileOnly?: boolea
                 </div>
               ))}
 
-              {/* Avatar at bottom */}
-              {avatarSrc && (
-                <div className="mt-auto">
-                  <SidebarTooltip label={activeChild?.first_name || "Reader"}>
-                    <button
-                      onClick={() => setOpen(true)}
-                      className="w-10 h-10 rounded-lg overflow-hidden ring-2 ring-zinc-200 dark:ring-slate-700 hover:ring-indigo-300 dark:hover:ring-indigo-600 transition-all"
-                    >
-                      <img src={avatarSrc} alt={activeChild?.first_name || ""} className="w-full h-full object-cover" draggable={false} />
-                    </button>
-                  </SidebarTooltip>
-                </div>
-              )}
+              {/* Avatar at bottom — teacher initials or child image */}
+              <div className="mt-auto">
+                <SidebarTooltip label={sidebarName}>
+                  <button
+                    onClick={() => setOpen(true)}
+                    className="w-10 h-10 rounded-lg overflow-hidden ring-2 ring-zinc-200 dark:ring-slate-700 hover:ring-indigo-300 dark:hover:ring-indigo-600 transition-all"
+                  >
+                    {sidebarAvatarSrc ? (
+                      <img
+                        src={sidebarAvatarSrc}
+                        alt={sidebarName}
+                        className="w-full h-full object-cover"
+                        draggable={false}
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-indigo-500 to-violet-600 text-sm font-bold text-white">
+                        {(sidebarName
+                          .split(/\s+/)
+                          .map((w) => w[0])
+                          .filter(Boolean)
+                          .slice(0, 2)
+                          .join("")
+                          .toUpperCase() || "U")}
+                      </div>
+                    )}
+                  </button>
+                </SidebarTooltip>
+              </div>
             </motion.div>
           )}
         </div>
@@ -288,34 +318,53 @@ function ExpandedNav({
   pathname,
   sections,
   avatarSrc,
-  childName,
+  sidebarName,
   plan,
+  subtitle,
   onClose,
   onToggle,
 }: {
   pathname: string;
   sections: ReturnType<typeof getNavSections>;
   avatarSrc: string | null;
-  childName: string | null;
+  sidebarName: string;
   plan: string;
+  subtitle?: string;
   onClose?: () => void;
   onToggle?: () => void;
 }) {
   const dismiss = onClose || onToggle;
 
+  const initials = sidebarName
+    .split(/\s+/)
+    .map((w) => w[0])
+    .filter(Boolean)
+    .slice(0, 2)
+    .join("")
+    .toUpperCase() || "U";
+
   return (
     <div className="flex flex-col h-full">
       {/* Header */}
       <div className="px-3 pt-3 pb-2 flex items-center gap-2.5">
-        {avatarSrc && (
+        {avatarSrc ? (
           <div className="w-8 h-8 rounded-lg overflow-hidden flex-shrink-0 ring-1 ring-zinc-200 dark:ring-slate-700">
-            <img src={avatarSrc} alt={childName || ""} className="w-full h-full object-cover" draggable={false} />
+            <img src={avatarSrc} alt={sidebarName} className="w-full h-full object-cover" draggable={false} />
+          </div>
+        ) : (
+          <div className="w-8 h-8 rounded-lg flex-shrink-0 flex items-center justify-center bg-gradient-to-br from-indigo-500 to-violet-600 text-xs font-bold text-white ring-1 ring-indigo-200 dark:ring-indigo-900/60">
+            {initials}
           </div>
         )}
         <div className="flex-1 min-w-0">
           <div className="text-sm font-semibold text-zinc-900 dark:text-slate-100 truncate leading-tight">
-            {childName || "Reader"}
+            {sidebarName}
           </div>
+          {subtitle && (
+            <div className="text-[11px] text-zinc-400 dark:text-slate-500 truncate leading-tight">
+              {subtitle}
+            </div>
+          )}
         </div>
         {dismiss && (
           <button
@@ -348,16 +397,13 @@ function ExpandedNav({
       </div>
 
       {/* Account menu */}
-      {avatarSrc && (
-        <>
-          <div className="mx-3 h-px bg-zinc-200 dark:bg-slate-700" />
-          <SidebarUserMenu
-            avatarSrc={avatarSrc}
-            name={childName || "Reader"}
-            plan={plan}
-          />
-        </>
-      )}
+      <div className="mx-3 h-px bg-zinc-200 dark:bg-slate-700" />
+      <SidebarUserMenu
+        avatarSrc={avatarSrc}
+        name={sidebarName}
+        plan={plan}
+        subtitle={subtitle}
+      />
     </div>
   );
 }
