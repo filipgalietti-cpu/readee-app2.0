@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Loader2, CheckCircle2, X, Zap, Trophy } from "lucide-react";
+import { supabaseBrowser } from "@/lib/supabase/client";
 
 type Question = {
   id: string;
@@ -39,10 +40,14 @@ export default function LiveQuizPlayer({
   const [submitting, setSubmitting] = useState(false);
   const pollRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Poll server state every 2s
+  // Realtime via a broadcast channel the teacher also writes to. On
+  // advance/end the teacher fires {status, idx} — students update
+  // instantly without polling. A 15s fallback poll catches the case
+  // where the WebSocket drops before a transition.
   useEffect(() => {
     let cancelled = false;
-    const tick = async () => {
+
+    async function fetchState() {
       const res = await fetch(`/api/student/live/state?sessionId=${sessionId}`, {
         cache: "no-store",
       });
@@ -52,22 +57,45 @@ export default function LiveQuizPlayer({
       const newPhase = body.status as Phase;
       const newIdx = body.currentQuestionIdx as number;
       setPhase(newPhase);
-      if (newIdx !== idx) {
-        setIdx(newIdx);
-        setMyPick(null);
-        setMyResult(null);
+      setIdx((prevIdx) => {
+        if (newIdx !== prevIdx) {
+          setMyPick(null);
+          setMyResult(null);
+        }
+        return newIdx;
+      });
+      if (body.myAnswerForCurrent) {
+        setMyPick((cur) => cur ?? body.myAnswerForCurrent);
       }
-      // If server says we already answered this question (e.g. reload),
-      // reflect that so we don't show the pick buttons again.
-      if (body.myAnswerForCurrent && myPick == null) {
-        setMyPick(body.myAnswerForCurrent);
-      }
-    };
-    tick();
-    pollRef.current = setInterval(tick, 2000);
+    }
+
+    fetchState();
+
+    const sb = supabaseBrowser();
+    const channel = sb
+      .channel(`live_quiz:${sessionId}`)
+      .on("broadcast", { event: "state" }, (msg: any) => {
+        if (cancelled) return;
+        const next = msg?.payload;
+        if (!next) return;
+        if (typeof next.status === "string") setPhase(next.status as Phase);
+        if (typeof next.idx === "number") {
+          setIdx((prev) => {
+            if (next.idx !== prev) {
+              setMyPick(null);
+              setMyResult(null);
+            }
+            return next.idx;
+          });
+        }
+      })
+      .subscribe();
+
+    pollRef.current = setInterval(fetchState, 15_000);
     return () => {
       cancelled = true;
       if (pollRef.current) clearInterval(pollRef.current);
+      sb.removeChannel(channel);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sessionId]);

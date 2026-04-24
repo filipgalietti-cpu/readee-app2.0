@@ -52,10 +52,14 @@ export default function LiveQuizHost({
 
   // Poll participants + answers for the current question. In a future
   // upgrade, swap to Supabase Realtime on these tables.
+  // Realtime: initial fetch, then subscribe to postgres_changes on the
+  // two tables filtered to this session. Teacher's auth session gives
+  // them RLS access. A 30s fallback poll covers WebSocket hiccups.
   useEffect(() => {
     let cancelled = false;
-    const tick = async () => {
-      const sb = supabaseBrowser();
+    const sb = supabaseBrowser();
+
+    async function refetch() {
       const [{ data: memberships }, { data: answerRows }] = await Promise.all([
         sb
           .from("live_quiz_participants")
@@ -75,12 +79,49 @@ export default function LiveQuizHost({
         .sort((a, b) => a.first_name.localeCompare(b.first_name));
       setParticipants(p);
       setAnswers(((answerRows ?? []) as any[]) as AnswerRow[]);
-    };
-    tick();
-    pollRef.current = setInterval(tick, 2000);
+    }
+
+    refetch();
+
+    const channel = sb
+      .channel(`live_quiz_host:${sessionId}`)
+      .on(
+        "postgres_changes",
+        {
+          event: "INSERT",
+          schema: "public",
+          table: "live_quiz_participants",
+          filter: `session_id=eq.${sessionId}`,
+        },
+        () => refetch(),
+      )
+      .on(
+        "postgres_changes",
+        {
+          event: "INSERT",
+          schema: "public",
+          table: "live_quiz_answers",
+          filter: `session_id=eq.${sessionId}`,
+        },
+        (payload: any) => {
+          if (cancelled) return;
+          const row = payload.new as AnswerRow;
+          setAnswers((prev) =>
+            prev.some(
+              (a) => a.child_id === row.child_id && a.question_idx === row.question_idx,
+            )
+              ? prev
+              : [...prev, row],
+          );
+        },
+      )
+      .subscribe();
+
+    pollRef.current = setInterval(refetch, 30_000);
     return () => {
       cancelled = true;
       if (pollRef.current) clearInterval(pollRef.current);
+      sb.removeChannel(channel);
     };
   }, [sessionId]);
 
@@ -120,6 +161,25 @@ export default function LiveQuizHost({
     return rows;
   }, [status, participants, answers]);
 
+  // Broadcast state transitions on a channel the students also listen
+  // to. This is pub/sub without RLS — both sides connect with the anon
+  // key. Teacher's (protected) page has a Supabase auth session; student
+  // pages use anon auth for broadcast-only channels.
+  async function broadcastState(newStatus: string, newIdx: number) {
+    const sb = supabaseBrowser();
+    const ch = sb.channel(`live_quiz:${sessionId}`);
+    await ch.subscribe();
+    await ch.send({
+      type: "broadcast",
+      event: "state",
+      payload: { status: newStatus, idx: newIdx, ts: Date.now() },
+    });
+    // Leave the channel so it doesn't stay open. The teacher's
+    // postgres_changes subscription above is what keeps the lobby
+    // counters fresh.
+    sb.removeChannel(ch);
+  }
+
   function advance() {
     setErr(null);
     start(async () => {
@@ -130,6 +190,7 @@ export default function LiveQuizHost({
       }
       setStatus(res.status as any);
       setIdx(res.idx);
+      void broadcastState(res.status, res.idx);
       router.refresh();
     });
   }
@@ -144,6 +205,7 @@ export default function LiveQuizHost({
         return;
       }
       setStatus("ended");
+      void broadcastState("ended", idx);
       router.refresh();
     });
   }
