@@ -3,7 +3,15 @@
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/lib/auth/helpers";
-import { generateMCQQuestions, type GeneratedMCQ } from "@/lib/ai/readee-ai";
+import {
+  generateMCQQuestions,
+  generateMatchingPairs,
+  generatePassage,
+  pairsToMCQs,
+  type GeneratedMCQ,
+  type GeneratedPair,
+  type GeneratedPassage,
+} from "@/lib/ai/readee-ai";
 
 type QuestionInput =
   | {
@@ -308,6 +316,56 @@ export async function aiGenerateQuestions(input: {
     topic: input.topic,
     gradeLevel: input.gradeLevel ?? null,
     count: input.count,
+  });
+}
+
+export async function aiGenerateMatchingPairs(input: {
+  topic: string;
+  gradeLevel?: string | null;
+  count: number;
+}): Promise<
+  { ok: true; pairs: GeneratedPair[]; mcqs: GeneratedMCQ[] } | { ok: false; error: string }
+> {
+  const profile = await requireProfile();
+  if (profile.role !== "educator") {
+    return { ok: false, error: "Only educators can use Readee.ai." };
+  }
+  const res = await generateMatchingPairs({
+    teacherId: profile.id,
+    topic: input.topic,
+    gradeLevel: input.gradeLevel ?? null,
+    count: input.count,
+  });
+  if (!res.ok) return res;
+  // Convert to MCQs so they plug into the existing student runner
+  // without introducing a new question-kind UI. Each pair becomes a
+  // "Match: <left>" question with the right side as the correct answer
+  // and 3 other rights as distractors.
+  const mcqs: GeneratedMCQ[] = pairsToMCQs(res.pairs).map((q) => ({
+    prompt: q.prompt,
+    choices: q.choices,
+    correct: q.correct,
+    hint: q.hint,
+  }));
+  return { ok: true, pairs: res.pairs, mcqs };
+}
+
+export async function aiGeneratePassage(input: {
+  topic: string;
+  gradeLevel?: string | null;
+  phonicsPattern?: string | null;
+}): Promise<
+  { ok: true; passage: GeneratedPassage } | { ok: false; error: string }
+> {
+  const profile = await requireProfile();
+  if (profile.role !== "educator") {
+    return { ok: false, error: "Only educators can use Readee.ai." };
+  }
+  return generatePassage({
+    teacherId: profile.id,
+    topic: input.topic,
+    gradeLevel: input.gradeLevel ?? null,
+    phonicsPattern: input.phonicsPattern ?? null,
   });
 }
 

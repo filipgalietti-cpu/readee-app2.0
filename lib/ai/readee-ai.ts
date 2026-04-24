@@ -110,6 +110,56 @@ const MCQ_SCHEMA = {
   required: ["questions"],
 };
 
+const MATCHING_SYSTEM = `You design matching-pair exercises for elementary reading. Teacher gives you a topic; you return pairs that belong together.
+
+Rules:
+- Each pair is {left, right}. Left is the item the student sees first (word, picture concept, character name). Right is what it matches with (definition, synonym, meaning, trait).
+- Keep both sides short — under 60 characters each.
+- Pairs must be mutually exclusive: no right-side answer should reasonably match a different left-side item.
+- Grade-appropriate vocabulary (K-2 simpler; 3-4 richer).
+- The hint field (optional per question) is a single sentence that helps a struggling student think about the category, not give away the answer.`;
+
+const MATCHING_SCHEMA = {
+  type: Type.OBJECT,
+  properties: {
+    pairs: {
+      type: Type.ARRAY,
+      items: {
+        type: Type.OBJECT,
+        properties: {
+          left: { type: Type.STRING },
+          right: { type: Type.STRING },
+        },
+        required: ["left", "right"],
+      },
+    },
+    hint: { type: Type.STRING },
+  },
+  required: ["pairs"],
+};
+
+const PASSAGE_SYSTEM = `You write short decodable reading passages for K-4 elementary students aligned to the Science of Reading.
+
+Rules:
+- Keep it SHORT: K = 30-60 words, 1st = 60-120, 2nd = 120-200, 3rd = 200-300, 4th = 300-400.
+- Use grade-appropriate vocabulary. Prefer common decodable words for K-2.
+- If the teacher names a phonics pattern (short a, long e, r-controlled, -tion), use it consistently. Bold the target words with **asterisks**.
+- Narrative style: simple characters, clear setting, a small problem, a small resolution. No fantasy jargon or historical-era vocabulary.
+- Return ONLY the passage text in the "passage" field, and a short "title" field (≤ 8 words). No preamble.`;
+
+const PASSAGE_SCHEMA = {
+  type: Type.OBJECT,
+  properties: {
+    title: { type: Type.STRING },
+    passage: { type: Type.STRING },
+    suggested_questions: {
+      type: Type.ARRAY,
+      items: { type: Type.STRING },
+    },
+  },
+  required: ["title", "passage"],
+};
+
 type RawOutput = {
   questions?: {
     prompt?: string;
@@ -223,6 +273,261 @@ Generate exactly ${count} multiple-choice question${count === 1 ? "" : "s"} foll
     return {
       ok: false,
       error: e?.message ?? "The AI hit an error. Try again, or rephrase the topic.",
+    };
+  }
+}
+
+// ═══ Matching pair generator ═════════════════════════════════════════
+
+export type GeneratedPair = { left: string; right: string };
+
+export async function generateMatchingPairs(input: {
+  teacherId: string;
+  topic: string;
+  gradeLevel?: string | null;
+  count: number;
+}): Promise<
+  { ok: true; pairs: GeneratedPair[] } | { ok: false; error: string }
+> {
+  if (!input.topic.trim()) return { ok: false, error: "Topic is required." };
+  const count = Math.max(2, Math.min(8, Math.floor(input.count)));
+
+  const rl = await checkRateLimit(input.teacherId, "quiz_generation");
+  if (!rl.allowed) {
+    return {
+      ok: false,
+      error: `Hourly AI limit reached (${HOURLY_CAP_PER_TEACHER} generations/hr). Try again in a bit.`,
+    };
+  }
+
+  let client: GoogleGenAI;
+  try {
+    client = getClient();
+  } catch (e: any) {
+    await logUsage({
+      teacherId: input.teacherId,
+      kind: "quiz_generation",
+      success: false,
+      error: e.message,
+      requestSummary: input.topic.slice(0, 200),
+    });
+    return { ok: false, error: e.message ?? "AI is not configured." };
+  }
+
+  const gradeLine = input.gradeLevel
+    ? `Grade level: ${input.gradeLevel}.`
+    : "Grade level: 2nd.";
+  const userPrompt = `${gradeLine}\n\nTopic / focus: ${input.topic.trim()}\n\nGenerate exactly ${count} matching pairs.`;
+
+  try {
+    const response = await client.models.generateContent({
+      model: MODEL_ID,
+      contents: userPrompt,
+      config: {
+        systemInstruction: MATCHING_SYSTEM,
+        responseMimeType: "application/json",
+        responseSchema: MATCHING_SCHEMA,
+        temperature: 0.7,
+      },
+    });
+    const text = response.text;
+    if (!text) throw new Error("Empty response from the model.");
+
+    const parsed = JSON.parse(text) as { pairs?: { left?: string; right?: string }[] };
+    const raw = parsed.pairs ?? [];
+    const pairs: GeneratedPair[] = [];
+    const rightsSeen = new Set<string>();
+    const leftsSeen = new Set<string>();
+    for (const p of raw) {
+      const left = (p.left ?? "").trim();
+      const right = (p.right ?? "").trim();
+      if (!left || !right) continue;
+      if (left.length > 120 || right.length > 120) continue;
+      if (leftsSeen.has(left.toLowerCase())) continue;
+      if (rightsSeen.has(right.toLowerCase())) continue;
+      leftsSeen.add(left.toLowerCase());
+      rightsSeen.add(right.toLowerCase());
+      pairs.push({ left, right });
+    }
+    if (pairs.length < 2) {
+      throw new Error("Could not produce enough distinct pairs. Try rephrasing.");
+    }
+
+    await logUsage({
+      teacherId: input.teacherId,
+      kind: "quiz_generation",
+      model: MODEL_ID,
+      inputTokens: response.usageMetadata?.promptTokenCount,
+      outputTokens: response.usageMetadata?.candidatesTokenCount,
+      success: true,
+      requestSummary: `pairs: ${input.topic.slice(0, 150)}`,
+    });
+    return { ok: true, pairs };
+  } catch (e: any) {
+    trackError(e, {
+      route: "readee-ai.generateMatchingPairs",
+      userId: input.teacherId,
+      tags: { model: MODEL_ID, kind: "quiz_generation" },
+      extra: { topic: input.topic.slice(0, 200), count },
+    });
+    await logUsage({
+      teacherId: input.teacherId,
+      kind: "quiz_generation",
+      model: MODEL_ID,
+      success: false,
+      error: e.message,
+      requestSummary: `pairs: ${input.topic.slice(0, 150)}`,
+    });
+    return {
+      ok: false,
+      error: e?.message ?? "The AI hit an error. Try rephrasing.",
+    };
+  }
+}
+
+/**
+ * Convert matching pairs into MCQs that plug into the existing student
+ * runner (MCQ / T-F / fill-in). Each pair becomes a question where the
+ * LEFT is the prompt, the RIGHT is the correct answer, and 3 other
+ * pairs' rights serve as distractors. Keeps the data model simple — no
+ * new question kind to build UI for.
+ */
+export function pairsToMCQs(
+  pairs: GeneratedPair[],
+): { prompt: string; choices: string[]; correct: string; hint: string | null }[] {
+  if (pairs.length < 2) return [];
+  const out: { prompt: string; choices: string[]; correct: string; hint: string | null }[] = [];
+  for (let i = 0; i < pairs.length; i++) {
+    const correct = pairs[i].right;
+    const others = pairs
+      .filter((_, j) => j !== i)
+      .map((p) => p.right);
+    // Take up to 3 distractors; if fewer than 3 pairs total, fall back to
+    // the ones we have (2 choices is still valid for matching-as-MCQ).
+    const distractors: string[] = [];
+    const shuffled = [...others].sort(() => Math.random() - 0.5);
+    for (const c of shuffled) {
+      if (distractors.length >= 3) break;
+      if (!distractors.includes(c)) distractors.push(c);
+    }
+    const choices = [correct, ...distractors].sort(() => Math.random() - 0.5);
+    out.push({
+      prompt: `Match: ${pairs[i].left}`,
+      choices,
+      correct,
+      hint: null,
+    });
+  }
+  return out;
+}
+
+// ═══ Passage writer ═════════════════════════════════════════════════
+
+export type GeneratedPassage = {
+  title: string;
+  passage: string;
+  suggestedQuestions: string[];
+};
+
+export async function generatePassage(input: {
+  teacherId: string;
+  topic: string;
+  gradeLevel?: string | null;
+  phonicsPattern?: string | null;
+}): Promise<{ ok: true; passage: GeneratedPassage } | { ok: false; error: string }> {
+  if (!input.topic.trim()) return { ok: false, error: "Topic is required." };
+
+  const rl = await checkRateLimit(input.teacherId, "passage_generation");
+  if (!rl.allowed) {
+    return {
+      ok: false,
+      error: `Hourly passage limit reached (${HOURLY_CAP_PER_TEACHER}/hr). Try again in a bit.`,
+    };
+  }
+
+  let client: GoogleGenAI;
+  try {
+    client = getClient();
+  } catch (e: any) {
+    await logUsage({
+      teacherId: input.teacherId,
+      kind: "passage_generation",
+      success: false,
+      error: e.message,
+      requestSummary: input.topic.slice(0, 200),
+    });
+    return { ok: false, error: e.message ?? "AI is not configured." };
+  }
+
+  const gradeLine = input.gradeLevel
+    ? `Grade level: ${input.gradeLevel}.`
+    : "Grade level: 2nd.";
+  const phonicsLine = input.phonicsPattern?.trim()
+    ? `Phonics focus: emphasize ${input.phonicsPattern.trim()}. Bold target words with **asterisks**.`
+    : "";
+  const userPrompt = [gradeLine, phonicsLine, "", `Topic: ${input.topic.trim()}`, "", "Write the passage per the schema. Also suggest 3 short comprehension questions (not MCQs — just prompt strings) in suggested_questions."]
+    .filter(Boolean)
+    .join("\n");
+
+  try {
+    const response = await client.models.generateContent({
+      model: MODEL_ID,
+      contents: userPrompt,
+      config: {
+        systemInstruction: PASSAGE_SYSTEM,
+        responseMimeType: "application/json",
+        responseSchema: PASSAGE_SCHEMA,
+        temperature: 0.8,
+      },
+    });
+    const text = response.text;
+    if (!text) throw new Error("Empty response from the model.");
+
+    const parsed = JSON.parse(text) as {
+      title?: string;
+      passage?: string;
+      suggested_questions?: string[];
+    };
+    const title = (parsed.title ?? "").trim();
+    const passage = (parsed.passage ?? "").trim();
+    const suggested = Array.isArray(parsed.suggested_questions)
+      ? parsed.suggested_questions.map((s) => String(s).trim()).filter(Boolean).slice(0, 5)
+      : [];
+    if (!title || !passage) {
+      throw new Error("The model didn't return a complete passage. Try again.");
+    }
+
+    await logUsage({
+      teacherId: input.teacherId,
+      kind: "passage_generation",
+      model: MODEL_ID,
+      inputTokens: response.usageMetadata?.promptTokenCount,
+      outputTokens: response.usageMetadata?.candidatesTokenCount,
+      success: true,
+      requestSummary: `passage: ${input.topic.slice(0, 150)}`,
+    });
+    return {
+      ok: true,
+      passage: { title, passage, suggestedQuestions: suggested },
+    };
+  } catch (e: any) {
+    trackError(e, {
+      route: "readee-ai.generatePassage",
+      userId: input.teacherId,
+      tags: { model: MODEL_ID, kind: "passage_generation" },
+      extra: { topic: input.topic.slice(0, 200) },
+    });
+    await logUsage({
+      teacherId: input.teacherId,
+      kind: "passage_generation",
+      model: MODEL_ID,
+      success: false,
+      error: e.message,
+      requestSummary: `passage: ${input.topic.slice(0, 150)}`,
+    });
+    return {
+      ok: false,
+      error: e?.message ?? "Couldn't write that passage. Try rephrasing.",
     };
   }
 }
