@@ -11,6 +11,7 @@ import { usePlanStore } from "@/lib/stores/plan-store";
 import { useViewModeStore, resolveViewMode, type ViewMode } from "@/lib/stores/view-mode-store";
 import { SidebarUserMenu } from "./SidebarUserMenu";
 import TeacherCreditWidget from "./TeacherCreditWidget";
+import { ShineBorder } from "@/app/components/magicui/shine-border";
 import {
   Home, BarChart3, BookText, ListChecks, Map,
   Carrot, Trophy, ChevronDown, ChevronRight, ClipboardCheck, GraduationCap, Building2, ClipboardPen, Library, Sparkles, Users, Brain,
@@ -155,10 +156,12 @@ function isActive(pathname: string, href: string) {
 }
 
 function navLinkClass(pathname: string, href: string, emphasis?: boolean, shimmer?: boolean) {
-  // Shimmering AI entries — animated gradient pill, white text. Always
-  // visually distinct, even on the active route.
+  // Shimmering AI entries get a relative+overflow-hidden container so
+  // the Magic UI ShineBorder can absolutely-position itself inside.
+  // The base styling here is the white-text gradient pill; the
+  // ShineBorder is rendered separately by the caller.
   if (shimmer) {
-    return "readee-shimmer flex items-center gap-2.5 px-2 py-1.5 rounded-lg text-[13px] font-bold transition shadow-sm";
+    return "relative overflow-hidden flex items-center gap-2.5 px-3 py-2 rounded-xl text-[13px] font-bold text-white bg-gradient-to-r from-indigo-600 via-violet-600 to-pink-500 shadow-sm transition hover:brightness-110";
   }
   if (emphasis && !isActive(pathname, href)) {
     return "flex items-center gap-2.5 px-2 py-1.5 rounded-lg text-[13px] font-semibold transition-colors bg-indigo-50 text-indigo-700 hover:bg-indigo-100 dark:bg-indigo-950/40 dark:text-indigo-300 dark:hover:bg-indigo-950/60";
@@ -446,10 +449,17 @@ function NavSectionBlock({
               onClick={onClose}
               className={navLinkClass(pathname, href, emphasis, shimmer)}
             >
+              {shimmer && (
+                <ShineBorder
+                  borderWidth={1.5}
+                  duration={6}
+                  shineColor={["#A07CFE", "#FE8FB5", "#FFBE7B"]}
+                />
+              )}
               <Icon
                 className={
                   shimmer
-                    ? "w-4 h-4 text-white drop-shadow-sm"
+                    ? "relative w-4 h-4 text-white drop-shadow-sm"
                     : iconColor ||
                       (emphasis && !isActive(pathname, href)
                         ? "w-4 h-4 text-indigo-500"
@@ -457,7 +467,7 @@ function NavSectionBlock({
                 }
                 strokeWidth={1.5}
               />
-              <span>{itemLabel}</span>
+              <span className={shimmer ? "relative" : undefined}>{itemLabel}</span>
             </Link>
           ))}
         </nav>
@@ -488,10 +498,17 @@ function NavSectionBlock({
               onClick={onClose}
               className={navLinkClass(pathname, href, emphasis, shimmer)}
             >
+              {shimmer && (
+                <ShineBorder
+                  borderWidth={1.5}
+                  duration={6}
+                  shineColor={["#A07CFE", "#FE8FB5", "#FFBE7B"]}
+                />
+              )}
               <Icon
                 className={
                   shimmer
-                    ? "w-4 h-4 text-white drop-shadow-sm"
+                    ? "relative w-4 h-4 text-white drop-shadow-sm"
                     : iconColor ||
                       (emphasis && !isActive(pathname, href)
                         ? "w-4 h-4 text-indigo-500"
@@ -499,7 +516,7 @@ function NavSectionBlock({
                 }
                 strokeWidth={1.5}
               />
-              <span>{itemLabel}</span>
+              <span className={shimmer ? "relative" : undefined}>{itemLabel}</span>
             </Link>
           ))}
         </nav>

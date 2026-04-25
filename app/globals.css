@@ -278,6 +278,18 @@ body {
   filter: brightness(1.05);
 }
 
+/* Magic UI ShineBorder — animation hook used by
+   app/components/magicui/shine-border.tsx. The component sets
+   --duration per-instance to control sweep speed. */
+@keyframes shine {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
+}
+.animate-shine {
+  animation: shine var(--duration, 14s) linear infinite;
+}
+
 /* Transition animations (kept for non-migrated pages, will be removed when those pages migrate to framer-motion) */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(10px); }
