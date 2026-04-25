@@ -26,6 +26,9 @@ export default function StudentCustomQuizRunner({
   questions,
   passThreshold,
   previewMode = false,
+  saveEndpoint = "/api/student/custom-quiz-complete",
+  childId,
+  homeHref = "/student",
 }: {
   quizId: string;
   questions: Question[];
@@ -35,6 +38,17 @@ export default function StudentCustomQuizRunner({
    * pollute student records. Wraps the student UX otherwise unchanged.
    */
   previewMode?: boolean;
+  /**
+   * Endpoint the runner POSTs the final score to. Defaults to the
+   * classroom-student endpoint (HMAC student-session cookie auth).
+   * Parent-side runners pass /api/parent/custom-quiz-complete which
+   * verifies via Supabase auth + parent_id ownership.
+   */
+  saveEndpoint?: string;
+  /** Identifies the child — required for the parent endpoint, ignored otherwise. */
+  childId?: string;
+  /** Where post-quiz "Back to home" routes. Defaults to /student. */
+  homeHref?: string;
 }) {
   const router = useRouter();
   const [idx, setIdx] = useState(0);
@@ -92,13 +106,14 @@ export default function StudentCustomQuizRunner({
     setSaveErr(null);
     if (previewMode) return; // teacher QA — don't write a fake score row
     start(async () => {
-      const res = await fetch("/api/student/custom-quiz-complete", {
+      const res = await fetch(saveEndpoint, {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
           quizId,
           questionsAttempted: total,
           questionsCorrect: correctCount,
+          ...(childId ? { childId } : {}),
         }),
       });
       if (!res.ok) {
@@ -163,7 +178,9 @@ export default function StudentCustomQuizRunner({
           type="button"
           onClick={() =>
             router.push(
-              previewMode ? `/classroom/authoring/quiz/${quizId}` : "/student",
+              previewMode
+                ? `/classroom/authoring/quiz/${quizId}`
+                : homeHref,
             )
           }
           disabled={saving}

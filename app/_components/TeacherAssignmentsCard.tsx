@@ -36,7 +36,9 @@ function assignmentHref(a: OpenAssignment, childId: string): string {
   if (a.kind === "readee_lesson") {
     return `/learn?child=${childId}&standard=${encodeURIComponent(a.source_id)}`;
   }
-  // Custom quizzes land in Week 2 — placeholder route for now.
+  if (a.kind === "custom_quiz") {
+    return `/practice/custom-quiz/${a.source_id}?child=${childId}`;
+  }
   return `/dashboard?child=${childId}`;
 }
 
