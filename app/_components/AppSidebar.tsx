@@ -11,7 +11,7 @@ import { usePlanStore } from "@/lib/stores/plan-store";
 import { useViewModeStore, resolveViewMode, type ViewMode } from "@/lib/stores/view-mode-store";
 import { SidebarUserMenu } from "./SidebarUserMenu";
 import TeacherCreditWidget from "./TeacherCreditWidget";
-import { RAINBOW_BUTTON_CLASSES } from "@/app/components/magicui/rainbow-button";
+import { ShineBorder } from "@/app/components/magicui/shine-border";
 import {
   Home, BarChart3, BookText, ListChecks, Map,
   Carrot, Trophy, ChevronDown, ChevronRight, ClipboardCheck, GraduationCap, Building2, ClipboardPen, Library, Sparkles, Users, Brain,
@@ -156,11 +156,12 @@ function isActive(pathname: string, href: string) {
 }
 
 function navLinkClass(pathname: string, href: string, emphasis?: boolean, shimmer?: boolean) {
-  // Shimmering AI entries use Magic UI's RainbowButton styling — same
-  // animated rainbow sweep + glow you'd get from `<RainbowButton>`,
-  // applied to a Next Link so prefetch + nav still work.
+  // Shimmering AI entries: violet→indigo→pink gradient face + ShineBorder
+  // rainbow trim. NOT the canonical Magic UI RainbowButton, which has a
+  // near-black inner face by design — that read as "black button" rather
+  // than "AI button" for us. ShineBorder gets layered in by the render.
   if (shimmer) {
-    return `${RAINBOW_BUTTON_CLASSES} flex w-full items-center gap-2.5 px-3 py-2 text-[13px]`;
+    return "relative overflow-hidden flex w-full items-center gap-2.5 rounded-xl bg-gradient-to-r from-indigo-600 via-violet-600 to-pink-500 px-3 py-2 text-[13px] font-bold text-white shadow-sm transition hover:brightness-110";
   }
   if (emphasis && !isActive(pathname, href)) {
     return "flex items-center gap-2.5 px-2 py-1.5 rounded-lg text-[13px] font-semibold transition-colors bg-indigo-50 text-indigo-700 hover:bg-indigo-100 dark:bg-indigo-950/40 dark:text-indigo-300 dark:hover:bg-indigo-950/60";
@@ -376,7 +377,12 @@ export default function AppSidebar({ mobileOnly = false }: { mobileOnly?: boolea
                             href={href}
                             className="relative overflow-hidden w-10 h-10 rounded-lg flex items-center justify-center bg-gradient-to-br from-indigo-600 via-violet-600 to-pink-500 shadow-sm transition hover:brightness-110"
                           >
-                            <Icon className="w-5 h-5 text-white drop-shadow-sm" strokeWidth={1.5} />
+                            <ShineBorder
+                              borderWidth={1.5}
+                              duration={5}
+                              shineColor={["#A07CFE", "#FE8FB5", "#FFBE7B"]}
+                            />
+                            <Icon className="relative z-10 w-5 h-5 text-white drop-shadow-sm" strokeWidth={1.5} />
                           </Link>
                         ) : (
                           <Link href={href} className={collapsedIconClass(pathname, href)}>
@@ -457,10 +463,17 @@ function NavSectionBlock({
               onClick={onClose}
               className={navLinkClass(pathname, href, emphasis, shimmer)}
             >
+              {shimmer && (
+                <ShineBorder
+                  borderWidth={1.5}
+                  duration={5}
+                  shineColor={["#A07CFE", "#FE8FB5", "#FFBE7B"]}
+                />
+              )}
               <Icon
                 className={
                   shimmer
-                    ? "relative z-10 w-4 h-4 text-white dark:text-zinc-900 drop-shadow-sm"
+                    ? "relative z-10 w-4 h-4 text-white drop-shadow-sm"
                     : iconColor ||
                       (emphasis && !isActive(pathname, href)
                         ? "w-4 h-4 text-indigo-500"
@@ -499,10 +512,17 @@ function NavSectionBlock({
               onClick={onClose}
               className={navLinkClass(pathname, href, emphasis, shimmer)}
             >
+              {shimmer && (
+                <ShineBorder
+                  borderWidth={1.5}
+                  duration={5}
+                  shineColor={["#A07CFE", "#FE8FB5", "#FFBE7B"]}
+                />
+              )}
               <Icon
                 className={
                   shimmer
-                    ? "relative z-10 w-4 h-4 text-white dark:text-zinc-900 drop-shadow-sm"
+                    ? "relative z-10 w-4 h-4 text-white drop-shadow-sm"
                     : iconColor ||
                       (emphasis && !isActive(pathname, href)
                         ? "w-4 h-4 text-indigo-500"
