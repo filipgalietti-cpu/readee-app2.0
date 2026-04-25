@@ -290,6 +290,25 @@ body {
   animation: shine var(--duration, 14s) linear infinite;
 }
 
+/* Magic UI RainbowButton — rainbow sweep + HSL color vars. The component
+   composites three gradients (button face on top, gradient strip, glow)
+   and animates the background-position to make the rainbow sweep
+   horizontally. */
+:root {
+  --color-1: 0 100% 63%;
+  --color-2: 270 100% 63%;
+  --color-3: 210 100% 63%;
+  --color-4: 195 100% 63%;
+  --color-5: 90 100% 63%;
+}
+@keyframes rainbow {
+  0% { background-position: 0%; }
+  100% { background-position: 200%; }
+}
+.animate-rainbow {
+  animation: rainbow var(--speed, 2s) infinite linear;
+}
+
 /* Transition animations (kept for non-migrated pages, will be removed when those pages migrate to framer-motion) */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(10px); }
@@ -420,7 +439,10 @@ body {
   100% { transform: translateX(200%); }
 }
 
-@keyframes shine {
+/* Legacy diagonal-sweep shine — left in case anything inline-styled it.
+   Renamed from `shine` to avoid colliding with the Magic UI ShineBorder
+   keyframe defined above. */
+@keyframes legacyShineSweep {
   0%, 70% { transform: translateX(-200%) skewX(-20deg); }
   90%, 100% { transform: translateX(200%) skewX(-20deg); }
 }

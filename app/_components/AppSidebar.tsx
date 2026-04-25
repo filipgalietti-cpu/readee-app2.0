@@ -11,7 +11,7 @@ import { usePlanStore } from "@/lib/stores/plan-store";
 import { useViewModeStore, resolveViewMode, type ViewMode } from "@/lib/stores/view-mode-store";
 import { SidebarUserMenu } from "./SidebarUserMenu";
 import TeacherCreditWidget from "./TeacherCreditWidget";
-import { ShineBorder } from "@/app/components/magicui/shine-border";
+import { RAINBOW_BUTTON_CLASSES } from "@/app/components/magicui/rainbow-button";
 import {
   Home, BarChart3, BookText, ListChecks, Map,
   Carrot, Trophy, ChevronDown, ChevronRight, ClipboardCheck, GraduationCap, Building2, ClipboardPen, Library, Sparkles, Users, Brain,
@@ -156,12 +156,11 @@ function isActive(pathname: string, href: string) {
 }
 
 function navLinkClass(pathname: string, href: string, emphasis?: boolean, shimmer?: boolean) {
-  // Shimmering AI entries get a relative+overflow-hidden container so
-  // the Magic UI ShineBorder can absolutely-position itself inside.
-  // The base styling here is the white-text gradient pill; the
-  // ShineBorder is rendered separately by the caller.
+  // Shimmering AI entries use Magic UI's RainbowButton styling — same
+  // animated rainbow sweep + glow you'd get from `<RainbowButton>`,
+  // applied to a Next Link so prefetch + nav still work.
   if (shimmer) {
-    return "relative overflow-hidden flex items-center gap-2.5 px-3 py-2 rounded-xl text-[13px] font-bold text-white bg-gradient-to-r from-indigo-600 via-violet-600 to-pink-500 shadow-sm transition hover:brightness-110";
+    return `${RAINBOW_BUTTON_CLASSES} flex w-full items-center gap-2.5 px-3 py-2 text-[13px]`;
   }
   if (emphasis && !isActive(pathname, href)) {
     return "flex items-center gap-2.5 px-2 py-1.5 rounded-lg text-[13px] font-semibold transition-colors bg-indigo-50 text-indigo-700 hover:bg-indigo-100 dark:bg-indigo-950/40 dark:text-indigo-300 dark:hover:bg-indigo-950/60";
@@ -449,17 +448,10 @@ function NavSectionBlock({
               onClick={onClose}
               className={navLinkClass(pathname, href, emphasis, shimmer)}
             >
-              {shimmer && (
-                <ShineBorder
-                  borderWidth={1.5}
-                  duration={6}
-                  shineColor={["#A07CFE", "#FE8FB5", "#FFBE7B"]}
-                />
-              )}
               <Icon
                 className={
                   shimmer
-                    ? "relative w-4 h-4 text-white drop-shadow-sm"
+                    ? "relative z-10 w-4 h-4 text-white dark:text-zinc-900 drop-shadow-sm"
                     : iconColor ||
                       (emphasis && !isActive(pathname, href)
                         ? "w-4 h-4 text-indigo-500"
@@ -467,7 +459,7 @@ function NavSectionBlock({
                 }
                 strokeWidth={1.5}
               />
-              <span className={shimmer ? "relative" : undefined}>{itemLabel}</span>
+              <span className={shimmer ? "relative z-10" : undefined}>{itemLabel}</span>
             </Link>
           ))}
         </nav>
@@ -498,17 +490,10 @@ function NavSectionBlock({
               onClick={onClose}
               className={navLinkClass(pathname, href, emphasis, shimmer)}
             >
-              {shimmer && (
-                <ShineBorder
-                  borderWidth={1.5}
-                  duration={6}
-                  shineColor={["#A07CFE", "#FE8FB5", "#FFBE7B"]}
-                />
-              )}
               <Icon
                 className={
                   shimmer
-                    ? "relative w-4 h-4 text-white drop-shadow-sm"
+                    ? "relative z-10 w-4 h-4 text-white dark:text-zinc-900 drop-shadow-sm"
                     : iconColor ||
                       (emphasis && !isActive(pathname, href)
                         ? "w-4 h-4 text-indigo-500"
@@ -516,7 +501,7 @@ function NavSectionBlock({
                 }
                 strokeWidth={1.5}
               />
-              <span className={shimmer ? "relative" : undefined}>{itemLabel}</span>
+              <span className={shimmer ? "relative z-10" : undefined}>{itemLabel}</span>
             </Link>
           ))}
         </nav>

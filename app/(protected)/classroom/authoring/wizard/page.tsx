@@ -13,17 +13,20 @@ export default async function AssignmentWizardPage() {
   if (profile.role !== "educator") notFound();
 
   return (
-    <div className="relative isolate min-h-[calc(100vh-72px)] overflow-hidden bg-gradient-to-br from-violet-50/60 via-white to-indigo-50/60 dark:from-violet-950/30 dark:via-slate-900 dark:to-indigo-950/30">
-      {/* Mouse-reactive particles — visual flair for the AI surface. */}
+    <div className="relative min-h-[calc(100vh-72px)] bg-gradient-to-br from-violet-50/60 via-white to-indigo-50/60 dark:from-violet-950/30 dark:via-slate-900 dark:to-indigo-950/30">
+      {/* Full-viewport mouse-reactive particles — position:fixed covers
+          the whole screen behind everything (z:-10), and stays put while
+          the wizard scrolls. */}
       <Particles
+        fullScreen
         className="-z-10"
-        quantity={120}
+        quantity={150}
         color="#8b5cf6"
         ease={80}
         staticity={50}
       />
 
-      <div className="mx-auto max-w-3xl px-6 py-10">
+      <div className="relative mx-auto max-w-3xl px-6 py-10">
         <Link
           href="/classroom/authoring"
           className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-indigo-600 dark:text-slate-400"

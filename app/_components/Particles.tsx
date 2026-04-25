@@ -26,6 +26,13 @@ export type ParticlesProps = {
   size?: number;
   /** Re-randomize layout when this changes. */
   refresh?: boolean;
+  /**
+   * If true, the particle field uses position:fixed and covers the
+   * whole viewport (behind everything via z-index). Useful for
+   * page-wide ambient effects. Default: absolute (fills nearest
+   * positioned ancestor).
+   */
+  fullScreen?: boolean;
 };
 
 type Particle = {
@@ -58,6 +65,7 @@ export default function Particles({
   staticity = 50,
   size = 0.4,
   refresh = false,
+  fullScreen = false,
 }: ParticlesProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -191,7 +199,7 @@ export default function Particles({
   return (
     <div
       ref={containerRef}
-      className={`pointer-events-none absolute inset-0 ${className}`}
+      className={`pointer-events-none ${fullScreen ? "fixed" : "absolute"} inset-0 ${className}`}
       aria-hidden
     >
       <canvas ref={canvasRef} />
