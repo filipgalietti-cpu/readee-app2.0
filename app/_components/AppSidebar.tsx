@@ -10,6 +10,7 @@ import { getChildAvatarImage } from "@/lib/utils/get-child-avatar";
 import { usePlanStore } from "@/lib/stores/plan-store";
 import { useViewModeStore, resolveViewMode, type ViewMode } from "@/lib/stores/view-mode-store";
 import { SidebarUserMenu } from "./SidebarUserMenu";
+import TeacherCreditWidget from "./TeacherCreditWidget";
 import {
   Home, BarChart3, BookText, ListChecks, Map,
   Carrot, Trophy, ChevronDown, ChevronRight, ClipboardCheck, GraduationCap, Building2, ClipboardPen, Library, Sparkles, Users, Brain,
@@ -17,7 +18,7 @@ import {
 
 /* ─── Nav items ──────────────────────────────────── */
 
-type NavItem = { href: string; icon: any; label: string; iconColor?: string; emphasis?: boolean };
+type NavItem = { href: string; icon: any; label: string; iconColor?: string; emphasis?: boolean; shimmer?: boolean };
 type NavSection = { label: string; items: NavItem[]; collapsible?: boolean };
 
 function getNavSections(
@@ -42,6 +43,7 @@ function getNavSections(
           icon: Sparkles,
           label: "Build with AI",
           emphasis: true,
+          shimmer: true,
         },
         { href: "/classroom", icon: GraduationCap, label: "Classroom" },
         { href: "/classroom/library", icon: Library, label: "Library" },
@@ -104,6 +106,7 @@ function getNavSections(
             icon: Sparkles,
             label: "Ask Readee",
             emphasis: true,
+            shimmer: true,
           },
           { href: `/assessment-results${q}`, icon: ClipboardCheck, label: "Placement Test" },
           { href: `/analytics${q}`, icon: BarChart3, label: "Analytics" },
@@ -151,7 +154,12 @@ function isActive(pathname: string, href: string) {
   return pathname === href.split("?")[0];
 }
 
-function navLinkClass(pathname: string, href: string, emphasis?: boolean) {
+function navLinkClass(pathname: string, href: string, emphasis?: boolean, shimmer?: boolean) {
+  // Shimmering AI entries — animated gradient pill, white text. Always
+  // visually distinct, even on the active route.
+  if (shimmer) {
+    return "readee-shimmer flex items-center gap-2.5 px-2 py-1.5 rounded-lg text-[13px] font-bold transition shadow-sm";
+  }
   if (emphasis && !isActive(pathname, href)) {
     return "flex items-center gap-2.5 px-2 py-1.5 rounded-lg text-[13px] font-semibold transition-colors bg-indigo-50 text-indigo-700 hover:bg-indigo-100 dark:bg-indigo-950/40 dark:text-indigo-300 dark:hover:bg-indigo-950/60";
   }
@@ -431,19 +439,21 @@ function NavSectionBlock({
           {section.label}
         </p>
         <nav className="space-y-0.5">
-          {section.items.map(({ href, icon: Icon, label: itemLabel, iconColor, emphasis }) => (
+          {section.items.map(({ href, icon: Icon, label: itemLabel, iconColor, emphasis, shimmer }) => (
             <Link
               key={href}
               href={href}
               onClick={onClose}
-              className={navLinkClass(pathname, href, emphasis)}
+              className={navLinkClass(pathname, href, emphasis, shimmer)}
             >
               <Icon
                 className={
-                  iconColor ||
-                  (emphasis && !isActive(pathname, href)
-                    ? "w-4 h-4 text-indigo-500"
-                    : navIconClass(pathname, href))
+                  shimmer
+                    ? "w-4 h-4 text-white drop-shadow-sm"
+                    : iconColor ||
+                      (emphasis && !isActive(pathname, href)
+                        ? "w-4 h-4 text-indigo-500"
+                        : navIconClass(pathname, href))
                 }
                 strokeWidth={1.5}
               />
@@ -471,19 +481,21 @@ function NavSectionBlock({
       </button>
       {open && (
         <nav className="space-y-0.5">
-          {section.items.map(({ href, icon: Icon, label: itemLabel, iconColor, emphasis }) => (
+          {section.items.map(({ href, icon: Icon, label: itemLabel, iconColor, emphasis, shimmer }) => (
             <Link
               key={href}
               href={href}
               onClick={onClose}
-              className={navLinkClass(pathname, href, emphasis)}
+              className={navLinkClass(pathname, href, emphasis, shimmer)}
             >
               <Icon
                 className={
-                  iconColor ||
-                  (emphasis && !isActive(pathname, href)
-                    ? "w-4 h-4 text-indigo-500"
-                    : navIconClass(pathname, href))
+                  shimmer
+                    ? "w-4 h-4 text-white drop-shadow-sm"
+                    : iconColor ||
+                      (emphasis && !isActive(pathname, href)
+                        ? "w-4 h-4 text-indigo-500"
+                        : navIconClass(pathname, href))
                 }
                 strokeWidth={1.5}
               />
@@ -592,6 +604,9 @@ function ExpandedNav({
           </div>
         </div>
       )}
+
+      {/* Teacher credit balance — only when actually in teacher view */}
+      {viewMode === "teacher" && <TeacherCreditWidget />}
 
       {/* Nav links */}
       <div className="flex-1 overflow-y-auto py-2 space-y-4">
