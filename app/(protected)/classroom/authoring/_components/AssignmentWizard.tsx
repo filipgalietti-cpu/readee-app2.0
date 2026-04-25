@@ -23,6 +23,7 @@ import { CREDIT_COST, MONTHLY_CREDIT_LIMIT } from "@/lib/ai/credits";
 import TopUpCreditsButton from "@/app/_components/TopUpCreditsButton";
 import VoiceSelector from "@/app/_components/VoiceSelector";
 import { DEFAULT_VOICE_ID, getVoice, type VoiceId } from "@/lib/ai/voices";
+import { Progress } from "@/app/components/ui/progress";
 
 type Step = 1 | 2 | 3 | 4;
 
@@ -62,6 +63,41 @@ export default function AssignmentWizard() {
   });
   const [err, setErr] = useState<string | null>(null);
   const [pending, start] = useTransition();
+  const [buildProgress, setBuildProgress] = useState(0);
+  const [buildStep, setBuildStep] = useState("Getting started…");
+
+  // Progress simulation — orchestrator runs server-side in a single
+  // server action so we don't get real milestones. Animate to ~95% over
+  // ~35s (non-linear: fast at start, slow near the cap), rotate step
+  // labels to match the real orchestrator sequence so the UX doesn't
+  // lie about what's happening.
+  useEffect(() => {
+    if (!pending) {
+      setBuildProgress(0);
+      setBuildStep("Getting started…");
+      return;
+    }
+    const startedAt = Date.now();
+    const tick = setInterval(() => {
+      const elapsed = (Date.now() - startedAt) / 1000;
+      // Asymptote-style: pct = 95 * (1 - exp(-elapsed/14)). Hits ~50% at
+      // 10s, ~75% at 20s, ~90% at 35s. Caps under 95 so we don't claim
+      // "done" before the server actually returns.
+      const pct = 95 * (1 - Math.exp(-elapsed / 14));
+      setBuildProgress(Math.round(pct));
+      const labels: [number, string][] = [
+        [0, "Setting up the assignment…"],
+        [5, "Writing the passage…"],
+        [12, "Drawing the illustration…"],
+        [20, "Generating questions…"],
+        [28, "Recording read-aloud audio…"],
+      ];
+      let label = labels[0][1];
+      for (const [t, l] of labels) if (elapsed >= t) label = l;
+      setBuildStep(label);
+    }, 200);
+    return () => clearInterval(tick);
+  }, [pending]);
   const [budget, setBudget] = useState<{
     used: number;
     limit: number;
@@ -197,24 +233,26 @@ export default function AssignmentWizard() {
               Next
               <ArrowRight className="h-4 w-4" />
             </button>
+          ) : pending ? (
+            <div className="flex w-full flex-col gap-2 sm:max-w-md">
+              <div className="flex items-center gap-2 text-xs font-bold text-violet-700 dark:text-violet-300">
+                <Loader2 className="h-3.5 w-3.5 animate-spin" />
+                {buildStep}
+                <span className="ml-auto font-mono text-zinc-500">
+                  {buildProgress}%
+                </span>
+              </div>
+              <Progress value={buildProgress} />
+            </div>
           ) : (
             <button
               type="button"
               onClick={submit}
-              disabled={pending || exceedsRemaining}
+              disabled={exceedsRemaining}
               className="inline-flex items-center gap-2 rounded-full bg-violet-600 px-6 py-2 text-sm font-bold text-white transition hover:bg-violet-700 disabled:opacity-60"
             >
-              {pending ? (
-                <>
-                  <Loader2 className="h-4 w-4 animate-spin" />
-                  Building — this takes 20-40 seconds…
-                </>
-              ) : (
-                <>
-                  <Sparkles className="h-4 w-4" />
-                  Build assignment
-                </>
-              )}
+              <Sparkles className="h-4 w-4" />
+              Build assignment
             </button>
           )}
         </div>
