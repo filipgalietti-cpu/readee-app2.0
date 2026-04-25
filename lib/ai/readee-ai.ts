@@ -365,6 +365,13 @@ Generate exactly ${count} multiple-choice question${count === 1 ? "" : "s"} foll
       throw new Error("The model returned no usable questions. Try rephrasing the topic.");
     }
 
+    // Gemini doesn't strictly enforce the `count` instruction — it
+    // sometimes returns 4-5 when you ask for 3. Hard-clamp to the
+    // requested count so teachers get exactly what they asked for.
+    if (questions.length > count) {
+      questions.length = count;
+    }
+
     const outputSafety = assertSafeOutput(
       questions.flatMap((qq) => [qq.prompt, ...qq.choices, qq.hint ?? ""]),
     );
@@ -480,6 +487,11 @@ export async function generateMatchingPairs(input: {
     }
     if (pairs.length < 2) {
       throw new Error("Could not produce enough distinct pairs. Try rephrasing.");
+    }
+    // Same hard-clamp as MCQ generator — Gemini sometimes returns more
+    // than asked.
+    if (pairs.length > count) {
+      pairs.length = count;
     }
 
     const outputSafety = assertSafeOutput(pairs.flatMap((p) => [p.left, p.right]));

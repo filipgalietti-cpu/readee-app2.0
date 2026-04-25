@@ -25,10 +25,16 @@ export default function StudentCustomQuizRunner({
   quizId,
   questions,
   passThreshold,
+  previewMode = false,
 }: {
   quizId: string;
   questions: Question[];
   passThreshold?: number | null;
+  /**
+   * Teacher preview mode — skips the score-save POST so QA runs don't
+   * pollute student records. Wraps the student UX otherwise unchanged.
+   */
+  previewMode?: boolean;
 }) {
   const router = useRouter();
   const [idx, setIdx] = useState(0);
@@ -84,6 +90,7 @@ export default function StudentCustomQuizRunner({
   function save() {
     setDone(true);
     setSaveErr(null);
+    if (previewMode) return; // teacher QA — don't write a fake score row
     start(async () => {
       const res = await fetch("/api/student/custom-quiz-complete", {
         method: "POST",
@@ -154,11 +161,15 @@ export default function StudentCustomQuizRunner({
         )}
         <button
           type="button"
-          onClick={() => router.push("/student")}
+          onClick={() =>
+            router.push(
+              previewMode ? `/classroom/authoring/quiz/${quizId}` : "/student",
+            )
+          }
           disabled={saving}
           className="mt-6 inline-flex items-center gap-2 rounded-full bg-indigo-600 px-6 py-2.5 text-sm font-bold text-white transition hover:bg-indigo-700 disabled:opacity-60"
         >
-          Back to home
+          {previewMode ? "Back to editor" : "Back to home"}
         </button>
       </div>
     );
