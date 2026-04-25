@@ -54,6 +54,8 @@ export type AssignmentBrief = {
     passageTts: boolean;
     perQuestionTts: boolean;
   };
+  /** Underlying Gemini voice name. Defaults to Autonoe. */
+  voice?: string;
 };
 
 export type BuildProgressStep =
@@ -262,6 +264,7 @@ export async function buildAssignment(input: {
         const ttsRes = await generateSpeech({
           teacherId,
           text: passageText.slice(0, 1200),
+          voice: brief.voice,
         });
         if (ttsRes.ok) {
           passageAudioUrl = ttsRes.audioUrl;
@@ -343,6 +346,7 @@ export async function buildAssignment(input: {
       const ttsRes = await generateSpeech({
         teacherId,
         text: q.prompt.slice(0, 1200),
+        voice: brief.voice,
       });
       if (ttsRes.ok) {
         questionAudioUrls.push(ttsRes.audioUrl);

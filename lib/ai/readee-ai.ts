@@ -31,7 +31,7 @@ import { getTopUpBalance, spendTopUp } from "@/lib/ai/credit-balance";
 const MODEL_ID = "gemini-2.5-flash";
 const IMAGE_MODEL_ID = "gemini-2.5-flash-image-preview";
 const TTS_MODEL_ID = "gemini-2.5-flash-preview-tts";
-const TTS_VOICE = "Autonoe";
+const TTS_DEFAULT_VOICE = "Autonoe";
 const TTS_SAMPLE_RATE = 24000;
 
 export type GeneratedMCQ = {
@@ -712,6 +712,8 @@ function pcmToWav(pcm: Buffer, sampleRate: number): Buffer {
 export async function generateSpeech(input: {
   teacherId: string;
   text: string;
+  /** Underlying Gemini prebuilt voice name (e.g. "Autonoe", "Puck"). */
+  voice?: string;
 }): Promise<
   { ok: true; audioUrl: string; storagePath: string } | { ok: false; error: string }
 > {
@@ -720,6 +722,7 @@ export async function generateSpeech(input: {
   if (text.length > 1200) {
     return { ok: false, error: "Keep the text under 1,200 characters for audio." };
   }
+  const voiceName = input.voice ?? TTS_DEFAULT_VOICE;
 
   const safety = assertSafePrompt(text);
   if (!safety.ok) return { ok: false, error: safety.error };
@@ -751,7 +754,7 @@ export async function generateSpeech(input: {
         responseModalities: ["AUDIO"],
         speechConfig: {
           voiceConfig: {
-            prebuiltVoiceConfig: { voiceName: TTS_VOICE },
+            prebuiltVoiceConfig: { voiceName: voiceName },
           },
         },
       } as any,

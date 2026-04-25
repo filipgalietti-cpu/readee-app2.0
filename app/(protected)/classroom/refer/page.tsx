@@ -74,7 +74,7 @@ export default async function ReferralPage() {
           <li>
             <strong>3.</strong> Both of you get +{REFERRAL_BONUS_CREDITS}{" "}
             Readee.ai credits applied to your monthly pool — usable for AI
-            passages, TTS, and image generation.
+            passages, audio, and image generation.
           </li>
           <li className="text-xs text-zinc-500 dark:text-slate-400">
             Referrals are one-time per teacher. Credits never expire.

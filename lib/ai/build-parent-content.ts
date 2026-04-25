@@ -44,6 +44,7 @@ export type ParentAiBrief = {
     passageTts: boolean;
     perQuestionTts: boolean;
   };
+  voice?: string;
 
   /** Opt-in community sharing toggle — honored when Layer 4 ships. */
   shareWithCommunity: boolean;
@@ -241,6 +242,7 @@ export async function buildParentContent(input: {
       const ttsRes = await generateSpeech({
         teacherId: parentId,
         text: passageText.slice(0, 1200),
+        voice: brief.voice,
       });
       if (ttsRes.ok) {
         passageAudioUrl = ttsRes.audioUrl;
@@ -285,6 +287,7 @@ export async function buildParentContent(input: {
       const ttsRes = await generateSpeech({
         teacherId: parentId,
         text: questions[i].prompt.slice(0, 1200),
+        voice: brief.voice,
       });
       if (ttsRes.ok) {
         questions[i].audioUrl = ttsRes.audioUrl;

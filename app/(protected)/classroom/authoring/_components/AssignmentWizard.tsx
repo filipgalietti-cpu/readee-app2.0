@@ -21,6 +21,8 @@ import {
 } from "@/lib/ai/build-assignment";
 import { CREDIT_COST, MONTHLY_CREDIT_LIMIT } from "@/lib/ai/credits";
 import TopUpCreditsButton from "@/app/_components/TopUpCreditsButton";
+import VoiceSelector from "@/app/_components/VoiceSelector";
+import { DEFAULT_VOICE_ID, getVoice, type VoiceId } from "@/lib/ai/voices";
 
 type Step = 1 | 2 | 3 | 4;
 
@@ -46,6 +48,7 @@ function initialBrief(): AssignmentBrief {
       passageTts: true,
       perQuestionTts: false, // re-derived below when grade changes
     },
+    voice: getVoice(DEFAULT_VOICE_ID).geminiVoice,
   };
 }
 
@@ -498,7 +501,7 @@ function StepMedia({
       <MediaRow
         icon={<HelpCircle className="h-5 w-5" />}
         title="Read each question aloud"
-        description={`TTS on every question prompt. Costs ${perQttsCost} credits (${CREDIT_COST.tts_generation} × ${totalQs}). Recommended for K–1; off by default for 2–4.`}
+        description={`Read-aloud audio on every question prompt. Costs ${perQttsCost} credits (${CREDIT_COST.tts_generation} × ${totalQs}). Recommended for K–1; off by default for 2–4.`}
         enabled={brief.media.perQuestionTts}
         onChange={(v) => {
           onPerQttsToggle();
@@ -508,6 +511,20 @@ function StepMedia({
           }));
         }}
       />
+
+      {(brief.media.passageTts || brief.media.perQuestionTts) && (
+        <VoiceSelector
+          value={
+            (
+              ["sage", "rio", "riley", "marcus", "kai", "lily"] as VoiceId[]
+            ).find((id) => getVoice(id).geminiVoice === brief.voice) ??
+            DEFAULT_VOICE_ID
+          }
+          onChange={(id) =>
+            setBrief((b) => ({ ...b, voice: getVoice(id).geminiVoice }))
+          }
+        />
+      )}
     </div>
   );
 }

@@ -369,11 +369,20 @@ export default function AppSidebar({ mobileOnly = false }: { mobileOnly?: boolea
                 <div key={label}>
                   {sIdx > 0 && <div className="w-5 h-px bg-zinc-200 dark:bg-slate-700 my-2" />}
                   <div className="space-y-1">
-                    {items.map(({ href, icon: Icon, label: itemLabel, iconColor }: any) => (
+                    {items.map(({ href, icon: Icon, label: itemLabel, iconColor, shimmer }: any) => (
                       <SidebarTooltip key={href} label={itemLabel}>
-                        <Link href={href} className={collapsedIconClass(pathname, href)}>
-                          <Icon className={iconColor || collapsedIconColor(pathname, href)} strokeWidth={1.5} />
-                        </Link>
+                        {shimmer ? (
+                          <Link
+                            href={href}
+                            className="relative overflow-hidden w-10 h-10 rounded-lg flex items-center justify-center bg-gradient-to-br from-indigo-600 via-violet-600 to-pink-500 shadow-sm transition hover:brightness-110"
+                          >
+                            <Icon className="w-5 h-5 text-white drop-shadow-sm" strokeWidth={1.5} />
+                          </Link>
+                        ) : (
+                          <Link href={href} className={collapsedIconClass(pathname, href)}>
+                            <Icon className={iconColor || collapsedIconColor(pathname, href)} strokeWidth={1.5} />
+                          </Link>
+                        )}
                       </SidebarTooltip>
                     ))}
                   </div>

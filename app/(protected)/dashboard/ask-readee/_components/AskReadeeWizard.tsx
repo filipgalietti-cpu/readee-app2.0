@@ -24,6 +24,8 @@ import {
 } from "@/lib/ai/build-parent-content";
 import { CREDIT_COST } from "@/lib/ai/credits";
 import TopUpCreditsButton from "@/app/_components/TopUpCreditsButton";
+import VoiceSelector from "@/app/_components/VoiceSelector";
+import { DEFAULT_VOICE_ID, getVoice, type VoiceId } from "@/lib/ai/voices";
 import { PROMPT_TEMPLATES, PROMPT_CATEGORIES } from "@/lib/ai/prompt-templates";
 
 type Step = 1 | 2 | 3;
@@ -46,6 +48,7 @@ function initialBrief(): ParentAiBrief {
       passageTts: true,
       perQuestionTts: false,
     },
+    voice: getVoice(DEFAULT_VOICE_ID).geminiVoice,
     shareWithCommunity: false,
   };
 }
@@ -471,7 +474,7 @@ function Step3({
       <MediaRow
         icon={<HelpCircle className="h-5 w-5" />}
         title="Read each question aloud"
-        description={`TTS on every question. Costs ${perQttsCost} credits (${CREDIT_COST.tts_generation} × ${brief.questionCount}). Recommended for K–1.`}
+        description={`Read-aloud audio on every question. Costs ${perQttsCost} credits (${CREDIT_COST.tts_generation} × ${brief.questionCount}). Recommended for K–1.`}
         enabled={brief.media.perQuestionTts}
         disabled={brief.questionCount === 0}
         disabledHint="Add at least one question first."
@@ -480,6 +483,20 @@ function Step3({
           setBrief((b) => ({ ...b, media: { ...b.media, perQuestionTts: v } }));
         }}
       />
+
+      {((brief.media.passageTts && brief.passage.enabled) || brief.media.perQuestionTts) && (
+        <VoiceSelector
+          value={
+            (
+              ["sage", "rio", "riley", "marcus", "kai", "lily"] as VoiceId[]
+            ).find((id) => getVoice(id).geminiVoice === brief.voice) ??
+            DEFAULT_VOICE_ID
+          }
+          onChange={(id) =>
+            setBrief((b) => ({ ...b, voice: getVoice(id).geminiVoice }))
+          }
+        />
+      )}
 
       <div className="rounded-2xl border border-violet-200 bg-gradient-to-br from-violet-50 to-indigo-50 p-4 dark:border-violet-900/40 dark:from-violet-950/20 dark:to-indigo-950/20">
         <div className="flex items-start gap-3">

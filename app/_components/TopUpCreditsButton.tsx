@@ -3,14 +3,19 @@
 import { useState } from "react";
 import { X, Loader2, Sparkles, Check } from "lucide-react";
 import { CREDIT_PACKS, type CreditPackSku } from "@/lib/ai/credit-balance";
+import { ShineBorder } from "@/app/components/magicui/shine-border";
 
 /**
  * Reusable button that pops a modal of credit packs and fires one-time
  * Stripe Checkout. Use on teacher + parent budget surfaces.
+ *
+ * Default styling: light pill with violet text + a soft animated rainbow
+ * shine on the border (Magic UI ShineBorder). Matches the AI surface
+ * shimmer without going full dark RainbowButton.
  */
 export default function TopUpCreditsButton({
   pool,
-  label = "Top up credits",
+  label = "Buy more credits",
   variant = "secondary",
 }: {
   pool: "teacher" | "parent";
@@ -45,14 +50,19 @@ export default function TopUpCreditsButton({
 
   const btnCls =
     variant === "primary"
-      ? "inline-flex items-center gap-1.5 rounded-full bg-violet-600 px-4 py-1.5 text-xs font-semibold text-white transition hover:bg-violet-700"
-      : "inline-flex items-center gap-1.5 rounded-full border border-violet-300 bg-white px-3 py-1 text-xs font-semibold text-violet-700 transition hover:bg-violet-50 dark:border-violet-700 dark:bg-slate-900 dark:text-violet-300 dark:hover:bg-violet-950/30";
+      ? "relative overflow-hidden inline-flex items-center gap-1.5 rounded-full bg-white px-4 py-1.5 text-xs font-bold text-violet-700 transition hover:bg-violet-50 dark:bg-slate-900 dark:text-violet-300"
+      : "relative overflow-hidden inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1 text-xs font-semibold text-violet-700 transition hover:bg-violet-50 dark:bg-slate-900 dark:text-violet-300";
 
   return (
     <>
       <button type="button" onClick={() => setOpen(true)} className={btnCls}>
-        <Sparkles className="h-3.5 w-3.5" />
-        {label}
+        <ShineBorder
+          borderWidth={1.5}
+          duration={5}
+          shineColor={["#A07CFE", "#FE8FB5", "#FFBE7B"]}
+        />
+        <Sparkles className="relative z-10 h-3.5 w-3.5" />
+        <span className="relative z-10">{label}</span>
       </button>
 
       {open && (
