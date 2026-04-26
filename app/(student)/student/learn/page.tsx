@@ -125,10 +125,24 @@ export default async function StudentLearnPage({
   }
   if (shuffleQuestions) mcqs = shuffle(mcqs);
   if (shuffleChoices) {
-    mcqs = mcqs.map((q) => ({
-      ...q,
-      choices: Array.isArray(q.choices) ? shuffle(q.choices) : q.choices,
-    }));
+    // CAUTION: many of the prebuilt Readee MCQs ship with audio that
+    // reads the choices in their canonical order ("A is foo, B is bar,
+    // C is baz, D is qux") and incorrect-answer audio that names the
+    // correct choice by letter. Shuffling the on-screen order while
+    // playing the canonical audio creates a misalignment a kid will
+    // hear immediately. Skip the shuffle for any MCQ with prerecorded
+    // choices_audio_urls / audio_url that references letter ordering.
+    // For audio-free MCQs the shuffle still applies normally.
+    mcqs = mcqs.map((q) => {
+      const hasOrderedAudio =
+        Array.isArray((q as any).choices_audio_urls) ||
+        typeof (q as any).audio_url === "string";
+      if (hasOrderedAudio) return q;
+      return {
+        ...q,
+        choices: Array.isArray(q.choices) ? shuffle(q.choices) : q.choices,
+      };
+    });
   }
 
   return (

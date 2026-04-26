@@ -1,7 +1,7 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
-import { Search, Check, Filter, Volume2, ImageOff } from "lucide-react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { Search, Check, Filter, Volume2, ImageOff, Grid, List, ChevronRight } from "lucide-react";
 
 type LibraryQuestion = {
   id: string;
@@ -30,7 +30,10 @@ const TYPE_LABELS: Record<string, string> = {
   space_insertion: "Space insertion",
 };
 
+type ViewMode = "standards" | "questions";
+
 export default function LibraryBrowser({ questions }: { questions: LibraryQuestion[] }) {
+  const [viewMode, setViewMode] = useState<ViewMode>("standards");
   const [grade, setGrade] = useState<string>("All");
   const [type, setType] = useState<string>("All");
   const [query, setQuery] = useState("");
@@ -38,6 +41,23 @@ export default function LibraryBrowser({ questions }: { questions: LibraryQuesti
   const [imageErrors, setImageErrors] = useState<Set<string>>(new Set());
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [playingId, setPlayingId] = useState<string | null>(null);
+  const [focusStandardId, setFocusStandardId] = useState<string | null>(null);
+
+  // When a standard card is clicked from the index view, switch to
+  // questions mode AND auto-expand+scroll that standard.
+  useEffect(() => {
+    if (!focusStandardId) return;
+    setViewMode("questions");
+    setExpanded((prev) => {
+      const next = new Set(prev);
+      next.add(focusStandardId);
+      return next;
+    });
+    const el = document.getElementById(`std-${focusStandardId}`);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    setFocusStandardId(null);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [focusStandardId]);
 
   function playAudio(questionId: string, url: string) {
     if (!audioRef.current) return;
@@ -116,6 +136,34 @@ export default function LibraryBrowser({ questions }: { questions: LibraryQuesti
           if (audioRef.current && audioRef.current.ended) setPlayingId(null);
         }}
       />
+      {/* View toggle */}
+      <div className="mb-3 inline-flex rounded-full border border-zinc-200 bg-white p-0.5 text-xs font-semibold dark:border-slate-700 dark:bg-slate-950">
+        <button
+          type="button"
+          onClick={() => setViewMode("standards")}
+          className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 transition ${
+            viewMode === "standards"
+              ? "bg-indigo-600 text-white"
+              : "text-zinc-500 hover:text-zinc-700 dark:hover:text-slate-300"
+          }`}
+        >
+          <Grid className="h-3 w-3" />
+          Standards
+        </button>
+        <button
+          type="button"
+          onClick={() => setViewMode("questions")}
+          className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 transition ${
+            viewMode === "questions"
+              ? "bg-indigo-600 text-white"
+              : "text-zinc-500 hover:text-zinc-700 dark:hover:text-slate-300"
+          }`}
+        >
+          <List className="h-3 w-3" />
+          All questions
+        </button>
+      </div>
+
       {/* Filter bar */}
       <div className="space-y-3 rounded-2xl border border-zinc-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900/40">
         <div className="relative">
@@ -184,6 +232,11 @@ export default function LibraryBrowser({ questions }: { questions: LibraryQuesti
             No questions match these filters.
           </p>
         </div>
+      ) : viewMode === "standards" ? (
+        <StandardsGrid
+          byStandard={byStandard}
+          onPick={(sid) => setFocusStandardId(sid)}
+        />
       ) : (
         <ul className="mt-6 space-y-3">
           {byStandard.map(([standardId, info]) => {
@@ -191,6 +244,7 @@ export default function LibraryBrowser({ questions }: { questions: LibraryQuesti
             return (
               <li
                 key={standardId}
+                id={`std-${standardId}`}
                 className="overflow-hidden rounded-2xl border border-zinc-200 bg-white dark:border-slate-800 dark:bg-slate-900/40"
               >
                 <button
@@ -304,6 +358,91 @@ export default function LibraryBrowser({ questions }: { questions: LibraryQuesti
           })}
         </ul>
       )}
+    </div>
+  );
+}
+
+/* ─── Standards index grid ─────────────────────────────────────── */
+
+type ByStandardEntry = [
+  string,
+  { standardTitle: string; domain: string; grade: string; items: LibraryQuestion[] },
+];
+
+function StandardsGrid({
+  byStandard,
+  onPick,
+}: {
+  byStandard: ByStandardEntry[];
+  onPick: (sid: string) => void;
+}) {
+  // Group standards by grade → domain so the index reads as a teacher
+  // would think about it. Ordering: Kindergarten first, then 1st-4th.
+  const GRADE_ORDER = ["K", "1st", "2nd", "3rd", "4th"];
+
+  const byGrade = useMemo(() => {
+    const m = new Map<string, Map<string, ByStandardEntry[]>>();
+    for (const entry of byStandard) {
+      const [, info] = entry;
+      if (!m.has(info.grade)) m.set(info.grade, new Map());
+      const dm = m.get(info.grade)!;
+      const dom = info.domain;
+      if (!dm.has(dom)) dm.set(dom, []);
+      dm.get(dom)!.push(entry);
+    }
+    return m;
+  }, [byStandard]);
+
+  return (
+    <div className="mt-6 space-y-8">
+      {GRADE_ORDER.filter((g) => byGrade.has(g)).map((g) => {
+        const domains = byGrade.get(g)!;
+        return (
+          <section key={g}>
+            <h2 className="text-lg font-extrabold tracking-tight text-zinc-900 dark:text-white">
+              {g === "K" ? "Kindergarten" : `${g} Grade`}
+            </h2>
+            <div className="mt-3 space-y-5">
+              {Array.from(domains.entries()).map(([domain, standards]) => (
+                <div key={domain}>
+                  <div className="mb-2 text-[11px] font-bold uppercase tracking-widest text-zinc-500 dark:text-slate-400">
+                    {domain}
+                  </div>
+                  <ul className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+                    {standards.map(([sid, info]) => (
+                      <li key={sid}>
+                        <button
+                          type="button"
+                          onClick={() => onPick(sid)}
+                          className="flex w-full items-start gap-3 rounded-2xl border border-zinc-200 bg-white p-3 text-left transition hover:-translate-y-0.5 hover:border-indigo-300 hover:shadow-sm dark:border-slate-800 dark:bg-slate-900/40"
+                        >
+                          <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-indigo-100 font-mono text-[11px] font-extrabold text-indigo-700 dark:bg-indigo-950/40 dark:text-indigo-300">
+                            {sid.split(".").slice(-1)[0]}
+                          </div>
+                          <div className="min-w-0 flex-1">
+                            <div className="flex items-center gap-1.5">
+                              <span className="font-mono text-xs font-bold text-zinc-900 dark:text-white">
+                                {sid}
+                              </span>
+                              <span className="rounded-full bg-zinc-100 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-zinc-600 dark:bg-slate-800 dark:text-slate-400">
+                                {info.items.length}
+                              </span>
+                            </div>
+                            <p className="mt-0.5 line-clamp-2 text-xs text-zinc-500 dark:text-slate-400">
+                              {info.standardTitle}
+                            </p>
+                          </div>
+                          <ChevronRight className="mt-1 h-4 w-4 flex-shrink-0 text-zinc-400" />
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </section>
+        );
+      })}
     </div>
   );
 }

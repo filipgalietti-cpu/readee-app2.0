@@ -550,7 +550,7 @@ export default function NewAssignmentButton({
                           value={shuffleChoices}
                           onChange={setShuffleChoices}
                           label="Shuffle answer choices"
-                          helper="Randomize A/B/C/D per student so kids can't compare tiles."
+                          helper="Randomize A/B/C/D per student so kids can't compare tiles. Skipped for questions with pre-recorded answer audio so the narration stays in sync with the on-screen order."
                         />
                         <YesNoToggle
                           value={revealImmediately}
