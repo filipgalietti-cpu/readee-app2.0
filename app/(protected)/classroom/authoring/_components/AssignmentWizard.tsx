@@ -24,7 +24,7 @@ import TopUpCreditsButton from "@/app/_components/TopUpCreditsButton";
 import VoiceSelector from "@/app/_components/VoiceSelector";
 import { DEFAULT_VOICE_ID, getVoice, type VoiceId } from "@/lib/ai/voices";
 import { Progress } from "@/app/components/ui/progress";
-import PromptSuggestionsTyper from "@/app/_components/PromptSuggestionsTyper";
+import { TypingAnimation } from "@/app/components/magicui/typing-animation";
 
 const TEACHER_PROMPT_SUGGESTIONS = [
   "A short passage about a young hockey player learning the basics. Friendly, encouraging tone.",
@@ -324,6 +324,22 @@ function StepBrief({
   setBrief: (fn: (b: AssignmentBrief) => AssignmentBrief) => void;
   setGrade: (g: Grade) => void;
 }) {
+  // Cycles example prompts as a ghost typed inside the topic textarea
+  // when it's empty. Tab or the chip below commits the current one
+  // into the field so teachers can use it as a starting point.
+  const [suggestionIdx, setSuggestionIdx] = useState(0);
+  useEffect(() => {
+    if (brief.topic.trim()) return;
+    const current = TEACHER_PROMPT_SUGGESTIONS[suggestionIdx];
+    const total = current.length * 55 + 2200;
+    const t = setTimeout(
+      () =>
+        setSuggestionIdx((i) => (i + 1) % TEACHER_PROMPT_SUGGESTIONS.length),
+      total,
+    );
+    return () => clearTimeout(t);
+  }, [suggestionIdx, brief.topic]);
+
   return (
     <div className="space-y-5 pt-5">
       <label className="block">
@@ -367,21 +383,74 @@ function StepBrief({
           <span className="text-xs font-semibold text-zinc-500 dark:text-slate-400">
             What is the assignment about?
           </span>
-          <textarea
-            value={brief.topic}
-            onChange={(e) =>
-              setBrief((b) => ({ ...b, topic: e.target.value.slice(0, 400) }))
-            }
-            rows={3}
-            placeholder="Tell Readee.ai what you want your students to read about…"
-            className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
-          />
+          <div className="relative mt-1">
+            <textarea
+              value={brief.topic}
+              onChange={(e) =>
+                setBrief((b) => ({ ...b, topic: e.target.value.slice(0, 400) }))
+              }
+              onKeyDown={(e) => {
+                if (
+                  !brief.topic.trim() &&
+                  e.key === "Tab" &&
+                  !e.shiftKey
+                ) {
+                  e.preventDefault();
+                  setBrief((b) => ({
+                    ...b,
+                    topic: TEACHER_PROMPT_SUGGESTIONS[suggestionIdx],
+                  }));
+                }
+              }}
+              rows={3}
+              placeholder={
+                brief.topic.trim()
+                  ? "Tell Readee.ai what you want your students to read about…"
+                  : ""
+              }
+              className="w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+            />
+            {!brief.topic.trim() && (
+              <div className="pointer-events-none absolute inset-x-0 top-0 px-3 py-2 text-sm leading-relaxed text-zinc-400">
+                <TypingAnimation
+                  key={suggestionIdx}
+                  duration={50}
+                  className="leading-relaxed"
+                >
+                  {TEACHER_PROMPT_SUGGESTIONS[suggestionIdx]}
+                </TypingAnimation>
+                <span
+                  className="ml-0.5 inline-block w-[1px] animate-pulse bg-violet-500 align-baseline"
+                  style={{ height: "1em" }}
+                />
+              </div>
+            )}
+          </div>
         </label>
         {!brief.topic.trim() && (
-          <PromptSuggestionsTyper
-            suggestions={TEACHER_PROMPT_SUGGESTIONS}
-            onPick={(p) => setBrief((b) => ({ ...b, topic: p }))}
-          />
+          <div className="mt-2 flex items-center justify-between gap-2">
+            <div className="flex items-center gap-1.5 text-violet-600 dark:text-violet-300">
+              <Sparkles className="h-3 w-3" />
+              <span className="text-[10px] font-semibold uppercase tracking-widest">
+                Try a prompt
+              </span>
+            </div>
+            <button
+              type="button"
+              onClick={() =>
+                setBrief((b) => ({
+                  ...b,
+                  topic: TEACHER_PROMPT_SUGGESTIONS[suggestionIdx],
+                }))
+              }
+              className="inline-flex items-center gap-1.5 rounded-full bg-violet-100 px-3 py-1 text-[11px] font-semibold text-violet-700 transition hover:bg-violet-200 dark:bg-violet-900/40 dark:text-violet-200"
+            >
+              Use this prompt
+              <kbd className="rounded bg-white/70 px-1 text-[9px] font-bold text-violet-700 dark:bg-slate-900/70 dark:text-violet-200">
+                Tab
+              </kbd>
+            </button>
+          </div>
         )}
       </div>
 

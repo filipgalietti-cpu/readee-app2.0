@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { Suspense, useEffect, useState, FormEvent } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import AuthCard from "@/app/components/auth/AuthCard";
 import FormField from "@/app/components/auth/FormField";
@@ -10,6 +10,7 @@ import GoogleButton from "@/app/components/auth/GoogleButton";
 import Divider from "@/app/components/auth/Divider";
 import TosCheckbox from "@/app/components/auth/TosCheckbox";
 import { CURRENT_TOS_VERSION } from "@/lib/tos";
+import { GraduationCap, Heart } from "lucide-react";
 
 interface FormData {
   email: string;
@@ -25,7 +26,19 @@ interface FormErrors {
 }
 
 export default function Signup() {
+  return (
+    <Suspense fallback={null}>
+      <SignupInner />
+    </Suspense>
+  );
+}
+
+function SignupInner() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const initialRole: "parent" | "educator" =
+    searchParams.get("as") === "teacher" ? "educator" : "parent";
+  const [role, setRole] = useState<"parent" | "educator">(initialRole);
   const [formData, setFormData] = useState<FormData>({
     email: "",
     password: "",
@@ -34,6 +47,13 @@ export default function Signup() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isLoading, setIsLoading] = useState(false);
   const [tosAccepted, setTosAccepted] = useState(false);
+
+  // Keep role state in sync if user changes the URL ?as= param.
+  useEffect(() => {
+    const paramRole: "parent" | "educator" =
+      searchParams.get("as") === "teacher" ? "educator" : "parent";
+    setRole(paramRole);
+  }, [searchParams]);
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
@@ -77,7 +97,12 @@ export default function Signup() {
           email: formData.email,
           password: formData.password,
           options: {
-            emailRedirectTo: `${window.location.origin}/auth/callback`,
+            emailRedirectTo: `${window.location.origin}/auth/callback?next=${
+              role === "educator" ? "/classroom" : "/dashboard"
+            }`,
+            // The handle_new_user Postgres trigger reads this `role`
+            // hint and stamps the new profiles row accordingly.
+            data: { role },
           },
         });
 
@@ -125,8 +150,39 @@ export default function Signup() {
   };
 
   return (
-    <AuthCard title="Create Your Account" banner="It's Free to Get Started!">
-      <GoogleButton />
+    <AuthCard
+      title="Create Your Account"
+      banner={role === "educator" ? "Teacher signup — free to start" : "It's Free to Get Started!"}
+    >
+      {/* Parent / Teacher toggle */}
+      <div className="mb-4 grid grid-cols-2 gap-2">
+        <button
+          type="button"
+          onClick={() => setRole("parent")}
+          className={`flex items-center justify-center gap-1.5 rounded-xl border-2 py-2 text-sm font-bold transition ${
+            role === "parent"
+              ? "border-indigo-500 bg-indigo-50 text-indigo-700"
+              : "border-zinc-200 bg-white text-zinc-500 hover:border-indigo-300"
+          }`}
+        >
+          <Heart className="h-4 w-4" />
+          I&apos;m a parent
+        </button>
+        <button
+          type="button"
+          onClick={() => setRole("educator")}
+          className={`flex items-center justify-center gap-1.5 rounded-xl border-2 py-2 text-sm font-bold transition ${
+            role === "educator"
+              ? "border-violet-500 bg-violet-50 text-violet-700"
+              : "border-zinc-200 bg-white text-zinc-500 hover:border-violet-300"
+          }`}
+        >
+          <GraduationCap className="h-4 w-4" />
+          I&apos;m a teacher
+        </button>
+      </div>
+
+      <GoogleButton role={role} />
       <Divider />
       {errors.general && (
         <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded-lg text-sm">

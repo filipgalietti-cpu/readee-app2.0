@@ -52,7 +52,27 @@ Single most-tested feature this week. Run it 5+ times across grades
 - [ ] Click **Preview as student** → Card view scrolls through all questions
 - [ ] Toggle to **Play it** → student runner walks through; matching board works
 
-### 3. End-to-end test the assign + complete flow
+### 3. End-to-end teacher signup
+Migration 053 just fixed `handle_new_user` to default new accounts to
+`role='parent'` (was `'student'`) and respect a role hint from
+`raw_user_meta_data`. The signup form now has a Parent / Teacher toggle
+and the OAuth callback stamps `role='educator'` when the Google flow
+originates from `?signup_role=educator`. Verify both halves work.
+
+- [ ] In an incognito window, hit `/signup?as=teacher` — toggle shows
+      Teacher selected by default, banner reads "Teacher signup — free
+      to start"
+- [ ] Email/password path: create a fresh account with the toggle on
+      Teacher → confirm email → sign in → `/classroom` opens (not
+      `/dashboard`), `profiles.role = 'educator'` in DB
+- [ ] Google OAuth path: same as above with the Continue with Google
+      button — verify the new profile lands as `role='educator'`, not
+      `'parent'`
+- [ ] Switch toggle to Parent on the same page → password signup creates
+      a profile with `role='parent'`, redirects to `/dashboard`
+- [ ] Old `?as=teacher` URL still works (existing teacher signup links)
+
+### 4. End-to-end test the assign + complete flow
 Where we hit the "Start button does nothing" + "completion didn't
 register" bugs in the last day.
 
@@ -70,7 +90,7 @@ register" bugs in the last day.
 
 ## 🟡 Important (do this week)
 
-### 4. Voice samples sanity check
+### 5. Voice samples sanity check
 Samples were generated and uploaded to `audio/voice-samples/{id}.wav`.
 
 - [ ] Open the wizard, enable any audio toggle
@@ -79,7 +99,7 @@ Samples were generated and uploaded to `audio/voice-samples/{id}.wav`.
       with voice = Marcus, listen to the resulting passage TTS — should
       be the deeper narrator voice)
 
-### 5. Account page on every account type
+### 6. Account page on every account type
 Just refactored the account page to be capability-aware. Verify on
 3 account shapes:
 
@@ -92,7 +112,7 @@ Just refactored the account page to be capability-aware. Verify on
       account · N classrooms · N children", BOTH sections visible
 - [ ] Plan section shows "Teacher Solo" badge correctly when on that plan
 
-### 6. UI smoke pass — every surface that changed
+### 7. UI smoke pass — every surface that changed
 Roughly 20 commits in the last 24h touched UI. Click through:
 
 - [ ] **Sidebar**: Build with AI shimmers (rainbow), Top Up button is
@@ -115,7 +135,7 @@ Roughly 20 commits in the last 24h touched UI. Click through:
 - [ ] **Standards SEO pages**: `/standards/rl-k-1` loads without auth,
       shows 3 sample questions, has upgrade CTA
 
-### 7. First district-pilot pitch deck
+### 8. First district-pilot pitch deck
 Now that the product surface is real, draft a 6-slide deck:
 
 1. The problem (district-level reading proficiency, federal funding pressure)
@@ -131,26 +151,26 @@ Goal: send to 5 contacts (warm intros via Jennifer's network) by Friday.
 
 ## 🟢 Nice-to-have
 
-### 8. Spanish content generation (optional)
+### 9. Spanish content generation (optional)
 Run the script once if we want to announce ES support next week:
 ```
 GEMINI_API_KEY=... node scripts/translate-bank-to-spanish.js
 ```
 Costs ~$5. Generates 5 -es.json files. Commit them.
 
-### 9. Voice samples on the parent Ask Readee surface
+### 10. Voice samples on the parent Ask Readee surface
 The voice selector lives inside the wizard. Could surface the samples
 on a standalone `/account` row so parents can preview voices outside
 of a build context. Low priority.
 
-### 10. Polish the wizard progress UX
+### 11. Polish the wizard progress UX
 Right now the progress bar is purely client-side animated to ~95%.
 Real per-step progress would require either streaming the server
 action (Next.js doesn't make this clean) or splitting the orchestrator
 into a series of API calls. Not worth the complexity yet — but worth
 revisiting if teachers complain about uncertainty during long builds.
 
-### 11. Inline matching-pair editor in QuizBuilder
+### 12. Inline matching-pair editor in QuizBuilder
 Today matching questions are read-only after generation (delete +
 regenerate to change). A pair editor would let teachers tweak. Low
 priority because the AI gen quality is decent.

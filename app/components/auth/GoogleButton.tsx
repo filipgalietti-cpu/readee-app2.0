@@ -3,22 +3,27 @@
 import { useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 
-export default function GoogleButton() {
+export default function GoogleButton({ role }: { role?: "parent" | "educator" } = {}) {
   const [loading, setLoading] = useState(false);
 
   const handleGoogle = async () => {
     try {
       setLoading(true);
 
-      // Optional "next" support without useSearchParams
+      // Optional "next" support without useSearchParams. When the caller
+      // hints a role (teacher signup path), default the post-login landing
+      // to the matching surface so educators don't bounce through /dashboard.
       const params = new URLSearchParams(window.location.search);
-      const next = params.get("next") ?? "/dashboard";
+      const fallbackNext = role === "educator" ? "/classroom" : "/dashboard";
+      const next = params.get("next") ?? fallbackNext;
 
       const supabase = createClient();
 
-      const redirectTo = `${window.location.origin}/auth/callback?next=${encodeURIComponent(
-        next
-      )}`;
+      // Pass the role through the callback URL so /auth/callback can stamp
+      // the new profile correctly when this is the user's first sign-in.
+      const callbackParams = new URLSearchParams({ next });
+      if (role) callbackParams.set("signup_role", role);
+      const redirectTo = `${window.location.origin}/auth/callback?${callbackParams.toString()}`;
 
       const { error } = await supabase.auth.signInWithOAuth({
         provider: "google",
