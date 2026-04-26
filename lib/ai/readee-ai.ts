@@ -724,6 +724,95 @@ export type GeneratedPassage = {
   suggestedQuestions: string[];
 };
 
+// ═══ Image brief (text → visual scene description) ══════════════════
+//
+// The image model is much better when handed a concrete visual scene
+// ("A young boy in a hockey uniform on the ice, smiling, holding a
+// stick, soft sunset light") than a writing brief ("Friendly,
+// encouraging tone"). This step asks Gemini to read the just-generated
+// passage and write a short visual description, which then feeds the
+// image generator. Costs one quiz_generation credit per build.
+
+const IMAGE_BRIEF_SYSTEM = `You translate short children's reading passages into single-sentence visual scene descriptions for an illustrator.
+
+Rules:
+- One sentence, 12-30 words. No lists, no markdown, no extra commentary.
+- Describe a single concrete scene the illustration should show: who is in it, what they are doing, the setting, and the mood/lighting.
+- Use kid-friendly, school-appropriate visuals. No weapons, no violence, no scary creatures, no romantic content.
+- Do NOT include style words like "cartoon", "illustration", "vibrant" — that is set elsewhere. Just describe the scene.
+- Do NOT include any text that would appear in the image (no signs, no captions).
+- Pick the most evocative single moment from the passage — not a montage.`;
+
+export async function generateImageBrief(input: {
+  teacherId: string;
+  passageTitle: string;
+  passageBody: string;
+}): Promise<{ ok: true; brief: string } | { ok: false; error: string }> {
+  const text = (input.passageTitle + " " + input.passageBody).trim();
+  if (!text) return { ok: false, error: "Passage is empty." };
+
+  const safety = assertSafePrompt(text);
+  if (!safety.ok) return { ok: false, error: safety.error };
+
+  const rl = await checkRateLimit(input.teacherId, "quiz_generation");
+  if (!rl.allowed) return { ok: false, error: budgetError(rl) };
+
+  let client: GoogleGenAI;
+  try {
+    client = getClient();
+  } catch (e: any) {
+    return { ok: false, error: e.message ?? "AI is not configured." };
+  }
+
+  const userPrompt = `Title: ${input.passageTitle}\n\nPassage:\n${input.passageBody.slice(0, 1500)}\n\nWrite the single-sentence visual scene description.`;
+
+  try {
+    const response = await client.models.generateContent({
+      model: MODEL_ID,
+      contents: userPrompt,
+      config: {
+        systemInstruction: IMAGE_BRIEF_SYSTEM,
+        temperature: 0.6,
+      },
+    });
+
+    const raw = (response.text ?? "").trim();
+    // Strip any leading "Description:"/"Scene:" labels the model might add.
+    const brief = raw.replace(/^(Description|Scene|Image):\s*/i, "").trim();
+    if (!brief) {
+      return { ok: false, error: "Image brief was empty." };
+    }
+
+    await logUsage({
+      teacherId: input.teacherId,
+      kind: "quiz_generation",
+      model: MODEL_ID,
+      inputTokens: response.usageMetadata?.promptTokenCount,
+      outputTokens: response.usageMetadata?.candidatesTokenCount,
+      creditsUsed: CREDIT_COST.quiz_generation,
+      success: true,
+      requestSummary: `image_brief: ${input.passageTitle.slice(0, 80)}`,
+    });
+
+    return { ok: true, brief };
+  } catch (e: any) {
+    trackError(e, {
+      route: "readee-ai.generateImageBrief",
+      userId: input.teacherId,
+      tags: { model: MODEL_ID, kind: "quiz_generation" },
+    });
+    await logUsage({
+      teacherId: input.teacherId,
+      kind: "quiz_generation",
+      model: MODEL_ID,
+      success: false,
+      error: e.message,
+      requestSummary: `image_brief: ${input.passageTitle.slice(0, 80)}`,
+    });
+    return { ok: false, error: e.message ?? "Could not write the image brief." };
+  }
+}
+
 // ═══ Image generation (Gemini 2.5 Flash Image) ══════════════════════
 
 const IMAGE_STYLE_PREFIX =

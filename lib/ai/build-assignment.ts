@@ -29,6 +29,7 @@ import {
   generateMatchingPairs,
   generatePassage,
   generateImage,
+  generateImageBrief,
   generateSpeech,
   generateTrueFalseQuestions,
   checkRateLimit,
@@ -285,9 +286,26 @@ export async function buildAssignment(input: {
         .eq("id", quizId);
 
       if (brief.media.passageImage) {
+        // Two-step: have the model read the passage and write a single
+        // visual scene description, then hand THAT to the image model.
+        // Massively better than feeding it the teacher's writing brief.
+        let imagePrompt = `Illustration for a children's reading passage titled "${passageRes.passage.title}". Scene: ${brief.topic}.`;
+        const briefRes = await generateImageBrief({
+          teacherId,
+          passageTitle: passageRes.passage.title,
+          passageBody: passageText,
+        });
+        if (briefRes.ok) {
+          imagePrompt = briefRes.brief;
+          creditsUsed += CREDIT_COST.quiz_generation;
+        } else {
+          // Fall back to the old prompt rather than skipping the image.
+          warnings.push(`Image brief: ${briefRes.error}`);
+        }
+
         const imgRes = await generateImage({
           teacherId,
-          prompt: `Illustration for a children's reading passage titled "${passageRes.passage.title}". Scene: ${brief.topic}.`,
+          prompt: imagePrompt,
         });
         if (imgRes.ok) {
           passageImageUrl = imgRes.imageUrl;
