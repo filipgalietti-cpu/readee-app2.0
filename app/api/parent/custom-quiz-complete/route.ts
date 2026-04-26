@@ -68,16 +68,21 @@ export async function POST(req: Request) {
     );
   }
 
-  const { data: assignment } = await admin
+  // Find every assignment of this quiz across the child's classrooms.
+  // The dashboard's "open assignments" check filters out anything with
+  // a completed_at row in assignment_submissions, so we need to mark
+  // every relevant assignment, not just the most recent one.
+  const { data: assignments } = await admin
     .from("assignments")
     .select("id, classroom_id, pass_threshold")
     .in("classroom_id", classroomIds)
     .eq("kind", "custom_quiz")
-    .eq("source_id", quizId)
-    .order("assigned_at", { ascending: false })
-    .limit(1)
-    .maybeSingle();
-  if (!assignment) {
+    .eq("source_id", quizId);
+  const matching = (assignments ?? []) as {
+    id: string;
+    pass_threshold: number | null;
+  }[];
+  if (matching.length === 0) {
     return NextResponse.json(
       { error: "This quiz isn't assigned to your child's class." },
       { status: 403 },
@@ -86,27 +91,52 @@ export async function POST(req: Request) {
 
   // 3) Save score + earn carrots. Mirrors the student endpoint's logic.
   const carrotsEarned = correct * 5;
+  const scorePercent = attempted > 0 ? Math.round((correct / attempted) * 100) : 0;
+  const nowIso = new Date().toISOString();
 
-  // Insert practice_results row so it shows on analytics + drives SRS.
+  // Insert practice_results so analytics + SRS pick this up.
   await admin.from("practice_results").insert({
     child_id: childId,
     standard_id: `custom:${quizId}`,
     questions_attempted: attempted,
     questions_correct: correct,
+    carrots_earned: carrotsEarned,
   });
 
-  // Increment carrots
-  if (carrotsEarned > 0) {
+  // Increment carrots + last-played stamp on the child.
+  await admin
+    .from("children")
+    .update({
+      carrots: ((child as any).carrots ?? 0) + carrotsEarned,
+      last_lesson_at: nowIso,
+    })
+    .eq("id", childId);
+
+  // Mark each matching assignment complete. Pass threshold gating: if
+  // the assignment has one, completed_at is only set when the score
+  // meets it — same rule the student endpoint follows. Without a
+  // threshold, any attempt counts as complete.
+  for (const a of matching) {
+    const passed = a.pass_threshold == null || scorePercent >= a.pass_threshold;
     await admin
-      .from("children")
-      .update({ carrots: ((child as any).carrots ?? 0) + carrotsEarned })
-      .eq("id", childId);
+      .from("assignment_submissions")
+      .upsert(
+        {
+          assignment_id: a.id,
+          child_id: childId,
+          completed_at: passed ? nowIso : null,
+          score_percent: scorePercent,
+          carrots_earned: carrotsEarned,
+        },
+        { onConflict: "assignment_id,child_id" },
+      );
   }
 
   return NextResponse.json({
     ok: true,
     correct,
     attempted,
+    scorePercent,
     carrotsEarned,
   });
 }
