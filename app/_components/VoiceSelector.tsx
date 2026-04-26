@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Volume2, Pause, Check } from "lucide-react";
+import { Volume2, Pause, Check, Loader2, AlertCircle } from "lucide-react";
 import { VOICES, voiceSampleUrl, type VoiceId } from "@/lib/ai/voices";
 
 /**
@@ -21,6 +21,8 @@ export default function VoiceSelector({
 }) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [playingId, setPlayingId] = useState<VoiceId | null>(null);
+  const [loadingId, setLoadingId] = useState<VoiceId | null>(null);
+  const [errorId, setErrorId] = useState<VoiceId | null>(null);
 
   useEffect(() => {
     return () => {
@@ -30,7 +32,14 @@ export default function VoiceSelector({
 
   function play(id: VoiceId) {
     const url = voiceSampleUrl(id);
-    if (!url) return;
+    if (!url) {
+      // env var missing client-side — voiceSampleUrl returned ""
+      console.warn(
+        "[VoiceSelector] No NEXT_PUBLIC_SUPABASE_URL — voice sample URL is empty.",
+      );
+      setErrorId(id);
+      return;
+    }
     if (!audioRef.current) audioRef.current = new Audio();
     const a = audioRef.current;
     if (playingId === id) {
@@ -38,10 +47,30 @@ export default function VoiceSelector({
       setPlayingId(null);
       return;
     }
+    setErrorId(null);
+    setLoadingId(id);
     a.src = url;
-    a.onended = () => setPlayingId(null);
-    a.onerror = () => setPlayingId(null);
-    a.play().then(() => setPlayingId(id)).catch(() => setPlayingId(null));
+    a.onended = () => {
+      setPlayingId(null);
+      setLoadingId(null);
+    };
+    a.onerror = () => {
+      console.warn(`[VoiceSelector] Audio error loading ${url}`, a.error);
+      setPlayingId(null);
+      setLoadingId(null);
+      setErrorId(id);
+    };
+    a.play()
+      .then(() => {
+        setPlayingId(id);
+        setLoadingId(null);
+      })
+      .catch((err) => {
+        console.warn(`[VoiceSelector] play() rejected for ${url}`, err);
+        setPlayingId(null);
+        setLoadingId(null);
+        setErrorId(id);
+      });
   }
 
   return (
@@ -82,29 +111,46 @@ export default function VoiceSelector({
                   Best for: {v.bestFor}
                 </div>
               </div>
-              <span
-                role="button"
-                tabIndex={0}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  play(v.id);
-                }}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") {
-                    e.preventDefault();
+              <div className="flex flex-col items-end gap-1">
+                <span
+                  role="button"
+                  tabIndex={0}
+                  onClick={(e) => {
                     e.stopPropagation();
                     play(v.id);
-                  }
-                }}
-                className={`mt-0.5 inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full border transition ${
-                  isPlaying
-                    ? "border-violet-400 bg-violet-600 text-white"
-                    : "border-violet-200 bg-white text-violet-700 hover:bg-violet-50 dark:border-violet-700 dark:bg-slate-900 dark:text-violet-300 dark:hover:bg-violet-950/30"
-                }`}
-                aria-label={`Preview ${v.name}'s voice`}
-              >
-                {isPlaying ? <Pause className="h-3.5 w-3.5" /> : <Volume2 className="h-3.5 w-3.5" />}
-              </span>
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      play(v.id);
+                    }
+                  }}
+                  className={`mt-0.5 inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full border transition ${
+                    errorId === v.id
+                      ? "border-red-300 bg-red-50 text-red-600"
+                      : isPlaying
+                      ? "border-violet-400 bg-violet-600 text-white"
+                      : "border-violet-200 bg-white text-violet-700 hover:bg-violet-50 dark:border-violet-700 dark:bg-slate-900 dark:text-violet-300 dark:hover:bg-violet-950/30"
+                  }`}
+                  aria-label={`Preview ${v.name}'s voice`}
+                >
+                  {loadingId === v.id ? (
+                    <Loader2 className="h-3.5 w-3.5 animate-spin" />
+                  ) : errorId === v.id ? (
+                    <AlertCircle className="h-3.5 w-3.5" />
+                  ) : isPlaying ? (
+                    <Pause className="h-3.5 w-3.5" />
+                  ) : (
+                    <Volume2 className="h-3.5 w-3.5" />
+                  )}
+                </span>
+                {errorId === v.id && (
+                  <span className="text-[10px] font-semibold text-red-600">
+                    Couldn&apos;t play
+                  </span>
+                )}
+              </div>
             </button>
           );
         })}

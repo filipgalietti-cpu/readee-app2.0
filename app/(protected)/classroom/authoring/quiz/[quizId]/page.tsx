@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ClipboardPen, ListChecks, Sparkles, Eye, GraduationCap } from "lucide-react";
+import { ArrowLeft, ClipboardPen, ListChecks, Sparkles, Eye, ImageIcon, Volume2 } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/lib/auth/helpers";
 import QuizBuilder from "./_components/QuizBuilder";
+import AssignQuizDialog from "./_components/AssignQuizDialog";
 
 export const dynamic = "force-dynamic";
 
@@ -52,6 +53,20 @@ export default async function QuizBuilderPage({
 
   const q = quiz as any;
 
+  // Passage image is stamped on every question by the build-assignment
+  // orchestrator; pull the first one's image as the passage hero.
+  // Passage audio is on the first question's audio_url (when present).
+  const passageImage = questions[0]?.imageUrl ?? null;
+  const passageAudio = questions[0]?.audioUrl ?? null;
+
+  // Classrooms the teacher owns — feeds the inline assign-to-class flow.
+  const { data: classroomRows } = await supabase
+    .from("classrooms")
+    .select("id, name")
+    .eq("teacher_id", profile.id)
+    .order("created_at", { ascending: true });
+  const classrooms = (classroomRows ?? []) as { id: string; name: string }[];
+
   return (
     <div className="mx-auto max-w-4xl px-6 py-10">
       <Link
@@ -80,15 +95,69 @@ export default async function QuizBuilderPage({
           </div>
         </div>
         {questions.length > 0 && (
-          <Link
-            href={`/classroom/authoring/quiz/${quizId}/preview`}
-            className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-white px-4 py-1.5 text-xs font-semibold text-zinc-700 transition hover:border-indigo-300 hover:bg-indigo-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
-          >
-            <Eye className="h-3.5 w-3.5" />
-            Preview as student
-          </Link>
+          <div className="flex flex-wrap items-center gap-2">
+            <Link
+              href={`/classroom/authoring/quiz/${quizId}/preview`}
+              className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-white px-4 py-1.5 text-xs font-semibold text-zinc-700 transition hover:border-indigo-300 hover:bg-indigo-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
+            >
+              <Eye className="h-3.5 w-3.5" />
+              Preview as student
+            </Link>
+            <AssignQuizDialog
+              quizId={quizId}
+              quizTitle={q.title}
+              classrooms={classrooms}
+            />
+          </div>
         )}
       </div>
+
+      {/* Passage hero — image + audio preview when the wizard generated
+          them. Shows above the description so the teacher can verify the
+          AI's output before assigning. */}
+      {(passageImage || passageAudio) && (
+        <div className="mt-6 grid gap-4 sm:grid-cols-[200px_1fr]">
+          {passageImage && (
+            <div className="relative overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
+              <img
+                src={passageImage}
+                alt="Passage illustration"
+                className="block h-full w-full object-cover"
+              />
+              <div className="absolute left-2 top-2 inline-flex items-center gap-1 rounded-full bg-black/60 px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-white">
+                <ImageIcon className="h-3 w-3" /> Illustration
+              </div>
+            </div>
+          )}
+          <div className="flex flex-col gap-2">
+            {q.description && (
+              <article
+                className="rounded-2xl border border-zinc-200 bg-white p-4 text-[15px] leading-[1.7] text-zinc-900 shadow-sm dark:border-slate-800 dark:bg-slate-900 dark:text-slate-100"
+                style={{
+                  fontFamily:
+                    'Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif',
+                }}
+              >
+                <div className="whitespace-pre-line">{q.description}</div>
+              </article>
+            )}
+            {passageAudio && (
+              <div className="flex items-center gap-2 rounded-2xl border border-zinc-200 bg-white p-3 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+                <Volume2 className="h-4 w-4 flex-shrink-0 text-violet-600" />
+                <span className="text-xs font-semibold uppercase tracking-wider text-zinc-500">
+                  Read-aloud
+                </span>
+                <audio
+                  src={passageAudio}
+                  controls
+                  preload="none"
+                  className="ml-auto max-w-[260px]"
+                />
+              </div>
+            )}
+          </div>
+        </div>
+      )}
 
       {built === "1" && (
         <div className="mt-5 flex flex-wrap items-start justify-between gap-3 rounded-2xl border border-violet-200 bg-gradient-to-r from-violet-50 to-indigo-50 p-4 text-sm text-violet-900 dark:border-violet-900/40 dark:from-violet-950/30 dark:to-indigo-950/30 dark:text-violet-100">
@@ -110,13 +179,11 @@ export default async function QuizBuilderPage({
               <Eye className="h-3.5 w-3.5" />
               Preview
             </Link>
-            <Link
-              href="/classroom"
-              className="inline-flex items-center gap-1.5 rounded-full bg-violet-600 px-3 py-1.5 text-xs font-bold text-white transition hover:bg-violet-700"
-            >
-              <GraduationCap className="h-3.5 w-3.5" />
-              Assign to a class
-            </Link>
+            <AssignQuizDialog
+              quizId={quizId}
+              quizTitle={q.title}
+              classrooms={classrooms}
+            />
           </div>
         </div>
       )}
