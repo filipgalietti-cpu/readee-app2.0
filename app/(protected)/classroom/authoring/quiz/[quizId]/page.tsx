@@ -40,7 +40,7 @@ export default async function QuizBuilderPage({
     return {
       id: q.id as string,
       position: j.position as number,
-      kind: q.kind as "multiple_choice" | "true_false" | "fill_in_blank",
+      kind: q.kind as "multiple_choice" | "true_false" | "fill_in_blank" | "matching_pairs",
       prompt: q.prompt as string,
       choices: (q.choices ?? null) as string[] | null,
       correct: q.correct,

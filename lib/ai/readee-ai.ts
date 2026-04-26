@@ -417,6 +417,152 @@ Generate exactly ${count} multiple-choice question${count === 1 ? "" : "s"} foll
 
 export type GeneratedPair = { left: string; right: string };
 
+// ═══ True/false generator ═════════════════════════════════════════
+
+export type GeneratedTrueFalse = {
+  prompt: string;
+  correct: "True" | "False";
+  hint: string | null;
+};
+
+const TF_SYSTEM = `You write true/false reading-comprehension statements for elementary students.
+
+Rules:
+- Each statement is a SHORT declarative sentence the student can mark True or False after reading the passage.
+- Mix of true and false statements (don't make all true or all false).
+- Statements must be unambiguously true or false based on the passage. No trick wording.
+- Grade-appropriate vocabulary; K-2 simpler, 3-4 richer.
+- Hint = one sentence pointing the reader back to the relevant part of the passage.
+- The "correct" field is exactly the string "True" or "False".`;
+
+const TF_SCHEMA = {
+  type: Type.OBJECT,
+  properties: {
+    questions: {
+      type: Type.ARRAY,
+      items: {
+        type: Type.OBJECT,
+        properties: {
+          prompt: { type: Type.STRING },
+          correct: { type: Type.STRING },
+          hint: { type: Type.STRING },
+        },
+        required: ["prompt", "correct", "hint"],
+        propertyOrdering: ["prompt", "correct", "hint"],
+      },
+    },
+  },
+  required: ["questions"],
+};
+
+export async function generateTrueFalseQuestions(input: {
+  teacherId: string;
+  topic: string;
+  gradeLevel?: string | null;
+  count: number;
+}): Promise<{ ok: true; questions: GeneratedTrueFalse[] } | { ok: false; error: string }> {
+  if (!input.topic.trim()) return { ok: false, error: "Topic is required." };
+  const count = Math.max(1, Math.min(10, Math.floor(input.count)));
+
+  const safety = assertSafePrompt(input.topic);
+  if (!safety.ok) return { ok: false, error: safety.error };
+
+  const rl = await checkRateLimit(input.teacherId, "quiz_generation");
+  if (!rl.allowed) return { ok: false, error: budgetError(rl) };
+
+  let client: GoogleGenAI;
+  try {
+    client = getClient();
+  } catch (e: any) {
+    await logUsage({
+      teacherId: input.teacherId,
+      kind: "quiz_generation",
+      success: false,
+      error: e.message,
+      requestSummary: `tf: ${input.topic.slice(0, 150)}`,
+    });
+    return { ok: false, error: e.message ?? "AI is not configured." };
+  }
+
+  const gradeLine = input.gradeLevel
+    ? `Grade level: ${input.gradeLevel}.`
+    : "Grade level: 2nd.";
+  const userPrompt = `${gradeLine}
+
+Topic / focus: ${input.topic.trim()}
+
+Generate exactly ${count} true/false statement${count === 1 ? "" : "s"} per the schema. Mix true and false answers — do not make them all the same. Each correct field must be exactly "True" or "False".`;
+
+  try {
+    const response = await client.models.generateContent({
+      model: MODEL_ID,
+      contents: userPrompt,
+      config: {
+        systemInstruction: TF_SYSTEM,
+        responseMimeType: "application/json",
+        responseSchema: TF_SCHEMA,
+        temperature: 0.6,
+      },
+    });
+    const text = response.text;
+    if (!text) throw new Error("Empty response from the model.");
+    const parsed = JSON.parse(text) as {
+      questions?: { prompt?: string; correct?: string; hint?: string }[];
+    };
+    const raw = parsed.questions ?? [];
+    const questions: GeneratedTrueFalse[] = [];
+    for (const q of raw) {
+      const prompt = (q.prompt ?? "").trim();
+      const norm = (q.correct ?? "").trim().toLowerCase();
+      const hint = q.hint ? String(q.hint).trim() : null;
+      if (!prompt) continue;
+      if (norm !== "true" && norm !== "false") continue;
+      questions.push({
+        prompt,
+        correct: norm === "true" ? "True" : "False",
+        hint: hint || null,
+      });
+    }
+    if (questions.length === 0) {
+      throw new Error("The model returned no usable T/F items. Try rephrasing.");
+    }
+    if (questions.length > count) questions.length = count;
+
+    const outputSafety = assertSafeOutput(
+      questions.flatMap((q) => [q.prompt, q.hint ?? ""]),
+    );
+    if (!outputSafety.ok) throw new Error(outputSafety.error);
+
+    await logUsage({
+      teacherId: input.teacherId,
+      kind: "quiz_generation",
+      model: MODEL_ID,
+      inputTokens: response.usageMetadata?.promptTokenCount,
+      outputTokens: response.usageMetadata?.candidatesTokenCount,
+      creditsUsed: CREDIT_COST.quiz_generation,
+      success: true,
+      requestSummary: `tf: ${input.topic.slice(0, 150)}`,
+    });
+    return { ok: true, questions };
+  } catch (e: any) {
+    trackError(e, {
+      route: "readee-ai.generateTrueFalseQuestions",
+      userId: input.teacherId,
+      tags: { model: MODEL_ID, kind: "quiz_generation" },
+      extra: { topic: input.topic.slice(0, 200), count },
+    });
+    await logUsage({
+      teacherId: input.teacherId,
+      kind: "quiz_generation",
+      model: MODEL_ID,
+      success: false,
+      error: e.message,
+      requestSummary: `tf: ${input.topic.slice(0, 150)}`,
+    });
+    return { ok: false, error: e?.message ?? "T/F generation failed." };
+  }
+}
+
 export async function generateMatchingPairs(input: {
   teacherId: string;
   topic: string;

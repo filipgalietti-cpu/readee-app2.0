@@ -14,7 +14,7 @@ import StudentCustomQuizRunner from "@/app/(student)/student/quiz/_components/St
 
 type Question = {
   id: string;
-  kind: "multiple_choice" | "true_false" | "fill_in_blank";
+  kind: "multiple_choice" | "true_false" | "fill_in_blank" | "matching_pairs";
   prompt: string;
   choices: string[] | null;
   correct: any;
@@ -155,6 +155,7 @@ function CardsPreview({ questions }: { questions: Question[] }) {
 function kindLabel(k: Question["kind"]): string {
   if (k === "multiple_choice") return "Multiple choice";
   if (k === "true_false") return "True / false";
+  if (k === "matching_pairs") return "Matching pairs";
   return "Fill in the blank";
 }
 
@@ -216,6 +217,23 @@ function renderChoices(q: Question): React.ReactNode {
           {(q.correct as string[]).join(" / ")}
         </span>
       </div>
+    );
+  }
+  if (q.kind === "matching_pairs") {
+    const pairs = (q.correct?.pairs ?? []) as { left: string; right: string }[];
+    return (
+      <ul className="space-y-1.5 text-sm">
+        {pairs.map((p, i) => (
+          <li
+            key={i}
+            className="grid grid-cols-[1fr_auto_1fr] items-center gap-2 rounded-lg border border-zinc-200 px-3 py-2 dark:border-slate-700"
+          >
+            <span className="font-semibold text-zinc-900 dark:text-white">{p.left}</span>
+            <span className="text-violet-500">→</span>
+            <span className="text-violet-700 dark:text-violet-300">{p.right}</span>
+          </li>
+        ))}
+      </ul>
     );
   }
   return null;

@@ -30,7 +30,7 @@ import {
   generatePassage,
   generateImage,
   generateSpeech,
-  pairsToMCQs,
+  generateTrueFalseQuestions,
   checkRateLimit,
   settleBatchAgainstTopUp,
 } from "@/lib/ai/readee-ai";
@@ -121,29 +121,54 @@ function validateBrief(brief: AssignmentBrief): string | null {
   return null;
 }
 
+type BuiltQuestion =
+  | {
+      kind: "multiple_choice";
+      prompt: string;
+      choices: string[];
+      correct: string;
+      hint: string | null;
+      image_url?: string | null;
+      audio_url?: string | null;
+    }
+  | {
+      kind: "true_false";
+      prompt: string;
+      correct: "True" | "False";
+      hint: string | null;
+      image_url?: string | null;
+      audio_url?: string | null;
+    }
+  | {
+      kind: "matching_pairs";
+      prompt: string;
+      // Left column items in display order.
+      choices: string[];
+      // jsonb: { pairs: [{left, right}, ...] } — answer key.
+      correct: { pairs: { left: string; right: string }[] };
+      hint: string | null;
+      image_url?: string | null;
+      audio_url?: string | null;
+    };
+
 async function appendQuestion(
   quizId: string,
   teacherId: string,
-  q: {
-    kind: "multiple_choice";
-    prompt: string;
-    choices: string[];
-    correct: string;
-    hint?: string | null;
-    image_url?: string | null;
-    audio_url?: string | null;
-  },
+  q: BuiltQuestion,
   position: number,
 ): Promise<string | null> {
   const admin = supabaseAdmin();
+  const choicesValue =
+    q.kind === "true_false" ? ["True", "False"] : q.choices;
+  const correctValue = q.correct;
   const { data: qRow, error: qErr } = await admin
     .from("custom_questions")
     .insert({
       teacher_id: teacherId,
       kind: q.kind,
       prompt: q.prompt,
-      choices: q.choices,
-      correct: q.correct,
+      choices: choicesValue,
+      correct: correctValue,
       hint: q.hint ?? null,
       image_url: q.image_url ?? null,
       audio_url: q.audio_url ?? null,
@@ -284,36 +309,63 @@ export async function buildAssignment(input: {
     ? `The passage below is what students read. Write questions strictly about it — do NOT invent facts outside it.\n\nPassage:\n"""\n${passageText}\n"""`
     : brief.topic;
 
-  // 3) MCQ + True/False. Gemini handles both as multiple_choice (T/F is
-  //    just a 2-choice MCQ), so we ask for one mixed batch.
-  const mcqTotal = brief.questions.multipleChoice + brief.questions.trueFalse;
-  const builtQuestions: {
-    prompt: string;
-    choices: string[];
-    correct: string;
-    hint: string | null;
-  }[] = [];
+  // 3) MCQ — only count what teacher asked as "multiple_choice".
+  //    True/false has its own generator now (was previously merged into
+  //    MCQ count, which meant T/F never showed up as actual T/F items).
+  const builtQuestions: BuiltQuestion[] = [];
 
-  if (mcqTotal > 0) {
+  if (brief.questions.multipleChoice > 0) {
     const mcqRes = await generateMCQQuestions({
       teacherId,
       topic: questionContext,
       gradeLevel: brief.gradeLevel,
-      count: mcqTotal,
+      count: brief.questions.multipleChoice,
     });
     if (!mcqRes.ok) {
       return rollback(`Questions: ${mcqRes.error}`);
     }
-    builtQuestions.push(...mcqRes.questions);
+    builtQuestions.push(
+      ...mcqRes.questions.map((q) => ({
+        kind: "multiple_choice" as const,
+        prompt: q.prompt,
+        choices: q.choices,
+        correct: q.correct,
+        hint: q.hint,
+      })),
+    );
     creditsUsed += CREDIT_COST.quiz_generation;
-
-    // Shape the first brief.questions.trueFalse entries into T/F by
-    // trimming choices to True/False — but only if the model didn't
-    // already return a yes/no-style prompt. In practice, Gemini returns
-    // 4-choice MCQs; we leave them as MCQs rather than forcibly munging.
   }
 
-  // 4) Matching pairs → converted to MCQ via pairsToMCQs.
+  // 4) True/False — separate generator path so the kind is preserved.
+  if (brief.questions.trueFalse > 0) {
+    const tfRes = await generateTrueFalseQuestions({
+      teacherId,
+      topic: questionContext,
+      gradeLevel: brief.gradeLevel,
+      count: brief.questions.trueFalse,
+    });
+    if (tfRes.ok) {
+      builtQuestions.push(
+        ...tfRes.questions.map((q) => ({
+          kind: "true_false" as const,
+          prompt: q.prompt,
+          correct: q.correct,
+          hint: q.hint,
+        })),
+      );
+      creditsUsed += CREDIT_COST.quiz_generation;
+    } else {
+      // T/F failure isn't fatal if MCQs succeeded.
+      if (builtQuestions.length === 0) {
+        return rollback(`True/false: ${tfRes.error}`);
+      }
+      warnings.push(`True/false: ${tfRes.error}`);
+    }
+  }
+
+  // 5) Matching pairs — saved as a real matching_pairs question kind
+  //    (no longer flattened into MCQs). The runner renders a
+  //    connect-the-pairs UI for these.
   if (brief.questions.matching > 0) {
     const matchRes = await generateMatchingPairs({
       teacherId,
@@ -322,14 +374,22 @@ export async function buildAssignment(input: {
       count: brief.questions.matching,
     });
     if (!matchRes.ok) {
-      // Matching failure is not fatal if MCQs succeeded; warn and move on.
       if (builtQuestions.length === 0) {
         return rollback(`Matching: ${matchRes.error}`);
       }
       warnings.push(`Matching: ${matchRes.error}`);
     } else {
-      const mcqs = pairsToMCQs(matchRes.pairs);
-      builtQuestions.push(...mcqs);
+      // One matching question = the whole set of pairs (typical UX
+      // pattern). Left column = pair.left in original order; the
+      // student's job is to connect each left to its matching right.
+      const pairs = matchRes.pairs;
+      builtQuestions.push({
+        kind: "matching_pairs" as const,
+        prompt: "Match each item on the left with the right answer.",
+        choices: pairs.map((p) => p.left),
+        correct: { pairs },
+        hint: null,
+      });
       creditsUsed += CREDIT_COST.quiz_generation;
     }
   }
@@ -358,26 +418,14 @@ export async function buildAssignment(input: {
     }
   }
 
-  // 6) Persist. Position 1 = passage image attaches to first question if
-  //    no better placement — we attach it to ALL questions by reference
-  //    so students always see context.
+  // 6) Persist each generated question — preserve its kind. The image
+  //    + audio URLs attach to every question for consistent context.
   let position = 1;
   for (let i = 0; i < builtQuestions.length; i++) {
     const q = builtQuestions[i];
-    const saved = await appendQuestion(
-      quizId,
-      teacherId,
-      {
-        kind: "multiple_choice",
-        prompt: q.prompt,
-        choices: q.choices,
-        correct: q.correct,
-        hint: q.hint,
-        image_url: passageImageUrl,
-        audio_url: questionAudioUrls[i] ?? null,
-      },
-      position++,
-    );
+    const audio = questionAudioUrls[i] ?? null;
+    const withMedia = { ...q, image_url: passageImageUrl, audio_url: audio };
+    const saved = await appendQuestion(quizId, teacherId, withMedia, position++);
     if (!saved) {
       warnings.push(`Could not save question ${i + 1}.`);
     }

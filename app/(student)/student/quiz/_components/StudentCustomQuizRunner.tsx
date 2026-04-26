@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowRight, Check, X, Loader2, Trophy, Carrot, Volume2 } from "lucide-react";
 
-type QuestionKind = "multiple_choice" | "true_false" | "fill_in_blank";
+type QuestionKind = "multiple_choice" | "true_false" | "fill_in_blank" | "matching_pairs";
 
 type Question = {
   id: string;
@@ -59,6 +59,10 @@ export default function StudentCustomQuizRunner({
   const [done, setDone] = useState(false);
   const [saveErr, setSaveErr] = useState<string | null>(null);
   const [saving, start] = useTransition();
+  // Matching pairs state — keyed by question id so it resets on next().
+  // Map<leftItem, rightItem>
+  const [matches, setMatches] = useState<Record<string, string>>({});
+  const [activeLeft, setActiveLeft] = useState<string | null>(null);
 
   const q = questions[idx];
   const total = questions.length;
@@ -76,13 +80,24 @@ export default function StudentCustomQuizRunner({
       const user = normalizeAnswer(typedAnswer);
       return user.length > 0 && accepted.some((a) => normalizeAnswer(a) === user);
     }
+    if (q.kind === "matching_pairs") {
+      const pairs = (q.correct?.pairs ?? []) as { left: string; right: string }[];
+      if (pairs.length === 0) return false;
+      // ALL pairs must match correctly to count.
+      return pairs.every((p) => matches[p.left] === p.right);
+    }
     return false;
   }
 
-  const isPicked =
-    q?.kind === "fill_in_blank"
-      ? typedAnswer.trim().length > 0
-      : pickedChoice !== null;
+  const isPicked = (() => {
+    if (!q) return false;
+    if (q.kind === "fill_in_blank") return typedAnswer.trim().length > 0;
+    if (q.kind === "matching_pairs") {
+      const pairs = (q.correct?.pairs ?? []) as { left: string; right: string }[];
+      return pairs.length > 0 && pairs.every((p) => matches[p.left]);
+    }
+    return pickedChoice !== null;
+  })();
 
   function check() {
     if (!isPicked || revealed) return;
@@ -99,6 +114,8 @@ export default function StudentCustomQuizRunner({
     setPickedChoice(null);
     setTypedAnswer("");
     setRevealed(false);
+    setMatches({});
+    setActiveLeft(null);
   }
 
   function save() {
@@ -312,6 +329,17 @@ export default function StudentCustomQuizRunner({
               )}
             </div>
           )}
+
+          {q.kind === "matching_pairs" && (
+            <MatchingPairsBoard
+              pairs={(q.correct?.pairs ?? []) as { left: string; right: string }[]}
+              matches={matches}
+              setMatches={setMatches}
+              activeLeft={activeLeft}
+              setActiveLeft={setActiveLeft}
+              revealed={revealed}
+            />
+          )}
         </div>
 
         {revealed && q.hint && !currentAnswerCorrect() && (
@@ -397,5 +425,179 @@ function PromptAudioButton({ src, autoplayKey }: { src: string; autoplayKey: str
         <Volume2 className="h-4 w-4" />
       </button>
     </>
+  );
+}
+
+/* ─── Matching pairs ────────────────────────────────────────────── */
+
+function shuffle<T>(arr: T[]): T[] {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function MatchingPairsBoard({
+  pairs,
+  matches,
+  setMatches,
+  activeLeft,
+  setActiveLeft,
+  revealed,
+}: {
+  pairs: { left: string; right: string }[];
+  matches: Record<string, string>;
+  setMatches: React.Dispatch<React.SetStateAction<Record<string, string>>>;
+  activeLeft: string | null;
+  setActiveLeft: React.Dispatch<React.SetStateAction<string | null>>;
+  revealed: boolean;
+}) {
+  // Shuffle the right column once per question render so the match
+  // isn't trivially "same position".
+  const shuffledRights = useMemo(
+    () => shuffle(pairs.map((p) => p.right)),
+    [pairs],
+  );
+
+  function pickLeft(left: string) {
+    if (revealed) return;
+    setActiveLeft((cur) => (cur === left ? null : left));
+  }
+
+  function pickRight(right: string) {
+    if (revealed || !activeLeft) return;
+    // If `right` is already used elsewhere, drop the previous mapping.
+    setMatches((cur) => {
+      const next = { ...cur };
+      for (const k of Object.keys(next)) {
+        if (next[k] === right && k !== activeLeft) delete next[k];
+      }
+      next[activeLeft] = right;
+      return next;
+    });
+    setActiveLeft(null);
+  }
+
+  function clearMatch(left: string) {
+    if (revealed) return;
+    setMatches((cur) => {
+      const next = { ...cur };
+      delete next[left];
+      return next;
+    });
+  }
+
+  // Build a reverse lookup so we can show which right is paired to
+  // which left.
+  const rightToLeft = new Map<string, string>();
+  for (const [l, r] of Object.entries(matches)) rightToLeft.set(r, l);
+
+  function correctRightFor(left: string): string | undefined {
+    return pairs.find((p) => p.left === left)?.right;
+  }
+
+  return (
+    <div>
+      <div className="mb-3 text-xs font-semibold text-zinc-500 dark:text-slate-400">
+        Tap an item on the left, then tap its match on the right.
+      </div>
+      <div className="grid grid-cols-2 gap-3">
+        {/* Left column — original order */}
+        <div className="space-y-2">
+          {pairs.map((p) => {
+            const matched = matches[p.left];
+            const isActive = activeLeft === p.left;
+            const isCorrect = revealed && matched === p.right;
+            const isWrong = revealed && matched !== undefined && matched !== p.right;
+            return (
+              <button
+                key={p.left}
+                type="button"
+                onClick={() => pickLeft(p.left)}
+                disabled={revealed}
+                className={`flex w-full items-center gap-2 rounded-xl border-2 px-3 py-2.5 text-left text-sm font-semibold transition ${
+                  isCorrect
+                    ? "border-green-500 bg-green-50 text-green-900 dark:border-green-500 dark:bg-green-950/30 dark:text-green-200"
+                    : isWrong
+                    ? "border-red-500 bg-red-50 text-red-900 dark:border-red-500 dark:bg-red-950/30 dark:text-red-200"
+                    : isActive
+                    ? "border-indigo-500 bg-indigo-50 text-indigo-900 dark:border-indigo-500 dark:bg-indigo-950/30 dark:text-indigo-200"
+                    : matched
+                    ? "border-violet-300 bg-violet-50 text-violet-900 dark:border-violet-700 dark:bg-violet-950/30 dark:text-violet-200"
+                    : "border-zinc-200 bg-white text-zinc-800 hover:border-indigo-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
+                }`}
+              >
+                <span className="flex-1">{p.left}</span>
+                {matched && !revealed && (
+                  <span
+                    role="button"
+                    tabIndex={0}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      clearMatch(p.left);
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") {
+                        e.stopPropagation();
+                        clearMatch(p.left);
+                      }
+                    }}
+                    className="rounded-full bg-white/80 px-1.5 py-0.5 text-[10px] font-bold text-violet-700 hover:bg-white dark:bg-slate-800/80"
+                    aria-label={`Clear match for ${p.left}`}
+                  >
+                    ✕
+                  </span>
+                )}
+                {revealed && !isCorrect && (
+                  <span className="text-[10px] font-bold text-green-700 dark:text-green-300">
+                    → {correctRightFor(p.left)}
+                  </span>
+                )}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Right column — shuffled */}
+        <div className="space-y-2">
+          {shuffledRights.map((right) => {
+            const pairedLeft = rightToLeft.get(right);
+            const isActiveTarget = activeLeft !== null && !pairedLeft;
+            const isCorrect =
+              revealed && pairedLeft && pairs.find((p) => p.left === pairedLeft)?.right === right;
+            const isWrong =
+              revealed && pairedLeft && pairs.find((p) => p.left === pairedLeft)?.right !== right;
+            return (
+              <button
+                key={right}
+                type="button"
+                onClick={() => pickRight(right)}
+                disabled={revealed || !activeLeft}
+                className={`flex w-full items-center gap-2 rounded-xl border-2 px-3 py-2.5 text-left text-sm font-semibold transition ${
+                  isCorrect
+                    ? "border-green-500 bg-green-50 text-green-900 dark:border-green-500 dark:bg-green-950/30 dark:text-green-200"
+                    : isWrong
+                    ? "border-red-500 bg-red-50 text-red-900 dark:border-red-500 dark:bg-red-950/30 dark:text-red-200"
+                    : pairedLeft
+                    ? "border-violet-300 bg-violet-50 text-violet-900 dark:border-violet-700 dark:bg-violet-950/30 dark:text-violet-200"
+                    : isActiveTarget
+                    ? "border-indigo-300 bg-white text-zinc-800 hover:border-indigo-500 hover:bg-indigo-50 dark:border-indigo-700 dark:bg-slate-900"
+                    : "border-zinc-200 bg-white text-zinc-800 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
+                } ${!activeLeft && !pairedLeft && !revealed ? "opacity-60" : ""}`}
+              >
+                {pairedLeft && !revealed && (
+                  <span className="rounded-full bg-violet-200 px-1.5 py-0.5 text-[10px] font-bold text-violet-800 dark:bg-violet-900/60 dark:text-violet-200">
+                    {pairs.findIndex((p) => p.left === pairedLeft) + 1}
+                  </span>
+                )}
+                <span className="flex-1">{right}</span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    </div>
   );
 }

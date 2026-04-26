@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useTransition } from "react";
+import React, { useEffect, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { Pencil, Trash2, Plus, Loader2, X, Check, AlertCircle, Lightbulb, ImagePlus, Sparkles, Volume2, RefreshCw } from "lucide-react";
 import {
@@ -15,7 +15,11 @@ import {
 import TopUpCreditsButton from "@/app/_components/TopUpCreditsButton";
 import CsvImportButton from "./CsvImportButton";
 
-type QuestionKind = "multiple_choice" | "true_false" | "fill_in_blank";
+type QuestionKind =
+  | "multiple_choice"
+  | "true_false"
+  | "fill_in_blank"
+  | "matching_pairs";
 
 type Question = {
   id: string;
@@ -121,14 +125,16 @@ export default function QuizBuilder({
                     )}
                   </div>
                   <div className="flex flex-shrink-0 items-center gap-1">
-                    <button
-                      type="button"
-                      onClick={() => setEditing(q)}
-                      className="inline-flex h-7 w-7 items-center justify-center rounded-lg text-zinc-400 hover:bg-indigo-50 hover:text-indigo-600 dark:hover:bg-indigo-950/40"
-                      title="Edit"
-                    >
-                      <Pencil className="h-3.5 w-3.5" />
-                    </button>
+                    {q.kind !== "matching_pairs" && (
+                      <button
+                        type="button"
+                        onClick={() => setEditing(q)}
+                        className="inline-flex h-7 w-7 items-center justify-center rounded-lg text-zinc-400 hover:bg-indigo-50 hover:text-indigo-600 dark:hover:bg-indigo-950/40"
+                        title="Edit"
+                      >
+                        <Pencil className="h-3.5 w-3.5" />
+                      </button>
+                    )}
                     <RemoveQuestionButton quizId={quizId} questionId={q.id} />
                   </div>
                 </div>
@@ -158,6 +164,7 @@ export default function QuizBuilder({
 function kindLabel(k: QuestionKind): string {
   if (k === "multiple_choice") return "Multiple choice";
   if (k === "true_false") return "True / false";
+  if (k === "matching_pairs") return "Matching pairs";
   return "Fill in the blank";
 }
 
@@ -211,6 +218,23 @@ function renderChoices(q: Question): React.ReactNode {
       <div className="mt-2 text-xs">
         <span className="font-semibold text-green-700 dark:text-green-300">Accepted: </span>
         {q.correct.join(" / ")}
+      </div>
+    );
+  }
+  if (q.kind === "matching_pairs") {
+    const pairs = (q.correct?.pairs ?? []) as { left: string; right: string }[];
+    return (
+      <div className="mt-2 grid grid-cols-2 gap-x-3 gap-y-1 text-xs">
+        {pairs.map((p, i) => (
+          <React.Fragment key={i}>
+            <div className="rounded-md bg-zinc-100 px-2 py-0.5 text-zinc-800 dark:bg-slate-800 dark:text-slate-200">
+              {p.left}
+            </div>
+            <div className="rounded-md bg-violet-50 px-2 py-0.5 font-semibold text-violet-800 dark:bg-violet-950/30 dark:text-violet-300">
+              → {p.right}
+            </div>
+          </React.Fragment>
+        ))}
       </div>
     );
   }
