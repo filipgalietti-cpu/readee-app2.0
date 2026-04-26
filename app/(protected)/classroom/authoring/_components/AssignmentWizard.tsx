@@ -181,7 +181,15 @@ export default function AssignmentWizard() {
         setErr(res.error);
         return;
       }
-      router.push(`/classroom/authoring/quiz/${res.quizId}?built=1`);
+      // Pipe build warnings through the URL so the teacher sees if the
+      // image / audio steps quietly failed. Cap length so the URL stays
+      // sane.
+      const warnQuery = res.warnings.length
+        ? `&warn=${encodeURIComponent(res.warnings.join(" · ").slice(0, 600))}`
+        : "";
+      router.push(
+        `/classroom/authoring/quiz/${res.quizId}?built=1${warnQuery}`,
+      );
     });
   }
 

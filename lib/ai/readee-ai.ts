@@ -29,7 +29,9 @@ import { getTopUpBalance, spendTopUp } from "@/lib/ai/credit-balance";
  */
 
 const MODEL_ID = "gemini-2.5-flash";
-const IMAGE_MODEL_ID = "gemini-2.5-flash-image-preview";
+// Was "gemini-2.5-flash-image-preview" — Google retired the preview
+// alias and image gen started 404'ing. The GA name is the same model.
+const IMAGE_MODEL_ID = "gemini-2.5-flash-image";
 const TTS_MODEL_ID = "gemini-2.5-flash-preview-tts";
 const TTS_DEFAULT_VOICE = "Autonoe";
 const TTS_SAMPLE_RATE = 24000;

@@ -13,10 +13,10 @@ export default async function QuizBuilderPage({
   searchParams,
 }: {
   params: Promise<{ quizId: string }>;
-  searchParams: Promise<{ built?: string }>;
+  searchParams: Promise<{ built?: string; warn?: string }>;
 }) {
   const { quizId } = await params;
-  const { built } = await searchParams;
+  const { built, warn } = await searchParams;
   const profile = await requireProfile();
   if (profile.role !== "educator") notFound();
 
@@ -155,6 +155,16 @@ export default async function QuizBuilderPage({
                 />
               </div>
             )}
+          </div>
+        </div>
+      )}
+
+      {built === "1" && warn && (
+        <div className="mt-5 flex items-start gap-2 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900 dark:border-amber-900/40 dark:bg-amber-950/20 dark:text-amber-200">
+          <Sparkles className="mt-0.5 h-4 w-4 flex-shrink-0 text-amber-600" />
+          <div>
+            <div className="font-bold">Build finished with warnings.</div>
+            <div className="mt-0.5 text-xs">{warn}</div>
           </div>
         </div>
       )}
