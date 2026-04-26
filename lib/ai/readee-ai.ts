@@ -28,7 +28,9 @@ import { getTopUpBalance, spendTopUp } from "@/lib/ai/credit-balance";
  * Pro later if output quality isn't hitting Jennifer's bar.
  */
 
-const MODEL_ID = "gemini-2.5-flash";
+// Exported so the QC engine (lib/ai/qc.ts) and other peer modules can
+// reuse the same model + client without duplicating setup.
+export const MODEL_ID = "gemini-2.5-flash";
 // Was "gemini-2.5-flash-image-preview" — Google retired the preview
 // alias and image gen started 404'ing. The GA name is the same model.
 const IMAGE_MODEL_ID = "gemini-2.5-flash-image";
@@ -43,7 +45,7 @@ export type GeneratedMCQ = {
   hint: string | null;
 };
 
-function getClient(): GoogleGenAI {
+export function getClient(): GoogleGenAI {
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
     throw new Error("GEMINI_API_KEY is not configured on the server.");

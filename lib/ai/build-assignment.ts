@@ -252,8 +252,10 @@ export async function buildAssignment(input: {
   //    the questions that depend on it would be contextless. We continue
   //    gracefully (questions will just be topic-based instead).
   let passageText = "";
+  let passageTitle = "";
   let passageImageUrl: string | null = null;
   let passageAudioUrl: string | null = null;
+  let imageScene: string | null = null;
 
   if (brief.passage.enabled) {
     const passageRes = await generatePassage({
@@ -264,6 +266,7 @@ export async function buildAssignment(input: {
     });
     if (passageRes.ok) {
       passageText = passageRes.passage.passage;
+      passageTitle = passageRes.passage.title;
       creditsUsed += CREDIT_COST.passage_generation;
 
       // Store the passage in the quiz description (first 2000 chars).
@@ -297,6 +300,7 @@ export async function buildAssignment(input: {
         });
         if (briefRes.ok) {
           imagePrompt = briefRes.brief;
+          imageScene = briefRes.brief;
           creditsUsed += CREDIT_COST.quiz_generation;
         } else {
           // Fall back to the old prompt rather than skipping the image.
@@ -483,6 +487,64 @@ export async function buildAssignment(input: {
           .eq("id", firstQId);
       }
     }
+  }
+
+  // 7) Quality control pass — runs the QC engine over passage,
+  //    questions, and image. Stores the report; surfaces fail-level
+  //    findings as warnings so the teacher sees them post-build.
+  //    Wrapped in try/catch because QC is best-effort: it should never
+  //    block a build that otherwise succeeded.
+  try {
+    const { runFullQuizQc } = await import("@/lib/ai/qc");
+    const qcQuestions = builtQuestions
+      .filter(
+        (q) => q.kind === "multiple_choice" || q.kind === "true_false",
+      )
+      .map((q) => {
+        if (q.kind === "multiple_choice") {
+          return {
+            kind: "multiple_choice" as const,
+            prompt: q.prompt,
+            choices: q.choices,
+            correct: q.correct as string,
+            hint: q.hint ?? null,
+          };
+        }
+        return {
+          kind: "true_false" as const,
+          prompt: q.prompt,
+          correct: (q.correct === "True" ? "True" : "False") as
+            | "True"
+            | "False",
+          hint: q.hint ?? null,
+        };
+      });
+    const report = await runFullQuizQc({
+      teacherId,
+      passageTitle: passageTitle || null,
+      passageBody: passageText || null,
+      gradeLevel: brief.gradeLevel,
+      questions: qcQuestions,
+      imageUrl: passageImageUrl,
+      imageScene,
+    });
+    creditsUsed += report.creditsUsed;
+    await admin.from("quiz_qc_reports").insert({
+      quiz_id: quizId,
+      teacher_id: teacherId,
+      overall: report.overall,
+      checks: report.checks,
+      credits_used: report.creditsUsed,
+      ran_at: report.ranAt,
+    });
+    // Surface any fail-level findings to the teacher banner.
+    for (const c of report.checks) {
+      if (c.severity === "fail") {
+        warnings.push(`QC: ${c.message}`);
+      }
+    }
+  } catch (e: any) {
+    warnings.push(`QC: ${e.message ?? "QC pass failed"}`);
   }
 
   // Debit the top-up pool for any credits spent past the monthly cap.
