@@ -333,32 +333,34 @@ export default async function ReportsPage() {
           ) : (
             <ul className="mt-3 divide-y divide-zinc-100 dark:divide-slate-800">
               {struggling.map((s) => (
-                <li
-                  key={s.childId}
-                  className="flex items-center justify-between gap-3 py-3"
-                >
-                  <div className="min-w-0">
-                    <div className="truncate text-sm font-semibold text-zinc-900 dark:text-white">
-                      {s.firstName}
+                <li key={s.childId}>
+                  <Link
+                    href={`/classroom/reports/student/${s.childId}`}
+                    className="flex items-center justify-between gap-3 py-3 transition hover:bg-indigo-50/40 dark:hover:bg-indigo-950/20"
+                  >
+                    <div className="min-w-0">
+                      <div className="truncate text-sm font-semibold text-zinc-900 dark:text-white">
+                        {s.firstName}
+                      </div>
+                      <div className="text-[11px] text-zinc-500 dark:text-slate-400">
+                        {s.isInactive
+                          ? s.lastActivity
+                            ? `Last active ${friendlyDate(s.lastActivity)}`
+                            : "Never practiced"
+                          : `${s.attempted} attempts, ${s.accuracy}% accuracy`}
+                      </div>
                     </div>
-                    <div className="text-[11px] text-zinc-500 dark:text-slate-400">
-                      {s.isInactive
-                        ? s.lastActivity
-                          ? `Last active ${friendlyDate(s.lastActivity)}`
-                          : "Never practiced"
-                        : `${s.attempted} attempts, ${s.accuracy}% accuracy`}
-                    </div>
-                  </div>
-                  {s.isLowAccuracy && (
-                    <span className="rounded-full bg-red-50 px-2 py-0.5 text-[10px] font-bold text-red-700 dark:bg-red-950/30 dark:text-red-300">
-                      Low accuracy
-                    </span>
-                  )}
-                  {!s.isLowAccuracy && s.isInactive && (
-                    <span className="rounded-full bg-amber-50 px-2 py-0.5 text-[10px] font-bold text-amber-700 dark:bg-amber-950/30 dark:text-amber-300">
-                      Inactive
-                    </span>
-                  )}
+                    {s.isLowAccuracy && (
+                      <span className="rounded-full bg-red-50 px-2 py-0.5 text-[10px] font-bold text-red-700 dark:bg-red-950/30 dark:text-red-300">
+                        Low accuracy
+                      </span>
+                    )}
+                    {!s.isLowAccuracy && s.isInactive && (
+                      <span className="rounded-full bg-amber-50 px-2 py-0.5 text-[10px] font-bold text-amber-700 dark:bg-amber-950/30 dark:text-amber-300">
+                        Inactive
+                      </span>
+                    )}
+                  </Link>
                 </li>
               ))}
             </ul>

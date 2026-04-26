@@ -14,6 +14,7 @@ import {
 } from "../../../../authoring-actions";
 import TopUpCreditsButton from "@/app/_components/TopUpCreditsButton";
 import CsvImportButton from "./CsvImportButton";
+import RegenerateQuestionButton from "./RegenerateQuestionButton";
 
 type QuestionKind =
   | "multiple_choice"
@@ -125,6 +126,11 @@ export default function QuizBuilder({
                     )}
                   </div>
                   <div className="flex flex-shrink-0 items-center gap-1">
+                    <RegenerateQuestionButton
+                      quizId={quizId}
+                      questionId={q.id}
+                      kind={q.kind}
+                    />
                     {q.kind !== "matching_pairs" && (
                       <button
                         type="button"

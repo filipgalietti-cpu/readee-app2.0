@@ -5,6 +5,7 @@ import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/lib/auth/helpers";
 import {
   generateMCQQuestions,
+  generateTrueFalseQuestions,
   generateMatchingPairs,
   generatePassage,
   generateImage,
@@ -629,4 +630,112 @@ export async function bulkImportQuestionsFromCsv(input: {
 
   revalidatePath(`/classroom/authoring/quiz/${input.quizId}`);
   return { ok: true, imported, errors };
+}
+
+/**
+ * Regenerate a single question in place. Reuses the question's current
+ * prompt as the topic seed (so a "rocks" MCQ stays about rocks) and
+ * pulls the parent quiz's description as passage context when present.
+ *
+ * Only multiple_choice and true_false are supported — matching_pairs is
+ * a single multi-pair object and fill_in_blank has no AI generator.
+ *
+ * Preserves image_url + audio_url + position via the untouched junction
+ * row, so the visual context (passage hero image, narration) stays
+ * attached after regeneration.
+ */
+export async function aiRegenerateQuestion(input: {
+  quizId: string;
+  questionId: string;
+}): Promise<{ ok: true } | { ok: false; error: string }> {
+  const profile = await requireProfile();
+  if (profile.role !== "educator") {
+    return { ok: false, error: "Only educators can use Readee.ai." };
+  }
+
+  const supabase = await createClient();
+
+  const { data: q } = await supabase
+    .from("custom_questions")
+    .select("id, kind, prompt, teacher_id")
+    .eq("id", input.questionId)
+    .eq("teacher_id", profile.id)
+    .maybeSingle();
+  if (!q) return { ok: false, error: "Question not found." };
+
+  const kind = (q as any).kind as string;
+  if (kind !== "multiple_choice" && kind !== "true_false") {
+    return {
+      ok: false,
+      error: "This question type can't be regenerated yet.",
+    };
+  }
+
+  const { data: quiz } = await supabase
+    .from("custom_quizzes")
+    .select("description, grade_level")
+    .eq("id", input.quizId)
+    .eq("teacher_id", profile.id)
+    .maybeSingle();
+  if (!quiz) return { ok: false, error: "Quiz not found." };
+
+  const passage = ((quiz as any).description as string | null) ?? "";
+  const gradeLevel = ((quiz as any).grade_level as string | null) ?? null;
+  const seedPrompt = ((q as any).prompt as string).trim();
+
+  // Topic seed: passage if present (gives the AI real context), else
+  // the question's own prompt as a fallback theme.
+  const topic =
+    passage.length > 0
+      ? `${passage.slice(0, 1500)}\n\nWrite a fresh question about: ${seedPrompt}`
+      : seedPrompt;
+
+  if (kind === "multiple_choice") {
+    const res = await generateMCQQuestions({
+      teacherId: profile.id,
+      topic,
+      gradeLevel,
+      count: 1,
+    });
+    if (!res.ok) return { ok: false, error: res.error };
+    const fresh = res.questions[0];
+    if (!fresh) return { ok: false, error: "AI returned no question." };
+    const { error: upErr } = await supabase
+      .from("custom_questions")
+      .update({
+        prompt: fresh.prompt,
+        choices: fresh.choices,
+        correct: fresh.correct,
+        hint: fresh.hint ?? null,
+        updated_at: new Date().toISOString(),
+      })
+      .eq("id", input.questionId)
+      .eq("teacher_id", profile.id);
+    if (upErr) return { ok: false, error: upErr.message };
+  } else {
+    const res = await generateTrueFalseQuestions({
+      teacherId: profile.id,
+      topic,
+      gradeLevel,
+      count: 1,
+    });
+    if (!res.ok) return { ok: false, error: res.error };
+    const fresh = res.questions[0];
+    if (!fresh) return { ok: false, error: "AI returned no question." };
+    const { error: upErr } = await supabase
+      .from("custom_questions")
+      .update({
+        prompt: fresh.prompt,
+        choices: null,
+        correct: fresh.correct,
+        hint: fresh.hint ?? null,
+        updated_at: new Date().toISOString(),
+      })
+      .eq("id", input.questionId)
+      .eq("teacher_id", profile.id);
+    if (upErr) return { ok: false, error: upErr.message };
+  }
+
+  revalidatePath(`/classroom/authoring/quiz/${input.quizId}`);
+  return { ok: true };
 }

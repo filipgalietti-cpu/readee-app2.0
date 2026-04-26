@@ -4,6 +4,7 @@ import { ClipboardPen, ArrowRight, Sparkles } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/lib/auth/helpers";
 import CreateQuizButton from "./_components/CreateQuizButton";
+import AssignQuizDialog from "./quiz/[quizId]/_components/AssignQuizDialog";
 
 export const dynamic = "force-dynamic";
 
@@ -18,6 +19,14 @@ export default async function AuthoringHomePage() {
     .select("id, title, description, grade_level, updated_at")
     .eq("teacher_id", profile.id)
     .order("updated_at", { ascending: false });
+
+  // Classrooms feed the inline AssignQuizDialog on each row.
+  const { data: classroomRows } = await supabase
+    .from("classrooms")
+    .select("id, name")
+    .eq("teacher_id", profile.id)
+    .order("created_at", { ascending: true });
+  const classrooms = (classroomRows ?? []) as { id: string; name: string }[];
 
   // Count questions per quiz
   const list = (quizzes ?? []) as {
@@ -95,11 +104,15 @@ export default async function AuthoringHomePage() {
         <ul className="mt-6 space-y-3">
           {list.map((q) => {
             const count = byQuiz.get(q.id) ?? 0;
+            const canAssign = count > 0;
             return (
-              <li key={q.id}>
+              <li
+                key={q.id}
+                className="flex items-center gap-4 rounded-2xl border border-zinc-200 bg-white p-5 transition hover:border-indigo-300 hover:shadow-sm dark:border-slate-800 dark:bg-slate-900/40"
+              >
                 <Link
                   href={`/classroom/authoring/quiz/${q.id}`}
-                  className="flex items-center gap-4 rounded-2xl border border-zinc-200 bg-white p-5 transition hover:-translate-y-0.5 hover:border-indigo-300 hover:shadow-sm dark:border-slate-800 dark:bg-slate-900/40"
+                  className="flex flex-1 min-w-0 items-center gap-4"
                 >
                   <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 to-violet-600 text-white">
                     <ClipboardPen className="h-6 w-6" />
@@ -123,8 +136,25 @@ export default async function AuthoringHomePage() {
                       </div>
                     )}
                   </div>
-                  <ArrowRight className="h-5 w-5 text-zinc-400" />
                 </Link>
+                <div className="flex items-center gap-2">
+                  {canAssign && (
+                    <AssignQuizDialog
+                      quizId={q.id}
+                      quizTitle={q.title}
+                      classrooms={classrooms}
+                      variant="ghost"
+                      label="Assign"
+                    />
+                  )}
+                  <Link
+                    href={`/classroom/authoring/quiz/${q.id}`}
+                    className="flex h-8 w-8 items-center justify-center rounded-full text-zinc-400 hover:bg-zinc-100 hover:text-indigo-600 dark:hover:bg-slate-800"
+                    aria-label={`Open ${q.title}`}
+                  >
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </div>
               </li>
             );
           })}
