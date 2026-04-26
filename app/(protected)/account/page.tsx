@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
-import { User, Mail, Shield, Trash2, Check, Loader2, Users } from "lucide-react";
+import { User, Mail, Shield, Trash2, Check, Loader2, Users, GraduationCap, Sparkles } from "lucide-react";
 import { getChildAvatarImage } from "@/lib/utils/get-child-avatar";
 import type { Child } from "@/lib/db/types";
 import { usePlanStore } from "@/lib/stores/plan-store";
@@ -34,6 +34,7 @@ export default function AccountPage() {
   const [deleteConfirm, setDeleteConfirm] = useState("");
   const [children, setChildren] = useState<Child[]>([]);
   const [hasParentPin, setHasParentPin] = useState(false);
+  const [classroomCount, setClassroomCount] = useState(0);
 
   useEffect(() => {
     async function load() {
@@ -77,6 +78,12 @@ export default function AccountPage() {
         .order("created_at", { ascending: true });
       setChildren((kids || []) as Child[]);
 
+      const { count: ccount } = await supabase
+        .from("classrooms")
+        .select("id", { count: "exact", head: true })
+        .eq("teacher_id", user.id);
+      setClassroomCount(ccount ?? 0);
+
       setLoading(false);
     }
     load();
@@ -116,13 +123,28 @@ export default function AccountPage() {
   const memberSince = new Date(profile.created_at).toLocaleDateString("en-US", { month: "long", year: "numeric" });
   const initials = profile.display_name.split(" ").map(w => w[0]).join("").toUpperCase().slice(0, 2);
 
+  // Capability-aware sections — pure teachers don't need Linked Readers
+  // or the kid PIN; pure parents don't need a Teaching section.
+  const hasChildren = children.length > 0;
+  const isTeacher = classroomCount > 0;
+  const headerSubtitle = (() => {
+    if (isTeacher && hasChildren) return "Teacher · Parent account";
+    if (isTeacher) return "Teacher account";
+    if (hasChildren) return "Parent account";
+    return "Account";
+  })();
+
   return (
     <SettingsShell>
       <div className="max-w-2xl mx-auto py-8 px-4 sm:px-6">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-2xl font-bold text-zinc-900 tracking-tight">Parent Account</h1>
-          <p className="text-sm text-zinc-500 mt-1">Manage your account and linked readers</p>
+          <h1 className="text-2xl font-bold text-zinc-900 tracking-tight">Account</h1>
+          <p className="text-sm text-zinc-500 mt-1">
+            {headerSubtitle}
+            {isTeacher ? ` · ${classroomCount} classroom${classroomCount === 1 ? "" : "s"}` : ""}
+            {hasChildren ? ` · ${children.length} child${children.length === 1 ? "" : "ren"}` : ""}
+          </p>
         </div>
 
         <div className="space-y-5">
@@ -205,13 +227,63 @@ export default function AccountPage() {
             </div>
           </section>
 
-          {/* Linked Readers */}
+          {/* Teaching — only when the user owns at least one classroom */}
+          {isTeacher && (
+            <section className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
+              <div className="flex items-center gap-2 mb-4">
+                <GraduationCap className="w-5 h-5 text-indigo-500" strokeWidth={1.5} />
+                <h2 className="text-base font-semibold text-zinc-900">Teaching</h2>
+              </div>
+              <div className="space-y-2 text-sm">
+                <div className="flex items-center justify-between rounded-xl bg-zinc-50 p-3">
+                  <div>
+                    <div className="font-semibold text-zinc-900">
+                      {classroomCount} classroom{classroomCount === 1 ? "" : "s"}
+                    </div>
+                    <div className="text-xs text-zinc-500">
+                      Roster, assignments, live quizzes, and analytics
+                    </div>
+                  </div>
+                  <Link href="/classroom" className="text-xs font-semibold text-indigo-600 hover:text-indigo-700">
+                    Open
+                  </Link>
+                </div>
+                <div className="flex items-center justify-between rounded-xl bg-zinc-50 p-3">
+                  <div>
+                    <div className="font-semibold text-zinc-900">Refer a teacher</div>
+                    <div className="text-xs text-zinc-500">
+                      Invite another teacher and you both get +200 Readee.ai credits
+                    </div>
+                  </div>
+                  <Link href="/classroom/refer" className="text-xs font-semibold text-indigo-600 hover:text-indigo-700">
+                    Open
+                  </Link>
+                </div>
+                <div className="flex items-center justify-between rounded-xl bg-violet-50 p-3 dark:bg-violet-950/20">
+                  <div className="flex items-center gap-2">
+                    <Sparkles className="w-4 h-4 text-violet-600" />
+                    <div>
+                      <div className="font-semibold text-zinc-900">Build with AI</div>
+                      <div className="text-xs text-zinc-500">
+                        Wizard-build a passage + questions + audio in one pass
+                      </div>
+                    </div>
+                  </div>
+                  <Link href="/classroom/authoring/wizard" className="text-xs font-semibold text-violet-700 hover:text-violet-800">
+                    Open
+                  </Link>
+                </div>
+              </div>
+            </section>
+          )}
+
+          {/* Linked Readers — hidden on pure-teacher accounts (no kids) */}
+          {hasChildren && (
           <section className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
             <div className="flex items-center gap-2 mb-4">
               <Users className="w-5 h-5 text-indigo-500" strokeWidth={1.5} />
               <h2 className="text-base font-semibold text-zinc-900">Linked Readers</h2>
             </div>
-            {children.length > 0 ? (
               <div className="space-y-2.5">
                 {children.map((child, i) => (
                   <div key={child.id} className="rounded-xl bg-zinc-50 p-3">
@@ -239,13 +311,12 @@ export default function AccountPage() {
                   </div>
                 ))}
               </div>
-            ) : (
-              <p className="text-sm text-zinc-400">No readers linked to this account yet.</p>
-            )}
           </section>
+          )}
 
-          {/* Grown-up PIN — exit gate for kid play mode */}
-          <ParentPinCard initialHasPin={hasParentPin} />
+          {/* Grown-up PIN — only meaningful when there are kids on the
+              account (it gates exit from kid play mode). */}
+          {hasChildren && <ParentPinCard initialHasPin={hasParentPin} />}
 
           {/* Plan Section */}
           <section className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
@@ -253,7 +324,7 @@ export default function AccountPage() {
               <Shield className="w-5 h-5 text-indigo-500" strokeWidth={1.5} />
               <h2 className="text-base font-semibold text-zinc-900">Plan</h2>
             </div>
-            {profile.plan === "premium" ? (
+            {profile.plan === "premium" && (
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <span className="px-3 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-violet-100 to-indigo-100 text-violet-700 border border-violet-200">
@@ -265,19 +336,42 @@ export default function AccountPage() {
                   href="/billing"
                   className="px-4 py-2 rounded-lg border border-zinc-200 text-sm font-medium text-zinc-700 hover:bg-zinc-50 transition-colors"
                 >
-                  Manage Subscription
+                  Manage subscription
                 </Link>
               </div>
-            ) : (
+            )}
+            {profile.plan === "teacher_solo" && (
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <span className="px-3 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-indigo-100 to-violet-100 text-indigo-700 border border-indigo-200">
+                    Teacher Solo
+                  </span>
+                  <span className="text-sm text-zinc-700">
+                    Up to 2 classrooms · 500 Readee.ai credits/month
+                  </span>
+                </div>
+                <Link
+                  href="/billing"
+                  className="px-4 py-2 rounded-lg border border-zinc-200 text-sm font-medium text-zinc-700 hover:bg-zinc-50 transition-colors"
+                >
+                  Manage subscription
+                </Link>
+              </div>
+            )}
+            {profile.plan !== "premium" && profile.plan !== "teacher_solo" && (
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <span className="px-3 py-1 rounded-full text-xs font-bold bg-zinc-100 text-zinc-600">
                     Free
                   </span>
-                  <span className="text-sm text-zinc-500">Limited to starter lessons</span>
+                  <span className="text-sm text-zinc-500">
+                    {isTeacher
+                      ? "Upgrade to unlock Readee.ai for your classroom"
+                      : "Limited to starter lessons"}
+                  </span>
                 </div>
                 <Link
-                  href="/upgrade"
+                  href={isTeacher ? "/upgrade?reason=teacher_solo" : "/upgrade"}
                   className="px-4 py-2 rounded-lg bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-sm font-semibold hover:from-indigo-700 hover:to-violet-600 transition-all shadow-sm"
                 >
                   Upgrade
