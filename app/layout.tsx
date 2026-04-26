@@ -110,7 +110,6 @@ export default function RootLayout({
                 <ul className="space-y-2.5">
                   <li><Link href="/about" className="text-sm text-white hover:text-indigo-300 transition-colors">About</Link></li>
                   <li><Link href="/contact-us" className="text-sm text-white hover:text-indigo-300 transition-colors">Contact</Link></li>
-                  <li><Link href="/blog" className="text-sm text-white hover:text-indigo-300 transition-colors">Blog</Link></li>
                 </ul>
               </div>
 

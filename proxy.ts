@@ -76,6 +76,7 @@ export async function proxy(request: NextRequest) {
       : "script-src 'self' 'unsafe-inline' https://us.i.posthog.com https://us-assets.i.posthog.com",
     "style-src 'self' 'unsafe-inline'",
     "img-src 'self' blob: data: https://*.supabase.co",
+    "media-src 'self' blob: https://*.supabase.co",
     "font-src 'self'",
     isDev
       ? "connect-src 'self' ws://localhost:* https://*.supabase.co https://us.i.posthog.com https://*.ingest.us.sentry.io"
