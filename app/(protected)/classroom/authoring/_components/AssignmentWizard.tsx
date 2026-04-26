@@ -24,6 +24,16 @@ import TopUpCreditsButton from "@/app/_components/TopUpCreditsButton";
 import VoiceSelector from "@/app/_components/VoiceSelector";
 import { DEFAULT_VOICE_ID, getVoice, type VoiceId } from "@/lib/ai/voices";
 import { Progress } from "@/app/components/ui/progress";
+import PromptSuggestionsTyper from "@/app/_components/PromptSuggestionsTyper";
+
+const TEACHER_PROMPT_SUGGESTIONS = [
+  "A short passage about a young hockey player learning the basics. Friendly, encouraging tone.",
+  "An informational passage about how plants grow — seed, sprout, leaves, flower.",
+  "A story about a brave dog who helps a lost kid find their way home.",
+  "A passage about community helpers — what a firefighter, librarian, and mail carrier do.",
+  "A short folktale about a clever fox and a wise owl learning to share food.",
+  "A passage explaining the water cycle in simple kid-friendly terms.",
+];
 
 type Step = 1 | 2 | 3 | 4;
 
@@ -352,20 +362,28 @@ function StepBrief({
         </div>
       </div>
 
-      <label className="block">
-        <span className="text-xs font-semibold text-zinc-500 dark:text-slate-400">
-          What is the assignment about?
-        </span>
-        <textarea
-          value={brief.topic}
-          onChange={(e) =>
-            setBrief((b) => ({ ...b, topic: e.target.value.slice(0, 400) }))
-          }
-          rows={3}
-          placeholder="e.g. A short passage about a young hockey player learning the basics. Keep it encouraging and friendly."
-          className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
-        />
-      </label>
+      <div>
+        <label className="block">
+          <span className="text-xs font-semibold text-zinc-500 dark:text-slate-400">
+            What is the assignment about?
+          </span>
+          <textarea
+            value={brief.topic}
+            onChange={(e) =>
+              setBrief((b) => ({ ...b, topic: e.target.value.slice(0, 400) }))
+            }
+            rows={3}
+            placeholder="Tell Readee.ai what you want your students to read about…"
+            className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+          />
+        </label>
+        {!brief.topic.trim() && (
+          <PromptSuggestionsTyper
+            suggestions={TEACHER_PROMPT_SUGGESTIONS}
+            onPick={(p) => setBrief((b) => ({ ...b, topic: p }))}
+          />
+        )}
+      </div>
 
       <label className="block">
         <span className="text-xs font-semibold text-zinc-500 dark:text-slate-400">
