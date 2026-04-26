@@ -10,11 +10,10 @@ import { getChildAvatarImage } from "@/lib/utils/get-child-avatar";
 import { usePlanStore } from "@/lib/stores/plan-store";
 import { useViewModeStore, resolveViewMode, type ViewMode } from "@/lib/stores/view-mode-store";
 import { SidebarUserMenu } from "./SidebarUserMenu";
-import TeacherCreditWidget from "./TeacherCreditWidget";
 import { ShineBorder } from "@/app/components/magicui/shine-border";
 import {
   Home, BarChart3, BookText, ListChecks, Map,
-  Carrot, Trophy, ChevronDown, ChevronRight, ClipboardCheck, GraduationCap, Building2, ClipboardPen, Library, Sparkles, Users, Brain,
+  Carrot, Trophy, ChevronDown, ChevronRight, ClipboardCheck, GraduationCap, Building2, ClipboardPen, Library, Sparkles, Users, Brain, Zap,
 } from "lucide-react";
 
 /* ─── Nav items ──────────────────────────────────── */
@@ -47,6 +46,8 @@ function getNavSections(
           shimmer: true,
         },
         { href: "/classroom", icon: GraduationCap, label: "Classroom" },
+        { href: "/classroom/live", icon: Zap, label: "Live quiz" },
+        { href: "/classroom/reports", icon: BarChart3, label: "Reports" },
         { href: "/classroom/library", icon: Library, label: "Library" },
         { href: "/classroom/authoring", icon: ClipboardPen, label: "Quizzes" },
         { href: "/classroom/refer", icon: Users, label: "Refer a teacher" },
@@ -636,9 +637,6 @@ function ExpandedNav({
         </div>
       )}
 
-      {/* Teacher credit balance — only when actually in teacher view */}
-      {viewMode === "teacher" && <TeacherCreditWidget />}
-
       {/* Nav links */}
       <div className="flex-1 overflow-y-auto py-2 space-y-4">
         {sections.map((section) => (
@@ -659,6 +657,7 @@ function ExpandedNav({
         plan={plan}
         subtitle={subtitle}
         detail={detail ?? undefined}
+        showCreditIndicator={viewMode === "teacher"}
       />
     </div>
   );

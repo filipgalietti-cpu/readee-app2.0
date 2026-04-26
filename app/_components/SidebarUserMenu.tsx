@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
-import { User, CreditCard, Bell, LogOut, ChevronsUpDown } from "lucide-react";
+import { User, CreditCard, Bell, LogOut, ChevronsUpDown, Sparkles } from "lucide-react";
 
 export function SidebarUserMenu({
   avatarSrc,
@@ -13,6 +13,7 @@ export function SidebarUserMenu({
   plan,
   subtitle,
   detail,
+  showCreditIndicator = false,
 }: {
   /** Pass a URL to show an image, or null to render initials from `name`. */
   avatarSrc: string | null;
@@ -22,10 +23,48 @@ export function SidebarUserMenu({
   subtitle?: string;
   /** Extra detail line shown in the expanded dropdown (e.g. email). */
   detail?: string;
+  /** When true, show a compact Readee.ai credit balance and link to /account. */
+  showCreditIndicator?: boolean;
 }) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const [credits, setCredits] = useState<{
+    remaining: number;
+    limit: number;
+    isLow: boolean;
+  } | null>(null);
+
+  useEffect(() => {
+    if (!showCreditIndicator) return;
+    let cancelled = false;
+    async function load() {
+      try {
+        const r = await fetch("/api/classroom/ai-budget", { cache: "no-store" });
+        if (!r.ok) return;
+        const j = (await r.json()) as {
+          monthly: { remaining: number; limit: number; entitlement?: number };
+        };
+        if (cancelled) return;
+        const remaining = j.monthly.remaining;
+        const limit = j.monthly.limit;
+        const entitlement = j.monthly.entitlement ?? limit;
+        setCredits({
+          remaining,
+          limit,
+          isLow: remaining < entitlement * 0.2,
+        });
+      } catch {
+        /* silent */
+      }
+    }
+    load();
+    const t = setInterval(load, 60_000);
+    return () => {
+      cancelled = true;
+      clearInterval(t);
+    };
+  }, [showCreditIndicator]);
 
   useEffect(() => {
     if (!open) return;
@@ -88,6 +127,19 @@ export function SidebarUserMenu({
             {subtitle ?? (plan === "premium" ? "Readee+" : "Free Plan")}
           </div>
         </div>
+        {showCreditIndicator && credits && (
+          <div
+            className={`flex-shrink-0 inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-bold ${
+              credits.isLow
+                ? "bg-amber-50 text-amber-700 dark:bg-amber-950/30 dark:text-amber-300"
+                : "bg-violet-50 text-violet-700 dark:bg-violet-950/30 dark:text-violet-300"
+            }`}
+            title={`${credits.remaining} of ${credits.limit} Readee.ai credits left`}
+          >
+            <Sparkles className="w-3 h-3" strokeWidth={2} />
+            {credits.remaining}
+          </div>
+        )}
         <ChevronsUpDown className="w-4 h-4 text-zinc-400 dark:text-slate-500 flex-shrink-0" strokeWidth={1.5} />
       </button>
 
@@ -137,6 +189,16 @@ export function SidebarUserMenu({
                 <User className="w-4 h-4 text-zinc-400 dark:text-slate-500" strokeWidth={1.5} />
                 Account
               </Link>
+              {showCreditIndicator && credits && (
+                <Link href="/account#credits" onClick={() => setOpen(false)}
+                  className="flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm text-zinc-700 dark:text-slate-300 hover:bg-zinc-100 dark:hover:bg-slate-800 transition-colors">
+                  <Sparkles className="w-4 h-4 text-violet-500" strokeWidth={1.5} />
+                  <span className="flex-1">Readee.ai credits</span>
+                  <span className={`text-[11px] font-bold ${credits.isLow ? "text-amber-600" : "text-violet-600 dark:text-violet-300"}`}>
+                    {credits.remaining}/{credits.limit}
+                  </span>
+                </Link>
+              )}
               <Link href="/billing" onClick={() => setOpen(false)}
                 className="flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm text-zinc-700 dark:text-slate-300 hover:bg-zinc-100 dark:hover:bg-slate-800 transition-colors">
                 <CreditCard className="w-4 h-4 text-zinc-400 dark:text-slate-500" strokeWidth={1.5} />

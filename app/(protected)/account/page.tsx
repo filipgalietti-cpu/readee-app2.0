@@ -12,6 +12,7 @@ import { usePlanStore } from "@/lib/stores/plan-store";
 import SettingsShell from "@/app/_components/SettingsShell";
 import ChildLanguagePicker from "@/app/_components/ChildLanguagePicker";
 import ParentPinCard from "@/app/_components/ParentPinCard";
+import AccountCreditsCard from "@/app/_components/AccountCreditsCard";
 
 interface ProfileData {
   display_name: string;
@@ -276,6 +277,10 @@ export default function AccountPage() {
               </div>
             </section>
           )}
+
+          {/* Readee.ai credits — teachers only. Sidebar widget was retired
+              in favor of this in-settings home (Apr 25 2026). */}
+          {isTeacher && <AccountCreditsCard />}
 
           {/* Linked Readers — hidden on pure-teacher accounts (no kids) */}
           {hasChildren && (
