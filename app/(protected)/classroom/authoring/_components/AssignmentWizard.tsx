@@ -151,7 +151,6 @@ export default function AssignmentWizard() {
   function stepForward() {
     setErr(null);
     if (step === 1) {
-      if (!brief.title.trim()) return setErr("Give the assignment a title.");
       if (!brief.topic.trim()) return setErr("Describe the topic.");
     }
     if (step === 2 && brief.passage.enabled === false && totalQuestions === 0) {
@@ -344,14 +343,15 @@ function StepBrief({
     <div className="space-y-5 pt-5">
       <label className="block">
         <span className="text-xs font-semibold text-zinc-500 dark:text-slate-400">
-          Assignment title
+          Assignment title{" "}
+          <span className="font-normal text-zinc-400">(optional)</span>
         </span>
         <input
           value={brief.title}
           onChange={(e) =>
             setBrief((b) => ({ ...b, title: e.target.value.slice(0, 120) }))
           }
-          placeholder="e.g. Hockey heroes — comprehension"
+          placeholder="Leave blank — Readee will use the passage title"
           className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm font-semibold focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
         />
       </label>

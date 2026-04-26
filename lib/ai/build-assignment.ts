@@ -101,7 +101,8 @@ export function estimateBriefCredits(brief: AssignmentBrief): number {
 }
 
 function validateBrief(brief: AssignmentBrief): string | null {
-  if (!brief.title.trim()) return "Give the assignment a title.";
+  // Title is optional — when blank, the orchestrator backfills it from
+  // the AI-generated passage title after step 2.
   if (!brief.topic.trim()) return "Describe what the assignment is about.";
   const totalQs =
     brief.questions.multipleChoice +
@@ -217,11 +218,14 @@ export async function buildAssignment(input: {
   let creditsUsed = 0;
 
   // 1) Create the quiz skeleton first so image/audio uploads have a parent.
+  // Title can be blank — we backfill from the AI passage title in step 2.
+  // Use a friendly placeholder so the row isn't empty mid-build.
+  const initialTitle = brief.title.trim().slice(0, 120) || "Untitled quiz";
   const { data: quizRow, error: quizErr } = await admin
     .from("custom_quizzes")
     .insert({
       teacher_id: teacherId,
-      title: brief.title.trim().slice(0, 120),
+      title: initialTitle,
       description: brief.topic.trim().slice(0, 400) || null,
       grade_level: brief.gradeLevel || null,
     })
@@ -262,9 +266,17 @@ export async function buildAssignment(input: {
       creditsUsed += CREDIT_COST.passage_generation;
 
       // Store the passage in the quiz description (first 2000 chars).
+      // If the teacher left the title blank, backfill it from the
+      // AI-generated passage title so the assignment isn't called
+      // "Untitled quiz" forever.
+      const titleUpdate =
+        brief.title.trim().length === 0 && passageRes.passage.title
+          ? { title: passageRes.passage.title.slice(0, 120) }
+          : {};
       await admin
         .from("custom_quizzes")
         .update({
+          ...titleUpdate,
           description:
             passageRes.passage.title +
             "\n\n" +
