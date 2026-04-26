@@ -13,7 +13,7 @@ import { SidebarUserMenu } from "./SidebarUserMenu";
 import { ShineBorder } from "@/app/components/magicui/shine-border";
 import {
   Home, BarChart3, BookText, ListChecks, Map,
-  Carrot, Trophy, ChevronDown, ChevronRight, ClipboardCheck, GraduationCap, Building2, ClipboardPen, Library, Sparkles, Users, Brain, Zap,
+  Carrot, Trophy, ChevronDown, ChevronRight, ClipboardCheck, GraduationCap, Building2, ClipboardPen, Library, Sparkles, Users, Brain, Zap, ShieldCheck,
 } from "lucide-react";
 
 /* ─── Nav items ──────────────────────────────────── */
@@ -59,6 +59,7 @@ function getNavSections(
         label: "Admin",
         items: [
           { href: "/admin", icon: Building2, label: "Admin" },
+          { href: "/admin/qc", icon: ShieldCheck, label: "QC queue" },
           { href: "/admin/community", icon: Users, label: "Community review" },
         ],
       });
