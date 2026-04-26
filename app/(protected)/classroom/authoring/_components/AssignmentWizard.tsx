@@ -357,10 +357,10 @@ function StepBrief({
       </label>
 
       <div>
-        <span className="text-xs font-semibold text-zinc-500 dark:text-slate-400">
+        <span className="block mb-2 text-xs font-semibold text-zinc-500 dark:text-slate-400">
           Grade level
         </span>
-        <div className="mt-2 inline-flex rounded-full border border-zinc-200 bg-zinc-50 p-0.5 text-xs font-semibold dark:border-slate-700 dark:bg-slate-950">
+        <div className="inline-flex rounded-full border border-zinc-200 bg-zinc-50 p-0.5 text-xs font-semibold dark:border-slate-700 dark:bg-slate-950">
           {GRADES.map((g) => (
             <button
               key={g}
