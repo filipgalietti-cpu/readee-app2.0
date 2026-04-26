@@ -13,6 +13,7 @@ import {
   Circle,
 } from "lucide-react";
 import CreateClassroomButton from "./_components/CreateClassroomButton";
+import DailyQuestionCard from "@/app/_components/DailyQuestionCard";
 import type { Classroom } from "@/lib/db/types";
 
 export const dynamic = "force-dynamic";
@@ -75,6 +76,12 @@ export default async function ClassroomIndex() {
         </div>
         {hasClass && <CreateClassroomButton />}
       </header>
+
+      {hasClass && (
+        <div className="mt-6">
+          <DailyQuestionCard variant="teacher" />
+        </div>
+      )}
 
       {!hasClass && <Onboarding />}
       {showNextStepNudge && (

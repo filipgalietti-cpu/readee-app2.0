@@ -23,6 +23,7 @@ import { Target, Puzzle, BookOpen, Map, Carrot, Flame, Sun, CloudSun, Moon, Spar
 import type { ReactNode } from "react";
 import { getShopIcon } from "@/lib/data/shop-icons";
 import TeacherAssignmentsCard from "@/app/_components/TeacherAssignmentsCard";
+import DailyQuestionCard from "@/app/_components/DailyQuestionCard";
 
 /* ─── Count-up animation hook ─────────────────────────── */
 
@@ -952,6 +953,11 @@ function ChildDashboard({
             <BookOpen className="w-5 h-5 text-indigo-500 group-hover:animate-subtleBounce" strokeWidth={1.5} />
             <span ref={storiesCount.ref} className="text-lg font-extrabold text-zinc-900 dark:text-slate-100">{storiesCount.value}</span>
           </Link>
+        </motion.div>
+
+        {/* ── Today's Readee — daily question ritual ── */}
+        <motion.div variants={slideUp}>
+          <DailyQuestionCard variant="parent" />
         </motion.div>
 
         {/* ── From Your Teacher (only if classroom membership + open work) ── */}
