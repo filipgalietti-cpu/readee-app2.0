@@ -151,26 +151,19 @@ Goal: send to 5 contacts (warm intros via Jennifer's network) by Friday.
 
 ## 🟢 Nice-to-have
 
-### 9. Spanish content generation (optional)
-Run the script once if we want to announce ES support next week:
-```
-GEMINI_API_KEY=... node scripts/translate-bank-to-spanish.js
-```
-Costs ~$5. Generates 5 -es.json files. Commit them.
-
-### 10. Voice samples on the parent Ask Readee surface
+### 9. Voice samples on the parent Ask Readee surface
 The voice selector lives inside the wizard. Could surface the samples
 on a standalone `/account` row so parents can preview voices outside
 of a build context. Low priority.
 
-### 11. Polish the wizard progress UX
+### 10. Polish the wizard progress UX
 Right now the progress bar is purely client-side animated to ~95%.
 Real per-step progress would require either streaming the server
 action (Next.js doesn't make this clean) or splitting the orchestrator
 into a series of API calls. Not worth the complexity yet — but worth
 revisiting if teachers complain about uncertainty during long builds.
 
-### 12. Inline matching-pair editor in QuizBuilder
+### 11. Inline matching-pair editor in QuizBuilder
 Today matching questions are read-only after generation (delete +
 regenerate to change). A pair editor would let teachers tweak. Low
 priority because the AI gen quality is decent.
@@ -179,6 +172,12 @@ priority because the AI gen quality is decent.
 
 ## What we're NOT doing this week
 
+- **Spanish (ES) launch.** The plumbing exists — `Profile.language`,
+  `Child.language`, the translation script — but a real ES launch
+  needs translated UI strings, ES-voice TTS, ES-image-prompt sweeps,
+  parent/teacher-facing comms, and QA from a native speaker.
+  Tabled until after district pilots are live; revisit when an actual
+  district asks for it.
 - Spaced-repetition tuning. SRS engine is shipped (migration 049),
   trigger updates state on every practice_results insert. Let it
   collect a week of real data before tuning the quality bands.
