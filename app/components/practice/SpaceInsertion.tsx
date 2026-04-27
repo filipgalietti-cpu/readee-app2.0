@@ -13,7 +13,6 @@ interface SpaceInsertionProps {
   jumbled: string;        // e.g. "Mydogisbig."
   correctSentence: string; // e.g. "My dog is big."
   hint?: string;
-  hintAudioUrl?: string;
   questionId?: string;
   answered: boolean;
   onAnswer: (isCorrect: boolean, result: string) => void;
@@ -31,7 +30,6 @@ export function SpaceInsertion({
   jumbled,
   correctSentence,
   hint,
-  hintAudioUrl,
   questionId,
   answered,
   onAnswer,
@@ -42,10 +40,6 @@ export function SpaceInsertion({
   const [result, setResult] = useState<"correct" | "incorrect" | null>(null);
   const [shaking, setShaking] = useState(false);
   const [showHint, setShowHint] = useState(false);
-
-  const playHintAudio = useCallback(() => {
-    if (hintAudioUrl) new Howl({ src: [hintAudioUrl] }).play();
-  }, [hintAudioUrl]);
 
   const toggleSpace = useCallback(
     (gapIndex: number) => {
@@ -225,10 +219,7 @@ export function SpaceInsertion({
       {hint && !answered && result === null && (
         <div className="flex flex-col items-center gap-2">
           <button
-            onClick={() => {
-              setShowHint((v) => !v);
-              if (!showHint) playHintAudio();
-            }}
+            onClick={() => setShowHint((v) => !v)}
             className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/30 hover:bg-amber-100 dark:hover:bg-amber-500/20 transition-colors"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">

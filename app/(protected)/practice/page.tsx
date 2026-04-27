@@ -1047,7 +1047,6 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
             jumbled={q.jumbled}
             correctSentence={q.correct}
             hint={q.hint}
-            hintAudioUrl={q.hint_audio_url}
             questionId={q.id}
             answered={selected !== null}
             onAnswer={(isCorrect, answer) => handleSentenceBuildAnswer(isCorrect, answer)}

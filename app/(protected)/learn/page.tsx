@@ -637,7 +637,6 @@ function LearnSession({
             jumbled={q.jumbled}
             correctSentence={q.correct}
             hint={q.hint}
-            hintAudioUrl={q.hint_audio_url}
             questionId={q.id}
             answered={selected !== null}
             onAnswer={(isCorrect, answer) => handleInteractiveAnswer(isCorrect, answer)}
