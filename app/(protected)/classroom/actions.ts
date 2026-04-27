@@ -622,3 +622,125 @@ export async function devSetRole(
   revalidatePath("/classroom-dev");
   return { ok: true };
 }
+
+/**
+ * Materialize a daily question into a custom_quiz, then create
+ * assignments for each selected classroom. The new quiz is owned by
+ * the teacher (so the standard assignment flow works).
+ */
+export async function assignDailyQuestion(input: {
+  date: string;
+  classroomIds: string[];
+  dueAt?: string | null;
+  passThreshold?: number | null;
+}): Promise<
+  | { ok: true; quizId: string; assignedTo: number }
+  | { ok: false; error: string }
+> {
+  const profile = await requireProfile();
+  if (profile.role !== "educator") {
+    return { ok: false, error: "Only teachers can assign." };
+  }
+  if (!input.classroomIds || input.classroomIds.length === 0) {
+    return { ok: false, error: "Pick at least one classroom." };
+  }
+
+  const supabase = await createClient();
+
+  // 1) Fetch the daily.
+  const { data: daily } = await supabase
+    .from("daily_questions")
+    .select(
+      "date, theme, passage_title, passage_body, image_url, audio_url, question_prompt, choices, correct, hint, extra_questions",
+    )
+    .eq("date", input.date)
+    .maybeSingle();
+  if (!daily) return { ok: false, error: "Daily question not found." };
+  const d = daily as any;
+
+  // 2) Create the custom_quiz row.
+  const description = `${d.passage_title}
+
+${d.passage_body}`;
+  const { data: quizRow, error: quizErr } = await supabase
+    .from("custom_quizzes")
+    .insert({
+      teacher_id: profile.id,
+      title: `Readee Daily — ${d.theme}: ${d.passage_title}`,
+      description,
+      grade_level: null,
+    })
+    .select("id")
+    .single();
+  if (quizErr || !quizRow)
+    return { ok: false, error: quizErr?.message ?? "Could not create quiz." };
+  const quizId = (quizRow as { id: string }).id;
+
+  // 3) Materialize the main question + extras as custom_questions.
+  const allQs = [
+    {
+      prompt: d.question_prompt,
+      choices: d.choices,
+      correct: d.correct,
+      hint: d.hint,
+    },
+    ...((Array.isArray(d.extra_questions) ? d.extra_questions : []) as any[]),
+  ];
+  let position = 1;
+  for (const q of allQs) {
+    if (!q?.prompt || !Array.isArray(q.choices) || !q.correct) continue;
+    const { data: qrow, error: qErr } = await supabase
+      .from("custom_questions")
+      .insert({
+        teacher_id: profile.id,
+        kind: "multiple_choice",
+        prompt: q.prompt,
+        choices: q.choices,
+        correct: q.correct,
+        hint: q.hint ?? null,
+        // Attach the daily image + audio to the FIRST question (same
+        // pattern as build-assignment for shared media).
+        image_url: position === 1 ? d.image_url : null,
+        audio_url: position === 1 ? d.audio_url : null,
+      })
+      .select("id")
+      .single();
+    if (qErr || !qrow) continue;
+    await supabase.from("custom_quiz_questions").insert({
+      quiz_id: quizId,
+      question_id: (qrow as { id: string }).id,
+      position,
+    });
+    position += 1;
+  }
+
+  // 4) For each classroom, create an assignment pointing at the quiz.
+  let assigned = 0;
+  for (const classroomId of input.classroomIds) {
+    const passThreshold =
+      typeof input.passThreshold === "number" &&
+      input.passThreshold >= 0 &&
+      input.passThreshold <= 100
+        ? Math.round(input.passThreshold)
+        : null;
+    const { error } = await supabase.from("assignments").insert({
+      classroom_id: classroomId,
+      assigned_by: profile.id,
+      kind: "custom_quiz",
+      source_id: quizId,
+      title: `Readee Daily — ${d.passage_title}`,
+      due_at: input.dueAt ?? null,
+      pass_threshold: passThreshold,
+      audio_prompt_enabled: true,
+      audio_choices_enabled: false,
+      shuffle_questions: false,
+      shuffle_choices: false,
+      reveal_correct_immediately: true,
+    });
+    if (!error) assigned += 1;
+    revalidatePath(`/classroom/${classroomId}`);
+  }
+
+  return { ok: true, quizId, assignedTo: assigned };
+}
+

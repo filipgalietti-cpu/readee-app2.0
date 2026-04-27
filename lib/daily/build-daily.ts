@@ -85,10 +85,38 @@ export async function buildDailyQuestion(opts?: {
 
   const theme = pickThemeForDate(date);
 
+  // Date-anchored topic. Injects today's actual date + season so the
+  // AI writes something that fits THE DAY, not just the theme bucket.
+  // Without this, "Monday science" can produce a fall-leaves passage
+  // in April. With it, the passage stays seasonally appropriate.
+  const month = date.getUTCMonth() + 1;
+  const seasonName =
+    month === 12 || month <= 2
+      ? "winter"
+      : month >= 3 && month <= 5
+        ? "spring"
+        : month >= 6 && month <= 8
+        ? "summer"
+        : "fall";
+  const monthName = date.toLocaleDateString("en-US", {
+    month: "long",
+    timeZone: "UTC",
+  });
+  const fullDate = date.toLocaleDateString("en-US", {
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+  const datedTopic = `Today is ${fullDate} (${monthName} — ${seasonName} in the Northern Hemisphere). Write a passage that feels appropriate for THIS time of year — do not pick a topic from a different season.
+
+${theme.topic}`;
+
   // 1) Passage
   const passageRes = await generatePassage({
     teacherId,
-    topic: theme.topic,
+    topic: datedTopic,
     gradeLevel,
     phonicsPattern: null,
   });
@@ -102,7 +130,7 @@ export async function buildDailyQuestion(opts?: {
   //    the others go into extra_questions for the /today page.
   const mcqRes = await generateMCQQuestions({
     teacherId,
-    topic: `${theme.topic}\n\nPassage to ground questions in:\n"""\n${passageBody}\n"""`,
+    topic: `${datedTopic}\n\nPassage to ground questions in:\n"""\n${passageBody}\n"""`,
     gradeLevel,
     count: 3,
   });
