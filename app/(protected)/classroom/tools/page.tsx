@@ -139,45 +139,153 @@ export default async function ToolsHubPage() {
         burns from your Readee.ai credit pool.
       </p>
 
-      <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        {TOOLS.map((t) => {
-          const Icon = t.icon;
-          const userPlan = (profile as any).plan as TeacherTier | undefined;
-          const unlocked = hasMinTier(userPlan, t.minTier);
-          const href = unlocked ? t.href : `/upgrade?reason=${t.id}`;
-          return (
-            <li key={t.id}>
-              <Link
-                href={href}
-                className="group relative block h-full rounded-3xl border border-zinc-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-violet-300 hover:shadow-md dark:border-slate-800 dark:bg-slate-900/40"
-              >
-                <div className={`flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br ${t.color} text-white shadow-sm`}>
-                  <Icon className="h-5 w-5" />
-                </div>
-                <div className="mt-3 flex items-center gap-2">
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-400">
-                    {t.tag}
+      {(() => {
+        const userPlan = (profile as any).plan as TeacherTier | undefined;
+        const TIER_RANK: Record<Tier, number> = {
+          premium: 1,
+          teacher_solo: 2,
+          school: 3,
+        };
+        const annotated = TOOLS.map((t) => ({
+          ...t,
+          unlocked: hasMinTier(userPlan, t.minTier),
+        }));
+        const available = annotated.filter((t) => t.unlocked);
+        const locked = annotated
+          .filter((t) => !t.unlocked)
+          .sort((a, b) => TIER_RANK[a.minTier] - TIER_RANK[b.minTier]);
+
+        return (
+          <>
+            {/* ── Available now ── */}
+            {available.length > 0 ? (
+              <section className="mt-8">
+                <div className="flex items-baseline justify-between">
+                  <h2 className="text-xs font-bold uppercase tracking-widest text-zinc-500">
+                    Available on your plan
+                  </h2>
+                  <span className="text-[10px] text-zinc-400">
+                    {available.length} tool{available.length === 1 ? "" : "s"}
                   </span>
-                  {!unlocked && (
-                    <span className="inline-flex items-center gap-0.5 rounded-full bg-violet-600 px-2 py-0.5 text-[9px] font-bold text-white">
-                      <Lock className="h-2.5 w-2.5" />
-                      {TIER_LABEL[t.minTier]}
-                    </span>
-                  )}
                 </div>
-                <div className="mt-0.5 text-base font-bold text-zinc-900 dark:text-white">
-                  {t.title}
+                <ul className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                  {available.map((t) => (
+                    <ToolCard key={t.id} tool={t} unlocked />
+                  ))}
+                </ul>
+              </section>
+            ) : (
+              <section className="mt-8 rounded-3xl border-2 border-dashed border-violet-200 bg-violet-50/40 p-6 text-center dark:border-violet-900/40 dark:bg-violet-950/20">
+                <Sparkles className="mx-auto h-7 w-7 text-violet-500" />
+                <div className="mt-2 text-base font-bold text-zinc-900 dark:text-white">
+                  Unlock your first AI tool
                 </div>
-                <div className="mt-1 text-xs text-zinc-500">{t.desc}</div>
-                <div className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-violet-600 group-hover:gap-2">
-                  {unlocked ? "Open" : "Upgrade"}
-                  <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
+                <p className="mt-1 text-xs text-zinc-500">
+                  Pick any tier below to start. You can always upgrade later.
+                </p>
+                <Link
+                  href="/upgrade?reason=tools_hub"
+                  className="mt-3 inline-flex items-center gap-1 rounded-full bg-violet-600 px-4 py-2 text-xs font-bold text-white hover:bg-violet-700"
+                >
+                  See plans
+                  <ArrowRight className="h-3 w-3" />
+                </Link>
+              </section>
+            )}
+
+            {/* ── Locked / upsell ── */}
+            {locked.length > 0 && (
+              <section className="mt-10">
+                <div className="flex items-baseline justify-between">
+                  <h2 className="text-xs font-bold uppercase tracking-widest text-zinc-500">
+                    Upgrade to unlock
+                  </h2>
+                  <Link
+                    href="/upgrade?reason=tools_hub"
+                    className="text-[11px] font-semibold text-violet-600 hover:underline"
+                  >
+                    Compare plans →
+                  </Link>
                 </div>
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
+                <ul className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                  {locked.map((t) => (
+                    <ToolCard key={t.id} tool={t} unlocked={false} />
+                  ))}
+                </ul>
+              </section>
+            )}
+          </>
+        );
+      })()}
     </div>
+  );
+}
+
+function ToolCard({
+  tool,
+  unlocked,
+}: {
+  tool: {
+    id: string;
+    title: string;
+    desc: string;
+    href: string;
+    icon: any;
+    tag: string;
+    color: string;
+    minTier: Tier;
+  };
+  unlocked: boolean;
+}) {
+  const Icon = tool.icon;
+  const href = unlocked ? tool.href : `/upgrade?reason=${tool.id}`;
+  return (
+    <li>
+      <Link
+        href={href}
+        className={`group relative flex h-full flex-col rounded-3xl border bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:bg-slate-900/40 ${
+          unlocked
+            ? "border-zinc-200 hover:border-violet-300 dark:border-slate-800"
+            : "border-zinc-200 dark:border-slate-800"
+        }`}
+      >
+        {!unlocked && (
+          <span
+            className="absolute right-4 top-4 inline-flex items-center gap-1 rounded-full bg-zinc-900/85 px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest text-white"
+            aria-hidden="true"
+          >
+            <Lock className="h-2.5 w-2.5" />
+            {TIER_LABEL[tool.minTier]}
+          </span>
+        )}
+        <div
+          className={`flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br ${tool.color} text-white shadow-sm ${
+            unlocked ? "" : "opacity-70"
+          }`}
+        >
+          <Icon className="h-5 w-5" />
+        </div>
+        <div className="mt-3 text-[10px] font-bold uppercase tracking-widest text-zinc-400">
+          {tool.tag}
+        </div>
+        <div className="mt-0.5 text-base font-bold text-zinc-900 dark:text-white">
+          {tool.title}
+        </div>
+        <div className="mt-1 flex-1 text-xs text-zinc-500">{tool.desc}</div>
+        <div className="mt-4 border-t border-zinc-100 pt-3 dark:border-slate-800">
+          {unlocked ? (
+            <span className="inline-flex items-center gap-1 text-xs font-semibold text-violet-600 group-hover:gap-2">
+              Open
+              <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
+            </span>
+          ) : (
+            <span className="inline-flex items-center gap-1 text-xs font-bold text-zinc-700 dark:text-slate-300 group-hover:text-violet-700">
+              Unlock with {TIER_LABEL[tool.minTier]}
+              <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
+            </span>
+          )}
+        </div>
+      </Link>
+    </li>
   );
 }
