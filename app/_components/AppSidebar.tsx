@@ -13,7 +13,7 @@ import { SidebarUserMenu } from "./SidebarUserMenu";
 import { ShineBorder } from "@/app/components/magicui/shine-border";
 import {
   Home, BarChart3, BookText, ListChecks, Map,
-  Carrot, Trophy, ChevronDown, ChevronRight, ClipboardCheck, GraduationCap, Building2, ClipboardPen, Library, Sparkles, Users, Brain, Zap, ShieldCheck, BookOpenText, Layers,
+  Carrot, Trophy, ChevronDown, ChevronRight, ClipboardCheck, GraduationCap, Building2, ClipboardPen, Library, Sparkles, Users, Brain, Zap, ShieldCheck, BookOpenText, Layers, Mic,
 } from "lucide-react";
 
 /* ─── Nav items ──────────────────────────────────── */
@@ -47,6 +47,7 @@ function getNavSections(
         },
         { href: "/classroom", icon: GraduationCap, label: "Classroom" },
         { href: "/classroom/live", icon: Zap, label: "Live quiz" },
+        { href: "/fluency", icon: Mic, label: "Fluency check" },
         { href: "/classroom/reports", icon: BarChart3, label: "Reports" },
         { href: "/classroom/library", icon: Library, label: "Library" },
         { href: "/classroom/lessons", icon: BookText, label: "Lessons" },
@@ -121,6 +122,7 @@ function getNavSections(
             emphasis: true,
             shimmer: true,
           },
+          { href: "/fluency", icon: Mic, label: "Fluency check" },
           { href: `/assessment-results${q}`, icon: ClipboardCheck, label: "Placement Test" },
           { href: `/analytics${q}`, icon: BarChart3, label: "Analytics" },
         ],
