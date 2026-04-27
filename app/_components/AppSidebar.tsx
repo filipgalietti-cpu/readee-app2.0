@@ -176,7 +176,10 @@ function navLinkClass(pathname: string, href: string, emphasis?: boolean, shimme
 }
 
 function navIconClass(pathname: string, href: string) {
-  return `w-4 h-4 ${isActive(pathname, href) ? "text-indigo-500 dark:text-indigo-400" : "text-zinc-400 dark:text-slate-500"}`;
+  // Inactive icons sit in the brand palette (indigo-300) instead of
+  // generic zinc grey — keeps hierarchy with active (indigo-500) but
+  // makes the whole sidebar read as "Readee" instead of "SaaS dashboard."
+  return `w-4 h-4 ${isActive(pathname, href) ? "text-indigo-500 dark:text-indigo-400" : "text-indigo-300 dark:text-indigo-400/60"}`;
 }
 
 function collapsedIconClass(pathname: string, href: string) {
@@ -186,7 +189,8 @@ function collapsedIconClass(pathname: string, href: string) {
 }
 
 function collapsedIconColor(pathname: string, href: string) {
-  return `w-5 h-5 ${isActive(pathname, href) ? "text-indigo-500 dark:text-indigo-400" : "text-zinc-500 dark:text-slate-400"}`;
+  // Same logic as navIconClass — inactive in soft indigo, active full.
+  return `w-5 h-5 ${isActive(pathname, href) ? "text-indigo-500 dark:text-indigo-400" : "text-indigo-300 dark:text-indigo-400/60"}`;
 }
 
 /* ─── SidebarTooltip ─────────────────────────────── */

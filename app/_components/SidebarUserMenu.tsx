@@ -140,7 +140,7 @@ export function SidebarUserMenu({
             {credits.remaining}
           </div>
         )}
-        <ChevronsUpDown className="w-4 h-4 text-zinc-400 dark:text-slate-500 flex-shrink-0" strokeWidth={1.5} />
+        <ChevronsUpDown className="w-4 h-4 text-indigo-400 dark:text-indigo-400/70 flex-shrink-0" strokeWidth={1.5} />
       </button>
 
       <AnimatePresence>
@@ -186,7 +186,7 @@ export function SidebarUserMenu({
             <div className="py-1 px-1">
               <Link href="/account" onClick={() => setOpen(false)}
                 className="flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm text-zinc-700 dark:text-slate-300 hover:bg-zinc-100 dark:hover:bg-slate-800 transition-colors">
-                <User className="w-4 h-4 text-zinc-400 dark:text-slate-500" strokeWidth={1.5} />
+                <User className="w-4 h-4 text-indigo-400 dark:text-indigo-400/70" strokeWidth={1.5} />
                 Account
               </Link>
               {showCreditIndicator && credits && (
@@ -201,12 +201,12 @@ export function SidebarUserMenu({
               )}
               <Link href="/billing" onClick={() => setOpen(false)}
                 className="flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm text-zinc-700 dark:text-slate-300 hover:bg-zinc-100 dark:hover:bg-slate-800 transition-colors">
-                <CreditCard className="w-4 h-4 text-zinc-400 dark:text-slate-500" strokeWidth={1.5} />
+                <CreditCard className="w-4 h-4 text-indigo-400 dark:text-indigo-400/70" strokeWidth={1.5} />
                 Billing
               </Link>
               <Link href="/notifications" onClick={() => setOpen(false)}
                 className="flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm text-zinc-700 dark:text-slate-300 hover:bg-zinc-100 dark:hover:bg-slate-800 transition-colors">
-                <Bell className="w-4 h-4 text-zinc-400 dark:text-slate-500" strokeWidth={1.5} />
+                <Bell className="w-4 h-4 text-indigo-400 dark:text-indigo-400/70" strokeWidth={1.5} />
                 Notifications
               </Link>
             </div>
@@ -216,7 +216,7 @@ export function SidebarUserMenu({
             <div className="py-1 px-1">
               <button onClick={handleLogout}
                 className="w-full flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm text-zinc-700 dark:text-slate-300 hover:bg-zinc-100 dark:hover:bg-slate-800 transition-colors">
-                <LogOut className="w-4 h-4 text-zinc-400 dark:text-slate-500" strokeWidth={1.5} />
+                <LogOut className="w-4 h-4 text-indigo-400 dark:text-indigo-400/70" strokeWidth={1.5} />
                 Log out
               </button>
             </div>
