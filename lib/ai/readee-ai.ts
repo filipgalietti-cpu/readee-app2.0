@@ -34,6 +34,10 @@ export const MODEL_ID = "gemini-2.5-flash";
 // Was "gemini-2.5-flash-image-preview" — Google retired the preview
 // alias and image gen started 404'ing. The GA name is the same model.
 const IMAGE_MODEL_ID = "gemini-2.5-flash-image";
+// Imagen 4 Ultra — higher fidelity, better prompt adherence, supports
+// readable text-in-image. Gated to Readee+/Teacher Solo+ ("publish
+// quality"). Cost ~$0.06/image vs $0.04 for Flash Image.
+const IMAGE_ULTRA_MODEL_ID = "imagen-4.0-ultra-generate-001";
 const TTS_MODEL_ID = "gemini-2.5-flash-preview-tts";
 const TTS_DEFAULT_VOICE = "Autonoe";
 const TTS_SAMPLE_RATE = 24000;
@@ -820,12 +824,19 @@ export async function generateImageBrief(input: {
 const IMAGE_STYLE_PREFIX =
   "Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors, kid-friendly, no text, no watermarks. ";
 
+export type ImageQuality = "standard" | "ultra";
+
 export async function generateImage(input: {
   teacherId: string;
   prompt: string;
   /** Optional reference image (base64 + mime). Locks the model onto a
    *  visual anchor — used for cross-page character consistency in books. */
   referenceImage?: { data: string; mimeType: string } | null;
+  /** "standard" = Gemini 2.5 Flash Image (~$0.04, default).
+   *  "ultra"   = Imagen 4 Ultra (~$0.06, publish-quality).
+   *  Gating happens at the caller site. Reference-image conditioning
+   *  only works on standard — Imagen doesn't accept image input. */
+  quality?: ImageQuality;
 }): Promise<
   { ok: true; imageUrl: string; storagePath: string; imageBase64: string; mimeType: string } | { ok: false; error: string }
 > {
@@ -855,43 +866,64 @@ export async function generateImage(input: {
 
   try {
     const fullPrompt = IMAGE_SAFETY_PREFIX + IMAGE_STYLE_PREFIX + input.prompt.trim();
-    // If a reference image is provided, send it as inlineData alongside the
-    // text. Gemini 2.5 Flash Image uses the image as a visual anchor for
-    // the new generation — same character, new scene.
-    const contents = input.referenceImage
-      ? [
-          {
-            role: "user",
-            parts: [
-              {
-                inlineData: {
-                  mimeType: input.referenceImage.mimeType,
-                  data: input.referenceImage.data,
+    const useUltra = input.quality === "ultra";
+    // Imagen Ultra path — generateImages, no image conditioning.
+    let response: any;
+    if (useUltra) {
+      response = await (client.models as any).generateImages({
+        model: IMAGE_ULTRA_MODEL_ID,
+        prompt: fullPrompt,
+        config: {
+          numberOfImages: 1,
+          aspectRatio: "1:1",
+        },
+      });
+    } else {
+      // If a reference image is provided, send it as inlineData alongside the
+      // text. Gemini 2.5 Flash Image uses the image as a visual anchor for
+      // the new generation — same character, new scene.
+      const contents = input.referenceImage
+        ? [
+            {
+              role: "user",
+              parts: [
+                {
+                  inlineData: {
+                    mimeType: input.referenceImage.mimeType,
+                    data: input.referenceImage.data,
+                  },
                 },
-              },
-              {
-                text:
-                  "Use the character(s) shown in the reference image. Keep their species, breed, coat color, eye color, and signature features identical. Only change the scene/pose/setting per the description below.\n\n" +
-                  fullPrompt,
-              },
-            ],
-          },
-        ]
-      : fullPrompt;
-    const response = await client.models.generateContent({
-      model: IMAGE_MODEL_ID,
-      contents: contents as any,
-    });
+                {
+                  text:
+                    "Use the character(s) shown in the reference image. Keep their species, breed, coat color, eye color, and signature features identical. Only change the scene/pose/setting per the description below.\n\n" +
+                    fullPrompt,
+                },
+              ],
+            },
+          ]
+        : fullPrompt;
+      response = await client.models.generateContent({
+        model: IMAGE_MODEL_ID,
+        contents: contents as any,
+      });
+    }
 
-    // The image comes back as an inline_data part on the candidate.
-    const parts = (response as any)?.candidates?.[0]?.content?.parts ?? [];
     let imageBase64: string | null = null;
     let mimeType = "image/png";
-    for (const p of parts) {
-      if (p.inlineData?.data) {
-        imageBase64 = p.inlineData.data;
-        mimeType = p.inlineData.mimeType ?? mimeType;
-        break;
+    if (useUltra) {
+      // Imagen response: { generatedImages: [{ image: { imageBytes, mimeType } }] }
+      const gi = (response as any)?.generatedImages?.[0]?.image;
+      imageBase64 = gi?.imageBytes ?? null;
+      mimeType = gi?.mimeType ?? mimeType;
+    } else {
+      // Gemini Flash Image response: parts with inlineData.
+      const parts = (response as any)?.candidates?.[0]?.content?.parts ?? [];
+      for (const p of parts) {
+        if (p.inlineData?.data) {
+          imageBase64 = p.inlineData.data;
+          mimeType = p.inlineData.mimeType ?? mimeType;
+          break;
+        }
       }
     }
     if (!imageBase64) {
@@ -929,12 +961,14 @@ export async function generateImage(input: {
     await logUsage({
       teacherId: input.teacherId,
       kind: "image_generation",
-      model: IMAGE_MODEL_ID,
+      model: useUltra ? IMAGE_ULTRA_MODEL_ID : IMAGE_MODEL_ID,
       inputTokens: response.usageMetadata?.promptTokenCount,
       outputTokens: response.usageMetadata?.candidatesTokenCount,
-      creditsUsed: CREDIT_COST.image_generation,
+      // Ultra costs ~50% more on Google's side. Charge teacher 2x credits
+      // (16 vs 8) so margin stays consistent.
+      creditsUsed: useUltra ? CREDIT_COST.image_generation * 2 : CREDIT_COST.image_generation,
       success: true,
-      requestSummary: input.prompt.slice(0, 200),
+      requestSummary: `${useUltra ? "[ultra] " : ""}${input.prompt.slice(0, 200)}`,
     });
 
     return { ok: true, imageUrl, storagePath, imageBase64, mimeType };
