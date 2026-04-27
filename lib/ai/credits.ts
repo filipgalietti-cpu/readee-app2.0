@@ -51,8 +51,13 @@ export const CREDIT_COST: Record<AiKind, number> = {
 /** Max credits a teacher can consume in any rolling 30-day window. */
 export const MONTHLY_CREDIT_LIMIT = 500;
 
-/** Max credits inside any rolling 60-minute window. Abuse control only. */
-export const HOURLY_CREDIT_LIMIT = 80;
+/** Max credits inside any rolling 60-minute window.
+ *  Set equal to the monthly cap on purpose: we WANT teachers to burn
+ *  through their allowance as fast as they like — faster burn = sooner
+ *  credit-pack purchase. The hourly cap exists only to catch a runaway
+ *  code loop (which would have to drain an entire month in 60 minutes
+ *  to trip). Monthly cap is the real economic ceiling. */
+export const HOURLY_CREDIT_LIMIT = 500;
 
 /**
  * Estimated USD cost per credit — used for internal budgeting views and

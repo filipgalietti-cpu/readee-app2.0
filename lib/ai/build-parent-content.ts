@@ -30,7 +30,10 @@ import { assertSafePrompt } from "@/lib/ai/safety";
 import { getTopUpBalance } from "@/lib/ai/credit-balance";
 
 export const MONTHLY_PARENT_CREDIT_LIMIT = 200;
-export const HOURLY_PARENT_CREDIT_LIMIT = 60;
+// Hourly cap == monthly cap on purpose — see lib/ai/credits.ts. We
+// want fast burn (drives top-up purchases). This only catches a
+// runaway loop, not legitimate batch usage.
+export const HOURLY_PARENT_CREDIT_LIMIT = 200;
 
 export type ParentAiBrief = {
   childId: string;
