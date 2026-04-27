@@ -1,16 +1,17 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
-import { requireProfile } from "@/lib/auth/helpers";
+import { checkTeacherTier } from "@/lib/plan/teacher-gate";
 import { draftIepProgressNote } from "@/lib/ai/build-iep-note";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 export async function POST(req: Request) {
-  const profile = await requireProfile();
-  if (profile.role !== "educator") {
-    return NextResponse.json({ ok: false, error: "Educators only." }, { status: 403 });
+  const gate = await checkTeacherTier({ min: "school" });
+  if (!gate.ok) {
+    return NextResponse.json({ ok: false, error: gate.error }, { status: gate.status });
   }
+  const profile = { id: gate.profileId };
 
   let body: any;
   try {

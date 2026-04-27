@@ -1,13 +1,11 @@
 import { Wand2 } from "lucide-react";
-import { notFound } from "next/navigation";
-import { requireProfile } from "@/lib/auth/helpers";
+import { requireTeacherTier } from "@/lib/plan/teacher-gate";
 import CalibratedItemForm from "./_components/CalibratedItemForm";
 
 export const dynamic = "force-dynamic";
 
 export default async function CalibratedItemPage() {
-  const profile = await requireProfile();
-  if (profile.role !== "educator") notFound();
+  await requireTeacherTier({ min: "teacher_solo", reason: "calibrated_items" });
 
   return (
     <div className="mx-auto max-w-2xl px-6 py-10">

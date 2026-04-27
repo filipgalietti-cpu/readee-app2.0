@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { createClient } from "@/lib/supabase/server";
+import { checkParentReadeePlus } from "@/lib/plan/teacher-gate";
 import { translateText, SUPPORTED_LANGUAGES, type LanguageCode } from "@/lib/ai/translate";
 
 export const runtime = "nodejs";
@@ -8,11 +8,12 @@ export const dynamic = "force-dynamic";
 const CODES = SUPPORTED_LANGUAGES.map((l) => l.code) as LanguageCode[];
 
 export async function POST(req: Request) {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
-  if (!user) {
-    return NextResponse.json({ ok: false, error: "Sign in first." }, { status: 401 });
+  // Any paid tier (parent Readee+ or teacher) gets translate.
+  const gate = await checkParentReadeePlus();
+  if (!gate.ok) {
+    return NextResponse.json({ ok: false, error: gate.error }, { status: gate.status });
   }
+  const user = { id: gate.userId };
 
   let body: { text?: string; lang?: string };
   try {

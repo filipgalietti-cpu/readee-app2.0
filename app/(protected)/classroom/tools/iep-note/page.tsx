@@ -1,14 +1,13 @@
 import { Notebook } from "lucide-react";
-import { notFound } from "next/navigation";
-import { requireProfile } from "@/lib/auth/helpers";
 import { createClient } from "@/lib/supabase/server";
+import { requireTeacherTier } from "@/lib/plan/teacher-gate";
 import IepNoteForm from "./_components/IepNoteForm";
 
 export const dynamic = "force-dynamic";
 
 export default async function IepNotePage() {
-  const profile = await requireProfile();
-  if (profile.role !== "educator") notFound();
+  // School/district-tier feature: SPED is sold into the District SKU.
+  const profile = await requireTeacherTier({ min: "school", reason: "iep_note" });
 
   const supabase = await createClient();
   const { data: classrooms } = await supabase

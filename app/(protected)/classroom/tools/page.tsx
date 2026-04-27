@@ -13,10 +13,23 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { requireProfile } from "@/lib/auth/helpers";
+import { hasMinTier, type TeacherTier } from "@/lib/plan/teacher-gate";
+import { Lock } from "lucide-react";
 
 export const dynamic = "force-dynamic";
 
-const TOOLS = [
+type Tier = "premium" | "teacher_solo" | "school";
+
+const TOOLS: {
+  id: string;
+  title: string;
+  desc: string;
+  href: string;
+  icon: any;
+  tag: string;
+  color: string;
+  minTier: Tier;
+}[] = [
   {
     id: "buddy",
     title: "Reading Buddy",
@@ -25,6 +38,7 @@ const TOOLS = [
     icon: Mic2,
     tag: "Voice",
     color: "from-violet-500 to-indigo-600",
+    minTier: "premium",
   },
   {
     id: "homework-scan",
@@ -34,6 +48,7 @@ const TOOLS = [
     icon: Camera,
     tag: "Vision",
     color: "from-emerald-500 to-teal-600",
+    minTier: "premium",
   },
   {
     id: "writing",
@@ -43,6 +58,7 @@ const TOOLS = [
     icon: ClipboardCheck,
     tag: "Assess",
     color: "from-rose-500 to-pink-600",
+    minTier: "premium",
   },
   {
     id: "iep",
@@ -52,6 +68,7 @@ const TOOLS = [
     icon: Notebook,
     tag: "SPED",
     color: "from-amber-500 to-orange-600",
+    minTier: "school",
   },
   {
     id: "coach",
@@ -61,6 +78,7 @@ const TOOLS = [
     icon: Brain,
     tag: "Observer",
     color: "from-blue-500 to-cyan-600",
+    minTier: "teacher_solo",
   },
   {
     id: "roster",
@@ -70,6 +88,7 @@ const TOOLS = [
     icon: FileSpreadsheet,
     tag: "Admin",
     color: "from-zinc-500 to-zinc-700",
+    minTier: "school",
   },
   {
     id: "translate",
@@ -79,6 +98,7 @@ const TOOLS = [
     icon: Languages,
     tag: "ELL",
     color: "from-fuchsia-500 to-pink-600",
+    minTier: "premium",
   },
   {
     id: "calibrated",
@@ -88,10 +108,19 @@ const TOOLS = [
     icon: Wand2,
     tag: "Assess",
     color: "from-indigo-500 to-violet-600",
+    minTier: "teacher_solo",
   },
 ];
 
+const TIER_LABEL: Record<Tier, string> = {
+  premium: "Readee+",
+  teacher_solo: "Teacher Solo",
+  school: "School",
+};
+
 export default async function ToolsHubPage() {
+  // Hub itself is open to any educator (so free teachers can see the
+  // upsell). Each tool page enforces its own tier minimum.
   const profile = await requireProfile();
   if (profile.role !== "educator") notFound();
 
@@ -113,11 +142,14 @@ export default async function ToolsHubPage() {
       <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {TOOLS.map((t) => {
           const Icon = t.icon;
+          const userPlan = (profile as any).plan as TeacherTier | undefined;
+          const unlocked = hasMinTier(userPlan, t.minTier);
+          const href = unlocked ? t.href : `/upgrade?reason=${t.id}`;
           return (
             <li key={t.id}>
               <Link
-                href={t.href}
-                className="group block h-full rounded-3xl border border-zinc-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-violet-300 hover:shadow-md dark:border-slate-800 dark:bg-slate-900/40"
+                href={href}
+                className="group relative block h-full rounded-3xl border border-zinc-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-violet-300 hover:shadow-md dark:border-slate-800 dark:bg-slate-900/40"
               >
                 <div className={`flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br ${t.color} text-white shadow-sm`}>
                   <Icon className="h-5 w-5" />
@@ -126,13 +158,19 @@ export default async function ToolsHubPage() {
                   <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-400">
                     {t.tag}
                   </span>
+                  {!unlocked && (
+                    <span className="inline-flex items-center gap-0.5 rounded-full bg-violet-600 px-2 py-0.5 text-[9px] font-bold text-white">
+                      <Lock className="h-2.5 w-2.5" />
+                      {TIER_LABEL[t.minTier]}
+                    </span>
+                  )}
                 </div>
                 <div className="mt-0.5 text-base font-bold text-zinc-900 dark:text-white">
                   {t.title}
                 </div>
                 <div className="mt-1 text-xs text-zinc-500">{t.desc}</div>
                 <div className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-violet-600 group-hover:gap-2">
-                  Open
+                  {unlocked ? "Open" : "Upgrade"}
                   <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
                 </div>
               </Link>

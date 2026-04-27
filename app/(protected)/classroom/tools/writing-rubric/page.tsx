@@ -1,13 +1,11 @@
 import { ClipboardCheck } from "lucide-react";
-import { notFound } from "next/navigation";
-import { requireProfile } from "@/lib/auth/helpers";
+import { requireTeacherTier } from "@/lib/plan/teacher-gate";
 import WritingRubricForm from "./_components/WritingRubricForm";
 
 export const dynamic = "force-dynamic";
 
 export default async function WritingRubricPage() {
-  const profile = await requireProfile();
-  if (profile.role !== "educator") notFound();
+  await requireTeacherTier({ min: "premium", reason: "writing_rubric" });
 
   return (
     <div className="mx-auto max-w-2xl px-6 py-10">

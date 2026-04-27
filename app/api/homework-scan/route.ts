@@ -1,16 +1,16 @@
 import { NextResponse } from "next/server";
-import { createClient } from "@/lib/supabase/server";
+import { checkParentReadeePlus } from "@/lib/plan/teacher-gate";
 import { scanHomeworkImage } from "@/lib/ai/build-homework-scan";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 export async function POST(req: Request) {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
-  if (!user) {
-    return NextResponse.json({ ok: false, error: "Sign in first." }, { status: 401 });
+  const gate = await checkParentReadeePlus();
+  if (!gate.ok) {
+    return NextResponse.json({ ok: false, error: gate.error }, { status: gate.status });
   }
+  const user = { id: gate.userId };
 
   const form = await req.formData();
   const file = form.get("image");

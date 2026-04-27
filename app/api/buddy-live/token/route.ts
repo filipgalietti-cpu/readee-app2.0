@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { GoogleGenAI } from "@google/genai";
-import { createClient } from "@/lib/supabase/server";
+import { checkParentReadeePlus } from "@/lib/plan/teacher-gate";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -32,10 +32,9 @@ const BUDDY_SYSTEM_PROMPT = `You are Readee, a warm, patient real-time reading b
 Tone: warm, encouraging, bunny-mascot energy. Speak like a friend.`;
 
 export async function POST(req: Request) {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
-  if (!user) {
-    return NextResponse.json({ ok: false, error: "Sign in first." }, { status: 401 });
+  const gate = await checkParentReadeePlus();
+  if (!gate.ok) {
+    return NextResponse.json({ ok: false, error: gate.error }, { status: gate.status });
   }
 
   const apiKey = process.env.GEMINI_API_KEY;

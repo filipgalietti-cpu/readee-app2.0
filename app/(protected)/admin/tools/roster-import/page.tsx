@@ -1,13 +1,12 @@
 import { FileSpreadsheet } from "lucide-react";
-import { notFound } from "next/navigation";
-import { requireProfile } from "@/lib/auth/helpers";
+import { requireTeacherTier } from "@/lib/plan/teacher-gate";
 import RosterImporter from "./_components/RosterImporter";
 
 export const dynamic = "force-dynamic";
 
 export default async function RosterImportPage() {
-  const profile = await requireProfile();
-  if (profile.role !== "educator") notFound();
+  // School/district admin tool — saves 30 min/school onboarding cost.
+  await requireTeacherTier({ min: "school", reason: "roster_import" });
 
   return (
     <div className="mx-auto max-w-3xl px-6 py-10">

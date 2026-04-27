@@ -1,16 +1,17 @@
 import { NextResponse } from "next/server";
-import { createClient } from "@/lib/supabase/server";
+import { checkParentReadeePlus } from "@/lib/plan/teacher-gate";
 import { assessWriting } from "@/lib/ai/build-writing-assessment";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 export async function POST(req: Request) {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
-  if (!user) {
-    return NextResponse.json({ ok: false, error: "Sign in first." }, { status: 401 });
+  // Either tier (parent Readee+ or teacher_solo+) gets writing rubric.
+  const gate = await checkParentReadeePlus();
+  if (!gate.ok) {
+    return NextResponse.json({ ok: false, error: gate.error }, { status: gate.status });
   }
+  const user = { id: gate.userId };
   let body: { prompt?: string; response?: string; gradeLevel?: string };
   try {
     body = await req.json();

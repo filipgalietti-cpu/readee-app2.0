@@ -1,15 +1,16 @@
 import { NextResponse } from "next/server";
-import { requireProfile } from "@/lib/auth/helpers";
+import { checkTeacherTier } from "@/lib/plan/teacher-gate";
 import { generateCalibratedItem } from "@/lib/ai/build-calibrated-items";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 export async function POST(req: Request) {
-  const profile = await requireProfile();
-  if (profile.role !== "educator") {
-    return NextResponse.json({ ok: false, error: "Educators only." }, { status: 403 });
+  const gate = await checkTeacherTier({ min: "teacher_solo" });
+  if (!gate.ok) {
+    return NextResponse.json({ ok: false, error: gate.error }, { status: gate.status });
   }
+  const profile = { id: gate.profileId };
   let body: any;
   try {
     body = await req.json();
