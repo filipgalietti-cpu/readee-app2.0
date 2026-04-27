@@ -9,6 +9,7 @@ import g2Json from "@/app/data/2nd-grade-standards-questions.json";
 import g3Json from "@/app/data/3rd-grade-standards-questions.json";
 import g4Json from "@/app/data/4th-grade-standards-questions.json";
 import PrintButton from "./_components/PrintButton";
+import LearningPathCard from "@/app/_components/LearningPathCard";
 
 export const dynamic = "force-dynamic";
 
@@ -229,6 +230,15 @@ export default async function StudentDetailPage({
           </div>
         </div>
       </header>
+
+      {/* Personalized AI learning path */}
+      <div className="mt-6 print:hidden">
+        <LearningPathCard
+          childId={c.id}
+          childFirstName={c.first_name ?? null}
+          variant="teacher"
+        />
+      </div>
 
       {/* Summary grid */}
       <section className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4 print:grid-cols-4">

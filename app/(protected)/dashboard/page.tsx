@@ -24,6 +24,7 @@ import type { ReactNode } from "react";
 import { getShopIcon } from "@/lib/data/shop-icons";
 import TeacherAssignmentsCard from "@/app/_components/TeacherAssignmentsCard";
 import DailyQuestionCard from "@/app/_components/DailyQuestionCard";
+import LearningPathCard from "@/app/_components/LearningPathCard";
 
 /* ─── Count-up animation hook ─────────────────────────── */
 
@@ -953,6 +954,15 @@ function ChildDashboard({
             <BookOpen className="w-5 h-5 text-indigo-500 group-hover:animate-subtleBounce" strokeWidth={1.5} />
             <span ref={storiesCount.ref} className="text-lg font-extrabold text-zinc-900 dark:text-slate-100">{storiesCount.value}</span>
           </Link>
+        </motion.div>
+
+        {/* ── Personalized Readee path (AI from placement test) ── */}
+        <motion.div variants={slideUp}>
+          <LearningPathCard
+            childId={child.id}
+            childFirstName={child.first_name ?? null}
+            variant="parent"
+          />
         </motion.div>
 
         {/* ── Today's Readee — daily question ritual ── */}

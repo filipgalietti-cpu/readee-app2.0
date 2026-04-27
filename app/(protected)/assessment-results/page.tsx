@@ -43,6 +43,7 @@ function useCountUp(target: number, duration = 1200, delay = 300) {
 }
 
 import manifestRaw from "@/scripts/assessment_mixed_manifest.json";
+import LearningPathCard from "@/app/_components/LearningPathCard";
 import bankRaw from "@/lib/assessment/mixed-bank-k4.json";
 
 /* ── Types ─────────────────────────────────────────── */
@@ -467,6 +468,22 @@ function AssessmentResultsContent() {
       </motion.div>
 
       {/* Actions */}
+      {/* AI personalized path — built from THIS placement test */}
+      {childId && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.35 }}
+          className="mb-4"
+        >
+          <LearningPathCard
+            childId={childId}
+            childFirstName={child?.first_name ?? null}
+            variant="parent"
+          />
+        </motion.div>
+      )}
+
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
