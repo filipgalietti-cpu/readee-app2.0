@@ -819,21 +819,42 @@ export async function assignFluencyPassage(input: {
 export async function assignLeveledPassage(input: {
   passageId: string;
   level: "easy" | "on_level" | "advanced";
-  classroomIds: string[];
+  classroomId: string;
   dueAt?: string | null;
 }): Promise<
-  | { ok: true; quizId: string; assignedTo: number }
+  | { ok: true; quizId: string; classroomId: string }
   | { ok: false; error: string }
 > {
   const profile = await requireProfile();
   if (profile.role !== "educator") {
     return { ok: false, error: "Only teachers can assign." };
   }
-  if (!input.classroomIds || input.classroomIds.length === 0) {
-    return { ok: false, error: "Pick at least one classroom." };
+  if (!input.classroomId) {
+    return { ok: false, error: "Pick a classroom." };
   }
 
   const supabase = await createClient();
+
+  // Pre-check: same passage already assigned to this class at any level?
+  // Block with an explicit message naming the conflicting level so the
+  // teacher knows what to do (unassign the old one, or pick a different
+  // class). This is enforced at the DB layer too via the unique index.
+  const { data: existing } = await supabase
+    .from("assignments")
+    .select("id, source_level")
+    .eq("classroom_id", input.classroomId)
+    .eq("source_passage_id", input.passageId)
+    .maybeSingle();
+  if (existing) {
+    const lvl = (existing as any).source_level as string | null;
+    const niceLvl =
+      lvl === "on_level" ? "on level" : lvl === "easy" ? "easy" : lvl === "advanced" ? "advanced" : "another level";
+    return {
+      ok: false,
+      error: `This class already has this passage assigned at ${niceLvl}. Unassign that first or pick a different class.`,
+    };
+  }
+
   const { data: passage } = await supabase
     .from("differentiated_passages")
     .select("id, title, versions, shared_image_url")
@@ -890,25 +911,35 @@ export async function assignLeveledPassage(input: {
     position += 1;
   }
 
-  // 4) Per-classroom assignments.
-  let assigned = 0;
-  for (const classroomId of input.classroomIds) {
-    const { error } = await supabase.from("assignments").insert({
-      classroom_id: classroomId,
-      assigned_by: profile.id,
-      kind: "custom_quiz",
-      source_id: quizId,
-      title: `${p.title} (${input.level === "on_level" ? "on level" : input.level})`,
-      due_at: input.dueAt ?? null,
-      audio_prompt_enabled: true,
-      audio_choices_enabled: false,
-      shuffle_questions: false,
-      shuffle_choices: false,
-      reveal_correct_immediately: true,
-    });
-    if (!error) assigned += 1;
-    revalidatePath(`/classroom/${classroomId}`);
+  // 4) Single-classroom assignment with passage + level recorded for
+  //    duplicate detection on future calls.
+  const { error } = await supabase.from("assignments").insert({
+    classroom_id: input.classroomId,
+    assigned_by: profile.id,
+    kind: "custom_quiz",
+    source_id: quizId,
+    source_passage_id: input.passageId,
+    source_level: input.level,
+    title: `${p.title} (${input.level === "on_level" ? "on level" : input.level})`,
+    due_at: input.dueAt ?? null,
+    audio_prompt_enabled: true,
+    audio_choices_enabled: false,
+    shuffle_questions: false,
+    shuffle_choices: false,
+    reveal_correct_immediately: true,
+  });
+  if (error) {
+    // Race against the unique index — fall back to friendly message.
+    if ((error.message ?? "").includes("assignments_classroom_passage_uniq")) {
+      return {
+        ok: false,
+        error: "This class already has this passage assigned. Unassign first.",
+      };
+    }
+    return { ok: false, error: error.message };
   }
+  revalidatePath(`/classroom/${input.classroomId}`);
+  revalidatePath(`/classroom/leveled/${input.passageId}`);
 
-  return { ok: true, quizId, assignedTo: assigned };
+  return { ok: true, quizId, classroomId: input.classroomId };
 }

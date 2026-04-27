@@ -30,6 +30,7 @@ import { runFullQuizQc } from "@/lib/ai/qc";
 import { CREDIT_COST, MONTHLY_CREDIT_LIMIT } from "@/lib/ai/credits";
 import { trackError } from "@/lib/observability/track";
 import { getPattern } from "@/lib/ai/phonics-patterns";
+import { extractCharacterCard } from "@/lib/ai/character-card";
 
 export type BookBrief = {
   title: string;
@@ -146,77 +147,6 @@ Generate a decodable book following the schema. Each page's text should be 1-2 s
   }
 }
 
-/**
- * Reads the generated book text and pulls out a detailed visual
- * description of the main character. Used to (a) generate a clean
- * "character card" reference image, and (b) seed every page prompt
- * with consistent character DNA so the cat looks like the same cat
- * on every page.
- */
-async function extractCharacterCard(input: {
-  teacherId: string;
-  title: string;
-  pages: string[];
-}): Promise<
-  | { ok: true; description: string; cardPrompt: string }
-  | { ok: false; error: string }
-> {
-  let client: GoogleGenAI;
-  try {
-    client = getClient();
-  } catch (e: any) {
-    return { ok: false, error: e.message ?? "AI not configured." };
-  }
-  const text = `Title: ${input.title}\n\n${input.pages.map((p, i) => `Page ${i + 1}: ${p}`).join("\n")}`;
-  const system = `You design a visual "character card" for a children's picture book so the same character looks identical across every page.
-Read the book and identify the SINGLE main character. Return:
-- description: 2-3 short sentences capturing the character's species/type, body shape, fur/skin/feather color, eye color, distinctive features (spots, stripes, accessories like a red scarf or yellow hat). Be specific so a different illustrator could draw the same character. If no animal/character is clearly the protagonist, describe a generic kid-friendly stand-in.
-- card_prompt: a one-sentence prompt for a clean character portrait — just the character standing centered against a soft solid pastel background, no scene, no other characters, no text. Use the description.`;
-  const schema = {
-    type: Type.OBJECT,
-    properties: {
-      description: { type: Type.STRING },
-      card_prompt: { type: Type.STRING },
-    },
-    required: ["description", "card_prompt"],
-  };
-  try {
-    const response = await client.models.generateContent({
-      model: MODEL_ID,
-      contents: text,
-      config: {
-        systemInstruction: system,
-        responseMimeType: "application/json",
-        responseSchema: schema,
-        temperature: 0.4,
-      },
-    });
-    const parsed = JSON.parse(response.text ?? "{}") as {
-      description?: string;
-      card_prompt?: string;
-    };
-    const description = (parsed.description ?? "").trim();
-    const cardPrompt = (parsed.card_prompt ?? "").trim();
-    if (!description || !cardPrompt) {
-      return { ok: false, error: "Empty character card." };
-    }
-    await logUsage({
-      teacherId: input.teacherId,
-      kind: "passage_generation",
-      model: MODEL_ID,
-      inputTokens: response.usageMetadata?.promptTokenCount,
-      outputTokens: response.usageMetadata?.candidatesTokenCount,
-      creditsUsed: CREDIT_COST.passage_generation,
-      success: true,
-      requestSummary: `character_card: ${input.title.slice(0, 80)}`,
-    });
-    return { ok: true, description, cardPrompt };
-  } catch (e: any) {
-    trackError(e, { route: "build-book.extractCharacterCard", userId: input.teacherId });
-    return { ok: false, error: e.message ?? "Character card failed." };
-  }
-}
-
 function validateBrief(brief: BookBrief): string | null {
   if (!brief.phonicsPattern?.trim()) return "Pick a phonics pattern.";
   if (!brief.patternLabel?.trim()) return "Pattern label missing.";
@@ -316,12 +246,12 @@ export async function buildBook(input: {
     const cardRes = await extractCharacterCard({
       teacherId,
       title: textRes.title,
-      pages: textRes.pages,
+      units: textRes.pages,
+      contextTag: "book",
     });
-    if (cardRes.ok) {
+    if (cardRes.ok && cardRes.hasCharacter) {
       creditsUsed += CREDIT_COST.passage_generation;
       characterDescription = cardRes.description;
-      // Generate a clean portrait of the character on a plain background.
       const refRes = await generateImage({
         teacherId,
         prompt: `${cardRes.cardPrompt} ${cardRes.description} Centered, full body visible, soft pastel background, no other characters, no text or labels.`,
@@ -332,7 +262,10 @@ export async function buildBook(input: {
       } else {
         warnings.push(`Character card: ${refRes.error}`);
       }
-    } else {
+    } else if (cardRes.ok && !cardRes.hasCharacter) {
+      // Book has no clear recurring character — skip reference image.
+      creditsUsed += CREDIT_COST.passage_generation;
+    } else if (!cardRes.ok) {
       warnings.push(`Character card: ${cardRes.error}`);
     }
   }

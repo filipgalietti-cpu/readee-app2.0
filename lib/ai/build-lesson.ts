@@ -25,6 +25,7 @@ import {
   settleBatchAgainstTopUp,
   type GeneratedMCQ,
 } from "@/lib/ai/readee-ai";
+import { extractCharacterCard } from "@/lib/ai/character-card";
 import { runFullQuizQc } from "@/lib/ai/qc";
 import {
   CREDIT_COST,
@@ -70,6 +71,9 @@ export function estimateLessonCredits(brief: LessonBrief): number {
     // image_scene is produced inline by the lesson generator, so we
     // skip the per-slide image_brief call — just pay for the image.
     credits += brief.slideCount * CREDIT_COST.image_generation;
+    // Character card: 1 text call + 1 reference image (only spent if a
+    // recurring character is detected — otherwise just the text call).
+    credits += CREDIT_COST.passage_generation + CREDIT_COST.image_generation;
   }
   if (brief.media.perSlideAudio) {
     credits += brief.slideCount * CREDIT_COST.tts_generation;
@@ -149,7 +153,41 @@ export async function buildLesson(input: {
       .eq("id", lessonId);
   }
 
-  // 3) Per-slide media (image + audio). image_scene comes pre-written
+  // 3) Character card — same pattern as books. If the slideshow has a
+  //    recurring character, generate a reference portrait and anchor
+  //    every slide image to it. For purely informational/concept lessons
+  //    with no protagonist, the helper returns hasCharacter=false and
+  //    we skip the reference step.
+  let characterDescription = "";
+  let referenceImage: { data: string; mimeType: string } | null = null;
+  if (brief.media.perSlideImage) {
+    const cardRes = await extractCharacterCard({
+      teacherId,
+      title: passageTitle,
+      units: lessonSlides.map((s) => s.body),
+      contextTag: "lesson",
+    });
+    if (cardRes.ok && cardRes.hasCharacter) {
+      creditsUsed += CREDIT_COST.passage_generation;
+      characterDescription = cardRes.description;
+      const refRes = await generateImage({
+        teacherId,
+        prompt: `${cardRes.cardPrompt} ${cardRes.description} Centered, full body visible, soft pastel background, no other characters, no text or labels.`,
+      });
+      if (refRes.ok) {
+        creditsUsed += CREDIT_COST.image_generation;
+        referenceImage = { data: refRes.imageBase64, mimeType: refRes.mimeType };
+      } else {
+        warnings.push(`Character card: ${refRes.error}`);
+      }
+    } else if (cardRes.ok && !cardRes.hasCharacter) {
+      creditsUsed += CREDIT_COST.passage_generation;
+    } else if (!cardRes.ok) {
+      warnings.push(`Character card: ${cardRes.error}`);
+    }
+  }
+
+  // 4) Per-slide media (image + audio). image_scene comes pre-written
   //    by the lesson generator, so no separate image-brief call.
   const slides: Slide[] = [];
   for (let i = 0; i < lessonSlides.length; i++) {
@@ -158,10 +196,17 @@ export async function buildLesson(input: {
     let audioUrl: string | null = null;
 
     if (s.body && brief.media.perSlideImage) {
-      const imagePrompt = s.image_scene && s.image_scene.length > 10
+      const baseScene = s.image_scene && s.image_scene.length > 10
         ? s.image_scene
         : `Scene from a children's lesson titled "${passageTitle}": ${s.body.slice(0, 180)}`;
-      const imgRes = await generateImage({ teacherId, prompt: imagePrompt });
+      const imagePrompt = characterDescription
+        ? `Character: ${characterDescription}\nScene: ${baseScene}`
+        : baseScene;
+      const imgRes = await generateImage({
+        teacherId,
+        prompt: imagePrompt,
+        referenceImage,
+      });
       if (imgRes.ok) {
         imageUrl = imgRes.imageUrl;
         creditsUsed += CREDIT_COST.image_generation;

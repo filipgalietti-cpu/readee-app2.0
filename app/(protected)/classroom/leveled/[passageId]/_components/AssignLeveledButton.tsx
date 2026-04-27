@@ -13,8 +13,19 @@ import {
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { assignLeveledPassage } from "@/app/(protected)/classroom/actions";
 
-type Classroom = { id: string; name: string };
 type Level = "easy" | "on_level" | "advanced";
+type Classroom = {
+  id: string;
+  name: string;
+  /** If this passage is already assigned to that class, the level it's at. */
+  existingLevel: Level | null;
+};
+
+const LEVEL_LABEL: Record<Level, string> = {
+  easy: "Easy",
+  on_level: "On level",
+  advanced: "Advanced",
+};
 
 export default function AssignLeveledButton({
   passageId,
@@ -24,9 +35,10 @@ export default function AssignLeveledButton({
   defaultLevel: Level;
 }) {
   const [classrooms, setClassrooms] = useState<Classroom[]>([]);
+  const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const [level, setLevel] = useState<Level>(defaultLevel);
-  const [selected, setSelected] = useState<Set<string>>(new Set());
+  const [classroomId, setClassroomId] = useState<string>("");
   const [dueAt, setDueAt] = useState("");
   const [pending, start] = useTransition();
   const [err, setErr] = useState<string | null>(null);
@@ -37,32 +49,51 @@ export default function AssignLeveledButton({
   }, [defaultLevel]);
 
   useEffect(() => {
+    if (!open) return;
     let cancelled = false;
+    setLoading(true);
     async function load() {
       const supabase = supabaseBrowser();
       const {
         data: { user },
       } = await supabase.auth.getUser();
-      if (!user) return;
-      const { data: rows } = await supabase
-        .from("classrooms")
-        .select("id, name")
-        .eq("teacher_id", user.id)
-        .order("created_at", { ascending: true });
-      if (!cancelled) setClassrooms((rows ?? []) as Classroom[]);
+      if (!user) {
+        if (!cancelled) setLoading(false);
+        return;
+      }
+      const [{ data: rows }, { data: assigns }] = await Promise.all([
+        supabase
+          .from("classrooms")
+          .select("id, name")
+          .eq("teacher_id", user.id)
+          .order("created_at", { ascending: true }),
+        supabase
+          .from("assignments")
+          .select("classroom_id, source_level")
+          .eq("source_passage_id", passageId),
+      ]);
+      const existingByClass = new Map<string, Level>();
+      for (const a of (assigns ?? []) as any[]) {
+        if (a.source_level) existingByClass.set(a.classroom_id, a.source_level as Level);
+      }
+      const list: Classroom[] = ((rows ?? []) as any[]).map((c) => ({
+        id: c.id as string,
+        name: c.name as string,
+        existingLevel: existingByClass.get(c.id) ?? null,
+      }));
+      if (!cancelled) {
+        setClassrooms(list);
+        // Pre-select first non-conflicting class if any
+        const firstFree = list.find((c) => !c.existingLevel);
+        if (firstFree) setClassroomId(firstFree.id);
+        setLoading(false);
+      }
     }
     load();
     return () => {
       cancelled = true;
     };
-  }, []);
-
-  function toggle(id: string) {
-    const next = new Set(selected);
-    if (next.has(id)) next.delete(id);
-    else next.add(id);
-    setSelected(next);
-  }
+  }, [open, passageId]);
 
   function close() {
     setOpen(false);
@@ -71,8 +102,8 @@ export default function AssignLeveledButton({
   }
 
   function submit() {
-    if (selected.size === 0) {
-      setErr("Pick at least one classroom.");
+    if (!classroomId) {
+      setErr("Pick a classroom.");
       return;
     }
     setErr(null);
@@ -82,18 +113,26 @@ export default function AssignLeveledButton({
       const res = await assignLeveledPassage({
         passageId,
         level,
-        classroomIds: Array.from(selected),
+        classroomId,
         dueAt: due,
       });
       if (!res.ok) {
         setErr(res.error);
         return;
       }
-      setDoneMsg(
-        `Assigned to ${res.assignedTo} classroom${res.assignedTo === 1 ? "" : "s"}.`,
+      const cls = classrooms.find((c) => c.id === classroomId);
+      setDoneMsg(`Assigned to ${cls?.name ?? "class"} at ${LEVEL_LABEL[level]}.`);
+      // Reflect new state locally so the dropdown shows the lock immediately
+      setClassrooms((prev) =>
+        prev.map((c) =>
+          c.id === classroomId ? { ...c, existingLevel: level } : c,
+        ),
       );
     });
   }
+
+  const selected = classrooms.find((c) => c.id === classroomId) ?? null;
+  const conflict = selected?.existingLevel ?? null;
 
   return (
     <>
@@ -124,14 +163,14 @@ export default function AssignLeveledButton({
               Assign leveled passage
             </h3>
             <p className="mt-0.5 text-sm text-zinc-500">
-              Pick which reading level to push to each class — easy, on level,
-              or advanced.
+              One class, one level. A class can&apos;t get two versions of
+              the same passage at once.
             </p>
 
             <label className="mt-4 block text-xs font-semibold text-zinc-500">
               <span className="flex items-center gap-1.5">
                 <Layers className="h-3 w-3" />
-                Reading level to assign
+                Reading level
               </span>
               <div className="mt-2 inline-flex w-full rounded-full border border-zinc-200 bg-zinc-50 p-0.5 text-xs font-semibold">
                 {(["easy", "on_level", "advanced"] as Level[]).map((l) => (
@@ -145,46 +184,56 @@ export default function AssignLeveledButton({
                         : "text-zinc-500"
                     }`}
                   >
-                    {l === "on_level" ? "On level" : l[0].toUpperCase() + l.slice(1)}
+                    {LEVEL_LABEL[l]}
                   </button>
                 ))}
               </div>
             </label>
 
-            <div className="mt-4 space-y-1.5">
-              {classrooms.length === 0 ? (
-                <div className="rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800">
+            <label className="mt-4 block text-xs font-semibold text-zinc-500">
+              Classroom
+              {loading ? (
+                <div className="mt-1 flex items-center gap-2 rounded-lg border border-zinc-200 bg-zinc-50 px-3 py-2 text-xs text-zinc-500">
+                  <Loader2 className="h-3 w-3 animate-spin" />
+                  Loading your classes…
+                </div>
+              ) : classrooms.length === 0 ? (
+                <div className="mt-1 rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800">
                   You don&apos;t have any classrooms yet.
                 </div>
               ) : (
-                classrooms.map((c) => {
-                  const isSel = selected.has(c.id);
-                  return (
-                    <button
+                <select
+                  value={classroomId}
+                  onChange={(e) => setClassroomId(e.target.value)}
+                  className="mt-1 w-full rounded-lg border border-zinc-300 bg-white px-2 py-2 text-sm focus:border-violet-500 focus:outline-none"
+                >
+                  <option value="" disabled>
+                    Choose a class…
+                  </option>
+                  {classrooms.map((c) => (
+                    <option
                       key={c.id}
-                      type="button"
-                      onClick={() => toggle(c.id)}
-                      className={`flex w-full items-center justify-between gap-2 rounded-xl border px-3 py-2 text-sm transition ${
-                        isSel
-                          ? "border-violet-400 bg-violet-50"
-                          : "border-zinc-200 bg-white hover:border-violet-300"
-                      }`}
+                      value={c.id}
+                      disabled={!!c.existingLevel}
                     >
-                      <span className="font-semibold text-zinc-900">{c.name}</span>
-                      <span
-                        className={`flex h-5 w-5 items-center justify-center rounded-full border ${
-                          isSel
-                            ? "border-violet-600 bg-violet-600 text-white"
-                            : "border-zinc-300 bg-white"
-                        }`}
-                      >
-                        {isSel && <Check className="h-3 w-3" />}
-                      </span>
-                    </button>
-                  );
-                })
+                      {c.name}
+                      {c.existingLevel
+                        ? ` — already at ${LEVEL_LABEL[c.existingLevel]}`
+                        : ""}
+                    </option>
+                  ))}
+                </select>
               )}
-            </div>
+            </label>
+
+            {conflict && (
+              <div className="mt-2 flex items-start gap-2 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-xs font-semibold text-amber-800">
+                <AlertCircle className="mt-0.5 h-3 w-3 flex-shrink-0" />
+                This class is already assigned this passage at{" "}
+                {LEVEL_LABEL[conflict]}. Pick a different class or unassign
+                from the class page first.
+              </div>
+            )}
 
             <label className="mt-4 block text-xs font-semibold text-zinc-500">
               <span className="flex items-center gap-1.5">
@@ -225,7 +274,12 @@ export default function AssignLeveledButton({
                 <button
                   type="button"
                   onClick={submit}
-                  disabled={pending || classrooms.length === 0}
+                  disabled={
+                    pending ||
+                    classrooms.length === 0 ||
+                    !classroomId ||
+                    !!conflict
+                  }
                   className="inline-flex items-center gap-1.5 rounded-full bg-violet-600 px-4 py-1.5 text-xs font-bold text-white hover:bg-violet-700 disabled:opacity-60"
                 >
                   {pending ? (
