@@ -145,3 +145,77 @@ export async function advanceLearningPath(input: {
 
   return { ok: true, nextIndex };
 }
+
+/**
+ * Generate parent-conference notes for a student. Auth: caller must
+ * be a teacher whose classroom contains the kid.
+ */
+export async function generateConferenceNotes(input: {
+  childId: string;
+}): Promise<
+  | { ok: true; notes: { summary: string; next_steps: string } }
+  | { ok: false; error: string }
+> {
+  const profile = await requireProfile();
+  if (profile.role !== "educator") {
+    return { ok: false, error: "Only teachers can generate conference notes." };
+  }
+  const supabase = await createClient();
+  const { data: membership } = await supabase
+    .from("classroom_memberships")
+    .select("classrooms!inner(teacher_id)")
+    .eq("child_id", input.childId)
+    .limit(1);
+  const ok = ((membership ?? []) as any[]).some(
+    (m) => m.classrooms?.teacher_id === profile.id,
+  );
+  if (!ok) return { ok: false, error: "Student not in your classroom." };
+
+  const { buildConferenceNotes } = await import("@/lib/ai/build-conference-notes");
+  return buildConferenceNotes({ childId: input.childId, teacherId: profile.id });
+}
+
+/**
+ * Generate small-group rotations for a classroom. Auth: caller must
+ * be the classroom's teacher.
+ */
+export async function generateSmallGroups(input: {
+  classroomId: string;
+}): Promise<
+  | {
+      ok: true;
+      groups: import("@/lib/ai/build-small-groups").SmallGroup[];
+      roster: { id: string; first_name: string }[];
+    }
+  | { ok: false; error: string }
+> {
+  const profile = await requireProfile();
+  if (profile.role !== "educator") {
+    return { ok: false, error: "Only teachers can build small groups." };
+  }
+  const supabase = await createClient();
+  const { data: classroom } = await supabase
+    .from("classrooms")
+    .select("id")
+    .eq("id", input.classroomId)
+    .eq("teacher_id", profile.id)
+    .maybeSingle();
+  if (!classroom) return { ok: false, error: "Classroom not found." };
+
+  const { buildSmallGroups } = await import("@/lib/ai/build-small-groups");
+  const res = await buildSmallGroups({
+    classroomId: input.classroomId,
+    teacherId: profile.id,
+  });
+  if (!res.ok) return res;
+
+  const { data: memberships } = await supabase
+    .from("classroom_memberships")
+    .select("children(id, first_name)")
+    .eq("classroom_id", input.classroomId);
+  const roster = ((memberships ?? []) as any[])
+    .map((m) => m.children)
+    .filter(Boolean) as { id: string; first_name: string }[];
+
+  return { ok: true, groups: res.groups, roster };
+}

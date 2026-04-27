@@ -8,6 +8,7 @@ import AssignmentsTab from "./_tabs/AssignmentsTab";
 import InsightsTab from "./_tabs/InsightsTab";
 import SettingsTab from "./_tabs/SettingsTab";
 import JoinCodePanel from "./_components/JoinCodePanel";
+import SmallGroupsButton from "./_components/SmallGroupsButton";
 import type { Classroom } from "@/lib/db/types";
 
 export const dynamic = "force-dynamic";
@@ -94,7 +95,10 @@ export default async function ClassroomPage({
             </p>
           )}
         </div>
-        <JoinCodePanel classroomId={c.id} initialCode={c.join_code} />
+        <div className="flex flex-col items-end gap-2">
+          <JoinCodePanel classroomId={c.id} initialCode={c.join_code} />
+          <SmallGroupsButton classroomId={c.id} />
+        </div>
       </div>
 
       {/* Tabs */}

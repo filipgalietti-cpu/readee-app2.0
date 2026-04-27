@@ -9,6 +9,7 @@ import g2Json from "@/app/data/2nd-grade-standards-questions.json";
 import g3Json from "@/app/data/3rd-grade-standards-questions.json";
 import g4Json from "@/app/data/4th-grade-standards-questions.json";
 import PrintButton from "./_components/PrintButton";
+import ConferenceNotesButton from "./_components/ConferenceNotesButton";
 import LearningPathCard from "@/app/_components/LearningPathCard";
 
 export const dynamic = "force-dynamic";
@@ -202,7 +203,13 @@ export default async function StudentDetailPage({
           <ArrowLeft className="h-4 w-4" />
           Back to roster
         </Link>
-        <PrintButton />
+        <div className="flex items-center gap-2">
+          <ConferenceNotesButton
+            childId={c.id}
+            childFirstName={c.first_name ?? null}
+          />
+          <PrintButton />
+        </div>
       </div>
 
       {/* Header block — also used for the print layout */}
