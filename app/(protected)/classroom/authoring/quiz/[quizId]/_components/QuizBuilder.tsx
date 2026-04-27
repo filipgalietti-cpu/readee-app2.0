@@ -85,66 +85,15 @@ export default function QuizBuilder({
             </p>
           </div>
         ) : (
-          <ul className="mt-3 space-y-2">
+          <ul className="mt-3 space-y-3">
             {questions.map((q, i) => (
-              <li
+              <QuestionCard
                 key={q.id}
-                className="rounded-2xl border border-zinc-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900/40"
-              >
-                <div className="flex items-start justify-between gap-3">
-                  <div className="min-w-0 flex-1">
-                    <div className="flex items-center gap-2">
-                      <span className="rounded-full bg-indigo-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-indigo-700 dark:bg-indigo-950/40 dark:text-indigo-300">
-                        {kindLabel(q.kind)}
-                      </span>
-                      <span className="text-xs text-zinc-400">Q{i + 1}</span>
-                      {q.audioUrl && (
-                        <Volume2 className="h-3 w-3 text-violet-500" aria-label="Has audio" />
-                      )}
-                    </div>
-                    <div className="mt-1.5 flex items-start gap-3">
-                      {q.imageUrl && (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img
-                          src={q.imageUrl}
-                          alt=""
-                          className="h-16 w-16 flex-shrink-0 rounded-lg border border-zinc-200 object-cover dark:border-slate-700"
-                        />
-                      )}
-                      <div className="min-w-0 flex-1">
-                        <div className="whitespace-pre-line text-sm font-semibold text-zinc-900 dark:text-white">
-                          {q.prompt}
-                        </div>
-                        {renderChoices(q)}
-                      </div>
-                    </div>
-                    {q.hint && (
-                      <div className="mt-2 inline-flex items-start gap-1.5 text-xs text-amber-700 dark:text-amber-400">
-                        <Lightbulb className="mt-0.5 h-3 w-3 flex-shrink-0" />
-                        {q.hint}
-                      </div>
-                    )}
-                  </div>
-                  <div className="flex flex-shrink-0 items-center gap-1">
-                    <RegenerateQuestionButton
-                      quizId={quizId}
-                      questionId={q.id}
-                      kind={q.kind}
-                    />
-                    {q.kind !== "matching_pairs" && (
-                      <button
-                        type="button"
-                        onClick={() => setEditing(q)}
-                        className="inline-flex h-7 w-7 items-center justify-center rounded-lg text-zinc-400 hover:bg-indigo-50 hover:text-indigo-600 dark:hover:bg-indigo-950/40"
-                        title="Edit"
-                      >
-                        <Pencil className="h-3.5 w-3.5" />
-                      </button>
-                    )}
-                    <RemoveQuestionButton quizId={quizId} questionId={q.id} />
-                  </div>
-                </div>
-              </li>
+                quizId={quizId}
+                q={q}
+                index={i}
+                onEdit={() => setEditing(q)}
+              />
             ))}
           </ul>
         )}
@@ -174,78 +123,200 @@ function kindLabel(k: QuestionKind): string {
   return "Fill in the blank";
 }
 
-function renderChoices(q: Question): React.ReactNode {
+/**
+ * QuestionCard — teacher-friendly review tile for one question.
+ *
+ * Replaces the dense list row with a card that shows the question
+ * the way a kid would see it: prompt as headline, choices as actual
+ * tappable-looking chips, image at a useful size. Action toolbar
+ * (regenerate / edit / delete) lives at the top-right.
+ */
+function QuestionCard({
+  quizId,
+  q,
+  index,
+  onEdit,
+}: {
+  quizId: string;
+  q: Question;
+  index: number;
+  onEdit: () => void;
+}) {
+  return (
+    <li className="overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition hover:border-indigo-200 dark:border-slate-800 dark:bg-slate-900/40">
+      {/* Header strip */}
+      <div className="flex items-center justify-between gap-3 border-b border-zinc-100 bg-gradient-to-r from-zinc-50 to-white px-5 py-2.5 dark:border-slate-800 dark:from-slate-900 dark:to-slate-900/60">
+        <div className="flex items-center gap-2">
+          <span className="inline-flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-indigo-600 text-[11px] font-bold text-white">
+            {index + 1}
+          </span>
+          <span className="rounded-full bg-indigo-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-indigo-700 dark:bg-indigo-950/40 dark:text-indigo-300">
+            {kindLabel(q.kind)}
+          </span>
+          {q.audioUrl && (
+            <button
+              type="button"
+              onClick={() => {
+                const a = new Audio(q.audioUrl!);
+                a.play().catch(() => {});
+              }}
+              className="inline-flex items-center gap-1 rounded-full bg-violet-50 px-2 py-0.5 text-[10px] font-semibold text-violet-700 transition hover:bg-violet-100 dark:bg-violet-950/30 dark:text-violet-300"
+              title="Play question audio"
+            >
+              <Volume2 className="h-3 w-3" />
+              Audio
+            </button>
+          )}
+        </div>
+        <div className="flex items-center gap-1">
+          <RegenerateQuestionButton
+            quizId={quizId}
+            questionId={q.id}
+            kind={q.kind}
+          />
+          {q.kind !== "matching_pairs" && (
+            <button
+              type="button"
+              onClick={onEdit}
+              className="inline-flex h-7 w-7 items-center justify-center rounded-lg text-indigo-400 transition hover:bg-indigo-50 hover:text-indigo-700 dark:hover:bg-indigo-950/40"
+              title="Edit"
+            >
+              <Pencil className="h-3.5 w-3.5" />
+            </button>
+          )}
+          <RemoveQuestionButton quizId={quizId} questionId={q.id} />
+        </div>
+      </div>
+
+      {/* Body */}
+      <div className="px-5 py-4">
+        <div className="flex items-start gap-4">
+          {q.imageUrl && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={q.imageUrl}
+              alt=""
+              className="h-24 w-24 flex-shrink-0 rounded-xl border border-zinc-200 object-cover dark:border-slate-700"
+            />
+          )}
+          <div className="min-w-0 flex-1">
+            <p
+              className="whitespace-pre-line text-[15px] font-semibold leading-snug text-zinc-900 dark:text-white"
+              style={{
+                fontFamily:
+                  'Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif',
+              }}
+            >
+              {q.prompt}
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-4">{renderChoicesAsCards(q)}</div>
+
+        {q.hint && (
+          <div className="mt-4 flex items-start gap-2 rounded-xl bg-amber-50 px-3 py-2 text-xs text-amber-800 dark:bg-amber-950/20 dark:text-amber-200">
+            <Lightbulb className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-amber-600" />
+            <div>
+              <span className="font-bold">Hint: </span>
+              {q.hint}
+            </div>
+          </div>
+        )}
+      </div>
+    </li>
+  );
+}
+
+/**
+ * Renders the answer choices the way a kid would see them — as
+ * tappable-looking chips with the correct one outlined in green.
+ */
+function renderChoicesAsCards(q: Question): React.ReactNode {
   if (q.kind === "multiple_choice" && Array.isArray(q.choices)) {
     const correct = String(q.correct);
     return (
-      <ul className="mt-2 space-y-1 text-xs">
-        {q.choices.map((c) => (
-          <li
-            key={c}
-            className={`flex items-center gap-2 rounded-lg px-2 py-1 ${
-              c === correct
-                ? "bg-green-50 font-semibold text-green-800 dark:bg-green-950/30 dark:text-green-300"
-                : "text-zinc-600 dark:text-slate-400"
-            }`}
-          >
-            {c === correct && <Check className="h-3 w-3 text-green-600" />}
-            {c}
-          </li>
-        ))}
-      </ul>
+      <div className="grid gap-2 sm:grid-cols-2">
+        {q.choices.map((c) => {
+          const isCorrect = c === correct;
+          return (
+            <div
+              key={c}
+              className={`flex items-center gap-2 rounded-xl border px-3 py-2 text-sm ${
+                isCorrect
+                  ? "border-emerald-300 bg-emerald-50 font-semibold text-emerald-900 dark:border-emerald-700/60 dark:bg-emerald-950/30 dark:text-emerald-200"
+                  : "border-zinc-200 bg-white text-zinc-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
+              }`}
+            >
+              {isCorrect && (
+                <Check className="h-4 w-4 flex-shrink-0 text-emerald-600" />
+              )}
+              <span className="truncate">{c}</span>
+            </div>
+          );
+        })}
+      </div>
     );
   }
   if (q.kind === "true_false") {
+    const correct = q.correct;
     return (
-      <div className="mt-2 inline-flex gap-2 text-xs">
-        <span
-          className={`rounded-lg px-2 py-1 ${
-            q.correct === "True"
-              ? "bg-green-50 font-semibold text-green-800 dark:bg-green-950/30 dark:text-green-300"
-              : "text-zinc-500"
-          }`}
-        >
-          True
-        </span>
-        <span
-          className={`rounded-lg px-2 py-1 ${
-            q.correct === "False"
-              ? "bg-green-50 font-semibold text-green-800 dark:bg-green-950/30 dark:text-green-300"
-              : "text-zinc-500"
-          }`}
-        >
-          False
-        </span>
+      <div className="grid grid-cols-2 gap-2">
+        {(["True", "False"] as const).map((label) => {
+          const isCorrect = correct === label;
+          return (
+            <div
+              key={label}
+              className={`flex items-center justify-center gap-2 rounded-xl border px-3 py-3 text-sm font-bold ${
+                isCorrect
+                  ? "border-emerald-300 bg-emerald-50 text-emerald-900 dark:border-emerald-700/60 dark:bg-emerald-950/30 dark:text-emerald-200"
+                  : "border-zinc-200 bg-white text-zinc-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400"
+              }`}
+            >
+              {isCorrect && <Check className="h-4 w-4 text-emerald-600" />}
+              {label}
+            </div>
+          );
+        })}
       </div>
     );
   }
   if (q.kind === "fill_in_blank" && Array.isArray(q.correct)) {
     return (
-      <div className="mt-2 text-xs">
-        <span className="font-semibold text-green-700 dark:text-green-300">Accepted: </span>
-        {q.correct.join(" / ")}
+      <div className="rounded-xl bg-emerald-50 px-3 py-2 text-xs dark:bg-emerald-950/20">
+        <span className="font-bold text-emerald-800 dark:text-emerald-300">
+          Accepted answers:{" "}
+        </span>
+        <span className="text-emerald-900 dark:text-emerald-200">
+          {q.correct.join(" · ")}
+        </span>
       </div>
     );
   }
   if (q.kind === "matching_pairs") {
     const pairs = (q.correct?.pairs ?? []) as { left: string; right: string }[];
     return (
-      <div className="mt-2 grid grid-cols-2 gap-x-3 gap-y-1 text-xs">
+      <div className="grid gap-2">
         {pairs.map((p, i) => (
-          <React.Fragment key={i}>
-            <div className="rounded-md bg-zinc-100 px-2 py-0.5 text-zinc-800 dark:bg-slate-800 dark:text-slate-200">
+          <div
+            key={i}
+            className="flex items-center gap-3 rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-900"
+          >
+            <div className="flex-1 font-semibold text-zinc-800 dark:text-slate-200">
               {p.left}
             </div>
-            <div className="rounded-md bg-violet-50 px-2 py-0.5 font-semibold text-violet-800 dark:bg-violet-950/30 dark:text-violet-300">
-              → {p.right}
+            <div className="text-zinc-300">→</div>
+            <div className="flex-1 rounded-lg bg-violet-50 px-2 py-1 font-semibold text-violet-800 dark:bg-violet-950/30 dark:text-violet-300">
+              {p.right}
             </div>
-          </React.Fragment>
+          </div>
         ))}
       </div>
     );
   }
   return null;
 }
+
 
 function QuizMetaForm({
   quizId,
