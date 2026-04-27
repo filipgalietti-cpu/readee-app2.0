@@ -428,6 +428,28 @@ export async function aiBuildLesson(input: {
   return res;
 }
 
+/**
+ * Build a decodable book — short multi-page reader targeting a
+ * specific phonics pattern.
+ */
+export async function aiBuildBook(input: {
+  brief: import("@/lib/ai/build-book").BookBrief;
+}): Promise<
+  | { ok: true; bookId: string; warnings: string[]; creditsUsed: number }
+  | { ok: false; error: string }
+> {
+  const profile = await requireProfile();
+  if (profile.role !== "educator") {
+    return { ok: false, error: "Only educators can use Readee.ai." };
+  }
+  const { buildBook } = await import("@/lib/ai/build-book");
+  const res = await buildBook({ teacherId: profile.id, brief: input.brief });
+  if (res.ok) {
+    revalidatePath("/classroom/books");
+  }
+  return res;
+}
+
 export async function aiGenerateAudio(input: { text: string }): Promise<
   { ok: true; audioUrl: string } | { ok: false; error: string }
 > {

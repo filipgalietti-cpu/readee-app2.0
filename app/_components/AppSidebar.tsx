@@ -13,7 +13,7 @@ import { SidebarUserMenu } from "./SidebarUserMenu";
 import { ShineBorder } from "@/app/components/magicui/shine-border";
 import {
   Home, BarChart3, BookText, ListChecks, Map,
-  Carrot, Trophy, ChevronDown, ChevronRight, ClipboardCheck, GraduationCap, Building2, ClipboardPen, Library, Sparkles, Users, Brain, Zap, ShieldCheck,
+  Carrot, Trophy, ChevronDown, ChevronRight, ClipboardCheck, GraduationCap, Building2, ClipboardPen, Library, Sparkles, Users, Brain, Zap, ShieldCheck, BookOpenText,
 } from "lucide-react";
 
 /* ─── Nav items ──────────────────────────────────── */
@@ -52,11 +52,19 @@ function getNavSections(
           emphasis: true,
           shimmer: true,
         },
+        {
+          href: "/classroom/authoring/book-wizard",
+          icon: Sparkles,
+          label: "Build a book",
+          emphasis: true,
+          shimmer: true,
+        },
         { href: "/classroom", icon: GraduationCap, label: "Classroom" },
         { href: "/classroom/live", icon: Zap, label: "Live quiz" },
         { href: "/classroom/reports", icon: BarChart3, label: "Reports" },
         { href: "/classroom/library", icon: Library, label: "Library" },
         { href: "/classroom/lessons", icon: BookText, label: "Lessons" },
+        { href: "/classroom/books", icon: BookOpenText, label: "Books" },
         { href: "/classroom/authoring", icon: ClipboardPen, label: "Quizzes" },
         { href: "/classroom/refer", icon: Users, label: "Refer a teacher" },
       ],
