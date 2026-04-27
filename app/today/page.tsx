@@ -11,10 +11,13 @@ export const dynamic = "force-dynamic";
  */
 export default async function TodayIndexPage() {
   const supabase = await createClient();
+  // Same filter as DailyQuestionCard — skip QC failures so /today never
+  // redirects to a broken day. Warns surface; fails fall back silently.
   const { data } = await supabase
     .from("daily_questions")
     .select("slug")
     .lte("date", new Date().toISOString().slice(0, 10))
+    .neq("qc_overall", "fail")
     .order("date", { ascending: false })
     .limit(1)
     .maybeSingle();

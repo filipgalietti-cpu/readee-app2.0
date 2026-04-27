@@ -54,12 +54,16 @@ export default function DailyQuestionCard({
       try {
         const supabase = supabaseBrowser();
         const today = new Date().toISOString().slice(0, 10);
+        // Skip rows the QC engine flagged as fail — fall back to the
+        // last known-good day. Warns are fine to surface (small issues),
+        // fails are blocking (factual errors, missing answer support).
         const { data: row } = await supabase
           .from("daily_questions")
           .select(
             "date, theme, slug, passage_title, passage_body, image_url, audio_url, question_prompt, choices, correct, hint",
           )
           .lte("date", today)
+          .neq("qc_overall", "fail")
           .order("date", { ascending: false })
           .limit(1)
           .maybeSingle();
