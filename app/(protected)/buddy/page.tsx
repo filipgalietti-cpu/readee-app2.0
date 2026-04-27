@@ -1,5 +1,5 @@
 import { Sparkles } from "lucide-react";
-import BuddyChat from "./_components/BuddyChat";
+import BuddyShell from "./_components/BuddyShell";
 
 export const dynamic = "force-dynamic";
 
@@ -15,11 +15,12 @@ export default function BuddyPage() {
       </h1>
       <p className="mt-1 text-sm text-zinc-500">
         Ask what a word means, get help sounding it out, or check your
-        understanding. Tap the mic and speak.
+        understanding. Tap the mic and speak — Readee answers in
+        real-time.
       </p>
 
       <div className="mt-6">
-        <BuddyChat />
+        <BuddyShell />
       </div>
     </div>
   );
