@@ -17,10 +17,9 @@
 
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import {
-  generatePassage,
+  generateLessonStructure,
   generateMCQQuestions,
   generateImage,
-  generateImageBrief,
   generateSpeech,
   checkRateLimit,
   settleBatchAgainstTopUp,
@@ -68,7 +67,9 @@ function validateBrief(brief: LessonBrief): string | null {
 export function estimateLessonCredits(brief: LessonBrief): number {
   let credits = CREDIT_COST.passage_generation;
   if (brief.media.perSlideImage) {
-    credits += brief.slideCount * (CREDIT_COST.image_generation + CREDIT_COST.quiz_generation);
+    // image_scene is produced inline by the lesson generator, so we
+    // skip the per-slide image_brief call — just pay for the image.
+    credits += brief.slideCount * CREDIT_COST.image_generation;
   }
   if (brief.media.perSlideAudio) {
     credits += brief.slideCount * CREDIT_COST.tts_generation;
@@ -79,41 +80,6 @@ export function estimateLessonCredits(brief: LessonBrief): number {
   // QC suite: passage + each question + image judging
   credits += 4;
   return credits;
-}
-
-/**
- * Splits a passage into N coherent slide chunks. Tries to keep
- * sentences together — splits on sentence boundaries. If the passage
- * has fewer sentences than slides, repeats with empty slides at the
- * end (rare, low-effort fallback).
- */
-function splitPassageIntoSlides(passage: string, n: number): string[] {
-  const sentences = passage
-    .split(/([.!?]+\s+)/)
-    .reduce<string[]>((acc, part, i, arr) => {
-      // Recombine sentences with their punctuation.
-      if (i % 2 === 0) {
-        const next = arr[i + 1] ?? "";
-        const s = (part + next).trim();
-        if (s) acc.push(s);
-      }
-      return acc;
-    }, []);
-
-  if (sentences.length === 0) return [passage];
-  if (sentences.length <= n) {
-    // Pad each sentence into its own slide
-    while (sentences.length < n) sentences.push("");
-    return sentences;
-  }
-
-  const slidesText: string[] = Array.from({ length: n }, () => "");
-  const perSlide = Math.ceil(sentences.length / n);
-  for (let i = 0; i < sentences.length; i++) {
-    const slot = Math.min(n - 1, Math.floor(i / perSlide));
-    slidesText[slot] = (slidesText[slot] + " " + sentences[i]).trim();
-  }
-  return slidesText;
 }
 
 export async function buildLesson(input: {
@@ -157,20 +123,23 @@ export async function buildLesson(input: {
   }
   const lessonId = (lessonRow as { id: string }).id;
 
-  // 2) Generate the passage.
-  const passageRes = await generatePassage({
+  // 2) Generate the lesson structure (title + slides with display_text +
+  //    body + image_scene). The model classifies concept-vs-topic and
+  //    picks the right teaching arc — no more story-shaped slideshows.
+  const lessonRes = await generateLessonStructure({
     teacherId,
     topic: brief.topic,
     gradeLevel: brief.gradeLevel,
-    phonicsPattern: null,
+    slideCount: brief.slideCount,
   });
-  if (!passageRes.ok) {
-    warnings.push(`Passage: ${passageRes.error}`);
-    return { ok: false, error: `Passage generation failed: ${passageRes.error}` };
+  if (!lessonRes.ok) {
+    warnings.push(`Lesson: ${lessonRes.error}`);
+    return { ok: false, error: `Lesson generation failed: ${lessonRes.error}` };
   }
   creditsUsed += CREDIT_COST.passage_generation;
-  const passageTitle = passageRes.passage.title;
-  const passageBody = passageRes.passage.passage;
+  const passageTitle = lessonRes.lesson.title;
+  const lessonSlides = lessonRes.lesson.slides;
+  const passageBody = lessonSlides.map((s) => s.body).join("\n\n");
 
   // Backfill the row title with the AI title if teacher left it blank.
   if (brief.title.trim().length === 0) {
@@ -180,30 +149,18 @@ export async function buildLesson(input: {
       .eq("id", lessonId);
   }
 
-  // 3) Split into slide chunks.
-  const slidesText = splitPassageIntoSlides(passageBody, brief.slideCount);
+  // 3) Per-slide media (image + audio). image_scene comes pre-written
+  //    by the lesson generator, so no separate image-brief call.
   const slides: Slide[] = [];
-
-  // 4) Per-slide media (image + audio).
-  for (let i = 0; i < slidesText.length; i++) {
-    const text = slidesText[i];
+  for (let i = 0; i < lessonSlides.length; i++) {
+    const s = lessonSlides[i];
     let imageUrl: string | null = null;
     let audioUrl: string | null = null;
-    let displayText: string | null = null;
 
-    if (text && brief.media.perSlideImage) {
-      const briefRes = await generateImageBrief({
-        teacherId,
-        passageTitle: passageTitle,
-        passageBody: text,
-      });
-      let imagePrompt = `Illustration for slide ${i + 1} of "${passageTitle}". Scene: ${text.slice(0, 200)}.`;
-      if (briefRes.ok) {
-        imagePrompt = briefRes.brief;
-        creditsUsed += CREDIT_COST.quiz_generation;
-      } else {
-        warnings.push(`Slide ${i + 1} image brief: ${briefRes.error}`);
-      }
+    if (s.body && brief.media.perSlideImage) {
+      const imagePrompt = s.image_scene && s.image_scene.length > 10
+        ? s.image_scene
+        : `Scene from a children's lesson titled "${passageTitle}": ${s.body.slice(0, 180)}`;
       const imgRes = await generateImage({ teacherId, prompt: imagePrompt });
       if (imgRes.ok) {
         imageUrl = imgRes.imageUrl;
@@ -213,10 +170,10 @@ export async function buildLesson(input: {
       }
     }
 
-    if (text && brief.media.perSlideAudio) {
+    if (s.body && brief.media.perSlideAudio) {
       const ttsRes = await generateSpeech({
         teacherId,
-        text: text.slice(0, 800),
+        text: s.body.slice(0, 800),
         voice: brief.voice ?? undefined,
       });
       if (ttsRes.ok) {
@@ -229,8 +186,8 @@ export async function buildLesson(input: {
 
     slides.push({
       position: i + 1,
-      body: text,
-      display_text: displayText,
+      body: s.body,
+      display_text: s.display_text || null,
       image_url: imageUrl,
       audio_url: audioUrl,
     });

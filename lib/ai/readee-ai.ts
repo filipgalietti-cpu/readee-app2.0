@@ -1191,3 +1191,202 @@ export async function generatePassage(input: {
     };
   }
 }
+
+// ═══ Lesson structure (slide-shaped output) ═════════════════════════════
+//
+// Produces a real instructional slideshow — not a story chunked into
+// slides. The model first decides whether the topic is a reading skill
+// (concept lesson) or an informational topic, then writes slides in the
+// right teaching arc. Each slide carries its own headline, narration,
+// and image scene so we don't need a separate image-brief pass.
+
+export type LessonSlide = {
+  display_text: string;
+  body: string;
+  image_scene: string;
+};
+
+export type GeneratedLesson = {
+  title: string;
+  kind: "concept" | "topic";
+  slides: LessonSlide[];
+};
+
+const LESSON_SYSTEM = `You are Readee, a K-4 reading specialist. You design ONE instructional slideshow (not a short story) that teaches what the teacher asked for.
+
+STEP 1 — Classify the topic:
+- "concept": a reading SKILL or strategy (e.g. "key details", "main idea", "context clues", "story elements", "compare and contrast", "long a sound", "blends", "syllable types"). Most teacher requests are this.
+- "topic": an informational subject the kids should learn ABOUT (e.g. "the water cycle", "honeybees", "Harriet Tubman", "winter").
+
+STEP 2 — Pick the arc that fits.
+
+For "concept" lessons (5 slides default), use this teaching arc — DO NOT write a story:
+  1. Hook + name the skill ("Today we are learning about KEY DETAILS — the small facts in a story that help us understand it.")
+  2. Define it in kid-friendly words + give a tiny everyday example.
+  3. Show a 2-3 sentence model passage, then point out the key details inside it.
+  4. Guided try-it: a short passage + a question that walks the kid through finding the skill.
+  5. Recap: "Today we learned…" + 1-sentence reminder of how to use it.
+
+For "topic" lessons (5 slides default), use:
+  1. Hook + question to wonder about.
+  2-4. Three informational beats — each a different angle (what it is, why it matters, how it works, etc).
+  5. Wrap-up + one thing to remember.
+
+If the teacher asks for a different slide count, scale proportionally — never drop the hook or the recap.
+
+PER-SLIDE FIELDS:
+- display_text: the big headline shown on the slide (≤ 8 words). Direct and kid-facing. NOT a label like "Slide 1".
+- body: 2-5 sentences narrated/read on the slide. Grade-appropriate vocabulary. For K-1, keep sentences under 10 words.
+- image_scene: ONE concrete visual scene to illustrate this slide (12-30 words). Describe a single moment — who, where, doing what, mood. NO style words ("cartoon", "vibrant"). NO text-in-image. NO montages.
+
+GRADE BANDS:
+- K: 30-50 words per slide body, sight words + decodable.
+- 1st: 50-90 words, simple sentences.
+- 2nd: 80-130 words.
+- 3rd: 120-180 words.
+- 4th: 150-220 words.
+
+ANTI-HALLUCINATION:
+- Do NOT invent specific verifiable facts you cannot ground (no fake dates, fake numbers, fake names, fake quotes, fake "scientists say"). If unsure, stay general.
+- Concept lessons should be skill-true; topic lessons should be cautious and plausibly accurate. When in doubt, lean general ("many bees live in hives") over specific ("there are 19,847 bees in a hive").
+- No moral lessons, no preachiness, no romantic content, no violence, no scary content.
+- Use straight quotes (").
+- Return ONLY the JSON per the schema. No preamble.`;
+
+const LESSON_SCHEMA = {
+  type: Type.OBJECT,
+  properties: {
+    title: { type: Type.STRING },
+    kind: { type: Type.STRING, enum: ["concept", "topic"] },
+    slides: {
+      type: Type.ARRAY,
+      items: {
+        type: Type.OBJECT,
+        properties: {
+          display_text: { type: Type.STRING },
+          body: { type: Type.STRING },
+          image_scene: { type: Type.STRING },
+        },
+        required: ["display_text", "body", "image_scene"],
+      },
+    },
+  },
+  required: ["title", "kind", "slides"],
+};
+
+export async function generateLessonStructure(input: {
+  teacherId: string;
+  topic: string;
+  gradeLevel?: string | null;
+  slideCount: number;
+}): Promise<{ ok: true; lesson: GeneratedLesson } | { ok: false; error: string }> {
+  if (!input.topic.trim()) return { ok: false, error: "Topic is required." };
+  const slideCount = Math.max(3, Math.min(10, Math.floor(input.slideCount)));
+
+  const safety = assertSafePrompt(input.topic);
+  if (!safety.ok) return { ok: false, error: safety.error };
+
+  const rl = await checkRateLimit(input.teacherId, "passage_generation");
+  if (!rl.allowed) return { ok: false, error: budgetError(rl) };
+
+  let client: GoogleGenAI;
+  try {
+    client = getClient();
+  } catch (e: any) {
+    await logUsage({
+      teacherId: input.teacherId,
+      kind: "passage_generation",
+      success: false,
+      error: e.message,
+      requestSummary: input.topic.slice(0, 200),
+    });
+    return { ok: false, error: e.message ?? "AI is not configured." };
+  }
+
+  const gradeLine = input.gradeLevel
+    ? `Grade level: ${input.gradeLevel}.`
+    : "Grade level: 2nd.";
+  const userPrompt = [
+    gradeLine,
+    `Slide count: exactly ${slideCount}.`,
+    "",
+    `Teacher request: ${input.topic.trim()}`,
+    "",
+    "Classify the topic, pick the right arc, and write the lesson per the schema.",
+  ].join("\n");
+
+  try {
+    const response = await client.models.generateContent({
+      model: MODEL_ID,
+      contents: userPrompt,
+      config: {
+        systemInstruction: LESSON_SYSTEM,
+        responseMimeType: "application/json",
+        responseSchema: LESSON_SCHEMA,
+        temperature: 0.7,
+      },
+    });
+    const text = response.text;
+    if (!text) throw new Error("Empty response from the model.");
+
+    const parsed = JSON.parse(text) as {
+      title?: string;
+      kind?: "concept" | "topic";
+      slides?: { display_text?: string; body?: string; image_scene?: string }[];
+    };
+    const title = (parsed.title ?? "").trim();
+    const kind = parsed.kind === "topic" ? "topic" : "concept";
+    const slides: LessonSlide[] = Array.isArray(parsed.slides)
+      ? parsed.slides
+          .map((s) => ({
+            display_text: (s.display_text ?? "").trim(),
+            body: (s.body ?? "").trim(),
+            image_scene: (s.image_scene ?? "").trim(),
+          }))
+          .filter((s) => s.body.length > 0)
+      : [];
+
+    if (!title || slides.length < 3) {
+      throw new Error("The model didn't return a complete lesson. Try again.");
+    }
+
+    const safetyTexts = [
+      title,
+      ...slides.flatMap((s) => [s.display_text, s.body, s.image_scene]),
+    ];
+    const outputSafety = assertSafeOutput(safetyTexts);
+    if (!outputSafety.ok) throw new Error(outputSafety.error);
+
+    await logUsage({
+      teacherId: input.teacherId,
+      kind: "passage_generation",
+      model: MODEL_ID,
+      inputTokens: response.usageMetadata?.promptTokenCount,
+      outputTokens: response.usageMetadata?.candidatesTokenCount,
+      creditsUsed: CREDIT_COST.passage_generation,
+      success: true,
+      requestSummary: `lesson: ${input.topic.slice(0, 150)}`,
+    });
+
+    return { ok: true, lesson: { title, kind, slides } };
+  } catch (e: any) {
+    trackError(e, {
+      route: "readee-ai.generateLessonStructure",
+      userId: input.teacherId,
+      tags: { model: MODEL_ID, kind: "passage_generation" },
+      extra: { topic: input.topic.slice(0, 200) },
+    });
+    await logUsage({
+      teacherId: input.teacherId,
+      kind: "passage_generation",
+      model: MODEL_ID,
+      success: false,
+      error: e.message,
+      requestSummary: `lesson: ${input.topic.slice(0, 150)}`,
+    });
+    return {
+      ok: false,
+      error: e?.message ?? "Couldn't build that lesson. Try rephrasing.",
+    };
+  }
+}
