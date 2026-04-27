@@ -823,8 +823,11 @@ const IMAGE_STYLE_PREFIX =
 export async function generateImage(input: {
   teacherId: string;
   prompt: string;
+  /** Optional reference image (base64 + mime). Locks the model onto a
+   *  visual anchor — used for cross-page character consistency in books. */
+  referenceImage?: { data: string; mimeType: string } | null;
 }): Promise<
-  { ok: true; imageUrl: string; storagePath: string } | { ok: false; error: string }
+  { ok: true; imageUrl: string; storagePath: string; imageBase64: string; mimeType: string } | { ok: false; error: string }
 > {
   if (!input.prompt.trim()) return { ok: false, error: "Prompt is required." };
 
@@ -852,9 +855,32 @@ export async function generateImage(input: {
 
   try {
     const fullPrompt = IMAGE_SAFETY_PREFIX + IMAGE_STYLE_PREFIX + input.prompt.trim();
+    // If a reference image is provided, send it as inlineData alongside the
+    // text. Gemini 2.5 Flash Image uses the image as a visual anchor for
+    // the new generation — same character, new scene.
+    const contents = input.referenceImage
+      ? [
+          {
+            role: "user",
+            parts: [
+              {
+                inlineData: {
+                  mimeType: input.referenceImage.mimeType,
+                  data: input.referenceImage.data,
+                },
+              },
+              {
+                text:
+                  "Use the character(s) shown in the reference image. Keep their species, breed, coat color, eye color, and signature features identical. Only change the scene/pose/setting per the description below.\n\n" +
+                  fullPrompt,
+              },
+            ],
+          },
+        ]
+      : fullPrompt;
     const response = await client.models.generateContent({
       model: IMAGE_MODEL_ID,
-      contents: fullPrompt,
+      contents: contents as any,
     });
 
     // The image comes back as an inline_data part on the candidate.
@@ -911,7 +937,7 @@ export async function generateImage(input: {
       requestSummary: input.prompt.slice(0, 200),
     });
 
-    return { ok: true, imageUrl, storagePath };
+    return { ok: true, imageUrl, storagePath, imageBase64, mimeType };
   } catch (e: any) {
     trackError(e, {
       route: "readee-ai.generateImage",

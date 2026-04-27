@@ -146,6 +146,77 @@ Generate a decodable book following the schema. Each page's text should be 1-2 s
   }
 }
 
+/**
+ * Reads the generated book text and pulls out a detailed visual
+ * description of the main character. Used to (a) generate a clean
+ * "character card" reference image, and (b) seed every page prompt
+ * with consistent character DNA so the cat looks like the same cat
+ * on every page.
+ */
+async function extractCharacterCard(input: {
+  teacherId: string;
+  title: string;
+  pages: string[];
+}): Promise<
+  | { ok: true; description: string; cardPrompt: string }
+  | { ok: false; error: string }
+> {
+  let client: GoogleGenAI;
+  try {
+    client = getClient();
+  } catch (e: any) {
+    return { ok: false, error: e.message ?? "AI not configured." };
+  }
+  const text = `Title: ${input.title}\n\n${input.pages.map((p, i) => `Page ${i + 1}: ${p}`).join("\n")}`;
+  const system = `You design a visual "character card" for a children's picture book so the same character looks identical across every page.
+Read the book and identify the SINGLE main character. Return:
+- description: 2-3 short sentences capturing the character's species/type, body shape, fur/skin/feather color, eye color, distinctive features (spots, stripes, accessories like a red scarf or yellow hat). Be specific so a different illustrator could draw the same character. If no animal/character is clearly the protagonist, describe a generic kid-friendly stand-in.
+- card_prompt: a one-sentence prompt for a clean character portrait — just the character standing centered against a soft solid pastel background, no scene, no other characters, no text. Use the description.`;
+  const schema = {
+    type: Type.OBJECT,
+    properties: {
+      description: { type: Type.STRING },
+      card_prompt: { type: Type.STRING },
+    },
+    required: ["description", "card_prompt"],
+  };
+  try {
+    const response = await client.models.generateContent({
+      model: MODEL_ID,
+      contents: text,
+      config: {
+        systemInstruction: system,
+        responseMimeType: "application/json",
+        responseSchema: schema,
+        temperature: 0.4,
+      },
+    });
+    const parsed = JSON.parse(response.text ?? "{}") as {
+      description?: string;
+      card_prompt?: string;
+    };
+    const description = (parsed.description ?? "").trim();
+    const cardPrompt = (parsed.card_prompt ?? "").trim();
+    if (!description || !cardPrompt) {
+      return { ok: false, error: "Empty character card." };
+    }
+    await logUsage({
+      teacherId: input.teacherId,
+      kind: "passage_generation",
+      model: MODEL_ID,
+      inputTokens: response.usageMetadata?.promptTokenCount,
+      outputTokens: response.usageMetadata?.candidatesTokenCount,
+      creditsUsed: CREDIT_COST.passage_generation,
+      success: true,
+      requestSummary: `character_card: ${input.title.slice(0, 80)}`,
+    });
+    return { ok: true, description, cardPrompt };
+  } catch (e: any) {
+    trackError(e, { route: "build-book.extractCharacterCard", userId: input.teacherId });
+    return { ok: false, error: e.message ?? "Character card failed." };
+  }
+}
+
 function validateBrief(brief: BookBrief): string | null {
   if (!brief.phonicsPattern?.trim()) return "Pick a phonics pattern.";
   if (!brief.patternLabel?.trim()) return "Pattern label missing.";
@@ -158,6 +229,10 @@ function validateBrief(brief: BookBrief): string | null {
 export function estimateBookCredits(brief: BookBrief): number {
   let credits = CREDIT_COST.passage_generation;
   if (brief.perPageImage) {
+    // +1 text credit for the character-card extraction, +1 image for the
+    // reference card. Per-page = image_brief + image (the reference image
+    // anchors all pages so the cat looks like the same cat throughout).
+    credits += CREDIT_COST.passage_generation + CREDIT_COST.image_generation;
     credits += brief.pageCount * (CREDIT_COST.image_generation + CREDIT_COST.quiz_generation);
   }
   credits += 3; // QC suite (no questions, just passage + image)
@@ -232,7 +307,38 @@ export async function buildBook(input: {
       .eq("id", bookId);
   }
 
-  // 3) Per-page images.
+  // 3) Build a "character card" reference image so every page draws the
+  //    SAME character (was: each page regenerated from scratch, so the
+  //    cat looked slightly different on every spread).
+  let characterDescription = "";
+  let referenceImage: { data: string; mimeType: string } | null = null;
+  if (brief.perPageImage) {
+    const cardRes = await extractCharacterCard({
+      teacherId,
+      title: textRes.title,
+      pages: textRes.pages,
+    });
+    if (cardRes.ok) {
+      creditsUsed += CREDIT_COST.passage_generation;
+      characterDescription = cardRes.description;
+      // Generate a clean portrait of the character on a plain background.
+      const refRes = await generateImage({
+        teacherId,
+        prompt: `${cardRes.cardPrompt} ${cardRes.description} Centered, full body visible, soft pastel background, no other characters, no text or labels.`,
+      });
+      if (refRes.ok) {
+        creditsUsed += CREDIT_COST.image_generation;
+        referenceImage = { data: refRes.imageBase64, mimeType: refRes.mimeType };
+      } else {
+        warnings.push(`Character card: ${refRes.error}`);
+      }
+    } else {
+      warnings.push(`Character card: ${cardRes.error}`);
+    }
+  }
+
+  // 4) Per-page images. When we have a reference, pass it into every
+  //    page generation so the model anchors on the same character.
   const pages: BookPage[] = [];
   for (let i = 0; i < textRes.pages.length; i++) {
     const text = textRes.pages[i];
@@ -250,7 +356,16 @@ export async function buildBook(input: {
       } else {
         warnings.push(`Page ${i + 1} image brief: ${briefRes.error}`);
       }
-      const imgRes = await generateImage({ teacherId, prompt });
+      // Prepend the character description as a textual anchor too —
+      // belt-and-suspenders with the reference image.
+      const anchoredPrompt = characterDescription
+        ? `Character: ${characterDescription}\nScene: ${prompt}`
+        : prompt;
+      const imgRes = await generateImage({
+        teacherId,
+        prompt: anchoredPrompt,
+        referenceImage,
+      });
       if (imgRes.ok) {
         imageUrl = imgRes.imageUrl;
         creditsUsed += CREDIT_COST.image_generation;
