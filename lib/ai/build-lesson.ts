@@ -26,6 +26,7 @@ import {
   type GeneratedMCQ,
 } from "@/lib/ai/readee-ai";
 import { extractCharacterCard } from "@/lib/ai/character-card";
+import { indexContent } from "@/lib/ai/embeddings";
 import { runFullQuizQc } from "@/lib/ai/qc";
 import {
   CREDIT_COST,
@@ -325,6 +326,21 @@ export async function buildLesson(input: {
     creditsConsumed: creditsUsed,
     monthlyLimit: MONTHLY_CREDIT_LIMIT,
   });
+
+  // 9) Index for semantic search (fire-and-forget — embedding failures
+  //    must never sink a successful build).
+  void indexContent({
+    contentType: "custom_lesson",
+    contentId: lessonId,
+    teacherId,
+    text: `${passageTitle}\n\n${brief.topic}\n\n${passageBody}`,
+    metadata: {
+      title: passageTitle,
+      topic: brief.topic,
+      grade_level: brief.gradeLevel,
+      slide_count: slides.length,
+    },
+  }).catch(() => {});
 
   return { ok: true, lessonId, warnings, creditsUsed };
 }

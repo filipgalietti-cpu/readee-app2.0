@@ -31,6 +31,7 @@ import { CREDIT_COST, MONTHLY_CREDIT_LIMIT } from "@/lib/ai/credits";
 import { trackError } from "@/lib/observability/track";
 import { getPattern } from "@/lib/ai/phonics-patterns";
 import { extractCharacterCard } from "@/lib/ai/character-card";
+import { indexContent } from "@/lib/ai/embeddings";
 
 export type BookBrief = {
   title: string;
@@ -352,6 +353,20 @@ export async function buildBook(input: {
     creditsConsumed: creditsUsed,
     monthlyLimit: MONTHLY_CREDIT_LIMIT,
   });
+
+  // 7) Index for semantic search (fire-and-forget).
+  void indexContent({
+    contentType: "custom_book",
+    contentId: bookId,
+    teacherId,
+    text: `${textRes.title}\n\nPhonics: ${brief.patternLabel}\n\n${pages.map((p) => p.text).join("\n")}`,
+    metadata: {
+      title: textRes.title,
+      pattern_label: brief.patternLabel,
+      grade_level: brief.gradeLevel,
+      page_count: pages.length,
+    },
+  }).catch(() => {});
 
   return { ok: true, bookId, warnings, creditsUsed };
 }

@@ -30,6 +30,7 @@ import {
 import { runFullQuizQc } from "@/lib/ai/qc";
 import { CREDIT_COST, MONTHLY_CREDIT_LIMIT } from "@/lib/ai/credits";
 import { trackError } from "@/lib/observability/track";
+import { indexContent } from "@/lib/ai/embeddings";
 
 export type Level = "easy" | "on_level" | "advanced";
 
@@ -407,6 +408,20 @@ export async function buildLeveledPassage(input: {
     creditsConsumed: creditsUsed,
     monthlyLimit: MONTHLY_CREDIT_LIMIT,
   });
+
+  // 7) Index for semantic search (fire-and-forget).
+  void indexContent({
+    contentType: "leveled_passage",
+    contentId: passageId,
+    teacherId,
+    text: `${textRes.title}\n\nTopic: ${brief.topic}\n\n${versions.map((v) => `[${v.level}] ${v.body}`).join("\n\n")}`,
+    metadata: {
+      title: textRes.title,
+      topic: brief.topic,
+      base_grade: brief.baseGrade,
+      version_count: versions.length,
+    },
+  }).catch(() => {});
 
   return { ok: true, passageId, warnings, creditsUsed };
 }

@@ -9,6 +9,7 @@ import g2Json from "@/app/data/2nd-grade-standards-questions.json";
 import g3Json from "@/app/data/3rd-grade-standards-questions.json";
 import g4Json from "@/app/data/4th-grade-standards-questions.json";
 import LibraryBrowser from "./_components/LibraryBrowser";
+import SemanticSearchBar from "../_components/SemanticSearchBar";
 
 export const dynamic = "force-dynamic";
 
@@ -120,6 +121,10 @@ export default async function LibraryPage() {
             Your custom quizzes →
           </Link>
         </div>
+      </div>
+
+      <div className="mt-6">
+        <SemanticSearchBar isPremium={(profile as any).plan !== "free"} />
       </div>
 
       <div className="mt-6">
