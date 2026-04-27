@@ -96,6 +96,8 @@ export async function analyzeFluencyReading(input: {
   audioMimeType: string;
   passageText: string;
   passageGradeLevel: string | null;
+  /** When the reading satisfies a teacher assignment, link it back. */
+  assignmentId?: string | null;
 }): Promise<
   | { ok: true; readingId: string; analysis: FluencyAnalysis; audioUrl: string }
   | { ok: false; error: string }
@@ -214,11 +216,30 @@ Transcribe and analyze the audio now.`;
       wcpm: analysis.wcpm,
       encouragement: analysis.encouragement,
       teacher_summary: analysis.teacherSummary,
+      assignment_id: input.assignmentId ?? null,
     })
     .select("id")
     .single();
   if (rowErr || !row) {
     return { ok: false, error: `Persist failed: ${rowErr?.message}` };
+  }
+
+  // 4) If this satisfied an assignment, mark it complete.
+  if (input.assignmentId) {
+    const scorePercent =
+      analysis.wordsTotal > 0
+        ? Math.round((analysis.wordsCorrect / analysis.wordsTotal) * 100)
+        : null;
+    await admin.from("assignment_submissions").upsert(
+      {
+        assignment_id: input.assignmentId,
+        child_id: input.childId,
+        completed_at: new Date().toISOString(),
+        score_percent: scorePercent,
+        carrots_earned: 0,
+      },
+      { onConflict: "assignment_id,child_id" },
+    );
   }
 
   return { ok: true, readingId, analysis, audioUrl };

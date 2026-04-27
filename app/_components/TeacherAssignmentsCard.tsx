@@ -8,7 +8,7 @@ import { supabaseBrowser } from "@/lib/supabase/client";
 
 type OpenAssignment = {
   id: string;
-  kind: "readee_lesson" | "custom_quiz";
+  kind: "readee_lesson" | "custom_quiz" | "fluency";
   source_id: string;
   title: string;
   note: string | null;
@@ -38,6 +38,9 @@ function assignmentHref(a: OpenAssignment, childId: string): string {
   }
   if (a.kind === "custom_quiz") {
     return `/practice/custom-quiz/${a.source_id}?child=${childId}`;
+  }
+  if (a.kind === "fluency") {
+    return `/fluency?child=${childId}&assignment=${a.id}`;
   }
   return `/dashboard?child=${childId}`;
 }

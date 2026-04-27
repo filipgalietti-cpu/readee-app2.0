@@ -2,7 +2,7 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import FluencyRecorder from "./_components/FluencyRecorder";
 import FluencyHistory from "./_components/FluencyHistory";
-import { Mic, Sparkles } from "lucide-react";
+import { Mic, Sparkles, GraduationCap } from "lucide-react";
 
 export const dynamic = "force-dynamic";
 
@@ -34,15 +34,63 @@ const SAMPLE_PASSAGES: { grade: string; title: string; text: string }[] = [
   },
 ];
 
-export default async function FluencyHubPage() {
+export default async function FluencyHubPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ assignment?: string; child?: string }>;
+}) {
+  const { assignment: assignmentId, child: queryChildId } = await searchParams;
   const supabase = await createClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
   if (!user) redirect("/login");
 
-  // Pull the kids the user has access to (their own children OR
-  // students in their classrooms — we union both).
+  // If we got an ?assignment=, the kid is fulfilling a teacher assignment
+  // — lock the passage to that one and route the analyze call with the id.
+  let assignedPassage: {
+    text: string;
+    title: string;
+    grade: string;
+    childId: string;
+  } | null = null;
+
+  if (assignmentId) {
+    const { data: a } = await supabase
+      .from("assignments")
+      .select("id, kind, source_id, classroom_id, title")
+      .eq("id", assignmentId)
+      .maybeSingle();
+    if (a && (a as any).kind === "fluency") {
+      const passageId = (a as any).source_id;
+      const { data: p } = await supabase
+        .from("fluency_passages")
+        .select("text, title, grade_level")
+        .eq("id", passageId)
+        .maybeSingle();
+      if (p) {
+        let childId = queryChildId ?? null;
+        if (!childId) {
+          const { data: m } = await supabase
+            .from("classroom_memberships")
+            .select("child_id, children!inner(parent_id)")
+            .eq("classroom_id", (a as any).classroom_id)
+            .eq("children.parent_id", user.id)
+            .limit(1);
+          childId = ((m ?? []) as any[])[0]?.child_id ?? null;
+        }
+        if (childId) {
+          assignedPassage = {
+            text: (p as any).text,
+            title: (p as any).title ?? "Fluency reading",
+            grade: (p as any).grade_level ?? "2nd",
+            childId,
+          };
+        }
+      }
+    }
+  }
+
   const { data: ownKids } = await supabase
     .from("children")
     .select("id, first_name, grade")
@@ -64,7 +112,7 @@ export default async function FluencyHubPage() {
     grade: string;
   }[];
 
-  if (dedup.length === 0) {
+  if (dedup.length === 0 && !assignedPassage) {
     return (
       <div className="mx-auto max-w-2xl px-6 py-16 text-center">
         <h1 className="text-2xl font-bold">Fluency check</h1>
@@ -87,18 +135,32 @@ export default async function FluencyHubPage() {
         Fluency check
       </h1>
       <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">
-        Pick a passage, tap record, read it aloud. Readee.ai listens
-        word-by-word and tells you what to practice. Replaces the running-record
-        assessment teachers used to do 1:1.
+        {assignedPassage
+          ? "Your teacher assigned this. Read it aloud — Readee.ai listens and gives feedback."
+          : "Pick a passage, tap record, read it aloud. Readee.ai listens word-by-word."}
       </p>
 
+      {assignedPassage && (
+        <div className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-indigo-50 px-3 py-1 text-[11px] font-bold text-indigo-700">
+          <GraduationCap className="h-3 w-3" />
+          From your teacher
+        </div>
+      )}
+
       <div className="mt-6">
-        <FluencyRecorder kids={dedup} samplePassages={SAMPLE_PASSAGES} />
+        <FluencyRecorder
+          kids={dedup}
+          samplePassages={SAMPLE_PASSAGES}
+          assignedPassage={assignedPassage}
+          assignmentId={assignmentId ?? null}
+        />
       </div>
 
-      <div className="mt-12">
-        <FluencyHistory kids={dedup} />
-      </div>
+      {!assignedPassage && (
+        <div className="mt-12">
+          <FluencyHistory kids={dedup} />
+        </div>
+      )}
     </div>
   );
 }

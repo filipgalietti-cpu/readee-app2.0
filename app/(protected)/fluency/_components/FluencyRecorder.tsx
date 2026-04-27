@@ -13,6 +13,7 @@ import {
   Trophy,
   ArrowRight,
 } from "lucide-react";
+import AssignFluencyButton from "./AssignFluencyButton";
 
 type Kid = { id: string; first_name: string; grade: string };
 type Passage = { grade: string; title: string; text: string };
@@ -37,11 +38,18 @@ type Analysis = {
 export default function FluencyRecorder({
   kids,
   samplePassages,
+  assignedPassage,
+  assignmentId,
 }: {
   kids: Kid[];
   samplePassages: Passage[];
+  assignedPassage?: { text: string; title: string; grade: string; childId: string } | null;
+  assignmentId?: string | null;
 }) {
-  const [childId, setChildId] = useState(kids[0]?.id ?? "");
+  const isAssigned = !!assignedPassage;
+  const [childId, setChildId] = useState(
+    assignedPassage?.childId ?? kids[0]?.id ?? "",
+  );
   const [passageIdx, setPassageIdx] = useState(0);
   const [customMode, setCustomMode] = useState(false);
   const [customText, setCustomText] = useState("");
@@ -58,9 +66,11 @@ export default function FluencyRecorder({
   const chunksRef = useRef<Blob[]>([]);
   const tickRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  const passage = customMode
-    ? { grade: kids.find((k) => k.id === childId)?.grade ?? "2nd", title: "Custom passage", text: customText }
-    : samplePassages[passageIdx];
+  const passage = isAssigned
+    ? { grade: assignedPassage!.grade, title: assignedPassage!.title, text: assignedPassage!.text }
+    : customMode
+      ? { grade: kids.find((k) => k.id === childId)?.grade ?? "2nd", title: "Custom passage", text: customText }
+      : samplePassages[passageIdx];
 
   useEffect(() => {
     return () => {
@@ -146,6 +156,7 @@ export default function FluencyRecorder({
       fd.append("childId", childId);
       fd.append("passageText", passage.text);
       fd.append("gradeLevel", passage.grade);
+      if (assignmentId) fd.append("assignmentId", assignmentId);
       const r = await fetch("/api/fluency/analyze", {
         method: "POST",
         body: fd,
@@ -178,7 +189,8 @@ export default function FluencyRecorder({
 
   return (
     <div className="space-y-4">
-      {/* Kid + passage picker */}
+      {/* Kid + passage picker — hidden when fulfilling an assignment */}
+      {!isAssigned && (
       <div className="rounded-3xl border border-zinc-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
         {kids.length > 1 && (
           <div className="mb-4">
@@ -255,12 +267,22 @@ export default function FluencyRecorder({
           )}
         </div>
       </div>
+      )}
 
       {/* The passage to read */}
       {passage.text && (
         <div className="rounded-3xl border-2 border-violet-200 bg-gradient-to-br from-violet-50/40 via-white to-pink-50/40 p-6 shadow-sm dark:border-violet-900/40">
-          <div className="text-[10px] font-bold uppercase tracking-widest text-violet-600 dark:text-violet-300">
-            Read this aloud
+          <div className="flex items-start justify-between gap-3">
+            <div className="text-[10px] font-bold uppercase tracking-widest text-violet-600 dark:text-violet-300">
+              Read this aloud
+            </div>
+            {!isAssigned && (
+              <AssignFluencyButton
+                passageTitle={passage.title}
+                passageText={passage.text}
+                gradeLevel={passage.grade}
+              />
+            )}
           </div>
           <p
             className="mt-3 text-[22px] font-medium leading-snug text-zinc-900 dark:text-white"

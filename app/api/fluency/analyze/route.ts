@@ -29,6 +29,7 @@ export async function POST(req: NextRequest) {
   const childId = String(form.get("childId") ?? "");
   const passageText = String(form.get("passageText") ?? "");
   const gradeLevel = (form.get("gradeLevel") as string | null) ?? null;
+  const assignmentId = (form.get("assignmentId") as string | null) ?? null;
   const audio = form.get("audio");
 
   if (!childId) {
@@ -76,6 +77,7 @@ export async function POST(req: NextRequest) {
     audioMimeType,
     passageText,
     passageGradeLevel: gradeLevel,
+    assignmentId,
   });
 
   if (!res.ok) {

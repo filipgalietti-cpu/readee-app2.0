@@ -744,3 +744,68 @@ ${d.passage_body}`;
   return { ok: true, quizId, assignedTo: assigned };
 }
 
+
+/**
+ * Create a fluency assignment from a passage. Teacher picks one
+ * passage + a list of classrooms; we create a fluency_passages row
+ * (reusable) and one assignment row per classroom pointing at it.
+ */
+export async function assignFluencyPassage(input: {
+  title: string;
+  text: string;
+  gradeLevel: string | null;
+  classroomIds: string[];
+  dueAt?: string | null;
+}): Promise<
+  | { ok: true; passageId: string; assignedTo: number }
+  | { ok: false; error: string }
+> {
+  const profile = await requireProfile();
+  if (profile.role !== "educator") {
+    return { ok: false, error: "Only teachers can assign fluency." };
+  }
+  if (!input.text.trim()) return { ok: false, error: "Passage text required." };
+  if (!input.classroomIds || input.classroomIds.length === 0) {
+    return { ok: false, error: "Pick at least one classroom." };
+  }
+
+  const supabase = await createClient();
+
+  // 1) Create the passage row.
+  const { data: passageRow, error: passageErr } = await supabase
+    .from("fluency_passages")
+    .insert({
+      teacher_id: profile.id,
+      title: input.title.trim().slice(0, 120) || "Fluency passage",
+      text: input.text.trim().slice(0, 4000),
+      grade_level: input.gradeLevel,
+    })
+    .select("id")
+    .single();
+  if (passageErr || !passageRow) {
+    return { ok: false, error: passageErr?.message ?? "Could not save passage." };
+  }
+  const passageId = (passageRow as { id: string }).id;
+
+  // 2) One assignment per classroom.
+  let assigned = 0;
+  for (const classroomId of input.classroomIds) {
+    const { error } = await supabase.from("assignments").insert({
+      classroom_id: classroomId,
+      assigned_by: profile.id,
+      kind: "fluency",
+      source_id: passageId,
+      title: `Fluency: ${input.title.trim() || "Read aloud"}`,
+      due_at: input.dueAt ?? null,
+      audio_prompt_enabled: false,
+      audio_choices_enabled: false,
+      shuffle_questions: false,
+      shuffle_choices: false,
+      reveal_correct_immediately: false,
+    });
+    if (!error) assigned += 1;
+    revalidatePath(`/classroom/${classroomId}`);
+  }
+
+  return { ok: true, passageId, assignedTo: assigned };
+}
