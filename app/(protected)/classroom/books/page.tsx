@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { BookOpenText, Sparkles, ArrowRight, ImageIcon } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/lib/auth/helpers";
+import AssetCardActions from "../_components/AssetCardActions";
 
 export const dynamic = "force-dynamic";
 
@@ -82,7 +83,8 @@ export default async function BooksHomePage() {
           {list.map((b) => {
             const pageCount = Array.isArray(b.pages) ? b.pages.length : 0;
             return (
-              <li key={b.id}>
+              <li key={b.id} className="relative">
+                <AssetCardActions type="book" id={b.id} initialTitle={b.title} />
                 <Link
                   href={`/classroom/books/${b.id}`}
                   className="block overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:border-indigo-300 hover:shadow-md dark:border-slate-800 dark:bg-slate-900/40"

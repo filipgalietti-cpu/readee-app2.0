@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { BookOpen, Sparkles, ArrowRight, ImageIcon } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/lib/auth/helpers";
+import AssetCardActions from "../_components/AssetCardActions";
 
 export const dynamic = "force-dynamic";
 
@@ -80,7 +81,8 @@ export default async function LessonsHomePage() {
           {list.map((l) => {
             const slideCount = Array.isArray(l.slides) ? l.slides.length : 0;
             return (
-              <li key={l.id}>
+              <li key={l.id} className="relative">
+                <AssetCardActions type="lesson" id={l.id} initialTitle={l.title} />
                 <Link
                   href={`/classroom/lessons/${l.id}`}
                   className="block overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:border-indigo-300 hover:shadow-md dark:border-slate-800 dark:bg-slate-900/40"

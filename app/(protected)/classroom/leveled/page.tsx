@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Layers, Sparkles, ArrowRight, ImageIcon } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/lib/auth/helpers";
+import AssetCardActions from "../_components/AssetCardActions";
 
 export const dynamic = "force-dynamic";
 
@@ -82,7 +83,8 @@ export default async function LeveledHomePage() {
           {list.map((p) => {
             const versionCount = Array.isArray(p.versions) ? p.versions.length : 0;
             return (
-              <li key={p.id}>
+              <li key={p.id} className="relative">
+                <AssetCardActions type="leveled" id={p.id} initialTitle={p.title} />
                 <Link
                   href={`/classroom/leveled/${p.id}`}
                   className="block overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:border-indigo-300 hover:shadow-md dark:border-slate-800 dark:bg-slate-900/40"
