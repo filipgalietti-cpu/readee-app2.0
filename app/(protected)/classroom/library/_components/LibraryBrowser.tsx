@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Search, Check, Filter, Volume2, ImageOff, Grid, List, ChevronRight } from "lucide-react";
+import { Search, Check, Filter, Volume2, ImageOff, Grid, List, ChevronRight, ChevronDown } from "lucide-react";
 
 type LibraryQuestion = {
   id: string;
@@ -236,6 +236,7 @@ export default function LibraryBrowser({ questions }: { questions: LibraryQuesti
         <StandardsGrid
           byStandard={byStandard}
           onPick={(sid) => setFocusStandardId(sid)}
+          forceGrade={grade === "All" ? null : grade}
         />
       ) : (
         <ul className="mt-6 space-y-3">
@@ -369,15 +370,29 @@ type ByStandardEntry = [
   { standardTitle: string; domain: string; grade: string; items: LibraryQuestion[] },
 ];
 
+/**
+ * StandardsGrid — accordion-style browser. Default state: every grade
+ * collapsed except the first one with results. Within an open grade,
+ * domains are also collapsible (default first domain open).
+ *
+ * Pattern: [Grade header (click to toggle)]
+ *           ▼ [Domain header (click to toggle)]
+ *               • Standard card · Standard card · ...
+ *           ▶ [Domain header collapsed]
+ *
+ * Search + grade filter at the top of the page narrow the data; the
+ * accordion just controls how much you see at once.
+ */
 function StandardsGrid({
   byStandard,
   onPick,
+  forceGrade,
 }: {
   byStandard: ByStandardEntry[];
   onPick: (sid: string) => void;
+  /** When set (filter pinned to a grade), only that grade renders + auto-expand. */
+  forceGrade: string | null;
 }) {
-  // Group standards by grade → domain so the index reads as a teacher
-  // would think about it. Ordering: Kindergarten first, then 1st-4th.
   const GRADE_ORDER = ["K", "1st", "2nd", "3rd", "4th"];
 
   const byGrade = useMemo(() => {
@@ -393,54 +408,191 @@ function StandardsGrid({
     return m;
   }, [byStandard]);
 
+  const visibleGrades = GRADE_ORDER.filter((g) => byGrade.has(g));
+
+  // Default: only the first eligible grade is open. If a single-grade
+  // filter is active, that one is open and the others don't render.
+  const [openGrades, setOpenGrades] = useState<Set<string>>(() => {
+    if (forceGrade) return new Set([forceGrade]);
+    const first = visibleGrades[0];
+    return new Set(first ? [first] : []);
+  });
+
+  // Re-sync when filter changes
+  useEffect(() => {
+    if (forceGrade) {
+      setOpenGrades(new Set([forceGrade]));
+    } else if (visibleGrades.length > 0) {
+      setOpenGrades((prev) => (prev.size === 0 ? new Set([visibleGrades[0]]) : prev));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [forceGrade]);
+
+  function toggleGrade(g: string) {
+    setOpenGrades((prev) => {
+      const next = new Set(prev);
+      if (next.has(g)) next.delete(g);
+      else next.add(g);
+      return next;
+    });
+  }
+
+  function totalQuestions(domains: Map<string, ByStandardEntry[]>): number {
+    let n = 0;
+    for (const arr of domains.values()) {
+      for (const [, info] of arr) n += info.items.length;
+    }
+    return n;
+  }
+
+  // When forceGrade is set, render only that grade
+  const grades = forceGrade
+    ? visibleGrades.filter((g) => g === forceGrade)
+    : visibleGrades;
+
   return (
-    <div className="mt-6 space-y-8">
-      {GRADE_ORDER.filter((g) => byGrade.has(g)).map((g) => {
+    <div className="mt-6 space-y-3">
+      {grades.map((g) => {
         const domains = byGrade.get(g)!;
+        const standardCount = Array.from(domains.values()).reduce(
+          (s, arr) => s + arr.length,
+          0,
+        );
+        const qCount = totalQuestions(domains);
+        const isOpen = openGrades.has(g);
+
         return (
-          <section key={g}>
-            <h2 className="text-lg font-extrabold tracking-tight text-zinc-900 dark:text-white">
-              {g === "K" ? "Kindergarten" : `${g} Grade`}
-            </h2>
-            <div className="mt-3 space-y-5">
-              {Array.from(domains.entries()).map(([domain, standards]) => (
-                <div key={domain}>
-                  <div className="mb-2 text-[11px] font-bold uppercase tracking-widest text-zinc-500 dark:text-slate-400">
-                    {domain}
-                  </div>
-                  <ul className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-                    {standards.map(([sid, info]) => (
-                      <li key={sid}>
-                        <button
-                          type="button"
-                          onClick={() => onPick(sid)}
-                          className="flex w-full items-start gap-3 rounded-2xl border border-zinc-200 bg-white p-3 text-left transition hover:-translate-y-0.5 hover:border-indigo-300 hover:shadow-sm dark:border-slate-800 dark:bg-slate-900/40"
-                        >
-                          <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-indigo-100 font-mono text-[11px] font-extrabold text-indigo-700 dark:bg-indigo-950/40 dark:text-indigo-300">
-                            {sid.split(".").slice(-1)[0]}
-                          </div>
-                          <div className="min-w-0 flex-1">
-                            <div className="flex items-center gap-1.5">
-                              <span className="font-mono text-xs font-bold text-zinc-900 dark:text-white">
-                                {sid}
-                              </span>
-                              <span className="rounded-full bg-zinc-100 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-zinc-600 dark:bg-slate-800 dark:text-slate-400">
-                                {info.items.length}
-                              </span>
-                            </div>
-                            <p className="mt-0.5 line-clamp-2 text-xs text-zinc-500 dark:text-slate-400">
-                              {info.standardTitle}
-                            </p>
-                          </div>
-                          <ChevronRight className="mt-1 h-4 w-4 flex-shrink-0 text-zinc-400" />
-                        </button>
-                      </li>
-                    ))}
-                  </ul>
+          <section
+            key={g}
+            className="overflow-hidden rounded-2xl border border-zinc-200 bg-white dark:border-slate-800 dark:bg-slate-900/40"
+          >
+            <button
+              type="button"
+              onClick={() => toggleGrade(g)}
+              className="flex w-full items-center gap-3 px-5 py-4 text-left transition hover:bg-zinc-50 dark:hover:bg-slate-900/60"
+            >
+              <span
+                className={`flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-md text-zinc-400 transition ${
+                  isOpen ? "rotate-0" : "-rotate-90"
+                }`}
+              >
+                <ChevronDown className="h-4 w-4" />
+              </span>
+              <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600 font-mono text-xs font-bold text-white">
+                {g}
+              </div>
+              <div className="min-w-0 flex-1">
+                <h2 className="text-base font-extrabold text-zinc-900 dark:text-white">
+                  {g === "K" ? "Kindergarten" : `${g} Grade`}
+                </h2>
+                <div className="text-xs text-zinc-500 dark:text-slate-400">
+                  {standardCount} standard{standardCount === 1 ? "" : "s"} ·{" "}
+                  {qCount.toLocaleString()} question{qCount === 1 ? "" : "s"}
                 </div>
-              ))}
-            </div>
+              </div>
+            </button>
+
+            {isOpen && (
+              <div className="border-t border-zinc-100 bg-zinc-50/40 px-5 py-4 dark:border-slate-800 dark:bg-slate-950/30">
+                <DomainAccordion
+                  domains={domains}
+                  onPick={onPick}
+                  gradeKey={g}
+                />
+              </div>
+            )}
           </section>
+        );
+      })}
+    </div>
+  );
+}
+
+function DomainAccordion({
+  domains,
+  onPick,
+  gradeKey,
+}: {
+  domains: Map<string, ByStandardEntry[]>;
+  onPick: (sid: string) => void;
+  gradeKey: string;
+}) {
+  const entries = Array.from(domains.entries());
+  // Default: open the first domain only.
+  const [open, setOpen] = useState<Set<string>>(
+    () => new Set(entries[0] ? [entries[0][0]] : []),
+  );
+
+  function toggle(domain: string) {
+    setOpen((prev) => {
+      const next = new Set(prev);
+      if (next.has(domain)) next.delete(domain);
+      else next.add(domain);
+      return next;
+    });
+  }
+
+  return (
+    <div className="space-y-3">
+      {entries.map(([domain, standards]) => {
+        const isOpen = open.has(domain);
+        return (
+          <div
+            key={domain}
+            className="overflow-hidden rounded-xl border border-zinc-200 bg-white dark:border-slate-700 dark:bg-slate-900"
+          >
+            <button
+              type="button"
+              onClick={() => toggle(domain)}
+              className="flex w-full items-center gap-2 px-4 py-2 text-left transition hover:bg-zinc-50 dark:hover:bg-slate-900/60"
+            >
+              <span
+                className={`flex h-5 w-5 flex-shrink-0 items-center justify-center text-zinc-400 transition ${
+                  isOpen ? "rotate-0" : "-rotate-90"
+                }`}
+              >
+                <ChevronDown className="h-3.5 w-3.5" />
+              </span>
+              <span className="flex-1 text-[12px] font-bold uppercase tracking-widest text-zinc-600 dark:text-slate-300">
+                {domain}
+              </span>
+              <span className="rounded-full bg-zinc-100 px-2 py-0.5 text-[10px] font-bold text-zinc-600 dark:bg-slate-800 dark:text-slate-400">
+                {standards.length}
+              </span>
+            </button>
+
+            {isOpen && (
+              <ul className="grid gap-2 border-t border-zinc-100 p-3 dark:border-slate-800 sm:grid-cols-2 lg:grid-cols-3">
+                {standards.map(([sid, info]) => (
+                  <li key={sid}>
+                    <button
+                      type="button"
+                      onClick={() => onPick(sid)}
+                      className="flex w-full items-start gap-3 rounded-xl border border-zinc-200 bg-white p-3 text-left transition hover:-translate-y-0.5 hover:border-indigo-300 hover:shadow-sm dark:border-slate-700 dark:bg-slate-900"
+                    >
+                      <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-indigo-100 font-mono text-[11px] font-extrabold text-indigo-700 dark:bg-indigo-950/40 dark:text-indigo-300">
+                        {sid.split(".").slice(-1)[0]}
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-center gap-1.5">
+                          <span className="font-mono text-xs font-bold text-zinc-900 dark:text-white">
+                            {sid}
+                          </span>
+                          <span className="rounded-full bg-zinc-100 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-zinc-600 dark:bg-slate-800 dark:text-slate-400">
+                            {info.items.length}
+                          </span>
+                        </div>
+                        <p className="mt-0.5 line-clamp-2 text-xs text-zinc-500 dark:text-slate-400">
+                          {info.standardTitle}
+                        </p>
+                      </div>
+                      <ChevronRight className="mt-1 h-4 w-4 flex-shrink-0 text-zinc-400" />
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
         );
       })}
     </div>
