@@ -18,7 +18,16 @@ import {
 
 /* ─── Nav items ──────────────────────────────────── */
 
-type NavItem = { href: string; icon: any; label: string; iconColor?: string; emphasis?: boolean; shimmer?: boolean };
+type NavItem = {
+  href: string;
+  icon: any;
+  label: string;
+  iconColor?: string;
+  emphasis?: boolean;
+  shimmer?: boolean;
+  /** Hide in the collapsed rail to keep the icon list short. */
+  collapsedHidden?: boolean;
+};
 type NavSection = { label: string; items: NavItem[]; collapsible?: boolean };
 
 function getNavSections(
@@ -35,6 +44,9 @@ function getNavSections(
   const { ownsClassroom, hasChildren, hasAdminScope } = capabilities;
 
   if (viewMode === "teacher" && ownsClassroom) {
+    // 4 groups: Teach (daily flow), AI tools, Insights, Library.
+    // The collapsed rail shows ~1 icon per group so it doesn't read
+    // as one long wall.
     sections.push({
       label: "Teach",
       items: [
@@ -46,15 +58,47 @@ function getNavSections(
           shimmer: true,
         },
         { href: "/classroom", icon: GraduationCap, label: "Classroom" },
-        { href: "/classroom/live", icon: Zap, label: "Live quiz" },
-        { href: "/fluency", icon: Mic, label: "Fluency check" },
+        { href: "/classroom/live", icon: Zap, label: "Live quiz", collapsedHidden: true },
+      ],
+    });
+
+    sections.push({
+      label: "AI tools",
+      items: [
+        {
+          href: "/classroom/tools",
+          icon: Brain,
+          label: "Readee.ai tools",
+          emphasis: true,
+        },
+        { href: "/buddy", icon: Mic, label: "Reading Buddy" },
+      ],
+    });
+
+    sections.push({
+      label: "Insights",
+      items: [
         { href: "/classroom/reports", icon: BarChart3, label: "Reports" },
+        { href: "/fluency", icon: Mic, label: "Fluency check", collapsedHidden: true },
+      ],
+    });
+
+    sections.push({
+      label: "Library",
+      items: [
         { href: "/classroom/library", icon: Library, label: "Library" },
-        { href: "/classroom/lessons", icon: BookText, label: "Lessons" },
-        { href: "/classroom/books", icon: BookOpenText, label: "Books" },
-        { href: "/classroom/leveled", icon: Layers, label: "Leveled passages" },
-        { href: "/classroom/authoring", icon: ClipboardPen, label: "Quizzes" },
-        { href: "/classroom/refer", icon: Users, label: "Refer a teacher" },
+        { href: "/classroom/lessons", icon: BookText, label: "Lessons", collapsedHidden: true },
+        { href: "/classroom/books", icon: BookOpenText, label: "Books", collapsedHidden: true },
+        { href: "/classroom/leveled", icon: Layers, label: "Leveled passages", collapsedHidden: true },
+        { href: "/classroom/authoring", icon: ClipboardPen, label: "Quizzes", collapsedHidden: true },
+      ],
+    });
+
+    sections.push({
+      label: "Grow",
+      collapsible: true,
+      items: [
+        { href: "/classroom/refer", icon: Users, label: "Refer a teacher", collapsedHidden: true },
       ],
     });
 
@@ -384,11 +428,14 @@ export default function AppSidebar({ mobileOnly = false }: { mobileOnly?: boolea
                 <ChevronDown className="w-5 h-5 text-zinc-400 dark:text-slate-500 rotate-90" strokeWidth={2} />
               </button>
 
-              {sections.map(({ label, items }, sIdx) => (
+              {sections.map(({ label, items }, sIdx) => {
+                const railItems = items.filter((i) => !i.collapsedHidden);
+                if (railItems.length === 0) return null;
+                return (
                 <div key={label}>
                   {sIdx > 0 && <div className="w-5 h-px bg-zinc-200 dark:bg-slate-700 my-2" />}
                   <div className="space-y-1">
-                    {items.map(({ href, icon: Icon, label: itemLabel, iconColor, shimmer }: any) => (
+                    {railItems.map(({ href, icon: Icon, label: itemLabel, iconColor, shimmer }: any) => (
                       <SidebarTooltip key={href} label={itemLabel}>
                         {shimmer ? (
                           <Link
@@ -411,7 +458,8 @@ export default function AppSidebar({ mobileOnly = false }: { mobileOnly?: boolea
                     ))}
                   </div>
                 </div>
-              ))}
+                );
+              })}
 
               {/* Avatar at bottom — teacher initials or child image */}
               <div className="mt-auto">

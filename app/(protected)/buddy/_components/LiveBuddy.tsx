@@ -127,14 +127,31 @@ export default function LiveBuddy({
       );
 
       // 4) Set up audio capture — 16 kHz mono PCM out the WS.
-      const stream = await navigator.mediaDevices.getUserMedia({
-        audio: {
-          channelCount: 1,
-          echoCancellation: true,
-          noiseSuppression: true,
-          autoGainControl: true,
-        },
-      });
+      let stream: MediaStream;
+      try {
+        stream = await navigator.mediaDevices.getUserMedia({
+          audio: {
+            channelCount: 1,
+            echoCancellation: true,
+            noiseSuppression: true,
+            autoGainControl: true,
+          },
+        });
+      } catch (mediaErr: any) {
+        const name = mediaErr?.name ?? "";
+        if (name === "NotAllowedError" || name === "SecurityError") {
+          throw new Error(
+            "Microphone access denied. Click the lock icon in your browser's address bar, allow microphone, then tap the mic again.",
+          );
+        }
+        if (name === "NotFoundError" || name === "OverconstrainedError") {
+          throw new Error("No microphone detected. Plug one in or check your audio settings.");
+        }
+        if (name === "NotReadableError") {
+          throw new Error("Your microphone is being used by another app. Close that app and try again.");
+        }
+        throw new Error(mediaErr?.message ?? "Couldn't open the microphone.");
+      }
       streamRef.current = stream;
 
       const audioCtx = new AudioContext();
