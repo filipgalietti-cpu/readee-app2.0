@@ -881,14 +881,14 @@ function ChildDashboard({
     {/* Main content with left margin to account for fixed sidebar */}
     <div className={`min-h-screen transition-[margin] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${sidebarOpen ? "lg:ml-[272px]" : "lg:ml-[72px]"}`}>
       <motion.div
-        className="max-w-3xl mx-auto px-4 pt-10 pb-12"
+        className="max-w-3xl mx-auto px-4 pt-10 pb-12 space-y-5"
         variants={staggerContainer}
         initial="hidden"
         animate="visible"
       >
         {/* ── Nav bar (multi-child) ── */}
         {hasMultiple && (
-          <motion.div variants={slideUp} className="flex items-center justify-between pt-2">
+          <motion.div variants={slideUp} className="flex items-center justify-between">
             <button
               onClick={onBack}
               className="text-sm text-indigo-600 hover:text-indigo-700 font-medium transition-colors"
@@ -913,7 +913,7 @@ function ChildDashboard({
         )}
 
         {/* ── Avatar + Greeting ── */}
-        <motion.div variants={slideUp} className="text-center pt-6 pb-2">
+        <motion.div variants={slideUp} className="text-center">
           <div className="relative mx-auto mb-4 w-28">
             <button
               onClick={() => setAvatarPickerOpen(true)}
@@ -938,7 +938,7 @@ function ChildDashboard({
         </motion.div>
 
         {/* ── Stats Strip — horizontal bar ── */}
-        <motion.div variants={slideUp} className="flex items-center justify-center gap-6 py-4">
+        <motion.div variants={slideUp} className="flex items-center justify-center gap-6">
           <Link href={`/carrot-rewards?child=${child.id}`} className="flex items-center gap-1.5 group">
             <Carrot className="w-5 h-5 text-amber-500 group-hover:animate-subtleBounce" strokeWidth={1.5} />
             <span ref={carrotCount.ref} className="text-lg font-extrabold text-zinc-900 dark:text-slate-100">{carrotCount.value}</span>
@@ -1021,8 +1021,20 @@ function ChildDashboard({
             </Link>
           )}
 
-          {hasAssessment && nextLesson && (
-            <Link href={`/lesson?child=${child.id}&lesson=${nextLesson.id}`} className="block">
+          {hasAssessment && nextLesson && (() => {
+            // Map the lessons.json standard ("RF.K.1.d") to the
+            // sample-lessons.json shape ("RF.K.1d") so the slideshow
+            // /learn route resolves the right lesson. Falls back to the
+            // legacy /lesson route when no standard is set.
+            const rawStandard = (nextLesson.standards ?? [])[0];
+            const standardId = rawStandard
+              ? rawStandard.replace(/\.([a-z])$/, "$1")
+              : null;
+            const href = standardId
+              ? `/learn?standard=${standardId}&child=${child.id}`
+              : `/lesson?child=${child.id}&lesson=${nextLesson.id}`;
+            return (
+            <Link href={href} className="block">
               <motion.div
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
@@ -1048,7 +1060,8 @@ function ChildDashboard({
                 </div>
               </motion.div>
             </Link>
-          )}
+            );
+          })()}
 
           {hasAssessment && !nextLesson && lessons.length > 0 && (
             <div className="rounded-3xl bg-gradient-to-r from-emerald-500 to-teal-500 p-6 text-center text-white shadow-lg">
@@ -1062,7 +1075,7 @@ function ChildDashboard({
         </motion.div>
 
         {/* ── Hero Tiles — 3 columns ── */}
-        <motion.div variants={slideUp} className="grid grid-cols-3 gap-3 pt-4">
+        <motion.div variants={slideUp} className="grid grid-cols-3 gap-3">
           <Link
             href={hasAssessment ? `/practice-hub?child=${child.id}` : `/assessment?child=${child.id}`}
             className="block"
@@ -1101,7 +1114,7 @@ function ChildDashboard({
         </motion.div>
 
         {/* ── Mobile: Parent Dashboard toggle ── */}
-        <motion.div variants={slideUp} className="pt-4 lg:hidden">
+        <motion.div variants={slideUp} className="lg:hidden">
           <button
             onClick={() => setParentMode(true)}
             className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold text-zinc-400 dark:text-slate-500 hover:text-zinc-600 dark:hover:text-slate-300 hover:bg-zinc-50 dark:hover:bg-slate-800/50 transition-all border border-zinc-200 dark:border-slate-700"
