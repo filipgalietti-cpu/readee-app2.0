@@ -1026,10 +1026,32 @@ function ChildDashboard({
             // sample-lessons.json shape ("RF.K.1d") so the slideshow
             // /learn route resolves the right lesson. Falls back to the
             // legacy /lesson route when no standard is set.
+            //
+            // 15 legacy lessons in lib/data/lessons.json have an empty
+            // standards array (5 K decodables + all 10 4th-grade
+            // lessons). Map them by stable lesson ID to their canonical
+            // CCSS standard so the kid still routes to the slideshow.
+            const LESSON_ID_TO_STANDARD: Record<string, string> = {
+              "k-L9": "RF.K.3a",
+              "k-L10": "RF.K.3a",
+              "k-L11": "RF.K.3a",
+              "k-L12": "RF.K.3a",
+              "k-L13": "RF.K.3a",
+              "4-L1": "L.4.4b",
+              "4-L2": "L.4.5a",
+              "4-L3": "L.4.5b",
+              "4-L4": "RI.4.5",
+              "4-L5": "RL.4.2",
+              "4-L6": "RL.4.6",
+              "4-L7": "RI.4.8",
+              "4-L8": "L.4.4a",
+              "4-L9": "RL.4.3",
+              "4-L10": "RI.4.2",
+            };
             const rawStandard = (nextLesson.standards ?? [])[0];
             const standardId = rawStandard
               ? rawStandard.replace(/\.([a-z])$/, "$1")
-              : null;
+              : LESSON_ID_TO_STANDARD[nextLesson.id] ?? null;
             const href = standardId
               ? `/learn?standard=${standardId}&child=${child.id}`
               : `/lesson?child=${child.id}&lesson=${nextLesson.id}`;
