@@ -1,0 +1,156 @@
+[
+  {
+    "grade": "K",
+    "title": "My Cat",
+    "text": "I have a cat. My cat is black. My cat likes to nap on the rug. I love my cat."
+  },
+  {
+    "grade": "K",
+    "title": "I See",
+    "text": "I see a dog. I see a cat. I see a bird in a tree. I see the sun in the sky. I see them all."
+  },
+  {
+    "grade": "K",
+    "title": "We Can Play",
+    "text": "We can run. We can jump. We can hop on one foot. We can play all day. It is so much fun."
+  },
+  {
+    "grade": "K",
+    "title": "The Big Hat",
+    "text": "Sam has a hat. The hat is big. The hat is red. Sam puts the hat on Pat. Pat looks so silly!"
+  },
+  {
+    "grade": "K",
+    "title": "My Mom",
+    "text": "My mom is kind. My mom can cook. My mom likes to read to me at night. I love my mom."
+  },
+  {
+    "grade": "K",
+    "title": "At the Park",
+    "text": "I go to the park. I see ducks in the pond. I run on the grass. I go down the slide. I had a fun day."
+  },
+
+  {
+    "grade": "1st",
+    "title": "The Big Game",
+    "text": "Sam ran fast. He ran to the big game. The team was ready to play. Sam kicked the ball and the crowd cheered. It was a great day."
+  },
+  {
+    "grade": "1st",
+    "title": "Lost Mitten",
+    "text": "Beth lost her red mitten. She looked under the bed. She looked in the box. At last she found it in her coat. She gave a big smile."
+  },
+  {
+    "grade": "1st",
+    "title": "The Lion and the Mouse",
+    "text": "A lion was sleeping in the sun. A small mouse ran across his paw. The lion grabbed the mouse but let him go. Later the lion got stuck in a net. The little mouse came and chewed it free."
+  },
+  {
+    "grade": "1st",
+    "title": "Snack Time",
+    "text": "Mom made lunch in the kitchen. She cut up bread and cheese. She poured cold milk in my cup. I sat at the table and ate every bite. It was the best snack ever."
+  },
+  {
+    "grade": "1st",
+    "title": "The Pet Frog",
+    "text": "Tim found a frog in the yard. The frog was green and small. Tim put it in a glass jar. His mom said the frog needed the pond. Tim took it back and waved goodbye."
+  },
+  {
+    "grade": "1st",
+    "title": "Rainy Day",
+    "text": "It rained all morning. Drops tapped on the roof. I put on my boots and my coat. I splashed in every puddle. The rain made me laugh."
+  },
+
+  {
+    "grade": "2nd",
+    "title": "Helping Mom",
+    "text": "On Saturday morning, I helped Mom in the garden. We planted bright flowers and watered the small bushes. The sun was warm and the bees were busy. By lunch we were tired but proud of our work."
+  },
+  {
+    "grade": "2nd",
+    "title": "The Tortoise and the Hare",
+    "text": "A tortoise and a hare wanted to race. The hare laughed because he ran so fast. He took a long nap halfway through. Slow and steady, the tortoise kept walking. He crossed the finish line first and won the race."
+  },
+  {
+    "grade": "2nd",
+    "title": "How Bees Make Honey",
+    "text": "Honey bees fly from flower to flower. They sip a sweet liquid called nectar. Back at the hive, the bees turn the nectar into honey. They store it in tiny wax cells. The honey feeds the whole hive in winter."
+  },
+  {
+    "grade": "2nd",
+    "title": "Recess Wins",
+    "text": "Recess is my favorite time of the day. My friends and I race to the swings. Sometimes we play tag in the grass. Other days we draw with chalk on the path. The bell rings too soon every time."
+  },
+  {
+    "grade": "2nd",
+    "title": "Lost Puppy",
+    "text": "A little brown puppy wandered into our yard. He was thirsty and his fur was tangled. I gave him cool water and called the number on his tag. Soon a worried boy came running over. He hugged his puppy and thanked me twice."
+  },
+  {
+    "grade": "2nd",
+    "title": "The Camp Fire",
+    "text": "The night sky was full of stars at the lake. We sat in a circle around the camp fire. Dad told a funny story while my brother roasted marshmallows. The fire crackled and warmed our cheeks. I had never seen so many stars."
+  },
+
+  {
+    "grade": "3rd",
+    "title": "The Old Treehouse",
+    "text": "Behind our house stood an old treehouse my grandfather built when my dad was a boy. The wood was weathered, and a long ladder of crooked planks led up the trunk. Climbing inside felt like stepping into a different time. From the window, you could see the whole neighborhood."
+  },
+  {
+    "grade": "3rd",
+    "title": "The Boy Who Cried Wolf",
+    "text": "A young shepherd watched sheep on a hill. To trick the village, he shouted, \"Wolf, wolf!\" The villagers came running but found no wolf. He laughed and did it again the next day. When a real wolf came, no one believed him."
+  },
+  {
+    "grade": "3rd",
+    "title": "Why Leaves Change Color",
+    "text": "In summer, leaves are green because they are full of a chemical called chlorophyll. As autumn nights grow cool, trees stop making chlorophyll. The hidden colors underneath finally show through. Yellows, oranges, and bright reds appear on every branch. Soon those colorful leaves drift to the ground."
+  },
+  {
+    "grade": "3rd",
+    "title": "The Missing Lunchbox",
+    "text": "Maya hung her lunchbox on the hook by the door before recess. When she came back, the hook was empty. She searched the cubbies and the lost-and-found bin. Finally, she spotted Daniel carrying it by mistake. He turned bright red and apologized right away."
+  },
+  {
+    "grade": "3rd",
+    "title": "A Visit to the Tide Pools",
+    "text": "At low tide, my dad took us out to the rocky shore. Tide pools dotted the rocks like tiny aquariums. We crouched down and saw a starfish clinging to a stone. A green crab scurried under a curtain of seaweed. Dad reminded us not to touch — these creatures need their homes."
+  },
+  {
+    "grade": "3rd",
+    "title": "The Stormy Night",
+    "text": "The wind rattled our windows and shook the trees. Bright flashes of lightning lit up the kitchen for a second at a time. I counted the seconds before the thunder boomed. My little sister climbed onto my lap with her blanket. We watched the storm together until it rolled away."
+  },
+
+  {
+    "grade": "4th",
+    "title": "How a Volcano Erupts",
+    "text": "Deep beneath the earth's surface, hot melted rock called magma collects in chambers. As pressure builds, the magma pushes upward, searching for a way out. When it finally reaches a crack in the crust, it bursts through with tremendous force. This eruption sends ash, rock, and lava into the sky, sometimes for many miles."
+  },
+  {
+    "grade": "4th",
+    "title": "Harriet Tubman",
+    "text": "Harriet Tubman was born into slavery in Maryland in the early 1800s. As a young woman, she escaped to freedom in the North. Instead of staying safe, she returned again and again to lead other enslaved people to liberty. Tubman became a leader on the Underground Railroad, guiding more than seventy people to freedom. Her bravery still inspires people today."
+  },
+  {
+    "grade": "4th",
+    "title": "Sound Travels",
+    "text": "Sound is a kind of energy that moves in waves. When you clap your hands, the air around you vibrates. Those vibrations spread out in every direction until they reach an ear. The ear changes the vibrations into signals the brain can understand. That is how a single clap can travel across an entire room."
+  },
+  {
+    "grade": "4th",
+    "title": "The Lighthouse Keeper",
+    "text": "For forty years, Mr. Ainsley climbed the spiral stairs of the old lighthouse every evening. He polished the lens until it gleamed and trimmed the wick on the lamp. Sailors who passed in the dark trusted that light to guide them home. When a storm raged, Mr. Ainsley refused to leave his post. The town honored him with a small plaque that still hangs near the harbor."
+  },
+  {
+    "grade": "4th",
+    "title": "The Curious Octopus",
+    "text": "Octopuses are surprisingly clever animals. Scientists have watched them open jars, solve simple puzzles, and even unscrew lids to reach food. Each of their eight arms can act on its own, almost as if it has its own little brain. Some octopuses have been seen carrying coconut shells across the sea floor to use as a hideout. The more we study them, the more remarkable they become."
+  },
+  {
+    "grade": "4th",
+    "title": "The Marathon Runner",
+    "text": "Eliza had trained for two years before her first marathon. She woke up before dawn each day, lacing her shoes by the dim hallway light. The first ten miles felt almost easy, but by mile twenty her legs burned. She thought of her coach's advice: keep your eyes ahead, not on the pain. Crossing the finish line, she realized the hardest part had been the early mornings, not the race."
+  }
+]

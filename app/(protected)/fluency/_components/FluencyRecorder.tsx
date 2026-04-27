@@ -12,6 +12,7 @@ import {
   Sparkles,
   Trophy,
   ArrowRight,
+  Shuffle,
 } from "lucide-react";
 import AssignFluencyButton from "./AssignFluencyButton";
 
@@ -50,9 +51,20 @@ export default function FluencyRecorder({
   const [childId, setChildId] = useState(
     assignedPassage?.childId ?? kids[0]?.id ?? "",
   );
+  // Default the grade filter to whatever the first kid is at, falling
+  // back to 2nd. The kid (or teacher demoing) can hop around.
+  const [gradeFilter, setGradeFilter] = useState<string>(
+    kids[0]?.grade ?? "2nd",
+  );
   const [passageIdx, setPassageIdx] = useState(0);
   const [customMode, setCustomMode] = useState(false);
   const [customText, setCustomText] = useState("");
+
+  const passagesForGrade = samplePassages.filter(
+    (p) => p.grade === gradeFilter,
+  );
+  // Clamp passageIdx whenever the filter changes.
+  const safeIdx = Math.min(passageIdx, Math.max(0, passagesForGrade.length - 1));
   const [recording, setRecording] = useState(false);
   const [recordedBlob, setRecordedBlob] = useState<Blob | null>(null);
   const [recordedUrl, setRecordedUrl] = useState<string | null>(null);
@@ -70,7 +82,14 @@ export default function FluencyRecorder({
     ? { grade: assignedPassage!.grade, title: assignedPassage!.title, text: assignedPassage!.text }
     : customMode
       ? { grade: kids.find((k) => k.id === childId)?.grade ?? "2nd", title: "Custom passage", text: customText }
-      : samplePassages[passageIdx];
+      : passagesForGrade[safeIdx] ?? samplePassages[0];
+
+  function shufflePassage() {
+    if (passagesForGrade.length <= 1) return;
+    let next = Math.floor(Math.random() * passagesForGrade.length);
+    if (next === safeIdx) next = (safeIdx + 1) % passagesForGrade.length;
+    setPassageIdx(next);
+  }
 
   useEffect(() => {
     return () => {
@@ -239,21 +258,59 @@ export default function FluencyRecorder({
 
           {!customMode ? (
             <>
-              <div className="mt-3 flex flex-wrap gap-1.5">
-                {samplePassages.map((p, i) => (
+              {/* Grade filter */}
+              <div className="mt-3 inline-flex rounded-full border border-zinc-200 bg-zinc-50 p-0.5 text-[11px] font-semibold dark:border-slate-700 dark:bg-slate-950">
+                {(["K", "1st", "2nd", "3rd", "4th"] as const).map((g) => (
                   <button
-                    key={i}
+                    key={g}
+                    type="button"
+                    onClick={() => {
+                      setGradeFilter(g);
+                      setPassageIdx(0);
+                    }}
+                    className={`rounded-full px-2.5 py-1 transition ${
+                      gradeFilter === g
+                        ? "bg-white text-violet-700 shadow-sm dark:bg-slate-800 dark:text-violet-300"
+                        : "text-zinc-500"
+                    }`}
+                  >
+                    {g}
+                  </button>
+                ))}
+              </div>
+
+              {/* Passages within that grade */}
+              <div className="mt-2 flex flex-wrap items-center gap-1.5">
+                {passagesForGrade.map((p, i) => (
+                  <button
+                    key={p.title + i}
                     type="button"
                     onClick={() => setPassageIdx(i)}
                     className={`rounded-full border px-3 py-1 text-xs transition ${
-                      passageIdx === i
+                      safeIdx === i
                         ? "border-violet-400 bg-violet-100 font-bold text-violet-800"
                         : "border-zinc-200 bg-white text-zinc-700 hover:border-violet-300"
                     }`}
                   >
-                    {p.grade} · {p.title}
+                    {p.title}
                   </button>
                 ))}
+                {passagesForGrade.length > 1 && (
+                  <button
+                    type="button"
+                    onClick={shufflePassage}
+                    className="ml-1 inline-flex items-center gap-1 rounded-full border border-violet-300 bg-violet-50 px-3 py-1 text-xs font-semibold text-violet-700 hover:bg-violet-100"
+                    title="Try a different passage"
+                  >
+                    <Shuffle className="h-3 w-3" />
+                    Try a different one
+                  </button>
+                )}
+              </div>
+              <div className="mt-1 text-[10px] text-zinc-400">
+                {passagesForGrade.length > 0
+                  ? `Passage ${safeIdx + 1} of ${passagesForGrade.length} for grade ${gradeFilter}`
+                  : "No passages for this grade yet."}
               </div>
             </>
           ) : (

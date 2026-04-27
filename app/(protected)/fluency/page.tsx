@@ -3,36 +3,16 @@ import { createClient } from "@/lib/supabase/server";
 import FluencyRecorder from "./_components/FluencyRecorder";
 import FluencyHistory from "./_components/FluencyHistory";
 import { Mic, Sparkles, GraduationCap } from "lucide-react";
+import passagesJson from "@/app/data/fluency-passages.json";
 
 export const dynamic = "force-dynamic";
 
-const SAMPLE_PASSAGES: { grade: string; title: string; text: string }[] = [
-  {
-    grade: "K",
-    title: "My Cat",
-    text: "I have a cat. My cat is black. My cat likes to nap on the rug. I love my cat.",
-  },
-  {
-    grade: "1st",
-    title: "The Big Game",
-    text: "Sam ran fast. He ran to the big game. The team was ready to play. Sam kicked the ball and the crowd cheered. It was a great day.",
-  },
-  {
-    grade: "2nd",
-    title: "Helping Mom",
-    text: "On Saturday morning, I helped Mom in the garden. We planted bright flowers and watered the small bushes. The sun was warm and the bees were busy. By lunch we were tired but proud of our work.",
-  },
-  {
-    grade: "3rd",
-    title: "The Old Treehouse",
-    text: "Behind our house stood an old treehouse my grandfather built when my dad was a boy. The wood was weathered, and a long ladder of crooked planks led up the trunk. Climbing inside felt like stepping into a different time. From the window, you could see the whole neighborhood.",
-  },
-  {
-    grade: "4th",
-    title: "How a Volcano Erupts",
-    text: "Deep beneath the earth's surface, hot melted rock called magma collects in chambers. As pressure builds, the magma pushes upward, searching for a way out. When it finally reaches a crack in the crust, it bursts through with tremendous force. This eruption sends ash, rock, and lava into the sky, sometimes for many miles.",
-  },
-];
+// 30 grade-leveled passages (6 per grade K-4) curated for fluency
+// practice. Mix of original Readee decodables, Aesop fables (public
+// domain), short nonfiction, and common-classroom-style reading
+// excerpts. The Recorder rotates through them and the kid can roll a
+// fresh one without leaving the page.
+const SAMPLE_PASSAGES = passagesJson as { grade: string; title: string; text: string }[];
 
 export default async function FluencyHubPage({
   searchParams,
