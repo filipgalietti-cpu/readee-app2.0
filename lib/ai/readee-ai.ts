@@ -1020,11 +1020,31 @@ function pcmToWav(pcm: Buffer, sampleRate: number): Buffer {
   return buffer;
 }
 
+export const GEMINI_PREBUILT_VOICES = [
+  { id: "Autonoe",   name: "Autonoe",   description: "Warm, motherly (default)" },
+  { id: "Puck",      name: "Puck",      description: "Upbeat, kid-friendly" },
+  { id: "Charon",    name: "Charon",    description: "Calm, even-tempered" },
+  { id: "Kore",      name: "Kore",      description: "Bright, lively" },
+  { id: "Fenrir",    name: "Fenrir",    description: "Deeper, narrator-style" },
+  { id: "Aoede",     name: "Aoede",     description: "Soft, gentle" },
+  { id: "Leda",      name: "Leda",      description: "Clear, neutral" },
+  { id: "Orus",      name: "Orus",      description: "Friendly young adult" },
+  { id: "Zephyr",    name: "Zephyr",    description: "Light, airy" },
+  { id: "Callirrhoe",name: "Callirrhoe",description: "Older, grandmotherly" },
+] as const;
+
 export async function generateSpeech(input: {
   teacherId: string;
   text: string;
   /** Underlying Gemini prebuilt voice name (e.g. "Autonoe", "Puck"). */
   voice?: string;
+  /** Style direction layered onto the read ("warmly, slowly, with smiles"). */
+  style?: string | null;
+  /** Provider override. Defaults to "gemini". When "elevenlabs", uses
+   *  the teacher's cloned voice via cloneVoiceId. Requires ELEVENLABS_API_KEY. */
+  provider?: "gemini" | "elevenlabs";
+  /** ElevenLabs voice id (returned from voice cloning). */
+  cloneVoiceId?: string | null;
 }): Promise<
   { ok: true; audioUrl: string; storagePath: string } | { ok: false; error: string }
 > {
@@ -1034,6 +1054,7 @@ export async function generateSpeech(input: {
     return { ok: false, error: "Keep the text under 1,200 characters for audio." };
   }
   const voiceName = input.voice ?? TTS_DEFAULT_VOICE;
+  const provider = input.provider ?? "gemini";
 
   const safety = assertSafePrompt(text);
   if (!safety.ok) return { ok: false, error: safety.error };
@@ -1041,6 +1062,73 @@ export async function generateSpeech(input: {
   const rl = await checkRateLimit(input.teacherId, "tts_generation");
   if (!rl.allowed) {
     return { ok: false, error: budgetError(rl) };
+  }
+
+  // ── ElevenLabs path (true cloned voice) ─────────────────────────────
+  if (provider === "elevenlabs") {
+    const elKey = process.env.ELEVENLABS_API_KEY;
+    if (!elKey) {
+      return {
+        ok: false,
+        error: "Cloned voice requires ELEVENLABS_API_KEY on the server.",
+      };
+    }
+    if (!input.cloneVoiceId) {
+      return { ok: false, error: "No cloned voice id on file." };
+    }
+    try {
+      const url = `https://api.elevenlabs.io/v1/text-to-speech/${input.cloneVoiceId}`;
+      const elRes = await fetch(url, {
+        method: "POST",
+        headers: {
+          "xi-api-key": elKey,
+          "Content-Type": "application/json",
+          Accept: "audio/mpeg",
+        },
+        body: JSON.stringify({
+          text,
+          model_id: "eleven_turbo_v2_5",
+          voice_settings: { stability: 0.5, similarity_boost: 0.75 },
+        }),
+      });
+      if (!elRes.ok) {
+        const body = await elRes.text();
+        throw new Error(`ElevenLabs ${elRes.status}: ${body.slice(0, 200)}`);
+      }
+      const buf = Buffer.from(await elRes.arrayBuffer());
+      const uuid = randomUUID();
+      const storagePath = `custom/${input.teacherId}/${uuid}.mp3`;
+      const admin = supabaseAdmin();
+      const upload = await admin.storage
+        .from("audio")
+        .upload(storagePath, buf, { contentType: "audio/mpeg", upsert: false });
+      if (upload.error) throw new Error(`Upload failed: ${upload.error.message}`);
+      const { data: pub } = admin.storage.from("audio").getPublicUrl(storagePath);
+      const audioUrl = pub?.publicUrl;
+      if (!audioUrl) throw new Error("Could not resolve audio URL.");
+      await logUsage({
+        teacherId: input.teacherId,
+        kind: "tts_generation",
+        model: "elevenlabs:eleven_turbo_v2_5",
+        // ElevenLabs costs ~$0.30/1K chars ≈ ~3x Gemini TTS. Charge 6
+        // credits vs the Gemini 2 to keep margin neutral.
+        creditsUsed: CREDIT_COST.tts_generation * 3,
+        success: true,
+        requestSummary: `[clone] ${text.slice(0, 180)}`,
+      });
+      return { ok: true, audioUrl, storagePath };
+    } catch (e: any) {
+      trackError(e, { route: "readee-ai.generateSpeech.elevenlabs", userId: input.teacherId });
+      await logUsage({
+        teacherId: input.teacherId,
+        kind: "tts_generation",
+        model: "elevenlabs",
+        success: false,
+        error: e.message,
+        requestSummary: `[clone] ${text.slice(0, 180)}`,
+      });
+      return { ok: false, error: e?.message ?? "Cloned-voice TTS failed." };
+    }
   }
 
   let client: GoogleGenAI;
@@ -1058,9 +1146,10 @@ export async function generateSpeech(input: {
   }
 
   try {
+    const styleDirection = (input.style?.trim() || "warmly for a young student, clearly and unhurried");
     const response = await client.models.generateContent({
       model: TTS_MODEL_ID,
-      contents: `Read this warmly for a young student, clearly and unhurried: ${text}`,
+      contents: `Read this ${styleDirection}: ${text}`,
       config: {
         responseModalities: ["AUDIO"],
         speechConfig: {
