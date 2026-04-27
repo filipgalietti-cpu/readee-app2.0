@@ -1741,7 +1741,7 @@
           "prompt": "Which is a correct sentence?",
           "choices": [
             "The dog ran fast",
-            "The dog ran fast.",
+            "the dog ran fast.",
             "The dog ran fast.",
             "The Dog Ran Fast"
           ],

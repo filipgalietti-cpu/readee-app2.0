@@ -2,13 +2,17 @@
 /**
  * audit-hints — focused QC pass on JUST the hint field.
  *
+ * Source of truth: per-grade JSON files in app/data/*-standards-questions.json.
+ * The master manifest is stale and deprecated as of Apr 27 2026 — Jennifer's
+ * audits live in the per-grade files now.
+ *
  * The QC backfill found a systemic K pattern: hints literally state
  * the answer ("the answer is red ball" instead of "look at the second
  * sentence"). This script does a tight per-question audit using an
  * AI judge specifically tuned to catch hint/answer leakage.
  *
  * Usage:
- *   GEMINI_API_KEY=... node scripts/audit-hints.js [--limit=N] [--rewrite]
+ *   GEMINI_API_KEY=... node scripts/audit-hints.js [--limit=N] [--rewrite] [--grade=K|1st|2nd|3rd|4th|all]
  *
  * Without --rewrite: outputs scripts/hint-audit.csv with severity
  *   "fail" (hint reveals the answer) or "warn" (hint barely guides)
@@ -16,10 +20,10 @@
  *
  * With --rewrite: also calls the AI to propose a NEW hint for each
  *   failing row and writes them to scripts/hint-rewrites.json. Apply
- *   them to the manifest with scripts/apply-hint-rewrites.js (separate
- *   step so the human can review the diff).
+ *   them to the per-grade files with scripts/apply-hint-rewrites.js
+ *   (separate step so the human can review the diff).
  *
- * Cost: ~$0.001 per question (single judge call). Manifest = ~$1.
+ * Cost: ~$0.001 per question (single judge call). All 5 grades = ~$1.
  *   --rewrite doubles it (one rewrite call per failing row).
  *
  * Note: hint AUDIO is intentionally NOT regenerated. The product
@@ -144,10 +148,46 @@ async function rewriteHint(item) {
   }
 }
 
+// Pull questions from the per-grade files (the canonical source).
+// Each file is shaped { standards: [{ standard_id, questions: [...] }] }.
+function loadFromPerGradeFiles(gradeFilter) {
+  const files = {
+    K: "kindergarten-standards-questions.json",
+    "1st": "1st-grade-standards-questions.json",
+    "2nd": "2nd-grade-standards-questions.json",
+    "3rd": "3rd-grade-standards-questions.json",
+    "4th": "4th-grade-standards-questions.json",
+  };
+  const items = [];
+  const grades = gradeFilter && gradeFilter !== "all" ? [gradeFilter] : Object.keys(files);
+  for (const grade of grades) {
+    const filePath = path.join(__dirname, "..", "app", "data", files[grade]);
+    if (!fs.existsSync(filePath)) continue;
+    const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
+    for (const standard of data.standards ?? []) {
+      for (const q of standard.questions ?? []) {
+        // Only audit MCQ / true_false hints — interactive types
+        // (sentence_build, missing_word, sound_machine, etc.) tend to
+        // have hint text that reasonably guides without revealing.
+        if (q.type !== "multiple_choice" && q.type !== "true_false") continue;
+        if (!q.hint) continue;
+        items.push({
+          id: q.id,
+          level: grade,
+          prompt: q.prompt,
+          choices: q.choices ?? [],
+          correct: q.correct,
+          hint: q.hint,
+        });
+      }
+    }
+  }
+  return items;
+}
+
 (async () => {
-  const manifestPath = path.join(__dirname, "master_manifest.json");
-  const items = JSON.parse(fs.readFileSync(manifestPath, "utf8")).slice(0, limit);
-  console.log(`Auditing hints on ${items.length} questions${doRewrite ? " + rewriting fails" : ""}…`);
+  const items = loadFromPerGradeFiles(args.grade).slice(0, limit);
+  console.log(`Auditing hints on ${items.length} questions from per-grade files${doRewrite ? " + rewriting fails" : ""}…`);
 
   const csvLines = ["id,level,severity,reason,old_hint,new_hint"];
   const rewrites = {}; // id -> new hint
