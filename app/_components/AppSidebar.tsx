@@ -13,7 +13,7 @@ import { SidebarUserMenu } from "./SidebarUserMenu";
 import { ShineBorder } from "@/app/components/magicui/shine-border";
 import {
   Home, BarChart3, BookText, ListChecks, Map,
-  Carrot, Trophy, ChevronDown, ChevronRight, ClipboardCheck, GraduationCap, Building2, ClipboardPen, Library, Sparkles, Users, Brain, Zap, ShieldCheck, BookOpenText,
+  Carrot, Trophy, ChevronDown, ChevronRight, ClipboardCheck, GraduationCap, Building2, ClipboardPen, Library, Sparkles, Users, Brain, Zap, ShieldCheck, BookOpenText, Layers,
 } from "lucide-react";
 
 /* ─── Nav items ──────────────────────────────────── */
@@ -39,23 +39,9 @@ function getNavSections(
       label: "Teach",
       items: [
         {
-          href: "/classroom/authoring/wizard",
+          href: "/classroom/build",
           icon: Sparkles,
-          label: "Build a quiz",
-          emphasis: true,
-          shimmer: true,
-        },
-        {
-          href: "/classroom/authoring/lesson-wizard",
-          icon: Sparkles,
-          label: "Build a lesson",
-          emphasis: true,
-          shimmer: true,
-        },
-        {
-          href: "/classroom/authoring/book-wizard",
-          icon: Sparkles,
-          label: "Build a book",
+          label: "Build with AI",
           emphasis: true,
           shimmer: true,
         },
@@ -65,6 +51,7 @@ function getNavSections(
         { href: "/classroom/library", icon: Library, label: "Library" },
         { href: "/classroom/lessons", icon: BookText, label: "Lessons" },
         { href: "/classroom/books", icon: BookOpenText, label: "Books" },
+        { href: "/classroom/leveled", icon: Layers, label: "Leveled passages" },
         { href: "/classroom/authoring", icon: ClipboardPen, label: "Quizzes" },
         { href: "/classroom/refer", icon: Users, label: "Refer a teacher" },
       ],

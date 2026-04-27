@@ -450,6 +450,29 @@ export async function aiBuildBook(input: {
   return res;
 }
 
+/**
+ * Build a differentiated reading passage — same story at three
+ * reading levels (easy / on-level / advanced). One AI call so the
+ * plot stays identical, only vocabulary varies.
+ */
+export async function aiBuildLeveledPassage(input: {
+  brief: import("@/lib/ai/build-leveled").LeveledBrief;
+}): Promise<
+  | { ok: true; passageId: string; warnings: string[]; creditsUsed: number }
+  | { ok: false; error: string }
+> {
+  const profile = await requireProfile();
+  if (profile.role !== "educator") {
+    return { ok: false, error: "Only educators can use Readee.ai." };
+  }
+  const { buildLeveledPassage } = await import("@/lib/ai/build-leveled");
+  const res = await buildLeveledPassage({ teacherId: profile.id, brief: input.brief });
+  if (res.ok) {
+    revalidatePath("/classroom/leveled");
+  }
+  return res;
+}
+
 export async function aiGenerateAudio(input: { text: string }): Promise<
   { ok: true; audioUrl: string } | { ok: false; error: string }
 > {
