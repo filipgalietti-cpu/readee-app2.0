@@ -85,23 +85,45 @@ export default function LeveledWizard() {
   useEffect(() => {
     if (!pending) return;
     setProgress(0);
-    const labels = [
-      [0, "Writing all three versions…"],
-      [40, "Drawing the illustration…"],
-      [60, "Recording read-alouds…"],
-      [80, "Writing comprehension questions…"],
-      [92, "Quality-checking…"],
-    ] as const;
+    // Phased timing tuned to actual orchestrator runtime (~60-90s).
+    // Each phase is a real chunk of work; we anchor the bar to time
+    // budget per phase so the kid/teacher doesn't see it sit at 95%.
+    const phases: { label: string; durationS: number }[] = [];
+    phases.push({ label: "Writing all three versions…", durationS: 12 });
+    if (brief.sharedImage) {
+      phases.push({ label: "Drawing the illustration…", durationS: 15 });
+    }
+    if (brief.perVersionAudio) {
+      phases.push({ label: "Recording read-alouds (3 voices)…", durationS: 18 });
+    }
+    if (brief.questionsPerLevel > 0) {
+      phases.push({
+        label: "Writing comprehension questions…",
+        durationS: 12,
+      });
+    }
+    phases.push({ label: "Quality-checking with Readee.ai…", durationS: 10 });
+
+    const totalBudget = phases.reduce((s, p) => s + p.durationS, 0);
     const t0 = Date.now();
     const tick = setInterval(() => {
       const elapsed = (Date.now() - t0) / 1000;
-      const target = Math.min(95, 100 * (1 - Math.exp(-elapsed / 22)));
-      setProgress(Math.round(target));
-      const label = labels.find(([pct]) => target >= pct);
-      if (label) setStepLabel(label[1]);
+      // Asymptote toward 98% over 1.4× the budget so we don't sit dead.
+      const fraction = 1 - Math.exp(-elapsed / (totalBudget * 0.55));
+      setProgress(Math.min(98, Math.round(fraction * 100)));
+      // Pick label by elapsed bucket.
+      let cum = 0;
+      for (const p of phases) {
+        cum += p.durationS;
+        if (elapsed < cum) {
+          setStepLabel(p.label);
+          return;
+        }
+      }
+      setStepLabel("Almost done — finishing the QC pass…");
     }, 250);
     return () => clearInterval(tick);
-  }, [pending]);
+  }, [pending, brief.sharedImage, brief.perVersionAudio, brief.questionsPerLevel]);
 
   function setField<K extends keyof LeveledBrief>(k: K, v: LeveledBrief[K]) {
     setBrief((b) => ({ ...b, [k]: v }));

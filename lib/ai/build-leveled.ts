@@ -318,9 +318,18 @@ export async function buildLeveledPassage(input: {
     }
 
     if (brief.questionsPerLevel > 0) {
+      // Per-level question prompt — explicitly call out that this is
+      // the easy / on-level / advanced version so the AI matches
+      // question complexity to the reader, not just to the topic.
+      const levelHint =
+        v.level === "easy"
+          ? `These questions are for the EASY (${grades.easy}-grade) reader. Use simple, direct vocabulary in question prompts AND answer choices. Stick to literal recall ("What did she find?", "Where did they go?").`
+          : v.level === "advanced"
+            ? `These questions are for the ADVANCED (${grades.advanced}-grade) reader. Use richer vocabulary, longer prompts, and at least one inferential question ("Why do you think...?", "What does this suggest about...?").`
+            : `These questions are for the ON-LEVEL (${grades.on_level}-grade) reader. Mix one inferential question with literal recall.`;
       const mcqRes = await generateMCQQuestions({
         teacherId,
-        topic: `${brief.topic}\n\nPassage students just read (${LEVEL_LABEL[v.level]} version):\n"""\n${v.body}\n"""`,
+        topic: `${brief.topic}\n\n${levelHint}\n\nPassage students just read (${LEVEL_LABEL[v.level]} version):\n"""\n${v.body}\n"""`,
         gradeLevel: grades[v.level],
         count: brief.questionsPerLevel,
       });

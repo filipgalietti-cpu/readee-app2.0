@@ -8,6 +8,7 @@ import {
 import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/lib/auth/helpers";
 import LeveledViewer from "./_components/LeveledViewer";
+import AssignLeveledButton from "./_components/AssignLeveledButton";
 
 export const dynamic = "force-dynamic";
 
@@ -76,24 +77,27 @@ export default async function LeveledDetailPage({
         All leveled passages
       </Link>
 
-      <div className="mt-3">
-        <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-violet-600 dark:text-violet-300">
-          <Layers className="h-4 w-4" />
-          Leveled passage
-          {d.base_grade && (
-            <>
-              <span className="text-zinc-300">·</span>
-              <span>Center: {d.base_grade}</span>
-            </>
-          )}
+      <div className="mt-3 flex flex-wrap items-start justify-between gap-3">
+        <div>
+          <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-violet-600 dark:text-violet-300">
+            <Layers className="h-4 w-4" />
+            Leveled passage
+            {d.base_grade && (
+              <>
+                <span className="text-zinc-300">·</span>
+                <span>Center: {d.base_grade}</span>
+              </>
+            )}
+          </div>
+          <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+            {d.title}
+          </h1>
+          <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">
+            {versions.length} version{versions.length === 1 ? "" : "s"} · same
+            story, three reading levels
+          </p>
         </div>
-        <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
-          {d.title}
-        </h1>
-        <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">
-          {versions.length} version{versions.length === 1 ? "" : "s"} · same
-          story, three reading levels
-        </p>
+        <AssignLeveledButton passageId={passageId} defaultLevel="on_level" />
       </div>
 
       {built === "1" && warn && (

@@ -119,14 +119,16 @@ export default function LeveledViewer({
       {/* Passage card */}
       <div className="overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
         {sharedImageUrl ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={sharedImageUrl}
-            alt=""
-            className="h-64 w-full object-cover sm:h-72"
-          />
+          <div className="flex items-center justify-center bg-gradient-to-br from-violet-50 to-indigo-50 p-4 dark:from-violet-950/20 dark:to-indigo-950/20">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={sharedImageUrl}
+              alt=""
+              className="block max-h-56 w-auto max-w-full rounded-2xl object-contain"
+            />
+          </div>
         ) : (
-          <div className="flex h-64 w-full items-center justify-center bg-gradient-to-br from-indigo-100 to-violet-100 text-indigo-400">
+          <div className="flex h-40 w-full items-center justify-center bg-gradient-to-br from-indigo-100 to-violet-100 text-indigo-400">
             <ImageIcon className="h-14 w-14" />
           </div>
         )}
@@ -179,9 +181,8 @@ export default function LeveledViewer({
 }
 
 function ComprehensionItem({ q, index }: { q: Question; index: number }) {
-  const [picked, setPicked] = useState<string | null>(null);
-  const isCorrect = picked === q.correct;
-  const isWrong = picked != null && !isCorrect;
+  // Teacher-review layout — correct answer is always shown so the
+  // teacher can verify Readee.ai's work at a glance.
   return (
     <div className="rounded-2xl border border-zinc-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-900">
       <div className="flex items-center gap-2">
@@ -197,37 +198,23 @@ function ComprehensionItem({ q, index }: { q: Question; index: number }) {
       </p>
       <div className="mt-2 grid gap-1.5 sm:grid-cols-2">
         {q.choices.map((c) => {
-          const isThis = picked === c;
-          const showCorrect = picked != null && c === q.correct;
+          const isCorrect = c === q.correct;
           return (
-            <button
+            <div
               key={c}
-              type="button"
-              disabled={picked != null}
-              onClick={() => setPicked(c)}
-              className={`flex items-center justify-between gap-2 rounded-xl border px-3 py-2 text-left text-xs transition ${
-                isThis && isCorrect
-                  ? "border-emerald-400 bg-emerald-50 text-emerald-900"
-                  : isThis && isWrong
-                    ? "border-red-400 bg-red-50 text-red-900"
-                    : showCorrect
-                      ? "border-emerald-200 bg-emerald-50/40 text-emerald-800"
-                      : "border-zinc-200 bg-white text-zinc-800 hover:border-violet-300"
+              className={`flex items-center justify-between gap-2 rounded-xl border px-3 py-2 text-left text-xs ${
+                isCorrect
+                  ? "border-emerald-300 bg-emerald-50 font-semibold text-emerald-900 dark:border-emerald-700/60 dark:bg-emerald-950/30 dark:text-emerald-200"
+                  : "border-zinc-200 bg-white text-zinc-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
               }`}
             >
               <span>{c}</span>
-              {isThis && isCorrect && (
-                <Check className="h-3.5 w-3.5 text-emerald-600" />
-              )}
-              {isThis && isWrong && <XIcon className="h-3.5 w-3.5 text-red-600" />}
-              {showCorrect && !isThis && (
-                <Check className="h-3.5 w-3.5 text-emerald-500 opacity-60" />
-              )}
-            </button>
+              {isCorrect && <Check className="h-3.5 w-3.5 text-emerald-600" />}
+            </div>
           );
         })}
       </div>
-      {picked && q.hint && (
+      {q.hint && (
         <div className="mt-2 rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-800">
           <span className="font-bold">Hint: </span>
           {q.hint}

@@ -809,3 +809,106 @@ export async function assignFluencyPassage(input: {
 
   return { ok: true, passageId, assignedTo: assigned };
 }
+
+/**
+ * Assign a leveled passage to classrooms. The teacher picks which
+ * version (easy / on_level / advanced) to push — we materialize that
+ * version into a custom_quiz with its passage + questions, then
+ * create one assignment per classroom pointing at it.
+ */
+export async function assignLeveledPassage(input: {
+  passageId: string;
+  level: "easy" | "on_level" | "advanced";
+  classroomIds: string[];
+  dueAt?: string | null;
+}): Promise<
+  | { ok: true; quizId: string; assignedTo: number }
+  | { ok: false; error: string }
+> {
+  const profile = await requireProfile();
+  if (profile.role !== "educator") {
+    return { ok: false, error: "Only teachers can assign." };
+  }
+  if (!input.classroomIds || input.classroomIds.length === 0) {
+    return { ok: false, error: "Pick at least one classroom." };
+  }
+
+  const supabase = await createClient();
+  const { data: passage } = await supabase
+    .from("differentiated_passages")
+    .select("id, title, versions, shared_image_url")
+    .eq("id", input.passageId)
+    .eq("teacher_id", profile.id)
+    .maybeSingle();
+  if (!passage) return { ok: false, error: "Passage not found." };
+  const p = passage as any;
+  const versions = (p.versions ?? []) as any[];
+  const v = versions.find((x) => x.level === input.level);
+  if (!v) return { ok: false, error: `Level ${input.level} not found.` };
+
+  // 1) Pull the question rows for that level.
+  const questionIds: string[] = Array.isArray(v.question_ids) ? v.question_ids : [];
+  if (questionIds.length === 0) {
+    return { ok: false, error: "This version has no comprehension questions to assign." };
+  }
+  const { data: qRows } = await supabase
+    .from("custom_questions")
+    .select("id, kind, prompt, choices, correct, hint")
+    .in("id", questionIds);
+
+  // 2) Create the custom_quiz row with the version's passage as the description.
+  const { data: quizRow, error: quizErr } = await supabase
+    .from("custom_quizzes")
+    .insert({
+      teacher_id: profile.id,
+      title: `${p.title} — ${input.level === "on_level" ? "On level" : input.level === "easy" ? "Easy" : "Advanced"}`,
+      description: `${v.title}\n\n${v.body}`,
+      grade_level: v.grade ?? null,
+    })
+    .select("id")
+    .single();
+  if (quizErr || !quizRow) {
+    return { ok: false, error: quizErr?.message ?? "Could not create quiz." };
+  }
+  const quizId = (quizRow as { id: string }).id;
+
+  // 3) Wire questions to the new quiz with shared media on the first.
+  let position = 1;
+  for (const q of (qRows ?? []) as any[]) {
+    await supabase
+      .from("custom_questions")
+      .update({
+        image_url: position === 1 ? p.shared_image_url ?? null : null,
+        audio_url: position === 1 ? v.audio_url ?? null : null,
+      })
+      .eq("id", q.id);
+    await supabase.from("custom_quiz_questions").insert({
+      quiz_id: quizId,
+      question_id: q.id,
+      position,
+    });
+    position += 1;
+  }
+
+  // 4) Per-classroom assignments.
+  let assigned = 0;
+  for (const classroomId of input.classroomIds) {
+    const { error } = await supabase.from("assignments").insert({
+      classroom_id: classroomId,
+      assigned_by: profile.id,
+      kind: "custom_quiz",
+      source_id: quizId,
+      title: `${p.title} (${input.level === "on_level" ? "on level" : input.level})`,
+      due_at: input.dueAt ?? null,
+      audio_prompt_enabled: true,
+      audio_choices_enabled: false,
+      shuffle_questions: false,
+      shuffle_choices: false,
+      reveal_correct_immediately: true,
+    });
+    if (!error) assigned += 1;
+    revalidatePath(`/classroom/${classroomId}`);
+  }
+
+  return { ok: true, quizId, assignedTo: assigned };
+}
