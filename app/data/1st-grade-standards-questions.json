@@ -317,7 +317,7 @@
             "Happy"
           ],
           "correct": "Sad or scared",
-          "hint": "What does 'whimpered' sound like? Happy or sad?",
+          "hint": "Whimpering is a soft, sad sound — like a small cry. What feeling matches that?",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.4/RL.1.4-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.4/RL.1.4-Q2-hint.mp3",
@@ -514,7 +514,7 @@
             "Someone outside the story"
           ],
           "correct": "A character in the story",
-          "hint": "When you see 'I' and 'my,' a character is talking about themselves.",
+          "hint": "Words like 'I' and 'my' mean someone is talking about themselves.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.6/RL.1.6-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.6/RL.1.6-Q4-hint.mp3",
@@ -1247,7 +1247,7 @@
             "The index"
           ],
           "correct": "The table of contents",
-          "hint": "The table of contents lists chapters and their page numbers.",
+          "hint": "There's a special list near the front of a book that shows where each chapter starts.",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.5/RI.1.5-Q1.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.5/RI.1.5-Q1-hint.mp3",
@@ -1264,7 +1264,7 @@
             "When the book was made"
           ],
           "correct": "What that section is about",
-          "hint": "Headings are like titles for each section.",
+          "hint": "A heading is like a mini title at the start of a section.",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.5/RI.1.5-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.5/RI.1.5-Q2-hint.mp3",
@@ -1408,7 +1408,7 @@
             "Someone lives there"
           ],
           "correct": "HOW the house looks old",
-          "hint": "The picture shows details about what 'old' looks like.",
+          "hint": "The picture is filling in DETAILS the words don't show. What does the picture tell you?",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.6/RI.1.6-Q5.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.6/RI.1.6-Q5-hint.mp3",
@@ -1636,7 +1636,7 @@
             "The sun is cold"
           ],
           "correct": "The sun is important",
-          "hint": "Both books tell us something the sun does — so it must be important.",
+          "hint": "Both books are saying the sun matters in some way. What word means 'matters'?",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.9/RI.1.9-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.9/RI.1.9-Q2-hint.mp3",
@@ -1712,7 +1712,7 @@
             "Period"
           ],
           "correct": "Capital letter",
-          "hint": "Look at the first letter of this question!",
+          "hint": "Look at the first letter of this very sentence — what kind of letter is it?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.1a/RF.1.1a-Q1.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.1a/RF.1.1a-Q1-hint.mp3",
@@ -1763,7 +1763,7 @@
             "It has too many words"
           ],
           "correct": "It needs a capital S",
-          "hint": "Every sentence begins with a capital letter.",
+          "hint": "Look at the first letter of 'she.' Should it be lowercase or capital?",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.1a/RF.1.1a-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.1a/RF.1.1a-Q4-hint.mp3",
@@ -1991,7 +1991,7 @@
             "Ten"
           ],
           "correct": "Ten",
-          "hint": "Say 'top' and 'ten' — do they start the same?",
+          "hint": "Say 'top' and each choice out loud. Which two start with the same first sound?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2c/RF.1.2c-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2c/RF.1.2c-Q4-hint.mp3",
@@ -2101,7 +2101,7 @@
             "/t/ /e/ /m/"
           ],
           "correct": "/th/ /e/ /m/",
-          "hint": "'Th' makes ONE sound together, so: /th/ /e/ /m/ = 3 sounds.",
+          "hint": "When letters like 't' and 'h' are next to each other, sometimes they make ONE sound. Try blending slowly.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2d/RF.1.2d-Q5.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2d/RF.1.2d-Q5-hint.mp3",
@@ -2245,7 +2245,7 @@
             "Go back and try again"
           ],
           "correct": "Go back and try again",
-          "hint": "Good readers go back and fix mistakes so the sentence makes sense.",
+          "hint": "If the word you said doesn't make sense, what should a good reader do?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4c/RF.1.4c-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4c/RF.1.4c-Q2-hint.mp3",
@@ -2426,7 +2426,7 @@
             "A type of school"
           ],
           "correct": "One who teaches",
-          "hint": "Teach + er = one who teaches.",
+          "hint": "If '-er' means 'one who does,' then teach + er means a person who does what?",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4b/L.1.4b-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.4b/L.1.4b-Q4-hint.mp3",
@@ -2587,7 +2587,7 @@
             "Short"
           ],
           "correct": "Large",
-          "hint": "Big and large both describe something that is not small.",
+          "hint": "Two of these words mean the OPPOSITE of big. The other one means almost the same.",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5/L.1.5-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5/L.1.5-Q2-hint.mp3",
@@ -2865,7 +2865,7 @@
             "Ice"
           ],
           "correct": "A warm blanket",
-          "hint": "Cozy means warm and comfortable. Which one feels like that?",
+          "hint": "Cozy means warm and comfortable. Which choice feels warm and comfy?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5c/L.1.5c-Q1.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5c/L.1.5c-Q1-hint.mp3",
@@ -2958,7 +2958,7 @@
             "Medium"
           ],
           "correct": "Gigantic",
-          "hint": "Gigantic means really, really big — even bigger than big.",
+          "hint": "One of these means 'extra big.' The others are smaller than big.",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5d/L.1.5d-Q1.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5d/L.1.5d-Q1-hint.mp3",
@@ -3009,7 +3009,7 @@
             "Thrilled"
           ],
           "correct": "Thrilled",
-          "hint": "Thrilled means extremely happy — even more than just happy.",
+          "hint": "Three of these don't really mean happy at all. One means SUPER happy.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5d/L.1.5d-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5d/L.1.5d-Q4-hint.mp3",
@@ -3079,7 +3079,7 @@
             "Where it happened"
           ],
           "correct": "The reason why",
-          "hint": "'I wore a coat BECAUSE it was cold.' Because gives the reason.",
+          "hint": "Try this sentence: 'I wore a coat ___ it was cold.' What does it explain?",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.6/L.1.6-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.6/L.1.6-Q2-hint.mp3",
@@ -3166,7 +3166,7 @@
             "sh"
           ],
           "correct": "sh",
-          "hint": "Think of ship! Sh sh ship!",
+          "hint": "Think of the word 'ship.' Which two letters start it?",
           "difficulty": 1,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3a/RF.1.3a-Q1-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3a/RF.1.3a-Q1.mp3",
@@ -3369,7 +3369,7 @@
             "hot"
           ],
           "correct": "hope",
-          "hint": "Hop plus e = hope. The O says OH!",
+          "hint": "Magic E makes the vowel say its name. Try adding e to hop and read it.",
           "difficulty": 1,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3c/RF.1.3c-Q2-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3c/RF.1.3c-Q2.mp3",
@@ -3403,7 +3403,7 @@
             "short a (ah)"
           ],
           "correct": "long I (eye)",
-          "hint": "Magic E makes I say its name: EYE!",
+          "hint": "Magic E makes the vowel say its NAME. What does I's name sound like?",
           "difficulty": 2,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3c/RF.1.3c-Q4-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3c/RF.1.3c-Q4.mp3",
@@ -3631,7 +3631,7 @@
             "it is very small"
           ],
           "correct": "more than one",
-          "hint": "One cat. Two cats. The S means more than one!",
+          "hint": "Say it: one cat, two ___? The 's' tells you about how many.",
           "difficulty": 1,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3f/RF.1.3f-Q1-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3f/RF.1.3f-Q1.mp3",
@@ -3792,7 +3792,7 @@
             "They mean nothing"
           ],
           "correct": "You cannot sound them out",
-          "hint": "Tricky words don't follow the usual sound rules. You just memorize them!",
+          "hint": "If you can't sound out the word, you have to memorize it. What's true about words like 'said'?",
           "difficulty": 2,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3g/RF.1.3g-Q5-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3g/RF.1.3g-Q5.mp3",
@@ -3851,7 +3851,7 @@
             "Is it cold outside?"
           ],
           "correct": "Why am I reading this?",
-          "hint": "Knowing why gives your reading a purpose!",
+          "hint": "Before you start a book, it helps to know your reason for reading it.",
           "difficulty": 2,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4a/RF.1.4a-Q3-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4a/RF.1.4a-Q3.mp3",
@@ -3927,7 +3927,7 @@
             "read only one book over and over"
           ],
           "correct": "read a little every day",
-          "hint": "A little every day adds up fast!",
+          "hint": "A reader gets better the same way you get better at a sport — practice in small bits.",
           "difficulty": 1,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.10/RL.1.10-Q2-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.10/RL.1.10-Q2.mp3",
@@ -3944,7 +3944,7 @@
             "close the book and never open it"
           ],
           "correct": "ask for help",
-          "hint": "Growing readers ask questions when stuck!",
+          "hint": "When a story is hard, what's the smartest thing a reader can do?",
           "difficulty": 2,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.10/RL.1.10-Q3-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.10/RL.1.10-Q3.mp3",
@@ -4003,7 +4003,7 @@
             "made-up animals"
           ],
           "correct": "the real world",
-          "hint": "Fact = true! Fact books are about real things.",
+          "hint": "FACT means TRUE. Fact books are about things that are real.",
           "difficulty": 1,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.10/RI.1.10-Q1-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.10/RI.1.10-Q1.mp3",
@@ -4037,7 +4037,7 @@
             "skip every page"
           ],
           "correct": "look at headings and pictures",
-          "hint": "Headings tell you what each part is about!",
+          "hint": "Look at the parts of a book that point you to information at a glance.",
           "difficulty": 1,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.10/RI.1.10-Q3-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.10/RI.1.10-Q3.mp3",
@@ -4054,7 +4054,7 @@
             "it teaches new words"
           ],
           "correct": "it teaches new words",
-          "hint": "Tricky words usually name new things you are learning about!",
+          "hint": "Tricky words usually name something new in the book. They are there for a reason.",
           "difficulty": 2,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.10/RI.1.10-Q4-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.10/RI.1.10-Q4.mp3",
@@ -4096,7 +4096,7 @@
             "happily"
           ],
           "correct": "dog",
-          "hint": "A noun is a person, place, or thing. Dog is a thing!",
+          "hint": "A NOUN names a person, place, or thing. Three of these are actions or describing words.",
           "difficulty": 1,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.1/L.1.1-Q1-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.1/L.1.1-Q1.mp3",
@@ -4113,7 +4113,7 @@
             "tree"
           ],
           "correct": "runs",
-          "hint": "A verb shows action. Runs is something you do!",
+          "hint": "A VERB is an action — something you DO.",
           "difficulty": 1,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.1/L.1.1-Q2-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.1/L.1.1-Q2.mp3",
@@ -4130,7 +4130,7 @@
             "am"
           ],
           "correct": "am",
-          "hint": "Use \"I am\" for yourself!",
+          "hint": "Try each one in the blank: 'I __ happy.' Which sounds right?",
           "difficulty": 1,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.1/L.1.1-Q3-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.1/L.1.1-Q3.mp3",
@@ -4147,7 +4147,7 @@
             "walking"
           ],
           "correct": "walks",
-          "hint": "She walks. When it is one person doing it now, add an s!",
+          "hint": "When ONE person does something now, the verb usually ends in -s.",
           "difficulty": 2,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.1/L.1.1-Q4-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.1/L.1.1-Q4.mp3",
@@ -4164,7 +4164,7 @@
             "quickly"
           ],
           "correct": "fluffy",
-          "hint": "An adjective tells what something is like. Fluffy describes!",
+          "hint": "An ADJECTIVE describes what something is like. Three of these are not describing words.",
           "difficulty": 2,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.1/L.1.1-Q5-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.1/L.1.1-Q5.mp3",
@@ -4257,7 +4257,7 @@
             "Nothing is wrong"
           ],
           "correct": "Names need capitals",
-          "hint": "Ben and Maya are names. Start them with capitals!",
+          "hint": "Look at the words 'ben' and 'maya.' What kind of words always start with capitals?",
           "difficulty": 2,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.2/L.1.2-Q5-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.2/L.1.2-Q5.mp3",

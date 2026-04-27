@@ -418,7 +418,7 @@
             "Flew into the air"
           ],
           "correct": "Moved slowly",
-          "hint": "The word 'slowly' right after it helps you figure it out!",
+          "hint": "The word 'slowly' is right next to 'drifted' — that's a big clue.",
           "difficulty": 2,
           "passage_audio_url": "/audio/kindergarten/RL.K.4-q3-passage.mp3",
           "choices_audio_urls": [
@@ -580,7 +580,7 @@
             "Poem"
           ],
           "correct": "Poem",
-          "hint": "It has short lines and some words rhyme — that's a poem!",
+          "hint": "Look at how the lines are written. Do they sound like a story or like a song?",
           "difficulty": 2,
           "passage_audio_url": "/audio/kindergarten/RL.K.5-q4-passage.mp3",
           "choices_audio_urls": [
@@ -706,7 +706,7 @@
             "Writes the words"
           ],
           "correct": "Writes the words",
-          "hint": "An author creates the story using words.",
+          "hint": "Think about who creates the WORDS in a book versus who creates the pictures.",
           "difficulty": 1,
           "choices_audio_urls": [
             "/audio/kindergarten/RL.K.6-q4-choice1.mp3",
@@ -888,7 +888,7 @@
             "They both live in the forest."
           ],
           "correct": "They like different foods.",
-          "hint": "Different means NOT the same. What do they each like to eat or drink?",
+          "hint": "Different means NOT the same. Bear and Cat each like a different food.",
           "difficulty": 1,
           "passage_audio_url": "/audio/kindergarten/RL.K.9-q1-passage.mp3",
           "choices_audio_urls": [
@@ -912,7 +912,7 @@
             "They both climb trees."
           ],
           "correct": "They both live in the forest.",
-          "hint": "Alike means the SAME. What do they both do or have?",
+          "hint": "Alike means the SAME. What do Rabbit and Squirrel BOTH have or do?",
           "difficulty": 1,
           "passage_audio_url": "/audio/kindergarten/RL.K.9-q2-passage.mp3",
           "choices_audio_urls": [
@@ -1417,7 +1417,7 @@
             "Turns cold"
           ],
           "correct": "Explodes or shoots out",
-          "hint": "The sentence says lava 'shoots out' — that's what erupting is!",
+          "hint": "The sentence after 'erupts' tells you what hot lava does. That's your clue.",
           "difficulty": 2,
           "passage_audio_url": "/audio/kindergarten/RI.K.4-q2-passage.mp3",
           "choices_audio_urls": [
@@ -1489,7 +1489,7 @@
             "Farm animals"
           ],
           "correct": "Ocean or sea animals",
-          "hint": "All the examples (fish, dolphins, sea turtles) live in the ocean!",
+          "hint": "All the examples in the sentence (fish, dolphins, sea turtles) have something in common — where do they live?",
           "difficulty": 2,
           "passage_audio_url": "/audio/kindergarten/RI.K.4-q5-passage.mp3",
           "choices_audio_urls": [
@@ -1547,7 +1547,7 @@
             "The first page"
           ],
           "correct": "The back cover",
-          "hint": "She turned the book over — the back tells you what the book is about!",
+          "hint": "She turned the book OVER. What part of the book is on the back?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q2-hint.mp3",
@@ -1564,7 +1564,7 @@
             "The front cover"
           ],
           "correct": "The title page",
-          "hint": "The page inside that shows the book's name and the author is called the title page!",
+          "hint": "The author's name and the book's name appear on a special page inside the book — what is that page called?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q3.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q3-hint.mp3",
@@ -1607,7 +1607,7 @@
             "The last page"
           ],
           "correct": "The title page",
-          "hint": "The author's name is on the title page inside the book!",
+          "hint": "Look inside the book on the very first page where the book's name is.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q5.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q5-hint.mp3",
@@ -1654,7 +1654,7 @@
             "The middle"
           ],
           "correct": "The front cover",
-          "hint": "The outside with the big picture and book name is the front cover!",
+          "hint": "She was looking at the OUTSIDE of the book — the very front part.",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q7.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q7-hint.mp3"
@@ -1732,7 +1732,7 @@
             "The first chapter"
           ],
           "correct": "The back cover",
-          "hint": "Turning a book over means looking at the back. The back cover tells you what the book is about!",
+          "hint": "She turned the book over — what part of the book is on the back?",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q11.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q11-hint.mp3"
@@ -1780,7 +1780,7 @@
             "Sells the book at a store"
           ],
           "correct": "Draws pictures and diagrams to help explain",
-          "hint": "In a fact book, pictures and diagrams help you understand. Who makes those?",
+          "hint": "Pictures and diagrams in a book are made by an artist — what's that artist's job called?",
           "difficulty": 1,
           "choices_audio_urls": [
             "/audio/kindergarten/RI.K.6-q2-choice1.mp3",
@@ -2209,7 +2209,7 @@
             "Training dogs"
           ],
           "correct": "Training dogs",
-          "hint": "Sit, stay, and shake are all tricks — that's training!",
+          "hint": "Sit, stay, and shake are all tricks. What do you call teaching tricks?",
           "difficulty": 2,
           "passage_audio_url": "/audio/kindergarten/RI.K.9-q4-passage.mp3",
           "choices_audio_urls": [
@@ -2233,7 +2233,7 @@
             "They are both about butterflies."
           ],
           "correct": "They are both about butterflies.",
-          "hint": "Even though they share different facts, they're both about the same creature!",
+          "hint": "Both books talk about the same animal — even though they share different facts about it.",
           "difficulty": 1,
           "passage_audio_url": "/audio/kindergarten/RI.K.9-q5-passage.mp3",
           "choices_audio_urls": [
@@ -2265,7 +2265,7 @@
             "The middle"
           ],
           "correct": "The left side",
-          "hint": "We read from LEFT to right!",
+          "hint": "Think about how a grown-up reads to you. Which side of the page do they start on?",
           "difficulty": 1,
           "choices_audio_urls": [
             "/audio/kindergarten/RF.K.1a-q1-choice1.mp3",
@@ -2288,7 +2288,7 @@
             "Back to the same line"
           ],
           "correct": "Down to the next line on the left side",
-          "hint": "Your eyes sweep down and back to the left to start the next line!",
+          "hint": "After you finish a line, your eyes do two things: go DOWN and go BACK to the start.",
           "difficulty": 1,
           "choices_audio_urls": [
             "/audio/kindergarten/RF.K.1a-q2-choice1.mp3",
@@ -2334,7 +2334,7 @@
             "↑  Bottom to top"
           ],
           "correct": "→  Left to right",
-          "hint": "In English, our eyes go from the LEFT side to the RIGHT side!",
+          "hint": "Watch how a grown-up reads a book to you. Which way do their eyes move?",
           "difficulty": 1,
           "choices_audio_urls": [
             "/audio/kindergarten/RF.K.1a-q4-choice1.mp3",
@@ -2357,7 +2357,7 @@
             "Top right corner"
           ],
           "correct": "Top left corner",
-          "hint": "We start at the TOP and on the LEFT — then go right and down!",
+          "hint": "Reading starts at the very beginning. Where is the beginning of a page — top or bottom? Left or right?",
           "difficulty": 2,
           "choices_audio_urls": [
             "/audio/kindergarten/RF.K.1a-q5-choice1.mp3",
@@ -2639,7 +2639,7 @@
             "2 words"
           ],
           "correct": "3 words",
-          "hint": "It should be: the cat sat — that's 3 separate words!",
+          "hint": "Try saying each word out loud and clap once for each one.",
           "difficulty": 2,
           "choices_audio_urls": [
             "/audio/kindergarten/RF.K.1c-q3-choice1.mp3",
@@ -2825,7 +2825,7 @@
             "Sun"
           ],
           "correct": "Hat",
-          "hint": "Rhyming words sound the same at the END. Cat... hat... they both end in -at!",
+          "hint": "Rhyming words sound the same at the END. Say each choice and listen.",
           "difficulty": 1,
           "choices_audio_urls": [
             "/audio/kindergarten/RF.K.2a-q1-choice1.mp3",
@@ -3443,7 +3443,7 @@
             "Hat"
           ],
           "correct": "Lake",
-          "hint": "Long 'a' says its own name — like in 'lake' and 'cake'!",
+          "hint": "A LONG 'a' sound says the letter's name. Say each choice and listen for it.",
           "difficulty": 2,
           "passage_audio_url": "/audio/kindergarten/RF.K.3b-q1-passage.mp3",
           "choices_audio_urls": [
@@ -3467,7 +3467,7 @@
             "Bike"
           ],
           "correct": "Sit",
-          "hint": "Short 'i' sounds like the 'i' in pig, sit, and big!",
+          "hint": "Say each word slowly. Which one has the same middle sound as 'pig'?",
           "difficulty": 1,
           "choices_audio_urls": [
             "/audio/kindergarten/RF.K.3b-q2-choice1.mp3",
@@ -3490,7 +3490,7 @@
             "Hot"
           ],
           "correct": "Bone",
-          "hint": "Long 'o' says its name — like 'bone' and 'note'!",
+          "hint": "A LONG 'o' sound says the letter's name. Say each choice and listen for it.",
           "difficulty": 2,
           "choices_audio_urls": [
             "/audio/kindergarten/RF.K.3b-q3-choice1.mp3",
@@ -3513,7 +3513,7 @@
             "Red"
           ],
           "correct": "Red",
-          "hint": "Short 'e' sounds like the 'e' in bed, red, and pet!",
+          "hint": "Say each word slowly. Which one has the same middle sound as 'bed'?",
           "difficulty": 1,
           "choices_audio_urls": [
             "/audio/kindergarten/RF.K.3b-q4-choice1.mp3",
@@ -3536,7 +3536,7 @@
             "Mule"
           ],
           "correct": "Cup",
-          "hint": "Short 'u' sounds like the 'u' in bus, cup, and sun!",
+          "hint": "Say each word slowly. Which one has the same middle sound as 'bus'?",
           "difficulty": 1,
           "choices_audio_urls": [
             "/audio/kindergarten/RF.K.3b-q5-choice1.mp3",
@@ -3819,7 +3819,7 @@
             "Hop"
           ],
           "correct": "Fly",
-          "hint": "The story mentions run, hop, and skip — but NOT fly!",
+          "hint": "Read the sentences again. Which action is NOT in the story?",
           "difficulty": 2,
           "passage_audio_url": "/audio/kindergarten/RF.K.4-q3-passage.mp3",
           "choices_audio_urls": [
@@ -4070,7 +4070,7 @@
             "A question mark (?)"
           ],
           "correct": "A question mark (?)",
-          "hint": "Questions ask something — they end with this curvy mark!",
+          "hint": "Questions ASK something — they end with a special curvy mark.",
           "difficulty": 1,
           "choices_audio_urls": [
             "/audio/kindergarten/K.L.2-q3-choice1.mp3",
@@ -4118,7 +4118,7 @@
             "It never happened"
           ],
           "correct": "It already happened",
-          "hint": "The ending '-ed' means something already happened — in the past!",
+          "hint": "The '-ed' ending tells you about WHEN something happened.",
           "difficulty": 2,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.4/K.L.4-Q1-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.4/K.L.4-Q1.mp3",
@@ -4135,7 +4135,7 @@
             "More"
           ],
           "correct": "Not",
-          "hint": "Un- means 'not.' So unhappy means NOT happy!",
+          "hint": "Think about words like 'unsafe' or 'unkind' — what does 'un-' add?",
           "difficulty": 2,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.4/K.L.4-Q2-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.4/K.L.4-Q2.mp3",
@@ -4152,7 +4152,7 @@
             "More than one dog"
           ],
           "correct": "More than one dog",
-          "hint": "Adding '-s' usually means there is more than one!",
+          "hint": "Two dogs is more than one dog. The '-s' is doing that work.",
           "difficulty": 1,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.4/K.L.4-Q3-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.4/K.L.4-Q3.mp3",
@@ -4169,7 +4169,7 @@
             "Without help"
           ],
           "correct": "Full of help",
-          "hint": "-ful means 'full of.' So helpful means full of help!",
+          "hint": "If something is 'colorful' it has lots of color. What does '-ful' usually mean?",
           "difficulty": 2,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.4/K.L.4-Q4-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.4/K.L.4-Q4.mp3",
@@ -4186,7 +4186,7 @@
             "More care"
           ],
           "correct": "Without care",
-          "hint": "-less means 'without.' Careless = without care (not being careful)!",
+          "hint": "If a treat is 'sugarless,' it has no sugar. What does '-less' mean?",
           "difficulty": 2,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.4/K.L.4-Q5-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.4/K.L.4-Q5.mp3",
@@ -4506,7 +4506,7 @@
             "closing the book"
           ],
           "correct": "reading every day",
-          "hint": "A little reading every day adds up fast!",
+          "hint": "A reader who practices a tiny bit each day gets stronger fast.",
           "difficulty": 1,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.10/RL.K.10-Q1-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.10/RL.K.10-Q1.mp3",
@@ -4523,7 +4523,7 @@
             "throw the book"
           ],
           "correct": "ask for help",
-          "hint": "Asking for help is what smart readers do!",
+          "hint": "When something is hard, what's a smart thing to do?",
           "difficulty": 1,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.10/RL.K.10-Q2-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.10/RL.K.10-Q2.mp3",
@@ -4557,7 +4557,7 @@
             "fall asleep"
           ],
           "correct": "pay attention",
-          "hint": "Paying attention helps you enjoy the story!",
+          "hint": "If you're listening to a story, you should focus on it. What's another word for that?",
           "difficulty": 1,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.10/RL.K.10-Q4-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.10/RL.K.10-Q4.mp3",
@@ -4574,7 +4574,7 @@
             "tears pages"
           ],
           "correct": "keeps trying new books",
-          "hint": "Great readers love trying new stories!",
+          "hint": "Great readers don't stop at one book — they keep going.",
           "difficulty": 2,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.10/RL.K.10-Q5-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.10/RL.K.10-Q5.mp3",
@@ -4599,7 +4599,7 @@
             "dreams"
           ],
           "correct": "real things",
-          "hint": "Fact = true. Fact books are about real things!",
+          "hint": "A FACT is something that is TRUE. Which choice is about true things?",
           "difficulty": 1,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.10/RI.K.10-Q1-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.10/RI.K.10-Q1.mp3",
@@ -4633,7 +4633,7 @@
             "humming"
           ],
           "correct": "headings and pictures",
-          "hint": "Headings and pictures point you to facts!",
+          "hint": "Look at the parts of a fact book that point you to information.",
           "difficulty": 1,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.10/RI.K.10-Q3-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.10/RI.K.10-Q3.mp3",
@@ -4650,7 +4650,7 @@
             "throw the book"
           ],
           "correct": "look closely at pictures",
-          "hint": "Pictures teach you facts too!",
+          "hint": "Pictures in a fact book aren't just decoration — they teach you. What should you do with them?",
           "difficulty": 1,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.10/RI.K.10-Q4-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.10/RI.K.10-Q4.mp3",
