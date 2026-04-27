@@ -116,12 +116,19 @@ const { createHash } = require("node:crypto");
 
   // ── Stories ────────────────────────────────────────────────────────
   try {
-    const stories = require(path.join(__dirname, "stories-bank.json"));
+    const storiesFile = require(path.join(__dirname, "stories-bank.json"));
+    const stories = Array.isArray(storiesFile)
+      ? storiesFile
+      : Array.isArray(storiesFile.stories)
+        ? storiesFile.stories
+        : [];
     for (const s of stories) {
-      const text = `${s.title}\n\n${s.body ?? s.text ?? ""}`;
+      const text = `${s.title ?? ""}\n\n${s.text ?? s.body ?? ""}`;
+      if (!text.trim() || !s.id) continue;
       const r = await index("story", s.id, text, {
         title: s.title,
-        grade_level: s.grade_level ?? s.grade,
+        grade_level: s.grade,
+        skill: s.skill,
       });
       if (r.ok) added++;
       else if (r.reused) reused++;
@@ -141,10 +148,13 @@ const { createHash } = require("node:crypto");
         .join("\n");
       const text = `${l.title ?? ""}\n${slidesText}`.trim();
       if (!text) continue;
-      const r = await index("sample_lesson", l.id ?? l.slug, text, {
+      // Use standardId-based id so re-runs are stable.
+      const id = l.id ?? `${l.standardId ?? l.standard ?? "noid"}:${(l.title ?? "untitled").slice(0, 60)}`;
+      const r = await index("sample_lesson", id, text, {
         title: l.title,
-        grade_level: l.grade_level ?? l.grade,
-        standard_id: l.standard_id ?? l.standard,
+        grade_level: l.grade,
+        standard_id: l.standardId ?? l.standard,
+        domain: l.domain,
       });
       if (r.ok) added++;
       else if (r.reused) reused++;
