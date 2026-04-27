@@ -46,13 +46,23 @@ export default async function LeveledDetailPage({
 
   // Pull comprehension questions for any version that has them.
   const allQids = versions.flatMap((v) => v.question_ids ?? []);
-  let questionsByVersion: Record<string, { id: string; prompt: string; choices: string[]; correct: string; hint: string | null }[]> = {};
+  let questionsByVersion: Record<string, { id: string; prompt: string; choices: string[]; correct: string; hint: string | null; feedback: "approved" | "rejected" | null }[]> = {};
   if (allQids.length > 0) {
-    const { data: qrows } = await supabase
-      .from("custom_questions")
-      .select("id, prompt, choices, correct, hint")
-      .in("id", allQids);
+    const [{ data: qrows }, { data: fbRows }] = await Promise.all([
+      supabase
+        .from("custom_questions")
+        .select("id, prompt, choices, correct, hint")
+        .in("id", allQids),
+      supabase
+        .from("question_feedback")
+        .select("question_id, verdict")
+        .eq("teacher_id", profile.id)
+        .in("question_id", allQids),
+    ]);
     const byId = new Map(((qrows ?? []) as any[]).map((q) => [q.id, q]));
+    const fbById = new Map(
+      ((fbRows ?? []) as any[]).map((r) => [r.question_id, r.verdict]),
+    );
     for (const v of versions) {
       questionsByVersion[v.level] = (v.question_ids ?? [])
         .map((id) => byId.get(id))
@@ -63,6 +73,7 @@ export default async function LeveledDetailPage({
           choices: (q.choices ?? []) as string[],
           correct: String(q.correct),
           hint: q.hint ?? null,
+          feedback: (fbById.get(q.id) as "approved" | "rejected" | undefined) ?? null,
         }));
     }
   }
@@ -124,6 +135,7 @@ export default async function LeveledDetailPage({
 
       <div className="mt-6">
         <LeveledViewer
+          passageId={passageId}
           versions={versions}
           sharedImageUrl={d.shared_image_url}
           questionsByVersion={questionsByVersion}

@@ -1390,3 +1390,139 @@ export async function generateLessonStructure(input: {
     };
   }
 }
+
+// ═══ Single-question regenerator (teacher-feedback driven) ═══════════════
+//
+// Used when a teacher rejects a Readee.ai question and provides a reason
+// ("too easy", "ambiguous", "not aligned to passage"). We feed the
+// rejected question + reason + passage back to Gemini to produce ONE
+// replacement. Bypasses the rate limit because Readee eats this as
+// QC training cost — the feedback signal is more valuable than the
+// credit. Logged with creditsUsed=0 so it doesn't drain the teacher's
+// monthly cap, but still appears in usage logs for accounting.
+
+const REGEN_SYSTEM = `You rewrite a single multiple-choice reading-comprehension question that a teacher rejected. The teacher gave a reason — fix THAT specific issue.
+
+Rules:
+- Stay grounded in the provided passage. Don't invent facts.
+- EXACTLY 4 choices, one correct. The "correct" field must match a choice character-for-character.
+- Address the rejection reason directly. If "too easy" → make it inferential. If "ambiguous" → tighten the wording so only one answer fits. If "not aligned" → re-anchor to a specific detail in the passage. If "wrong answer" → re-check the answer key.
+- Do NOT produce the same question again with cosmetic changes. The new question should feel meaningfully different.
+- Grade-appropriate vocabulary. Hint (one sentence) should re-direct to the part of the passage that contains the answer.
+- Randomize correct-answer position (don't always put it at A).`;
+
+const REGEN_SCHEMA = {
+  type: Type.OBJECT,
+  properties: {
+    prompt: { type: Type.STRING },
+    choices: { type: Type.ARRAY, items: { type: Type.STRING } },
+    correct: { type: Type.STRING },
+    hint: { type: Type.STRING },
+  },
+  required: ["prompt", "choices", "correct", "hint"],
+};
+
+export async function regenerateMCQQuestion(input: {
+  teacherId: string;
+  passageBody: string;
+  gradeLevel?: string | null;
+  oldQuestion: { prompt: string; choices: string[]; correct: string };
+  rejectionReason: string;
+}): Promise<{ ok: true; question: GeneratedMCQ } | { ok: false; error: string }> {
+  if (!input.passageBody.trim()) return { ok: false, error: "Passage is required." };
+
+  const safety = assertSafePrompt(
+    [input.passageBody, input.rejectionReason, input.oldQuestion.prompt].join(" "),
+  );
+  if (!safety.ok) return { ok: false, error: safety.error };
+
+  let client: GoogleGenAI;
+  try {
+    client = getClient();
+  } catch (e: any) {
+    return { ok: false, error: e.message ?? "AI is not configured." };
+  }
+
+  const gradeLine = input.gradeLevel ? `Grade level: ${input.gradeLevel}.` : "Grade level: 2nd.";
+  const userPrompt = [
+    gradeLine,
+    "",
+    "Passage students will read:",
+    `"""\n${input.passageBody.slice(0, 4000)}\n"""`,
+    "",
+    "REJECTED question:",
+    `Prompt: ${input.oldQuestion.prompt}`,
+    `Choices: ${input.oldQuestion.choices.join(" | ")}`,
+    `Marked correct: ${input.oldQuestion.correct}`,
+    "",
+    `Teacher's rejection reason: ${input.rejectionReason || "(not specified — improve generally)"}`,
+    "",
+    "Write ONE replacement question per the schema. Address the rejection reason head-on.",
+  ].join("\n");
+
+  try {
+    const response = await client.models.generateContent({
+      model: MODEL_ID,
+      contents: userPrompt,
+      config: {
+        systemInstruction: REGEN_SYSTEM,
+        responseMimeType: "application/json",
+        responseSchema: REGEN_SCHEMA,
+        temperature: 0.85,
+      },
+    });
+    const text = response.text;
+    if (!text) throw new Error("Empty response from the model.");
+
+    const parsed = JSON.parse(text) as {
+      prompt?: string;
+      choices?: string[];
+      correct?: string;
+      hint?: string;
+    };
+    const prompt = (parsed.prompt ?? "").trim();
+    const choices = Array.isArray(parsed.choices)
+      ? parsed.choices.map((c) => String(c).trim()).filter(Boolean)
+      : [];
+    const correct = (parsed.correct ?? "").trim();
+    const hint = (parsed.hint ?? "").trim() || null;
+    if (!prompt || choices.length !== 4 || !correct || !choices.includes(correct)) {
+      throw new Error("Regenerated question failed validation.");
+    }
+
+    const outputSafety = assertSafeOutput([prompt, ...choices, correct, hint ?? ""]);
+    if (!outputSafety.ok) throw new Error(outputSafety.error);
+
+    // Log with creditsUsed=0 — Readee absorbs this cost as QC training.
+    await logUsage({
+      teacherId: input.teacherId,
+      kind: "quiz_generation",
+      model: MODEL_ID,
+      inputTokens: response.usageMetadata?.promptTokenCount,
+      outputTokens: response.usageMetadata?.candidatesTokenCount,
+      creditsUsed: 0,
+      success: true,
+      requestSummary: `regen (qc-feedback): ${input.rejectionReason.slice(0, 100)}`,
+    });
+
+    return { ok: true, question: { prompt, choices, correct, hint } };
+  } catch (e: any) {
+    trackError(e, {
+      route: "readee-ai.regenerateMCQQuestion",
+      userId: input.teacherId,
+      tags: { model: MODEL_ID, kind: "quiz_generation" },
+    });
+    await logUsage({
+      teacherId: input.teacherId,
+      kind: "quiz_generation",
+      model: MODEL_ID,
+      success: false,
+      error: e.message,
+      requestSummary: `regen (qc-feedback): ${input.rejectionReason.slice(0, 100)}`,
+    });
+    return {
+      ok: false,
+      error: e?.message ?? "Couldn't regenerate that question. Try again.",
+    };
+  }
+}

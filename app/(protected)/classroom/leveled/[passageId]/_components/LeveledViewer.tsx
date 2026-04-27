@@ -1,13 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useTransition } from "react";
+import { useRouter } from "next/navigation";
 import {
   Volume2,
   Pause,
   Check,
   X as XIcon,
   ImageIcon,
+  ThumbsUp,
+  ThumbsDown,
+  Loader2,
+  Sparkles,
+  AlertCircle,
 } from "lucide-react";
+import {
+  approveQuestion,
+  rejectAndRegenerateLeveledQuestion,
+} from "../../../feedback-actions";
 
 type Level = "easy" | "on_level" | "advanced";
 type Version = {
@@ -24,6 +34,7 @@ type Question = {
   choices: string[];
   correct: string;
   hint: string | null;
+  feedback: "approved" | "rejected" | null;
 };
 
 const LEVEL_LABEL: Record<Level, string> = {
@@ -45,10 +56,12 @@ const LEVEL_DESCRIPTION: Record<Level, string> = {
  * superpower in one clean UI.
  */
 export default function LeveledViewer({
+  passageId,
   versions,
   sharedImageUrl,
   questionsByVersion,
 }: {
+  passageId: string;
   versions: Version[];
   sharedImageUrl: string | null;
   questionsByVersion: Record<string, Question[]>;
@@ -171,7 +184,13 @@ export default function LeveledViewer({
           </h3>
           <div className="mt-4 space-y-3">
             {questions.map((q, i) => (
-              <ComprehensionItem key={q.id + level} q={q} index={i} />
+              <ComprehensionItem
+                key={q.id + level}
+                q={q}
+                index={i}
+                passageId={passageId}
+                level={level}
+              />
             ))}
           </div>
         </div>
@@ -180,19 +199,105 @@ export default function LeveledViewer({
   );
 }
 
-function ComprehensionItem({ q, index }: { q: Question; index: number }) {
-  // Teacher-review layout — correct answer is always shown so the
-  // teacher can verify Readee.ai's work at a glance.
+function ComprehensionItem({
+  q,
+  index,
+  passageId,
+  level,
+}: {
+  q: Question;
+  index: number;
+  passageId: string;
+  level: Level;
+}) {
+  const router = useRouter();
+  const [feedback, setFeedback] = useState<"approved" | "rejected" | null>(q.feedback);
+  const [showReject, setShowReject] = useState(false);
+  const [reason, setReason] = useState("");
+  const [pending, start] = useTransition();
+  const [err, setErr] = useState<string | null>(null);
+
+  function approve() {
+    setErr(null);
+    start(async () => {
+      const res = await approveQuestion({ questionId: q.id });
+      if (!res.ok) {
+        setErr(res.error);
+        return;
+      }
+      setFeedback("approved");
+    });
+  }
+
+  function submitReject() {
+    if (!reason.trim()) {
+      setErr("Tell us briefly what was wrong.");
+      return;
+    }
+    setErr(null);
+    start(async () => {
+      const res = await rejectAndRegenerateLeveledQuestion({
+        passageId,
+        level,
+        questionId: q.id,
+        reason: reason.trim(),
+      });
+      if (!res.ok) {
+        setErr(res.error);
+        return;
+      }
+      setShowReject(false);
+      setReason("");
+      router.refresh();
+    });
+  }
+
   return (
     <div className="rounded-2xl border border-zinc-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-900">
-      <div className="flex items-center gap-2">
-        <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-indigo-600 text-[10px] font-bold text-white">
-          {index + 1}
-        </span>
-        <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-400">
-          Question {index + 1}
-        </span>
+      <div className="flex items-start justify-between gap-2">
+        <div className="flex items-center gap-2">
+          <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-indigo-600 text-[10px] font-bold text-white">
+            {index + 1}
+          </span>
+          <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-400">
+            Question {index + 1}
+          </span>
+          {feedback === "approved" && (
+            <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-bold text-emerald-700">
+              <Check className="h-3 w-3" />
+              Approved
+            </span>
+          )}
+        </div>
+        <div className="flex items-center gap-1">
+          <button
+            type="button"
+            onClick={approve}
+            disabled={pending || feedback === "approved"}
+            title="Approve"
+            className={`flex h-7 w-7 items-center justify-center rounded-full transition ${
+              feedback === "approved"
+                ? "bg-emerald-600 text-white"
+                : "bg-zinc-100 text-zinc-500 hover:bg-emerald-50 hover:text-emerald-600"
+            } disabled:opacity-60`}
+          >
+            <ThumbsUp className="h-3.5 w-3.5" />
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              setShowReject((v) => !v);
+              setErr(null);
+            }}
+            disabled={pending}
+            title="Reject and regenerate"
+            className="flex h-7 w-7 items-center justify-center rounded-full bg-zinc-100 text-zinc-500 transition hover:bg-red-50 hover:text-red-600 disabled:opacity-60"
+          >
+            <ThumbsDown className="h-3.5 w-3.5" />
+          </button>
+        </div>
       </div>
+
       <p className="mt-2 text-sm font-semibold text-zinc-900 dark:text-white">
         {q.prompt}
       </p>
@@ -218,6 +323,66 @@ function ComprehensionItem({ q, index }: { q: Question; index: number }) {
         <div className="mt-2 rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-800">
           <span className="font-bold">Hint: </span>
           {q.hint}
+        </div>
+      )}
+
+      {showReject && (
+        <div className="mt-3 rounded-xl border border-red-200 bg-red-50 p-3">
+          <label className="block text-[10px] font-bold uppercase tracking-widest text-red-700">
+            What was wrong?
+          </label>
+          <textarea
+            value={reason}
+            onChange={(e) => setReason(e.target.value)}
+            rows={2}
+            placeholder="e.g. too easy for advanced, ambiguous wording, not aligned to the passage…"
+            className="mt-1 w-full rounded-lg border border-red-200 bg-white px-2 py-1.5 text-xs focus:border-red-400 focus:outline-none"
+          />
+          {err && (
+            <div className="mt-2 flex items-start gap-1.5 text-xs font-semibold text-red-700">
+              <AlertCircle className="mt-0.5 h-3 w-3 flex-shrink-0" />
+              {err}
+            </div>
+          )}
+          <div className="mt-2 flex items-center justify-between gap-2">
+            <span className="text-[10px] text-red-600">
+              Readee.ai will rewrite this question. Free for you — we eat
+              the credit cost as quality feedback.
+            </span>
+            <div className="flex items-center gap-1">
+              <button
+                type="button"
+                onClick={() => {
+                  setShowReject(false);
+                  setReason("");
+                  setErr(null);
+                }}
+                disabled={pending}
+                className="rounded-full px-3 py-1 text-[11px] font-semibold text-red-600 hover:bg-red-100"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={submitReject}
+                disabled={pending || !reason.trim()}
+                className="inline-flex items-center gap-1 rounded-full bg-red-600 px-3 py-1 text-[11px] font-bold text-white hover:bg-red-700 disabled:opacity-60"
+              >
+                {pending ? (
+                  <Loader2 className="h-3 w-3 animate-spin" />
+                ) : (
+                  <Sparkles className="h-3 w-3" />
+                )}
+                Regenerate
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+      {!showReject && err && (
+        <div className="mt-2 flex items-start gap-1.5 text-xs font-semibold text-red-700">
+          <AlertCircle className="mt-0.5 h-3 w-3 flex-shrink-0" />
+          {err}
         </div>
       )}
     </div>
