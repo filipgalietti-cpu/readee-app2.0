@@ -37,8 +37,12 @@ Your job:
 5. Compute WCPM = words_correct / duration_minutes (rounded to 1 decimal).
 6. Write a kid-friendly encouragement (2 sentences max). Lead with what went well, then ONE specific word to practice. Use a warm, age-appropriate voice. Don't shame.
 7. Write a teacher-facing 1-sentence summary of fluency level + any concerns (e.g. "Strong WCPM at 78; struggled on multi-syllable words like 'beautiful' — recommend syllable-chunking practice.").
+8. Score PROSODY on a 1-4 NAEP scale (1=word-by-word monotone; 4=expressive phrasing with pitch variation, attention to punctuation, character voices). Add a one-line prosody note.
+9. Score PHRASING on 1-4 (1=word-by-word; 4=meaningful phrase groups). One-line phrasing note.
+10. Detect SELF-CORRECTIONS — count of times the child said a wrong word then immediately corrected ("car-, carrot"). High self-correction count is positive (active monitoring).
+11. List up to 3 specific TARGET PATTERNS to focus on next ("r-controlled vowels", "consonant blends -st-", "multi-syllable suffix -tion").
 
-Output JSON with: transcript, word_annotations array, words_total, words_correct, duration_seconds, wcpm, encouragement, teacher_summary.`;
+Output JSON with: transcript, word_annotations array, words_total, words_correct, duration_seconds, wcpm, encouragement, teacher_summary, prosody_score, prosody_note, phrasing_score, phrasing_note, self_correction_count, target_patterns.`;
 
 const SCHEMA = {
   type: Type.OBJECT,
@@ -65,6 +69,15 @@ const SCHEMA = {
     wcpm: { type: Type.NUMBER },
     encouragement: { type: Type.STRING },
     teacher_summary: { type: Type.STRING },
+    prosody_score: { type: Type.INTEGER },
+    prosody_note: { type: Type.STRING },
+    phrasing_score: { type: Type.INTEGER },
+    phrasing_note: { type: Type.STRING },
+    self_correction_count: { type: Type.INTEGER },
+    target_patterns: {
+      type: Type.ARRAY,
+      items: { type: Type.STRING },
+    },
   },
   required: [
     "transcript",
@@ -87,6 +100,12 @@ export type FluencyAnalysis = {
   wcpm: number;
   encouragement: string;
   teacherSummary: string;
+  prosodyScore: number;
+  prosodyNote: string;
+  phrasingScore: number;
+  phrasingNote: string;
+  selfCorrectionCount: number;
+  targetPatterns: string[];
 };
 
 export async function analyzeFluencyReading(input: {
@@ -182,6 +201,14 @@ Transcribe and analyze the audio now.`;
         parsed.encouragement ?? "Great effort! Try reading it again.",
       teacherSummary:
         parsed.teacher_summary ?? "Reading recorded; review for full analysis.",
+      prosodyScore: Math.max(1, Math.min(4, Number(parsed.prosody_score ?? 2))),
+      prosodyNote: (parsed.prosody_note ?? "").toString(),
+      phrasingScore: Math.max(1, Math.min(4, Number(parsed.phrasing_score ?? 2))),
+      phrasingNote: (parsed.phrasing_note ?? "").toString(),
+      selfCorrectionCount: Math.max(0, Number(parsed.self_correction_count ?? 0)),
+      targetPatterns: Array.isArray(parsed.target_patterns)
+        ? parsed.target_patterns.map((s: any) => String(s)).slice(0, 5)
+        : [],
     };
 
     await logUsage({
@@ -216,6 +243,12 @@ Transcribe and analyze the audio now.`;
       wcpm: analysis.wcpm,
       encouragement: analysis.encouragement,
       teacher_summary: analysis.teacherSummary,
+      prosody_score: analysis.prosodyScore,
+      prosody_note: analysis.prosodyNote,
+      phrasing_score: analysis.phrasingScore,
+      phrasing_note: analysis.phrasingNote,
+      self_correction_count: analysis.selfCorrectionCount,
+      target_patterns: analysis.targetPatterns,
       assignment_id: input.assignmentId ?? null,
     })
     .select("id")
