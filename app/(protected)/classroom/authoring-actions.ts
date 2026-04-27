@@ -406,6 +406,28 @@ export async function aiBuildAssignment(input: {
   return res;
 }
 
+/**
+ * Build a slideshow lesson via the lesson wizard. Mirrors
+ * aiBuildAssignment but returns a lessonId for /classroom/lessons.
+ */
+export async function aiBuildLesson(input: {
+  brief: import("@/lib/ai/build-lesson").LessonBrief;
+}): Promise<
+  | { ok: true; lessonId: string; warnings: string[]; creditsUsed: number }
+  | { ok: false; error: string }
+> {
+  const profile = await requireProfile();
+  if (profile.role !== "educator") {
+    return { ok: false, error: "Only educators can use Readee.ai." };
+  }
+  const { buildLesson } = await import("@/lib/ai/build-lesson");
+  const res = await buildLesson({ teacherId: profile.id, brief: input.brief });
+  if (res.ok) {
+    revalidatePath("/classroom/lessons");
+  }
+  return res;
+}
+
 export async function aiGenerateAudio(input: { text: string }): Promise<
   { ok: true; audioUrl: string } | { ok: false; error: string }
 > {

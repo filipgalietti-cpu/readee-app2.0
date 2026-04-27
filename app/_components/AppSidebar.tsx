@@ -41,7 +41,14 @@ function getNavSections(
         {
           href: "/classroom/authoring/wizard",
           icon: Sparkles,
-          label: "Build with AI",
+          label: "Build a quiz",
+          emphasis: true,
+          shimmer: true,
+        },
+        {
+          href: "/classroom/authoring/lesson-wizard",
+          icon: Sparkles,
+          label: "Build a lesson",
           emphasis: true,
           shimmer: true,
         },
@@ -49,6 +56,7 @@ function getNavSections(
         { href: "/classroom/live", icon: Zap, label: "Live quiz" },
         { href: "/classroom/reports", icon: BarChart3, label: "Reports" },
         { href: "/classroom/library", icon: Library, label: "Library" },
+        { href: "/classroom/lessons", icon: BookText, label: "Lessons" },
         { href: "/classroom/authoring", icon: ClipboardPen, label: "Quizzes" },
         { href: "/classroom/refer", icon: Users, label: "Refer a teacher" },
       ],
