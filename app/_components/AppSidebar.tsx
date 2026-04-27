@@ -114,6 +114,13 @@ function getNavSections(
             emphasis: true,
             shimmer: true,
           },
+          {
+            href: "/stories-for-me",
+            icon: Sparkles,
+            label: "Stories starring my kid",
+            emphasis: true,
+            shimmer: true,
+          },
           { href: `/assessment-results${q}`, icon: ClipboardCheck, label: "Placement Test" },
           { href: `/analytics${q}`, icon: BarChart3, label: "Analytics" },
         ],

@@ -1,6 +1,6 @@
 import { notFound, redirect } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, Users, ClipboardList, BarChart3, Settings, AlertTriangle } from "lucide-react";
+import { ArrowLeft, Users, ClipboardList, BarChart3, Settings, AlertTriangle, Mail } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/lib/auth/helpers";
 import StudentsTab from "./_tabs/StudentsTab";
@@ -97,7 +97,16 @@ export default async function ClassroomPage({
         </div>
         <div className="flex flex-col items-end gap-2">
           <JoinCodePanel classroomId={c.id} initialCode={c.join_code} />
-          <SmallGroupsButton classroomId={c.id} />
+          <div className="flex flex-wrap justify-end gap-2">
+            <SmallGroupsButton classroomId={c.id} />
+            <Link
+              href={`/classroom/${c.id}/parent-letter`}
+              className="inline-flex items-center gap-1.5 rounded-full border border-violet-300 bg-white px-4 py-1.5 text-xs font-bold text-violet-700 shadow-sm transition hover:bg-violet-50 dark:bg-slate-900 dark:hover:bg-violet-950/30"
+            >
+              <Mail className="h-3.5 w-3.5" />
+              Parent letter
+            </Link>
+          </div>
         </div>
       </div>
 

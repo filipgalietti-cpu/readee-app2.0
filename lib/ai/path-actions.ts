@@ -219,3 +219,105 @@ export async function generateSmallGroups(input: {
 
   return { ok: true, groups: res.groups, roster };
 }
+
+/**
+ * Draft a parent letter for a classroom.
+ */
+export async function draftParentLetterAction(input: {
+  classroomId: string;
+}): Promise<
+  | { ok: true; subject: string; body: string }
+  | { ok: false; error: string }
+> {
+  const profile = await requireProfile();
+  if (profile.role !== "educator") {
+    return { ok: false, error: "Only teachers can draft parent letters." };
+  }
+  const supabase = await createClient();
+  const { data: classroom } = await supabase
+    .from("classrooms")
+    .select("id")
+    .eq("id", input.classroomId)
+    .eq("teacher_id", profile.id)
+    .maybeSingle();
+  if (!classroom) return { ok: false, error: "Classroom not found." };
+
+  const { draftParentLetter } = await import("@/lib/ai/build-parent-letter");
+  return draftParentLetter({ classroomId: input.classroomId, teacherId: profile.id });
+}
+
+/**
+ * Translate a parent letter into the requested language.
+ */
+export async function translateParentLetterAction(input: {
+  subject: string;
+  body: string;
+  targetLanguage: string;
+  targetLanguageLabel: string;
+}): Promise<
+  | { ok: true; subject: string; body: string }
+  | { ok: false; error: string }
+> {
+  const profile = await requireProfile();
+  if (profile.role !== "educator") {
+    return { ok: false, error: "Only teachers can translate letters." };
+  }
+  const { translateLetter } = await import("@/lib/ai/build-parent-letter");
+  return translateLetter({ teacherId: profile.id, ...input });
+}
+
+/**
+ * Generate a personalized story starring the child. Parent-side B2C
+ * feature.
+ */
+export async function buildPersonalizedStoryAction(input: {
+  childId: string;
+  pageCount?: number;
+}): Promise<
+  | { ok: true; storyId: string; warnings: string[]; creditsUsed: number }
+  | { ok: false; error: string }
+> {
+  const profile = await requireProfile();
+  const supabase = await createClient();
+
+  const { data: child } = await supabase
+    .from("children")
+    .select("id, first_name, parent_id, grade, reading_level, interests")
+    .eq("id", input.childId)
+    .maybeSingle();
+  if (!child) return { ok: false, error: "Child not found." };
+  if ((child as any).parent_id !== profile.id) {
+    return { ok: false, error: "Not your child." };
+  }
+  const c = child as any;
+
+  const { buildPersonalizedStory } = await import(
+    "@/lib/ai/build-personalized-story"
+  );
+  return buildPersonalizedStory({
+    parentId: profile.id,
+    brief: {
+      childId: c.id,
+      childFirstName: c.first_name ?? "",
+      interests: Array.isArray(c.interests) ? c.interests : [],
+      readingLevel: c.reading_level ?? c.grade ?? "1st",
+      pageCount: input.pageCount ?? 8,
+    },
+  });
+}
+
+/** Update a child's interests (parent-side). */
+export async function updateChildInterests(input: {
+  childId: string;
+  interests: string[];
+}): Promise<{ ok: true } | { ok: false; error: string }> {
+  const profile = await requireProfile();
+  const supabase = await createClient();
+  const { error } = await supabase
+    .from("children")
+    .update({ interests: input.interests.slice(0, 10) })
+    .eq("id", input.childId)
+    .eq("parent_id", profile.id);
+  if (error) return { ok: false, error: error.message };
+  return { ok: true };
+}
