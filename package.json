@@ -10,6 +10,9 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:ci": "npx next build --webpack && vitest run",
+    "test:smoke": "playwright test",
+    "test:smoke:ui": "playwright test --ui",
+    "test:smoke:local": "PLAYWRIGHT_BASE_URL=http://localhost:3000 playwright test",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },
@@ -41,6 +44,7 @@
     "zustand": "^5.0.11"
   },
   "devDependencies": {
+    "@playwright/test": "^1.59.1",
     "@tailwindcss/postcss": "^4",
     "@types/howler": "^2.2.12",
     "@types/node": "^20",

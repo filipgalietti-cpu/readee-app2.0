@@ -1,0 +1,46 @@
+name: Smoke tests
+
+# Runs the Playwright smoke suite against production after every push
+# to main + every 6 hours on a schedule. Failures ping GitHub.
+on:
+  push:
+    branches: [main]
+  schedule:
+    # 6-hour cadence catches issues even if there's no commit traffic.
+    - cron: "0 */6 * * *"
+  workflow_dispatch: {}
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Run smoke tests against prod
+        env:
+          PLAYWRIGHT_BASE_URL: https://learn.readee.app
+          # Repository secrets — set these in GitHub → Settings →
+          # Secrets and variables → Actions:
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+          PLAYWRIGHT_TEACHER_EMAIL: ${{ secrets.PLAYWRIGHT_TEACHER_EMAIL }}
+          PLAYWRIGHT_TEACHER_PASSWORD: ${{ secrets.PLAYWRIGHT_TEACHER_PASSWORD }}
+        run: npx playwright test
+
+      - name: Upload Playwright report on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 14
