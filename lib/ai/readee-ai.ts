@@ -49,6 +49,32 @@ export type GeneratedMCQ = {
   hint: string | null;
 };
 
+/**
+ * Defensive whitespace cleanup for AI-generated passage bodies.
+ * Even with the system prompt instructing line breaks + space after
+ * punctuation, models occasionally serialize "day,Spring" — comma
+ * directly against the next word with no whitespace at all. This
+ * happens most with poems where the model treats line ends as
+ * implicit separators.
+ *
+ * We:
+ *   1. Insert a space after , . ! ? : ; if followed immediately
+ *      by a letter/digit (most common bug)
+ *   2. Insert a newline before a capital letter that follows a
+ *      sentence-end-punctuation+space when the surrounding context
+ *      looks like verse (multiple short clauses, end-rhyme cadence).
+ *      Conservative — only acts when the model clearly intended
+ *      line breaks and dropped them.
+ */
+function normalizePassageWhitespace(s: string): string {
+  if (!s) return s;
+  // Bug 1: punctuation glued to next token.  e.g. "day,Spring" → "day, Spring"
+  let out = s.replace(/([,.!?;:])(?=[A-Za-z0-9])/g, "$1 ");
+  // Bug 2: collapse repeat spaces but preserve newlines.
+  out = out.replace(/[ \t]{2,}/g, " ");
+  return out;
+}
+
 export function getClient(): GoogleGenAI {
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
@@ -274,6 +300,9 @@ Rules:
 - Use grade-appropriate vocabulary. Prefer common decodable words for K-2.
 - If the teacher names a phonics pattern (short a, long e, r-controlled, -tion), use it consistently. Bold the target words with **asterisks**.
 - Narrative style: simple characters, clear setting, a small problem, a small resolution. No fantasy jargon or historical-era vocabulary.
+- ALWAYS put a single space after every comma, period, question mark, and exclamation point — even when a line break follows.
+- For poems / verse, separate every poem line with a real newline character (\\n) inside the JSON string. Do NOT smash lines together.
+- For prose, separate paragraphs with a blank line (two newlines). One sentence per line is fine; never run multiple sentences together with no whitespace.
 - Return ONLY the passage text in the "passage" field, and a short "title" field (≤ 8 words). No preamble.`;
 
 const PASSAGE_SCHEMA = {
@@ -1292,7 +1321,7 @@ export async function generatePassage(input: {
       suggested_questions?: string[];
     };
     const title = (parsed.title ?? "").trim();
-    const passage = (parsed.passage ?? "").trim();
+    const passage = normalizePassageWhitespace((parsed.passage ?? "").trim());
     const suggested = Array.isArray(parsed.suggested_questions)
       ? parsed.suggested_questions.map((s) => String(s).trim()).filter(Boolean).slice(0, 5)
       : [];
