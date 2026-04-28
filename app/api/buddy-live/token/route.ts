@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { checkParentReadeePlus } from "@/lib/plan/teacher-gate";
 import { mintVertexLiveSession } from "@/lib/ai/vertex-live";
+import { buildBuddyContext, type BuddyMode } from "@/lib/ai/buddy-context";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -8,27 +9,23 @@ export const dynamic = "force-dynamic";
 /**
  * Mint a real-time Live session for the Reading Buddy.
  *
- * Today we use Vertex AI (gemini-live-2.5-flash-native-audio, GA).
- * AI Studio's Live API isn't allowlisted on this project. The route
- * abstracts the provider — if AI Studio Live is enabled later we can
- * mint there instead, and the client only needs to look at provider
- * to decide which path to take.
+ * Personalizes the system prompt with the kid's name, grade, and
+ * recent practice / fluency activity (when childId is passed).
+ * Mode steers behavior: freeform / read_with_me / word_meaning /
+ * story_time / quick_quiz.
  *
- * Returned payload is self-contained so the browser can open the
- * WebSocket directly and send the setup message — no further server
- * round-trip required.
+ * Provider: Vertex AI (gemini-live-2.5-flash-native-audio, GA).
+ * AI Studio Live isn't allowlisted on this project; route abstracts
+ * the provider so callers don't care.
  */
 
-const BUDDY_SYSTEM_PROMPT = `You are Readee, a warm, patient real-time reading buddy for a K-4 child.
-- Keep replies SHORT (1-3 sentences).
-- Match grade-level vocabulary. K-1 use very simple words.
-- If the child asks what a word means, give a kid-friendly definition + one quick example.
-- If they're sounding out a word, gently say it slowly and break it into chunks.
-- If they ask about the passage, answer warmly and briefly.
-- If they go off-topic, gently redirect: "That sounds fun! Let's keep reading first."
-- NEVER pretend to be human. If asked, say you're Readee, the reading helper.
-- Stay safe. No personal info. Refuse anything inappropriate.
-Tone: warm, encouraging, bunny-mascot energy. Speak like a friend.`;
+const VALID_MODES: BuddyMode[] = [
+  "freeform",
+  "read_with_me",
+  "word_meaning",
+  "story_time",
+  "quick_quiz",
+];
 
 export async function POST(req: Request) {
   const gate = await checkParentReadeePlus();
@@ -36,25 +33,32 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: false, error: gate.error }, { status: gate.status });
   }
 
-  let body: { passage?: string; gradeLevel?: string };
+  let body: {
+    passage?: string;
+    gradeLevel?: string;
+    childId?: string;
+    mode?: string;
+  };
   try {
     body = await req.json();
   } catch {
     body = {};
   }
-  const passage = (body.passage ?? "").toString().slice(0, 4000);
-  const gradeLevel = (body.gradeLevel ?? "").toString().slice(0, 20);
 
-  const systemInstruction = [
-    BUDDY_SYSTEM_PROMPT,
-    "",
-    `Grade level: ${gradeLevel || "K-4"}.`,
-    passage
-      ? `Passage the child is reading:\n"""\n${passage}\n"""`
-      : "No passage on screen yet — the child is just chatting about reading.",
-  ].join("\n");
+  const mode: BuddyMode = (VALID_MODES.includes(body.mode as BuddyMode)
+    ? body.mode
+    : "freeform") as BuddyMode;
 
-  const session = await mintVertexLiveSession({ systemInstruction });
+  const ctx = await buildBuddyContext({
+    childId: body.childId ?? null,
+    passage: body.passage ?? null,
+    gradeLevel: body.gradeLevel ?? null,
+    mode,
+  });
+
+  const session = await mintVertexLiveSession({
+    systemInstruction: ctx.systemInstruction,
+  });
   if (!session.ok) {
     return NextResponse.json(
       { ok: false, error: session.error },
@@ -69,5 +73,7 @@ export async function POST(req: Request) {
     setupModel: session.setupModel,
     systemInstruction: session.systemInstruction,
     expiresAt: session.expiresAt,
+    childFirstName: ctx.childFirstName,
+    mode,
   });
 }

@@ -28,10 +28,18 @@ type Status = "idle" | "connecting" | "listening" | "thinking" | "speaking" | "e
 export default function LiveBuddy({
   passage,
   gradeLevel,
+  mode,
+  childId,
   onExhausted,
 }: {
   passage: string;
   gradeLevel: string;
+  /** Activity mode. Steers the system prompt for read-with-me,
+   *  word-meaning, story-time, or quick-quiz behavior. */
+  mode?: string;
+  /** When set, the server enriches the system prompt with the kid's
+   *  name + recent practice/fluency context. */
+  childId?: string | null;
   /** Called when every Live model candidate has failed setup, so the
    *  parent shell can auto-fall-back to turn-based mode. */
   onExhausted?: () => void;
@@ -97,7 +105,12 @@ export default function LiveBuddy({
       const tokRes = await fetch("/api/buddy-live/token", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ passage, gradeLevel }),
+        body: JSON.stringify({
+          passage,
+          gradeLevel,
+          mode: mode ?? "freeform",
+          childId: childId ?? undefined,
+        }),
       });
       const tokJson = await tokRes.json();
       if (!tokJson.ok) throw new Error(tokJson.error ?? "Could not mint Live session.");
