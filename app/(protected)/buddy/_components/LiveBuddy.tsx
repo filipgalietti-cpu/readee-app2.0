@@ -340,17 +340,37 @@ export default function LiveBuddy({
           }
         }
 
-        if (sc.inputTranscription?.text) {
-          setTranscripts((prev) => [
-            ...prev,
-            { role: "child", text: sc.inputTranscription.text as string },
-          ]);
+        // Vertex streams transcription as small (2-3 word) chunks.
+        // Append to the most recent bubble of the same role so the
+        // sentence reads as one line; only start a new bubble when
+        // the role changes or after turnComplete (handled below).
+        const inText: string | undefined =
+          sc.inputTranscription?.text ?? sc.input_transcription?.text;
+        if (inText) {
+          setTranscripts((prev) => {
+            const last = prev[prev.length - 1];
+            if (last?.role === "child") {
+              return [
+                ...prev.slice(0, -1),
+                { role: "child", text: last.text + inText },
+              ];
+            }
+            return [...prev, { role: "child", text: inText }];
+          });
         }
-        if (sc.outputTranscription?.text) {
-          setTranscripts((prev) => [
-            ...prev,
-            { role: "buddy", text: sc.outputTranscription.text as string },
-          ]);
+        const outText: string | undefined =
+          sc.outputTranscription?.text ?? sc.output_transcription?.text;
+        if (outText) {
+          setTranscripts((prev) => {
+            const last = prev[prev.length - 1];
+            if (last?.role === "buddy") {
+              return [
+                ...prev.slice(0, -1),
+                { role: "buddy", text: last.text + outText },
+              ];
+            }
+            return [...prev, { role: "buddy", text: outText }];
+          });
         }
 
         if (sc.turnComplete) {
