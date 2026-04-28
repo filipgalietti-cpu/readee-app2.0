@@ -39,18 +39,49 @@ function ensureCredentialsOnDisk() {
   credentialsResolved = true;
   const inline = process.env.GOOGLE_CREDENTIALS_JSON;
   const existing = process.env.GOOGLE_APPLICATION_CREDENTIALS;
-  // If GOOGLE_APPLICATION_CREDENTIALS points at a real file, use it.
+  console.info(
+    "[vertex-live] credential resolve:",
+    JSON.stringify({
+      hasInline: !!inline,
+      inlineLength: inline?.length ?? 0,
+      hasExisting: !!existing,
+      existingPath: existing,
+      existingExists: existing ? existsSync(existing) : false,
+    }),
+  );
   if (existing && existsSync(existing)) return;
-  // Otherwise the env-var path is a leftover (e.g. a local Mac path
-  // copied into Vercel). Clear it so GoogleAuth doesn't try to read
-  // the bogus path before our inline-JSON fallback.
   if (existing) {
     delete process.env.GOOGLE_APPLICATION_CREDENTIALS;
   }
   if (inline) {
     const dest = join(tmpdir(), "readee-google-sa.json");
-    writeFileSync(dest, inline, { encoding: "utf8" });
-    process.env.GOOGLE_APPLICATION_CREDENTIALS = dest;
+    try {
+      writeFileSync(dest, inline, { encoding: "utf8" });
+      process.env.GOOGLE_APPLICATION_CREDENTIALS = dest;
+      console.info("[vertex-live] wrote inline JSON to", dest);
+    } catch (e: any) {
+      console.error("[vertex-live] failed to write inline JSON:", e?.message);
+    }
+    // Sanity check the JSON shape so we surface a clear error if
+    // someone pasted just the project id, an extra wrapping quote,
+    // etc.
+    try {
+      const parsed = JSON.parse(inline);
+      if (!parsed.client_email || !parsed.private_key) {
+        console.error(
+          "[vertex-live] GOOGLE_CREDENTIALS_JSON is missing client_email/private_key — paste the full service-account JSON, not a fragment.",
+        );
+      }
+    } catch (e: any) {
+      console.error(
+        "[vertex-live] GOOGLE_CREDENTIALS_JSON is not valid JSON:",
+        e?.message,
+      );
+    }
+  } else {
+    console.error(
+      "[vertex-live] No credentials available. Set GOOGLE_CREDENTIALS_JSON (inline JSON) or GOOGLE_APPLICATION_CREDENTIALS (file path).",
+    );
   }
 }
 
