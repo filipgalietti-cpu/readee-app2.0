@@ -79,8 +79,8 @@ export async function proxy(request: NextRequest) {
     "media-src 'self' blob: https://*.supabase.co",
     "font-src 'self'",
     isDev
-      ? "connect-src 'self' ws://localhost:* https://*.supabase.co https://us.i.posthog.com https://*.ingest.us.sentry.io https://generativelanguage.googleapis.com wss://generativelanguage.googleapis.com https://*.aiplatform.googleapis.com wss://*.aiplatform.googleapis.com"
-      : "connect-src 'self' https://*.supabase.co https://us.i.posthog.com https://*.ingest.us.sentry.io https://generativelanguage.googleapis.com wss://generativelanguage.googleapis.com https://*.aiplatform.googleapis.com wss://*.aiplatform.googleapis.com",
+      ? "connect-src 'self' ws://localhost:* https://*.supabase.co https://us.i.posthog.com https://*.ingest.us.sentry.io https://generativelanguage.googleapis.com wss://generativelanguage.googleapis.com https://us-central1-aiplatform.googleapis.com wss://us-central1-aiplatform.googleapis.com"
+      : "connect-src 'self' https://*.supabase.co https://us.i.posthog.com https://*.ingest.us.sentry.io https://generativelanguage.googleapis.com wss://generativelanguage.googleapis.com https://us-central1-aiplatform.googleapis.com wss://us-central1-aiplatform.googleapis.com",
     "frame-ancestors 'none'",
     "base-uri 'self'",
     "form-action 'self'",
