@@ -253,18 +253,18 @@ function useStepDirection() {
 /* ─── Step 1: Identity ─────────────────────────────── */
 
 const ROTATING_PLACEHOLDERS = [
-  "e.g. Mrs. Wonderful",
-  "e.g. Mr. Fantastic",
-  "e.g. Ms. Brilliant",
-  "e.g. Mrs. Sunshine",
-  "e.g. Mr. Awesome",
-  "e.g. Ms. Marvelous",
-  "e.g. Mrs. Curious",
-  "e.g. Mr. Sparkle",
-  "e.g. Ms. Galaxy",
-  "e.g. Coach Sarah",
-  "e.g. Dr. Klingerman",
-  "e.g. Señora Lopez",
+  "Mrs. Wonderful",
+  "Mr. Fantastic",
+  "Ms. Brilliant",
+  "Mrs. Sunshine",
+  "Mr. Awesome",
+  "Ms. Marvelous",
+  "Mrs. Curious",
+  "Mr. Sparkle",
+  "Ms. Galaxy",
+  "Coach Sarah",
+  "Dr. Klingerman",
+  "Señora Lopez",
 ];
 
 function StepIdentity({
@@ -308,7 +308,7 @@ function StepIdentity({
           placeholder=" "
           autoFocus
           maxLength={80}
-          className="w-full border-0 border-b-2 border-violet-200 bg-transparent px-2 py-4 text-center text-4xl font-extrabold tracking-tight text-zinc-900 transition focus:border-violet-600 focus:outline-none"
+          className="relative z-10 w-full border-0 border-b-2 border-violet-200 bg-transparent px-2 py-4 text-center text-4xl font-extrabold leading-tight tracking-tight text-zinc-900 transition focus:border-violet-600 focus:outline-none"
         />
         {/* Rotating placeholder layer — fades in/out behind the cursor
             when the input is empty. Plain placeholder= can't animate
@@ -321,7 +321,7 @@ function StepIdentity({
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -6 }}
               transition={{ duration: 0.35, ease: "easeOut" }}
-              className="pointer-events-none absolute inset-0 flex items-center justify-center text-4xl font-extrabold tracking-tight text-violet-300"
+              className="pointer-events-none absolute inset-0 z-0 block w-full px-2 py-4 text-center text-4xl font-extrabold leading-tight tracking-tight text-violet-300"
             >
               {ROTATING_PLACEHOLDERS[phIdx]}
             </motion.span>
