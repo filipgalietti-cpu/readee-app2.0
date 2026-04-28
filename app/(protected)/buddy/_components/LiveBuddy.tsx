@@ -1,7 +1,15 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import posthog from "posthog-js";
 import { Mic, MicOff, AlertCircle, Sparkles, Loader2 } from "lucide-react";
+
+function track(event: string, props?: Record<string, unknown>) {
+  if (typeof window === "undefined") return;
+  try {
+    posthog.capture(event, props);
+  } catch {}
+}
 import {
   LIVE_INPUT_SAMPLE_RATE,
   LIVE_OUTPUT_SAMPLE_RATE,
@@ -80,6 +88,37 @@ export default function LiveBuddy({
     return () => disconnect();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Best-effort save buddy memory if the kid closes the tab mid-session.
+  // navigator.sendBeacon survives unload and reaches the server. We
+  // pass childId, the current transcripts, and approximate session
+  // length. Server validates parent_id ownership before persisting.
+  useEffect(() => {
+    if (!childId) return;
+    function flushMemory() {
+      const t = transcripts;
+      if (t.length < 2) return;
+      const start = sessionStartRef.current;
+      const sessionMinutes = start
+        ? Math.max(1, Math.round((Date.now() - start) / 60000))
+        : undefined;
+      try {
+        const blob = new Blob(
+          [JSON.stringify({ childId, transcripts: t, sessionMinutes })],
+          { type: "application/json" },
+        );
+        navigator.sendBeacon("/api/buddy-live/save-memory", blob);
+      } catch {
+        // sendBeacon can throw on some browsers; failure is silent.
+      }
+    }
+    window.addEventListener("beforeunload", flushMemory);
+    window.addEventListener("pagehide", flushMemory);
+    return () => {
+      window.removeEventListener("beforeunload", flushMemory);
+      window.removeEventListener("pagehide", flushMemory);
+    };
+  }, [childId, transcripts]);
 
   function disconnect() {
     try {
@@ -328,6 +367,12 @@ export default function LiveBuddy({
           }
           console.info("[buddy-live] setupComplete received");
           sessionStartRef.current = Date.now();
+          track("buddy_session_started", {
+            mode,
+            childId,
+            hasPassage: !!passage,
+            provider,
+          });
           setStatus("listening");
           return;
         }
@@ -434,6 +479,12 @@ export default function LiveBuddy({
         const sessionMinutes = start
           ? Math.max(1, Math.round((Date.now() - start) / 60000))
           : undefined;
+        track("buddy_session_ended", {
+          mode,
+          childId,
+          sessionMinutes,
+          turnCount: t.length,
+        });
         void fetch("/api/buddy-live/save-memory", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -448,6 +499,19 @@ export default function LiveBuddy({
             if (j?.ok && j?.memory) setLastSavedMemory(j.memory);
           })
           .catch(() => {});
+      } else if (start) {
+        // No child or short session — still track end for analytics.
+        const sessionMinutes = Math.max(
+          1,
+          Math.round((Date.now() - start) / 60000),
+        );
+        track("buddy_session_ended", {
+          mode,
+          childId,
+          sessionMinutes,
+          turnCount: t.length,
+          memorySkipped: true,
+        });
       }
     }
   }

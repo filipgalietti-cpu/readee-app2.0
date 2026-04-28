@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import posthog from "posthog-js";
 import {
   BookOpen,
   Search,
@@ -15,6 +16,15 @@ import {
 } from "lucide-react";
 import BuddyChat from "./BuddyChat";
 import LiveBuddy from "./LiveBuddy";
+
+function track(event: string, props?: Record<string, unknown>) {
+  if (typeof window === "undefined") return;
+  try {
+    posthog.capture(event, props);
+  } catch {
+    // PostHog not loaded yet; drop silently.
+  }
+}
 
 export type BuddyMode = "freeform" | "read_with_me" | "word_meaning" | "story_time" | "quick_quiz";
 
@@ -82,12 +92,20 @@ export default function BuddyShell({
   const [genErr, setGenErr] = useState<string | null>(null);
   const [storyTopic, setStoryTopic] = useState<string>("Surprise me");
   const [gradeLevel, setGradeLevel] = useState(initialGradeLevel ?? "2nd");
+  // Word-meaning mode: which vocab card the kid picked. Drives a
+  // speech-prompt nudge ("now say: what does X mean?").
+  const [pickedWord, setPickedWord] = useState<string | null>(null);
 
   // ─── Generate fresh content each time the kid picks a mode ──────────
   async function regenerate(opts?: { theme?: string; remix?: string }) {
     if (!selectedMode) return;
     setGenerating(true);
     setGenErr(null);
+    track("buddy_content_regenerated", {
+      mode: selectedMode,
+      theme: opts?.theme ?? null,
+      childId,
+    });
     try {
       const res = await fetch("/api/buddy/generate-content", {
         method: "POST",
@@ -118,6 +136,7 @@ export default function BuddyShell({
   useEffect(() => {
     if (selectedMode) {
       setContent(null);
+      setPickedWord(null);
       regenerate();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -134,7 +153,10 @@ export default function BuddyShell({
               <li key={m.id}>
                 <button
                   type="button"
-                  onClick={() => setSelectedMode(m.id)}
+                  onClick={() => {
+                    track("buddy_mode_picked", { mode: m.id, childId });
+                    setSelectedMode(m.id);
+                  }}
                   className="group block w-full rounded-3xl border border-zinc-200 bg-white p-5 text-left shadow-sm transition hover:-translate-y-0.5 hover:border-violet-300 hover:shadow-md dark:border-slate-800 dark:bg-slate-900/40"
                 >
                   <div
@@ -330,15 +352,50 @@ export default function BuddyShell({
             Cool words to ask about
           </div>
           <ul className="mt-3 grid gap-2 sm:grid-cols-2">
-            {(content as any).suggestions.map((s: { word: string; reason: string }) => (
-              <li key={s.word} className="rounded-2xl bg-white px-3 py-2 ring-1 ring-emerald-200">
-                <div className="text-base font-extrabold text-emerald-800">{s.word}</div>
-                <div className="text-[11px] text-emerald-700">{s.reason}</div>
-              </li>
-            ))}
+            {(content as any).suggestions.map((s: { word: string; reason: string }) => {
+              const picked = pickedWord === s.word;
+              return (
+                <li key={s.word}>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setPickedWord(s.word);
+                      track("buddy_word_tapped", { word: s.word, childId });
+                    }}
+                    className={`flex w-full flex-col items-start rounded-2xl px-3 py-2 text-left transition active:scale-95 ${
+                      picked
+                        ? "bg-emerald-600 text-white shadow-md ring-2 ring-emerald-700"
+                        : "bg-white ring-1 ring-emerald-200 hover:ring-emerald-400"
+                    }`}
+                  >
+                    <span
+                      className={`text-base font-extrabold ${
+                        picked ? "text-white" : "text-emerald-800"
+                      }`}
+                    >
+                      {s.word}
+                    </span>
+                    <span
+                      className={`text-[11px] ${
+                        picked ? "text-emerald-50" : "text-emerald-700"
+                      }`}
+                    >
+                      {s.reason}
+                    </span>
+                  </button>
+                </li>
+              );
+            })}
           </ul>
-          <div className="mt-3 text-xs text-emerald-800">
-            Tap the mic and ask Readee &ldquo;What does <em>{(content as any).suggestions[0]?.word ?? "that"}</em> mean?&rdquo;
+          <div className="mt-3 rounded-xl bg-emerald-100 px-3 py-2 text-sm font-bold text-emerald-900">
+            {pickedWord ? (
+              <>
+                Now tap the mic and say:{" "}
+                <span className="italic">&ldquo;What does {pickedWord} mean?&rdquo;</span>
+              </>
+            ) : (
+              <>Tap a word above, then tap the mic and ask Readee about it.</>
+            )}
           </div>
         </div>
       )}
