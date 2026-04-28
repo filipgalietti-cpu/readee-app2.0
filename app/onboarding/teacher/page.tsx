@@ -26,7 +26,10 @@ export default async function TeacherOnboardingPage() {
   if ((profile as any).display_name) redirect("/classroom");
 
   return (
-    <div className="min-h-screen bg-violet-50">
+    // fixed + inset-0 paints over the global navbar + footer + the
+    // root layout's max-w-6xl gutter, so the violet wash truly fills
+    // the whole viewport instead of a centered column.
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-violet-50">
       <TeacherOnboardingWizard
         emailHint={(profile as any).email ?? null}
         initial={{
