@@ -27,6 +27,7 @@ import TopUpCreditsButton from "@/app/_components/TopUpCreditsButton";
 import VoiceSelector from "@/app/_components/VoiceSelector";
 import { DEFAULT_VOICE_ID, getVoice, type VoiceId } from "@/lib/ai/voices";
 import { PROMPT_TEMPLATES, PROMPT_CATEGORIES } from "@/lib/ai/prompt-templates";
+import { ReadeeAiLoader } from "@/components/loaders/ReadeeAiLoader";
 
 type Step = 1 | 2 | 3;
 
@@ -159,7 +160,16 @@ export default function AskReadeeWizard({
   return (
     <div className="rounded-3xl border border-zinc-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900/40">
       <StepHeader step={step} />
-      <div className="px-6 pb-6">
+      {pending && (
+        <div className="flex flex-col items-center justify-center gap-2 px-6 py-10">
+          <ReadeeAiLoader
+            size={160}
+            label="Readee.ai is building your lesson"
+            caption="Building, this takes 20-40 seconds…"
+          />
+        </div>
+      )}
+      <div className={`px-6 pb-6${pending ? " pointer-events-none opacity-30" : ""}`}>
         {step === 1 && (
           <Step1
             brief={brief}

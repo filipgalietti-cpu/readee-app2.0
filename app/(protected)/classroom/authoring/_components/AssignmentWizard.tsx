@@ -25,6 +25,7 @@ import VoiceSelector from "@/app/_components/VoiceSelector";
 import { DEFAULT_VOICE_ID, getVoice, type VoiceId } from "@/lib/ai/voices";
 import { Progress } from "@/app/components/ui/progress";
 import { TypingAnimation } from "@/app/components/magicui/typing-animation";
+import { ReadeeAiLoader } from "@/components/loaders/ReadeeAiLoader";
 
 const TEACHER_PROMPT_SUGGESTIONS = [
   "A short passage about a young hockey player learning the basics. Friendly, encouraging tone.",
@@ -251,9 +252,9 @@ export default function AssignmentWizard() {
               <ArrowRight className="h-4 w-4" />
             </button>
           ) : pending ? (
-            <div className="flex w-full flex-col gap-2 sm:max-w-md">
-              <div className="flex items-center gap-2 text-xs font-bold text-violet-700 dark:text-violet-300">
-                <Loader2 className="h-3.5 w-3.5 animate-spin" />
+            <div className="flex w-full flex-col items-center gap-3 sm:max-w-md">
+              <ReadeeAiLoader size={120} label={buildStep} />
+              <div className="flex w-full items-center gap-2 text-xs font-bold text-violet-700 dark:text-violet-300">
                 {buildStep}
                 <span className="ml-auto font-mono text-zinc-500">
                   {buildProgress}%

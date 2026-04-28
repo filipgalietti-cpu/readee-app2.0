@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Loader2, AlertCircle, Languages } from "lucide-react";
+import { ReadeeAiLoader } from "@/components/loaders/ReadeeAiLoader";
 
 const LANGS = [
   { code: "es", label: "Español" },
@@ -91,6 +92,16 @@ export default function TranslatePlayground() {
         <div className="flex items-start gap-2 rounded-xl bg-red-50 px-3 py-2 text-sm font-semibold text-red-700">
           <AlertCircle className="mt-0.5 h-4 w-4 flex-shrink-0" />
           {err}
+        </div>
+      )}
+
+      {pending && !out && (
+        <div className="rounded-3xl border border-fuchsia-100 bg-white px-5 py-10">
+          <ReadeeAiLoader
+            size={140}
+            label="Readee.ai is translating"
+            caption="Translating…"
+          />
         </div>
       )}
 

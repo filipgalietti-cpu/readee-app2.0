@@ -8,22 +8,30 @@ export type OrganicLoaderVariant =
 
 type Props = {
   variant?: OrganicLoaderVariant;
+  /** Wrapper size in px (square). Defaults to 200. The inner art scales
+   *  via CSS transform to keep the original proportions. */
+  size?: number;
   className?: string;
   "aria-label"?: string;
 };
 
 export function OrganicLoader({
   variant = 1,
+  size = 200,
   className,
   "aria-label": ariaLabel = "Loading",
 }: Props) {
+  const scale = size / 200;
   return (
     <div
       role="status"
       aria-label={ariaLabel}
       className={`${s.root}${className ? " " + className : ""}`}
+      style={{ width: size, height: size }}
     >
-      {renderVariant(variant)}
+      <div style={{ transform: `scale(${scale})`, transformOrigin: "center" }}>
+        {renderVariant(variant)}
+      </div>
     </div>
   );
 }

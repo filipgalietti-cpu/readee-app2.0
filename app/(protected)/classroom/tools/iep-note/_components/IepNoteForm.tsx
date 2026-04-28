@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Loader2, AlertCircle, Sparkles, Copy, Check } from "lucide-react";
+import { ReadeeAiLoader } from "@/components/loaders/ReadeeAiLoader";
 
 type Note = {
   plop: string;
@@ -129,6 +130,16 @@ export default function IepNoteForm({
         <div className="flex items-start gap-2 rounded-xl bg-red-50 px-3 py-2 text-sm font-semibold text-red-700">
           <AlertCircle className="mt-0.5 h-4 w-4 flex-shrink-0" />
           {err}
+        </div>
+      )}
+
+      {pending && !note && (
+        <div className="rounded-3xl border border-amber-100 bg-white px-5 py-10 shadow-sm">
+          <ReadeeAiLoader
+            size={140}
+            label="Readee.ai is drafting the IEP note"
+            caption="Drafting, this takes a few seconds…"
+          />
         </div>
       )}
 
