@@ -87,12 +87,18 @@ export default function LiveBuddy({
     audioCtxRef.current = null;
   }
 
-  async function connect() {
+  async function connect(triedModels: string[] = []) {
     setErr(null);
     setStatus("connecting");
     try {
-      // 1) Mint a one-shot ephemeral token from our server.
-      const tokRes = await fetch("/api/buddy-live/token", {
+      // 1) Mint a one-shot ephemeral token from our server. Pass
+      // already-tried models as ?skip= so the server hands back the
+      // next candidate.
+      const skipQs = triedModels
+        .map((m) => `skip=${encodeURIComponent(m)}`)
+        .join("&");
+      const tokUrl = "/api/buddy-live/token" + (skipQs ? `?${skipQs}` : "");
+      const tokRes = await fetch(tokUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ passage, gradeLevel }),
@@ -101,6 +107,7 @@ export default function LiveBuddy({
       if (!tokJson.ok) throw new Error(tokJson.error ?? "Token failed.");
       const token: string = tokJson.token;
       const model: string = tokJson.model;
+      const nextCandidates: string[] = tokJson.nextCandidates ?? [];
 
       // 2) Open WebSocket directly to Google with the token in the URL.
       const wsUrl = `${LIVE_WS_BASE}?access_token=${encodeURIComponent(token)}`;
@@ -132,19 +139,32 @@ export default function LiveBuddy({
         }),
       );
 
-      // If Google doesn't return setupComplete within 12s, surface
-      // a real error instead of spinning forever. Most common causes:
-      // model not enabled on the project, or the candidate name is
-      // wrong. The token route already tries multiple candidates.
+      // If Google doesn't return setupComplete within 8s on this
+      // model, retry the whole connect with the NEXT candidate. Most
+      // common cause is a preview model that's not enabled for this
+      // project. We try each available candidate before giving up.
       setupTimeoutRef.current = setTimeout(() => {
-        if (status !== "listening" && status !== "speaking") {
+        console.warn(
+          "[buddy-live] setupComplete timeout on",
+          model,
+          "next:",
+          nextCandidates,
+        );
+        disconnect();
+        if (nextCandidates.length > 0) {
+          // Retry with the next candidate model. Keeps the user in
+          // the "connecting" state, no error flash.
+          connect([...triedModels, model]).catch((e) => {
+            setErr(e?.message ?? "Live mode failed.");
+            setStatus("error");
+          });
+        } else {
           setErr(
-            `Live mode didn't start (model: ${model}). Try Step-by-step mode below — same buddy, slightly slower.`,
+            `Your project's Gemini Live API isn't accepting any of the audio models we tried. Switch to Step-by-step below — same buddy, just turn-based instead of real-time.`,
           );
           setStatus("error");
-          disconnect();
         }
-      }, 12000);
+      }, 8000);
 
       // 4) Set up audio capture — 16 kHz mono PCM out the WS.
       let stream: MediaStream;

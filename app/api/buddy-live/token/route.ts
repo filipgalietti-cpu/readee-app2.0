@@ -69,20 +69,29 @@ export async function POST(req: Request) {
       : "No passage on screen yet — the child is just chatting about reading.",
   ].join("\n");
 
-  // Try several Live model names in order of preference. The
-  // date-suffixed previews rotate frequently; fall back to the stable
-  // GA model so a model retirement doesn't break the buddy.
+  // Live model candidates in order of preference. Stable GA goes
+  // FIRST — the preview "native-audio" variants are gated to specific
+  // projects and are the most common cause of "minted ok but session
+  // never starts" failures. The GA flash-live model speaks AUDIO via
+  // responseModalities=["AUDIO"] and is broadly available.
+  //
+  // The route accepts ?skip=<model> to advance past one that the
+  // client just failed setup on.
   const MODEL_CANDIDATES = [
-    "gemini-2.5-flash-native-audio-preview-09-2025",
-    "gemini-2.5-flash-preview-native-audio-dialog",
     "gemini-2.0-flash-live-001",
+    "gemini-2.5-flash-preview-native-audio-dialog",
+    "gemini-2.5-flash-native-audio-preview-09-2025",
   ];
+  const skipped = new Set(
+    new URL(req.url).searchParams.getAll("skip"),
+  );
+  const remaining = MODEL_CANDIDATES.filter((m) => !skipped.has(m));
 
   const expireTime = new Date(Date.now() + 60 * 1000).toISOString();
   const newSessionExpireTime = new Date(Date.now() + 15 * 60 * 1000).toISOString();
 
   let lastErr = "Could not mint token.";
-  for (const candidate of MODEL_CANDIDATES) {
+  for (const candidate of remaining) {
     try {
       const token = await (ai as any).authTokens.create({
         config: {
@@ -104,6 +113,9 @@ export async function POST(req: Request) {
         ok: true,
         token: (token as any).name,
         model: candidate,
+        // Models the client can ask for next via ?skip= if this one's
+        // session-setup fails. Keeps the retry chain honest.
+        nextCandidates: remaining.filter((m) => m !== candidate),
         expiresAt: expireTime,
         sessionExpiresAt: newSessionExpireTime,
       });
