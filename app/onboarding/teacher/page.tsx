@@ -26,16 +26,7 @@ export default async function TeacherOnboardingPage() {
   if ((profile as any).display_name) redirect("/classroom");
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-violet-100 via-violet-50 to-indigo-100">
-      {/* Soft tonal blooms so the wash feels alive, not painted-on. Subtle. */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -right-32 -top-32 h-[28rem] w-[28rem] rounded-full bg-fuchsia-200/60 blur-[140px]"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -bottom-40 -left-40 h-[28rem] w-[28rem] rounded-full bg-indigo-200/60 blur-[140px]"
-      />
+    <div className="min-h-screen bg-violet-50">
       <TeacherOnboardingWizard
         emailHint={(profile as any).email ?? null}
         initial={{

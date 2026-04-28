@@ -118,13 +118,13 @@ export default function TeacherOnboardingWizard({
         {Array.from({ length: totalSteps }).map((_, i) => (
           <div
             key={i}
-            className="relative h-1.5 flex-1 overflow-hidden rounded-full bg-violet-200/70"
+            className="relative h-1 flex-1 overflow-hidden rounded-full bg-violet-200"
           >
             <motion.div
               initial={false}
               animate={{ width: i <= step ? "100%" : "0%" }}
               transition={{ type: "spring", stiffness: 220, damping: 26 }}
-              className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-violet-600 to-indigo-600"
+              className="absolute inset-y-0 left-0 rounded-full bg-violet-600"
             />
           </div>
         ))}
@@ -266,7 +266,7 @@ function StepIdentity({
           placeholder="e.g. Mrs. Klingerman"
           autoFocus
           maxLength={80}
-          className="w-full rounded-2xl border-0 bg-transparent px-5 py-4 text-center text-3xl font-extrabold tracking-tight text-zinc-900 placeholder:text-violet-300 ring-2 ring-violet-200 transition focus:ring-violet-500 focus:outline-none"
+          className="w-full border-0 border-b-2 border-violet-200 bg-transparent px-2 py-4 text-center text-4xl font-extrabold tracking-tight text-zinc-900 placeholder:text-violet-300 transition focus:border-violet-600 focus:outline-none"
         />
         {emailHint && !displayName && (
           <p className="mt-2 text-xs text-zinc-500">
@@ -321,10 +321,10 @@ function StepClass({
               key={g.id}
               type="button"
               onClick={() => setDefaultGrade(g.id)}
-              className={`rounded-xl px-3 py-2.5 text-sm font-semibold transition ring-2 ${
+              className={`rounded-xl px-3 py-2.5 text-sm font-semibold transition ${
                 defaultGrade === g.id
-                  ? "bg-violet-600 text-white ring-violet-600 shadow-md shadow-violet-300/40"
-                  : "bg-transparent text-zinc-700 ring-violet-200 hover:ring-violet-400 hover:bg-violet-100/50"
+                  ? "bg-violet-600 text-white shadow-md shadow-violet-300/40"
+                  : "text-zinc-700 hover:bg-violet-100"
               }`}
             >
               {g.label}
@@ -346,10 +346,10 @@ function StepClass({
                 key={s.id}
                 type="button"
                 onClick={() => setClassSetting(s.id)}
-                className={`flex w-full items-center justify-between gap-2 rounded-xl px-4 py-3 text-left transition ring-2 ${
+                className={`flex w-full items-center justify-between gap-2 rounded-xl px-4 py-3 text-left transition ${
                   active
-                    ? "bg-violet-600 ring-violet-600 shadow-md shadow-violet-300/40"
-                    : "bg-transparent ring-violet-200 hover:ring-violet-400 hover:bg-violet-100/50"
+                    ? "bg-violet-600 shadow-md shadow-violet-300/40"
+                    : "hover:bg-violet-100"
                 }`}
               >
                 <div>
@@ -379,7 +379,7 @@ function StepClass({
           value={schoolHint}
           onChange={(e) => setSchoolHint(e.target.value.slice(0, 120))}
           placeholder="e.g. Lincoln Elementary"
-          className="mt-2 w-full rounded-xl border-0 bg-transparent px-4 py-3 text-sm text-zinc-900 placeholder:text-violet-300 ring-2 ring-violet-200 transition focus:ring-violet-500 focus:outline-none"
+          className="mt-2 w-full border-0 border-b-2 border-violet-200 bg-transparent px-2 py-3 text-sm text-zinc-900 placeholder:text-violet-300 transition focus:border-violet-600 focus:outline-none"
         />
       </label>
     </div>
@@ -418,10 +418,10 @@ function StepIntent({
               <button
                 type="button"
                 onClick={() => setIntent(opt.id)}
-                className={`flex w-full flex-col items-start gap-1 rounded-2xl p-4 text-left transition ring-2 ${
+                className={`flex w-full flex-col items-start gap-1 rounded-2xl p-4 text-left transition ${
                   active
-                    ? "bg-violet-600 ring-violet-600 shadow-md shadow-violet-300/40"
-                    : "bg-transparent ring-violet-200 hover:ring-violet-400 hover:bg-violet-100/50"
+                    ? "bg-violet-600 shadow-md shadow-violet-300/40"
+                    : "hover:bg-violet-100"
                 }`}
               >
                 <div className={`flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br ${opt.gradient} text-white shadow-sm`}>
