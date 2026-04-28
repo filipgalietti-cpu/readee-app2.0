@@ -1,0 +1,290 @@
+/* Organic loaders ported from Claude Design handoff (Apr 28 2026).
+   Brand palette pinned via CSS vars so the component can be re-themed. */
+
+.root {
+  --c1: #6366f1; /* indigo-500 */
+  --c2: #8b5cf6; /* violet-500 */
+  --c3: #ec4899; /* pink-500 */
+  width: 200px;
+  height: 200px;
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+/* ---------- 01: single morphing blob ---------- */
+.l01 {
+  width: 120px; height: 120px;
+  background: radial-gradient(120% 120% at 30% 25%, var(--c1), var(--c2) 55%, var(--c3));
+  animation: l01-morph 5s ease-in-out infinite, l01-spin 9s linear infinite;
+  filter: drop-shadow(0 6px 18px rgba(139,92,246,.25));
+}
+@keyframes l01-morph {
+  0%,100% { border-radius: 62% 38% 47% 53% / 50% 60% 40% 50%; }
+  25%     { border-radius: 38% 62% 64% 36% / 41% 58% 42% 59%; }
+  50%     { border-radius: 53% 47% 33% 67% / 64% 38% 62% 36%; }
+  75%     { border-radius: 47% 53% 58% 42% / 38% 49% 51% 62%; }
+}
+@keyframes l01-spin { to { transform: rotate(360deg); } }
+
+/* ---------- 02: three metaballs ---------- */
+.l02Svg { width: 180px; height: 180px; filter: url(#oloader-goo-02); }
+.l02Svg circle { fill: var(--c2); }
+
+/* ---------- 03: pulsing breath ---------- */
+.l03 {
+  width: 70px; height: 70px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, var(--c3), var(--c2) 60%, var(--c1));
+  animation: l03-breathe 1.6s ease-in-out infinite;
+  box-shadow: 0 0 0 0 rgba(139,92,246,.45);
+}
+@keyframes l03-breathe {
+  0%, 100% { transform: scale(0.85); box-shadow: 0 0 0 0 rgba(139,92,246,.55), 0 0 0 0 rgba(236,72,153,.45); }
+  50%      { transform: scale(1.05); box-shadow: 0 0 0 22px rgba(139,92,246,0), 0 0 0 40px rgba(236,72,153,0); }
+}
+
+/* ---------- 04: orbiting blobs ---------- */
+.l04 { width: 140px; height: 140px; position: relative; animation: l04-rot 3.2s linear infinite; }
+.l04 > i {
+  position: absolute; inset: 0; margin: auto;
+  width: 46px; height: 46px; border-radius: 50%;
+  animation: l04-morph 3s ease-in-out infinite;
+}
+.l04 > i:nth-child(1) { background: var(--c1); transform: translate(-46px, 0); animation-delay: 0s; }
+.l04 > i:nth-child(2) { background: var(--c2); transform: translate(23px, -40px); animation-delay: -1s; }
+.l04 > i:nth-child(3) { background: var(--c3); transform: translate(23px,  40px); animation-delay: -2s; }
+@keyframes l04-rot { to { transform: rotate(360deg); } }
+@keyframes l04-morph {
+  0%,100% { border-radius: 60% 40% 55% 45% / 50% 55% 45% 50%; }
+  50%     { border-radius: 40% 60% 45% 55% / 55% 45% 55% 45%; }
+}
+
+/* ---------- 05: viscous bar ---------- */
+.l05 { width: 160px; height: 64px; filter: url(#oloader-goo-05); display: flex; align-items: center; justify-content: center; gap: 10px; }
+.l05 > i { display:block; width: 28px; height: 28px; border-radius: 50%; background: var(--c2); animation: l05-bob 1.6s ease-in-out infinite; }
+.l05 > i:nth-child(1) { animation-delay: 0s; background: var(--c1); }
+.l05 > i:nth-child(2) { animation-delay: -.2s; }
+.l05 > i:nth-child(3) { animation-delay: -.4s; background: var(--c3); }
+@keyframes l05-bob {
+  0%,100% { transform: translateY(-12px) scale(.9,1.1); }
+  50%     { transform: translateY( 12px) scale(1.15,.85); }
+}
+
+/* ---------- 06: lava droplet ---------- */
+.l06 { width: 130px; height: 130px; filter: url(#oloader-goo-06); position: relative; }
+.l06 > i { position: absolute; left: 50%; top: 50%; width: 38px; height: 38px; border-radius: 50%; margin: -19px 0 0 -19px; background: var(--c1); }
+.l06 > i:nth-child(2) { background: var(--c2); animation: l06-orbit 2.6s ease-in-out infinite; }
+.l06 > i:nth-child(3) { background: var(--c3); animation: l06-orbit 2.6s ease-in-out infinite reverse; animation-delay: -1.3s; }
+@keyframes l06-orbit {
+  0%   { transform: translate(0,0) scale(1); }
+  25%  { transform: translate(38px, -10px) scale(.8); }
+  50%  { transform: translate(0, 38px) scale(1.05); }
+  75%  { transform: translate(-38px, -10px) scale(.85); }
+  100% { transform: translate(0,0) scale(1); }
+}
+
+/* ---------- 07: drifting gradient cloud ---------- */
+.l07 {
+  width: 130px; height: 130px; border-radius: 50%;
+  background:
+    radial-gradient(40% 40% at 30% 30%, var(--c1), transparent 70%),
+    radial-gradient(40% 40% at 70% 30%, var(--c3), transparent 70%),
+    radial-gradient(50% 50% at 50% 75%, var(--c2), transparent 70%);
+  filter: blur(6px) saturate(1.1);
+  animation: l07-drift 6s ease-in-out infinite;
+}
+@keyframes l07-drift {
+  0%,100% { transform: rotate(0) scale(1); border-radius: 60% 40% 55% 45% / 45% 55% 45% 55%; }
+  33%     { transform: rotate(120deg) scale(1.05); border-radius: 40% 60% 45% 55% / 55% 45% 55% 45%; }
+  66%     { transform: rotate(240deg) scale(.95);  border-radius: 55% 45% 60% 40% / 50% 50% 50% 50%; }
+}
+
+/* ---------- 08: SVG path morph ---------- */
+.l08Svg { width: 150px; height: 150px; }
+.l08Svg path { fill: url(#oloader-grad-08); animation: l08-rot 9s linear infinite; transform-origin: 100px 100px; }
+@keyframes l08-rot { to { transform: rotate(360deg); } }
+
+/* ---------- 09: jelly ring ---------- */
+.l09 {
+  width: 110px; height: 110px; border-radius: 50%;
+  border: 12px solid transparent;
+  background: conic-gradient(from 0deg, var(--c1), var(--c2), var(--c3), var(--c1)) border-box;
+  -webkit-mask: radial-gradient(circle, transparent 46px, #000 47px);
+          mask: radial-gradient(circle, transparent 46px, #000 47px);
+  animation: l09-jelly 2s ease-in-out infinite, l09-rot 2.4s linear infinite;
+}
+@keyframes l09-jelly {
+  0%,100% { border-radius: 50%; }
+  50%     { border-radius: 60% 40% 55% 45% / 45% 60% 40% 55%; }
+}
+@keyframes l09-rot { to { transform: rotate(360deg); } }
+
+/* ---------- 10: trailing comet ---------- */
+.l10 { width: 140px; height: 140px; position: relative; animation: l10-rot 1.6s linear infinite; filter: url(#oloader-goo-10); }
+.l10::before, .l10::after {
+  content:""; position:absolute; left:50%; top:0; width: 26px; height: 26px;
+  border-radius: 50%; transform: translate(-50%, 0);
+  background: var(--c2);
+}
+.l10::before { background: var(--c1); }
+.l10::after  { background: var(--c3); top: auto; bottom: 0; }
+.l10 > span { position: absolute; left:50%; top:50%; width:26px; height:26px; margin:-13px; border-radius:50%; background: var(--c2); }
+@keyframes l10-rot { to { transform: rotate(360deg); } }
+
+/* ---------- 11: noise blob ---------- */
+.l11Svg { width: 160px; height: 160px; }
+
+/* ---------- 12: stacked petals ---------- */
+.l12 { width: 140px; height: 140px; position: relative; }
+.l12 > i {
+  position: absolute; inset: 0; margin: auto;
+  width: 70px; height: 100px;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  transform-origin: 50% 100%;
+  opacity: .85;
+  mix-blend-mode: multiply;
+  animation: l12-pulse 2.4s ease-in-out infinite;
+}
+.l12 > i:nth-child(1) { background: var(--c1); --r: 0deg;   animation-delay: 0s; }
+.l12 > i:nth-child(2) { background: var(--c2); --r: 120deg; animation-delay: -.3s; }
+.l12 > i:nth-child(3) { background: var(--c3); --r: 240deg; animation-delay: -.6s; }
+@keyframes l12-pulse {
+  0%,100% { transform: rotate(var(--r,0)) scale(.9); }
+  50%     { transform: rotate(var(--r,0)) scale(1.05); }
+}
+
+/* ---------- 13: gooey eight ---------- */
+.l13 { width: 150px; height: 80px; filter: url(#oloader-goo-13); position: relative; }
+.l13 > i { position: absolute; top: 50%; left: 50%; width: 44px; height: 44px; margin: -22px 0 0 -22px; border-radius: 50%; background: var(--c2); }
+.l13 > i:nth-child(1) { background: var(--c1); animation: l13-l 2s ease-in-out infinite; }
+.l13 > i:nth-child(2) { background: var(--c3); animation: l13-r 2s ease-in-out infinite; }
+@keyframes l13-l {
+  0%,100% { transform: translateX(-32px) scale(1); }
+  50%     { transform: translateX( 32px) scale(.85); }
+}
+@keyframes l13-r {
+  0%,100% { transform: translateX( 32px) scale(1); }
+  50%     { transform: translateX(-32px) scale(.85); }
+}
+
+/* ---------- 14: dripping blob ---------- */
+.l14 { width: 90px; height: 130px; filter: url(#oloader-goo-14); position: relative; }
+.l14 > i {
+  position: absolute; left: 50%; transform: translateX(-50%);
+  width: 70px; height: 70px; border-radius: 50%;
+  background: linear-gradient(180deg, var(--c2), var(--c3));
+  top: 0;
+}
+.l14 > i:nth-child(2) {
+  width: 26px; height: 26px;
+  background: linear-gradient(180deg, var(--c2), var(--c3));
+  animation: l14-drip 1.8s ease-in infinite;
+}
+@keyframes l14-drip {
+  0%   { top: 30px; transform: translateX(-50%) scale(.4,.4); opacity: 0; }
+  20%  { top: 30px; transform: translateX(-50%) scale(1,.8); opacity: 1; }
+  70%  { top: 110px; transform: translateX(-50%) scale(.7,1.3); opacity: 1; }
+  100% { top: 130px; transform: translateX(-50%) scale(.2,.2); opacity: 0; }
+}
+
+/* ---------- 15: gradient sweep blob ---------- */
+.l15 {
+  width: 130px; height: 130px;
+  border-radius: 60% 40% 55% 45% / 45% 60% 40% 55%;
+  background: conic-gradient(from 0deg, var(--c1), var(--c2), var(--c3), var(--c1));
+  animation: l15-spin 3s linear infinite, l15-morph 5s ease-in-out infinite;
+  filter: blur(.4px);
+}
+@keyframes l15-spin { to { transform: rotate(360deg); } }
+@keyframes l15-morph {
+  0%,100% { border-radius: 60% 40% 55% 45% / 45% 60% 40% 55%; }
+  50%     { border-radius: 40% 60% 45% 55% / 60% 40% 55% 45%; }
+}
+
+/* ---------- 16: bubble swarm ---------- */
+.l16 { width: 160px; height: 160px; filter: url(#oloader-goo-16); position: relative; }
+.l16 > i {
+  position: absolute; left: 50%; top: 50%; border-radius: 50%;
+  width: 28px; height: 28px; margin: -14px 0 0 -14px;
+  animation: l16-orbit 3.6s linear infinite;
+  animation-delay: var(--d);
+}
+.l16 > i:nth-child(1) { background: var(--c1); --r: 50px; --d: 0s;    }
+.l16 > i:nth-child(2) { background: var(--c2); --r: 40px; --d: -.6s;  }
+.l16 > i:nth-child(3) { background: var(--c3); --r: 56px; --d: -1.2s; }
+.l16 > i:nth-child(4) { background: var(--c2); --r: 30px; --d: -1.8s; width: 22px; height: 22px; margin: -11px 0 0 -11px; }
+.l16 > i:nth-child(5) { background: var(--c1); --r: 60px; --d: -2.4s; width: 20px; height: 20px; margin: -10px 0 0 -10px; }
+@keyframes l16-orbit {
+  from { transform: rotate(0deg) translateX(var(--r)) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(var(--r)) rotate(-360deg); }
+}
+
+/* ---------- 17: heartbeat blob ---------- */
+.l17 {
+  width: 120px; height: 120px;
+  border-radius: 60% 40% 55% 45% / 45% 60% 40% 55%;
+  background: radial-gradient(circle at 35% 30%, var(--c3), var(--c2) 60%, var(--c1));
+  animation: l17-beat 1.2s cubic-bezier(.4,0,.2,1) infinite, l17-morph 4.5s ease-in-out infinite;
+}
+@keyframes l17-beat {
+  0%, 60%, 100% { transform: scale(.92); }
+  20%           { transform: scale(1.08); }
+  40%           { transform: scale(1.0); }
+}
+@keyframes l17-morph {
+  0%,100% { border-radius: 60% 40% 55% 45% / 45% 60% 40% 55%; }
+  50%     { border-radius: 45% 55% 40% 60% / 55% 45% 60% 40%; }
+}
+
+/* ---------- 18: split & merge ---------- */
+.l18 { width: 160px; height: 80px; filter: url(#oloader-goo-18); position: relative; }
+.l18 > i {
+  position: absolute; top: 50%; left: 50%; width: 44px; height: 44px; margin: -22px 0 0 -22px;
+  border-radius: 50%;
+}
+.l18 > i:nth-child(1) { background: var(--c1); animation: l18-a 2.4s ease-in-out infinite; }
+.l18 > i:nth-child(2) { background: var(--c2); animation: l18-b 2.4s ease-in-out infinite; }
+.l18 > i:nth-child(3) { background: var(--c3); animation: l18-c 2.4s ease-in-out infinite; }
+@keyframes l18-a {
+  0%,100% { transform: translate(0,0) scale(1.1); }
+  50%     { transform: translate(-46px,0) scale(.9); }
+}
+@keyframes l18-b {
+  0%,100% { transform: translate(0,0) scale(1.1); }
+  50%     { transform: translate(46px,0) scale(.9); }
+}
+@keyframes l18-c {
+  0%,100% { transform: translate(0,0) scale(.7); opacity: .8; }
+  50%     { transform: translate(0,0) scale(1.3); opacity: 1; }
+}
+
+/* ---------- 19: gradient ribbon ---------- */
+.l19Svg { width: 170px; height: 170px; }
+.l19Svg path { fill: none; stroke: url(#oloader-grad-19); stroke-width: 18; stroke-linecap: round; stroke-dasharray: 60 240; animation: l19-dash 2.2s ease-in-out infinite; }
+@keyframes l19-dash {
+  0%   { stroke-dashoffset: 300; }
+  100% { stroke-dashoffset: 0; }
+}
+
+/* ---------- 20: aurora puddle ---------- */
+.l20 {
+  width: 150px; height: 150px;
+  border-radius: 60% 40% 55% 45% / 45% 60% 40% 55%;
+  background:
+    radial-gradient(60% 60% at 30% 30%, var(--c1) 0, transparent 60%),
+    radial-gradient(60% 60% at 70% 35%, var(--c3) 0, transparent 60%),
+    radial-gradient(60% 60% at 50% 75%, var(--c2) 0, transparent 60%),
+    #ffffff;
+  background-size: 200% 200%;
+  animation: l20-pan 6s ease-in-out infinite, l20-morph 7s ease-in-out infinite;
+  filter: blur(1px) saturate(1.1);
+  box-shadow: 0 8px 30px rgba(99,102,241,.18);
+}
+@keyframes l20-pan {
+  0%,100% { background-position: 0% 0%, 100% 0%, 50% 100%; }
+  50%     { background-position: 100% 50%, 0% 50%, 50% 0%; }
+}
+@keyframes l20-morph {
+  0%,100% { border-radius: 60% 40% 55% 45% / 45% 60% 40% 55%; transform: rotate(0); }
+  50%     { border-radius: 40% 60% 45% 55% / 60% 40% 55% 45%; transform: rotate(180deg); }
+}
