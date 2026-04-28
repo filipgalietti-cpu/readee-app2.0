@@ -74,6 +74,14 @@ export async function createClassroom(input: {
           });
         }
       }
+      // First real (non-demo) classroom created → tear down any demo
+      // classroom we seeded during onboarding.
+      try {
+        const { clearDemoDataIfPresent } = await import("@/lib/onboarding/demo-class-seeder");
+        await clearDemoDataIfPresent(profile.id);
+      } catch {
+        // Non-blocking.
+      }
       revalidatePath("/classroom");
       return { ok: true, classroom: data as Classroom };
     }

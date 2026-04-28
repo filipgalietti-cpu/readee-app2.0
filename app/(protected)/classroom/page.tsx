@@ -18,9 +18,15 @@ import type { Classroom } from "@/lib/db/types";
 
 export const dynamic = "force-dynamic";
 
-export default async function ClassroomIndex() {
+export default async function ClassroomIndex({
+  searchParams,
+}: {
+  searchParams?: Promise<{ onboarded?: string }>;
+}) {
   const profile = await requireProfile();
   const supabase = await createClient();
+  const sp = (await searchParams) ?? {};
+  const justOnboarded = sp.onboarded === "1";
 
   const { data: classrooms } = await supabase
     .from("classrooms")
@@ -29,7 +35,9 @@ export default async function ClassroomIndex() {
     .is("archived_at", null)
     .order("created_at", { ascending: false });
 
-  const list = (classrooms ?? []) as Classroom[];
+  const list = (classrooms ?? []) as (Classroom & { is_demo?: boolean })[];
+  const hasDemo = list.some((c) => c.is_demo);
+  const hasOnlyDemo = list.length > 0 && list.every((c) => c.is_demo);
 
   // Onboarding progress: check if any classroom has a student / an
   // assignment. Used to decide whether to show the "next step" nudge.
@@ -76,6 +84,39 @@ export default async function ClassroomIndex() {
         </div>
         {hasClass && <CreateClassroomButton />}
       </header>
+
+      {/* Just-onboarded celebration */}
+      {justOnboarded && (
+        <div className="mt-6 rounded-3xl border-2 border-violet-300 bg-gradient-to-br from-violet-50 via-white to-pink-50 p-5 shadow-sm dark:border-violet-900/40">
+          <div className="flex items-start gap-4">
+            <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-600 to-fuchsia-500 text-white shadow-md">
+              <Sparkles className="h-6 w-6" strokeWidth={1.5} />
+            </div>
+            <div className="flex-1">
+              <h2 className="text-lg font-extrabold text-zinc-900 dark:text-white">
+                Welcome to Readee, {profile.display_name?.split(" ")[0] ?? "teacher"}!
+              </h2>
+              <p className="mt-1 text-sm text-zinc-600 dark:text-slate-400">
+                We set up a demo class with 3 sample students so you can poke around
+                before inviting your real ones. Click the class card below to take a
+                tour, or add your students whenever you&apos;re ready.
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Demo class notice — only shows when teacher's only classes are demos */}
+      {hasOnlyDemo && !justOnboarded && (
+        <div className="mt-6 flex items-start gap-3 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900 dark:border-amber-900/40 dark:bg-amber-950/20 dark:text-amber-200">
+          <Sparkles className="mt-0.5 h-4 w-4 flex-shrink-0 text-amber-600" />
+          <div className="flex-1">
+            <span className="font-bold">This is a demo class.</span>{" "}
+            The 3 students below are sample data so you can try Readee. Add a real
+            student and the demo will clear automatically.
+          </div>
+        </div>
+      )}
 
       {hasClass && (
         <div className="mt-6">

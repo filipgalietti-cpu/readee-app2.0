@@ -255,6 +255,24 @@ export async function createClassroomStudents(input: {
       .upsert(memberships, { onConflict: "classroom_id,child_id" });
   }
 
+  // First real student → tear down demo classroom + demo students.
+  // Skip if the teacher is somehow adding to a demo class itself
+  // (shouldn't happen via the UI, but be defensive).
+  try {
+    const { data: cls } = await supabase
+      .from("classrooms")
+      .select("is_demo")
+      .eq("id", input.classroomId)
+      .maybeSingle();
+    if (!(cls as any)?.is_demo) {
+      const { clearDemoDataIfPresent } = await import("@/lib/onboarding/demo-class-seeder");
+      await clearDemoDataIfPresent(profile.id);
+      revalidatePath("/classroom");
+    }
+  } catch {
+    // Best-effort cleanup; never block the real-student insert.
+  }
+
   revalidatePath(`/classroom/${input.classroomId}`);
   return { ok: true, created: rows.length, invalid };
 }

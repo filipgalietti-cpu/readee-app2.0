@@ -2,8 +2,11 @@
 
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
+import { seedDemoClassroom } from "@/lib/onboarding/demo-class-seeder";
 
-type Result = { ok: true } | { ok: false; error: string };
+type Result =
+  | { ok: true; demoClassroomId: string | null }
+  | { ok: false; error: string };
 
 export async function saveTeacherIdentity(input: {
   displayName: string;
@@ -58,7 +61,23 @@ export async function saveTeacherIdentity(input: {
     .eq("id", user.id);
   if (error) return { ok: false, error: error.message };
 
+  // Seed a demo classroom + 3 demo students + 1 starter assignment so
+  // the teacher lands in a working dashboard. Failure here doesn't
+  // block onboarding — they'll just see the empty-state UI.
+  let demoClassroomId: string | null = null;
+  try {
+    const seed = await seedDemoClassroom({
+      teacherId: user.id,
+      displayName,
+      defaultGrade: grade,
+      intent,
+    });
+    if (seed.ok) demoClassroomId = seed.classroomId;
+  } catch {
+    // Silent — onboarding still completes.
+  }
+
   revalidatePath("/classroom");
   revalidatePath("/dashboard");
-  return { ok: true };
+  return { ok: true, demoClassroomId };
 }
