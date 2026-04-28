@@ -69,37 +69,55 @@ export async function POST(req: Request) {
       : "No passage on screen yet — the child is just chatting about reading.",
   ].join("\n");
 
-  try {
-    const expireTime = new Date(Date.now() + 60 * 1000).toISOString();
-    const newSessionExpireTime = new Date(Date.now() + 15 * 60 * 1000).toISOString();
+  // Try several Live model names in order of preference. The
+  // date-suffixed previews rotate frequently; fall back to the stable
+  // GA model so a model retirement doesn't break the buddy.
+  const MODEL_CANDIDATES = [
+    "gemini-2.5-flash-native-audio-preview-09-2025",
+    "gemini-2.5-flash-preview-native-audio-dialog",
+    "gemini-2.0-flash-live-001",
+  ];
 
-    const token = await (ai as any).authTokens.create({
-      config: {
-        uses: 1,
-        expireTime,
-        newSessionExpireTime,
-        httpOptions: { apiVersion: "v1alpha" },
-        liveConnectConstraints: {
-          model: "gemini-2.5-flash-native-audio-preview-09-2025",
-          config: {
-            responseModalities: ["AUDIO"],
-            systemInstruction: { parts: [{ text: systemInstruction }] },
+  const expireTime = new Date(Date.now() + 60 * 1000).toISOString();
+  const newSessionExpireTime = new Date(Date.now() + 15 * 60 * 1000).toISOString();
+
+  let lastErr = "Could not mint token.";
+  for (const candidate of MODEL_CANDIDATES) {
+    try {
+      const token = await (ai as any).authTokens.create({
+        config: {
+          uses: 1,
+          expireTime,
+          newSessionExpireTime,
+          httpOptions: { apiVersion: "v1alpha" },
+          liveConnectConstraints: {
+            model: candidate,
+            config: {
+              responseModalities: ["AUDIO"],
+              systemInstruction: { parts: [{ text: systemInstruction }] },
+            },
           },
         },
-      },
-    });
+      });
 
-    return NextResponse.json({
-      ok: true,
-      token: (token as any).name,
-      model: "gemini-2.5-flash-native-audio-preview-09-2025",
-      expiresAt: expireTime,
-      sessionExpiresAt: newSessionExpireTime,
-    });
-  } catch (e: any) {
-    return NextResponse.json(
-      { ok: false, error: e?.message ?? "Could not mint token." },
-      { status: 500 },
-    );
+      return NextResponse.json({
+        ok: true,
+        token: (token as any).name,
+        model: candidate,
+        expiresAt: expireTime,
+        sessionExpiresAt: newSessionExpireTime,
+      });
+    } catch (e: any) {
+      lastErr = e?.message ?? lastErr;
+      // Try the next candidate.
+    }
   }
+
+  return NextResponse.json(
+    {
+      ok: false,
+      error: `Couldn't mint a Live token on any candidate model. Last error: ${lastErr}`,
+    },
+    { status: 500 },
+  );
 }

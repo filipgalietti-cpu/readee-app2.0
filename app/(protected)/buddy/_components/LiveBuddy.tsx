@@ -48,6 +48,7 @@ export default function LiveBuddy({
   const streamRef = useRef<MediaStream | null>(null);
   const sourceNodeRef = useRef<MediaStreamAudioSourceNode | null>(null);
   const processorRef = useRef<ScriptProcessorNode | null>(null);
+  const setupTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -67,6 +68,10 @@ export default function LiveBuddy({
 
   function disconnect() {
     try {
+      if (setupTimeoutRef.current) {
+        clearTimeout(setupTimeoutRef.current);
+        setupTimeoutRef.current = null;
+      }
       processorRef.current?.disconnect();
       sourceNodeRef.current?.disconnect();
       streamRef.current?.getTracks().forEach((t) => t.stop());
@@ -117,6 +122,7 @@ export default function LiveBuddy({
       await opened;
 
       // 3) Send the setup message — model + AUDIO output modality.
+      console.info("[buddy-live] sending setup with model", model);
       ws.send(
         JSON.stringify({
           setup: {
@@ -125,6 +131,20 @@ export default function LiveBuddy({
           },
         }),
       );
+
+      // If Google doesn't return setupComplete within 12s, surface
+      // a real error instead of spinning forever. Most common causes:
+      // model not enabled on the project, or the candidate name is
+      // wrong. The token route already tries multiple candidates.
+      setupTimeoutRef.current = setTimeout(() => {
+        if (status !== "listening" && status !== "speaking") {
+          setErr(
+            `Live mode didn't start (model: ${model}). Try Step-by-step mode below — same buddy, slightly slower.`,
+          );
+          setStatus("error");
+          disconnect();
+        }
+      }, 12000);
 
       // 4) Set up audio capture — 16 kHz mono PCM out the WS.
       let stream: MediaStream;
@@ -226,7 +246,22 @@ export default function LiveBuddy({
         }
 
         if (msg.setupComplete) {
+          if (setupTimeoutRef.current) {
+            clearTimeout(setupTimeoutRef.current);
+            setupTimeoutRef.current = null;
+          }
+          console.info("[buddy-live] setupComplete received");
           setStatus("listening");
+          return;
+        }
+        if (msg.error || msg.serverError) {
+          console.warn("[buddy-live] server error", msg.error || msg.serverError);
+          setErr(
+            (msg.error?.message || msg.serverError?.message) ??
+              "Live mode hit a server error. Try Step-by-step mode below.",
+          );
+          setStatus("error");
+          disconnect();
           return;
         }
 
