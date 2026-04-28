@@ -17,55 +17,64 @@ import {
 import { semanticSearch } from "../search-actions";
 import type { SearchHit } from "@/lib/ai/embeddings";
 
-const TYPE_META: Record<string, { label: string; href: (id: string) => string; icon: any; color: string }> = {
-  sample_lesson: {
-    label: "Readee lesson",
-    href: (id) => `/learn/${id}`,
-    icon: BookOpen,
-    color: "text-indigo-600 bg-indigo-50",
-  },
-  sample_question: {
-    label: "Practice Q",
-    href: (id) => `/practice?focus=${id}`,
-    icon: ClipboardPen,
-    color: "text-emerald-600 bg-emerald-50",
-  },
-  story: {
-    label: "Story",
-    href: (id) => `/stories/${id}`,
-    icon: BookOpenText,
-    color: "text-amber-600 bg-amber-50",
-  },
-  custom_lesson: {
-    label: "Your lesson",
-    href: (id) => `/classroom/lessons/${id}`,
-    icon: BookOpen,
-    color: "text-violet-600 bg-violet-50",
-  },
-  custom_book: {
-    label: "Your book",
-    href: (id) => `/classroom/books/${id}`,
-    icon: BookOpenText,
-    color: "text-violet-600 bg-violet-50",
-  },
-  custom_quiz: {
-    label: "Your quiz",
-    href: (id) => `/classroom/authoring/quiz/${id}`,
-    icon: ClipboardPen,
-    color: "text-violet-600 bg-violet-50",
-  },
-  leveled_passage: {
-    label: "Leveled passage",
-    href: (id) => `/classroom/leveled/${id}`,
-    icon: Layers,
-    color: "text-rose-600 bg-rose-50",
-  },
+type HrefArgs = { id: string; metadata: Record<string, unknown>; childId?: string | null };
+
+function buildHref(contentType: string, args: HrefArgs): string {
+  const { id, metadata, childId } = args;
+  const standardId = (metadata as any)?.standard_id ?? null;
+  const childQs = childId ? `&child=${encodeURIComponent(childId)}` : "";
+
+  switch (contentType) {
+    case "sample_lesson":
+      // /learn reads ?standard=. Without a child we route to the
+      // teacher's library filtered to that standard (preview-safe).
+      if (standardId) {
+        return childId
+          ? `/learn?standard=${encodeURIComponent(standardId)}${childQs}`
+          : `/classroom/library?standard=${encodeURIComponent(standardId)}`;
+      }
+      return `/classroom/library`;
+    case "sample_question":
+      return childId
+        ? `/practice?focus=${encodeURIComponent(id)}${childQs}`
+        : `/classroom/library?focus=${encodeURIComponent(id)}`;
+    case "story":
+      return childId
+        ? `/stories?focus=${encodeURIComponent(id)}${childQs}`
+        : `/classroom/library?focus=${encodeURIComponent(id)}`;
+    case "custom_lesson":
+      return `/classroom/lessons/${id}`;
+    case "custom_book":
+      return `/classroom/books/${id}`;
+    case "custom_quiz":
+      return `/classroom/authoring/quiz/${id}`;
+    case "leveled_passage":
+      return `/classroom/leveled/${id}`;
+    default:
+      return `/classroom/library`;
+  }
+}
+
+const TYPE_META: Record<string, { label: string; icon: any; color: string }> = {
+  sample_lesson:    { label: "Readee lesson",   icon: BookOpen,     color: "text-indigo-600 bg-indigo-50" },
+  sample_question:  { label: "Practice Q",      icon: ClipboardPen, color: "text-emerald-600 bg-emerald-50" },
+  story:            { label: "Story",           icon: BookOpenText, color: "text-amber-600 bg-amber-50" },
+  custom_lesson:    { label: "Your lesson",     icon: BookOpen,     color: "text-violet-600 bg-violet-50" },
+  custom_book:      { label: "Your book",       icon: BookOpenText, color: "text-violet-600 bg-violet-50" },
+  custom_quiz:      { label: "Your quiz",       icon: ClipboardPen, color: "text-violet-600 bg-violet-50" },
+  leveled_passage:  { label: "Leveled passage", icon: Layers,       color: "text-rose-600 bg-rose-50" },
 };
 
 export default function SemanticSearchBar({
   isPremium,
+  childId,
 }: {
   isPremium: boolean;
+  /** When the teacher is also a parent and has a child on file, pass
+   *  the first child's id so we can route reader-content results to
+   *  /learn or /practice with proper child context. Without it, we
+   *  route reader-content to teacher-safe preview destinations. */
+  childId?: string | null;
 }) {
   const [query, setQuery] = useState("");
   const [hits, setHits] = useState<SearchHit[] | null>(null);
@@ -179,10 +188,15 @@ export default function SemanticSearchBar({
               md?.standard_id || md?.grade_level || md?.grade
                 ? `${md?.grade_level ?? md?.grade ?? ""}${md?.standard_id ? " · " + md.standard_id : ""}`
                 : null;
+            const href = buildHref(h.contentType, {
+              id: h.contentId,
+              metadata: md ?? {},
+              childId: childId ?? null,
+            });
             return (
               <Link
                 key={h.contentType + h.contentId}
-                href={meta.href(h.contentId)}
+                href={href}
                 className="flex items-start gap-3 rounded-xl border border-transparent bg-white px-3 py-2 transition hover:border-violet-300 hover:shadow-sm"
               >
                 <div

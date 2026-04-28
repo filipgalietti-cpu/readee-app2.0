@@ -59,6 +59,16 @@ export default async function LibraryPage() {
   const profile = await requireProfile();
   if (profile.role !== "educator") notFound();
 
+  const supabase = await createClient();
+  const { data: kid } = await supabase
+    .from("children")
+    .select("id")
+    .eq("parent_id", profile.id)
+    .order("created_at", { ascending: true })
+    .limit(1)
+    .maybeSingle();
+  const teacherChildId = (kid as any)?.id ?? null;
+
   const banks: { grade: string; bank: any }[] = [
     { grade: "K", bank: kJson },
     { grade: "1st", bank: g1Json },
@@ -124,7 +134,10 @@ export default async function LibraryPage() {
       </div>
 
       <div className="mt-6">
-        <SemanticSearchBar isPremium={(profile as any).plan !== "free"} />
+        <SemanticSearchBar
+          isPremium={(profile as any).plan !== "free"}
+          childId={teacherChildId}
+        />
       </div>
 
       <div className="mt-6">
