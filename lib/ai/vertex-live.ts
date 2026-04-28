@@ -39,7 +39,14 @@ function ensureCredentialsOnDisk() {
   credentialsResolved = true;
   const inline = process.env.GOOGLE_CREDENTIALS_JSON;
   const existing = process.env.GOOGLE_APPLICATION_CREDENTIALS;
+  // If GOOGLE_APPLICATION_CREDENTIALS points at a real file, use it.
   if (existing && existsSync(existing)) return;
+  // Otherwise the env-var path is a leftover (e.g. a local Mac path
+  // copied into Vercel). Clear it so GoogleAuth doesn't try to read
+  // the bogus path before our inline-JSON fallback.
+  if (existing) {
+    delete process.env.GOOGLE_APPLICATION_CREDENTIALS;
+  }
   if (inline) {
     const dest = join(tmpdir(), "readee-google-sa.json");
     writeFileSync(dest, inline, { encoding: "utf8" });
