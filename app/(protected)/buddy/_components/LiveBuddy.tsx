@@ -58,6 +58,12 @@ export default function LiveBuddy({
   const sourceNodeRef = useRef<MediaStreamAudioSourceNode | null>(null);
   const processorRef = useRef<ScriptProcessorNode | null>(null);
   const setupTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const sessionStartRef = useRef<number | null>(null);
+  const [lastSavedMemory, setLastSavedMemory] = useState<{
+    summary: string;
+    standardsTouched: string[];
+    wordsAsked: string[];
+  } | null>(null);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -159,7 +165,12 @@ export default function LiveBuddy({
           ? {
               setup: {
                 model: setupModel,
-                generation_config: { response_modalities: ["AUDIO"] },
+                generation_config: {
+                  response_modalities: ["AUDIO"],
+                  // Affective dialog — match the kid's emotional tone.
+                  // Frustration → gentler. Excitement → matched energy.
+                  enable_affective_dialog: true,
+                },
                 system_instruction: systemInstruction
                   ? { parts: [{ text: systemInstruction }] }
                   : undefined,
@@ -316,6 +327,7 @@ export default function LiveBuddy({
             setupTimeoutRef.current = null;
           }
           console.info("[buddy-live] setupComplete received");
+          sessionStartRef.current = Date.now();
           setStatus("listening");
           return;
         }
@@ -407,10 +419,36 @@ export default function LiveBuddy({
 
   function handleToggle() {
     if (status === "idle" || status === "error") {
+      // Reset transcripts when starting a fresh session.
+      setLastSavedMemory(null);
       connect();
     } else {
+      // Snapshot transcripts before disconnect resets refs.
+      const t = [...transcripts];
+      const start = sessionStartRef.current;
       disconnect();
       setStatus("idle");
+      // Best-effort save the session memory if we have a child + a
+      // real conversation. This is fire-and-forget; failure is silent.
+      if (childId && t.length >= 2) {
+        const sessionMinutes = start
+          ? Math.max(1, Math.round((Date.now() - start) / 60000))
+          : undefined;
+        void fetch("/api/buddy-live/save-memory", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            childId,
+            transcripts: t,
+            sessionMinutes,
+          }),
+        })
+          .then((r) => r.json())
+          .then((j) => {
+            if (j?.ok && j?.memory) setLastSavedMemory(j.memory);
+          })
+          .catch(() => {});
+      }
     }
   }
 
@@ -486,14 +524,73 @@ export default function LiveBuddy({
         </div>
       )}
 
-      <div className="rounded-xl bg-violet-50 p-3 text-xs text-violet-800">
-        <div className="flex items-center gap-1.5 font-bold">
-          <Sparkles className="h-3 w-3" />
-          Live mode
+      {/* Post-session "what's next" — handoff to Practice / Stories /
+          Fluency based on what Readee remembered from the chat. */}
+      {status === "idle" && lastSavedMemory && (
+        <div className="rounded-3xl border border-emerald-200 bg-gradient-to-br from-emerald-50 to-teal-50 p-5">
+          <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-emerald-700">
+            <Sparkles className="h-3 w-3" />
+            Memory saved
+          </div>
+          <p className="mt-1 text-sm text-zinc-800">{lastSavedMemory.summary}</p>
+          <div className="mt-3 grid gap-2 sm:grid-cols-2">
+            {lastSavedMemory.standardsTouched.length > 0 && childId && (
+              <a
+                href={`/practice-hub?child=${childId}&standard=${encodeURIComponent(lastSavedMemory.standardsTouched[0])}`}
+                className="inline-flex items-center justify-between gap-1 rounded-xl bg-white px-3 py-2 text-xs font-bold text-emerald-700 ring-1 ring-emerald-200 hover:ring-emerald-400"
+              >
+                <span>
+                  Practice <span className="font-mono">{lastSavedMemory.standardsTouched[0]}</span>
+                </span>
+                <span aria-hidden>→</span>
+              </a>
+            )}
+            {childId && (
+              <a
+                href={`/fluency?child=${childId}`}
+                className="inline-flex items-center justify-between gap-1 rounded-xl bg-white px-3 py-2 text-xs font-bold text-emerald-700 ring-1 ring-emerald-200 hover:ring-emerald-400"
+              >
+                <span>Try a fluency check</span>
+                <span aria-hidden>→</span>
+              </a>
+            )}
+            {childId && (
+              <a
+                href={`/stories?child=${childId}`}
+                className="inline-flex items-center justify-between gap-1 rounded-xl bg-white px-3 py-2 text-xs font-bold text-emerald-700 ring-1 ring-emerald-200 hover:ring-emerald-400"
+              >
+                <span>Pick a story</span>
+                <span aria-hidden>→</span>
+              </a>
+            )}
+            {childId && (
+              <a
+                href={`/dashboard?child=${childId}`}
+                className="inline-flex items-center justify-between gap-1 rounded-xl bg-white px-3 py-2 text-xs font-bold text-emerald-700 ring-1 ring-emerald-200 hover:ring-emerald-400"
+              >
+                <span>Back to dashboard</span>
+                <span aria-hidden>→</span>
+              </a>
+            )}
+          </div>
+          {lastSavedMemory.wordsAsked.length > 0 && (
+            <div className="mt-3 text-[10px] font-semibold text-emerald-700">
+              You asked about: {lastSavedMemory.wordsAsked.join(", ")}
+            </div>
+          )}
         </div>
-        Real-time voice — under half a second per reply. Tap the mic to
-        end the session.
-      </div>
+      )}
+
+      {!lastSavedMemory && (
+        <div className="rounded-xl bg-violet-50 p-3 text-xs text-violet-800">
+          <div className="flex items-center gap-1.5 font-bold">
+            <Sparkles className="h-3 w-3" />
+            Live mode
+          </div>
+          Real-time voice — under half a second per reply. Tap the mic to
+          end the session.
+        </div>
+      )}
     </div>
   );
 }

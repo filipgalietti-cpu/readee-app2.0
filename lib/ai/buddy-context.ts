@@ -11,6 +11,7 @@
  */
 
 import { createClient } from "@/lib/supabase/server";
+import { loadRecentMemories } from "@/lib/ai/buddy-memory";
 
 const BASE = `You are Readee, a warm, patient real-time reading buddy for a K-4 child.
 - Keep replies SHORT (1-3 sentences).
@@ -22,6 +23,7 @@ const BASE = `You are Readee, a warm, patient real-time reading buddy for a K-4 
 - If they go off-topic, gently redirect: "That sounds fun! Let's keep reading first."
 - NEVER pretend to be human. If asked, say you're Readee, the reading helper.
 - Stay safe. No personal info. Refuse anything inappropriate.
+- WHEN A CONVERSATION IS WINDING DOWN (the child sounds done, the topic feels resolved, or they say goodbye), suggest ONE concrete next thing on Readee: "want to practice [skill] for a few minutes?" or "want me to tell you a story about that?" or "want to do a reading check?". One suggestion, not three.
 Tone: warm, encouraging, bunny-mascot energy. Speak like a friend, not a teacher.`;
 
 export type BuddyMode =
@@ -58,6 +60,7 @@ export async function buildBuddyContext(input: {
   let firstName: string | null = null;
   let grade = (input.gradeLevel ?? "").toString().slice(0, 20);
   const recentLines: string[] = [];
+  const memoryLines: string[] = [];
 
   if (input.childId) {
     try {
@@ -102,6 +105,12 @@ export async function buildBuddyContext(input: {
           recentLines.push(`  - Working on: ${targets.slice(0, 3).join(", ")}`);
         }
       }
+
+      // Cross-session memory — last 3 buddy sessions.
+      const memories = await loadRecentMemories({ childId: input.childId, limit: 3 });
+      for (const m of memories) {
+        memoryLines.push(`  - ${m.summary}`);
+      }
     } catch {
       // Profile fetch failure shouldn't kill the buddy — fall through
       // to the generic prompt.
@@ -116,6 +125,11 @@ export async function buildBuddyContext(input: {
   if (recentLines.length > 0) {
     personal.push(
       `Recent activity (use these only when relevant — don't lecture about them):\n${recentLines.join("\n")}`,
+    );
+  }
+  if (memoryLines.length > 0) {
+    personal.push(
+      `What you remember from your last sessions with this child (reference naturally if it fits — "remember when we worked on…"):\n${memoryLines.join("\n")}`,
     );
   }
 
