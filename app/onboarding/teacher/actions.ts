@@ -16,10 +16,11 @@ const VALID_INTENTS = [
   "parent_comm",
   "exploring",
 ] as const;
+const VALID_GRADES = ["K", "1st", "2nd", "3rd", "4th", "Mixed"] as const;
 
 export async function saveTeacherIdentity(input: {
   displayName: string;
-  defaultGrade?: string | null;
+  defaultGrades?: string[] | null;
   schoolHint?: string | null;
   classSetting?: string | null;
   intents?: string[] | null;
@@ -36,11 +37,10 @@ export async function saveTeacherIdentity(input: {
     return { ok: false, error: "That's a long name — keep it under 80 characters." };
   }
 
-  // Validation against the migration's CHECK constraints.
-  const grade = input.defaultGrade?.trim() || null;
-  if (grade && !["K", "1st", "2nd", "3rd", "4th", "Mixed"].includes(grade)) {
-    return { ok: false, error: "Pick a grade from the list." };
-  }
+  const grades = (input.defaultGrades ?? [])
+    .map((g) => g.trim())
+    .filter((g): g is (typeof VALID_GRADES)[number] => (VALID_GRADES as readonly string[]).includes(g));
+  const primaryGrade = grades[0] ?? null;
   const setting = input.classSetting?.trim() || null;
   if (
     setting &&
@@ -51,14 +51,14 @@ export async function saveTeacherIdentity(input: {
   const intents = (input.intents ?? [])
     .map((i) => i.trim())
     .filter((i): i is (typeof VALID_INTENTS)[number] => (VALID_INTENTS as readonly string[]).includes(i));
-  // Backward-compat: the old `intent` column holds the primary pick.
   const primaryIntent = intents[0] ?? null;
 
   const { error } = await supabase
     .from("profiles")
     .update({
       display_name: displayName,
-      default_grade: grade,
+      default_grade: primaryGrade,
+      default_grades: grades.length > 0 ? grades : null,
       school_hint: input.schoolHint?.trim() || null,
       class_setting: setting,
       intent: primaryIntent,
@@ -69,15 +69,12 @@ export async function saveTeacherIdentity(input: {
     .eq("id", user.id);
   if (error) return { ok: false, error: error.message };
 
-  // Seed a demo classroom + 3 demo students + 1 starter assignment so
-  // the teacher lands in a working dashboard. Failure here doesn't
-  // block onboarding — they'll just see the empty-state UI.
   let demoClassroomId: string | null = null;
   try {
     const seed = await seedDemoClassroom({
       teacherId: user.id,
       displayName,
-      defaultGrade: grade,
+      defaultGrade: primaryGrade,
       intent: primaryIntent,
     });
     if (seed.ok) demoClassroomId = seed.classroomId;

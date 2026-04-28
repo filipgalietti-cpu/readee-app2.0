@@ -14,6 +14,7 @@ import {
 import { saveTeacherIdentity } from "../actions";
 
 type Grade = "K" | "1st" | "2nd" | "3rd" | "4th" | "Mixed";
+type Grades = Grade[];
 type Setting = "classroom" | "resource_room" | "tutoring" | "homeschool" | "after_school";
 type Intent = "phonics_gaps" | "below_grade" | "above_grade" | "ell" | "parent_comm" | "exploring";
 type Intents = Intent[];
@@ -51,7 +52,7 @@ export default function TeacherOnboardingWizard({
   emailHint: string | null;
   initial: {
     displayName: string;
-    defaultGrade: Grade | null;
+    defaultGrades: Grades | null;
     schoolHint: string;
     classSetting: Setting | null;
     intents: Intents | null;
@@ -60,13 +61,18 @@ export default function TeacherOnboardingWizard({
   const router = useRouter();
   const [step, setStep] = useState(0);
   const [displayName, setDisplayName] = useState(initial.displayName);
-  const [defaultGrade, setDefaultGrade] = useState<Grade | null>(initial.defaultGrade);
+  const [defaultGrades, setDefaultGrades] = useState<Grades>(initial.defaultGrades ?? []);
   const [schoolHint, setSchoolHint] = useState(initial.schoolHint);
   const [classSetting, setClassSetting] = useState<Setting | null>(initial.classSetting);
   const [intents, setIntents] = useState<Intents>(initial.intents ?? []);
   const [pending, start] = useTransition();
   const [err, setErr] = useState<string | null>(null);
 
+  function toggleGrade(g: Grade) {
+    setDefaultGrades((prev) =>
+      prev.includes(g) ? prev.filter((x) => x !== g) : [...prev, g],
+    );
+  }
   function toggleIntent(i: Intent) {
     setIntents((prev) =>
       prev.includes(i) ? prev.filter((x) => x !== i) : [...prev, i],
@@ -76,7 +82,7 @@ export default function TeacherOnboardingWizard({
   const totalSteps = 3;
   const canAdvance =
     step === 0 ? displayName.trim().length > 1
-      : step === 1 ? !!defaultGrade && !!classSetting
+      : step === 1 ? defaultGrades.length > 0 && !!classSetting
       : step === 2 ? intents.length > 0
       : false;
 
@@ -100,7 +106,7 @@ export default function TeacherOnboardingWizard({
     start(async () => {
       const res = await saveTeacherIdentity({
         displayName,
-        defaultGrade,
+        defaultGrades,
         schoolHint,
         classSetting,
         intents,
@@ -109,7 +115,13 @@ export default function TeacherOnboardingWizard({
         setErr(res.error);
         return;
       }
-      router.replace("/classroom?onboarded=1");
+      // Land DIRECTLY in the demo classroom workspace (roster +
+      // assignment + sidebar all visible) instead of the dashboard
+      // grid where the demo card is just one of many tiles.
+      const target = res.demoClassroomId
+        ? `/classroom/${res.demoClassroomId}?onboarded=1`
+        : "/classroom?onboarded=1";
+      router.replace(target);
     });
   }
 
@@ -162,8 +174,8 @@ export default function TeacherOnboardingWizard({
             )}
             {step === 1 && (
               <StepClass
-                defaultGrade={defaultGrade}
-                setDefaultGrade={setDefaultGrade}
+                defaultGrades={defaultGrades}
+                toggleGrade={toggleGrade}
                 schoolHint={schoolHint}
                 setSchoolHint={setSchoolHint}
                 classSetting={classSetting}
@@ -182,20 +194,8 @@ export default function TeacherOnboardingWizard({
         )}
       </div>
 
-      {/* Footer nav */}
-      <div className="mx-auto mt-10 flex w-full max-w-md items-center justify-between gap-2">
-        <button
-          type="button"
-          onClick={() => {
-            stepDirection.set(-1);
-            back();
-          }}
-          disabled={step === 0 || pending}
-          className="inline-flex items-center gap-1 rounded-full px-4 py-2 text-sm font-semibold text-zinc-500 transition hover:bg-violet-100 hover:text-zinc-800 disabled:opacity-0"
-        >
-          <ArrowLeft className="h-3.5 w-3.5" />
-          Back
-        </button>
+      {/* Footer nav — Continue centered, Back as a small text link below */}
+      <div className="mx-auto mt-10 flex w-full max-w-md flex-col items-center gap-3">
         <button
           type="button"
           onClick={() => {
@@ -203,7 +203,7 @@ export default function TeacherOnboardingWizard({
             next();
           }}
           disabled={!canAdvance || pending}
-          className="inline-flex items-center gap-2 rounded-full bg-violet-600 px-6 py-3 text-sm font-bold text-white shadow-lg transition hover:bg-violet-700 disabled:opacity-40 disabled:cursor-not-allowed"
+          className="inline-flex items-center gap-2 rounded-full bg-violet-600 px-8 py-3 text-sm font-bold text-white shadow-lg transition hover:bg-violet-700 disabled:opacity-40 disabled:cursor-not-allowed"
         >
           {pending ? (
             <>
@@ -221,6 +221,18 @@ export default function TeacherOnboardingWizard({
               Open my classroom
             </>
           )}
+        </button>
+        <button
+          type="button"
+          onClick={() => {
+            stepDirection.set(-1);
+            back();
+          }}
+          disabled={step === 0 || pending}
+          className="inline-flex items-center gap-1 text-xs font-semibold text-zinc-500 transition hover:text-zinc-800 disabled:opacity-0"
+        >
+          <ArrowLeft className="h-3 w-3" />
+          Back
         </button>
       </div>
     </div>
@@ -283,15 +295,15 @@ function StepIdentity({
 /* ─── Step 2: Class context ────────────────────────── */
 
 function StepClass({
-  defaultGrade,
-  setDefaultGrade,
+  defaultGrades,
+  toggleGrade,
   schoolHint,
   setSchoolHint,
   classSetting,
   setClassSetting,
 }: {
-  defaultGrade: Grade | null;
-  setDefaultGrade: (g: Grade) => void;
+  defaultGrades: Grades;
+  toggleGrade: (g: Grade) => void;
   schoolHint: string;
   setSchoolHint: (v: string) => void;
   classSetting: Setting | null;
@@ -304,71 +316,70 @@ function StepClass({
           Tell us about your class
         </h1>
         <p className="mt-2 text-sm text-zinc-600">
-          This sets defaults for new lessons and tunes Readee.ai to your kids.
+          Pick all that apply. We&apos;ll set defaults from your selections.
         </p>
       </div>
 
-      {/* Grade */}
-      <label className="mt-6 block">
-        <span className="text-xs font-bold uppercase tracking-widest text-violet-700/70">
-          Grade you teach
-        </span>
-        <div className="mt-2 grid grid-cols-3 gap-2">
-          {GRADES.map((g) => (
-            <button
-              key={g.id}
-              type="button"
-              onClick={() => setDefaultGrade(g.id)}
-              className={`rounded-xl px-3 py-2.5 text-sm font-semibold transition ${
-                defaultGrade === g.id
-                  ? "bg-violet-600 text-white shadow-md shadow-violet-300/40"
-                  : "text-zinc-700 hover:bg-violet-100"
-              }`}
-            >
-              {g.label}
-            </button>
-          ))}
-        </div>
-      </label>
+      {/* Grades — multi-select checklist */}
+      <fieldset className="mt-6">
+        <legend className="text-xs font-bold uppercase tracking-widest text-violet-700/70">
+          Grades you teach
+        </legend>
+        <ul className="mt-2 space-y-1">
+          {GRADES.map((g) => {
+            const active = defaultGrades.includes(g.id);
+            return (
+              <li key={g.id}>
+                <button
+                  type="button"
+                  onClick={() => toggleGrade(g.id)}
+                  aria-pressed={active}
+                  className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left transition ${
+                    active ? "bg-violet-600 shadow-md shadow-violet-300/30" : "hover:bg-violet-100"
+                  }`}
+                >
+                  <CheckBox active={active} />
+                  <span className={`text-sm font-semibold ${active ? "text-white" : "text-zinc-900"}`}>
+                    {g.label}
+                  </span>
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      </fieldset>
 
-      {/* Setting */}
-      <label className="mt-5 block">
-        <span className="text-xs font-bold uppercase tracking-widest text-violet-700/70">
+      {/* Setting — single pick (a teacher generally has one primary setting) */}
+      <fieldset className="mt-6">
+        <legend className="text-xs font-bold uppercase tracking-widest text-violet-700/70">
           Where you teach
-        </span>
-        <div className="mt-2 space-y-1.5">
+        </legend>
+        <ul className="mt-2 space-y-1">
           {SETTINGS.map((s) => {
             const active = classSetting === s.id;
             return (
-              <button
-                key={s.id}
-                type="button"
-                onClick={() => setClassSetting(s.id)}
-                className={`flex w-full items-center justify-between gap-2 rounded-xl px-4 py-3 text-left transition ${
-                  active
-                    ? "bg-violet-600 shadow-md shadow-violet-300/40"
-                    : "hover:bg-violet-100"
-                }`}
-              >
-                <div>
-                  <div className={`text-sm font-bold ${active ? "text-white" : "text-zinc-900"}`}>
+              <li key={s.id}>
+                <button
+                  type="button"
+                  onClick={() => setClassSetting(s.id)}
+                  aria-pressed={active}
+                  className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left transition ${
+                    active ? "bg-violet-600 shadow-md shadow-violet-300/30" : "hover:bg-violet-100"
+                  }`}
+                >
+                  <RadioDot active={active} />
+                  <span className={`text-sm font-semibold ${active ? "text-white" : "text-zinc-900"}`}>
                     {s.label}
-                  </div>
-                  <div className={`text-xs ${active ? "text-violet-100" : "text-zinc-500"}`}>
-                    {s.sub}
-                  </div>
-                </div>
-                {active && (
-                  <Check className="h-4 w-4 flex-shrink-0 text-white" />
-                )}
-              </button>
+                  </span>
+                </button>
+              </li>
             );
           })}
-        </div>
-      </label>
+        </ul>
+      </fieldset>
 
       {/* School (optional) */}
-      <label className="mt-5 block">
+      <label className="mt-6 block">
         <span className="text-xs font-bold uppercase tracking-widest text-violet-700/70">
           School name <span className="text-zinc-500 normal-case">· optional</span>
         </span>
@@ -381,6 +392,34 @@ function StepClass({
         />
       </label>
     </div>
+  );
+}
+
+function CheckBox({ active }: { active: boolean }) {
+  return (
+    <span
+      aria-hidden
+      className={`flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-md transition ${
+        active
+          ? "bg-white text-violet-700"
+          : "bg-violet-100 text-transparent ring-1 ring-violet-300"
+      }`}
+    >
+      {active && <Check className="h-3.5 w-3.5" strokeWidth={3} />}
+    </span>
+  );
+}
+
+function RadioDot({ active }: { active: boolean }) {
+  return (
+    <span
+      aria-hidden
+      className={`flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full transition ${
+        active ? "bg-white" : "bg-violet-100 ring-1 ring-violet-300"
+      }`}
+    >
+      {active && <span className="h-2 w-2 rounded-full bg-violet-700" />}
+    </span>
   );
 }
 
@@ -404,7 +443,7 @@ function StepIntent({
         </p>
       </div>
 
-      <ul className="mt-6 grid gap-2 sm:grid-cols-2">
+      <ul className="mt-6 space-y-1">
         {INTENTS.map((opt) => {
           const active = intents.includes(opt.id);
           return (
@@ -413,29 +452,13 @@ function StepIntent({
                 type="button"
                 onClick={() => toggleIntent(opt.id)}
                 aria-pressed={active}
-                className={`flex w-full items-start gap-3 rounded-2xl p-4 text-left transition ${
-                  active
-                    ? "bg-violet-600 shadow-md shadow-violet-300/40"
-                    : "hover:bg-violet-100"
+                className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left transition ${
+                  active ? "bg-violet-600 shadow-md shadow-violet-300/30" : "hover:bg-violet-100"
                 }`}
               >
-                <span
-                  aria-hidden
-                  className={`mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-md transition ${
-                    active
-                      ? "bg-white text-violet-700"
-                      : "bg-violet-100 text-transparent ring-1 ring-violet-300"
-                  }`}
-                >
-                  {active && <Check className="h-3.5 w-3.5" strokeWidth={3} />}
-                </span>
-                <span className="flex-1">
-                  <span className={`block text-sm font-bold ${active ? "text-white" : "text-zinc-900"}`}>
-                    {opt.label}
-                  </span>
-                  <span className={`block text-xs ${active ? "text-violet-100" : "text-zinc-500"}`}>
-                    {opt.sub}
-                  </span>
+                <CheckBox active={active} />
+                <span className={`text-sm font-semibold ${active ? "text-white" : "text-zinc-900"}`}>
+                  {opt.label}
                 </span>
               </button>
             </li>
