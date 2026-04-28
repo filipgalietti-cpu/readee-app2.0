@@ -1,12 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import { Zap, Pause } from "lucide-react";
+import { Zap, Pause, Info } from "lucide-react";
 import BuddyChat from "./BuddyChat";
 import LiveBuddy from "./LiveBuddy";
 
 export default function BuddyShell() {
-  const [mode, setMode] = useState<"live" | "turns">("live");
+  // Default to Step-by-step. Live mode requires Gemini Live API
+  // access on the Google AI Studio project — separate SKU from
+  // regular Gemini API and not enabled by default. Once a teacher
+  // enables it in their project, they can flip to Live here.
+  const [mode, setMode] = useState<"live" | "turns">("turns");
   const [passage, setPassage] = useState(
     "The little fox stepped quietly through the fall leaves. She was looking for her best friend, the rabbit, who liked to hide in the soft yellow grass.",
   );
@@ -66,8 +70,24 @@ export default function BuddyShell() {
         </label>
       </div>
 
+      {mode === "live" && (
+        <div className="flex items-start gap-2 rounded-2xl border border-violet-200 bg-violet-50/70 px-3 py-2 text-xs text-violet-800">
+          <Info className="mt-0.5 h-3.5 w-3.5 flex-shrink-0" />
+          <span>
+            Live mode needs Gemini Live API enabled on your Google AI
+            Studio project — a separate SKU from regular Gemini API.
+            If the mic spins, switch to Step-by-step (works without
+            Live access).
+          </span>
+        </div>
+      )}
+
       {mode === "live" ? (
-        <LiveBuddy passage={passage} gradeLevel={gradeLevel} />
+        <LiveBuddy
+          passage={passage}
+          gradeLevel={gradeLevel}
+          onExhausted={() => setMode("turns")}
+        />
       ) : (
         <BuddyChat />
       )}

@@ -31,9 +31,13 @@ const LIVE_WS_BASE =
 export default function LiveBuddy({
   passage,
   gradeLevel,
+  onExhausted,
 }: {
   passage: string;
   gradeLevel: string;
+  /** Called when every Live model candidate has failed setup, so the
+   *  parent shell can auto-fall-back to turn-based mode. */
+  onExhausted?: () => void;
 }) {
   const [status, setStatus] = useState<Status>("idle");
   const [err, setErr] = useState<string | null>(null);
@@ -160,9 +164,14 @@ export default function LiveBuddy({
           });
         } else {
           setErr(
-            `Your project's Gemini Live API isn't accepting any of the audio models we tried. Switch to Step-by-step below — same buddy, just turn-based instead of real-time.`,
+            `Live API isn't enabled on this Google AI Studio project. Switching to Step-by-step…`,
           );
           setStatus("error");
+          // Auto-fall-back so the kid keeps using the buddy without
+          // having to toggle modes manually.
+          if (onExhausted) {
+            setTimeout(() => onExhausted(), 2200);
+          }
         }
       }, 8000);
 
