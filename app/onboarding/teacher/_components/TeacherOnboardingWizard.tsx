@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useState, useTransition, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -252,6 +252,21 @@ function useStepDirection() {
 
 /* ─── Step 1: Identity ─────────────────────────────── */
 
+const ROTATING_PLACEHOLDERS = [
+  "e.g. Mrs. Wonderful",
+  "e.g. Mr. Fantastic",
+  "e.g. Ms. Brilliant",
+  "e.g. Mrs. Sunshine",
+  "e.g. Mr. Awesome",
+  "e.g. Ms. Marvelous",
+  "e.g. Mrs. Curious",
+  "e.g. Mr. Sparkle",
+  "e.g. Ms. Galaxy",
+  "e.g. Coach Sarah",
+  "e.g. Dr. Klingerman",
+  "e.g. Señora Lopez",
+];
+
 function StepIdentity({
   displayName,
   onChange,
@@ -261,6 +276,20 @@ function StepIdentity({
   onChange: (v: string) => void;
   emailHint: string | null;
 }) {
+  const [phIdx, setPhIdx] = useState(() =>
+    Math.floor(Math.random() * ROTATING_PLACEHOLDERS.length),
+  );
+
+  // Cycle the placeholder every 2.2s while the input is empty.
+  // Pauses the moment the teacher starts typing.
+  useEffect(() => {
+    if (displayName.length > 0) return;
+    const t = setInterval(() => {
+      setPhIdx((i) => (i + 1) % ROTATING_PLACEHOLDERS.length);
+    }, 2200);
+    return () => clearInterval(t);
+  }, [displayName]);
+
   return (
     <div className="mx-auto max-w-md text-center">
       <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900">
@@ -271,16 +300,33 @@ function StepIdentity({
         in messages home, in your students&apos; dashboards.
       </p>
 
-      <div className="mt-6">
+      <div className="mt-6 relative">
         <input
           type="text"
           value={displayName}
           onChange={(e) => onChange(e.target.value)}
-          placeholder="e.g. Mrs. Klingerman"
+          placeholder=" "
           autoFocus
           maxLength={80}
-          className="w-full border-0 border-b-2 border-violet-200 bg-transparent px-2 py-4 text-center text-4xl font-extrabold tracking-tight text-zinc-900 placeholder:text-violet-300 transition focus:border-violet-600 focus:outline-none"
+          className="w-full border-0 border-b-2 border-violet-200 bg-transparent px-2 py-4 text-center text-4xl font-extrabold tracking-tight text-zinc-900 transition focus:border-violet-600 focus:outline-none"
         />
+        {/* Rotating placeholder layer — fades in/out behind the cursor
+            when the input is empty. Plain placeholder= can't animate
+            so we render it as an absolutely positioned label. */}
+        {!displayName && (
+          <AnimatePresence mode="wait">
+            <motion.span
+              key={phIdx}
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              className="pointer-events-none absolute inset-0 flex items-center justify-center text-4xl font-extrabold tracking-tight text-violet-300"
+            >
+              {ROTATING_PLACEHOLDERS[phIdx]}
+            </motion.span>
+          </AnimatePresence>
+        )}
         {emailHint && !displayName && (
           <p className="mt-2 text-xs text-zinc-500">
             We had your email as <span className="font-mono">{emailHint}</span> — kids

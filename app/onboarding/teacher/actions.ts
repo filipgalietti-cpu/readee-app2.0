@@ -77,9 +77,13 @@ export async function saveTeacherIdentity(input: {
       defaultGrade: primaryGrade,
       intent: primaryIntent,
     });
-    if (seed.ok) demoClassroomId = seed.classroomId;
-  } catch {
-    // Silent — onboarding still completes.
+    if (seed.ok) {
+      demoClassroomId = seed.classroomId;
+    } else {
+      console.error("[onboarding] demo seed failed:", seed.error);
+    }
+  } catch (e: any) {
+    console.error("[onboarding] demo seed threw:", e?.message ?? e);
   }
 
   revalidatePath("/classroom");

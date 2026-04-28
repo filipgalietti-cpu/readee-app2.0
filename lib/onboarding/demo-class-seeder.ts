@@ -152,10 +152,14 @@ export async function seedDemoClassroom(input: {
   }
 
   // 2) demo children. owner_type=classroom + owner_classroom_id pins
-  //    them to this classroom for RLS scoping. parent_id = teacher
-  //    so the teacher can read/manage. is_demo flag for cleanup later.
+  //    The children_owner_exclusive CHECK requires:
+  //      owner_type='classroom' → parent_id NULL, owner_classroom_id SET
+  //      owner_type='parent'    → parent_id SET,  owner_classroom_id NULL
+  //    Demo students belong to the classroom (not the teacher's family),
+  //    so parent_id stays null. created_by_teacher gives a cleanup handle.
+  //    language is NOT NULL with CHECK ('en'|'es') — must default it.
   const childRows = DEMO_KIDS.map((k) => ({
-    parent_id: input.teacherId,
+    parent_id: null,
     created_by_teacher: input.teacherId,
     owner_type: "classroom",
     owner_classroom_id: classroomId,
@@ -165,6 +169,7 @@ export async function seedDemoClassroom(input: {
     carrots: k.carrots,
     streak_days: k.streak_days,
     stories_read: k.stories_read,
+    language: "en",
     is_demo: true,
   }));
   const { data: insertedKids, error: kidsErr } = await admin
@@ -172,6 +177,7 @@ export async function seedDemoClassroom(input: {
     .insert(childRows)
     .select("id");
   if (kidsErr || !insertedKids) {
+    console.error("[demo-seeder] children insert failed:", kidsErr);
     return { ok: false, error: `Demo students: ${kidsErr?.message}` };
   }
 

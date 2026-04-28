@@ -124,6 +124,12 @@ export default async function ClassroomIndex({
         </div>
       )}
 
+      {hasClass && (
+        <PremiumToolsRail
+          plan={(profile as any).plan ?? "free"}
+        />
+      )}
+
       {!hasClass && <Onboarding />}
       {showNextStepNudge && (
         <NextStepNudge
@@ -134,6 +140,112 @@ export default async function ClassroomIndex({
       )}
       {hasClass && <ClassroomGrid classrooms={list} />}
     </div>
+  );
+}
+
+/* ─── Premium tools rail — surfaces what's behind the paywall so
+       teachers see value early. Locked tiles route to /upgrade. ── */
+
+function PremiumToolsRail({ plan }: { plan: string }) {
+  const { hasMinTier } = require("@/lib/plan/teacher-gate");
+  const tools: {
+    id: string;
+    title: string;
+    desc: string;
+    minTier: "premium" | "teacher_solo" | "school";
+    href: string;
+    Icon: any;
+    color: string;
+  }[] = [
+    {
+      id: "buddy",
+      title: "Reading Buddy",
+      desc: "Real-time AI voice tutor for kids",
+      minTier: "premium",
+      href: "/buddy",
+      Icon: Sparkles,
+      color: "from-violet-500 to-indigo-600",
+    },
+    {
+      id: "calibrated",
+      title: "Calibrated questions",
+      desc: "Generate items at any difficulty",
+      minTier: "teacher_solo",
+      href: "/classroom/tools/calibrated-item",
+      Icon: BookOpen,
+      color: "from-indigo-500 to-violet-600",
+    },
+    {
+      id: "coach",
+      title: "Coach Mode",
+      desc: "Record a small group, AI grades each kid",
+      minTier: "teacher_solo",
+      href: "/classroom/tools/coach",
+      Icon: Users,
+      color: "from-blue-500 to-cyan-600",
+    },
+    {
+      id: "iep",
+      title: "IEP Progress Notes",
+      desc: "Drafted from real practice data",
+      minTier: "school",
+      href: "/classroom/tools/iep-note",
+      Icon: GraduationCap,
+      color: "from-amber-500 to-orange-600",
+    },
+  ];
+  const TIER_LABEL: Record<string, string> = {
+    premium: "Readee+",
+    teacher_solo: "Teacher Solo",
+    school: "School",
+  };
+  return (
+    <section className="mt-6">
+      <div className="flex items-baseline justify-between">
+        <h2 className="text-xs font-bold uppercase tracking-widest text-zinc-500">
+          Premium AI tools
+        </h2>
+        <Link
+          href="/classroom/tools"
+          className="text-[11px] font-semibold text-violet-600 hover:underline"
+        >
+          See all →
+        </Link>
+      </div>
+      <ul className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        {tools.map((t) => {
+          const unlocked = hasMinTier(plan, t.minTier);
+          const href = unlocked ? t.href : `/upgrade?reason=${t.id}`;
+          const Icon = t.Icon;
+          return (
+            <li key={t.id}>
+              <Link
+                href={href}
+                className="group block h-full rounded-3xl border border-zinc-200 bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:border-violet-300 hover:shadow-md"
+              >
+                <div className={`flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br ${t.color} text-white shadow-sm ${unlocked ? "" : "opacity-70"}`}>
+                  <Icon className="h-5 w-5" strokeWidth={1.5} />
+                </div>
+                <div className="mt-3 text-sm font-bold text-zinc-900">
+                  {t.title}
+                </div>
+                <div className="mt-1 text-xs text-zinc-500">{t.desc}</div>
+                <div className="mt-3 border-t border-zinc-100 pt-2 text-[11px] font-bold">
+                  {unlocked ? (
+                    <span className="text-violet-600 group-hover:underline">Open →</span>
+                  ) : (
+                    <span className="inline-flex items-center gap-1 text-zinc-700 group-hover:text-violet-700">
+                      <Circle className="h-2.5 w-2.5 fill-current text-violet-400" />
+                      Unlock with {TIER_LABEL[t.minTier]} →
+                    </span>
+                  )}
+                </div>
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
   );
 }
 
