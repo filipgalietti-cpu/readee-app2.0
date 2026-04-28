@@ -40,12 +40,14 @@ const WebSocket = require("ws");
   console.log(`  ✓ token minted (length ${accessToken.length})`);
   console.log(`  project: ${project}`);
 
-  // Vertex Live model + region candidates. us-central1 is the broadest.
+  // Per Vertex AI docs (Apr 2026):
+  //   gemini-live-2.5-flash-native-audio  — GA, recommended
+  //   gemini-live-2.5-flash-preview-native-audio-09-2025 — preview
+  //     (deprecated 2026-03-19, migrate to GA)
   const REGIONS = ["us-central1"];
   const MODELS = [
-    "gemini-2.0-flash-live-preview-04-09",
-    "gemini-2.0-flash-live-001",
-    "gemini-2.5-flash-live-preview",
+    "gemini-live-2.5-flash-native-audio",
+    "gemini-live-2.5-flash-preview-native-audio-09-2025",
   ];
 
   for (const region of REGIONS) {

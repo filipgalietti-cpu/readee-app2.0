@@ -25,9 +25,6 @@ import {
 
 type Status = "idle" | "connecting" | "listening" | "thinking" | "speaking" | "error";
 
-const LIVE_WS_BASE =
-  "wss://generativelanguage.googleapis.com/ws/google.ai.generativelanguage.v1alpha.GenerativeService.BidiGenerateContent";
-
 export default function LiveBuddy({
   passage,
   gradeLevel,
@@ -91,30 +88,26 @@ export default function LiveBuddy({
     audioCtxRef.current = null;
   }
 
-  async function connect(triedModels: string[] = []) {
+  async function connect() {
     setErr(null);
     setStatus("connecting");
     try {
-      // 1) Mint a one-shot ephemeral token from our server. Pass
-      // already-tried models as ?skip= so the server hands back the
-      // next candidate.
-      const skipQs = triedModels
-        .map((m) => `skip=${encodeURIComponent(m)}`)
-        .join("&");
-      const tokUrl = "/api/buddy-live/token" + (skipQs ? `?${skipQs}` : "");
-      const tokRes = await fetch(tokUrl, {
+      // 1) Mint a Live session from our server. The response is fully
+      // self-contained: wsUrl + setupModel + systemInstruction.
+      const tokRes = await fetch("/api/buddy-live/token", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ passage, gradeLevel }),
       });
       const tokJson = await tokRes.json();
-      if (!tokJson.ok) throw new Error(tokJson.error ?? "Token failed.");
-      const token: string = tokJson.token;
-      const model: string = tokJson.model;
-      const nextCandidates: string[] = tokJson.nextCandidates ?? [];
+      if (!tokJson.ok) throw new Error(tokJson.error ?? "Could not mint Live session.");
+      const wsUrl: string = tokJson.wsUrl;
+      const setupModel: string = tokJson.setupModel;
+      const systemInstruction: string = tokJson.systemInstruction ?? "";
+      const provider: string = tokJson.provider ?? "vertex";
 
-      // 2) Open WebSocket directly to Google with the token in the URL.
-      const wsUrl = `${LIVE_WS_BASE}?access_token=${encodeURIComponent(token)}`;
+      // 2) Open WebSocket directly to Google (Vertex or AI Studio
+      //    — server tells us which) with the token in the URL.
       const ws = new WebSocket(wsUrl);
       ws.binaryType = "arraybuffer";
       wsRef.current = ws;
@@ -132,48 +125,47 @@ export default function LiveBuddy({
       });
       await opened;
 
-      // 3) Send the setup message — model + AUDIO output modality.
-      console.info("[buddy-live] sending setup with model", model);
-      ws.send(
-        JSON.stringify({
-          setup: {
-            model: `models/${model}`,
-            generationConfig: { responseModalities: ["AUDIO"] },
-          },
-        }),
-      );
+      // 3) Send the setup message. Vertex uses snake_case + the full
+      //    publisher resource path; AI Studio uses camelCase + a short
+      //    model id. The server tells us which provider so we send
+      //    the right shape.
+      console.info("[buddy-live] sending setup", { provider, setupModel });
+      const setupPayload =
+        provider === "vertex"
+          ? {
+              setup: {
+                model: setupModel,
+                generation_config: { response_modalities: ["AUDIO"] },
+                system_instruction: systemInstruction
+                  ? { parts: [{ text: systemInstruction }] }
+                  : undefined,
+              },
+            }
+          : {
+              setup: {
+                model: setupModel,
+                generationConfig: { responseModalities: ["AUDIO"] },
+                systemInstruction: systemInstruction
+                  ? { parts: [{ text: systemInstruction }] }
+                  : undefined,
+              },
+            };
+      ws.send(JSON.stringify(setupPayload));
 
-      // If Google doesn't return setupComplete within 8s on this
-      // model, retry the whole connect with the NEXT candidate. Most
-      // common cause is a preview model that's not enabled for this
-      // project. We try each available candidate before giving up.
+      // 12-second setupComplete timeout. If the server doesn't
+      // respond by then, surface a clear error and offer Step-by-step
+      // fall-back.
       setupTimeoutRef.current = setTimeout(() => {
-        console.warn(
-          "[buddy-live] setupComplete timeout on",
-          model,
-          "next:",
-          nextCandidates,
-        );
+        console.warn("[buddy-live] setupComplete timeout on", setupModel);
         disconnect();
-        if (nextCandidates.length > 0) {
-          // Retry with the next candidate model. Keeps the user in
-          // the "connecting" state, no error flash.
-          connect([...triedModels, model]).catch((e) => {
-            setErr(e?.message ?? "Live mode failed.");
-            setStatus("error");
-          });
-        } else {
-          setErr(
-            `Live API isn't enabled on this Google AI Studio project. Switching to Step-by-step…`,
-          );
-          setStatus("error");
-          // Auto-fall-back so the kid keeps using the buddy without
-          // having to toggle modes manually.
-          if (onExhausted) {
-            setTimeout(() => onExhausted(), 2200);
-          }
+        setErr(
+          `Live mode didn't start (model: ${setupModel}). Switching to Step-by-step…`,
+        );
+        setStatus("error");
+        if (onExhausted) {
+          setTimeout(() => onExhausted(), 2200);
         }
-      }, 8000);
+      }, 12000);
 
       // 4) Set up audio capture — 16 kHz mono PCM out the WS.
       let stream: MediaStream;
