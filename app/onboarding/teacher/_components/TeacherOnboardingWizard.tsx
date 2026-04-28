@@ -113,23 +113,23 @@ export default function TeacherOnboardingWizard({
 
   return (
     <div className="relative mx-auto flex min-h-screen max-w-2xl flex-col px-6 py-10">
-      {/* Step indicator — white track on the brand canvas */}
+      {/* Step indicator — soft track, brand-fill */}
       <div className="mx-auto flex w-full max-w-md items-center gap-2">
         {Array.from({ length: totalSteps }).map((_, i) => (
           <div
             key={i}
-            className="relative h-1.5 flex-1 overflow-hidden rounded-full bg-white/15"
+            className="relative h-1.5 flex-1 overflow-hidden rounded-full bg-violet-200/70"
           >
             <motion.div
               initial={false}
               animate={{ width: i <= step ? "100%" : "0%" }}
               transition={{ type: "spring", stiffness: 220, damping: 26 }}
-              className="absolute inset-y-0 left-0 rounded-full bg-white"
+              className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-violet-600 to-indigo-600"
             />
           </div>
         ))}
       </div>
-      <div className="mt-2 text-center text-[11px] font-bold uppercase tracking-widest text-white/70">
+      <div className="mt-2 text-center text-[11px] font-bold uppercase tracking-widest text-violet-700/70">
         Step {step + 1} of {totalSteps} · {stepLabel(step)}
       </div>
 
@@ -171,7 +171,7 @@ export default function TeacherOnboardingWizard({
         </AnimatePresence>
 
         {err && (
-          <div className="mx-auto mt-6 flex max-w-md items-start gap-2 rounded-xl bg-red-500/15 px-3 py-2 text-sm font-semibold text-red-100 ring-1 ring-red-300/40 backdrop-blur">
+          <div className="mx-auto mt-6 flex max-w-md items-start gap-2 rounded-xl bg-red-100 px-3 py-2 text-sm font-semibold text-red-800 ring-1 ring-red-200">
             <AlertCircle className="mt-0.5 h-4 w-4 flex-shrink-0" />
             {err}
           </div>
@@ -187,7 +187,7 @@ export default function TeacherOnboardingWizard({
             back();
           }}
           disabled={step === 0 || pending}
-          className="inline-flex items-center gap-1 rounded-full px-4 py-2 text-sm font-semibold text-white/70 transition hover:bg-white/10 hover:text-white disabled:opacity-0"
+          className="inline-flex items-center gap-1 rounded-full px-4 py-2 text-sm font-semibold text-zinc-500 transition hover:bg-violet-100 hover:text-zinc-800 disabled:opacity-0"
         >
           <ArrowLeft className="h-3.5 w-3.5" />
           Back
@@ -199,7 +199,7 @@ export default function TeacherOnboardingWizard({
             next();
           }}
           disabled={!canAdvance || pending}
-          className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-bold text-violet-700 shadow-xl transition hover:bg-violet-50 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="inline-flex items-center gap-2 rounded-full bg-violet-600 px-6 py-3 text-sm font-bold text-white shadow-lg transition hover:bg-violet-700 disabled:opacity-40 disabled:cursor-not-allowed"
         >
           {pending ? (
             <>
@@ -247,13 +247,13 @@ function StepIdentity({
 }) {
   return (
     <div className="mx-auto max-w-md text-center">
-      <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-3xl bg-white/15 text-white ring-1 ring-white/30 backdrop-blur">
+      <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-3xl bg-gradient-to-br from-violet-500 to-indigo-600 text-white shadow-lg shadow-violet-300/40">
         <GraduationCap className="h-7 w-7" strokeWidth={1.5} />
       </div>
-      <h1 className="mt-5 text-3xl font-extrabold tracking-tight text-white">
+      <h1 className="mt-5 text-3xl font-extrabold tracking-tight text-zinc-900">
         What should kids call you?
       </h1>
-      <p className="mt-2 text-sm text-white/75">
+      <p className="mt-2 text-sm text-zinc-600">
         This is how you&apos;ll appear across Readee — on lessons,
         in messages home, in your students&apos; dashboards.
       </p>
@@ -266,10 +266,10 @@ function StepIdentity({
           placeholder="e.g. Mrs. Klingerman"
           autoFocus
           maxLength={80}
-          className="w-full rounded-2xl border-2 border-white/30 bg-white/10 px-5 py-4 text-center text-2xl font-bold text-white placeholder:text-white/40 backdrop-blur transition focus:border-white focus:bg-white/15 focus:outline-none"
+          className="w-full rounded-2xl border-0 bg-transparent px-5 py-4 text-center text-3xl font-extrabold tracking-tight text-zinc-900 placeholder:text-violet-300 ring-2 ring-violet-200 transition focus:ring-violet-500 focus:outline-none"
         />
         {emailHint && !displayName && (
-          <p className="mt-2 text-xs text-white/55">
+          <p className="mt-2 text-xs text-zinc-500">
             We had your email as <span className="font-mono">{emailHint}</span> — kids
             will never see that.
           </p>
@@ -299,20 +299,20 @@ function StepClass({
   return (
     <div className="mx-auto max-w-md">
       <div className="text-center">
-        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-3xl bg-white/15 text-white ring-1 ring-white/30 backdrop-blur">
+        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-3xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white shadow-lg shadow-emerald-300/30">
           <Building2 className="h-7 w-7" strokeWidth={1.5} />
         </div>
-        <h1 className="mt-5 text-3xl font-extrabold tracking-tight text-white">
+        <h1 className="mt-5 text-3xl font-extrabold tracking-tight text-zinc-900">
           Tell us about your class
         </h1>
-        <p className="mt-2 text-sm text-white/75">
+        <p className="mt-2 text-sm text-zinc-600">
           This sets defaults for new lessons and tunes Readee.ai to your kids.
         </p>
       </div>
 
       {/* Grade */}
       <label className="mt-6 block">
-        <span className="text-xs font-bold uppercase tracking-widest text-white/70">
+        <span className="text-xs font-bold uppercase tracking-widest text-violet-700/70">
           Grade you teach
         </span>
         <div className="mt-2 grid grid-cols-3 gap-2">
@@ -321,10 +321,10 @@ function StepClass({
               key={g.id}
               type="button"
               onClick={() => setDefaultGrade(g.id)}
-              className={`rounded-xl border-2 px-3 py-2.5 text-sm font-semibold transition ${
+              className={`rounded-xl px-3 py-2.5 text-sm font-semibold transition ring-2 ${
                 defaultGrade === g.id
-                  ? "border-white bg-white text-violet-700 shadow-md"
-                  : "border-white/30 bg-white/10 text-white backdrop-blur hover:border-white/60 hover:bg-white/15"
+                  ? "bg-violet-600 text-white ring-violet-600 shadow-md shadow-violet-300/40"
+                  : "bg-transparent text-zinc-700 ring-violet-200 hover:ring-violet-400 hover:bg-violet-100/50"
               }`}
             >
               {g.label}
@@ -335,7 +335,7 @@ function StepClass({
 
       {/* Setting */}
       <label className="mt-5 block">
-        <span className="text-xs font-bold uppercase tracking-widest text-white/70">
+        <span className="text-xs font-bold uppercase tracking-widest text-violet-700/70">
           Where you teach
         </span>
         <div className="mt-2 space-y-1.5">
@@ -346,22 +346,22 @@ function StepClass({
                 key={s.id}
                 type="button"
                 onClick={() => setClassSetting(s.id)}
-                className={`flex w-full items-center justify-between gap-2 rounded-xl border-2 px-4 py-3 text-left transition ${
+                className={`flex w-full items-center justify-between gap-2 rounded-xl px-4 py-3 text-left transition ring-2 ${
                   active
-                    ? "border-white bg-white shadow-md"
-                    : "border-white/30 bg-white/10 backdrop-blur hover:border-white/60 hover:bg-white/15"
+                    ? "bg-violet-600 ring-violet-600 shadow-md shadow-violet-300/40"
+                    : "bg-transparent ring-violet-200 hover:ring-violet-400 hover:bg-violet-100/50"
                 }`}
               >
                 <div>
-                  <div className={`text-sm font-bold ${active ? "text-violet-800" : "text-white"}`}>
+                  <div className={`text-sm font-bold ${active ? "text-white" : "text-zinc-900"}`}>
                     {s.label}
                   </div>
-                  <div className={`text-xs ${active ? "text-violet-600" : "text-white/65"}`}>
+                  <div className={`text-xs ${active ? "text-violet-100" : "text-zinc-500"}`}>
                     {s.sub}
                   </div>
                 </div>
                 {active && (
-                  <Check className="h-4 w-4 flex-shrink-0 text-violet-600" />
+                  <Check className="h-4 w-4 flex-shrink-0 text-white" />
                 )}
               </button>
             );
@@ -371,15 +371,15 @@ function StepClass({
 
       {/* School (optional) */}
       <label className="mt-5 block">
-        <span className="text-xs font-bold uppercase tracking-widest text-white/70">
-          School name <span className="text-white/50 normal-case">· optional</span>
+        <span className="text-xs font-bold uppercase tracking-widest text-violet-700/70">
+          School name <span className="text-zinc-500 normal-case">· optional</span>
         </span>
         <input
           type="text"
           value={schoolHint}
           onChange={(e) => setSchoolHint(e.target.value.slice(0, 120))}
           placeholder="e.g. Lincoln Elementary"
-          className="mt-2 w-full rounded-xl border-2 border-white/30 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-white/40 backdrop-blur transition focus:border-white focus:bg-white/15 focus:outline-none"
+          className="mt-2 w-full rounded-xl border-0 bg-transparent px-4 py-3 text-sm text-zinc-900 placeholder:text-violet-300 ring-2 ring-violet-200 transition focus:ring-violet-500 focus:outline-none"
         />
       </label>
     </div>
@@ -398,13 +398,13 @@ function StepIntent({
   return (
     <div className="mx-auto max-w-xl">
       <div className="text-center">
-        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-3xl bg-white/15 text-white ring-1 ring-white/30 backdrop-blur">
+        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-3xl bg-gradient-to-br from-pink-500 to-rose-600 text-white shadow-lg shadow-pink-300/30">
           <Target className="h-7 w-7" strokeWidth={1.5} />
         </div>
-        <h1 className="mt-5 text-3xl font-extrabold tracking-tight text-white">
+        <h1 className="mt-5 text-3xl font-extrabold tracking-tight text-zinc-900">
           What brings you to Readee?
         </h1>
-        <p className="mt-2 text-sm text-white/75">
+        <p className="mt-2 text-sm text-zinc-600">
           Pick the one that fits best. Readee will lead with the tools
           that match.
         </p>
@@ -418,10 +418,10 @@ function StepIntent({
               <button
                 type="button"
                 onClick={() => setIntent(opt.id)}
-                className={`flex w-full flex-col items-start gap-1 rounded-2xl border-2 p-4 text-left transition ${
+                className={`flex w-full flex-col items-start gap-1 rounded-2xl p-4 text-left transition ring-2 ${
                   active
-                    ? "border-white bg-white shadow-md"
-                    : "border-white/30 bg-white/10 backdrop-blur hover:border-white/60 hover:bg-white/15"
+                    ? "bg-violet-600 ring-violet-600 shadow-md shadow-violet-300/40"
+                    : "bg-transparent ring-violet-200 hover:ring-violet-400 hover:bg-violet-100/50"
                 }`}
               >
                 <div className={`flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br ${opt.gradient} text-white shadow-sm`}>
@@ -431,10 +431,10 @@ function StepIntent({
                     <Sparkles className="h-4 w-4" strokeWidth={1.5} />
                   )}
                 </div>
-                <div className={`mt-2 text-sm font-bold ${active ? "text-violet-800" : "text-white"}`}>
+                <div className={`mt-2 text-sm font-bold ${active ? "text-white" : "text-zinc-900"}`}>
                   {opt.label}
                 </div>
-                <div className={`text-xs ${active ? "text-violet-600" : "text-white/65"}`}>
+                <div className={`text-xs ${active ? "text-violet-100" : "text-zinc-500"}`}>
                   {opt.sub}
                 </div>
               </button>
