@@ -130,6 +130,17 @@ export default function LiveBuddy({
       //    model id. The server tells us which provider so we send
       //    the right shape.
       console.info("[buddy-live] sending setup", { provider, setupModel });
+      // Tune VAD for real classroom/home environments — kitchens,
+      // siblings, hum. Default sensitivity treats almost any sound as
+      // "kid starting to speak" and interrupts Readee mid-reply.
+      const realtimeInputConfig = {
+        automatic_activity_detection: {
+          start_of_speech_sensitivity: "START_SENSITIVITY_LOW",
+          end_of_speech_sensitivity: "END_SENSITIVITY_LOW",
+          prefix_padding_ms: 300,
+          silence_duration_ms: 1200,
+        },
+      };
       const setupPayload =
         provider === "vertex"
           ? {
@@ -139,6 +150,9 @@ export default function LiveBuddy({
                 system_instruction: systemInstruction
                   ? { parts: [{ text: systemInstruction }] }
                   : undefined,
+                realtime_input_config: realtimeInputConfig,
+                input_audio_transcription: {},
+                output_audio_transcription: {},
               },
             }
           : {
@@ -148,6 +162,16 @@ export default function LiveBuddy({
                 systemInstruction: systemInstruction
                   ? { parts: [{ text: systemInstruction }] }
                   : undefined,
+                realtimeInputConfig: {
+                  automaticActivityDetection: {
+                    startOfSpeechSensitivity: "START_SENSITIVITY_LOW",
+                    endOfSpeechSensitivity: "END_SENSITIVITY_LOW",
+                    prefixPaddingMs: 300,
+                    silenceDurationMs: 1200,
+                  },
+                },
+                inputAudioTranscription: {},
+                outputAudioTranscription: {},
               },
             };
       ws.send(JSON.stringify(setupPayload));
@@ -218,17 +242,24 @@ export default function LiveBuddy({
         const pcm16 = floatTo16BitPCM(downsampled);
         const b64 = int16ToBase64(pcm16);
 
-        // If the model is speaking and the kid starts talking again,
-        // stop playback locally — the server-side VAD will also issue
-        // an interruption signal in serverContent.interrupted.
+        // If the model is speaking and the kid clearly starts
+        // talking again, stop playback locally. We use a tighter
+        // threshold than peak amplitude — noise (kitchen chopping,
+        // siblings) hits 0.1+ easily. Voice has sustained energy
+        // across the whole 4096-sample buffer, while a chop is a
+        // single transient. Sample the RMS of the buffer + require
+        // it above 0.05 (sustained voice) AND a peak above 0.25
+        // (real speech volume, not ambient).
         if (playerRef.current?.isPlaying()) {
-          // crude energy threshold for local interruption
+          let sum = 0;
           let max = 0;
           for (let i = 0; i < input.length; i++) {
             const v = Math.abs(input[i]);
+            sum += v * v;
             if (v > max) max = v;
           }
-          if (max > 0.08) {
+          const rms = Math.sqrt(sum / input.length);
+          if (rms > 0.05 && max > 0.25) {
             playerRef.current.stop();
             setStatus("listening");
           }
