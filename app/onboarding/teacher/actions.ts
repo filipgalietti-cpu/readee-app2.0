@@ -8,12 +8,21 @@ type Result =
   | { ok: true; demoClassroomId: string | null }
   | { ok: false; error: string };
 
+const VALID_INTENTS = [
+  "phonics_gaps",
+  "below_grade",
+  "above_grade",
+  "ell",
+  "parent_comm",
+  "exploring",
+] as const;
+
 export async function saveTeacherIdentity(input: {
   displayName: string;
   defaultGrade?: string | null;
   schoolHint?: string | null;
   classSetting?: string | null;
-  intent?: string | null;
+  intents?: string[] | null;
 }): Promise<Result> {
   const supabase = await createClient();
   const {
@@ -39,13 +48,11 @@ export async function saveTeacherIdentity(input: {
   ) {
     return { ok: false, error: "Pick a setting from the list." };
   }
-  const intent = input.intent?.trim() || null;
-  if (
-    intent &&
-    !["phonics_gaps", "below_grade", "above_grade", "ell", "parent_comm", "exploring"].includes(intent)
-  ) {
-    return { ok: false, error: "Pick an option from the list." };
-  }
+  const intents = (input.intents ?? [])
+    .map((i) => i.trim())
+    .filter((i): i is (typeof VALID_INTENTS)[number] => (VALID_INTENTS as readonly string[]).includes(i));
+  // Backward-compat: the old `intent` column holds the primary pick.
+  const primaryIntent = intents[0] ?? null;
 
   const { error } = await supabase
     .from("profiles")
@@ -54,7 +61,8 @@ export async function saveTeacherIdentity(input: {
       default_grade: grade,
       school_hint: input.schoolHint?.trim() || null,
       class_setting: setting,
-      intent,
+      intent: primaryIntent,
+      intents: intents.length > 0 ? intents : null,
       onboarding_complete: true,
       onboarding_completed_at: new Date().toISOString(),
     })
@@ -70,7 +78,7 @@ export async function saveTeacherIdentity(input: {
       teacherId: user.id,
       displayName,
       defaultGrade: grade,
-      intent,
+      intent: primaryIntent,
     });
     if (seed.ok) demoClassroomId = seed.classroomId;
   } catch {

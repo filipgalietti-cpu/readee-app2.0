@@ -14,7 +14,7 @@ export default async function TeacherOnboardingPage() {
 
   const { data: profile } = await supabase
     .from("profiles")
-    .select("display_name, default_grade, school_hint, class_setting, intent, role, email")
+    .select("display_name, default_grade, school_hint, class_setting, intent, intents, role, email")
     .eq("id", user.id)
     .maybeSingle();
   if (!profile) redirect("/login");
@@ -37,7 +37,12 @@ export default async function TeacherOnboardingPage() {
           defaultGrade: (profile as any).default_grade ?? null,
           schoolHint: (profile as any).school_hint ?? "",
           classSetting: (profile as any).class_setting ?? null,
-          intent: (profile as any).intent ?? null,
+          intents:
+            (Array.isArray((profile as any).intents)
+              ? ((profile as any).intents as string[])
+              : (profile as any).intent
+                ? [(profile as any).intent as string]
+                : []) as any,
         }}
       />
     </div>

@@ -9,9 +9,6 @@ import {
   Loader2,
   AlertCircle,
   Sparkles,
-  GraduationCap,
-  Building2,
-  Target,
   Check,
 } from "lucide-react";
 import { saveTeacherIdentity } from "../actions";
@@ -19,6 +16,7 @@ import { saveTeacherIdentity } from "../actions";
 type Grade = "K" | "1st" | "2nd" | "3rd" | "4th" | "Mixed";
 type Setting = "classroom" | "resource_room" | "tutoring" | "homeschool" | "after_school";
 type Intent = "phonics_gaps" | "below_grade" | "above_grade" | "ell" | "parent_comm" | "exploring";
+type Intents = Intent[];
 
 const GRADES: { id: Grade; label: string }[] = [
   { id: "K", label: "Kindergarten" },
@@ -37,13 +35,13 @@ const SETTINGS: { id: Setting; label: string; sub: string }[] = [
   { id: "after_school",  label: "After-school",     sub: "Enrichment / club" },
 ];
 
-const INTENTS: { id: Intent; label: string; sub: string; gradient: string }[] = [
-  { id: "phonics_gaps", label: "Phonics gaps",      sub: "Decoding holes I need to fill",        gradient: "from-violet-500 to-indigo-600" },
-  { id: "below_grade",  label: "Below-grade readers", sub: "Kids reading under their level",      gradient: "from-rose-500 to-pink-600" },
-  { id: "above_grade",  label: "Above-grade readers", sub: "Need more challenging content",       gradient: "from-emerald-500 to-teal-600" },
-  { id: "ell",          label: "ELL students",       sub: "English-language learners in my class", gradient: "from-fuchsia-500 to-pink-600" },
-  { id: "parent_comm",  label: "Parent communication", sub: "Easier ways to share progress",       gradient: "from-amber-500 to-orange-600" },
-  { id: "exploring",    label: "Just exploring",     sub: "Kicking the tires",                    gradient: "from-zinc-500 to-zinc-700" },
+const INTENTS: { id: Intent; label: string; sub: string }[] = [
+  { id: "phonics_gaps", label: "Phonics gaps",         sub: "Decoding holes I need to fill" },
+  { id: "below_grade",  label: "Below-grade readers",  sub: "Kids reading under their level" },
+  { id: "above_grade",  label: "Above-grade readers",  sub: "Need more challenging content" },
+  { id: "ell",          label: "ELL students",         sub: "English-language learners in my class" },
+  { id: "parent_comm",  label: "Parent communication", sub: "Easier ways to share progress" },
+  { id: "exploring",    label: "Just exploring",       sub: "Kicking the tires" },
 ];
 
 export default function TeacherOnboardingWizard({
@@ -56,7 +54,7 @@ export default function TeacherOnboardingWizard({
     defaultGrade: Grade | null;
     schoolHint: string;
     classSetting: Setting | null;
-    intent: Intent | null;
+    intents: Intents | null;
   };
 }) {
   const router = useRouter();
@@ -65,15 +63,21 @@ export default function TeacherOnboardingWizard({
   const [defaultGrade, setDefaultGrade] = useState<Grade | null>(initial.defaultGrade);
   const [schoolHint, setSchoolHint] = useState(initial.schoolHint);
   const [classSetting, setClassSetting] = useState<Setting | null>(initial.classSetting);
-  const [intent, setIntent] = useState<Intent | null>(initial.intent);
+  const [intents, setIntents] = useState<Intents>(initial.intents ?? []);
   const [pending, start] = useTransition();
   const [err, setErr] = useState<string | null>(null);
+
+  function toggleIntent(i: Intent) {
+    setIntents((prev) =>
+      prev.includes(i) ? prev.filter((x) => x !== i) : [...prev, i],
+    );
+  }
 
   const totalSteps = 3;
   const canAdvance =
     step === 0 ? displayName.trim().length > 1
       : step === 1 ? !!defaultGrade && !!classSetting
-      : step === 2 ? !!intent
+      : step === 2 ? intents.length > 0
       : false;
 
   function next() {
@@ -99,7 +103,7 @@ export default function TeacherOnboardingWizard({
         defaultGrade,
         schoolHint,
         classSetting,
-        intent,
+        intents,
       });
       if (!res.ok) {
         setErr(res.error);
@@ -166,7 +170,7 @@ export default function TeacherOnboardingWizard({
                 setClassSetting={setClassSetting}
               />
             )}
-            {step === 2 && <StepIntent intent={intent} setIntent={setIntent} />}
+            {step === 2 && <StepIntent intents={intents} toggleIntent={toggleIntent} />}
           </motion.div>
         </AnimatePresence>
 
@@ -247,10 +251,7 @@ function StepIdentity({
 }) {
   return (
     <div className="mx-auto max-w-md text-center">
-      <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-3xl bg-gradient-to-br from-violet-500 to-indigo-600 text-white shadow-lg shadow-violet-300/40">
-        <GraduationCap className="h-7 w-7" strokeWidth={1.5} />
-      </div>
-      <h1 className="mt-5 text-3xl font-extrabold tracking-tight text-zinc-900">
+      <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900">
         What should kids call you?
       </h1>
       <p className="mt-2 text-sm text-zinc-600">
@@ -299,10 +300,7 @@ function StepClass({
   return (
     <div className="mx-auto max-w-md">
       <div className="text-center">
-        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-3xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white shadow-lg shadow-emerald-300/30">
-          <Building2 className="h-7 w-7" strokeWidth={1.5} />
-        </div>
-        <h1 className="mt-5 text-3xl font-extrabold tracking-tight text-zinc-900">
+        <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900">
           Tell us about your class
         </h1>
         <p className="mt-2 text-sm text-zinc-600">
@@ -389,54 +387,56 @@ function StepClass({
 /* ─── Step 3: Intent ──────────────────────────────── */
 
 function StepIntent({
-  intent,
-  setIntent,
+  intents,
+  toggleIntent,
 }: {
-  intent: Intent | null;
-  setIntent: (i: Intent) => void;
+  intents: Intents;
+  toggleIntent: (i: Intent) => void;
 }) {
   return (
     <div className="mx-auto max-w-xl">
       <div className="text-center">
-        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-3xl bg-gradient-to-br from-pink-500 to-rose-600 text-white shadow-lg shadow-pink-300/30">
-          <Target className="h-7 w-7" strokeWidth={1.5} />
-        </div>
-        <h1 className="mt-5 text-3xl font-extrabold tracking-tight text-zinc-900">
+        <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900">
           What brings you to Readee?
         </h1>
         <p className="mt-2 text-sm text-zinc-600">
-          Pick the one that fits best. Readee will lead with the tools
-          that match.
+          Pick everything that fits. We&apos;ll surface the tools that match.
         </p>
       </div>
 
       <ul className="mt-6 grid gap-2 sm:grid-cols-2">
         {INTENTS.map((opt) => {
-          const active = intent === opt.id;
+          const active = intents.includes(opt.id);
           return (
             <li key={opt.id}>
               <button
                 type="button"
-                onClick={() => setIntent(opt.id)}
-                className={`flex w-full flex-col items-start gap-1 rounded-2xl p-4 text-left transition ${
+                onClick={() => toggleIntent(opt.id)}
+                aria-pressed={active}
+                className={`flex w-full items-start gap-3 rounded-2xl p-4 text-left transition ${
                   active
                     ? "bg-violet-600 shadow-md shadow-violet-300/40"
                     : "hover:bg-violet-100"
                 }`}
               >
-                <div className={`flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br ${opt.gradient} text-white shadow-sm`}>
-                  {active ? (
-                    <Check className="h-4 w-4" strokeWidth={2.5} />
-                  ) : (
-                    <Sparkles className="h-4 w-4" strokeWidth={1.5} />
-                  )}
-                </div>
-                <div className={`mt-2 text-sm font-bold ${active ? "text-white" : "text-zinc-900"}`}>
-                  {opt.label}
-                </div>
-                <div className={`text-xs ${active ? "text-violet-100" : "text-zinc-500"}`}>
-                  {opt.sub}
-                </div>
+                <span
+                  aria-hidden
+                  className={`mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-md transition ${
+                    active
+                      ? "bg-white text-violet-700"
+                      : "bg-violet-100 text-transparent ring-1 ring-violet-300"
+                  }`}
+                >
+                  {active && <Check className="h-3.5 w-3.5" strokeWidth={3} />}
+                </span>
+                <span className="flex-1">
+                  <span className={`block text-sm font-bold ${active ? "text-white" : "text-zinc-900"}`}>
+                    {opt.label}
+                  </span>
+                  <span className={`block text-xs ${active ? "text-violet-100" : "text-zinc-500"}`}>
+                    {opt.sub}
+                  </span>
+                </span>
               </button>
             </li>
           );
