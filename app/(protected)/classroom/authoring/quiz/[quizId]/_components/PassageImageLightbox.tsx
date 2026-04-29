@@ -56,11 +56,11 @@ export default function PassageImageLightbox({
 
   return (
     <>
-      <div className="relative">
+      <div className="relative h-full">
         <button
           type="button"
           onClick={() => setOpen(true)}
-          className="group relative block w-full overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition hover:border-violet-300 hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
+          className="group relative block h-full w-full overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition hover:border-violet-300 hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
           aria-label="Open illustration"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
