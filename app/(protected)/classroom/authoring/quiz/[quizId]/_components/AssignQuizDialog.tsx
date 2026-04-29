@@ -14,6 +14,7 @@ import {
   User,
 } from "lucide-react";
 import { createAssignment } from "@/app/(protected)/classroom/actions";
+import InlineAddStudents from "@/components/classroom/InlineAddStudents";
 
 type Child = { id: string; first_name: string };
 type Classroom = { id: string; name: string; children?: Child[] };
@@ -282,9 +283,16 @@ export default function AssignQuizDialog({
                           {sel.mode === "students" && (
                             <div className="mt-2">
                               {(c.children ?? []).length === 0 ? (
-                                <p className="text-[11px] text-zinc-500">
-                                  No students in this class yet.
-                                </p>
+                                <div className="space-y-2">
+                                  <p className="text-[11px] text-zinc-500">
+                                    No students in this class yet.
+                                  </p>
+                                  <InlineAddStudents
+                                    classrooms={[{ id: c.id, name: c.name }]}
+                                    defaultClassroomId={c.id}
+                                    compact
+                                  />
+                                </div>
                               ) : (
                                 <div className="flex flex-wrap gap-1.5">
                                   {(c.children ?? []).map((kid) => {

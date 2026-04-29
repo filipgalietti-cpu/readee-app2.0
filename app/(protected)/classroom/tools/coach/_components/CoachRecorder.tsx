@@ -13,6 +13,7 @@ import {
   ListChecks,
   User,
 } from "lucide-react";
+import InlineAddStudents from "@/components/classroom/InlineAddStudents";
 
 type Roster = {
   classroomId: string;
@@ -208,8 +209,16 @@ export default function RunningRecordRecorder({ roster }: { roster: Roster }) {
 
   if (allChildren.length === 0) {
     return (
-      <div className="rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800">
-        Add students to a classroom first, then come back to record one.
+      <div className="space-y-3">
+        <div className="rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800">
+          No students in your classroom yet. Add a few here to start recording.
+        </div>
+        <InlineAddStudents
+          classrooms={roster.map((r) => ({
+            id: r.classroomId,
+            name: r.classroomName,
+          }))}
+        />
       </div>
     );
   }
