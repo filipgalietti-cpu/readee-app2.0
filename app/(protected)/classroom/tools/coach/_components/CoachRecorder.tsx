@@ -1133,9 +1133,21 @@ function RosterControls({
       <button
         type="button"
         onClick={() => setOpen(!open)}
-        className="inline-flex items-center gap-1 rounded-full border border-blue-300 bg-white px-2.5 py-1 text-[11px] font-bold text-blue-700 transition hover:bg-blue-50 dark:border-blue-800 dark:bg-slate-900 dark:text-blue-300"
+        className={`inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-[11px] font-bold transition ${
+          open
+            ? "border-zinc-300 bg-zinc-100 text-zinc-700 hover:bg-zinc-200 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
+            : "border-blue-300 bg-white text-blue-700 hover:bg-blue-50 dark:border-blue-800 dark:bg-slate-900 dark:text-blue-300"
+        }`}
+        aria-expanded={open}
       >
-        + Add students
+        {open ? (
+          <>
+            <X className="h-3 w-3" />
+            Close
+          </>
+        ) : (
+          <>+ Add students</>
+        )}
       </button>
       {classroomId && (
         <Link
