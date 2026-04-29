@@ -13,7 +13,9 @@ import {
 } from "lucide-react";
 import { createClassroomStudents } from "@/app/(protected)/classroom/invite-actions";
 
-type Classroom = { id: string; name: string };
+type Classroom = { id: string; name: string; gradeLevel?: string | null };
+
+const GRADES = ["K", "1st", "2nd", "3rd", "4th"] as const;
 
 /**
  * Reusable inline "add students" form. Drop into any empty state where
@@ -45,6 +47,14 @@ export default function InlineAddStudents({
     defaultClassroomId ?? classrooms[0]?.id ?? "",
   );
   const [names, setNames] = useState<string>("");
+  // Grade for the whole batch. Defaults to the picked classroom's
+  // grade_level when known so the common case is one click.
+  const [grade, setGrade] = useState<string>(() => {
+    const start =
+      classrooms.find((c) => c.id === (defaultClassroomId ?? classrooms[0]?.id))
+        ?.gradeLevel ?? "";
+    return start && GRADES.includes(start as any) ? start : "";
+  });
   const [pending, start] = useTransition();
   const [err, setErr] = useState<string | null>(null);
   const [doneMsg, setDoneMsg] = useState<string | null>(null);
@@ -71,7 +81,10 @@ export default function InlineAddStudents({
     start(async () => {
       const res = await createClassroomStudents({
         classroomId,
-        students: list.map((firstName) => ({ firstName })),
+        students: list.map((firstName) => ({
+          firstName,
+          grade: grade || null,
+        })),
         source: "manual",
       });
       if (!res.ok) {
@@ -137,6 +150,23 @@ export default function InlineAddStudents({
           </select>
         </label>
       )}
+
+      <label className="mt-3 block text-xs font-semibold text-zinc-500">
+        Grade (applies to all students in this batch)
+        <select
+          value={grade}
+          onChange={(e) => setGrade(e.target.value)}
+          disabled={pending}
+          className="mt-1 w-full rounded-lg border border-zinc-300 bg-white px-2 py-1.5 text-sm focus:border-blue-500 focus:outline-none disabled:opacity-60"
+        >
+          <option value="">(use classroom default)</option>
+          {GRADES.map((g) => (
+            <option key={g} value={g}>
+              {g}
+            </option>
+          ))}
+        </select>
+      </label>
 
       <label className="mt-3 block text-xs font-semibold text-zinc-500">
         First names (one per line, or comma-separated)

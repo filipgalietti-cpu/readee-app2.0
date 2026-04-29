@@ -16,14 +16,19 @@ export default async function CoachPage() {
   const supabase = await createClient();
   const { data: classroomRows } = await supabase
     .from("classrooms")
-    .select("id, name")
+    .select("id, name, grade_level")
     .eq("teacher_id", profile.id)
     .order("created_at", { ascending: true });
-  const classroomList = (classroomRows ?? []) as { id: string; name: string }[];
+  const classroomList = (classroomRows ?? []) as {
+    id: string;
+    name: string;
+    grade_level: string | null;
+  }[];
 
   let roster: {
     classroomId: string;
     classroomName: string;
+    classroomGrade: string | null;
     children: { id: string; first_name: string; grade: string | null }[];
   }[] = [];
 
@@ -68,6 +73,7 @@ export default async function CoachPage() {
       roster = classroomList.map((c) => ({
         classroomId: c.id,
         classroomName: c.name,
+        classroomGrade: c.grade_level,
         children: (byClass.get(c.id) ?? []).sort((a, b) =>
           a.first_name.localeCompare(b.first_name),
         ),

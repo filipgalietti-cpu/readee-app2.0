@@ -21,6 +21,7 @@ import { createAssignment } from "@/app/(protected)/classroom/actions";
 type Roster = {
   classroomId: string;
   classroomName: string;
+  classroomGrade: string | null;
   children: { id: string; first_name: string; grade: string | null }[];
 }[];
 
@@ -237,6 +238,7 @@ export default function RunningRecordRecorder({ roster }: { roster: Roster }) {
           classrooms={roster.map((r) => ({
             id: r.classroomId,
             name: r.classroomName,
+            gradeLevel: r.classroomGrade,
           }))}
         />
       </div>

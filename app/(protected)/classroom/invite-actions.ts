@@ -172,7 +172,14 @@ export async function revokeInvite(input: { inviteId: string }): Promise<
  */
 export async function createClassroomStudents(input: {
   classroomId: string;
-  students: { firstName: string; lastInitial?: string | null }[];
+  students: {
+    firstName: string;
+    lastInitial?: string | null;
+    /** When set, persisted to children.grade. Falls back to the
+     *  classroom's grade_level when omitted, so kids in "Galietti's
+     *  K class" automatically land at grade "K". */
+    grade?: string | null;
+  }[];
   source?: "manual" | "csv" | "google_classroom";
 }): Promise<
   | { ok: true; created: number; invalid: number }
@@ -193,11 +200,15 @@ export async function createClassroomStudents(input: {
 
   const { data: classroom } = await supabase
     .from("classrooms")
-    .select("id, teacher_id")
+    .select("id, teacher_id, grade_level")
     .eq("id", input.classroomId)
     .eq("teacher_id", profile.id)
     .maybeSingle();
   if (!classroom) return { ok: false, error: "Classroom not found." };
+
+  const classroomGrade = ((classroom as any).grade_level ?? null) as
+    | string
+    | null;
 
   const rows: {
     owner_type: "classroom";
@@ -218,13 +229,14 @@ export async function createClassroomStudents(input: {
     const display = s.lastInitial?.trim()
       ? `${firstName} ${s.lastInitial.trim().charAt(0).toUpperCase()}.`
       : firstName;
+    const gradeRaw = s.grade?.trim() || classroomGrade || null;
     rows.push({
       owner_type: "classroom",
       owner_classroom_id: input.classroomId,
       parent_id: null,
       created_by_teacher: profile.id,
       first_name: display.slice(0, 60),
-      grade: null,
+      grade: gradeRaw,
     });
   }
 
