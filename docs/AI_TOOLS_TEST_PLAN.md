@@ -54,17 +54,27 @@ URL: `https://learn.readee.app/classroom/authoring/wizard`
       `/classroom/authoring/quiz/<id>`
 - [ ] Quiz shows passage, image, and 3 questions
 
-## 3. Coach (teacher voice analyzer)
+## 3. Running Records (was Coach Mode) — ✓ PASS (2026-04-29)
 
 URL: `https://learn.readee.app/classroom/tools/coach`
 
-- [ ] Page loads, sees recorder UI
-- [ ] Pick a child from dropdown (demo students should be there)
-- [ ] Click record, read aloud for ~30s ("The brown dog ran across the
-      field and chased a butterfly. He stopped to drink water from a
-      stream. Then he heard his owner calling his name.")
-- [ ] Click stop
-- [ ] Within 30s, see transcription + WCPM + accuracy + coach feedback
+Repositioned 1:1 vs the original group-diarization concept. Bug-fix
+and feature trail during testing:
+- `01d6083` fixed "Pick a student first" stuck state after inline-add
+- `f61d898` inline add-students collects grade defaulting from classroom
+- `ed2915f` always-on roster controls (+ Add students / Manage roster)
+- `4e903f8` tightened passage generator prompt + stripped markdown
+- `95d1a8a` kid-friendly font with grade-scaled size
+- `d099fa3` "Hand to student" fullscreen mode
+- `ae9b922` auto-fit passage to viewport
+- `025d1b1` dropped redundant grade dropdown from inline add
+- `705bf6b` chevron-rotation toggle on Add students button
+- `1b26457` "How it works" disclosure replaces wall-of-text
+- `ed1faaa` renamed tool to "Running Records / Listen to a student read"
+- `80e16e4` collapsible skill-focus panel
+- `76834f6` AI-suggested practice → Assign-to-kid one-click flow
+- `449bee4` switched from group diarization to solo running record
+- 078 migration: running_records table for longitudinal log
 
 ## 4. Translate
 
