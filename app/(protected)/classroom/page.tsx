@@ -177,8 +177,8 @@ function PremiumToolsRail({ plan }: { plan: string }) {
     },
     {
       id: "coach",
-      title: "Coach Mode",
-      desc: "Record a small group, AI grades each kid",
+      title: "AI Running Record",
+      desc: "Listen to one kid read, get WCPM and miscues",
       minTier: "teacher_solo",
       href: "/classroom/tools/coach",
       Icon: Users,
