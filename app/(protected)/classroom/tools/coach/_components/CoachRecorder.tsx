@@ -46,6 +46,19 @@ export default function RunningRecordRecorder({ roster }: { roster: Roster }) {
   );
 
   const [childId, setChildId] = useState<string>(allChildren[0]?.id ?? "");
+
+  // Auto-pick the first child once the roster populates. Without this,
+  // teachers who add students inline see "Pick a student first" because
+  // useState initialized while allChildren was empty.
+  useEffect(() => {
+    if (!childId && allChildren.length > 0) {
+      setChildId(allChildren[0].id);
+    }
+    // If the currently-selected child was removed, reset to the first.
+    if (childId && !allChildren.some((c) => c.id === childId)) {
+      setChildId(allChildren[0]?.id ?? "");
+    }
+  }, [childId, allChildren]);
   const [passage, setPassage] = useState("");
   const [gradeLevel, setGradeLevel] = useState("2nd");
   const [recording, setRecording] = useState(false);
