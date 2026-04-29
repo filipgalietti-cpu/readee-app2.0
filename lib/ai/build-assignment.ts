@@ -400,12 +400,17 @@ export async function buildAssignment(input: {
   // 5) Matching pairs — saved as a real matching_pairs question kind
   //    (no longer flattened into MCQs). The runner renders a
   //    connect-the-pairs UI for these.
+  //
+  //    `brief.questions.matching` is the number of matching QUESTIONS
+  //    (always 1 in current UX). Pair count is what actually matters
+  //    for the exercise — 2 pairs feels lame, so we ask for 6.
   if (brief.questions.matching > 0) {
+    const PAIRS_PER_MATCHING_QUESTION = 6;
     const matchRes = await generateMatchingPairs({
       teacherId,
       topic: questionContext,
       gradeLevel: brief.gradeLevel,
-      count: brief.questions.matching,
+      count: PAIRS_PER_MATCHING_QUESTION,
     });
     if (!matchRes.ok) {
       if (builtQuestions.length === 0) {

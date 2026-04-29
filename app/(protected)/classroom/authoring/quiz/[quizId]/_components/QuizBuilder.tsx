@@ -40,12 +40,20 @@ export default function QuizBuilder({
   initialDescription,
   initialGradeLevel,
   questions,
+  passageImageUrl,
+  passageAudioUrl,
 }: {
   quizId: string;
   initialTitle: string;
   initialDescription: string;
   initialGradeLevel: string;
   questions: Question[];
+  /** When the wizard generated a passage hero, every question is
+   *  stamped with the same image/audio URL. We suppress those on the
+   *  per-question cards so the teacher isn't seeing the same image
+   *  ten times. Real per-question media (added manually) still shows. */
+  passageImageUrl?: string | null;
+  passageAudioUrl?: string | null;
 }) {
   const router = useRouter();
   const [editing, setEditing] = useState<Question | null>(null);
@@ -93,6 +101,8 @@ export default function QuizBuilder({
                 q={q}
                 index={i}
                 onEdit={() => setEditing(q)}
+                passageImageUrl={passageImageUrl ?? null}
+                passageAudioUrl={passageAudioUrl ?? null}
               />
             ))}
           </ul>
@@ -136,12 +146,22 @@ function QuestionCard({
   q,
   index,
   onEdit,
+  passageImageUrl,
+  passageAudioUrl,
 }: {
   quizId: string;
   q: Question;
   index: number;
   onEdit: () => void;
+  passageImageUrl: string | null;
+  passageAudioUrl: string | null;
 }) {
+  // Suppress per-question media when it's the same URL as the shared
+  // passage hero. The teacher is looking at the hero already; redundant
+  // copies on every card are noise. Real per-question media (manual)
+  // has a different URL and still renders.
+  const showImage = q.imageUrl && q.imageUrl !== passageImageUrl;
+  const showAudio = q.audioUrl && q.audioUrl !== passageAudioUrl;
   return (
     <li className="overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition hover:border-indigo-200 dark:border-slate-800 dark:bg-slate-900/40">
       {/* Header strip */}
@@ -153,7 +173,7 @@ function QuestionCard({
           <span className="rounded-full bg-indigo-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-indigo-700 dark:bg-indigo-950/40 dark:text-indigo-300">
             {kindLabel(q.kind)}
           </span>
-          {q.audioUrl && (
+          {showAudio && (
             <button
               type="button"
               onClick={() => {
@@ -191,10 +211,10 @@ function QuestionCard({
       {/* Body */}
       <div className="px-5 py-4">
         <div className="flex items-start gap-4">
-          {q.imageUrl && (
+          {showImage && (
             // eslint-disable-next-line @next/next/no-img-element
             <img
-              src={q.imageUrl}
+              src={q.imageUrl!}
               alt=""
               className="h-24 w-24 flex-shrink-0 rounded-xl border border-zinc-200 object-cover dark:border-slate-700"
             />

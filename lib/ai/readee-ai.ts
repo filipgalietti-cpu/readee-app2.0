@@ -619,7 +619,7 @@ export async function generateMatchingPairs(input: {
   { ok: true; pairs: GeneratedPair[] } | { ok: false; error: string }
 > {
   if (!input.topic.trim()) return { ok: false, error: "Topic is required." };
-  const count = Math.max(2, Math.min(8, Math.floor(input.count)));
+  const count = Math.max(2, Math.min(12, Math.floor(input.count)));
 
   const safety = assertSafePrompt(input.topic);
   if (!safety.ok) return { ok: false, error: safety.error };

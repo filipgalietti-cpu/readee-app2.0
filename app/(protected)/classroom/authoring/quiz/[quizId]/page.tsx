@@ -85,9 +85,6 @@ export default async function QuizBuilderPage({
           <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
             {q.title}
           </h1>
-          {q.description && (
-            <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">{q.description}</p>
-          )}
           <div className="mt-1 inline-flex items-center gap-1.5 text-xs text-zinc-500 dark:text-slate-400">
             <ListChecks className="h-3 w-3" />
             {questions.length} question{questions.length === 1 ? "" : "s"}
@@ -115,8 +112,12 @@ export default async function QuizBuilderPage({
       {/* Passage hero — image + audio preview when the wizard generated
           them. Shows above the description so the teacher can verify the
           AI's output before assigning. */}
-      {(passageImage || passageAudio) && (
-        <div className="mt-6 grid gap-4 sm:grid-cols-[200px_1fr]">
+      {(passageImage || passageAudio || q.description) && (
+        <div
+          className={`mt-6 grid gap-4 ${
+            passageImage ? "sm:grid-cols-[200px_1fr]" : "sm:grid-cols-1"
+          }`}
+        >
           {passageImage && (
             <div className="relative overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
               <img
@@ -205,6 +206,8 @@ export default async function QuizBuilderPage({
           initialDescription={q.description ?? ""}
           initialGradeLevel={q.grade_level ?? ""}
           questions={questions}
+          passageImageUrl={passageImage}
+          passageAudioUrl={passageAudio}
         />
       </div>
     </div>
