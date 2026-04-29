@@ -92,6 +92,8 @@ export async function POST(req: Request) {
           completed_at: passed ? nowIso : null,
           score_percent: scorePercent,
           carrots_earned: carrotsEarned,
+          // Clear the in-flight snapshot, real submission supersedes it.
+          progress_state: null,
         },
         { onConflict: "assignment_id,child_id" },
       );

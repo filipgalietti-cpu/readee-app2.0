@@ -80,7 +80,12 @@ export default async function CustomQuizPreviewPage({
         </div>
       ) : (
         <div className="mt-6">
-          <PreviewRunner quizId={quizId} questions={questions} />
+          <PreviewRunner
+            quizId={quizId}
+            questions={questions}
+            quizTitle={(quiz as any).title ?? ""}
+            quizDescription={((quiz as any).description ?? "") as string}
+          />
         </div>
       )}
     </div>

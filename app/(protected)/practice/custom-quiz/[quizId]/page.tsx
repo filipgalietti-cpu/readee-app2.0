@@ -118,17 +118,6 @@ export default async function ParentCustomQuizPage({
         </h1>
       </div>
 
-      {q.description && (
-        <article className="mt-6 rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900/40">
-          <div
-            className="whitespace-pre-line text-[18px] leading-[1.7] text-zinc-900 dark:text-slate-100"
-            style={{ fontFamily: 'Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif' }}
-          >
-            {q.description}
-          </div>
-        </article>
-      )}
-
       {questions.length === 0 ? (
         <div className="mt-6 rounded-2xl border-2 border-dashed border-zinc-200 bg-white p-10 text-center dark:border-slate-800 dark:bg-slate-900/40">
           <p className="text-sm text-zinc-500 dark:text-slate-400">
@@ -140,6 +129,10 @@ export default async function ParentCustomQuizPage({
           <StudentCustomQuizRunner
             quizId={quizId}
             questions={questions}
+            passageTitle={q.title}
+            passageBody={(q.description ?? "") as string}
+            passageImage={questions[0]?.imageUrl ?? null}
+            passageAudio={questions[0]?.audioUrl ?? null}
             passThreshold={passThreshold ?? null}
             saveEndpoint="/api/parent/custom-quiz-complete"
             childId={childId}

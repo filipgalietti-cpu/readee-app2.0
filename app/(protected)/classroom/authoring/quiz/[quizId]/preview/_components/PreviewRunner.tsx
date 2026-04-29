@@ -40,9 +40,13 @@ type Question = {
 export default function PreviewRunner({
   quizId,
   questions,
+  quizTitle,
+  quizDescription,
 }: {
   quizId: string;
   questions: Question[];
+  quizTitle: string;
+  quizDescription: string;
 }) {
   const [mode, setMode] = useState<"cards" | "play">("cards");
 
@@ -81,6 +85,10 @@ export default function PreviewRunner({
         <StudentCustomQuizRunner
           quizId={quizId}
           questions={questions}
+          passageTitle={quizTitle}
+          passageBody={quizDescription}
+          passageImage={questions[0]?.imageUrl ?? null}
+          passageAudio={questions[0]?.audioUrl ?? null}
           previewMode
         />
       )}
