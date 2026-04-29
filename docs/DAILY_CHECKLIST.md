@@ -18,7 +18,7 @@
 
 ## P0, ship-blockers (do these first)
 
-- [ ] **Smart-search "No reader selected" bug.**
+- [x] **Smart-search "No reader selected" bug.** Shipped `e9c3b8a`.
   - File: `app/(protected)/classroom/_components/SemanticSearchBar.tsx`
   - Root cause: `buildHref` for `sample_question` writes
     `/practice?focus=${id}` but `/practice` only reads `?standard=`.
@@ -39,13 +39,10 @@
   - [ ] Add Stripe price IDs to Vercel env vars.
   - [ ] Test a full checkout against the staging webhook.
 
-- [ ] **CRON_SECRET in Vercel.** Required for the parent weekly digest
-      and daily question cron jobs to fire. Without it the cron route
-      handlers 401 and silently drop.
-
-- [ ] **DAILY_QUESTION_TEACHER_ID in Vercel.** Cron picks the daily
-      question from this teacher's content library. Without it the
-      `/today` page is empty.
+- [x] **CRON_SECRET in Vercel.** Confirmed live, daily cron is firing
+      (verified via `/today` redirecting to today's slug 2026-04-29).
+- [x] **DAILY_QUESTION_TEACHER_ID in Vercel.** Confirmed live, same
+      verification as CRON_SECRET above.
 
 ## P1, walk the AI tools (~30 min, before you build anything new)
 
