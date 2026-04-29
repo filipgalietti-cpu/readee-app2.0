@@ -115,6 +115,9 @@ export default function CalibratedItemForm({
   const [passageContext, setPassageContext] = useState("");
   const [passageMode, setPassageMode] = useState<"paste" | "generate">("paste");
   const [passageTopic, setPassageTopic] = useState("");
+  const [passageLength, setPassageLength] = useState<"short" | "medium" | "long">(
+    "short",
+  );
   const [genPending, setGenPending] = useState(false);
   const [genErr, setGenErr] = useState<string | null>(null);
   const [item, setItem] = useState<Item | null>(null);
@@ -137,6 +140,7 @@ export default function CalibratedItemForm({
       const res = await aiGeneratePassage({
         topic,
         gradeLevel,
+        lengthLevel: passageLength,
       });
       if (!res.ok) {
         setGenErr(res.error);
@@ -363,6 +367,28 @@ export default function CalibratedItemForm({
                   }
                   className="mt-2 w-full rounded-lg border border-indigo-200 bg-white px-2 py-1.5 text-xs focus:border-indigo-500 focus:outline-none dark:border-indigo-900/40 dark:bg-slate-900"
                 />
+                <div className="mt-2 text-[10px] font-bold uppercase tracking-widest text-indigo-700 dark:text-indigo-300">
+                  Length
+                </div>
+                <div className="mt-1 flex gap-1.5">
+                  {(["short", "medium", "long"] as const).map((tier) => (
+                    <button
+                      key={tier}
+                      type="button"
+                      onClick={() => setPassageLength(tier)}
+                      className={`flex-1 rounded-full border px-2.5 py-1 text-[11px] font-semibold capitalize transition ${
+                        passageLength === tier
+                          ? "border-indigo-500 bg-indigo-600 text-white"
+                          : "border-indigo-200 bg-white text-indigo-700 hover:bg-indigo-100 dark:border-indigo-900/40 dark:bg-slate-900 dark:text-indigo-300"
+                      }`}
+                    >
+                      {tier}
+                    </button>
+                  ))}
+                </div>
+                <div className="mt-1 text-[10px] text-indigo-700 dark:text-indigo-300">
+                  {gradeRange(gradeLevel, passageLength)}
+                </div>
                 <div className="mt-2 flex items-center justify-between gap-2">
                   <button
                     type="button"
@@ -481,4 +507,17 @@ export default function CalibratedItemForm({
 
 function truncate(s: string, max: number): string {
   return s.length <= max ? s : s.slice(0, max - 1) + "…";
+}
+
+function gradeRange(grade: string, tier: "short" | "medium" | "long"): string {
+  // Mirrors lib/ai/readee-ai.ts PASSAGE_SYSTEM word windows so the
+  // teacher sees what they're picking before the AI runs.
+  const ranges: Record<string, Record<string, string>> = {
+    K: { short: "20-35 words", medium: "35-50 words", long: "50-70 words" },
+    "1st": { short: "40-70 words", medium: "70-100 words", long: "100-140 words" },
+    "2nd": { short: "60-100 words", medium: "100-150 words", long: "150-220 words" },
+    "3rd": { short: "100-160 words", medium: "160-240 words", long: "240-340 words" },
+    "4th": { short: "150-220 words", medium: "220-320 words", long: "320-450 words" },
+  };
+  return ranges[grade]?.[tier] ?? "";
 }

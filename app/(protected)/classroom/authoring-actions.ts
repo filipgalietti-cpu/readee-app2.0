@@ -621,6 +621,8 @@ export async function aiGeneratePassage(input: {
   topic: string;
   gradeLevel?: string | null;
   phonicsPattern?: string | null;
+  /** "short" | "medium" | "long". Defaults to "short" downstream. */
+  lengthLevel?: "short" | "medium" | "long" | null;
 }): Promise<
   { ok: true; passage: GeneratedPassage } | { ok: false; error: string }
 > {
@@ -633,6 +635,7 @@ export async function aiGeneratePassage(input: {
     topic: input.topic,
     gradeLevel: input.gradeLevel ?? null,
     phonicsPattern: input.phonicsPattern ?? null,
+    lengthLevel: input.lengthLevel ?? null,
   });
 }
 

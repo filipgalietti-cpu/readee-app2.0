@@ -123,6 +123,9 @@ export default function RunningRecordRecorder({ roster }: { roster: Roster }) {
   const [skillFocus, setSkillFocus] = useState<string>("");
   const [genPending, setGenPending] = useState(false);
   const [genErr, setGenErr] = useState<string | null>(null);
+  const [passageLength, setPassageLength] = useState<"short" | "medium" | "long">(
+    "short",
+  );
 
   const mediaRef = useRef<MediaRecorder | null>(null);
   const chunksRef = useRef<Blob[]>([]);
@@ -151,11 +154,12 @@ export default function RunningRecordRecorder({ roster }: { roster: Roster }) {
     try {
       const res = await aiGeneratePassage({
         // Topic doubles as the kid-readable theme; phonicsPattern is the
-        // skill anchor. The model knows to weave the pattern into a
-        // grade-appropriate ~40-80 word passage.
+        // skill anchor. lengthLevel keeps the passage tight by default
+        // (short tier) so K-1 readers aren't reading 200 words.
         topic: `Practice passage targeting ${skillFocus.trim()}`,
         gradeLevel,
         phonicsPattern: skillFocus.trim(),
+        lengthLevel: passageLength,
       });
       if (!res.ok) {
         setGenErr(res.error);
@@ -471,6 +475,29 @@ export default function RunningRecordRecorder({ roster }: { roster: Roster }) {
                   disabled={recording || pending || genPending}
                   className="mt-2 w-full rounded-lg border border-blue-200 bg-white px-2 py-1.5 text-sm focus:border-blue-500 focus:outline-none disabled:opacity-60 dark:border-blue-900/40 dark:bg-slate-900"
                 />
+                <div className="mt-2 text-[10px] font-bold uppercase tracking-widest text-blue-700 dark:text-blue-300">
+                  Length
+                </div>
+                <div className="mt-1 flex gap-1.5">
+                  {(["short", "medium", "long"] as const).map((tier) => (
+                    <button
+                      key={tier}
+                      type="button"
+                      onClick={() => setPassageLength(tier)}
+                      disabled={recording || pending || genPending}
+                      className={`flex-1 rounded-full border px-2.5 py-1 text-[11px] font-semibold capitalize transition disabled:opacity-60 ${
+                        passageLength === tier
+                          ? "border-blue-500 bg-blue-600 text-white"
+                          : "border-blue-200 bg-white text-blue-700 hover:bg-blue-100 dark:border-blue-900/40 dark:bg-slate-900 dark:text-blue-300"
+                      }`}
+                    >
+                      {tier}
+                    </button>
+                  ))}
+                </div>
+                <div className="mt-1 text-[10px] text-blue-700 dark:text-blue-300">
+                  {gradeLengthRange(gradeLevel, passageLength)}
+                </div>
                 <div className="mt-2 flex items-center justify-between gap-2">
                   <button
                     type="button"
@@ -613,6 +640,22 @@ export default function RunningRecordRecorder({ roster }: { roster: Roster }) {
       )}
     </div>
   );
+}
+
+function gradeLengthRange(
+  grade: string,
+  tier: "short" | "medium" | "long",
+): string {
+  // Mirrors the PASSAGE_SYSTEM word windows from lib/ai/readee-ai.ts
+  // so the teacher sees what they're picking before the AI runs.
+  const ranges: Record<string, Record<string, string>> = {
+    K: { short: "20-35 words", medium: "35-50 words", long: "50-70 words" },
+    "1st": { short: "40-70 words", medium: "70-100 words", long: "100-140 words" },
+    "2nd": { short: "60-100 words", medium: "100-150 words", long: "150-220 words" },
+    "3rd": { short: "100-160 words", medium: "160-240 words", long: "240-340 words" },
+    "4th": { short: "150-220 words", medium: "220-320 words", long: "320-450 words" },
+  };
+  return ranges[grade]?.[tier] ?? "";
 }
 
 function presetSkills(grade: string): string[] {

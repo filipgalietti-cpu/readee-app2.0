@@ -337,12 +337,15 @@ const MATCHING_SCHEMA = {
 
 const PASSAGE_SYSTEM = `You write short decodable reading passages for K-4 elementary students aligned to the Science of Reading.
 
-LENGTH BY GRADE (strict):
-- K = 30-60 words. Sentences 3-7 words. No more than 8 sentences total.
-- 1st = 60-120 words. Sentences 4-10 words.
-- 2nd = 120-200 words. Sentences 5-14 words.
-- 3rd = 200-300 words. Multi-clause OK.
-- 4th = 300-400 words.
+LENGTH (strict, depends on grade and the requested length tier):
+The user prompt will name a tier — "short", "medium", or "long". Match the target window. Default tier is "short" if none is specified.
+- K        short  20-35 words   medium 35-50 words   long 50-70 words. Sentences 3-7 words.
+- 1st      short  40-70 words   medium 70-100 words  long 100-140 words. Sentences 4-10 words.
+- 2nd      short  60-100 words  medium 100-150 words long 150-220 words. Sentences 5-14 words.
+- 3rd      short  100-160 words medium 160-240 words long 240-340 words. Multi-clause OK.
+- 4th      short  150-220 words medium 220-320 words long 320-450 words.
+
+NEVER exceed the upper bound of the requested tier. If you'd run long, cut a paragraph or simplify, do not go over.
 
 VOCABULARY BY GRADE (strict):
 - K: CVC words + top-100 sight words ONLY. No multisyllabic words unless they are explicit sight words ("mother", "little", "into"). Avoid: "garden", "hopeless", "carefully", "eagerly", "beautiful", "replied", "dirty". If a kid in October of K can't decode it, do not use it.
@@ -1441,11 +1444,16 @@ export async function generateSpeech(input: {
 
 // ═══ Passage writer ═════════════════════════════════════════════════
 
+export type PassageLength = "short" | "medium" | "long";
+
 export async function generatePassage(input: {
   teacherId: string;
   topic: string;
   gradeLevel?: string | null;
   phonicsPattern?: string | null;
+  /** Length tier within the grade band. Defaults to "short" so 2nd
+   *  graders aren't reading a 200-word essay by accident. */
+  lengthLevel?: PassageLength | null;
 }): Promise<{ ok: true; passage: GeneratedPassage } | { ok: false; error: string }> {
   if (!input.topic.trim()) return { ok: false, error: "Topic is required." };
 
@@ -1476,10 +1484,12 @@ export async function generatePassage(input: {
   const gradeLine = input.gradeLevel
     ? `Grade level: ${input.gradeLevel}.`
     : "Grade level: 2nd.";
+  const lengthTier: PassageLength = input.lengthLevel ?? "short";
+  const lengthLine = `Length tier: ${lengthTier}. Stay strictly in the word count window for this tier per the system rules. Never exceed the upper bound.`;
   const phonicsLine = input.phonicsPattern?.trim()
     ? `Phonics focus: weave ${input.phonicsPattern.trim()} into the passage so the student gets practice. Plain prose only — NO bold, NO asterisks, NO markdown of any kind.`
     : "";
-  const userPrompt = [gradeLine, phonicsLine, "", `Topic: ${input.topic.trim()}`, "", "Write the passage per the schema. Also suggest 3 short comprehension questions (not MCQs — just prompt strings) in suggested_questions."]
+  const userPrompt = [gradeLine, lengthLine, phonicsLine, "", `Topic: ${input.topic.trim()}`, "", "Write the passage per the schema. Also suggest 3 short comprehension questions (not MCQs — just prompt strings) in suggested_questions."]
     .filter(Boolean)
     .join("\n");
 
