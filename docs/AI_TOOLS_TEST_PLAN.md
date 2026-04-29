@@ -76,17 +76,22 @@ and feature trail during testing:
 - `449bee4` switched from group diarization to solo running record
 - 078 migration: running_records table for longitudinal log
 
-## 4. Translate
+## 4. Translate — ✓ PASS / pivot tabled (2026-04-29)
 
 URL: `https://learn.readee.app/classroom/tools/translate`
 
-- [ ] Page loads
-- [ ] Paste "The cat sat on the mat. It was warm and soft."
-- [ ] Pick Spanish from dropdown
-- [ ] Click Translate
-- [ ] Within 5s, Spanish translation appears
-- [ ] Translate it again to confirm cache hit ("cached · free" badge
-      should appear, no credit charge)
+Standalone Translate playground works (Gemini text + cache). The
+in-reader L1 toggle we briefly built was rolled back same-day, see
+`docs/MULTILINGUAL_PARENT_COMMS.md`. Readee's curriculum is English
+K-4 reading comprehension; multilingual stays adult-facing only and
+the parent-comm features are queued for later.
+
+Trail:
+- `6fc1ec0` shipped the L1 toggle on the kid's reader
+- `3cdf6e0` parent-side wiring
+- (this revert) toggle removed; substrate (home_language column,
+  translate cache, translate-passage API) retained for the
+  deferred parent-comm features.
 
 ## 5. Writing rubric
 
