@@ -91,7 +91,7 @@ export default async function CoachPage() {
       </div>
       <div className="mt-1 flex flex-wrap items-baseline gap-3">
         <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
-          1:1 reading assessment in 90 seconds
+          Score one read-aloud
         </h1>
         <details className="group">
           <summary className="inline-flex cursor-pointer list-none items-center gap-1 rounded-full border border-zinc-200 bg-white px-2.5 py-1 text-[11px] font-semibold text-zinc-500 transition hover:border-blue-300 hover:text-blue-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400 [&::-webkit-details-marker]:hidden">
