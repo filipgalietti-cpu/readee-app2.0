@@ -179,6 +179,9 @@ export async function createClassroomStudents(input: {
      *  classroom's grade_level when omitted, so kids in "Galietti's
      *  K class" automatically land at grade "K". */
     grade?: string | null;
+    /** ISO-style home language code (es/zh/vi/...). Drives auto-
+     *  translation of parent comms and the in-reader L1 toggle. */
+    homeLanguage?: string | null;
   }[];
   source?: "manual" | "csv" | "google_classroom";
 }): Promise<
@@ -217,6 +220,7 @@ export async function createClassroomStudents(input: {
     created_by_teacher: string;
     first_name: string;
     grade: string | null;
+    home_language: string | null;
   }[] = [];
   let invalid = 0;
 
@@ -230,6 +234,7 @@ export async function createClassroomStudents(input: {
       ? `${firstName} ${s.lastInitial.trim().charAt(0).toUpperCase()}.`
       : firstName;
     const gradeRaw = s.grade?.trim() || classroomGrade || null;
+    const homeLang = s.homeLanguage?.trim() || null;
     rows.push({
       owner_type: "classroom",
       owner_classroom_id: input.classroomId,
@@ -237,6 +242,7 @@ export async function createClassroomStudents(input: {
       created_by_teacher: profile.id,
       first_name: display.slice(0, 60),
       grade: gradeRaw,
+      home_language: homeLang,
     });
   }
 

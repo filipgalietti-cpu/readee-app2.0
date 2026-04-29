@@ -31,6 +31,15 @@ export default async function StudentQuizPage({
     .limit(1)
     .maybeSingle();
 
+  // The kid's home language drives the in-reader L1 toggle. NULL
+  // means English-only / unknown, no toggle shown.
+  const { data: childRow } = await admin
+    .from("children")
+    .select("home_language")
+    .eq("id", session.childId)
+    .maybeSingle();
+  const homeLanguage = ((childRow as any)?.home_language ?? null) as string | null;
+
   if (!assignmentRow) notFound();
   const targetedIds = (assignmentRow as any).assigned_child_ids as string[] | null;
   if (targetedIds && targetedIds.length > 0 && !targetedIds.includes(session.childId)) {
@@ -145,6 +154,7 @@ export default async function StudentQuizPage({
             previouslyCompleted={hasCompleted}
             previousScore={submission?.score_percent ?? null}
             savedProgress={submission?.progress_state ?? null}
+            homeLanguage={homeLanguage}
           />
         </div>
       )}

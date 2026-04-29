@@ -14,6 +14,7 @@ import {
   Play,
   BookOpen,
   RotateCcw,
+  Languages,
 } from "lucide-react";
 
 type QuestionKind =
@@ -75,6 +76,7 @@ export default function StudentCustomQuizRunner({
   previouslyCompleted = false,
   previousScore = null,
   savedProgress = null,
+  homeLanguage = null,
 }: {
   quizId: string;
   questions: Question[];
@@ -91,6 +93,10 @@ export default function StudentCustomQuizRunner({
   previouslyCompleted?: boolean;
   previousScore?: number | null;
   savedProgress?: SavedProgress;
+  /** Two-letter ISO code (es/zh/vi/...). When set, the intro screen
+   *  surfaces a "Show in [native name]" chip that translates the
+   *  passage on the fly via cached translation API. */
+  homeLanguage?: string | null;
 }) {
   const router = useRouter();
   const total = questions.length;
@@ -305,12 +311,10 @@ export default function StudentCustomQuizRunner({
             />
           )}
           {passageBody && (
-            <article
-              className="text-[18px] leading-[1.8] text-zinc-900 dark:text-slate-100"
-              style={{ fontFamily: FRIENDLY_FONT, letterSpacing: "0.005em" }}
-            >
-              <div className="whitespace-pre-line">{passageBody}</div>
-            </article>
+            <PassageWithL1Toggle
+              passage={passageBody}
+              homeLanguage={homeLanguage}
+            />
           )}
           {passageAudio && (
             <div className="mt-4">
@@ -560,6 +564,124 @@ export default function StudentCustomQuizRunner({
 function clamp(n: number, min: number, max: number): number {
   if (Number.isNaN(n)) return min;
   return Math.max(min, Math.min(max, n));
+}
+
+const LANGUAGE_NATIVE_NAMES: Record<string, string> = {
+  es: "Español",
+  zh: "中文",
+  vi: "Tiếng Việt",
+  ar: "العربية",
+  fr: "Français",
+  ht: "Kreyòl Ayisyen",
+  pt: "Português",
+  tl: "Tagalog",
+  ru: "Русский",
+  ko: "한국어",
+};
+
+/**
+ * Passage display with a small "Show in [native name]" chip when the
+ * student has a home_language set. Tap once → translates and shows
+ * side-by-side. Tap again → English-only. The translation hits a
+ * server-side cache so the second tap (or the next student in the
+ * same class) is instant + free.
+ */
+function PassageWithL1Toggle({
+  passage,
+  homeLanguage,
+}: {
+  passage: string;
+  homeLanguage: string | null;
+}) {
+  const [translated, setTranslated] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [err, setErr] = useState<string | null>(null);
+  const showToggle =
+    !!homeLanguage &&
+    homeLanguage !== "en" &&
+    !!LANGUAGE_NATIVE_NAMES[homeLanguage];
+  const nativeName = homeLanguage ? LANGUAGE_NATIVE_NAMES[homeLanguage] : null;
+  const isRtl = homeLanguage === "ar";
+
+  async function toggle() {
+    if (!showToggle || !homeLanguage) return;
+    if (translated) {
+      setTranslated(null);
+      return;
+    }
+    setLoading(true);
+    setErr(null);
+    try {
+      const res = await fetch("/api/student/translate-passage", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ text: passage, targetLang: homeLanguage }),
+      });
+      const json = await res.json();
+      if (!json.ok) {
+        setErr(json.error ?? "Could not translate.");
+      } else {
+        setTranslated(json.translated as string);
+      }
+    } catch (e: any) {
+      setErr(e?.message ?? "Could not translate.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  return (
+    <div>
+      {showToggle && (
+        <button
+          type="button"
+          onClick={toggle}
+          disabled={loading}
+          className={`mb-3 inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-bold transition disabled:opacity-60 ${
+            translated
+              ? "border-violet-500 bg-violet-600 text-white"
+              : "border-violet-300 bg-white text-violet-700 hover:bg-violet-50 dark:border-violet-800 dark:bg-slate-900 dark:text-violet-300"
+          }`}
+        >
+          {loading ? (
+            <Loader2 className="h-3 w-3 animate-spin" />
+          ) : (
+            <Languages className="h-3 w-3" />
+          )}
+          {translated ? `Hide ${nativeName}` : `Show in ${nativeName}`}
+        </button>
+      )}
+      {err && (
+        <p className="mb-2 rounded-lg bg-red-50 px-3 py-1 text-xs font-semibold text-red-700">
+          {err}
+        </p>
+      )}
+      <div
+        className={
+          translated ? "grid gap-4 md:grid-cols-2" : "grid grid-cols-1"
+        }
+      >
+        <article
+          className="text-[18px] leading-[1.8] text-zinc-900 dark:text-slate-100"
+          style={{ fontFamily: FRIENDLY_FONT, letterSpacing: "0.005em" }}
+        >
+          <div className="whitespace-pre-line">{passage}</div>
+        </article>
+        {translated && (
+          <article
+            dir={isRtl ? "rtl" : "ltr"}
+            className="rounded-2xl bg-violet-50 p-3 text-[18px] leading-[1.8] text-zinc-900 dark:bg-violet-950/30 dark:text-slate-100"
+            style={{ fontFamily: FRIENDLY_FONT, letterSpacing: "0.005em" }}
+          >
+            <div className="mb-1 text-[10px] font-bold uppercase tracking-widest text-violet-700 dark:text-violet-300">
+              {nativeName}
+            </div>
+            <div className="whitespace-pre-line">{translated}</div>
+          </article>
+        )}
+      </div>
+    </div>
+  );
 }
 
 function PassageDrawer({

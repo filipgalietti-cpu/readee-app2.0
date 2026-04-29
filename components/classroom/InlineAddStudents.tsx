@@ -12,6 +12,8 @@ import {
   X,
 } from "lucide-react";
 import { createClassroomStudents } from "@/app/(protected)/classroom/invite-actions";
+import { SUPPORTED_LANGUAGES } from "@/lib/ai/translate";
+import { Languages } from "lucide-react";
 
 type Classroom = { id: string; name: string; gradeLevel?: string | null };
 
@@ -45,6 +47,11 @@ export default function InlineAddStudents({
     defaultClassroomId ?? classrooms[0]?.id ?? "",
   );
   const [names, setNames] = useState<string>("");
+  // Optional home language for the batch — drives auto-translation
+  // of parent comms and the in-reader L1 toggle. Default empty
+  // (English / unknown), teacher picks if the family speaks another
+  // language at home.
+  const [homeLanguage, setHomeLanguage] = useState<string>("");
   // Inherited grade for display only — the create action defaults
   // children.grade to the picked classroom's grade_level on the
   // server, so the form doesn't need to ask. Per-student grade
@@ -81,7 +88,10 @@ export default function InlineAddStudents({
         // classroom's grade_level when grade is omitted, so kids
         // inherit the right grade silently. Per-student overrides
         // belong in the full roster UI.
-        students: list.map((firstName) => ({ firstName })),
+        students: list.map((firstName) => ({
+          firstName,
+          homeLanguage: homeLanguage || null,
+        })),
         source: "manual",
       });
       if (!res.ok) {
@@ -163,6 +173,30 @@ export default function InlineAddStudents({
         Grade {inheritedGrade ? <span className="font-bold">{inheritedGrade}</span> : <span className="italic">none set on classroom</span>} will apply, change per-student in
         Manage roster if needed.
       </p>
+
+      <label className="mt-3 block text-xs font-semibold text-zinc-500">
+        <span className="flex items-center gap-1.5">
+          <Languages className="h-3 w-3" />
+          Home language (optional)
+        </span>
+        <select
+          value={homeLanguage}
+          onChange={(e) => setHomeLanguage(e.target.value)}
+          disabled={pending}
+          className="mt-1 w-full rounded-lg border border-zinc-300 bg-white px-2 py-1.5 text-sm focus:border-blue-500 focus:outline-none disabled:opacity-60"
+        >
+          <option value="">English / unknown</option>
+          {SUPPORTED_LANGUAGES.map((l) => (
+            <option key={l.code} value={l.code}>
+              {l.name} ({l.nativeName})
+            </option>
+          ))}
+        </select>
+        <span className="mt-1 block text-[10px] font-normal text-zinc-400">
+          Used for parent letters in their L1 and the &quot;Show in
+          home language&quot; toggle on student readers.
+        </span>
+      </label>
 
       {err && (
         <div className="mt-3 flex items-start gap-1.5 rounded-lg bg-red-50 px-2 py-1.5 text-xs font-semibold text-red-700">

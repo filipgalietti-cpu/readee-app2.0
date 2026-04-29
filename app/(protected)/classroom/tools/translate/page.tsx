@@ -23,14 +23,37 @@ export default async function TranslateToolPage() {
             How it works
           </summary>
           <p className="mt-2 max-w-2xl rounded-2xl border border-fuchsia-200 bg-fuchsia-50 px-4 py-3 text-sm text-zinc-700 dark:border-fuchsia-900/40 dark:bg-fuchsia-950/30 dark:text-slate-300">
-            Paste any text, Readee translates into any of 10 languages.
-            Cached, the second teacher who asks for the same translation
-            gets it instantly and free.
+            Sandbox for one-off translations. The real win is automatic,
+            set a student&apos;s home language on their profile and Readee
+            translates parent letters, weekly digests, and in-reader
+            passages for that family without a copy-paste.
           </p>
         </details>
       </div>
       <div className="mt-6">
         <TranslatePlayground />
+      </div>
+      <div className="mt-8 rounded-3xl border border-fuchsia-200 bg-fuchsia-50 p-5 text-sm dark:border-fuchsia-900/40 dark:bg-fuchsia-950/30">
+        <div className="text-[10px] font-bold uppercase tracking-widest text-fuchsia-700 dark:text-fuchsia-300">
+          Multilingual Family Mode
+        </div>
+        <p className="mt-1 font-semibold text-zinc-900 dark:text-white">
+          Set <span className="rounded bg-white px-1.5 dark:bg-slate-900">Home language</span> on a student&apos;s profile and the rest is automatic.
+        </p>
+        <ul className="mt-2 list-disc space-y-1 pl-5 text-zinc-700 dark:text-slate-300">
+          <li>
+            Student opens an assignment, taps &quot;Show in [Spanish]&quot;,
+            sees passage side-by-side without leaving the reader.
+          </li>
+          <li>
+            Parent letters and weekly digests auto-translate per recipient,
+            one click sends 28 families their L1.
+          </li>
+          <li>
+            Translations cached, the second family with the same L1 gets
+            it free and instantly.
+          </li>
+        </ul>
       </div>
     </div>
   );
