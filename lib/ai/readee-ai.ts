@@ -389,9 +389,19 @@ Generate exactly ${count} multiple-choice question${count === 1 ? "" : "s"} foll
     const questions: GeneratedMCQ[] = [];
     for (const q of raw) {
       const prompt = (q.prompt ?? "").trim();
-      const choices = Array.isArray(q.choices)
+      const rawChoices = Array.isArray(q.choices)
         ? q.choices.map((c) => String(c).trim()).filter(Boolean)
         : [];
+      // Dedup choices, the model occasionally returns the correct answer
+      // twice. Duplicates also break React keys downstream.
+      const seen = new Set<string>();
+      const choices: string[] = [];
+      for (const c of rawChoices) {
+        const k = c.toLowerCase();
+        if (seen.has(k)) continue;
+        seen.add(k);
+        choices.push(c);
+      }
       const correct = (q.correct ?? "").trim();
       const hint = q.hint ? String(q.hint).trim() : null;
       if (!prompt || choices.length < 2 || !choices.includes(correct)) continue;

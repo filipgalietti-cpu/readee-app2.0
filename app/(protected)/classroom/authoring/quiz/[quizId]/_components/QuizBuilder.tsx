@@ -237,11 +237,11 @@ function renderChoicesAsCards(q: Question): React.ReactNode {
     const correct = String(q.correct);
     return (
       <div className="grid gap-2 sm:grid-cols-2">
-        {q.choices.map((c) => {
+        {q.choices.map((c, i) => {
           const isCorrect = c === correct;
           return (
             <div
-              key={c}
+              key={`${i}-${c}`}
               className={`flex items-center gap-2 rounded-xl border px-3 py-2 text-sm ${
                 isCorrect
                   ? "border-emerald-300 bg-emerald-50 font-semibold text-emerald-900 dark:border-emerald-700/60 dark:bg-emerald-950/30 dark:text-emerald-200"
