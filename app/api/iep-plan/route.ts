@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { checkTeacherTier } from "@/lib/plan/teacher-gate";
-import { draftIepProgressNote } from "@/lib/ai/build-iep-note";
+import { draftInterventionPlan } from "@/lib/ai/build-intervention-plan";
 import { loadIepDataBundle } from "@/lib/ai/iep-data";
 
 export const runtime = "nodejs";
@@ -24,7 +24,6 @@ export async function POST(req: Request) {
   const childId = String(body.childId ?? "");
   const goalIdRaw = typeof body.goalId === "string" ? body.goalId : "";
   const annualGoalRaw = String(body.annualGoal ?? "").slice(0, 4000);
-  const reportingPeriod = String(body.reportingPeriod ?? "Quarter").slice(0, 80);
   const persist = body.persist !== false;
   if (!childId) {
     return NextResponse.json({ ok: false, error: "childId required." }, { status: 400 });
@@ -69,7 +68,24 @@ export async function POST(req: Request) {
   }
   const b = data.bundle;
 
-  const res = await draftIepProgressNote({
+  // Best-recent progress note summary feeds the planner so it doesn't
+  // re-diagnose the same gap. If none exists, the planner falls back
+  // to the raw data.
+  let recentNoteSummary: string | null = null;
+  const { data: recentNote } = await supabase
+    .from("iep_progress_notes")
+    .select("one_line_summary, plop, progress_status")
+    .eq("child_id", childId)
+    .order("created_at", { ascending: false })
+    .limit(1)
+    .maybeSingle();
+  if (recentNote) {
+    const r = recentNote as any;
+    const s = r.one_line_summary || r.plop;
+    if (s) recentNoteSummary = `Status: ${r.progress_status}. ${s}`;
+  }
+
+  const res = await draftInterventionPlan({
     teacherId: profileId,
     studentFirstName: b.child.firstName,
     gradeLevel: b.child.readingLevel ?? "K-4",
@@ -77,11 +93,11 @@ export async function POST(req: Request) {
     goalBaseline: goal?.baseline ?? null,
     goalTargetCriterion: goal?.targetCriterion ?? null,
     goalTargetDate: goal?.targetDate ?? null,
-    reportingPeriod,
     metricsBlock: b.metricsBlock,
     baselineVsCurrent: b.baselineVsCurrent,
     recentMastery: b.recentMastery,
     runningRecords: b.runningRecords,
+    recentNoteSummary,
   });
   if (!res.ok) {
     return NextResponse.json({ ok: false, error: res.error }, { status: 400 });
@@ -89,37 +105,23 @@ export async function POST(req: Request) {
 
   let persistedId: string | null = null;
   if (persist) {
+    const today = new Date();
+    const twoWeeksOut = new Date(today.getTime() + 14 * 86400_000);
     const { data: inserted, error: insErr } = await supabase
-      .from("iep_progress_notes")
+      .from("intervention_plans")
       .insert({
         child_id: childId,
         teacher_id: profileId,
         goal_id: goal?.id ?? null,
-        reporting_period: reportingPeriod,
-        progress_status: res.note.progressStatus,
-        plop: res.note.plop,
-        evidence: res.note.evidence,
-        progress_toward_goal: res.note.progressTowardGoal,
-        recommended_supports: res.note.recommendedSupports,
-        one_line_summary: res.note.oneLineSummary,
-        input_snapshot: {
-          annualGoal,
-          metricsBlock: b.metricsBlock,
-          baselineVsCurrent: b.baselineVsCurrent,
-          recentMastery: b.recentMastery,
-          runningRecords: b.runningRecords,
-          goal,
-        },
+        plan_json: res.plan,
+        status: "draft",
+        start_date: today.toISOString().slice(0, 10),
+        end_date: twoWeeksOut.toISOString().slice(0, 10),
       })
       .select("id")
       .single();
     if (!insErr && inserted) persistedId = (inserted as any).id;
   }
 
-  return NextResponse.json({
-    ok: true,
-    note: res.note,
-    persistedId,
-    inputs: { hasRunningRecords: !!b.runningRecords, hasTrend: !!b.baselineVsCurrent },
-  });
+  return NextResponse.json({ ok: true, plan: res.plan, persistedId });
 }
