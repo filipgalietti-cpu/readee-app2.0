@@ -866,7 +866,12 @@ const IMAGE_STYLE_PREFIX =
   // 2-panel comic strip or grid when the prompt has any narrative shape
   // (e.g. "boy learns about X, then plays Y"). Be explicit so the model
   // produces one single scene that fills the frame.
-  "Render as ONE single unified illustration, square aspect ratio. Do NOT produce a comic strip, panels, grid, split-screen, before/after, multi-frame layout, or sub-images. Only one scene. ";
+  "Render as ONE single unified illustration, square aspect ratio. Do NOT produce a comic strip, panels, grid, split-screen, before/after, multi-frame layout, or sub-images. Only one scene. " +
+  // Anti-classroom-default guardrail. Gemini Flash Image associates
+  // "educational" prompts with generic school-classroom scenes and will
+  // return a teacher-with-kids classroom even when the prompt is about
+  // hockey, the ocean, dinosaurs, etc. Force literal scene fidelity.
+  "Match the EXACT setting, characters, and action described in the user prompt below. Do NOT default to a school classroom or teacher-with-students scene unless the prompt explicitly asks for one. ";
 
 export type ImageQuality = "standard" | "ultra";
 

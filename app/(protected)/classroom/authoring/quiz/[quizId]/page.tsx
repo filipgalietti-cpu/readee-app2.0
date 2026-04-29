@@ -176,14 +176,20 @@ export default async function QuizBuilderPage({
             passageImage ? "sm:grid-cols-[200px_1fr]" : "sm:grid-cols-1"
           }`}
         >
-          {passageImage && <PassageImageLightbox src={passageImage} />}
+          {passageImage && (
+            <PassageImageLightbox src={passageImage} quizId={quizId} />
+          )}
           <div className="flex flex-col gap-2">
             {q.description && (
               <article
-                className="rounded-2xl border border-zinc-200 bg-white p-4 text-[15px] leading-[1.7] text-zinc-900 shadow-sm dark:border-slate-800 dark:bg-slate-900 dark:text-slate-100"
+                className="rounded-2xl border border-zinc-200 bg-white p-4 text-[16px] leading-[1.75] text-zinc-900 shadow-sm dark:border-slate-800 dark:bg-slate-900 dark:text-slate-100"
                 style={{
+                  // Kid-friendly rounded sans stack. Comic Neue / Comic Sans
+                  // are the friendly defaults; Quicksand and Nunito are warm
+                  // fallbacks; system sans last.
                   fontFamily:
-                    'Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif',
+                    '"Comic Neue", "Comic Sans MS", Quicksand, Nunito, ui-rounded, system-ui, -apple-system, sans-serif',
+                  letterSpacing: "0.005em",
                 }}
               >
                 <div className="whitespace-pre-line">{q.description}</div>

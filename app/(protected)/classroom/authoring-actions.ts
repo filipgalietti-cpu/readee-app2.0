@@ -388,6 +388,113 @@ export async function aiGenerateImage(input: { prompt: string }): Promise<
   return { ok: true, imageUrl: res.imageUrl };
 }
 
+/**
+ * Regenerate the passage hero illustration for a quiz the teacher
+ * already built. Reuses the stored passage (custom_quizzes.description)
+ * to write a fresh image brief, calls the image model, and updates
+ * every question that was sharing the previous hero URL.
+ *
+ * Use case: the teacher's first AI build came back with a weird image
+ * and they want to reroll without rebuilding the whole quiz.
+ */
+export async function aiRegeneratePassageImage(input: {
+  quizId: string;
+}): Promise<
+  | { ok: true; imageUrl: string; updatedCount: number }
+  | { ok: false; error: string }
+> {
+  const profile = await requireProfile();
+  if (profile.role !== "educator") {
+    return { ok: false, error: "Only educators can use Readee.ai." };
+  }
+
+  const supabase = await createClient();
+  const { data: quizRow } = await supabase
+    .from("custom_quizzes")
+    .select("id, title, description")
+    .eq("id", input.quizId)
+    .eq("teacher_id", profile.id)
+    .maybeSingle();
+  if (!quizRow) return { ok: false, error: "Quiz not found." };
+  const quiz = quizRow as { id: string; title: string; description: string | null };
+  if (!quiz.description?.trim()) {
+    return { ok: false, error: "This quiz has no passage to illustrate." };
+  }
+
+  // The description is stored as `${title}\n\n${passage}` — strip the
+  // title prefix so the brief generator sees just the passage body.
+  const desc = quiz.description.trim();
+  const passageBody = desc.startsWith(quiz.title)
+    ? desc.slice(quiz.title.length).trim()
+    : desc;
+
+  const { generateImageBrief, generateImage } = await import(
+    "@/lib/ai/readee-ai"
+  );
+  const briefRes = await generateImageBrief({
+    teacherId: profile.id,
+    passageTitle: quiz.title,
+    passageBody,
+  });
+  let imagePrompt = `Illustration for a children's reading passage titled "${quiz.title}".`;
+  if (briefRes.ok) imagePrompt = briefRes.brief;
+  const imgRes = await generateImage({
+    teacherId: profile.id,
+    prompt: imagePrompt,
+  });
+  if (!imgRes.ok) return { ok: false, error: imgRes.error };
+
+  // Find the previous hero URL by looking at the first question's
+  // image_url, then update every question on this quiz that points at
+  // it. Per-question manual images (different URLs) are left alone.
+  const { data: junction } = await supabase
+    .from("custom_quiz_questions")
+    .select("position, question_id")
+    .eq("quiz_id", input.quizId)
+    .order("position", { ascending: true });
+  const ordered = (junction ?? []) as { position: number; question_id: string }[];
+  if (ordered.length === 0) {
+    return { ok: true, imageUrl: imgRes.imageUrl, updatedCount: 0 };
+  }
+  const firstId = ordered[0].question_id;
+  const { data: firstQ } = await supabase
+    .from("custom_questions")
+    .select("image_url")
+    .eq("id", firstId)
+    .maybeSingle();
+  const oldUrl = (firstQ as any)?.image_url as string | null;
+
+  const idsToUpdate: string[] = [];
+  if (oldUrl) {
+    const { data: matching } = await supabase
+      .from("custom_questions")
+      .select("id")
+      .in("id", ordered.map((j) => j.question_id))
+      .eq("image_url", oldUrl);
+    for (const m of (matching ?? []) as { id: string }[]) {
+      idsToUpdate.push(m.id);
+    }
+  } else {
+    // No previous image — just stamp the first question.
+    idsToUpdate.push(firstId);
+  }
+
+  const { error: updateErr } = await supabase
+    .from("custom_questions")
+    .update({ image_url: imgRes.imageUrl })
+    .in("id", idsToUpdate);
+  if (updateErr) {
+    return { ok: false, error: `Could not save image: ${updateErr.message}` };
+  }
+
+  revalidatePath(`/classroom/authoring/quiz/${input.quizId}`);
+  return {
+    ok: true,
+    imageUrl: imgRes.imageUrl,
+    updatedCount: idsToUpdate.length,
+  };
+}
+
 export async function aiBuildAssignment(input: {
   brief: import("@/lib/ai/build-assignment").AssignmentBrief;
 }): Promise<
