@@ -17,15 +17,17 @@ export default async function IepNotePage() {
   const classroomIds = ((classrooms ?? []) as { id: string }[]).map((c) => c.id);
   const { data: enrollments } = classroomIds.length
     ? await supabase
-        .from("classroom_students")
-        .select("child_id, children(id, name)")
+        .from("classroom_memberships")
+        .select("child_id, children(id, first_name)")
         .in("classroom_id", classroomIds)
     : { data: [] };
 
   const studentMap = new Map<string, string>();
   for (const e of (enrollments ?? []) as any[]) {
-    const c = e.children;
-    if (c?.id && c?.name) studentMap.set(c.id, c.name);
+    // Embedded join returns either an array or an object depending on
+    // inferred cardinality; handle both shapes.
+    const c = Array.isArray(e.children) ? e.children[0] : e.children;
+    if (c?.id && c?.first_name) studentMap.set(c.id, c.first_name);
   }
   const students = [...studentMap.entries()].map(([id, name]) => ({ id, name }));
 

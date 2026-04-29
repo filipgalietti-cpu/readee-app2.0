@@ -33,7 +33,7 @@ export async function POST(req: Request) {
   const supabase = await createClient();
   const { data: child } = await supabase
     .from("children")
-    .select("id, name, reading_level")
+    .select("id, first_name, reading_level")
     .eq("id", childId)
     .maybeSingle();
   if (!child) {
@@ -69,7 +69,7 @@ export async function POST(req: Request) {
 
   const res = await draftIepProgressNote({
     teacherId: profile.id,
-    studentFirstName: c.name?.split(" ")[0] ?? "Student",
+    studentFirstName: c.first_name ?? "Student",
     gradeLevel: c.reading_level ?? "K-4",
     annualGoal,
     reportingPeriod,
