@@ -512,22 +512,60 @@ function StepPassage({
           <YesNo
             value={brief.passage.enabled}
             onChange={(v) =>
-              setBrief((b) => ({ ...b, passage: { enabled: v } }))
+              setBrief((b) => ({
+                ...b,
+                passage: { ...b.passage, enabled: v },
+              }))
             }
           />
         </div>
       </div>
 
       {brief.passage.enabled && (
-        <p className="text-xs text-zinc-500 dark:text-slate-400">
-          Your phonics focus{" "}
-          <span className="font-semibold">
-            {brief.phonicsPattern?.trim()
-              ? `(${brief.phonicsPattern})`
-              : "(none)"}
-          </span>{" "}
-          will be applied. Target words are bolded for the student reader.
-        </p>
+        <>
+          <div>
+            <div className="text-[10px] font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-300">
+              Length
+            </div>
+            <div className="mt-1 flex gap-1.5">
+              {(["short", "medium", "long"] as const).map((tier) => {
+                const active = (brief.passage.length ?? "short") === tier;
+                return (
+                  <button
+                    key={tier}
+                    type="button"
+                    onClick={() =>
+                      setBrief((b) => ({
+                        ...b,
+                        passage: { ...b.passage, length: tier },
+                      }))
+                    }
+                    className={`flex-1 rounded-full border px-3 py-1.5 text-xs font-semibold capitalize transition ${
+                      active
+                        ? "border-indigo-500 bg-indigo-600 text-white"
+                        : "border-zinc-200 bg-white text-zinc-700 hover:bg-indigo-50 hover:text-indigo-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
+                    }`}
+                  >
+                    {tier}
+                  </button>
+                );
+              })}
+            </div>
+            <div className="mt-1 text-[10px] text-zinc-500 dark:text-slate-400">
+              {wizardLengthRange(brief.gradeLevel, brief.passage.length ?? "short")}
+            </div>
+          </div>
+
+          <p className="text-xs text-zinc-500 dark:text-slate-400">
+            Your phonics focus{" "}
+            <span className="font-semibold">
+              {brief.phonicsPattern?.trim()
+                ? `(${brief.phonicsPattern})`
+                : "(none)"}
+            </span>{" "}
+            will be applied.
+          </p>
+        </>
       )}
 
       {!brief.passage.enabled && (
@@ -673,6 +711,21 @@ function StepMedia({
 }
 
 /* ── Small reusable building blocks ─────────────────────────────── */
+
+function wizardLengthRange(
+  grade: string,
+  tier: "short" | "medium" | "long",
+): string {
+  // Mirrors the PASSAGE_SYSTEM word windows from lib/ai/readee-ai.ts.
+  const ranges: Record<string, Record<string, string>> = {
+    K: { short: "20-35 words", medium: "35-50 words", long: "50-70 words" },
+    "1st": { short: "40-70 words", medium: "70-100 words", long: "100-140 words" },
+    "2nd": { short: "60-100 words", medium: "100-150 words", long: "150-220 words" },
+    "3rd": { short: "100-160 words", medium: "160-240 words", long: "240-340 words" },
+    "4th": { short: "150-220 words", medium: "220-320 words", long: "320-450 words" },
+  };
+  return ranges[grade]?.[tier] ?? "";
+}
 
 function YesNo({
   value,

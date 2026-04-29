@@ -219,6 +219,9 @@ export async function buildParentContent(input: {
       topic: topicForGeneration,
       gradeLevel: grade,
       phonicsPattern: brief.phonicsPattern ?? null,
+      // Parent-side at-home practice — keep tight by default so a
+      // K-1 kid isn't reading a 200-word essay before bed.
+      lengthLevel: (brief as any).passageLength ?? "short",
     });
     if (passRes.ok) {
       passageTitle = passRes.passage.title;

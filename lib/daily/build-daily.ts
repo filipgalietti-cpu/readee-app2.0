@@ -148,12 +148,15 @@ Today is ${fullDate} (${monthName} — ${seasonName} in the Northern Hemisphere)
 
 ${theme.topic}`;
 
-  // 1) Passage
+  // 1) Passage. Daily is the marquee public-facing passage, so we
+  //    target the "medium" tier — substantial enough to be a real
+  //    reading moment but bounded so it's not an essay.
   const passageRes = await generatePassage({
     teacherId,
     topic: datedTopic,
     gradeLevel,
     phonicsPattern: null,
+    lengthLevel: "medium",
   });
   if (!passageRes.ok) {
     return { ok: false, error: `passage: ${passageRes.error}`, date: dateStr };

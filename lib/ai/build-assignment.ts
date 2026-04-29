@@ -44,7 +44,12 @@ export type AssignmentBrief = {
   topic: string;
   phonicsPattern?: string | null;
 
-  passage: { enabled: boolean };
+  passage: {
+    enabled: boolean;
+    /** Per-grade word-count tier. Short by default so 2nd graders
+     *  aren't reading an essay. */
+    length?: "short" | "medium" | "long";
+  };
   questions: {
     multipleChoice: number;
     trueFalse: number;
@@ -288,6 +293,7 @@ export async function buildAssignment(input: {
       topic: brief.topic,
       gradeLevel: brief.gradeLevel,
       phonicsPattern: brief.phonicsPattern ?? null,
+      lengthLevel: brief.passage.length ?? "short",
     });
     if (passageRes.ok) {
       passageText = passageRes.passage.passage;
