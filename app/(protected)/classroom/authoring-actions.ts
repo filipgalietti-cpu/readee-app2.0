@@ -41,6 +41,13 @@ type QuestionInput =
       hint?: string | null;
       imageUrl?: string | null;
       audioUrl?: string | null;
+    }
+  | {
+      kind: "free_response";
+      prompt: string;
+      hint?: string | null;
+      imageUrl?: string | null;
+      audioUrl?: string | null;
     };
 
 export async function createCustomQuiz(input: {
@@ -143,6 +150,8 @@ function validateQuestion(input: QuestionInput): string | null {
     const answers = (input.correct ?? []).map((a) => a.trim()).filter(Boolean);
     if (answers.length === 0) return "At least one accepted answer is required.";
   }
+  // Free response has no correct answer to validate, the AI rubric
+  // scores it at submit time. Just enforce a non-empty prompt.
   return null;
 }
 
@@ -174,6 +183,19 @@ function serializeQuestion(input: QuestionInput): {
       prompt: input.prompt.trim(),
       choices: ["True", "False"],
       correct: input.correct,
+      hint: input.hint?.trim() || null,
+      image_url,
+      audio_url,
+    };
+  }
+  if (input.kind === "free_response") {
+    return {
+      kind: "free_response",
+      prompt: input.prompt.trim(),
+      choices: null,
+      // No predetermined correct answer for free response; rubric
+      // scoring at submit time provides the grade.
+      correct: null,
       hint: input.hint?.trim() || null,
       image_url,
       audio_url,

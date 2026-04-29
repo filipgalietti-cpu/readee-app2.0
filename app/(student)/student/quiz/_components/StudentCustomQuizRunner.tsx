@@ -20,7 +20,8 @@ type QuestionKind =
   | "multiple_choice"
   | "true_false"
   | "fill_in_blank"
-  | "matching_pairs";
+  | "matching_pairs"
+  | "free_response";
 
 type Question = {
   id: string;
@@ -132,6 +133,22 @@ export default function StudentCustomQuizRunner({
   const [saveErr, setSaveErr] = useState<string | null>(null);
   const [submitting, startSubmit] = useTransition();
 
+  // Free-response (writing) state. The rubric assessment, when set,
+  // means we've scored this question already and can lock it.
+  type WritingScore = {
+    ideas: number;
+    organization: number;
+    voice: number;
+    conventions: number;
+    overallBand: string;
+    strength: string;
+    growthTip: string;
+    encouragingClose: string;
+  };
+  const [writingScore, setWritingScore] = useState<WritingScore | null>(null);
+  const [scoringWriting, setScoringWriting] = useState(false);
+  const [writingErr, setWritingErr] = useState<string | null>(null);
+
   const q = questions[idx];
 
   /* ── correctness ─────────────────────────────────────────────── */
@@ -173,6 +190,17 @@ export default function StudentCustomQuizRunner({
         partial: { gotPairs: got, totalPairs: pairs.length },
       };
     }
+    if (q.kind === "free_response") {
+      // Average rubric score (1-4) normalized to 0-1.
+      if (!writingScore) return { score: 0 };
+      const avg =
+        (writingScore.ideas +
+          writingScore.organization +
+          writingScore.voice +
+          writingScore.conventions) /
+        4;
+      return { score: Math.max(0, Math.min(1, (avg - 1) / 3)) };
+    }
     return { score: 0 };
   }
 
@@ -182,6 +210,11 @@ export default function StudentCustomQuizRunner({
     if (q.kind === "matching_pairs") {
       const pairs = (q.correct?.pairs ?? []) as { left: string; right: string }[];
       return pairs.length > 0 && pairs.every((p) => matches[p.left]);
+    }
+    if (q.kind === "free_response") {
+      // Need at least ~10 words before scoring; lower bar for K-1.
+      const words = typedAnswer.trim().split(/\s+/).filter(Boolean).length;
+      return words >= 5;
     }
     return pickedChoice !== null;
   })();
@@ -216,6 +249,19 @@ export default function StudentCustomQuizRunner({
 
   function check() {
     if (!isPicked || revealed) return;
+    // Free-response routes through the AI rubric before reveal so we
+    // have a writingScore to surface.
+    if (q.kind === "free_response") {
+      void scoreFreeResponse();
+      return;
+    }
+    finishCheck();
+  }
+
+  /** Common path once we have a score — promote to revealed, update
+   *  counters, log perQ result, persist progress. Used by every
+   *  question kind. */
+  function finishCheck() {
     setRevealed(true);
     const result = scoreCurrent();
     const wasFullyCorrect = result.score === 1;
@@ -236,6 +282,33 @@ export default function StudentCustomQuizRunner({
     );
   }
 
+  async function scoreFreeResponse() {
+    setWritingErr(null);
+    setScoringWriting(true);
+    try {
+      const res = await fetch("/api/student/writing-coach", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          prompt: q.prompt,
+          response: typedAnswer,
+        }),
+      });
+      const json = await res.json();
+      if (!json.ok) {
+        setWritingErr(json.error ?? "Could not score that.");
+        return;
+      }
+      setWritingScore(json.assessment as WritingScore);
+      // Defer one tick so scoreCurrent() reads the new state.
+      setTimeout(finishCheck, 0);
+    } catch (e: any) {
+      setWritingErr(e?.message ?? "Could not reach the coach.");
+    } finally {
+      setScoringWriting(false);
+    }
+  }
+
   function next() {
     if (idx + 1 >= total) {
       finalize();
@@ -248,6 +321,8 @@ export default function StudentCustomQuizRunner({
     setRevealed(false);
     setMatches({});
     setActiveLeft(null);
+    setWritingScore(null);
+    setWritingErr(null);
     saveProgress(nextIdx, correctCount, perQResults);
   }
 
@@ -516,6 +591,17 @@ export default function StudentCustomQuizRunner({
               revealed={revealed}
             />
           )}
+
+          {q.kind === "free_response" && (
+            <FreeResponseInput
+              value={typedAnswer}
+              onChange={setTypedAnswer}
+              revealed={revealed}
+              scoring={scoringWriting}
+              score={writingScore}
+              err={writingErr}
+            />
+          )}
         </div>
 
         {revealed && q.hint && !currentAnswerCorrect() && (
@@ -529,10 +615,19 @@ export default function StudentCustomQuizRunner({
             <button
               type="button"
               onClick={check}
-              disabled={!isPicked}
+              disabled={!isPicked || scoringWriting}
               className="inline-flex items-center gap-1.5 rounded-full bg-indigo-600 px-5 py-2 text-sm font-bold text-white transition hover:bg-indigo-700 disabled:opacity-40"
             >
-              Check
+              {scoringWriting ? (
+                <>
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                  Scoring…
+                </>
+              ) : q.kind === "free_response" ? (
+                "Score my writing"
+              ) : (
+                "Check"
+              )}
             </button>
           ) : (
             <button
@@ -565,6 +660,113 @@ export default function StudentCustomQuizRunner({
 function clamp(n: number, min: number, max: number): number {
   if (Number.isNaN(n)) return min;
   return Math.max(min, Math.min(max, n));
+}
+
+function FreeResponseInput({
+  value,
+  onChange,
+  revealed,
+  scoring,
+  score,
+  err,
+}: {
+  value: string;
+  onChange: (next: string) => void;
+  revealed: boolean;
+  scoring: boolean;
+  score: {
+    ideas: number;
+    organization: number;
+    voice: number;
+    conventions: number;
+    overallBand: string;
+    strength: string;
+    growthTip: string;
+    encouragingClose: string;
+  } | null;
+  err: string | null;
+}) {
+  const wordCount = value.trim().split(/\s+/).filter(Boolean).length;
+  return (
+    <div className="space-y-3">
+      <textarea
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        disabled={revealed}
+        rows={6}
+        placeholder="Type your answer here. Take your time, you can write a few sentences."
+        className={`w-full resize-y rounded-2xl border-2 bg-white px-4 py-3 text-base focus:outline-none dark:bg-slate-900 dark:text-white ${
+          revealed
+            ? "border-emerald-300"
+            : "border-zinc-200 focus:border-indigo-400"
+        }`}
+        style={{ fontFamily: FRIENDLY_FONT, lineHeight: 1.7 }}
+      />
+      <div className="flex items-center justify-between text-xs text-zinc-500">
+        <span>{wordCount} word{wordCount === 1 ? "" : "s"}</span>
+        {wordCount < 5 && !revealed && (
+          <span className="text-zinc-400">Try at least 5 words.</span>
+        )}
+      </div>
+      {scoring && (
+        <div className="flex items-center gap-2 rounded-xl bg-blue-50 px-3 py-2 text-sm font-semibold text-blue-700 dark:bg-blue-950/30 dark:text-blue-300">
+          <Loader2 className="h-4 w-4 animate-spin" />
+          Coach is reading your writing…
+        </div>
+      )}
+      {err && (
+        <div className="rounded-xl bg-red-50 px-3 py-2 text-sm font-semibold text-red-700">
+          {err}
+        </div>
+      )}
+      {revealed && score && (
+        <div className="space-y-3">
+          <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+            <RubricStat label="Ideas" v={score.ideas} />
+            <RubricStat label="Organization" v={score.organization} />
+            <RubricStat label="Voice" v={score.voice} />
+            <RubricStat label="Conventions" v={score.conventions} />
+          </div>
+          {score.strength && (
+            <div className="rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm text-emerald-900 dark:border-emerald-900/40 dark:bg-emerald-950/30 dark:text-emerald-200">
+              <span className="font-bold">What worked: </span>
+              {score.strength}
+            </div>
+          )}
+          {score.growthTip && (
+            <div className="rounded-xl border border-amber-200 bg-amber-50 px-4 py-2 text-sm text-amber-900 dark:border-amber-900/40 dark:bg-amber-950/30 dark:text-amber-200">
+              <span className="font-bold">Try next time: </span>
+              {score.growthTip}
+            </div>
+          )}
+          {score.encouragingClose && (
+            <p className="text-center text-sm font-semibold text-zinc-600 dark:text-slate-300">
+              {score.encouragingClose}
+            </p>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function RubricStat({ label, v }: { label: string; v: number }) {
+  const tone =
+    v >= 4
+      ? "bg-emerald-100 text-emerald-800 border-emerald-300 dark:bg-emerald-950/40 dark:text-emerald-200"
+      : v >= 3
+      ? "bg-blue-100 text-blue-800 border-blue-300 dark:bg-blue-950/40 dark:text-blue-200"
+      : v >= 2
+      ? "bg-amber-100 text-amber-800 border-amber-300 dark:bg-amber-950/40 dark:text-amber-200"
+      : "bg-rose-100 text-rose-800 border-rose-300 dark:bg-rose-950/40 dark:text-rose-200";
+  return (
+    <div className={`rounded-2xl border-2 p-3 text-center ${tone}`}>
+      <div className="text-2xl font-extrabold">{v}/4</div>
+      <div className="text-[10px] font-bold uppercase tracking-widest">
+        {label}
+      </div>
+    </div>
+  );
 }
 
 

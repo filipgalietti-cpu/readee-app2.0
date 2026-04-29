@@ -20,7 +20,8 @@ type QuestionKind =
   | "multiple_choice"
   | "true_false"
   | "fill_in_blank"
-  | "matching_pairs";
+  | "matching_pairs"
+  | "free_response";
 
 type Question = {
   id: string;
@@ -130,6 +131,7 @@ function kindLabel(k: QuestionKind): string {
   if (k === "multiple_choice") return "Multiple choice";
   if (k === "true_false") return "True / false";
   if (k === "matching_pairs") return "Matching pairs";
+  if (k === "free_response") return "Writing response";
   return "Fill in the blank";
 }
 
@@ -189,11 +191,13 @@ function QuestionCard({
           )}
         </div>
         <div className="flex items-center gap-1">
-          <RegenerateQuestionButton
-            quizId={quizId}
-            questionId={q.id}
-            kind={q.kind}
-          />
+          {q.kind !== "free_response" && (
+            <RegenerateQuestionButton
+              quizId={quizId}
+              questionId={q.id}
+              kind={q.kind}
+            />
+          )}
           {q.kind !== "matching_pairs" && (
             <button
               type="button"
@@ -331,6 +335,18 @@ function renderChoicesAsCards(q: Question): React.ReactNode {
             </div>
           </div>
         ))}
+      </div>
+    );
+  }
+  if (q.kind === "free_response") {
+    return (
+      <div className="rounded-xl border-2 border-dashed border-rose-300 bg-rose-50/40 px-3 py-3 text-xs text-rose-800 dark:border-rose-900/40 dark:bg-rose-950/20 dark:text-rose-200">
+        <div className="font-bold">AI-graded writing response</div>
+        <div className="mt-0.5 text-rose-700 dark:text-rose-300">
+          Student types an answer; Readee scores it on a 4-domain rubric
+          (ideas, organization, voice, conventions) and surfaces a
+          strength + growth tip.
+        </div>
       </div>
     );
   }
@@ -624,12 +640,22 @@ function QuestionFormModal({
     | { kind: "multiple_choice"; prompt: string; choices: string[]; correct: string; hint?: string | null; imageUrl?: string | null; audioUrl?: string | null }
     | { kind: "true_false"; prompt: string; correct: "True" | "False"; hint?: string | null; imageUrl?: string | null; audioUrl?: string | null }
     | { kind: "fill_in_blank"; prompt: string; correct: string[]; hint?: string | null; imageUrl?: string | null; audioUrl?: string | null }
+    | { kind: "free_response"; prompt: string; hint?: string | null; imageUrl?: string | null; audioUrl?: string | null }
     | string {
     const p = prompt.trim();
     if (!p) return "Prompt is required.";
     const hintVal = hint.trim() || null;
     const imageVal = imageUrl || null;
     const audioVal = audioUrl || null;
+    if (kind === "free_response") {
+      return {
+        kind: "free_response",
+        prompt: p,
+        hint: hintVal,
+        imageUrl: imageVal,
+        audioUrl: audioVal,
+      };
+    }
     if (kind === "multiple_choice") {
       const c = choices.map((x) => x.trim()).filter(Boolean);
       if (c.length < 2) return "Add at least 2 choices.";
@@ -708,7 +734,7 @@ function QuestionFormModal({
               Type
             </label>
             <div className="mt-1 inline-flex rounded-full border border-zinc-200 bg-zinc-50 p-0.5 text-xs font-semibold dark:border-slate-700 dark:bg-slate-950">
-              {(["multiple_choice", "true_false", "fill_in_blank"] as QuestionKind[]).map((k) => (
+              {(["multiple_choice", "true_false", "fill_in_blank", "free_response"] as QuestionKind[]).map((k) => (
                 <button
                   key={k}
                   type="button"
@@ -826,6 +852,20 @@ function QuestionFormModal({
                 className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
               />
             </label>
+          )}
+
+          {kind === "free_response" && (
+            <div className="rounded-xl border-2 border-dashed border-rose-300 bg-rose-50/40 px-3 py-3 text-xs text-rose-800 dark:border-rose-900/40 dark:bg-rose-950/20 dark:text-rose-200">
+              <div className="font-bold">AI-graded writing response</div>
+              <div className="mt-0.5 text-rose-700 dark:text-rose-300">
+                The student types an answer to the prompt above. Readee
+                rubric-scores it on Ideas / Organization / Voice /
+                Conventions and returns a strength + growth tip.
+                You&apos;ll see the score in this quiz&apos;s submissions
+                view; the parent dashboard surfaces a writing trend
+                over time.
+              </div>
+            </div>
           )}
 
           <label className="block">
