@@ -26,7 +26,19 @@ URL: `https://learn.readee.app/buddy`
 Mode picker confirmed renders correctly. Live mode walkthrough
 deferred until parent/student phase since Buddy is kid-facing.
 
-## 2. Authoring wizard (teacher AI assignment)
+## 2. Authoring wizard (teacher AI assignment) — ✓ PASS (2026-04-29)
+
+Multiple bugs found and fixed during testing:
+- `e9c3b8a` smart-search routing dead-end (preflight)
+- `53b7022` MCQ duplicate choices crashing render
+- `033f553` Gemini Flash Image multi-panel hallucination
+- `8c29a7e` duplicate passage display, redundant per-Q image/audio, 2-pair matching
+- `1bdf5f7` per-student assignment targeting
+- `5ede76c` passage image lightbox
+- `098446a` regenerate image button + friendly passage font + classroom-default guardrail
+- `48c438f` image tile height
+- `301b2ee` student runner overhaul (3-phase, save/resume, results recap)
+- `0e85d81` matching partial credit, uniform tiles, card view mirrors student
 
 URL: `https://learn.readee.app/classroom/authoring/wizard`
 
