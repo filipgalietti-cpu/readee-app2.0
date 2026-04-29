@@ -119,7 +119,13 @@ export async function buildDailyQuestion(opts?: {
 - Politically neutral. Avoid current events, partisan figures, controversial public figures, and contemporary policy debates.
 - Avoid: war, violence, weapons, death, assassinations, terrorism, abuse, racism, slavery, addiction, illness, natural disasters where the angle is loss, religion-specific traditions (use generic "winter holidays" / "harvest" framings instead), anything that could traumatize a 5-year-old.
 - Prefer: inventions, scientific discoveries, art, music, sports, animals, nature, kid-friendly cultural traditions, famous helpers (firefighters, librarians, teachers), space, exploration, food, gardening, friendship.
-- If the natural answer to a date-specific theme is heavy (e.g. an "on this day" event involves war or tragedy), pivot to a famous birthday, an invention, a sports/arts milestone, or a nature/seasonal angle for the same day instead.`;
+- If the natural answer to a date-specific theme is heavy (e.g. an "on this day" event involves war or tragedy), pivot to a famous birthday, an invention, a sports/arts milestone, or a nature/seasonal angle for the same day instead.
+
+Copyright + trademark guardrails (always apply):
+- Do NOT use copyrighted character names, place names, vehicles, organizations, factions, creatures, or signature phrases from any branded franchise. Forbidden examples include but are not limited to: Star Wars, Harry Potter, Marvel, DC, Disney/Pixar films, Pokémon, Minecraft, Roblox, Sonic, Mario, Frozen, Dora, Paw Patrol, Bluey, Peppa Pig, Mickey Mouse, SpongeBob, Sesame Street characters, branded book series.
+- Refer to franchises only generically ("a popular space adventure movie", "a wizard book series", "a video game some kids play").
+- Real historical people are fine. Real public figures who are still actively political are not.
+- Quotes from copyrighted works are off-limits even when famous; paraphrase or skip.`;
 
   const datedTopic = `${SAFETY_PREAMBLE}
 
