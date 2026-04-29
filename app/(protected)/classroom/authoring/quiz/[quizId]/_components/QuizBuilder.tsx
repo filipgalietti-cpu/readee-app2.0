@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { Pencil, Trash2, Plus, Loader2, X, Check, AlertCircle, Lightbulb, ImagePlus, Sparkles, Volume2, RefreshCw } from "lucide-react";
+import { Pencil, Trash2, Plus, Loader2, X, Check, AlertCircle, Lightbulb, ImagePlus, Sparkles, Volume2, RefreshCw, Wand2 } from "lucide-react";
 import {
   addQuestionToQuiz,
   updateCustomQuestion,
@@ -35,6 +35,15 @@ type Question = {
   audioUrl: string | null;
 };
 
+export type StandardOption = {
+  standardId: string;
+  title: string;
+  standardDescription: string;
+  domain: string;
+  grade: string;
+  gradeLabel: string;
+};
+
 export default function QuizBuilder({
   quizId,
   initialTitle,
@@ -43,6 +52,7 @@ export default function QuizBuilder({
   questions,
   passageImageUrl,
   passageAudioUrl,
+  standards,
 }: {
   quizId: string;
   initialTitle: string;
@@ -55,6 +65,8 @@ export default function QuizBuilder({
    *  ten times. Real per-question media (added manually) still shows. */
   passageImageUrl?: string | null;
   passageAudioUrl?: string | null;
+  /** Standards catalog feeding the in-modal "AI fill" picker. */
+  standards: StandardOption[];
 }) {
   const router = useRouter();
   const [editing, setEditing] = useState<Question | null>(null);
@@ -116,6 +128,8 @@ export default function QuizBuilder({
         <QuestionFormModal
           quizId={quizId}
           initial={editing}
+          standards={standards}
+          quizGradeLevel={initialGradeLevel}
           onClose={() => {
             setCreating(false);
             setEditing(null);
@@ -541,12 +555,21 @@ function QuestionFormModal({
   quizId,
   initial,
   onClose,
+  standards,
+  quizGradeLevel,
 }: {
   quizId: string;
   initial: Question | null;
   onClose: () => void;
+  standards: StandardOption[];
+  quizGradeLevel: string;
 }) {
   const isEdit = !!initial;
+  // "Manual" preserves the existing flow; "ai-fill" pre-populates the
+  // form via the calibrated-item endpoint so the teacher can review +
+  // edit before saving. AI fill is hidden on edit (the existing
+  // question is already populated; regenerate lives on the card).
+  const [authorMode, setAuthorMode] = useState<"manual" | "ai-fill">("manual");
   const [kind, setKind] = useState<QuestionKind>(initial?.kind ?? "multiple_choice");
   const [prompt, setPrompt] = useState(initial?.prompt ?? "");
   const [hint, setHint] = useState(initial?.hint ?? "");
@@ -566,6 +589,96 @@ function QuestionFormModal({
       ? (initial.correct as string[]).join(", ")
       : "",
   );
+  // ── AI-fill picker state ─────────────────────────────────────
+  const GRADES = ["K", "1st", "2nd", "3rd", "4th"] as const;
+  const normalizedGrade = (() => {
+    const g = (quizGradeLevel ?? "").trim().toLowerCase();
+    if (g === "k" || g === "kindergarten") return "K";
+    if (g === "1st" || g === "1" || g === "1st-grade" || g === "first") return "1st";
+    if (g === "2nd" || g === "2" || g === "2nd-grade" || g === "second") return "2nd";
+    if (g === "3rd" || g === "3" || g === "3rd-grade" || g === "third") return "3rd";
+    if (g === "4th" || g === "4" || g === "4th-grade" || g === "fourth") return "4th";
+    return "2nd";
+  })();
+  const [aiGrade, setAiGrade] = useState<string>(normalizedGrade);
+  const aiStandardsForGrade = standards.filter((s) => s.grade === aiGrade);
+  const aiDomains = Array.from(new Set(aiStandardsForGrade.map((s) => s.domain))).sort();
+  const [aiDomain, setAiDomain] = useState<string>(aiDomains[0] ?? "");
+  useEffect(() => {
+    if (aiDomains.length === 0) {
+      setAiDomain("");
+      return;
+    }
+    if (!aiDomains.includes(aiDomain)) setAiDomain(aiDomains[0]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [aiDomains.join("|")]);
+  const aiStandardsInDomain = aiStandardsForGrade.filter((s) => s.domain === aiDomain);
+  const [aiStandardId, setAiStandardId] = useState<string>(
+    () => aiStandardsInDomain[0]?.standardId ?? "",
+  );
+  useEffect(() => {
+    if (aiStandardsInDomain.length === 0) {
+      setAiStandardId("");
+      return;
+    }
+    if (!aiStandardsInDomain.some((s) => s.standardId === aiStandardId)) {
+      setAiStandardId(aiStandardsInDomain[0].standardId);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [aiStandardsInDomain.map((s) => s.standardId).join("|")]);
+  const aiSelectedStandard = aiStandardsInDomain.find((s) => s.standardId === aiStandardId);
+  const [aiDifficulty, setAiDifficulty] = useState(3);
+  const [aiPending, setAiPending] = useState(false);
+  const [aiErr, setAiErr] = useState<string | null>(null);
+
+  async function aiFill() {
+    if (!aiSelectedStandard) {
+      setAiErr("Pick a standard first.");
+      return;
+    }
+    setAiErr(null);
+    setAiPending(true);
+    try {
+      const r = await fetch("/api/calibrated-item", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          standardId: aiSelectedStandard.standardId,
+          standardDescription: aiSelectedStandard.standardDescription,
+          gradeLevel: aiGrade,
+          targetDifficulty: aiDifficulty,
+          passageContext: null,
+        }),
+      });
+      const json = await r.json();
+      if (!json.ok) {
+        setAiErr(json.error ?? "Couldn't generate.");
+        return;
+      }
+      const item = json.item as {
+        prompt: string;
+        choices: string[];
+        correct: string;
+        hint: string | null;
+      };
+      // Pipe the AI output into the existing manual form state so the
+      // teacher can review + edit before saving. Force MCQ since the
+      // calibrated-item endpoint only emits multiple choice.
+      setKind("multiple_choice");
+      setPrompt(item.prompt);
+      const filled = [...item.choices];
+      while (filled.length < 4) filled.push("");
+      setChoices(filled.slice(0, Math.max(4, filled.length)));
+      setCorrectMcq(item.correct);
+      setHint(item.hint ?? "");
+      setAuthorMode("manual");
+    } catch (e: any) {
+      setAiErr(e?.message ?? "Couldn't generate.");
+    } finally {
+      setAiPending(false);
+    }
+  }
+
   const [imageUrl, setImageUrl] = useState<string | null>(initial?.imageUrl ?? null);
   const [visualPrompt, setVisualPrompt] = useState("");
   const [imgPending, setImgPending] = useState(false);
@@ -729,6 +842,164 @@ function QuestionFormModal({
         </div>
 
         <div className="flex-1 space-y-4 overflow-y-auto p-5">
+          {!isEdit && (
+            <div className="flex items-center gap-2">
+              <span className="text-xs font-semibold text-zinc-500 dark:text-slate-400">
+                Method
+              </span>
+              <div className="inline-flex rounded-full border border-zinc-200 bg-zinc-50 p-0.5 text-xs font-semibold dark:border-slate-700 dark:bg-slate-950">
+                <button
+                  type="button"
+                  onClick={() => setAuthorMode("manual")}
+                  className={`rounded-full px-3 py-1 transition ${
+                    authorMode === "manual"
+                      ? "bg-white text-indigo-700 shadow-sm dark:bg-slate-800 dark:text-indigo-300"
+                      : "text-zinc-500"
+                  }`}
+                >
+                  Manual
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setAuthorMode("ai-fill")}
+                  className={`inline-flex items-center gap-1 rounded-full px-3 py-1 transition ${
+                    authorMode === "ai-fill"
+                      ? "bg-white text-violet-700 shadow-sm dark:bg-slate-800 dark:text-violet-300"
+                      : "text-zinc-500"
+                  }`}
+                >
+                  <Wand2 className="h-3 w-3" />
+                  AI fill
+                </button>
+              </div>
+            </div>
+          )}
+
+          {!isEdit && authorMode === "ai-fill" && (
+            <div className="space-y-4 rounded-2xl border border-violet-200 bg-gradient-to-br from-violet-50 to-indigo-50 p-4 dark:border-violet-900/40 dark:from-violet-950/30 dark:to-indigo-950/30">
+              <div className="flex items-start gap-2 text-xs text-zinc-600 dark:text-slate-400">
+                <Sparkles className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-violet-600" />
+                <span>
+                  Pick a standard + difficulty. Readee writes one calibrated MCQ.
+                  You&apos;ll review and edit it before saving.
+                </span>
+              </div>
+
+              <div>
+                <div className="text-[10px] font-bold uppercase tracking-widest text-violet-700 dark:text-violet-300">
+                  1. Grade
+                </div>
+                <div className="mt-1 inline-flex rounded-full border border-zinc-200 bg-white p-0.5 text-xs font-bold dark:border-slate-700 dark:bg-slate-950">
+                  {GRADES.map((g) => (
+                    <button
+                      key={g}
+                      type="button"
+                      onClick={() => setAiGrade(g)}
+                      className={`rounded-full px-3 py-1 transition ${
+                        aiGrade === g
+                          ? "bg-violet-600 text-white shadow-sm"
+                          : "text-zinc-500"
+                      }`}
+                    >
+                      {g}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <div className="text-[10px] font-bold uppercase tracking-widest text-violet-700 dark:text-violet-300">
+                  2. Domain
+                </div>
+                <select
+                  value={aiDomain}
+                  onChange={(e) => setAiDomain(e.target.value)}
+                  className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-violet-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                >
+                  {aiDomains.map((d) => (
+                    <option key={d} value={d}>
+                      {d}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <div className="text-[10px] font-bold uppercase tracking-widest text-violet-700 dark:text-violet-300">
+                  3. Standard
+                </div>
+                <select
+                  value={aiStandardId}
+                  onChange={(e) => setAiStandardId(e.target.value)}
+                  className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-violet-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                >
+                  {aiStandardsInDomain.map((s) => (
+                    <option key={s.standardId} value={s.standardId}>
+                      {s.title}
+                    </option>
+                  ))}
+                </select>
+                {aiSelectedStandard && (
+                  <div className="mt-2 rounded-xl border border-zinc-200 bg-white px-3 py-2 text-xs text-zinc-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400">
+                    <span className="mr-2 inline-flex items-center rounded-full bg-violet-100 px-2 py-0.5 font-mono text-[10px] font-bold text-violet-700 dark:bg-violet-950/40 dark:text-violet-300">
+                      {aiSelectedStandard.standardId}
+                    </span>
+                    {aiSelectedStandard.standardDescription}
+                  </div>
+                )}
+              </div>
+
+              <div>
+                <div className="text-[10px] font-bold uppercase tracking-widest text-violet-700 dark:text-violet-300">
+                  4. Target difficulty
+                </div>
+                <input
+                  type="range"
+                  min={1}
+                  max={5}
+                  step={1}
+                  value={aiDifficulty}
+                  onChange={(e) => setAiDifficulty(Number(e.target.value))}
+                  className="mt-2 w-full accent-violet-600"
+                />
+                <div className="mt-1 flex justify-between text-[10px] font-semibold text-zinc-500 dark:text-slate-400">
+                  <span>Below grade</span>
+                  <span>On grade</span>
+                  <span>Above grade</span>
+                </div>
+                <div className="mt-1 text-center text-xs font-bold text-violet-700 dark:text-violet-300">
+                  {["", "Below grade", "Easy on-grade", "On grade (typical)", "Hard on-grade", "Above grade"][aiDifficulty]}
+                </div>
+              </div>
+
+              {aiErr && (
+                <div className="flex items-start gap-2 rounded-xl border border-red-200 bg-red-50 px-3 py-2 text-xs text-red-700 dark:border-red-900/40 dark:bg-red-950/30 dark:text-red-300">
+                  <AlertCircle className="mt-0.5 h-3.5 w-3.5 flex-shrink-0" />
+                  <span>{aiErr}</span>
+                </div>
+              )}
+
+              <button
+                type="button"
+                onClick={aiFill}
+                disabled={aiPending || !aiSelectedStandard}
+                className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-violet-600 px-4 py-2 text-sm font-bold text-white transition hover:bg-violet-700 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                {aiPending ? (
+                  <>
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                    Writing the question…
+                  </>
+                ) : (
+                  <>
+                    <Wand2 className="h-4 w-4" />
+                    Generate with AI
+                  </>
+                )}
+              </button>
+            </div>
+          )}
+
           <div>
             <label className="text-xs font-semibold text-zinc-500 dark:text-slate-400">
               Type

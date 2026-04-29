@@ -3,11 +3,22 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ClipboardPen, ListChecks, Sparkles, Eye, Volume2 } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/lib/auth/helpers";
+import { getAllStandards } from "@/lib/data/standards";
+import sampleLessons from "@/app/data/sample-lessons.json";
 import QuizBuilder from "./_components/QuizBuilder";
 import AssignQuizDialog from "./_components/AssignQuizDialog";
 import PassageImageLightbox from "./_components/PassageImageLightbox";
 
 export const dynamic = "force-dynamic";
+
+function gradeKeyToShort(grade: string): string {
+  if (grade === "kindergarten") return "K";
+  if (grade === "1st-grade") return "1st";
+  if (grade === "2nd-grade") return "2nd";
+  if (grade === "3rd-grade") return "3rd";
+  if (grade === "4th-grade") return "4th";
+  return grade;
+}
 
 export default async function QuizBuilderPage({
   params,
@@ -124,6 +135,23 @@ export default async function QuizBuilderPage({
       // whole-class only.
     }
   }
+
+  // Standard catalog for the in-modal "AI fill" picker. Same shape the
+  // Calibrated Item tool uses so the picker reads identically.
+  const titleByStandard = new Map<string, string>();
+  for (const l of sampleLessons as { standardId?: string; title?: string }[]) {
+    if (l?.standardId && l?.title) {
+      titleByStandard.set(l.standardId, l.title);
+    }
+  }
+  const standardOptions = getAllStandards().map((s) => ({
+    standardId: s.standard_id,
+    title: titleByStandard.get(s.standard_id) ?? s.standard_description,
+    standardDescription: s.standard_description,
+    domain: s.domain,
+    grade: gradeKeyToShort(s.grade),
+    gradeLabel: s.gradeLabel,
+  }));
 
   return (
     <div className="mx-auto max-w-4xl px-6 py-10">
@@ -261,6 +289,7 @@ export default async function QuizBuilderPage({
           questions={questions}
           passageImageUrl={passageImage}
           passageAudioUrl={passageAudio}
+          standards={standardOptions}
         />
       </div>
     </div>
