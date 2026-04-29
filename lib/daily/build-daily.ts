@@ -109,7 +109,21 @@ export async function buildDailyQuestion(opts?: {
     year: "numeric",
     timeZone: "UTC",
   });
-  const datedTopic = `Today is ${fullDate} (${monthName} — ${seasonName} in the Northern Hemisphere). Write a passage that feels appropriate for THIS time of year — do not pick a topic from a different season.
+  // Safety preamble for the daily question. Public-facing, mixed-age
+  // K-4 audience plus parents reading along — must stay neutral and
+  // kid-appropriate. Hard avoid list keeps the model from drifting
+  // into edgy "on this day" picks (wars, assassinations, atrocities)
+  // or political/religious controversy on themed days.
+  const SAFETY_PREAMBLE = `This is a public-facing daily reading passage for K-4 students and their families. Stay strictly:
+- Kid-appropriate, factual or warm, never frightening.
+- Politically neutral. Avoid current events, partisan figures, controversial public figures, and contemporary policy debates.
+- Avoid: war, violence, weapons, death, assassinations, terrorism, abuse, racism, slavery, addiction, illness, natural disasters where the angle is loss, religion-specific traditions (use generic "winter holidays" / "harvest" framings instead), anything that could traumatize a 5-year-old.
+- Prefer: inventions, scientific discoveries, art, music, sports, animals, nature, kid-friendly cultural traditions, famous helpers (firefighters, librarians, teachers), space, exploration, food, gardening, friendship.
+- If the natural answer to a date-specific theme is heavy (e.g. an "on this day" event involves war or tragedy), pivot to a famous birthday, an invention, a sports/arts milestone, or a nature/seasonal angle for the same day instead.`;
+
+  const datedTopic = `${SAFETY_PREAMBLE}
+
+Today is ${fullDate} (${monthName} — ${seasonName} in the Northern Hemisphere). Write a passage that feels appropriate for THIS time of year — do not pick a topic from a different season.
 
 ${theme.topic}`;
 

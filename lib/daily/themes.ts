@@ -273,7 +273,11 @@ const WEEKDAY_THEMES: Record<number, DailyTheme[]> = {
     },
   ],
   4: [
-    { label: "Thursday nature", topic: "A short informational passage about a plant, ecosystem, or weather phenomenon kids could observe in their neighborhood." },
+    {
+      label: "Thursday nature",
+      topic:
+        "A short informational passage about a plant, animal, weather phenomenon, or seasonal change a kid could observe in their own neighborhood RIGHT NOW (this month, this season). Anchor the passage to the current month or season — what's blooming, who's migrating, what's hatching, what's changing. Avoid generic 'animals in winter' if it's spring; pick what's actually happening today.",
+    },
   ],
   5: [
     { label: "Friday fun fact", topic: "A short, surprising kid-friendly fun fact passage — something that makes a child say wait, really? — with a comprehension question." },
