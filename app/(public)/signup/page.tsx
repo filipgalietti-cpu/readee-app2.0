@@ -223,7 +223,11 @@ function SignupInner() {
           error={errors.confirmPassword}
           required
         />
-        <TosCheckbox checked={tosAccepted} onChange={setTosAccepted} />
+        <TosCheckbox
+          checked={tosAccepted}
+          onChange={setTosAccepted}
+          role={role}
+        />
         <button
           type="submit"
           disabled={!tosAccepted || isLoading}
