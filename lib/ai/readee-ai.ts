@@ -861,7 +861,12 @@ export async function generateImageBrief(input: {
 // ═══ Image generation (Gemini 2.5 Flash Image) ══════════════════════
 
 const IMAGE_STYLE_PREFIX =
-  "Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors, kid-friendly, no text, no watermarks. ";
+  "Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors, kid-friendly, no text, no watermarks. " +
+  // Anti-panel guardrail. Gemini 2.5 Flash Image will sometimes return a
+  // 2-panel comic strip or grid when the prompt has any narrative shape
+  // (e.g. "boy learns about X, then plays Y"). Be explicit so the model
+  // produces one single scene that fills the frame.
+  "Render as ONE single unified illustration, square aspect ratio. Do NOT produce a comic strip, panels, grid, split-screen, before/after, multi-frame layout, or sub-images. Only one scene. ";
 
 export type ImageQuality = "standard" | "ultra";
 
