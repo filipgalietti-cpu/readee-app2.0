@@ -15,8 +15,6 @@ import { createClassroomStudents } from "@/app/(protected)/classroom/invite-acti
 
 type Classroom = { id: string; name: string; gradeLevel?: string | null };
 
-const GRADES = ["K", "1st", "2nd", "3rd", "4th"] as const;
-
 /**
  * Reusable inline "add students" form. Drop into any empty state where
  * the teacher hits "no roster yet" and wants to seed kids without
@@ -47,14 +45,12 @@ export default function InlineAddStudents({
     defaultClassroomId ?? classrooms[0]?.id ?? "",
   );
   const [names, setNames] = useState<string>("");
-  // Grade for the whole batch. Defaults to the picked classroom's
-  // grade_level when known so the common case is one click.
-  const [grade, setGrade] = useState<string>(() => {
-    const start =
-      classrooms.find((c) => c.id === (defaultClassroomId ?? classrooms[0]?.id))
-        ?.gradeLevel ?? "";
-    return start && GRADES.includes(start as any) ? start : "";
-  });
+  // Inherited grade for display only — the create action defaults
+  // children.grade to the picked classroom's grade_level on the
+  // server, so the form doesn't need to ask. Per-student grade
+  // overrides happen in the full roster UI (Manage roster link).
+  const inheritedGrade =
+    classrooms.find((c) => c.id === classroomId)?.gradeLevel ?? null;
   const [pending, start] = useTransition();
   const [err, setErr] = useState<string | null>(null);
   const [doneMsg, setDoneMsg] = useState<string | null>(null);
@@ -81,10 +77,11 @@ export default function InlineAddStudents({
     start(async () => {
       const res = await createClassroomStudents({
         classroomId,
-        students: list.map((firstName) => ({
-          firstName,
-          grade: grade || null,
-        })),
+        // No per-row grade here. The server falls back to the
+        // classroom's grade_level when grade is omitted, so kids
+        // inherit the right grade silently. Per-student overrides
+        // belong in the full roster UI.
+        students: list.map((firstName) => ({ firstName })),
         source: "manual",
       });
       if (!res.ok) {
@@ -152,23 +149,6 @@ export default function InlineAddStudents({
       )}
 
       <label className="mt-3 block text-xs font-semibold text-zinc-500">
-        Grade (applies to all students in this batch)
-        <select
-          value={grade}
-          onChange={(e) => setGrade(e.target.value)}
-          disabled={pending}
-          className="mt-1 w-full rounded-lg border border-zinc-300 bg-white px-2 py-1.5 text-sm focus:border-blue-500 focus:outline-none disabled:opacity-60"
-        >
-          <option value="">(use classroom default)</option>
-          {GRADES.map((g) => (
-            <option key={g} value={g}>
-              {g}
-            </option>
-          ))}
-        </select>
-      </label>
-
-      <label className="mt-3 block text-xs font-semibold text-zinc-500">
         First names (one per line, or comma-separated)
         <textarea
           rows={3}
@@ -179,6 +159,10 @@ export default function InlineAddStudents({
           className="mt-1 w-full rounded-lg border border-zinc-300 bg-white px-2 py-2 text-sm focus:border-blue-500 focus:outline-none disabled:opacity-60"
         />
       </label>
+      <p className="mt-1 text-[11px] text-zinc-500">
+        Grade {inheritedGrade ? <span className="font-bold">{inheritedGrade}</span> : <span className="italic">none set on classroom</span>} will apply, change per-student in
+        Manage roster if needed.
+      </p>
 
       {err && (
         <div className="mt-3 flex items-start gap-1.5 rounded-lg bg-red-50 px-2 py-1.5 text-xs font-semibold text-red-700">
