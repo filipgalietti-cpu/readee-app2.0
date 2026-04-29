@@ -1,11 +1,40 @@
 import { Wand2, Info } from "lucide-react";
 import { requireTeacherTier } from "@/lib/plan/teacher-gate";
+import { getAllStandards } from "@/lib/data/standards";
 import CalibratedItemForm from "./_components/CalibratedItemForm";
 
 export const dynamic = "force-dynamic";
 
+type StandardOption = {
+  standardId: string;
+  standardDescription: string;
+  domain: string;
+  grade: string;
+  gradeLabel: string;
+};
+
+function gradeKeyToShort(grade: string): string {
+  if (grade === "kindergarten") return "K";
+  if (grade === "1st-grade") return "1st";
+  if (grade === "2nd-grade") return "2nd";
+  if (grade === "3rd-grade") return "3rd";
+  if (grade === "4th-grade") return "4th";
+  return grade;
+}
+
 export default async function CalibratedItemPage() {
   await requireTeacherTier({ min: "teacher_solo", reason: "calibrated_items" });
+
+  // Build the catalog at request time so the form can show a real
+  // standard picker grouped by grade + domain. Stripping questions
+  // off keeps the props payload small.
+  const standards: StandardOption[] = getAllStandards().map((s) => ({
+    standardId: s.standard_id,
+    standardDescription: s.standard_description,
+    domain: s.domain,
+    grade: gradeKeyToShort(s.grade),
+    gradeLabel: s.gradeLabel,
+  }));
 
   return (
     <div className="mx-auto max-w-2xl px-6 py-10">
@@ -30,7 +59,7 @@ export default async function CalibratedItemPage() {
         </details>
       </div>
       <div className="mt-6">
-        <CalibratedItemForm />
+        <CalibratedItemForm standards={standards} />
       </div>
     </div>
   );
