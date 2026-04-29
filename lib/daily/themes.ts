@@ -100,6 +100,87 @@ const FIXED_HOLIDAYS: Record<string, DailyTheme> = {
   },
 };
 
+// ───── Movable US holidays ────────────────────────────────────────
+// Computed by month + ordinal weekday (e.g. "3rd Monday of January").
+// Add freely. Easter-family holidays are intentionally skipped (the
+// computus is messy and they're religious, not academic anchors).
+
+type MovableMatcher = (d: Date) => boolean;
+function nthWeekdayOfMonth(month: number, weekday: number, n: number): MovableMatcher {
+  return (d) => {
+    if (d.getUTCMonth() + 1 !== month) return false;
+    if (d.getUTCDay() !== weekday) return false;
+    return Math.floor((d.getUTCDate() - 1) / 7) + 1 === n;
+  };
+}
+function lastWeekdayOfMonth(month: number, weekday: number): MovableMatcher {
+  return (d) => {
+    if (d.getUTCMonth() + 1 !== month) return false;
+    if (d.getUTCDay() !== weekday) return false;
+    const next = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate() + 7));
+    return next.getUTCMonth() + 1 !== month;
+  };
+}
+
+const MOVABLE_HOLIDAYS: { match: MovableMatcher; theme: DailyTheme }[] = [
+  {
+    match: nthWeekdayOfMonth(1, 1, 3),
+    theme: {
+      label: "MLK Day",
+      topic: "An age-appropriate informational passage about Dr. Martin Luther King Jr. — who he was, why we observe his birthday with a federal holiday, and one famous lesson he taught about kindness and fairness.",
+    },
+  },
+  {
+    match: nthWeekdayOfMonth(2, 1, 3),
+    theme: {
+      label: "Presidents Day",
+      topic: "An age-appropriate informational passage about Presidents Day — what it celebrates, the two presidents (Washington and Lincoln) it traditionally honors, and one thing each is known for.",
+    },
+  },
+  {
+    match: nthWeekdayOfMonth(5, 0, 2),
+    theme: {
+      label: "Mother's Day",
+      topic: "A warm short story about a child planning a small surprise for their mom or a mother-figure in their life.",
+    },
+  },
+  {
+    match: lastWeekdayOfMonth(5, 1),
+    theme: {
+      label: "Memorial Day",
+      topic: "An age-appropriate informational passage about Memorial Day — what it honors, the difference between Memorial Day and Veterans Day, and one quiet way families observe it.",
+    },
+  },
+  {
+    match: nthWeekdayOfMonth(6, 0, 3),
+    theme: {
+      label: "Father's Day",
+      topic: "A warm short story about a child planning a small surprise for their dad or a father-figure in their life.",
+    },
+  },
+  {
+    match: nthWeekdayOfMonth(9, 1, 1),
+    theme: {
+      label: "Labor Day",
+      topic: "An age-appropriate informational passage about Labor Day — what it celebrates, why workers get a federal holiday, and one job kids might know that didn't exist 100 years ago.",
+    },
+  },
+  {
+    match: nthWeekdayOfMonth(10, 1, 2),
+    theme: {
+      label: "Indigenous Peoples Day",
+      topic: "An age-appropriate informational passage about Indigenous Peoples Day — what it honors and one tradition of an Indigenous nation in North America.",
+    },
+  },
+  {
+    match: nthWeekdayOfMonth(11, 4, 4),
+    theme: {
+      label: "Thanksgiving",
+      topic: "A warm short story about a family Thanksgiving — gratitude, a shared meal, and one small tradition the child remembers — kept inclusive and not centered on a single historical narrative.",
+    },
+  },
+];
+
 // ───── Monthly observances ────────────────────────────────────────
 const MONTHLY_THEMES: Record<number, DailyTheme[]> = {
   2: [
@@ -185,7 +266,11 @@ const WEEKDAY_THEMES: Record<number, DailyTheme[]> = {
     { label: "Tuesday animals", topic: "A short informational passage about an animal kids might not know much about (e.g., axolotl, narwhal, capybara) and one cool thing about it." },
   ],
   3: [
-    { label: "Wednesday history", topic: "A short age-appropriate historical passage about an inventor or explorer and what they did." },
+    {
+      label: "On this day in history",
+      topic:
+        "Write an age-appropriate informational passage about ONE notable historical event that happened on this exact calendar day in history (any year before this year). Lead with 'On this day,' or '[Month Day], [year]:'. Pick something a 2nd-3rd grader would find interesting (an invention, a discovery, a famous first, a landmark moment). If you genuinely cannot recall a notable event for this date, pick a famous person whose birthday is today instead and lead with their name.",
+    },
   ],
   4: [
     { label: "Thursday nature", topic: "A short informational passage about a plant, ecosystem, or weather phenomenon kids could observe in their neighborhood." },
@@ -220,6 +305,13 @@ export function pickThemeForDate(d: Date): DailyTheme {
 
   const fixedKey = `${pad(month)}-${pad(day)}`;
   if (FIXED_HOLIDAYS[fixedKey]) return FIXED_HOLIDAYS[fixedKey];
+
+  // Movable US holidays (Thanksgiving, MLK Day, Memorial Day, etc.)
+  // are anchored after fixed-date so e.g. July 4 always wins, but a
+  // floating Monday holiday gets picked up reliably.
+  for (const m of MOVABLE_HOLIDAYS) {
+    if (m.match(d)) return m.theme;
+  }
 
   // Use day-of-month as a stable seed so monthly observances rotate
   // through the array deterministically over a month.
