@@ -482,7 +482,7 @@ export default function RunningRecordRecorder({ roster }: { roster: Roster }) {
           )}
 
           <textarea
-            rows={5}
+            rows={6}
             value={passage}
             onChange={(e) => setPassage(e.target.value)}
             disabled={recording || pending}
@@ -491,7 +491,13 @@ export default function RunningRecordRecorder({ roster }: { roster: Roster }) {
                 ? "Generated passage will appear here, edit if you like…"
                 : "Paste the text the student will read aloud…"
             }
-            className="mt-2 w-full rounded-lg border border-zinc-300 bg-white px-2 py-2 text-sm focus:border-blue-500 focus:outline-none disabled:opacity-60"
+            className="mt-2 w-full rounded-2xl border border-zinc-300 bg-white px-4 py-3 text-zinc-900 shadow-inner focus:border-blue-500 focus:outline-none disabled:opacity-60 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
+            style={{
+              fontFamily: FRIENDLY_FONT,
+              fontSize: passageFontPx(gradeLevel),
+              lineHeight: 1.7,
+              letterSpacing: "0.01em",
+            }}
           />
         </div>
       </div>
@@ -614,6 +620,25 @@ function presetSkills(grade: string): string[] {
       ];
     default:
       return ["short vowels", "long vowels", "digraphs", "sight words"];
+  }
+}
+
+function passageFontPx(grade: string): number {
+  // Bigger type for emerging readers, smaller for fluent readers.
+  // Tested ranges from K iPad reading research, 22-26pt for K-1.
+  switch (grade) {
+    case "K":
+      return 26;
+    case "1st":
+      return 22;
+    case "2nd":
+      return 19;
+    case "3rd":
+      return 17;
+    case "4th":
+      return 16;
+    default:
+      return 18;
   }
 }
 
