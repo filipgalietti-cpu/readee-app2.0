@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, useTransition } from "react";
+import { useEffect, useMemo, useRef, useState, useTransition } from "react";
 import {
   Mic,
   MicOff,
@@ -19,6 +19,8 @@ import {
 import Link from "next/link";
 import InlineAddStudents from "@/components/classroom/InlineAddStudents";
 import { createAssignment } from "@/app/(protected)/classroom/actions";
+import { aiGeneratePassage } from "@/app/(protected)/classroom/authoring-actions";
+import { Wand2 } from "lucide-react";
 
 type Roster = {
   classroomId: string;
@@ -47,28 +49,40 @@ const FRIENDLY_FONT =
   '"Comic Neue", "Comic Sans MS", Quicksand, Nunito, ui-rounded, system-ui, -apple-system, sans-serif';
 
 export default function RunningRecordRecorder({ roster }: { roster: Roster }) {
-  const allChildren = roster.flatMap((r) =>
-    r.children.map((c) => ({
-      ...c,
-      classroomId: r.classroomId,
-      classroomName: r.classroomName,
-    })),
+  // Memoize so the array reference is stable across renders. Without
+  // this the auto-pick effect below sees a fresh array every render
+  // and re-fires constantly, which Turbopack HMR also misreads as a
+  // hook-count change after edits.
+  const allChildren = useMemo(
+    () =>
+      roster.flatMap((r) =>
+        r.children.map((c) => ({
+          ...c,
+          classroomId: r.classroomId,
+          classroomName: r.classroomName,
+        })),
+      ),
+    [roster],
   );
+  const allChildrenKey = allChildren.map((c) => c.id).join(",");
 
   const [childId, setChildId] = useState<string>(allChildren[0]?.id ?? "");
 
   // Auto-pick the first child once the roster populates. Without this,
   // teachers who add students inline see "Pick a student first" because
-  // useState initialized while allChildren was empty.
+  // useState initialized while allChildren was empty. Depend on the
+  // primitive key (joined ids) so the effect only re-fires when the
+  // roster actually changes.
   useEffect(() => {
     if (!childId && allChildren.length > 0) {
       setChildId(allChildren[0].id);
+      return;
     }
-    // If the currently-selected child was removed, reset to the first.
     if (childId && !allChildren.some((c) => c.id === childId)) {
       setChildId(allChildren[0]?.id ?? "");
     }
-  }, [childId, allChildren]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [allChildrenKey]);
   const [passage, setPassage] = useState("");
   const [gradeLevel, setGradeLevel] = useState("2nd");
   const [recording, setRecording] = useState(false);
@@ -79,6 +93,11 @@ export default function RunningRecordRecorder({ roster }: { roster: Roster }) {
   const [livePreview, setLivePreview] = useState<string>("");
   const [elapsed, setElapsed] = useState<number>(0);
   const [showAddRoster, setShowAddRoster] = useState(false);
+  // Passage source: paste your own, or have AI write a target-skill passage.
+  const [passageMode, setPassageMode] = useState<"paste" | "generate">("paste");
+  const [skillFocus, setSkillFocus] = useState<string>("");
+  const [genPending, setGenPending] = useState(false);
+  const [genErr, setGenErr] = useState<string | null>(null);
 
   const mediaRef = useRef<MediaRecorder | null>(null);
   const chunksRef = useRef<Blob[]>([]);
@@ -96,6 +115,34 @@ export default function RunningRecordRecorder({ roster }: { roster: Roster }) {
       typeof MediaRecorder !== "undefined";
     if (!ok) setUnsupported(true);
   }, []);
+
+  async function generate() {
+    setGenErr(null);
+    if (!skillFocus.trim()) {
+      setGenErr("Pick or type a skill focus first.");
+      return;
+    }
+    setGenPending(true);
+    try {
+      const res = await aiGeneratePassage({
+        // Topic doubles as the kid-readable theme; phonicsPattern is the
+        // skill anchor. The model knows to weave the pattern into a
+        // grade-appropriate ~40-80 word passage.
+        topic: `Practice passage targeting ${skillFocus.trim()}`,
+        gradeLevel,
+        phonicsPattern: skillFocus.trim(),
+      });
+      if (!res.ok) {
+        setGenErr(res.error);
+        return;
+      }
+      setPassage(res.passage.passage);
+    } catch (e: any) {
+      setGenErr(e?.message ?? "Could not generate.");
+    } finally {
+      setGenPending(false);
+    }
+  }
 
   function startLivePreview() {
     setLivePreview("");
@@ -313,17 +360,117 @@ export default function RunningRecordRecorder({ roster }: { roster: Roster }) {
           </select>
         </label>
 
-        <label className="mt-3 block text-xs font-semibold text-zinc-500">
-          Passage the student is reading
+        <div className="mt-3">
+          <div className="flex items-center justify-between gap-2">
+            <span className="text-xs font-semibold text-zinc-500">
+              Passage the student is reading
+            </span>
+            <div className="inline-flex rounded-full border border-zinc-200 bg-zinc-50 p-0.5 text-[11px] font-bold dark:border-slate-700 dark:bg-slate-950">
+              <button
+                type="button"
+                onClick={() => setPassageMode("paste")}
+                disabled={recording || pending}
+                className={`rounded-full px-2.5 py-0.5 transition disabled:opacity-60 ${
+                  passageMode === "paste"
+                    ? "bg-white text-blue-700 shadow-sm dark:bg-slate-800 dark:text-blue-300"
+                    : "text-zinc-500"
+                }`}
+              >
+                Paste
+              </button>
+              <button
+                type="button"
+                onClick={() => setPassageMode("generate")}
+                disabled={recording || pending}
+                className={`inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 transition disabled:opacity-60 ${
+                  passageMode === "generate"
+                    ? "bg-white text-blue-700 shadow-sm dark:bg-slate-800 dark:text-blue-300"
+                    : "text-zinc-500"
+                }`}
+              >
+                <Wand2 className="h-3 w-3" />
+                Generate
+              </button>
+            </div>
+          </div>
+
+          {passageMode === "generate" && (
+            <div className="mt-2 rounded-2xl border border-blue-200 bg-blue-50 p-3 dark:border-blue-900/40 dark:bg-blue-950/30">
+              <div className="text-[10px] font-bold uppercase tracking-widest text-blue-700 dark:text-blue-300">
+                Skill focus for {gradeLevel}
+              </div>
+              <div className="mt-2 flex flex-wrap gap-1.5">
+                {presetSkills(gradeLevel).map((s) => {
+                  const isActive = skillFocus === s;
+                  return (
+                    <button
+                      key={s}
+                      type="button"
+                      onClick={() => setSkillFocus(s)}
+                      disabled={recording || pending || genPending}
+                      className={`rounded-full border px-2.5 py-1 text-[11px] font-semibold transition disabled:opacity-60 ${
+                        isActive
+                          ? "border-blue-500 bg-blue-600 text-white"
+                          : "border-blue-200 bg-white text-blue-700 hover:bg-blue-100 dark:border-blue-900/40 dark:bg-slate-900 dark:text-blue-300"
+                      }`}
+                    >
+                      {s}
+                    </button>
+                  );
+                })}
+              </div>
+              <input
+                type="text"
+                value={skillFocus}
+                onChange={(e) => setSkillFocus(e.target.value)}
+                placeholder="Or type a skill (e.g. -tion suffix)"
+                disabled={recording || pending || genPending}
+                className="mt-2 w-full rounded-lg border border-blue-200 bg-white px-2 py-1.5 text-sm focus:border-blue-500 focus:outline-none disabled:opacity-60 dark:border-blue-900/40 dark:bg-slate-900"
+              />
+              <div className="mt-2 flex items-center justify-between gap-2">
+                <button
+                  type="button"
+                  onClick={generate}
+                  disabled={recording || pending || genPending || !skillFocus.trim()}
+                  className="inline-flex items-center gap-1.5 rounded-full bg-blue-600 px-3 py-1.5 text-xs font-bold text-white transition hover:bg-blue-700 disabled:opacity-60"
+                >
+                  {genPending ? (
+                    <>
+                      <Loader2 className="h-3 w-3 animate-spin" />
+                      Generating…
+                    </>
+                  ) : passage ? (
+                    <>
+                      <Wand2 className="h-3 w-3" />
+                      Try another
+                    </>
+                  ) : (
+                    <>
+                      <Wand2 className="h-3 w-3" />
+                      Generate passage
+                    </>
+                  )}
+                </button>
+                {genErr && (
+                  <span className="text-xs font-semibold text-red-700">{genErr}</span>
+                )}
+              </div>
+            </div>
+          )}
+
           <textarea
             rows={5}
             value={passage}
             onChange={(e) => setPassage(e.target.value)}
             disabled={recording || pending}
-            placeholder="Paste the text the student will read aloud…"
-            className="mt-1 w-full rounded-lg border border-zinc-300 bg-white px-2 py-2 text-sm focus:border-blue-500 focus:outline-none disabled:opacity-60"
+            placeholder={
+              passageMode === "generate"
+                ? "Generated passage will appear here, edit if you like…"
+                : "Paste the text the student will read aloud…"
+            }
+            className="mt-2 w-full rounded-lg border border-zinc-300 bg-white px-2 py-2 text-sm focus:border-blue-500 focus:outline-none disabled:opacity-60"
           />
-        </label>
+        </div>
       </div>
 
       <div className="flex flex-col items-center gap-2">
@@ -390,6 +537,61 @@ export default function RunningRecordRecorder({ roster }: { roster: Roster }) {
       )}
     </div>
   );
+}
+
+function presetSkills(grade: string): string[] {
+  // Common phonics / fluency targets per grade. Teachers can also type
+  // their own. Source: K-4 scope-and-sequence used by major basal
+  // programs (Wilson, Fundations, F&P).
+  switch (grade) {
+    case "K":
+      return [
+        "short a (CVC)",
+        "short i (CVC)",
+        "short o (CVC)",
+        "consonant blends",
+        "sight words",
+        "final-e",
+      ];
+    case "1st":
+      return [
+        "long vowels (silent e)",
+        "digraphs sh/ch/th",
+        "vowel teams ee/ea",
+        "r-controlled ar/or",
+        "sight words",
+        "blends",
+      ];
+    case "2nd":
+      return [
+        "r-controlled vowels",
+        "vowel teams",
+        "diphthongs ou/ow",
+        "soft c and g",
+        "contractions",
+        "common suffixes",
+      ];
+    case "3rd":
+      return [
+        "multisyllabic words",
+        "prefixes re-/un-/dis-",
+        "suffixes -tion/-sion",
+        "soft c and g",
+        "compound words",
+        "vowel teams",
+      ];
+    case "4th":
+      return [
+        "schwa",
+        "Greek roots",
+        "Latin roots",
+        "prefixes/suffixes",
+        "multimorphemic words",
+        "homophones",
+      ];
+    default:
+      return ["short vowels", "long vowels", "digraphs", "sight words"];
+  }
 }
 
 function formatTime(seconds: number): string {

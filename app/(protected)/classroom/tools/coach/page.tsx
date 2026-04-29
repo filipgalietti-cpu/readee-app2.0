@@ -87,16 +87,17 @@ export default async function CoachPage() {
     <div className="mx-auto max-w-2xl px-6 py-10">
       <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-blue-600">
         <ClipboardList className="h-4 w-4" />
-        AI Running Record
+        AI Running Record · for specialists & interventionists
       </div>
       <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
-        Listen to one student, get a running record
+        1:1 reading assessment in 90 seconds
       </h1>
       <p className="mt-1 text-sm text-zinc-500">
-        Pull a kid, hand them a passage, and tap record. Readee transcribes,
-        scores accuracy and WCPM, flags miscues, and suggests one focus area
-        for tomorrow. Saves to that student&apos;s record log so you can see
-        their fluency trend over weeks.
+        For weekly running records, IEP progress checks, and Title I
+        diagnostics. Generate a passage targeting any phonics skill, or
+        paste your own. Tap record, listen as the student reads, and
+        Readee returns transcript, WCPM, accuracy, miscues, and a focus
+        area, saved to that student&apos;s record log.
       </p>
       <div className="mt-6">
         <RunningRecordRecorder roster={roster} />
