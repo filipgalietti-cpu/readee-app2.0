@@ -1,8 +1,9 @@
 # AI tools E2E test plan, Apr 29 2026
 
-Sign in as `filip.galietti+test2@readee.app` (now `plan=school`, full
-access). Open browser devtools → Network tab → filter "Fetch/XHR" so
-you can see request/response bodies if anything fails.
+Sign in as `filip.galietti+test2@readee.app` (now `plan=school`,
+educator role, full access). Open browser devtools → Network tab →
+filter "Fetch/XHR" so you can see request/response bodies if anything
+fails.
 
 For each tool below: do the steps, tick the box if it works, send me
 the failure details if it doesn't. Format for failures:
@@ -14,54 +15,18 @@ HTTP code from network tab: e.g. 500
 Response body (red error): paste here
 ```
 
-Order is highest-risk first. Don't skip; some failures only show up
-after a successful run elsewhere (credits, share state, etc.).
-
 ---
 
-## 1. Buddy live mode (highest risk)
+# Phase A — Teacher-side (test as +test2 educator)
+
+## 1. Buddy (kid-facing UI accessible from teacher) — ✓ PASS (2026-04-29)
 
 URL: `https://learn.readee.app/buddy`
 
-- [ ] Page loads, you see 4 mode tiles: **Read with me**,
-      **What does this word mean?**, **Tell me a story**, **Quick quiz**
-- [ ] Pick **"What does this word mean?"** (lowest setup, fastest to
-      verify the connection works)
-- [ ] Browser asks for mic permission, click Allow
-- [ ] Status indicator says "Connected" or "Listening" within 5s
-- [ ] Tap one of the 6 word cards and say "what does this mean?" —
-      buddy replies with audio
-- [ ] Then test **"Read with me"** — confirm a fresh passage renders
-      and the mic listens while you read aloud
-- [ ] Then test **"Tell me a story"** — pick a topic, confirm the
-      opening prints + buddy prompts for what happens next
-- [ ] Then test **"Quick quiz"** — confirm a passage + 3 questions
-      flow works
-- [ ] If live mode fails on any mode, the UI auto-falls back to
-      turn-based chat, confirm the fallback works (type a message,
-      see a text reply)
+Mode picker confirmed renders correctly. Live mode walkthrough
+deferred until parent/student phase since Buddy is kid-facing.
 
-**If failure**: open Network tab, filter for `buddy-live`, copy the
-status code + response body of the `/api/buddy-live/token` call.
-
-## 2. Ask Readee parent wizard
-
-URL: `https://learn.readee.app/dashboard/ask-readee`
-
-> Heads up: this is a parent-side tool. Your test2 account is an
-> educator. If the page redirects to /upgrade or shows a paywall,
-> tell me and I'll add a parent-capability flag to the same account.
-
-- [ ] Page loads with 3-step wizard
-- [ ] Step 1: pick a child, type "a story about a brave puppy"
-- [ ] Step 2: enable passage + 3 questions
-- [ ] Step 3: enable image + audio, click "Build with Readee.ai"
-- [ ] Loading state shows the gooey-eight loader, "Building, this
-      takes 20-40 seconds…"
-- [ ] After 20-40s, page redirects to a built lesson with passage,
-      image, and questions
-
-## 3. Authoring wizard (teacher AI assignment)
+## 2. Authoring wizard (teacher AI assignment)
 
 URL: `https://learn.readee.app/classroom/authoring/wizard`
 
@@ -72,24 +37,24 @@ URL: `https://learn.readee.app/classroom/authoring/wizard`
 - [ ] Step 2: confirm passage settings
 - [ ] Step 3: pick 3 questions, MCQ
 - [ ] Step 4: enable image + audio, click "Build assignment"
-- [ ] Loading state shows the loader + progress bar climbing
+- [ ] Loading state shows the gooey-eight loader + progress bar climbing
 - [ ] After 30-60s, redirected to a built quiz at
       `/classroom/authoring/quiz/<id>`
 - [ ] Quiz shows passage, image, and 3 questions
 
-## 4. Coach (teacher voice analyzer)
+## 3. Coach (teacher voice analyzer)
 
 URL: `https://learn.readee.app/classroom/tools/coach`
 
 - [ ] Page loads, sees recorder UI
-- [ ] Pick a child from dropdown (any one is fine)
+- [ ] Pick a child from dropdown (demo students should be there)
 - [ ] Click record, read aloud for ~30s ("The brown dog ran across the
       field and chased a butterfly. He stopped to drink water from a
       stream. Then he heard his owner calling his name.")
 - [ ] Click stop
 - [ ] Within 30s, see transcription + WCPM + accuracy + coach feedback
 
-## 5. Translate
+## 4. Translate
 
 URL: `https://learn.readee.app/classroom/tools/translate`
 
@@ -101,7 +66,7 @@ URL: `https://learn.readee.app/classroom/tools/translate`
 - [ ] Translate it again to confirm cache hit ("cached · free" badge
       should appear, no credit charge)
 
-## 6. Writing rubric
+## 5. Writing rubric
 
 URL: `https://learn.readee.app/classroom/tools/writing-rubric`
 
@@ -112,7 +77,7 @@ URL: `https://learn.readee.app/classroom/tools/writing-rubric`
 - [ ] Within 10s, see 4 score cards (Ideas, Organization, Voice,
       Conventions) with band labels
 
-## 7. Calibrated item
+## 6. Calibrated item
 
 URL: `https://learn.readee.app/classroom/tools/calibrated-item`
 
@@ -123,40 +88,70 @@ URL: `https://learn.readee.app/classroom/tools/calibrated-item`
 - [ ] Click Generate
 - [ ] Within 10s, see one MCQ with prompt, 4 choices, correct flagged
 
-## 8. IEP note
+## 7. IEP note
 
 URL: `https://learn.readee.app/classroom/tools/iep-note`
 
-- [ ] Page loads (your account is school-tier so this should clear
-      the gate)
+- [ ] Page loads (school-tier ✓)
 - [ ] Pick a child
-- [ ] Paste an annual goal like "By end of Q4, [Name] will read
+- [ ] Paste annual goal like "By end of Q4, [Name] will read
       grade-level passages with 90% accuracy"
 - [ ] Click Draft progress note
 - [ ] Within 15s, see 4 sections (Present Levels, Evidence,
       Progress Toward Goal, Recommended Supports)
 
+---
+
+# Phase B — Parent-side (deferred until teacher phase is clean)
+
+After teacher phase: I'll create or repurpose a parent test account so
+you can verify these without role mixing.
+
+## 8. Ask Readee parent wizard
+
+URL: `https://learn.readee.app/dashboard/ask-readee`
+
+- [ ] Page loads with 3-step wizard
+- [ ] Step 1: pick a child, type "a story about a brave puppy"
+- [ ] Step 2: enable passage + 3 questions
+- [ ] Step 3: enable image + audio, click "Build with Readee.ai"
+- [ ] Loading state, gooey-eight loader, "Building, this takes 20-40 seconds…"
+- [ ] After 20-40s, redirected to a built lesson
+
 ## 9. Homework scan
 
 URL: `https://learn.readee.app/dashboard/homework-scan`
 
-- [ ] Page loads (parent-side, may paywall same as Ask Readee)
-- [ ] Upload any photo of writing/worksheet (your phone screenshot of
-      this checklist works in a pinch)
+- [ ] Page loads
+- [ ] Upload any photo of writing/worksheet
 - [ ] Click Scan
 - [ ] Within 20s, see analyzed text + tips
 
 ---
 
-## After you're done
+# Phase C — Student-side (Buddy live mode)
+
+After teacher phase: log in as a child profile (or use the kid mode
+launch from a parent account) to actually drive Buddy through one
+full conversation in each mode.
+
+URL: `https://learn.readee.app/buddy`
+
+- [ ] **Read with me** — fresh passage renders, mic listens during read
+- [ ] **What does this word mean?** — tap a word card, ask, get audio reply
+- [ ] **Tell me a story** — pick topic, see opening, reply with what
+      happens next, story continues
+- [ ] **Quick quiz** — passage + 3 questions, all 3 answer flows work
+- [ ] If live mode auth fails, UI auto-falls back to turn-based chat
+
+---
+
+## After each phase
 
 Send me a summary like:
 
 ```
-✓ 1, 3, 4, 5, 6, 7, 8
-✗ 2 — Ask Readee paywalled, "educator only" message
-✗ 9 — Homework scan threw 500 on upload
+Phase A: ✓ 2, 3, 5, 6, 7  ✗ 4 (translate threw 500)
 ```
 
-And I'll fix the failures in order. Don't fix anything yourself, just
-report what you saw.
+And I'll fix the failures in order before moving to Phase B.
