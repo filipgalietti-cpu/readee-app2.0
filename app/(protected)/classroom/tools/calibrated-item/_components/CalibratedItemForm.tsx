@@ -6,6 +6,8 @@ import { ReadeeAiLoader } from "@/components/loaders/ReadeeAiLoader";
 
 type StandardOption = {
   standardId: string;
+  /** Kid-friendly lesson name; the teacher reads this, not the ID. */
+  title: string;
   standardDescription: string;
   domain: string;
   grade: string;
@@ -201,7 +203,7 @@ export default function CalibratedItemForm({
           ) : (
             standardsInDomain.map((s) => (
               <option key={s.standardId} value={s.standardId}>
-                {s.standardId}
+                {s.title}
               </option>
             ))
           )}
@@ -210,9 +212,17 @@ export default function CalibratedItemForm({
         {selectedStandard && (
           <div className="mt-2 flex items-start gap-2 rounded-2xl border border-indigo-100 bg-indigo-50 px-3 py-2 text-xs text-indigo-900 dark:border-indigo-900/40 dark:bg-indigo-950/30 dark:text-indigo-200">
             <BookOpen className="mt-0.5 h-3 w-3 flex-shrink-0" />
-            <div>
-              <div className="font-bold">{selectedStandard.standardId} · {selectedStandard.domain}</div>
-              <div className="mt-0.5 text-indigo-800 dark:text-indigo-200">
+            <div className="min-w-0 flex-1">
+              <div className="flex flex-wrap items-baseline gap-1.5">
+                <span className="font-bold">{selectedStandard.title}</span>
+                <span className="rounded bg-white/80 px-1.5 py-0.5 font-mono text-[10px] font-semibold text-indigo-700 dark:bg-slate-900/60">
+                  {selectedStandard.standardId}
+                </span>
+                <span className="text-[10px] text-indigo-700 dark:text-indigo-300">
+                  · {selectedStandard.domain}
+                </span>
+              </div>
+              <div className="mt-1 text-indigo-800 dark:text-indigo-200">
                 {selectedStandard.standardDescription}
               </div>
             </div>

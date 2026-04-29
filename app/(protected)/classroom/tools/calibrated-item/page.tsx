@@ -1,12 +1,17 @@
 import { Wand2, Info } from "lucide-react";
 import { requireTeacherTier } from "@/lib/plan/teacher-gate";
 import { getAllStandards } from "@/lib/data/standards";
+import sampleLessons from "@/app/data/sample-lessons.json";
 import CalibratedItemForm from "./_components/CalibratedItemForm";
 
 export const dynamic = "force-dynamic";
 
 type StandardOption = {
   standardId: string;
+  /** Kid-friendly lesson title from sample-lessons.json when we
+   *  have one (e.g. 'Finding Key Details' for RL.K.1). Falls back
+   *  to the formal CCSS description when no lesson exists. */
+  title: string;
   standardDescription: string;
   domain: string;
   grade: string;
@@ -25,11 +30,22 @@ function gradeKeyToShort(grade: string): string {
 export default async function CalibratedItemPage() {
   await requireTeacherTier({ min: "teacher_solo", reason: "calibrated_items" });
 
+  // Lookup table standardId → kid-friendly lesson title. The lesson
+  // catalog is the same one Journey + Practice Hub display, so the
+  // teacher sees the same names here as on the kid-facing surfaces.
+  const titleByStandard = new Map<string, string>();
+  for (const l of sampleLessons as { standardId?: string; title?: string }[]) {
+    if (l?.standardId && l?.title) {
+      titleByStandard.set(l.standardId, l.title);
+    }
+  }
+
   // Build the catalog at request time so the form can show a real
   // standard picker grouped by grade + domain. Stripping questions
   // off keeps the props payload small.
   const standards: StandardOption[] = getAllStandards().map((s) => ({
     standardId: s.standard_id,
+    title: titleByStandard.get(s.standard_id) ?? s.standard_description,
     standardDescription: s.standard_description,
     domain: s.domain,
     grade: gradeKeyToShort(s.grade),
