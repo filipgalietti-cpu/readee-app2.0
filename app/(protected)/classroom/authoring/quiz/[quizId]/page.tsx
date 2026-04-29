@@ -76,25 +76,53 @@ export default async function QuizBuilderPage({
   }[] = classroomList.map((c) => ({ ...c, children: [] }));
 
   if (classroomList.length > 0) {
-    const ids = classroomList.map((c) => c.id);
-    const { data: roster } = await supabase
-      .from("classroom_memberships")
-      .select("classroom_id, children(id, first_name)")
-      .in("classroom_id", ids);
-    const byClass = new Map<string, { id: string; first_name: string }[]>();
-    for (const r of (roster ?? []) as any[]) {
-      const child = r.children;
-      if (!child?.id) continue;
-      const arr = byClass.get(r.classroom_id) ?? [];
-      arr.push({ id: child.id, first_name: child.first_name ?? "Student" });
-      byClass.set(r.classroom_id, arr);
+    try {
+      const ids = classroomList.map((c) => c.id);
+      // Two-step fetch: avoid Supabase relation-inference quirks by
+      // pulling memberships first, then children separately. The
+      // embedded join `children(id, first_name)` returns either an
+      // array or an object depending on the inferred cardinality, and
+      // the typed access can throw if RLS surprises us. Keep the page
+      // resilient — a roster-fetch failure should never break the
+      // builder render; "Specific students" just degrades to disabled.
+      const { data: memberships } = await supabase
+        .from("classroom_memberships")
+        .select("classroom_id, child_id")
+        .in("classroom_id", ids);
+      const memberRows = (memberships ?? []) as {
+        classroom_id: string;
+        child_id: string;
+      }[];
+      const childIds = Array.from(new Set(memberRows.map((m) => m.child_id)));
+      const childMap = new Map<string, string>();
+      if (childIds.length > 0) {
+        const { data: kids } = await supabase
+          .from("children")
+          .select("id, first_name")
+          .in("id", childIds);
+        for (const k of (kids ?? []) as { id: string; first_name: string | null }[]) {
+          childMap.set(k.id, k.first_name ?? "Student");
+        }
+      }
+      const byClass = new Map<string, { id: string; first_name: string }[]>();
+      for (const m of memberRows) {
+        const name = childMap.get(m.child_id);
+        if (!name) continue;
+        const arr = byClass.get(m.classroom_id) ?? [];
+        arr.push({ id: m.child_id, first_name: name });
+        byClass.set(m.classroom_id, arr);
+      }
+      classrooms = classroomList.map((c) => ({
+        ...c,
+        children: (byClass.get(c.id) ?? []).sort((a, b) =>
+          a.first_name.localeCompare(b.first_name),
+        ),
+      }));
+    } catch (e) {
+      console.error("[quiz/[quizId]/page] roster fetch failed", e);
+      // Leave classrooms with empty children — dialog falls back to
+      // whole-class only.
     }
-    classrooms = classroomList.map((c) => ({
-      ...c,
-      children: (byClass.get(c.id) ?? []).sort((a, b) =>
-        a.first_name.localeCompare(b.first_name),
-      ),
-    }));
   }
 
   return (
