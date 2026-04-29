@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Loader2,
   AlertCircle,
@@ -46,6 +46,21 @@ export default function PlanTab({
   );
   const [goalId, setGoalId] = useState<string>(activeGoals[0]?.id ?? "");
   const [pastedGoal, setPastedGoal] = useState("");
+
+  // Tabs stay mounted across switches, so this component first renders
+  // before goals load. Sync `goalId` whenever `activeGoals` arrives or
+  // changes, otherwise the saved-goals mode submits with goalId="".
+  useEffect(() => {
+    if (activeGoals.length === 0) {
+      setGoalMode("paste");
+      setGoalId("");
+      return;
+    }
+    if (!activeGoals.some((g) => g.id === goalId)) {
+      setGoalId(activeGoals[0].id);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeGoals.map((g) => g.id).join("|")]);
   const [plan, setPlan] = useState<Plan | null>(null);
   const [pending, setPending] = useState(false);
   const [err, setErr] = useState<string | null>(null);
