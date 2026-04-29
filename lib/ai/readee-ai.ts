@@ -75,6 +75,30 @@ function normalizePassageWhitespace(s: string): string {
   return out;
 }
 
+/**
+ * Strip residual markdown the model sometimes ignores instructions on:
+ * **bold**, *italic*, _italic_, `code`, [link](url), leading "# headings".
+ * Conservative — preserves text content, removes markup characters only.
+ */
+function stripMarkdown(s: string): string {
+  if (!s) return s;
+  let out = s;
+  // **bold** and __bold__
+  out = out.replace(/\*\*(.+?)\*\*/g, "$1");
+  out = out.replace(/__(.+?)__/g, "$1");
+  // *italic* and _italic_, but only when they wrap a word, not when
+  // standalone characters of a sentence.
+  out = out.replace(/(^|[\s(])\*([^\s*][^*]*?)\*(?=[\s.,!?;:)]|$)/g, "$1$2");
+  out = out.replace(/(^|[\s(])_([^\s_][^_]*?)_(?=[\s.,!?;:)]|$)/g, "$1$2");
+  // `code` ticks
+  out = out.replace(/`([^`]+)`/g, "$1");
+  // [text](url) → text
+  out = out.replace(/\[([^\]]+)\]\([^)]+\)/g, "$1");
+  // leading "# Heading"
+  out = out.replace(/^#+\s+/gm, "");
+  return out;
+}
+
 export function getClient(): GoogleGenAI {
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
@@ -295,15 +319,32 @@ const MATCHING_SCHEMA = {
 
 const PASSAGE_SYSTEM = `You write short decodable reading passages for K-4 elementary students aligned to the Science of Reading.
 
-Rules:
-- Keep it SHORT: K = 30-60 words, 1st = 60-120, 2nd = 120-200, 3rd = 200-300, 4th = 300-400.
-- Use grade-appropriate vocabulary. Prefer common decodable words for K-2.
-- If the teacher names a phonics pattern (short a, long e, r-controlled, -tion), use it consistently. Bold the target words with **asterisks**.
-- Narrative style: simple characters, clear setting, a small problem, a small resolution. No fantasy jargon or historical-era vocabulary.
-- ALWAYS put a single space after every comma, period, question mark, and exclamation point — even when a line break follows.
-- For poems / verse, separate every poem line with a real newline character (\\n) inside the JSON string. Do NOT smash lines together.
-- For prose, separate paragraphs with a blank line (two newlines). One sentence per line is fine; never run multiple sentences together with no whitespace.
-- Return ONLY the passage text in the "passage" field, and a short "title" field (≤ 8 words). No preamble.`;
+LENGTH BY GRADE (strict):
+- K = 30-60 words. Sentences 3-7 words. No more than 8 sentences total.
+- 1st = 60-120 words. Sentences 4-10 words.
+- 2nd = 120-200 words. Sentences 5-14 words.
+- 3rd = 200-300 words. Multi-clause OK.
+- 4th = 300-400 words.
+
+VOCABULARY BY GRADE (strict):
+- K: CVC words + top-100 sight words ONLY. No multisyllabic words unless they are explicit sight words ("mother", "little", "into"). Avoid: "garden", "hopeless", "carefully", "eagerly", "beautiful", "replied", "dirty". If a kid in October of K can't decode it, do not use it.
+- 1st: CVC + simple long vowels (silent e) + digraphs (sh/ch/th) + top-200 sight words. Two-syllable compound words OK.
+- 2nd: r-controlled vowels, vowel teams, common suffixes/prefixes. Multisyllabic words OK if morphemes are clear.
+- 3rd-4th: richer vocabulary OK; still avoid abstract words a kid wouldn't say out loud.
+
+PHONICS TARGETING:
+- If the teacher names a phonics pattern (short a, long e, r-controlled, -tion, common suffixes), weave instances of that pattern through the passage so the student practices it in context.
+- For K-2, aim for 4-8 explicit pattern words per passage; for 3-4, 6-12.
+- DO NOT mark target words with asterisks, bold, italics, or any other formatting. The output is read aloud by a child or fed to a transcriber. Plain prose only.
+
+STYLE:
+- Simple characters, clear setting, a small problem, a small resolution. No fantasy jargon or historical-era vocabulary. No proper nouns harder than the passage's grade band.
+- Always a single space after every comma, period, question mark, and exclamation point.
+- For prose, separate paragraphs with a blank line. For poems, every line on its own line via \\n.
+
+OUTPUT:
+- "title" ≤ 8 words.
+- "passage" is plain text. NO markdown. NO asterisks. NO underscores. NO HTML tags. NO leading/trailing whitespace beyond what the rendering needs.`;
 
 const PASSAGE_SCHEMA = {
   type: Type.OBJECT,
@@ -1315,7 +1356,7 @@ export async function generatePassage(input: {
     ? `Grade level: ${input.gradeLevel}.`
     : "Grade level: 2nd.";
   const phonicsLine = input.phonicsPattern?.trim()
-    ? `Phonics focus: emphasize ${input.phonicsPattern.trim()}. Bold target words with **asterisks**.`
+    ? `Phonics focus: weave ${input.phonicsPattern.trim()} into the passage so the student gets practice. Plain prose only — NO bold, NO asterisks, NO markdown of any kind.`
     : "";
   const userPrompt = [gradeLine, phonicsLine, "", `Topic: ${input.topic.trim()}`, "", "Write the passage per the schema. Also suggest 3 short comprehension questions (not MCQs — just prompt strings) in suggested_questions."]
     .filter(Boolean)
@@ -1340,8 +1381,10 @@ export async function generatePassage(input: {
       passage?: string;
       suggested_questions?: string[];
     };
-    const title = (parsed.title ?? "").trim();
-    const passage = normalizePassageWhitespace((parsed.passage ?? "").trim());
+    const title = stripMarkdown((parsed.title ?? "").trim());
+    const passage = stripMarkdown(
+      normalizePassageWhitespace((parsed.passage ?? "").trim()),
+    );
     const suggested = Array.isArray(parsed.suggested_questions)
       ? parsed.suggested_questions.map((s) => String(s).trim()).filter(Boolean).slice(0, 5)
       : [];

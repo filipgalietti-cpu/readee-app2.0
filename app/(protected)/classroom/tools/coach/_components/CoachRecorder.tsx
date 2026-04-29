@@ -83,8 +83,28 @@ export default function RunningRecordRecorder({ roster }: { roster: Roster }) {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [allChildrenKey]);
+
   const [passage, setPassage] = useState("");
+  // Default to 2nd until a child is picked; below we sync to the
+  // student's actual grade so generated passages match their level.
   const [gradeLevel, setGradeLevel] = useState("2nd");
+  // Has the teacher manually overridden the grade selector? If yes,
+  // we stop auto-syncing so flipping students doesn't clobber the
+  // teacher's choice.
+  const [gradeTouched, setGradeTouched] = useState(false);
+
+  // Sync the grade dropdown to the picked student's actual grade so
+  // generated passages target the right level. Only runs while the
+  // teacher hasn't manually overridden the dropdown.
+  useEffect(() => {
+    if (gradeTouched) return;
+    const picked = allChildren.find((c) => c.id === childId);
+    if (picked?.grade && picked.grade !== gradeLevel) {
+      setGradeLevel(picked.grade);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [childId, allChildrenKey, gradeTouched]);
+
   const [recording, setRecording] = useState(false);
   const [pending, setPending] = useState(false);
   const [record, setRecord] = useState<RunningRecord | null>(null);
@@ -348,7 +368,10 @@ export default function RunningRecordRecorder({ roster }: { roster: Roster }) {
           Grade
           <select
             value={gradeLevel}
-            onChange={(e) => setGradeLevel(e.target.value)}
+            onChange={(e) => {
+              setGradeLevel(e.target.value);
+              setGradeTouched(true);
+            }}
             disabled={recording || pending}
             className="ml-2 rounded-lg border border-zinc-300 px-2 py-1 text-sm disabled:opacity-60"
           >
