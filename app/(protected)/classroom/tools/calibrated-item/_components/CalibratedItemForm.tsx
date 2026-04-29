@@ -1,8 +1,16 @@
 "use client";
 
 import { useMemo, useState, useEffect } from "react";
-import { Loader2, AlertCircle, Sparkles, Check, BookOpen } from "lucide-react";
+import {
+  Loader2,
+  AlertCircle,
+  Sparkles,
+  Check,
+  BookOpen,
+  Wand2,
+} from "lucide-react";
 import { ReadeeAiLoader } from "@/components/loaders/ReadeeAiLoader";
+import { aiGeneratePassage } from "@/app/(protected)/classroom/authoring-actions";
 
 type StandardOption = {
   standardId: string;
@@ -105,9 +113,42 @@ export default function CalibratedItemForm({
 
   const [targetDifficulty, setTargetDifficulty] = useState(3);
   const [passageContext, setPassageContext] = useState("");
+  const [passageMode, setPassageMode] = useState<"paste" | "generate">("paste");
+  const [passageTopic, setPassageTopic] = useState("");
+  const [genPending, setGenPending] = useState(false);
+  const [genErr, setGenErr] = useState<string | null>(null);
   const [item, setItem] = useState<Item | null>(null);
   const [pending, setPending] = useState(false);
   const [err, setErr] = useState<string | null>(null);
+
+  async function generatePassageNow() {
+    setGenErr(null);
+    const topic =
+      passageTopic.trim() ||
+      (selectedStandard
+        ? `A short reading passage suitable for practicing "${selectedStandard.title}" at grade ${gradeLevel}.`
+        : "");
+    if (!topic) {
+      setGenErr("Pick a standard or type a topic first.");
+      return;
+    }
+    setGenPending(true);
+    try {
+      const res = await aiGeneratePassage({
+        topic,
+        gradeLevel,
+      });
+      if (!res.ok) {
+        setGenErr(res.error);
+        return;
+      }
+      setPassageContext(res.passage.passage);
+    } catch (e: any) {
+      setGenErr(e?.message ?? "Could not generate.");
+    } finally {
+      setGenPending(false);
+    }
+  }
 
   async function submit() {
     setErr(null);
@@ -245,18 +286,123 @@ export default function CalibratedItemForm({
           />
         </label>
 
-        {/* Step 4 — optional passage anchor */}
+        {/* Step 5 — optional passage anchor */}
         <details className="group mt-4 rounded-2xl border border-zinc-200 bg-white dark:border-slate-700 dark:bg-slate-900">
           <summary className="flex cursor-pointer list-none items-center justify-between gap-2 px-3 py-2 text-[11px] font-bold text-zinc-500 [&::-webkit-details-marker]:hidden">
-            <span>5. Anchor to a passage <span className="font-normal text-zinc-400">(optional)</span></span>
+            <span>
+              5. Anchor to a passage{" "}
+              <span className="font-normal text-zinc-400">(optional)</span>
+            </span>
             <span className="text-zinc-400 group-open:rotate-180 transition-transform">▾</span>
           </summary>
           <div className="px-3 pb-3">
+            <div className="mb-2 inline-flex rounded-full border border-zinc-200 bg-zinc-50 p-0.5 text-[11px] font-bold dark:border-slate-700 dark:bg-slate-950">
+              <button
+                type="button"
+                onClick={() => setPassageMode("paste")}
+                className={`rounded-full px-2.5 py-0.5 transition ${
+                  passageMode === "paste"
+                    ? "bg-white text-indigo-700 shadow-sm dark:bg-slate-800 dark:text-indigo-300"
+                    : "text-zinc-500"
+                }`}
+              >
+                Paste
+              </button>
+              <button
+                type="button"
+                onClick={() => setPassageMode("generate")}
+                className={`inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 transition ${
+                  passageMode === "generate"
+                    ? "bg-white text-indigo-700 shadow-sm dark:bg-slate-800 dark:text-indigo-300"
+                    : "text-zinc-500"
+                }`}
+              >
+                <Wand2 className="h-3 w-3" />
+                Generate
+              </button>
+            </div>
+
+            {passageMode === "generate" && (
+              <div className="mb-2 rounded-2xl border border-indigo-200 bg-indigo-50 p-3 dark:border-indigo-900/40 dark:bg-indigo-950/30">
+                <div className="text-[10px] font-bold uppercase tracking-widest text-indigo-700 dark:text-indigo-300">
+                  Theme
+                </div>
+                <div className="mt-2 flex flex-wrap gap-1.5">
+                  {[
+                    "animals",
+                    "weather",
+                    "space",
+                    "sports",
+                    "food",
+                    "friendship",
+                    "inventions",
+                    "community helpers",
+                  ].map((t) => (
+                    <button
+                      key={t}
+                      type="button"
+                      onClick={() => setPassageTopic(t)}
+                      className={`rounded-full border px-2.5 py-1 text-[11px] font-semibold transition ${
+                        passageTopic === t
+                          ? "border-indigo-500 bg-indigo-600 text-white"
+                          : "border-indigo-200 bg-white text-indigo-700 hover:bg-indigo-100 dark:border-indigo-900/40 dark:bg-slate-900 dark:text-indigo-300"
+                      }`}
+                    >
+                      {t}
+                    </button>
+                  ))}
+                </div>
+                <input
+                  type="text"
+                  value={passageTopic}
+                  onChange={(e) => setPassageTopic(e.target.value)}
+                  placeholder={
+                    selectedStandard
+                      ? `Or type a topic (default: passage targeting "${selectedStandard.title}")`
+                      : "Or type a topic"
+                  }
+                  className="mt-2 w-full rounded-lg border border-indigo-200 bg-white px-2 py-1.5 text-xs focus:border-indigo-500 focus:outline-none dark:border-indigo-900/40 dark:bg-slate-900"
+                />
+                <div className="mt-2 flex items-center justify-between gap-2">
+                  <button
+                    type="button"
+                    onClick={generatePassageNow}
+                    disabled={genPending}
+                    className="inline-flex items-center gap-1.5 rounded-full bg-indigo-600 px-3 py-1.5 text-[11px] font-bold text-white transition hover:bg-indigo-700 disabled:opacity-60"
+                  >
+                    {genPending ? (
+                      <>
+                        <Loader2 className="h-3 w-3 animate-spin" />
+                        Writing…
+                      </>
+                    ) : passageContext ? (
+                      <>
+                        <Wand2 className="h-3 w-3" />
+                        Try another
+                      </>
+                    ) : (
+                      <>
+                        <Wand2 className="h-3 w-3" />
+                        Generate passage
+                      </>
+                    )}
+                  </button>
+                  {genErr && (
+                    <span className="text-xs font-semibold text-red-700">{genErr}</span>
+                  )}
+                </div>
+              </div>
+            )}
+
             <textarea
-              rows={3}
+              rows={5}
               value={passageContext}
               onChange={(e) => setPassageContext(e.target.value)}
-              placeholder="Paste a passage if you want the question to reference it directly. Leave blank for a standalone question."
+              placeholder={
+                passageMode === "generate"
+                  ? "Generated passage will appear here, edit if you like…"
+                  : "Paste a passage if you want the question to reference it directly. Leave blank for a standalone question."
+              }
               className="w-full rounded-lg border border-zinc-300 bg-white px-2 py-2 text-xs focus:border-indigo-500 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
             />
           </div>
