@@ -129,17 +129,55 @@ Trail:
   /classroom/tools and the classroom hero card; orphan
   CalibratedItemForm component deleted)
 
-## 7. IEP note
+## 7. IEP / 504 workspace — UPGRADED (2026-04-29)
 
 URL: `https://learn.readee.app/classroom/tools/iep-note`
 
-- [ ] Page loads (school-tier ✓)
-- [ ] Pick a child
-- [ ] Paste annual goal like "By end of Q4, [Name] will read
-      grade-level passages with 90% accuracy"
-- [ ] Click Draft progress note
-- [ ] Within 15s, see 4 sections (Present Levels, Evidence,
-      Progress Toward Goal, Recommended Supports)
+Promoted from "draft a note" into a full 3-tab SPED workspace.
+Commit `6f6d13e`, migrations 082-084 applied.
+
+**Goals tab**
+- [ ] Pick a student → Goals tab loads (active count visible in tab pill)
+- [ ] Click "New goal" → editor opens
+- [ ] Paste a real annual goal, set goal_type, baseline, target criterion, target date
+- [ ] Save → goal appears in active list with type/status/target chips
+- [ ] Edit existing goal → fields pre-populate, status switcher works
+- [ ] Archive goal → moves to "Inactive" disclosure
+
+**Note tab**
+- [ ] With saved goals: dropdown lists active goals (truncated to 100 chars)
+- [ ] Without saved goals: defaults to "Paste ad-hoc" mode
+- [ ] Pick reporting period preset (auto-defaults to current quarter)
+      and school year (auto-derived from today's date)
+- [ ] "Custom…" option reveals free-text input
+- [ ] Click Draft → loader appears with caption
+- [ ] Result has formal status chip (one of: On track / Adequate /
+      Insufficient / Mastered / Not yet introduced)
+- [ ] If kid has trend data: green "Trend data ✓" chip shows
+- [ ] If kid has running records: green "Running records ✓" chip shows
+- [ ] Note has 4 sections plus quoted one-line summary
+- [ ] "Copy full note" produces formatted text including status code
+- [ ] "Draft plan" CTA at bottom switches to Plan tab
+
+**Plan tab**
+- [ ] Same goal picker as Note tab
+- [ ] Click "Draft 2-week plan"
+- [ ] Result shows: summary, focus skills chips, two weekly blocks
+      with day-by-day sessions (each session has duration, activity,
+      material hint, expected outcome)
+- [ ] Probe schedule, expected criterion, escalation trigger sections
+      render with their tone-coded icons
+- [ ] Caregiver note appears when AI emits one (amber callout)
+- [ ] "Copy plan" produces formatted text
+
+**Persistence + audit**
+- [ ] Generated note appears in `iep_progress_notes` table with
+      `input_snapshot` populated (audit trail for IEP team meetings)
+- [ ] Generated plan appears in `intervention_plans` table
+
+**Disclaimer**
+- [ ] Footer disclaimer renders: "AI-assisted drafts. Always review
+      with your IEP team before submitting."
 
 ---
 
