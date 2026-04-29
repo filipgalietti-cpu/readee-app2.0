@@ -1,4 +1,4 @@
-import { ClipboardList } from "lucide-react";
+import { ClipboardList, Info } from "lucide-react";
 import { requireTeacherTier } from "@/lib/plan/teacher-gate";
 import { createClient } from "@/lib/supabase/server";
 import RunningRecordRecorder from "./_components/CoachRecorder";
@@ -87,18 +87,26 @@ export default async function CoachPage() {
     <div className="mx-auto max-w-2xl px-6 py-10">
       <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-blue-600">
         <ClipboardList className="h-4 w-4" />
-        AI Running Record · for specialists & interventionists
+        AI Running Record
       </div>
-      <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
-        1:1 reading assessment in 90 seconds
-      </h1>
-      <p className="mt-1 text-sm text-zinc-500">
-        For weekly running records, IEP progress checks, and Title I
-        diagnostics. Generate a passage targeting any phonics skill, or
-        paste your own. Tap record, listen as the student reads, and
-        Readee returns transcript, WCPM, accuracy, miscues, and a focus
-        area, saved to that student&apos;s record log.
-      </p>
+      <div className="mt-1 flex flex-wrap items-baseline gap-3">
+        <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+          1:1 reading assessment in 90 seconds
+        </h1>
+        <details className="group">
+          <summary className="inline-flex cursor-pointer list-none items-center gap-1 rounded-full border border-zinc-200 bg-white px-2.5 py-1 text-[11px] font-semibold text-zinc-500 transition hover:border-blue-300 hover:text-blue-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400 [&::-webkit-details-marker]:hidden">
+            <Info className="h-3 w-3" />
+            How it works
+          </summary>
+          <p className="mt-2 max-w-2xl rounded-2xl border border-blue-200 bg-blue-50 px-4 py-3 text-sm text-zinc-700 dark:border-blue-900/40 dark:bg-blue-950/30 dark:text-slate-300">
+            For weekly running records, IEP progress checks, and Title I
+            diagnostics. Generate a passage targeting any phonics skill, or
+            paste your own. Tap record, listen as the student reads, and
+            Readee returns transcript, WCPM, accuracy, miscues, and a focus
+            area, saved to that student&apos;s record log.
+          </p>
+        </details>
+      </div>
       <div className="mt-6">
         <RunningRecordRecorder roster={roster} />
       </div>
