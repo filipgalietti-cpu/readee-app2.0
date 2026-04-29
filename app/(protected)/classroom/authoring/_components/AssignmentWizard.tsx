@@ -54,7 +54,7 @@ function initialBrief(): AssignmentBrief {
     topic: "",
     phonicsPattern: "",
     passage: { enabled: true },
-    questions: { multipleChoice: 5, trueFalse: 0, matching: 0 },
+    questions: { multipleChoice: 5, trueFalse: 0, matching: 0, writingPrompts: 0 },
     media: {
       passageImage: true,
       passageTts: true,
@@ -143,7 +143,8 @@ export default function AssignmentWizard() {
   const totalQuestions =
     brief.questions.multipleChoice +
     brief.questions.trueFalse +
-    brief.questions.matching;
+    brief.questions.matching +
+    (brief.questions.writingPrompts ?? 0);
 
   const cost = useMemo(() => estimateBriefCredits(brief), [brief]);
   const exceedsRemaining =
@@ -548,16 +549,16 @@ function StepQuestions({
   brief: AssignmentBrief;
   setBrief: (fn: (b: AssignmentBrief) => AssignmentBrief) => void;
 }) {
-  function set<K extends "multipleChoice" | "trueFalse" | "matching">(
-    k: K,
-    v: number,
-  ) {
+  function set<
+    K extends "multipleChoice" | "trueFalse" | "matching" | "writingPrompts",
+  >(k: K, v: number) {
     setBrief((b) => ({ ...b, questions: { ...b.questions, [k]: v } }));
   }
   const total =
     brief.questions.multipleChoice +
     brief.questions.trueFalse +
-    brief.questions.matching;
+    brief.questions.matching +
+    (brief.questions.writingPrompts ?? 0);
   return (
     <div className="space-y-3 pt-5">
       <p className="text-xs text-zinc-500 dark:text-slate-400">
@@ -584,6 +585,13 @@ function StepQuestions({
         setValue={(v) => set("matching", v)}
         max={8}
       />
+      <Counter
+        label="Writing prompts"
+        sublabel="AI writes the prompt; the kid types a response; AI rubric-grades it (Ideas / Organization / Voice / Conventions)."
+        value={brief.questions.writingPrompts ?? 0}
+        setValue={(v) => set("writingPrompts", v)}
+        max={3}
+      />
       <div className="pt-2 text-xs font-semibold text-zinc-500 dark:text-slate-400">
         Total:{" "}
         <span className="text-zinc-900 dark:text-white">{total} questions</span>
@@ -606,7 +614,8 @@ function StepMedia({
   const totalQs =
     brief.questions.multipleChoice +
     brief.questions.trueFalse +
-    brief.questions.matching;
+    brief.questions.matching +
+    (brief.questions.writingPrompts ?? 0);
   const perQttsCost = CREDIT_COST.tts_generation * totalQs;
   return (
     <div className="space-y-3 pt-5">

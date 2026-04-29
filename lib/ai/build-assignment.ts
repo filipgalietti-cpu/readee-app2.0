@@ -49,6 +49,10 @@ export type AssignmentBrief = {
     multipleChoice: number;
     trueFalse: number;
     matching: number;
+    /** Number of free-response writing prompts to append. Each one
+     *  is AI-generated based on the passage and rubric-graded at
+     *  submit time. */
+    writingPrompts?: number;
   };
   media: {
     passageImage: boolean;
@@ -91,11 +95,18 @@ export function estimateBriefCredits(brief: AssignmentBrief): number {
   const mcqCount = brief.questions.multipleChoice + brief.questions.trueFalse;
   if (mcqCount > 0) credits += CREDIT_COST.quiz_generation;
   if (brief.questions.matching > 0) credits += CREDIT_COST.quiz_generation;
+  // Writing prompts: one Gemini call to generate prompts (cheap),
+  // and the rubric grading happens at student-submit time, billed
+  // per submission rather than per-build.
+  if ((brief.questions.writingPrompts ?? 0) > 0) {
+    credits += CREDIT_COST.quiz_generation;
+  }
   if (brief.media.perQuestionTts) {
     const totalQuestions =
       brief.questions.multipleChoice +
       brief.questions.trueFalse +
-      brief.questions.matching;
+      brief.questions.matching +
+      (brief.questions.writingPrompts ?? 0);
     credits += totalQuestions * CREDIT_COST.tts_generation;
   }
   return credits;
@@ -108,12 +119,16 @@ function validateBrief(brief: AssignmentBrief): string | null {
   const totalQs =
     brief.questions.multipleChoice +
     brief.questions.trueFalse +
-    brief.questions.matching;
+    brief.questions.matching +
+    (brief.questions.writingPrompts ?? 0);
   if (totalQs === 0) return "Pick at least one question to generate.";
   if (totalQs > 20) return "Keep an assignment under 20 questions.";
   if (brief.questions.multipleChoice > 15) return "Max 15 MCQs per batch.";
   if (brief.questions.trueFalse > 10) return "Max 10 true/false per batch.";
   if (brief.questions.matching > 8) return "Max 8 matching pairs per batch.";
+  if ((brief.questions.writingPrompts ?? 0) > 3) {
+    return "Max 3 writing prompts per batch.";
+  }
   if (brief.media.passageImage && !brief.passage.enabled) {
     return "Passage image requires a passage.";
   }
@@ -148,6 +163,16 @@ type BuiltQuestion =
       choices: string[];
       // jsonb: { pairs: [{left, right}, ...] } — answer key.
       correct: { pairs: { left: string; right: string }[] };
+      hint: string | null;
+      image_url?: string | null;
+      audio_url?: string | null;
+    }
+  | {
+      kind: "free_response";
+      prompt: string;
+      choices: null;
+      // No answer key — rubric-graded at student-submit time.
+      correct: null;
       hint: string | null;
       image_url?: string | null;
       audio_url?: string | null;
@@ -322,7 +347,9 @@ export async function buildAssignment(input: {
       if (brief.media.passageTts) {
         const ttsRes = await generateSpeech({
           teacherId,
-          text: passageText.slice(0, 1200),
+          // Bumped from 1200 to 4000 so K-4 passages aren't cut off
+          // mid-sentence at ~1:22. Gemini TTS handles 4000 chars fine.
+          text: passageText.slice(0, 4000),
           voice: brief.voice,
         });
         if (ttsRes.ok) {
@@ -430,6 +457,35 @@ export async function buildAssignment(input: {
         hint: null,
       });
       creditsUsed += CREDIT_COST.quiz_generation;
+    }
+  }
+
+  // 5b) Writing prompts. AI writes N grade-appropriate prompts based
+  //     on the passage; each becomes a free_response question that's
+  //     rubric-graded by AI when the student submits.
+  const writingCount = brief.questions.writingPrompts ?? 0;
+  if (writingCount > 0 && passageText) {
+    const { generateWritingPrompts } = await import("@/lib/ai/readee-ai");
+    const wpRes = await generateWritingPrompts({
+      teacherId,
+      passageTitle,
+      passageBody: passageText,
+      gradeLevel: brief.gradeLevel,
+      count: writingCount,
+    });
+    if (wpRes.ok) {
+      for (const promptText of wpRes.prompts) {
+        builtQuestions.push({
+          kind: "free_response" as const,
+          prompt: promptText,
+          choices: null,
+          correct: null,
+          hint: null,
+        });
+      }
+      creditsUsed += CREDIT_COST.quiz_generation;
+    } else {
+      warnings.push(`Writing prompts: ${wpRes.error}`);
     }
   }
 

@@ -76,6 +76,24 @@ function normalizePassageWhitespace(s: string): string {
 }
 
 /**
+ * If Gemini truncates mid-sentence ("electric cars ar"), trim back
+ * to the last complete sentence so the kid never reads a half word.
+ * Only acts when the tail clearly isn't terminated; never expands.
+ */
+function trimToCompleteSentence(s: string): string {
+  if (!s) return s;
+  const trimmed = s.trimEnd();
+  if (/[.!?"]$/.test(trimmed)) return trimmed;
+  const lastPunct = Math.max(
+    trimmed.lastIndexOf("."),
+    trimmed.lastIndexOf("!"),
+    trimmed.lastIndexOf("?"),
+  );
+  if (lastPunct <= 0) return trimmed;
+  return trimmed.slice(0, lastPunct + 1).trimEnd();
+}
+
+/**
  * Strip residual markdown the model sometimes ignores instructions on:
  * **bold**, *italic*, _italic_, `code`, [link](url), leading "# headings".
  * Conservative — preserves text content, removes markup characters only.
@@ -1123,6 +1141,105 @@ export const GEMINI_PREBUILT_VOICES = [
   { id: "Callirrhoe",name: "Callirrhoe",description: "Older, grandmotherly" },
 ] as const;
 
+/**
+ * Given a reading passage + grade level, write N short, grade-
+ * appropriate writing prompts that ask the student to respond about
+ * the passage. Each prompt is one sentence, 1-2 line max, and aimed
+ * at producing 2-4 sentences of student response (not a paragraph
+ * essay). Use case: the authoring wizard appends free-response
+ * questions to a quiz.
+ */
+export async function generateWritingPrompts(input: {
+  teacherId: string;
+  passageTitle: string;
+  passageBody: string;
+  gradeLevel?: string | null;
+  count: number;
+}): Promise<{ ok: true; prompts: string[] } | { ok: false; error: string }> {
+  const count = Math.max(1, Math.min(3, Math.floor(input.count)));
+  const passage = input.passageBody.trim();
+  if (!passage) return { ok: false, error: "Passage required." };
+
+  let ai: GoogleGenAI;
+  try {
+    ai = getClient();
+  } catch (e: any) {
+    return { ok: false, error: e.message ?? "AI not configured." };
+  }
+
+  const SYSTEM = `You write short writing-response prompts for K-4 students based on a reading passage. Each prompt should:
+- Be ONE sentence, 1-2 lines max.
+- Aim at a 2-4 sentence student response, not an essay.
+- Be developmentally appropriate (K-1 = personal connection or simple recall; 2-3 = inference or opinion; 4 = analysis or argument).
+- Tie clearly to the passage so the AI rubric grader can verify.
+- Use kid-friendly language.
+
+Return ONLY a JSON object with a "prompts" array of strings.`;
+
+  const SCHEMA = {
+    type: Type.OBJECT,
+    properties: {
+      prompts: {
+        type: Type.ARRAY,
+        items: { type: Type.STRING },
+      },
+    },
+    required: ["prompts"],
+  };
+
+  const userPrompt = [
+    `Grade level: ${input.gradeLevel ?? "2nd"}`,
+    `Passage title: ${input.passageTitle}`,
+    "",
+    "Passage:",
+    '"""',
+    passage.slice(0, 2000),
+    '"""',
+    "",
+    `Write ${count} writing prompt${count === 1 ? "" : "s"} per the schema.`,
+  ].join("\n");
+
+  try {
+    const response = await ai.models.generateContent({
+      model: MODEL_ID,
+      contents: userPrompt,
+      config: {
+        systemInstruction: SYSTEM,
+        responseMimeType: "application/json",
+        responseSchema: SCHEMA as any,
+        temperature: 0.6,
+      },
+    });
+    const text = (response.text ?? "").trim();
+    if (!text) throw new Error("Empty model response.");
+    const parsed = JSON.parse(text) as { prompts?: string[] };
+    const prompts = (parsed.prompts ?? [])
+      .map((p) => String(p).trim())
+      .filter(Boolean)
+      .slice(0, count);
+    if (prompts.length === 0) {
+      return { ok: false, error: "No prompts produced." };
+    }
+    await logUsage({
+      teacherId: input.teacherId,
+      kind: "quiz_generation",
+      model: MODEL_ID,
+      inputTokens: response.usageMetadata?.promptTokenCount,
+      outputTokens: response.usageMetadata?.candidatesTokenCount,
+      creditsUsed: CREDIT_COST.quiz_generation,
+      success: true,
+      requestSummary: `writing_prompts: ${input.passageTitle.slice(0, 80)}`,
+    });
+    return { ok: true, prompts };
+  } catch (e: any) {
+    trackError(e, {
+      route: "readee-ai.generateWritingPrompts",
+      userId: input.teacherId,
+    });
+    return { ok: false, error: e?.message ?? "Could not write prompts." };
+  }
+}
+
 export async function generateSpeech(input: {
   teacherId: string;
   text: string;
@@ -1140,8 +1257,12 @@ export async function generateSpeech(input: {
 > {
   const text = input.text.trim();
   if (!text) return { ok: false, error: "Text is required." };
-  if (text.length > 1200) {
-    return { ok: false, error: "Keep the text under 1,200 characters for audio." };
+  // Gemini TTS handles up to ~4000 tokens (~16k chars). 4000 chars
+  // covers every K-4 passage (max ~400 words) end-to-end without
+  // truncation. Audio was cutting off at 1:22 because the upstream
+  // builder was slicing to 1200 chars to stay under the old cap.
+  if (text.length > 4000) {
+    return { ok: false, error: "Keep the text under 4,000 characters for audio." };
   }
   const voiceName = input.voice ?? TTS_DEFAULT_VOICE;
   const provider = input.provider ?? "gemini";
@@ -1230,7 +1351,7 @@ export async function generateSpeech(input: {
       kind: "tts_generation",
       success: false,
       error: e.message,
-      requestSummary: text.slice(0, 200),
+      requestSummary: `voice=${voiceName} provider=${provider} :: ${text.slice(0, 180)}`,
     });
     return { ok: false, error: e.message ?? "AI is not configured." };
   }
@@ -1292,7 +1413,7 @@ export async function generateSpeech(input: {
       outputTokens: response.usageMetadata?.candidatesTokenCount,
       creditsUsed: CREDIT_COST.tts_generation,
       success: true,
-      requestSummary: text.slice(0, 200),
+      requestSummary: `voice=${voiceName} provider=${provider} :: ${text.slice(0, 180)}`,
     });
 
     return { ok: true, audioUrl, storagePath };
@@ -1309,7 +1430,7 @@ export async function generateSpeech(input: {
       model: TTS_MODEL_ID,
       success: false,
       error: e.message,
-      requestSummary: text.slice(0, 200),
+      requestSummary: `voice=${voiceName} provider=${provider} :: ${text.slice(0, 180)}`,
     });
     return {
       ok: false,
@@ -1371,7 +1492,12 @@ export async function generatePassage(input: {
         responseMimeType: "application/json",
         responseSchema: PASSAGE_SCHEMA,
         temperature: 0.8,
-      },
+        // Generous cap, 4th-grade passages are ~400 words ≈ 1500
+        // tokens, but JSON wrapper and any AI thinking eats more.
+        // 8192 keeps headroom so the response doesn't truncate
+        // mid-sentence.
+        maxOutputTokens: 8192,
+      } as any,
     });
     const text = response.text;
     if (!text) throw new Error("Empty response from the model.");
@@ -1382,8 +1508,13 @@ export async function generatePassage(input: {
       suggested_questions?: string[];
     };
     const title = stripMarkdown((parsed.title ?? "").trim());
-    const passage = stripMarkdown(
-      normalizePassageWhitespace((parsed.passage ?? "").trim()),
+    // Belt + suspenders, even with the bumped output cap, defensively
+    // trim the tail to the last complete sentence so a half-word
+    // never reaches the kid's reader.
+    const passage = trimToCompleteSentence(
+      stripMarkdown(
+        normalizePassageWhitespace((parsed.passage ?? "").trim()),
+      ),
     );
     const suggested = Array.isArray(parsed.suggested_questions)
       ? parsed.suggested_questions.map((s) => String(s).trim()).filter(Boolean).slice(0, 5)
