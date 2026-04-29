@@ -39,12 +39,23 @@ type Phase = "intro" | "questions" | "results";
 type PerQResult = {
   questionId: string;
   /** 0..1 fraction of this question's full credit. Binary kinds (MCQ,
-   *  T/F, fill-in) are 0 or 1. Matching gives partial credit per pair. */
+   *  T/F, fill-in) are 0 or 1. Matching + free_response give partial. */
   score: number;
-  /** Convenience flag, true iff score === 1. Used for green/red UI. */
+  /** True when the kid hit the bar for "got it." Binary kinds: score===1.
+   *  Free-response: rubric average >= 3 (proficient). */
   correct: boolean;
   /** Matching only, populated when partial. */
   partial?: { gotPairs: number; totalPairs: number };
+  /** Free-response only. The rubric breakdown drives the recap UI. */
+  writingRubric?: {
+    ideas: number;
+    organization: number;
+    voice: number;
+    conventions: number;
+    average: number;
+    strength: string;
+    growthTip: string;
+  };
 };
 
 type SavedProgress = {
@@ -264,12 +275,38 @@ export default function StudentCustomQuizRunner({
   function finishCheck() {
     setRevealed(true);
     const result = scoreCurrent();
-    const wasFullyCorrect = result.score === 1;
+    // Free-response uses a rubric — rubric average ≥ 3 (proficient)
+    // counts as "got it" toward the ✓ counter, even though the
+    // weightedScore is fractional. Other kinds stay binary.
+    const isFreeResponse = q.kind === "free_response";
+    const rubricAvg = writingScore
+      ? (writingScore.ideas +
+          writingScore.organization +
+          writingScore.voice +
+          writingScore.conventions) /
+        4
+      : 0;
+    const wasFullyCorrect = isFreeResponse
+      ? rubricAvg >= 3
+      : result.score === 1;
     const entry: PerQResult = {
       questionId: q.id,
       score: result.score,
       correct: wasFullyCorrect,
       ...(result.partial ? { partial: result.partial } : {}),
+      ...(isFreeResponse && writingScore
+        ? {
+            writingRubric: {
+              ideas: writingScore.ideas,
+              organization: writingScore.organization,
+              voice: writingScore.voice,
+              conventions: writingScore.conventions,
+              average: rubricAvg,
+              strength: writingScore.strength,
+              growthTip: writingScore.growthTip,
+            },
+          }
+        : {}),
     };
     if (wasFullyCorrect) setCorrectCount((n) => n + 1);
     setWeightedScore((s) => s + result.score);
@@ -1065,9 +1102,19 @@ function ResultsPanel({
           {questions.map((q, i) => {
             const got = resultMap.get(q.id);
             const score = got?.score ?? null;
-            const fully = score === 1;
-            const none = score === 0;
-            const partial = score !== null && score > 0 && score < 1;
+            const isWriting = !!got?.writingRubric;
+            // Rubric average ≥ 3 = fully (green); 2 = partial (amber);
+            // 1 = none (red). For non-writing questions stick with the
+            // existing binary score split.
+            const fully = isWriting
+              ? (got?.writingRubric?.average ?? 0) >= 3
+              : score === 1;
+            const none = isWriting
+              ? (got?.writingRubric?.average ?? 0) < 2
+              : score === 0;
+            const partial = isWriting
+              ? !fully && !none
+              : score !== null && score > 0 && score < 1;
             const tone = fully
               ? "border-green-200 bg-green-50 dark:border-green-900/40 dark:bg-green-950/30"
               : partial
@@ -1102,14 +1149,28 @@ function ResultsPanel({
                   <div className="line-clamp-2 text-sm font-semibold text-zinc-900 dark:text-slate-100">
                     {q.prompt}
                   </div>
+                  {isWriting && got?.writingRubric && (
+                    <div className="mt-1.5 text-xs font-semibold text-zinc-700 dark:text-slate-300">
+                      Rubric: {got.writingRubric.ideas}/{4} ideas ·{" "}
+                      {got.writingRubric.organization}/{4} org ·{" "}
+                      {got.writingRubric.voice}/{4} voice ·{" "}
+                      {got.writingRubric.conventions}/{4} conv ·{" "}
+                      avg {got.writingRubric.average.toFixed(1)}
+                    </div>
+                  )}
                   {got?.partial && (
                     <div className="mt-1 text-xs font-semibold text-amber-800 dark:text-amber-200">
                       You matched {got.partial.gotPairs} of {got.partial.totalPairs} pairs.
                     </div>
                   )}
-                  {!fully && q.hint && (
+                  {!fully && !isWriting && q.hint && (
                     <div className="mt-1 text-xs text-amber-800 dark:text-amber-200">
                       Hint: {q.hint}
+                    </div>
+                  )}
+                  {isWriting && got?.writingRubric?.growthTip && !fully && (
+                    <div className="mt-1 text-xs text-amber-800 dark:text-amber-200">
+                      Try next time: {got.writingRubric.growthTip}
                     </div>
                   )}
                 </div>
