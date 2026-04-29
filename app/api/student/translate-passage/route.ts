@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getStudentSession } from "@/lib/auth/student-session";
+import { createClient } from "@/lib/supabase/server";
 import { translateText, SUPPORTED_LANGUAGES } from "@/lib/ai/translate";
 
 export const runtime = "nodejs";
@@ -10,14 +11,30 @@ export const dynamic = "force-dynamic";
  *
  * body: { text: string, targetLang: string }
  *
- * Student-facing translation endpoint for the in-reader L1 toggle.
+ * Reader-side L1 translation. Auth is OR-gated:
+ *   - student-session cookie (class-code login), or
+ *   - Supabase auth session (parent playing as their kid).
+ * If neither is present, 401.
+ *
  * Cached server-side via translations_cache so the second tap (or
- * the next student in the same class with the same passage) gets
- * it free.
+ * the next student in the same class with the same passage) is
+ * instant and free.
  */
 export async function POST(req: Request) {
-  const session = await getStudentSession();
-  if (!session) {
+  let userId: string | null = null;
+
+  // Try student session first (most common: kid using the class iPad).
+  const studentSession = await getStudentSession();
+  if (studentSession) {
+    userId = studentSession.childId;
+  } else {
+    // Parent playing the same quiz from /practice/custom-quiz/[id].
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+    if (user) userId = user.id;
+  }
+
+  if (!userId) {
     return NextResponse.json({ error: "Not signed in." }, { status: 401 });
   }
 
@@ -44,6 +61,7 @@ export async function POST(req: Request) {
   const res = await translateText({
     text,
     targetLang: valid.code,
+    userId,
   });
   if (!res.ok) {
     return NextResponse.json(

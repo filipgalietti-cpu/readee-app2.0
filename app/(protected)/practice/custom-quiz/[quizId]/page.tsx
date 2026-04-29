@@ -35,11 +35,12 @@ export default async function ParentCustomQuizPage({
   // 1) Parent-child ownership
   const { data: child } = await supabase
     .from("children")
-    .select("id, first_name, parent_id")
+    .select("id, first_name, parent_id, home_language")
     .eq("id", childId)
     .eq("parent_id", profile.id)
     .maybeSingle();
   if (!child) notFound();
+  const homeLanguage = ((child as any).home_language ?? null) as string | null;
 
   // 2) Child's classroom must have the quiz assigned. Use admin to
   //    sidestep RLS for the cross-table check, but the parent-id check
@@ -137,6 +138,7 @@ export default async function ParentCustomQuizPage({
             saveEndpoint="/api/parent/custom-quiz-complete"
             childId={childId}
             homeHref={`/dashboard?child=${childId}`}
+            homeLanguage={homeLanguage}
           />
         </div>
       )}
