@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ClipboardPen, ListChecks, Sparkles, Eye, ImageIcon, Volume2 } from "lucide-react";
+import { ArrowLeft, ClipboardPen, ListChecks, Sparkles, Eye, Volume2 } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/lib/auth/helpers";
 import QuizBuilder from "./_components/QuizBuilder";
 import AssignQuizDialog from "./_components/AssignQuizDialog";
+import PassageImageLightbox from "./_components/PassageImageLightbox";
 
 export const dynamic = "force-dynamic";
 
@@ -147,18 +148,7 @@ export default async function QuizBuilderPage({
             passageImage ? "sm:grid-cols-[200px_1fr]" : "sm:grid-cols-1"
           }`}
         >
-          {passageImage && (
-            <div className="relative overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
-              <img
-                src={passageImage}
-                alt="Passage illustration"
-                className="block h-full w-full object-cover"
-              />
-              <div className="absolute left-2 top-2 inline-flex items-center gap-1 rounded-full bg-black/60 px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-white">
-                <ImageIcon className="h-3 w-3" /> Illustration
-              </div>
-            </div>
-          )}
+          {passageImage && <PassageImageLightbox src={passageImage} />}
           <div className="flex flex-col gap-2">
             {q.description && (
               <article
