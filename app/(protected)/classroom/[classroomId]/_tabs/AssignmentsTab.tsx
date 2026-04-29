@@ -1,6 +1,7 @@
+import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/lib/auth/helpers";
-import { ClipboardList, Clock, CheckCircle2, CircleDashed, Target, ListChecks } from "lucide-react";
+import { ClipboardList, Clock, CheckCircle2, CircleDashed, Target, ListChecks, ExternalLink, Eye } from "lucide-react";
 import NewAssignmentButton from "../_components/NewAssignmentButton";
 import AssignmentActions from "../_components/AssignmentActions";
 import StartLiveQuizButton from "../_components/StartLiveQuizButton";
@@ -205,9 +206,45 @@ export default async function AssignmentsTab({ classroomId }: { classroomId: str
                         </span>
                       ) : null}
                     </div>
-                    <h3 className="mt-2 truncate text-base font-bold text-zinc-900 dark:text-white">
-                      {a.title}
-                    </h3>
+                    {(() => {
+                      const target =
+                        a.kind === "custom_quiz"
+                          ? `/classroom/authoring/quiz/${a.source_id}`
+                          : a.kind === "readee_lesson"
+                          ? `/classroom/library?standard=${encodeURIComponent(a.source_id)}`
+                          : null;
+                      const previewTarget =
+                        a.kind === "custom_quiz"
+                          ? `/classroom/authoring/quiz/${a.source_id}/preview`
+                          : null;
+                      return (
+                        <div className="mt-2 flex flex-wrap items-center gap-2">
+                          {target ? (
+                            <Link
+                              href={target}
+                              className="group inline-flex max-w-full items-center gap-1.5 truncate text-base font-bold text-zinc-900 transition hover:text-indigo-700 dark:text-white dark:hover:text-indigo-300"
+                            >
+                              <span className="truncate">{a.title}</span>
+                              <ExternalLink className="h-3.5 w-3.5 flex-shrink-0 opacity-0 transition group-hover:opacity-100" />
+                            </Link>
+                          ) : (
+                            <h3 className="truncate text-base font-bold text-zinc-900 dark:text-white">
+                              {a.title}
+                            </h3>
+                          )}
+                          {previewTarget && (
+                            <Link
+                              href={previewTarget}
+                              className="inline-flex items-center gap-1 rounded-full border border-indigo-200 bg-white px-2 py-0.5 text-[10px] font-bold text-indigo-700 transition hover:bg-indigo-50 dark:border-indigo-900/40 dark:bg-slate-900 dark:text-indigo-300"
+                              title="Preview as student"
+                            >
+                              <Eye className="h-3 w-3" />
+                              Preview
+                            </Link>
+                          )}
+                        </div>
+                      );
+                    })()}
                     {a.note && (
                       <p className="mt-1 line-clamp-2 text-sm text-zinc-500 dark:text-slate-400">
                         {a.note}
