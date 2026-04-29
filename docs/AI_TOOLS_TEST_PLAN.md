@@ -23,14 +23,23 @@ after a successful run elsewhere (credits, share state, etc.).
 
 URL: `https://learn.readee.app/buddy`
 
-- [ ] Page loads, you see mode picker (Reading, Wonder, Story, Tutor)
-- [ ] Pick "Wonder" mode
+- [ ] Page loads, you see 4 mode tiles: **Read with me**,
+      **What does this word mean?**, **Tell me a story**, **Quick quiz**
+- [ ] Pick **"What does this word mean?"** (lowest setup, fastest to
+      verify the connection works)
 - [ ] Browser asks for mic permission, click Allow
 - [ ] Status indicator says "Connected" or "Listening" within 5s
-- [ ] Say "Hi Buddy, what do you want to talk about?" — buddy replies
-      with audio
-- [ ] If live mode fails, the UI auto-falls back to turn-based chat,
-      type a message and confirm it replies in text
+- [ ] Tap one of the 6 word cards and say "what does this mean?" —
+      buddy replies with audio
+- [ ] Then test **"Read with me"** — confirm a fresh passage renders
+      and the mic listens while you read aloud
+- [ ] Then test **"Tell me a story"** — pick a topic, confirm the
+      opening prints + buddy prompts for what happens next
+- [ ] Then test **"Quick quiz"** — confirm a passage + 3 questions
+      flow works
+- [ ] If live mode fails on any mode, the UI auto-falls back to
+      turn-based chat, confirm the fallback works (type a message,
+      see a text reply)
 
 **If failure**: open Network tab, filter for `buddy-live`, copy the
 status code + response body of the `/api/buddy-live/token` call.
