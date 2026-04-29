@@ -55,30 +55,51 @@ export default function CalibratedItemForm({
       arr.push(s);
       map.set(s.domain, arr);
     }
-    // Sort entries within each domain by standard_id for stable order.
     for (const [, arr] of map) {
       arr.sort((a, b) => a.standardId.localeCompare(b.standardId));
     }
     return Array.from(map.entries()).sort(([a], [b]) => a.localeCompare(b));
   }, [filtered]);
 
-  const [standardId, setStandardId] = useState<string>(
-    () => filtered[0]?.standardId ?? "",
+  const domains = grouped.map(([d]) => d);
+  const [domain, setDomain] = useState<string>(domains[0] ?? "");
+
+  // Reset the domain when the grade changes so it stays valid.
+  useEffect(() => {
+    if (domains.length === 0) {
+      setDomain("");
+      return;
+    }
+    if (!domains.includes(domain)) {
+      setDomain(domains[0]);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [domains.join("|")]);
+
+  const standardsInDomain = useMemo(
+    () => filtered.filter((s) => s.domain === domain),
+    [filtered, domain],
   );
 
-  // Resync the picked standard when the grade flips, so we never leave
-  // the form pointing at a non-matching standard.
+  const [standardId, setStandardId] = useState<string>(
+    () => standardsInDomain[0]?.standardId ?? "",
+  );
+
+  // Reset the standard when the domain (or grade) changes.
   useEffect(() => {
-    if (filtered.length === 0) {
+    if (standardsInDomain.length === 0) {
       setStandardId("");
       return;
     }
-    if (!filtered.some((s) => s.standardId === standardId)) {
-      setStandardId(filtered[0].standardId);
+    if (!standardsInDomain.some((s) => s.standardId === standardId)) {
+      setStandardId(standardsInDomain[0].standardId);
     }
-  }, [filtered, standardId]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [standardsInDomain.map((s) => s.standardId).join("|")]);
 
-  const selectedStandard = filtered.find((s) => s.standardId === standardId);
+  const selectedStandard = standardsInDomain.find(
+    (s) => s.standardId === standardId,
+  );
 
   const [targetDifficulty, setTargetDifficulty] = useState(3);
   const [passageContext, setPassageContext] = useState("");
@@ -140,27 +161,48 @@ export default function CalibratedItemForm({
           ))}
         </div>
 
-        {/* Step 2 — standard, dependent on grade */}
+        {/* Step 2 — domain (Reading Literature, Phonics, etc.) */}
         <div className="mt-4 text-[10px] font-bold uppercase tracking-widest text-indigo-600">
-          2. Standard
+          2. Domain
+        </div>
+        <div className="mt-2 flex flex-wrap gap-1.5">
+          {domains.length === 0 ? (
+            <span className="text-xs text-zinc-500">No standards in this grade.</span>
+          ) : (
+            domains.map((d) => (
+              <button
+                key={d}
+                type="button"
+                onClick={() => setDomain(d)}
+                className={`rounded-full border px-3 py-1 text-xs font-bold transition ${
+                  domain === d
+                    ? "border-indigo-500 bg-indigo-600 text-white"
+                    : "border-zinc-200 bg-white text-zinc-700 hover:bg-indigo-50 hover:text-indigo-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
+                }`}
+              >
+                {d}
+              </button>
+            ))
+          )}
+        </div>
+
+        {/* Step 3 — standard, dependent on grade + domain */}
+        <div className="mt-4 text-[10px] font-bold uppercase tracking-widest text-indigo-600">
+          3. Standard
         </div>
         <select
           value={standardId}
           onChange={(e) => setStandardId(e.target.value)}
-          disabled={filtered.length === 0}
+          disabled={standardsInDomain.length === 0}
           className="mt-2 w-full rounded-lg border border-zinc-300 bg-white px-2 py-2 text-sm focus:border-indigo-500 focus:outline-none disabled:opacity-50 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
         >
-          {filtered.length === 0 ? (
-            <option value="">No standards in this grade</option>
+          {standardsInDomain.length === 0 ? (
+            <option value="">Pick a domain first</option>
           ) : (
-            grouped.map(([domain, items]) => (
-              <optgroup key={domain} label={domain}>
-                {items.map((s) => (
-                  <option key={s.standardId} value={s.standardId}>
-                    {s.standardId} · {truncate(s.standardDescription, 80)}
-                  </option>
-                ))}
-              </optgroup>
+            standardsInDomain.map((s) => (
+              <option key={s.standardId} value={s.standardId}>
+                {s.standardId}
+              </option>
             ))
           )}
         </select>
@@ -177,9 +219,9 @@ export default function CalibratedItemForm({
           </div>
         )}
 
-        {/* Step 3 — difficulty */}
+        {/* Step 4 — difficulty */}
         <div className="mt-5 text-[10px] font-bold uppercase tracking-widest text-indigo-600">
-          3. Difficulty
+          4. Difficulty
         </div>
         <label className="mt-2 block text-xs font-semibold text-zinc-500 dark:text-slate-400">
           {DIFF_LABEL[targetDifficulty]}
@@ -196,7 +238,7 @@ export default function CalibratedItemForm({
         {/* Step 4 — optional passage anchor */}
         <details className="group mt-4 rounded-2xl border border-zinc-200 bg-white dark:border-slate-700 dark:bg-slate-900">
           <summary className="flex cursor-pointer list-none items-center justify-between gap-2 px-3 py-2 text-[11px] font-bold text-zinc-500 [&::-webkit-details-marker]:hidden">
-            <span>4. Anchor to a passage <span className="font-normal text-zinc-400">(optional)</span></span>
+            <span>5. Anchor to a passage <span className="font-normal text-zinc-400">(optional)</span></span>
             <span className="text-zinc-400 group-open:rotate-180 transition-transform">▾</span>
           </summary>
           <div className="px-3 pb-3">
