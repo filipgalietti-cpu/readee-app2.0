@@ -686,8 +686,50 @@ function StudentReadView({
     };
   }, []);
 
-  // Bigger size in fullscreen for actual handoff to a kid at arm's length.
-  const fsSize = Math.round(passageFontPx(gradeLevel) * 1.6);
+  // Fit-to-viewport sizing. Start at the ideal size for the grade,
+  // then shrink iteratively if the passage overflows the available
+  // box. Floor at 18px so we never make it unreadably small.
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const articleRef = useRef<HTMLElement | null>(null);
+  const idealSize = Math.round(passageFontPx(gradeLevel) * 1.6);
+  const [fsSize, setFsSize] = useState(idealSize);
+
+  useEffect(() => {
+    setFsSize(idealSize);
+  }, [idealSize, passage]);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    const article = articleRef.current;
+    if (!container || !article) return;
+    let raf: number | null = null;
+    const fit = () => {
+      // Reset to ideal first so we measure with the largest size.
+      let size = idealSize;
+      article.style.fontSize = `${size}px`;
+      const min = 18;
+      // 12 iterations is more than enough for any realistic passage.
+      for (let i = 0; i < 12; i++) {
+        if (article.scrollHeight <= container.clientHeight) break;
+        if (size <= min) break;
+        size -= 2;
+        article.style.fontSize = `${size}px`;
+      }
+      setFsSize(size);
+    };
+    raf = requestAnimationFrame(fit);
+    const ro = new ResizeObserver(() => {
+      if (raf) cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(fit);
+    });
+    ro.observe(container);
+    window.addEventListener("orientationchange", fit);
+    return () => {
+      if (raf) cancelAnimationFrame(raf);
+      ro.disconnect();
+      window.removeEventListener("orientationchange", fit);
+    };
+  }, [passage, idealSize, recording]);
 
   return (
     <div className="fixed inset-0 z-[60] flex flex-col bg-gradient-to-b from-blue-50 via-white to-violet-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
@@ -708,21 +750,24 @@ function StudentReadView({
         </button>
       </div>
 
-      {/* Passage area, scrollable when long */}
-      <div className="flex-1 overflow-y-auto px-6 py-8 sm:px-12">
-        <div className="mx-auto max-w-3xl">
-          <article
-            className="whitespace-pre-line text-zinc-900 dark:text-slate-100"
-            style={{
-              fontFamily: FRIENDLY_FONT,
-              fontSize: fsSize,
-              lineHeight: 1.8,
-              letterSpacing: "0.01em",
-            }}
-          >
-            {passage}
-          </article>
-        </div>
+      {/* Passage area — auto-fits to available height so the kid
+          doesn't scroll while reading. */}
+      <div
+        ref={containerRef}
+        className="flex flex-1 items-center justify-center overflow-hidden px-6 py-6 sm:px-12"
+      >
+        <article
+          ref={articleRef as any}
+          className="mx-auto w-full max-w-3xl whitespace-pre-line text-zinc-900 dark:text-slate-100"
+          style={{
+            fontFamily: FRIENDLY_FONT,
+            fontSize: fsSize,
+            lineHeight: 1.65,
+            letterSpacing: "0.01em",
+          }}
+        >
+          {passage}
+        </article>
       </div>
 
       {/* Live preview — only shows while recording */}
