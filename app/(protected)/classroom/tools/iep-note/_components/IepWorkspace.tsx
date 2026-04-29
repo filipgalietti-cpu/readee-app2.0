@@ -93,19 +93,34 @@ export default function IepWorkspace({
             </div>
           )}
 
-          {tab === "goals" && (
-            <GoalsTab childId={childId} goals={goals} onChange={refreshGoals} />
-          )}
-          {tab === "note" && (
+          {/* All three tabs stay mounted so generated notes/plans
+              survive when the teacher clicks between tabs. The `hidden`
+              attribute is just CSS — React preserves state. The
+              `key={childId}` forces a remount when the teacher picks a
+              different student so old results don't leak across kids. */}
+          <div hidden={tab !== "goals"}>
+            <GoalsTab
+              key={`goals-${childId}`}
+              childId={childId}
+              goals={goals}
+              onChange={refreshGoals}
+            />
+          </div>
+          <div hidden={tab !== "note"}>
             <NoteTab
+              key={`note-${childId}`}
               childId={childId}
               activeGoals={activeGoals}
               onSwitchToPlan={() => setTab("plan")}
             />
-          )}
-          {tab === "plan" && (
-            <PlanTab childId={childId} activeGoals={activeGoals} />
-          )}
+          </div>
+          <div hidden={tab !== "plan"}>
+            <PlanTab
+              key={`plan-${childId}`}
+              childId={childId}
+              activeGoals={activeGoals}
+            />
+          </div>
         </>
       )}
     </div>
