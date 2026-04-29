@@ -72,8 +72,8 @@ const TOOLS: {
   },
   {
     id: "coach",
-    title: "AI Running Record",
-    desc: "Record one student reading; AI scores WCPM, accuracy, and miscues.",
+    title: "Running Records",
+    desc: "Listen to one student read, get WCPM, accuracy, and miscues.",
     href: "/classroom/tools/coach",
     icon: Brain,
     tag: "1:1 fluency",

@@ -87,11 +87,11 @@ export default async function CoachPage() {
     <div className="mx-auto max-w-2xl px-6 py-10">
       <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-blue-600">
         <ClipboardList className="h-4 w-4" />
-        AI Running Record
+        Running Records
       </div>
       <div className="mt-1 flex flex-wrap items-baseline gap-3">
         <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
-          Score one read-aloud
+          Listen to a student read
         </h1>
         <details className="group">
           <summary className="inline-flex cursor-pointer list-none items-center gap-1 rounded-full border border-zinc-200 bg-white px-2.5 py-1 text-[11px] font-semibold text-zinc-500 transition hover:border-blue-300 hover:text-blue-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400 [&::-webkit-details-marker]:hidden">
