@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Loader2, AlertCircle, Sparkles, Copy, Check } from "lucide-react";
 import { ReadeeAiLoader } from "@/components/loaders/ReadeeAiLoader";
 
@@ -12,18 +12,93 @@ type Note = {
   oneLineSummary: string;
 };
 
+/**
+ * Infer the current US K-12 school year as "YYYY-YY".
+ * School years roll over in August: Aug-Dec → that year is the start;
+ * Jan-Jul → previous calendar year is the start. April 2026 → "2025-26".
+ */
+function currentSchoolYear(now: Date = new Date()): string {
+  const y = now.getFullYear();
+  const m = now.getMonth(); // 0-indexed
+  const startYear = m >= 7 ? y : y - 1;
+  const endYear = (startYear + 1) % 100;
+  return `${startYear}-${String(endYear).padStart(2, "0")}`;
+}
+
+/**
+ * Best-guess preset for the period a teacher is reporting on right now.
+ * Schools vary, but the four-quarter calendar lines up with most US
+ * districts: Q1 = Sep-Nov, Q2 = Dec-Feb, Q3 = Mar-May, Q4 = Jun-Aug.
+ */
+function defaultPresetId(now: Date = new Date()): string {
+  const m = now.getMonth();
+  if (m >= 8 && m <= 10) return "Q1";
+  if (m === 11 || m <= 1) return "Q2";
+  if (m >= 2 && m <= 4) return "Q3";
+  return "Q4";
+}
+
+type Preset = {
+  id: string;
+  label: string;
+  /** Builds the actual string sent to the AI, given the school year. */
+  format: (sy: string) => string;
+};
+
+const PRESETS: { group: string; items: Preset[] }[] = [
+  {
+    group: "Quarters",
+    items: [
+      { id: "Q1", label: "Q1 (Sep – Nov)", format: (sy) => `Q1 ${sy}` },
+      { id: "Q2", label: "Q2 (Dec – Feb)", format: (sy) => `Q2 ${sy}` },
+      { id: "Q3", label: "Q3 (Mar – May)", format: (sy) => `Q3 ${sy}` },
+      { id: "Q4", label: "Q4 (Jun – Aug)", format: (sy) => `Q4 ${sy}` },
+    ],
+  },
+  {
+    group: "Trimesters",
+    items: [
+      { id: "T1", label: "Trimester 1 (Sep – Dec)", format: (sy) => `Trimester 1 ${sy}` },
+      { id: "T2", label: "Trimester 2 (Jan – Mar)", format: (sy) => `Trimester 2 ${sy}` },
+      { id: "T3", label: "Trimester 3 (Apr – Jun)", format: (sy) => `Trimester 3 ${sy}` },
+    ],
+  },
+  {
+    group: "Other",
+    items: [
+      { id: "MID", label: "Mid-year review", format: (sy) => `Mid-year review ${sy}` },
+      { id: "EOY", label: "End-of-year report", format: (sy) => `End-of-year report ${sy}` },
+      { id: "ANNUAL", label: "Annual IEP review", format: (sy) => `Annual IEP review ${sy}` },
+    ],
+  },
+];
+
 export default function IepNoteForm({
   students,
 }: {
   students: { id: string; name: string }[];
 }) {
+  const defaultSchoolYear = useMemo(() => currentSchoolYear(), []);
+  const defaultPreset = useMemo(() => defaultPresetId(), []);
   const [childId, setChildId] = useState("");
   const [annualGoal, setAnnualGoal] = useState("");
-  const [reportingPeriod, setReportingPeriod] = useState("Q3 2025-26");
+  const [presetId, setPresetId] = useState<string>(defaultPreset);
+  const [schoolYear, setSchoolYear] = useState(defaultSchoolYear);
+  const [customPeriod, setCustomPeriod] = useState("");
   const [note, setNote] = useState<Note | null>(null);
   const [pending, setPending] = useState(false);
   const [err, setErr] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
+
+  const selectedPreset = PRESETS.flatMap((g) => g.items).find(
+    (p) => p.id === presetId,
+  );
+  const reportingPeriod =
+    presetId === "CUSTOM"
+      ? customPeriod.trim()
+      : selectedPreset
+      ? selectedPreset.format(schoolYear)
+      : "";
 
   async function submit() {
     setErr(null);
@@ -34,6 +109,10 @@ export default function IepNoteForm({
     }
     if (!annualGoal.trim()) {
       setErr("Annual goal is required.");
+      return;
+    }
+    if (!reportingPeriod) {
+      setErr("Pick a reporting period.");
       return;
     }
     setPending(true);
@@ -90,15 +169,56 @@ export default function IepNoteForm({
           </select>
         </label>
 
-        <label className="mt-3 block text-xs font-semibold text-zinc-500">
-          Reporting period
-          <input
-            type="text"
-            value={reportingPeriod}
-            onChange={(e) => setReportingPeriod(e.target.value)}
-            className="mt-1 w-full rounded-lg border border-zinc-300 px-2 py-2 text-sm focus:border-amber-500 focus:outline-none"
-          />
-        </label>
+        <div className="mt-3 grid gap-3 sm:grid-cols-[1fr_120px]">
+          <label className="block text-xs font-semibold text-zinc-500">
+            Reporting period
+            <select
+              value={presetId}
+              onChange={(e) => setPresetId(e.target.value)}
+              className="mt-1 w-full rounded-lg border border-zinc-300 bg-white px-2 py-2 text-sm focus:border-amber-500 focus:outline-none"
+            >
+              {PRESETS.map((g) => (
+                <optgroup key={g.group} label={g.group}>
+                  {g.items.map((p) => (
+                    <option key={p.id} value={p.id}>
+                      {p.label}
+                    </option>
+                  ))}
+                </optgroup>
+              ))}
+              <option value="CUSTOM">Custom…</option>
+            </select>
+          </label>
+          {presetId !== "CUSTOM" && (
+            <label className="block text-xs font-semibold text-zinc-500">
+              School year
+              <input
+                type="text"
+                value={schoolYear}
+                onChange={(e) => setSchoolYear(e.target.value)}
+                placeholder="2025-26"
+                className="mt-1 w-full rounded-lg border border-zinc-300 px-2 py-2 text-sm focus:border-amber-500 focus:outline-none"
+              />
+            </label>
+          )}
+        </div>
+        {presetId === "CUSTOM" && (
+          <label className="mt-3 block text-xs font-semibold text-zinc-500">
+            Period label
+            <input
+              type="text"
+              value={customPeriod}
+              onChange={(e) => setCustomPeriod(e.target.value)}
+              placeholder="e.g. 6-week probe window, Spring 2026"
+              className="mt-1 w-full rounded-lg border border-zinc-300 px-2 py-2 text-sm focus:border-amber-500 focus:outline-none"
+            />
+          </label>
+        )}
+        {reportingPeriod && presetId !== "CUSTOM" && (
+          <div className="mt-2 text-[11px] text-zinc-500">
+            Note will reference this as <span className="font-mono font-semibold text-zinc-700">{reportingPeriod}</span>.
+          </div>
+        )}
 
         <label className="mt-3 block text-xs font-semibold text-zinc-500">
           Annual goal (paste from the IEP)
