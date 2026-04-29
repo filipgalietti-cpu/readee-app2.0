@@ -114,18 +114,25 @@ export async function buildDailyQuestion(opts?: {
   // kid-appropriate. Hard avoid list keeps the model from drifting
   // into edgy "on this day" picks (wars, assassinations, atrocities)
   // or political/religious controversy on themed days.
-  const SAFETY_PREAMBLE = `This is a public-facing daily reading passage for K-4 students and their families. Stay strictly:
-- Kid-appropriate, factual or warm, never frightening.
-- Politically neutral. Avoid current events, partisan figures, controversial public figures, and contemporary policy debates.
-- Avoid: war, violence, weapons, death, assassinations, terrorism, abuse, racism, slavery, addiction, illness, natural disasters where the angle is loss, religion-specific traditions (use generic "winter holidays" / "harvest" framings instead), anything that could traumatize a 5-year-old.
-- Prefer: inventions, scientific discoveries, art, music, sports, animals, nature, kid-friendly cultural traditions, famous helpers (firefighters, librarians, teachers), space, exploration, food, gardening, friendship.
-- If the natural answer to a date-specific theme is heavy (e.g. an "on this day" event involves war or tragedy), pivot to a famous birthday, an invention, a sports/arts milestone, or a nature/seasonal angle for the same day instead.
+  const SAFETY_PREAMBLE = `This is a public-facing daily reading passage for K-4 students and their families.
 
-Copyright + trademark guardrails (always apply):
-- Do NOT use copyrighted character names, place names, vehicles, organizations, factions, creatures, or signature phrases from any branded franchise. Forbidden examples include but are not limited to: Star Wars, Harry Potter, Marvel, DC, Disney/Pixar films, Pokémon, Minecraft, Roblox, Sonic, Mario, Frozen, Dora, Paw Patrol, Bluey, Peppa Pig, Mickey Mouse, SpongeBob, Sesame Street characters, branded book series.
-- Refer to franchises only generically ("a popular space adventure movie", "a wizard book series", "a video game some kids play").
-- Real historical people are fine. Real public figures who are still actively political are not.
-- Quotes from copyrighted works are off-limits even when famous; paraphrase or skip.`;
+Hard child-safety rules (non-negotiable, K-4 audience):
+- No graphic violence, no weapons-as-tools-against-people, no on-page death, no abuse, no addiction, no sexual content, no self-harm, no horror imagery.
+- Tragedy is OK to acknowledge factually but never as the focus; if the day's natural anchor is a tragedy, reframe around the recovery, the helpers, or a related neutral angle (a scientific discovery, a famous birthday).
+
+Approach to current events + real-world topics:
+- Lean in. Public information about real people, real organizations, real news is fair game when it's age-appropriate and factually framed.
+- Stay journalistic — describe, don't editorialize. Skip partisan adjectives.
+- Pop culture, sports, scientific discoveries, current inventions, and notable cultural moments are encouraged.
+
+Copyright + trademark practical posture:
+- Nominative reference is fine: "the popular video game Minecraft", "the basketball player LeBron James", "the May 4 cultural day fans call Star Wars Day". Naming a thing in passing as part of an educational point is normal speech.
+- Avoid: extended retellings of copyrighted plots, direct quoted dialogue from copyrighted works, character voicing in fan-fiction style, branded merchandise descriptions.
+- Real historical figures and current public figures may be referenced for factual educational content. Don't put words in their mouths they didn't say.
+
+Religion + culture:
+- Specific religious traditions can be described informationally (what people believe, how they observe). Don't proselytize. Don't compare faiths competitively.
+- Cultural traditions, festivals, and food are fair game.`;
 
   const datedTopic = `${SAFETY_PREAMBLE}
 

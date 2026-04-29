@@ -66,7 +66,7 @@ const FIXED_HOLIDAYS: Record<string, DailyTheme> = {
   "05-04": {
     label: "Star Wars Day (May the 4th)",
     topic:
-      "A short kid-friendly informational passage celebrating Star Wars Day on May 4th — fans worldwide use the date as a pun on 'May the Force be with you'. Keep it ABOUT the cultural day and the broader fun of space stories: why people love science fiction, what real astronauts and astronomers actually do, or how stars and planets work. Do NOT name Star Wars characters, planets, vehicles, organizations, factions, droids, or quote signature phrases. Do NOT describe specific Star Wars storylines. Refer only to the franchise generically (\"the popular space adventure movies\") and pivot to real space science the kid can learn.",
+      "A short kid-friendly informational passage about Star Wars Day on May 4th. Fans worldwide use the date as a pun on the famous quote 'May the Force be with you'. Mention that fans celebrate by watching the movies, dressing up, and sharing space-themed activities. Keep the passage focused on real space science kids can learn (stars, planets, astronauts, telescopes, orbits) so it ties the cultural day to a learning moment. Reference Star Wars by name as the cultural anchor, but don't retell plot points or quote extended dialogue from the films.",
     iconHint: "Sparkles",
   },
   "05-05": {
