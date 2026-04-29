@@ -8,9 +8,17 @@ import {
   Check,
   BookOpen,
   Wand2,
+  Save,
+  ExternalLink,
+  Plus,
 } from "lucide-react";
+import Link from "next/link";
 import { ReadeeAiLoader } from "@/components/loaders/ReadeeAiLoader";
-import { aiGeneratePassage } from "@/app/(protected)/classroom/authoring-actions";
+import {
+  aiGeneratePassage,
+  listMyCustomQuizzes,
+  saveCalibratedItemToQuiz,
+} from "@/app/(protected)/classroom/authoring-actions";
 
 type StandardOption = {
   standardId: string;
@@ -499,8 +507,147 @@ export default function CalibratedItemForm({
               {item.hint}
             </div>
           )}
+          <SaveToQuizPanel item={item} gradeLevel={gradeLevel} />
         </div>
       )}
+    </div>
+  );
+}
+
+function SaveToQuizPanel({
+  item,
+  gradeLevel,
+}: {
+  item: Item;
+  gradeLevel: string;
+}) {
+  const [quizzes, setQuizzes] = useState<{ id: string; title: string }[]>([]);
+  const [target, setTarget] = useState<string>("");
+  const [newTitle, setNewTitle] = useState("");
+  const [pending, setPending] = useState(false);
+  const [err, setErr] = useState<string | null>(null);
+  const [savedQuizId, setSavedQuizId] = useState<string | null>(null);
+
+  // Load the teacher's quiz list lazily on first render of this panel.
+  useEffect(() => {
+    let cancelled = false;
+    listMyCustomQuizzes()
+      .then((res) => {
+        if (cancelled) return;
+        if (res.ok) setQuizzes(res.quizzes);
+      })
+      .catch(() => {
+        // Quietly fail; the "Create new" path still works.
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  // Reset save state if the item changes (teacher hit Generate again).
+  useEffect(() => {
+    setSavedQuizId(null);
+    setErr(null);
+  }, [item]);
+
+  async function save() {
+    setErr(null);
+    setPending(true);
+    try {
+      const isNew = target === "" || target === "__new__";
+      const res = await saveCalibratedItemToQuiz({
+        question: {
+          prompt: item.prompt,
+          choices: item.choices,
+          correct: item.correct,
+          hint: item.hint,
+        },
+        ...(isNew
+          ? {
+              newQuizTitle: newTitle.trim() || "Calibrated items",
+              newQuizGradeLevel: gradeLevel,
+            }
+          : { quizId: target }),
+      });
+      if (!res.ok) {
+        setErr(res.error);
+        return;
+      }
+      setSavedQuizId(res.quizId);
+    } catch (e: any) {
+      setErr(e?.message ?? "Could not save.");
+    } finally {
+      setPending(false);
+    }
+  }
+
+  if (savedQuizId) {
+    return (
+      <div className="mt-3 flex flex-wrap items-center justify-between gap-2 rounded-2xl border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm dark:border-emerald-900/40 dark:bg-emerald-950/30">
+        <span className="font-bold text-emerald-800 dark:text-emerald-200">
+          <Check className="-mt-0.5 mr-1 inline h-3 w-3" />
+          Saved to your quiz.
+        </span>
+        <Link
+          href={`/classroom/authoring/quiz/${savedQuizId}`}
+          className="inline-flex items-center gap-1 rounded-full border border-emerald-300 bg-white px-3 py-1 text-xs font-bold text-emerald-700 transition hover:bg-emerald-100"
+        >
+          Open quiz
+          <ExternalLink className="h-3 w-3" />
+        </Link>
+      </div>
+    );
+  }
+
+  const isNewMode = target === "" || target === "__new__";
+  return (
+    <div className="mt-3 rounded-2xl border border-zinc-200 bg-white px-3 py-2 dark:border-slate-700 dark:bg-slate-900">
+      <div className="flex flex-wrap items-center gap-2">
+        <span className="text-[11px] font-bold uppercase tracking-widest text-zinc-500 dark:text-slate-400">
+          Save to a quiz
+        </span>
+        <select
+          value={target}
+          onChange={(e) => setTarget(e.target.value)}
+          disabled={pending}
+          className="flex-1 rounded-lg border border-zinc-300 bg-white px-2 py-1 text-xs focus:border-indigo-500 focus:outline-none disabled:opacity-50 dark:border-slate-700 dark:bg-slate-900"
+        >
+          <option value="__new__">+ New quiz</option>
+          {quizzes.map((q) => (
+            <option key={q.id} value={q.id}>
+              {q.title}
+            </option>
+          ))}
+        </select>
+      </div>
+      {isNewMode && (
+        <input
+          type="text"
+          value={newTitle}
+          onChange={(e) => setNewTitle(e.target.value)}
+          placeholder="New quiz title (default: Calibrated items)"
+          disabled={pending}
+          className="mt-2 w-full rounded-lg border border-zinc-300 bg-white px-2 py-1.5 text-xs focus:border-indigo-500 focus:outline-none disabled:opacity-50 dark:border-slate-700 dark:bg-slate-900"
+        />
+      )}
+      {err && (
+        <p className="mt-2 text-xs font-semibold text-red-600">{err}</p>
+      )}
+      <div className="mt-2 flex justify-end">
+        <button
+          type="button"
+          onClick={save}
+          disabled={pending}
+          className="inline-flex items-center gap-1.5 rounded-full bg-indigo-600 px-3 py-1.5 text-xs font-bold text-white transition hover:bg-indigo-700 disabled:opacity-60"
+        >
+          {pending ? (
+            <Loader2 className="h-3 w-3 animate-spin" />
+          ) : (
+            <Save className="h-3 w-3" />
+          )}
+          {isNewMode ? "Create + save" : "Add to quiz"}
+        </button>
+      </div>
     </div>
   );
 }

@@ -617,6 +617,74 @@ export async function aiGenerateAudio(input: { text: string }): Promise<
   return { ok: true, audioUrl: res.audioUrl };
 }
 
+/** Lightweight list of the teacher's custom quizzes so client-side
+ *  UIs (Calibrated Item save flow, etc.) can offer a target picker
+ *  without their own query. */
+export async function listMyCustomQuizzes(): Promise<
+  | { ok: true; quizzes: { id: string; title: string }[] }
+  | { ok: false; error: string }
+> {
+  const profile = await requireProfile();
+  if (profile.role !== "educator") {
+    return { ok: false, error: "Only educators can list quizzes." };
+  }
+  const supabase = await createClient();
+  const { data, error } = await supabase
+    .from("custom_quizzes")
+    .select("id, title")
+    .eq("teacher_id", profile.id)
+    .order("updated_at", { ascending: false })
+    .limit(100);
+  if (error) return { ok: false, error: error.message };
+  return {
+    ok: true,
+    quizzes: ((data ?? []) as { id: string; title: string }[]).map((q) => ({
+      id: q.id,
+      title: q.title,
+    })),
+  };
+}
+
+/** Save a calibrated-item AI result to a custom quiz. Pass either an
+ *  existing quizId or a newQuizTitle to create + save in one shot. */
+export async function saveCalibratedItemToQuiz(input: {
+  question: {
+    prompt: string;
+    choices: string[];
+    correct: string;
+    hint?: string | null;
+  };
+  quizId?: string;
+  newQuizTitle?: string;
+  newQuizGradeLevel?: string;
+}): Promise<
+  | { ok: true; quizId: string; questionId: string }
+  | { ok: false; error: string }
+> {
+  let targetQuizId = input.quizId;
+  if (!targetQuizId) {
+    const title = (input.newQuizTitle ?? "").trim() || "Untitled quiz";
+    const created = await createCustomQuiz({
+      title,
+      gradeLevel: input.newQuizGradeLevel ?? null,
+    });
+    if (!created.ok) return { ok: false, error: created.error };
+    targetQuizId = created.quizId;
+  }
+  const added = await addQuestionToQuiz({
+    quizId: targetQuizId,
+    question: {
+      kind: "multiple_choice",
+      prompt: input.question.prompt,
+      choices: input.question.choices,
+      correct: input.question.correct,
+      hint: input.question.hint ?? null,
+    },
+  });
+  if (!added.ok) return { ok: false, error: added.error };
+  return { ok: true, quizId: targetQuizId, questionId: added.questionId };
+}
+
 export async function aiGeneratePassage(input: {
   topic: string;
   gradeLevel?: string | null;
