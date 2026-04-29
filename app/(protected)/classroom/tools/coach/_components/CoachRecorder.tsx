@@ -17,6 +17,8 @@ import {
   ExternalLink,
   Maximize2,
   X,
+  ChevronDown,
+  UserPlus,
 } from "lucide-react";
 import Link from "next/link";
 import InlineAddStudents from "@/components/classroom/InlineAddStudents";
@@ -1133,21 +1135,20 @@ function RosterControls({
       <button
         type="button"
         onClick={() => setOpen(!open)}
-        className={`inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-[11px] font-bold transition ${
+        className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-[11px] font-bold transition ${
           open
-            ? "border-zinc-300 bg-zinc-100 text-zinc-700 hover:bg-zinc-200 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
+            ? "border-blue-500 bg-blue-50 text-blue-800 dark:border-blue-700 dark:bg-blue-950/40 dark:text-blue-200"
             : "border-blue-300 bg-white text-blue-700 hover:bg-blue-50 dark:border-blue-800 dark:bg-slate-900 dark:text-blue-300"
         }`}
         aria-expanded={open}
       >
-        {open ? (
-          <>
-            <X className="h-3 w-3" />
-            Close
-          </>
-        ) : (
-          <>+ Add students</>
-        )}
+        <UserPlus className="h-3 w-3" />
+        Add students
+        <ChevronDown
+          className={`h-3 w-3 transition-transform duration-200 ${
+            open ? "rotate-180" : ""
+          }`}
+        />
       </button>
       {classroomId && (
         <Link
