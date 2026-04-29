@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { ReadeeAiLoader } from "@/components/loaders/ReadeeAiLoader";
 import type { IepGoal } from "../actions";
+import { goalLabel } from "./goal-label";
 
 type Note = {
   plop: string;
@@ -238,7 +239,7 @@ export default function NoteTab({
             ) : (
               activeGoals.map((g) => (
                 <option key={g.id} value={g.id}>
-                  {g.goalText.length > 100 ? g.goalText.slice(0, 100) + "…" : g.goalText}
+                  {goalLabel(g)}
                 </option>
               ))
             )}
