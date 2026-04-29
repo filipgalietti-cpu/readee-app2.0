@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useTransition } from "react";
 import {
   Mic,
   MicOff,
@@ -12,8 +12,11 @@ import {
   Activity,
   ListChecks,
   User,
+  BookOpen,
+  Check,
 } from "lucide-react";
 import InlineAddStudents from "@/components/classroom/InlineAddStudents";
+import { createAssignment } from "@/app/(protected)/classroom/actions";
 
 type Roster = {
   classroomId: string;
@@ -42,7 +45,11 @@ const FRIENDLY_FONT =
 
 export default function RunningRecordRecorder({ roster }: { roster: Roster }) {
   const allChildren = roster.flatMap((r) =>
-    r.children.map((c) => ({ ...c, classroomName: r.classroomName })),
+    r.children.map((c) => ({
+      ...c,
+      classroomId: r.classroomId,
+      classroomName: r.classroomName,
+    })),
   );
 
   const [childId, setChildId] = useState<string>(allChildren[0]?.id ?? "");
@@ -343,7 +350,12 @@ export default function RunningRecordRecorder({ roster }: { roster: Roster }) {
       )}
 
       {record && selectedChild && (
-        <ResultsPanel record={record} studentName={selectedChild.first_name} />
+        <ResultsPanel
+          record={record}
+          studentName={selectedChild.first_name}
+          studentId={selectedChild.id}
+          classroomId={selectedChild.classroomId}
+        />
       )}
     </div>
   );
@@ -358,9 +370,13 @@ function formatTime(seconds: number): string {
 function ResultsPanel({
   record,
   studentName,
+  studentId,
+  classroomId,
 }: {
   record: RunningRecord;
   studentName: string;
+  studentId: string;
+  classroomId: string;
 }) {
   const errorCount = record.miscues.filter(
     (m) => m.kind !== "self_correction",
@@ -393,6 +409,15 @@ function ResultsPanel({
           </p>
         )}
       </div>
+
+      {record.focusArea && (
+        <SuggestedPractice
+          focusArea={record.focusArea}
+          studentId={studentId}
+          studentName={studentName}
+          classroomId={classroomId}
+        />
+      )}
 
       {record.miscues.length > 0 && (
         <div className="rounded-3xl border border-zinc-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900/40">
@@ -437,6 +462,176 @@ function ResultsPanel({
             {record.transcript}
           </p>
         </details>
+      )}
+    </div>
+  );
+}
+
+type Suggestion = {
+  standardId: string;
+  title: string;
+  grade: string;
+  domain: string;
+  why: string;
+};
+
+function SuggestedPractice({
+  focusArea,
+  studentId,
+  studentName,
+  classroomId,
+}: {
+  focusArea: string;
+  studentId: string;
+  studentName: string;
+  classroomId: string;
+}) {
+  const [loading, setLoading] = useState(true);
+  const [err, setErr] = useState<string | null>(null);
+  const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
+  // Map standardId -> "idle" | "assigning" | "assigned" | "error".
+  const [statusByStandard, setStatusByStandard] = useState<
+    Record<string, "idle" | "assigning" | "assigned" | "error">
+  >({});
+  const [assignErr, setAssignErr] = useState<string | null>(null);
+  const [, startAssign] = useTransition();
+
+  useEffect(() => {
+    let cancelled = false;
+    setLoading(true);
+    setErr(null);
+    setSuggestions([]);
+    fetch("/api/running-record-suggest", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ focusArea, studentId }),
+    })
+      .then(async (res) => {
+        const json = await res.json();
+        if (cancelled) return;
+        if (!json.ok) {
+          setErr(json.error ?? "Could not pick lessons.");
+        } else {
+          setSuggestions(json.suggestions as Suggestion[]);
+        }
+      })
+      .catch((e) => {
+        if (!cancelled) setErr(e?.message ?? "Could not pick lessons.");
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [focusArea, studentId]);
+
+  function assign(s: Suggestion) {
+    setAssignErr(null);
+    setStatusByStandard((m) => ({ ...m, [s.standardId]: "assigning" }));
+    startAssign(async () => {
+      const res = await createAssignment({
+        classroomId,
+        kind: "readee_lesson",
+        sourceId: s.standardId,
+        title: s.title,
+        assignedChildIds: [studentId],
+      });
+      if (!res.ok) {
+        setStatusByStandard((m) => ({ ...m, [s.standardId]: "error" }));
+        setAssignErr(res.error);
+        return;
+      }
+      setStatusByStandard((m) => ({ ...m, [s.standardId]: "assigned" }));
+    });
+  }
+
+  if (loading) {
+    return (
+      <div className="flex items-center gap-2 rounded-2xl bg-blue-50 px-4 py-3 text-xs font-semibold text-blue-700 dark:bg-blue-950/30 dark:text-blue-300">
+        <Loader2 className="h-3.5 w-3.5 animate-spin" />
+        Finding practice for {studentName}…
+      </div>
+    );
+  }
+  if (err || suggestions.length === 0) {
+    return (
+      <div className="rounded-2xl border border-zinc-200 bg-white px-4 py-3 text-xs text-zinc-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400">
+        {err ?? "No matching lessons in the catalog yet — try a different passage."}
+      </div>
+    );
+  }
+
+  return (
+    <div className="rounded-3xl border border-zinc-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900/40">
+      <div className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-zinc-500 dark:text-slate-400">
+        <BookOpen className="h-3 w-3" />
+        Suggested practice
+      </div>
+      <p className="mt-1 text-xs text-zinc-500 dark:text-slate-400">
+        Targeted lessons matching &quot;{focusArea}&quot;.
+      </p>
+      <ul className="mt-3 grid gap-2">
+        {suggestions.map((s) => {
+          const status = statusByStandard[s.standardId] ?? "idle";
+          return (
+            <li
+              key={s.standardId}
+              className="flex flex-col gap-2 rounded-2xl border border-zinc-200 bg-white p-3 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:flex-row sm:items-center sm:justify-between"
+            >
+              <div className="min-w-0 flex-1">
+                <div className="flex flex-wrap items-center gap-1.5">
+                  <span className="rounded-full bg-indigo-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-indigo-700 dark:bg-indigo-950/40 dark:text-indigo-300">
+                    {s.standardId}
+                  </span>
+                  <span className="text-[10px] font-semibold uppercase tracking-wider text-zinc-400">
+                    {s.grade}
+                  </span>
+                </div>
+                <div className="mt-1 text-sm font-semibold text-zinc-900 dark:text-white">
+                  {s.title}
+                </div>
+                {s.why && (
+                  <div className="mt-1 text-xs text-zinc-500 dark:text-slate-400">
+                    {s.why}
+                  </div>
+                )}
+              </div>
+              <button
+                type="button"
+                onClick={() => assign(s)}
+                disabled={status === "assigning" || status === "assigned"}
+                className={`inline-flex items-center justify-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-bold transition disabled:opacity-60 ${
+                  status === "assigned"
+                    ? "bg-emerald-600 text-white"
+                    : status === "error"
+                    ? "bg-red-600 text-white"
+                    : "bg-blue-600 text-white hover:bg-blue-700"
+                }`}
+              >
+                {status === "assigning" ? (
+                  <>
+                    <Loader2 className="h-3 w-3 animate-spin" />
+                    Assigning…
+                  </>
+                ) : status === "assigned" ? (
+                  <>
+                    <Check className="h-3 w-3" />
+                    Assigned
+                  </>
+                ) : (
+                  <>Assign to {studentName}</>
+                )}
+              </button>
+            </li>
+          );
+        })}
+      </ul>
+      {assignErr && (
+        <div className="mt-2 flex items-start gap-1.5 rounded-lg bg-red-50 px-2 py-1.5 text-xs font-semibold text-red-700">
+          <AlertCircle className="mt-0.5 h-3 w-3 flex-shrink-0" />
+          {assignErr}
+        </div>
       )}
     </div>
   );
