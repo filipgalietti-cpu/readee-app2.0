@@ -108,16 +108,26 @@ Trail (Writing-Coach integration):
 - `d50aa16` writing-prompt counter in the wizard, orchestrator
   generates prompts from passage
 
-## 6. Calibrated item
+## 6. Calibrated item — ✓ PASS / merged into Quiz builder (2026-04-29)
 
-URL: `https://learn.readee.app/classroom/tools/calibrated-item`
+Standalone tool deprecated. The calibrated-item flow now lives inside
+Quiz builder's "+ Add question" modal as a **Method: Manual | AI fill**
+toggle. AI fill ships with the same Grade → Domain → Standard layered
+picker (kid-friendly lesson titles), difficulty slider, optional anchor
+passage (paste or AI-generate with Short/Medium/Long length tier), and
+adds a violet chip strip showing Bloom's level + skill microlabel +
+actual difficulty after fill.
 
-- [ ] Page loads
-- [ ] Pick a CCSS standard (e.g. RL.2.1)
-- [ ] Pick a grade
-- [ ] Set difficulty to medium
-- [ ] Click Generate
-- [ ] Within 10s, see one MCQ with prompt, 4 choices, correct flagged
+URL (new home): `https://learn.readee.app/classroom/authoring/quiz/<id>` →
+**+ Add question** → switch to **AI fill**.
+
+Trail:
+- `facab40` Save-to-quiz panel on the standalone (Part B, now moot)
+- `b9d1787` AI fill mode inside QuizBuilder modal (Part A)
+- `24dc4bd` anchor passage in modal + Bloom/skill chips + deprecate
+  standalone (route kept as redirect card; tile removed from
+  /classroom/tools and the classroom hero card; orphan
+  CalibratedItemForm component deleted)
 
 ## 7. IEP note
 
