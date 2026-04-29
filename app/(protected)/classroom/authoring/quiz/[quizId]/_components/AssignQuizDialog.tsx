@@ -16,7 +16,7 @@ import {
 import { createAssignment } from "@/app/(protected)/classroom/actions";
 
 type Child = { id: string; first_name: string };
-type Classroom = { id: string; name: string; children: Child[] };
+type Classroom = { id: string; name: string; children?: Child[] };
 
 type Mode = "all" | "students";
 
@@ -235,7 +235,7 @@ export default function AssignQuizDialog({
                         </span>
                         <span className="flex items-center gap-2">
                           <span className="text-[10px] font-semibold uppercase tracking-wider text-zinc-400">
-                            {c.children.length} student{c.children.length === 1 ? "" : "s"}
+                            {(c.children ?? []).length} student{(c.children ?? []).length === 1 ? "" : "s"}
                           </span>
                           <span
                             className={`flex h-5 w-5 items-center justify-center rounded-full border ${
@@ -267,7 +267,7 @@ export default function AssignQuizDialog({
                             <button
                               type="button"
                               onClick={() => setMode(c.id, "students")}
-                              disabled={c.children.length === 0}
+                              disabled={(c.children ?? []).length === 0}
                               className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 font-semibold transition disabled:cursor-not-allowed disabled:opacity-50 ${
                                 sel.mode === "students"
                                   ? "bg-violet-600 text-white"
@@ -281,13 +281,13 @@ export default function AssignQuizDialog({
 
                           {sel.mode === "students" && (
                             <div className="mt-2">
-                              {c.children.length === 0 ? (
+                              {(c.children ?? []).length === 0 ? (
                                 <p className="text-[11px] text-zinc-500">
                                   No students in this class yet.
                                 </p>
                               ) : (
                                 <div className="flex flex-wrap gap-1.5">
-                                  {c.children.map((kid) => {
+                                  {(c.children ?? []).map((kid) => {
                                     const isOn = sel.childIds.has(kid.id);
                                     return (
                                       <button
