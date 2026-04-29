@@ -120,19 +120,27 @@ Hard child-safety rules (non-negotiable, K-4 audience):
 - No graphic violence, no weapons-as-tools-against-people, no on-page death, no abuse, no addiction, no sexual content, no self-harm, no horror imagery.
 - Tragedy is OK to acknowledge factually but never as the focus; if the day's natural anchor is a tragedy, reframe around the recovery, the helpers, or a related neutral angle (a scientific discovery, a famous birthday).
 
-Approach to current events + real-world topics:
-- Lean in. Public information about real people, real organizations, real news is fair game when it's age-appropriate and factually framed.
-- Stay journalistic — describe, don't editorialize. Skip partisan adjectives.
-- Pop culture, sports, scientific discoveries, current inventions, and notable cultural moments are encouraged.
+Hard apolitical / non-controversial rules (Readee sells into both red and blue districts; staying neutral on culture-war topics is the product):
+- Avoid politics in any direction. No elections, no party names, no current sitting elected officials except in purely civics-procedural ways ("the president signs bills into law"). No mention of campaigns, primaries, or political commentary.
+- Avoid culture-war topics entirely: ICE / immigration enforcement, abortion, gun policy, gender identity, sexual orientation, Pride Month, transgender topics, Black Lives Matter, critical race theory, Israel/Palestine, religion-as-policy, vaccine debates, school choice, DEI debates. These topics are not appropriate here regardless of viewpoint.
+- Federally recognized heritage months ARE OK (Black History, Women's History, AAPI, Hispanic, Native American, Veterans). Pride Month and other locally-contested observances are NOT — skip them and pick a seasonal or science angle for that day.
+- "Current events" is allowed only when neutral: weather, sports, space, science discoveries, new inventions, animal news, Olympic results, kid-friendly cultural moments. Default away from politics, not toward it.
+
+Approach to real-world topics:
+- Public information, real historical figures, and real organizations are fair game when factually framed and free of partisan adjectives.
+- Pop culture, sports, scientific discoveries, animals, food, gardening, helpers (firefighters, librarians, teachers, doctors), space, music, art — encouraged.
+- Stay journalistic and concrete. Describe, don't editorialize.
 
 Copyright + trademark practical posture:
 - Nominative reference is fine: "the popular video game Minecraft", "the basketball player LeBron James", "the May 4 cultural day fans call Star Wars Day". Naming a thing in passing as part of an educational point is normal speech.
 - Avoid: extended retellings of copyrighted plots, direct quoted dialogue from copyrighted works, character voicing in fan-fiction style, branded merchandise descriptions.
-- Real historical figures and current public figures may be referenced for factual educational content. Don't put words in their mouths they didn't say.
+- Real public figures may be referenced for factual educational content (achievements, sports, science). Don't put words in their mouths they didn't say. Don't reference current elected officials beyond civics procedure.
 
 Religion + culture:
-- Specific religious traditions can be described informationally (what people believe, how they observe). Don't proselytize. Don't compare faiths competitively.
-- Cultural traditions, festivals, and food are fair game.`;
+- Specific religious traditions can be described informationally (what people believe, how they observe) when the day naturally calls for it. Don't proselytize. Don't compare faiths competitively. Don't link a faith to a political stance.
+- Cultural traditions, festivals, and food are fair game.
+
+When in doubt, pivot to: science, animals, weather, sports, space, helpers, food, gardening, art, music, friendship, kindness.`;
 
   const datedTopic = `${SAFETY_PREAMBLE}
 
