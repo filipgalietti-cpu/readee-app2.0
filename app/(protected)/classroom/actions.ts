@@ -527,6 +527,9 @@ export async function createAssignment(input: {
   shuffleChoices?: boolean;
   revealCorrectImmediately?: boolean;
   attemptsAllowed?: number | null;
+  /** When omitted/empty, the assignment is whole-class. When set, only
+   *  these children see it on the student dashboard. */
+  assignedChildIds?: string[] | null;
 }): Promise<{ ok: true; assignmentId: string } | { ok: false; error: string }> {
   const profile = await requireProfile();
   if (profile.role !== "educator") {
@@ -553,6 +556,23 @@ export async function createAssignment(input: {
       ? input.questionIds.filter((q) => typeof q === "string").slice(0, 200)
       : null;
 
+  // Validate assigned_child_ids against the classroom's actual roster
+  // so a teacher can't target a child who isn't in the class.
+  let assignedChildIds: string[] | null = null;
+  if (Array.isArray(input.assignedChildIds) && input.assignedChildIds.length > 0) {
+    const requested = input.assignedChildIds.filter(
+      (id) => typeof id === "string",
+    );
+    const { data: members } = await supabase
+      .from("classroom_memberships")
+      .select("child_id")
+      .eq("classroom_id", input.classroomId)
+      .in("child_id", requested);
+    const valid = new Set(((members ?? []) as any[]).map((m) => m.child_id));
+    const filtered = requested.filter((id) => valid.has(id));
+    assignedChildIds = filtered.length > 0 ? filtered : null;
+  }
+
   const { data, error } = await supabase
     .from("assignments")
     .insert({
@@ -565,6 +585,7 @@ export async function createAssignment(input: {
       due_at: input.dueAt ?? null,
       pass_threshold: passThreshold,
       question_ids: questionIds,
+      assigned_child_ids: assignedChildIds,
       audio_prompt_enabled: input.audioPromptEnabled ?? true,
       audio_choices_enabled: input.audioChoicesEnabled ?? false,
       shuffle_questions: input.shuffleQuestions ?? false,

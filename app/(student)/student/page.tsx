@@ -13,6 +13,7 @@ type Assignment = {
   title: string;
   note: string | null;
   due_at: string | null;
+  assigned_child_ids: string[] | null;
 };
 
 function dueLabel(dueAt: string | null): { text: string; tone: string } | null {
@@ -53,7 +54,7 @@ export default async function StudentHome() {
     await Promise.all([
       admin
         .from("assignments")
-        .select("id, kind, source_id, title, note, due_at")
+        .select("id, kind, source_id, title, note, due_at, assigned_child_ids")
         .eq("classroom_id", session.classroomId)
         .order("due_at", { ascending: true, nullsFirst: false }),
       admin
@@ -71,7 +72,13 @@ export default async function StudentHome() {
   const completed = new Set(
     (completedRaw ?? []).map((r: any) => r.assignment_id as string),
   );
-  const all = (assignmentsRaw ?? []) as Assignment[];
+  // Filter out per-student assignments not targeted at this child.
+  // Whole-class (assigned_child_ids null/empty) stay visible to everyone.
+  const all = ((assignmentsRaw ?? []) as Assignment[]).filter((a) => {
+    const ids = a.assigned_child_ids;
+    if (!ids || ids.length === 0) return true;
+    return ids.includes(session.childId);
+  });
   const open = all.filter((a) => !completed.has(a.id));
   const done = all.filter((a) => completed.has(a.id));
 

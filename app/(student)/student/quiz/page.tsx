@@ -21,10 +21,11 @@ export default async function StudentQuizPage({
 
   const admin = supabaseAdmin();
 
-  // Verify the quiz is assigned to this student's classroom.
+  // Verify the quiz is assigned to this student's classroom AND, if the
+  // assignment targets specific kids, this student is one of them.
   const { data: assignmentRow } = await admin
     .from("assignments")
-    .select("id, title, pass_threshold")
+    .select("id, title, pass_threshold, assigned_child_ids")
     .eq("classroom_id", session.classroomId)
     .eq("kind", "custom_quiz")
     .eq("source_id", quizId)
@@ -33,6 +34,10 @@ export default async function StudentQuizPage({
     .maybeSingle();
 
   if (!assignmentRow) notFound();
+  const targetedIds = (assignmentRow as any).assigned_child_ids as string[] | null;
+  if (targetedIds && targetedIds.length > 0 && !targetedIds.includes(session.childId)) {
+    notFound();
+  }
 
   const { data: quiz } = await admin
     .from("custom_quizzes")

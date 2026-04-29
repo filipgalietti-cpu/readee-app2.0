@@ -86,7 +86,7 @@ export default async function StudentLearnPage({
   const { data: assignmentRow } = await admin
     .from("assignments")
     .select(
-      "id, question_ids, pass_threshold, audio_prompt_enabled, audio_choices_enabled, shuffle_questions, shuffle_choices, reveal_correct_immediately",
+      "id, question_ids, pass_threshold, audio_prompt_enabled, audio_choices_enabled, shuffle_questions, shuffle_choices, reveal_correct_immediately, assigned_child_ids",
     )
     .eq("classroom_id", session.classroomId)
     .eq("kind", "readee_lesson")
@@ -94,6 +94,20 @@ export default async function StudentLearnPage({
     .order("assigned_at", { ascending: false })
     .limit(1)
     .maybeSingle();
+
+  // If the matched assignment targets specific kids and this student
+  // isn't one of them, treat it as if there's no assignment (no
+  // shuffle/threshold configs apply, the standard is still browsable).
+  const targetedIds = (assignmentRow as any)?.assigned_child_ids as string[] | null | undefined;
+  const targetedAtThisStudent =
+    !Array.isArray(targetedIds) ||
+    targetedIds.length === 0 ||
+    targetedIds.includes(session.childId);
+  if (assignmentRow && !targetedAtThisStudent) {
+    // Erase config so the lesson plays in default mode.
+    (assignmentRow as any).question_ids = null;
+    (assignmentRow as any).pass_threshold = null;
+  }
 
   const questionIdsFilter = (assignmentRow as any)?.question_ids as string[] | null | undefined;
   const passThreshold = (assignmentRow as any)?.pass_threshold as number | null | undefined;

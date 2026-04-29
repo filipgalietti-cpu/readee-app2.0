@@ -59,13 +59,42 @@ export default async function QuizBuilderPage({
   const passageImage = questions[0]?.imageUrl ?? null;
   const passageAudio = questions[0]?.audioUrl ?? null;
 
-  // Classrooms the teacher owns — feeds the inline assign-to-class flow.
+  // Classrooms the teacher owns + their rosters — feeds the inline
+  // assign-to-class flow including the per-student picker.
   const { data: classroomRows } = await supabase
     .from("classrooms")
     .select("id, name")
     .eq("teacher_id", profile.id)
     .order("created_at", { ascending: true });
-  const classrooms = (classroomRows ?? []) as { id: string; name: string }[];
+  const classroomList = (classroomRows ?? []) as { id: string; name: string }[];
+
+  let classrooms: {
+    id: string;
+    name: string;
+    children: { id: string; first_name: string }[];
+  }[] = classroomList.map((c) => ({ ...c, children: [] }));
+
+  if (classroomList.length > 0) {
+    const ids = classroomList.map((c) => c.id);
+    const { data: roster } = await supabase
+      .from("classroom_memberships")
+      .select("classroom_id, children(id, first_name)")
+      .in("classroom_id", ids);
+    const byClass = new Map<string, { id: string; first_name: string }[]>();
+    for (const r of (roster ?? []) as any[]) {
+      const child = r.children;
+      if (!child?.id) continue;
+      const arr = byClass.get(r.classroom_id) ?? [];
+      arr.push({ id: child.id, first_name: child.first_name ?? "Student" });
+      byClass.set(r.classroom_id, arr);
+    }
+    classrooms = classroomList.map((c) => ({
+      ...c,
+      children: (byClass.get(c.id) ?? []).sort((a, b) =>
+        a.first_name.localeCompare(b.first_name),
+      ),
+    }));
+  }
 
   return (
     <div className="mx-auto max-w-4xl px-6 py-10">

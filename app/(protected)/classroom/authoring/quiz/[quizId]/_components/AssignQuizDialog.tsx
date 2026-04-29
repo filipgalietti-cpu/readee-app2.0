@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useMemo, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import {
   GraduationCap,
@@ -10,18 +10,30 @@ import {
   AlertCircle,
   CalendarDays,
   Target,
+  Users,
+  User,
 } from "lucide-react";
 import { createAssignment } from "@/app/(protected)/classroom/actions";
 
-type Classroom = { id: string; name: string };
+type Child = { id: string; first_name: string };
+type Classroom = { id: string; name: string; children: Child[] };
+
+type Mode = "all" | "students";
+
+type Selection = {
+  selected: boolean;
+  mode: Mode;
+  childIds: Set<string>;
+};
 
 /**
  * In-place assign-to-class flow opened from the quiz builder.
  *
- * Lets the teacher pick one or many classrooms, set an optional due
- * date + pass threshold, and create the assignment without leaving the
- * builder. After success, surfaces a toast-ish confirmation with a
- * link into the first targeted classroom so they can see the kid view.
+ * Per classroom the teacher can choose:
+ *   - "Whole class" (default), assignment is visible to every student
+ *   - "Specific students", checkbox list of children in that classroom
+ *
+ * Optional due date + pass threshold apply across the picked classrooms.
  */
 export default function AssignQuizDialog({
   quizId,
@@ -38,19 +50,50 @@ export default function AssignQuizDialog({
 }) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
-  const [selected, setSelected] = useState<Set<string>>(new Set());
+  const [picks, setPicks] = useState<Map<string, Selection>>(() => new Map());
   const [dueAt, setDueAt] = useState<string>("");
   const [passThreshold, setPassThreshold] = useState<string>("");
   const [pending, start] = useTransition();
   const [err, setErr] = useState<string | null>(null);
   const [doneMsg, setDoneMsg] = useState<string | null>(null);
 
-  function toggle(id: string) {
-    const next = new Set(selected);
-    if (next.has(id)) next.delete(id);
-    else next.add(id);
-    setSelected(next);
+  function getSel(id: string): Selection {
+    return (
+      picks.get(id) ?? { selected: false, mode: "all", childIds: new Set() }
+    );
   }
+
+  function updateSel(id: string, fn: (s: Selection) => Selection) {
+    setPicks((prev) => {
+      const next = new Map(prev);
+      const current =
+        prev.get(id) ?? { selected: false, mode: "all", childIds: new Set() };
+      next.set(id, fn(current));
+      return next;
+    });
+  }
+
+  function toggleClassroom(id: string) {
+    updateSel(id, (s) => ({ ...s, selected: !s.selected }));
+  }
+
+  function setMode(id: string, mode: Mode) {
+    updateSel(id, (s) => ({ ...s, mode, selected: true }));
+  }
+
+  function toggleChild(classroomId: string, childId: string) {
+    updateSel(classroomId, (s) => {
+      const next = new Set(s.childIds);
+      if (next.has(childId)) next.delete(childId);
+      else next.add(childId);
+      return { ...s, mode: "students", selected: true, childIds: next };
+    });
+  }
+
+  const selectedCount = useMemo(
+    () => Array.from(picks.values()).filter((s) => s.selected).length,
+    [picks],
+  );
 
   function close() {
     setOpen(false);
@@ -59,9 +102,18 @@ export default function AssignQuizDialog({
   }
 
   function submit() {
-    if (selected.size === 0) {
+    const targets = classrooms.filter((c) => getSel(c.id).selected);
+    if (targets.length === 0) {
       setErr("Pick at least one classroom.");
       return;
+    }
+    // Validate per-classroom: if mode=students, must pick at least one kid.
+    for (const c of targets) {
+      const s = getSel(c.id);
+      if (s.mode === "students" && s.childIds.size === 0) {
+        setErr(`Pick at least one student in ${c.name}, or switch to "Whole class".`);
+        return;
+      }
     }
     setErr(null);
     setDoneMsg(null);
@@ -74,33 +126,44 @@ export default function AssignQuizDialog({
     })();
 
     start(async () => {
-      const ids = Array.from(selected);
       const failures: string[] = [];
-      for (const cid of ids) {
+      let successCount = 0;
+      for (const c of targets) {
+        const s = getSel(c.id);
+        const assignedChildIds =
+          s.mode === "students" ? Array.from(s.childIds) : null;
         const res = await createAssignment({
-          classroomId: cid,
+          classroomId: c.id,
           kind: "custom_quiz",
           sourceId: quizId,
           title: quizTitle,
           dueAt: due,
           passThreshold: threshold,
+          assignedChildIds,
         });
         if (!res.ok) {
-          const cn = classrooms.find((c) => c.id === cid)?.name ?? "Classroom";
-          failures.push(`${cn}: ${res.error}`);
+          failures.push(`${c.name}: ${res.error}`);
+        } else {
+          successCount++;
         }
       }
-      if (failures.length === ids.length) {
+      if (failures.length === targets.length) {
         setErr(failures.join(" · "));
         return;
       }
-      const successCount = ids.length - failures.length;
+      const detailParts = targets
+        .filter((c) => getSel(c.id).selected)
+        .slice(0, 3)
+        .map((c) => {
+          const s = getSel(c.id);
+          if (s.mode === "students") return `${c.name} (${s.childIds.size})`;
+          return c.name;
+        });
       setDoneMsg(
-        `Assigned to ${successCount} classroom${successCount === 1 ? "" : "s"}.${
-          failures.length ? ` (${failures.length} failed)` : ""
+        `Assigned to ${successCount} classroom${successCount === 1 ? "" : "s"}: ${detailParts.join(", ")}${
+          failures.length ? ` · ${failures.length} failed` : ""
         }`,
       );
-      // Soft refresh so the dashboard / classroom view updates if open.
       router.refresh();
     });
   }
@@ -127,7 +190,7 @@ export default function AssignQuizDialog({
             className="absolute inset-0 bg-black/40 backdrop-blur-sm"
             onClick={pending ? undefined : close}
           />
-          <div className="relative w-full max-w-md rounded-2xl bg-white p-6 shadow-xl dark:bg-slate-900">
+          <div className="relative w-full max-w-lg rounded-2xl bg-white p-6 shadow-xl dark:bg-slate-900">
             <button
               type="button"
               onClick={close}
@@ -141,7 +204,7 @@ export default function AssignQuizDialog({
               Assign quiz
             </h3>
             <p className="mt-0.5 text-sm text-zinc-500 dark:text-slate-400">
-              Pick the classrooms that should see <span className="font-semibold">{quizTitle}</span>.
+              Pick where <span className="font-semibold">{quizTitle}</span> shows up.
             </p>
 
             {classrooms.length === 0 ? (
@@ -150,33 +213,105 @@ export default function AssignQuizDialog({
                 back and assign.
               </div>
             ) : (
-              <div className="mt-4 space-y-1.5">
+              <div className="mt-4 max-h-[50vh] space-y-2 overflow-y-auto pr-1">
                 {classrooms.map((c) => {
-                  const isSel = selected.has(c.id);
+                  const sel = getSel(c.id);
                   return (
-                    <button
+                    <div
                       key={c.id}
-                      type="button"
-                      onClick={() => toggle(c.id)}
-                      className={`flex w-full items-center justify-between gap-2 rounded-xl border px-3 py-2 text-sm transition ${
-                        isSel
-                          ? "border-violet-400 bg-violet-50 dark:border-violet-500 dark:bg-violet-950/30"
-                          : "border-zinc-200 bg-white hover:border-violet-300 dark:border-slate-700 dark:bg-slate-900"
+                      className={`rounded-xl border transition ${
+                        sel.selected
+                          ? "border-violet-400 bg-violet-50/40 dark:border-violet-500 dark:bg-violet-950/20"
+                          : "border-zinc-200 bg-white dark:border-slate-700 dark:bg-slate-900"
                       }`}
                     >
-                      <span className="font-semibold text-zinc-900 dark:text-white">
-                        {c.name}
-                      </span>
-                      <span
-                        className={`flex h-5 w-5 items-center justify-center rounded-full border ${
-                          isSel
-                            ? "border-violet-600 bg-violet-600 text-white"
-                            : "border-zinc-300 bg-white"
-                        }`}
+                      <button
+                        type="button"
+                        onClick={() => toggleClassroom(c.id)}
+                        className="flex w-full items-center justify-between gap-2 px-3 py-2 text-sm"
                       >
-                        {isSel && <Check className="h-3 w-3" />}
-                      </span>
-                    </button>
+                        <span className="font-semibold text-zinc-900 dark:text-white">
+                          {c.name}
+                        </span>
+                        <span className="flex items-center gap-2">
+                          <span className="text-[10px] font-semibold uppercase tracking-wider text-zinc-400">
+                            {c.children.length} student{c.children.length === 1 ? "" : "s"}
+                          </span>
+                          <span
+                            className={`flex h-5 w-5 items-center justify-center rounded-full border ${
+                              sel.selected
+                                ? "border-violet-600 bg-violet-600 text-white"
+                                : "border-zinc-300 bg-white"
+                            }`}
+                          >
+                            {sel.selected && <Check className="h-3 w-3" />}
+                          </span>
+                        </span>
+                      </button>
+
+                      {sel.selected && (
+                        <div className="border-t border-violet-200/60 px-3 py-2 dark:border-violet-900/40">
+                          <div className="flex flex-wrap items-center gap-2 text-xs">
+                            <button
+                              type="button"
+                              onClick={() => setMode(c.id, "all")}
+                              className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 font-semibold transition ${
+                                sel.mode === "all"
+                                  ? "bg-violet-600 text-white"
+                                  : "bg-zinc-100 text-zinc-600 hover:bg-zinc-200 dark:bg-slate-800 dark:text-slate-300"
+                              }`}
+                            >
+                              <Users className="h-3 w-3" />
+                              Whole class
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => setMode(c.id, "students")}
+                              disabled={c.children.length === 0}
+                              className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 font-semibold transition disabled:cursor-not-allowed disabled:opacity-50 ${
+                                sel.mode === "students"
+                                  ? "bg-violet-600 text-white"
+                                  : "bg-zinc-100 text-zinc-600 hover:bg-zinc-200 dark:bg-slate-800 dark:text-slate-300"
+                              }`}
+                            >
+                              <User className="h-3 w-3" />
+                              Specific students
+                            </button>
+                          </div>
+
+                          {sel.mode === "students" && (
+                            <div className="mt-2">
+                              {c.children.length === 0 ? (
+                                <p className="text-[11px] text-zinc-500">
+                                  No students in this class yet.
+                                </p>
+                              ) : (
+                                <div className="flex flex-wrap gap-1.5">
+                                  {c.children.map((kid) => {
+                                    const isOn = sel.childIds.has(kid.id);
+                                    return (
+                                      <button
+                                        key={kid.id}
+                                        type="button"
+                                        onClick={() => toggleChild(c.id, kid.id)}
+                                        className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[11px] font-semibold transition ${
+                                          isOn
+                                            ? "border-violet-500 bg-violet-100 text-violet-800 dark:border-violet-500 dark:bg-violet-950/40 dark:text-violet-200"
+                                            : "border-zinc-200 bg-white text-zinc-600 hover:border-violet-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
+                                        }`}
+                                      >
+                                        {isOn && <Check className="h-2.5 w-2.5" />}
+                                        {kid.first_name}
+                                      </button>
+                                    );
+                                  })}
+                                </div>
+                              )}
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </div>
                   );
                 })}
               </div>
@@ -226,35 +361,40 @@ export default function AssignQuizDialog({
               </div>
             )}
 
-            <div className="mt-5 flex items-center justify-end gap-2">
-              <button
-                type="button"
-                onClick={close}
-                disabled={pending}
-                className="rounded-full px-3 py-1.5 text-xs font-semibold text-zinc-500 hover:bg-zinc-100 disabled:opacity-50 dark:hover:bg-slate-800"
-              >
-                {doneMsg ? "Done" : "Cancel"}
-              </button>
-              {!doneMsg && (
+            <div className="mt-5 flex items-center justify-between gap-2">
+              <span className="text-[11px] text-zinc-400">
+                {selectedCount} classroom{selectedCount === 1 ? "" : "s"} picked
+              </span>
+              <div className="flex items-center gap-2">
                 <button
                   type="button"
-                  onClick={submit}
-                  disabled={pending || classrooms.length === 0}
-                  className="inline-flex items-center gap-1.5 rounded-full bg-violet-600 px-4 py-1.5 text-xs font-bold text-white transition hover:bg-violet-700 disabled:opacity-60"
+                  onClick={close}
+                  disabled={pending}
+                  className="rounded-full px-3 py-1.5 text-xs font-semibold text-zinc-500 hover:bg-zinc-100 disabled:opacity-50 dark:hover:bg-slate-800"
                 >
-                  {pending ? (
-                    <>
-                      <Loader2 className="h-3.5 w-3.5 animate-spin" />
-                      Assigning…
-                    </>
-                  ) : (
-                    <>
-                      <GraduationCap className="h-3.5 w-3.5" />
-                      Assign
-                    </>
-                  )}
+                  {doneMsg ? "Done" : "Cancel"}
                 </button>
-              )}
+                {!doneMsg && (
+                  <button
+                    type="button"
+                    onClick={submit}
+                    disabled={pending || classrooms.length === 0}
+                    className="inline-flex items-center gap-1.5 rounded-full bg-violet-600 px-4 py-1.5 text-xs font-bold text-white transition hover:bg-violet-700 disabled:opacity-60"
+                  >
+                    {pending ? (
+                      <>
+                        <Loader2 className="h-3.5 w-3.5 animate-spin" />
+                        Assigning…
+                      </>
+                    ) : (
+                      <>
+                        <GraduationCap className="h-3.5 w-3.5" />
+                        Assign
+                      </>
+                    )}
+                  </button>
+                )}
+              </div>
             </div>
           </div>
         </div>
