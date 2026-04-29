@@ -93,16 +93,20 @@ Trail:
   translate cache, translate-passage API) retained for the
   deferred parent-comm features.
 
-## 5. Writing rubric
+## 5. Writing rubric — ✓ PASS / repositioned (2026-04-29)
 
 URL: `https://learn.readee.app/classroom/tools/writing-rubric`
 
-- [ ] Page loads
-- [ ] Paste a short student writing sample (3-4 sentences, any topic)
-- [ ] Pick a grade
-- [ ] Click Score it
-- [ ] Within 10s, see 4 score cards (Ideas, Organization, Voice,
-      Conventions) with band labels
+Standalone scoring playground works. Real product win was the
+integrated **AI Writing Coach question type** inside custom quizzes
+(migration 080), so the standalone is now positioned as a sandbox.
+
+Trail (Writing-Coach integration):
+- `526a419` free_response question kind + writing-coach API
+- `df556d4` migration 081 nullable correct
+- `6d08f5c` rubric ≥3 → ✓; recap shows rubric not red X
+- `d50aa16` writing-prompt counter in the wizard, orchestrator
+  generates prompts from passage
 
 ## 6. Calibrated item
 
