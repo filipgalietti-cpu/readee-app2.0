@@ -100,16 +100,9 @@ const TOOLS: {
     color: "from-fuchsia-500 to-pink-600",
     minTier: "premium",
   },
-  {
-    id: "calibrated",
-    title: "Calibrated Item Builder",
-    desc: "Generate one assessment item at exactly the difficulty you need.",
-    href: "/classroom/tools/calibrated-item",
-    icon: Wand2,
-    tag: "Assess",
-    color: "from-indigo-500 to-violet-600",
-    minTier: "teacher_solo",
-  },
+  // Calibrated Item Builder folded into Quiz builder's "+ Add question
+  // → AI fill" flow. The standalone route at /classroom/tools/calibrated-item
+  // still exists as a redirect card for old deep-links.
 ];
 
 const TIER_LABEL: Record<Tier, string> = {

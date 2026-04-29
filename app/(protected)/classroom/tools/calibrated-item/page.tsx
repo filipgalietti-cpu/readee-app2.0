@@ -1,81 +1,53 @@
-import { Wand2, Info } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, Wand2, Sparkles } from "lucide-react";
 import { requireTeacherTier } from "@/lib/plan/teacher-gate";
-import { getAllStandards } from "@/lib/data/standards";
-import sampleLessons from "@/app/data/sample-lessons.json";
-import CalibratedItemForm from "./_components/CalibratedItemForm";
 
 export const dynamic = "force-dynamic";
 
-type StandardOption = {
-  standardId: string;
-  /** Kid-friendly lesson title from sample-lessons.json when we
-   *  have one (e.g. 'Finding Key Details' for RL.K.1). Falls back
-   *  to the formal CCSS description when no lesson exists. */
-  title: string;
-  standardDescription: string;
-  domain: string;
-  grade: string;
-  gradeLabel: string;
-};
-
-function gradeKeyToShort(grade: string): string {
-  if (grade === "kindergarten") return "K";
-  if (grade === "1st-grade") return "1st";
-  if (grade === "2nd-grade") return "2nd";
-  if (grade === "3rd-grade") return "3rd";
-  if (grade === "4th-grade") return "4th";
-  return grade;
-}
-
+/**
+ * Calibrated Item Builder was folded into Quiz builder's "+ Add question
+ * → AI fill" modal. The standalone route is kept alive only as a
+ * redirect surface so old deep-links and Reports drill-downs land
+ * somewhere helpful instead of 404'ing.
+ */
 export default async function CalibratedItemPage() {
   await requireTeacherTier({ min: "teacher_solo", reason: "calibrated_items" });
 
-  // Lookup table standardId → kid-friendly lesson title. The lesson
-  // catalog is the same one Journey + Practice Hub display, so the
-  // teacher sees the same names here as on the kid-facing surfaces.
-  const titleByStandard = new Map<string, string>();
-  for (const l of sampleLessons as { standardId?: string; title?: string }[]) {
-    if (l?.standardId && l?.title) {
-      titleByStandard.set(l.standardId, l.title);
-    }
-  }
-
-  // Build the catalog at request time so the form can show a real
-  // standard picker grouped by grade + domain. Stripping questions
-  // off keeps the props payload small.
-  const standards: StandardOption[] = getAllStandards().map((s) => ({
-    standardId: s.standard_id,
-    title: titleByStandard.get(s.standard_id) ?? s.standard_description,
-    standardDescription: s.standard_description,
-    domain: s.domain,
-    grade: gradeKeyToShort(s.grade),
-    gradeLabel: s.gradeLabel,
-  }));
-
   return (
-    <div className="mx-auto max-w-2xl px-6 py-10">
-      <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-indigo-600">
-        <Wand2 className="h-4 w-4" />
-        Calibrated item builder
-      </div>
-      <div className="mt-1 flex flex-wrap items-baseline gap-3">
-        <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
-          Build one calibrated question
+    <div className="mx-auto max-w-2xl px-6 py-16">
+      <div className="rounded-3xl border border-violet-200 bg-gradient-to-br from-violet-50 to-indigo-50 p-8 text-center shadow-sm dark:border-violet-900/40 dark:from-violet-950/30 dark:to-indigo-950/30">
+        <div className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-violet-600 text-white shadow-md">
+          <Wand2 className="h-6 w-6" />
+        </div>
+        <h1 className="mt-4 text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+          Calibrated questions moved
         </h1>
-        <details className="group">
-          <summary className="inline-flex cursor-pointer list-none items-center gap-1 rounded-full border border-zinc-200 bg-white px-2.5 py-1 text-[11px] font-semibold text-zinc-500 transition hover:border-indigo-300 hover:text-indigo-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400 [&::-webkit-details-marker]:hidden">
-            <Info className="h-3 w-3" />
-            How it works
-          </summary>
-          <p className="mt-2 max-w-2xl rounded-2xl border border-indigo-200 bg-indigo-50 px-4 py-3 text-sm text-zinc-700 dark:border-indigo-900/40 dark:bg-indigo-950/30 dark:text-slate-300">
-            Pick a standard, grade, and target difficulty. Readee writes
-            one MCQ that hits the difficulty band precisely with plausible
-            distractors.
-          </p>
-        </details>
-      </div>
-      <div className="mt-6">
-        <CalibratedItemForm standards={standards} />
+        <p className="mt-2 text-sm text-zinc-600 dark:text-slate-400">
+          Generating one targeted question now lives inside Quiz builder.
+          Open any custom quiz, click <span className="font-bold">+ Add question</span>,
+          and switch the method to <span className="font-bold">AI fill</span>.
+        </p>
+        <p className="mt-2 text-xs text-zinc-500 dark:text-slate-500">
+          You get the same Grade → Domain → Standard picker, the same
+          difficulty slider, and the same optional anchor passage —
+          plus the question lands in a real quiz instead of a one-off page.
+        </p>
+        <div className="mt-6 flex flex-wrap justify-center gap-2">
+          <Link
+            href="/classroom/authoring"
+            className="inline-flex items-center gap-2 rounded-full bg-violet-600 px-5 py-2 text-sm font-bold text-white shadow-sm transition hover:bg-violet-700"
+          >
+            <Sparkles className="h-4 w-4" />
+            Open Quiz builder
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+          <Link
+            href="/classroom/tools"
+            className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-5 py-2 text-sm font-semibold text-zinc-700 transition hover:border-violet-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
+          >
+            All tools
+          </Link>
+        </div>
       </div>
     </div>
   );

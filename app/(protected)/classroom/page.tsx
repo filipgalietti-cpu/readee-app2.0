@@ -166,15 +166,8 @@ function PremiumToolsRail({ plan }: { plan: string }) {
       Icon: Sparkles,
       color: "from-violet-500 to-indigo-600",
     },
-    {
-      id: "calibrated",
-      title: "Calibrated questions",
-      desc: "Generate items at any difficulty",
-      minTier: "teacher_solo",
-      href: "/classroom/tools/calibrated-item",
-      Icon: BookOpen,
-      color: "from-indigo-500 to-violet-600",
-    },
+    // Calibrated questions now lives inside Quiz builder's
+    // "+ Add question → AI fill" flow.
     {
       id: "coach",
       title: "Running Records",

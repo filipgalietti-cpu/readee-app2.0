@@ -11,6 +11,7 @@ import {
   updateCustomQuiz,
   aiGenerateImage,
   aiGenerateAudio,
+  aiGeneratePassage,
 } from "../../../../authoring-actions";
 import TopUpCreditsButton from "@/app/_components/TopUpCreditsButton";
 import CsvImportButton from "./CsvImportButton";
@@ -631,6 +632,56 @@ function QuestionFormModal({
   const [aiPending, setAiPending] = useState(false);
   const [aiErr, setAiErr] = useState<string | null>(null);
 
+  // Optional anchor passage — paste your own OR generate. Lets the teacher
+  // ground the question in a passage the class is already reading. Mirrors
+  // the standalone Calibrated Item form so the in-modal flow doesn't lose
+  // the differentiator that justifies the tool.
+  const [aiPassageContext, setAiPassageContext] = useState("");
+  const [aiPassageMode, setAiPassageMode] = useState<"paste" | "generate">("paste");
+  const [aiPassageTopic, setAiPassageTopic] = useState("");
+  const [aiPassageLength, setAiPassageLength] = useState<"short" | "medium" | "long">("short");
+  const [aiPassagePending, setAiPassagePending] = useState(false);
+  const [aiPassageErr, setAiPassageErr] = useState<string | null>(null);
+
+  // Last-result metadata — surfaced after AI fill so the teacher can see
+  // *why* the AI picked these distractors (Bloom's level + the
+  // skill microlabel the calibration engine used).
+  const [aiResultMeta, setAiResultMeta] = useState<{
+    bloomsLevel: string;
+    skillMicrolabel: string;
+    difficultyActual: number;
+  } | null>(null);
+
+  async function aiGeneratePassageNow() {
+    setAiPassageErr(null);
+    const topic =
+      aiPassageTopic.trim() ||
+      (aiSelectedStandard
+        ? `A short reading passage suitable for practicing "${aiSelectedStandard.title}" at grade ${aiGrade}.`
+        : "");
+    if (!topic) {
+      setAiPassageErr("Pick a standard or type a topic first.");
+      return;
+    }
+    setAiPassagePending(true);
+    try {
+      const res = await aiGeneratePassage({
+        topic,
+        gradeLevel: aiGrade,
+        lengthLevel: aiPassageLength,
+      });
+      if (!res.ok) {
+        setAiPassageErr(res.error);
+        return;
+      }
+      setAiPassageContext(res.passage.passage);
+    } catch (e: any) {
+      setAiPassageErr(e?.message ?? "Could not generate.");
+    } finally {
+      setAiPassagePending(false);
+    }
+  }
+
   async function aiFill() {
     if (!aiSelectedStandard) {
       setAiErr("Pick a standard first.");
@@ -647,7 +698,7 @@ function QuestionFormModal({
           standardDescription: aiSelectedStandard.standardDescription,
           gradeLevel: aiGrade,
           targetDifficulty: aiDifficulty,
-          passageContext: null,
+          passageContext: aiPassageContext.trim() || null,
         }),
       });
       const json = await r.json();
@@ -660,6 +711,9 @@ function QuestionFormModal({
         choices: string[];
         correct: string;
         hint: string | null;
+        bloomsLevel: string;
+        skillMicrolabel: string;
+        difficultyActual: number;
       };
       // Pipe the AI output into the existing manual form state so the
       // teacher can review + edit before saving. Force MCQ since the
@@ -671,12 +725,28 @@ function QuestionFormModal({
       setChoices(filled.slice(0, Math.max(4, filled.length)));
       setCorrectMcq(item.correct);
       setHint(item.hint ?? "");
+      setAiResultMeta({
+        bloomsLevel: item.bloomsLevel,
+        skillMicrolabel: item.skillMicrolabel,
+        difficultyActual: item.difficultyActual,
+      });
       setAuthorMode("manual");
     } catch (e: any) {
       setAiErr(e?.message ?? "Couldn't generate.");
     } finally {
       setAiPending(false);
     }
+  }
+
+  function gradeLengthRange(grade: string, tier: "short" | "medium" | "long"): string {
+    const ranges: Record<string, Record<string, string>> = {
+      K: { short: "20-35 words", medium: "35-50 words", long: "50-70 words" },
+      "1st": { short: "40-70 words", medium: "70-100 words", long: "100-140 words" },
+      "2nd": { short: "60-100 words", medium: "100-150 words", long: "150-220 words" },
+      "3rd": { short: "100-160 words", medium: "160-240 words", long: "240-340 words" },
+      "4th": { short: "150-220 words", medium: "220-320 words", long: "320-450 words" },
+    };
+    return ranges[grade]?.[tier] ?? "";
   }
 
   const [imageUrl, setImageUrl] = useState<string | null>(initial?.imageUrl ?? null);
@@ -972,6 +1042,149 @@ function QuestionFormModal({
                 </div>
               </div>
 
+              <details className="group rounded-xl border border-zinc-200 bg-white dark:border-slate-700 dark:bg-slate-900">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-2 px-3 py-2 text-[11px] font-bold text-zinc-500 [&::-webkit-details-marker]:hidden">
+                  <span>
+                    5. Anchor to a passage{" "}
+                    <span className="font-normal text-zinc-400">(optional)</span>
+                  </span>
+                  <span className="text-zinc-400 transition-transform group-open:rotate-180">▾</span>
+                </summary>
+                <div className="px-3 pb-3">
+                  <div className="mb-2 inline-flex rounded-full border border-zinc-200 bg-zinc-50 p-0.5 text-[11px] font-bold dark:border-slate-700 dark:bg-slate-950">
+                    <button
+                      type="button"
+                      onClick={() => setAiPassageMode("paste")}
+                      className={`rounded-full px-2.5 py-0.5 transition ${
+                        aiPassageMode === "paste"
+                          ? "bg-white text-violet-700 shadow-sm dark:bg-slate-800 dark:text-violet-300"
+                          : "text-zinc-500"
+                      }`}
+                    >
+                      Paste
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setAiPassageMode("generate")}
+                      className={`inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 transition ${
+                        aiPassageMode === "generate"
+                          ? "bg-white text-violet-700 shadow-sm dark:bg-slate-800 dark:text-violet-300"
+                          : "text-zinc-500"
+                      }`}
+                    >
+                      <Wand2 className="h-3 w-3" />
+                      Generate
+                    </button>
+                  </div>
+
+                  {aiPassageMode === "generate" && (
+                    <div className="mb-2 rounded-2xl border border-violet-200 bg-violet-50 p-3 dark:border-violet-900/40 dark:bg-violet-950/30">
+                      <div className="text-[10px] font-bold uppercase tracking-widest text-violet-700 dark:text-violet-300">
+                        Theme
+                      </div>
+                      <div className="mt-2 flex flex-wrap gap-1.5">
+                        {[
+                          "animals",
+                          "weather",
+                          "space",
+                          "sports",
+                          "food",
+                          "friendship",
+                          "inventions",
+                          "community helpers",
+                        ].map((t) => (
+                          <button
+                            key={t}
+                            type="button"
+                            onClick={() => setAiPassageTopic(t)}
+                            className={`rounded-full border px-2.5 py-1 text-[11px] font-semibold transition ${
+                              aiPassageTopic === t
+                                ? "border-violet-500 bg-violet-600 text-white"
+                                : "border-violet-200 bg-white text-violet-700 hover:bg-violet-100 dark:border-violet-900/40 dark:bg-slate-900 dark:text-violet-300"
+                            }`}
+                          >
+                            {t}
+                          </button>
+                        ))}
+                      </div>
+                      <input
+                        type="text"
+                        value={aiPassageTopic}
+                        onChange={(e) => setAiPassageTopic(e.target.value)}
+                        placeholder={
+                          aiSelectedStandard
+                            ? `Or type a topic (default: passage targeting "${aiSelectedStandard.title}")`
+                            : "Or type a topic"
+                        }
+                        className="mt-2 w-full rounded-lg border border-violet-200 bg-white px-2 py-1.5 text-xs focus:border-violet-500 focus:outline-none dark:border-violet-900/40 dark:bg-slate-900"
+                      />
+                      <div className="mt-2 text-[10px] font-bold uppercase tracking-widest text-violet-700 dark:text-violet-300">
+                        Length
+                      </div>
+                      <div className="mt-1 flex gap-1.5">
+                        {(["short", "medium", "long"] as const).map((tier) => (
+                          <button
+                            key={tier}
+                            type="button"
+                            onClick={() => setAiPassageLength(tier)}
+                            className={`flex-1 rounded-full border px-2.5 py-1 text-[11px] font-semibold capitalize transition ${
+                              aiPassageLength === tier
+                                ? "border-violet-500 bg-violet-600 text-white"
+                                : "border-violet-200 bg-white text-violet-700 hover:bg-violet-100 dark:border-violet-900/40 dark:bg-slate-900 dark:text-violet-300"
+                            }`}
+                          >
+                            {tier}
+                          </button>
+                        ))}
+                      </div>
+                      <div className="mt-1 text-[10px] text-violet-700 dark:text-violet-300">
+                        {gradeLengthRange(aiGrade, aiPassageLength)}
+                      </div>
+                      <button
+                        type="button"
+                        onClick={aiGeneratePassageNow}
+                        disabled={aiPassagePending}
+                        className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-violet-600 px-3 py-1.5 text-[11px] font-bold text-white transition hover:bg-violet-700 disabled:opacity-60"
+                      >
+                        {aiPassagePending ? (
+                          <>
+                            <Loader2 className="h-3 w-3 animate-spin" />
+                            Writing…
+                          </>
+                        ) : aiPassageContext ? (
+                          <>
+                            <Wand2 className="h-3 w-3" />
+                            Try another
+                          </>
+                        ) : (
+                          <>
+                            <Wand2 className="h-3 w-3" />
+                            Generate passage
+                          </>
+                        )}
+                      </button>
+                      {aiPassageErr && (
+                        <div className="mt-2 text-[11px] font-semibold text-red-600">
+                          {aiPassageErr}
+                        </div>
+                      )}
+                    </div>
+                  )}
+
+                  <textarea
+                    value={aiPassageContext}
+                    onChange={(e) => setAiPassageContext(e.target.value)}
+                    rows={4}
+                    placeholder={
+                      aiPassageMode === "paste"
+                        ? "Paste a passage the class is reading. The question will be grounded in this text."
+                        : "Generated passage will appear here. You can edit it before generating the question."
+                    }
+                    className="w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-violet-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                  />
+                </div>
+              </details>
+
               {aiErr && (
                 <div className="flex items-start gap-2 rounded-xl border border-red-200 bg-red-50 px-3 py-2 text-xs text-red-700 dark:border-red-900/40 dark:bg-red-950/30 dark:text-red-300">
                   <AlertCircle className="mt-0.5 h-3.5 w-3.5 flex-shrink-0" />
@@ -997,6 +1210,24 @@ function QuestionFormModal({
                   </>
                 )}
               </button>
+            </div>
+          )}
+
+          {!isEdit && authorMode === "manual" && aiResultMeta && (
+            <div className="flex flex-wrap items-center gap-2 rounded-xl border border-violet-200 bg-violet-50 px-3 py-2 text-[11px] dark:border-violet-900/40 dark:bg-violet-950/30">
+              <span className="inline-flex items-center gap-1 font-bold uppercase tracking-wider text-violet-700 dark:text-violet-300">
+                <Sparkles className="h-3 w-3" />
+                AI calibration
+              </span>
+              <span className="rounded-full bg-white px-2 py-0.5 font-semibold text-violet-700 dark:bg-slate-900 dark:text-violet-300">
+                Bloom: {aiResultMeta.bloomsLevel}
+              </span>
+              <span className="rounded-full bg-white px-2 py-0.5 font-semibold text-violet-700 dark:bg-slate-900 dark:text-violet-300">
+                Skill: {aiResultMeta.skillMicrolabel}
+              </span>
+              <span className="rounded-full bg-white px-2 py-0.5 font-semibold text-violet-700 dark:bg-slate-900 dark:text-violet-300">
+                Difficulty: {aiResultMeta.difficultyActual}/5
+              </span>
             </div>
           )}
 
