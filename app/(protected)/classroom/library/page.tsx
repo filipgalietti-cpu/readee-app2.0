@@ -2,7 +2,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, BookOpen, Library, ClipboardPen } from "lucide-react";
 import { requireProfile } from "@/lib/auth/helpers";
-import { createClient } from "@/lib/supabase/server";
 import kJson from "@/app/data/kindergarten-standards-questions.json";
 import g1Json from "@/app/data/1st-grade-standards-questions.json";
 import g2Json from "@/app/data/2nd-grade-standards-questions.json";
@@ -58,16 +57,6 @@ function gradeFolder(grade: string): string {
 export default async function LibraryPage() {
   const profile = await requireProfile();
   if (profile.role !== "educator") notFound();
-
-  const supabase = await createClient();
-  const { data: kid } = await supabase
-    .from("children")
-    .select("id")
-    .eq("parent_id", profile.id)
-    .order("created_at", { ascending: true })
-    .limit(1)
-    .maybeSingle();
-  const teacherChildId = (kid as any)?.id ?? null;
 
   const banks: { grade: string; bank: any }[] = [
     { grade: "K", bank: kJson },
@@ -134,10 +123,7 @@ export default async function LibraryPage() {
       </div>
 
       <div className="mt-6">
-        <SemanticSearchBar
-          isPremium={(profile as any).plan !== "free"}
-          childId={teacherChildId}
-        />
+        <SemanticSearchBar isPremium={(profile as any).plan !== "free"} />
       </div>
 
       <div className="mt-6">

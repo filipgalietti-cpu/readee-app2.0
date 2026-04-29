@@ -17,31 +17,21 @@ import {
 import { semanticSearch } from "../search-actions";
 import type { SearchHit } from "@/lib/ai/embeddings";
 
-type HrefArgs = { id: string; metadata: Record<string, unknown>; childId?: string | null };
+type HrefArgs = { id: string; metadata: Record<string, unknown> };
 
 function buildHref(contentType: string, args: HrefArgs): string {
-  const { id, metadata, childId } = args;
+  const { id, metadata } = args;
   const standardId = (metadata as any)?.standard_id ?? null;
-  const childQs = childId ? `&child=${encodeURIComponent(childId)}` : "";
 
   switch (contentType) {
     case "sample_lesson":
-      // /learn reads ?standard=. Without a child we route to the
-      // teacher's library filtered to that standard (preview-safe).
-      if (standardId) {
-        return childId
-          ? `/learn?standard=${encodeURIComponent(standardId)}${childQs}`
-          : `/classroom/library?standard=${encodeURIComponent(standardId)}`;
-      }
-      return `/classroom/library`;
+      return standardId
+        ? `/classroom/library?standard=${encodeURIComponent(standardId)}`
+        : `/classroom/library`;
     case "sample_question":
-      return childId
-        ? `/practice?focus=${encodeURIComponent(id)}${childQs}`
-        : `/classroom/library?focus=${encodeURIComponent(id)}`;
+      return `/classroom/library?focus=${encodeURIComponent(id)}`;
     case "story":
-      return childId
-        ? `/stories?focus=${encodeURIComponent(id)}${childQs}`
-        : `/classroom/library?focus=${encodeURIComponent(id)}`;
+      return `/classroom/library?focus=${encodeURIComponent(id)}`;
     case "custom_lesson":
       return `/classroom/lessons/${id}`;
     case "custom_book":
@@ -67,14 +57,8 @@ const TYPE_META: Record<string, { label: string; icon: any; color: string }> = {
 
 export default function SemanticSearchBar({
   isPremium,
-  childId,
 }: {
   isPremium: boolean;
-  /** When the teacher is also a parent and has a child on file, pass
-   *  the first child's id so we can route reader-content results to
-   *  /learn or /practice with proper child context. Without it, we
-   *  route reader-content to teacher-safe preview destinations. */
-  childId?: string | null;
 }) {
   const [query, setQuery] = useState("");
   const [hits, setHits] = useState<SearchHit[] | null>(null);
@@ -191,7 +175,6 @@ export default function SemanticSearchBar({
             const href = buildHref(h.contentType, {
               id: h.contentId,
               metadata: md ?? {},
-              childId: childId ?? null,
             });
             return (
               <Link
