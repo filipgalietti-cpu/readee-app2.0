@@ -15,6 +15,8 @@ import {
   BookOpen,
   Check,
   ExternalLink,
+  Maximize2,
+  X,
 } from "lucide-react";
 import Link from "next/link";
 import InlineAddStudents from "@/components/classroom/InlineAddStudents";
@@ -113,6 +115,7 @@ export default function RunningRecordRecorder({ roster }: { roster: Roster }) {
   const [livePreview, setLivePreview] = useState<string>("");
   const [elapsed, setElapsed] = useState<number>(0);
   const [showAddRoster, setShowAddRoster] = useState(false);
+  const [fullscreen, setFullscreen] = useState(false);
   // Passage source: paste your own, or have AI write a target-skill passage.
   const [passageMode, setPassageMode] = useState<"paste" | "generate">("paste");
   const [skillFocus, setSkillFocus] = useState<string>("");
@@ -286,6 +289,9 @@ export default function RunningRecordRecorder({ roster }: { roster: Roster }) {
       setErr(e?.message ?? "Analysis failed.");
     } finally {
       setPending(false);
+      // Always close the student-facing fullscreen once we have a
+      // result or an error so the teacher sees the analysis panel.
+      setFullscreen(false);
     }
   }
 
@@ -523,7 +529,32 @@ export default function RunningRecordRecorder({ roster }: { roster: Roster }) {
             ? "Analyzing…"
             : "Tap to record"}
         </div>
+        {passage.trim() && !pending && (
+          <button
+            type="button"
+            onClick={() => setFullscreen(true)}
+            className="mt-1 inline-flex items-center gap-1.5 rounded-full border border-blue-300 bg-white px-3 py-1.5 text-xs font-bold text-blue-700 transition hover:bg-blue-50 dark:border-blue-800 dark:bg-slate-900 dark:text-blue-300"
+          >
+            <Maximize2 className="h-3 w-3" />
+            Hand to student
+          </button>
+        )}
       </div>
+
+      {fullscreen && (
+        <StudentReadView
+          studentName={selectedChild?.first_name ?? "Student"}
+          passage={passage}
+          gradeLevel={gradeLevel}
+          recording={recording}
+          pending={pending}
+          elapsed={elapsed}
+          livePreview={livePreview}
+          onStart={start}
+          onStop={stop}
+          onClose={() => setFullscreen(false)}
+        />
+      )}
 
       {recording && (
         <div className="rounded-2xl border border-blue-200 bg-blue-50 p-4 dark:border-blue-900/40 dark:bg-blue-950/30">
@@ -621,6 +652,128 @@ function presetSkills(grade: string): string[] {
     default:
       return ["short vowels", "long vowels", "digraphs", "sight words"];
   }
+}
+
+function StudentReadView({
+  studentName,
+  passage,
+  gradeLevel,
+  recording,
+  pending,
+  elapsed,
+  livePreview,
+  onStart,
+  onStop,
+  onClose,
+}: {
+  studentName: string;
+  passage: string;
+  gradeLevel: string;
+  recording: boolean;
+  pending: boolean;
+  elapsed: number;
+  livePreview: string;
+  onStart: () => void;
+  onStop: () => void;
+  onClose: () => void;
+}) {
+  // Lock body scroll while the kid view is up.
+  useEffect(() => {
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, []);
+
+  // Bigger size in fullscreen for actual handoff to a kid at arm's length.
+  const fsSize = Math.round(passageFontPx(gradeLevel) * 1.6);
+
+  return (
+    <div className="fixed inset-0 z-[60] flex flex-col bg-gradient-to-b from-blue-50 via-white to-violet-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+      {/* Top bar */}
+      <div className="flex items-center justify-between border-b border-zinc-200 bg-white/70 px-5 py-3 backdrop-blur dark:border-slate-800 dark:bg-slate-900/70">
+        <div className="flex items-center gap-2 text-xs font-bold text-blue-700 dark:text-blue-300">
+          <BookOpen className="h-4 w-4" />
+          {studentName}&apos;s passage
+        </div>
+        <button
+          type="button"
+          onClick={onClose}
+          disabled={recording}
+          className="inline-flex items-center gap-1 rounded-full p-2 text-zinc-500 transition hover:bg-zinc-100 hover:text-zinc-900 disabled:opacity-40 dark:text-slate-400 dark:hover:bg-slate-800"
+          aria-label="Close"
+        >
+          <X className="h-5 w-5" />
+        </button>
+      </div>
+
+      {/* Passage area, scrollable when long */}
+      <div className="flex-1 overflow-y-auto px-6 py-8 sm:px-12">
+        <div className="mx-auto max-w-3xl">
+          <article
+            className="whitespace-pre-line text-zinc-900 dark:text-slate-100"
+            style={{
+              fontFamily: FRIENDLY_FONT,
+              fontSize: fsSize,
+              lineHeight: 1.8,
+              letterSpacing: "0.01em",
+            }}
+          >
+            {passage}
+          </article>
+        </div>
+      </div>
+
+      {/* Live preview — only shows while recording */}
+      {recording && (
+        <div className="border-t border-blue-200 bg-blue-50 px-6 py-3 text-center dark:border-blue-900/40 dark:bg-blue-950/30">
+          <div className="text-[10px] font-bold uppercase tracking-widest text-blue-700 dark:text-blue-300">
+            <Activity className="mr-1 inline h-3 w-3" />
+            Listening
+          </div>
+          <div
+            className="mx-auto mt-1 max-w-3xl text-base text-zinc-800 dark:text-slate-100"
+            style={{ fontFamily: FRIENDLY_FONT }}
+          >
+            {livePreview || "…"}
+          </div>
+        </div>
+      )}
+
+      {/* Bottom record bar */}
+      <div className="flex items-center justify-center gap-4 border-t border-zinc-200 bg-white px-6 py-5 dark:border-slate-800 dark:bg-slate-900">
+        <button
+          type="button"
+          onClick={recording ? onStop : onStart}
+          disabled={pending}
+          className={`flex h-20 w-20 items-center justify-center rounded-full shadow-lg transition disabled:opacity-60 ${
+            recording
+              ? "animate-pulse bg-red-600 text-white"
+              : "bg-blue-600 text-white hover:bg-blue-700"
+          }`}
+          aria-label={recording ? "Stop reading" : "Start reading"}
+        >
+          {recording ? <MicOff className="h-8 w-8" /> : <Mic className="h-8 w-8" />}
+        </button>
+        <div className="text-left">
+          <div className="text-xs font-bold uppercase tracking-widest text-zinc-500">
+            {recording ? "Reading" : pending ? "Done, scoring…" : "Ready"}
+          </div>
+          <div
+            className="text-2xl font-extrabold text-zinc-900 dark:text-white"
+            style={{ fontFamily: FRIENDLY_FONT }}
+          >
+            {recording
+              ? formatTime(elapsed)
+              : pending
+              ? "—"
+              : "Tap to start"}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 function passageFontPx(grade: string): number {
