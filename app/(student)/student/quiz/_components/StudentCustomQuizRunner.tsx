@@ -35,9 +35,20 @@ type Question = {
 
 type Phase = "intro" | "questions" | "results";
 
+type PerQResult = {
+  questionId: string;
+  /** 0..1 fraction of this question's full credit. Binary kinds (MCQ,
+   *  T/F, fill-in) are 0 or 1. Matching gives partial credit per pair. */
+  score: number;
+  /** Convenience flag, true iff score === 1. Used for green/red UI. */
+  correct: boolean;
+  /** Matching only, populated when partial. */
+  partial?: { gotPairs: number; totalPairs: number };
+};
+
 type SavedProgress = {
   idx?: number;
-  answers?: any[];
+  answers?: PerQResult[];
   correct?: number;
 } | null;
 
@@ -97,15 +108,21 @@ export default function StudentCustomQuizRunner({
 
   const [phase, setPhase] = useState<Phase>(hasResume ? "questions" : "intro");
   const [idx, setIdx] = useState(initialIdx);
-  const [correctCount, setCorrectCount] = useState(initialCorrect);
   const [pickedChoice, setPickedChoice] = useState<string | null>(null);
   const [typedAnswer, setTypedAnswer] = useState("");
   const [matches, setMatches] = useState<Record<string, string>>({});
   const [activeLeft, setActiveLeft] = useState<string | null>(null);
   const [revealed, setRevealed] = useState(false);
-  const [perQResults, setPerQResults] = useState<
-    { questionId: string; correct: boolean }[]
-  >(savedProgress?.answers as any[] ?? []);
+  const initialResults = (savedProgress?.answers as PerQResult[] | undefined) ?? [];
+  const [perQResults, setPerQResults] = useState<PerQResult[]>(initialResults);
+  // Weighted score, sum of per-Q scores. Carrots, percent, and the
+  // results header all read from this. Matching pairs contribute a
+  // fraction so a 4-of-6 match counts as ~0.67 of one question.
+  const initialWeighted = initialResults.reduce((acc, r) => acc + (r.score ?? 0), 0);
+  const [weightedScore, setWeightedScore] = useState<number>(initialWeighted);
+  // Display-only "fully correct so far" count — drives the ✓ counter.
+  const initialFullyCorrect = initialResults.filter((r) => r.correct).length;
+  const [correctCount, setCorrectCount] = useState(initialFullyCorrect);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [saveErr, setSaveErr] = useState<string | null>(null);
   const [submitting, startSubmit] = useTransition();
@@ -114,24 +131,44 @@ export default function StudentCustomQuizRunner({
 
   /* ── correctness ─────────────────────────────────────────────── */
   function currentAnswerCorrect(): boolean {
-    if (!q) return false;
+    return scoreCurrent().score === 1;
+  }
+
+  /** Score 0..1 for the current question, plus the breakdown matching
+   *  needs for its results recap line. */
+  function scoreCurrent(): {
+    score: number;
+    partial?: { gotPairs: number; totalPairs: number };
+  } {
+    if (!q) return { score: 0 };
     if (q.kind === "multiple_choice") {
-      return !!pickedChoice && pickedChoice === String(q.correct);
+      return {
+        score: !!pickedChoice && pickedChoice === String(q.correct) ? 1 : 0,
+      };
     }
     if (q.kind === "true_false") {
-      return pickedChoice === String(q.correct);
+      return { score: pickedChoice === String(q.correct) ? 1 : 0 };
     }
     if (q.kind === "fill_in_blank") {
       const accepted = (Array.isArray(q.correct) ? q.correct : []) as string[];
       const user = normalizeAnswer(typedAnswer);
-      return user.length > 0 && accepted.some((a) => normalizeAnswer(a) === user);
+      const ok =
+        user.length > 0 && accepted.some((a) => normalizeAnswer(a) === user);
+      return { score: ok ? 1 : 0 };
     }
     if (q.kind === "matching_pairs") {
-      const pairs = (q.correct?.pairs ?? []) as { left: string; right: string }[];
-      if (pairs.length === 0) return false;
-      return pairs.every((p) => matches[p.left] === p.right);
+      const pairs = (q.correct?.pairs ?? []) as {
+        left: string;
+        right: string;
+      }[];
+      if (pairs.length === 0) return { score: 0 };
+      const got = pairs.filter((p) => matches[p.left] === p.right).length;
+      return {
+        score: got / pairs.length,
+        partial: { gotPairs: got, totalPairs: pairs.length },
+      };
     }
-    return false;
+    return { score: 0 };
   }
 
   const isPicked = (() => {
@@ -175,14 +212,23 @@ export default function StudentCustomQuizRunner({
   function check() {
     if (!isPicked || revealed) return;
     setRevealed(true);
-    const wasCorrect = currentAnswerCorrect();
-    if (wasCorrect) setCorrectCount((n) => n + 1);
-    const nextAnswers = [
-      ...perQResults,
-      { questionId: q.id, correct: wasCorrect },
-    ];
+    const result = scoreCurrent();
+    const wasFullyCorrect = result.score === 1;
+    const entry: PerQResult = {
+      questionId: q.id,
+      score: result.score,
+      correct: wasFullyCorrect,
+      ...(result.partial ? { partial: result.partial } : {}),
+    };
+    if (wasFullyCorrect) setCorrectCount((n) => n + 1);
+    setWeightedScore((s) => s + result.score);
+    const nextAnswers = [...perQResults, entry];
     setPerQResults(nextAnswers);
-    saveProgress(idx, correctCount + (wasCorrect ? 1 : 0), nextAnswers);
+    saveProgress(
+      idx,
+      correctCount + (wasFullyCorrect ? 1 : 0),
+      nextAnswers,
+    );
   }
 
   function next() {
@@ -205,13 +251,17 @@ export default function StudentCustomQuizRunner({
     if (previewMode) return;
     setSaveErr(null);
     startSubmit(async () => {
+      // Send the weighted score (rounded to nearest int) as
+      // "questionsCorrect" so the existing endpoint logic still works.
+      // Matching-pair partial credit feeds in via the rounded total.
+      const weightedRounded = Math.round(weightedScore);
       const res = await fetch(saveEndpoint, {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
           quizId,
           questionsAttempted: total,
-          questionsCorrect: correctCount,
+          questionsCorrect: weightedRounded,
           ...(childId ? { childId } : {}),
         }),
       });
@@ -223,10 +273,18 @@ export default function StudentCustomQuizRunner({
   }
 
   /* ── derived ─────────────────────────────────────────────── */
-  const scorePct = total === 0 ? 0 : Math.round((correctCount / total) * 100);
+  const scorePct = total === 0 ? 0 : Math.round((weightedScore / total) * 100);
   const passed =
     typeof passThreshold !== "number" ? true : scorePct >= passThreshold;
-  const carrotsEarned = correctCount * 5;
+  // Carrots scale with weighted score so partial-credit matches still
+  // reward the kid for the pairs they got right.
+  const carrotsEarned = Math.round(weightedScore * 5);
+  // What we put on the score card. "4.5 / 6" feels weird so we round
+  // to one decimal only when there's a partial; otherwise show ints.
+  const hasPartial = perQResults.some((r) => r.score > 0 && r.score < 1);
+  const displayScore = hasPartial
+    ? Math.round(weightedScore * 10) / 10
+    : Math.round(weightedScore);
 
   /* ── intro screen ────────────────────────────────────────── */
   if (phase === "intro") {
@@ -284,7 +342,7 @@ export default function StudentCustomQuizRunner({
       <ResultsPanel
         questions={questions}
         perQResults={perQResults}
-        correctCount={correctCount}
+        displayScore={displayScore}
         total={total}
         scorePct={scorePct}
         passThreshold={passThreshold ?? null}
@@ -705,7 +763,7 @@ function PromptAudioButton({
 function ResultsPanel({
   questions,
   perQResults,
-  correctCount,
+  displayScore,
   total,
   scorePct,
   passThreshold,
@@ -717,8 +775,8 @@ function ResultsPanel({
   onBack,
 }: {
   questions: Question[];
-  perQResults: { questionId: string; correct: boolean }[];
-  correctCount: number;
+  perQResults: PerQResult[];
+  displayScore: number;
   total: number;
   scorePct: number;
   passThreshold: number | null;
@@ -731,11 +789,11 @@ function ResultsPanel({
   quizId: string;
   onBack: () => void;
 }) {
-  const resultMap = new Map(perQResults.map((r) => [r.questionId, r.correct]));
+  const resultMap = new Map(perQResults.map((r) => [r.questionId, r]));
   return (
     <div className="space-y-4">
       <div
-        className={`rounded-3xl border p-8 text-center ${
+        className={`rounded-3xl border p-6 text-center shadow-sm ${
           passed
             ? "border-green-200 bg-gradient-to-br from-green-50 to-emerald-50 dark:border-green-900/40 dark:from-green-950/30 dark:to-emerald-950/30"
             : "border-amber-200 bg-gradient-to-br from-amber-50 to-orange-50 dark:border-amber-900/40 dark:from-amber-950/30 dark:to-orange-950/30"
@@ -754,7 +812,7 @@ function ResultsPanel({
           {passed ? "Great work!" : "Almost there!"}
         </h2>
         <div className="mt-2 font-mono text-3xl font-black text-indigo-700 dark:text-indigo-300">
-          {correctCount} / {total}
+          {displayScore} / {total}
         </div>
         <div className="text-sm font-semibold text-zinc-500 dark:text-slate-400">
           {scorePct}% correct
@@ -791,41 +849,57 @@ function ResultsPanel({
         </button>
       </div>
 
-      <div className="rounded-3xl border border-zinc-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900/40">
+      <div className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900/40">
         <div className="text-[11px] font-bold uppercase tracking-widest text-zinc-500 dark:text-slate-400">
           How did you do?
         </div>
-        <ul className="mt-3 space-y-2">
+        <ul className="mt-3 grid gap-2">
           {questions.map((q, i) => {
             const got = resultMap.get(q.id);
-            const correct = got === true;
+            const score = got?.score ?? null;
+            const fully = score === 1;
+            const none = score === 0;
+            const partial = score !== null && score > 0 && score < 1;
+            const tone = fully
+              ? "border-green-200 bg-green-50 dark:border-green-900/40 dark:bg-green-950/30"
+              : partial
+              ? "border-amber-200 bg-amber-50 dark:border-amber-900/40 dark:bg-amber-950/30"
+              : none
+              ? "border-red-200 bg-red-50 dark:border-red-900/40 dark:bg-red-950/30"
+              : "border-zinc-200 bg-white dark:border-slate-700 dark:bg-slate-900";
+            const badge = fully
+              ? "bg-green-500 text-white"
+              : partial
+              ? "bg-amber-500 text-white"
+              : none
+              ? "bg-red-500 text-white"
+              : "bg-zinc-300 text-white";
             return (
               <li
                 key={q.id}
-                className={`flex items-start gap-3 rounded-2xl border px-3 py-2 ${
-                  correct
-                    ? "border-green-200 bg-green-50 dark:border-green-900/40 dark:bg-green-950/30"
-                    : got === false
-                    ? "border-red-200 bg-red-50 dark:border-red-900/40 dark:bg-red-950/30"
-                    : "border-zinc-200 bg-white dark:border-slate-700 dark:bg-slate-900"
-                }`}
+                className={`flex min-h-[64px] items-start gap-3 rounded-2xl border px-4 py-3 ${tone}`}
               >
                 <span
-                  className={`mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold ${
-                    correct
-                      ? "bg-green-500 text-white"
-                      : got === false
-                      ? "bg-red-500 text-white"
-                      : "bg-zinc-300 text-white"
-                  }`}
+                  className={`mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold ${badge}`}
                 >
-                  {correct ? <Check className="h-3 w-3" /> : got === false ? <X className="h-3 w-3" /> : i + 1}
+                  {fully ? (
+                    <Check className="h-3 w-3" />
+                  ) : none ? (
+                    <X className="h-3 w-3" />
+                  ) : (
+                    i + 1
+                  )}
                 </span>
                 <div className="min-w-0 flex-1">
-                  <div className="text-sm font-semibold text-zinc-900 dark:text-slate-100">
+                  <div className="line-clamp-2 text-sm font-semibold text-zinc-900 dark:text-slate-100">
                     {q.prompt}
                   </div>
-                  {!correct && q.hint && (
+                  {got?.partial && (
+                    <div className="mt-1 text-xs font-semibold text-amber-800 dark:text-amber-200">
+                      You matched {got.partial.gotPairs} of {got.partial.totalPairs} pairs.
+                    </div>
+                  )}
+                  {!fully && q.hint && (
                     <div className="mt-1 text-xs text-amber-800 dark:text-amber-200">
                       Hint: {q.hint}
                     </div>
