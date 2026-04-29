@@ -426,67 +426,81 @@ export default function RunningRecordRecorder({ roster }: { roster: Roster }) {
           </div>
 
           {passageMode === "generate" && (
-            <div className="mt-2 rounded-2xl border border-blue-200 bg-blue-50 p-3 dark:border-blue-900/40 dark:bg-blue-950/30">
-              <div className="text-[10px] font-bold uppercase tracking-widest text-blue-700 dark:text-blue-300">
-                Skill focus for {gradeLevel}
-              </div>
-              <div className="mt-2 flex flex-wrap gap-1.5">
-                {presetSkills(gradeLevel).map((s) => {
-                  const isActive = skillFocus === s;
-                  return (
-                    <button
-                      key={s}
-                      type="button"
-                      onClick={() => setSkillFocus(s)}
-                      disabled={recording || pending || genPending}
-                      className={`rounded-full border px-2.5 py-1 text-[11px] font-semibold transition disabled:opacity-60 ${
-                        isActive
-                          ? "border-blue-500 bg-blue-600 text-white"
-                          : "border-blue-200 bg-white text-blue-700 hover:bg-blue-100 dark:border-blue-900/40 dark:bg-slate-900 dark:text-blue-300"
-                      }`}
-                    >
-                      {s}
-                    </button>
-                  );
-                })}
-              </div>
-              <input
-                type="text"
-                value={skillFocus}
-                onChange={(e) => setSkillFocus(e.target.value)}
-                placeholder="Or type a skill (e.g. -tion suffix)"
-                disabled={recording || pending || genPending}
-                className="mt-2 w-full rounded-lg border border-blue-200 bg-white px-2 py-1.5 text-sm focus:border-blue-500 focus:outline-none disabled:opacity-60 dark:border-blue-900/40 dark:bg-slate-900"
-              />
-              <div className="mt-2 flex items-center justify-between gap-2">
-                <button
-                  type="button"
-                  onClick={generate}
-                  disabled={recording || pending || genPending || !skillFocus.trim()}
-                  className="inline-flex items-center gap-1.5 rounded-full bg-blue-600 px-3 py-1.5 text-xs font-bold text-white transition hover:bg-blue-700 disabled:opacity-60"
-                >
-                  {genPending ? (
-                    <>
-                      <Loader2 className="h-3 w-3 animate-spin" />
-                      Generating…
-                    </>
-                  ) : passage ? (
-                    <>
-                      <Wand2 className="h-3 w-3" />
-                      Try another
-                    </>
-                  ) : (
-                    <>
-                      <Wand2 className="h-3 w-3" />
-                      Generate passage
-                    </>
+            <details
+              className="group mt-2 rounded-2xl border border-blue-200 bg-blue-50 dark:border-blue-900/40 dark:bg-blue-950/30"
+              open={!passage}
+            >
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-2 px-3 py-2 [&::-webkit-details-marker]:hidden">
+                <span className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-blue-700 dark:text-blue-300">
+                  <Wand2 className="h-3 w-3" />
+                  Skill focus for {gradeLevel}
+                  {skillFocus && (
+                    <span className="rounded-full bg-blue-600 px-2 py-0.5 text-[10px] font-bold normal-case tracking-normal text-white">
+                      {skillFocus}
+                    </span>
                   )}
-                </button>
-                {genErr && (
-                  <span className="text-xs font-semibold text-red-700">{genErr}</span>
-                )}
+                </span>
+                <ChevronDown className="h-3 w-3 text-blue-700 transition-transform duration-200 group-open:rotate-180 dark:text-blue-300" />
+              </summary>
+              <div className="px-3 pb-3">
+                <div className="flex flex-wrap gap-1.5">
+                  {presetSkills(gradeLevel).map((s) => {
+                    const isActive = skillFocus === s;
+                    return (
+                      <button
+                        key={s}
+                        type="button"
+                        onClick={() => setSkillFocus(s)}
+                        disabled={recording || pending || genPending}
+                        className={`rounded-full border px-2.5 py-1 text-[11px] font-semibold transition disabled:opacity-60 ${
+                          isActive
+                            ? "border-blue-500 bg-blue-600 text-white"
+                            : "border-blue-200 bg-white text-blue-700 hover:bg-blue-100 dark:border-blue-900/40 dark:bg-slate-900 dark:text-blue-300"
+                        }`}
+                      >
+                        {s}
+                      </button>
+                    );
+                  })}
+                </div>
+                <input
+                  type="text"
+                  value={skillFocus}
+                  onChange={(e) => setSkillFocus(e.target.value)}
+                  placeholder="Or type a skill (e.g. -tion suffix)"
+                  disabled={recording || pending || genPending}
+                  className="mt-2 w-full rounded-lg border border-blue-200 bg-white px-2 py-1.5 text-sm focus:border-blue-500 focus:outline-none disabled:opacity-60 dark:border-blue-900/40 dark:bg-slate-900"
+                />
+                <div className="mt-2 flex items-center justify-between gap-2">
+                  <button
+                    type="button"
+                    onClick={generate}
+                    disabled={recording || pending || genPending || !skillFocus.trim()}
+                    className="inline-flex items-center gap-1.5 rounded-full bg-blue-600 px-3 py-1.5 text-xs font-bold text-white transition hover:bg-blue-700 disabled:opacity-60"
+                  >
+                    {genPending ? (
+                      <>
+                        <Loader2 className="h-3 w-3 animate-spin" />
+                        Generating…
+                      </>
+                    ) : passage ? (
+                      <>
+                        <Wand2 className="h-3 w-3" />
+                        Try another
+                      </>
+                    ) : (
+                      <>
+                        <Wand2 className="h-3 w-3" />
+                        Generate passage
+                      </>
+                    )}
+                  </button>
+                  {genErr && (
+                    <span className="text-xs font-semibold text-red-700">{genErr}</span>
+                  )}
+                </div>
               </div>
-            </div>
+            </details>
           )}
 
           <textarea
