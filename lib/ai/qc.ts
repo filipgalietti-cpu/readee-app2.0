@@ -85,7 +85,7 @@ const BANNED_WORDS = [
   "kahoot", "newsela",
 ];
 
-function containsBannedWord(text: string): string | null {
+export function containsBannedWord(text: string): string | null {
   const lower = " " + text.toLowerCase() + " ";
   for (const w of BANNED_WORDS) {
     if (lower.includes(" " + w + " ")) return w;
@@ -328,32 +328,34 @@ export async function qcQuestion(input: {
     });
   }
 
-  // Self-leakage check: the prompt literally contains its own answer.
-  // Filip's example: "The word **said** is tricky. How is it spelled?"
-  // — answer is S-A-I-D and the word is right there in the prompt.
-  // Heuristic: strip emphasis markers from prompt, lowercase both,
-  // check if the correct answer (or its compact form) appears as a
-  // substring of the prompt.
+  // Self-leakage check: the answer is leaked in the QUESTION portion
+  // of the prompt (not the embedded passage, where it's expected to
+  // be by design — comprehension questions DO have answers in the
+  // passage).
+  //
+  // Two real leak patterns we catch:
+  //   1. Highlighted-target pattern: prompt highlights a word with
+  //      ** or quotes AND asks "how is it spelled / what letters".
+  //   2. Question portion (after the last \n\n) literally contains
+  //      the correct answer — no passage to hide behind.
   if (input.question.kind === "multiple_choice") {
     const q = input.question;
-    const promptStripped = q.prompt
-      .replace(/\*\*(.+?)\*\*/g, "$1") // **emphasis** → emphasis
+    const parts = q.prompt.split("\n\n");
+    const questionPart = parts[parts.length - 1];
+    const questionStripped = questionPart
+      .replace(/\*\*(.+?)\*\*/g, "$1")
       .replace(/[^\w\s]/g, " ")
       .replace(/\s+/g, " ")
       .toLowerCase()
       .trim();
     const answerStripped = q.correct.toLowerCase().replace(/\s+/g, " ").trim();
     const answerCompact = answerStripped.replace(/\s+/g, "");
-    // Two leak patterns:
-    //  1. The exact answer appears verbatim in the prompt.
-    //  2. The answer is a spelling drill (single word) and that word
-    //     appears in the prompt highlighted by asterisks or quotes.
     const leakedWord =
-      answerStripped.length >= 2 && promptStripped.includes(answerStripped);
+      answerStripped.length >= 2 && questionStripped.includes(answerStripped);
     const leakedLetters =
       answerCompact.length >= 3 &&
       /\b[a-z](?:[\s\-][a-z])+\b/.test(q.correct.toLowerCase()) &&
-      promptStripped.includes(answerCompact);
+      questionStripped.includes(answerCompact);
     const promptHighlightsTarget =
       /["**'](.{1,30})["**']/.test(q.prompt) &&
       /how (is|do you) (it )?spell|how is it spelled|what letters/i.test(q.prompt);
@@ -363,13 +365,13 @@ export async function qcQuestion(input: {
         severity: "fail",
         message: promptHighlightsTarget
           ? "Prompt highlights the target word AND asks how it's spelled — the answer is given in the question."
-          : `Prompt literally contains the correct answer ("${q.correct}").`,
+          : `Question portion literally contains the correct answer ("${q.correct}").`,
       });
     } else {
       checks.push({
         name: `${tag}.no_self_leak`,
         severity: "pass",
-        message: "Prompt does not leak the answer.",
+        message: "Question portion does not leak the answer.",
       });
     }
   }
