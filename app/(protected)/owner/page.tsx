@@ -4,7 +4,6 @@ import { isPlatformAdmin } from "@/lib/auth/admin-gate";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import {
   ShieldOff,
-  ArrowLeft,
   Crown,
   Search as SearchIcon,
   TrendingUp,
@@ -253,14 +252,6 @@ export default async function OwnerAdminPage({
 
   return (
     <div className="mx-auto max-w-6xl px-6 py-10">
-      <Link
-        href="/admin"
-        className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-500 hover:text-indigo-600"
-      >
-        <ArrowLeft className="h-3.5 w-3.5" />
-        Admin home
-      </Link>
-
       <div className="mt-3">
         <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-amber-600">
           <Crown className="h-4 w-4" />

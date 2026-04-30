@@ -65,7 +65,10 @@ export default async function ContentAuditPage({
   const params = await searchParams;
   const status = params.status ?? "open";
   const kind = params.kind ?? null;
-  const severity = params.severity ?? null;
+  // Default severity to "fail" so the dashboard lands on the most
+  // important findings instead of being buried under hundreds of passes.
+  // Pass ?severity=all explicitly to see everything.
+  const severity = params.severity === "all" ? null : (params.severity ?? "fail");
   const grade = params.grade ?? null;
 
   let q = supabase
@@ -73,8 +76,15 @@ export default async function ContentAuditPage({
     .select(
       "id, target_kind, target_id, grade, finding_type, severity, message, suggestion, status, created_at",
     )
+    // Severity-first sort: fail → warn → pass (alphabetical desc on
+    // severity gives this ordering), then most-recent within a tier.
+    // Postgres orders fail (f) > warn (w)... actually alpha is
+    // fail < pass < warn — not what we want. Use a manual ordering
+    // expression via two .order calls won't work for custom enums.
+    // Cleanest: order by created_at desc and rely on the severity
+    // FILTER (default "fail") to surface what matters.
     .order("created_at", { ascending: false })
-    .limit(200);
+    .limit(500);
   if (status !== "all") q = q.eq("status", status);
   if (kind) q = q.eq("target_kind", kind);
   if (severity) q = q.eq("severity", severity);
@@ -122,11 +132,11 @@ export default async function ContentAuditPage({
   return (
     <div className="mx-auto max-w-5xl px-6 py-10">
       <Link
-        href="/admin"
+        href="/owner"
         className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-500 hover:text-indigo-600"
       >
         <ArrowLeft className="h-3.5 w-3.5" />
-        Admin home
+        Owner home
       </Link>
 
       <div className="mt-3">
@@ -135,23 +145,68 @@ export default async function ContentAuditPage({
           Content audit
         </div>
         <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
-          Findings ({findings.length} shown)
+          {severity === "fail"
+            ? `${findings.length} fails`
+            : severity === "warn"
+            ? `${findings.length} warns`
+            : severity === "pass"
+            ? `${findings.length} passes`
+            : `${findings.length} findings`}
+          <span className="ml-2 text-sm font-normal text-zinc-400">shown</span>
         </h1>
+        <p className="mt-1 text-xs text-zinc-500">
+          Click a severity pill to switch.
+          {(failCount ?? 0) >= 500 && severity === "fail" && (
+            <span className="ml-1 text-amber-700">
+              Showing first 500 — narrow with kind / grade filters to see more.
+            </span>
+          )}
+        </p>
       </div>
 
+      {/* Severity filter — clickable hero pills */}
       <div className="mt-6 flex flex-wrap gap-2 text-xs">
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-red-100 px-3 py-1 font-bold text-red-800">
-          <XCircle className="h-3.5 w-3.5" />
-          {failCount ?? 0} fail
-        </span>
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-100 px-3 py-1 font-bold text-amber-800">
-          <AlertTriangle className="h-3.5 w-3.5" />
-          {warnCount ?? 0} warn
-        </span>
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-3 py-1 font-bold text-emerald-800">
-          <CheckCircle2 className="h-3.5 w-3.5" />
-          {passCount ?? 0} pass
-        </span>
+        {([
+          { id: "fail", label: "Fail", count: failCount ?? 0, icon: XCircle, activeBg: "bg-red-600 text-white", inactiveBg: "bg-red-100 text-red-800 hover:bg-red-200" },
+          { id: "warn", label: "Warn", count: warnCount ?? 0, icon: AlertTriangle, activeBg: "bg-amber-600 text-white", inactiveBg: "bg-amber-100 text-amber-800 hover:bg-amber-200" },
+          { id: "pass", label: "Pass", count: passCount ?? 0, icon: CheckCircle2, activeBg: "bg-emerald-600 text-white", inactiveBg: "bg-emerald-100 text-emerald-800 hover:bg-emerald-200" },
+        ] as const).map((s) => {
+          const active = severity === s.id;
+          const url = new URLSearchParams();
+          url.set("severity", s.id);
+          if (status !== "open") url.set("status", status);
+          if (kind) url.set("kind", kind);
+          if (grade) url.set("grade", grade);
+          return (
+            <Link
+              key={s.id}
+              href={`/owner/content-audit?${url.toString()}`}
+              className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 font-bold transition ${
+                active ? s.activeBg : s.inactiveBg
+              }`}
+            >
+              <s.icon className="h-3.5 w-3.5" />
+              {s.label} ({s.count})
+            </Link>
+          );
+        })}
+        <Link
+          href={(() => {
+            const url = new URLSearchParams();
+            url.set("severity", "all");
+            if (status !== "open") url.set("status", status);
+            if (kind) url.set("kind", kind);
+            if (grade) url.set("grade", grade);
+            return `/owner/content-audit?${url.toString()}`;
+          })()}
+          className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 font-bold transition ${
+            severity === null
+              ? "bg-zinc-700 text-white"
+              : "bg-zinc-100 text-zinc-700 hover:bg-zinc-200"
+          }`}
+        >
+          All ({(failCount ?? 0) + (warnCount ?? 0) + (passCount ?? 0)})
+        </Link>
       </div>
 
       {/* Filters */}
