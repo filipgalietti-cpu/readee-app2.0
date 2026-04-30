@@ -24,6 +24,7 @@ import {
   checkLessonStructure,
   judgeLessonSlide,
 } from "../lib/ai/qc-lesson";
+import { generateFixSuggestion } from "../lib/ai/qc-suggestion";
 
 import kJson from "../app/data/kindergarten-standards-questions.json";
 import g1Json from "../app/data/1st-grade-standards-questions.json";
@@ -75,6 +76,30 @@ async function upsertFinding(input: {
   targetSnapshot?: any;
 }): Promise<void> {
   const supabase = supabaseAdmin();
+
+  // Auto-generate a fix suggestion for warn/fail when one wasn't
+  // supplied. ~$0.001 per finding. Pass-level findings get no
+  // suggestion (nothing to fix).
+  let finalSuggestion = input.suggestion ?? null;
+  if (
+    !finalSuggestion &&
+    (input.severity === "fail" || input.severity === "warn")
+  ) {
+    try {
+      const sug = await generateFixSuggestion({
+        targetKind: input.targetKind,
+        targetId: input.targetId,
+        findingType: input.findingType,
+        severity: input.severity,
+        message: input.message,
+        snapshot: input.targetSnapshot ?? null,
+      });
+      if (sug.ok) finalSuggestion = sug.suggestion;
+    } catch {
+      // Non-blocking — finding still upserts without a suggestion.
+    }
+  }
+
   // ON CONFLICT (target_kind, target_id, finding_type) — upsert so
   // re-running the audit refreshes the message + severity instead of
   // duplicating.
@@ -86,7 +111,7 @@ async function upsertFinding(input: {
       finding_type: input.findingType,
       severity: input.severity,
       message: input.message,
-      suggestion: input.suggestion ?? null,
+      suggestion: finalSuggestion,
       target_snapshot: input.targetSnapshot ?? null,
       audit_run_id: input.runId,
       status: "open",
@@ -162,6 +187,15 @@ async function auditQuestions(input: {
 
         const targetId = String(q.id ?? `${standardId}-?`);
         const promptText = String(q.prompt ?? "");
+        const snapshot = {
+          id: q.id,
+          standardId,
+          standardDescription,
+          prompt: q.prompt,
+          choices: q.choices,
+          correct: q.correct,
+          hint: q.hint ?? null,
+        };
 
         // Deterministic checks
         const banned = containsBannedWord(promptText);
@@ -175,6 +209,7 @@ async function auditQuestions(input: {
             findingType: "q.banned_words",
             severity: "fail",
             message: `Question prompt contains banned word "${banned}".`,
+            targetSnapshot: snapshot,
           });
         }
 
@@ -212,6 +247,7 @@ async function auditQuestions(input: {
             severity: "fail",
             message: `Prompt literally contains the correct answer ("${q.correct}").`,
             suggestion: "Rewrite the prompt to remove the leaked answer.",
+            targetSnapshot: snapshot,
           });
         }
 
@@ -229,6 +265,7 @@ async function auditQuestions(input: {
             findingType: "q.unique_choices",
             severity: "fail",
             message: "Choices contain duplicates.",
+            targetSnapshot: snapshot,
           });
         }
 
@@ -255,6 +292,7 @@ async function auditQuestions(input: {
               findingType: "q.should_be_asked",
               severity: sev,
               message: sba.reason,
+              targetSnapshot: snapshot,
             });
           }
         } catch (e) {
@@ -280,6 +318,7 @@ async function auditQuestions(input: {
               severity: "warn",
               message: `Recommend changing to ${bf.recommendation}: ${bf.reason}`,
               suggestion: bf.recommendation,
+              targetSnapshot: snapshot,
             });
           }
         } catch (e) {
@@ -333,6 +372,8 @@ async function auditLessons(input: {
 
     const standardId = lesson.standardId as string;
 
+    const slides = Array.isArray(lesson.slides) ? lesson.slides : [];
+
     // Structural pass
     const structural = checkLessonStructure({ standardId, lesson });
     for (const f of structural) {
@@ -347,11 +388,16 @@ async function auditLessons(input: {
         severity: f.severity,
         message: f.message,
         suggestion: f.suggestion ?? null,
+        targetSnapshot: {
+          standardId,
+          title: lesson.title,
+          slideCount: slides.length,
+          slidesPreview: slides.slice(0, 3),
+        },
       });
     }
 
     // Per-slide judge — only if the lesson isn't a stub
-    const slides = Array.isArray(lesson.slides) ? lesson.slides : [];
     if (slides.length > 0) {
       const standardDescription = lesson.title ?? standardId;
       for (const slide of slides) {
@@ -386,6 +432,13 @@ async function auditLessons(input: {
               findingType: "slide.judge",
               severity: judge.severity,
               message: judge.reason,
+              targetSnapshot: {
+                standardId,
+                lessonTitle: lesson.title,
+                slideNumber: slideNum,
+                slideHeading,
+                steps,
+              },
             });
           }
         } catch (e) {
