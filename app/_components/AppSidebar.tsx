@@ -12,7 +12,7 @@ import { SidebarUserMenu } from "./SidebarUserMenu";
 import { ShineBorder } from "@/app/components/magicui/shine-border";
 import {
   Home, BarChart3, BookText, ListChecks, Map,
-  Carrot, Trophy, ChevronDown, ChevronRight, ClipboardCheck, GraduationCap, Building2, ClipboardPen, Library, Sparkles, Users, Brain, Zap, ShieldCheck, BookOpenText, Layers, Mic,
+  Carrot, Trophy, ChevronDown, ChevronRight, ClipboardCheck, GraduationCap, Building2, ClipboardPen, Library, Sparkles, Users, Brain, Zap, ShieldCheck, BookOpenText, Layers, Mic, ScanLine, Factory, LogOut,
 } from "lucide-react";
 
 /* ─── Nav items ──────────────────────────────────── */
@@ -56,8 +56,8 @@ function getNavSections(
     sections.push({
       label: "Content",
       items: [
-        { href: "/admin/content-audit", icon: ShieldCheck, label: "Content audit" },
-        { href: "/admin/batch-qc", icon: Sparkles, label: "Factory QC" },
+        { href: "/admin/content-audit", icon: ScanLine, label: "Content audit" },
+        { href: "/admin/batch-qc", icon: Factory, label: "Factory QC" },
         { href: "/admin/qc", icon: ShieldCheck, label: "Teacher quiz QC" },
       ],
     });
@@ -65,10 +65,10 @@ function getNavSections(
       label: "Exit",
       items: [
         ownsClassroom
-          ? { href: "/classroom", icon: GraduationCap, label: "Back to classroom" }
+          ? { href: "/classroom", icon: LogOut, label: "Back to classroom" }
           : hasChildren
-          ? { href: "/dashboard", icon: Home, label: "Back to family view" }
-          : { href: "/", icon: Home, label: "Back to home" },
+          ? { href: "/dashboard", icon: LogOut, label: "Back to family view" }
+          : { href: "/", icon: LogOut, label: "Back to home" },
       ],
     });
     return sections;
