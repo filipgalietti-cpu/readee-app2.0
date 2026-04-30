@@ -148,6 +148,48 @@ export default async function AdminHomePage() {
           </Link>
         ))}
       </div>
+
+      <div className="mt-10">
+        <h2 className="text-xs font-bold uppercase tracking-widest text-zinc-500">
+          Platform
+        </h2>
+        <div className="mt-3 grid gap-3 sm:grid-cols-2">
+          <Link
+            href="/admin/qc"
+            className="flex items-center gap-3 rounded-2xl border border-zinc-200 bg-white p-4 transition hover:border-indigo-300 dark:border-slate-800 dark:bg-slate-900/40"
+          >
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-100 text-indigo-700 dark:bg-indigo-950/40 dark:text-indigo-300">
+              <Users2 className="h-5 w-5" />
+            </div>
+            <div className="flex-1">
+              <div className="text-[10px] font-bold uppercase tracking-widest text-indigo-700 dark:text-indigo-300">
+                Teacher quiz QC
+              </div>
+              <div className="text-sm font-bold text-zinc-900 dark:text-white">
+                Quiz QC queue
+              </div>
+            </div>
+            <ArrowRight className="h-4 w-4 text-zinc-400" />
+          </Link>
+          <Link
+            href="/admin/batch-qc"
+            className="flex items-center gap-3 rounded-2xl border border-zinc-200 bg-white p-4 transition hover:border-violet-300 dark:border-slate-800 dark:bg-slate-900/40"
+          >
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-violet-100 text-violet-700 dark:bg-violet-950/40 dark:text-violet-300">
+              <Users2 className="h-5 w-5" />
+            </div>
+            <div className="flex-1">
+              <div className="text-[10px] font-bold uppercase tracking-widest text-violet-700 dark:text-violet-300">
+                Content factory
+              </div>
+              <div className="text-sm font-bold text-zinc-900 dark:text-white">
+                Batch QC queue
+              </div>
+            </div>
+            <ArrowRight className="h-4 w-4 text-zinc-400" />
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }
