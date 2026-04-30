@@ -206,8 +206,7 @@ export async function resolveSessionMaterial(input: {
     return {
       assignable: false,
       kind: "passage",
-      reason:
-        "No matching leveled passage in your library. Generate one in /classroom/leveled, then re-push.",
+      reason: "Will be teacher-led — no standard or leveled passage to attach.",
     };
   }
 

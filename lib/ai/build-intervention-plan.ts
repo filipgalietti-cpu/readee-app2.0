@@ -58,7 +58,7 @@ material_hint is the human-readable description shown to the teacher. In additio
   • "passage" → reading a leveled passage (Readee will push a leveled passage assignment when one matches)
   • "fluency_probe" → cold-read or repeated-read with a timer (NOT auto-assigned; teacher-led)
   • "teacher_led" → small-group instruction, conferencing, anything the teacher runs in person (NOT auto-assigned)
-- standard_id: a CCSS code like "RF.1.3b", "RL.2.1", "L.1.4", or null. REQUIRED when material_kind is "lesson". Use the standard the activity targets — not just the closest one.
+- standard_id: a CCSS code like "RF.1.3b", "RL.2.1", "L.1.4", or null. REQUIRED when material_kind is "lesson" OR "passage" — for passages, supply the standard the passage will be used to practice (e.g. fluency passages → RF.1.4 or the grade-appropriate fluency standard; comprehension passages → RL/RI standard). Only set null when material_kind is "fluency_probe" or "teacher_led".
 - grade: "K" | "1st" | "2nd" | "3rd" | "4th" | null. The grade level the material should be at, which may be BELOW the student's enrolled grade (interventions often regress to mastered prerequisites).
 
 Don't invent specific lesson IDs — the resolver maps standard_id + grade to a real lesson at runtime.
