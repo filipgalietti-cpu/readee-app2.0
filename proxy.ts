@@ -183,8 +183,142 @@ export async function proxy(request: NextRequest) {
     }
   }
 
+  // ── Role-based hard separation ────────────────────────────────────
+  // Three audiences, three sandboxes — Filip's call: no hybrid.
+  //   1. Platform admin (Filip / Jen): owner surface only
+  //   2. Educator: classroom surface only
+  //   3. Parent / student: family surface only
+  //
+  // Anyone trying to cross the line gets bounced to their own home.
+  // To test a different surface, sign out and use a separate account.
+  if (user && !ALWAYS_ALLOWED.some((p) => pathname === p || pathname.startsWith(p + "/"))) {
+    const isAdminRoute = pathname === "/admin" || pathname.startsWith("/admin/");
+    const isOwnerOnlyRoute = OWNER_ONLY_PREFIXES.some(
+      (p) => pathname === p || pathname.startsWith(p + "/"),
+    );
+    const isTeacherRoute = TEACHER_ONLY_PREFIXES.some(
+      (p) => pathname === p || pathname.startsWith(p + "/"),
+    );
+    const isParentRoute = PARENT_ONLY_PREFIXES.some(
+      (p) => pathname === p || pathname.startsWith(p + "/"),
+    );
+
+    // Only bother with the role lookup when the pathname could conflict.
+    if (isAdminRoute || isOwnerOnlyRoute || isTeacherRoute || isParentRoute) {
+      const [{ data: profile }, { data: paRow }] = await Promise.all([
+        supabase.from("profiles").select("role").eq("id", user.id).maybeSingle(),
+        supabase.from("platform_admins").select("profile_id").eq("profile_id", user.id).maybeSingle(),
+      ]);
+      const role = (profile as { role?: string } | null)?.role ?? null;
+      const isOwner = !!paRow;
+
+      if (isOwner) {
+        // Owners see ONLY the owner surface (incl /admin home for shortcuts).
+        // Anything else → /admin/owner.
+        if (!isAdminRoute && (isTeacherRoute || isParentRoute)) {
+          const url = request.nextUrl.clone();
+          url.pathname = "/admin/owner";
+          url.search = "";
+          return NextResponse.redirect(url);
+        }
+      } else if (role === "educator") {
+        // Teachers can't enter the owner surface or the parent surface.
+        if (isOwnerOnlyRoute) {
+          const url = request.nextUrl.clone();
+          url.pathname = "/classroom";
+          url.search = "";
+          return NextResponse.redirect(url);
+        }
+        if (isParentRoute) {
+          const url = request.nextUrl.clone();
+          url.pathname = "/classroom";
+          url.search = "";
+          return NextResponse.redirect(url);
+        }
+      } else if (role === "parent") {
+        // Parents can't enter classroom or owner.
+        if (isOwnerOnlyRoute || isAdminRoute || isTeacherRoute) {
+          const url = request.nextUrl.clone();
+          url.pathname = "/dashboard";
+          url.search = "";
+          return NextResponse.redirect(url);
+        }
+      } else if (role === "student") {
+        // Students should be in play mode; if they aren't, send them home.
+        if (isOwnerOnlyRoute || isAdminRoute || isTeacherRoute) {
+          const url = request.nextUrl.clone();
+          url.pathname = "/dashboard";
+          url.search = "";
+          return NextResponse.redirect(url);
+        }
+      }
+    }
+  }
+
   return response;
 }
+
+/** Owner-only routes (platform admins / Readee Inc back-office). */
+const OWNER_ONLY_PREFIXES = [
+  "/admin/owner",
+  "/admin/batch-qc",
+  "/admin/content-audit",
+];
+
+/** Teacher / classroom surface. */
+const TEACHER_ONLY_PREFIXES = [
+  "/classroom",
+];
+
+/** Parent / family surface. Not exhaustive — only routes that
+ *  meaningfully conflict with classroom/admin scope. Shared routes
+ *  (/account, /upgrade, /settings, /today, /buddy, /fluency, /play)
+ *  intentionally NOT here so all roles can use them. */
+const PARENT_ONLY_PREFIXES = [
+  "/dashboard",
+  "/practice",
+  "/practice-hub",
+  "/stories",
+  "/stories-for-me",
+  "/journey",
+  "/word-bank",
+  "/review",
+  "/assessment-results",
+  "/shop",
+  "/leaderboard",
+  "/analytics",
+  "/roadmap",
+  "/learn",
+  "/lesson",
+  "/carrot-rewards",
+];
+
+/** Always allowed regardless of role — auth flow + shared utility routes. */
+const ALWAYS_ALLOWED = [
+  "/login",
+  "/logout",
+  "/signup",
+  "/onboarding",
+  "/account",
+  "/settings",
+  "/billing",
+  "/upgrade",
+  "/notifications",
+  "/today",
+  "/standards",
+  "/buddy",
+  "/fluency",
+  "/play",
+  "/api",
+  "/contact-us",
+  "/about",
+  "/pricing",
+  "/copyright",
+  "/terms-of-service",
+  "/privacy-policy",
+  "/privacy-for-schools",
+  "/schools",
+];
 
 export const config = {
   matcher: [
