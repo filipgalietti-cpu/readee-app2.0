@@ -253,14 +253,16 @@ export default function NavAuth() {
                 </Link>
               )}
 
-              {/* Help */}
-              <Link
-                href="/contact-us"
-                className="flex items-center gap-1.5 px-2.5 sm:px-3 py-2 rounded-lg text-indigo-500 hover:text-indigo-700 hover:bg-indigo-50 transition-colors"
-              >
-                <HelpCircle className="w-5 h-5" strokeWidth={1.5} />
-                <span className="text-sm font-semibold hidden sm:inline">Help</span>
-              </Link>
+              {/* Help — hidden on admin routes (Filip is the help). */}
+              {!pathname?.startsWith("/admin") && (
+                <Link
+                  href="/contact-us"
+                  className="flex items-center gap-1.5 px-2.5 sm:px-3 py-2 rounded-lg text-indigo-500 hover:text-indigo-700 hover:bg-indigo-50 transition-colors"
+                >
+                  <HelpCircle className="w-5 h-5" strokeWidth={1.5} />
+                  <span className="text-sm font-semibold hidden sm:inline">Help</span>
+                </Link>
+              )}
 
               {/* Notifications bell */}
               <div className="relative" ref={notifRef}>
