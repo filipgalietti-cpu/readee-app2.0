@@ -1,12 +1,29 @@
 /**
- * Shared admin gate. Admin status comes from EITHER:
- *   - platform_admins (Readee owners) OR
- *   - admin_memberships (B2B district/school admins)
+ * Shared admin gates.
  *
- * Pages can call hasAnyAdminAccess(profileId) → boolean.
+ * Three audiences, three checks:
+ *
+ * - hasAnyAdminAccess: anyone with admin scope at all (platform OR
+ *   B2B district/school). Used for platform-tools that we let any
+ *   admin into (batch QC queue, content audit findings).
+ *
+ * - isPlatformAdmin: ONLY Readee owners (platform_admins table).
+ *   Used to scope the owner / business dashboard. School / district
+ *   admins are NOT this — they get their own tenant-scoped admin
+ *   pages at /admin/school/[id] or /admin/district/[id].
  */
 
 import { createClient } from "@/lib/supabase/server";
+
+export async function isPlatformAdmin(profileId: string): Promise<boolean> {
+  const supabase = await createClient();
+  const { data } = await supabase
+    .from("platform_admins")
+    .select("profile_id")
+    .eq("profile_id", profileId)
+    .maybeSingle();
+  return !!data;
+}
 
 export async function hasAnyAdminAccess(profileId: string): Promise<boolean> {
   const supabase = await createClient();

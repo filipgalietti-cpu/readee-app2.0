@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { requireProfile } from "@/lib/auth/helpers";
-import { hasAnyAdminAccess } from "@/lib/auth/admin-gate";
+import { isPlatformAdmin } from "@/lib/auth/admin-gate";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import {
   ShieldOff,
@@ -53,7 +53,7 @@ export default async function OwnerProfilePage({
 }) {
   const { profileId } = await params;
   const me = await requireProfile();
-  const isAdmin = await hasAnyAdminAccess(me.id);
+  const isAdmin = await isPlatformAdmin(me.id);
   if (!isAdmin) {
     return (
       <div className="mx-auto max-w-2xl px-6 py-16 text-center">

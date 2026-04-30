@@ -2,13 +2,13 @@
 
 import { revalidatePath } from "next/cache";
 import { requireProfile } from "@/lib/auth/helpers";
-import { hasAnyAdminAccess } from "@/lib/auth/admin-gate";
+import { isPlatformAdmin } from "@/lib/auth/admin-gate";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 
 async function gate(): Promise<{ ok: true; adminId: string } | { ok: false; error: string }> {
   const me = await requireProfile();
-  const ok = await hasAnyAdminAccess(me.id);
-  if (!ok) return { ok: false, error: "Admin only." };
+  const ok = await isPlatformAdmin(me.id);
+  if (!ok) return { ok: false, error: "Owner only." };
   return { ok: true, adminId: me.id };
 }
 
