@@ -264,7 +264,7 @@ export default function PlanTab({
           <ReadeeAiLoader
             size={140}
             label="Readee.ai is drafting the intervention plan"
-            caption="Mapping goal + recent data to 2-week sessions…"
+            caption={`Mapping goal + recent data to ${cycleWeeks}-week sessions…`}
           />
         </div>
       )}
