@@ -274,21 +274,36 @@ export default function AppSidebar({ mobileOnly = false }: { mobileOnly?: boolea
     { ownsClassroom, hasChildren, hasAdminScope },
   );
 
+  // Platform admin routes ALWAYS render with the owner's actual
+  // identity, ignoring whatever child/parent persona happens to be
+  // in the client stores. Avoids the leak that happens when an admin
+  // also has a child profile under a +alias email — the previous
+  // session's kid avatar would otherwise bleed into admin pages.
+  const isPlatformAdminRoute =
+    pathname?.startsWith("/admin/owner") ||
+    pathname?.startsWith("/admin/batch-qc") ||
+    pathname?.startsWith("/admin/content-audit");
+
   // Sidebar identity derives from capability. Teachers see their own
   // name; pure parents see the child-forward identity. Hybrid users
   // (both capabilities) see the teacher identity in the header — the
   // Family group still gives them parent-side links right below.
-  const showTeacherIdentity = ownsClassroom;
-  const sidebarName = showTeacherIdentity
+  // Platform admin routes override everything → owner identity.
+  const showTeacherIdentity = isPlatformAdminRoute || ownsClassroom;
+  const sidebarName = isPlatformAdminRoute
+    ? displayName || "Owner"
+    : showTeacherIdentity
     ? displayName || "Teacher"
     : activeChild?.first_name || displayName || "Reader";
-  const sidebarAvatarSrc = showTeacherIdentity ? null : avatarSrc;
-  const sidebarSubtitle = showTeacherIdentity
+  const sidebarAvatarSrc = isPlatformAdminRoute ? null : showTeacherIdentity ? null : avatarSrc;
+  const sidebarSubtitle = isPlatformAdminRoute
+    ? "Readee Inc · Owner"
+    : showTeacherIdentity
     ? hasAdminScope
       ? "Teacher · Admin"
       : "Teacher"
     : undefined;
-  const sidebarDetail = showTeacherIdentity ? email ?? null : null;
+  const sidebarDetail = isPlatformAdminRoute || showTeacherIdentity ? email ?? null : null;
 
   // Close mobile overlay on route change
   useEffect(() => { setMobileOpen(false); }, [pathname, setMobileOpen]);

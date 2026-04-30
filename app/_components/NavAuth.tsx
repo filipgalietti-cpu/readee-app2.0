@@ -51,6 +51,16 @@ export default function NavAuth() {
         setUserName(u.user_metadata?.full_name || u.email || "");
         setUserAvatar(u.user_metadata?.avatar_url || u.user_metadata?.picture || null);
 
+        // Identity-change detection: if the previous session's
+        // ownerProfileId doesn't match the current uid, wipe the
+        // child store so kid persona doesn't leak across accounts.
+        // Matters when switching between +alias accounts in one tab.
+        const childStore = useChildStore.getState();
+        if (childStore.ownerProfileId && childStore.ownerProfileId !== uid) {
+          childStore.reset();
+        }
+        childStore.setOwnerProfileId(uid);
+
         fetchPlan();
         supabase
           .from("profiles")
@@ -88,10 +98,18 @@ export default function NavAuth() {
           .then(({ data: notifs }) => {
             if (notifs) setNotifications(notifs as Notification[]);
           });
+      } else {
+        // No session — wipe any stale kid state from the previous user.
+        useChildStore.getState().reset();
       }
     });
     const { data: sub } = supabase.auth.onAuthStateChange((_event, session) => {
       setLoggedIn(!!session);
+      // Auth state change → wipe stale state. The next NavAuth render
+      // re-fetches children for the new user.
+      if (!session) {
+        useChildStore.getState().reset();
+      }
     });
     return () => {
       sub.subscription.unsubscribe();
