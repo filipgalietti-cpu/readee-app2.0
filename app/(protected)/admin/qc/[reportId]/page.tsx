@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/lib/auth/helpers";
+import { hasAnyAdminAccess } from "@/lib/auth/admin-gate";
 import {
   ArrowLeft,
   CheckCircle2,
@@ -25,11 +26,8 @@ export default async function QcReportDetailPage({
   const profile = await requireProfile();
   const supabase = await createClient();
 
-  const { data: memberships } = await supabase
-    .from("admin_memberships")
-    .select("id")
-    .eq("profile_id", profile.id);
-  if (!memberships || memberships.length === 0) notFound();
+  const isAdmin = await hasAnyAdminAccess(profile.id);
+  if (!isAdmin) notFound();
 
   const { data: report } = await supabase
     .from("quiz_qc_reports")

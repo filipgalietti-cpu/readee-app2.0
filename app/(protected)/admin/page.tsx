@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { Building2, School, Users2, ArrowRight, ShieldOff } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/lib/auth/helpers";
+import { isPlatformAdmin } from "@/lib/auth/admin-gate";
 import CreateDistrictButton from "./_components/CreateDistrictButton";
 import CreateSchoolButton from "./_components/CreateSchoolButton";
 
@@ -19,13 +20,18 @@ export default async function AdminHomePage() {
   const profile = await requireProfile();
   const supabase = await createClient();
 
-  const { data: memberships } = await supabase
-    .from("admin_memberships")
-    .select("id, scope, school_id, district_id")
-    .eq("profile_id", profile.id);
+  const [{ data: memberships }, isOwner] = await Promise.all([
+    supabase
+      .from("admin_memberships")
+      .select("id, scope, school_id, district_id")
+      .eq("profile_id", profile.id),
+    isPlatformAdmin(profile.id),
+  ]);
 
   const rows = (memberships ?? []) as Membership[];
-  if (rows.length === 0) {
+  // Platform admins (Filip / Jen) bypass the empty-state — they don't
+  // have tenant scopes but they DO have platform tools to land on.
+  if (rows.length === 0 && !isOwner) {
     return (
       <div className="mx-auto max-w-2xl px-6 py-16 text-center">
         <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-zinc-100 text-zinc-500 dark:bg-slate-800 dark:text-slate-400">

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/lib/auth/helpers";
+import { hasAnyAdminAccess } from "@/lib/auth/admin-gate";
 import {
   ShieldCheck,
   AlertTriangle,
@@ -49,12 +50,10 @@ export default async function QcDashboardPage({
   const profile = await requireProfile();
   const supabase = await createClient();
 
-  // Admin gate — same shape as /admin home: must have an admin_memberships row.
-  const { data: memberships } = await supabase
-    .from("admin_memberships")
-    .select("id")
-    .eq("profile_id", profile.id);
-  if (!memberships || memberships.length === 0) {
+  // Admin gate — platform admins (Readee owners) OR tenant admins
+  // (school/district admin_memberships) can review teacher-built quizzes.
+  const isAdmin = await hasAnyAdminAccess(profile.id);
+  if (!isAdmin) {
     return (
       <div className="mx-auto max-w-2xl px-6 py-16 text-center">
         <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-zinc-100 text-zinc-500">

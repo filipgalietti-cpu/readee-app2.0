@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/lib/auth/helpers";
+import { hasAnyAdminAccess } from "@/lib/auth/admin-gate";
 
 /**
  * Mark a QC report reviewed. Removes it from the default queue.
@@ -15,13 +16,8 @@ export async function markQcReportReviewed(input: {
   const profile = await requireProfile();
   const supabase = await createClient();
 
-  const { data: memberships } = await supabase
-    .from("admin_memberships")
-    .select("id")
-    .eq("profile_id", profile.id);
-  if (!memberships || memberships.length === 0) {
-    return { ok: false, error: "Admin scope required." };
-  }
+  const isAdmin = await hasAnyAdminAccess(profile.id);
+  if (!isAdmin) return { ok: false, error: "Admin scope required." };
 
   const { error } = await supabase
     .from("quiz_qc_reports")
@@ -48,13 +44,8 @@ export async function reopenQcReport(input: {
   const profile = await requireProfile();
   const supabase = await createClient();
 
-  const { data: memberships } = await supabase
-    .from("admin_memberships")
-    .select("id")
-    .eq("profile_id", profile.id);
-  if (!memberships || memberships.length === 0) {
-    return { ok: false, error: "Admin scope required." };
-  }
+  const isAdmin = await hasAnyAdminAccess(profile.id);
+  if (!isAdmin) return { ok: false, error: "Admin scope required." };
 
   const { error } = await supabase
     .from("quiz_qc_reports")
