@@ -167,11 +167,23 @@ export default function NavAuth() {
   const unreadCount = notifications.filter((n) => !n.read).length;
   const isAuthPage = pathname === "/login" || pathname === "/signup";
 
-  // Avatar: prefer child avatar, fall back to parent initial
-  const childAvatarSrc = activeChild ? getChildAvatarImage(activeChild, storeChildren.indexOf(activeChild)) : null;
-  const displayInitial = activeChild?.first_name?.charAt(0)?.toUpperCase()
-    || userName?.charAt(0)?.toUpperCase()
-    || "U";
+  // Platform admin routes always render the owner's identity, never
+  // a kid avatar from a previous session's parent context.
+  const isPlatformAdminRoute =
+    pathname?.startsWith("/admin/owner") ||
+    pathname?.startsWith("/admin/batch-qc") ||
+    pathname?.startsWith("/admin/content-audit");
+
+  // Avatar: prefer child avatar, fall back to parent initial.
+  // Suppressed entirely on platform admin routes.
+  const childAvatarSrc =
+    !isPlatformAdminRoute && activeChild
+      ? getChildAvatarImage(activeChild, storeChildren.indexOf(activeChild))
+      : null;
+  const displayInitial =
+    (!isPlatformAdminRoute && activeChild?.first_name?.charAt(0)?.toUpperCase()) ||
+    userName?.charAt(0)?.toUpperCase() ||
+    "U";
 
   // Format relative time
   const timeAgo = (dateStr: string) => {
