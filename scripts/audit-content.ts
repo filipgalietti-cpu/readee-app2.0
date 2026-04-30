@@ -25,6 +25,7 @@ import {
   judgeLessonSlide,
 } from "../lib/ai/qc-lesson";
 import { generateFixSuggestion } from "../lib/ai/qc-suggestion";
+import { judgeAudioFile, judgeImageQuality } from "../lib/ai/qc-media";
 
 import kJson from "../app/data/kindergarten-standards-questions.json";
 import g1Json from "../app/data/1st-grade-standards-questions.json";
@@ -45,11 +46,12 @@ type Args = {
   kind: "all" | "question" | "lesson";
   limit: number | null;
   grade: string | null;
+  withMedia: boolean;
 };
 
 function parseArgs(): Args {
   const argv = process.argv.slice(2);
-  const out: Args = { kind: "all", limit: null, grade: null };
+  const out: Args = { kind: "all", limit: null, grade: null, withMedia: false };
   for (const a of argv) {
     if (a.startsWith("--kind=")) {
       const v = a.slice("--kind=".length);
@@ -59,6 +61,8 @@ function parseArgs(): Args {
       if (!Number.isNaN(n) && n > 0) out.limit = n;
     } else if (a.startsWith("--grade=")) {
       out.grade = a.slice("--grade=".length);
+    } else if (a === "--with-media") {
+      out.withMedia = true;
     }
   }
   return out;
@@ -161,6 +165,7 @@ async function auditQuestions(input: {
   runId: string;
   limit: number | null;
   grade: string | null;
+  withMedia: boolean;
 }): Promise<{
   scanned: number;
   pass: number;
@@ -325,6 +330,56 @@ async function auditQuestions(input: {
           // continue
         }
 
+        // Optional: media QC.
+        if (input.withMedia) {
+          if (q.audio_url && typeof q.audio_url === "string") {
+            try {
+              const a = await judgeAudioFile({
+                audioUrl: q.audio_url,
+                expectedText: promptText,
+              });
+              if (a.ok) {
+                if (a.severity === "fail") fail++;
+                else if (a.severity === "warn") warn++;
+                else pass++;
+                await upsertFinding({
+                  runId: input.runId,
+                  targetKind: "question",
+                  targetId,
+                  grade,
+                  findingType: "q.audio_quality",
+                  severity: a.severity,
+                  message: a.reason,
+                  targetSnapshot: { ...snapshot, audio_url: q.audio_url },
+                });
+              }
+            } catch {}
+          }
+          if (q.image_url && typeof q.image_url === "string") {
+            try {
+              const i = await judgeImageQuality({
+                imageUrl: q.image_url,
+                expectedScene: promptText,
+              });
+              if (i.ok) {
+                if (i.severity === "fail") fail++;
+                else if (i.severity === "warn") warn++;
+                else pass++;
+                await upsertFinding({
+                  runId: input.runId,
+                  targetKind: "question",
+                  targetId,
+                  grade,
+                  findingType: "q.image_quality",
+                  severity: i.severity,
+                  message: i.reason,
+                  targetSnapshot: { ...snapshot, image_url: q.image_url },
+                });
+              }
+            } catch {}
+          }
+        }
+
         if (scanned % 25 === 0) {
           console.log(`  ...questions scanned ${scanned} (pass ${pass} / warn ${warn} / fail ${fail})`);
         }
@@ -339,6 +394,7 @@ async function auditLessons(input: {
   runId: string;
   limit: number | null;
   grade: string | null;
+  withMedia: boolean;
 }): Promise<{
   scanned: number;
   pass: number;
@@ -395,6 +451,48 @@ async function auditLessons(input: {
           slidesPreview: slides.slice(0, 3),
         },
       });
+    }
+
+    // Lesson audio (per-step) QC if --with-media
+    if (input.withMedia) {
+      const SUPABASE_PUBLIC = "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/";
+      for (const slide of slides) {
+        const slideNum = slide?.slide ?? "?";
+        const steps = Array.isArray(slide?.steps) ? slide.steps : [];
+        for (const step of steps) {
+          if (!step?.audioFile || typeof step.audioFile !== "string") continue;
+          const url = step.audioFile.startsWith("http")
+            ? step.audioFile
+            : `${SUPABASE_PUBLIC}${step.audioFile}`;
+          const stepRef = `S${slideNum}${step?.sub ?? ""}`;
+          try {
+            const a = await judgeAudioFile({
+              audioUrl: url,
+              expectedText: String(step?.ttsScript ?? "").slice(0, 1500),
+            });
+            if (a.ok) {
+              if (a.severity === "fail") fail++;
+              else if (a.severity === "warn") warn++;
+              else pass++;
+              await upsertFinding({
+                runId: input.runId,
+                targetKind: "lesson_slide",
+                targetId: `${standardId}#${stepRef}`,
+                grade: lessonGradeShort || null,
+                findingType: "step.audio_quality",
+                severity: a.severity,
+                message: a.reason,
+                targetSnapshot: {
+                  standardId,
+                  stepRef,
+                  audio_url: url,
+                  ttsScript: step?.ttsScript,
+                },
+              });
+            }
+          } catch {}
+        }
+      }
     }
 
     // Per-slide judge — only if the lesson isn't a stub
@@ -472,6 +570,7 @@ async function main(): Promise<void> {
         runId,
         limit: args.limit,
         grade: args.grade,
+        withMedia: args.withMedia,
       });
       console.log(
         `  questions: scanned ${qStats.scanned}, pass ${qStats.pass}, warn ${qStats.warn}, fail ${qStats.fail}`,
@@ -483,6 +582,7 @@ async function main(): Promise<void> {
         runId,
         limit: args.limit,
         grade: args.grade,
+        withMedia: args.withMedia,
       });
       console.log(
         `  lessons: scanned ${lStats.scanned}, pass ${lStats.pass}, warn ${lStats.warn}, fail ${lStats.fail}`,
