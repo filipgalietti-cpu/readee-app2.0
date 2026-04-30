@@ -11,6 +11,10 @@
     {
       "path": "/api/cron/factory-leveled-passage",
       "schedule": "0 8 * * *"
+    },
+    {
+      "path": "/api/cron/factory-calibrated-mcq",
+      "schedule": "0 7 * * *"
     }
   ]
 }
