@@ -129,12 +129,16 @@ Trail:
   /classroom/tools and the classroom hero card; orphan
   CalibratedItemForm component deleted)
 
-## 7. IEP / 504 workspace — UPGRADED (2026-04-29)
+## 7. IEP / 504 workspace — ✓ PASS (2026-04-30)
 
 URL: `https://learn.readee.app/classroom/tools/iep-note`
 
 Promoted from "draft a note" into a full 3-tab SPED workspace.
-Commit `6f6d13e`, migrations 082-084 applied.
+Commit `6f6d13e`, migrations 082-084 applied. Filip validated end-
+to-end Apr 30; the AI's "shitty MCQ + lesson" suggestions inside
+the Plan tab spawned the full content-audit project (commits
+`a6faf6e` → `cdf6151`) — flagged as a content-quality issue, not
+an IEP-tool bug.
 
 **Goals tab**
 - [ ] Pick a student → Goals tab loads (active count visible in tab pill)
