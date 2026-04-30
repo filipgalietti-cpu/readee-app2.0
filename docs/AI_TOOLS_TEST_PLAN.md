@@ -170,6 +170,28 @@ Commit `6f6d13e`, migrations 082-084 applied.
 - [ ] Caregiver note appears when AI emits one (amber callout)
 - [ ] "Copy plan" produces formatted text
 
+**Push to assignments (commit `ebc2a82`)**
+- [ ] After plan generation, green "Push to assignments" button
+      appears next to "Copy plan"
+- [ ] Click it → modal opens, "Matching sessions to lessons…" loader
+- [ ] Modal shows: classroom dropdown (only classrooms the kid is
+      enrolled in AND teacher owns), start-date picker (defaults to
+      today), counter ("X will be assigned, Y teacher-led / unmatched")
+- [ ] Each session listed with ✓ (matched) or ⚠ (skipped). Matched
+      sessions show the lesson title, the CCSS standard pill, and an
+      "approx" tag when the resolver fell back to the standards bank
+      instead of a kid-friendly lesson. Skipped sessions show the
+      reason ("Cold-read with timer — teacher-led", "No matching
+      leveled passage in your library", etc.)
+- [ ] Click "Push N assignments" → success → green confirmation row
+      on the plan card: "✓ Pushed N assignments to the student"
+- [ ] Verify in Supabase: `assignments` rows have `assigned_child_ids`
+      = [child uuid], `kind` = 'readee_lesson', staggered `due_at`
+      one day apart across the 2-week window
+- [ ] Verify `intervention_plans.status` flipped from 'draft' to
+      'active', `plan_json.pushed.assignmentIds` populated
+- [ ] Sign in as the kid → assignments appear in their dashboard
+
 **Persistence + audit**
 - [ ] Generated note appears in `iep_progress_notes` table with
       `input_snapshot` populated (audit trail for IEP team meetings)
