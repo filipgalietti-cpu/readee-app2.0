@@ -104,22 +104,25 @@ export default function NoteTab({
   const [customPeriod, setCustomPeriod] = useState("");
 
   // Goal source: pick from saved goals OR paste an ad-hoc one.
+  // Default to "saved" mode if any goals exist so the dropdown is
+  // visible, but DON'T auto-select a specific goal — make the teacher
+  // pick consciously.
   const [goalMode, setGoalMode] = useState<"saved" | "paste">(
     activeGoals.length > 0 ? "saved" : "paste",
   );
-  const [goalId, setGoalId] = useState<string>(activeGoals[0]?.id ?? "");
+  const [goalId, setGoalId] = useState<string>("");
   const [pastedGoal, setPastedGoal] = useState("");
 
-  // Tabs stay mounted across switches; sync `goalId` whenever the
-  // goal list updates so we don't submit with goalId="".
+  // Only intervene when the current selection becomes invalid (goal
+  // archived or deleted). Don't auto-pick the first goal.
   useEffect(() => {
-    if (activeGoals.length === 0) {
+    if (activeGoals.length === 0 && goalMode === "saved") {
       setGoalMode("paste");
       setGoalId("");
       return;
     }
-    if (!activeGoals.some((g) => g.id === goalId)) {
-      setGoalId(activeGoals[0].id);
+    if (goalId && !activeGoals.some((g) => g.id === goalId)) {
+      setGoalId("");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeGoals.map((g) => g.id).join("|")]);
@@ -249,13 +252,16 @@ export default function NoteTab({
             className="mt-2 w-full rounded-lg border border-zinc-300 bg-white px-2 py-2 text-sm focus:border-amber-500 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
           >
             {activeGoals.length === 0 ? (
-              <option>(no active goals — switch to the Goals tab)</option>
+              <option value="">(no active goals — switch to the Goals tab)</option>
             ) : (
-              activeGoals.map((g) => (
-                <option key={g.id} value={g.id}>
-                  {goalLabel(g)}
-                </option>
-              ))
+              <>
+                <option value="">Choose a goal…</option>
+                {activeGoals.map((g) => (
+                  <option key={g.id} value={g.id}>
+                    {goalLabel(g)}
+                  </option>
+                ))}
+              </>
             )}
           </select>
         ) : (

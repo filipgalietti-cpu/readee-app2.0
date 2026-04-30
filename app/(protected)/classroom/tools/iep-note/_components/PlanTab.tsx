@@ -46,20 +46,20 @@ export default function PlanTab({
   const [goalMode, setGoalMode] = useState<"saved" | "paste">(
     activeGoals.length > 0 ? "saved" : "paste",
   );
-  const [goalId, setGoalId] = useState<string>(activeGoals[0]?.id ?? "");
+  const [goalId, setGoalId] = useState<string>("");
   const [pastedGoal, setPastedGoal] = useState("");
 
-  // Tabs stay mounted across switches, so this component first renders
-  // before goals load. Sync `goalId` whenever `activeGoals` arrives or
-  // changes, otherwise the saved-goals mode submits with goalId="".
+  // Tabs stay mounted across switches; intervene only when the
+  // current selection becomes invalid (goal archived). Don't
+  // auto-pick a goal — make the teacher choose consciously.
   useEffect(() => {
-    if (activeGoals.length === 0) {
+    if (activeGoals.length === 0 && goalMode === "saved") {
       setGoalMode("paste");
       setGoalId("");
       return;
     }
-    if (!activeGoals.some((g) => g.id === goalId)) {
-      setGoalId(activeGoals[0].id);
+    if (goalId && !activeGoals.some((g) => g.id === goalId)) {
+      setGoalId("");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeGoals.map((g) => g.id).join("|")]);
@@ -178,13 +178,16 @@ export default function PlanTab({
             className="mt-2 w-full rounded-lg border border-zinc-300 bg-white px-2 py-2 text-sm focus:border-violet-500 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
           >
             {activeGoals.length === 0 ? (
-              <option>(no active goals — switch to the Goals tab)</option>
+              <option value="">(no active goals — switch to the Goals tab)</option>
             ) : (
-              activeGoals.map((g) => (
-                <option key={g.id} value={g.id}>
-                  {goalLabel(g)}
-                </option>
-              ))
+              <>
+                <option value="">Choose a goal…</option>
+                {activeGoals.map((g) => (
+                  <option key={g.id} value={g.id}>
+                    {goalLabel(g)}
+                  </option>
+                ))}
+              </>
             )}
           </select>
         ) : (
