@@ -9,6 +9,7 @@ import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { checkTeacherTier } from "@/lib/plan/teacher-gate";
 import { resolvePlanMaterials } from "@/lib/iep/material-resolver";
+import { computeSessionSchedule } from "@/lib/iep/schedule";
 import type {
   InterventionPlan,
   InterventionSession,
@@ -32,6 +33,9 @@ export async function POST(req: Request) {
   }
 
   const planId = String(body.planId ?? "");
+  // Optional override start date so the modal can re-preview when the
+  // teacher changes the date picker.
+  const startDateOverrideRaw = typeof body.startDate === "string" ? body.startDate : "";
   if (!planId) {
     return NextResponse.json({ ok: false, error: "planId required." }, { status: 400 });
   }
@@ -84,6 +88,16 @@ export async function POST(req: Request) {
     })
     .filter(Boolean) as { id: string; name: string }[];
 
+  // Compute the schedule the kid would actually see — one weekday per
+  // session, weekends skipped. The teacher overrides the start date
+  // by re-POSTing this endpoint with `startDate`.
+  const startDate = startDateOverrideRaw
+    ? new Date(startDateOverrideRaw + "T00:00:00")
+    : p.start_date
+    ? new Date(String(p.start_date) + "T00:00:00")
+    : new Date();
+  const sessionDates = computeSessionSchedule(startDate, flatSessions.length);
+
   return NextResponse.json({
     ok: true,
     planId,
@@ -93,9 +107,10 @@ export async function POST(req: Request) {
       index: i,
       session: s,
       resolution: resolutions[i],
+      scheduledDate: sessionDates[i]?.toISOString().slice(0, 10) ?? null,
     })),
     eligibleClassrooms,
-    startDate: p.start_date,
-    endDate: p.end_date,
+    startDate: sessionDates[0]?.toISOString().slice(0, 10) ?? null,
+    endDate: sessionDates[sessionDates.length - 1]?.toISOString().slice(0, 10) ?? null,
   });
 }

@@ -37,7 +37,25 @@ type SessionResolution = {
         reason: string;
         kind: string;
       };
+  scheduledDate: string | null;
 };
+
+function formatShortDate(iso: string): string {
+  const d = new Date(iso + "T00:00:00");
+  return d.toLocaleDateString("en-US", {
+    weekday: "short",
+    month: "short",
+    day: "numeric",
+  });
+}
+function formatLongDate(iso: string): string {
+  const d = new Date(iso + "T00:00:00");
+  return d.toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+}
 
 type Preview = {
   ok: true;
@@ -68,6 +86,10 @@ export default function PushPlanModal({
   const [pushing, setPushing] = useState(false);
   const [pushErr, setPushErr] = useState<string | null>(null);
 
+  // Re-resolve whenever the start date changes so per-session dates
+  // recompute. The first call uses the plan's stored start_date; later
+  // calls send the teacher's edited startDate so the dates land on
+  // weekdays from that point forward.
   useEffect(() => {
     let alive = true;
     (async () => {
@@ -75,7 +97,7 @@ export default function PushPlanModal({
         const res = await fetch("/api/iep-plan/resolve", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ planId }),
+          body: JSON.stringify({ planId, startDate }),
         });
         const json = await res.json();
         if (!alive) return;
@@ -84,10 +106,9 @@ export default function PushPlanModal({
           return;
         }
         setPreview(json as Preview);
-        if (json.eligibleClassrooms?.[0]) {
-          setClassroomId(json.eligibleClassrooms[0].id);
-        }
-        if (json.startDate) setStartDate(json.startDate);
+        // Only seed classroom + startDate from the response on the
+        // first load — don't overwrite the teacher's edits.
+        setClassroomId((prev) => prev || json.eligibleClassrooms?.[0]?.id || "");
       } catch (e: any) {
         if (alive) setLoadErr(e?.message ?? "Couldn't load preview.");
       }
@@ -95,7 +116,7 @@ export default function PushPlanModal({
     return () => {
       alive = false;
     };
-  }, [planId]);
+  }, [planId, startDate]);
 
   async function push() {
     if (!preview || !classroomId) return;
@@ -228,7 +249,15 @@ export default function PushPlanModal({
                       {skippedCount} teacher-led / unmatched
                     </span>
                   )}
+                  {preview.startDate && preview.endDate && (
+                    <span className="inline-flex items-center gap-1 rounded-full bg-white px-2 py-0.5 font-bold text-violet-800 dark:bg-slate-900 dark:text-violet-200">
+                      {formatLongDate(preview.startDate)} → {formatLongDate(preview.endDate)}
+                    </span>
+                  )}
                 </div>
+                <p className="mt-1 text-[10px] text-violet-600 dark:text-violet-400">
+                  Sessions land on weekdays only — Saturdays and Sundays are skipped.
+                </p>
               </div>
 
               {(() => {
@@ -272,6 +301,11 @@ export default function PushPlanModal({
                                       <span className="font-bold text-zinc-800 dark:text-slate-200">
                                         {s.session.dayLabel}
                                       </span>
+                                      {s.scheduledDate && (
+                                        <span className="rounded-full bg-white px-1.5 py-0.5 text-[10px] font-bold text-violet-700 dark:bg-slate-900 dark:text-violet-300">
+                                          {formatShortDate(s.scheduledDate)}
+                                        </span>
+                                      )}
                                       <span className="text-zinc-500 dark:text-slate-400">
                                         {s.session.activity}
                                       </span>

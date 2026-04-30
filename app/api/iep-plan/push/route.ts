@@ -13,6 +13,7 @@ import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { checkTeacherTier } from "@/lib/plan/teacher-gate";
 import { resolvePlanMaterials, type ResolvedMaterial } from "@/lib/iep/material-resolver";
+import { computeSessionSchedule } from "@/lib/iep/schedule";
 import type {
   InterventionPlan,
   InterventionSession,
@@ -94,16 +95,21 @@ export async function POST(req: Request) {
     teacherId: profileId,
   });
 
-  // Stagger due dates across the 2-week window so the kid sees them in
-  // order. Day-1 of week-1 due 1 day in; day-2 due 2 days in; etc.
+  // Map sessions to real calendar dates, skipping weekends. Each
+  // session is "due" at end-of-day on its scheduled weekday.
   const startDate = body.startDate
     ? new Date(body.startDate + "T00:00:00")
     : new Date();
-  const dueDates: string[] = flatSessions.map((_, i) => {
-    const d = new Date(startDate.getTime() + (i + 1) * 86400_000);
-    d.setHours(23, 59, 0, 0);
-    return d.toISOString();
+  const sessionDates = computeSessionSchedule(startDate, flatSessions.length);
+  const dueDates: string[] = sessionDates.map((d) => {
+    const dueAt = new Date(d.getTime());
+    dueAt.setHours(23, 59, 0, 0);
+    return dueAt.toISOString();
   });
+  const planEndDate =
+    sessionDates.length > 0
+      ? sessionDates[sessionDates.length - 1].toISOString().slice(0, 10)
+      : null;
 
   type AssignmentRow = {
     classroom_id: string;
@@ -178,7 +184,12 @@ export async function POST(req: Request) {
   };
   await supabase
     .from("intervention_plans")
-    .update({ status: "active", plan_json: updatedPlan })
+    .update({
+      status: "active",
+      plan_json: updatedPlan,
+      start_date: startDate.toISOString().slice(0, 10),
+      end_date: planEndDate,
+    })
     .eq("id", planId);
 
   return NextResponse.json({
