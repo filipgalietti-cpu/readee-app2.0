@@ -278,8 +278,9 @@ export default function PlanTab({
             </div>
             {pushedCount !== null && (
               <div className="mt-3 rounded-xl border border-emerald-200 bg-white px-3 py-2 text-xs font-semibold text-emerald-700 dark:border-emerald-900/40 dark:bg-slate-900 dark:text-emerald-300">
-                ✓ Pushed {pushedCount} assignment{pushedCount === 1 ? "" : "s"} to the
-                student. They&apos;ll see them in their dashboard.
+                ✓ Pushed {pushedCount} private assignment
+                {pushedCount === 1 ? "" : "s"} — only this student sees them. They
+                appear in their dashboard.
               </div>
             )}
           </div>

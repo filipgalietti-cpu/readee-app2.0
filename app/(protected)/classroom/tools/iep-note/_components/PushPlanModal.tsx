@@ -8,6 +8,8 @@ import {
   CircleAlert,
   Send,
   AlertCircle,
+  User,
+  Lock,
 } from "lucide-react";
 
 type SessionResolution = {
@@ -40,6 +42,7 @@ type Preview = {
   ok: true;
   planId: string;
   childId: string;
+  childFirstName: string;
   sessions: SessionResolution[];
   eligibleClassrooms: { id: string; name: string }[];
   startDate: string | null;
@@ -155,9 +158,32 @@ export default function PushPlanModal({
           <>
             <div className="space-y-4 overflow-y-auto p-5">
               <div className="rounded-2xl border border-violet-200 bg-violet-50 p-4 dark:border-violet-900/40 dark:bg-violet-950/30">
-                <div className="grid gap-3 sm:grid-cols-2">
+                <div className="flex items-center gap-2 rounded-xl border border-violet-300 bg-white px-3 py-2 dark:border-violet-900/40 dark:bg-slate-900">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-violet-600 text-white">
+                    <User className="h-4 w-4" />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <div className="text-[10px] font-bold uppercase tracking-widest text-violet-700 dark:text-violet-300">
+                      Pushing to one student only
+                    </div>
+                    <div className="truncate text-sm font-bold text-zinc-900 dark:text-white">
+                      {preview.childFirstName}
+                    </div>
+                  </div>
+                  <span className="inline-flex items-center gap-1 rounded-full bg-violet-100 px-2 py-0.5 text-[10px] font-bold text-violet-800 dark:bg-violet-900/40 dark:text-violet-200">
+                    <Lock className="h-3 w-3" />
+                    private
+                  </span>
+                </div>
+                <p className="mt-2 text-[11px] text-violet-700 dark:text-violet-300">
+                  Only {preview.childFirstName} sees these assignments — classmates
+                  in the same room will not. The classroom below is just where the
+                  assignments are organized.
+                </p>
+
+                <div className="mt-3 grid gap-3 sm:grid-cols-2">
                   <label className="block text-xs font-semibold text-violet-700 dark:text-violet-300">
-                    Classroom
+                    Classroom (organization only)
                     <select
                       value={classroomId}
                       onChange={(e) => setClassroomId(e.target.value)}
@@ -186,8 +212,8 @@ export default function PushPlanModal({
                 </div>
                 {preview.eligibleClassrooms.length === 0 && (
                   <p className="mt-2 text-xs font-semibold text-red-600">
-                    This student isn&apos;t in any of your classrooms. Add them
-                    first, then push.
+                    {preview.childFirstName} isn&apos;t in any of your classrooms.
+                    Add them first, then push.
                   </p>
                 )}
                 <div className="mt-3 flex flex-wrap items-center gap-2 text-xs">

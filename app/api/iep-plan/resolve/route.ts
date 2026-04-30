@@ -50,6 +50,13 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: false, error: "Not your plan." }, { status: 403 });
   }
 
+  const { data: childRow } = await supabase
+    .from("children")
+    .select("first_name")
+    .eq("id", p.child_id)
+    .maybeSingle();
+  const childFirstName = (childRow as any)?.first_name ?? "Student";
+
   const planJson = p.plan_json as InterventionPlan;
   const flatSessions: InterventionSession[] = (planJson?.weeklyBlocks ?? []).flatMap(
     (w) => w.sessions,
@@ -78,6 +85,7 @@ export async function POST(req: Request) {
     ok: true,
     planId,
     childId: p.child_id,
+    childFirstName,
     sessions: flatSessions.map((s, i) => ({
       index: i,
       session: s,
