@@ -58,7 +58,13 @@ material_hint is the human-readable description shown to the teacher. In additio
   • "passage" → reading a leveled passage (Readee will push a leveled passage assignment when one matches)
   • "fluency_probe" → cold-read or repeated-read with a timer (NOT auto-assigned; teacher-led)
   • "teacher_led" → small-group instruction, conferencing, anything the teacher runs in person (NOT auto-assigned)
-- standard_id: a CCSS code like "RF.1.3b", "RL.2.1", "L.1.4", or null. REQUIRED when material_kind is "lesson" OR "passage" — for passages, supply the standard the passage will be used to practice (e.g. fluency passages → RF.1.4 or the grade-appropriate fluency standard; comprehension passages → RL/RI standard). Only set null when material_kind is "fluency_probe" or "teacher_led".
+- standard_id: a CCSS code like "RF.1.3b", "RL.2.1", "L.1.4", or null. REQUIRED when material_kind is "lesson" OR "passage". For passages, supply the standard the passage will be used to practice (fluency passages → an RF.x.4 leaf; comprehension passages → RL/RI standard). Only set null when material_kind is "fluency_probe" or "teacher_led".
+
+  Use LEAF standards, not parents. RF and L codes have sub-standards (a, b, c…). Examples:
+  - Phonics-and-word-recognition session → RF.1.3a / RF.1.3b / RF.1.3c (NOT RF.1.3)
+  - Fluency session → RF.1.4a / RF.1.4b (NOT RF.1.4)
+  - Vocabulary work → L.1.4a / L.1.4b (NOT L.1.4)
+  RL / RI / SL / W standards have no sub-standards — use them directly (RL.1.1, RI.2.3, etc).
 - grade: "K" | "1st" | "2nd" | "3rd" | "4th" | null. The grade level the material should be at, which may be BELOW the student's enrolled grade (interventions often regress to mastered prerequisites).
 
 Don't invent specific lesson IDs — the resolver maps standard_id + grade to a real lesson at runtime.

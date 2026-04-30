@@ -86,6 +86,31 @@ export function extractStandardId(text: string): string | null {
 }
 
 /**
+ * Some CCSS codes have leaf sub-standards (RF.1.3 → RF.1.3a..g) and
+ * the AI sometimes emits the parent. Our catalogs only have leaves.
+ * Given a parent like "RF.1.3", return the first leaf in the catalog
+ * (RF.1.3a). Returns null if `id` is itself a leaf or has no children.
+ */
+function leafUnderParent<T>(id: string, byKey: Map<string, T>): T | null {
+  // If the ID already ends with a letter, it's a leaf — no walk needed.
+  if (/[A-Z]$/i.test(id)) return null;
+  const prefix = id.toUpperCase();
+  // Stable order by key — sample-lessons + standards arrays sort
+  // alphabetically so the "first" leaf is the most foundational one.
+  const sortedKeys = Array.from(byKey.keys()).sort();
+  for (const key of sortedKeys) {
+    if (
+      key.length === prefix.length + 1 &&
+      key.startsWith(prefix) &&
+      /[A-Z]/.test(key[prefix.length])
+    ) {
+      return byKey.get(key) ?? null;
+    }
+  }
+  return null;
+}
+
+/**
  * Resolve one session. May query Supabase when the kind is "passage".
  * Pass `teacherId` so we only match the teacher's own differentiated
  * passages.
@@ -122,6 +147,8 @@ export async function resolveSessionMaterial(input: {
       };
     }
     const lessonMap = lessonByStandard();
+    const stdMap = standardsById();
+    // 1) Exact lesson hit
     const lesson = lessonMap.get(fallbackStandardId);
     if (lesson) {
       return {
@@ -134,9 +161,23 @@ export async function resolveSessionMaterial(input: {
         confidence: "exact",
       };
     }
-    // No kid-friendly lesson title, but the standard still exists in the
-    // question bank — kid can still practice it via the standards page.
-    const stdMap = standardsById();
+    // 2) Parent → leaf walk (e.g. RF.1.3 → RF.1.3a). The AI commonly
+    //    names the parent; our catalogs only have leaves.
+    const leafLesson = leafUnderParent(fallbackStandardId, lessonMap);
+    if (leafLesson) {
+      return {
+        assignable: true,
+        assignmentKind: "readee_lesson",
+        sourceId: leafLesson.standardId,
+        title: leafLesson.title,
+        standardId: leafLesson.standardId,
+        grade: session.grade ?? null,
+        confidence: "approx",
+        reason: `Mapped from ${fallbackStandardId} → first sub-standard (${leafLesson.standardId}).`,
+      };
+    }
+    // 3) Standards-bank exact match (no kid-friendly lesson but the
+    //    question bank covers it).
     const std = stdMap.get(fallbackStandardId);
     if (std) {
       return {
@@ -148,6 +189,20 @@ export async function resolveSessionMaterial(input: {
         grade: session.grade ?? null,
         confidence: "approx",
         reason: "No dedicated lesson; kid will get standards practice instead.",
+      };
+    }
+    // 4) Standards-bank parent → leaf walk
+    const leafStd = leafUnderParent(fallbackStandardId, stdMap);
+    if (leafStd) {
+      return {
+        assignable: true,
+        assignmentKind: "readee_lesson",
+        sourceId: leafStd.id,
+        title: leafStd.description,
+        standardId: leafStd.id,
+        grade: session.grade ?? null,
+        confidence: "approx",
+        reason: `Mapped from ${fallbackStandardId} → first sub-standard (${leafStd.id}); kid will get standards practice.`,
       };
     }
     return {
@@ -186,20 +241,63 @@ export async function resolveSessionMaterial(input: {
         reason: "Matched one of your leveled passages at on-level.",
       };
     }
-    // Fall back to the standard if the AI gave us one.
+    // Fall back to the standard if the AI gave us one — try exact,
+    // then parent→leaf, in both the lesson catalog and the standards
+    // bank.
     if (fallbackStandardId) {
-      const lesson = lessonByStandard().get(fallbackStandardId);
-      if (lesson) {
+      const lessonMap = lessonByStandard();
+      const stdMap = standardsById();
+      const exactLesson = lessonMap.get(fallbackStandardId);
+      if (exactLesson) {
         return {
           assignable: true,
           assignmentKind: "readee_lesson",
-          sourceId: lesson.standardId,
-          title: lesson.title,
-          standardId: lesson.standardId,
+          sourceId: exactLesson.standardId,
+          title: exactLesson.title,
+          standardId: exactLesson.standardId,
           grade: session.grade ?? null,
           confidence: "approx",
           reason:
             "No matching leveled passage; falling back to standards practice for this skill.",
+        };
+      }
+      const leafLesson = leafUnderParent(fallbackStandardId, lessonMap);
+      if (leafLesson) {
+        return {
+          assignable: true,
+          assignmentKind: "readee_lesson",
+          sourceId: leafLesson.standardId,
+          title: leafLesson.title,
+          standardId: leafLesson.standardId,
+          grade: session.grade ?? null,
+          confidence: "approx",
+          reason: `Mapped from ${fallbackStandardId} → ${leafLesson.standardId} (standards practice).`,
+        };
+      }
+      const exactStd = stdMap.get(fallbackStandardId);
+      if (exactStd) {
+        return {
+          assignable: true,
+          assignmentKind: "readee_lesson",
+          sourceId: exactStd.id,
+          title: exactStd.description,
+          standardId: exactStd.id,
+          grade: session.grade ?? null,
+          confidence: "approx",
+          reason: "Standards practice for this skill.",
+        };
+      }
+      const leafStd = leafUnderParent(fallbackStandardId, stdMap);
+      if (leafStd) {
+        return {
+          assignable: true,
+          assignmentKind: "readee_lesson",
+          sourceId: leafStd.id,
+          title: leafStd.description,
+          standardId: leafStd.id,
+          grade: session.grade ?? null,
+          confidence: "approx",
+          reason: `Mapped from ${fallbackStandardId} → ${leafStd.id} (standards practice).`,
         };
       }
     }
