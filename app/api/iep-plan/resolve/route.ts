@@ -58,9 +58,12 @@ export async function POST(req: Request) {
   const childFirstName = (childRow as any)?.first_name ?? "Student";
 
   const planJson = p.plan_json as InterventionPlan;
-  const flatSessions: InterventionSession[] = (planJson?.weeklyBlocks ?? []).flatMap(
-    (w) => w.sessions,
-  );
+  // Carry weekLabel through the flatten so the UI can group by week
+  // and the kid's assignment note can name the week (Week 1 Day 1 vs
+  // Week 2 Day 1 — without this the labels collide).
+  const flatSessions: (InterventionSession & { weekLabel: string })[] = (
+    planJson?.weeklyBlocks ?? []
+  ).flatMap((w) => w.sessions.map((s) => ({ ...s, weekLabel: w.weekLabel })));
 
   const resolutions = await resolvePlanMaterials({
     sessions: flatSessions,

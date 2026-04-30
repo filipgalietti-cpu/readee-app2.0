@@ -86,9 +86,9 @@ export async function POST(req: Request) {
   }
 
   const planJson = p.plan_json as InterventionPlan;
-  const flatSessions: InterventionSession[] = (planJson?.weeklyBlocks ?? []).flatMap(
-    (w) => w.sessions,
-  );
+  const flatSessions: (InterventionSession & { weekLabel: string })[] = (
+    planJson?.weeklyBlocks ?? []
+  ).flatMap((w) => w.sessions.map((s) => ({ ...s, weekLabel: w.weekLabel })));
   const resolutions = await resolvePlanMaterials({
     sessions: flatSessions,
     teacherId: profileId,
@@ -137,7 +137,7 @@ export async function POST(req: Request) {
       kind: r.assignmentKind,
       source_id: r.sourceId,
       title: r.title,
-      note: `IEP plan · ${flatSessions[i].dayLabel} · ${flatSessions[i].activity}`,
+      note: `IEP plan · ${flatSessions[i].weekLabel} ${flatSessions[i].dayLabel} · ${flatSessions[i].activity}`,
       due_at: dueDates[i],
       pass_threshold: null,
       audio_prompt_enabled: true,

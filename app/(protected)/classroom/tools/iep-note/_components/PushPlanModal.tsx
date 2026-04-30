@@ -19,6 +19,7 @@ type SessionResolution = {
     activity: string;
     materialHint: string;
     materialKind: "lesson" | "passage" | "fluency_probe" | "teacher_led";
+    weekLabel: string;
   };
   resolution:
     | {
@@ -230,63 +231,84 @@ export default function PushPlanModal({
                 </div>
               </div>
 
-              <ul className="space-y-2">
-                {preview.sessions.map((s) => {
-                  const r = s.resolution;
-                  const ok = r.assignable;
-                  return (
-                    <li
-                      key={s.index}
-                      className={`rounded-xl border px-3 py-2 text-xs ${
-                        ok
-                          ? "border-emerald-200 bg-emerald-50 dark:border-emerald-900/40 dark:bg-emerald-950/20"
-                          : "border-amber-200 bg-amber-50 dark:border-amber-900/40 dark:bg-amber-950/20"
-                      }`}
-                    >
-                      <div className="flex items-start gap-2">
-                        {ok ? (
-                          <CircleCheck className="mt-0.5 h-4 w-4 flex-shrink-0 text-emerald-600" />
-                        ) : (
-                          <CircleAlert className="mt-0.5 h-4 w-4 flex-shrink-0 text-amber-600" />
-                        )}
-                        <div className="min-w-0 flex-1">
-                          <div className="flex flex-wrap items-baseline gap-1.5">
-                            <span className="font-bold text-zinc-800 dark:text-slate-200">
-                              {s.session.dayLabel}
-                            </span>
-                            <span className="text-zinc-500 dark:text-slate-400">
-                              {s.session.activity}
-                            </span>
-                          </div>
-                          {ok ? (
-                            <div className="mt-1 text-emerald-800 dark:text-emerald-300">
-                              → <span className="font-semibold">{r.title}</span>
-                              {" "}
-                              <span className="font-mono text-[10px] text-emerald-600">
-                                {r.standardId}
-                              </span>
-                              {r.confidence === "approx" && (
-                                <span className="ml-1 rounded-full bg-white px-1.5 py-0.5 text-[9px] font-bold text-emerald-700">
-                                  approx
-                                </span>
-                              )}
-                              {r.reason && (
-                                <div className="text-[10px] text-emerald-700/80">
-                                  {r.reason}
-                                </div>
-                              )}
-                            </div>
-                          ) : (
-                            <div className="mt-1 text-amber-800 dark:text-amber-300">
-                              {r.reason}
-                            </div>
-                          )}
+              {(() => {
+                // Group sessions by weekLabel so two days with the same
+                // "Day 1" label don't sit next to each other ambiguously.
+                const groups: { weekLabel: string; items: SessionResolution[] }[] = [];
+                for (const s of preview.sessions) {
+                  const wl = s.session.weekLabel || "Sessions";
+                  const last = groups[groups.length - 1];
+                  if (last && last.weekLabel === wl) last.items.push(s);
+                  else groups.push({ weekLabel: wl, items: [s] });
+                }
+                return (
+                  <div className="space-y-4">
+                    {groups.map((g, gi) => (
+                      <div key={gi}>
+                        <div className="mb-1.5 text-[10px] font-bold uppercase tracking-widest text-violet-700 dark:text-violet-300">
+                          {g.weekLabel}
                         </div>
+                        <ul className="space-y-2">
+                          {g.items.map((s) => {
+                            const r = s.resolution;
+                            const ok = r.assignable;
+                            return (
+                              <li
+                                key={s.index}
+                                className={`rounded-xl border px-3 py-2 text-xs ${
+                                  ok
+                                    ? "border-emerald-200 bg-emerald-50 dark:border-emerald-900/40 dark:bg-emerald-950/20"
+                                    : "border-amber-200 bg-amber-50 dark:border-amber-900/40 dark:bg-amber-950/20"
+                                }`}
+                              >
+                                <div className="flex items-start gap-2">
+                                  {ok ? (
+                                    <CircleCheck className="mt-0.5 h-4 w-4 flex-shrink-0 text-emerald-600" />
+                                  ) : (
+                                    <CircleAlert className="mt-0.5 h-4 w-4 flex-shrink-0 text-amber-600" />
+                                  )}
+                                  <div className="min-w-0 flex-1">
+                                    <div className="flex flex-wrap items-baseline gap-1.5">
+                                      <span className="font-bold text-zinc-800 dark:text-slate-200">
+                                        {s.session.dayLabel}
+                                      </span>
+                                      <span className="text-zinc-500 dark:text-slate-400">
+                                        {s.session.activity}
+                                      </span>
+                                    </div>
+                                    {ok ? (
+                                      <div className="mt-1 text-emerald-800 dark:text-emerald-300">
+                                        → <span className="font-semibold">{r.title}</span>{" "}
+                                        <span className="font-mono text-[10px] text-emerald-600">
+                                          {r.standardId}
+                                        </span>
+                                        {r.confidence === "approx" && (
+                                          <span className="ml-1 rounded-full bg-white px-1.5 py-0.5 text-[9px] font-bold text-emerald-700">
+                                            approx
+                                          </span>
+                                        )}
+                                        {r.reason && (
+                                          <div className="text-[10px] text-emerald-700/80">
+                                            {r.reason}
+                                          </div>
+                                        )}
+                                      </div>
+                                    ) : (
+                                      <div className="mt-1 text-amber-800 dark:text-amber-300">
+                                        {r.reason}
+                                      </div>
+                                    )}
+                                  </div>
+                                </div>
+                              </li>
+                            );
+                          })}
+                        </ul>
                       </div>
-                    </li>
-                  );
-                })}
-              </ul>
+                    ))}
+                  </div>
+                );
+              })()}
             </div>
 
             {pushErr && (
