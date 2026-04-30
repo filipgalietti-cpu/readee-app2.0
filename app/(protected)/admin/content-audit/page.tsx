@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/lib/auth/helpers";
+import { hasAnyAdminAccess } from "@/lib/auth/admin-gate";
 import {
   ShieldOff,
   ScanLine,
@@ -44,11 +45,8 @@ export default async function ContentAuditPage({
   const profile = await requireProfile();
   const supabase = await createClient();
 
-  const { data: memberships } = await supabase
-    .from("admin_memberships")
-    .select("id")
-    .eq("profile_id", profile.id);
-  if (!memberships || memberships.length === 0) {
+  const isAdmin = await hasAnyAdminAccess(profile.id);
+  if (!isAdmin) {
     return (
       <div className="mx-auto max-w-2xl px-6 py-16 text-center">
         <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-zinc-100 text-zinc-500">

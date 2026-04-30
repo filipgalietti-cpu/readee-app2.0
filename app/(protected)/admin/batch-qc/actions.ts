@@ -3,17 +3,12 @@
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/lib/auth/helpers";
+import { hasAnyAdminAccess } from "@/lib/auth/admin-gate";
 
 async function requireAdmin(): Promise<{ ok: true; profileId: string } | { ok: false; error: string }> {
   const profile = await requireProfile();
-  const supabase = await createClient();
-  const { data: memberships } = await supabase
-    .from("admin_memberships")
-    .select("id")
-    .eq("profile_id", profile.id);
-  if (!memberships || memberships.length === 0) {
-    return { ok: false, error: "Admin scope required." };
-  }
+  const isAdmin = await hasAnyAdminAccess(profile.id);
+  if (!isAdmin) return { ok: false, error: "Admin scope required." };
   return { ok: true, profileId: profile.id };
 }
 
