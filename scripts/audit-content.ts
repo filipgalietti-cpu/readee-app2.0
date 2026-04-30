@@ -334,9 +334,16 @@ async function auditQuestions(input: {
         if (input.withMedia) {
           if (q.audio_url && typeof q.audio_url === "string") {
             try {
+              // Readee MCQ audio commonly reads the prompt + choices
+              // in order. Pass both as expected so the judge has the
+              // right ground truth and doesn't flag normal pattern
+              // as "doesn't match".
+              const choicesText = Array.isArray(q.choices)
+                ? `\n\nChoices read aloud (typical):\n${(q.choices as string[]).map((c, i) => `${i + 1}. ${c}`).join("\n")}`
+                : "";
               const a = await judgeAudioFile({
                 audioUrl: q.audio_url,
-                expectedText: promptText,
+                expectedText: promptText + choicesText,
               });
               if (a.ok) {
                 if (a.severity === "fail") fail++;

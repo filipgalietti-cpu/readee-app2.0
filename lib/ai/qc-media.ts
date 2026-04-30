@@ -43,13 +43,22 @@ PASS if all of:
 - Voice is natural-sounding (no robotic glitches, stutters, or chipmunk speed)
 - Pronunciation is correct for elementary-grade English
 - Pace is appropriate for K-4 (not breakneck, not painfully slow)
-- Matches the expected text reasonably well (small phrasing differences are fine)
+- Audio reads the expected content reasonably well (small phrasing differences are fine)
+
+IMPORTANT — Readee TTS conventions (do NOT fail audio for these):
+- Many audio files read the prompt FOLLOWED BY the multiple-choice answers in order ("What did Tom find? A red ball? A blue car? A green hat? Or a yellow toy?"). Sometimes finishing with "What do you think?" or similar. This is a kid-listening-comprehension feature so non-readers can answer. PASS when this pattern is heard, even if the prompt-only "expected text" doesn't include the choices.
+- Some clips read the passage AND the question; others read only the question. Both are fine.
 
 WARN if there's a small issue (slightly fast, mildly off pronunciation, brief audio artifact) but the kid would still understand.
 
-FAIL if a kid would be confused: silent file, corrupted, completely wrong text, painfully unnatural delivery, missing words, or content doesn't match the expected text at all.
+FAIL only if a kid would be CONFUSED:
+- silent file or corrupted audio
+- truncated mid-word
+- completely wrong content (audio reads something unrelated to the prompt or its choices)
+- painfully unnatural delivery (chipmunk speed, robotic stutter)
+- missing core words from the prompt itself
 
-Reason MUST cite the specific issue heard.`;
+Reason MUST cite the specific issue heard. Don't fail just because the audio "includes more than the prompt" — that's normal.`;
 
 const IMAGE_QUALITY_JUDGE_SYSTEM = `You are auditing an AI-generated children's book illustration. The existing image judge already checks kid-safe + on-prompt. YOUR job is to catch IMAGEN VISUAL FAILURES — the things that make AI art look weird:
 
