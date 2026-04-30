@@ -26,6 +26,7 @@ import {
 } from "@/lib/ai/readee-ai";
 import { runFullQuizQc } from "@/lib/ai/qc";
 import { pickThemeForDate, slugForDate } from "@/lib/daily/themes";
+import { trackError } from "@/lib/observability/track";
 
 // The daily question runs against a "system" teacher account so the
 // existing rate-limit + log infrastructure has someone to bill. We
@@ -80,6 +81,7 @@ export async function buildDailyQuestion(opts?: {
   try {
     teacherId = systemTeacherId();
   } catch (e: any) {
+    trackError(e, { route: "daily-question", extra: { date: dateStr, hint: "DAILY_QUESTION_TEACHER_ID env var missing" } });
     return { ok: false, error: e.message, date: dateStr };
   }
 
@@ -157,9 +159,16 @@ ${theme.topic}`;
     gradeLevel,
     phonicsPattern: null,
     lengthLevel: "medium",
+    // System-controlled prompt; the SAFETY_PREAMBLE quotes banlist
+    // words inside its own anti-policy rules ("no sexual content"),
+    // which would otherwise trip the prompt-side substring filter.
+    // Output filter still runs on whatever Gemini returns.
+    trustedSystem: true,
   });
   if (!passageRes.ok) {
-    return { ok: false, error: `passage: ${passageRes.error}`, date: dateStr };
+    const err = `passage: ${passageRes.error}`;
+    trackError(new Error(err), { route: "daily-question", extra: { date: dateStr } });
+    return { ok: false, error: err, date: dateStr };
   }
   const passageTitle = passageRes.passage.title;
   const passageBody = passageRes.passage.passage;
@@ -171,13 +180,12 @@ ${theme.topic}`;
     topic: `${datedTopic}\n\nPassage to ground questions in:\n"""\n${passageBody}\n"""`,
     gradeLevel,
     count: 3,
+    trustedSystem: true,
   });
   if (!mcqRes.ok || mcqRes.questions.length === 0) {
-    return {
-      ok: false,
-      error: `questions: ${mcqRes.ok ? "no questions returned" : mcqRes.error}`,
-      date: dateStr,
-    };
+    const err = `questions: ${mcqRes.ok ? "no questions returned" : mcqRes.error}`;
+    trackError(new Error(err), { route: "daily-question", extra: { date: dateStr } });
+    return { ok: false, error: err, date: dateStr };
   }
   const [mainQ, ...extras] = mcqRes.questions;
 

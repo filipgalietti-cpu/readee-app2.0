@@ -394,12 +394,15 @@ export async function generateMCQQuestions(input: {
   topic: string;
   gradeLevel?: string | null;
   count: number;
+  trustedSystem?: boolean;
 }): Promise<{ ok: true; questions: GeneratedMCQ[] } | { ok: false; error: string }> {
   if (!input.topic.trim()) return { ok: false, error: "Topic is required." };
   const count = Math.max(1, Math.min(10, Math.floor(input.count)));
 
-  const safety = assertSafePrompt(input.topic);
-  if (!safety.ok) return { ok: false, error: safety.error };
+  if (!input.trustedSystem) {
+    const safety = assertSafePrompt(input.topic);
+    if (!safety.ok) return { ok: false, error: safety.error };
+  }
 
   const rl = await checkRateLimit(input.teacherId, "quiz_generation");
   if (!rl.allowed) {
@@ -1454,13 +1457,21 @@ export async function generatePassage(input: {
   /** Length tier within the grade band. Defaults to "short" so 2nd
    *  graders aren't reading a 200-word essay by accident. */
   lengthLevel?: PassageLength | null;
+  /** Skip the prompt-side substring filter when the caller is a
+   *  system-controlled flow (daily question, scheduled jobs) where
+   *  the prompt is OUR template and may legitimately contain
+   *  banlist words inside negative clauses ("no sexual content").
+   *  Output filter still runs. */
+  trustedSystem?: boolean;
 }): Promise<{ ok: true; passage: GeneratedPassage } | { ok: false; error: string }> {
   if (!input.topic.trim()) return { ok: false, error: "Topic is required." };
 
-  const safety = assertSafePrompt(
-    [input.topic, input.phonicsPattern ?? ""].join(" "),
-  );
-  if (!safety.ok) return { ok: false, error: safety.error };
+  if (!input.trustedSystem) {
+    const safety = assertSafePrompt(
+      [input.topic, input.phonicsPattern ?? ""].join(" "),
+    );
+    if (!safety.ok) return { ok: false, error: safety.error };
+  }
 
   const rl = await checkRateLimit(input.teacherId, "passage_generation");
   if (!rl.allowed) {
