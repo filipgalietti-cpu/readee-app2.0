@@ -29,10 +29,16 @@ const HARD_CHECK_PREFIXES = [
   "image.judge", // image judge flagged not-kid-safe / has text / off-prompt
   "q.correct_present", // correct answer literally not in choices
   "q.judge", // per-question judge flagged a content / answer-fidelity concern
+  "q.no_self_leak", // prompt literally contains the correct answer
+  "q.banned_words", // banned word in the question prompt itself
 ];
 
+// Some checks emit per-question (q1.*, q2.*, ...). Match the prefix
+// without the question index so we don't have to enumerate every n.
 function isHardCheck(name: string): boolean {
-  return HARD_CHECK_PREFIXES.some((p) => name.startsWith(p));
+  // Strip the qN prefix (q1.no_self_leak → q.no_self_leak) before matching.
+  const normalized = name.replace(/^q\d+\./, "q.");
+  return HARD_CHECK_PREFIXES.some((p) => normalized.startsWith(p));
 }
 
 export type FactoryQcInput = {

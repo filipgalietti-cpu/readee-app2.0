@@ -138,12 +138,24 @@ function questionImageUrl(questionId: string, gradeKey?: string): string {
 }
 
 function highlightQuestion(text: string): React.ReactNode[] {
-  return text.split(/("[^"]+"|"[^"]+")/).map((segment, si) => {
+  // Tokenize on **emphasis** + "quoted" so we can style each and never
+  // leak markers into the rendered DOM.
+  const tokenizer = /(\*\*[^*]+\*\*|"[^"]+"|"[^"]+")/g;
+  return text.split(tokenizer).map((segment, si) => {
+    if (/^\*\*[^*]+\*\*$/.test(segment)) {
+      const inner = segment.slice(2, -2);
+      return (
+        <span key={si} className="text-indigo-600 dark:text-indigo-400 font-extrabold">
+          {inner}
+        </span>
+      );
+    }
     if (/^[""][^""]+[""]$/.test(segment)) {
       return <span key={si} className="text-indigo-600 dark:text-indigo-400 font-extrabold">{segment}</span>;
     }
-    const hasEmphasis = /\b[A-Z]{3,}\b/.test(segment);
-    return segment.split(/(\s+|(?=[.,!?;:])|(?<=[.,!?;:]))/).map((part, pi) => {
+    const cleanSegment = segment.replace(/\*\*/g, "");
+    const hasEmphasis = /\b[A-Z]{3,}\b/.test(cleanSegment);
+    return cleanSegment.split(/(\s+|(?=[.,!?;:])|(?<=[.,!?;:]))/).map((part, pi) => {
       const clean = part.replace(/[^a-zA-Z']/g, "");
       if (hasEmphasis) {
         if (/^[A-Z]{3,}$/.test(clean)) {
@@ -791,7 +803,7 @@ function LearnSession({
                     </div>
                   )}
                   <span className={`text-base md:text-xl font-bold leading-snug text-center ${textColor}`}>
-                    {choice}
+                    {String(choice).replace(/\*\*/g, "")}
                   </span>
                 </div>
               </motion.button>

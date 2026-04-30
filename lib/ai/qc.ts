@@ -328,6 +328,52 @@ export async function qcQuestion(input: {
     });
   }
 
+  // Self-leakage check: the prompt literally contains its own answer.
+  // Filip's example: "The word **said** is tricky. How is it spelled?"
+  // — answer is S-A-I-D and the word is right there in the prompt.
+  // Heuristic: strip emphasis markers from prompt, lowercase both,
+  // check if the correct answer (or its compact form) appears as a
+  // substring of the prompt.
+  if (input.question.kind === "multiple_choice") {
+    const q = input.question;
+    const promptStripped = q.prompt
+      .replace(/\*\*(.+?)\*\*/g, "$1") // **emphasis** → emphasis
+      .replace(/[^\w\s]/g, " ")
+      .replace(/\s+/g, " ")
+      .toLowerCase()
+      .trim();
+    const answerStripped = q.correct.toLowerCase().replace(/\s+/g, " ").trim();
+    const answerCompact = answerStripped.replace(/\s+/g, "");
+    // Two leak patterns:
+    //  1. The exact answer appears verbatim in the prompt.
+    //  2. The answer is a spelling drill (single word) and that word
+    //     appears in the prompt highlighted by asterisks or quotes.
+    const leakedWord =
+      answerStripped.length >= 2 && promptStripped.includes(answerStripped);
+    const leakedLetters =
+      answerCompact.length >= 3 &&
+      /\b[a-z](?:[\s\-][a-z])+\b/.test(q.correct.toLowerCase()) &&
+      promptStripped.includes(answerCompact);
+    const promptHighlightsTarget =
+      /["**'](.{1,30})["**']/.test(q.prompt) &&
+      /how (is|do you) (it )?spell|how is it spelled|what letters/i.test(q.prompt);
+    if (leakedWord || leakedLetters || promptHighlightsTarget) {
+      checks.push({
+        name: `${tag}.no_self_leak`,
+        severity: "fail",
+        message: promptHighlightsTarget
+          ? "Prompt highlights the target word AND asks how it's spelled — the answer is given in the question."
+          : `Prompt literally contains the correct answer ("${q.correct}").`,
+      });
+    } else {
+      checks.push({
+        name: `${tag}.no_self_leak`,
+        severity: "pass",
+        message: "Prompt does not leak the answer.",
+      });
+    }
+  }
+
   const banned = containsBannedWord(input.question.prompt);
   if (banned) {
     checks.push({

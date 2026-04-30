@@ -92,16 +92,28 @@ const QUESTION_WORDS = new Set([
 ]);
 
 function highlightQuestion(text: string): React.ReactNode[] {
-  // First highlight quoted words, then emphasis or question words
-  return text.split(/("[^"]+"|"[^"]+")/).map((segment, si) => {
-    // Quoted segments get highlighted
+  // Tokenize on three highlight-eligible groups so we can style each
+  // and never leak the raw markers (** or quotes) into the rendered DOM.
+  const tokenizer = /(\*\*[^*]+\*\*|"[^"]+"|"[^"]+")/g;
+  return text.split(tokenizer).map((segment, si) => {
+    // **emphasis** — render the inner text styled, drop the asterisks.
+    if (/^\*\*[^*]+\*\*$/.test(segment)) {
+      const inner = segment.slice(2, -2);
+      return (
+        <span key={si} className="text-indigo-600 dark:text-indigo-400 font-extrabold">
+          {inner}
+        </span>
+      );
+    }
+    // "quoted" — render as is, just styled.
     if (/^[""][^""]+[""]$/.test(segment)) {
       return <span key={si} className="text-indigo-600 dark:text-indigo-400 font-extrabold">{segment}</span>;
     }
-    // Check if segment has ALL CAPS emphasis words (3+ letters)
-    const hasEmphasis = /\b[A-Z]{3,}\b/.test(segment);
-    // Non-quoted segments: highlight emphasis words (if any) or question words
-    return segment.split(/(\s+|(?=[.,!?;:])|(?<=[.,!?;:]))/).map((part, pi) => {
+    // Plain segment — handle ALL CAPS / question-word highlighting,
+    // and defensively strip any stray asterisks that survived.
+    const cleanSegment = segment.replace(/\*\*/g, "");
+    const hasEmphasis = /\b[A-Z]{3,}\b/.test(cleanSegment);
+    return cleanSegment.split(/(\s+|(?=[.,!?;:])|(?<=[.,!?;:]))/).map((part, pi) => {
       const clean = part.replace(/[^a-zA-Z']/g, "");
       if (hasEmphasis) {
         if (/^[A-Z]{3,}$/.test(clean)) {
@@ -1213,7 +1225,7 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
                     </div>
                   )}
                   <span className={`text-base md:text-xl font-bold leading-snug text-center ${textColor}`}>
-                    {choice}
+                    {String(choice).replace(/\*\*/g, "")}
                   </span>
                 </div>
               </motion.button>
@@ -1235,7 +1247,7 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
             </button>
             {showHint && (
               <div className="rounded-xl bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/30 px-4 py-3 text-sm text-amber-800 dark:text-amber-200 max-w-sm text-center">
-                {q.hint}
+                {String(q.hint ?? "").replace(/\*\*/g, "")}
               </div>
             )}
           </motion.div>

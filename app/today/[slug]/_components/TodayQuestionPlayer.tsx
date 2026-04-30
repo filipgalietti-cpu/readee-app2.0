@@ -124,7 +124,7 @@ function QuestionBlock({ q, label }: { q: Q; label: string }) {
       <div className="text-[10px] font-bold uppercase tracking-widest text-zinc-400">
         {label}
       </div>
-      <div className="mt-1 text-base font-semibold text-zinc-900">{q.prompt}</div>
+      <div className="mt-1 text-base font-semibold text-zinc-900">{q.prompt.replace(/\*\*/g, "")}</div>
       <div className="mt-3 grid gap-2 sm:grid-cols-2">
         {q.choices.map((choice) => {
           const isThis = picked === choice;
@@ -147,7 +147,7 @@ function QuestionBlock({ q, label }: { q: Q; label: string }) {
                       : "border-zinc-200 bg-white text-zinc-800 hover:border-violet-300"
               }`}
             >
-              <span>{choice}</span>
+              <span>{String(choice).replace(/\*\*/g, "")}</span>
               {isThisCorrect && <Check className="h-4 w-4 text-emerald-600" />}
               {isThisWrong && <XIcon className="h-4 w-4 text-red-600" />}
               {showCorrect && !isThis && (
