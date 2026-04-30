@@ -45,7 +45,8 @@ CYCLE CONTEXT — when the user message names a "Cycles remaining" count, the pl
 OUTPUT SHAPE — JSON with these top-level fields:
 - summary (1-2 sentences naming the focus skill and the expected outcome)
 - focus_skills (array of 1-3 short labels — e.g. "r-controlled vowels", "sight-word automaticity")
-- weekly_blocks (array of 2 weeks, each with 4-5 sessions; each session has day_label, duration_min, activity, material_hint, expected_outcome)
+- weekly_blocks (array of weeks per cycle length; each week has exactly 4 sessions; each session has day_label, duration_min, activity, material_hint, expected_outcome)
+  CRITICAL: day_label must be POSITIONAL ("Day 1", "Day 2", "Day 3", "Day 4") — NOT a calendar weekday like "Monday" / "Tuesday". The teacher's actual schedule may start on any weekday; Readee maps positional labels to real Mon-Fri dates after the plan is drafted. Emitting "Monday" creates label/date conflicts.
 - probe_schedule (1-2 lines on when to re-probe and what to compare to)
 - expected_criterion (1 sentence on what success looks like at end of week 2)
 - escalation_trigger (1 sentence: under what data condition do you escalate to the IEP team)

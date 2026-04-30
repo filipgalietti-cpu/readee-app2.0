@@ -111,6 +111,16 @@ export async function POST(req: Request) {
       ? sessionDates[sessionDates.length - 1].toISOString().slice(0, 10)
       : null;
 
+  // Format each scheduled date as "Mon May 4" so the kid's assignment
+  // note shows the actual weekday, not the AI's positional label.
+  const friendlyDates: string[] = sessionDates.map((d) =>
+    d.toLocaleDateString("en-US", {
+      weekday: "short",
+      month: "short",
+      day: "numeric",
+    }),
+  );
+
   type AssignmentRow = {
     classroom_id: string;
     assigned_by: string;
@@ -143,7 +153,7 @@ export async function POST(req: Request) {
       kind: r.assignmentKind,
       source_id: r.sourceId,
       title: r.title,
-      note: `IEP plan · ${flatSessions[i].weekLabel} ${flatSessions[i].dayLabel} · ${flatSessions[i].activity}`,
+      note: `IEP plan · ${friendlyDates[i]} · ${flatSessions[i].activity}`,
       due_at: dueDates[i],
       pass_threshold: null,
       audio_prompt_enabled: true,
