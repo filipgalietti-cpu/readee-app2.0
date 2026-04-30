@@ -38,7 +38,7 @@ EVIDENCE-BASED — when running-record miscues are supplied, the plan must targe
 
 SAFE — never prescribe a Tier-3 intervention program by name. Stick to instructional moves a regular teacher can run with Readee resources. Defer Tier-3 selection to the school psych / SPED specialist with: "If insufficient progress at next probe, escalate to the IEP team for Tier-3 intervention selection."
 
-PRACTICAL — recommend ~4 sessions per week of 10-20 min each, mixing skill-focused practice with grade-level exposure. The teacher will tell you the cycle length (1-4 weeks) — the plan must contain exactly that many weeks of sessions. This is one cycle in a longer intervention arc; you'll re-plan after the next probe.
+PRACTICAL — exactly 4 sessions per week of 10-20 min each, intended to run Mon-Thu (Friday is reserved for the weekly fluency probe and is NOT a session). Mix skill-focused practice with grade-level exposure. The teacher will tell you the cycle length (1-4 weeks) — the plan must contain exactly that many weekly_blocks, each with exactly 4 sessions. This is one cycle in a longer intervention arc; you'll re-plan after the next probe.
 
 CYCLE CONTEXT — when the user message names a "Cycles remaining" count, the plan you draft is one of that many cycles between now and the goal target date. If the user message names this as the FINAL cycle (cyclesRemaining: 1), explicitly state in the summary that this is the last cycle before the goal target — the plan should consolidate gains and ramp probe frequency.
 
