@@ -142,7 +142,18 @@ export default function PushPlanModal({
   }
 
   const assignableCount = preview?.sessions.filter((s) => s.resolution.assignable).length ?? 0;
-  const skippedCount = (preview?.sessions.length ?? 0) - assignableCount;
+  // Split the unassignable bucket so teachers see WHY each one is
+  // skipped — teacher-led is intentional, no-passage is fixable.
+  let teacherLedCount = 0;
+  let needsPassageCount = 0;
+  let otherSkipCount = 0;
+  for (const s of preview?.sessions ?? []) {
+    if (s.resolution.assignable) continue;
+    const k = (s.resolution as any).kind as string;
+    if (k === "fluency_probe" || k === "teacher_led") teacherLedCount++;
+    else if (k === "passage") needsPassageCount++;
+    else otherSkipCount++;
+  }
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
@@ -241,12 +252,30 @@ export default function PushPlanModal({
                 <div className="mt-3 flex flex-wrap items-center gap-2 text-xs">
                   <span className="inline-flex items-center gap-1 rounded-full bg-emerald-100 px-2 py-0.5 font-bold text-emerald-800">
                     <CircleCheck className="h-3 w-3" />
-                    {assignableCount} will be assigned
+                    {assignableCount} assignable
                   </span>
-                  {skippedCount > 0 && (
+                  {teacherLedCount > 0 && (
+                    <span
+                      className="inline-flex items-center gap-1 rounded-full bg-blue-100 px-2 py-0.5 font-bold text-blue-800"
+                      title="Cold-reads, probes, small-group instruction — you run these in person."
+                    >
+                      <CircleAlert className="h-3 w-3" />
+                      {teacherLedCount} teacher-led (intentional)
+                    </span>
+                  )}
+                  {needsPassageCount > 0 && (
+                    <span
+                      className="inline-flex items-center gap-1 rounded-full bg-amber-100 px-2 py-0.5 font-bold text-amber-800"
+                      title="Generate a leveled passage in /classroom/leveled to match these on the next push."
+                    >
+                      <CircleAlert className="h-3 w-3" />
+                      {needsPassageCount} needs passage
+                    </span>
+                  )}
+                  {otherSkipCount > 0 && (
                     <span className="inline-flex items-center gap-1 rounded-full bg-amber-100 px-2 py-0.5 font-bold text-amber-800">
                       <CircleAlert className="h-3 w-3" />
-                      {skippedCount} teacher-led / unmatched
+                      {otherSkipCount} unmatched
                     </span>
                   )}
                   {preview.startDate && preview.endDate && (
