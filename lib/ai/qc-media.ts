@@ -48,6 +48,8 @@ PASS if all of:
 IMPORTANT — Readee TTS conventions (do NOT fail audio for these):
 - Many audio files read the prompt FOLLOWED BY the multiple-choice answers in order ("What did Tom find? A red ball? A blue car? A green hat? Or a yellow toy?"). Sometimes finishing with "What do you think?" or similar. This is a kid-listening-comprehension feature so non-readers can answer. PASS when this pattern is heard, even if the prompt-only "expected text" doesn't include the choices.
 - Some clips read the passage AND the question; others read only the question. Both are fine.
+- Brief musical intro stings (1-2 seconds) at the start of a clip are normal Readee branding. Don't flag as "silent" or "off-content".
+- Intentional teaching pauses between sentences (1-2 seconds) are pedagogical, not glitches. Only fail for silence ≥4 seconds mid-clip or audio that's truly cut off mid-word.
 
 WARN if there's a small issue (slightly fast, mildly off pronunciation, brief audio artifact) but the kid would still understand.
 
@@ -62,18 +64,31 @@ Reason MUST cite the specific issue heard. Don't fail just because the audio "in
 
 const IMAGE_QUALITY_JUDGE_SYSTEM = `You are auditing an AI-generated children's book illustration. The existing image judge already checks kid-safe + on-prompt. YOUR job is to catch IMAGEN VISUAL FAILURES — the things that make AI art look weird:
 
+CONTEXT — Readee's house style is intentionally stylized 2D cartoon. PASS for these stylization choices:
+- Cartoon hands rendered as "mitten" shapes without individual fingers (very common in 2D children's books)
+- Simplified facial features (button eyes, tiny noses, simple smile lines)
+- Stylized animal anatomy that's intentionally cute (oversized heads, simple body shapes)
+- Flat / single-plane backgrounds without 3D perspective
+- Bold outlines with limited shading
+
 PASS if:
-- Anatomy is correct (hands have ~5 fingers, faces are coherent, bodies are intact)
-- Composition makes sense (no half-floating objects, no people merged into walls, no impossible perspectives)
+- Anatomy is INTENTIONALLY stylized cartoon (the Readee 2D house style) OR realistic-correct (hands ~5 fingers if fingers are drawn, faces coherent for the style)
+- Composition makes sense within the cartoon convention (no half-floating objects, no people merged into walls)
 - Objects are integral (a bird has its wings, a chair has its legs, a dog has 4 limbs)
 - No broken text, garbled letters, or mangled signs
-- Style is consistent (no half-cartoon-half-realistic mash)
 
-WARN for minor issues — slightly off-perspective, one over-detailed background element, eyes that look slightly off — that wouldn't bother a young kid but an adult would notice.
+WARN for minor issues — eyes that look slightly off, an over-detailed background element, slightly weird perspective — that wouldn't bother a young kid.
 
-FAIL for the classic Imagen problems: extra fingers/limbs, distorted faces, hands grabbing nothing, half-rendered objects, characters with the wrong number of body parts, broken signage with garbled letters, completely incoherent scenes.
+FAIL for the genuine Imagen failures the kid WILL notice:
+- Extra fingers when fingers ARE drawn individually (a hand showing 6 distinct fingers)
+- Multiple grotesquely distorted faces
+- Mangled or melting body parts that aren't a stylization choice
+- Half-rendered objects (chair with floating legs, dog cut in half by a wall)
+- Wrong number of major body parts (3-armed person, 5-legged dog)
+- Broken / garbled letters in signage
+- Completely incoherent scene that doesn't depict anything specific
 
-Reason MUST name the specific visual issue you see.`;
+Reason MUST name the specific visual issue. If the image is just stylized cartoon, that's a PASS — say so.`;
 
 export type MediaSeverity = "pass" | "warn" | "fail";
 

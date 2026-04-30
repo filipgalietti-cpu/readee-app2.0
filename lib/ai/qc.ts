@@ -350,8 +350,18 @@ export async function qcQuestion(input: {
       .trim();
     const answerStripped = q.correct.toLowerCase().replace(/\s+/g, " ").trim();
     const answerCompact = answerStripped.replace(/\s+/g, "");
+    // Phonics MCQs intentionally show the target word and ask about
+    // a letter / sound: "Tap the letter that says /b/ in 'bat'" with
+    // correct = "b". The single letter "b" appears in "bat" — but
+    // that's the question, not a leak. Skip the substring check for
+    // single-letter answers when the prompt is clearly phonics-shaped.
+    const isPhonicsContext =
+      /\b(letter|letters|sound|sounds|phoneme|spell|spells)\b/i.test(questionPart);
+    const isSingleLetterAnswer = answerStripped.length === 1;
     const leakedWord =
-      answerStripped.length >= 2 && questionStripped.includes(answerStripped);
+      answerStripped.length >= 2 &&
+      questionStripped.includes(answerStripped) &&
+      !(isPhonicsContext && isSingleLetterAnswer);
     const leakedLetters =
       answerCompact.length >= 3 &&
       /\b[a-z](?:[\s\-][a-z])+\b/.test(q.correct.toLowerCase()) &&

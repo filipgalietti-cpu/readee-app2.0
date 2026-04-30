@@ -237,9 +237,18 @@ async function auditQuestions(input: {
         const promptHighlightsTarget =
           /["**'](.{1,30})["**']/.test(promptText) &&
           /how (is|do you) (it )?spell|how is it spelled|what letters/i.test(promptText);
+        // Phonics MCQs ("which letter says /b/ in 'bat'?" with correct "b")
+        // intentionally have the answer in the prompt — that's the question,
+        // not a leak. Skip when the prompt is phonics-shaped AND the answer
+        // is a single letter.
+        const isPhonicsCtx =
+          /\b(letter|letters|sound|sounds|phoneme|spell|spells)\b/i.test(questionPart);
+        const isSingleLetterCorrect = correctText.length === 1;
         const leak =
           promptHighlightsTarget ||
-          (correctText.length >= 2 && questionStripped.includes(correctText)) ||
+          (correctText.length >= 2 &&
+            questionStripped.includes(correctText) &&
+            !(isPhonicsCtx && isSingleLetterCorrect)) ||
           (isLetterDrill && questionStripped.includes(correctCompact));
         if (leak) {
           fail++;

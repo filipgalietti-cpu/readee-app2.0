@@ -67,11 +67,15 @@ export function checkLessonStructure(input: {
     const steps = Array.isArray(slide?.steps) ? slide.steps : [];
 
     if (steps.length === 0) {
+      // K lessons have an intentional empty wrap-up slide 10 in some
+      // cases. Don't fail — it's not broken UX, just sparse content.
+      // Warn so it's visible without polluting the fail bucket.
       findings.push({
         type: "slide.empty",
-        severity: "fail",
-        message: `Slide ${slideNum} has no steps.`,
+        severity: "warn",
+        message: `Slide ${slideNum} has no steps. If this is an intentional wrap-up card, add a single closing step.`,
         slideRef: `slide ${slideNum}`,
+        suggestion: "Add one ttsScript step like 'Great work! You did it!' or remove the empty slide.",
       });
       continue;
     }
@@ -118,12 +122,12 @@ export function checkLessonStructure(input: {
               message: `Step ${stepRef} displayDiagram letter[${li}] has empty text.`,
               slideRef: stepRef,
             });
-          } else if (text.length > 2) {
-            // Single chars + small digraphs (sh, ch, th) are OK; longer is suspicious
+          } else if (text.length > 3) {
+            // Allow up to 3 chars (trigraphs: igh, tch, dge). Longer is genuinely odd.
             findings.push({
               type: "step.long_letter_text",
               severity: "warn",
-              message: `Step ${stepRef} displayDiagram letter[${li}] text "${text}" is longer than a typical letter or digraph.`,
+              message: `Step ${stepRef} displayDiagram letter[${li}] text "${text}" is longer than a digraph or trigraph.`,
               slideRef: stepRef,
             });
           }
@@ -185,18 +189,22 @@ const SLIDE_JUDGE_SCHEMA = {
 
 const SLIDE_JUDGE_SYSTEM = `You are a senior K-4 reading specialist auditing one slide of a karaoke-style reading lesson.
 
-Decide: does this slide TEACH the claimed standard?
+Decide: does this slide CONTRIBUTE to teaching the claimed standard?
 
-You'll see:
-- Standard ID + description
-- The slide's heading + the steps' ttsScript + interaction descriptions
+A lesson is a 6-10 slide sequence. Slides serve different roles:
+- Intro / hook ("hi friend!") — sets warmth, motivates the topic
+- Direct instruction ("rhyming words sound the same at the end")
+- Modeling / examples ("listen: cat — hat. Same end sound!")
+- Guided practice ("you try — does dog rhyme with log?")
+- Transition slides ("great work! now let's practice with you")
+- Wrap-up / celebration ("you learned about rhyming!")
 
 Verdicts:
-- pass: the slide's spoken script and visual interaction develop the standard's skill in a kid-appropriate way.
-- warn: the slide is on-topic but shallow, confusing, or off-pace for the standard. Recommend a tighter rewrite.
-- fail: the slide doesn't develop the standard at all (off-topic, trivia, generic encouragement with no instruction, factually wrong, age-inappropriate).
+- pass: the slide CONTRIBUTES to the lesson's overall teaching of the standard. Hook, modeling, guided practice, transition, and wrap-up slides ALL pass when on-topic and kid-appropriate. The slide doesn't have to teach the standard ALONE — it just has to belong in the sequence.
+- warn: the slide is on-topic but unclear, off-pace, or could be tighter.
+- fail: the slide is genuinely off-topic, factually wrong, age-inappropriate, or generic encouragement so empty it could be in any lesson ("you're so smart!" with no content reference).
 
-Reason MUST cite WHAT the slide actually does and HOW that does or doesn't build the standard's skill.`;
+Reason MUST cite WHAT the slide does and HOW it fits the lesson role.`;
 
 export async function judgeLessonSlide(input: {
   standardId: string;
