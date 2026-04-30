@@ -237,8 +237,12 @@ export default function NavAuth() {
                 <Menu className="w-5 h-5" strokeWidth={1.5} />
               </button>
 
-              {/* Upgrade (non-premium users) */}
-              {userPlan !== "premium" && userPlan !== null && (
+              {/* Upgrade — only for free users on non-admin pages.
+                  Anyone already on a paid plan (premium / teacher_solo
+                  / classroom / school / district) has no relevant
+                  upgrade path here, and admin / owner views shouldn't
+                  carry consumer-marketing chrome. */}
+              {userPlan === "free" && !pathname?.startsWith("/admin") && (
                 <Link
                   href="/upgrade"
                   className="relative text-sm font-bold px-3 sm:px-4 py-1.5 rounded-full bg-gradient-to-r from-indigo-600 to-violet-500 text-white hover:from-indigo-700 hover:to-violet-600 transition-all duration-200 shadow-sm hover:shadow-md hover:scale-105 flex items-center gap-1.5 overflow-hidden group"
