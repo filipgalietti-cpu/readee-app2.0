@@ -36,10 +36,65 @@ function getNavSections(
     hasChildren: boolean;
     hasAdminScope: boolean;
   },
+  mode: "owner" | "tenant_admin" | "teacher" | "hybrid" | "parent" | "guest" = "guest",
 ): NavSection[] {
   const q = childId ? `?child=${childId}` : "";
   const sections: NavSection[] = [];
   const { ownsClassroom, hasChildren, hasAdminScope } = capabilities;
+
+  // OWNER mode (Filip / Jen on platform-admin routes): admin-only nav.
+  // Don't pollute with teacher/parent links — Filip can navigate back
+  // out via the logo or by typing /classroom or /dashboard.
+  if (mode === "owner") {
+    sections.push({
+      label: "Owner",
+      items: [
+        { href: "/admin", icon: Building2, label: "Admin home" },
+        { href: "/admin/owner", icon: Users, label: "All accounts" },
+      ],
+    });
+    sections.push({
+      label: "Content",
+      items: [
+        { href: "/admin/content-audit", icon: ShieldCheck, label: "Content audit" },
+        { href: "/admin/batch-qc", icon: Sparkles, label: "Factory QC" },
+        { href: "/admin/qc", icon: ShieldCheck, label: "Teacher quiz QC" },
+      ],
+    });
+    sections.push({
+      label: "Exit",
+      items: [
+        ownsClassroom
+          ? { href: "/classroom", icon: GraduationCap, label: "Back to classroom" }
+          : hasChildren
+          ? { href: "/dashboard", icon: Home, label: "Back to family view" }
+          : { href: "/", icon: Home, label: "Back to home" },
+      ],
+    });
+    return sections;
+  }
+
+  // TENANT_ADMIN mode (school principal / district admin on their
+  // own admin pages): admin nav only, scoped to their tenant.
+  if (mode === "tenant_admin") {
+    sections.push({
+      label: "Admin",
+      items: [
+        { href: "/admin", icon: Building2, label: "My scopes" },
+        { href: "/admin/qc", icon: ShieldCheck, label: "Quiz QC queue" },
+        { href: "/admin/community", icon: Users, label: "Community review" },
+      ],
+    });
+    if (ownsClassroom) {
+      sections.push({
+        label: "Exit",
+        items: [
+          { href: "/classroom", icon: GraduationCap, label: "Back to classroom" },
+        ],
+      });
+    }
+    return sections;
+  }
 
   // Teacher capability → Teach / AI tools / Insights / Library / Grow.
   if (ownsClassroom) {
@@ -269,11 +324,6 @@ export default function AppSidebar({ mobileOnly = false }: { mobileOnly?: boolea
   // store flag for first-render (when child list hasn't loaded yet).
   const hasChildren = storeChildren.length > 0 || planHasChildren;
 
-  const sections = getNavSections(
-    activeChild?.id || null,
-    { ownsClassroom, hasChildren, hasAdminScope },
-  );
-
   // Platform admin routes ALWAYS render with the owner's actual
   // identity, ignoring whatever child/parent persona happens to be
   // in the client stores. Avoids the leak that happens when an admin
@@ -328,6 +378,12 @@ export default function AppSidebar({ mobileOnly = false }: { mobileOnly?: boolea
     : "Family";
   const sidebarDetail = isPlatformAdminRoute || showTeacherIdentity ? email ?? null : null;
 
+  const sections = getNavSections(
+    activeChild?.id || null,
+    { ownsClassroom, hasChildren, hasAdminScope },
+    accountMode,
+  );
+
   // Close mobile overlay on route change
   useEffect(() => { setMobileOpen(false); }, [pathname, setMobileOpen]);
 
@@ -364,7 +420,6 @@ export default function AppSidebar({ mobileOnly = false }: { mobileOnly?: boolea
                 subtitle={sidebarSubtitle}
                 detail={sidebarDetail}
                 showCreditIndicator={ownsClassroom}
-                accountMode={accountMode}
                 onClose={() => setMobileOpen(false)}
               />
             </motion.aside>
@@ -396,7 +451,6 @@ export default function AppSidebar({ mobileOnly = false }: { mobileOnly?: boolea
                 subtitle={sidebarSubtitle}
                 detail={sidebarDetail}
                 showCreditIndicator={ownsClassroom}
-                accountMode={accountMode}
                 onToggle={() => setOpen(false)}
               />
             </motion.div>
@@ -595,73 +649,6 @@ function NavSectionBlock({
 
 /* ─── Expanded nav content (shared by mobile + desktop) ── */
 
-type AccountMode = "owner" | "tenant_admin" | "teacher" | "hybrid" | "parent" | "guest";
-
-const MODE_BADGE: Record<AccountMode, {
-  label: string;
-  bg: string;          // strip background gradient
-  pill: string;        // mode-pill background
-  pillText: string;    // mode-pill text color
-  avatarRing: string;  // ring color for avatar/initial
-  avatarFrom: string;  // avatar gradient start
-  avatarTo: string;    // avatar gradient end
-}> = {
-  owner: {
-    label: "OWNER",
-    bg: "from-amber-50 to-amber-100 dark:from-amber-950/40 dark:to-amber-900/30",
-    pill: "bg-amber-600",
-    pillText: "text-white",
-    avatarRing: "ring-amber-300 dark:ring-amber-800",
-    avatarFrom: "from-amber-500",
-    avatarTo: "to-amber-700",
-  },
-  tenant_admin: {
-    label: "ADMIN",
-    bg: "from-rose-50 to-rose-100 dark:from-rose-950/40 dark:to-rose-900/30",
-    pill: "bg-rose-600",
-    pillText: "text-white",
-    avatarRing: "ring-rose-300 dark:ring-rose-800",
-    avatarFrom: "from-rose-500",
-    avatarTo: "to-rose-700",
-  },
-  teacher: {
-    label: "TEACHER",
-    bg: "from-indigo-50 to-violet-50 dark:from-indigo-950/40 dark:to-violet-950/30",
-    pill: "bg-indigo-600",
-    pillText: "text-white",
-    avatarRing: "ring-indigo-200 dark:ring-indigo-900/60",
-    avatarFrom: "from-indigo-500",
-    avatarTo: "to-violet-600",
-  },
-  hybrid: {
-    label: "TEACHER · PARENT",
-    bg: "from-violet-50 to-amber-50 dark:from-violet-950/40 dark:to-amber-950/30",
-    pill: "bg-violet-600",
-    pillText: "text-white",
-    avatarRing: "ring-violet-200 dark:ring-violet-900/60",
-    avatarFrom: "from-violet-500",
-    avatarTo: "to-amber-500",
-  },
-  parent: {
-    label: "FAMILY",
-    bg: "from-orange-50 to-rose-50 dark:from-orange-950/40 dark:to-rose-950/30",
-    pill: "bg-orange-500",
-    pillText: "text-white",
-    avatarRing: "ring-orange-200 dark:ring-orange-900/60",
-    avatarFrom: "from-orange-400",
-    avatarTo: "to-rose-500",
-  },
-  guest: {
-    label: "READEE",
-    bg: "from-zinc-50 to-zinc-100 dark:from-slate-900 dark:to-slate-900",
-    pill: "bg-zinc-500",
-    pillText: "text-white",
-    avatarRing: "ring-zinc-200 dark:ring-slate-700",
-    avatarFrom: "from-zinc-400",
-    avatarTo: "to-zinc-600",
-  },
-};
-
 function ExpandedNav({
   pathname,
   sections,
@@ -671,7 +658,6 @@ function ExpandedNav({
   subtitle,
   detail,
   showCreditIndicator,
-  accountMode,
   onClose,
   onToggle,
 }: {
@@ -683,12 +669,10 @@ function ExpandedNav({
   subtitle?: string;
   detail?: string | null;
   showCreditIndicator?: boolean;
-  accountMode?: AccountMode;
   onClose?: () => void;
   onToggle?: () => void;
 }) {
   const dismiss = onClose || onToggle;
-  const mode = MODE_BADGE[accountMode ?? "guest"];
 
   const initials = sidebarName
     .split(/\s+/)
@@ -700,43 +684,36 @@ function ExpandedNav({
 
   return (
     <div className="flex flex-col h-full">
-      {/* Mode-tinted header */}
-      <div className={`bg-gradient-to-br ${mode.bg}`}>
-        <div className="px-3 pt-3 pb-2 flex items-center gap-2.5">
-          {avatarSrc ? (
-            <div className={`w-8 h-8 rounded-lg overflow-hidden flex-shrink-0 ring-2 ${mode.avatarRing}`}>
-              <img src={avatarSrc} alt={sidebarName} className="w-full h-full object-cover" draggable={false} />
-            </div>
-          ) : (
-            <div className={`w-8 h-8 rounded-lg flex-shrink-0 flex items-center justify-center bg-gradient-to-br ${mode.avatarFrom} ${mode.avatarTo} text-xs font-bold text-white ring-2 ${mode.avatarRing}`}>
-              {initials}
-            </div>
-          )}
-          <div className="flex-1 min-w-0">
-            <div className="text-sm font-semibold text-zinc-900 dark:text-slate-100 truncate leading-tight">
-              {sidebarName}
-            </div>
-            {subtitle && (
-              <div className="text-[11px] text-zinc-500 dark:text-slate-400 truncate leading-tight">
-                {subtitle}
-              </div>
-            )}
+      {/* Header */}
+      <div className="px-3 pt-3 pb-2 flex items-center gap-2.5">
+        {avatarSrc ? (
+          <div className="w-8 h-8 rounded-lg overflow-hidden flex-shrink-0 ring-1 ring-zinc-200 dark:ring-slate-700">
+            <img src={avatarSrc} alt={sidebarName} className="w-full h-full object-cover" draggable={false} />
           </div>
-          {dismiss && (
-            <button
-              onClick={dismiss}
-              className="w-7 h-7 rounded-lg flex items-center justify-center hover:bg-white/40 dark:hover:bg-slate-800 transition-colors"
-              aria-label="Collapse"
-            >
-              <ChevronDown className="w-4 h-4 text-zinc-400 dark:text-slate-500 -rotate-90" strokeWidth={2} />
-            </button>
+        ) : (
+          <div className="w-8 h-8 rounded-lg flex-shrink-0 flex items-center justify-center bg-gradient-to-br from-indigo-500 to-violet-600 text-xs font-bold text-white ring-1 ring-indigo-200 dark:ring-indigo-900/60">
+            {initials}
+          </div>
+        )}
+        <div className="flex-1 min-w-0">
+          <div className="text-sm font-semibold text-zinc-900 dark:text-slate-100 truncate leading-tight">
+            {sidebarName}
+          </div>
+          {subtitle && (
+            <div className="text-[11px] text-zinc-400 dark:text-slate-500 truncate leading-tight">
+              {subtitle}
+            </div>
           )}
         </div>
-        <div className="px-3 pb-2">
-          <span className={`inline-flex items-center rounded-full ${mode.pill} ${mode.pillText} px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest`}>
-            {mode.label}
-          </span>
-        </div>
+        {dismiss && (
+          <button
+            onClick={dismiss}
+            className="w-7 h-7 rounded-lg flex items-center justify-center hover:bg-zinc-100 dark:hover:bg-slate-800 transition-colors"
+            aria-label="Collapse"
+          >
+            <ChevronDown className="w-4 h-4 text-zinc-400 dark:text-slate-500 -rotate-90" strokeWidth={2} />
+          </button>
+        )}
       </div>
 
       <div className="mx-3 h-px bg-zinc-200 dark:bg-slate-700" />
