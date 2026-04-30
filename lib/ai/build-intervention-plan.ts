@@ -38,7 +38,9 @@ EVIDENCE-BASED — when running-record miscues are supplied, the plan must targe
 
 SAFE — never prescribe a Tier-3 intervention program by name. Stick to instructional moves a regular teacher can run with Readee resources. Defer Tier-3 selection to the school psych / SPED specialist with: "If insufficient progress at next probe, escalate to the IEP team for Tier-3 intervention selection."
 
-PRACTICAL — recommend ~4 sessions per week of 10-20 min each, mixing skill-focused practice with grade-level exposure. Two-week horizon, not month-plus.
+PRACTICAL — recommend ~4 sessions per week of 10-20 min each, mixing skill-focused practice with grade-level exposure. The teacher will tell you the cycle length (1-4 weeks) — the plan must contain exactly that many weeks of sessions. This is one cycle in a longer intervention arc; you'll re-plan after the next probe.
+
+CYCLE CONTEXT — when the user message names a "Cycles remaining" count, the plan you draft is one of that many cycles between now and the goal target date. If the user message names this as the FINAL cycle (cyclesRemaining: 1), explicitly state in the summary that this is the last cycle before the goal target — the plan should consolidate gains and ramp probe frequency.
 
 OUTPUT SHAPE — JSON with these top-level fields:
 - summary (1-2 sentences naming the focus skill and the expected outcome)
@@ -161,6 +163,9 @@ export async function draftInterventionPlan(input: {
   recentMastery: string;
   runningRecords?: string | null;
   recentNoteSummary?: string | null;
+  cycleWeeks?: number;
+  cyclesRemaining?: number | null;
+  daysToGoalTarget?: number | null;
 }): Promise<{ ok: true; plan: InterventionPlan } | { ok: false; error: string }> {
   if (!input.studentFirstName.trim()) {
     return { ok: false, error: "Student first name required." };
@@ -173,9 +178,11 @@ export async function draftInterventionPlan(input: {
     return { ok: false, error: e.message ?? "AI not configured." };
   }
 
+  const cycleWeeks = Math.max(1, Math.min(4, input.cycleWeeks ?? 2));
   const lines: string[] = [
     `Student: ${input.studentFirstName.trim()}`,
     `Grade: ${input.gradeLevel}`,
+    `Cycle length: ${cycleWeeks} week${cycleWeeks === 1 ? "" : "s"} (emit exactly ${cycleWeeks} weekly_blocks)`,
     "",
     `Annual goal:`,
     input.annualGoal.trim(),
@@ -183,6 +190,16 @@ export async function draftInterventionPlan(input: {
   if (input.goalBaseline) lines.push(`Baseline: ${input.goalBaseline}`);
   if (input.goalTargetCriterion) lines.push(`Target criterion: ${input.goalTargetCriterion}`);
   if (input.goalTargetDate) lines.push(`Target date: ${input.goalTargetDate}`);
+  if (typeof input.daysToGoalTarget === "number" && input.daysToGoalTarget > 0) {
+    lines.push(`Days remaining to target: ${input.daysToGoalTarget}`);
+  }
+  if (typeof input.cyclesRemaining === "number" && input.cyclesRemaining > 0) {
+    lines.push(
+      `Cycles remaining (including this one): ${input.cyclesRemaining}${
+        input.cyclesRemaining === 1 ? " — THIS IS THE FINAL CYCLE BEFORE GOAL TARGET" : ""
+      }`,
+    );
+  }
   lines.push("", `Recent practice:`, input.metricsBlock.trim() || "No recent practice data.");
   if (input.baselineVsCurrent) {
     lines.push("", `Baseline vs current trend:`, input.baselineVsCurrent.trim());

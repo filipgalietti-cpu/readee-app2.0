@@ -24,6 +24,8 @@ export async function POST(req: Request) {
   const childId = String(body.childId ?? "");
   const goalIdRaw = typeof body.goalId === "string" ? body.goalId : "";
   const annualGoalRaw = String(body.annualGoal ?? "").slice(0, 4000);
+  const cycleWeeksRaw = Number.isFinite(body.cycleWeeks) ? Number(body.cycleWeeks) : 2;
+  const cycleWeeks = Math.max(1, Math.min(4, Math.round(cycleWeeksRaw)));
   const persist = body.persist !== false;
   if (!childId) {
     return NextResponse.json({ ok: false, error: "childId required." }, { status: 400 });
@@ -85,6 +87,25 @@ export async function POST(req: Request) {
     if (s) recentNoteSummary = `Status: ${r.progress_status}. ${s}`;
   }
 
+  // Compute runway: how many days until the goal target, and how many
+  // {cycleWeeks}-week cycles (including this one) fit between now and
+  // the target. Lets the AI know if this is the final cycle before
+  // the goal date.
+  let daysToGoalTarget: number | null = null;
+  let cyclesRemaining: number | null = null;
+  if (goal?.targetDate) {
+    const target = new Date(String(goal.targetDate) + "T00:00:00");
+    if (!Number.isNaN(target.getTime())) {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      daysToGoalTarget = Math.max(
+        0,
+        Math.round((target.getTime() - today.getTime()) / 86_400_000),
+      );
+      cyclesRemaining = Math.max(1, Math.ceil(daysToGoalTarget / (cycleWeeks * 7)));
+    }
+  }
+
   const res = await draftInterventionPlan({
     teacherId: profileId,
     studentFirstName: b.child.firstName,
@@ -98,6 +119,9 @@ export async function POST(req: Request) {
     recentMastery: b.recentMastery,
     runningRecords: b.runningRecords,
     recentNoteSummary,
+    cycleWeeks,
+    cyclesRemaining,
+    daysToGoalTarget,
   });
   if (!res.ok) {
     return NextResponse.json({ ok: false, error: res.error }, { status: 400 });
@@ -106,7 +130,7 @@ export async function POST(req: Request) {
   let persistedId: string | null = null;
   if (persist) {
     const today = new Date();
-    const twoWeeksOut = new Date(today.getTime() + 14 * 86400_000);
+    const cycleEnd = new Date(today.getTime() + cycleWeeks * 7 * 86400_000);
     const { data: inserted, error: insErr } = await supabase
       .from("intervention_plans")
       .insert({
@@ -116,12 +140,23 @@ export async function POST(req: Request) {
         plan_json: res.plan,
         status: "draft",
         start_date: today.toISOString().slice(0, 10),
-        end_date: twoWeeksOut.toISOString().slice(0, 10),
+        end_date: cycleEnd.toISOString().slice(0, 10),
       })
       .select("id")
       .single();
     if (!insErr && inserted) persistedId = (inserted as any).id;
   }
 
-  return NextResponse.json({ ok: true, plan: res.plan, persistedId });
+  return NextResponse.json({
+    ok: true,
+    plan: res.plan,
+    persistedId,
+    runway: {
+      cycleWeeks,
+      cyclesRemaining,
+      daysToGoalTarget,
+      goalTargetDate: goal?.targetDate ?? null,
+      isFinalCycle: cyclesRemaining === 1,
+    },
+  });
 }

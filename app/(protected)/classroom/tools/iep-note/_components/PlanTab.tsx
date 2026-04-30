@@ -70,6 +70,14 @@ export default function PlanTab({
   const [copied, setCopied] = useState(false);
   const [pushOpen, setPushOpen] = useState(false);
   const [pushedCount, setPushedCount] = useState<number | null>(null);
+  const [cycleWeeks, setCycleWeeks] = useState<number>(2);
+  const [runway, setRunway] = useState<{
+    cycleWeeks: number;
+    cyclesRemaining: number | null;
+    daysToGoalTarget: number | null;
+    goalTargetDate: string | null;
+    isFinalCycle: boolean;
+  } | null>(null);
 
   async function submit() {
     setErr(null);
@@ -87,6 +95,7 @@ export default function PlanTab({
     setPending(true);
     setPushedCount(null);
     setPlanId(null);
+    setRunway(null);
     try {
       const res = await fetch("/api/iep-plan", {
         method: "POST",
@@ -95,6 +104,7 @@ export default function PlanTab({
           childId,
           goalId: goalMode === "saved" ? goalId : null,
           annualGoal,
+          cycleWeeks,
         }),
       });
       const json = await res.json();
@@ -102,6 +112,7 @@ export default function PlanTab({
       else {
         setPlan(json.plan as Plan);
         setPlanId(json.persistedId ?? null);
+        setRunway(json.runway ?? null);
       }
     } catch (e: any) {
       setErr(e?.message ?? "Couldn't draft the plan.");
@@ -200,6 +211,32 @@ export default function PlanTab({
           />
         )}
 
+        <div className="mt-4">
+          <div className="text-[10px] font-bold uppercase tracking-widest text-violet-700 dark:text-violet-300">
+            Cycle length
+          </div>
+          <div className="mt-1 inline-flex rounded-full border border-zinc-200 bg-zinc-50 p-0.5 text-xs font-bold dark:border-slate-700 dark:bg-slate-950">
+            {[1, 2, 3, 4].map((n) => (
+              <button
+                key={n}
+                type="button"
+                onClick={() => setCycleWeeks(n)}
+                className={`rounded-full px-3 py-1 transition ${
+                  cycleWeeks === n
+                    ? "bg-violet-600 text-white shadow-sm"
+                    : "text-zinc-500"
+                }`}
+              >
+                {n} {n === 1 ? "week" : "weeks"}
+              </button>
+            ))}
+          </div>
+          <p className="mt-1 text-[10px] text-zinc-500 dark:text-slate-400">
+            One cycle of an intervention. Re-probe and re-plan at the end. 2 weeks
+            is the SPED standard cadence.
+          </p>
+        </div>
+
         <button
           type="button"
           onClick={submit}
@@ -211,7 +248,7 @@ export default function PlanTab({
           ) : (
             <Wand2 className="h-3.5 w-3.5" />
           )}
-          Draft 2-week plan
+          Draft {cycleWeeks}-week plan
         </button>
       </div>
 
@@ -234,6 +271,45 @@ export default function PlanTab({
 
       {plan && (
         <div className="space-y-3">
+          {runway && (runway.cyclesRemaining || runway.goalTargetDate) && (
+            <div
+              className={`flex flex-wrap items-center gap-2 rounded-2xl border px-4 py-2 text-xs ${
+                runway.isFinalCycle
+                  ? "border-amber-300 bg-amber-50 dark:border-amber-900/40 dark:bg-amber-950/30"
+                  : "border-violet-200 bg-white dark:border-violet-900/40 dark:bg-slate-900"
+              }`}
+            >
+              {runway.goalTargetDate && (
+                <span className="font-semibold text-zinc-700 dark:text-slate-200">
+                  Goal target:{" "}
+                  <span className="font-bold">
+                    {new Date(runway.goalTargetDate + "T00:00:00").toLocaleDateString(
+                      "en-US",
+                      { month: "short", day: "numeric", year: "numeric" },
+                    )}
+                  </span>
+                </span>
+              )}
+              {typeof runway.daysToGoalTarget === "number" && (
+                <span className="rounded-full bg-violet-100 px-2 py-0.5 font-bold text-violet-800 dark:bg-violet-900/40 dark:text-violet-200">
+                  {runway.daysToGoalTarget} day{runway.daysToGoalTarget === 1 ? "" : "s"} remaining
+                </span>
+              )}
+              {runway.cyclesRemaining && (
+                <span
+                  className={`rounded-full px-2 py-0.5 font-bold ${
+                    runway.isFinalCycle
+                      ? "bg-amber-200 text-amber-900 dark:bg-amber-900/60 dark:text-amber-100"
+                      : "bg-violet-100 text-violet-800 dark:bg-violet-900/40 dark:text-violet-200"
+                  }`}
+                >
+                  {runway.isFinalCycle
+                    ? "Final cycle before goal"
+                    : `Cycle 1 of ~${runway.cyclesRemaining} (${runway.cycleWeeks}-wk cycles)`}
+                </span>
+              )}
+            </div>
+          )}
           <div className="rounded-3xl border border-violet-200 bg-violet-50 p-5 shadow-sm dark:border-violet-900/40 dark:bg-violet-950/30">
             <div className="flex flex-wrap items-start justify-between gap-2">
               <div className="min-w-0 flex-1">
