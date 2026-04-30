@@ -1,0 +1,997 @@
+id,level,severity,check_name,message
+RL.K.1-Q2,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 1.9)
+RL.K.1-Q3,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 2.9)
+RL.K.1-Q4,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 2.3)
+RL.K.1-Q5,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 3.8)
+RL.K.2-Q2,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 2.2)
+RL.K.2-Q5,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 3.4)
+RL.K.3-Q1,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 2.9)
+RL.K.3-Q3,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 2.4)
+RL.K.3-Q4,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 2.7)
+RL.K.3-Q5,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 2.3)
+RL.K.4-Q1,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 4.3)
+RL.K.4-Q2,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 4.6)
+RL.K.4-Q3,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 4.2)
+RL.K.4-Q4,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 2.4)
+RL.K.4-Q5,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 4.9)
+RL.K.5-Q1,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 5.1)
+RL.K.5-Q2,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 5.8)
+RL.K.5-Q3,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 7.3)
+RL.K.5-Q4,Kindergarten,warn,judge,The hint directly gives away the answer by defining a poem and then explicitly stating 'that's a poem!' instead of guiding the student to discover the answer.
+RL.K.6-Q1,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 6.9)
+RL.K.6-Q2,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 7.4)
+RL.K.6-Q3,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 5.3)
+RL.K.6-Q4,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 2.4)
+RL.K.6-Q5,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 4.0)
+RL.K.7-Q2,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 5.4)
+RL.K.7-Q3,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 4.1)
+RL.K.7-Q4,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 4.2)
+RL.K.7-Q5,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 6.7)
+RL.K.9-Q1,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 1.7)
+RL.K.9-Q5,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 3.3)
+RI.K.1-Q3,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 1.9)
+RI.K.1-Q5,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 2.8)
+RI.K.2-Q1,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 2.5)
+RI.K.2-Q4,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 4.3)
+RI.K.2-Q5,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 4.1)
+RI.K.3-Q1,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 3.9)
+RI.K.3-Q2,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 2.9)
+RI.K.3-Q4,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 3.2)
+RI.K.3-Q5,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 1.8)
+RI.K.4-Q1,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 4.5)
+RI.K.4-Q2,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 3.7)
+RI.K.4-Q3,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 3.7)
+RI.K.4-Q4,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 4.7)
+RI.K.4-Q4,Kindergarten,warn,judge,The hint directly gives away the answer by stating 'that's what migrate means!' instead of guiding the student to infer the meaning from the context clue.
+RI.K.4-Q5,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 6.7)
+RI.K.5-Q1,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 3.0)
+RI.K.5-Q2,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 5.4)
+RI.K.5-Q3,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 4.4)
+RI.K.5-Q4,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 2.6)
+RI.K.5-Q5,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 2.3)
+RI.K.5-Q5,Kindergarten,warn,judge,"The question and answer choices are appropriate for Kindergarten, but the hint directly names parts of the correct answer, effectively giving it away rather than guiding the student's thinking."
+RI.K.6-Q1,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 5.8)
+RI.K.6-Q2,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 6.7)
+RI.K.6-Q3,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 4.5)
+RI.K.6-Q4,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 8.0)
+RI.K.6-Q5,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 6.9)
+RI.K.7-Q2,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 5.2)
+RI.K.7-Q3,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 6.6)
+RI.K.7-Q3,Kindergarten,fail,judge,"The hint, 'The picture gives MORE details — it shows each step!', is too close to the correct answer, 'It shows all the steps in order,' and essentially gives away the answer rather than guiding the student."
+RI.K.7-Q4,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 8.2)
+RI.K.7-Q5,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 3.7)
+RI.K.8-Q1,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 4.0)
+RI.K.8-Q3,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 2.4)
+RI.K.8-Q4,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 1.9)
+RI.K.8-Q4,Kindergarten,fail,judge,"The hint completely gives away the answer by explicitly counting the reasons and stating the total, rather than guiding the student to find the answer independently."
+RI.K.8-Q5,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 5.0)
+RI.K.9-Q2,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 1.9)
+RI.K.9-Q2,Kindergarten,warn,judge,"The distractor 'They are about different topics' is ambiguous for Kindergarten; while both books are about rain, they discuss different aspects of rain, which could be interpreted as different topics by a young learner, making it potentially defensible."
+RI.K.9-Q4,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 2.0)
+RI.K.9-Q4,Kindergarten,warn,judge,"The hint is very direct and almost gives away the answer by explicitly stating that 'sit, stay, and shake' are 'training,' which is the correct answer choice."
+RI.K.9-Q5,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 6.6)
+RF.K.1a-Q1,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 1.6)
+RF.K.1a-Q1,Kindergarten,warn,judge,"The hint ""We read from LEFT to right!"" directly gives away the answer ""The left side"" rather than guiding the student to the correct response."
+RF.K.1a-Q2,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 4.5)
+RF.K.1a-Q2,Kindergarten,warn,judge,"The hint directly gives away the correct answer by describing the exact eye movement, which undermines the purpose of the question as an assessment."
+RF.K.1a-Q3,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 3.2)
+RF.K.1a-Q4,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 3.1)
+RF.K.1a-Q4,Kindergarten,warn,judge,"The prompt is clear and the correct answer is accurate, but the hint directly gives away the answer by stating the exact direction of reading."
+RF.K.1a-Q5,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 4.2)
+RF.K.1a-Q5,Kindergarten,warn,judge,"The question is clear and appropriate for Kindergarten, and the distractors are unambiguously wrong, but the hint directly provides the correct answer."
+RF.K.1a-Q6,Kindergarten,fail,correct_present,Correct answer not in choices verbatim
+RF.K.1a-Q6,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 2.3)
+RF.K.1a-Q7,Kindergarten,fail,correct_present,Correct answer not in choices verbatim
+RF.K.1a-Q7,Kindergarten,fail,judge,"The prompt is incomplete as it asks to put words in order but does not provide the words to be ordered, making the question unanswerable."
+RF.K.1a-Q8,Kindergarten,fail,correct_present,Correct answer not in choices verbatim
+RF.K.1a-Q8,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 2.3)
+RF.K.1b-Q1,Kindergarten,warn,judge,"The prompt and choices are appropriate for Kindergarten, but the hint gives away the correct answer directly by stating the letters and their order."
+RF.K.1b-Q2,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 3.2)
+RF.K.1b-Q3,Kindergarten,warn,reading_level,Reads easier than Kindergarten (FK -1.1)
+RF.K.1b-Q4,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 5.9)
+RF.K.1b-Q5,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 6.9)
+RF.K.1b-Q5,Kindergarten,fail,judge,"The hint directly gives away the correct answer, stating 'We can write down anything we say using letters!' when the correct answer is 'Written with letters'."
+RF.K.1c-Q1,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 5.4)
+RF.K.1c-Q2,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 5.7)
+RF.K.1c-Q3,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 2.3)
+RF.K.1c-Q3,Kindergarten,fail,judge,"The hint directly provides the correct answer by showing the proper segmentation and explicitly stating the number of words, which defeats its purpose."
+RF.K.1c-Q4,Kindergarten,fail,judge,"The hint directly provides the segmented words, effectively giving away the answer rather than guiding the student to discover it independently."
+RF.K.1c-Q5,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 4.7)
+RF.K.1d-Q1,Kindergarten,fail,unique_choices,Duplicate choices
+RF.K.1d-Q1,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 4.0)
+RF.K.1d-Q1,Kindergarten,warn,judge,"The question is clear and answerable for the grade, but there is a duplicate correct answer choice, and the hint is very leading, almost giving away the answer."
+RF.K.1d-Q2,Kindergarten,fail,unique_choices,Duplicate choices
+RF.K.1d-Q2,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 2.3)
+RF.K.1d-Q2,Kindergarten,fail,judge,"The prompt asks for the lowercase version of 'G', which is 'g', but the provided correct answer is 'G' (uppercase), and the hint correctly states that the small 'G' looks like 'g', creating a direct contradiction and making the question unanswerable as written."
+RF.K.1d-Q3,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 3.2)
+RF.K.1d-Q4,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 3.5)
+RF.K.1d-Q4,Kindergarten,warn,judge,"The prompt and distractors are appropriate for the grade level, but the hint directly provides the answer by filling in the blank, which undermines the assessment."
+RF.K.1d-Q5,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 5.1)
+RF.K.1d-Q5,Kindergarten,fail,judge,"The hint directly provides the correct answer, which defeats its purpose of guiding the student without giving it away."
+RF.K.2a-Q1,Kindergarten,fail,judge,"The hint directly gives away the correct answer by explicitly stating the rhyming pair, which defeats the purpose of a multiple-choice question."
+RF.K.2a-Q3,Kindergarten,warn,reading_level,Reads easier than Kindergarten (FK -1.6)
+RF.K.2b-Q1,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 1.9)
+RF.K.2b-Q1,Kindergarten,warn,judge,"The hint directly provides the correct answer, which undermines its purpose of guiding without revealing."
+RF.K.2b-Q2,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 4.5)
+RF.K.2b-Q2,Kindergarten,warn,judge,"The prompt, choices, and correct answer are appropriate for the grade and concept, but the hint directly provides the answer, negating its purpose as a supportive guide."
+RF.K.2b-Q3,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 5.1)
+RF.K.2b-Q3,Kindergarten,fail,judge,"The hint directly provides the correct answer by segmenting the word and instructing the student to count the claps, which defeats the purpose of assessing their understanding."
+RF.K.2b-Q4,Kindergarten,warn,judge,"The hint explicitly provides the syllable count for all words, including the correct answer, which gives away the solution rather than guiding the student."
+RF.K.2b-Q5,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 4.8)
+RF.K.2c-Q2,Kindergarten,warn,reading_level,Reads easier than Kindergarten (FK -2.4)
+RF.K.2c-Q3,Kindergarten,fail,judge,"The hint directly provides the correct answer by explicitly stating the onset and rime for the word ""mop"", which is what the prompt asks the student to identify."
+RF.K.2c-Q4,Kindergarten,warn,reading_level,Reads easier than Kindergarten (FK -2.2)
+RF.K.2d-Q1,Kindergarten,warn,reading_level,Reads easier than Kindergarten (FK -1.3)
+RF.K.2d-Q2,Kindergarten,warn,reading_level,Reads easier than Kindergarten (FK -1.3)
+RF.K.2d-Q3,Kindergarten,warn,reading_level,Reads easier than Kindergarten (FK -1.3)
+RF.K.2d-Q3,Kindergarten,warn,judge,"The hint is too direct and gives away the answer by stating the middle sound is the vowel, and only one choice is a vowel sound from the word."
+RF.K.2d-Q4,Kindergarten,warn,reading_level,Reads easier than Kindergarten (FK -1.3)
+RF.K.2d-Q5,Kindergarten,warn,reading_level,Reads easier than Kindergarten (FK -1.6)
+RF.K.2e-Q1,Kindergarten,warn,reading_level,Reads easier than Kindergarten (FK -2.0)
+RF.K.2e-Q1,Kindergarten,warn,judge,"The question is appropriate for the grade level and the distractors are plausible, but the hint directly gives away the answer by sounding out the correct word."
+RF.K.2e-Q2,Kindergarten,warn,reading_level,Reads easier than Kindergarten (FK -2.1)
+RF.K.2e-Q2,Kindergarten,fail,judge,"The hint directly gives away the answer by explicitly stating the resulting word, rather than guiding the student to figure it out."
+RF.K.2e-Q3,Kindergarten,warn,reading_level,Reads easier than Kindergarten (FK -2.1)
+RF.K.2e-Q4,Kindergarten,warn,reading_level,Reads easier than Kindergarten (FK -2.1)
+RF.K.2e-Q5,Kindergarten,warn,judge,The hint directly gives away the answer by saying 's-top!' instead of guiding the student to blend the sounds independently.
+RF.K.3a-Q5,Kindergarten,warn,judge,"The question and choices are appropriate for Kindergarten, but the hint explicitly states the correct answer, giving it away rather than guiding the student."
+RF.K.3b-Q1,Kindergarten,warn,reading_level,Reads easier than Kindergarten (FK -1.2)
+RF.K.3b-Q1,Kindergarten,warn,judge,"The hint directly provides the correct answer, 'lake,' which defeats its purpose of guiding the student without giving away the solution."
+RF.K.3b-Q2,Kindergarten,warn,reading_level,Reads easier than Kindergarten (FK -1.1)
+RF.K.3b-Q2,Kindergarten,fail,judge,"The hint provides the correct answer, 'sit', which defeats the purpose of a hint and makes the question too easy."
+RF.K.3b-Q3,Kindergarten,fail,judge,"The hint explicitly gives away the correct answer, which defeats its purpose of guiding without revealing."
+RF.K.3b-Q4,Kindergarten,warn,reading_level,Reads easier than Kindergarten (FK -1.1)
+RF.K.3b-Q4,Kindergarten,warn,judge,"The hint provides the correct answer, 'red', which gives away the solution rather than guiding the student to discover it independently."
+RF.K.3b-Q5,Kindergarten,warn,reading_level,Reads easier than Kindergarten (FK -1.1)
+RF.K.3b-Q5,Kindergarten,fail,judge,"The hint provides the correct answer ('cup') as an example of a short 'u' sound, which gives away the solution to the student."
+RF.K.3c-Q1,Kindergarten,warn,reading_level,Reads easier than Kindergarten (FK -2.2)
+RF.K.3c-Q2,Kindergarten,warn,reading_level,Reads easier than Kindergarten (FK -1.6)
+RF.K.3c-Q2,Kindergarten,fail,judge,"The hint directly provides the correct answer by spelling out the word 'do', which defeats the purpose of the question for a Kindergarten student."
+RF.K.3c-Q3,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 4.9)
+RF.K.3c-Q3,Kindergarten,fail,judge,"The hint directly provides the correct spelling of the word 'is', which gives away the answer and negates the purpose of the question for a Kindergarten student."
+RF.K.3c-Q4,Kindergarten,warn,reading_level,Reads easier than Kindergarten (FK -1.0)
+RF.K.3c-Q4,Kindergarten,fail,judge,"The hint directly provides the correct spelling of the sight word, which is the core task of the question, thus giving away the answer."
+RF.K.3c-Q5,Kindergarten,warn,reading_level,Reads easier than Kindergarten (FK -2.4)
+RF.K.3c-Q5,Kindergarten,warn,judge,"The hint directly provides the correct answer by stating 'We say ""She is""', which is the correct fill-in-the-blank, thus giving away the answer rather than just helping."
+RF.K.3d-Q1,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 3.8)
+RF.K.3d-Q2,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 6.7)
+RF.K.3d-Q2,Kindergarten,warn,judge,"The hint is very direct, explicitly pointing out the differing letters and their positions, which comes close to giving away the answer for a Kindergarten student."
+RF.K.3d-Q3,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 2.6)
+RF.K.3d-Q4,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 3.2)
+RF.K.3d-Q4,Kindergarten,warn,judge,"The hint is very close to giving away the answer by specifying that the 'middle vowel is different,' which directly points to the changing letters for a Kindergarten student."
+RF.K.3d-Q5,Kindergarten,fail,judge,"The hint directly provides the answer, which defeats the purpose of a hint and does not encourage the student to think independently."
+RF.K.4-Q1,Kindergarten,warn,reading_level,Reads easier than Kindergarten (FK -1.1)
+RF.K.4-Q2,Kindergarten,warn,reading_level,Reads easier than Kindergarten (FK -1.3)
+K.L.1-Q2,Kindergarten,warn,reading_level,Reads easier than Kindergarten (FK -1.1)
+K.L.1-Q3,Kindergarten,warn,judge,"The hint directly provides the rule for forming the plural of 'cat', which makes the answer too obvious rather than guiding the student to recall the rule independently."
+K.L.1-Q5,Kindergarten,fail,judge,The hint directly gives away the correct answer by stating 'we say it's 'in' the box' when the question asks which word means inside the box.
+K.L.2-Q1,Kindergarten,fail,unique_choices,Duplicate choices
+K.L.2-Q1,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 7.2)
+K.L.2-Q1,Kindergarten,fail,judge,"The question contains two identical answer choices that are both correct, making the question unanswerable as a multiple-choice item."
+K.L.2-Q2,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 2.1)
+K.L.2-Q2,Kindergarten,warn,judge,"The hint directly gives away the correct answer, which diminishes its effectiveness as a supportive learning tool."
+K.L.2-Q4,Kindergarten,fail,unique_choices,Duplicate choices
+K.L.2-Q4,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 1.9)
+K.L.2-Q4,Kindergarten,fail,judge,"The question has two identical correct answer choices, making it ambiguous and unanswerable as a single-choice question."
+K.L.2-Q5,Kindergarten,fail,unique_choices,Duplicate choices
+K.L.2-Q5,Kindergarten,warn,judge,"The question includes duplicate distractors, which reduces the effectiveness of the assessment, and the hint is very direct, almost giving away the answer by stating the exact rules for correctness."
+K.L.4-Q1,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 3.1)
+K.L.4-Q1,Kindergarten,warn,judge,"The hint directly provides the correct answer, which undermines the purpose of the question."
+K.L.4-Q2,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 4.7)
+K.L.4-Q2,Kindergarten,fail,judge,"The hint directly provides the correct answer, which defeats its purpose of guiding the student without giving away the solution."
+K.L.4-Q3,Kindergarten,warn,reading_level,Reads easier than Kindergarten (FK -1.1)
+K.L.4-Q3,Kindergarten,warn,judge,"The hint directly provides the answer by explaining the rule of adding '-s' for plurality, rather than guiding the student to discover it."
+K.L.4-Q4,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 1.8)
+K.L.4-Q4,Kindergarten,fail,judge,"The hint directly provides the correct answer, which defeats the purpose of a hint and does not allow the student to deduce the meaning independently."
+K.L.4-Q5,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 2.3)
+K.L.4-Q5,Kindergarten,warn,judge,The hint directly gives away the correct answer by explicitly stating the meaning of the suffix and then defining the word using that meaning.
+K.L.5-Q1,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 10.5)
+K.L.5-Q2,Kindergarten,warn,judge,"The hint is too leading for a Kindergarten student, as completing the phrase 'If something isn't hot, it's...' strongly suggests 'cold' and could give away the answer rather than just guide them."
+K.L.5-Q4,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 5.1)
+K.L.5-Q5,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 7.4)
+K.L.5-Q5,Kindergarten,warn,judge,"The prompt is clear and the correct answer is appropriate for the grade level, but the hint explicitly defines the order of intensity for each action, effectively giving away the answer rather than just guiding the student."
+K.L.5-Q6,Kindergarten,fail,correct_present,Correct answer not in choices verbatim
+K.L.5-Q6,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 2.3)
+K.L.5-Q7,Kindergarten,fail,correct_present,Correct answer not in choices verbatim
+K.L.5-Q7,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 2.3)
+K.L.5-Q8,Kindergarten,fail,correct_present,Correct answer not in choices verbatim
+K.L.5-Q8,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 2.3)
+K.L.6-Q1,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 2.6)
+K.L.6-Q2,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 2.4)
+K.L.6-Q3,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 3.4)
+K.L.6-Q3,Kindergarten,fail,judge,"The prompt introduces the word 'hibernate' but does not provide its definition, meaning the correct answer is not literally supported by the prompt. Additionally, the hint directly gives away the answer rather than guiding the student."
+K.L.6-Q4,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 3.0)
+K.L.6-Q5,Kindergarten,warn,reading_level,Reads harder than Kindergarten (FK 3.2)
+RL.1.1-Q3,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 3.2)
+RL.1.1-Q4,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 5.9)
+RL.1.1-Q5,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 2.8)
+RL.1.2-Q1,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 3.7)
+RL.1.2-Q2,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 2.6)
+RL.1.2-Q3,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 3.4)
+RL.1.2-Q5,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 2.9)
+RL.1.3-Q1,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 3.3)
+RL.1.3-Q2,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 3.3)
+RL.1.3-Q4,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 3.0)
+RL.1.3-Q5,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 4.0)
+RL.1.4-Q1,1st Grade,warn,reading_level,Reads easier than 1st Grade (FK -0.9)
+RL.1.4-Q1,1st Grade,fail,judge,"The correct answer 'Bright' describes how the sun looks, not how it feels; the word 'warmed' in the sentence describes how the sun feels, making the provided correct answer incorrect for the question asked."
+RL.1.4-Q2,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 6.1)
+RL.1.4-Q3,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 2.8)
+RL.1.4-Q4,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 2.7)
+RL.1.4-Q5,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 3.7)
+RL.1.5-Q1,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 9.0)
+RL.1.5-Q2,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 4.9)
+RL.1.5-Q3,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 6.3)
+RL.1.5-Q3,1st Grade,warn,judge,"The hint, ""Stories come from someone's imagination,"" is too direct as it essentially defines the core concept of the correct answer, ""They have made-up characters and events,"" rather than guiding the student to think independently."
+RL.1.5-Q4,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 7.5)
+RL.1.5-Q4,1st Grade,warn,judge,"The hint is too direct and essentially gives away the answer by defining 'informational' as 'real information,' which is almost identical to the correct answer 'real facts.'"
+RL.1.5-Q5,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 6.5)
+RL.1.6-Q3,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 4.4)
+RL.1.6-Q4,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 6.3)
+RL.1.7-Q1,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 4.4)
+RL.1.7-Q4,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 5.5)
+RL.1.7-Q5,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 2.8)
+RL.1.9-Q1,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 4.0)
+RL.1.9-Q3,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 3.0)
+RL.1.9-Q4,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 6.9)
+RL.1.9-Q4,1st Grade,fail,judge,"The term 'compare' generally involves looking for both similarities ('the same') and differences, making 'Different' a plausible answer choice as well. The hint directly gives away the answer by narrowly defining 'compare' as only finding what's similar, which is an oversimplification for the full meaning of the word."
+RL.1.9-Q5,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 6.9)
+RL.1.9-Q5,1st Grade,fail,judge,"The hint directly gives away the answer by rephrasing 'different' as 'not the same', which undermines the purpose of the question."
+RI.1.1-Q1,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 3.4)
+RI.1.1-Q4,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 4.9)
+RI.1.1-Q5,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 3.5)
+RI.1.2-Q2,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 3.0)
+RI.1.2-Q3,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 2.6)
+RI.1.2-Q4,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 3.4)
+RI.1.3-Q1,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 4.5)
+RI.1.3-Q2,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 2.6)
+RI.1.3-Q4,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 5.0)
+RI.1.3-Q5,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 6.4)
+RI.1.4-Q1,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 4.9)
+RI.1.4-Q2,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 5.5)
+RI.1.4-Q3,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 5.9)
+RI.1.4-Q4,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 5.8)
+RI.1.4-Q5,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 3.8)
+RI.1.5-Q1,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 3.7)
+RI.1.5-Q1,1st Grade,fail,judge,"The hint directly gives away the correct answer by defining the table of contents in a way that perfectly matches the question, rather than guiding the student to the answer."
+RI.1.5-Q2,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 4.2)
+RI.1.5-Q3,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 8.5)
+RI.1.5-Q4,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 11.9)
+RI.1.5-Q4,1st Grade,warn,judge,"The prompt and choices are appropriate for the grade level, but the hint directly gives away the correct answer by stating that authors make words bold to show importance."
+RI.1.5-Q5,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 3.6)
+RI.1.6-Q1,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 4.8)
+RI.1.6-Q2,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 4.4)
+RI.1.6-Q4,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 2.9)
+RI.1.6-Q5,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 3.3)
+RI.1.7-Q1,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 4.3)
+RI.1.7-Q2,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 8.1)
+RI.1.7-Q3,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 3.6)
+RI.1.7-Q4,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 8.4)
+RI.1.7-Q4,1st Grade,warn,judge,"The hint uses the key word 'order' and explains it, which is too close to giving away the correct answer for a 1st-grade student."
+RI.1.7-Q5,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 8.5)
+RI.1.8-Q1,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 5.1)
+RI.1.8-Q3,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 7.3)
+RI.1.8-Q4,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 5.9)
+RI.1.8-Q5,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 6.4)
+RI.1.9-Q1,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 2.8)
+RI.1.9-Q2,1st Grade,fail,judge,"The hint directly gives away the correct answer, and the question asks what both books 'agree on,' but the correct answer 'The sun is important' is an inference rather than an explicit point of agreement from the provided text."
+RI.1.9-Q3,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 6.4)
+RI.1.9-Q4,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 3.1)
+RI.1.9-Q5,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 12.3)
+RI.1.9-Q5,1st Grade,warn,judge,"The hint, 'Comparing means finding what's alike and different,' is very close to the correct answer, 'What facts are the same and what facts are different,' potentially giving away the answer rather than just guiding the student."
+RF.1.1a-Q1,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 10.7)
+RF.1.1a-Q2,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 10.6)
+RF.1.1a-Q3,1st Grade,fail,unique_choices,Duplicate choices
+RF.1.1a-Q3,1st Grade,warn,reading_level,Reads easier than 1st Grade (FK -0.6)
+RF.1.1a-Q3,1st Grade,fail,judge,"The designated correct answer, ""The dog ran fast."", is not a grammatically correct sentence because it begins with a lowercase letter, and none of the provided choices are fully correct sentences according to standard English grammar (capital letter at the start, period at the end)."
+RF.1.1a-Q4,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 9.8)
+RF.1.1a-Q4,1st Grade,warn,judge,"The hint directly states the grammatical rule being tested, which effectively gives away the answer rather than guiding the student to discover it."
+RF.1.2b-Q1,1st Grade,warn,reading_level,Reads easier than 1st Grade (FK -0.2)
+RF.1.2b-Q2,1st Grade,warn,reading_level,Reads easier than 1st Grade (FK -2.1)
+RF.1.2b-Q3,1st Grade,fail,unique_choices,Duplicate choices
+RF.1.2b-Q3,1st Grade,warn,reading_level,Reads easier than 1st Grade (FK -2.1)
+RF.1.2b-Q3,1st Grade,warn,judge,"The question is appropriate for the grade level and the hint is helpful, but the correct answer 'Stop' is listed twice in the choices, which is a flaw in the question's design."
+RF.1.2b-Q4,1st Grade,warn,reading_level,Reads easier than 1st Grade (FK -2.4)
+RF.1.2b-Q5,1st Grade,warn,reading_level,Reads easier than 1st Grade (FK -2.4)
+RF.1.2c-Q1,1st Grade,warn,reading_level,Reads easier than 1st Grade (FK -1.3)
+RF.1.2c-Q2,1st Grade,warn,reading_level,Reads easier than 1st Grade (FK -1.3)
+RF.1.2c-Q3,1st Grade,warn,reading_level,Reads easier than 1st Grade (FK -1.3)
+RF.1.2c-Q3,1st Grade,warn,judge,"One of the distractors, /c/, is problematic as it represents a letter rather than a distinct sound in the word 'cup' separate from /k/, which can be confusing for 1st graders learning phoneme isolation."
+RF.1.2c-Q4,1st Grade,warn,reading_level,Reads easier than 1st Grade (FK -1.3)
+RF.1.2c-Q4,1st Grade,warn,judge,"The hint is too direct as it specifically asks the student to compare the target word with the correct answer choice, which gives away the answer rather than guiding the process."
+RF.1.2c-Q5,1st Grade,warn,reading_level,Reads easier than 1st Grade (FK -1.3)
+RF.1.2d-Q1,1st Grade,warn,reading_level,Reads easier than 1st Grade (FK -0.8)
+RF.1.2d-Q1,1st Grade,fail,judge,"The hint explicitly segments the word into its sounds and then instructs the student to count them, which directly gives away the correct answer."
+RF.1.2d-Q2,1st Grade,warn,judge,"The prompt and correct answer are appropriate for 1st grade phonics, but the hint explicitly gives away the answer by breaking down the sounds and stating the total count."
+RF.1.2d-Q3,1st Grade,warn,reading_level,Reads easier than 1st Grade (FK -0.1)
+RF.1.2d-Q4,1st Grade,warn,reading_level,Reads easier than 1st Grade (FK -0.7)
+RF.1.2d-Q4,1st Grade,fail,judge,"The hint explicitly gives away the answer by segmenting the word into its individual sounds and stating that each letter makes its own sound, which directly leads to the correct count of four."
+RF.1.2d-Q5,1st Grade,warn,judge,"The question, correct answer, and distractors are appropriate for the grade level, but the hint directly provides the correct answer, negating its purpose to guide without revealing."
+RF.1.4b-Q1,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 5.9)
+RF.1.4b-Q1,1st Grade,warn,judge,"The hint directly gives away the answer by stating 'Exclamation points mean strong feelings!', which is almost identical to the correct choice 'Excitement or strong feeling'."
+RF.1.4b-Q5,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 5.9)
+RF.1.4b-Q5,1st Grade,warn,judge,"The hint is too close to the correct answer, essentially providing the definition of expression rather than guiding the student to it."
+RF.1.4c-Q1,1st Grade,warn,reading_level,Reads easier than 1st Grade (FK -0.3)
+RF.1.4c-Q2,1st Grade,warn,reading_level,Reads easier than 1st Grade (FK -0.1)
+RF.1.4c-Q2,1st Grade,fail,judge,"The hint directly gives away the correct answer, which undermines the purpose of the question."
+RF.1.4c-Q3,1st Grade,warn,reading_level,Reads easier than 1st Grade (FK -0.3)
+RF.1.4c-Q4,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 10.2)
+RF.1.4c-Q5,1st Grade,warn,reading_level,Reads easier than 1st Grade (FK -1.3)
+L.1.4-Q1,1st Grade,fail,judge,"The hint directly gives away the correct answer by explicitly stating that 'tiny means the same thing' as 'very small', which is the correct choice."
+L.1.4-Q2,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 4.0)
+L.1.4-Q3,1st Grade,warn,judge,"The question and choices are appropriate for the grade level, but the hint is too direct and essentially gives away the correct answer by explicitly naming the two contexts for the word 'bat.'"
+L.1.4-Q4,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 3.0)
+L.1.4-Q5,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 7.0)
+L.1.4-Q5,1st Grade,warn,judge,"The hint directly defines the target word, essentially giving away the correct answer rather than guiding the student to infer its meaning from context or related concepts."
+L.1.4a-Q1,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 4.0)
+L.1.4a-Q2,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 4.3)
+L.1.4a-Q3,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 3.5)
+L.1.4a-Q4,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 5.5)
+L.1.4a-Q5,1st Grade,warn,judge,"The hint directly provides the correct answer, which undermines the purpose of the question and does not encourage independent thinking."
+L.1.4b-Q1,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 6.0)
+L.1.4b-Q1,1st Grade,fail,judge,"The hint directly provides the meaning of the prefix 'un-', which is the key to understanding 'unhappy' and thus gives away the correct answer 'Not happy'."
+L.1.4b-Q2,1st Grade,warn,judge,"The question and choices are appropriate for the grade level, but the hint directly provides the meaning of the prefix 're-', which essentially gives away the correct answer rather than guiding the student to infer it."
+L.1.4b-Q3,1st Grade,fail,judge,"The hint directly gives away the correct answer, which defeats its purpose of guiding without revealing."
+L.1.4b-Q4,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 3.3)
+L.1.4b-Q4,1st Grade,warn,judge,"The question and distractors are appropriate for the grade level, but the hint directly provides the correct answer, which defeats its purpose of guiding without revealing."
+L.1.4c-Q2,1st Grade,warn,reading_level,Reads easier than 1st Grade (FK -1.6)
+L.1.4c-Q3,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 3.1)
+L.1.4c-Q4,1st Grade,warn,judge,"The hint directly tells the student the exact operation needed to find the answer, which is too close to giving away the solution for a comprehension question."
+L.1.5-Q1,1st Grade,warn,judge,The hint is a bit convoluted for a 1st grader and essentially gives away the answer by defining 'cold' as 'very not warm' rather than guiding the student to think about the concept of opposites.
+L.1.5-Q2,1st Grade,warn,judge,"The hint directly connects 'big' and 'large' by stating their shared meaning, which essentially gives away the correct answer rather than guiding the student's thinking."
+L.1.5-Q5,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 4.2)
+L.1.5a-Q3,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 3.9)
+L.1.5a-Q5,1st Grade,warn,reading_level,Reads easier than 1st Grade (FK -0.6)
+L.1.5a-Q5,1st Grade,warn,judge,"The hint explicitly states the category ('types of transportation'), which is the primary inference the student is expected to make, thus giving away the conceptual link rather than guiding them to discover it."
+L.1.5b-Q1,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 7.2)
+L.1.5b-Q2,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 7.6)
+L.1.5b-Q3,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 5.2)
+L.1.5b-Q4,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 8.1)
+L.1.5b-Q4,1st Grade,fail,judge,"The correct answer is not literally supported by a passage, as no passage was provided with the question."
+L.1.5b-Q5,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 6.7)
+L.1.5c-Q1,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 3.2)
+L.1.5c-Q2,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 3.2)
+L.1.5c-Q4,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 6.4)
+L.1.5d-Q1,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 2.9)
+L.1.5d-Q1,1st Grade,warn,judge,"The hint directly defines the correct answer, 'Gigantic,' as 'even bigger than big,' which essentially gives away the answer to the question 'Which word means MORE than big?'"
+L.1.5d-Q2,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 9.3)
+L.1.5d-Q3,1st Grade,warn,reading_level,Reads easier than 1st Grade (FK -0.5)
+L.1.5d-Q4,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 3.5)
+L.1.5d-Q4,1st Grade,warn,judge,"The hint directly defines the correct answer, which gives away the answer rather than guiding the student to figure it out independently."
+L.1.5d-Q5,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 9.3)
+L.1.6-Q1,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 5.4)
+L.1.6-Q1,1st Grade,fail,judge,"The correct answer 'Enormous' is not literally supported by the provided sentence; it relies on general knowledge about elephants, which falls outside the scope of 'literally supported by the prompt/passage shown'."
+L.1.6-Q2,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 8.6)
+L.1.6-Q2,1st Grade,warn,judge,"The hint directly states the correct answer, which undermines its purpose of guiding the student without giving away the solution."
+L.1.6-Q3,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 4.6)
+L.1.6-Q4,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 4.8)
+L.1.6-Q4,1st Grade,fail,judge,"The hint directly gives away the correct answer by stating 'this means BUT', which defeats the purpose of a hint."
+L.1.6-Q5,1st Grade,warn,reading_level,Reads harder than 1st Grade (FK 6.0)
+RL.2.1-Q5,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 3.9)
+RL.2.2-Q1,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 4.4)
+RL.2.2-Q2,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 3.9)
+RL.2.2-Q3,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 4.1)
+RL.2.2-Q5,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 4.1)
+RL.2.3-Q1,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 4.3)
+RL.2.3-Q2,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 3.7)
+RL.2.3-Q3,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 3.7)
+RL.2.3-Q5,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 4.4)
+RL.2.4-Q2,2nd Grade,warn,judge,"The hint is too direct and nearly gives away the correct answer by stating the words 'copy the sounds a broom makes,' which is very close to 'Hear the sound of sweeping.'"
+RL.2.4-Q3,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 3.7)
+RL.2.4-Q4,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 6.8)
+RL.2.4-Q5,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 3.7)
+RL.2.5-Q1,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 6.4)
+RL.2.5-Q2,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 7.2)
+RL.2.5-Q3,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 4.9)
+RL.2.5-Q4,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 6.3)
+RL.2.5-Q5,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 5.1)
+RL.2.6-Q1,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 6.9)
+RL.2.6-Q3,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 6.7)
+RL.2.6-Q4,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 4.4)
+RL.2.6-Q5,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 4.8)
+RL.2.7-Q1,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 9.2)
+RL.2.7-Q3,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 9.1)
+RL.2.7-Q4,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 4.1)
+RL.2.7-Q5,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 3.5)
+RL.2.9-Q1,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 3.6)
+RL.2.9-Q2,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 12.0)
+RL.2.9-Q2,2nd Grade,warn,judge,"The prompt and correct answer are appropriate for the grade level, and the distractors are plausible, but the hint explicitly gives away the answer by stating 'You do both!' after defining comparing and contrasting."
+RL.2.9-Q3,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 5.7)
+RL.2.9-Q4,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 5.1)
+RL.2.9-Q5,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 10.5)
+RL.2.10-Q1,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 4.8)
+RL.2.10-Q1,2nd Grade,warn,judge,"The hint directly explains the reasoning for the correct answer, which gives away the answer rather than guiding the student to infer it themselves."
+RL.2.10-Q2,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 5.1)
+RL.2.10-Q3,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 5.0)
+RL.2.10-Q4,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 4.8)
+RL.2.10-Q5,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 4.4)
+RI.2.1-Q3,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 5.5)
+RI.2.1-Q5,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 3.9)
+RI.2.2-Q1,2nd Grade,warn,reading_level,Reads easier than 2nd Grade (FK 0.9)
+RI.2.2-Q2,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 7.0)
+RI.2.2-Q3,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 4.2)
+RI.2.2-Q5,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 8.8)
+RI.2.2-Q5,2nd Grade,warn,judge,"The hint is too revealing as it essentially rephrases the core idea of the correct answer, making it less of a supportive clue and more of a direct pointer."
+RI.2.3-Q1,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 8.2)
+RI.2.3-Q2,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 4.0)
+RI.2.3-Q3,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 6.0)
+RI.2.3-Q5,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 4.4)
+RI.2.4-Q1,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 5.7)
+RI.2.4-Q2,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 4.9)
+RI.2.4-Q3,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 4.8)
+RI.2.4-Q4,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 6.9)
+RI.2.5-Q2,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 6.1)
+RI.2.5-Q2,2nd Grade,warn,judge,"The hint is too close to the correct answer, as stating that headings are 'little titles for each section' strongly implies their purpose is to tell what the section is about."
+RI.2.5-Q3,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 4.2)
+RI.2.5-Q3,2nd Grade,warn,judge,"The hint directly defines the correct answer, which gives away the solution rather than guiding the student to it."
+RI.2.5-Q4,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 5.8)
+RI.2.5-Q4,2nd Grade,fail,judge,"The hint gives away the correct answer by stating that bold words are 'important for the reader to know,' which is the core concept of the correct choice."
+RI.2.5-Q5,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 10.5)
+RI.2.6-Q2,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 6.0)
+RI.2.6-Q3,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 5.6)
+RI.2.6-Q4,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 9.8)
+RI.2.6-Q4,2nd Grade,warn,judge,"The hint directly defines the correct answer using language very similar to the prompt, which gives away the answer rather than guiding the student to it."
+RI.2.6-Q5,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 5.1)
+RI.2.7-Q1,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 5.7)
+RI.2.7-Q2,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 6.8)
+RI.2.7-Q3,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 7.5)
+RI.2.7-Q4,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 10.1)
+RI.2.7-Q5,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 8.4)
+RI.2.8-Q1,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 4.1)
+RI.2.8-Q2,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 4.3)
+RI.2.8-Q2,2nd Grade,warn,judge,"The hint directly gives away the correct answer by listing the reasons and then stating the total count, which defeats the purpose of a hint for a comprehension question."
+RI.2.8-Q3,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 5.1)
+RI.2.8-Q4,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 7.2)
+RI.2.8-Q5,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 6.2)
+RI.2.9-Q2,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 7.3)
+RI.2.9-Q4,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 7.2)
+RI.2.9-Q5,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 5.4)
+RI.2.10-Q1,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 4.6)
+RI.2.10-Q2,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 7.6)
+RI.2.10-Q3,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 7.8)
+RI.2.10-Q3,2nd Grade,warn,judge,"The hint ""To show recycling matters!"" is very close to the correct answer's main idea, potentially giving away too much of the answer for a 2nd-grade comprehension question."
+RI.2.10-Q5,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 5.3)
+RF.2.3-Q1,2nd Grade,warn,reading_level,Reads easier than 2nd Grade (FK -0.6)
+RF.2.3-Q1,2nd Grade,warn,judge,"The question and choices are appropriate for the grade level, but the hint is too direct as it specifically asks for the 'ay' sound, which is the exact sound in the correct answer, making it too easy to identify without further thought."
+RF.2.3-Q2,2nd Grade,warn,reading_level,Reads easier than 2nd Grade (FK -1.6)
+RF.2.3-Q3,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 4.1)
+RF.2.3-Q3,2nd Grade,warn,judge,"The question and distractors are well-designed for the grade level, but the hint explicitly uses the correct answer as an example, which gives away the solution."
+RF.2.3-Q4,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 3.7)
+RF.2.3-Q4,2nd Grade,fail,judge,"The hint explicitly segments the word 'pump-kin', which directly gives away the correct answer rather than guiding the student to discover it."
+RF.2.3-Q5,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 7.1)
+RF.2.3a-Q1,2nd Grade,warn,reading_level,Reads easier than 2nd Grade (FK -1.6)
+RF.2.3a-Q2,2nd Grade,warn,reading_level,Reads easier than 2nd Grade (FK -1.6)
+RF.2.3a-Q5,2nd Grade,warn,reading_level,Reads easier than 2nd Grade (FK -0.3)
+RF.2.3a-Q5,2nd Grade,warn,judge,"The hint is too specific, as it directly points to the correct answer by stating 'One has a short 'i',' which is only true for one of the choices."
+RF.2.3b-Q1,2nd Grade,warn,reading_level,Reads easier than 2nd Grade (FK 0.7)
+RF.2.3b-Q1,2nd Grade,warn,judge,"The hint directly states the sound the vowel team makes, effectively giving away the correct answer rather than guiding the student to discover it."
+RF.2.3b-Q2,2nd Grade,warn,reading_level,Reads easier than 2nd Grade (FK -0.6)
+RF.2.3b-Q3,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 4.9)
+RF.2.3b-Q4,2nd Grade,warn,reading_level,Reads easier than 2nd Grade (FK -0.3)
+RF.2.3b-Q5,2nd Grade,warn,reading_level,Reads easier than 2nd Grade (FK -0.5)
+RF.2.3c-Q1,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 9.1)
+RF.2.3c-Q1,2nd Grade,warn,judge,"The hint directly reveals the compound word structure, which makes the correct syllabification too obvious and essentially gives away the answer for a 2nd grader."
+RF.2.3c-Q2,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 4.2)
+RF.2.3c-Q3,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 4.5)
+RF.2.3c-Q4,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 3.7)
+RF.2.3c-Q4,2nd Grade,warn,judge,"The hint explicitly breaks down the word into its syllables, effectively giving away the answer rather than guiding the student to discover it."
+RF.2.3c-Q5,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 11.1)
+RF.2.3c-Q5,2nd Grade,warn,judge,"The hint is too direct and essentially gives away the answer by explaining the rule that leads directly to the correct choice, rather than guiding the student to discover it."
+RF.2.3d-Q1,2nd Grade,warn,judge,"The hint directly provides the meaning of the prefix 'un-', which is the key information needed to answer this vocabulary question, thus giving away the answer rather than guiding the student to discover it."
+RF.2.3d-Q2,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 5.9)
+RF.2.3d-Q2,2nd Grade,fail,judge,"The hint directly gives away the correct answer by explicitly stating the meaning of 'hopeful' as 'full of hope', rather than guiding the student to infer the suffix's meaning."
+RF.2.3d-Q4,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 4.5)
+RF.2.3d-Q4,2nd Grade,warn,judge,"The hint is too specific, as it directly names the suffix found in the correct answer, which could give away the answer rather than just guide the student."
+RF.2.3d-Q5,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 6.6)
+RF.2.3e-Q1,2nd Grade,warn,judge,"The hint directly gives away the correct answer by naming the word 'said' and asking about it, rather than guiding the student to evaluate all options independently."
+RF.2.3e-Q2,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 11.3)
+RF.2.3e-Q2,2nd Grade,fail,judge,"The hint directly gives away the correct answer, and one of the distractors is plausible and factually true, making it potentially defensible for a student."
+RF.2.3e-Q3,2nd Grade,warn,reading_level,Reads easier than 2nd Grade (FK 0.5)
+RF.2.3e-Q4,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 6.8)
+RF.2.3e-Q4,2nd Grade,warn,judge,"The hint directly gives away the correct answer by telling the student that the vowel sounds in 'love' and 'cup' are the same, with 'cup' being the example for the correct choice."
+RF.2.3f-Q2,2nd Grade,warn,judge,"The hint directly gives away the correct spelling rule for the specific word 'friend', making it too revealing for a spelling question."
+RF.2.3f-Q4,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 6.9)
+RF.2.3f-Q4,2nd Grade,warn,judge,"The hint directly gives away the answer by specifying the exact ending of the correct word, which allows students to choose the correct option without knowing the full spelling."
+RF.2.3f-Q5,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 5.4)
+RF.2.4-Q1,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 9.0)
+RF.2.4-Q2,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 5.9)
+RF.2.4-Q3,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 6.2)
+RF.2.4-Q5,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 11.0)
+RF.2.4a-Q1,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 4.9)
+RF.2.4a-Q4,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 4.6)
+RF.2.4a-Q5,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 3.8)
+RF.2.4b-Q1,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 5.0)
+RF.2.4b-Q2,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 7.4)
+RF.2.4b-Q3,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 4.0)
+RF.2.4b-Q4,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 8.1)
+RF.2.4b-Q5,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 4.1)
+RF.2.4c-Q2,2nd Grade,warn,reading_level,Reads easier than 2nd Grade (FK -2.1)
+RF.2.4c-Q3,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 4.7)
+RF.2.4c-Q4,2nd Grade,warn,reading_level,Reads easier than 2nd Grade (FK -0.2)
+L.2.4-Q1,2nd Grade,warn,judge,"The question and choices are well-designed and appropriate for the grade level, but the hint directly gives away the answer by stating 'Tiny' means the same as 'small,' which is the core of the correct option 'Very small.'"
+L.2.4-Q3,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 7.4)
+L.2.4a-Q1,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 6.7)
+L.2.4a-Q1,2nd Grade,warn,judge,"The correct answer is literally supported, distractors are plausible, and the prompt is clear for the grade, but the hint is very close to giving away the answer by directly restating the meaning of the word using a synonym."
+L.2.4a-Q2,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 5.4)
+L.2.4a-Q3,2nd Grade,warn,judge,"The hint directly uses the correct answer word, 'careful,' which gives away the solution rather than guiding the student to infer the meaning."
+L.2.4a-Q4,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 3.7)
+L.2.4a-Q5,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 4.3)
+L.2.4b-Q1,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 7.2)
+L.2.4b-Q1,2nd Grade,warn,judge,"The hint directly provides the meaning of the prefix 'un-', which essentially gives away the answer to the question rather than guiding the student to infer it."
+L.2.4b-Q2,2nd Grade,warn,judge,"The hint directly provides the meaning of the prefix 're-', which essentially gives away the correct answer to the question."
+L.2.4b-Q3,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 5.4)
+L.2.4b-Q3,2nd Grade,fail,judge,The hint directly gives away the correct answer by explaining the prefix and then combining it with the root word to form the exact definition.
+L.2.4c-Q3,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 6.0)
+L.2.4c-Q4,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 3.7)
+L.2.4c-Q4,2nd Grade,warn,judge,"The hint directly defines the suffix '-ful' as 'full of,' which essentially gives away the correct answer rather than guiding the student to figure it out independently."
+L.2.4c-Q5,2nd Grade,warn,judge,"The hint directly gives away the answer by explaining that '-ment' means 'the act of,' which is the exact phrasing of the correct choice."
+L.2.4d-Q1,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 4.4)
+L.2.4d-Q4,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 6.8)
+L.2.4d-Q5,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 4.1)
+L.2.4e-Q1,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 4.4)
+L.2.4e-Q1,2nd Grade,warn,judge,"The hint directly defines the correct answer, effectively giving it away rather than guiding the student to discover it."
+L.2.4e-Q2,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 12.3)
+L.2.4e-Q2,2nd Grade,warn,judge,"The hint directly gives away the answer by using a synonym for the correct choice, which undermines the purpose of a hint."
+L.2.4e-Q4,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 14.4)
+L.2.4e-Q4,2nd Grade,warn,judge,"The question and distractors are well-formed and appropriate for the grade level, but the hint directly provides the correct answer, undermining its purpose as a supportive clue."
+L.2.5-Q1,2nd Grade,warn,reading_level,Reads easier than 2nd Grade (FK 0.5)
+L.2.5-Q2,2nd Grade,warn,judge,The hint is too direct and nearly gives away the answer by rephrasing the question with a close synonym ('very warm' for 'hot') and then prompting for the obvious opposite.
+L.2.5-Q4,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 5.2)
+L.2.5a-Q2,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 5.1)
+L.2.5a-Q3,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 5.9)
+L.2.5a-Q4,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 4.8)
+L.2.5b-Q1,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 6.8)
+L.2.5b-Q1,2nd Grade,warn,judge,"The hint directly provides the definitions of strength for each word, essentially giving away the correct answer rather than guiding the student to infer the order independently."
+L.2.5b-Q2,2nd Grade,warn,reading_level,Reads easier than 2nd Grade (FK -0.5)
+L.2.5b-Q4,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 9.5)
+L.2.6-Q2,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 4.2)
+L.2.6-Q3,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 5.8)
+L.2.6-Q5,2nd Grade,warn,reading_level,Reads harder than 2nd Grade (FK 3.6)
+RL.3.1-Q1,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 6.1)
+RL.3.1-Q2,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 6.1)
+RL.3.1-Q5,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 5.2)
+RL.3.2-Q3,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 5.7)
+RL.3.2-Q4,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 6.5)
+RL.3.2-Q5,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 6.5)
+RL.3.3-Q1,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 6.0)
+RL.3.3-Q3,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 5.6)
+RL.3.3-Q4,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 5.5)
+RL.3.3-Q5,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 13.3)
+RL.3.3-Q5,3rd Grade,warn,judge,"The hint directly defines the correct answer using language very similar to the prompt, which gives away the answer rather than guiding the student."
+RL.3.4-Q1,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 4.5)
+RL.3.4-Q4,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 7.0)
+RL.3.4-Q5,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 5.3)
+RL.3.5-Q1,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 6.7)
+RL.3.5-Q3,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 11.2)
+RL.3.6-Q1,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 9.1)
+RL.3.6-Q2,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 6.2)
+RL.3.6-Q2,3rd Grade,warn,judge,"The hint directly defines the correct answer, which makes it too leading and gives away the solution rather than guiding the student to think critically."
+RL.3.6-Q3,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 4.9)
+RL.3.6-Q4,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 10.2)
+RL.3.6-Q5,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 8.5)
+RL.3.7-Q1,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 7.8)
+RL.3.7-Q2,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 9.3)
+RL.3.7-Q3,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 7.1)
+RL.3.7-Q4,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 13.6)
+RL.3.7-Q5,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 8.1)
+RL.3.7-Q5,3rd Grade,warn,judge,"The prompt and choices are excellent for a 3rd-grade comprehension question, but the hint directly gives away the correct answer rather than guiding the student to it."
+RL.3.9-Q1,3rd Grade,warn,judge,The hint directly gives away the correct answer by stating 'That's the theme!' after identifying 'bravery' as the big idea.
+RL.3.9-Q2,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 4.8)
+RL.3.9-Q2,3rd Grade,warn,judge,"The question and choices are well-designed for the grade level, but the hint directly provides the answer by defining 'setting' using the prompt's examples, which gives away the correct answer."
+RL.3.9-Q3,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 5.9)
+RL.3.9-Q3,3rd Grade,warn,judge,"The hint directly gives away the correct answer by explicitly stating 'different place' (setting) and 'different mystery' (specific plot), which are the components of the correct choice."
+RL.3.9-Q4,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 9.8)
+RL.3.9-Q5,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 9.1)
+RL.3.10-Q1,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 7.1)
+RL.3.10-Q1,3rd Grade,warn,judge,"The question is clear, directly supported by the text, and the distractors are plausible but incorrect; however, the hint is very direct and almost gives away the answer by quoting the exact phrase from the text that contains the solution."
+RL.3.10-Q2,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 5.5)
+RL.3.10-Q3,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 7.8)
+RL.3.10-Q4,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 4.7)
+RL.3.10-Q4,3rd Grade,warn,judge,"The hint is too leading as it explicitly states the author builds mystery to make the reader 'want to know more,' which is essentially defining 'curious and intrigued' for a 3rd grader."
+RL.3.10-Q5,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 7.3)
+RI.3.1-Q1,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 8.1)
+RI.3.1-Q2,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 6.6)
+RI.3.1-Q3,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 9.6)
+RI.3.1-Q4,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 7.1)
+RI.3.1-Q5,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 8.8)
+RI.3.1-Q5,3rd Grade,fail,judge,"The hint directly explains the reasoning behind the correct answer, essentially giving it away rather than guiding the student to think critically."
+RI.3.2-Q1,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 6.0)
+RI.3.2-Q2,3rd Grade,warn,judge,"The distractor 'Kids do better in school' is also a defensible answer because doing better in school is a direct outcome that supports the idea that sleep helps learning, making the distinction between it and the correct answer too subtle for a 3rd grader."
+RI.3.2-Q3,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 6.9)
+RI.3.2-Q3,3rd Grade,warn,judge,"The hint is too direct as it uses the key word 'threats' which is central to the correct answer, making it very easy for a 3rd grader to identify the correct option."
+RI.3.2-Q4,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 6.2)
+RI.3.2-Q5,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 8.7)
+RI.3.3-Q1,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 4.8)
+RI.3.3-Q2,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 8.2)
+RI.3.3-Q3,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 10.2)
+RI.3.3-Q3,3rd Grade,warn,judge,"The prompt and correct answer are appropriate for the grade level, and the distractors are plausible but incorrect; however, the hint is too direct as it uses the word 'CAUSED,' which is a key part of the correct answer 'Cause and effect.'"
+RI.3.3-Q4,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 6.4)
+RI.3.3-Q5,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 6.6)
+RI.3.3-Q5,3rd Grade,warn,judge,"The hint explicitly states the cause and effect relationship, which directly gives away the answer to the question asking how the events are connected."
+RI.3.4-Q1,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 6.4)
+RI.3.4-Q2,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 7.5)
+RI.3.4-Q2,3rd Grade,warn,judge,"The hint is too direct, using phrases like 'top one' that are very close synonyms for the correct answer 'highest or most important,' which could give away the answer rather than just guide the student."
+RI.3.4-Q3,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 6.6)
+RI.3.4-Q4,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 6.7)
+RI.3.4-Q5,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 7.0)
+RI.3.5-Q1,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 5.2)
+RI.3.5-Q1,3rd Grade,warn,judge,"The prompt's phrasing 'find page 47 the fastest' is slightly confusing since the page number is already provided; if a student knows the page number, they would simply turn to it, rather than using a text feature to 'find' it. Additionally, the hint directly describes the function of the correct answer, effectively giving it away."
+RI.3.5-Q2,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 14.9)
+RI.3.5-Q2,3rd Grade,warn,judge,"The hint, 'Sidebars are those boxes on the side of a page with bonus information!', is too close to the correct answer, 'Extra interesting facts or related information,' as 'bonus information' is nearly synonymous with the correct choice."
+RI.3.5-Q3,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 4.7)
+RI.3.5-Q4,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 10.9)
+RI.3.5-Q4,3rd Grade,warn,judge,"The hint is very direct and nearly gives away the answer by providing the core function of both an index and a glossary, which is the exact information needed to select the correct choice."
+RI.3.5-Q5,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 11.2)
+RI.3.5-Q5,3rd Grade,fail,judge,"The hint directly gives away the correct answer by rephrasing it, rather than guiding the student to think about the function of a hyperlink."
+RI.3.6-Q1,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 7.7)
+RI.3.6-Q2,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 5.5)
+RI.3.6-Q3,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 6.1)
+RI.3.6-Q3,3rd Grade,warn,judge,"The hint directly rephrases the correct answer, essentially giving it away rather than guiding the student to think critically."
+RI.3.6-Q4,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 8.9)
+RI.3.6-Q5,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 8.7)
+RI.3.7-Q1,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 11.1)
+RI.3.7-Q2,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 7.5)
+RI.3.7-Q3,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 12.0)
+RI.3.7-Q4,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 6.8)
+RI.3.7-Q5,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 9.3)
+RI.3.7-Q5,3rd Grade,warn,judge,"The hint directly gives away a key part of the correct answer by stating that 'a diagram that shows a cross-section is the best way,' which is explicitly mentioned in the correct choice."
+RI.3.8-Q1,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 9.7)
+RI.3.8-Q2,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 8.0)
+RI.3.8-Q3,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 6.2)
+RI.3.8-Q4,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 14.3)
+RI.3.8-Q5,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 9.4)
+RI.3.9-Q1,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 5.7)
+RI.3.9-Q1,3rd Grade,fail,judge,"The hint directly gives away the correct answer by stating, 'The topic is the same — sharks,' which is the exact content of the correct choice."
+RI.3.9-Q2,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 8.2)
+RI.3.9-Q4,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 9.4)
+RI.3.9-Q5,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 8.2)
+RI.3.10-Q1,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 5.7)
+RI.3.10-Q2,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 7.6)
+RI.3.10-Q3,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 10.5)
+RI.3.10-Q4,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 9.3)
+RI.3.10-Q5,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 7.4)
+RF.3.3-Q2,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 5.1)
+RF.3.3-Q2,3rd Grade,fail,judge,"The hint directly gives away the correct answer by breaking down the word into its syllables and instructing the student to count them, rather than guiding them to discover the answer independently."
+RF.3.3-Q4,3rd Grade,warn,reading_level,Reads easier than 3rd Grade (FK 1.3)
+RF.3.3-Q4,3rd Grade,fail,judge,"The distractor ""K and h"" is also a correct answer, as both 'g' and 'h' are silent in the word ""knight,"" making the question ambiguous and flawed."
+RF.3.3-Q5,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 15.4)
+RF.3.3a-Q1,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 7.8)
+RF.3.3a-Q1,3rd Grade,warn,judge,"The hint directly gives away the correct answer by using the word 'NOT', which is a key part of the correct option 'Not or opposite', making the question less effective as an assessment."
+RF.3.3a-Q2,3rd Grade,warn,judge,"The hint directly provides the correct answer by defining 'enjoyment' using the exact phrase that is the correct choice, which gives away the answer rather than just helping."
+RF.3.3a-Q3,3rd Grade,warn,judge,"The hint directly gives away the correct answer by explicitly stating 'preview = see before,' which is the exact meaning of the correct choice 'To view before.'"
+RF.3.3a-Q4,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 6.9)
+RF.3.3a-Q4,3rd Grade,fail,judge,"The distractor ""Jumpable"" is also a correctly formed word using the suffix -able, meaning there are two correct answers, which makes the question ambiguous and unanswerable as a single-choice question."
+RF.3.3a-Q5,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 8.4)
+RF.3.3a-Q5,3rd Grade,warn,judge,"The question and choices are appropriate for the grade level, but the hint directly gives away the correct answer, which undermines its purpose."
+RF.3.3b-Q1,3rd Grade,warn,reading_level,Reads easier than 3rd Grade (FK -0.9)
+RF.3.3b-Q1,3rd Grade,warn,judge,The hint directly gives away the correct answer by stating the sound of '-tion' rather than guiding the student to discover it.
+RF.3.3b-Q3,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 4.9)
+RF.3.3b-Q3,3rd Grade,fail,judge,"The hint directly gives away the correct answer by defining the word and then explicitly stating the meaning of the suffix, rather than guiding the student to discover it."
+RF.3.3b-Q4,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 7.6)
+RF.3.3b-Q4,3rd Grade,fail,judge,"The hint directly gives away the answer by identifying the specific Latin suffix present only in the correct choice, which undermines the purpose of the question."
+RF.3.3b-Q5,3rd Grade,fail,judge,"The hint directly provides the correct answer, making the question ineffective for assessing student understanding of word parts."
+RF.3.3c-Q1,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 9.2)
+RF.3.3c-Q1,3rd Grade,fail,judge,"The hint directly provides the correct answer by breaking down the word and stating the syllable count, which defeats the purpose of a hint."
+RF.3.3c-Q2,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 18.5)
+RF.3.3c-Q2,3rd Grade,fail,judge,"The hint directly provides the correct answer, making the question ineffective as an assessment of the student's ability to break the word into syllables."
+RF.3.3c-Q3,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 7.2)
+RF.3.3c-Q3,3rd Grade,warn,judge,"The hint is very close to the correct answer, potentially giving away the strategy rather than guiding the student to think critically about the options."
+RF.3.3c-Q4,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 9.2)
+RF.3.3c-Q4,3rd Grade,fail,judge,"The hint directly provides the answer by breaking down the word into its syllables, which defeats the purpose of a hint for a comprehension question."
+RF.3.3c-Q5,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 25.9)
+RF.3.3c-Q5,3rd Grade,fail,judge,"The hint gives away the correct answer by explicitly listing all the syllables, rather than guiding the student to figure it out independently."
+RF.3.3d-Q1,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 7.1)
+RF.3.3d-Q3,3rd Grade,warn,reading_level,Reads easier than 3rd Grade (FK 1.0)
+RF.3.3d-Q5,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 8.4)
+RF.3.3d-Q5,3rd Grade,warn,judge,"The hint is too specific, providing the exact spelling components ('silent k' and 'ledge') which almost gives away the correct answer rather than guiding the student to discover it."
+RF.3.4-Q1,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 7.2)
+RF.3.4-Q1,3rd Grade,warn,judge,"The hint is too direct and essentially provides the definition of 'expression' which is the correct answer, rather than guiding the student to it."
+RF.3.4-Q2,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 10.2)
+RF.3.4-Q3,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 6.5)
+RF.3.4-Q3,3rd Grade,warn,judge,"The prompt and choices are appropriate for the grade level, but the hint is very direct and nearly gives away the correct answer by stating, 'Go back and fix it.'"
+RF.3.4-Q5,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 11.1)
+RF.3.4-Q5,3rd Grade,warn,judge,"The hint directly defines the term 'accuracy' in a way that is almost identical to the correct answer, effectively giving away the solution rather than guiding the student."
+RF.3.4a-Q1,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 6.5)
+RF.3.4a-Q2,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 11.8)
+RF.3.4a-Q3,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 9.2)
+RF.3.4a-Q4,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 7.2)
+RF.3.4a-Q5,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 8.8)
+RF.3.4b-Q1,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 11.1)
+RF.3.4b-Q3,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 8.4)
+RF.3.4b-Q4,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 5.5)
+RF.3.4b-Q5,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 8.7)
+RF.3.4c-Q1,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 7.2)
+RF.3.4c-Q1,3rd Grade,warn,judge,The hint is too direct and essentially gives away the reasoning behind the correct answer by explicitly stating why 'dessert' doesn't make sense in the context and mentioning 'context' as the key.
+RF.3.4c-Q2,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 7.2)
+RF.3.4c-Q3,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 7.4)
+RF.3.4c-Q4,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 12.7)
+RF.3.4c-Q4,3rd Grade,warn,judge,"The hint is very close to giving away the correct answer by explicitly mentioning 'rereading' and 'slowing down,' which are key components of the correct choice."
+RF.3.4c-Q5,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 5.4)
+RF.3.4c-Q5,3rd Grade,warn,judge,"The hint directly gives away the answer by explicitly stating the correct pronunciation based on the context, rather than guiding the student to discover it."
+L.3.4-Q1,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 6.8)
+L.3.4-Q2,3rd Grade,warn,reading_level,Reads easier than 3rd Grade (FK 0.2)
+L.3.4-Q3,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 8.7)
+L.3.4-Q4,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 5.1)
+L.3.4-Q4,3rd Grade,fail,judge,"The hint directly defines the word 'current' in the context of a river, which is the correct answer, thus giving away the solution rather than guiding the student."
+L.3.4-Q5,3rd Grade,warn,judge,The hint is too direct and essentially gives away the answer by explaining the context clues and the meaning of 'parched' rather than guiding the student to infer it themselves.
+L.3.4a-Q1,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 7.7)
+L.3.4a-Q1,3rd Grade,warn,judge,"The hint directly gives away the correct answer by rephrasing it, rather than guiding the student to infer the meaning from context."
+L.3.4a-Q2,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 6.6)
+L.3.4a-Q3,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 8.4)
+L.3.4a-Q3,3rd Grade,warn,judge,"The hint provides a definition of 'camouflage' that is too close to the correct answer, effectively giving it away rather than guiding the student to infer from context."
+L.3.4a-Q4,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 6.0)
+L.3.4a-Q4,3rd Grade,warn,judge,"The hint directly gives away the correct answer by rephrasing it, rather than guiding the student to infer the meaning from the context clues."
+L.3.4a-Q5,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 7.4)
+L.3.4b-Q1,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 9.2)
+L.3.4b-Q1,3rd Grade,warn,judge,"The prompt and choices are appropriate for the grade level, but the hint directly gives away the correct answer, which defeats its purpose of guiding without revealing."
+L.3.4b-Q2,3rd Grade,warn,judge,The hint directly gives away the answer by explaining the prefix and then combining it with the root word to form the exact correct definition.
+L.3.4b-Q3,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 9.7)
+L.3.4b-Q3,3rd Grade,fail,judge,"The hint directly provides the answer by explaining the meaning of the prefix 'im-', which is the key to understanding the word 'impossible'."
+L.3.4b-Q4,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 6.7)
+L.3.4b-Q4,3rd Grade,fail,judge,"The hint directly provides the answer by explaining the meaning of the prefix 'en-' and then applying it to the word 'encourage', leaving no room for the student to deduce the meaning independently."
+L.3.4b-Q5,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 10.7)
+L.3.4c-Q1,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 6.3)
+L.3.4c-Q2,3rd Grade,warn,judge,"The hint directly provides the meaning of the prefix 'trans' and then combines it with the root word 'port' to explicitly state the answer, making it too revealing rather than guiding."
+L.3.4c-Q3,3rd Grade,warn,judge,"The distractor 'Grammar' is etymologically related to 'writing' (from Greek 'graphein') and conceptually very close to 'writing' for a 3rd grader, making it a plausible and potentially defensible answer."
+L.3.4c-Q4,3rd Grade,warn,reading_level,Reads easier than 3rd Grade (FK 0.4)
+L.3.4c-Q4,3rd Grade,fail,judge,"The prompt does not provide the meaning of 'bi,' which is necessary to answer the question, and the hint completely gives away the correct answer."
+L.3.4c-Q5,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 9.3)
+L.3.4d-Q1,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 4.9)
+L.3.4d-Q1,3rd Grade,warn,judge,The hint directly gives away the correct answer instead of guiding the student to infer it from the context.
+L.3.4d-Q3,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 12.2)
+L.3.4d-Q3,3rd Grade,warn,judge,"The prompt and choices are clear and appropriate for the grade level, but the hint gives away the correct answer by listing all the components of the correct option."
+L.3.4d-Q4,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 6.7)
+L.3.4d-Q4,3rd Grade,fail,judge,"The hint directly provides the correct answer, negating the assessment value of the question."
+L.3.4d-Q5,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 7.3)
+L.3.5-Q1,3rd Grade,fail,judge,"The hint explicitly gives away the correct answer by defining the idiom directly, which defeats the purpose of a hint."
+L.3.5-Q2,3rd Grade,warn,reading_level,Reads easier than 3rd Grade (FK 1.0)
+L.3.5-Q3,3rd Grade,warn,judge,"The hint gives away the correct answer by stating that performers say it 'for luck,' which directly points to 'Good luck' as the meaning."
+L.3.5-Q5,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 9.1)
+L.3.5-Q5,3rd Grade,warn,judge,"The question and choices are appropriate for the grade level, but the hint explicitly defines and identifies both literary devices within the example, effectively giving away the correct answer."
+L.3.5a-Q1,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 7.3)
+L.3.5a-Q1,3rd Grade,warn,judge,"The hint directly explains the meaning of the idiom and uses the term 'figurative,' which is synonymous with 'nonliteral,' effectively giving away the correct answer."
+L.3.5a-Q3,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 5.2)
+L.3.5a-Q4,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 5.9)
+L.3.5a-Q4,3rd Grade,warn,judge,"The hint directly explains the idiom, which gives away the answer rather than guiding the student to infer the meaning."
+L.3.5b-Q1,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 7.1)
+L.3.5b-Q2,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 8.4)
+L.3.5b-Q3,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 5.0)
+L.3.5b-Q3,3rd Grade,fail,judge,"The hint directly gives away the correct answer by stating 'nervous or anxious,' with 'anxious' being the correct choice."
+L.3.5b-Q4,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 9.1)
+L.3.5b-Q4,3rd Grade,fail,judge,"The hint directly defines 'truthful' as 'honest,' which is the correct answer, thus giving away the solution rather than guiding the student."
+L.3.5b-Q5,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 7.9)
+L.3.5b-Q5,3rd Grade,warn,judge,"The hint directly gives away the answer by using the root word and even phonetically breaking it down, which is too revealing for a hint."
+L.3.5c-Q1,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 16.8)
+L.3.5c-Q1,3rd Grade,fail,judge,"The hint explicitly defines the level of certainty for each word, essentially giving away the correct answer rather than guiding the student to infer it."
+L.3.5c-Q2,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 8.4)
+L.3.5c-Q3,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 19.2)
+L.3.5c-Q3,3rd Grade,warn,judge,"The hint explicitly defines the intensity of each word, directly giving away the correct answer rather than guiding the student to figure it out independently."
+L.3.5c-Q4,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 4.8)
+L.3.5c-Q4,3rd Grade,fail,judge,"The hint directly gives away the correct answer by explicitly stating the word progression and identifying 'Delighted' as the middle term, which defeats the purpose of the question."
+L.3.6-Q1,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 6.9)
+L.3.6-Q2,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 11.8)
+L.3.6-Q2,3rd Grade,warn,judge,"The hint is too close to the correct answer, essentially rephrasing the definition of habitat, which could give away the answer rather than just guiding the student."
+L.3.6-Q3,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 5.2)
+L.3.6-Q4,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 10.6)
+L.3.6-Q4,3rd Grade,warn,judge,"The hint directly gives away the correct answer by defining the word 'compare' using the same phrasing as the correct choice, which undermines its purpose as a supportive aid."
+L.3.6-Q5,3rd Grade,warn,reading_level,Reads harder than 3rd Grade (FK 5.5)
+L.3.6-Q5,3rd Grade,fail,judge,"The hint explicitly gives away the correct answer and its justification, which defeats the purpose of a hint."
+RL.4.1-Q1,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 7.4)
+RL.4.1-Q2,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 8.4)
+RL.4.1-Q3,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 6.3)
+RL.4.1-Q4,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 6.6)
+RL.4.1-Q4,4th Grade,warn,judge,"The hint directly gives away the answer by explicitly stating that the listed actions are 'signs of frustration,' which is the core of the correct choice."
+RL.4.1-Q5,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 5.7)
+RL.4.2-Q1,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 7.1)
+RL.4.2-Q2,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 6.8)
+RL.4.2-Q3,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 16.0)
+RL.4.2-Q4,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 5.9)
+RL.4.2-Q5,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 10.1)
+RL.4.2-Q5,4th Grade,warn,judge,The hint is very close to giving away the answer by listing the exact components found in the correct choice.
+RL.4.3-Q1,4th Grade,warn,judge,"The correct answer is well-supported by the passage, and the distractors are clearly incorrect, but the hint directly gives away the answer rather than guiding the student to infer it."
+RL.4.3-Q2,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 10.7)
+RL.4.3-Q3,4th Grade,warn,judge,"The correct answer is well-supported by the text and the distractors are clearly incorrect, but the hint is very close to giving away the answer by explicitly stating 'that's great news!'"
+RL.4.3-Q4,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 14.4)
+RL.4.3-Q5,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 7.6)
+RL.4.4-Q1,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 10.4)
+RL.4.4-Q1,4th Grade,fail,judge,"The hint directly gives away the correct answer by stating ""This phrase means everything she touches succeeds,"" which is nearly identical to the correct choice ""Everything she did became successful."""
+RL.4.4-Q2,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 10.6)
+RL.4.4-Q3,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 5.5)
+RL.4.4-Q3,4th Grade,warn,judge,The hint is too direct and essentially gives away the correct answer by using a key synonym found in the correct choice.
+RL.4.4-Q4,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 9.8)
+RL.4.4-Q4,4th Grade,warn,judge,"The hint directly provides the meaning of the idiom, which is almost identical to the correct answer, thus giving away the solution rather than guiding the student."
+RL.4.4-Q5,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 8.5)
+RL.4.5-Q1,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 7.5)
+RL.4.5-Q1,4th Grade,warn,judge,"The hint directly states that 'only plays have these' regarding stage directions, which gives away the correct answer rather than guiding the student to recall the information."
+RL.4.5-Q2,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 8.6)
+RL.4.5-Q2,4th Grade,warn,judge,"The question and distractors are well-designed and appropriate for the grade level, but the hint explicitly provides the correct answer, undermining its purpose as a supportive clue."
+RL.4.5-Q3,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 10.5)
+RL.4.5-Q4,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 7.0)
+RL.4.5-Q4,4th Grade,warn,judge,"The hint directly defines and confirms the correct answer, effectively giving it away rather than guiding the student to think critically."
+RL.4.5-Q5,4th Grade,fail,judge,"The term 'verse' is ambiguous for a 4th grader, as it can refer to a single line or a stanza; if interpreted as a stanza, 'Chapter' becomes a plausible and defensible distractor, making the intended correct answer problematic without the hint's specific definition."
+RL.4.6-Q3,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 12.9)
+RL.4.6-Q4,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 14.3)
+RL.4.6-Q4,4th Grade,warn,judge,"The hint directly defines 'omniscient' as 'all-knowing' and connects it to seeing into everyone's mind, which is the core of the question, thus giving away the answer."
+RL.4.6-Q5,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 7.1)
+RL.4.6-Q5,4th Grade,warn,judge,"The hint is too direct, essentially providing the reasoning for the correct answer by defining how first and third person points of view impact what the reader learns, which is the core of the question."
+RL.4.7-Q1,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 10.1)
+RL.4.7-Q2,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 6.7)
+RL.4.7-Q3,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 8.4)
+RL.4.7-Q4,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 7.0)
+RL.4.7-Q4,4th Grade,warn,judge,"The hint is too direct and essentially rephrases the correct answer, explaining the core concept rather than guiding the student to discover it."
+RL.4.7-Q5,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 9.8)
+RL.4.9-Q1,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 6.7)
+RL.4.9-Q1,4th Grade,warn,judge,"The hint is too direct and nearly gives away the answer by explicitly stating 'the sun's movement,' which is the core of the correct choice."
+RL.4.9-Q2,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 10.0)
+RL.4.9-Q3,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 9.7)
+RL.4.9-Q3,4th Grade,warn,judge,"The correct answer is well-supported and the distractors are clearly incorrect, but the hint is too direct and essentially rephrases the correct answer, giving it away rather than guiding the student."
+RL.4.9-Q4,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 11.4)
+RL.4.9-Q5,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 18.6)
+RL.4.9-Q5,4th Grade,warn,judge,"The hint is too direct and essentially rephrases the correct answer, which diminishes its value as a supportive tool rather than a giveaway."
+RL.4.10-Q1,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 6.1)
+RL.4.10-Q2,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 5.9)
+RL.4.10-Q3,4th Grade,warn,judge,"The hint is too revealing as it directly explains the metaphor and rephrases the core concept of the correct answer, potentially giving away the solution rather than guiding the student."
+RL.4.10-Q4,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 8.2)
+RL.4.10-Q4,4th Grade,warn,judge,The hint is too direct and nearly gives away the answer by rephrasing the core concepts of the correct choice.
+RL.4.10-Q5,4th Grade,warn,judge,"The distractor 'Captains are always right' is a plausible overgeneralization for a 4th grader, making it not unambiguously wrong, and the hint is very direct in summarizing the story's core message, which closely aligns with the correct answer."
+RI.4.1-Q1,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 10.7)
+RI.4.1-Q1,4th Grade,warn,judge,"The hint is too direct, essentially explaining the mechanism behind the correct answer rather than guiding the student to infer it."
+RI.4.1-Q2,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 12.0)
+RI.4.1-Q3,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 6.0)
+RI.4.1-Q4,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 7.6)
+RI.4.1-Q5,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 14.1)
+RI.4.2-Q1,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 8.3)
+RI.4.2-Q2,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 7.4)
+RI.4.2-Q2,4th Grade,warn,judge,"The question and choices are well-constructed and appropriate for the grade level, but the hint directly gives away the answer by explaining why it is correct rather than guiding the student's thinking."
+RI.4.2-Q3,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 17.8)
+RI.4.2-Q3,4th Grade,warn,judge,"The hint is too direct and essentially provides the definition of a good summary, which is the correct answer, rather than just guiding the student."
+RI.4.2-Q4,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 10.2)
+RI.4.2-Q4,4th Grade,warn,judge,"The hint is too direct and essentially rephrases the correct answer, potentially giving it away rather than guiding the student to think critically."
+RI.4.2-Q5,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 11.4)
+RI.4.3-Q1,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 12.0)
+RI.4.3-Q2,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 12.4)
+RI.4.3-Q2,4th Grade,warn,judge,"The hint explicitly outlines the correct sequence of events, effectively giving away the answer rather than guiding the student to deduce it from the passage."
+RI.4.3-Q3,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 9.4)
+RI.4.3-Q4,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 8.9)
+RI.4.3-Q4,4th Grade,fail,judge,"The hint directly provides the correct answer by restating the exact inputs mentioned in the passage, which undermines the purpose of the question."
+RI.4.3-Q5,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 16.7)
+RI.4.3-Q5,4th Grade,warn,judge,"The hint directly rephrases the correct answer, which gives away the solution rather than guiding the student to think critically."
+RI.4.4-Q1,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 11.5)
+RI.4.4-Q1,4th Grade,warn,judge,The hint is very close to giving away the answer by rephrasing the correct definition using the context provided in the prompt.
+RI.4.4-Q2,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 9.1)
+RI.4.4-Q2,4th Grade,warn,judge,"The hint directly gives away the correct answer, which diminishes its effectiveness as a supportive learning tool rather than a direct solution."
+RI.4.4-Q3,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 13.1)
+RI.4.4-Q3,4th Grade,warn,judge,"The hint directly provides the definition of the correct answer, which gives away the answer rather than guiding the student to it."
+RI.4.4-Q4,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 10.2)
+RI.4.4-Q5,4th Grade,warn,judge,"The question and distractors are well-designed for the grade level, but the hint directly gives away the answer by defining 'famine' rather than guiding the student to infer its meaning from the context."
+RI.4.5-Q1,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 10.5)
+RI.4.5-Q1,4th Grade,fail,judge,The hint directly gives away the correct answer by explicitly stating 'Classic problem/solution structure!' which defeats its purpose of guiding without revealing.
+RI.4.5-Q2,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 11.3)
+RI.4.5-Q3,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 12.3)
+RI.4.5-Q4,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 8.4)
+RI.4.5-Q4,4th Grade,warn,judge,"The prompt, correct answer, and distractors are appropriate for the grade level, but the hint directly gives away the answer by naming the text structure and linking it to the signal words in the passage."
+RI.4.5-Q5,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 11.4)
+RI.4.6-Q1,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 15.3)
+RI.4.6-Q1,4th Grade,warn,judge,"The hint ""Firsthand = first person = 'I was there.'"" is very close to the correct answer ""Was actually there and experienced it,"" potentially giving away the answer rather than just guiding the student."
+RI.4.6-Q2,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 8.7)
+RI.4.6-Q3,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 13.4)
+RI.4.6-Q4,4th Grade,warn,judge,"The question and choices are appropriate for the grade level, and the correct answer is well-supported, but the hint directly gives away the answer rather than guiding the student to it."
+RI.4.6-Q5,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 12.9)
+RI.4.7-Q1,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 7.1)
+RI.4.7-Q1,4th Grade,warn,judge,"The correct answer is literally supported by the prompt, the distractors are unambiguously wrong, and the prompt is clear and answerable for the grade, but the hint directly gives away the answer by explaining the trend rather than guiding the student to discover it."
+RI.4.7-Q2,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 9.1)
+RI.4.7-Q2,4th Grade,warn,judge,"The hint is too close to the correct answer, essentially rephrasing it rather than guiding the student to discover the answer independently."
+RI.4.7-Q3,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 10.5)
+RI.4.7-Q4,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 11.2)
+RI.4.7-Q4,4th Grade,warn,judge,"The hint is too close to the correct answer, essentially rephrasing it and giving away the solution rather than guiding the student to think critically."
+RI.4.7-Q5,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 13.3)
+RI.4.8-Q1,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 10.2)
+RI.4.8-Q1,4th Grade,warn,judge,"The question, correct answer, and distractors are all well-constructed and appropriate for the grade level, but the hint is too direct and essentially gives away the answer by rephrasing its components."
+RI.4.8-Q2,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 10.0)
+RI.4.8-Q2,4th Grade,warn,judge,"The hint directly gives away the characteristic of the correct answer, rather than guiding the student to infer it, which undermines the assessment of the student's understanding."
+RI.4.8-Q3,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 9.8)
+RI.4.8-Q3,4th Grade,warn,judge,"The hint is too direct and essentially rephrases the correct answer, which diminishes its effectiveness as a supportive tool rather than a solution."
+RI.4.8-Q5,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 9.5)
+RI.4.9-Q1,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 10.5)
+RI.4.9-Q2,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 7.4)
+RI.4.9-Q3,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 10.9)
+RI.4.9-Q3,4th Grade,warn,judge,"The hint directly rephrases the correct answer using synonyms, effectively giving away the solution rather than guiding the student to think critically."
+RI.4.9-Q4,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 11.5)
+RI.4.9-Q5,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 11.7)
+RI.4.10-Q1,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 11.2)
+RI.4.10-Q2,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 7.9)
+RI.4.10-Q2,4th Grade,fail,judge,"The hint explicitly defines the irony in the context of the passage, essentially giving away the correct answer by stating 'Called 'dead' because nothing lives in it — yet it HELPS living humans. That's ironic!'"
+RI.4.10-Q3,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 8.3)
+RI.4.10-Q4,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 7.0)
+RI.4.10-Q5,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 11.5)
+RF.4.3-Q1,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 6.7)
+RF.4.3-Q1,4th Grade,warn,judge,"The hint directly provides the meaning of each word part and then combines them to give the exact definition of the correct answer, rather than guiding the student to figure it out."
+RF.4.3-Q2,4th Grade,fail,no_trick_choices,"""All / none of the above"" is banned"
+RF.4.3-Q2,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 6.7)
+RF.4.3-Q2,4th Grade,warn,judge,"The hint explicitly states 'All involve far-distance!', which directly gives away the answer 'All of the above' rather than guiding the student to figure it out."
+RF.4.3-Q3,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 8.1)
+RF.4.3-Q3,4th Grade,fail,judge,"The hint directly provides the correct answer by breaking down the word into syllables and stating the exact number, which defeats the purpose of a hint."
+RF.4.3-Q4,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 7.2)
+RF.4.3-Q4,4th Grade,warn,judge,"The hint explicitly defines each part of the word (prefix, root, suffix) and their meanings, which directly gives away the correct answer rather than guiding the student to figure it out."
+RF.4.3-Q5,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 7.8)
+RF.4.3-Q5,4th Grade,warn,judge,"The hint directly combines the given roots to form 'a fake name,' which is the core of the correct answer, making it too revealing rather than just helpful."
+RF.4.3a-Q1,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 6.1)
+RF.4.3a-Q1,4th Grade,warn,judge,"The hint directly states the strategy that is the correct answer, which gives away the solution rather than guiding the student to discover it."
+RF.4.3a-Q2,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 11.7)
+RF.4.3a-Q2,4th Grade,fail,judge,"The provided correct answer 'In + ter + nation + al' is morphologically incorrect as the prefix is 'Inter-', and the hint actually provides the correct morphological breakdown 'Inter + nation + al', creating a direct contradiction."
+RF.4.3a-Q3,4th Grade,fail,judge,"The correct answer is not literally supported by the prompt, as the meaning of 'bio' is not provided, and the hint completely gives away the answer."
+RF.4.3a-Q4,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 11.1)
+RF.4.3a-Q4,4th Grade,fail,judge,"The hint directly provides the syllable breakdown, effectively giving away the answer rather than guiding the student to figure it out independently."
+RF.4.3a-Q5,4th Grade,warn,judge,"The hint completely gives away the answer by providing the full morphological breakdown and definition, rather than guiding the student to apply the skill themselves."
+RF.4.4-Q1,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 13.2)
+RF.4.4-Q2,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 10.4)
+RF.4.4-Q3,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 16.1)
+RF.4.4-Q3,4th Grade,warn,judge,"The hint is too direct and essentially rephrases the correct answer, providing all the key components rather than guiding the student to discover the answer independently."
+RF.4.4-Q4,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 7.6)
+RF.4.4-Q5,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 14.8)
+L.4.4-Q1,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 8.4)
+L.4.4-Q2,4th Grade,fail,judge,The hint gives away the answer by using the exact words 'safe place' and 'shelter' which are present in the correct choice.
+L.4.4-Q3,4th Grade,warn,judge,"The question and distractors are excellent for a 4th-grade vocabulary question on multiple-meaning words, but the hint is too direct and nearly gives away the answer by describing it explicitly."
+L.4.4-Q4,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 14.2)
+L.4.4-Q4,4th Grade,warn,judge,"The hint provides the definition of a philanthropist almost verbatim, essentially giving away the correct answer rather than guiding the student to it."
+L.4.4-Q5,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 19.8)
+L.4.4a-Q1,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 10.8)
+L.4.4a-Q2,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 8.0)
+L.4.4a-Q2,4th Grade,warn,judge,The hint is too direct and essentially gives away the correct answer by using a phrase ('bouncing back from difficulty') that is almost identical to part of the correct choice ('Able to recover and bounce back').
+L.4.4a-Q3,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 12.7)
+L.4.4a-Q3,4th Grade,warn,judge,"The hint is too direct, essentially rephrasing the correct answer using the provided context clues, which gives away the answer rather than guiding the student to infer it."
+L.4.4a-Q4,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 9.8)
+L.4.4a-Q4,4th Grade,warn,judge,"The hint is very close to the correct answer, using the phrase 'cooperative partnership' which is nearly synonymous with 'A partnership or agreement to work together', potentially giving away the answer rather than just guiding the student."
+L.4.4a-Q5,4th Grade,warn,judge,"The hint directly defines the word 'verbose' as 'overly wordy,' which is too close to the correct answer 'Using too many words' and gives away the answer rather than guiding the student."
+L.4.4b-Q1,4th Grade,warn,judge,"The prompt and choices are well-constructed for the grade level, but the hint directly provides the answer rather than guiding the student to it."
+L.4.4b-Q2,4th Grade,fail,judge,"The hint directly gives away the correct answer by defining 'autograph' and linking it to 'your own signature,' which is the definition sought by the prompt."
+L.4.4b-Q3,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 5.8)
+L.4.4b-Q3,4th Grade,warn,judge,"The hint provides the full definition of the word by explaining the prefix and combining it with the root, essentially giving away the correct answer."
+L.4.4b-Q4,4th Grade,warn,reading_level,Reads easier than 4th Grade (FK 2.8)
+L.4.4b-Q4,4th Grade,warn,judge,"The hint directly provides the answer by defining both parts of the word and then combining them to state what a microscope does, which is too explicit."
+L.4.4b-Q5,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 7.2)
+L.4.4b-Q5,4th Grade,warn,judge,"The hint directly defines the components of the correct answer and then states its meaning, which essentially gives away the answer to the student."
+L.4.4c-Q1,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 7.2)
+L.4.4c-Q2,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 6.0)
+L.4.4c-Q2,4th Grade,warn,judge,"The prompt and choices are appropriate for the grade level, but the hint directly defines the correct answer, giving it away rather than guiding the student."
+L.4.4c-Q3,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 7.2)
+L.4.4c-Q3,4th Grade,fail,judge,"The hint directly provides the correct answer, which undermines the purpose of the question as an assessment of comprehension."
+L.4.4c-Q4,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 5.9)
+L.4.4c-Q4,4th Grade,warn,judge,"The hint directly gives away the correct answer instead of guiding the student to infer it, which undermines the learning objective."
+L.4.4c-Q5,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 11.7)
+L.4.5-Q1,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 5.9)
+L.4.5-Q1,4th Grade,warn,judge,"The distractor 'An idiom' is plausible and arguably correct, as 'hit like a ton of bricks' is a common idiom that happens to be structured as a simile, which could confuse a 4th-grade student. Additionally, the hint directly gives away the answer."
+L.4.5-Q2,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 8.2)
+L.4.5-Q2,4th Grade,fail,judge,The hint directly gives away the answer by defining a metaphor and then explicitly stating that the prompt is an example of one.
+L.4.5-Q3,4th Grade,fail,judge,"The hint directly gives away the correct answer by using the phrase ""exactly right,"" which is the core of the correct option."
+L.4.5-Q4,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 10.2)
+L.4.5-Q5,4th Grade,warn,judge,"The prompt and choices are appropriate for the grade level, and the correct answer is objectively the best choice; however, the hint directly gives away the answer by explaining why 'Upset and furious' is the greatest difference in intensity."
+L.4.5a-Q2,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 5.9)
+L.4.5a-Q2,4th Grade,warn,judge,"The question and correct answer are appropriate for the grade level, and the distractors are plausible but clearly incorrect; however, the hint is too direct and essentially provides the core meaning of the metaphor, making it very close to giving away the answer."
+L.4.5a-Q3,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 5.9)
+L.4.5a-Q3,4th Grade,fail,judge,"The hint directly gives away the correct answer by stating the qualities the simile highlights, rather than guiding the student to infer them."
+L.4.5a-Q4,4th Grade,warn,judge,"The hint directly defines the metaphor, giving away the correct answer rather than guiding the student to infer the meaning."
+L.4.5a-Q5,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 12.3)
+L.4.5a-Q5,4th Grade,warn,judge,"The hint directly provides the key information needed to answer the question, effectively giving away the correct answer rather than guiding the student to discover it."
+L.4.5b-Q1,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 7.7)
+L.4.5b-Q3,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 6.7)
+L.4.5b-Q3,4th Grade,fail,judge,"The hint directly gives away the correct answer by stating 'this means the price is extremely high!', which is synonymous with 'Something is very expensive.'"
+L.4.5b-Q4,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 6.7)
+L.4.5b-Q5,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 6.1)
+L.4.5b-Q5,4th Grade,fail,judge,"The hint directly provides the meaning of the idiom, making the question too easy and defeating its purpose as a comprehension assessment."
+L.4.5c-Q1,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 6.9)
+L.4.5c-Q1,4th Grade,fail,judge,"The hint explicitly gives away the correct answer by stating that 'Courageous and brave both mean showing courage,' which directly tells the student that 'brave' is the synonym."
+L.4.5c-Q2,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 5.9)
+L.4.5c-Q2,4th Grade,warn,judge,"The hint directly provides the correct answer by defining 'generous' and then stating its opposite is 'selfish', which gives away the answer rather than guiding the student."
+L.4.5c-Q3,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 16.9)
+L.4.5c-Q3,4th Grade,fail,judge,"The hint directly provides the correct answer by explicitly stating the intensity levels of each word, rather than guiding the student to infer the concept of intensity."
+L.4.5c-Q4,4th Grade,warn,judge,"The question and choices are appropriate for the grade level, but the hint directly gives away the correct answer, which diminishes its effectiveness as a learning aid."
+L.4.5c-Q5,4th Grade,warn,judge,"The hint directly defines the correct answer and explicitly states they are opposites, which gives away the answer rather than guiding the student to figure it out."
+L.4.6-Q1,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 6.0)
+L.4.6-Q1,4th Grade,warn,judge,"The question is appropriate for the grade level and the correct answer is clearly the most precise, but the hint directly lists words from the correct answer, which gives away the solution rather than guiding the student."
+L.4.6-Q2,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 15.8)
+L.4.6-Q3,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 5.9)
+L.4.6-Q4,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 11.7)
+L.4.6-Q4,4th Grade,warn,judge,"The hint is too direct and essentially rephrases the correct answer, which could give away the solution rather than guiding the student to think."
+L.4.6-Q5,4th Grade,warn,reading_level,Reads harder than 4th Grade (FK 7.6)
+L.4.6-Q5,4th Grade,warn,judge,"The hint directly states that the described actions are 'classic signs of nervousness,' which gives away the correct answer rather than guiding the student to infer it."

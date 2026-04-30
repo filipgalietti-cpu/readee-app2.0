@@ -178,7 +178,7 @@ export default async function AdminHomePage() {
             <ArrowRight className="h-4 w-4 text-zinc-400" />
           </Link>
           <Link
-            href="/admin/batch-qc"
+            href="/owner/batch-qc"
             className="flex items-center gap-3 rounded-2xl border border-zinc-200 bg-white p-4 transition hover:border-violet-300 dark:border-slate-800 dark:bg-slate-900/40"
           >
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-violet-100 text-violet-700 dark:bg-violet-950/40 dark:text-violet-300">
@@ -195,7 +195,7 @@ export default async function AdminHomePage() {
             <ArrowRight className="h-4 w-4 text-zinc-400" />
           </Link>
           <Link
-            href="/admin/owner"
+            href="/owner"
             className="flex items-center gap-3 rounded-2xl border border-zinc-200 bg-white p-4 transition hover:border-amber-300 dark:border-slate-800 dark:bg-slate-900/40"
           >
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-100 text-amber-700 dark:bg-amber-950/40 dark:text-amber-300">
@@ -212,7 +212,7 @@ export default async function AdminHomePage() {
             <ArrowRight className="h-4 w-4 text-zinc-400" />
           </Link>
           <Link
-            href="/admin/content-audit"
+            href="/owner/content-audit"
             className="flex items-center gap-3 rounded-2xl border border-zinc-200 bg-white p-4 transition hover:border-rose-300 dark:border-slate-800 dark:bg-slate-900/40"
           >
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-rose-100 text-rose-700 dark:bg-rose-950/40 dark:text-rose-300">

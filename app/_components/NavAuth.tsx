@@ -169,10 +169,7 @@ export default function NavAuth() {
 
   // Platform admin routes always render the owner's identity, never
   // a kid avatar from a previous session's parent context.
-  const isPlatformAdminRoute =
-    pathname?.startsWith("/admin/owner") ||
-    pathname?.startsWith("/admin/batch-qc") ||
-    pathname?.startsWith("/admin/content-audit");
+  const isPlatformAdminRoute = pathname?.startsWith("/owner");
 
   // Avatar: prefer child avatar, fall back to parent initial.
   // Suppressed entirely on platform admin routes.

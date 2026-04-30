@@ -213,11 +213,11 @@ export async function proxy(request: NextRequest) {
       const isOwner = !!paRow;
 
       if (isOwner) {
-        // Owners see ONLY the owner surface (incl /admin home for shortcuts).
-        // Anything else → /admin/owner.
-        if (!isAdminRoute && (isTeacherRoute || isParentRoute)) {
+        // Owners see ONLY /owner/*. /admin is for tenant admins —
+        // owners shouldn't use it. Bounce anything else to /owner.
+        if (!isOwnerOnlyRoute) {
           const url = request.nextUrl.clone();
-          url.pathname = "/admin/owner";
+          url.pathname = "/owner";
           url.search = "";
           return NextResponse.redirect(url);
         }
@@ -258,12 +258,9 @@ export async function proxy(request: NextRequest) {
   return response;
 }
 
-/** Owner-only routes (platform admins / Readee Inc back-office). */
-const OWNER_ONLY_PREFIXES = [
-  "/admin/owner",
-  "/admin/batch-qc",
-  "/admin/content-audit",
-];
+/** Owner-only routes (platform admins / Readee Inc back-office).
+ *  Single prefix — anything under /owner/* is platform-only. */
+const OWNER_ONLY_PREFIXES = ["/owner"];
 
 /** Teacher / classroom surface. */
 const TEACHER_ONLY_PREFIXES = [

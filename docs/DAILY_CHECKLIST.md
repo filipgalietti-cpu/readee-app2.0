@@ -31,13 +31,10 @@
   - Verify: smart search a phonics question, click result, no
     "No reader selected" screen.
 
-- [ ] **Stripe SKUs for Teacher Solo + credit packs.** Plan-gating code
-      and webhook are wired (`lib/plan/check-access.ts`, `profiles.plan`).
-      The remaining work is operator-only:
-  - [ ] Create Stripe products in dashboard (Teacher Solo $19/mo,
-        $5 + $8 credit packs).
-  - [ ] Add Stripe price IDs to Vercel env vars.
-  - [ ] Test a full checkout against the staging webhook.
+- [~] **Stripe SKUs for Teacher Solo + credit packs.** **Deferred until
+      launch readiness** (Filip, Apr 29). Code is fully wired against
+      `profiles.plan`, runbook lives at `docs/LAUNCH_OPS_RUNBOOK.md`.
+      Don't pitch this as a blocker until launch.
 
 - [x] **CRON_SECRET in Vercel.** Confirmed live, daily cron is firing
       (verified via `/today` redirecting to today's slug 2026-04-29).

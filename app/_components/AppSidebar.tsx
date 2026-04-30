@@ -49,16 +49,14 @@ function getNavSections(
     sections.push({
       label: "Owner",
       items: [
-        { href: "/admin", icon: Building2, label: "Admin home" },
-        { href: "/admin/owner", icon: Users, label: "All accounts" },
+        { href: "/owner", icon: Users, label: "All accounts" },
       ],
     });
     sections.push({
       label: "Content",
       items: [
-        { href: "/admin/content-audit", icon: ScanLine, label: "Content audit" },
-        { href: "/admin/batch-qc", icon: Factory, label: "Factory QC" },
-        { href: "/admin/qc", icon: ShieldCheck, label: "Teacher quiz QC" },
+        { href: "/owner/content-audit", icon: ScanLine, label: "Content audit" },
+        { href: "/owner/batch-qc", icon: Factory, label: "Factory QC" },
       ],
     });
     sections.push({
@@ -329,10 +327,7 @@ export default function AppSidebar({ mobileOnly = false }: { mobileOnly?: boolea
   // in the client stores. Avoids the leak that happens when an admin
   // also has a child profile under a +alias email — the previous
   // session's kid avatar would otherwise bleed into admin pages.
-  const isPlatformAdminRoute =
-    pathname?.startsWith("/admin/owner") ||
-    pathname?.startsWith("/admin/batch-qc") ||
-    pathname?.startsWith("/admin/content-audit");
+  const isPlatformAdminRoute = pathname?.startsWith("/owner");
   const isTenantAdminRoute =
     !isPlatformAdminRoute &&
     (pathname?.startsWith("/admin/school") || pathname?.startsWith("/admin/district") || pathname?.startsWith("/admin/qc") || pathname === "/admin");

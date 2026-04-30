@@ -36,7 +36,7 @@ export async function approveQueueItem(input: {
     .eq("id", input.queueId);
   if (error) return { ok: false, error: error.message };
 
-  revalidatePath("/admin/batch-qc");
+  revalidatePath("/owner/batch-qc");
   return { ok: true };
 }
 
@@ -64,7 +64,7 @@ export async function rejectQueueItem(input: {
     .eq("id", input.queueId);
   if (error) return { ok: false, error: error.message };
 
-  revalidatePath("/admin/batch-qc");
+  revalidatePath("/owner/batch-qc");
   return { ok: true };
 }
 
@@ -93,6 +93,6 @@ export async function flagNeedsEdit(input: {
     .eq("id", input.queueId);
   if (error) return { ok: false, error: error.message };
 
-  revalidatePath("/admin/batch-qc");
+  revalidatePath("/owner/batch-qc");
   return { ok: true };
 }

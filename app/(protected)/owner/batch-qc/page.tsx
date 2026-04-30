@@ -220,7 +220,7 @@ export default async function BatchQcPage({
           return (
             <Link
               key={f.id}
-              href={`/admin/batch-qc?status=${f.id}${kind ? `&kind=${kind}` : ""}`}
+              href={`/owner/batch-qc?status=${f.id}${kind ? `&kind=${kind}` : ""}`}
               className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-semibold transition ${
                 active
                   ? "border-indigo-500 bg-indigo-600 text-white"
@@ -246,7 +246,7 @@ export default async function BatchQcPage({
           Kind
         </span>
         <Link
-          href={`/admin/batch-qc?status=${status}`}
+          href={`/owner/batch-qc?status=${status}`}
           className={`rounded-full border px-2.5 py-0.5 ${
             !kind
               ? "border-violet-400 bg-violet-50 text-violet-700"
@@ -258,7 +258,7 @@ export default async function BatchQcPage({
         {Object.entries(ASSET_KIND_LABEL).map(([k, label]) => (
           <Link
             key={k}
-            href={`/admin/batch-qc?status=${status}&kind=${k}`}
+            href={`/owner/batch-qc?status=${status}&kind=${k}`}
             className={`rounded-full border px-2.5 py-0.5 ${
               kind === k
                 ? "border-violet-400 bg-violet-50 text-violet-700"

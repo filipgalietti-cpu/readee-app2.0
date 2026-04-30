@@ -217,7 +217,7 @@ export default async function OwnerProfilePage({
   return (
     <div className="mx-auto max-w-5xl px-6 py-10">
       <Link
-        href="/admin/owner"
+        href="/owner"
         className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-500 hover:text-indigo-600"
       >
         <ArrowLeft className="h-3.5 w-3.5" />
@@ -454,7 +454,7 @@ export default async function OwnerProfilePage({
                       🥕 {k.carrots ?? 0} · 🔥 {k.streak_days ?? 0}
                     </span>
                     <Link
-                      href={`/admin/owner/${k.id}`}
+                      href={`/owner/${k.id}`}
                       className="ml-auto text-[10px] font-bold text-amber-700 hover:underline"
                     >
                       Open student →

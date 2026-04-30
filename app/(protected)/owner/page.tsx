@@ -353,7 +353,7 @@ export default async function OwnerAdminPage({
                 const days = Math.floor((Date.now() - new Date(r.updated_at).getTime()) / 86_400_000);
                 return (
                   <li key={r.id} className="flex items-center justify-between gap-2 rounded-lg bg-white px-2 py-1 text-xs">
-                    <Link href={`/admin/owner/${r.id}`} className="truncate font-mono text-amber-900 hover:underline">
+                    <Link href={`/owner/${r.id}`} className="truncate font-mono text-amber-900 hover:underline">
                       {r.email}
                     </Link>
                     <span className={`rounded-full px-2 py-0.5 text-[10px] font-bold ${PLAN_TONE[r.plan ?? "free"]}`}>
@@ -379,7 +379,7 @@ export default async function OwnerAdminPage({
             <ul className="space-y-1">
               {expansionReady.map((t) => (
                 <li key={t.id} className="flex items-center justify-between gap-2 rounded-lg bg-white px-2 py-1 text-xs">
-                  <Link href={`/admin/owner/${t.id}`} className="truncate font-mono text-violet-900 hover:underline">
+                  <Link href={`/owner/${t.id}`} className="truncate font-mono text-violet-900 hover:underline">
                     {t.email}
                   </Link>
                   <span className="text-[10px] font-bold text-violet-700">{t.usage} AI calls / 30d</span>
@@ -452,7 +452,7 @@ export default async function OwnerAdminPage({
           {((recentSignups ?? []) as any[]).map((r) => (
             <li key={r.id} className="flex items-center gap-2 rounded-lg bg-white px-2 py-1">
               <RoleIcon role={r.role} />
-              <Link href={`/admin/owner/${r.id}`} className="truncate font-mono text-emerald-900 hover:underline">
+              <Link href={`/owner/${r.id}`} className="truncate font-mono text-emerald-900 hover:underline">
                 {r.email}
               </Link>
               <span className={`ml-auto rounded-full px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider ${PLAN_TONE[r.plan ?? "free"]}`}>
@@ -469,7 +469,7 @@ export default async function OwnerAdminPage({
         <h2 className="text-base font-bold text-zinc-900">Account search</h2>
       </div>
       <form
-        action="/admin/owner"
+        action="/owner"
         method="get"
         className="mt-3 flex flex-wrap items-center gap-2"
       >
@@ -484,7 +484,7 @@ export default async function OwnerAdminPage({
         ].map((r) => (
           <Link
             key={r.id}
-            href={`/admin/owner?role=${r.id}${plan ? `&plan=${plan}` : ""}${search ? `&q=${encodeURIComponent(search)}` : ""}`}
+            href={`/owner?role=${r.id}${plan ? `&plan=${plan}` : ""}${search ? `&q=${encodeURIComponent(search)}` : ""}`}
             className={`inline-flex items-center gap-1 rounded-full border px-3 py-1 text-xs font-semibold transition ${
               role === r.id
                 ? "border-amber-500 bg-amber-50 text-amber-800"
@@ -576,7 +576,7 @@ export default async function OwnerAdminPage({
                   </td>
                   <td className="px-2 py-2 text-right">
                     <Link
-                      href={`/admin/owner/${p.id}`}
+                      href={`/owner/${p.id}`}
                       className="inline-flex items-center rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-bold text-amber-800 hover:bg-amber-200"
                     >
                       Open →

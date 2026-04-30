@@ -48,7 +48,7 @@ export async function grantCredits(input: {
     payload: { pool: input.pool, amount, reason: input.reason.trim() },
   });
 
-  revalidatePath(`/admin/owner/${input.profileId}`);
+  revalidatePath(`/owner/${input.profileId}`);
   return { ok: true };
 }
 
@@ -80,7 +80,7 @@ export async function addCsNote(input: {
     payload: { preview: body.slice(0, 80) },
   });
 
-  revalidatePath(`/admin/owner/${input.profileId}`);
+  revalidatePath(`/owner/${input.profileId}`);
   return { ok: true };
 }
 
@@ -132,7 +132,7 @@ export async function changePlan(input: {
     },
   });
 
-  revalidatePath(`/admin/owner/${input.profileId}`);
+  revalidatePath(`/owner/${input.profileId}`);
   return { ok: true };
 }
 
@@ -162,6 +162,6 @@ export async function sendPasswordReset(input: {
     payload: { email: input.email },
   });
 
-  revalidatePath(`/admin/owner/${input.profileId}`);
+  revalidatePath(`/owner/${input.profileId}`);
   return { ok: true };
 }

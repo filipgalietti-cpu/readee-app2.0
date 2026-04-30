@@ -167,7 +167,7 @@ export default async function ContentAuditPage({
           return (
             <Link
               key={f.id}
-              href={`/admin/content-audit?${url.toString()}`}
+              href={`/owner/content-audit?${url.toString()}`}
               className={`rounded-full border px-2.5 py-0.5 text-xs ${
                 active
                   ? "border-rose-500 bg-rose-50 text-rose-700"
@@ -196,7 +196,7 @@ export default async function ContentAuditPage({
           return (
             <Link
               key={k.id}
-              href={`/admin/content-audit?${url.toString()}`}
+              href={`/owner/content-audit?${url.toString()}`}
               className={`rounded-full border px-2.5 py-0.5 text-xs ${
                 active
                   ? "border-violet-500 bg-violet-50 text-violet-700"
@@ -209,7 +209,7 @@ export default async function ContentAuditPage({
         })}
         {kind && (
           <Link
-            href={`/admin/content-audit?status=${status}`}
+            href={`/owner/content-audit?status=${status}`}
             className="rounded-full border border-zinc-200 bg-white px-2.5 py-0.5 text-xs text-zinc-500"
           >
             Clear

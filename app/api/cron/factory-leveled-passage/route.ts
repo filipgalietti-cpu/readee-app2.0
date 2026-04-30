@@ -4,7 +4,7 @@
  * Nightly (default ~3 UTC), generates a small batch of differentiated
  * passages tagged to CCS comprehension standards and a curated theme.
  * Each passage gets the full QC pipeline + auto-promotion, with rejects
- * and warns landing in /admin/batch-qc for human review.
+ * and warns landing in /owner/batch-qc for human review.
  *
  * Idempotent: factory_runs has a unique constraint on (run_date,
  * asset_kind), so re-running the same day returns early without
