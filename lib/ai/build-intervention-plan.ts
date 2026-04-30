@@ -49,7 +49,17 @@ OUTPUT SHAPE — JSON with these top-level fields:
 - escalation_trigger (1 sentence: under what data condition do you escalate to the IEP team)
 - caregiver_note (1-2 parent-readable sentences, optional)
 
-material_hint should be specific enough to map to Readee content: "Readee leveled passage, on-grade, r-controlled focus" / "Readee phonics drill, RF.1.3a-d" / "fluency cold-read with timer". Don't invent specific lesson IDs — the UI will resolve material_hint to real assignments.
+material_hint is the human-readable description shown to the teacher. In addition, you must emit STRUCTURED resolver fields per session so Readee can auto-match the material to a real assignable lesson:
+
+- material_kind: "lesson" | "passage" | "fluency_probe" | "teacher_led"
+  • "lesson" → standards-aligned practice (Readee will push a readee_lesson assignment for the named standard)
+  • "passage" → reading a leveled passage (Readee will push a leveled passage assignment when one matches)
+  • "fluency_probe" → cold-read or repeated-read with a timer (NOT auto-assigned; teacher-led)
+  • "teacher_led" → small-group instruction, conferencing, anything the teacher runs in person (NOT auto-assigned)
+- standard_id: a CCSS code like "RF.1.3b", "RL.2.1", "L.1.4", or null. REQUIRED when material_kind is "lesson". Use the standard the activity targets — not just the closest one.
+- grade: "K" | "1st" | "2nd" | "3rd" | "4th" | null. The grade level the material should be at, which may be BELOW the student's enrolled grade (interventions often regress to mastered prerequisites).
+
+Don't invent specific lesson IDs — the resolver maps standard_id + grade to a real lesson at runtime.
 
 Tone: professional, action-oriented. Refer to the student by first name only.`;
 
@@ -74,8 +84,21 @@ const SCHEMA = {
                 activity: { type: Type.STRING },
                 material_hint: { type: Type.STRING },
                 expected_outcome: { type: Type.STRING },
+                material_kind: {
+                  type: Type.STRING,
+                  enum: ["lesson", "passage", "fluency_probe", "teacher_led"],
+                },
+                standard_id: { type: Type.STRING },
+                grade: { type: Type.STRING },
               },
-              required: ["day_label", "duration_min", "activity", "material_hint", "expected_outcome"],
+              required: [
+                "day_label",
+                "duration_min",
+                "activity",
+                "material_hint",
+                "expected_outcome",
+                "material_kind",
+              ],
             },
           },
         },
@@ -97,12 +120,17 @@ const SCHEMA = {
   ],
 };
 
+export type MaterialKind = "lesson" | "passage" | "fluency_probe" | "teacher_led";
+
 export type InterventionSession = {
   dayLabel: string;
   durationMin: number;
   activity: string;
   materialHint: string;
   expectedOutcome: string;
+  materialKind: MaterialKind;
+  standardId: string | null;
+  grade: string | null;
 };
 
 export type InterventionWeek = {
@@ -195,13 +223,24 @@ export async function draftInterventionPlan(input: {
         ? parsed.weekly_blocks.map((w: any) => ({
             weekLabel: String(w?.week_label ?? "").trim() || "Week",
             sessions: Array.isArray(w?.sessions)
-              ? w.sessions.map((s: any) => ({
-                  dayLabel: String(s?.day_label ?? "").trim() || "Day",
-                  durationMin: Number.isFinite(s?.duration_min) ? Number(s.duration_min) : 15,
-                  activity: String(s?.activity ?? "").trim(),
-                  materialHint: String(s?.material_hint ?? "").trim(),
-                  expectedOutcome: String(s?.expected_outcome ?? "").trim(),
-                }))
+              ? w.sessions.map((s: any) => {
+                  const rawKind = String(s?.material_kind ?? "").trim();
+                  const kind: MaterialKind = (
+                    ["lesson", "passage", "fluency_probe", "teacher_led"] as const
+                  ).includes(rawKind as MaterialKind)
+                    ? (rawKind as MaterialKind)
+                    : "teacher_led";
+                  return {
+                    dayLabel: String(s?.day_label ?? "").trim() || "Day",
+                    durationMin: Number.isFinite(s?.duration_min) ? Number(s.duration_min) : 15,
+                    activity: String(s?.activity ?? "").trim(),
+                    materialHint: String(s?.material_hint ?? "").trim(),
+                    expectedOutcome: String(s?.expected_outcome ?? "").trim(),
+                    materialKind: kind,
+                    standardId: s?.standard_id ? String(s.standard_id).trim() : null,
+                    grade: s?.grade ? String(s.grade).trim() : null,
+                  };
+                })
               : [],
           }))
         : [],

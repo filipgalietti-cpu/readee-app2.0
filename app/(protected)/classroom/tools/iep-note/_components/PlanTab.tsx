@@ -10,10 +10,12 @@ import {
   Calendar,
   Target,
   TriangleAlert,
+  Send,
 } from "lucide-react";
 import { ReadeeAiLoader } from "@/components/loaders/ReadeeAiLoader";
 import type { IepGoal } from "../actions";
 import { goalLabel } from "./goal-label";
+import PushPlanModal from "./PushPlanModal";
 
 type Plan = {
   summary: string;
@@ -62,9 +64,12 @@ export default function PlanTab({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeGoals.map((g) => g.id).join("|")]);
   const [plan, setPlan] = useState<Plan | null>(null);
+  const [planId, setPlanId] = useState<string | null>(null);
   const [pending, setPending] = useState(false);
   const [err, setErr] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
+  const [pushOpen, setPushOpen] = useState(false);
+  const [pushedCount, setPushedCount] = useState<number | null>(null);
 
   async function submit() {
     setErr(null);
@@ -80,6 +85,8 @@ export default function PlanTab({
       return;
     }
     setPending(true);
+    setPushedCount(null);
+    setPlanId(null);
     try {
       const res = await fetch("/api/iep-plan", {
         method: "POST",
@@ -92,7 +99,10 @@ export default function PlanTab({
       });
       const json = await res.json();
       if (!json.ok) setErr(json.error ?? "Couldn't draft the plan.");
-      else setPlan(json.plan as Plan);
+      else {
+        setPlan(json.plan as Plan);
+        setPlanId(json.persistedId ?? null);
+      }
     } catch (e: any) {
       setErr(e?.message ?? "Couldn't draft the plan.");
     } finally {
@@ -242,15 +252,33 @@ export default function PlanTab({
                   ))}
                 </div>
               </div>
-              <button
-                type="button"
-                onClick={copyPlan}
-                className="inline-flex items-center gap-1 rounded-full bg-violet-700 px-3 py-1 text-[10px] font-bold text-white hover:bg-violet-800"
-              >
-                {copied ? <Check className="h-3 w-3" /> : <Copy className="h-3 w-3" />}
-                {copied ? "Copied" : "Copy plan"}
-              </button>
+              <div className="flex items-center gap-1.5">
+                {planId && (
+                  <button
+                    type="button"
+                    onClick={() => setPushOpen(true)}
+                    className="inline-flex items-center gap-1 rounded-full bg-emerald-600 px-3 py-1 text-[10px] font-bold text-white hover:bg-emerald-700"
+                  >
+                    <Send className="h-3 w-3" />
+                    Push to assignments
+                  </button>
+                )}
+                <button
+                  type="button"
+                  onClick={copyPlan}
+                  className="inline-flex items-center gap-1 rounded-full bg-violet-700 px-3 py-1 text-[10px] font-bold text-white hover:bg-violet-800"
+                >
+                  {copied ? <Check className="h-3 w-3" /> : <Copy className="h-3 w-3" />}
+                  {copied ? "Copied" : "Copy plan"}
+                </button>
+              </div>
             </div>
+            {pushedCount !== null && (
+              <div className="mt-3 rounded-xl border border-emerald-200 bg-white px-3 py-2 text-xs font-semibold text-emerald-700 dark:border-emerald-900/40 dark:bg-slate-900 dark:text-emerald-300">
+                ✓ Pushed {pushedCount} assignment{pushedCount === 1 ? "" : "s"} to the
+                student. They&apos;ll see them in their dashboard.
+              </div>
+            )}
           </div>
 
           {plan.weeklyBlocks.map((w, wi) => (
@@ -336,6 +364,17 @@ export default function PlanTab({
             )}
           </div>
         </div>
+      )}
+
+      {pushOpen && planId && (
+        <PushPlanModal
+          planId={planId}
+          onClose={() => setPushOpen(false)}
+          onPushed={(count) => {
+            setPushedCount(count);
+            setPushOpen(false);
+          }}
+        />
       )}
     </div>
   );
