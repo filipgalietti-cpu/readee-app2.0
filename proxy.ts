@@ -213,14 +213,9 @@ export async function proxy(request: NextRequest) {
       const isOwner = !!paRow;
 
       if (isOwner) {
-        // Owners see ONLY /owner/*. /admin is for tenant admins —
-        // owners shouldn't use it. Bounce anything else to /owner.
-        if (!isOwnerOnlyRoute) {
-          const url = request.nextUrl.clone();
-          url.pathname = "/owner";
-          url.search = "";
-          return NextResponse.redirect(url);
-        }
+        // Platform admins (Filip / Jen) can shadow into any surface —
+        // they need to QA parent + teacher flows without juggling logins.
+        // The hard separation only applies to non-admin accounts.
       } else if (role === "educator") {
         // Teachers can't enter the owner surface or the parent surface.
         if (isOwnerOnlyRoute) {

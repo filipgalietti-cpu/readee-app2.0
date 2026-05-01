@@ -17,18 +17,17 @@ export default async function CommunityPassagePage({
   const admin = supabaseAdmin();
   const { data: row } = await admin
     .from("community_passages")
-    .select("id, title, passage_text, questions, image_url, audio_url, grade_level, topic, phonics_pattern, status, play_count")
+    .select("id, slug, title, passage_text, questions, image_url, audio_url, grade_level, topic, phonics_pattern, status, view_count, play_count, display_byline")
     .eq("id", id)
     .eq("status", "approved")
     .maybeSingle();
   if (!row) notFound();
   const passage = row as any;
 
-  // Best-effort play increment — fire-and-forget; if it fails we don't
-  // want to block the reader.
+  // Best-effort view increment.
   await admin
     .from("community_passages")
-    .update({ play_count: (passage.play_count ?? 0) + 1 })
+    .update({ view_count: (passage.view_count ?? 0) + 1 })
     .eq("id", id);
 
   return (
@@ -43,7 +42,9 @@ export default async function CommunityPassagePage({
 
       <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-violet-600 dark:text-violet-300">
         <Users className="h-4 w-4" />
-        Shared by a Readee family
+        {passage.display_byline
+          ? `Shared by ${passage.display_byline}`
+          : "Shared by a Readee family"}
         <span className="rounded-full bg-violet-100 px-2 py-0.5 text-violet-700 dark:bg-violet-950/40 dark:text-violet-300">
           {passage.grade_level}
         </span>

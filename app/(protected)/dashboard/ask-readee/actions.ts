@@ -6,7 +6,6 @@ import { createClient } from "@/lib/supabase/server";
 import {
   buildParentContent,
   type ParentAiBrief,
-  MONTHLY_PARENT_CREDIT_LIMIT,
 } from "@/lib/ai/build-parent-content";
 import {
   submitForCommunityReview,
@@ -104,4 +103,29 @@ export async function toggleShareContent(input: {
   return { ok: true };
 }
 
-export { MONTHLY_PARENT_CREDIT_LIMIT };
+/**
+ * One-time byline consent recorded the first time a parent shares.
+ * - consent=true + displayName="Erin S." → byline appears on shares
+ * - consent=false → kept anonymous, no byline ever
+ * Either choice satisfies the consent gate so we only ask once.
+ */
+export async function setCommunityByline(input: {
+  consent: boolean;
+  displayName: string | null;
+}): Promise<{ ok: true } | { ok: false; error: string }> {
+  const profile = await requireProfile();
+  const supabase = await createClient();
+  const cleanName = input.consent
+    ? (input.displayName ?? "").trim().slice(0, 40) || null
+    : null;
+  const { error } = await supabase
+    .from("profiles")
+    .update({
+      community_byline_consent: input.consent,
+      community_display_name: cleanName,
+    })
+    .eq("id", profile.id);
+  if (error) return { ok: false, error: error.message };
+  revalidatePath("/dashboard/ask-readee");
+  return { ok: true };
+}

@@ -12,6 +12,7 @@ import {
   Shuffle, BookOpen, Type, Newspaper, MessageCircle,
   ChevronDown, ChevronRight, Zap,
 } from "lucide-react";
+import TopCommunityPicks from "./_components/TopCommunityPicks";
 
 const GRADE_BADGES: Record<string, string> = {
   kindergarten: "/images/ui/grades/grade-k.png",
@@ -370,6 +371,10 @@ function PracticeHubContent() {
         </div>
         <ChevronRight className="w-5 h-5 text-white/60 flex-shrink-0" />
       </motion.button>
+
+      {/* Community top picks — auto-curated by reads. Quietly hides
+          when there are no approved community submissions yet. */}
+      <TopCommunityPicks />
 
       {/* Grade → Domain → Topics */}
       {allGrades.map((grade, gIdx) => {

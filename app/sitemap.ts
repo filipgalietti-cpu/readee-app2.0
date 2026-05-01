@@ -1,9 +1,10 @@
 import type { MetadataRoute } from "next";
 import { getAllStandards, slugifyStandard } from "@/lib/data/standards";
+import { supabaseAdmin } from "@/lib/supabase/admin";
 
 const BASE = "https://learn.readee.app";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
 
   const staticRoutes: MetadataRoute.Sitemap = [
@@ -32,5 +33,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...standardRoutes];
+  // Approved community passages — public reads + acquisition surface.
+  // Pull at build/render time; sitemap regen frequency keeps this fresh.
+  let communityRoutes: MetadataRoute.Sitemap = [];
+  try {
+    const admin = supabaseAdmin();
+    const { data } = await admin
+      .from("community_passages")
+      .select("slug, updated_at")
+      .eq("status", "approved")
+      .not("slug", "is", null)
+      .limit(5000);
+    communityRoutes = ((data ?? []) as { slug: string; updated_at: string }[]).map(
+      (r) => ({
+        url: `${BASE}/community/${r.slug}`,
+        lastModified: r.updated_at ? new Date(r.updated_at) : now,
+        changeFrequency: "monthly",
+        priority: 0.6,
+      }),
+    );
+  } catch {
+    // Sitemap shouldn't 500 the build if Supabase is briefly unreachable.
+  }
+
+  return [...staticRoutes, ...standardRoutes, ...communityRoutes];
 }

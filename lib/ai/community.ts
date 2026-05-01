@@ -18,6 +18,7 @@
 
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { containsUnsafeContent } from "@/lib/ai/safety";
+import { generateSpeech } from "@/lib/ai/readee-ai";
 
 /**
  * Once a parent has TRUSTED_THRESHOLD successful community approvals,
@@ -26,6 +27,19 @@ import { containsUnsafeContent } from "@/lib/ai/safety";
  * drops.
  */
 export const TRUSTED_THRESHOLD = 5;
+
+/** URL-safe slug from a passage title, with a short random salt so
+ *  concurrent submissions of "the-rainforest" don't collide on the
+ *  unique index. */
+function buildSlug(title: string): string {
+  const base = title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 60);
+  const salt = Math.random().toString(36).slice(2, 8);
+  return `${base || "passage"}-${salt}`;
+}
 
 // Conservative generic-name whitelist. If a proper-noun-looking token in
 // the passage ISN'T in this set, we replace it with Alex / Sam / Jamie
@@ -184,6 +198,38 @@ export async function submitForCommunityReview(input: {
     explicitTrust === true ||
     (explicitTrust !== false && approvedCount >= TRUSTED_THRESHOLD);
 
+  // Re-generate the read-aloud audio from the anonymized passage. The
+  // original audio bakes in the child's real name ("Lily"); rerunning
+  // TTS on cleanPassage produces a community-safe version that matches
+  // the public text. ~$0.02 per submission, eaten by Readee.
+  let audioUrl: string | null = null;
+  if (cleanPassage) {
+    const tts = await generateSpeech({
+      teacherId: input.parentId,
+      text: cleanPassage,
+    });
+    if (tts.ok) audioUrl = tts.audioUrl;
+    // If TTS fails the submission still goes through — text + image are
+    // already valuable. Don't block the parent on a TTS hiccup.
+  }
+
+  // Pull the parent's byline preference. We only stamp a name when
+  // they've explicitly opted in via the consent flow.
+  const { data: parentProfile } = await admin
+    .from("profiles")
+    .select("community_byline_consent, community_display_name")
+    .eq("id", input.parentId)
+    .maybeSingle();
+  const displayByline =
+    (parentProfile as any)?.community_byline_consent === true
+      ? ((parentProfile as any).community_display_name as string | null) ?? null
+      : null;
+
+  // URL slug for /community/[slug]. We salt with a short id chunk so
+  // concurrent submissions of similar titles don't collide.
+  const titleForSlug = c.title ?? c.topic ?? "passage";
+  const slug = buildSlug(titleForSlug);
+
   const { data: inserted, error: insErr } = await admin
     .from("community_passages")
     .insert({
@@ -193,13 +239,15 @@ export async function submitForCommunityReview(input: {
       passage_text: cleanPassage,
       questions: cleanQuestions,
       image_url: c.image_url,
-      audio_url: null, // audio contains the anonymized-away names; require regen to share with audio.
+      audio_url: audioUrl,
       grade_level: c.grade_level ?? "2nd",
       topic: c.topic,
       phonics_pattern: c.phonics_pattern ?? null,
       status: isTrusted ? "approved" : "pending",
       auto_approved: isTrusted,
       reviewed_at: isTrusted ? new Date().toISOString() : null,
+      slug,
+      display_byline: displayByline,
     })
     .select("id")
     .single();

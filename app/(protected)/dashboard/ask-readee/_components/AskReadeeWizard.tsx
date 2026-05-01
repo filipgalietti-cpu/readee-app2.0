@@ -195,7 +195,7 @@ export default function AskReadeeWizard({
           </div>
         )}
 
-        <CostFooter cost={cost} budget={budget} exceedsRemaining={exceedsRemaining} />
+        <CostFooter exceedsRemaining={exceedsRemaining} />
 
         <div className="mt-4 flex items-center justify-between">
           <button
@@ -600,43 +600,25 @@ function MediaRow({
 }
 
 function CostFooter({
-  cost,
-  budget,
   exceedsRemaining,
 }: {
-  cost: number;
-  budget: { used: number; limit: number; remaining: number } | null;
   exceedsRemaining: boolean;
 }) {
   return (
     <div className="mt-5 rounded-2xl border border-zinc-200 bg-zinc-50 px-4 py-3 text-xs dark:border-slate-800 dark:bg-slate-950/50">
-      <div className="flex flex-wrap items-center justify-between gap-2">
-        <div className="flex items-center gap-1.5 font-semibold text-zinc-600 dark:text-slate-400">
-          <Sparkles className="h-3.5 w-3.5 text-violet-500" />
-          Cost:{" "}
-          <span className="font-mono font-bold text-zinc-900 dark:text-white">
-            {cost} credits
-          </span>
-        </div>
-        {budget && (
-          <div
-            className={`font-mono font-semibold ${
-              exceedsRemaining
-                ? "text-red-600"
-                : "text-zinc-500 dark:text-slate-400"
-            }`}
-          >
-            {budget.remaining} / {budget.limit} credits left this month
-          </div>
-        )}
-      </div>
-      {exceedsRemaining && (
-        <div className="mt-2 flex items-center justify-between gap-3">
-          <div className="text-red-700 dark:text-red-300">
-            Over your monthly pool. Reduce options — or top up for more
-            credits.
+      {exceedsRemaining ? (
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div className="flex items-center gap-1.5 font-semibold text-red-700 dark:text-red-300">
+            <Sparkles className="h-3.5 w-3.5" />
+            You&apos;ve used your monthly Readee+ readings. Top up to keep
+            building.
           </div>
           <TopUpCreditsButton pool="parent" label="Top up" />
+        </div>
+      ) : (
+        <div className="flex items-center gap-1.5 font-semibold text-zinc-600 dark:text-slate-400">
+          <Sparkles className="h-3.5 w-3.5 text-violet-500" />
+          Included with your Readee+ plan.
         </div>
       )}
     </div>
