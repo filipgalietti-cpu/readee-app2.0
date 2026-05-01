@@ -112,19 +112,42 @@ const FIXED_HOLIDAYS: Record<string, DailyTheme> = {
 // computus is messy and they're religious, not academic anchors).
 
 type MovableMatcher = (d: Date) => boolean;
+/** Calendar parts (year, month 1-12, day 1-31, weekday 0=Sun) anchored
+ *  to America/New_York so cron / midnight crossings can't drift the
+ *  theme by a day. */
+function nyParts(d: Date): { year: number; month: number; day: number; dow: number } {
+  const fmt = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/New_York",
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+    weekday: "short",
+  }).formatToParts(d);
+  const get = (t: string) => fmt.find((p) => p.type === t)?.value ?? "";
+  const dowMap: Record<string, number> = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+  return {
+    year: Number(get("year")),
+    month: Number(get("month")),
+    day: Number(get("day")),
+    dow: dowMap[get("weekday")] ?? 0,
+  };
+}
 function nthWeekdayOfMonth(month: number, weekday: number, n: number): MovableMatcher {
   return (d) => {
-    if (d.getUTCMonth() + 1 !== month) return false;
-    if (d.getUTCDay() !== weekday) return false;
-    return Math.floor((d.getUTCDate() - 1) / 7) + 1 === n;
+    const p = nyParts(d);
+    if (p.month !== month) return false;
+    if (p.dow !== weekday) return false;
+    return Math.floor((p.day - 1) / 7) + 1 === n;
   };
 }
 function lastWeekdayOfMonth(month: number, weekday: number): MovableMatcher {
   return (d) => {
-    if (d.getUTCMonth() + 1 !== month) return false;
-    if (d.getUTCDay() !== weekday) return false;
-    const next = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate() + 7));
-    return next.getUTCMonth() + 1 !== month;
+    const p = nyParts(d);
+    if (p.month !== month) return false;
+    if (p.dow !== weekday) return false;
+    // 7 days from now in NY-time still inside the same month?
+    const next = nyParts(new Date(d.getTime() + 7 * 24 * 60 * 60 * 1000));
+    return next.month !== month;
   };
 }
 
@@ -309,9 +332,7 @@ function seasonOf(month: number): "winter" | "spring" | "summer" | "fall" {
  * returns the same theme so re-running the cron is safe.
  */
 export function pickThemeForDate(d: Date): DailyTheme {
-  const month = d.getUTCMonth() + 1;
-  const day = d.getUTCDate();
-  const dow = d.getUTCDay();
+  const { month, day, dow } = nyParts(d);
 
   const fixedKey = `${pad(month)}-${pad(day)}`;
   if (FIXED_HOLIDAYS[fixedKey]) return FIXED_HOLIDAYS[fixedKey];
@@ -342,6 +363,18 @@ export function pickThemeForDate(d: Date): DailyTheme {
   return season[seed % season.length];
 }
 
+/** YYYY-MM-DD anchored to America/New_York. Readee is a US K-4
+ *  product on EDT/EST school time — using UTC made the cron flip
+ *  the calendar a day early once Vercel's UTC clock crossed midnight
+ *  while it was still 8pm ET. Intl gives us TZ-correct calendar
+ *  parts without pulling in a date library. */
 export function slugForDate(d: Date): string {
-  return `${d.getUTCFullYear()}-${pad(d.getUTCMonth() + 1)}-${pad(d.getUTCDate())}`;
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "America/New_York",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(d);
+  const get = (t: string) => parts.find((p) => p.type === t)?.value ?? "";
+  return `${get("year")}-${get("month")}-${get("day")}`;
 }
