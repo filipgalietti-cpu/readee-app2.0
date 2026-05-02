@@ -272,6 +272,46 @@ export async function settleBatchAgainstTopUp(input: {
   });
 }
 
+/** Sniff a CCSS skill out of a teacher's freetext topic so we can
+ *  surface it as a separate "Skill focus" line in the user prompt.
+ *  Returns null if no skill keyword or CCSS code is detected. */
+function extractSkillFocus(topic: string): string | null {
+  const lower = topic.toLowerCase();
+  // Direct CCSS code (e.g. "RL.3.6", "RI.4.2", "L.3.5a")
+  const ccss = topic.match(/\b(RL|RI|RF|L|SL|W)\.[K0-4]\.\d+[a-z]?\b/i);
+  // Skill keywords mapped to a normalized phrase the model recognizes.
+  const skills: Array<[RegExp, string]> = [
+    [/\b(point of view|narrator|narrat\w+|perspective|first[- ]person|third[- ]person|whose view|author'?s view)\b/i, "Author's / narrator's point of view — identify whose perspective the story is told from, distinguish narrator vs character viewpoint"],
+    [/\b(main idea|central idea|gist|mostly about)\b/i, "Main idea / central idea — synthesize what the passage is mostly about"],
+    [/\b(theme|moral|lesson of the story|message)\b/i, "Theme — identify the deeper lesson or message"],
+    [/\b(character traits?|how (a |the )?character (acts|feels|behaves)|character analysis)\b/i, "Character traits — infer traits from a character's actions, words, or thoughts"],
+    [/\b(compare (and|&|or) contrast|similar(it(y|ies))? (and|&|or) differences|alike (and|&|or) different)\b/i, "Compare and contrast — find similarities AND differences across two texts, sections, or characters"],
+    [/\b(summar(y|ize|izing)|best summary|short summary)\b/i, "Summarizing — pick the best concise summary of the passage"],
+    [/\b(infer\w*|reading between the lines|implies?|implication|what (you|we) can tell)\b/i, "Inferring — reason beyond what is literally stated using text evidence"],
+    [/\b(cause (and|&) effect|because|why did|leads? to)\b/i, "Cause and effect — connect a specific event to its consequence"],
+    [/\b(text structure|how (the )?text is organized|chronological|problem (and )?solution|sequence)\b/i, "Text structure — identify chronological / problem-solution / compare-contrast / cause-effect / description"],
+    [/\b(figurative language|simile|metaphor|idiom|personification|hyperbole|onomatopoeia)\b/i, "Figurative language — analyze the meaning of a non-literal phrase IN CONTEXT"],
+    [/\b(text features?|headings?|captions?|diagrams?|glossary|table of contents|sidebar|labels?)\b/i, "Text features — use the feature to locate or interpret information"],
+    [/\b(vocabulary in context|word meaning|context clues?|figure out (the )?meaning)\b/i, "Vocabulary in context — use context clues to determine word meaning"],
+    [/\b(key details?|specific details?|who what when where)\b/i, "Key details — recall specific text-anchored facts"],
+    [/\b(setting|where (the |does )?stor(y|ies) (take place|happens?))\b/i, "Setting — identify where and when the story takes place"],
+    [/\b(plot|sequence of events|what happens? next|story order)\b/i, "Plot / sequence of events — order or identify what happens"],
+    [/\b(rhyme|rhyming|rhym\w+ words)\b/i, "Rhyming — identify words that rhyme"],
+    [/\b(sight words?|high frequency words?)\b/i, "Sight words — recognize high-frequency words on sight"],
+    [/\b(blending|blend sounds|blending sounds)\b/i, "Blending — combine individual sounds into a word"],
+    [/\b(segmenting|segment sounds|break (the |a )word)\b/i, "Segmenting — break a word into individual sounds"],
+    [/\b(digraphs?|consonant blends?|vowel teams?)\b/i, "Phonics pattern — identify the target letter pattern"],
+  ];
+  const hits: string[] = [];
+  if (ccss) hits.push(`CCSS ${ccss[0].toUpperCase()}`);
+  for (const [re, label] of skills) {
+    if (re.test(lower)) hits.push(label);
+  }
+  if (hits.length === 0) return null;
+  // Dedup + cap
+  return Array.from(new Set(hits)).slice(0, 3).join("; ");
+}
+
 const MCQ_SYSTEM = `You write age-appropriate multiple-choice reading comprehension questions for elementary students.
 
 Rules:
@@ -281,7 +321,29 @@ Rules:
 - Make the correct answer unambiguous — no trick questions, no "all of the above", no "none of the above".
 - Keep prompts under 350 characters. If a passage is needed, include it inline.
 - Write a short hint (one sentence) that helps a struggling student re-read for the answer.
-- The "correct" field must match one of the choices exactly, character-for-character.`;
+- The "correct" field must match one of the choices exactly, character-for-character.
+
+CRITICAL — STANDARD / SKILL FIDELITY:
+The teacher's brief may name a specific Common Core reading skill or standard. If the brief mentions any of the skills below (or a CCSS code like RL.3.6, RI.4.2, L.3.5a), EVERY question must require THAT EXACT SKILL — not generic plot recall, not basic comprehension, not vocabulary recall.
+
+Skill triggers and what each requires:
+- "point of view", "narrator", "perspective", "author's view", "first person", "third person" → questions must identify whose perspective the story is told from, distinguish narrator vs character viewpoint, or contrast the reader's view with a character's view. NOT "what happened next".
+- "main idea", "central idea", "what is the passage mostly about" → questions must require synthesizing the passage's overall point, not recalling a single detail.
+- "theme", "lesson", "moral" → questions must identify the deeper message the story conveys, not summarize the plot.
+- "character traits", "how a character acts/feels" → questions must infer traits from evidence (actions, words), not recall facts.
+- "compare and contrast" → questions must require finding similarities AND differences across two texts/sections/characters.
+- "summarizing" → questions must require selecting the best summary, not the most detailed retelling.
+- "inferring", "what can you tell", "implies" → questions must require reasoning beyond what's literally stated.
+- "cause and effect" → questions must connect a specific event to its consequence, with both anchored in the text.
+- "text structure", "how the text is organized" → questions must identify chronological / problem-solution / compare-contrast / cause-effect / description structure.
+- "figurative language", "simile", "metaphor", "idiom", "personification" → questions must analyze meaning of a non-literal phrase IN CONTEXT.
+- "text features" (RI), "headings", "captions", "diagrams", "glossary", "table of contents" → questions must require using the feature to locate or interpret information.
+- "vocabulary in context", "word meaning" → questions must require using context clues, not pre-existing knowledge.
+- "key details" → questions must require recalling specific text-anchored facts (who/what/when/where).
+
+If the brief is generic ("a story about a puppy"), default to mixed reading-comprehension question types. Do NOT downgrade a skill-specific brief to generic plot questions — that defeats the teacher's purpose.
+
+If the brief names a CCSS code you don't recognize, infer the skill from the code's strand and number (RL = Reading Literature, RI = Reading Informational, RF = Reading Foundational, L = Language). Treat 3.6/4.6 as POV; 3.2/4.2 as theme/main idea; 3.4/4.4 as vocabulary in context.`;
 
 const MCQ_SCHEMA = {
   type: Type.OBJECT,
@@ -427,9 +489,17 @@ export async function generateMCQQuestions(input: {
     ? `Grade level: ${input.gradeLevel}.`
     : "Grade level: 2nd (assume elementary reading comprehension).";
 
+  // Detect skill keywords / CCSS codes in the topic so the model
+  // sees them as a separate "Skill focus" line, not buried in the
+  // topic blob. Heuristic — picks up the most common K-4 skills.
+  const skillFocus = extractSkillFocus(input.topic);
+  const skillLine = skillFocus
+    ? `Skill focus (every question MUST require this skill — not generic plot recall): ${skillFocus}\n\n`
+    : "";
+
   const userPrompt = `${gradeLine}
 
-Topic / focus: ${input.topic.trim()}
+${skillLine}Topic / focus: ${input.topic.trim()}
 
 Generate exactly ${count} multiple-choice question${count === 1 ? "" : "s"} following the schema. Each question needs 4 choices with one correct answer.`;
 
@@ -545,7 +615,14 @@ Rules:
 - Statements must be unambiguously true or false based on the passage. No trick wording.
 - Grade-appropriate vocabulary; K-2 simpler, 3-4 richer.
 - Hint = one sentence pointing the reader back to the relevant part of the passage.
-- The "correct" field is exactly the string "True" or "False".`;
+- The "correct" field is exactly the string "True" or "False".
+
+CRITICAL — STANDARD / SKILL FIDELITY:
+If the teacher's brief mentions a specific CCSS reading skill (point of view, theme, main idea, character traits, compare/contrast, inferring, cause and effect, text structure, figurative language, text features, vocabulary in context, key details) or a CCSS code (RL.3.6, RI.4.2, etc.), EVERY statement must let the student exercise THAT EXACT SKILL — not generic plot recall.
+
+For example, if the brief is "author's point of view (RL.3.6)", a good T/F is "The story is told from Leo's perspective, not Maya's." A bad T/F is "Leo had a red soccer ball." The first tests POV; the second is plot recall.
+
+When the brief is generic, default to mixed reading-comprehension statements.`;
 
 const TF_SCHEMA = {
   type: Type.OBJECT,
@@ -599,9 +676,13 @@ export async function generateTrueFalseQuestions(input: {
   const gradeLine = input.gradeLevel
     ? `Grade level: ${input.gradeLevel}.`
     : "Grade level: 2nd.";
+  const tfSkillFocus = extractSkillFocus(input.topic);
+  const tfSkillLine = tfSkillFocus
+    ? `Skill focus (every statement MUST exercise this skill — not generic plot recall): ${tfSkillFocus}\n\n`
+    : "";
   const userPrompt = `${gradeLine}
 
-Topic / focus: ${input.topic.trim()}
+${tfSkillLine}Topic / focus: ${input.topic.trim()}
 
 Generate exactly ${count} true/false statement${count === 1 ? "" : "s"} per the schema. Mix true and false answers — do not make them all the same. Each correct field must be exactly "True" or "False".`;
 
