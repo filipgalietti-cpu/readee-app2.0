@@ -19,6 +19,8 @@
     "qc:bot:dry": "tsx scripts/qc-bot-cleanup.ts --dry-run",
     "qc:regen-images": "tsx scripts/qc-bot-regen-images.ts",
     "qc:regen-images:dry": "tsx scripts/qc-bot-regen-images.ts --dry-run",
+    "qc:regen-audio": "tsx scripts/qc-bot-regen-audio.ts",
+    "qc:regen-audio:dry": "tsx scripts/qc-bot-regen-audio.ts --dry-run",
     "qc:audit": "tsx scripts/audit-content.ts"
   },
   "dependencies": {
