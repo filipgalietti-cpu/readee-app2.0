@@ -14,7 +14,10 @@
     "test:smoke:ui": "playwright test --ui",
     "test:smoke:local": "PLAYWRIGHT_BASE_URL=http://localhost:3000 playwright test",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "qc:bot": "tsx scripts/qc-bot-cleanup.ts",
+    "qc:bot:dry": "tsx scripts/qc-bot-cleanup.ts --dry-run",
+    "qc:audit": "tsx scripts/audit-content.ts"
   },
   "dependencies": {
     "@google-cloud/aiplatform": "^6.4.0",

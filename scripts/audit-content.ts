@@ -221,6 +221,12 @@ async function auditQuestions(input: {
         // Self-leakage — only inspect the QUESTION portion of the
         // prompt (last paragraph after `\n\n`). Embedded passages
         // legitimately contain answers; that's the comprehension model.
+        //
+        // Many K-4 question types LEGITIMATELY repeat the answer in the
+        // stimulus (root-word ID, digraph ID, sight-word spelling, inline
+        // choice listing, identification-in-sentence). The check below
+        // detects those shapes and skips them — without these gates the
+        // judge runs at 0% precision on basic phonics/grammar drills.
         const promptParts = promptText.split("\n\n");
         const questionPart = promptParts[promptParts.length - 1];
         const questionStripped = questionPart
@@ -231,6 +237,33 @@ async function auditQuestions(input: {
           .trim();
         const correctText = String(q.correct ?? "").toLowerCase().trim();
         const correctCompact = correctText.replace(/\s+/g, "");
+
+        // Skip families: question shapes where the answer being inside
+        // the prompt is the question, not a leak.
+        const stdId = String(standardId ?? "").toUpperCase();
+        const isRootWordQ = /\broot word\b/i.test(questionPart);
+        const isDigraphVowelTeamQ =
+          /\b(two letters|vowel team|digraph|trigraph|letters spell|letters make|letters say|silent letter)\b/i.test(
+            questionPart,
+          );
+        const isSightWordSpellQ =
+          /\bhow (is|do you) (it )?spell\b|\bspell this\b|\bspelled\b/i.test(
+            questionPart,
+          );
+        const isIdentifyInSentenceQ =
+          /\bwhich (word|letter|sentence)\b.*\bin (this|the) (sentence|word|words)\b/i.test(
+            questionPart,
+          ) ||
+          /\bidentify\b.*(in|from)\b/i.test(questionPart);
+        const isInlineChoicePrompt =
+          /:\s*[A-Za-z][^?]+?,\s*[A-Za-z][^?]+?,\s*[A-Za-z][^?]+?[?\.]/.test(
+            questionPart,
+          );
+        const isPhonicsStandard = /^(RF|L)\.[K1-4]\.\d/.test(stdId);
+        const isCommonWord = /\b(the|a|an|in|on|at|of|to|is|it|and|or|but)\b/i.test(
+          correctText,
+        );
+
         const isLetterDrill =
           correctCompact.length >= 3 &&
           /\b[a-z](?:[\s\-][a-z])+\b/.test(correctText);
@@ -244,12 +277,30 @@ async function auditQuestions(input: {
         const isPhonicsCtx =
           /\b(letter|letters|sound|sounds|phoneme|spell|spells)\b/i.test(questionPart);
         const isSingleLetterCorrect = correctText.length === 1;
+
+        // Whole-word boundary check — "in" should NOT match inside
+        // "inside". The naive substring check below was the source of
+        // most false positives.
+        const wordBoundaryHit = new RegExp(
+          `\\b${correctText.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`,
+        ).test(questionStripped);
+
+        const skipFamily =
+          isRootWordQ ||
+          isDigraphVowelTeamQ ||
+          isSightWordSpellQ ||
+          isIdentifyInSentenceQ ||
+          isInlineChoicePrompt ||
+          (isPhonicsStandard && correctText.length <= 3) ||
+          (isCommonWord && correctText.length <= 3);
+
         const leak =
-          promptHighlightsTarget ||
-          (correctText.length >= 2 &&
-            questionStripped.includes(correctText) &&
-            !(isPhonicsCtx && isSingleLetterCorrect)) ||
-          (isLetterDrill && questionStripped.includes(correctCompact));
+          !skipFamily &&
+          (promptHighlightsTarget ||
+            (correctText.length >= 2 &&
+              wordBoundaryHit &&
+              !(isPhonicsCtx && isSingleLetterCorrect)) ||
+            (isLetterDrill && questionStripped.includes(correctCompact)));
         if (leak) {
           fail++;
           await upsertFinding({
@@ -265,22 +316,30 @@ async function auditQuestions(input: {
           });
         }
 
-        // Choices contain duplicates
-        const choiceTexts = (q.choices as string[]).map((c) =>
-          String(c).toLowerCase().trim(),
-        );
-        if (new Set(choiceTexts).size !== choiceTexts.length) {
-          fail++;
-          await upsertFinding({
-            runId: input.runId,
-            targetKind: "question",
-            targetId,
-            grade,
-            findingType: "q.unique_choices",
-            severity: "fail",
-            message: "Choices contain duplicates.",
-            targetSnapshot: snapshot,
-          });
+        // Choices contain duplicates. Case AND punctuation sensitive —
+        // L.x.2 (capitalization) and L.x.2/RF.x.1a (sentence punctuation)
+        // questions intentionally have visually-similar choices like
+        // "the dog runs fast." vs "The dog runs fast" — those are NOT
+        // duplicates, they're the entire question. Skip those standards
+        // outright; for everything else compare exact strings.
+        const isCapOrPunctRule = /^L\.[K1-4]\.2/.test(stdId) || /^RF\.[K1-4]\.1a$/.test(stdId);
+        if (!isCapOrPunctRule) {
+          const choiceTexts = (q.choices as string[]).map((c) =>
+            String(c).trim(),
+          );
+          if (new Set(choiceTexts).size !== choiceTexts.length) {
+            fail++;
+            await upsertFinding({
+              runId: input.runId,
+              targetKind: "question",
+              targetId,
+              grade,
+              findingType: "q.unique_choices",
+              severity: "fail",
+              message: "Choices contain duplicates.",
+              targetSnapshot: snapshot,
+            });
+          }
         }
 
         // LLM judges (cost: ~$0.002 per question for both)
@@ -343,31 +402,50 @@ async function auditQuestions(input: {
         if (input.withMedia) {
           if (q.audio_url && typeof q.audio_url === "string") {
             try {
-              // Readee MCQ audio commonly reads the prompt + choices
-              // in order. Pass both as expected so the judge has the
-              // right ground truth and doesn't flag normal pattern
-              // as "doesn't match".
-              const choicesText = Array.isArray(q.choices)
-                ? `\n\nChoices read aloud (typical):\n${(q.choices as string[]).map((c, i) => `${i + 1}. ${c}`).join("\n")}`
-                : "";
-              const a = await judgeAudioFile({
-                audioUrl: q.audio_url,
-                expectedText: promptText + choicesText,
-              });
-              if (a.ok) {
-                if (a.severity === "fail") fail++;
-                else if (a.severity === "warn") warn++;
-                else pass++;
-                await upsertFinding({
-                  runId: input.runId,
-                  targetKind: "question",
-                  targetId,
-                  grade,
-                  findingType: "q.audio_quality",
-                  severity: a.severity,
-                  message: a.reason,
-                  targetSnapshot: { ...snapshot, audio_url: q.audio_url },
+              // Pre-filters — the audio judge has been at ~35% precision
+              // because it doesn't know Readee's TTS conventions:
+              //   - Grades 2-4: choices are NOT in the audio by design
+              //     (defaultPerQuestionTts returns false); judge keeps
+              //     flagging "audio omits the choices".
+              //   - RF.x.3d phonics-spelling: Gemini TTS naturalizes
+              //     non-words like "Thoght / Thawt" as "thought";
+              //     unfixable, not a bug.
+              //   - Heteronym questions (wind/wind, lead/lead, read/read):
+              //     dual pronunciation is the question, not inconsistency.
+              const isG2to4 = /^[GK]?[234]/.test(grade) || /^[234]/.test(grade);
+              const isPhonicsSpelling = /^RF\.[K1-4]\.3d$/.test(stdId);
+              const isHeteronymQ = /\bsame spelling.+different (sound|pronunciation)\b|\brhym(es|ing) with .+ in this sentence\b|\bheteronym/i.test(
+                promptText,
+              );
+              const includeChoicesInExpected = !isG2to4;
+              const choicesText =
+                includeChoicesInExpected && Array.isArray(q.choices)
+                  ? `\n\nChoices read aloud:\n${(q.choices as string[]).map((c, i) => `${i + 1}. ${c}`).join("\n")}`
+                  : "";
+
+              if (isPhonicsSpelling || isHeteronymQ) {
+                // Skip entirely — judge can't reliably evaluate these.
+                pass++;
+              } else {
+                const a = await judgeAudioFile({
+                  audioUrl: q.audio_url,
+                  expectedText: promptText + choicesText,
                 });
+                if (a.ok) {
+                  if (a.severity === "fail") fail++;
+                  else if (a.severity === "warn") warn++;
+                  else pass++;
+                  await upsertFinding({
+                    runId: input.runId,
+                    targetKind: "question",
+                    targetId,
+                    grade,
+                    findingType: "q.audio_quality",
+                    severity: a.severity,
+                    message: a.reason,
+                    targetSnapshot: { ...snapshot, audio_url: q.audio_url },
+                  });
+                }
               }
             } catch {}
           }
