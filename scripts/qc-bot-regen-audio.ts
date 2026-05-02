@@ -128,6 +128,20 @@ async function processFinding(f: any) {
     console.log(`    ! finding update failed: ${updErr.message}`);
     return false;
   }
+
+  await sb.from("content_qc_log").insert({
+    target_kind: "question",
+    target_id: targetId,
+    change_type: "regen_audio",
+    before: { audio_url: audioUrl, finding: f.message },
+    after: { audio_url: audioUrl, regen_text: text },
+    reason: f.message,
+    finding_id: f.id,
+    agent: "qc-bot/regen-audio",
+  });
+
+  await sb.rpc("unquarantine_question", { p_target_id: targetId });
+
   console.log(`    ✓ regenerated`);
   return true;
 }

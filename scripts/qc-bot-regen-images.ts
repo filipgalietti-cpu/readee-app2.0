@@ -154,6 +154,25 @@ async function processFinding(f: any) {
     console.log(`    ! finding update failed: ${updErr.message}`);
     return false;
   }
+
+  // Append to the audit-trail log. Captures the brief that was used
+  // (so a human reviewing later can see what we asked the model for)
+  // and the original failure reason.
+  await sb.from("content_qc_log").insert({
+    target_kind: "question",
+    target_id: targetId,
+    change_type: "regen_image",
+    before: { image_url: imageUrl, finding: message },
+    after: { image_url: imageUrl, regen_prompt: newPrompt },
+    reason: message,
+    finding_id: f.id,
+    agent: "qc-bot/regen-images",
+  });
+
+  // If this question was previously quarantined for an image issue,
+  // un-quarantine it so it returns to the served catalog.
+  await sb.rpc("unquarantine_question", { p_target_id: targetId });
+
   console.log(`    ✓ regenerated`);
   return true;
 }

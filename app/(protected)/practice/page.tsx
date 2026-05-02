@@ -353,6 +353,16 @@ function PracticeLoader() {
   const [child, setChild] = useState<Child | null>(null);
   const [loading, setLoading] = useState(true);
   const [blocked, setBlocked] = useState(false);
+  // Deliverability gate — fetch quarantined question ids on mount and
+  // strip them from the served set. Cached server-side; ~1 lightweight
+  // request per session.
+  const [blockedQuestionIds, setBlockedQuestionIds] = useState<Set<string> | null>(null);
+  useEffect(() => {
+    fetch("/api/qc/blocked-questions")
+      .then((r) => (r.ok ? r.json() : { ids: [] }))
+      .then((d) => setBlockedQuestionIds(new Set<string>(d.ids ?? [])))
+      .catch(() => setBlockedQuestionIds(new Set()));
+  }, []);
 
   const plan = usePlanStore((s) => s.plan);
   const fetchPlan = usePlanStore((s) => s.fetch);
@@ -389,11 +399,19 @@ function PracticeLoader() {
     if (blocked) router.replace("/upgrade?reason=practice");
   }, [blocked, router]);
 
-  if (loading || blocked) return <LoadingScreen />;
+  if (loading || blocked || blockedQuestionIds === null) return <LoadingScreen />;
 
   // Determine grade from child's reading level, then load the right standards
   const gradeKey = levelNameToGradeKey(child?.reading_level ?? null);
-  const gradeStandards = getStandardsForGrade(gradeKey);
+  const allGradeStandards = getStandardsForGrade(gradeKey);
+
+  // Deliverability gate — strip quarantined questions from every
+  // standard before any question selection happens downstream.
+  const blockedSet = blockedQuestionIds;
+  const gradeStandards = allGradeStandards.map((s) => ({
+    ...s,
+    questions: s.questions.filter((q) => !blockedSet.has(q.id)),
+  }));
 
   // Build a virtual standard when filtering by question types across all standards
   let standard: Standard | undefined;
@@ -413,7 +431,13 @@ function PracticeLoader() {
     }
   } else {
     // Look up by ID — search all grades since the URL specifies the exact standard
-    standard = findStandardById(standardId ?? "");
+    const found = findStandardById(standardId ?? "");
+    if (found) {
+      standard = {
+        ...found,
+        questions: found.questions.filter((q) => !blockedSet.has(q.id)),
+      };
+    }
   }
 
   if (!child || !standard) {
