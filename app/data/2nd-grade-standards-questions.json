@@ -28,19 +28,16 @@
         {
           "id": "RL.2.1-Q2",
           "type": "multiple_choice",
-          "prompt": "Leo's dog, Biscuit, loved to play fetch. Every afternoon, Leo would throw a tennis ball across the yard. Biscuit always brought it back, wagging his tail.\n\nWhat did Leo throw?",
+          "prompt": "What object did Leo use to play fetch with Biscuit?",
           "choices": [
             "A stick",
+            "A bone",
             "A tennis ball",
-            "A frisbee",
-            "A bone"
+            "A frisbee"
           ],
           "correct": "A tennis ball",
-          "hint": "Read the second sentence again — what did Leo throw across the yard?",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RL.2.1/RL.2.1-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RL.2.1/RL.2.1-Q2-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RL.2.1/RL.2.1-Q2.png"
+          "hint": "Find the sentence that tells you what Leo threw across the yard for Biscuit to bring back.",
+          "difficulty": "easy"
         },
         {
           "id": "RL.2.1-Q3",
@@ -62,36 +59,30 @@
         {
           "id": "RL.2.1-Q4",
           "type": "multiple_choice",
-          "prompt": "Grandpa and Tomas built a birdhouse together. They used wood, nails, and bright blue paint. They hung it on the oak tree in the backyard.\n\nWho helped Tomas build the birdhouse?",
+          "prompt": "What did Grandpa and Tomas do right after they finished building the birdhouse?",
           "choices": [
-            "His mom",
-            "His teacher",
-            "His friend",
-            "His grandpa"
+            "They painted it with bright blue paint.",
+            "They looked for more wood.",
+            "They hung it on a tree in the backyard.",
+            "They put it on the kitchen table."
           ],
-          "correct": "His grandpa",
-          "hint": "Read the very first sentence — who was with Tomas?",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RL.2.1/RL.2.1-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RL.2.1/RL.2.1-Q4-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RL.2.1/RL.2.1-Q4.png"
+          "correct": "They hung it on a tree in the backyard.",
+          "hint": "Look at the last sentence of the story to see what happened after they used the paint.",
+          "difficulty": "easy"
         },
         {
           "id": "RL.2.1-Q5",
           "type": "multiple_choice",
-          "prompt": "It was raining hard, so the soccer game was canceled. Ava was disappointed. Her dad said, \"Let's play board games instead!\" They played three rounds of her favorite game.\n\nWhen was the soccer game canceled?",
+          "prompt": "Why was Ava disappointed?",
           "choices": [
-            "When it was raining hard",
-            "When it was sunny",
-            "When it was windy",
-            "When it was snowing"
+            "Her dad wanted to play a different game.",
+            "Her favorite board game was broken.",
+            "The soccer game could not happen.",
+            "It was too sunny to play outside."
           ],
-          "correct": "When it was raining hard",
-          "hint": "The very first sentence tells you why — and when!",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RL.2.1/RL.2.1-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RL.2.1/RL.2.1-Q5-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RL.2.1/RL.2.1-Q5.png"
+          "correct": "The soccer game could not happen.",
+          "hint": "Think about what happened right before Ava felt disappointed in the story.",
+          "difficulty": "medium"
         }
       ],
       "standard_id": "RL.2.1",
@@ -434,19 +425,16 @@
         {
           "id": "RL.2.5-Q4",
           "type": "multiple_choice",
-          "prompt": "Which part of a story introduces the characters and setting?",
+          "prompt": "Imagine you are starting to read a brand new story. What is the main reason the author writes the beginning part?",
           "choices": [
-            "The title",
-            "The ending",
-            "The middle",
-            "The beginning"
+            "To tell you how the characters finally solve their big problem.",
+            "To show you all the exciting adventures that happen in the middle.",
+            "To introduce the main characters and where the story is happening.",
+            "To explain what lesson the characters learned at the very end."
           ],
-          "correct": "The beginning",
-          "hint": "Where do you first meet the characters and learn where the story takes place?",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RL.2.5/RL.2.5-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RL.2.5/RL.2.5-Q4-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RL.2.5/RL.2.5-Q4.png"
+          "correct": "To introduce the main characters and where the story is happening.",
+          "hint": "Think about what the very first pages of a story usually teach you about the world and people in it.",
+          "difficulty": "easy"
         },
         {
           "id": "RL.2.5-Q5",
@@ -603,19 +591,16 @@
         {
           "id": "RL.2.7-Q3",
           "type": "multiple_choice",
-          "prompt": "Why are illustrations important in a story?",
+          "prompt": "In a story, the picture shows a character named Lily sitting alone with her head down, while a big storm rages outside her window. Based on the picture, how is Lily most likely feeling?",
           "choices": [
-            "They help you understand the characters and setting better",
-            "They replace the words",
-            "They are only for decoration",
-            "They make the book heavier"
+            "Excited for the storm",
+            "Very happy and joyful",
+            "A little bit sad or scared",
+            "Ready to go outside and play"
           ],
-          "correct": "They help you understand the characters and setting better",
-          "hint": "Think about what you learn from looking at pictures in a story.",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RL.2.7/RL.2.7-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RL.2.7/RL.2.7-Q3-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RL.2.7/RL.2.7-Q3.png"
+          "correct": "A little bit sad or scared",
+          "hint": "Look closely at what Lily is doing and what is happening outside her window in the picture.",
+          "difficulty": "easy"
         },
         {
           "id": "RL.2.7-Q4",
@@ -662,36 +647,30 @@
         {
           "id": "RL.2.9-Q1",
           "type": "multiple_choice",
-          "prompt": "Two versions of Cinderella both have a girl who goes to a ball. In one version, a fairy godmother helps her. In the other, magic fish help her. What is the SAME in both?",
+          "prompt": "In one Cinderella story, a girl wishes to go to a royal party, and a fairy godmother helps her get there. In another Cinderella story, a different girl also dreams of attending a royal party, and magic fish help her. What happens in BOTH of these Cinderella stories?",
           "choices": [
-            "The magic fish",
-            "The prince's name",
-            "The fairy godmother",
-            "A girl goes to a ball"
+            "A fairy godmother helps the girl.",
+            "Magic fish help the girl.",
+            "A girl attends a royal party.",
+            "The girl finds a magic wand."
           ],
-          "correct": "A girl goes to a ball",
-          "hint": "Look for what happens in BOTH versions.",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RL.2.9/RL.2.9-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RL.2.9/RL.2.9-Q1-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RL.2.9/RL.2.9-Q1.png"
+          "correct": "A girl attends a royal party.",
+          "hint": "Look closely at what both girls want to do and what event they both go to in the stories.",
+          "difficulty": "easy"
         },
         {
           "id": "RL.2.9-Q2",
           "type": "multiple_choice",
-          "prompt": "When you compare two versions of the same story, you look for things that are —",
+          "prompt": "When you compare two different versions of the same story, what is the most important thing to notice about them?",
           "choices": [
-            "Both the same AND different",
-            "Only different",
-            "Only the same",
-            "Not in either story"
+            "A) How many pages each story has.",
+            "B) Which story is your favorite to read.",
+            "C) How the characters and events are alike or different.",
+            "D) The colors used in the pictures."
           ],
-          "correct": "Both the same AND different",
-          "hint": "Comparing means finding what's alike. Contrasting means finding what's different. You do both!",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RL.2.9/RL.2.9-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RL.2.9/RL.2.9-Q2-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RL.2.9/RL.2.9-Q2.png"
+          "correct": "C) How the characters and events are alike or different.",
+          "hint": "Remember that when you compare stories, you look at the important parts of the story, like who is in it and what happens.",
+          "difficulty": "easy"
         },
         {
           "id": "RL.2.9-Q3",
@@ -713,36 +692,30 @@
         {
           "id": "RL.2.9-Q4",
           "type": "multiple_choice",
-          "prompt": "Story A: A boy finds a golden egg laid by a goose. Story B: A girl finds a golden seed that grows into a money tree. How are these stories similar?",
+          "prompt": "Both 'The Three Little Pigs' and 'The True Story of the 3 Little Pigs!' tell about a wolf and three pigs. What is a *big difference* about the wolf in these two stories?",
           "choices": [
-            "Both are about boys",
-            "Both have a goose",
-            "Both characters find something magical and valuable",
-            "Both have a tree"
+            "In one story, the wolf only likes to eat vegetables, and in the other, he eats meat.",
+            "In one story, the wolf lives in a brick house, and in the other, he lives in a straw house.",
+            "In one story, the wolf is shown as a bad guy, but in the other, he tries to explain why he did things.",
+            "In one story, the wolf is a pet, and in the other, he is wild."
           ],
-          "correct": "Both characters find something magical and valuable",
-          "hint": "A golden egg and a golden seed are both magical treasures. What's the bigger idea they share?",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RL.2.9/RL.2.9-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RL.2.9/RL.2.9-Q4-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RL.2.9/RL.2.9-Q4.png"
+          "correct": "In one story, the wolf is shown as a bad guy, but in the other, he tries to explain why he did things.",
+          "hint": "Think about who is telling each story and if the wolf is trying to be bad or just having bad luck.",
+          "difficulty": "medium"
         },
         {
           "id": "RL.2.9-Q5",
           "type": "multiple_choice",
-          "prompt": "Why might the same story be told differently in different cultures?",
+          "prompt": "Imagine you read two different versions of the same story. In the first version, the main character is saved by a friendly helper. In the second version, the main character figures out how to escape all by themselves. When you compare these two stories, what is the most important difference about the characters' experiences?",
           "choices": [
-            "People in other places don't like stories",
-            "The authors copied each other",
-            "One version is right and the other is wrong",
-            "Each culture adds its own setting, characters, and traditions"
+            "The number of trees in the setting.",
+            "How the main character gets rescued or escapes.",
+            "The colors of the characters' clothes.",
+            "Whether the main character feels scared."
           ],
-          "correct": "Each culture adds its own setting, characters, and traditions",
-          "hint": "Think about how a story told in Japan might have different details than one told in Mexico.",
-          "difficulty": "hard",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RL.2.9/RL.2.9-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RL.2.9/RL.2.9-Q5-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RL.2.9/RL.2.9-Q5.png"
+          "correct": "How the main character gets rescued or escapes.",
+          "hint": "To find the most important difference, think about the main events that change how the story turns out for the character.",
+          "difficulty": "hard"
         }
       ],
       "standard_id": "RL.2.9",
@@ -882,19 +855,16 @@
         {
           "id": "RI.2.1-Q3",
           "type": "multiple_choice",
-          "prompt": "George Washington Carver was a scientist who studied peanuts. He found over 300 uses for peanuts, including making soap, ink, and dye.\n\nHow many uses did Carver find for peanuts?",
+          "prompt": "Which of these items did George Washington Carver create using peanuts?",
           "choices": [
-            "3,000",
-            "30",
-            "100",
-            "300"
+            "Shoes",
+            "Soap",
+            "Cookies",
+            "Books"
           ],
-          "correct": "300",
-          "hint": "Look for the number in the second sentence.",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.1/RI.2.1-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.1/RI.2.1-Q3-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RI.2.1/RI.2.1-Q3.png"
+          "correct": "Soap",
+          "hint": "The passage lists examples of what Carver made from peanuts. Look for that list.",
+          "difficulty": "easy"
         },
         {
           "id": "RI.2.1-Q4",
@@ -941,19 +911,16 @@
         {
           "id": "RI.2.2-Q1",
           "type": "multiple_choice",
-          "prompt": "Dogs make great pets. They are loyal and friendly. Many dogs can be trained to do tricks. Some dogs even help people who are blind.\n\nWhat is the main topic?",
+          "prompt": "Dogs are very special animals that make great pets. They are often called \"man's best friend\" because they are so loyal and friendly. Dogs love to play with their families and often follow them around. Having a dog can make your home feel happier and safer.\n\nThere are many different kinds of dogs, both small and big. No matter their size, most dogs love to run and play outside. They enjoy going for walks and playing fetch with a ball. It's important to give dogs exercise so they stay healthy and happy.\n\nSome dogs even have important jobs! For example, guide dogs help people who cannot see to walk safely. Police dogs work with officers to keep communities safe. Other dogs can help find people who are lost. These working dogs show how smart and helpful dogs can be.\n\nWhat is the main topic of the text?",
           "choices": [
-            "How to train pets",
-            "Cats",
-            "Why dogs make great pets",
-            "Animals at the zoo"
+            "Dogs need to exercise and play often.",
+            "Why dogs make wonderful pets and helpers.",
+            "How dogs help people with important jobs.",
+            "The different sizes and kinds of dogs."
           ],
-          "correct": "Why dogs make great pets",
-          "hint": "The first sentence tells you the main idea. The rest gives examples!",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.2/RI.2.2-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.2/RI.2.2-Q1-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RI.2.2/RI.2.2-Q1.png"
+          "correct": "Why dogs make wonderful pets and helpers.",
+          "hint": "To find the main topic, think about what all the paragraphs in the text are mostly about together.",
+          "difficulty": "easy"
         },
         {
           "id": "RI.2.2-Q2",
@@ -975,53 +942,44 @@
         {
           "id": "RI.2.2-Q3",
           "type": "multiple_choice",
-          "prompt": "A passage has three paragraphs. One is about where penguins live. One is about what they eat. One is about how they raise their babies. What is the MAIN topic of the whole passage?",
+          "prompt": "Read the passage below.\n\n**Penguins!**\n\nPenguins are amazing birds that live in very cold places, mostly in the Southern Hemisphere. You can find many of them in Antarctica, where it is snowy and icy. They love to be near the ocean because that is where they find their food. Even though they are birds, penguins cannot fly! They are excellent swimmers.\n\nWhat do penguins eat? These busy birds are very good hunters in the water. They dive deep to catch tasty fish, tiny shrimp called krill, and other small sea animals. Penguins use their strong flippers to \"fly\" through the water as they chase their meals.\n\nWhen it's time for baby penguins, the parents work together. The mother penguin lays one or two eggs. Both mom and dad take turns keeping the eggs warm until the chicks hatch. Once the babies are born, their parents feed them and protect them from the cold. Soon, the little penguins are big enough to swim and find their own food!\n\nWhat is the MAIN topic of the whole passage?",
           "choices": [
-            "All about penguins",
-            "Penguin food",
-            "Antarctic weather",
-            "Baby animals"
+            "How penguins swim",
+            "What penguins eat",
+            "Where penguins lay eggs",
+            "All about penguins"
           ],
           "correct": "All about penguins",
-          "hint": "Each paragraph covers a different detail about the same animal.",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.2/RI.2.2-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.2/RI.2.2-Q3-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RI.2.2/RI.2.2-Q3.png"
+          "hint": "To find the main topic, think about what all the paragraphs teach you together.",
+          "difficulty": "easy"
         },
         {
           "id": "RI.2.2-Q4",
           "type": "multiple_choice",
-          "prompt": "Water can be a solid, a liquid, or a gas. Ice is solid water. Steam is water as a gas. The water you drink is a liquid.\n\nWhat is the main topic?",
+          "prompt": "Water is all around us, and it can look very different! Sometimes it's hard like a rock, and sometimes it flows like a river. Water can even disappear into the air. This is because water can change its shape or form.\n\nOne form of water is a solid. When water gets very cold, it freezes and turns into ice. Ice is solid water. You can hold ice in your hand, and it keeps its shape. Ice cubes in your drink and snow on the ground are examples of solid water.\n\nAnother form of water is a liquid. When ice melts, it becomes liquid water. This is the water you drink, use to wash your hands, or see in a pond. Liquid water flows and takes the shape of its container. It's the most common form of water we see every day.\n\nThe third form of water is a gas. When liquid water gets very hot, it turns into a gas called steam or water vapor. You can sometimes see steam rising from a hot pot of water. Water vapor is in the air all around us, even if we can't always see it. It helps make clouds!\n\nBased on the entire text, what is the main topic?",
           "choices": [
-            "How to make steam",
-            "The three forms of water",
-            "Ice is cold",
-            "Drinking water"
+            "Why clouds are important",
+            "The three ways water can be found",
+            "Drinking water every day",
+            "How to make ice cubes"
           ],
-          "correct": "The three forms of water",
-          "hint": "The first sentence tells you the big idea — water has three forms.",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.2/RI.2.2-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.2/RI.2.2-Q4-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RI.2.2/RI.2.2-Q4.png"
+          "correct": "The three ways water can be found",
+          "hint": "To find the main topic, think about what all the paragraphs are mostly talking about together.",
+          "difficulty": "medium"
         },
         {
           "id": "RI.2.2-Q5",
           "type": "multiple_choice",
-          "prompt": "How can you find the main topic of a passage with many paragraphs?",
+          "prompt": "Read the passage below. What is the main topic of the passage? Many people love to have pets. Pets are animals that live with us in our homes. They can be fun and bring us joy. Dogs are popular pets. They like to play fetch and go for walks. Dogs need food, water, and lots of love. Cats are also common pets. They like to nap in sunny spots and chase toys. Cats need food, water, and a cozy place to sleep. Other pets include fish, birds, and hamsters. Fish swim in tanks. Birds sing songs. Hamsters run on wheels. No matter what kind, all pets need good care.",
           "choices": [
-            "Count the sentences",
-            "Read only the first word",
-            "Think about what ALL the paragraphs are about together",
-            "Look at the pictures only"
+            "How to take care of a cat.",
+            "Different types of animals at the zoo.",
+            "The many kinds of pets and how to care for them.",
+            "Why dogs are the best pets."
           ],
-          "correct": "Think about what ALL the paragraphs are about together",
-          "hint": "The main topic is the big idea that connects all the paragraphs.",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.2/RI.2.2-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.2/RI.2.2-Q5-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RI.2.2/RI.2.2-Q5.png"
+          "correct": "The many kinds of pets and how to care for them.",
+          "hint": "Think about what all the paragraphs are mostly about, not just one part.",
+          "difficulty": "medium"
         }
       ],
       "standard_id": "RI.2.2",
@@ -1085,19 +1043,16 @@
         {
           "id": "RI.2.3-Q4",
           "type": "multiple_choice",
-          "prompt": "To make a peanut butter sandwich: First, get two slices of bread. Next, spread peanut butter on one slice. Then, put the other slice on top.\n\nWhat do you do right AFTER spreading peanut butter?",
+          "prompt": "After you spread peanut butter on one slice, what is the main reason you put the other slice of bread on top?",
           "choices": [
-            "Get the bread",
-            "Eat the sandwich",
-            "Put the other slice on top",
-            "Open the jar"
+            "So the sandwich will have more crunch.",
+            "To keep the peanut butter from falling out.",
+            "To make the bread softer to chew.",
+            "Because it is the last thing you do."
           ],
-          "correct": "Put the other slice on top",
-          "hint": "Follow the steps in order — what comes right after spreading?",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q4-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RI.2.3/RI.2.3-Q4.png"
+          "correct": "To keep the peanut butter from falling out.",
+          "hint": "Think about what happens to the peanut butter after you spread it and before you put the other slice on top.",
+          "difficulty": "easy"
         },
         {
           "id": "RI.2.3-Q5",
@@ -1119,18 +1074,16 @@
         {
           "id": "RI.2.3-Q6",
           "type": "multiple_choice",
-          "prompt": "First, the ocean water near the shore gets warm from the sun. Then, the warm water evaporates and rises into the air. Finally, it forms clouds that bring rain.\n\nWhat happens AFTER the water evaporates?",
+          "prompt": "The passage explains that the sun makes ocean water evaporate. What must happen to the water vapor *after* it rises for clouds to form?",
           "choices": [
-            "It forms clouds",
-            "The sun goes down",
-            "Fish swim away",
-            "The shore gets bigger"
+            "It must get much saltier to stick together.",
+            "It becomes colder and joins with other tiny pieces.",
+            "It needs to get hotter from the sun's strong rays.",
+            "It is pushed quickly across the sky by fast winds."
           ],
-          "correct": "It forms clouds",
-          "hint": "Look at what happens in the last step — after the water rises, what does it form?",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q6.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q6-hint.mp3"
+          "correct": "It becomes colder and joins with other tiny pieces.",
+          "hint": "Look for the part of the passage that describes what happens to the water vapor as it goes up high in the sky.",
+          "difficulty": "easy"
         },
         {
           "id": "RI.2.3-Q7",
@@ -1214,18 +1167,16 @@
         {
           "id": "RI.2.3-Q11",
           "type": "multiple_choice",
-          "prompt": "To make sea salt, workers first pump ocean water into shallow pools. Next, the sun heats the water until it evaporates. Then, only the salt is left behind. Finally, workers collect the salt.\n\nWhat is the SECOND step in making sea salt?",
+          "prompt": "When making sea salt, why is it important that the sun heats the ocean water?",
           "choices": [
-            "Workers collect the salt",
-            "The salt is left behind",
-            "Workers pump ocean water",
-            "The sun heats the water"
+            "To make the water easier for workers to collect.",
+            "So the salt can become bright and shiny.",
+            "It causes the water to evaporate, leaving the salt behind.",
+            "To keep the shallow pools full of water."
           ],
-          "correct": "The sun heats the water",
-          "hint": "Look for the word 'Next' — that's the second step!",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q11.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q11-hint.mp3"
+          "correct": "It causes the water to evaporate, leaving the salt behind.",
+          "hint": "Look at what happens to the water right after the sun heats it, and what is left behind.",
+          "difficulty": "easy"
         },
         {
           "id": "RI.2.3-Q12",
@@ -1299,18 +1250,16 @@
         {
           "id": "RI.2.3-Q15",
           "type": "multiple_choice",
-          "prompt": "Since the ocean near the shore is shallow, sunlight can reach the bottom. This allows plants to grow on the ocean floor. Many small fish eat those plants.\n\nWhat allows plants to grow on the ocean floor?",
+          "prompt": "Based on the passage, how does the shallow ocean near the shore help plants grow on the ocean floor?",
           "choices": [
-            "Cold water",
-            "Sunlight reaching the bottom",
-            "Deep water",
-            "Strong currents"
+            "A) The shallow water helps small fish find the plants easily.",
+            "B) It lets sunlight reach the bottom of the ocean, where plants need it to grow.",
+            "C) The shallow water makes the plants grow big and strong.",
+            "D) It makes the water very cold for the plants."
           ],
-          "correct": "Sunlight reaching the bottom",
-          "hint": "Look for the signal word 'since' — it tells you the cause!",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q15.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q15-hint.mp3"
+          "correct": "B) It lets sunlight reach the bottom of the ocean, where plants need it to grow.",
+          "hint": "Look at what happens because the ocean near the shore is shallow, and then what that allows to happen for the plants.",
+          "difficulty": "medium"
         }
       ],
       "standard_id": "RI.2.3",
@@ -1340,19 +1289,16 @@
         {
           "id": "RI.2.4-Q2",
           "type": "multiple_choice",
-          "prompt": "A habitat is the natural home of an animal or plant. A frog's habitat is near ponds and streams.\n\nWhat is a **habitat**?",
+          "prompt": "Frogs often live near ponds and streams. These wet places are their habitats. What does the word **habitat** mean in this sentence?",
           "choices": [
-            "A type of food",
-            "A kind of weather",
-            "A baby animal",
-            "A natural home"
+            "A type of food a frog eats",
+            "A natural home for an animal",
+            "A game a frog likes to play",
+            "A kind of weather frogs enjoy"
           ],
-          "correct": "A natural home",
-          "hint": "The first sentence gives you the definition!",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.4/RI.2.4-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.4/RI.2.4-Q2-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RI.2.4/RI.2.4-Q2.png"
+          "correct": "A natural home for an animal",
+          "hint": "Look at where frogs live and what those places are called.",
+          "difficulty": "easy"
         },
         {
           "id": "RI.2.4-Q3",
@@ -1695,36 +1641,30 @@
         {
           "id": "RI.2.8-Q1",
           "type": "multiple_choice",
-          "prompt": "Recess is important for kids. It gives them time to exercise. It also helps them focus better in class.\n\nWhat reason does the author give for why recess helps in class?",
+          "prompt": "The author says recess helps kids \"focus better in class.\" How does this reason help you understand why \"recess is important for kids\"?",
           "choices": [
-            "Kids like to play",
-            "It makes school longer",
-            "It helps them focus better",
-            "Teachers need a break"
+            "It lets teachers have more time to plan lessons.",
+            "It tells us that kids will like school more if they can focus.",
+            "It shows that playing makes kids too tired to pay attention.",
+            "It means kids can do their schoolwork better when they return to class."
           ],
-          "correct": "It helps them focus better",
-          "hint": "Read the last sentence — what does recess help kids do in class?",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.8/RI.2.8-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.8/RI.2.8-Q1-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RI.2.8/RI.2.8-Q1.png"
+          "correct": "It means kids can do their schoolwork better when they return to class.",
+          "hint": "Look at the part of the passage that talks about kids focusing better in class to see why that makes recess important.",
+          "difficulty": "easy"
         },
         {
           "id": "RI.2.8-Q2",
           "type": "multiple_choice",
-          "prompt": "Everyone should drink more water. Water keeps your body healthy. It helps your brain work better. It also gives you energy.\n\nHow many reasons does the author give for drinking water?",
+          "prompt": "Which of these is a reason the author gives for why you should drink more water?",
           "choices": [
-            "2",
-            "4",
-            "1",
-            "3"
+            "Water helps you grow very tall.",
+            "Water helps plants grow big.",
+            "Water helps your brain work better.",
+            "Water makes you feel sleepy."
           ],
-          "correct": "3",
-          "hint": "Count each benefit: healthy body, better brain, and energy. That's three!",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.8/RI.2.8-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.8/RI.2.8-Q2-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RI.2.8/RI.2.8-Q2.png"
+          "correct": "Water helps your brain work better.",
+          "hint": "Look at the sentences that tell you *why* drinking water is good for your body.",
+          "difficulty": "easy"
         },
         {
           "id": "RI.2.8-Q3",
@@ -1746,19 +1686,16 @@
         {
           "id": "RI.2.8-Q4",
           "type": "multiple_choice",
-          "prompt": "When an author writes **because** in a sentence, what usually follows?",
+          "prompt": "Read the short text. \"You should always wear a helmet when you ride your bike. Wearing a helmet is important because it keeps your head safe if you fall down. So, remember your helmet!\" Which statement best shares the author's main point and the reason that supports it?",
           "choices": [
-            "The end of the paragraph",
-            "A reason that supports their point",
-            "A question",
-            "A new topic"
+            "The author's point is that bikes are fun, and the reason is they go fast.",
+            "The author's point is to wear a helmet, and the reason is it keeps your head safe if you fall.",
+            "The author's point is that helmets are colorful, and the reason is they are made of plastic.",
+            "The author's point is you might fall down, and the reason is you need to practice riding."
           ],
-          "correct": "A reason that supports their point",
-          "hint": "'Because' is a signal word that introduces WHY something is true.",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.8/RI.2.8-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.8/RI.2.8-Q4-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RI.2.8/RI.2.8-Q4.png"
+          "correct": "The author's point is to wear a helmet, and the reason is it keeps your head safe if you fall.",
+          "hint": "Reread the second sentence in the text to find what the author says is important and why.",
+          "difficulty": "easy"
         },
         {
           "id": "RI.2.8-Q5",
@@ -1805,19 +1742,16 @@
         {
           "id": "RI.2.9-Q2",
           "type": "multiple_choice",
-          "prompt": "Text A about the ocean focuses on ocean animals. Text B about the ocean focuses on pollution in the ocean. How are these texts different?",
+          "prompt": "Read Text A and Text B about the ocean.Text A: The ocean is a big home for many amazing animals! Whales are the biggest animals in the ocean. They swim and sing loud songs. Small, colorful fish dart through coral reefs. Crabs walk sideways on the sandy bottom. Jellyfish float and glow. All these animals need a clean ocean to live and play.Text B: Our ocean needs help to stay clean! Sometimes, trash like plastic bottles and bags floats into the ocean. This trash can hurt ocean animals. Fish might try to eat plastic, or turtles can get tangled. We can help by putting our trash in a bin and recycling. Keeping the ocean clean helps all the animals stay safe and healthy.After reading both texts, what is the biggest difference between what Text A and Text B teach us?",
           "choices": [
-            "They focus on different aspects of the same topic",
-            "Text A is fiction",
-            "They are about different topics",
-            "They say the same things"
+            "Both texts teach us about how big the ocean is.",
+            "Text A is about animals that live on land, and Text B is about ocean animals.",
+            "Text A describes different kinds of ocean animals, and Text B explains how to protect the ocean from trash.",
+            "Both texts tell us how to swim with whales."
           ],
-          "correct": "They focus on different aspects of the same topic",
-          "hint": "Both texts are about the ocean, but each focuses on something different.",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.9/RI.2.9-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.9/RI.2.9-Q2-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RI.2.9/RI.2.9-Q2.png"
+          "correct": "Text A describes different kinds of ocean animals, and Text B explains how to protect the ocean from trash.",
+          "hint": "Think about the main topic for Text A (what it mostly talks about) and the main topic for Text B (what it mostly talks about). How are those main topics different?",
+          "difficulty": "medium"
         },
         {
           "id": "RI.2.9-Q3",
@@ -1839,19 +1773,16 @@
         {
           "id": "RI.2.9-Q4",
           "type": "multiple_choice",
-          "prompt": "When comparing two texts on the same topic, what should you look for?",
+          "prompt": "Read these two texts. Text 1: 'Dogs are playful pets. They have soft fur. Dogs love to run and fetch balls. They often make a barking sound. Dogs need to go outside for walks.' Text 2: 'Cats are quiet pets. They also have soft fur. Cats like to nap and play with string. They often make a meowing sound. Cats like to stay indoors.' Which statement is true about BOTH texts?",
           "choices": [
-            "Which text has more pictures",
-            "Which text was written first",
-            "What information is the same and what is different",
-            "Which text is longer"
+            "Both pets need to go outside for walks.",
+            "Both pets have soft fur.",
+            "Both pets make a barking sound.",
+            "Both pets like to play with string."
           ],
-          "correct": "What information is the same and what is different",
-          "hint": "Comparing means finding things that are alike AND different.",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.9/RI.2.9-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.9/RI.2.9-Q4-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RI.2.9/RI.2.9-Q4.png"
+          "correct": "Both pets have soft fur.",
+          "hint": "Look closely at what Text 1 and Text 2 say about how the animals feel.",
+          "difficulty": "easy"
         },
         {
           "id": "RI.2.9-Q5",
@@ -1881,19 +1812,16 @@
         {
           "id": "RI.2.10-Q1",
           "type": "multiple_choice",
-          "prompt": "Octopuses are amazing creatures. They have eight arms and three hearts. They can change color to blend in with their surroundings. Some octopuses can even open jars!\n\nAccording to the text, how many hearts does an octopus have?",
+          "prompt": "Based on the text, why would an octopus change its color?",
           "choices": [
-            "Three",
-            "Eight",
-            "One",
-            "Two"
+            "To find its way home.",
+            "To hide from other animals.",
+            "To show how happy it is.",
+            "To help it eat plants."
           ],
-          "correct": "Three",
-          "hint": "The second sentence lists two number facts. Which one is about hearts?",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.10/RI.2.10-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.10/RI.2.10-Q1-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RI.2.10/RI.2.10-Q1.png"
+          "correct": "To hide from other animals.",
+          "hint": "Reread the sentence that explains what octopuses do when they change color.",
+          "difficulty": "easy"
         },
         {
           "id": "RI.2.10-Q2",
@@ -1949,19 +1877,16 @@
         {
           "id": "RI.2.10-Q5",
           "type": "multiple_choice",
-          "prompt": "Volcanoes form when hot melted rock called magma pushes up through the Earth's surface. When magma comes out, it's called lava. Over time, the lava cools and builds up to form the volcano's cone shape.\n\nWhat is magma called after it comes out of the volcano?",
+          "prompt": "Over many years, what causes a volcano to slowly get taller and wider?",
           "choices": [
-            "Lava",
-            "Rock",
-            "Ash",
-            "Steam"
+            "The ground under the volcano stretches and pushes it up.",
+            "New layers of hardened lava build up on its sides.",
+            "Heavy rains wash dirt and rocks to pile around it.",
+            "Wind blows sand and dust onto the volcano's top."
           ],
-          "correct": "Lava",
-          "hint": "The second sentence tells you the new name for magma once it's outside.",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.10/RI.2.10-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.10/RI.2.10-Q5-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RI.2.10/RI.2.10-Q5.png"
+          "correct": "New layers of hardened lava build up on its sides.",
+          "hint": "Look for the part of the passage that explains how volcanoes grow over time.",
+          "difficulty": "medium"
         }
       ],
       "standard_id": "RI.2.10",
@@ -2008,19 +1933,16 @@
         {
           "id": "RF.2.3-Q3",
           "type": "multiple_choice",
-          "prompt": "Which word has the prefix **un-**?",
+          "prompt": "If you are *not feeling happy*, which word best describes how you feel?",
           "choices": [
-            "Uncle",
-            "Until",
+            "Untidy",
             "Under",
-            "Unhappy"
+            "Unhappy",
+            "Unfair"
           ],
           "correct": "Unhappy",
-          "hint": "A prefix is added to the BEGINNING of a base word. 'Un-' + 'happy' = ?",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.3/RF.2.3-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.3/RF.2.3-Q3-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RF.2.3/RF.2.3-Q3.png"
+          "hint": "Remember that the letters 'un-' at the start of a word often mean 'not' or 'the opposite of'.",
+          "difficulty": "medium"
         },
         {
           "id": "RF.2.3-Q4",
@@ -2042,19 +1964,16 @@
         {
           "id": "RF.2.3-Q5",
           "type": "multiple_choice",
-          "prompt": "Which word is spelled correctly?",
+          "prompt": "What sound does the 'au' make in the word 'because'?",
           "choices": [
-            "Becaws",
-            "Because",
-            "Becuz",
-            "Becuase"
+            "The sound of 'a' in 'apple'",
+            "The sound of 'o' in 'boat'",
+            "The sound of 'aw' in 'saw'",
+            "The sound of 'u' in 'bus'"
           ],
-          "correct": "Because",
-          "hint": "This is a tricky word! Sound it out: be-cause.",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.3/RF.2.3-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.3/RF.2.3-Q5-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RF.2.3/RF.2.3-Q5.png"
+          "correct": "The sound of 'aw' in 'saw'",
+          "hint": "Listen carefully to how you say the middle part of 'because'. Think about other words where 'au' or 'aw' make a similar sound.",
+          "difficulty": "medium"
         }
       ],
       "standard_id": "RF.2.3",
@@ -2118,36 +2037,30 @@
         {
           "id": "RF.2.3a-Q4",
           "type": "multiple_choice",
-          "prompt": "Which pair shows a short vowel word and its long vowel partner?",
+          "prompt": "Which word has a short 'a' sound?",
           "choices": [
-            "Dog → dig",
-            "Pin → pine",
-            "Run → ran",
-            "Cat → cut"
+            "A) Gate",
+            "B) Cake",
+            "C) Map",
+            "D) Ride"
           ],
-          "correct": "Pin → pine",
-          "hint": "Adding a silent 'e' at the end makes the vowel long!",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.3a/RF.2.3a-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.3a/RF.2.3a-Q4-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RF.2.3a/RF.2.3a-Q4.png"
+          "correct": "C) Map",
+          "hint": "Listen carefully to the vowel sound in each word to find the one that sounds like the 'a' in 'cat'.",
+          "difficulty": "medium"
         },
         {
           "id": "RF.2.3a-Q5",
           "type": "multiple_choice",
-          "prompt": "Which word does NOT have a long vowel sound?",
+          "prompt": "Which word has the same vowel sound as the word 'kite'?",
           "choices": [
-            "Cube",
-            "Bike",
-            "Milk",
-            "Mule"
+            "A) pig",
+            "B) tree",
+            "C) five",
+            "D) cat"
           ],
-          "correct": "Milk",
-          "hint": "Say each word. Three have vowels that say their own name. One has a short 'i.'",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.3a/RF.2.3a-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.3a/RF.2.3a-Q5-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RF.2.3a/RF.2.3a-Q5.png"
+          "correct": "C) five",
+          "hint": "Say the word 'kite' out loud and listen to the vowel sound. Then, say each choice out loud and listen for the word with the same vowel sound.",
+          "difficulty": "medium"
         }
       ],
       "standard_id": "RF.2.3a",
@@ -2194,36 +2107,30 @@
         {
           "id": "RF.2.3b-Q3",
           "type": "multiple_choice",
-          "prompt": "The vowel team **ai** in **rain** makes the same sound as **ay** in —",
+          "prompt": "Which word correctly completes the sentence and has the same vowel sound as **rain**? We went to the park to ______.",
           "choices": [
-            "Ant",
-            "Play",
-            "About",
-            "All"
+            "eat",
+            "run",
+            "play",
+            "skip"
           ],
-          "correct": "Play",
-          "hint": "Say 'rain' and 'play' — do the vowels sound the same?",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.3b/RF.2.3b-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.3b/RF.2.3b-Q3-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RF.2.3b/RF.2.3b-Q3.png"
+          "correct": "play",
+          "hint": "Listen carefully to the long 'a' sound in 'rain' and find the word that makes that same sound and fits the sentence.",
+          "difficulty": "medium"
         },
         {
           "id": "RF.2.3b-Q4",
           "type": "multiple_choice",
-          "prompt": "Which word has the same vowel sound as **seat**?",
+          "prompt": "What sound does the 'oa' vowel team make in the word 'goat'?",
           "choices": [
-            "Set",
-            "Fit",
-            "Feet",
-            "Sat"
+            "The short 'o' sound",
+            "The long 'e' sound",
+            "The long 'o' sound",
+            "The short 'a' sound"
           ],
-          "correct": "Feet",
-          "hint": "The 'ea' in seat makes a long 'e' sound. Which other word has that?",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.3b/RF.2.3b-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.3b/RF.2.3b-Q4-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RF.2.3b/RF.2.3b-Q4.png"
+          "correct": "The long 'o' sound",
+          "hint": "Think about how you say the word 'goat' and focus on the sound the letters 'oa' make together.",
+          "difficulty": "medium"
         },
         {
           "id": "RF.2.3b-Q5",
@@ -2304,19 +2211,16 @@
         {
           "id": "RF.2.3c-Q4",
           "type": "multiple_choice",
-          "prompt": "How many syllables are in the word **music**?",
+          "prompt": "Which choice shows how to correctly say the word **robot**?",
           "choices": [
-            "1",
-            "4",
-            "3",
-            "2"
+            "A. rob-OT",
+            "B. ROH-bot",
+            "C. ruh-BOT",
+            "D. RAW-bot"
           ],
-          "correct": "2",
-          "hint": "Clap it: mu-sic. How many claps?",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.3c/RF.2.3c-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.3c/RF.2.3c-Q4-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RF.2.3c/RF.2.3c-Q4.png"
+          "correct": "B. ROH-bot",
+          "hint": "Remember how to sound out two-syllable words that have a long vowel sound.",
+          "difficulty": "easy"
         },
         {
           "id": "RF.2.3c-Q5",
@@ -2363,19 +2267,16 @@
         {
           "id": "RF.2.3d-Q4",
           "type": "multiple_choice",
-          "prompt": "Which word has a suffix?",
+          "prompt": "What does it mean if something is \"helpful\"?",
           "choices": [
-            "Inside",
-            "Undo",
-            "Slowly",
-            "Replay"
+            "Not helping at all",
+            "To make help",
+            "Full of help",
+            "To help again"
           ],
-          "correct": "Slowly",
-          "hint": "A suffix goes at the END of a word. '-ly' is a common suffix.",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.3d/RF.2.3d-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.3d/RF.2.3d-Q4-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RF.2.3d/RF.2.3d-Q4.png"
+          "correct": "Full of help",
+          "hint": "The word \"helpful\" has the suffix \"-ful.\" Think about what \"-ful\" means when you add it to a word like \"help.\"",
+          "difficulty": "medium"
         },
         {
           "id": "RF.2.3d-Q6",
@@ -2411,19 +2312,16 @@
         {
           "id": "RF.2.3e-Q1",
           "type": "multiple_choice",
-          "prompt": "Which word does NOT follow regular phonics rules?",
+          "prompt": "If you were trying to sound out each word below, which one would be the trickiest to read because its letter sounds don't follow the usual phonics rules?",
           "choices": [
-            "Dog",
-            "Run",
-            "Cat",
-            "Said"
+            "dog",
+            "said",
+            "run",
+            "cat"
           ],
-          "correct": "Said",
-          "hint": "Try sounding it out — does 'said' sound like it's spelled?",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.3e/RF.2.3e-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.3e/RF.2.3e-Q1-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RF.2.3e/RF.2.3e-Q1.png"
+          "correct": "said",
+          "hint": "Look for the word where the letters don't make the sounds you expect them to make when you try to read it aloud.",
+          "difficulty": "easy"
         },
         {
           "id": "RF.2.3e-Q2",
@@ -2479,19 +2377,16 @@
         {
           "id": "RF.2.3e-Q5",
           "type": "multiple_choice",
-          "prompt": "Which of these words is a tricky sight word that doesn't follow phonics rules?",
+          "prompt": "Which word below has a part that sounds different from how you would usually expect those letters to sound?",
           "choices": [
-            "Pot",
-            "Big",
-            "Map",
-            "The"
+            "run",
+            "said",
+            "sit",
+            "blue"
           ],
-          "correct": "The",
-          "hint": "Try to sound out each word with regular rules. Which one doesn't work?",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.3e/RF.2.3e-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.3e/RF.2.3e-Q5-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RF.2.3e/RF.2.3e-Q5.png"
+          "correct": "said",
+          "hint": "Read each word aloud and listen carefully. Which one has a letter or letters that don't make the sound you usually expect them to make?",
+          "difficulty": "easy"
         }
       ],
       "standard_id": "RF.2.3e",
@@ -2504,19 +2399,16 @@
         {
           "id": "RF.2.3f-Q1",
           "type": "multiple_choice",
-          "prompt": "Which word is spelled correctly?",
+          "prompt": "Read the sentence. Which word best completes the sentence? There were many ____ at the school fair.",
           "choices": [
-            "People",
-            "Peopel",
-            "Peeple",
-            "Peple"
+            "A) things",
+            "B) People",
+            "C) places",
+            "D) colors"
           ],
-          "correct": "People",
-          "hint": "'People' is a tricky word — the 'eo' doesn't sound like you'd expect.",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.3f/RF.2.3f-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.3f/RF.2.3f-Q1-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RF.2.3f/RF.2.3f-Q1.png"
+          "correct": "B) People",
+          "hint": "Think about who you might see gathered together at a school fair.",
+          "difficulty": "easy"
         },
         {
           "id": "RF.2.3f-Q2",
@@ -2538,19 +2430,16 @@
         {
           "id": "RF.2.3f-Q3",
           "type": "multiple_choice",
-          "prompt": "Which sentence uses **their** correctly?",
+          "prompt": "Which of these words is spelled in a way that is tricky or does not follow common sound rules?",
           "choices": [
-            "Their going to the park.",
-            "Their is a dog outside.",
-            "They put their books away.",
-            "I went their yesterday."
+            "A) cat",
+            "B) said",
+            "C) stop",
+            "D) jump"
           ],
-          "correct": "They put their books away.",
-          "hint": "'Their' means 'belonging to them.' Which sentence shows something belonging to them?",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.3f/RF.2.3f-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.3f/RF.2.3f-Q3-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RF.2.3f/RF.2.3f-Q3.png"
+          "correct": "B) said",
+          "hint": "Look for the word where the letters don't make the sounds you might expect them to make.",
+          "difficulty": "medium"
         },
         {
           "id": "RF.2.3f-Q4",
@@ -2597,19 +2486,16 @@
         {
           "id": "RF.2.4-Q1",
           "type": "multiple_choice",
-          "prompt": "What does it mean to read fluently?",
+          "prompt": "Imagine you are reading a fun story to your classmates. Which way of reading would help everyone understand the story best?",
           "choices": [
-            "Reading silently",
-            "Reading smoothly with expression",
-            "Reading very fast",
-            "Reading every word perfectly"
+            "Reading very fast, almost like a race.",
+            "Reading each word slowly, stopping often to figure it out.",
+            "Reading smoothly, like you are telling the story, and saying most words correctly.",
+            "Reading so quietly that only you can hear yourself."
           ],
-          "correct": "Reading smoothly with expression",
-          "hint": "Fluent reading sounds natural, like talking — not too fast, not too slow.",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.4/RF.2.4-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.4/RF.2.4-Q1-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RF.2.4/RF.2.4-Q1.png"
+          "correct": "Reading smoothly, like you are telling the story, and saying most words correctly.",
+          "hint": "Think about how good readers make a story easy for others to listen to and understand.",
+          "difficulty": "easy"
         },
         {
           "id": "RF.2.4-Q2",
@@ -2690,19 +2576,16 @@
         {
           "id": "RF.2.4a-Q1",
           "type": "multiple_choice",
-          "prompt": "The farmer planted seeds in the spring. He watered them every day. By summer, his garden was full of tomatoes, peppers, and corn.\n\nWhat grew in the farmer's garden?",
+          "prompt": "What did the farmer do to help his garden grow before summer?",
           "choices": [
-            "Apples",
-            "Wheat",
-            "Tomatoes, peppers, and corn",
-            "Flowers"
+            "He picked the ripe corn.",
+            "He watered the seeds and planted them.",
+            "He made soup with his vegetables.",
+            "He waited for the snow to fall."
           ],
-          "correct": "Tomatoes, peppers, and corn",
-          "hint": "Read the last sentence — it lists what grew!",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.4a/RF.2.4a-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.4a/RF.2.4a-Q1-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RF.2.4a/RF.2.4a-Q1.png"
+          "correct": "He watered the seeds and planted them.",
+          "hint": "Look at the first two sentences to find out what the farmer did to start his garden and keep it healthy.",
+          "difficulty": "easy"
         },
         {
           "id": "RF.2.4a-Q2",
@@ -2834,19 +2717,16 @@
         {
           "id": "RF.2.4b-Q4",
           "type": "multiple_choice",
-          "prompt": "What does reading at an **appropriate rate** mean?",
+          "prompt": "Imagine you are reading a story out loud to your younger brother or sister. What is the best way to read so they can easily understand and enjoy the story?",
           "choices": [
-            "Reading so slowly that it's hard to follow",
-            "Skipping every other word",
-            "Reading at a comfortable speed — not too fast, not too slow",
-            "Reading as fast as possible"
+            "Read the words very quickly so you can finish the book fast.",
+            "Read each word super slowly, one by one, with long pauses.",
+            "Read quietly to yourself so no one else can hear.",
+            "Read at a smooth speed, not too fast and not too slow, making the story sound clear."
           ],
-          "correct": "Reading at a comfortable speed — not too fast, not too slow",
-          "hint": "Think about how you talk — that's a good speed for reading aloud too.",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.4b/RF.2.4b-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.4b/RF.2.4b-Q4-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RF.2.4b/RF.2.4b-Q4.png"
+          "correct": "Read at a smooth speed, not too fast and not too slow, making the story sound clear.",
+          "hint": "Think about how fast you should read so that the person listening can understand every word and follow the story easily.",
+          "difficulty": "easy"
         },
         {
           "id": "RF.2.4b-Q5",
@@ -3171,19 +3051,16 @@
         {
           "id": "L.2.4c-Q3",
           "type": "multiple_choice",
-          "prompt": "The root word **help** is in all of these words EXCEPT —",
+          "prompt": "If someone is *helpless*, what does that mean about them?",
           "choices": [
-            "Helper",
-            "Helpless",
-            "Helmet",
-            "Helpful"
+            "They are very strong.",
+            "They like to help others.",
+            "They cannot do things by themselves and need help.",
+            "They have many friends."
           ],
-          "correct": "Helmet",
-          "hint": "Look at each word — which one does NOT have 'help' in it?",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4c/L.2.4c-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4c/L.2.4c-Q3-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/L.2.4c/L.2.4c-Q3.png"
+          "correct": "They cannot do things by themselves and need help.",
+          "hint": "Think about what the word \"help\" means on its own.",
+          "difficulty": "easy"
         },
         {
           "id": "L.2.4c-Q6",
@@ -3236,19 +3113,16 @@
         {
           "id": "L.2.4d-Q2",
           "type": "multiple_choice",
-          "prompt": "The word **raincoat** is made up of which two words?",
+          "prompt": "If you know what **rain** means and what **coat** means, what does a **raincoat** help you do?",
           "choices": [
-            "Rain + coat",
-            "Rai + ncoat",
-            "Rainco + at",
-            "Ra + incoat"
+            "It is a coat you wear to go swimming.",
+            "It is a coat made for sunny days.",
+            "It is a coat that keeps you dry in the rain.",
+            "It is a coat that gets wet in the rain."
           ],
-          "correct": "Rain + coat",
-          "hint": "A coat you wear when it rains!",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4d/L.2.4d-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4d/L.2.4d-Q2-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/L.2.4d/L.2.4d-Q2.png"
+          "correct": "It is a coat that keeps you dry in the rain.",
+          "hint": "Think about what 'rain' is and what a 'coat' is for.",
+          "difficulty": "easy"
         },
         {
           "id": "L.2.4d-Q3",
@@ -3287,19 +3161,16 @@
         {
           "id": "L.2.4d-Q5",
           "type": "multiple_choice",
-          "prompt": "Which word is a compound word?",
+          "prompt": "If \"rain\" means water falling from the sky and a \"coat\" is clothing you wear, what does a \"raincoat\" help you do?",
           "choices": [
-            "Garden",
-            "Sister",
-            "Purple",
-            "Butterfly"
+            "Play with your friends in the park.",
+            "Keep dry when water falls from the sky.",
+            "Sleep better at night.",
+            "Stay warm when it is cold outside."
           ],
-          "correct": "Butterfly",
-          "hint": "A compound word is made of two smaller words put together. Which word can be split?",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4d/L.2.4d-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4d/L.2.4d-Q5-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/L.2.4d/L.2.4d-Q5.png"
+          "correct": "Keep dry when water falls from the sky.",
+          "hint": "Consider what happens when water falls from the sky and what kind of clothing a coat is.",
+          "difficulty": "easy"
         }
       ],
       "standard_id": "L.2.4d",
@@ -3312,36 +3183,30 @@
         {
           "id": "L.2.4e-Q1",
           "type": "multiple_choice",
-          "prompt": "Where would you find the meaning of a word in a nonfiction book?",
+          "prompt": "In a nonfiction book, a glossary helps you understand new words. If you see this entry: \"desert: a very dry place with little water,\" what does \"desert\" mean?",
           "choices": [
-            "The glossary",
-            "The title page",
-            "The back cover",
-            "The table of contents"
+            "a place where animals swim",
+            "a very dry place with little water",
+            "a place with many tall trees",
+            "a very cold place with snow"
           ],
-          "correct": "The glossary",
-          "hint": "A glossary is a mini-dictionary in the back of a book!",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4e/L.2.4e-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4e/L.2.4e-Q1-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/L.2.4e/L.2.4e-Q1.png"
+          "correct": "a very dry place with little water",
+          "hint": "Look closely at the definition given right after the word 'desert' in the glossary entry.",
+          "difficulty": "easy"
         },
         {
           "id": "L.2.4e-Q2",
           "type": "multiple_choice",
-          "prompt": "Words in a dictionary are organized —",
+          "prompt": "Read this sentence: 'Maya was excited to discover a hidden key under the rug.' If you used a dictionary to understand the word 'discover,' which meaning would best fit the sentence?",
           "choices": [
-            "By color",
-            "In alphabetical order",
-            "By topic",
-            "By length"
+            "to lose something important",
+            "to clean up a messy area",
+            "to find something new or hidden",
+            "to break something by accident"
           ],
-          "correct": "In alphabetical order",
-          "hint": "To find a word, you need to know the ABC order!",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4e/L.2.4e-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4e/L.2.4e-Q2-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/L.2.4e/L.2.4e-Q2.png"
+          "correct": "to find something new or hidden",
+          "hint": "Imagine you are using a dictionary to look up the word 'discover.' Which definition helps you understand what Maya did with the key?",
+          "difficulty": "easy"
         },
         {
           "id": "L.2.4e-Q3",
@@ -3363,36 +3228,30 @@
         {
           "id": "L.2.4e-Q4",
           "type": "multiple_choice",
-          "prompt": "A glossary is different from a dictionary because —",
+          "prompt": "A glossary says that 'flutter' means to move wings quickly. If a butterfly starts to flutter, what is it doing?",
           "choices": [
-            "It's at the front of the book",
-            "It has more words",
-            "It has pictures",
-            "It only includes words used in that specific book"
+            "It is resting on a flower.",
+            "It is moving its wings fast.",
+            "It is flying very slowly.",
+            "It is eating nectar."
           ],
-          "correct": "It only includes words used in that specific book",
-          "hint": "A dictionary has ALL words. A glossary has only the words from one book.",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4e/L.2.4e-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4e/L.2.4e-Q4-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/L.2.4e/L.2.4e-Q4.png"
+          "correct": "It is moving its wings fast.",
+          "hint": "Look back at what the glossary says 'flutter' means.",
+          "difficulty": "medium"
         },
         {
           "id": "L.2.4e-Q5",
           "type": "multiple_choice",
-          "prompt": "You want to look up **penguin** in the dictionary. Which guide words tell you it's on that page?",
+          "prompt": "A dictionary entry for a word looks like this: penguin (noun): A large bird that lives in cold places, swims very well, and has black and white feathers. It cannot fly.Based on this dictionary entry, which sentence tells you what 'penguin' means?",
           "choices": [
-            "Peach — person",
-            "Phone — picture",
-            "Play — plum",
-            "Paper — party"
+            "A small animal that runs fast.",
+            "A furry animal that climbs trees.",
+            "A big bird that swims and cannot fly.",
+            "A fish that lives in warm water."
           ],
-          "correct": "Peach — person",
-          "hint": "Guide words show the first and last words on a page. 'Penguin' falls between which pair?",
-          "difficulty": "hard",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4e/L.2.4e-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4e/L.2.4e-Q5-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/L.2.4e/L.2.4e-Q5.png"
+          "correct": "A big bird that swims and cannot fly.",
+          "hint": "Look closely at the words that describe what a penguin is in the dictionary entry.",
+          "difficulty": "hard"
         }
       ],
       "standard_id": "L.2.4e",
@@ -3719,19 +3578,16 @@
         {
           "id": "L.2.6-Q2",
           "type": "multiple_choice",
-          "prompt": "Which word is an adverb in this sentence?\n\n\"The girl sang beautifully.\"",
+          "prompt": "The girl sang her favorite song. She wanted all her friends to hear it from far away. Which word best tells how she sang?",
           "choices": [
-            "Sang",
-            "Girl",
-            "Beautifully",
-            "The"
+            "Softly",
+            "Loudly",
+            "Quickly",
+            "Sadly"
           ],
-          "correct": "Beautifully",
-          "hint": "An adverb describes HOW something is done. How did she sing?",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.6/L.2.6-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.6/L.2.6-Q2-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/L.2.6/L.2.6-Q2.png"
+          "correct": "Loudly",
+          "hint": "Think about what kind of singing helps people hear from far away.",
+          "difficulty": "easy"
         },
         {
           "id": "L.2.6-Q3",
@@ -3806,19 +3662,16 @@
         {
           "id": "L.2.1-Q1",
           "type": "multiple_choice",
-          "prompt": "Pick the right word: The team ___ to the field.",
+          "prompt": "Which sentence shows the correct way to use a verb?",
           "choices": [
-            "run",
-            "runs",
-            "running",
-            "ran to"
+            "My brother like to read books.",
+            "We visits our grandma.",
+            "Mom bakes yummy cookies.",
+            "The flowers grows in the garden."
           ],
-          "correct": "runs",
-          "hint": "Team is one group, so use runs!",
-          "difficulty": 1,
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.1/L.2.1-Q1-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.1/L.2.1-Q1.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/L.2.1/L.2.1-Q1.png"
+          "correct": "Mom bakes yummy cookies.",
+          "hint": "Look carefully at the subject (who or what the sentence is about) and make sure the verb (the action word) matches it.",
+          "difficulty": 1
         },
         {
           "id": "L.2.1-Q2",
@@ -3857,19 +3710,16 @@
         {
           "id": "L.2.1-Q4",
           "type": "multiple_choice",
-          "prompt": "What is a **collective noun**?",
+          "prompt": "Read the sentence: \"A flock of birds flew over the park.\" Imagine only one bird flew over the park. Which word would best complete this new sentence: \"A _______ flew over the park.\"",
           "choices": [
-            "a word for a group",
-            "a long sentence",
-            "a big letter",
-            "a verb"
+            "birds",
+            "group",
+            "bird",
+            "flock"
           ],
-          "correct": "a word for a group",
-          "hint": "Team, herd, flock — words that name groups.",
-          "difficulty": 2,
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.1/L.2.1-Q4-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.1/L.2.1-Q4.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/L.2.1/L.2.1-Q4.png"
+          "correct": "bird",
+          "hint": "Think about what word you use when there is only one of something, not many.",
+          "difficulty": 2
         },
         {
           "id": "L.2.1-Q5",
@@ -3916,19 +3766,16 @@
         {
           "id": "L.2.2-Q2",
           "type": "multiple_choice",
-          "prompt": "What does **can't** mean?",
+          "prompt": "Which sentence uses the contraction \"can't\" correctly?",
           "choices": [
-            "could not",
-            "will not",
-            "cannot yet",
-            "can not"
+            "A. I cant go to the park today.",
+            "B. I ca'nt go to the park today.",
+            "C. I can't go to the park today.",
+            "D. I can't' go to the park today."
           ],
-          "correct": "can not",
-          "hint": "The apostrophe replaces the missing letters from cannot.",
-          "difficulty": 1,
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.2/L.2.2-Q2-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.2/L.2.2-Q2.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/L.2.2/L.2.2-Q2.png"
+          "correct": "C. I can't go to the park today.",
+          "hint": "Remember, the apostrophe in a contraction like \"can't\" shows where letters are missing when you combine two words.",
+          "difficulty": 1
         },
         {
           "id": "L.2.2-Q3",
@@ -3967,19 +3814,16 @@
         {
           "id": "L.2.2-Q5",
           "type": "multiple_choice",
-          "prompt": "Where do you put a comma in a list?",
+          "prompt": "Which sentence uses commas correctly to list things?",
           "choices": [
-            "at the start",
-            "at the end",
-            "between each item",
-            "never"
+            "We saw a dog, a cat and a bird at the park.",
+            "We saw a dog a cat, and a bird at the park.",
+            "We saw a dog, a cat, and a bird at the park.",
+            "We saw a dog, a cat, and a bird, at the park."
           ],
-          "correct": "between each item",
-          "hint": "Commas live between each item to keep them apart!",
-          "difficulty": 1,
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.2/L.2.2-Q5-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.2/L.2.2-Q5.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/L.2.2/L.2.2-Q5.png"
+          "correct": "We saw a dog, a cat, and a bird at the park.",
+          "hint": "Remember that commas are used to separate each item in a list.",
+          "difficulty": 1
         }
       ]
     },

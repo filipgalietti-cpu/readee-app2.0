@@ -56,13 +56,24 @@ const GRADE_FILES: Record<string, string> = {
   "4th": "4th-grade-standards-questions.json",
 };
 
-/** Map a target_id like "RF.3.3d-Q5" to its grade folder key. */
+/** Map a target_id like "RF.3.3d-Q5" to its grade folder key.
+ *  Handles all CCSS prefixes: K.L.x (kindergarten Language wraps the
+ *  domain prefix differently), and the standard {strand}.{grade}.{x}
+ *  shape used everywhere else. */
 function gradeForTargetId(targetId: string): string | null {
-  if (/^[KL]?\.K\.|^K\./.test(targetId)) return "K";
-  if (/\.1\./.test(targetId)) return "1st";
-  if (/\.2\./.test(targetId)) return "2nd";
-  if (/\.3\./.test(targetId)) return "3rd";
-  if (/\.4\./.test(targetId)) return "4th";
+  // Strand-prefixed K ids like RI.K.9, RL.K.10, RF.K.1d, L.K.4
+  if (/^(R[FILi]|L|SL|W)\.K\./.test(targetId)) return "K";
+  // Domain-prefixed K ids: K.L.6, K.RF.1
+  if (/^K\./.test(targetId)) return "K";
+  // Other grades — second segment is digit
+  const m = targetId.match(/^(?:[A-Za-z]+\.)?(\d)\./);
+  if (m) {
+    const g = m[1];
+    if (g === "1") return "1st";
+    if (g === "2") return "2nd";
+    if (g === "3") return "3rd";
+    if (g === "4") return "4th";
+  }
   return null;
 }
 
@@ -251,7 +262,7 @@ async function processFinding(f: any) {
     agent: "qc-bot/regen-questions",
   });
 
-  // Mark finding fixed + unquarantine.
+  // Mark finding fixed.
   await sb
     .from("content_audit_findings")
     .update({
@@ -261,9 +272,16 @@ async function processFinding(f: any) {
         "QC bot Phase-4: question regenerated via AI with audit critique baked in.",
     })
     .eq("id", f.id);
-  await sb.rpc("unquarantine_question", { p_target_id: targetId });
+  // KEEP quarantined — the regen dropped image_url + audio_url; we
+  // can't ship media-less questions to a kid. The next audit cycle
+  // will flag them for the image + audio regen workers to rebuild,
+  // and those workers unquarantine on success.
+  await sb.rpc("quarantine_question", {
+    p_target_id: targetId,
+    p_finding_id: f.id,
+  });
 
-  console.log(`    ✓ regenerated`);
+  console.log(`    ✓ regenerated (quarantined pending media rebuild)`);
   return true;
 }
 

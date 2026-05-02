@@ -265,19 +265,16 @@
         {
           "id": "RL.3.3-Q5",
           "type": "multiple_choice",
-          "prompt": "A character who always makes careful plans before acting can be described as —",
+          "prompt": "Lily wanted to build the tallest sandcastle on the beach. First, she watched how the waves came in and where the sand was firmest. Then, she drew a small picture of her castle in the sand with a stick. She decided to dig a wide, shallow moat first, so the water wouldn't wash her castle away. Only after she had a clear idea did she start piling up sand for the towers.\n\nBased on her actions in the story, which word best describes Lily?",
           "choices": [
-            "Fearful",
-            "Reckless",
-            "Impatient",
-            "Thoughtful"
+            "Hurried",
+            "Careful",
+            "Lazy",
+            "Fearful"
           ],
-          "correct": "Thoughtful",
-          "hint": "Someone who thinks carefully before doing something is being thought-ful!",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.3/RL.3.3-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.3/RL.3.3-Q5-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RL.3.3/RL.3.3-Q5.png"
+          "correct": "Careful",
+          "hint": "Think about how Lily prepared and planned before she started building her sandcastle.",
+          "difficulty": "easy"
         }
       ],
       "standard_id": "RL.3.3",
@@ -355,19 +352,16 @@
         {
           "id": "RL.3.5-Q1",
           "type": "multiple_choice",
-          "prompt": "A group of lines in a poem is called a —",
+          "prompt": "If your teacher asks you to read the second 'stanza' of a poem, what is she telling you to do?",
           "choices": [
-            "Scene",
-            "Paragraph",
-            "Stanza",
-            "Chapter"
+            "Find the second scene in a play.",
+            "Read the second group of lines in the poem.",
+            "Look for the second chapter in a book.",
+            "Search for the author's name."
           ],
-          "correct": "Stanza",
-          "hint": "Chapters are for books, paragraphs for essays, scenes for plays. What about poems?",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.5/RL.3.5-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.5/RL.3.5-Q1-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RL.3.5/RL.3.5-Q1.png"
+          "correct": "Read the second group of lines in the poem.",
+          "hint": "Remember that a stanza is a way poems are organized into parts.",
+          "difficulty": "easy"
         },
         {
           "id": "RL.3.5-Q2",
@@ -420,19 +414,16 @@
         {
           "id": "RL.3.5-Q4",
           "type": "multiple_choice",
-          "prompt": "If a poem has four stanzas, each with four lines, how many lines does the poem have in total?",
+          "prompt": "Read the poem below. How many stanzas are in the poem 'My Dog Spot'?My dog Spot is fluffy and white,He barks all day and sleeps all night.He loves to play with his red ball,And comes running when I call.When we go out for a walk,He likes to sniff and sometimes talk.He wags his tail with happy sound,The best dog ever, all around.He chases squirrels up a tree,And brings his favorite toy to me.He's always there, a loyal friend,Our happy times will never end.",
           "choices": [
-            "12",
-            "8",
-            "4",
-            "16"
+            "Four",
+            "Two",
+            "Three",
+            "Five"
           ],
-          "correct": "16",
-          "hint": "Four stanzas times four lines each equals...?",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.5/RL.3.5-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.5/RL.3.5-Q4-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RL.3.5/RL.3.5-Q4.png"
+          "correct": "Three",
+          "hint": "Look at how the poem is arranged into different sections or groups of lines.",
+          "difficulty": "medium"
         },
         {
           "id": "RL.3.5-Q5",
@@ -483,19 +474,16 @@
         {
           "id": "RL.3.6-Q1",
           "type": "multiple_choice",
-          "prompt": "The narrator says, \"Vegetables are the most boring food in the world.\"\n\nThis is the point of view of —",
+          "prompt": "The narrator says, \"Vegetables are the most boring food in the world.\" How does *your* point of view about vegetables compare to the narrator's?",
           "choices": [
-            "The author's final opinion",
-            "The narrator or character",
-            "All people everywhere",
-            "A scientist"
+            "My point of view is the same, because I also think all vegetables are boring.",
+            "My point of view is different, because I enjoy eating some vegetables.",
+            "My point of view is different, because I think vegetables are good for your body.",
+            "My point of view is different, because I don't usually eat vegetables."
           ],
-          "correct": "The narrator or character",
-          "hint": "Just because a character says something doesn't mean everyone agrees!",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.6/RL.3.6-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.6/RL.3.6-Q1-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RL.3.6/RL.3.6-Q1.png"
+          "correct": "My point of view is different, because I enjoy eating some vegetables.",
+          "hint": "Reread what the narrator says about vegetables and then think about your own feelings and experiences with them.",
+          "difficulty": "easy"
         },
         {
           "id": "RL.3.6-Q2",
@@ -534,19 +522,16 @@
         {
           "id": "RL.3.6-Q4",
           "type": "multiple_choice",
-          "prompt": "Why is it important to notice the narrator's point of view?",
+          "prompt": "Read this part of a story: 'Mia skipped happily down the path. She didn't know a small puddle was hiding just ahead!' What does the narrator tell you that Mia does not know?",
           "choices": [
-            "It's not important at all",
-            "Because there's only one way to see a story",
-            "Because narrators are always right",
-            "Because it helps you understand who is telling the story and how they see things"
+            "Mia likes to skip.",
+            "A small puddle is hiding just ahead.",
+            "The path is very long.",
+            "Mia is happy."
           ],
-          "correct": "Because it helps you understand who is telling the story and how they see things",
-          "hint": "Different narrators might tell the same story in very different ways!",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.6/RL.3.6-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.6/RL.3.6-Q4-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RL.3.6/RL.3.6-Q4.png"
+          "correct": "A small puddle is hiding just ahead.",
+          "hint": "Look for what the story tells you that Mia 'didn't know'.",
+          "difficulty": "medium"
         },
         {
           "id": "RL.3.6-Q5",
@@ -593,19 +578,16 @@
         {
           "id": "RL.3.7-Q2",
           "type": "multiple_choice",
-          "prompt": "An illustration uses dark colors and shadows. This most likely creates a mood that is —",
+          "prompt": "Read this story part: 'Leo crept down the long, spooky hallway. Every little creak and groan made him jump. He wondered what was hiding in the shadows.' Imagine an illustration for this story shows Leo holding a tiny, flickering flashlight, his eyes wide with worry, and tall, dark shadows stretching from corners. How does this illustration help you understand the story words?",
           "choices": [
-            "Mysterious or scary",
-            "Happy and cheerful",
-            "Silly and funny",
-            "Bright and exciting"
+            "A. It shows that Leo is brave and not afraid at all.",
+            "B. It helps you see how bright and happy the hallway is.",
+            "C. It makes the hallway seem even more mysterious and a little scary.",
+            "D. It tells you exactly what Leo will find at the end of the hallway."
           ],
-          "correct": "Mysterious or scary",
-          "hint": "Dark colors and shadows make things feel spooky or tense.",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.7/RL.3.7-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.7/RL.3.7-Q2-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RL.3.7/RL.3.7-Q2.png"
+          "correct": "C. It makes the hallway seem even more mysterious and a little scary.",
+          "hint": "Think about what feelings the words 'spooky' and 'shadows' create, and how the picture adds to those feelings.",
+          "difficulty": "easy"
         },
         {
           "id": "RL.3.7-Q3",
@@ -627,19 +609,16 @@
         {
           "id": "RL.3.7-Q4",
           "type": "multiple_choice",
-          "prompt": "How can an illustration emphasize a character's personality?",
+          "prompt": "In the story, the words describe Lily: 'Lily skipped into the classroom, her backpack bouncing. She always had a big smile and loved to share her colorful drawings with everyone.' The picture shows Lily with a wide, joyful smile, her eyes sparkling, and holding up a brightly colored drawing. How does this illustration help you understand what kind of person Lily is?",
           "choices": [
-            "Illustrations can't show personality",
-            "By writing the character's name in big letters",
-            "By showing the character's clothing, expression, and posture",
-            "By using only black and white"
+            "It shows the color of Lily's shirt.",
+            "It explains why Lily's backpack is bouncing.",
+            "It makes it clear that Lily is a cheerful and outgoing friend.",
+            "It tells you that Lily prefers drawing to reading."
           ],
-          "correct": "By showing the character's clothing, expression, and posture",
-          "hint": "Think about how someone LOOKS — messy or neat, smiling or frowning, tall and proud or hunched over.",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.7/RL.3.7-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.7/RL.3.7-Q4-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RL.3.7/RL.3.7-Q4.png"
+          "correct": "It makes it clear that Lily is a cheerful and outgoing friend.",
+          "hint": "Look closely at Lily's happy expression and what she is doing with her drawing in the picture to understand her feelings and how she acts.",
+          "difficulty": "medium"
         },
         {
           "id": "RL.3.7-Q5",
@@ -686,19 +665,16 @@
         {
           "id": "RL.3.9-Q2",
           "type": "multiple_choice",
-          "prompt": "Two stories by the same author are set in different places — one in a city and one on a farm. But both stories are about friendship. What is DIFFERENT between the stories?",
+          "prompt": "Imagine two stories by the same author. The first story is about two friends who live near big buildings and play in a busy park. The second story is about two friends who live on a farm and play near animals in a field. Both stories show how important friendship is. Which part of the stories is clearly different?",
           "choices": [
-            "The theme",
-            "The message",
-            "The setting",
-            "The moral"
+            "The lesson they teach",
+            "The places they happen",
+            "The people in them",
+            "The feelings they share"
           ],
-          "correct": "The setting",
-          "hint": "A city and a farm are two different places. That's the setting!",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.9/RL.3.9-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.9/RL.3.9-Q2-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RL.3.9/RL.3.9-Q2.png"
+          "correct": "The places they happen",
+          "hint": "Think about where the friends are living and playing in each story.",
+          "difficulty": "easy"
         },
         {
           "id": "RL.3.9-Q3",
@@ -720,36 +696,30 @@
         {
           "id": "RL.3.9-Q4",
           "type": "multiple_choice",
-          "prompt": "Why might an author write multiple books about the same character?",
+          "prompt": "An author writes two stories about a character named Rosie. In the first story, Rosie learns that being kind is important. In the second story, Rosie learns that it's okay to ask for help. What literary element is different between these two stories?",
           "choices": [
-            "Readers enjoy following a character through new adventures",
-            "They have to write sequels",
-            "It's easier to copy the same story",
-            "They can't think of new characters"
+            "A) The main character",
+            "B) The lesson or message",
+            "C) The time of day",
+            "D) The type of animal Rosie meets"
           ],
-          "correct": "Readers enjoy following a character through new adventures",
-          "hint": "Think about book series you love — why do you want to read the next one?",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.9/RL.3.9-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.9/RL.3.9-Q4-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RL.3.9/RL.3.9-Q4.png"
+          "correct": "B) The lesson or message",
+          "hint": "Think about what the author wants the reader to learn from each of Rosie's stories.",
+          "difficulty": "easy"
         },
         {
           "id": "RL.3.9-Q5",
           "type": "multiple_choice",
-          "prompt": "When comparing two stories, which of these would be a CONTRAST (difference)?",
+          "prompt": "Story 1: Lily really wanted to win the school's running race. She practiced every single day, even when she was tired. She didn't come in first, but she was happy because she tried her very best.Story 2: Tom saw his elderly neighbor trying to carry a heavy bag. Tom quickly ran over to help his neighbor. His neighbor smiled and thanked him. Tom felt good inside for being helpful.What is a major difference between Story 1 and Story 2?",
           "choices": [
-            "Both teach a lesson about kindness",
-            "One takes place in winter and the other in summer",
-            "Both are written by the same author",
-            "Both have the same main character"
+            "Both stories happen at school.",
+            "Both stories are about characters who feel happy at the end.",
+            "One story is about trying hard to win something for yourself, and the other is about helping someone else.",
+            "Both stories have a character who is very fast."
           ],
-          "correct": "One takes place in winter and the other in summer",
-          "hint": "A contrast is something that's DIFFERENT between the two stories.",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.9/RL.3.9-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.9/RL.3.9-Q5-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RL.3.9/RL.3.9-Q5.png"
+          "correct": "One story is about trying hard to win something for yourself, and the other is about helping someone else.",
+          "hint": "Think about what each main character *wants to do* and *does* in their story.",
+          "difficulty": "easy"
         }
       ],
       "standard_id": "RL.3.9",
@@ -762,19 +732,16 @@
         {
           "id": "RL.3.10-Q1",
           "type": "multiple_choice",
-          "prompt": "The old woman lived at the edge of the forest where the trees whispered secrets to one another. Every evening, she placed a lantern in her window. \"For the lost travelers,\" she told the cat, who blinked slowly as if he understood.\n\nWhy does the old woman place a lantern in her window?",
+          "prompt": "What does the old woman's action of putting a lantern in her window every night reveal about the kind of person she is?",
           "choices": [
-            "She's afraid of the dark",
-            "To scare away animals",
-            "To guide lost travelers",
-            "Because she likes fire"
+            "She is afraid of the dark forest outside her home.",
+            "She is a thoughtful person who wants to help others.",
+            "She wants to see if anyone is coming to visit her.",
+            "She feels lonely and hopes someone will stop by."
           ],
-          "correct": "To guide lost travelers",
-          "hint": "She says it herself — 'For the lost travelers.'",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.10/RL.3.10-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.10/RL.3.10-Q1-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RL.3.10/RL.3.10-Q1.png"
+          "correct": "She is a thoughtful person who wants to help others.",
+          "hint": "Remember why she said she put the lantern out. What does that reason tell you about her heart?",
+          "difficulty": "medium"
         },
         {
           "id": "RL.3.10-Q2",
@@ -796,19 +763,16 @@
         {
           "id": "RL.3.10-Q3",
           "type": "multiple_choice",
-          "prompt": "\"You can't climb that,\" said every kid on the block. Sana looked up at the ancient oak, its branches reaching like outstretched arms. She grabbed the lowest branch and pulled herself up.\n\nThe phrase \"branches reaching like outstretched arms\" is an example of —",
+          "prompt": "After the other kids said Sana couldn't climb the tree, what did she do next?",
           "choices": [
-            "Literal description",
-            "A simile comparing branches to arms",
-            "A fact about trees",
-            "A character's thoughts"
+            "She walked home.",
+            "She grabbed a branch and started to climb.",
+            "She ignored them and played with a ball.",
+            "She told them they were being mean."
           ],
-          "correct": "A simile comparing branches to arms",
-          "hint": "The word 'like' compares two things — branches and outstretched arms.",
-          "difficulty": "hard",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.10/RL.3.10-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.10/RL.3.10-Q3-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RL.3.10/RL.3.10-Q3.png"
+          "correct": "She grabbed a branch and started to climb.",
+          "hint": "Look closely at what Sana does right after the other kids speak to her in the story.",
+          "difficulty": "hard"
         },
         {
           "id": "RL.3.10-Q4",
@@ -855,19 +819,16 @@
         {
           "id": "RI.3.1-Q1",
           "type": "multiple_choice",
-          "prompt": "The Amazon Rainforest produces about 20 percent of the world's oxygen. It is home to more than 10 million species of plants and animals.\n\nHow much of the world's oxygen does the Amazon produce?",
+          "prompt": "Which statement tells two important things about the Amazon Rainforest, according to the text?",
           "choices": [
-            "About 80 percent",
-            "About 10 percent",
-            "About 20 percent",
-            "About 50 percent"
+            "It makes about 10 percent of the world's oxygen and has more than 20 million types of plants and animals.",
+            "It makes about 50 percent of the world's oxygen and has more than 10 million types of plants and animals.",
+            "It makes about 20 percent of the world's oxygen and has more than 10 million types of plants and animals.",
+            "It makes about 20 percent of the world's oxygen and has more than 5 million types of plants and animals."
           ],
-          "correct": "About 20 percent",
-          "hint": "The percentage is stated in the first sentence.",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.1/RI.3.1-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.1/RI.3.1-Q1-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RI.3.1/RI.3.1-Q1.png"
+          "correct": "It makes about 20 percent of the world's oxygen and has more than 10 million types of plants and animals.",
+          "hint": "Look at the first and second sentences of the passage to find both facts about the Amazon Rainforest.",
+          "difficulty": "easy"
         },
         {
           "id": "RI.3.1-Q2",
@@ -906,19 +867,16 @@
         {
           "id": "RI.3.1-Q4",
           "type": "multiple_choice",
-          "prompt": "Thomas Edison failed over 1,000 times before successfully inventing the light bulb. He once said, \"I have not failed. I've just found 1,000 ways that won't work.\"\n\nWhat does Edison's quote tell us about his attitude?",
+          "prompt": "According to the text, what did Thomas Edison say he found instead of failures when trying to invent the light bulb?",
           "choices": [
-            "He didn't care about inventing",
-            "He thought 1,000 failures was too many",
-            "He was ready to give up",
-            "He saw failures as learning experiences"
+            "Many reasons to stop trying.",
+            "1,000 ways that won't work.",
+            "A new type of electricity.",
+            "Other inventors to help him."
           ],
-          "correct": "He saw failures as learning experiences",
-          "hint": "He didn't call them failures — he called them ways that won't work. That's a positive attitude!",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.1/RI.3.1-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.1/RI.3.1-Q4-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RI.3.1/RI.3.1-Q4.png"
+          "correct": "1,000 ways that won't work.",
+          "hint": "Refer to Edison's quote in the passage to see what he said he found.",
+          "difficulty": "medium"
         },
         {
           "id": "RI.3.1-Q5",
@@ -999,19 +957,16 @@
         {
           "id": "RI.3.2-Q4",
           "type": "multiple_choice",
-          "prompt": "How do you find the main idea of a passage?",
+          "prompt": "Read the passage below.Butterflies start as tiny eggs. The eggs hatch into larvae, which are called caterpillars. Caterpillars eat many leaves and grow bigger. After growing, a caterpillar forms a pupa around itself, often called a chrysalis. Inside the chrysalis, the caterpillar changes. Finally, a beautiful butterfly comes out!What is the main idea of this passage?",
           "choices": [
-            "Count the sentences",
-            "Read only the first word",
-            "Look at the last sentence only",
-            "Think about what all the details have in common"
+            "Caterpillars eat many leaves to grow.",
+            "Butterflies are beautiful creatures.",
+            "Butterflies go through different stages to grow.",
+            "A chrysalis is where a caterpillar changes."
           ],
-          "correct": "Think about what all the details have in common",
-          "hint": "The main idea is the big umbrella that all the details fit under.",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.2/RI.3.2-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.2/RI.3.2-Q4-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RI.3.2/RI.3.2-Q4.png"
+          "correct": "Butterflies go through different stages to grow.",
+          "hint": "Reread the passage and think about what big idea all the sentences are teaching you.",
+          "difficulty": "easy"
         },
         {
           "id": "RI.3.2-Q5",
@@ -1058,19 +1013,16 @@
         {
           "id": "RI.3.3-Q2",
           "type": "multiple_choice",
-          "prompt": "First, Rosa Parks refused to give up her bus seat in 1955. Then, the Montgomery Bus Boycott began. Finally, the Supreme Court ruled bus segregation was unconstitutional.\n\nWhich event happened FIRST?",
+          "prompt": "What happened because Rosa Parks refused to give up her bus seat?",
           "choices": [
-            "The boycott",
-            "The Supreme Court ruling",
-            "Bus segregation began",
-            "Rosa Parks refused to give up her seat"
+            "The Supreme Court ruled bus segregation was unconstitutional.",
+            "People started a boycott of the city buses.",
+            "Many people started riding buses more often.",
+            "Rosa Parks was given a new bus seat."
           ],
-          "correct": "Rosa Parks refused to give up her seat",
-          "hint": "The word 'First' tells you the sequence!",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q2-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RI.3.3/RI.3.3-Q2.png"
+          "correct": "People started a boycott of the city buses.",
+          "hint": "Look at what event immediately followed Rosa Parks' refusal in the passage to understand the direct relationship.",
+          "difficulty": "easy"
         },
         {
           "id": "RI.3.3-Q5",
@@ -1303,19 +1255,16 @@
         {
           "id": "RI.3.4-Q1",
           "type": "multiple_choice",
-          "prompt": "Photosynthesis is the process by which plants use sunlight, water, and carbon dioxide to make their own food.\n\nWhat is photosynthesis?",
+          "prompt": "Imagine a plant soaking up sunshine! It's also drinking water and taking in a special gas from the air. All of these things help the plant do its job of making food for itself. This important job is called photosynthesis.",
           "choices": [
-            "How plants grow roots",
-            "A type of plant",
-            "A chemical in soil",
-            "How plants make food using sunlight"
+            "A. How plants drink water.",
+            "B. How plants make their own food.",
+            "C. The way plants get sunlight.",
+            "D. A type of gas plants breathe."
           ],
-          "correct": "How plants make food using sunlight",
-          "hint": "The sentence defines it right after the word!",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.4/RI.3.4-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.4/RI.3.4-Q1-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RI.3.4/RI.3.4-Q1.png"
+          "correct": "B. How plants make their own food.",
+          "hint": "Look for the sentence that connects 'this important job' to what the plant is doing.",
+          "difficulty": "easy"
         },
         {
           "id": "RI.3.4-Q2",
@@ -1354,19 +1303,16 @@
         {
           "id": "RI.3.4-Q4",
           "type": "multiple_choice",
-          "prompt": "Herbivores are animals that eat only plants. Deer, rabbits, and cows are all herbivores.\n\nA herbivore eats —",
+          "prompt": "Deer, rabbits, and cows are called herbivores. These animals eat things like grass, clover, and hay. Based on this information, what do herbivores eat?",
           "choices": [
-            "Only insects",
             "Only plants",
+            "Other animals",
             "Both meat and plants",
-            "Only meat"
+            "Only seeds"
           ],
           "correct": "Only plants",
-          "hint": "The first sentence tells you the definition right away.",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.4/RI.3.4-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.4/RI.3.4-Q4-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RI.3.4/RI.3.4-Q4.png"
+          "hint": "Think about the food examples given for deer, rabbits, and cows.",
+          "difficulty": "easy"
         },
         {
           "id": "RI.3.4-Q5",
@@ -1396,19 +1342,16 @@
         {
           "id": "RI.3.5-Q1",
           "type": "multiple_choice",
-          "prompt": "You want to find information about volcanoes on page 47 of a textbook. Which text feature would help you find page 47 the fastest?",
+          "prompt": "Imagine you have a science textbook and you want to quickly find all the pages that explain what volcanoes are. Which text feature would be the most helpful to use?",
           "choices": [
-            "The title page",
-            "The index",
+            "The table of contents",
             "The glossary",
-            "A caption"
+            "The index",
+            "The title page"
           ],
           "correct": "The index",
-          "hint": "The index lists topics alphabetically with page numbers!",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.5/RI.3.5-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.5/RI.3.5-Q1-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RI.3.5/RI.3.5-Q1.png"
+          "hint": "Think about which text feature lists many different topics in alphabetical order and tells you every page where that topic is mentioned in the book.",
+          "difficulty": "easy"
         },
         {
           "id": "RI.3.5-Q2",
@@ -1447,19 +1390,16 @@
         {
           "id": "RI.3.5-Q4",
           "type": "multiple_choice",
-          "prompt": "What is the difference between an index and a glossary?",
+          "prompt": "Imagine you are reading a non-fiction book about space and you want to quickly find the exact page that talks about \"Mars.\" Which part of the book would you use to efficiently locate this specific information?",
           "choices": [
-            "An index lists topics with page numbers; a glossary defines words",
-            "An index is at the front; a glossary is in the middle",
-            "They are the same thing",
-            "An index defines words; a glossary lists page numbers"
+            "A. The table of contents",
+            "B. The glossary",
+            "C. The index",
+            "D. The dedication page"
           ],
-          "correct": "An index lists topics with page numbers; a glossary defines words",
-          "hint": "Index = find WHERE something is. Glossary = find WHAT a word means.",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.5/RI.3.5-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.5/RI.3.5-Q4-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RI.3.5/RI.3.5-Q4.png"
+          "correct": "C. The index",
+          "hint": "Look for the part of the text that explains which feature lists specific topics and their page numbers, usually found at the back of the book.",
+          "difficulty": "medium"
         },
         {
           "id": "RI.3.5-Q5",
@@ -1489,19 +1429,16 @@
         {
           "id": "RI.3.6-Q1",
           "type": "multiple_choice",
-          "prompt": "Homework is valuable because it helps students practice what they learned in class.\n\nThe author's point of view is that homework is —",
+          "prompt": "After a long day at school, some kids just want to play. They might think homework is just more work. But doing a little practice at home can really help your brain remember new things. If you practice your sight words, you'll read faster. If you review your math problems, you'll feel ready for the test. Homework gives your brain a chance to grow even stronger and helps you truly understand what you learned in class.\n\nThe author of this passage most likely believes that homework is:",
           "choices": [
-            "Only for math",
-            "Valuable for learning",
-            "Too easy",
-            "A waste of time"
+            "only for when you have extra time to play.",
+            "something teachers give just to be mean.",
+            "helpful for making your brain stronger and smarter.",
+            "boring and just extra work after school."
           ],
-          "correct": "Valuable for learning",
-          "hint": "The author uses the word 'valuable' — that tells you they think homework is good.",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.6/RI.3.6-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.6/RI.3.6-Q1-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RI.3.6/RI.3.6-Q1.png"
+          "correct": "helpful for making your brain stronger and smarter.",
+          "hint": "Look for what the author says homework *does* for your brain and learning in the passage.",
+          "difficulty": "easy"
         },
         {
           "id": "RI.3.6-Q2",
@@ -1523,19 +1460,16 @@
         {
           "id": "RI.3.6-Q3",
           "type": "multiple_choice",
-          "prompt": "How can you figure out an author's point of view?",
+          "prompt": "Read the paragraph. What is the author's point of view about dogs?\n\n\"Dogs are the best pets anyone could ask for! They are always so happy to see you when you come home, wagging their tails. Dogs love to play fetch in the park, which is great exercise for both of you. Plus, they can learn tricks like 'sit' and 'stay' very quickly. Having a dog means you always have a loyal friend by your side.\"",
           "choices": [
-            "Look at the words they choose and what they emphasize",
-            "Count the paragraphs",
-            "Ask the author directly",
-            "Read only the title"
+            "Dogs mostly like to stay inside.",
+            "Dogs are sometimes hard to train.",
+            "Dogs are wonderful pets to own.",
+            "Dogs need a lot of healthy food."
           ],
-          "correct": "Look at the words they choose and what they emphasize",
-          "hint": "Authors reveal their opinions through their word choices and what they focus on.",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.6/RI.3.6-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.6/RI.3.6-Q3-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RI.3.6/RI.3.6-Q3.png"
+          "correct": "Dogs are wonderful pets to own.",
+          "hint": "Look for the sentences that tell you how the author feels about dogs in the paragraph.",
+          "difficulty": "medium"
         },
         {
           "id": "RI.3.6-Q4",
@@ -1557,19 +1491,16 @@
         {
           "id": "RI.3.6-Q5",
           "type": "multiple_choice",
-          "prompt": "Why is it important to recognize your OWN point of view when reading?",
+          "prompt": "After reading the text, \"Eating a big salad every single night is the best way to stay strong and smart. Only vegetables can give you all the vitamins you need. If you don't eat a salad, you might not be as healthy as you could be,\" which statement shows a different point of view you might have about staying healthy?",
           "choices": [
-            "So you can think critically and form your own opinions",
-            "It's not important",
-            "So you can argue with everyone",
-            "So you always agree with the author"
+            "The author is correct that everyone should eat salads every night.",
+            "Eating a big salad every night is the only way to be healthy.",
+            "Salads are good, but I think other healthy foods like fruit or milk are also important for being strong.",
+            "It doesn't matter what you eat, as long as you exercise a lot."
           ],
-          "correct": "So you can think critically and form your own opinions",
-          "hint": "Good readers don't just accept everything — they think about it and decide for themselves!",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.6/RI.3.6-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.6/RI.3.6-Q5-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RI.3.6/RI.3.6-Q5.png"
+          "correct": "Salads are good, but I think other healthy foods like fruit or milk are also important for being strong.",
+          "hint": "Think about what the author says is the *only* and *best* way to be healthy, and then consider what *you* know about staying healthy.",
+          "difficulty": "medium"
         }
       ],
       "standard_id": "RI.3.6",
@@ -1692,19 +1623,16 @@
         {
           "id": "RI.3.8-Q2",
           "type": "multiple_choice",
-          "prompt": "Paragraph 1 describes what earthquakes are. Paragraph 2 explains what causes them.\n\nHow are these paragraphs connected?",
+          "prompt": "How do the first two paragraphs of the passage connect to each other?",
           "choices": [
-            "They contrast each other",
-            "They tell a story in order",
-            "They are about different topics",
-            "The first defines the topic and the second explains the cause"
+            "They compare two different kinds of natural events.",
+            "The first tells what something is, and the second tells why it happens.",
+            "They give a problem and then offer a solution.",
+            "The first gives an opinion, and the second gives facts to support it."
           ],
-          "correct": "The first defines the topic and the second explains the cause",
-          "hint": "First you learn WHAT something is, then WHY it happens. That's a logical order!",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.8/RI.3.8-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.8/RI.3.8-Q2-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RI.3.8/RI.3.8-Q2.png"
+          "correct": "The first tells what something is, and the second tells why it happens.",
+          "hint": "Look at what information each paragraph provides about earthquakes.",
+          "difficulty": "medium"
         },
         {
           "id": "RI.3.8-Q3",
@@ -1743,19 +1671,16 @@
         {
           "id": "RI.3.8-Q5",
           "type": "multiple_choice",
-          "prompt": "Which signal words show a sequence (order) connection between sentences?",
+          "prompt": "Read these sentences: \"First, Maya watered her plants. Then, she opened the window to let in fresh air.\" What does the word \"Then\" tell us about these two things?",
           "choices": [
-            "Because, therefore, as a result",
-            "First, next, then, finally",
-            "However, but, although",
-            "For example, such as"
+            "Watering plants causes the air to be fresh.",
+            "Opening the window happened after watering the plants.",
+            "Watering plants and opening the window are opposites.",
+            "Watering plants and opening the window are both good ideas."
           ],
-          "correct": "First, next, then, finally",
-          "hint": "These words tell you the ORDER things happen in!",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.8/RI.3.8-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.8/RI.3.8-Q5-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RI.3.8/RI.3.8-Q5.png"
+          "correct": "Opening the window happened after watering the plants.",
+          "hint": "Look at the order of the events described in the sentences and think about what 'Then' means.",
+          "difficulty": "easy"
         }
       ],
       "standard_id": "RI.3.8",
@@ -1768,19 +1693,16 @@
         {
           "id": "RI.3.9-Q1",
           "type": "multiple_choice",
-          "prompt": "Text A about sharks focuses on how they hunt. Text B about sharks focuses on why they're endangered. What do both texts have in common?",
+          "prompt": "Text A explains how sharks find their food. Text B explains why there are fewer sharks in the ocean. How are the main ideas of Text A and Text B different?",
           "choices": [
-            "Both focus on hunting",
-            "Both are about sharks",
-            "Both are about fishing",
-            "Both focus on endangerment"
+            "Text A is about land animals, but Text B is about sea animals.",
+            "Text A tells about how sharks get food, while Text B tells why sharks might disappear.",
+            "Text A talks about sharks swimming fast, and Text B talks about sharks sleeping.",
+            "Text A and Text B both talk about how sharks move."
           ],
-          "correct": "Both are about sharks",
-          "hint": "The topic is the same — sharks. But each text focuses on a different aspect.",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.9/RI.3.9-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.9/RI.3.9-Q1-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RI.3.9/RI.3.9-Q1.png"
+          "correct": "Text A tells about how sharks get food, while Text B tells why sharks might disappear.",
+          "hint": "Think about what each text focuses on separately, then consider how those focuses are not the same.",
+          "difficulty": "easy"
         },
         {
           "id": "RI.3.9-Q2",
@@ -1836,19 +1758,16 @@
         {
           "id": "RI.3.9-Q5",
           "type": "multiple_choice",
-          "prompt": "Text A argues that screen time should be limited. Text B argues that educational screen time can be beneficial. A reader should —",
+          "prompt": "Which statement best compares the main points of Text A and Text B?",
           "choices": [
-            "Ignore both texts",
-            "Consider both viewpoints and think critically",
-            "Only believe Text A",
-            "Only believe Text B"
+            "Both texts agree that children should not use screens at all.",
+            "Text A and Text B both suggest that more screen time is better for learning.",
+            "Text A says screen time should be limited, but Text B says educational screen time can be helpful.",
+            "Text A focuses on playtime, while Text B focuses on outdoor activities."
           ],
-          "correct": "Consider both viewpoints and think critically",
-          "hint": "Good readers think about different perspectives before forming their own opinion!",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.9/RI.3.9-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.9/RI.3.9-Q5-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RI.3.9/RI.3.9-Q5.png"
+          "correct": "Text A says screen time should be limited, but Text B says educational screen time can be helpful.",
+          "hint": "Think about the main message of Text A and the main message of Text B. How are their ideas about screen time different?",
+          "difficulty": "medium"
         }
       ],
       "standard_id": "RI.3.9",
@@ -1861,19 +1780,16 @@
         {
           "id": "RI.3.10-Q1",
           "type": "multiple_choice",
-          "prompt": "The Great Barrier Reef stretches over 1,400 miles along Australia's coast. It's so large it can be seen from space. Made up of billions of tiny organisms called coral polyps, it is the largest living structure on Earth.\n\nWhat are coral polyps?",
+          "prompt": "According to the passage, what role do coral polyps play in the Great Barrier Reef being the largest living structure on Earth?",
           "choices": [
-            "Fish",
-            "Rocks",
-            "Tiny organisms that make up the reef",
-            "Types of seaweed"
+            "They protect the fish living in the reef.",
+            "They are the tiny organisms that create the reef's structure.",
+            "They make the reef visible from far away.",
+            "They help the reef stretch over 1,400 miles by moving."
           ],
-          "correct": "Tiny organisms that make up the reef",
-          "hint": "The text describes them as 'tiny organisms called coral polyps.'",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.10/RI.3.10-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.10/RI.3.10-Q1-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RI.3.10/RI.3.10-Q1.png"
+          "correct": "They are the tiny organisms that create the reef's structure.",
+          "hint": "Look at the sentence that describes what the Great Barrier Reef is made of and what it is known for globally.",
+          "difficulty": "easy"
         },
         {
           "id": "RI.3.10-Q2",
@@ -2098,19 +2014,16 @@
         {
           "id": "RF.3.3a-Q4",
           "type": "multiple_choice",
-          "prompt": "Which word uses the suffix **-able** correctly?",
+          "prompt": "If a movie is \"enjoyable,\" what does the suffix -able tell us about the movie?",
           "choices": [
-            "Readable",
-            "Jumpable",
-            "Swimable",
-            "Runable"
+            "The movie made someone enjoy it.",
+            "The movie is able to be enjoyed.",
+            "The movie will be enjoyed later.",
+            "The movie has been enjoyed many times."
           ],
-          "correct": "Readable",
-          "hint": "'-able' means 'can be done.' Which one sounds right and is a real word?",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.3a/RF.3.3a-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.3a/RF.3.3a-Q4-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RF.3.3a/RF.3.3a-Q4.png"
+          "correct": "The movie is able to be enjoyed.",
+          "hint": "Remember that the suffix \"-able\" tells you if something *can* or *is able to* be done.",
+          "difficulty": "medium"
         },
         {
           "id": "RF.3.3a-Q5",
@@ -2157,19 +2070,16 @@
         {
           "id": "RF.3.3b-Q2",
           "type": "multiple_choice",
-          "prompt": "Which word ends with the **-sion** suffix?",
+          "prompt": "Which word contains the Latin suffix **-sion** and makes the /shun/ sound, like in 'push'?",
           "choices": [
-            "Lesson",
-            "Person",
-            "Mission",
-            "Kitten"
+            "A. vision",
+            "B. person",
+            "C. explosion",
+            "D. station"
           ],
-          "correct": "Mission",
-          "hint": "'-sion' also makes the 'shun' sound. Which word has it?",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.3b/RF.3.3b-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.3b/RF.3.3b-Q2-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RF.3.3b/RF.3.3b-Q2.png"
+          "correct": "C. explosion",
+          "hint": "Read each word carefully and listen to the sound the ending letters make. The suffix -sion sometimes makes a /shun/ sound and sometimes a /zhun/ sound, like in 'treasure'.",
+          "difficulty": "easy"
         },
         {
           "id": "RF.3.3b-Q3",
@@ -2191,19 +2101,16 @@
         {
           "id": "RF.3.3b-Q4",
           "type": "multiple_choice",
-          "prompt": "Which word has a Latin suffix?",
+          "prompt": "The word \"active\" means \"full of action.\" Which word below uses a common Latin suffix to show that something has a lot of a certain quality?",
           "choices": [
-            "Education",
-            "Softly",
-            "Biggest",
-            "Running"
+            "quickly",
+            "biggest",
+            "creative",
+            "playful"
           ],
-          "correct": "Education",
-          "hint": "'-tion' is a Latin suffix commonly found in English words.",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.3b/RF.3.3b-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.3b/RF.3.3b-Q4-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RF.3.3b/RF.3.3b-Q4.png"
+          "correct": "creative",
+          "hint": "Think about what each ending adds to the base word and if that ending is a common Latin suffix.",
+          "difficulty": "easy"
         },
         {
           "id": "RF.3.3b-Q5",
@@ -2267,19 +2174,16 @@
         {
           "id": "RF.3.3c-Q3",
           "type": "multiple_choice",
-          "prompt": "Which strategy helps you read a long, unfamiliar word?",
+          "prompt": "Which choice correctly shows how to break the word \"fantastic\" into smaller parts to help you read it?",
           "choices": [
-            "Guess based on the first letter",
-            "Read it backwards",
-            "Break it into smaller parts and sound out each part",
-            "Skip it entirely"
+            "fan-tas-tic",
+            "fant-ast-ic",
+            "fa-nta-stic",
+            "fanta-stic"
           ],
-          "correct": "Break it into smaller parts and sound out each part",
-          "hint": "Chunk the word into syllables, then put the sounds together!",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.3c/RF.3.3c-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.3c/RF.3.3c-Q3-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RF.3.3c/RF.3.3c-Q3.png"
+          "correct": "fan-tas-tic",
+          "hint": "Remember to look for natural sound chunks, or syllables, in the word.",
+          "difficulty": "easy"
         },
         {
           "id": "RF.3.3c-Q4",
@@ -2326,53 +2230,44 @@
         {
           "id": "RF.3.3d-Q1",
           "type": "multiple_choice",
-          "prompt": "Which word is spelled correctly?",
+          "prompt": "Read the sentence below. Choose the word that best completes the sentence. I have had _______ to eat.",
           "choices": [
-            "Enuff",
-            "Enough",
-            "Enugh",
-            "Enuf"
+            "tough",
+            "through",
+            "though",
+            "enough"
           ],
-          "correct": "Enough",
-          "hint": "This tricky word has 'ough' — which doesn't sound like it looks!",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.3d/RF.3.3d-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.3d/RF.3.3d-Q1-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RF.3.3d/RF.3.3d-Q1.png"
+          "correct": "enough",
+          "hint": "Think about which word means 'sufficient' or 'as much as needed' in the context of eating.",
+          "difficulty": "easy"
         },
         {
           "id": "RF.3.3d-Q2",
           "type": "multiple_choice",
-          "prompt": "Choose the correct spelling:",
+          "prompt": "When you used your brain to figure out a tough math problem, what did you do?",
           "choices": [
-            "Thought",
-            "Thoght",
-            "Thougth",
-            "Thawt"
+            "A) jumped",
+            "B) played",
+            "C) thought",
+            "D) slept"
           ],
-          "correct": "Thought",
-          "hint": "Another 'ough' word! Thought has a silent 'gh.'",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.3d/RF.3.3d-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.3d/RF.3.3d-Q2-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RF.3.3d/RF.3.3d-Q2.png"
+          "correct": "C) thought",
+          "hint": "Consider which word describes the action of using your mind to solve a problem.",
+          "difficulty": "easy"
         },
         {
           "id": "RF.3.3d-Q3",
           "type": "multiple_choice",
-          "prompt": "The word **through** rhymes with —",
+          "prompt": "Which sentence uses the word \"through\" correctly?",
           "choices": [
-            "Cough",
-            "Rough",
-            "Blue",
-            "Though"
+            "The children walked through the big gate.",
+            "I through the ball for the dog to catch.",
+            "The tiny bird flew through the deep ocean.",
+            "She wore a hat through her head."
           ],
-          "correct": "Blue",
-          "hint": "Say 'through' — it sounds like 'threw.' What rhymes with that?",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.3d/RF.3.3d-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.3d/RF.3.3d-Q3-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RF.3.3d/RF.3.3d-Q3.png"
+          "correct": "The children walked through the big gate.",
+          "hint": "Think about what 'through' means when something moves from one side to another.",
+          "difficulty": "medium"
         },
         {
           "id": "RF.3.3d-Q4",
@@ -2419,53 +2314,44 @@
         {
           "id": "RF.3.4-Q1",
           "type": "multiple_choice",
-          "prompt": "What does it mean to read with **expression**?",
+          "prompt": "Which choice best describes how a reader should say the sentence, \"Wow, what a surprise!\"",
           "choices": [
-            "Reading every word the same way",
-            "Changing your voice to show feelings and meaning",
-            "Reading silently",
-            "Reading very fast"
+            "In a quiet, calm voice, like telling a secret.",
+            "With a voice that shows excitement and wonder.",
+            "In a bored, flat voice, like reading a list.",
+            "With a slow, sad voice, like something is wrong."
           ],
-          "correct": "Changing your voice to show feelings and meaning",
-          "hint": "Expression means your voice shows the emotions in the text!",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.4/RF.3.4-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.4/RF.3.4-Q1-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RF.3.4/RF.3.4-Q1.png"
+          "correct": "With a voice that shows excitement and wonder.",
+          "hint": "Think about how someone would feel if they were truly surprised by something good.",
+          "difficulty": "easy"
         },
         {
           "id": "RF.3.4-Q2",
           "type": "multiple_choice",
-          "prompt": "A fluent reader —",
+          "prompt": "When a student reads a story fluently, what helps them understand the story best?",
           "choices": [
-            "Reads smoothly and at a natural pace",
-            "Reads very slowly, word by word",
-            "Skips hard words",
-            "Never makes mistakes"
+            "Reading so fast that some words are skipped.",
+            "Stopping often to ask what every single word means.",
+            "Reading each word very slowly, one at a time.",
+            "Reading smoothly, making the words sound like talking."
           ],
-          "correct": "Reads smoothly and at a natural pace",
-          "hint": "Fluent reading sounds natural, like a conversation.",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.4/RF.3.4-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.4/RF.3.4-Q2-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RF.3.4/RF.3.4-Q2.png"
+          "correct": "Reading smoothly, making the words sound like talking.",
+          "hint": "Think about how reading smoothly helps you follow the story and know what is happening.",
+          "difficulty": "easy"
         },
         {
           "id": "RF.3.4-Q3",
           "type": "multiple_choice",
-          "prompt": "You're reading aloud and you mispronounce a word. What should you do?",
+          "prompt": "Read the sentence below. Which word makes the sentence confusing and needs to be changed?\"My sister wanted too go to the park with us.\"",
           "choices": [
-            "Stop reading completely",
-            "Keep going and hope nobody noticed",
-            "Go back, correct the word, and reread the sentence",
-            "Ask someone to finish for you"
+            "A. sister",
+            "B. wanted",
+            "C. too",
+            "D. park"
           ],
-          "correct": "Go back, correct the word, and reread the sentence",
-          "hint": "Good readers self-correct! Go back and fix it.",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.4/RF.3.4-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.4/RF.3.4-Q3-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RF.3.4/RF.3.4-Q3.png"
+          "correct": "C. too",
+          "hint": "Think about the different ways we use the words 'too' and 'to' and which one fits best in this sentence.",
+          "difficulty": "easy"
         },
         {
           "id": "RF.3.4-Q4",
@@ -2487,19 +2373,16 @@
         {
           "id": "RF.3.4-Q5",
           "type": "multiple_choice",
-          "prompt": "Reading accuracy means —",
+          "prompt": "Imagine a student is reading the sentence 'The little bird sang a happy song.' Which choice shows the student reading every word correctly?",
           "choices": [
-            "Finishing the book quickly",
-            "Reading with a loud voice",
-            "Reading each word correctly",
-            "Reading fast"
+            "The little bird sung a happy song.",
+            "The little bird sang a happy song.",
+            "The tiny bird sang a happy song.",
+            "The little bird sang a sad song."
           ],
-          "correct": "Reading each word correctly",
-          "hint": "Accuracy = getting the words right!",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.4/RF.3.4-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.4/RF.3.4-Q5-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RF.3.4/RF.3.4-Q5.png"
+          "correct": "The little bird sang a happy song.",
+          "hint": "To read accurately, look for the choice where every word matches the original sentence exactly, without changing any words or sounds.",
+          "difficulty": "easy"
         }
       ],
       "standard_id": "RF.3.4",
@@ -2546,19 +2429,16 @@
         {
           "id": "RF.3.4a-Q3",
           "type": "multiple_choice",
-          "prompt": "Benjamin Franklin was not only a Founding Father but also an inventor. He invented bifocal glasses, the lightning rod, and a more efficient fireplace called the Franklin stove.\n\nWhat were three of Franklin's inventions?",
+          "prompt": "Based on the inventions mentioned in the text, what can you understand about Benjamin Franklin's interests?",
           "choices": [
-            "Bifocals, lightning rod, and Franklin stove",
-            "Books, newspapers, and maps",
-            "The telephone, light bulb, and car",
-            "The Constitution, the flag, and the dollar"
+            "He wanted to write many books and stories.",
+            "He liked making everyday life better and safer for people.",
+            "He was interested in traveling to faraway places.",
+            "He enjoyed studying animals and plants."
           ],
-          "correct": "Bifocals, lightning rod, and Franklin stove",
-          "hint": "The second sentence lists his three inventions.",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.4a/RF.3.4a-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.4a/RF.3.4a-Q3-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RF.3.4a/RF.3.4a-Q3.png"
+          "correct": "He liked making everyday life better and safer for people.",
+          "hint": "Look at what each of Franklin's inventions helped people to do or what problems they solved.",
+          "difficulty": "easy"
         },
         {
           "id": "RF.3.4a-Q4",
@@ -2580,19 +2460,16 @@
         {
           "id": "RF.3.4a-Q5",
           "type": "multiple_choice",
-          "prompt": "After reading a passage, what should you be able to do?",
+          "prompt": "Read the story. Squeaky the squirrel was very busy. He spent his days collecting acorns and burying them near the big oak tree. He knew winter was coming soon, and he wanted to have plenty of food saved up. Squeaky worked hard to make sure he would not be hungry when the snow fell. What is the main idea of this story?",
           "choices": [
-            "Spell every word correctly",
-            "Draw a perfect picture of it",
-            "Recite every word from memory",
-            "Explain the main idea and key details in your own words"
+            "Squeaky likes to play near the oak tree.",
+            "Squeaky is preparing for winter.",
+            "Squeaky enjoys eating acorns.",
+            "Squeaky buries food in the ground."
           ],
-          "correct": "Explain the main idea and key details in your own words",
-          "hint": "Understanding means you can talk about what you read in your own words!",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.4a/RF.3.4a-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.4a/RF.3.4a-Q5-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RF.3.4a/RF.3.4a-Q5.png"
+          "correct": "Squeaky is preparing for winter.",
+          "hint": "Think about what Squeaky is doing throughout the entire story and why.",
+          "difficulty": "easy"
         }
       ],
       "standard_id": "RF.3.4a",
@@ -2639,19 +2516,16 @@
         {
           "id": "RF.3.4b-Q3",
           "type": "multiple_choice",
-          "prompt": "What does **appropriate rate** mean when reading aloud?",
+          "prompt": "Imagine you are reading a fun adventure story to your classmates. To make sure they understand and enjoy the story the most, how should you read?",
           "choices": [
-            "So slow every word takes 5 seconds",
-            "At a constant speed with no changes",
-            "At a speed that sounds natural and allows understanding",
-            "As fast as you can"
+            "Read quietly, so only the people closest to you can hear.",
+            "Read at a smooth speed, making the story sound natural and easy to follow.",
+            "Read each word slowly, taking long breaks after every sentence.",
+            "Read very, very fast, trying to finish quickly."
           ],
-          "correct": "At a speed that sounds natural and allows understanding",
-          "hint": "Not too fast, not too slow — like how you'd tell a friend a story.",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.4b/RF.3.4b-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.4b/RF.3.4b-Q3-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RF.3.4b/RF.3.4b-Q3.png"
+          "correct": "Read at a smooth speed, making the story sound natural and easy to follow.",
+          "hint": "Think about what helps people understand a story best when you read it to them.",
+          "difficulty": "easy"
         },
         {
           "id": "RF.3.4b-Q4",
@@ -2715,19 +2589,16 @@
         {
           "id": "RF.3.4c-Q2",
           "type": "multiple_choice",
-          "prompt": "What is **self-correcting** when reading?",
+          "prompt": "Lily loved to watch the birds. One day, she saw a robin building its nest. It used tiny twigs and soft grass. The robin worked hard to *construct* a cozy home for its eggs. If you weren't sure what 'construct' meant, what would be the best way to understand it?",
           "choices": [
-            "You notice your own mistake and fix it",
-            "Someone else fixes your mistakes",
-            "You erase and rewrite",
-            "You stop reading"
+            "A. Ask a grown-up what the word means.",
+            "B. Skip the word and keep reading the story.",
+            "C. Reread the sentence and think about what the robin is doing with the twigs and grass to make a home.",
+            "D. Try to sound out the word many times until it makes sense."
           ],
-          "correct": "You notice your own mistake and fix it",
-          "hint": "'Self' means you do it yourself. 'Correcting' means fixing!",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.4c/RF.3.4c-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.4c/RF.3.4c-Q2-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RF.3.4c/RF.3.4c-Q2.png"
+          "correct": "C. Reread the sentence and think about what the robin is doing with the twigs and grass to make a home.",
+          "hint": "Think about what the robin is doing with the twigs and grass to create its home. The surrounding words will give you clues.",
+          "difficulty": "easy"
         },
         {
           "id": "RF.3.4c-Q3",
@@ -3042,19 +2913,16 @@
         {
           "id": "L.3.4d-Q3",
           "type": "multiple_choice",
-          "prompt": "What information does a dictionary give you about a word?",
+          "prompt": "Read the dictionary entry below for the word 'giggle.'giggle (gig-uhl) verb.1. To laugh in a silly, often quiet way.Example: The children started to giggle when the clown made a funny face.What does the word 'giggle' mean?",
           "choices": [
-            "Only the spelling",
-            "Only example sentences",
-            "Spelling, pronunciation, definition, and part of speech",
-            "Only the definition"
+            "To cry loudly",
+            "To shout with joy",
+            "To laugh in a silly, often quiet way",
+            "To sing a happy song"
           ],
-          "correct": "Spelling, pronunciation, definition, and part of speech",
-          "hint": "A dictionary is packed with info — spelling, how to say it, what it means, and how to use it!",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4d/L.3.4d-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4d/L.3.4d-Q3-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.4d/L.3.4d-Q3.png"
+          "correct": "To laugh in a silly, often quiet way",
+          "hint": "The definition in the dictionary entry tells you what the word 'giggle' means.",
+          "difficulty": "easy"
         },
         {
           "id": "L.3.4d-Q4",
@@ -3587,19 +3455,16 @@
         {
           "id": "L.3.1-Q1",
           "type": "multiple_choice",
-          "prompt": "Pick the right verb: Yesterday, I ___ to the park.",
+          "prompt": "Which sentence correctly uses a verb to show something happened in the past?",
           "choices": [
-            "went",
-            "goed",
-            "gone",
-            "go"
+            "My little brother run fast at the race.",
+            "My little brother running fast at the race.",
+            "My little brother ran fast at the race.",
+            "My little brother runs fast at the race."
           ],
-          "correct": "went",
-          "hint": "Yesterday means past. The past of go is went!",
-          "difficulty": 1,
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.1/L.3.1-Q1-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.1/L.3.1-Q1.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.1/L.3.1-Q1.png"
+          "correct": "My little brother ran fast at the race.",
+          "hint": "Remember that some action words change completely when you talk about something that already happened.",
+          "difficulty": 1
         },
         {
           "id": "L.3.1-Q2",
