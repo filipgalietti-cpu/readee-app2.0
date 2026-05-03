@@ -1,12 +1,13 @@
 import Link from "next/link";
 import {
   Sparkles,
-  Users,
   Eye,
   ArrowRight,
   BookOpen,
   Heart,
   Shield,
+  Flame,
+  Users,
 } from "lucide-react";
 import type { Metadata } from "next";
 import { supabaseAdmin } from "@/lib/supabase/admin";
@@ -15,14 +16,14 @@ export const dynamic = "force-dynamic";
 export const revalidate = 600;
 
 export const metadata: Metadata = {
-  title: "Readee Community Library — kid-safe reading passages from real families",
+  title: "Readee Community Library — kid-safe reading passages",
   description:
-    "Free reading passages for K-4 kids, made and shared by other Readee parents. Comprehension questions, read-aloud audio, and illustrations included. Browse by grade.",
+    "Free reading passages for K-4 kids, made by Readee. Comprehension questions, read-aloud audio, and illustrations included. Browse by grade.",
   alternates: { canonical: "/community" },
   openGraph: {
-    title: "Readee Community — passages from real families",
+    title: "Readee Community — kid-safe reading passages",
     description:
-      "Free K-4 reading passages with audio, illustrations, and comprehension questions. Made and shared by parents.",
+      "Free K-4 reading passages with audio, illustrations, and comprehension questions.",
     type: "website",
     url: "/community",
   },
@@ -47,13 +48,53 @@ type Card = {
   view_count: number;
   display_byline: string | null;
   created_at: string;
+  passage_text?: string | null;
 };
+
+function timeAgo(iso: string): string {
+  const ms = Date.now() - new Date(iso).getTime();
+  const m = Math.floor(ms / 60000);
+  if (m < 1) return "just now";
+  if (m < 60) return `${m}m ago`;
+  const h = Math.floor(m / 60);
+  if (h < 24) return `${h}h ago`;
+  const d = Math.floor(h / 24);
+  if (d < 7) return `${d}d ago`;
+  const w = Math.floor(d / 7);
+  if (w < 5) return `${w}w ago`;
+  const mo = Math.floor(d / 30);
+  return `${mo}mo ago`;
+}
+
+function bylineInitial(byline: string | null | undefined): string {
+  if (!byline) return "R";
+  // "Featured by Readee" → "R", "Erin S." → "E"
+  const first = byline.split(/\s+/).find((p) => /[A-Za-z]/.test(p)) ?? "R";
+  return first[0].toUpperCase();
+}
+
+function avatarTone(byline: string | null | undefined): string {
+  // Stable tone bucket from byline so the same author always gets the
+  // same avatar color. 6 brand-aligned tones.
+  const tones = [
+    "from-violet-500 to-indigo-600",
+    "from-rose-400 to-pink-500",
+    "from-amber-400 to-orange-500",
+    "from-emerald-400 to-teal-500",
+    "from-sky-400 to-blue-500",
+    "from-fuchsia-400 to-purple-500",
+  ];
+  const seed = (byline ?? "Readee")
+    .split("")
+    .reduce((acc, c) => acc + c.charCodeAt(0), 0);
+  return tones[seed % tones.length];
+}
 
 export default async function CommunityLanding() {
   const admin = supabaseAdmin();
 
-  // Top 6 by view count for the "trending" strip.
-  const { data: topRows } = await admin
+  // Trending — top 8 by recent view momentum.
+  const { data: trendingRows } = await admin
     .from("community_passages")
     .select(
       "id, slug, title, image_url, grade_level, topic, view_count, display_byline, created_at",
@@ -62,62 +103,64 @@ export default async function CommunityLanding() {
     .not("slug", "is", null)
     .order("view_count", { ascending: false })
     .order("created_at", { ascending: false })
-    .limit(6);
-  const topPicks = (topRows ?? []) as Card[];
+    .limit(8);
+  const trending = (trendingRows ?? []) as Card[];
 
-  // 8 newest for the recent additions feed.
-  const { data: recentRows } = await admin
+  // Feed — newest first, 12 entries with passage preview text.
+  const { data: feedRows } = await admin
     .from("community_passages")
     .select(
-      "id, slug, title, image_url, grade_level, topic, view_count, display_byline, created_at",
+      "id, slug, title, image_url, grade_level, topic, view_count, display_byline, created_at, passage_text",
     )
     .eq("status", "approved")
     .not("slug", "is", null)
     .order("created_at", { ascending: false })
-    .limit(8);
-  const recent = (recentRows ?? []) as Card[];
+    .limit(12);
+  const feed = (feedRows ?? []) as Card[];
 
-  // Per-grade counts + a sample image each, for the browse cards.
+  // Per-grade counts for the tab bar.
   const gradeData = await Promise.all(
     GRADES.map(async (g) => {
-      const [{ count }, { data: sample }] = await Promise.all([
-        admin
-          .from("community_passages")
-          .select("id", { count: "exact", head: true })
-          .eq("status", "approved")
-          .eq("grade_level", g.key)
-          .not("slug", "is", null),
-        admin
-          .from("community_passages")
-          .select("image_url")
-          .eq("status", "approved")
-          .eq("grade_level", g.key)
-          .not("image_url", "is", null)
-          .order("view_count", { ascending: false })
-          .limit(1)
-          .maybeSingle(),
-      ]);
-      return {
-        ...g,
-        count: count ?? 0,
-        cover: ((sample as any)?.image_url as string | null) ?? null,
-      };
+      const { count } = await admin
+        .from("community_passages")
+        .select("id", { count: "exact", head: true })
+        .eq("status", "approved")
+        .eq("grade_level", g.key)
+        .not("slug", "is", null);
+      return { ...g, count: count ?? 0 };
     }),
   );
-
-  // Hero stat — total approved passages.
   const totalPassages = gradeData.reduce((acc, g) => acc + g.count, 0);
 
+  // Recent contributors — distinct bylines from the last 50 approved
+  // entries so the "people behind it" strip shows variety.
+  const { data: bylineRows } = await admin
+    .from("community_passages")
+    .select("display_byline, created_at")
+    .eq("status", "approved")
+    .not("display_byline", "is", null)
+    .order("created_at", { ascending: false })
+    .limit(50);
+  const seenBylines = new Set<string>();
+  const contributors: string[] = [];
+  for (const r of (bylineRows ?? []) as { display_byline: string }[]) {
+    if (!seenBylines.has(r.display_byline)) {
+      seenBylines.add(r.display_byline);
+      contributors.push(r.display_byline);
+    }
+    if (contributors.length >= 6) break;
+  }
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-violet-50 via-white to-indigo-50">
+    <div className="min-h-screen bg-zinc-50 dark:bg-slate-950">
       {/* Top bar */}
-      <header className="border-b border-zinc-200 bg-white/80 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
+      <header className="sticky top-0 z-30 border-b border-zinc-200 bg-white/85 backdrop-blur-md">
+        <div className="mx-auto flex max-w-3xl items-center justify-between px-4 py-3">
           <Link
             href="/"
-            className="inline-flex items-center gap-1.5 text-sm font-bold text-zinc-900"
+            className="inline-flex items-center gap-1.5 text-base font-extrabold text-zinc-900"
           >
-            <Sparkles className="h-4 w-4 text-violet-600" />
+            <Sparkles className="h-5 w-5 text-violet-600" />
             Readee
           </Link>
           <div className="flex items-center gap-2">
@@ -129,7 +172,7 @@ export default async function CommunityLanding() {
             </Link>
             <Link
               href="/signup"
-              className="inline-flex items-center gap-1 rounded-full bg-zinc-900 px-3 py-1.5 text-xs font-semibold text-white hover:bg-zinc-700"
+              className="inline-flex items-center gap-1 rounded-full bg-violet-600 px-3.5 py-1.5 text-xs font-bold text-white shadow-sm hover:bg-violet-700"
             >
               Try Readee free
             </Link>
@@ -137,152 +180,173 @@ export default async function CommunityLanding() {
         </div>
       </header>
 
-      {/* Hero */}
-      <section className="mx-auto max-w-6xl px-6 py-14 sm:py-20">
-        <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-violet-600">
-          <Users className="h-3.5 w-3.5" />
-          Community library
-        </div>
-        <h1 className="mt-3 text-4xl font-extrabold tracking-tight text-zinc-900 sm:text-5xl">
-          Reading passages from
-          <br className="hidden sm:inline" /> real Readee families.
-        </h1>
-        <p className="mt-4 max-w-2xl text-lg text-zinc-600">
-          Free, kid-safe passages for K-4 readers — each with comprehension
-          questions, read-aloud audio, and an illustration. Made and shared by
-          other parents using Readee. Reviewed before publishing.
-        </p>
-        {totalPassages > 0 && (
-          <div className="mt-6 flex flex-wrap items-center gap-x-8 gap-y-2 text-sm text-zinc-600">
-            <Stat
-              icon={<BookOpen className="h-4 w-4 text-violet-600" />}
-              value={totalPassages.toLocaleString()}
-              label="passages"
-            />
-            <Stat
-              icon={<Heart className="h-4 w-4 text-rose-500" />}
-              value={`${recent.length > 0 ? "Updated daily" : "Free forever"}`}
-              label=""
-            />
-            <Stat
-              icon={<Shield className="h-4 w-4 text-emerald-600" />}
-              value="Reviewed before publishing"
-              label=""
-            />
+      <div className="mx-auto max-w-3xl px-4 py-6 sm:px-6">
+        {/* Compact intro */}
+        <div className="flex items-center gap-3">
+          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500 to-indigo-600 text-white shadow-md">
+            <Users className="h-6 w-6" />
           </div>
-        )}
-      </section>
-
-      {/* Trending strip */}
-      {topPicks.length > 0 && (
-        <section className="mx-auto max-w-6xl px-6 pb-12">
-          <SectionHeader
-            eyebrow="Most read"
-            title="What kids are reading right now"
-          />
-          <ul className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {topPicks.map((p) => (
-              <PassageCard key={p.id} passage={p} />
-            ))}
-          </ul>
-        </section>
-      )}
-
-      {/* Browse by grade */}
-      <section className="mx-auto max-w-6xl px-6 pb-12">
-        <SectionHeader eyebrow="Browse" title="By grade" />
-        <ul className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-          {gradeData.map((g) => (
-            <li key={g.key}>
-              <Link
-                href={`/community/grade/${g.key.toLowerCase()}`}
-                className="group flex h-full flex-col overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:border-violet-300 hover:shadow-md"
-              >
-                <div className="aspect-[5/3] w-full overflow-hidden bg-gradient-to-br from-violet-100 to-indigo-100">
-                  {g.cover ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      src={g.cover}
-                      alt={`${g.label} reading passage cover`}
-                      className="h-full w-full object-cover transition group-hover:scale-[1.03]"
-                    />
-                  ) : (
-                    <div className="flex h-full w-full items-center justify-center text-violet-400">
-                      <BookOpen className="h-10 w-10" />
-                    </div>
-                  )}
-                </div>
-                <div className="flex flex-1 items-center justify-between p-3">
-                  <div>
-                    <div className="text-base font-extrabold text-zinc-900 group-hover:text-violet-700">
-                      {g.label}
-                    </div>
-                    <div className="text-[11px] font-semibold text-zinc-500">
-                      {g.count.toLocaleString()}{" "}
-                      {g.count === 1 ? "passage" : "passages"}
-                    </div>
-                  </div>
-                  <ArrowRight className="h-4 w-4 text-zinc-300 group-hover:text-violet-500" />
-                </div>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      {/* Recent additions */}
-      {recent.length > 0 && (
-        <section className="mx-auto max-w-6xl px-6 pb-12">
-          <SectionHeader
-            eyebrow="Just added"
-            title="Recently shared"
-            cta={{ href: "/community/all", label: "See all →" }}
-          />
-          <ul className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {recent.map((p) => (
-              <PassageCard key={p.id} passage={p} compact />
-            ))}
-          </ul>
-        </section>
-      )}
-
-      {/* How it works */}
-      <section className="mx-auto max-w-6xl px-6 pb-12">
-        <SectionHeader eyebrow="How it works" title="Simple, kid-safe, free" />
-        <div className="mt-5 grid gap-4 sm:grid-cols-3">
-          <Step
-            n={1}
-            title="A parent makes a passage"
-            body="Using Readee.ai — type a topic, and the AI writes a passage at the kid's reading level with questions and audio."
-          />
-          <Step
-            n={2}
-            title="They share it with the community"
-            body="Names get anonymized, audio is regenerated from the clean text, and our AI runs quality checks before submission."
-          />
-          <Step
-            n={3}
-            title="A reviewer approves it"
-            body="A human admin reads each piece before it goes live. Trusted contributors auto-publish after their first 5 approved shares."
-          />
+          <div>
+            <h1 className="text-2xl font-extrabold tracking-tight text-zinc-900">
+              Community library
+            </h1>
+            <p className="text-xs font-semibold text-zinc-500">
+              {totalPassages.toLocaleString()} kid-safe reading passages ·
+              free · reviewed
+            </p>
+          </div>
         </div>
-      </section>
 
-      {/* Final CTA */}
-      <section className="mx-auto max-w-6xl px-6 pb-16">
-        <div className="overflow-hidden rounded-3xl border border-violet-200 bg-gradient-to-br from-violet-100 via-indigo-50 to-violet-100 p-8 text-center shadow-sm sm:p-12">
+        {/* Grade tabs */}
+        <div className="mt-5 -mx-4 overflow-x-auto px-4 sm:mx-0 sm:overflow-visible sm:px-0">
+          <div className="flex items-center gap-2">
+            <Tab href="/community" active label="All" count={totalPassages} />
+            {gradeData.map((g) => (
+              <Tab
+                key={g.key}
+                href={`/community/grade/${g.key.toLowerCase()}`}
+                label={g.short === "K" ? "Kindergarten" : `${g.short} Grade`}
+                count={g.count}
+                active={false}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Trending stories strip — horizontal scroll */}
+        {trending.length > 0 && (
+          <section className="mt-6">
+            <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-zinc-500">
+              <Flame className="h-3.5 w-3.5 text-orange-500" />
+              Trending now
+            </div>
+            <div className="mt-2 -mx-4 overflow-x-auto px-4 pb-2 sm:mx-0 sm:px-0">
+              <ul className="flex gap-3" style={{ width: "max-content" }}>
+                {trending.map((p) => (
+                  <li key={p.id} className="w-44 flex-shrink-0">
+                    <Link
+                      href={`/community/${p.slug}`}
+                      className="group block overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-zinc-200 transition hover:shadow-md"
+                    >
+                      {p.image_url ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                          src={p.image_url}
+                          alt={p.title}
+                          className="aspect-[3/4] w-full object-cover transition group-hover:scale-[1.03]"
+                        />
+                      ) : (
+                        <div className="flex aspect-[3/4] w-full items-center justify-center bg-gradient-to-br from-violet-200 to-indigo-300 text-white">
+                          <Sparkles className="h-10 w-10" />
+                        </div>
+                      )}
+                      <div className="p-2.5">
+                        <div className="line-clamp-2 text-[13px] font-bold leading-tight text-zinc-900 group-hover:text-violet-700">
+                          {p.title}
+                        </div>
+                        <div className="mt-1 flex items-center gap-1.5 text-[10px] font-semibold text-zinc-500">
+                          <span className="rounded-full bg-violet-100 px-1.5 py-0.5 text-violet-700">
+                            {p.grade_level}
+                          </span>
+                          <span className="inline-flex items-center gap-0.5">
+                            <Eye className="h-2.5 w-2.5" />
+                            {p.view_count.toLocaleString()}
+                          </span>
+                        </div>
+                      </div>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+        )}
+
+        {/* Contributors strip — "people behind the library" */}
+        {contributors.length > 0 && (
+          <section className="mt-5 flex items-center gap-3 rounded-2xl border border-zinc-200 bg-white p-3">
+            <div className="flex -space-x-2">
+              {contributors.slice(0, 5).map((c) => (
+                <div
+                  key={c}
+                  title={c}
+                  className={`flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br ${avatarTone(c)} text-xs font-extrabold text-white ring-2 ring-white`}
+                >
+                  {bylineInitial(c)}
+                </div>
+              ))}
+            </div>
+            <div className="text-xs text-zinc-600">
+              <span className="font-bold text-zinc-900">
+                {contributors.length} contributors
+              </span>{" "}
+              keeping the library fresh.{" "}
+              <Link href="/signup" className="font-semibold text-violet-700 hover:underline">
+                Add yours →
+              </Link>
+            </div>
+          </section>
+        )}
+
+        {/* Feed — vertical, social-media style */}
+        <section className="mt-6">
+          <div className="flex items-baseline justify-between">
+            <h2 className="text-sm font-bold uppercase tracking-widest text-zinc-500">
+              Latest in the community
+            </h2>
+            <Link
+              href="/community/all"
+              className="text-[11px] font-semibold text-violet-700 hover:underline"
+            >
+              See all →
+            </Link>
+          </div>
+
+          {feed.length === 0 ? (
+            <div className="mt-4 rounded-2xl border-2 border-dashed border-zinc-200 bg-white p-10 text-center">
+              <Sparkles className="mx-auto h-10 w-10 text-violet-400" />
+              <p className="mt-3 text-sm text-zinc-500">
+                Library is brand new. Come back soon.
+              </p>
+            </div>
+          ) : (
+            <ul className="mt-3 space-y-3">
+              {feed.map((p) => (
+                <FeedPost key={p.id} post={p} />
+              ))}
+            </ul>
+          )}
+        </section>
+
+        {/* Trust strip — replaces the old "How it works" wall */}
+        <section className="mt-8 grid gap-2 sm:grid-cols-3">
+          <Trust
+            icon={<Shield className="h-4 w-4 text-emerald-600" />}
+            label="Reviewed before publishing"
+          />
+          <Trust
+            icon={<Heart className="h-4 w-4 text-rose-500" />}
+            label="Free for every family"
+          />
+          <Trust
+            icon={<BookOpen className="h-4 w-4 text-violet-600" />}
+            label="K-4 reading specialist designed"
+          />
+        </section>
+
+        {/* Final CTA */}
+        <section className="mt-8 overflow-hidden rounded-3xl border border-violet-200 bg-gradient-to-br from-violet-100 via-indigo-50 to-violet-100 p-6 text-center shadow-sm sm:p-8">
           <div className="text-[10px] font-bold uppercase tracking-widest text-violet-700">
             Want to make your own?
           </div>
-          <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-zinc-900 sm:text-4xl">
-            Make a reading passage for your kid in 3 taps.
+          <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-zinc-900 sm:text-3xl">
+            Build a passage for your kid in 3 taps.
           </h2>
-          <p className="mx-auto mt-3 max-w-xl text-base text-zinc-700">
-            Type a topic, pick a mode (Quick Read · Bedtime Story · Phonics
-            Drill · Fun Facts), and Readee builds a level-locked passage with
-            questions and audio in under a minute.
+          <p className="mx-auto mt-2 max-w-md text-sm text-zinc-700">
+            Pick a topic, pick a mode, Readee builds it. Pass our quality
+            check and your passage shows up here.
           </p>
-          <div className="mt-6 flex items-center justify-center gap-2">
+          <div className="mt-5 flex items-center justify-center gap-2">
             <Link
               href="/signup"
               className="inline-flex items-center gap-2 rounded-full bg-violet-600 px-6 py-3 text-base font-bold text-white shadow hover:bg-violet-700"
@@ -294,14 +358,12 @@ export default async function CommunityLanding() {
               href="/about"
               className="rounded-full border border-zinc-200 bg-white px-5 py-3 text-base font-bold text-zinc-700 hover:border-violet-300"
             >
-              Learn more
+              How it works
             </Link>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <footer className="border-t border-zinc-200 bg-white">
-        <div className="mx-auto max-w-6xl px-6 py-8 text-xs text-zinc-500">
+        <footer className="mt-10 pb-8 text-center text-xs text-zinc-400">
           © Readee Learning LLC ·{" "}
           <Link href="/privacy-policy" className="hover:text-violet-700">
             Privacy
@@ -310,129 +372,125 @@ export default async function CommunityLanding() {
           <Link href="/terms-of-service" className="hover:text-violet-700">
             Terms
           </Link>
-        </div>
-      </footer>
+        </footer>
+      </div>
     </div>
   );
 }
 
-function Stat({
+function Tab({
+  href,
+  label,
+  count,
+  active,
+}: {
+  href: string;
+  label: string;
+  count: number;
+  active: boolean;
+}) {
+  return (
+    <Link
+      href={href}
+      className={`flex-shrink-0 rounded-full px-4 py-1.5 text-xs font-bold transition ${
+        active
+          ? "bg-violet-600 text-white shadow-sm"
+          : "border border-zinc-200 bg-white text-zinc-700 hover:border-violet-300 hover:text-violet-700"
+      }`}
+    >
+      {label}{" "}
+      <span
+        className={`ml-1 rounded-full px-1.5 py-0.5 text-[10px] ${
+          active ? "bg-white/20 text-white" : "bg-zinc-100 text-zinc-500"
+        }`}
+      >
+        {count.toLocaleString()}
+      </span>
+    </Link>
+  );
+}
+
+function Trust({
   icon,
-  value,
   label,
 }: {
   icon: React.ReactNode;
-  value: string;
   label: string;
 }) {
   return (
-    <span className="inline-flex items-center gap-1.5">
+    <div className="flex items-center gap-2 rounded-xl border border-zinc-200 bg-white px-3 py-2 text-xs font-semibold text-zinc-700">
       {icon}
-      <span className="font-extrabold text-zinc-900">{value}</span>
-      {label && <span className="text-zinc-500">{label}</span>}
-    </span>
-  );
-}
-
-function SectionHeader({
-  eyebrow,
-  title,
-  cta,
-}: {
-  eyebrow: string;
-  title: string;
-  cta?: { href: string; label: string };
-}) {
-  return (
-    <div className="flex flex-wrap items-end justify-between gap-2">
-      <div>
-        <div className="text-[10px] font-bold uppercase tracking-widest text-violet-600">
-          {eyebrow}
-        </div>
-        <h2 className="mt-1 text-2xl font-extrabold tracking-tight text-zinc-900 sm:text-3xl">
-          {title}
-        </h2>
-      </div>
-      {cta && (
-        <Link
-          href={cta.href}
-          className="text-sm font-semibold text-violet-700 hover:underline"
-        >
-          {cta.label}
-        </Link>
-      )}
+      <span>{label}</span>
     </div>
   );
 }
 
-function Step({ n, title, body }: { n: number; title: string; body: string }) {
-  return (
-    <div className="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm">
-      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-violet-600 text-sm font-extrabold text-white">
-        {n}
-      </div>
-      <h3 className="mt-3 text-base font-extrabold text-zinc-900">{title}</h3>
-      <p className="mt-1 text-sm text-zinc-600">{body}</p>
-    </div>
-  );
-}
+function FeedPost({ post }: { post: Card }) {
+  const byline = post.display_byline ?? "Featured by Readee";
+  const initial = bylineInitial(byline);
+  const tone = avatarTone(byline);
+  const ago = timeAgo(post.created_at);
+  const preview = (post.passage_text ?? "")
+    .replace(/\s+/g, " ")
+    .trim()
+    .slice(0, 180);
 
-function PassageCard({
-  passage,
-  compact = false,
-}: {
-  passage: Card;
-  compact?: boolean;
-}) {
   return (
-    <li>
-      <Link
-        href={`/community/${passage.slug}`}
-        className="group block h-full overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:border-violet-300 hover:shadow-md"
-      >
-        {passage.image_url ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={passage.image_url}
-            alt={passage.title}
-            className={`w-full object-cover transition group-hover:scale-[1.02] ${
-              compact ? "h-28" : "h-36"
-            }`}
-          />
-        ) : (
+    <li className="overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition hover:shadow-md">
+      <Link href={`/community/${post.slug}`} className="block">
+        {/* Author row */}
+        <div className="flex items-center gap-2.5 px-4 pt-3.5">
           <div
-            className={`flex w-full items-center justify-center bg-gradient-to-br from-violet-100 to-indigo-100 text-violet-400 ${
-              compact ? "h-28" : "h-36"
-            }`}
+            className={`flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br ${tone} text-sm font-extrabold text-white`}
           >
-            <Sparkles className="h-10 w-10" />
+            {initial}
           </div>
-        )}
-        <div className={compact ? "p-3" : "p-4"}>
-          <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-violet-700">
-            <span className="rounded-full bg-violet-100 px-1.5 py-0.5">
-              {passage.grade_level}
-            </span>
-            <span className="inline-flex items-center gap-1 text-zinc-400">
-              <Eye className="h-3 w-3" />
-              {passage.view_count.toLocaleString()}
-            </span>
-          </div>
-          <h3
-            className={`mt-1.5 line-clamp-2 font-bold text-zinc-900 group-hover:text-violet-700 ${
-              compact ? "text-sm" : "text-base"
-            }`}
-          >
-            {passage.title}
-          </h3>
-          {passage.display_byline && (
-            <div className="mt-1 text-[11px] text-zinc-500">
-              by{" "}
-              <span className="font-semibold text-zinc-700">
-                {passage.display_byline}
+          <div className="min-w-0 flex-1">
+            <div className="text-sm font-bold text-zinc-900">{byline}</div>
+            <div className="text-[11px] text-zinc-500">
+              shared {ago}
+              <span className="mx-1">·</span>
+              <span className="rounded-full bg-violet-100 px-1.5 py-0.5 text-[10px] font-bold text-violet-700">
+                {post.grade_level}
               </span>
             </div>
+          </div>
+        </div>
+
+        {/* Title */}
+        <div className="px-4 pt-2">
+          <h3 className="text-base font-extrabold text-zinc-900 group-hover:text-violet-700 sm:text-lg">
+            {post.title}
+          </h3>
+          {preview && (
+            <p className="mt-1 line-clamp-2 text-sm text-zinc-600">
+              {preview}…
+            </p>
           )}
+        </div>
+
+        {/* Image */}
+        {post.image_url && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={post.image_url}
+            alt={post.title}
+            className="mt-3 aspect-[3/2] w-full object-cover"
+          />
+        )}
+
+        {/* Footer row */}
+        <div className="flex items-center justify-between border-t border-zinc-100 px-4 py-2.5 text-xs">
+          <div className="flex items-center gap-3 text-zinc-500">
+            <span className="inline-flex items-center gap-1 font-semibold">
+              <Eye className="h-3.5 w-3.5" />
+              {post.view_count.toLocaleString()}{" "}
+              <span className="text-zinc-400">reads</span>
+            </span>
+          </div>
+          <span className="text-[11px] font-bold text-violet-700">
+            Read passage →
+          </span>
         </div>
       </Link>
     </li>

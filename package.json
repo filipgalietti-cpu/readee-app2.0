@@ -23,6 +23,8 @@
     "qc:regen-audio:dry": "tsx scripts/qc-bot-regen-audio.ts --dry-run",
     "qc:regen-questions": "tsx scripts/qc-bot-regen-questions.ts",
     "qc:regen-questions:dry": "tsx scripts/qc-bot-regen-questions.ts --dry-run",
+    "community:seed": "tsx scripts/seed-community.ts",
+    "community:seed:dry": "tsx scripts/seed-community.ts --dry-run",
     "qc:audit": "tsx scripts/audit-content.ts"
   },
   "dependencies": {
