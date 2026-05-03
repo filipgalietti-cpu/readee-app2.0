@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, BookOpen, Library, ClipboardPen } from "lucide-react";
@@ -127,7 +128,9 @@ export default async function LibraryPage() {
       </div>
 
       <div className="mt-6">
-        <LibraryBrowser questions={all} />
+        <Suspense fallback={null}>
+          <LibraryBrowser questions={all} />
+        </Suspense>
       </div>
     </div>
   );

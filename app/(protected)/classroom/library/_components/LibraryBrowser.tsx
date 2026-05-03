@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { Search, Check, Filter, Volume2, ImageOff, Grid, List, ChevronRight, ChevronDown } from "lucide-react";
 
 type LibraryQuestion = {
@@ -33,6 +34,7 @@ const TYPE_LABELS: Record<string, string> = {
 type ViewMode = "standards" | "questions";
 
 export default function LibraryBrowser({ questions }: { questions: LibraryQuestion[] }) {
+  const searchParams = useSearchParams();
   const [viewMode, setViewMode] = useState<ViewMode>("standards");
   const [grade, setGrade] = useState<string>("All");
   const [type, setType] = useState<string>("All");
@@ -42,9 +44,31 @@ export default function LibraryBrowser({ questions }: { questions: LibraryQuesti
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [playingId, setPlayingId] = useState<string | null>(null);
   const [focusStandardId, setFocusStandardId] = useState<string | null>(null);
+  const [focusQuestionId, setFocusQuestionId] = useState<string | null>(null);
 
-  // When a standard card is clicked from the index view, switch to
-  // questions mode AND auto-expand+scroll that standard.
+  // Smart-search deep-link handler. When the user clicks a smart-search
+  // hit, the URL becomes /classroom/library?standard=<id> (for lessons)
+  // or ?focus=<questionId> (for questions and stories). We resolve the
+  // standard id, switch to questions view, expand + scroll, and briefly
+  // highlight the question row so the click feels productive.
+  useEffect(() => {
+    const standardParam = searchParams.get("standard");
+    const focusParam = searchParams.get("focus");
+    if (!standardParam && !focusParam) return;
+
+    let targetStandardId = standardParam;
+    if (!targetStandardId && focusParam) {
+      const hit = questions.find((q) => q.id === focusParam);
+      if (hit) targetStandardId = hit.standardId;
+    }
+    if (!targetStandardId) return;
+
+    setFocusStandardId(targetStandardId);
+    if (focusParam) setFocusQuestionId(focusParam);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams]);
+
+  // Standard focus: switch to questions mode, expand the card, scroll.
   useEffect(() => {
     if (!focusStandardId) return;
     setViewMode("questions");
@@ -53,11 +77,30 @@ export default function LibraryBrowser({ questions }: { questions: LibraryQuesti
       next.add(focusStandardId);
       return next;
     });
-    const el = document.getElementById(`std-${focusStandardId}`);
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-    setFocusStandardId(null);
+    // Defer scroll one tick so the just-expanded card is in the DOM.
+    const t = setTimeout(() => {
+      const el = document.getElementById(`std-${focusStandardId}`);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      setFocusStandardId(null);
+    }, 50);
+    return () => clearTimeout(t);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [focusStandardId]);
+
+  // Question focus: scroll the specific row into view + clear highlight
+  // after a couple seconds.
+  useEffect(() => {
+    if (!focusQuestionId) return;
+    const t1 = setTimeout(() => {
+      const el = document.getElementById(`q-${focusQuestionId}`);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 200);
+    const t2 = setTimeout(() => setFocusQuestionId(null), 2400);
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+    };
+  }, [focusQuestionId]);
 
   function playAudio(questionId: string, url: string) {
     if (!audioRef.current) return;
@@ -276,8 +319,17 @@ export default function LibraryBrowser({ questions }: { questions: LibraryQuesti
                     {info.items.map((qn) => {
                       const imgFailed = imageErrors.has(qn.id);
                       const isPlaying = playingId === qn.id;
+                      const isFocused = focusQuestionId === qn.id;
                       return (
-                        <li key={qn.id} className="px-4 py-3">
+                        <li
+                          key={qn.id}
+                          id={`q-${qn.id}`}
+                          className={`px-4 py-3 transition-colors ${
+                            isFocused
+                              ? "bg-violet-50 ring-2 ring-violet-300 dark:bg-violet-950/40 dark:ring-violet-700"
+                              : ""
+                          }`}
+                        >
                           <div className="flex items-start gap-3">
                             {/* Thumbnail */}
                             <div className="flex h-20 w-20 flex-shrink-0 items-center justify-center overflow-hidden rounded-xl border border-zinc-200 bg-white dark:border-slate-700 dark:bg-slate-900">

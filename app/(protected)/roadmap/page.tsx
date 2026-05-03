@@ -1,7 +1,7 @@
 "use client";
 
 import { Suspense, useEffect, useState, useRef, useMemo, useCallback } from "react";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
@@ -434,11 +434,18 @@ function Spinner() {
 
 function RoadmapLoader() {
   const params = useSearchParams();
+  const router = useRouter();
   const childId = params.get("child");
   const [child, setChild] = useState<Child | null>(null);
   const userPlan = usePlanStore((s) => s.plan) ?? "free";
   const fetchPlan = usePlanStore((s) => s.fetch);
   const [loading, setLoading] = useState(true);
+
+  // No child? Bounce to /dashboard which auto-resolves the parent's child
+  // instead of dead-ending on "No reader selected".
+  useEffect(() => {
+    if (!childId) router.replace("/dashboard");
+  }, [childId, router]);
 
   useEffect(() => {
     async function load() {

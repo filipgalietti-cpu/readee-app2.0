@@ -376,6 +376,17 @@ function PracticeLoader() {
   const fetchPlan = usePlanStore((s) => s.fetch);
   useEffect(() => { fetchPlan(); }, [fetchPlan]);
 
+  // No child in the URL? Don't dead-end on "No reader selected" —
+  // bounce to /practice-hub which auto-resolves the child from the
+  // parent's account and lets them pick a standard.
+  useEffect(() => {
+    if (childId) return;
+    const standardQs = standardId
+      ? `?standard=${encodeURIComponent(standardId)}`
+      : "";
+    router.replace(`/practice-hub${standardQs}`);
+  }, [childId, standardId, router]);
+
   useEffect(() => {
     async function load() {
       if (!childId) { setLoading(false); return; }
