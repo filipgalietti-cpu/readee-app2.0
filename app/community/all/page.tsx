@@ -147,12 +147,17 @@ export default async function CommunityAllPage({
         </div>
 
         {items.length === 0 ? (
-          <div className="mt-10 rounded-2xl border-2 border-dashed border-zinc-200 bg-white p-10 text-center">
-            <Sparkles className="mx-auto h-10 w-10 text-violet-400" />
-            <p className="mt-3 text-sm text-zinc-500">
-              {query ? "Nothing matches that search yet." : "No passages yet."}
+          query ? (
+            <p className="mt-6 text-sm text-zinc-500">
+              No passages match &ldquo;{query}&rdquo; yet.{" "}
+              <Link
+                href="/community/all"
+                className="font-semibold text-violet-700 hover:underline"
+              >
+                Clear search
+              </Link>
             </p>
-          </div>
+          ) : null
         ) : (
           <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {items.map((p) => (

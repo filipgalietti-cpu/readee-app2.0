@@ -249,22 +249,17 @@ export default async function CommunityGradePage({
         </div>
 
         {items.length === 0 ? (
-          <div className="mt-10 rounded-2xl border-2 border-dashed border-zinc-200 bg-white p-10 text-center">
-            <Sparkles className="mx-auto h-10 w-10 text-violet-400" />
-            <h2 className="mt-3 text-lg font-bold text-zinc-900">
-              Nothing here yet
-            </h2>
-            <p className="mt-2 text-sm text-zinc-500">
-              Be the first to share a {g.label.toLowerCase()} passage.
+          activeTopic ? (
+            <p className="mt-6 text-sm text-zinc-500">
+              No {g.label.toLowerCase()} passages match &ldquo;{activeTopic}&rdquo; yet.{" "}
+              <Link
+                href={`/community/grade/${grade.toLowerCase()}`}
+                className="font-semibold text-violet-700 hover:underline"
+              >
+                Clear filter
+              </Link>
             </p>
-            <Link
-              href="/signup"
-              className="mt-4 inline-flex items-center gap-2 rounded-full bg-violet-600 px-5 py-2 text-sm font-bold text-white hover:bg-violet-700"
-            >
-              <Sparkles className="h-4 w-4" />
-              Make &amp; share
-            </Link>
-          </div>
+          ) : null
         ) : (
           <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {items.map((p) => (

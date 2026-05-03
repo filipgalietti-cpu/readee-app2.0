@@ -90,6 +90,29 @@ function avatarTone(byline: string | null | undefined): string {
   return tones[seed % tones.length];
 }
 
+/** Derive a kid-friendly "genre" bubble from the passage's topic + title.
+ *  Maps to one of the Ask Readee modes plus a couple extras. Returns a
+ *  label and a Tailwind class tuple so the bubble color is stable per
+ *  genre (so the eye learns the category palette). */
+function deriveGenre(topic: string, title: string): { label: string; cls: string } {
+  const t = `${topic} ${title}`.toLowerCase();
+  if (/bedtime|sleepy|cozy|tuck|night|moon|dream/.test(t))
+    return { label: "Bedtime", cls: "bg-indigo-600" };
+  if (
+    /\b(fact|facts|how|why|history|space|science|earth|biology|invented|discover|tradition|culture|biography)\b/.test(
+      t,
+    )
+  )
+    return { label: "Fun Facts", cls: "bg-amber-500" };
+  if (/phonic|rhym|digraph|vowel team|sounds?|spell|sight word|blend/.test(t))
+    return { label: "Phonics", cls: "bg-rose-500" };
+  if (/adventure|mystery|brave|magic|dragon|hero|quest|knight|pirate/.test(t))
+    return { label: "Adventure", cls: "bg-emerald-500" };
+  if (/story|tale|character|friends?|family|once upon|fable/.test(t))
+    return { label: "Story", cls: "bg-sky-500" };
+  return { label: "Reading", cls: "bg-violet-600" };
+}
+
 export default async function CommunityLanding() {
   const admin = supabaseAdmin();
 
@@ -222,41 +245,53 @@ export default async function CommunityLanding() {
             </div>
             <div className="mt-2 -mx-4 overflow-x-auto px-4 pb-2 sm:mx-0 sm:px-0">
               <ul className="flex gap-3" style={{ width: "max-content" }}>
-                {trending.map((p) => (
-                  <li key={p.id} className="w-44 flex-shrink-0">
-                    <Link
-                      href={`/community/${p.slug}`}
-                      className="group block overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-zinc-200 transition hover:shadow-md"
-                    >
-                      {p.image_url ? (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img
-                          src={p.image_url}
-                          alt={p.title}
-                          className="aspect-[3/4] w-full object-cover transition group-hover:scale-[1.03]"
-                        />
-                      ) : (
-                        <div className="flex aspect-[3/4] w-full items-center justify-center bg-gradient-to-br from-violet-200 to-indigo-300 text-white">
-                          <Sparkles className="h-10 w-10" />
-                        </div>
-                      )}
-                      <div className="p-2.5">
-                        <div className="line-clamp-2 text-[13px] font-bold leading-tight text-zinc-900 group-hover:text-violet-700">
-                          {p.title}
-                        </div>
-                        <div className="mt-1 flex items-center gap-1.5 text-[10px] font-semibold text-zinc-500">
-                          <span className="rounded-full bg-violet-100 px-1.5 py-0.5 text-violet-700">
+                {trending.map((p) => {
+                  const genre = deriveGenre(p.topic, p.title);
+                  return (
+                    <li key={p.id} className="w-44 flex-shrink-0">
+                      <Link
+                        href={`/community/${p.slug}`}
+                        className="group relative block overflow-hidden rounded-2xl shadow-md ring-1 ring-zinc-200 transition hover:-translate-y-0.5 hover:shadow-lg"
+                      >
+                        {p.image_url ? (
+                          // eslint-disable-next-line @next/next/no-img-element
+                          <img
+                            src={p.image_url}
+                            alt={p.title}
+                            className="aspect-[3/4] w-full object-cover transition group-hover:scale-[1.04]"
+                          />
+                        ) : (
+                          <div className="flex aspect-[3/4] w-full items-center justify-center bg-gradient-to-br from-violet-300 to-indigo-500 text-white">
+                            <Sparkles className="h-10 w-10" />
+                          </div>
+                        )}
+
+                        {/* Top-row floating bubbles */}
+                        <div className="pointer-events-none absolute inset-x-2 top-2 flex items-start justify-between gap-1.5">
+                          <span
+                            className={`inline-flex items-center rounded-full px-2 py-0.5 text-[9px] font-extrabold uppercase tracking-wider text-white shadow-sm ${genre.cls}`}
+                          >
+                            {genre.label}
+                          </span>
+                          <span className="rounded-full bg-white/95 px-1.5 py-0.5 text-[9px] font-extrabold text-zinc-900 shadow-sm">
                             {p.grade_level}
                           </span>
-                          <span className="inline-flex items-center gap-0.5">
-                            <Eye className="h-2.5 w-2.5" />
-                            {p.view_count.toLocaleString()}
-                          </span>
                         </div>
-                      </div>
-                    </Link>
-                  </li>
-                ))}
+
+                        {/* Bottom gradient overlay with title + reads */}
+                        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/45 to-transparent px-2.5 pb-2 pt-10">
+                          <div className="line-clamp-2 text-[12px] font-extrabold leading-tight text-white">
+                            {p.title}
+                          </div>
+                          <div className="mt-1 flex items-center gap-1 text-[10px] font-semibold text-white/85">
+                            <Eye className="h-2.5 w-2.5" />
+                            {p.view_count.toLocaleString()} reads
+                          </div>
+                        </div>
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           </section>
@@ -288,35 +323,27 @@ export default async function CommunityLanding() {
           </section>
         )}
 
-        {/* Feed — vertical, social-media style */}
-        <section className="mt-6">
-          <div className="flex items-baseline justify-between">
-            <h2 className="text-sm font-bold uppercase tracking-widest text-zinc-500">
-              Latest in the community
-            </h2>
-            <Link
-              href="/community/all"
-              className="text-[11px] font-semibold text-violet-700 hover:underline"
-            >
-              See all →
-            </Link>
-          </div>
-
-          {feed.length === 0 ? (
-            <div className="mt-4 rounded-2xl border-2 border-dashed border-zinc-200 bg-white p-10 text-center">
-              <Sparkles className="mx-auto h-10 w-10 text-violet-400" />
-              <p className="mt-3 text-sm text-zinc-500">
-                Library is brand new. Come back soon.
-              </p>
+        {/* Feed — image-dominant shop tiles (Fortnite-store style) */}
+        {feed.length > 0 && (
+          <section className="mt-6">
+            <div className="flex items-baseline justify-between">
+              <h2 className="text-sm font-bold uppercase tracking-widest text-zinc-500">
+                Latest in the community
+              </h2>
+              <Link
+                href="/community/all"
+                className="text-[11px] font-semibold text-violet-700 hover:underline"
+              >
+                See all →
+              </Link>
             </div>
-          ) : (
-            <ul className="mt-3 space-y-3">
+            <ul className="mt-3 grid gap-3 sm:grid-cols-2">
               {feed.map((p) => (
                 <FeedPost key={p.id} post={p} />
               ))}
             </ul>
-          )}
-        </section>
+          </section>
+        )}
 
         {/* Trust strip — replaces the old "How it works" wall */}
         <section className="mt-8 grid gap-2 sm:grid-cols-3">
@@ -430,67 +457,69 @@ function FeedPost({ post }: { post: Card }) {
   const initial = bylineInitial(byline);
   const tone = avatarTone(byline);
   const ago = timeAgo(post.created_at);
-  const preview = (post.passage_text ?? "")
-    .replace(/\s+/g, " ")
-    .trim()
-    .slice(0, 180);
+  const genre = deriveGenre(post.topic, post.title);
 
   return (
-    <li className="overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition hover:shadow-md">
-      <Link href={`/community/${post.slug}`} className="block">
-        {/* Author row */}
-        <div className="flex items-center gap-2.5 px-4 pt-3.5">
-          <div
-            className={`flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br ${tone} text-sm font-extrabold text-white`}
-          >
-            {initial}
-          </div>
-          <div className="min-w-0 flex-1">
-            <div className="text-sm font-bold text-zinc-900">{byline}</div>
-            <div className="text-[11px] text-zinc-500">
-              shared {ago}
-              <span className="mx-1">·</span>
-              <span className="rounded-full bg-violet-100 px-1.5 py-0.5 text-[10px] font-bold text-violet-700">
-                {post.grade_level}
-              </span>
-            </div>
-          </div>
-        </div>
-
-        {/* Title */}
-        <div className="px-4 pt-2">
-          <h3 className="text-base font-extrabold text-zinc-900 group-hover:text-violet-700 sm:text-lg">
-            {post.title}
-          </h3>
-          {preview && (
-            <p className="mt-1 line-clamp-2 text-sm text-zinc-600">
-              {preview}…
-            </p>
-          )}
-        </div>
-
-        {/* Image */}
-        {post.image_url && (
+    <li>
+      <Link
+        href={`/community/${post.slug}`}
+        className="group relative block aspect-[4/5] overflow-hidden rounded-3xl shadow-md ring-1 ring-zinc-200 transition hover:-translate-y-0.5 hover:shadow-xl"
+      >
+        {/* Artwork fills the whole card */}
+        {post.image_url ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={post.image_url}
             alt={post.title}
-            className="mt-3 aspect-[3/2] w-full object-cover"
+            className="absolute inset-0 h-full w-full object-cover transition duration-300 group-hover:scale-[1.04]"
           />
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-violet-300 via-indigo-400 to-violet-600 text-white">
+            <Sparkles className="h-12 w-12" />
+          </div>
         )}
 
-        {/* Footer row */}
-        <div className="flex items-center justify-between border-t border-zinc-100 px-4 py-2.5 text-xs">
-          <div className="flex items-center gap-3 text-zinc-500">
+        {/* Subtle top overlay so bubbles read on bright art */}
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-black/40 to-transparent" />
+
+        {/* Top-row floating bubbles — genre + grade */}
+        <div className="pointer-events-none absolute inset-x-3 top-3 flex items-start justify-between gap-2">
+          <span
+            className={`inline-flex items-center rounded-full px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider text-white shadow-sm ${genre.cls}`}
+          >
+            {genre.label}
+          </span>
+          <span className="rounded-full bg-white/95 px-2.5 py-1 text-[10px] font-extrabold text-zinc-900 shadow-sm">
+            {post.grade_level}
+          </span>
+        </div>
+
+        {/* Bottom gradient overlay with title + author + reads */}
+        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/55 to-transparent px-4 pb-4 pt-16">
+          <div className="flex items-center gap-2">
+            <div
+              className={`flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br ${tone} text-[11px] font-extrabold text-white ring-2 ring-white/40`}
+            >
+              {initial}
+            </div>
+            <div className="min-w-0 flex-1 text-[11px] font-semibold text-white/90">
+              <span className="truncate font-bold">{byline}</span>
+              <span className="mx-1 text-white/50">·</span>
+              <span className="text-white/70">{ago}</span>
+            </div>
+          </div>
+          <h3 className="mt-2 line-clamp-2 text-base font-extrabold leading-tight text-white sm:text-lg">
+            {post.title}
+          </h3>
+          <div className="mt-2 flex items-center justify-between text-[11px] text-white/85">
             <span className="inline-flex items-center gap-1 font-semibold">
-              <Eye className="h-3.5 w-3.5" />
-              {post.view_count.toLocaleString()}{" "}
-              <span className="text-zinc-400">reads</span>
+              <Eye className="h-3 w-3" />
+              {post.view_count.toLocaleString()} reads
+            </span>
+            <span className="rounded-full bg-white/95 px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider text-violet-700 transition group-hover:bg-violet-600 group-hover:text-white">
+              Read →
             </span>
           </div>
-          <span className="text-[11px] font-bold text-violet-700">
-            Read passage →
-          </span>
         </div>
       </Link>
     </li>

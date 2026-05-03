@@ -227,23 +227,17 @@ export default async function CommunityLibraryPage({
       </div>
 
       {items.length === 0 ? (
-        <div className="mt-8 rounded-3xl border-2 border-dashed border-zinc-200 bg-white p-12 text-center dark:border-slate-800 dark:bg-slate-900/40">
-          <Sparkles className="mx-auto h-10 w-10 text-violet-500" />
-          <h2 className="mt-3 text-lg font-bold text-zinc-900 dark:text-white">
-            No matches
-          </h2>
-          <p className="mx-auto mt-2 max-w-sm text-sm text-zinc-500 dark:text-slate-400">
-            Try clearing a filter, or be the first to share a passage about
-            this topic.
+        activeGrade || activeTopic || activeQuery ? (
+          <p className="mt-6 text-sm text-zinc-500 dark:text-slate-400">
+            No passages match these filters yet.{" "}
+            <Link
+              href="/practice-hub/community"
+              className="font-semibold text-violet-700 hover:underline dark:text-violet-300"
+            >
+              Clear filters
+            </Link>
           </p>
-          <Link
-            href="/dashboard/ask-readee"
-            className="mt-5 inline-flex items-center gap-2 rounded-full bg-violet-600 px-5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-violet-700"
-          >
-            <Sparkles className="h-4 w-4" />
-            Make &amp; share
-          </Link>
-        </div>
+        ) : null
       ) : (
         <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((item) => {
