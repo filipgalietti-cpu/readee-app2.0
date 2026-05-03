@@ -164,7 +164,7 @@ export default async function CommunityLibraryPage({
         )}
         <button
           type="submit"
-          className="rounded-full bg-zinc-900 px-3 py-1 text-xs font-semibold text-white hover:bg-zinc-700 dark:bg-white dark:text-zinc-900"
+          className="rounded-full bg-violet-600 px-3 py-1 text-xs font-bold text-white shadow-sm hover:bg-violet-700"
         >
           Search
         </button>
