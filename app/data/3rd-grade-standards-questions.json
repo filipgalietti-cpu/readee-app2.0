@@ -2063,8 +2063,6 @@
           "correct": "Shun",
           "hint": "Say 'nation' — the '-tion' sounds like 'shun.'",
           "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.3b/RF.3.3b-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.3b/RF.3.3b-Q1-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RF.3.3b/RF.3.3b-Q1.png"
         },
         {
@@ -2659,10 +2657,7 @@
           ],
           "correct": "No, in this sentence 'wind' rhymes with 'pinned'",
           "hint": "Context clue: wind that BLOWS is pronounced like 'pinned,' not like 'find.'",
-          "difficulty": "hard",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.4c/RF.3.4c-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.4c/RF.3.4c-Q5-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RF.3.4c/RF.3.4c-Q5.png"
+          "difficulty": "hard"
         }
       ],
       "standard_id": "RF.3.4c",

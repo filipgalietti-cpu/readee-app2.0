@@ -446,8 +446,7 @@
           "hint": "Poems often have rhythm (meter) and patterns of rhyming — prose usually doesn't.",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.5/RL.4.5-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.5/RL.4.5-Q4-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.5/RL.4.5-Q4.png"
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.5/RL.4.5-Q4-hint.mp3"
         },
         {
           "id": "RL.4.5-Q5",
@@ -1480,7 +1479,26 @@
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.7/RI.4.7-Q1.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.7/RI.4.7-Q1-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.7/RI.4.7-Q1.png"
+          "chart_data": {
+            "kind": "bar",
+            "title": "School Recycling Amounts",
+            "xLabel": "Months",
+            "yLabel": "Pounds Recycled",
+            "series": [
+              {
+                "label": "January",
+                "value": 200
+              },
+              {
+                "label": "February",
+                "value": 350
+              },
+              {
+                "label": "March",
+                "value": 500
+              }
+            ]
+          }
         },
         {
           "id": "RI.4.7-Q2",

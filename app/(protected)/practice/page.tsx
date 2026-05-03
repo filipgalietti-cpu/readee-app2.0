@@ -4,6 +4,7 @@ import { Suspense, useEffect, useState, useMemo, useCallback, useRef } from "rea
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { LoadingImage } from "@/app/components/ui/LoadingImage";
+import QuestionChart from "@/app/_components/QuestionChart";
 import { motion, AnimatePresence } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
@@ -57,6 +58,13 @@ interface Question {
   phonemes?: string[];
   distractors?: string[];
   jumbled?: string;
+  chart_data?: {
+    kind: "bar" | "line" | "pie";
+    title: string;
+    xLabel?: string;
+    yLabel?: string;
+    series: { label: string; value: number }[];
+  };
 }
 
 interface Standard {
@@ -1089,15 +1097,19 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
           />
         ) : (
         <>
-        {/* ── Image — prominent at top ── */}
-        {(q.image_url || questionImageUrl(q.id, gradeKey)) && (
+        {/* ── Visual — chart takes priority over image when present ── */}
+        {q.chart_data ? (
+          <motion.div variants={fadeUp} className="mb-3 flex justify-center">
+            <QuestionChart chart={q.chart_data} />
+          </motion.div>
+        ) : (q.image_url || questionImageUrl(q.id, gradeKey)) ? (
           <motion.div variants={fadeUp} className="flex justify-center mb-3">
             <LoadingImage
               src={q.image_url || questionImageUrl(q.id, gradeKey)}
               className="max-h-[180px] sm:max-h-[220px] md:max-h-[300px] lg:max-h-[380px] w-auto object-contain rounded-2xl shadow-md border-2 border-white dark:border-slate-700"
             />
           </motion.div>
-        )}
+        ) : null}
 
         {/* ── Passage — context before the question ── */}
         {passage && (

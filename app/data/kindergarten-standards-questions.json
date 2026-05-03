@@ -2431,26 +2431,12 @@
       "questions": [
         {
           "id": "RF.K.1c-Q1",
-          "type": "multiple_choice",
-          "prompt": "Which sentence uses spaces CORRECTLY?",
-          "choices": [
-            "Ilikedogs",
-            "Ilike dogs",
-            "I l i k e d o g s",
-            "I like dogs"
-          ],
-          "correct": "I like dogs",
-          "hint": "Each WORD gets its own space between it and the next word!",
           "difficulty": 1,
-          "choices_audio_urls": [
-            "/audio/kindergarten/RF.K.1c-q1-choice1.mp3",
-            "/audio/kindergarten/RF.K.1c-q1-choice2.mp3",
-            "/audio/kindergarten/RF.K.1c-q1-choice3.mp3",
-            "/audio/kindergarten/RF.K.1c-q1-choice4.mp3"
-          ],
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1c/RF.K.1c-Q1-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1c/RF.K.1c-Q1.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.1c/RF.K.1c-Q1.png"
+          "prompt": "Tap between letters to add spaces to make the sentence correct.",
+          "correct": "I like dogs.",
+          "hint": "There are 3 words.",
+          "jumbled": "Ilikedogs.",
+          "type": "space_insertion"
         },
         {
           "id": "RF.K.1c-Q2",
@@ -2537,8 +2523,7 @@
           "hint": "Uppercase letters are BIG letters — the capital version of 'a' is...",
           "difficulty": 1,
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1d/RF.K.1d-Q1-hint.mp3",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1d/RF.K.1d-Q1.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.1d/RF.K.1d-Q1.png"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1d/RF.K.1d-Q1.mp3"
         },
         {
           "id": "RF.K.1d-Q2",
