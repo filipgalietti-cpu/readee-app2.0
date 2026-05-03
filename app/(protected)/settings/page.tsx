@@ -226,6 +226,24 @@ export default function Settings() {
     router.push("/");
   }
 
+  // Revokes refresh tokens for ALL devices + browsers. Useful when a
+  // shared family device gets left signed in, or when a phone gets
+  // lost. Different from handleLogout which only clears this tab.
+  async function handleSignOutEverywhere() {
+    if (!confirm(
+      "Sign out of every device + browser where you're signed in? You'll need to log back in here too.",
+    )) {
+      return;
+    }
+    try {
+      await fetch("/api/auth/sign-out-everywhere", { method: "POST" });
+    } catch {
+      // best-effort — fall through to local sign-out
+    }
+    await supabase.auth.signOut();
+    router.push("/login?message=" + encodeURIComponent("Signed out of all devices."));
+  }
+
   async function handleRedeemPromo() {
     if (!promoCode.trim()) return;
     setPromoLoading(true);
@@ -681,6 +699,13 @@ export default function Settings() {
             className="px-4 py-2.5 rounded-xl border border-zinc-200 dark:border-slate-600 text-sm font-medium text-zinc-700 dark:text-slate-300 hover:bg-zinc-50 dark:hover:bg-slate-700 transition-colors"
           >
             Log Out
+          </button>
+          <button
+            onClick={handleSignOutEverywhere}
+            className="px-4 py-2.5 rounded-xl border border-amber-200 dark:border-amber-900/30 text-sm font-medium text-amber-700 dark:text-amber-300 hover:bg-amber-50 dark:hover:bg-amber-950/30 transition-colors"
+            title="Revoke sessions on every device + browser. Use if you left Readee signed in somewhere you can't reach."
+          >
+            Sign out everywhere
           </button>
           <button
             onClick={() => setShowDeleteAccount(true)}

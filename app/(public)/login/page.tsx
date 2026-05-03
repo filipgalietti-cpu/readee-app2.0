@@ -95,7 +95,8 @@ function ForgotPasswordView({ onBack }: { onBack: () => void }) {
             exit="exit"
           >
             <div className="mb-4 p-4 bg-green-50 border border-green-200 text-green-700 rounded-lg text-sm text-center">
-              Check your email for a reset link
+              If an account exists for that email, a reset link is on its
+              way. Check your inbox (and spam folder).
             </div>
             <p className="text-center text-sm text-indigo-900 mt-4">
               <button
@@ -161,6 +162,7 @@ function ForgotPasswordView({ onBack }: { onBack: () => void }) {
 
 function LoginForm() {
   const router = useRouter();
+  const searchParams = useSearchParams();
 
   const [formData, setFormData] = useState<FormData>({
     email: "",
@@ -169,6 +171,50 @@ function LoginForm() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isLoading, setIsLoading] = useState(false);
   const [view, setView] = useState<"login" | "forgot">("login");
+  const [magicSending, setMagicSending] = useState(false);
+  const [magicSent, setMagicSent] = useState<string | null>(null);
+
+  const handleMagicLink = async () => {
+    // Reuse the email field. We don't require a password — the whole
+    // point of this lane is for users who can't remember theirs.
+    if (!formData.email || !/\S+@\S+\.\S+/.test(formData.email)) {
+      setErrors({ email: "Enter your email first" });
+      return;
+    }
+    setMagicSending(true);
+    setErrors({});
+    setMagicSent(null);
+    try {
+      const supabase = createClient();
+      const { error } = await supabase.auth.signInWithOtp({
+        email: formData.email,
+        options: {
+          // Land back on the same login page on click — the proxy will
+          // pick up the new session and the post-auth redirect chain
+          // takes over from there.
+          emailRedirectTo:
+            typeof window !== "undefined"
+              ? `${window.location.origin}/login`
+              : undefined,
+        },
+      });
+      if (error) {
+        const msg = (error.message ?? "").toLowerCase();
+        if (error.status === 429 || msg.includes("rate limit")) {
+          setErrors({ general: "Too many magic-link requests. Try again in a minute." });
+        } else {
+          setErrors({ general: "Couldn't send the link — try again." });
+        }
+        setMagicSending(false);
+        return;
+      }
+      setMagicSent(formData.email);
+    } catch {
+      setErrors({ general: "Network error. Try again." });
+    } finally {
+      setMagicSending(false);
+    }
+  };
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
@@ -207,14 +253,72 @@ function LoginForm() {
         });
 
         if (error) {
-          setErrors({ general: error.message });
+          // Translate Supabase's opaque error strings into something a
+          // human can act on. We hit /api/auth/login-hint to figure out
+          // whether the email is unknown, OAuth-only, or just wrong
+          // password — without leaking that distinction to the public
+          // anon endpoint.
+          let friendly = "Couldn't sign you in. Check your email and password.";
+          const msg = (error.message ?? "").toLowerCase();
+          if (
+            error.status === 429 ||
+            msg.includes("rate limit") ||
+            msg.includes("too many")
+          ) {
+            friendly =
+              "Too many sign-in attempts. Wait a minute and try again.";
+          } else if (msg.includes("invalid login credentials") || msg.includes("invalid email")) {
+            try {
+              const hintRes = await fetch("/api/auth/login-hint", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email: formData.email }),
+              });
+              const j = (await hintRes.json().catch(() => ({}))) as { hint?: string };
+              if (j.hint === "no_account") {
+                friendly =
+                  "We couldn't find an account with that email. Want to sign up?";
+              } else if (j.hint === "oauth_only") {
+                friendly =
+                  'This account uses Google. Click "Continue with Google" above.';
+              } else if (j.hint === "wrong_password") {
+                friendly = "Wrong password. Try again or use Forgot password.";
+              }
+            } catch {
+              // Fall through to the generic message.
+            }
+          }
+          setErrors({ general: friendly });
           setIsLoading(false);
           return;
         }
 
         if (data?.user) {
-          // Success - redirect will be handled by middleware
-          router.push("/");
+          // Resolve the role-appropriate destination INLINE so we never
+          // depend on the / server-redirect chain (which is flaky in
+          // dev right after a cookie write, and occasionally races in
+          // prod). Prefer ?redirect=... when present (set by the proxy
+          // when an unauthed user hit a protected route).
+          const wanted = searchParams?.get("redirect") ?? null;
+          if (wanted && wanted.startsWith("/") && !wanted.startsWith("/login")) {
+            router.replace(wanted);
+            router.refresh();
+            return;
+          }
+
+          // Lookup the role + admin scope so we land on the right home.
+          const [{ data: profileRow }, { data: ownerRow }] = await Promise.all([
+            supabase.from("profiles").select("role").eq("id", data.user.id).maybeSingle(),
+            supabase.from("platform_admins").select("profile_id").eq("profile_id", data.user.id).maybeSingle(),
+          ]);
+          const role = (profileRow as { role?: string } | null)?.role ?? null;
+          const isOwner = !!ownerRow;
+
+          let destination = "/dashboard";
+          if (isOwner) destination = "/owner";
+          else if (role === "educator") destination = "/classroom";
+
+          router.replace(destination);
           router.refresh();
         }
       } catch (error) {
@@ -275,7 +379,15 @@ function LoginForm() {
             error={errors.password}
             required
           />
-          <div className="mt-1 text-right">
+          <div className="mt-1 flex items-center justify-between">
+            <button
+              type="button"
+              onClick={handleMagicLink}
+              disabled={magicSending}
+              className="text-sm text-indigo-600 hover:underline font-medium disabled:opacity-50"
+            >
+              {magicSending ? "Sending link…" : "Email me a link"}
+            </button>
             <button
               type="button"
               onClick={() => setView("forgot")}
@@ -285,6 +397,11 @@ function LoginForm() {
             </button>
           </div>
         </div>
+        {magicSent && (
+          <div className="rounded-lg border border-emerald-200 bg-emerald-50 p-3 text-sm text-emerald-800">
+            Check <span className="font-semibold">{magicSent}</span> for a sign-in link.
+          </div>
+        )}
         <button
           type="submit"
           disabled={isLoading}

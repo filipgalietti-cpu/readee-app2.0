@@ -2,6 +2,7 @@
 
 import { useState, useEffect, FormEvent } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { createClient } from "@/lib/supabase/client";
 import AuthCard from "@/app/components/auth/AuthCard";
@@ -14,12 +15,14 @@ const fadeVariants = {
 };
 
 export default function ResetPasswordPage() {
+  const router = useRouter();
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [ready, setReady] = useState(false);
+  const [tokenExpired, setTokenExpired] = useState(false);
 
   // Wait for Supabase to pick up the recovery token from the URL hash
   useEffect(() => {
@@ -35,8 +38,23 @@ export default function ResetPasswordPage() {
       if (session) setReady(true);
     });
 
-    return () => { subscription.unsubscribe(); };
+    // If we never get either signal in 8s, the link is dead. Tell the
+    // user instead of leaving them on a spinner forever.
+    const timeout = window.setTimeout(() => setTokenExpired(true), 8_000);
+
+    return () => {
+      subscription.unsubscribe();
+      window.clearTimeout(timeout);
+    };
   }, []);
+
+  // After password update lands, push them straight into the app —
+  // they're already authed via the recovery session.
+  useEffect(() => {
+    if (!success) return;
+    const t = window.setTimeout(() => router.replace("/dashboard"), 1500);
+    return () => window.clearTimeout(t);
+  }, [success, router]);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -94,17 +112,39 @@ export default function ResetPasswordPage() {
             </p>
           </motion.div>
         ) : !ready ? (
-          <motion.div
-            key="loading"
-            variants={fadeVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            className="text-center py-4"
-          >
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-600 mx-auto mb-3" />
-            <p className="text-sm text-indigo-900/70">Verifying reset link...</p>
-          </motion.div>
+          tokenExpired ? (
+            <motion.div
+              key="expired"
+              variants={fadeVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              className="text-center py-4"
+            >
+              <div className="mb-4 rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800">
+                This reset link looks expired or has already been used.
+                Request a fresh one from the login page.
+              </div>
+              <Link
+                href="/login"
+                className="text-indigo-600 font-medium hover:underline text-sm"
+              >
+                &larr; Back to login
+              </Link>
+            </motion.div>
+          ) : (
+            <motion.div
+              key="loading"
+              variants={fadeVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              className="text-center py-4"
+            >
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-600 mx-auto mb-3" />
+              <p className="text-sm text-indigo-900/70">Verifying reset link...</p>
+            </motion.div>
+          )
         ) : (
           <motion.div
             key="form"
