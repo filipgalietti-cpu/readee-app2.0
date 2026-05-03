@@ -175,7 +175,7 @@ export default async function CommunityLanding() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-violet-50 via-white to-indigo-50 dark:from-slate-950 dark:via-slate-950 dark:to-slate-900">
+    <div className="min-h-screen bg-white">
       {/* Top bar */}
       <header className="sticky top-0 z-30 border-b border-zinc-200 bg-white/85 backdrop-blur-md">
         <div className="mx-auto flex max-w-3xl items-center justify-between px-4 py-3">

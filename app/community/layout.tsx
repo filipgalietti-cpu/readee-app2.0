@@ -27,8 +27,7 @@ export default function CommunityLayout({
       main.style.padding = "0";
       main.style.margin = "0";
     }
-    document.body.style.background =
-      "linear-gradient(to bottom, #f5f3ff 0%, #ffffff 35%, #eef2ff 100%)";
+    document.body.style.background = "#ffffff";
 
     return () => {
       if (nav) nav.style.display = "";
