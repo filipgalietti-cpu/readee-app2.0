@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { analyzeFluencyReading } from "@/lib/ai/build-fluency";
+import { hasAnyPaidTier } from "@/lib/plan/teacher-gate";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 120; // long-ish — Gemini audio analysis can take ~30s
@@ -64,6 +65,25 @@ export async function POST(req: NextRequest) {
   }
   if (!isParent && !isTeacher) {
     return NextResponse.json({ error: "forbidden" }, { status: 403 });
+  }
+
+  // Plan gate — fluency analysis is a Gemini multimodal call (~$0.05-0.10
+  // per request). Any paid tier unlocks. Teachers running this on behalf
+  // of a classroom already have a paid plan via their classroom seat.
+  const { data: callerProfile } = await supabase
+    .from("profiles")
+    .select("plan")
+    .eq("id", user.id)
+    .maybeSingle();
+  const callerPlan = ((callerProfile as any)?.plan ?? "free") as string;
+  if (!hasAnyPaidTier(callerPlan)) {
+    return NextResponse.json(
+      {
+        error: "Fluency analysis requires a paid plan. Upgrade to unlock.",
+        reason: "plan",
+      },
+      { status: 402 },
+    );
   }
 
   const buf = Buffer.from(await audio.arrayBuffer());

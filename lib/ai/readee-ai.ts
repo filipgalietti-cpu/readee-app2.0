@@ -1466,11 +1466,14 @@ export async function generateSpeech(input: {
   }
   const voiceName = input.voice ?? TTS_DEFAULT_VOICE;
   // Default to Vertex when service-account creds are available — it
-  // dodges the Gemini-API preview-TTS daily cap. Gemini API stays as
-  // the fallback for environments without GOOGLE_CREDENTIALS_JSON.
-  const defaultProvider = process.env.GOOGLE_CREDENTIALS_JSON
-    ? "vertex"
-    : "gemini";
+  // dodges the Gemini-API preview-TTS daily cap. We accept either
+  // GOOGLE_CREDENTIALS_JSON (inline JSON, used in Vercel) or
+  // GOOGLE_APPLICATION_CREDENTIALS (path to a key file, standard
+  // local-dev convention picked up by google-auth-library ADC).
+  const hasVertexCreds =
+    !!process.env.GOOGLE_CREDENTIALS_JSON ||
+    !!process.env.GOOGLE_APPLICATION_CREDENTIALS;
+  const defaultProvider = hasVertexCreds ? "vertex" : "gemini";
   const provider = input.provider ?? (defaultProvider as "vertex" | "gemini");
 
   const safety = assertSafePrompt(text);
