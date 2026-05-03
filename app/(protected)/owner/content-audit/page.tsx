@@ -9,7 +9,9 @@ import {
   AlertTriangle,
   XCircle,
   ArrowLeft,
+  Layers,
 } from "lucide-react";
+import FindingActions from "./_components/FindingActions";
 
 export const dynamic = "force-dynamic";
 
@@ -119,6 +121,16 @@ export default async function ContentAuditPage({
     .select("id", { count: "exact", head: true })
     .eq("status", "open")
     .eq("severity", "pass");
+
+  // Top finding-types in the current view — gives the "27 audio_quality
+  // fails" zoom-out so Filip can attack categories instead of ones.
+  const typeAgg = new Map<string, number>();
+  for (const f of findings) {
+    typeAgg.set(f.finding_type, (typeAgg.get(f.finding_type) ?? 0) + 1);
+  }
+  const topTypes = Array.from(typeAgg.entries())
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 8);
 
   // Recent runs
   const { data: runs } = await supabase
@@ -272,6 +284,29 @@ export default async function ContentAuditPage({
         )}
       </div>
 
+      {/* Top finding types in current view */}
+      {topTypes.length > 0 && (
+        <div className="mt-4 rounded-2xl border border-zinc-200 bg-white p-3">
+          <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-zinc-500">
+            <Layers className="h-3 w-3" />
+            Most common in this view
+          </div>
+          <ul className="mt-2 flex flex-wrap gap-1.5 text-xs">
+            {topTypes.map(([type, count]) => (
+              <li
+                key={type}
+                className="inline-flex items-center gap-1.5 rounded-full bg-zinc-100 px-2 py-0.5 font-mono text-zinc-700"
+              >
+                {type}
+                <span className="rounded-full bg-rose-200 px-1.5 py-0.5 font-bold text-rose-900">
+                  {count}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       {/* Recent runs */}
       {runs && runs.length > 0 && (
         <div className="mt-6 rounded-2xl border border-zinc-200 bg-white p-4">
@@ -340,6 +375,10 @@ export default async function ContentAuditPage({
                   <span className="font-bold">Suggestion:</span> {f.suggestion}
                 </div>
               )}
+              <FindingActions
+                findingId={f.id}
+                currentStatus={f.status as "open" | "fixed" | "wont_fix" | "duplicate"}
+              />
             </li>
           ))
         )}
