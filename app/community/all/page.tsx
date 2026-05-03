@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, Sparkles, Eye, Search, BookOpen } from "lucide-react";
+import { ArrowLeft, Sparkles, Eye, Search, CircleHelp } from "lucide-react";
 import type { Metadata } from "next";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 
@@ -59,21 +59,44 @@ export default async function CommunityAllPage({
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-violet-50 via-white to-indigo-50">
-      <header className="border-b border-zinc-200 bg-white/80 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
+      <header className="sticky top-0 z-30 border-b border-zinc-200 bg-white/95 backdrop-blur-md">
+        <div className="mx-auto flex h-[76px] max-w-3xl items-center justify-between px-5 sm:px-8">
           <Link
             href="/community"
-            className="inline-flex items-center gap-1.5 text-sm font-bold text-zinc-900"
+            className="flex items-center gap-3 transition-opacity hover:opacity-80"
           >
-            <BookOpen className="h-4 w-4 text-violet-600" />
-            Readee Community
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/readee-logo.png"
+              alt="Readee"
+              className="h-auto w-[140px] sm:w-[160px]"
+            />
+            <span className="hidden text-sm font-medium text-violet-500 sm:inline">
+              <span className="font-bold">Unlock</span> Reading
+            </span>
           </Link>
-          <Link
-            href="/signup"
-            className="inline-flex items-center gap-1 rounded-full bg-violet-600 px-3.5 py-1.5 text-xs font-bold text-white shadow-sm hover:bg-violet-700"
-          >
-            Try Readee free
-          </Link>
+          <div className="flex items-center gap-2 sm:gap-3">
+            <Link
+              href="/contact-us"
+              className="flex items-center gap-1.5 rounded-lg px-2.5 py-2 text-indigo-500 transition-colors hover:bg-indigo-50 hover:text-indigo-700 sm:px-3"
+              aria-label="Help"
+            >
+              <CircleHelp className="h-5 w-5" />
+              <span className="hidden text-sm font-semibold sm:inline">Help</span>
+            </Link>
+            <Link
+              href="/login"
+              className="hidden text-sm font-semibold text-zinc-600 hover:text-violet-700 sm:inline"
+            >
+              Sign in
+            </Link>
+            <Link
+              href="/signup"
+              className="inline-flex items-center gap-1 rounded-full bg-violet-600 px-3.5 py-2 text-xs font-bold text-white shadow-sm hover:bg-violet-700 sm:text-sm"
+            >
+              Try Readee free
+            </Link>
+          </div>
         </div>
       </header>
 
