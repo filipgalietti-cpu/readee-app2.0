@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import type { Metadata } from "next";
 import { supabaseAdmin } from "@/lib/supabase/admin";
+import TrendingCarousel from "./_components/TrendingCarousel";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 600;
@@ -48,6 +49,8 @@ type Card = {
   topic: string;
   view_count: number;
   display_byline: string | null;
+  display_org: string | null;
+  display_state: string | null;
   created_at: string;
   passage_text?: string | null;
 };
@@ -121,7 +124,7 @@ export default async function CommunityLanding() {
   const { data: trendingRows } = await admin
     .from("community_passages")
     .select(
-      "id, slug, title, image_url, grade_level, topic, view_count, display_byline, created_at",
+      "id, slug, title, image_url, grade_level, topic, view_count, display_byline, display_org, display_state, created_at",
     )
     .eq("status", "approved")
     .not("slug", "is", null)
@@ -134,7 +137,7 @@ export default async function CommunityLanding() {
   const { data: feedRows } = await admin
     .from("community_passages")
     .select(
-      "id, slug, title, image_url, grade_level, topic, view_count, display_byline, created_at, passage_text",
+      "id, slug, title, image_url, grade_level, topic, view_count, display_byline, display_org, display_state, created_at, passage_text",
     )
     .eq("status", "approved")
     .not("slug", "is", null)
@@ -259,56 +262,21 @@ export default async function CommunityLanding() {
               <Flame className="h-3.5 w-3.5 text-orange-500" />
               Trending now
             </div>
-            <div className="mt-2 -mx-4 overflow-x-auto px-4 pb-2 sm:mx-0 sm:px-0">
-              <ul className="flex gap-3" style={{ width: "max-content" }}>
-                {trending.map((p) => {
-                  const genre = deriveGenre(p.topic, p.title);
-                  return (
-                    <li key={p.id} className="w-44 flex-shrink-0">
-                      <Link
-                        href={`/community/${p.slug}`}
-                        className="group relative block overflow-hidden rounded-2xl shadow-md ring-1 ring-zinc-200 transition hover:-translate-y-0.5 hover:shadow-lg"
-                      >
-                        {p.image_url ? (
-                          // eslint-disable-next-line @next/next/no-img-element
-                          <img
-                            src={p.image_url}
-                            alt={p.title}
-                            className="aspect-[3/4] w-full object-cover transition group-hover:scale-[1.04]"
-                          />
-                        ) : (
-                          <div className="flex aspect-[3/4] w-full items-center justify-center bg-gradient-to-br from-violet-300 to-indigo-500 text-white">
-                            <Sparkles className="h-10 w-10" />
-                          </div>
-                        )}
-
-                        {/* Top-row floating bubbles */}
-                        <div className="pointer-events-none absolute inset-x-2 top-2 flex items-start justify-between gap-1.5">
-                          <span
-                            className={`inline-flex items-center rounded-full px-2 py-0.5 text-[9px] font-extrabold uppercase tracking-wider text-white shadow-sm ${genre.cls}`}
-                          >
-                            {genre.label}
-                          </span>
-                          <span className="rounded-full bg-white/95 px-1.5 py-0.5 text-[9px] font-extrabold text-zinc-900 shadow-sm">
-                            {p.grade_level}
-                          </span>
-                        </div>
-
-                        {/* Bottom gradient overlay with title + reads */}
-                        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/45 to-transparent px-2.5 pb-2 pt-10">
-                          <div className="line-clamp-2 text-[12px] font-extrabold leading-tight text-white">
-                            {p.title}
-                          </div>
-                          <div className="mt-1 flex items-center gap-1 text-[10px] font-semibold text-white/85">
-                            <Eye className="h-2.5 w-2.5" />
-                            {p.view_count.toLocaleString()} reads
-                          </div>
-                        </div>
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
+            <div className="mt-2">
+              <TrendingCarousel
+                items={trending.map((p) => ({
+                  id: p.id,
+                  slug: p.slug,
+                  title: p.title,
+                  image_url: p.image_url,
+                  grade_level: p.grade_level,
+                  topic: p.topic,
+                  view_count: p.view_count,
+                  display_byline: p.display_byline,
+                  display_state: p.display_state,
+                  genre: deriveGenre(p.topic, p.title),
+                }))}
+              />
             </div>
           </section>
         )}
@@ -520,6 +488,16 @@ function FeedPost({ post }: { post: Card }) {
             </div>
             <div className="min-w-0 flex-1 text-[11px] font-semibold text-white/90">
               <span className="truncate font-bold">{byline}</span>
+              {(post.display_org || post.display_state) && (
+                <>
+                  <span className="mx-1 text-white/50">·</span>
+                  <span className="text-white/80">
+                    {post.display_org}
+                    {post.display_org && post.display_state ? ", " : ""}
+                    {post.display_state}
+                  </span>
+                </>
+              )}
               <span className="mx-1 text-white/50">·</span>
               <span className="text-white/70">{ago}</span>
             </div>
