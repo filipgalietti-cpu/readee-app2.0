@@ -25,6 +25,8 @@
     "qc:regen-questions:dry": "tsx scripts/qc-bot-regen-questions.ts --dry-run",
     "qc:verify": "tsx scripts/qc-verify-regens.ts",
     "qc:verify:dry": "tsx scripts/qc-verify-regens.ts --dry-run",
+    "qc:format-rescue": "tsx scripts/qc-bot-format-recommend.ts",
+    "qc:format-rescue:dry": "tsx scripts/qc-bot-format-recommend.ts --dry-run",
     "community:seed": "tsx scripts/seed-community.ts",
     "community:seed:dry": "tsx scripts/seed-community.ts --dry-run",
     "community:fill-media": "tsx scripts/community-fill-missing-media.ts",
