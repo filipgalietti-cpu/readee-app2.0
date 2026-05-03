@@ -132,7 +132,11 @@ export async function enqueueGeneratedAsset(
     mcqLengthCheck: gameability,
   });
 
-  // 4) Persist to the review queue.
+  // 4) Persist to the review queue. We stamp the verdict.reason into
+  // reviewer_note so /owner/batch-qc shows WHY the auto-promotion
+  // landed where it did — without this, rejected rows had null
+  // reviewer_note and operators couldn't diagnose. Format: "auto: <reason>"
+  // so it's clear this is system-generated, not a human review.
   const supabase = supabaseAdmin();
   const { data, error } = await supabase
     .from("content_review_queue")
@@ -148,6 +152,7 @@ export async function enqueueGeneratedAsset(
       qc_report: input.qcReport ?? null,
       title: input.title,
       thumbnail_url: input.thumbnailUrl ?? null,
+      reviewer_note: verdict.reason ? `auto: ${verdict.reason}` : null,
     })
     .select("id")
     .single();

@@ -53,9 +53,19 @@ export type RotationPick = {
  * Excludes RF.* phonics standards (decodable books handle those) and
  * SL.* / W.* (Speaking and Writing — out of Readee's scope).
  */
+/** "Range of reading" / stamina standards (RL.x.10, RI.x.10) are meta:
+ *  "by the end of the year, read and comprehend X." They don't describe
+ *  a specific testable skill, so the fidelity judge correctly marks
+ *  any generated MCQ as mis_tagged. Skip them in rotation. */
+const META_STANDARDS = new Set([
+  "RL.K.10", "RL.1.10", "RL.2.10", "RL.3.10", "RL.4.10",
+  "RI.K.10", "RI.1.10", "RI.2.10", "RI.3.10", "RI.4.10",
+]);
+
 function comprehensionStandards(): Standard[] {
   return getAllStandards().filter((s) => {
     const id = s.standard_id.toUpperCase();
+    if (META_STANDARDS.has(id)) return false;
     return id.startsWith("RL.") || id.startsWith("RI.");
   });
 }
