@@ -12,7 +12,7 @@ import { SidebarUserMenu } from "./SidebarUserMenu";
 import { ShineBorder } from "@/app/components/magicui/shine-border";
 import {
   Home, BarChart3, BookText, ListChecks, Map,
-  Carrot, Trophy, ChevronDown, ChevronRight, ClipboardCheck, GraduationCap, Building2, ClipboardPen, Library, Sparkles, Users, Brain, Zap, ShieldCheck, BookOpenText, Layers, Mic, ScanLine, Factory, LogOut,
+  Carrot, Trophy, ChevronDown, ChevronRight, ClipboardCheck, GraduationCap, Building2, ClipboardPen, Library, Sparkles, Users, Brain, Zap, ShieldCheck, BookOpenText, Layers, Mic, ScanLine, Factory, Bot, LogOut,
 } from "lucide-react";
 
 /* ─── Nav items ──────────────────────────────────── */
@@ -55,6 +55,7 @@ function getNavSections(
     sections.push({
       label: "Content",
       items: [
+        { href: "/owner/qc-bot", icon: Bot, label: "QC bot" },
         { href: "/owner/content-audit", icon: ScanLine, label: "Content audit" },
         { href: "/owner/batch-qc", icon: Factory, label: "Factory QC" },
       ],
