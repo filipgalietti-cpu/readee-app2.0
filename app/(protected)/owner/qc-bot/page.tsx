@@ -18,6 +18,7 @@ import {
   FileText,
   ListChecks,
 } from "lucide-react";
+import ApplyRescueButton from "./_components/ApplyRescueButton";
 
 export const dynamic = "force-dynamic";
 
@@ -397,6 +398,12 @@ export default async function QcBotDashboardPage() {
                   </span>
                   <span className="text-[10px] text-zinc-400">
                     {timeAgo(r.created_at)}
+                  </span>
+                  <span className="ml-auto">
+                    <ApplyRescueButton
+                      targetId={r.target_id}
+                      action={String(r.after?.action ?? "")}
+                    />
                   </span>
                 </div>
                 <p className="mt-2 text-sm text-zinc-800">{r.reason ?? ""}</p>
