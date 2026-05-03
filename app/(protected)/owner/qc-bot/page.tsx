@@ -174,6 +174,41 @@ export default async function QcBotDashboardPage() {
     (a, b) => b[1] - a[1],
   );
 
+  // ── Bot health: last cron run + recent errors + cost ──────────
+  const oneDayAgo = new Date(Date.now() - 86_400_000).toISOString();
+  const [latestActivityRes, recentErrorsRes, dailyCostRes] = await Promise.all([
+    supabase
+      .from("content_qc_log")
+      .select("created_at, agent")
+      .order("created_at", { ascending: false })
+      .limit(1)
+      .maybeSingle(),
+    supabase
+      .from("ai_usage_log")
+      .select("kind, error, created_at")
+      .eq("success", false)
+      .gte("created_at", oneDayAgo)
+      .order("created_at", { ascending: false })
+      .limit(5),
+    supabase
+      .from("ai_usage_log")
+      .select("credits_used")
+      .eq("success", true)
+      .gte("created_at", oneDayAgo),
+  ]);
+  const latestActivity = latestActivityRes.data as
+    | { created_at: string; agent: string }
+    | null;
+  const recentErrors = (recentErrorsRes.data ?? []) as Array<{
+    kind: string;
+    error: string;
+    created_at: string;
+  }>;
+  const dailyCredits = ((dailyCostRes.data ?? []) as Array<{ credits_used: number }>).reduce(
+    (acc, r) => acc + (r.credits_used ?? 0),
+    0,
+  );
+
   return (
     <div className="mx-auto max-w-6xl px-6 py-10">
       <Link
@@ -200,6 +235,61 @@ export default async function QcBotDashboardPage() {
           </p>
         </div>
       </div>
+
+      {/* Bot health */}
+      <section className="mt-6 rounded-2xl border border-zinc-200 bg-white p-4">
+        <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-zinc-600">
+          <Bot className="h-3.5 w-3.5" />
+          Bot health
+        </div>
+        <div className="mt-3 grid gap-3 sm:grid-cols-3">
+          <div>
+            <div className="text-[10px] font-bold uppercase tracking-widest text-zinc-500">
+              Last activity
+            </div>
+            <div className="mt-1 text-sm font-bold text-zinc-900">
+              {latestActivity ? timeAgo(latestActivity.created_at) : "—"}
+            </div>
+            <div className="text-[11px] text-zinc-500">
+              {latestActivity
+                ? AGENT_LABELS[latestActivity.agent] ?? latestActivity.agent
+                : "no activity yet"}
+            </div>
+          </div>
+          <div>
+            <div className="text-[10px] font-bold uppercase tracking-widest text-zinc-500">
+              Credits spent (24h)
+            </div>
+            <div className="mt-1 text-sm font-bold text-zinc-900">
+              {dailyCredits.toLocaleString()}
+            </div>
+            <div className="text-[11px] text-zinc-500">
+              ≈ ${(dailyCredits * 0.005).toFixed(2)} at $0.005/credit
+            </div>
+          </div>
+          <div>
+            <div className="text-[10px] font-bold uppercase tracking-widest text-zinc-500">
+              Errors (24h)
+            </div>
+            <div
+              className={`mt-1 text-sm font-bold ${
+                recentErrors.length > 0 ? "text-red-700" : "text-emerald-700"
+              }`}
+            >
+              {recentErrors.length}
+            </div>
+            <div className="text-[11px] text-zinc-500">
+              {recentErrors.length === 0
+                ? "all clean"
+                : recentErrors[0].kind +
+                  ": " +
+                  String(recentErrors[0].error ?? "")
+                    .replace(/[\n\r]+/g, " ")
+                    .slice(0, 60)}
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Hero stats */}
       <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -294,9 +384,12 @@ export default async function QcBotDashboardPage() {
                 className="rounded-2xl border border-amber-200 bg-amber-50/50 p-4"
               >
                 <div className="flex flex-wrap items-center gap-2 text-xs">
-                  <code className="rounded bg-white px-1.5 py-0.5 text-[11px] font-bold text-zinc-900 ring-1 ring-zinc-200">
+                  <Link
+                    href={`/owner/qc-bot/${encodeURIComponent(r.target_id)}`}
+                    className="rounded bg-white px-1.5 py-0.5 font-mono text-[11px] font-bold text-zinc-900 ring-1 ring-zinc-200 hover:text-violet-700 hover:ring-violet-300"
+                  >
                     {r.target_id}
-                  </code>
+                  </Link>
                   <span className="rounded-full bg-amber-200 px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-amber-900">
                     {String(r.after?.action ?? "")
                       .replace(/_/g, " ")
@@ -348,9 +441,12 @@ export default async function QcBotDashboardPage() {
                   {CHANGE_ICONS[row.change_type] ?? <Wand2 className="h-3 w-3" />}
                   {row.change_type.replace(/_/g, " ")}
                 </span>
-                <code className="rounded bg-zinc-50 px-1.5 py-0.5 text-[11px] font-bold text-zinc-900 ring-1 ring-zinc-200">
+                <Link
+                  href={`/owner/qc-bot/${encodeURIComponent(row.target_id)}`}
+                  className="rounded bg-zinc-50 px-1.5 py-0.5 font-mono text-[11px] font-bold text-zinc-900 ring-1 ring-zinc-200 hover:text-violet-700 hover:ring-violet-300"
+                >
                   {row.target_id}
-                </code>
+                </Link>
                 <span className="text-[10px] font-semibold text-violet-600">
                   {AGENT_LABELS[row.agent] ?? row.agent}
                 </span>

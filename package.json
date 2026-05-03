@@ -21,6 +21,8 @@
     "qc:regen-images:dry": "tsx scripts/qc-bot-regen-images.ts --dry-run",
     "qc:regen-audio": "tsx scripts/qc-bot-regen-audio.ts",
     "qc:regen-audio:dry": "tsx scripts/qc-bot-regen-audio.ts --dry-run",
+    "qc:regen-step-audio": "tsx scripts/qc-bot-regen-step-audio.ts",
+    "qc:regen-step-audio:dry": "tsx scripts/qc-bot-regen-step-audio.ts --dry-run",
     "qc:regen-questions": "tsx scripts/qc-bot-regen-questions.ts",
     "qc:regen-questions:dry": "tsx scripts/qc-bot-regen-questions.ts --dry-run",
     "qc:verify": "tsx scripts/qc-verify-regens.ts",
