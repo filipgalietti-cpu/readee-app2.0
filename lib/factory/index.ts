@@ -86,6 +86,20 @@ export type EnqueueInput = {
     correctAnswer: string;
     passageBody?: string | null;
   } | null;
+  /** Full content for the dashboard preview. Without this, rejected
+   *  rows have only the title fragment and operators can't see what
+   *  was actually generated. Persists to content_review_queue.content_preview. */
+  contentPreview?: {
+    passageTitle?: string | null;
+    passageBody?: string | null;
+    imageUrl?: string | null;
+    audioUrl?: string | null;
+    /** For MCQ-shaped assets. */
+    questionPrompt?: string | null;
+    choices?: string[] | null;
+    correct?: string | null;
+    hint?: string | null;
+  } | null;
 };
 
 export type EnqueueResult = {
@@ -153,6 +167,7 @@ export async function enqueueGeneratedAsset(
       title: input.title,
       thumbnail_url: input.thumbnailUrl ?? null,
       reviewer_note: verdict.reason ? `auto: ${verdict.reason}` : null,
+      content_preview: input.contentPreview ?? null,
     })
     .select("id")
     .single();

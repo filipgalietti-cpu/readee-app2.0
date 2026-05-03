@@ -31,6 +31,7 @@ type QueueItem = {
   reviewer_verdict: "approve" | "reject" | "needs_edit" | null;
   reviewer_note: string | null;
   created_at: string;
+  content_preview: any;
 };
 
 type RecentRun = {
@@ -100,7 +101,7 @@ export default async function BatchQcPage({
   let q = supabase
     .from("content_review_queue")
     .select(
-      "id, asset_kind, asset_ref, source, prompt_version, standard_id, status, qc_overall, qc_report, title, thumbnail_url, reviewed_at, reviewer_verdict, reviewer_note, created_at",
+      "id, asset_kind, asset_ref, source, prompt_version, standard_id, status, qc_overall, qc_report, title, thumbnail_url, reviewed_at, reviewer_verdict, reviewer_note, created_at, content_preview",
     )
     .order("created_at", { ascending: false })
     .limit(100);

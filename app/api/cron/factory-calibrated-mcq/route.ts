@@ -227,6 +227,12 @@ async function run(req: NextRequest) {
           correctAnswer: item.correct,
           passageBody: null,
         },
+        contentPreview: {
+          questionPrompt: item.prompt,
+          choices: item.choices,
+          correct: item.correct,
+          hint: (item as any).hint ?? null,
+        },
       });
       if (!enqueue.ok) {
         trackFactoryError(new Error(enqueue.error), {

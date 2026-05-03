@@ -196,7 +196,7 @@ async function run(req: NextRequest) {
     // without re-running QC.
     const { data: row } = await supabase
       .from("differentiated_passages")
-      .select("title, shared_image_url, qc_overall, qc_report")
+      .select("title, shared_image_url, qc_overall, qc_report, body, audio_url")
       .eq("id", built.passageId)
       .maybeSingle();
     const r = (row ?? {}) as any;
@@ -213,6 +213,12 @@ async function run(req: NextRequest) {
       qcReport: r.qc_report ?? null,
       mcq: null, // leveled passages don't surface a single canonical MCQ
       fidelityInput: null, // skipped for v1 — fidelity judge is per-MCQ
+      contentPreview: {
+        passageTitle: r.title ?? null,
+        passageBody: r.body ?? null,
+        imageUrl: r.shared_image_url ?? null,
+        audioUrl: r.audio_url ?? null,
+      },
     });
     if (!enqueue.ok) {
       trackFactoryError(new Error(enqueue.error), {
