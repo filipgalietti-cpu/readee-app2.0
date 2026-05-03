@@ -43,6 +43,14 @@ export type AssignmentBrief = {
   gradeLevel: string;
   topic: string;
   phonicsPattern?: string | null;
+  /** Optional CCSS standard the teacher picked. When set, every
+   *  question generator gets the standard description as a hard
+   *  skill-fidelity constraint — questions MUST require the named
+   *  skill, not generic plot recall. Pre-empts the "Author's POV
+   *  brief → plot-recall MCQs" mismatch where the topic was named
+   *  but the generator didn't know what skill to test. */
+  standardId?: string | null;
+  standardDescription?: string | null;
 
   passage: {
     enabled: boolean;
@@ -387,6 +395,8 @@ export async function buildAssignment(input: {
       topic: questionContext,
       gradeLevel: brief.gradeLevel,
       count: brief.questions.multipleChoice,
+      standardId: brief.standardId ?? null,
+      standardDescription: brief.standardDescription ?? null,
     });
     if (!mcqRes.ok) {
       return rollback(`Questions: ${mcqRes.error}`);
@@ -410,6 +420,8 @@ export async function buildAssignment(input: {
       topic: questionContext,
       gradeLevel: brief.gradeLevel,
       count: brief.questions.trueFalse,
+      standardId: brief.standardId ?? null,
+      standardDescription: brief.standardDescription ?? null,
     });
     if (tfRes.ok) {
       builtQuestions.push(

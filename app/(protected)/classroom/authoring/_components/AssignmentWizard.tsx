@@ -26,6 +26,7 @@ import { DEFAULT_VOICE_ID, getVoice, type VoiceId } from "@/lib/ai/voices";
 import { Progress } from "@/app/components/ui/progress";
 import { TypingAnimation } from "@/app/components/magicui/typing-animation";
 import { ReadeeAiLoader } from "@/components/loaders/ReadeeAiLoader";
+import { getAllStandards } from "@/lib/data/standards";
 
 const TEACHER_PROMPT_SUGGESTIONS = [
   "A short passage about a young hockey player learning the basics. Friendly, encouraging tone.",
@@ -131,6 +132,10 @@ export default function AssignmentWizard() {
     setBrief((prev) => ({
       ...prev,
       gradeLevel: g,
+      // Clear standard pick when grade changes — RL.K.1 doesn't make
+      // sense if the teacher just bumped to 3rd.
+      standardId: null,
+      standardDescription: null,
       media: {
         ...prev.media,
         perQuestionTts: perQttsTouched
@@ -388,6 +393,18 @@ function StepBrief({
         </div>
       </div>
 
+      <StandardPicker
+        gradeLevel={brief.gradeLevel}
+        standardId={brief.standardId ?? null}
+        onPick={(stdId, stdDesc) =>
+          setBrief((b) => ({
+            ...b,
+            standardId: stdId,
+            standardDescription: stdDesc,
+          }))
+        }
+      />
+
       <div>
         <label className="block">
           <span className="text-xs font-semibold text-zinc-500 dark:text-slate-400">
@@ -481,6 +498,101 @@ function StepBrief({
           into the pattern.
         </p>
       </label>
+    </div>
+  );
+}
+
+/* ── StandardPicker ─────────────────────────────────────────────── */
+/* Optional CCSS picker. When set, the brief carries standardId +
+ * standardDescription through to every generator as a hard skill-
+ * fidelity instruction. Fixes the "teacher typed 'Author's POV' but
+ * got plot-recall MCQs" mismatch by making the standard explicit
+ * instead of relying on keyword heuristics in the topic. */
+
+const GRADE_TO_BANK: Record<string, "kindergarten" | "1st-grade" | "2nd-grade" | "3rd-grade" | "4th-grade"> = {
+  K: "kindergarten",
+  "1st": "1st-grade",
+  "2nd": "2nd-grade",
+  "3rd": "3rd-grade",
+  "4th": "4th-grade",
+};
+
+function StandardPicker({
+  gradeLevel,
+  standardId,
+  onPick,
+}: {
+  gradeLevel: string;
+  standardId: string | null;
+  onPick: (id: string | null, description: string | null) => void;
+}) {
+  const allStandards = useMemo(() => getAllStandards(), []);
+  const targetGrade = GRADE_TO_BANK[gradeLevel];
+  const gradeStandards = useMemo(
+    () => allStandards.filter((s) => s.grade === targetGrade),
+    [allStandards, targetGrade],
+  );
+  // Group by domain so the picker isn't a flat 40-item dropdown.
+  const byDomain = useMemo(() => {
+    const m = new Map<string, typeof gradeStandards>();
+    for (const s of gradeStandards) {
+      if (!m.has(s.domain)) m.set(s.domain, []);
+      m.get(s.domain)!.push(s);
+    }
+    return Array.from(m.entries());
+  }, [gradeStandards]);
+
+  const selected = standardId
+    ? gradeStandards.find((s) => s.standard_id === standardId)
+    : null;
+
+  return (
+    <div>
+      <div className="flex items-baseline justify-between">
+        <span className="block text-xs font-semibold text-zinc-500 dark:text-slate-400">
+          CCSS standard{" "}
+          <span className="font-normal text-zinc-400">
+            (optional but strongly recommended)
+          </span>
+        </span>
+        {selected && (
+          <button
+            type="button"
+            onClick={() => onPick(null, null)}
+            className="text-[10px] font-semibold text-zinc-500 hover:text-violet-700"
+          >
+            Clear
+          </button>
+        )}
+      </div>
+      <select
+        value={standardId ?? ""}
+        onChange={(e) => {
+          const id = e.target.value || null;
+          if (!id) return onPick(null, null);
+          const s = gradeStandards.find((x) => x.standard_id === id);
+          onPick(id, s?.standard_description ?? null);
+        }}
+        className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+      >
+        <option value="">— Pick a skill (Readee will lock questions to it) —</option>
+        {byDomain.map(([domain, standards]) => (
+          <optgroup key={domain} label={domain}>
+            {standards.map((s) => (
+              <option key={s.standard_id} value={s.standard_id}>
+                {s.standard_id} — {s.standard_description.slice(0, 80)}
+                {s.standard_description.length > 80 ? "…" : ""}
+              </option>
+            ))}
+          </optgroup>
+        ))}
+      </select>
+      {selected && (
+        <p className="mt-1.5 rounded-lg bg-violet-50 px-2 py-1 text-[11px] leading-relaxed text-violet-900 dark:bg-violet-950/30 dark:text-violet-200">
+          <span className="font-bold">{selected.standard_id}:</span>{" "}
+          {selected.standard_description}
+        </p>
+      )}
     </div>
   );
 }

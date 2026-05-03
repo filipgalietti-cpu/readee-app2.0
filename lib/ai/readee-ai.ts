@@ -457,6 +457,12 @@ export async function generateMCQQuestions(input: {
   gradeLevel?: string | null;
   count: number;
   trustedSystem?: boolean;
+  /** Optional CCSS standard the teacher picked in the wizard. When
+   *  set, the generator receives a hard skill-fidelity instruction
+   *  with the standard's description — every question MUST exercise
+   *  that exact skill instead of falling back to generic plot recall. */
+  standardId?: string | null;
+  standardDescription?: string | null;
 }): Promise<{ ok: true; questions: GeneratedMCQ[] } | { ok: false; error: string }> {
   if (!input.topic.trim()) return { ok: false, error: "Topic is required." };
   const count = Math.max(1, Math.min(10, Math.floor(input.count)));
@@ -489,10 +495,16 @@ export async function generateMCQQuestions(input: {
     ? `Grade level: ${input.gradeLevel}.`
     : "Grade level: 2nd (assume elementary reading comprehension).";
 
-  // Detect skill keywords / CCSS codes in the topic so the model
-  // sees them as a separate "Skill focus" line, not buried in the
-  // topic blob. Heuristic — picks up the most common K-4 skills.
-  const skillFocus = extractSkillFocus(input.topic);
+  // Skill focus — explicit standardId/Description from the wizard
+  // wins over the keyword-heuristic fallback. The explicit picker
+  // path is what we recommend; the heuristic catches the case where
+  // the teacher typed "author's POV" into a topic field without
+  // formally selecting the standard.
+  const explicitStandard =
+    input.standardId && input.standardDescription
+      ? `${input.standardId} — ${input.standardDescription}`
+      : null;
+  const skillFocus = explicitStandard ?? extractSkillFocus(input.topic);
   const skillLine = skillFocus
     ? `Skill focus (every question MUST require this skill — not generic plot recall): ${skillFocus}\n\n`
     : "";
@@ -649,6 +661,8 @@ export async function generateTrueFalseQuestions(input: {
   topic: string;
   gradeLevel?: string | null;
   count: number;
+  standardId?: string | null;
+  standardDescription?: string | null;
 }): Promise<{ ok: true; questions: GeneratedTrueFalse[] } | { ok: false; error: string }> {
   if (!input.topic.trim()) return { ok: false, error: "Topic is required." };
   const count = Math.max(1, Math.min(10, Math.floor(input.count)));
@@ -676,7 +690,11 @@ export async function generateTrueFalseQuestions(input: {
   const gradeLine = input.gradeLevel
     ? `Grade level: ${input.gradeLevel}.`
     : "Grade level: 2nd.";
-  const tfSkillFocus = extractSkillFocus(input.topic);
+  const tfExplicitStandard =
+    input.standardId && input.standardDescription
+      ? `${input.standardId} — ${input.standardDescription}`
+      : null;
+  const tfSkillFocus = tfExplicitStandard ?? extractSkillFocus(input.topic);
   const tfSkillLine = tfSkillFocus
     ? `Skill focus (every statement MUST exercise this skill — not generic plot recall): ${tfSkillFocus}\n\n`
     : "";
