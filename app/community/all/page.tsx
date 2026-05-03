@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, Sparkles, Eye, Search } from "lucide-react";
+import { ArrowLeft, Sparkles, Eye, Search, BookOpen } from "lucide-react";
 import type { Metadata } from "next";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 
@@ -65,7 +65,7 @@ export default async function CommunityAllPage({
             href="/community"
             className="inline-flex items-center gap-1.5 text-sm font-bold text-zinc-900"
           >
-            <Sparkles className="h-4 w-4 text-violet-600" />
+            <BookOpen className="h-4 w-4 text-violet-600" />
             Readee Community
           </Link>
           <Link

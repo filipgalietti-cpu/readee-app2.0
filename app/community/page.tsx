@@ -160,7 +160,7 @@ export default async function CommunityLanding() {
             href="/"
             className="inline-flex items-center gap-1.5 text-base font-extrabold text-zinc-900"
           >
-            <Sparkles className="h-5 w-5 text-violet-600" />
+            <BookOpen className="h-5 w-5 text-violet-600" />
             Readee
           </Link>
           <div className="flex items-center gap-2">
