@@ -23,8 +23,15 @@ export default function NavAuth() {
   const pathname = usePathname();
   const router = useRouter();
 
-  // Hide navbar completely on immersive/auth pages
-  if (pathname === "/practice" || pathname === "/login" || pathname === "/signup") return null;
+  // NEVER return early before hooks — that breaks the Rules of Hooks
+  // when navigating between an "immersive" path and a normal one (e.g.
+  // /login → /), which is exactly what happens on every successful
+  // login. React detects the hook-count change between renders and
+  // throws #310, which surfaces as "Application error: a client-side
+  // exception" and blanks the page. Compute a `hide` flag here and
+  // gate the JSX at the bottom instead.
+  const hide =
+    pathname === "/practice" || pathname === "/login" || pathname === "/signup";
 
   const [loggedIn, setLoggedIn] = useState<boolean | null>(null);
   const userPlan = usePlanStore((s) => s.plan);
@@ -194,6 +201,11 @@ export default function NavAuth() {
     if (days < 7) return `${days}d ago`;
     return new Date(dateStr).toLocaleDateString("en-US", { month: "short", day: "numeric" });
   };
+
+  // Hide on immersive/auth pages — gated AFTER all hooks have run so
+  // the hook count is constant across renders. See `hide` declaration
+  // above for the full rationale.
+  if (hide) return null;
 
   // Avoid flicker
   if (loggedIn === null) {
