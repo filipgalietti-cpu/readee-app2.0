@@ -1345,6 +1345,102 @@ Return ONLY a JSON object with a "prompts" array of strings.`;
   }
 }
 
+/** Vertex AI TTS endpoint — same Google, different quota envelope.
+ *  The free-tier-equivalent Gemini API maxes preview-TTS models at
+ *  100 reqs/day even with billing on. Vertex AI bypasses that
+ *  preview cap entirely (project-level Vertex quotas only — 1k+ RPM,
+ *  no daily ceiling). Same Autonoe voice, same audio quality.
+ *  Pattern lifted from scripts/generate-audio.js (the legacy mass-
+ *  generator that produced the original 1,800+ catalog audios). */
+const VERTEX_TTS_PROJECT_ID = process.env.VERTEX_PROJECT_ID || "readee-487403";
+const VERTEX_TTS_LOCATION = "us-central1";
+const VERTEX_TTS_MODEL = "gemini-2.5-pro-preview-tts";
+
+let _vertexAuthClient: any = null;
+let _vertexToken: string | null = null;
+let _vertexTokenAt = 0;
+const VERTEX_TOKEN_TTL_MS = 15 * 60 * 1000;
+
+async function getVertexAccessToken(): Promise<string> {
+  const now = Date.now();
+  if (_vertexToken && now - _vertexTokenAt < VERTEX_TOKEN_TTL_MS) {
+    return _vertexToken;
+  }
+  if (!_vertexAuthClient) {
+    const { GoogleAuth } = await import("google-auth-library");
+    const credsRaw = process.env.GOOGLE_CREDENTIALS_JSON;
+    const auth = new GoogleAuth({
+      scopes: ["https://www.googleapis.com/auth/cloud-platform"],
+      credentials: credsRaw ? JSON.parse(credsRaw) : undefined,
+    });
+    _vertexAuthClient = await auth.getClient();
+  }
+  const { token } = await _vertexAuthClient.getAccessToken();
+  if (!token) throw new Error("Vertex AI: failed to fetch access token");
+  _vertexToken = token;
+  _vertexTokenAt = now;
+  return token;
+}
+
+async function generateSpeechVertex(opts: {
+  text: string;
+  voice: string;
+  style?: string | null;
+}): Promise<{ ok: true; pcmBase64: string } | { ok: false; error: string }> {
+  let token: string;
+  try {
+    token = await getVertexAccessToken();
+  } catch (e: any) {
+    return { ok: false, error: e?.message ?? "Vertex auth failed" };
+  }
+
+  const styleDirection = (opts.style?.trim() ||
+    "warmly for a young student, clearly and unhurried");
+  const url = `https://${VERTEX_TTS_LOCATION}-aiplatform.googleapis.com/v1/projects/${VERTEX_TTS_PROJECT_ID}/locations/${VERTEX_TTS_LOCATION}/publishers/google/models/${VERTEX_TTS_MODEL}:streamGenerateContent`;
+  const body = {
+    contents: [
+      {
+        role: "user",
+        parts: [{ text: `Read this ${styleDirection}: ${opts.text}` }],
+      },
+    ],
+    generationConfig: {
+      responseModalities: ["AUDIO"],
+      speechConfig: {
+        voiceConfig: { prebuiltVoiceConfig: { voiceName: opts.voice } },
+      },
+    },
+  };
+  const res = await fetch(url, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(body),
+  });
+  if (!res.ok) {
+    const txt = await res.text();
+    return { ok: false, error: `Vertex ${res.status}: ${txt.slice(0, 400)}` };
+  }
+  const json: any = await res.json();
+  // streamGenerateContent returns an array of chunks; concatenate.
+  const chunks = Array.isArray(json) ? json : [json];
+  const buffers: Buffer[] = [];
+  for (const chunk of chunks) {
+    const parts = chunk?.candidates?.[0]?.content?.parts ?? [];
+    for (const p of parts) {
+      if (p.inlineData?.data) {
+        buffers.push(Buffer.from(p.inlineData.data, "base64"));
+      }
+    }
+  }
+  if (buffers.length === 0) {
+    return { ok: false, error: "Vertex returned no audio data" };
+  }
+  return { ok: true, pcmBase64: Buffer.concat(buffers).toString("base64") };
+}
+
 export async function generateSpeech(input: {
   teacherId: string;
   text: string;
@@ -1352,11 +1448,10 @@ export async function generateSpeech(input: {
   voice?: string;
   /** Style direction layered onto the read ("warmly, slowly, with smiles"). */
   style?: string | null;
-  /** Provider override. Defaults to "gemini". When "elevenlabs", uses
-   *  the teacher's cloned voice via cloneVoiceId. Requires ELEVENLABS_API_KEY. */
-  provider?: "gemini" | "elevenlabs";
-  /** ElevenLabs voice id (returned from voice cloning). */
-  cloneVoiceId?: string | null;
+  /** Provider override. Defaults to "vertex" (no preview-model day cap)
+   *  when GOOGLE_CREDENTIALS_JSON is set, falls back to "gemini" API
+   *  otherwise. */
+  provider?: "vertex" | "gemini";
 }): Promise<
   { ok: true; audioUrl: string; storagePath: string } | { ok: false; error: string }
 > {
@@ -1370,7 +1465,13 @@ export async function generateSpeech(input: {
     return { ok: false, error: "Keep the text under 4,000 characters for audio." };
   }
   const voiceName = input.voice ?? TTS_DEFAULT_VOICE;
-  const provider = input.provider ?? "gemini";
+  // Default to Vertex when service-account creds are available — it
+  // dodges the Gemini-API preview-TTS daily cap. Gemini API stays as
+  // the fallback for environments without GOOGLE_CREDENTIALS_JSON.
+  const defaultProvider = process.env.GOOGLE_CREDENTIALS_JSON
+    ? "vertex"
+    : "gemini";
+  const provider = input.provider ?? (defaultProvider as "vertex" | "gemini");
 
   const safety = assertSafePrompt(text);
   if (!safety.ok) return { ok: false, error: safety.error };
@@ -1378,73 +1479,6 @@ export async function generateSpeech(input: {
   const rl = await checkRateLimit(input.teacherId, "tts_generation");
   if (!rl.allowed) {
     return { ok: false, error: budgetError(rl) };
-  }
-
-  // ── ElevenLabs path (true cloned voice) ─────────────────────────────
-  if (provider === "elevenlabs") {
-    const elKey = process.env.ELEVENLABS_API_KEY;
-    if (!elKey) {
-      return {
-        ok: false,
-        error: "Cloned voice requires ELEVENLABS_API_KEY on the server.",
-      };
-    }
-    if (!input.cloneVoiceId) {
-      return { ok: false, error: "No cloned voice id on file." };
-    }
-    try {
-      const url = `https://api.elevenlabs.io/v1/text-to-speech/${input.cloneVoiceId}`;
-      const elRes = await fetch(url, {
-        method: "POST",
-        headers: {
-          "xi-api-key": elKey,
-          "Content-Type": "application/json",
-          Accept: "audio/mpeg",
-        },
-        body: JSON.stringify({
-          text,
-          model_id: "eleven_turbo_v2_5",
-          voice_settings: { stability: 0.5, similarity_boost: 0.75 },
-        }),
-      });
-      if (!elRes.ok) {
-        const body = await elRes.text();
-        throw new Error(`ElevenLabs ${elRes.status}: ${body.slice(0, 200)}`);
-      }
-      const buf = Buffer.from(await elRes.arrayBuffer());
-      const uuid = randomUUID();
-      const storagePath = `custom/${input.teacherId}/${uuid}.mp3`;
-      const admin = supabaseAdmin();
-      const upload = await admin.storage
-        .from("audio")
-        .upload(storagePath, buf, { contentType: "audio/mpeg", upsert: false });
-      if (upload.error) throw new Error(`Upload failed: ${upload.error.message}`);
-      const { data: pub } = admin.storage.from("audio").getPublicUrl(storagePath);
-      const audioUrl = pub?.publicUrl;
-      if (!audioUrl) throw new Error("Could not resolve audio URL.");
-      await logUsage({
-        teacherId: input.teacherId,
-        kind: "tts_generation",
-        model: "elevenlabs:eleven_turbo_v2_5",
-        // ElevenLabs costs ~$0.30/1K chars ≈ ~3x Gemini TTS. Charge 6
-        // credits vs the Gemini 2 to keep margin neutral.
-        creditsUsed: CREDIT_COST.tts_generation * 3,
-        success: true,
-        requestSummary: `[clone] ${text.slice(0, 180)}`,
-      });
-      return { ok: true, audioUrl, storagePath };
-    } catch (e: any) {
-      trackError(e, { route: "readee-ai.generateSpeech.elevenlabs", userId: input.teacherId });
-      await logUsage({
-        teacherId: input.teacherId,
-        kind: "tts_generation",
-        model: "elevenlabs",
-        success: false,
-        error: e.message,
-        requestSummary: `[clone] ${text.slice(0, 180)}`,
-      });
-      return { ok: false, error: e?.message ?? "Cloned-voice TTS failed." };
-    }
   }
 
   let client: GoogleGenAI;
@@ -1462,30 +1496,54 @@ export async function generateSpeech(input: {
   }
 
   try {
-    const styleDirection = (input.style?.trim() || "warmly for a young student, clearly and unhurried");
-    const response = await client.models.generateContent({
-      model: TTS_MODEL_ID,
-      contents: `Read this ${styleDirection}: ${text}`,
-      config: {
-        responseModalities: ["AUDIO"],
-        speechConfig: {
-          voiceConfig: {
-            prebuiltVoiceConfig: { voiceName: voiceName },
-          },
-        },
-      } as any,
-    });
-
-    const parts = (response as any)?.candidates?.[0]?.content?.parts ?? [];
     let pcmBase64: string | null = null;
-    for (const p of parts) {
-      if (p.inlineData?.data) {
-        pcmBase64 = p.inlineData.data;
-        break;
+    let usedModel = TTS_MODEL_ID;
+    let usageMeta: any = null;
+
+    if (provider === "vertex") {
+      // Vertex AI path — no preview-model day cap. Same Autonoe voice.
+      const v = await generateSpeechVertex({
+        text,
+        voice: voiceName,
+        style: input.style ?? null,
+      });
+      if (!v.ok) {
+        // If Vertex auth/setup fails, fall back to the Gemini API
+        // path so the worker doesn't hard-stop in environments
+        // without service-account creds.
+        console.warn(`[generateSpeech] vertex failed, falling back to gemini: ${v.error}`);
+      } else {
+        pcmBase64 = v.pcmBase64;
+        usedModel = `vertex/${VERTEX_TTS_MODEL}`;
       }
     }
+
     if (!pcmBase64) {
-      throw new Error("The model didn't return audio. Try again.");
+      const styleDirection = (input.style?.trim() || "warmly for a young student, clearly and unhurried");
+      const response = await client.models.generateContent({
+        model: TTS_MODEL_ID,
+        contents: `Read this ${styleDirection}: ${text}`,
+        config: {
+          responseModalities: ["AUDIO"],
+          speechConfig: {
+            voiceConfig: {
+              prebuiltVoiceConfig: { voiceName: voiceName },
+            },
+          },
+        } as any,
+      });
+      usageMeta = response.usageMetadata;
+      const parts = (response as any)?.candidates?.[0]?.content?.parts ?? [];
+      for (const p of parts) {
+        if (p.inlineData?.data) {
+          pcmBase64 = p.inlineData.data;
+          break;
+        }
+      }
+      if (!pcmBase64) {
+        throw new Error("The model didn't return audio. Try again.");
+      }
+      usedModel = TTS_MODEL_ID;
     }
 
     const pcm = Buffer.from(pcmBase64, "base64");
@@ -1513,9 +1571,9 @@ export async function generateSpeech(input: {
     await logUsage({
       teacherId: input.teacherId,
       kind: "tts_generation",
-      model: TTS_MODEL_ID,
-      inputTokens: response.usageMetadata?.promptTokenCount,
-      outputTokens: response.usageMetadata?.candidatesTokenCount,
+      model: usedModel,
+      inputTokens: usageMeta?.promptTokenCount,
+      outputTokens: usageMeta?.candidatesTokenCount,
       creditsUsed: CREDIT_COST.tts_generation,
       success: true,
       requestSummary: `voice=${voiceName} provider=${provider} :: ${text.slice(0, 180)}`,
