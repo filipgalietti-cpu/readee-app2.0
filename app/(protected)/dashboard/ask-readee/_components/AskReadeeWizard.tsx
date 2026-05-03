@@ -21,7 +21,7 @@ import {
   estimateParentBriefCredits,
   MONTHLY_PARENT_CREDIT_LIMIT,
   type ParentAiBrief,
-} from "@/lib/ai/build-parent-content";
+} from "@/lib/ai/build-parent-content.shared";
 import { CREDIT_COST } from "@/lib/ai/credits";
 import TopUpCreditsButton from "@/app/_components/TopUpCreditsButton";
 import VoiceSelector from "@/app/_components/VoiceSelector";
