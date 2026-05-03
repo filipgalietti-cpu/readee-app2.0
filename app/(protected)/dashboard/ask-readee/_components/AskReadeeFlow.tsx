@@ -246,7 +246,6 @@ export default function AskReadeeFlow({
         {step === "mode" && (
           <SlideMode
             childName={child.first_name}
-            readingLevel={child.reading_level}
             suggestedReason={suggestedReason}
             onPick={pickMode}
           />
@@ -254,7 +253,6 @@ export default function AskReadeeFlow({
         {step === "topic" && mode && (
           <SlideTopic
             childName={child.first_name}
-            readingLevel={child.reading_level}
             mode={mode}
             topic={topic}
             setTopic={setTopic}
@@ -280,23 +278,18 @@ export default function AskReadeeFlow({
 
 function SlideMode({
   childName,
-  readingLevel,
   suggestedReason,
   onPick,
 }: {
   childName: string;
-  readingLevel: string | null;
   suggestedReason: string;
   onPick: (m: Mode) => void;
 }) {
   return (
     <div>
-      <div className="flex flex-wrap items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-violet-700 dark:text-violet-300">
-        <span className="inline-flex items-center gap-1.5">
-          <Sparkles className="h-3.5 w-3.5" />
-          For {childName}
-        </span>
-        <ReadingLevelBadge level={readingLevel} />
+      <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-violet-700 dark:text-violet-300">
+        <Sparkles className="h-3.5 w-3.5" />
+        For {childName}
       </div>
       <h2 className="mt-1 text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
         What kind of reading?
@@ -335,7 +328,6 @@ function SlideMode({
 
 function SlideTopic({
   childName,
-  readingLevel,
   mode,
   topic,
   setTopic,
@@ -344,7 +336,6 @@ function SlideTopic({
   onBuild,
 }: {
   childName: string;
-  readingLevel: string | null;
   mode: Mode;
   topic: string;
   setTopic: (t: string) => void;
@@ -380,12 +371,9 @@ function SlideTopic({
 
   return (
     <div>
-      <div className="flex flex-wrap items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-violet-700 dark:text-violet-300">
-        <span className="inline-flex items-center gap-1.5">
-          <ModeIcon className="h-3.5 w-3.5" />
-          {mode.label} for {childName}
-        </span>
-        <ReadingLevelBadge level={readingLevel} />
+      <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-violet-700 dark:text-violet-300">
+        <ModeIcon className="h-3.5 w-3.5" />
+        {mode.label} for {childName}
       </div>
       <h2 className="mt-1 text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
         What about?
@@ -440,24 +428,6 @@ function SlideTopic({
         Takes about 20–40 seconds.
       </p>
     </div>
-  );
-}
-
-function ReadingLevelBadge({ level }: { level: string | null }) {
-  if (!level) {
-    return (
-      <a
-        href="/dashboard"
-        className="inline-flex items-center gap-1 rounded-full border border-amber-300 bg-amber-50 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-amber-800 hover:bg-amber-100 dark:border-amber-900/40 dark:bg-amber-950/30 dark:text-amber-200"
-      >
-        Set reading level →
-      </a>
-    );
-  }
-  return (
-    <span className="inline-flex items-center gap-1 rounded-full border border-violet-300 bg-violet-50 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-violet-700 dark:border-violet-900/40 dark:bg-violet-950/30 dark:text-violet-200">
-      Reading at {level}
-    </span>
   );
 }
 
