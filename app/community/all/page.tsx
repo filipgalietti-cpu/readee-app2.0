@@ -60,7 +60,7 @@ export default async function CommunityAllPage({
   return (
     <div className="min-h-screen bg-gradient-to-b from-violet-50 via-white to-indigo-50">
       <header className="sticky top-0 z-30 border-b border-zinc-200 bg-white/95 backdrop-blur-md">
-        <div className="mx-auto flex h-[76px] max-w-3xl items-center justify-between px-5 sm:px-8">
+        <div className="mx-auto flex h-[76px] max-w-6xl items-center justify-between px-5 sm:px-8">
           <Link
             href="/community"
             className="flex items-center gap-3 transition-opacity hover:opacity-80"

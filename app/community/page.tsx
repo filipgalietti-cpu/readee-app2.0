@@ -179,7 +179,7 @@ export default async function CommunityLanding() {
     <div className="min-h-screen bg-white">
       {/* Top bar — matches the app's NavAuth shell. */}
       <header className="sticky top-0 z-30 border-b border-zinc-200 bg-white/95 backdrop-blur-md">
-        <div className="mx-auto flex h-[76px] max-w-3xl items-center justify-between px-5 sm:px-8">
+        <div className="mx-auto flex h-[76px] max-w-6xl items-center justify-between px-5 sm:px-8">
           <Link
             href="/"
             className="flex items-center gap-3 transition-opacity hover:opacity-80"
@@ -219,7 +219,7 @@ export default async function CommunityLanding() {
         </div>
       </header>
 
-      <div className="mx-auto max-w-3xl px-4 py-6 sm:px-6">
+      <div className="mx-auto max-w-6xl px-4 py-6 sm:px-6">
         {/* Compact intro */}
         <div className="flex items-center gap-3">
           <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500 to-indigo-600 text-white shadow-md">
@@ -353,7 +353,7 @@ export default async function CommunityLanding() {
                 See all →
               </Link>
             </div>
-            <ul className="mt-3 grid gap-3 sm:grid-cols-2">
+            <ul className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {feed.map((p) => (
                 <FeedPost key={p.id} post={p} />
               ))}
