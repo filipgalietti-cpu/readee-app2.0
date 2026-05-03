@@ -94,6 +94,27 @@ export default async function PublicCommunityPassagePage({
   // can count anon traffic without exposing the table to anon writes.
   await supabaseAdmin().rpc("bump_community_view", { p_slug: slug });
 
+  // Related passages — same grade, top by view count, exclude self.
+  const { data: relatedRows } = await supabaseAdmin()
+    .from("community_passages")
+    .select("id, slug, title, image_url, grade_level, view_count, display_byline")
+    .eq("status", "approved")
+    .eq("grade_level", passage.grade_level)
+    .neq("id", passage.id)
+    .not("slug", "is", null)
+    .order("view_count", { ascending: false })
+    .order("created_at", { ascending: false })
+    .limit(3);
+  const related = (relatedRows ?? []) as {
+    id: string;
+    slug: string | null;
+    title: string;
+    image_url: string | null;
+    grade_level: string;
+    view_count: number;
+    display_byline: string | null;
+  }[];
+
   const wordCount = passage.passage_text
     .trim()
     .split(/\s+/)
@@ -199,6 +220,60 @@ export default async function PublicCommunityPassagePage({
             <p className="mt-3 text-[11px] text-zinc-500">
               Answers, hints, and read-along are unlocked when you sign in.
             </p>
+          </div>
+        )}
+
+        {/* More like this — same grade, top reads */}
+        {related.length > 0 && (
+          <div className="mt-10">
+            <div className="flex items-baseline justify-between">
+              <h2 className="text-sm font-bold uppercase tracking-widest text-zinc-500">
+                More like this
+              </h2>
+              <Link
+                href={`/community/grade/${passage.grade_level.toLowerCase()}`}
+                className="text-[11px] font-semibold text-violet-700 hover:underline"
+              >
+                See all {passage.grade_level} →
+              </Link>
+            </div>
+            <ul className="mt-3 grid gap-3 sm:grid-cols-3">
+              {related.map((r) => (
+                <li key={r.id}>
+                  <Link
+                    href={`/community/${r.slug}`}
+                    className="group block h-full overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:border-violet-300 hover:shadow-md"
+                  >
+                    {r.image_url ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={r.image_url}
+                        alt={r.title}
+                        className="h-28 w-full object-cover transition group-hover:scale-[1.02]"
+                      />
+                    ) : (
+                      <div className="flex h-28 w-full items-center justify-center bg-gradient-to-br from-violet-100 to-indigo-100 text-violet-400">
+                        <Sparkles className="h-8 w-8" />
+                      </div>
+                    )}
+                    <div className="p-3">
+                      <div className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-violet-700">
+                        <span className="rounded-full bg-violet-100 px-1.5 py-0.5">
+                          {r.grade_level}
+                        </span>
+                        <span className="inline-flex items-center gap-1 text-zinc-400">
+                          <Eye className="h-3 w-3" />
+                          {r.view_count.toLocaleString()}
+                        </span>
+                      </div>
+                      <h3 className="mt-1 line-clamp-2 text-sm font-bold text-zinc-900 group-hover:text-violet-700">
+                        {r.title}
+                      </h3>
+                    </div>
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         )}
 
