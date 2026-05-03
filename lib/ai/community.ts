@@ -8,17 +8,28 @@
  *      pass on the stored text.
  *   2. Run the safety banlist one more time (not a security boundary,
  *      just a fast-fail).
- *   3. Land it in community_passages with status='pending'.
- *   4. Admins review via /admin/community and either approve or reject.
+ *   3. Regenerate audio from the cleaned passage (the original audio
+ *      bakes in the child's real name — community gets a clean copy).
+ *   4. AI QC gate — run the same judges we use on the catalog audit
+ *      (q.should_be_asked / q.image_quality / q.audio_quality). Hard
+ *      fail rejects the submission with a parent-friendly reason.
+ *      Warn forces the row to status='pending' regardless of trusted-
+ *      parent status, so a human looks before it goes live.
+ *   5. Land it in community_passages — pass + trusted parent → approved
+ *      auto-publish; everything else → pending for admin review.
+ *   6. Admins review via /admin/community and either approve or reject.
  *
  * We store the REWRITTEN text separately from the parent's private copy —
  * the original child_ai_content row stays untouched, the community copy
- * is its own row with its own moderation state.
+ * is its own row with its own moderation state. Every verdict + check is
+ * logged to content_qc_log (target_kind='community_passage').
  */
 
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { containsUnsafeContent } from "@/lib/ai/safety";
 import { generateSpeech } from "@/lib/ai/readee-ai";
+import { judgeShouldBeAsked } from "@/lib/ai/qc-question-meta";
+import { judgeAudioFile, judgeImageQuality } from "@/lib/ai/qc-media";
 
 /**
  * Once a parent has TRUSTED_THRESHOLD successful community approvals,
@@ -27,6 +38,109 @@ import { generateSpeech } from "@/lib/ai/readee-ai";
  * drops.
  */
 export const TRUSTED_THRESHOLD = 5;
+
+type CommunityQcVerdict = "pass" | "warn" | "fail";
+
+type CommunityQcResult = {
+  verdict: CommunityQcVerdict;
+  /** Surface to the parent UI when verdict is fail. Plain English. */
+  reason: string | null;
+  /** Per-check breakdown for the audit log. */
+  checks: Array<{ kind: string; severity: CommunityQcVerdict; reason: string }>;
+};
+
+/** Run the same AI judges we use for catalog audit against a
+ *  community submission BEFORE it lands in the queue. This is the
+ *  deliverability gate for the community surface — anything failing
+ *  any judge is rejected with a specific reason; warns force the row
+ *  to status='pending' regardless of trust. */
+async function runCommunityQC(input: {
+  passage: string;
+  questions: any[];
+  imageUrl: string | null;
+  audioUrl: string | null;
+}): Promise<CommunityQcResult> {
+  const checks: CommunityQcResult["checks"] = [];
+
+  // Pedagogy: each question must actually be worth asking for the
+  // standard. We don't have an explicit standardId on community rows
+  // (parent-generated), so the judge runs without a fixed standard
+  // and just rates "is this a question worth asking?".
+  for (const q of input.questions ?? []) {
+    if (!q?.prompt || !Array.isArray(q?.choices)) continue;
+    try {
+      const v = await judgeShouldBeAsked({
+        standardId: "(community submission)",
+        standardDescription:
+          "Reading comprehension — assess whether the question is worth asking and well-formed",
+        prompt: q.prompt,
+        choices: q.choices,
+        correct: String(q.correct ?? ""),
+        passageBody: input.passage,
+      });
+      if (!v.ok) continue;
+      const sev: CommunityQcVerdict =
+        v.verdict === "drop" ? "fail" : v.verdict === "weak" ? "warn" : "pass";
+      checks.push({
+        kind: "q.should_be_asked",
+        severity: sev,
+        reason: v.reason ?? "",
+      });
+    } catch {
+      // QC failures shouldn't block submission entirely — log and
+      // continue. The admin queue still catches anything sketchy.
+    }
+  }
+
+  // Image — only if there's an image to judge.
+  if (input.imageUrl) {
+    try {
+      const v = await judgeImageQuality({
+        imageUrl: input.imageUrl,
+        expectedScene: input.passage.slice(0, 400),
+      });
+      if (v.ok) {
+        checks.push({
+          kind: "q.image_quality",
+          severity: v.severity,
+          reason: v.reason ?? "",
+        });
+      }
+    } catch {}
+  }
+
+  // Audio — judge the regenerated audio against the cleaned passage.
+  if (input.audioUrl) {
+    try {
+      const v = await judgeAudioFile({
+        audioUrl: input.audioUrl,
+        expectedText: input.passage,
+      });
+      if (v.ok) {
+        checks.push({
+          kind: "q.audio_quality",
+          severity: v.severity,
+          reason: v.reason ?? "",
+        });
+      }
+    } catch {}
+  }
+
+  // Roll up: any fail → fail; any warn → warn; otherwise pass.
+  const fail = checks.find((c) => c.severity === "fail");
+  if (fail) {
+    return {
+      verdict: "fail",
+      reason: `${fail.kind}: ${fail.reason || "did not pass quality check"}`,
+      checks,
+    };
+  }
+  const warn = checks.find((c) => c.severity === "warn");
+  if (warn) {
+    return { verdict: "warn", reason: warn.reason || null, checks };
+  }
+  return { verdict: "pass", reason: null, checks };
+}
 
 /** URL-safe slug from a passage title, with a short random salt so
  *  concurrent submissions of "the-rainforest" don't collide on the
@@ -225,6 +339,26 @@ export async function submitForCommunityReview(input: {
       ? ((parentProfile as any).community_display_name as string | null) ?? null
       : null;
 
+  // ── AI QC gate ─────────────────────────────────────────────────
+  // Run the same judges we use on the catalog audit BEFORE the row
+  // hits the queue. Hard fails are rejected with a parent-friendly
+  // reason; warns force pending status (no trusted-parent fast lane)
+  // so a human looks before it goes live.
+  const qc = await runCommunityQC({
+    passage: cleanPassage,
+    questions: cleanQuestions ?? [],
+    imageUrl: c.image_url,
+    audioUrl: audioUrl,
+  });
+  if (qc.verdict === "fail") {
+    return {
+      ok: false,
+      error: `Quality check didn't pass — ${qc.reason ?? "try regenerating before sharing"}.`,
+    };
+  }
+  // Trusted-parent fast lane only fires on a clean QC pass.
+  const effectivelyTrusted = isTrusted && qc.verdict === "pass";
+
   // URL slug for /community/[slug]. We salt with a short id chunk so
   // concurrent submissions of similar titles don't collide.
   const titleForSlug = c.title ?? c.topic ?? "passage";
@@ -243,9 +377,9 @@ export async function submitForCommunityReview(input: {
       grade_level: c.grade_level ?? "2nd",
       topic: c.topic,
       phonics_pattern: c.phonics_pattern ?? null,
-      status: isTrusted ? "approved" : "pending",
-      auto_approved: isTrusted,
-      reviewed_at: isTrusted ? new Date().toISOString() : null,
+      status: effectivelyTrusted ? "approved" : "pending",
+      auto_approved: effectivelyTrusted,
+      reviewed_at: effectivelyTrusted ? new Date().toISOString() : null,
       slug,
       display_byline: displayByline,
     })
@@ -254,6 +388,21 @@ export async function submitForCommunityReview(input: {
   if (insErr || !inserted) {
     return { ok: false, error: insErr?.message ?? "Couldn't submit for review." };
   }
+
+  // Audit-trail every QC verdict + check.
+  await admin.from("content_qc_log").insert({
+    target_kind: "community_passage",
+    target_id: (inserted as any).id,
+    change_type: "submit_for_review",
+    before: null,
+    after: { verdict: qc.verdict, checks: qc.checks },
+    reason:
+      qc.verdict === "warn"
+        ? `Submitted with warning — admin review required. ${qc.reason ?? ""}`
+        : "Passed AI QC.",
+    finding_id: null,
+    agent: "community/submit",
+  });
 
   // Optional: surface for operators that names were replaced.
   if (passageReplaced.length + qReplaced.length > 0) {
