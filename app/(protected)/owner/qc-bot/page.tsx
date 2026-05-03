@@ -17,6 +17,12 @@ import {
   Volume2,
   FileText,
   ListChecks,
+  Clock,
+  Activity,
+  TrendingUp,
+  Zap,
+  Pause,
+  CircleAlert,
 } from "lucide-react";
 import ApplyRescueButton from "./_components/ApplyRescueButton";
 
@@ -175,8 +181,160 @@ export default async function QcBotDashboardPage() {
     (a, b) => b[1] - a[1],
   );
 
-  // ── Bot health: last cron run + recent errors + cost ──────────
+  // ── Pipeline stage counts ────────────────────────────────────
+  // The bot's "production line" — items flowing through stages.
+  // The math: open fails are the inbox, fixed are the outbox, the
+  // intermediate stages are tagged via content_qc_log change_type.
   const oneDayAgo = new Date(Date.now() - 86_400_000).toISOString();
+  const sevenDaysAgoIso = sevenDaysAgo;
+  const [
+    rescueRecsAll,
+    rescueExecuted,
+    regenLast7d,
+    verifyLast7d,
+    stuckHighAttempt,
+    stuckAgedQuarantine,
+  ] = await Promise.all([
+    supabase
+      .from("content_qc_log")
+      .select("finding_id, target_id, after, created_at")
+      .eq("change_type", "format_rescue_recommendation")
+      .order("created_at", { ascending: false })
+      .limit(200),
+    supabase
+      .from("content_qc_log")
+      .select("finding_id")
+      .eq("change_type", "format_executed"),
+    supabase
+      .from("content_qc_log")
+      .select("change_type")
+      .in("change_type", ["regen_image", "regen_audio", "regen_question"])
+      .gte("created_at", sevenDaysAgoIso),
+    supabase
+      .from("content_qc_log")
+      .select("change_type, after")
+      .in("change_type", ["verify_image", "verify_audio"])
+      .gte("created_at", sevenDaysAgoIso),
+    supabase
+      .from("question_qc_status")
+      .select("target_id, qc_attempt_count, updated_at")
+      .gte("qc_attempt_count", 3)
+      .order("qc_attempt_count", { ascending: false })
+      .limit(10),
+    supabase
+      .from("question_qc_status")
+      .select("target_id, updated_at")
+      .eq("qc_status", "quarantined")
+      .lt("updated_at", new Date(Date.now() - 7 * 86_400_000).toISOString())
+      .order("updated_at", { ascending: true })
+      .limit(10),
+  ]);
+  const allRecs = (rescueRecsAll.data ?? []) as any[];
+  const executedFindings = new Set(
+    ((rescueExecuted.data ?? []) as any[])
+      .map((r: any) => r.finding_id)
+      .filter(Boolean),
+  );
+  const pendingRescue = allRecs.filter(
+    (r: any) => !r.finding_id || !executedFindings.has(r.finding_id),
+  );
+  const NEEDS_LOCAL_ACTIONS = new Set([
+    "drop_audio",
+    "drop_image",
+    "convert_to_text_only",
+    "convert_to_missing_word",
+    "convert_to_sentence_build",
+    "convert_to_category_sort",
+    "convert_to_tap_to_pair",
+    "convert_to_space_insertion",
+    "render_chart_via_css",
+    "drop_question_entirely",
+  ]);
+  const pendingRescueLocal = pendingRescue.filter((r: any) =>
+    NEEDS_LOCAL_ACTIONS.has(r?.after?.action ?? ""),
+  ).length;
+  const pendingRescueServerless = pendingRescue.length - pendingRescueLocal;
+  const verifyPasses = ((verifyLast7d.data ?? []) as any[]).filter(
+    (r: any) => r?.after?.verdict === "pass",
+  ).length;
+  const verifyReopens = ((verifyLast7d.data ?? []) as any[]).filter(
+    (r: any) => r?.after?.verdict === "fail",
+  ).length;
+  const regenCount7d = (regenLast7d.data ?? []).length;
+  const stuckTargets = (stuckHighAttempt.data ?? []) as Array<{
+    target_id: string;
+    qc_attempt_count: number;
+    updated_at: string;
+  }>;
+  const agedQuarantine = (stuckAgedQuarantine.data ?? []) as Array<{
+    target_id: string;
+    updated_at: string;
+  }>;
+
+  // ── Cron schedule + last run status ──────────────────────────
+  // vercel.json crons we know about, paired with their last runs
+  // from the audit/factory tables.
+  const crons = [
+    { path: "/api/cron/qc-bot", cron: "0 6 * * *", label: "QC bot" },
+    {
+      path: "/api/cron/factory-calibrated-mcq",
+      cron: "0 7 * * *",
+      label: "Factory MCQ",
+    },
+    {
+      path: "/api/cron/factory-leveled-passage",
+      cron: "0 8 * * *",
+      label: "Factory passages",
+    },
+    { path: "/api/cron/daily-question", cron: "0 9 * * *", label: "Daily question" },
+    {
+      path: "/api/cron/parent-digest",
+      cron: "0 13 * * 1",
+      label: "Parent digest (Mon)",
+    },
+  ];
+  const factoryLast = await supabase
+    .from("factory_runs")
+    .select("asset_kind, status, completed_at, error")
+    .order("completed_at", { ascending: false })
+    .limit(20);
+  const factoryByKind = new Map<string, any>();
+  for (const r of (factoryLast.data ?? []) as any[]) {
+    if (!factoryByKind.has(r.asset_kind)) factoryByKind.set(r.asset_kind, r);
+  }
+
+  // ── Provider quota awareness ─────────────────────────────────
+  // Free Gemini tier caps generate_requests per day per model. Show
+  // approximate usage so we know when to expect 429s.
+  const usageByModel = await supabase
+    .from("ai_usage_log")
+    .select("model, success")
+    .gte("created_at", oneDayAgo);
+  const modelCounts = new Map<string, { ok: number; fail: number }>();
+  for (const r of (usageByModel.data ?? []) as any[]) {
+    const m = (r.model ?? "unknown") as string;
+    const cur = modelCounts.get(m) ?? { ok: 0, fail: 0 };
+    if (r.success) cur.ok++;
+    else cur.fail++;
+    modelCounts.set(m, cur);
+  }
+  const QUOTA_HINTS: Record<string, { dailyLimit: number; tier: string }> = {
+    "gemini-2.5-flash-preview-tts": { dailyLimit: 100, tier: "free" },
+    "gemini-2.5-flash-tts": { dailyLimit: 100, tier: "free" },
+    "gemini-2.5-flash-image": { dailyLimit: 500, tier: "free" },
+    "gemini-2.5-flash": { dailyLimit: 1500, tier: "free" },
+  };
+  const quotaRows = Array.from(modelCounts.entries())
+    .map(([model, counts]) => {
+      const hint = QUOTA_HINTS[model];
+      const used = counts.ok + counts.fail;
+      const limit = hint?.dailyLimit ?? null;
+      const pct = limit ? Math.min(100, Math.round((used / limit) * 100)) : null;
+      return { model, used, ok: counts.ok, fail: counts.fail, limit, pct };
+    })
+    .sort((a, b) => b.used - a.used);
+
+  // ── Bot health: last cron run + recent errors + cost ──────────
   const [latestActivityRes, recentErrorsRes, dailyCostRes] = await Promise.all([
     supabase
       .from("content_qc_log")
@@ -291,6 +449,228 @@ export default async function QcBotDashboardPage() {
           </div>
         </div>
       </section>
+
+      {/* Pipeline funnel — what's flowing through the bot */}
+      <section className="mt-6 rounded-2xl border border-zinc-200 bg-white p-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-zinc-600">
+            <TrendingUp className="h-3.5 w-3.5" />
+            Pipeline
+          </div>
+          <span className="text-[10px] text-zinc-400">
+            audit → regen → verify → rescue → execute → resolved
+          </span>
+        </div>
+        <ol className="mt-3 grid gap-2 sm:grid-cols-3 lg:grid-cols-6">
+          <PipelineStage
+            label="Open findings"
+            value={(openFails.count ?? 0) + (openWarns.count ?? 0)}
+            sub={`${openFails.count ?? 0} fail · ${openWarns.count ?? 0} warn`}
+            tone="red"
+            href="/owner/content-audit?severity=fail"
+          />
+          <PipelineStage
+            label="Quarantined"
+            value={quarantinedQuestions.count ?? 0}
+            sub="held back from delivery"
+            tone="amber"
+          />
+          <PipelineStage
+            label="Regen (7d)"
+            value={regenCount7d}
+            sub="auto-fix attempted"
+            tone="violet"
+          />
+          <PipelineStage
+            label="Verify (7d)"
+            value={verifyPasses + verifyReopens}
+            sub={`${verifyPasses} ok · ${verifyReopens} reopened`}
+            tone="emerald"
+          />
+          <PipelineStage
+            label="Rescue queue"
+            value={pendingRescue.length}
+            sub={`${pendingRescueServerless} auto · ${pendingRescueLocal} local`}
+            tone="amber"
+          />
+          <PipelineStage
+            label="Resolved"
+            value={fixedAllTime.count ?? 0}
+            sub="all-time"
+            tone="emerald"
+          />
+        </ol>
+      </section>
+
+      {/* Crons */}
+      <section className="mt-6 rounded-2xl border border-zinc-200 bg-white p-4">
+        <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-zinc-600">
+          <Clock className="h-3.5 w-3.5" />
+          Cron schedule
+        </div>
+        <ul className="mt-3 space-y-1.5">
+          {crons.map((c) => {
+            const next = nextCronFire(c.cron);
+            const lastRun =
+              c.path === "/api/cron/factory-leveled-passage"
+                ? factoryByKind.get("leveled_passage")
+                : c.path === "/api/cron/factory-calibrated-mcq"
+                ? factoryByKind.get("calibrated_mcq")
+                : null;
+            return (
+              <li
+                key={c.path}
+                className="flex flex-wrap items-center gap-2 rounded-lg bg-zinc-50 px-3 py-2 text-xs"
+              >
+                <span className="font-bold text-zinc-900">{c.label}</span>
+                <code className="rounded bg-white px-1.5 py-0.5 text-[10px] text-zinc-500 ring-1 ring-zinc-200">
+                  {c.cron}
+                </code>
+                <span className="ml-auto text-[11px] text-zinc-500">
+                  next:{" "}
+                  <span className="font-semibold text-zinc-800">
+                    {next ?? "—"}
+                  </span>
+                </span>
+                {lastRun && (
+                  <span className="text-[11px] text-zinc-500">
+                    last:{" "}
+                    <span
+                      className={`font-semibold ${
+                        lastRun.error ? "text-red-700" : "text-emerald-700"
+                      }`}
+                    >
+                      {lastRun.error
+                        ? "errored"
+                        : lastRun.status === "completed"
+                        ? "ok"
+                        : lastRun.status}
+                    </span>{" "}
+                    ({timeAgo(lastRun.completed_at ?? new Date().toISOString())})
+                  </span>
+                )}
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+
+      {/* Provider quotas */}
+      {quotaRows.length > 0 && (
+        <section className="mt-6 rounded-2xl border border-zinc-200 bg-white p-4">
+          <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-zinc-600">
+            <Zap className="h-3.5 w-3.5" />
+            Provider quotas (today)
+          </div>
+          <ul className="mt-3 space-y-1.5">
+            {quotaRows.map((q) => {
+              const danger = q.pct !== null && q.pct >= 80;
+              const warn = q.pct !== null && q.pct >= 50 && q.pct < 80;
+              return (
+                <li key={q.model} className="text-xs">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <code className="font-mono font-bold text-zinc-900">
+                      {q.model}
+                    </code>
+                    <span className="text-zinc-500">
+                      {q.used} call{q.used === 1 ? "" : "s"}
+                    </span>
+                    {q.fail > 0 && (
+                      <span className="text-red-600">
+                        ({q.fail} fail{q.fail === 1 ? "" : "s"})
+                      </span>
+                    )}
+                    {q.limit && (
+                      <span
+                        className={`ml-auto font-semibold ${
+                          danger
+                            ? "text-red-700"
+                            : warn
+                            ? "text-amber-700"
+                            : "text-emerald-700"
+                        }`}
+                      >
+                        {q.pct}% of {q.limit.toLocaleString()}/day
+                      </span>
+                    )}
+                    {!q.limit && (
+                      <span className="ml-auto text-zinc-400">no daily cap</span>
+                    )}
+                  </div>
+                  {q.limit && (
+                    <div className="mt-1 h-1 w-full overflow-hidden rounded-full bg-zinc-100">
+                      <div
+                        className={`h-full ${
+                          danger
+                            ? "bg-red-500"
+                            : warn
+                            ? "bg-amber-500"
+                            : "bg-emerald-500"
+                        }`}
+                        style={{ width: `${q.pct}%` }}
+                      />
+                    </div>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      )}
+
+      {/* Stuck items */}
+      {(stuckTargets.length > 0 || agedQuarantine.length > 0) && (
+        <section className="mt-6 rounded-2xl border border-amber-200 bg-amber-50/60 p-4">
+          <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-amber-800">
+            <CircleAlert className="h-3.5 w-3.5" />
+            Stuck items
+          </div>
+          {stuckTargets.length > 0 && (
+            <div className="mt-3">
+              <div className="text-[10px] font-bold uppercase tracking-widest text-zinc-500">
+                3+ regen attempts
+              </div>
+              <ul className="mt-1.5 flex flex-wrap gap-1.5">
+                {stuckTargets.map((s) => (
+                  <li key={s.target_id}>
+                    <Link
+                      href={`/owner/qc-bot/${encodeURIComponent(s.target_id)}`}
+                      className="inline-flex items-center gap-1.5 rounded-full bg-white px-2.5 py-1 text-[11px] font-semibold ring-1 ring-amber-200 hover:ring-violet-300"
+                    >
+                      <code className="font-mono font-bold">{s.target_id}</code>
+                      <span className="rounded-full bg-amber-200 px-1.5 py-0.5 text-[9px] font-extrabold text-amber-900">
+                        {s.qc_attempt_count}×
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {agedQuarantine.length > 0 && (
+            <div className="mt-3">
+              <div className="text-[10px] font-bold uppercase tracking-widest text-zinc-500">
+                Quarantined &gt;7d (no resolution)
+              </div>
+              <ul className="mt-1.5 flex flex-wrap gap-1.5">
+                {agedQuarantine.map((a) => (
+                  <li key={a.target_id}>
+                    <Link
+                      href={`/owner/qc-bot/${encodeURIComponent(a.target_id)}`}
+                      className="inline-flex items-center gap-1.5 rounded-full bg-white px-2.5 py-1 text-[11px] font-semibold ring-1 ring-amber-200 hover:ring-violet-300"
+                    >
+                      <code className="font-mono font-bold">{a.target_id}</code>
+                      <span className="text-[10px] text-zinc-500">
+                        {timeAgo(a.updated_at)}
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </section>
+      )}
 
       {/* Hero stats */}
       <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -533,6 +913,83 @@ function Stat({
     </div>
   );
   return href ? <Link href={href}>{inner}</Link> : <div>{inner}</div>;
+}
+
+function PipelineStage({
+  label,
+  value,
+  sub,
+  tone,
+  href,
+}: {
+  label: string;
+  value: number;
+  sub: string;
+  tone: "red" | "amber" | "violet" | "emerald";
+  href?: string;
+}) {
+  const tones: Record<string, string> = {
+    red: "bg-red-50 ring-red-200 text-red-700",
+    amber: "bg-amber-50 ring-amber-200 text-amber-800",
+    violet: "bg-violet-50 ring-violet-200 text-violet-700",
+    emerald: "bg-emerald-50 ring-emerald-200 text-emerald-700",
+  };
+  const inner = (
+    <li
+      className={`rounded-xl p-3 ring-1 ${tones[tone]} ${
+        href ? "transition hover:-translate-y-0.5 hover:shadow-sm" : ""
+      }`}
+    >
+      <div className="text-[10px] font-bold uppercase tracking-widest">
+        {label}
+      </div>
+      <div className="mt-0.5 text-2xl font-extrabold tracking-tight text-zinc-900">
+        {value.toLocaleString()}
+      </div>
+      <div className="mt-0.5 text-[10px] text-zinc-600">{sub}</div>
+    </li>
+  );
+  return href ? <Link href={href}>{inner}</Link> : inner;
+}
+
+/** Compute the next fire time of a Vercel cron expression (5-field
+ *  UTC). Supports the tiny subset our crons use: `M H * * *` and
+ *  `M H * * D`. Returns "in 4h 32m" or absolute time string. */
+function nextCronFire(expr: string): string | null {
+  const parts = expr.trim().split(/\s+/);
+  if (parts.length !== 5) return null;
+  const [m, h, , , d] = parts;
+  const min = Number(m);
+  const hr = Number(h);
+  if (!Number.isFinite(min) || !Number.isFinite(hr)) return null;
+  const now = new Date();
+  const target = new Date(
+    Date.UTC(
+      now.getUTCFullYear(),
+      now.getUTCMonth(),
+      now.getUTCDate(),
+      hr,
+      min,
+      0,
+    ),
+  );
+  // Day-of-week constraint (Mon=1 in Vercel cron).
+  const dayMatch = (date: Date): boolean => {
+    if (d === "*") return true;
+    const want = Number(d);
+    return Number.isFinite(want) && date.getUTCDay() === want;
+  };
+  while (target.getTime() <= now.getTime() || !dayMatch(target)) {
+    target.setUTCDate(target.getUTCDate() + 1);
+  }
+  const diffMs = target.getTime() - now.getTime();
+  const diffMin = Math.round(diffMs / 60_000);
+  if (diffMin < 60) return `in ${diffMin}m`;
+  const diffHr = Math.floor(diffMin / 60);
+  const remMin = diffMin % 60;
+  if (diffHr < 24) return `in ${diffHr}h${remMin > 0 ? ` ${remMin}m` : ""}`;
+  const diffDay = Math.floor(diffHr / 24);
+  return `in ${diffDay}d`;
 }
 
 function Trigger({ cmd, desc }: { cmd: string; desc: string }) {
