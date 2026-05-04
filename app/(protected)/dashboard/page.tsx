@@ -64,8 +64,6 @@ function useCountUp(target: number, duration = 800) {
   return { value, ref };
 }
 
-const AVATARS = ["😊", "🦊", "🐱", "🦋", "🐻"];
-
 const GRADE_KEYS = ["pre-k", "kindergarten", "1st", "2nd", "3rd", "4th"] as const;
 const GRADE_LABELS: Record<string, string> = {
   "pre-k": "Foundational",
@@ -256,159 +254,227 @@ export default function Dashboard() {
   return <ChildSelector children={children} onSelect={setSelectedChild} />;
 }
 
-/* ─── Add Children Form ───────────────────────────────── */
+/* ─── Onboarding flow: kid info → PfP → handoff → placement ───── */
 
-interface ChildRow {
-  name: string;
-  grade: string;
-}
+const PFP_OPTIONS = [
+  "default_0",
+  "default_1",
+  "default_2",
+  "default_3",
+  "default_4",
+] as const;
 
-function AddChildrenForm({ userPlan, onDone }: { userPlan: string; onDone: (kids: Child[]) => void }) {
+function AddChildrenForm({
+  userPlan,
+  onDone,
+}: {
+  userPlan: string;
+  onDone: (kids: Child[]) => void;
+}) {
   const router = useRouter();
-  const [rows, setRows] = useState<ChildRow[]>([{ name: "", grade: "" }]);
+  // Single-session flow: one kid per parent (per
+  // feedback_no_multi_child memory). Steps: info → pfp → handoff.
+  const [step, setStep] = useState<"info" | "pfp" | "handoff">("info");
+  const [name, setName] = useState("");
+  const [grade, setGrade] = useState("");
+  const [pfpId, setPfpId] = useState<string>(PFP_OPTIONS[0]);
+  const [child, setChild] = useState<Child | null>(null);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
 
-  const updateRow = (index: number, field: keyof ChildRow, value: string) => {
-    setRows((prev) => prev.map((r, i) => (i === index ? { ...r, [field]: value } : r)));
-  };
+  const canAdvanceFromInfo = name.trim().length > 0 && grade.length > 0;
 
-  const maxChildren = userPlan === "premium" ? 5 : 1;
-
-  const addRow = () => {
-    if (rows.length < maxChildren) setRows((prev) => [...prev, { name: "", grade: "" }]);
-  };
-
-  const removeRow = (index: number) => {
-    if (rows.length > 1) setRows((prev) => prev.filter((_, i) => i !== index));
-  };
-
-  const canSubmit = rows.every((r) => r.name.trim() && r.grade);
-
-  const handleSubmit = async () => {
-    if (!canSubmit) return;
+  const handleCreateChild = async () => {
+    if (!canAdvanceFromInfo) return;
     setSaving(true);
     setError("");
 
     const supabase = supabaseBrowser();
-    const { data: { user } } = await supabase.auth.getUser();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
     if (!user) {
-      setError("Not logged in");
+      setError("Not signed in. Refresh and try again.");
       setSaving(false);
       return;
     }
-
-    const insertRows = rows.map((r) => ({
-      parent_id: user.id,
-      first_name: r.name.trim(),
-      grade: r.grade,
-    }));
 
     const { data, error: insertError } = await supabase
       .from("children")
-      .insert(insertRows)
-      .select();
+      .insert({
+        parent_id: user.id,
+        first_name: name.trim(),
+        grade,
+        equipped_items: { avatar: pfpId },
+      })
+      .select()
+      .single();
 
-    if (insertError) {
-      console.error("Error saving children:", insertError);
-      setError("Failed to save. Please try again.");
+    if (insertError || !data) {
+      console.error("Error saving child:", insertError);
+      setError("Couldn't save. Try again.");
       setSaving(false);
       return;
     }
 
-    const kids = (data || []) as Child[];
-    onDone(kids);
-
-    // Auto-redirect to assessment for the first child
-    if (kids.length > 0) {
-      router.push(`/assessment?child=${kids[0].id}`);
-    }
+    const kid = data as Child;
+    setChild(kid);
+    onDone([kid]);
+    setSaving(false);
+    setStep("handoff");
   };
 
-  return (
-    <div className="max-w-md mx-auto py-16 px-4 space-y-8">
-      <div className="text-center">
-        <div className="w-20 h-20 rounded-2xl bg-indigo-50 mx-auto mb-6 flex items-center justify-center">
-          <BookOpen className="w-10 h-10 text-indigo-500" strokeWidth={1.5} />
-        </div>
-        <h1 className="text-2xl font-bold text-zinc-900 dark:text-slate-100 tracking-tight">
-          Welcome to Readee!
-        </h1>
-        <p className="text-zinc-500 dark:text-slate-400 mt-2">
-          Let&apos;s set up your readers.
-        </p>
-      </div>
+  const handleHandoff = () => {
+    if (!child) return;
+    router.push(`/assessment?child=${child.id}`);
+  };
 
-      <div className="space-y-4">
-        {userPlan !== "premium" && (
-          <div className="rounded-2xl border border-indigo-200 bg-gradient-to-r from-indigo-50/80 to-violet-50/80 p-4">
-            <p className="text-sm font-semibold text-zinc-900">Unlock the full curriculum</p>
-            <p className="text-xs text-zinc-600 mt-1">
-              Free includes starter lessons. Upgrade to Readee+ for all 57 lessons, unlimited practice, and parent analytics.
-            </p>
+  if (step === "info") {
+    return (
+      <div className="mx-auto max-w-md space-y-8 px-4 py-16">
+        <div className="text-center">
+          <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-indigo-50">
+            <BookOpen className="h-10 w-10 text-indigo-500" strokeWidth={1.5} />
           </div>
-        )}
-        {rows.map((row, index) => (
-          <div key={index} className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 space-y-3">
-            <div className="flex items-center justify-between">
-              <span className="text-sm font-semibold text-zinc-500 dark:text-slate-400">
-                {AVATARS[index % AVATARS.length]} Reader {index + 1}
-              </span>
-              {rows.length > 1 && (
-                <button
-                  onClick={() => removeRow(index)}
-                  className="text-zinc-400 hover:text-red-500 text-sm font-medium transition-colors"
-                >
-                  Remove
-                </button>
-              )}
-            </div>
+          <h1 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-slate-100">
+            Welcome to Readee.
+          </h1>
+          <p className="mt-2 text-zinc-500 dark:text-slate-400">
+            Step 1 of 3 — tell us about your reader.
+          </p>
+        </div>
+
+        <div className="space-y-4">
+          <div className="space-y-2 rounded-2xl border border-zinc-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-800">
+            <label className="text-xs font-bold uppercase tracking-widest text-zinc-500 dark:text-slate-400">
+              First name
+            </label>
             <input
               type="text"
-              placeholder="Child's first name"
-              value={row.name}
-              onChange={(e) => updateRow(index, "name", e.target.value)}
-              className="w-full px-3 py-2.5 rounded-xl border border-zinc-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-sm text-zinc-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              autoFocus
+              placeholder="e.g. Lily"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="w-full rounded-xl border border-zinc-200 bg-white px-3 py-2.5 text-sm text-zinc-900 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100"
             />
+          </div>
+          <div className="space-y-2 rounded-2xl border border-zinc-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-800">
+            <label className="text-xs font-bold uppercase tracking-widest text-zinc-500 dark:text-slate-400">
+              Grade
+            </label>
             <select
-              value={row.grade}
-              onChange={(e) => updateRow(index, "grade", e.target.value)}
-              className="w-full px-3 py-2.5 rounded-xl border border-zinc-200 dark:border-slate-600 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent bg-white dark:bg-slate-700 text-zinc-700 dark:text-slate-200"
+              value={grade}
+              onChange={(e) => setGrade(e.target.value)}
+              className="w-full rounded-xl border border-zinc-200 bg-white px-3 py-2.5 text-sm text-zinc-700 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-200"
             >
               <option value="">Select grade</option>
               {GRADES.map((g) => (
-                <option key={g} value={g}>{g}</option>
+                <option key={g} value={g}>
+                  {g}
+                </option>
               ))}
             </select>
           </div>
-        ))}
+        </div>
+
+        {error && <p className="text-center text-sm text-red-500">{error}</p>}
+
+        <button
+          onClick={() => setStep("pfp")}
+          disabled={!canAdvanceFromInfo}
+          className="w-full rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 py-4 text-lg font-bold text-white shadow-lg transition-all hover:from-indigo-700 hover:to-violet-600 disabled:cursor-not-allowed disabled:opacity-50"
+        >
+          Continue
+        </button>
+      </div>
+    );
+  }
+
+  if (step === "pfp") {
+    return (
+      <div className="mx-auto max-w-md space-y-8 px-4 py-16">
+        <div className="text-center">
+          <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-violet-50">
+            <Sparkles className="h-10 w-10 text-violet-500" strokeWidth={1.5} />
+          </div>
+          <h1 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-slate-100">
+            Pick {name || "your reader"}&apos;s look.
+          </h1>
+          <p className="mt-2 text-zinc-500 dark:text-slate-400">
+            Step 2 of 3 — they can change it later in the shop.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-3 gap-3 sm:grid-cols-5">
+          {PFP_OPTIONS.map((id) => {
+            const src = `/images/avatars/${id}.png`;
+            const isActive = pfpId === id;
+            return (
+              <button
+                key={id}
+                type="button"
+                onClick={() => setPfpId(id)}
+                className={`relative aspect-square overflow-hidden rounded-2xl border-2 transition ${
+                  isActive
+                    ? "border-violet-500 ring-4 ring-violet-200 scale-105"
+                    : "border-zinc-200 hover:border-violet-300"
+                }`}
+                aria-label={`Avatar option ${id}`}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={src} alt="" className="h-full w-full object-cover" />
+              </button>
+            );
+          })}
+        </div>
+
+        {error && <p className="text-center text-sm text-red-500">{error}</p>}
+
+        <div className="flex items-center gap-3">
+          <button
+            onClick={() => setStep("info")}
+            className="rounded-2xl border border-zinc-200 px-4 py-4 text-sm font-bold text-zinc-700 transition hover:border-indigo-300 hover:text-indigo-700 dark:border-slate-700 dark:text-slate-300"
+          >
+            Back
+          </button>
+          <button
+            onClick={handleCreateChild}
+            disabled={saving}
+            className="flex-1 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 py-4 text-lg font-bold text-white shadow-lg transition-all hover:from-indigo-700 hover:to-violet-600 disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            {saving ? "Saving…" : `Looks great, ${name || "let's go"}!`}
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  // step === "handoff" — the "hand the phone to your kid" moment.
+  return (
+    <div className="mx-auto max-w-md space-y-8 px-4 py-16 text-center">
+      <div className="mx-auto h-28 w-28 overflow-hidden rounded-3xl border-4 border-violet-200 bg-violet-50 shadow-lg">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={`/images/avatars/${pfpId}.png`}
+          alt=""
+          className="h-full w-full object-cover"
+        />
+      </div>
+      <div>
+        <h1 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-slate-100">
+          Hand the phone to {child?.first_name || name}.
+        </h1>
+        <p className="mx-auto mt-3 max-w-sm text-sm text-zinc-600 dark:text-slate-400">
+          A short reading check that finds exactly the right level. About
+          5 minutes — no studying, just answer what feels right.
+        </p>
       </div>
 
-      {rows.length < maxChildren ? (
-        <button
-          onClick={addRow}
-          className="w-full py-3 rounded-xl border-2 border-dashed border-zinc-200 text-sm font-medium text-indigo-600 hover:border-indigo-300 hover:bg-indigo-50/50 transition-colors"
-        >
-          + Add another child
-        </button>
-      ) : userPlan !== "premium" && (
-        <Link href="/upgrade" className="block">
-          <div className="w-full py-3 rounded-xl border-2 border-dashed border-indigo-200 bg-indigo-50/50 text-center text-sm font-medium text-indigo-600 hover:border-indigo-300 hover:bg-indigo-50 transition-colors">
-            <Star className="w-4 h-4 inline-block" strokeWidth={1.5} /> Upgrade to Readee+ for the full curriculum
-          </div>
-        </Link>
-      )}
-
-      {error && (
-        <p className="text-sm text-red-500 text-center">{error}</p>
-      )}
-
       <button
-        onClick={handleSubmit}
-        disabled={!canSubmit || saving}
-        className="w-full py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white font-bold text-lg hover:from-indigo-700 hover:to-violet-600 transition-all shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+        onClick={handleHandoff}
+        className="w-full rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 py-4 text-lg font-bold text-white shadow-lg transition-all hover:from-indigo-700 hover:to-violet-600"
       >
-        {saving ? "Setting up..." : "Let's Go!"}
+        I&apos;m ready, start the check →
       </button>
     </div>
   );
