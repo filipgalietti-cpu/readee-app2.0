@@ -12,7 +12,7 @@ import {
   X,
 } from "lucide-react";
 import { createClassroomStudents } from "@/app/(protected)/classroom/invite-actions";
-import { SUPPORTED_LANGUAGES } from "@/lib/ai/translate";
+import { SUPPORTED_LANGUAGES } from "@/lib/ai/translate.shared";
 import { Languages } from "lucide-react";
 
 type Classroom = { id: string; name: string; gradeLevel?: string | null };

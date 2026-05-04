@@ -15,7 +15,7 @@ import { aiBuildLeveledPassage } from "@/app/(protected)/classroom/authoring-act
 import {
   estimateLeveledCredits,
   type LeveledBrief,
-} from "@/lib/ai/build-leveled";
+} from "@/lib/ai/build-leveled.shared";
 import { CREDIT_COST } from "@/lib/ai/credits";
 import { Progress } from "@/app/components/ui/progress";
 

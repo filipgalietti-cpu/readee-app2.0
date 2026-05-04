@@ -33,14 +33,17 @@ import { getPattern } from "@/lib/ai/phonics-patterns";
 import { extractCharacterCard } from "@/lib/ai/character-card";
 import { indexContent } from "@/lib/ai/embeddings";
 
-export type BookBrief = {
-  title: string;
-  phonicsPattern: string;
-  patternLabel: string;
-  gradeLevel: string;
-  pageCount: number;
-  perPageImage: boolean;
-};
+// Brief shape and the credit estimator have moved to
+// build-book.shared.ts so client components can import them without
+// dragging the server surface (Gemini SDK, Vertex auth, admin supabase
+// client) into the browser bundle. Re-export so existing server-side
+// import paths keep working.
+export {
+  estimateBookCredits,
+  type BookBrief,
+} from "./build-book.shared";
+
+import type { BookBrief } from "./build-book.shared";
 
 export type BookPage = {
   position: number;
@@ -155,19 +158,6 @@ function validateBrief(brief: BookBrief): string | null {
     return "Page count must be 4–16.";
   }
   return null;
-}
-
-export function estimateBookCredits(brief: BookBrief): number {
-  let credits = CREDIT_COST.passage_generation;
-  if (brief.perPageImage) {
-    // +1 text credit for the character-card extraction, +1 image for the
-    // reference card. Per-page = image_brief + image (the reference image
-    // anchors all pages so the cat looks like the same cat throughout).
-    credits += CREDIT_COST.passage_generation + CREDIT_COST.image_generation;
-    credits += brief.pageCount * (CREDIT_COST.image_generation + CREDIT_COST.quiz_generation);
-  }
-  credits += 3; // QC suite (no questions, just passage + image)
-  return credits;
 }
 
 export async function buildBook(input: {

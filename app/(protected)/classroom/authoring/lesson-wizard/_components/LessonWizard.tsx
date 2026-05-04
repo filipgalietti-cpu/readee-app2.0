@@ -15,7 +15,7 @@ import { aiBuildLesson } from "@/app/(protected)/classroom/authoring-actions";
 import {
   estimateLessonCredits,
   type LessonBrief,
-} from "@/lib/ai/build-lesson";
+} from "@/lib/ai/build-lesson.shared";
 import { CREDIT_COST, MONTHLY_CREDIT_LIMIT } from "@/lib/ai/credits";
 import VoiceSelector from "@/app/_components/VoiceSelector";
 import {

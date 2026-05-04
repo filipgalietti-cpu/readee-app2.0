@@ -23,20 +23,18 @@ import { logUsage, MODEL_ID } from "@/lib/ai/readee-ai";
 import { CREDIT_COST } from "@/lib/ai/credits";
 import { trackError } from "@/lib/observability/track";
 
-export const SUPPORTED_LANGUAGES = [
-  { code: "es", name: "Spanish", nativeName: "Español" },
-  { code: "zh", name: "Mandarin", nativeName: "中文" },
-  { code: "vi", name: "Vietnamese", nativeName: "Tiếng Việt" },
-  { code: "ar", name: "Arabic", nativeName: "العربية" },
-  { code: "fr", name: "French", nativeName: "Français" },
-  { code: "ht", name: "Haitian Creole", nativeName: "Kreyòl Ayisyen" },
-  { code: "pt", name: "Portuguese", nativeName: "Português" },
-  { code: "tl", name: "Tagalog", nativeName: "Tagalog" },
-  { code: "ru", name: "Russian", nativeName: "Русский" },
-  { code: "ko", name: "Korean", nativeName: "한국어" },
-] as const;
+// Re-export from the client-safe shared file so any existing server
+// callers that imported from "@/lib/ai/translate" keep working. New
+// client component imports should target "@/lib/ai/translate.shared"
+// directly to avoid pulling the rest of this module's server deps
+// (node:crypto, @google/genai, supabase admin) into the browser
+// bundle.
+export {
+  SUPPORTED_LANGUAGES,
+  type LanguageCode,
+} from "./translate.shared";
 
-export type LanguageCode = (typeof SUPPORTED_LANGUAGES)[number]["code"];
+import { SUPPORTED_LANGUAGES, type LanguageCode } from "./translate.shared";
 
 let cached: GoogleGenAI | null = null;
 function client(): GoogleGenAI {

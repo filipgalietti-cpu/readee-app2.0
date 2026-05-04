@@ -38,43 +38,18 @@ import {
 import { CREDIT_COST, MONTHLY_CREDIT_LIMIT } from "@/lib/ai/credits";
 import { trackError } from "@/lib/observability/track";
 
-export type AssignmentBrief = {
-  title: string;
-  gradeLevel: string;
-  topic: string;
-  phonicsPattern?: string | null;
-  /** Optional CCSS standard the teacher picked. When set, every
-   *  question generator gets the standard description as a hard
-   *  skill-fidelity constraint — questions MUST require the named
-   *  skill, not generic plot recall. Pre-empts the "Author's POV
-   *  brief → plot-recall MCQs" mismatch where the topic was named
-   *  but the generator didn't know what skill to test. */
-  standardId?: string | null;
-  standardDescription?: string | null;
+// Brief shape and the credit estimator have moved to
+// build-assignment.shared.ts so client components can import them
+// without dragging the server surface (Gemini SDK, Vertex auth, admin
+// supabase client) into the browser bundle. Re-export so existing
+// server-side import paths keep working.
+export {
+  estimateBriefCredits,
+  type AssignmentBrief,
+} from "./build-assignment.shared";
 
-  passage: {
-    enabled: boolean;
-    /** Per-grade word-count tier. Short by default so 2nd graders
-     *  aren't reading an essay. */
-    length?: "short" | "medium" | "long";
-  };
-  questions: {
-    multipleChoice: number;
-    trueFalse: number;
-    matching: number;
-    /** Number of free-response writing prompts to append. Each one
-     *  is AI-generated based on the passage and rubric-graded at
-     *  submit time. */
-    writingPrompts?: number;
-  };
-  media: {
-    passageImage: boolean;
-    passageTts: boolean;
-    perQuestionTts: boolean;
-  };
-  /** Underlying Gemini voice name. Defaults to Autonoe. */
-  voice?: string;
-};
+import type { AssignmentBrief } from "./build-assignment.shared";
+import { estimateBriefCredits } from "./build-assignment.shared";
 
 export type BuildProgressStep =
   | "passage"
@@ -92,38 +67,6 @@ export type BuildResult =
       creditsUsed: number;
     }
   | { ok: false; error: string };
-
-/**
- * Estimate the total credit cost of a brief. Pure, no DB calls —
- * the wizard uses this to show teachers the price before they commit,
- * and the orchestrator uses it for the pre-flight budget check.
- */
-export function estimateBriefCredits(brief: AssignmentBrief): number {
-  let credits = 0;
-  if (brief.passage.enabled) {
-    credits += CREDIT_COST.passage_generation;
-    if (brief.media.passageImage) credits += CREDIT_COST.image_generation;
-    if (brief.media.passageTts) credits += CREDIT_COST.tts_generation;
-  }
-  const mcqCount = brief.questions.multipleChoice + brief.questions.trueFalse;
-  if (mcqCount > 0) credits += CREDIT_COST.quiz_generation;
-  if (brief.questions.matching > 0) credits += CREDIT_COST.quiz_generation;
-  // Writing prompts: one Gemini call to generate prompts (cheap),
-  // and the rubric grading happens at student-submit time, billed
-  // per submission rather than per-build.
-  if ((brief.questions.writingPrompts ?? 0) > 0) {
-    credits += CREDIT_COST.quiz_generation;
-  }
-  if (brief.media.perQuestionTts) {
-    const totalQuestions =
-      brief.questions.multipleChoice +
-      brief.questions.trueFalse +
-      brief.questions.matching +
-      (brief.questions.writingPrompts ?? 0);
-    credits += totalQuestions * CREDIT_COST.tts_generation;
-  }
-  return credits;
-}
 
 function validateBrief(brief: AssignmentBrief): string | null {
   // Title is optional — when blank, the orchestrator backfills it from

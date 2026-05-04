@@ -18,7 +18,7 @@ import { aiBuildAssignment } from "../../authoring-actions";
 import {
   estimateBriefCredits,
   type AssignmentBrief,
-} from "@/lib/ai/build-assignment";
+} from "@/lib/ai/build-assignment.shared";
 import { CREDIT_COST, MONTHLY_CREDIT_LIMIT } from "@/lib/ai/credits";
 import TopUpCreditsButton from "@/app/_components/TopUpCreditsButton";
 import VoiceSelector from "@/app/_components/VoiceSelector";

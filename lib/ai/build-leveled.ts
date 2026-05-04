@@ -32,25 +32,19 @@ import { CREDIT_COST, MONTHLY_CREDIT_LIMIT } from "@/lib/ai/credits";
 import { trackError } from "@/lib/observability/track";
 import { indexContent } from "@/lib/ai/embeddings";
 
-export type Level = "easy" | "on_level" | "advanced";
+// Brief shape, version shape, and the credit estimator have moved to
+// build-leveled.shared.ts so client components can import them without
+// dragging the server surface (Gemini SDK, Vertex auth, admin supabase
+// client) into the browser bundle. Re-export so existing server-side
+// import paths keep working.
+export {
+  estimateLeveledCredits,
+  type Level,
+  type LeveledBrief,
+  type LeveledVersion,
+} from "./build-leveled.shared";
 
-export type LeveledBrief = {
-  title: string;
-  topic: string;
-  baseGrade: string; // e.g. "3rd"
-  perVersionAudio: boolean;
-  sharedImage: boolean;
-  questionsPerLevel: number; // 0-5
-};
-
-export type LeveledVersion = {
-  level: Level;
-  grade: string;
-  title: string;
-  body: string;
-  audio_url: string | null;
-  question_ids: string[];
-};
+import type { Level, LeveledBrief, LeveledVersion } from "./build-leveled.shared";
 
 const LEVEL_LABEL: Record<Level, string> = {
   easy: "easy",
@@ -120,21 +114,6 @@ function validateBrief(brief: LeveledBrief): string | null {
     return "Questions per level must be 0-5.";
   }
   return null;
-}
-
-export function estimateLeveledCredits(brief: LeveledBrief): number {
-  let credits = CREDIT_COST.passage_generation;
-  if (brief.sharedImage) {
-    credits += CREDIT_COST.image_generation + CREDIT_COST.quiz_generation;
-  }
-  if (brief.perVersionAudio) {
-    credits += 3 * CREDIT_COST.tts_generation;
-  }
-  if (brief.questionsPerLevel > 0) {
-    credits += 3 * CREDIT_COST.quiz_generation;
-  }
-  credits += 3; // QC
-  return credits;
 }
 
 async function generateAllVersions(input: {

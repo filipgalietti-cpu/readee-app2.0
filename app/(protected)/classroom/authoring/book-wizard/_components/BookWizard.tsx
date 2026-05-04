@@ -13,7 +13,7 @@ import { aiBuildBook } from "@/app/(protected)/classroom/authoring-actions";
 import {
   estimateBookCredits,
   type BookBrief,
-} from "@/lib/ai/build-book";
+} from "@/lib/ai/build-book.shared";
 import { CREDIT_COST } from "@/lib/ai/credits";
 import { Progress } from "@/app/components/ui/progress";
 import { PATTERNS, type PhonicsPattern } from "@/lib/ai/phonics-patterns";

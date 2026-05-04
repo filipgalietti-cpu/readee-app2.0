@@ -34,18 +34,17 @@ import {
 } from "@/lib/ai/credits";
 import { trackError } from "@/lib/observability/track";
 
-export type LessonBrief = {
-  title: string;
-  gradeLevel: string;
-  topic: string;
-  slideCount: number;
-  media: {
-    perSlideImage: boolean;
-    perSlideAudio: boolean;
-  };
-  voice?: string | null;
-  questionCount: number;
-};
+// Brief shape and the credit estimator have moved to
+// build-lesson.shared.ts so client components can import them without
+// dragging the server surface (Gemini SDK, Vertex auth, admin supabase
+// client) into the browser bundle. Re-export so existing server-side
+// import paths keep working.
+export {
+  estimateLessonCredits,
+  type LessonBrief,
+} from "./build-lesson.shared";
+
+import type { LessonBrief } from "./build-lesson.shared";
 
 export type Slide = {
   position: number;
@@ -64,27 +63,6 @@ function validateBrief(brief: LessonBrief): string | null {
     return "Question count must be 0–10.";
   }
   return null;
-}
-
-export function estimateLessonCredits(brief: LessonBrief): number {
-  let credits = CREDIT_COST.passage_generation;
-  if (brief.media.perSlideImage) {
-    // image_scene is produced inline by the lesson generator, so we
-    // skip the per-slide image_brief call — just pay for the image.
-    credits += brief.slideCount * CREDIT_COST.image_generation;
-    // Character card: 1 text call + 1 reference image (only spent if a
-    // recurring character is detected — otherwise just the text call).
-    credits += CREDIT_COST.passage_generation + CREDIT_COST.image_generation;
-  }
-  if (brief.media.perSlideAudio) {
-    credits += brief.slideCount * CREDIT_COST.tts_generation;
-  }
-  if (brief.questionCount > 0) {
-    credits += CREDIT_COST.quiz_generation;
-  }
-  // QC suite: passage + each question + image judging
-  credits += 4;
-  return credits;
 }
 
 export async function buildLesson(input: {

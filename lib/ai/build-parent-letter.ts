@@ -175,18 +175,11 @@ const TRANSLATE_SCHEMA = {
   required: ["subject", "body"],
 };
 
-export const SUPPORTED_LANGUAGES = [
-  { code: "es", label: "Spanish" },
-  { code: "zh", label: "Mandarin (Simplified Chinese)" },
-  { code: "vi", label: "Vietnamese" },
-  { code: "ar", label: "Arabic" },
-  { code: "fr", label: "French" },
-  { code: "ht", label: "Haitian Creole" },
-  { code: "pt", label: "Portuguese" },
-  { code: "tl", label: "Tagalog" },
-  { code: "ru", label: "Russian" },
-  { code: "ko", label: "Korean" },
-];
+// SUPPORTED_LANGUAGES has moved to build-parent-letter.shared.ts so
+// client components can import it without dragging the server surface
+// (Gemini SDK, Vertex auth, admin supabase client) into the browser
+// bundle. Re-export so existing server-side import paths keep working.
+export { SUPPORTED_LANGUAGES } from "./build-parent-letter.shared";
 
 export async function translateLetter(input: {
   teacherId: string;

@@ -15,7 +15,7 @@ import {
   draftParentLetterAction,
   translateParentLetterAction,
 } from "@/lib/ai/path-actions";
-import { SUPPORTED_LANGUAGES } from "@/lib/ai/build-parent-letter";
+import { SUPPORTED_LANGUAGES } from "@/lib/ai/build-parent-letter.shared";
 
 type Translation = {
   language: string;
