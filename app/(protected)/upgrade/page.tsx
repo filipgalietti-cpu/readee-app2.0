@@ -38,32 +38,59 @@ const FEATURES = [
 
 const REASON_COPY: Record<string, { title: string; subtitle: string }> = {
   lesson: {
-    title: "Unlock all 57 lessons",
-    subtitle: "Your child has finished the free lessons. Upgrade to continue the full curriculum.",
+    title: "Keep the streak going.",
+    subtitle:
+      "Your reader finished the free lesson. Readee+ unlocks the full 162-lesson library — every CCSS standard, K–4.",
   },
   practice: {
-    title: "Unlock unlimited practice",
-    subtitle: "Free accounts are limited to 10 questions per standard. Upgrade for unlimited practice.",
+    title: "Practice without a wall.",
+    subtitle:
+      "Free accounts cap at 10 practice questions per standard. Readee+ removes the cap and unlocks every question across 200+ standards.",
   },
   analytics: {
-    title: "See your child's full progress",
-    subtitle: "Parent analytics show strengths, weaknesses, and growth over time.",
+    title: "See exactly what they've mastered.",
+    subtitle:
+      "Per-skill mastery, growth over time, and the standards your child needs more reps on. Readee+ only.",
   },
   story: {
-    title: "Unlock all 25 stories",
-    subtitle: "Free accounts include 2 stories per grade. Upgrade for the full library.",
+    title: "All 25 stories. None of the gates.",
+    subtitle:
+      "Free includes 2 stories per grade. Readee+ unlocks the whole decodable library plus read-aloud audio.",
   },
   child: {
-    title: "Unlock more features",
-    subtitle: "Get full access to all lessons, stories, and progress reports with Readee+.",
+    title: "Unlock everything.",
+    subtitle:
+      "Lessons, stories, practice, parent reports — Readee+ removes every gate.",
   },
   ask_readee: {
-    title: "Unlock Ask Readee",
-    subtitle: "Generate personalized reading passages, comprehension questions, and read-aloud audio for your child — at their exact grade level.",
+    title: "Ask Readee. Get a passage.",
+    subtitle:
+      "Generate a reading passage on any topic in seconds — kid-safe, level-perfect, with audio + comprehension questions baked in. Readee+ only.",
+  },
+  homework_scan: {
+    title: "Snap any worksheet, get instant practice.",
+    subtitle:
+      "Take a photo of a school packet. Readee identifies the skill being tested and pulls live practice on the same standard. Readee+ only.",
+  },
+  reading_buddy: {
+    title: "A reading partner that listens back.",
+    subtitle:
+      "Live conversational AI that reads stories, coaches pronunciation, and remembers what you read together. Readee+ only.",
+  },
+  smart_search: {
+    title: "Find any passage by what it's about.",
+    subtitle:
+      "Search 911 questions and 162 lessons by meaning, not just keywords. Readee+ only.",
+  },
+  tools_hub: {
+    title: "Unlock the full Co-Teach toolkit.",
+    subtitle:
+      "Reading Buddy, Homework Scanner, Ask Readee, and the rest of the parent toolkit. Readee+ only.",
   },
   teacher_solo: {
-    title: "Teach with Readee",
-    subtitle: "Run your classroom with all of Readee.ai: decodable passages, quiz wizards, custom images, and read-aloud audio — without waiting for your district.",
+    title: "Teach without waiting for procurement.",
+    subtitle:
+      "Quiz Wizard, Lesson Wizard, Decodable Books, IEP workspace, fluency analyzer, parent letters in 10 languages — every Co-Teach tool, $19/mo.",
   },
 };
 

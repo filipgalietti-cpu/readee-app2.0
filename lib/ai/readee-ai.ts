@@ -1430,7 +1430,11 @@ export async function generateSpeech(input: {
     }
 
     if (!pcmBase64) {
-      const styleDirection = (input.style?.trim() || "warmly for a young student, clearly and unhurried");
+      // Calmer / warmer / less excited default — matches the
+      // Vertex path. Reading-teacher tone, not kids' show host.
+      const styleDirection =
+        input.style?.trim() ||
+        "in a calm, warm reading-teacher voice. Conversational and unhurried. Don't sound excited or perky — sound like a kind adult who reads with kids every day";
       const response = await client.models.generateContent({
         model: TTS_MODEL_ID,
         contents: `Read this ${styleDirection}: ${text}`,

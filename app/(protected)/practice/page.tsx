@@ -552,10 +552,16 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
     setAudioReady(true);
   }, [unlockAudio]);
 
+  // Per-question audio is on for emerging readers (K + 1st), off for
+  // 2nd–4th — that age can read the prompt for themselves and the
+  // auto-play just adds noise. Per Filip's 2026-05-03 direction.
+  const audioGradesEnabled = gradeKey === "kindergarten" || gradeKey === "1st";
+
   /* ── Play static audio when question loads ── */
   useEffect(() => {
     if (phase !== "playing" || !audioReady) return;
     setPreviewedChoice(null);
+    if (!audioGradesEnabled) return;
     // Play question audio from audio_url in JSON (via Howler — AudioContext already unlocked)
     const url = q.audio_url;
     if (url && q.type === "category_sort") {
@@ -567,7 +573,7 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
     }
     return () => { stop(); };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentIdx, phase, audioReady]);
+  }, [currentIdx, phase, audioReady, audioGradesEnabled]);
 
   /* ── Play feedback audio ── */
   useEffect(() => {
@@ -1135,15 +1141,17 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white leading-snug text-center whitespace-pre-line">
               {highlightQuestion(question)}
             </h2>
-            <button
-              onClick={handleReplay}
-              className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-indigo-50 dark:bg-indigo-500/20 hover:bg-indigo-100 dark:hover:bg-indigo-500/30 transition-colors flex-shrink-0"
-              aria-label="Replay audio"
-            >
-              <svg className="w-5 h-5 text-indigo-600 dark:text-indigo-300" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15.536 8.464a5 5 0 010 7.072M17.95 6.05a8 8 0 010 11.9M11 5L6 9H2v6h4l5 4V5z" />
-              </svg>
-            </button>
+            {audioGradesEnabled && (
+              <button
+                onClick={handleReplay}
+                className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-indigo-50 dark:bg-indigo-500/20 hover:bg-indigo-100 dark:hover:bg-indigo-500/30 transition-colors flex-shrink-0"
+                aria-label="Replay audio"
+              >
+                <svg className="w-5 h-5 text-indigo-600 dark:text-indigo-300" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.536 8.464a5 5 0 010 7.072M17.95 6.05a8 8 0 010 11.9M11 5L6 9H2v6h4l5 4V5z" />
+                </svg>
+              </button>
+            )}
           </div>
         </motion.div>
 

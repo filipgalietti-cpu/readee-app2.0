@@ -58,8 +58,12 @@ export async function generateSpeechVertex(opts: {
     return { ok: false, error: e?.message ?? "Vertex auth failed" };
   }
 
+  // Calmer / warmer / less excited per Filip's 2026-05-03 direction.
+  // Default style emphasizes natural reading-teacher tone over the
+  // "perky kids' show host" register that the model defaults to.
   const styleDirection =
-    opts.style?.trim() || "warmly for a young student, clearly and unhurried";
+    opts.style?.trim() ||
+    "in a calm, warm reading-teacher voice. Conversational and unhurried. Don't sound excited or perky — sound like a kind adult who reads with kids every day";
   const url = `https://${VERTEX_TTS_LOCATION}-aiplatform.googleapis.com/v1/projects/${VERTEX_TTS_PROJECT_ID}/locations/${VERTEX_TTS_LOCATION}/publishers/google/models/${VERTEX_TTS_MODEL}:streamGenerateContent`;
   const body = {
     contents: [

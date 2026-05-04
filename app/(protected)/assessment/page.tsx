@@ -88,62 +88,180 @@ function buildBankLookup(): Record<string, any> {
 
 const BANK_LOOKUP = buildBankLookup();
 
-/* ── Adaptive exam: 20 curated questions, K-easy → 4th-hard ── */
+/* ── Adaptive exam: 20 randomized questions, weighted to the kid's
+ *  declared grade level. Caps below-grade easies so a 4th grader
+ *  never gets a string of K letters. Re-shuffles each run.
+ *
+ *  Weighting scheme (matches getAdaptivePlacement points):
+ *    K=1, K-hard=2, 1st=3, 1st-hard=4, 2nd=5, 2nd-hard=6,
+ *    3rd=7, 3rd-hard=8, 4th=9, 4th-hard=10
+ *
+ *  Per-grade composition table — { gradeKey: { tierLabel: count } }.
+ *  Tier labels are "{gradeKey}_{difficulty}" where difficulty ∈
+ *  easy|medium|hard. Total stays at 20 so the existing 3-wrong-in-
+ *  a-row early-stop + the score thresholds keep working.
+ */
 
-const ADAPTIVE_SEQUENCE: { id: string; weight: number }[] = [
-  // K easy/medium (weight 1)
-  { id: "K_E_04", weight: 1 },   // category_sort: Sort colors vs not colors
-  { id: "K_M_01", weight: 1 },   // mcq: Find the correct letter
-  // K medium/hard (weight 2)
-  { id: "K_M_02", weight: 2 },   // tap_to_pair: Match rhyming words
-  { id: "K_H_05", weight: 2 },   // mcq: Where did Mia find the ball?
-  // 1st easy/medium (weight 3)
-  { id: "G1_E_03", weight: 3 },  // mcq: Which word starts with sh?
-  { id: "G1_M_02", weight: 3 },  // mcq: What did Lina do every day?
-  // 1st medium/hard (weight 4)
-  { id: "G1_I_09", weight: 4 },  // missing_word: Choose the missing word
-  { id: "G1_H_05", weight: 4 },  // mcq: What lesson did Max learn?
-  // 2nd easy/medium (weight 5)
-  { id: "G2_E_04", weight: 5 },  // mcq: Which is a synonym for quick?
-  { id: "G2_M_02", weight: 5 },  // mcq: What is the main topic?
-  // 2nd medium/hard (weight 6)
-  { id: "G2_I_09", weight: 6 },  // missing_word: Choose the best missing word
-  { id: "G2_H_05", weight: 6 },  // mcq: What is the central message?
-  // 3rd easy/medium (weight 7)
-  { id: "G3_E_03", weight: 7 },  // mcq: Which word uses re- meaning again?
-  { id: "G3_M_01", weight: 7 },  // mcq: How do penguins stay warm?
-  // 3rd medium/hard (weight 8)
-  { id: "G3_I_09", weight: 8 },  // missing_word: Choose the context word
-  { id: "G3_H_05", weight: 8 },  // mcq: What is the theme?
-  // 4th easy/medium (weight 9)
-  { id: "G4_E_03", weight: 9 },  // mcq: What does tele- mean?
-  { id: "G4_M_01", weight: 9 },  // mcq: Which statement is supported?
-  // 4th medium/hard (weight 10)
-  { id: "G4_I_09", weight: 10 }, // missing_word: Choose the best context word
-  { id: "G4_H_06", weight: 10 }, // mcq: What is the likely theme?
-];
+type Difficulty = "easy" | "medium" | "hard";
+const GRADE_TO_PREFIX: Record<string, string> = {
+  kindergarten: "K_",
+  "1st": "G1_",
+  "2nd": "G2_",
+  "3rd": "G3_",
+  "4th": "G4_",
+};
+const PREFIX_BASE_WEIGHT: Record<string, number> = {
+  K_: 1,
+  G1_: 3,
+  G2_: 5,
+  G3_: 7,
+  G4_: 9,
+};
+const DIFF_BUMP: Record<Difficulty, number> = { easy: 0, medium: 0, hard: 1 };
+
+type CompositionSpec = Array<{ prefix: string; difficulty: Difficulty; n: number }>;
+
+/** How many questions of each (grade × difficulty) tier to draw. */
+function compositionForGrade(gradeKey: string): CompositionSpec {
+  switch (gradeKey) {
+    case "kindergarten":
+      // K kid: lean K-medium/hard, ramp into 1st.
+      return [
+        { prefix: "K_", difficulty: "easy", n: 3 },
+        { prefix: "K_", difficulty: "medium", n: 5 },
+        { prefix: "K_", difficulty: "hard", n: 4 },
+        { prefix: "G1_", difficulty: "easy", n: 4 },
+        { prefix: "G1_", difficulty: "medium", n: 3 },
+        { prefix: "G1_", difficulty: "hard", n: 1 },
+      ];
+    case "1st":
+      // 1st: tiny K tail to confirm floor, heavy 1st, ramp into 2nd.
+      return [
+        { prefix: "K_", difficulty: "hard", n: 2 },
+        { prefix: "G1_", difficulty: "easy", n: 3 },
+        { prefix: "G1_", difficulty: "medium", n: 5 },
+        { prefix: "G1_", difficulty: "hard", n: 4 },
+        { prefix: "G2_", difficulty: "easy", n: 3 },
+        { prefix: "G2_", difficulty: "medium", n: 3 },
+      ];
+    case "2nd":
+      // 2nd: skip K, sample 1st-hard for floor, heavy 2nd, ramp 3rd.
+      return [
+        { prefix: "G1_", difficulty: "hard", n: 2 },
+        { prefix: "G2_", difficulty: "easy", n: 3 },
+        { prefix: "G2_", difficulty: "medium", n: 5 },
+        { prefix: "G2_", difficulty: "hard", n: 4 },
+        { prefix: "G3_", difficulty: "easy", n: 3 },
+        { prefix: "G3_", difficulty: "medium", n: 3 },
+      ];
+    case "3rd":
+      return [
+        { prefix: "G2_", difficulty: "hard", n: 2 },
+        { prefix: "G3_", difficulty: "easy", n: 3 },
+        { prefix: "G3_", difficulty: "medium", n: 5 },
+        { prefix: "G3_", difficulty: "hard", n: 4 },
+        { prefix: "G4_", difficulty: "easy", n: 3 },
+        { prefix: "G4_", difficulty: "medium", n: 3 },
+      ];
+    case "4th":
+      // 4th: heavy 4th, push 4th-hard.
+      return [
+        { prefix: "G3_", difficulty: "hard", n: 2 },
+        { prefix: "G4_", difficulty: "easy", n: 3 },
+        { prefix: "G4_", difficulty: "medium", n: 5 },
+        { prefix: "G4_", difficulty: "hard", n: 6 },
+        { prefix: "G3_", difficulty: "medium", n: 2 },
+        { prefix: "G4_", difficulty: "medium", n: 2 },
+      ];
+    default:
+      // Pre-K or unknown — fall back to the old K-balanced shape.
+      return [
+        { prefix: "K_", difficulty: "easy", n: 5 },
+        { prefix: "K_", difficulty: "medium", n: 5 },
+        { prefix: "K_", difficulty: "hard", n: 4 },
+        { prefix: "G1_", difficulty: "easy", n: 3 },
+        { prefix: "G1_", difficulty: "medium", n: 3 },
+      ];
+  }
+}
 
 const MANIFEST_LOOKUP: Record<string, any> = {};
 for (const m of manifestRaw as any[]) MANIFEST_LOOKUP[m.id] = m;
 
-function buildAdaptiveExam(): MergedQuestion[] {
-  return ADAPTIVE_SEQUENCE.map(({ id, weight }) => {
-    const m = MANIFEST_LOOKUP[id];
-    if (!m) return null;
-    const bank = BANK_LOOKUP[id] || {};
-    return {
-      ...m,
-      weight,
-      categoryItems: bank.categoryItems ?? undefined,
-      left_items: m.left_items ?? [],
-      right_items: m.right_items ?? [],
-      correct_pairs: m.correct_pairs ?? {},
-      stimulus2: m.stimulus2 ?? "",
-      word_ending: m.word_ending ?? bank.wordEnding ?? "",
-      valid_words: m.valid_words?.length ? m.valid_words : bank.validWords ?? [],
-      max_attempts: m.max_attempts || bank.maxAttempts || 10,
-    } as MergedQuestion;
-  }).filter(Boolean) as MergedQuestion[];
+/** Pool of ids in the bank, indexed by (prefix, difficulty). */
+type Pool = Record<string, string[]>;
+function buildPool(): Pool {
+  const pool: Pool = {};
+  for (const qs of Object.values(
+    (bankRaw as { grades: Record<string, any[]> }).grades,
+  )) {
+    for (const q of qs) {
+      const id = q.id as string;
+      const diff = (q.difficulty as Difficulty) ?? "medium";
+      const prefix = id.startsWith("K_")
+        ? "K_"
+        : id.startsWith("G1_")
+          ? "G1_"
+          : id.startsWith("G2_")
+            ? "G2_"
+            : id.startsWith("G3_")
+              ? "G3_"
+              : "G4_";
+      const key = `${prefix}${diff}`;
+      (pool[key] ||= []).push(id);
+    }
+  }
+  return pool;
+}
+const POOL = buildPool();
+
+function shuffle<T>(arr: T[]): T[] {
+  const out = arr.slice();
+  for (let i = out.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [out[i], out[j]] = [out[j], out[i]];
+  }
+  return out;
+}
+
+function buildAdaptiveExam(gradeKey?: string): MergedQuestion[] {
+  const composition = compositionForGrade(gradeKey ?? "kindergarten");
+  const picked: { id: string; weight: number }[] = [];
+
+  for (const { prefix, difficulty, n } of composition) {
+    const candidates = POOL[`${prefix}${difficulty}`] ?? [];
+    if (candidates.length === 0) continue;
+    const sampled = shuffle(candidates).slice(0, n);
+    const weight = (PREFIX_BASE_WEIGHT[prefix] ?? 1) + DIFF_BUMP[difficulty];
+    for (const id of sampled) picked.push({ id, weight });
+  }
+
+  // Order by ascending weight so the experience still ramps from
+  // easier to harder. Within a tier ordering is already random from
+  // the shuffle above.
+  picked.sort((a, b) => a.weight - b.weight);
+
+  return picked
+    .map(({ id, weight }) => {
+      const m = MANIFEST_LOOKUP[id];
+      if (!m) return null;
+      const bank = BANK_LOOKUP[id] || {};
+      return {
+        ...m,
+        weight,
+        categoryItems: bank.categoryItems ?? undefined,
+        left_items: m.left_items ?? [],
+        right_items: m.right_items ?? [],
+        correct_pairs: m.correct_pairs ?? {},
+        stimulus2: m.stimulus2 ?? "",
+        word_ending: m.word_ending ?? bank.wordEnding ?? "",
+        valid_words: m.valid_words?.length
+          ? m.valid_words
+          : bank.validWords ?? [],
+        max_attempts: m.max_attempts || bank.maxAttempts || 10,
+      } as MergedQuestion;
+    })
+    .filter(Boolean) as MergedQuestion[];
 }
 
 /* ── Word Builder (inline, only 1 question in bank) ────── */
@@ -305,24 +423,37 @@ function AssessmentContent() {
         .single();
 
       if (data) {
-        setChild(data as Child);
-        setQuestions(buildAdaptiveExam());
+        const kid = data as Child;
+        setChild(kid);
+        // Weight + cap the question pool by the kid's declared grade
+        // so a 4th grader doesn't get a string of K letter questions.
+        const gradeKey = gradeToKey((kid as any).grade ?? null);
+        setQuestions(buildAdaptiveExam(gradeKey));
         setPhase("intro");
       }
     }
     load();
   }, [childId]);
 
+  // Per-question audio is on for emerging readers (K + 1st), off for
+  // 2nd–4th. The placement test uses the kid's declared grade since
+  // there's no reading_level yet on first run.
+  const audioGradesEnabled = (() => {
+    const g = gradeToKey((child as any)?.grade ?? null);
+    return g === "kindergarten" || g === "1st";
+  })();
+
   // Auto-play question audio
   useEffect(() => {
     if (phase !== "quiz" || !audioReady || !questions.length) return;
+    if (!audioGradesEnabled) return;
     const q = questions[currentIdx];
     if (q.audio_url) {
       playUrl(q.audio_url);
     }
     return () => { stop(); };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentIdx, phase, audioReady]);
+  }, [currentIdx, phase, audioReady, audioGradesEnabled]);
 
   const handleStart = useCallback(() => {
     unlockAudio();
