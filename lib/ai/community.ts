@@ -420,6 +420,225 @@ export async function submitForCommunityReview(input: {
   return { ok: true, communityId: (inserted as any).id as string };
 }
 
+/**
+ * Submit a teacher's custom_quiz for community sharing.
+ *
+ * Teacher quizzes don't have a passage_text column — the quiz's
+ * description IS the passage when the wizard generated one. The first
+ * question's image_url + audio_url are the hero assets. This function
+ * mirrors submitForCommunityReview but reads from custom_quizzes +
+ * custom_quiz_questions + custom_questions, then writes to
+ * community_passages with source_kind='teacher_quiz' + source_quiz_id.
+ *
+ * Idempotent per quiz_id — if a teacher toggles share off then on
+ * again, the previous submission is marked withdrawn before a fresh
+ * one is created.
+ */
+export async function submitQuizForCommunityReview(input: {
+  teacherId: string;
+  quizId: string;
+}): Promise<{ ok: true; communityId: string } | { ok: false; error: string }> {
+  const admin = supabaseAdmin();
+
+  // Pull the quiz + its questions in order.
+  const { data: quiz, error: quizErr } = await admin
+    .from("custom_quizzes")
+    .select("id, teacher_id, title, description, grade_level")
+    .eq("id", input.quizId)
+    .eq("teacher_id", input.teacherId)
+    .maybeSingle();
+  if (quizErr || !quiz) {
+    return { ok: false, error: "Quiz not found or not yours." };
+  }
+  const q = quiz as any;
+  const passageText = (q.description ?? "").toString().trim();
+  if (!passageText) {
+    return {
+      ok: false,
+      error:
+        "Add a passage to the quiz description before sharing — community posts need a passage.",
+    };
+  }
+
+  const { data: junctionRows } = await admin
+    .from("custom_quiz_questions")
+    .select(
+      "position, custom_questions(id, kind, prompt, choices, correct, hint, image_url, audio_url)",
+    )
+    .eq("quiz_id", input.quizId)
+    .order("position", { ascending: true });
+  const questions = ((junctionRows ?? []) as any[])
+    .map((row: any) => row.custom_questions)
+    .filter(Boolean)
+    .map((row: any) => ({
+      id: row.id,
+      kind: row.kind,
+      prompt: row.prompt,
+      choices: row.choices,
+      correct: typeof row.correct === "string" ? row.correct : JSON.stringify(row.correct),
+      hint: row.hint,
+      image_url: row.image_url,
+      audio_url: row.audio_url,
+    }));
+
+  if (questions.length === 0) {
+    return {
+      ok: false,
+      error: "Add at least one question to the quiz before sharing.",
+    };
+  }
+
+  // First question's image is the hero. Audio is regenerated below
+  // from the cleaned passage so we don't carry the original quiz audio
+  // (might bake in classroom-specific names).
+  const heroImage = (questions[0]?.image_url ?? null) as string | null;
+
+  const { out: cleanPassage } = anonymizeText(passageText);
+  const { out: cleanQuestions } = anonymizeQuestions(questions);
+
+  // Belt-and-suspenders safety check.
+  const hit =
+    containsUnsafeContent(cleanPassage) ||
+    (Array.isArray(cleanQuestions)
+      ? cleanQuestions
+          .flatMap((qx: any) => [qx.prompt, ...(qx.choices ?? []), qx.hint])
+          .map((s: any) => (typeof s === "string" ? s : ""))
+          .map((s: string) => containsUnsafeContent(s))
+          .find(Boolean)
+      : null);
+  if (hit) {
+    return {
+      ok: false,
+      error:
+        "This quiz didn't pass our kid-safe content check. Try regenerating before sharing.",
+    };
+  }
+
+  // Withdraw any prior submission for this quiz.
+  await admin
+    .from("community_passages")
+    .update({ status: "withdrawn" })
+    .eq("source_quiz_id", input.quizId)
+    .eq("status", "pending");
+
+  // Trusted check on the teacher. Same RPC as parent — counts approved
+  // submissions where source_parent_id matches; teacher's profile id
+  // is stored there since we repurposed source_parent_id to mean
+  // "the human who submitted."
+  const [flagRow, countRow] = await Promise.all([
+    admin
+      .from("profile_trust_flags")
+      .select("is_trusted_parent")
+      .eq("profile_id", input.teacherId)
+      .maybeSingle(),
+    admin.rpc("parent_approved_submission_count", {
+      p_parent_id: input.teacherId,
+    }),
+  ]);
+  const explicitTrust = (flagRow.data as any)?.is_trusted_parent;
+  const approvedCount = Number((countRow.data as any) ?? 0);
+  const isTrusted =
+    explicitTrust === true ||
+    (explicitTrust !== false && approvedCount >= TRUSTED_THRESHOLD);
+
+  // Re-narrate audio from the cleaned passage.
+  let audioUrl: string | null = null;
+  if (cleanPassage) {
+    const tts = await generateSpeech({
+      teacherId: input.teacherId,
+      text: cleanPassage,
+    });
+    if (tts.ok) audioUrl = tts.audioUrl;
+  }
+
+  // Run the AI QC gate.
+  const qc = await runCommunityQC({
+    passage: cleanPassage,
+    questions: cleanQuestions ?? [],
+    imageUrl: heroImage,
+    audioUrl,
+  });
+  if (qc.verdict === "fail") {
+    return {
+      ok: false,
+      error: `Quality check didn't pass — ${qc.reason ?? "try regenerating before sharing"}.`,
+    };
+  }
+  const effectivelyTrusted = isTrusted && qc.verdict === "pass";
+
+  // Pull the teacher's byline preference.
+  const { data: teacherProfile } = await admin
+    .from("profiles")
+    .select("community_byline_consent, community_display_name")
+    .eq("id", input.teacherId)
+    .maybeSingle();
+  const displayByline =
+    (teacherProfile as any)?.community_byline_consent === true
+      ? ((teacherProfile as any).community_display_name as string | null) ?? null
+      : null;
+
+  const titleForSlug = q.title ?? "passage";
+  const slug = buildSlug(titleForSlug);
+
+  const { data: inserted, error: insErr } = await admin
+    .from("community_passages")
+    .insert({
+      source_quiz_id: q.id,
+      source_parent_id: q.teacher_id, // repurposed: "submitter id"
+      source_kind: "teacher_quiz",
+      title: (q.title ?? passageText.slice(0, 120)).slice(0, 120),
+      passage_text: cleanPassage,
+      questions: cleanQuestions,
+      image_url: heroImage,
+      audio_url: audioUrl,
+      grade_level: q.grade_level ?? "2nd",
+      topic: q.title ?? "Reading practice",
+      phonics_pattern: null,
+      status: effectivelyTrusted ? "approved" : "pending",
+      auto_approved: effectivelyTrusted,
+      reviewed_at: effectivelyTrusted ? new Date().toISOString() : null,
+      slug,
+      display_byline: displayByline,
+    })
+    .select("id")
+    .single();
+  if (insErr || !inserted) {
+    return { ok: false, error: insErr?.message ?? "Couldn't submit for review." };
+  }
+
+  await admin.from("content_qc_log").insert({
+    target_kind: "community_passage",
+    target_id: (inserted as any).id,
+    change_type: "submit_for_review",
+    before: null,
+    after: { verdict: qc.verdict, checks: qc.checks, source_kind: "teacher_quiz" },
+    reason:
+      qc.verdict === "warn"
+        ? `Submitted with warning — admin review required. ${qc.reason ?? ""}`
+        : "Passed AI QC.",
+    finding_id: null,
+    agent: "community/submit",
+  });
+
+  return { ok: true, communityId: (inserted as any).id as string };
+}
+
+/** Withdraw a teacher quiz submission. */
+export async function withdrawQuizSubmission(input: {
+  teacherId: string;
+  quizId: string;
+}): Promise<{ ok: true } | { ok: false; error: string }> {
+  const admin = supabaseAdmin();
+  const { error } = await admin
+    .from("community_passages")
+    .update({ status: "withdrawn" })
+    .eq("source_quiz_id", input.quizId)
+    .eq("source_parent_id", input.teacherId)
+    .in("status", ["pending", "approved"]);
+  if (error) return { ok: false, error: error.message };
+  return { ok: true };
+}
+
 export async function withdrawCommunitySubmission(input: {
   parentId: string;
   sourceContentId: string;

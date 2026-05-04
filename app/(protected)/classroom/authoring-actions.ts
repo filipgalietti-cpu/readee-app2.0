@@ -4,6 +4,10 @@ import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/lib/auth/helpers";
 import {
+  submitQuizForCommunityReview,
+  withdrawQuizSubmission,
+} from "@/lib/ai/community";
+import {
   generateMCQQuestions,
   generateTrueFalseQuestions,
   generateMatchingPairs,
@@ -1005,4 +1009,85 @@ export async function aiRegenerateQuestion(input: {
 
   revalidatePath(`/classroom/authoring/quiz/${input.quizId}`);
   return { ok: true };
+}
+
+/**
+ * Toggle community sharing for a teacher's custom quiz.
+ *
+ * On enable: anonymizes the passage + questions, regenerates audio
+ * from the cleaned passage, runs the AI QC gate, and inserts a row
+ * into community_passages (auto-approved if the teacher is trusted +
+ * QC passes; otherwise pending admin review).
+ *
+ * On disable: marks any pending/approved community row as withdrawn.
+ */
+export async function toggleQuizCommunityShare(input: {
+  quizId: string;
+  shared: boolean;
+}): Promise<
+  | { ok: true; status: "auto_approved" | "queued_for_review" | "withdrawn" }
+  | { ok: false; error: string }
+> {
+  const profile = await requireProfile();
+  if (profile.role !== "educator") {
+    return { ok: false, error: "Educators only." };
+  }
+
+  if (!input.shared) {
+    const res = await withdrawQuizSubmission({
+      teacherId: profile.id,
+      quizId: input.quizId,
+    });
+    if (!res.ok) return { ok: false, error: res.error };
+    revalidatePath(`/classroom/authoring/quiz/${input.quizId}`);
+    return { ok: true, status: "withdrawn" };
+  }
+
+  const submit = await submitQuizForCommunityReview({
+    teacherId: profile.id,
+    quizId: input.quizId,
+  });
+  if (!submit.ok) return { ok: false, error: submit.error };
+
+  const supabase = await createClient();
+  const { data: row } = await supabase
+    .from("community_passages")
+    .select("status")
+    .eq("id", submit.communityId)
+    .maybeSingle();
+  const status: "auto_approved" | "queued_for_review" =
+    (row as any)?.status === "approved" ? "auto_approved" : "queued_for_review";
+
+  revalidatePath(`/classroom/authoring/quiz/${input.quizId}`);
+  return { ok: true, status };
+}
+
+/** Fetch current sharing state for the quiz builder UI. */
+export async function getQuizCommunityShareStatus(input: {
+  quizId: string;
+}): Promise<
+  | { ok: true; status: "approved" | "pending" | "rejected" | null; slug: string | null }
+  | { ok: false; error: string }
+> {
+  const profile = await requireProfile();
+  if (profile.role !== "educator") {
+    return { ok: false, error: "Educators only." };
+  }
+  const supabase = await createClient();
+  const { data, error } = await supabase
+    .from("community_passages")
+    .select("status, slug")
+    .eq("source_quiz_id", input.quizId)
+    .eq("source_parent_id", profile.id)
+    .neq("status", "withdrawn")
+    .order("created_at", { ascending: false })
+    .limit(1)
+    .maybeSingle();
+  if (error) return { ok: false, error: error.message };
+  if (!data) return { ok: true, status: null, slug: null };
+  return {
+    ok: true,
+    status: ((data as any).status as "approved" | "pending" | "rejected") ?? null,
+    slug: ((data as any).slug as string | null) ?? null,
+  };
 }

@@ -7,6 +7,7 @@ import { getAllStandards } from "@/lib/data/standards";
 import sampleLessons from "@/app/data/sample-lessons.json";
 import QuizBuilder from "./_components/QuizBuilder";
 import AssignQuizDialog from "./_components/AssignQuizDialog";
+import ShareWithCommunityToggle from "./_components/ShareWithCommunityToggle";
 import PassageImageLightbox from "./_components/PassageImageLightbox";
 
 export const dynamic = "force-dynamic";
@@ -186,6 +187,11 @@ export default async function QuizBuilderPage({
               <Eye className="h-3.5 w-3.5" />
               Preview as student
             </Link>
+            <ShareWithCommunityToggle
+              quizId={quizId}
+              hasPassage={!!(q.description && q.description.trim().length > 0)}
+              hasQuestions={questions.length > 0}
+            />
             <AssignQuizDialog
               quizId={quizId}
               quizTitle={q.title}
