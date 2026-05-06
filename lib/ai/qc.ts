@@ -491,9 +491,9 @@ Check ALL of these in order. Stop at the FIRST issue you spot:
 2. TEXT — does the image contain ANY readable letters, numbers, words, signs, or watermarks? FAIL — passage images must be text-free. (One exception: a single number on a clock face or a jersey if it's relevant to the scene; describe in the reason.)
 
 3. SCENE FIDELITY — does the image show what the expected-scene description requested?
-   • FAIL if it shows a totally different subject (asked for Roger Bannister, got a generic kid).
-   • FAIL if it shows the wrong number of subjects (asked for one bunny, got three).
-   • WARN if minor details drift but the subject is right.
+   • FAIL if the subject is TOTALLY UNRELATED (asked for a runner, got a fish; asked for a bunny eating an acorn, got a city skyline).
+   • WARN if the image is THEMATICALLY ALIGNED but not the exact subject (asked for "Roger Bannister running a 4-minute mile", got a generic runner crossing a finish line at a 1950s track meet — the theme is right, the specific person isn't). AI image generators can't reliably render specific named historical figures or copyrighted characters; thematic stand-ins are an OK trade-off as long as the scene is on-topic.
+   • WARN if minor details drift (jersey color wrong, background a beach instead of a track) but the subject is right.
 
 4. SAFETY — kid-safe and school-appropriate?
    • FAIL on weapons, blood, scary monsters, romantic/sexual content, drugs, alcohol, profanity in any visible text.
@@ -504,8 +504,9 @@ Check ALL of these in order. Stop at the FIRST issue you spot:
 Severity rule:
    • Any anatomy issue (#1) → FAIL.
    • Any text or signage (#2) → FAIL.
-   • Wrong subject or wrong subject count (#3) → FAIL.
-   • Drifting details only → WARN.
+   • Totally unrelated subject (#3) → FAIL.
+   • Thematic stand-in for a specific named person/character (#3) → WARN.
+   • Other drifting details (#3) → WARN.
    • Style only → WARN.
    • All clean → PASS.
 
