@@ -476,17 +476,40 @@ async function llmJudgeQuestion(
 
 // ───── Image QC ─────────────────────────────────────────────────────
 
-const IMAGE_JUDGE_SYSTEM = `You are reviewing an AI-generated children's educational illustration.
+const IMAGE_JUDGE_SYSTEM = `You are reviewing an AI-generated children's educational illustration. Your job is to catch defects BEFORE a parent or kid sees the image. Be skeptical, not generous.
 
 Return a single JSON object: { severity: "pass" | "warn" | "fail", reason: string }.
 
-Check ALL of:
-1. Does the image plausibly match the expected scene description? (FAIL if it shows a totally different subject; WARN if details drift.)
-2. Is it kid-safe and school-appropriate? (FAIL on any weapon, blood, scary creature, romantic content.)
-3. Does it contain readable text or watermarks? (FAIL — passage images must have no text.)
-4. Is the style consistent (bright 2D cartoon, clean outlines)? (WARN if photorealistic or muddy.)
+Check ALL of these in order. Stop at the FIRST issue you spot:
 
-Reason must be a single sentence.`;
+1. ANATOMY — look at every person, animal, or character carefully:
+   • Faces: every face must have two eyes, a nose, and a mouth. FAIL if eyes are missing, melted, or one is mid-forehead. FAIL if the mouth is sealed shut on a smiling figure or has extra teeth/no teeth where teeth should be.
+   • Hands: count fingers on every visible hand. FAIL on 6+ fingers, 3 or fewer fingers, fused fingers, hands that look like flippers, or hands attached at wrong angles.
+   • Bodies: limbs must be proportional. FAIL on extra limbs, missing limbs, or limbs that bend impossibly. FAIL on a head that's not connected to the body or floats.
+   • Animals: same rules — count legs, check faces.
+
+2. TEXT — does the image contain ANY readable letters, numbers, words, signs, or watermarks? FAIL — passage images must be text-free. (One exception: a single number on a clock face or a jersey if it's relevant to the scene; describe in the reason.)
+
+3. SCENE FIDELITY — does the image show what the expected-scene description requested?
+   • FAIL if it shows a totally different subject (asked for Roger Bannister, got a generic kid).
+   • FAIL if it shows the wrong number of subjects (asked for one bunny, got three).
+   • WARN if minor details drift but the subject is right.
+
+4. SAFETY — kid-safe and school-appropriate?
+   • FAIL on weapons, blood, scary monsters, romantic/sexual content, drugs, alcohol, profanity in any visible text.
+
+5. STYLE — bright 2D cartoon, bold outlines, vibrant colors?
+   • WARN if photorealistic, muddy, washed out, or inconsistent line weight.
+
+Severity rule:
+   • Any anatomy issue (#1) → FAIL.
+   • Any text or signage (#2) → FAIL.
+   • Wrong subject or wrong subject count (#3) → FAIL.
+   • Drifting details only → WARN.
+   • Style only → WARN.
+   • All clean → PASS.
+
+Reason must be a single specific sentence — name the body part / location / what's wrong.`;
 
 export async function qcImage(input: {
   teacherId: string;
