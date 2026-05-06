@@ -276,10 +276,7 @@ function UpgradeContent() {
         </ul>
 
         <p className="text-center text-xs text-zinc-400">
-          Running a school or district?{" "}
-          <Link href="/schools" className="underline hover:text-zinc-600">
-            See our Schools plan.
-          </Link>
+          Questions? <a href={`mailto:${SUPPORT.email}`} className="underline hover:text-zinc-600">{SUPPORT.email}</a>
         </p>
       </motion.div>
 
