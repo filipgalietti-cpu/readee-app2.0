@@ -9,117 +9,24 @@ import { usePlanStore } from "@/lib/stores/plan-store";
 import {
   Check,
   BookOpen,
-  Headphones,
-  Users,
-  BarChart3,
-  GraduationCap,
-  Award,
-  Star,
-  Flame,
-  Palette,
   ChevronDown,
   ShieldCheck,
   ArrowLeft,
   Sparkles,
+  Lock,
+  Award,
+  GraduationCap,
 } from "lucide-react";
-
-/* ─── Constants ───────────────────────────────────────── */
-
-const FEATURES = [
-  { icon: BookOpen, text: "All 57 lessons, Kindergarten through 4th grade" },
-  { icon: Headphones, text: "911 standards-aligned practice questions" },
-  { icon: GraduationCap, text: "Full Reading Journey with progress tracking" },
-  { icon: Flame, text: "XP system, streaks, and daily rewards" },
-  { icon: Palette, text: "Avatar customization and backgrounds" },
-  { icon: Users, text: "Unlimited practice across every standard" },
-  { icon: BarChart3, text: "Detailed parent analytics and reports" },
-  { icon: Star, text: "25 original stories with comprehension questions" },
-];
-
-const REASON_COPY: Record<string, { title: string; subtitle: string }> = {
-  lesson: {
-    title: "Keep the streak going.",
-    subtitle:
-      "Your reader finished the free lesson. Readee+ unlocks the full 162-lesson library — every CCSS standard, K–4.",
-  },
-  practice: {
-    title: "Practice without a wall.",
-    subtitle:
-      "Free accounts cap at 10 practice questions per standard. Readee+ removes the cap and unlocks every question across 200+ standards.",
-  },
-  analytics: {
-    title: "See exactly what they've mastered.",
-    subtitle:
-      "Per-skill mastery, growth over time, and the standards your child needs more reps on. Readee+ only.",
-  },
-  story: {
-    title: "All 25 stories. None of the gates.",
-    subtitle:
-      "Free includes 2 stories per grade. Readee+ unlocks the whole decodable library plus read-aloud audio.",
-  },
-  child: {
-    title: "Unlock everything.",
-    subtitle:
-      "Lessons, stories, practice, parent reports — Readee+ removes every gate.",
-  },
-  ask_readee: {
-    title: "Ask Readee. Get a passage.",
-    subtitle:
-      "Generate a reading passage on any topic in seconds — kid-safe, level-perfect, with audio + comprehension questions baked in. Readee+ only.",
-  },
-  homework_scan: {
-    title: "Snap any worksheet, get instant practice.",
-    subtitle:
-      "Take a photo of a school packet. Readee identifies the skill being tested and pulls live practice on the same standard. Readee+ only.",
-  },
-  reading_buddy: {
-    title: "A reading partner that listens back.",
-    subtitle:
-      "Live conversational AI that reads stories, coaches pronunciation, and remembers what you read together. Readee+ only.",
-  },
-  smart_search: {
-    title: "Find any passage by what it's about.",
-    subtitle:
-      "Search 911 questions and 162 lessons by meaning, not just keywords. Readee+ only.",
-  },
-  tools_hub: {
-    title: "Unlock the full Co-Teach toolkit.",
-    subtitle:
-      "Reading Buddy, Homework Scanner, Ask Readee, and the rest of the parent toolkit. Readee+ only.",
-  },
-  teacher_solo: {
-    title: "Teach without waiting for procurement.",
-    subtitle:
-      "Quiz Wizard, Lesson Wizard, Decodable Books, IEP workspace, fluency analyzer, parent letters in 10 languages — every Co-Teach tool, $19/mo.",
-  },
-};
-
-const FAQS = [
-  {
-    q: "Can I cancel anytime?",
-    a: "Yes. Cancel with one click, no questions asked. You keep access through the end of your billing period.",
-  },
-  {
-    q: "Is there a free trial?",
-    a: "Yes. Try Readee+ free for 7 days. You won't be charged until the trial ends, and you can cancel anytime during the trial.",
-  },
-  {
-    q: "What's included in the free plan?",
-    a: "The diagnostic assessment, your first lesson per level, 1 child profile, and practice questions. Upgrade to unlock everything.",
-  },
-  {
-    q: "What happens to my child's progress if I cancel?",
-    a: "All progress is saved permanently. You just won't have access to premium features until you resubscribe.",
-  },
-  {
-    q: "What ages is Readee designed for?",
-    a: "Readee covers Kindergarten through 4th grade. The diagnostic assessment places your child at exactly the right level.",
-  },
-  {
-    q: "How is Readee different from other reading apps?",
-    a: "Readee is built on real Common Core ELA standards — the same ones teachers use in school. Every lesson follows a learn, practice, read structure so kids build skills in order.",
-  },
-];
+// Single source of truth for billing copy, pricing, features, FAQ.
+// If you edit any of these, update lib/billing-copy.ts — never inline.
+import {
+  PRICING,
+  PREMIUM_FEATURES,
+  REASON_COPY,
+  FAQ as FAQS,
+  TRUST_SIGNALS,
+  SUPPORT,
+} from "@/lib/billing-copy";
 
 /* ─── Page ────────────────────────────────────────────── */
 
@@ -152,18 +59,23 @@ function UpgradeContent() {
 
   useEffect(() => { fetchPlan(); }, [fetchPlan]);
 
-  const monthlyPrice = 9.99;
-  const annualMonthly = 6.99;
-  const annualTotal = 83.88;
+  const monthlyPrice = PRICING.monthly.perMonth;
+  const annualMonthly = PRICING.annual.perMonth;
+  const annualTotal = PRICING.annual.perYear;
   const savings = Math.round(((monthlyPrice - annualMonthly) / monthlyPrice) * 100);
 
-  // Teacher Solo pricing
+  // Teacher Solo is parked per the May 4 reshape — B2C-only. Live
+  // Stripe products don't exist for it, so the CTA would error if
+  // shown. Hidden until B2B reactivates.
+  const showTeacherSolo = false;
+  // Teacher Solo display values (only used if showTeacherSolo flips true)
   const teacherMonthly = 19;
   const teacherAnnualMonthly = 15;
   const teacherAnnualTotal = 180;
 
-  // If the user landed here with reason=teacher_solo, lead with that tier.
-  const leadWithTeacher = reason === "teacher_solo";
+  // Even when reason=teacher_solo lands here today, fall back to
+  // parent (premium) since the Teacher Solo card is hidden.
+  const leadWithTeacher = false;
 
   const reasonCopy = reason ? REASON_COPY[reason] : null;
 
@@ -298,123 +210,75 @@ function UpgradeContent() {
           </button>
         </div>
 
-        {/* Price Cards — two side-by-side for parent vs teacher */}
-        <div className="grid gap-4 sm:grid-cols-2">
-          {/* Readee+ for parents */}
-          <div
-            className={`rounded-2xl border-2 p-6 text-left shadow-sm transition ${
-              leadWithTeacher
-                ? "border-zinc-200 bg-white"
-                : "border-indigo-300 bg-white ring-2 ring-indigo-100"
-            }`}
-          >
+        {/* Single tier — Readee+ for parents. B2C-only per May 4 reshape. */}
+        <div className="mx-auto max-w-md">
+          <div className="rounded-2xl border-2 border-indigo-300 bg-white p-6 text-left shadow-sm ring-2 ring-indigo-100">
             <div className="flex items-start justify-between gap-2">
               <div>
-                <p className="text-xs font-bold uppercase tracking-widest text-indigo-600">Readee+</p>
-                <p className="text-sm text-zinc-500 mt-0.5">For families</p>
+                <p className="text-xs font-bold uppercase tracking-widest text-indigo-600">
+                  Readee+
+                </p>
+                <p className="mt-0.5 text-sm text-zinc-500">For families</p>
               </div>
-              {!leadWithTeacher && (
-                <span className="rounded-full bg-indigo-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-indigo-700">
-                  Most parents
-                </span>
-              )}
+              <span className="rounded-full bg-indigo-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-indigo-700">
+                Most parents
+              </span>
             </div>
             <div className="mt-4 flex items-baseline gap-1">
               <span className="text-4xl font-extrabold text-zinc-900">
-                ${billing === "annual" ? annualMonthly.toFixed(2) : monthlyPrice.toFixed(2)}
+                $
+                {billing === "annual"
+                  ? annualMonthly.toFixed(2)
+                  : monthlyPrice.toFixed(2)}
               </span>
-              <span className="text-zinc-400 text-sm">/mo</span>
+              <span className="text-sm text-zinc-400">/mo</span>
             </div>
-            {billing === "annual" && (
-              <p className="text-xs text-zinc-400 mt-0.5">
-                ${annualTotal.toFixed(2)} billed annually
-              </p>
-            )}
+            <p className="mt-0.5 text-xs text-zinc-400">
+              {billing === "annual"
+                ? `$${annualTotal.toFixed(2)} billed annually · save ${savings}%`
+                : `Billed monthly · cancel anytime`}
+            </p>
             <ul className="mt-4 space-y-1.5 text-xs text-zinc-600">
-              <li className="flex items-start gap-1.5">
-                <Check className="mt-0.5 h-3 w-3 flex-shrink-0 text-emerald-500" />
-                All K-4 lessons, stories, and practice
-              </li>
-              <li className="flex items-start gap-1.5">
-                <Check className="mt-0.5 h-3 w-3 flex-shrink-0 text-emerald-500" />
-                Parent analytics and progress reports
-              </li>
-              <li className="flex items-start gap-1.5">
-                <Sparkles className="mt-0.5 h-3 w-3 flex-shrink-0 text-violet-500" />
-                Ask Readee — 200 AI credits/mo
+              {PREMIUM_FEATURES.slice(0, 4).map((line) => (
+                <li key={line} className="flex items-start gap-1.5">
+                  <Check className="mt-0.5 h-3 w-3 flex-shrink-0 text-emerald-500" strokeWidth={2.4} />
+                  {line}
+                </li>
+              ))}
+              <li className="text-[11px] text-zinc-400">
+                + {PREMIUM_FEATURES.length - 4} more — see below
               </li>
             </ul>
             <button
               onClick={() => handleStartTrial("premium")}
               disabled={checkoutLoading}
-              className="w-full mt-5 py-3 rounded-xl bg-indigo-600 text-white font-bold text-sm hover:bg-indigo-700 transition-colors shadow-sm disabled:opacity-50"
+              className="mt-5 w-full rounded-xl bg-indigo-600 py-3 text-sm font-bold text-white shadow-sm transition-colors hover:bg-indigo-700 disabled:opacity-50"
             >
-              {checkoutLoading ? "Redirecting..." : "Start 7-day trial"}
+              {checkoutLoading
+                ? "Redirecting…"
+                : `Start ${PRICING.trialDays}-day free trial`}
             </button>
-          </div>
-
-          {/* Teacher Solo for individual teachers */}
-          <div
-            className={`rounded-2xl border-2 p-6 text-left shadow-sm transition ${
-              leadWithTeacher
-                ? "border-violet-300 bg-white ring-2 ring-violet-100"
-                : "border-zinc-200 bg-white"
-            }`}
-          >
-            <div className="flex items-start justify-between gap-2">
-              <div>
-                <p className="text-xs font-bold uppercase tracking-widest text-violet-600">Teacher Solo</p>
-                <p className="text-sm text-zinc-500 mt-0.5">For individual teachers</p>
-              </div>
-              {leadWithTeacher && (
-                <span className="rounded-full bg-violet-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-violet-700">
-                  Recommended
-                </span>
-              )}
-            </div>
-            <div className="mt-4 flex items-baseline gap-1">
-              <span className="text-4xl font-extrabold text-zinc-900">
-                ${billing === "annual" ? teacherAnnualMonthly : teacherMonthly}
-              </span>
-              <span className="text-zinc-400 text-sm">/mo</span>
-            </div>
-            {billing === "annual" && (
-              <p className="text-xs text-zinc-400 mt-0.5">
-                ${teacherAnnualTotal} billed annually
-              </p>
-            )}
-            <ul className="mt-4 space-y-1.5 text-xs text-zinc-600">
-              <li className="flex items-start gap-1.5">
-                <Check className="mt-0.5 h-3 w-3 flex-shrink-0 text-emerald-500" />
-                Up to 2 classrooms, 40 students
-              </li>
-              <li className="flex items-start gap-1.5">
-                <Check className="mt-0.5 h-3 w-3 flex-shrink-0 text-emerald-500" />
-                Classroom tools, rosters, live quizzes
-              </li>
-              <li className="flex items-start gap-1.5">
-                <Sparkles className="mt-0.5 h-3 w-3 flex-shrink-0 text-violet-500" />
-                Full Readee.ai — 500 credits/mo
-              </li>
-              <li className="flex items-start gap-1.5">
-                <Check className="mt-0.5 h-3 w-3 flex-shrink-0 text-emerald-500" />
-                Assignment wizard, quizzes, Google Classroom
-              </li>
-            </ul>
-            <button
-              onClick={() => handleStartTrial("teacher_solo")}
-              disabled={checkoutLoading}
-              className="w-full mt-5 py-3 rounded-xl bg-violet-600 text-white font-bold text-sm hover:bg-violet-700 transition-colors shadow-sm disabled:opacity-50"
-            >
-              {checkoutLoading ? "Redirecting..." : "Start 7-day trial"}
-            </button>
+            <p className="mt-2 text-center text-[11px] text-zinc-400">
+              No charge until day {PRICING.trialDays + 1}. Cancel anytime.
+            </p>
           </div>
         </div>
 
+        {/* Trust signal row directly under the price card — close to the
+            CTA for max impact. */}
+        <ul className="mx-auto flex max-w-md flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-[11px] font-semibold text-zinc-500">
+          {TRUST_SIGNALS.map((t) => (
+            <li key={t} className="inline-flex items-center gap-1.5">
+              <ShieldCheck className="h-3 w-3 text-emerald-500" strokeWidth={2.4} />
+              {t}
+            </li>
+          ))}
+        </ul>
+
         <p className="text-center text-xs text-zinc-400">
-          Cancel anytime &middot; No commitment &middot;{" "}
+          Running a school or district?{" "}
           <Link href="/schools" className="underline hover:text-zinc-600">
-            Running a school or district? See our Schools plan.
+            See our Schools plan.
           </Link>
         </p>
       </motion.div>
@@ -426,23 +290,43 @@ function UpgradeContent() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
       >
-        <h2 className="text-lg font-bold text-zinc-900 text-center">Everything in Readee+</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          {FEATURES.map((f) => {
-            const Icon = f.icon;
-            return (
-              <div
-                key={f.text}
-                className="flex items-start gap-3 p-4 rounded-xl bg-white border border-zinc-100 shadow-sm"
-              >
-                <div className="w-8 h-8 rounded-lg bg-indigo-50 flex items-center justify-center flex-shrink-0">
-                  <Icon className="w-4 h-4 text-indigo-600" />
-                </div>
-                <p className="text-sm text-zinc-700 leading-snug">{f.text}</p>
+        <h2 className="text-lg font-bold text-zinc-900 text-center">
+          Everything in Readee+
+        </h2>
+        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {PREMIUM_FEATURES.map((line) => (
+            <li
+              key={line}
+              className="flex items-start gap-3 rounded-xl border border-zinc-100 bg-white p-4 shadow-sm"
+            >
+              <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-indigo-50">
+                <Check className="h-4 w-4 text-indigo-600" strokeWidth={2.4} />
               </div>
-            );
-          })}
-        </div>
+              <p className="text-sm leading-snug text-zinc-700">{line}</p>
+            </li>
+          ))}
+        </ul>
+
+        {/* What's free — explicit so parents know the gate, not just
+            the gold version. Trust through clarity. */}
+        <details className="group rounded-xl border border-zinc-200 bg-zinc-50/60 p-4">
+          <summary className="cursor-pointer text-sm font-semibold text-zinc-700 [&::-webkit-details-marker]:hidden">
+            <Lock className="mr-2 inline h-3.5 w-3.5 text-zinc-500" strokeWidth={2.2} />
+            What&apos;s in the Free plan?
+          </summary>
+          <ul className="mt-3 space-y-1.5 text-xs text-zinc-600">
+            <li>• The adaptive K–4 placement test</li>
+            <li>• First lesson per grade level</li>
+            <li>• 10 practice questions per standard</li>
+            <li>• 2 stories per grade</li>
+            <li>• Daily question (free, no login)</li>
+            <li>• Community library (free, no login)</li>
+          </ul>
+          <p className="mt-3 text-xs text-zinc-500">
+            Free is genuinely useful — try it. Most families upgrade once
+            their reader hits the practice cap or runs out of stories.
+          </p>
+        </details>
       </motion.div>
 
       {/* ── Trust Signal ── */}

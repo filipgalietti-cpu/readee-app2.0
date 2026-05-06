@@ -4,9 +4,24 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { supabaseBrowser } from "@/lib/supabase/client";
-import { CreditCard, Star, Check, Sparkles, BookOpen, Target, Puzzle, Map, Zap, ExternalLink } from "lucide-react";
+import {
+  CreditCard,
+  Star,
+  Check,
+  ExternalLink,
+  Mail,
+  ShieldCheck,
+} from "lucide-react";
 import SettingsShell from "@/app/_components/SettingsShell";
 import { usePlanStore } from "@/lib/stores/plan-store";
+// Canonical billing copy — keep this page in lockstep with /upgrade by
+// reading every price/feature/promise from lib/billing-copy.ts.
+import {
+  PRICING,
+  PREMIUM_FEATURES,
+  PLAN_LABEL,
+  SUPPORT,
+} from "@/lib/billing-copy";
 
 interface BillingData {
   plan: string;
@@ -15,15 +30,6 @@ interface BillingData {
   promo_code: string | null;
   redeemed_at: string | null;
 }
-
-const PREMIUM_FEATURES = [
-  { icon: BookOpen, label: "Full lesson library across all grades" },
-  { icon: Target, label: "Unlimited practice questions" },
-  { icon: Puzzle, label: "All interactive game types" },
-  { icon: Map, label: "Complete reading journey & roadmap" },
-  { icon: Sparkles, label: "Detailed parent analytics" },
-  { icon: Zap, label: "All 25 stories with comprehension questions" },
-];
 
 export default function BillingPage() {
   const router = useRouter();
@@ -124,7 +130,7 @@ export default function BillingPage() {
               <div>
                 <div className="flex items-center gap-2">
                   <span className={`text-xl font-bold ${isPremium ? "text-violet-700" : "text-zinc-900"}`}>
-                    {isPremium ? "Readee+" : "Free"}
+                    {PLAN_LABEL[billing.plan] ?? "Free"}
                   </span>
                   <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
                     isPremium ? "bg-violet-200 text-violet-800" : "bg-zinc-100 text-zinc-500"
@@ -132,6 +138,15 @@ export default function BillingPage() {
                     {isPremium ? "ACTIVE" : "CURRENT"}
                   </span>
                 </div>
+                {/* For paying customers, show the price clearly so there
+                    are zero surprises. Same numbers as /upgrade — both
+                    read from lib/billing-copy.ts. */}
+                {isPremium && hasStripe && (
+                  <p className="mt-1 text-sm text-violet-700">
+                    {PRICING.monthly.label} or {PRICING.annual.label} —
+                    full access, cancel anytime
+                  </p>
+                )}
                 {isPremium && hasPromo && activatedDate && (
                   <p className="text-sm text-violet-600/70 mt-1">Activated on {activatedDate}</p>
                 )}
@@ -145,9 +160,12 @@ export default function BillingPage() {
             {isPremium && hasStripe && (
               <div className="space-y-3">
                 <div className="rounded-xl bg-white/60 border border-violet-100 p-4">
-                  <p className="text-sm font-medium text-violet-900 mb-1">Subscription Active</p>
+                  <p className="text-sm font-medium text-violet-900 mb-1">Subscription managed by Stripe</p>
                   <p className="text-xs text-violet-600/70">
-                    Your Readee+ subscription is managed through Stripe. You can update your payment method, change plans, or cancel anytime.
+                    Update payment method, switch monthly ↔ annual, view
+                    invoices, or cancel — all in the Stripe billing portal.
+                    Cancellation keeps you on Readee+ until the end of
+                    your billing period, then drops you to Free.
                   </p>
                 </div>
                 <button
@@ -156,54 +174,71 @@ export default function BillingPage() {
                   className="flex items-center justify-center gap-2 w-full py-3 rounded-xl border border-violet-200 text-sm font-semibold text-violet-700 hover:bg-violet-50 transition-colors disabled:opacity-50"
                 >
                   <ExternalLink className="w-4 h-4" />
-                  {portalLoading ? "Opening..." : "Manage Subscription"}
+                  {portalLoading ? "Opening..." : "Manage subscription"}
                 </button>
               </div>
             )}
 
             {isPremium && hasPromo && !hasStripe && (
               <div className="rounded-xl bg-white/60 border border-violet-100 p-4">
-                <p className="text-sm font-medium text-violet-900 mb-1">Promo Access</p>
+                <p className="text-sm font-medium text-violet-900 mb-1">Promo access</p>
                 <p className="text-xs text-violet-600/70">
-                  Your Readee+ plan was activated via promotional code. You have full access to all features.
+                  Your Readee+ access was activated via promo code. No
+                  card on file, no recurring charge — just full access
+                  for the promo period.
                 </p>
               </div>
             )}
 
             {!isPremium && (
-              <p className="text-sm text-zinc-500">
-                You&apos;re on the free plan with access to starter lessons. Upgrade to unlock the full curriculum.
-              </p>
+              <div className="space-y-3">
+                <p className="text-sm text-zinc-600">
+                  You&apos;re on the free plan — adaptive placement test,
+                  first lesson per grade, 10 practice questions per
+                  standard, 2 stories per grade, the daily question, and
+                  the public community library.
+                </p>
+                <Link
+                  href="/upgrade"
+                  className="block w-full rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 py-3 text-center text-sm font-bold text-white shadow-md transition-all hover:from-indigo-700 hover:to-violet-600"
+                >
+                  Start {PRICING.trialDays}-day free trial — {PRICING.monthly.label}
+                </Link>
+                <p className="text-center text-[11px] text-zinc-400">
+                  No charge until day {PRICING.trialDays + 1}. Cancel anytime.
+                </p>
+              </div>
             )}
           </section>
 
-          {/* Features */}
+          {/* Features — same canonical list /upgrade shows. Single
+              source of truth in lib/billing-copy.ts so the list never
+              drifts between the two pages. */}
           <section className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
-            <h2 className="text-base font-semibold text-zinc-900 mb-4">
-              {isPremium ? "What's Included" : "Unlock Everything with Readee+"}
+            <h2 className="mb-4 text-base font-semibold text-zinc-900">
+              {isPremium ? "What's included" : "Unlock everything with Readee+"}
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5">
-              {PREMIUM_FEATURES.map(({ icon: Icon, label }) => (
-                <div key={label} className="flex items-center gap-2.5">
-                  <div className={`w-7 h-7 rounded-lg flex items-center justify-center ${isPremium ? "bg-violet-100" : "bg-zinc-100"}`}>
-                    {isPremium ? (
-                      <Check className="w-4 h-4 text-violet-600" strokeWidth={2} />
-                    ) : (
-                      <Icon className="w-4 h-4 text-zinc-400" strokeWidth={1.5} />
-                    )}
+            <ul className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
+              {PREMIUM_FEATURES.map((line) => (
+                <li key={line} className="flex items-start gap-2.5">
+                  <div
+                    className={`flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-lg ${
+                      isPremium ? "bg-violet-100" : "bg-zinc-100"
+                    }`}
+                  >
+                    <Check
+                      className={`h-4 w-4 ${
+                        isPremium ? "text-violet-600" : "text-zinc-400"
+                      }`}
+                      strokeWidth={2.4}
+                    />
                   </div>
-                  <span className={`text-sm ${isPremium ? "text-zinc-700" : "text-zinc-600"}`}>{label}</span>
-                </div>
+                  <span className="text-sm leading-snug text-zinc-700">
+                    {line}
+                  </span>
+                </li>
               ))}
-            </div>
-            {!isPremium && (
-              <Link
-                href="/upgrade"
-                className="block w-full py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-center text-sm font-bold hover:from-indigo-700 hover:to-violet-600 transition-all shadow-md"
-              >
-                Upgrade to Readee+
-              </Link>
-            )}
+            </ul>
           </section>
 
           {/* Billing History */}
@@ -250,6 +285,30 @@ export default function BillingPage() {
                 <p className="text-sm text-zinc-400">No billing history</p>
               </div>
             )}
+          </section>
+
+          {/* Refund policy + support — explicit so parents see it
+              before they need it. Trust through clarity. */}
+          <section className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
+            <h2 className="mb-3 text-base font-semibold text-zinc-900">
+              Refunds &amp; support
+            </h2>
+            <p className="text-sm leading-relaxed text-zinc-600">
+              {SUPPORT.refundPolicy}
+            </p>
+            <div className="mt-4 flex flex-wrap items-center gap-3 text-xs">
+              <a
+                href={`mailto:${SUPPORT.email}`}
+                className="inline-flex items-center gap-1.5 rounded-full border border-indigo-200 bg-indigo-50 px-3 py-1.5 font-semibold text-indigo-700 transition hover:bg-indigo-100"
+              >
+                <Mail className="h-3.5 w-3.5" strokeWidth={2.2} />
+                {SUPPORT.email}
+              </a>
+              <span className="inline-flex items-center gap-1.5 text-zinc-500">
+                <ShieldCheck className="h-3.5 w-3.5 text-emerald-500" strokeWidth={2.2} />
+                Secure checkout via Stripe
+              </span>
+            </div>
           </section>
         </div>
       </div>

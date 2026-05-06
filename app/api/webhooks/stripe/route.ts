@@ -37,9 +37,19 @@ export async function POST(req: NextRequest) {
           ? subscription.customer
           : subscription.customer.id;
 
-      const isActive =
+      // Subscription state → plan mapping:
+      //   active, trialing → keep premium (paid)
+      //   past_due         → keep premium (grace period — Stripe is
+      //                       retrying the card, usually 3 attempts
+      //                       over ~3 weeks. Don't strand a paying
+      //                       customer over a temporary card decline.
+      //                       customer.subscription.deleted will fire
+      //                       if collection ultimately fails.)
+      //   canceled, unpaid, incomplete*, paused → free
+      const grantsAccess =
         subscription.status === "active" ||
-        subscription.status === "trialing";
+        subscription.status === "trialing" ||
+        subscription.status === "past_due";
 
       // Inspect the subscribed price to choose the plan tier. Teacher
       // Solo and Readee+ are separate products in Stripe, so we have to
@@ -50,7 +60,7 @@ export async function POST(req: NextRequest) {
       await admin
         .from("profiles")
         .update({
-          plan: isActive ? tier : "free",
+          plan: grantsAccess ? tier : "free",
           stripe_subscription_id: subscription.id,
         })
         .eq("stripe_customer_id", customerId);
