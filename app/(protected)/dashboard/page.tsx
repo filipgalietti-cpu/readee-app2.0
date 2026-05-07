@@ -25,6 +25,7 @@ import { getShopIcon } from "@/lib/data/shop-icons";
 import TeacherAssignmentsCard from "@/app/_components/TeacherAssignmentsCard";
 import DailyQuestionCard from "@/app/_components/DailyQuestionCard";
 import LearningPathCard from "@/app/_components/LearningPathCard";
+import FreshForYou from "./_components/FreshForYou";
 
 /* ─── Count-up animation hook ─────────────────────────── */
 
@@ -1194,6 +1195,16 @@ function ChildDashboard({
             </motion.div>
           </Link>
         </motion.div>
+
+        {/* "Fresh for you" — newly created AI content for this kid.
+            Hidden when there's nothing new (no dashed-grey empty card). */}
+        {child.parent_id && (
+          <FreshForYou
+            childId={child.id}
+            parentId={child.parent_id}
+            gradeLevel={readingLevel}
+          />
+        )}
 
         {/* ── Hero Tiles — 3 columns ── */}
         <motion.div variants={slideUp} className="grid grid-cols-3 gap-3">
