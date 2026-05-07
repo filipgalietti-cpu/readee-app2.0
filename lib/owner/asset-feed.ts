@@ -121,7 +121,7 @@ export async function loadAssetFeed(
     admin
       .from("child_ai_content")
       .select(
-        "id, parent_id, child_id, kind, title, topic, grade_level, image_url, audio_url, passage_text, last_played_at, play_count, shared, created_at",
+        "id, parent_id, child_id, kind, title, topic, grade_level, image_url, audio_url, passage_text, qc_status, last_played_at, play_count, shared, created_at",
       )
       .order("created_at", { ascending: false })
       .limit(limit),
@@ -199,10 +199,14 @@ export async function loadAssetFeed(
       title: r.title ?? r.topic ?? "Ask Readee passage",
       gradeLevel: r.grade_level ?? null,
       standardId: null,
-      // child_ai_content has no qc_overall column — these run through
-      // QC inline at generation time and aren't re-judged later. Show
-      // play_count as a soft signal of value.
-      qcVerdict: "unknown",
+      // child_ai_content uses qc_status (pass/warn/fail/quarantined/
+      // retired) — added by the deliverability gate in mig 091.
+      qcVerdict:
+        r.qc_status === "pass" || r.qc_status === "warn" || r.qc_status === "fail"
+          ? r.qc_status
+          : r.qc_status === "quarantined" || r.qc_status === "retired"
+            ? "fail"
+            : "unknown",
       qcNote: null,
       hasImage: Boolean(r.image_url),
       hasAudio: Boolean(r.audio_url),

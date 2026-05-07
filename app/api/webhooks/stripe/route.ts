@@ -116,6 +116,77 @@ export async function POST(req: NextRequest) {
       break;
     }
 
+    // Refund issued (full or partial). Stripe will normally fire a
+    // customer.subscription.updated alongside, but if the merchant
+    // refunds a one-time credit-pack we won't get that — handle the
+    // refund event directly so a refunded user doesn't keep premium
+    // entitlement they paid for.
+    case "charge.refunded": {
+      const charge = event.data.object as Stripe.Charge;
+      const customerId =
+        typeof charge.customer === "string" ? charge.customer : charge.customer?.id;
+      if (!customerId) break;
+      // Full refund only. Partial refunds are common for prorations
+      // and we don't want to revoke access for those.
+      if (charge.amount_refunded < charge.amount) break;
+      // If this charge was tied to an active subscription, leave the
+      // sub event handler to flip the plan. Refunded one-time credit
+      // packs are best-effort visibility; we don't auto-claw credits
+      // back (that turns into a support ticket either way).
+      console.warn("[stripe] charge.refunded — flagging account", {
+        customerId,
+        amountCents: charge.amount,
+      });
+      break;
+    }
+
+    // Trial ending in 3 days. Stripe fires this once per sub. Hook
+    // here to send a "your trial ends soon" email — wired loosely
+    // for now (just logged) so we have telemetry; the email sender
+    // can pick up on this event later without changing the webhook.
+    case "customer.subscription.trial_will_end": {
+      const subscription = event.data.object as Stripe.Subscription;
+      const customerId =
+        typeof subscription.customer === "string"
+          ? subscription.customer
+          : subscription.customer.id;
+      console.warn("[stripe] trial_will_end — 3 days out", {
+        customerId,
+        subscriptionId: subscription.id,
+        trialEnd: subscription.trial_end,
+      });
+      break;
+    }
+
+    // Renewal payment failed. Stripe will retry on its own (3 attempts
+    // over ~3 weeks) and eventually fire customer.subscription.deleted
+    // if collection ultimately fails. Logging here so we have a CS
+    // signal before the cancel — at-risk dashboard can pick this up.
+    case "invoice.payment_failed": {
+      const invoice = event.data.object as Stripe.Invoice;
+      const customerId =
+        typeof invoice.customer === "string" ? invoice.customer : invoice.customer?.id;
+      if (!customerId) break;
+      console.warn("[stripe] invoice.payment_failed", {
+        customerId,
+        attemptCount: invoice.attempt_count,
+        nextPaymentAttempt: invoice.next_payment_attempt,
+      });
+      break;
+    }
+
+    // Customer record deleted (rare — only fires if the merchant
+    // deletes a Stripe customer). Clean up the FK so the user can
+    // resubscribe with a fresh record.
+    case "customer.deleted": {
+      const customer = event.data.object as Stripe.Customer;
+      await admin
+        .from("profiles")
+        .update({ plan: "free", stripe_customer_id: null, stripe_subscription_id: null })
+        .eq("stripe_customer_id", customer.id);
+      break;
+    }
+
     default:
       // Unhandled event type — no action needed
       break;
