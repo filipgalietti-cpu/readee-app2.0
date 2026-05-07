@@ -58,7 +58,7 @@ export default async function BooksHomePage() {
       </div>
 
       {list.length === 0 ? (
-        <div className="mt-10 rounded-3xl border-2 border-dashed border-zinc-200 bg-white p-12 text-center dark:border-slate-800 dark:bg-slate-900/40">
+        <div className="mt-10 rounded-3xl bg-gradient-to-br from-indigo-50 via-white to-violet-50 shadow-sm ring-1 ring-indigo-100 p-12 text-center dark:from-slate-900 dark:via-slate-900 dark:to-slate-900 dark:ring-slate-800">
           <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500 to-indigo-600 text-white">
             <BookOpenText className="h-7 w-7" />
           </div>
@@ -87,7 +87,7 @@ export default async function BooksHomePage() {
                 <AssetCardActions type="book" id={b.id} initialTitle={b.title} />
                 <Link
                   href={`/classroom/books/${b.id}`}
-                  className="block overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:border-indigo-300 hover:shadow-md dark:border-slate-800 dark:bg-slate-900/40"
+                  className="block overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:border-indigo-300 hover:shadow-md dark:from-slate-900 dark:via-slate-900 dark:to-slate-900 dark:ring-slate-800"
                 >
                   {b.cover_image_url ? (
                     // eslint-disable-next-line @next/next/no-img-element

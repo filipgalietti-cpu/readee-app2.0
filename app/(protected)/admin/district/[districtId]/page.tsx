@@ -7,6 +7,7 @@ import CreateSchoolButton from "../../_components/CreateSchoolButton";
 import AddAdminButton from "../../_components/AddAdminButton";
 import AdminList from "../../_components/AdminList";
 import EditScopeButton from "../../_components/EditScopeButton";
+import { daysAgoIso } from "@/lib/utils/dates";
 
 export const dynamic = "force-dynamic";
 
@@ -83,8 +84,8 @@ export default async function DistrictAdminPage({
     new Set((memberships ?? []).map((m: any) => m.child_id as string)),
   );
 
-  const thirtyDaysAgo = new Date(Date.now() - 30 * 86_400_000).toISOString();
-  const sevenDaysAgo = new Date(Date.now() - 7 * 86_400_000).toISOString();
+  const thirtyDaysAgo = daysAgoIso(30);
+  const sevenDaysAgo = daysAgoIso(7);
 
   const { data: practice } = allStudentIds.length
     ? await supabase

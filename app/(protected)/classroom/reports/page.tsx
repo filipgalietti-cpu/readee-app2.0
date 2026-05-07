@@ -13,6 +13,7 @@ import {
   GraduationCap,
 } from "lucide-react";
 import lessons from "@/app/data/sample-lessons.json";
+import { daysAgoIso } from "@/lib/utils/dates";
 
 type LessonRef = { standardId: string; title: string; domain: string };
 const STANDARD_TITLE = new Map<string, string>(
@@ -86,8 +87,8 @@ export default async function ReportsPage() {
   const allChildIds = Array.from(childById.keys());
   const totalStudents = allChildIds.length;
 
-  const thirtyDaysAgo = new Date(Date.now() - 30 * 86_400_000).toISOString();
-  const sevenDaysAgo = new Date(Date.now() - 7 * 86_400_000).toISOString();
+  const thirtyDaysAgo = daysAgoIso(30);
+  const sevenDaysAgo = daysAgoIso(7);
 
   const { data: practice30 } =
     allChildIds.length === 0

@@ -13,6 +13,7 @@ import {
 import { createClient } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { requireProfile } from "@/lib/auth/helpers";
+import { daysAgoIso } from "@/lib/utils/dates";
 
 export const dynamic = "force-dynamic";
 
@@ -93,8 +94,8 @@ export default async function AdminClassroomDetailPage({
   }[];
 
   const studentIds = roster.map((s) => s.id);
-  const thirtyDaysAgo = new Date(Date.now() - 30 * 86_400_000).toISOString();
-  const sevenDaysAgo = new Date(Date.now() - 7 * 86_400_000).toISOString();
+  const thirtyDaysAgo = daysAgoIso(30);
+  const sevenDaysAgo = daysAgoIso(7);
 
   const [{ data: practice }, { data: assignments }, { data: subs }] = await Promise.all([
     studentIds.length

@@ -1,6 +1,7 @@
 import { createClient } from "@/lib/supabase/server";
 import { BarChart3, TrendingDown, Activity, Users2, BookOpen, Target } from "lucide-react";
 import lessons from "@/app/data/sample-lessons.json";
+import { daysAgoIso } from "@/lib/utils/dates";
 
 type LessonRef = { standardId: string; title: string; domain: string };
 const STANDARD_TITLE = new Map<string, string>(
@@ -37,7 +38,7 @@ export default async function InsightsTab({ classroomId }: { classroomId: string
 
   if (totalStudents === 0) {
     return (
-      <div className="flex flex-col items-center rounded-2xl border-2 border-dashed border-zinc-200 bg-white px-6 py-16 text-center dark:border-slate-800 dark:bg-slate-900/40">
+      <div className="flex flex-col items-center rounded-2xl bg-gradient-to-br from-indigo-50 via-white to-violet-50 ring-1 ring-indigo-100 px-6 py-16 text-center dark:from-slate-900 dark:via-slate-900 dark:to-slate-900 dark:ring-slate-800">
         <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-indigo-100 text-indigo-600 dark:bg-indigo-950/40 dark:text-indigo-300">
           <BarChart3 className="h-7 w-7" />
         </span>
@@ -51,8 +52,8 @@ export default async function InsightsTab({ classroomId }: { classroomId: string
     );
   }
 
-  const thirtyDaysAgo = new Date(Date.now() - 30 * 86_400_000).toISOString();
-  const sevenDaysAgo = new Date(Date.now() - 7 * 86_400_000).toISOString();
+  const thirtyDaysAgo = daysAgoIso(30);
+  const sevenDaysAgo = daysAgoIso(7);
 
   const { data: practice30 } = await supabase
     .from("practice_results")
@@ -153,7 +154,7 @@ export default async function InsightsTab({ classroomId }: { classroomId: string
       </div>
 
       {/* Most-missed standards */}
-      <section className="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900/40">
+      <section className="rounded-2xl border border-zinc-200 bg-white p-5 dark:from-slate-900 dark:via-slate-900 dark:to-slate-900 dark:ring-slate-800">
         <div className="flex items-center gap-2">
           <TrendingDown className="h-4 w-4 text-amber-600" />
           <h3 className="text-sm font-bold uppercase tracking-wider text-zinc-500 dark:text-slate-400">
@@ -199,7 +200,7 @@ export default async function InsightsTab({ classroomId }: { classroomId: string
       </section>
 
       {/* Recent completions */}
-      <section className="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900/40">
+      <section className="rounded-2xl border border-zinc-200 bg-white p-5 dark:from-slate-900 dark:via-slate-900 dark:to-slate-900 dark:ring-slate-800">
         <div className="flex items-center gap-2">
           <Activity className="h-4 w-4 text-indigo-600" />
           <h3 className="text-sm font-bold uppercase tracking-wider text-zinc-500 dark:text-slate-400">
@@ -252,7 +253,7 @@ function SummaryCard({
   hint: string;
 }) {
   return (
-    <div className="rounded-2xl border border-zinc-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900/40">
+    <div className="rounded-2xl border border-zinc-200 bg-white p-4 dark:from-slate-900 dark:via-slate-900 dark:to-slate-900 dark:ring-slate-800">
       <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wider text-zinc-500 dark:text-slate-400">
         <Icon className="h-3.5 w-3.5" />
         {label}

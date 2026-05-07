@@ -25,6 +25,7 @@ import {
   CircleAlert,
 } from "lucide-react";
 import ApplyRescueButton from "./_components/ApplyRescueButton";
+import { daysAgoIso, hoursAgoIso } from "@/lib/utils/dates";
 
 export const dynamic = "force-dynamic";
 
@@ -107,7 +108,7 @@ export default async function QcBotDashboardPage() {
   const supabase = await createClient();
 
   // ── Hero counts ────────────────────────────────────────────────
-  const sevenDaysAgo = new Date(Date.now() - 7 * 86_400_000).toISOString();
+  const sevenDaysAgo = daysAgoIso(7);
   const [
     openFails,
     openWarns,
@@ -185,7 +186,7 @@ export default async function QcBotDashboardPage() {
   // The bot's "production line" — items flowing through stages.
   // The math: open fails are the inbox, fixed are the outbox, the
   // intermediate stages are tagged via content_qc_log change_type.
-  const oneDayAgo = new Date(Date.now() - 86_400_000).toISOString();
+  const oneDayAgo = hoursAgoIso(24);
   const sevenDaysAgoIso = sevenDaysAgo;
   const [
     rescueRecsAll,
@@ -225,7 +226,7 @@ export default async function QcBotDashboardPage() {
       .from("question_qc_status")
       .select("target_id, updated_at")
       .eq("qc_status", "quarantined")
-      .lt("updated_at", new Date(Date.now() - 7 * 86_400_000).toISOString())
+      .lt("updated_at", daysAgoIso(7))
       .order("updated_at", { ascending: true })
       .limit(10),
   ]);

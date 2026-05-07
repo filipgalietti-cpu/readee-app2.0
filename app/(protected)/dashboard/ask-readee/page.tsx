@@ -39,7 +39,7 @@ export default async function AskReadeePage({
           <ArrowLeft className="h-4 w-4" />
           Back to dashboard
         </Link>
-        <div className="mt-8 rounded-3xl border-2 border-dashed border-zinc-200 bg-white p-12 text-center dark:border-slate-800 dark:bg-slate-900/40">
+        <div className="mt-8 overflow-hidden rounded-3xl bg-gradient-to-br from-violet-50 via-white to-indigo-50 p-12 text-center shadow-sm ring-1 ring-violet-100 dark:from-violet-950/30 dark:via-slate-900 dark:to-indigo-950/30 dark:ring-violet-900/40">
           <Sparkles className="mx-auto h-10 w-10 text-violet-500" />
           <h1 className="mt-4 text-xl font-extrabold text-zinc-900 dark:text-white">
             Add a child first
@@ -50,7 +50,7 @@ export default async function AskReadeePage({
           </p>
           <Link
             href="/dashboard"
-            className="mt-6 inline-flex items-center gap-2 rounded-full bg-indigo-600 px-5 py-2 text-sm font-semibold text-white transition hover:bg-indigo-700"
+            className="mt-6 inline-flex items-center gap-2 rounded-full bg-violet-600 px-5 py-2 text-sm font-semibold text-white transition hover:bg-violet-700"
           >
             Go to dashboard
           </Link>

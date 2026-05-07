@@ -30,6 +30,10 @@ import {
 import { runFullQuizQc } from "@/lib/ai/qc";
 import { CREDIT_COST, MONTHLY_CREDIT_LIMIT } from "@/lib/ai/credits";
 import { READEE_VOICE } from "@/lib/ai/voice";
+import {
+  resolveHistoricalImage,
+  cacheWikipediaImageToSupabase,
+} from "@/lib/ai/historical-artifacts";
 import { trackError } from "@/lib/observability/track";
 import { indexContent } from "@/lib/ai/embeddings";
 
@@ -249,29 +253,48 @@ export async function buildLeveledPassage(input: {
   }
 
   // 2) Shared image (one image works for all three levels).
+  // Historical figures route through Wikipedia first — same fix as
+  // daily questions and Ask Readee. Imagen can't render named real
+  // people reliably; for figures it can't, we either cache the
+  // Wikipedia lead image or pass an explicit "no likeness" guard
+  // to the image gen.
   let sharedImageUrl: string | null = null;
   if (brief.sharedImage) {
-    const briefRes = await generateImageBrief({
-      teacherId,
-      passageTitle: textRes.title,
-      // Use the on-level body for the image brief; same scene for all.
-      passageBody:
-        textRes.versions.find((v) => v.level === "on_level")?.body ??
-        textRes.versions[0].body,
-    });
-    let prompt = `Children's book illustration for "${textRes.title}". Topic: ${brief.topic}.`;
-    if (briefRes.ok) {
-      prompt = briefRes.brief;
-      creditsUsed += CREDIT_COST.quiz_generation;
+    const onLevelBody =
+      textRes.versions.find((v) => v.level === "on_level")?.body ??
+      textRes.versions[0].body;
+    const resolved = await resolveHistoricalImage(textRes.title, onLevelBody);
+    if (resolved.kind === "royalty_free") {
+      const cachedUrl = await cacheWikipediaImageToSupabase(
+        resolved.figureName,
+        resolved.imageUrl,
+      );
+      sharedImageUrl = cachedUrl ?? resolved.imageUrl;
     } else {
-      warnings.push(`Image brief: ${briefRes.error}`);
-    }
-    const imgRes = await generateImage({ teacherId, prompt });
-    if (imgRes.ok) {
-      sharedImageUrl = imgRes.imageUrl;
-      creditsUsed += CREDIT_COST.image_generation;
-    } else {
-      warnings.push(`Image: ${imgRes.error}`);
+      const briefRes = await generateImageBrief({
+        teacherId,
+        passageTitle: textRes.title,
+        passageBody: onLevelBody,
+      });
+      let prompt = `Children's book illustration for "${textRes.title}". Topic: ${brief.topic}.`;
+      if (briefRes.ok) {
+        prompt = briefRes.brief;
+        creditsUsed += CREDIT_COST.quiz_generation;
+      } else {
+        warnings.push(`Image brief: ${briefRes.error}`);
+      }
+      // Append the no-named-likeness guardrail for figures the
+      // resolver detected but couldn't pull from Wikipedia.
+      if (resolved.avoidNamedPerson && resolved.figureName) {
+        prompt += ` Do not depict ${resolved.figureName}'s likeness — show only the activity, era, or setting they're associated with, no recognizable face.`;
+      }
+      const imgRes = await generateImage({ teacherId, prompt });
+      if (imgRes.ok) {
+        sharedImageUrl = imgRes.imageUrl;
+        creditsUsed += CREDIT_COST.image_generation;
+      } else {
+        warnings.push(`Image: ${imgRes.error}`);
+      }
     }
   }
 

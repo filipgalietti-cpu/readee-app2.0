@@ -145,7 +145,7 @@ export default async function ReviewPage({
       </div>
 
       {due.length === 0 ? (
-        <div className="mt-8 rounded-3xl border-2 border-dashed border-zinc-200 bg-white p-12 text-center dark:border-slate-800 dark:bg-slate-900/40">
+        <div className="mt-8 overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-50 via-white to-teal-50 p-12 text-center shadow-sm ring-1 ring-emerald-100 dark:from-emerald-950/30 dark:via-slate-900 dark:to-teal-950/30 dark:ring-emerald-900/40">
           <CalendarClock className="mx-auto h-10 w-10 text-emerald-500" />
           <h2 className="mt-4 text-lg font-bold text-zinc-900 dark:text-white">
             No reviews due today

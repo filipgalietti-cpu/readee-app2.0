@@ -6,6 +6,7 @@ import InviteStudentsButton from "../_components/InviteStudentsButton";
 import PendingInviteRowActions from "../_components/PendingInviteRowActions";
 import ClassLoginBanner from "../_components/ClassLoginBanner";
 import EditStudentButton from "../_components/EditStudentButton";
+import { daysAgoIso } from "@/lib/utils/dates";
 
 type RosterRow = {
   child_id: string;
@@ -61,7 +62,7 @@ async function loadRoster(classroomId: string): Promise<RosterRow[]> {
     .map((m) => (m as { child_id: string }).child_id);
   if (childIds.length === 0) return [];
 
-  const oneWeekAgo = new Date(Date.now() - 7 * 86400 * 1000).toISOString();
+  const oneWeekAgo = daysAgoIso(7);
 
   const { data: practice } = await supabase
     .from("practice_results")
@@ -185,7 +186,7 @@ export default async function StudentsTab({ classroomId }: { classroomId: string
       </div>
 
       {roster.length === 0 && pending.length === 0 ? (
-        <div className="flex flex-col items-center rounded-2xl border-2 border-dashed border-zinc-200 bg-white px-6 py-16 text-center dark:border-slate-800 dark:bg-slate-900/40">
+        <div className="flex flex-col items-center rounded-2xl bg-gradient-to-br from-indigo-50 via-white to-violet-50 ring-1 ring-indigo-100 px-6 py-16 text-center dark:from-slate-900 dark:via-slate-900 dark:to-slate-900 dark:ring-slate-800">
           <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-indigo-100 text-indigo-600 dark:bg-indigo-950/40 dark:text-indigo-300">
             <UserRound className="h-7 w-7" />
           </span>
@@ -202,7 +203,7 @@ export default async function StudentsTab({ classroomId }: { classroomId: string
       ) : (
         <>
           {roster.length > 0 && (
-            <div className="overflow-hidden rounded-2xl border border-zinc-200 bg-white dark:border-slate-800 dark:bg-slate-900/40">
+            <div className="overflow-hidden rounded-2xl border border-zinc-200 bg-white dark:from-slate-900 dark:via-slate-900 dark:to-slate-900 dark:ring-slate-800">
               <table className="w-full text-sm">
                 <thead className="border-b border-zinc-200 bg-zinc-50 text-left dark:border-slate-800 dark:bg-slate-900/60">
                   <tr className="text-xs uppercase tracking-wider text-zinc-500 dark:text-slate-400">
