@@ -418,6 +418,10 @@ function PracticeLoader() {
     if (blocked) router.replace("/upgrade?reason=practice");
   }, [blocked, router]);
 
+  // No childId in the URL? We've already queued a redirect to /practice-hub.
+  // Keep the spinner up until the route swap completes — don't flash the
+  // "No reader selected" dead-end card.
+  if (!childId) return <LoadingScreen />;
   if (loading || blocked || blockedQuestionIds === null) return <LoadingScreen />;
 
   // Determine grade from child's reading level, then load the right standards

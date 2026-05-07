@@ -15,6 +15,8 @@ import {
   GraduationCap,
   Briefcase,
   Baby,
+  Boxes,
+  Bot,
 } from "lucide-react";
 
 export const dynamic = "force-dynamic";
@@ -252,18 +254,36 @@ export default async function OwnerAdminPage({
 
   return (
     <div className="mx-auto max-w-6xl px-6 py-10">
-      <div className="mt-3">
-        <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-amber-600">
-          <Crown className="h-4 w-4" />
-          Owner · Readee Inc back-office
+      <div className="mt-3 flex flex-wrap items-start justify-between gap-3">
+        <div>
+          <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-amber-600">
+            <Crown className="h-4 w-4" />
+            Owner · Readee Inc back-office
+          </div>
+          <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+            Business overview
+          </h1>
+          <p className="mt-1 text-sm text-zinc-500">
+            The four numbers that tell you if Readee is winning today, plus the
+            accounts that need attention this week.
+          </p>
         </div>
-        <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
-          Business overview
-        </h1>
-        <p className="mt-1 text-sm text-zinc-500">
-          The four numbers that tell you if Readee is winning today, plus the
-          accounts that need attention this week.
-        </p>
+        <div className="flex flex-wrap items-center gap-2">
+          <Link
+            href="/owner/assets"
+            className="inline-flex items-center gap-1.5 rounded-full bg-amber-600 px-3 py-1.5 text-xs font-bold text-white hover:bg-amber-700"
+          >
+            <Boxes className="h-3.5 w-3.5" />
+            AI asset feed
+          </Link>
+          <Link
+            href="/owner/qc-bot"
+            className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-white px-3 py-1.5 text-xs font-bold text-zinc-700 hover:bg-zinc-50"
+          >
+            <Bot className="h-3.5 w-3.5" />
+            QC bot
+          </Link>
+        </div>
       </div>
 
       {/* Hero — the four numbers */}

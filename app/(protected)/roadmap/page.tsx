@@ -462,6 +462,10 @@ function RoadmapLoader() {
     load();
   }, [childId, fetchPlan]);
 
+  // No childId in the URL? We've already queued a redirect to /dashboard.
+  // Keep the spinner up until the route swap completes — don't flash the
+  // "No reader selected" dead-end card.
+  if (!childId) return <Spinner />;
   if (loading) return <Spinner />;
 
   if (!child) {
