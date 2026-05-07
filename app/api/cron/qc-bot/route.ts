@@ -26,6 +26,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { generateImage, generateSpeech, regenerateMCQQuestion } from "@/lib/ai/readee-ai";
 import { invalidateQcCache } from "@/lib/data/qc-filter";
+import lessonsData from "@/app/data/sample-lessons.json";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 300;
@@ -35,6 +36,7 @@ type Counters = {
   quarantined: number;
   image_regen: number;
   audio_regen: number;
+  step_audio_regen: number;
   question_regen: number;
   errors: string[];
 };
@@ -45,6 +47,7 @@ function ok(): Counters {
     quarantined: 0,
     image_regen: 0,
     audio_regen: 0,
+    step_audio_regen: 0,
     question_regen: 0,
     errors: [],
   };
@@ -52,26 +55,116 @@ function ok(): Counters {
 
 async function dismissKnownFps(c: Counters) {
   const admin = supabaseAdmin();
-  // Same predicates as scripts/qc-bot-cleanup.ts. Inlined here so
-  // the Vercel function doesn't depend on shelling out.
-  const dismissals: Array<{ name: string; predicate: any }> = [
-    {
-      name: "no_self_leak",
-      predicate: { finding_type: "q.no_self_leak" },
-    },
-  ];
-  for (const d of dismissals) {
+  // Mirrors scripts/qc-bot-cleanup.ts so the cron clears FPs the
+  // judge keeps producing. Each rule has a known root cause (judge
+  // limitation, intentional design, TTS quirk) — see the script for
+  // full reasons. Without these in the cron, dashboard "open fail"
+  // counts stay artificially high overnight.
+
+  // Rule 1 — q.no_self_leak across all targets. Judge had ~0%
+  // precision on root-word / digraph / sight-word identification
+  // questions where the answer is intentionally inside the prompt.
+  {
     const { data } = await admin
       .from("content_audit_findings")
       .update({
         status: "wont_fix",
         resolved_at: new Date().toISOString(),
-        resolver_note: `QC bot cron: judge has known FP pattern for ${d.name}.`,
+        resolver_note: "QC bot cron: known FP — root-word identification questions.",
       })
-      .match({ ...d.predicate, status: "open" })
+      .eq("finding_type", "q.no_self_leak")
+      .eq("status", "open")
       .in("severity", ["fail", "warn"])
       .select("id");
     c.fp_dismissed += data?.length ?? 0;
+  }
+
+  // Rule 2 — q.unique_choices on capitalization (L.x.2) and
+  // sentence-punctuation (RF.x.1a) standards. Choices intentionally
+  // differ only in case or punctuation; that IS the question.
+  {
+    const { data: candidates } = await admin
+      .from("content_audit_findings")
+      .select("id, target_id")
+      .eq("finding_type", "q.unique_choices")
+      .eq("status", "open")
+      .in("severity", ["fail", "warn"]);
+    const fpIds = ((candidates ?? []) as Array<{ id: string; target_id: string }>)
+      .filter((r) => /^(L|RF)\.[K1-4]\.(2|1a)/.test(r.target_id))
+      .map((r) => r.id);
+    if (fpIds.length > 0) {
+      const { data } = await admin
+        .from("content_audit_findings")
+        .update({
+          status: "wont_fix",
+          resolved_at: new Date().toISOString(),
+          resolver_note: "QC bot cron: known FP — capitalization / punctuation choices are by design.",
+        })
+        .in("id", fpIds)
+        .select("id");
+      c.fp_dismissed += data?.length ?? 0;
+    }
+  }
+
+  // Rule 3 — q.audio_quality on RF.x.3d phonics-spelling. Gemini
+  // TTS auto-corrects non-words like "Thoght" to "thought"; that's
+  // a TTS limit, not a content fix.
+  {
+    const { data: candidates } = await admin
+      .from("content_audit_findings")
+      .select("id, target_id")
+      .eq("finding_type", "q.audio_quality")
+      .eq("status", "open")
+      .in("severity", ["fail", "warn"]);
+    const fpIds = ((candidates ?? []) as Array<{ id: string; target_id: string }>)
+      .filter((r) => /^RF\.[1-4]\.3d/i.test(r.target_id))
+      .map((r) => r.id);
+    if (fpIds.length > 0) {
+      const { data } = await admin
+        .from("content_audit_findings")
+        .update({
+          status: "wont_fix",
+          resolved_at: new Date().toISOString(),
+          resolver_note: "QC bot cron: known FP — RF.x.3d phonics spelling is a TTS limit.",
+        })
+        .in("id", fpIds)
+        .select("id");
+      c.fp_dismissed += data?.length ?? 0;
+    }
+  }
+
+  // Rule 4 — q.audio_quality "choices omitted" complaints on grades
+  // 2-4. Choices are silent by design (defaultPerQuestionTts=false
+  // per the May 2 audio recalibration). Judge keeps re-flagging the
+  // intended convention.
+  {
+    const { data: candidates } = await admin
+      .from("content_audit_findings")
+      .select("id, target_id, message")
+      .eq("finding_type", "q.audio_quality")
+      .eq("status", "open")
+      .in("severity", ["fail", "warn"]);
+    const messageRe = /multiple[- ]choice|choice options|answer options|reading the choices|omits.*answer|omits.*choice/i;
+    const targetRe = /^(R[FILi]\.[234]\.|L\.[234]\.)/;
+    const fpIds = (
+      (candidates ?? []) as Array<{ id: string; target_id: string; message: string }>
+    )
+      .filter(
+        (r) => targetRe.test(r.target_id) && messageRe.test(r.message ?? ""),
+      )
+      .map((r) => r.id);
+    if (fpIds.length > 0) {
+      const { data } = await admin
+        .from("content_audit_findings")
+        .update({
+          status: "wont_fix",
+          resolved_at: new Date().toISOString(),
+          resolver_note: "QC bot cron: known FP — G2-4 choices are silent by design.",
+        })
+        .in("id", fpIds)
+        .select("id");
+      c.fp_dismissed += data?.length ?? 0;
+    }
   }
 }
 
@@ -214,12 +307,98 @@ async function regenAudio(c: Counters, teacherId: string, limit: number) {
   }
 }
 
+// ── Lesson-slide audio regen (mirrors qc-bot-regen-step-audio.ts) ──
+// Runs alongside the question audio worker so the nightly cron clears
+// step.audio_quality fails too, not just q.audio_quality. Reads the
+// canonical slide ttsScript from the bundled lessons JSON, then
+// re-uploads to the same Supabase storage path.
+
+type SlideStep = { sub: string; ttsScript?: string };
+type SlideRow = { slide: number; steps?: SlideStep[] };
+type LessonRow = { standardId: string; slides?: SlideRow[] };
+
+function parseStepTarget(targetId: string): {
+  standardId: string;
+  slideNum: number;
+  sub: string;
+} | null {
+  const m = targetId.match(/^([^#]+)#S(\d+)([a-z])$/i);
+  if (!m) return null;
+  return { standardId: m[1], slideNum: Number(m[2]), sub: m[3].toLowerCase() };
+}
+
+async function regenStepAudio(c: Counters, teacherId: string, limit: number) {
+  const admin = supabaseAdmin();
+  const { data } = await admin
+    .from("content_audit_findings")
+    .select("id, target_id, message, target_snapshot")
+    .eq("finding_type", "step.audio_quality")
+    .eq("severity", "fail")
+    .eq("status", "open")
+    .order("created_at", { ascending: false })
+    .limit(limit);
+
+  const lessons = lessonsData as LessonRow[];
+  for (const f of (data ?? []) as any[]) {
+    const snap = f.target_snapshot ?? {};
+    const audioUrl = snap.audio_url as string | undefined;
+    if (!audioUrl) continue;
+    const m = audioUrl.match(/\/storage\/v1\/object\/public\/([^/]+)\/(.+)$/);
+    if (!m) continue;
+    const bucket = m[1];
+    const path = m[2];
+    const parsed = parseStepTarget(f.target_id);
+    if (!parsed) continue;
+
+    const lesson = lessons.find((l) => l.standardId === parsed.standardId);
+    const slide = lesson?.slides?.find((s) => s.slide === parsed.slideNum);
+    const step = slide?.steps?.find((s) => s.sub === parsed.sub);
+    const ttsScript = (step?.ttsScript ?? "").trim();
+    if (!ttsScript) continue;
+
+    const res = await generateSpeech({ teacherId, text: ttsScript });
+    if (!res.ok) {
+      c.errors.push(`step_audio:${f.target_id} ${res.error}`);
+      continue;
+    }
+    const fetched = await fetch(res.audioUrl);
+    if (!fetched.ok) continue;
+    const buf = Buffer.from(await fetched.arrayBuffer());
+    const { error: upErr } = await admin.storage
+      .from(bucket)
+      .upload(path, buf, { contentType: "audio/mpeg", upsert: true });
+    if (upErr) {
+      c.errors.push(`step_upload:${f.target_id} ${upErr.message}`);
+      continue;
+    }
+    await admin
+      .from("content_audit_findings")
+      .update({
+        status: "fixed",
+        resolved_at: new Date().toISOString(),
+        resolver_note: "QC bot cron: lesson-slide audio regenerated.",
+      })
+      .eq("id", f.id);
+    await admin.from("content_qc_log").insert({
+      target_kind: "lesson_slide",
+      target_id: f.target_id,
+      change_type: "regen_audio",
+      before: { audio_url: audioUrl, finding: f.message },
+      after: { audio_url: audioUrl, regen_text: ttsScript },
+      reason: f.message,
+      finding_id: f.id,
+      agent: "qc-bot/cron",
+    });
+    c.step_audio_regen++;
+  }
+}
+
 // Question pedagogy regen is intentionally NOT run in the cron yet —
 // it edits checked-in JSON files which Vercel functions can't write
 // back to the deployed bundle. That worker stays as a local script
 // for now (`npm run qc:regen-questions`), invoked by ops as part of
-// the weekly content review. The cron handles media (images + audio)
-// which CAN be re-uploaded to mutable storage.
+// the weekly content review. Same applies to slide.judge fails —
+// those need either pedagogy regen or a hand review.
 
 async function run(req: NextRequest) {
   const provided = req.headers.get("authorization");
@@ -245,6 +424,7 @@ async function run(req: NextRequest) {
     await quarantineOpenFails(c);
     await regenImages(c, teacherId, limit);
     await regenAudio(c, teacherId, limit);
+    await regenStepAudio(c, teacherId, limit);
     invalidateQcCache();
   } catch (e: any) {
     c.errors.push(e?.message ?? "unknown");
