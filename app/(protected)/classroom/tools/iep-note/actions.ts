@@ -4,6 +4,31 @@ import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
 import { checkTeacherTier } from "@/lib/plan/teacher-gate";
 
+/**
+ * FERPA / IEP confidentiality gate. Verifies the teacher actually
+ * teaches the named child via classroom_memberships before letting
+ * any of these reads return a SPED record.
+ *
+ * Without this, school-tier teachers could pass an arbitrary
+ * child_id and read goals/notes/plans for kids on someone else's
+ * roster — same school OR a different school. The plan check
+ * (checkTeacherTier) only confirms the caller is on a school plan,
+ * not that the kid belongs to them.
+ */
+async function teacherHasChildOnRoster(
+  teacherId: string,
+  childId: string,
+): Promise<boolean> {
+  const supabase = await createClient();
+  const { data } = await supabase
+    .from("classroom_memberships")
+    .select("classroom_id, classrooms!inner(teacher_id)")
+    .eq("child_id", childId)
+    .eq("classrooms.teacher_id", teacherId)
+    .limit(1);
+  return !!data && data.length > 0;
+}
+
 export type GoalType =
   | "reading_fluency"
   | "comprehension"
@@ -51,6 +76,9 @@ export async function listGoalsForChild(
 ): Promise<{ ok: true; goals: IepGoal[] } | { ok: false; error: string }> {
   const gate = await checkTeacherTier({ min: "school" });
   if (!gate.ok) return { ok: false, error: gate.error };
+  if (!(await teacherHasChildOnRoster(gate.profileId, childId))) {
+    return { ok: false, error: "Student not found on your roster." };
+  }
   const supabase = await createClient();
   const { data, error } = await supabase
     .from("student_iep_goals")
@@ -73,6 +101,9 @@ export async function createGoal(input: {
 }): Promise<{ ok: true; goal: IepGoal } | { ok: false; error: string }> {
   const gate = await checkTeacherTier({ min: "school" });
   if (!gate.ok) return { ok: false, error: gate.error };
+  if (!(await teacherHasChildOnRoster(gate.profileId, input.childId))) {
+    return { ok: false, error: "Student not found on your roster." };
+  }
   const goalText = input.goalText.trim();
   if (!goalText) return { ok: false, error: "Goal text is required." };
   if (goalText.length > 4000) {
@@ -160,6 +191,9 @@ export async function listRecentNotesForChild(input: {
 > {
   const gate = await checkTeacherTier({ min: "school" });
   if (!gate.ok) return { ok: false, error: gate.error };
+  if (!(await teacherHasChildOnRoster(gate.profileId, input.childId))) {
+    return { ok: false, error: "Student not found on your roster." };
+  }
   const supabase = await createClient();
   const { data, error } = await supabase
     .from("iep_progress_notes")
@@ -196,6 +230,9 @@ export async function listRecentPlansForChild(input: {
 > {
   const gate = await checkTeacherTier({ min: "school" });
   if (!gate.ok) return { ok: false, error: gate.error };
+  if (!(await teacherHasChildOnRoster(gate.profileId, input.childId))) {
+    return { ok: false, error: "Student not found on your roster." };
+  }
   const supabase = await createClient();
   const { data, error } = await supabase
     .from("intervention_plans")

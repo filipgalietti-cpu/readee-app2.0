@@ -56,7 +56,13 @@ create policy "Admins read all kid feedback"
 -- Aggregate view consumed by /owner/assets and the auto-quarantine
 -- check. We use a regular view (not materialized) — kid_feedback is
 -- low-volume relative to read traffic, and we want fresh counts.
-create or replace view public.kid_feedback_agg as
+--
+-- security_invoker=true so the view honors the underlying table's
+-- RLS. Without it, Supabase creates views as SECURITY DEFINER by
+-- default and any authed user could read aggregates across every
+-- kid (the advisor flagged this as a hard error on first apply).
+create or replace view public.kid_feedback_agg
+  with (security_invoker = true) as
 select
   asset_kind,
   asset_id,
