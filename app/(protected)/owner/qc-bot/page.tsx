@@ -361,6 +361,16 @@ export default async function QcBotDashboardPage() {
       tone: "human",
       note: "Lesson pedagogy edit — Jen / Filip review",
     },
+    "lesson.thin_animation": {
+      label: "Weekly script",
+      tone: "script",
+      note: "Below-K richness — npm run qc:enrich-lessons (proposes timing primitives)",
+    },
+    "slide.few_steps": {
+      label: "Weekly script",
+      tone: "script",
+      note: "K bar is ≥2 steps/slide — same enrichment script splits long ttsScripts",
+    },
     "slide.empty": {
       label: "Human review",
       tone: "human",

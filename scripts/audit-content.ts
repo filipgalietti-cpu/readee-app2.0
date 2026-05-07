@@ -22,6 +22,7 @@ import {
 } from "../lib/ai/qc-question-meta";
 import {
   checkLessonStructure,
+  checkLessonRichness,
   judgeLessonSlide,
 } from "../lib/ai/qc-lesson";
 import { generateFixSuggestion } from "../lib/ai/qc-suggestion";
@@ -527,6 +528,33 @@ async function auditLessons(input: {
     // Structural pass
     const structural = checkLessonStructure({ standardId, lesson });
     for (const f of structural) {
+      if (f.severity === "fail") fail++;
+      else warn++;
+      await upsertFinding({
+        runId: input.runId,
+        targetKind: "lesson",
+        targetId: standardId,
+        grade: lessonGradeShort || null,
+        findingType: f.type,
+        severity: f.severity,
+        message: f.message,
+        suggestion: f.suggestion ?? null,
+        targetSnapshot: {
+          standardId,
+          title: lesson.title,
+          slideCount: slides.length,
+          slidesPreview: slides.slice(0, 3),
+        },
+      });
+    }
+
+    // Richness pass — uses K-grade lessons as the reference quality
+    // bar (Filip audited K by hand). Flags non-K lessons that don't
+    // hit the same animation primitive density. K shows up as warn-
+    // free here by construction; G3/G4 will surface most of the
+    // findings since those grades currently ship plain read-aloud.
+    const richness = checkLessonRichness({ standardId, lesson });
+    for (const f of richness) {
       if (f.severity === "fail") fail++;
       else warn++;
       await upsertFinding({

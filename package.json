@@ -34,7 +34,9 @@
     "community:seed": "tsx scripts/seed-community.ts",
     "community:seed:dry": "tsx scripts/seed-community.ts --dry-run",
     "community:fill-media": "tsx scripts/community-fill-missing-media.ts",
-    "qc:audit": "tsx scripts/audit-content.ts"
+    "qc:audit": "tsx scripts/audit-content.ts",
+    "qc:enrich-lessons": "tsx scripts/qc-enrich-lessons.ts",
+    "qc:enrich-lessons:dry": "tsx scripts/qc-enrich-lessons.ts --dry-run"
   },
   "dependencies": {
     "@google-cloud/aiplatform": "^6.4.0",

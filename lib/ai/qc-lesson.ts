@@ -41,6 +41,112 @@ export type LessonStructuralFinding = {
 };
 
 /**
+ * Richness check — uses the hand-audited Kindergarten lessons as
+ * the quality bar. Filip audited K himself; the QC bot enforces
+ * that bar on every other grade so we don't ship 1000 lessons one
+ * eye-check at a time.
+ *
+ * K profile (computed from the live JSON, May 7 2026):
+ *   avg 3.1 steps per teaching slide
+ *   ~9% of steps use displayParts (staggered reveals)
+ *   ~7% use displayDiagram, ~4% afterPhonemes, ~8% displayTableRow
+ *   42% of steps have ANY visible displayText
+ *
+ * G1-4 profile (same data):
+ *   1.7-3.3 steps per slide (G3-4 are below K)
+ *   0% displayParts / Pills / Word / SFX / table
+ *   ~1-7% diagram, ~0-4% phonemes
+ *   ~94-100% just plain displayText
+ *
+ * The bar this check enforces:
+ *   1. ≥ 2 steps per teaching slide  (K min)
+ *   2. ≥ 1 rich primitive per teaching slide
+ *
+ * Rich primitives = anything that drives karaoke / animation:
+ *   displayParts | highlightPills | highlightWord | displayDiagram
+ *   displayDiagramSwap | displayAlphabetGrid | afterPhonemes
+ *   sfxClaps | displayTableRow
+ */
+const RICH_PRIMITIVE_KEYS = [
+  "displayParts",
+  "highlightPills",
+  "highlightWord",
+  "displayDiagram",
+  "displayDiagramSwap",
+  "displayAlphabetGrid",
+  "afterPhonemes",
+  "sfxClaps",
+  "displayTableRow",
+] as const;
+
+function slideHasRichPrimitive(slide: any): boolean {
+  const steps = Array.isArray(slide?.steps) ? slide.steps : [];
+  for (const step of steps) {
+    for (const k of RICH_PRIMITIVE_KEYS) {
+      const v = step?.[k];
+      if (v === undefined || v === null) continue;
+      // Arrays must be non-empty to count.
+      if (Array.isArray(v) && v.length === 0) continue;
+      return true;
+    }
+  }
+  return false;
+}
+
+function isTeachingSlide(slide: any): boolean {
+  return slide?.type !== "mcq";
+}
+
+export function checkLessonRichness(input: {
+  standardId: string;
+  lesson: any;
+}): LessonStructuralFinding[] {
+  const findings: LessonStructuralFinding[] = [];
+  const slides = Array.isArray(input.lesson?.slides) ? input.lesson.slides : [];
+  const teaching = slides.filter(isTeachingSlide);
+  if (teaching.length === 0) return findings;
+
+  // Per-slide checks
+  let thinSlides = 0;
+  for (const slide of teaching) {
+    const slideNum = slide?.slide ?? "?";
+    const steps = Array.isArray(slide?.steps) ? slide.steps : [];
+
+    if (steps.length > 0 && steps.length < 2) {
+      findings.push({
+        type: "slide.few_steps",
+        severity: "warn",
+        message: `Slide ${slideNum} has only ${steps.length} step. K reference is ≥2 steps per teaching slide so kids see staggered reveals, not a single screen.`,
+        slideRef: `slide ${slideNum}`,
+        suggestion:
+          "Split the ttsScript into 2-3 sub-steps and add a displayPart or highlightWord cue per step.",
+      });
+    }
+
+    if (steps.length > 0 && !slideHasRichPrimitive(slide)) {
+      thinSlides += 1;
+    }
+  }
+
+  // Lesson-level threshold: >50% of teaching slides without ANY
+  // rich primitive = thin animation. We don't fail the lesson
+  // outright (it still serves) but warn so the regen worker knows
+  // to enrich. K-bar is "every slide has at least one cue."
+  if (teaching.length > 0 && thinSlides / teaching.length > 0.5) {
+    findings.push({
+      type: "lesson.thin_animation",
+      severity: "warn",
+      message: `${thinSlides} of ${teaching.length} teaching slides have no animation primitives (displayParts / highlightPills / displayDiagram / afterPhonemes / sfxClaps / displayTableRow). K reference: every slide has at least one. This lesson plays as a static read-aloud.`,
+      slideRef: "lesson",
+      suggestion:
+        "Run the lesson-enrichment regen to add per-step displayParts and at least one diagram or pill bounce per slide.",
+    });
+  }
+
+  return findings;
+}
+
+/**
  * Run all deterministic structural checks. Cheap and exhaustive.
  * Returns ALL issues in one pass; doesn't short-circuit.
  */
