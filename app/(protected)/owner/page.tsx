@@ -125,6 +125,34 @@ export default async function OwnerAdminPage({
     (todayLessons ?? 0) +
     (todayBooks ?? 0);
 
+  // ── Catalog health (QC state at a glance) ──────────────────────
+  // Three numbers Filip wants on the daily landing without needing
+  // to click through to /owner/qc-bot:
+  //   - open fails   : the ones a kid would see if quarantine fails
+  //   - quarantined  : how many catalog items are held back right now
+  //   - regen 24h    : how much auto-fixing the cron did last night
+  const oneDayAgoIso = new Date(Date.now() - 86_400_000).toISOString();
+  const [
+    { count: qcOpenFails },
+    { count: qcQuarantined },
+    { count: qcRegen24h },
+  ] = await Promise.all([
+    supabase
+      .from("content_audit_findings")
+      .select("id", { count: "exact", head: true })
+      .eq("severity", "fail")
+      .eq("status", "open"),
+    supabase
+      .from("question_qc_status")
+      .select("target_id", { count: "exact", head: true })
+      .eq("qc_status", "quarantined"),
+    supabase
+      .from("content_qc_log")
+      .select("id", { count: "exact", head: true })
+      .in("change_type", ["regen_image", "regen_audio", "regen_question"])
+      .gte("created_at", oneDayAgoIso),
+  ]);
+
   // ── Hero stats ──────────────────────────────────────────────
   const sevenDaysAgoIso = new Date(Date.now() - 7 * 86_400_000).toISOString();
   const fourteenDaysAgoIso = new Date(Date.now() - 14 * 86_400_000).toISOString();
@@ -323,6 +351,17 @@ export default async function OwnerAdminPage({
           >
             <Bot className="h-3.5 w-3.5" />
             QC bot
+            {((qcOpenFails ?? 0) > 0 || (qcQuarantined ?? 0) > 0) && (
+              <span
+                className={`rounded-full px-2 py-0.5 text-[10px] font-extrabold ${
+                  (qcOpenFails ?? 0) > 10
+                    ? "bg-rose-100 text-rose-700"
+                    : "bg-amber-100 text-amber-800"
+                }`}
+              >
+                {qcOpenFails} fail · {qcQuarantined} held
+              </span>
+            )}
           </Link>
         </div>
       </div>
@@ -358,6 +397,58 @@ export default async function OwnerAdminPage({
           sub={`${(parentCount ?? 0).toLocaleString()} total · ${(activePremiumish ?? 0)} paid overall`}
         />
       </div>
+
+      {/* Catalog health stripe — daily QC scoreboard */}
+      <Link
+        href="/owner/qc-bot"
+        className="mt-4 block rounded-2xl border border-zinc-200 bg-white p-4 transition hover:border-violet-300"
+      >
+        <div className="flex flex-wrap items-center gap-4">
+          <div className="flex items-center gap-2">
+            <Bot className="h-4 w-4 text-violet-600" />
+            <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-500">
+              Catalog health
+            </span>
+          </div>
+          <div className="flex flex-wrap items-baseline gap-x-6 gap-y-1">
+            <span>
+              <span
+                className={`font-mono text-lg font-extrabold ${
+                  (qcOpenFails ?? 0) === 0
+                    ? "text-emerald-700"
+                    : (qcOpenFails ?? 0) > 30
+                      ? "text-rose-700"
+                      : "text-amber-700"
+                }`}
+              >
+                {qcOpenFails ?? 0}
+              </span>
+              <span className="ml-1 text-[11px] text-zinc-500">
+                open QC fails
+              </span>
+            </span>
+            <span>
+              <span className="font-mono text-lg font-extrabold text-amber-700">
+                {qcQuarantined ?? 0}
+              </span>
+              <span className="ml-1 text-[11px] text-zinc-500">
+                items quarantined
+              </span>
+            </span>
+            <span>
+              <span className="font-mono text-lg font-extrabold text-emerald-700">
+                {qcRegen24h ?? 0}
+              </span>
+              <span className="ml-1 text-[11px] text-zinc-500">
+                auto-fixes (24h)
+              </span>
+            </span>
+          </div>
+          <span className="ml-auto text-[11px] font-semibold text-violet-600 hover:underline">
+            See pipeline →
+          </span>
+        </div>
+      </Link>
 
       {/* Plan mix donut as a stripe */}
       <div className="mt-4 rounded-2xl border border-zinc-200 bg-white p-4">

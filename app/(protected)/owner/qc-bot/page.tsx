@@ -272,6 +272,147 @@ export default async function QcBotDashboardPage() {
     updated_at: string;
   }>;
 
+  // ── Open findings, grouped by type, with handler classification ─
+  // The single most-asked question on this page: "what's open and
+  // who fixes it?" This section answers it directly. Cron-handled
+  // means the nightly run will auto-fix; weekly-script means the
+  // ops cycle (`npm run qc:*`) is needed; human means a person has
+  // to make a content judgment.
+  const { data: openByTypeRaw } = await supabase
+    .from("content_audit_findings")
+    .select("finding_type, severity, target_kind")
+    .eq("status", "open")
+    .neq("severity", "pass");
+  const openByType = new Map<
+    string,
+    { fail: number; warn: number; total: number; sample_target_kind: string }
+  >();
+  for (const r of (openByTypeRaw ?? []) as any[]) {
+    const cur = openByType.get(r.finding_type) ?? {
+      fail: 0,
+      warn: 0,
+      total: 0,
+      sample_target_kind: r.target_kind,
+    };
+    if (r.severity === "fail") cur.fail++;
+    else if (r.severity === "warn") cur.warn++;
+    cur.total++;
+    openByType.set(r.finding_type, cur);
+  }
+
+  // Last cron-fixed timestamp per finding type (so we can show
+  // "fixed 2h ago" next to each row).
+  const { data: lastFixedRaw } = await supabase
+    .from("content_audit_findings")
+    .select("finding_type, resolved_at")
+    .eq("status", "fixed")
+    .order("resolved_at", { ascending: false })
+    .limit(500);
+  const lastFixedByType = new Map<string, string>();
+  for (const r of (lastFixedRaw ?? []) as any[]) {
+    if (!lastFixedByType.has(r.finding_type) && r.resolved_at) {
+      lastFixedByType.set(r.finding_type, r.resolved_at);
+    }
+  }
+
+  type Handler = {
+    label: string;
+    tone: "auto" | "script" | "human";
+    note: string;
+  };
+  const HANDLER_BY_TYPE: Record<string, Handler> = {
+    "q.image_quality": {
+      label: "Cron auto",
+      tone: "auto",
+      note: "Imagen regen + storage swap",
+    },
+    "q.audio_quality": {
+      label: "Cron auto",
+      tone: "auto",
+      note: "Vertex TTS regen + storage swap",
+    },
+    "step.audio_quality": {
+      label: "Cron auto",
+      tone: "auto",
+      note: "Lesson-slide audio regen (just wired)",
+    },
+    "q.no_self_leak": {
+      label: "Cron dismisses",
+      tone: "auto",
+      note: "Known judge FP (root-word identification)",
+    },
+    "q.unique_choices": {
+      label: "Cron dismisses (some)",
+      tone: "auto",
+      note: "FP on L.x.2 / RF.x.1a; otherwise hand review",
+    },
+    "q.should_be_asked": {
+      label: "Weekly script",
+      tone: "script",
+      note: "npm run qc:regen-questions (edits JSON)",
+    },
+    "q.better_format": {
+      label: "Weekly script",
+      tone: "script",
+      note: "npm run qc:format-rescue + qc:format-execute",
+    },
+    "slide.judge": {
+      label: "Human review",
+      tone: "human",
+      note: "Lesson pedagogy edit — Jen / Filip review",
+    },
+    "slide.empty": {
+      label: "Human review",
+      tone: "human",
+      note: "Lesson slide content needs author input",
+    },
+    "step.long_letter_text": {
+      label: "Human review",
+      tone: "human",
+      note: "Lesson copy length judgment",
+    },
+  };
+  const FALLBACK_HANDLER: Handler = {
+    label: "Hand review",
+    tone: "human",
+    note: "Not yet automated — flag for Filip",
+  };
+
+  type OpenRow = {
+    finding_type: string;
+    fail: number;
+    warn: number;
+    total: number;
+    handler: Handler;
+    lastFixed: string | null;
+  };
+  const openRows: OpenRow[] = Array.from(openByType.entries())
+    .map(([finding_type, counts]) => ({
+      finding_type,
+      fail: counts.fail,
+      warn: counts.warn,
+      total: counts.total,
+      handler: HANDLER_BY_TYPE[finding_type] ?? FALLBACK_HANDLER,
+      lastFixed: lastFixedByType.get(finding_type) ?? null,
+    }))
+    .sort((a, b) => b.fail - a.fail || b.total - a.total);
+
+  // Cron's next-run forecast — sum the open counts for finding types
+  // the cron handles. Not every type's full open set will be cleared
+  // (the cron limits to ~30/run) but this gives the upper bound.
+  const cronTypes = new Set([
+    "q.image_quality",
+    "q.audio_quality",
+    "step.audio_quality",
+  ]);
+  const cronFpTypes = new Set(["q.no_self_leak", "q.unique_choices"]);
+  const cronWillRegen = openRows
+    .filter((r) => cronTypes.has(r.finding_type))
+    .reduce((acc, r) => acc + r.fail, 0);
+  const cronWillDismiss = openRows
+    .filter((r) => cronFpTypes.has(r.finding_type))
+    .reduce((acc, r) => acc + r.fail + r.warn, 0);
+
   // ── Cron schedule + last run status ──────────────────────────
   // vercel.json crons we know about, paired with their last runs
   // from the audit/factory tables.
@@ -448,6 +589,95 @@ export default async function QcBotDashboardPage() {
                     .slice(0, 60)}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* What's open + who handles each finding type */}
+      <section className="mt-6 rounded-2xl border border-zinc-200 bg-white p-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-zinc-600">
+            <ListChecks className="h-3.5 w-3.5" />
+            Open by finding type · who fixes it
+          </div>
+          <div className="flex items-center gap-2 text-[10px] text-zinc-500">
+            <span className="rounded-full bg-violet-50 px-2 py-0.5 font-bold text-violet-700">
+              Tonight @ 06:00 UTC
+            </span>
+            <span>
+              {cronWillRegen} regen · {cronWillDismiss} dismissals
+            </span>
+          </div>
+        </div>
+        {openRows.length === 0 ? (
+          <p className="mt-3 text-sm text-zinc-500">
+            No open findings. The catalog is currently clean.
+          </p>
+        ) : (
+          <table className="mt-3 w-full text-left text-sm">
+            <thead className="text-[10px] font-bold uppercase tracking-widest text-zinc-500">
+              <tr>
+                <th className="pb-2">Finding type</th>
+                <th className="pb-2 text-right">Open</th>
+                <th className="pb-2 text-right">Fail / Warn</th>
+                <th className="pb-2">Handler</th>
+                <th className="pb-2 text-right">Last fixed</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-zinc-100">
+              {openRows.map((row) => {
+                const tone =
+                  row.handler.tone === "auto"
+                    ? "bg-emerald-100 text-emerald-700"
+                    : row.handler.tone === "script"
+                      ? "bg-amber-100 text-amber-800"
+                      : "bg-rose-100 text-rose-700";
+                return (
+                  <tr key={row.finding_type} className="align-top">
+                    <td className="py-2 pr-3">
+                      <div className="font-mono text-xs font-bold text-zinc-900">
+                        {row.finding_type}
+                      </div>
+                      <div className="mt-0.5 text-[11px] text-zinc-500">
+                        {row.handler.note}
+                      </div>
+                    </td>
+                    <td className="py-2 pr-3 text-right font-mono text-sm font-bold text-zinc-900">
+                      {row.total}
+                    </td>
+                    <td className="py-2 pr-3 text-right text-xs text-zinc-600">
+                      <span className="font-bold text-rose-700">{row.fail}</span>
+                      <span className="px-1 text-zinc-300">·</span>
+                      <span className="text-amber-700">{row.warn}</span>
+                    </td>
+                    <td className="py-2 pr-3">
+                      <span
+                        className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${tone}`}
+                      >
+                        {row.handler.label}
+                      </span>
+                    </td>
+                    <td className="py-2 text-right text-[11px] text-zinc-500">
+                      {row.lastFixed ? timeAgo(row.lastFixed) : "—"}
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        )}
+        <div className="mt-3 flex flex-wrap gap-3 text-[10px] text-zinc-500">
+          <span>
+            <span className="mr-1 inline-block h-2 w-2 rounded-full bg-emerald-500" />
+            Cron auto = fixed nightly without ops
+          </span>
+          <span>
+            <span className="mr-1 inline-block h-2 w-2 rounded-full bg-amber-500" />
+            Weekly script = needs <code className="rounded bg-zinc-100 px-1">npm run qc:*</code>
+          </span>
+          <span>
+            <span className="mr-1 inline-block h-2 w-2 rounded-full bg-rose-500" />
+            Human review = pedagogy / authoring decision
+          </span>
         </div>
       </section>
 
