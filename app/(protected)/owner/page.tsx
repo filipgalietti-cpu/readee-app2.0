@@ -450,6 +450,105 @@ export default async function OwnerAdminPage({
         </div>
       </Link>
 
+      {/* "What lives where" README — collapsed by default so it
+           doesn't clutter the daily view, but always available
+           when Filip needs to remember which dashboard answers
+           which question. */}
+      <details className="group mt-4 overflow-hidden rounded-2xl border border-zinc-200 bg-white">
+        <summary className="flex cursor-pointer items-center justify-between gap-2 px-4 py-3 text-sm font-bold text-zinc-700 hover:bg-zinc-50">
+          <span className="inline-flex items-center gap-2">
+            <span className="text-[10px] font-extrabold uppercase tracking-widest text-zinc-500">
+              README
+            </span>
+            <span>What each owner page actually does</span>
+          </span>
+          <span className="text-[11px] font-normal text-zinc-400 group-open:hidden">
+            Show
+          </span>
+          <span className="hidden text-[11px] font-normal text-zinc-400 group-open:inline">
+            Hide
+          </span>
+        </summary>
+        <div className="space-y-4 border-t border-zinc-100 px-4 py-4 text-sm text-zinc-700">
+          <ReadmeRow
+            label="/owner"
+            tone="amber"
+            title="Business overview (this page)"
+            body="MRR, signups, plan mix, recent accounts, at-risk paying users, expansion-ready free teachers. The four numbers that tell you if Readee is winning today. Catalog health stripe up top is a fast peek at QC state — open fails / quarantined / auto-fixes 24h."
+          />
+          <ReadmeRow
+            label="/owner/assets"
+            tone="violet"
+            title="Daily content feed — every AI-made package"
+            body={
+              <>
+                One row per content piece bundling its image + audio + question count as chips.
+                Plain-English labels (Parent passage, Community, Leveled passage, Kid story,
+                Daily question, Teacher lesson, Decodable book). Grouped by recency
+                (Today / Yesterday / Earlier this week / Older). Use this for the daily
+                scan: what got made, what&apos;s missing media, what&apos;s pass / warn / fail.
+              </>
+            }
+          />
+          <ReadmeRow
+            label="/owner/qc-bot"
+            tone="emerald"
+            title="QC pipeline status — what the bot is doing"
+            body={
+              <>
+                The control room. Top panel:{" "}
+                <strong>Open by finding type · who fixes it</strong> — every kind of audit
+                problem (image fail, audio fail, lesson too thin, etc.) with a colored
+                handler badge:{" "}
+                <em>Cron auto</em> (fixed nightly without ops),{" "}
+                <em>Weekly script</em> (you run <code className="rounded bg-zinc-100 px-1 text-[11px]">npm run qc:*</code>),{" "}
+                <em>Human review</em> (pedagogy / authoring decision). Below that, pipeline
+                funnel + bot health + cron schedule + recent activity log + cost meter.
+                Read this when you want to know <strong>why</strong> the catalog health
+                number on /owner is what it is.
+              </>
+            }
+          />
+          <ReadmeRow
+            label="/owner/content-audit"
+            tone="rose"
+            title="Audit findings — the raw inbox"
+            body={
+              <>
+                The granular list backing /owner/qc-bot. One row per individual audit
+                finding (e.g. &quot;Q5 of RL.K.1 has a garbled image&quot;). Use this when you
+                want to triage a specific item: open, fix, regen, dismiss, mark won&apos;t-fix.
+                /owner/qc-bot is the summary; /owner/content-audit is the detail.
+              </>
+            }
+          />
+          <ReadmeRow
+            label="/owner/batch-qc"
+            tone="indigo"
+            title="Factory output queue — content needing review"
+            body={
+              <>
+                What the nightly factory crons (leveled passages, calibrated MCQs,
+                lesson enrichment proposals) produced and is awaiting review. Default
+                filter: <em>Needs review</em>. Click <em>Ready</em> or <em>Rejected</em>{" "}
+                to see auto-promoted or auto-rejected items. Most factory output goes
+                straight to <em>Ready</em> via aggressive auto-promote — only WARN items
+                with no clear regen path land in <em>Needs review</em>. This page IS the
+                merge inbox for the K-richness lesson enrichment proposer.
+              </>
+            }
+          />
+
+          <div className="rounded-xl bg-amber-50 px-3 py-2 text-[11px] text-amber-900">
+            <strong>Quick rule of thumb:</strong> /owner/assets answers{" "}
+            <em>&ldquo;what got made&rdquo;</em>. /owner/qc-bot answers{" "}
+            <em>&ldquo;what&apos;s the bot doing about quality&rdquo;</em>. /owner/content-audit
+            answers <em>&ldquo;what specific items need fixing&rdquo;</em>. /owner/batch-qc
+            answers <em>&ldquo;what did the factory generate that I should approve&rdquo;</em>.
+          </div>
+        </div>
+      </details>
+
       {/* Plan mix donut as a stripe */}
       <div className="mt-4 rounded-2xl border border-zinc-200 bg-white p-4">
         <div className="mb-2 flex items-center justify-between">
@@ -790,4 +889,40 @@ function RoleIcon({ role }: { role: string }) {
   if (role === "educator") return <GraduationCap className="h-3 w-3 text-indigo-700" />;
   if (role === "student") return <Baby className="h-3 w-3 text-emerald-700" />;
   return <Users className="h-3 w-3 text-zinc-500" />;
+}
+
+function ReadmeRow({
+  label,
+  tone,
+  title,
+  body,
+}: {
+  label: string;
+  tone: "amber" | "violet" | "emerald" | "rose" | "indigo";
+  title: string;
+  body: React.ReactNode;
+}) {
+  const tones: Record<typeof tone, string> = {
+    amber: "bg-amber-100 text-amber-800",
+    violet: "bg-violet-100 text-violet-800",
+    emerald: "bg-emerald-100 text-emerald-800",
+    rose: "bg-rose-100 text-rose-800",
+    indigo: "bg-indigo-100 text-indigo-800",
+  };
+  return (
+    <div className="flex flex-col gap-1.5 sm:flex-row sm:items-start sm:gap-3">
+      <Link
+        href={label}
+        className={`inline-flex flex-shrink-0 items-center rounded-full px-2.5 py-0.5 font-mono text-[11px] font-bold hover:underline ${tones[tone]}`}
+      >
+        {label}
+      </Link>
+      <div className="min-w-0 flex-1">
+        <div className="text-sm font-extrabold text-zinc-900">{title}</div>
+        <div className="mt-0.5 text-[12px] leading-relaxed text-zinc-600">
+          {body}
+        </div>
+      </div>
+    </div>
+  );
 }
