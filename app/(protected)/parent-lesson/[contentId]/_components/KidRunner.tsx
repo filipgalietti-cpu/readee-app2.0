@@ -15,6 +15,7 @@ import {
   RotateCcw,
 } from "lucide-react";
 import Link from "next/link";
+import KidThumbs from "@/components/feedback/KidThumbs";
 
 type Question = {
   prompt: string;
@@ -45,10 +46,14 @@ const MOTION_FAST = { duration: 0.18, ease: "easeOut" as const };
 
 export default function KidRunner({
   content,
+  contentId,
+  childId,
   childName,
   onClose,
 }: {
   content: Content;
+  contentId: string;
+  childId: string;
   childName: string;
   onClose: () => void;
 }) {
@@ -170,6 +175,8 @@ export default function KidRunner({
                 transition={MOTION_FAST}
               >
                 <RecapPhase
+                  contentId={contentId}
+                  childId={childId}
                   childName={childName}
                   questions={questions}
                   answers={answers}
@@ -496,12 +503,16 @@ function QuestionPhase({
 /* ──────────────────────────────────────────────────────────────── */
 
 function RecapPhase({
+  contentId,
+  childId,
   childName,
   questions,
   answers,
   onRestart,
   onClose,
 }: {
+  contentId: string;
+  childId: string;
   childName: string;
   questions: Question[];
   answers: Record<number, AnswerRecord>;
@@ -580,6 +591,15 @@ function RecapPhase({
           </ul>
         </>
       )}
+
+      {/* Universal kid feedback signal */}
+      <div className="mt-7 flex justify-center">
+        <KidThumbs
+          childId={childId}
+          assetKind="ask_readee"
+          assetId={contentId}
+        />
+      </div>
 
       <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
         <button

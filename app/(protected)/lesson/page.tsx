@@ -15,6 +15,7 @@ import { getDailyMultiplier, getSessionStreakTier } from "@/lib/carrots/multipli
 const PASS_THRESHOLD = 3;
 import { StreakFire } from "@/app/_components/StreakFire";
 import { Star, Sparkles, Rocket, Zap, Trophy, Target, Medal, Gem, Crown, Type, FileText, Search, Eye, CheckCircle, PenTool, BookOpen, MessageSquare, Flame, Carrot } from "lucide-react";
+import KidThumbs from "@/components/feedback/KidThumbs";
 import type { LucideIcon } from "lucide-react";
 
 const LEARN_ICON_MAP: Record<string, LucideIcon> = {
@@ -1280,6 +1281,17 @@ function LessonContent() {
               <span className="font-semibold text-zinc-800">Next step:</span> {nextFocus}
             </p>
           </div>
+
+          {/* Universal kid feedback signal — drives auto-quarantine */}
+          {lessonId && (
+            <div className="rounded-2xl border border-zinc-200 bg-white p-4">
+              <KidThumbs
+                childId={child.id}
+                assetKind="sample_lesson"
+                assetId={lessonId}
+              />
+            </div>
+          )}
 
           {/* Conversion nudge at high intent moment */}
           {nextLessonLocked && (

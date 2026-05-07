@@ -13,6 +13,7 @@
  * themselves.
  */
 import { supabaseAdmin } from "@/lib/supabase/admin";
+import { getFeedbackAggregates, type KidAssetKind } from "@/lib/feedback/kid-thumbs";
 
 export type AssetKind =
   | "ask_readee" // child_ai_content (parent-generated)
@@ -363,6 +364,35 @@ export async function loadAssetFeed(
       audioUrl: null,
       detailHref: `/classroom/books/${r.id}`,
     });
+  }
+
+  // Pull kid-feedback aggregates for every row in one batched query.
+  // KidAssetKind covers most asset kinds we surface; the rest get
+  // (null, null, 0) which is the default we already populate above.
+  const KIND_TO_FEEDBACK: Partial<Record<AssetKind, KidAssetKind>> = {
+    ask_readee: "ask_readee",
+    community_passage: "community_passage",
+    leveled_passage: "leveled_passage",
+    personalized_story: "personalized_story",
+    daily_question: "daily_question",
+    custom_lesson: "custom_lesson",
+    custom_book: "custom_book",
+  };
+  const feedbackPairs = rows
+    .map((r) => {
+      const fk = KIND_TO_FEEDBACK[r.kind];
+      return fk ? { kind: fk, id: r.id } : null;
+    })
+    .filter((p): p is { kind: KidAssetKind; id: string } => p !== null);
+  const aggMap = await getFeedbackAggregates(feedbackPairs);
+  for (const r of rows) {
+    const fk = KIND_TO_FEEDBACK[r.kind];
+    if (!fk) continue;
+    const agg = aggMap.get(`${fk}:${r.id}`);
+    if (agg) {
+      r.thumbsUp = agg.up;
+      r.thumbsDown = agg.down;
+    }
   }
 
   // Apply filters in-memory. We do this after merge so the

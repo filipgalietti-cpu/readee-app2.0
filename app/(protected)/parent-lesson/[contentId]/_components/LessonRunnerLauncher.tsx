@@ -13,6 +13,8 @@ type Question = {
 };
 
 type Content = {
+  id: string;
+  child_id: string;
   title: string | null;
   topic: string;
   passage_text: string | null;
@@ -46,6 +48,8 @@ export default function LessonRunnerLauncher({
       {open && (
         <KidRunner
           content={content}
+          contentId={content.id}
+          childId={content.child_id}
           childName={childName}
           onClose={() => setOpen(false)}
         />
