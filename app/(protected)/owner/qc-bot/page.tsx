@@ -549,6 +549,132 @@ export default async function QcBotDashboardPage() {
         <RefreshIndicator renderedAt={new Date().toISOString()} />
       </div>
 
+      {/* The recreate loop, visualized — collapsed by default so it
+           doesn't clutter the daily view. Filip's daily check should
+           start at the "Open by finding type" panel below; this is
+           here for when he wants to remember how the bot works. */}
+      <details className="mt-6 group rounded-2xl border border-zinc-200 bg-white">
+        <summary className="flex cursor-pointer items-center justify-between gap-2 px-4 py-3 text-sm font-bold text-zinc-700 hover:bg-zinc-50">
+          <span className="inline-flex items-center gap-2">
+            <span className="text-[10px] font-extrabold uppercase tracking-widest text-zinc-500">
+              How it works
+            </span>
+            <span>The recreate loop</span>
+          </span>
+          <span className="text-[11px] font-normal text-zinc-400 group-open:hidden">
+            Show
+          </span>
+          <span className="hidden text-[11px] font-normal text-zinc-400 group-open:inline">
+            Hide
+          </span>
+        </summary>
+        <div className="border-t border-zinc-100 p-4 text-sm text-zinc-700">
+          <ol className="space-y-3">
+            <LoopStep
+              n={1}
+              label="Audit"
+              tone="indigo"
+              body={
+                <>
+                  LLM judges + deterministic checks scan the catalog. Each issue lands as
+                  one row in <code className="rounded bg-zinc-100 px-1 text-[11px]">content_audit_findings</code>{" "}
+                  with the target id, finding type, message, optional human-readable
+                  suggestion, and a snapshot of the original asset (prompt, ttsScript,
+                  audio_url, etc.).
+                </>
+              }
+            />
+            <LoopStep
+              n={2}
+              label="Match → Worker"
+              tone="violet"
+              body={
+                <>
+                  Each <code className="rounded bg-zinc-100 px-1 text-[11px]">finding_type</code>{" "}
+                  is mapped to exactly one worker (see the &quot;Open by finding type&quot;
+                  panel below). The worker reads the snapshot, regenerates the asset
+                  (Imagen for images, Vertex TTS for audio, Gemini for question/lesson
+                  pedagogy), and re-uploads to the same storage path so URLs stay valid.
+                  No &quot;suggestion to action&quot; translation — the worker IS the action
+                  for that finding type.
+                </>
+              }
+            />
+            <LoopStep
+              n={3}
+              label="Format-rescue (one exception)"
+              tone="amber"
+              body={
+                <>
+                  For <code className="rounded bg-zinc-100 px-1 text-[11px]">q.better_format</code>{" "}
+                  findings, the action isn&apos;t a regen — it&apos;s a discrete decision (e.g.
+                  &quot;convert this MCQ to a missing-word question&quot;). Stage 1 writes the
+                  recommendation to <code className="rounded bg-zinc-100 px-1 text-[11px]">content_qc_log.after.action</code>;
+                  Stage 2 (<code className="rounded bg-zinc-100 px-1 text-[11px]">qc:format-execute</code>)
+                  applies it.
+                </>
+              }
+            />
+            <LoopStep
+              n={4}
+              label="Log + resolve"
+              tone="emerald"
+              body={
+                <>
+                  Worker writes an append-only row to{" "}
+                  <code className="rounded bg-zinc-100 px-1 text-[11px]">content_qc_log</code>{" "}
+                  (target, change_type, before, after, agent, finding_id), then flips the
+                  finding to <code className="rounded bg-zinc-100 px-1 text-[11px]">status=&apos;fixed&apos;</code>.
+                  Click any target on the &quot;Pipeline&quot; section below to see its
+                  full audit→action timeline.
+                </>
+              }
+            />
+            <LoopStep
+              n={5}
+              label="Verify"
+              tone="emerald"
+              body={
+                <>
+                  Next audit pass re-runs the same judge against the new asset. If it
+                  still fails, the finding gets reopened (incrementing{" "}
+                  <code className="rounded bg-zinc-100 px-1 text-[11px]">qc_attempt_count</code>);
+                  3+ failed attempts triggers stuck-target alerts in the bot health
+                  panel below.
+                </>
+              }
+            />
+            <LoopStep
+              n={6}
+              label="JSON-bound exception"
+              tone="rose"
+              body={
+                <>
+                  Two finding types edit{" "}
+                  <code className="rounded bg-zinc-100 px-1 text-[11px]">app/data/sample-lessons.json</code>,
+                  which is in git. Vercel can&apos;t push commits, so{" "}
+                  <code className="rounded bg-zinc-100 px-1 text-[11px]">q.should_be_asked</code>{" "}
+                  and <code className="rounded bg-zinc-100 px-1 text-[11px]">lesson.thin_animation</code>{" "}
+                  workers write proposals to{" "}
+                  <Link href="/owner/batch-qc" className="font-bold underline">
+                    /owner/batch-qc
+                  </Link>{" "}
+                  instead of direct JSON writes. You review → approve → merge → commit
+                  → Vercel redeploy.
+                </>
+              }
+            />
+          </ol>
+
+          <div className="mt-4 rounded-xl bg-amber-50 px-3 py-2 text-[11px] text-amber-900">
+            <strong>To see the loop on one specific item:</strong> the &quot;Open by
+            finding type&quot; panel rows are clickable; each opens a per-target
+            timeline at <code className="rounded bg-amber-100 px-1">/owner/qc-bot/[targetId]</code>{" "}
+            showing every audit ↔ action ↔ verify event for that piece of content.
+          </div>
+        </div>
+      </details>
+
       {/* Bot health */}
       <section className="mt-6 rounded-2xl border border-zinc-200 bg-white p-4">
         <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-zinc-600">
@@ -1156,6 +1282,41 @@ function Stat({
     </div>
   );
   return href ? <Link href={href}>{inner}</Link> : <div>{inner}</div>;
+}
+
+function LoopStep({
+  n,
+  label,
+  body,
+  tone,
+}: {
+  n: number;
+  label: string;
+  body: React.ReactNode;
+  tone: "indigo" | "violet" | "amber" | "emerald" | "rose";
+}) {
+  const tones: Record<typeof tone, string> = {
+    indigo: "bg-indigo-100 text-indigo-800",
+    violet: "bg-violet-100 text-violet-800",
+    amber: "bg-amber-100 text-amber-800",
+    emerald: "bg-emerald-100 text-emerald-800",
+    rose: "bg-rose-100 text-rose-800",
+  };
+  return (
+    <li className="flex items-start gap-3">
+      <span
+        className={`flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full font-mono text-xs font-extrabold ${tones[tone]}`}
+      >
+        {n}
+      </span>
+      <div className="min-w-0 flex-1">
+        <div className="text-sm font-extrabold text-zinc-900">{label}</div>
+        <div className="mt-0.5 text-[12px] leading-relaxed text-zinc-600">
+          {body}
+        </div>
+      </div>
+    </li>
+  );
 }
 
 function PipelineStage({
