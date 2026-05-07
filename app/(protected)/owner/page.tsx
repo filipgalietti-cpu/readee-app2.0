@@ -89,6 +89,42 @@ export default async function OwnerAdminPage({
 
   const supabase = supabaseAdmin();
 
+  // ── Today's content output ─────────────────────────────────
+  // Daily-check tile so the owner sees factory + Ask-Readee +
+  // daily-Q + community throughput at a glance, without clicking
+  // through to /owner/assets. Counts everything created since
+  // midnight local-server.
+  const startOfTodayIso = (() => {
+    const d = new Date();
+    d.setHours(0, 0, 0, 0);
+    return d.toISOString();
+  })();
+  const [
+    { count: todayAskReadee },
+    { count: todayCommunity },
+    { count: todayLeveled },
+    { count: todayPersonalized },
+    { count: todayDaily },
+    { count: todayLessons },
+    { count: todayBooks },
+  ] = await Promise.all([
+    supabase.from("child_ai_content").select("id", { count: "exact", head: true }).gte("created_at", startOfTodayIso),
+    supabase.from("community_passages").select("id", { count: "exact", head: true }).gte("created_at", startOfTodayIso),
+    supabase.from("differentiated_passages").select("id", { count: "exact", head: true }).gte("created_at", startOfTodayIso),
+    supabase.from("personalized_stories").select("id", { count: "exact", head: true }).gte("created_at", startOfTodayIso),
+    supabase.from("daily_questions").select("date", { count: "exact", head: true }).gte("created_at", startOfTodayIso),
+    supabase.from("custom_lessons").select("id", { count: "exact", head: true }).gte("created_at", startOfTodayIso),
+    supabase.from("custom_books").select("id", { count: "exact", head: true }).gte("created_at", startOfTodayIso),
+  ]);
+  const todayTotal =
+    (todayAskReadee ?? 0) +
+    (todayCommunity ?? 0) +
+    (todayLeveled ?? 0) +
+    (todayPersonalized ?? 0) +
+    (todayDaily ?? 0) +
+    (todayLessons ?? 0) +
+    (todayBooks ?? 0);
+
   // ── Hero stats ──────────────────────────────────────────────
   const sevenDaysAgoIso = new Date(Date.now() - 7 * 86_400_000).toISOString();
   const fourteenDaysAgoIso = new Date(Date.now() - 14 * 86_400_000).toISOString();
@@ -271,10 +307,15 @@ export default async function OwnerAdminPage({
         <div className="flex flex-wrap items-center gap-2">
           <Link
             href="/owner/assets"
-            className="inline-flex items-center gap-1.5 rounded-full bg-amber-600 px-3 py-1.5 text-xs font-bold text-white hover:bg-amber-700"
+            className="inline-flex items-center gap-1.5 rounded-full bg-amber-600 px-4 py-2 text-sm font-bold text-white shadow-sm hover:bg-amber-700"
           >
-            <Boxes className="h-3.5 w-3.5" />
-            AI asset feed
+            <Boxes className="h-4 w-4" />
+            Daily content feed
+            {todayTotal > 0 && (
+              <span className="rounded-full bg-white/30 px-2 py-0.5 text-[10px] font-extrabold">
+                {todayTotal} today
+              </span>
+            )}
           </Link>
           <Link
             href="/owner/qc-bot"

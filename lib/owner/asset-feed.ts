@@ -35,8 +35,13 @@ export type AssetRow = {
   qcVerdict: AssetVerdict;
   // Free-form note from QC report (e.g., judge feedback summary)
   qcNote: string | null;
+  // Package contents — every Readee asset is a bundle of media +
+  // questions. The dashboard renders these as chips so the operator
+  // can scan completeness at a glance.
   hasImage: boolean;
   hasAudio: boolean;
+  questionCount: number;
+  pageCount: number; // for stories / books — counts narrative pages
   // Engagement signal where the source table tracks it
   thumbsUp: number | null;
   thumbsDown: number | null;
@@ -61,12 +66,12 @@ export type AssetCounts = {
 };
 
 const KIND_LABEL: Record<AssetKind, string> = {
-  ask_readee: "Ask Readee",
-  community_passage: "Community / Factory",
-  leveled_passage: "Leveled",
-  personalized_story: "Personalized story",
+  ask_readee: "Parent passage",
+  community_passage: "Community",
+  leveled_passage: "Leveled passage",
+  personalized_story: "Kid story",
   daily_question: "Daily question",
-  custom_lesson: "Lesson",
+  custom_lesson: "Teacher lesson",
   custom_book: "Decodable book",
 };
 
@@ -210,6 +215,8 @@ export async function loadAssetFeed(
       qcNote: null,
       hasImage: Boolean(r.image_url),
       hasAudio: Boolean(r.audio_url),
+      questionCount: Array.isArray(r.questions) ? r.questions.length : 0,
+      pageCount: 0,
       thumbsUp: null,
       thumbsDown: null,
       views: typeof r.play_count === "number" ? r.play_count : null,
@@ -241,6 +248,8 @@ export async function loadAssetFeed(
       qcNote: r.status === "pending" ? "Awaiting review" : null,
       hasImage: Boolean(r.image_url),
       hasAudio: Boolean(r.audio_url),
+      questionCount: Array.isArray(r.questions) ? r.questions.length : 0,
+      pageCount: 0,
       thumbsUp: null,
       thumbsDown: null,
       views: typeof r.view_count === "number" ? r.view_count : null,
@@ -256,6 +265,13 @@ export async function loadAssetFeed(
   }
 
   for (const r of (leveled.data ?? []) as any[]) {
+    // Leveled passages bundle 3 versions; sum questions across them.
+    const versions = Array.isArray(r.versions) ? r.versions : [];
+    const qCount = versions.reduce(
+      (acc: number, v: any) =>
+        acc + (Array.isArray(v?.questions) ? v.questions.length : 0),
+      0,
+    );
     rows.push({
       id: String(r.id),
       kind: "leveled_passage",
@@ -266,6 +282,8 @@ export async function loadAssetFeed(
       qcNote: noteFromReport(r.qc_report),
       hasImage: Boolean(r.shared_image_url),
       hasAudio: false,
+      questionCount: qCount,
+      pageCount: versions.length, // 3 versions per leveled passage
       thumbsUp: null,
       thumbsDown: null,
       views: null,
@@ -289,6 +307,8 @@ export async function loadAssetFeed(
       qcNote: noteFromReport(r.qc_report),
       hasImage: Boolean(r.cover_image_url),
       hasAudio: false,
+      questionCount: 0,
+      pageCount: Array.isArray(r.pages) ? r.pages.length : 0,
       thumbsUp: null,
       thumbsDown: null,
       views: null,
@@ -302,6 +322,8 @@ export async function loadAssetFeed(
   }
 
   for (const r of (dailyQs.data ?? []) as any[]) {
+    // Main question + extras stored separately on this table.
+    const extras = Array.isArray(r.extra_questions) ? r.extra_questions.length : 0;
     rows.push({
       id: String(r.date),
       kind: "daily_question",
@@ -312,6 +334,8 @@ export async function loadAssetFeed(
       qcNote: noteFromReport(r.qc_report),
       hasImage: Boolean(r.image_url),
       hasAudio: Boolean(r.audio_url),
+      questionCount: 1 + extras,
+      pageCount: 0,
       thumbsUp: typeof r.thumbs_up === "number" ? r.thumbs_up : null,
       thumbsDown: typeof r.thumbs_down === "number" ? r.thumbs_down : null,
       views: typeof r.views === "number" ? r.views : null,
@@ -320,11 +344,13 @@ export async function loadAssetFeed(
       createdAt: r.created_at,
       imageUrl: r.image_url ?? null,
       audioUrl: r.audio_url ?? null,
-      detailHref: `/today?d=${r.date}`,
+      detailHref: `/today/${r.slug ?? r.date}`,
     });
   }
 
   for (const r of (lessons.data ?? []) as any[]) {
+    const slides = Array.isArray(r.slides) ? r.slides : [];
+    const qIds = Array.isArray(r.question_ids) ? r.question_ids : [];
     rows.push({
       id: String(r.id),
       kind: "custom_lesson",
@@ -335,6 +361,8 @@ export async function loadAssetFeed(
       qcNote: noteFromReport(r.qc_report),
       hasImage: Boolean(r.cover_image_url),
       hasAudio: false,
+      questionCount: qIds.length,
+      pageCount: slides.length,
       thumbsUp: null,
       thumbsDown: null,
       views: null,
@@ -358,6 +386,8 @@ export async function loadAssetFeed(
       qcNote: noteFromReport(r.qc_report),
       hasImage: Boolean(r.cover_image_url),
       hasAudio: false,
+      questionCount: 0,
+      pageCount: Array.isArray(r.pages) ? r.pages.length : 0,
       thumbsUp: null,
       thumbsDown: null,
       views: null,
