@@ -27,6 +27,10 @@ import {
 import { runFullQuizQc } from "@/lib/ai/qc";
 import { pickThemeForDate, slugForDate } from "@/lib/daily/themes";
 import { trackError } from "@/lib/observability/track";
+import {
+  resolveHistoricalImage,
+  cacheWikipediaImageToSupabase,
+} from "@/lib/ai/historical-artifacts";
 
 // The daily question runs against a "system" teacher account so the
 // existing rate-limit + log infrastructure has someone to bill. We
@@ -189,22 +193,43 @@ ${theme.topic}`;
   }
   const [mainQ, ...extras] = mcqRes.questions;
 
-  // 3) Image brief → image (best-effort; daily question is still
-  //    valuable without art if image gen fails).
+  // 3) Image — historical figures route through Wikipedia first
+  //    (royalty-free, accurate likeness). Imagen can't render named
+  //    real people reliably (Roger Bannister with no eyes shipped on
+  //    May 6 → driver for this whole flow). For fictional / generic
+  //    passages we fall through to the standard brief → Imagen path.
   let imageUrl: string | null = null;
   let imageScene: string | null = null;
-  const briefRes = await generateImageBrief({
-    teacherId,
-    passageTitle,
-    passageBody,
-  });
-  if (briefRes.ok) {
-    imageScene = briefRes.brief;
-    const imgRes = await generateImage({
+  const resolved = await resolveHistoricalImage(passageTitle, passageBody);
+  if (resolved.kind === "royalty_free") {
+    const cachedUrl = await cacheWikipediaImageToSupabase(
+      resolved.figureName,
+      resolved.imageUrl,
+    );
+    imageUrl = cachedUrl ?? resolved.imageUrl;
+    imageScene = `Wikipedia portrait of ${resolved.figureName}`;
+  } else {
+    const briefRes = await generateImageBrief({
       teacherId,
-      prompt: briefRes.brief,
+      passageTitle,
+      passageBody,
     });
-    if (imgRes.ok) imageUrl = imgRes.imageUrl;
+    if (briefRes.ok) {
+      // If a named figure was detected but no Wikipedia image exists
+      // (or the figure is still living), append a guardrail telling
+      // the image generator NOT to depict the named person — show a
+      // thematic stand-in instead.
+      const figureGuard =
+        resolved.kind === "ai" && resolved.avoidNamedPerson && resolved.figureName
+          ? ` Do not depict ${resolved.figureName}'s likeness — show only the activity, era, or setting they're associated with, no recognizable face.`
+          : "";
+      imageScene = briefRes.brief + figureGuard;
+      const imgRes = await generateImage({
+        teacherId,
+        prompt: imageScene,
+      });
+      if (imgRes.ok) imageUrl = imgRes.imageUrl;
+    }
   }
 
   // 4) TTS for the passage.

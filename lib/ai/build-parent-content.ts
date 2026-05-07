@@ -30,6 +30,10 @@ import { CREDIT_COST } from "@/lib/ai/credits";
 import { trackError } from "@/lib/observability/track";
 import { assertSafePrompt } from "@/lib/ai/safety";
 import { getTopUpBalance } from "@/lib/ai/credit-balance";
+import {
+  resolveHistoricalImage,
+  cacheWikipediaImageToSupabase,
+} from "@/lib/ai/historical-artifacts";
 
 // Constants, types, and the credit estimator have moved to
 // build-parent-content.shared.ts so client components can import them
@@ -207,15 +211,38 @@ export async function buildParentContent(input: {
     }
 
     if (passageText && brief.media.image) {
-      const imgRes = await generateImage({
-        teacherId: parentId,
-        prompt: `Illustration for a children's reading passage titled "${passageTitle}". Scene: ${brief.topic}.`,
-      });
-      if (imgRes.ok) {
-        passageImageUrl = imgRes.imageUrl;
-        creditsUsed += CREDIT_COST.image_generation;
+      // Historical figures: try Wikipedia first (royalty-free,
+      // accurate likeness). If the passage centers on a real
+      // historical figure and we can grab their Wikipedia lead
+      // image, use that instead of asking Imagen — which can't
+      // reliably render named real people.
+      const resolved = await resolveHistoricalImage(
+        passageTitle ?? brief.topic,
+        passageText,
+      );
+      if (resolved.kind === "royalty_free") {
+        const cachedUrl = await cacheWikipediaImageToSupabase(
+          resolved.figureName,
+          resolved.imageUrl,
+        );
+        passageImageUrl = cachedUrl ?? resolved.imageUrl;
       } else {
-        warnings.push(`Image: ${imgRes.error}`);
+        // AI gen path. If a named figure was detected (living person
+        // or no Wikipedia hit), tell the image-brief generator to
+        // describe a thematic stand-in instead of the figure.
+        const figureGuard = resolved.avoidNamedPerson && resolved.figureName
+          ? ` IMPORTANT: do NOT depict ${resolved.figureName}'s likeness — show a thematic stand-in scene (the activity, era, or setting) without a recognizable face.`
+          : "";
+        const imgRes = await generateImage({
+          teacherId: parentId,
+          prompt: `Illustration for a children's reading passage titled "${passageTitle}". Scene: ${brief.topic}.${figureGuard}`,
+        });
+        if (imgRes.ok) {
+          passageImageUrl = imgRes.imageUrl;
+          creditsUsed += CREDIT_COST.image_generation;
+        } else {
+          warnings.push(`Image: ${imgRes.error}`);
+        }
       }
     }
 
