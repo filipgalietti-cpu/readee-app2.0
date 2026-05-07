@@ -477,12 +477,58 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
 
   /* ─── Render helpers ─── */
 
-  const highlightCaps = (text: string, cls = "text-rose-600 dark:text-rose-400 font-extrabold") =>
-    text.split(/(\s+)/).map((seg, si) =>
-      /^[A-Z]{2,}[!?.,]?$/.test(seg)
-        ? <span key={si} className={cls}>{seg}</span>
-        : <span key={si}>{seg}</span>
-    );
+  // Parses two emphasis conventions in display text:
+  //   1. **word**  — markdown bold (the convention in CLAUDE.md /
+  //                  READEE_VOICE; what AI generators emit). Strips
+  //                  the asterisks and underlines + bolds the word.
+  //   2. CAPS      — legacy convention used in the hand-authored
+  //                  K-4 lessons. Two-or-more-uppercase tokens get
+  //                  rendered in bold rose.
+  // Both apply per-token; the function still returns a flat array
+  // of <span>s so it drops into existing render call sites.
+  const highlightCaps = (
+    text: string,
+    cls = "text-rose-600 dark:text-rose-400 font-extrabold",
+  ) => {
+    // First, slice on **…** so emphasis spans are atomic tokens.
+    // Pattern keeps the delimiters in the split groups so we know
+    // which segments to render emphasized vs. plain.
+    const segments = text.split(/(\*\*[^*]+\*\*)/g);
+    const nodes: React.ReactNode[] = [];
+    let key = 0;
+    for (const seg of segments) {
+      const emphasisMatch = seg.match(/^\*\*([^*]+)\*\*$/);
+      if (emphasisMatch) {
+        // Markdown emphasis — drop asterisks, render bold + underlined
+        // for visual distinction from CAPS-style emphasis. Underline
+        // gives kids the "this word matters" signal even when the
+        // bold doesn't read clearly on small text.
+        nodes.push(
+          <span
+            key={key++}
+            className={`${cls} underline decoration-2 underline-offset-4`}
+          >
+            {emphasisMatch[1]}
+          </span>,
+        );
+        continue;
+      }
+      // Whitespace-aware split for CAPS detection.
+      const words = seg.split(/(\s+)/);
+      for (const word of words) {
+        if (/^[A-Z]{2,}[!?.,]?$/.test(word)) {
+          nodes.push(
+            <span key={key++} className={cls}>
+              {word}
+            </span>,
+          );
+        } else if (word.length > 0) {
+          nodes.push(<span key={key++}>{word}</span>);
+        }
+      }
+    }
+    return nodes;
+  };
 
   const getFeedback = (step: Step) => {
     const int = step.interaction?.toLowerCase() ?? "";
