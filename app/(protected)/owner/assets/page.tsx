@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { requireProfile } from "@/lib/auth/helpers";
 import { isPlatformAdmin } from "@/lib/auth/admin-gate";
+import RefreshIndicator from "../_components/RefreshIndicator";
 import {
   ShieldOff,
   ArrowLeft,
@@ -209,15 +210,20 @@ export default async function OwnerAssetsPage({
         Owner overview
       </Link>
 
-      <div className="mt-3">
-        <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-amber-600">
-          <Boxes className="h-4 w-4" />
-          Owner · Daily content feed
+      <div className="mt-3 flex flex-wrap items-start justify-between gap-3">
+        <div>
+          <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-amber-600">
+            <Boxes className="h-4 w-4" />
+            Owner · Daily content feed
+          </div>
+          <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+            Everything Readee just made
+          </h1>
         </div>
-        <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
-          Everything Readee just made
-        </h1>
-        <p className="mt-1 text-sm text-zinc-500">
+        <RefreshIndicator renderedAt={new Date().toISOString()} />
+      </div>
+      <div className="mt-1">
+        <p className="text-sm text-zinc-500">
           One row per content package. Each row shows the image, audio,
           and questions that ship together. Grouped by when it was made.
         </p>

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { requireProfile } from "@/lib/auth/helpers";
 import { isPlatformAdmin } from "@/lib/auth/admin-gate";
 import { supabaseAdmin } from "@/lib/supabase/admin";
+import RefreshIndicator from "./_components/RefreshIndicator";
 import {
   ShieldOff,
   Crown,
@@ -333,6 +334,7 @@ export default async function OwnerAdminPage({
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-2">
+          <RefreshIndicator renderedAt={new Date().toISOString()} />
           <Link
             href="/owner/assets"
             className="inline-flex items-center gap-1.5 rounded-full bg-amber-600 px-4 py-2 text-sm font-bold text-white shadow-sm hover:bg-amber-700"

@@ -25,6 +25,7 @@ import {
   CircleAlert,
 } from "lucide-react";
 import ApplyRescueButton from "./_components/ApplyRescueButton";
+import RefreshIndicator from "../_components/RefreshIndicator";
 import { daysAgoIso, hoursAgoIso } from "@/lib/utils/dates";
 
 export const dynamic = "force-dynamic";
@@ -530,7 +531,7 @@ export default async function QcBotDashboardPage() {
         Owner home
       </Link>
 
-      <div className="mt-3 flex flex-wrap items-baseline gap-3">
+      <div className="mt-3 flex flex-wrap items-start justify-between gap-3">
         <div>
           <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-violet-600">
             <Bot className="h-4 w-4" />
@@ -540,11 +541,12 @@ export default async function QcBotDashboardPage() {
             QC bot
           </h1>
           <p className="mt-1 text-sm text-zinc-500">
-            What the bot's been doing across the catalog. Auto-runs nightly
+            What the bot&apos;s been doing across the catalog. Auto-runs nightly
             at 06:00 UTC; manual triggers via{" "}
             <code className="rounded bg-zinc-100 px-1 text-[11px]">npm run qc:*</code>.
           </p>
         </div>
+        <RefreshIndicator renderedAt={new Date().toISOString()} />
       </div>
 
       {/* Bot health */}
