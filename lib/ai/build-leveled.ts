@@ -29,6 +29,7 @@ import {
 } from "@/lib/ai/readee-ai";
 import { runFullQuizQc } from "@/lib/ai/qc";
 import { CREDIT_COST, MONTHLY_CREDIT_LIMIT } from "@/lib/ai/credits";
+import { READEE_VOICE } from "@/lib/ai/voice";
 import { trackError } from "@/lib/observability/track";
 import { indexContent } from "@/lib/ai/embeddings";
 
@@ -65,7 +66,9 @@ CRITICAL rules:
 - Each version should feel natural for its grade — easy = simple, direct, kid-friendly; on-level = appropriate for the center grade; advanced = richer vocab without being intimidating.
 - Length: easy ≈ 60% of advanced length. On-level ≈ 80%.
 - Title: one shared title used for all three versions.
-- Output ONLY the JSON.`;
+- Output ONLY the JSON.
+
+${READEE_VOICE}`;
 
 const SCHEMA = {
   type: Type.OBJECT,

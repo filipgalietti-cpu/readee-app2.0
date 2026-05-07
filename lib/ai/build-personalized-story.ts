@@ -24,6 +24,7 @@ import {
 import { runFullQuizQc } from "@/lib/ai/qc";
 import { CREDIT_COST } from "@/lib/ai/credits";
 import { trackError } from "@/lib/observability/track";
+import { READEE_VOICE } from "@/lib/ai/voice";
 
 export type PersonalizedStoryBrief = {
   childId: string;
@@ -46,10 +47,11 @@ Rules:
 - Weave in their interests naturally — they aren't bolted on, the story IS about those interests.
 - Match the reading level provided. K-easy = simple, repetitive, very few unique words per page. 4th-hard = richer vocab, longer sentences.
 - Each page = 1-3 short sentences. The story has a clear arc: setup → small problem or adventure → satisfying ending.
-- Warm, kid-safe, age-appropriate. No scary endings, no sad endings, no friends/family being harmed.
 - Title: short, kid-friendly, includes the child's name (e.g. "Maya Saves the Soccer Game", "Leo and the Tiny Dinosaur").
 
-Output JSON: { title, pages: [{ text }] }.`;
+Output JSON: { title, pages: [{ text }] }.
+
+${READEE_VOICE}`;
 
 const STORY_SCHEMA = {
   type: Type.OBJECT,

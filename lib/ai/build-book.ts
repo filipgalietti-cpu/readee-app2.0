@@ -29,6 +29,7 @@ import {
 import { runFullQuizQc } from "@/lib/ai/qc";
 import { CREDIT_COST, MONTHLY_CREDIT_LIMIT } from "@/lib/ai/credits";
 import { trackError } from "@/lib/observability/track";
+import { READEE_VOICE } from "@/lib/ai/voice";
 import { getPattern } from "@/lib/ai/phonics-patterns";
 import { extractCharacterCard } from "@/lib/ai/character-card";
 import { indexContent } from "@/lib/ai/embeddings";
@@ -60,9 +61,9 @@ Rules:
   - Other simple decodable words the child has already learned.
 - 1-2 short sentences per page. Total 5-15 words per page.
 - Tell a tiny coherent story across the pages — beginning, middle, end. Even 8 pages should feel like a story, not random sentences.
-- Vocabulary level: short, concrete, kid-friendly. Avoid abstract words.
-- Friendly, warm, kid-safe tone. No scary or sad endings.
-- Generate a short kid-friendly title (2-5 words).`;
+- Generate a short kid-friendly title (2-5 words).
+
+${READEE_VOICE}`;
 
 const BOOK_SCHEMA = {
   type: Type.OBJECT,
