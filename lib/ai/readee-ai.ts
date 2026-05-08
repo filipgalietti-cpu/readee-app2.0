@@ -14,6 +14,7 @@ import {
   type AiKind,
 } from "@/lib/ai/credits";
 import { getTopUpBalance, spendTopUp } from "@/lib/ai/credit-balance";
+import { ccssAndKReferenceFragment } from "@/lib/ai/ccss-reference";
 
 /**
  * Readee.ai — teacher-facing AI assistant for generating MCQ questions
@@ -1893,6 +1894,11 @@ export async function regenerateMCQQuestion(input: {
   gradeLevel?: string | null;
   oldQuestion: { prompt: string; choices: string[]; correct: string };
   rejectionReason: string;
+  /** When provided, the prompt grounds the regen in the CCSS
+   *  description for this standard plus a same-domain K-grade
+   *  reference question (the audited quality bar). Optional so
+   *  callers without standard context still work. */
+  standardId?: string | null;
 }): Promise<{ ok: true; question: GeneratedMCQ } | { ok: false; error: string }> {
   if (!input.passageBody.trim()) return { ok: false, error: "Passage is required." };
 
@@ -1909,8 +1915,16 @@ export async function regenerateMCQQuestion(input: {
   }
 
   const gradeLine = input.gradeLevel ? `Grade level: ${input.gradeLevel}.` : "Grade level: 2nd.";
+  // Pull CCSS description + a K-grade reference question for the
+  // same domain so the regen has both the spec (what the standard
+  // is trying to teach) and the bar (the audited K example).
+  const ccssFragment = input.standardId
+    ? ccssAndKReferenceFragment({ standardId: input.standardId })
+    : "";
   const userPrompt = [
     gradeLine,
+    ccssFragment ? "" : null,
+    ccssFragment || null,
     "",
     "Passage students will read:",
     `"""\n${input.passageBody.slice(0, 4000)}\n"""`,
@@ -1922,8 +1936,10 @@ export async function regenerateMCQQuestion(input: {
     "",
     `Teacher's rejection reason: ${input.rejectionReason || "(not specified — improve generally)"}`,
     "",
-    "Write ONE replacement question per the schema. Address the rejection reason head-on.",
-  ].join("\n");
+    "Write ONE replacement question per the schema. Address the rejection reason head-on. Match the CCSS standard above, and write to the K-reference's quality bar (same precision, same hint style, same difficulty calibration scaled up to this grade).",
+  ]
+    .filter((line): line is string => line !== null)
+    .join("\n");
 
   try {
     const response = await client.models.generateContent({

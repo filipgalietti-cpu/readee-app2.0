@@ -70,6 +70,42 @@ async function loadLessons(): Promise<Lesson[]> {
   return JSON.parse(raw) as Lesson[];
 }
 
+let standardsDescCache: Map<string, string> | null = null;
+async function loadStandardDescriptions(): Promise<Map<string, string>> {
+  if (standardsDescCache) return standardsDescCache;
+  const files = [
+    "kindergarten-standards-questions.json",
+    "1st-grade-standards-questions.json",
+    "2nd-grade-standards-questions.json",
+    "3rd-grade-standards-questions.json",
+    "4th-grade-standards-questions.json",
+  ];
+  const map = new Map<string, string>();
+  for (const f of files) {
+    try {
+      const raw = await fs.readFile(
+        path.join(process.cwd(), "app", "data", f),
+        "utf-8",
+      );
+      const data = JSON.parse(raw) as { standards?: Array<{ standard_id?: string; standard_description?: string }> };
+      for (const s of data.standards ?? []) {
+        if (s.standard_id && s.standard_description) {
+          map.set(s.standard_id, s.standard_description);
+        }
+      }
+    } catch {
+      // Skip missing files (e.g., during local dev with stripped data)
+    }
+  }
+  standardsDescCache = map;
+  return map;
+}
+
+function lookupStandardDescription(standardId: string, _lessons: Lesson[]): string {
+  // _lessons param kept for symmetry with future passage-based lookups.
+  return standardsDescCache?.get(standardId) ?? "";
+}
+
 /**
  * Pick a K lesson in the same domain (RL/RI/RF/L) as the thin
  * lesson — same skill family means the timing patterns transfer.
@@ -154,8 +190,12 @@ const LESSON_SCHEMA = {
 async function proposeEnrichment(
   thin: Lesson,
   reference: Lesson,
+  ccssDescription: string,
 ): Promise<{ ok: true; proposed: Lesson } | { ok: false; error: string }> {
-  const prompt = `REFERENCE_K (this is the quality bar):
+  const ccssLine = ccssDescription
+    ? `CCSS ${thin.standardId}: ${ccssDescription}\n\n`
+    : "";
+  const prompt = `${ccssLine}REFERENCE_K (this is the quality bar):
 ${JSON.stringify(reference, null, 2).slice(0, 12000)}
 
 THIN_LESSON (rewrite this):
@@ -232,6 +272,9 @@ async function main() {
   // 3. For each: load existing JSON, find K reference, run AI enrichment.
   const lessons = await loadLessons();
   const lessonsByStd = new Map(lessons.map((l) => [l.standardId, l]));
+  // Warm the standards-description cache so each enrichment call
+  // includes the CCSS spec text in its prompt.
+  await loadStandardDescriptions();
 
   let made = 0;
   let skipped = 0;
@@ -254,7 +297,11 @@ async function main() {
       made++;
       continue;
     }
-    const result = await proposeEnrichment(thin, reference);
+    // Pull the standard's CCSS description so the AI sees both the
+    // K bar and the spec it's writing to. lookupStandardDescription
+    // walks the same JSONs the curriculum reads from.
+    const ccssDesc = lookupStandardDescription(thin.standardId, lessons);
+    const result = await proposeEnrichment(thin, reference, ccssDesc);
     if (!result.ok) {
       console.log(`    ! ${result.error}`);
       skipped++;

@@ -203,6 +203,7 @@ async function processFinding(f: any) {
       correct: String(oldQ.correct),
     },
     rejectionReason: reason,
+    standardId: std.standard_id,
   });
   if (!res.ok) {
     console.log(`    ! regenerateMCQQuestion failed: ${res.error}`);
