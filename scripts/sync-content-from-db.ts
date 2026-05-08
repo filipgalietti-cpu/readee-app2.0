@@ -203,16 +203,52 @@ async function syncQuestionsFile(input: {
 async function syncLessonsFile(): Promise<{ changed: boolean; lessons: number }> {
   const { data: lessonRows } = await sb
     .from("lessons_db")
-    .select("standard_id, grade, domain, title, slides, ordinal")
+    .select("standard_id, grade, domain, title, slides, ordinal, source")
     .eq("language", "en")
     .neq("qc_status", "quarantined")
     .neq("qc_status", "retired")
     .order("ordinal", { ascending: true, nullsFirst: false });
 
+  // Last-line defense: refuse to ship lessons with empty-step
+  // slides. The enricher's schema bug (May 7) wrote 10 rows with
+  // `[{},{},{}]` step arrays and they propagated to prod via the
+  // GitHub Action before being caught on a spot-check. This guard
+  // prevents a recurrence — bad rows stay in DB but never reach
+  // the JSON the renderer imports.
+  const skippedForEmptySteps: string[] = [];
+  const validRows = ((lessonRows ?? []) as any[]).filter((l) => {
+    const slides = Array.isArray(l.slides) ? l.slides : [];
+    for (const slide of slides) {
+      if (slide?.type === "mcq") continue;
+      const steps = Array.isArray(slide?.steps) ? slide.steps : [];
+      if (steps.length === 0) continue; // intentionally-empty wrap-up slide
+      const hasContent = steps.some(
+        (st: any) =>
+          st &&
+          typeof st === "object" &&
+          (typeof st.ttsScript === "string" && st.ttsScript.trim().length > 0
+            || typeof st.displayText === "string" && st.displayText.trim().length > 0
+            || typeof st.audioFile === "string" && st.audioFile.trim().length > 0),
+      );
+      if (!hasContent) {
+        skippedForEmptySteps.push(`${l.standard_id} (slide ${slide.slide ?? "?"})`);
+        return false;
+      }
+    }
+    return true;
+  });
+  if (skippedForEmptySteps.length > 0) {
+    console.warn(
+      `  ⚠ Skipped ${skippedForEmptySteps.length} lessons with empty-step slides:\n    ${skippedForEmptySteps.slice(0, 10).join("\n    ")}`,
+    );
+  }
+  // Re-bind so the rest of the function uses the filtered set.
+  const safeRows = validRows;
+
   // sample-lessons.json keeps long-form grade names; convert back.
   // ordinal preserves the exact original lesson order so the
   // emitted JSON is byte-stable for unchanged content.
-  const lessons = ((lessonRows ?? []) as any[]).map((l) => ({
+  const lessons = safeRows.map((l: any) => ({
     standardId: l.standard_id,
     grade: LESSON_GRADE_FROM_SHORT[l.grade] ?? l.grade,
     domain: l.domain ?? "",
