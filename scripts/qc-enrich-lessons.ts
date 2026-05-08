@@ -160,22 +160,11 @@ Rules:
 
 Output ONLY the JSON object, no commentary.`;
 
-const SLIDE_SCHEMA = {
-  type: Type.OBJECT,
-  properties: {
-    slide: { type: Type.NUMBER },
-    type: { type: Type.STRING },
-    heading: { type: Type.STRING },
-    imagePrompt: { type: Type.STRING },
-    imageFile: { type: Type.STRING },
-    mcqId: { type: Type.STRING },
-    steps: {
-      type: Type.ARRAY,
-      items: { type: Type.OBJECT, properties: {} },
-    },
-  },
-  required: ["slide", "type", "steps"],
-};
+// Intentionally NO responseSchema — the schema's `properties: {}` on
+// the steps array constrained Gemini to emit empty step objects (the
+// catastrophic "RI.1.10 had [{},{},{}]" bug on May 7). responseMimeType
+// + the prompt instructions handle JSON shape just fine without
+// over-constraining the step structure.
 
 /**
  * Pick a K reference slide that pairs with the thin slide we're
@@ -241,11 +230,11 @@ Return the enriched slide JSON.`;
       config: {
         systemInstruction: SLIDE_ENRICHMENT_SYSTEM,
         temperature: 0.4,
+        // No responseSchema. The prompt + responseMimeType produce
+        // valid JSON with the right keys (model has the K example
+        // to copy from). Schema-constrained mode emitted empty step
+        // objects — bug retired in favor of free-form JSON.
         responseMimeType: "application/json",
-        responseSchema: SLIDE_SCHEMA,
-        // 16k covers even the densest K-reference slide structures
-        // we've seen (RL.K.1 has 8 steps with displayParts cascades);
-        // bumped from 8k after one slide truncated mid-string.
         maxOutputTokens: 16000,
       },
     });
@@ -262,6 +251,25 @@ Return the enriched slide JSON.`;
     }
     if (!parsed?.steps || !Array.isArray(parsed.steps)) {
       return { ok: false, error: "model returned no steps" };
+    }
+    // Quality gate: reject empty step objects. The schema bug on
+    // May 7 produced [{},{},{}] step arrays that passed structural
+    // checks but were unusable. Every step must have at least
+    // ttsScript or displayText.
+    for (const [i, st] of parsed.steps.entries()) {
+      if (!st || typeof st !== "object") {
+        return { ok: false, error: `step ${i} is not an object` };
+      }
+      const hasContent =
+        (typeof st.ttsScript === "string" && st.ttsScript.trim().length > 0) ||
+        (typeof st.displayText === "string" && st.displayText.trim().length > 0) ||
+        (typeof st.audioFile === "string" && st.audioFile.trim().length > 0);
+      if (!hasContent) {
+        return {
+          ok: false,
+          error: `step ${i} has no ttsScript / displayText / audioFile — model emitted empty object`,
+        };
+      }
     }
     return { ok: true, enrichedSlide: parsed };
   } catch (e: any) {
