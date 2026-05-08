@@ -27,6 +27,7 @@ import {
 import ApplyRescueButton from "./_components/ApplyRescueButton";
 import RefreshIndicator from "../_components/RefreshIndicator";
 import { daysAgoIso, hoursAgoIso } from "@/lib/utils/dates";
+import { getContentDbStats } from "@/lib/content/db";
 
 export const dynamic = "force-dynamic";
 
@@ -487,6 +488,12 @@ export default async function QcBotDashboardPage() {
     })
     .sort((a, b) => b.used - a.used);
 
+  // ── Content DB stats (Stage 1 of QC autonomy) ──────────────
+  // After the renderer flips to DB-sourced reads, the
+  // ai_enrich / ai_factory / ai_regen counts here represent
+  // material the bot wrote autonomously.
+  const contentStats = await getContentDbStats();
+
   // ── Bot health: last cron run + recent errors + cost ──────────
   const [latestActivityRes, recentErrorsRes, dailyCostRes] = await Promise.all([
     supabase
@@ -674,6 +681,36 @@ export default async function QcBotDashboardPage() {
           </div>
         </div>
       </details>
+
+      {/* Content DB stats — what's in lessons_db / questions_db,
+           split by source so AI-written rows are visible at a
+           glance. Renderer is still JSON-sourced today; this tile
+           tracks how much autonomous output the bot has staged. */}
+      <section className="mt-6 rounded-2xl border border-zinc-200 bg-white p-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-zinc-600">
+            <FileText className="h-3.5 w-3.5" />
+            Content DB · what the bot has written
+          </div>
+          <span className="text-[10px] text-zinc-400">
+            renderer still reads from JSON · DB writes accumulate here
+          </span>
+        </div>
+        <div className="mt-3 grid gap-3 sm:grid-cols-2">
+          <DbContentTile
+            label="Lessons"
+            total={contentStats.lessons.total}
+            bySource={contentStats.lessons.bySource}
+            byQc={contentStats.lessons.byQc}
+          />
+          <DbContentTile
+            label="Questions"
+            total={contentStats.questions.total}
+            bySource={contentStats.questions.bySource}
+            byQc={contentStats.questions.byQc}
+          />
+        </div>
+      </section>
 
       {/* Bot health */}
       <section className="mt-6 rounded-2xl border border-zinc-200 bg-white p-4">
@@ -1282,6 +1319,72 @@ function Stat({
     </div>
   );
   return href ? <Link href={href}>{inner}</Link> : <div>{inner}</div>;
+}
+
+function DbContentTile({
+  label,
+  total,
+  bySource,
+  byQc,
+}: {
+  label: string;
+  total: number;
+  bySource: Record<string, number>;
+  byQc: Record<string, number>;
+}) {
+  const sourceLabels: Array<[string, string, string]> = [
+    ["authored", "Authored (hand)", "bg-emerald-100 text-emerald-700"],
+    ["ai_enrich", "AI enrich", "bg-violet-100 text-violet-700"],
+    ["ai_factory", "AI factory", "bg-indigo-100 text-indigo-700"],
+    ["ai_regen", "AI regen", "bg-amber-100 text-amber-800"],
+  ];
+  const aiTotal =
+    (bySource.ai_enrich ?? 0) +
+    (bySource.ai_factory ?? 0) +
+    (bySource.ai_regen ?? 0);
+  return (
+    <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-3">
+      <div className="flex items-baseline justify-between">
+        <span className="text-sm font-extrabold text-zinc-900">{label}</span>
+        <span className="font-mono text-xs text-zinc-500">
+          {total.toLocaleString()} rows
+        </span>
+      </div>
+      <div className="mt-2 flex flex-wrap gap-1.5">
+        {sourceLabels.map(([key, name, tone]) => {
+          const count = bySource[key] ?? 0;
+          if (count === 0 && key !== "ai_enrich") return null; // always show ai_enrich (the autonomy signal)
+          return (
+            <span
+              key={key}
+              className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-bold ${tone}`}
+            >
+              {name} · {count.toLocaleString()}
+            </span>
+          );
+        })}
+      </div>
+      <div className="mt-2 text-[10px] text-zinc-500">
+        QC ·{" "}
+        <span className="font-bold text-emerald-700">
+          {(byQc.pass ?? 0).toLocaleString()} pass
+        </span>{" "}
+        ·{" "}
+        <span className="font-bold text-amber-700">
+          {(byQc.warn ?? 0).toLocaleString()} warn
+        </span>{" "}
+        ·{" "}
+        <span className="font-bold text-rose-700">
+          {(byQc.fail ?? 0).toLocaleString()} fail
+        </span>
+      </div>
+      {aiTotal > 0 && (
+        <div className="mt-1.5 text-[11px] font-semibold text-violet-700">
+          {aiTotal.toLocaleString()} AI-written so far
+        </div>
+      )}
+    </div>
+  );
 }
 
 function LoopStep({

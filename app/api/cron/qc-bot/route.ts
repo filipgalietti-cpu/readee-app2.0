@@ -30,6 +30,7 @@ import {
   verifyImageRegen,
   verifyAudioRegen,
 } from "@/lib/ai/qc-verify";
+import { updateQuestionQcStatus } from "@/lib/content/db";
 import lessonsData from "@/app/data/sample-lessons.json";
 
 export const dynamic = "force-dynamic";
@@ -281,6 +282,25 @@ async function regenImages(c: Counters, teacherId: string, limit: number) {
       expectedScene: promptText,
     });
     tallyVerify(c, verify);
+
+    // Mirror the regen + verify outcome onto questions_db so per-row
+    // status reflects bot activity. Failed verify → 'warn' (still
+    // delivered but flagged); pass → 'pass'; skipped → leave alone.
+    if (verify.verdict === "pass") {
+      await updateQuestionQcStatus({
+        questionId: f.target_id,
+        qcStatus: "pass",
+        bumpAttempts: true,
+        newImageUrl: imageUrl,
+      });
+    } else if (verify.verdict === "fail" || verify.verdict === "warn") {
+      await updateQuestionQcStatus({
+        questionId: f.target_id,
+        qcStatus: verify.verdict === "fail" ? "warn" : "warn",
+        bumpAttempts: true,
+        newImageUrl: imageUrl,
+      });
+    }
   }
 }
 
@@ -352,6 +372,22 @@ async function regenAudio(c: Counters, teacherId: string, limit: number) {
       expectedText: text,
     });
     tallyVerify(c, verify);
+
+    if (verify.verdict === "pass") {
+      await updateQuestionQcStatus({
+        questionId: f.target_id,
+        qcStatus: "pass",
+        bumpAttempts: true,
+        newAudioUrl: audioUrl,
+      });
+    } else if (verify.verdict === "fail" || verify.verdict === "warn") {
+      await updateQuestionQcStatus({
+        questionId: f.target_id,
+        qcStatus: "warn",
+        bumpAttempts: true,
+        newAudioUrl: audioUrl,
+      });
+    }
   }
 }
 

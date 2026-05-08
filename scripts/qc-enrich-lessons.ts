@@ -307,17 +307,56 @@ async function main() {
       skipped++;
       continue;
     }
-    // 4. Write proposal to content_review_queue.
     const proposed = result.proposed;
     const teachingSlides = proposed.slides.filter((s: any) => s.type !== "mcq");
     const stepCount = teachingSlides.reduce(
       (acc: number, s: any) => acc + (s.steps?.length ?? 0),
       0,
     );
-    const { error: insertErr } = await sb.from("content_review_queue").insert({
+
+    // ── 4a. PRIMARY write: lessons_db with source='ai_enrich'. This
+    //         is the autonomy unlock — the renderer (once flipped to
+    //         DB) picks up the new version automatically. Stamps
+    //         lineage_id, version+1, qc_status='warn' until the
+    //         self-verify step promotes it to 'pass'.
+    const gradeShort: Record<string, string> = {
+      Kindergarten: "K", "1st Grade": "1", "2nd Grade": "2",
+      "3rd Grade": "3", "4th Grade": "4",
+    };
+    const { data: existing } = await sb
+      .from("lessons_db")
+      .select("id, version")
+      .eq("standard_id", standardId)
+      .eq("language", "en")
+      .maybeSingle();
+    const { error: dbErr } = await sb.from("lessons_db").upsert(
+      {
+        standard_id: standardId,
+        grade: gradeShort[thin.grade] ?? thin.grade,
+        title: proposed.title ?? thin.title,
+        slides: proposed.slides,
+        qc_status: "warn",
+        source: "ai_enrich",
+        language: "en",
+        lineage_id: existing?.id ?? null,
+        version: existing ? (existing as any).version + 1 : 1,
+      },
+      { onConflict: "standard_id,language" },
+    );
+    if (dbErr) {
+      console.log(`    ! lessons_db upsert: ${dbErr.message}`);
+      skipped++;
+      continue;
+    }
+
+    // ── 4b. SECONDARY: content_review_queue entry for visibility on
+    //         /owner/batch-qc. Status='ready' (auto-promoted) since
+    //         the canonical DB write already happened — this row is
+    //         the audit trail, not the gate.
+    const { error: queueErr } = await sb.from("content_review_queue").insert({
       asset_kind: "lesson_enrichment",
       asset_ref: {
-        table: "sample-lessons.json",
+        table: "lessons_db",
         standardId,
         grade: thin.grade,
         kReference: reference.standardId,
@@ -325,7 +364,7 @@ async function main() {
       source: "enrichment_v1",
       prompt_version: "k-reference-2026-05-07",
       standard_id: standardId,
-      status: "needs_review",
+      status: "ready",
       qc_overall: "warn",
       qc_report: {
         finding_id: (f as any).id,
@@ -336,11 +375,10 @@ async function main() {
       },
       title: thin.title,
     });
-    if (insertErr) {
-      console.log(`    ! insert: ${insertErr.message}`);
-      skipped++;
-      continue;
+    if (queueErr) {
+      console.log(`    (warn) review_queue insert: ${queueErr.message}`);
     }
+
     // Log to content_qc_log so /owner/qc-bot timeline shows it.
     await sb.from("content_qc_log").insert({
       target_kind: "lesson",
@@ -353,14 +391,14 @@ async function main() {
       agent: "qc-bot/enrich-lessons",
     });
     made++;
-    console.log(`    ✓ proposal queued (${stepCount} enriched steps)`);
+    console.log(`    ✓ wrote lessons_db version ${(existing?.version ?? 0) + 1} (${stepCount} steps)`);
     // Throttle to avoid Gemini rate caps.
     await new Promise((r) => setTimeout(r, 1500));
   }
 
-  console.log(`Done — proposed ${made}, skipped ${skipped}.`);
+  console.log(`Done — wrote ${made}, skipped ${skipped}.`);
   console.log(
-    `Review at /admin/batch-qc?asset_kind=lesson_enrichment, then merge approved proposals into app/data/sample-lessons.json.`,
+    `View enriched lessons at /owner/qc-bot (DB content tile). Source='ai_enrich' rows are the AI-generated versions.`,
   );
 }
 
