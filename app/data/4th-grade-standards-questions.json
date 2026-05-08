@@ -1,10 +1,12 @@
 {
   "grade": "4th",
-  "grade_label": "4th Grade",
-  "total_standards": 31,
-  "total_questions": 143,
+  "standard_framework": "Common Core State Standards",
+  "total_standards": 34,
+  "total_questions": 158,
   "standards": [
     {
+      "standard_id": "RL.4.1",
+      "standard_description": "Refer to details and examples in a text when explaining what the text says explicitly and when drawing inferences.",
       "domain": "Reading Literature",
       "parent_tip": "Ask your child to support their answers with evidence: 'What in the story makes you think that?'",
       "questions": [
@@ -93,11 +95,11 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.1/RL.4.1-Q5-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.1/RL.4.1-Q5.png"
         }
-      ],
-      "standard_id": "RL.4.1",
-      "standard_description": "Refer to details and examples in a text when explaining what the text says explicitly and when drawing inferences."
+      ]
     },
     {
+      "standard_id": "RL.4.2",
+      "standard_description": "Determine a theme of a story, drama, or poem from details in the text; summarize the text.",
       "domain": "Reading Literature",
       "parent_tip": "Ask 'What big life lesson does this story teach?' — that's the theme.",
       "questions": [
@@ -180,11 +182,11 @@
           "hint": "To find the best summary, think about the main character, what problem she faced, and how she solved it throughout the entire story.",
           "difficulty": "easy"
         }
-      ],
-      "standard_id": "RL.4.2",
-      "standard_description": "Determine a theme of a story, drama, or poem from details in the text; summarize the text."
+      ]
     },
     {
+      "standard_id": "RL.4.3",
+      "standard_description": "Describe in depth a character, setting, or event, drawing on specific details in the text.",
       "domain": "Reading Literature",
       "parent_tip": "Ask your child to describe characters using evidence: 'What did they say or do that shows that trait?'",
       "questions": [
@@ -270,11 +272,11 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.3/RL.4.3-Q5-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.3/RL.4.3-Q5.png"
         }
-      ],
-      "standard_id": "RL.4.3",
-      "standard_description": "Describe in depth a character, setting, or event, drawing on specific details in the text."
+      ]
     },
     {
+      "standard_id": "RL.4.4",
+      "standard_description": "Determine the meaning of words and phrases as used in a text, including those that allude to significant characters found in mythology.",
       "domain": "Reading Literature",
       "parent_tip": "Discuss how authors use words creatively — 'What does the author really mean by that phrase?'",
       "questions": [
@@ -363,11 +365,11 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.4/RL.4.4-Q5-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.4/RL.4.4-Q5.png"
         }
-      ],
-      "standard_id": "RL.4.4",
-      "standard_description": "Determine the meaning of words and phrases as used in a text, including those that allude to significant characters found in mythology."
+      ]
     },
     {
+      "standard_id": "RL.4.5",
+      "standard_description": "Explain major differences between poems, drama, and prose; refer to structural elements when writing or speaking about a text.",
       "domain": "Reading Literature",
       "parent_tip": "Compare how the same story might look as a poem, a play, and a chapter book.",
       "questions": [
@@ -392,6 +394,19 @@
           "id": "RL.4.5-Q2",
           "type": "missing_word",
           "prompt": "Pick the right word to fill the blank.",
+          "correct": "Paragraphs",
+          "hint": "Stanzas group lines in a poem, just like ___ group sentences in prose.",
+          "difficulty": 1,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.5/RL.4.5-Q2.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.5/RL.4.5-Q2-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.5/RL.4.5-Q2.png",
+          "blank_index": 4,
+          "missing_choices": [
+            "Sentences",
+            "Titles",
+            "Paragraphs",
+            "Chapters"
+          ],
           "sentence_words": [
             "Stanzas",
             "are",
@@ -400,20 +415,7 @@
             "___",
             "in",
             "prose."
-          ],
-          "blank_index": 4,
-          "missing_choices": [
-            "Sentences",
-            "Titles",
-            "Paragraphs",
-            "Chapters"
-          ],
-          "correct": "Paragraphs",
-          "hint": "Stanzas group lines in a poem, just like ___ group sentences in prose.",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.5/RL.4.5-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.5/RL.4.5-Q2-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.5/RL.4.5-Q2.png"
+          ]
         },
         {
           "id": "RL.4.5-Q3",
@@ -452,6 +454,19 @@
           "id": "RL.4.5-Q5",
           "type": "missing_word",
           "prompt": "Pick the right word to fill the blank.",
+          "correct": "Line or sentence",
+          "hint": "A verse is a single line of poetry — similar to a sentence in prose.",
+          "difficulty": 2,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.5/RL.4.5-Q5.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.5/RL.4.5-Q5-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.5/RL.4.5-Q5.png",
+          "blank_index": 9,
+          "missing_choices": [
+            "Chapter",
+            "Setting",
+            "Line or sentence",
+            "Character"
+          ],
           "sentence_words": [
             "A",
             "verse",
@@ -466,26 +481,13 @@
             "in",
             "a",
             "novel."
-          ],
-          "blank_index": 9,
-          "missing_choices": [
-            "Chapter",
-            "Setting",
-            "Line or sentence",
-            "Character"
-          ],
-          "correct": "Line or sentence",
-          "hint": "A verse is a single line of poetry — similar to a sentence in prose.",
-          "difficulty": 2,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.5/RL.4.5-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.5/RL.4.5-Q5-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.5/RL.4.5-Q5.png"
+          ]
         }
-      ],
-      "standard_id": "RL.4.5",
-      "standard_description": "Explain major differences between poems, drama, and prose; refer to structural elements when writing or speaking about a text."
+      ]
     },
     {
+      "standard_id": "RL.4.6",
+      "standard_description": "Compare and contrast the point of view from which different stories are narrated, including first- and third-person.",
       "domain": "Reading Literature",
       "parent_tip": "Ask 'Is the character telling the story (first person) or is someone else describing it (third person)?'",
       "questions": [
@@ -565,11 +567,11 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.6/RL.4.6-Q5-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.6/RL.4.6-Q5.png"
         }
-      ],
-      "standard_id": "RL.4.6",
-      "standard_description": "Compare and contrast the point of view from which different stories are narrated, including first- and third-person."
+      ]
     },
     {
+      "standard_id": "RL.4.7",
+      "standard_description": "Make connections between the text of a story or drama and a visual or oral presentation of the text.",
       "domain": "Reading Literature",
       "parent_tip": "After reading a book, watch the movie version and discuss what's different and why.",
       "questions": [
@@ -655,11 +657,11 @@
           "hint": "Think about the specific details given for the wizard's tower in the book compared to the movie.",
           "difficulty": "easy"
         }
-      ],
-      "standard_id": "RL.4.7",
-      "standard_description": "Make connections between the text of a story or drama and a visual or oral presentation of the text."
+      ]
     },
     {
+      "standard_id": "RL.4.9",
+      "standard_description": "Compare and contrast the treatment of similar themes and topics in stories, myths, and traditional literature from different cultures.",
       "domain": "Reading Literature",
       "parent_tip": "Read myths from different cultures and discuss: 'How does this culture explain the same thing differently?'",
       "questions": [
@@ -739,11 +741,11 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.9/RL.4.9-Q5-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.9/RL.4.9-Q5.png"
         }
-      ],
-      "standard_id": "RL.4.9",
-      "standard_description": "Compare and contrast the treatment of similar themes and topics in stories, myths, and traditional literature from different cultures."
+      ]
     },
     {
+      "standard_id": "RL.4.10",
+      "standard_description": "By end of the year, read and comprehend literature in the grades 4-5 text complexity band proficiently.",
       "domain": "Reading Literature",
       "parent_tip": "Encourage your child to read chapter books independently and discuss what they've read.",
       "questions": [
@@ -832,11 +834,11 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.10/RL.4.10-Q5-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.10/RL.4.10-Q5.png"
         }
-      ],
-      "standard_id": "RL.4.10",
-      "standard_description": "By end of the year, read and comprehend literature in the grades 4-5 text complexity band proficiently."
+      ]
     },
     {
+      "standard_id": "RI.4.1",
+      "standard_description": "Refer to details and examples in a text when explaining what the text says explicitly and when drawing inferences.",
       "domain": "Reading Informational Text",
       "parent_tip": "Teach your child to say 'The text says...' when supporting their answers with evidence.",
       "questions": [
@@ -922,11 +924,11 @@
           "hint": "Think about how Maya acted and felt while she was baking, such as waking early, being careful, humming, and smiling.",
           "difficulty": "easy"
         }
-      ],
-      "standard_id": "RI.4.1",
-      "standard_description": "Refer to details and examples in a text when explaining what the text says explicitly and when drawing inferences."
+      ]
     },
     {
+      "standard_id": "RI.4.2",
+      "standard_description": "Determine the main idea of a text and explain how it is supported by key details; summarize the text.",
       "domain": "Reading Informational Text",
       "parent_tip": "Practice: 'What's the ONE big idea? Now give me three details that prove it.'",
       "questions": [
@@ -1012,11 +1014,11 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.2/RI.4.2-Q5-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.2/RI.4.2-Q5.png"
         }
-      ],
-      "standard_id": "RI.4.2",
-      "standard_description": "Determine the main idea of a text and explain how it is supported by key details; summarize the text."
+      ]
     },
     {
+      "standard_id": "RI.4.3",
+      "standard_description": "Explain events, procedures, ideas, or concepts in a historical, scientific, or technical text.",
       "domain": "Reading Informational Text",
       "parent_tip": "Ask your child to explain what happened and WHY — 'What caused that? What was the result?'",
       "questions": [
@@ -1041,18 +1043,18 @@
           "id": "RI.4.3-Q2",
           "type": "sentence_build",
           "prompt": "Put the vaccine steps in the correct order",
+          "correct": "Vaccine introduces weak virus Immune system learns to fight it Body is prepared for the real virus",
+          "hint": "First comes the vaccine, then the body learns, then it's ready.",
+          "difficulty": 2,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.3/RI.4.3-Q2.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.3/RI.4.3-Q2-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.3/RI.4.3-Q2.png",
           "words": [
             "Immune system learns to fight it",
             "Body is prepared for the real virus",
             "Vaccine introduces weak virus"
           ],
-          "correct": "Vaccine introduces weak virus Immune system learns to fight it Body is prepared for the real virus",
-          "hint": "First comes the vaccine, then the body learns, then it's ready.",
-          "ordered": true,
-          "difficulty": 2,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.3/RI.4.3-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.3/RI.4.3-Q2-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.3/RI.4.3-Q2.png"
+          "ordered": true
         },
         {
           "id": "RI.4.3-Q3",
@@ -1105,11 +1107,11 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.3/RI.4.3-Q5-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.3/RI.4.3-Q5.png"
         }
-      ],
-      "standard_id": "RI.4.3",
-      "standard_description": "Explain events, procedures, ideas, or concepts in a historical, scientific, or technical text."
+      ]
     },
     {
+      "standard_id": "RI.4.4",
+      "standard_description": "Determine the meaning of general academic and domain-specific words or phrases in a text.",
       "domain": "Reading Informational Text",
       "parent_tip": "Help your child use context clues, word parts, and reference tools together to unlock tough vocabulary.",
       "questions": [
@@ -1134,6 +1136,9 @@
           "id": "RI.4.4-Q6",
           "type": "tap_to_pair",
           "prompt": "Match each word to its meaning!",
+          "correct": "Excavated→Dug up carefully, Interdependent→Depending on each other, Metamorphosis→A dramatic change in form, Famine→Extreme widespread hunger",
+          "hint": "Use context clues and word parts to match each word!",
+          "difficulty": 2,
           "left_items": [
             "Excavated",
             "Interdependent",
@@ -1147,20 +1152,17 @@
             "Dug up carefully"
           ],
           "correct_pairs": {
+            "Famine": "Extreme widespread hunger",
             "Excavated": "Dug up carefully",
-            "Interdependent": "Depending on each other",
             "Metamorphosis": "A dramatic change in form",
-            "Famine": "Extreme widespread hunger"
-          },
-          "correct": "Excavated→Dug up carefully, Interdependent→Depending on each other, Metamorphosis→A dramatic change in form, Famine→Extreme widespread hunger",
-          "hint": "Use context clues and word parts to match each word!",
-          "difficulty": 2
+            "Interdependent": "Depending on each other"
+          }
         }
-      ],
-      "standard_id": "RI.4.4",
-      "standard_description": "Determine the meaning of general academic and domain-specific words or phrases in a text."
+      ]
     },
     {
+      "standard_id": "RI.4.5",
+      "standard_description": "Describe the overall structure of events, ideas, concepts, or information in a text.",
       "domain": "Reading Informational Text",
       "parent_tip": "Help your child identify text structures: is the author comparing, showing cause/effect, describing a sequence, or presenting a problem and solution?",
       "questions": [
@@ -1182,6 +1184,9 @@
           "id": "RI.4.5-Q6",
           "type": "category_sort",
           "prompt": "Sort each passage description into its text structure!",
+          "correct": "correct",
+          "hint": "Look for signal words: problem/solution, first/next/then, similarly/however, because/as a result!",
+          "difficulty": 2,
           "categories": [
             "Problem & Solution",
             "Chronological",
@@ -1189,17 +1194,17 @@
             "Cause & Effect"
           ],
           "category_items": {
-            "Problem & Solution": [
-              "Too much trash in the ocean → recycling programs"
-            ],
             "Chronological": [
               "First, next, then, finally"
+            ],
+            "Cause & Effect": [
+              "Temperature dropped → pipes burst → basement flooded"
             ],
             "Compare & Contrast": [
               "Hurricanes vs tornadoes: similarly, however"
             ],
-            "Cause & Effect": [
-              "Temperature dropped → pipes burst → basement flooded"
+            "Problem & Solution": [
+              "Too much trash in the ocean → recycling programs"
             ]
           },
           "items": [
@@ -1207,10 +1212,7 @@
             "First, next, then, finally",
             "Hurricanes vs tornadoes: similarly, however",
             "Temperature dropped → pipes burst → basement flooded"
-          ],
-          "correct": "correct",
-          "hint": "Look for signal words: problem/solution, first/next/then, similarly/however, because/as a result!",
-          "difficulty": 2
+          ]
         },
         {
           "id": "RI.4.5-Q3",
@@ -1266,6 +1268,11 @@
           "id": "RI.4.5-Q8",
           "type": "tap_to_pair",
           "prompt": "Match each signal word to the text structure it belongs to!",
+          "correct": "First, next, finally→Chronological, Because, as a result→Cause & Effect, Both, however, unlike→Compare & Contrast, The problem is, one solution→Problem & Solution",
+          "hint": "Each set of signal words belongs to exactly one text structure!",
+          "difficulty": "medium",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q8.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q8-hint.mp3",
           "left_items": [
             "First, next, finally",
             "Because, as a result",
@@ -1279,21 +1286,28 @@
             "Cause & Effect"
           ],
           "correct_pairs": {
-            "First, next, finally": "Chronological",
             "Because, as a result": "Cause & Effect",
+            "First, next, finally": "Chronological",
             "Both, however, unlike": "Compare & Contrast",
             "The problem is, one solution": "Problem & Solution"
-          },
-          "correct": "First, next, finally→Chronological, Because, as a result→Cause & Effect, Both, however, unlike→Compare & Contrast, The problem is, one solution→Problem & Solution",
-          "hint": "Each set of signal words belongs to exactly one text structure!",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q8.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q8-hint.mp3"
+          }
         },
         {
           "id": "RI.4.5-Q9",
           "type": "missing_word",
           "prompt": "Pick the right text structure name to fill the blank.",
+          "correct": "chronological",
+          "hint": "Events told in the order they happened = in time order. What's that called?",
+          "difficulty": "easy",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q9.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q9-hint.mp3",
+          "blank_index": 9,
+          "missing_choices": [
+            "chronological",
+            "cause and effect",
+            "compare and contrast",
+            "problem and solution"
+          ],
           "sentence_words": [
             "A",
             "passage",
@@ -1306,19 +1320,7 @@
             "uses",
             "___",
             "structure."
-          ],
-          "blank_index": 9,
-          "missing_choices": [
-            "chronological",
-            "cause and effect",
-            "compare and contrast",
-            "problem and solution"
-          ],
-          "correct": "chronological",
-          "hint": "Events told in the order they happened = in time order. What's that called?",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q9.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q9-hint.mp3"
+          ]
         },
         {
           "id": "RI.4.5-Q10",
@@ -1356,24 +1358,24 @@
           "id": "RI.4.5-Q12",
           "type": "sentence_build",
           "prompt": "Put in order from first to last: how a coral reef forms.",
+          "correct": "Tiny coral larvae attach to rock Coral colony grows over thousands of years Layers of coral build up A full reef ecosystem develops",
+          "hint": "It starts small — tiny larvae first, then growth, then layers, then a full reef!",
+          "difficulty": "hard",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q12.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q12-hint.mp3",
           "words": [
             "Coral colony grows over thousands of years",
             "Tiny coral larvae attach to rock",
             "A full reef ecosystem develops",
             "Layers of coral build up"
           ],
-          "correct": "Tiny coral larvae attach to rock Coral colony grows over thousands of years Layers of coral build up A full reef ecosystem develops",
-          "ordered": true,
-          "hint": "It starts small — tiny larvae first, then growth, then layers, then a full reef!",
-          "difficulty": "hard",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q12.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q12-hint.mp3"
+          "ordered": true
         }
-      ],
-      "standard_id": "RI.4.5",
-      "standard_description": "Describe the overall structure of events, ideas, concepts, or information in a text."
+      ]
     },
     {
+      "standard_id": "RI.4.6",
+      "standard_description": "Compare and contrast a firsthand and secondhand account of the same event or topic.",
       "domain": "Reading Informational Text",
       "parent_tip": "Discuss: 'A diary entry is firsthand (I was there). A textbook is secondhand (someone describes what happened).'",
       "questions": [
@@ -1456,11 +1458,11 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.6/RI.4.6-Q5-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.6/RI.4.6-Q5.png"
         }
-      ],
-      "standard_id": "RI.4.6",
-      "standard_description": "Compare and contrast a firsthand and secondhand account of the same event or topic."
+      ]
     },
     {
+      "standard_id": "RI.4.7",
+      "standard_description": "Interpret information presented visually, orally, or quantitatively and explain how it contributes to understanding.",
       "domain": "Reading Informational Text",
       "parent_tip": "Practice reading charts, graphs, and timelines — ask your child what story the data tells.",
       "questions": [
@@ -1482,8 +1484,6 @@
           "chart_data": {
             "kind": "bar",
             "title": "School Recycling Amounts",
-            "xLabel": "Months",
-            "yLabel": "Pounds Recycled",
             "series": [
               {
                 "label": "January",
@@ -1497,7 +1497,9 @@
                 "label": "March",
                 "value": 500
               }
-            ]
+            ],
+            "xLabel": "Months",
+            "yLabel": "Pounds Recycled"
           }
         },
         {
@@ -1565,11 +1567,11 @@
           "hint": "Think about what the height of a bar on a graph tells you about the amount or popularity of that category.",
           "difficulty": "easy"
         }
-      ],
-      "standard_id": "RI.4.7",
-      "standard_description": "Interpret information presented visually, orally, or quantitatively and explain how it contributes to understanding."
+      ]
     },
     {
+      "standard_id": "RI.4.8",
+      "standard_description": "Explain how an author uses reasons and evidence to support particular points in a text.",
       "domain": "Reading Informational Text",
       "parent_tip": "Ask 'What point is the author making? What evidence do they give to back it up?'",
       "questions": [
@@ -1655,11 +1657,11 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.8/RI.4.8-Q5-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.8/RI.4.8-Q5.png"
         }
-      ],
-      "standard_id": "RI.4.8",
-      "standard_description": "Explain how an author uses reasons and evidence to support particular points in a text."
+      ]
     },
     {
+      "standard_id": "RI.4.9",
+      "standard_description": "Integrate information from two texts on the same topic to write or speak about the subject knowledgeably.",
       "domain": "Reading Informational Text",
       "parent_tip": "Read two articles on the same topic and help your child combine what they learned from both.",
       "questions": [
@@ -1745,11 +1747,11 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.9/RI.4.9-Q5-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.9/RI.4.9-Q5.png"
         }
-      ],
-      "standard_id": "RI.4.9",
-      "standard_description": "Integrate information from two texts on the same topic to write or speak about the subject knowledgeably."
+      ]
     },
     {
+      "standard_id": "RI.4.10",
+      "standard_description": "By end of year, read and comprehend informational texts in the grades 4-5 text complexity band proficiently.",
       "domain": "Reading Informational Text",
       "parent_tip": "Encourage reading nonfiction books, articles, and magazines about topics your child is passionate about.",
       "questions": [
@@ -1838,11 +1840,11 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.10/RI.4.10-Q5-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.10/RI.4.10-Q5.png"
         }
-      ],
-      "standard_id": "RI.4.10",
-      "standard_description": "By end of year, read and comprehend informational texts in the grades 4-5 text complexity band proficiently."
+      ]
     },
     {
+      "standard_id": "RF.4.3",
+      "standard_description": "Know and apply grade-level phonics and word analysis skills in decoding words.",
       "domain": "Reading Foundational Skills",
       "parent_tip": "Help your child use roots, prefixes, and suffixes to decode unfamiliar multisyllabic words.",
       "questions": [
@@ -1928,11 +1930,11 @@
           "hint": "Think about what the parts 'pseudo' and 'nym' mean when put together to form the word 'pseudonym'.",
           "difficulty": "medium"
         }
-      ],
-      "standard_id": "RF.4.3",
-      "standard_description": "Know and apply grade-level phonics and word analysis skills in decoding words."
+      ]
     },
     {
+      "standard_id": "RF.4.3a",
+      "standard_description": "Use combined knowledge of letter-sound correspondences, syllabication patterns, and morphology to read accurately unfamiliar multisyllabic words.",
       "domain": "Reading Foundational Skills",
       "parent_tip": "When facing a big word, try: 1) Break into syllables, 2) Look for familiar roots/affixes, 3) Sound it out, 4) Check if it makes sense.",
       "questions": [
@@ -2018,11 +2020,11 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.3a/RF.4.3a-Q5-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RF.4.3a/RF.4.3a-Q5.png"
         }
-      ],
-      "standard_id": "RF.4.3a",
-      "standard_description": "Use combined knowledge of letter-sound correspondences, syllabication patterns, and morphology to read accurately unfamiliar multisyllabic words."
+      ]
     },
     {
+      "standard_id": "RF.4.4",
+      "standard_description": "Read with sufficient accuracy and fluency to support comprehension.",
       "domain": "Reading Foundational Skills",
       "parent_tip": "Have your child read aloud regularly — fluent reading should sound like natural conversation.",
       "questions": [
@@ -2102,11 +2104,11 @@
           "hint": "Look for the choice that describes an action you can take by yourself to fix your understanding.",
           "difficulty": "easy"
         }
-      ],
-      "standard_id": "RF.4.4",
-      "standard_description": "Read with sufficient accuracy and fluency to support comprehension."
+      ]
     },
     {
+      "standard_id": "L.4.4",
+      "standard_description": "Determine or clarify the meaning of unknown and multiple-meaning words and phrases based on grade 4 reading and content.",
       "domain": "Language",
       "parent_tip": "Teach your child multiple strategies: context clues, word parts, and dictionary skills — use them together.",
       "questions": [
@@ -2195,11 +2197,11 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4/L.4.4-Q5-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4/L.4.4-Q5.png"
         }
-      ],
-      "standard_id": "L.4.4",
-      "standard_description": "Determine or clarify the meaning of unknown and multiple-meaning words and phrases based on grade 4 reading and content."
+      ]
     },
     {
+      "standard_id": "L.4.4a",
+      "standard_description": "Use context as a clue to the meaning of a word or phrase.",
       "domain": "Language",
       "parent_tip": "Model this strategy: 'I don't know this word, but the rest of the sentence tells me...'",
       "questions": [
@@ -2224,6 +2226,9 @@
           "id": "L.4.4a-Q6",
           "type": "tap_to_pair",
           "prompt": "Match each word to its meaning!",
+          "correct": "Unprecedented→Never happened before, Resilient→Able to recover, Meticulous→Extremely careful, Verbose→Using too many words",
+          "hint": "Use context clues from the sentence around each word!",
+          "difficulty": 2,
           "left_items": [
             "Unprecedented",
             "Resilient",
@@ -2237,20 +2242,17 @@
             "Never happened before"
           ],
           "correct_pairs": {
-            "Unprecedented": "Never happened before",
+            "Verbose": "Using too many words",
             "Resilient": "Able to recover",
             "Meticulous": "Extremely careful",
-            "Verbose": "Using too many words"
-          },
-          "correct": "Unprecedented→Never happened before, Resilient→Able to recover, Meticulous→Extremely careful, Verbose→Using too many words",
-          "hint": "Use context clues from the sentence around each word!",
-          "difficulty": 2
+            "Unprecedented": "Never happened before"
+          }
         }
-      ],
-      "standard_id": "L.4.4a",
-      "standard_description": "Use context as a clue to the meaning of a word or phrase."
+      ]
     },
     {
+      "standard_id": "L.4.4b",
+      "standard_description": "Use common Greek and Latin affixes and roots as clues to the meaning of a word.",
       "domain": "Language",
       "parent_tip": "Learn root words together: graph = write, port = carry, rupt = break, dict = say.",
       "questions": [
@@ -2272,6 +2274,9 @@
           "id": "L.4.4b-Q6",
           "type": "tap_to_pair",
           "prompt": "Match each word to its root meaning!",
+          "correct": "Predict (dict=say)→To say before, Autograph (graph=write)→Own handwriting of name, Interrupt (rupt=break)→To break into, Benefactor (bene=good)→A person who does good",
+          "hint": "Use the Latin/Greek root in parentheses to figure out the meaning!",
+          "difficulty": 2,
           "left_items": [
             "Predict (dict=say)",
             "Autograph (graph=write)",
@@ -2286,19 +2291,16 @@
           ],
           "correct_pairs": {
             "Predict (dict=say)": "To say before",
-            "Autograph (graph=write)": "Own handwriting of name",
+            "Benefactor (bene=good)": "A person who does good",
             "Interrupt (rupt=break)": "To break into",
-            "Benefactor (bene=good)": "A person who does good"
-          },
-          "correct": "Predict (dict=say)→To say before, Autograph (graph=write)→Own handwriting of name, Interrupt (rupt=break)→To break into, Benefactor (bene=good)→A person who does good",
-          "hint": "Use the Latin/Greek root in parentheses to figure out the meaning!",
-          "difficulty": 2
+            "Autograph (graph=write)": "Own handwriting of name"
+          }
         }
-      ],
-      "standard_id": "L.4.4b",
-      "standard_description": "Use common Greek and Latin affixes and roots as clues to the meaning of a word."
+      ]
     },
     {
+      "standard_id": "L.4.4c",
+      "standard_description": "Consult reference materials to find the pronunciation and determine or clarify the precise meaning of key words.",
       "domain": "Language",
       "parent_tip": "Teach your child to use online dictionaries, thesauruses, and pronunciation guides independently.",
       "questions": [
@@ -2381,11 +2383,11 @@
           "hint": "Read the sentence again and think about what \"did not flow in a straight line\" tells you about the river's movement.",
           "difficulty": "easy"
         }
-      ],
-      "standard_id": "L.4.4c",
-      "standard_description": "Consult reference materials to find the pronunciation and determine or clarify the precise meaning of key words."
+      ]
     },
     {
+      "standard_id": "L.4.5",
+      "standard_description": "Demonstrate understanding of figurative language, word relationships, and nuances in word meanings.",
       "domain": "Language",
       "parent_tip": "Explore figurative language in books, songs, and everyday conversation — similes, metaphors, idioms, and more.",
       "questions": [
@@ -2474,11 +2476,11 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5/L.4.5-Q5-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5/L.4.5-Q5.png"
         }
-      ],
-      "standard_id": "L.4.5",
-      "standard_description": "Demonstrate understanding of figurative language, word relationships, and nuances in word meanings."
+      ]
     },
     {
+      "standard_id": "L.4.5a",
+      "standard_description": "Explain the meaning of simple similes and metaphors in context.",
       "domain": "Language",
       "parent_tip": "Ask 'What two things are being compared? What do they have in common?'",
       "questions": [
@@ -2500,6 +2502,9 @@
           "id": "L.4.5a-Q6",
           "type": "tap_to_pair",
           "prompt": "Match each simile or metaphor to its meaning!",
+          "correct": "Smile bright as sun→Both are bright and warm, Time is money→Time is valuable, Dancer like water→Smooth and graceful, Heart of stone→Cold and unfeeling",
+          "hint": "Think about what the two things being compared have in common!",
+          "difficulty": 2,
           "left_items": [
             "Smile bright as sun",
             "Time is money",
@@ -2513,20 +2518,17 @@
             "Both are bright and warm"
           ],
           "correct_pairs": {
-            "Smile bright as sun": "Both are bright and warm",
             "Time is money": "Time is valuable",
+            "Heart of stone": "Cold and unfeeling",
             "Dancer like water": "Smooth and graceful",
-            "Heart of stone": "Cold and unfeeling"
-          },
-          "correct": "Smile bright as sun→Both are bright and warm, Time is money→Time is valuable, Dancer like water→Smooth and graceful, Heart of stone→Cold and unfeeling",
-          "hint": "Think about what the two things being compared have in common!",
-          "difficulty": 2
+            "Smile bright as sun": "Both are bright and warm"
+          }
         }
-      ],
-      "standard_id": "L.4.5a",
-      "standard_description": "Explain the meaning of simple similes and metaphors in context."
+      ]
     },
     {
+      "standard_id": "L.4.5b",
+      "standard_description": "Recognize and explain the meaning of common idioms, adages, and proverbs.",
       "domain": "Language",
       "parent_tip": "Collect idioms as a family: 'Actions speak louder than words' — discuss what they really mean.",
       "questions": [
@@ -2551,6 +2553,9 @@
           "id": "L.4.5b-Q6",
           "type": "tap_to_pair",
           "prompt": "Match each idiom or proverb to its meaning!",
+          "correct": "Book by cover→Don't judge by appearance, Actions > words→What you do matters more, Arm and leg→Very expensive, When it rains→Problems come all at once",
+          "hint": "These sayings have hidden meanings — think about what they really teach!",
+          "difficulty": 2,
           "left_items": [
             "Book by cover",
             "Actions > words",
@@ -2564,20 +2569,17 @@
             "Don't judge by appearance"
           ],
           "correct_pairs": {
-            "Book by cover": "Don't judge by appearance",
-            "Actions > words": "What you do matters more",
             "Arm and leg": "Very expensive",
-            "When it rains": "Problems come all at once"
-          },
-          "correct": "Book by cover→Don't judge by appearance, Actions > words→What you do matters more, Arm and leg→Very expensive, When it rains→Problems come all at once",
-          "hint": "These sayings have hidden meanings — think about what they really teach!",
-          "difficulty": 2
+            "Book by cover": "Don't judge by appearance",
+            "When it rains": "Problems come all at once",
+            "Actions > words": "What you do matters more"
+          }
         }
-      ],
-      "standard_id": "L.4.5b",
-      "standard_description": "Recognize and explain the meaning of common idioms, adages, and proverbs."
+      ]
     },
     {
+      "standard_id": "L.4.5c",
+      "standard_description": "Demonstrate understanding of words by relating them to their opposites and to words with similar but not identical meanings.",
       "domain": "Language",
       "parent_tip": "Play synonym/antonym games: 'What's a fancier word for happy? What's the opposite of generous?'",
       "questions": [
@@ -2602,13 +2604,12 @@
           "id": "L.4.5c-Q4",
           "type": "missing_word",
           "prompt": "Pick the best word to replace 'said' — the character is angry!",
-          "sentence_words": [
-            "\"That's",
-            "not",
-            "fair!\"",
-            "___",
-            "Marcus."
-          ],
+          "correct": "Shouted",
+          "hint": "An angry person saying 'That's not fair!' would most likely raise their voice!",
+          "difficulty": 1,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5c/L.4.5c-Q4.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5c/L.4.5c-Q4-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5c/L.4.5c-Q4.png",
           "blank_index": 3,
           "missing_choices": [
             "Whispered",
@@ -2616,17 +2617,21 @@
             "Mumbled",
             "Shouted"
           ],
-          "correct": "Shouted",
-          "hint": "An angry person saying 'That's not fair!' would most likely raise their voice!",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5c/L.4.5c-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5c/L.4.5c-Q4-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5c/L.4.5c-Q4.png"
+          "sentence_words": [
+            "\"That's",
+            "not",
+            "fair!\"",
+            "___",
+            "Marcus."
+          ]
         },
         {
           "id": "L.4.5c-Q6",
           "type": "tap_to_pair",
           "prompt": "Match each word to its synonym or antonym!",
+          "correct": "Courageous→Brave (synonym), Generous→Selfish (antonym), Expand→Contract (antonym)",
+          "hint": "Synonyms mean the same, antonyms mean the opposite!",
+          "difficulty": 2,
           "left_items": [
             "Courageous",
             "Generous",
@@ -2638,19 +2643,16 @@
             "Selfish (antonym)"
           ],
           "correct_pairs": {
-            "Courageous": "Brave (synonym)",
+            "Expand": "Contract (antonym)",
             "Generous": "Selfish (antonym)",
-            "Expand": "Contract (antonym)"
-          },
-          "correct": "Courageous→Brave (synonym), Generous→Selfish (antonym), Expand→Contract (antonym)",
-          "hint": "Synonyms mean the same, antonyms mean the opposite!",
-          "difficulty": 2
+            "Courageous": "Brave (synonym)"
+          }
         }
-      ],
-      "standard_id": "L.4.5c",
-      "standard_description": "Demonstrate understanding of words by relating them to their opposites and to words with similar but not identical meanings."
+      ]
     },
     {
+      "standard_id": "L.4.6",
+      "standard_description": "Acquire and use accurately grade-appropriate general academic and domain-specific words and phrases.",
       "domain": "Language",
       "parent_tip": "Encourage your child to use precise, interesting vocabulary in their writing and conversations.",
       "questions": [
@@ -2692,6 +2694,19 @@
           "id": "L.4.6-Q3",
           "type": "missing_word",
           "prompt": "Replace 'nice' with a more precise word.",
+          "correct": "Spectacular",
+          "hint": "A sunset that paints the sky deserves a more vivid word than 'nice'!",
+          "difficulty": 1,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.6/L.4.6-Q3.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.6/L.4.6-Q3-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.6/L.4.6-Q3.png",
+          "blank_index": 1,
+          "missing_choices": [
+            "Good",
+            "Nice",
+            "Spectacular",
+            "Okay"
+          ],
           "sentence_words": [
             "The",
             "___",
@@ -2705,20 +2720,7 @@
             "orange",
             "and",
             "pink."
-          ],
-          "blank_index": 1,
-          "missing_choices": [
-            "Good",
-            "Nice",
-            "Spectacular",
-            "Okay"
-          ],
-          "correct": "Spectacular",
-          "hint": "A sunset that paints the sky deserves a more vivid word than 'nice'!",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.6/L.4.6-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.6/L.4.6-Q3-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.6/L.4.6-Q3.png"
+          ]
         },
         {
           "id": "L.4.6-Q4",
@@ -2754,9 +2756,7 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.6/L.4.6-Q5-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.6/L.4.6-Q5.png"
         }
-      ],
-      "standard_id": "L.4.6",
-      "standard_description": "Acquire and use accurately grade-appropriate general academic and domain-specific words and phrases."
+      ]
     },
     {
       "standard_id": "L.4.1",
@@ -2791,8 +2791,8 @@
           "correct": "modal verb",
           "hint": "Modal verbs help other verbs (can, may, must)!",
           "difficulty": 2,
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.1/L.4.1-Q2-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.1/L.4.1-Q2.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.1/L.4.1-Q2-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.1/L.4.1-Q2.png"
         },
         {
@@ -2836,8 +2836,8 @@
           "correct": "I",
           "hint": "Use I as the subject!",
           "difficulty": 1,
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.1/L.4.1-Q5-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.1/L.4.1-Q5.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.1/L.4.1-Q5-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.1/L.4.1-Q5.png"
         }
       ]
@@ -2875,8 +2875,8 @@
           "correct": "Capitalize the important words",
           "hint": "Most words in a title get capitalized!",
           "difficulty": 1,
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.2/L.4.2-Q2-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.2/L.4.2-Q2.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.2/L.4.2-Q2-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.2/L.4.2-Q2.png"
         },
         {
@@ -2892,8 +2892,8 @@
           "correct": "\"Hello,\" she said.",
           "hint": "The comma goes inside the quotation marks!",
           "difficulty": 2,
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.2/L.4.2-Q3-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.2/L.4.2-Q3.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.2/L.4.2-Q3-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.2/L.4.2-Q3.png"
         },
         {
@@ -2909,8 +2909,8 @@
           "correct": "proper nouns like names and places",
           "hint": "Names and places always get capitals!",
           "difficulty": 1,
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.2/L.4.2-Q4-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.2/L.4.2-Q4.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.2/L.4.2-Q4-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.2/L.4.2-Q4.png"
         },
         {
@@ -2926,8 +2926,8 @@
           "correct": "dog's",
           "hint": "Apostrophe + S shows one dog owns it!",
           "difficulty": 1,
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.2/L.4.2-Q5-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.2/L.4.2-Q5.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.2/L.4.2-Q5-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.2/L.4.2-Q5.png"
         }
       ]
@@ -2951,8 +2951,8 @@
           "correct": "The puppy bounded across the meadow.",
           "hint": "Precise words paint a clearer picture!",
           "difficulty": 2,
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.3/L.4.3-Q1-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.3/L.4.3-Q1.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.3/L.4.3-Q1-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.3/L.4.3-Q1.png"
         },
         {
@@ -2968,8 +2968,8 @@
           "correct": "the way an author writes",
           "hint": "Style is the author's unique voice!",
           "difficulty": 2,
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.3/L.4.3-Q2-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.3/L.4.3-Q2.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.3/L.4.3-Q2-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.3/L.4.3-Q2.png"
         },
         {
@@ -2985,8 +2985,8 @@
           "correct": "for emphasis or impact",
           "hint": "Short sentences hit hard!",
           "difficulty": 2,
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.3/L.4.3-Q3-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.3/L.4.3-Q3.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.3/L.4.3-Q3-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.3/L.4.3-Q3.png"
         },
         {
@@ -3002,8 +3002,8 @@
           "correct": "more casual",
           "hint": "Friends like casual!",
           "difficulty": 1,
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.3/L.4.3-Q4-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.3/L.4.3-Q4.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.3/L.4.3-Q4-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.3/L.4.3-Q4.png"
         },
         {
@@ -3019,8 +3019,8 @@
           "correct": "thrilled",
           "hint": "Thrilled is more vivid than good!",
           "difficulty": 2,
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.3/L.4.3-Q5-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.3/L.4.3-Q5.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.3/L.4.3-Q5-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.3/L.4.3-Q5.png"
         }
       ]

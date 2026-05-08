@@ -1,0 +1,63 @@
+name: Sync content from DB → JSON
+
+# Closes the AI-autonomy loop without flipping the renderer:
+#
+#   AI worker (on Vercel) writes → lessons_db / questions_db
+#   This Action runs hourly + on manual dispatch
+#   Reads DB, regenerates app/data/*.json
+#   If diff → commits + pushes (triggers Vercel auto-deploy)
+#
+# Total latency from AI write to live: ~5-15 min.
+
+on:
+  schedule:
+    # Every hour at :12 past the hour. Stays out of the QC bot
+    # cron's 06:00 UTC window so the QC writes settle before sync
+    # picks them up.
+    - cron: '12 * * * *'
+  workflow_dispatch: # Manual trigger button on the Actions tab
+
+permissions:
+  contents: write   # commit + push back to main
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # Fetch full history so we can commit on top of latest main
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Run DB → JSON sync
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: npx tsx scripts/sync-content-from-db.ts || true
+        # `|| true` because the script exits with code 2 when there
+        # are diffs (so callers can detect changes). We handle the
+        # commit step below regardless of exit code.
+
+      - name: Commit + push if diff
+        run: |
+          if git diff --quiet app/data/; then
+            echo "No content changes — DB and JSON are in sync."
+            exit 0
+          fi
+          git config user.name "Readee QC Bot"
+          git config user.email "bot@readee.app"
+          git add app/data/
+          git commit -m "QC bot: auto-sync content DB → JSON" \
+            -m "Triggered by the hourly content-sync Action. Source rows in lessons_db / questions_db were updated by the QC pipeline since the last sync; this commit propagates the change to the JSON files the renderer imports. Vercel auto-deploys on push."
+          git push origin HEAD:main
+          echo "Synced and pushed."

@@ -1,10 +1,12 @@
 {
   "grade": "3rd",
-  "grade_label": "3rd Grade",
-  "total_standards": 38,
-  "total_questions": 183,
+  "standard_framework": "Common Core State Standards",
+  "total_standards": 41,
+  "total_questions": 198,
   "standards": [
     {
+      "standard_id": "RL.3.1",
+      "standard_description": "Ask and answer questions to demonstrate understanding of a text, referring explicitly to the text.",
       "domain": "Reading Literature",
       "parent_tip": "Ask your child to point to the exact sentence that answers a question about the story.",
       "questions": [
@@ -93,11 +95,11 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.1/RL.3.1-Q5-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RL.3.1/RL.3.1-Q5.png"
         }
-      ],
-      "standard_id": "RL.3.1",
-      "standard_description": "Ask and answer questions to demonstrate understanding of a text, referring explicitly to the text."
+      ]
     },
     {
+      "standard_id": "RL.3.2",
+      "standard_description": "Recount stories including fables, folktales, and myths; determine the central message, lesson, or moral.",
       "domain": "Reading Literature",
       "parent_tip": "After reading fables or folktales, ask 'What lesson was the author trying to teach?'",
       "questions": [
@@ -186,11 +188,11 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.2/RL.3.2-Q5-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RL.3.2/RL.3.2-Q5.png"
         }
-      ],
-      "standard_id": "RL.3.2",
-      "standard_description": "Recount stories including fables, folktales, and myths; determine the central message, lesson, or moral."
+      ]
     },
     {
+      "standard_id": "RL.3.3",
+      "standard_description": "Describe characters in a story and explain how their actions contribute to the sequence of events.",
       "domain": "Reading Literature",
       "parent_tip": "Ask 'Why did the character do that? What happened because of their choice?'",
       "questions": [
@@ -276,11 +278,11 @@
           "hint": "Think about how Lily prepared and planned before she started building her sandcastle.",
           "difficulty": "easy"
         }
-      ],
-      "standard_id": "RL.3.3",
-      "standard_description": "Describe characters in a story and explain how their actions contribute to the sequence of events."
+      ]
     },
     {
+      "standard_id": "RL.3.4",
+      "standard_description": "Determine the meaning of words and phrases as used in a text, distinguishing literal from nonliteral language.",
       "domain": "Reading Literature",
       "parent_tip": "When your child reads phrases like 'raining cats and dogs,' ask 'Does that REALLY mean animals are falling from the sky?'",
       "questions": [
@@ -322,6 +324,9 @@
           "id": "RL.3.4-Q6",
           "type": "tap_to_pair",
           "prompt": "Match each expression to its meaning!",
+          "correct": "On top of the world→Extremely happy, Let the cat out of the bag→Reveal a secret, Bit at their faces→Sharp and painful",
+          "hint": "These are figurative expressions — they don't mean what they literally say!",
+          "difficulty": 2,
           "left_items": [
             "On top of the world",
             "Let the cat out of the bag",
@@ -333,19 +338,16 @@
             "Reveal a secret"
           ],
           "correct_pairs": {
+            "Bit at their faces": "Sharp and painful",
             "On top of the world": "Extremely happy",
-            "Let the cat out of the bag": "Reveal a secret",
-            "Bit at their faces": "Sharp and painful"
-          },
-          "correct": "On top of the world→Extremely happy, Let the cat out of the bag→Reveal a secret, Bit at their faces→Sharp and painful",
-          "hint": "These are figurative expressions — they don't mean what they literally say!",
-          "difficulty": 2
+            "Let the cat out of the bag": "Reveal a secret"
+          }
         }
-      ],
-      "standard_id": "RL.3.4",
-      "standard_description": "Determine the meaning of words and phrases as used in a text, distinguishing literal from nonliteral language."
+      ]
     },
     {
+      "standard_id": "RL.3.5",
+      "standard_description": "Refer to parts of stories, dramas, and poems using terms such as chapter, scene, and stanza.",
       "domain": "Reading Literature",
       "parent_tip": "Teach your child that chapters are for books, scenes for plays, and stanzas for poems.",
       "questions": [
@@ -367,6 +369,19 @@
           "id": "RL.3.5-Q2",
           "type": "missing_word",
           "prompt": "Pick the right word to fill the blank.",
+          "correct": "Scene",
+          "hint": "Plays are divided into acts and these smaller parts.",
+          "difficulty": 1,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.5/RL.3.5-Q2.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.5/RL.3.5-Q2-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RL.3.5/RL.3.5-Q2.png",
+          "blank_index": 9,
+          "missing_choices": [
+            "Scene",
+            "Chapter",
+            "Paragraph",
+            "Stanza"
+          ],
           "sentence_words": [
             "In",
             "a",
@@ -379,20 +394,7 @@
             "new",
             "___",
             "begins."
-          ],
-          "blank_index": 9,
-          "missing_choices": [
-            "Scene",
-            "Chapter",
-            "Paragraph",
-            "Stanza"
-          ],
-          "correct": "Scene",
-          "hint": "Plays are divided into acts and these smaller parts.",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.5/RL.3.5-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.5/RL.3.5-Q2-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RL.3.5/RL.3.5-Q2.png"
+          ]
         },
         {
           "id": "RL.3.5-Q3",
@@ -429,16 +431,18 @@
           "id": "RL.3.5-Q5",
           "type": "category_sort",
           "prompt": "Match each structural part to its text type!",
+          "correct": "correct",
+          "hint": "Plays use scenes, poems use stanzas, and novels use chapters!",
+          "difficulty": 1,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.5/RL.3.5-Q5.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.5/RL.3.5-Q5-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RL.3.5/RL.3.5-Q5.png",
           "categories": [
             "Play/Drama",
             "Poem",
             "Novel"
           ],
           "category_items": {
-            "Play/Drama": [
-              "Scene",
-              "Stage directions"
-            ],
             "Poem": [
               "Stanza",
               "Verse"
@@ -446,6 +450,10 @@
             "Novel": [
               "Chapter",
               "Paragraph"
+            ],
+            "Play/Drama": [
+              "Scene",
+              "Stage directions"
             ]
           },
           "items": [
@@ -455,19 +463,13 @@
             "Stage directions",
             "Verse",
             "Paragraph"
-          ],
-          "correct": "correct",
-          "hint": "Plays use scenes, poems use stanzas, and novels use chapters!",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.5/RL.3.5-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.5/RL.3.5-Q5-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RL.3.5/RL.3.5-Q5.png"
+          ]
         }
-      ],
-      "standard_id": "RL.3.5",
-      "standard_description": "Refer to parts of stories, dramas, and poems using terms such as chapter, scene, and stanza."
+      ]
     },
     {
+      "standard_id": "RL.3.6",
+      "standard_description": "Distinguish their own point of view from that of the narrator or those of the characters.",
       "domain": "Reading Literature",
       "parent_tip": "Ask your child 'Do you agree with what the character did? Would you have done something different?'",
       "questions": [
@@ -550,11 +552,11 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.6/RL.3.6-Q5-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RL.3.6/RL.3.6-Q5.png"
         }
-      ],
-      "standard_id": "RL.3.6",
-      "standard_description": "Distinguish their own point of view from that of the narrator or those of the characters."
+      ]
     },
     {
+      "standard_id": "RL.3.7",
+      "standard_description": "Explain how specific aspects of a text's illustrations contribute to what is conveyed by the words.",
       "domain": "Reading Literature",
       "parent_tip": "Ask 'What does the picture show that the words don't? How does the picture make you feel?'",
       "questions": [
@@ -637,11 +639,11 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.7/RL.3.7-Q5-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RL.3.7/RL.3.7-Q5.png"
         }
-      ],
-      "standard_id": "RL.3.7",
-      "standard_description": "Explain how specific aspects of a text's illustrations contribute to what is conveyed by the words."
+      ]
     },
     {
+      "standard_id": "RL.3.9",
+      "standard_description": "Compare and contrast the themes, settings, and plots of stories written by the same author about the same or similar characters.",
       "domain": "Reading Literature",
       "parent_tip": "If your child reads a book series, ask 'How was this adventure different from the last one?'",
       "questions": [
@@ -721,11 +723,11 @@
           "hint": "Think about what each main character *wants to do* and *does* in their story.",
           "difficulty": "easy"
         }
-      ],
-      "standard_id": "RL.3.9",
-      "standard_description": "Compare and contrast the themes, settings, and plots of stories written by the same author about the same or similar characters."
+      ]
     },
     {
+      "standard_id": "RL.3.10",
+      "standard_description": "By end of the year, read and comprehend literature at the high end of the grades 2-3 text complexity band.",
       "domain": "Reading Literature",
       "parent_tip": "Encourage your child to tackle slightly challenging books — that's how reading muscles grow!",
       "questions": [
@@ -808,11 +810,11 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.10/RL.3.10-Q5-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RL.3.10/RL.3.10-Q5.png"
         }
-      ],
-      "standard_id": "RL.3.10",
-      "standard_description": "By end of the year, read and comprehend literature at the high end of the grades 2-3 text complexity band."
+      ]
     },
     {
+      "standard_id": "RI.3.1",
+      "standard_description": "Ask and answer questions to demonstrate understanding of a text, referring explicitly to the text.",
       "domain": "Reading Informational Text",
       "parent_tip": "Ask your child to prove their answer by finding the exact sentence in the text.",
       "questions": [
@@ -895,11 +897,11 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.1/RI.3.1-Q5-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RI.3.1/RI.3.1-Q5.png"
         }
-      ],
-      "standard_id": "RI.3.1",
-      "standard_description": "Ask and answer questions to demonstrate understanding of a text, referring explicitly to the text."
+      ]
     },
     {
+      "standard_id": "RI.3.2",
+      "standard_description": "Determine the main idea of a text; recount the key details and explain how they support the main idea.",
       "domain": "Reading Informational Text",
       "parent_tip": "Ask 'What is this passage mostly about?' and 'What details help prove that main idea?'",
       "questions": [
@@ -985,11 +987,11 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.2/RI.3.2-Q5-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RI.3.2/RI.3.2-Q5.png"
         }
-      ],
-      "standard_id": "RI.3.2",
-      "standard_description": "Determine the main idea of a text; recount the key details and explain how they support the main idea."
+      ]
     },
     {
+      "standard_id": "RI.3.3",
+      "standard_description": "Describe the relationship between historical events, scientific ideas, or steps in technical procedures using time, sequence, and cause/effect language.",
       "domain": "Reading Informational Text",
       "parent_tip": "Help your child spot signal words like 'because,' 'as a result,' 'first,' 'then,' 'finally.'",
       "questions": [
@@ -1045,6 +1047,9 @@
           "id": "RI.3.3-Q6",
           "type": "category_sort",
           "prompt": "Sort these into Cause or Effect!",
+          "correct": "correct",
+          "hint": "A cause is what MAKES something happen. An effect is what HAPPENS as a result.",
+          "difficulty": 2,
           "categories": [
             "Cause",
             "Effect"
@@ -1064,27 +1069,24 @@
             "Sea levels rose",
             "Ice caps melted",
             "Coastal flooding increased"
-          ],
-          "correct": "correct",
-          "hint": "A cause is what MAKES something happen. An effect is what HAPPENS as a result.",
-          "difficulty": 2
+          ]
         },
         {
           "id": "RI.3.3-Q7",
           "type": "sentence_build",
           "prompt": "Put the steps of the ocean food chain in order.",
+          "correct": "Tiny plants grow using sunlight Tiny animals eat the plants Small fish eat tiny animals Big fish eat small fish",
+          "hint": "Start with the smallest — tiny plants need sunlight to grow!",
+          "difficulty": "medium",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q7.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q7-hint.mp3",
           "words": [
             "Big fish eat small fish",
             "Tiny plants grow using sunlight",
             "Small fish eat tiny animals",
             "Tiny animals eat the plants"
           ],
-          "correct": "Tiny plants grow using sunlight Tiny animals eat the plants Small fish eat tiny animals Big fish eat small fish",
-          "ordered": true,
-          "hint": "Start with the smallest — tiny plants need sunlight to grow!",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q7.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q7-hint.mp3"
+          "ordered": true
         },
         {
           "id": "RI.3.3-Q8",
@@ -1106,20 +1108,25 @@
           "id": "RI.3.3-Q9",
           "type": "category_sort",
           "prompt": "Sort each signal word — does it show cause and effect, or sequence?",
+          "correct": "correct",
+          "hint": "Sequence words tell you the order. Cause and effect words tell you why!",
+          "difficulty": "medium",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q9.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q9-hint.mp3",
           "categories": [
             "Cause & Effect",
             "Sequence"
           ],
           "category_items": {
-            "Cause & Effect": [
-              "because",
-              "as a result",
-              "therefore"
-            ],
             "Sequence": [
               "first",
               "next",
               "finally"
+            ],
+            "Cause & Effect": [
+              "because",
+              "as a result",
+              "therefore"
             ]
           },
           "items": [
@@ -1129,17 +1136,24 @@
             "as a result",
             "finally",
             "therefore"
-          ],
-          "correct": "correct",
-          "hint": "Sequence words tell you the order. Cause and effect words tell you why!",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q9.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q9-hint.mp3"
+          ]
         },
         {
           "id": "RI.3.3-Q10",
           "type": "missing_word",
           "prompt": "Pick the right signal word to fill the blank.",
+          "correct": "As a result",
+          "hint": "The fish getting sick is the effect of the oil spill. Which words show cause and effect?",
+          "difficulty": "medium",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q10.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q10-hint.mp3",
+          "blank_index": 6,
+          "missing_choices": [
+            "As a result",
+            "First",
+            "However",
+            "Meanwhile"
+          ],
           "sentence_words": [
             "The",
             "oil",
@@ -1154,19 +1168,7 @@
             "birds",
             "became",
             "sick."
-          ],
-          "blank_index": 6,
-          "missing_choices": [
-            "As a result",
-            "First",
-            "However",
-            "Meanwhile"
-          ],
-          "correct": "As a result",
-          "hint": "The fish getting sick is the effect of the oil spill. Which words show cause and effect?",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q10.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q10-hint.mp3"
+          ]
         },
         {
           "id": "RI.3.3-Q11",
@@ -1188,6 +1190,11 @@
           "id": "RI.3.3-Q12",
           "type": "tap_to_pair",
           "prompt": "Match each ocean cause to its effect!",
+          "correct": "Warmer ocean water→Coral bleaching, Oil spill in the sea→Marine animals get sick, Overfishing of sharks→Smaller fish overpopulate, Mangrove trees removed→Shore erodes faster",
+          "hint": "Think about what each event would directly cause!",
+          "difficulty": "hard",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q12.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q12-hint.mp3",
           "left_items": [
             "Warmer ocean water",
             "Oil spill in the sea",
@@ -1205,12 +1212,7 @@
             "Oil spill in the sea": "Marine animals get sick",
             "Overfishing of sharks": "Smaller fish overpopulate",
             "Mangrove trees removed": "Shore erodes faster"
-          },
-          "correct": "Warmer ocean water→Coral bleaching, Oil spill in the sea→Marine animals get sick, Overfishing of sharks→Smaller fish overpopulate, Mangrove trees removed→Shore erodes faster",
-          "hint": "Think about what each event would directly cause!",
-          "difficulty": "hard",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q12.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q12-hint.mp3"
+          }
         },
         {
           "id": "RI.3.3-Q13",
@@ -1244,11 +1246,11 @@
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q14.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q14-hint.mp3"
         }
-      ],
-      "standard_id": "RI.3.3",
-      "standard_description": "Describe the relationship between historical events, scientific ideas, or steps in technical procedures using time, sequence, and cause/effect language."
+      ]
     },
     {
+      "standard_id": "RI.3.4",
+      "standard_description": "Determine the meaning of general academic and domain-specific words and phrases in a text.",
       "domain": "Reading Informational Text",
       "parent_tip": "Help your child use context clues and word parts to figure out subject-specific vocabulary.",
       "questions": [
@@ -1331,11 +1333,11 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.4/RI.3.4-Q5-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RI.3.4/RI.3.4-Q5.png"
         }
-      ],
-      "standard_id": "RI.3.4",
-      "standard_description": "Determine the meaning of general academic and domain-specific words and phrases in a text."
+      ]
     },
     {
+      "standard_id": "RI.3.5",
+      "standard_description": "Use text features and search tools to locate information relevant to a given topic efficiently.",
       "domain": "Reading Informational Text",
       "parent_tip": "Practice using a table of contents, index, headings, and search bars to find information quickly.",
       "questions": [
@@ -1418,11 +1420,11 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.5/RI.3.5-Q5-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RI.3.5/RI.3.5-Q5.png"
         }
-      ],
-      "standard_id": "RI.3.5",
-      "standard_description": "Use text features and search tools to locate information relevant to a given topic efficiently."
+      ]
     },
     {
+      "standard_id": "RI.3.6",
+      "standard_description": "Distinguish their own point of view from that of the author of a text.",
       "domain": "Reading Informational Text",
       "parent_tip": "Ask your child 'What does the author think about this topic? Do you agree or disagree?'",
       "questions": [
@@ -1502,11 +1504,11 @@
           "hint": "Think about what the author says is the *only* and *best* way to be healthy, and then consider what *you* know about staying healthy.",
           "difficulty": "medium"
         }
-      ],
-      "standard_id": "RI.3.6",
-      "standard_description": "Distinguish their own point of view from that of the author of a text."
+      ]
     },
     {
+      "standard_id": "RI.3.7",
+      "standard_description": "Use information from illustrations and the words in a text to demonstrate understanding.",
       "domain": "Reading Informational Text",
       "parent_tip": "Point out maps, diagrams, and charts in nonfiction — ask what new information they provide.",
       "questions": [
@@ -1595,11 +1597,11 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.7/RI.3.7-Q5-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RI.3.7/RI.3.7-Q5.png"
         }
-      ],
-      "standard_id": "RI.3.7",
-      "standard_description": "Use information from illustrations and the words in a text to demonstrate understanding."
+      ]
     },
     {
+      "standard_id": "RI.3.8",
+      "standard_description": "Describe the logical connection between particular sentences and paragraphs in a text.",
       "domain": "Reading Informational Text",
       "parent_tip": "Ask 'Why did the author put this paragraph after that one? How are they connected?'",
       "questions": [
@@ -1682,11 +1684,11 @@
           "hint": "Look at the order of the events described in the sentences and think about what 'Then' means.",
           "difficulty": "easy"
         }
-      ],
-      "standard_id": "RI.3.8",
-      "standard_description": "Describe the logical connection between particular sentences and paragraphs in a text."
+      ]
     },
     {
+      "standard_id": "RI.3.9",
+      "standard_description": "Compare and contrast the most important points and key details presented in two texts on the same topic.",
       "domain": "Reading Informational Text",
       "parent_tip": "Read two articles on the same topic and ask your child what each one focused on differently.",
       "questions": [
@@ -1769,11 +1771,11 @@
           "hint": "Think about the main message of Text A and the main message of Text B. How are their ideas about screen time different?",
           "difficulty": "medium"
         }
-      ],
-      "standard_id": "RI.3.9",
-      "standard_description": "Compare and contrast the most important points and key details presented in two texts on the same topic."
+      ]
     },
     {
+      "standard_id": "RI.3.10",
+      "standard_description": "By end of the year, read and comprehend informational texts at the high end of the grades 2-3 text complexity band.",
       "domain": "Reading Informational Text",
       "parent_tip": "Encourage reading nonfiction about topics your child loves — science, animals, history, sports.",
       "questions": [
@@ -1859,11 +1861,11 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.10/RI.3.10-Q5-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RI.3.10/RI.3.10-Q5.png"
         }
-      ],
-      "standard_id": "RI.3.10",
-      "standard_description": "By end of the year, read and comprehend informational texts at the high end of the grades 2-3 text complexity band."
+      ]
     },
     {
+      "standard_id": "RF.3.3",
+      "standard_description": "Know and apply grade-level phonics and word analysis skills in decoding words.",
       "domain": "Reading Foundational Skills",
       "parent_tip": "Encourage your child to break unfamiliar words into familiar parts — prefixes, roots, and suffixes.",
       "questions": [
@@ -1952,11 +1954,11 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.3/RF.3.3-Q5-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RF.3.3/RF.3.3-Q5.png"
         }
-      ],
-      "standard_id": "RF.3.3",
-      "standard_description": "Know and apply grade-level phonics and word analysis skills in decoding words."
+      ]
     },
     {
+      "standard_id": "RF.3.3a",
+      "standard_description": "Identify and know the meaning of the most common prefixes and derivational suffixes.",
       "domain": "Reading Foundational Skills",
       "parent_tip": "Make a prefix/suffix chart: un- = not, re- = again, -ful = full of, -less = without, -ment = act of.",
       "questions": [
@@ -2042,11 +2044,11 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.3a/RF.3.3a-Q5-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RF.3.3a/RF.3.3a-Q5.png"
         }
-      ],
-      "standard_id": "RF.3.3a",
-      "standard_description": "Identify and know the meaning of the most common prefixes and derivational suffixes."
+      ]
     },
     {
+      "standard_id": "RF.3.3b",
+      "standard_description": "Decode words with common Latin suffixes.",
       "domain": "Reading Foundational Skills",
       "parent_tip": "Practice Latin suffixes: -tion, -sion, -ible, -able — they appear in many English words!",
       "questions": [
@@ -2127,11 +2129,11 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.3b/RF.3.3b-Q5-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RF.3.3b/RF.3.3b-Q5.png"
         }
-      ],
-      "standard_id": "RF.3.3b",
-      "standard_description": "Decode words with common Latin suffixes."
+      ]
     },
     {
+      "standard_id": "RF.3.3c",
+      "standard_description": "Decode multisyllable words.",
       "domain": "Reading Foundational Skills",
       "parent_tip": "When your child encounters a long word, have them cover parts and decode one syllable at a time.",
       "questions": [
@@ -2217,11 +2219,11 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.3c/RF.3.3c-Q5-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RF.3.3c/RF.3.3c-Q5.png"
         }
-      ],
-      "standard_id": "RF.3.3c",
-      "standard_description": "Decode multisyllable words."
+      ]
     },
     {
+      "standard_id": "RF.3.3d",
+      "standard_description": "Read grade-appropriate irregularly spelled words.",
       "domain": "Reading Foundational Skills",
       "parent_tip": "Practice tricky words like 'enough,' 'through,' 'thought' — they don't follow regular phonics rules.",
       "questions": [
@@ -2301,11 +2303,11 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.3d/RF.3.3d-Q5-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RF.3.3d/RF.3.3d-Q5.png"
         }
-      ],
-      "standard_id": "RF.3.3d",
-      "standard_description": "Read grade-appropriate irregularly spelled words."
+      ]
     },
     {
+      "standard_id": "RF.3.4",
+      "standard_description": "Read with sufficient accuracy and fluency to support comprehension.",
       "domain": "Reading Foundational Skills",
       "parent_tip": "Have your child read aloud regularly — encourage smooth, expressive reading at a natural pace.",
       "questions": [
@@ -2382,11 +2384,11 @@
           "hint": "To read accurately, look for the choice where every word matches the original sentence exactly, without changing any words or sounds.",
           "difficulty": "easy"
         }
-      ],
-      "standard_id": "RF.3.4",
-      "standard_description": "Read with sufficient accuracy and fluency to support comprehension."
+      ]
     },
     {
+      "standard_id": "RF.3.4a",
+      "standard_description": "Read grade-level text with purpose and understanding.",
       "domain": "Reading Foundational Skills",
       "parent_tip": "Before reading, set a goal: 'Let's read to find out why...' This gives reading a purpose!",
       "questions": [
@@ -2469,11 +2471,11 @@
           "hint": "Think about what Squeaky is doing throughout the entire story and why.",
           "difficulty": "easy"
         }
-      ],
-      "standard_id": "RF.3.4a",
-      "standard_description": "Read grade-level text with purpose and understanding."
+      ]
     },
     {
+      "standard_id": "RF.3.4b",
+      "standard_description": "Read grade-level prose and poetry orally with accuracy, appropriate rate, and expression.",
       "domain": "Reading Foundational Skills",
       "parent_tip": "Practice reading aloud together — take turns with different characters and use expressive voices!",
       "questions": [
@@ -2559,11 +2561,11 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.4b/RF.3.4b-Q5-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RF.3.4b/RF.3.4b-Q5.png"
         }
-      ],
-      "standard_id": "RF.3.4b",
-      "standard_description": "Read grade-level prose and poetry orally with accuracy, appropriate rate, and expression."
+      ]
     },
     {
+      "standard_id": "RF.3.4c",
+      "standard_description": "Use context to confirm or self-correct word recognition and understanding, rereading as necessary.",
       "domain": "Reading Foundational Skills",
       "parent_tip": "When your child reads something that doesn't make sense, encourage them to reread and try again.",
       "questions": [
@@ -2602,6 +2604,19 @@
           "id": "RF.3.4c-Q3",
           "type": "missing_word",
           "prompt": "Pick the right word to fill the blank.",
+          "correct": "Organisms",
+          "hint": "A microscope looks at TINY things. Which answer is something tiny a scientist would study?",
+          "difficulty": 2,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.4c/RF.3.4c-Q3.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.4c/RF.3.4c-Q3-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RF.3.4c/RF.3.4c-Q3.png",
+          "blank_index": 9,
+          "missing_choices": [
+            "Mountain",
+            "Building",
+            "Organisms",
+            "Elephant"
+          ],
           "sentence_words": [
             "The",
             "scientist",
@@ -2613,20 +2628,7 @@
             "the",
             "tiny",
             "___"
-          ],
-          "blank_index": 9,
-          "missing_choices": [
-            "Mountain",
-            "Building",
-            "Organisms",
-            "Elephant"
-          ],
-          "correct": "Organisms",
-          "hint": "A microscope looks at TINY things. Which answer is something tiny a scientist would study?",
-          "difficulty": 2,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.4c/RF.3.4c-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.4c/RF.3.4c-Q3-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RF.3.4c/RF.3.4c-Q3.png"
+          ]
         },
         {
           "id": "RF.3.4c-Q4",
@@ -2659,11 +2661,11 @@
           "hint": "Context clue: wind that BLOWS is pronounced like 'pinned,' not like 'find.'",
           "difficulty": "hard"
         }
-      ],
-      "standard_id": "RF.3.4c",
-      "standard_description": "Use context to confirm or self-correct word recognition and understanding, rereading as necessary."
+      ]
     },
     {
+      "standard_id": "L.3.4",
+      "standard_description": "Determine or clarify the meaning of unknown and multiple-meaning words and phrases.",
       "domain": "Language",
       "parent_tip": "Teach your child to use context clues, word parts, and dictionaries to unlock new words.",
       "questions": [
@@ -2688,6 +2690,9 @@
           "id": "L.3.4-Q6",
           "type": "tap_to_pair",
           "prompt": "Match each word to its meaning in context!",
+          "correct": "Light (candle)→To set fire to, Elaborate→Complex and detailed, Current (river)→The flow of water, Parched→Extremely dry",
+          "hint": "Think about how each word is used in the sentence!",
+          "difficulty": 2,
           "left_items": [
             "Light (candle)",
             "Elaborate",
@@ -2701,20 +2706,17 @@
             "To set fire to"
           ],
           "correct_pairs": {
-            "Light (candle)": "To set fire to",
+            "Parched": "Extremely dry",
             "Elaborate": "Complex and detailed",
-            "Current (river)": "The flow of water",
-            "Parched": "Extremely dry"
-          },
-          "correct": "Light (candle)→To set fire to, Elaborate→Complex and detailed, Current (river)→The flow of water, Parched→Extremely dry",
-          "hint": "Think about how each word is used in the sentence!",
-          "difficulty": 2
+            "Light (candle)": "To set fire to",
+            "Current (river)": "The flow of water"
+          }
         }
-      ],
-      "standard_id": "L.3.4",
-      "standard_description": "Determine or clarify the meaning of unknown and multiple-meaning words and phrases."
+      ]
     },
     {
+      "standard_id": "L.3.4a",
+      "standard_description": "Use sentence-level context as a clue to the meaning of a word or phrase.",
       "domain": "Language",
       "parent_tip": "When your child hits an unknown word, say 'Read the whole sentence — what clues help you figure it out?'",
       "questions": [
@@ -2739,6 +2741,9 @@
           "id": "L.3.4a-Q6",
           "type": "tap_to_pair",
           "prompt": "Match each word to its meaning!",
+          "correct": "Benevolent→Kind and generous, Abandoned→Left behind, Camouflaged→Disguised to blend in, Fragile→Easily broken",
+          "hint": "Use context clues to match each word to its definition!",
+          "difficulty": 2,
           "left_items": [
             "Benevolent",
             "Abandoned",
@@ -2752,20 +2757,17 @@
             "Kind and generous"
           ],
           "correct_pairs": {
-            "Benevolent": "Kind and generous",
+            "Fragile": "Easily broken",
             "Abandoned": "Left behind",
-            "Camouflaged": "Disguised to blend in",
-            "Fragile": "Easily broken"
-          },
-          "correct": "Benevolent→Kind and generous, Abandoned→Left behind, Camouflaged→Disguised to blend in, Fragile→Easily broken",
-          "hint": "Use context clues to match each word to its definition!",
-          "difficulty": 2
+            "Benevolent": "Kind and generous",
+            "Camouflaged": "Disguised to blend in"
+          }
         }
-      ],
-      "standard_id": "L.3.4a",
-      "standard_description": "Use sentence-level context as a clue to the meaning of a word or phrase."
+      ]
     },
     {
+      "standard_id": "L.3.4b",
+      "standard_description": "Determine the meaning of the new word formed when a known affix is added to a known word.",
       "domain": "Language",
       "parent_tip": "Practice: 'If agree means to think the same, what does disagree mean? What about agreeable?'",
       "questions": [
@@ -2790,6 +2792,9 @@
           "id": "L.3.4b-Q6",
           "type": "tap_to_pair",
           "prompt": "Match each word to its meaning!",
+          "correct": "Uncomfortable→Not comfortable, Misspell→To spell wrongly, Encourage→To give courage, Disappearance→The act of disappearing",
+          "hint": "Break each word into its prefix, root, and suffix for clues!",
+          "difficulty": 2,
           "left_items": [
             "Uncomfortable",
             "Misspell",
@@ -2803,20 +2808,17 @@
             "Not comfortable"
           ],
           "correct_pairs": {
-            "Uncomfortable": "Not comfortable",
             "Misspell": "To spell wrongly",
             "Encourage": "To give courage",
-            "Disappearance": "The act of disappearing"
-          },
-          "correct": "Uncomfortable→Not comfortable, Misspell→To spell wrongly, Encourage→To give courage, Disappearance→The act of disappearing",
-          "hint": "Break each word into its prefix, root, and suffix for clues!",
-          "difficulty": 2
+            "Disappearance": "The act of disappearing",
+            "Uncomfortable": "Not comfortable"
+          }
         }
-      ],
-      "standard_id": "L.3.4b",
-      "standard_description": "Determine the meaning of the new word formed when a known affix is added to a known word."
+      ]
     },
     {
+      "standard_id": "L.3.4c",
+      "standard_description": "Use a known root word as a clue to the meaning of an unknown word with the same root.",
       "domain": "Language",
       "parent_tip": "Show your child how 'sign' connects to 'signal,' 'signature,' and 'design.'",
       "questions": [
@@ -2841,6 +2843,9 @@
           "id": "L.3.4c-Q6",
           "type": "tap_to_pair",
           "prompt": "Match each root or word to its meaning!",
+          "correct": "-action→The process of doing, Transport→To carry across, Bicycle→Two wheels, Companion→Being together",
+          "hint": "Latin and Greek roots give clues: '-tion' = process, 'trans-' = across, 'bi-' = two, 'com-' = together!",
+          "difficulty": 2,
           "left_items": [
             "-action",
             "Transport",
@@ -2855,19 +2860,16 @@
           ],
           "correct_pairs": {
             "-action": "The process of doing",
-            "Transport": "To carry across",
             "Bicycle": "Two wheels",
-            "Companion": "Being together"
-          },
-          "correct": "-action→The process of doing, Transport→To carry across, Bicycle→Two wheels, Companion→Being together",
-          "hint": "Latin and Greek roots give clues: '-tion' = process, 'trans-' = across, 'bi-' = two, 'com-' = together!",
-          "difficulty": 2
+            "Companion": "Being together",
+            "Transport": "To carry across"
+          }
         }
-      ],
-      "standard_id": "L.3.4c",
-      "standard_description": "Use a known root word as a clue to the meaning of an unknown word with the same root."
+      ]
     },
     {
+      "standard_id": "L.3.4d",
+      "standard_description": "Use glossaries or beginning dictionaries to determine or clarify the precise meaning of key words.",
       "domain": "Language",
       "parent_tip": "Practice dictionary skills — guide words, alphabetical order, multiple definitions.",
       "questions": [
@@ -2953,11 +2955,11 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4d/L.3.4d-Q5-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.4d/L.3.4d-Q5.png"
         }
-      ],
-      "standard_id": "L.3.4d",
-      "standard_description": "Use glossaries or beginning dictionaries to determine or clarify the precise meaning of key words."
+      ]
     },
     {
+      "standard_id": "L.3.5",
+      "standard_description": "Demonstrate understanding of figurative language, word relationships, and nuances in word meanings.",
       "domain": "Language",
       "parent_tip": "Point out figurative language in everyday life: 'It's raining cats and dogs!' means it's raining very hard.",
       "questions": [
@@ -3046,11 +3048,11 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.5/L.3.5-Q5-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.5/L.3.5-Q5.png"
         }
-      ],
-      "standard_id": "L.3.5",
-      "standard_description": "Demonstrate understanding of figurative language, word relationships, and nuances in word meanings."
+      ]
     },
     {
+      "standard_id": "L.3.5a",
+      "standard_description": "Distinguish the literal and nonliteral meanings of words and phrases in context.",
       "domain": "Language",
       "parent_tip": "Ask 'Does this sentence mean exactly what it says, or is it saying something in a creative way?'",
       "questions": [
@@ -3139,11 +3141,11 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.5a/L.3.5a-Q5-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.5a/L.3.5a-Q5.png"
         }
-      ],
-      "standard_id": "L.3.5a",
-      "standard_description": "Distinguish the literal and nonliteral meanings of words and phrases in context."
+      ]
     },
     {
+      "standard_id": "L.3.5b",
+      "standard_description": "Identify real-life connections between words and their use.",
       "domain": "Language",
       "parent_tip": "Connect vocabulary to real experiences: 'When have YOU felt courageous? What made it brave?'",
       "questions": [
@@ -3232,11 +3234,11 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.5b/L.3.5b-Q5-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.5b/L.3.5b-Q5.png"
         }
-      ],
-      "standard_id": "L.3.5b",
-      "standard_description": "Identify real-life connections between words and their use."
+      ]
     },
     {
+      "standard_id": "L.3.5c",
+      "standard_description": "Distinguish shades of meaning among related words that describe states of mind or degrees of certainty.",
       "domain": "Language",
       "parent_tip": "Play 'word ladders' — arrange words by intensity: annoyed → angry → furious.",
       "questions": [
@@ -3244,18 +3246,18 @@
           "id": "L.3.5c-Q1",
           "type": "sentence_build",
           "prompt": "Put in order from least certain to most certain",
+          "correct": "wondered suspected knew",
+          "hint": "Wondering is just curious. Suspecting is thinking it might be true. Knowing is being certain!",
+          "difficulty": 2,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.5c/L.3.5c-Q1.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.5c/L.3.5c-Q1-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.5c/L.3.5c-Q1.png",
           "words": [
             "suspected",
             "knew",
             "wondered"
           ],
-          "correct": "wondered suspected knew",
-          "hint": "Wondering is just curious. Suspecting is thinking it might be true. Knowing is being certain!",
-          "ordered": true,
-          "difficulty": 2,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.5c/L.3.5c-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.5c/L.3.5c-Q1-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.5c/L.3.5c-Q1.png"
+          "ordered": true
         },
         {
           "id": "L.3.5c-Q2",
@@ -3278,18 +3280,18 @@
           "id": "L.3.5c-Q3",
           "type": "sentence_build",
           "prompt": "Put in order from least scared to most scared",
+          "correct": "uneasy nervous terrified",
+          "hint": "Uneasy is mild, nervous is moderate, terrified is extreme fear!",
+          "difficulty": 2,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.5c/L.3.5c-Q3.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.5c/L.3.5c-Q3-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.5c/L.3.5c-Q3.png",
           "words": [
             "nervous",
             "terrified",
             "uneasy"
           ],
-          "correct": "uneasy nervous terrified",
-          "hint": "Uneasy is mild, nervous is moderate, terrified is extreme fear!",
-          "ordered": true,
-          "difficulty": 2,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.5c/L.3.5c-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.5c/L.3.5c-Q3-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.5c/L.3.5c-Q3.png"
+          "ordered": true
         },
         {
           "id": "L.3.5c-Q4",
@@ -3325,11 +3327,11 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.5c/L.3.5c-Q5-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.5c/L.3.5c-Q5.png"
         }
-      ],
-      "standard_id": "L.3.5c",
-      "standard_description": "Distinguish shades of meaning among related words that describe states of mind or degrees of certainty."
+      ]
     },
     {
+      "standard_id": "L.3.6",
+      "standard_description": "Acquire and use accurately conversational, general academic, and domain-specific words and phrases.",
       "domain": "Language",
       "parent_tip": "Encourage your child to use precise words: instead of 'nice,' try 'generous,' 'thoughtful,' or 'delightful.'",
       "questions": [
@@ -3371,14 +3373,12 @@
           "id": "L.3.6-Q3",
           "type": "missing_word",
           "prompt": "Pick the best word to replace 'said' in this sentence.",
-          "sentence_words": [
-            "\"I",
-            "can't",
-            "believe",
-            "it!\"",
-            "___",
-            "Maria."
-          ],
+          "correct": "Exclaimed",
+          "hint": "She can't believe it! That shows surprise and excitement.",
+          "difficulty": 1,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.6/L.3.6-Q3.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.6/L.3.6-Q3-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.6/L.3.6-Q3.png",
           "blank_index": 4,
           "missing_choices": [
             "Whispered",
@@ -3386,12 +3386,14 @@
             "Exclaimed",
             "Mumbled"
           ],
-          "correct": "Exclaimed",
-          "hint": "She can't believe it! That shows surprise and excitement.",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.6/L.3.6-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.6/L.3.6-Q3-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.6/L.3.6-Q3.png"
+          "sentence_words": [
+            "\"I",
+            "can't",
+            "believe",
+            "it!\"",
+            "___",
+            "Maria."
+          ]
         },
         {
           "id": "L.3.6-Q4",
@@ -3414,6 +3416,19 @@
           "id": "L.3.6-Q5",
           "type": "missing_word",
           "prompt": "Pick the most specific word to complete the sentence.",
+          "correct": "Swift",
+          "hint": "'Swift' is the most vivid and precise for describing a cheetah's speed.",
+          "difficulty": 2,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.6/L.3.6-Q5.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.6/L.3.6-Q5-hint.mp3",
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.6/L.3.6-Q5.png",
+          "blank_index": 1,
+          "missing_choices": [
+            "Nice",
+            "Fast",
+            "Quick",
+            "Swift"
+          ],
           "sentence_words": [
             "The",
             "___",
@@ -3422,24 +3437,9 @@
             "across",
             "the",
             "savanna."
-          ],
-          "blank_index": 1,
-          "missing_choices": [
-            "Nice",
-            "Fast",
-            "Quick",
-            "Swift"
-          ],
-          "correct": "Swift",
-          "hint": "'Swift' is the most vivid and precise for describing a cheetah's speed.",
-          "difficulty": 2,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.6/L.3.6-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.6/L.3.6-Q5-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.6/L.3.6-Q5.png"
+          ]
         }
-      ],
-      "standard_id": "L.3.6",
-      "standard_description": "Acquire and use accurately conversational, general academic, and domain-specific words and phrases."
+      ]
     },
     {
       "standard_id": "L.3.1",
@@ -3474,8 +3474,8 @@
           "correct": "The dogs run fast.",
           "hint": "Dogs is plural — use run, not runs.",
           "difficulty": 1,
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.1/L.3.1-Q2-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.1/L.3.1-Q2.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.1/L.3.1-Q2-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.1/L.3.1-Q2.png"
         },
         {
@@ -3491,8 +3491,8 @@
           "correct": "faster",
           "hint": "Add -er to compare two things!",
           "difficulty": 1,
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.1/L.3.1-Q3-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.1/L.3.1-Q3.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.1/L.3.1-Q3-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.1/L.3.1-Q3.png"
         },
         {
@@ -3508,8 +3508,8 @@
           "correct": "happiest",
           "hint": "Use -est when comparing three or more.",
           "difficulty": 2,
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.1/L.3.1-Q4-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.1/L.3.1-Q4.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.1/L.3.1-Q4-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.1/L.3.1-Q4.png"
         },
         {
@@ -3525,8 +3525,8 @@
           "correct": "I am eating an apple now.",
           "hint": "Now means present. Use am eating!",
           "difficulty": 2,
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.1/L.3.1-Q5-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.1/L.3.1-Q5.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.1/L.3.1-Q5-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.1/L.3.1-Q5.png"
         }
       ]
@@ -3550,8 +3550,8 @@
           "correct": "Maya said, \"Hi!\"",
           "hint": "Wrap the spoken words in quotation marks!",
           "difficulty": 1,
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.2/L.3.2-Q1-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.2/L.3.2-Q1.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.2/L.3.2-Q1-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.2/L.3.2-Q1.png"
         },
         {
@@ -3567,8 +3567,8 @@
           "correct": "a comma between day and year",
           "hint": "Always put a comma between the day and year!",
           "difficulty": 1,
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.2/L.3.2-Q2-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.2/L.3.2-Q2.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.2/L.3.2-Q2-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.2/L.3.2-Q2.png"
         },
         {
@@ -3584,8 +3584,8 @@
           "correct": "I bought apples, bananas, and grapes.",
           "hint": "Use commas to separate items in a list!",
           "difficulty": 1,
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.2/L.3.2-Q3-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.2/L.3.2-Q3.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.2/L.3.2-Q3-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.2/L.3.2-Q3.png"
         },
         {
@@ -3601,8 +3601,8 @@
           "correct": "the kid's bag",
           "hint": "Apostrophe + S shows owning!",
           "difficulty": 2,
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.2/L.3.2-Q4-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.2/L.3.2-Q4.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.2/L.3.2-Q4-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.2/L.3.2-Q4.png"
         },
         {
@@ -3618,8 +3618,8 @@
           "correct": "She said, \"hello.\"",
           "hint": "Spoken words go inside quotation marks!",
           "difficulty": 2,
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.2/L.3.2-Q5-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.2/L.3.2-Q5.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.2/L.3.2-Q5-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.2/L.3.2-Q5.png"
         }
       ]
@@ -3643,8 +3643,8 @@
           "correct": "fantastic",
           "hint": "Fantastic means really, really good!",
           "difficulty": 1,
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.3/L.3.3-Q1-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.3/L.3.3-Q1.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.3/L.3.3-Q1-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.3/L.3.3-Q1.png"
         },
         {
@@ -3660,8 +3660,8 @@
           "correct": "Hey, what's up?",
           "hint": "Friends use casual greetings!",
           "difficulty": 1,
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.3/L.3.3-Q2-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.3/L.3.3-Q2.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.3/L.3.3-Q2-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.3/L.3.3-Q2.png"
         },
         {
@@ -3677,8 +3677,8 @@
           "correct": "strolled",
           "hint": "Strolled means walked in a relaxed way!",
           "difficulty": 2,
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.3/L.3.3-Q3-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.3/L.3.3-Q3.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.3/L.3.3-Q3-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.3/L.3.3-Q3.png"
         },
         {
@@ -3694,8 +3694,8 @@
           "correct": "to give a clearer picture",
           "hint": "Specific words paint clearer pictures.",
           "difficulty": 2,
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.3/L.3.3-Q4-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.3/L.3.3-Q4.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.3/L.3.3-Q4-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.3/L.3.3-Q4.png"
         },
         {
@@ -3711,8 +3711,8 @@
           "correct": "The cat pounced on the toy.",
           "hint": "Pounced shows action vividly!",
           "difficulty": 2,
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.3/L.3.3-Q5-hint.mp3",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.3/L.3.3-Q5.mp3",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.3/L.3.3-Q5-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.3/L.3.3-Q5.png"
         }
       ]

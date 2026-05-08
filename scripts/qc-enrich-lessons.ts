@@ -212,10 +212,26 @@ Return the enriched lesson JSON.`;
         temperature: 0.4,
         responseMimeType: "application/json",
         responseSchema: LESSON_SCHEMA,
+        // Default is 8192 — enriched lessons can run 20-30k tokens
+        // because every step gets per-ms timing primitives. Bump
+        // toward Flash's max so responses don't truncate mid-string.
+        maxOutputTokens: 64000,
       },
     });
     const txt = (res.text ?? "").trim();
-    const parsed = JSON.parse(txt);
+    if (!txt) return { ok: false, error: "empty response" };
+    let parsed: any;
+    try {
+      parsed = JSON.parse(txt);
+    } catch (parseErr: any) {
+      // Truncated JSON usually means we hit maxOutputTokens. Surface
+      // the actual length so we know how close we are to needing a
+      // slide-by-slide chunked approach.
+      return {
+        ok: false,
+        error: `JSON parse failed (${txt.length} chars): ${parseErr.message}`,
+      };
+    }
     if (!parsed?.slides || !Array.isArray(parsed.slides)) {
       return { ok: false, error: "model returned no slides" };
     }

@@ -69,14 +69,17 @@ async function backfillStandards() {
         parent_tip?: string;
       }>;
     };
+    // Ordinal preserves the original JSON array order so the
+    // sync round-trip stays byte-stable.
     const rows = (data.standards ?? [])
       .filter((s) => s.standard_id && s.standard_description)
-      .map((s) => ({
+      .map((s, idx) => ({
         id: s.standard_id!,
         grade,
         domain: s.domain ?? null,
         description: s.standard_description!,
         parent_tip: s.parent_tip ?? null,
+        ordinal: idx,
       }));
     if (DRY) {
       console.log(`  [standards/${grade}] would upsert ${rows.length} rows`);
@@ -124,6 +127,7 @@ async function backfillQuestions() {
       }>;
     };
     const rows: any[] = [];
+    let qOrdinal = 0;
     for (const s of data.standards ?? []) {
       if (!s.standard_id) continue;
       for (const q of s.questions ?? []) {
@@ -135,7 +139,10 @@ async function backfillQuestions() {
               ? null
               : String(q.correct);
         const choices = Array.isArray(q.choices) ? q.choices : [];
-        const payload = {
+        // Indexed columns: a subset for queries. Full original
+        // question (with type-specific fields like categories,
+        // sentence_words, correct_pairs, etc.) lives in payload.
+        const row = {
           id: q.id,
           standard_id: s.standard_id,
           grade,
@@ -149,18 +156,22 @@ async function backfillQuestions() {
           audio_url: q.audio_url ?? null,
           hint_audio_url: q.hint_audio_url ?? null,
           image_url: q.image_url ?? null,
-          incorrect_audio_url: q.incorrect_audio_url ?? null,
+          incorrect_audio_url: (q as any).incorrect_audio_url ?? null,
           source: "authored" as const,
           language: "en" as const,
+          // Full original question — sync uses this to round-trip
+          // without dropping type-specific fields.
+          payload: q as unknown,
+          ordinal: qOrdinal++,
         };
         rows.push({
-          ...payload,
+          ...row,
           content_hash: hashJson({
-            prompt: payload.prompt,
-            choices: payload.choices,
-            correct: payload.correct,
-            audio_url: payload.audio_url,
-            image_url: payload.image_url,
+            prompt: row.prompt,
+            choices: row.choices,
+            correct: row.correct,
+            audio_url: row.audio_url,
+            image_url: row.image_url,
           }),
         });
       }
@@ -197,6 +208,7 @@ async function backfillLessons() {
     slides?: unknown[];
   }>;
   const rows: any[] = [];
+  let idx = 0;
   for (const l of lessons) {
     if (!l.standardId || !l.title || !l.grade) continue;
     const gradeShort = GRADE_FROM_LESSON[l.grade] ?? l.grade;
@@ -209,6 +221,7 @@ async function backfillLessons() {
       content_hash: hashJson({ slides: l.slides ?? [] }),
       source: "authored" as const,
       language: "en" as const,
+      ordinal: idx++,
     });
   }
   if (DRY) {
