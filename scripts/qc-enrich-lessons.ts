@@ -134,13 +134,14 @@ function pickKReference(thin: Lesson, all: Lesson[]): Lesson | null {
   return all.find((l) => l.grade === "Kindergarten") ?? null;
 }
 
-const ENRICHMENT_SYSTEM = `You are a senior K-4 reading specialist enriching a lesson with karaoke-style animation primitives.
+const SLIDE_ENRICHMENT_SYSTEM = `You are a senior K-4 reading specialist enriching ONE slide of a lesson with karaoke-style animation primitives.
 
 You receive:
-  REFERENCE_K: a hand-authored Kindergarten lesson that is the quality bar.
-  THIN_LESSON: a lesson that has audio + text but no per-step animation.
+  LESSON_CONTEXT: the lesson's standard, grade, title, and CCSS description.
+  REFERENCE_K_SLIDE: a hand-authored Kindergarten slide that is the quality bar.
+  THIN_SLIDE: the slide to rewrite — has audio + text but no per-step animation.
 
-Your job: rewrite THIN_LESSON's slides[].steps[] arrays so EVERY teaching slide has at least one of:
+Your job: rewrite THIN_SLIDE's steps[] array so the slide has at least one of:
   - displayParts[]: staggered reveals { text, delay (ms from step start) }
   - highlightPills[]: bounce a pill at delay ms
   - highlightWord: { word, delay }  underline a target word in a passage
@@ -151,71 +152,101 @@ Your job: rewrite THIN_LESSON's slides[].steps[] arrays so EVERY teaching slide 
 
 Rules:
   1. Don't change ttsScript text or audioFile paths — just split steps if needed and add the rich primitives.
-  2. K reference is ~3 steps per slide; if a thin slide has 1 step, split it into 2-3.
+  2. K reference is ~3 steps per slide; if THIN_SLIDE has 1 step, split it into 2-3.
   3. delay values are integer ms from the start of THAT step's audio. Be conservative (300-2500 ms).
-  4. Match THIN_LESSON's grade — 4th-grade lessons should still use richer primitives (displayParts, highlightWord), but skip phoneme tiles (those are K-1 only).
-  5. Preserve the lesson's standardId, grade, title, and slide.type values exactly.
-  6. Output the FULL enriched lesson JSON — same shape as the input, just with richer steps.
+  4. Match THIN_LESSON's grade — 4th-grade slides should still use richer primitives (displayParts, highlightWord), but skip phoneme tiles (those are K-1 only).
+  5. Preserve slide.slide (number), slide.type, slide.heading, slide.imagePrompt, slide.imageFile EXACTLY.
+  6. Output the FULL enriched slide JSON (the whole slide object), same shape as input.
 
 Output ONLY the JSON object, no commentary.`;
 
-const LESSON_SCHEMA = {
+const SLIDE_SCHEMA = {
   type: Type.OBJECT,
   properties: {
-    standardId: { type: Type.STRING },
-    grade: { type: Type.STRING },
-    title: { type: Type.STRING },
-    slides: {
+    slide: { type: Type.NUMBER },
+    type: { type: Type.STRING },
+    heading: { type: Type.STRING },
+    imagePrompt: { type: Type.STRING },
+    imageFile: { type: Type.STRING },
+    mcqId: { type: Type.STRING },
+    steps: {
       type: Type.ARRAY,
-      items: {
-        type: Type.OBJECT,
-        properties: {
-          slide: { type: Type.NUMBER },
-          type: { type: Type.STRING },
-          heading: { type: Type.STRING },
-          imagePrompt: { type: Type.STRING },
-          imageFile: { type: Type.STRING },
-          mcqId: { type: Type.STRING },
-          steps: {
-            type: Type.ARRAY,
-            items: { type: Type.OBJECT, properties: {} },
-          },
-        },
-      },
+      items: { type: Type.OBJECT, properties: {} },
     },
   },
-  required: ["standardId", "grade", "title", "slides"],
+  required: ["slide", "type", "steps"],
 };
 
-async function proposeEnrichment(
-  thin: Lesson,
-  reference: Lesson,
-  ccssDescription: string,
-): Promise<{ ok: true; proposed: Lesson } | { ok: false; error: string }> {
-  const ccssLine = ccssDescription
-    ? `CCSS ${thin.standardId}: ${ccssDescription}\n\n`
-    : "";
-  const prompt = `${ccssLine}REFERENCE_K (this is the quality bar):
-${JSON.stringify(reference, null, 2).slice(0, 12000)}
+/**
+ * Pick a K reference slide that pairs with the thin slide we're
+ * enriching. Strategy: same slide.type if available (intro→intro,
+ * teach→teach, etc); otherwise position-matched (slide N of K
+ * lesson aligns with slide N of thin lesson); otherwise the first
+ * teaching slide. Returns null only if the K lesson has no
+ * teaching slides at all.
+ */
+function pickKSlideReference(
+  thinSlide: any,
+  kLesson: Lesson,
+): any | null {
+  const kSlides = (kLesson.slides ?? []).filter(
+    (s: any) => s?.type !== "mcq" && Array.isArray(s?.steps) && s.steps.length > 0,
+  );
+  if (kSlides.length === 0) return null;
+  const sameType = kSlides.find((s: any) => s.type === thinSlide?.type);
+  if (sameType) return sameType;
+  const positional = kSlides.find((s: any) => s.slide === thinSlide?.slide);
+  if (positional) return positional;
+  return kSlides[0];
+}
 
-THIN_LESSON (rewrite this):
-${JSON.stringify(thin, null, 2).slice(0, 8000)}
+/**
+ * Enrich one slide. Cheap (~3-5k output tokens) and always fits.
+ * Caller loops over all teaching slides; mcq slides pass through.
+ */
+async function enrichSlide(input: {
+  thinSlide: any;
+  kSlide: any;
+  lessonContext: {
+    standardId: string;
+    grade: string;
+    title: string;
+    ccssDescription: string;
+  };
+}): Promise<{ ok: true; enrichedSlide: any } | { ok: false; error: string }> {
+  const ctxLines = [
+    `Standard: ${input.lessonContext.standardId}`,
+    `Grade: ${input.lessonContext.grade}`,
+    `Lesson title: ${input.lessonContext.title}`,
+  ];
+  if (input.lessonContext.ccssDescription) {
+    ctxLines.push(`CCSS: ${input.lessonContext.ccssDescription}`);
+  }
 
-Return the enriched lesson JSON.`;
+  const prompt = `LESSON_CONTEXT:
+${ctxLines.join("\n")}
+
+REFERENCE_K_SLIDE (quality bar):
+${JSON.stringify(input.kSlide, null, 2)}
+
+THIN_SLIDE (rewrite this):
+${JSON.stringify(input.thinSlide, null, 2)}
+
+Return the enriched slide JSON.`;
 
   try {
     const res = await gemini.models.generateContent({
       model: "gemini-2.5-flash",
       contents: prompt,
       config: {
-        systemInstruction: ENRICHMENT_SYSTEM,
+        systemInstruction: SLIDE_ENRICHMENT_SYSTEM,
         temperature: 0.4,
         responseMimeType: "application/json",
-        responseSchema: LESSON_SCHEMA,
-        // Default is 8192 — enriched lessons can run 20-30k tokens
-        // because every step gets per-ms timing primitives. Bump
-        // toward Flash's max so responses don't truncate mid-string.
-        maxOutputTokens: 64000,
+        responseSchema: SLIDE_SCHEMA,
+        // 16k covers even the densest K-reference slide structures
+        // we've seen (RL.K.1 has 8 steps with displayParts cascades);
+        // bumped from 8k after one slide truncated mid-string.
+        maxOutputTokens: 16000,
       },
     });
     const txt = (res.text ?? "").trim();
@@ -224,21 +255,72 @@ Return the enriched lesson JSON.`;
     try {
       parsed = JSON.parse(txt);
     } catch (parseErr: any) {
-      // Truncated JSON usually means we hit maxOutputTokens. Surface
-      // the actual length so we know how close we are to needing a
-      // slide-by-slide chunked approach.
       return {
         ok: false,
-        error: `JSON parse failed (${txt.length} chars): ${parseErr.message}`,
+        error: `slide JSON parse failed (${txt.length} chars): ${parseErr.message}`,
       };
     }
-    if (!parsed?.slides || !Array.isArray(parsed.slides)) {
-      return { ok: false, error: "model returned no slides" };
+    if (!parsed?.steps || !Array.isArray(parsed.steps)) {
+      return { ok: false, error: "model returned no steps" };
     }
-    return { ok: true, proposed: parsed as Lesson };
+    return { ok: true, enrichedSlide: parsed };
   } catch (e: any) {
     return { ok: false, error: e?.message ?? "unknown" };
   }
+}
+
+/**
+ * Enrich a thin lesson slide-by-slide. Each slide is one Gemini
+ * call; output stays small + reliable. MCQ slides pass through
+ * unchanged. Returns the assembled lesson.
+ */
+async function proposeEnrichment(
+  thin: Lesson,
+  reference: Lesson,
+  ccssDescription: string,
+): Promise<{ ok: true; proposed: Lesson } | { ok: false; error: string }> {
+  const lessonContext = {
+    standardId: thin.standardId,
+    grade: thin.grade,
+    title: thin.title,
+    ccssDescription,
+  };
+  const enrichedSlides: any[] = [];
+  let enrichedCount = 0;
+  let mcqCount = 0;
+  for (const slide of thin.slides ?? []) {
+    if (slide?.type === "mcq") {
+      enrichedSlides.push(slide);
+      mcqCount++;
+      continue;
+    }
+    const kSlide = pickKSlideReference(slide, reference);
+    if (!kSlide) {
+      // No K reference — keep the thin slide as-is rather than
+      // dropping it. Better to under-enrich than to lose content.
+      enrichedSlides.push(slide);
+      continue;
+    }
+    const r = await enrichSlide({ thinSlide: slide, kSlide, lessonContext });
+    if (!r.ok) {
+      return { ok: false, error: `slide ${slide?.slide}: ${r.error}` };
+    }
+    enrichedSlides.push(r.enrichedSlide);
+    enrichedCount++;
+    // Throttle between slide calls so we don't hit Gemini rate caps.
+    await new Promise((resolve) => setTimeout(resolve, 800));
+  }
+  const proposed: Lesson = {
+    standardId: thin.standardId,
+    grade: thin.grade,
+    domain: thin.domain ?? "",
+    title: thin.title,
+    slides: enrichedSlides,
+  };
+  console.log(
+    `      → ${enrichedCount} teaching slides enriched, ${mcqCount} MCQs preserved`,
+  );
+  return { ok: true, proposed };
 }
 
 async function main() {
