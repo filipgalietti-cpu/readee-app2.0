@@ -30717,23 +30717,72 @@
             "ttsScript": "Every word has beats inside it. We call them syllables.",
             "displayText": "Beats = syllables",
             "interaction": "",
-            "displayDelay": 2500
+            "displayParts": [
+              {
+                "text": "Beats",
+                "delay": 500
+              },
+              {
+                "text": " = syllables",
+                "delay": 2000
+              }
+            ],
+            "highlightWord": [
+              {
+                "word": "beats",
+                "delay": 1500
+              },
+              {
+                "word": "syllables",
+                "delay": 3500
+              }
+            ]
           },
           {
             "sub": "b",
+            "sfxClaps": [
+              {
+                "delay": 1000
+              }
+            ],
             "audioFile": "audio/lessons/RF.1.3d/S1b.mp3",
             "ttsScript": "You can clap a word to find the beats!",
             "displayText": "Clap it out",
             "interaction": "",
-            "displayDelay": 2000
+            "displayParts": [
+              {
+                "text": "Clap it out",
+                "delay": 500
+              }
+            ],
+            "highlightWord": [
+              {
+                "word": "clap",
+                "delay": 1000
+              },
+              {
+                "word": "beats",
+                "delay": 2500
+              }
+            ]
           },
           {
             "sub": "c",
+            "sfxClaps": [
+              {
+                "delay": 1500
+              }
+            ],
             "audioFile": "audio/lessons/RF.1.3d/S1c.mp3",
             "ttsScript": "Let us try some together.",
             "displayText": "Let us clap",
             "interaction": "",
-            "displayDelay": 1500
+            "displayParts": [
+              {
+                "text": "Let us clap",
+                "delay": 500
+              }
+            ]
           }
         ],
         "heading": "Clap Out the Beats",
@@ -30748,17 +30797,46 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.1.3d/S2a.mp3",
             "ttsScript": "Listen. Cat.",
-            "displayText": "Cat",
             "interaction": "",
-            "displayDelay": 1500
+            "displayParts": [
+              {
+                "text": "Cat",
+                "delay": 1000
+              }
+            ],
+            "highlightWord": {
+              "word": "Cat",
+              "delay": 1000
+            }
           },
           {
             "sub": "b",
+            "sfxClaps": [
+              {
+                "delay": 700
+              }
+            ],
             "audioFile": "audio/lessons/RF.1.3d/S2b.mp3",
             "ttsScript": "One clap! Cat has one beat. One syllable.",
-            "displayText": "1 syllable",
             "interaction": "",
-            "displayDelay": 2500
+            "displayParts": [
+              {
+                "text": "Cat",
+                "delay": 1200
+              },
+              {
+                "text": "Cat: 1 beat",
+                "delay": 2000
+              },
+              {
+                "text": "1 syllable",
+                "delay": 3000
+              }
+            ],
+            "highlightWord": {
+              "word": "Cat",
+              "delay": 1200
+            }
           }
         ],
         "heading": "Cat Is One Beat",
@@ -30773,25 +30851,71 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.1.3d/S3a.mp3",
             "ttsScript": "Listen. Rab-bit.",
-            "displayText": "Rab-bit",
             "interaction": "",
-            "displayDelay": 1500
+            "displayParts": [
+              {
+                "text": "Rab-",
+                "delay": 500
+              },
+              {
+                "text": "bit",
+                "delay": 1200
+              }
+            ]
           },
           {
             "sub": "b",
+            "sfxClaps": [
+              {
+                "delay": 500
+              },
+              {
+                "delay": 1000
+              }
+            ],
             "audioFile": "audio/lessons/RF.1.3d/S3b.mp3",
             "ttsScript": "Two claps! Rabbit has two beats. Two syllables.",
-            "displayText": "2 syllables",
             "interaction": "",
-            "displayDelay": 2500
+            "displayParts": [
+              {
+                "text": "2",
+                "delay": 2000
+              },
+              {
+                "text": " syllables",
+                "delay": 2500
+              }
+            ]
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.1.3d/S3c.mp3",
             "ttsScript": "Every syllable needs a vowel. Rabbit has A and I. Two vowels, two syllables.",
-            "displayText": "Vowel in each beat",
             "interaction": "",
-            "displayDelay": 3000
+            "displayParts": [
+              {
+                "text": "Vowel",
+                "delay": 3500
+              },
+              {
+                "text": " in each beat",
+                "delay": 4000
+              }
+            ],
+            "highlightWord": [
+              {
+                "word": "vowel",
+                "delay": 1000
+              },
+              {
+                "word": "A",
+                "delay": 2500
+              },
+              {
+                "word": "I",
+                "delay": 3000
+              }
+            ]
           }
         ],
         "heading": "Rabbit Is Two Beats",
@@ -30806,25 +30930,56 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.1.3d/S4a.mp3",
             "ttsScript": "Here is a helpful trick.",
-            "displayText": "A syllable trick",
             "interaction": "",
-            "displayDelay": 1500
+            "displayParts": [
+              {
+                "text": "A helpful trick",
+                "delay": 500
+              }
+            ]
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.1.3d/S4b.mp3",
             "ttsScript": "Put your hand under your chin. Each time your chin drops, that is one syllable!",
-            "displayText": "Chin drops = syllable",
             "interaction": "",
-            "displayDelay": 2800
+            "displayParts": [
+              {
+                "text": "Put your hand under your chin.",
+                "delay": 300
+              },
+              {
+                "text": "Chin drops = one syllable!",
+                "delay": 2500
+              }
+            ],
+            "highlightPills": [
+              {
+                "text": "chin",
+                "delay": 1500
+              },
+              {
+                "text": "syllable",
+                "delay": 3500
+              }
+            ]
           },
           {
             "sub": "c",
+            "sfxClaps": [
+              {
+                "delay": 1500
+              }
+            ],
             "audioFile": "audio/lessons/RF.1.3d/S4c.mp3",
             "ttsScript": "Now you are ready to count syllables!",
-            "displayText": "You got it!",
             "interaction": "",
-            "displayDelay": 1500
+            "displayParts": [
+              {
+                "text": "Now you are ready to count syllables!",
+                "delay": 300
+              }
+            ]
           }
         ],
         "heading": "Your Hand Knows",
