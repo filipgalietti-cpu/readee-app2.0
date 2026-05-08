@@ -29090,6 +29090,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.4.4b/S1a.mp3",
             "ttsScript": "Many big English words come from Greek and Latin roots.",
+            "audioRegenAt": "2026-05-08T03:49:27.386Z",
             "displayParts": [
               {
                 "text": "Many big English words come from",
@@ -29120,6 +29121,7 @@
             ],
             "audioFile": "audio/lessons/L.4.4b/S1b.mp3",
             "ttsScript": "Knowing roots unlocks tons of vocabulary!",
+            "audioRegenAt": "2026-05-08T03:49:32.895Z",
             "displayParts": [
               {
                 "text": "Knowing roots unlocks tons of vocabulary!",
@@ -29150,6 +29152,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.4.4b/S2a.mp3",
             "ttsScript": "Bio means life. Photo means light. Telephone — far sound.",
+            "audioRegenAt": "2026-05-08T03:49:40.537Z",
             "displayParts": [
               {
                 "text": "Bio",
@@ -29177,8 +29180,9 @@
           },
           {
             "sub": "b",
-            "audioFile": "audio/lessons/L.4.4b/S2a.mp3",
+            "audioFile": "audio/lessons/L.4.4b/S2b.mp3",
             "ttsScript": "Bio means life. Photo means light. Telephone — far sound.",
+            "audioRegenAt": "2026-05-08T03:49:47.928Z",
             "displayParts": [
               {
                 "text": "Photo",
@@ -29206,8 +29210,9 @@
           },
           {
             "sub": "c",
-            "audioFile": "audio/lessons/L.4.4b/S2a.mp3",
+            "audioFile": "audio/lessons/L.4.4b/S2c.mp3",
             "ttsScript": "Bio means life. Photo means light. Telephone — far sound.",
+            "audioRegenAt": "2026-05-08T03:49:55.672Z",
             "displayParts": [
               {
                 "text": "Tele",
@@ -29254,6 +29259,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.4.4b/S3a.mp3",
             "ttsScript": "Aqua means water. Aquarium = water place.",
+            "audioRegenAt": "2026-05-08T03:50:01.006Z",
             "displayParts": [
               {
                 "text": "Aqua means ",
@@ -29291,6 +29297,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/L.4.4b/S3b.mp3",
             "ttsScript": "Geo means earth. Geography = writing about earth.",
+            "audioRegenAt": "2026-05-08T03:50:07.529Z",
             "displayParts": [
               {
                 "text": "Geo means ",
@@ -29337,6 +29344,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.4.4b/S4a.mp3",
             "ttsScript": "Here is a helpful trick.",
+            "audioRegenAt": "2026-05-08T03:50:11.647Z",
             "displayParts": [
               {
                 "text": "Here is a helpful ",
@@ -29362,6 +29370,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/L.4.4b/S4b.mp3",
             "ttsScript": "One root unlocks many words. Aqua: aquarium, aquatic, aqueduct!",
+            "audioRegenAt": "2026-05-08T03:50:18.834Z",
             "displayParts": [
               {
                 "text": "One root unlocks many words.",
@@ -29416,6 +29425,7 @@
             ],
             "audioFile": "audio/lessons/L.4.4b/S4c.mp3",
             "ttsScript": "Now you are ready for Greek and Latin roots!",
+            "audioRegenAt": "2026-05-08T03:50:23.260Z",
             "displayParts": [
               {
                 "text": "Now you are ready for ",
@@ -29590,6 +29600,7 @@
             ],
             "audioFile": "audio/lessons/L.4.5/S1a.mp3",
             "ttsScript": "Hello, language explorers! Get ready to discover something amazing about words.",
+            "audioRegenAt": "2026-05-08T03:31:06.008Z",
             "displayParts": [
               {
                 "text": "Hello, language explorers!",
@@ -29607,8 +29618,9 @@
           },
           {
             "sub": "b",
-            "audioFile": "audio/lessons/L.4.5/S1a.mp3",
+            "audioFile": "audio/lessons/L.4.5/S1b.mp3",
             "ttsScript": "Today, we're going to talk about figurative language. It's a way words can create images in your mind.",
+            "audioRegenAt": "2026-05-08T03:31:13.644Z",
             "displayParts": [
               {
                 "text": "Today, we're going to talk about ",
@@ -29636,8 +29648,9 @@
           },
           {
             "sub": "c",
-            "audioFile": "audio/lessons/L.4.5/S1a.mp3",
+            "audioFile": "audio/lessons/L.4.5/S1c.mp3",
             "ttsScript": "Think of it like painting a picture, but with words instead of brushes and colors!",
+            "audioRegenAt": "2026-05-08T03:31:19.757Z",
             "displayParts": [
               {
                 "text": "Think of it like painting a picture,",
@@ -29672,6 +29685,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.4.5/S2a.mp3",
             "ttsScript": "Similes use like or as.",
+            "audioRegenAt": "2026-05-08T03:31:24.984Z",
             "displayParts": [
               {
                 "text": "Similes use ",
@@ -29707,8 +29721,9 @@
           },
           {
             "sub": "b",
-            "audioFile": "audio/lessons/L.4.5/S2a.mp3",
+            "audioFile": "audio/lessons/L.4.5/S2b.mp3",
             "ttsScript": "Metaphors say it is.",
+            "audioRegenAt": "2026-05-08T03:31:29.314Z",
             "displayParts": [
               {
                 "text": "Metaphors say ",
@@ -29737,8 +29752,9 @@
                 "delay": 1500
               }
             ],
-            "audioFile": "audio/lessons/L.4.5/S2a.mp3",
+            "audioFile": "audio/lessons/L.4.5/S2c.mp3",
             "ttsScript": "Idioms have hidden meanings.",
+            "audioRegenAt": "2026-05-08T03:31:33.483Z",
             "displayParts": [
               {
                 "text": "Idioms have ",
@@ -29773,6 +29789,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.4.5/S3a.mp3",
             "ttsScript": "He ran like a cheetah. Simile.",
+            "audioRegenAt": "2026-05-08T03:31:38.736Z",
             "displayParts": [
               {
                 "text": "He ran like a cheetah.",
@@ -29802,6 +29819,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/L.4.5/S3b.mp3",
             "ttsScript": "Time is money. Metaphor.",
+            "audioRegenAt": "2026-05-08T03:31:43.544Z",
             "displayParts": [
               {
                 "text": "Time is money.",
@@ -29831,6 +29849,7 @@
             "sub": "c",
             "audioFile": "audio/lessons/L.4.5/S3c.mp3",
             "ttsScript": "Piece of cake. Idiom for easy.",
+            "audioRegenAt": "2026-05-08T03:31:48.653Z",
             "displayParts": [
               {
                 "text": "Piece of cake.",
@@ -29869,6 +29888,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.4.5/S4a.mp3",
             "ttsScript": "Here is a helpful trick.",
+            "audioRegenAt": "2026-05-08T03:31:52.480Z",
             "displayParts": [
               {
                 "text": "Here is a ",
@@ -29907,6 +29927,7 @@
             ],
             "audioFile": "audio/lessons/L.4.5/S4b.mp3",
             "ttsScript": "When words sound weird literally, they are usually figurative!",
+            "audioRegenAt": "2026-05-08T03:31:57.930Z",
             "displayParts": [
               {
                 "text": "When words sound ",
@@ -29949,6 +29970,7 @@
             ],
             "audioFile": "audio/lessons/L.4.5/S4c.mp3",
             "ttsScript": "Now you are ready for figurative language!",
+            "audioRegenAt": "2026-05-08T03:32:02.302Z",
             "displayParts": [
               {
                 "text": "Now you are ready for ",
@@ -30021,6 +30043,7 @@
             ],
             "audioFile": "audio/lessons/L.4.5a/S1a.mp3",
             "ttsScript": "Similes and metaphors compare two things to paint a picture.",
+            "audioRegenAt": "2026-05-08T03:50:28.941Z",
             "displayParts": [
               {
                 "text": "Similes and metaphors",
@@ -30058,6 +30081,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/L.4.5a/S1b.mp3",
             "ttsScript": "This helps us understand ideas better and makes our writing more interesting!",
+            "audioRegenAt": "2026-05-08T03:50:35.405Z",
             "displayParts": [
               {
                 "text": "This helps us understand ideas better",
@@ -30096,6 +30120,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.4.5a/S2a.mp3",
             "ttsScript": "A simile uses like or as.",
+            "audioRegenAt": "2026-05-08T03:50:41.043Z",
             "displayParts": [
               {
                 "text": "A ",
@@ -30139,8 +30164,9 @@
           },
           {
             "sub": "b",
-            "audioFile": "audio/lessons/L.4.5a/S2a.mp3",
+            "audioFile": "audio/lessons/L.4.5a/S2b.mp3",
             "ttsScript": "As busy as a bee.",
+            "audioRegenAt": "2026-05-08T03:50:45.219Z",
             "displayParts": [
               {
                 "text": "As busy ",
@@ -30179,6 +30205,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.4.5a/S3a.mp3",
             "ttsScript": "A metaphor says one thing IS another. My heart is a star.",
+            "audioRegenAt": "2026-05-08T03:50:52.105Z",
             "displayParts": [
               {
                 "text": "A ",
@@ -30219,8 +30246,9 @@
                 "delay": 5000
               }
             ],
-            "audioFile": "audio/lessons/L.4.5a/S3a.mp3",
+            "audioFile": "audio/lessons/L.4.5a/S3b.mp3",
             "ttsScript": "A metaphor says one thing IS another. My heart is a star.",
+            "audioRegenAt": "2026-05-08T03:51:00.506Z",
             "displayParts": [
               {
                 "text": "My heart ",
@@ -30259,6 +30287,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.4.5a/S4a.mp3",
             "ttsScript": "Here is a helpful trick.",
+            "audioRegenAt": "2026-05-08T03:51:04.277Z",
             "displayParts": [
               {
                 "text": "Here is a helpful ",
@@ -30284,6 +30313,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/L.4.5a/S4b.mp3",
             "ttsScript": "See like or as? Simile. See is or are connecting unlike things? Metaphor.",
+            "audioRegenAt": "2026-05-08T03:51:14.192Z",
             "displayParts": [
               {
                 "text": "See ",
@@ -30346,6 +30376,7 @@
             ],
             "audioFile": "audio/lessons/L.4.5a/S4c.mp3",
             "ttsScript": "Now you are ready for similes and metaphors!",
+            "audioRegenAt": "2026-05-08T03:51:19.633Z",
             "displayParts": [
               {
                 "text": "Now you are ready for ",
@@ -30410,6 +30441,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.4.5b/S1a.mp3",
             "ttsScript": "Idioms are sayings whose meaning is hidden.",
+            "audioRegenAt": "2026-05-08T03:51:24.724Z",
             "displayParts": [
               {
                 "text": "Idioms",
@@ -30433,8 +30465,9 @@
           },
           {
             "sub": "b",
-            "audioFile": "audio/lessons/L.4.5b/S1a.mp3",
+            "audioFile": "audio/lessons/L.4.5b/S1b.mp3",
             "ttsScript": "Idioms are sayings whose meaning is hidden.",
+            "audioRegenAt": "2026-05-08T03:51:29.702Z",
             "displayParts": [
               {
                 "text": "Idioms are sayings ",
@@ -30463,8 +30496,9 @@
                 "delay": 3200
               }
             ],
-            "audioFile": "audio/lessons/L.4.5b/S1a.mp3",
+            "audioFile": "audio/lessons/L.4.5b/S1c.mp3",
             "ttsScript": "Idioms are sayings whose meaning is hidden.",
+            "audioRegenAt": "2026-05-08T03:51:34.831Z",
             "displayParts": [
               {
                 "text": "Idioms are sayings whose meaning is ",
@@ -30499,6 +30533,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.4.5b/S2a.mp3",
             "ttsScript": "Means it is raining hard,",
+            "audioRegenAt": "2026-05-08T03:51:38.556Z",
             "displayDelay": 1500,
             "displayParts": [
               {
@@ -30523,8 +30558,9 @@
           },
           {
             "sub": "b",
-            "audioFile": "audio/lessons/L.4.5b/S2a.mp3",
+            "audioFile": "audio/lessons/L.4.5b/S2b.mp3",
             "ttsScript": "not actually animals!",
+            "audioRegenAt": "2026-05-08T03:51:42.559Z",
             "displayDelay": 1500,
             "displayParts": [
               {
@@ -30598,6 +30634,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.4.5b/S4a.mp3",
             "ttsScript": "Here is a helpful trick.",
+            "audioRegenAt": "2026-05-08T03:51:46.478Z",
             "displayParts": [
               {
                 "text": "Here is a helpful ",
@@ -30623,6 +30660,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/L.4.5b/S4b.mp3",
             "ttsScript": "Idioms must be learned as phrases. Memorize a few each week!",
+            "audioRegenAt": "2026-05-08T03:51:53.328Z",
             "displayParts": [
               {
                 "text": "Idioms must be learned as ",
@@ -30661,6 +30699,7 @@
             ],
             "audioFile": "audio/lessons/L.4.5b/S4c.mp3",
             "ttsScript": "Now you are ready for idioms and sayings!",
+            "audioRegenAt": "2026-05-08T03:51:58.340Z",
             "displayParts": [
               {
                 "text": "Now you are ready for ",
@@ -30713,6 +30752,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.4.5c/S1a.mp3",
             "ttsScript": "Synonyms have shades of strength.",
+            "audioRegenAt": "2026-05-08T03:52:02.420Z",
             "displayParts": [
               {
                 "text": "Synonyms have ",
@@ -30738,6 +30778,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/L.4.5c/S1b.mp3",
             "ttsScript": "Think of it like colors. You can have light blue, blue, and dark blue. They're all blue, but with different strengths.",
+            "audioRegenAt": "2026-05-08T03:52:11.027Z",
             "displayParts": [
               {
                 "text": "Like colors: ",
@@ -30783,6 +30824,7 @@
             "sub": "c",
             "audioFile": "audio/lessons/L.4.5c/S1c.mp3",
             "ttsScript": "Today, we'll learn to identify these different levels of strength in words.",
+            "audioRegenAt": "2026-05-08T03:52:17.603Z",
             "displayParts": [
               {
                 "text": "We'll identify ",
@@ -30821,6 +30863,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.4.5c/S2a.mp3",
             "ttsScript": "Glance is quick. Look is normal. Stare is intense!",
+            "audioRegenAt": "2026-05-08T03:52:23.812Z",
             "displayParts": [
               {
                 "text": "Glance",
@@ -30844,8 +30887,9 @@
           },
           {
             "sub": "b",
-            "audioFile": "audio/lessons/L.4.5c/S2a.mp3",
+            "audioFile": "audio/lessons/L.4.5c/S2b.mp3",
             "ttsScript": "Glance is quick. Look is normal. Stare is intense!",
+            "audioRegenAt": "2026-05-08T03:52:31.702Z",
             "displayParts": [
               {
                 "text": "Look",
@@ -30869,8 +30913,9 @@
           },
           {
             "sub": "c",
-            "audioFile": "audio/lessons/L.4.5c/S2a.mp3",
+            "audioFile": "audio/lessons/L.4.5c/S2c.mp3",
             "ttsScript": "Glance is quick. Look is normal. Stare is intense!",
+            "audioRegenAt": "2026-05-08T03:52:38.322Z",
             "displayParts": [
               {
                 "text": "Stare",
@@ -30952,6 +30997,7 @@
             "audioFile": "audio/lessons/L.4.5c/S4a.mp3",
             "ttsScript": "Here is a helpful trick.",
             "displayText": "A strength trick",
+            "audioRegenAt": "2026-05-08T03:52:42.776Z",
             "displayParts": [
               {
                 "text": "Here is a ",
@@ -30972,6 +31018,7 @@
             "audioFile": "audio/lessons/L.4.5c/S4b.mp3",
             "ttsScript": "Pick the word strength that matches the actual feeling.",
             "displayText": "Match the feeling",
+            "audioRegenAt": "2026-05-08T03:52:48.024Z",
             "displayParts": [
               {
                 "text": "Pick the word ",
@@ -31015,6 +31062,7 @@
             "audioFile": "audio/lessons/L.4.5c/S4c.mp3",
             "ttsScript": "Now you are ready for word strength levels!",
             "displayText": "You got it!",
+            "audioRegenAt": "2026-05-08T03:52:53.287Z",
             "displayParts": [
               {
                 "text": "Now you are ready for ",
@@ -31110,6 +31158,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.4.6/S2a.mp3",
             "ttsScript": "Try new words in your speaking and writing.",
+            "audioRegenAt": "2026-05-08T03:52:58.033Z",
             "displayParts": [
               {
                 "text": "Try new words in your ",
@@ -31152,6 +31201,7 @@
             ],
             "audioFile": "audio/lessons/L.4.6/S2b.mp3",
             "ttsScript": "They become yours after you use them.",
+            "audioRegenAt": "2026-05-08T03:53:02.675Z",
             "displayParts": [
               {
                 "text": "They become ",
@@ -31202,6 +31252,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.4.6/S3a.mp3",
             "ttsScript": "Casual for chats.",
+            "audioRegenAt": "2026-05-08T03:53:06.442Z",
             "displayParts": [
               {
                 "text": "Casual",
@@ -31221,6 +31272,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/L.4.6/S3b.mp3",
             "ttsScript": "Academic for school.",
+            "audioRegenAt": "2026-05-08T03:53:10.225Z",
             "displayParts": [
               {
                 "text": "Academic",
@@ -31249,6 +31301,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.4.6/S4a.mp3",
             "ttsScript": "Here is a helpful trick.",
+            "audioRegenAt": "2026-05-08T03:53:14.130Z",
             "displayParts": [
               {
                 "text": "Here is a helpful ",
@@ -31268,6 +31321,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/L.4.6/S4b.mp3",
             "ttsScript": "One new word a day. Use it three times!",
+            "audioRegenAt": "2026-05-08T03:53:19.126Z",
             "displayParts": [
               {
                 "text": "One new word a day.",
@@ -31302,6 +31356,7 @@
             ],
             "audioFile": "audio/lessons/L.4.6/S4c.mp3",
             "ttsScript": "Now you are ready to use big vocabulary!",
+            "audioRegenAt": "2026-05-08T03:53:23.908Z",
             "displayParts": [
               {
                 "text": "Now you are ready to use ",
@@ -32190,6 +32245,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.1.3d/S1a.mp3",
             "ttsScript": "Every word has beats inside it. We call them syllables.",
+            "audioRegenAt": "2026-05-08T04:14:54.588Z",
             "displayParts": [
               {
                 "text": "Beats",
@@ -32224,6 +32280,7 @@
             ],
             "audioFile": "audio/lessons/RF.1.3d/S1b.mp3",
             "ttsScript": "You can clap a word to find the beats!",
+            "audioRegenAt": "2026-05-08T04:14:59.881Z",
             "displayParts": [
               {
                 "text": "Clap it out",
@@ -32250,6 +32307,7 @@
             ],
             "audioFile": "audio/lessons/RF.1.3d/S1c.mp3",
             "ttsScript": "Let us try some together.",
+            "audioRegenAt": "2026-05-08T04:15:03.699Z",
             "displayParts": [
               {
                 "text": "Let us clap",
@@ -32280,6 +32338,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.1.3d/S2a.mp3",
             "ttsScript": "Listen. Cat.",
+            "audioRegenAt": "2026-05-08T04:15:08.103Z",
             "displayParts": [
               {
                 "text": "Listen. ",
@@ -32310,6 +32369,7 @@
             ],
             "audioFile": "audio/lessons/RF.1.3d/S2b.mp3",
             "ttsScript": "One clap! Cat has one beat. One syllable.",
+            "audioRegenAt": "2026-05-08T04:15:15.513Z",
             "displayParts": [
               {
                 "text": "One clap! ",
@@ -32357,6 +32417,7 @@
             "audioFile": "audio/lessons/RF.1.3d/S3a.mp3",
             "ttsScript": "Listen. Rab-bit.",
             "interaction": "",
+            "audioRegenAt": "2026-05-08T04:15:21.998Z",
             "displayParts": [
               {
                 "text": "Rab-",
@@ -32391,6 +32452,7 @@
             "audioFile": "audio/lessons/RF.1.3d/S3b.mp3",
             "ttsScript": "Two claps! Rabbit has two beats. Two syllables.",
             "interaction": "",
+            "audioRegenAt": "2026-05-08T04:15:28.328Z",
             "displayParts": [
               {
                 "text": "2",
@@ -32421,6 +32483,7 @@
             "audioFile": "audio/lessons/RF.1.3d/S3c.mp3",
             "ttsScript": "Every syllable needs a vowel. Rabbit has A and I. Two vowels, two syllables.",
             "interaction": "",
+            "audioRegenAt": "2026-05-08T04:15:35.823Z",
             "displayParts": [
               {
                 "text": "Every syllable needs a ",
@@ -32472,6 +32535,7 @@
             "audioFile": "audio/lessons/RF.1.3d/S4a.mp3",
             "ttsScript": "Here is a helpful trick.",
             "interaction": "",
+            "audioRegenAt": "2026-05-08T04:15:39.630Z",
             "displayParts": [
               {
                 "text": "Here is a helpful trick.",
@@ -32488,6 +32552,7 @@
             "audioFile": "audio/lessons/RF.1.3d/S4b.mp3",
             "ttsScript": "Put your hand under your chin. Each time your chin drops, that is one syllable!",
             "interaction": "",
+            "audioRegenAt": "2026-05-08T04:15:47.015Z",
             "displayParts": [
               {
                 "text": "Put your hand under your chin.",
@@ -32531,6 +32596,7 @@
             "audioFile": "audio/lessons/RF.1.3d/S4c.mp3",
             "ttsScript": "Now you are ready to count syllables!",
             "interaction": "",
+            "audioRegenAt": "2026-05-08T04:15:51.196Z",
             "displayParts": [
               {
                 "text": "Now you are ready to count syllables!",
@@ -32597,6 +32663,7 @@
             "audioFile": "audio/lessons/RF.1.3e/S1a.mp3",
             "ttsScript": "Some words have two beats. Two syllables.",
             "interaction": "",
+            "audioRegenAt": "2026-05-08T03:53:29.215Z",
             "displayParts": [
               {
                 "text": "Some words have ",
@@ -32631,6 +32698,7 @@
             "audioFile": "audio/lessons/RF.1.3e/S1b.mp3",
             "ttsScript": "Long words can feel tricky. But we can split them into smaller pieces.",
             "interaction": "",
+            "audioRegenAt": "2026-05-08T03:53:39.019Z",
             "displayParts": [
               {
                 "text": "Long words can feel tricky.",
@@ -32666,6 +32734,7 @@
             "audioFile": "audio/lessons/RF.1.3e/S1c.mp3",
             "ttsScript": "Then read each piece!",
             "interaction": "",
+            "audioRegenAt": "2026-05-08T03:53:42.810Z",
             "displayParts": [
               {
                 "text": "Then read ",
@@ -32706,6 +32775,7 @@
             "audioFile": "audio/lessons/RF.1.3e/S2a.mp3",
             "ttsScript": "If there are two of the same consonants in the middle, split between them.",
             "interaction": "",
+            "audioRegenAt": "2026-05-08T03:53:48.867Z",
             "displayParts": [
               {
                 "text": "If there are two of the same ",
@@ -32744,6 +32814,7 @@
             "audioFile": "audio/lessons/RF.1.3e/S2b.mp3",
             "ttsScript": "Rabbit becomes rab and bit.",
             "interaction": "",
+            "audioRegenAt": "2026-05-08T03:53:55.720Z",
             "displayParts": [
               {
                 "text": "Rabbit becomes ",
@@ -32782,6 +32853,7 @@
             "audioFile": "audio/lessons/RF.1.3e/S2c.mp3",
             "ttsScript": "Napkin becomes nap and kin.",
             "interaction": "",
+            "audioRegenAt": "2026-05-08T03:54:00.674Z",
             "displayParts": [
               {
                 "text": "Napkin becomes ",
@@ -32828,6 +32900,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.1.3e/S3a.mp3",
             "ttsScript": "Let us read pencil together.",
+            "audioRegenAt": "2026-05-08T03:54:04.797Z",
             "displayParts": [
               {
                 "text": "Let us read ",
@@ -32851,6 +32924,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.1.3e/S3b.mp3",
             "ttsScript": "Split. Pen and cil.",
+            "audioRegenAt": "2026-05-08T03:54:09.935Z",
             "displayParts": [
               {
                 "text": "Split. ",
@@ -32888,6 +32962,7 @@
             "sub": "c",
             "audioFile": "audio/lessons/RF.1.3e/S3c.mp3",
             "ttsScript": "Read each piece. Pen. Cil.",
+            "audioRegenAt": "2026-05-08T03:54:16.678Z",
             "displayParts": [
               {
                 "text": "Read each ",
@@ -32942,6 +33017,7 @@
             ],
             "audioFile": "audio/lessons/RF.1.3e/S3d.mp3",
             "ttsScript": "Now blend. Pencil!",
+            "audioRegenAt": "2026-05-08T03:54:20.732Z",
             "displayParts": [
               {
                 "text": "Now ",
@@ -32984,6 +33060,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.1.3e/S4a.mp3",
             "ttsScript": "Here is a helpful trick.",
+            "audioRegenAt": "2026-05-08T03:54:24.521Z",
             "displayParts": [
               {
                 "text": "A two-syllable ",
@@ -33003,6 +33080,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.1.3e/S4b.mp3",
             "ttsScript": "Split the word. Read each piece. Then blend them back together!",
+            "audioRegenAt": "2026-05-08T03:58:05.973Z",
             "displayParts": [
               {
                 "text": "Split",
@@ -33045,6 +33123,7 @@
             ],
             "audioFile": "audio/lessons/RF.1.3e/S4c.mp3",
             "ttsScript": "Now you are ready to read two-syllable words!",
+            "audioRegenAt": "2026-05-08T03:58:11.977Z",
             "displayParts": [
               {
                 "text": "You got it!",
@@ -33102,6 +33181,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.1.3f/S1a.mp3",
             "ttsScript": "Little endings can change what a word means.",
+            "audioRegenAt": "2026-05-08T03:58:16.755Z",
             "displayParts": [
               {
                 "text": "Little ",
@@ -33125,6 +33205,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.1.3f/S1b.mp3",
             "ttsScript": "They tell us how many, or when.",
+            "audioRegenAt": "2026-05-08T03:58:21.915Z",
             "displayParts": [
               {
                 "text": "They tell us ",
@@ -33158,6 +33239,7 @@
             "sub": "c",
             "audioFile": "audio/lessons/RF.1.3f/S1c.mp3",
             "ttsScript": "Let us meet three of the most common ones.",
+            "audioRegenAt": "2026-05-08T03:58:27.458Z",
             "displayParts": [
               {
                 "text": "Let us meet ",
@@ -33190,6 +33272,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.1.3f/S2a.mp3",
             "ttsScript": "The S ending means more than one.",
+            "audioRegenAt": "2026-05-08T03:58:32.057Z",
             "displayParts": [
               {
                 "text": "The ",
@@ -33219,6 +33302,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.1.3f/S2b.mp3",
             "ttsScript": "One cat. Two cats.",
+            "audioRegenAt": "2026-05-08T03:58:37.236Z",
             "displayParts": [
               {
                 "text": "One cat.",
@@ -33248,6 +33332,7 @@
             "sub": "c",
             "audioFile": "audio/lessons/RF.1.3f/S2c.mp3",
             "ttsScript": "Dog becomes dogs. Apple becomes apples.",
+            "audioRegenAt": "2026-05-08T03:58:44.336Z",
             "displayParts": [
               {
                 "text": "Dog becomes ",
@@ -33294,6 +33379,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.1.3f/S3a.mp3",
             "ttsScript": "The ending E D means it already happened.",
+            "audioRegenAt": "2026-05-08T03:58:49.533Z",
             "displayParts": [
               {
                 "text": "The ending ",
@@ -33323,6 +33409,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.1.3f/S3b.mp3",
             "ttsScript": "Yesterday, I jumped. Already happened!",
+            "audioRegenAt": "2026-05-08T03:58:54.813Z",
             "displayParts": [
               {
                 "text": "Yesterday, I ",
@@ -33352,6 +33439,7 @@
             "sub": "c",
             "audioFile": "audio/lessons/RF.1.3f/S3c.mp3",
             "ttsScript": "The ending I N G means happening right now.",
+            "audioRegenAt": "2026-05-08T03:59:01.220Z",
             "displayParts": [
               {
                 "text": "The ending ",
@@ -33381,6 +33469,7 @@
             "sub": "d",
             "audioFile": "audio/lessons/RF.1.3f/S3d.mp3",
             "ttsScript": "I am jumping. Happening now!",
+            "audioRegenAt": "2026-05-08T03:59:06.439Z",
             "displayParts": [
               {
                 "text": "I am ",
@@ -33419,6 +33508,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.1.3f/S4a.mp3",
             "ttsScript": "Here is a helpful trick.",
+            "audioRegenAt": "2026-05-08T03:59:10.582Z",
             "displayParts": [
               {
                 "text": "Here is a helpful trick.",
@@ -33434,6 +33524,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.1.3f/S4b.mp3",
             "ttsScript": "Look at the last letters. The ending tells you when or how many!",
+            "audioRegenAt": "2026-05-08T03:59:15.832Z",
             "displayParts": [
               {
                 "text": "Look at the last letters.",
@@ -33464,6 +33555,7 @@
             ],
             "audioFile": "audio/lessons/RF.1.3f/S4c.mp3",
             "ttsScript": "Now you are ready to read word endings!",
+            "audioRegenAt": "2026-05-08T03:59:20.378Z",
             "displayParts": [
               {
                 "text": "Now you are ready to read word endings!",
@@ -33521,6 +33613,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.1.3g/S1a.mp3",
             "ttsScript": "Most words you can sound out. But a few are tricky!",
+            "audioRegenAt": "2026-05-08T03:59:25.731Z",
             "displayParts": [
               {
                 "text": "Most words you can sound out.",
@@ -33540,6 +33633,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.1.3g/S1b.mp3",
             "ttsScript": "These words do not follow the usual rules.",
+            "audioRegenAt": "2026-05-08T03:59:31.067Z",
             "displayParts": [
               {
                 "text": "These words do not follow",
@@ -33559,6 +33653,7 @@
             "sub": "c",
             "audioFile": "audio/lessons/RF.1.3g/S1c.mp3",
             "ttsScript": "The best way? Memorize them by sight.",
+            "audioRegenAt": "2026-05-08T03:59:35.369Z",
             "displayParts": [
               {
                 "text": "The best way?",
@@ -33587,6 +33682,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.1.3g/S2a.mp3",
             "ttsScript": "Look at this word. Said.",
+            "audioRegenAt": "2026-05-08T03:59:39.202Z",
             "displayParts": [
               {
                 "text": "Look at this word.",
@@ -33606,6 +33702,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.1.3g/S2b.mp3",
             "ttsScript": "It is spelled S-A-I-D. But it sounds like sed!",
+            "audioRegenAt": "2026-05-08T03:59:46.825Z",
             "displayParts": [
               {
                 "text": "It is spelled S-A-I-D.",
@@ -33643,6 +33740,7 @@
             "sub": "c",
             "audioFile": "audio/lessons/RF.1.3g/S2c.mp3",
             "ttsScript": "It breaks the rules! So we just memorize it.",
+            "audioRegenAt": "2026-05-08T03:59:52.220Z",
             "displayParts": [
               {
                 "text": "It breaks the rules!",
@@ -33671,6 +33769,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.1.3g/S3a.mp3",
             "ttsScript": "Was. Were. Have.",
+            "audioRegenAt": "2026-05-08T03:59:57.330Z",
             "displayParts": [
               {
                 "text": "Was.",
@@ -33704,6 +33803,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.1.3g/S3b.mp3",
             "ttsScript": "Was sounds like wuz, but it ends in s.",
+            "audioRegenAt": "2026-05-08T04:00:04.117Z",
             "displayParts": [
               {
                 "text": "Was sounds like ",
@@ -33741,6 +33841,7 @@
             "sub": "c",
             "audioFile": "audio/lessons/RF.1.3g/S3c.mp3",
             "ttsScript": "Were has a silent E that helps it end in R.",
+            "audioRegenAt": "2026-05-08T04:00:10.156Z",
             "displayParts": [
               {
                 "text": "Were has a ",
@@ -33778,6 +33879,7 @@
             "sub": "d",
             "audioFile": "audio/lessons/RF.1.3g/S3d.mp3",
             "ttsScript": "Have ends in a silent E too. Tricky words stick together.",
+            "audioRegenAt": "2026-05-08T04:00:16.609Z",
             "displayParts": [
               {
                 "text": "Have ends in a ",
@@ -33824,6 +33926,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.1.3g/S4a.mp3",
             "ttsScript": "Here is a helpful trick.",
+            "audioRegenAt": "2026-05-08T04:00:20.530Z",
             "displayParts": [
               {
                 "text": "Here is a helpful ",
@@ -33849,6 +33952,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.1.3g/S4b.mp3",
             "ttsScript": "The more often you see a tricky word, the faster you know it. Flash cards help!",
+            "audioRegenAt": "2026-05-08T04:00:28.160Z",
             "displayParts": [
               {
                 "text": "The more often you see a ",
@@ -33891,6 +33995,7 @@
             ],
             "audioFile": "audio/lessons/RF.1.3g/S4c.mp3",
             "ttsScript": "Now you are ready to read tricky sight words!",
+            "audioRegenAt": "2026-05-08T04:00:33.956Z",
             "displayParts": [
               {
                 "text": "Now you are ",
@@ -33963,6 +34068,7 @@
             "audioFile": "audio/lessons/RF.1.4a/S1a.mp3",
             "ttsScript": "Great readers think before they read.",
             "interaction": "",
+            "audioRegenAt": "2026-05-08T04:00:38.204Z",
             "displayParts": [
               {
                 "text": "Great readers ",
@@ -33993,6 +34099,7 @@
             "audioFile": "audio/lessons/RF.1.4a/S1b.mp3",
             "ttsScript": "They ask, why am I reading this book?",
             "interaction": "",
+            "audioRegenAt": "2026-05-08T04:00:42.552Z",
             "displayParts": [
               {
                 "text": "They ask, ",
@@ -34028,6 +34135,7 @@
             "audioFile": "audio/lessons/RF.1.4a/S1c.mp3",
             "ttsScript": "That question is called your purpose.",
             "interaction": "",
+            "audioRegenAt": "2026-05-08T04:00:46.712Z",
             "displayParts": [
               {
                 "text": "That question is called your ",
@@ -34066,6 +34174,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.1.4a/S2a.mp3",
             "ttsScript": "We read for two big reasons.",
+            "audioRegenAt": "2026-05-08T04:00:52.380Z",
             "displayParts": [
               {
                 "text": "We read for ",
@@ -34100,6 +34209,7 @@
             ],
             "audioFile": "audio/lessons/RF.1.4a/S2b.mp3",
             "ttsScript": "A storybook. We read it for fun!",
+            "audioRegenAt": "2026-05-08T04:00:56.572Z",
             "displayParts": [
               {
                 "text": "A storybook. ",
@@ -34134,6 +34244,7 @@
             ],
             "audioFile": "audio/lessons/RF.1.4a/S2c.mp3",
             "ttsScript": "A fact book. We read it to learn!",
+            "audioRegenAt": "2026-05-08T04:01:00.856Z",
             "displayParts": [
               {
                 "text": "A fact book. ",
@@ -34172,6 +34283,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.1.4a/S3a.mp3",
             "ttsScript": "Imagine you want to learn how butterflies fly.",
+            "audioRegenAt": "2026-05-08T04:01:06.254Z",
             "displayParts": [
               {
                 "text": "Imagine you want to learn",
@@ -34197,6 +34309,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.1.4a/S3b.mp3",
             "ttsScript": "Which book fits? A fact book about butterflies!",
+            "audioRegenAt": "2026-05-08T04:01:12.223Z",
             "displayParts": [
               {
                 "text": "Which book fits?",
@@ -34226,6 +34339,7 @@
             "sub": "c",
             "audioFile": "audio/lessons/RF.1.4a/S3c.mp3",
             "ttsScript": "Now imagine you want a bedtime story.",
+            "audioRegenAt": "2026-05-08T04:01:17.950Z",
             "displayParts": [
               {
                 "text": "Now imagine you want",
@@ -34256,6 +34370,7 @@
             ],
             "audioFile": "audio/lessons/RF.1.4a/S3d.mp3",
             "ttsScript": "A storybook! Your purpose picks your book.",
+            "audioRegenAt": "2026-05-08T04:01:23.610Z",
             "displayParts": [
               {
                 "text": "A storybook!",
@@ -34294,6 +34409,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.1.4a/S4a.mp3",
             "ttsScript": "Here is a helpful trick.",
+            "audioRegenAt": "2026-05-08T04:01:28.083Z",
             "displayParts": [
               {
                 "text": "Here is a ",
@@ -34313,6 +34429,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.1.4a/S4b.mp3",
             "ttsScript": "Before you open a book, ask yourself: what do I want from this book?",
+            "audioRegenAt": "2026-05-08T04:01:34.469Z",
             "displayParts": [
               {
                 "text": "Before you open a book,",
@@ -34347,6 +34464,7 @@
             ],
             "audioFile": "audio/lessons/RF.1.4a/S4c.mp3",
             "ttsScript": "Now you are ready to read with purpose!",
+            "audioRegenAt": "2026-05-08T04:01:39.500Z",
             "displayParts": [
               {
                 "text": "Now you are ready to read ",
@@ -34416,6 +34534,7 @@
             "ttsScript": "Every word in a sentence has a job.",
             "displayText": "Every word has a job",
             "interaction": "",
+            "audioRegenAt": "2026-05-08T04:13:43.698Z",
             "displayParts": [
               {
                 "text": "Every word",
@@ -34437,6 +34556,7 @@
             "ttsScript": "Some words name things. Some show action. Some describe.",
             "displayText": "Name. Do. Describe.",
             "interaction": "",
+            "audioRegenAt": "2026-05-08T04:13:51.289Z",
             "displayParts": [
               {
                 "text": "Name.",
@@ -34481,6 +34601,7 @@
             "ttsScript": "Knowing the jobs helps us talk and write clearly!",
             "displayText": "Clear talking + writing",
             "interaction": "",
+            "audioRegenAt": "2026-05-08T04:13:56.282Z",
             "displayParts": [
               {
                 "text": "Knowing the jobs helps us",
@@ -34509,6 +34630,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.1.1/S2a.mp3",
             "ttsScript": "A noun names a person, place, or thing.",
+            "audioRegenAt": "2026-05-08T04:14:01.620Z",
             "displayParts": [
               {
                 "text": "A noun names a ",
@@ -34550,6 +34672,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/L.1.1/S2b.mp3",
             "ttsScript": "Dog. Tree. School. Mom. All nouns!",
+            "audioRegenAt": "2026-05-08T04:14:07.936Z",
             "displayParts": [
               {
                 "text": "Dog.",
@@ -34599,6 +34722,7 @@
             "sub": "c",
             "audioFile": "audio/lessons/L.1.1/S2c.mp3",
             "ttsScript": "If you can point to it, it is usually a noun.",
+            "audioRegenAt": "2026-05-08T04:14:12.363Z",
             "displayParts": [
               {
                 "text": "If you can ",
@@ -34645,6 +34769,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.1.1/S3a.mp3",
             "ttsScript": "A verb shows action. What someone is doing.",
+            "audioRegenAt": "2026-05-08T04:14:18.780Z",
             "displayParts": [
               {
                 "text": "A verb shows action.",
@@ -34679,6 +34804,7 @@
             ],
             "audioFile": "audio/lessons/L.1.1/S3b.mp3",
             "ttsScript": "Run. Jump. Clap. Eat. All verbs!",
+            "audioRegenAt": "2026-05-08T04:14:24.895Z",
             "displayParts": [
               {
                 "text": "Run.",
@@ -34732,6 +34858,7 @@
             "sub": "c",
             "audioFile": "audio/lessons/L.1.1/S3c.mp3",
             "ttsScript": "Every sentence needs a verb to tell what is happening.",
+            "audioRegenAt": "2026-05-08T04:14:30.351Z",
             "displayParts": [
               {
                 "text": "Every sentence needs a verb",
@@ -34771,6 +34898,7 @@
             "audioFile": "audio/lessons/L.1.1/S4a.mp3",
             "ttsScript": "Here is a helpful trick.",
             "displayText": "A grammar trick",
+            "audioRegenAt": "2026-05-08T04:14:34.197Z",
             "displayParts": [
               {
                 "text": "Here is a helpful trick.",
@@ -34787,6 +34915,7 @@
             "audioFile": "audio/lessons/L.1.1/S4b.mp3",
             "ttsScript": "Ask: what names a thing? That is the noun. What shows action? That is the verb!",
             "displayText": "Name vs action",
+            "audioRegenAt": "2026-05-08T04:14:42.829Z",
             "displayParts": [
               {
                 "text": "Ask: what names a thing?",
@@ -34838,6 +34967,7 @@
             "audioFile": "audio/lessons/L.1.1/S4c.mp3",
             "ttsScript": "Now you are ready to spot grammar jobs!",
             "displayText": "You got it!",
+            "audioRegenAt": "2026-05-08T04:14:48.032Z",
             "displayParts": [
               {
                 "text": "Now you are ready to spot grammar jobs!",
@@ -34895,6 +35025,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.1.2/S1a.mp3",
             "ttsScript": "When we write, we follow a few important rules.",
+            "audioRegenAt": "2026-05-08T04:01:44.934Z",
             "displayParts": [
               {
                 "text": "When we write,",
@@ -34920,6 +35051,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/L.1.2/S1b.mp3",
             "ttsScript": "The rules help our readers understand us.",
+            "audioRegenAt": "2026-05-08T04:01:49.298Z",
             "displayParts": [
               {
                 "text": "The rules help our readers",
@@ -34950,6 +35082,7 @@
             ],
             "audioFile": "audio/lessons/L.1.2/S1c.mp3",
             "ttsScript": "Let us learn two big ones.",
+            "audioRegenAt": "2026-05-08T04:01:53.390Z",
             "displayParts": [
               {
                 "text": "Let us learn",
@@ -34984,6 +35117,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.1.2/S2a.mp3",
             "ttsScript": "Every sentence starts with a capital letter.",
+            "audioRegenAt": "2026-05-08T04:01:59.867Z",
             "displayParts": [
               {
                 "text": "Every sentence starts with a ",
@@ -35009,6 +35143,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/L.1.2/S2b.mp3",
             "ttsScript": "The dog runs. See the big T?",
+            "audioRegenAt": "2026-05-08T04:02:05.518Z",
             "displayParts": [
               {
                 "text": "The dog runs.",
@@ -35034,6 +35169,7 @@
             "sub": "c",
             "audioFile": "audio/lessons/L.1.2/S2c.mp3",
             "ttsScript": "Names also start with capitals. Maya, not maya.",
+            "audioRegenAt": "2026-05-08T04:02:14.213Z",
             "displayParts": [
               {
                 "text": "Names also start with ",
@@ -35076,6 +35212,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.1.2/S3a.mp3",
             "ttsScript": "Every sentence ends with a mark.",
+            "audioRegenAt": "2026-05-08T04:02:21.031Z",
             "displayParts": [
               {
                 "text": "Every sentence ends with a ",
@@ -35101,6 +35238,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/L.1.2/S3b.mp3",
             "ttsScript": "A period for telling. A question mark for asking. An exclamation mark for excited.",
+            "audioRegenAt": "2026-05-08T04:02:28.704Z",
             "displayParts": [
               {
                 "text": "A period for telling.",
@@ -35153,6 +35291,7 @@
             "sub": "c",
             "audioFile": "audio/lessons/L.1.2/S3c.mp3",
             "ttsScript": "Pick the mark that fits your sentence!",
+            "audioRegenAt": "2026-05-08T04:02:33.355Z",
             "displayParts": [
               {
                 "text": "Pick the mark that ",
@@ -35187,6 +35326,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.1.2/S4a.mp3",
             "ttsScript": "Here is a helpful trick.",
+            "audioRegenAt": "2026-05-08T04:02:36.876Z",
             "displayParts": [
               {
                 "text": "A helpful trick",
@@ -35202,6 +35342,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/L.1.2/S4b.mp3",
             "ttsScript": "When you write, check the start and the end of every sentence.",
+            "audioRegenAt": "2026-05-08T04:02:42.213Z",
             "displayParts": [
               {
                 "text": "Check the ",
@@ -35244,6 +35385,7 @@
             ],
             "audioFile": "audio/lessons/L.1.2/S4c.mp3",
             "ttsScript": "Now you are ready to use capitals and periods!",
+            "audioRegenAt": "2026-05-08T04:02:47.734Z",
             "displayParts": [
               {
                 "text": "You are ready!",
@@ -35302,6 +35444,7 @@
             "audioFile": "audio/lessons/L.2.1/S1a.mp3",
             "ttsScript": "Second graders learn more sentence skills.",
             "interaction": "",
+            "audioRegenAt": "2026-05-08T04:02:52.310Z",
             "displayParts": [
               {
                 "text": "Second graders learn more ",
@@ -35328,6 +35471,7 @@
             "audioFile": "audio/lessons/L.2.1/S1b.mp3",
             "ttsScript": "Collective nouns, irregular verbs, and tricky pronouns.",
             "interaction": "",
+            "audioRegenAt": "2026-05-08T04:02:57.752Z",
             "displayParts": [
               {
                 "text": "Collective nouns",
@@ -35371,6 +35515,7 @@
             "audioFile": "audio/lessons/L.2.1/S1c.mp3",
             "ttsScript": "Let us meet them!",
             "interaction": "",
+            "audioRegenAt": "2026-05-08T04:03:01.388Z",
             "displayParts": [
               {
                 "text": "Let us meet them!",
@@ -35395,6 +35540,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.2.1/S2a.mp3",
             "ttsScript": "A collective noun names a group as one thing.",
+            "audioRegenAt": "2026-05-08T04:03:07.397Z",
             "displayParts": [
               {
                 "text": "A collective noun names a ",
@@ -35428,6 +35574,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/L.2.1/S2b.mp3",
             "ttsScript": "Team. Herd. Flock. Family.",
+            "audioRegenAt": "2026-05-08T04:03:13.677Z",
             "displayParts": [
               {
                 "text": "Team.",
@@ -35469,6 +35616,7 @@
             "sub": "c",
             "audioFile": "audio/lessons/L.2.1/S2c.mp3",
             "ttsScript": "Use a singular verb with them. The team runs!",
+            "audioRegenAt": "2026-05-08T04:03:19.861Z",
             "displayParts": [
               {
                 "text": "Use a ",
@@ -35519,6 +35667,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.2.1/S3a.mp3",
             "ttsScript": "Most past tense verbs add E D. But some are irregular!",
+            "audioRegenAt": "2026-05-08T04:03:27.049Z",
             "displayParts": [
               {
                 "text": "Most past tense verbs add E D.",
@@ -35544,6 +35693,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/L.2.1/S3b.mp3",
             "ttsScript": "Yesterday I ate. I ran. I flew.",
+            "audioRegenAt": "2026-05-08T04:03:34.100Z",
             "displayParts": [
               {
                 "text": "Yesterday I ate.",
@@ -35586,6 +35736,7 @@
             ],
             "audioFile": "audio/lessons/L.2.1/S3c.mp3",
             "ttsScript": "Those do not follow the E D rule. Memorize!",
+            "audioRegenAt": "2026-05-08T04:03:39.763Z",
             "displayParts": [
               {
                 "text": "Those do not follow the E D rule.",
@@ -35620,6 +35771,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.2.1/S4a.mp3",
             "ttsScript": "Here is a helpful trick.",
+            "audioRegenAt": "2026-05-08T04:03:43.694Z",
             "displayParts": [
               {
                 "text": "Here is a helpful trick.",
@@ -35635,6 +35787,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/L.2.1/S4b.mp3",
             "ttsScript": "Say the sentence out loud. Does it sound right? Your ear often knows!",
+            "audioRegenAt": "2026-05-08T04:03:49.888Z",
             "displayParts": [
               {
                 "text": "Say the sentence out loud.",
@@ -35677,6 +35830,7 @@
             ],
             "audioFile": "audio/lessons/L.2.1/S4c.mp3",
             "ttsScript": "Now you are ready to use strong sentence skills!",
+            "audioRegenAt": "2026-05-08T04:03:54.889Z",
             "displayParts": [
               {
                 "text": "Now you are ready to use",
@@ -35744,6 +35898,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.2.2/S1a.mp3",
             "ttsScript": "Two tiny marks do big jobs in sentences.",
+            "audioRegenAt": "2026-05-08T04:04:00.701Z",
             "displayParts": [
               {
                 "text": "Two tiny marks",
@@ -35781,6 +35936,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/L.2.2/S1b.mp3",
             "ttsScript": "Apostrophes and commas.",
+            "audioRegenAt": "2026-05-08T04:04:04.560Z",
             "displayParts": [
               {
                 "text": "Apostrophes",
@@ -35815,6 +35971,7 @@
             ],
             "audioFile": "audio/lessons/L.2.2/S1c.mp3",
             "ttsScript": "Let us learn both!",
+            "audioRegenAt": "2026-05-08T04:04:08.110Z",
             "displayParts": [
               {
                 "text": "Let us learn",
@@ -35858,6 +36015,7 @@
             ],
             "audioFile": "audio/lessons/L.2.2/S2a.mp3",
             "ttsScript": "Add an apostrophe and an S to show owning.",
+            "audioRegenAt": "2026-05-08T04:04:13.585Z",
             "displayParts": [
               {
                 "text": "Add an ",
@@ -35900,6 +36058,7 @@
             ],
             "audioFile": "audio/lessons/L.2.2/S2b.mp3",
             "ttsScript": "The dog's bone. The girl's book.",
+            "audioRegenAt": "2026-05-08T04:04:20.691Z",
             "displayParts": [
               {
                 "text": "The ",
@@ -35954,6 +36113,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.2.2/S3a.mp3",
             "ttsScript": "An apostrophe can also replace missing letters.",
+            "audioRegenAt": "2026-05-08T04:04:26.408Z",
             "displayParts": [
               {
                 "text": "' = ",
@@ -35979,6 +36139,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/L.2.2/S3b.mp3",
             "ttsScript": "Can not becomes can't. Do not becomes don't.",
+            "audioRegenAt": "2026-05-08T04:04:33.336Z",
             "displayParts": [
               {
                 "text": "Can not becomes ",
@@ -36025,6 +36186,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.2.2/S4a.mp3",
             "ttsScript": "Commas separate items in a list.",
+            "audioRegenAt": "2026-05-08T04:04:37.763Z",
             "displayParts": [
               {
                 "text": "Commas ",
@@ -36048,6 +36210,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/L.2.2/S4b.mp3",
             "ttsScript": "I like apples, bananas, and grapes!",
+            "audioRegenAt": "2026-05-08T04:04:42.537Z",
             "displayParts": [
               {
                 "text": "I like ",
@@ -36094,6 +36257,7 @@
             ],
             "audioFile": "audio/lessons/L.2.2/S4c.mp3",
             "ttsScript": "Now you are ready to use apostrophes and commas!",
+            "audioRegenAt": "2026-05-08T04:04:47.494Z",
             "displayParts": [
               {
                 "text": "Now you are ready ",
@@ -36159,6 +36323,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.2.3/S1a.mp3",
             "ttsScript": "The words you pick change how your message sounds.",
+            "audioRegenAt": "2026-05-08T04:04:52.679Z",
             "displayParts": [
               {
                 "text": "The words you pick ",
@@ -36188,6 +36353,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/L.2.3/S1b.mp3",
             "ttsScript": "Some words sound friendly. Some sound formal.",
+            "audioRegenAt": "2026-05-08T04:04:58.134Z",
             "displayParts": [
               {
                 "text": "Some words sound ",
@@ -36234,6 +36400,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.2.3/S2a.mp3",
             "ttsScript": "Formal words are for teachers, letters, and essays.",
+            "audioRegenAt": "2026-05-08T04:05:03.098Z",
             "displayParts": [
               {
                 "text": "Formal words are for ",
@@ -36275,6 +36442,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/L.2.3/S2b.mp3",
             "ttsScript": "Casual words are for friends and family.",
+            "audioRegenAt": "2026-05-08T04:05:07.688Z",
             "displayParts": [
               {
                 "text": "Casual words are for ",
@@ -36308,6 +36476,7 @@
             "sub": "c",
             "audioFile": "audio/lessons/L.2.3/S2c.mp3",
             "ttsScript": "Thank you vs. Thanks. Both are nice. One is more formal.",
+            "audioRegenAt": "2026-05-08T04:05:13.698Z",
             "displayParts": [
               {
                 "text": "Thank you vs. Thanks.",
@@ -36355,6 +36524,7 @@
             ],
             "audioFile": "audio/lessons/L.2.3/S3a.mp3",
             "ttsScript": "Stronger words paint a stronger picture.",
+            "audioRegenAt": "2026-05-08T04:05:19.712Z",
             "displayParts": [
               {
                 "text": "Stronger words ",
@@ -36374,6 +36544,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/L.2.3/S3b.mp3",
             "ttsScript": "Instead of big, try enormous. Instead of sad, try heartbroken.",
+            "audioRegenAt": "2026-05-08T04:05:27.423Z",
             "displayParts": [
               {
                 "text": "Instead of big, try ",
@@ -36420,6 +36591,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.2.3/S4a.mp3",
             "ttsScript": "Here is a helpful trick.",
+            "audioRegenAt": "2026-05-08T04:05:30.845Z",
             "displayParts": [
               {
                 "text": "Here is a helpful ",
@@ -36445,6 +36617,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/L.2.3/S4b.mp3",
             "ttsScript": "Think about who will read your words. Then pick words that fit!",
+            "audioRegenAt": "2026-05-08T04:05:36.127Z",
             "displayParts": [
               {
                 "text": "Think about ",
@@ -36479,6 +36652,7 @@
             ],
             "audioFile": "audio/lessons/L.2.3/S4c.mp3",
             "ttsScript": "Now you are ready to choose words to sound just right!",
+            "audioRegenAt": "2026-05-08T04:05:41.506Z",
             "displayParts": [
               {
                 "text": "Now you are ready to ",
@@ -36687,6 +36861,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.3.2/S1a.mp3",
             "ttsScript": "Quotation marks show what someone is saying.",
+            "audioRegenAt": "2026-05-08T04:05:45.839Z",
             "displayParts": [
               {
                 "text": "Quotes",
@@ -36716,6 +36891,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/L.3.2/S1b.mp3",
             "ttsScript": "Commas help separate ideas in a sentence.",
+            "audioRegenAt": "2026-05-08T04:05:50.370Z",
             "displayParts": [
               {
                 "text": "Commas",
@@ -36796,6 +36972,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.3.2/S3a.mp3",
             "ttsScript": "Lists: apples, bananas, and grapes.",
+            "audioRegenAt": "2026-05-08T04:05:56.495Z",
             "displayParts": [
               {
                 "text": "Lists: ",
@@ -36837,6 +37014,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/L.3.2/S3b.mp3",
             "ttsScript": "Dates: March 5, 2026.",
+            "audioRegenAt": "2026-05-08T04:06:03.408Z",
             "displayParts": [
               {
                 "text": "Dates: ",
@@ -36879,6 +37057,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.3.2/S4a.mp3",
             "ttsScript": "Here is a helpful trick.",
+            "audioRegenAt": "2026-05-08T04:06:07.150Z",
             "displayParts": [
               {
                 "text": "A punctuation trick",
@@ -36894,6 +37073,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/L.3.2/S4b.mp3",
             "ttsScript": "Reread your sentence and listen for natural pauses. That is where commas often go.",
+            "audioRegenAt": "2026-05-08T04:06:14.137Z",
             "displayParts": [
               {
                 "text": "Pauses",
@@ -36928,6 +37108,7 @@
             ],
             "audioFile": "audio/lessons/L.3.2/S4c.mp3",
             "ttsScript": "Now you are ready for quotes and commas!",
+            "audioRegenAt": "2026-05-08T04:06:19.044Z",
             "displayParts": [
               {
                 "text": "You got it!",
@@ -36987,6 +37168,7 @@
             "ttsScript": "The words you choose paint a picture for your reader.",
             "displayText": "Words paint pictures",
             "interaction": "",
+            "audioRegenAt": "2026-05-08T04:06:24.427Z",
             "displayDelay": 2500,
             "displayParts": [
               {
@@ -37025,6 +37207,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/L.3.3/S1b.mp3",
             "ttsScript": "Careful word choice makes your writing clear, vivid, and exciting!",
+            "audioRegenAt": "2026-05-08T04:06:30.663Z",
             "displayParts": [
               {
                 "text": "Careful word choice makes your writing",
@@ -37071,6 +37254,7 @@
             ],
             "audioFile": "audio/lessons/L.3.3/S1c.mp3",
             "ttsScript": "Let's learn how to pick the best words to make your stories shine!",
+            "audioRegenAt": "2026-05-08T04:06:36.389Z",
             "displayParts": [
               {
                 "text": "Let's learn how to pick",
@@ -37117,6 +37301,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.3.3/S2a.mp3",
             "ttsScript": "Strong verbs paint a stronger picture. Pounced beats went.",
+            "audioRegenAt": "2026-05-08T04:06:43.389Z",
             "displayParts": [
               {
                 "text": "Strong verbs paint a stronger picture.",
@@ -37146,6 +37331,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/L.3.3/S2b.mp3",
             "ttsScript": "Specific words help your reader see exactly what you mean.",
+            "audioRegenAt": "2026-05-08T04:06:49.047Z",
             "displayParts": [
               {
                 "text": "Specific words help your reader",
@@ -37184,6 +37370,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.3.3/S3a.mp3",
             "ttsScript": "Talking to a friend? Casual is fine.",
+            "audioRegenAt": "2026-05-08T04:06:55.300Z",
             "displayParts": [
               {
                 "text": "Talking to a friend?",
@@ -37209,6 +37396,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/L.3.3/S3b.mp3",
             "ttsScript": "Writing to a teacher or principal? Use formal words.",
+            "audioRegenAt": "2026-05-08T04:07:00.758Z",
             "displayParts": [
               {
                 "text": "Writing to a teacher or principal?",
@@ -37248,6 +37436,7 @@
             ],
             "audioFile": "audio/lessons/L.3.3/S4a.mp3",
             "ttsScript": "Here is a helpful trick.",
+            "audioRegenAt": "2026-05-08T04:07:04.683Z",
             "displayParts": [
               {
                 "text": "Here is a helpful ",
@@ -37273,6 +37462,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/L.3.3/S4b.mp3",
             "ttsScript": "Reread your sentence. Could a stronger word make it more vivid?",
+            "audioRegenAt": "2026-05-08T04:07:10.066Z",
             "displayParts": [
               {
                 "text": "Reread your sentence.",
@@ -37311,6 +37501,7 @@
             ],
             "audioFile": "audio/lessons/L.3.3/S4c.mp3",
             "ttsScript": "Now you are ready to pick the best words!",
+            "audioRegenAt": "2026-05-08T04:07:14.480Z",
             "displayParts": [
               {
                 "text": "Now you are ready ",
@@ -37382,6 +37573,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.4.1/S1a.mp3",
             "ttsScript": "Fourth grade grammar dives into pronouns, modals, prepositions, and run-ons.",
+            "audioRegenAt": "2026-05-08T04:07:21.139Z",
             "displayParts": [
               {
                 "text": "Fourth grade ",
@@ -37403,8 +37595,9 @@
           },
           {
             "sub": "b",
-            "audioFile": "audio/lessons/L.4.1/S1a.mp3",
+            "audioFile": "audio/lessons/L.4.1/S1b.mp3",
             "ttsScript": "Fourth grade grammar dives into pronouns, modals, prepositions, and run-ons.",
+            "audioRegenAt": "2026-05-08T04:07:28.922Z",
             "displayParts": [
               {
                 "text": "pronouns",
@@ -37440,8 +37633,9 @@
           },
           {
             "sub": "c",
-            "audioFile": "audio/lessons/L.4.1/S1a.mp3",
+            "audioFile": "audio/lessons/L.4.1/S1c.mp3",
             "ttsScript": "Fourth grade grammar dives into pronouns, modals, prepositions, and run-ons.",
+            "audioRegenAt": "2026-05-08T04:07:35.483Z",
             "displayParts": [
               {
                 "text": "and run-ons.",
@@ -37472,6 +37666,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.4.1/S2a.mp3",
             "ttsScript": "Pronouns like I, she, he, we replace nouns.",
+            "audioRegenAt": "2026-05-08T04:07:42.174Z",
             "displayParts": [
               {
                 "text": "Pronouns like ",
@@ -37501,6 +37696,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/L.4.1/S2b.mp3",
             "ttsScript": "Use them so we do not repeat names too much!",
+            "audioRegenAt": "2026-05-08T04:07:47.708Z",
             "displayParts": [
               {
                 "text": "Use them so we do not ",
@@ -37535,6 +37731,7 @@
             "ttsScript": "Modals like can, may, must show possibility or permission.",
             "displayText": "can / may / must",
             "interaction": "",
+            "audioRegenAt": "2026-05-08T04:07:54.000Z",
             "displayDelay": 2500,
             "displayParts": [
               {
@@ -37583,6 +37780,7 @@
             "ttsScript": "Run-on sentences cram two ideas without punctuation. Fix with a period or comma.",
             "displayText": "Fix run-ons",
             "interaction": "",
+            "audioRegenAt": "2026-05-08T04:08:03.269Z",
             "displayDelay": 2800,
             "displayParts": [
               {
@@ -37626,6 +37824,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.4.1/S4a.mp3",
             "ttsScript": "Here is a helpful trick.",
+            "audioRegenAt": "2026-05-08T04:08:07.034Z",
             "displayParts": [
               {
                 "text": "Here is a helpful trick.",
@@ -37641,6 +37840,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/L.4.1/S4b.mp3",
             "ttsScript": "Read aloud. If you run out of breath, it might be a run-on!",
+            "audioRegenAt": "2026-05-08T04:08:13.683Z",
             "displayParts": [
               {
                 "text": "Read aloud.",
@@ -37675,6 +37875,7 @@
             ],
             "audioFile": "audio/lessons/L.4.1/S4c.mp3",
             "ttsScript": "Now you are ready for pronouns and grammar rules!",
+            "audioRegenAt": "2026-05-08T04:08:19.376Z",
             "displayParts": [
               {
                 "text": "Now you are ready for",
@@ -37873,6 +38074,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.4.3/S1a.mp3",
             "ttsScript": "Style is the way you choose to write.",
+            "audioRegenAt": "2026-05-08T04:08:24.785Z",
             "displayParts": [
               {
                 "text": "Style is the way you ",
@@ -37907,6 +38109,7 @@
             ],
             "audioFile": "audio/lessons/L.4.3/S1b.mp3",
             "ttsScript": "It's how you make your writing sound unique, just like your own voice!",
+            "audioRegenAt": "2026-05-08T04:08:30.261Z",
             "displayParts": [
               {
                 "text": "It's how you make your writing sound ",
@@ -37953,6 +38156,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.4.3/S2a.mp3",
             "ttsScript": "Precise words paint clearer pictures. Bounded beats went.",
+            "audioRegenAt": "2026-05-08T04:08:37.139Z",
             "displayDelay": 1800,
             "displayParts": [
               {
@@ -37967,8 +38171,9 @@
           },
           {
             "sub": "b",
-            "audioFile": "audio/lessons/L.4.3/S2a.mp3",
+            "audioFile": "audio/lessons/L.4.3/S2b.mp3",
             "ttsScript": "Precise words paint clearer pictures. Bounded beats went.",
+            "audioRegenAt": "2026-05-08T04:08:45.946Z",
             "displayDelay": 1500,
             "displayParts": [
               {
@@ -38012,6 +38217,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.4.3/S3a.mp3",
             "ttsScript": "Mix short and long sentences. It keeps writing fresh.",
+            "audioRegenAt": "2026-05-08T04:08:50.947Z",
             "displayParts": [
               {
                 "text": "Mix short and long sentences.",
@@ -38046,6 +38252,7 @@
             ],
             "audioFile": "audio/lessons/L.4.3/S3b.mp3",
             "ttsScript": "A short sentence. Hits hard. Then a longer one weaves the idea together more gently.",
+            "audioRegenAt": "2026-05-08T04:08:58.541Z",
             "displayParts": [
               {
                 "text": "A short sentence. Hits hard.",
@@ -38084,6 +38291,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.4.3/S4a.mp3",
             "ttsScript": "Here is a helpful trick.",
+            "audioRegenAt": "2026-05-08T04:09:02.272Z",
             "displayParts": [
               {
                 "text": "Here is a helpful ",
@@ -38109,6 +38317,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/L.4.3/S4b.mp3",
             "ttsScript": "Match your style to your reader. Casual for friends. Formal for school.",
+            "audioRegenAt": "2026-05-08T04:09:08.592Z",
             "displayParts": [
               {
                 "text": "Match your style to your ",
@@ -38155,6 +38364,7 @@
             ],
             "audioFile": "audio/lessons/L.4.3/S4c.mp3",
             "ttsScript": "Now you are ready to choose words for style!",
+            "audioRegenAt": "2026-05-08T04:09:13.651Z",
             "displayParts": [
               {
                 "text": "Now you are ready to choose ",
@@ -38222,6 +38432,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RL.K.10/S1a.mp3",
             "ttsScript": "Look! Reading stories every day is so much fun.",
+            "audioRegenAt": "2026-05-08T04:09:19.303Z",
             "displayParts": [
               {
                 "text": "Look!",
@@ -38263,6 +38474,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RL.K.10/S1b.mp3",
             "ttsScript": "Each story takes you on a new adventure.",
+            "audioRegenAt": "2026-05-08T04:09:24.287Z",
             "displayParts": [
               {
                 "text": "Each story takes you on a",
@@ -38293,6 +38505,7 @@
             ],
             "audioFile": "audio/lessons/RL.K.10/S1c.mp3",
             "ttsScript": "Let us see how to enjoy stories all year long.",
+            "audioRegenAt": "2026-05-08T04:09:29.756Z",
             "displayParts": [
               {
                 "text": "Let us see how to enjoy stories",
@@ -38327,6 +38540,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RL.K.10/S2a.mp3",
             "ttsScript": "There are so many kinds of stories!",
+            "audioRegenAt": "2026-05-08T04:09:34.045Z",
             "displayParts": [
               {
                 "text": "There are so many ",
@@ -38356,6 +38570,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RL.K.10/S2b.mp3",
             "ttsScript": "Funny ones. Brave ones. Silly ones. Sweet ones.",
+            "audioRegenAt": "2026-05-08T04:09:40.321Z",
             "displayParts": [
               {
                 "text": "Funny ones.",
@@ -38401,6 +38616,7 @@
             "sub": "c",
             "audioFile": "audio/lessons/RL.K.10/S2c.mp3",
             "ttsScript": "Try a new kind every week. You will find favorites!",
+            "audioRegenAt": "2026-05-08T04:09:46.095Z",
             "displayParts": [
               {
                 "text": "Try a new kind every week. ",
@@ -38435,6 +38651,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RL.K.10/S3a.mp3",
             "ttsScript": "When someone reads to you, listen closely.",
+            "audioRegenAt": "2026-05-08T04:09:51.303Z",
             "displayParts": [
               {
                 "text": "When someone reads to you,",
@@ -38454,6 +38671,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RL.K.10/S3b.mp3",
             "ttsScript": "Look at the pictures. They are part of the story too!",
+            "audioRegenAt": "2026-05-08T04:09:56.276Z",
             "displayParts": [
               {
                 "text": "Look at the pictures.",
@@ -38478,6 +38696,7 @@
             ],
             "audioFile": "audio/lessons/RL.K.10/S3c.mp3",
             "ttsScript": "Ask questions if something is tricky.",
+            "audioRegenAt": "2026-05-08T04:10:00.824Z",
             "displayParts": [
               {
                 "text": "Ask questions",
@@ -38506,6 +38725,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RL.K.10/S4a.mp3",
             "ttsScript": "Here is a helpful trick.",
+            "audioRegenAt": "2026-05-08T04:10:04.549Z",
             "displayParts": [
               {
                 "text": "Here is a helpful ",
@@ -38525,6 +38745,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RL.K.10/S4b.mp3",
             "ttsScript": "Pick a cozy spot just for reading. Curl up there every day.",
+            "audioRegenAt": "2026-05-08T04:10:10.627Z",
             "displayParts": [
               {
                 "text": "Pick a ",
@@ -38567,6 +38788,7 @@
             ],
             "audioFile": "audio/lessons/RL.K.10/S4c.mp3",
             "ttsScript": "Now you are ready to enjoy stories all year long!",
+            "audioRegenAt": "2026-05-08T04:10:16.569Z",
             "displayParts": [
               {
                 "text": "Now you are ready to ",
@@ -38632,6 +38854,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RI.K.10/S1a.mp3",
             "ttsScript": "Look! Fact books are full of real, true things.",
+            "audioRegenAt": "2026-05-08T04:10:21.666Z",
             "displayParts": [
               {
                 "text": "Look! Fact books are full of ",
@@ -38657,6 +38880,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RI.K.10/S1b.mp3",
             "ttsScript": "They can be about anything. Bugs, planets, food, weather.",
+            "audioRegenAt": "2026-05-08T04:10:28.132Z",
             "displayParts": [
               {
                 "text": "They can be about ",
@@ -38719,6 +38943,7 @@
             ],
             "audioFile": "audio/lessons/RI.K.10/S1c.mp3",
             "ttsScript": "Let us learn how to enjoy fact books all year.",
+            "audioRegenAt": "2026-05-08T04:10:34.753Z",
             "displayParts": [
               {
                 "text": "Let us learn how to ",
@@ -38761,6 +38986,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RI.K.10/S2a.mp3",
             "ttsScript": "Pick fact books about things you love.",
+            "audioRegenAt": "2026-05-08T04:10:38.961Z",
             "displayParts": [
               {
                 "text": "What you ",
@@ -38786,6 +39012,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RI.K.10/S2b.mp3",
             "ttsScript": "Love dinosaurs? Read about dinosaurs! Love space? Read about space!",
+            "audioRegenAt": "2026-05-08T04:10:46.166Z",
             "displayParts": [
               {
                 "text": "Love it = ",
@@ -38811,6 +39038,7 @@
             "sub": "c",
             "audioFile": "audio/lessons/RI.K.10/S2c.mp3",
             "ttsScript": "When you love the topic, learning is fun.",
+            "audioRegenAt": "2026-05-08T04:10:51.744Z",
             "displayParts": [
               {
                 "text": "Love = ",
@@ -38845,6 +39073,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RI.K.10/S3a.mp3",
             "ttsScript": "Fact books have pictures, labels, and big words at the top.",
+            "audioRegenAt": "2026-05-08T04:10:57.324Z",
             "displayParts": [
               {
                 "text": "Fact books have ",
@@ -38882,6 +39111,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RI.K.10/S3b.mp3",
             "ttsScript": "Slow down and look at each one.",
+            "audioRegenAt": "2026-05-08T04:11:02.548Z",
             "displayParts": [
               {
                 "text": "Slow down ",
@@ -38905,6 +39135,7 @@
             "sub": "c",
             "audioFile": "audio/lessons/RI.K.10/S3c.mp3",
             "ttsScript": "Pictures teach you facts the words might not say.",
+            "audioRegenAt": "2026-05-08T04:11:07.768Z",
             "displayParts": [
               {
                 "text": "Pictures teach you ",
@@ -38943,6 +39174,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RI.K.10/S4a.mp3",
             "ttsScript": "Here is a helpful trick.",
+            "audioRegenAt": "2026-05-08T04:11:11.520Z",
             "displayParts": [
               {
                 "text": "A fact book ",
@@ -38968,6 +39200,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RI.K.10/S4b.mp3",
             "ttsScript": "Pick a new topic each week. You will discover something cool!",
+            "audioRegenAt": "2026-05-08T04:11:16.843Z",
             "displayParts": [
               {
                 "text": "New ",
@@ -39002,6 +39235,7 @@
             ],
             "audioFile": "audio/lessons/RI.K.10/S4c.mp3",
             "ttsScript": "Now you are ready to read fact books all year!",
+            "audioRegenAt": "2026-05-08T04:11:21.523Z",
             "displayParts": [
               {
                 "text": "You ",
@@ -39067,6 +39301,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RL.1.10/S1a.mp3",
             "ttsScript": "Reading a little every day is like a superpower.",
+            "audioRegenAt": "2026-05-08T04:11:26.560Z",
             "displayParts": [
               {
                 "text": "Reading a little every day",
@@ -39092,6 +39327,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RL.1.10/S1b.mp3",
             "ttsScript": "The more stories and poems you read, the stronger your reading gets.",
+            "audioRegenAt": "2026-05-08T04:11:31.806Z",
             "displayParts": [
               {
                 "text": "The more stories and poems you read,",
@@ -39122,6 +39358,7 @@
             ],
             "audioFile": "audio/lessons/RL.1.10/S1c.mp3",
             "ttsScript": "Let us see how to read all year long.",
+            "audioRegenAt": "2026-05-08T04:11:38.017Z",
             "displayParts": [
               {
                 "text": "Let us see how to read",
@@ -39156,6 +39393,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RL.1.10/S2a.mp3",
             "ttsScript": "Pick stories about different things.",
+            "audioRegenAt": "2026-05-08T04:11:42.764Z",
             "displayParts": [
               {
                 "text": "Pick stories about ",
@@ -39175,6 +39413,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RL.1.10/S2b.mp3",
             "ttsScript": "Funny ones. Scary ones. Adventure ones. Poems too!",
+            "audioRegenAt": "2026-05-08T04:11:48.677Z",
             "displayParts": [
               {
                 "text": "Funny ones.",
@@ -39220,6 +39459,7 @@
             "sub": "c",
             "audioFile": "audio/lessons/RL.1.10/S2c.mp3",
             "ttsScript": "New stories teach you new words and new ideas.",
+            "audioRegenAt": "2026-05-08T04:11:54.241Z",
             "displayParts": [
               {
                 "text": "New stories teach you ",
@@ -39262,6 +39502,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RL.1.10/S3a.mp3",
             "ttsScript": "Sometimes a story has tricky words or long sentences.",
+            "audioRegenAt": "2026-05-08T04:11:59.428Z",
             "displayParts": [
               {
                 "text": "Sometimes a story has ",
@@ -39296,6 +39537,7 @@
             ],
             "audioFile": "audio/lessons/RL.1.10/S3b.mp3",
             "ttsScript": "That is a good thing! Growing readers try hard books.",
+            "audioRegenAt": "2026-05-08T04:12:04.909Z",
             "displayParts": [
               {
                 "text": "That is a ",
@@ -39338,6 +39580,7 @@
             ],
             "audioFile": "audio/lessons/RL.1.10/S3c.mp3",
             "ttsScript": "When you need help, ask a grown-up or friend. That is smart!",
+            "audioRegenAt": "2026-05-08T04:12:11.995Z",
             "displayParts": [
               {
                 "text": "When you need help, ",
@@ -39384,6 +39627,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RL.1.10/S4a.mp3",
             "ttsScript": "Here is a helpful trick.",
+            "audioRegenAt": "2026-05-08T04:12:15.897Z",
             "displayParts": [
               {
                 "text": "Here is a helpful ",
@@ -39403,6 +39647,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RL.1.10/S4b.mp3",
             "ttsScript": "Pick a time to read every day. Bedtime, after lunch, or right when you wake up.",
+            "audioRegenAt": "2026-05-08T04:12:23.112Z",
             "displayParts": [
               {
                 "text": "Pick a time to read ",
@@ -39457,6 +39702,7 @@
             ],
             "audioFile": "audio/lessons/RL.1.10/S4c.mp3",
             "ttsScript": "Now you are ready to enjoy stories all year long!",
+            "audioRegenAt": "2026-05-08T04:12:29.370Z",
             "displayParts": [
               {
                 "text": "Now you are ready to enjoy ",
@@ -39532,6 +39778,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RI.1.10/S1a.mp3",
             "ttsScript": "Fact books are full of real things from our world.",
+            "audioRegenAt": "2026-05-08T04:12:34.514Z",
             "displayParts": [
               {
                 "text": "Fact books are full of ",
@@ -39561,6 +39808,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RI.1.10/S1b.mp3",
             "ttsScript": "They can be about anything! Animals, space, weather, food.",
+            "audioRegenAt": "2026-05-08T04:12:42.182Z",
             "displayParts": [
               {
                 "text": "They can be about ",
@@ -39623,6 +39871,7 @@
             ],
             "audioFile": "audio/lessons/RI.1.10/S1c.mp3",
             "ttsScript": "Let us learn how to read fact books all year.",
+            "audioRegenAt": "2026-05-08T04:12:47.414Z",
             "displayParts": [
               {
                 "text": "Let us learn how to read ",
@@ -39665,6 +39914,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RI.1.10/S2a.mp3",
             "ttsScript": "Pick fact books about things you love.",
+            "audioRegenAt": "2026-05-08T04:12:51.973Z",
             "displayParts": [
               {
                 "text": "Pick fact books",
@@ -39684,6 +39934,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RI.1.10/S2b.mp3",
             "ttsScript": "Love bugs? Read about insects. Love space? Read about planets.",
+            "audioRegenAt": "2026-05-08T04:12:59.898Z",
             "displayParts": [
               {
                 "text": "Love bugs?",
@@ -39734,6 +39985,7 @@
             ],
             "audioFile": "audio/lessons/RI.1.10/S2c.mp3",
             "ttsScript": "You will have so much more fun when it is your favorite topic.",
+            "audioRegenAt": "2026-05-08T04:13:05.366Z",
             "displayParts": [
               {
                 "text": "You will have so much more fun",
@@ -39762,6 +40014,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RI.1.10/S3a.mp3",
             "ttsScript": "Fact books have helpers built in.",
+            "audioRegenAt": "2026-05-08T04:13:10.324Z",
             "displayParts": [
               {
                 "text": "Fact books have ",
@@ -39791,6 +40044,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RI.1.10/S3b.mp3",
             "ttsScript": "Headings. Pictures. Labels. Use them to find facts fast.",
+            "audioRegenAt": "2026-05-08T04:13:18.315Z",
             "displayParts": [
               {
                 "text": "Headings.",
@@ -39832,6 +40086,7 @@
             "sub": "c",
             "audioFile": "audio/lessons/RI.1.10/S3c.mp3",
             "ttsScript": "They are like a roadmap through the book!",
+            "audioRegenAt": "2026-05-08T04:13:22.938Z",
             "displayParts": [
               {
                 "text": "They are like a ",
@@ -39870,6 +40125,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RI.1.10/S4a.mp3",
             "ttsScript": "Here is a helpful trick.",
+            "audioRegenAt": "2026-05-08T04:13:26.718Z",
             "displayParts": [
               {
                 "text": "Here is a helpful ",
@@ -39895,6 +40151,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RI.1.10/S4b.mp3",
             "ttsScript": "Try a new topic each week. You will discover something you did not know!",
+            "audioRegenAt": "2026-05-08T04:13:33.370Z",
             "displayParts": [
               {
                 "text": "Try a new topic each week.",
@@ -39929,6 +40186,7 @@
             ],
             "audioFile": "audio/lessons/RI.1.10/S4c.mp3",
             "ttsScript": "Now you are ready to explore fact books all year!",
+            "audioRegenAt": "2026-05-08T04:13:38.543Z",
             "displayParts": [
               {
                 "text": "Now you are ready to explore ",
