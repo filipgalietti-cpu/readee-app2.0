@@ -26,6 +26,10 @@ import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { generateImage, generateSpeech, regenerateMCQQuestion } from "@/lib/ai/readee-ai";
 import { invalidateQcCache } from "@/lib/data/qc-filter";
+import {
+  verifyImageRegen,
+  verifyAudioRegen,
+} from "@/lib/ai/qc-verify";
 import lessonsData from "@/app/data/sample-lessons.json";
 
 export const dynamic = "force-dynamic";
@@ -38,6 +42,12 @@ type Counters = {
   audio_regen: number;
   step_audio_regen: number;
   question_regen: number;
+  // Same-night verify pass results (split by outcome so the
+  // dashboard can tell auto-fix-that-stuck-the-landing from
+  // auto-fix-that-bounced-back-to-open).
+  verified_pass: number;
+  verified_warn: number;
+  verified_reopen: number;
   errors: string[];
 };
 
@@ -49,8 +59,26 @@ function ok(): Counters {
     audio_regen: 0,
     step_audio_regen: 0,
     question_regen: 0,
+    verified_pass: 0,
+    verified_warn: 0,
+    verified_reopen: 0,
     errors: [],
   };
+}
+
+/**
+ * Bump the in-memory cron counters based on a verify outcome so
+ * the response body reports same-night closure rates. Fail-verdict
+ * verifies have already reopened the finding (verifyImageRegen /
+ * verifyAudioRegen do that) — this just counts.
+ */
+function tallyVerify(
+  c: Counters,
+  outcome: { verdict: "pass" | "warn" | "fail" | "skipped" },
+): void {
+  if (outcome.verdict === "pass") c.verified_pass++;
+  else if (outcome.verdict === "warn") c.verified_warn++;
+  else if (outcome.verdict === "fail") c.verified_reopen++;
 }
 
 async function dismissKnownFps(c: Counters) {
@@ -242,6 +270,17 @@ async function regenImages(c: Counters, teacherId: string, limit: number) {
     });
     await admin.rpc("unquarantine_question", { p_target_id: f.target_id });
     c.image_regen++;
+
+    // Same-night verify — re-run the image judge against the new
+    // upload. If it still fails, verifyImageRegen flips the finding
+    // back to open so tomorrow's cron retries; image stays uploaded.
+    const verify = await verifyImageRegen({
+      findingId: f.id,
+      targetId: f.target_id,
+      imageUrl,
+      expectedScene: promptText,
+    });
+    tallyVerify(c, verify);
   }
 }
 
@@ -304,6 +343,15 @@ async function regenAudio(c: Counters, teacherId: string, limit: number) {
     });
     await admin.rpc("unquarantine_question", { p_target_id: f.target_id });
     c.audio_regen++;
+
+    const verify = await verifyAudioRegen({
+      findingId: f.id,
+      targetKind: "question",
+      targetId: f.target_id,
+      audioUrl,
+      expectedText: text,
+    });
+    tallyVerify(c, verify);
   }
 }
 
@@ -390,6 +438,15 @@ async function regenStepAudio(c: Counters, teacherId: string, limit: number) {
       agent: "qc-bot/cron",
     });
     c.step_audio_regen++;
+
+    const verify = await verifyAudioRegen({
+      findingId: f.id,
+      targetKind: "lesson_slide",
+      targetId: f.target_id,
+      audioUrl,
+      expectedText: ttsScript,
+    });
+    tallyVerify(c, verify);
   }
 }
 
