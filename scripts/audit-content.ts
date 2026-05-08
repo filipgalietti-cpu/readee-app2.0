@@ -69,6 +69,91 @@ function parseArgs(): Args {
   return out;
 }
 
+/**
+ * Stable hash of the canonical asset payload. The audit pass
+ * stamps this on every finding so the next run can short-circuit
+ * judges when the asset hasn't changed.
+ *
+ * Hash inputs are intentionally minimal — including timestamps or
+ * URL query strings would defeat the cache. We hash only the
+ * fields that semantically define the asset:
+ *   image:      image_url + prompt
+ *   audio:      audio_url + (ttsScript or prompt+choices)
+ *   step audio: audio_url + ttsScript
+ *   q text:     prompt + choices.join("|") + correct
+ */
+function assetContentHash(
+  findingType: string,
+  snapshot: any,
+): string | null {
+  if (!snapshot) return null;
+  const norm = (v: unknown) => String(v ?? "").trim();
+  let key: string | null = null;
+  if (findingType === "q.image_quality") {
+    key = `IMG\x1f${norm(snapshot.image_url)}\x1f${norm(snapshot.prompt)}`;
+  } else if (findingType === "q.audio_quality") {
+    const choices = Array.isArray(snapshot.choices)
+      ? (snapshot.choices as unknown[]).map(norm).join("|")
+      : "";
+    key = `AUD\x1f${norm(snapshot.audio_url)}\x1f${norm(snapshot.prompt)}\x1f${choices}`;
+  } else if (findingType === "step.audio_quality") {
+    key = `STP\x1f${norm(snapshot.audio_url)}\x1f${norm(snapshot.ttsScript)}`;
+  } else if (
+    findingType === "q.should_be_asked" ||
+    findingType === "q.no_self_leak" ||
+    findingType === "q.unique_choices" ||
+    findingType === "q.better_format"
+  ) {
+    const choices = Array.isArray(snapshot.choices)
+      ? (snapshot.choices as unknown[]).map(norm).join("|")
+      : "";
+    key = `QTX\x1f${norm(snapshot.prompt)}\x1f${choices}\x1f${norm(snapshot.correct)}`;
+  } else if (findingType === "slide.judge") {
+    const stepHash = (snapshot.steps ?? [])
+      .map((s: any) => `${norm(s.sub)}:${norm(s.ttsScript)}:${norm(s.displayText)}`)
+      .join("\n");
+    key = `SLD\x1f${norm(snapshot.heading)}\x1f${stepHash}`;
+  }
+  if (!key) return null;
+  // SHA-256, hex; tsx runs on Node so crypto is available.
+  // Imported via require to avoid a top-of-file rewrite.
+  const { createHash } = require("node:crypto") as typeof import("node:crypto");
+  return createHash("sha256").update(key).digest("hex");
+}
+
+/**
+ * Returns true if there is a recent pass finding with the same
+ * (target_kind, target_id, finding_type, content_hash) — meaning
+ * the asset hasn't changed since the last successful judge call.
+ *
+ * Caller skips the expensive judge in that case and writes a
+ * lightweight pass row pointing at the same hash so the chain stays
+ * unbroken.
+ */
+async function isAlreadyBlessed(input: {
+  targetKind: string;
+  targetId: string;
+  findingType: string;
+  contentHash: string;
+  freshDays?: number;
+}): Promise<boolean> {
+  const supabase = supabaseAdmin();
+  const cutoff = new Date(
+    Date.now() - (input.freshDays ?? 30) * 86_400_000,
+  ).toISOString();
+  const { data } = await supabase
+    .from("content_audit_findings")
+    .select("id")
+    .eq("target_kind", input.targetKind)
+    .eq("target_id", input.targetId)
+    .eq("finding_type", input.findingType)
+    .eq("content_hash", input.contentHash)
+    .eq("severity", "pass")
+    .gte("created_at", cutoff)
+    .limit(1);
+  return !!data && data.length > 0;
+}
+
 async function upsertFinding(input: {
   runId: string;
   targetKind: "lesson" | "question" | "lesson_slide";
@@ -108,6 +193,7 @@ async function upsertFinding(input: {
   // ON CONFLICT (target_kind, target_id, finding_type) — upsert so
   // re-running the audit refreshes the message + severity instead of
   // duplicating.
+  const contentHash = assetContentHash(input.findingType, input.targetSnapshot);
   await supabase.from("content_audit_findings").upsert(
     {
       target_kind: input.targetKind,
@@ -119,7 +205,8 @@ async function upsertFinding(input: {
       suggestion: finalSuggestion,
       target_snapshot: input.targetSnapshot ?? null,
       audit_run_id: input.runId,
-      status: "open",
+      content_hash: contentHash,
+      status: input.severity === "pass" ? "fixed" : "open",
     },
     { onConflict: "target_kind,target_id,finding_type" },
   );
@@ -428,48 +515,76 @@ async function auditQuestions(input: {
                 // Skip entirely — judge can't reliably evaluate these.
                 pass++;
               } else {
-                const a = await judgeAudioFile({
-                  audioUrl: q.audio_url,
-                  expectedText: promptText + choicesText,
-                });
-                if (a.ok) {
-                  if (a.severity === "fail") fail++;
-                  else if (a.severity === "warn") warn++;
-                  else pass++;
-                  await upsertFinding({
-                    runId: input.runId,
+                const audioSnap = { ...snapshot, audio_url: q.audio_url };
+                const audioHash = assetContentHash("q.audio_quality", audioSnap);
+                const blessed =
+                  audioHash &&
+                  (await isAlreadyBlessed({
                     targetKind: "question",
                     targetId,
-                    grade,
                     findingType: "q.audio_quality",
-                    severity: a.severity,
-                    message: a.reason,
-                    targetSnapshot: { ...snapshot, audio_url: q.audio_url },
+                    contentHash: audioHash,
+                  }));
+                if (blessed) {
+                  pass++;
+                } else {
+                  const a = await judgeAudioFile({
+                    audioUrl: q.audio_url,
+                    expectedText: promptText + choicesText,
                   });
+                  if (a.ok) {
+                    if (a.severity === "fail") fail++;
+                    else if (a.severity === "warn") warn++;
+                    else pass++;
+                    await upsertFinding({
+                      runId: input.runId,
+                      targetKind: "question",
+                      targetId,
+                      grade,
+                      findingType: "q.audio_quality",
+                      severity: a.severity,
+                      message: a.reason,
+                      targetSnapshot: audioSnap,
+                    });
+                  }
                 }
               }
             } catch {}
           }
           if (q.image_url && typeof q.image_url === "string") {
             try {
-              const i = await judgeImageQuality({
-                imageUrl: q.image_url,
-                expectedScene: promptText,
-              });
-              if (i.ok) {
-                if (i.severity === "fail") fail++;
-                else if (i.severity === "warn") warn++;
-                else pass++;
-                await upsertFinding({
-                  runId: input.runId,
+              const imageSnap = { ...snapshot, image_url: q.image_url };
+              const imageHash = assetContentHash("q.image_quality", imageSnap);
+              const blessed =
+                imageHash &&
+                (await isAlreadyBlessed({
                   targetKind: "question",
                   targetId,
-                  grade,
                   findingType: "q.image_quality",
-                  severity: i.severity,
-                  message: i.reason,
-                  targetSnapshot: { ...snapshot, image_url: q.image_url },
+                  contentHash: imageHash,
+                }));
+              if (blessed) {
+                pass++;
+              } else {
+                const i = await judgeImageQuality({
+                  imageUrl: q.image_url,
+                  expectedScene: promptText,
                 });
+                if (i.ok) {
+                  if (i.severity === "fail") fail++;
+                  else if (i.severity === "warn") warn++;
+                  else pass++;
+                  await upsertFinding({
+                    runId: input.runId,
+                    targetKind: "question",
+                    targetId,
+                    grade,
+                    findingType: "q.image_quality",
+                    severity: i.severity,
+                    message: i.reason,
+                    targetSnapshot: imageSnap,
+                  });
+                }
               }
             } catch {}
           }
@@ -587,6 +702,25 @@ async function auditLessons(input: {
             ? step.audioFile
             : `${SUPABASE_PUBLIC}${step.audioFile}`;
           const stepRef = `S${slideNum}${step?.sub ?? ""}`;
+          const stepSnap = {
+            standardId,
+            stepRef,
+            audio_url: url,
+            ttsScript: step?.ttsScript,
+          };
+          const stepHash = assetContentHash("step.audio_quality", stepSnap);
+          const blessed =
+            stepHash &&
+            (await isAlreadyBlessed({
+              targetKind: "lesson_slide",
+              targetId: `${standardId}#${stepRef}`,
+              findingType: "step.audio_quality",
+              contentHash: stepHash,
+            }));
+          if (blessed) {
+            pass++;
+            continue;
+          }
           try {
             const a = await judgeAudioFile({
               audioUrl: url,
@@ -604,12 +738,7 @@ async function auditLessons(input: {
                 findingType: "step.audio_quality",
                 severity: a.severity,
                 message: a.reason,
-                targetSnapshot: {
-                  standardId,
-                  stepRef,
-                  audio_url: url,
-                  ttsScript: step?.ttsScript,
-                },
+                targetSnapshot: stepSnap,
               });
             }
           } catch {}
