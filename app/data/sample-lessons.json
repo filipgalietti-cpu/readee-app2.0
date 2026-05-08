@@ -33502,30 +33502,9 @@
         "type": "intro",
         "slide": 1,
         "steps": [
-          {
-            "sub": "a",
-            "audioFile": "audio/lessons/RL.1.10/S1a.mp3",
-            "ttsScript": "Reading a little every day is like a superpower.",
-            "displayText": "Read every day",
-            "interaction": "",
-            "displayDelay": 2500
-          },
-          {
-            "sub": "b",
-            "audioFile": "audio/lessons/RL.1.10/S1b.mp3",
-            "ttsScript": "The more stories and poems you read, the stronger your reading gets.",
-            "displayText": "Stronger reader",
-            "interaction": "",
-            "displayDelay": 2800
-          },
-          {
-            "sub": "c",
-            "audioFile": "audio/lessons/RL.1.10/S1c.mp3",
-            "ttsScript": "Let us see how to read all year long.",
-            "displayText": "All year long!",
-            "interaction": "",
-            "displayDelay": 2000
-          }
+          {},
+          {},
+          {}
         ],
         "heading": "Read Every Day",
         "imageFile": "images/lessons/RL.1.10/S1.png",
@@ -33535,30 +33514,9 @@
         "type": "teach",
         "slide": 2,
         "steps": [
-          {
-            "sub": "a",
-            "audioFile": "audio/lessons/RL.1.10/S2a.mp3",
-            "ttsScript": "Pick stories about different things.",
-            "displayText": "Different stories",
-            "interaction": "",
-            "displayDelay": 2000
-          },
-          {
-            "sub": "b",
-            "audioFile": "audio/lessons/RL.1.10/S2b.mp3",
-            "ttsScript": "Funny ones. Scary ones. Adventure ones. Poems too!",
-            "displayText": "Funny. Scary. Adventure. Poems.",
-            "interaction": "",
-            "displayDelay": 3000
-          },
-          {
-            "sub": "c",
-            "audioFile": "audio/lessons/RL.1.10/S2c.mp3",
-            "ttsScript": "New stories teach you new words and new ideas.",
-            "displayText": "New words + ideas",
-            "interaction": "",
-            "displayDelay": 2500
-          }
+          {},
+          {},
+          {}
         ],
         "heading": "Mix It Up",
         "imageFile": "images/lessons/RL.1.10/S2.png",
@@ -33568,30 +33526,9 @@
         "type": "teach",
         "slide": 3,
         "steps": [
-          {
-            "sub": "a",
-            "audioFile": "audio/lessons/RL.1.10/S3a.mp3",
-            "ttsScript": "Sometimes a story has tricky words or long sentences.",
-            "displayText": "Some are tricky",
-            "interaction": "",
-            "displayDelay": 2500
-          },
-          {
-            "sub": "b",
-            "audioFile": "audio/lessons/RL.1.10/S3b.mp3",
-            "ttsScript": "That is a good thing! Growing readers try hard books.",
-            "displayText": "Tricky = growing",
-            "interaction": "",
-            "displayDelay": 2500
-          },
-          {
-            "sub": "c",
-            "audioFile": "audio/lessons/RL.1.10/S3c.mp3",
-            "ttsScript": "When you need help, ask a grown-up or friend. That is smart!",
-            "displayText": "Ask for help",
-            "interaction": "",
-            "displayDelay": 2800
-          }
+          {},
+          {},
+          {}
         ],
         "heading": "When It Gets Tricky",
         "imageFile": "images/lessons/RL.1.10/S3.png",
@@ -33601,30 +33538,9 @@
         "type": "tip",
         "slide": 4,
         "steps": [
-          {
-            "sub": "a",
-            "audioFile": "audio/lessons/RL.1.10/S4a.mp3",
-            "ttsScript": "Here is a helpful trick.",
-            "displayText": "A routine trick",
-            "interaction": "",
-            "displayDelay": 1500
-          },
-          {
-            "sub": "b",
-            "audioFile": "audio/lessons/RL.1.10/S4b.mp3",
-            "ttsScript": "Pick a time to read every day. Bedtime, after lunch, or right when you wake up.",
-            "displayText": "Same time daily",
-            "interaction": "",
-            "displayDelay": 3000
-          },
-          {
-            "sub": "c",
-            "audioFile": "audio/lessons/RL.1.10/S4c.mp3",
-            "ttsScript": "Now you are ready to enjoy stories all year long!",
-            "displayText": "You got it!",
-            "interaction": "",
-            "displayDelay": 1500
-          }
+          {},
+          {},
+          {}
         ],
         "heading": "A Reading Routine",
         "imageFile": "images/lessons/RL.1.10/S4.png",
@@ -33667,30 +33583,9 @@
         "type": "intro",
         "slide": 1,
         "steps": [
-          {
-            "sub": "a",
-            "audioFile": "audio/lessons/RI.1.10/S1a.mp3",
-            "ttsScript": "Fact books are full of real things from our world.",
-            "displayText": "Real things",
-            "interaction": "",
-            "displayDelay": 2000
-          },
-          {
-            "sub": "b",
-            "audioFile": "audio/lessons/RI.1.10/S1b.mp3",
-            "ttsScript": "They can be about anything! Animals, space, weather, food.",
-            "displayText": "Anything real",
-            "interaction": "",
-            "displayDelay": 2800
-          },
-          {
-            "sub": "c",
-            "audioFile": "audio/lessons/RI.1.10/S1c.mp3",
-            "ttsScript": "Let us learn how to read fact books all year.",
-            "displayText": "All year!",
-            "interaction": "",
-            "displayDelay": 2000
-          }
+          {},
+          {},
+          {}
         ],
         "heading": "Facts Are Fun",
         "imageFile": "images/lessons/RI.1.10/S1.png",
@@ -33700,30 +33595,9 @@
         "type": "teach",
         "slide": 2,
         "steps": [
-          {
-            "sub": "a",
-            "audioFile": "audio/lessons/RI.1.10/S2a.mp3",
-            "ttsScript": "Pick fact books about things you love.",
-            "displayText": "What do you love?",
-            "interaction": "",
-            "displayDelay": 2200
-          },
-          {
-            "sub": "b",
-            "audioFile": "audio/lessons/RI.1.10/S2b.mp3",
-            "ttsScript": "Love bugs? Read about insects. Love space? Read about planets.",
-            "displayText": "Bugs? Space? Anything!",
-            "interaction": "",
-            "displayDelay": 2800
-          },
-          {
-            "sub": "c",
-            "audioFile": "audio/lessons/RI.1.10/S2c.mp3",
-            "ttsScript": "You will have so much more fun when it is your favorite topic.",
-            "displayText": "More fun that way",
-            "interaction": "",
-            "displayDelay": 2800
-          }
+          {},
+          {},
+          {}
         ],
         "heading": "Pick What You Love",
         "imageFile": "images/lessons/RI.1.10/S2.png",
@@ -33733,30 +33607,9 @@
         "type": "teach",
         "slide": 3,
         "steps": [
-          {
-            "sub": "a",
-            "audioFile": "audio/lessons/RI.1.10/S3a.mp3",
-            "ttsScript": "Fact books have helpers built in.",
-            "displayText": "Fact book helpers",
-            "interaction": "",
-            "displayDelay": 2200
-          },
-          {
-            "sub": "b",
-            "audioFile": "audio/lessons/RI.1.10/S3b.mp3",
-            "ttsScript": "Headings. Pictures. Labels. Use them to find facts fast.",
-            "displayText": "Headings + pics + labels",
-            "interaction": "",
-            "displayDelay": 3000
-          },
-          {
-            "sub": "c",
-            "audioFile": "audio/lessons/RI.1.10/S3c.mp3",
-            "ttsScript": "They are like a roadmap through the book!",
-            "displayText": "Like a roadmap",
-            "interaction": "",
-            "displayDelay": 2500
-          }
+          {},
+          {},
+          {}
         ],
         "heading": "Use the Parts",
         "imageFile": "images/lessons/RI.1.10/S3.png",
@@ -33766,30 +33619,9 @@
         "type": "tip",
         "slide": 4,
         "steps": [
-          {
-            "sub": "a",
-            "audioFile": "audio/lessons/RI.1.10/S4a.mp3",
-            "ttsScript": "Here is a helpful trick.",
-            "displayText": "A fact book trick",
-            "interaction": "",
-            "displayDelay": 1500
-          },
-          {
-            "sub": "b",
-            "audioFile": "audio/lessons/RI.1.10/S4b.mp3",
-            "ttsScript": "Try a new topic each week. You will discover something you did not know!",
-            "displayText": "New topic, new facts",
-            "interaction": "",
-            "displayDelay": 2800
-          },
-          {
-            "sub": "c",
-            "audioFile": "audio/lessons/RI.1.10/S4c.mp3",
-            "ttsScript": "Now you are ready to explore fact books all year!",
-            "displayText": "You got it!",
-            "interaction": "",
-            "displayDelay": 1500
-          }
+          {},
+          {},
+          {}
         ],
         "heading": "New Topic Every Week",
         "imageFile": "images/lessons/RI.1.10/S4.png",
