@@ -156,6 +156,25 @@ export async function checkRateLimit(
 
   const cost = CREDIT_COST[kind] ?? 1;
 
+  // QC bot bypass. The bot is a system agent — its calls heal the
+  // catalog (regen broken audio, enrich thin lessons, run audits) and
+  // pay for themselves through retention. Counting them against
+  // Filip's per-teacher monthly cap means the bot stops mid-batch and
+  // breaks the autonomy loop. The bypass is gated to a single env-var-
+  // named teacherId so a compromised teacher token can't abuse it.
+  const QC_BOT_ID = process.env.QC_BOT_TEACHER_ID;
+  if (QC_BOT_ID && teacherId === QC_BOT_ID) {
+    return {
+      allowed: true,
+      costCredits: cost,
+      hourlyUsed: 0,
+      monthlyUsed: 0,
+      hourlyLimit: HOURLY_CREDIT_LIMIT,
+      monthlyLimit: MONTHLY_CREDIT_LIMIT,
+      topUpBalance: 0,
+    };
+  }
+
   const [{ data: rows }, topUpBalance] = await Promise.all([
     admin
       .from("ai_usage_log")

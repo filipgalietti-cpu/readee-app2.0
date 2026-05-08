@@ -1,5 +1,3 @@
-import "server-only";
-
 /** Vertex AI TTS — same Google, different quota envelope.
  *
  * The free-tier-equivalent Gemini API caps preview-TTS models at 100
@@ -9,10 +7,13 @@ import "server-only";
  * scripts/generate-audio.js (the legacy mass generator that produced
  * the original 1,800+ catalog audios).
  *
- * This file is `server-only` because google-auth-library imports
- * node's child_process / fs / net. If a client component ever pulls
- * it in transitively, the build fails immediately instead of
- * "Module not found: child_process" at runtime.
+ * Server-only by construction: google-auth-library imports node's
+ * child_process / fs / net, so any client bundle pulling this
+ * transitively fails at build time. We previously had `import
+ * "server-only"` here for a clearer error, but that marker isn't
+ * installed and breaks plain-Node CLI scripts that legitimately
+ * need to call this code (qc-bot regen workers, the per-step audio
+ * enricher, the original generate-audio.js mass generator).
  */
 
 export const VERTEX_TTS_PROJECT_ID =

@@ -35,13 +35,58 @@ import { GoogleGenAI, Type } from "@google/genai";
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY!;
 const GEMINI_KEY = process.env.GEMINI_API_KEY!;
-if (!SUPABASE_URL || !SERVICE_KEY || !GEMINI_KEY) {
-  console.error("Need NEXT_PUBLIC_SUPABASE_URL + SUPABASE_SERVICE_ROLE_KEY + GEMINI_API_KEY");
+const QC_TEACHER = process.env.QC_BOT_TEACHER_ID;
+if (!SUPABASE_URL || !SERVICE_KEY || !GEMINI_KEY || !QC_TEACHER) {
+  console.error(
+    "Need NEXT_PUBLIC_SUPABASE_URL + SUPABASE_SERVICE_ROLE_KEY + GEMINI_API_KEY + QC_BOT_TEACHER_ID",
+  );
   process.exit(1);
 }
 
 const sb = createClient(SUPABASE_URL, SERVICE_KEY);
 const gemini = new GoogleGenAI({ apiKey: GEMINI_KEY });
+
+// Lazy-loaded generateSpeech so the script only pulls google-auth-
+// library when actually generating audio (and the cost shows up
+// only when --skip-audio isn't passed).
+let _generateSpeech: any | null = null;
+async function getGenerateSpeech(): Promise<any> {
+  if (_generateSpeech) return _generateSpeech;
+  const mod = await import("@/lib/ai/readee-ai");
+  _generateSpeech = mod.generateSpeech;
+  return _generateSpeech;
+}
+
+/**
+ * Per-step audio generator. Mirrors scripts/qc-enrich-audio.ts but
+ * runs inline at enrichment time so freshly enriched lessons ship
+ * with each sub-step backed by its own unique mp3 (the K reference
+ * pattern). Without this, sub-step b/c reuse step a's audioFile and
+ * the renderer plays the wrong line. May 8 incident.
+ */
+async function generateStepAudio(
+  standardId: string,
+  slideNum: number,
+  step: any,
+): Promise<{ ok: true } | { ok: false; error: string }> {
+  const sub = step?.sub ?? "a";
+  const text = String(step?.ttsScript ?? "").trim();
+  if (!text) return { ok: false, error: "no ttsScript" };
+  const targetPath = `lessons/${standardId}/S${slideNum}${sub}.mp3`;
+  const generateSpeech = await getGenerateSpeech();
+  const tts = await generateSpeech({ teacherId: QC_TEACHER!, text });
+  if (!tts.ok) return { ok: false, error: `generateSpeech: ${tts.error}` };
+  const fetched = await fetch(tts.audioUrl);
+  if (!fetched.ok) return { ok: false, error: `fetch: HTTP ${fetched.status}` };
+  const buf = Buffer.from(await fetched.arrayBuffer());
+  const { error: upErr } = await sb.storage
+    .from("audio")
+    .upload(targetPath, buf, { contentType: "audio/mpeg", upsert: true });
+  if (upErr) return { ok: false, error: `upload: ${upErr.message}` };
+  step.audioFile = `audio/${targetPath}`;
+  step.audioRegenAt = new Date().toISOString();
+  return { ok: true };
+}
 
 const args = process.argv.slice(2);
 const DRY = args.includes("--dry-run");
@@ -49,6 +94,9 @@ const limitArg = args.find((a) => a.startsWith("--limit="));
 const LIMIT = limitArg ? Number(limitArg.split("=")[1]) : 10;
 const standardArg = args.find((a) => a.startsWith("--standard="));
 const STANDARD_FILTER = standardArg ? standardArg.split("=")[1] : null;
+// Skip the inline audio generation (used during testing of the prompt
+// changes when audio cost would be wasted). Default is to generate.
+const SKIP_AUDIO = args.includes("--skip-audio");
 
 const LESSONS_PATH = path.join(
   process.cwd(),
@@ -406,9 +454,50 @@ async function proposeEnrichment(
     }
     const r = await enrichSlide({ thinSlide: slide, kSlide, lessonContext });
     if (!r.ok) {
+      // Log every gate rejection so the bot's audit trail records
+      // exactly which classes of malformed output Gemini is producing.
+      // Future prompt iterations can mine these to harden the system
+      // prompt — every rejection is a signal that the AI's training
+      // priors don't match our renderer contract.
+      await sb.from("content_qc_log").insert({
+        target_kind: "lesson_slide",
+        target_id: `${thin.standardId}#slide${slide?.slide ?? "?"}`,
+        change_type: "enrich_gate_rejected",
+        before: null,
+        after: null,
+        reason: r.error,
+        agent: "qc-bot/enrich-lessons",
+      });
       return { ok: false, error: `slide ${slide?.slide}: ${r.error}` };
     }
-    enrichedSlides.push(r.enrichedSlide);
+    const enriched = r.enrichedSlide;
+
+    // Per-step audio. The enricher splits a single audio-backed step
+    // into 2-3 sub-steps for K-style staggered reveals — every sub-
+    // step needs its OWN mp3 because each ttsScript is now a
+    // truncated portion of the original. Generated inline so the row
+    // ships ready-to-render. May 8 incident: the script previously
+    // reused the original audioFile across all sub-steps, so playing
+    // sub-step b/c restarted the full pre-split audio while only
+    // animating the truncated displayParts.
+    const slideNum = typeof slide?.slide === "number" ? slide.slide : enrichedCount + 1;
+    const steps = Array.isArray(enriched?.steps) ? enriched.steps : [];
+    if (!SKIP_AUDIO && !DRY && steps.length >= 2) {
+      let audioOk = 0;
+      let audioErr = 0;
+      for (const st of steps) {
+        const audio = await generateStepAudio(thin.standardId, slideNum, st);
+        if (audio.ok) audioOk++;
+        else {
+          audioErr++;
+          console.log(`        ! step S${slideNum}${st?.sub} audio: ${audio.error}`);
+        }
+        await new Promise((resolve) => setTimeout(resolve, 800));
+      }
+      console.log(`      → step audio: ${audioOk} ok, ${audioErr} err`);
+    }
+
+    enrichedSlides.push(enriched);
     enrichedCount++;
     // Throttle between slide calls so we don't hit Gemini rate caps.
     await new Promise((resolve) => setTimeout(resolve, 800));

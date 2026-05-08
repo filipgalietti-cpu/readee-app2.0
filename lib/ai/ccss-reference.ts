@@ -16,7 +16,10 @@
  * Both reads are O(1) after the first call thanks to module-level
  * caching of the merged catalog.
  */
-import "server-only";
+// Marker import removed: `server-only` isn't installed and breaks
+// CLI scripts that import this transitively. The module is read-only
+// catalog data so client exposure isn't a security concern; Next's
+// bundler still tree-shakes it from client builds.
 
 import kJson from "@/app/data/kindergarten-standards-questions.json";
 import g1Json from "@/app/data/1st-grade-standards-questions.json";

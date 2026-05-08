@@ -126,6 +126,34 @@ export function checkLessonRichness(input: {
     if (steps.length > 0 && !slideHasRichPrimitive(slide)) {
       thinSlides += 1;
     }
+
+    // Per-step audio mismatch — every sub-step must have its own
+    // audioFile. The May 8 enricher bug split a single audio-backed
+    // step into 2-3 sub-steps but reused the original audioFile path
+    // for all of them, so playing sub-step b/c restarted the full
+    // pre-split audio while only animating the truncated displayParts.
+    // K reference: each sub-step has a unique S{n}{sub}.mp3.
+    if (steps.length >= 2) {
+      const seen = new Map<string, string[]>();
+      for (const st of steps) {
+        const audio = typeof st?.audioFile === "string" ? st.audioFile : "";
+        if (!audio) continue;
+        const subs = seen.get(audio) ?? [];
+        subs.push(String(st?.sub ?? "?"));
+        seen.set(audio, subs);
+      }
+      for (const [audio, subs] of seen) {
+        if (subs.length < 2) continue;
+        findings.push({
+          type: "lesson.step_audio_mismatch",
+          severity: "fail",
+          message: `Slide ${slideNum} sub-steps ${subs.join(", ")} all point to ${audio}. The renderer plays the full original audio on each sub-step; karaoke timing desyncs after step a.`,
+          slideRef: `slide ${slideNum}`,
+          suggestion:
+            "Run scripts/qc-enrich-audio.ts to regenerate per-step TTS so each sub-step has its own unique S{n}{sub}.mp3.",
+        });
+      }
+    }
   }
 
   // Lesson-level threshold: >50% of teaching slides without ANY
