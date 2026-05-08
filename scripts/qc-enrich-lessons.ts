@@ -591,6 +591,20 @@ async function main() {
       finding_id: (f as any).id,
       agent: "qc-bot/enrich-lessons",
     });
+
+    // Loop closure: mark the lesson.thin_animation finding fixed
+    // so /owner/qc-bot's "Open by finding type" panel reflects
+    // reality. Without this, the dashboard says "174 thin lessons"
+    // forever even after the bot has enriched them.
+    await sb
+      .from("content_audit_findings")
+      .update({
+        status: "fixed",
+        resolved_at: new Date().toISOString(),
+        resolver_note: `Auto-closed by qc-bot/enrich-lessons: lessons_db version ${(existing?.version ?? 0) + 1} written with ${stepCount} enriched steps.`,
+      })
+      .eq("id", (f as any).id);
+
     made++;
     console.log(`    ✓ wrote lessons_db version ${(existing?.version ?? 0) + 1} (${stepCount} steps)`);
     // Throttle to avoid Gemini rate caps.
