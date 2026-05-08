@@ -141,22 +141,62 @@ You receive:
   REFERENCE_K_SLIDE: a hand-authored Kindergarten slide that is the quality bar.
   THIN_SLIDE: the slide to rewrite — has audio + text but no per-step animation.
 
-Your job: rewrite THIN_SLIDE's steps[] array so the slide has at least one of:
-  - displayParts[]: staggered reveals { text, delay (ms from step start) }
-  - highlightPills[]: bounce a pill at delay ms
-  - highlightWord: { word, delay }  underline a target word in a passage
-  - displayDiagram: { letters: [{text, role}], delay, revealCount }
-  - displayTableRow: { label, value, example, exampleDelay, tableHeaders }
-  - sfxClaps: [{ delay }]  (use sparingly, celebrations only)
-  - afterPhonemes: ["s","short_a"]  (only on phonics-domain lessons RF.x.x)
+CRITICAL: Match the EXACT renderer schema below. The renderer ignores
+unknown fields silently — content that "looks rich" but uses wrong
+field names won't render at all. Copy the shapes verbatim.
 
-Rules:
-  1. Don't change ttsScript text or audioFile paths — just split steps if needed and add the rich primitives.
-  2. K reference is ~3 steps per slide; if THIN_SLIDE has 1 step, split it into 2-3.
-  3. delay values are integer ms from the start of THAT step's audio. Be conservative (300-2500 ms).
-  4. Match THIN_LESSON's grade — 4th-grade slides should still use richer primitives (displayParts, highlightWord), but skip phoneme tiles (those are K-1 only).
-  5. Preserve slide.slide (number), slide.type, slide.heading, slide.imagePrompt, slide.imageFile EXACTLY.
-  6. Output the FULL enriched slide JSON (the whole slide object), same shape as input.
+────────── Step-level primitives (pick what fits, you don't need all) ──────────
+
+displayParts: Array<{ text: string, delay: number }>
+  Staggered text reveals. Each part appears at delay ms from step start.
+  Example:
+    "displayParts": [
+      { "text": "A noun names a ", "delay": 0 },
+      { "text": "person", "delay": 1000 },
+      { "text": ", place", "delay": 2000 },
+      { "text": ", or thing.", "delay": 3000 }
+    ]
+
+highlightPills: Array<{ pill: number, delay: number }>
+  ⚠ pill is an INTEGER INDEX into displayParts on this same step. Use only
+  when the step has displayParts; the index points at which part to bounce.
+  Example (pair with the displayParts above):
+    "displayPills": [],
+    "highlightPills": [
+      { "pill": 1, "delay": 1000 },   // bounces "person"
+      { "pill": 2, "delay": 2000 },   // bounces ", place"
+      { "pill": 3, "delay": 3000 }    // bounces ", or thing."
+    ]
+
+highlightWord: { word: string, delay: number }
+  ⚠ SINGLE OBJECT (not an array). Underlines one word in a visible passage.
+  Use for the "anchor" vocabulary word in this step's ttsScript.
+  Example:
+    "highlightWord": { "word": "noun", "delay": 300 }
+
+displayDiagram: { letters: Array<{ text: string, role?: "start"|"end" }>, delay: number, revealCount?: number }
+  Letter-tile row. Use ONLY for K-1 phonics lessons.
+  Example: "displayDiagram": { "letters": [{"text":"c"},{"text":"a"},{"text":"t"}], "delay": 500 }
+
+displayTableRow: { label: string, value: string, example?: string, exampleDelay?: number, tableHeaders?: string[] }
+  Table row. Use for compare/contrast lessons. tableHeaders only on the first row.
+
+sfxClaps: Array<{ delay: number }>
+  Clap sound effects. Use SPARINGLY — celebration moments only, not every step.
+
+afterPhonemes: Array<string>
+  Phoneme audio queue. Use ONLY for RF.K.x and RF.1.x phonics lessons.
+
+────────── Rules ──────────
+
+  1. Don't change ttsScript text or audioFile paths.
+  2. K-bar is ~3 steps per slide; if THIN_SLIDE has 1 step, split into 2-3.
+  3. delay values are integer ms from step audio start. Conservative 300-2500ms.
+  4. ALL grades (K-4) get displayParts + highlightWord + sfxClaps. Only K-1 get displayDiagram and afterPhonemes.
+  5. highlightPills.pill MUST be an integer index into THIS step's displayParts. If the step has no displayParts, omit highlightPills.
+  6. highlightWord is a SINGLE object, never an array.
+  7. Preserve slide.slide, slide.type, slide.heading, slide.imagePrompt, slide.imageFile EXACTLY.
+  8. Output the FULL enriched slide JSON.
 
 Output ONLY the JSON object, no commentary.`;
 
@@ -252,10 +292,12 @@ Return the enriched slide JSON.`;
     if (!parsed?.steps || !Array.isArray(parsed.steps)) {
       return { ok: false, error: "model returned no steps" };
     }
-    // Quality gate: reject empty step objects. The schema bug on
-    // May 7 produced [{},{},{}] step arrays that passed structural
-    // checks but were unusable. Every step must have at least
-    // ttsScript or displayText.
+    // Quality gates — any of these = reject before DB write.
+    // History: empty steps shipped May 7 (schema bug) AND wrong-
+    // shaped highlightPills/highlightWord were emitted by Gemini
+    // even after the schema fix (e.g. highlightPills with `text`
+    // instead of `pill: number`). Both ship structurally valid
+    // JSON that the renderer silently drops.
     for (const [i, st] of parsed.steps.entries()) {
       if (!st || typeof st !== "object") {
         return { ok: false, error: `step ${i} is not an object` };
@@ -267,8 +309,61 @@ Return the enriched slide JSON.`;
       if (!hasContent) {
         return {
           ok: false,
-          error: `step ${i} has no ttsScript / displayText / audioFile — model emitted empty object`,
+          error: `step ${i} has no ttsScript / displayText / audioFile — empty object`,
         };
+      }
+      // highlightWord MUST be a single object, never an array.
+      if (Array.isArray(st.highlightWord)) {
+        return {
+          ok: false,
+          error: `step ${i}.highlightWord is an array; renderer expects { word, delay }`,
+        };
+      }
+      if (
+        st.highlightWord &&
+        (typeof st.highlightWord !== "object" ||
+          typeof (st.highlightWord as any).word !== "string")
+      ) {
+        return {
+          ok: false,
+          error: `step ${i}.highlightWord shape wrong; needs { word: string, delay: number }`,
+        };
+      }
+      // highlightPills entries must reference {pill: number} indices
+      // into displayParts, NOT {text: string}. The renderer reads
+      // .pill and ignores anything else.
+      if (Array.isArray(st.highlightPills)) {
+        for (const [j, hp] of st.highlightPills.entries()) {
+          if (
+            !hp ||
+            typeof (hp as any).pill !== "number" ||
+            typeof (hp as any).delay !== "number"
+          ) {
+            return {
+              ok: false,
+              error: `step ${i}.highlightPills[${j}] shape wrong; needs { pill: number, delay: number }`,
+            };
+          }
+        }
+        // highlightPills requires displayParts to index into.
+        if (!Array.isArray(st.displayParts) || st.displayParts.length === 0) {
+          return {
+            ok: false,
+            error: `step ${i}.highlightPills present but no displayParts to index into`,
+          };
+        }
+        // Pill indices must be in range.
+        for (const hp of st.highlightPills) {
+          if (
+            (hp as any).pill < 0 ||
+            (hp as any).pill >= st.displayParts.length
+          ) {
+            return {
+              ok: false,
+              error: `step ${i}.highlightPills index out of range`,
+            };
+          }
+        }
       }
     }
     return { ok: true, enrichedSlide: parsed };
