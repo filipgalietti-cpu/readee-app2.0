@@ -194,12 +194,81 @@ async function run(req: NextRequest) {
 
     // Pull the persisted row so we can read qc_overall + qc_report
     // without re-running QC.
-    const { data: row } = await supabase
+    let { data: row } = await supabase
       .from("differentiated_passages")
       .select("title, shared_image_url, qc_overall, qc_report, body, audio_url")
       .eq("id", built.passageId)
       .maybeSingle();
-    const r = (row ?? {}) as any;
+    let r = (row ?? {}) as any;
+
+    // AI catches → AI addresses (factory edition). If the first build
+    // failed on text-level checks (reading-level, fact-check, judge,
+    // length, banned words), rebuild ONCE with the failure reasons
+    // baked into the topic. Mirrors the autoHealDaily pattern but
+    // shaped for the leveled-passage builder (which is multi-version
+    // and shares an image). Pre-this commit, factory text fails just
+    // landed in the review queue as 'rejected' with no auto-retry.
+    if (r.qc_overall === "fail") {
+      const checks: Array<{ name: string; severity: string; message: string }> =
+        Array.isArray(r.qc_report?.checks) ? r.qc_report.checks : [];
+      const textFails = checks.filter(
+        (c) =>
+          c.severity === "fail" &&
+          (c.name === "passage.reading_level" ||
+            c.name === "passage.fact_check" ||
+            c.name === "passage.judge" ||
+            c.name === "passage.length" ||
+            c.name === "passage.banned_words"),
+      );
+      if (textFails.length > 0) {
+        const reasons = textFails
+          .map((c) => `${c.name}: ${c.message}`)
+          .join(" ");
+        const constraintBlock = [
+          `Topic: ${proposedTopic}.`,
+          ``,
+          `IMPORTANT — previous attempt failed quality review on text-level checks:`,
+          reasons,
+          `Rewrite the passages so they do not have these issues.`,
+          `Keep the on-level version strictly within ${pick.grade} Flesch-Kincaid range — do not exceed +1.5 grades above target.`,
+          `Use shorter sentences and simpler vocabulary if reading_level was flagged.`,
+          `If fact_check was flagged, only state facts that match Wikipedia's public record.`,
+        ].join(" ");
+        try {
+          const retry = await buildLeveledPassage({
+            teacherId,
+            brief: {
+              title: "",
+              topic: constraintBlock,
+              baseGrade: pick.grade,
+              perVersionAudio: false,
+              sharedImage: true,
+              questionsPerLevel: 3,
+            },
+          });
+          if (retry.ok) {
+            creditsUsed += retry.creditsUsed;
+            // Re-fetch state from the rebuilt row. The original
+            // passage row is left orphaned in differentiated_passages
+            // (not enqueued; harmless) — we point the queue entry at
+            // the better build instead.
+            built = retry;
+            const { data: row2 } = await supabase
+              .from("differentiated_passages")
+              .select("title, shared_image_url, qc_overall, qc_report, body, audio_url")
+              .eq("id", retry.passageId)
+              .maybeSingle();
+            r = (row2 ?? {}) as any;
+          }
+        } catch (e: any) {
+          trackFactoryError(e, {
+            assetKind: ASSET_KIND,
+            runId,
+            extra: { stage: "auto-heal-retry", standardId: pick.standardId },
+          });
+        }
+      }
+    }
 
     const enqueue = await enqueueGeneratedAsset({
       assetKind: ASSET_KIND,
