@@ -230,48 +230,22 @@ export async function buildDiscoveryArticle(input: {
   let finalTitle = title;
   let finalBody = body;
   let finalQuestions = questions;
+  // Sequential heal sweeps: passage first (cascades to audio + MCQs),
+  // then image. Each branch runs independently and re-evaluates QC,
+  // so a row with image + passage both failing on the first pass can
+  // be healed in two surgical steps instead of being abandoned.
+  // Mirrors autoHealDaily in lib/daily/build-daily.ts.
   if (qc.overall === "fail") {
-    const fails = qc.checks.filter((c) => c.severity === "fail");
-    const passageFails = fails.filter(
+    // Pass 1 — passage cascade.
+    const fails1 = qc.checks.filter((c) => c.severity === "fail");
+    const passageFails = fails1.filter(
       (c) =>
         c.name === "passage.reading_level" ||
         c.name === "passage.fact_check" ||
         c.name === "passage.judge" ||
         c.name === "passage.length",
     );
-    const imageFails = fails.filter((c) => c.name.startsWith("image."));
-    const onlyImage = imageFails.length === fails.length && fails.length > 0;
-    const onlyPassageOrCascade = passageFails.length === fails.length && fails.length > 0;
-
-    if (onlyImage && imageScene) {
-      const brief = await generateImageBrief({
-        teacherId,
-        passageTitle: finalTitle,
-        passageBody: finalBody,
-      });
-      if (brief.ok) {
-        const img = await generateImage({ teacherId, prompt: brief.brief });
-        if (img.ok) finalImageUrl = img.imageUrl;
-      }
-      const { checks: newImg } = await qcImage({
-        teacherId,
-        imageUrl: finalImageUrl ?? imageUrl ?? "",
-        expectedScene: brief.ok ? brief.brief : imageScene,
-      });
-      const otherChecks = qc.checks.filter((c) => !c.name.startsWith("image."));
-      const merged = [...otherChecks, ...newImg];
-      const worst = merged.reduce(
-        (acc, c) => Math.max(acc, c.severity === "fail" ? 2 : c.severity === "warn" ? 1 : 0),
-        0,
-      );
-      qc = {
-        ...qc,
-        checks: merged,
-        overall: (worst === 2 ? "fail" : worst === 1 ? "warn" : "pass") as
-          | "pass" | "warn" | "fail",
-      };
-      attempts.push(`heal-image:${qc.overall}`);
-    } else if (onlyPassageOrCascade) {
+    if (passageFails.length > 0) {
       const reasons = passageFails
         .map((c) => `${c.name}: ${c.message}`)
         .join(" ");
@@ -294,7 +268,10 @@ export async function buildDiscoveryArticle(input: {
       if (retryPassage.ok) {
         finalTitle = retryPassage.passage.title;
         finalBody = retryPassage.passage.passage;
-        const retryTts = await generateSpeech({ teacherId, text: finalBody.slice(0, 1200) });
+        const retryTts = await generateSpeech({
+          teacherId,
+          text: finalBody.slice(0, 1200),
+        });
         if (retryTts.ok) finalAudioUrl = retryTts.audioUrl;
         const retryMcqs = await generateMCQQuestions({
           teacherId,
@@ -342,6 +319,47 @@ export async function buildDiscoveryArticle(input: {
         });
         attempts.push(`heal-passage:${qc.overall}`);
       }
+    }
+  }
+  if (qc.overall === "fail") {
+    // Pass 2 — image regen. Runs after passage so it sees the fresh
+    // text (relevant if the original image was flagged for not
+    // matching the now-rewritten scene).
+    const fails2 = qc.checks.filter((c) => c.severity === "fail");
+    const imageFails = fails2.filter((c) => c.name.startsWith("image."));
+    if (imageFails.length > 0 && imageScene) {
+      const brief = await generateImageBrief({
+        teacherId,
+        passageTitle: finalTitle,
+        passageBody: finalBody,
+      });
+      if (brief.ok) {
+        const img = await generateImage({ teacherId, prompt: brief.brief });
+        if (img.ok) finalImageUrl = img.imageUrl;
+      }
+      const { checks: newImg } = await qcImage({
+        teacherId,
+        imageUrl: finalImageUrl ?? imageUrl ?? "",
+        expectedScene: brief.ok ? brief.brief : imageScene,
+      });
+      const otherChecks = qc.checks.filter(
+        (c) => !c.name.startsWith("image."),
+      );
+      const merged = [...otherChecks, ...newImg];
+      const worst = merged.reduce(
+        (acc, c) =>
+          Math.max(acc, c.severity === "fail" ? 2 : c.severity === "warn" ? 1 : 0),
+        0,
+      );
+      qc = {
+        ...qc,
+        checks: merged,
+        overall: (worst === 2 ? "fail" : worst === 1 ? "warn" : "pass") as
+          | "pass"
+          | "warn"
+          | "fail",
+      };
+      attempts.push(`heal-image:${qc.overall}`);
     }
   }
 
