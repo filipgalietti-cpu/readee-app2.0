@@ -174,6 +174,12 @@ export async function judgeImageQuality(input: {
   imageUrl: string;
   /** What the image is supposed to depict — passage scene, lesson topic, etc. */
   expectedScene: string;
+  /** The actual passage body the image accompanies. When present the
+   *  judge can catch identity/topic mismatches the brief alone can't —
+   *  e.g., passage is about Thomas Edison but image is Harriet Tubman.
+   *  Optional so older callers that only have a scene description
+   *  still work. */
+  passageBody?: string;
 }): Promise<
   | { ok: true; severity: MediaSeverity; reason: string }
   | { ok: false; error: string }
@@ -191,6 +197,9 @@ export async function judgeImageQuality(input: {
   }
 
   try {
+    const passageBlock = input.passageBody
+      ? `\n\nThe passage this image accompanies:\n"""\n${input.passageBody.slice(0, 1200)}\n"""\n\nCRITICAL: if the passage names a specific person or topic and the image shows a recognizably DIFFERENT real person or topic, that is a FAIL — kids will be confused about who they're reading about.`
+      : "";
     const response = await ai.models.generateContent({
       model: "gemini-2.5-flash",
       contents: [
@@ -198,7 +207,7 @@ export async function judgeImageQuality(input: {
           role: "user",
           parts: [
             {
-              text: `Expected scene: ${input.expectedScene.slice(0, 400)}\n\nReview the image for visual coherence. Look hard at hands, faces, object integrity, and composition.`,
+              text: `Expected scene: ${input.expectedScene.slice(0, 400)}${passageBlock}\n\nReview the image for visual coherence AND topic match. Look hard at hands, faces, object integrity, composition, AND whether the depicted subject matches the passage.`,
             },
             { inlineData: { data: fetched.base64, mimeType: fetched.mimeType } },
           ],

@@ -507,7 +507,8 @@ Check ALL of these in order. Stop at the FIRST issue you spot:
 
 3. SCENE FIDELITY — does the image show what the expected-scene description requested?
    • FAIL if the subject is TOTALLY UNRELATED (asked for a runner, got a fish; asked for a bunny eating an acorn, got a city skyline).
-   • WARN if the image is THEMATICALLY ALIGNED but not the exact subject (asked for "Roger Bannister running a 4-minute mile", got a generic runner crossing a finish line at a 1950s track meet — the theme is right, the specific person isn't). AI image generators can't reliably render specific named historical figures or copyrighted characters; thematic stand-ins are an OK trade-off as long as the scene is on-topic.
+   • FAIL if the image shows a RECOGNIZABLE real person who is NOT the figure the passage is about. A passage about Thomas Edison illustrated with a portrait that anyone literate in US history would recognize as Harriet Tubman, Abraham Lincoln, MLK, etc., is a FAIL — kids will be confused about who they're reading about. This is much worse than a generic stand-in.
+   • WARN if the image is THEMATICALLY ALIGNED but not the exact subject (asked for "Roger Bannister running a 4-minute mile", got a generic runner crossing a finish line at a 1950s track meet — the theme is right, the specific person isn't). AI image generators can't reliably render specific named historical figures or copyrighted characters; thematic stand-ins are an OK trade-off as long as the scene is on-topic AND the depicted person isn't a recognizable DIFFERENT real figure.
    • WARN if minor details drift (jersey color wrong, background a beach instead of a track) but the subject is right.
 
 4. SAFETY — kid-safe and school-appropriate?
@@ -531,6 +532,10 @@ export async function qcImage(input: {
   teacherId: string;
   imageUrl: string;
   expectedScene: string;
+  /** The passage the image accompanies. When present the judge gets
+   *  to cross-check "image identity matches passage topic" — catches
+   *  the Edison/Tubman class directly. Optional for backward compat. */
+  passageBody?: string | null;
 }): Promise<{ checks: QcCheck[]; creditsUsed: number }> {
   const checks: QcCheck[] = [];
   let creditsUsed = 0;
@@ -562,13 +567,16 @@ export async function qcImage(input: {
 
   try {
     const client = getClient();
+    const passageBlock = input.passageBody
+      ? `\n\nThe passage this image accompanies (use to cross-check identity + topic):\n"""\n${input.passageBody.slice(0, 1200)}\n"""`
+      : "";
     const response = await client.models.generateContent({
       model: MODEL_ID,
       contents: [
         {
           role: "user",
           parts: [
-            { text: `Expected scene: ${input.expectedScene}` },
+            { text: `Expected scene: ${input.expectedScene}${passageBlock}` },
             { inlineData: { data: base64, mimeType } },
           ],
         },
@@ -889,6 +897,7 @@ export async function runFullQuizQc(input: {
       teacherId: input.teacherId,
       imageUrl: input.imageUrl,
       expectedScene: input.imageScene,
+      passageBody: input.passageBody,
     });
     checks.push(...r.checks);
     creditsUsed += r.creditsUsed;
