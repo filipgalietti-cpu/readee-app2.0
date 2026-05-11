@@ -19,7 +19,7 @@ import { getStandardsForGrade } from "@/lib/data/all-standards";
 import { getChildAvatarImage, AVATAR_IMAGES, DEFAULT_AVATARS } from "@/lib/utils/get-child-avatar";
 import { getItemsByCategory, BACKGROUND_IMAGES } from "@/lib/data/shop-items";
 import type { ShopPurchase, EquippedItems } from "@/lib/db/types";
-import { Target, Puzzle, BookOpen, Map, Carrot, Flame, Sun, CloudSun, Moon, Sparkles, Star, Rocket, Trophy, BarChart3, Sprout, ChevronDown, Lock, User, CreditCard, Bell, LogOut, ChevronsUpDown, Home, BookText, ListChecks, ClipboardCheck, Mic } from "lucide-react";
+import { Target, Puzzle, BookOpen, Map, Carrot, Flame, Sun, CloudSun, Moon, Sparkles, Star, Rocket, Trophy, BarChart3, Sprout, ChevronDown, Lock, User, CreditCard, Bell, LogOut, ChevronsUpDown, Home, BookText, ListChecks, ClipboardCheck, Mic, Compass, Users } from "lucide-react";
 import type { ReactNode } from "react";
 import { getShopIcon } from "@/lib/data/shop-icons";
 import TeacherAssignmentsCard from "@/app/_components/TeacherAssignmentsCard";
@@ -1241,6 +1241,42 @@ function ChildDashboard({
             >
               <Map className="w-10 h-10 text-white mb-2" strokeWidth={1.5} />
               <span className="text-sm font-extrabold text-white">My Journey</span>
+            </motion.div>
+          </Link>
+        </motion.div>
+
+        {/* ── Hero Tiles row 2 — the content army surfaces ── */}
+        <motion.div variants={slideUp} className="grid grid-cols-3 gap-3">
+          <Link href="/today" className="block">
+            <motion.div
+              whileHover={{ scale: 1.05, y: -4 }}
+              whileTap={{ scale: 0.95 }}
+              className="h-[130px] rounded-3xl bg-gradient-to-br from-amber-400 to-orange-500 p-4 flex flex-col items-center justify-center text-center shadow-lg cursor-pointer"
+            >
+              <Sparkles className="w-10 h-10 text-white mb-2" strokeWidth={1.5} />
+              <span className="text-sm font-extrabold text-white">Today&apos;s Readee</span>
+            </motion.div>
+          </Link>
+
+          <Link href="/discover" className="block">
+            <motion.div
+              whileHover={{ scale: 1.05, y: -4 }}
+              whileTap={{ scale: 0.95 }}
+              className="h-[130px] rounded-3xl bg-gradient-to-br from-sky-400 to-blue-600 p-4 flex flex-col items-center justify-center text-center shadow-lg cursor-pointer"
+            >
+              <Compass className="w-10 h-10 text-white mb-2" strokeWidth={1.5} />
+              <span className="text-sm font-extrabold text-white">Discover</span>
+            </motion.div>
+          </Link>
+
+          <Link href="/practice-hub/community" className="block">
+            <motion.div
+              whileHover={{ scale: 1.05, y: -4 }}
+              whileTap={{ scale: 0.95 }}
+              className="h-[130px] rounded-3xl bg-gradient-to-br from-fuchsia-400 to-purple-600 p-4 flex flex-col items-center justify-center text-center shadow-lg cursor-pointer"
+            >
+              <Users className="w-10 h-10 text-white mb-2" strokeWidth={1.5} />
+              <span className="text-sm font-extrabold text-white">Community</span>
             </motion.div>
           </Link>
         </motion.div>
