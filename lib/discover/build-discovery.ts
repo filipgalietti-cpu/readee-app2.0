@@ -101,16 +101,38 @@ export async function buildDiscoveryArticle(input: {
     return { ok: false, error: e.message };
   }
 
+  // Pull the last 60 days of titles in this category so we can tell
+  // the model what NOT to write about. Without this, the bot keeps
+  // rolling the most-likely-default for each category (Edison for
+  // inventions, Tortoise-and-Hare for stories, etc.) and the
+  // library gets repetitive within the first week.
+  const { data: recentInCategory } = await admin
+    .from("discovery_articles")
+    .select("title")
+    .eq("category", input.category)
+    .gte(
+      "created_at",
+      new Date(Date.now() - 60 * 24 * 60 * 60 * 1000).toISOString(),
+    )
+    .limit(50);
+  const recentTitles = ((recentInCategory ?? []) as { title: string }[])
+    .map((r) => r.title)
+    .filter(Boolean);
+  const avoidBlock =
+    recentTitles.length > 0
+      ? `\n\nAVOID these topics — already covered in the last 60 days. Pick something different:\n${recentTitles.map((t) => `- ${t}`).join("\n")}`
+      : "";
+
   // 1) Pick a topic. If the caller provided a hint, use it. Otherwise
   //    let Gemini pick from the category's topic surface — keeps the
   //    library diverse without us maintaining a topic backlog.
   const topic = input.topicHint
-    ? `${cfg.label}: ${input.topicHint}. ${cfg.toneGuidance}`
+    ? `${cfg.label}: ${input.topicHint}. ${cfg.toneGuidance}${avoidBlock}`
     : [
         `Category: ${cfg.label}`,
         cfg.topicGuidance,
         cfg.toneGuidance,
-        `Pick a topic that has not been done recently. Write ONE focused passage with a single teachable point.`,
+        `Pick a topic that has not been done recently. Write ONE focused passage with a single teachable point.${avoidBlock}`,
       ].join("\n\n");
 
   // 2) Passage.
