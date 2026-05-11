@@ -92,6 +92,10 @@ export async function generateCalibratedItem(input: {
   targetDifficulty: 1 | 2 | 3 | 4 | 5;
   /** Optional excerpt from a passage to anchor the question. */
   passageContext?: string | null;
+  /** Failure reasons from a previous attempt — when present, the
+   *  model is told what to avoid and what to fix. Used by the
+   *  factory cron's auto-heal retry path. */
+  feedback?: string | null;
 }): Promise<{ ok: true; item: CalibratedItem } | { ok: false; error: string }> {
   let ai: GoogleGenAI;
   try {
@@ -106,6 +110,9 @@ export async function generateCalibratedItem(input: {
     `Target difficulty: ${input.targetDifficulty} (1-5 scale, see system).`,
     input.passageContext
       ? `Anchor passage (use as the source of truth):\n"""\n${input.passageContext.slice(0, 1500)}\n"""`
+      : "",
+    input.feedback
+      ? `IMPORTANT — a previous attempt at this item failed quality review. Fix these specifically: ${input.feedback}. Common patterns: don't include the correct answer inside the question text (self-leak), make sure the correct answer is exactly one of the listed choices, write distractors that are plausibly wrong (not obviously wrong) at the same skill band.`
       : "",
     "Write ONE item per the schema. Distractors must be plausible at the same band.",
   ]

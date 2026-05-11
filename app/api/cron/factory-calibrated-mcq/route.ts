@@ -173,7 +173,7 @@ async function run(req: NextRequest) {
       // ~2 credits per item per estimation table
       creditsUsed += 2;
 
-      const item = gen.item;
+      let item = gen.item;
 
       // QC the question alone (no passage to check).
       let qcReport: any = null;
@@ -204,6 +204,70 @@ async function run(req: NextRequest) {
           runId,
           extra: { stage: "qc", standardId: pick.standardId, difficulty },
         });
+      }
+
+      // AI catches → AI addresses (calibrated-mcq edition). If the
+      // first item failed QC on q1.* checks, regenerate ONCE with
+      // the failure reasons baked into the prompt. Cheapest possible
+      // surgical fix — single new MCQ call, single new QC run.
+      if (qcOverall === "fail") {
+        const checks: Array<{ name: string; severity: string; message: string }> =
+          Array.isArray(qcReport?.checks) ? qcReport.checks : [];
+        const qFails = checks.filter(
+          (c) => c.severity === "fail" && /^q\d+\./.test(c.name),
+        );
+        if (qFails.length > 0) {
+          const feedback = qFails.map((c) => `${c.name}: ${c.message}`).join("; ");
+          try {
+            const retry = await generateCalibratedItem({
+              teacherId,
+              standardId: pick.standardId,
+              standardDescription: pick.standardDescription,
+              gradeLevel: pick.grade,
+              targetDifficulty: difficulty,
+              passageContext: null,
+              feedback,
+            });
+            if (retry.ok) {
+              creditsUsed += 2;
+              const newItem = retry.item;
+              const retryQc = await runFullQuizQc({
+                teacherId,
+                passageTitle: null,
+                passageBody: null,
+                gradeLevel: pick.grade,
+                questions: [
+                  {
+                    kind: "multiple_choice",
+                    prompt: newItem.prompt,
+                    choices: newItem.choices,
+                    correct: newItem.correct,
+                    hint: newItem.hint ?? null,
+                  },
+                ],
+                imageUrl: null,
+                imageScene: null,
+              });
+              creditsUsed += retryQc.creditsUsed ?? 0;
+              // Adopt the retry only if it cleared the fails.
+              if (retryQc.overall !== "fail") {
+                item = newItem;
+                qcReport = retryQc;
+                qcOverall = retryQc.overall;
+              }
+            }
+          } catch (e) {
+            trackFactoryError(e, {
+              assetKind: ASSET_KIND,
+              runId,
+              extra: {
+                stage: "auto-heal-retry",
+                standardId: pick.standardId,
+                difficulty,
+              },
+            });
+          }
+        }
       }
 
       const enqueue = await enqueueGeneratedAsset({
