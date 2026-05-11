@@ -491,6 +491,22 @@ async function proposeEnrichment(
     // animating the truncated displayParts.
     const slideNum = typeof slide?.slide === "number" ? slide.slide : enrichedCount + 1;
     const steps = Array.isArray(enriched?.steps) ? enriched.steps : [];
+
+    // Normalize sub letters BEFORE generating audio. Gemini sometimes
+    // emits multi-step slides without `sub` fields (or with duplicate
+    // ones), which collapses every step's audioFile onto S{n}a.mp3
+    // and trips the lesson.step_audio_mismatch gate at post-write
+    // audit. May 10 incident on RI.4.7 was the canonical case.
+    // Position-based letters are deterministic; we overwrite any AI
+    // value so the audio path is guaranteed unique per step.
+    const SUB_LETTERS = ["a", "b", "c", "d", "e", "f", "g", "h"];
+    for (let stIdx = 0; stIdx < steps.length; stIdx++) {
+      const wanted = SUB_LETTERS[stIdx] ?? `s${stIdx}`;
+      if (steps[stIdx] && typeof steps[stIdx] === "object") {
+        steps[stIdx].sub = wanted;
+      }
+    }
+
     if (!SKIP_AUDIO && !DRY && steps.length >= 2) {
       let audioOk = 0;
       let audioErr = 0;
