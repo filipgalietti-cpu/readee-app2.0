@@ -43,6 +43,10 @@ type CachedArtifact = {
   figureName: string;
   imageUrl: string | null;
   attribution: string | null;
+  /** Wikipedia article summary — used by qcFactCheck to ground
+   *  passage claims against the public record. Null when the article
+   *  doesn't exist or doesn't have a summary. */
+  extract: string | null;
   fetchedAt: string;
 };
 
@@ -135,6 +139,7 @@ async function fetchWikipediaArtifact(
         figureName: name,
         imageUrl: null,
         attribution: null,
+        extract: null,
         fetchedAt: new Date().toISOString(),
       };
       memoryCache.set(name.toLowerCase(), miss);
@@ -156,6 +161,7 @@ async function fetchWikipediaArtifact(
       figureName: data.title ?? name,
       imageUrl,
       attribution: imageUrl ? attribution : null,
+      extract: typeof data.extract === "string" ? data.extract : null,
       fetchedAt: new Date().toISOString(),
     };
     memoryCache.set(name.toLowerCase(), hit);
@@ -226,6 +232,23 @@ export async function resolveHistoricalImage(
     figureName: figure.name,
     avoidNamedPerson: true,
   };
+}
+
+/**
+ * Returns the Wikipedia article summary for a named figure, used as
+ * a grounding source for the fact-check judge in lib/ai/qc.ts.
+ *
+ * Hits the same in-memory cache as fetchWikipediaArtifact so we don't
+ * double-fetch when the image pipeline already touched this figure.
+ * Returns null when Wikipedia has no article for the name (we then
+ * skip fact-checking entirely for that piece — too risky to fact-
+ * check against the LLM's own training data).
+ */
+export async function fetchWikipediaSummary(
+  name: string,
+): Promise<string | null> {
+  const hit = await fetchWikipediaArtifact(name);
+  return hit?.extract ?? null;
 }
 
 /**

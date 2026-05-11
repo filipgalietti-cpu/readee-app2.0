@@ -612,6 +612,183 @@ export async function qcImage(input: {
   return { checks, creditsUsed };
 }
 
+// ───── Fact-check (non-fiction grounding) ──────────────────────────
+
+const FACT_CHECK_SYSTEM = `You are a fact-checker comparing an AI-generated children's reading passage against an authoritative source (a Wikipedia article summary).
+
+You will return a single JSON object: { severity: "pass" | "warn" | "fail", reason: string }.
+
+Your job: identify factual contradictions between the passage's claims and the source. Be specific.
+
+- pass: every concrete claim in the passage (dates, places, relationships, events, roles) is supported by or consistent with the source. The passage may compress, simplify, or omit, but it doesn't invent or contradict.
+- warn: minor ambiguity or oversimplification that could mislead a child but isn't a flat contradiction (e.g., "he invented the lightbulb" — Edison improved an existing design; an 8-year-old can grasp the simpler claim without it being "wrong").
+- fail: at least one direct factual contradiction (wrong date, wrong country, wrong relationship, fabricated event/quote). A kid would walk away believing something false.
+
+Reason must name the specific contradiction in one sentence, OR confirm what was checked if no issue.`;
+
+const FACT_CHECK_SCHEMA = {
+  type: Type.OBJECT,
+  properties: {
+    severity: { type: Type.STRING, enum: ["pass", "warn", "fail"] },
+    reason: { type: Type.STRING },
+  },
+  required: ["severity", "reason"],
+};
+
+/**
+ * Fact-check a non-fiction passage against Wikipedia. Detects named
+ * figures via the existing detectHistoricalFigure (free if the image
+ * pipeline already ran), pulls the Wikipedia summary, and asks the
+ * model to compare claims. Skips silently when no named figure is
+ * present or Wikipedia has no article — fact-checking against the
+ * model's own training data is circular and gives false confidence.
+ *
+ * Why this exists: Gemini Flash will confidently state wrong dates,
+ * places, or relationships for lesser-known figures. Pre-this check
+ * we shipped passage.judge='pass' on a passage that put George
+ * Washington at the wrong battle — the judge wasn't grounded.
+ */
+export async function qcFactCheck(input: {
+  teacherId: string;
+  passageTitle: string;
+  passageBody: string;
+}): Promise<{ checks: QcCheck[]; creditsUsed: number }> {
+  const checks: QcCheck[] = [];
+  let creditsUsed = 0;
+  try {
+    const { detectHistoricalFigure, fetchWikipediaSummary } = await import(
+      "./historical-artifacts"
+    );
+    const figure = await detectHistoricalFigure(
+      input.passageTitle,
+      input.passageBody,
+    );
+    if (!figure?.name) {
+      // No named figure — fiction or topic-only passage. Skip
+      // silently (not warn — fiction doesn't need a fact check).
+      return { checks, creditsUsed };
+    }
+    const summary = await fetchWikipediaSummary(figure.name);
+    if (!summary) {
+      checks.push({
+        name: "passage.fact_check",
+        severity: "warn",
+        message: `No Wikipedia article found for "${figure.name}" — could not ground passage claims against an authoritative source.`,
+      });
+      return { checks, creditsUsed };
+    }
+    const client = getClient();
+    const response = await client.models.generateContent({
+      model: MODEL_ID,
+      contents: `Named figure: ${figure.name}\n\nSource (Wikipedia summary):\n"""\n${summary.slice(0, 2400)}\n"""\n\nPassage to fact-check:\n"""\n${input.passageBody.slice(0, 1800)}\n"""\n\nReturn the JSON object.`,
+      config: {
+        systemInstruction: FACT_CHECK_SYSTEM,
+        responseMimeType: "application/json",
+        responseSchema: FACT_CHECK_SCHEMA,
+        temperature: 0.0,
+      },
+    });
+    const parsed = JSON.parse(response.text ?? "{}") as {
+      severity?: QcSeverity;
+      reason?: string;
+    };
+    creditsUsed += CREDIT_COST.quiz_generation;
+    checks.push({
+      name: "passage.fact_check",
+      severity: parsed.severity ?? "warn",
+      message: parsed.reason ?? "(no reason returned)",
+    });
+  } catch (e: any) {
+    trackError(e, { route: "qc.qcFactCheck" });
+    checks.push({
+      name: "passage.fact_check",
+      severity: "warn",
+      message: `Fact-check error: ${e.message}`,
+    });
+  }
+  return { checks, creditsUsed };
+}
+
+// ───── Learning-objective (MCQs assess the passage's teaching) ────
+
+const LEARNING_OBJECTIVE_SYSTEM = `You are a senior K-4 reading specialist evaluating whether a passage and its comprehension questions form a coherent learning experience.
+
+You will return a single JSON object: { severity: "pass" | "warn" | "fail", reason: string }.
+
+The contract: a passage should teach ONE concrete thing (a fact, a concept, a story arc). The questions should COLLECTIVELY assess whether the kid understood that thing — not just whether they can copy-paste words from the passage.
+
+- pass: the passage has a clear teachable point AND at least 2 of the 3 questions probe understanding of that point (cause/effect, main idea, vocabulary in context, why something matters). Questions distributed across literal/inferential is ideal.
+- warn: passage has a clear point but the questions are heavy on pure recall ("what color was the bird") with little assessment of comprehension. Still usable but pedagogically thin.
+- fail: passage has no clear teachable point (a list of disconnected facts, or a rambling narrative), OR the questions test something the passage doesn't actually cover, OR every question is trivial recall of a single sentence. Kid finishes the piece without having LEARNED anything assessable.
+
+Reason must name the teachable point you identified AND comment on whether the questions assess it.`;
+
+const LEARNING_OBJECTIVE_SCHEMA = FACT_CHECK_SCHEMA;
+
+/**
+ * Learning-objective check. Reads passage + 3 MCQs and asks: does
+ * this piece TEACH something, and do the questions ASSESS that
+ * something? Catches the failure mode where Gemini writes a coherent
+ * passage and 3 grammatically-correct MCQs that all happen to be
+ * trivial recall — kid "passes" without learning anything.
+ *
+ * Mission-critical for the daily Readee and discovery articles: every
+ * piece ships under the banner "Unlock Reading with Readee", so every
+ * piece needs to actually unlock something.
+ */
+export async function qcLearningObjective(input: {
+  teacherId: string;
+  passageTitle: string;
+  passageBody: string;
+  questions: QuestionForQc[];
+}): Promise<{ checks: QcCheck[]; creditsUsed: number }> {
+  const checks: QcCheck[] = [];
+  let creditsUsed = 0;
+  if (input.questions.length === 0) {
+    return { checks, creditsUsed };
+  }
+  try {
+    const client = getClient();
+    const qBlock = input.questions
+      .map((q, i) => {
+        const choicesLine =
+          q.kind === "multiple_choice"
+            ? `\n  Choices: ${q.choices.join(" | ")}`
+            : `\n  Type: True/False`;
+        return `Q${i + 1}: ${q.prompt}${choicesLine}\n  Correct: ${q.correct}`;
+      })
+      .join("\n\n");
+    const response = await client.models.generateContent({
+      model: MODEL_ID,
+      contents: `Title: ${input.passageTitle}\n\nPassage:\n"""\n${input.passageBody.slice(0, 1800)}\n"""\n\nQuestions:\n${qBlock}\n\nReturn the JSON object.`,
+      config: {
+        systemInstruction: LEARNING_OBJECTIVE_SYSTEM,
+        responseMimeType: "application/json",
+        responseSchema: LEARNING_OBJECTIVE_SCHEMA,
+        temperature: 0.0,
+      },
+    });
+    const parsed = JSON.parse(response.text ?? "{}") as {
+      severity?: QcSeverity;
+      reason?: string;
+    };
+    creditsUsed += CREDIT_COST.quiz_generation;
+    checks.push({
+      name: "lesson.learning_objective",
+      severity: parsed.severity ?? "warn",
+      message: parsed.reason ?? "(no reason returned)",
+    });
+  } catch (e: any) {
+    trackError(e, { route: "qc.qcLearningObjective" });
+    checks.push({
+      name: "lesson.learning_objective",
+      severity: "warn",
+      message: `Learning-objective check error: ${e.message}`,
+    });
+  }
+  return { checks, creditsUsed };
+}
+
 // ───── Audio QC ────────────────────────────────────────────────────
 
 /**
@@ -684,6 +861,16 @@ export async function runFullQuizQc(input: {
     });
     checks.push(...r.checks);
     creditsUsed += r.creditsUsed;
+
+    // Fact-check non-fiction passages with named figures against
+    // Wikipedia. Skips silently for fiction / no-figure passages.
+    const fc = await qcFactCheck({
+      teacherId: input.teacherId,
+      passageTitle: input.passageTitle,
+      passageBody: input.passageBody,
+    });
+    checks.push(...fc.checks);
+    creditsUsed += fc.creditsUsed;
   }
 
   for (let i = 0; i < input.questions.length; i++) {
@@ -714,6 +901,20 @@ export async function runFullQuizQc(input: {
     });
     checks.push(...r.checks);
     creditsUsed += r.creditsUsed;
+  }
+
+  // Learning-objective: does this piece TEACH something + do the
+  // MCQs ASSESS that something? Catches the "coherent passage, valid
+  // MCQs, but pure trivial recall" failure mode.
+  if (input.passageBody && input.passageTitle && input.questions.length > 0) {
+    const lo = await qcLearningObjective({
+      teacherId: input.teacherId,
+      passageTitle: input.passageTitle,
+      passageBody: input.passageBody,
+      questions: input.questions,
+    });
+    checks.push(...lo.checks);
+    creditsUsed += lo.creditsUsed;
   }
 
   return {
