@@ -140,6 +140,56 @@ export default async function About() {
         </div>
       </section>
 
+      {/* ── A Content Army (auditable + growing) ── */}
+      <section className="rounded-2xl border border-zinc-200 bg-white p-8 sm:p-10 space-y-6 mb-8">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center">
+            <Sparkles className="w-5 h-5 text-indigo-500" strokeWidth={1.5} />
+          </div>
+          <div>
+            <h2 className="text-2xl font-bold text-zinc-900 tracking-tight">
+              A Content Army
+            </h2>
+            <p className="text-sm text-zinc-500 mt-0.5">
+              Audited at every step. Fresh every morning.
+            </p>
+          </div>
+        </div>
+
+        <p className="text-[15px] text-zinc-600 leading-relaxed">
+          Readee isn&apos;t a textbook. It&apos;s a living library — built by a
+          reading specialist, scaled by an AI production line, and audited 24/7
+          by a quality pipeline that catches duds before any kid sees them.
+          Every passage, question, image, and audio file passes{" "}
+          <strong>12 automated quality checks</strong> — including fact-checking
+          against Wikipedia, reading-level audit per grade, and pedagogy review.
+          Anything that fails gets either auto-rewritten or quarantined — never
+          quietly shipped.
+        </p>
+
+        <div className="grid sm:grid-cols-4 gap-3">
+          {[
+            { value: "911+", label: "CCSS Questions", sub: "Every one standards-tagged" },
+            { value: "200+", label: "Interactive Lessons", sub: "Karaoke audio + animations" },
+            { value: "12", label: "Quality Checks", sub: "Per piece, before kid sees it" },
+            { value: "Daily", label: "Fresh Content", sub: "Daily passage + Discover articles" },
+          ].map((stat) => (
+            <div
+              key={stat.label}
+              className="rounded-xl border border-zinc-100 bg-zinc-50/50 p-4 text-center"
+            >
+              <div className="text-2xl font-extrabold text-indigo-600">
+                {stat.value}
+              </div>
+              <div className="mt-1 text-xs font-semibold uppercase tracking-wide text-zinc-700">
+                {stat.label}
+              </div>
+              <div className="mt-1 text-[11px] text-zinc-500">{stat.sub}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* ── Who Readee Is For ── */}
       <section className="rounded-2xl border border-zinc-200 bg-white p-8 sm:p-10 space-y-6 mb-8">
         <div className="flex items-center gap-3">

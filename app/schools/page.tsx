@@ -100,6 +100,43 @@ export default function SchoolsPage() {
         </div>
       </section>
 
+      {/* Content army */}
+      <section className="mt-14">
+        <h2 className="text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+          A K-4 library that audits itself
+        </h2>
+        <p className="mt-1 max-w-2xl text-sm text-zinc-500 dark:text-slate-400">
+          1,300+ pieces of curriculum-aligned content. Every passage, question,
+          image, and audio file runs a 12-check quality pipeline before a
+          single student sees it — reading-level audit, Wikipedia fact-check
+          on non-fiction, pedagogy review, image + audio judges. Fails get
+          auto-rewritten or quarantined; never quietly shipped.
+        </p>
+        <div className="mt-6 grid gap-3 sm:grid-cols-4">
+          {[
+            { value: "911+", label: "CCSS Questions", sub: "Every one standards-tagged" },
+            { value: "200+", label: "Lessons", sub: "Karaoke audio + animations" },
+            { value: "12", label: "QC Checks", sub: "Per piece, before kids see it" },
+            { value: "Daily", label: "Fresh Content", sub: "Passage + Discover articles" },
+          ].map((s) => (
+            <div
+              key={s.label}
+              className="rounded-2xl border border-zinc-200 bg-white p-4 text-center dark:border-slate-800 dark:bg-slate-900/40"
+            >
+              <div className="text-2xl font-extrabold text-indigo-600 dark:text-indigo-300">
+                {s.value}
+              </div>
+              <div className="mt-1 text-xs font-semibold uppercase tracking-wide text-zinc-700 dark:text-slate-300">
+                {s.label}
+              </div>
+              <div className="mt-1 text-[10px] text-zinc-500 dark:text-slate-500">
+                {s.sub}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* Funding */}
       <section className="mt-14">
         <h2 className="text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-white">

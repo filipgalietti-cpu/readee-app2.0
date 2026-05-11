@@ -110,6 +110,46 @@ export default function TeachersPage() {
         </div>
       </section>
 
+      {/* Content Army */}
+      <section className="rounded-2xl border border-zinc-200 bg-white p-8 sm:p-10 space-y-6 mb-8">
+        <div>
+          <span className="text-xs font-bold uppercase tracking-widest text-indigo-600">
+            The content
+          </span>
+          <h2 className="mt-1 text-2xl font-bold text-zinc-900 tracking-tight">
+            A K-4 library that audits itself.
+          </h2>
+          <p className="mt-3 text-[15px] text-zinc-600 leading-relaxed">
+            1,300+ pieces of curriculum-aligned content. Every passage,
+            question, image, and audio file passes a 12-check quality
+            pipeline before a student sees it — reading-level audit,
+            Wikipedia fact-check on non-fiction, pedagogy review, image
+            + audio judges. Fails get auto-rewritten or quarantined;
+            never quietly shipped.
+          </p>
+        </div>
+        <div className="grid sm:grid-cols-4 gap-3">
+          {[
+            { value: "911+", label: "CCSS Questions" },
+            { value: "200+", label: "Lessons" },
+            { value: "12", label: "QC Checks / Piece" },
+            { value: "Daily", label: "Fresh Content" },
+          ].map((s) => (
+            <div
+              key={s.label}
+              className="rounded-xl border border-zinc-100 bg-zinc-50/50 p-4 text-center"
+            >
+              <div className="text-xl font-extrabold text-indigo-600">
+                {s.value}
+              </div>
+              <div className="mt-1 text-[11px] font-semibold uppercase tracking-wide text-zinc-600">
+                {s.label}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* Pricing Note */}
       <section className="rounded-2xl border border-zinc-200 bg-white p-8 space-y-4 mb-8">
         <h2 className="text-2xl font-bold text-zinc-900 tracking-tight">
