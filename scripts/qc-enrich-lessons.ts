@@ -31,6 +31,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { GoogleGenAI, Type } from "@google/genai";
+import { checkLessonStructure, checkLessonRichness } from "@/lib/ai/qc-lesson";
 
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY!;
@@ -97,6 +98,14 @@ const STANDARD_FILTER = standardArg ? standardArg.split("=")[1] : null;
 // Skip the inline audio generation (used during testing of the prompt
 // changes when audio cost would be wasted). Default is to generate.
 const SKIP_AUDIO = args.includes("--skip-audio");
+// Same-batch audit. After each lesson writes to lessons_db, re-run
+// the structural + richness checks against the freshly-written row.
+// If any severity='fail' finding emerges, halt the batch so a new
+// bug class can't propagate through 20 lessons before someone
+// spot-checks. Override with --continue-on-audit-fail when you've
+// already triaged a known issue and want throughput. May 8 incident
+// would've been caught after lesson 1 with this gate.
+const CONTINUE_ON_FAIL = args.includes("--continue-on-audit-fail");
 
 const LESSONS_PATH = path.join(
   process.cwd(),
@@ -636,6 +645,63 @@ async function main() {
     if (dbErr) {
       console.log(`    ! lessons_db upsert: ${dbErr.message}`);
       skipped++;
+      continue;
+    }
+
+    // ── 4a.5. POST-WRITE AUDIT GATE. Run the same structural +
+    //         richness checks the nightly audit uses, against the
+    //         row we just wrote. If any severity='fail' emerges, the
+    //         enricher just shipped a new bug class — halt the batch
+    //         so it can't propagate through every remaining lesson.
+    //         (The May 7 empty-step and May 8 step_audio_mismatch
+    //         incidents both got past write-time gates; this is the
+    //         loop that would have caught them after lesson 1.)
+    const structural = checkLessonStructure({ standardId, lesson: proposed });
+    const richness = checkLessonRichness({ standardId, lesson: proposed });
+    const failing = [...structural, ...richness].filter(
+      (x) => x.severity === "fail",
+    );
+    if (failing.length > 0) {
+      console.log(
+        `    ✗ POST-WRITE AUDIT FAILED — ${failing.length} fail finding(s):`,
+      );
+      for (const v of failing) console.log(`        • ${v.type}: ${v.message}`);
+      // Persist each as a real finding so the dashboard surfaces
+      // them and the regen pipeline can pick them up. Loop-closure
+      // is SKIPPED — the thin_animation finding stays open until
+      // the bug class is fixed.
+      for (const v of failing) {
+        await sb.from("content_audit_findings").insert({
+          finding_type: v.type,
+          severity: v.severity,
+          status: "open",
+          target_kind: "lesson",
+          target_id: standardId,
+          message: v.message,
+          target_snapshot: { source: "enrich-post-write-audit" },
+        });
+      }
+      await sb.from("content_qc_log").insert({
+        target_kind: "lesson",
+        target_id: standardId,
+        change_type: "post_write_audit_failed",
+        before: null,
+        after: { failing_types: failing.map((v) => v.type) },
+        reason:
+          "Enricher wrote a lesson that fails post-write audit. Batch halted to prevent propagation.",
+        finding_id: (f as any).id,
+        agent: "qc-bot/enrich-lessons",
+      });
+      skipped++;
+      if (!CONTINUE_ON_FAIL) {
+        console.log(
+          `\n  HALTING BATCH — ${failing.length} fail finding(s) on ${standardId}. ` +
+            `Triage the bug class, then re-run (or pass --continue-on-audit-fail to override).`,
+        );
+        break;
+      }
+      // CONTINUE_ON_FAIL: don't close thin_animation, don't make++,
+      // but keep iterating. Useful when triaging a known issue.
       continue;
     }
 
