@@ -240,7 +240,7 @@ ${theme.topic}`;
   });
   if (ttsRes.ok) audioUrl = ttsRes.audioUrl;
 
-  // 5) QC the whole thing.
+  // 5) QC the whole thing — passage + questions + image + audio.
   const qc = await runFullQuizQc({
     teacherId,
     passageTitle,
@@ -264,6 +264,7 @@ ${theme.topic}`;
     ],
     imageUrl,
     imageScene,
+    audioUrl,
   });
 
   // 6) Persist. If qc.overall === 'fail' the route handler may decide

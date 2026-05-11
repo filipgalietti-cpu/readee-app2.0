@@ -131,18 +131,33 @@ export async function qcPassage(input: {
     });
   }
 
-  // Flesch-Kincaid grade
+  // Flesch-Kincaid grade. Tiered severity by mission:
+  //  - Above max by ≤1.5 → warn (mild — kid will need scaffolding)
+  //  - Above max by >1.5 → fail (passage is unreadable to target kid;
+  //    May 6 2026 shipped a 4.7 FK to a 2nd-grade target — exactly
+  //    the class of failure that defeats the whole product)
+  //  - Below min by ≤1.5 → warn (easier-than-target is less harmful
+  //    for confidence-building but still off-spec)
+  //  - Below min by >1.5 → warn (still not fail — we'd rather a kid
+  //    breeze through than not finish at all)
+  const HARD_DRIFT = 1.5;
   if (fk < target.gradeFleschMin) {
     checks.push({
       name: "passage.reading_level",
       severity: "warn",
       message: `Reads easier than ${input.gradeLevel} (Flesch-Kincaid grade ${fk.toFixed(1)})`,
     });
+  } else if (fk > target.gradeFleschMax + HARD_DRIFT) {
+    checks.push({
+      name: "passage.reading_level",
+      severity: "fail",
+      message: `Reads much harder than ${input.gradeLevel} (Flesch-Kincaid grade ${fk.toFixed(1)}, max for grade is ${target.gradeFleschMax}). Kid can't read this — rewrite required.`,
+    });
   } else if (fk > target.gradeFleschMax) {
     checks.push({
       name: "passage.reading_level",
       severity: "warn",
-      message: `Reads harder than ${input.gradeLevel} (Flesch-Kincaid grade ${fk.toFixed(1)})`,
+      message: `Reads slightly harder than ${input.gradeLevel} (Flesch-Kincaid grade ${fk.toFixed(1)})`,
     });
   } else {
     checks.push({
@@ -597,6 +612,51 @@ export async function qcImage(input: {
   return { checks, creditsUsed };
 }
 
+// ───── Audio QC ────────────────────────────────────────────────────
+
+/**
+ * Audio QC for daily passages. Runs the audio judge against the TTS
+ * output to catch garbled reads, wrong text, cut-off audio, etc.
+ * Pre-May 10 we shipped TTS entirely blind — kid-facing audio could
+ * be malformed for days before someone listened.
+ */
+export async function qcAudio(input: {
+  audioUrl: string;
+  expectedText: string;
+}): Promise<{ checks: QcCheck[]; creditsUsed: number }> {
+  const checks: QcCheck[] = [];
+  let creditsUsed = 0;
+  try {
+    const { judgeAudioFile } = await import("./qc-media");
+    const j = await judgeAudioFile({
+      audioUrl: input.audioUrl,
+      expectedText: input.expectedText,
+    });
+    if (!j.ok) {
+      checks.push({
+        name: "audio.judge",
+        severity: "warn",
+        message: `Couldn't run audio check: ${j.error}`,
+      });
+      return { checks, creditsUsed };
+    }
+    checks.push({
+      name: "audio.judge",
+      severity: j.severity,
+      message: j.reason || "(no reason returned)",
+    });
+    creditsUsed += CREDIT_COST.quiz_generation;
+  } catch (e: any) {
+    trackError(e, { route: "qc.qcAudio" });
+    checks.push({
+      name: "audio.judge",
+      severity: "warn",
+      message: `Audio judge error: ${e.message}`,
+    });
+  }
+  return { checks, creditsUsed };
+}
+
 // ───── Whole-quiz orchestration ────────────────────────────────────
 
 export async function runFullQuizQc(input: {
@@ -607,6 +667,10 @@ export async function runFullQuizQc(input: {
   questions: QuestionForQc[];
   imageUrl: string | null;
   imageScene: string | null;
+  /** Optional audio URL — when present, runs the audio judge against
+   *  the passage text so we don't ship garbled TTS to kids who
+   *  depend on it (early readers, ELLs, low-vision).  */
+  audioUrl?: string | null;
 }): Promise<QcReport> {
   const checks: QcCheck[] = [];
   let creditsUsed = 0;
@@ -638,6 +702,15 @@ export async function runFullQuizQc(input: {
       teacherId: input.teacherId,
       imageUrl: input.imageUrl,
       expectedScene: input.imageScene,
+    });
+    checks.push(...r.checks);
+    creditsUsed += r.creditsUsed;
+  }
+
+  if (input.audioUrl && input.passageBody) {
+    const r = await qcAudio({
+      audioUrl: input.audioUrl,
+      expectedText: input.passageBody,
     });
     checks.push(...r.checks);
     creditsUsed += r.creditsUsed;
