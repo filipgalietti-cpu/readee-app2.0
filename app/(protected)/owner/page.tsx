@@ -108,6 +108,10 @@ export default async function OwnerAdminPage({
     { count: todayDaily },
     { count: todayLessons },
     { count: todayBooks },
+    { count: todayDiscovery },
+    { count: todayDiscoveryPass },
+    { count: todayDiscoveryWarn },
+    { count: todayDiscoveryFail },
   ] = await Promise.all([
     supabase.from("child_ai_content").select("id", { count: "exact", head: true }).gte("created_at", startOfTodayIso),
     supabase.from("community_passages").select("id", { count: "exact", head: true }).gte("created_at", startOfTodayIso),
@@ -116,6 +120,10 @@ export default async function OwnerAdminPage({
     supabase.from("daily_questions").select("date", { count: "exact", head: true }).gte("created_at", startOfTodayIso),
     supabase.from("custom_lessons").select("id", { count: "exact", head: true }).gte("created_at", startOfTodayIso),
     supabase.from("custom_books").select("id", { count: "exact", head: true }).gte("created_at", startOfTodayIso),
+    supabase.from("discovery_articles").select("id", { count: "exact", head: true }).gte("created_at", startOfTodayIso),
+    supabase.from("discovery_articles").select("id", { count: "exact", head: true }).gte("created_at", startOfTodayIso).eq("qc_overall", "pass"),
+    supabase.from("discovery_articles").select("id", { count: "exact", head: true }).gte("created_at", startOfTodayIso).eq("qc_overall", "warn"),
+    supabase.from("discovery_articles").select("id", { count: "exact", head: true }).gte("created_at", startOfTodayIso).eq("qc_overall", "fail"),
   ]);
   const todayTotal =
     (todayAskReadee ?? 0) +
@@ -124,7 +132,70 @@ export default async function OwnerAdminPage({
     (todayPersonalized ?? 0) +
     (todayDaily ?? 0) +
     (todayLessons ?? 0) +
-    (todayBooks ?? 0);
+    (todayBooks ?? 0) +
+    (todayDiscovery ?? 0);
+
+  // Latest AI-produced content across all tables — the "what did the
+  // bot make for me today" feed that Filip wants in one place.
+  // Pulls last 12 across discovery_articles, daily_questions,
+  // differentiated_passages, ordered by created_at desc.
+  const [
+    { data: recentDiscovery },
+    { data: recentDailyRows },
+    { data: recentLeveled },
+  ] = await Promise.all([
+    supabase
+      .from("discovery_articles")
+      .select("id, category, slug, title, qc_overall, created_at")
+      .order("created_at", { ascending: false })
+      .limit(8),
+    supabase
+      .from("daily_questions")
+      .select("date, slug, passage_title, qc_overall, created_at")
+      .order("created_at", { ascending: false })
+      .limit(4),
+    supabase
+      .from("differentiated_passages")
+      .select("id, title, qc_overall, created_at")
+      .order("created_at", { ascending: false })
+      .limit(4),
+  ]);
+  type RecentItem = {
+    kind: "discovery" | "daily" | "leveled";
+    title: string;
+    href: string | null;
+    qc: string | null;
+    when: string;
+    sub: string | null;
+  };
+  const recent: RecentItem[] = [
+    ...((recentDiscovery ?? []) as any[]).map((r) => ({
+      kind: "discovery" as const,
+      title: r.title,
+      href: `/discover/${r.category}/${r.slug}`,
+      qc: r.qc_overall,
+      when: r.created_at,
+      sub: r.category,
+    })),
+    ...((recentDailyRows ?? []) as any[]).map((r) => ({
+      kind: "daily" as const,
+      title: r.passage_title,
+      href: `/today/${r.slug}`,
+      qc: r.qc_overall,
+      when: r.created_at,
+      sub: r.date,
+    })),
+    ...((recentLeveled ?? []) as any[]).map((r) => ({
+      kind: "leveled" as const,
+      title: r.title,
+      href: null, // leveled passages live in /owner/batch-qc until reviewed
+      qc: r.qc_overall,
+      when: r.created_at,
+      sub: "factory",
+    })),
+  ]
+    .sort((a, b) => (a.when < b.when ? 1 : -1))
+    .slice(0, 12);
 
   // ── Catalog health (QC state at a glance) ──────────────────────
   // Three numbers Filip wants on the daily landing without needing
@@ -451,6 +522,96 @@ export default async function OwnerAdminPage({
           </span>
         </div>
       </Link>
+
+      {/* Latest AI production feed. The "what did the bot make for
+           me" stripe — newest 12 across discovery / daily / leveled,
+           with category sub-tag and qc verdict pill. Every row is
+           clickable so Filip can spot-check without hunting through
+           /owner/assets. */}
+      <div className="mt-4 rounded-2xl border border-zinc-200 bg-white p-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <Sparkles className="h-4 w-4 text-violet-600" />
+            <h2 className="text-[10px] font-bold uppercase tracking-widest text-zinc-500">
+              Latest AI production
+            </h2>
+            {(todayDiscovery ?? 0) > 0 && (
+              <span className="rounded-full bg-violet-50 px-2 py-0.5 text-[10px] font-bold text-violet-700">
+                {todayDiscovery} discovery today
+                {(todayDiscoveryPass ?? 0) > 0 && ` · ${todayDiscoveryPass} pass`}
+                {(todayDiscoveryWarn ?? 0) > 0 && ` · ${todayDiscoveryWarn} warn`}
+                {(todayDiscoveryFail ?? 0) > 0 && ` · ${todayDiscoveryFail} fail`}
+              </span>
+            )}
+          </div>
+          <Link
+            href="/owner/assets"
+            className="text-[11px] font-semibold text-violet-600 hover:underline"
+          >
+            Full feed →
+          </Link>
+        </div>
+        {recent.length === 0 ? (
+          <p className="mt-3 text-xs italic text-zinc-400">
+            No bot-produced content yet today.
+          </p>
+        ) : (
+          <ul className="mt-3 divide-y divide-zinc-100">
+            {recent.map((r, i) => {
+              const qcTone =
+                r.qc === "pass"
+                  ? "bg-emerald-100 text-emerald-800"
+                  : r.qc === "warn"
+                    ? "bg-amber-100 text-amber-800"
+                    : "bg-rose-100 text-rose-800";
+              const kindTone =
+                r.kind === "discovery"
+                  ? "bg-violet-100 text-violet-800"
+                  : r.kind === "daily"
+                    ? "bg-indigo-100 text-indigo-800"
+                    : "bg-zinc-100 text-zinc-700";
+              const inner = (
+                <div className="flex items-center gap-3 py-2 text-sm">
+                  <span
+                    className={`inline-flex shrink-0 rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${kindTone}`}
+                  >
+                    {r.kind}
+                  </span>
+                  <span className="min-w-0 flex-1 truncate font-semibold text-zinc-900">
+                    {r.title}
+                  </span>
+                  {r.sub && (
+                    <span className="hidden text-[11px] text-zinc-400 sm:inline">
+                      {r.sub}
+                    </span>
+                  )}
+                  {r.qc && (
+                    <span
+                      className={`inline-flex shrink-0 rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${qcTone}`}
+                    >
+                      {r.qc}
+                    </span>
+                  )}
+                </div>
+              );
+              return (
+                <li key={`${r.kind}-${i}`}>
+                  {r.href ? (
+                    <Link
+                      href={r.href}
+                      className="block transition hover:bg-zinc-50"
+                    >
+                      {inner}
+                    </Link>
+                  ) : (
+                    inner
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        )}
+      </div>
 
       {/* "What lives where" README — collapsed by default so it
            doesn't clutter the daily view, but always available
