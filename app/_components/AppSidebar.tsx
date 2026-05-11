@@ -201,6 +201,7 @@ function getNavSections(
           { href: "/word-bank", icon: BookText, label: "Word Bank" },
           { href: `/practice-hub${q}`, icon: ListChecks, label: "Practice" },
           { href: "/practice-hub/community", icon: Users, label: "Community library" },
+          { href: "/discover", icon: Sparkles, label: "Discover" },
           { href: `/journey${q}`, icon: Map, label: "Reading Journey" },
           { href: `/shop${q}`, icon: Carrot, label: "Shop", iconColor: "w-[17px] h-[17px] text-orange-500" },
           { href: `/leaderboard${q}`, icon: Trophy, label: "Leaderboard" },
