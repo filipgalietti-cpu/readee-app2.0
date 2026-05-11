@@ -436,6 +436,13 @@ export default async function OwnerAdminPage({
               </span>
             )}
           </Link>
+          <Link
+            href="/owner/spot-audit"
+            className="inline-flex items-center gap-1.5 rounded-full border border-violet-200 bg-violet-50 px-3 py-1.5 text-xs font-bold text-violet-700 hover:bg-violet-100"
+          >
+            <Sparkles className="h-3.5 w-3.5" />
+            Spot audit
+          </Link>
         </div>
       </div>
 
