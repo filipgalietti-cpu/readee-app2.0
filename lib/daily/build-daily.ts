@@ -704,6 +704,93 @@ export async function targetedQuestionsRegen(opts: {
 }
 
 /**
+ * Regenerate just the TTS audio when audio.judge fails. Keeps
+ * passage + image + questions intact. Cheapest possible surgical
+ * fix — single TTS call + single audio judge. Closes the last loop
+ * in autoHealDaily: pre-this, audio fails forced a full rebuild.
+ */
+export async function targetedAudioRegen(opts: {
+  date?: Date;
+}): Promise<
+  | { ok: true; regenerated: true; newOverall: string }
+  | { ok: true; regenerated: false; reason: string }
+  | { ok: false; error: string }
+> {
+  const date = opts?.date ?? new Date();
+  const dateStr = slugForDate(date);
+  const admin = supabaseAdmin();
+
+  const { data: row, error: rowErr } = await admin
+    .from("daily_questions")
+    .select("date, passage_body, audio_url, qc_overall, qc_report")
+    .eq("date", dateStr)
+    .maybeSingle();
+  if (rowErr) return { ok: false, error: `db: ${rowErr.message}` };
+  if (!row) return { ok: false, error: `no row for ${dateStr}` };
+
+  const report = (row as any).qc_report ?? null;
+  const checks: Array<{ name: string; severity: string; message: string }> =
+    Array.isArray(report?.checks) ? report.checks : [];
+  const audioFails = checks.filter(
+    (c) => c.severity === "fail" && c.name.startsWith("audio."),
+  );
+  if (audioFails.length === 0) {
+    return { ok: true, regenerated: false, reason: "no audio fails to heal" };
+  }
+
+  let teacherId: string;
+  try {
+    teacherId = systemTeacherId();
+  } catch (e: any) {
+    return { ok: false, error: e.message };
+  }
+
+  const passageBody = (row as any).passage_body as string;
+  const tts = await generateSpeech({
+    teacherId,
+    text: passageBody.slice(0, 1200),
+  });
+  if (!tts.ok) return { ok: false, error: `tts: ${tts.error}` };
+  const newAudioUrl = tts.audioUrl;
+
+  // Re-judge just the new audio. Splice the result into the existing
+  // qc_report so we don't re-run the whole 12-check suite for a
+  // single-asset fix.
+  const { qcAudio } = await import("@/lib/ai/qc");
+  const { checks: newAudio } = await qcAudio({
+    audioUrl: newAudioUrl,
+    expectedText: passageBody,
+  });
+  const otherChecks = checks.filter((c) => !c.name.startsWith("audio."));
+  const merged = [...otherChecks, ...newAudio];
+  const worst = merged.reduce(
+    (acc, c) =>
+      Math.max(acc, c.severity === "fail" ? 2 : c.severity === "warn" ? 1 : 0),
+    0,
+  );
+  const newOverall = worst === 2 ? "fail" : worst === 1 ? "warn" : "pass";
+
+  const updatedReport = {
+    ...(report ?? {}),
+    checks: merged,
+    overall: newOverall,
+    targetedAudioRegenAt: new Date().toISOString(),
+  };
+
+  const { error: updErr } = await admin
+    .from("daily_questions")
+    .update({
+      audio_url: newAudioUrl,
+      qc_overall: newOverall,
+      qc_report: updatedReport,
+    })
+    .eq("date", dateStr);
+  if (updErr) return { ok: false, error: `update: ${updErr.message}` };
+
+  return { ok: true, regenerated: true, newOverall };
+}
+
+/**
  * Auto-heal dispatcher. Reads the current row's qc_report, classifies
  * every failing check, and runs the matching surgical regen in
  * order: image first (cheap, no downstream effects), then questions
@@ -712,7 +799,8 @@ export async function targetedQuestionsRegen(opts: {
  * This is the "AI catches → AI addresses" loop Filip wants:
  * - reading_level fail OR fact_check fail → targetedPassageRegen
  * - learning_objective fail/warn → targetedQuestionsRegen
- * - image.* fail → targetedImageRegen (existing)
+ * - image.* fail → targetedImageRegen
+ * - audio.* fail → targetedAudioRegen
  *
  * Returns { ok, healed: string[], newOverall } describing what was
  * fixed and where we landed.
@@ -748,6 +836,9 @@ export async function autoHealDaily(opts: {
     return {
       imageFail: checks.some(
         (c) => c.name.startsWith("image.") && c.severity === "fail",
+      ),
+      audioFail: checks.some(
+        (c) => c.name.startsWith("audio.") && c.severity === "fail",
       ),
       passageFail: checks.some(
         (c) =>
@@ -790,6 +881,17 @@ export async function autoHealDaily(opts: {
     const r = await targetedPassageRegen({ date });
     if (r.ok && r.regenerated) {
       healed.push(`passage→${r.newOverall}`);
+      await refresh();
+    }
+  }
+
+  // Audio — only fires if passage was OK (passage cascade already
+  // re-generates audio when it fires). Catches the case where the
+  // passage was clean but TTS rendered garbled / wrong-text audio.
+  if (classify().audioFail) {
+    const r = await targetedAudioRegen({ date });
+    if (r.ok && r.regenerated) {
+      healed.push(`audio→${r.newOverall}`);
       await refresh();
     }
   }
