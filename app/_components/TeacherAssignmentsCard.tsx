@@ -48,8 +48,20 @@ function assignmentHref(a: OpenAssignment, childId: string): string {
 export default function TeacherAssignmentsCard({ childId }: { childId: string }) {
   const [assignments, setAssignments] = useState<OpenAssignment[] | null>(null);
 
+  // B2C-only kill switch. While the marketing push is parent-first,
+  // any kid that happens to be a member of a (test or real) classroom
+  // would surface "From your teacher" on the parent dashboard — which
+  // breaks the family-only story. Flip NEXT_PUBLIC_HIDE_TEACHER_ASSIGNMENTS
+  // back to false (or remove it) once the B2B/B2S surface re-opens.
+  const hideForB2C =
+    process.env.NEXT_PUBLIC_HIDE_TEACHER_ASSIGNMENTS === "true";
+
   useEffect(() => {
     let cancelled = false;
+    if (hideForB2C) {
+      setAssignments([]);
+      return;
+    }
 
     async function load() {
       const supabase = supabaseBrowser();
@@ -109,7 +121,7 @@ export default function TeacherAssignmentsCard({ childId }: { childId: string })
     return () => {
       cancelled = true;
     };
-  }, [childId]);
+  }, [childId, hideForB2C]);
 
   if (!assignments || assignments.length === 0) return null;
 
