@@ -54,9 +54,14 @@ function slugify(input: string): string {
     .slice(0, 80);
 }
 
-async function uniqueSlug(base: string, category: string): Promise<string> {
+async function uniqueSlug(base: string, _category: string): Promise<string> {
   const admin = supabaseAdmin();
-  let candidate = `${category}-${base}` || `${category}-${Date.now()}`;
+  // Slug is globally unique (UNIQUE constraint), but URL already
+  // carries the category via /discover/[category]/[slug]. No need to
+  // prefix the slug with the category — was producing duplicate
+  // "/discover/science/science-how-we-hear-sounds" type URLs. The
+  // category param is kept on the signature for forward-compatibility.
+  const candidate = base || `article-${Date.now()}`;
   for (let n = 0; n < 8; n++) {
     const trySlug = n === 0 ? candidate : `${candidate}-${n + 1}`;
     const { data } = await admin
