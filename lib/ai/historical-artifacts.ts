@@ -204,6 +204,32 @@ export async function resolveHistoricalImage(
     return { kind: "ai", figureName: null, avoidNamedPerson: false };
   }
 
+  // Anti-hallucination guard. Gemini occasionally returns a real
+  // figure name that has nothing to do with the passage (e.g.,
+  // "Harriet Tubman" for an Edison passage about lightbulbs — the
+  // May 11 incident). Before we trust the detection and pull that
+  // figure's Wikipedia portrait, confirm SOMETHING distinctive from
+  // the name actually appears in the title or body. We tokenize the
+  // figure name, drop very common words (the, of, and, etc.), and
+  // require at least one remaining token to match.
+  const haystack = `${passageTitle}\n${passageBody}`.toLowerCase();
+  const STOP_WORDS = new Set([
+    "the", "of", "and", "a", "an", "to", "in", "for", "or", "by",
+    "jr", "sr", "i", "ii", "iii", "iv", "von", "van", "de", "la", "le",
+  ]);
+  const nameTokens = figure.name
+    .toLowerCase()
+    .split(/\s+/)
+    .map((t) => t.replace(/[^a-z]/g, ""))
+    .filter((t) => t.length >= 3 && !STOP_WORDS.has(t));
+  const tokenInPassage = nameTokens.some((t) => haystack.includes(t));
+  if (!tokenInPassage) {
+    // Detection was a hallucination — passage doesn't mention this
+    // person. Fall back to thematic AI image with no figure tag so
+    // no other-figure Wikipedia cache gets reused.
+    return { kind: "ai", figureName: null, avoidNamedPerson: false };
+  }
+
   // Living figures: skip Wikipedia fetch (likeness-rights friction)
   // and just tell the AI to use a thematic stand-in.
   if (figure.isLiving) {

@@ -90,6 +90,8 @@ FAIL for the genuine Imagen failures the kid WILL notice:
 
 NAMED-FIGURE GUARDRAIL — PASS for thematic stand-ins. When the expected scene contains the phrase "Do not depict <name>'s likeness — show only the activity, era, or setting," the image is INTENTIONALLY a generic stand-in (we have a likeness policy for living and recently-living people). A generic runner for a Roger Bannister passage, a generic farmer for a César Chávez passage, a generic kite for a Benjamin Franklin passage — these are CORRECT by design. PASS unless the image is also visually broken. Do NOT mark "generic person instead of the specific figure" as warn or fail — that's the whole point of the guardrail.
 
+WRONG-PERSON FAIL — but a generic stand-in is NOT the same as "a recognizable DIFFERENT real person." If the image shows a person who is RECOGNIZABLE as someone other than the topic of the passage (e.g., a passage about Thomas Edison illustrated with a portrait that anyone literate in US history would recognize as Harriet Tubman, Abraham Lincoln, MLK, etc.) — that's a FAIL. The kid will be confused about who they're reading about. This is much worse than a generic stand-in.
+
 Reason MUST name the specific visual issue. If the image is just stylized cartoon OR a guardrail-compliant stand-in, that's a PASS — say so.`;
 
 export type MediaSeverity = "pass" | "warn" | "fail";
