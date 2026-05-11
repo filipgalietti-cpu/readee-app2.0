@@ -77,6 +77,51 @@ export async function sendOwnerDigest(): Promise<OwnerDigestResult> {
     qc_overall: string;
   }>;
 
+  // Hole detector — last 7 days of qc=fail rows across every
+  // autonomous producer, bucketed by which judge class failed. A
+  // failure showing up here means the auto-heal pipeline didn't
+  // recover it. Counts tell Filip which loop class to ask Claude
+  // to close next.
+  const holeSince = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
+  const [
+    { data: discoveryFails },
+    { data: dailyFails },
+    { data: leveledFails },
+  ] = await Promise.all([
+    admin
+      .from("discovery_articles")
+      .select("qc_report, category")
+      .eq("qc_overall", "fail")
+      .gte("created_at", holeSince)
+      .limit(200),
+    admin
+      .from("daily_questions")
+      .select("qc_report")
+      .eq("qc_overall", "fail")
+      .gte("created_at", holeSince)
+      .limit(60),
+    admin
+      .from("differentiated_passages")
+      .select("qc_report")
+      .eq("qc_overall", "fail")
+      .gte("created_at", holeSince)
+      .limit(60),
+  ]);
+  const holes = bucketHoles([
+    ...(((discoveryFails ?? []) as any[]).map((r) => ({
+      source: "discovery",
+      checks: Array.isArray(r.qc_report?.checks) ? r.qc_report.checks : [],
+    }))),
+    ...(((dailyFails ?? []) as any[]).map((r) => ({
+      source: "daily",
+      checks: Array.isArray(r.qc_report?.checks) ? r.qc_report.checks : [],
+    }))),
+    ...(((leveledFails ?? []) as any[]).map((r) => ({
+      source: "leveled",
+      checks: Array.isArray(r.qc_report?.checks) ? r.qc_report.checks : [],
+    }))),
+  ]);
+
   const summary = {
     discovery: {
       total: discoveryTotal ?? 0,
@@ -90,6 +135,7 @@ export async function sendOwnerDigest(): Promise<OwnerDigestResult> {
     autoHealsFired: heals24h ?? 0,
     openFailsCatalog: openFails ?? 0,
     recent,
+    holes,
   };
 
   const today = new Date().toISOString().slice(0, 10);
@@ -112,6 +158,52 @@ export async function sendOwnerDigest(): Promise<OwnerDigestResult> {
   }
 }
 
+type HoleClass = "image" | "passage" | "questions" | "audio" | "learning_objective" | "other";
+
+function classifyCheck(name: string): HoleClass {
+  if (name.startsWith("image.")) return "image";
+  if (name.startsWith("audio.")) return "audio";
+  if (name === "lesson.learning_objective") return "learning_objective";
+  if (/^q\d+\./.test(name)) return "questions";
+  if (name.startsWith("passage.")) return "passage";
+  return "other";
+}
+
+/**
+ * Roll up the "which fail class shipped unhealed" stats. For each
+ * row, we look at its checks array and credit ONE bucket per row
+ * (the dominant fail class) so a row with 3 image fails counts as
+ * one image-class hole, not three.
+ */
+function bucketHoles(
+  rows: { source: string; checks: Array<{ name: string; severity: string }> }[],
+): Array<{ klass: HoleClass; count: number; sources: Record<string, number> }> {
+  const buckets = new Map<HoleClass, { count: number; sources: Record<string, number> }>();
+  for (const r of rows) {
+    const failing = r.checks.filter((c) => c.severity === "fail");
+    if (failing.length === 0) continue;
+    // Dominant class = the most-represented fail class on this row.
+    const counts: Record<HoleClass, number> = {
+      image: 0,
+      passage: 0,
+      questions: 0,
+      audio: 0,
+      learning_objective: 0,
+      other: 0,
+    };
+    for (const c of failing) counts[classifyCheck(c.name)]++;
+    const dominant = (Object.entries(counts) as [HoleClass, number][])
+      .sort((a, b) => b[1] - a[1])[0][0];
+    const b = buckets.get(dominant) ?? { count: 0, sources: {} };
+    b.count++;
+    b.sources[r.source] = (b.sources[r.source] ?? 0) + 1;
+    buckets.set(dominant, b);
+  }
+  return Array.from(buckets.entries())
+    .map(([klass, v]) => ({ klass, ...v }))
+    .sort((a, b) => b.count - a.count);
+}
+
 function renderText(s: any, today: string): string {
   const lines: string[] = [];
   lines.push(`Readee daily digest — ${today}`);
@@ -127,6 +219,17 @@ function renderText(s: any, today: string): string {
   lines.push(`Auto-heals fired: ${s.autoHealsFired}`);
   lines.push(`Open fails in catalog (not auto-fixed): ${s.openFailsCatalog}`);
   lines.push("");
+  if ((s.holes ?? []).length > 0) {
+    lines.push("Unhealed failure patterns (last 7 days):");
+    for (const h of s.holes) {
+      const sources = Object.entries(h.sources)
+        .map(([k, v]) => `${k} ${v}`)
+        .join(", ");
+      lines.push(`  ${h.klass}: ${h.count} (${sources})`);
+    }
+    lines.push("  → Ask Claude to close the loop on the top one.");
+    lines.push("");
+  }
   if (s.recent.length > 0) {
     lines.push("Latest discovery articles:");
     for (const r of s.recent) {
@@ -178,6 +281,24 @@ function renderHtml(s: any, today: string): string {
           <div style="font-size:13px;color:#3f3f46;font-weight:600;margin-top:6px;">Open fails (not auto-fixed): ${pill(s.openFailsCatalog, s.openFailsCatalog > 0 ? "fail" : "neutral")}</div>
         </td></tr>
 
+        ${
+          (s.holes ?? []).length > 0
+            ? `<tr><td style="border-top:1px solid #e4e4e7;padding-top:16px;padding-bottom:16px;">
+            <div style="font-size:11px;font-weight:700;color:#991b1b;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">Unhealed failure patterns · last 7 days</div>
+            <table width="100%" cellpadding="0" cellspacing="0">
+              ${s.holes
+                .map((h: any) => {
+                  const srcs = Object.entries(h.sources)
+                    .map(([k, v]) => `${k} ${v}`)
+                    .join(" · ");
+                  return `<tr><td style="padding:5px 0;font-size:13px;"><span style="display:inline-block;min-width:140px;font-weight:700;color:#991b1b;">${escapeHtml(h.klass)}</span> <span style="font-family:monospace;font-size:13px;color:#3f3f46;">${h.count} fails</span> <span style="font-size:11px;color:#a1a1aa;margin-left:8px;">${escapeHtml(srcs)}</span></td></tr>`;
+                })
+                .join("\n")}
+            </table>
+            <div style="font-size:11px;color:#71717a;margin-top:10px;font-style:italic;">↑ Top class is where the auto-heal pipeline isn&rsquo;t recovering. Ask Claude to close that loop next.</div>
+          </td></tr>`
+            : ""
+        }
         ${
           s.recent.length > 0
             ? `<tr><td style="border-top:1px solid #e4e4e7;padding-top:16px;padding-bottom:16px;">
