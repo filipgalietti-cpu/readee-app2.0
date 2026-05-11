@@ -24,7 +24,7 @@ import {
   generateImageBrief,
   generateSpeech,
 } from "@/lib/ai/readee-ai";
-import { runFullQuizQc } from "@/lib/ai/qc";
+import { runFullQuizQc, qcImage } from "@/lib/ai/qc";
 import { pickThemeForDate, slugForDate } from "@/lib/daily/themes";
 import { trackError } from "@/lib/observability/track";
 import {
@@ -292,4 +292,128 @@ ${theme.topic}`;
   }
 
   return { ok: true, date: dateStr, created: true, qcOverall: qc.overall };
+}
+
+/**
+ * Targeted asset regen for an existing daily_questions row whose QC
+ * verdict is 'fail' but where the only failing checks are image
+ * judges. Regenerates the image (and only the image), re-runs the
+ * image QC, recomputes overall, and writes the updated row.
+ *
+ * The May 6 2026 incident is the canonical case: passage + all 3
+ * questions passed, only `image.judge` failed ("generic child runner
+ * instead of Roger Bannister"). Rebuilding the whole entry threw
+ * away good passage + questions to chase one flaky image verdict.
+ * This path keeps the proven-good text and only re-rolls the image.
+ *
+ * Cost: ~$0.05 vs ~$0.10 for a full rebuild. Faster too — single
+ * Imagen call + single vision judge call (~10s wall clock vs 60-90s).
+ *
+ * Returns:
+ *   - { ok: true, regenerated: true, newOverall } — image regen ran
+ *   - { ok: true, regenerated: false, reason } — non-image failures
+ *     present, caller should do a full rebuild instead
+ *   - { ok: false, error } — hard error
+ */
+export async function targetedImageRegen(opts: {
+  date?: Date;
+}): Promise<
+  | { ok: true; regenerated: true; newOverall: string }
+  | { ok: true; regenerated: false; reason: string }
+  | { ok: false; error: string }
+> {
+  const date = opts?.date ?? new Date();
+  const dateStr = slugForDate(date);
+  const admin = supabaseAdmin();
+
+  const { data: row, error: rowErr } = await admin
+    .from("daily_questions")
+    .select(
+      "date, passage_title, passage_body, image_url, qc_overall, qc_report",
+    )
+    .eq("date", dateStr)
+    .maybeSingle();
+  if (rowErr) return { ok: false, error: `db: ${rowErr.message}` };
+  if (!row) return { ok: false, error: `no row for ${dateStr}` };
+
+  const report = (row as any).qc_report ?? null;
+  const checks: Array<{ name: string; severity: string; message: string }> =
+    Array.isArray(report?.checks) ? report.checks : [];
+  const failing = checks.filter((c) => c.severity === "fail");
+  if (failing.length === 0) {
+    return { ok: true, regenerated: false, reason: "no failing checks" };
+  }
+  const allImage = failing.every((c) => c.name.startsWith("image."));
+  if (!allImage) {
+    return {
+      ok: true,
+      regenerated: false,
+      reason: `non-image failures present: ${failing
+        .filter((c) => !c.name.startsWith("image."))
+        .map((c) => c.name)
+        .join(", ")}`,
+    };
+  }
+
+  // Regen the image. Re-derive the brief from passage so the new
+  // image lines up with the body even if the old brief was stale.
+  let teacherId: string;
+  try {
+    teacherId = systemTeacherId();
+  } catch (e: any) {
+    return { ok: false, error: e.message };
+  }
+
+  const passageTitle = (row as any).passage_title as string;
+  const passageBody = (row as any).passage_body as string;
+  const briefRes = await generateImageBrief({
+    teacherId,
+    passageTitle,
+    passageBody,
+  });
+  if (!briefRes.ok) {
+    return { ok: false, error: `imageBrief: ${briefRes.error}` };
+  }
+  const imageScene = briefRes.brief;
+  const imgRes = await generateImage({ teacherId, prompt: imageScene });
+  if (!imgRes.ok) return { ok: false, error: `image: ${imgRes.error}` };
+  const newImageUrl = imgRes.imageUrl;
+
+  // Re-run image QC on the new image.
+  const { checks: imageChecks } = await qcImage({
+    teacherId,
+    imageUrl: newImageUrl,
+    expectedScene: imageScene,
+  });
+
+  // Splice the new image checks into the report (drop all old
+  // image.* checks, append the fresh ones).
+  const otherChecks = checks.filter((c) => !c.name.startsWith("image."));
+  const updatedChecks = [...otherChecks, ...imageChecks];
+  const sev = (s: string): number =>
+    s === "fail" ? 2 : s === "warn" ? 1 : 0;
+  const worst = updatedChecks.reduce(
+    (acc, c) => Math.max(acc, sev(c.severity)),
+    0,
+  );
+  const newOverall = worst === 2 ? "fail" : worst === 1 ? "warn" : "pass";
+
+  const updatedReport = {
+    ...(report ?? {}),
+    checks: updatedChecks,
+    overall: newOverall,
+    targetedRegenAt: new Date().toISOString(),
+  };
+
+  const { error: updErr } = await admin
+    .from("daily_questions")
+    .update({
+      image_url: newImageUrl,
+      qc_overall: newOverall,
+      qc_report: updatedReport,
+    })
+    .eq("date", dateStr);
+  if (updErr) return { ok: false, error: `update: ${updErr.message}` };
+
+  return { ok: true, regenerated: true, newOverall };
 }
