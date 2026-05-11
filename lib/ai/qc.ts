@@ -536,6 +536,9 @@ export async function qcImage(input: {
    *  to cross-check "image identity matches passage topic" — catches
    *  the Edison/Tubman class directly. Optional for backward compat. */
   passageBody?: string | null;
+  /** Passage title — used by the Wikipedia portrait compare to
+   *  resolve which figure (if any) the passage names. */
+  passageTitle?: string | null;
 }): Promise<{ checks: QcCheck[]; creditsUsed: number }> {
   const checks: QcCheck[] = [];
   let creditsUsed = 0;
@@ -608,6 +611,47 @@ export async function qcImage(input: {
       message: parsed.reason ?? "(no reason returned)",
     });
     creditsUsed += CREDIT_COST.quiz_generation;
+
+    // Wikipedia portrait compare. If the passage names a real
+    // figure with a Wikipedia article, fetch their portrait and ask
+    // the vision model directly: "are these the same person?" This
+    // is the visual proof layer behind the prompt-reasoning layer
+    // above. Catches the Edison/Tubman class with side-by-side
+    // evidence even if the prompt judge gets fooled.
+    if (input.passageBody && input.passageTitle) {
+      try {
+        const { resolveHistoricalImage } = await import(
+          "./historical-artifacts"
+        );
+        const { comparePortraitToImage } = await import("./qc-media");
+        // resolveHistoricalImage runs detectHistoricalFigure +
+        // anti-hallucination token check + Wikipedia portrait fetch
+        // in one call. When kind='royalty_free', we have a verified
+        // reference portrait URL for the figure named in the passage.
+        const resolved = await resolveHistoricalImage(
+          input.passageTitle,
+          input.passageBody,
+        );
+        if (resolved.kind === "royalty_free" && resolved.imageUrl) {
+          const cmp = await comparePortraitToImage({
+            referenceUrl: resolved.imageUrl,
+            candidateUrl: input.imageUrl,
+            figureName: resolved.figureName,
+          });
+          if (cmp.ok) {
+            checks.push({
+              name: "image.portrait_match",
+              severity: cmp.severity,
+              message: `vs Wikipedia portrait of ${resolved.figureName}: ${cmp.reason}`,
+            });
+            creditsUsed += CREDIT_COST.quiz_generation;
+          }
+        }
+      } catch (e: any) {
+        // Don't block on this — log and continue.
+        trackError(e, { route: "qc.image.portraitCompare" });
+      }
+    }
   } catch (e: any) {
     trackError(e, { route: "qc.qcImage", userId: input.teacherId });
     checks.push({
@@ -898,6 +942,7 @@ export async function runFullQuizQc(input: {
       imageUrl: input.imageUrl,
       expectedScene: input.imageScene,
       passageBody: input.passageBody,
+      passageTitle: input.passageTitle,
     });
     checks.push(...r.checks);
     creditsUsed += r.creditsUsed;

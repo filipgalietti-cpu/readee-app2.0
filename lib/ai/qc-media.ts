@@ -170,6 +170,104 @@ export async function judgeAudioFile(input: {
   }
 }
 
+/**
+ * Side-by-side identity match. Given a Wikipedia reference portrait
+ * and our generated image (both raw URLs), ask the vision model
+ * directly: "are these the same person?"
+ *
+ * Visual proof beats prompt reasoning. The cross-modal judge update
+ * (f845fd2) catches identity drift through the passage. This catches
+ * the same class via the source-of-truth portrait — useful when our
+ * image was AI-generated as a thematic stand-in but the model
+ * accidentally renders someone recognizable as a DIFFERENT real
+ * figure.
+ *
+ * Returns:
+ *   pass — same person, or clearly a generic stand-in (no identity claim)
+ *   warn — ambiguous; could be the same person or could not be
+ *   fail — clearly a different real person
+ */
+export async function comparePortraitToImage(input: {
+  /** URL of the Wikipedia / source-of-truth portrait. */
+  referenceUrl: string;
+  /** URL of our generated image. */
+  candidateUrl: string;
+  /** Figure name for the judge's context. */
+  figureName: string;
+}): Promise<
+  | { ok: true; severity: MediaSeverity; reason: string }
+  | { ok: false; error: string }
+> {
+  let ai: GoogleGenAI;
+  try {
+    ai = client();
+  } catch (e: any) {
+    return { ok: false, error: e.message ?? "AI not configured." };
+  }
+
+  const [ref, candidate] = await Promise.all([
+    fetchAsBase64(input.referenceUrl),
+    fetchAsBase64(input.candidateUrl),
+  ]);
+  if ("error" in ref) return { ok: false, error: `ref fetch: ${ref.error}` };
+  if ("error" in candidate)
+    return { ok: false, error: `candidate fetch: ${candidate.error}` };
+
+  try {
+    const response = await ai.models.generateContent({
+      model: "gemini-2.5-flash",
+      contents: [
+        {
+          role: "user",
+          parts: [
+            {
+              text: `IMAGE 1 (reference — known portrait of ${input.figureName}):`,
+            },
+            { inlineData: { data: ref.base64, mimeType: ref.mimeType } },
+            {
+              text: `IMAGE 2 (the image we're about to ship; it should either be ${input.figureName} OR a clearly generic thematic stand-in with no recognizable identity):`,
+            },
+            {
+              inlineData: {
+                data: candidate.base64,
+                mimeType: candidate.mimeType,
+              },
+            },
+            {
+              text: `Compare. Return { severity, reason }.\n\nSeverity rules:\n- "pass" — Image 2 is clearly the same person as Image 1, OR clearly a generic stand-in (no recognizable face / face is stylized + obscured / it's an object or scene with no person).\n- "warn" — ambiguous; the candidate could be the figure or could be someone else, hard to tell.\n- "fail" — Image 2 is clearly a DIFFERENT recognizable real person from Image 1 (different ethnicity, gender, era, or simply a different famous face). A kid would think they're reading about someone else.\n\nReason names what you see in one sentence.`,
+            },
+          ],
+        },
+      ],
+      config: {
+        systemInstruction: `You are doing identity verification between two portraits. Be uncharitable to identity claims — if the candidate doesn't clearly match the reference, lean toward warn or fail. Generic stand-ins are fine; misleading recognizable substitutes are not.`,
+        responseMimeType: "application/json",
+        responseSchema: MEDIA_SCHEMA,
+        temperature: 0.0,
+      },
+    });
+    const parsed = JSON.parse(response.text ?? "{}") as {
+      severity?: string;
+      reason?: string;
+    };
+    const severity = (
+      ["pass", "warn", "fail"] as const
+    ).includes(parsed.severity as MediaSeverity)
+      ? (parsed.severity as MediaSeverity)
+      : "warn";
+    return {
+      ok: true,
+      severity,
+      reason: String(parsed.reason ?? "").trim() || "(no reason returned)",
+    };
+  } catch (e: any) {
+    return {
+      ok: false,
+      error: e?.message ?? "Portrait compare failed.",
+    };
+  }
+}
+
 export async function judgeImageQuality(input: {
   imageUrl: string;
   /** What the image is supposed to depict — passage scene, lesson topic, etc. */
