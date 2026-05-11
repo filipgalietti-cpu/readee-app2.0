@@ -47,7 +47,12 @@ async function run(req: NextRequest) {
   // (learning-objective) → questions regen. Up to 3 sweeps in case
   // one fix exposes a downstream issue. Falls back to a single full
   // rebuild if the surgical path can't land a pass.
-  if (res.ok && res.qcOverall !== "pass" && res.created) {
+  // Drop the `res.created` check from the previous version: it
+  // blocked heals on idempotent returns (existing row with the day's
+  // failed verdict). Now the cron will also fix a historical row
+  // that's still 'fail' or 'warn' — useful when re-triggered with
+  // ?date=YYYY-MM-DD for manual heals.
+  if (res.ok && res.qcOverall !== "pass") {
     for (let i = 0; i < 3; i++) {
       const heal = await autoHealDaily({ date });
       if (!heal.ok) {

@@ -327,19 +327,90 @@ export async function buildDiscoveryArticle(input: {
     }
   }
   if (qc.overall === "fail") {
-    // Pass 2 — image regen. Runs after passage so it sees the fresh
-    // text (relevant if the original image was flagged for not
-    // matching the now-rewritten scene).
+    // Pass 2 — questions regen. Mirrors targetedQuestionsRegen in
+    // build-daily.ts: if any q*.* fails, re-roll the 3 MCQs with the
+    // judge's complaint baked into the prompt. Keeps passage + image
+    // + audio. Cheapest possible surgical fix.
     const fails2 = qc.checks.filter((c) => c.severity === "fail");
-    const imageFails = fails2.filter((c) => c.name.startsWith("image."));
+    const qFails = fails2.filter((c) => /^q\d+\./.test(c.name));
+    if (qFails.length > 0) {
+      const feedback = qFails
+        .map((c) => `${c.name}: ${c.message}`)
+        .join(" | ");
+      const retryMcqs = await generateMCQQuestions({
+        teacherId,
+        topic: [
+          `Generate exactly 3 reading-comprehension questions about this passage.`,
+          `Mix: one main-idea, one inference / cause-effect, one literal-recall.`,
+          `Previous attempt failed quality review on: ${feedback}`,
+          `Common patterns to avoid: don't leak the correct answer inside the question; make sure the correct answer matches one of the listed choices exactly; write distractors that are plausibly wrong (not obviously wrong).`,
+          ``,
+          `Title: ${finalTitle}`,
+          ``,
+          `Passage:`,
+          finalBody,
+        ].join("\n"),
+        gradeLevel,
+        count: 3,
+        trustedSystem: true,
+      });
+      if (retryMcqs.ok) {
+        const [m, ...es] = retryMcqs.questions;
+        finalQuestions = [
+          {
+            kind: "multiple_choice" as const,
+            prompt: m.prompt,
+            choices: m.choices,
+            correct: m.correct,
+            hint: m.hint ?? null,
+          },
+          ...es.map((q) => ({
+            kind: "multiple_choice" as const,
+            prompt: q.prompt,
+            choices: q.choices,
+            correct: q.correct,
+            hint: q.hint ?? null,
+          })),
+        ];
+        qc = await runFullQuizQc({
+          teacherId,
+          passageTitle: finalTitle,
+          passageBody: finalBody,
+          gradeLevel,
+          questions: finalQuestions,
+          imageUrl: finalImageUrl,
+          imageScene,
+          audioUrl: finalAudioUrl,
+        });
+        attempts.push(`heal-questions:${qc.overall}`);
+      }
+    }
+  }
+  if (qc.overall === "fail") {
+    // Pass 3 — image regen. Runs last so it sees the fresh text
+    // (relevant if the original image was flagged for not matching
+    // the now-rewritten scene). Passes the judge's complaint as
+    // feedback to break the same-image-same-fail convergence loop.
+    const fails3 = qc.checks.filter((c) => c.severity === "fail");
+    const imageFails = fails3.filter((c) => c.name.startsWith("image."));
     if (imageFails.length > 0 && imageScene) {
+      const imageFeedback = imageFails
+        .map((c) => c.message)
+        .join(" Avoid: ");
       const brief = await generateImageBrief({
         teacherId,
         passageTitle: finalTitle,
         passageBody: finalBody,
       });
+      // Append the judge's complaint to the brief so Imagen knows
+      // what to fix, not just what to draw. Without this, regenning
+      // produces the same kind of image and the judge fails again
+      // (caused the May 11 image-heal convergence misses).
+      const promptWithFeedback = brief.ok
+        ? `${brief.brief}\n\nPREVIOUS ATTEMPT WAS REJECTED: ${imageFeedback}. Address these specifically in the new image.`
+        : imageScene;
       if (brief.ok) {
-        const img = await generateImage({ teacherId, prompt: brief.brief });
+        const img = await generateImage({ teacherId, prompt: promptWithFeedback });
         if (img.ok) finalImageUrl = img.imageUrl;
       }
       const { checks: newImg } = await qcImage({
