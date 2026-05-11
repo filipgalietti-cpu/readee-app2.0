@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import {
   buildDailyQuestion,
-  targetedImageRegen,
+  autoHealDaily,
 } from "@/lib/daily/build-daily";
 
 export const dynamic = "force-dynamic";
@@ -41,30 +41,27 @@ async function run(req: NextRequest) {
   let res = await buildDailyQuestion({ date, force });
   const attempts: string[] = ["build"];
 
-  if (res.ok && res.qcOverall === "fail" && res.created) {
-    // Try up to 3 targeted image regens before falling back to a
-    // full rebuild. The image judge is the most common flaky check
-    // and regenning just the image is ~50% cheaper than a full
-    // pipeline rerun (~$0.05 vs ~$0.10) and keeps the proven-good
-    // passage + questions.
+  // AI catches → AI addresses loop. autoHealDaily dispatches surgical
+  // regens per failing check class: image → image regen, passage
+  // (reading-level/fact-check/judge) → passage regen, questions
+  // (learning-objective) → questions regen. Up to 3 sweeps in case
+  // one fix exposes a downstream issue. Falls back to a single full
+  // rebuild if the surgical path can't land a pass.
+  if (res.ok && res.qcOverall !== "pass" && res.created) {
     for (let i = 0; i < 3; i++) {
-      const targeted = await targetedImageRegen({ date });
-      attempts.push(
-        targeted.ok
-          ? targeted.regenerated
-            ? `image-regen-${i + 1}:${targeted.newOverall}`
-            : `image-regen-skip:${targeted.reason}`
-          : `image-regen-err:${targeted.error}`,
-      );
-      if (!targeted.ok) break;
-      if (!targeted.regenerated) break; // non-image failures — full rebuild path
-      if (targeted.newOverall !== "fail") {
-        res = { ...res, qcOverall: targeted.newOverall };
+      const heal = await autoHealDaily({ date });
+      if (!heal.ok) {
+        attempts.push(`auto-heal-err:${heal.error}`);
         break;
       }
+      attempts.push(`auto-heal-${i + 1}:[${heal.healed.join(",")}]→${heal.newOverall}`);
+      res = { ...res, qcOverall: heal.newOverall };
+      // Stop when we land on pass, or when no further heals fire
+      // (healed === [] means nothing left to do surgically).
+      if (heal.newOverall === "pass" || heal.healed.length === 0) break;
     }
 
-    // Still fail (or had non-image failures) — full rebuild once.
+    // Still fail after surgical sweeps — one full rebuild attempt.
     if (res.qcOverall === "fail") {
       const rebuild = await buildDailyQuestion({ date, force: true });
       attempts.push("full-rebuild");

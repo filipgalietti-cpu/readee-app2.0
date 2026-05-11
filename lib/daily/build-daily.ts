@@ -418,3 +418,393 @@ export async function targetedImageRegen(opts: {
 
   return { ok: true, regenerated: true, newOverall };
 }
+
+// ───── Surgical regens (close-the-loop healers) ───────────────────
+//
+// Pattern: AI catches the issue (qc_report.checks) → AI addresses
+// the issue (these regens) → re-judges → ships or escalates. Every
+// failure class has a matching surgical fix that preserves the
+// already-passing parts of the piece. The May 10 audit found 3
+// historical fails — these are the loops that close them.
+
+/**
+ * Regenerate just the passage when reading-level fails or fact-check
+ * finds a contradiction. The failure reason becomes part of the next
+ * prompt so the model knows WHAT to fix. Audio is regenerated to
+ * match the new passage; questions are regenerated too (they
+ * referenced the old text). Image is preserved (still visually
+ * relevant to the topic).
+ */
+export async function targetedPassageRegen(opts: {
+  date?: Date;
+}): Promise<
+  | { ok: true; regenerated: true; newOverall: string }
+  | { ok: true; regenerated: false; reason: string }
+  | { ok: false; error: string }
+> {
+  const date = opts?.date ?? new Date();
+  const dateStr = slugForDate(date);
+  const admin = supabaseAdmin();
+
+  const { data: row, error: rowErr } = await admin
+    .from("daily_questions")
+    .select(
+      "date, theme, passage_title, passage_body, image_url, audio_url, question_prompt, choices, correct, hint, extra_questions, qc_overall, qc_report",
+    )
+    .eq("date", dateStr)
+    .maybeSingle();
+  if (rowErr) return { ok: false, error: `db: ${rowErr.message}` };
+  if (!row) return { ok: false, error: `no row for ${dateStr}` };
+
+  const report = (row as any).qc_report ?? null;
+  const checks: Array<{ name: string; severity: string; message: string }> =
+    Array.isArray(report?.checks) ? report.checks : [];
+  const failing = checks.filter((c) => c.severity === "fail");
+  // Trigger conditions: reading_level fail, fact_check fail, passage
+  // judge fail. Image/audio failures use their own paths.
+  const passageFailReasons = failing.filter(
+    (c) =>
+      c.name === "passage.reading_level" ||
+      c.name === "passage.fact_check" ||
+      c.name === "passage.judge",
+  );
+  if (passageFailReasons.length === 0) {
+    return {
+      ok: true,
+      regenerated: false,
+      reason: "no passage-level fails to heal",
+    };
+  }
+
+  let teacherId: string;
+  try {
+    teacherId = systemTeacherId();
+  } catch (e: any) {
+    return { ok: false, error: e.message };
+  }
+
+  // Build an enhanced topic that bundles the original theme with the
+  // specific failure feedback. Gemini reads the topic line as
+  // guidance — wrapping the failure reasons inside the topic lets
+  // the next pass treat them as hard constraints without changing
+  // the generator signature.
+  const theme = String((row as any).theme ?? "");
+  const reasons = passageFailReasons.map((c) => `${c.name}: ${c.message}`).join(" ");
+  const constraintBlock = [
+    `IMPORTANT — the previous attempt at this topic failed quality review:`,
+    reasons,
+    `Rewrite the passage so it does not have these issues.`,
+    `Keep the passage at or below 2nd-grade Flesch-Kincaid (max 3.5).`,
+    `Use shorter sentences and simpler vocabulary if reading_level was flagged.`,
+    `If fact_check was flagged, only state facts that match Wikipedia's public record.`,
+    `If learning_objective was flagged or the passage taught nothing concrete, focus on ONE teachable idea.`,
+  ].join(" ");
+
+  const passageRes = await generatePassage({
+    teacherId,
+    topic: `${theme}. ${constraintBlock}`,
+    gradeLevel: "2nd",
+    lengthLevel: "short",
+    trustedSystem: true,
+  });
+  if (!passageRes.ok) {
+    return { ok: false, error: `passage regen: ${passageRes.error}` };
+  }
+  const newTitle = passageRes.passage.title;
+  const newBody = passageRes.passage.passage;
+
+  // Regen audio to match new passage text. Reuse the storage URL
+  // returned by generateSpeech — daily TTS isn't pinned to a
+  // canonical path so a fresh URL is fine.
+  const ttsRes = await generateSpeech({
+    teacherId,
+    text: newBody.slice(0, 1200),
+  });
+  const newAudioUrl = ttsRes.ok ? ttsRes.audioUrl : (row as any).audio_url;
+
+  // Regen the 3 MCQs against the new passage.
+  const mcqRes = await generateMCQQuestions({
+    teacherId,
+    topic: `Generate exactly 3 comprehension questions about this passage. Mix one main-idea question, one inference question, and one literal-recall question — not all recall.\n\nPassage:\n${newBody}`,
+    gradeLevel: "2nd",
+    count: 3,
+    trustedSystem: true,
+  });
+  if (!mcqRes.ok) {
+    return { ok: false, error: `mcq regen: ${mcqRes.error}` };
+  }
+  const [main, ...extras] = mcqRes.questions;
+
+  // Re-run full QC against the new passage + new questions + reused
+  // image + new audio.
+  const qc = await runFullQuizQc({
+    teacherId,
+    passageTitle: newTitle,
+    passageBody: newBody,
+    gradeLevel: "2nd",
+    questions: [
+      {
+        kind: "multiple_choice" as const,
+        prompt: main.prompt,
+        choices: main.choices,
+        correct: main.correct,
+        hint: main.hint ?? null,
+      },
+      ...extras.map((q) => ({
+        kind: "multiple_choice" as const,
+        prompt: q.prompt,
+        choices: q.choices,
+        correct: q.correct,
+        hint: q.hint ?? null,
+      })),
+    ],
+    imageUrl: (row as any).image_url ?? null,
+    imageScene: null,
+    audioUrl: newAudioUrl,
+  });
+
+  const { error: updErr } = await admin
+    .from("daily_questions")
+    .update({
+      passage_title: newTitle,
+      passage_body: newBody,
+      audio_url: newAudioUrl,
+      question_prompt: main.prompt,
+      choices: main.choices,
+      correct: main.correct,
+      hint: main.hint ?? null,
+      extra_questions: extras.length > 0 ? extras : null,
+      qc_overall: qc.overall,
+      qc_report: { ...qc, healedFrom: passageFailReasons.map((c) => c.name) },
+    })
+    .eq("date", dateStr);
+  if (updErr) return { ok: false, error: `update: ${updErr.message}` };
+
+  return { ok: true, regenerated: true, newOverall: qc.overall };
+}
+
+/**
+ * Regenerate just the 3 MCQs when learning-objective fails because
+ * the questions are all pure recall. Passage + image + audio are
+ * preserved. The failure reason carries the model's diagnosis of the
+ * passage's teachable point, which we feed back as the explicit
+ * objective so the new questions hit it.
+ */
+export async function targetedQuestionsRegen(opts: {
+  date?: Date;
+}): Promise<
+  | { ok: true; regenerated: true; newOverall: string }
+  | { ok: true; regenerated: false; reason: string }
+  | { ok: false; error: string }
+> {
+  const date = opts?.date ?? new Date();
+  const dateStr = slugForDate(date);
+  const admin = supabaseAdmin();
+
+  const { data: row, error: rowErr } = await admin
+    .from("daily_questions")
+    .select(
+      "date, passage_title, passage_body, image_url, audio_url, qc_overall, qc_report",
+    )
+    .eq("date", dateStr)
+    .maybeSingle();
+  if (rowErr) return { ok: false, error: `db: ${rowErr.message}` };
+  if (!row) return { ok: false, error: `no row for ${dateStr}` };
+
+  const report = (row as any).qc_report ?? null;
+  const checks: Array<{ name: string; severity: string; message: string }> =
+    Array.isArray(report?.checks) ? report.checks : [];
+  const loFail = checks.find(
+    (c) => c.name === "lesson.learning_objective" && c.severity === "fail",
+  );
+  // Allow healing warn-tier learning-objective too — the May 10
+  // audit had several rows with the warn pattern (Foxy, baby birds,
+  // spring poem) where questions were all recall.
+  const loWarn = checks.find(
+    (c) => c.name === "lesson.learning_objective" && c.severity === "warn",
+  );
+  const lo = loFail ?? loWarn;
+  if (!lo) {
+    return {
+      ok: true,
+      regenerated: false,
+      reason: "no learning_objective issue to heal",
+    };
+  }
+
+  let teacherId: string;
+  try {
+    teacherId = systemTeacherId();
+  } catch (e: any) {
+    return { ok: false, error: e.message };
+  }
+
+  const passageTitle = (row as any).passage_title as string;
+  const passageBody = (row as any).passage_body as string;
+  const mcqRes = await generateMCQQuestions({
+    teacherId,
+    topic: [
+      `Generate exactly 3 reading-comprehension questions about this passage.`,
+      `Mix question types: one main-idea question, one inference / cause-effect question, one literal-recall question.`,
+      `Avoid trivial recall on all three — earlier attempt was flagged: ${lo.message}`,
+      ``,
+      `Passage title: ${passageTitle}`,
+      ``,
+      `Passage:`,
+      passageBody,
+    ].join("\n"),
+    gradeLevel: "2nd",
+    count: 3,
+    trustedSystem: true,
+  });
+  if (!mcqRes.ok) return { ok: false, error: `mcq regen: ${mcqRes.error}` };
+  const [main, ...extras] = mcqRes.questions;
+
+  const qc = await runFullQuizQc({
+    teacherId,
+    passageTitle,
+    passageBody,
+    gradeLevel: "2nd",
+    questions: [
+      {
+        kind: "multiple_choice" as const,
+        prompt: main.prompt,
+        choices: main.choices,
+        correct: main.correct,
+        hint: main.hint ?? null,
+      },
+      ...extras.map((q) => ({
+        kind: "multiple_choice" as const,
+        prompt: q.prompt,
+        choices: q.choices,
+        correct: q.correct,
+        hint: q.hint ?? null,
+      })),
+    ],
+    imageUrl: (row as any).image_url ?? null,
+    imageScene: null,
+    audioUrl: (row as any).audio_url ?? null,
+  });
+
+  const { error: updErr } = await admin
+    .from("daily_questions")
+    .update({
+      question_prompt: main.prompt,
+      choices: main.choices,
+      correct: main.correct,
+      hint: main.hint ?? null,
+      extra_questions: extras.length > 0 ? extras : null,
+      qc_overall: qc.overall,
+      qc_report: { ...qc, healedFrom: ["lesson.learning_objective"] },
+    })
+    .eq("date", dateStr);
+  if (updErr) return { ok: false, error: `update: ${updErr.message}` };
+
+  return { ok: true, regenerated: true, newOverall: qc.overall };
+}
+
+/**
+ * Auto-heal dispatcher. Reads the current row's qc_report, classifies
+ * every failing check, and runs the matching surgical regen in
+ * order: image first (cheap, no downstream effects), then questions
+ * (cheap, doesn't disturb passage), then passage (full re-cascade).
+ *
+ * This is the "AI catches → AI addresses" loop Filip wants:
+ * - reading_level fail OR fact_check fail → targetedPassageRegen
+ * - learning_objective fail/warn → targetedQuestionsRegen
+ * - image.* fail → targetedImageRegen (existing)
+ *
+ * Returns { ok, healed: string[], newOverall } describing what was
+ * fixed and where we landed.
+ */
+export async function autoHealDaily(opts: {
+  date?: Date;
+}): Promise<
+  | { ok: true; healed: string[]; newOverall: string }
+  | { ok: false; error: string }
+> {
+  const date = opts?.date ?? new Date();
+  const dateStr = slugForDate(date);
+  const admin = supabaseAdmin();
+  const healed: string[] = [];
+
+  // Initial state
+  const { data: row, error: rowErr } = await admin
+    .from("daily_questions")
+    .select("qc_overall, qc_report")
+    .eq("date", dateStr)
+    .maybeSingle();
+  if (rowErr) return { ok: false, error: `db: ${rowErr.message}` };
+  if (!row) return { ok: false, error: `no row for ${dateStr}` };
+
+  let report = (row as any).qc_report ?? null;
+  let overall = (row as any).qc_overall as string;
+  const classify = () => {
+    const checks: Array<{ name: string; severity: string }> = Array.isArray(
+      report?.checks,
+    )
+      ? report.checks
+      : [];
+    return {
+      imageFail: checks.some(
+        (c) => c.name.startsWith("image.") && c.severity === "fail",
+      ),
+      passageFail: checks.some(
+        (c) =>
+          (c.name === "passage.reading_level" ||
+            c.name === "passage.fact_check" ||
+            c.name === "passage.judge") &&
+          c.severity === "fail",
+      ),
+      questionsBad: checks.some(
+        (c) =>
+          c.name === "lesson.learning_objective" &&
+          (c.severity === "fail" || c.severity === "warn"),
+      ),
+    };
+  };
+
+  // Round-trip helper — read fresh report after each surgical fix.
+  const refresh = async () => {
+    const { data: r2 } = await admin
+      .from("daily_questions")
+      .select("qc_overall, qc_report")
+      .eq("date", dateStr)
+      .maybeSingle();
+    report = (r2 as any)?.qc_report ?? null;
+    overall = (r2 as any)?.qc_overall ?? overall;
+  };
+
+  // Image first — cheapest, no cascading effects.
+  if (classify().imageFail) {
+    const r = await targetedImageRegen({ date });
+    if (r.ok && r.regenerated) {
+      healed.push(`image→${r.newOverall}`);
+      await refresh();
+    }
+  }
+
+  // Passage next — drives audio + questions, so we do it before
+  // touching questions independently.
+  if (classify().passageFail) {
+    const r = await targetedPassageRegen({ date });
+    if (r.ok && r.regenerated) {
+      healed.push(`passage→${r.newOverall}`);
+      await refresh();
+    }
+  }
+
+  // Questions last — only fires if passage was OK or already healed.
+  // The targeted passage regen already regenerates questions, so this
+  // step only catches the case where passage was fine but the MCQs
+  // were the problem.
+  if (classify().questionsBad) {
+    const r = await targetedQuestionsRegen({ date });
+    if (r.ok && r.regenerated) {
+      healed.push(`questions→${r.newOverall}`);
+      await refresh();
+    }
+  }
+
+  return { ok: true, healed, newOverall: overall };
+}
