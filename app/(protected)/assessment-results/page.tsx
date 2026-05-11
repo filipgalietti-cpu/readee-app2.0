@@ -11,7 +11,7 @@ import { grades, gradeToKey, type GradeKey } from "@/lib/assessment/questions";
 import {
   ClipboardCheck,
   BarChart3, CheckCircle2, XCircle, RotateCcw, ChevronDown,
-  AudioLines, BookOpen, MessageSquareText,
+  AudioLines, BookOpen, MessageSquareText, Sparkles,
 } from "lucide-react";
 
 /* ── Animated counter hook ─────────────────────────── */
@@ -48,6 +48,16 @@ import bankRaw from "@/lib/assessment/mixed-bank-k4.json";
 
 /* ── Types ─────────────────────────────────────────── */
 
+interface DimensionScore {
+  dimension: string;
+  gradeKey: string;
+  levelName: string;
+  scorePercent: number;
+  itemsAttempted: number;
+  itemsCorrect: number;
+  hitCeiling: boolean;
+}
+
 interface AssessmentRecord {
   id: string;
   child_id: string;
@@ -60,6 +70,7 @@ interface AssessmentRecord {
     correct: string;
     is_correct: boolean;
   }[];
+  dimension_profile: Record<string, DimensionScore | null> | null;
   completed_at: string;
 }
 
@@ -345,6 +356,13 @@ function AssessmentResultsContent() {
         </div>
       </motion.div>
 
+      {/* Reading Profile — the 5-dimension placement. Hidden when
+           the assessment record predates dimension_profile (legacy
+           rows from before the multi-dimensional upgrade). */}
+      {assessment.dimension_profile && (
+        <ReadingProfileCard profile={assessment.dimension_profile} />
+      )}
+
       {/* Performance by Skill */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -505,5 +523,193 @@ function AssessmentResultsContent() {
         </Link>
       </motion.div>
     </div>
+  );
+}
+
+/* ── Reading profile (5-dimension placement) ─────────────── */
+
+const DIMENSION_DISPLAY: Record<
+  string,
+  { label: string; blurb: string; icon: string }
+> = {
+  phonics: {
+    label: "Phonics & Decoding",
+    blurb: "Letter sounds, blends, sounding out new words.",
+    icon: "🔤",
+  },
+  vocabulary: {
+    label: "Vocabulary",
+    blurb: "Word meaning, sight words, context clues.",
+    icon: "📖",
+  },
+  literal_comprehension: {
+    label: "Literal Comprehension",
+    blurb: "Recalling details, names, sequence from the text.",
+    icon: "📝",
+  },
+  inferential_comprehension: {
+    label: "Inferential Comprehension",
+    blurb: "Main idea, why characters act, author's purpose.",
+    icon: "💡",
+  },
+  fluency: {
+    label: "Fluency",
+    blurb: "Reading aloud smoothly, with pace and expression.",
+    icon: "🗣️",
+  },
+};
+
+const GRADE_LABEL_SHORT: Record<string, string> = {
+  "pre-k": "Pre-K",
+  kindergarten: "K",
+  "1st": "1st",
+  "2nd": "2nd",
+  "3rd": "3rd",
+  "4th": "4th",
+};
+
+const DIMENSION_ORDER = [
+  "phonics",
+  "vocabulary",
+  "literal_comprehension",
+  "inferential_comprehension",
+  "fluency",
+];
+
+function ReadingProfileCard({
+  profile,
+}: {
+  profile: Record<string, DimensionScore | null>;
+}) {
+  const measured = DIMENSION_ORDER.map((k) => ({
+    key: k,
+    score: profile[k] ?? null,
+  })).filter((d) => d.score !== null) as { key: string; score: DimensionScore }[];
+
+  if (measured.length === 0) return null;
+
+  // Strong = top 1-2 dimensions by score%. Needs work = bottom 1 if
+  // significantly behind everything else. Used for the call-out
+  // chips above the per-dimension list.
+  const sorted = [...measured].sort(
+    (a, b) => b.score.scorePercent - a.score.scorePercent,
+  );
+  const strongest = sorted[0];
+  const weakest = sorted[sorted.length - 1];
+  const showWeak =
+    sorted.length >= 2 && strongest.score.scorePercent - weakest.score.scorePercent >= 20;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.15 }}
+      className="rounded-2xl bg-white shadow-md p-6"
+    >
+      <div className="flex items-center gap-2 mb-3">
+        <Sparkles className="w-5 h-5 text-indigo-500" />
+        <h2 className="text-lg font-bold text-zinc-900">Reading Profile</h2>
+      </div>
+      <p className="text-sm text-zinc-500 mb-5 leading-relaxed">
+        Reading isn't one skill — it's five. Here's your child's grade-level
+        placement on each dimension we measured.
+      </p>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5">
+        <div className="rounded-xl border border-emerald-200 bg-emerald-50/60 p-3">
+          <div className="text-[10px] font-bold uppercase tracking-widest text-emerald-700">
+            Strongest
+          </div>
+          <div className="mt-0.5 text-sm font-bold text-emerald-900">
+            {DIMENSION_DISPLAY[strongest.key]?.label ?? strongest.key} ·{" "}
+            {GRADE_LABEL_SHORT[strongest.score.gradeKey] ?? strongest.score.gradeKey}
+          </div>
+        </div>
+        {showWeak ? (
+          <div className="rounded-xl border border-amber-200 bg-amber-50/60 p-3">
+            <div className="text-[10px] font-bold uppercase tracking-widest text-amber-700">
+              Most room to grow
+            </div>
+            <div className="mt-0.5 text-sm font-bold text-amber-900">
+              {DIMENSION_DISPLAY[weakest.key]?.label ?? weakest.key} ·{" "}
+              {GRADE_LABEL_SHORT[weakest.score.gradeKey] ?? weakest.score.gradeKey}
+            </div>
+          </div>
+        ) : (
+          <div className="rounded-xl border border-indigo-200 bg-indigo-50/60 p-3">
+            <div className="text-[10px] font-bold uppercase tracking-widest text-indigo-700">
+              Balance
+            </div>
+            <div className="mt-0.5 text-sm font-bold text-indigo-900">
+              Even across all measured dimensions
+            </div>
+          </div>
+        )}
+      </div>
+
+      <div className="space-y-3">
+        {measured.map(({ key, score }, idx) => {
+          const display = DIMENSION_DISPLAY[key] ?? {
+            label: key,
+            blurb: "",
+            icon: "•",
+          };
+          const pct = score.scorePercent;
+          const barColor =
+            pct >= 80 ? "#10b981" : pct >= 50 ? "#6366f1" : "#f59e0b";
+          return (
+            <motion.div
+              key={key}
+              initial={{ opacity: 0, x: -16 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.25 + idx * 0.08, duration: 0.4 }}
+              className="rounded-xl border border-zinc-100 p-4"
+            >
+              <div className="flex items-start justify-between gap-3 mb-2">
+                <div className="flex items-start gap-2 min-w-0">
+                  <span className="text-lg leading-none" aria-hidden>
+                    {display.icon}
+                  </span>
+                  <div className="min-w-0">
+                    <div className="font-bold text-sm text-zinc-900 truncate">
+                      {display.label}
+                    </div>
+                    <div className="text-[11px] text-zinc-500 mt-0.5">
+                      {display.blurb}
+                    </div>
+                  </div>
+                </div>
+                <div className="flex flex-col items-end gap-0.5 flex-shrink-0">
+                  <span
+                    className="rounded-full px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider"
+                    style={{ color: barColor, backgroundColor: barColor + "18" }}
+                  >
+                    {GRADE_LABEL_SHORT[score.gradeKey] ?? score.gradeKey}
+                  </span>
+                  {score.hitCeiling && (
+                    <span className="text-[10px] font-semibold text-emerald-600">
+                      ↑ maxed out
+                    </span>
+                  )}
+                </div>
+              </div>
+              <div className="h-2 bg-zinc-100 rounded-full overflow-hidden">
+                <motion.div
+                  className="h-full rounded-full"
+                  style={{ backgroundColor: barColor }}
+                  initial={{ width: 0 }}
+                  animate={{ width: `${Math.max(8, pct)}%` }}
+                  transition={{ duration: 0.9, delay: 0.3 + idx * 0.08 }}
+                />
+              </div>
+              <p className="text-[10px] text-zinc-400 mt-1.5">
+                {score.itemsCorrect} of {score.itemsAttempted} correct ·{" "}
+                {pct}% within band
+              </p>
+            </motion.div>
+          );
+        })}
+      </div>
+    </motion.div>
   );
 }

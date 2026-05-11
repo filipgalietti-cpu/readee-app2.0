@@ -9,6 +9,199 @@ export interface AssessmentQuestion {
   choices: string[];
   correct: string;
   difficulty: number;
+  /** Optional explicit dimension. When absent, `dimensionForSkill`
+   *  infers from skill + prompt. Setting this on a question wins
+   *  over inference. */
+  dimension?: ReadingDimension;
+}
+
+/**
+ * The 5-dimension reading profile that replaces the old single
+ * grade-band placement. Each placement-test question is classified
+ * into exactly one of these; the engine computes a per-dimension
+ * grade-level so a kid can be e.g. 3rd in phonics + 1st in
+ * inferential.
+ *
+ * - phonics: decoding, letter sounds, blends/digraphs, syllable
+ *   types, phonological awareness, print concepts.
+ * - vocabulary: word meaning, sight words, prefixes/suffixes,
+ *   context-clue word inference.
+ * - literal_comprehension: "what did the text say?" — explicit
+ *   detail recall, sequencing, character names, settings.
+ * - inferential_comprehension: "why did X / what does this mean /
+ *   what's the main idea / author's purpose" — anything that
+ *   requires going beyond the text's surface.
+ * - fluency: reading rate + prosody. Currently only fluency-tagged
+ *   questions feed this; later we'll include voice-recorded WCPM
+ *   from /fluency.
+ */
+export type ReadingDimension =
+  | "phonics"
+  | "vocabulary"
+  | "literal_comprehension"
+  | "inferential_comprehension"
+  | "fluency";
+
+export const ALL_DIMENSIONS: ReadingDimension[] = [
+  "phonics",
+  "vocabulary",
+  "literal_comprehension",
+  "inferential_comprehension",
+  "fluency",
+];
+
+export const DIMENSION_LABEL: Record<ReadingDimension, string> = {
+  phonics: "Phonics & Decoding",
+  vocabulary: "Vocabulary",
+  literal_comprehension: "Literal Comprehension",
+  inferential_comprehension: "Inferential Comprehension",
+  fluency: "Fluency",
+};
+
+export const DIMENSION_BLURB: Record<ReadingDimension, string> = {
+  phonics: "Letter sounds, blends, decoding new words sound-by-sound.",
+  vocabulary: "Word meaning, sight words, figuring out new words from context.",
+  literal_comprehension: "Recalling what the text actually said — details, names, sequence.",
+  inferential_comprehension: "Going beyond the words — main idea, why characters act, author's purpose.",
+  fluency: "Reading aloud smoothly, with the right pace and expression.",
+};
+
+/**
+ * Infer the reading dimension from a question's skill tag (+ prompt
+ * heuristic for ambiguous comprehension items). Used to backfill
+ * dimensions across the existing question bank without per-item edits.
+ */
+export function dimensionForSkill(
+  skill: string,
+  prompt?: string,
+): ReadingDimension {
+  const s = (skill || "").toLowerCase();
+  // Phonics + foundational skills
+  if (
+    s.includes("letter") ||
+    s.includes("phonics") ||
+    s.includes("phonological") ||
+    s.includes("decod") ||
+    s.includes("cvc") ||
+    s.includes("cvce") ||
+    s.includes("blend") ||
+    s.includes("digraph") ||
+    s.includes("syllable") ||
+    s.includes("print_concept") ||
+    s.includes("rhym")
+  ) {
+    return "phonics";
+  }
+  // Vocabulary
+  if (
+    s.includes("vocab") ||
+    s.includes("sight_word") ||
+    s.includes("prefix") ||
+    s.includes("suffix") ||
+    s.includes("affix") ||
+    s.includes("root_word") ||
+    s.includes("context_clue") ||
+    s.includes("word_meaning") ||
+    s.includes("synonym") ||
+    s.includes("antonym")
+  ) {
+    return "vocabulary";
+  }
+  // Fluency
+  if (s.includes("fluen") || s.includes("prosody") || s.includes("wcpm")) {
+    return "fluency";
+  }
+  // Comprehension: split literal vs inferential by prompt cues.
+  // Heuristics — questions that ask "what / who / where / when /
+  // which" of an explicit fact are literal. "Why / main idea / mean /
+  // feel / author / theme" are inferential.
+  if (s.includes("comprehension") || s.includes("reading")) {
+    const p = (prompt || "").toLowerCase();
+    if (
+      p.includes("why") ||
+      p.includes("main idea") ||
+      p.includes("most likely") ||
+      p.includes("what does") && p.includes("mean") ||
+      p.includes("how does") ||
+      p.includes("how did") && p.includes("feel") ||
+      p.includes("author") ||
+      p.includes("theme") ||
+      p.includes("infer") ||
+      p.includes("conclude") ||
+      p.includes("purpose")
+    ) {
+      return "inferential_comprehension";
+    }
+    return "literal_comprehension";
+  }
+  // Default — treat unknown as literal_comprehension (the broadest
+  // bucket). Better to mis-classify into the "general comprehension"
+  // dimension than into something narrower.
+  return "literal_comprehension";
+}
+
+/**
+ * Return the dimension for a question, preferring an explicit
+ * dimension field over the skill-based heuristic.
+ */
+export function getQuestionDimension(q: AssessmentQuestion): ReadingDimension {
+  if (q.dimension) return q.dimension;
+  return dimensionForSkill(q.skill, q.prompt);
+}
+
+/**
+ * Classify a CCSS standard ID into a reading dimension. This is the
+ * second-string classifier used by the placement engine when the
+ * question only carries a `standard` field (mixed-bank items), not
+ * a `skill` field (legacy hand-authored items).
+ *
+ * Mapping rules:
+ *   RF.* → phonics (foundational skills)
+ *   RF.x.4 → fluency (RF.4 is the explicit fluency strand)
+ *   L.x.4 / L.x.5 / L.x.6 → vocabulary
+ *   RL.x.1 / RI.x.1 → literal_comprehension (key ideas + details)
+ *   RL.x.2 / RL.x.3 / RL.x.6 / RI.x.2 / RI.x.3 / RI.x.6 / RI.x.8 →
+ *     inferential_comprehension (theme, character, point of view,
+ *     author's purpose, arguments)
+ *   anything else → literal_comprehension (safe default)
+ */
+export function dimensionForStandard(
+  standardId: string | null | undefined,
+): ReadingDimension {
+  const id = (standardId ?? "").toUpperCase();
+  if (!id) return "literal_comprehension";
+  // RF.x.4 is the fluency strand specifically.
+  if (/^RF\.\w+\.4/.test(id)) return "fluency";
+  // The rest of RF.* is foundational decoding.
+  if (id.startsWith("RF.")) return "phonics";
+  // L.x.4/5/6 is vocabulary acquisition and use.
+  if (/^L\.\w+\.[456]/.test(id)) return "vocabulary";
+  // RL.x.2 / RI.x.2 = main idea / theme
+  // RL.x.3 / RI.x.3 = character motivation / individuals
+  // RL.x.6 / RI.x.6 = point of view / author's perspective
+  // RI.x.8 = arguments
+  if (/^R[LI]\.\w+\.[2368]/.test(id)) return "inferential_comprehension";
+  // RL.x.1 / RI.x.1 = key ideas + details (literal recall)
+  if (/^R[LI]\.\w+\.1/.test(id)) return "literal_comprehension";
+  // RL.x.4 / RI.x.4 = word meaning in context (vocabulary-adjacent)
+  if (/^R[LI]\.\w+\.4/.test(id)) return "vocabulary";
+  // Fallback: literal comprehension is the broadest, least-wrong bucket.
+  return "literal_comprehension";
+}
+
+/**
+ * Map the human-readable difficulty strings used in the mixed-bank
+ * manifest ("easy" / "medium" / "hard") to the numeric difficulty
+ * the placement engine expects (1-3). Numeric inputs pass through.
+ */
+export function difficultyToNumber(d: string | number): number {
+  if (typeof d === "number") return d;
+  const s = (d || "").toString().toLowerCase();
+  if (s === "easy" || s === "1") return 1;
+  if (s === "medium" || s === "med" || s === "2") return 2;
+  if (s === "hard" || s === "3") return 3;
+  if (s === "stretch" || s === "4") return 4;
+  return 1;
 }
 
 export interface MatchingQuestion {
@@ -194,6 +387,129 @@ export function getAdaptivePlacement(points: number): { levelName: string; grade
   if (points >= 26) return { levelName: grades["2nd"].reading_level_name, gradeKey: "2nd" };
   if (points >= 11) return { levelName: grades["1st"].reading_level_name, gradeKey: "1st" };
   return { levelName: grades["kindergarten"].reading_level_name, gradeKey: "kindergarten" };
+}
+
+// Per-dimension placement.
+// ──────────────────────────────────────────────────────────────────
+
+export type DimensionAttempt = {
+  questionId: string;
+  dimension: ReadingDimension;
+  gradeKey: GradeKey;
+  difficulty: number;
+  correct: boolean;
+};
+
+export type DimensionScore = {
+  dimension: ReadingDimension;
+  /** Inferred grade level for this dimension. */
+  gradeKey: GradeKey;
+  /** Human-friendly band name (matches grades[gradeKey].reading_level_name). */
+  levelName: string;
+  /** 0-100 confidence-style score within the inferred band. */
+  scorePercent: number;
+  /** How many test items contributed to this dimension. */
+  itemsAttempted: number;
+  /** Of those, how many were correct. */
+  itemsCorrect: number;
+  /** True if the test ran out of items at the kid's level — they may
+   *  be stronger than the test can measure. */
+  hitCeiling: boolean;
+};
+
+const DIM_GRADE_BAND_WEIGHTS: Record<GradeKey, number> = {
+  "pre-k": 0,
+  kindergarten: 1,
+  "1st": 2,
+  "2nd": 4,
+  "3rd": 6,
+  "4th": 8,
+};
+
+/**
+ * Run the per-dimension placement on an array of attempts. For each
+ * dimension:
+ *   1. Average weighted points across attempts (band weight × difficulty
+ *      × correctness).
+ *   2. Map average → grade band using the same threshold table as the
+ *      legacy single-axis placement.
+ *   3. Flag hitCeiling if the kid got the hardest items right on the
+ *      highest grade tested (we want stretch items above this).
+ *
+ * Dimensions with zero attempts get a `null` slot in the result; the
+ * UI shows them as "not yet measured." Re-take prompts cover the
+ * untested dimensions.
+ */
+export function computeDimensionProfile(
+  attempts: DimensionAttempt[],
+): Record<ReadingDimension, DimensionScore | null> {
+  const out: Record<ReadingDimension, DimensionScore | null> = {
+    phonics: null,
+    vocabulary: null,
+    literal_comprehension: null,
+    inferential_comprehension: null,
+    fluency: null,
+  };
+  for (const dim of ALL_DIMENSIONS) {
+    const items = attempts.filter((a) => a.dimension === dim);
+    if (items.length === 0) continue;
+
+    // Weighted-point score, same shape as legacy getAdaptivePlacement.
+    let points = 0;
+    let correctCount = 0;
+    let maxBandSeen = -1;
+    for (const a of items) {
+      const bandWeight = DIM_GRADE_BAND_WEIGHTS[a.gradeKey] ?? 1;
+      const diffWeight = Math.max(1, a.difficulty);
+      if (a.correct) {
+        points += bandWeight * diffWeight;
+        correctCount++;
+        const bandIdx = gradeOrder.indexOf(a.gradeKey);
+        if (bandIdx > maxBandSeen) maxBandSeen = bandIdx;
+      }
+    }
+    const placement = getAdaptivePlacement(points);
+    const scorePercent = Math.round((correctCount / items.length) * 100);
+    // Ceiling: kid got every hardest item right at the top tested
+    // grade. Means we should escalate next time.
+    const topGradeIdx = Math.max(
+      ...items.map((a) => gradeOrder.indexOf(a.gradeKey)),
+    );
+    const topItems = items.filter(
+      (a) => gradeOrder.indexOf(a.gradeKey) === topGradeIdx,
+    );
+    const hitCeiling =
+      topItems.length > 0 && topItems.every((a) => a.correct);
+
+    out[dim] = {
+      dimension: dim,
+      gradeKey: placement.gradeKey,
+      levelName: placement.levelName,
+      scorePercent,
+      itemsAttempted: items.length,
+      itemsCorrect: correctCount,
+      hitCeiling,
+    };
+  }
+  return out;
+}
+
+/**
+ * Pick the single "overall" grade band from a per-dimension profile.
+ * Used for backwards-compatible callers that still want a single
+ * grade_key string. Strategy: median of measured dimensions weighted
+ * by item count.
+ */
+export function profileToOverallGradeKey(
+  profile: Record<ReadingDimension, DimensionScore | null>,
+): GradeKey {
+  const measured = Object.values(profile).filter(
+    (s): s is DimensionScore => s !== null,
+  );
+  if (measured.length === 0) return "kindergarten";
+  const idxs = measured.map((s) => gradeOrder.indexOf(s.gradeKey)).sort((a, b) => a - b);
+  const mid = Math.floor(idxs.length / 2);
+  return gradeOrder[idxs[mid]] ?? "kindergarten";
 }
 
 /** Determine reading level placement based on score */

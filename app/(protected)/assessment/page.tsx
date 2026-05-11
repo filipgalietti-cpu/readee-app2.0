@@ -9,7 +9,14 @@ import {
   grades,
   gradeToKey,
   getAdaptivePlacement,
+  computeDimensionProfile,
+  dimensionForSkill,
+  dimensionForStandard,
+  difficultyToNumber,
+  gradeOrder,
   type GradeKey,
+  type DimensionAttempt,
+  type ReadingDimension,
 } from "@/lib/assessment/questions";
 import { safeValidate } from "@/lib/validate";
 import { AssessmentResultSchema } from "@/lib/schemas";
@@ -483,6 +490,33 @@ function AssessmentContent() {
       const pct = Math.round((weightedPoints / maxPoints) * 100);
       const placement = getAdaptivePlacement(weightedPoints);
 
+      // Per-dimension placement. We classify each answered question
+      // by its skill (and prompt heuristic for comprehension items)
+      // and run the same adaptive points → grade-band table per
+      // dimension. Result is a 5-axis radar/heatmap parents can
+      // actually act on instead of one flat grade band.
+      const dimAttempts: DimensionAttempt[] = finalAnswers.map((a, i) => {
+        const q = questions[i];
+        // MergedQuestion carries `standard` (CCSS id) but not `skill`.
+        // dimensionForStandard maps RF/RL/RI/L codes to the right
+        // dimension; dimensionForSkill is the fallback if a question
+        // somehow lacks both. Difficulty strings ("easy"/"medium"/
+        // "hard") map to 1/2/3 via difficultyToNumber.
+        const dim: ReadingDimension =
+          (q as any)?.dimension ??
+          dimensionForStandard((q as any)?.standard) ??
+          dimensionForSkill((q as any)?.skill ?? "", q?.prompt ?? "");
+        const gradeKey: GradeKey = (q?.grade_key as GradeKey) ?? "kindergarten";
+        return {
+          questionId: a.question_id,
+          dimension: dim,
+          gradeKey,
+          difficulty: difficultyToNumber(q?.difficulty ?? 1),
+          correct: a.is_correct,
+        };
+      });
+      const dimensionProfile = computeDimensionProfile(dimAttempts);
+
       setScore(finalAnswers.filter((a) => a.is_correct).length);
       setLevelName(placement.levelName);
 
@@ -506,6 +540,7 @@ function AssessmentContent() {
         score_percent: pct,
         reading_level_placed: placement.levelName,
         answers: finalAnswers,
+        dimension_profile: dimensionProfile as any,
       });
       await supabase.from("assessments").insert(assessmentPayload);
       await supabase
