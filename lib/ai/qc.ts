@@ -926,6 +926,55 @@ export async function runFullQuizQc(input: {
     creditsUsed += lo.creditsUsed;
   }
 
+  // Adversarial second judge — catches what the pass-biased primary
+  // judges miss. Runs last so it sees the same material the kid will.
+  // Verdict folds into the merged report as the meta.adversarial
+  // check; a fail here is a fail overall via rollUp.
+  if (input.passageBody && input.passageTitle && input.questions.length > 0) {
+    try {
+      const { runAdversarialJudge, buildAdversarialPayload } = await import(
+        "./qc-adversarial"
+      );
+      const payload = buildAdversarialPayload({
+        title: input.passageTitle,
+        body: input.passageBody,
+        imageScene: input.imageScene,
+        questions: input.questions
+          .filter((q) => q.kind === "multiple_choice")
+          .map((q) => ({
+            prompt: q.prompt,
+            choices: (q as any).choices ?? [],
+            correct: String(q.correct ?? ""),
+          })),
+      });
+      const adv = await runAdversarialJudge({
+        payload,
+        surface: "runFullQuizQc",
+      });
+      if (adv.ok) {
+        checks.push({
+          name: "meta.adversarial",
+          severity: adv.result.verdict,
+          message: adv.result.reason,
+        });
+        creditsUsed += CREDIT_COST.quiz_generation;
+      } else {
+        checks.push({
+          name: "meta.adversarial",
+          severity: "warn",
+          message: `Adversarial judge errored: ${adv.error}`,
+        });
+      }
+    } catch (e: any) {
+      trackError(e, { route: "qc.adversarial.wire" });
+      checks.push({
+        name: "meta.adversarial",
+        severity: "warn",
+        message: `Adversarial judge wire error: ${e.message}`,
+      });
+    }
+  }
+
   return {
     overall: rollUp(checks),
     checks,
