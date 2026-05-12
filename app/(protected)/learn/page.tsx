@@ -254,10 +254,21 @@ function LearnLoader() {
       .slice(0, QUESTIONS_PER_SESSION);
   }, [lesson]);
 
-  // Fetch child
+  // Fetch child.
+  //
+  // Error copy here lands on the kid's screen during handoff, so we
+  // use kid-app voice instead of dev-debug strings like
+  // "Missing child parameter" or "Lesson not found" that leaked
+  // through before.
   useEffect(() => {
-    if (!childId) { setError("Missing child parameter"); return; }
-    if (!lesson) { setError("Lesson not found"); return; }
+    if (!childId) {
+      setError("We lost track of which reader to open this for. Tap below to pick again.");
+      return;
+    }
+    if (!lesson) {
+      setError("This lesson isn't ready right now. Try a different one from your dashboard.");
+      return;
+    }
 
     async function fetchChild() {
       const supabase = supabaseBrowser();
@@ -267,7 +278,7 @@ function LearnLoader() {
         .eq("id", childId!)
         .single();
       if (fetchError || !data) {
-        setError("Could not load child profile");
+        setError("We couldn't open this reader's profile. Pick again from the dashboard.");
         return;
       }
       setChild(data as Child);
@@ -279,10 +290,19 @@ function LearnLoader() {
   if (error) {
     return (
       <div className="min-h-[100dvh] bg-gray-50 dark:bg-[#0f172a] flex items-center justify-center px-6">
-        <div className="text-center">
-          <p className="text-lg font-bold text-zinc-900 dark:text-white mb-2">Oops!</p>
-          <p className="text-zinc-500 dark:text-slate-400 mb-6">{error}</p>
-          <Link href="/dashboard" className="text-indigo-600 dark:text-indigo-400 font-semibold hover:underline">
+        <div className="text-center max-w-sm">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/ui/bunny-thinking.png"
+            alt=""
+            className="mx-auto h-24 w-24 object-contain"
+          />
+          <p className="mt-3 text-lg font-bold text-zinc-900 dark:text-white">Hmm.</p>
+          <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">{error}</p>
+          <Link
+            href="/dashboard"
+            className="mt-5 inline-block rounded-full bg-indigo-600 px-5 py-2.5 text-sm font-bold text-white hover:bg-indigo-700"
+          >
             Back to Dashboard
           </Link>
         </div>

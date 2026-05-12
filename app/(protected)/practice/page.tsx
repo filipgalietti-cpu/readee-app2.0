@@ -468,15 +468,35 @@ function PracticeLoader() {
   }
 
   if (!child || !standard) {
+    // Kid-app voice instead of dev strings. The "no child" path
+    // shouldn't normally reach here — the useEffect above queues a
+    // redirect to /practice-hub — but if a stale URL slips through,
+    // the kid still sees a friendly explanation, not a sterile
+    // "No reader selected."
     return (
-      <div className="min-h-[100dvh] bg-white dark:bg-[#0f172a] flex items-center justify-center">
-        <div className="max-w-md text-center space-y-4 px-6">
-          <div className="flex justify-center"><Search className="w-12 h-12 text-zinc-400 dark:text-slate-500" strokeWidth={1.5} /></div>
-          <h1 className="text-xl font-bold text-zinc-900 dark:text-white">
-            {!child ? "No reader selected" : "Standard not found"}
+      <div className="min-h-[100dvh] bg-white dark:bg-[#0f172a] flex items-center justify-center px-6">
+        <div className="max-w-sm text-center space-y-3">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/ui/bunny-thinking.png"
+            alt=""
+            className="mx-auto h-24 w-24 object-contain"
+          />
+          <h1 className="text-lg font-bold text-zinc-900 dark:text-white">
+            {!child
+              ? "Pick a reader to start"
+              : "This skill isn't ready right now"}
           </h1>
-          <Link href="/dashboard" className="inline-block text-sm text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300 font-medium">
-            &larr; Back to Dashboard
+          <p className="text-sm text-zinc-500 dark:text-slate-400">
+            {!child
+              ? "Head back to the dashboard and tap the reader profile you want to practice with."
+              : "Try a different topic from the dashboard."}
+          </p>
+          <Link
+            href="/dashboard"
+            className="mt-2 inline-block rounded-full bg-indigo-600 px-5 py-2.5 text-sm font-bold text-white hover:bg-indigo-700"
+          >
+            Back to Dashboard
           </Link>
         </div>
       </div>
