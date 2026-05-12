@@ -900,6 +900,13 @@ export async function runFullQuizQc(input: {
    *  the passage text so we don't ship garbled TTS to kids who
    *  depend on it (early readers, ELLs, low-vision).  */
   audioUrl?: string | null;
+  /** Optional SceneSpec — when present, runs the structured per-
+   *  character image judge (qc-scene.ts) alongside the legacy
+   *  prompt-vs-image judge. Caller decides whether to provide it.
+   *  Typed loosely as `any` here to avoid a module import cycle
+   *  between qc.ts and scene-spec.ts; runtime contract is the
+   *  SceneSpec exported from lib/ai/scene-spec.ts. */
+  sceneSpec?: any;
 }): Promise<QcReport> {
   const checks: QcCheck[] = [];
   let creditsUsed = 0;
@@ -946,6 +953,29 @@ export async function runFullQuizQc(input: {
     });
     checks.push(...r.checks);
     creditsUsed += r.creditsUsed;
+
+    // Layer the structured per-character judge on top whenever a
+    // SceneSpec was supplied. The legacy qcImage above grades prose
+    // against image; this one grades atomic yes/no per named species
+    // + setting. They're independent — disagreement between them is
+    // a useful signal we surface in the report rather than collapse.
+    if (input.sceneSpec) {
+      try {
+        const { qcImageStructured } = await import("./qc-scene");
+        const sr = await qcImageStructured({
+          teacherId: input.teacherId,
+          imageUrl: input.imageUrl,
+          spec: input.sceneSpec,
+        });
+        checks.push(...sr.checks);
+        creditsUsed += sr.creditsUsed;
+      } catch (e: any) {
+        trackError(e, {
+          route: "qc.runFullQuizQc.structuredImage",
+          userId: input.teacherId,
+        });
+      }
+    }
   }
 
   if (input.audioUrl && input.passageBody) {

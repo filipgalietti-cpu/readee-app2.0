@@ -25,6 +25,8 @@ import {
   generateSpeech,
 } from "@/lib/ai/readee-ai";
 import { runFullQuizQc, qcImage } from "@/lib/ai/qc";
+import { extractSceneSpec, renderSpecAsBrief, describeSpec } from "@/lib/ai/scene-spec";
+import { qcImageStructured } from "@/lib/ai/qc-scene";
 import { pickThemeForDate, slugForDate } from "@/lib/daily/themes";
 import { trackError } from "@/lib/observability/track";
 import {
@@ -197,9 +199,16 @@ ${theme.topic}`;
   //    (royalty-free, accurate likeness). Imagen can't render named
   //    real people reliably (Roger Bannister with no eyes shipped on
   //    May 6 → driver for this whole flow). For fictional / generic
-  //    passages we fall through to the standard brief → Imagen path.
+  //    passages we extract a structured SceneSpec from the passage,
+  //    render that into a deterministic brief, AND keep the spec so
+  //    the post-build image judge can verify per-character.
   let imageUrl: string | null = null;
   let imageScene: string | null = null;
+  let sceneSpec: Awaited<ReturnType<typeof extractSceneSpec>> extends infer R
+    ? R extends { ok: true; spec: infer S }
+      ? S
+      : null
+    : null = null as any;
   const resolved = await resolveHistoricalImage(passageTitle, passageBody);
   if (resolved.kind === "royalty_free") {
     const cachedUrl = await cacheWikipediaImageToSupabase(
@@ -209,21 +218,38 @@ ${theme.topic}`;
     imageUrl = cachedUrl ?? resolved.imageUrl;
     imageScene = `Wikipedia portrait of ${resolved.figureName}`;
   } else {
-    const briefRes = await generateImageBrief({
+    // Extract the SceneSpec first. The spec drives the brief AND the
+    // post-generation image judge — keeping them on the same checklist
+    // is the difference between "image matches some loose interpretation
+    // of the passage" and "image contains the specific named species the
+    // passage talks about."
+    const specRes = await extractSceneSpec({
       teacherId,
       passageTitle,
       passageBody,
     });
-    if (briefRes.ok) {
-      // If a named figure was detected but no Wikipedia image exists
-      // (or the figure is still living), append a guardrail telling
-      // the image generator NOT to depict the named person — show a
-      // thematic stand-in instead.
+    let brief = "";
+    if (specRes.ok) {
+      sceneSpec = specRes.spec as any;
+      brief = renderSpecAsBrief(specRes.spec);
+      console.info(`[daily] spec ${dateStr}:`, describeSpec(specRes.spec));
+    } else {
+      // Spec extraction failed — fall back to the legacy free-form
+      // brief generator (now also species-anchored after the May 12
+      // tightening). Don't break the build over a single LLM hiccup.
+      const briefRes = await generateImageBrief({
+        teacherId,
+        passageTitle,
+        passageBody,
+      });
+      if (briefRes.ok) brief = briefRes.brief;
+    }
+    if (brief) {
       const figureGuard =
         resolved.kind === "ai" && resolved.avoidNamedPerson && resolved.figureName
           ? ` Do not depict ${resolved.figureName}'s likeness — show only the activity, era, or setting they're associated with, no recognizable face.`
           : "";
-      imageScene = briefRes.brief + figureGuard;
+      imageScene = brief + figureGuard;
       const imgRes = await generateImage({
         teacherId,
         prompt: imageScene,
@@ -265,6 +291,7 @@ ${theme.topic}`;
     imageUrl,
     imageScene,
     audioUrl,
+    sceneSpec,
   });
 
   // 6) Persist. If qc.overall === 'fail' the route handler may decide
