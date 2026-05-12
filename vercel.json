@@ -27,6 +27,10 @@
     {
       "path": "/api/cron/qc-bot",
       "schedule": "0 6 * * *"
+    },
+    {
+      "path": "/api/cron/lifecycle-emails",
+      "schedule": "0 14 * * *"
     }
   ]
 }
