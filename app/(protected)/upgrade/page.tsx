@@ -121,7 +121,10 @@ function UpgradeContent() {
       const data = await res.json();
       setPromoResult({ success: data.success, message: data.message });
       if (data.success) {
-        fetchPlan();
+        // Bypass-cache refresh — server just flipped plan, fetch()
+        // would no-op on the stale `loaded` flag and leave the UI
+        // claiming the user is still free even though they aren't.
+        await usePlanStore.getState().refresh();
       }
     } catch {
       setPromoResult({ success: false, message: "Something went wrong." });

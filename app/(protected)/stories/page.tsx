@@ -12,6 +12,7 @@ import { useAudio } from "@/lib/audio/use-audio";
 import { LoadingImage } from "@/app/components/ui/LoadingImage";
 import storiesBank from "@/scripts/stories-bank.json";
 import { usePlanStore } from "@/lib/stores/plan-store";
+import { useChildStore } from "@/lib/stores/child-store";
 import { getLimits } from "@/lib/plan/limits";
 import { BookOpen, Lock, ChevronDown, Play, Volume2 } from "lucide-react";
 import { SkeletonPage } from "@/app/_components/Skeleton";
@@ -60,7 +61,7 @@ export default function StoriesPage() {
 
 function StoriesContent() {
   const searchParams = useSearchParams();
-  const childId = searchParams.get("child");
+  const childIdParam = searchParams.get("child");
   const { playUrl, stop, unlockAudio } = useAudio();
 
   const router = useRouter();
@@ -76,12 +77,61 @@ function StoriesContent() {
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [showResult, setShowResult] = useState(false);
   const [correctCount, setCorrectCount] = useState(0);
+  // Surface a save failure on completion instead of swallowing it in
+  // console.error. Kids/parents who finish a story expect their
+  // progress to count; a silent miss erodes trust over time.
+  const [saveError, setSaveError] = useState(false);
 
+  // Resolve the active child even when ?child= isn't on the URL —
+  // same defensive pattern as /practice-hub and /analytics. Smart
+  // search currently passes ?child=, but bookmark / share-link
+  // landings won't, and without this they stall on the skeleton
+  // forever.
   useEffect(() => {
+    let alive = true;
     async function load() {
-      if (!childId) return;
       const supabase = supabaseBrowser();
-      const { data } = await supabase.from("children").select("*").eq("id", childId).single();
+      let resolvedId = childIdParam;
+
+      if (!resolvedId) {
+        const store = useChildStore.getState();
+        const storeChild = store.childData || store.children[0] || null;
+        if (storeChild) {
+          resolvedId = storeChild.id;
+        } else {
+          const { data: { user } } = await supabase.auth.getUser();
+          if (user) {
+            const { data: kids } = await supabase
+              .from("children")
+              .select("*")
+              .eq("parent_id", user.id)
+              .order("created_at", { ascending: true })
+              .limit(1);
+            if (kids && kids.length > 0) resolvedId = kids[0].id;
+          }
+        }
+      }
+
+      if (!resolvedId) {
+        if (alive) {
+          router.replace("/dashboard");
+          setLoading(false);
+        }
+        return;
+      }
+
+      if (!childIdParam && resolvedId && typeof window !== "undefined") {
+        const url = new URL(window.location.href);
+        url.searchParams.set("child", resolvedId);
+        window.history.replaceState(null, "", url.toString());
+      }
+
+      const { data } = await supabase
+        .from("children")
+        .select("*")
+        .eq("id", resolvedId)
+        .single();
+      if (!alive) return;
       if (data) {
         setChild(data as Child);
         setExpandedGrade(levelNameToGradeKey(data.reading_level) || "kindergarten");
@@ -89,7 +139,14 @@ function StoriesContent() {
       setLoading(false);
     }
     load();
-  }, [childId]);
+    return () => {
+      alive = false;
+    };
+  }, [childIdParam, router]);
+  // Effective child id for downstream use — fall back to the resolved
+  // child record once it's loaded so deep links without ?child= still
+  // build correct save payloads below.
+  const childId = childIdParam ?? child?.id ?? null;
 
   const allStories = (storiesBank as { stories: Story[] }).stories;
   const gradeGroups = GRADE_ORDER.map((grade) => ({
@@ -164,15 +221,22 @@ function StoriesContent() {
           try {
             const supabase = supabaseBrowser();
             const finalCorrect = correctCount + (selectedAnswer === q.correct ? 1 : 0);
-            await supabase.from("practice_results").insert({
+            const { error } = await supabase.from("practice_results").insert({
               child_id: childId,
               standard_id: story.id,
               questions_attempted: story.questions.length,
               questions_correct: finalCorrect,
               xp_earned: finalCorrect * 5,
             });
+            if (error) throw error;
+            setSaveError(false);
           } catch (e) {
             console.error("[stories] Failed to save progress:", e);
+            // Surface to the parent on the library screen instead of
+            // silently dropping the win. Closing the story still feels
+            // right (the kid finished); a banner on return flags that
+            // progress didn't record.
+            setSaveError(true);
           }
         }
         closeStory();
@@ -276,6 +340,17 @@ function StoriesContent() {
         <BookOpen className="w-10 h-10 text-indigo-500 mx-auto mb-2" strokeWidth={1.5} />
         <h1 className="text-2xl font-extrabold text-zinc-900">Stories Library</h1>
       </motion.div>
+
+      {saveError && (
+        <div
+          role="alert"
+          className="rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-xs font-semibold text-amber-800 dark:border-amber-900/40 dark:bg-amber-950/30 dark:text-amber-200"
+        >
+          We couldn&apos;t save the last story&apos;s progress just now.
+          Your reader still finished it — try reading it again later and
+          it&apos;ll record then.
+        </div>
+      )}
 
       {/* Grade accordions */}
       {gradeGroups.map((group, gIdx) => {

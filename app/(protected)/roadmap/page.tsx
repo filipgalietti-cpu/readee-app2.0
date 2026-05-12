@@ -945,7 +945,8 @@ function MapNode({
       )}
 
       {status === "locked" && (
-        <div
+        <button
+          type="button"
           onClick={onClick}
           className={`
             w-full h-full relative rounded-full flex items-center justify-center cursor-pointer
@@ -955,7 +956,7 @@ function MapNode({
               : "bg-gradient-to-b from-zinc-300 to-zinc-400 text-zinc-500 shadow-[0_2px_0_0_#a1a1aa] opacity-60 border-zinc-200"
             }
           `}
-          aria-label={`${standard.standard_id}: ${standard.standard_description}`}
+          aria-label={`${standard.standard_id}: ${standard.standard_description}${isPremium ? " (Readee+ premium)" : " (locked — complete earlier topics to unlock)"}`}
         >
           {isPremium ? (
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -971,7 +972,7 @@ function MapNode({
               R+
             </span>
           )}
-        </div>
+        </button>
       )}
 
       {/* ── Kid-friendly label — to the side, clear of the path ── */}
