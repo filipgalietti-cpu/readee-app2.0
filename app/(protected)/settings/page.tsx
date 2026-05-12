@@ -14,6 +14,7 @@ import { ChildCreateSchema, ChildUpdateSchema } from "@/lib/schemas";
 import { BACKGROUND_IMAGES, SHOP_ITEMS } from "@/lib/data/shop-items";
 import { Carrot } from "lucide-react";
 import { usePlanStore } from "@/lib/stores/plan-store";
+import { useChildStore } from "@/lib/stores/child-store";
 import { SkeletonPage } from "@/app/_components/Skeleton";
 
 function displayGrade(grade: string): string {
@@ -113,9 +114,38 @@ export default function Settings() {
       .eq("parent_id", parentId)
       .order("created_at", { ascending: true });
     if (data) {
-      setChildren(data as Child[]);
+      const fresh = data as Child[];
+      setChildren(fresh);
+
+      // Push the fresh list into the global child store so any sibling
+      // surface that subscribes (AppSidebar, parent overlay in
+      // /dashboard, ProductSearchBar) re-renders with the new roster.
+      // Without this, add/edit/delete/level-change on /settings looked
+      // correct on this page but stale everywhere else until a hard
+      // refresh. Also reconcile the currently-selected childData: if
+      // it was deleted upstream we clear it; if it was edited we swap
+      // in the fresh row so name + reading_level stay current.
+      const store = useChildStore.getState();
+      store.setChildren(fresh);
+      const selected = store.childData;
+      if (selected) {
+        const updated = fresh.find((c) => c.id === selected.id);
+        if (!updated) {
+          // Selected kid was just removed — pick the first remaining
+          // child as the new active, or clear if there are none left.
+          store.setChildData(fresh[0] ?? null);
+          store.setCurrentChild(fresh[0]?.id ?? null);
+        } else if (updated !== selected) {
+          store.setChildData(updated);
+        }
+      } else if (fresh.length === 1) {
+        // Common case: parent just added their first kid — auto-select.
+        store.setChildData(fresh[0]);
+        store.setCurrentChild(fresh[0].id);
+      }
+
       // Fetch purchases for background picker
-      const childIds = (data as Child[]).map((c) => c.id);
+      const childIds = fresh.map((c) => c.id);
       if (childIds.length > 0) {
         const { data: allPurchases } = await supabase
           .from("shop_purchases")
@@ -259,7 +289,12 @@ export default function Settings() {
       const data = await res.json();
       setPromoResult({ success: data.success, message: data.message });
       if (data.success) {
+        // Optimistic flip so the rest of the page reflects premium
+        // immediately, then refresh() from Supabase as the canonical
+        // source — guards against the server-side endpoint succeeding
+        // without actually granting (RLS oddity, race, etc).
         setStorePlan("premium");
+        await usePlanStore.getState().refresh();
       }
     } catch {
       setPromoResult({ success: false, message: "Something went wrong. Please try again." });
@@ -272,6 +307,9 @@ export default function Settings() {
     try {
       await fetch("/api/admin/reset-premium", { method: "POST" });
       setStorePlan("free");
+      // Same canonical re-read as the redeem path so we don't trust
+      // our optimistic flip past the server response.
+      await usePlanStore.getState().refresh();
       setPromoCode("");
       setPromoResult(null);
       setShowPromo(false);
