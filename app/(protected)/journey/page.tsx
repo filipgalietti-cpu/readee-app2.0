@@ -1,12 +1,13 @@
 "use client";
 
 import { Suspense, useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
 import { usePlanStore } from "@/lib/stores/plan-store";
+import { useChildStore } from "@/lib/stores/child-store";
 import { getLimits } from "@/lib/plan/limits";
 import sampleLessons from "@/app/data/sample-lessons.json";
 import Image from "next/image";
@@ -109,7 +110,8 @@ export default function JourneyPage() {
 
 function JourneyContent() {
   const searchParams = useSearchParams();
-  const childId = searchParams.get("child");
+  const router = useRouter();
+  const childIdParam = searchParams.get("child");
   const plan = usePlanStore((s) => s.plan);
   const fetchPlan = usePlanStore((s) => s.fetch);
 
@@ -123,26 +125,74 @@ function JourneyContent() {
 
   useEffect(() => { fetchPlan(); }, [fetchPlan]);
 
+  // Resolve the active child even when ?child= isn't on the URL —
+  // same store → DB → fallback pattern used by /practice-hub,
+  // /analytics, /stories, and /roadmap. Without this, bookmark and
+  // share-link landings stalled on the skeleton indefinitely.
   useEffect(() => {
+    let alive = true;
     async function load() {
-      if (!childId) return;
       const supabase = supabaseBrowser();
+      let resolvedId = childIdParam;
+
+      if (!resolvedId) {
+        const store = useChildStore.getState();
+        const storeChild = store.childData || store.children[0] || null;
+        if (storeChild) {
+          resolvedId = storeChild.id;
+        } else {
+          const { data: { user } } = await supabase.auth.getUser();
+          if (user) {
+            const { data: kids } = await supabase
+              .from("children")
+              .select("*")
+              .eq("parent_id", user.id)
+              .order("created_at", { ascending: true })
+              .limit(1);
+            if (kids && kids.length > 0) resolvedId = kids[0].id;
+          }
+        }
+      }
+
+      if (!resolvedId) {
+        if (alive) {
+          router.replace("/dashboard");
+          setLoading(false);
+        }
+        return;
+      }
+
+      if (!childIdParam && resolvedId && typeof window !== "undefined") {
+        const url = new URL(window.location.href);
+        url.searchParams.set("child", resolvedId);
+        window.history.replaceState(null, "", url.toString());
+      }
+
       const [childRes, practiceRes, lessonRes] = await Promise.all([
-        supabase.from("children").select("*").eq("id", childId).single(),
-        supabase.from("practice_results").select("standard_id, questions_correct, questions_attempted").eq("child_id", childId),
-        supabase.from("lessons_progress").select("lesson_id, section, score").eq("child_id", childId),
+        supabase.from("children").select("*").eq("id", resolvedId).single(),
+        supabase.from("practice_results").select("standard_id, questions_correct, questions_attempted").eq("child_id", resolvedId),
+        supabase.from("lessons_progress").select("lesson_id, section, score").eq("child_id", resolvedId),
       ]);
+      if (!alive) return;
       if (childRes.data) setChild(childRes.data as Child);
       if (practiceRes.data) setPracticeProgress(practiceRes.data as ProgressRecord[]);
       if (lessonRes.data) setLessonProgress(lessonRes.data as LessonProgressRecord[]);
       setLoading(false);
     }
     load();
-  }, [childId]);
+    return () => {
+      alive = false;
+    };
+  }, [childIdParam, router]);
 
   if (loading || !child) {
     return <SkeletonPage cards={5} />;
   }
+
+  // From here on, the child is loaded and the URL has been rewritten
+  // (when needed) so downstream JSX can rely on a non-null id without
+  // the `childId!` cast that was sprinkled below.
+  const childId = child.id;
 
   const allLessons = sampleLessons as SampleLesson[];
 
@@ -400,7 +450,7 @@ function JourneyContent() {
                                         <LessonRow
                                           key={lesson.standardId}
                                           lesson={lesson}
-                                          childId={childId!}
+                                          childId={childId}
                                           number={lIdx + 1}
                                           delay={lIdx * 0.03}
                                           prevTitle={lIdx > 0 ? domain.lessons[lIdx - 1].title : null}
