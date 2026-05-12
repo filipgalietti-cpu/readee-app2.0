@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import posthog from "posthog-js";
 import { Mic, MicOff, AlertCircle, Sparkles, Loader2 } from "lucide-react";
-import { trackError } from "@/lib/observability/track";
+import { trackError, trackSignal } from "@/lib/observability/track";
 
 function track(event: string, props?: Record<string, unknown>) {
   if (typeof window === "undefined") return;
@@ -33,6 +33,190 @@ import {
  */
 
 type Status = "idle" | "connecting" | "listening" | "thinking" | "speaking" | "error";
+
+const TRANSIENT_CLOSE_CODES = new Set([1001, 1006, 1011, 1012, 1013, 1014]);
+
+/**
+ * Mint a Live session token. Retries transient failures (network
+ * error, 5xx, malformed JSON) with exponential backoff. 4xx responses
+ * are non-retriable — bad input or auth, retry won't help.
+ */
+async function mintTokenWithRetry(opts: {
+  body: Record<string, unknown>;
+  childId: string | null;
+  modeTag: string | null;
+}): Promise<{
+  wsUrl: string;
+  setupModel: string;
+  systemInstruction?: string;
+  provider?: string;
+}> {
+  const delays = [0, 350, 1100];
+  let lastErr: unknown = null;
+  for (let attempt = 0; attempt < delays.length; attempt++) {
+    if (delays[attempt] > 0) {
+      await new Promise((r) => setTimeout(r, delays[attempt]));
+    }
+    try {
+      const res = await fetch("/api/buddy-live/token", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(opts.body),
+      });
+      if (res.status >= 400 && res.status < 500) {
+        let json: any = null;
+        try {
+          json = await res.json();
+        } catch {}
+        throw new Error(json?.error ?? `Live mode unavailable (${res.status}).`);
+      }
+      if (!res.ok) {
+        lastErr = new Error(`token mint http ${res.status}`);
+        continue;
+      }
+      const json = await res.json();
+      if (!json.ok) {
+        // Server returned { ok: false } — treat as non-retriable since
+        // the server already exhausted its own fallbacks.
+        throw new Error(json.error ?? "Could not mint Live session.");
+      }
+      if (attempt > 0) {
+        trackSignal("buddy-live token mint retry succeeded", {
+          route: "buddy-live.token.retry",
+          level: "info",
+          tags: { attempt: String(attempt + 1) },
+          extra: { childId: opts.childId, mode: opts.modeTag },
+        });
+      }
+      return json;
+    } catch (e) {
+      lastErr = e;
+      // Re-throw immediately for non-retriable shapes
+      if (
+        e instanceof Error &&
+        (e.message.includes("Live mode unavailable") ||
+          e.message.includes("Could not mint Live session"))
+      ) {
+        throw e;
+      }
+    }
+  }
+  trackError(
+    lastErr instanceof Error ? lastErr : new Error(String(lastErr)),
+    {
+      route: "buddy-live.token.exhausted",
+      extra: { childId: opts.childId, mode: opts.modeTag },
+    },
+  );
+  throw new Error(
+    "Couldn't reach the Reading Buddy service. Check your internet and try again.",
+  );
+}
+
+/**
+ * Open the WebSocket with a single retry on transient handshake
+ * failures. We retry only once because each WS open also burns a few
+ * seconds of the token TTL.
+ */
+async function openWsWithRetry(opts: {
+  url: string;
+  provider: string;
+  setupModel: string;
+  childId: string | null;
+}): Promise<WebSocket> {
+  for (let attempt = 0; attempt < 2; attempt++) {
+    if (attempt > 0) {
+      await new Promise((r) => setTimeout(r, 500));
+    }
+    try {
+      const ws = await new Promise<WebSocket>((resolve, reject) => {
+        const w = new WebSocket(opts.url);
+        w.binaryType = "arraybuffer";
+        const t = setTimeout(() => {
+          try {
+            w.close();
+          } catch {}
+          reject(new Error("Connect timeout."));
+        }, 10000);
+        w.onopen = () => {
+          clearTimeout(t);
+          // Detach the handshake-only listeners so the caller can
+          // install its own onerror/onclose without interference.
+          w.onopen = null;
+          w.onerror = null;
+          resolve(w);
+        };
+        w.onerror = () => {
+          clearTimeout(t);
+          reject(new Error("WebSocket error."));
+        };
+        w.onclose = (ev) => {
+          // Pre-open close — bubble the code so caller can decide.
+          if (w.readyState !== WebSocket.OPEN) {
+            clearTimeout(t);
+            const err: any = new Error(`ws closed before open code=${ev.code}`);
+            err.code = ev.code;
+            reject(err);
+          }
+        };
+      });
+      if (attempt > 0) {
+        trackSignal("buddy-live ws handshake retry succeeded", {
+          route: "buddy-live.ws.retry",
+          level: "info",
+          tags: {
+            attempt: String(attempt + 1),
+            provider: opts.provider,
+            setup_model: opts.setupModel,
+          },
+          extra: { childId: opts.childId },
+        });
+      }
+      return ws;
+    } catch (e: any) {
+      const code: number | undefined = e?.code;
+      const isTransient =
+        code === undefined ||
+        TRANSIENT_CLOSE_CODES.has(code) ||
+        (e instanceof Error && e.message.includes("Connect timeout"));
+      if (attempt === 0 && isTransient) {
+        trackSignal("buddy-live ws handshake transient — retrying", {
+          route: "buddy-live.ws.retry",
+          level: "warning",
+          tags: {
+            code: String(code ?? "unknown"),
+            provider: opts.provider,
+            setup_model: opts.setupModel,
+          },
+          extra: { childId: opts.childId },
+        });
+        continue;
+      }
+      throw e;
+    }
+  }
+  throw new Error("Couldn't open the Reading Buddy connection.");
+}
+
+/**
+ * Friendly per-WebSocket-close-code message. Returning null means the
+ * code is benign or already handled elsewhere — don't surface a UI
+ * error for it.
+ */
+function closeCodeMessage(code: number): string | null {
+  switch (code) {
+    case 1006:
+      return "Your connection dropped. Tap to try again.";
+    case 1008:
+      return "Your session expired. Tap to start a new one.";
+    case 1011:
+      return "Reading Buddy hit a bump on the server side. Tap to try again.";
+    case 1013:
+      return "Reading Buddy is busy right now. Tap to try again in a moment.";
+    default:
+      return null;
+  }
+}
 
 export default function LiveBuddy({
   passage,
@@ -146,43 +330,50 @@ export default function LiveBuddy({
     setErr(null);
     setStatus("connecting");
     try {
-      // 1) Mint a Live session from our server. The response is fully
-      // self-contained: wsUrl + setupModel + systemInstruction.
-      const tokRes = await fetch("/api/buddy-live/token", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
+      // 1) Mint a Live session from our server. Retry transient
+      //    failures (5xx, network) up to 3 times — first-session
+      //    reliability matters more than perfect speed here.
+      const tokenStart = Date.now();
+      const tok = await mintTokenWithRetry({
+        body: {
           passage,
           gradeLevel,
           mode: mode ?? "freeform",
           childId: childId ?? undefined,
-        }),
+        },
+        childId: childId ?? null,
+        modeTag: mode ?? null,
       });
-      const tokJson = await tokRes.json();
-      if (!tokJson.ok) throw new Error(tokJson.error ?? "Could not mint Live session.");
-      const wsUrl: string = tokJson.wsUrl;
-      const setupModel: string = tokJson.setupModel;
-      const systemInstruction: string = tokJson.systemInstruction ?? "";
-      const provider: string = tokJson.provider ?? "vertex";
+      const tokenMs = Date.now() - tokenStart;
+      const wsUrl: string = tok.wsUrl;
+      const setupModel: string = tok.setupModel;
+      const systemInstruction: string = tok.systemInstruction ?? "";
+      const provider: string = tok.provider ?? "vertex";
 
       // 2) Open WebSocket directly to Google (Vertex or AI Studio
-      //    — server tells us which) with the token in the URL.
-      const ws = new WebSocket(wsUrl);
-      ws.binaryType = "arraybuffer";
+      //    — server tells us which). Retry transient handshake
+      //    failures once before surfacing the error.
+      const wsStart = Date.now();
+      const ws = await openWsWithRetry({
+        url: wsUrl,
+        provider,
+        setupModel,
+        childId: childId ?? null,
+      });
+      const wsHandshakeMs = Date.now() - wsStart;
       wsRef.current = ws;
 
-      const opened = new Promise<void>((resolve, reject) => {
-        const t = setTimeout(() => reject(new Error("Connect timeout.")), 10000);
-        ws.onopen = () => {
-          clearTimeout(t);
-          resolve();
-        };
-        ws.onerror = (ev) => {
-          clearTimeout(t);
-          reject(new Error("WebSocket error."));
-        };
+      trackSignal("buddy-live connect timings", {
+        route: "buddy-live.connect.timings",
+        level: "info",
+        tags: { provider, setup_model: setupModel },
+        extra: {
+          token_mint_ms: tokenMs,
+          ws_handshake_ms: wsHandshakeMs,
+          childId: childId ?? null,
+          mode: mode ?? null,
+        },
       });
-      await opened;
 
       // 3) Send the setup message. Vertex uses snake_case + the full
       //    publisher resource path; AI Studio uses camelCase + a short
@@ -469,8 +660,14 @@ export default function LiveBuddy({
         // Server-initiated close with a non-1000 code — most often
         // means the upstream live model disconnected (quota, region
         // outage, etc). Capture so we see the failure rate; the
-        // surface-level UX is the same "Tap to try again" toggle.
+        // surface-level UX maps the code to a friendly message so
+        // parents know whether to retry or check their setup.
         if (ev.code !== 1000 && ev.code !== 1005) {
+          const friendly = closeCodeMessage(ev.code);
+          if (friendly && status !== "error") {
+            setErr(friendly);
+            setStatus("error");
+          }
           trackError(new Error(`buddy-live ws closed code=${ev.code}`), {
             route: "buddy-live.ws.onclose",
             tags: {
