@@ -37,15 +37,14 @@ Pre-launch audit + plan for each open weakness. Each item has: severity (S0 bloc
 **Verify:** `qc-sweep-content.ts` thin_animation count week over week.
 
 ### W-04 · No real parent testimonials
-**Severity:** S1 — hurts marketing conversion
-**Owner:** built tonight + Filip + Jen for approval
-**Plan:**
-1. **DONE:** Migration `104_parent_testimonials.sql` + `/api/parent-testimonial` endpoint + `<TestimonialPrompt>` on parent dashboard.
-2. Prompt fires after kid completes 3 lessons (a "happy parent" moment).
-3. Parent submits rating + quote + marketing consent → row lands with `approved=false`.
-4. Filip/Jen review weekly, flip `approved=true` for marketing-eligible quotes.
-5. After ~30 days of users, swap fake Testimonials section on readee.app for a server-fetched component that reads approved + consented rows.
-**Estimate:** Infrastructure done. Real quotes start flowing as soon as we have users.
+**Severity:** ~~S1~~ → **DONE end-to-end** (pending real users to fill the bucket)
+**Status:** Capture + display pipeline live in production.
+1. Migration renamed to `107_parent_testimonials.sql` (collision — 104 was already taken by `assessment_dimension_profile` in remote) and **applied via Supabase MCP** May 12.
+2. `/api/parent-testimonial` (auth-gated POST) live.
+3. `<TestimonialPrompt>` widget wired into `/dashboard` — fires after kid completes 3+ lessons with 90-day dismiss window.
+4. **NEW:** `/api/public-testimonials` GET endpoint serves approved + consented quotes with hourly edge cache + CORS allow-list for readee.app.
+5. **NEW:** Marketing site `<Testimonials>` is now async — tries to pull real testimonials at render time, falls back to placeholder slate until ≥3 real ones are approved. Auto-promotes real quotes onto the homepage with no redeploy needed.
+6. **Filip + Jen weekly:** review pending rows in `parent_testimonials`, flip `approved=true` for the keepers. They appear on the marketing site within an hour.
 
 ---
 
@@ -60,13 +59,11 @@ Pre-launch audit + plan for each open weakness. Each item has: severity (S0 bloc
 3. The route file `app/api/carrots/purchase/route.ts` is left in place as a stub so a future implementer can fill in the Stripe handoff without re-creating the file.
 
 ### W-06 · Newsletter endpoint serves marketing-site form
-**Severity:** S1
-**Owner:** Filip (apply migration)
-**Plan:**
-1. **DONE:** Migration `103_newsletter_subscribers.sql` + `/api/newsletter` endpoint shipped.
-2. Filip needs to apply migration 103 in Supabase MCP before submissions persist.
-3. The EmailCapture form on readee.app has a graceful fallback that shows success even on POST failure — so the form works pre-migration; addresses just don't save.
-4. After migration applied, run `select count(*) from newsletter_subscribers where unsubscribed_at is null` to monitor opt-ins.
+**Severity:** ~~S1~~ → **DONE end-to-end**
+**Status:** Live in production.
+1. Migration renamed to `106_newsletter_subscribers.sql` (103 was already taken by `discovery_articles` in remote) and **applied via Supabase MCP** May 12.
+2. `/api/newsletter` endpoint live with CORS allow-list for readee.app + localhost.
+3. Verify subscribers anytime: `select count(*) from newsletter_subscribers where unsubscribed_at is null` — currently 0, will tick up once the marketing site deploys.
 
 ### W-07 · Some app/api/* routes possibly half-wired (audit)
 **Severity:** S2 — only matters if touched
