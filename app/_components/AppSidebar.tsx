@@ -12,7 +12,7 @@ import { SidebarUserMenu } from "./SidebarUserMenu";
 import { ShineBorder } from "@/app/components/magicui/shine-border";
 import {
   Home, BarChart3, BookText, ListChecks, Map,
-  Carrot, Trophy, ChevronDown, ChevronRight, ClipboardCheck, GraduationCap, Building2, ClipboardPen, Library, Sparkles, Users, Brain, Zap, ShieldCheck, BookOpenText, Layers, Mic, ScanLine, Factory, Bot, LogOut,
+  Carrot, Trophy, ChevronDown, ChevronRight, ClipboardCheck, GraduationCap, Building2, ClipboardPen, Library, Sparkles, Users, Brain, Zap, ShieldCheck, BookOpenText, Layers, Mic, ScanLine, Factory, Bot, LogOut, Star,
 } from "lucide-react";
 
 /* ─── Nav items ──────────────────────────────────── */
@@ -203,6 +203,7 @@ function getNavSections(
           { href: "/practice-hub/community", icon: Users, label: "Community library" },
           { href: "/discover", icon: Sparkles, label: "Discover" },
           { href: `/journey${q}`, icon: Map, label: "Reading Journey" },
+          { href: `/levels${q}`, icon: Star, label: "Reader Levels" },
           { href: `/shop${q}`, icon: Carrot, label: "Shop", iconColor: "w-[17px] h-[17px] text-orange-500" },
           { href: `/leaderboard${q}`, icon: Trophy, label: "Leaderboard" },
         ],

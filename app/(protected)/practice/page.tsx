@@ -29,6 +29,8 @@ import { StreakFire } from "@/app/_components/StreakFire";
 import { BookOpen, Newspaper, Type, MessageCircle, Star, Sparkles, Target, Carrot, Search } from "lucide-react";
 import { usePlanStore } from "@/lib/stores/plan-store";
 import { getLimits } from "@/lib/plan/limits";
+import { useLifetimeCarrots } from "@/lib/levels/use-lifetime-carrots";
+import LevelProgressCard from "@/app/_components/LevelProgressCard";
 import type { LucideIcon } from "lucide-react";
 
 /* ─── Types ──────────────────────────────────────────── */
@@ -1466,6 +1468,19 @@ function CompletionScreen({
   const totalQ = questions.length;
   const stars = getStars(correctCount, totalQ);
   const nextStandard = getNextStandard(standard.standard_id, gradeStandards);
+  // Snapshot lifetime carrots before this session lands so the
+  // LevelProgressCard has a stable pre-session anchor to diff
+  // against carrotsEarned. Won't reflow even after the save effect
+  // inserts the practice_results row below.
+  const [priorLifetime, setPriorLifetime] = useState<number | null>(null);
+  const { lifetimeCarrots, loading: loadingLifetime } = useLifetimeCarrots(
+    child.id,
+  );
+  useEffect(() => {
+    if (!loadingLifetime && priorLifetime === null) {
+      setPriorLifetime(lifetimeCarrots);
+    }
+  }, [loadingLifetime, lifetimeCarrots, priorLifetime]);
 
   // Confetti pieces
   const confettiPieces = useMemo(() => {
@@ -1656,6 +1671,17 @@ function CompletionScreen({
             );
           })}
         </motion.div>
+
+        {/* Reader-level progress (or level-up celebration). */}
+        {priorLifetime !== null && (
+          <motion.div variants={fadeUp} className="w-full mb-4">
+            <LevelProgressCard
+              priorLifetimeCarrots={priorLifetime}
+              sessionCarrots={carrotsEarned}
+              href={`/levels?child=${child.id}`}
+            />
+          </motion.div>
+        )}
 
         {/* Action buttons */}
         <motion.div variants={fadeUp} className="w-full space-y-3">

@@ -15,6 +15,8 @@ import { useThemeStore } from "@/lib/stores/theme-store";
 import { safeValidate } from "@/lib/validate";
 import { PracticeResultSchema } from "@/lib/schemas";
 import { trackFunnelClient } from "@/lib/analytics/funnel";
+import { useLifetimeCarrots } from "@/lib/levels/use-lifetime-carrots";
+import LevelProgressCard from "@/app/_components/LevelProgressCard";
 import { levelNameToGradeKey } from "@/lib/assessment/questions";
 import { findStandardById } from "@/lib/data/all-standards";
 import { fadeUp, fadeIn, staggerContainer, feedbackSlideUp, popIn, scaleIn } from "@/lib/motion/variants";
@@ -1048,6 +1050,21 @@ function CompletionScreen({
 }) {
   const [saved, setSaved] = useState(false);
   const [saving, setSaving] = useState(false);
+  // Pin the lifetime carrot count from BEFORE this session lands so
+  // the LevelProgressCard can show "level up!" or "X carrots to
+  // next." We snapshot on first non-loading hook read and never
+  // overwrite — the save useEffect below will insert a new
+  // practice_results row, but we don't want the card to flip after
+  // that lands.
+  const [priorLifetime, setPriorLifetime] = useState<number | null>(null);
+  const { lifetimeCarrots, loading: loadingLifetime } = useLifetimeCarrots(
+    child.id,
+  );
+  useEffect(() => {
+    if (!loadingLifetime && priorLifetime === null) {
+      setPriorLifetime(lifetimeCarrots);
+    }
+  }, [loadingLifetime, lifetimeCarrots, priorLifetime]);
   const darkMode = useThemeStore((s) => s.darkMode);
   const { playUrl: playCompletionUrl } = useAudio();
   const totalQ = questions.length;
@@ -1305,6 +1322,19 @@ function CompletionScreen({
             );
           })}
         </motion.div>
+
+        {/* Reader-level progress (or level-up celebration). Mounted
+            once priorLifetime is locked so the card has a stable
+            pre-session anchor to diff against carrotsEarned. */}
+        {priorLifetime !== null && (
+          <motion.div variants={fadeUp} className="w-full mb-4">
+            <LevelProgressCard
+              priorLifetimeCarrots={priorLifetime}
+              sessionCarrots={carrotsEarned}
+              href={`/levels?child=${child.id}`}
+            />
+          </motion.div>
+        )}
 
         {/* Action buttons */}
         <motion.div variants={fadeUp} className="w-full space-y-3">

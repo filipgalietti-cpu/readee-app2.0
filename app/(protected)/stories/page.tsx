@@ -11,6 +11,8 @@ import { levelNameToGradeKey } from "@/lib/assessment/questions";
 import { useAudio } from "@/lib/audio/use-audio";
 import { LoadingImage } from "@/app/components/ui/LoadingImage";
 import Image from "next/image";
+import { useLifetimeCarrots } from "@/lib/levels/use-lifetime-carrots";
+import LevelProgressCard from "@/app/_components/LevelProgressCard";
 import storiesBank from "@/scripts/stories-bank.json";
 import { usePlanStore } from "@/lib/stores/plan-store";
 import { useChildStore } from "@/lib/stores/child-store";
@@ -80,9 +82,13 @@ function StoriesContent() {
   const [correctCount, setCorrectCount] = useState(0);
   // Story-complete cap state: prevents the kid from instantly bouncing
   // back to the library after the last question. Holds the final score
-  // so the celebration card can show "Got 3 of 3 right!" instead of
-  // stale mid-quiz state.
-  const [finishedScore, setFinishedScore] = useState<{ correct: number; total: number } | null>(null);
+  // and the carrots awarded so the celebration card + LevelProgressCard
+  // can render without re-reading state that closeStory() will wipe.
+  const [finishedScore, setFinishedScore] = useState<{
+    correct: number;
+    total: number;
+    carrots: number;
+  } | null>(null);
   // Surface a save failure on completion instead of swallowing it in
   // console.error. Kids/parents who finish a story expect their
   // progress to count; a silent miss erodes trust over time.
@@ -154,6 +160,14 @@ function StoriesContent() {
   // build correct save payloads below.
   const childId = childIdParam ?? child?.id ?? null;
 
+  // Pre-session lifetime carrots, used to render the LevelProgressCard
+  // on the celebration screen. Hook is single-fetch + manual refresh,
+  // so this stays pinned at "lifetime BEFORE the current story" until
+  // we call refresh() on goNext, at which point it picks up the row
+  // we just wrote and becomes "lifetime BEFORE the next story".
+  const { lifetimeCarrots: priorLifetimeCarrots, refresh: refreshLifetime } =
+    useLifetimeCarrots(childId);
+
   const allStories = (storiesBank as { stories: Story[] }).stories;
   const gradeGroups = GRADE_ORDER.map((grade) => ({
     grade,
@@ -224,9 +238,19 @@ function StoriesContent() {
       if (isLastQ) {
         const finalCorrect =
           correctCount + (selectedAnswer === q.correct ? 1 : 0);
+        // Award carrots so stories actually count toward the reader-
+        // level ladder. Matches the lesson formula scale (5 carrots
+        // per correct answer); a perfect 3/3 = 15 carrots, an even
+        // 1/3 = 5. The same value goes into `xp_earned` too so the
+        // existing analytics keep working.
+        const carrotsForStory = finalCorrect * 5;
         // Hold on to the score for the celebration card BEFORE we
         // close — closeStory() wipes mid-quiz state.
-        setFinishedScore({ correct: finalCorrect, total: story.questions.length });
+        setFinishedScore({
+          correct: finalCorrect,
+          total: story.questions.length,
+          carrots: carrotsForStory,
+        });
         // Save story completion to database
         if (childId) {
           try {
@@ -236,10 +260,29 @@ function StoriesContent() {
               standard_id: story.id,
               questions_attempted: story.questions.length,
               questions_correct: finalCorrect,
-              xp_earned: finalCorrect * 5,
+              carrots_earned: carrotsForStory,
+              xp_earned: carrotsForStory,
             });
             if (error) throw error;
             setSaveError(false);
+            // Bump the spendable balance too so the kid sees their
+            // wallet grow at the shop. Read-then-write to avoid
+            // clobbering concurrent updates from other surfaces.
+            if (carrotsForStory > 0) {
+              const { data: current } = await supabase
+                .from("children")
+                .select("carrots")
+                .eq("id", childId)
+                .single();
+              if (current) {
+                await supabase
+                  .from("children")
+                  .update({
+                    carrots: (current.carrots || 0) + carrotsForStory,
+                  })
+                  .eq("id", childId);
+              }
+            }
           } catch (e) {
             console.error("[stories] Failed to save progress:", e);
             // Surface to the parent on the library screen instead of
@@ -270,6 +313,10 @@ function StoriesContent() {
 
       const goNext = () => {
         if (!next) return;
+        // Refresh lifetime so the next story's LevelProgressCard
+        // anchors on the post-this-story total instead of repeating
+        // the same prior twice.
+        refreshLifetime();
         setFinishedScore(null);
         // openStory resets quiz state and starts the audio + clean Q1.
         openStory(next);
@@ -310,8 +357,21 @@ function StoriesContent() {
             </h2>
             <p className="mt-1 text-sm text-zinc-500">
               {finishedScore.correct} of {finishedScore.total} correct
+              {finishedScore.carrots > 0
+                ? ` · +${finishedScore.carrots} 🥕`
+                : ""}
               {childId ? " — saved to your progress." : "."}
             </p>
+
+            {childId && (
+              <div className="mt-5 text-left">
+                <LevelProgressCard
+                  priorLifetimeCarrots={priorLifetimeCarrots}
+                  sessionCarrots={finishedScore.carrots}
+                  href={`/levels?child=${childId}`}
+                />
+              </div>
+            )}
 
             <div className="mt-6 space-y-2">
               {next ? (

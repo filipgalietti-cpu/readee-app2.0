@@ -30,6 +30,9 @@ import { SkeletonPage } from "@/app/_components/Skeleton";
 import TestimonialPrompt from "@/app/_components/TestimonialPrompt";
 import ProductSearchBar from "@/app/_components/ProductSearchBar";
 import { trackFunnelClient } from "@/lib/analytics/funnel";
+import LevelBadge from "@/app/_components/LevelBadge";
+import { useLifetimeCarrots } from "@/lib/levels/use-lifetime-carrots";
+import { computeLevel } from "@/lib/levels/levels";
 
 /* ─── Count-up animation hook ─────────────────────────── */
 
@@ -898,6 +901,12 @@ function ChildDashboard({
   const carrotCount = useCountUp(carrots);
   const storiesCount = useCountUp(child.stories_read);
   const streakCount = useCountUp(child.streak_days);
+  // Lifetime carrots fuels the reader-level ladder — distinct from
+  // the spendable `carrots` balance above, which shop purchases burn
+  // down. Showing both in the same dashboard view keeps the level
+  // gauge stable even after the kid spends carrots at /shop.
+  const { lifetimeCarrots } = useLifetimeCarrots(child.id);
+  const levelInfo = computeLevel(lifetimeCarrots);
 
   // ── Avatar picker logic ──
   const shopAvatars = getItemsByCategory("avatars");
@@ -1149,6 +1158,27 @@ function ChildDashboard({
             <span className="animate-wave inline-block">{greeting.icon}</span>
             {motivation}
           </p>
+        </motion.div>
+
+        {/* ── Reader level row — sits above the stats strip so the
+            kid sees their level name, progress to the next, and a
+            tap-through to the full /levels ladder. */}
+        <motion.div variants={slideUp} className="flex items-center justify-center">
+          <Link
+            href={`/levels?child=${child.id}`}
+            className={`group flex items-center gap-3 rounded-full border border-zinc-200 bg-white px-3 py-1.5 shadow-sm transition hover:border-indigo-300 dark:border-slate-700 dark:bg-slate-900`}
+          >
+            <LevelBadge lifetimeCarrots={lifetimeCarrots} size="md" />
+            {levelInfo.next ? (
+              <span className="text-[11px] font-semibold text-zinc-500 dark:text-slate-400">
+                {Math.max(0, levelInfo.next.threshold - levelInfo.lifetimeCarrots)} to {levelInfo.next.name}
+              </span>
+            ) : (
+              <span className="text-[11px] font-semibold text-zinc-500 dark:text-slate-400">
+                Top of the ladder
+              </span>
+            )}
+          </Link>
         </motion.div>
 
         {/* ── Stats Strip — horizontal bar ── */}
@@ -1662,6 +1692,7 @@ function ParentSidebar({
     {
       label: "Fun",
       items: [
+        { href: `/levels?child=${child.id}`, icon: Star, label: "Reader Levels" },
         { href: `/shop?child=${child.id}`, icon: Carrot, label: "Shop", iconColor: "w-[17px] h-[17px] text-orange-500" },
         { href: `/leaderboard?child=${child.id}`, icon: Trophy, label: "Leaderboard" },
       ],
