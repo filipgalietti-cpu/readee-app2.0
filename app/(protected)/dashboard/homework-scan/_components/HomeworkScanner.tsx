@@ -12,6 +12,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { Skeleton } from "@/app/_components/Skeleton";
+import { useChildStore } from "@/lib/stores/child-store";
 
 type Result = {
   readable: boolean;
@@ -32,6 +33,12 @@ export default function HomeworkScanner() {
   const [pending, setPending] = useState(false);
   const [err, setErr] = useState<string | null>(null);
   const [result, setResult] = useState<Result | null>(null);
+  // Resolve the active child up front so the result CTA can drop the
+  // kid straight into /practice without a /practice-hub bounce.
+  const activeChild = useChildStore(
+    (s) => s.childData || s.children[0] || null,
+  );
+  const childId = activeChild?.id ?? null;
 
   async function handleUpload(file: File) {
     setErr(null);
@@ -241,7 +248,11 @@ export default function HomeworkScanner() {
                 )}
                 {result.standardId && (
                   <Link
-                    href={`/practice-hub?standard=${encodeURIComponent(result.standardId)}`}
+                    href={
+                      childId
+                        ? `/practice?child=${encodeURIComponent(childId)}&standard=${encodeURIComponent(result.standardId)}`
+                        : `/practice-hub?standard=${encodeURIComponent(result.standardId)}`
+                    }
                     className="mt-5 inline-flex h-12 w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-gradient-to-r from-emerald-600 to-teal-600 px-6 text-sm font-bold text-white shadow-sm transition hover:from-emerald-700 hover:to-teal-700"
                   >
                     Practice this skill on Readee

@@ -16,6 +16,7 @@ import TopCommunityPicks from "./_components/TopCommunityPicks";
 import { SkeletonPage } from "@/app/_components/Skeleton";
 import ProductSearchBar from "@/app/_components/ProductSearchBar";
 import { usePlanStore } from "@/lib/stores/plan-store";
+import { useChildStore } from "@/lib/stores/child-store";
 
 const GRADE_BADGES: Record<string, string> = {
   kindergarten: "/images/ui/grades/grade-k.png",
@@ -253,7 +254,7 @@ export default function PracticeHubPage() {
 
 function PracticeHubContent() {
   const searchParams = useSearchParams();
-  const childId = searchParams.get("child");
+  const childIdParam = searchParams.get("child");
   const router = useRouter();
 
   const [child, setChild] = useState<Child | null>(null);
@@ -264,28 +265,77 @@ function PracticeHubContent() {
   const fetchPlan = usePlanStore((s) => s.fetch);
   useEffect(() => { fetchPlan(); }, [fetchPlan]);
 
-  // No child in the URL? Bounce to /dashboard which knows how to resolve
-  // the parent's child. Without this, a stale link from smart search or
-  // a cross-surface sidebar click leaves us stuck on the skeleton forever.
+  // Resolve a child even when the URL doesn't carry one.
+  //
+  // Reaching /practice-hub without ?child= is normal — the Homework
+  // Scanner's "Practice this skill" CTA hands off without a child, and
+  // the sidebar's parent links omit `child=` when the store hasn't
+  // hydrated yet. Falling back to the child store → DB lookup lets
+  // those flows resolve without bouncing the user back to /dashboard,
+  // and silently URL-rewrites so refresh/bookmark works afterwards.
   useEffect(() => {
-    if (!childId) router.replace("/dashboard");
-  }, [childId, router]);
-
-  useEffect(() => {
+    let alive = true;
     async function load() {
-      if (!childId) return;
       const supabase = supabaseBrowser();
-      const { data } = await supabase.from("children").select("*").eq("id", childId).single();
+      let resolvedId = childIdParam;
+
+      if (!resolvedId) {
+        const store = useChildStore.getState();
+        const storeChild = store.childData || store.children[0] || null;
+        if (storeChild) {
+          resolvedId = storeChild.id;
+        } else {
+          const { data: { user } } = await supabase.auth.getUser();
+          if (user) {
+            const { data: kids } = await supabase
+              .from("children")
+              .select("*")
+              .eq("parent_id", user.id)
+              .order("created_at", { ascending: true })
+              .limit(1);
+            if (kids && kids.length > 0) resolvedId = kids[0].id;
+          }
+        }
+      }
+
+      if (!resolvedId) {
+        if (alive) {
+          router.replace("/dashboard");
+          setLoading(false);
+        }
+        return;
+      }
+
+      if (!childIdParam && resolvedId && typeof window !== "undefined") {
+        // Preserve any other query params the caller passed (e.g. the
+        // Homework Scanner hands off ?standard=X). We only fill the
+        // missing child param.
+        const url = new URL(window.location.href);
+        url.searchParams.set("child", resolvedId);
+        window.history.replaceState(null, "", url.toString());
+      }
+
+      const { data } = await supabase
+        .from("children")
+        .select("*")
+        .eq("id", resolvedId)
+        .single();
+      if (!alive) return;
       if (data) setChild(data as Child);
       setLoading(false);
     }
     load();
-  }, [childId]);
+    return () => {
+      alive = false;
+    };
+  }, [childIdParam, router]);
 
-  if (!childId) return <SkeletonPage cards={4} />;
   if (loading || !child) {
     return <SkeletonPage cards={4} />;
   }
+  // From here on, the URL has been rewritten to include ?child= so
+  // hit-link construction can rely on it.
+  const childId = child.id;
 
   const GRADE_ORDER = ["kindergarten", "1st", "2nd", "3rd", "4th"];
   const GRADE_LABELS: Record<string, string> = {
