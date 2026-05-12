@@ -1211,26 +1211,12 @@ function ChildDashboard({
           </Link>
         </motion.div>
 
-        {/* ── Personalized Readee path (AI from placement test) ── */}
-        <motion.div variants={slideUp}>
-          <LearningPathCard
-            childId={child.id}
-            childFirstName={child.first_name ?? null}
-            variant="parent"
-          />
-        </motion.div>
-
-        {/* ── Today's Readee — daily question ritual ── */}
-        <motion.div variants={slideUp}>
-          <DailyQuestionCard variant="parent" />
-        </motion.div>
-
-        {/* ── From Your Teacher (only if classroom membership + open work) ── */}
-        <motion.div variants={slideUp}>
-          <TeacherAssignmentsCard childId={child.id} />
-        </motion.div>
-
-        {/* ── Daily Goal + Next Action ── */}
+        {/* ── Daily Goal + Next Action — PROMOTED ──
+            The primary action (placement quiz or next lesson) was
+            previously buried at position 8 behind three info cards.
+            Now position 4, immediately after identity (avatar + level +
+            stats). Time-to-primary-action drops from ~3 screens of
+            scroll to one. */}
         <motion.div variants={slideUp} className="space-y-4">
           {/* Daily Goal */}
           <div className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 flex items-center gap-4">
@@ -1433,16 +1419,19 @@ function ChildDashboard({
           </Link>
         </motion.div>
 
-        {/* ── Hero Tiles row 2 — the content army surfaces ── */}
+        {/* ── Hero Tiles row 2 — the content army surfaces ──
+            "Today's Readee" tile removed — the DailyQuestionCard
+            below covers that ritual already. Replaced with "Levels"
+            so kids see their ladder right next to the action menu. */}
         <motion.div variants={slideUp} className="grid grid-cols-3 gap-3">
-          <Link href="/today" className="block">
+          <Link href={`/levels?child=${child.id}`} className="block">
             <motion.div
               whileHover={{ scale: 1.05, y: -4 }}
               whileTap={{ scale: 0.95 }}
               className="h-28 sm:h-[130px] rounded-3xl bg-gradient-to-br from-amber-400 to-orange-500 p-3 sm:p-4 flex flex-col items-center justify-center text-center shadow-lg cursor-pointer"
             >
-              <Sparkles className="w-8 h-8 sm:w-10 sm:h-10 text-white mb-1.5 sm:mb-2" strokeWidth={1.5} />
-              <span className="text-xs sm:text-sm font-extrabold text-white leading-tight">Today&apos;s Readee</span>
+              <Trophy className="w-8 h-8 sm:w-10 sm:h-10 text-white mb-1.5 sm:mb-2" strokeWidth={1.5} />
+              <span className="text-xs sm:text-sm font-extrabold text-white leading-tight">Levels</span>
             </motion.div>
           </Link>
 
@@ -1467,6 +1456,32 @@ function ChildDashboard({
               <span className="text-xs sm:text-sm font-extrabold text-white leading-tight">Community</span>
             </motion.div>
           </Link>
+        </motion.div>
+
+        {/* ── Today's Readee — daily question ritual ──
+            Demoted from position 5 to here so the action stack on
+            top stays focused. Still a high-engagement card; it just
+            lives below the six tiles now. */}
+        <motion.div variants={slideUp}>
+          <DailyQuestionCard variant="parent" />
+        </motion.div>
+
+        {/* ── Personalized Readee path (AI from placement test) ──
+            This is parent-info (a curriculum map) more than kid-action
+            so it sits below the action surfaces. */}
+        <motion.div variants={slideUp}>
+          <LearningPathCard
+            childId={child.id}
+            childFirstName={child.first_name ?? null}
+            variant="parent"
+          />
+        </motion.div>
+
+        {/* ── From Your Teacher — only renders when there's a
+             classroom membership + open work. Hidden by default for
+             B2C accounts (which is most of them). */}
+        <motion.div variants={slideUp}>
+          <TeacherAssignmentsCard childId={child.id} />
         </motion.div>
 
         {/* ── Mobile: Parent Dashboard toggle ── */}

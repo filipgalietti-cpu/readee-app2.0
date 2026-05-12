@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Smartphone, X, Share } from "lucide-react";
+import Image from "next/image";
+import { Download, X, Share, Wifi, Zap } from "lucide-react";
 
 const DISMISSED_KEY = "readee_pwa_install_dismissed";
 const SUPPRESS_DAYS = 14;
@@ -13,6 +14,10 @@ const SUPPRESS_DAYS = 14;
  *     instruction since iOS doesn't expose a prompt API).
  *   · The user hasn't dismissed it in the last 14 days.
  *   · The app isn't already running in standalone mode.
+ *
+ * Visual design: brand-forward (bunny mascot + indigo/violet gradient)
+ * rather than a generic system prompt — the install moment is also a
+ * branding moment, especially for new parents.
  */
 export default function InstallPWABanner() {
   const [promptAvailable, setPromptAvailable] = useState(false);
@@ -83,46 +88,84 @@ export default function InstallPWABanner() {
   if (!promptAvailable && !isIOSSafari) return null;
 
   return (
-    <div className="rounded-2xl border border-indigo-100 dark:border-indigo-900/40 bg-gradient-to-br from-indigo-50 to-violet-50 dark:from-indigo-950/30 dark:to-violet-950/30 p-4 sm:p-5">
-      <div className="flex items-start gap-3">
-        <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-white dark:bg-slate-800 shadow-sm">
-          <Smartphone className="h-5 w-5 text-indigo-600 dark:text-indigo-300" />
+    <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-600 via-violet-600 to-fuchsia-600 p-5 sm:p-6 text-white shadow-lg">
+      {/* Decorative orbs — purely visual, hidden on small screens. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -top-12 -right-10 hidden h-40 w-40 rounded-full bg-white/10 blur-2xl sm:block"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -bottom-16 -left-8 hidden h-44 w-44 rounded-full bg-fuchsia-300/20 blur-3xl sm:block"
+      />
+
+      <button
+        onClick={dismiss}
+        aria-label="Dismiss"
+        className="absolute top-3 right-3 z-10 flex h-7 w-7 items-center justify-center rounded-lg text-white/70 hover:bg-white/15 hover:text-white transition-colors"
+      >
+        <X className="h-4 w-4" />
+      </button>
+
+      <div className="relative flex items-center gap-4 sm:gap-5">
+        {/* Bunny mascot, served from /public. Acts as the "icon" so the
+            banner doubles as a brand impression. */}
+        <div className="relative flex h-20 w-20 sm:h-24 sm:w-24 flex-shrink-0 items-center justify-center rounded-2xl bg-white/15 backdrop-blur-sm">
+          <Image
+            src="/images/ui/bunny-stars.png"
+            alt=""
+            width={96}
+            height={96}
+            className="h-16 w-16 sm:h-20 sm:w-20 object-contain drop-shadow-lg"
+            priority={false}
+          />
         </div>
+
         <div className="flex-1 min-w-0">
-          <p className="text-sm font-bold text-zinc-900 dark:text-slate-100">
-            Add Readee to your home screen
+          <p className="text-[11px] font-bold uppercase tracking-widest text-indigo-200">
+            Make Readee one tap away
           </p>
+          <h3 className="mt-0.5 text-lg sm:text-xl font-extrabold leading-tight">
+            Add Readee to your home screen
+          </h3>
+
           {promptAvailable ? (
             <>
-              <p className="mt-0.5 text-xs text-zinc-600 dark:text-slate-300">
-                One tap to install — opens like a regular app, works on flaky wifi.
-              </p>
+              <ul className="mt-2 space-y-1 text-xs sm:text-sm text-indigo-100/95">
+                <li className="flex items-center gap-1.5">
+                  <Zap className="h-3.5 w-3.5 flex-shrink-0" strokeWidth={2.4} />
+                  Opens like a regular app — no browser bar
+                </li>
+                <li className="flex items-center gap-1.5">
+                  <Wifi className="h-3.5 w-3.5 flex-shrink-0" strokeWidth={2.4} />
+                  Keeps working when wifi gets flaky
+                </li>
+              </ul>
               <button
                 onClick={install}
-                className="mt-3 inline-flex items-center gap-1.5 rounded-xl bg-indigo-600 px-3 py-2 text-xs font-bold text-white hover:bg-indigo-700"
+                className="mt-3 sm:mt-4 inline-flex items-center gap-2 rounded-xl bg-white px-4 py-2.5 text-sm font-bold text-indigo-700 shadow-sm hover:bg-indigo-50 transition-colors"
               >
+                <Download className="h-4 w-4" strokeWidth={2.4} />
                 Install Readee
               </button>
             </>
           ) : (
             <>
-              <p className="mt-0.5 text-xs text-zinc-600 dark:text-slate-300">
-                Tap{" "}
-                <span className="inline-flex items-center gap-1 rounded-md bg-white dark:bg-slate-800 px-1.5 py-0.5 text-[10px] font-bold text-indigo-700 dark:text-indigo-300 align-middle">
-                  <Share className="h-3 w-3" /> Share
+              <p className="mt-1.5 text-xs sm:text-sm text-indigo-100/95 leading-relaxed">
+                Tap the{" "}
+                <span className="inline-flex items-center gap-1 rounded-md bg-white/20 px-1.5 py-0.5 text-[11px] font-bold align-middle">
+                  <Share className="h-3 w-3" strokeWidth={2.4} />
+                  Share
                 </span>{" "}
-                then <strong>Add to Home Screen</strong> for an app-like experience.
+                button in Safari, then choose{" "}
+                <strong className="text-white">Add to Home Screen</strong>.
+              </p>
+              <p className="mt-2 text-[11px] text-indigo-200/80">
+                Works on flaky wifi · No app store needed
               </p>
             </>
           )}
         </div>
-        <button
-          onClick={dismiss}
-          aria-label="Dismiss"
-          className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-lg text-zinc-400 hover:bg-white/60 dark:hover:bg-slate-800 hover:text-zinc-700 dark:hover:text-slate-200 transition-colors"
-        >
-          <X className="h-4 w-4" />
-        </button>
       </div>
     </div>
   );

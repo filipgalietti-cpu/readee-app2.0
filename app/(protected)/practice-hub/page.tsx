@@ -259,6 +259,7 @@ function PracticeHubContent() {
 
   const [child, setChild] = useState<Child | null>(null);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState<string | null>(null);
   const [openDomains, setOpenDomains] = useState<Set<string>>(new Set());
   const [openGrades, setOpenGrades] = useState<Set<string>>(new Set());
   const plan = usePlanStore((s) => s.plan);
@@ -273,62 +274,99 @@ function PracticeHubContent() {
   // hydrated yet. Falling back to the child store → DB lookup lets
   // those flows resolve without bouncing the user back to /dashboard,
   // and silently URL-rewrites so refresh/bookmark works afterwards.
+  //
+  // Defensive contract: this resolver MUST set loading=false in every
+  // branch, even unexpected ones. A spinner that never goes away is
+  // the worst possible UX — better to show an error with a "Go to
+  // dashboard" link than to silently get stuck.
   useEffect(() => {
     let alive = true;
     async function load() {
-      const supabase = supabaseBrowser();
-      let resolvedId = childIdParam;
+      try {
+        const supabase = supabaseBrowser();
+        let resolvedId = childIdParam;
 
-      if (!resolvedId) {
-        const store = useChildStore.getState();
-        const storeChild = store.childData || store.children[0] || null;
-        if (storeChild) {
-          resolvedId = storeChild.id;
-        } else {
-          const { data: { user } } = await supabase.auth.getUser();
-          if (user) {
-            const { data: kids } = await supabase
-              .from("children")
-              .select("*")
-              .eq("parent_id", user.id)
-              .order("created_at", { ascending: true })
-              .limit(1);
-            if (kids && kids.length > 0) resolvedId = kids[0].id;
+        if (!resolvedId) {
+          const store = useChildStore.getState();
+          const storeChild = store.childData || store.children[0] || null;
+          if (storeChild) {
+            resolvedId = storeChild.id;
+          } else {
+            const { data: { user } } = await supabase.auth.getUser();
+            if (user) {
+              const { data: kids } = await supabase
+                .from("children")
+                .select("*")
+                .eq("parent_id", user.id)
+                .order("created_at", { ascending: true })
+                .limit(1);
+              if (kids && kids.length > 0) resolvedId = kids[0].id;
+            }
           }
         }
-      }
 
-      if (!resolvedId) {
+        if (!resolvedId) {
+          if (alive) {
+            setLoadError("We couldn't find a kid on this account. Head back to the dashboard and pick one.");
+            setLoading(false);
+          }
+          return;
+        }
+
+        if (!childIdParam && resolvedId && typeof window !== "undefined") {
+          // Preserve any other query params the caller passed (e.g. the
+          // Homework Scanner hands off ?standard=X). We only fill the
+          // missing child param.
+          const url = new URL(window.location.href);
+          url.searchParams.set("child", resolvedId);
+          window.history.replaceState(null, "", url.toString());
+        }
+
+        const { data, error } = await supabase
+          .from("children")
+          .select("*")
+          .eq("id", resolvedId)
+          .maybeSingle();
+        if (!alive) return;
+        if (error) {
+          setLoadError("Couldn't load your kid's profile. Try again in a moment.");
+          setLoading(false);
+          return;
+        }
+        if (!data) {
+          setLoadError("This kid profile isn't on your account. Pick a different one from the dashboard.");
+          setLoading(false);
+          return;
+        }
+        setChild(data as Child);
+        setLoading(false);
+      } catch (e: any) {
         if (alive) {
-          router.replace("/dashboard");
+          setLoadError(e?.message ?? "Something went wrong loading Practice.");
           setLoading(false);
         }
-        return;
       }
-
-      if (!childIdParam && resolvedId && typeof window !== "undefined") {
-        // Preserve any other query params the caller passed (e.g. the
-        // Homework Scanner hands off ?standard=X). We only fill the
-        // missing child param.
-        const url = new URL(window.location.href);
-        url.searchParams.set("child", resolvedId);
-        window.history.replaceState(null, "", url.toString());
-      }
-
-      const { data } = await supabase
-        .from("children")
-        .select("*")
-        .eq("id", resolvedId)
-        .single();
-      if (!alive) return;
-      if (data) setChild(data as Child);
-      setLoading(false);
     }
     load();
     return () => {
       alive = false;
     };
   }, [childIdParam, router]);
+
+  if (loadError) {
+    return (
+      <div className="mx-auto max-w-md py-16 px-4 text-center space-y-4">
+        <h1 className="text-2xl font-extrabold text-zinc-900">Hmm, something's off</h1>
+        <p className="text-sm text-zinc-500">{loadError}</p>
+        <Link
+          href="/dashboard"
+          className="inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-6 py-3 text-sm font-bold text-white hover:bg-indigo-700"
+        >
+          Back to dashboard
+        </Link>
+      </div>
+    );
+  }
 
   if (loading || !child) {
     return <SkeletonPage cards={4} />;
