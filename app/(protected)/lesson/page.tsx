@@ -505,6 +505,11 @@ function LessonContent() {
   const [child, setChild] = useState<Child | null>(null);
   const [lesson, setLesson] = useState<LessonRaw | null>(null);
   const [phase, setPhase] = useState<Phase>("loading");
+  // When the URL is missing pieces or a lookup fails, surface a
+  // kid-app-voice screen with a way out instead of spinning forever.
+  // Phase stays "loading" until we know lesson + child are ready, so
+  // anything in this state triggers the inline recovery card below.
+  const [loadError, setLoadError] = useState<string | null>(null);
   const userPlan = usePlanStore((s) => s.plan);
   const fetchPlan = usePlanStore((s) => s.fetch);
 
@@ -542,7 +547,14 @@ function LessonContent() {
   // Load child and lesson data
   useEffect(() => {
     async function load() {
-      if (!childId || !lessonId) return;
+      if (!childId) {
+        setLoadError("We lost track of which reader to open this for. Pick again from your dashboard.");
+        return;
+      }
+      if (!lessonId) {
+        setLoadError("This lesson link is incomplete. Head back to the dashboard and pick one to try.");
+        return;
+      }
 
       const supabase = supabaseBrowser();
       const { data } = await supabase
@@ -551,7 +563,10 @@ function LessonContent() {
         .eq("id", childId)
         .single();
 
-      if (!data) return;
+      if (!data) {
+        setLoadError("We couldn't open this reader's profile. Pick again from the dashboard.");
+        return;
+      }
 
       const c = data as Child;
       setChild(c);
@@ -580,6 +595,8 @@ function LessonContent() {
         } else {
           setPhase("learn");
         }
+      } else {
+        setLoadError("This lesson isn't ready right now. Try a different one from your dashboard.");
       }
     }
     load();
@@ -853,6 +870,29 @@ function LessonContent() {
     setConfettiPieces(pieces);
     setPhase("complete");
   };
+
+  if (loadError) {
+    return (
+      <div className="min-h-[60vh] flex items-center justify-center px-6">
+        <div className="max-w-sm text-center space-y-3">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/ui/bunny-thinking.png"
+            alt=""
+            className="mx-auto h-24 w-24 object-contain"
+          />
+          <p className="text-lg font-bold text-zinc-900 dark:text-white">Hmm.</p>
+          <p className="text-sm text-zinc-500 dark:text-slate-400">{loadError}</p>
+          <Link
+            href="/dashboard"
+            className="mt-2 inline-block rounded-full bg-indigo-600 px-5 py-2.5 text-sm font-bold text-white hover:bg-indigo-700"
+          >
+            Back to Dashboard
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   if (phase === "loading" || !child || !lesson) {
     return (
