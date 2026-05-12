@@ -7432,13 +7432,46 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.3d/S1a.mp3",
             "ttsScript": "Some words look almost the same, but they are different!",
-            "interaction": "Heading."
+            "audioRegenAt": "2026-05-12T02:08:16.063Z",
+            "displayParts": [
+              {
+                "text": "Some words look almost the same,",
+                "delay": 0
+              },
+              {
+                "text": "but they are different!",
+                "delay": 1500
+              }
+            ],
+            "highlightWord": {
+              "word": "different",
+              "delay": 1800
+            }
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.3d/S1b.mp3",
             "ttsScript": "Look at the word was.",
-            "interaction": "WAS diagram appears.",
+            "audioRegenAt": "2026-05-12T02:08:19.910Z",
+            "displayParts": [
+              {
+                "text": "Look at the word ",
+                "delay": 0
+              },
+              {
+                "text": "was.",
+                "delay": 900
+              }
+            ],
+            "afterPhonemes": [
+              "w",
+              "uh",
+              "s"
+            ],
+            "highlightWord": {
+              "word": "was",
+              "delay": 900
+            },
             "displayDiagram": {
               "delay": 1500,
               "letters": [
@@ -7458,7 +7491,29 @@
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.3d/S1c.mp3",
             "ttsScript": "Now flip the letters around. Same letters, but now it says saw!",
-            "interaction": "WAS diagram swaps to SAW.",
+            "audioRegenAt": "2026-05-12T02:08:27.315Z",
+            "displayParts": [
+              {
+                "text": "Now flip the letters around.",
+                "delay": 0
+              },
+              {
+                "text": "Same letters, but now it says ",
+                "delay": 2000
+              },
+              {
+                "text": "saw!",
+                "delay": 3500
+              }
+            ],
+            "afterPhonemes": [
+              "s",
+              "aw"
+            ],
+            "highlightWord": {
+              "word": "saw",
+              "delay": 3500
+            },
             "displayDiagram": {
               "delay": 2500,
               "letters": [
@@ -7478,7 +7533,25 @@
             "sub": "d",
             "audioFile": "audio/lessons/RF.K.3d/S1d.mp3",
             "ttsScript": "Let us learn how to spot the difference between look-alike words.",
-            "interaction": "Tap to continue."
+            "audioRegenAt": "2026-05-12T02:08:33.349Z",
+            "displayParts": [
+              {
+                "text": "Let us learn how to spot the ",
+                "delay": 0
+              },
+              {
+                "text": "difference between ",
+                "delay": 1500
+              },
+              {
+                "text": "look-alike words.",
+                "delay": 2500
+              }
+            ],
+            "highlightWord": {
+              "word": "look-alike",
+              "delay": 2500
+            }
           }
         ],
         "heading": "Look-Alike Words!",
@@ -7493,23 +7566,93 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.3d/S2a.mp3",
             "ttsScript": "Two tricks help us tell look-alike words apart.",
-            "interaction": "Heading."
+            "audioRegenAt": "2026-05-12T02:08:48.784Z",
+            "displayParts": [
+              {
+                "text": "Two tricks help us tell ",
+                "delay": 0
+              },
+              {
+                "text": "look-alike words",
+                "delay": 1500
+              },
+              {
+                "text": " apart.",
+                "delay": 2500
+              }
+            ],
+            "highlightWord": {
+              "word": "tricks",
+              "delay": 500
+            }
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.3d/S2b.mp3",
             "ttsScript": "Trick one. Look at the very first letter. That tells you a lot!",
-            "displayText": "Trick 1: Check the first letter",
-            "interaction": "Pill: Start with the first letter.",
-            "displayDelay": 1500
+            "audioRegenAt": "2026-05-12T02:08:55.815Z",
+            "displayParts": [
+              {
+                "text": "Trick 1: ",
+                "delay": 0
+              },
+              {
+                "text": "Check the ",
+                "delay": 500
+              },
+              {
+                "text": "first letter",
+                "delay": 1200
+              }
+            ],
+            "highlightWord": {
+              "word": "first",
+              "delay": 1500
+            },
+            "highlightPills": [
+              {
+                "pill": 2,
+                "delay": 1200
+              }
+            ]
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.3d/S2c.mp3",
             "ttsScript": "Trick two. Then read the rest of the letters, one at a time.",
-            "displayText": "Trick 2: Read the rest, in order",
-            "interaction": "Pill: Then read the rest.",
-            "displayDelay": 1500
+            "audioRegenAt": "2026-05-12T02:09:02.366Z",
+            "displayParts": [
+              {
+                "text": "Trick 2: ",
+                "delay": 0
+              },
+              {
+                "text": "Read the ",
+                "delay": 500
+              },
+              {
+                "text": "rest, ",
+                "delay": 1000
+              },
+              {
+                "text": "in order",
+                "delay": 1500
+              }
+            ],
+            "highlightWord": {
+              "word": "rest",
+              "delay": 1800
+            },
+            "highlightPills": [
+              {
+                "pill": 2,
+                "delay": 1000
+              },
+              {
+                "pill": 3,
+                "delay": 1500
+              }
+            ]
           }
         ],
         "heading": "How to Tell Them Apart",
@@ -7524,14 +7667,27 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.3d/S3a.mp3",
             "ttsScript": "Look at these two words. Can you tell them apart?",
-            "displayText": "",
-            "interaction": "Heading appears."
+            "audioRegenAt": "2026-05-12T02:09:41.202Z",
+            "displayParts": [
+              {
+                "text": "Look at these two words.",
+                "delay": 0
+              },
+              {
+                "text": "Can you tell them apart?",
+                "delay": 2000
+              }
+            ],
+            "highlightWord": {
+              "word": "words",
+              "delay": 1000
+            }
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.3d/S3b.mp3",
             "ttsScript": "'On' and 'no.' They have the same letters in a different order.",
-            "interaction": "Both words appear as side-by-side pills.",
+            "audioRegenAt": "2026-05-12T02:09:48.923Z",
             "displayParts": [
               {
                 "text": "on",
@@ -7541,13 +7697,32 @@
                 "text": "no",
                 "delay": 2200
               }
+            ],
+            "highlightWord": {
+              "word": "letters",
+              "delay": 3500
+            },
+            "highlightPills": [
+              {
+                "pill": 0,
+                "delay": 800
+              },
+              {
+                "pill": 1,
+                "delay": 2200
+              }
             ]
           },
           {
             "sub": "c",
+            "sfxClaps": [
+              {
+                "delay": 7000
+              }
+            ],
             "audioFile": "audio/lessons/RF.K.3d/S3c.mp3",
             "ttsScript": "'On' starts with O. 'No' starts with N. The first letter makes them different words!",
-            "interaction": "Pills: [on = O first] [no = N first] pop in. Stars.",
+            "audioRegenAt": "2026-05-12T02:09:56.505Z",
             "displayParts": [
               {
                 "text": "on starts with O",
@@ -7556,6 +7731,20 @@
               {
                 "text": "no starts with N",
                 "delay": 2990
+              }
+            ],
+            "highlightWord": {
+              "word": "first letter",
+              "delay": 6000
+            },
+            "highlightPills": [
+              {
+                "pill": 0,
+                "delay": 500
+              },
+              {
+                "pill": 1,
+                "delay": 3500
               }
             ]
           }
@@ -7572,23 +7761,102 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.3d/S4a.mp3",
             "ttsScript": "When words look alike, point to each letter from left to right.",
-            "displayText": "",
-            "interaction": "Heading with sparkle."
+            "audioRegenAt": "2026-05-12T02:10:17.140Z",
+            "displayParts": [
+              {
+                "text": "When words look alike, ",
+                "delay": 0
+              },
+              {
+                "text": "point",
+                "delay": 1500
+              },
+              {
+                "text": " to each letter from left to right.",
+                "delay": 2500
+              }
+            ],
+            "highlightWord": {
+              "word": "point",
+              "delay": 1500
+            },
+            "displayDiagram": {
+              "delay": 3000,
+              "letters": [
+                {
+                  "text": "d"
+                },
+                {
+                  "text": "o"
+                },
+                {
+                  "text": "g"
+                }
+              ]
+            }
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.3d/S4b.mp3",
             "ttsScript": "Say each letter as you point. That slows you down and helps you read the right word!",
-            "displayText": "Point → Say each letter → Read correctly!",
-            "interaction": "Pill: [Point → Say each letter → Read correctly!] pops in.",
-            "displayDelay": 1318
+            "audioRegenAt": "2026-05-12T02:10:24.837Z",
+            "displayParts": [
+              {
+                "text": "Point →",
+                "delay": 0
+              },
+              {
+                "text": " Say each letter →",
+                "delay": 1500
+              },
+              {
+                "text": " Read correctly!",
+                "delay": 3000
+              }
+            ],
+            "highlightWord": {
+              "word": "Say",
+              "delay": 300
+            },
+            "highlightPills": [
+              {
+                "pill": 0,
+                "delay": 0
+              },
+              {
+                "pill": 1,
+                "delay": 1500
+              },
+              {
+                "pill": 2,
+                "delay": 3000
+              }
+            ]
           },
           {
             "sub": "c",
+            "sfxClaps": [
+              {
+                "delay": 2500
+              }
+            ],
             "audioFile": "audio/lessons/RF.K.3d/S4c.mp3",
             "ttsScript": "Slow and careful beats fast and wrong!",
-            "displayText": "",
-            "interaction": "Turtle with a gold medal icon. Tap to continue."
+            "audioRegenAt": "2026-05-12T02:10:29.973Z",
+            "displayParts": [
+              {
+                "text": "Slow and careful",
+                "delay": 0
+              },
+              {
+                "text": " beats fast and wrong!",
+                "delay": 1800
+              }
+            ],
+            "highlightWord": {
+              "word": "careful",
+              "delay": 500
+            }
           }
         ],
         "heading": "A Helpful Trick!",
@@ -7601,18 +7869,56 @@
         "steps": [
           {
             "sub": "a",
+            "sfxClaps": [
+              {
+                "delay": 2500
+              }
+            ],
             "audioFile": "audio/lessons/RF.K.3d/S5a.mp3",
             "ttsScript": "You've got eagle eyes for look-alike words!",
-            "displayText": "",
-            "interaction": "Stars celebration."
+            "audioRegenAt": "2026-05-12T02:10:41.756Z",
+            "displayParts": [
+              {
+                "text": "You've got eagle eyes for",
+                "delay": 0
+              },
+              {
+                "text": "look-alike words!",
+                "delay": 1500
+              }
+            ],
+            "highlightWord": {
+              "word": "look-alike",
+              "delay": 1500
+            }
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.3d/S5b.mp3",
             "ttsScript": "Let's practice telling look-alike words apart. Look carefully!",
-            "displayText": "Let's spot the look-alikes!",
-            "interaction": "'Let's Go!' button pulses.",
-            "displayDelay": 2000
+            "audioRegenAt": "2026-05-12T02:10:46.942Z",
+            "displayParts": [
+              {
+                "text": "Let's practice telling",
+                "delay": 0
+              },
+              {
+                "text": "look-alike words",
+                "delay": 1000
+              },
+              {
+                "text": "apart.",
+                "delay": 2000
+              },
+              {
+                "text": "Look carefully!",
+                "delay": 2800
+              }
+            ],
+            "highlightWord": {
+              "word": "look-alike",
+              "delay": 1000
+            }
           }
         ],
         "heading": "Time to Practice!",
@@ -7650,24 +7956,98 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.4/S1a.mp3",
             "ttsScript": "When we read, it helps to know WHY we're reading. Are we reading for fun? To learn something?",
-            "displayText": "",
-            "interaction": "Heading fades in."
+            "audioRegenAt": "2026-05-12T02:05:57.344Z",
+            "displayParts": [
+              {
+                "text": "When we read, it helps to know ",
+                "delay": 0
+              },
+              {
+                "text": "WHY",
+                "delay": 1500
+              },
+              {
+                "text": " we're reading.",
+                "delay": 2000
+              },
+              {
+                "text": " Are we reading for fun?",
+                "delay": 3500
+              },
+              {
+                "text": " To learn something?",
+                "delay": 5000
+              }
+            ],
+            "highlightWord": {
+              "word": "WHY",
+              "delay": 1500
+            }
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.4/S1b.mp3",
             "ttsScript": "Reading with purpose means knowing what we're looking for. It makes reading even better!",
-            "displayText": "Reading with Purpose!",
-            "interaction": "'Reading with Purpose!' pops up sparkly.",
-            "displayDelay": 1500
+            "audioRegenAt": "2026-05-12T02:06:05.309Z",
+            "displayParts": [
+              {
+                "text": "Reading with ",
+                "delay": 0
+              },
+              {
+                "text": "purpose",
+                "delay": 800
+              },
+              {
+                "text": " means knowing what we're looking for.",
+                "delay": 1500
+              },
+              {
+                "text": " It makes reading even better!",
+                "delay": 3500
+              }
+            ],
+            "highlightWord": {
+              "word": "purpose",
+              "delay": 800
+            },
+            "highlightPills": [
+              {
+                "pill": 1,
+                "delay": 800
+              }
+            ]
           },
           {
             "sub": "c",
+            "sfxClaps": [
+              {
+                "delay": 2500
+              }
+            ],
             "audioFile": "audio/lessons/RF.K.4/S1c.mp3",
             "ttsScript": "Let's learn how to read with purpose!",
-            "displayText": "Let's learn how to read with purpose!",
-            "interaction": "Lightbulb turns on. Tap to continue.",
-            "displayDelay": 1000
+            "audioRegenAt": "2026-05-12T02:06:09.744Z",
+            "displayParts": [
+              {
+                "text": "Let's learn how to read with ",
+                "delay": 0
+              },
+              {
+                "text": "purpose!",
+                "delay": 1500
+              }
+            ],
+            "highlightWord": {
+              "word": "purpose",
+              "delay": 1500
+            },
+            "highlightPills": [
+              {
+                "pill": 1,
+                "delay": 1500
+              }
+            ]
           }
         ],
         "heading": "Let's Read with Purpose!",
@@ -7682,25 +8062,95 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.4/S2a.mp3",
             "ttsScript": "There are two big reasons we read a book!",
-            "interaction": "Heading lands."
+            "audioRegenAt": "2026-05-12T02:06:25.678Z",
+            "displayParts": [
+              {
+                "text": "There are two big ",
+                "delay": 0
+              },
+              {
+                "text": "reasons",
+                "delay": 1000
+              },
+              {
+                "text": " we read a book!",
+                "delay": 2000
+              }
+            ],
+            "highlightWord": {
+              "word": "reasons",
+              "delay": 1000
+            }
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.4/S2b.mp3",
             "imageFile": "images/lessons/RF.K.4/S2b.png",
             "ttsScript": "Number one. A storybook. We read it for fun!",
-            "displayText": "Storybook = For fun!",
-            "interaction": "Storybook image swaps in. Pill: For fun!",
-            "displayDelay": 2200
+            "audioRegenAt": "2026-05-12T02:06:30.758Z",
+            "displayParts": [
+              {
+                "text": "Number one. A ",
+                "delay": 0
+              },
+              {
+                "text": "storybook",
+                "delay": 800
+              },
+              {
+                "text": ". We read it ",
+                "delay": 1800
+              },
+              {
+                "text": "for fun!",
+                "delay": 2500
+              }
+            ],
+            "highlightWord": {
+              "word": "fun",
+              "delay": 2500
+            },
+            "highlightPills": [
+              {
+                "pill": 3,
+                "delay": 2500
+              }
+            ]
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.4/S2c.mp3",
             "imageFile": "images/lessons/RF.K.4/S2c.png",
             "ttsScript": "Number two. A fact book. We read it to learn!",
-            "displayText": "Fact book = To learn!",
-            "interaction": "Fact book image swaps in. Pill: To learn!",
-            "displayDelay": 2200
+            "audioRegenAt": "2026-05-12T02:06:36.752Z",
+            "displayParts": [
+              {
+                "text": "Number two. A ",
+                "delay": 0
+              },
+              {
+                "text": "fact book",
+                "delay": 800
+              },
+              {
+                "text": ". We read it ",
+                "delay": 1800
+              },
+              {
+                "text": "to learn!",
+                "delay": 2500
+              }
+            ],
+            "highlightWord": {
+              "word": "learn",
+              "delay": 2500
+            },
+            "highlightPills": [
+              {
+                "pill": 3,
+                "delay": 2500
+              }
+            ]
           }
         ],
         "heading": "Why Are We Reading?",
@@ -7715,23 +8165,92 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.4/S3a.mp3",
             "ttsScript": "Imagine you pick up a book about tigers. Why would you read it?",
-            "interaction": "Heading."
+            "audioRegenAt": "2026-05-12T02:06:52.693Z",
+            "displayParts": [
+              {
+                "text": "Imagine you pick up a book about tigers.",
+                "delay": 0
+              },
+              {
+                "text": "Why would you read it?",
+                "delay": 2500
+              }
+            ],
+            "highlightWord": {
+              "word": "read",
+              "delay": 2800
+            },
+            "highlightPills": [
+              {
+                "pill": 1,
+                "delay": 2500
+              }
+            ]
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.4/S3b.mp3",
             "ttsScript": "Our purpose is to find out where tigers live. That is what we are looking for as we read.",
-            "displayText": "Purpose: Where do tigers live?",
-            "interaction": "Pill: Purpose: Where do tigers live?",
-            "displayDelay": 2500
+            "audioRegenAt": "2026-05-12T02:06:59.937Z",
+            "displayParts": [
+              {
+                "text": "Our purpose is to find out where tigers live.",
+                "delay": 0
+              },
+              {
+                "text": "That is what we are looking for as we read.",
+                "delay": 3500
+              }
+            ],
+            "highlightWord": {
+              "word": "purpose",
+              "delay": 300
+            },
+            "highlightPills": [
+              {
+                "pill": 0,
+                "delay": 0
+              }
+            ]
           },
           {
             "sub": "c",
+            "sfxClaps": [
+              {
+                "delay": 4800
+              }
+            ],
             "audioFile": "audio/lessons/RF.K.4/S3c.mp3",
             "ttsScript": "And here is the answer! Tigers live in forests and jungles. We found what we were looking for!",
-            "displayText": "Answer: Forests and jungles!",
-            "interaction": "Pill: Answer: Forests and jungles!",
-            "displayDelay": 2500
+            "audioRegenAt": "2026-05-12T02:07:08.420Z",
+            "displayParts": [
+              {
+                "text": "And here is the answer!",
+                "delay": 0
+              },
+              {
+                "text": "Tigers live in forests and jungles.",
+                "delay": 1800
+              },
+              {
+                "text": "We found what we were looking for!",
+                "delay": 4500
+              }
+            ],
+            "highlightWord": {
+              "word": "answer",
+              "delay": 300
+            },
+            "highlightPills": [
+              {
+                "pill": 0,
+                "delay": 0
+              },
+              {
+                "pill": 2,
+                "delay": 4500
+              }
+            ]
           }
         ],
         "heading": "Let's Try It!",
@@ -7746,23 +8265,84 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.4/S4a.mp3",
             "ttsScript": "Before you read, ask yourself one question about the book.",
-            "displayText": "",
-            "interaction": "Heading with sparkle."
+            "audioRegenAt": "2026-05-12T02:07:20.932Z",
+            "displayParts": [
+              {
+                "text": "Before you read,",
+                "delay": 0
+              },
+              {
+                "text": "ask yourself one ",
+                "delay": 1000
+              },
+              {
+                "text": "question",
+                "delay": 1500
+              },
+              {
+                "text": " about the book.",
+                "delay": 2000
+              }
+            ],
+            "highlightWord": {
+              "word": "question",
+              "delay": 1500
+            }
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.4/S4b.mp3",
             "ttsScript": "Then look for the answer while you read! That gives you a mission!",
-            "displayText": "Ask a question → Read to find the answer!",
-            "interaction": "Pill: [Ask a question → Read to find the answer!] pops in.",
-            "displayDelay": 1008
+            "audioRegenAt": "2026-05-12T02:07:26.561Z",
+            "displayParts": [
+              {
+                "text": "Ask a question",
+                "delay": 0
+              },
+              {
+                "text": " → Read to find the answer!",
+                "delay": 1500
+              }
+            ],
+            "highlightWord": {
+              "word": "mission",
+              "delay": 2500
+            },
+            "highlightPills": [
+              {
+                "pill": 0,
+                "delay": 0
+              },
+              {
+                "pill": 1,
+                "delay": 1500
+              }
+            ]
           },
           {
             "sub": "c",
+            "sfxClaps": [
+              {
+                "delay": 2000
+              }
+            ],
             "audioFile": "audio/lessons/RF.K.4/S4c.mp3",
             "ttsScript": "Reading with a mission is way more fun!",
-            "displayText": "",
-            "interaction": "Rocket icon. Tap to continue."
+            "audioRegenAt": "2026-05-12T02:07:31.142Z",
+            "displayParts": [
+              {
+                "text": "Reading with a mission",
+                "delay": 0
+              },
+              {
+                "text": " is way more fun!",
+                "delay": 1000
+              }
+            ],
+            "highlightWord": {
+              "word": "fun",
+              "delay": 1500
+            }
           }
         ],
         "heading": "A Helpful Trick!",
@@ -7775,18 +8355,85 @@
         "steps": [
           {
             "sub": "a",
+            "sfxClaps": [
+              {
+                "delay": 3500
+              }
+            ],
             "audioFile": "audio/lessons/RF.K.4/S5a.mp3",
             "ttsScript": "You know how to read with purpose now! That's a superpower!",
-            "displayText": "",
-            "interaction": "Stars celebration."
+            "interaction": "Stars celebration.",
+            "audioRegenAt": "2026-05-12T02:07:45.439Z",
+            "displayParts": [
+              {
+                "text": "You know how to read with ",
+                "delay": 0
+              },
+              {
+                "text": "purpose now!",
+                "delay": 1200
+              },
+              {
+                "text": "That's a ",
+                "delay": 2500
+              },
+              {
+                "text": "superpower!",
+                "delay": 3000
+              }
+            ],
+            "highlightWord": {
+              "word": "superpower",
+              "delay": 3200
+            }
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.4/S5b.mp3",
-            "ttsScript": "Let's practice reading with a purpose. Find what you're looking for!",
-            "displayText": "Let's practice reading!",
+            "ttsScript": "Let's practice reading with a purpose.",
+            "audioRegenAt": "2026-05-12T02:07:50.027Z",
+            "displayParts": [
+              {
+                "text": "Let's practice reading with a ",
+                "delay": 0
+              },
+              {
+                "text": "purpose.",
+                "delay": 1800
+              }
+            ],
+            "highlightWord": {
+              "word": "purpose",
+              "delay": 2000
+            },
+            "highlightPills": [
+              {
+                "pill": 1,
+                "delay": 1800
+              }
+            ]
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.K.4/S5c.mp3",
+            "ttsScript": "Find what you're looking for!",
             "interaction": "'Let's Go!' button pulses.",
-            "displayDelay": 2750
+            "audioRegenAt": "2026-05-12T02:07:53.807Z",
+            "displayDelay": 2750,
+            "displayParts": [
+              {
+                "text": "Find what you're ",
+                "delay": 0
+              },
+              {
+                "text": "looking for!",
+                "delay": 1000
+              }
+            ],
+            "highlightWord": {
+              "word": "looking",
+              "delay": 1200
+            }
           }
         ],
         "heading": "Time to Practice!",
@@ -7834,24 +8481,117 @@
             "sub": "a",
             "audioFile": "audio/lessons/K.L.1/S1a.mp3",
             "ttsScript": "Grammar is the set of rules that helps us talk and write in a way that makes sense!",
-            "displayText": "",
-            "interaction": "Heading fades in."
+            "audioRegenAt": "2026-05-12T02:03:06.559Z",
+            "displayParts": [
+              {
+                "text": "Grammar is the set of rules",
+                "delay": 0
+              },
+              {
+                "text": "that helps us talk and write",
+                "delay": 1500
+              },
+              {
+                "text": "in a way that makes sense!",
+                "delay": 3000
+              }
+            ],
+            "highlightWord": {
+              "word": "Grammar",
+              "delay": 300
+            },
+            "highlightPills": [
+              {
+                "pill": 0,
+                "delay": 300
+              },
+              {
+                "pill": 1,
+                "delay": 1500
+              },
+              {
+                "pill": 2,
+                "delay": 3000
+              }
+            ]
           },
           {
             "sub": "b",
+            "sfxClaps": [
+              {
+                "delay": 3500
+              }
+            ],
             "audioFile": "audio/lessons/K.L.1/S1b.mp3",
             "ttsScript": "When we use good grammar, people understand us! And it's not hard at all.",
-            "displayText": "Grammar means Making Sense!",
-            "interaction": "'Grammar = Making Sense!' pops up sparkly.",
-            "displayDelay": 3500
+            "audioRegenAt": "2026-05-12T02:03:13.004Z",
+            "displayParts": [
+              {
+                "text": "When we use good grammar,",
+                "delay": 0
+              },
+              {
+                "text": "people understand us!",
+                "delay": 1500
+              },
+              {
+                "text": "And it's not hard at all.",
+                "delay": 3000
+              }
+            ],
+            "highlightWord": {
+              "word": "understand",
+              "delay": 1500
+            },
+            "highlightPills": [
+              {
+                "pill": 0,
+                "delay": 0
+              },
+              {
+                "pill": 1,
+                "delay": 1500
+              },
+              {
+                "pill": 2,
+                "delay": 3000
+              }
+            ]
           },
           {
             "sub": "c",
+            "sfxClaps": [
+              {
+                "delay": 1500
+              }
+            ],
             "audioFile": "audio/lessons/K.L.1/S1c.mp3",
             "ttsScript": "Let's learn some basic grammar rules!",
-            "displayText": "Let's learn some basic grammar rules!",
-            "interaction": "Word blocks arrange themselves. Tap to continue.",
-            "displayDelay": 1000
+            "audioRegenAt": "2026-05-12T02:03:17.297Z",
+            "displayParts": [
+              {
+                "text": "Let's learn some basic",
+                "delay": 0
+              },
+              {
+                "text": "grammar rules!",
+                "delay": 1000
+              }
+            ],
+            "highlightWord": {
+              "word": "rules",
+              "delay": 1000
+            },
+            "highlightPills": [
+              {
+                "pill": 0,
+                "delay": 0
+              },
+              {
+                "pill": 1,
+                "delay": 1000
+              }
+            ]
           }
         ],
         "heading": "Let's Learn Grammar Basics!",
@@ -7867,7 +8607,26 @@
             "audioFile": "audio/lessons/K.L.1/S2a.mp3",
             "ttsScript": "Did you know that words have different jobs? Some words name things — like 'cat' or 'ball.'",
             "displayText": "",
-            "interaction": "Heading appears."
+            "interaction": "Heading appears.",
+            "audioRegenAt": "2026-05-12T02:03:45.437Z",
+            "displayParts": [
+              {
+                "text": "Did you know that words have different jobs?",
+                "delay": 0
+              },
+              {
+                "text": "Some words name things",
+                "delay": 2500
+              },
+              {
+                "text": "— like 'cat' or 'ball.'",
+                "delay": 4500
+              }
+            ],
+            "highlightWord": {
+              "word": "jobs",
+              "delay": 1500
+            }
           },
           {
             "sub": "b",
@@ -7875,7 +8634,48 @@
             "ttsScript": "These are called nouns! A noun names a person, place, or thing.",
             "displayText": "Noun",
             "interaction": "Noun row fills in.",
+            "audioRegenAt": "2026-05-12T02:03:52.216Z",
             "displayDelay": 1500,
+            "displayParts": [
+              {
+                "text": "These are called nouns!",
+                "delay": 0
+              },
+              {
+                "text": "A noun names a ",
+                "delay": 1500
+              },
+              {
+                "text": "person",
+                "delay": 2500
+              },
+              {
+                "text": ", place",
+                "delay": 3500
+              },
+              {
+                "text": ", or thing.",
+                "delay": 4500
+              }
+            ],
+            "highlightWord": {
+              "word": "nouns",
+              "delay": 500
+            },
+            "highlightPills": [
+              {
+                "pill": 2,
+                "delay": 2500
+              },
+              {
+                "pill": 3,
+                "delay": 3500
+              },
+              {
+                "pill": 4,
+                "delay": 4500
+              }
+            ],
             "displayTableRow": {
               "label": "Noun",
               "value": "Person, Place, or Thing",
@@ -7891,7 +8691,48 @@
             "ttsScript": "Other words show action — like 'run,' 'jump,' or 'eat.' These are verbs!",
             "displayText": "Verb",
             "interaction": "Verb row fills in.",
+            "audioRegenAt": "2026-05-12T02:04:00.254Z",
             "displayDelay": 1500,
+            "displayParts": [
+              {
+                "text": "Other words show action — like ",
+                "delay": 0
+              },
+              {
+                "text": "'run,'",
+                "delay": 2000
+              },
+              {
+                "text": "'jump,'",
+                "delay": 3000
+              },
+              {
+                "text": "or 'eat.' ",
+                "delay": 4000
+              },
+              {
+                "text": "These are verbs!",
+                "delay": 5000
+              }
+            ],
+            "highlightWord": {
+              "word": "verbs",
+              "delay": 5500
+            },
+            "highlightPills": [
+              {
+                "pill": 1,
+                "delay": 2000
+              },
+              {
+                "pill": 2,
+                "delay": 3000
+              },
+              {
+                "pill": 3,
+                "delay": 4000
+              }
+            ],
             "displayTableRow": {
               "label": "Verb",
               "value": "Action Word"
@@ -7902,14 +8743,41 @@
             "audioFile": "audio/lessons/K.L.1/S2d.mp3",
             "ttsScript": "Nouns and verbs work together to make sentences! Like: The cat runs.",
             "interaction": "Both pills connect: [The cat] + [runs] = sentence. Tap to continue.",
+            "audioRegenAt": "2026-05-12T02:04:06.866Z",
             "displayParts": [
               {
-                "text": "The cat",
-                "delay": 5390
+                "text": "Nouns and verbs work together to make ",
+                "delay": 0
               },
               {
-                "text": "runs",
-                "delay": 6300
+                "text": "sentences!",
+                "delay": 3000
+              },
+              {
+                "text": "Like: ",
+                "delay": 4500
+              },
+              {
+                "text": "The cat",
+                "delay": 5000
+              },
+              {
+                "text": " runs.",
+                "delay": 5800
+              }
+            ],
+            "highlightWord": {
+              "word": "sentences",
+              "delay": 3000
+            },
+            "highlightPills": [
+              {
+                "pill": 3,
+                "delay": 5000
+              },
+              {
+                "pill": 4,
+                "delay": 5800
               }
             ]
           }
@@ -7926,24 +8794,122 @@
             "sub": "a",
             "audioFile": "audio/lessons/K.L.1/S3a.mp3",
             "ttsScript": "Look at this sentence: The dog jumps.",
-            "displayText": "",
-            "interaction": "Heading appears."
+            "audioRegenAt": "2026-05-12T02:04:25.908Z",
+            "displayParts": [
+              {
+                "text": "Look at this sentence: ",
+                "delay": 0
+              },
+              {
+                "text": "The dog jumps.",
+                "delay": 1000
+              }
+            ]
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/K.L.1/S3b.mp3",
             "ttsScript": "What's the noun? The dog! Dog is a thing, so it's a noun!",
-            "displayText": "dog means Noun",
-            "interaction": "Pill: [dog = Noun ✓] pops in blue.",
-            "displayDelay": 3250
+            "audioRegenAt": "2026-05-12T02:04:33.571Z",
+            "displayParts": [
+              {
+                "text": "What's the ",
+                "delay": 0
+              },
+              {
+                "text": "noun",
+                "delay": 500
+              },
+              {
+                "text": "? The ",
+                "delay": 1000
+              },
+              {
+                "text": "dog",
+                "delay": 1500
+              },
+              {
+                "text": "! Dog is a thing, so it's a ",
+                "delay": 2500
+              },
+              {
+                "text": "noun!",
+                "delay": 3000
+              }
+            ],
+            "highlightWord": {
+              "word": "noun",
+              "delay": 500
+            },
+            "highlightPills": [
+              {
+                "pill": 1,
+                "delay": 500
+              },
+              {
+                "pill": 3,
+                "delay": 1500
+              },
+              {
+                "pill": 5,
+                "delay": 3000
+              }
+            ]
           },
           {
             "sub": "c",
+            "sfxClaps": [
+              {
+                "delay": 3500
+              }
+            ],
             "audioFile": "audio/lessons/K.L.1/S3c.mp3",
             "ttsScript": "What's the verb? Jumps! Jumping is an action, so it's a verb!",
-            "displayText": "jumps is a Verb",
-            "interaction": "Pill: [jumps = Verb ✓] pops in green. Stars.",
-            "displayDelay": 3000
+            "audioRegenAt": "2026-05-12T02:04:40.558Z",
+            "displayParts": [
+              {
+                "text": "What's the ",
+                "delay": 0
+              },
+              {
+                "text": "verb",
+                "delay": 500
+              },
+              {
+                "text": "? ",
+                "delay": 1000
+              },
+              {
+                "text": "Jumps",
+                "delay": 1500
+              },
+              {
+                "text": "! Jumping is an action, so it's a ",
+                "delay": 2500
+              },
+              {
+                "text": "verb!",
+                "delay": 3000
+              }
+            ],
+            "highlightWord": {
+              "word": "verb",
+              "delay": 500
+            },
+            "highlightPills": [
+              {
+                "pill": 1,
+                "delay": 500
+              },
+              {
+                "pill": 3,
+                "delay": 1500
+              },
+              {
+                "pill": 5,
+                "delay": 3000
+              }
+            ]
           }
         ],
         "heading": "Let's Find Nouns and Verbs!",
@@ -7958,14 +8924,39 @@
             "sub": "a",
             "audioFile": "audio/lessons/K.L.1/S4a.mp3",
             "ttsScript": "To find a noun, ask: Can I touch it or see it? If yes, it's probably a noun!",
-            "displayText": "",
-            "interaction": "Heading with sparkle."
+            "audioRegenAt": "2026-05-12T02:05:03.538Z",
+            "displayParts": [
+              {
+                "text": "To find a ",
+                "delay": 0
+              },
+              {
+                "text": "noun",
+                "delay": 500
+              },
+              {
+                "text": ", ask: Can I touch it or see it?",
+                "delay": 1200
+              },
+              {
+                "text": "If yes, it's probably a ",
+                "delay": 2500
+              },
+              {
+                "text": "noun!",
+                "delay": 3500
+              }
+            ],
+            "highlightWord": {
+              "word": "noun",
+              "delay": 500
+            }
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/K.L.1/S4b.mp3",
             "ttsScript": "To find a verb, ask: Can I do it? If yes, it's a verb!",
-            "interaction": "Pills: [Can I touch it? → Noun!] [Can I do it? → Verb!] pop in.",
+            "audioRegenAt": "2026-05-12T02:05:09.908Z",
             "displayParts": [
               {
                 "text": "Can I touch it? → Noun!",
@@ -7975,14 +8966,46 @@
                 "text": "Can I do it? → Verb!",
                 "delay": 2800
               }
+            ],
+            "highlightWord": {
+              "word": "verb",
+              "delay": 500
+            },
+            "highlightPills": [
+              {
+                "pill": 0,
+                "delay": 300
+              },
+              {
+                "pill": 1,
+                "delay": 2800
+              }
             ]
           },
           {
             "sub": "c",
+            "sfxClaps": [
+              {
+                "delay": 0
+              }
+            ],
             "audioFile": "audio/lessons/K.L.1/S4c.mp3",
             "ttsScript": "You're a grammar detective!",
-            "displayText": "",
-            "interaction": "Badge icon. Tap to continue."
+            "audioRegenAt": "2026-05-12T02:05:13.619Z",
+            "displayParts": [
+              {
+                "text": "You're a ",
+                "delay": 0
+              },
+              {
+                "text": "grammar detective!",
+                "delay": 500
+              }
+            ],
+            "highlightWord": {
+              "word": "detective",
+              "delay": 500
+            }
           }
         ],
         "heading": "A Helpful Trick!",
@@ -7995,18 +9018,75 @@
         "steps": [
           {
             "sub": "a",
+            "sfxClaps": [
+              {
+                "delay": 2500
+              }
+            ],
             "audioFile": "audio/lessons/K.L.1/S5a.mp3",
             "ttsScript": "You learned nouns and verbs! That's awesome!",
-            "displayText": "",
-            "interaction": "Stars celebration."
+            "interaction": "Stars celebration.",
+            "audioRegenAt": "2026-05-12T02:05:29.194Z",
+            "displayParts": [
+              {
+                "text": "You learned ",
+                "delay": 0
+              },
+              {
+                "text": "nouns",
+                "delay": 500
+              },
+              {
+                "text": " and ",
+                "delay": 1000
+              },
+              {
+                "text": "verbs!",
+                "delay": 1500
+              },
+              {
+                "text": " That's awesome!",
+                "delay": 2000
+              }
+            ],
+            "highlightPills": [
+              {
+                "pill": 1,
+                "delay": 500
+              },
+              {
+                "pill": 3,
+                "delay": 1500
+              }
+            ]
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/K.L.1/S5b.mp3",
             "ttsScript": "Let's practice finding nouns and verbs in sentences. Let's go!",
-            "displayText": "Let's build sentences!",
             "interaction": "'Let's Go!' button pulses.",
-            "displayDelay": 2500
+            "audioRegenAt": "2026-05-12T02:05:35.732Z",
+            "displayDelay": 2500,
+            "displayParts": [
+              {
+                "text": "Let's build ",
+                "delay": 0
+              },
+              {
+                "text": "sentences!",
+                "delay": 500
+              }
+            ],
+            "highlightWord": {
+              "word": "nouns",
+              "delay": 1000
+            },
+            "highlightPills": [
+              {
+                "pill": 1,
+                "delay": 500
+              }
+            ]
           }
         ],
         "heading": "Time to Practice!",
@@ -8265,24 +9345,72 @@
             "sub": "a",
             "audioFile": "audio/lessons/K.L.4/S1a.mp3",
             "ttsScript": "Sometimes we hear or read a word we don't know. That's totally normal!",
-            "displayText": "",
-            "interaction": "Heading fades in."
+            "audioRegenAt": "2026-05-12T02:00:25.045Z",
+            "displayParts": [
+              {
+                "text": "Sometimes we hear or read a word we don't know.",
+                "delay": 0
+              },
+              {
+                "text": " That's totally normal!",
+                "delay": 2500
+              }
+            ],
+            "highlightWord": {
+              "word": "word",
+              "delay": 1500
+            }
           },
           {
             "sub": "b",
+            "sfxClaps": [
+              {
+                "delay": 500
+              }
+            ],
             "audioFile": "audio/lessons/K.L.4/S1b.mp3",
             "ttsScript": "The great news is there are tricks to figure out what new words mean!",
-            "displayText": "Word Meaning Detective!",
-            "interaction": "'Word Meaning Detective!' pops up sparkly.",
-            "displayDelay": 3500
+            "audioRegenAt": "2026-05-12T02:00:30.714Z",
+            "displayParts": [
+              {
+                "text": "The great news is there are tricks",
+                "delay": 0
+              },
+              {
+                "text": " to figure out what new words mean!",
+                "delay": 2200
+              }
+            ],
+            "highlightWord": {
+              "word": "tricks",
+              "delay": 1800
+            }
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/K.L.4/S1c.mp3",
             "ttsScript": "Let's learn how to crack the code!",
-            "displayText": "Let's learn how to crack the code!",
-            "interaction": "Magnifying glass animation. Tap to continue.",
-            "displayDelay": 1000
+            "audioRegenAt": "2026-05-12T02:00:34.768Z",
+            "displayParts": [
+              {
+                "text": "Let's learn how to",
+                "delay": 0
+              },
+              {
+                "text": " crack the code!",
+                "delay": 1200
+              }
+            ],
+            "highlightWord": {
+              "word": "code",
+              "delay": 1800
+            },
+            "highlightPills": [
+              {
+                "pill": 1,
+                "delay": 1200
+              }
+            ]
           }
         ],
         "heading": "Let's Figure Out Word Meanings!",
@@ -8297,31 +9425,118 @@
             "sub": "a",
             "audioFile": "audio/lessons/K.L.4/S2a.mp3",
             "ttsScript": "When you hear a word you don't know, listen to the other words around it.",
-            "displayText": "",
-            "interaction": "Heading appears."
+            "audioRegenAt": "2026-05-12T02:00:52.717Z",
+            "displayParts": [
+              {
+                "text": "When you hear a word you don't know,",
+                "delay": 0
+              },
+              {
+                "text": "listen to the other words around it.",
+                "delay": 2500
+              }
+            ],
+            "highlightWord": {
+              "word": "words",
+              "delay": 3000
+            }
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/K.L.4/S2b.mp3",
             "ttsScript": "The words before and after give you clues about what the new word means.",
-            "displayText": "Listen to words around it",
-            "interaction": "Pill: [Listen to words around it] pops in blue.",
-            "displayDelay": 1085
+            "audioRegenAt": "2026-05-12T02:00:59.026Z",
+            "displayParts": [
+              {
+                "text": "The words before and after",
+                "delay": 0
+              },
+              {
+                "text": "give you clues",
+                "delay": 1800
+              },
+              {
+                "text": "about what the new word means.",
+                "delay": 3500
+              }
+            ],
+            "highlightWord": {
+              "word": "clues",
+              "delay": 2000
+            },
+            "highlightPills": [
+              {
+                "pill": 0,
+                "delay": 0
+              },
+              {
+                "pill": 1,
+                "delay": 1800
+              }
+            ]
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/K.L.4/S2c.mp3",
             "ttsScript": "You can also ask a grown-up, or look at pictures for help!",
-            "displayText": "Ask someone or look at pictures",
-            "interaction": "Pill: [Ask someone or look at pictures] pops in green.",
-            "displayDelay": 930
+            "audioRegenAt": "2026-05-12T02:01:06.003Z",
+            "displayParts": [
+              {
+                "text": "You can also ask a grown-up,",
+                "delay": 0
+              },
+              {
+                "text": "or look at pictures for help!",
+                "delay": 2200
+              }
+            ],
+            "highlightWord": {
+              "word": "pictures",
+              "delay": 2700
+            },
+            "highlightPills": [
+              {
+                "pill": 0,
+                "delay": 0
+              },
+              {
+                "pill": 1,
+                "delay": 2200
+              }
+            ]
           },
           {
             "sub": "d",
+            "sfxClaps": [
+              {
+                "delay": 5500
+              }
+            ],
             "audioFile": "audio/lessons/K.L.4/S2d.mp3",
             "ttsScript": "Context clues plus pictures plus asking — that's the triple combo!",
-            "displayText": "",
-            "interaction": "Three pills connect. Tap to continue."
+            "audioRegenAt": "2026-05-12T02:01:12.109Z",
+            "displayParts": [
+              {
+                "text": "Context clues",
+                "delay": 0
+              },
+              {
+                "text": "plus pictures",
+                "delay": 1500
+              },
+              {
+                "text": "plus asking",
+                "delay": 3000
+              },
+              {
+                "text": "— that's the triple combo!",
+                "delay": 4500
+              }
+            ],
+            "highlightWord": {
+              "word": "combo",
+              "delay": 5000
+            }
           }
         ],
         "heading": "Clues Are All Around!",
@@ -8336,24 +9551,84 @@
             "sub": "a",
             "audioFile": "audio/lessons/K.L.4/S3a.mp3",
             "ttsScript": "Here's a sentence: The rabbit was swift, it ran very fast!",
-            "displayText": "",
-            "interaction": "Heading appears."
+            "audioRegenAt": "2026-05-12T02:01:32.441Z",
+            "displayParts": [
+              {
+                "text": "Here's a sentence: ",
+                "delay": 0
+              },
+              {
+                "text": "The rabbit was swift,",
+                "delay": 1200
+              },
+              {
+                "text": " it ran very fast!",
+                "delay": 2500
+              }
+            ],
+            "highlightWord": {
+              "word": "swift",
+              "delay": 1800
+            }
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/K.L.4/S3b.mp3",
             "ttsScript": "What does 'swift' mean? Look at the clue — it ran very fast!",
-            "displayText": "ran very fast",
-            "interaction": "'ran very fast' highlights as a context clue.",
-            "displayDelay": 2000
+            "audioRegenAt": "2026-05-12T02:01:38.869Z",
+            "displayParts": [
+              {
+                "text": "What does 'swift' mean?",
+                "delay": 0
+              },
+              {
+                "text": " Look at the clue — ",
+                "delay": 1500
+              },
+              {
+                "text": "it ran very fast!",
+                "delay": 2500
+              }
+            ],
+            "highlightWord": {
+              "word": "swift",
+              "delay": 500
+            },
+            "highlightPills": [
+              {
+                "pill": 2,
+                "delay": 2500
+              }
+            ]
           },
           {
             "sub": "c",
+            "sfxClaps": [
+              {
+                "delay": 1200
+              }
+            ],
             "audioFile": "audio/lessons/K.L.4/S3c.mp3",
             "ttsScript": "Swift must mean fast! The clue told us right there in the sentence!",
-            "displayText": "Swift means Fast!",
-            "interaction": "Pill: [Swift = Fast!] pops in with checkmark. Stars.",
-            "displayDelay": 3250
+            "audioRegenAt": "2026-05-12T02:01:45.231Z",
+            "displayParts": [
+              {
+                "text": "Swift must mean ",
+                "delay": 0
+              },
+              {
+                "text": "fast!",
+                "delay": 800
+              },
+              {
+                "text": " The clue told us right there in the sentence!",
+                "delay": 2000
+              }
+            ],
+            "highlightWord": {
+              "word": "fast",
+              "delay": 1000
+            }
           }
         ],
         "heading": "Let's Try It!",
@@ -8368,23 +9643,100 @@
             "sub": "a",
             "audioFile": "audio/lessons/K.L.4/S4a.mp3",
             "ttsScript": "Think of yourself as a word detective. Every unknown word is a mystery to solve!",
-            "displayText": "",
-            "interaction": "Heading with sparkle."
+            "audioRegenAt": "2026-05-12T02:02:07.948Z",
+            "displayParts": [
+              {
+                "text": "Think of yourself as a ",
+                "delay": 0
+              },
+              {
+                "text": "word detective.",
+                "delay": 1000
+              },
+              {
+                "text": " Every unknown word is a ",
+                "delay": 3000
+              },
+              {
+                "text": "mystery to solve!",
+                "delay": 4500
+              }
+            ],
+            "highlightWord": {
+              "word": "detective",
+              "delay": 1200
+            }
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/K.L.4/S4b.mp3",
             "ttsScript": "Read the sentence again, look at pictures, and try to guess. You'll be right more than you think!",
-            "displayText": "Re-read → Look → Guess → Solve!",
-            "interaction": "Pill: [Re-read → Look → Guess → Solve!] pops in.",
-            "displayDelay": 1395
+            "audioRegenAt": "2026-05-12T02:02:21.230Z",
+            "displayParts": [
+              {
+                "text": "Re-read",
+                "delay": 300
+              },
+              {
+                "text": " → Look",
+                "delay": 1500
+              },
+              {
+                "text": " → Guess",
+                "delay": 2800
+              },
+              {
+                "text": " → Solve!",
+                "delay": 4000
+              }
+            ],
+            "highlightWord": {
+              "word": "guess",
+              "delay": 3000
+            },
+            "highlightPills": [
+              {
+                "pill": 0,
+                "delay": 300
+              },
+              {
+                "pill": 1,
+                "delay": 1500
+              },
+              {
+                "pill": 2,
+                "delay": 2800
+              },
+              {
+                "pill": 3,
+                "delay": 4000
+              }
+            ]
           },
           {
             "sub": "c",
+            "sfxClaps": [
+              {
+                "delay": 3000
+              }
+            ],
             "audioFile": "audio/lessons/K.L.4/S4c.mp3",
             "ttsScript": "Every word you figure out makes you a better reader!",
-            "displayText": "",
-            "interaction": "Level-up icon. Tap to continue."
+            "audioRegenAt": "2026-05-12T02:02:26.794Z",
+            "displayParts": [
+              {
+                "text": "Every word you figure out makes you a ",
+                "delay": 0
+              },
+              {
+                "text": "better reader!",
+                "delay": 2500
+              }
+            ],
+            "highlightWord": {
+              "word": "reader",
+              "delay": 2700
+            }
           }
         ],
         "heading": "A Helpful Trick!",
@@ -8397,18 +9749,56 @@
         "steps": [
           {
             "sub": "a",
+            "sfxClaps": [
+              {
+                "delay": 1500
+              }
+            ],
             "audioFile": "audio/lessons/K.L.4/S5a.mp3",
             "ttsScript": "You're an amazing word detective!",
-            "displayText": "",
-            "interaction": "Stars celebration."
+            "audioRegenAt": "2026-05-12T02:02:38.748Z",
+            "displayParts": [
+              {
+                "text": "You're an amazing",
+                "delay": 0
+              },
+              {
+                "text": "word detective!",
+                "delay": 1000
+              }
+            ],
+            "highlightPills": [
+              {
+                "pill": 1,
+                "delay": 1000
+              }
+            ]
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/K.L.4/S5b.mp3",
             "ttsScript": "Let's practice figuring out word meanings from context clues. Let's go!",
-            "displayText": "Let's explore the words!",
-            "interaction": "'Let's Go!' button pulses.",
-            "displayDelay": 2750
+            "audioRegenAt": "2026-05-12T02:02:45.909Z",
+            "displayParts": [
+              {
+                "text": "Let's explore",
+                "delay": 0
+              },
+              {
+                "text": "the words!",
+                "delay": 1000
+              }
+            ],
+            "highlightWord": {
+              "word": "words",
+              "delay": 1200
+            },
+            "highlightPills": [
+              {
+                "pill": 1,
+                "delay": 1000
+              }
+            ]
           }
         ],
         "heading": "Time to Practice!",
@@ -8456,14 +9846,27 @@
             "sub": "a",
             "audioFile": "audio/lessons/K.L.5/S1a.mp3",
             "ttsScript": "Did you know that words can be related to each other? Like friends and family!",
-            "displayText": "",
-            "interaction": "Heading fades in."
+            "audioRegenAt": "2026-05-12T01:57:57.933Z",
+            "displayParts": [
+              {
+                "text": "Did you know that words can be related to each other?",
+                "delay": 0
+              },
+              {
+                "text": "Like friends and family!",
+                "delay": 2500
+              }
+            ],
+            "highlightWord": {
+              "word": "related",
+              "delay": 1500
+            }
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/K.L.5/S1b.mp3",
             "ttsScript": "Some words are opposites — like 'hot' and 'cold.' Some words are similar — like 'happy' and 'glad!'",
-            "interaction": "Pill: [Opposites] pops in red. Pill: [Similar words] pops in blue.",
+            "audioRegenAt": "2026-05-12T01:58:06.137Z",
             "displayParts": [
               {
                 "text": "Opposites",
@@ -8473,15 +9876,46 @@
                 "text": "Similar words",
                 "delay": 6300
               }
+            ],
+            "highlightWord": {
+              "word": "opposites",
+              "delay": 1000
+            },
+            "highlightPills": [
+              {
+                "pill": 0,
+                "delay": 1490
+              },
+              {
+                "pill": 1,
+                "delay": 6300
+              }
             ]
           },
           {
             "sub": "c",
+            "sfxClaps": [
+              {
+                "delay": 2000
+              }
+            ],
             "audioFile": "audio/lessons/K.L.5/S1c.mp3",
             "ttsScript": "Let's explore how words are connected!",
-            "displayText": "Let's explore how words are connected!",
-            "interaction": "Connection lines animate. Tap to continue.",
-            "displayDelay": 1000
+            "audioRegenAt": "2026-05-12T01:58:10.834Z",
+            "displayParts": [
+              {
+                "text": "Let's explore how words are ",
+                "delay": 0
+              },
+              {
+                "text": "connected!",
+                "delay": 1500
+              }
+            ],
+            "highlightWord": {
+              "word": "connected",
+              "delay": 1500
+            }
           }
         ],
         "heading": "Let's Learn About Word Relationships!",
@@ -8497,7 +9931,44 @@
             "audioFile": "audio/lessons/K.L.5/S2a.mp3",
             "ttsScript": "Opposites are words that mean the complete reverse. Big and small. Hot and cold. Up and down!",
             "displayText": "",
-            "interaction": "Heading appears."
+            "interaction": "Heading appears.",
+            "audioRegenAt": "2026-05-12T01:58:31.487Z",
+            "displayParts": [
+              {
+                "text": "Opposites are words that mean the complete reverse.",
+                "delay": 0
+              },
+              {
+                "text": " Big and small.",
+                "delay": 2500
+              },
+              {
+                "text": " Hot and cold.",
+                "delay": 4000
+              },
+              {
+                "text": " Up and down!",
+                "delay": 5500
+              }
+            ],
+            "highlightWord": {
+              "word": "Opposites",
+              "delay": 300
+            },
+            "highlightPills": [
+              {
+                "pill": 1,
+                "delay": 2500
+              },
+              {
+                "pill": 2,
+                "delay": 4000
+              },
+              {
+                "pill": 3,
+                "delay": 5500
+              }
+            ]
           },
           {
             "sub": "b",
@@ -8505,7 +9976,18 @@
             "ttsScript": "They're like two sides of a coin!",
             "displayText": "Opposites",
             "interaction": "Opposites row fills in.",
+            "audioRegenAt": "2026-05-12T01:58:35.928Z",
             "displayDelay": 1200,
+            "displayParts": [
+              {
+                "text": "They're like two sides of a coin!",
+                "delay": 0
+              }
+            ],
+            "highlightWord": {
+              "word": "Opposites",
+              "delay": 300
+            },
             "displayTableRow": {
               "label": "Opposites",
               "value": "Complete reverse",
@@ -8521,7 +10003,28 @@
             "ttsScript": "Words can also belong to groups. 'Dog,' 'cat,' and 'fish' are all animals!",
             "displayText": "Categories",
             "interaction": "Categories row fills in.",
+            "audioRegenAt": "2026-05-12T01:58:43.547Z",
             "displayDelay": 1500,
+            "displayParts": [
+              {
+                "text": "Words can also belong to groups.",
+                "delay": 0
+              },
+              {
+                "text": " 'Dog,' 'cat,' and 'fish' are all animals!",
+                "delay": 2500
+              }
+            ],
+            "highlightWord": {
+              "word": "Categories",
+              "delay": 300
+            },
+            "highlightPills": [
+              {
+                "pill": 1,
+                "delay": 2500
+              }
+            ],
             "displayTableRow": {
               "label": "Categories",
               "value": "Word groups"
@@ -8533,7 +10036,28 @@
             "ttsScript": "And some words mean almost the same thing! 'Big' and 'large' are alike!",
             "displayText": "Similar",
             "interaction": "Similar row fills in.",
+            "audioRegenAt": "2026-05-12T01:58:50.487Z",
             "displayDelay": 1500,
+            "displayParts": [
+              {
+                "text": "And some words mean almost the same thing!",
+                "delay": 0
+              },
+              {
+                "text": " 'Big' and 'large' are alike!",
+                "delay": 2500
+              }
+            ],
+            "highlightWord": {
+              "word": "Similar",
+              "delay": 300
+            },
+            "highlightPills": [
+              {
+                "pill": 1,
+                "delay": 2500
+              }
+            ],
             "displayTableRow": {
               "label": "Similar",
               "value": "Almost the same"
@@ -8552,24 +10076,103 @@
             "sub": "a",
             "audioFile": "audio/lessons/K.L.5/S3a.mp3",
             "ttsScript": "What's the opposite of 'happy'?",
-            "displayText": "",
-            "interaction": "Heading appears."
+            "audioRegenAt": "2026-05-12T01:59:05.884Z",
+            "displayParts": [
+              {
+                "text": "What's the ",
+                "delay": 0
+              },
+              {
+                "text": "opposite",
+                "delay": 600
+              },
+              {
+                "text": " of 'happy'?",
+                "delay": 1300
+              }
+            ],
+            "highlightWord": {
+              "word": "opposite",
+              "delay": 600
+            }
           },
           {
             "sub": "b",
+            "sfxClaps": [
+              {
+                "delay": 2200
+              }
+            ],
             "audioFile": "audio/lessons/K.L.5/S3b.mp3",
             "ttsScript": "Sad! Happy and sad are opposites!",
-            "displayText": "Happy ↔ Sad are Opposites!",
-            "interaction": "Pill: [Happy ↔ Sad = Opposites!] pops in with checkmark.",
-            "displayDelay": 800
+            "audioRegenAt": "2026-05-12T01:59:11.700Z",
+            "displayParts": [
+              {
+                "text": "Sad!",
+                "delay": 0
+              },
+              {
+                "text": " Happy and sad",
+                "delay": 800
+              },
+              {
+                "text": " are opposites!",
+                "delay": 1800
+              }
+            ],
+            "highlightWord": {
+              "word": "opposites",
+              "delay": 1800
+            },
+            "highlightPills": [
+              {
+                "pill": 1,
+                "delay": 800
+              },
+              {
+                "pill": 2,
+                "delay": 1800
+              }
+            ]
           },
           {
             "sub": "c",
+            "sfxClaps": [
+              {
+                "delay": 3800
+              }
+            ],
             "audioFile": "audio/lessons/K.L.5/S3c.mp3",
             "ttsScript": "Now, which group does 'apple' belong in? It's a fruit! Just like banana and orange!",
-            "displayText": "Apple → Fruit category!",
-            "interaction": "Pill: [Apple → Fruit category!] pops in with checkmark. Stars.",
-            "displayDelay": 2500
+            "audioRegenAt": "2026-05-12T01:59:19.004Z",
+            "displayParts": [
+              {
+                "text": "Now, which group does 'apple' belong in?",
+                "delay": 0
+              },
+              {
+                "text": " It's a fruit!",
+                "delay": 2500
+              },
+              {
+                "text": " Just like banana and orange!",
+                "delay": 3500
+              }
+            ],
+            "highlightWord": {
+              "word": "fruit",
+              "delay": 2500
+            },
+            "highlightPills": [
+              {
+                "pill": 1,
+                "delay": 2500
+              },
+              {
+                "pill": 2,
+                "delay": 3500
+              }
+            ]
           }
         ],
         "heading": "Let's Find the Connections!",
@@ -8584,23 +10187,92 @@
             "sub": "a",
             "audioFile": "audio/lessons/K.L.5/S4a.mp3",
             "ttsScript": "When you learn a new word, think: What's the opposite? What group does it belong to?",
-            "displayText": "",
-            "interaction": "Heading with sparkle."
+            "audioRegenAt": "2026-05-12T01:59:35.277Z",
+            "displayParts": [
+              {
+                "text": "When you learn a new word, think:",
+                "delay": 0
+              },
+              {
+                "text": "What's the opposite?",
+                "delay": 2000
+              },
+              {
+                "text": "What group does it belong to?",
+                "delay": 4500
+              }
+            ],
+            "highlightWord": {
+              "word": "word",
+              "delay": 500
+            },
+            "highlightPills": [
+              {
+                "pill": 1,
+                "delay": 2000
+              },
+              {
+                "pill": 2,
+                "delay": 4500
+              }
+            ]
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/K.L.5/S4b.mp3",
             "ttsScript": "Connecting words to other words helps you remember them better!",
-            "displayText": "Connect words → Remember better!",
-            "interaction": "Pill: [Connect words → Remember better!] pops in.",
-            "displayDelay": 775
+            "audioRegenAt": "2026-05-12T01:59:41.106Z",
+            "displayParts": [
+              {
+                "text": "Connecting words to other words",
+                "delay": 0
+              },
+              {
+                "text": "helps you remember them better!",
+                "delay": 2500
+              }
+            ],
+            "highlightWord": {
+              "word": "Connecting",
+              "delay": 300
+            },
+            "highlightPills": [
+              {
+                "pill": 1,
+                "delay": 2500
+              }
+            ]
           },
           {
             "sub": "c",
+            "sfxClaps": [
+              {
+                "delay": 2500
+              }
+            ],
             "audioFile": "audio/lessons/K.L.5/S4c.mp3",
             "ttsScript": "You're building a word web in your brain!",
-            "displayText": "",
-            "interaction": "Brain with web icon. Tap to continue."
+            "audioRegenAt": "2026-05-12T01:59:46.568Z",
+            "displayParts": [
+              {
+                "text": "You're building a word web",
+                "delay": 0
+              },
+              {
+                "text": "in your brain!",
+                "delay": 2000
+              }
+            ],
+            "highlightWord": {
+              "word": "web",
+              "delay": 1000
+            },
+            "highlightPills": [
+              {
+                "pill": 1,
+                "delay": 2000
+              }
+            ]
           }
         ],
         "heading": "A Helpful Trick!",
@@ -8613,18 +10285,66 @@
         "steps": [
           {
             "sub": "a",
+            "sfxClaps": [
+              {
+                "delay": 1500
+              }
+            ],
             "audioFile": "audio/lessons/K.L.5/S5a.mp3",
             "ttsScript": "You know all about word relationships!",
-            "displayText": "",
-            "interaction": "Stars celebration."
+            "audioRegenAt": "2026-05-12T02:00:00.474Z",
+            "displayParts": [
+              {
+                "text": "You know all about ",
+                "delay": 0
+              },
+              {
+                "text": "word relationships!",
+                "delay": 700
+              }
+            ],
+            "highlightWord": {
+              "word": "relationships",
+              "delay": 700
+            }
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/K.L.5/S5b.mp3",
             "ttsScript": "Let's practice finding opposites and word groups. Let's go!",
-            "displayText": "Let's explore the words!",
-            "interaction": "'Let's Go!' button pulses.",
-            "displayDelay": 2250
+            "audioRegenAt": "2026-05-12T02:00:07.809Z",
+            "displayParts": [
+              {
+                "text": "Let's practice finding ",
+                "delay": 0
+              },
+              {
+                "text": "opposites",
+                "delay": 1000
+              },
+              {
+                "text": " and ",
+                "delay": 1800
+              },
+              {
+                "text": "word groups.",
+                "delay": 2200
+              }
+            ],
+            "highlightWord": {
+              "word": "practice",
+              "delay": 300
+            },
+            "highlightPills": [
+              {
+                "pill": 1,
+                "delay": 1000
+              },
+              {
+                "pill": 3,
+                "delay": 2200
+              }
+            ]
           }
         ],
         "heading": "Time to Practice!",
@@ -8672,24 +10392,88 @@
             "sub": "a",
             "audioFile": "audio/lessons/K.L.6/S1a.mp3",
             "ttsScript": "You learn new words all the time! But the best part is using them!",
-            "displayText": "",
-            "interaction": "Heading fades in."
+            "audioRegenAt": "2026-05-12T01:55:31.113Z",
+            "displayParts": [
+              {
+                "text": "You learn new words all the time!",
+                "delay": 0
+              },
+              {
+                "text": "But the best part is using them!",
+                "delay": 2500
+              }
+            ],
+            "highlightWord": {
+              "word": "using",
+              "delay": 3000
+            }
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/K.L.6/S1b.mp3",
             "ttsScript": "When you use new words when you talk and write, your vocabulary grows bigger and bigger!",
-            "displayText": "Vocabulary",
-            "interaction": "'Vocabulary' grows in size on screen with sparkle.",
-            "displayDelay": 3000
+            "audioRegenAt": "2026-05-12T01:55:37.868Z",
+            "displayParts": [
+              {
+                "text": "When you use new words",
+                "delay": 0
+              },
+              {
+                "text": "when you talk and write,",
+                "delay": 1500
+              },
+              {
+                "text": "your vocabulary grows bigger and bigger!",
+                "delay": 3000
+              }
+            ],
+            "highlightWord": {
+              "word": "vocabulary",
+              "delay": 3500
+            },
+            "highlightPills": [
+              {
+                "pill": 0,
+                "delay": 0
+              },
+              {
+                "pill": 1,
+                "delay": 1500
+              },
+              {
+                "pill": 2,
+                "delay": 3000
+              }
+            ]
           },
           {
             "sub": "c",
+            "sfxClaps": [
+              {
+                "delay": 2800
+              }
+            ],
             "audioFile": "audio/lessons/K.L.6/S1c.mp3",
             "ttsScript": "Let's practice using new words in sentences!",
-            "displayText": "Let's practice using new words in sentences!",
-            "interaction": "Word blocks build into a tall tower. Tap to continue.",
-            "displayDelay": 1000
+            "audioRegenAt": "2026-05-12T01:55:42.460Z",
+            "displayParts": [
+              {
+                "text": "Let's practice",
+                "delay": 0
+              },
+              {
+                "text": "using new words",
+                "delay": 1000
+              },
+              {
+                "text": "in sentences!",
+                "delay": 2000
+              }
+            ],
+            "highlightWord": {
+              "word": "sentences",
+              "delay": 2500
+            }
           }
         ],
         "heading": "Let's Use New Words!",
@@ -8705,7 +10489,30 @@
             "audioFile": "audio/lessons/K.L.6/S2a.mp3",
             "ttsScript": "When you learn a new word, try to use it right away! Say it in a sentence!",
             "displayText": "",
-            "interaction": "Heading appears."
+            "interaction": "Heading appears.",
+            "audioRegenAt": "2026-05-12T01:56:03.740Z",
+            "displayParts": [
+              {
+                "text": "When you learn a ",
+                "delay": 0
+              },
+              {
+                "text": "new word,",
+                "delay": 700
+              },
+              {
+                "text": "try to use it right away!",
+                "delay": 2000
+              },
+              {
+                "text": "Say it in a sentence!",
+                "delay": 3500
+              }
+            ],
+            "highlightWord": {
+              "word": "new word",
+              "delay": 700
+            }
           },
           {
             "sub": "b",
@@ -8713,7 +10520,40 @@
             "ttsScript": "Like if you learn the word 'enormous,' try saying: That building is enormous!",
             "displayText": "New word: enormous → Use it: That building is enormous!",
             "interaction": "Pill: [New word: enormous → Use it: That building is enormous!] pops in.",
-            "displayDelay": 1008
+            "audioRegenAt": "2026-05-12T01:56:10.806Z",
+            "displayDelay": 1008,
+            "displayParts": [
+              {
+                "text": "Like if you learn the word '",
+                "delay": 0
+              },
+              {
+                "text": "enormous,'",
+                "delay": 800
+              },
+              {
+                "text": "try saying: ",
+                "delay": 2500
+              },
+              {
+                "text": "That building is enormous!",
+                "delay": 3500
+              }
+            ],
+            "highlightWord": {
+              "word": "enormous",
+              "delay": 800
+            },
+            "highlightPills": [
+              {
+                "pill": 1,
+                "delay": 800
+              },
+              {
+                "pill": 3,
+                "delay": 3500
+              }
+            ]
           },
           {
             "sub": "c",
@@ -8721,14 +10561,65 @@
             "ttsScript": "The more you use a word, the better you remember it!",
             "displayText": "Use it → Remember it!",
             "interaction": "Pill: [Use it → Remember it!] pops in.",
-            "displayDelay": 853
+            "audioRegenAt": "2026-05-12T01:56:16.251Z",
+            "displayDelay": 853,
+            "displayParts": [
+              {
+                "text": "The more you ",
+                "delay": 0
+              },
+              {
+                "text": "use a word,",
+                "delay": 700
+              },
+              {
+                "text": "the better you ",
+                "delay": 1800
+              },
+              {
+                "text": "remember it!",
+                "delay": 2500
+              }
+            ],
+            "highlightWord": {
+              "word": "use",
+              "delay": 700
+            }
           },
           {
             "sub": "d",
+            "sfxClaps": [
+              {
+                "delay": 2800
+              }
+            ],
             "audioFile": "audio/lessons/K.L.6/S2d.mp3",
             "ttsScript": "Pretty soon, new words become YOUR words!",
             "displayText": "",
-            "interaction": "Word gets a name tag. Tap to continue."
+            "interaction": "Word gets a name tag. Tap to continue.",
+            "audioRegenAt": "2026-05-12T01:56:21.285Z",
+            "displayParts": [
+              {
+                "text": "Pretty soon,",
+                "delay": 0
+              },
+              {
+                "text": "new words",
+                "delay": 1000
+              },
+              {
+                "text": "become",
+                "delay": 1800
+              },
+              {
+                "text": "YOUR words!",
+                "delay": 2500
+              }
+            ],
+            "highlightWord": {
+              "word": "YOUR words",
+              "delay": 2500
+            }
           }
         ],
         "heading": "How to Use New Words",
@@ -8743,23 +10634,82 @@
             "sub": "a",
             "audioFile": "audio/lessons/K.L.6/S3a.mp3",
             "ttsScript": "Here's a new word: 'delighted.' It means really, really happy!",
-            "displayText": "",
-            "interaction": "Heading appears."
+            "audioRegenAt": "2026-05-12T01:56:36.936Z",
+            "displayParts": [
+              {
+                "text": "Here's a new word: '",
+                "delay": 0
+              },
+              {
+                "text": "delighted",
+                "delay": 1000
+              },
+              {
+                "text": ".' It means really, really happy!",
+                "delay": 2000
+              }
+            ],
+            "highlightWord": {
+              "word": "delighted",
+              "delay": 1000
+            },
+            "highlightPills": [
+              {
+                "pill": 1,
+                "delay": 1000
+              }
+            ]
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/K.L.6/S3b.mp3",
             "ttsScript": "Can you use it in a sentence? How about: I was delighted to see my friend!",
-            "displayText": "Delighted means Very Happy",
-            "interaction": "Sentence appears: 'I was delighted to see my friend!' Pill: [Delighted = Very Happy ✓].",
-            "displayDelay": 2500
+            "audioRegenAt": "2026-05-12T01:56:45.139Z",
+            "displayParts": [
+              {
+                "text": "I was ",
+                "delay": 0
+              },
+              {
+                "text": "delighted",
+                "delay": 500
+              },
+              {
+                "text": " to see my friend!",
+                "delay": 1000
+              }
+            ],
+            "highlightWord": {
+              "word": "delighted",
+              "delay": 500
+            },
+            "highlightPills": [
+              {
+                "pill": 1,
+                "delay": 500
+              }
+            ]
           },
           {
             "sub": "c",
+            "sfxClaps": [
+              {
+                "delay": 2000
+              }
+            ],
             "audioFile": "audio/lessons/K.L.6/S3c.mp3",
             "ttsScript": "See? You just used a brand new word! You're a vocabulary superstar!",
-            "displayText": "",
-            "interaction": "Stars and confetti."
+            "audioRegenAt": "2026-05-12T01:56:52.495Z",
+            "displayParts": [
+              {
+                "text": "You just used a brand new word!",
+                "delay": 0
+              },
+              {
+                "text": " You're a vocabulary superstar!",
+                "delay": 1500
+              }
+            ]
           }
         ],
         "heading": "Let's Use a New Word!",
@@ -8774,14 +10724,27 @@
             "sub": "a",
             "audioFile": "audio/lessons/K.L.6/S4a.mp3",
             "ttsScript": "Every time you learn a new word, use it three times that day!",
-            "displayText": "",
-            "interaction": "Heading with sparkle."
+            "audioRegenAt": "2026-05-12T01:57:08.231Z",
+            "displayParts": [
+              {
+                "text": "Every time you learn a new word,",
+                "delay": 0
+              },
+              {
+                "text": "use it three times that day!",
+                "delay": 2500
+              }
+            ],
+            "highlightWord": {
+              "word": "word",
+              "delay": 1500
+            }
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/K.L.6/S4b.mp3",
             "ttsScript": "Use it talking to a friend, use it in a sentence you write, and use it at home!",
-            "interaction": "Three pills: [1. Talk] [2. Write] [3. At home] pop in.",
+            "audioRegenAt": "2026-05-12T01:57:14.108Z",
             "displayParts": [
               {
                 "text": "1. Talk",
@@ -8795,14 +10758,50 @@
                 "text": "3. At home",
                 "delay": 5200
               }
+            ],
+            "highlightWord": {
+              "word": "Use",
+              "delay": 0
+            },
+            "highlightPills": [
+              {
+                "pill": 0,
+                "delay": 300
+              },
+              {
+                "pill": 1,
+                "delay": 3500
+              },
+              {
+                "pill": 2,
+                "delay": 5200
+              }
             ]
           },
           {
             "sub": "c",
+            "sfxClaps": [
+              {
+                "delay": 3000
+              }
+            ],
             "audioFile": "audio/lessons/K.L.6/S4c.mp3",
             "ttsScript": "Three times and that word is yours forever!",
-            "displayText": "",
-            "interaction": "Lock icon with sparkle. Tap to continue."
+            "audioRegenAt": "2026-05-12T01:57:19.431Z",
+            "displayParts": [
+              {
+                "text": "Three times and that word is yours",
+                "delay": 0
+              },
+              {
+                "text": "forever!",
+                "delay": 2500
+              }
+            ],
+            "highlightWord": {
+              "word": "forever",
+              "delay": 2800
+            }
           }
         ],
         "heading": "A Helpful Trick!",
@@ -8815,18 +10814,72 @@
         "steps": [
           {
             "sub": "a",
+            "sfxClaps": [
+              {
+                "delay": 2800
+              }
+            ],
             "audioFile": "audio/lessons/K.L.6/S5a.mp3",
             "ttsScript": "You're growing your vocabulary every day!",
-            "displayText": "",
-            "interaction": "Stars celebration."
+            "audioRegenAt": "2026-05-12T01:57:34.840Z",
+            "displayParts": [
+              {
+                "text": "You're growing your ",
+                "delay": 0
+              },
+              {
+                "text": "vocabulary",
+                "delay": 1000
+              },
+              {
+                "text": " every day!",
+                "delay": 2200
+              }
+            ],
+            "highlightWord": {
+              "word": "vocabulary",
+              "delay": 1000
+            },
+            "highlightPills": [
+              {
+                "pill": 1,
+                "delay": 1000
+              }
+            ]
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/K.L.6/S5b.mp3",
             "ttsScript": "Let's practice using new words in the right way. Let's go!",
-            "displayText": "Let's figure out new words!",
-            "interaction": "'Let's Go!' button pulses.",
-            "displayDelay": 2750
+            "audioRegenAt": "2026-05-12T01:57:40.448Z",
+            "displayParts": [
+              {
+                "text": "Let's practice using ",
+                "delay": 0
+              },
+              {
+                "text": "new words",
+                "delay": 1000
+              },
+              {
+                "text": " in the right way.",
+                "delay": 2300
+              },
+              {
+                "text": " Let's go!",
+                "delay": 3500
+              }
+            ],
+            "highlightWord": {
+              "word": "words",
+              "delay": 1000
+            },
+            "highlightPills": [
+              {
+                "pill": 1,
+                "delay": 1000
+              }
+            ]
           }
         ],
         "heading": "Time to Practice!",
@@ -8874,25 +10927,120 @@
             "sub": "a",
             "audioFile": "audio/lessons/RL.1.1/S1a.mp3",
             "ttsScript": "Great readers are like detectives. They look for clues in a story.",
-            "displayText": "Readers = detectives",
-            "interaction": "",
-            "displayDelay": 2200
+            "audioRegenAt": "2026-05-12T01:53:14.629Z",
+            "displayParts": [
+              {
+                "text": "Great readers are like ",
+                "delay": 0
+              },
+              {
+                "text": "detectives.",
+                "delay": 1500
+              },
+              {
+                "text": "They look for ",
+                "delay": 3000
+              },
+              {
+                "text": "clues ",
+                "delay": 4000
+              },
+              {
+                "text": "in a story.",
+                "delay": 4800
+              }
+            ],
+            "highlightWord": {
+              "word": "detectives",
+              "delay": 1500
+            },
+            "highlightPills": [
+              {
+                "pill": 1,
+                "delay": 1500
+              },
+              {
+                "pill": 3,
+                "delay": 4000
+              }
+            ]
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.1.1/S1b.mp3",
             "ttsScript": "They ask questions and hunt for answers in the words.",
-            "displayText": "Ask, then find",
-            "interaction": "",
-            "displayDelay": 2000
+            "audioRegenAt": "2026-05-12T01:53:21.151Z",
+            "displayParts": [
+              {
+                "text": "They ",
+                "delay": 0
+              },
+              {
+                "text": "ask questions ",
+                "delay": 500
+              },
+              {
+                "text": "and hunt for ",
+                "delay": 2000
+              },
+              {
+                "text": "answers ",
+                "delay": 3000
+              },
+              {
+                "text": "in the words.",
+                "delay": 3800
+              }
+            ],
+            "highlightWord": {
+              "word": "questions",
+              "delay": 800
+            },
+            "highlightPills": [
+              {
+                "pill": 1,
+                "delay": 500
+              },
+              {
+                "pill": 3,
+                "delay": 3000
+              }
+            ]
           },
           {
             "sub": "c",
+            "sfxClaps": [
+              {
+                "delay": 3500
+              }
+            ],
             "audioFile": "audio/lessons/RL.1.1/S1c.mp3",
             "ttsScript": "Let us learn some detective questions to ask!",
-            "displayText": "Let us ask!",
-            "interaction": "",
-            "displayDelay": 1500
+            "audioRegenAt": "2026-05-12T01:53:26.180Z",
+            "displayParts": [
+              {
+                "text": "Let us learn some ",
+                "delay": 0
+              },
+              {
+                "text": "detective questions ",
+                "delay": 1500
+              },
+              {
+                "text": "to ask!",
+                "delay": 3000
+              }
+            ],
+            "highlightWord": {
+              "word": "questions",
+              "delay": 1800
+            },
+            "highlightPills": [
+              {
+                "pill": 1,
+                "delay": 1500
+              }
+            ]
           }
         ],
         "heading": "Story Detectives",
@@ -8905,43 +11053,106 @@
         "steps": [
           {
             "sub": "a",
+            "sfxClaps": [
+              {
+                "delay": 1500
+              }
+            ],
             "audioFile": "audio/lessons/RL.1.1/S2a.mp3",
             "ttsScript": "Good detectives ask five big questions.",
-            "displayText": "Five big questions",
-            "interaction": "",
-            "displayDelay": 2000
+            "audioRegenAt": "2026-05-12T01:53:41.075Z",
+            "displayParts": [
+              {
+                "text": "Good detectives ask ",
+                "delay": 0
+              },
+              {
+                "text": "five big questions.",
+                "delay": 1000
+              }
+            ],
+            "highlightWord": {
+              "word": "questions",
+              "delay": 1200
+            }
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.1.1/S2b.mp3",
             "ttsScript": "Who is the story about?",
-            "displayText": "Who?",
-            "interaction": "",
-            "displayDelay": 1500
+            "audioRegenAt": "2026-05-12T01:53:44.819Z",
+            "displayParts": [
+              {
+                "text": "Who is the story about?",
+                "delay": 0
+              }
+            ],
+            "highlightWord": {
+              "word": "Who",
+              "delay": 300
+            }
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RL.1.1/S2c.mp3",
             "ttsScript": "What are they doing?",
-            "displayText": "What?",
-            "interaction": "",
-            "displayDelay": 1500
+            "audioRegenAt": "2026-05-12T01:53:48.391Z",
+            "displayParts": [
+              {
+                "text": "What are they doing?",
+                "delay": 0
+              }
+            ],
+            "highlightWord": {
+              "word": "What",
+              "delay": 300
+            }
           },
           {
             "sub": "d",
             "audioFile": "audio/lessons/RL.1.1/S2d.mp3",
             "ttsScript": "Where are they? And when?",
-            "displayText": "Where? When?",
-            "interaction": "",
-            "displayDelay": 1800
+            "audioRegenAt": "2026-05-12T01:53:52.310Z",
+            "displayParts": [
+              {
+                "text": "Where are they?",
+                "delay": 0
+              },
+              {
+                "text": " And when?",
+                "delay": 1000
+              }
+            ],
+            "highlightWord": {
+              "word": "Where",
+              "delay": 300
+            },
+            "highlightPills": [
+              {
+                "pill": 0,
+                "delay": 300
+              },
+              {
+                "pill": 1,
+                "delay": 1000
+              }
+            ]
           },
           {
             "sub": "e",
             "audioFile": "audio/lessons/RL.1.1/S2e.mp3",
             "ttsScript": "And why did it happen?",
-            "displayText": "Why?",
-            "interaction": "",
-            "displayDelay": 1500
+            "audioRegenAt": "2026-05-12T01:53:56.270Z",
+            "displayParts": [
+              {
+                "text": "And why did it happen?",
+                "delay": 0
+              }
+            ],
+            "highlightWord": {
+              "word": "why",
+              "delay": 300
+            }
           }
         ],
         "heading": "Five Big Questions",
@@ -8956,41 +11167,138 @@
             "sub": "a",
             "audioFile": "audio/lessons/RL.1.1/S3a.mp3",
             "ttsScript": "Listen to this little story.",
-            "displayText": "Listen...",
-            "interaction": "",
-            "displayDelay": 1500
+            "audioRegenAt": "2026-05-12T01:54:16.098Z",
+            "displayParts": [
+              {
+                "text": "Listen to this little story.",
+                "delay": 0
+              }
+            ],
+            "highlightWord": {
+              "word": "Listen",
+              "delay": 300
+            }
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.1.1/S3b.mp3",
             "ttsScript": "Bella picked three red apples from the tree. She put them in her basket.",
-            "displayText": "Bella picked 3 apples.",
-            "interaction": "",
-            "displayDelay": 3000
+            "audioRegenAt": "2026-05-12T01:54:22.390Z",
+            "displayParts": [
+              {
+                "text": "Bella picked three red apples from the tree.",
+                "delay": 0
+              },
+              {
+                "text": "She put them in her basket.",
+                "delay": 3500
+              }
+            ],
+            "highlightWord": {
+              "word": "apples",
+              "delay": 1500
+            },
+            "highlightPills": [
+              {
+                "pill": 0,
+                "delay": 1000
+              },
+              {
+                "pill": 1,
+                "delay": 4000
+              }
+            ]
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RL.1.1/S3c.mp3",
             "ttsScript": "Who is the story about? Bella!",
-            "displayText": "Who? Bella",
-            "interaction": "",
-            "displayDelay": 2500
+            "audioRegenAt": "2026-05-12T01:54:27.700Z",
+            "displayParts": [
+              {
+                "text": "Who is the story about?",
+                "delay": 0
+              },
+              {
+                "text": "Bella!",
+                "delay": 2000
+              }
+            ],
+            "highlightWord": {
+              "word": "Who",
+              "delay": 300
+            },
+            "highlightPills": [
+              {
+                "pill": 1,
+                "delay": 2000
+              }
+            ]
           },
           {
             "sub": "d",
             "audioFile": "audio/lessons/RL.1.1/S3d.mp3",
             "ttsScript": "What did she do? She picked apples.",
-            "displayText": "What? Picked apples",
-            "interaction": "",
-            "displayDelay": 2500
+            "audioRegenAt": "2026-05-12T01:54:33.089Z",
+            "displayParts": [
+              {
+                "text": "What did she do?",
+                "delay": 0
+              },
+              {
+                "text": "She picked apples.",
+                "delay": 1800
+              }
+            ],
+            "highlightWord": {
+              "word": "What",
+              "delay": 300
+            },
+            "highlightPills": [
+              {
+                "pill": 1,
+                "delay": 1800
+              }
+            ]
           },
           {
             "sub": "e",
+            "sfxClaps": [
+              {
+                "delay": 4500
+              }
+            ],
             "audioFile": "audio/lessons/RL.1.1/S3e.mp3",
             "ttsScript": "How many apples? Three. We found the answer in the words!",
-            "displayText": "How many? 3",
-            "interaction": "",
-            "displayDelay": 2500
+            "audioRegenAt": "2026-05-12T01:54:39.292Z",
+            "displayParts": [
+              {
+                "text": "How many apples?",
+                "delay": 0
+              },
+              {
+                "text": "Three.",
+                "delay": 1800
+              },
+              {
+                "text": "We found the answer in the words!",
+                "delay": 3000
+              }
+            ],
+            "highlightWord": {
+              "word": "Three",
+              "delay": 1800
+            },
+            "highlightPills": [
+              {
+                "pill": 1,
+                "delay": 1800
+              },
+              {
+                "pill": 2,
+                "delay": 3000
+              }
+            ]
           }
         ],
         "heading": "Let Us Try One",
@@ -9006,24 +11314,98 @@
             "audioFile": "audio/lessons/RL.1.1/S4a.mp3",
             "ttsScript": "Here is a helpful trick.",
             "displayText": "A detective trick",
-            "interaction": "",
-            "displayDelay": 1500
+            "audioRegenAt": "2026-05-12T01:54:58.138Z",
+            "displayParts": [
+              {
+                "text": "A detective ",
+                "delay": 0
+              },
+              {
+                "text": "trick",
+                "delay": 800
+              }
+            ],
+            "highlightWord": {
+              "word": "trick",
+              "delay": 1200
+            },
+            "highlightPills": [
+              {
+                "pill": 1,
+                "delay": 800
+              }
+            ]
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.1.1/S4b.mp3",
             "ttsScript": "When you finish reading, go back and find the answer in the words.",
             "displayText": "Find it in the words",
-            "interaction": "",
-            "displayDelay": 2500
+            "audioRegenAt": "2026-05-12T01:55:04.879Z",
+            "displayParts": [
+              {
+                "text": "Find it ",
+                "delay": 0
+              },
+              {
+                "text": "in the ",
+                "delay": 1000
+              },
+              {
+                "text": "words.",
+                "delay": 2000
+              }
+            ],
+            "highlightWord": {
+              "word": "words",
+              "delay": 2500
+            },
+            "highlightPills": [
+              {
+                "pill": 0,
+                "delay": 0
+              },
+              {
+                "pill": 1,
+                "delay": 1000
+              },
+              {
+                "pill": 2,
+                "delay": 2000
+              }
+            ]
           },
           {
             "sub": "c",
+            "sfxClaps": [
+              {
+                "delay": 3000
+              }
+            ],
             "audioFile": "audio/lessons/RL.1.1/S4c.mp3",
             "ttsScript": "Now you are ready to practice answering story questions!",
             "displayText": "You got it!",
-            "interaction": "",
-            "displayDelay": 1500
+            "audioRegenAt": "2026-05-12T01:55:10.231Z",
+            "displayParts": [
+              {
+                "text": "You got ",
+                "delay": 0
+              },
+              {
+                "text": "it!",
+                "delay": 800
+              }
+            ],
+            "highlightWord": {
+              "word": "questions",
+              "delay": 2500
+            },
+            "highlightPills": [
+              {
+                "pill": 1,
+                "delay": 800
+              }
+            ]
           }
         ],
         "heading": "A Detective Trick",
