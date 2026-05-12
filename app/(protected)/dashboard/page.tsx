@@ -381,6 +381,21 @@ function AddChildrenForm({
     const kid = data as Child;
     setChild(kid);
     onDone([kid]);
+
+    // Mark the parent's profile as onboarded the first time they
+    // create a kid. Before today this flag was only ever flipped on
+    // the teacher path (app/onboarding/teacher/actions.ts), so every
+    // parent — no matter how engaged — read as "not onboarded" in
+    // /owner analytics. Fire-and-forget: don't block the handoff
+    // animation on a profile write.
+    void supabase
+      .from("profiles")
+      .update({
+        onboarding_complete: true,
+        onboarding_completed_at: new Date().toISOString(),
+      })
+      .eq("id", user.id);
+
     // Funnel step 2/6 — first kid profile created. PostHog already
     // knows the parent's distinct_id from auth identification, so we
     // don't need to pass userId here. Fires silently; never blocks.
