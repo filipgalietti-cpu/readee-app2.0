@@ -969,6 +969,71 @@ export async function runFullQuizQc(input: {
         });
         checks.push(...sr.checks);
         creditsUsed += sr.creditsUsed;
+
+        // Disagreement telemetry. When the legacy prose judge passes
+        // but the structured judge flags any spec character as
+        // missing — or vice versa — that's exactly the calibration
+        // signal we need to flip SHADOW_MODE off in qc-scene.ts.
+        // Surfaces as a meta.* check (visibility on /owner) AND
+        // emits a Sentry signal so we can grep for patterns. Never
+        // blocks publishing.
+        const { trackSignal } = await import("@/lib/observability/track");
+        const legacyImageJudge = r.checks.find((c) => c.name === "image.judge");
+        const structuredHardFails = sr.checks.filter(
+          (c) =>
+            c.severity !== "pass" &&
+            (c.name.startsWith("image.spec.character_") ||
+              c.name === "image.self_consistency.hybrid_creature" ||
+              c.name.startsWith("image.self_consistency.has_")),
+        );
+        const legacyPass = legacyImageJudge?.severity === "pass";
+        const structuredFlagged = structuredHardFails.length > 0;
+
+        if (legacyPass && structuredFlagged) {
+          const summary = `legacy=pass, structured=${structuredHardFails
+            .map((c) => `${c.name.split(".").pop()}=${c.severity}`)
+            .join(",")}`;
+          checks.push({
+            name: "meta.qc_disagreement.legacy_passed_structured_failed",
+            severity: "pass",
+            message: `Legacy image.judge passed but structured judge flagged: ${summary}`,
+          });
+          trackSignal("qc disagreement: legacy passed, structured failed", {
+            route: "qc.image.disagreement",
+            level: "info",
+            userId: input.teacherId,
+            tags: {
+              kind: "legacy_passed_structured_failed",
+              flagged_count: String(structuredHardFails.length),
+            },
+            extra: {
+              legacy_message: legacyImageJudge?.message ?? null,
+              structured_flagged: structuredHardFails.map((c) => ({
+                name: c.name,
+                severity: c.severity,
+                message: c.message.slice(0, 200),
+              })),
+            },
+          });
+        } else if (!legacyPass && !structuredFlagged && legacyImageJudge) {
+          checks.push({
+            name: "meta.qc_disagreement.legacy_failed_structured_passed",
+            severity: "pass",
+            message: `Legacy image.judge said ${legacyImageJudge.severity} but structured judge cleared all characters + setting`,
+          });
+          trackSignal("qc disagreement: legacy failed, structured passed", {
+            route: "qc.image.disagreement",
+            level: "info",
+            userId: input.teacherId,
+            tags: {
+              kind: "legacy_failed_structured_passed",
+              legacy_severity: legacyImageJudge.severity,
+            },
+            extra: {
+              legacy_message: legacyImageJudge.message?.slice(0, 200) ?? null,
+            },
+          });
+        }
       } catch (e: any) {
         trackError(e, {
           route: "qc.runFullQuizQc.structuredImage",
