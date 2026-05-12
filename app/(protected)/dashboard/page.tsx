@@ -20,6 +20,7 @@ import { getChildAvatarImage, AVATAR_IMAGES, DEFAULT_AVATARS } from "@/lib/utils
 import { getItemsByCategory, BACKGROUND_IMAGES } from "@/lib/data/shop-items";
 import type { ShopPurchase, EquippedItems } from "@/lib/db/types";
 import { Target, Puzzle, BookOpen, Map, Carrot, Flame, Sun, CloudSun, Moon, Sparkles, Star, Rocket, Trophy, BarChart3, Sprout, ChevronDown, Lock, User, CreditCard, Bell, LogOut, ChevronsUpDown, Home, BookText, ListChecks, ClipboardCheck, Mic, Compass, Users, Brain } from "lucide-react";
+import InstallPWABanner from "@/app/_components/InstallPWABanner";
 import type { ReactNode } from "react";
 import { getShopIcon } from "@/lib/data/shop-icons";
 import TeacherAssignmentsCard from "@/app/_components/TeacherAssignmentsCard";
@@ -305,6 +306,9 @@ export default function Dashboard() {
             </motion.div>
           )}
         </AnimatePresence>
+        <div className="mb-3">
+          <InstallPWABanner />
+        </div>
         <ChildDashboard
           child={selectedChild}
           children={children}
@@ -315,7 +319,14 @@ export default function Dashboard() {
     );
   }
 
-  return <ChildSelector children={children} onSelect={setSelectedChild} />;
+  return (
+    <>
+      <div className="mb-3">
+        <InstallPWABanner />
+      </div>
+      <ChildSelector children={children} onSelect={setSelectedChild} />
+    </>
+  );
 }
 
 /* ─── Onboarding flow: kid info → PfP → handoff → placement ───── */

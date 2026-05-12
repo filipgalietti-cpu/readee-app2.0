@@ -6,6 +6,7 @@ import OnboardingGuard from "./OnboardingGuard";
 import { ThemeProvider } from "./ThemeContext";
 import { SpeechProvider } from "./SpeechContext";
 import PostHogProvider from "./PostHogProvider";
+import PWARegister from "./PWARegister";
 
 export default function ClientProviders({
   children,
@@ -17,6 +18,7 @@ export default function ClientProviders({
       <ThemeProvider>
         <SpeechProvider>
           <ProfileProvider>
+            <PWARegister />
             <OnboardingGuard>{children}</OnboardingGuard>
           </ProfileProvider>
         </SpeechProvider>

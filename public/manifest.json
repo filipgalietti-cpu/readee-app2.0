@@ -1,21 +1,38 @@
 {
-  "name": "Readee",
+  "name": "Readee — Unlock Reading",
   "short_name": "Readee",
-  "description": "Early reading, done right",
+  "description": "Fun, science-backed reading for K–4th grade.",
   "start_url": "/dashboard",
+  "scope": "/",
   "display": "standalone",
+  "orientation": "portrait",
   "theme_color": "#4338ca",
   "background_color": "#ffffff",
+  "categories": ["education", "kids"],
   "icons": [
     {
       "src": "/icon-192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
     },
     {
       "src": "/icon-512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }
