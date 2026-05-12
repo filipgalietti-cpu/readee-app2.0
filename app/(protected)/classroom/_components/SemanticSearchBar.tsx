@@ -35,7 +35,8 @@ function buildHref(contentType: string, args: HrefArgs): string {
       // Teacher preview of a single practice question.
       return `/classroom/library/question/${encodeURIComponent(id)}`;
     case "story":
-      return `/classroom/library?focus=${encodeURIComponent(id)}`;
+      // Teacher preview of a decodable story (passage + 3 MCQs).
+      return `/classroom/library/story/${encodeURIComponent(id)}`;
     case "custom_lesson":
       return `/classroom/lessons/${id}`;
     case "custom_book":
