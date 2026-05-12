@@ -39,6 +39,12 @@ function SignupInner() {
   const initialRole: "parent" | "educator" =
     searchParams.get("as") === "teacher" ? "educator" : "parent";
   const [role, setRole] = useState<"parent" | "educator">(initialRole);
+  // B2C-only product — the teacher toggle and educator routing are
+  // kept as an escape hatch for B2B / school sales links
+  // (`/signup?as=teacher`), but the toggle UI is hidden for the
+  // default visitor so we don't dump confused parents into the
+  // deprecated /classroom surface.
+  const showRoleToggle = searchParams.get("as") === "teacher";
   const [formData, setFormData] = useState<FormData>({
     email: "",
     password: "",
@@ -154,33 +160,37 @@ function SignupInner() {
       title="Create Your Account"
       banner={role === "educator" ? "Teacher signup — free to start" : "It's Free to Get Started!"}
     >
-      {/* Parent / Teacher toggle */}
-      <div className="mb-4 grid grid-cols-2 gap-2">
-        <button
-          type="button"
-          onClick={() => setRole("parent")}
-          className={`flex items-center justify-center gap-1.5 rounded-xl border-2 py-2 text-sm font-bold transition ${
-            role === "parent"
-              ? "border-indigo-500 bg-indigo-50 text-indigo-700"
-              : "border-zinc-200 bg-white text-zinc-500 hover:border-indigo-300"
-          }`}
-        >
-          <Heart className="h-4 w-4" />
-          I&apos;m a parent
-        </button>
-        <button
-          type="button"
-          onClick={() => setRole("educator")}
-          className={`flex items-center justify-center gap-1.5 rounded-xl border-2 py-2 text-sm font-bold transition ${
-            role === "educator"
-              ? "border-violet-500 bg-violet-50 text-violet-700"
-              : "border-zinc-200 bg-white text-zinc-500 hover:border-violet-300"
-          }`}
-        >
-          <GraduationCap className="h-4 w-4" />
-          I&apos;m a teacher
-        </button>
-      </div>
+      {/* Parent / Teacher toggle — only rendered when the URL
+          explicitly opted into the teacher path (?as=teacher), so the
+          default consumer flow is unambiguously parent-only. */}
+      {showRoleToggle && (
+        <div className="mb-4 grid grid-cols-2 gap-2">
+          <button
+            type="button"
+            onClick={() => setRole("parent")}
+            className={`flex items-center justify-center gap-1.5 rounded-xl border-2 py-2 text-sm font-bold transition ${
+              role === "parent"
+                ? "border-indigo-500 bg-indigo-50 text-indigo-700"
+                : "border-zinc-200 bg-white text-zinc-500 hover:border-indigo-300"
+            }`}
+          >
+            <Heart className="h-4 w-4" />
+            I&apos;m a parent
+          </button>
+          <button
+            type="button"
+            onClick={() => setRole("educator")}
+            className={`flex items-center justify-center gap-1.5 rounded-xl border-2 py-2 text-sm font-bold transition ${
+              role === "educator"
+                ? "border-violet-500 bg-violet-50 text-violet-700"
+                : "border-zinc-200 bg-white text-zinc-500 hover:border-violet-300"
+            }`}
+          >
+            <GraduationCap className="h-4 w-4" />
+            I&apos;m a teacher
+          </button>
+        </div>
+      )}
 
       {/* Trust strip — short row of why-trust-us signals above the
           signup form. First-time parents need this before they hand
