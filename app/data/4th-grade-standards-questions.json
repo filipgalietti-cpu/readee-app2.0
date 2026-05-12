@@ -149,7 +149,9 @@
           ],
           "correct": "B. Never give up, even when things are hard.",
           "hint": "Think about what Lily did after she kept falling and how she felt when she finally succeeded in riding her bike.",
-          "difficulty": "easy"
+          "difficulty": "easy",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.2/RL.4.2-Q3.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.2/RL.4.2-Q3-hint.wav"
         },
         {
           "id": "RL.4.2-Q4",
@@ -180,7 +182,9 @@
           ],
           "correct": "Lily the squirrel was hungry, so she bravely scared away a blue jay to get a yummy acorn for breakfast.",
           "hint": "To find the best summary, think about the main character, what problem she faced, and how she solved it throughout the entire story.",
-          "difficulty": "easy"
+          "difficulty": "easy",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.2/RL.4.2-Q5.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.2/RL.4.2-Q5-hint.wav"
         }
       ]
     },
@@ -253,7 +257,9 @@
           ],
           "correct": "Leo is a shy but friendly new student who loves to read, especially about dinosaurs, and shows this by reading quietly at recess and sharing his interest with others.",
           "hint": "To describe Leo in depth, look at his actions, his reactions, and what he chooses to do when he has free time in the passage.",
-          "difficulty": "easy"
+          "difficulty": "easy",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.3/RL.4.3-Q4.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.3/RL.4.3-Q4-hint.wav"
         },
         {
           "id": "RL.4.3-Q5",
@@ -503,7 +509,9 @@
           ],
           "correct": "The reader would have to guess more about the character's inner thoughts based on their actions.",
           "hint": "Think about how a story changes when a character tells it themselves compared to when someone outside the story tells it. What kind of information do you get directly from the character, and what do you have to figure out when a narrator describes them?",
-          "difficulty": "easy"
+          "difficulty": "easy",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.6/RL.4.6-Q1.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.6/RL.4.6-Q1-hint.wav"
         },
         {
           "id": "RL.4.6-Q2",
@@ -517,7 +525,9 @@
           ],
           "correct": "Passage A makes you feel like you are the character, while Passage B lets you watch the character from the outside.",
           "hint": "Think about who is telling each story and how that makes you, the reader, feel connected to the character's thoughts and emotions.",
-          "difficulty": "easy"
+          "difficulty": "easy",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.6/RL.4.6-Q2.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.6/RL.4.6-Q2-hint.wav"
         },
         {
           "id": "RL.4.6-Q3",
@@ -548,7 +558,9 @@
           ],
           "correct": "It is told by an outside narrator who focuses on one character's thoughts and feelings.",
           "hint": "Look closely at whose thoughts and feelings the narrator shares in the story.",
-          "difficulty": "medium"
+          "difficulty": "medium",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.6/RL.4.6-Q4.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.6/RL.4.6-Q4-hint.wav"
         },
         {
           "id": "RL.4.6-Q5",
@@ -655,7 +667,9 @@
           ],
           "correct": "How the wizard's tower appears is very different in each version.",
           "hint": "Think about the specific details given for the wizard's tower in the book compared to the movie.",
-          "difficulty": "easy"
+          "difficulty": "easy",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.7/RL.4.7-Q5.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.7/RL.4.7-Q5-hint.wav"
         }
       ]
     },
@@ -694,7 +708,9 @@
           ],
           "correct": "The first myth shows the flood as a punishment, while the second shows it as a natural event.",
           "hint": "Focus on the specific reasons given in each myth for why the flood started, not just what happened during the flood.",
-          "difficulty": "medium"
+          "difficulty": "medium",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.9/RL.4.9-Q2.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.9/RL.4.9-Q2-hint.wav"
         },
         {
           "id": "RL.4.9-Q3",
@@ -708,7 +724,9 @@
           ],
           "correct": "Both stories teach that being smart can help a weaker character win.",
           "hint": "Think about what the fox and Anansi *do* to the stronger characters and what happens as a result in both tales.",
-          "difficulty": "medium"
+          "difficulty": "medium",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.9/RL.4.9-Q3.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.9/RL.4.9-Q3-hint.wav"
         },
         {
           "id": "RL.4.9-Q4",
@@ -722,7 +740,9 @@
           ],
           "correct": "Look at what brave actions the characters take and the results of those actions.",
           "hint": "The standard asks you to compare how different stories *treat* or show a theme; think about what makes a theme clear in a story.",
-          "difficulty": "easy"
+          "difficulty": "easy",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.9/RL.4.9-Q4.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.9/RL.4.9-Q4-hint.wav"
         },
         {
           "id": "RL.4.9-Q5",
@@ -922,7 +942,9 @@
           ],
           "correct": "Maya enjoys baking.",
           "hint": "Think about how Maya acted and felt while she was baking, such as waking early, being careful, humming, and smiling.",
-          "difficulty": "easy"
+          "difficulty": "easy",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.1/RI.4.1-Q5.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.1/RI.4.1-Q5-hint.wav"
         }
       ]
     },
@@ -978,7 +1000,9 @@
           ],
           "correct": "Bees are important insects because they help plants grow new seeds by spreading pollen from flower to flower, and they also make honey.",
           "hint": "To find the best summary, look for the choice that includes the main point of the entire passage and the most important supporting details.",
-          "difficulty": "easy"
+          "difficulty": "easy",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.2/RI.4.2-Q3.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.2/RI.4.2-Q3-hint.wav"
         },
         {
           "id": "RI.4.2-Q4",
@@ -1156,7 +1180,9 @@
             "Excavated": "Dug up carefully",
             "Metamorphosis": "A dramatic change in form",
             "Interdependent": "Depending on each other"
-          }
+          },
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.4/RI.4.4-Q6.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.4/RI.4.4-Q6-hint.wav"
         }
       ]
     },
@@ -1178,7 +1204,9 @@
           ],
           "correct": "Sequence",
           "hint": "Think about words that show the order in which things happen over time.",
-          "difficulty": "medium"
+          "difficulty": "medium",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q5.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q5-hint.wav"
         },
         {
           "id": "RI.4.5-Q6",
@@ -1212,7 +1240,9 @@
             "First, next, then, finally",
             "Hurricanes vs tornadoes: similarly, however",
             "Temperature dropped → pipes burst → basement flooded"
-          ]
+          ],
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q6.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q6-hint.wav"
         },
         {
           "id": "RI.4.5-Q3",
@@ -1391,7 +1421,9 @@
           ],
           "correct": "The firsthand account will share personal experiences and direct observations.",
           "hint": "Consider who actually experienced the event and what unique details they would be able to share compared to someone who only learned about it later.",
-          "difficulty": "easy"
+          "difficulty": "easy",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.6/RI.4.6-Q1.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.6/RI.4.6-Q1-hint.wav"
         },
         {
           "id": "RI.4.6-Q2",
@@ -1439,7 +1471,9 @@
           ],
           "correct": "Account A is firsthand, and Account B is secondhand.",
           "hint": "Think about whether each account describes what someone directly experienced or what they learned from other sources to understand the difference between firsthand and secondhand accounts.",
-          "difficulty": "easy"
+          "difficulty": "easy",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.6/RI.4.6-Q4.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.6/RI.4.6-Q4-hint.wav"
         },
         {
           "id": "RI.4.6-Q5",
@@ -1565,7 +1599,9 @@
           ],
           "correct": "Chocolate is the most preferred ice cream flavor among these students.",
           "hint": "Think about what the height of a bar on a graph tells you about the amount or popularity of that category.",
-          "difficulty": "easy"
+          "difficulty": "easy",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.7/RI.4.7-Q5.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.7/RI.4.7-Q5-hint.wav"
         }
       ]
     },
@@ -1604,7 +1640,9 @@
           ],
           "correct": "To provide a specific fact that supports the idea that recess helps students learn better.",
           "hint": "Think about how the second sentence, with the numbers, helps to prove or explain the main point made in the first sentence.",
-          "difficulty": "easy"
+          "difficulty": "easy",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.8/RI.4.8-Q2.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.8/RI.4.8-Q2-hint.wav"
         },
         {
           "id": "RI.4.8-Q3",
@@ -1711,7 +1749,9 @@
           ],
           "correct": "Both butterflies and moths are insects that change from larva to adult, but butterflies are active in the daytime and make a chrysalis, while moths are often active at night and make a cocoon.",
           "hint": "Look for a choice that takes details from Text 1 about butterflies AND details from Text 2 about moths and puts them together into one statement.",
-          "difficulty": "medium"
+          "difficulty": "medium",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.9/RI.4.9-Q3.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.9/RI.4.9-Q3-hint.wav"
         },
         {
           "id": "RI.4.9-Q4",
@@ -1928,7 +1968,9 @@
           ],
           "correct": "A name she invents to hide her identity",
           "hint": "Think about what the parts 'pseudo' and 'nym' mean when put together to form the word 'pseudonym'.",
-          "difficulty": "medium"
+          "difficulty": "medium",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.3/RF.4.3-Q5.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.3/RF.4.3-Q5-hint.wav"
         }
       ]
     },
@@ -2001,7 +2043,9 @@
           ],
           "correct": "ex-tra-or-di-nar-y",
           "hint": "Remember to look for vowel sounds and common syllabication patterns, like how to divide between consonants or before a suffix.",
-          "difficulty": "medium"
+          "difficulty": "medium",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.3a/RF.4.3a-Q4.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.3a/RF.4.3a-Q4-hint.wav"
         },
         {
           "id": "RF.4.3a-Q5",
@@ -2057,7 +2101,9 @@
           ],
           "correct": "Reading at a comfortable speed, smoothly connecting words, and using your voice to match the story's feelings.",
           "hint": "Consider how reading smoothly and clearly helps you grasp the meaning of a story.",
-          "difficulty": "medium"
+          "difficulty": "medium",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.4/RF.4.4-Q2.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.4/RF.4.4-Q2-hint.wav"
         },
         {
           "id": "RF.4.4-Q3",
@@ -2088,7 +2134,9 @@
           ],
           "correct": "The student reads at a comfortable speed, using expression in their voice, and pausing where commas and periods are written.",
           "hint": "Think about how reading smoothly and with expression helps listeners follow a story and understand what is happening.",
-          "difficulty": "easy"
+          "difficulty": "easy",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.4/RF.4.4-Q4.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.4/RF.4.4-Q4-hint.wav"
         },
         {
           "id": "RF.4.4-Q5",
@@ -2102,7 +2150,9 @@
           ],
           "correct": "Reread the part that was confusing to you.",
           "hint": "Look for the choice that describes an action you can take by yourself to fix your understanding.",
-          "difficulty": "easy"
+          "difficulty": "easy",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.4/RF.4.4-Q5.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.4/RF.4.4-Q5-hint.wav"
         }
       ]
     },
@@ -2246,7 +2296,9 @@
             "Resilient": "Able to recover",
             "Meticulous": "Extremely careful",
             "Unprecedented": "Never happened before"
-          }
+          },
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4a/L.4.4a-Q6.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4a/L.4.4a-Q6-hint.wav"
         }
       ]
     },
@@ -2268,7 +2320,9 @@
           ],
           "correct": "Very small things",
           "hint": "Consider what 'micro-' suggests about the size of something.",
-          "difficulty": "easy"
+          "difficulty": "easy",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4b/L.4.4b-Q4.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4b/L.4.4b-Q4-hint.wav"
         },
         {
           "id": "L.4.4b-Q6",
@@ -2294,7 +2348,9 @@
             "Benefactor (bene=good)": "A person who does good",
             "Interrupt (rupt=break)": "To break into",
             "Autograph (graph=write)": "Own handwriting of name"
-          }
+          },
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4b/L.4.4b-Q6.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4b/L.4.4b-Q6-hint.wav"
         }
       ]
     },
@@ -2350,7 +2406,9 @@
           ],
           "correct": "To move slowly and heavily.",
           "hint": "Look at the part of the dictionary entry that describes \"lumber\" when it is used as a verb, like an action the bear is doing.",
-          "difficulty": "easy"
+          "difficulty": "easy",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4c/L.4.4c-Q3.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4c/L.4.4c-Q3-hint.wav"
         },
         {
           "id": "L.4.4c-Q4",
@@ -2381,7 +2439,9 @@
           ],
           "correct": "B. meander (mee-AN-der) verb. To follow a winding or curvy path.",
           "hint": "Read the sentence again and think about what \"did not flow in a straight line\" tells you about the river's movement.",
-          "difficulty": "easy"
+          "difficulty": "easy",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4c/L.4.4c-Q5.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4c/L.4.4c-Q5-hint.wav"
         }
       ]
     },
@@ -2496,7 +2556,9 @@
           ],
           "correct": "Her laughter made him feel happy and pleased.",
           "hint": "Consider what \"like music to his ears\" tells you about the feeling or effect her laughter had on him.",
-          "difficulty": "easy"
+          "difficulty": "easy",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5a/L.4.5a-Q5.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5a/L.4.5a-Q5-hint.wav"
         },
         {
           "id": "L.4.5a-Q6",
@@ -2522,7 +2584,9 @@
             "Heart of stone": "Cold and unfeeling",
             "Dancer like water": "Smooth and graceful",
             "Smile bright as sun": "Both are bright and warm"
-          }
+          },
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5a/L.4.5a-Q6.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5a/L.4.5a-Q6-hint.wav"
         }
       ]
     },
@@ -2573,7 +2637,9 @@
             "Book by cover": "Don't judge by appearance",
             "When it rains": "Problems come all at once",
             "Actions > words": "What you do matters more"
-          }
+          },
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5b/L.4.5b-Q6.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5b/L.4.5b-Q6-hint.wav"
         }
       ]
     },
@@ -2646,7 +2712,9 @@
             "Expand": "Contract (antonym)",
             "Generous": "Selfish (antonym)",
             "Courageous": "Brave (synonym)"
-          }
+          },
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5c/L.4.5c-Q6.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5c/L.4.5c-Q6-hint.wav"
         }
       ]
     },
@@ -2776,7 +2844,9 @@
           ],
           "correct": "their",
           "hint": "Think about which word shows that the toys belong to the children.",
-          "difficulty": 1
+          "difficulty": 1,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.1/L.4.1-Q1.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.1/L.4.1-Q1-hint.wav"
         },
         {
           "id": "L.4.1-Q2",
@@ -2807,7 +2877,9 @@
           ],
           "correct": "C. under",
           "hint": "Think about what makes the most sense for where a puppy would go to hide and feel safe.",
-          "difficulty": 2
+          "difficulty": 2,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.1/L.4.1-Q3.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.1/L.4.1-Q3-hint.wav"
         },
         {
           "id": "L.4.1-Q4",

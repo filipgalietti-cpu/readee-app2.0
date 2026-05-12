@@ -56,7 +56,9 @@
           ],
           "correct": "It was Emma's birthday.",
           "hint": "Look at the first sentence to see what special day it is.",
-          "difficulty": 1
+          "difficulty": 1,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.1/RL.K.1-Q3.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.1/RL.K.1-Q3-hint.wav"
         },
         {
           "id": "RL.K.1-Q4",
@@ -112,7 +114,9 @@
           ],
           "correct": "He looked in a tree.",
           "hint": "Read the first two sentences of the story to find out what Bear did after he was hungry.",
-          "difficulty": 1
+          "difficulty": 1,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.2/RL.K.2-Q1.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.2/RL.K.2-Q1-hint.wav"
         },
         {
           "id": "RL.K.2-Q2",
@@ -126,7 +130,9 @@
           ],
           "correct": "B. To get to the other side.",
           "hint": "Look at the first sentence to see what Frog wanted to do, and the last sentence to see where he ended up.",
-          "difficulty": 1
+          "difficulty": 1,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.2/RL.K.2-Q2.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.2/RL.K.2-Q2-hint.wav"
         },
         {
           "id": "RL.K.2-Q3",
@@ -140,7 +146,9 @@
           ],
           "correct": "She forgot her lunch at home.",
           "hint": "Look at the very beginning of the story to see what happened to Mia.",
-          "difficulty": 2
+          "difficulty": 2,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.2/RL.K.2-Q3.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.2/RL.K.2-Q3-hint.wav"
         },
         {
           "id": "RL.K.2-Q4",
@@ -154,7 +162,9 @@
           ],
           "correct": "Turtle kept walking when Rabbit took a nap.",
           "hint": "Look at what Turtle did and what Rabbit did before the race ended.",
-          "difficulty": 1
+          "difficulty": 1,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.2/RL.K.2-Q4.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.2/RL.K.2-Q4-hint.wav"
         },
         {
           "id": "RL.K.2-Q5",
@@ -376,7 +386,9 @@
           ],
           "correct": "B. It floated gently with the water.",
           "hint": "Think about what the words 'calm lake' tell you about the speed and type of movement.",
-          "difficulty": 2
+          "difficulty": 2,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.4/RL.K.4-Q3.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.4/RL.K.4-Q3-hint.wav"
         },
         {
           "id": "RL.K.4-Q4",
@@ -528,7 +540,9 @@
           ],
           "correct": "It has words that rhyme.",
           "hint": "Listen carefully to the sounds of the words at the end of the lines like 'small bugs' and 'tall bugs'.",
-          "difficulty": 2
+          "difficulty": 2,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.5/RL.K.5-Q4.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.5/RL.K.5-Q4-hint.wav"
         },
         {
           "id": "RL.K.5-Q5",
@@ -620,7 +634,9 @@
           ],
           "correct": "Maria Lopez wrote the story, and James Park drew the pictures.",
           "hint": "Look at the words \"written by\" and \"illustrated by\" to remember what each person did for the book.",
-          "difficulty": 1
+          "difficulty": 1,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.6/RL.K.6-Q3.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.6/RL.K.6-Q3-hint.wav"
         },
         {
           "id": "RL.K.6-Q4",
@@ -713,7 +729,9 @@
           ],
           "correct": "It is cold outside.",
           "hint": "Think about why someone would wear a warm hat and gloves.",
-          "difficulty": 1
+          "difficulty": 1,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.7/RL.K.7-Q2.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.7/RL.K.7-Q2-hint.wav"
         },
         {
           "id": "RL.K.7-Q3",
@@ -1214,7 +1232,9 @@
           ],
           "correct": "Water can become ice, and ice can become water again.",
           "hint": "Think about what happens when water gets cold and what happens when ice gets warm to find the connection.",
-          "difficulty": 1
+          "difficulty": 1,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.3/RI.K.3-Q2.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.3/RI.K.3-Q2-hint.wav"
         },
         {
           "id": "RI.K.3-Q3",
@@ -1269,7 +1289,9 @@
           ],
           "correct": "They help the seed start to grow roots and a stem.",
           "hint": "Look at the first sentence to see what the seed needs, and then read what happens next to the seed.",
-          "difficulty": 2
+          "difficulty": 2,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.3/RI.K.3-Q5.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.3/RI.K.3-Q5-hint.wav"
         }
       ]
     },
@@ -1339,7 +1361,9 @@
           ],
           "correct": "The highest part of the mountain",
           "hint": "Look at what the passage says about where the climbers were and what they could see from the peak.",
-          "difficulty": 1
+          "difficulty": 1,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.4/RI.K.4-Q3.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.4/RI.K.4-Q3-hint.wav"
         },
         {
           "id": "RI.K.4-Q4",
@@ -1604,7 +1628,9 @@
           ],
           "correct": "The title page",
           "hint": "Think about the special page right after the front cover that tells you the book's name and who wrote it.",
-          "difficulty": 2
+          "difficulty": 2,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q10.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q10-hint.wav"
         },
         {
           "id": "RI.K.5-Q11",
@@ -1967,7 +1993,9 @@
           ],
           "correct": "Dogs are loyal.",
           "hint": "Look at the sentences that tell you why dogs make great pets.",
-          "difficulty": 2
+          "difficulty": 2,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.8/RI.K.8-Q4.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.8/RI.K.8-Q4-hint.wav"
         },
         {
           "id": "RI.K.8-Q5",
@@ -2013,7 +2041,9 @@
           ],
           "correct": "Book 1 says cats like to sleep, but Book 2 says they like to chase toys.",
           "hint": "Look at what each book says cats like to do.",
-          "difficulty": 1
+          "difficulty": 1,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.9/RI.K.9-Q1.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.9/RI.K.9-Q1-hint.wav"
         },
         {
           "id": "RI.K.9-Q2",
@@ -2131,7 +2161,9 @@
           ],
           "correct": "Turn to the next page to continue reading.",
           "hint": "Think about how we move through a book to keep reading the story.",
-          "difficulty": 1
+          "difficulty": 1,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q1.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q1-hint.wav"
         },
         {
           "id": "RF.K.1a-Q2",
@@ -2191,7 +2223,9 @@
           ],
           "correct": "flew",
           "hint": "Think about how your eyes move from the end of one line to the start of the next line when you read.",
-          "difficulty": 1
+          "difficulty": 1,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q4.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q4-hint.wav"
         },
         {
           "id": "RF.K.1a-Q5",
@@ -2436,7 +2470,9 @@
           "correct": "I like dogs.",
           "hint": "There are 3 words.",
           "difficulty": 1,
-          "jumbled": "Ilikedogs."
+          "jumbled": "Ilikedogs.",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1c/RF.K.1c-Q1.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1c/RF.K.1c-Q1-hint.wav"
         },
         {
           "id": "RF.K.1c-Q2",
@@ -2473,7 +2509,9 @@
           ],
           "correct": "the cat sat",
           "hint": "Remember that each word needs its own space to stand alone. Look at \"thecat sat\" and decide where the spaces should be.",
-          "difficulty": 2
+          "difficulty": 2,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1c/RF.K.1c-Q3.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1c/RF.K.1c-Q3-hint.wav"
         },
         {
           "id": "RF.K.1c-Q4",
@@ -2487,7 +2525,9 @@
           ],
           "correct": "I am happy.",
           "hint": "Look carefully at where the spaces are in each choice. Spaces help us see each separate word.",
-          "difficulty": 1
+          "difficulty": 1,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1c/RF.K.1c-Q4.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1c/RF.K.1c-Q4-hint.wav"
         },
         {
           "id": "RF.K.1c-Q5",
@@ -2586,7 +2626,9 @@
           ],
           "correct": "P",
           "hint": "Look carefully at each letter. Which one has a straight line and a curved part on top that touches the line?",
-          "difficulty": 1
+          "difficulty": 1,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1d/RF.K.1d-Q4.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1d/RF.K.1d-Q4-hint.wav"
         },
         {
           "id": "RF.K.1d-Q5",
@@ -2600,7 +2642,9 @@
           ],
           "correct": "P",
           "hint": "Look carefully at the shape of each letter to find the one that looks like P.",
-          "difficulty": 2
+          "difficulty": 2,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1d/RF.K.1d-Q5.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1d/RF.K.1d-Q5-hint.wav"
         }
       ]
     },
@@ -2622,7 +2666,9 @@
           ],
           "correct": "Dog and log",
           "hint": "Listen to the sounds at the end of each word in the pairs. The words that rhyme have the same ending sound.",
-          "difficulty": 1
+          "difficulty": 1,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2a/RF.K.2a-Q1.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2a/RF.K.2a-Q1-hint.wav"
         },
         {
           "id": "RF.K.2a-Q2",
@@ -2636,7 +2682,9 @@
           ],
           "correct": "Fan, Can",
           "hint": "Focus on the ending sounds of the words in each pair.",
-          "difficulty": 1
+          "difficulty": 1,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2a/RF.K.2a-Q2.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2a/RF.K.2a-Q2-hint.wav"
         },
         {
           "id": "RF.K.2a-Q3",
@@ -2650,7 +2698,9 @@
           ],
           "correct": "tall",
           "hint": "Listen carefully to the ending sound of 'ball' and each choice to find the matching sound.",
-          "difficulty": 2
+          "difficulty": 2,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2a/RF.K.2a-Q3.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2a/RF.K.2a-Q3-hint.wav"
         },
         {
           "id": "RF.K.2a-Q4",
@@ -2690,7 +2740,9 @@
           ],
           "correct": "Pig",
           "hint": "To find words that rhyme, listen for the parts that sound the same at the end of the word.",
-          "difficulty": 2
+          "difficulty": 2,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2a/RF.K.2a-Q5.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2a/RF.K.2a-Q5-hint.wav"
         }
       ]
     },
@@ -2948,7 +3000,9 @@
           ],
           "correct": "pig",
           "hint": "Listen carefully to the sound in the middle of each word.",
-          "difficulty": 1
+          "difficulty": 1,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2d/RF.K.2d-Q1.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2d/RF.K.2d-Q1-hint.wav"
         },
         {
           "id": "RF.K.2d-Q2",
@@ -2962,7 +3016,9 @@
           ],
           "correct": "The sound you hear in the middle of 'fish'",
           "hint": "Listen closely to the middle sound of the word 'pig' and compare it to the middle sounds of the words in the choices.",
-          "difficulty": 1
+          "difficulty": 1,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2d/RF.K.2d-Q2.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2d/RF.K.2d-Q2-hint.wav"
         },
         {
           "id": "RF.K.2d-Q3",
@@ -3070,7 +3126,9 @@
           ],
           "correct": "tap",
           "hint": "Listen carefully to the beginning sound you are asked to change in 'map' and then what new sound you should make.",
-          "difficulty": 1
+          "difficulty": 1,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2e/RF.K.2e-Q2.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2e/RF.K.2e-Q2-hint.wav"
         },
         {
           "id": "RF.K.2e-Q3",
@@ -3084,7 +3142,9 @@
           ],
           "correct": "cat, hat",
           "hint": "Think about which two words sound almost the same, but have just one sound different.",
-          "difficulty": 2
+          "difficulty": 2,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2e/RF.K.2e-Q3.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2e/RF.K.2e-Q3-hint.wav"
         },
         {
           "id": "RF.K.2e-Q4",
@@ -3098,7 +3158,9 @@
           ],
           "correct": "Dig",
           "hint": "Focus on the sound in the middle of 'dog' and how it changes to the /i/ sound.",
-          "difficulty": 2
+          "difficulty": 2,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2e/RF.K.2e-Q4.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2e/RF.K.2e-Q4-hint.wav"
         },
         {
           "id": "RF.K.2e-Q5",
@@ -3112,7 +3174,9 @@
           ],
           "correct": "hop",
           "hint": "Think about how the sound /h/ and the word 'op' blend together to form a new word.",
-          "difficulty": 2
+          "difficulty": 2,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2e/RF.K.2e-Q5.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2e/RF.K.2e-Q5-hint.wav"
         }
       ]
     },
@@ -3174,7 +3238,9 @@
           ],
           "correct": "a long 'a' sound, like in 'cake'",
           "hint": "Remember that the silent 'e' at the end of a word can make the vowel before it say its long sound.",
-          "difficulty": 2
+          "difficulty": 2,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3b/RF.K.3b-Q1.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3b/RF.K.3b-Q1-hint.wav"
         },
         {
           "id": "RF.K.3b-Q2",
@@ -3211,7 +3277,9 @@
           ],
           "correct": "fox",
           "hint": "Listen carefully to the sound of the letter 'o' in each word. Does it sound like the 'o' in 'note' (long O) or the 'o' in 'dog' (short O)?",
-          "difficulty": 2
+          "difficulty": 2,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3b/RF.K.3b-Q3.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3b/RF.K.3b-Q3-hint.wav"
         },
         {
           "id": "RF.K.3b-Q4",
@@ -3373,7 +3441,9 @@
           ],
           "correct": "are",
           "hint": "Think about which word makes the sentence sound grammatically correct and complete.",
-          "difficulty": 2
+          "difficulty": 2,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3c/RF.K.3c-Q5.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3c/RF.K.3c-Q5-hint.wav"
         }
       ]
     },
@@ -3421,7 +3491,9 @@
           ],
           "correct": "The /a/ sound to the /o/ sound",
           "hint": "Listen carefully to the sound in the middle of MAP and then the sound in the middle of MOP.",
-          "difficulty": 1
+          "difficulty": 1,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3d/RF.K.3d-Q3.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3d/RF.K.3d-Q3-hint.wav"
         },
         {
           "id": "RF.K.3d-Q5",
@@ -3538,7 +3610,9 @@
           ],
           "correct": "Daytime",
           "hint": "Think about what the passage says about the sun and when we can play.",
-          "difficulty": 1
+          "difficulty": 1,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.4/RF.K.4-Q4.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.4/RF.K.4-Q4-hint.wav"
         },
         {
           "id": "RF.K.4-Q5",
@@ -3607,7 +3681,9 @@
           ],
           "correct": "swims",
           "hint": "Look for the word that shows the action the fish is doing.",
-          "difficulty": 1
+          "difficulty": 1,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.1/K.L.1-Q2.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.1/K.L.1-Q2-hint.wav"
         },
         {
           "id": "K.L.1-Q3",
@@ -3667,7 +3743,9 @@
           ],
           "correct": "under",
           "hint": "Think about where the cat is in relation to the bed when it is hiding.",
-          "difficulty": 1
+          "difficulty": 1,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.1/K.L.1-Q5.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.1/K.L.1-Q5-hint.wav"
         }
       ]
     },
@@ -3737,7 +3815,9 @@
           ],
           "correct": "a question mark (?)",
           "hint": "Remember, a question asks for information. What mark do we use for questions?",
-          "difficulty": 1
+          "difficulty": 1,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.2/K.L.2-Q3.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.2/K.L.2-Q3-hint.wav"
         },
         {
           "id": "K.L.2-Q4",
@@ -3751,7 +3831,9 @@
           ],
           "correct": "sam",
           "hint": "Remember that a person's name always starts with a big letter.",
-          "difficulty": 1
+          "difficulty": 1,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.2/K.L.2-Q4.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.2/K.L.2-Q4-hint.wav"
         }
       ]
     },
@@ -3866,7 +3948,9 @@
           ],
           "correct": "C) grape",
           "hint": "Think about what kind of things an apple, a banana, and an orange are.",
-          "difficulty": 1
+          "difficulty": 1,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.5/K.L.5-Q1.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.5/K.L.5-Q1-hint.wav"
         },
         {
           "id": "K.L.5-Q2",
@@ -4133,7 +4217,9 @@
           ],
           "correct": "autumn",
           "hint": "Think about the different names we use for the seasons when the weather changes and leaves fall.",
-          "difficulty": 2
+          "difficulty": 2,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.6/K.L.6-Q5.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.6/K.L.6-Q5-hint.wav"
         }
       ]
     },
@@ -4155,7 +4241,9 @@
           ],
           "correct": "Looking at the pictures in the book as the teacher reads.",
           "hint": "Think about what your body does when you are really paying attention to a story being read aloud with your class.",
-          "difficulty": 1
+          "difficulty": 1,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.10/RL.K.10-Q1.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.10/RL.K.10-Q1-hint.wav"
         },
         {
           "id": "RL.K.10-Q2",
@@ -4186,7 +4274,9 @@
           ],
           "correct": "Some sweet berries.",
           "hint": "Remember what the little bear was searching for in the story we just read.",
-          "difficulty": 1
+          "difficulty": 1,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.10/RL.K.10-Q3.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.10/RL.K.10-Q3-hint.wav"
         },
         {
           "id": "RL.K.10-Q4",
@@ -4200,7 +4290,9 @@
           ],
           "correct": "Ask a question about what happened in the story.",
           "hint": "Think about what you do when you hear something in a story that makes you curious or want to share your thoughts.",
-          "difficulty": 1
+          "difficulty": 1,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.10/RL.K.10-Q4.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.10/RL.K.10-Q4-hint.wav"
         },
         {
           "id": "RL.K.10-Q5",
@@ -4214,7 +4306,9 @@
           ],
           "correct": "Answer questions about the story",
           "hint": "Think about what it means to be part of the story and show you understand when everyone is reading together.",
-          "difficulty": 2
+          "difficulty": 2,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.10/RL.K.10-Q5.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.10/RL.K.10-Q5-hint.wav"
         }
       ]
     },
@@ -4236,7 +4330,9 @@
           ],
           "correct": "Wild animals",
           "hint": "Think about what lions, tigers, and bears all are. The main topic tells you what the whole book is mostly about.",
-          "difficulty": 1
+          "difficulty": 1,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.10/RI.K.10-Q1.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.10/RI.K.10-Q1-hint.wav"
         },
         {
           "id": "RI.K.10-Q2",
@@ -4250,7 +4346,9 @@
           ],
           "correct": "Ask your teacher a question about a bug in the book.",
           "hint": "Think about how you show you are interested and learning when you are reading with your friends and teacher.",
-          "difficulty": 1
+          "difficulty": 1,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.10/RI.K.10-Q2.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.10/RI.K.10-Q2-hint.wav"
         },
         {
           "id": "RI.K.10-Q3",
@@ -4264,7 +4362,9 @@
           ],
           "correct": "Look at the pictures and listen carefully to the words about animals.",
           "hint": "Think about what you do with your eyes and ears when you want to learn from a book.",
-          "difficulty": 1
+          "difficulty": 1,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.10/RI.K.10-Q3.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.10/RI.K.10-Q3-hint.wav"
         },
         {
           "id": "RI.K.10-Q4",
@@ -4278,7 +4378,9 @@
           ],
           "correct": "Talk about the interesting pictures with your friends.",
           "hint": "Think about how talking with others can help everyone understand new facts from a book.",
-          "difficulty": 1
+          "difficulty": 1,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.10/RI.K.10-Q4.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.10/RI.K.10-Q4-hint.wav"
         },
         {
           "id": "RI.K.10-Q5",
@@ -4292,7 +4394,9 @@
           ],
           "correct": "In very cold places",
           "hint": "Look back at the part of the book that talked about the weather and ground where penguins are found.",
-          "difficulty": 2
+          "difficulty": 2,
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.10/RI.K.10-Q5.wav",
+          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.10/RI.K.10-Q5-hint.wav"
         }
       ]
     }
