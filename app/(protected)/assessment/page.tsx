@@ -39,6 +39,11 @@ import { SkeletonPage } from "@/app/_components/Skeleton";
 /* ── Types ─────────────────────────────────────────────── */
 
 type Phase = "loading" | "intro" | "quiz" | "calculating" | "results";
+
+// localStorage key prefix for resuming an in-progress placement test
+// per child. Keyed by child id so a parent with multiple kids
+// (deprecated but still possible in the schema) doesn't cross-pollute.
+const ASSESSMENT_DRAFT_KEY_PREFIX = "readee.assessment-draft.";
 type QuestionType = "mcq" | "category_sort" | "missing_word" | "sentence_build" | "tap_to_pair" | "word_builder";
 
 interface MergedQuestion {
@@ -413,6 +418,17 @@ function AssessmentContent() {
   const [confettiPieces, setConfettiPieces] = useState<
     { id: number; left: number; color: string; delay: number }[]
   >([]);
+  // Resume support — if the kid abandoned mid-test (lost interest, tab
+  // closed, iOS killed the background), a draft of the in-progress
+  // session lives in localStorage under DRAFT_KEY_PREFIX + childId.
+  // We hold it in state so the intro screen can show a "Pick up where
+  // you left off?" CTA above the fresh-start button.
+  const [pendingDraft, setPendingDraft] = useState<{
+    questions: MergedQuestion[];
+    currentIdx: number;
+    answers: AnswerRecord[];
+    consecutiveWrong: number;
+  } | null>(null);
 
   // Load child data
   useEffect(() => {
@@ -431,12 +447,61 @@ function AssessmentContent() {
         // Weight + cap the question pool by the kid's declared grade
         // so a 4th grader doesn't get a string of K letter questions.
         const gradeKey = gradeToKey((kid as any).grade ?? null);
-        setQuestions(buildAdaptiveExam(gradeKey));
+        const fresh = buildAdaptiveExam(gradeKey);
+        setQuestions(fresh);
+
+        // Look for an in-progress draft for this kid. Validate shape
+        // before offering Resume — corrupt blobs fall through to a
+        // clean fresh start.
+        if (typeof window !== "undefined") {
+          try {
+            const raw = window.localStorage.getItem(
+              ASSESSMENT_DRAFT_KEY_PREFIX + kid.id,
+            );
+            if (raw) {
+              const draft = JSON.parse(raw) as {
+                questions: MergedQuestion[];
+                currentIdx: number;
+                answers: AnswerRecord[];
+                consecutiveWrong: number;
+              };
+              if (
+                Array.isArray(draft.questions) &&
+                draft.questions.length > 0 &&
+                typeof draft.currentIdx === "number" &&
+                draft.currentIdx > 0 &&
+                draft.currentIdx < draft.questions.length &&
+                Array.isArray(draft.answers)
+              ) {
+                setPendingDraft(draft);
+              }
+            }
+          } catch {
+            /* ignore corrupt draft */
+          }
+        }
+
         setPhase("intro");
       }
     }
     load();
   }, [childId]);
+
+  // Autosave draft on every meaningful state change during the quiz —
+  // refresh, tab-bounce, or background kill no longer wipes the kid's
+  // progress. Cleared in saveResults() once the assessment row lands.
+  useEffect(() => {
+    if (phase !== "quiz" || !child || typeof window === "undefined") return;
+    if (questions.length === 0) return;
+    try {
+      window.localStorage.setItem(
+        ASSESSMENT_DRAFT_KEY_PREFIX + child.id,
+        JSON.stringify({ questions, currentIdx, answers, consecutiveWrong }),
+      );
+    } catch {
+      /* quota / private mode — non-fatal */
+    }
+  }, [phase, child, questions, currentIdx, answers, consecutiveWrong]);
 
   // Per-question audio is on for emerging readers (K + 1st), off for
   // 2nd–4th. The placement test uses the kid's declared grade since
@@ -459,10 +524,40 @@ function AssessmentContent() {
   }, [currentIdx, phase, audioReady, audioGradesEnabled]);
 
   const handleStart = useCallback(() => {
+    // Tapping the fresh-start CTA wipes any draft so a partially-
+    // completed prior run can't bleed back in.
+    if (child && typeof window !== "undefined") {
+      try {
+        window.localStorage.removeItem(
+          ASSESSMENT_DRAFT_KEY_PREFIX + child.id,
+        );
+      } catch {
+        /* ignore */
+      }
+    }
+    setPendingDraft(null);
+    setCurrentIdx(0);
+    setAnswers([]);
+    setConsecutiveWrong(0);
     unlockAudio();
     setAudioReady(true);
     setPhase("quiz");
-  }, [unlockAudio]);
+  }, [unlockAudio, child]);
+
+  // Resume from the persisted draft. Restores questions in the same
+  // randomized order they were originally drawn so the kid sees the
+  // next-up question they actually left on, not a fresh draw.
+  const handleResume = useCallback(() => {
+    if (!pendingDraft) return;
+    setQuestions(pendingDraft.questions);
+    setCurrentIdx(pendingDraft.currentIdx);
+    setAnswers(pendingDraft.answers);
+    setConsecutiveWrong(pendingDraft.consecutiveWrong);
+    setPendingDraft(null);
+    unlockAudio();
+    setAudioReady(true);
+    setPhase("quiz");
+  }, [pendingDraft, unlockAudio]);
 
   const handleReplay = useCallback(() => {
     const q = questions[currentIdx];
@@ -543,6 +638,19 @@ function AssessmentContent() {
         .from("children")
         .update({ reading_level: placement.levelName })
         .eq("id", child.id);
+
+      // Assessment finished + persisted — wipe the in-progress draft
+      // so future visits start clean instead of offering to resume a
+      // session that's already in the assessments table.
+      if (typeof window !== "undefined") {
+        try {
+          window.localStorage.removeItem(
+            ASSESSMENT_DRAFT_KEY_PREFIX + child.id,
+          );
+        } catch {
+          /* ignore */
+        }
+      }
 
       // Funnel step 3/6 — placement test result saved. Captures the
       // level + percentage so PostHog can segment funnel cohorts by
@@ -789,30 +897,65 @@ function AssessmentContent() {
               Just try your best — you got this!
             </motion.p>
 
-            {/* Let's Go button */}
+            {/* Resume previous session if a draft exists. Primary
+                CTA is "pick up where you left off"; fresh-start is
+                the secondary so a kid who lost their place doesn't
+                accidentally wipe their answers and start over. */}
+            {pendingDraft && (
+              <motion.button
+                onClick={handleResume}
+                className="relative w-full mb-3 py-4 rounded-2xl font-extrabold text-lg text-white transition-all hover:scale-[1.02] active:scale-[0.97] flex items-center justify-center gap-3"
+                style={{
+                  background: "linear-gradient(135deg, #10b981, #059669)",
+                  boxShadow: "0 4px 0 0 #047857",
+                }}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: 0.85 }}
+              >
+                <span className="relative">
+                  Pick up at question {pendingDraft.currentIdx + 1}
+                </span>
+                <Rocket className="relative w-5 h-5" />
+              </motion.button>
+            )}
+
+            {/* Let's Go button — fresh start */}
             <motion.button
               onClick={handleStart}
-              className="relative w-full py-4 rounded-2xl font-extrabold text-xl text-white transition-all hover:scale-[1.02] active:scale-[0.97] flex items-center justify-center gap-3"
-              style={{
-                background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
-                boxShadow: "0 4px 0 0 #4f46e5",
-              }}
+              className={`relative w-full py-4 rounded-2xl font-extrabold ${
+                pendingDraft
+                  ? "text-base text-zinc-600 border-2 border-zinc-200 bg-white hover:border-indigo-300 hover:text-indigo-700"
+                  : "text-xl text-white"
+              } transition-all hover:scale-[1.02] active:scale-[0.97] flex items-center justify-center gap-3`}
+              style={
+                pendingDraft
+                  ? undefined
+                  : {
+                      background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
+                      boxShadow: "0 4px 0 0 #4f46e5",
+                    }
+              }
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.4, delay: 0.85 }}
             >
-              <motion.span
-                className="absolute inset-0 rounded-2xl"
-                animate={{
-                  boxShadow: [
-                    "0 0 0 0 rgba(99,102,241,0.4)",
-                    "0 0 0 10px rgba(99,102,241,0)",
-                  ],
-                }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-              />
-              <span className="relative">Let&apos;s Go!</span>
-              <Rocket className="relative w-6 h-6" />
+              {!pendingDraft && (
+                <motion.span
+                  className="absolute inset-0 rounded-2xl"
+                  animate={{
+                    boxShadow: [
+                      "0 0 0 0 rgba(99,102,241,0.4)",
+                      "0 0 0 10px rgba(99,102,241,0)",
+                    ],
+                  }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                />
+              )}
+              <span className="relative">
+                {pendingDraft ? "Start over instead" : "Let's Go!"}
+              </span>
+              {!pendingDraft && <Rocket className="relative w-6 h-6" />}
             </motion.button>
 
             <div className="mt-4">
