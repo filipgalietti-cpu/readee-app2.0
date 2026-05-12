@@ -8,62 +8,66 @@ import {
   Loader2,
   BookOpen,
   BookOpenText,
-  Layers,
   ClipboardPen,
-  ImageIcon,
   Lock,
   X,
 } from "lucide-react";
-import { semanticSearch } from "../search-actions";
+import { semanticSearch } from "@/app/(protected)/_actions/search-actions";
 import type { SearchHit } from "@/lib/ai/embeddings";
 
-type HrefArgs = { id: string; metadata: Record<string, unknown> };
+type HrefArgs = {
+  id: string;
+  metadata: Record<string, unknown>;
+  childId: string;
+};
 
+/**
+ * Parent-side smart-search destinations.
+ *
+ * Lessons land the kid in the slideshow runner; practice questions
+ * land the kid on the standard's practice session; stories drop the
+ * parent into the library scrolled to that title. Each route carries
+ * the resolved childId so we never dead-end on "No reader selected."
+ */
 function buildHref(contentType: string, args: HrefArgs): string {
-  const { id, metadata } = args;
+  const { id, metadata, childId } = args;
   const standardId = (metadata as any)?.standard_id ?? null;
+  const childParam = `child=${encodeURIComponent(childId)}`;
 
   switch (contentType) {
     case "sample_lesson":
-      // Teacher preview of a Readee sample lesson (slides + MCQs).
-      // Falls back to the library filtered by standard if we somehow
-      // don't have a standard id on the hit.
       return standardId
-        ? `/classroom/library/lesson/${encodeURIComponent(standardId)}`
-        : `/classroom/library`;
+        ? `/learn?${childParam}&standard=${encodeURIComponent(standardId)}`
+        : `/practice-hub?${childParam}`;
     case "sample_question":
-      // Teacher preview of a single practice question.
-      return `/classroom/library/question/${encodeURIComponent(id)}`;
+      // Question ids look like RL.K.1-Q1 — first segment is the standard.
+      // We send the kid into the standard's practice session; they'll
+      // see this question along with the standard's other items.
+      return standardId
+        ? `/practice?${childParam}&standard=${encodeURIComponent(standardId)}`
+        : `/practice-hub?${childParam}`;
     case "story":
-      // Teacher preview of a decodable story (passage + 3 MCQs).
-      return `/classroom/library/story/${encodeURIComponent(id)}`;
-    case "custom_lesson":
-      return `/classroom/lessons/${id}`;
-    case "custom_book":
-      return `/classroom/books/${id}`;
-    case "custom_quiz":
-      return `/classroom/authoring/quiz/${id}`;
-    case "leveled_passage":
-      return `/classroom/leveled/${id}`;
+      // Stories don't have per-id deep links yet — land on the library
+      // and scroll to the entry via the hash.
+      return `/stories?${childParam}#${encodeURIComponent(id)}`;
     default:
-      return `/classroom/library`;
+      return `/practice-hub?${childParam}`;
   }
 }
 
 const TYPE_META: Record<string, { label: string; icon: any; color: string }> = {
-  sample_lesson:    { label: "Readee lesson",   icon: BookOpen,     color: "text-indigo-600 bg-indigo-50" },
-  sample_question:  { label: "Practice Q",      icon: ClipboardPen, color: "text-emerald-600 bg-emerald-50" },
-  story:            { label: "Story",           icon: BookOpenText, color: "text-amber-600 bg-amber-50" },
-  custom_lesson:    { label: "Your lesson",     icon: BookOpen,     color: "text-violet-600 bg-violet-50" },
-  custom_book:      { label: "Your book",       icon: BookOpenText, color: "text-violet-600 bg-violet-50" },
-  custom_quiz:      { label: "Your quiz",       icon: ClipboardPen, color: "text-violet-600 bg-violet-50" },
-  leveled_passage:  { label: "Leveled passage", icon: Layers,       color: "text-rose-600 bg-rose-50" },
+  sample_lesson:   { label: "Lesson",     icon: BookOpen,     color: "text-indigo-600 bg-indigo-50" },
+  sample_question: { label: "Practice Q", icon: ClipboardPen, color: "text-emerald-600 bg-emerald-50" },
+  story:           { label: "Story",      icon: BookOpenText, color: "text-amber-600 bg-amber-50" },
 };
 
-export default function SemanticSearchBar({
+export default function ProductSearchBar({
   isPremium,
+  childId,
 }: {
   isPremium: boolean;
+  /** Required so result links carry ?child=… into the runner. */
+  childId: string | null;
 }) {
   const [query, setQuery] = useState("");
   const [hits, setHits] = useState<SearchHit[] | null>(null);
@@ -96,9 +100,14 @@ export default function SemanticSearchBar({
     return () => clearTimeout(t);
   }, [query, isPremium]);
 
+  // Without a resolved child we can't construct working hit links, so
+  // hide the bar entirely. Caller surfaces always have a child loaded
+  // by the time they render us, but this keeps the contract explicit.
+  if (!childId) return null;
+
   return (
-    <div className="rounded-2xl border border-violet-200 bg-gradient-to-br from-violet-50 to-indigo-50 p-3 shadow-sm">
-      <div className="flex items-center gap-2 px-2 pt-1 text-[10px] font-bold uppercase tracking-widest text-violet-700">
+    <div className="rounded-2xl border border-violet-200 bg-gradient-to-br from-violet-50 to-indigo-50 p-3 shadow-sm dark:border-violet-900/40 dark:from-violet-950/30 dark:to-indigo-950/30">
+      <div className="flex items-center gap-2 px-2 pt-1 text-[10px] font-bold uppercase tracking-widest text-violet-700 dark:text-violet-300">
         <Sparkles className="h-3 w-3" />
         Smart search
         {!isPremium && (
@@ -107,7 +116,7 @@ export default function SemanticSearchBar({
           </span>
         )}
       </div>
-      <div className="mt-2 flex items-center gap-2 rounded-xl border border-zinc-200 bg-white px-3 py-2 shadow-sm">
+      <div className="mt-2 flex items-center gap-2 rounded-xl border border-zinc-200 bg-white px-3 py-2 shadow-sm dark:border-slate-700 dark:bg-slate-900">
         <Search className="h-4 w-4 text-zinc-400" />
         <input
           type="text"
@@ -115,11 +124,11 @@ export default function SemanticSearchBar({
           onChange={(e) => setQuery(e.target.value)}
           placeholder={
             isPremium
-              ? "Describe what you're looking for — \"a 2nd grade story about kindness,\" \"context clues practice,\" …"
+              ? "Describe what your kid needs — \"a 2nd grade story about kindness,\" \"context clues practice,\" …"
               : "Smart search is a Readee+ feature"
           }
           disabled={!isPremium}
-          className="flex-1 bg-transparent text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none disabled:cursor-not-allowed"
+          className="flex-1 bg-transparent text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none disabled:cursor-not-allowed dark:text-slate-100"
         />
         {pending ? (
           <Loader2 className="h-4 w-4 animate-spin text-violet-500" />
@@ -131,7 +140,7 @@ export default function SemanticSearchBar({
               setHits(null);
               setErr(null);
             }}
-            className="rounded-full p-1 text-zinc-400 hover:bg-zinc-100"
+            className="rounded-full p-1 text-zinc-400 hover:bg-zinc-100 dark:hover:bg-slate-800"
           >
             <X className="h-3.5 w-3.5" />
           </button>
@@ -139,7 +148,7 @@ export default function SemanticSearchBar({
       </div>
 
       {!isPremium && (
-        <div className="mt-2 flex items-center justify-between gap-2 px-2 text-xs text-zinc-600">
+        <div className="mt-2 flex items-center justify-between gap-2 px-2 text-xs text-zinc-600 dark:text-slate-400">
           <div className="flex items-center gap-1.5">
             <Lock className="h-3 w-3" />
             Upgrade to search by meaning, not just keywords.
@@ -153,14 +162,12 @@ export default function SemanticSearchBar({
         </div>
       )}
 
-      {planLocked && isPremium === false && null}
-
       {err && !planLocked && (
         <div className="mt-2 px-2 text-xs font-semibold text-red-600">{err}</div>
       )}
 
       {hits && hits.length === 0 && (
-        <div className="mt-2 px-2 text-xs text-zinc-500">
+        <div className="mt-2 px-2 text-xs text-zinc-500 dark:text-slate-400">
           Nothing matched. Try fewer or more general words.
         </div>
       )}
@@ -180,12 +187,13 @@ export default function SemanticSearchBar({
             const href = buildHref(h.contentType, {
               id: h.contentId,
               metadata: md ?? {},
+              childId,
             });
             return (
               <Link
                 key={h.contentType + h.contentId}
                 href={href}
-                className="flex items-start gap-3 rounded-xl border border-transparent bg-white px-3 py-2 transition hover:border-violet-300 hover:shadow-sm"
+                className="flex items-start gap-3 rounded-xl border border-transparent bg-white px-3 py-2 transition hover:border-violet-300 hover:shadow-sm dark:bg-slate-900 dark:hover:border-violet-700"
               >
                 <div
                   className={`flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-lg ${meta.color}`}
@@ -193,7 +201,7 @@ export default function SemanticSearchBar({
                   <Icon className="h-3.5 w-3.5" />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-zinc-500">
+                  <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-zinc-500 dark:text-slate-400">
                     {meta.label}
                     {sub && (
                       <>
@@ -202,7 +210,7 @@ export default function SemanticSearchBar({
                       </>
                     )}
                   </div>
-                  <div className="truncate text-sm font-semibold text-zinc-900">
+                  <div className="truncate text-sm font-semibold text-zinc-900 dark:text-white">
                     {String(title)}
                   </div>
                 </div>

@@ -14,6 +14,8 @@ import {
 } from "lucide-react";
 import TopCommunityPicks from "./_components/TopCommunityPicks";
 import { SkeletonPage } from "@/app/_components/Skeleton";
+import ProductSearchBar from "@/app/_components/ProductSearchBar";
+import { usePlanStore } from "@/lib/stores/plan-store";
 
 const GRADE_BADGES: Record<string, string> = {
   kindergarten: "/images/ui/grades/grade-k.png",
@@ -258,6 +260,9 @@ function PracticeHubContent() {
   const [loading, setLoading] = useState(true);
   const [openDomains, setOpenDomains] = useState<Set<string>>(new Set());
   const [openGrades, setOpenGrades] = useState<Set<string>>(new Set());
+  const plan = usePlanStore((s) => s.plan);
+  const fetchPlan = usePlanStore((s) => s.fetch);
+  useEffect(() => { fetchPlan(); }, [fetchPlan]);
 
   // No child in the URL? Bounce to /dashboard which knows how to resolve
   // the parent's child. Without this, a stale link from smart search or
@@ -352,6 +357,12 @@ function PracticeHubContent() {
           {allStandards.length} topics &middot; {totalQs} questions
         </p>
       </motion.div>
+
+      {/* Smart search — Readee+ semantic search across canon lessons,
+          practice questions, and decodable stories. Hits route the kid
+          straight into /learn, /practice, or /stories with the resolved
+          child param attached, so clicks never dead-end. */}
+      <ProductSearchBar isPremium={plan === "premium"} childId={child.id} />
 
       {/* Random */}
       <motion.button
