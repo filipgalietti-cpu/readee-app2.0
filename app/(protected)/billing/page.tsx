@@ -37,6 +37,10 @@ export default function BillingPage() {
   const [loading, setLoading] = useState(true);
   const [billing, setBilling] = useState<BillingData | null>(null);
   const [portalLoading, setPortalLoading] = useState(false);
+  // Surface portal failures inline — a silent failure on this page
+  // leaves a paying subscriber unable to update their card or cancel,
+  // which becomes a chargeback waiting to happen.
+  const [portalError, setPortalError] = useState<string | null>(null);
 
   useEffect(() => {
     async function load() {
@@ -77,16 +81,26 @@ export default function BillingPage() {
 
   async function handleManageSubscription() {
     setPortalLoading(true);
+    setPortalError(null);
     try {
       const res = await fetch("/api/billing/portal", { method: "POST" });
       const data = await res.json();
       if (data.url) {
         window.location.href = data.url;
+        return; // keep spinner up during the Stripe redirect
       }
+      setPortalError(
+        data.error
+          ? `Couldn't open the billing portal: ${data.error}. Email ${SUPPORT.email} and we'll handle it for you.`
+          : `Couldn't open the billing portal. Email ${SUPPORT.email} and we'll handle it for you.`,
+      );
     } catch {
-      console.error("Failed to open billing portal");
+      setPortalError(
+        `Couldn't reach Stripe. Check your connection and try again — or email ${SUPPORT.email}.`,
+      );
+    } finally {
+      setPortalLoading(false);
     }
-    setPortalLoading(false);
   }
 
   if (loading || !billing) {
@@ -175,6 +189,14 @@ export default function BillingPage() {
                   <ExternalLink className="w-4 h-4" />
                   {portalLoading ? "Opening..." : "Manage subscription"}
                 </button>
+                {portalError && (
+                  <div
+                    role="alert"
+                    className="mt-2 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-xs font-semibold text-red-700 dark:border-red-900/40 dark:bg-red-950/30 dark:text-red-300"
+                  >
+                    {portalError}
+                  </div>
+                )}
               </div>
             )}
 
@@ -254,6 +276,14 @@ export default function BillingPage() {
                   <ExternalLink className="w-3.5 h-3.5" />
                   {portalLoading ? "Opening..." : "View in Stripe"}
                 </button>
+                {portalError && (
+                  <div
+                    role="alert"
+                    className="mt-3 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-left text-xs font-semibold text-red-700 dark:border-red-900/40 dark:bg-red-950/30 dark:text-red-300"
+                  >
+                    {portalError}
+                  </div>
+                )}
               </div>
             ) : isPremium && hasPromo && activatedDate ? (
               <div className="rounded-xl border border-zinc-100 overflow-hidden">

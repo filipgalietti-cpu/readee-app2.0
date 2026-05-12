@@ -75,9 +75,14 @@ function UpgradeContent() {
   const reasonCopy = reason ? REASON_COPY[reason] : null;
 
   const [checkoutLoading, setCheckoutLoading] = useState(false);
+  // Surface checkout failures to the parent inline instead of silently
+  // un-spinning the button. Parents are typing in their card details
+  // 30 seconds from now — a silent failure here is direct lost revenue.
+  const [checkoutError, setCheckoutError] = useState<string | null>(null);
 
   async function handleStartTrial(sku: "premium" | "teacher_solo" = "premium") {
     setCheckoutLoading(true);
+    setCheckoutError(null);
     try {
       const res = await fetch("/api/checkout", {
         method: "POST",
@@ -87,12 +92,18 @@ function UpgradeContent() {
       const data = await res.json();
       if (data.url) {
         window.location.href = data.url;
-      } else {
-        console.error("Checkout error:", data.error);
-        setCheckoutLoading(false);
+        return; // keep the spinner up during the Stripe redirect
       }
+      setCheckoutError(
+        data.error
+          ? `Couldn't start checkout: ${data.error}. Try again — and email hello@readee.app if it keeps happening.`
+          : "Couldn't start checkout. Try again — and email hello@readee.app if it keeps happening.",
+      );
     } catch {
-      console.error("Checkout request failed");
+      setCheckoutError(
+        "Couldn't reach Stripe. Check your connection and try again — email hello@readee.app if it keeps happening.",
+      );
+    } finally {
       setCheckoutLoading(false);
     }
   }
@@ -253,6 +264,14 @@ function UpgradeContent() {
                 ? "Redirecting…"
                 : `Start ${PRICING.trialDays}-day free trial`}
             </button>
+            {checkoutError && (
+              <div
+                role="alert"
+                className="mt-2 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-xs font-semibold text-red-700 dark:border-red-900/40 dark:bg-red-950/30 dark:text-red-300"
+              >
+                {checkoutError}
+              </div>
+            )}
             <p className="mt-2 text-center text-[11px] text-zinc-400">
               No charge until day {PRICING.trialDays + 1}. Cancel anytime.
             </p>
@@ -435,6 +454,14 @@ function UpgradeContent() {
             ? "Start Teacher Solo trial"
             : "Start 7-Day Free Trial"}
         </button>
+        {checkoutError && (
+          <div
+            role="alert"
+            className="mx-auto max-w-sm rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-xs font-semibold text-red-700 dark:border-red-900/40 dark:bg-red-950/30 dark:text-red-300"
+          >
+            {checkoutError}
+          </div>
+        )}
         <Link
           href="/dashboard"
           className="inline-flex items-center gap-1.5 text-sm text-zinc-400 hover:text-zinc-600 transition-colors"
