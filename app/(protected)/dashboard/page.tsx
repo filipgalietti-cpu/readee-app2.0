@@ -343,6 +343,57 @@ function AddChildrenForm({
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
 
+  // Persist in-progress onboarding to localStorage so a refresh (or a
+  // tab-bounce, or an iOS background kill) on the pfp step doesn't
+  // wipe the typed name + grade and force the parent to start over.
+  // Cleared in handleCreateChild once the kid row is in the DB.
+  const ONBOARDING_DRAFT_KEY = "readee.onboarding-draft";
+
+  // Rehydrate on first paint.
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    try {
+      const raw = window.localStorage.getItem(ONBOARDING_DRAFT_KEY);
+      if (!raw) return;
+      const draft = JSON.parse(raw) as {
+        name?: string;
+        grade?: string;
+        pfpId?: string;
+        step?: "info" | "pfp" | "handoff";
+      };
+      if (typeof draft.name === "string") setName(draft.name);
+      if (typeof draft.grade === "string") setGrade(draft.grade);
+      if (typeof draft.pfpId === "string" && (PFP_OPTIONS as readonly string[]).includes(draft.pfpId)) {
+        setPfpId(draft.pfpId);
+      }
+      // Only rehydrate up to pfp — if the previous session had reached
+      // handoff but never finished the insert, send the parent back to
+      // pfp so they can confirm the avatar and trigger the save again.
+      if (draft.step === "pfp" || draft.step === "handoff") {
+        setStep("pfp");
+      }
+    } catch {
+      /* corrupt blob — ignore and start clean */
+    }
+  }, []);
+
+  // Sync to localStorage on every meaningful change.
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (!name && !grade && step === "info") {
+      // Nothing worth persisting yet; leave any prior blob alone.
+      return;
+    }
+    try {
+      window.localStorage.setItem(
+        ONBOARDING_DRAFT_KEY,
+        JSON.stringify({ name, grade, pfpId, step }),
+      );
+    } catch {
+      /* quota or private-mode — non-fatal */
+    }
+  }, [name, grade, pfpId, step]);
+
   const canAdvanceFromInfo = name.trim().length > 0 && grade.length > 0;
 
   const handleCreateChild = async () => {
@@ -381,6 +432,16 @@ function AddChildrenForm({
     const kid = data as Child;
     setChild(kid);
     onDone([kid]);
+
+    // Wipe the in-progress draft now that the kid exists for real —
+    // future visits start clean instead of rehydrating a stale name.
+    if (typeof window !== "undefined") {
+      try {
+        window.localStorage.removeItem(ONBOARDING_DRAFT_KEY);
+      } catch {
+        /* ignore */
+      }
+    }
 
     // Mark the parent's profile as onboarded the first time they
     // create a kid. Before today this flag was only ever flipped on
