@@ -358,6 +358,10 @@ function PracticeLoader() {
   const childId = params.get("child");
   const standardId = params.get("standard");
   const typesParam = params.get("types"); // e.g. "sentence_build,category_sort"
+  // Optional smart-search deep-link: pin a specific question to the
+  // front of the session so the kid sees the one the parent searched
+  // for first instead of waiting for the shuffle to surface it.
+  const focusQuestionId = params.get("focus");
   const [child, setChild] = useState<Child | null>(null);
   const [loading, setLoading] = useState(true);
   const [blocked, setBlocked] = useState(false);
@@ -479,14 +483,31 @@ function PracticeLoader() {
     );
   }
 
-  return <PracticeSession child={child} standard={standard} gradeStandards={gradeStandards} />;
+  return (
+    <PracticeSession
+      child={child}
+      standard={standard}
+      gradeStandards={gradeStandards}
+      focusQuestionId={focusQuestionId}
+    />
+  );
 }
 
 /* ═══════════════════════════════════════════════════════ */
 /*  Practice Session                                       */
 /* ═══════════════════════════════════════════════════════ */
 
-function PracticeSession({ child, standard, gradeStandards }: { child: Child; standard: Standard; gradeStandards: Standard[] }) {
+function PracticeSession({
+  child,
+  standard,
+  gradeStandards,
+  focusQuestionId,
+}: {
+  child: Child;
+  standard: Standard;
+  gradeStandards: Standard[];
+  focusQuestionId?: string | null;
+}) {
   const router = useRouter();
   const { unlockAudio, stop, playUrl, playSequence, playCorrectChime, playIncorrectBuzz } = useAudio();
   const gradeKey = levelNameToGradeKey(child?.reading_level ?? null);
@@ -516,9 +537,20 @@ function PracticeSession({ child, standard, gradeStandards }: { child: Child; st
   const prevCarrotsRef = useRef(sessionCarrots);
 
   const questions = useMemo(() => {
+    // Smart-search deep-link: pin the requested question to the front
+    // of the session so the kid sees it first. The rest of the slots
+    // are filled from a shuffled pool of the remaining questions, so
+    // the session still feels varied.
+    if (focusQuestionId) {
+      const pinned = standard.questions.find((q) => q.id === focusQuestionId);
+      const rest = standard.questions.filter((q) => q.id !== focusQuestionId);
+      const shuffledRest = shuffleArray(rest);
+      const ordered = pinned ? [pinned, ...shuffledRest] : shuffledRest;
+      return ordered.slice(0, QUESTIONS_PER_SESSION);
+    }
     if (standard.questions.length <= QUESTIONS_PER_SESSION) return standard.questions;
     return shuffleArray(standard.questions).slice(0, QUESTIONS_PER_SESSION);
-  }, [standard]);
+  }, [standard, focusQuestionId]);
 
   // Reset store on mount/standard change
   useEffect(() => {

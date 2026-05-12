@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { Suspense } from "react";
@@ -112,6 +112,30 @@ function StoriesContent() {
     stop();
     setActiveStory(null);
   }, [stop]);
+
+  // Deep-link from smart search: `/stories?child=X#<storyId>` opens
+  // the matching story automatically once the child has loaded. We
+  // strip the hash after consuming it so the back button returns to
+  // the library list instead of re-opening the story in a loop.
+  const deepLinkConsumed = useRef(false);
+  useEffect(() => {
+    if (deepLinkConsumed.current) return;
+    if (loading || !child) return;
+    if (typeof window === "undefined") return;
+    const raw = window.location.hash.replace(/^#/, "");
+    if (!raw) return;
+    const target = allStories.find((s) => s.id === decodeURIComponent(raw));
+    if (!target) return;
+    deepLinkConsumed.current = true;
+    openStory(target);
+    window.history.replaceState(
+      null,
+      "",
+      window.location.pathname + window.location.search,
+    );
+    // allStories is a stable import; openStory is memoized via useCallback.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loading, child]);
 
   if (loading || !child) {
     return <SkeletonPage cards={5} />;

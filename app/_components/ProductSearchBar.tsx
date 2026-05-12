@@ -40,11 +40,13 @@ function buildHref(contentType: string, args: HrefArgs): string {
         ? `/learn?${childParam}&standard=${encodeURIComponent(standardId)}`
         : `/practice-hub?${childParam}`;
     case "sample_question":
-      // Question ids look like RL.K.1-Q1 — first segment is the standard.
-      // We send the kid into the standard's practice session; they'll
-      // see this question along with the standard's other items.
+      // Question ids look like RL.K.1-Q1 — first segment is the
+      // standard. We send the kid into that standard's practice
+      // session and pin the searched-for question to the front via
+      // `focus`, so the kid actually sees what the parent searched
+      // for instead of waiting for a random shuffle to surface it.
       return standardId
-        ? `/practice?${childParam}&standard=${encodeURIComponent(standardId)}`
+        ? `/practice?${childParam}&standard=${encodeURIComponent(standardId)}&focus=${encodeURIComponent(id)}`
         : `/practice-hub?${childParam}`;
     case "story":
       // Stories don't have per-id deep links yet — land on the library
