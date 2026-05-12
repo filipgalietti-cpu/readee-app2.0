@@ -54,9 +54,22 @@ export type ReaderLevel = {
   };
 };
 
-export const READER_LEVELS: ReaderLevel[] = [
+/**
+ * The first ten levels are hand-tuned milestones — each has a unique
+ * name, icon, and color palette so reaching one *feels* different from
+ * the level before it. Levels 11–1000 are extended programmatically:
+ * the icon + accent palette cycle through these ten, and the name is
+ * generic ("Level 42"). Every 10th level past 10 is a milestone
+ * ("Level 50 — Master Reader") with a celebratory name.
+ *
+ * Thresholds preserve the original curve for L1–L10 exactly. Past
+ * L10 we use a power curve so each level still feels reachable but
+ * top-tier levels remain aspirational. Level 1000 is unreachable in
+ * practice — the point of having 1000 rungs is that the *next* one
+ * is always visible.
+ */
+const SEED_LEVELS: Omit<ReaderLevel, "number">[] = [
   {
-    number: 1,
     name: "Word Sprout",
     threshold: 0,
     icon: Sprout,
@@ -69,7 +82,6 @@ export const READER_LEVELS: ReaderLevel[] = [
     },
   },
   {
-    number: 2,
     name: "Page Turner",
     threshold: 50,
     icon: Leaf,
@@ -82,7 +94,6 @@ export const READER_LEVELS: ReaderLevel[] = [
     },
   },
   {
-    number: 3,
     name: "Story Hunter",
     threshold: 150,
     icon: Flower,
@@ -95,7 +106,6 @@ export const READER_LEVELS: ReaderLevel[] = [
     },
   },
   {
-    number: 4,
     name: "Book Buddy",
     threshold: 300,
     icon: TreeDeciduous,
@@ -108,7 +118,6 @@ export const READER_LEVELS: ReaderLevel[] = [
     },
   },
   {
-    number: 5,
     name: "Reading Star",
     threshold: 500,
     icon: Star,
@@ -121,7 +130,6 @@ export const READER_LEVELS: ReaderLevel[] = [
     },
   },
   {
-    number: 6,
     name: "Library Hero",
     threshold: 800,
     icon: Sparkles,
@@ -134,7 +142,6 @@ export const READER_LEVELS: ReaderLevel[] = [
     },
   },
   {
-    number: 7,
     name: "Word Wizard",
     threshold: 1200,
     icon: Wand2,
@@ -147,7 +154,6 @@ export const READER_LEVELS: ReaderLevel[] = [
     },
   },
   {
-    number: 8,
     name: "Reading Master",
     threshold: 1700,
     icon: Trophy,
@@ -160,7 +166,6 @@ export const READER_LEVELS: ReaderLevel[] = [
     },
   },
   {
-    number: 9,
     name: "Story Legend",
     threshold: 2400,
     icon: Crown,
@@ -173,7 +178,6 @@ export const READER_LEVELS: ReaderLevel[] = [
     },
   },
   {
-    number: 10,
     name: "Readee Champion",
     threshold: 3500,
     icon: Rocket,
@@ -187,7 +191,71 @@ export const READER_LEVELS: ReaderLevel[] = [
   },
 ];
 
+/** Decade-milestone names sprinkled across the extended ladder so
+ *  every L20, L30, L50, L100, L500, L1000 still feels special. */
+const MILESTONE_NAMES: Record<number, string> = {
+  20: "Bookworm",
+  30: "Page Voyager",
+  40: "Story Captain",
+  50: "Master Reader",
+  60: "Chapter Champion",
+  70: "Library Sage",
+  80: "Word Sovereign",
+  90: "Legend in Training",
+  100: "Reading Legend",
+  150: "Mythic Reader",
+  200: "Grandmaster",
+  250: "Sage of Stories",
+  300: "Reading Oracle",
+  400: "Tome Keeper",
+  500: "Reading Mythic",
+  600: "Word Titan",
+  700: "Story Demigod",
+  800: "Lore Master",
+  900: "Reading Ascendant",
+  1000: "Reading Eternal",
+};
+
+/** Smooth threshold curve for levels past 10. Power function tuned
+ *  so L11 is a small step up from L10 (3500) and L1000 lands in the
+ *  low millions of lifetime carrots — aspirational but well-defined. */
+function thresholdAfter10(n: number): number {
+  // base preserves continuity from L10 = 3500.
+  // The exponent gives a gentle curve through mid-levels and a steeper
+  // climb past L100 so high tiers stay aspirational.
+  const offset = n - 10;
+  return Math.round(3500 + 250 * Math.pow(offset, 1.85));
+}
+
+function buildLevels(): ReaderLevel[] {
+  const out: ReaderLevel[] = SEED_LEVELS.map((seed, i) => ({
+    ...seed,
+    number: i + 1,
+  }));
+  for (let n = SEED_LEVELS.length + 1; n <= 1000; n++) {
+    const palette = SEED_LEVELS[(n - 1) % SEED_LEVELS.length];
+    const name = MILESTONE_NAMES[n] ?? `Level ${n}`;
+    out.push({
+      number: n,
+      name,
+      threshold: thresholdAfter10(n),
+      icon: palette.icon,
+      accent: palette.accent,
+    });
+  }
+  return out;
+}
+
+export const READER_LEVELS: ReaderLevel[] = buildLevels();
+
 export const MAX_LEVEL = READER_LEVELS[READER_LEVELS.length - 1].number;
+
+/** Levels worth featuring in a condensed UI — the first 10 plus every
+ *  named milestone. Useful for the /levels browse page so we don't
+ *  render a 1000-row scroll. */
+export const MILESTONE_LEVELS: ReaderLevel[] = READER_LEVELS.filter(
+  (l) => l.number <= 10 || l.number in MILESTONE_NAMES,
+);
 
 export type LevelInfo = {
   /** Level the kid is currently at. */

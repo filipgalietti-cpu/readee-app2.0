@@ -335,6 +335,36 @@ export default function AppSidebar({ mobileOnly = false }: { mobileOnly?: boolea
     !isPlatformAdminRoute &&
     (pathname?.startsWith("/admin/school") || pathname?.startsWith("/admin/district") || pathname?.startsWith("/admin/qc") || pathname === "/admin");
 
+  // Parent surfaces — B2C-only per the May 4 reshape. When the user is
+  // physically on one of these routes we force parent identity even if
+  // they happen to also own a classroom (hybrid hangover from B2B
+  // experiments). Prevents the teacher sidebar from leaking onto
+  // /practice-hub, /dashboard, /buddy etc.
+  const PARENT_SURFACE_PREFIXES = [
+    "/dashboard",
+    "/practice-hub",
+    "/practice",
+    "/buddy",
+    "/journey",
+    "/stories",
+    "/discover",
+    "/learn",
+    "/lesson",
+    "/today",
+    "/levels",
+    "/upgrade",
+    "/assessment",
+    "/settings",
+    "/fluency",
+    "/analytics",
+    "/leaderboard",
+  ];
+  const isParentSurface =
+    !!pathname &&
+    PARENT_SURFACE_PREFIXES.some(
+      (p) => pathname === p || pathname.startsWith(p + "/") || pathname.startsWith(p + "?"),
+    );
+
   // Account mode — single source of truth for sidebar visual variant.
   // Drives both the colored mode badge and the avatar styling so the
   // sidebar always tells the user which "hat" they're wearing.
@@ -343,6 +373,8 @@ export default function AppSidebar({ mobileOnly = false }: { mobileOnly?: boolea
     ? "owner"
     : isTenantAdminRoute && hasAdminScope
     ? "tenant_admin"
+    : isParentSurface && hasChildren
+    ? "parent"
     : ownsClassroom && hasChildren
     ? "hybrid"
     : ownsClassroom
@@ -356,7 +388,10 @@ export default function AppSidebar({ mobileOnly = false }: { mobileOnly?: boolea
   // (both capabilities) see the teacher identity in the header — the
   // Family group still gives them parent-side links right below.
   // Platform admin routes override everything → owner identity.
-  const showTeacherIdentity = isPlatformAdminRoute || ownsClassroom;
+  // Parent surfaces force the kid-forward identity regardless of
+  // classroom ownership.
+  const showTeacherIdentity =
+    isPlatformAdminRoute || (ownsClassroom && !isParentSurface);
   const sidebarName = isPlatformAdminRoute
     ? displayName || "Owner"
     : showTeacherIdentity

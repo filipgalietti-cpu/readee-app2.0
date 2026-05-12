@@ -8,7 +8,7 @@ import { Check, Lock, ArrowLeft, Carrot } from "lucide-react";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { useChildStore } from "@/lib/stores/child-store";
 import { useLifetimeCarrots } from "@/lib/levels/use-lifetime-carrots";
-import { READER_LEVELS, computeLevel } from "@/lib/levels/levels";
+import { READER_LEVELS, MILESTONE_LEVELS, computeLevel } from "@/lib/levels/levels";
 import type { Child } from "@/lib/db/types";
 import { SkeletonPage } from "@/app/_components/Skeleton";
 
@@ -161,9 +161,22 @@ function LevelsContent() {
         )}
       </motion.div>
 
-      {/* The full ladder */}
+      {/* Smart ladder slice: the kid's current band (5 below → 12 above)
+          merged with every named milestone, deduplicated and sorted.
+          Rendering all 1000 levels would be a 40-second stagger and an
+          unreadable scroll — band + milestones gives a clear "what's
+          next" and a fun "what's possible later." */}
       <ol className="mt-6 space-y-2">
-        {READER_LEVELS.map((lvl, idx) => {
+        {(() => {
+          const cur = info.current.number;
+          const bandLo = Math.max(1, cur - 5);
+          const bandHi = Math.min(READER_LEVELS.length, cur + 12);
+          const bandNums = new Set<number>();
+          for (let n = bandLo; n <= bandHi; n++) bandNums.add(n);
+          for (const m of MILESTONE_LEVELS) bandNums.add(m.number);
+          const slice = READER_LEVELS.filter((l) => bandNums.has(l.number));
+          return slice;
+        })().map((lvl, idx) => {
           const achieved = info.current.number >= lvl.number;
           const isCurrent = info.current.number === lvl.number;
           const Icon = lvl.icon;
@@ -172,7 +185,7 @@ function LevelsContent() {
               key={lvl.number}
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: idx * 0.04 }}
+              transition={{ delay: Math.min(idx, 12) * 0.04 }}
               className={`flex items-center gap-3 rounded-2xl border bg-white p-3 dark:bg-slate-900 ${
                 isCurrent
                   ? "border-indigo-300 ring-2 ring-indigo-200 dark:border-indigo-700 dark:ring-indigo-900/40"
