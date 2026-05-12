@@ -1,0 +1,616 @@
+grade,folder,standard_id,question_id,type,expected_path,tts_script
+K,kindergarten,RL.K.1,RL.K.1-Q3,multiple_choice,audio/kindergarten/RL.K.1/RL.K.1-Q3.mp3,"Why did Emma's mom make a chocolate cake?
+
+Emma was hungry.... It was Emma's birthday.... It was a sunny day.... She liked to bake."
+K,kindergarten,RL.K.2,RL.K.2-Q1,multiple_choice,audio/kindergarten/RL.K.2/RL.K.2-Q1.mp3,"What did Bear do right after he felt hungry?
+
+He ate the honey.... He looked in a tree.... He felt happy.... He found some berries."
+K,kindergarten,RL.K.2,RL.K.2-Q2,multiple_choice,audio/kindergarten/RL.K.2/RL.K.2-Q2.mp3,"Why did Frog get on the lily pad?
+
+A. To find a new home.... B. To get to the other side.... C. To eat a snack.... D. To take a nap."
+K,kindergarten,RL.K.2,RL.K.2-Q3,multiple_choice,audio/kindergarten/RL.K.2/RL.K.2-Q3.mp3,"What was Mia's problem in the story?
+
+She shared her sandwich with Leo.... She forgot her lunch at home.... She didn't like her friend Leo.... She wanted to eat alone."
+K,kindergarten,RL.K.2,RL.K.2-Q4,multiple_choice,audio/kindergarten/RL.K.2/RL.K.2-Q4.mp3,"How did Turtle win the race?
+
+Rabbit did not want to win.... Turtle ran very fast.... Rabbit stopped to rest.... Turtle kept walking when Rabbit took a nap."
+K,kindergarten,RL.K.4,RL.K.4-Q3,multiple_choice,audio/kindergarten/RL.K.4/RL.K.4-Q3.mp3,"The boat DRIFTED across the calm lake. What does DRIFTED tell us about how the boat moved?
+
+A. It stopped and stayed still.... B. It floated gently with the water.... C. It moved quickly with a motor.... D. It went down into the lake."
+K,kindergarten,RL.K.5,RL.K.5-Q4,multiple_choice,audio/kindergarten/RL.K.5/RL.K.5-Q4.mp3,"Read the text: ""I like bugs / Big bugs, small bugs / Crawly bugs, tall bugs / I like bugs a lot!"" What makes this text sound like a poem?
+
+It tells you how to make something.... It has words that rhyme.... It tells a long story about bugs.... It teaches you facts about bugs."
+K,kindergarten,RL.K.6,RL.K.6-Q3,multiple_choice,audio/kindergarten/RL.K.6/RL.K.6-Q3.mp3,"A book cover says: ""Written by Maria Lopez. Illustrated by James Park.""
+
+How did Maria Lopez and James Park help make this book?
+
+Maria Lopez wrote the story, and James Park drew the pictures.... They both helped to print the book.... Maria Lopez drew the pictures, and James Park wrote the story.... They both helped to read the book."
+K,kindergarten,RL.K.7,RL.K.7-Q2,multiple_choice,audio/kindergarten/RL.K.7/RL.K.7-Q2.mp3,"The story says, ""It was snowing outside."" If a picture showed a child wearing a warm hat and gloves, what does the picture help us know about the story?
+
+The child is playing inside.... It is springtime.... It is cold outside.... The child is going to sleep."
+K,kindergarten,RI.K.3,RI.K.3-Q2,multiple_choice,audio/kindergarten/RI.K.3/RI.K.3-Q2.mp3,"What does the passage help us understand about how water and ice are connected?
+
+Ice only gets colder and never melts.... Water and ice are always separate and never change into one another.... Water can become ice, and ice can become water again.... Only cold things can be water, and only warm things can be ice."
+K,kindergarten,RI.K.3,RI.K.3-Q5,multiple_choice,audio/kindergarten/RI.K.3/RI.K.3-Q5.mp3,"The passage says a seed needs water and sun. How are water and sun important for the seed?
+
+They make the seed smaller and smaller.... They help the seed fly high in the sky.... They make the flower fall off quickly.... They help the seed start to grow roots and a stem."
+K,kindergarten,RI.K.4,RI.K.4-Q3,multiple_choice,audio/kindergarten/RI.K.4/RI.K.4-Q3.mp3,"The climbers worked hard to reach the mountain's peak. It was very cold and windy at the top, and they could see for miles!
+
+The side of the mountain... A small tree on the mountain... The highest part of the mountain... A cave inside the mountain"
+K,kindergarten,RI.K.5,RI.K.5-Q10,multiple_choice,audio/kindergarten/RI.K.5/RI.K.5-Q10.mp3,"You have just opened a book past its front cover. What do you call the very first paper page inside that tells you the book's title and who wrote it?
+
+The back cover... The story pages... The last page... The title page"
+K,kindergarten,RI.K.8,RI.K.8-Q4,multiple_choice,audio/kindergarten/RI.K.8/RI.K.8-Q4.mp3,"Based on the story, which reason tells us why dogs make great pets?
+
+Dogs like to eat bones.... Dogs need to drink water.... Dogs are loyal.... Dogs can run very fast."
+K,kindergarten,RI.K.9,RI.K.9-Q1,multiple_choice,audio/kindergarten/RI.K.9/RI.K.9-Q1.mp3,"What is one way the books tell us different things about cats?
+
+Both books say cats are soft.... Book 1 says cats are fluffy, but Book 2 says they are playful.... Book 1 says cats like to sleep, but Book 2 says they like to chase toys.... Both books say cats like to sleep a lot."
+K,kindergarten,RF.K.1a,RF.K.1a-Q1,multiple_choice,audio/kindergarten/RF.K.1a/RF.K.1a-Q1.mp3,"After you have read all the words on one page of your book, what is the best way to find the next part of the story?
+
+Close the book and pick a new one.... Turn to the next page to continue reading.... Read the same page again from the beginning.... Look for words in the middle of the page you just finished."
+K,kindergarten,RF.K.1a,RF.K.1a-Q4,multiple_choice,audio/kindergarten/RF.K.1a/RF.K.1a-Q4.mp3,"Imagine you are reading these words in a book: The little bird flew to its nest. If you just finished reading the word 'bird' on the first line, which word should you read next?
+
+little... flew... nest... its"
+K,kindergarten,RF.K.1c,RF.K.1c-Q1,space_insertion,audio/kindergarten/RF.K.1c/RF.K.1c-Q1.mp3,Tap between letters to add spaces to make the sentence correct.
+K,kindergarten,RF.K.1c,RF.K.1c-Q3,multiple_choice,audio/kindergarten/RF.K.1c/RF.K.1c-Q3.mp3,"Look at these words: ""thecat sat"". This is not quite right. Which choice shows all the words separated correctly?
+
+thecatsat... theca tsat... thecat sat... the cat sat"
+K,kindergarten,RF.K.1c,RF.K.1c-Q4,multiple_choice,audio/kindergarten/RF.K.1c/RF.K.1c-Q4.mp3,"The words ""I am happy"" are written like this: ""Iamhappy."" Which choice shows the words with the correct spaces?
+
+Iam happy.... I amhappy.... Iamhappy.... I am happy."
+K,kindergarten,RF.K.1d,RF.K.1d-Q4,multiple_choice,audio/kindergarten/RF.K.1d/RF.K.1d-Q4.mp3,"Which of these letters is the letter P?
+
+R... F... P... B"
+K,kindergarten,RF.K.1d,RF.K.1d-Q5,multiple_choice,audio/kindergarten/RF.K.1d/RF.K.1d-Q5.mp3,"Which choice shows the uppercase letter P?
+
+R... B... P... D"
+K,kindergarten,RF.K.2a,RF.K.2a-Q1,multiple_choice,audio/kindergarten/RF.K.2a/RF.K.2a-Q1.mp3,"Which two words rhyme?
+
+Pot and pan... Dog and log... Cat and rug... Sun and moon"
+K,kindergarten,RF.K.2a,RF.K.2a-Q2,multiple_choice,audio/kindergarten/RF.K.2a/RF.K.2a-Q2.mp3,"Which pair of words rhymes?
+
+Pig, Box... Fan, Can... Sun, Moon... Tree, Flower"
+K,kindergarten,RF.K.2a,RF.K.2a-Q3,multiple_choice,audio/kindergarten/RF.K.2a/RF.K.2a-Q3.mp3,"Which word rhymes with 'ball'?
+
+tree... boat... tall... house"
+K,kindergarten,RF.K.2a,RF.K.2a-Q5,multiple_choice,audio/kindergarten/RF.K.2a/RF.K.2a-Q5.mp3,"Look at these words: 'sun,' 'fun,' 'run.' Which word below does NOT rhyme with them?
+
+Bun... Pun... Pig... Gun"
+K,kindergarten,RF.K.2d,RF.K.2d-Q1,multiple_choice,audio/kindergarten/RF.K.2d/RF.K.2d-Q1.mp3,"Which word has the /i/ sound in the middle?
+
+bed... sun... pig... cat"
+K,kindergarten,RF.K.2d,RF.K.2d-Q2,multiple_choice,audio/kindergarten/RF.K.2d/RF.K.2d-Q2.mp3,"Listen carefully to the word 'pig'. Which sound do you hear in the middle of the word 'pig'?
+
+The sound you hear in the middle of 'cup'... The sound you hear in the middle of 'cat'... The sound you hear in the middle of 'mop'... The sound you hear in the middle of 'fish'"
+K,kindergarten,RF.K.2e,RF.K.2e-Q2,multiple_choice,audio/kindergarten/RF.K.2e/RF.K.2e-Q2.mp3,"Let's play with sounds! Say the word 'map'. Now, change the very first sound, /m/, to the /t/ sound. What new word do you hear?
+
+cap... sap... tap... mad"
+K,kindergarten,RF.K.2e,RF.K.2e-Q3,multiple_choice,audio/kindergarten/RF.K.2e/RF.K.2e-Q3.mp3,"Look at these pairs of words. In which pair was a new word made by changing only one sound?
+
+sun, moon... jump, run... cat, hat... big, small"
+K,kindergarten,RF.K.2e,RF.K.2e-Q4,multiple_choice,audio/kindergarten/RF.K.2e/RF.K.2e-Q4.mp3,"Listen to the word 'dog'. If you change the middle sound, /o/, to the /i/ sound, what new word do you make?
+
+Dig... Dag... Doggy... Dot"
+K,kindergarten,RF.K.2e,RF.K.2e-Q5,multiple_choice,audio/kindergarten/RF.K.2e/RF.K.2e-Q5.mp3,"Imagine you have the word 'op'. If you put the sound /h/ at the beginning, what new word do you create?
+
+mop... top... hop... pop"
+K,kindergarten,RF.K.3b,RF.K.3b-Q1,multiple_choice,audio/kindergarten/RF.K.3b/RF.K.3b-Q1.mp3,"The word ""cake"" has a long 'a' sound, and ""cat"" has a short 'a' sound. Now, look at the word ""rake"". What kind of 'a' sound do you hear in ""rake""?
+
+a short 'e' sound, like in 'bed'... a short 'a' sound, like in 'cat'... a long 'a' sound, like in 'cake'... a long 'i' sound, like in 'kite'"
+K,kindergarten,RF.K.3b,RF.K.3b-Q3,multiple_choice,audio/kindergarten/RF.K.3b/RF.K.3b-Q3.mp3,"Three of these words have a LONG **o** sound. Which word has a DIFFERENT vowel sound?
+
+rope... home... fox... bone"
+K,kindergarten,RF.K.3c,RF.K.3c-Q5,multiple_choice,audio/kindergarten/RF.K.3c/RF.K.3c-Q5.mp3,"Choose the sight word that best completes the sentence: The boys ___ happy.
+
+is... do... are... my"
+K,kindergarten,RF.K.3d,RF.K.3d-Q3,multiple_choice,audio/kindergarten/RF.K.3d/RF.K.3d-Q3.mp3,"Listen to the words MAP and MOP. Which sound changes in the middle of these words?
+
+The /p/ sound... The /m/ sound... The /a/ sound to the /o/ sound... The /t/ sound"
+K,kindergarten,RF.K.4,RF.K.4-Q4,multiple_choice,audio/kindergarten/RF.K.4/RF.K.4-Q4.mp3,"When the sun is out and it's time to play, what part of the day is it?
+
+Nighttime... Evening... Daytime... Morning"
+K,kindergarten,K.L.1,K.L.1-Q2,multiple_choice,audio/kindergarten/K.L.1/K.L.1-Q2.mp3,"Which word in the sentence 'The fish swims in the water' tells what the fish does?
+
+water... fish... swims... the"
+K,kindergarten,K.L.1,K.L.1-Q5,multiple_choice,audio/kindergarten/K.L.1/K.L.1-Q5.mp3,"The cat is hiding ___ the bed.
+
+on... in... under... over"
+K,kindergarten,K.L.2,K.L.2-Q3,multiple_choice,audio/kindergarten/K.L.2/K.L.2-Q3.mp3,"Look at the sentence: ""Do you like apples"" Which mark belongs at the very end?
+
+a period (.)... a comma (,)... an exclamation mark (!)... a question mark (?)"
+K,kindergarten,K.L.2,K.L.2-Q4,multiple_choice,audio/kindergarten/K.L.2/K.L.2-Q4.mp3,"Look at this sentence: ""My friend is named sam."" Which word needs a capital letter?
+
+My... friend... is... sam"
+K,kindergarten,K.L.5,K.L.5-Q1,multiple_choice,audio/kindergarten/K.L.5/K.L.5-Q1.mp3,"Apple, banana, and orange are alike. Which word is also like them?
+
+A) pencil... B) cat... C) grape... D) carrot"
+K,kindergarten,K.L.6,K.L.6-Q5,multiple_choice,audio/kindergarten/K.L.6/K.L.6-Q5.mp3,"When the leaves turn red and yellow and gently fall to the ground, what is another word we can use for this time of year?
+
+spring... summer... winter... autumn"
+K,kindergarten,RL.K.10,RL.K.10-Q1,multiple_choice,audio/kindergarten/RL.K.10/RL.K.10-Q1.mp3,"What is one way to show you are actively listening during group story time?
+
+Talking to your friend next to you.... Looking at the pictures in the book as the teacher reads.... Standing up and walking around.... Thinking about what you will do after school."
+K,kindergarten,RL.K.10,RL.K.10-Q3,multiple_choice,audio/kindergarten/RL.K.10/RL.K.10-Q3.mp3,"In the story about the little bear, what did the bear want to find?
+
+Some sweet berries.... A big fish.... A warm bed.... A shiny toy."
+K,kindergarten,RL.K.10,RL.K.10-Q4,multiple_choice,audio/kindergarten/RL.K.10/RL.K.10-Q4.mp3,"What is one way you can show you understand a story during group reading time?
+
+Talk about a different book you read yesterday.... Ask a question about what happened in the story.... Look at the wall instead of the book.... Keep quiet and not say anything at all."
+K,kindergarten,RL.K.10,RL.K.10-Q5,multiple_choice,audio/kindergarten/RL.K.10/RL.K.10-Q5.mp3,"How can you show you are actively engaged when your teacher is reading a story to the whole class?
+
+Close your eyes and rest... Talk to your friend about your lunch... Answer questions about the story... Look at the clock on the wall"
+K,kindergarten,RI.K.10,RI.K.10-Q1,multiple_choice,audio/kindergarten/RI.K.10/RI.K.10-Q1.mp3,"If we read a fact book that showed us pictures of lions, tigers, and bears, what would be the main topic of that book?
+
+How to build a house... What plants need to grow... Wild animals... How to cook dinner"
+K,kindergarten,RI.K.10,RI.K.10-Q2,multiple_choice,audio/kindergarten/RI.K.10/RI.K.10-Q2.mp3,"You are reading a fact book about bugs with your group. What is a good way to actively engage with the book?
+
+Tell your friend a secret joke.... Ask your teacher a question about a bug in the book.... Close your eyes and listen to music.... Draw a picture of a flower on your hand."
+K,kindergarten,RI.K.10,RI.K.10-Q3,multiple_choice,audio/kindergarten/RI.K.10/RI.K.10-Q3.mp3,"Your teacher is reading a book to help everyone learn about different animals. What is the best way to show you are learning?
+
+Close your eyes and try to guess what happens next.... Talk to your friend about playing outside later.... Look at the pictures and listen carefully to the words about animals.... Draw a picture of your favorite toy while the teacher reads."
+K,kindergarten,RI.K.10,RI.K.10-Q4,multiple_choice,audio/kindergarten/RI.K.10/RI.K.10-Q4.mp3,"When your group reads a fact book, what is a good way to learn new things together?
+
+Only look at the words, not the pictures.... Keep all your good ideas quiet inside your head.... Talk about the interesting pictures with your friends.... Quickly turn all the pages without stopping."
+K,kindergarten,RI.K.10,RI.K.10-Q5,multiple_choice,audio/kindergarten/RI.K.10/RI.K.10-Q5.mp3,"Your class read a book about penguins together. What did the book teach you about where penguins usually live?
+
+In warm, sandy deserts... In hot, wet jungles... High up in tall trees... In very cold places"
+1st,1st-grade,RL.1.1,RL.1.1-Q1,multiple_choice,audio/1st-grade/RL.1.1/RL.1.1-Q1.mp3,"After Bella picked the apples, what did she do next?
+
+She put them in her basket.... She ate them for a snack.... She left them on the tree.... She gave them to her mom."
+1st,1st-grade,RL.1.1,RL.1.1-Q5,multiple_choice,audio/1st-grade/RL.1.1/RL.1.1-Q5.mp3,"Why was the kitten scared?
+
+It saw a big, scary dog.... It was sleepy and wanted to nap.... It could not get down from the tall tree.... It wanted to climb even higher."
+1st,1st-grade,RL.1.2,RL.1.2-Q4,multiple_choice,audio/1st-grade/RL.1.2/RL.1.2-Q4.mp3,"What lesson can we learn from Leo's story?
+
+Bikes are only for big kids.... If you keep trying, you can learn new things.... It is fun to fall down.... You should always listen to your mom."
+1st,1st-grade,RL.1.3,RL.1.3-Q1,multiple_choice,audio/1st-grade/RL.1.3/RL.1.3-Q1.mp3,"Which words best describe where the old woman lives?
+
+A. A big house in a forest.... B. A big house near a mountain.... C. A small house near the ocean.... D. A small house in a big city."
+1st,1st-grade,RL.1.3,RL.1.3-Q4,multiple_choice,audio/1st-grade/RL.1.3/RL.1.3-Q4.mp3,"Which major event began the story about Rosa?
+
+Rosa gave the puppy water.... Rosa found the puppy's owner.... Rosa found a lost puppy.... Rosa played with her friends."
+1st,1st-grade,RL.1.4,RL.1.4-Q1,multiple_choice,audio/1st-grade/RL.1.4/RL.1.4-Q1.mp3,"The bright sun warmed her face.
+
+face... Bright... sun... her"
+1st,1st-grade,RL.1.5,RL.1.5-Q6,category_sort,audio/1st-grade/RL.1.5/RL.1.5-Q6.mp3,Sort each description into the right category!
+1st,1st-grade,RL.1.6,RL.1.6-Q3,multiple_choice,audio/1st-grade/RL.1.6/RL.1.6-Q3.mp3,"Who is telling you that Maria said, ""I love pizza!""?
+
+Maria's mom... The narrator... Maria... The pizza maker"
+1st,1st-grade,RL.1.6,RL.1.6-Q5,multiple_choice,audio/1st-grade/RL.1.6/RL.1.6-Q5.mp3,"In the sentence, """"Let's go!"" shouted Tom,"" who is telling us that Tom shouted?
+
+Lily... The person telling the story... Tom... Tom's mom"
+1st,1st-grade,RL.1.7,RL.1.7-Q3,multiple_choice,audio/1st-grade/RL.1.7/RL.1.7-Q3.mp3,"The story says, ""The dog was big."" Look at the picture that goes with the story. What does the picture help you understand about how big the dog is?
+
+A. The dog is small enough to fit in a basket.... B. The dog is about the same height as the boy.... C. The dog is sleeping on the floor.... D. The dog is much smaller than the boy."
+1st,1st-grade,RL.1.7,RL.1.7-Q4,multiple_choice,audio/1st-grade/RL.1.7/RL.1.7-Q4.mp3,"Imagine a picture in the story shows a bunny with a big smile, a small backpack, and eyes looking towards a tall, snowy mountain. Using this picture, what can we best describe about the bunny?
+
+The bunny is tired and wants to rest.... The bunny is hungry for a snack.... The bunny is excited to go on a trip.... The bunny is afraid of the mountain."
+1st,1st-grade,RL.1.9,RL.1.9-Q1,multiple_choice,audio/1st-grade/RL.1.9/RL.1.9-Q1.mp3,"What is different about how the bear and the bee experience honey in their stories?
+
+The bear enjoys eating honey, and the bee enjoys flying near it.... Both the bear and the bee collect honey for their families.... The bear wants to find honey, while the bee works to make honey.... The bear shares honey, and the bee hides honey."
+1st,1st-grade,RL.1.9,RL.1.9-Q4,multiple_choice,audio/1st-grade/RL.1.9/RL.1.9-Q4.mp3,"Leo went to the park and played on the swings. His friend Mia went to the playground and played on the slide. How were Leo's and Mia's adventures the same?
+
+They both played on swings.... They both played inside a house.... They both played outside.... They both built a sandcastle."
+1st,1st-grade,RL.1.9,RL.1.9-Q5,multiple_choice,audio/1st-grade/RL.1.9/RL.1.9-Q5.mp3,"In our story, a little bird named Pip loves to fly high in the sky. A little rabbit named Fluffy loves to dig tunnels deep in the ground. What is one way Pip and Fluffy are *different*?
+
+They are both animals.... Pip likes to fly, and Fluffy likes to dig.... They both like to play.... Pip is small, and Fluffy is big."
+1st,1st-grade,RI.1.1,RI.1.1-Q1,multiple_choice,audio/1st-grade/RI.1.1/RI.1.1-Q1.mp3,"Based on the text, what kind of weather do penguins like?
+
+Rainy and windy weather... Warm and wet weather... Hot and sunny weather... Snowy and icy weather"
+1st,1st-grade,RI.1.2,RI.1.2-Q3,multiple_choice,audio/1st-grade/RI.1.2/RI.1.2-Q3.mp3,"Which detail about cats is shared in the text?
+
+Cats have long tails.... Cats like to sleep a lot.... Cats like to chase mice.... Cats enjoy climbing trees."
+1st,1st-grade,RI.1.3,RI.1.3-Q4,multiple_choice,audio/1st-grade/RI.1.3/RI.1.3-Q4.mp3,"How does the text show the connection between George Washington leading the army and being president?
+
+He led the army after he was president.... He led the army before he was president.... He led the army at the same time he was president.... The text does not tell us how they are connected."
+1st,1st-grade,RI.1.3,RI.1.3-Q5,multiple_choice,audio/1st-grade/RI.1.3/RI.1.3-Q5.mp3,"The passage tells us about the caterpillar's big change. What does the caterpillar do right after eating to get ready for this change?
+
+It makes a cocoon.... It flies away.... It finds new friends.... It sleeps in the sun."
+1st,1st-grade,RI.1.4,RI.1.4-Q4,multiple_choice,audio/1st-grade/RI.1.4/RI.1.4-Q4.mp3,"The text says, ""A fish's habitat is water."" What does the word 'habitat' mean?
+
+How fast a fish can swim... The place where a fish lives... What a fish likes to eat... Where a fish goes to play"
+1st,1st-grade,RI.1.4,RI.1.4-Q6,tap_to_pair,audio/1st-grade/RI.1.4/RI.1.4-Q6.mp3,Match each word to its meaning!
+1st,1st-grade,RI.1.4,RI.1.4-Q3,multiple_choice,audio/1st-grade/RI.1.4/RI.1.4-Q3.mp3,"Dolphins need to find food even when the water is very dark. They use echolocation. This helps them send out sounds that bounce back, showing them where fish are hiding.
+
+A: swimming very fast... B: making loud noises to scare fish away... C: using sounds to find things... D: sleeping quietly in the water"
+1st,1st-grade,RI.1.4,RI.1.4-Q7,multiple_choice,audio/1st-grade/RI.1.4/RI.1.4-Q7.mp3,"A squirrel lives in a tree. A fish lives in the water. A bird lives in a nest. What does the word 'habitat' mean when it says, 'Each animal has its own special habitat'?
+
+A) A kind of food... B) A game an animal plays... C) The place where an animal lives... D) A sound an animal makes"
+1st,1st-grade,RI.1.4,RI.1.4-Q8,multiple_choice,audio/1st-grade/RI.1.4/RI.1.4-Q8.mp3,"The hermit crab needed a new shell because it had outgrown its old one. If you wanted to understand what 'outgrown' means, which question would help you the most?
+
+What color was the old shell?... Was the crab too big for its old shell?... Did the crab like its old shell?... Where did the crab find its new shell?"
+1st,1st-grade,RI.1.4,RI.1.4-Q11,multiple_choice,audio/1st-grade/RI.1.4/RI.1.4-Q11.mp3,"The passage says starfish can regenerate. If a starfish loses an arm, what can it do next?
+
+It can hide from danger.... It can swim faster to escape.... It can grow a new arm.... It can change its color."
+1st,1st-grade,RI.1.6,RI.1.6-Q4,multiple_choice,audio/1st-grade/RI.1.6/RI.1.6-Q4.mp3,"You are reading a book about flowers. The words say, 'Flowers are pretty. They grow tall and have colorful petals.' The picture next to the words shows a flower with its roots under the ground. What can you learn only from the picture?
+
+Flowers are pretty.... Flowers grow tall.... Flowers have roots.... Flowers have colorful petals."
+1st,1st-grade,RI.1.7,RI.1.7-Q3,multiple_choice,audio/1st-grade/RI.1.7/RI.1.7-Q3.mp3,"Imagine a map in a book about lions. It shows Africa with different colored areas. Next to the map, a small box, called a key, tells what each color stands for. This map helps you understand:
+
+What sounds lions make.... The kinds of food lions eat.... Where in Africa lions can be found.... How big a lion's family is."
+1st,1st-grade,RI.1.7,RI.1.7-Q5,multiple_choice,audio/1st-grade/RI.1.7/RI.1.7-Q5.mp3,"Imagine you are reading an informational book about animals. On one page, there is a big picture of a lion with a shaggy mane. The words on that page say, 'Lions are powerful cats that live in Africa.' What does the picture help you understand about lions?
+
+Where lions sleep at night.... That lions like to be alone.... What a powerful cat with a shaggy mane looks like.... How many cubs a lion has."
+1st,1st-grade,RI.1.8,RI.1.8-Q3,multiple_choice,audio/1st-grade/RI.1.8/RI.1.8-Q3.mp3,"What reason does the author give to show why kids should eat vegetables?
+
+A. Vegetables taste sweet.... B. Vegetables have vitamins that help you grow strong.... C. Kids like to share food.... D. Growing taller is fun."
+1st,1st-grade,RI.1.9,RI.1.9-Q2,multiple_choice,audio/1st-grade/RI.1.9/RI.1.9-Q2.mp3,"Book 1 says the sun is a big star. Book 2 says the sun is a star in the sky. What do both books agree about the sun?
+
+The sun is hot.... The sun is a star.... The sun is small.... The sun is blue."
+1st,1st-grade,RI.1.9,RI.1.9-Q4,multiple_choice,audio/1st-grade/RI.1.9/RI.1.9-Q4.mp3,"Book 1 tells how rain forms in the sky. Book 2 tells why plants need rain to grow. What is one way these two books are similar?
+
+They both have pictures of animals.... They both are about rain.... They both tell about plants.... They both talk about the sun."
+1st,1st-grade,RI.1.9,RI.1.9-Q5,multiple_choice,audio/1st-grade/RI.1.9/RI.1.9-Q5.mp3,"Read about Max and Lucy.Max is a big dog. He has brown fur.Lucy is a small dog. She has white fur.What is one thing that is the SAME about Max and Lucy?
+
+Max is big.... Lucy has white fur.... They are both small.... They are both dogs."
+1st,1st-grade,RF.1.1a,RF.1.1a-Q5,multiple_choice,audio/1st-grade/RF.1.1a/RF.1.1a-Q5.mp3,"Which sentence needs a capital letter at the beginning?
+
+A) My dog barks.... B) do you like to play?... C) We went to the park.... D) Look at the big tree!"
+1st,1st-grade,RF.1.2d,RF.1.2d-Q1,multiple_choice,audio/1st-grade/RF.1.2d/RF.1.2d-Q1.mp3,"Listen carefully to the word ""ship"". Which choice shows all the individual sounds you hear?
+
+s-h-i-p... sh-i-p... shi-p... s-hi-p"
+1st,1st-grade,RF.1.2d,RF.1.2d-Q2,multiple_choice,audio/1st-grade/RF.1.2d/RF.1.2d-Q2.mp3,"Listen carefully to the word **ship**. Which choice shows each single sound you hear?
+
+s, h, i, p... s, hi, p... sh, i, p... sh, ip"
+1st,1st-grade,RF.1.2d,RF.1.2d-Q3,multiple_choice,audio/1st-grade/RF.1.2d/RF.1.2d-Q3.mp3,"Imagine you are saying the word **bug** very slowly, stretching out each sound. Which choice shows the sounds you would make, one by one?
+
+/bu/ /g/... /b/ /a/ /g/... /b/ /u/ /g/... /b/ /ug/"
+1st,1st-grade,RF.1.2d,RF.1.2d-Q5,multiple_choice,audio/1st-grade/RF.1.2d/RF.1.2d-Q5.mp3,"Your teacher asks you to say each separate sound you hear in the word **jump**. Which choice shows all the sounds you would say?
+
+/j/ /u/ /mp/... /j/ /u/ /m/ /p/... /ju/ /mp/... /jum/ /p/"
+1st,1st-grade,RF.1.4b,RF.1.4b-Q3,multiple_choice,audio/1st-grade/RF.1.4b/RF.1.4b-Q3.mp3,"Which of these describes how a good reader sounds when they read a story out loud?
+
+They read every word in a flat voice, all at the same speed.... They read so fast that it's hard to understand what they are saying.... They read with a voice that changes for different parts and takes short breaks at commas.... They read each word very, very slowly, one by one."
+1st,1st-grade,RF.1.4b,RF.1.4b-Q5,multiple_choice,audio/1st-grade/RF.1.4b/RF.1.4b-Q5.mp3,"A teacher asks a student to ""read this story with more expression."" What does the teacher want the student to do?
+
+Read all the words very fast.... Skip over some of the words.... Use their voice to make the story sound exciting or sad.... Read all the words in a quiet, flat voice."
+1st,1st-grade,RF.1.4c,RF.1.4c-Q2,multiple_choice,audio/1st-grade/RF.1.4c/RF.1.4c-Q2.mp3,"You read the sentence: ""The cat sat on the map."" Which word would make the sentence make more sense?
+
+man... mop... mat... mom"
+1st,1st-grade,L.1.4,L.1.4-Q3,multiple_choice,audio/1st-grade/L.1.4/L.1.4-Q3.mp3,"Read the sentence: 'The boy swung the bat to hit the ball.' What does the word 'bat' mean in this sentence?
+
+A flying animal that sleeps during the day.... A stick used to play a game.... To blink your eyes quickly.... A loud sound."
+1st,1st-grade,L.1.4,L.1.4-Q6,tap_to_pair,audio/1st-grade/L.1.4/L.1.4-Q6.mp3,Match each word to its meaning!
+1st,1st-grade,L.1.4a,L.1.4a-Q6,tap_to_pair,audio/1st-grade/L.1.4a/L.1.4a-Q6.mp3,Match each word to its meaning!
+1st,1st-grade,L.1.4b,L.1.4b-Q4,multiple_choice,audio/1st-grade/L.1.4b/L.1.4b-Q4.mp3,"What is a teacher?
+
+A place where kids learn... A person who teaches you things... A book with many lessons... A game you play at school"
+1st,1st-grade,L.1.4b,L.1.4b-Q6,tap_to_pair,audio/1st-grade/L.1.4b/L.1.4b-Q6.mp3,Match each word to its meaning!
+1st,1st-grade,L.1.4c,L.1.4c-Q3,multiple_choice,audio/1st-grade/L.1.4c/L.1.4c-Q3.mp3,"If you want to describe an action happening *right now*, which word would you make from the root word 'jump'?
+
+jumps... jumping... jumped... jump"
+1st,1st-grade,L.1.5,L.1.5-Q4,multiple_choice,audio/1st-grade/L.1.5/L.1.5-Q4.mp3,"A bird can fly. Which word tells what a fish can do?
+
+bark... hop... swim... sing"
+1st,1st-grade,L.1.5a,L.1.5a-Q2,multiple_choice,audio/1st-grade/L.1.5a/L.1.5a-Q2.mp3,"Which group does a 'bird' belong in?
+
+A) Toys... B) Animals... C) Food... D) Colors"
+1st,1st-grade,L.1.5a,L.1.5a-Q4,multiple_choice,audio/1st-grade/L.1.5a/L.1.5a-Q4.mp3,"Look at these words: shirt, pants, shoes. Which word does NOT belong in this group?
+
+A) hat... B) sock... C) apple... D) jacket"
+1st,1st-grade,L.1.5a,L.1.5a-Q5,multiple_choice,audio/1st-grade/L.1.5a/L.1.5a-Q5.mp3,"Which word best names the group for 'car, bus, train'?
+
+Animals... Food... Ways to go... Books"
+1st,1st-grade,L.1.5a,L.1.5a-Q6,category_sort,audio/1st-grade/L.1.5a/L.1.5a-Q6.mp3,Sort the words — which ones are colors?
+1st,1st-grade,RF.1.3a,RF.1.3a-Q1,multiple_choice,audio/1st-grade/RF.1.3a/RF.1.3a-Q1.mp3,"Which word begins with the same sound you hear at the start of 'shoe'?
+
+A. chair... B. shell... C. whale... D. thumb"
+1st,1st-grade,RF.1.3b,RF.1.3b-Q1,multiple_choice,audio/1st-grade/RF.1.3b/RF.1.3b-Q1.mp3,"Read the word: fox
+
+fan... fix... fog... fox"
+1st,1st-grade,RF.1.3b,RF.1.3b-Q2,multiple_choice,audio/1st-grade/RF.1.3b/RF.1.3b-Q2.mp3,"Which word names a small, furry pet that often says 'meow'?
+
+fox... cat... dog... pig"
+1st,1st-grade,RF.1.3b,RF.1.3b-Q3,multiple_choice,audio/1st-grade/RF.1.3b/RF.1.3b-Q3.mp3,"Look at the word: **cat**. Which choice tells you about a **cat**?
+
+It is a big animal that lives in the ocean.... It is a small animal that barks.... It is a pet that says 'meow'.... It is a bird that flies in the sky."
+1st,1st-grade,RF.1.3b,RF.1.3b-Q4,multiple_choice,audio/1st-grade/RF.1.3b/RF.1.3b-Q4.mp3,"Read the sentence. Which word best completes the sentence? ""I like to eat a sweet _______.""
+
+bit... bun... bat... big"
+1st,1st-grade,RF.1.3b,RF.1.3b-Q5,multiple_choice,audio/1st-grade/RF.1.3b/RF.1.3b-Q5.mp3,"Which word best completes the sentence: ""I see a big ____ in the sky.""
+
+A. pig... B. sun... C. box... D. cup"
+1st,1st-grade,RF.1.3c,RF.1.3c-Q2,multiple_choice,audio/1st-grade/RF.1.3c/RF.1.3c-Q2.mp3,"What word do you make when you add a Magic E to the end of **hop**?
+
+hops... hope... hot... hap"
+1st,1st-grade,RF.1.3d,RF.1.3d-Q2,multiple_choice,audio/1st-grade/RF.1.3d/RF.1.3d-Q2.mp3,"How many syllables are in the word **rabbit**?
+
+One... Three... Two... Four"
+1st,1st-grade,RF.1.3d,RF.1.3d-Q3,multiple_choice,audio/1st-grade/RF.1.3d/RF.1.3d-Q3.mp3,"How many syllables are in the word **butterfly**?
+
+A. 2... B. 4... C. 3... D. 1"
+1st,1st-grade,RF.1.3d,RF.1.3d-Q4,multiple_choice,audio/1st-grade/RF.1.3d/RF.1.3d-Q4.mp3,"How many syllables are in the word 'banana'?
+
+One... Two... Three... Four"
+1st,1st-grade,RF.1.3e,RF.1.3e-Q3,multiple_choice,audio/1st-grade/RF.1.3e/RF.1.3e-Q3.mp3,"How should you break the word **pencil** into syllables?
+
+pe-ncil... pen-cil... penc-il... pen-c-il"
+1st,1st-grade,RF.1.3e,RF.1.3e-Q4,multiple_choice,audio/1st-grade/RF.1.3e/RF.1.3e-Q4.mp3,"Which choice shows the word 'happy' correctly broken into its two syllables?
+
+ha-ppy... hap-py... h-appy... happ-y"
+1st,1st-grade,RF.1.3e,RF.1.3e-Q5,multiple_choice,audio/1st-grade/RF.1.3e/RF.1.3e-Q5.mp3,"Which word below is broken into two syllables correctly to help a reader sound it out?
+
+ca-rpet... pi-lot... su-mmer... ki-tten"
+1st,1st-grade,RF.1.3f,RF.1.3f-Q2,multiple_choice,audio/1st-grade/RF.1.3f/RF.1.3f-Q2.mp3,"Which word has the -ing ending?
+
+jumped... running... sings... smaller"
+1st,1st-grade,RF.1.3f,RF.1.3f-Q3,multiple_choice,audio/1st-grade/RF.1.3f/RF.1.3f-Q3.mp3,"Yesterday, the boy ________ to the store.
+
+walk... walks... walked... walking"
+1st,1st-grade,RF.1.3f,RF.1.3f-Q5,multiple_choice,audio/1st-grade/RF.1.3f/RF.1.3f-Q5.mp3,"When you read the word ""walked,"" what does the ending **-ed** tell you about when the walking happened?
+
+The walking is happening right now.... The walking already happened.... The walking will happen soon.... The walking happened many times."
+1st,1st-grade,RF.1.3g,RF.1.3g-Q2,multiple_choice,audio/1st-grade/RF.1.3g/RF.1.3g-Q2.mp3,"Look at these words. Which one is a tricky word?
+
+fox... was... run... bed"
+1st,1st-grade,RF.1.3g,RF.1.3g-Q3,multiple_choice,audio/1st-grade/RF.1.3g/RF.1.3g-Q3.mp3,"Which word says **have**?
+
+gave... hive... have... heave"
+1st,1st-grade,RF.1.3g,RF.1.3g-Q4,multiple_choice,audio/1st-grade/RF.1.3g/RF.1.3g-Q4.mp3,"Which sentence contains the irregularly spelled word 'were'?
+
+A. My cat wants a treat.... B. They read a big book.... C. We were going to the park.... D. He likes to play games."
+1st,1st-grade,RF.1.3g,RF.1.3g-Q5,multiple_choice,audio/1st-grade/RF.1.3g/RF.1.3g-Q5.mp3,"Which of these words is a tricky word?
+
+run... cat... said... sit"
+1st,1st-grade,RF.1.4a,RF.1.4a-Q1,multiple_choice,audio/1st-grade/RF.1.4a/RF.1.4a-Q1.mp3,"What is the main reason the author wrote the story about Lily and her ball?
+
+To tell you about a sunny morning.... To teach you how to throw a ball.... To show how Lily solved a problem.... To help you learn about red balls."
+1st,1st-grade,RF.1.4a,RF.1.4a-Q2,multiple_choice,audio/1st-grade/RF.1.4a/RF.1.4a-Q2.mp3,"What is the main reason you would choose to read 'A book about sharks'?
+
+To learn how to make a delicious sandwich for lunch.... To understand how to tie your shoes all by yourself.... To find out what sharks look like and where they live.... To hear a funny story about a boy and his dog."
+1st,1st-grade,RF.1.4a,RF.1.4a-Q3,multiple_choice,audio/1st-grade/RF.1.4a/RF.1.4a-Q3.mp3,"Read this story: My dog, Max, likes to run fast. He chases squirrels in the park. Max also loves to chew on his squeaky toy. When he is tired, he naps on the soft rug. Max is a fun dog to have! Now, what is this story mostly about?
+
+Running fast in the park.... Where Max takes a nap.... What Max the dog likes to do.... How to find squirrels."
+1st,1st-grade,RF.1.4a,RF.1.4a-Q4,multiple_choice,audio/1st-grade/RF.1.4a/RF.1.4a-Q4.mp3,"Read this story: ""Lily loved her little red ball. She threw it up high. Her dog, Max, jumped and caught it! They played all afternoon. Lily giggled when Max brought the ball back."" Why would someone read this story?
+
+To learn how to throw a ball.... To enjoy reading a happy story.... To find out what dogs like to eat.... To know how to teach a dog tricks."
+1st,1st-grade,RF.1.4a,RF.1.4a-Q5,multiple_choice,audio/1st-grade/RF.1.4a/RF.1.4a-Q5.mp3,"Read the text about butterflies.Butterflies start as small eggs. The eggs hatch into tiny caterpillars. Caterpillars eat many leaves to grow bigger. Then, a caterpillar makes a chrysalis around itself. Inside the chrysalis, it changes. After some time, a butterfly comes out! Butterflies fly and drink sweet nectar from flowers.What is the main reason the author wrote this text?
+
+To make you laugh about caterpillars.... To teach you how butterflies grow.... To help you find butterflies outside.... To tell you a story about a flying butterfly."
+1st,1st-grade,RL.1.10,RL.1.10-Q1,multiple_choice,audio/1st-grade/RL.1.10/RL.1.10-Q1.mp3,"Read this short story: ""Max loved his dog, Sparky. Sparky had soft brown fur and a wagging tail. Every morning, Max and Sparky went to the park. Max would throw a yellow frisbee, and Sparky would run and catch it. They both loved playtime.""  
+
+Based on the story, what color was the frisbee Max threw?
+
+A) Blue... B) Green... C) Yellow... D) Red"
+1st,1st-grade,RL.1.10,RL.1.10-Q2,multiple_choice,audio/1st-grade/RL.1.10/RL.1.10-Q2.mp3,"Read this story: Lily loves to play. She has a big red ball. Lily rolls the ball to her dog, Max. Max barks and runs after the ball. They play in the green park. What does Lily use to play with Max?
+
+a stick... a big red ball... a toy car... a blue kite"
+1st,1st-grade,RL.1.10,RL.1.10-Q4,multiple_choice,audio/1st-grade/RL.1.10/RL.1.10-Q4.mp3,"After reading the poem 'My Little Dog,' what does the dog in the poem love to do?
+
+sleep in a cozy bed... eat a big bowl of food... chase a bouncy ball... sing a happy song"
+1st,1st-grade,RL.1.10,RL.1.10-Q5,multiple_choice,audio/1st-grade/RL.1.10/RL.1.10-Q5.mp3,"Read this little story:
+
+""The little dog runs in the park.
+He barks with joy, a happy sound.
+He chases balls, then makes a mark,
+And digs a hole deep in the ground.""
+
+What kind of story is this?
+
+A) A recipe... B) A poem... C) A regular story... D) A joke"
+1st,1st-grade,RI.1.10,RI.1.10-Q1,multiple_choice,audio/1st-grade/RI.1.10/RI.1.10-Q1.mp3,"What is one special thing about giraffes?
+
+A) They can swim very fast.... B) They have very long necks.... C) They build big dams.... D) They like to eat fish."
+1st,1st-grade,RI.1.10,RI.1.10-Q2,multiple_choice,audio/1st-grade/RI.1.10/RI.1.10-Q2.mp3,"Read the short text. Then answer the question: Based on the text, what is something true about bugs?
+
+A. Bugs only live in houses.... B. Ants have six legs.... C. All bugs have eight legs.... D. Spiders are a type of bug."
+1st,1st-grade,RI.1.10,RI.1.10-Q3,multiple_choice,audio/1st-grade/RI.1.10/RI.1.10-Q3.mp3,"You need to find out one fact about a specific animal in a book. What is the best way to find that fact quickly?
+
+Read every word on every page from the beginning.... Only read the words on the very first page.... Look at the pictures and the bold words that are like titles.... Ask a grown-up to tell you the fact."
+1st,1st-grade,RI.1.10,RI.1.10-Q4,multiple_choice,audio/1st-grade/RI.1.10/RI.1.10-Q4.mp3,"Which animal can live in the ocean?
+
+a fox... a whale... a squirrel... a mouse"
+1st,1st-grade,RI.1.10,RI.1.10-Q5,multiple_choice,audio/1st-grade/RI.1.10/RI.1.10-Q5.mp3,"Based on the passage, what does a tadpole look like?
+
+A tiny egg... A green leaf... A small fish... A baby bird"
+1st,1st-grade,L.1.1,L.1.1-Q3,multiple_choice,audio/1st-grade/L.1.1/L.1.1-Q3.mp3,"Choose the word that best completes the sentence: The birds ___ flying in the sky.
+
+is... was... am... are"
+1st,1st-grade,L.1.1,L.1.1-Q4,multiple_choice,audio/1st-grade/L.1.1/L.1.1-Q4.mp3,"Yesterday, Mom ___ a big cake.
+
+bake... bakes... baking... baked"
+1st,1st-grade,L.1.1,L.1.1-Q5,multiple_choice,audio/1st-grade/L.1.1/L.1.1-Q5.mp3,"Which word best completes the sentence: The ______ puppy wagged its tail.
+
+under... runs... happy... bark"
+1st,1st-grade,L.1.2,L.1.2-Q2,multiple_choice,audio/1st-grade/L.1.2/L.1.2-Q2.mp3,"Which sentence ends with the correct mark?
+
+A. Is it time to go!... B. The cat is sleeping... C. We saw a bird?... D. The dog barked."
+1st,1st-grade,L.1.2,L.1.2-Q4,multiple_choice,audio/1st-grade/L.1.2/L.1.2-Q4.mp3,"Which sentence correctly uses the ending mark for a question?
+
+A. What is your name.... B. What is your name!... C. What is your name,... D. What is your name?"
+2nd,2nd-grade,RL.2.1,RL.2.1-Q2,multiple_choice,audio/2nd-grade/RL.2.1/RL.2.1-Q2.mp3,What object did Leo use to play fetch with Biscuit?
+2nd,2nd-grade,RL.2.1,RL.2.1-Q4,multiple_choice,audio/2nd-grade/RL.2.1/RL.2.1-Q4.mp3,What did Grandpa and Tomas do right after they finished building the birdhouse?
+2nd,2nd-grade,RL.2.1,RL.2.1-Q5,multiple_choice,audio/2nd-grade/RL.2.1/RL.2.1-Q5.mp3,Why was Ava disappointed?
+2nd,2nd-grade,RL.2.5,RL.2.5-Q4,multiple_choice,audio/2nd-grade/RL.2.5/RL.2.5-Q4.mp3,Imagine you are starting to read a brand new story. What is the main reason the author writes the beginning part?
+2nd,2nd-grade,RL.2.7,RL.2.7-Q3,multiple_choice,audio/2nd-grade/RL.2.7/RL.2.7-Q3.mp3,"In a story, the picture shows a character named Lily sitting alone with her head down, while a big storm rages outside her window. Based on the picture, how is Lily most likely feeling?"
+2nd,2nd-grade,RL.2.9,RL.2.9-Q1,multiple_choice,audio/2nd-grade/RL.2.9/RL.2.9-Q1.mp3,"In one Cinderella story, a girl wishes to go to a royal party, and a fairy godmother helps her get there. In another Cinderella story, a different girl also dreams of attending a royal party, and magic fish help her. What happens in BOTH of these Cinderella stories?"
+2nd,2nd-grade,RL.2.9,RL.2.9-Q2,multiple_choice,audio/2nd-grade/RL.2.9/RL.2.9-Q2.mp3,"When you compare two different versions of the same story, what is the most important thing to notice about them?"
+2nd,2nd-grade,RL.2.9,RL.2.9-Q4,multiple_choice,audio/2nd-grade/RL.2.9/RL.2.9-Q4.mp3,Both 'The Three Little Pigs' and 'The True Story of the 3 Little Pigs!' tell about a wolf and three pigs. What is a *big difference* about the wolf in these two stories?
+2nd,2nd-grade,RL.2.9,RL.2.9-Q5,multiple_choice,audio/2nd-grade/RL.2.9/RL.2.9-Q5.mp3,"Imagine you read two different versions of the same story. In the first version, the main character is saved by a friendly helper. In the second version, the main character figures out how to escape all by themselves. When you compare these two stories, what is the most important difference about the characters' experiences?"
+2nd,2nd-grade,RI.2.1,RI.2.1-Q3,multiple_choice,audio/2nd-grade/RI.2.1/RI.2.1-Q3.mp3,Which of these items did George Washington Carver create using peanuts?
+2nd,2nd-grade,RI.2.2,RI.2.2-Q1,multiple_choice,audio/2nd-grade/RI.2.2/RI.2.2-Q1.mp3,"Dogs are very special animals that make great pets. They are often called ""man's best friend"" because they are so loyal and friendly. Dogs love to play with their families and often follow them around. Having a dog can make your home feel happier and safer.
+
+There are many different kinds of dogs, both small and big. No matter their size, most dogs love to run and play outside. They enjoy going for walks and playing fetch with a ball. It's important to give dogs exercise so they stay healthy and happy.
+
+Some dogs even have important jobs! For example, guide dogs help people who cannot see to walk safely. Police dogs work with officers to keep communities safe. Other dogs can help find people who are lost. These working dogs show how smart and helpful dogs can be.
+
+What is the main topic of the text?"
+2nd,2nd-grade,RI.2.2,RI.2.2-Q3,multiple_choice,audio/2nd-grade/RI.2.2/RI.2.2-Q3.mp3,"Read the passage below.
+
+**Penguins!**
+
+Penguins are amazing birds that live in very cold places, mostly in the Southern Hemisphere. You can find many of them in Antarctica, where it is snowy and icy. They love to be near the ocean because that is where they find their food. Even though they are birds, penguins cannot fly! They are excellent swimmers.
+
+What do penguins eat? These busy birds are very good hunters in the water. They dive deep to catch tasty fish, tiny shrimp called krill, and other small sea animals. Penguins use their strong flippers to ""fly"" through the water as they chase their meals.
+
+When it's time for baby penguins, the parents work together. The mother penguin lays one or two eggs. Both mom and dad take turns keeping the eggs warm until the chicks hatch. Once the babies are born, their parents feed them and protect them from the cold. Soon, the little penguins are big enough to swim and find their own food!
+
+What is the MAIN topic of the whole passage?"
+2nd,2nd-grade,RI.2.2,RI.2.2-Q4,multiple_choice,audio/2nd-grade/RI.2.2/RI.2.2-Q4.mp3,"Water is all around us, and it can look very different! Sometimes it's hard like a rock, and sometimes it flows like a river. Water can even disappear into the air. This is because water can change its shape or form.
+
+One form of water is a solid. When water gets very cold, it freezes and turns into ice. Ice is solid water. You can hold ice in your hand, and it keeps its shape. Ice cubes in your drink and snow on the ground are examples of solid water.
+
+Another form of water is a liquid. When ice melts, it becomes liquid water. This is the water you drink, use to wash your hands, or see in a pond. Liquid water flows and takes the shape of its container. It's the most common form of water we see every day.
+
+The third form of water is a gas. When liquid water gets very hot, it turns into a gas called steam or water vapor. You can sometimes see steam rising from a hot pot of water. Water vapor is in the air all around us, even if we can't always see it. It helps make clouds!
+
+Based on the entire text, what is the main topic?"
+2nd,2nd-grade,RI.2.2,RI.2.2-Q5,multiple_choice,audio/2nd-grade/RI.2.2/RI.2.2-Q5.mp3,"Read the passage below. What is the main topic of the passage? Many people love to have pets. Pets are animals that live with us in our homes. They can be fun and bring us joy. Dogs are popular pets. They like to play fetch and go for walks. Dogs need food, water, and lots of love. Cats are also common pets. They like to nap in sunny spots and chase toys. Cats need food, water, and a cozy place to sleep. Other pets include fish, birds, and hamsters. Fish swim in tanks. Birds sing songs. Hamsters run on wheels. No matter what kind, all pets need good care."
+2nd,2nd-grade,RI.2.3,RI.2.3-Q4,multiple_choice,audio/2nd-grade/RI.2.3/RI.2.3-Q4.mp3,"After you spread peanut butter on one slice, what is the main reason you put the other slice of bread on top?"
+2nd,2nd-grade,RI.2.3,RI.2.3-Q6,multiple_choice,audio/2nd-grade/RI.2.3/RI.2.3-Q6.mp3,The passage explains that the sun makes ocean water evaporate. What must happen to the water vapor *after* it rises for clouds to form?
+2nd,2nd-grade,RI.2.3,RI.2.3-Q11,multiple_choice,audio/2nd-grade/RI.2.3/RI.2.3-Q11.mp3,"When making sea salt, why is it important that the sun heats the ocean water?"
+2nd,2nd-grade,RI.2.3,RI.2.3-Q15,multiple_choice,audio/2nd-grade/RI.2.3/RI.2.3-Q15.mp3,"Based on the passage, how does the shallow ocean near the shore help plants grow on the ocean floor?"
+2nd,2nd-grade,RI.2.4,RI.2.4-Q2,multiple_choice,audio/2nd-grade/RI.2.4/RI.2.4-Q2.mp3,Frogs often live near ponds and streams. These wet places are their habitats. What does the word **habitat** mean in this sentence?
+2nd,2nd-grade,RI.2.8,RI.2.8-Q1,multiple_choice,audio/2nd-grade/RI.2.8/RI.2.8-Q1.mp3,"The author says recess helps kids ""focus better in class."" How does this reason help you understand why ""recess is important for kids""?"
+2nd,2nd-grade,RI.2.8,RI.2.8-Q2,multiple_choice,audio/2nd-grade/RI.2.8/RI.2.8-Q2.mp3,Which of these is a reason the author gives for why you should drink more water?
+2nd,2nd-grade,RI.2.8,RI.2.8-Q4,multiple_choice,audio/2nd-grade/RI.2.8/RI.2.8-Q4.mp3,"Read the short text. ""You should always wear a helmet when you ride your bike. Wearing a helmet is important because it keeps your head safe if you fall down. So, remember your helmet!"" Which statement best shares the author's main point and the reason that supports it?"
+2nd,2nd-grade,RI.2.9,RI.2.9-Q2,multiple_choice,audio/2nd-grade/RI.2.9/RI.2.9-Q2.mp3,"Read Text A and Text B about the ocean.Text A: The ocean is a big home for many amazing animals! Whales are the biggest animals in the ocean. They swim and sing loud songs. Small, colorful fish dart through coral reefs. Crabs walk sideways on the sandy bottom. Jellyfish float and glow. All these animals need a clean ocean to live and play.Text B: Our ocean needs help to stay clean! Sometimes, trash like plastic bottles and bags floats into the ocean. This trash can hurt ocean animals. Fish might try to eat plastic, or turtles can get tangled. We can help by putting our trash in a bin and recycling. Keeping the ocean clean helps all the animals stay safe and healthy.After reading both texts, what is the biggest difference between what Text A and Text B teach us?"
+2nd,2nd-grade,RI.2.9,RI.2.9-Q4,multiple_choice,audio/2nd-grade/RI.2.9/RI.2.9-Q4.mp3,Read these two texts. Text 1: 'Dogs are playful pets. They have soft fur. Dogs love to run and fetch balls. They often make a barking sound. Dogs need to go outside for walks.' Text 2: 'Cats are quiet pets. They also have soft fur. Cats like to nap and play with string. They often make a meowing sound. Cats like to stay indoors.' Which statement is true about BOTH texts?
+2nd,2nd-grade,RI.2.10,RI.2.10-Q1,multiple_choice,audio/2nd-grade/RI.2.10/RI.2.10-Q1.mp3,"Based on the text, why would an octopus change its color?"
+2nd,2nd-grade,RI.2.10,RI.2.10-Q5,multiple_choice,audio/2nd-grade/RI.2.10/RI.2.10-Q5.mp3,"Over many years, what causes a volcano to slowly get taller and wider?"
+2nd,2nd-grade,RF.2.3,RF.2.3-Q3,multiple_choice,audio/2nd-grade/RF.2.3/RF.2.3-Q3.mp3,"If you are *not feeling happy*, which word best describes how you feel?"
+2nd,2nd-grade,RF.2.3,RF.2.3-Q5,multiple_choice,audio/2nd-grade/RF.2.3/RF.2.3-Q5.mp3,What sound does the 'au' make in the word 'because'?
+2nd,2nd-grade,RF.2.3a,RF.2.3a-Q4,multiple_choice,audio/2nd-grade/RF.2.3a/RF.2.3a-Q4.mp3,Which word has a short 'a' sound?
+2nd,2nd-grade,RF.2.3a,RF.2.3a-Q5,multiple_choice,audio/2nd-grade/RF.2.3a/RF.2.3a-Q5.mp3,Which word has the same vowel sound as the word 'kite'?
+2nd,2nd-grade,RF.2.3b,RF.2.3b-Q3,multiple_choice,audio/2nd-grade/RF.2.3b/RF.2.3b-Q3.mp3,Which word correctly completes the sentence and has the same vowel sound as **rain**? We went to the park to ______.
+2nd,2nd-grade,RF.2.3b,RF.2.3b-Q4,multiple_choice,audio/2nd-grade/RF.2.3b/RF.2.3b-Q4.mp3,What sound does the 'oa' vowel team make in the word 'goat'?
+2nd,2nd-grade,RF.2.3c,RF.2.3c-Q4,multiple_choice,audio/2nd-grade/RF.2.3c/RF.2.3c-Q4.mp3,Which choice shows how to correctly say the word **robot**?
+2nd,2nd-grade,RF.2.3d,RF.2.3d-Q4,multiple_choice,audio/2nd-grade/RF.2.3d/RF.2.3d-Q4.mp3,"What does it mean if something is ""helpful""?"
+2nd,2nd-grade,RF.2.3d,RF.2.3d-Q6,tap_to_pair,audio/2nd-grade/RF.2.3d/RF.2.3d-Q6.mp3,Match each word to its meaning!
+2nd,2nd-grade,RF.2.3e,RF.2.3e-Q1,multiple_choice,audio/2nd-grade/RF.2.3e/RF.2.3e-Q1.mp3,"If you were trying to sound out each word below, which one would be the trickiest to read because its letter sounds don't follow the usual phonics rules?"
+2nd,2nd-grade,RF.2.3e,RF.2.3e-Q5,multiple_choice,audio/2nd-grade/RF.2.3e/RF.2.3e-Q5.mp3,Which word below has a part that sounds different from how you would usually expect those letters to sound?
+2nd,2nd-grade,RF.2.3f,RF.2.3f-Q1,multiple_choice,audio/2nd-grade/RF.2.3f/RF.2.3f-Q1.mp3,Read the sentence. Which word best completes the sentence? There were many ____ at the school fair.
+2nd,2nd-grade,RF.2.3f,RF.2.3f-Q3,multiple_choice,audio/2nd-grade/RF.2.3f/RF.2.3f-Q3.mp3,Which of these words is spelled in a way that is tricky or does not follow common sound rules?
+2nd,2nd-grade,RF.2.4,RF.2.4-Q1,multiple_choice,audio/2nd-grade/RF.2.4/RF.2.4-Q1.mp3,Imagine you are reading a fun story to your classmates. Which way of reading would help everyone understand the story best?
+2nd,2nd-grade,RF.2.4a,RF.2.4a-Q1,multiple_choice,audio/2nd-grade/RF.2.4a/RF.2.4a-Q1.mp3,What did the farmer do to help his garden grow before summer?
+2nd,2nd-grade,RF.2.4b,RF.2.4b-Q4,multiple_choice,audio/2nd-grade/RF.2.4b/RF.2.4b-Q4.mp3,Imagine you are reading a story out loud to your younger brother or sister. What is the best way to read so they can easily understand and enjoy the story?
+2nd,2nd-grade,L.2.4,L.2.4-Q6,tap_to_pair,audio/2nd-grade/L.2.4/L.2.4-Q6.mp3,Match each word to its meaning!
+2nd,2nd-grade,L.2.4a,L.2.4a-Q6,tap_to_pair,audio/2nd-grade/L.2.4a/L.2.4a-Q6.mp3,Match each word to its meaning!
+2nd,2nd-grade,L.2.4b,L.2.4b-Q6,tap_to_pair,audio/2nd-grade/L.2.4b/L.2.4b-Q6.mp3,Match each word to its meaning!
+2nd,2nd-grade,L.2.4c,L.2.4c-Q3,multiple_choice,audio/2nd-grade/L.2.4c/L.2.4c-Q3.mp3,"If someone is *helpless*, what does that mean about them?"
+2nd,2nd-grade,L.2.4c,L.2.4c-Q6,tap_to_pair,audio/2nd-grade/L.2.4c/L.2.4c-Q6.mp3,Match each word to its meaning!
+2nd,2nd-grade,L.2.4d,L.2.4d-Q2,multiple_choice,audio/2nd-grade/L.2.4d/L.2.4d-Q2.mp3,"If you know what **rain** means and what **coat** means, what does a **raincoat** help you do?"
+2nd,2nd-grade,L.2.4d,L.2.4d-Q5,multiple_choice,audio/2nd-grade/L.2.4d/L.2.4d-Q5.mp3,"If ""rain"" means water falling from the sky and a ""coat"" is clothing you wear, what does a ""raincoat"" help you do?"
+2nd,2nd-grade,L.2.4e,L.2.4e-Q1,multiple_choice,audio/2nd-grade/L.2.4e/L.2.4e-Q1.mp3,"In a nonfiction book, a glossary helps you understand new words. If you see this entry: ""desert: a very dry place with little water,"" what does ""desert"" mean?"
+2nd,2nd-grade,L.2.4e,L.2.4e-Q2,multiple_choice,audio/2nd-grade/L.2.4e/L.2.4e-Q2.mp3,"Read this sentence: 'Maya was excited to discover a hidden key under the rug.' If you used a dictionary to understand the word 'discover,' which meaning would best fit the sentence?"
+2nd,2nd-grade,L.2.4e,L.2.4e-Q4,multiple_choice,audio/2nd-grade/L.2.4e/L.2.4e-Q4.mp3,"A glossary says that 'flutter' means to move wings quickly. If a butterfly starts to flutter, what is it doing?"
+2nd,2nd-grade,L.2.4e,L.2.4e-Q5,multiple_choice,audio/2nd-grade/L.2.4e/L.2.4e-Q5.mp3,"A dictionary entry for a word looks like this: penguin (noun): A large bird that lives in cold places, swims very well, and has black and white feathers. It cannot fly.Based on this dictionary entry, which sentence tells you what 'penguin' means?"
+2nd,2nd-grade,L.2.6,L.2.6-Q2,multiple_choice,audio/2nd-grade/L.2.6/L.2.6-Q2.mp3,The girl sang her favorite song. She wanted all her friends to hear it from far away. Which word best tells how she sang?
+2nd,2nd-grade,L.2.1,L.2.1-Q1,multiple_choice,audio/2nd-grade/L.2.1/L.2.1-Q1.mp3,Which sentence shows the correct way to use a verb?
+2nd,2nd-grade,L.2.1,L.2.1-Q4,multiple_choice,audio/2nd-grade/L.2.1/L.2.1-Q4.mp3,"Read the sentence: ""A flock of birds flew over the park."" Imagine only one bird flew over the park. Which word would best complete this new sentence: ""A _______ flew over the park."""
+2nd,2nd-grade,L.2.2,L.2.2-Q2,multiple_choice,audio/2nd-grade/L.2.2/L.2.2-Q2.mp3,"Which sentence uses the contraction ""can't"" correctly?"
+2nd,2nd-grade,L.2.2,L.2.2-Q5,multiple_choice,audio/2nd-grade/L.2.2/L.2.2-Q5.mp3,Which sentence uses commas correctly to list things?
+3rd,3rd-grade,RL.3.3,RL.3.3-Q5,multiple_choice,audio/3rd-grade/RL.3.3/RL.3.3-Q5.mp3,"Lily wanted to build the tallest sandcastle on the beach. First, she watched how the waves came in and where the sand was firmest. Then, she drew a small picture of her castle in the sand with a stick. She decided to dig a wide, shallow moat first, so the water wouldn't wash her castle away. Only after she had a clear idea did she start piling up sand for the towers.
+
+Based on her actions in the story, which word best describes Lily?"
+3rd,3rd-grade,RL.3.4,RL.3.4-Q6,tap_to_pair,audio/3rd-grade/RL.3.4/RL.3.4-Q6.mp3,Match each expression to its meaning!
+3rd,3rd-grade,RL.3.5,RL.3.5-Q1,multiple_choice,audio/3rd-grade/RL.3.5/RL.3.5-Q1.mp3,"If your teacher asks you to read the second 'stanza' of a poem, what is she telling you to do?"
+3rd,3rd-grade,RL.3.5,RL.3.5-Q4,multiple_choice,audio/3rd-grade/RL.3.5/RL.3.5-Q4.mp3,"Read the poem below. How many stanzas are in the poem 'My Dog Spot'?My dog Spot is fluffy and white,He barks all day and sleeps all night.He loves to play with his red ball,And comes running when I call.When we go out for a walk,He likes to sniff and sometimes talk.He wags his tail with happy sound,The best dog ever, all around.He chases squirrels up a tree,And brings his favorite toy to me.He's always there, a loyal friend,Our happy times will never end."
+3rd,3rd-grade,RL.3.6,RL.3.6-Q1,multiple_choice,audio/3rd-grade/RL.3.6/RL.3.6-Q1.mp3,"The narrator says, ""Vegetables are the most boring food in the world."" How does *your* point of view about vegetables compare to the narrator's?"
+3rd,3rd-grade,RL.3.6,RL.3.6-Q4,multiple_choice,audio/3rd-grade/RL.3.6/RL.3.6-Q4.mp3,Read this part of a story: 'Mia skipped happily down the path. She didn't know a small puddle was hiding just ahead!' What does the narrator tell you that Mia does not know?
+3rd,3rd-grade,RL.3.7,RL.3.7-Q2,multiple_choice,audio/3rd-grade/RL.3.7/RL.3.7-Q2.mp3,"Read this story part: 'Leo crept down the long, spooky hallway. Every little creak and groan made him jump. He wondered what was hiding in the shadows.' Imagine an illustration for this story shows Leo holding a tiny, flickering flashlight, his eyes wide with worry, and tall, dark shadows stretching from corners. How does this illustration help you understand the story words?"
+3rd,3rd-grade,RL.3.7,RL.3.7-Q4,multiple_choice,audio/3rd-grade/RL.3.7/RL.3.7-Q4.mp3,"In the story, the words describe Lily: 'Lily skipped into the classroom, her backpack bouncing. She always had a big smile and loved to share her colorful drawings with everyone.' The picture shows Lily with a wide, joyful smile, her eyes sparkling, and holding up a brightly colored drawing. How does this illustration help you understand what kind of person Lily is?"
+3rd,3rd-grade,RL.3.9,RL.3.9-Q2,multiple_choice,audio/3rd-grade/RL.3.9/RL.3.9-Q2.mp3,Imagine two stories by the same author. The first story is about two friends who live near big buildings and play in a busy park. The second story is about two friends who live on a farm and play near animals in a field. Both stories show how important friendship is. Which part of the stories is clearly different?
+3rd,3rd-grade,RL.3.9,RL.3.9-Q4,multiple_choice,audio/3rd-grade/RL.3.9/RL.3.9-Q4.mp3,"An author writes two stories about a character named Rosie. In the first story, Rosie learns that being kind is important. In the second story, Rosie learns that it's okay to ask for help. What literary element is different between these two stories?"
+3rd,3rd-grade,RL.3.9,RL.3.9-Q5,multiple_choice,audio/3rd-grade/RL.3.9/RL.3.9-Q5.mp3,"Story 1: Lily really wanted to win the school's running race. She practiced every single day, even when she was tired. She didn't come in first, but she was happy because she tried her very best.Story 2: Tom saw his elderly neighbor trying to carry a heavy bag. Tom quickly ran over to help his neighbor. His neighbor smiled and thanked him. Tom felt good inside for being helpful.What is a major difference between Story 1 and Story 2?"
+3rd,3rd-grade,RL.3.10,RL.3.10-Q1,multiple_choice,audio/3rd-grade/RL.3.10/RL.3.10-Q1.mp3,What does the old woman's action of putting a lantern in her window every night reveal about the kind of person she is?
+3rd,3rd-grade,RL.3.10,RL.3.10-Q3,multiple_choice,audio/3rd-grade/RL.3.10/RL.3.10-Q3.mp3,"After the other kids said Sana couldn't climb the tree, what did she do next?"
+3rd,3rd-grade,RI.3.1,RI.3.1-Q1,multiple_choice,audio/3rd-grade/RI.3.1/RI.3.1-Q1.mp3,"Which statement tells two important things about the Amazon Rainforest, according to the text?"
+3rd,3rd-grade,RI.3.1,RI.3.1-Q4,multiple_choice,audio/3rd-grade/RI.3.1/RI.3.1-Q4.mp3,"According to the text, what did Thomas Edison say he found instead of failures when trying to invent the light bulb?"
+3rd,3rd-grade,RI.3.2,RI.3.2-Q4,multiple_choice,audio/3rd-grade/RI.3.2/RI.3.2-Q4.mp3,"Read the passage below.Butterflies start as tiny eggs. The eggs hatch into larvae, which are called caterpillars. Caterpillars eat many leaves and grow bigger. After growing, a caterpillar forms a pupa around itself, often called a chrysalis. Inside the chrysalis, the caterpillar changes. Finally, a beautiful butterfly comes out!What is the main idea of this passage?"
+3rd,3rd-grade,RI.3.3,RI.3.3-Q2,multiple_choice,audio/3rd-grade/RI.3.3/RI.3.3-Q2.mp3,What happened because Rosa Parks refused to give up her bus seat?
+3rd,3rd-grade,RI.3.3,RI.3.3-Q6,category_sort,audio/3rd-grade/RI.3.3/RI.3.3-Q6.mp3,Sort these into Cause or Effect!
+3rd,3rd-grade,RI.3.4,RI.3.4-Q1,multiple_choice,audio/3rd-grade/RI.3.4/RI.3.4-Q1.mp3,Imagine a plant soaking up sunshine! It's also drinking water and taking in a special gas from the air. All of these things help the plant do its job of making food for itself. This important job is called photosynthesis.
+3rd,3rd-grade,RI.3.4,RI.3.4-Q4,multiple_choice,audio/3rd-grade/RI.3.4/RI.3.4-Q4.mp3,"Deer, rabbits, and cows are called herbivores. These animals eat things like grass, clover, and hay. Based on this information, what do herbivores eat?"
+3rd,3rd-grade,RI.3.5,RI.3.5-Q1,multiple_choice,audio/3rd-grade/RI.3.5/RI.3.5-Q1.mp3,Imagine you have a science textbook and you want to quickly find all the pages that explain what volcanoes are. Which text feature would be the most helpful to use?
+3rd,3rd-grade,RI.3.5,RI.3.5-Q4,multiple_choice,audio/3rd-grade/RI.3.5/RI.3.5-Q4.mp3,"Imagine you are reading a non-fiction book about space and you want to quickly find the exact page that talks about ""Mars."" Which part of the book would you use to efficiently locate this specific information?"
+3rd,3rd-grade,RI.3.6,RI.3.6-Q1,multiple_choice,audio/3rd-grade/RI.3.6/RI.3.6-Q1.mp3,"After a long day at school, some kids just want to play. They might think homework is just more work. But doing a little practice at home can really help your brain remember new things. If you practice your sight words, you'll read faster. If you review your math problems, you'll feel ready for the test. Homework gives your brain a chance to grow even stronger and helps you truly understand what you learned in class.
+
+The author of this passage most likely believes that homework is:"
+3rd,3rd-grade,RI.3.6,RI.3.6-Q3,multiple_choice,audio/3rd-grade/RI.3.6/RI.3.6-Q3.mp3,"Read the paragraph. What is the author's point of view about dogs?
+
+""Dogs are the best pets anyone could ask for! They are always so happy to see you when you come home, wagging their tails. Dogs love to play fetch in the park, which is great exercise for both of you. Plus, they can learn tricks like 'sit' and 'stay' very quickly. Having a dog means you always have a loyal friend by your side."""
+3rd,3rd-grade,RI.3.6,RI.3.6-Q5,multiple_choice,audio/3rd-grade/RI.3.6/RI.3.6-Q5.mp3,"After reading the text, ""Eating a big salad every single night is the best way to stay strong and smart. Only vegetables can give you all the vitamins you need. If you don't eat a salad, you might not be as healthy as you could be,"" which statement shows a different point of view you might have about staying healthy?"
+3rd,3rd-grade,RI.3.8,RI.3.8-Q2,multiple_choice,audio/3rd-grade/RI.3.8/RI.3.8-Q2.mp3,How do the first two paragraphs of the passage connect to each other?
+3rd,3rd-grade,RI.3.8,RI.3.8-Q5,multiple_choice,audio/3rd-grade/RI.3.8/RI.3.8-Q5.mp3,"Read these sentences: ""First, Maya watered her plants. Then, she opened the window to let in fresh air."" What does the word ""Then"" tell us about these two things?"
+3rd,3rd-grade,RI.3.9,RI.3.9-Q1,multiple_choice,audio/3rd-grade/RI.3.9/RI.3.9-Q1.mp3,Text A explains how sharks find their food. Text B explains why there are fewer sharks in the ocean. How are the main ideas of Text A and Text B different?
+3rd,3rd-grade,RI.3.9,RI.3.9-Q5,multiple_choice,audio/3rd-grade/RI.3.9/RI.3.9-Q5.mp3,Which statement best compares the main points of Text A and Text B?
+3rd,3rd-grade,RI.3.10,RI.3.10-Q1,multiple_choice,audio/3rd-grade/RI.3.10/RI.3.10-Q1.mp3,"According to the passage, what role do coral polyps play in the Great Barrier Reef being the largest living structure on Earth?"
+3rd,3rd-grade,RF.3.3a,RF.3.3a-Q4,multiple_choice,audio/3rd-grade/RF.3.3a/RF.3.3a-Q4.mp3,"If a movie is ""enjoyable,"" what does the suffix -able tell us about the movie?"
+3rd,3rd-grade,RF.3.3b,RF.3.3b-Q1,multiple_choice,audio/3rd-grade/RF.3.3b/RF.3.3b-Q1.mp3,What sound does **-tion** make at the end of a word?
+3rd,3rd-grade,RF.3.3b,RF.3.3b-Q2,multiple_choice,audio/3rd-grade/RF.3.3b/RF.3.3b-Q2.mp3,"Which word contains the Latin suffix **-sion** and makes the /shun/ sound, like in 'push'?"
+3rd,3rd-grade,RF.3.3b,RF.3.3b-Q4,multiple_choice,audio/3rd-grade/RF.3.3b/RF.3.3b-Q4.mp3,"The word ""active"" means ""full of action."" Which word below uses a common Latin suffix to show that something has a lot of a certain quality?"
+3rd,3rd-grade,RF.3.3c,RF.3.3c-Q3,multiple_choice,audio/3rd-grade/RF.3.3c/RF.3.3c-Q3.mp3,"Which choice correctly shows how to break the word ""fantastic"" into smaller parts to help you read it?"
+3rd,3rd-grade,RF.3.3d,RF.3.3d-Q1,multiple_choice,audio/3rd-grade/RF.3.3d/RF.3.3d-Q1.mp3,Read the sentence below. Choose the word that best completes the sentence. I have had _______ to eat.
+3rd,3rd-grade,RF.3.3d,RF.3.3d-Q2,multiple_choice,audio/3rd-grade/RF.3.3d/RF.3.3d-Q2.mp3,"When you used your brain to figure out a tough math problem, what did you do?"
+3rd,3rd-grade,RF.3.3d,RF.3.3d-Q3,multiple_choice,audio/3rd-grade/RF.3.3d/RF.3.3d-Q3.mp3,"Which sentence uses the word ""through"" correctly?"
+3rd,3rd-grade,RF.3.4,RF.3.4-Q1,multiple_choice,audio/3rd-grade/RF.3.4/RF.3.4-Q1.mp3,"Which choice best describes how a reader should say the sentence, ""Wow, what a surprise!"""
+3rd,3rd-grade,RF.3.4,RF.3.4-Q2,multiple_choice,audio/3rd-grade/RF.3.4/RF.3.4-Q2.mp3,"When a student reads a story fluently, what helps them understand the story best?"
+3rd,3rd-grade,RF.3.4,RF.3.4-Q3,multiple_choice,audio/3rd-grade/RF.3.4/RF.3.4-Q3.mp3,"Read the sentence below. Which word makes the sentence confusing and needs to be changed?""My sister wanted too go to the park with us."""
+3rd,3rd-grade,RF.3.4,RF.3.4-Q5,multiple_choice,audio/3rd-grade/RF.3.4/RF.3.4-Q5.mp3,Imagine a student is reading the sentence 'The little bird sang a happy song.' Which choice shows the student reading every word correctly?
+3rd,3rd-grade,RF.3.4a,RF.3.4a-Q3,multiple_choice,audio/3rd-grade/RF.3.4a/RF.3.4a-Q3.mp3,"Based on the inventions mentioned in the text, what can you understand about Benjamin Franklin's interests?"
+3rd,3rd-grade,RF.3.4a,RF.3.4a-Q5,multiple_choice,audio/3rd-grade/RF.3.4a/RF.3.4a-Q5.mp3,"Read the story. Squeaky the squirrel was very busy. He spent his days collecting acorns and burying them near the big oak tree. He knew winter was coming soon, and he wanted to have plenty of food saved up. Squeaky worked hard to make sure he would not be hungry when the snow fell. What is the main idea of this story?"
+3rd,3rd-grade,RF.3.4b,RF.3.4b-Q3,multiple_choice,audio/3rd-grade/RF.3.4b/RF.3.4b-Q3.mp3,"Imagine you are reading a fun adventure story to your classmates. To make sure they understand and enjoy the story the most, how should you read?"
+3rd,3rd-grade,RF.3.4c,RF.3.4c-Q2,multiple_choice,audio/3rd-grade/RF.3.4c/RF.3.4c-Q2.mp3,"Lily loved to watch the birds. One day, she saw a robin building its nest. It used tiny twigs and soft grass. The robin worked hard to *construct* a cozy home for its eggs. If you weren't sure what 'construct' meant, what would be the best way to understand it?"
+3rd,3rd-grade,RF.3.4c,RF.3.4c-Q5,multiple_choice,audio/3rd-grade/RF.3.4c/RF.3.4c-Q5.mp3,"You read **wind** as rhyming with **find** in this sentence: ""The wind blew the leaves across the yard."" Is that correct?"
+3rd,3rd-grade,L.3.4,L.3.4-Q6,tap_to_pair,audio/3rd-grade/L.3.4/L.3.4-Q6.mp3,Match each word to its meaning in context!
+3rd,3rd-grade,L.3.4a,L.3.4a-Q6,tap_to_pair,audio/3rd-grade/L.3.4a/L.3.4a-Q6.mp3,Match each word to its meaning!
+3rd,3rd-grade,L.3.4b,L.3.4b-Q6,tap_to_pair,audio/3rd-grade/L.3.4b/L.3.4b-Q6.mp3,Match each word to its meaning!
+3rd,3rd-grade,L.3.4c,L.3.4c-Q6,tap_to_pair,audio/3rd-grade/L.3.4c/L.3.4c-Q6.mp3,Match each root or word to its meaning!
+3rd,3rd-grade,L.3.4d,L.3.4d-Q3,multiple_choice,audio/3rd-grade/L.3.4d/L.3.4d-Q3.mp3,"Read the dictionary entry below for the word 'giggle.'giggle (gig-uhl) verb.1. To laugh in a silly, often quiet way.Example: The children started to giggle when the clown made a funny face.What does the word 'giggle' mean?"
+3rd,3rd-grade,L.3.1,L.3.1-Q1,multiple_choice,audio/3rd-grade/L.3.1/L.3.1-Q1.mp3,Which sentence correctly uses a verb to show something happened in the past?
+4th,4th-grade,RL.4.2,RL.4.2-Q3,multiple_choice,audio/4th-grade/RL.4.2/RL.4.2-Q3.mp3,"Read the story below. What is the main lesson the story about Lily teaches?
+
+Lily wanted to learn to ride her bike without training wheels. She fell many times. Her knees got scraped, and she felt like giving up. But her dad told her, ""Keep trying, Lily! You'll get it!"" Lily took a deep breath. She got back on the bike. She pushed off and wobbled. Then, she pedaled a little further. After many more tries, she finally rode all the way down the sidewalk without falling! A big smile spread across her face."
+4th,4th-grade,RL.4.2,RL.4.2-Q5,multiple_choice,audio/4th-grade/RL.4.2/RL.4.2-Q5.mp3,"Read the story about Lily.Lily the squirrel woke up feeling very hungry in her cozy nest. She remembered a big, shiny acorn on the ground. When Lily scurried down the tree to get it, a grumpy blue jay was already pecking at her acorn! Lily didn't give up easily. She puffed up her fur and stamped her tiny feet, making the blue jay squawk and fly away. Happy, Lily grabbed her acorn and carried it back up to her nest for a yummy breakfast.Which sentence best summarizes the story?"
+4th,4th-grade,RL.4.3,RL.4.3-Q4,multiple_choice,audio/4th-grade/RL.4.3/RL.4.3-Q4.mp3,"Read the passage about Leo. Then, based on the passage, which statement best describes Leo in depth? Leo was the new kid in Mrs. Davis's class. He often wore a blue shirt and had bright, curious eyes behind his round glasses. During recess, while other kids ran and played tag, Leo found a quiet spot under the big oak tree. He carefully opened a thick book about dinosaurs, his favorite topic. When Maya walked over and asked, 'What are you reading?' Leo looked up, a small smile appearing on his face, and eagerly began to explain the different types of dinosaurs."
+4th,4th-grade,RL.4.6,RL.4.6-Q1,multiple_choice,audio/4th-grade/RL.4.6/RL.4.6-Q1.mp3,"The sentence ""I couldn't believe my eyes when I opened the door"" is narrated from the character's own point of view. If this same event was instead told by a narrator who is *not* a character in the story, what would most likely change for the reader?"
+4th,4th-grade,RL.4.6,RL.4.6-Q2,multiple_choice,audio/4th-grade/RL.4.6/RL.4.6-Q2.mp3,"Read these two passages: Passage A: 'I pressed my face against the cold window, watching the first snowflakes fall. A shiver went down my spine, not from the cold, but from excitement! I couldn't wait to build a snowman.' Passage B: 'Leo pressed his face against the cold window, watching the first snowflakes fall. A shiver went down his spine, not from the cold, but from excitement! He couldn't wait to build a snowman.' How does the way each passage is told affect how you understand the main character's feelings?"
+4th,4th-grade,RL.4.6,RL.4.6-Q4,multiple_choice,audio/4th-grade/RL.4.6/RL.4.6-Q4.mp3,"Read the story below:""Lily looked out the window. She felt a little nervous about her first day at the new school. 'What if no one wants to play with me?' she wondered. Her mom smiled, 'You'll do great, sweetie.' But Lily still worried about making new friends.""Which statement best describes the point of view of this story?"
+4th,4th-grade,RL.4.7,RL.4.7-Q5,multiple_choice,audio/4th-grade/RL.4.7/RL.4.7-Q5.mp3,"Imagine reading a book where a wizard's tower is described as being made of smooth, black stone, reaching high into the clouds, with a giant, glowing crystal at the very top. If the movie adaptation of this story shows the wizard's tower as a short, brick building with a regular antenna, what is the biggest difference a reader would notice between the book and the movie?"
+4th,4th-grade,RL.4.9,RL.4.9-Q2,multiple_choice,audio/4th-grade/RL.4.9/RL.4.9-Q2.mp3,"Imagine you read two flood myths. In the first myth, a powerful god sends the flood because people have become unkind. In the second myth, the flood happens because a giant river overflows for many years without stopping. What is the main difference in how these two myths explain why the flood began?"
+4th,4th-grade,RL.4.9,RL.4.9-Q3,multiple_choice,audio/4th-grade/RL.4.9/RL.4.9-Q3.mp3,"In a European fairy tale, a small fox uses its wits to outsmart a much larger, stronger animal. In a West African folktale, Anansi the spider, who is not very big, uses clever plans to trick powerful creatures. What main idea do these two stories share?"
+4th,4th-grade,RL.4.9,RL.4.9-Q4,multiple_choice,audio/4th-grade/RL.4.9/RL.4.9-Q4.mp3,Imagine you have read two stories from different cultures that both share the theme of 'courage.' What would be the *best* way to compare *how* each story shows courage?
+4th,4th-grade,RI.4.1,RI.4.1-Q5,multiple_choice,audio/4th-grade/RI.4.1/RI.4.1-Q5.mp3,"Read the passage below. After reading, what can you infer about Maya?
+
+""Maya woke up early, even before the sun peeked over the hills. She tiptoed to the kitchen, careful not to wake her sleeping family. Quietly, she gathered flour, sugar, and chocolate chips. She hummed a little tune as she mixed the ingredients, a big smile on her face. By the time her parents came downstairs, the kitchen smelled wonderful, and a plate of warm cookies sat on the counter."""
+4th,4th-grade,RI.4.2,RI.4.2-Q3,multiple_choice,audio/4th-grade/RI.4.2/RI.4.2-Q3.mp3,"Read the passage about bees, then answer the question. ""Bees are amazing insects that play a super important role in nature. They are known for making honey, which is a sweet food that humans and other animals love to eat. But bees do much more than just make honey! When bees fly from flower to flower collecting nectar, they also carry tiny grains of pollen on their bodies. This movement of pollen helps plants make seeds and new plants. Without bees, many fruits, vegetables, and flowers would not be able to grow. There are many different kinds of bees, like honeybees and bumblebees, and they all work hard to help our planet."" Which choice provides the best summary of the text?"
+4th,4th-grade,RI.4.4,RI.4.4-Q6,tap_to_pair,audio/4th-grade/RI.4.4/RI.4.4-Q6.mp3,Match each word to its meaning!
+4th,4th-grade,RI.4.5,RI.4.5-Q5,multiple_choice,audio/4th-grade/RI.4.5/RI.4.5-Q5.mp3,"A science article describes how a tiny seed grows into a big oak tree. It explains what happens first, then next, and finally, what the tree looks like when it's fully grown. What is the overall structure of this article?"
+4th,4th-grade,RI.4.5,RI.4.5-Q6,category_sort,audio/4th-grade/RI.4.5/RI.4.5-Q6.mp3,Sort each passage description into its text structure!
+4th,4th-grade,RI.4.6,RI.4.6-Q1,multiple_choice,audio/4th-grade/RI.4.6/RI.4.6-Q1.mp3,"When comparing a firsthand account and a secondhand account of the same event, what is one important difference you would expect to find?"
+4th,4th-grade,RI.4.6,RI.4.6-Q4,multiple_choice,audio/4th-grade/RI.4.6/RI.4.6-Q4.mp3,"Read Account A and Account B. Which statement correctly describes how these two accounts tell about the earthquake?Account A: ""I could feel the ground shaking under my feet. Dust filled the air and I couldn't see.""Account B: ""The earthquake measured 6.7 on the Richter scale and caused significant structural damage."""
+4th,4th-grade,RI.4.7,RI.4.7-Q5,multiple_choice,audio/4th-grade/RI.4.7/RI.4.7-Q5.mp3,"A teacher made a bar graph to show the favorite ice cream flavors of her students. The graph shows that the bar for 'Chocolate' is the tallest, while the bar for 'Vanilla' is the shortest of all the flavors listed. What does this graph tell you about the students' ice cream preferences?"
+4th,4th-grade,RI.4.8,RI.4.8-Q2,multiple_choice,audio/4th-grade/RI.4.8/RI.4.8-Q2.mp3,"In a text, an author writes: 'Recess actually helps students learn and focus better in class. For example, some schools have seen that students who get a good break outside perform 20% better on their math and reading tests after lunch.' How does the author use the information about students performing 20% better on tests?"
+4th,4th-grade,RI.4.9,RI.4.9-Q3,multiple_choice,audio/4th-grade/RI.4.9/RI.4.9-Q3.mp3,"Read the two texts about butterflies and moths.
+
+Text 1: Butterflies
+Butterflies are a type of insect. They are usually active in the daytime, flying around when the sun is out. When a butterfly lands to rest, its colorful wings often close and stand straight up over its back. To grow from a larva into an adult, a butterfly forms a hard casing called a chrysalis.
+
+Text 2: Moths
+Moths are also insects, and they are related to butterflies. Many moths are active at night, flying when it is dark. When a moth rests, its wings usually lay flat against its body. To grow from a larva into an adult, a moth spins a soft, silky covering called a cocoon around itself.
+
+Which statement correctly combines information from both texts?"
+4th,4th-grade,RF.4.3,RF.4.3-Q5,multiple_choice,audio/4th-grade/RF.4.3/RF.4.3-Q5.mp3,"Maria likes to write stories, but she wants to use a different name so no one knows she wrote them. If Maria chooses a pseudonym, which kind of name will she use?"
+4th,4th-grade,RF.4.3a,RF.4.3a-Q4,multiple_choice,audio/4th-grade/RF.4.3a/RF.4.3a-Q4.mp3,"Which option shows the correct way to break the word ""extraordinary"" into its syllables?"
+4th,4th-grade,RF.4.4,RF.4.4-Q2,multiple_choice,audio/4th-grade/RF.4.4/RF.4.4-Q2.mp3,"When you read a story out loud, what helps you and others best understand what is happening?"
+4th,4th-grade,RF.4.4,RF.4.4-Q4,multiple_choice,audio/4th-grade/RF.4.4/RF.4.4-Q4.mp3,"Imagine a student is reading a story aloud to the class. Which description below shows the student reading with good fluency, making the story clear and easy to understand?"
+4th,4th-grade,RF.4.4,RF.4.4-Q5,multiple_choice,audio/4th-grade/RF.4.4/RF.4.4-Q5.mp3,"You are reading a book, and suddenly you realize that the words you just read don't make sense in your mind. What is the most helpful thing to do so you can understand the story?"
+4th,4th-grade,L.4.4a,L.4.4a-Q6,tap_to_pair,audio/4th-grade/L.4.4a/L.4.4a-Q6.mp3,Match each word to its meaning!
+4th,4th-grade,L.4.4b,L.4.4b-Q4,multiple_choice,audio/4th-grade/L.4.4b/L.4.4b-Q4.mp3,"Using the prefix **micro-** as a clue, what does a **microscope** help you see?"
+4th,4th-grade,L.4.4b,L.4.4b-Q6,tap_to_pair,audio/4th-grade/L.4.4b/L.4.4b-Q6.mp3,Match each word to its root meaning!
+4th,4th-grade,L.4.4c,L.4.4c-Q3,multiple_choice,audio/4th-grade/L.4.4c/L.4.4c-Q3.mp3,"Read the dictionary entry for ""lumber"":
+
+lumber (LUM-ber) v. To move slowly and heavily. n. Wood that has been cut into boards.
+
+Which meaning of ""lumber"" is used in the sentence: ""The big bear began to lumber through the forest""?"
+4th,4th-grade,L.4.4c,L.4.4c-Q5,multiple_choice,audio/4th-grade/L.4.4c/L.4.4c-Q5.mp3,"Based on the sentence, which dictionary entry best clarifies the precise meaning of the word ""meander""?""The river did not flow in a straight line; instead, it began to meander through the valley."""
+4th,4th-grade,L.4.5a,L.4.5a-Q5,multiple_choice,audio/4th-grade/L.4.5a/L.4.5a-Q5.mp3,"What does the simile ""Her laughter was like music to his ears"" mean?"
+4th,4th-grade,L.4.5a,L.4.5a-Q6,tap_to_pair,audio/4th-grade/L.4.5a/L.4.5a-Q6.mp3,Match each simile or metaphor to its meaning!
+4th,4th-grade,L.4.5b,L.4.5b-Q6,tap_to_pair,audio/4th-grade/L.4.5b/L.4.5b-Q6.mp3,Match each idiom or proverb to its meaning!
+4th,4th-grade,L.4.5c,L.4.5c-Q6,tap_to_pair,audio/4th-grade/L.4.5c/L.4.5c-Q6.mp3,Match each word to its synonym or antonym!
+4th,4th-grade,L.4.1,L.4.1-Q1,multiple_choice,audio/4th-grade/L.4.1/L.4.1-Q1.mp3,The children played with ___ toys in the park.
+4th,4th-grade,L.4.1,L.4.1-Q3,multiple_choice,audio/4th-grade/L.4.1/L.4.1-Q3.mp3,"Which word best completes the sentence to show where the puppy hid? ""The puppy hid _______ the bed when it heard the thunder."""
+4th,4th-grade,L.4.1,L.4.1-Q4,multiple_choice,audio/4th-grade/L.4.1/L.4.1-Q4.mp3,"Which sentence correctly combines these two ideas: ""The cat stretched. It jumped onto the couch."""
+4th,4th-grade,L.4.2,L.4.2-Q1,multiple_choice,audio/4th-grade/L.4.2/L.4.2-Q1.mp3,"Where should a comma be placed in this sentence? ""The cat stretched lazily ___ and then it jumped onto the couch."""
