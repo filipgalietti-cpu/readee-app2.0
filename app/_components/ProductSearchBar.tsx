@@ -2,6 +2,7 @@
 
 import { useState, useTransition, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Search,
   Sparkles,
@@ -169,8 +170,45 @@ export default function ProductSearchBar({
       )}
 
       {hits && hits.length === 0 && (
-        <div className="mt-2 px-2 text-xs text-zinc-500 dark:text-slate-400">
-          Nothing matched. Try fewer or more general words.
+        <div className="mt-3 flex flex-col items-center rounded-xl border border-zinc-200 bg-white px-4 py-5 text-center dark:border-slate-700 dark:bg-slate-900">
+          <Image
+            src="/images/ui/bunny-thinking.png"
+            alt=""
+            width={56}
+            height={56}
+            className="h-14 w-14 object-contain"
+          />
+          <p className="mt-2 text-sm font-semibold text-zinc-900 dark:text-white">
+            Nothing matched that.
+          </p>
+          <p className="mt-1 text-xs text-zinc-500 dark:text-slate-400">
+            Try a skill name like
+            {" "}
+            <button
+              type="button"
+              onClick={() => setQuery("context clues")}
+              className="rounded-full bg-violet-50 px-2 py-0.5 font-bold text-violet-700 hover:bg-violet-100 dark:bg-violet-950/40 dark:text-violet-300"
+            >
+              context clues
+            </button>
+            {", "}
+            <button
+              type="button"
+              onClick={() => setQuery("main idea")}
+              className="rounded-full bg-violet-50 px-2 py-0.5 font-bold text-violet-700 hover:bg-violet-100 dark:bg-violet-950/40 dark:text-violet-300"
+            >
+              main idea
+            </button>
+            {", or a CCSS code like "}
+            <button
+              type="button"
+              onClick={() => setQuery("RL.2.1")}
+              className="rounded-full bg-violet-50 px-2 py-0.5 font-mono font-bold text-violet-700 hover:bg-violet-100 dark:bg-violet-950/40 dark:text-violet-300"
+            >
+              RL.2.1
+            </button>
+            .
+          </p>
         </div>
       )}
 

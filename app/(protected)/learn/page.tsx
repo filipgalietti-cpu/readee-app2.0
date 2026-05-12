@@ -14,6 +14,7 @@ import { usePracticeStore } from "@/lib/stores/practice-store";
 import { useThemeStore } from "@/lib/stores/theme-store";
 import { safeValidate } from "@/lib/validate";
 import { PracticeResultSchema } from "@/lib/schemas";
+import { trackFunnelClient } from "@/lib/analytics/funnel";
 import { levelNameToGradeKey } from "@/lib/assessment/questions";
 import { findStandardById } from "@/lib/data/all-standards";
 import { fadeUp, fadeIn, staggerContainer, feedbackSlideUp, popIn, scaleIn } from "@/lib/motion/variants";
@@ -1006,6 +1007,16 @@ function CompletionScreen({
     async function save() {
       const supabase = supabaseBrowser();
 
+      // Read last_lesson_at *before* we write so we can tell whether
+      // this is the kid's very first lesson finish — used to fire the
+      // funnel.first_lesson_complete event exactly once per child.
+      const { data: priorChild } = await supabase
+        .from("children")
+        .select("last_lesson_at")
+        .eq("id", child.id)
+        .single();
+      const isFirstLesson = !priorChild?.last_lesson_at;
+
       const payload = safeValidate(PracticeResultSchema, {
         child_id: child.id,
         standard_id: lesson.standardId,
@@ -1015,6 +1026,16 @@ function CompletionScreen({
       });
 
       await supabase.from("practice_results").insert(payload);
+
+      // Funnel step 4/6 — kid's first lesson finished. PostHog gets
+      // distinct_id from the parent's auth identification, so a 1:1
+      // parent:lesson signal lands in the right user record.
+      if (isFirstLesson) {
+        trackFunnelClient("funnel.first_lesson_complete", {
+          standard_id: lesson.standardId,
+          score_percent: totalQ > 0 ? Math.round((correctCount / totalQ) * 100) : 0,
+        });
+      }
 
       const nowIso = new Date().toISOString();
       if (carrotsEarned > 0) {

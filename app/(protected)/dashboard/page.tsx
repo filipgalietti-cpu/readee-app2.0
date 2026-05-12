@@ -28,6 +28,8 @@ import LearningPathCard from "@/app/_components/LearningPathCard";
 import FreshForYou from "./_components/FreshForYou";
 import { SkeletonPage } from "@/app/_components/Skeleton";
 import TestimonialPrompt from "@/app/_components/TestimonialPrompt";
+import ProductSearchBar from "@/app/_components/ProductSearchBar";
+import { trackFunnelClient } from "@/lib/analytics/funnel";
 
 /* ─── Count-up animation hook ─────────────────────────── */
 
@@ -319,6 +321,13 @@ function AddChildrenForm({
     const kid = data as Child;
     setChild(kid);
     onDone([kid]);
+    // Funnel step 2/6 — first kid profile created. PostHog already
+    // knows the parent's distinct_id from auth identification, so we
+    // don't need to pass userId here. Fires silently; never blocks.
+    trackFunnelClient("funnel.kid_added", {
+      grade,
+      source: "onboarding",
+    });
     setSaving(false);
     setStep("handoff");
   };
@@ -1552,6 +1561,17 @@ function ParentSidebar({
 
       {/* ── Scrollable content ── */}
       <div className="flex-1 overflow-y-auto py-2 space-y-4">
+        {/* Smart search — single highest-leverage parent action, kept
+            right at the top so parents don't have to dig through the
+            nav to find content for their kid. Routes to the kid runner
+            on click with ?child= already attached. */}
+        <div className="px-3">
+          <ProductSearchBar
+            isPremium={userPlan === "premium"}
+            childId={child.id}
+          />
+        </div>
+
         {/* Navigation sections */}
         {NAV_SECTIONS.map(({ label, items }) => (
           <div key={label} className="px-3">

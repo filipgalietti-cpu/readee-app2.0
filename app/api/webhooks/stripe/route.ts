@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { stripe, planFromPriceId } from "@/lib/stripe";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { grantTopUp } from "@/lib/ai/credit-balance";
+import { trackFunnel } from "@/lib/analytics/funnel.server";
 import Stripe from "stripe";
 
 export async function POST(req: NextRequest) {
@@ -57,13 +58,51 @@ export async function POST(req: NextRequest) {
       const priceId = subscription.items.data[0]?.price?.id ?? null;
       const tier = planFromPriceId(priceId) ?? "premium";
 
-      await admin
+      const { data: updated } = await admin
         .from("profiles")
         .update({
           plan: grantsAccess ? tier : "free",
           stripe_subscription_id: subscription.id,
         })
-        .eq("stripe_customer_id", customerId);
+        .eq("stripe_customer_id", customerId)
+        .select("id")
+        .maybeSingle();
+
+      // Funnel steps 5 & 6 — fire only on the `subscription.created`
+      // event so a status flip from trialing→active later doesn't
+      // double-count. `customer.subscription.updated` runs the same
+      // plan-flip logic above for resilience but skips telemetry.
+      if (event.type === "customer.subscription.created" && updated?.id) {
+        if (subscription.status === "trialing") {
+          await trackFunnel("funnel.trial_started", updated.id, {
+            tier,
+            price_id: priceId,
+          });
+        } else if (subscription.status === "active") {
+          // Non-trial direct activation (eg promo with $0 first month
+          // or annual pay-now flow).
+          await trackFunnel("funnel.subscription_active", updated.id, {
+            tier,
+            price_id: priceId,
+          });
+        }
+      }
+
+      // When a trialing subscription converts (trialing → active), the
+      // .updated event carries the transition. Fire subscription_active
+      // exactly on that edge so we don't lose the conversion signal.
+      if (event.type === "customer.subscription.updated" && updated?.id) {
+        const prev = event.data.previous_attributes as Stripe.Subscription | undefined;
+        const wasTrialing = prev?.status === "trialing";
+        const nowActive = subscription.status === "active";
+        if (wasTrialing && nowActive) {
+          await trackFunnel("funnel.subscription_active", updated.id, {
+            tier,
+            price_id: priceId,
+            from: "trial_conversion",
+          });
+        }
+      }
 
       break;
     }

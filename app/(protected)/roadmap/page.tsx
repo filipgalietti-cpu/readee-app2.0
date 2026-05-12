@@ -9,6 +9,7 @@ import { Child } from "@/lib/db/types";
 import { safeValidate } from "@/lib/validate";
 import { ChildSchema } from "@/lib/schemas";
 import { usePlanStore } from "@/lib/stores/plan-store";
+import { useChildStore } from "@/lib/stores/child-store";
 import { getStandardsForGrade } from "@/lib/data/all-standards";
 import { levelNameToGradeKey } from "@/lib/assessment/questions";
 import { BookOpen, Newspaper, Type, MessageCircle, Trophy, Carrot, Star, Rabbit, Squirrel, Dog, Lock } from "lucide-react";
@@ -432,41 +433,77 @@ function Spinner() {
 function RoadmapLoader() {
   const params = useSearchParams();
   const router = useRouter();
-  const childId = params.get("child");
+  const childIdParam = params.get("child");
   const [child, setChild] = useState<Child | null>(null);
   const userPlan = usePlanStore((s) => s.plan) ?? "free";
   const fetchPlan = usePlanStore((s) => s.fetch);
   const [loading, setLoading] = useState(true);
 
-  // No child? Bounce to /dashboard which auto-resolves the parent's child
-  // instead of dead-ending on "No reader selected".
+  // Resolve a child even when the URL doesn't carry one (sidebar link
+  // hit before the child store hydrated, smart-search-style hand-off,
+  // bare /roadmap visit, etc.). Fall through to the child store, then
+  // the DB, before giving up and bouncing to /dashboard. Same pattern
+  // as /practice-hub + /analytics so parent surfaces behave alike.
   useEffect(() => {
-    if (!childId) router.replace("/dashboard");
-  }, [childId, router]);
-
-  useEffect(() => {
+    let alive = true;
     async function load() {
-      if (!childId) { setLoading(false); return; }
       const supabase = supabaseBrowser();
+      let resolvedId = childIdParam;
 
-      const { data } = await supabase.from("children").select("*").eq("id", childId).single();
+      if (!resolvedId) {
+        const store = useChildStore.getState();
+        const storeChild = store.childData || store.children[0] || null;
+        if (storeChild) {
+          resolvedId = storeChild.id;
+        } else {
+          const { data: { user } } = await supabase.auth.getUser();
+          if (user) {
+            const { data: kids } = await supabase
+              .from("children")
+              .select("*")
+              .eq("parent_id", user.id)
+              .order("created_at", { ascending: true })
+              .limit(1);
+            if (kids && kids.length > 0) resolvedId = kids[0].id;
+          }
+        }
+      }
+
+      if (!resolvedId) {
+        if (alive) {
+          router.replace("/dashboard");
+          setLoading(false);
+        }
+        return;
+      }
+
+      if (!childIdParam && resolvedId && typeof window !== "undefined") {
+        const url = new URL(window.location.href);
+        url.searchParams.set("child", resolvedId);
+        window.history.replaceState(null, "", url.toString());
+      }
+
+      const { data } = await supabase
+        .from("children")
+        .select("*")
+        .eq("id", resolvedId)
+        .single();
+      if (!alive) return;
       if (data) setChild(safeValidate(ChildSchema, data) as Child);
-
       fetchPlan();
-
       setLoading(false);
     }
     load();
-  }, [childId, fetchPlan]);
+    return () => {
+      alive = false;
+    };
+  }, [childIdParam, fetchPlan, router]);
 
-  // No childId in the URL? We've already queued a redirect to /dashboard.
-  // Keep the spinner up until the route swap completes — don't flash the
-  // "No reader selected" dead-end card.
-  if (!childId) return <Spinner />;
   if (loading) return <Spinner />;
 
-  // childId in URL but couldn't load child (deleted, wrong parent, stale link
-  // from smart search etc.) — bounce to /dashboard rather than dead-ending.
+  // Child id resolved but the row couldn't load (deleted, wrong parent,
+  // stale link). Send the user home so they can pick a child instead
+  // of dead-ending.
   if (!child) {
     router.replace("/dashboard");
     return <Spinner />;

@@ -8,6 +8,7 @@
 
 import { createClient } from '@/lib/supabase/server'
 import { NextResponse } from 'next/server'
+import { trackFunnel } from '@/lib/analytics/funnel.server'
 
 export async function GET(request: Request) {
   const { searchParams, origin } = new URL(request.url)
@@ -23,20 +24,31 @@ export async function GET(request: Request) {
     const supabase = await createClient()
     const { error } = await supabase.auth.exchangeCodeForSession(code)
     if (!error) {
+      const { data: { user } } = await supabase.auth.getUser()
+
       // First-sign-in role stamp: the handle_new_user trigger already
       // inserted a profiles row defaulted to 'parent'; if this OAuth
       // flow originated from the teacher signup, flip it to 'educator'.
       // We only do this when role is 'educator' to avoid stomping any
       // hand-set roles on subsequent sign-ins.
-      if (signupRole === 'educator') {
-        const { data: { user } } = await supabase.auth.getUser()
-        if (user) {
-          await supabase
-            .from('profiles')
-            .update({ role: 'educator' })
-            .eq('id', user.id)
-            .eq('role', 'parent')
-        }
+      if (signupRole === 'educator' && user) {
+        await supabase
+          .from('profiles')
+          .update({ role: 'educator' })
+          .eq('id', user.id)
+          .eq('role', 'parent')
+      }
+
+      // Funnel event — fires once per session-establishment. PostHog
+      // dedupes on distinctId+event over short windows, so re-signin
+      // doesn't pollute the "signup_complete" count meaningfully.
+      // For accurate "first-ever signup" we'd diff against profile
+      // created_at; left out for now to keep this route lean.
+      if (user) {
+        await trackFunnel("funnel.signup_complete", user.id, {
+          provider: "oauth",
+          role: signupRole ?? "parent",
+        });
       }
 
       const forwardedHost = request.headers.get('x-forwarded-host') // original origin before load balancer

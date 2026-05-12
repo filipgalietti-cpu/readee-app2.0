@@ -21,6 +21,7 @@ import {
 import { safeValidate } from "@/lib/validate";
 import { AssessmentResultSchema } from "@/lib/schemas";
 import { useAudio } from "@/lib/audio/use-audio";
+import { trackFunnelClient } from "@/lib/analytics/funnel";
 import { LoadingImage } from "@/app/components/ui/LoadingImage";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -542,6 +543,14 @@ function AssessmentContent() {
         .from("children")
         .update({ reading_level: placement.levelName })
         .eq("id", child.id);
+
+      // Funnel step 3/6 — placement test result saved. Captures the
+      // level + percentage so PostHog can segment funnel cohorts by
+      // starting strength later.
+      trackFunnelClient("funnel.placement_complete", {
+        reading_level: placement.levelName,
+        score_percent: pct,
+      });
 
       // Show calculating screen for at least 3s
       await new Promise((r) => setTimeout(r, 3000));

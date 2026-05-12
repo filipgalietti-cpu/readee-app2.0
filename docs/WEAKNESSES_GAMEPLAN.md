@@ -215,12 +215,15 @@ Pre-launch audit + plan for each open weakness. Each item has: severity (S0 bloc
 4. Start with $500-1000 test budget, optimize on signup CPA.
 
 ### W-23 · No analytics/funnel visibility
-**Severity:** S1 — can't optimize what we can't see
-**Owner:** Filip (verify what's already wired)
-**Plan:**
-1. Check if PostHog or similar is wired for funnel tracking. If not, add it before paid acquisition starts.
-2. Funnel events to track: page view → signup → kid added → placement done → first lesson → 7-day trial end → paid.
-3. CLAUDE.md mentions PostHog so it may already be wired — verify in /app/_components/ or layout.
+**Severity:** ~~S1~~ → **DONE** — all 6 funnel events captured end-to-end (May 13)
+**Status:** `lib/analytics/funnel.ts` exports `trackFunnel` (server) + `trackFunnelClient` (client). Distinct id is the Supabase auth user id, so signup → subscription show up as one person in PostHog.
+**Events captured (May 13):**
+- `funnel.signup_complete` — `app/auth/callback/route.ts` after `exchangeCodeForSession` succeeds; tagged with provider + role.
+- `funnel.kid_added` — `app/(protected)/dashboard/page.tsx` after first child insert in `AddChildrenForm`; tagged with grade.
+- `funnel.placement_complete` — `app/(protected)/assessment/page.tsx` after `assessments` insert + `children.reading_level` update; tagged with score_percent + reading_level.
+- `funnel.first_lesson_complete` — `app/(protected)/learn/page.tsx`. Pre-reads `children.last_lesson_at` so it fires exactly once per child (the very first lesson finish).
+- `funnel.trial_started` — `app/api/webhooks/stripe/route.ts` on `customer.subscription.created` with `status === "trialing"`.
+- `funnel.subscription_active` — same webhook, on `customer.subscription.created` with `status === "active"`, plus the `customer.subscription.updated` edge where `previous_attributes.status === "trialing"` and the new status is `active` (trial conversion).
 
 ### W-24 · No referral / share loop
 **Severity:** S2
