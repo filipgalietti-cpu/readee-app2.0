@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import posthog from "posthog-js";
 import { Mic, MicOff, AlertCircle, Sparkles, Loader2 } from "lucide-react";
+import { trackError } from "@/lib/observability/track";
 
 function track(event: string, props?: Record<string, unknown>) {
   if (typeof window === "undefined") return;
@@ -244,6 +245,11 @@ export default function LiveBuddy({
       // fall-back.
       setupTimeoutRef.current = setTimeout(() => {
         console.warn("[buddy-live] setupComplete timeout on", setupModel);
+        trackError(new Error("buddy-live setupComplete timeout"), {
+          route: "buddy-live.setupComplete",
+          tags: { setup_model: setupModel, provider },
+          extra: { childId: childId ?? null, mode: mode ?? null },
+        });
         disconnect();
         setErr(
           `Live mode didn't start (model: ${setupModel}). Switching to Step-by-step…`,
@@ -378,6 +384,16 @@ export default function LiveBuddy({
         }
         if (msg.error || msg.serverError) {
           console.warn("[buddy-live] server error", msg.error || msg.serverError);
+          const upstreamMsg =
+            msg.error?.message || msg.serverError?.message || "unknown";
+          trackError(new Error(`buddy-live server error: ${upstreamMsg}`), {
+            route: "buddy-live.msg.serverError",
+            tags: { provider, setup_model: setupModel },
+            extra: {
+              raw: msg.error || msg.serverError,
+              childId: childId ?? null,
+            },
+          });
           setErr(
             (msg.error?.message || msg.serverError?.message) ??
               "Live mode hit a server error. Try Step-by-step mode below.",
@@ -448,16 +464,43 @@ export default function LiveBuddy({
         }
       };
 
-      ws.onclose = () => {
+      ws.onclose = (ev) => {
         if (status !== "error") setStatus("idle");
+        // Server-initiated close with a non-1000 code — most often
+        // means the upstream live model disconnected (quota, region
+        // outage, etc). Capture so we see the failure rate; the
+        // surface-level UX is the same "Tap to try again" toggle.
+        if (ev.code !== 1000 && ev.code !== 1005) {
+          trackError(new Error(`buddy-live ws closed code=${ev.code}`), {
+            route: "buddy-live.ws.onclose",
+            tags: {
+              code: String(ev.code),
+              provider,
+              setup_model: setupModel,
+            },
+            extra: { reason: ev.reason || null, childId: childId ?? null },
+          });
+        }
       };
       ws.onerror = () => {
         setErr("Connection lost. Tap to try again.");
         setStatus("error");
+        trackError(new Error("buddy-live ws.onerror fired"), {
+          route: "buddy-live.ws.onerror",
+          tags: { provider, setup_model: setupModel },
+          extra: { childId: childId ?? null },
+        });
       };
     } catch (e: any) {
       setErr(e?.message ?? "Couldn't start Live mode.");
       setStatus("error");
+      // Anything that bubbles to this catch — token-mint failure,
+      // initial WS handshake, getUserMedia denial, etc. The friendly
+      // message stays on screen; Sentry gets the raw shape.
+      trackError(e instanceof Error ? e : new Error(String(e)), {
+        route: "buddy-live.connect.catch",
+        extra: { childId: childId ?? null, mode: mode ?? null },
+      });
       disconnect();
     }
   }
