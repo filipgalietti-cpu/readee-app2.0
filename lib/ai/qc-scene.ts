@@ -32,7 +32,7 @@
  */
 
 import { Type } from "@google/genai";
-import { getClient, MODEL_ID, logUsage } from "@/lib/ai/readee-ai";
+import { getClient, MODEL_ID, logUsage, generateImage } from "@/lib/ai/readee-ai";
 import { CREDIT_COST } from "@/lib/ai/credits";
 import { trackError } from "@/lib/observability/track";
 import type { QcCheck, QcSeverity } from "@/lib/ai/qc";
@@ -443,4 +443,220 @@ function slug(s: string): string {
     .replace(/[^a-z0-9]+/g, "_")
     .replace(/^_|_$/g, "")
     .slice(0, 40);
+}
+
+// ─── Best-of-N image generation ────────────────────────────────────
+//
+// Comparative judging beats absolute. Generating one image and asking
+// "is this any good?" hits all the pass-bias the structured judge was
+// built to escape. Generating THREE images and asking "which of these
+// best matches the spec, rank them" lets the model commit to a
+// relative answer, which is consistently more accurate than absolute
+// grading — and we automatically pick the winner instead of running a
+// regen-after-publish cycle later.
+//
+// Cost: 3 image calls (~$0.04 × 3) + 1 comparative judge call
+// (~$0.01) = $0.13 per daily build. Negligible vs the cost of one
+// bad ship.
+//
+// Falls back gracefully: if any of the 3 generations fails, we
+// proceed with whatever we got (1 or 2 candidates). If all 3 fail
+// we return null and the caller falls back to the single-image path
+// it already had.
+
+const N_CANDIDATES = 3;
+
+const PICK_BEST_SCHEMA = {
+  type: Type.OBJECT,
+  properties: {
+    winner: { type: Type.INTEGER, minimum: 0 },
+    reason: { type: Type.STRING },
+    rankings: {
+      type: Type.ARRAY,
+      items: {
+        type: Type.OBJECT,
+        properties: {
+          index: { type: Type.INTEGER, minimum: 0 },
+          score: { type: Type.INTEGER, minimum: 0, maximum: 10 },
+          notes: { type: Type.STRING },
+        },
+        required: ["index", "score", "notes"],
+      },
+    },
+  },
+  required: ["winner", "reason"],
+};
+
+const PICK_BEST_SYSTEM = `You are picking the best children's reading illustration from a set of candidates against a structured spec.
+
+You will receive:
+1. The SceneSpec — a manifest of named characters + setting + key action.
+2. N candidate images (indexed 0, 1, 2, ...).
+
+Pick the candidate that BEST matches the spec. Rank by:
+  - Presence of every named character (most important — a missing character is a hard penalty).
+  - Recognizability of each character as the real-world species/breed/role (no chimeras).
+  - Setting accuracy.
+  - Mood + composition (tie-breaker).
+
+Output JSON with the winning index, a one-sentence reason, and per-image rankings with a 0-10 score + short notes. Output JSON only.`;
+
+export type BestImageResult =
+  | {
+      ok: true;
+      imageUrl: string;
+      storagePath: string;
+      candidateCount: number;
+      winnerIndex: number;
+      reason: string;
+      runnerUpScores: number[];
+    }
+  | { ok: false; error: string };
+
+/**
+ * Generate N images and use a comparative vision judge to pick the
+ * best one. The returned image already cleared a "vs other candidates"
+ * comparison — the downstream qcImage + qcImageStructured still run
+ * as backstops, but the typical case is they all pass because the
+ * comparative pick already did the hard work.
+ *
+ * Generation runs sequentially to avoid burning through the per-
+ * second image rate limit. Each generation that fails is skipped
+ * (we proceed with however many succeeded); if all fail we return
+ * an error so the caller can fall back.
+ */
+export async function generateBestImage(input: {
+  teacherId: string;
+  prompt: string;
+  spec: SceneSpec;
+  n?: number;
+}): Promise<BestImageResult> {
+  const n = input.n ?? N_CANDIDATES;
+
+  const candidates: {
+    imageUrl: string;
+    storagePath: string;
+    base64: string;
+    mimeType: string;
+  }[] = [];
+  for (let i = 0; i < n; i++) {
+    const r = await generateImage({
+      teacherId: input.teacherId,
+      prompt: input.prompt,
+    });
+    if (r.ok) {
+      candidates.push({
+        imageUrl: r.imageUrl,
+        storagePath: r.storagePath,
+        base64: r.imageBase64,
+        mimeType: r.mimeType,
+      });
+    } else {
+      // One bad gen shouldn't sink the whole batch — keep going with
+      // whatever we have. trackError so we can see whether one
+      // candidate keeps failing for a particular brief shape.
+      trackError(new Error(`best-of-N candidate ${i} failed: ${r.error}`), {
+        route: "qc-scene.generateBestImage",
+        userId: input.teacherId,
+      });
+    }
+  }
+
+  if (candidates.length === 0) {
+    return { ok: false, error: "all candidate generations failed" };
+  }
+  // Only one candidate — no comparison needed, return it.
+  if (candidates.length === 1) {
+    return {
+      ok: true,
+      imageUrl: candidates[0].imageUrl,
+      storagePath: candidates[0].storagePath,
+      candidateCount: 1,
+      winnerIndex: 0,
+      reason: "only one candidate available",
+      runnerUpScores: [],
+    };
+  }
+
+  // Run the comparative judge.
+  const targets = input.spec.characters.map(describeCharacterTarget);
+  const userPrompt = [
+    `Spec for the illustration:`,
+    `  setting: ${input.spec.setting ?? "(unspecified)"}`,
+    `  action:  ${input.spec.key_action ?? "(unspecified)"}`,
+    `  targets:`,
+    ...targets.map((t, i) => `    ${i + 1}. ${t}`),
+    ``,
+    `Pick the candidate (indexed in order shown) that best matches.`,
+  ].join("\n");
+
+  try {
+    const client = getClient();
+    const response = await client.models.generateContent({
+      model: MODEL_ID,
+      contents: [
+        {
+          role: "user",
+          parts: [
+            { text: userPrompt },
+            ...candidates.map((c) => ({
+              inlineData: { data: c.base64, mimeType: c.mimeType },
+            })),
+          ],
+        },
+      ],
+      config: {
+        systemInstruction: PICK_BEST_SYSTEM,
+        responseMimeType: "application/json",
+        responseSchema: PICK_BEST_SCHEMA as any,
+        temperature: 0.15,
+      },
+    });
+    await logUsage({
+      teacherId: input.teacherId,
+      kind: "image_generation",
+      model: MODEL_ID,
+      inputTokens: response.usageMetadata?.promptTokenCount,
+      outputTokens: response.usageMetadata?.candidatesTokenCount,
+      creditsUsed: CREDIT_COST.quiz_generation,
+      success: true,
+      requestSummary: `qc.scene.best-of-${candidates.length}`,
+    });
+    const parsed = JSON.parse(response.text ?? "{}") as {
+      winner?: number;
+      reason?: string;
+      rankings?: { index: number; score: number; notes: string }[];
+    };
+    let winnerIndex = parsed.winner ?? 0;
+    if (winnerIndex < 0 || winnerIndex >= candidates.length) winnerIndex = 0;
+    const winner = candidates[winnerIndex];
+    const runnerUpScores = (parsed.rankings ?? [])
+      .filter((r) => r.index !== winnerIndex)
+      .map((r) => r.score);
+    return {
+      ok: true,
+      imageUrl: winner.imageUrl,
+      storagePath: winner.storagePath,
+      candidateCount: candidates.length,
+      winnerIndex,
+      reason: parsed.reason ?? "comparative judge picked winner",
+      runnerUpScores,
+    };
+  } catch (e: any) {
+    trackError(e, {
+      route: "qc-scene.generateBestImage.judge",
+      userId: input.teacherId,
+    });
+    // Judge failed — fall back to the first candidate so we still
+    // ship something rather than block the build.
+    return {
+      ok: true,
+      imageUrl: candidates[0].imageUrl,
+      storagePath: candidates[0].storagePath,
+      candidateCount: candidates.length,
+      winnerIndex: 0,
+      reason: `comparative judge failed (${e?.message ?? e}); fell back to first candidate`,
+      runnerUpScores: [],
+    };
+  }
 }

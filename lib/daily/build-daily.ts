@@ -26,7 +26,7 @@ import {
 } from "@/lib/ai/readee-ai";
 import { runFullQuizQc, qcImage } from "@/lib/ai/qc";
 import { extractSceneSpec, renderSpecAsBrief, describeSpec } from "@/lib/ai/scene-spec";
-import { qcImageStructured } from "@/lib/ai/qc-scene";
+import { qcImageStructured, generateBestImage } from "@/lib/ai/qc-scene";
 import { pickThemeForDate, slugForDate } from "@/lib/daily/themes";
 import { trackError } from "@/lib/observability/track";
 import {
@@ -250,11 +250,32 @@ ${theme.topic}`;
           ? ` Do not depict ${resolved.figureName}'s likeness — show only the activity, era, or setting they're associated with, no recognizable face.`
           : "";
       imageScene = brief + figureGuard;
-      const imgRes = await generateImage({
-        teacherId,
-        prompt: imageScene,
-      });
-      if (imgRes.ok) imageUrl = imgRes.imageUrl;
+      // Best-of-3: generate 3 candidates and let a comparative judge
+      // pick the winner against the spec. Comparative grading is
+      // consistently more accurate than absolute. Falls back to a
+      // single generateImage call when we have no spec (concept
+      // passages with empty characters[]) because there's nothing
+      // to comparatively grade against.
+      if (sceneSpec) {
+        const bestRes = await generateBestImage({
+          teacherId,
+          prompt: imageScene,
+          spec: sceneSpec as any,
+          n: 3,
+        });
+        if (bestRes.ok) {
+          imageUrl = bestRes.imageUrl;
+          console.info(
+            `[daily] best-of-${bestRes.candidateCount} ${dateStr}: winner=${bestRes.winnerIndex} runners=${JSON.stringify(bestRes.runnerUpScores)} reason=${bestRes.reason.slice(0, 120)}`,
+          );
+        }
+      } else {
+        const imgRes = await generateImage({
+          teacherId,
+          prompt: imageScene,
+        });
+        if (imgRes.ok) imageUrl = imgRes.imageUrl;
+      }
     }
   }
 
@@ -394,30 +415,77 @@ export async function targetedImageRegen(opts: {
 
   const passageTitle = (row as any).passage_title as string;
   const passageBody = (row as any).passage_body as string;
-  const briefRes = await generateImageBrief({
+
+  // Extract a fresh SceneSpec for the heal — same anchor the daily
+  // builder now uses. Drives both the brief and the comparative
+  // best-of-3 pick below.
+  const specRes = await extractSceneSpec({
     teacherId,
     passageTitle,
     passageBody,
   });
-  if (!briefRes.ok) {
-    return { ok: false, error: `imageBrief: ${briefRes.error}` };
-  }
-  const imageScene = briefRes.brief;
-  const imgRes = await generateImage({ teacherId, prompt: imageScene });
-  if (!imgRes.ok) return { ok: false, error: `image: ${imgRes.error}` };
-  const newImageUrl = imgRes.imageUrl;
+  const sceneSpec = specRes.ok ? specRes.spec : null;
 
-  // Re-run image QC on the new image.
+  let imageScene = "";
+  if (sceneSpec) {
+    imageScene = renderSpecAsBrief(sceneSpec);
+  } else {
+    const briefRes = await generateImageBrief({
+      teacherId,
+      passageTitle,
+      passageBody,
+    });
+    if (!briefRes.ok) return { ok: false, error: `imageBrief: ${briefRes.error}` };
+    imageScene = briefRes.brief;
+  }
+
+  // Best-of-3 + comparative judge when we have a spec; otherwise the
+  // legacy single-shot path. The heal route in particular benefits
+  // because the prior image already failed once — sampling more
+  // candidates is precisely the right move on a known-bad starting
+  // point.
+  let newImageUrl: string;
+  if (sceneSpec) {
+    const bestRes = await generateBestImage({
+      teacherId,
+      prompt: imageScene,
+      spec: sceneSpec,
+      n: 3,
+    });
+    if (!bestRes.ok) return { ok: false, error: `image: ${bestRes.error}` };
+    newImageUrl = bestRes.imageUrl;
+  } else {
+    const imgRes = await generateImage({ teacherId, prompt: imageScene });
+    if (!imgRes.ok) return { ok: false, error: `image: ${imgRes.error}` };
+    newImageUrl = imgRes.imageUrl;
+  }
+
+  // Re-run image QC on the new image. Legacy prose judge + (when
+  // available) the structured per-character checks layered on top.
   const { checks: imageChecks } = await qcImage({
     teacherId,
     imageUrl: newImageUrl,
     expectedScene: imageScene,
   });
+  let structuredChecks: typeof imageChecks = [];
+  if (sceneSpec) {
+    try {
+      const sr = await qcImageStructured({
+        teacherId,
+        imageUrl: newImageUrl,
+        spec: sceneSpec,
+      });
+      structuredChecks = sr.checks;
+    } catch (e: any) {
+      trackError(e, { route: "targetedImageRegen.structured" });
+    }
+  }
 
   // Splice the new image checks into the report (drop all old
-  // image.* checks, append the fresh ones).
+  // image.* checks, append the fresh ones — including the
+  // structured per-character verdicts).
   const otherChecks = checks.filter((c) => !c.name.startsWith("image."));
-  const updatedChecks = [...otherChecks, ...imageChecks];
+  const updatedChecks = [...otherChecks, ...imageChecks, ...structuredChecks];
   const sev = (s: string): number =>
     s === "fail" ? 2 : s === "warn" ? 1 : 0;
   const worst = updatedChecks.reduce(
