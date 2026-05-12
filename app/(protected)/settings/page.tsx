@@ -16,6 +16,10 @@ import { Carrot } from "lucide-react";
 import { usePlanStore } from "@/lib/stores/plan-store";
 import { useChildStore } from "@/lib/stores/child-store";
 import { SkeletonPage } from "@/app/_components/Skeleton";
+import {
+  exportUserDataAction,
+  deleteAccountAction,
+} from "@/app/(protected)/account/account-data-actions";
 
 function displayGrade(grade: string): string {
   if (grade.toLowerCase() === "pre-k") return "Foundational";
@@ -50,6 +54,11 @@ export default function Settings() {
   const [resetChildId, setResetChildId] = useState<string | null>(null);
   const [removeChildId, setRemoveChildId] = useState<string | null>(null);
   const [showDeleteAccount, setShowDeleteAccount] = useState(false);
+  const [deleteConfirmEmail, setDeleteConfirmEmail] = useState("");
+  const [deleteBusy, setDeleteBusy] = useState(false);
+  const [deleteError, setDeleteError] = useState<string | null>(null);
+  const [exportBusy, setExportBusy] = useState(false);
+  const [exportError, setExportError] = useState<string | null>(null);
   const [levelChangeChild, setLevelChangeChild] = useState<{ id: string; name: string; newLevel: string } | null>(null);
 
   // Plan
@@ -274,6 +283,61 @@ export default function Settings() {
     }
     await supabase.auth.signOut();
     router.push("/login?message=" + encodeURIComponent("Signed out of all devices."));
+  }
+
+  async function handleExportData() {
+    setExportBusy(true);
+    setExportError(null);
+    try {
+      const res = await exportUserDataAction();
+      if (!res.ok) {
+        setExportError(res.error);
+        return;
+      }
+      const blob = new Blob([JSON.stringify(res.payload, null, 2)], {
+        type: "application/json",
+      });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      const stamp = new Date().toISOString().slice(0, 10);
+      a.href = url;
+      a.download = `readee-export-${stamp}.json`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    } catch (e: any) {
+      setExportError(e?.message ?? "Couldn't build your export.");
+    } finally {
+      setExportBusy(false);
+    }
+  }
+
+  async function handleDeleteAccount() {
+    if (!deleteConfirmEmail.trim()) {
+      setDeleteError("Type your account email to confirm.");
+      return;
+    }
+    setDeleteBusy(true);
+    setDeleteError(null);
+    try {
+      const res = await deleteAccountAction({ confirmEmail: deleteConfirmEmail });
+      if (!res.ok) {
+        setDeleteError(res.error);
+        setDeleteBusy(false);
+        return;
+      }
+      // Auth user is gone server-side; redirect home and tell the user.
+      router.push(
+        "/?message=" +
+          encodeURIComponent(
+            "Your account and all data have been deleted. We're sorry to see you go.",
+          ),
+      );
+    } catch (e: any) {
+      setDeleteError(e?.message ?? "Couldn't delete your account.");
+      setDeleteBusy(false);
+    }
   }
 
   async function handleRedeemPromo() {
@@ -746,6 +810,32 @@ export default function Settings() {
         </div>
       </Section>
 
+      {/* ====== DATA & PRIVACY ====== */}
+      <Section title="Data & Privacy">
+        <div className="space-y-3">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <div>
+              <p className="text-sm font-medium text-zinc-900 dark:text-slate-100">
+                Download your data
+              </p>
+              <p className="text-xs text-zinc-500 dark:text-slate-400 mt-0.5">
+                Get a JSON file with everything we store about you and your child.
+              </p>
+            </div>
+            <button
+              onClick={handleExportData}
+              disabled={exportBusy}
+              className="px-4 py-2.5 rounded-xl border border-zinc-200 dark:border-slate-600 text-sm font-medium text-zinc-700 dark:text-slate-300 hover:bg-zinc-50 dark:hover:bg-slate-700 transition-colors disabled:opacity-60 whitespace-nowrap"
+            >
+              {exportBusy ? "Preparing…" : "Download my data"}
+            </button>
+          </div>
+          {exportError && (
+            <p className="text-xs font-medium text-red-600 dark:text-red-400">{exportError}</p>
+          )}
+        </div>
+      </Section>
+
       {/* ====== ACCOUNT ACTIONS ====== */}
       <section className="rounded-2xl border border-red-100 dark:border-red-900/30 bg-white dark:bg-slate-800 p-6 space-y-4">
         <h2 className="text-base font-bold text-zinc-900 dark:text-slate-100">Account Actions</h2>
@@ -810,16 +900,72 @@ export default function Settings() {
         />
       )}
 
-      {/* Delete Account Modal */}
+      {/* Delete Account Modal — typed-email confirmation gate */}
       {showDeleteAccount && (
-        <Modal
-          title="Delete Your Account?"
-          description="Are you sure? This will delete your account and all children's data permanently."
-          confirmLabel="Delete Account"
-          confirmColor="red"
-          onConfirm={() => setShowDeleteAccount(false)}
-          onCancel={() => setShowDeleteAccount(false)}
-        />
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 dark:bg-black/60 p-4"
+          onClick={() => {
+            if (!deleteBusy) {
+              setShowDeleteAccount(false);
+              setDeleteConfirmEmail("");
+              setDeleteError(null);
+            }
+          }}
+        >
+          <div
+            className="w-full max-w-md rounded-2xl bg-white dark:bg-slate-800 p-6 shadow-xl space-y-4"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h3 className="text-lg font-bold text-zinc-900 dark:text-slate-100">Delete your account?</h3>
+            <p className="text-sm text-zinc-600 dark:text-slate-300 leading-relaxed">
+              This will permanently delete your account, your child's profile, all lesson progress,
+              and cancel any active subscription. This cannot be undone.
+            </p>
+            <div className="space-y-1.5">
+              <Label>
+                Type <span className="font-semibold text-zinc-700 dark:text-slate-200">{email}</span> to confirm
+              </Label>
+              <input
+                type="email"
+                value={deleteConfirmEmail}
+                onChange={(e) => {
+                  setDeleteConfirmEmail(e.target.value);
+                  setDeleteError(null);
+                }}
+                disabled={deleteBusy}
+                placeholder="your@email.com"
+                autoComplete="off"
+                className="w-full px-3 py-2 rounded-lg border border-zinc-200 dark:border-slate-600 text-sm text-zinc-900 dark:text-slate-200 bg-white dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-red-400 placeholder:text-zinc-400 dark:placeholder:text-slate-500 disabled:opacity-60"
+              />
+              {deleteError && (
+                <p className="text-xs font-medium text-red-600 dark:text-red-400">{deleteError}</p>
+              )}
+            </div>
+            <div className="flex gap-3 justify-end pt-2">
+              <button
+                onClick={() => {
+                  setShowDeleteAccount(false);
+                  setDeleteConfirmEmail("");
+                  setDeleteError(null);
+                }}
+                disabled={deleteBusy}
+                className="px-4 py-2 rounded-lg border border-zinc-200 dark:border-slate-600 text-sm font-medium text-zinc-600 dark:text-slate-300 hover:bg-zinc-50 dark:hover:bg-slate-700 transition-colors disabled:opacity-60"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleDeleteAccount}
+                disabled={
+                  deleteBusy ||
+                  deleteConfirmEmail.trim().toLowerCase() !== (email || "").trim().toLowerCase()
+                }
+                className="px-4 py-2 rounded-lg bg-red-600 hover:bg-red-700 text-white text-sm font-medium transition-colors disabled:opacity-50"
+              >
+                {deleteBusy ? "Deleting…" : "Delete account"}
+              </button>
+            </div>
+          </div>
+        </div>
       )}
 
       {/* Celebration Overlay (promo success) */}
