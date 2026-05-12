@@ -141,6 +141,11 @@ export default function Dashboard() {
   const userPlan = usePlanStore((s) => s.plan) ?? "free";
   const fetchPlan = usePlanStore((s) => s.fetch);
   const [showCheckoutSuccess, setShowCheckoutSuccess] = useState(false);
+  // Distinguishes "no children yet (show onboarding)" from "DB blip
+  // (don't push them into onboarding by accident)". Without this a
+  // transient Supabase error makes a real parent think their kid
+  // got wiped.
+  const [childrenLoadError, setChildrenLoadError] = useState(false);
 
   useEffect(() => {
     if (searchParams.get("checkout") === "success") {
@@ -178,9 +183,11 @@ export default function Dashboard() {
 
       if (error) {
         console.error("Error fetching children:", error);
+        setChildrenLoadError(true);
         setLoading(false);
         return;
       }
+      setChildrenLoadError(false);
 
       const kids = (data || []).map((d: unknown) => safeValidate(ChildSchema, d)) as Child[];
       setStoreChildren(kids);
@@ -202,6 +209,37 @@ export default function Dashboard() {
 
   if (loading) {
     return <SkeletonPage cards={4} />;
+  }
+
+  // DB blip while resolving children — show a retry card instead of
+  // pushing a real parent into onboarding by accident (which is what
+  // happens if we fall through to AddChildrenForm with children=[]).
+  if (childrenLoadError && children.length === 0) {
+    return (
+      <div className="mx-auto flex max-w-md flex-col items-center px-6 py-16 text-center">
+        <img
+          src="/images/ui/bunny-thinking.png"
+          alt=""
+          width={120}
+          height={120}
+          className="h-28 w-28 object-contain"
+        />
+        <h1 className="mt-4 text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+          Couldn&apos;t load your account.
+        </h1>
+        <p className="mt-2 text-sm text-zinc-500 dark:text-slate-400">
+          We hit a temporary snag pulling your reader&apos;s profile.
+          Refresh and try again — email hello@readee.app if it sticks.
+        </p>
+        <button
+          type="button"
+          onClick={() => window.location.reload()}
+          className="mt-6 inline-flex h-11 items-center gap-2 rounded-full bg-indigo-600 px-5 text-sm font-bold text-white shadow-sm transition hover:bg-indigo-700"
+        >
+          Refresh
+        </button>
+      </div>
+    );
   }
 
   if (children.length === 0) {
