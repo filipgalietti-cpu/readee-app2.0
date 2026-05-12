@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { Mic, MicOff, Loader2, AlertCircle, Sparkles } from "lucide-react";
 
 type Turn = { role: "child" | "buddy"; text: string };
@@ -107,9 +108,21 @@ export default function BuddyChat() {
 
   if (unsupported) {
     return (
-      <div className="rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800">
-        Reading buddy needs a browser with microphone access (Chrome,
-        Safari, Edge). Try again on a different browser.
+      <div className="rounded-3xl border border-amber-200 bg-amber-50 p-6 text-center">
+        <Image
+          src="/images/ui/bunny-sleepy.png"
+          alt=""
+          width={80}
+          height={80}
+          className="mx-auto h-20 w-20 object-contain"
+        />
+        <div className="mt-3 font-bold text-amber-900">
+          Readee can&apos;t hear you on this browser.
+        </div>
+        <p className="mx-auto mt-2 max-w-sm text-sm text-amber-800">
+          The reading buddy needs microphone access — try Chrome, Safari,
+          or Edge on a phone or tablet.
+        </p>
       </div>
     );
   }
@@ -128,32 +141,51 @@ export default function BuddyChat() {
         />
       </div>
 
-      <div className="space-y-2">
-        {history.map((t, i) => (
-          <div
-            key={i}
-            className={`flex ${t.role === "child" ? "justify-end" : "justify-start"}`}
-          >
+      {history.length === 0 && !pending ? (
+        <div className="rounded-3xl border border-violet-200 bg-gradient-to-br from-violet-50 via-white to-pink-50 p-5 text-center">
+          <Image
+            src="/images/ui/bunny-welcome.png"
+            alt=""
+            width={88}
+            height={88}
+            className="mx-auto h-20 w-20 object-contain"
+          />
+          <div className="mt-2 text-sm font-bold text-zinc-900">
+            Readee is ready to listen.
+          </div>
+          <p className="mt-1 text-xs text-zinc-500">
+            Tap the mic below, read the passage, or ask Readee anything about
+            it. Try &ldquo;What does &lsquo;quietly&rsquo; mean?&rdquo;
+          </p>
+        </div>
+      ) : (
+        <div className="space-y-2">
+          {history.map((t, i) => (
             <div
-              className={`max-w-[80%] rounded-2xl px-3 py-2 text-sm ${
-                t.role === "child"
-                  ? "bg-emerald-100 text-emerald-900"
-                  : "bg-violet-100 text-violet-900"
-              }`}
+              key={i}
+              className={`flex ${t.role === "child" ? "justify-end" : "justify-start"}`}
             >
-              {t.text}
+              <div
+                className={`max-w-[80%] rounded-2xl px-3 py-2 text-sm ${
+                  t.role === "child"
+                    ? "bg-emerald-100 text-emerald-900"
+                    : "bg-violet-100 text-violet-900"
+                }`}
+              >
+                {t.text}
+              </div>
             </div>
-          </div>
-        ))}
-        {pending && (
-          <div className="flex justify-start">
-            <div className="flex items-center gap-2 rounded-2xl bg-violet-100 px-3 py-2 text-sm text-violet-900">
-              <Loader2 className="h-3 w-3 animate-spin" />
-              Thinking…
+          ))}
+          {pending && (
+            <div className="flex justify-start">
+              <div className="flex items-center gap-2 rounded-2xl bg-violet-100 px-3 py-2 text-sm text-violet-900">
+                <Loader2 className="h-3 w-3 animate-spin" />
+                Thinking…
+              </div>
             </div>
-          </div>
-        )}
-      </div>
+          )}
+        </div>
+      )}
 
       <div className="flex justify-center">
         <button
