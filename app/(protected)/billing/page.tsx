@@ -43,7 +43,9 @@ export default function BillingPage() {
   const [portalError, setPortalError] = useState<string | null>(null);
 
   useEffect(() => {
-    async function load() {
+    let alive = true;
+
+    async function load(opts: { firstRun: boolean }) {
       const supabase = supabaseBrowser();
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) { router.replace("/login"); return; }
@@ -64,6 +66,7 @@ export default function BillingPage() {
         .limit(1);
 
       const redemption = promo?.[0] as any;
+      if (!alive) return;
 
       const plan = prof?.plan ?? "free";
       usePlanStore.getState().setPlan(plan);
@@ -74,9 +77,27 @@ export default function BillingPage() {
         promo_code: redemption?.promo_codes?.code || null,
         redeemed_at: redemption?.redeemed_at || null,
       });
-      setLoading(false);
+      if (opts.firstRun) setLoading(false);
     }
-    load();
+    load({ firstRun: true });
+
+    // Re-fetch whenever the tab regains focus. The dominant exit from
+    // this page is the Stripe billing portal — opened in the same tab
+    // it's true, but parents on desktop very often shift between tabs
+    // mid-flow (e.g., cancel in Stripe portal, then come back to
+    // /billing to confirm). Without this, the page shows the pre-cancel
+    // state until they manually reload, and they tap "Manage" again
+    // wondering why nothing changed. Cheap to query.
+    function onVisible() {
+      if (typeof document !== "undefined" && document.visibilityState === "visible") {
+        load({ firstRun: false });
+      }
+    }
+    document.addEventListener("visibilitychange", onVisible);
+    return () => {
+      alive = false;
+      document.removeEventListener("visibilitychange", onVisible);
+    };
   }, [router]);
 
   async function handleManageSubscription() {

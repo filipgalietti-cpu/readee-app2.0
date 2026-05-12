@@ -22,13 +22,17 @@ type Latest = {
 
 export default async function DiscoverIndexPage() {
   const supabase = await createClient();
-  const { data } = await supabase
-    .from("discovery_articles")
-    .select("category, slug, title, image_url, created_at")
-    .neq("qc_overall", "fail")
-    .order("created_at", { ascending: false })
-    .limit(50);
+  const [{ data }, { data: authData }] = await Promise.all([
+    supabase
+      .from("discovery_articles")
+      .select("category, slug, title, image_url, created_at")
+      .neq("qc_overall", "fail")
+      .order("created_at", { ascending: false })
+      .limit(50),
+    supabase.auth.getUser(),
+  ]);
   const articles = (data ?? []) as Latest[];
+  const isSignedIn = !!authData?.user;
 
   // Bucket by category, keep top 3 per
   const byCategory = new Map<string, Latest[]>();
@@ -135,13 +139,15 @@ export default async function DiscoverIndexPage() {
 
         <div className="mt-12 rounded-3xl border border-indigo-200 bg-white p-6 text-center shadow-sm">
           <h2 className="text-lg font-bold text-zinc-900">
-            Daily 5-minute reading practice for kids who love to learn.
+            {isSignedIn
+              ? "Pick up where your reader left off."
+              : "Daily 5-minute reading practice for kids who love to learn."}
           </h2>
           <Link
-            href="/signup"
+            href={isSignedIn ? "/dashboard" : "/signup"}
             className="mt-4 inline-block rounded-full bg-violet-600 px-6 py-2.5 text-sm font-bold text-white transition hover:bg-violet-700"
           >
-            Try Readee free
+            {isSignedIn ? "Back to dashboard" : "Try Readee free"}
           </Link>
         </div>
       </div>
