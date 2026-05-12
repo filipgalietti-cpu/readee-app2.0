@@ -27,6 +27,7 @@ import DailyQuestionCard from "@/app/_components/DailyQuestionCard";
 import LearningPathCard from "@/app/_components/LearningPathCard";
 import FreshForYou from "./_components/FreshForYou";
 import { SkeletonPage } from "@/app/_components/Skeleton";
+import TestimonialPrompt from "@/app/_components/TestimonialPrompt";
 
 /* ─── Count-up animation hook ─────────────────────────── */
 
@@ -1292,6 +1293,16 @@ function ChildDashboard({
             <span>Parent Dashboard</span>
           </button>
         </motion.div>
+
+        {/* Testimonial capture — fires once the kid has completed
+            at least 3 lessons (a "happy parent" moment). Dismissed
+            for 90 days after close. Submits go to parent_testimonials
+            with marketing-consent flag for Jen/Filip to approve. */}
+        <TestimonialPrompt
+          childFirstName={currentChild.first_name}
+          childGrade={readingLevel}
+          completedLessons={completedCount}
+        />
 
       {/* ── Avatar Picker Modal ── */}
       {avatarPickerOpen && (
