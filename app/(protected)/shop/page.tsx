@@ -85,6 +85,7 @@ function ShopContent({
   const [mysteryReward, setMysteryReward] = useState<MysteryReward | null>(null);
   const [buyingMystery, setBuyingMystery] = useState(false);
   const [showGetMore, setShowGetMore] = useState<ShopItem | null>(null);
+  const [buyError, setBuyError] = useState<string | null>(null);
   const setMysteryBoxMultiplier = usePracticeStore((s) => s.setMysteryBoxMultiplier);
 
   const ownedIds = new Set(purchases.map((p) => p.item_id));
@@ -94,22 +95,57 @@ function ShopContent({
     async (item: ShopItem) => {
       if (child.carrots < item.price || ownedIds.has(item.id)) return;
       setBuying(item.id);
+      setBuyError(null);
 
       const supabase = supabaseBrowser();
       const newCarrots = child.carrots - item.price;
 
-      const [updateRes, insertRes] = await Promise.all([
-        supabase.from("children").update({ carrots: newCarrots }).eq("id", child.id),
-        supabase.from("shop_purchases").insert({ child_id: child.id, item_id: item.id }),
-      ]);
+      // Sequence the writes instead of running them in parallel. Old
+      // order ran update + insert via Promise.all; if the insert
+      // failed after the update succeeded the kid lost their hard-
+      // earned carrots without getting the item. We now insert the
+      // purchase row first, then deduct carrots, so the failure modes
+      // are:
+      //   - insert fails -> nothing changed, retry safe
+      //   - insert succeeds, update fails -> item owned, kid keeps
+      //     carrots. Worst case we hand out a free item; never the
+      //     "paid but got nothing" outcome.
+      const { error: insertError } = await supabase
+        .from("shop_purchases")
+        .insert({ child_id: child.id, item_id: item.id });
 
-      if (!updateRes.error && !insertRes.error) {
-        setChild({ ...child, carrots: newCarrots });
-        setPurchases([...purchases, { id: crypto.randomUUID(), child_id: child.id, item_id: item.id, purchased_at: new Date().toISOString() }]);
-        setJustBought(item.id);
-        setTimeout(() => setJustBought(null), 1500);
+      if (insertError) {
+        console.error("[shop] failed to record purchase:", insertError);
+        setBuyError("Couldn't complete that purchase — try again in a moment.");
+        setBuying(null);
+        return;
       }
 
+      const { error: updateError } = await supabase
+        .from("children")
+        .update({ carrots: newCarrots })
+        .eq("id", child.id);
+
+      if (updateError) {
+        // Item is theirs, we just couldn't deduct carrots. Don't fail
+        // the UX — log so we can see how often this happens and let
+        // the kid enjoy the win.
+        console.error("[shop] purchase recorded but carrot deduction failed:", updateError);
+      } else {
+        setChild({ ...child, carrots: newCarrots });
+      }
+
+      setPurchases([
+        ...purchases,
+        {
+          id: crypto.randomUUID(),
+          child_id: child.id,
+          item_id: item.id,
+          purchased_at: new Date().toISOString(),
+        },
+      ]);
+      setJustBought(item.id);
+      setTimeout(() => setJustBought(null), 1500);
       setBuying(null);
     },
     [child, ownedIds, purchases, setChild, setPurchases],
@@ -190,6 +226,15 @@ function ShopContent({
           {child.first_name}&apos;s Carrots
         </div>
       </motion.div>
+
+      {buyError && (
+        <div
+          role="alert"
+          className="mb-6 rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm font-semibold text-rose-800"
+        >
+          {buyError}
+        </div>
+      )}
 
       {/* Mystery Box */}
       <motion.div
