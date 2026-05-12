@@ -1,7 +1,7 @@
 "use client";
 
 import { Suspense, useEffect, useState, useMemo, useRef } from "react";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
@@ -162,6 +162,7 @@ function Spinner() {
 
 function AnalyticsLoader() {
   const params = useSearchParams();
+  const router = useRouter();
   const childIdParam = params.get("child");
   const [child, setChild] = useState<Child | null>(null);
   const [loading, setLoading] = useState(true);
@@ -214,16 +215,12 @@ function AnalyticsLoader() {
 
   if (loading) return <Spinner />;
 
+  // Couldn't resolve a child (parent has none, or stale child param from
+  // a search hit / cross-surface link) — bounce to /dashboard rather than
+  // dead-ending. /dashboard handles the empty-parent case with a real CTA.
   if (!child) {
-    return (
-      <div className="max-w-md mx-auto py-16 text-center space-y-4">
-        <BarChart3 className="w-10 h-10 text-indigo-500" strokeWidth={1.5} />
-        <h1 className="text-xl font-bold text-zinc-900 dark:text-slate-100">No reader selected</h1>
-        <Link href="/dashboard" className="text-sm text-indigo-600 hover:text-indigo-700 font-medium">
-          &larr; Back to Dashboard
-        </Link>
-      </div>
-    );
+    router.replace("/dashboard");
+    return <Spinner />;
   }
 
   return <AnalyticsDashboard child={child} />;

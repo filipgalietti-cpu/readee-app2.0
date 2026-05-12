@@ -259,6 +259,13 @@ function PracticeHubContent() {
   const [openDomains, setOpenDomains] = useState<Set<string>>(new Set());
   const [openGrades, setOpenGrades] = useState<Set<string>>(new Set());
 
+  // No child in the URL? Bounce to /dashboard which knows how to resolve
+  // the parent's child. Without this, a stale link from smart search or
+  // a cross-surface sidebar click leaves us stuck on the skeleton forever.
+  useEffect(() => {
+    if (!childId) router.replace("/dashboard");
+  }, [childId, router]);
+
   useEffect(() => {
     async function load() {
       if (!childId) return;
@@ -270,6 +277,7 @@ function PracticeHubContent() {
     load();
   }, [childId]);
 
+  if (!childId) return <SkeletonPage cards={4} />;
   if (loading || !child) {
     return <SkeletonPage cards={4} />;
   }

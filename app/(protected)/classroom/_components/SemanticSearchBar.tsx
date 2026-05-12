@@ -25,11 +25,15 @@ function buildHref(contentType: string, args: HrefArgs): string {
 
   switch (contentType) {
     case "sample_lesson":
+      // Teacher preview of a Readee sample lesson (slides + MCQs).
+      // Falls back to the library filtered by standard if we somehow
+      // don't have a standard id on the hit.
       return standardId
-        ? `/classroom/library?standard=${encodeURIComponent(standardId)}`
+        ? `/classroom/library/lesson/${encodeURIComponent(standardId)}`
         : `/classroom/library`;
     case "sample_question":
-      return `/classroom/library?focus=${encodeURIComponent(id)}`;
+      // Teacher preview of a single practice question.
+      return `/classroom/library/question/${encodeURIComponent(id)}`;
     case "story":
       return `/classroom/library?focus=${encodeURIComponent(id)}`;
     case "custom_lesson":

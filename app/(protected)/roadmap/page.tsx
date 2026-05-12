@@ -11,7 +11,7 @@ import { ChildSchema } from "@/lib/schemas";
 import { usePlanStore } from "@/lib/stores/plan-store";
 import { getStandardsForGrade } from "@/lib/data/all-standards";
 import { levelNameToGradeKey } from "@/lib/assessment/questions";
-import { BookOpen, Newspaper, Type, MessageCircle, Map as MapIcon, Trophy, Carrot, Star, Rabbit, Squirrel, Dog, Lock } from "lucide-react";
+import { BookOpen, Newspaper, Type, MessageCircle, Trophy, Carrot, Star, Rabbit, Squirrel, Dog, Lock } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { SkeletonPage } from "@/app/_components/Skeleton";
 
@@ -465,16 +465,11 @@ function RoadmapLoader() {
   if (!childId) return <Spinner />;
   if (loading) return <Spinner />;
 
+  // childId in URL but couldn't load child (deleted, wrong parent, stale link
+  // from smart search etc.) — bounce to /dashboard rather than dead-ending.
   if (!child) {
-    return (
-      <div className="max-w-md mx-auto py-16 text-center space-y-4">
-        <MapIcon className="w-10 h-10 text-indigo-500" strokeWidth={1.5} />
-        <h1 className="text-xl font-bold text-zinc-900 dark:text-slate-100">No reader selected</h1>
-        <Link href="/dashboard" className="text-sm text-indigo-600 hover:text-indigo-700 font-medium">
-          &larr; Back to Dashboard
-        </Link>
-      </div>
-    );
+    router.replace("/dashboard");
+    return <Spinner />;
   }
 
   return <SnakePathRoadmap child={child} userPlan={userPlan} />;
