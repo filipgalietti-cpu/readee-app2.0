@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import SettingsShell from "@/app/_components/SettingsShell";
 import { usePlanStore } from "@/lib/stores/plan-store";
+import { SkeletonPage } from "@/app/_components/Skeleton";
 // Canonical billing copy — keep this page in lockstep with /upgrade by
 // reading every price/feature/promise from lib/billing-copy.ts.
 import {
@@ -91,9 +92,7 @@ export default function BillingPage() {
   if (loading || !billing) {
     return (
       <SettingsShell>
-        <div className="flex items-center justify-center min-h-[60vh]">
-          <div className="h-10 w-10 rounded-full border-4 border-indigo-200 border-t-indigo-600 animate-spin" />
-        </div>
+        <SkeletonPage cards={3} />
       </SettingsShell>
     );
   }

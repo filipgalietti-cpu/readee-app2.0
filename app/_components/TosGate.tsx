@@ -4,6 +4,7 @@ import { useEffect, useState, ReactNode } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { CURRENT_TOS_VERSION } from "@/lib/tos";
 import TosCheckbox from "@/app/components/auth/TosCheckbox";
+import { SkeletonPage } from "@/app/_components/Skeleton";
 
 type Status = "loading" | "accepted" | "needs-consent";
 const TOS_LOCAL_STORAGE_KEY = "readee-tos-consent";
@@ -132,11 +133,7 @@ export default function TosGate({ children }: { children: ReactNode }) {
   }, []);
 
   if (status === "loading") {
-    return (
-      <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-600" />
-      </div>
-    );
+    return <SkeletonPage cards={3} />;
   }
 
   if (status === "accepted") {

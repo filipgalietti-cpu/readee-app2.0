@@ -19,13 +19,14 @@ import { getStandardsForGrade } from "@/lib/data/all-standards";
 import { getChildAvatarImage, AVATAR_IMAGES, DEFAULT_AVATARS } from "@/lib/utils/get-child-avatar";
 import { getItemsByCategory, BACKGROUND_IMAGES } from "@/lib/data/shop-items";
 import type { ShopPurchase, EquippedItems } from "@/lib/db/types";
-import { Target, Puzzle, BookOpen, Map, Carrot, Flame, Sun, CloudSun, Moon, Sparkles, Star, Rocket, Trophy, BarChart3, Sprout, ChevronDown, Lock, User, CreditCard, Bell, LogOut, ChevronsUpDown, Home, BookText, ListChecks, ClipboardCheck, Mic, Compass, Users } from "lucide-react";
+import { Target, Puzzle, BookOpen, Map, Carrot, Flame, Sun, CloudSun, Moon, Sparkles, Star, Rocket, Trophy, BarChart3, Sprout, ChevronDown, Lock, User, CreditCard, Bell, LogOut, ChevronsUpDown, Home, BookText, ListChecks, ClipboardCheck, Mic, Compass, Users, Brain } from "lucide-react";
 import type { ReactNode } from "react";
 import { getShopIcon } from "@/lib/data/shop-icons";
 import TeacherAssignmentsCard from "@/app/_components/TeacherAssignmentsCard";
 import DailyQuestionCard from "@/app/_components/DailyQuestionCard";
 import LearningPathCard from "@/app/_components/LearningPathCard";
 import FreshForYou from "./_components/FreshForYou";
+import { SkeletonPage } from "@/app/_components/Skeleton";
 
 /* ─── Count-up animation hook ─────────────────────────── */
 
@@ -197,11 +198,7 @@ export default function Dashboard() {
   }, [router, setStoreChildData, setStoreChildren]);
 
   if (loading) {
-    return (
-      <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="h-10 w-10 rounded-full border-4 border-indigo-200 border-t-indigo-600 animate-spin" />
-      </div>
-    );
+    return <SkeletonPage cards={4} />;
   }
 
   if (children.length === 0) {
@@ -334,9 +331,13 @@ function AddChildrenForm({
     return (
       <div className="mx-auto max-w-md space-y-8 px-4 py-16">
         <div className="text-center">
-          <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-indigo-50">
-            <BookOpen className="h-10 w-10 text-indigo-500" strokeWidth={1.5} />
-          </div>
+          <img
+            src="/images/ui/bunny-welcome.png"
+            alt=""
+            width={120}
+            height={120}
+            className="mx-auto mb-3 h-28 w-28 object-contain"
+          />
           <h1 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-slate-100">
             Welcome to Readee.
           </h1>
@@ -1215,10 +1216,10 @@ function ChildDashboard({
             <motion.div
               whileHover={{ scale: 1.05, y: -4 }}
               whileTap={{ scale: 0.95 }}
-              className="h-[130px] rounded-3xl bg-gradient-to-br from-indigo-500 to-violet-600 p-4 flex flex-col items-center justify-center text-center shadow-lg cursor-pointer"
+              className="h-28 sm:h-[130px] rounded-3xl bg-gradient-to-br from-indigo-500 to-violet-600 p-3 sm:p-4 flex flex-col items-center justify-center text-center shadow-lg cursor-pointer"
             >
-              <Target className="w-10 h-10 text-white mb-2" strokeWidth={1.5} />
-              <span className="text-sm font-extrabold text-white">Practice</span>
+              <Target className="w-8 h-8 sm:w-10 sm:h-10 text-white mb-1.5 sm:mb-2" strokeWidth={1.5} />
+              <span className="text-xs sm:text-sm font-extrabold text-white leading-tight">Practice</span>
             </motion.div>
           </Link>
 
@@ -1226,10 +1227,10 @@ function ChildDashboard({
             <motion.div
               whileHover={{ scale: 1.05, y: -4 }}
               whileTap={{ scale: 0.95 }}
-              className="h-[130px] rounded-3xl bg-gradient-to-br from-emerald-400 to-teal-500 p-4 flex flex-col items-center justify-center text-center shadow-lg cursor-pointer"
+              className="h-28 sm:h-[130px] rounded-3xl bg-gradient-to-br from-emerald-400 to-teal-500 p-3 sm:p-4 flex flex-col items-center justify-center text-center shadow-lg cursor-pointer"
             >
-              <BookOpen className="w-10 h-10 text-white mb-2" strokeWidth={1.5} />
-              <span className="text-sm font-extrabold text-white">Stories</span>
+              <BookOpen className="w-8 h-8 sm:w-10 sm:h-10 text-white mb-1.5 sm:mb-2" strokeWidth={1.5} />
+              <span className="text-xs sm:text-sm font-extrabold text-white leading-tight">Stories</span>
             </motion.div>
           </Link>
 
@@ -1237,10 +1238,10 @@ function ChildDashboard({
             <motion.div
               whileHover={{ scale: 1.05, y: -4 }}
               whileTap={{ scale: 0.95 }}
-              className="h-[130px] rounded-3xl bg-gradient-to-br from-pink-400 to-rose-500 p-4 flex flex-col items-center justify-center text-center shadow-lg cursor-pointer"
+              className="h-28 sm:h-[130px] rounded-3xl bg-gradient-to-br from-pink-400 to-rose-500 p-3 sm:p-4 flex flex-col items-center justify-center text-center shadow-lg cursor-pointer"
             >
-              <Map className="w-10 h-10 text-white mb-2" strokeWidth={1.5} />
-              <span className="text-sm font-extrabold text-white">My Journey</span>
+              <Map className="w-8 h-8 sm:w-10 sm:h-10 text-white mb-1.5 sm:mb-2" strokeWidth={1.5} />
+              <span className="text-xs sm:text-sm font-extrabold text-white leading-tight">My Journey</span>
             </motion.div>
           </Link>
         </motion.div>
@@ -1251,10 +1252,10 @@ function ChildDashboard({
             <motion.div
               whileHover={{ scale: 1.05, y: -4 }}
               whileTap={{ scale: 0.95 }}
-              className="h-[130px] rounded-3xl bg-gradient-to-br from-amber-400 to-orange-500 p-4 flex flex-col items-center justify-center text-center shadow-lg cursor-pointer"
+              className="h-28 sm:h-[130px] rounded-3xl bg-gradient-to-br from-amber-400 to-orange-500 p-3 sm:p-4 flex flex-col items-center justify-center text-center shadow-lg cursor-pointer"
             >
-              <Sparkles className="w-10 h-10 text-white mb-2" strokeWidth={1.5} />
-              <span className="text-sm font-extrabold text-white">Today&apos;s Readee</span>
+              <Sparkles className="w-8 h-8 sm:w-10 sm:h-10 text-white mb-1.5 sm:mb-2" strokeWidth={1.5} />
+              <span className="text-xs sm:text-sm font-extrabold text-white leading-tight">Today&apos;s Readee</span>
             </motion.div>
           </Link>
 
@@ -1262,10 +1263,10 @@ function ChildDashboard({
             <motion.div
               whileHover={{ scale: 1.05, y: -4 }}
               whileTap={{ scale: 0.95 }}
-              className="h-[130px] rounded-3xl bg-gradient-to-br from-sky-400 to-blue-600 p-4 flex flex-col items-center justify-center text-center shadow-lg cursor-pointer"
+              className="h-28 sm:h-[130px] rounded-3xl bg-gradient-to-br from-sky-400 to-blue-600 p-3 sm:p-4 flex flex-col items-center justify-center text-center shadow-lg cursor-pointer"
             >
-              <Compass className="w-10 h-10 text-white mb-2" strokeWidth={1.5} />
-              <span className="text-sm font-extrabold text-white">Discover</span>
+              <Compass className="w-8 h-8 sm:w-10 sm:h-10 text-white mb-1.5 sm:mb-2" strokeWidth={1.5} />
+              <span className="text-xs sm:text-sm font-extrabold text-white leading-tight">Discover</span>
             </motion.div>
           </Link>
 
@@ -1273,10 +1274,10 @@ function ChildDashboard({
             <motion.div
               whileHover={{ scale: 1.05, y: -4 }}
               whileTap={{ scale: 0.95 }}
-              className="h-[130px] rounded-3xl bg-gradient-to-br from-fuchsia-400 to-purple-600 p-4 flex flex-col items-center justify-center text-center shadow-lg cursor-pointer"
+              className="h-28 sm:h-[130px] rounded-3xl bg-gradient-to-br from-fuchsia-400 to-purple-600 p-3 sm:p-4 flex flex-col items-center justify-center text-center shadow-lg cursor-pointer"
             >
-              <Users className="w-10 h-10 text-white mb-2" strokeWidth={1.5} />
-              <span className="text-sm font-extrabold text-white">Community</span>
+              <Users className="w-8 h-8 sm:w-10 sm:h-10 text-white mb-1.5 sm:mb-2" strokeWidth={1.5} />
+              <span className="text-xs sm:text-sm font-extrabold text-white leading-tight">Community</span>
             </motion.div>
           </Link>
         </motion.div>
@@ -1317,7 +1318,7 @@ function ChildDashboard({
 
             <div className="px-6 pb-2">
               <p className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3">Defaults</p>
-              <div className="grid grid-cols-5 gap-3">
+              <div className="grid grid-cols-4 gap-2 sm:grid-cols-5 sm:gap-3">
                 {DEFAULT_AVATARS.map((_emoji, i) => {
                   const id = `default_${i}`;
                   const imgSrc = AVATAR_IMAGES[id];
@@ -1341,7 +1342,7 @@ function ChildDashboard({
 
             <div className="px-6 pt-4 pb-6 max-h-[40vh] overflow-y-auto">
               <p className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3">Shop Avatars</p>
-              <div className="grid grid-cols-5 gap-3">
+              <div className="grid grid-cols-4 gap-2 sm:grid-cols-5 sm:gap-3">
                 {shopAvatars.map((item) => {
                   const owned = ownedAvatarIds.has(item.id);
                   const isActive = equippedAvatarId === item.id;
@@ -1482,10 +1483,14 @@ function ParentSidebar({
       label: "Main",
       items: [
         { href: "/dashboard", icon: Home, label: "Dashboard" },
+        { href: "/dashboard/ask-readee", icon: Sparkles, label: "Ask Readee", emphasis: true },
+        { href: "/stories-for-me", icon: Sparkles, label: "Stories starring my kid", emphasis: true },
+        { href: "/fluency", icon: Mic, label: "Fluency check" },
         hasAssessment
           ? { href: `/assessment-results?child=${child.id}`, icon: ClipboardCheck, label: "Placement Test Results" }
           : { href: `/assessment?child=${child.id}`, icon: ClipboardCheck, label: "Take Placement Test", emphasis: true },
         { href: `/analytics?child=${child.id}`, icon: BarChart3, label: "Analytics" },
+        { href: `/review?child=${child.id}`, icon: Brain, label: "Today's review" },
       ],
     },
     {
@@ -1493,6 +1498,8 @@ function ParentSidebar({
       items: [
         { href: "/word-bank", icon: BookText, label: "Word Bank" },
         { href: `/practice-hub?child=${child.id}`, icon: ListChecks, label: "Practice" },
+        { href: "/practice-hub/community", icon: Users, label: "Community library" },
+        { href: "/discover", icon: Compass, label: "Discover" },
         { href: `/journey?child=${child.id}`, icon: Map, label: "Reading Journey" },
       ],
     },

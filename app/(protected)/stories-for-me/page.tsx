@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { Sparkles, BookOpenText, ArrowRight, ImageIcon } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import StoryGenerator from "./_components/StoryGenerator";
+import { EmptyState } from "@/app/_components/EmptyState";
 
 export const dynamic = "force-dynamic";
 
@@ -20,17 +21,14 @@ export default async function StoriesForMePage() {
 
   if (children.length === 0) {
     return (
-      <div className="mx-auto max-w-2xl px-6 py-16 text-center">
-        <h1 className="text-xl font-bold">Add a kid first</h1>
-        <p className="mt-2 text-sm text-zinc-500">
-          Stories for me are personalized to a specific kid — name + interests.
-        </p>
-        <Link
-          href="/settings"
-          className="mt-4 inline-flex rounded-full bg-violet-600 px-4 py-2 text-sm font-bold text-white"
-        >
-          Go to settings
-        </Link>
+      <div className="mx-auto max-w-2xl px-6 py-12">
+        <EmptyState
+          mascot="welcome"
+          size="lg"
+          title="Add a kid first"
+          description="Stories for me are personalized to a specific kid — name, grade, and what they're into. Add a reader to get started."
+          action={{ href: "/settings", label: "Go to settings" }}
+        />
       </div>
     );
   }

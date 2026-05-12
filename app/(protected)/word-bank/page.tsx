@@ -7,6 +7,8 @@ import { usePlanStore } from "@/lib/stores/plan-store";
 import { wordBank, type WordEntry } from "@/lib/word-bank/words";
 import { useAudio } from "@/lib/audio/use-audio";
 import { BookOpen, Star } from "lucide-react";
+import { SkeletonPage } from "@/app/_components/Skeleton";
+import { EmptyState } from "@/app/_components/EmptyState";
 
 const CATEGORY_FILTERS = [
   { label: "All", tag: null },
@@ -23,13 +25,7 @@ const FREE_WORD_LIMIT = 20;
 
 export default function WordBankPage() {
   return (
-    <Suspense
-      fallback={
-        <div className="flex items-center justify-center min-h-[60vh]">
-          <div className="h-10 w-10 rounded-full border-4 border-indigo-200 border-t-indigo-600 animate-spin" />
-        </div>
-      }
-    >
+    <Suspense fallback={<SkeletonPage cards={4} />}>
       <WordBankContent />
     </Suspense>
   );
@@ -67,11 +63,7 @@ function WordBankContent() {
   }
 
   if (loading) {
-    return (
-      <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="h-10 w-10 rounded-full border-4 border-indigo-200 border-t-indigo-600 animate-spin" />
-      </div>
-    );
+    return <SkeletonPage cards={4} />;
   }
 
   return (
@@ -112,6 +104,14 @@ function WordBankContent() {
 
       {/* Word grid */}
       <div className="relative">
+        {filteredWords.length === 0 && (
+          <EmptyState
+            mascot="search"
+            title="No words match this filter"
+            description="Try a different category or clear the filter to see every word."
+            action={{ href: "/word-bank", label: "Show all words" }}
+          />
+        )}
         <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2.5">
           {filteredWords.map((entry, idx) => {
             const isLocked = !isPremium && idx >= FREE_WORD_LIMIT;
@@ -124,7 +124,7 @@ function WordBankContent() {
                 disabled={isLocked}
                 className={`relative rounded-xl border-2 p-3 text-center transition-all duration-200 ${
                   isLocked
-                    ? "blur-[3px] opacity-50 cursor-default border-zinc-200 dark:border-slate-700 bg-zinc-50 dark:bg-slate-800"
+                    ? "blur-sm opacity-50 cursor-default border-zinc-200 dark:border-slate-700 bg-zinc-50 dark:bg-slate-800"
                     : isPlaying
                     ? "border-indigo-500 bg-indigo-50 dark:bg-indigo-900/30 dark:border-indigo-400 scale-[1.05] shadow-md"
                     : "border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-indigo-300 dark:hover:border-indigo-600 hover:shadow-sm active:scale-95"

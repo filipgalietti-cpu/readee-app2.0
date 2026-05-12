@@ -54,57 +54,84 @@ export default async function DiscoverIndexPage() {
           grounded against Wikipedia, every question pedagogically reviewed.
         </p>
 
-        <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2">
+        <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {listCategories().map((cat) => {
             const items = byCategory.get(cat.slug) ?? [];
             return (
-              <section
+              <Link
                 key={cat.slug}
-                className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm"
+                href={`/discover/${cat.slug}`}
+                className="group relative overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-sm transition hover:-translate-y-1 hover:border-violet-300 hover:shadow-xl"
               >
-                <div className="flex items-baseline justify-between">
+                <div className="aspect-square w-full overflow-hidden bg-zinc-50">
+                  <img
+                    src={cat.tileImageUrl}
+                    alt={cat.label}
+                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <div className="p-5">
                   <h2 className="text-xl font-bold text-zinc-900">
                     {cat.label}
                   </h2>
-                  <Link
-                    href={`/discover/${cat.slug}`}
-                    className="text-xs font-semibold text-violet-600 hover:text-violet-800"
-                  >
-                    Browse all →
-                  </Link>
+                  <p className="mt-1 text-sm text-zinc-500">{cat.blurb}</p>
+                  <div className="mt-3 flex items-baseline justify-between text-xs">
+                    <span className="font-semibold text-zinc-500">
+                      {items.length > 0
+                        ? `${items.length === 1 ? "1 article" : `${items.length}+ articles`}`
+                        : "First articles dropping soon"}
+                    </span>
+                    <span className="font-bold text-violet-600 transition group-hover:text-violet-800">
+                      Browse →
+                    </span>
+                  </div>
                 </div>
-                <p className="mt-1 text-sm text-zinc-500">{cat.blurb}</p>
-                {items.length === 0 ? (
-                  <p className="mt-4 text-xs italic text-zinc-400">
-                    First articles dropping soon — check back tomorrow.
-                  </p>
-                ) : (
-                  <ul className="mt-4 space-y-3">
-                    {items.map((a) => (
-                      <li key={a.slug}>
-                        <Link
-                          href={`/discover/${a.category}/${a.slug}`}
-                          className="flex items-center gap-3 rounded-xl border border-zinc-100 bg-zinc-50 p-3 transition hover:border-violet-200 hover:bg-violet-50"
-                        >
-                          {a.image_url && (
-                            <img
-                              src={a.image_url}
-                              alt=""
-                              className="h-14 w-14 flex-shrink-0 rounded-lg object-cover"
-                            />
-                          )}
-                          <span className="text-sm font-semibold text-zinc-900">
-                            {a.title}
-                          </span>
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </section>
+              </Link>
             );
           })}
         </div>
+
+        {/* Latest passages strip — pulls newest 6 across all categories so
+            visitors get an immediate "fresh content" signal without
+            having to drill into a category first. */}
+        {articles.length > 0 && (
+          <section className="mt-14">
+            <div className="flex items-baseline justify-between">
+              <h2 className="text-xl font-bold text-zinc-900">Just published</h2>
+              <span className="text-xs font-semibold text-zinc-400">
+                Fresh today
+              </span>
+            </div>
+            <ul className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {articles.slice(0, 6).map((a) => (
+                <li key={`${a.category}/${a.slug}`}>
+                  <Link
+                    href={`/discover/${a.category}/${a.slug}`}
+                    className="flex items-center gap-3 rounded-2xl border border-zinc-200 bg-white p-3 transition hover:border-violet-300 hover:bg-violet-50"
+                  >
+                    {a.image_url ? (
+                      <img
+                        src={a.image_url}
+                        alt=""
+                        className="h-14 w-14 flex-shrink-0 rounded-xl object-cover"
+                      />
+                    ) : (
+                      <div className="h-14 w-14 flex-shrink-0 rounded-xl bg-gradient-to-br from-violet-100 to-indigo-100" />
+                    )}
+                    <div className="min-w-0">
+                      <div className="text-[10px] font-bold uppercase tracking-widest text-violet-600">
+                        {a.category.replace(/_/g, " ")}
+                      </div>
+                      <div className="truncate text-sm font-semibold text-zinc-900">
+                        {a.title}
+                      </div>
+                    </div>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
 
         <div className="mt-12 rounded-3xl border border-indigo-200 bg-white p-6 text-center shadow-sm">
           <h2 className="text-lg font-bold text-zinc-900">

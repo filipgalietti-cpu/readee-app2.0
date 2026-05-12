@@ -19,19 +19,14 @@ import { MYSTERY_BOX_PRICE, rollMysteryBox, MysteryReward } from "@/lib/data/mys
 import { MysteryBoxOpener } from "@/app/_components/MysteryBoxOpener";
 import { GetMoreCarrotsModal } from "@/app/_components/GetMoreCarrotsModal";
 import { usePracticeStore } from "@/lib/stores/practice-store";
-import { Carrot } from "lucide-react";
+import { Carrot, Sparkles } from "lucide-react";
 import { getShopIcon } from "@/lib/data/shop-icons";
 import { AVATAR_IMAGES } from "@/lib/utils/get-child-avatar";
+import { SkeletonPage } from "@/app/_components/Skeleton";
 
 export default function ShopPage() {
   return (
-    <Suspense
-      fallback={
-        <div className="flex items-center justify-center min-h-[60vh]">
-          <div className="h-10 w-10 rounded-full border-4 border-orange-200 border-t-orange-500 animate-spin" />
-        </div>
-      }
-    >
+    <Suspense fallback={<SkeletonPage cards={4} />}>
       <ShopLoader />
     </Suspense>
   );
@@ -60,11 +55,7 @@ function ShopLoader() {
   }, [childId]);
 
   if (loading || !child) {
-    return (
-      <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="h-10 w-10 rounded-full border-4 border-orange-200 border-t-orange-500 animate-spin" />
-      </div>
-    );
+    return <SkeletonPage cards={4} />;
   }
 
   return (
@@ -223,23 +214,23 @@ function ShopContent({
           </div>
           {/* Golden sparkles */}
           {[
-            { top: "2%", left: "5%", delay: 0, size: "text-base" },
-            { top: "8%", right: "0%", delay: 0.6, size: "text-sm" },
-            { bottom: "25%", left: "0%", delay: 1.2, size: "text-sm" },
-            { top: "-5%", right: "15%", delay: 0.3, size: "text-lg" },
-            { bottom: "15%", right: "2%", delay: 0.9, size: "text-xs" },
-            { top: "20%", left: "-5%", delay: 1.5, size: "text-xs" },
-            { bottom: "5%", left: "20%", delay: 1.8, size: "text-base" },
+            { top: "2%", left: "5%", delay: 0, sizeClass: "w-4 h-4" },
+            { top: "8%", right: "0%", delay: 0.6, sizeClass: "w-3.5 h-3.5" },
+            { bottom: "25%", left: "0%", delay: 1.2, sizeClass: "w-3.5 h-3.5" },
+            { top: "-5%", right: "15%", delay: 0.3, sizeClass: "w-5 h-5" },
+            { bottom: "15%", right: "2%", delay: 0.9, sizeClass: "w-3 h-3" },
+            { top: "20%", left: "-5%", delay: 1.5, sizeClass: "w-3 h-3" },
+            { bottom: "5%", left: "20%", delay: 1.8, sizeClass: "w-4 h-4" },
           ].map((s, i) => (
-            <motion.span
+            <motion.div
               key={i}
-              className={`absolute pointer-events-none ${s.size} text-amber-400`}
+              className="absolute pointer-events-none text-amber-400"
               style={{ top: s.top, left: s.left, right: s.right, bottom: s.bottom }}
               animate={{ opacity: [0, 1, 0], scale: [0.3, 1.3, 0.3] }}
               transition={{ duration: 1.8, delay: s.delay, repeat: Infinity, repeatDelay: 0.8 }}
             >
-              ✦
-            </motion.span>
+              <Sparkles className={s.sizeClass} fill="currentColor" strokeWidth={0} />
+            </motion.div>
           ))}
         </motion.div>
 

@@ -4,11 +4,9 @@ import { useEffect, useState, useTransition } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
-  Sparkles,
   CheckCircle2,
   Circle,
   ArrowRight,
-  RefreshCw,
   Loader2,
   AlertCircle,
   BookOpen,
@@ -64,7 +62,7 @@ export default function LearningPathCard({
   const [advancing, startAdvance] = useTransition();
   const [err, setErr] = useState<string | null>(null);
 
-  async function load() {
+  async function load(): Promise<Path | null> {
     const supabase = supabaseBrowser();
     const { data } = await supabase
       .from("learning_paths")
@@ -73,16 +71,43 @@ export default function LearningPathCard({
       )
       .eq("child_id", childId)
       .maybeSingle();
-    setPath(data as Path | null);
+    const p = (data as Path | null) ?? null;
+    setPath(p);
     setLoading(false);
+    return p;
   }
 
+  // Path is derived from the placement test — no manual rebuild
+  // affordance. Auto-build when (a) no path exists yet, or (b) the
+  // most recent assessment is newer than the path (kid retook the
+  // exam).
   useEffect(() => {
-    load();
+    let cancelled = false;
+    (async () => {
+      const supabase = supabaseBrowser();
+      const p = await load();
+      if (cancelled) return;
+      const { data: latest } = await supabase
+        .from("assessments")
+        .select("completed_at")
+        .eq("child_id", childId)
+        .order("completed_at", { ascending: false })
+        .limit(1)
+        .maybeSingle();
+      const assessmentAt = latest?.completed_at
+        ? new Date(latest.completed_at).getTime()
+        : null;
+      const pathAt = p?.updated_at ? new Date(p.updated_at).getTime() : null;
+      const stale = assessmentAt != null && (pathAt == null || assessmentAt > pathAt);
+      if (!p || stale) {
+        autoBuild();
+      }
+    })();
+    return () => { cancelled = true; };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [childId]);
 
-  function rebuild() {
+  function autoBuild() {
     setErr(null);
     startBuild(async () => {
       const res = await buildPathForChild({ childId });
@@ -113,51 +138,39 @@ export default function LearningPathCard({
     );
   }
 
-  // No path yet → CTA to build one.
+  // No path yet — the placement test triggers an auto-build, so the
+  // expected case here is that it's mid-build. Render a quiet
+  // building state instead of a "click to build" CTA.
   if (!path) {
+    if (err) {
+      return (
+        <div className="overflow-hidden rounded-3xl border-2 border-dashed border-rose-200 bg-rose-50 p-5 dark:border-rose-900/40 dark:bg-rose-950/20">
+          <div className="flex items-start gap-2">
+            <AlertCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-rose-600" />
+            <div className="text-xs font-semibold text-rose-700 dark:text-rose-300">
+              {err}
+            </div>
+          </div>
+        </div>
+      );
+    }
     return (
-      <div className="overflow-hidden rounded-3xl border-2 border-dashed border-violet-200 bg-gradient-to-br from-violet-50 via-white to-indigo-50 p-6 dark:border-violet-900/40 dark:from-violet-950/20 dark:via-slate-900 dark:to-indigo-950/20">
+      <div className="overflow-hidden rounded-3xl border border-violet-200 bg-gradient-to-br from-violet-50 via-white to-indigo-50 p-6 dark:border-violet-900/40 dark:from-violet-950/20 dark:via-slate-900 dark:to-indigo-950/20">
         <div className="flex items-start gap-3">
           <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 to-indigo-600 text-white">
-            <MapIcon className="h-5 w-5" />
+            <Loader2 className="h-5 w-5 animate-spin" />
           </div>
           <div className="flex-1">
             <div className="text-[10px] font-bold uppercase tracking-widest text-violet-600 dark:text-violet-300">
               Personalized path
             </div>
             <h3 className="mt-0.5 text-base font-bold text-zinc-900 dark:text-white">
-              Build {childFirstName ? `${childFirstName}'s` : "their"} learning path
+              Reading {childFirstName ? `${childFirstName}'s` : "the"} placement test…
             </h3>
             <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">
-              Readee.ai will read{" "}
-              {childFirstName ? `${childFirstName}'s` : "the"} placement test
-              and pick a sequence of lessons + practice to address what they
-              need most.
+              Readee.ai is picking the lessons + practice that address what
+              they need most. This usually takes 10–15 seconds.
             </p>
-            {err && (
-              <div className="mt-3 flex items-start gap-2 rounded-lg bg-red-50 px-3 py-2 text-xs font-semibold text-red-700">
-                <AlertCircle className="mt-0.5 h-3.5 w-3.5 flex-shrink-0" />
-                {err}
-              </div>
-            )}
-            <button
-              type="button"
-              onClick={rebuild}
-              disabled={building}
-              className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-violet-600 px-4 py-2 text-xs font-bold text-white transition hover:bg-violet-700 disabled:opacity-60"
-            >
-              {building ? (
-                <>
-                  <Loader2 className="h-3.5 w-3.5 animate-spin" />
-                  Building path…
-                </>
-              ) : (
-                <>
-                  <Sparkles className="h-3.5 w-3.5" />
-                  Build with Readee.ai
-                </>
-              )}
-            </button>
           </div>
         </div>
       </div>
@@ -194,21 +207,14 @@ export default function LearningPathCard({
             </div>
           </div>
         </div>
-        {variant !== "kid" && (
-          <button
-            type="button"
-            onClick={rebuild}
-            disabled={building}
-            className="inline-flex items-center gap-1 rounded-full border border-violet-200 bg-white px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-violet-700 hover:bg-violet-50 disabled:opacity-60"
-            title="Rebuild path"
+        {building && (
+          <span
+            className="inline-flex items-center gap-1 rounded-full border border-violet-200 bg-white px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-violet-700"
+            title="Updating path from the latest placement test"
           >
-            {building ? (
-              <Loader2 className="h-3 w-3 animate-spin" />
-            ) : (
-              <RefreshCw className="h-3 w-3" />
-            )}
-            Rebuild
-          </button>
+            <Loader2 className="h-3 w-3 animate-spin" />
+            Updating
+          </span>
         )}
       </div>
 
@@ -280,7 +286,8 @@ export default function LearningPathCard({
             Path complete!
           </p>
           <p className="text-xs text-zinc-500 dark:text-slate-400">
-            Rebuild for an updated set based on the latest performance.
+            Retake the placement test and your next path will reflect what
+            {childFirstName ? ` ${childFirstName}` : " they"} can do now.
           </p>
         </div>
       )}

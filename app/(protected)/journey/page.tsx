@@ -23,6 +23,7 @@ const GRADE_BADGES: Record<string, string> = {
   "4th Grade": "/images/ui/grades/grade-4.png",
 };
 import { PaywallModal } from "@/app/_components/PaywallModal";
+import { SkeletonPage } from "@/app/_components/Skeleton";
 
 /* ── Solid SVG icons ───────────────────────────────── */
 
@@ -100,13 +101,7 @@ const DOMAIN_ICONS: Record<string, typeof BookOpen> = {
 
 export default function JourneyPage() {
   return (
-    <Suspense
-      fallback={
-        <div className="flex items-center justify-center min-h-[60vh]">
-          <div className="h-10 w-10 rounded-full border-4 border-indigo-200 border-t-indigo-600 animate-spin" />
-        </div>
-      }
-    >
+    <Suspense fallback={<SkeletonPage cards={5} />}>
       <JourneyContent />
     </Suspense>
   );
@@ -146,11 +141,7 @@ function JourneyContent() {
   }, [childId]);
 
   if (loading || !child) {
-    return (
-      <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="h-10 w-10 rounded-full border-4 border-indigo-200 border-t-indigo-600 animate-spin" />
-      </div>
-    );
+    return <SkeletonPage cards={5} />;
   }
 
   const allLessons = sampleLessons as SampleLesson[];
@@ -258,8 +249,7 @@ function JourneyContent() {
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="rounded-2xl p-5 text-white shadow-lg"
-          style={{ background: "linear-gradient(135deg, #6366f1, #8b5cf6, #a78bfa)" }}
+          className="rounded-2xl p-5 text-white shadow-lg bg-gradient-to-br from-indigo-500 via-violet-500 to-violet-400"
         >
           <div className="flex items-center justify-between">
             <div>

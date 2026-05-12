@@ -145,7 +145,34 @@ export default function BuddyShell({
   // ─── Mode picker (entry surface) ────────────────────────────
   if (!selectedMode) {
     return (
-      <div className="space-y-3">
+      <div className="space-y-4">
+        {/* Welcome hero — gives the first-time visit a warm anchor
+            instead of dropping straight into a 4-card grid. Bunny
+            mascot reinforces the kid-app tone. */}
+        <div className="flex items-center gap-4 rounded-3xl border border-violet-200 bg-gradient-to-br from-violet-50 via-white to-indigo-50 p-4 dark:border-violet-900/40 dark:from-violet-950/30 dark:via-slate-900 dark:to-indigo-950/30">
+          <img
+            src="/images/ui/bunny-welcome.png"
+            alt=""
+            width={88}
+            height={88}
+            className="h-20 w-20 flex-shrink-0 object-contain sm:h-24 sm:w-24"
+          />
+          <div className="min-w-0">
+            <div className="text-[10px] font-bold uppercase tracking-widest text-violet-600 dark:text-violet-300">
+              Hi from Readee
+            </div>
+            <p className="mt-1 text-sm font-semibold text-zinc-900 dark:text-white">
+              {childName
+                ? `What do you want to do today, ${childName}?`
+                : "Pick what you want to do today."}
+            </p>
+            <p className="mt-0.5 text-xs text-zinc-500 dark:text-slate-400">
+              Tap any card below — Readee will read with you, listen to you,
+              or make something brand new just for now.
+            </p>
+          </div>
+        </div>
+
         <ul className="grid gap-3 sm:grid-cols-2">
           {MODES.map((m) => {
             const Icon = m.icon;
@@ -288,7 +315,7 @@ export default function BuddyShell({
             {(content as any).title}
           </h2>
           <p
-            className="mt-3 whitespace-pre-line text-[20px] leading-[1.7] text-zinc-900"
+            className="mt-3 whitespace-pre-line text-xl leading-relaxed text-zinc-900"
             style={{
               fontFamily:
                 'Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif',
@@ -308,7 +335,7 @@ export default function BuddyShell({
             {(content as any).title}
           </h2>
           <p
-            className="mt-3 whitespace-pre-line text-[18px] leading-[1.7] text-zinc-900"
+            className="mt-3 whitespace-pre-line text-lg leading-relaxed text-zinc-900"
             style={{
               fontFamily:
                 'Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif',
@@ -329,7 +356,7 @@ export default function BuddyShell({
             Story · {(content as any).topic}
           </div>
           <p
-            className="mt-2 whitespace-pre-line text-[20px] leading-[1.7] text-zinc-900"
+            className="mt-2 whitespace-pre-line text-xl leading-relaxed text-zinc-900"
             style={{
               fontFamily:
                 'Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif',

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, type ReactNode } from "react";
 
 interface LoadingImageProps {
   src: string;
@@ -8,28 +8,70 @@ interface LoadingImageProps {
   className?: string;
   containerClassName?: string;
   onError?: (e: React.SyntheticEvent<HTMLImageElement>) => void;
+  /** Rendered in place of the image when load fails. If omitted, the
+   *  default fallback is a soft gradient with the Readee bunny mascot
+   *  so a missing image still feels on-brand instead of broken. Pass
+   *  `null` explicitly to suppress any fallback (legacy behavior). */
+  fallback?: ReactNode | null;
 }
 
-export function LoadingImage({ src, alt = "", className = "", containerClassName = "", onError }: LoadingImageProps) {
+function DefaultBunnyFallback({ className }: { className?: string }) {
+  return (
+    <div
+      className={`flex items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-50 via-violet-50 to-pink-50 dark:from-indigo-950/30 dark:via-violet-950/30 dark:to-pink-950/30 ${className ?? ""}`}
+    >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/images/ui/bunny-thinking.png"
+        alt=""
+        className="h-1/2 w-1/2 max-h-32 max-w-32 object-contain opacity-90"
+      />
+    </div>
+  );
+}
+
+export function LoadingImage({
+  src,
+  alt = "",
+  className = "",
+  containerClassName = "",
+  onError,
+  fallback,
+}: LoadingImageProps) {
   const [loaded, setLoaded] = useState(false);
   const [errored, setErrored] = useState(false);
   const imgRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
     setErrored(false);
-    // If the browser already has the image cached, `complete` is true and onLoad
-    // won't fire — flip `loaded` manually so the fade-in still completes.
     if (imgRef.current?.complete && imgRef.current.naturalWidth > 0) {
       setLoaded(true);
       return;
     }
     setLoaded(false);
-    // Safety timeout so a dropped onLoad event can never leave the image invisible.
-    const fallback = setTimeout(() => setLoaded(true), 2500);
-    return () => clearTimeout(fallback);
+    const safety = setTimeout(() => setLoaded(true), 2500);
+    return () => clearTimeout(safety);
   }, [src]);
 
-  if (errored || !src) return null;
+  // No src — render fallback (bunny) so the lesson layout doesn't
+  // collapse around a missing image cell.
+  if (!src) {
+    if (fallback === null) return null;
+    return (
+      <div className={`relative ${containerClassName}`}>
+        {fallback ?? <DefaultBunnyFallback className={className} />}
+      </div>
+    );
+  }
+
+  if (errored) {
+    if (fallback === null) return null;
+    return (
+      <div className={`relative ${containerClassName}`}>
+        {fallback ?? <DefaultBunnyFallback className={className} />}
+      </div>
+    );
+  }
 
   return (
     <div className={`relative ${containerClassName}`}>

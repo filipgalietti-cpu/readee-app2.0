@@ -13,6 +13,7 @@ import SettingsShell from "@/app/_components/SettingsShell";
 import ChildLanguagePicker from "@/app/_components/ChildLanguagePicker";
 import ParentPinCard from "@/app/_components/ParentPinCard";
 import AccountCreditsCard from "@/app/_components/AccountCreditsCard";
+import { SkeletonPage } from "@/app/_components/Skeleton";
 
 interface ProfileData {
   display_name: string;
@@ -114,9 +115,7 @@ export default function AccountPage() {
   if (loading || !profile) {
     return (
       <SettingsShell>
-        <div className="flex items-center justify-center min-h-[60vh]">
-          <div className="h-10 w-10 rounded-full border-4 border-indigo-200 border-t-indigo-600 animate-spin" />
-        </div>
+        <SkeletonPage cards={3} />
       </SettingsShell>
     );
   }

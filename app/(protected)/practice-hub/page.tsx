@@ -13,6 +13,7 @@ import {
   ChevronDown, ChevronRight, Zap,
 } from "lucide-react";
 import TopCommunityPicks from "./_components/TopCommunityPicks";
+import { SkeletonPage } from "@/app/_components/Skeleton";
 
 const GRADE_BADGES: Record<string, string> = {
   kindergarten: "/images/ui/grades/grade-k.png",
@@ -242,13 +243,7 @@ interface Standard {
 
 export default function PracticeHubPage() {
   return (
-    <Suspense
-      fallback={
-        <div className="flex items-center justify-center min-h-[60vh]">
-          <div className="h-10 w-10 rounded-full border-4 border-indigo-200 border-t-indigo-600 animate-spin" />
-        </div>
-      }
-    >
+    <Suspense fallback={<SkeletonPage cards={4} />}>
       <PracticeHubContent />
     </Suspense>
   );
@@ -276,11 +271,7 @@ function PracticeHubContent() {
   }, [childId]);
 
   if (loading || !child) {
-    return (
-      <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="h-10 w-10 rounded-full border-4 border-indigo-200 border-t-indigo-600 animate-spin" />
-      </div>
-    );
+    return <SkeletonPage cards={4} />;
   }
 
   const GRADE_ORDER = ["kindergarten", "1st", "2nd", "3rd", "4th"];

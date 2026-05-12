@@ -179,7 +179,7 @@ export default async function AskReadeePage({
         <div className="mt-6 flex items-start gap-3 rounded-2xl border border-amber-200 bg-gradient-to-r from-amber-50 to-yellow-50 p-4 text-sm text-amber-900 dark:border-amber-900/40 dark:from-amber-950/30 dark:to-yellow-950/30 dark:text-amber-100">
           <Sparkles className="mt-0.5 h-4 w-4 flex-shrink-0 text-amber-600 dark:text-amber-300" />
           <div>
-            <div className="font-bold">Trusted contributor 🌟</div>
+            <div className="font-bold">Trusted contributor</div>
             <div className="mt-0.5 text-xs text-amber-800 dark:text-amber-200">
               You&apos;ve had {approvedShares} community submissions approved.
               Your future shares now go live immediately — no human review

@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Bell, Mail, Flame, BookOpen, Trophy, Check, Loader2 } from "lucide-react";
 import SettingsShell from "@/app/_components/SettingsShell";
+import { SkeletonPage } from "@/app/_components/Skeleton";
 
 interface NotificationPrefs {
   weekly_report: boolean;
@@ -85,9 +86,7 @@ export default function NotificationsPage() {
   if (loading) {
     return (
       <SettingsShell>
-        <div className="flex items-center justify-center min-h-[60vh]">
-          <div className="h-10 w-10 rounded-full border-4 border-indigo-200 border-t-indigo-600 animate-spin" />
-        </div>
+        <SkeletonPage cards={3} />
       </SettingsShell>
     );
   }

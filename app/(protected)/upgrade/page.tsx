@@ -27,18 +27,13 @@ import {
   TRUST_SIGNALS,
   SUPPORT,
 } from "@/lib/billing-copy";
+import { SkeletonPage } from "@/app/_components/Skeleton";
 
 /* ─── Page ────────────────────────────────────────────── */
 
 export default function UpgradePage() {
   return (
-    <Suspense
-      fallback={
-        <div className="flex items-center justify-center min-h-[60vh]">
-          <div className="h-10 w-10 rounded-full border-4 border-indigo-200 border-t-indigo-600 animate-spin" />
-        </div>
-      }
-    >
+    <Suspense fallback={<SkeletonPage cards={3} />}>
       <UpgradeContent />
     </Suspense>
   );

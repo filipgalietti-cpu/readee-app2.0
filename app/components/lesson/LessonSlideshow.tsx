@@ -2,10 +2,11 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Check, X as XIcon } from "lucide-react";
 import { audioManager } from "@/lib/audio/audio-manager";
 import { LoadingImage } from "@/app/components/ui/LoadingImage";
 import { useAudioStore } from "@/lib/stores/audio-store";
-import { Volume2, ChevronRight, Rocket, SkipForward } from "lucide-react";
+import { Volume2, ChevronRight, Rocket, SkipForward, RotateCcw } from "lucide-react";
 import { Fredoka } from "next/font/google";
 
 const fredoka = Fredoka({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
@@ -428,6 +429,33 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
     if (isLastSlide) { onComplete(); } else { setCurrentSlide((s) => s + 1); }
   }, [isLastSlide, onComplete, clearTimer]);
 
+  // Re-run the current slide from the top — same flow as the mount
+  // effect, just triggered on demand. Lets kids replay the audio +
+  // reveals as many times as they want, which is a core literacy
+  // affordance (read it again, read it again).
+  const handleReplay = useCallback(() => {
+    runIdRef.current++;
+    clearTimer();
+    if (audioManager) audioManager.stop();
+    const runId = ++runIdRef.current;
+    setStepsRevealed(0);
+    setTextsVisible(new Set());
+    setExamplesVisible(new Set());
+    setPlayingStep(-1);
+    setHighlightedPill(-1);
+    setHighlightedWord(null);
+    setActivePhoneme(null);
+    setSwapTriggered(new Set());
+    setPartsVisible(new Set());
+    setShowNext(false);
+    setIsPlaying(false);
+    scheduledFeedbackRef.current = new Set();
+    timerRef.current = setTimeout(() => {
+      if (runIdRef.current !== runId) return;
+      scheduleStep(0, runId, steps);
+    }, 250);
+  }, [steps, clearTimer]);
+
   const handleSkip = useCallback(() => {
     runIdRef.current++;
     clearTimer();
@@ -593,9 +621,9 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ type: "spring", stiffness: 500, damping: 15, delay: 0.15 }}
-                className="text-xl text-green-500"
+                className="text-green-500"
               >
-                ✓
+                <Check className="h-6 w-6" strokeWidth={3} />
               </motion.span>
             )}
           </span>
@@ -690,9 +718,13 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ type: "spring", stiffness: 500, damping: 15 }}
-              className={`text-2xl ${feedback === "positive" ? "text-green-500" : "text-red-500"}`}
+              className={feedback === "positive" ? "text-green-500" : "text-red-500"}
             >
-              {feedback === "positive" ? "✓" : "✗"}
+              {feedback === "positive" ? (
+                <Check className="h-7 w-7" strokeWidth={3} />
+              ) : (
+                <XIcon className="h-7 w-7" strokeWidth={3} />
+              )}
             </motion.span>
           )}
         </div>
@@ -744,9 +776,9 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ type: "spring", stiffness: 500, damping: 15, delay: 0.15 }}
-                className="text-xl text-green-500"
+                className="text-green-500"
               >
-                ✓
+                <Check className="h-6 w-6" strokeWidth={3} />
               </motion.span>
             )}
           </span>
@@ -1129,9 +1161,9 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ type: "spring", stiffness: 500, damping: 15, delay: 0.15 }}
-            className="text-2xl text-green-500"
+            className="text-green-500"
           >
-            ✓
+            <Check className="h-7 w-7" strokeWidth={3} />
           </motion.span>
         </div>
       );
@@ -1159,7 +1191,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
       ))}
 
       {/* ── Progress bar ── */}
-      <div className="flex-shrink-0 px-6 pt-2 pb-1">
+      <div className="flex-shrink-0 px-4 sm:px-6 pt-2 pb-1">
         <div className="flex items-center gap-2">
           <div className="flex-1 h-2 rounded-full bg-gray-200 dark:bg-slate-700 overflow-hidden">
             <motion.div
@@ -1169,17 +1201,27 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
               transition={{ duration: 0.5, ease: "easeOut" }}
             />
           </div>
-          <span className="text-[11px] font-semibold text-gray-400 dark:text-slate-500 tabular-nums min-w-[24px] text-right">
+          <span className="text-xs font-semibold text-gray-400 dark:text-slate-500 tabular-nums min-w-6 text-right">
             {currentSlide + 1}/{totalSlides}
           </span>
-          {isPlaying && (
+          {isPlaying ? (
             <button
               onClick={handleSkip}
-              className="ml-1 text-[11px] font-semibold text-gray-400 dark:text-slate-500 hover:text-gray-600 dark:hover:text-slate-300 transition-colors"
+              className="ml-1 inline-flex h-11 items-center gap-1 px-2 text-xs font-semibold text-gray-400 dark:text-slate-500 hover:text-gray-600 dark:hover:text-slate-300 transition-colors"
               aria-label="Skip audio"
             >
-              Skip <SkipForward className="w-3 h-3 inline -mt-px" />
+              Skip <SkipForward className="w-3 h-3" />
             </button>
+          ) : (
+            stepsRevealed > 0 && (
+              <button
+                onClick={handleReplay}
+                className="ml-1 inline-flex h-11 items-center gap-1 px-2 text-xs font-semibold text-indigo-500 hover:text-indigo-700 dark:text-indigo-300 transition-colors"
+                aria-label="Listen again"
+              >
+                <RotateCcw className="w-3 h-3" /> Again
+              </button>
+            )
           )}
           {devMode && !isPlaying && (
             <button
@@ -1223,7 +1265,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
           })()}
 
           {/* ── Heading + speaker ── */}
-          <div className="flex-shrink-0 px-6 pt-1 pb-0 flex items-center justify-center gap-2">
+          <div className="flex-shrink-0 px-4 sm:px-6 pt-1 pb-0 flex items-center justify-center gap-2">
             {slide.heading && (
               <motion.h1
                 initial={{ opacity: 0, y: 8 }}
@@ -1322,9 +1364,9 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
                                     initial={{ scale: 0 }}
                                     animate={{ scale: 1 }}
                                     transition={{ type: "spring", stiffness: 500, damping: 15 }}
-                                    className="ml-1.5 inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-500 text-white text-xs"
+                                    className="ml-1.5 inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-500 text-white"
                                   >
-                                    ✓
+                                    <Check className="h-3 w-3" strokeWidth={3} />
                                   </motion.span>
                                 )}
                               </span>
@@ -1377,7 +1419,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
           </div>
 
           {/* ── Next button (always visible, disabled during audio) ── */}
-          <div className="flex-shrink-0 px-6 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-1">
+          <div className="flex-shrink-0 px-4 sm:px-6 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-1">
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
@@ -1422,7 +1464,16 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
                   />
                 )}
                 <span className="relative z-10 flex items-center gap-2">
-                  {isLastSlide ? (
+                  {!showNext ? (
+                    // While audio is playing, the button is intentionally
+                    // locked so the kid hears each sub-step before moving
+                    // on. The "Listening…" label tells them *why* they
+                    // can't tap — not "this is broken."
+                    <>
+                      <Volume2 className="w-5 h-5 animate-pulse" />
+                      Listening…
+                    </>
+                  ) : isLastSlide ? (
                     <>
                       <Rocket className="w-5 h-5" />
                       Let&apos;s Go!

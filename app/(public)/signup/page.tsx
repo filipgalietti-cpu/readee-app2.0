@@ -10,7 +10,7 @@ import GoogleButton from "@/app/components/auth/GoogleButton";
 import Divider from "@/app/components/auth/Divider";
 import TosCheckbox from "@/app/components/auth/TosCheckbox";
 import { CURRENT_TOS_VERSION } from "@/lib/tos";
-import { GraduationCap, Heart } from "lucide-react";
+import { GraduationCap, Heart, ShieldCheck, BookOpen } from "lucide-react";
 
 interface FormData {
   email: string;
@@ -180,6 +180,26 @@ function SignupInner() {
           <GraduationCap className="h-4 w-4" />
           I&apos;m a teacher
         </button>
+      </div>
+
+      {/* Trust strip — short row of why-trust-us signals above the
+          signup form. First-time parents need this before they hand
+          over their kid's data. */}
+      <div className="mb-5 grid grid-cols-2 gap-2 text-[11px]">
+        <div className="flex items-start gap-1.5 rounded-lg bg-indigo-50/80 px-2.5 py-2 text-indigo-900">
+          <BookOpen className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-indigo-500" strokeWidth={2} />
+          <span className="leading-tight">
+            <span className="font-bold">Built by a reading specialist.</span>{" "}
+            Jen — certified, K-3 classroom teacher.
+          </span>
+        </div>
+        <div className="flex items-start gap-1.5 rounded-lg bg-emerald-50/80 px-2.5 py-2 text-emerald-900">
+          <ShieldCheck className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-emerald-600" strokeWidth={2} />
+          <span className="leading-tight">
+            <span className="font-bold">COPPA + FERPA safe.</span>{" "}
+            No third-party ads. Your kid's data stays yours.
+          </span>
+        </div>
       </div>
 
       <GoogleButton role={role} />

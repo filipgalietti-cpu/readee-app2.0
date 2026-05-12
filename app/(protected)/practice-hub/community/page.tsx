@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowLeft, Users, Sparkles, Play, Search, Eye } from "lucide-react";
 import { requireProfile } from "@/lib/auth/helpers";
 import { supabaseAdmin } from "@/lib/supabase/admin";
+import { EmptyState } from "@/app/_components/EmptyState";
 
 export const dynamic = "force-dynamic";
 
@@ -228,15 +229,17 @@ export default async function CommunityLibraryPage({
 
       {items.length === 0 ? (
         activeGrade || activeTopic || activeQuery ? (
-          <p className="mt-6 text-sm text-zinc-500 dark:text-slate-400">
-            No passages match these filters yet.{" "}
-            <Link
-              href="/practice-hub/community"
-              className="font-semibold text-violet-700 hover:underline dark:text-violet-300"
-            >
-              Clear filters
-            </Link>
-          </p>
+          <div className="mt-6">
+            <EmptyState
+              mascot="search"
+              title="No passages match these filters"
+              description="Try a different grade or topic — or clear filters to see everything."
+              action={{
+                href: "/practice-hub/community",
+                label: "Clear filters",
+              }}
+            />
+          </div>
         ) : null
       ) : (
         <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">

@@ -13,6 +13,7 @@ import { getStandardsForGrade } from "@/lib/data/all-standards";
 import { levelNameToGradeKey } from "@/lib/assessment/questions";
 import { BookOpen, Newspaper, Type, MessageCircle, Map as MapIcon, Trophy, Carrot, Star, Rabbit, Squirrel, Dog, Lock } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { SkeletonPage } from "@/app/_components/Skeleton";
 
 /* ─── Types ──────────────────────────────────────────── */
 
@@ -425,11 +426,7 @@ export default function RoadmapPage() {
 }
 
 function Spinner() {
-  return (
-    <div className="flex items-center justify-center min-h-[60vh]">
-      <div className="h-10 w-10 rounded-full border-4 border-indigo-200 border-t-indigo-600 animate-spin" />
-    </div>
-  );
+  return <SkeletonPage cards={4} />;
 }
 
 function RoadmapLoader() {

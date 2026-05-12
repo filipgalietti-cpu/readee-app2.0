@@ -117,7 +117,7 @@ export default async function TodayDetailPage({
         </div>
 
         <p
-          className="mt-4 whitespace-pre-line text-[18px] leading-[1.7] text-zinc-900"
+          className="mt-4 whitespace-pre-line text-lg leading-relaxed text-zinc-900"
           style={{
             fontFamily:
               'Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif',

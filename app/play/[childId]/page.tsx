@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { cookies } from "next/headers";
-import { ArrowRight, BookOpen, Brain, Library as LibraryIcon, Trophy, LogOut } from "lucide-react";
+import { ArrowRight, BookOpen, BookText, Brain, Compass, Library as LibraryIcon, Trophy, LogOut } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/lib/auth/helpers";
 import {
@@ -105,7 +105,7 @@ export default async function PlayHomePage({
           Pick what you want to do today.
         </p>
 
-        <div className="mt-6 grid gap-3 sm:grid-cols-2">
+        <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           <PlayCard
             href={`/review?child=${childId}`}
             title="Today's review"
@@ -121,11 +121,25 @@ export default async function PlayHomePage({
             color="violet"
           />
           <PlayCard
+            href={`/discover`}
+            title="Discover"
+            subtitle="Brand-new fact-checked stories"
+            icon={<Compass className="h-5 w-5" />}
+            color="rose"
+          />
+          <PlayCard
             href={`/stories`}
             title="Story library"
             subtitle="Read-along stories with audio"
             icon={<LibraryIcon className="h-5 w-5" />}
             color="emerald"
+          />
+          <PlayCard
+            href={`/word-bank`}
+            title="Word Bank"
+            subtitle="Tap a word, hear it, learn it"
+            icon={<BookText className="h-5 w-5" />}
+            color="sky"
           />
           <PlayCard
             href={`/leaderboard?child=${childId}`}
@@ -162,13 +176,15 @@ function PlayCard({
   title: string;
   subtitle: string;
   icon: React.ReactNode;
-  color: "indigo" | "violet" | "emerald" | "amber";
+  color: "indigo" | "violet" | "emerald" | "amber" | "rose" | "sky";
 }) {
   const ringByColor: Record<string, string> = {
     indigo: "from-indigo-500 to-indigo-600",
     violet: "from-violet-500 to-violet-600",
     emerald: "from-emerald-500 to-emerald-600",
     amber: "from-amber-500 to-amber-600",
+    rose: "from-rose-500 to-pink-600",
+    sky: "from-sky-500 to-cyan-600",
   };
   return (
     <Link

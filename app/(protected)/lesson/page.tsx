@@ -14,7 +14,7 @@ import { getDailyMultiplier, getSessionStreakTier } from "@/lib/carrots/multipli
 
 const PASS_THRESHOLD = 3;
 import { StreakFire } from "@/app/_components/StreakFire";
-import { Star, Sparkles, Rocket, Zap, Trophy, Target, Medal, Gem, Crown, Type, FileText, Search, Eye, CheckCircle, PenTool, BookOpen, MessageSquare, Flame, Carrot } from "lucide-react";
+import { Star, Sparkles, Rocket, Zap, Trophy, Target, Medal, Gem, Crown, Type, FileText, Search, Eye, CheckCircle, Check, PenTool, BookOpen, MessageSquare, Flame, Carrot } from "lucide-react";
 import KidThumbs from "@/components/feedback/KidThumbs";
 import type { LucideIcon } from "lucide-react";
 
@@ -186,12 +186,14 @@ function LessonSpeakerButton({ lessonId, audioFile, light = false }: { lessonId:
   return (
     <button
       onClick={(e) => { e.stopPropagation(); playAudio(lessonId, audioFile); }}
-      className={`inline-flex items-center justify-center w-8 h-8 rounded-full transition-colors flex-shrink-0 ${
-        light ? "hover:bg-black/5 text-indigo-400" : "hover:bg-white/10 text-indigo-300"
+      // 44×44 tap target — kid fingers are big. The visible glyph stays
+      // small via the inner icon size; padding does the work.
+      className={`inline-flex items-center justify-center h-11 w-11 rounded-full transition-colors flex-shrink-0 ${
+        light ? "hover:bg-black/5 text-indigo-500" : "hover:bg-white/10 text-indigo-300"
       }`}
       aria-label="Listen"
     >
-      <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M15.536 8.464a5 5 0 010 7.072M17.95 6.05a8 8 0 010 11.9M11 5L6 9H2v6h4l5 4V5z" />
       </svg>
     </button>
@@ -203,7 +205,7 @@ function LessonMuteToggle() {
   return (
     <button
       onClick={toggleMute}
-      className="w-9 h-9 rounded-full flex items-center justify-center text-zinc-400 hover:text-indigo-600 hover:bg-indigo-50 transition-colors flex-shrink-0"
+      className="h-11 w-11 rounded-full flex items-center justify-center text-zinc-400 hover:text-indigo-600 hover:bg-indigo-50 transition-colors flex-shrink-0"
       aria-label={muted ? "Unmute" : "Mute"}
     >
       {muted ? (
@@ -289,10 +291,11 @@ function SectionProgressBar({
             const isComplete = i < currentIdx || phase === "complete";
             const isCurrent = i === currentIdx && phase !== "complete";
             return (
-              <span key={s.key} className={`font-medium ${
+              <span key={s.key} className={`inline-flex items-center gap-1 font-medium ${
                 isComplete ? "text-green-600" : isCurrent ? "text-indigo-600" : "text-zinc-300"
               }`}>
-                {isComplete ? "✓ " : ""}{s.label}
+                {isComplete && <Check className="h-3.5 w-3.5" strokeWidth={3} />}
+                {s.label}
               </span>
             );
           })}
@@ -1089,7 +1092,11 @@ function LessonContent() {
                           }
                         `}
                         >
-                          {showCorrect && isCorrect ? "✓" : letters[i]}
+                          {showCorrect && isCorrect ? (
+                            <Check className="h-4 w-4" strokeWidth={3} />
+                          ) : (
+                            letters[i]
+                          )}
                         </div>
                         <span
                           className={`font-medium text-sm flex-1 leading-tight ${
@@ -1200,116 +1207,65 @@ function LessonContent() {
 
           <p className="text-zinc-500 max-w-xs mx-auto">{celebrationMsg}</p>
 
-          {/* Animated carrots display */}
+          {/* Animated carrots display — the main reward, gets its own
+              real-estate so it pops above everything else. */}
           <div className="inline-block rounded-2xl bg-gradient-to-r from-orange-500 to-amber-500 px-8 py-5 text-white animate-carrotCountUp">
             <div className="text-sm font-medium text-orange-200">You earned</div>
             <div className="text-4xl font-bold mt-1 flex items-center justify-center gap-2">+{totalCarrots} <Carrot className="w-8 h-8" strokeWidth={1.5} /></div>
           </div>
 
-          {/* Daily streak multiplier badge */}
-          {(() => {
-            const dm = getDailyMultiplier(streakDays);
-            return dm.multiplier > 1 ? (
-              <div className="animate-streakPulse">
-                <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-amber-50 border border-amber-200">
-                  <Zap className="w-5 h-5 text-amber-500" strokeWidth={1.5} />
-                  <span className="text-lg font-bold text-amber-700">
-                    {dm.label}
-                  </span>
+          {/* Streak rewards row — multiplier pill + day-streak pill
+              sit side-by-side instead of stacking, so the celebration
+              reads as one moment instead of three vertically. */}
+          {(streakDays > 0 || getDailyMultiplier(streakDays).multiplier > 1) && (
+            <div className="flex flex-wrap items-center justify-center gap-2 animate-streakPulse">
+              {(() => {
+                const dm = getDailyMultiplier(streakDays);
+                return dm.multiplier > 1 ? (
+                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-50 border border-amber-200">
+                    <Zap className="w-4 h-4 text-amber-500" strokeWidth={1.5} />
+                    <span className="text-sm font-bold text-amber-700">{dm.label}</span>
+                  </div>
+                ) : null;
+              })()}
+              {streakDays > 0 && (
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-50 border border-orange-200">
+                  <Flame className="w-4 h-4 text-orange-500" strokeWidth={1.5} />
+                  <span className="text-sm font-bold text-orange-700">{streakDays} day streak!</span>
                 </div>
-              </div>
-            ) : null;
-          })()}
-
-          {/* Streak display */}
-          {streakDays > 0 && (
-            <div className="animate-streakPulse">
-              <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-orange-50 border border-orange-200">
-                <Flame className="w-5 h-5 text-orange-500" strokeWidth={1.5} />
-                <span className="text-lg font-bold text-orange-700">
-                  {streakDays} day streak!
-                </span>
-              </div>
+              )}
             </div>
           )}
 
-          {/* New badge unlock */}
-          {newBadge && (
-            <div className="animate-badgeUnlock">
-              <div className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-gradient-to-r from-yellow-50 to-amber-50 border border-yellow-200">
-                <Trophy className="w-6 h-6 text-yellow-500" strokeWidth={1.5} />
-                <div className="text-left">
-                  <div className="text-xs font-medium text-yellow-600">New Badge Unlocked!</div>
-                  <div className="text-sm font-bold text-yellow-800">{newBadge}</div>
+          {/* Unlock row — new badge and level-up share a row when both
+              happen on the same lesson (rare but high-emotion). */}
+          {(newBadge || showLevelUp) && (
+            <div className="flex flex-wrap items-center justify-center gap-2 animate-badgeUnlock">
+              {newBadge && (
+                <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-gradient-to-r from-yellow-50 to-amber-50 border border-yellow-200">
+                  <Trophy className="w-5 h-5 text-yellow-500" strokeWidth={1.5} />
+                  <div className="text-left">
+                    <div className="text-[10px] font-medium text-yellow-600 uppercase tracking-wider">New badge</div>
+                    <div className="text-sm font-bold text-yellow-800">{newBadge}</div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          )}
-
-          {/* Level Up overlay */}
-          {showLevelUp && (
-            <div className="animate-badgeUnlock">
-              <div className="inline-flex items-center gap-2 px-6 py-4 rounded-2xl bg-gradient-to-r from-violet-100 to-indigo-100 border border-violet-200">
-                <Rocket className="w-7 h-7 text-violet-600" strokeWidth={1.5} />
-                <div className="text-left">
-                  <div className="text-xs font-medium text-violet-600">You leveled up!</div>
-                  <div className="text-sm font-bold text-violet-800">{newLevelName}</div>
+              )}
+              {showLevelUp && (
+                <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-gradient-to-r from-violet-100 to-indigo-100 border border-violet-200">
+                  <Rocket className="w-5 h-5 text-violet-600" strokeWidth={1.5} />
+                  <div className="text-left">
+                    <div className="text-[10px] font-medium text-violet-600 uppercase tracking-wider">Leveled up</div>
+                    <div className="text-sm font-bold text-violet-800">{newLevelName}</div>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           )}
 
-          {/* Parent value proof */}
-          <div className="text-left rounded-2xl border border-indigo-200 bg-gradient-to-r from-indigo-50/80 to-violet-50/80 p-4 space-y-3">
-            <div className="flex items-center justify-between">
-              <p className="text-sm font-semibold text-zinc-900">Parent Progress Snapshot</p>
-              <span className="px-2 py-1 rounded-full text-[11px] font-bold bg-white text-indigo-700 border border-indigo-100">
-                {practiceAccuracy}% accuracy
-              </span>
-            </div>
-            <div className="grid grid-cols-2 gap-2 text-center">
-              <div className="rounded-lg bg-white border border-indigo-100 px-2 py-2">
-                <p className="text-[11px] text-zinc-500">Score</p>
-                <p className="text-sm font-bold text-zinc-900">{practiceCorrect}/{practiceTotal}</p>
-              </div>
-              <div className="rounded-lg bg-white border border-indigo-100 px-2 py-2">
-                <p className="text-[11px] text-zinc-500">Accuracy</p>
-                <p className="text-sm font-bold text-zinc-900">{practiceAccuracy}%</p>
-              </div>
-            </div>
-            <p className="text-xs text-zinc-600">
-              <span className="font-semibold text-zinc-800">Next step:</span> {nextFocus}
-            </p>
-          </div>
-
-          {/* Universal kid feedback signal — drives auto-quarantine */}
-          {lessonId && (
-            <div className="rounded-2xl border border-zinc-200 bg-white p-4">
-              <KidThumbs
-                childId={child.id}
-                assetKind="sample_lesson"
-                assetId={lessonId}
-              />
-            </div>
-          )}
-
-          {/* Conversion nudge at high intent moment */}
-          {nextLessonLocked && (
-            <div className="text-left rounded-2xl border border-amber-200 bg-gradient-to-r from-amber-50 to-orange-50 p-4">
-              <p className="text-sm font-semibold text-zinc-900">Next lesson is ready in Readee+</p>
-              <p className="text-xs text-zinc-600 mt-1">
-                Keep this momentum going with full lessons, detailed parent progress tracking, and unlimited practice.
-              </p>
-              <Link
-                href={`/upgrade?child=${child.id}`}
-                className="mt-3 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-sm font-bold hover:from-indigo-700 hover:to-violet-600 transition-all shadow-md"
-              >
-                Unlock Readee+
-              </Link>
-            </div>
-          )}
-
-          <div className="space-y-3 pt-4">
+          {/* Primary CTA — keep it ABOVE the parent snapshot so the
+              kid's "what's next" action is the first thing after the
+              reward stack, not the seventh. */}
+          <div className="space-y-3 pt-2">
             {showLevelUp ? (
               <Link
                 href="/dashboard"
@@ -1336,6 +1292,60 @@ function LessonContent() {
               Back to Dashboard
             </Link>
           </div>
+
+          {/* Conversion nudge — sits BELOW the primary CTA so the
+              celebration flow isn't interrupted. Parents who care
+              still see it; kids ride right past. */}
+          {nextLessonLocked && (
+            <div className="text-left rounded-2xl border border-amber-200 bg-gradient-to-r from-amber-50 to-orange-50 p-4">
+              <p className="text-sm font-semibold text-zinc-900">Next lesson is ready in Readee+</p>
+              <p className="text-xs text-zinc-600 mt-1">
+                Keep this momentum going with full lessons, detailed parent progress tracking, and unlimited practice.
+              </p>
+              <Link
+                href={`/upgrade?child=${child.id}`}
+                className="mt-3 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-sm font-bold hover:from-indigo-700 hover:to-violet-600 transition-all shadow-md"
+              >
+                Unlock Readee+
+              </Link>
+            </div>
+          )}
+
+          {/* Parent snapshot — collapsed by default so the kid's
+              celebration owns the screen. Parents tap to expand. */}
+          <details className="text-left rounded-2xl border border-indigo-200 bg-gradient-to-r from-indigo-50/80 to-violet-50/80 p-4 group">
+            <summary className="flex items-center justify-between cursor-pointer list-none">
+              <p className="text-sm font-semibold text-zinc-900">Parent progress snapshot</p>
+              <span className="px-2 py-1 rounded-full text-[11px] font-bold bg-white text-indigo-700 border border-indigo-100">
+                {practiceAccuracy}% accuracy
+              </span>
+            </summary>
+            <div className="grid grid-cols-2 gap-2 text-center mt-3">
+              <div className="rounded-lg bg-white border border-indigo-100 px-2 py-2">
+                <p className="text-[11px] text-zinc-500">Score</p>
+                <p className="text-sm font-bold text-zinc-900">{practiceCorrect}/{practiceTotal}</p>
+              </div>
+              <div className="rounded-lg bg-white border border-indigo-100 px-2 py-2">
+                <p className="text-[11px] text-zinc-500">Accuracy</p>
+                <p className="text-sm font-bold text-zinc-900">{practiceAccuracy}%</p>
+              </div>
+            </div>
+            <p className="text-xs text-zinc-600 mt-3">
+              <span className="font-semibold text-zinc-800">Next step:</span> {nextFocus}
+            </p>
+          </details>
+
+          {/* Kid feedback — small footer, not a full card. Drives the
+              auto-quarantine pipeline without dominating the screen. */}
+          {lessonId && (
+            <div className="pt-2">
+              <KidThumbs
+                childId={child.id}
+                assetKind="sample_lesson"
+                assetId={lessonId}
+              />
+            </div>
+          )}
         </div>
       </div>
     );

@@ -44,6 +44,8 @@ function useCountUp(target: number, duration = 1200, delay = 300) {
 
 import manifestRaw from "@/scripts/assessment_mixed_manifest.json";
 import LearningPathCard from "@/app/_components/LearningPathCard";
+import { SkeletonPage } from "@/app/_components/Skeleton";
+import { EmptyState } from "@/app/_components/EmptyState";
 import bankRaw from "@/lib/assessment/mixed-bank-k4.json";
 
 /* ── Types ─────────────────────────────────────────── */
@@ -162,13 +164,7 @@ function formatDate(iso: string) {
 
 export default function AssessmentResultsPage() {
   return (
-    <Suspense
-      fallback={
-        <div className="flex items-center justify-center min-h-[60vh]">
-          <div className="h-10 w-10 rounded-full border-4 border-indigo-200 border-t-indigo-600 animate-spin" />
-        </div>
-      }
-    >
+    <Suspense fallback={<SkeletonPage cards={3} />}>
       <AssessmentResultsContent />
     </Suspense>
   );
@@ -214,28 +210,24 @@ function AssessmentResultsContent() {
   );
 
   if (loading) {
-    return (
-      <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="h-10 w-10 rounded-full border-4 border-indigo-200 border-t-indigo-600 animate-spin" />
-      </div>
-    );
+    return <SkeletonPage cards={3} />;
   }
 
   if (!child || !assessment) {
     return (
-      <div className="max-w-md mx-auto text-center py-20 px-4">
-        <ClipboardCheck className="w-16 h-16 text-zinc-300 mx-auto mb-4" />
-        <h1 className="text-2xl font-bold text-zinc-900 mb-2">No Placement Test Found</h1>
-        <p className="text-zinc-500 mb-6">
-          {child?.first_name || "This child"} hasn&apos;t taken the placement test yet.
-        </p>
-        <Link
-          href={`/assessment?child=${childId}`}
-          className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-indigo-600 text-white font-bold hover:bg-indigo-700 transition-colors"
-        >
-          <ClipboardCheck className="w-5 h-5" />
-          Take Placement Test
-        </Link>
+      <div className="mx-auto max-w-lg px-4 py-12">
+        <EmptyState
+          mascot="wave-clipboard"
+          size="lg"
+          title="No placement test yet"
+          description={`${
+            child?.first_name || "This child"
+          } hasn't taken the placement test yet. It's a quick 5-minute adaptive check that sets the right reading path.`}
+          action={{
+            href: `/assessment?child=${childId}`,
+            label: "Take placement test",
+          }}
+        />
       </div>
     );
   }
@@ -272,7 +264,7 @@ function AssessmentResultsContent() {
           alt="Readee bunny"
           width={512}
           height={512}
-          className="mx-auto w-[80px] h-auto mb-4"
+          className="mx-auto w-20 h-auto mb-4"
         />
         <h1 className="text-2xl font-extrabold text-zinc-900">
           {child.first_name}&apos;s Placement Test Results

@@ -33,6 +33,7 @@ import { TapToPair } from "@/app/components/practice/TapToPair";
 
 import manifestRaw from "@/scripts/assessment_mixed_manifest.json";
 import bankRaw from "@/lib/assessment/mixed-bank-k4.json";
+import { SkeletonPage } from "@/app/_components/Skeleton";
 
 /* ── Types ─────────────────────────────────────────────── */
 
@@ -385,13 +386,7 @@ const CHOICE_COLORS = [
 
 export default function AssessmentPage() {
   return (
-    <Suspense
-      fallback={
-        <div className="flex items-center justify-center min-h-[60vh]">
-          <div className="h-10 w-10 rounded-full border-4 border-indigo-200 border-t-indigo-600 animate-spin" />
-        </div>
-      }
-    >
+    <Suspense fallback={<SkeletonPage cards={2} />}>
       <AssessmentContent />
     </Suspense>
   );
@@ -708,10 +703,7 @@ function AssessmentContent() {
           </motion.div>
 
           {/* Gradient header */}
-          <div
-            className="relative px-6 pt-10 pb-8 text-center overflow-hidden rounded-t-3xl"
-            style={{ background: "linear-gradient(135deg, #6366f1, #8b5cf6, #a78bfa)" }}
-          >
+          <div className="relative px-6 pt-10 pb-8 text-center overflow-hidden rounded-t-3xl bg-gradient-to-br from-indigo-500 via-violet-500 to-violet-400">
             {/* Floating sparkles */}
             <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
               {sparkles.map((dot, i) => (

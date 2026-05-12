@@ -153,6 +153,27 @@ export function checkLessonRichness(input: {
             "Run scripts/qc-enrich-audio.ts to regenerate per-step TTS so each sub-step has its own unique S{n}{sub}.mp3.",
         });
       }
+
+      // Sibling bug, caught May 8 on L.4.4b slide 2: sub-steps have
+      // UNIQUE audioFile paths but they all share the same `ttsScript`.
+      // Each step's audio plays the FULL multi-clause line while the
+      // displayParts only show that step's fragment. Kid hears
+      // "Bio means life. Photo means light. Telephone — far sound."
+      // three times. Heal via scripts/qc-heal-lesson-content.ts which
+      // re-derives the per-step ttsScript from displayParts text.
+      const scripts = steps
+        .map((s: any) => (typeof s?.ttsScript === "string" ? s.ttsScript.trim() : ""))
+        .filter(Boolean);
+      if (scripts.length >= 2 && new Set(scripts).size < scripts.length) {
+        findings.push({
+          type: "lesson.step_audio_overscope",
+          severity: "fail",
+          message: `Slide ${slideNum} has ${scripts.length} sub-steps but only ${new Set(scripts).size} unique ttsScript. Each step's audio plays the full multi-clause line while displayParts only show that step's fragment — kid hears the same audio repeated.`,
+          slideRef: `slide ${slideNum}`,
+          suggestion:
+            "Run scripts/qc-heal-lesson-content.ts to re-derive each step's ttsScript from its displayParts and regenerate audio.",
+        });
+      }
     }
   }
 
@@ -198,6 +219,10 @@ export function checkLessonStructure(input: {
 
   for (const slide of slides) {
     const slideNum = slide?.slide ?? "?";
+    // MCQ slides intentionally have no `steps` — the renderer mounts
+    // a comprehension question by mcqId instead. Skip the empty-slide
+    // gate for them so the audit isn't flooded with false positives.
+    if (slide?.type === "mcq") continue;
     const steps = Array.isArray(slide?.steps) ? slide.steps : [];
 
     if (steps.length === 0) {

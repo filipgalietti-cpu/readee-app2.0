@@ -10,6 +10,7 @@ import { safeValidate } from "@/lib/validate";
 import { ChildSchema } from "@/lib/schemas";
 import { Medal, Gem, Crown, Carrot, Lock, ShoppingBag } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { SkeletonPage } from "@/app/_components/Skeleton";
 
 const TIERS: { name: string; carrots: number; icon: LucideIcon; iconColor: string; color: string; bg: string; border: string; text: string }[] = [
   { name: "Bronze", carrots: 50, icon: Medal, iconColor: "text-amber-600", color: "from-amber-600 to-amber-700", bg: "bg-amber-50", border: "border-amber-200", text: "text-amber-700" },
@@ -21,13 +22,7 @@ const TIERS: { name: string; carrots: number; icon: LucideIcon; iconColor: strin
 
 export default function CarrotRewardsPage() {
   return (
-    <Suspense
-      fallback={
-        <div className="flex items-center justify-center min-h-[60vh]">
-          <div className="h-10 w-10 rounded-full border-4 border-indigo-200 border-t-indigo-600 animate-spin" />
-        </div>
-      }
-    >
+    <Suspense fallback={<SkeletonPage cards={3} />}>
       <CarrotRewardsContent />
     </Suspense>
   );
@@ -55,11 +50,7 @@ function CarrotRewardsContent() {
   }, [childId]);
 
   if (loading || !child) {
-    return (
-      <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="h-10 w-10 rounded-full border-4 border-indigo-200 border-t-indigo-600 animate-spin" />
-      </div>
-    );
+    return <SkeletonPage cards={3} />;
   }
 
   const carrots = Number(child.carrots) || 0;

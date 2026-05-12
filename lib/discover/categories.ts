@@ -25,6 +25,10 @@ export type CategoryConfig = {
   label: string;
   /** One-liner shown on the /discover index card. */
   blurb: string;
+  /** Public URL for the 1:1 cartoon tile shown on /discover. Seeded
+   *  via scripts/seed-category-tiles.ts and uploaded to
+   *  images/discovery-tiles/{slug}.png in Supabase storage. */
+  tileImageUrl: string;
   /** Pinned topic surface — bullet list the model picks from. */
   topicGuidance: string;
   /** Tone + framing rules layered onto the passage prompt. */
@@ -36,11 +40,15 @@ export type CategoryConfig = {
   preferFactCheck: boolean;
 };
 
+const TILE_BASE =
+  "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/discovery-tiles";
+
 export const CATEGORIES: Record<DiscoveryCategory, CategoryConfig> = {
   science: {
     slug: "science",
     label: "Science",
     blurb: "How the world works — animals, space, the body, and more.",
+    tileImageUrl: `${TILE_BASE}/science.png`,
     topicGuidance: [
       "Pick ONE concrete science topic kids find fascinating:",
       "- Animal facts (camouflage, migration, how an animal eats)",
@@ -59,6 +67,7 @@ export const CATEGORIES: Record<DiscoveryCategory, CategoryConfig> = {
     slug: "history",
     label: "History",
     blurb: "Real people, real moments, real things that happened.",
+    tileImageUrl: `${TILE_BASE}/history.png`,
     topicGuidance: [
       "Pick ONE historical topic with a clear teachable point:",
       "- A historical figure (PREFER long-dead figures with Wikipedia portraits — Lincoln, Sacagawea, MLK, Cleopatra, da Vinci)",
@@ -74,6 +83,7 @@ export const CATEGORIES: Record<DiscoveryCategory, CategoryConfig> = {
     slug: "nature",
     label: "Nature",
     blurb: "Earth's wild places, weather, and creatures.",
+    tileImageUrl: `${TILE_BASE}/nature.png`,
     topicGuidance: [
       "Pick ONE nature / ecology topic:",
       "- A specific habitat (coral reef, prairie, rainforest canopy, tide pool)",
@@ -91,6 +101,7 @@ export const CATEGORIES: Record<DiscoveryCategory, CategoryConfig> = {
     slug: "inventions",
     label: "Inventions",
     blurb: "Smart ideas that changed how people live.",
+    tileImageUrl: `${TILE_BASE}/inventions.png`,
     topicGuidance: [
       "Pick ONE invention or inventor:",
       "- Long-established inventions (the wheel, printing press, telephone, lightbulb, airplane, vaccines)",
@@ -106,6 +117,7 @@ export const CATEGORIES: Record<DiscoveryCategory, CategoryConfig> = {
     slug: "sports",
     label: "Sports & Games",
     blurb: "How games work, where they came from, and what makes them fun.",
+    tileImageUrl: `${TILE_BASE}/sports.png`,
     topicGuidance: [
       "Pick ONE sport or game topic:",
       "- How a sport works (rules, key positions, scoring) for a sport kids know",
@@ -122,6 +134,7 @@ export const CATEGORIES: Record<DiscoveryCategory, CategoryConfig> = {
     slug: "stories",
     label: "Stories & Folktales",
     blurb: "Fables, folk tales, and stories told for generations.",
+    tileImageUrl: `${TILE_BASE}/stories.png`,
     topicGuidance: [
       "Pick ONE traditional story or fable to retell:",
       "- Aesop's fables (Tortoise + Hare, Boy Who Cried Wolf, etc.)",
@@ -138,6 +151,7 @@ export const CATEGORIES: Record<DiscoveryCategory, CategoryConfig> = {
     slug: "math_in_real_life",
     label: "Math in Real Life",
     blurb: "Stories where the math actually matters.",
+    tileImageUrl: `${TILE_BASE}/math_in_real_life.png`,
     topicGuidance: [
       "Pick ONE real-world scenario where the math makes the story:",
       "- Shopping math (counting change, simple fractions of pies/pizzas)",

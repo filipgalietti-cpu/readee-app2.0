@@ -8,6 +8,8 @@ import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
 import { Crown, Medal, Flame, Sprout } from "lucide-react";
 import type { ReactNode } from "react";
+import { SkeletonPage } from "@/app/_components/Skeleton";
+import { EmptyState } from "@/app/_components/EmptyState";
 
 interface LeaderEntry {
   id: string;
@@ -23,13 +25,7 @@ const RANK_ICONS: ReactNode[] = [
 
 export default function LeaderboardPage() {
   return (
-    <Suspense
-      fallback={
-        <div className="flex items-center justify-center min-h-[60vh]">
-          <div className="h-10 w-10 rounded-full border-4 border-indigo-200 border-t-indigo-600 animate-spin" />
-        </div>
-      }
-    >
+    <Suspense fallback={<SkeletonPage cards={4} />}>
       <LeaderboardContent />
     </Suspense>
   );
@@ -42,6 +38,7 @@ function LeaderboardContent() {
   const [leaders, setLeaders] = useState<LeaderEntry[]>([]);
   const [myRank, setMyRank] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState<string | null>(null);
 
   useEffect(() => {
     async function load() {
@@ -56,14 +53,17 @@ function LeaderboardContent() {
 
       if (childData) setChild(childData as Child);
 
-      // Fetch leaderboard from API
+      // Fetch leaderboard from API — surface failures as an inline
+      // banner instead of silently rendering "no leaders yet."
       try {
         const res = await fetch(`/api/leaderboard?child=${childId}`);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const json = await res.json();
         if (json.leaders) setLeaders(json.leaders);
         if (json.myRank) setMyRank(json.myRank);
       } catch (e) {
         console.error("Failed to load leaderboard:", e);
+        setLoadError("We couldn't reach the leaderboard. Check your connection and try again.");
       }
 
       setLoading(false);
@@ -72,11 +72,7 @@ function LeaderboardContent() {
   }, [childId]);
 
   if (loading || !child) {
-    return (
-      <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="h-10 w-10 rounded-full border-4 border-indigo-200 border-t-indigo-600 animate-spin" />
-      </div>
-    );
+    return <SkeletonPage cards={4} />;
   }
 
   return (
@@ -104,6 +100,12 @@ function LeaderboardContent() {
           </div>
         )}
       </div>
+
+      {loadError && (
+        <div className="rounded-2xl border border-rose-200 bg-rose-50 p-4 text-sm text-rose-800">
+          {loadError}
+        </div>
+      )}
 
       {/* Leaderboard */}
       {leaders.length > 0 ? (
@@ -147,19 +149,12 @@ function LeaderboardContent() {
           </div>
         </div>
       ) : (
-        <div className="rounded-2xl border border-zinc-200 bg-white p-8 text-center dash-slide-up-1">
-          <Sprout className="w-10 h-10 text-emerald-500 mx-auto mb-3" strokeWidth={1.5} />
-          <h3 className="font-bold text-zinc-900">No streaks yet!</h3>
-          <p className="text-sm text-zinc-500 mt-1">
-            Start your streak today by completing a lesson!
-          </p>
-          <Link
-            href="/dashboard"
-            className="inline-block mt-4 px-6 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-sm font-bold hover:from-indigo-700 hover:to-violet-600 transition-all shadow-sm"
-          >
-            Start Learning
-          </Link>
-        </div>
+        <EmptyState
+          mascot="cheer"
+          title="No streaks yet!"
+          description="Start your streak today by completing a lesson — even five minutes counts."
+          action={{ href: "/dashboard", label: "Start learning" }}
+        />
       )}
     </div>
   );

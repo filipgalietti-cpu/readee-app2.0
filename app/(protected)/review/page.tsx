@@ -4,6 +4,7 @@ import { ArrowLeft, Brain, ArrowRight, Check, CalendarClock } from "lucide-react
 import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/lib/auth/helpers";
 import { getAllStandards, slugifyStandard } from "@/lib/data/standards";
+import { EmptyState } from "@/app/_components/EmptyState";
 
 export const dynamic = "force-dynamic";
 
@@ -145,28 +146,25 @@ export default async function ReviewPage({
       </div>
 
       {due.length === 0 ? (
-        <div className="mt-8 overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-50 via-white to-teal-50 p-12 text-center shadow-sm ring-1 ring-emerald-100 dark:from-emerald-950/30 dark:via-slate-900 dark:to-teal-950/30 dark:ring-emerald-900/40">
-          <CalendarClock className="mx-auto h-10 w-10 text-emerald-500" />
-          <h2 className="mt-4 text-lg font-bold text-zinc-900 dark:text-white">
-            No reviews due today
-          </h2>
-          <p className="mx-auto mt-2 max-w-md text-sm text-zinc-500 dark:text-slate-400">
-            {active.first_name} is caught up.{" "}
-            {seen.size > 0
-              ? `${seen.size} standards are in the review system${
-                  (masteredCount ?? 0) > 0
-                    ? ` — ${masteredCount} fully mastered.`
-                    : "."
-                }`
-              : "Once they practice some standards, reviews will surface here."}
-          </p>
-          <Link
-            href={`/practice-hub?child=${active.id}`}
-            className="mt-5 inline-flex items-center gap-2 rounded-full bg-indigo-600 px-5 py-2 text-sm font-bold text-white transition hover:bg-indigo-700"
-          >
-            Practice more
-            <ArrowRight className="h-4 w-4" />
-          </Link>
+        <div className="mt-8">
+          <EmptyState
+            mascot="sleepy"
+            size="lg"
+            title="No reviews due today"
+            description={`${active.first_name} is caught up. ${
+              seen.size > 0
+                ? `${seen.size} standards are in the review system${
+                    (masteredCount ?? 0) > 0
+                      ? ` — ${masteredCount} fully mastered.`
+                      : "."
+                  }`
+                : "Once they practice some standards, reviews will surface here."
+            }`}
+            action={{
+              href: `/practice-hub?child=${active.id}`,
+              label: "Practice more",
+            }}
+          />
         </div>
       ) : (
         <ol className="mt-6 space-y-3">

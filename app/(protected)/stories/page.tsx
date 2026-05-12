@@ -14,6 +14,7 @@ import storiesBank from "@/scripts/stories-bank.json";
 import { usePlanStore } from "@/lib/stores/plan-store";
 import { getLimits } from "@/lib/plan/limits";
 import { BookOpen, Lock, ChevronDown, Play, Volume2 } from "lucide-react";
+import { SkeletonPage } from "@/app/_components/Skeleton";
 
 /* ── Types ─────────────────────────────────────────── */
 
@@ -51,13 +52,7 @@ function storyAudioUrl(story: Story) {
 
 export default function StoriesPage() {
   return (
-    <Suspense
-      fallback={
-        <div className="flex items-center justify-center min-h-[60vh]">
-          <div className="h-10 w-10 rounded-full border-4 border-indigo-200 border-t-indigo-600 animate-spin" />
-        </div>
-      }
-    >
+    <Suspense fallback={<SkeletonPage cards={5} />}>
       <StoriesContent />
     </Suspense>
   );
@@ -119,11 +114,7 @@ function StoriesContent() {
   }, [stop]);
 
   if (loading || !child) {
-    return (
-      <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="h-10 w-10 rounded-full border-4 border-indigo-200 border-t-indigo-600 animate-spin" />
-      </div>
-    );
+    return <SkeletonPage cards={5} />;
   }
 
   const childGradeKey = levelNameToGradeKey(child.reading_level);
@@ -367,7 +358,7 @@ function StoriesContent() {
                         </div>
                         <div className="p-3">
                           <p className="text-sm font-bold text-zinc-900 leading-tight">{s.title}</p>
-                          <p className="text-[11px] text-zinc-400 mt-1 line-clamp-2">{s.text.slice(0, 60)}...</p>
+                          <p className="text-xs text-zinc-400 mt-1 line-clamp-2">{s.text.slice(0, 60)}...</p>
                         </div>
                       </motion.button>
                       );

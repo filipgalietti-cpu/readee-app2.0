@@ -63,14 +63,23 @@ export default async function DiscoverCategoryPage({
           All categories
         </Link>
 
-        <div className="mt-4 flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-violet-600">
-          <Sparkles className="h-3 w-3" />
-          {cat.label}
+        <div className="mt-4 flex items-center gap-5">
+          <img
+            src={cat.tileImageUrl}
+            alt={cat.label}
+            className="h-20 w-20 flex-shrink-0 rounded-2xl object-cover shadow-sm"
+          />
+          <div>
+            <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-violet-600">
+              <Sparkles className="h-3 w-3" />
+              {cat.label}
+            </div>
+            <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900 sm:text-4xl">
+              {cat.label}
+            </h1>
+            <p className="mt-1 text-zinc-600">{cat.blurb}</p>
+          </div>
         </div>
-        <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-zinc-900">
-          {cat.label}
-        </h1>
-        <p className="mt-2 text-zinc-600">{cat.blurb}</p>
 
         <div className="mt-10 space-y-4">
           {items.length === 0 ? (

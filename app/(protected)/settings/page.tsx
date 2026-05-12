@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
 import type { ShopPurchase, EquippedItems } from "@/lib/db/types";
@@ -13,6 +14,7 @@ import { ChildCreateSchema, ChildUpdateSchema } from "@/lib/schemas";
 import { BACKGROUND_IMAGES, SHOP_ITEMS } from "@/lib/data/shop-items";
 import { Carrot } from "lucide-react";
 import { usePlanStore } from "@/lib/stores/plan-store";
+import { SkeletonPage } from "@/app/_components/Skeleton";
 
 function displayGrade(grade: string): string {
   if (grade.toLowerCase() === "pre-k") return "Foundational";
@@ -294,11 +296,7 @@ export default function Settings() {
   }
 
   if (loading) {
-    return (
-      <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="h-10 w-10 rounded-full border-4 border-indigo-200 border-t-indigo-600 animate-spin" />
-      </div>
-    );
+    return <SkeletonPage cards={3} />;
   }
 
   const childForReset = children.find((c) => c.id === resetChildId);
@@ -377,7 +375,27 @@ export default function Settings() {
       {/* ====== MY CHILDREN ====== */}
       <Section title="My Child" badge={children.length > 0 ? `${children.length} profile${children.length > 1 ? "s" : ""}` : undefined}>
         {children.length === 0 ? (
-          <p className="text-sm text-zinc-500">No readers added yet.</p>
+          <div className="rounded-2xl border border-zinc-200 bg-white text-center p-6 dark:border-slate-700 dark:bg-slate-800">
+            <Image
+              src="/images/ui/bunny-welcome.png"
+              alt=""
+              width={88}
+              height={88}
+              className="mx-auto h-20 w-20 object-contain"
+            />
+            <h3 className="mt-2 font-bold text-zinc-900 dark:text-slate-100">
+              Add your first reader
+            </h3>
+            <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">
+              Each reader gets their own placement test, personalized path, and reading journey.
+            </p>
+            <button
+              onClick={() => setShowAddChild(true)}
+              className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-indigo-600 px-5 py-2 text-sm font-bold text-white transition hover:bg-indigo-700"
+            >
+              Add a reader
+            </button>
+          </div>
         ) : (
           <div className="space-y-4">
             {children.map((child) => (
