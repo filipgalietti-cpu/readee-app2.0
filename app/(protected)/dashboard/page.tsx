@@ -148,12 +148,34 @@ export default function Dashboard() {
   const [childrenLoadError, setChildrenLoadError] = useState(false);
 
   useEffect(() => {
-    if (searchParams.get("checkout") === "success") {
-      setShowCheckoutSuccess(true);
-      fetchPlan();
-      router.replace("/dashboard", { scroll: false });
-    }
-  }, [searchParams, fetchPlan, router]);
+    if (searchParams.get("checkout") !== "success") return;
+    setShowCheckoutSuccess(true);
+    router.replace("/dashboard", { scroll: false });
+
+    // Stripe webhook fires async — the redirect can land here before
+    // profiles.plan has flipped to premium. The store's fetch()
+    // early-returns on cached state, so a one-shot fetchPlan() leaves
+    // a paying parent showing as free until they manually refresh.
+    // Poll the canonical refresh() up to 5x over ~10s, stopping the
+    // moment we see the premium flag. Worst case we still settle on
+    // the true server state within 10 seconds.
+    let cancelled = false;
+    let attempt = 0;
+    const MAX = 5;
+    const tick = async () => {
+      if (cancelled) return;
+      attempt += 1;
+      await usePlanStore.getState().refresh();
+      const next = usePlanStore.getState().plan;
+      if (cancelled) return;
+      if (next === "premium" || attempt >= MAX) return;
+      setTimeout(tick, 2000);
+    };
+    tick();
+    return () => {
+      cancelled = true;
+    };
+  }, [searchParams, router]);
 
   const setChildren = (kids: Child[]) => setStoreChildren(kids);
   const setSelectedChild = (child: Child | null) => setStoreChildData(child);
