@@ -535,6 +535,20 @@ export async function targetedPassageRegen(opts: {
   }
   const [main, ...extras] = mcqRes.questions;
 
+  // Re-derive the image scene from the NEW passage so the post-heal
+  // QC actually judges the (reused) image against the (rewritten)
+  // text. Previously we passed imageScene: null which silently
+  // skipped the image judge inside runFullQuizQc — that's how the
+  // May 12 "wtf animal" row went live: passage was healed, image
+  // was never re-judged against the new passage, mismatch shipped.
+  let postHealImageScene: string | null = null;
+  const newBriefRes = await generateImageBrief({
+    teacherId,
+    passageTitle: newTitle,
+    passageBody: newBody,
+  });
+  if (newBriefRes.ok) postHealImageScene = newBriefRes.brief;
+
   // Re-run full QC against the new passage + new questions + reused
   // image + new audio.
   const qc = await runFullQuizQc({
@@ -559,7 +573,7 @@ export async function targetedPassageRegen(opts: {
       })),
     ],
     imageUrl: (row as any).image_url ?? null,
-    imageScene: null,
+    imageScene: postHealImageScene,
     audioUrl: newAudioUrl,
   });
 
@@ -660,6 +674,18 @@ export async function targetedQuestionsRegen(opts: {
   if (!mcqRes.ok) return { ok: false, error: `mcq regen: ${mcqRes.error}` };
   const [main, ...extras] = mcqRes.questions;
 
+  // Re-derive imageScene from the (unchanged) passage so the post-heal
+  // QC re-judges the existing image instead of skipping the image
+  // check. Same fix as targetedPassageRegen — without this the image
+  // never gets validated after a questions heal.
+  let postHealImageScene: string | null = null;
+  const briefForQc = await generateImageBrief({
+    teacherId,
+    passageTitle,
+    passageBody,
+  });
+  if (briefForQc.ok) postHealImageScene = briefForQc.brief;
+
   const qc = await runFullQuizQc({
     teacherId,
     passageTitle,
@@ -682,7 +708,7 @@ export async function targetedQuestionsRegen(opts: {
       })),
     ],
     imageUrl: (row as any).image_url ?? null,
-    imageScene: null,
+    imageScene: postHealImageScene,
     audioUrl: (row as any).audio_url ?? null,
   });
 

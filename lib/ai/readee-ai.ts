@@ -962,13 +962,20 @@ export type GeneratedPassage = {
 // passage and write a short visual description, which then feeds the
 // image generator. Costs one quiz_generation credit per build.
 
-const IMAGE_BRIEF_SYSTEM = `You translate short children's reading passages into single-sentence visual scene descriptions for an illustrator.
+const IMAGE_BRIEF_SYSTEM = `You translate short children's reading passages into visual scene descriptions for an illustrator that generates one illustration per passage.
+
+Output format:
+- Up to TWO sentences, 25-60 words total.
+- No lists, no markdown, no commentary.
+- Sentence 1: the scene — who/what is in it, what they are doing, the setting, the mood/lighting.
+- Sentence 2 (only if the passage names specific characters/creatures/objects): an explicit roster, e.g. "Show: a gray squirrel with a bushy tail; a white fluffy rabbit; a yellow mallard duck on the water; two small green frogs on a log." Each item gets a concrete species/breed/color so the illustrator can't substitute a generic hybrid.
 
 Rules:
-- One sentence, 12-30 words. No lists, no markdown, no extra commentary.
-- Describe a single concrete scene the illustration should show: who is in it, what they are doing, the setting, and the mood/lighting.
+- If the passage names a real species/breed/character/object, NAME IT in the roster. "Animals at a pond" is wrong when the passage said "squirrel, bunny, duck, frogs." "Cute critters" is wrong when the passage said "a Labrador and a tabby cat."
+- Forbidden: vague nouns like "animal", "creature", "person", "thing" — replace with the species/breed/role.
+- Forbidden: invented hybrids. Every animal must be a clearly recognizable real-world species.
 - Use kid-friendly, school-appropriate visuals. No weapons, no violence, no scary creatures, no romantic content.
-- Do NOT include style words like "cartoon", "illustration", "vibrant" — that is set elsewhere. Just describe the scene.
+- Do NOT include style words ("cartoon", "illustration", "vibrant") — that is set elsewhere. Describe the scene.
 - Do NOT include any text that would appear in the image (no signs, no captions).
 - Pick the most evocative single moment from the passage — not a montage.`;
 
