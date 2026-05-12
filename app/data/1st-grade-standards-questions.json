@@ -22,8 +22,7 @@
           ],
           "correct": "She put them in her basket.",
           "hint": "Look at the second sentence of the story to find out what Bella did with the apples.",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.1/RL.1.1-Q1.wav"
+          "difficulty": 1
         },
         {
           "id": "RL.1.1-Q2",
@@ -88,8 +87,7 @@
           ],
           "correct": "It could not get down from the tall tree.",
           "hint": "Think about where the kitten was and what it was trying to do.",
-          "difficulty": 2,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.1/RL.1.1-Q5.wav"
+          "difficulty": 2
         }
       ]
     },
