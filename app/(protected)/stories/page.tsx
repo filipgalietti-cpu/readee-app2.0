@@ -10,6 +10,7 @@ import { Child } from "@/lib/db/types";
 import { levelNameToGradeKey } from "@/lib/assessment/questions";
 import { useAudio } from "@/lib/audio/use-audio";
 import { LoadingImage } from "@/app/components/ui/LoadingImage";
+import Image from "next/image";
 import storiesBank from "@/scripts/stories-bank.json";
 import { usePlanStore } from "@/lib/stores/plan-store";
 import { useChildStore } from "@/lib/stores/child-store";
@@ -77,6 +78,11 @@ function StoriesContent() {
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [showResult, setShowResult] = useState(false);
   const [correctCount, setCorrectCount] = useState(0);
+  // Story-complete cap state: prevents the kid from instantly bouncing
+  // back to the library after the last question. Holds the final score
+  // so the celebration card can show "Got 3 of 3 right!" instead of
+  // stale mid-quiz state.
+  const [finishedScore, setFinishedScore] = useState<{ correct: number; total: number } | null>(null);
   // Surface a save failure on completion instead of swallowing it in
   // console.error. Kids/parents who finish a story expect their
   // progress to count; a silent miss erodes trust over time.
@@ -216,11 +222,15 @@ function StoriesContent() {
 
     const handleNext = async () => {
       if (isLastQ) {
+        const finalCorrect =
+          correctCount + (selectedAnswer === q.correct ? 1 : 0);
+        // Hold on to the score for the celebration card BEFORE we
+        // close — closeStory() wipes mid-quiz state.
+        setFinishedScore({ correct: finalCorrect, total: story.questions.length });
         // Save story completion to database
         if (childId) {
           try {
             const supabase = supabaseBrowser();
-            const finalCorrect = correctCount + (selectedAnswer === q.correct ? 1 : 0);
             const { error } = await supabase.from("practice_results").insert({
               child_id: childId,
               standard_id: story.id,
@@ -239,13 +249,96 @@ function StoriesContent() {
             setSaveError(true);
           }
         }
-        closeStory();
+        // Stay on the story view so we can render the celebration +
+        // next-story CTA. Library is one tap away if they want it.
         return;
       }
       setCurrentQ((c) => c + 1);
       setSelectedAnswer(null);
       setShowResult(false);
     };
+
+    // Celebration phase: kid just answered the final question. Show the
+    // score + a "Next story" CTA (or "Back to library" if it's the last
+    // story in their grade) instead of bouncing them to the library.
+    if (finishedScore) {
+      const sameGradeStories = allStories.filter((s) => s.grade === story.grade);
+      const idx = sameGradeStories.findIndex((s) => s.id === story.id);
+      const next = idx >= 0 ? sameGradeStories[idx + 1] : undefined;
+      const isPerfect = finishedScore.correct === finishedScore.total;
+      const isGood = finishedScore.correct >= Math.max(1, finishedScore.total - 1);
+
+      const goNext = () => {
+        if (!next) return;
+        setFinishedScore(null);
+        // openStory resets quiz state and starts the audio + clean Q1.
+        openStory(next);
+      };
+
+      const goLibrary = () => {
+        setFinishedScore(null);
+        closeStory();
+      };
+
+      return (
+        <div className="max-w-lg mx-auto py-10 px-4 text-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="rounded-3xl bg-white shadow-md p-8"
+          >
+            <Image
+              src={
+                isPerfect
+                  ? "/images/ui/bunny-celebrate.png"
+                  : isGood
+                    ? "/images/ui/bunny-cheer.png"
+                    : "/images/ui/bunny-thinking.png"
+              }
+              alt=""
+              width={128}
+              height={128}
+              className="mx-auto h-32 w-32 object-contain"
+              priority
+            />
+            <h2 className="mt-3 text-2xl font-extrabold tracking-tight text-zinc-900">
+              {isPerfect
+                ? "Perfect reading!"
+                : isGood
+                  ? "Nice work!"
+                  : "Good try!"}
+            </h2>
+            <p className="mt-1 text-sm text-zinc-500">
+              {finishedScore.correct} of {finishedScore.total} correct
+              {childId ? " — saved to your progress." : "."}
+            </p>
+
+            <div className="mt-6 space-y-2">
+              {next ? (
+                <button
+                  type="button"
+                  onClick={goNext}
+                  className="block w-full rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 py-4 text-base font-extrabold text-white shadow-sm transition active:scale-[0.97] hover:from-indigo-700 hover:to-violet-600"
+                >
+                  Next story: {next.title} →
+                </button>
+              ) : (
+                <p className="text-xs text-zinc-400">
+                  That was the last story in this grade — great job!
+                </p>
+              )}
+              <button
+                type="button"
+                onClick={goLibrary}
+                className="block w-full rounded-2xl py-3 text-sm font-semibold text-zinc-500 transition hover:text-zinc-900"
+              >
+                Back to library
+              </button>
+            </div>
+          </motion.div>
+        </div>
+      );
+    }
 
     return (
       <div className="max-w-lg mx-auto py-6 px-4">

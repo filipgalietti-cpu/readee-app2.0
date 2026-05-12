@@ -929,6 +929,88 @@ function MuteToggle() {
 /*  Completion Screen                                      */
 /* ═══════════════════════════════════════════════════════ */
 
+/**
+ * Premium-feel completion CTA. The lesson-finish screen used to dead-end
+ * on "Back to Dashboard," which throws away the highest-engagement
+ * moment — the kid just earned carrots and feels good. Three states:
+ *
+ *  1. Next sample lesson exists in the same grade AND the kid can play
+ *     it on their current plan → "Next lesson →" into /learn directly.
+ *  2. Next lesson exists but is past the free-tier ceiling → upgrade
+ *     CTA pointing at /upgrade?reason=lesson.
+ *  3. Last lesson in the grade → offer a Practice session on the same
+ *     standard so they keep going on the skill they just learned.
+ */
+function NextStepCta({ child, lesson }: { child: Child; lesson: SampleLesson }) {
+  const plan = usePlanStore((s) => s.plan);
+
+  const allInGrade = useMemo(
+    () =>
+      (sampleLessons as SampleLesson[]).filter((l) => l.grade === lesson.grade),
+    [lesson.grade],
+  );
+  const currentIdx = useMemo(
+    () => allInGrade.findIndex((l) => l.standardId === lesson.standardId),
+    [allInGrade, lesson.standardId],
+  );
+  const nextLesson =
+    currentIdx >= 0 && currentIdx < allInGrade.length - 1
+      ? allInGrade[currentIdx + 1]
+      : null;
+  const nextIdx = currentIdx + 1;
+  const isPaid = plan === "premium";
+  const nextLocked =
+    !!nextLesson && !isPaid && plan !== null && nextIdx >= getLimits(plan).lessons;
+
+  const primaryStyle =
+    "block w-full text-center py-4 rounded-2xl font-extrabold text-base text-white transition-all active:scale-[0.97]";
+
+  if (nextLesson && !nextLocked) {
+    return (
+      <Link
+        href={`/learn?child=${child.id}&standard=${nextLesson.standardId}`}
+        className={primaryStyle}
+        style={{
+          background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
+          boxShadow: "0 4px 0 0 #4f46e5",
+        }}
+      >
+        Next lesson →
+      </Link>
+    );
+  }
+
+  if (nextLesson && nextLocked) {
+    return (
+      <Link
+        href={`/upgrade?reason=lesson`}
+        className={primaryStyle}
+        style={{
+          background: "linear-gradient(135deg, #f59e0b, #ec4899)",
+          boxShadow: "0 4px 0 0 #db2777",
+        }}
+      >
+        Unlock more lessons with Readee+
+      </Link>
+    );
+  }
+
+  // End of grade — pivot to practicing the same standard so the kid
+  // keeps reinforcing what they just learned instead of bouncing out.
+  return (
+    <Link
+      href={`/practice?child=${child.id}&standard=${lesson.standardId}`}
+      className={primaryStyle}
+      style={{
+        background: "linear-gradient(135deg, #10b981, #059669)",
+        boxShadow: "0 4px 0 0 #047857",
+      }}
+    >
+      Practice this skill →
+    </Link>
+  );
+}
+
 function CompletionScreen({
   child,
   lesson,
@@ -1206,10 +1288,10 @@ function CompletionScreen({
 
         {/* Action buttons */}
         <motion.div variants={fadeUp} className="w-full space-y-3">
+          <NextStepCta child={child} lesson={lesson} />
           <Link
             href={`/dashboard`}
-            className="block w-full text-center py-4 rounded-2xl font-extrabold text-base text-white transition-all active:scale-[0.97]"
-            style={{ background: "linear-gradient(135deg, #6366f1, #8b5cf6)", boxShadow: "0 4px 0 0 #4f46e5" }}
+            className="block w-full text-center py-3 rounded-2xl text-zinc-500 dark:text-slate-400 font-semibold text-sm hover:text-zinc-900 dark:hover:text-white transition-colors"
           >
             Back to Dashboard
           </Link>
