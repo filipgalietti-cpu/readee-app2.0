@@ -88,6 +88,12 @@ export async function buildDiscoveryArticle(input: {
   /** Optional explicit topic hint to bypass the category's auto-pick
    *  guidance. Used by tests + manual operator runs. */
   topicHint?: string;
+  /** AI-judge failure messages from a prior attempt at this slot.
+   *  When set, the builder bakes them into the passage-generation
+   *  prompt as explicit constraints ("previous attempt failed on
+   *  X; rewrite to avoid"). Used by heal-existing-content so the
+   *  retry isn't a blind re-roll — it's an informed do-over. */
+  priorFailures?: Array<{ name: string; message: string }>;
 }): Promise<DiscoveryBuildResult> {
   const cfg = CATEGORIES[input.category];
   if (!cfg) return { ok: false, error: `Unknown category: ${input.category}` };
@@ -124,16 +130,27 @@ export async function buildDiscoveryArticle(input: {
       ? `\n\nAVOID these topics — already covered in the last 60 days. Pick something different:\n${recentTitles.map((t) => `- ${t}`).join("\n")}`
       : "";
 
+  // AI-judge feedback from a prior failed attempt. Surfaces the
+  // SPECIFIC complaints (reading_level too high, factual error vs
+  // Wikipedia, weak learning objective, banned vocab) so the
+  // retry writes around them instead of repeating the same mistake.
+  const priorFailureBlock =
+    input.priorFailures && input.priorFailures.length > 0
+      ? `\n\nIMPORTANT — the previous attempt at this slot failed quality review. Do NOT repeat these mistakes:\n${input.priorFailures
+          .map((f) => `- [${f.name}] ${f.message}`)
+          .join("\n")}\nWrite the new passage so each of these findings would now pass.`
+      : "";
+
   // 1) Pick a topic. If the caller provided a hint, use it. Otherwise
   //    let Gemini pick from the category's topic surface — keeps the
   //    library diverse without us maintaining a topic backlog.
   const topic = input.topicHint
-    ? `${cfg.label}: ${input.topicHint}. ${cfg.toneGuidance}${avoidBlock}`
+    ? `${cfg.label}: ${input.topicHint}. ${cfg.toneGuidance}${avoidBlock}${priorFailureBlock}`
     : [
         `Category: ${cfg.label}`,
         cfg.topicGuidance,
         cfg.toneGuidance,
-        `Pick a topic that has not been done recently. Write ONE focused passage with a single teachable point.${avoidBlock}`,
+        `Pick a topic that has not been done recently. Write ONE focused passage with a single teachable point.${avoidBlock}${priorFailureBlock}`,
       ].join("\n\n");
 
   // 2) Passage.

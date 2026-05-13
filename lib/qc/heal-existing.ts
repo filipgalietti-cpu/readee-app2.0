@@ -88,17 +88,37 @@ async function healDiscoveryArticles(): Promise<HealExistingResult> {
 
   const { data: rows } = await admin
     .from("discovery_articles")
-    .select("id, category")
+    .select("id, category, qc_report")
     .eq("published_state", "hidden")
     .order("created_at", { ascending: true })
     .limit(budget);
 
-  const list = (rows ?? []) as Array<{ id: string; category: string }>;
+  const list = (rows ?? []) as Array<{
+    id: string;
+    category: string;
+    qc_report: any;
+  }>;
   let promoted = 0;
   let stillFailing = 0;
   let errors = 0;
   for (const r of list) {
     try {
+      // Pull the AI judge's specific complaints from the failed row's
+      // qc_report so we can feed them into the retry as constraints.
+      // The retry is informed: "previous attempt failed because of
+      // reading_level / fact_check / banned_vocab / etc. — rewrite to
+      // avoid these." Not a blind re-roll.
+      const failingChecks: Array<{ name: string; message: string }> = Array.isArray(
+        r.qc_report?.checks,
+      )
+        ? r.qc_report.checks
+            .filter((c: any) => c.severity === "fail")
+            .map((c: any) => ({
+              name: String(c.name ?? ""),
+              message: String(c.message ?? ""),
+            }))
+        : [];
+
       // Archive the failed row (don't delete — preserves audit trail
       // + qc_report for the dashboard "recent quarantines" list).
       await admin
@@ -108,10 +128,12 @@ async function healDiscoveryArticles(): Promise<HealExistingResult> {
           updated_at: new Date().toISOString(),
         })
         .eq("id", r.id);
-      // Generate a fresh article for the same category. New row
-      // gets its own QC pass + published_state on insert.
+      // Generate a fresh article for the same category, with the
+      // prior failure context baked into the prompt. New row gets
+      // its own QC pass + published_state on insert.
       const result = await buildDiscoveryArticle({
         category: r.category as DiscoveryCategory,
+        priorFailures: failingChecks.length > 0 ? failingChecks : undefined,
       });
       if (result.ok && result.qcOverall !== "fail") promoted++;
       else stillFailing++;
