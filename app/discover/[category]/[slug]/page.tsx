@@ -35,7 +35,7 @@ export async function generateMetadata({
     .from("discovery_articles")
     .select("title, body, image_url, category")
     .eq("slug", slug)
-    .neq("qc_overall", "fail")
+    .eq("published_state", "live")
     .maybeSingle();
   if (!data) return { title: "Readee Discover" };
   const d = data as any;
@@ -68,7 +68,7 @@ export default async function DiscoveryDetailPage({
         "id, category, slug, title, body, image_url, audio_url, question_prompt, choices, correct, hint, extra_questions, qc_overall",
       )
       .eq("slug", slug)
-      .neq("qc_overall", "fail")
+      .eq("published_state", "live")
       .maybeSingle(),
     supabase.auth.getUser(),
   ]);

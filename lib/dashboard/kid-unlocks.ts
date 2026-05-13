@@ -79,7 +79,7 @@ export async function loadKidUnlocks(input: {
       .select("id, title, reading_level, cover_image_url, qc_overall, created_at")
       .eq("child_id", input.childId)
       .gte("created_at", sinceIso)
-      .neq("qc_overall", "fail")
+      .eq("published_state", "live")
       .order("created_at", { ascending: false })
       .limit(PER_SOURCE_LIMIT),
     peers
@@ -96,7 +96,7 @@ export async function loadKidUnlocks(input: {
       .from("daily_questions")
       .select("date, slug, passage_title, theme, image_url, qc_overall, created_at")
       .lte("date", new Date().toISOString().slice(0, 10))
-      .neq("qc_overall", "fail")
+      .eq("published_state", "live")
       .order("date", { ascending: false })
       .limit(1),
   ]);

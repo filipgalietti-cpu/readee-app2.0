@@ -83,7 +83,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const { data } = await admin
       .from("discovery_articles")
       .select("category, slug, updated_at")
-      .neq("qc_overall", "fail")
+      .eq("published_state", "live")
       .limit(5000);
     discoveryRoutes = (
       (data ?? []) as { category: string; slug: string; updated_at: string }[]
@@ -104,7 +104,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const { data } = await admin
       .from("daily_questions")
       .select("slug, created_at")
-      .neq("qc_overall", "fail")
+      .eq("published_state", "live")
       .order("created_at", { ascending: false })
       .limit(365);
     dailyRoutes = (

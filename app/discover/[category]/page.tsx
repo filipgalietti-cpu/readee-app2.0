@@ -47,7 +47,7 @@ export default async function DiscoverCategoryPage({
     .from("discovery_articles")
     .select("slug, title, image_url, body, created_at")
     .eq("category", category)
-    .neq("qc_overall", "fail")
+    .eq("published_state", "live")
     .order("created_at", { ascending: false })
     .limit(60);
   const items = (data ?? []) as ListItem[];

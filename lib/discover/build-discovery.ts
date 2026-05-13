@@ -481,6 +481,10 @@ export async function buildDiscoveryArticle(input: {
       extra_questions: finalExtras.length > 0 ? finalExtras : null,
       qc_overall: qc.overall,
       qc_report: qc,
+      // Phase 4 pre-publish gate: only QC-passing or warn-level
+      // content goes live. Fails get hidden until auto-heal or
+      // manual review promotes them.
+      published_state: qc.overall === "fail" ? "hidden" : "live",
       source: "discovery_factory_v1",
     })
     .select("id, slug")

@@ -33,7 +33,7 @@ export default async function DailyArchivePage() {
     .from("daily_questions")
     .select("date, slug, theme, passage_title, image_url")
     .lte("date", today)
-    .neq("qc_overall", "fail")
+    .eq("published_state", "live")
     .order("date", { ascending: false })
     .limit(365);
   const list = (rows ?? []) as Row[];

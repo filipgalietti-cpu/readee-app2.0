@@ -402,6 +402,8 @@ export async function buildLeveledPassage(input: {
       versions,
       qc_overall: qcOverall,
       qc_report: qcReport,
+      // Phase 4 pre-publish gate: fails hidden until heal recovers them.
+      published_state: qcOverall === "fail" ? "hidden" : "live",
     })
     .eq("id", passageId);
 

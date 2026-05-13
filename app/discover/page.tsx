@@ -26,7 +26,7 @@ export default async function DiscoverIndexPage() {
     supabase
       .from("discovery_articles")
       .select("category, slug, title, image_url, created_at")
-      .neq("qc_overall", "fail")
+      .eq("published_state", "live")
       .order("created_at", { ascending: false })
       .limit(50),
     supabase.auth.getUser(),

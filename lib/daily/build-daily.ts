@@ -335,6 +335,9 @@ ${theme.topic}`;
       extra_questions: extras.length > 0 ? extras : null,
       qc_overall: qc.overall,
       qc_report: qc,
+      // Phase 4 pre-publish gate: fails are hidden by default.
+      // Heal can promote them later.
+      published_state: qc.overall === "fail" ? "hidden" : "live",
     });
 
   if (insertErr) {
@@ -508,6 +511,8 @@ export async function targetedImageRegen(opts: {
       image_url: newImageUrl,
       qc_overall: newOverall,
       qc_report: updatedReport,
+      // Promote back to live if the heal cleared the fails.
+      published_state: newOverall === "fail" ? "hidden" : "live",
     })
     .eq("date", dateStr);
   if (updErr) return { ok: false, error: `update: ${updErr.message}` };
@@ -686,6 +691,7 @@ export async function targetedPassageRegen(opts: {
       extra_questions: extras.length > 0 ? extras : null,
       qc_overall: qc.overall,
       qc_report: { ...qc, healedFrom: passageFailReasons.map((c) => c.name) },
+      published_state: qc.overall === "fail" ? "hidden" : "live",
     })
     .eq("date", dateStr);
   if (updErr) return { ok: false, error: `update: ${updErr.message}` };
@@ -818,6 +824,7 @@ export async function targetedQuestionsRegen(opts: {
       extra_questions: extras.length > 0 ? extras : null,
       qc_overall: qc.overall,
       qc_report: { ...qc, healedFrom: ["lesson.learning_objective"] },
+      published_state: qc.overall === "fail" ? "hidden" : "live",
     })
     .eq("date", dateStr);
   if (updErr) return { ok: false, error: `update: ${updErr.message}` };
@@ -905,6 +912,7 @@ export async function targetedAudioRegen(opts: {
       audio_url: newAudioUrl,
       qc_overall: newOverall,
       qc_report: updatedReport,
+      published_state: newOverall === "fail" ? "hidden" : "live",
     })
     .eq("date", dateStr);
   if (updErr) return { ok: false, error: `update: ${updErr.message}` };

@@ -63,7 +63,7 @@ export default function DailyQuestionCard({
             "date, theme, slug, passage_title, passage_body, image_url, audio_url, question_prompt, choices, correct, hint",
           )
           .lte("date", today)
-          .neq("qc_overall", "fail")
+          .eq("published_state", "live")
           .order("date", { ascending: false })
           .limit(1)
           .maybeSingle();

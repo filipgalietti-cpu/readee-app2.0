@@ -17,7 +17,7 @@ export default async function TodayIndexPage() {
     .from("daily_questions")
     .select("slug")
     .lte("date", new Date().toISOString().slice(0, 10))
-    .neq("qc_overall", "fail")
+    .eq("published_state", "live")
     .order("date", { ascending: false })
     .limit(1)
     .maybeSingle();
