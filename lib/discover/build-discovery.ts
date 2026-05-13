@@ -22,6 +22,7 @@ import {
 } from "@/lib/ai/readee-ai";
 import { runFullQuizQc, qcImage } from "@/lib/ai/qc";
 import { trackError } from "@/lib/observability/track";
+import { recordQcRun } from "@/lib/qc/auto-heal";
 import {
   resolveHistoricalImage,
   cacheWikipediaImageToSupabase,
@@ -492,6 +493,24 @@ export async function buildDiscoveryArticle(input: {
   if (insErr || !row) {
     return { ok: false, error: `insert: ${insErr?.message ?? "no row"}` };
   }
+  // Telemetry → qc_runs so /owner/qc-health and the adaptive cap
+  // engine see Discovery activity. The builder's internal attempt
+  // loop is summarized into a single run row.
+  await recordQcRun({
+    contentType: "discovery_article",
+    contentId: (row as any).id,
+    qcOverall: qc.overall as "pass" | "warn" | "fail",
+    attempts: attempts.length || 1,
+    finalFindings: Array.isArray(qc.checks)
+      ? qc.checks.map((c: any) => ({
+          name: c.name,
+          severity: c.severity,
+          message: c.message,
+        }))
+      : [],
+    healerSequence: attempts,
+    meta: { category: input.category, slug: (row as any).slug },
+  });
   return {
     ok: true,
     id: (row as any).id,

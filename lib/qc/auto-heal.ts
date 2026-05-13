@@ -79,6 +79,56 @@ function hasFailing(findings: Finding[]): boolean {
   return findings.some((f) => f.severity === "fail");
 }
 
+/**
+ * Lightweight one-shot telemetry write for builders that don't fully
+ * adopt runAutoHealLoop yet (discovery, leveled, calibrated). Lets
+ * their results flow into qc_runs so /owner/qc-health and the
+ * adaptive cap engine have signal for those types.
+ *
+ * Call this AFTER the builder has persisted its final state. The
+ * builder is the source of truth on whether it healed internally,
+ * how many attempts it used, and what the final findings look like.
+ */
+export async function recordQcRun(input: {
+  contentType: string;
+  contentId: string;
+  qcOverall: "pass" | "warn" | "fail";
+  attempts: number;
+  initialFindings?: Finding[];
+  finalFindings?: Finding[];
+  healerSequence?: string[];
+  durationMs?: number;
+  meta?: Record<string, unknown>;
+}): Promise<void> {
+  // Classify: pass on first try = passed_first_try; pass after heal
+  // attempt(s) = healed; final fail = quarantined. Warn is treated
+  // as a pass for outcome purposes (published_state='live' anyway).
+  const cleanFinal = input.qcOverall !== "fail";
+  const ranHealer = (input.healerSequence?.length ?? 0) > 0 || input.attempts > 1;
+  const outcome: AutoHealResult["outcome"] = cleanFinal
+    ? ranHealer
+      ? "healed"
+      : "passed_first_try"
+    : "quarantined";
+
+  try {
+    const admin = supabaseAdmin();
+    await admin.from("qc_runs").insert({
+      content_type: input.contentType,
+      content_id: input.contentId,
+      outcome,
+      attempts_used: Math.max(1, input.attempts),
+      initial_findings: input.initialFindings ?? [],
+      final_findings: input.finalFindings ?? [],
+      healer_sequence: input.healerSequence ?? [],
+      duration_ms: input.durationMs ?? null,
+      meta: input.meta ?? null,
+    });
+  } catch (e) {
+    // Telemetry is never load-bearing — never block the build path.
+  }
+}
+
 async function logRun(
   config: AutoHealConfig,
   result: AutoHealResult,

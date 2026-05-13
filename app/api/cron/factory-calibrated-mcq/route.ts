@@ -30,6 +30,7 @@ import {
 } from "@/lib/factory";
 import { pickRotation } from "@/lib/factory/topic-rotation";
 import { getCap } from "@/lib/content/caps";
+import { recordQcRun } from "@/lib/qc/auto-heal";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 300;
@@ -368,6 +369,30 @@ async function run(req: NextRequest) {
         verdict: enqueue.verdict,
         qcOverall,
         fidelity: enqueue.fidelity?.verdict ?? null,
+      });
+
+      // Telemetry → qc_runs. The cap engine + /owner/qc-health
+      // dashboard need per-piece signal for calibrated_mcq just like
+      // every other content type. Verdict 'ready' = clean, 'rejected'
+      // = quarantined (auto-heal didn't apply here).
+      await recordQcRun({
+        contentType: "calibrated_mcq",
+        contentId: enqueue.queueId,
+        qcOverall: qcOverall as "pass" | "warn" | "fail",
+        attempts: 1,
+        finalFindings: Array.isArray(qcReport?.checks)
+          ? qcReport.checks.map((c: any) => ({
+              name: c.name,
+              severity: c.severity,
+              message: c.message,
+            }))
+          : [],
+        meta: {
+          standard_id: pick.standardId,
+          grade_level: pick.grade,
+          difficulty,
+          verdict: enqueue.verdict.status,
+        },
       });
     }
   }

@@ -36,6 +36,7 @@ import {
 } from "@/lib/ai/historical-artifacts";
 import { trackError } from "@/lib/observability/track";
 import { indexContent } from "@/lib/ai/embeddings";
+import { recordQcRun } from "@/lib/qc/auto-heal";
 
 // Brief shape, version shape, and the credit estimator have moved to
 // build-leveled.shared.ts so client components can import them without
@@ -429,6 +430,24 @@ export async function buildLeveledPassage(input: {
       version_count: versions.length,
     },
   }).catch(() => {});
+
+  // Telemetry → qc_runs. The leveled builder runs the QC pass once
+  // per version inside; the qcReport captured at finalize represents
+  // the worst-case across versions.
+  await recordQcRun({
+    contentType: "leveled_passage",
+    contentId: passageId,
+    qcOverall: qcOverall as "pass" | "warn" | "fail",
+    attempts: 1,
+    finalFindings: Array.isArray((qcReport as any)?.checks)
+      ? (qcReport as any).checks.map((c: any) => ({
+          name: c.name,
+          severity: c.severity,
+          message: c.message,
+        }))
+      : [],
+    meta: { base_grade: brief.baseGrade, title: textRes.title },
+  });
 
   return { ok: true, passageId, warnings, creditsUsed };
 }
