@@ -1,8 +1,7 @@
 import ClientProviders from "./_components/ClientProviders";
 import PageTransition from "./_components/PageTransition";
 import JsonLd from "./_components/JsonLd";
-import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
+import ConditionalAnalytics from "./_components/ConditionalAnalytics";
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Link from "next/link";
@@ -147,8 +146,7 @@ export default function RootLayout({
           </div>
         </footer>
 </ClientProviders>
-        <Analytics />
-        <SpeedInsights />
+        <ConditionalAnalytics />
       </body>
     </html>
   );
