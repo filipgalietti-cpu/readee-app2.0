@@ -4,15 +4,21 @@
  * surfaces aggregates to /owner/assets, and auto-quarantines content
  * once a confidence threshold is crossed.
  *
- * Quarantine math (intentionally conservative):
- *   - down_count    >= 2 distinct kids
- *   - AND up_count  <= down_count (no positive offset)
- *   - AND last_voted_at within 30 days
+ * Quarantine math (CONTENT_SPEC §5.4 — Phase 4 of the no-human-review
+ * gameplan; kids ARE the post-publish QA signal):
+ *   - distinct_down_kids >= 3 within a 7-day window
+ *   - AND up_count <= down_count (no positive offset cancelling it out)
  *
- * Hitting that threshold inserts a content_audit_findings row of
- * kind 'kid_feedback' so the existing QC bot worker picks it up on
- * its nightly run. We do NOT directly mutate qc_status — the bot
- * decides whether to regen or dismiss.
+ * Two actions on trip:
+ *   1. For asset kinds backed by a content row with `published_state`
+ *      (discovery_articles, daily_questions, differentiated_passages),
+ *      flip published_state to 'archived' immediately. The piece is
+ *      pulled from kid surfaces.
+ *   2. Write a content_audit_findings row of finding_type='kid_feedback'
+ *      so the heal pipeline + /owner dashboard see it.
+ *
+ * Idempotent: re-running on the same asset after it's already archived
+ * (or already has an open kid_feedback finding) is a no-op.
  */
 "use server";
 
@@ -42,8 +48,24 @@ export type KidAssetKind =
 
 export type KidVerdict = "up" | "down";
 
-const QUARANTINE_DOWN_THRESHOLD = 2; // distinct kids who voted down
-const QUARANTINE_LOOKBACK_DAYS = 30;
+const QUARANTINE_DOWN_THRESHOLD = 3; // distinct kids who voted down
+const QUARANTINE_LOOKBACK_DAYS = 7;
+
+/**
+ * For asset kinds backed by a DB row with a `published_state` column,
+ * map kind → (table, primary key column). When the thumbs threshold
+ * trips for one of these, we flip published_state to 'archived' so
+ * the asset stops appearing in kid feeds immediately.
+ *
+ * Kinds NOT in this map (sample_lesson, sample_question, story —
+ * which live in app/data/*.json — and the parent-generated kinds)
+ * only get the audit finding; pulling them requires a code change.
+ */
+const ARCHIVABLE_KINDS: Record<string, { table: string; pkColumn: string } | undefined> = {
+  discovery_article: { table: "discovery_articles", pkColumn: "id" },
+  daily_question: { table: "daily_questions", pkColumn: "date" },
+  leveled_passage: { table: "differentiated_passages", pkColumn: "id" },
+};
 
 export async function recordKidFeedback(input: {
   childId: string;
@@ -114,9 +136,23 @@ async function maybeQuarantine(
   const tripped = downKids.size >= QUARANTINE_DOWN_THRESHOLD && upCount <= downCount;
   if (!tripped) return;
 
-  // Open an audit finding the QC bot can pick up. Idempotent: if
-  // there's already an open kid_feedback finding for this asset, we
-  // bail to avoid spam.
+  // Step 1 — for asset kinds backed by a published_state column,
+  // archive immediately. Kids stop seeing it within seconds.
+  const archivable = ARCHIVABLE_KINDS[assetKind];
+  if (archivable) {
+    await admin
+      .from(archivable.table)
+      .update({
+        published_state: "archived",
+        updated_at: new Date().toISOString(),
+      })
+      .eq(archivable.pkColumn, assetId)
+      .neq("published_state", "archived"); // skip already-archived rows
+  }
+
+  // Step 2 — write an audit finding so the heal pipeline + /owner
+  // dashboard see it. Idempotent on (target_kind, target_id,
+  // finding_type) per the existing upsert constraint.
   const { data: existing } = await admin
     .from("content_audit_findings")
     .select("id")
@@ -133,14 +169,17 @@ async function maybeQuarantine(
     finding_type: "kid_feedback",
     severity: "warn",
     status: "open",
-    summary: `${downKids.size} distinct kids gave this content a thumbs-down (up: ${upCount}, down: ${downCount}).`,
-    detail: {
+    message: `${downKids.size} distinct kids gave this content a thumbs-down within ${QUARANTINE_LOOKBACK_DAYS} days (up: ${upCount}, down: ${downCount}). ${archivable ? "Asset auto-archived." : "Asset has no published_state; review manually."}`,
+    suggestion: archivable
+      ? "Archived. If kids were wrong, un-archive via SQL. Otherwise the generator prompt that produced this needs tuning."
+      : "Manual review required — asset has no DB-level archive flag.",
+    target_snapshot: {
       up_count: upCount,
       down_count: downCount,
       distinct_down_kids: downKids.size,
       window_days: QUARANTINE_LOOKBACK_DAYS,
+      archived: !!archivable,
     },
-    suggested_fix: { action: "regen_or_dismiss", driver: "kid_feedback" },
   });
 }
 

@@ -22,6 +22,7 @@
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { autoHealDaily } from "@/lib/daily/build-daily";
 import { buildDiscoveryArticle } from "@/lib/discover/build-discovery";
+import { buildLeveledPassage } from "@/lib/ai/build-leveled";
 import { getCap } from "@/lib/content/caps";
 import type { DiscoveryCategory } from "@/lib/discover/categories";
 
@@ -156,23 +157,81 @@ async function healDiscoveryArticles(): Promise<HealExistingResult> {
 }
 
 /**
- * Leveled passages don't have a clean "regenerate from prompt" path
- * yet (the original brief isn't persisted on the row). Report the
- * queue depth so the operator can see backlog. Heal handler lands
- * when the builder persists its brief alongside the row.
+ * Heal hidden leveled passages by archiving the broken row and
+ * generating a fresh one with the same brief (topic, base_grade,
+ * title, teacher_id). The brief IS persisted on the row — earlier
+ * comments saying otherwise were stale. The new passage runs through
+ * the full QC + auto-promote path on insert.
  */
-async function reportHidden(table: string, contentType: string): Promise<HealExistingResult> {
+async function healLeveledPassages(): Promise<HealExistingResult> {
   const admin = supabaseAdmin();
-  const { count } = await admin
-    .from(table)
-    .select("*", { count: "exact", head: true })
+  const cap = await getCap("leveled_passage_heal");
+  const budget = cap.target || 1;
+
+  const { data: rows } = await admin
+    .from("differentiated_passages")
+    .select("id, teacher_id, topic, base_grade, title")
+    .eq("published_state", "hidden")
+    .order("created_at", { ascending: true })
+    .limit(budget);
+
+  const list = (rows ?? []) as Array<{
+    id: string;
+    teacher_id: string;
+    topic: string | null;
+    base_grade: string | null;
+    title: string | null;
+  }>;
+
+  let promoted = 0;
+  let stillFailing = 0;
+  let errors = 0;
+
+  for (const r of list) {
+    try {
+      // Archive the failed row (preserve audit trail).
+      await admin
+        .from("differentiated_passages")
+        .update({
+          published_state: "archived",
+          updated_at: new Date().toISOString(),
+        })
+        .eq("id", r.id);
+
+      // Skip rows missing essential brief fields — those need manual
+      // attention, can't auto-regen without inventing the prompt.
+      if (!r.topic || !r.teacher_id) {
+        stillFailing++;
+        continue;
+      }
+
+      const result = await buildLeveledPassage({
+        teacherId: r.teacher_id,
+        brief: {
+          topic: r.topic,
+          baseGrade: (r.base_grade as any) ?? null,
+          title: r.title ?? "",
+        } as any,
+      });
+      if (result.ok) promoted++;
+      else stillFailing++;
+    } catch {
+      errors++;
+    }
+  }
+
+  // Surface residual hidden count for dashboard.
+  const { count: residualHidden } = await admin
+    .from("differentiated_passages")
+    .select("id", { count: "exact", head: true })
     .eq("published_state", "hidden");
+
   return {
-    contentType,
-    attempted: 0,
-    promoted: 0,
-    stillFailing: count ?? 0,
-    errors: 0,
+    contentType: "leveled_passage",
+    attempted: list.length,
+    promoted,
+    stillFailing: (residualHidden ?? 0) + stillFailing,
+    errors,
   };
 }
 
@@ -180,6 +239,6 @@ export async function runHealExisting(): Promise<HealExistingResult[]> {
   const results: HealExistingResult[] = [];
   results.push(await healDailyQuestions());
   results.push(await healDiscoveryArticles());
-  results.push(await reportHidden("differentiated_passages", "leveled_passage"));
+  results.push(await healLeveledPassages());
   return results;
 }

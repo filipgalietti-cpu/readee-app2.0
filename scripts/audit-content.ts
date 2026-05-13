@@ -18,41 +18,52 @@ import { supabaseAdmin } from "../lib/supabase/admin";
 import { containsBannedWord } from "../lib/ai/qc";
 import {
   judgeShouldBeAsked,
+  judgeShouldBeAskedCommittee,
   judgeBetterFormat,
+  judgeBetterFormatCommittee,
 } from "../lib/ai/qc-question-meta";
 import {
   checkLessonStructure,
   checkLessonRichness,
   judgeLessonSlide,
+  judgeLessonSlideCommittee,
 } from "../lib/ai/qc-lesson";
+import {
+  runQuestionSpecChecks,
+  runLessonSpecChecks,
+} from "../lib/qc/spec-checks";
 import { generateFixSuggestion } from "../lib/ai/qc-suggestion";
 import { judgeAudioFile, judgeImageQuality } from "../lib/ai/qc-media";
-
-import kJson from "../app/data/kindergarten-standards-questions.json";
-import g1Json from "../app/data/1st-grade-standards-questions.json";
-import g2Json from "../app/data/2nd-grade-standards-questions.json";
-import g3Json from "../app/data/3rd-grade-standards-questions.json";
-import g4Json from "../app/data/4th-grade-standards-questions.json";
-import sampleLessons from "../app/data/sample-lessons.json";
-
-const GRADE_BANKS: { grade: string; bank: any }[] = [
-  { grade: "K", bank: kJson },
-  { grade: "1st", bank: g1Json },
-  { grade: "2nd", bank: g2Json },
-  { grade: "3rd", bank: g3Json },
-  { grade: "4th", bank: g4Json },
-];
+import {
+  loadQuestionBanks,
+  loadLessons,
+  type AuditSource,
+} from "../lib/qc/audit-sources";
 
 type Args = {
   kind: "all" | "question" | "lesson";
   limit: number | null;
   grade: string | null;
   withMedia: boolean;
+  /**
+   * Data source for the audit. `db` (default) pulls the live state
+   * out of questions_db / lessons_db so freshly-authored or freshly-
+   * healed content is policed immediately. `json` reads the deployed
+   * static files (what the renderer ships to kids) and is useful for
+   * "what is production seeing right now."
+   */
+  source: AuditSource;
 };
 
 function parseArgs(): Args {
   const argv = process.argv.slice(2);
-  const out: Args = { kind: "all", limit: null, grade: null, withMedia: false };
+  const out: Args = {
+    kind: "all",
+    limit: null,
+    grade: null,
+    withMedia: false,
+    source: "db",
+  };
   for (const a of argv) {
     if (a.startsWith("--kind=")) {
       const v = a.slice("--kind=".length);
@@ -64,6 +75,9 @@ function parseArgs(): Args {
       out.grade = a.slice("--grade=".length);
     } else if (a === "--with-media") {
       out.withMedia = true;
+    } else if (a.startsWith("--source=")) {
+      const v = a.slice("--source=".length);
+      if (v === "db" || v === "json") out.source = v;
     }
   }
   return out;
@@ -102,7 +116,11 @@ function assetContentHash(
     findingType === "q.should_be_asked" ||
     findingType === "q.no_self_leak" ||
     findingType === "q.unique_choices" ||
-    findingType === "q.better_format"
+    findingType === "q.better_format" ||
+    findingType === "spec.mcq_choice_count" ||
+    findingType === "spec.question_type_unknown" ||
+    findingType === "spec.tts_required" ||
+    findingType === "spec.emoji_leak"
   ) {
     const choices = Array.isArray(snapshot.choices)
       ? (snapshot.choices as unknown[]).map(norm).join("|")
@@ -254,6 +272,7 @@ async function auditQuestions(input: {
   limit: number | null;
   grade: string | null;
   withMedia: boolean;
+  source: AuditSource;
 }): Promise<{
   scanned: number;
   pass: number;
@@ -264,6 +283,8 @@ async function auditQuestions(input: {
   let pass = 0;
   let warn = 0;
   let fail = 0;
+
+  const GRADE_BANKS = await loadQuestionBanks(input.source);
 
   outer: for (const { grade, bank } of GRADE_BANKS) {
     if (input.grade && input.grade !== grade) continue;
@@ -430,9 +451,42 @@ async function auditQuestions(input: {
           }
         }
 
-        // LLM judges (cost: ~$0.002 per question for both)
+        // Deterministic spec checks (CONTENT_SPEC §2). Cheap, pure-function,
+        // no AI. Surfaces issues the soft judges can't catch reliably (MCQ
+        // choice count, K/G1 missing audio, unknown question types, emoji
+        // leaks). Each check fires its own finding_type so the dashboard
+        // shows them separately.
+        const specResults = runQuestionSpecChecks({
+          type: String(q.type ?? "multiple_choice"),
+          grade,
+          prompt: promptText,
+          choices: q.choices,
+          correct: String(q.correct),
+          audio_url: q.audio_url ?? null,
+          image_url: q.image_url ?? null,
+        });
+        for (const r of specResults) {
+          if (r.severity === "fail") fail++;
+          else warn++;
+          await upsertFinding({
+            runId: input.runId,
+            targetKind: "question",
+            targetId,
+            grade,
+            findingType: r.findingType,
+            severity: r.severity,
+            message: r.message,
+            targetSnapshot: snapshot,
+          });
+        }
+
+        // LLM judges (cost: ~$0.004 per question with committee — 2 judges
+        // ×$0.002. Worth it: today's audit had 4 false-positive
+        // q.should_be_asked findings on G1-4 content where a single
+        // Gemini judge mis-read the standard. Two judges + CCSS
+        // calibration anchor kills that failure mode.)
         try {
-          const sba = await judgeShouldBeAsked({
+          const sba = await judgeShouldBeAskedCommittee({
             standardId,
             standardDescription,
             prompt: promptText,
@@ -441,7 +495,7 @@ async function auditQuestions(input: {
             passageBody: null,
           });
           if (sba.ok) {
-            const sev = sba.verdict === "valid" ? "pass" : sba.verdict === "weak" ? "warn" : "fail";
+            const sev = sba.severity;
             if (sev === "fail") fail++;
             else if (sev === "warn") warn++;
             else pass++;
@@ -452,7 +506,7 @@ async function auditQuestions(input: {
               grade,
               findingType: "q.should_be_asked",
               severity: sev,
-              message: sba.reason,
+              message: `[committee:${sba.agreement}] ${sba.reason}`,
               targetSnapshot: snapshot,
             });
           }
@@ -461,7 +515,7 @@ async function auditQuestions(input: {
         }
 
         try {
-          const bf = await judgeBetterFormat({
+          const bf = await judgeBetterFormatCommittee({
             standardId,
             standardDescription,
             prompt: promptText,
@@ -477,7 +531,7 @@ async function auditQuestions(input: {
               grade,
               findingType: "q.better_format",
               severity: "warn",
-              message: `Recommend changing to ${bf.recommendation}: ${bf.reason}`,
+              message: `[committee:${bf.agreement}] Recommend changing to ${bf.recommendation}: ${bf.reason}`,
               suggestion: bf.recommendation,
               targetSnapshot: snapshot,
             });
@@ -605,6 +659,7 @@ async function auditLessons(input: {
   limit: number | null;
   grade: string | null;
   withMedia: boolean;
+  source: AuditSource;
 }): Promise<{
   scanned: number;
   pass: number;
@@ -616,7 +671,7 @@ async function auditLessons(input: {
   let warn = 0;
   let fail = 0;
 
-  const lessons = (sampleLessons as any[]) ?? [];
+  const lessons = await loadLessons(input.source);
 
   // Lesson grade tags use long form ("Kindergarten", "1st Grade")
   // while questions use short ("K", "1st"). Normalize both ways.
@@ -681,6 +736,40 @@ async function auditLessons(input: {
         severity: f.severity,
         message: f.message,
         suggestion: f.suggestion ?? null,
+        targetSnapshot: {
+          standardId,
+          title: lesson.title,
+          slideCount: slides.length,
+          slidesPreview: slides.slice(0, 3),
+        },
+      });
+    }
+
+    // Deterministic spec checks against CONTENT_SPEC §1 (lesson rules):
+    // ghost-word highlights, displayParts drift from ttsScript, shared
+    // step audio (karaoke desync), oversized displayDiagram letters,
+    // image style boilerplate, K/G1 missing step audio, emoji leaks.
+    // Each violation gets persisted as a per-slide / per-step finding
+    // so the heal pipeline can target it precisely.
+    const specViolations = runLessonSpecChecks({
+      grade: lesson.grade ?? null,
+      slides,
+    });
+    for (const v of specViolations) {
+      if (v.severity === "fail") fail++;
+      else warn++;
+      const targetKind = v.targetSubId ? "lesson_slide" : "lesson";
+      const targetId = v.targetSubId
+        ? `${standardId}#${v.targetSubId}`
+        : standardId;
+      await upsertFinding({
+        runId: input.runId,
+        targetKind,
+        targetId,
+        grade: lessonGradeShort || null,
+        findingType: v.findingType,
+        severity: v.severity,
+        message: v.message,
         targetSnapshot: {
           standardId,
           title: lesson.title,
@@ -761,7 +850,12 @@ async function auditLessons(input: {
           .join("\n");
         if (!combinedText.trim()) continue;
         try {
-          const judge = await judgeLessonSlide({
+          // Committee version: Gemini + Claude. Today's single-judge
+          // run produced ~85% false-positive rate on slide.judge fails
+          // (audited 13/13 fails earlier today; 11 were defensible
+          // against the CCSS standard). Two-judge agreement cuts FPs
+          // without changing the rest of the audit pipeline.
+          const judge = await judgeLessonSlideCommittee({
             standardId,
             standardDescription,
             lessonTitle: lesson.title ?? standardId,
@@ -780,7 +874,7 @@ async function auditLessons(input: {
               grade: lessonGradeShort || null,
               findingType: "slide.judge",
               severity: judge.severity,
-              message: judge.reason,
+              message: `[committee:${judge.agreement}] ${judge.reason}`,
               targetSnapshot: {
                 standardId,
                 lessonTitle: lesson.title,
@@ -806,7 +900,7 @@ async function auditLessons(input: {
 
 async function main(): Promise<void> {
   const args = parseArgs();
-  const scope = `kind=${args.kind} limit=${args.limit ?? "all"} grade=${args.grade ?? "all"}`;
+  const scope = `kind=${args.kind} limit=${args.limit ?? "all"} grade=${args.grade ?? "all"} source=${args.source}`;
   console.log(`Starting content audit · ${scope}`);
   const runId = await startRun(scope);
   console.log(`  run_id=${runId}`);
@@ -822,6 +916,7 @@ async function main(): Promise<void> {
         limit: args.limit,
         grade: args.grade,
         withMedia: args.withMedia,
+        source: args.source,
       });
       console.log(
         `  questions: scanned ${qStats.scanned}, pass ${qStats.pass}, warn ${qStats.warn}, fail ${qStats.fail}`,
@@ -834,6 +929,7 @@ async function main(): Promise<void> {
         limit: args.limit,
         grade: args.grade,
         withMedia: args.withMedia,
+        source: args.source,
       });
       console.log(
         `  lessons: scanned ${lStats.scanned}, pass ${lStats.pass}, warn ${lStats.warn}, fail ${lStats.fail}`,

@@ -14,6 +14,7 @@
 
 import { GoogleGenAI, Type } from "@google/genai";
 import phonemeDb from "@/scripts/phoneme-database.json";
+import { runCommittee, safeJsonParse, type CommitteeVerdict } from "./judge-committee";
 
 let cached: GoogleGenAI | null = null;
 function client(): GoogleGenAI {
@@ -364,6 +365,93 @@ Verdicts:
 - fail: the slide is genuinely off-topic, factually wrong, age-inappropriate, or generic encouragement so empty it could be in any lesson ("you're so smart!" with no content reference).
 
 Reason MUST cite WHAT the slide does and HOW it fits the lesson role.`;
+
+/**
+ * Multi-judge committee version of judgeLessonSlide (Phase 2, second
+ * judge wrap after q.should_be_asked).
+ *
+ * Today's lesson audit run (0194afe8) produced 16 slide.judge fails +
+ * 16 warns from a single Gemini judge. Past triage shipped earlier
+ * today found ~11/13 (85%) of single-judge fails were false positives
+ * — the judge applied too-narrow readings of broadly-scoped standards
+ * (RI.x.10, RL.K.10, L.3.1, etc). Running Gemini + Claude in parallel
+ * and forcing agreement before publishing kills that pattern.
+ *
+ * Consensus rules (lib/ai/judge-committee.ts):
+ *   - both agree → that severity
+ *   - disagree → take the more severe (bias safe)
+ *   - both error → fall back to legacy single-judge call
+ */
+export async function judgeLessonSlideCommittee(input: {
+  standardId: string;
+  standardDescription: string;
+  lessonTitle: string;
+  slideNumber: number | string;
+  slideHeading: string | null;
+  combinedText: string;
+}): Promise<
+  | { ok: true; severity: "pass" | "warn" | "fail"; reason: string; agreement: "unanimous" | "split" }
+  | { ok: false; error: string }
+> {
+  const userMsg = [
+    `Standard: ${input.standardId} — ${input.standardDescription}`,
+    `Lesson title: ${input.lessonTitle}`,
+    `Slide ${input.slideNumber}${input.slideHeading ? ` — ${input.slideHeading}` : ""}`,
+    "",
+    `Slide content (TTS scripts + interaction notes):`,
+    input.combinedText.slice(0, 3000),
+    "",
+    `Return a JSON object: { "severity": "pass" | "warn" | "fail", "reason": "..." }. No markdown, no extra text.`,
+    "",
+    `Reminder: CCSS standards are often broadly scoped. RI.x.10 / RL.K.10`,
+    `are reading-volume / engagement standards — "try harder books" /`,
+    `"daily reading habit" / "cozy reading spot" content is on-standard.`,
+    `RI.x.1 / RL.x.1 cover BOTH asking AND answering questions. L.x.1`,
+    `covers all standard-English-conventions including comparative`,
+    `adjectives, not just verb tenses. Don't apply too-narrow readings.`,
+  ].join("\n");
+
+  const result = await runCommittee<"pass" | "warn" | "fail">({
+    judges: [
+      { provider: "gemini", model: "gemini-2.5-flash" },
+      { provider: "claude", model: "claude-haiku-4-5" },
+    ],
+    systemPrompt: SLIDE_JUDGE_SYSTEM,
+    userPrompt: userMsg,
+    parse: (raw) => {
+      const parsed = safeJsonParse<{ severity?: string; reason?: string }>(raw);
+      if (!parsed) return { verdict: null, reason: "Could not parse JSON output." };
+      const s = parsed.severity;
+      const verdict = (["pass", "warn", "fail"] as const).includes(
+        s as "pass" | "warn" | "fail",
+      )
+        ? (s as "pass" | "warn" | "fail")
+        : null;
+      return { verdict, reason: String(parsed.reason ?? "").trim() };
+    },
+    verdictToSeverity: (v) => v as CommitteeVerdict,
+  });
+
+  const anyOk = result.runs.some((r) => r.ok);
+  if (!anyOk) {
+    // Fall back to legacy single judge
+    const fb = await judgeLessonSlide(input);
+    if (!fb.ok) return fb;
+    return {
+      ok: true,
+      severity: fb.severity,
+      reason: `[fallback single-judge] ${fb.reason}`,
+      agreement: "split" as const,
+    };
+  }
+
+  return {
+    ok: true,
+    severity: result.severity,
+    reason: result.reason,
+    agreement: result.agreement,
+  };
+}
 
 export async function judgeLessonSlide(input: {
   standardId: string;

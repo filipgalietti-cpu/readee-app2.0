@@ -43,6 +43,10 @@
     {
       "path": "/api/cron/asset-fill",
       "schedule": "30 4 * * *"
+    },
+    {
+      "path": "/api/cron/triage",
+      "schedule": "0 3 * * *"
     }
   ]
 }

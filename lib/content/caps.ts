@@ -34,6 +34,14 @@ export type WindowMetrics = {
   quarantined: number;
   firstPassPct: number;
   healSuccessPct: number;
+  /**
+   * Kid thumbs-down auto-archives in this window (CONTENT_SPEC §5.5).
+   * Count comes from content_audit_findings where finding_type =
+   * 'kid_feedback' and target_kind = the content type. Above 10% of
+   * recent production → forced step DOWN; above 5% → yellow.
+   */
+  kidArchives: number;
+  kidArchivesPct: number;
   trend: Trend;
 };
 
@@ -79,6 +87,21 @@ export async function getCap(
   };
 }
 
+/**
+ * caps.content_type uses the same string as the post-publish asset
+ * kind, except for a few heal/asset-fill specialties that aren't
+ * themselves content kinds. Map the cap row's content_type to the
+ * target_kind used by kid_feedback findings, returning null when
+ * there's no mapping (e.g. *_heal / *_fill caps don't have direct
+ * kid-feedback channels).
+ */
+function capToFeedbackTargetKind(contentType: string): string | null {
+  if (contentType.endsWith("_heal") || contentType.endsWith("_fill")) {
+    return null;
+  }
+  return contentType;
+}
+
 async function computeWindowMetrics(
   contentType: string,
   windowDays: number,
@@ -87,6 +110,8 @@ async function computeWindowMetrics(
   const since = new Date(
     Date.now() - windowDays * 24 * 60 * 60 * 1000,
   ).toISOString();
+
+  // Pre-publish health (qc_runs)
   const { data: rows } = await admin
     .from("qc_runs")
     .select("outcome")
@@ -105,10 +130,34 @@ async function computeWindowMetrics(
   const healSuccessPct =
     failed > 0 ? Math.round((healed / failed) * 100) : 100;
 
+  // Post-publish health (kid_feedback auto-archives)
+  let kidArchives = 0;
+  const targetKind = capToFeedbackTargetKind(contentType);
+  if (targetKind) {
+    const { count } = await admin
+      .from("content_audit_findings")
+      .select("id", { count: "exact", head: true })
+      .eq("target_kind", targetKind)
+      .eq("finding_type", "kid_feedback")
+      .gte("created_at", since);
+    kidArchives = count ?? 0;
+  }
+  // Rate is kid-archives relative to pieces produced in the same
+  // window. When pieces is 0 we can't meaningfully compute a rate;
+  // treat absent kid-archives as 0% and present as 100% (forces red).
+  const kidArchivesPct =
+    pieces > 0
+      ? Math.round((kidArchives / pieces) * 100)
+      : kidArchives > 0
+        ? 100
+        : 0;
+
   let trend: Trend = "green";
   if (quarantined > 0) trend = "red";
   else if (firstPassPct < 55 || healSuccessPct < 80) trend = "red";
+  else if (kidArchivesPct > 10) trend = "red";
   else if (firstPassPct < 70 || healSuccessPct < 90) trend = "yellow";
+  else if (kidArchivesPct > 5) trend = "yellow";
 
   return {
     windowDays,
@@ -118,6 +167,8 @@ async function computeWindowMetrics(
     quarantined,
     firstPassPct,
     healSuccessPct,
+    kidArchives,
+    kidArchivesPct,
     trend,
   };
 }
@@ -166,15 +217,34 @@ export async function suggestForContentType(
     };
   }
 
-  // Yellow → defensive cut.
-  if (d7.trend === "yellow" || d14.trend === "yellow") {
+  // Red on kid-archives — kids are actively rejecting this content. Step
+  // down hard regardless of pre-publish health.
+  if (d7.kidArchivesPct > 10 || d14.kidArchivesPct > 10) {
     const proposed = Math.max(1, current - 1);
     return {
       contentType: cap.content_type,
       current,
       suggested: proposed,
       max,
-      reason: `Metric slipped (7d: ${d7.firstPassPct}% first-pass, ${d7.healSuccessPct}% heal). Easing back to ${proposed}/day.`,
+      reason: `Kid signal: ${d7.kidArchives} thumbs-down auto-archive(s) in 7d (${d7.kidArchivesPct}% of production). Stepping cap down to ${proposed}/day until kids stop rejecting.`,
+      trend: "red",
+      metrics: { d7, d14 },
+    };
+  }
+
+  // Yellow → defensive cut.
+  if (d7.trend === "yellow" || d14.trend === "yellow") {
+    const proposed = Math.max(1, current - 1);
+    const kidNote =
+      d7.kidArchivesPct > 5
+        ? ` Kid thumbs-down rate ${d7.kidArchivesPct}% (>5% threshold).`
+        : "";
+    return {
+      contentType: cap.content_type,
+      current,
+      suggested: proposed,
+      max,
+      reason: `Metric slipped (7d: ${d7.firstPassPct}% first-pass, ${d7.healSuccessPct}% heal).${kidNote} Easing back to ${proposed}/day.`,
       trend: "yellow",
       metrics: { d7, d14 },
     };
