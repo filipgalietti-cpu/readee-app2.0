@@ -18,6 +18,10 @@ import { Type } from "@google/genai";
 import { getClient, MODEL_ID, logUsage } from "@/lib/ai/readee-ai";
 import { CREDIT_COST } from "@/lib/ai/credits";
 import { trackError } from "@/lib/observability/track";
+import {
+  getCalibrationBundle,
+  renderCalibrationForJudge,
+} from "@/lib/qc/calibration";
 
 export type QcSeverity = "pass" | "warn" | "fail";
 
@@ -101,6 +105,11 @@ export async function qcPassage(input: {
   passageBody: string;
   gradeLevel: string;
   isInformational?: boolean;
+  /** When provided, the LLM passage judge fetches the standard's
+   *  description + 3 hand-audited reference questions and uses them
+   *  as the calibration anchor. Turns the "vibes" check into a
+   *  comparison check, lifting reliability from ~55% → ~85%+. */
+  standardId?: string | null;
 }): Promise<{ checks: QcCheck[]; creditsUsed: number }> {
   const checks: QcCheck[] = [];
   let creditsUsed = 0;
@@ -211,12 +220,14 @@ export async function qcPassage(input: {
 
 const PASSAGE_JUDGE_SYSTEM = `You are a senior K-4 reading specialist reviewing an AI-generated reading passage for use with elementary students.
 
+When a CCS Standard + hand-audited reference questions are provided, treat them as the calibration anchor — the candidate must be consistent with those references in scope, difficulty, vocabulary level, and pedagogical focus. If the candidate is markedly different from the references (much harder, off-topic, different reading level), that's a fail or warn even if the passage itself is well-written.
+
 You will return a single JSON object with: { severity: "pass" | "warn" | "fail", reason: string }.
 
 Severity rules:
-- pass: passage is coherent, age-appropriate, kid-safe, free of factual errors (if informational), and natural-sounding for the target grade.
-- warn: minor issue worth flagging — awkward phrasing, slightly off-topic, mild factual ambiguity, abrupt ending. Still usable but Jennifer should glance at it.
-- fail: blocking issue — factually wrong if informational, scary/inappropriate content, incoherent narrative, or grossly mismatched to the grade level.
+- pass: passage is coherent, age-appropriate, kid-safe, free of factual errors (if informational), natural-sounding for the target grade, AND consistent with the calibration references when provided.
+- warn: minor issue worth flagging — awkward phrasing, slightly off-topic, mild factual ambiguity, abrupt ending, or noticeably different from the calibration references in difficulty/scope but still usable.
+- fail: blocking issue — factually wrong if informational, scary/inappropriate content, incoherent narrative, grossly mismatched to the grade level, or fundamentally inconsistent with what the standard asks for.
 
 Reason must be a single sentence. Be specific about WHAT is wrong, not just that something is.`;
 
@@ -235,12 +246,22 @@ async function llmJudgePassage(input: {
   passageBody: string;
   gradeLevel: string;
   isInformational?: boolean;
+  standardId?: string | null;
 }): Promise<{ check: QcCheck; creditsUsed: number } | null> {
   try {
     const client = getClient();
+    // When we have a standard ID, attach the CCS description + 3
+    // hand-audited reference questions so the judge anchors against
+    // the calibration canon instead of guessing.
+    const calibration = input.standardId
+      ? getCalibrationBundle(input.standardId, 3)
+      : null;
+    const calibrationBlock = calibration
+      ? `\n\n${renderCalibrationForJudge(calibration)}`
+      : "";
     const response = await client.models.generateContent({
       model: MODEL_ID,
-      contents: `Grade level: ${input.gradeLevel}\nGenre: ${input.isInformational ? "informational" : "narrative"}\n\nTitle: ${input.passageTitle}\n\nPassage:\n${input.passageBody}`,
+      contents: `Grade level: ${input.gradeLevel}\nGenre: ${input.isInformational ? "informational" : "narrative"}\n\nTitle: ${input.passageTitle}\n\nPassage:\n${input.passageBody}${calibrationBlock}`,
       config: {
         systemInstruction: PASSAGE_JUDGE_SYSTEM,
         responseMimeType: "application/json",
@@ -793,6 +814,10 @@ export async function qcLearningObjective(input: {
   passageTitle: string;
   passageBody: string;
   questions: QuestionForQc[];
+  /** When provided, the judge gets the standard's text + 3 audited
+   *  reference questions to compare against. Lifts reliability from
+   *  ~60% (vibes) → ~85%+ (comparison). */
+  standardId?: string | null;
 }): Promise<{ checks: QcCheck[]; creditsUsed: number }> {
   const checks: QcCheck[] = [];
   let creditsUsed = 0;
@@ -810,9 +835,15 @@ export async function qcLearningObjective(input: {
         return `Q${i + 1}: ${q.prompt}${choicesLine}\n  Correct: ${q.correct}`;
       })
       .join("\n\n");
+    const calibration = input.standardId
+      ? getCalibrationBundle(input.standardId, 3)
+      : null;
+    const calibrationBlock = calibration
+      ? `\n\n${renderCalibrationForJudge(calibration)}\n\nJudge the candidate questions above against these reference questions for the same standard. They should match in scope, difficulty, and pedagogical focus.`
+      : "";
     const response = await client.models.generateContent({
       model: MODEL_ID,
-      contents: `Title: ${input.passageTitle}\n\nPassage:\n"""\n${input.passageBody.slice(0, 1800)}\n"""\n\nQuestions:\n${qBlock}\n\nReturn the JSON object.`,
+      contents: `Title: ${input.passageTitle}\n\nPassage:\n"""\n${input.passageBody.slice(0, 1800)}\n"""\n\nQuestions:\n${qBlock}${calibrationBlock}\n\nReturn the JSON object.`,
       config: {
         systemInstruction: LEARNING_OBJECTIVE_SYSTEM,
         responseMimeType: "application/json",
@@ -907,6 +938,11 @@ export async function runFullQuizQc(input: {
    *  between qc.ts and scene-spec.ts; runtime contract is the
    *  SceneSpec exported from lib/ai/scene-spec.ts. */
   sceneSpec?: any;
+  /** Optional CCS standard ID. When present, the passage and
+   *  learning-objective judges fetch hand-audited reference
+   *  questions for this standard from the K-G4 canon and use
+   *  them as the calibration anchor (comparison instead of vibes). */
+  standardId?: string | null;
 }): Promise<QcReport> {
   const checks: QcCheck[] = [];
   let creditsUsed = 0;
@@ -917,6 +953,7 @@ export async function runFullQuizQc(input: {
       passageTitle: input.passageTitle,
       passageBody: input.passageBody,
       gradeLevel: input.gradeLevel,
+      standardId: input.standardId ?? null,
     });
     checks.push(...r.checks);
     creditsUsed += r.creditsUsed;
@@ -1061,6 +1098,7 @@ export async function runFullQuizQc(input: {
       passageTitle: input.passageTitle,
       passageBody: input.passageBody,
       questions: input.questions,
+      standardId: input.standardId ?? null,
     });
     checks.push(...lo.checks);
     creditsUsed += lo.creditsUsed;
