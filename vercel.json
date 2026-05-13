@@ -35,6 +35,14 @@
     {
       "path": "/api/cron/qc-cap-review",
       "schedule": "30 5 * * *"
+    },
+    {
+      "path": "/api/cron/heal-existing-content",
+      "schedule": "0 4 * * *"
+    },
+    {
+      "path": "/api/cron/asset-fill",
+      "schedule": "30 4 * * *"
     }
   ]
 }
