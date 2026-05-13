@@ -11,7 +11,7 @@ import { usePlanStore } from "@/lib/stores/plan-store";
 import { SidebarUserMenu } from "./SidebarUserMenu";
 import { ShineBorder } from "@/app/components/magicui/shine-border";
 import {
-  Home, BarChart3, BookText, ListChecks, Map,
+  Home, BarChart3, BookText, BookOpen, ListChecks, Map, Compass,
   Carrot, Trophy, ChevronDown, ChevronRight, ClipboardCheck, GraduationCap, Building2, ClipboardPen, Library, Sparkles, Users, Brain, Zap, ShieldCheck, BookOpenText, Layers, Mic, ScanLine, Factory, Bot, LogOut, Star,
 } from "lucide-react";
 
@@ -168,47 +168,70 @@ function getNavSections(
 
   } // end ownsClassroom
 
-  // Parent capability — shown alongside Teach for hybrid users so
-  // there's no view-mode toggle. Both surfaces are always available
-  // when both capabilities exist.
+  // Parent capability — single-purpose, ruthlessly trimmed.
+  //
+  // Before: one giant 14-item "Main" list mixing primary actions,
+  // gamification, parent dashboards, and AI marketing. Filip flagged
+  // "too much going on" — and he was right.
+  //
+  // After: three groups by intent, with the less-common surfaces
+  // tucked into a collapsible "More" so they're discoverable but
+  // don't dominate. Hybrid users (teacher + parent) keep the whole
+  // block collapsed by default to keep teacher mode clean.
   if (hasChildren) {
-    sections.push(
-      {
-        label: ownsClassroom ? "Family" : "Main",
-        // Collapsed by default for hybrid users so the teacher view
-        // stays clean. Pure parents see it expanded.
-        collapsible: ownsClassroom,
-        items: [
-          { href: "/dashboard", icon: Home, label: ownsClassroom ? "Parent view" : "Dashboard" },
-          {
-            href: "/dashboard/ask-readee",
-            icon: Sparkles,
-            label: "Ask Readee",
-            emphasis: true,
-            shimmer: !ownsClassroom,
-          },
-          {
-            href: "/stories-for-me",
-            icon: Sparkles,
-            label: "Stories starring my kid",
-            emphasis: true,
-            shimmer: !ownsClassroom,
-          },
-          { href: "/fluency", icon: Mic, label: "Fluency check" },
-          { href: `/assessment-results${q}`, icon: ClipboardCheck, label: "Placement Test" },
-          { href: `/analytics${q}`, icon: BarChart3, label: "Analytics" },
-          { href: `/review${q}`, icon: Brain, label: "Today's review" },
-          { href: "/word-bank", icon: BookText, label: "Word Bank" },
-          { href: `/practice-hub${q}`, icon: ListChecks, label: "Practice" },
-          { href: "/practice-hub/community", icon: Users, label: "Community library" },
-          { href: "/discover", icon: Sparkles, label: "Discover" },
-          { href: `/journey${q}`, icon: Map, label: "Reading Journey" },
-          { href: `/levels${q}`, icon: Star, label: "Reader Levels" },
-          { href: `/shop${q}`, icon: Carrot, label: "Shop", iconColor: "w-[17px] h-[17px] text-orange-500" },
-          { href: `/leaderboard${q}`, icon: Trophy, label: "Leaderboard" },
-        ],
-      },
-    );
+    const collapseByDefault = ownsClassroom;
+
+    sections.push({
+      label: ownsClassroom ? "Family" : "Main",
+      collapsible: collapseByDefault,
+      items: [
+        { href: "/dashboard", icon: Home, label: ownsClassroom ? "Parent view" : "Dashboard" },
+        { href: `/practice-hub${q}`, icon: ListChecks, label: "Practice" },
+        { href: `/stories${q}`, icon: BookOpen, label: "Stories" },
+        { href: `/buddy${q}`, icon: Mic, label: "Reading Buddy" },
+        { href: `/journey${q}`, icon: Map, label: "Journey" },
+      ],
+    });
+
+    sections.push({
+      label: "Fun",
+      collapsible: collapseByDefault,
+      items: [
+        { href: "/discover", icon: Compass, label: "Discover" },
+        { href: `/levels${q}`, icon: Star, label: "Levels" },
+        { href: `/shop${q}`, icon: Carrot, label: "Shop", iconColor: "w-[17px] h-[17px] text-orange-500" },
+        { href: `/leaderboard${q}`, icon: Trophy, label: "Leaderboard" },
+      ],
+    });
+
+    sections.push({
+      label: "More",
+      // Always collapsed by default — these are the long-tail surfaces
+      // most parents never need on a given session. All hidden from
+      // the collapsed icon rail so the 72-px sidebar stays tidy.
+      collapsible: true,
+      items: [
+        { href: `/analytics${q}`, icon: BarChart3, label: "Analytics", collapsedHidden: true },
+        {
+          href: "/dashboard/ask-readee",
+          icon: Sparkles,
+          label: "Ask Readee",
+          emphasis: true,
+          collapsedHidden: true,
+        },
+        {
+          href: "/stories-for-me",
+          icon: Sparkles,
+          label: "Personalized Stories",
+          emphasis: true,
+          collapsedHidden: true,
+        },
+        { href: "/fluency", icon: Mic, label: "Fluency check", collapsedHidden: true },
+        { href: "/word-bank", icon: BookText, label: "Word Bank", collapsedHidden: true },
+        { href: `/assessment-results${q}`, icon: ClipboardCheck, label: "Placement Test", collapsedHidden: true },
+        { href: "/practice-hub/community", icon: Users, label: "Community library", collapsedHidden: true },
+      ],
+    });
   }
 
   // Admin (district / school admin scope) — top-level for both views.
