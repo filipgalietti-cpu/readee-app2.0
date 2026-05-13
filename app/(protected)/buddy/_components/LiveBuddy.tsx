@@ -1,15 +1,22 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import posthog from "posthog-js";
 import { Mic, MicOff, AlertCircle, Sparkles, Loader2 } from "lucide-react";
 import { trackError, trackSignal } from "@/lib/observability/track";
 
+// posthog lazy-loaded on first track() call so the SDK never enters
+// the Buddy page's initial bundle. No-op when posthog hasn't been
+// init'd (current state) — keeps the surface working for whenever
+// we wire real analytics.
 function track(event: string, props?: Record<string, unknown>) {
   if (typeof window === "undefined") return;
-  try {
-    posthog.capture(event, props);
-  } catch {}
+  import("posthog-js")
+    .then((m) => {
+      try {
+        (m.default as any).capture?.(event, props);
+      } catch {}
+    })
+    .catch(() => {});
 }
 import {
   LIVE_INPUT_SAMPLE_RATE,

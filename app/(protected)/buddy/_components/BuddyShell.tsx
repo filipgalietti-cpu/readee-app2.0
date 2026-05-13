@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import posthog from "posthog-js";
 import {
   BookOpen,
   Search,
@@ -17,13 +16,17 @@ import {
 import BuddyChat from "./BuddyChat";
 import LiveBuddy from "./LiveBuddy";
 
+// posthog lazy-loaded on first track() call so the ~70kb SDK never
+// ships in the Buddy page's initial bundle. No-op until init.
 function track(event: string, props?: Record<string, unknown>) {
   if (typeof window === "undefined") return;
-  try {
-    posthog.capture(event, props);
-  } catch {
-    // PostHog not loaded yet; drop silently.
-  }
+  import("posthog-js")
+    .then((m) => {
+      try {
+        (m.default as any).capture?.(event, props);
+      } catch {}
+    })
+    .catch(() => {});
 }
 
 export type BuddyMode = "freeform" | "read_with_me" | "word_meaning" | "story_time" | "quick_quiz";
