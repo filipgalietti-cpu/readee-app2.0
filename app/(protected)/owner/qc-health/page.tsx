@@ -3,6 +3,8 @@ import { requireProfile } from "@/lib/auth/helpers";
 import { isPlatformAdmin } from "@/lib/auth/admin-gate";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { ShieldOff, ArrowLeft, CheckCircle2, AlertTriangle, XCircle, Activity, Zap } from "lucide-react";
+import ProductionCapsPanel from "./ProductionCapsPanel";
+import { getAllCaps } from "@/lib/content/caps";
 
 export const dynamic = "force-dynamic";
 
@@ -127,6 +129,8 @@ export default async function QcHealthPage() {
     .filter((r) => r.outcome === "quarantined")
     .slice(0, 10);
 
+  const caps = await getAllCaps();
+
   return (
     <div className="mx-auto max-w-5xl py-8 px-4 space-y-6">
       <Link
@@ -182,6 +186,9 @@ export default async function QcHealthPage() {
           <div className="mt-0.5 text-[11px] opacity-70">target = 0</div>
         </div>
       </div>
+
+      {/* Adaptive production caps */}
+      <ProductionCapsPanel rows={caps as any} />
 
       {/* Per content type */}
       <section className="rounded-2xl border border-zinc-200 bg-white p-5 space-y-3">
