@@ -71,9 +71,15 @@ export async function proxy(request: NextRequest) {
 
   const csp = [
     "default-src 'self'",
+    // 'unsafe-eval' is unfortunately required in production too:
+    // Next.js 16 chunk loading, framer-motion's animate utility, and
+    // posthog all rely on Function() / eval-equivalent. Without it,
+    // React hydration silently swaps to client-only rendering and
+    // several pages (practice-hub, dashboard) hit React error #310
+    // because the SSR + CSR trees diverge.
     isDev
       ? "script-src 'self' 'unsafe-eval' 'unsafe-inline'"
-      : "script-src 'self' 'unsafe-inline' https://us.i.posthog.com https://us-assets.i.posthog.com",
+      : "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://us.i.posthog.com https://us-assets.i.posthog.com",
     "style-src 'self' 'unsafe-inline'",
     "img-src 'self' blob: data: https://*.supabase.co",
     "media-src 'self' blob: https://*.supabase.co",

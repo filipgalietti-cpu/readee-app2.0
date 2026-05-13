@@ -266,6 +266,18 @@ function PracticeHubContent() {
   const fetchPlan = usePlanStore((s) => s.fetch);
   useEffect(() => { fetchPlan(); }, [fetchPlan]);
 
+  // Auto-open the kid's grade once they're loaded. MUST live with the
+  // other top-level hooks (above any conditional return) — Rules of
+  // Hooks. Previously placed below `if (loading) return …`, which
+  // caused React error #310 (more hooks rendered after data loaded
+  // than before) — that crash is what broke /practice-hub in prod.
+  useEffect(() => {
+    if (child && openGrades.size === 0) {
+      const gk = levelNameToGradeKey(child.reading_level);
+      setOpenGrades(new Set([gk]));
+    }
+  }, [child, openGrades.size]);
+
   // Resolve a child even when the URL doesn't carry one.
   //
   // Reaching /practice-hub without ?child= is normal — the Homework
@@ -406,14 +418,6 @@ function PracticeHubContent() {
     const s = allStandards[Math.floor(Math.random() * allStandards.length)];
     if (s) router.push(`/practice?child=${childId}&standard=${s.standard_id}`);
   };
-
-  // Auto-open child's grade on first load
-  useEffect(() => {
-    if (child && openGrades.size === 0) {
-      const gk = levelNameToGradeKey(child.reading_level);
-      setOpenGrades(new Set([gk]));
-    }
-  }, [child]);
 
   const toggleGrade = (g: string) => {
     setOpenGrades((prev) => {
