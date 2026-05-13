@@ -18,6 +18,7 @@ import {
   Baby,
   Boxes,
   Bot,
+  Activity,
 } from "lucide-react";
 
 export const dynamic = "force-dynamic";
@@ -442,6 +443,13 @@ export default async function OwnerAdminPage({
           >
             <Sparkles className="h-3.5 w-3.5" />
             Spot audit
+          </Link>
+          <Link
+            href="/owner/qc-health"
+            className="inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1.5 text-xs font-bold text-emerald-700 hover:bg-emerald-100"
+          >
+            <Activity className="h-3.5 w-3.5" />
+            QC health
           </Link>
         </div>
       </div>

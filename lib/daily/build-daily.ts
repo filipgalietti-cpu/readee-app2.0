@@ -29,6 +29,7 @@ import { extractSceneSpec, renderSpecAsBrief, describeSpec } from "@/lib/ai/scen
 import { qcImageStructured, generateBestImage } from "@/lib/ai/qc-scene";
 import { pickThemeForDate, slugForDate } from "@/lib/daily/themes";
 import { trackError } from "@/lib/observability/track";
+import { runAutoHealLoop, type Finding, type Healer } from "@/lib/qc/auto-heal";
 import {
   resolveHistoricalImage,
   cacheWikipediaImageToSupabase,
@@ -935,99 +936,102 @@ export async function autoHealDaily(opts: {
   const date = opts?.date ?? new Date();
   const dateStr = slugForDate(date);
   const admin = supabaseAdmin();
-  const healed: string[] = [];
 
-  // Initial state
-  const { data: row, error: rowErr } = await admin
+  // Confirm a row exists for the requested date before invoking the
+  // loop. The loop reads findings from the row's qc_report.
+  const { data: rowCheck, error: rowErr } = await admin
     .from("daily_questions")
-    .select("qc_overall, qc_report")
+    .select("qc_overall")
     .eq("date", dateStr)
     .maybeSingle();
   if (rowErr) return { ok: false, error: `db: ${rowErr.message}` };
-  if (!row) return { ok: false, error: `no row for ${dateStr}` };
+  if (!rowCheck) return { ok: false, error: `no row for ${dateStr}` };
 
-  let report = (row as any).qc_report ?? null;
-  let overall = (row as any).qc_overall as string;
-  const classify = () => {
-    const checks: Array<{ name: string; severity: string }> = Array.isArray(
-      report?.checks,
-    )
-      ? report.checks
-      : [];
-    return {
-      imageFail: checks.some(
-        (c) => c.name.startsWith("image.") && c.severity === "fail",
-      ),
-      audioFail: checks.some(
-        (c) => c.name.startsWith("audio.") && c.severity === "fail",
-      ),
-      passageFail: checks.some(
-        (c) =>
-          (c.name === "passage.reading_level" ||
-            c.name === "passage.fact_check" ||
-            c.name === "passage.judge") &&
-          c.severity === "fail",
-      ),
-      questionsBad: checks.some(
-        (c) =>
-          c.name === "lesson.learning_objective" &&
-          (c.severity === "fail" || c.severity === "warn"),
-      ),
-    };
-  };
-
-  // Round-trip helper — read fresh report after each surgical fix.
-  const refresh = async () => {
-    const { data: r2 } = await admin
+  // refreshFindings: read the latest qc_report.checks. The targeted
+  // regen functions persist a new qc_report on each successful run,
+  // so the loop sees fresh state every iteration.
+  async function refreshFindings(): Promise<Finding[]> {
+    const { data } = await admin
       .from("daily_questions")
-      .select("qc_overall, qc_report")
+      .select("qc_report")
       .eq("date", dateStr)
       .maybeSingle();
-    report = (r2 as any)?.qc_report ?? null;
-    overall = (r2 as any)?.qc_overall ?? overall;
+    const checks: any[] = Array.isArray((data as any)?.qc_report?.checks)
+      ? (data as any).qc_report.checks
+      : [];
+    return checks.map((c) => ({
+      name: c.name,
+      severity: c.severity,
+      message: c.message,
+    }));
+  }
+
+  // Ordered healers — image first (cheapest, no cascade), then
+  // passage (cascades into audio + questions), then audio standalone,
+  // then questions standalone. The loop runs ONE healer per attempt
+  // and re-checks, so a single passage regen that also clears the
+  // image finding won't trigger the image healer again.
+  const healers: Healer[] = [
+    {
+      name: "image",
+      matches: (f) => f.name.startsWith("image.") && f.severity === "fail",
+      heal: async () => {
+        const r = await targetedImageRegen({ date });
+        return { ok: r.ok, ran: r.ok && (r as any).regenerated };
+      },
+    },
+    {
+      name: "passage",
+      matches: (f) =>
+        (f.name === "passage.reading_level" ||
+          f.name === "passage.fact_check" ||
+          f.name === "passage.judge") &&
+        f.severity === "fail",
+      heal: async () => {
+        const r = await targetedPassageRegen({ date });
+        return { ok: r.ok, ran: r.ok && (r as any).regenerated };
+      },
+    },
+    {
+      name: "audio",
+      matches: (f) => f.name.startsWith("audio.") && f.severity === "fail",
+      heal: async () => {
+        const r = await targetedAudioRegen({ date });
+        return { ok: r.ok, ran: r.ok && (r as any).regenerated };
+      },
+    },
+    {
+      name: "questions",
+      matches: (f) =>
+        f.name === "lesson.learning_objective" && f.severity === "fail",
+      heal: async () => {
+        const r = await targetedQuestionsRegen({ date });
+        return { ok: r.ok, ran: r.ok && (r as any).regenerated };
+      },
+    },
+  ];
+
+  const result = await runAutoHealLoop({
+    contentType: "daily_question",
+    contentId: dateStr,
+    refreshFindings,
+    healers,
+    maxAttempts: 4,
+  });
+
+  // Read final overall after the loop so the existing return shape
+  // stays the same. Callers (cron + ops scripts) still see what they
+  // expect.
+  const { data: postRow } = await admin
+    .from("daily_questions")
+    .select("qc_overall")
+    .eq("date", dateStr)
+    .maybeSingle();
+  const newOverall = (postRow as any)?.qc_overall ?? "fail";
+
+  return {
+    ok: true,
+    healed: result.healerSequence.map((h) => `${h}→${newOverall}`),
+    newOverall,
   };
-
-  // Image first — cheapest, no cascading effects.
-  if (classify().imageFail) {
-    const r = await targetedImageRegen({ date });
-    if (r.ok && r.regenerated) {
-      healed.push(`image→${r.newOverall}`);
-      await refresh();
-    }
-  }
-
-  // Passage next — drives audio + questions, so we do it before
-  // touching questions independently.
-  if (classify().passageFail) {
-    const r = await targetedPassageRegen({ date });
-    if (r.ok && r.regenerated) {
-      healed.push(`passage→${r.newOverall}`);
-      await refresh();
-    }
-  }
-
-  // Audio — only fires if passage was OK (passage cascade already
-  // re-generates audio when it fires). Catches the case where the
-  // passage was clean but TTS rendered garbled / wrong-text audio.
-  if (classify().audioFail) {
-    const r = await targetedAudioRegen({ date });
-    if (r.ok && r.regenerated) {
-      healed.push(`audio→${r.newOverall}`);
-      await refresh();
-    }
-  }
-
-  // Questions last — only fires if passage was OK or already healed.
-  // The targeted passage regen already regenerates questions, so this
-  // step only catches the case where passage was fine but the MCQs
-  // were the problem.
-  if (classify().questionsBad) {
-    const r = await targetedQuestionsRegen({ date });
-    if (r.ok && r.regenerated) {
-      healed.push(`questions→${r.newOverall}`);
-      await refresh();
-    }
-  }
-
-  return { ok: true, healed, newOverall: overall };
 }
