@@ -122,6 +122,44 @@ export async function sendOwnerDigest(): Promise<OwnerDigestResult> {
     }))),
   ]);
 
+  // Content health snapshot — currently-hidden counts per type.
+  // Surfaces backlog: 12 hidden discovery articles means the auto-
+  // heal loop is falling behind. Combined with the autoheal results
+  // below, the operator can see whether things are getting better
+  // or worse week over week.
+  const [
+    { count: hiddenDiscovery },
+    { count: hiddenDaily },
+    { count: hiddenLeveled },
+  ] = await Promise.all([
+    admin
+      .from("discovery_articles")
+      .select("id", { count: "exact", head: true })
+      .eq("published_state", "hidden"),
+    admin
+      .from("daily_questions")
+      .select("date", { count: "exact", head: true })
+      .eq("published_state", "hidden"),
+    admin
+      .from("differentiated_passages")
+      .select("id", { count: "exact", head: true })
+      .eq("published_state", "hidden"),
+  ]);
+
+  // Auto-heal loop activity — last 7 days of qc_runs telemetry.
+  // Tells us how the runAutoHealLoop is performing per content type.
+  const { data: healRows } = await admin
+    .from("qc_runs")
+    .select("content_type, outcome")
+    .gte("created_at", holeSince);
+  const healStats: Record<string, { passed: number; healed: number; quarantined: number }> = {};
+  for (const r of (healRows ?? []) as Array<{ content_type: string; outcome: string }>) {
+    const bucket = (healStats[r.content_type] ||= { passed: 0, healed: 0, quarantined: 0 });
+    if (r.outcome === "passed_first_try") bucket.passed++;
+    else if (r.outcome === "healed") bucket.healed++;
+    else if (r.outcome === "quarantined") bucket.quarantined++;
+  }
+
   const summary = {
     discovery: {
       total: discoveryTotal ?? 0,
@@ -134,6 +172,12 @@ export async function sendOwnerDigest(): Promise<OwnerDigestResult> {
     enriched: enrichedTotal ?? 0,
     autoHealsFired: heals24h ?? 0,
     openFailsCatalog: openFails ?? 0,
+    hidden: {
+      discovery: hiddenDiscovery ?? 0,
+      daily: hiddenDaily ?? 0,
+      leveled: hiddenLeveled ?? 0,
+    },
+    healStats,
     recent,
     holes,
   };
@@ -219,6 +263,26 @@ function renderText(s: any, today: string): string {
   lines.push(`Auto-heals fired: ${s.autoHealsFired}`);
   lines.push(`Open fails in catalog (not auto-fixed): ${s.openFailsCatalog}`);
   lines.push("");
+  const totalHidden = s.hidden.discovery + s.hidden.daily + s.hidden.leveled;
+  if (totalHidden > 0) {
+    lines.push(`Currently hidden (auto-demoted on QC fail):`);
+    if (s.hidden.discovery > 0) lines.push(`  · Discovery: ${s.hidden.discovery}`);
+    if (s.hidden.daily > 0) lines.push(`  · Daily Readee: ${s.hidden.daily}`);
+    if (s.hidden.leveled > 0) lines.push(`  · Leveled passages: ${s.hidden.leveled}`);
+    lines.push("");
+  }
+  const healEntries = Object.entries(s.healStats ?? {}) as Array<
+    [string, { passed: number; healed: number; quarantined: number }]
+  >;
+  if (healEntries.length > 0) {
+    lines.push("Auto-heal loop (last 7 days):");
+    for (const [type, st] of healEntries) {
+      lines.push(
+        `  ${type}: ${st.passed} clean / ${st.healed} healed / ${st.quarantined} quarantined`,
+      );
+    }
+    lines.push("");
+  }
   if ((s.holes ?? []).length > 0) {
     lines.push("Unhealed failure patterns (last 7 days):");
     for (const h of s.holes) {
@@ -281,6 +345,31 @@ function renderHtml(s: any, today: string): string {
           <div style="font-size:13px;color:#3f3f46;font-weight:600;margin-top:6px;">Open fails (not auto-fixed): ${pill(s.openFailsCatalog, s.openFailsCatalog > 0 ? "fail" : "neutral")}</div>
         </td></tr>
 
+        ${
+          (s.hidden?.discovery + s.hidden?.daily + s.hidden?.leveled) > 0
+            ? `<tr><td style="border-top:1px solid #e4e4e7;padding-top:16px;padding-bottom:16px;">
+            <div style="font-size:11px;font-weight:700;color:#92400e;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">Currently hidden · pending auto-heal</div>
+            <div style="font-size:13px;color:#3f3f46;">Discovery: ${pill(s.hidden.discovery, s.hidden.discovery > 0 ? "warn" : "neutral")} &nbsp; Daily: ${pill(s.hidden.daily, s.hidden.daily > 0 ? "warn" : "neutral")} &nbsp; Leveled: ${pill(s.hidden.leveled, s.hidden.leveled > 0 ? "warn" : "neutral")}</div>
+            <div style="font-size:11px;color:#71717a;margin-top:6px;font-style:italic;">These pieces failed QC and were auto-demoted. Heal-existing-content cron retries them nightly.</div>
+          </td></tr>`
+            : ""
+        }
+        ${
+          Object.keys(s.healStats ?? {}).length > 0
+            ? `<tr><td style="border-top:1px solid #e4e4e7;padding-top:16px;padding-bottom:16px;">
+            <div style="font-size:11px;font-weight:700;color:#065f46;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">Auto-heal loop · last 7 days</div>
+            <table width="100%" cellpadding="0" cellspacing="0">
+              ${Object.entries(s.healStats as Record<string, { passed: number; healed: number; quarantined: number }>)
+                .map(
+                  ([type, st]) =>
+                    `<tr><td style="padding:4px 0;font-size:13px;"><span style="display:inline-block;min-width:160px;font-weight:700;color:#3f3f46;font-family:monospace;">${escapeHtml(type)}</span> ${pill(st.passed, "pass")} ${pill(st.healed, "neutral")} ${pill(st.quarantined, "fail")}</td></tr>`,
+                )
+                .join("\n")}
+            </table>
+            <div style="font-size:11px;color:#71717a;margin-top:6px;font-style:italic;">Passed clean · healed after retry · quarantined (stuck).</div>
+          </td></tr>`
+            : ""
+        }
         ${
           (s.holes ?? []).length > 0
             ? `<tr><td style="border-top:1px solid #e4e4e7;padding-top:16px;padding-bottom:16px;">
