@@ -29,15 +29,17 @@ import {
   checkTopicNotDuplicate,
 } from "@/lib/factory";
 import { pickRotation } from "@/lib/factory/topic-rotation";
+import { getCap } from "@/lib/content/caps";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 300;
 
 const ASSET_KIND = "calibrated_mcq";
 const PROMPT_VERSION = "calibrated_mcq_v1";
-// 6 standards × 5 difficulty bands = 30 items per batch at full volume.
-// Start conservative for first nights; bump after May 7 review.
-const DEFAULT_BATCH_SIZE = 10;
+// Fallback when content_production_caps has no row (shouldn't happen
+// post-seed). The real daily target comes from getCap, bounded by
+// daily_max set in the caps table.
+const FALLBACK_BATCH_SIZE = 10;
 
 function systemTeacherId(): string {
   const id = process.env.DAILY_QUESTION_TEACHER_ID;
@@ -56,9 +58,17 @@ async function run(req: NextRequest) {
 
   const url = new URL(req.url);
   const force = url.searchParams.get("force") === "1";
+  // Adaptive target from content_production_caps. ?count= still wins
+  // for ad-hoc operator runs but is bounded by the cap's daily_max.
+  const cap = await getCap("calibrated_mcq");
+  const adaptiveTarget = cap.target || FALLBACK_BATCH_SIZE;
   const batchSize = Math.max(
     1,
-    Math.min(50, parseInt(url.searchParams.get("count") ?? `${DEFAULT_BATCH_SIZE}`, 10) || DEFAULT_BATCH_SIZE),
+    Math.min(
+      cap.max,
+      parseInt(url.searchParams.get("count") ?? `${adaptiveTarget}`, 10) ||
+        adaptiveTarget,
+    ),
   );
 
   let teacherId: string;

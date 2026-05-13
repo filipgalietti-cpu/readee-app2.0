@@ -29,6 +29,7 @@ import {
 } from "@/lib/factory";
 import { pickRotation } from "@/lib/factory/topic-rotation";
 import { brandVoicePromptBlock } from "@/lib/factory/brand-voice";
+import { getCap } from "@/lib/content/caps";
 
 export const dynamic = "force-dynamic";
 // Per-run can take 5+ minutes — 10 leveled passages × ~30s each plus
@@ -37,9 +38,9 @@ export const maxDuration = 300;
 
 const ASSET_KIND = "leveled_passage";
 const PROMPT_VERSION = "leveled_v1";
-// Conservative volume for first nights. Once we trust the QC outputs,
-// we can bump toward FACTORY_BATCH_CAPS.leveled_passage = 15.
-const DEFAULT_BATCH_SIZE = 5;
+// Fallback when the caps table has no row (shouldn't happen after the
+// 110 migration seeded one). The real daily target comes from getCap.
+const FALLBACK_BATCH_SIZE = 5;
 
 function systemTeacherId(): string {
   const id = process.env.DAILY_QUESTION_TEACHER_ID;
@@ -61,9 +62,17 @@ async function run(req: NextRequest) {
 
   const url = new URL(req.url);
   const force = url.searchParams.get("force") === "1";
+  // Adaptive target from content_production_caps. ?count= still wins
+  // for ad-hoc operator runs but is bounded by the cap's daily_max.
+  const cap = await getCap("leveled_passage");
+  const adaptiveTarget = cap.target || FALLBACK_BATCH_SIZE;
   const batchSize = Math.max(
     1,
-    Math.min(15, parseInt(url.searchParams.get("count") ?? `${DEFAULT_BATCH_SIZE}`, 10) || DEFAULT_BATCH_SIZE),
+    Math.min(
+      cap.max,
+      parseInt(url.searchParams.get("count") ?? `${adaptiveTarget}`, 10) ||
+        adaptiveTarget,
+    ),
   );
 
   let teacherId: string;

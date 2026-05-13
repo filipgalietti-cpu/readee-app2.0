@@ -25,24 +25,27 @@ import {
   listCategories,
   type DiscoveryCategory,
 } from "@/lib/discover/categories";
+import { getCap } from "@/lib/content/caps";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 300;
 
-const PER_RUN = 3;
+// Fallback when the caps table somehow has no row for us (shouldn't
+// happen post-seed, but safe default).
+const FALLBACK_PER_RUN = 3;
 
 /**
  * Pick which 3 categories run today. Deterministic by date so a
  * re-fire on the same day doesn't change the pick, but each day
  * rotates the slate so all 7 get covered every ~2.5 days.
  */
-function pickCategoriesForDate(date: Date): DiscoveryCategory[] {
+function pickCategoriesForDate(date: Date, perRun: number): DiscoveryCategory[] {
   const cats = listCategories().map((c) => c.slug);
   const dayIndex = Math.floor(
     date.getTime() / (24 * 60 * 60 * 1000),
   );
   const out: DiscoveryCategory[] = [];
-  for (let i = 0; i < PER_RUN; i++) {
+  for (let i = 0; i < perRun; i++) {
     out.push(cats[(dayIndex + i) % cats.length]);
   }
   return out;
@@ -56,11 +59,16 @@ async function run(req: NextRequest) {
   }
 
   const url = new URL(req.url);
+  // Daily target comes from the adaptive caps table by default. The
+  // ?count= query param still wins for ad-hoc operator runs.
+  const cap = await getCap("discovery_article");
+  const adaptiveTarget = cap.target || FALLBACK_PER_RUN;
   const count = Math.max(
     1,
     Math.min(
-      7,
-      parseInt(url.searchParams.get("count") ?? `${PER_RUN}`, 10) || PER_RUN,
+      cap.max,
+      parseInt(url.searchParams.get("count") ?? `${adaptiveTarget}`, 10) ||
+        adaptiveTarget,
     ),
   );
   const overrideCat = url.searchParams.get("category") as
@@ -71,7 +79,7 @@ async function run(req: NextRequest) {
 
   const cats: DiscoveryCategory[] = overrideCat
     ? Array(count).fill(overrideCat)
-    : pickCategoriesForDate(date).slice(0, count);
+    : pickCategoriesForDate(date, count);
 
   const results: any[] = [];
   let passCount = 0;
@@ -104,6 +112,8 @@ async function run(req: NextRequest) {
   return NextResponse.json({
     ok: true,
     date: date.toISOString().slice(0, 10),
+    target: count,
+    cap_max: cap.max,
     pass: passCount,
     warn: warnCount,
     fail: failCount,
