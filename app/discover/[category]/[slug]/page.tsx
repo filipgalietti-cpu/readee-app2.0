@@ -116,11 +116,23 @@ export default async function DiscoveryDetailPage({
         </h1>
 
         {a.image_url && (
-          <img
-            src={a.image_url}
-            alt=""
-            className="mt-6 w-full rounded-3xl border border-zinc-200 object-cover shadow-sm"
-          />
+          // aspect-square reserves space before the image loads so
+          // the rest of the article doesn't pop down when the image
+          // resolves. Imagen 4.0 renders 1:1 by default. Width/height
+          // attrs back up the aspect-ratio in older browsers. The
+          // bare <img> here used to drop CLS scores on this page to
+          // p75 = 5 because the entire article shifted on image load.
+          <div className="relative mt-6 w-full overflow-hidden rounded-3xl border border-zinc-200 shadow-sm aspect-square bg-zinc-50">
+            <img
+              src={a.image_url}
+              alt=""
+              width={1024}
+              height={1024}
+              fetchPriority="high"
+              decoding="async"
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+          </div>
         )}
 
         <div className="mt-6 flex items-center gap-2 text-xs text-zinc-500">
