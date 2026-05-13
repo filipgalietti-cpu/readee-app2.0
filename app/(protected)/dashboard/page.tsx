@@ -20,7 +20,7 @@ import { getChildAvatarImage, AVATAR_IMAGES, DEFAULT_AVATARS } from "@/lib/utils
 import { getItemsByCategory, BACKGROUND_IMAGES } from "@/lib/data/shop-items";
 import type { ShopPurchase, EquippedItems } from "@/lib/db/types";
 import { Target, Puzzle, BookOpen, Map, Carrot, Flame, Sun, CloudSun, Moon, Sparkles, Star, Rocket, Trophy, BarChart3, Sprout, ChevronDown, Lock, User, CreditCard, Bell, LogOut, ChevronsUpDown, Home, BookText, ListChecks, ClipboardCheck, Mic, Compass, Users, Brain } from "lucide-react";
-import InstallPWABanner from "@/app/_components/InstallPWABanner";
+import InstallPWATile from "@/app/_components/InstallPWATile";
 import type { ReactNode } from "react";
 import { getShopIcon } from "@/lib/data/shop-icons";
 import TeacherAssignmentsCard from "@/app/_components/TeacherAssignmentsCard";
@@ -306,9 +306,6 @@ export default function Dashboard() {
             </motion.div>
           )}
         </AnimatePresence>
-        <div className="mb-3">
-          <InstallPWABanner />
-        </div>
         <ChildDashboard
           child={selectedChild}
           children={children}
@@ -319,14 +316,7 @@ export default function Dashboard() {
     );
   }
 
-  return (
-    <>
-      <div className="mb-3">
-        <InstallPWABanner />
-      </div>
-      <ChildSelector children={children} onSelect={setSelectedChild} />
-    </>
-  );
+  return <ChildSelector children={children} onSelect={setSelectedChild} />;
 }
 
 /* ─── Onboarding flow: kid info → PfP → handoff → placement ───── */
@@ -1456,6 +1446,14 @@ function ChildDashboard({
               <span className="text-xs sm:text-sm font-extrabold text-white leading-tight">Community</span>
             </motion.div>
           </Link>
+        </motion.div>
+
+        {/* Install App tile — only renders when beforeinstallprompt
+            fired OR the device is iOS Safari (manual instructions).
+            Single tile width on mobile (full row), inline next to the
+            other tiles on sm+. Self-hides for 14 days on dismiss. */}
+        <motion.div variants={slideUp}>
+          <InstallPWATile />
         </motion.div>
 
         {/* ── Today's Readee — daily question ritual ──
