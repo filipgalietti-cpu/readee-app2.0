@@ -1391,6 +1391,7 @@
             "ttsScript": "The bunny was famished, so he ate five carrots.",
             "displayText": "The bunny was famished, so he ate five carrots.",
             "interaction": "Story text appears. The word 'famished' glows/highlights.",
+            "audioRegenAt": null,
             "displayDelay": 0,
             "displayStyle": "passage"
           },
@@ -5192,6 +5193,7 @@
             "ttsScript": "Some words have two beats — like 'apple.' Ap-ple! Two claps!",
             "displayText": "Ap-ple has 2 claps",
             "interaction": "Pill: [Ap-ple = 2 claps] pops in.",
+            "audioRegenAt": null,
             "displayDelay": 853
           },
           {
@@ -6280,6 +6282,7 @@
             "imageFile": "images/lessons/RF.K.3a/S2c.png",
             "ttsScript": "The letter tee. Like a ticking clock.",
             "interaction": "Clock image + T tile + phoneme audio.",
+            "audioRegenAt": null,
             "afterPhonemes": [
               "t"
             ],
@@ -7842,7 +7845,7 @@
             ],
             "audioFile": "audio/lessons/RF.K.3d/S4c.mp3",
             "ttsScript": "Slow and careful beats fast and wrong!",
-            "audioRegenAt": "2026-05-12T02:10:29.973Z",
+            "audioRegenAt": null,
             "displayParts": [
               {
                 "text": "Slow and careful",
@@ -9643,7 +9646,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/K.L.4/S4a.mp3",
             "ttsScript": "Think of yourself as a word detective. Every unknown word is a mystery to solve!",
-            "audioRegenAt": "2026-05-12T02:02:07.948Z",
+            "audioRegenAt": null,
             "displayParts": [
               {
                 "text": "Think of yourself as a ",
@@ -14899,7 +14902,7 @@
             "sub": "c",
             "audioFile": "audio/lessons/RI.1.1/S1c.mp3",
             "ttsScript": "Let us learn to be fact finders!",
-            "audioRegenAt": "2026-05-12T01:37:39.445Z",
+            "audioRegenAt": null,
             "displayParts": [
               {
                 "text": "Let us learn to be ",
@@ -15931,7 +15934,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RI.1.3/S2a.mp3",
             "ttsScript": "Listen. It rained all day. The next morning, puddles were everywhere.",
-            "audioRegenAt": "2026-05-12T01:33:56.443Z",
+            "audioRegenAt": null,
             "displayParts": [
               {
                 "text": "It rained all day.",
@@ -17300,7 +17303,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RI.1.6/S2a.mp3",
             "ttsScript": "Listen. The text says ladybugs are small insects.",
-            "audioRegenAt": "2026-05-12T01:28:41.465Z",
+            "audioRegenAt": null,
             "displayParts": [
               {
                 "text": "Listen. The ",
@@ -17467,7 +17470,7 @@
             "audioFile": "audio/lessons/RI.1.6/S3b.mp3",
             "ttsScript": "The exact color of an animal.",
             "displayText": "Exact colors",
-            "audioRegenAt": "2026-05-12T01:29:13.825Z",
+            "audioRegenAt": null,
             "displayParts": [
               {
                 "text": "The exact ",
@@ -18913,7 +18916,7 @@
             ],
             "audioFile": "audio/lessons/RI.1.9/S3c.mp3",
             "ttsScript": "Both books are about the sun!",
-            "audioRegenAt": "2026-05-12T01:23:45.980Z",
+            "audioRegenAt": null,
             "displayParts": [
               {
                 "text": "Both books are about ",
@@ -19142,6 +19145,7 @@
             "audioFile": "audio/lessons/RF.1.1a/S2c.mp3",
             "ttsScript": "The first word is The. See the big capital T at the beginning?",
             "interaction": "Tile The pulses.",
+            "audioRegenAt": null,
             "displayDiagram": {
               "delay": 1500,
               "letters": [
@@ -19173,6 +19177,7 @@
             "audioFile": "audio/lessons/RF.1.1a/S3b.mp3",
             "ttsScript": "A period. A question mark. Or an exclamation mark!",
             "interaction": "Three marks appear.",
+            "audioRegenAt": null,
             "displayDiagram": {
               "delay": 1500,
               "letters": [
@@ -19748,6 +19753,7 @@
             "audioFile": "audio/lessons/RF.1.2c/S2d.mp3",
             "ttsScript": "And the last sound is at the end.",
             "interaction": "",
+            "audioRegenAt": null,
             "afterPhonemes": [
               "p"
             ],
@@ -21827,7 +21833,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/L.1.4a/S2b.mp3",
             "ttsScript": "What does fluffy mean? Soft and puffy.",
-            "audioRegenAt": "2026-05-12T01:15:45.386Z",
+            "audioRegenAt": null,
             "displayParts": [
               {
                 "text": "What does ",
@@ -21917,7 +21923,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.1.4a/S3a.mp3",
             "ttsScript": "Listen. The kid bounced high on the trampoline.",
-            "audioRegenAt": "2026-05-12T01:16:05.481Z",
+            "audioRegenAt": null,
             "displayParts": [
               {
                 "text": "Listen.",
@@ -29849,7 +29855,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RI.2.1/S3a.mp3",
             "ttsScript": "Listen. Seal pups are born on ice. Their moms teach them to swim.",
-            "audioRegenAt": "2026-05-11T23:52:45.865Z",
+            "audioRegenAt": null,
             "displayParts": [
               {
                 "text": "Listen.",
@@ -30326,7 +30332,7 @@
             ],
             "audioFile": "audio/lessons/RI.2.2/S3c.mp3",
             "ttsScript": "Main topic? Honey bees! Everything connects back to them.",
-            "audioRegenAt": "2026-05-11T23:51:10.370Z",
+            "audioRegenAt": null,
             "displayParts": [
               {
                 "text": "Main topic?",
@@ -31472,7 +31478,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RI.2.5/S1b.mp3",
             "ttsScript": "They help you find facts fast.",
-            "audioRegenAt": "2026-05-11T23:44:46.381Z",
+            "audioRegenAt": null,
             "displayParts": [
               {
                 "text": "They help you ",
@@ -32394,7 +32400,7 @@
             ],
             "audioFile": "audio/lessons/RI.2.7/S2c.mp3",
             "ttsScript": "Easier to see than to read!",
-            "audioRegenAt": "2026-05-11T23:42:08.949Z",
+            "audioRegenAt": null,
             "displayParts": [
               {
                 "text": "Easier to see",
@@ -35740,7 +35746,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.2.3e/S1b.mp3",
             "ttsScript": "These are surprises English throws at us.",
-            "audioRegenAt": "2026-05-11T23:30:24.754Z",
+            "audioRegenAt": null,
             "displayParts": [
               {
                 "text": "These are ",
@@ -36207,7 +36213,19 @@
               "delay": 1500,
               "letters": [
                 {
-                  "text": "again"
+                  "text": "A"
+                },
+                {
+                  "text": "G"
+                },
+                {
+                  "text": "A"
+                },
+                {
+                  "text": "I"
+                },
+                {
+                  "text": "N"
                 }
               ]
             }
@@ -36221,7 +36239,20 @@
               "delay": 1500,
               "letters": [
                 {
-                  "text": "could"
+                  "text": "C"
+                },
+                {
+                  "text": "O"
+                },
+                {
+                  "text": "U"
+                },
+                {
+                  "text": "L",
+                  "silent": true
+                },
+                {
+                  "text": "D"
                 }
               ]
             }
@@ -45465,7 +45496,7 @@
             ],
             "audioFile": "audio/lessons/RI.3.2/S2c.mp3",
             "ttsScript": "Main idea: dogs help people in many ways.",
-            "audioRegenAt": "2026-05-11T22:49:35.752Z",
+            "audioRegenAt": null,
             "displayParts": [
               {
                 "text": "Main idea:",
@@ -48424,7 +48455,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.3.3/S1a.mp3",
             "ttsScript": "Word analysis means",
-            "audioRegenAt": "2026-05-11T23:51:27.378Z",
+            "audioRegenAt": null,
             "displayParts": [
               {
                 "text": "Word analysis means",
@@ -49601,7 +49632,7 @@
             ],
             "audioFile": "audio/lessons/RF.3.3c/S1b.mp3",
             "ttsScript": "Long words are just small words put together.",
-            "audioRegenAt": "2026-05-11T04:12:10.506Z",
+            "audioRegenAt": null,
             "displayParts": [
               {
                 "text": "Long words are just",
@@ -53062,7 +53093,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.3.4c/S3a.mp3",
             "ttsScript": "Hand: handful, handy, handed.",
-            "audioRegenAt": "2026-05-11T03:56:23.768Z",
+            "audioRegenAt": null,
             "displayParts": [
               {
                 "text": "Hand:",
@@ -54411,7 +54442,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.3.5b/S2a.mp3",
             "ttsScript": "Cozy means warm and snug.",
-            "audioRegenAt": "2026-05-11T03:31:22.764Z",
+            "audioRegenAt": null,
             "displayParts": [
               {
                 "text": "Cozy means ",
@@ -56541,7 +56572,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RL.4.4/S1b.mp3",
             "ttsScript": "Mythological references, allusions, and figurative language all show up.",
-            "audioRegenAt": "2026-05-11T03:20:29.389Z",
+            "audioRegenAt": null,
             "displayParts": [
               {
                 "text": "Mythological references",
@@ -62740,7 +62771,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.4.3a/S4b.mp3",
             "ttsScript": "When decoding, scan for known combos first. They are anchor points.",
-            "audioRegenAt": "2026-05-11T02:28:37.870Z",
+            "audioRegenAt": null,
             "displayParts": [
               {
                 "text": "Anchor points",
@@ -63352,75 +63383,86 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/L.4.4/S3a.mp3",
-            "ttsScript": "Endings like -ing, -ed, -s",
-            "displayText": "",
+            "ttsScript": "Some endings change a word's meaning. Like -less and -ful.",
             "interaction": "",
-            "audioRegenAt": "2026-05-11T02:23:34.499Z",
+            "audioRegenAt": null,
             "displayParts": [
               {
-                "text": "Endings like ",
+                "text": "Some endings change a word's ",
                 "delay": 0
               },
               {
-                "text": "-ing",
-                "delay": 1000
+                "text": "meaning.",
+                "delay": 1500
               },
               {
-                "text": ", -ed",
-                "delay": 2000
+                "text": " Like ",
+                "delay": 2500
               },
               {
-                "text": ", -s",
+                "text": "-less",
                 "delay": 3000
+              },
+              {
+                "text": " and ",
+                "delay": 3500
+              },
+              {
+                "text": "-ful.",
+                "delay": 4000
               }
             ],
             "highlightWord": {
-              "word": "Endings",
-              "delay": 300
+              "word": "meaning",
+              "delay": 1500
             },
             "highlightPills": [
               {
                 "pill": 1,
-                "delay": 1000
-              },
-              {
-                "pill": 2,
-                "delay": 2000
+                "delay": 1500
               },
               {
                 "pill": 3,
                 "delay": 3000
+              },
+              {
+                "pill": 5,
+                "delay": 4000
               }
             ]
           },
           {
             "sub": "b",
+            "sfxClaps": [
+              {
+                "delay": 3500
+              }
+            ],
             "audioFile": "audio/lessons/L.4.4/S3b.mp3",
-            "ttsScript": "These tell you about tense and number.",
-            "displayText": "",
+            "ttsScript": "Hopeless means without hope. Hopeful means full of hope.",
             "interaction": "",
-            "audioRegenAt": "2026-05-11T02:23:40.889Z",
+            "audioRegenAt": null,
             "displayParts": [
               {
-                "text": "These tell you about ",
+                "text": "Hopeless means ",
                 "delay": 0
               },
               {
-                "text": "tense",
+                "text": "without hope.",
                 "delay": 1000
               },
               {
-                "text": " and ",
-                "delay": 1800
+                "text": " Hopeful means ",
+                "delay": 2200
               },
               {
-                "text": "number",
-                "delay": 2500
+                "text": "full of hope.",
+                "delay": 3000
               }
             ],
             "highlightWord": {
-              "word": "tense",
-              "delay": 1000
+              "word": "Hopeful",
+              "delay": 2200
             },
             "highlightPills": [
               {
@@ -63429,14 +63471,14 @@
               },
               {
                 "pill": 3,
-                "delay": 2500
+                "delay": 3000
               }
             ]
           }
         ],
-        "heading": "Inflectional Endings",
+        "heading": "Endings That Change Meaning",
         "imageFile": "images/lessons/L.4.4/S3.png",
-        "imagePrompt": "A cheerful cartoon word tile with an -ing suffix snapping on. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters."
+        "imagePrompt": "A cheerful cartoon scientist holding two suffix-shaped tokens, one shaped like a frown and one shaped like a smile, ready to clip them onto a glowing word puzzle. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters."
       },
       {
         "type": "tip",
@@ -67388,7 +67430,7 @@
             ],
             "audioFile": "audio/lessons/RF.1.3d/S1b.mp3",
             "ttsScript": "You can clap a word to find the beats!",
-            "audioRegenAt": "2026-05-08T04:14:59.881Z",
+            "audioRegenAt": null,
             "displayParts": [
               {
                 "text": "Clap it out",
@@ -67883,7 +67925,7 @@
             "audioFile": "audio/lessons/RF.1.3e/S2a.mp3",
             "ttsScript": "If there are two of the same consonants in the middle, split between them.",
             "interaction": "",
-            "audioRegenAt": "2026-05-08T03:53:48.867Z",
+            "audioRegenAt": null,
             "displayParts": [
               {
                 "text": "If there are two of the same ",
@@ -67922,7 +67964,7 @@
             "audioFile": "audio/lessons/RF.1.3e/S2b.mp3",
             "ttsScript": "Rabbit becomes rab and bit.",
             "interaction": "",
-            "audioRegenAt": "2026-05-08T03:53:55.720Z",
+            "audioRegenAt": null,
             "displayParts": [
               {
                 "text": "Rabbit becomes ",
@@ -67959,16 +68001,16 @@
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.1.3e/S2c.mp3",
-            "ttsScript": "Napkin becomes nap and kin.",
+            "ttsScript": "Mitten becomes mit and ten.",
             "interaction": "",
-            "audioRegenAt": "2026-05-08T03:54:00.674Z",
+            "audioRegenAt": null,
             "displayParts": [
               {
-                "text": "Napkin becomes ",
+                "text": "Mitten becomes ",
                 "delay": 0
               },
               {
-                "text": "nap",
+                "text": "mit",
                 "delay": 1000
               },
               {
@@ -67976,12 +68018,12 @@
                 "delay": 1500
               },
               {
-                "text": "kin.",
+                "text": "ten.",
                 "delay": 2000
               }
             ],
             "highlightWord": {
-              "word": "Napkin",
+              "word": "Mitten",
               "delay": 0
             },
             "highlightPills": [
@@ -73570,7 +73612,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.4.2/S3a.mp3",
             "ttsScript": "In dialogue, commas and periods go inside the quotation marks.",
-            "audioRegenAt": "2026-05-11T01:48:41.657Z",
+            "audioRegenAt": null,
             "displayParts": [
               {
                 "text": "In ",

@@ -1548,23 +1548,17 @@
         },
         {
           "id": "RI.K.5-Q8",
-          "type": "sentence_build",
-          "prompt": "Put the words in order to make a sentence about books.",
-          "choices": [],
-          "correct": "A book has a front cover.",
-          "hint": "Start with 'A' and end with 'cover'!",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q8.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q8-hint.mp3",
-          "sentence_hint": "A book has something on the outside...",
-          "words": [
-            "has",
-            "A",
-            "cover",
-            "book",
-            "a",
-            "front"
-          ]
+          "type": "multiple_choice",
+          "prompt": "Where is the TITLE of a book usually printed?",
+          "choices": [
+            "On the back cover",
+            "On the front cover",
+            "Hidden inside the book",
+            "On the very last page"
+          ],
+          "correct": "On the front cover",
+          "hint": "Look at any book — the big name sits right on the FRONT for everyone to see.",
+          "difficulty": 1
         },
         {
           "id": "RI.K.5-Q9",
@@ -2238,43 +2232,31 @@
         },
         {
           "id": "RF.K.1a-Q7",
-          "type": "sentence_build",
-          "prompt": "Put the words in the right order.",
-          "choices": [],
-          "correct": "I Like To Read.",
-          "hint": "Start with 'I' and end with a period.",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q7.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q7-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.1a/RF.K.1a-Q7.png",
-          "sentence_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q7-sentence.mp3",
-          "sentence_hint": "Someone enjoys reading!",
-          "words": [
-            "I",
-            "Read",
-            "To",
-            "Like"
-          ]
+          "type": "multiple_choice",
+          "prompt": "We read words from LEFT to RIGHT. Look at this line: \"The cat ran fast.\" Which word do you read FIRST?",
+          "choices": [
+            "The",
+            "cat",
+            "ran",
+            "fast"
+          ],
+          "correct": "The",
+          "hint": "Reading always starts at the very beginning — on the LEFT side of the line!",
+          "difficulty": 1
         },
         {
           "id": "RF.K.1a-Q8",
-          "type": "sentence_build",
-          "prompt": "Arrange the words to build a sentence.",
-          "choices": [],
-          "correct": "The Dog Ran Fast.",
-          "hint": "Start with a capital letter. What did the dog do?",
-          "difficulty": 2,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q8.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q8-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.1a/RF.K.1a-Q8.png",
-          "sentence_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q8-sentence.mp3",
-          "sentence_hint": "A dog is moving quickly!",
-          "words": [
-            "Dog",
-            "Ran",
-            "The",
-            "Fast"
-          ]
+          "type": "multiple_choice",
+          "prompt": "After you finish reading the LAST word on a line, where do your eyes go next?",
+          "choices": [
+            "Stay on the same line",
+            "Skip to the bottom of the page",
+            "Down a line, back to the LEFT",
+            "Up to the top of the page"
+          ],
+          "correct": "Down a line, back to the LEFT",
+          "hint": "Your eyes drop down one line and go ALL the way back to the start.",
+          "difficulty": 2
         },
         {
           "id": "RF.K.1a-Q9",

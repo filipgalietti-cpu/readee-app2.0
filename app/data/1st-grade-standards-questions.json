@@ -1103,22 +1103,17 @@
         },
         {
           "id": "RI.1.4-Q10",
-          "type": "sentence_build",
-          "prompt": "Put the words in order to make a sentence.",
-          "choices": [],
-          "correct": "Whales live in the ocean.",
-          "hint": "Start with 'Whales' and think about where they live!",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.4/RI.1.4-Q10.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.4/RI.1.4-Q10-hint.mp3",
-          "sentence_hint": "Whales live somewhere...",
-          "words": [
-            "in",
-            "Whales",
-            "the",
-            "live",
-            "ocean"
-          ]
+          "type": "multiple_choice",
+          "prompt": "The story says: \"The whale was ENORMOUS — its tail alone was as long as a school bus!\" What does ENORMOUS mean?",
+          "choices": [
+            "very tiny",
+            "very loud",
+            "very colorful",
+            "very big"
+          ],
+          "correct": "very big",
+          "hint": "Look at the clue right after the word — a tail as long as a school bus. What does that tell you about the whale's size?",
+          "difficulty": 2
         },
         {
           "id": "RI.1.4-Q11",
