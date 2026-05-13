@@ -729,19 +729,7 @@ function ChildDashboard({
   const [currentChild, setCurrentChild] = useState(child);
   const [avatarPickerOpen, setAvatarPickerOpen] = useState(false);
   const [purchases, setPurchases] = useState<ShopPurchase[]>([]);
-  const [parentMode, setParentMode] = useState(false);
-  const sidebarOpen = useSidebarStore((s) => s.open);
-  const setSidebarOpen = useSidebarStore((s) => s.setOpen);
   const avatarSrc = getChildAvatarImage(currentChild, childIndex);
-
-  // Remove main container constraints so sidebar can be flush left
-  useEffect(() => {
-    const main = document.querySelector("main");
-    if (main) { main.style.paddingLeft = "0"; main.style.paddingRight = "0"; main.style.paddingBottom = "0"; main.style.maxWidth = "none"; }
-    return () => {
-      if (main) { main.style.paddingLeft = ""; main.style.paddingRight = ""; main.style.paddingBottom = ""; main.style.maxWidth = ""; }
-    };
-  }, []);
   const hasMultiple = children.length > 1;
   const greeting = getGreeting();
   const motivation = useMemo(() => MOTIVATIONAL[Math.floor(Math.random() * MOTIVATIONAL.length)], []);
@@ -942,168 +930,14 @@ function ChildDashboard({
     <>
     {bgImage && <DashboardBackdrop src={bgImage} />}
 
-    {/* ── Mobile Parent Sidebar Overlay ── */}
-    <AnimatePresence>
-      {parentMode && (
-        <div className="fixed inset-0 z-40 lg:hidden">
-          <div className="absolute inset-0 bg-black/50" onClick={() => setParentMode(false)} />
-          <motion.aside
-            initial={{ x: -280, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: -280, opacity: 0 }}
-            transition={{ type: "spring", damping: 28, stiffness: 350 }}
-            className="absolute top-0 left-0 bottom-0 w-[272px] bg-white shadow-2xl overflow-hidden border-r border-zinc-200"
-          >
-            <ParentSidebar
-              child={child}
-              currentChild={currentChild}
-              childIndex={childIndex}
-              hasAssessment={hasAssessment}
-              readingLevel={readingLevel}
-              lessonProgress={lessonProgress}
-              userPlan={userPlan}
-              weeklyCarrots={weeklyCarrots}
-              recentCompleted={recentCompleted}
-              getCompletionDate={getCompletionDate}
-              showCurriculum={showCurriculum}
-              setShowCurriculum={setShowCurriculum}
-              expandedGrade={expandedGrade}
-              setExpandedGrade={setExpandedGrade}
-              onClose={() => setParentMode(false)}
-            />
-          </motion.aside>
-        </div>
-      )}
-    </AnimatePresence>
-
-    {/* Fixed sidebar (desktop) */}
-    <aside
-      className={`hidden lg:flex flex-col fixed top-[76px] left-0 bottom-0 z-30 bg-white dark:bg-slate-900 border-r border-zinc-200 dark:border-slate-700 transition-[width] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${
-        sidebarOpen ? "w-[272px]" : "w-[72px]"
-      }`}
-    >
-      <div className="flex flex-col h-full">
-          {sidebarOpen ? (
-            <motion.div
-              key="expanded"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.2, delay: 0.1 }}
-              className="flex-1 overflow-y-auto overflow-x-hidden"
-            >
-              <ParentSidebar
-                child={child}
-                currentChild={currentChild}
-                childIndex={childIndex}
-                hasAssessment={hasAssessment}
-                readingLevel={readingLevel}
-                lessonProgress={lessonProgress}
-                userPlan={userPlan}
-                weeklyCarrots={weeklyCarrots}
-                recentCompleted={recentCompleted}
-                getCompletionDate={getCompletionDate}
-                showCurriculum={showCurriculum}
-                setShowCurriculum={setShowCurriculum}
-                expandedGrade={expandedGrade}
-                setExpandedGrade={setExpandedGrade}
-                onToggle={() => setSidebarOpen(false)}
-              />
-            </motion.div>
-          ) : (
-            <motion.div
-              key="collapsed"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.2, delay: 0.1 }}
-              className="flex flex-col items-center h-full py-3"
-            >
-              <button
-                onClick={() => setSidebarOpen(true)}
-                className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-zinc-100 transition-colors mb-2"
-                aria-label="Expand sidebar"
-              >
-                <ChevronDown className="w-5 h-5 text-zinc-400 rotate-90" strokeWidth={2} />
-              </button>
-
-              {/* Main */}
-              <div className="space-y-1">
-                <SidebarTooltip label="Dashboard">
-                  <Link href="/dashboard" className="w-10 h-10 rounded-lg flex items-center justify-center bg-indigo-50 transition-colors">
-                    <Home className="w-5 h-5 text-indigo-500" strokeWidth={1.5} />
-                  </Link>
-                </SidebarTooltip>
-                <SidebarTooltip label={hasAssessment ? "Placement Test Results" : "Take Placement Test"}>
-                  <Link
-                    href={hasAssessment ? `/assessment-results?child=${child.id}` : `/assessment?child=${child.id}`}
-                    className={`w-10 h-10 rounded-lg flex items-center justify-center transition-colors ${
-                      !hasAssessment ? "bg-indigo-50" : "hover:bg-zinc-100"
-                    }`}
-                  >
-                    <ClipboardCheck className={`w-5 h-5 ${!hasAssessment ? "text-indigo-500" : "text-zinc-500"}`} strokeWidth={1.5} />
-                  </Link>
-                </SidebarTooltip>
-                <SidebarTooltip label="Analytics">
-                  <Link href={`/analytics?child=${child.id}`} className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-zinc-100 transition-colors">
-                    <BarChart3 className="w-5 h-5 text-zinc-500" strokeWidth={1.5} />
-                  </Link>
-                </SidebarTooltip>
-              </div>
-
-              <div className="w-5 h-px bg-zinc-200 my-2" />
-
-              {/* Learning */}
-              <div className="space-y-1">
-                <SidebarTooltip label="Word Bank">
-                  <Link href="/word-bank" className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-zinc-100 transition-colors">
-                    <BookText className="w-5 h-5 text-zinc-500" strokeWidth={1.5} />
-                  </Link>
-                </SidebarTooltip>
-                <SidebarTooltip label="Practice">
-                  <Link href={`/practice-hub?child=${child.id}`} className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-zinc-100 transition-colors">
-                    <ListChecks className="w-5 h-5 text-zinc-500" strokeWidth={1.5} />
-                  </Link>
-                </SidebarTooltip>
-                <SidebarTooltip label="Reading Journey">
-                  <Link href={`/journey?child=${child.id}`} className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-zinc-100 transition-colors">
-                    <Map className="w-5 h-5 text-zinc-500" strokeWidth={1.5} />
-                  </Link>
-                </SidebarTooltip>
-              </div>
-
-              <div className="w-5 h-px bg-zinc-200 my-2" />
-
-              {/* Fun */}
-              <div className="space-y-1">
-                <SidebarTooltip label="Shop">
-                  <Link href={`/shop?child=${child.id}`} className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-zinc-100 transition-colors">
-                    <Carrot className="w-[19px] h-[19px] text-orange-500" strokeWidth={1.5} />
-                  </Link>
-                </SidebarTooltip>
-                <SidebarTooltip label="Leaderboard">
-                  <Link href={`/leaderboard?child=${child.id}`} className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-zinc-100 transition-colors">
-                    <Trophy className="w-5 h-5 text-zinc-500" strokeWidth={1.5} />
-                  </Link>
-                </SidebarTooltip>
-              </div>
-
-              {/* Avatar at bottom */}
-              <div className="mt-auto">
-                <SidebarTooltip label={currentChild.first_name}>
-                  <button
-                    onClick={() => setSidebarOpen(true)}
-                    className="w-10 h-10 rounded-lg overflow-hidden ring-2 ring-zinc-200 hover:ring-indigo-300 transition-all"
-                  >
-                    <img src={avatarSrc} alt={currentChild.first_name} className="w-full h-full object-cover" draggable={false} />
-                  </button>
-                </SidebarTooltip>
-              </div>
-            </motion.div>
-          )}
-        </div>
-    </aside>
-
-    {/* Main content with left margin to account for fixed sidebar */}
-    <div className={`min-h-screen transition-[margin] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${sidebarOpen ? "lg:ml-[272px]" : "lg:ml-[72px]"}`}>
+    {/* Sidebar is rendered by SidebarShell (the protected layout) so
+        every page shares the same chrome. The dashboard used to host
+        its own bespoke parent + collapsed-rail sidebars right here —
+        ripped out in favor of the single shared AppSidebar. */}
+    {/* Sidebar removed — SidebarShell renders the shared AppSidebar
+        and handles the left margin, so this page just lays out
+        content like every other parent surface. */}
+    <div className="min-h-screen">
       <motion.div
         className="max-w-3xl mx-auto px-4 pt-10 pb-12 space-y-5"
         variants={staggerContainer}
@@ -1480,17 +1314,6 @@ function ChildDashboard({
              B2C accounts (which is most of them). */}
         <motion.div variants={slideUp}>
           <TeacherAssignmentsCard childId={child.id} />
-        </motion.div>
-
-        {/* ── Mobile: Parent Dashboard toggle ── */}
-        <motion.div variants={slideUp} className="lg:hidden">
-          <button
-            onClick={() => setParentMode(true)}
-            className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold text-zinc-400 dark:text-slate-500 hover:text-zinc-600 dark:hover:text-slate-300 hover:bg-zinc-50 dark:hover:bg-slate-800/50 transition-all border border-zinc-200 dark:border-slate-700"
-          >
-            <Lock className="w-3.5 h-3.5" strokeWidth={2} />
-            <span>Parent Dashboard</span>
-          </button>
         </motion.div>
 
         {/* Testimonial capture — fires once the kid has completed

@@ -4,27 +4,26 @@ import { usePathname } from "next/navigation";
 import { useSidebarStore } from "@/lib/stores/sidebar-store";
 import AppSidebar from "./AppSidebar";
 
-/** Pages where the desktop sidebar is hidden (immersive/fullscreen modes) */
+/**
+ * Immersive routes that hide the desktop sidebar — these are
+ * fullscreen kid experiences where a sidebar would just steal real
+ * estate from the lesson/practice runner. Everywhere else (including
+ * dashboard, settings, account, billing) renders the single shared
+ * AppSidebar so parents/kids never see a different chrome between
+ * pages.
+ */
 const HIDDEN_PAGES = new Set([
   "/practice",
   "/assessment",
   "/learn",
   "/lesson",
-  "/billing",
-  "/notifications",
-  "/account",
-  "/settings",
 ]);
 
 export default function SidebarShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const open = useSidebarStore((s) => s.open);
 
-  // Hide desktop sidebar on immersive pages, but always render for mobile overlay
-  const hidden = HIDDEN_PAGES.has(pathname);
-  const isDashboard = pathname === "/dashboard";
-
-  if (hidden || isDashboard) {
+  if (HIDDEN_PAGES.has(pathname)) {
     return (
       <>
         {/* Mobile sidebar overlay still available via hamburger */}
