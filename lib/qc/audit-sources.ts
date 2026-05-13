@@ -77,12 +77,31 @@ export function loadLessonsFromJson(): AuditLesson[] {
 //                          should police BEFORE next JSON sync") ──
 
 /**
- * Grade values in questions_db are stored as short codes ("K", "1st",
- * "2nd", "3rd", "4th"). We bucket by code; rows with unrecognized
- * grades land in a "(unknown)" bucket so the audit still sees them
- * instead of silently dropping.
+ * Grade values in questions_db are stored inconsistently — the JSON
+ * banks use "1st"/"2nd"/"3rd"/"4th" but the DB column carries the
+ * bare numerics "1"/"2"/"3"/"4" (master_manifest convention).
+ * Normalize both shapes to the JSON-style code so the rest of the
+ * audit pipeline (spec checks, grade-conditional rules like
+ * spec.tts_required for K-G1) sees one canonical form.
+ *
+ * Anything that doesn't match any known shape lands in "(unknown)"
+ * so the audit still scans it without silently dropping the row.
  */
 const QUESTION_GRADE_BUCKETS = ["K", "1st", "2nd", "3rd", "4th"] as const;
+
+function normalizeGrade(raw: string | null): string {
+  const g = String(raw ?? "").trim();
+  if (!g) return "(unknown)";
+  // Direct hits
+  if ((QUESTION_GRADE_BUCKETS as readonly string[]).includes(g)) return g;
+  // Bare numeric or letter shortcuts
+  if (g === "K" || g.toLowerCase() === "kindergarten" || g === "0") return "K";
+  if (g === "1" || g === "G1" || g.toLowerCase() === "1st grade") return "1st";
+  if (g === "2" || g === "G2" || g.toLowerCase() === "2nd grade") return "2nd";
+  if (g === "3" || g === "G3" || g.toLowerCase() === "3rd grade") return "3rd";
+  if (g === "4" || g === "G4" || g.toLowerCase() === "4th grade") return "4th";
+  return "(unknown)";
+}
 
 export async function loadQuestionBanksFromDb(): Promise<AuditGradeBank[]> {
   const admin = supabaseAdmin();
@@ -126,11 +145,7 @@ export async function loadQuestionBanksFromDb(): Promise<AuditGradeBank[]> {
   grades.set("(unknown)", new Map());
 
   for (const r of rows) {
-    const gradeKey: GradeKey = QUESTION_GRADE_BUCKETS.includes(
-      r.grade as any,
-    )
-      ? (r.grade as GradeKey)
-      : "(unknown)";
+    const gradeKey: GradeKey = normalizeGrade(r.grade);
     const stdMap = grades.get(gradeKey)!;
     const list = stdMap.get(r.standard_id) ?? [];
     list.push({

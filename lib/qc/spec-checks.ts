@@ -12,7 +12,15 @@
  * file is the shared definition. When in doubt, encode the rule here
  * (deterministic) rather than ship a softer judge prompt.
  */
-const KG1_GRADES = new Set(["K", "Kindergarten", "1st", "1st Grade", "G1"]);
+// Accept every grade-string format the DB uses (JSON banks use "1st",
+// questions_db uses bare "1", lessons_db uses "Kindergarten"/"1st Grade").
+// normalizeGrade in audit-sources.ts collapses these to the JSON form,
+// but spec-checks may be called directly on DB rows that haven't been
+// normalized — so this set accepts all variants.
+const KG1_GRADES = new Set([
+  "K", "Kindergarten", "0",
+  "1", "1st", "1st Grade", "G1",
+]);
 
 export type CheckResult = {
   ok: boolean;
