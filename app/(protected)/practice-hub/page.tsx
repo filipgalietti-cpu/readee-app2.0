@@ -436,18 +436,36 @@ function PracticeHubContent() {
   };
 
   return (
-    <div className="max-w-2xl mx-auto py-6 px-4 space-y-3">
-      {/* Header */}
+    <div className="max-w-2xl mx-auto py-6 px-4 space-y-4">
+      {/* Kid-forward hero — bunny mascot + greeting, matches the
+          dashboard's vibe so /practice-hub feels like the same world
+          rather than a tools page. */}
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
-        className="text-center mb-2"
+        className="rounded-3xl bg-gradient-to-br from-indigo-50 via-violet-50 to-fuchsia-50 dark:from-indigo-950/30 dark:via-violet-950/30 dark:to-fuchsia-950/30 p-5 sm:p-6 flex items-center gap-4 sm:gap-5"
       >
-        <Zap className="w-10 h-10 text-indigo-500 mx-auto mb-2" strokeWidth={1.5} />
-        <h1 className="text-2xl font-extrabold text-zinc-900">Practice</h1>
-        <p className="text-sm text-zinc-500 mt-1">
-          {allStandards.length} topics &middot; {totalQs} questions
-        </p>
+        <div className="relative flex h-20 w-20 sm:h-24 sm:w-24 flex-shrink-0 items-center justify-center rounded-2xl bg-white/70 dark:bg-slate-800/70 shadow-sm">
+          <Image
+            src="/images/ui/bunny-stars.png"
+            alt=""
+            width={96}
+            height={96}
+            className="h-16 w-16 sm:h-20 sm:w-20 object-contain drop-shadow"
+            priority={false}
+          />
+        </div>
+        <div className="flex-1 min-w-0">
+          <div className="text-[11px] font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-300">
+            Practice Time
+          </div>
+          <h1 className="mt-0.5 text-2xl sm:text-3xl font-extrabold text-zinc-900 dark:text-slate-100 leading-tight">
+            Pick a skill, {child.first_name}!
+          </h1>
+          <p className="mt-1 text-xs sm:text-sm text-zinc-500 dark:text-slate-400">
+            {allStandards.length} topics &middot; {totalQs} questions
+          </p>
+        </div>
       </motion.div>
 
       {/* Smart search — Readee+ semantic search across canon lessons,
@@ -488,32 +506,42 @@ function PracticeHubContent() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 + gIdx * 0.04 }}
-            className="rounded-2xl bg-white shadow-sm overflow-hidden"
+            className={`rounded-3xl overflow-hidden transition-shadow duration-200 ${
+              gradeOpen
+                ? "shadow-lg"
+                : "shadow-sm hover:shadow-md bg-white dark:bg-slate-800"
+            }`}
           >
             {/* Grade header */}
             <button
               onClick={() => toggleGrade(grade.gradeKey)}
-              className={`w-full text-left px-5 py-4 flex items-center gap-3 transition-colors ${
-                gradeOpen ? "bg-gradient-to-r from-indigo-600 to-violet-500" : "hover:bg-zinc-50"
+              className={`w-full text-left px-5 py-4 flex items-center gap-4 transition-colors ${
+                gradeOpen
+                  ? "bg-gradient-to-r from-indigo-600 to-violet-500"
+                  : "hover:bg-indigo-50/40 dark:hover:bg-indigo-950/20"
               }`}
             >
-              <div className="w-9 h-9 rounded-xl overflow-hidden flex-shrink-0">
+              <div className={`w-12 h-12 rounded-2xl overflow-hidden flex-shrink-0 ring-2 transition ${
+                gradeOpen ? "ring-white/40" : "ring-indigo-100 dark:ring-slate-700"
+              }`}>
                 <Image
                   src={GRADE_BADGES[grade.gradeKey] || ""}
                   alt={grade.label}
-                  width={36}
-                  height={36}
+                  width={48}
+                  height={48}
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="flex-1 min-w-0">
-                <p className={`text-sm font-bold ${gradeOpen ? "text-white" : "text-zinc-900"}`}>{grade.label}</p>
-                <p className={`text-[11px] ${gradeOpen ? "text-white/70" : "text-zinc-400"}`}>
+                <p className={`text-base font-extrabold leading-tight ${gradeOpen ? "text-white" : "text-zinc-900 dark:text-slate-100"}`}>
+                  {grade.label}
+                </p>
+                <p className={`text-[11px] mt-0.5 ${gradeOpen ? "text-white/75" : "text-zinc-500 dark:text-slate-400"}`}>
                   {grade.standards.length} topics &middot; {grade.totalQs} questions
                 </p>
               </div>
               <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${
-                gradeOpen ? "text-white/60 rotate-180" : "text-zinc-400"
+                gradeOpen ? "text-white/70 rotate-180" : "text-indigo-400 dark:text-indigo-400/60"
               }`} />
             </button>
 
