@@ -21,7 +21,9 @@
 
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { autoHealDaily } from "@/lib/daily/build-daily";
+import { buildDiscoveryArticle } from "@/lib/discover/build-discovery";
 import { getCap } from "@/lib/content/caps";
+import type { DiscoveryCategory } from "@/lib/discover/categories";
 
 export type HealExistingResult = {
   contentType: string;
@@ -72,10 +74,70 @@ async function healDailyQuestions(): Promise<HealExistingResult> {
 }
 
 /**
- * For now the discovery + leveled healers are placeholders. Once
- * those builders are refactored to use runAutoHealLoop (project
- * todo P0), wire them in here the same way. Until then we surface
- * the count of failing rows so the operator knows the queue depth.
+ * Heal hidden discovery articles by archiving the broken row and
+ * generating a fresh article for the same category. Discovery is
+ * an evergreen library — each piece is independent, so "replace"
+ * is a sensible heal semantic. The new article goes through the
+ * full QC + auto-promote path on insert (buildDiscoveryArticle
+ * already sets published_state correctly).
+ */
+async function healDiscoveryArticles(): Promise<HealExistingResult> {
+  const admin = supabaseAdmin();
+  const cap = await getCap("discovery_article_heal");
+  const budget = cap.target || 1;
+
+  const { data: rows } = await admin
+    .from("discovery_articles")
+    .select("id, category")
+    .eq("published_state", "hidden")
+    .order("created_at", { ascending: true })
+    .limit(budget);
+
+  const list = (rows ?? []) as Array<{ id: string; category: string }>;
+  let promoted = 0;
+  let stillFailing = 0;
+  let errors = 0;
+  for (const r of list) {
+    try {
+      // Archive the failed row (don't delete — preserves audit trail
+      // + qc_report for the dashboard "recent quarantines" list).
+      await admin
+        .from("discovery_articles")
+        .update({
+          published_state: "archived",
+          updated_at: new Date().toISOString(),
+        })
+        .eq("id", r.id);
+      // Generate a fresh article for the same category. New row
+      // gets its own QC pass + published_state on insert.
+      const result = await buildDiscoveryArticle({
+        category: r.category as DiscoveryCategory,
+      });
+      if (result.ok && result.qcOverall !== "fail") promoted++;
+      else stillFailing++;
+    } catch {
+      errors++;
+    }
+  }
+  // Count any still-hidden rows so the operator sees full queue depth.
+  const { count: residualHidden } = await admin
+    .from("discovery_articles")
+    .select("id", { count: "exact", head: true })
+    .eq("published_state", "hidden");
+  return {
+    contentType: "discovery_article",
+    attempted: list.length,
+    promoted,
+    stillFailing: (residualHidden ?? 0) + stillFailing,
+    errors,
+  };
+}
+
+/**
+ * Leveled passages don't have a clean "regenerate from prompt" path
+ * yet (the original brief isn't persisted on the row). Report the
+ * queue depth so the operator can see backlog. Heal handler lands
+ * when the builder persists its brief alongside the row.
  */
 async function reportHidden(table: string, contentType: string): Promise<HealExistingResult> {
   const admin = supabaseAdmin();
@@ -95,7 +157,7 @@ async function reportHidden(table: string, contentType: string): Promise<HealExi
 export async function runHealExisting(): Promise<HealExistingResult[]> {
   const results: HealExistingResult[] = [];
   results.push(await healDailyQuestions());
-  results.push(await reportHidden("discovery_articles", "discovery_article"));
+  results.push(await healDiscoveryArticles());
   results.push(await reportHidden("differentiated_passages", "leveled_passage"));
   return results;
 }
