@@ -32,20 +32,25 @@ import { useLifetimeCarrots } from "@/lib/levels/use-lifetime-carrots";
 import { computeLevel } from "@/lib/levels/levels";
 
 /**
- * Below-the-fold dashboard subcomponents — dynamic-imported so they
- * don't bloat the initial JS bundle on first paint. Each one is its
- * own code-split chunk that loads as the kid scrolls. Cut ~50-80kb
- * off the dashboard's initial JS and noticeably improved RES.
+ * Below-the-fold dashboard subcomponents — dynamic-imported for the
+ * bundle-size win but with SSR ON (default) so the server renders
+ * the initial markup and the layout doesn't shift when the chunk
+ * finishes loading on the client. Components that *always* render
+ * visible content get a sized skeleton; components that usually
+ * render null (TeacherAssignments / FreshForYou / Testimonial) keep
+ * loading=null because there's no layout to reserve when they no-op.
  *
- * SSR stays on so the layout doesn't shift in.
+ * CLS regression from the previous pass was caused by `ssr: false` +
+ * `loading: () => null` together — content popped in mid-page after
+ * hydration. Real fix is to keep them in SSR.
  */
 const DailyQuestionCard = dynamic(
   () => import("@/app/_components/DailyQuestionCard"),
-  { ssr: false, loading: () => null },
+  { loading: () => <div className="rounded-3xl bg-zinc-100 dark:bg-slate-800/40 animate-pulse" style={{ height: 420 }} /> },
 );
 const LearningPathCard = dynamic(
   () => import("@/app/_components/LearningPathCard"),
-  { ssr: false, loading: () => null },
+  { loading: () => <div className="rounded-3xl bg-zinc-100 dark:bg-slate-800/40 animate-pulse" style={{ height: 200 }} /> },
 );
 const TeacherAssignmentsCard = dynamic(
   () => import("@/app/_components/TeacherAssignmentsCard"),
@@ -1319,14 +1324,6 @@ function ChildDashboard({
           </Link>
         </motion.div>
 
-        {/* Install App tile — only renders when beforeinstallprompt
-            fired OR the device is iOS Safari (manual instructions).
-            Single tile width on mobile (full row), inline next to the
-            other tiles on sm+. Self-hides for 14 days on dismiss. */}
-        <motion.div variants={slideUp}>
-          <InstallPWATile />
-        </motion.div>
-
         {/* ── Today's Readee — daily question ritual ──
             Demoted from position 5 to here so the action stack on
             top stays focused. Still a high-engagement card; it just
@@ -1351,6 +1348,16 @@ function ChildDashboard({
              B2C accounts (which is most of them). */}
         <motion.div variants={slideUp}>
           <TeacherAssignmentsCard childId={child.id} />
+        </motion.div>
+
+        {/* Install App tile — moved to the bottom of the dashboard so
+            that when beforeinstallprompt fires (or iOS Safari unlocks
+            the manual flow), the tile materializes below everything
+            else and shifts no important content. Earlier we rendered
+            it inline above DailyQuestionCard which caused ~140px of
+            CLS each time the prompt resolved. */}
+        <motion.div variants={slideUp}>
+          <InstallPWATile />
         </motion.div>
 
         {/* Testimonial capture — fires once the kid has completed
