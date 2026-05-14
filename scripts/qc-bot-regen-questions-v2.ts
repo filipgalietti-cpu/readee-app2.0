@@ -38,6 +38,7 @@ import {
   type AuthorableType,
   type AuthorInput,
 } from "@/lib/qc/question-authors";
+import { runQuestionSpecChecks } from "@/lib/qc/spec-checks";
 
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY!;
@@ -231,6 +232,33 @@ async function logChange(
   });
 }
 
+/**
+ * Self-leak check: does the prompt literally contain the correct
+ * answer? Skipped on standards where the "leak" is the entire point
+ * of the question (capitalization conventions, print direction). The
+ * existing q.no_self_leak audit check already has this domain
+ * knowledge; we mirror it inline so bad regens never persist.
+ */
+function hasSelfLeak(standardId: string, prompt: string, correct: string): boolean {
+  if (!prompt || !correct) return false;
+  // Standards where the answer legitimately appears in the prompt:
+  //   L.x.2 — capitalization (prompt is the sentence with lowercase
+  //     name; correct is "sam" itself).
+  //   RF.x.1a — print direction (prompt may list words from the line,
+  //     correct is one of them).
+  //   RF.x.3g / RF.x.3d — sight-word recognition (prompt asks for the
+  //     word, correct is that word).
+  if (/^L\.[K1-4]\.2/.test(standardId)) return false;
+  if (/^RF\.[K1-4]\.1a$/.test(standardId)) return false;
+  if (/^RF\.[K1-4]\.3[dg]$/.test(standardId)) return false;
+  // Comprehension questions over a passage may have the answer in
+  // the passage (that's how comprehension works). Heuristic: if the
+  // prompt is "long" (>120 chars), it's probably a passage + question
+  // and the literal-substring check is too aggressive.
+  if (prompt.length > 120) return false;
+  return prompt.toLowerCase().includes(correct.toLowerCase().trim());
+}
+
 function typeSummary(t: string, p: any): string {
   switch (t) {
     case "multiple_choice":
@@ -317,17 +345,73 @@ async function processFinding(f: Finding): Promise<RegenOutcome> {
   }
   const mode: "mcq" | "non-mcq" = newType === "multiple_choice" ? "mcq" : "non-mcq";
 
+  // Inline audit gating (loop, up to MAX_ATTEMPTS authoring tries):
+  //   1. Author a candidate.
+  //   2. Run deterministic spec checks against the candidate.
+  //   3. Run a self-leak check (prompt must not contain the correct
+  //      answer verbatim, except on standards where the leak IS the
+  //      point — L.x.2 capitalization, RF.x.1a print direction).
+  //   4. If anything fails, log + try again. After MAX_ATTEMPTS without
+  //      a clean candidate, give up. Don't persist mediocre output.
+  //
+  // Why this matters: the first bulk run on 2026-05-13 had ~20% of
+  // regenerated questions ship with structural / self-leak bugs that
+  // the next nightly audit then re-flagged. Inline gating catches
+  // them before persist and saves the audit re-cycle.
+  const MAX_ATTEMPTS = 3;
   const authorInput = buildAuthorInput(q, f, standardText);
-  const res = await authorByType(newType as AuthorableType, authorInput);
-  if (!res.ok) {
+  let newPayload: any = null;
+  const rejectReasons: string[] = [];
+  for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+    const res = await authorByType(newType as AuthorableType, authorInput);
+    if (!res.ok) {
+      rejectReasons.push(`attempt ${attempt}: author failed: ${res.error}`);
+      continue;
+    }
+    const cand = res.payload;
+    const candForSpec = {
+      type: newType,
+      grade: q.grade,
+      prompt: String(cand.prompt ?? ""),
+      choices:
+        newType === "multiple_choice"
+          ? cand.choices ?? []
+          : newType === "missing_word"
+            ? cand.missing_choices ?? []
+            : [],
+      correct: String(cand.correct ?? ""),
+      audio_url: null,
+      image_url: null,
+    };
+    const specFails = runQuestionSpecChecks(candForSpec).filter(
+      (r) =>
+        r.severity === "fail" &&
+        // spec.tts_required is expected to fire here — we deliberately
+        // clear audio_url on regen, asset-fill cron repopulates it
+        // post-persist. Don't block the regen on that gap.
+        r.findingType !== "spec.tts_required",
+    );
+    if (specFails.length > 0) {
+      rejectReasons.push(
+        `attempt ${attempt}: spec fails: ${specFails.map((r) => r.findingType).join(", ")}`,
+      );
+      continue;
+    }
+    if (hasSelfLeak(q.standard_id, candForSpec.prompt, candForSpec.correct)) {
+      rejectReasons.push(`attempt ${attempt}: self-leak (correct in prompt)`);
+      continue;
+    }
+    newPayload = cand;
+    break;
+  }
+  if (!newPayload) {
     return {
       ok: false,
       targetId: f.target_id,
       oldType: q.type,
-      reason: `${newType} author failed: ${res.error}`,
+      reason: `All ${MAX_ATTEMPTS} authoring attempts rejected: ${rejectReasons.join(" | ")}`,
     };
   }
-  const newPayload = res.payload;
 
   if (DRY) {
     console.log(`  [DRY] ${f.target_id} (${q.type} → ${newType})`);

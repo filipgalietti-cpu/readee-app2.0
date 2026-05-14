@@ -228,56 +228,84 @@ export type SentenceBuildPayload = {
   ordered: boolean; // true = order matters (default), false = any valid ordering
 };
 
+// Gemini was unreliable when asked for two parallel structures
+// (`words[]` + a `correct` string that had to be consistent with it).
+// New schema: Gemini emits ONE array, the words in correct order.
+// We derive both `correct` (joined) and the display-order `words[]`
+// (deterministic shuffle seeded by question id) ourselves. No
+// consistency burden on the model.
 const SENTENCE_BUILD_SCHEMA = {
   type: Type.OBJECT,
   properties: {
     prompt: { type: Type.STRING },
     hint: { type: Type.STRING },
-    words: { type: Type.ARRAY, items: { type: Type.STRING } },
-    correct: { type: Type.STRING },
+    ordered_words: { type: Type.ARRAY, items: { type: Type.STRING } },
   },
-  required: ["prompt", "hint", "words", "correct"],
+  required: ["prompt", "hint", "ordered_words"],
+};
+
+type SentenceBuildRaw = {
+  prompt?: string;
+  hint?: string;
+  ordered_words?: string[];
 };
 
 export async function authorSentenceBuild(
   input: AuthorInput,
 ): Promise<AuthorResult<SentenceBuildPayload>> {
   const typeNote = `sentence_build — kid drags words into the right order. ` +
-    `words is the unordered word array (3-6 words typical). ` +
-    `correct is the same words joined with single spaces in the RIGHT order. ` +
-    `Every word in correct must come from the words array; every word in words must appear in correct (no orphans).`;
+    `Output ONE array: ordered_words[]. ` +
+    `It is the complete sentence broken into tokens (3-7 tokens typical), ` +
+    `IN THE CORRECT ORDER, including any end-of-sentence punctuation ` +
+    `attached to its word (e.g. ["The","cat","ran","fast."]). ` +
+    `The display-order shuffle and the joined "correct" string are derived programmatically.`;
 
-  const result = await callGemini<Partial<SentenceBuildPayload> & { error?: string }>(
+  const result = await callGemini<SentenceBuildRaw & { error?: string }>(
     BASE_SYSTEM,
     buildUserMessage(input, typeNote),
     SENTENCE_BUILD_SCHEMA,
   );
   if ("error" in result && result.error) return { ok: false, error: result.error };
-  const r = result as Partial<SentenceBuildPayload>;
+  const r = result as SentenceBuildRaw;
 
   if (
     !r.prompt ||
-    !Array.isArray(r.words) ||
-    r.words.length < 2 ||
-    !r.correct
+    !Array.isArray(r.ordered_words) ||
+    r.ordered_words.length < 2 ||
+    r.ordered_words.length > 10
   ) {
-    return { ok: false, error: "Invalid sentence_build payload (missing fields)" };
-  }
-  const correctTokens = r.correct.trim().split(/\s+/);
-  const wordsSet = new Set(r.words.map((w) => w.trim()));
-  if (correctTokens.length !== r.words.length) {
     return {
       ok: false,
-      error: `sentence_build mismatch: correct has ${correctTokens.length} tokens but words has ${r.words.length}`,
+      error: `Invalid sentence_build payload: ordered_words has ${r.ordered_words?.length ?? 0} tokens (need 2-10)`,
     };
   }
-  for (const tok of correctTokens) {
-    if (!wordsSet.has(tok)) {
+  // Reject if any "token" actually contains internal whitespace —
+  // means Gemini gave us a phrase, not a word.
+  for (const w of r.ordered_words) {
+    if (/\s/.test(w.trim())) {
       return {
         ok: false,
-        error: `sentence_build: correct contains "${tok}" not in words[]`,
+        error: `sentence_build: token "${w}" contains whitespace; tokens must be single words`,
       };
     }
+  }
+
+  // Derive both display order (deterministic Fisher-Yates seeded by
+  // questionId so repeated authoring is stable) and the joined correct.
+  const correct = r.ordered_words.join(" ");
+  const display = [...r.ordered_words];
+  let seed = 0;
+  for (let i = 0; i < input.questionId.length; i++)
+    seed = (seed * 31 + input.questionId.charCodeAt(i)) >>> 0;
+  for (let i = display.length - 1; i > 0; i--) {
+    seed = (seed * 1103515245 + 12345) >>> 0;
+    const j = seed % (i + 1);
+    [display[i], display[j]] = [display[j], display[i]];
+  }
+  // Ensure the shuffle didn't accidentally produce the same order as
+  // correct — if it did, swap the first two so the kid has work to do.
+  if (display.join(" ") === correct && display.length > 1) {
+    [display[0], display[1]] = [display[1], display[0]];
   }
 
   return {
@@ -288,8 +316,8 @@ export async function authorSentenceBuild(
       prompt: r.prompt,
       hint: r.hint ?? "",
       difficulty: input.difficulty ?? 2,
-      words: r.words,
-      correct: r.correct,
+      words: display,
+      correct,
       ordered: true,
     },
   };
