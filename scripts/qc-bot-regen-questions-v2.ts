@@ -192,7 +192,8 @@ async function persistUpdate(
       qc_attempt_count: 0,
       content_hash: null,
       version: (q.version ?? 1) + 1,
-      source: "qc-regen-v2",
+      // questions_db.source enum: 'authored' | 'ai_enrich' | 'ai_factory' | 'ai_regen'
+      source: "ai_regen",
       updated_at: new Date().toISOString(),
     })
     .eq("id", q.id);

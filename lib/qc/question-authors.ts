@@ -176,7 +176,6 @@ export async function authorMissingWord(
   if (
     !r.prompt ||
     !Array.isArray(r.sentence_words) ||
-    typeof r.blank_index !== "number" ||
     !Array.isArray(r.missing_choices) ||
     r.missing_choices.length !== 4 ||
     !r.correct ||
@@ -187,17 +186,18 @@ export async function authorMissingWord(
       error: `Invalid missing_word payload: choices=${(r.missing_choices ?? []).length}, correct-in-choices=${r.missing_choices?.includes(r.correct ?? "")}`,
     };
   }
-  // Index sanity: blank_index must be in range AND point to "___"
-  if (
-    r.blank_index < 0 ||
-    r.blank_index >= r.sentence_words.length ||
-    r.sentence_words[r.blank_index] !== "___"
-  ) {
+  // Gemini frequently emits a blank_index that's wrong relative to its
+  // own sentence_words (e.g. idx 19 when "___" is actually at idx 3).
+  // Don't reject — auto-detect where "___" actually lives. If it's
+  // missing entirely from sentence_words, that's the unrecoverable case.
+  const detectedIdx = r.sentence_words.findIndex((w) => w === "___");
+  if (detectedIdx < 0) {
     return {
       ok: false,
-      error: `missing_word: blank_index ${r.blank_index} doesn't point to "___" in sentence_words (len=${r.sentence_words.length})`,
+      error: `missing_word: no "___" token found in sentence_words`,
     };
   }
+  r.blank_index = detectedIdx;
 
   return {
     ok: true,
