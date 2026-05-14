@@ -263,6 +263,27 @@ async function markFindingFixed(findingId: string): Promise<void> {
     .eq("id", findingId);
 }
 
+/**
+ * Block the renderer from serving the regenerated question until its
+ * audio + image are rebuilt. quarantine_question writes to
+ * question_qc_status, which is what the deliverability gate (used by
+ * the practice surfaces) actually checks. The asset-fill cron will
+ * call unquarantine_question once both URLs are filled.
+ *
+ * Without this call, the regen lands in DB and the next JSON sync
+ * deploys it to kids WITHOUT audio/image — exactly the failure mode
+ * we hit on 2026-05-13 (188 of 221 regens unprotected). Don't skip.
+ */
+async function quarantineTargetForRegen(
+  targetId: string,
+  findingId: string,
+): Promise<void> {
+  await sb.rpc("quarantine_question", {
+    p_target_id: targetId,
+    p_finding_id: findingId,
+  });
+}
+
 async function processFinding(f: Finding): Promise<RegenOutcome> {
   const q = await fetchQuestion(f.target_id);
   if (!q) {
@@ -331,6 +352,7 @@ async function processFinding(f: Finding): Promise<RegenOutcome> {
     return { ok: false, targetId: f.target_id, oldType: q.type, reason: `DB update failed: ${upd.error}` };
   }
   await logChange(q, f, newType, newPayload);
+  await quarantineTargetForRegen(q.id, f.id);
   await markFindingFixed(f.id);
   return {
     ok: true,

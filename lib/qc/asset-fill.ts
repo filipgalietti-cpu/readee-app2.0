@@ -38,6 +38,33 @@ type Row = {
   image_url: string | null;
 };
 
+/**
+ * After filling an asset, check whether the row is fully populated
+ * (audio_url + image_url both non-null) AND currently quarantined in
+ * the gate table. If yes, un-quarantine it — the row's assets are
+ * back, so the renderer can serve it again. This closes the loop for
+ * questions that came from the regen pipeline with cleared URLs.
+ */
+async function maybeUnquarantine(targetId: string): Promise<void> {
+  const admin = supabaseAdmin();
+  const { data: q } = await admin
+    .from("questions_db")
+    .select("audio_url, image_url")
+    .eq("id", targetId)
+    .maybeSingle();
+  if (!q) return;
+  const row = q as { audio_url: string | null; image_url: string | null };
+  if (!row.audio_url || !row.image_url) return;
+  const { data: status } = await admin
+    .from("question_qc_status")
+    .select("qc_status")
+    .eq("target_id", targetId)
+    .maybeSingle();
+  if (status && (status as { qc_status: string }).qc_status === "quarantined") {
+    await admin.rpc("unquarantine_question", { p_target_id: targetId });
+  }
+}
+
 async function fillOneAudio(row: Row): Promise<"ok" | "fail"> {
   try {
     const isEarlyReader =
@@ -69,6 +96,7 @@ async function fillOneAudio(row: Row): Promise<"ok" | "fail"> {
       .from("questions_db")
       .update({ audio_url: data.publicUrl, updated_at: new Date().toISOString() })
       .eq("id", row.id);
+    await maybeUnquarantine(row.id);
     return "ok";
   } catch (e) {
     trackError(e, {
@@ -89,6 +117,7 @@ async function fillOneImage(row: Row): Promise<"ok" | "fail"> {
       .from("questions_db")
       .update({ image_url: r.imageUrl, updated_at: new Date().toISOString() })
       .eq("id", row.id);
+    await maybeUnquarantine(row.id);
     return "ok";
   } catch (e) {
     trackError(e, {
