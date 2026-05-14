@@ -2,7 +2,7 @@
   "grade": "kindergarten",
   "standard_framework": "Common Core State Standards — English Language Arts",
   "total_standards": 38,
-  "total_questions": 196,
+  "total_questions": 146,
   "standards": [
     {
       "standard_id": "RL.K.1",
@@ -435,41 +435,6 @@
       "parent_tip": "Point out different types of books — 'this one rhymes, so it's a poem!' vs 'this one tells a story with characters.'",
       "questions": [
         {
-          "id": "RL.K.5-Q1",
-          "type": "category_sort",
-          "prompt": "Sort each text into the right category.\nIs it a STORYBOOK? Or a POEM?",
-          "correct": "correct",
-          "hint": "Storybooks tell a story with characters and things that happen. Poems rhyme!",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.5/RL.K.5-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.5/RL.K.5-Q1-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.5/RL.K.5-Q1.png",
-          "categories": [
-            "Storybook",
-            "Poem"
-          ],
-          "category_items": {
-            "Poem": [
-              "Roses are red",
-              "Twinkle, twinkle, little star",
-              "Humpty Dumpty sat on a wall"
-            ],
-            "Storybook": [
-              "Once upon a time...",
-              "The three little pigs",
-              "A boy found a puppy."
-            ]
-          },
-          "items": [
-            "Once upon a time...",
-            "Roses are red",
-            "The three little pigs",
-            "Twinkle, twinkle, little star",
-            "A boy found a puppy.",
-            "Humpty Dumpty sat on a wall"
-          ]
-        },
-        {
           "id": "RL.K.5-Q2",
           "type": "multiple_choice",
           "prompt": "Twinkle, twinkle, little star / How I wonder what you are / Up above the world so high / Like a diamond in the sky\n\nWhat kind of TEXT is this?",
@@ -762,29 +727,6 @@
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.7/RL.K.7-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.7/RL.K.7-Q4-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.7/RL.K.7-Q4.png"
-        },
-        {
-          "id": "RL.K.7-Q5",
-          "type": "multiple_choice",
-          "prompt": "WHY do books have pictures?",
-          "choices": [
-            "To hide the words",
-            "To help us understand the story better",
-            "To make the pages heavy",
-            "Pictures are not important"
-          ],
-          "choices_audio_urls": [
-            "/audio/kindergarten/RL.K.7-q5-choice1.mp3",
-            "/audio/kindergarten/RL.K.7-q5-choice2.mp3",
-            "/audio/kindergarten/RL.K.7-q5-choice3.mp3",
-            "/audio/kindergarten/RL.K.7-q5-choice4.mp3"
-          ],
-          "correct": "To help us understand the story better",
-          "hint": "Think about how pictures help you when you read a book!",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.7/RL.K.7-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.7/RL.K.7-Q5-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.7/RL.K.7-Q5.png"
         }
       ]
     },
@@ -817,30 +759,6 @@
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.9/RL.K.9-Q1.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.9/RL.K.9-Q1-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.9/RL.K.9-Q1.png"
-        },
-        {
-          "id": "RL.K.9-Q2",
-          "type": "multiple_choice",
-          "prompt": "Rabbit and Squirrel both live in the forest. Rabbit hops, but Squirrel climbs trees.\n\nHow are they ALIKE?",
-          "passage_audio_url": "/audio/kindergarten/RL.K.9-q2-passage.mp3",
-          "choices": [
-            "They both live in the forest.",
-            "They both fly",
-            "They both hop",
-            "They both climb trees."
-          ],
-          "choices_audio_urls": [
-            "/audio/kindergarten/RL.K.9-q2-choice1.mp3",
-            "/audio/kindergarten/RL.K.9-q2-choice2.mp3",
-            "/audio/kindergarten/RL.K.9-q2-choice3.mp3",
-            "/audio/kindergarten/RL.K.9-q2-choice4.mp3"
-          ],
-          "correct": "They both live in the forest.",
-          "hint": "Alike means the SAME. What do Rabbit and Squirrel BOTH have or do?",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.9/RL.K.9-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.9/RL.K.9-Q2-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.9/RL.K.9-Q2.png"
         },
         {
           "id": "RL.K.9-Q3",
@@ -922,30 +840,6 @@
       "domain": "Reading Informational Text",
       "parent_tip": "After reading nonfiction, ask 'what did we learn?' and 'what was the most interesting fact?'",
       "questions": [
-        {
-          "id": "RI.K.1-Q1",
-          "type": "multiple_choice",
-          "prompt": "Bees live in hives. They make honey. Bees can sting if they are scared.\n\nWhat do bees make?",
-          "passage_audio_url": "/audio/kindergarten/RI.K.1-q1-passage.mp3",
-          "choices": [
-            "Juice",
-            "Honey",
-            "Bread",
-            "Milk"
-          ],
-          "choices_audio_urls": [
-            "/audio/kindergarten/RI.K.1-q1-choice1.mp3",
-            "/audio/kindergarten/RI.K.1-q1-choice2.mp3",
-            "/audio/kindergarten/RI.K.1-q1-choice3.mp3",
-            "/audio/kindergarten/RI.K.1-q1-choice4.mp3"
-          ],
-          "correct": "Honey",
-          "hint": "Look at the second sentence!",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.1/RI.K.1-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.1/RI.K.1-Q1-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.1/RI.K.1-Q1.png"
-        },
         {
           "id": "RI.K.1-Q2",
           "type": "multiple_choice",
@@ -1280,30 +1174,6 @@
       "parent_tip": "When reading nonfiction, pause at bold or new words and discuss what they mean using context.",
       "questions": [
         {
-          "id": "RI.K.4-Q1",
-          "type": "multiple_choice",
-          "prompt": "A chameleon is a REPTILE. Reptiles are animals with scales that are cold-blooded.\n\nWhat is a REPTILE?",
-          "passage_audio_url": "/audio/kindergarten/RI.K.4-q1-passage.mp3",
-          "choices": [
-            "An animal with scales",
-            "A type of food",
-            "A big rock",
-            "A type of plant"
-          ],
-          "choices_audio_urls": [
-            "/audio/kindergarten/RI.K.4-q1-choice1.mp3",
-            "/audio/kindergarten/RI.K.4-q1-choice2.mp3",
-            "/audio/kindergarten/RI.K.4-q1-choice3.mp3",
-            "/audio/kindergarten/RI.K.4-q1-choice4.mp3"
-          ],
-          "correct": "An animal with scales",
-          "hint": "The sentence right after tells you what a reptile is!",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.4/RI.K.4-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.4/RI.K.4-Q1-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.4/RI.K.4-Q1.png"
-        },
-        {
           "id": "RI.K.4-Q2",
           "type": "multiple_choice",
           "prompt": "A volcano ERUPTS when hot lava shoots out of the top.\n\nWhat does ERUPTS mean?",
@@ -1364,30 +1234,6 @@
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.4/RI.K.4-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.4/RI.K.4-Q4-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.4/RI.K.4-Q4.png"
-        },
-        {
-          "id": "RI.K.4-Q5",
-          "type": "multiple_choice",
-          "prompt": "The ocean is full of MARINE animals like fish, dolphins, and sea turtles.\n\nWhat does MARINE mean?",
-          "passage_audio_url": "/audio/kindergarten/RI.K.4-q5-passage.mp3",
-          "choices": [
-            "Land animals",
-            "Ocean or sea animals",
-            "Sky animals",
-            "Farm animals"
-          ],
-          "choices_audio_urls": [
-            "/audio/kindergarten/RI.K.4-q5-choice1.mp3",
-            "/audio/kindergarten/RI.K.4-q5-choice2.mp3",
-            "/audio/kindergarten/RI.K.4-q5-choice3.mp3",
-            "/audio/kindergarten/RI.K.4-q5-choice4.mp3"
-          ],
-          "correct": "Ocean or sea animals",
-          "hint": "All the examples in the sentence (fish, dolphins, sea turtles) have something in common — where do they live?",
-          "difficulty": 2,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.4/RI.K.4-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.4/RI.K.4-Q5-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.4/RI.K.4-Q5.png"
         }
       ]
     },
@@ -1397,32 +1243,6 @@
       "domain": "Reading Informational Text",
       "parent_tip": "Practice with real books — 'show me the front cover, back cover, and title page!'",
       "questions": [
-        {
-          "id": "RI.K.5-Q1",
-          "type": "tap_to_pair",
-          "prompt": "Match each book part to where you find it!",
-          "correct": "Book Name→Front Cover, Author Name→Title Page, Summary→Back Cover",
-          "hint": "The book name is on the front, the author's full name is on the title page inside, and the summary is on the back!",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q1-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.5/RI.K.5-Q1.png",
-          "left_items": [
-            "Book Name",
-            "Author Name",
-            "Summary"
-          ],
-          "right_items": [
-            "Back Cover",
-            "Front Cover",
-            "Title Page"
-          ],
-          "correct_pairs": {
-            "Summary": "Back Cover",
-            "Book Name": "Front Cover",
-            "Author Name": "Title Page"
-          }
-        },
         {
           "id": "RI.K.5-Q2",
           "type": "multiple_choice",
@@ -1458,32 +1278,6 @@
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.5/RI.K.5-Q3.png"
         },
         {
-          "id": "RI.K.5-Q4",
-          "type": "tap_to_pair",
-          "prompt": "Match each book part to what it shows!",
-          "correct": "Front Cover→Book name + picture, Title Page→Book name + author, Back Cover→What the book is about",
-          "hint": "The front shows the picture and title, the inside page lists the author, and the back describes the book!",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q4-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.5/RI.K.5-Q4.png",
-          "left_items": [
-            "Front Cover",
-            "Title Page",
-            "Back Cover"
-          ],
-          "right_items": [
-            "What the book is about",
-            "Book name + picture",
-            "Book name + author"
-          ],
-          "correct_pairs": {
-            "Back Cover": "What the book is about",
-            "Title Page": "Book name + author",
-            "Front Cover": "Book name + picture"
-          }
-        },
-        {
           "id": "RI.K.5-Q5",
           "type": "multiple_choice",
           "prompt": "The explorer wanted to know who wrote the book about dolphins. She opened the book and looked at the first page inside.\n\nWhere did she find the AUTHOR's name?",
@@ -1501,36 +1295,6 @@
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.5/RI.K.5-Q5.png"
         },
         {
-          "id": "RI.K.5-Q6",
-          "type": "category_sort",
-          "prompt": "Sort each thing to the right book part!",
-          "correct": "correct",
-          "hint": "The front has the picture and title. The back tells you what the book is about!",
-          "difficulty": 2,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q6.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q6-hint.mp3",
-          "categories": [
-            "Front Cover",
-            "Back Cover"
-          ],
-          "category_items": {
-            "Back Cover": [
-              "What the book is about",
-              "A short summary"
-            ],
-            "Front Cover": [
-              "Big picture",
-              "Book title"
-            ]
-          },
-          "items": [
-            "What the book is about",
-            "Big picture",
-            "A short summary",
-            "Book title"
-          ]
-        },
-        {
           "id": "RI.K.5-Q7",
           "type": "multiple_choice",
           "prompt": "The explorer looked at the outside of a book and saw a big picture of a whale and the name of the book.\n\nWhich PART was she looking at?",
@@ -1545,46 +1309,6 @@
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q7.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q7-hint.mp3"
-        },
-        {
-          "id": "RI.K.5-Q8",
-          "type": "multiple_choice",
-          "prompt": "Where is the TITLE of a book usually printed?",
-          "choices": [
-            "On the back cover",
-            "On the front cover",
-            "Hidden inside the book",
-            "On the very last page"
-          ],
-          "correct": "On the front cover",
-          "hint": "Look at any book — the big name sits right on the FRONT for everyone to see.",
-          "difficulty": 1
-        },
-        {
-          "id": "RI.K.5-Q9",
-          "type": "missing_word",
-          "prompt": "Pick the right word to fill the blank.",
-          "correct": "title",
-          "hint": "The page inside that shows the book name and author is the ___ page!",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q9.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q9-hint.mp3",
-          "blank_index": 1,
-          "missing_choices": [
-            "title",
-            "back",
-            "last",
-            "top"
-          ],
-          "sentence_words": [
-            "The",
-            "___",
-            "page",
-            "is",
-            "inside",
-            "the",
-            "book."
-          ]
         },
         {
           "id": "RI.K.5-Q10",
@@ -2058,30 +1782,6 @@
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.9/RI.K.9-Q3.png"
         },
         {
-          "id": "RI.K.9-Q4",
-          "type": "multiple_choice",
-          "prompt": "Book 1: \"Dogs need water, food, and walks every day.\"\nBook 2: \"Dogs can be trained to sit, stay, and shake.\"\n\nBook 1 is about CARING for dogs. Book 2 is about...",
-          "passage_audio_url": "/audio/kindergarten/RI.K.9-q4-passage.mp3",
-          "choices": [
-            "Cats",
-            "Wild dogs",
-            "Caring for dogs",
-            "Training dogs"
-          ],
-          "choices_audio_urls": [
-            "/audio/kindergarten/RI.K.9-q4-choice1.mp3",
-            "/audio/kindergarten/RI.K.9-q4-choice2.mp3",
-            "/audio/kindergarten/RI.K.9-q4-choice3.mp3",
-            "/audio/kindergarten/RI.K.9-q4-choice4.mp3"
-          ],
-          "correct": "Training dogs",
-          "hint": "Sit, stay, and shake are all tricks. What do you call teaching tricks?",
-          "difficulty": 2,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.9/RI.K.9-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.9/RI.K.9-Q4-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.9/RI.K.9-Q4.png"
-        },
-        {
           "id": "RI.K.9-Q5",
           "type": "multiple_choice",
           "prompt": "Book 1: \"Butterflies have colorful wings and drink nectar from flowers.\"\nBook 2: \"Butterflies start as caterpillars and go through metamorphosis.\"\n\nWhat is SIMILAR about both books?",
@@ -2211,26 +1911,6 @@
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.1a/RF.K.1a-Q5.png"
         },
         {
-          "id": "RF.K.1a-Q6",
-          "type": "sentence_build",
-          "prompt": "Put the words in order to make a sentence.",
-          "correct": "The Cat Sat On The Mat.",
-          "hint": "Start with a capital letter and end with a period.",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q6.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q6-hint.mp3",
-          "sentence_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q6-sentence.mp3",
-          "sentence_hint": "A cat is sitting on something...",
-          "words": [
-            "Cat",
-            "The",
-            "Sat",
-            "The",
-            "On",
-            "Mat"
-          ]
-        },
-        {
           "id": "RF.K.1a-Q7",
           "type": "multiple_choice",
           "prompt": "We read words from LEFT to RIGHT. Look at this line: \"The cat ran fast.\" Which word do you read FIRST?",
@@ -2257,24 +1937,6 @@
           "correct": "Down a line, back to the LEFT",
           "hint": "Your eyes drop down one line and go ALL the way back to the start.",
           "difficulty": 2
-        },
-        {
-          "id": "RF.K.1a-Q9",
-          "type": "sentence_build",
-          "prompt": "Tap each word in READING order — left to right!",
-          "correct": "I like to read.",
-          "hint": "Start on the LEFT! Read each word going to the RIGHT.",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q9.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q9-hint.mp3",
-          "sentence_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q9-sentence.mp3",
-          "sentence_hint": "Which word comes FIRST when you read left to right?",
-          "words": [
-            "I",
-            "like",
-            "to",
-            "read"
-          ]
         }
       ]
     },
@@ -2284,30 +1946,6 @@
       "domain": "Foundational Skills",
       "parent_tip": "Point to words and say 'these letters make this word' — connect spoken words to print.",
       "questions": [
-        {
-          "id": "RF.K.1b-Q1",
-          "type": "missing_word",
-          "prompt": "Pick the right word to fill the blank.",
-          "correct": "cat",
-          "hint": "The word 'cat' uses the letters C, A, and T in that order!",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1b/RF.K.1b-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1b/RF.K.1b-Q1-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.1b/RF.K.1b-Q1.png",
-          "blank_index": 1,
-          "missing_choices": [
-            "cat",
-            "hat",
-            "bat",
-            "rat"
-          ],
-          "sentence_words": [
-            "The",
-            "___",
-            "says",
-            "meow."
-          ]
-        },
         {
           "id": "RF.K.1b-Q2",
           "type": "multiple_choice",
@@ -2330,32 +1968,6 @@
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1b/RF.K.1b-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1b/RF.K.1b-Q2-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.1b/RF.K.1b-Q2.png"
-        },
-        {
-          "id": "RF.K.1b-Q3",
-          "type": "missing_word",
-          "prompt": "Pick the right word to fill the blank.",
-          "correct": "dog",
-          "hint": "Sound it out: /d/ - /o/ - /g/. What letters make those sounds?",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1b/RF.K.1b-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1b/RF.K.1b-Q3-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.1b/RF.K.1b-Q3.png",
-          "blank_index": 1,
-          "missing_choices": [
-            "dog",
-            "dot",
-            "god",
-            "bog"
-          ],
-          "sentence_words": [
-            "The",
-            "___",
-            "ran",
-            "to",
-            "the",
-            "park."
-          ]
         },
         {
           "id": "RF.K.1b-Q4",
@@ -2410,80 +2022,7 @@
       "standard_description": "Understand that words are separated by spaces in print",
       "domain": "Foundational Skills",
       "parent_tip": "Point out spaces between words on a page — 'see how each word has a little gap?'",
-      "questions": [
-        {
-          "id": "RF.K.1c-Q1",
-          "type": "space_insertion",
-          "prompt": "Tap between letters to add spaces to make the sentence correct.",
-          "correct": "I like dogs.",
-          "hint": "There are 3 words.",
-          "difficulty": 1,
-          "jumbled": "Ilikedogs."
-        },
-        {
-          "id": "RF.K.1c-Q2",
-          "type": "multiple_choice",
-          "prompt": "Why do we put SPACES between words?",
-          "choices": [
-            "To make writing slower",
-            "So we can tell where one word ends and the next begins",
-            "Because spaces are letters too",
-            "To waste paper"
-          ],
-          "choices_audio_urls": [
-            "/audio/kindergarten/RF.K.1c-q2-choice1.mp3",
-            "/audio/kindergarten/RF.K.1c-q2-choice2.mp3",
-            "/audio/kindergarten/RF.K.1c-q2-choice3.mp3",
-            "/audio/kindergarten/RF.K.1c-q2-choice4.mp3"
-          ],
-          "correct": "So we can tell where one word ends and the next begins",
-          "hint": "Without spaces, all the words would smush together!",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1c/RF.K.1c-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1c/RF.K.1c-Q2-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.1c/RF.K.1c-Q2.png"
-        },
-        {
-          "id": "RF.K.1c-Q3",
-          "type": "multiple_choice",
-          "prompt": "Look at these words: \"thecat sat\". This is not quite right. Which choice shows all the words separated correctly?",
-          "choices": [
-            "thecatsat",
-            "theca tsat",
-            "thecat sat",
-            "the cat sat"
-          ],
-          "correct": "the cat sat",
-          "hint": "Remember that each word needs its own space to stand alone. Look at \"thecat sat\" and decide where the spaces should be.",
-          "difficulty": 2
-        },
-        {
-          "id": "RF.K.1c-Q4",
-          "type": "multiple_choice",
-          "prompt": "The words \"I am happy\" are written like this: \"Iamhappy.\" Which choice shows the words with the correct spaces?",
-          "choices": [
-            "Iam happy.",
-            "I amhappy.",
-            "Iamhappy.",
-            "I am happy."
-          ],
-          "correct": "I am happy.",
-          "hint": "Look carefully at where the spaces are in each choice. Spaces help us see each separate word.",
-          "difficulty": 1
-        },
-        {
-          "id": "RF.K.1c-Q5",
-          "type": "space_insertion",
-          "prompt": "Tap between the letters to add spaces!",
-          "correct": "My dog is big.",
-          "hint": "Put a space between each word!",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1c/RF.K.1c-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1c/RF.K.1c-Q5-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.1c/RF.K.1c-Q5.png",
-          "jumbled": "Mydogisbig."
-        }
-      ]
+      "questions": []
     },
     {
       "standard_id": "RF.K.1d",
@@ -2525,38 +2064,6 @@
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.1d/RF.K.1d-Q2.png"
         },
         {
-          "id": "RF.K.1d-Q3",
-          "type": "tap_to_pair",
-          "prompt": "Match each UPPERCASE letter to its lowercase!",
-          "correct": "A→a, B→b, C→c, D→d, E→e",
-          "hint": "Match each uppercase letter to the same lowercase letter!",
-          "difficulty": 2,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1d/RF.K.1d-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1d/RF.K.1d-Q3-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.1d/RF.K.1d-Q3.png",
-          "left_items": [
-            "A",
-            "B",
-            "C",
-            "D",
-            "E"
-          ],
-          "right_items": [
-            "d",
-            "a",
-            "e",
-            "b",
-            "c"
-          ],
-          "correct_pairs": {
-            "A": "a",
-            "B": "b",
-            "C": "c",
-            "D": "d",
-            "E": "e"
-          }
-        },
-        {
           "id": "RF.K.1d-Q4",
           "type": "multiple_choice",
           "prompt": "Which of these letters is the letter P?",
@@ -2593,20 +2100,6 @@
       "parent_tip": "Play rhyming games — 'what rhymes with cat? Hat, bat, mat!' Do this during car rides or walks.",
       "questions": [
         {
-          "id": "RF.K.2a-Q1",
-          "type": "multiple_choice",
-          "prompt": "Which two words rhyme?",
-          "choices": [
-            "Pot and pan",
-            "Dog and log",
-            "Cat and rug",
-            "Sun and moon"
-          ],
-          "correct": "Dog and log",
-          "hint": "Listen to the sounds at the end of each word in the pairs. The words that rhyme have the same ending sound.",
-          "difficulty": 1
-        },
-        {
           "id": "RF.K.2a-Q2",
           "type": "multiple_choice",
           "prompt": "Which pair of words rhymes?",
@@ -2619,60 +2112,6 @@
           "correct": "Fan, Can",
           "hint": "Focus on the ending sounds of the words in each pair.",
           "difficulty": 1
-        },
-        {
-          "id": "RF.K.2a-Q3",
-          "type": "multiple_choice",
-          "prompt": "Which word rhymes with 'ball'?",
-          "choices": [
-            "tree",
-            "boat",
-            "tall",
-            "house"
-          ],
-          "correct": "tall",
-          "hint": "Listen carefully to the ending sound of 'ball' and each choice to find the matching sound.",
-          "difficulty": 2
-        },
-        {
-          "id": "RF.K.2a-Q4",
-          "type": "tap_to_pair",
-          "prompt": "Match each word to the word that rhymes with it!",
-          "correct": "cat→hat, sun→fun, big→pig",
-          "hint": "Rhyming words end with the same sound!",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2a/RF.K.2a-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2a/RF.K.2a-Q4-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.2a/RF.K.2a-Q4.png",
-          "left_items": [
-            "cat",
-            "sun",
-            "big"
-          ],
-          "right_items": [
-            "pig",
-            "hat",
-            "fun"
-          ],
-          "correct_pairs": {
-            "big": "pig",
-            "cat": "hat",
-            "sun": "fun"
-          }
-        },
-        {
-          "id": "RF.K.2a-Q5",
-          "type": "multiple_choice",
-          "prompt": "Look at these words: 'sun,' 'fun,' 'run.' Which word below does NOT rhyme with them?",
-          "choices": [
-            "Bun",
-            "Pun",
-            "Pig",
-            "Gun"
-          ],
-          "correct": "Pig",
-          "hint": "To find words that rhyme, listen for the parts that sound the same at the end of the word.",
-          "difficulty": 2
         }
       ]
     },
@@ -2804,113 +2243,7 @@
       "standard_description": "Blend and segment onsets and rimes of single-syllable spoken words",
       "domain": "Foundational Skills",
       "parent_tip": "Break words into parts: 'cat' = /c/ + /at/. Try with other words like bat, sit, fun.",
-      "questions": [
-        {
-          "id": "RF.K.2c-Q1",
-          "type": "sound_machine",
-          "prompt": "Build the word by putting the sounds in order!",
-          "correct": "/k/ /a/ /t/",
-          "hint": "Put the /k/ sound first, then /a/, then /t/!",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2c/RF.K.2c-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2c/RF.K.2c-Q1-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.2c/RF.K.2c-Q1.png",
-          "phonemes": [
-            "/k/",
-            "/a/",
-            "/t/"
-          ],
-          "target_word": "cat",
-          "distractors": [
-            "/m/",
-            "/s/"
-          ]
-        },
-        {
-          "id": "RF.K.2c-Q2",
-          "type": "sound_machine",
-          "prompt": "Build the word by putting the sounds in order!",
-          "correct": "/s/ /u/ /n/",
-          "hint": "Start with the /s/ sound, then /u/, then /n/!",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2c/RF.K.2c-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2c/RF.K.2c-Q2-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.2c/RF.K.2c-Q2.png",
-          "phonemes": [
-            "/s/",
-            "/u/",
-            "/n/"
-          ],
-          "target_word": "sun",
-          "distractors": [
-            "/r/",
-            "/b/"
-          ]
-        },
-        {
-          "id": "RF.K.2c-Q3",
-          "type": "sound_machine",
-          "prompt": "Build the word by putting the sounds in order!",
-          "correct": "/m/ /o/ /p/",
-          "hint": "Start with /m/, then /o/, then /p/!",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2c/RF.K.2c-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2c/RF.K.2c-Q3-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.2c/RF.K.2c-Q3.png",
-          "phonemes": [
-            "/m/",
-            "/o/",
-            "/p/"
-          ],
-          "target_word": "mop",
-          "distractors": [
-            "/t/",
-            "/s/"
-          ]
-        },
-        {
-          "id": "RF.K.2c-Q4",
-          "type": "sound_machine",
-          "prompt": "Build the word by putting the sounds in order!",
-          "correct": "/b/ /a/ /t/",
-          "hint": "Start with /b/, then /a/, then /t/!",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2c/RF.K.2c-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2c/RF.K.2c-Q4-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.2c/RF.K.2c-Q4.png",
-          "phonemes": [
-            "/b/",
-            "/a/",
-            "/t/"
-          ],
-          "target_word": "bat",
-          "distractors": [
-            "/g/",
-            "/d/"
-          ]
-        },
-        {
-          "id": "RF.K.2c-Q5",
-          "type": "sound_machine",
-          "prompt": "Build the word by putting the sounds in order!",
-          "correct": "/t/ /o/ /p/",
-          "hint": "Start with /t/, then /o/, then /p/!",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2c/RF.K.2c-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2c/RF.K.2c-Q5-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.2c/RF.K.2c-Q5.png",
-          "phonemes": [
-            "/t/",
-            "/o/",
-            "/p/"
-          ],
-          "target_word": "top",
-          "distractors": [
-            "/k/",
-            "/n/"
-          ]
-        }
-      ]
+      "questions": []
     },
     {
       "standard_id": "RF.K.2d",
@@ -2930,20 +2263,6 @@
           ],
           "correct": "pig",
           "hint": "Listen carefully to the sound in the middle of each word.",
-          "difficulty": 1
-        },
-        {
-          "id": "RF.K.2d-Q2",
-          "type": "multiple_choice",
-          "prompt": "Listen carefully to the word 'pig'. Which sound do you hear in the middle of the word 'pig'?",
-          "choices": [
-            "The sound you hear in the middle of 'cup'",
-            "The sound you hear in the middle of 'cat'",
-            "The sound you hear in the middle of 'mop'",
-            "The sound you hear in the middle of 'fish'"
-          ],
-          "correct": "The sound you hear in the middle of 'fish'",
-          "hint": "Listen closely to the middle sound of the word 'pig' and compare it to the middle sounds of the words in the choices.",
           "difficulty": 1
         },
         {
@@ -3024,23 +2343,6 @@
       "parent_tip": "Try word swap games: 'If we change the /c/ in cat to /b/, what word do we get? Bat!'",
       "questions": [
         {
-          "id": "RF.K.2e-Q1",
-          "type": "multiple_choice",
-          "prompt": "Start with \"cat.\" Change the /k/ to /b/. What new word do you get?",
-          "choices": [
-            "Sat",
-            "Bat",
-            "Mat",
-            "Hat"
-          ],
-          "correct": "Bat",
-          "hint": "Take away the 'c' sound and put in a 'b' sound: b-at!",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2e/RF.K.2e-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2e/RF.K.2e-Q1-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.2e/RF.K.2e-Q1.png"
-        },
-        {
           "id": "RF.K.2e-Q2",
           "type": "multiple_choice",
           "prompt": "Let's play with sounds! Say the word 'map'. Now, change the very first sound, /m/, to the /t/ sound. What new word do you hear?",
@@ -3081,20 +2383,6 @@
           "correct": "Dig",
           "hint": "Focus on the sound in the middle of 'dog' and how it changes to the /i/ sound.",
           "difficulty": 2
-        },
-        {
-          "id": "RF.K.2e-Q5",
-          "type": "multiple_choice",
-          "prompt": "Imagine you have the word 'op'. If you put the sound /h/ at the beginning, what new word do you create?",
-          "choices": [
-            "mop",
-            "top",
-            "hop",
-            "pop"
-          ],
-          "correct": "hop",
-          "hint": "Think about how the sound /h/ and the word 'op' blend together to form a new word.",
-          "difficulty": 2
         }
       ]
     },
@@ -3103,40 +2391,7 @@
       "standard_description": "Demonstrate basic knowledge of one-to-one letter-sound correspondences by producing the primary sound for each consonant",
       "domain": "Foundational Skills",
       "parent_tip": "Practice letter sounds with flashcards or apps — 'B says /b/ like in ball!'",
-      "questions": [
-        {
-          "id": "RF.K.3a-Q1",
-          "type": "tap_to_pair",
-          "prompt": "Match each letter to the sound it makes!",
-          "correct": "B→/b/, S→/s/, M→/m/, T→/t/, R→/r/",
-          "hint": "Think of a word that starts with each letter to hear the sound!",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3a/RF.K.3a-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3a/RF.K.3a-Q1-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.3a/RF.K.3a-Q1.png",
-          "left_items": [
-            "B",
-            "S",
-            "M",
-            "T",
-            "R"
-          ],
-          "right_items": [
-            "/m/",
-            "/r/",
-            "/b/",
-            "/t/",
-            "/s/"
-          ],
-          "correct_pairs": {
-            "B": "/b/",
-            "M": "/m/",
-            "R": "/r/",
-            "S": "/s/",
-            "T": "/t/"
-          }
-        }
-      ]
+      "questions": []
     },
     {
       "standard_id": "RF.K.3b",
@@ -3248,116 +2503,7 @@
       "standard_description": "Read common high-frequency words by sight (e.g., the, of, to, you, she, my, is, are, do, does)",
       "domain": "Foundational Skills",
       "parent_tip": "Practice sight words with flashcards during short daily sessions — even 5 minutes helps!",
-      "questions": [
-        {
-          "id": "RF.K.3c-Q1",
-          "type": "missing_word",
-          "prompt": "Pick the right word to fill the blank.",
-          "correct": "the",
-          "hint": "Which little word fits before 'moon'?",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3c/RF.K.3c-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3c/RF.K.3c-Q1-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.3c/RF.K.3c-Q1.png",
-          "blank_index": 2,
-          "missing_choices": [
-            "the",
-            "is",
-            "do",
-            "we"
-          ],
-          "sentence_words": [
-            "Look",
-            "at",
-            "___",
-            "moon!"
-          ]
-        },
-        {
-          "id": "RF.K.3c-Q2",
-          "type": "missing_word",
-          "prompt": "Pick the right word to fill the blank.",
-          "correct": "do",
-          "hint": "This common word is spelled: d-o!",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3c/RF.K.3c-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3c/RF.K.3c-Q2-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.3c/RF.K.3c-Q2.png",
-          "blank_index": 2,
-          "missing_choices": [
-            "do",
-            "the",
-            "is",
-            "a"
-          ],
-          "sentence_words": [
-            "I",
-            "can",
-            "___",
-            "it!"
-          ]
-        },
-        {
-          "id": "RF.K.3c-Q3",
-          "type": "missing_word",
-          "prompt": "Pick the right word to fill the blank.",
-          "correct": "is",
-          "hint": "The word 'is' is spelled: i-s!",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3c/RF.K.3c-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3c/RF.K.3c-Q3-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.3c/RF.K.3c-Q3.png",
-          "blank_index": 1,
-          "missing_choices": [
-            "is",
-            "do",
-            "the",
-            "can"
-          ],
-          "sentence_words": [
-            "He",
-            "___",
-            "happy."
-          ]
-        },
-        {
-          "id": "RF.K.3c-Q4",
-          "type": "missing_word",
-          "prompt": "Pick the right word to fill the blank.",
-          "correct": "you",
-          "hint": "The word 'you' is spelled: y-o-u!",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3c/RF.K.3c-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3c/RF.K.3c-Q4-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.3c/RF.K.3c-Q4.png",
-          "blank_index": 2,
-          "missing_choices": [
-            "you",
-            "the",
-            "is",
-            "do"
-          ],
-          "sentence_words": [
-            "How",
-            "are",
-            "___?"
-          ]
-        },
-        {
-          "id": "RF.K.3c-Q5",
-          "type": "multiple_choice",
-          "prompt": "Choose the sight word that best completes the sentence: The boys ___ happy.",
-          "choices": [
-            "is",
-            "do",
-            "are",
-            "my"
-          ],
-          "correct": "are",
-          "hint": "Think about which word makes the sentence sound grammatically correct and complete.",
-          "difficulty": 2
-        }
-      ]
+      "questions": []
     },
     {
       "standard_id": "RF.K.3d",
@@ -3365,32 +2511,6 @@
       "domain": "Foundational Skills",
       "parent_tip": "Put similar words side by side — 'cat vs cut — what letter changed? What sound changed?'",
       "questions": [
-        {
-          "id": "RF.K.3d-Q1",
-          "type": "tap_to_pair",
-          "prompt": "Match words that look almost the same! Only ONE letter is different.",
-          "correct": "CAT→BAT, PAN→PEN, MAP→MOP",
-          "hint": "Look at each word carefully — which two words share the most letters?",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3d/RF.K.3d-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3d/RF.K.3d-Q1-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.3d/RF.K.3d-Q1.png",
-          "left_items": [
-            "CAT",
-            "PAN",
-            "MAP"
-          ],
-          "right_items": [
-            "PEN",
-            "MOP",
-            "BAT"
-          ],
-          "correct_pairs": {
-            "CAT": "BAT",
-            "MAP": "MOP",
-            "PAN": "PEN"
-          }
-        },
         {
           "id": "RF.K.3d-Q3",
           "type": "multiple_choice",
@@ -3509,20 +2629,6 @@
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RF.K.4/RF.K.4-Q3.png"
         },
         {
-          "id": "RF.K.4-Q4",
-          "type": "multiple_choice",
-          "prompt": "When the sun is out and it's time to play, what part of the day is it?",
-          "choices": [
-            "Nighttime",
-            "Evening",
-            "Daytime",
-            "Morning"
-          ],
-          "correct": "Daytime",
-          "hint": "Think about what the passage says about the sun and when we can play.",
-          "difficulty": 1
-        },
-        {
           "id": "RF.K.4-Q5",
           "type": "multiple_choice",
           "prompt": "Mom said, \"Get your coat.\" Dad said, \"Get your hat.\" It is cold outside!\n\nWHY did Mom and Dad tell the child to get a coat and hat?",
@@ -3636,20 +2742,6 @@
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.1/K.L.1-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.1/K.L.1-Q4-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/K.L.1/K.L.1-Q4.png"
-        },
-        {
-          "id": "K.L.1-Q5",
-          "type": "multiple_choice",
-          "prompt": "The cat is hiding ___ the bed.",
-          "choices": [
-            "on",
-            "in",
-            "under",
-            "over"
-          ],
-          "correct": "under",
-          "hint": "Think about where the cat is in relation to the bed when it is hiding.",
-          "difficulty": 1
         }
       ]
     },
@@ -3659,29 +2751,6 @@
       "domain": "Language",
       "parent_tip": "When writing together, remind about capitals at the start and periods at the end.",
       "questions": [
-        {
-          "id": "K.L.2-Q1",
-          "type": "missing_word",
-          "prompt": "Pick the right word to start the sentence.",
-          "correct": "I",
-          "hint": "The first word of a sentence starts with a CAPITAL letter!",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.2/K.L.2-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.2/K.L.2-Q1-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/K.L.2/K.L.2-Q1.png",
-          "blank_index": 0,
-          "missing_choices": [
-            "I",
-            "i",
-            "me",
-            "my"
-          ],
-          "sentence_words": [
-            "___",
-            "like",
-            "pizza."
-          ]
-        },
         {
           "id": "K.L.2-Q2",
           "type": "missing_word",
@@ -3900,132 +2969,6 @@
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.5/K.L.5-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.5/K.L.5-Q4-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/K.L.5/K.L.5-Q4.png"
-        },
-        {
-          "id": "K.L.5-Q5",
-          "type": "sentence_build",
-          "prompt": "Put these in order from LEAST happy to MOST happy.",
-          "correct": "Smile Giggle Laugh",
-          "hint": "A smile is quiet, a giggle is bigger, and a laugh is the biggest!",
-          "difficulty": 2,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.5/K.L.5-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.5/K.L.5-Q5-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/K.L.5/K.L.5-Q5.png",
-          "sentence_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.5/K.L.5-Q5-sentence.mp3",
-          "words": [
-            "Laugh",
-            "Smile",
-            "Giggle"
-          ],
-          "ordered": true
-        },
-        {
-          "id": "K.L.5-Q6",
-          "type": "category_sort",
-          "prompt": "Sort these words into the correct group!",
-          "choices": [],
-          "correct": "Animals: Dog, Cat, Bird | Colors: Red, Blue, Green",
-          "hint": "Animals are living creatures. Colors describe how things look.",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.5/K.L.5-Q6.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.5/K.L.5-Q6-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/K.L.5/K.L.5-Q6.png",
-          "categories": [
-            "Animals",
-            "Colors"
-          ],
-          "category_items": {
-            "Colors": [
-              "Red",
-              "Blue",
-              "Green"
-            ],
-            "Animals": [
-              "Dog",
-              "Cat",
-              "Bird"
-            ]
-          },
-          "items": [
-            "Dog",
-            "Red",
-            "Cat",
-            "Blue",
-            "Bird",
-            "Green"
-          ]
-        },
-        {
-          "id": "K.L.5-Q7",
-          "type": "category_sort",
-          "prompt": "Sort these words into the correct group!",
-          "choices": [],
-          "correct": "Fruits: Apple, Banana, Grape | Vegetables: Carrot, Broccoli, Pea",
-          "hint": "Fruits are usually sweet. Vegetables are usually green or orange.",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.5/K.L.5-Q7.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.5/K.L.5-Q7-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/K.L.5/K.L.5-Q7.png",
-          "categories": [
-            "Fruits",
-            "Vegetables"
-          ],
-          "category_items": {
-            "Fruits": [
-              "Apple",
-              "Banana",
-              "Grape"
-            ],
-            "Vegetables": [
-              "Carrot",
-              "Broccoli",
-              "Pea"
-            ]
-          },
-          "items": [
-            "Apple",
-            "Carrot",
-            "Banana",
-            "Broccoli",
-            "Grape",
-            "Pea"
-          ]
-        },
-        {
-          "id": "K.L.5-Q8",
-          "type": "category_sort",
-          "prompt": "Sort these words into the correct group!",
-          "choices": [],
-          "correct": "Big: Elephant, Whale, Mountain | Small: Ant, Ladybug, Seed",
-          "hint": "Think about the SIZE of each thing in real life.",
-          "difficulty": 2,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.5/K.L.5-Q8.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.5/K.L.5-Q8-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/K.L.5/K.L.5-Q8.png",
-          "categories": [
-            "Big",
-            "Small"
-          ],
-          "category_items": {
-            "Big": [
-              "Elephant",
-              "Whale",
-              "Mountain"
-            ],
-            "Small": [
-              "Ant",
-              "Ladybug",
-              "Seed"
-            ]
-          },
-          "items": [
-            "Elephant",
-            "Ant",
-            "Whale",
-            "Ladybug",
-            "Mountain",
-            "Seed"
-          ]
         }
       ]
     },
@@ -4157,20 +3100,6 @@
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.10/RL.K.10-Q2.png"
         },
         {
-          "id": "RL.K.10-Q3",
-          "type": "multiple_choice",
-          "prompt": "In the story about the little bear, what did the bear want to find?",
-          "choices": [
-            "Some sweet berries.",
-            "A big fish.",
-            "A warm bed.",
-            "A shiny toy."
-          ],
-          "correct": "Some sweet berries.",
-          "hint": "Remember what the little bear was searching for in the story we just read.",
-          "difficulty": 1
-        },
-        {
           "id": "RL.K.10-Q4",
           "type": "multiple_choice",
           "prompt": "What is one way you can show you understand a story during group reading time?",
@@ -4261,20 +3190,6 @@
           "correct": "Talk about the interesting pictures with your friends.",
           "hint": "Think about how talking with others can help everyone understand new facts from a book.",
           "difficulty": 1
-        },
-        {
-          "id": "RI.K.10-Q5",
-          "type": "multiple_choice",
-          "prompt": "Your class read a book about penguins together. What did the book teach you about where penguins usually live?",
-          "choices": [
-            "In warm, sandy deserts",
-            "In hot, wet jungles",
-            "High up in tall trees",
-            "In very cold places"
-          ],
-          "correct": "In very cold places",
-          "hint": "Look back at the part of the book that talked about the weather and ground where penguins are found.",
-          "difficulty": 2
         }
       ]
     }

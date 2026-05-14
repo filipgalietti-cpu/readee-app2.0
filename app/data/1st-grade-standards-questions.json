@@ -2,7 +2,7 @@
   "grade": "1st",
   "standard_framework": "Common Core ELA",
   "total_standards": 45,
-  "total_questions": 217,
+  "total_questions": 164,
   "standards": [
     {
       "standard_id": "RL.1.1",
@@ -397,34 +397,6 @@
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.5/RL.1.5-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.5/RL.1.5-Q4-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RL.1.5/RL.1.5-Q4.png"
-        },
-        {
-          "id": "RL.1.5-Q6",
-          "type": "category_sort",
-          "prompt": "Sort each description into the right category!",
-          "correct": "correct",
-          "hint": "Stories are made up with characters. Informational books teach real facts!",
-          "difficulty": 1,
-          "categories": [
-            "Storybook",
-            "Informational"
-          ],
-          "category_items": {
-            "Storybook": [
-              "A talking rabbit who goes on an adventure",
-              "Once upon a time, a brave knight saved a dragon"
-            ],
-            "Informational": [
-              "Facts about how plants grow",
-              "A book that teaches about the water cycle"
-            ]
-          },
-          "items": [
-            "A talking rabbit who goes on an adventure",
-            "Facts about how plants grow",
-            "Once upon a time, a brave knight saved a dragon",
-            "A book that teaches about the water cycle"
-          ]
         }
       ]
     },
@@ -481,23 +453,6 @@
           "correct": "The narrator",
           "hint": "Think about who is telling the whole story, including what the characters say.",
           "difficulty": 1
-        },
-        {
-          "id": "RL.1.6-Q4",
-          "type": "multiple_choice",
-          "prompt": "If a story uses the words **I** and **my,** who is telling it?",
-          "choices": [
-            "The author only",
-            "A character in the story",
-            "No one",
-            "Someone outside the story"
-          ],
-          "correct": "A character in the story",
-          "hint": "Words like 'I' and 'my' mean someone is talking about themselves.",
-          "difficulty": 2,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.6/RL.1.6-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.6/RL.1.6-Q4-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RL.1.6/RL.1.6-Q4.png"
         },
         {
           "id": "RL.1.6-Q5",
@@ -974,32 +929,6 @@
           "difficulty": 1
         },
         {
-          "id": "RI.1.4-Q6",
-          "type": "tap_to_pair",
-          "prompt": "Match each word to its meaning!",
-          "correct": "Hibernation→A long winter sleep, Enormous→Very big, Nocturnal→Active at night, Sprinted→Ran very fast",
-          "hint": "Match each word to what it means!",
-          "difficulty": 1,
-          "left_items": [
-            "Hibernation",
-            "Enormous",
-            "Nocturnal",
-            "Sprinted"
-          ],
-          "right_items": [
-            "Active at night",
-            "Ran very fast",
-            "Very big",
-            "A long winter sleep"
-          ],
-          "correct_pairs": {
-            "Enormous": "Very big",
-            "Sprinted": "Ran very fast",
-            "Nocturnal": "Active at night",
-            "Hibernation": "A long winter sleep"
-          }
-        },
-        {
           "id": "RI.1.4-Q3",
           "type": "multiple_choice",
           "prompt": "Dolphins need to find food even when the water is very dark. They use echolocation. This helps them send out sounds that bounce back, showing them where fish are hiding.",
@@ -1012,32 +941,6 @@
           "correct": "C: using sounds to find things",
           "hint": "Look at how the sounds help the dolphins find fish in the dark water.",
           "difficulty": "easy"
-        },
-        {
-          "id": "RI.1.4-Q5",
-          "type": "tap_to_pair",
-          "prompt": "Match each ocean word to its meaning!",
-          "correct": "Tentacles→Long arms of an octopus, Gills→How fish breathe underwater, Fin→Helps a fish swim",
-          "hint": "Think about what each body part does for the animal!",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.4/RI.1.4-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.4/RI.1.4-Q5-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.4/RI.1.4-Q5.png",
-          "left_items": [
-            "Tentacles",
-            "Gills",
-            "Fin"
-          ],
-          "right_items": [
-            "Helps a fish swim",
-            "Long arms of an octopus",
-            "How fish breathe underwater"
-          ],
-          "correct_pairs": {
-            "Fin": "Helps a fish swim",
-            "Gills": "How fish breathe underwater",
-            "Tentacles": "Long arms of an octopus"
-          }
         },
         {
           "id": "RI.1.4-Q7",
@@ -1068,40 +971,6 @@
           "difficulty": "easy"
         },
         {
-          "id": "RI.1.4-Q9",
-          "type": "category_sort",
-          "prompt": "Sort each word — is it a word about ocean animals or ocean places?",
-          "correct": "correct",
-          "hint": "Animals are living creatures. Places are locations where they live!",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.4/RI.1.4-Q9.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.4/RI.1.4-Q9-hint.mp3",
-          "categories": [
-            "Ocean Animals",
-            "Ocean Places"
-          ],
-          "category_items": {
-            "Ocean Places": [
-              "Coral reef",
-              "Tide pool",
-              "Deep sea"
-            ],
-            "Ocean Animals": [
-              "Dolphin",
-              "Jellyfish",
-              "Sea turtle"
-            ]
-          },
-          "items": [
-            "Coral reef",
-            "Dolphin",
-            "Tide pool",
-            "Jellyfish",
-            "Deep sea",
-            "Sea turtle"
-          ]
-        },
-        {
           "id": "RI.1.4-Q10",
           "type": "multiple_choice",
           "prompt": "The story says: \"The whale was ENORMOUS — its tail alone was as long as a school bus!\" What does ENORMOUS mean?",
@@ -1128,37 +997,6 @@
           "correct": "It can grow a new arm.",
           "hint": "To understand what 'regenerate' means, look at the sentence in the passage that uses this word.",
           "difficulty": "medium"
-        },
-        {
-          "id": "RI.1.4-Q12",
-          "type": "missing_word",
-          "prompt": "Pick the right word to fill the blank.",
-          "correct": "tide pool",
-          "hint": "It's a small pool of ocean water found on rocks near the shore!",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.4/RI.1.4-Q12.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.4/RI.1.4-Q12-hint.mp3",
-          "blank_index": 1,
-          "missing_choices": [
-            "tide pool",
-            "deep sea",
-            "river",
-            "lake"
-          ],
-          "sentence_words": [
-            "A",
-            "___",
-            "is",
-            "a",
-            "small",
-            "pool",
-            "of",
-            "ocean",
-            "water",
-            "on",
-            "the",
-            "rocks."
-          ]
         }
       ]
     },
@@ -1701,117 +1539,7 @@
       "standard_description": "Orally produce single-syllable words by blending sounds, including consonant blends",
       "domain": "Foundational Skills",
       "parent_tip": "Practice blending: say each sound slowly (/s/ /t/ /o/ /p/) then blend them together fast: stop!",
-      "questions": [
-        {
-          "id": "RF.1.2b-Q1",
-          "type": "sound_machine",
-          "prompt": "Blend these sounds to make a word!",
-          "correct": "/s/ /i/ /t/",
-          "hint": "Say each sound, then push them together fast.",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2b/RF.1.2b-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2b/RF.1.2b-Q1-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.2b/RF.1.2b-Q1.png",
-          "phonemes": [
-            "/s/",
-            "/i/",
-            "/t/"
-          ],
-          "target_word": "sit",
-          "distractors": [
-            "/a/",
-            "/p/"
-          ]
-        },
-        {
-          "id": "RF.1.2b-Q2",
-          "type": "sound_machine",
-          "prompt": "Blend these sounds to make a word!",
-          "correct": "/f/ /l/ /a/ /g/",
-          "hint": "Say /f/ /l/ together, then /a/ /g/.",
-          "difficulty": 2,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2b/RF.1.2b-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2b/RF.1.2b-Q2-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.2b/RF.1.2b-Q2.png",
-          "phonemes": [
-            "/f/",
-            "/l/",
-            "/a/",
-            "/g/"
-          ],
-          "target_word": "flag",
-          "distractors": [
-            "/s/",
-            "/p/"
-          ]
-        },
-        {
-          "id": "RF.1.2b-Q3",
-          "type": "sound_machine",
-          "prompt": "Blend these sounds to make a word!",
-          "correct": "/s/ /t/ /o/ /p/",
-          "hint": "/s/ /t/ blend together, then /o/ /p/.",
-          "difficulty": 2,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2b/RF.1.2b-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2b/RF.1.2b-Q3-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.2b/RF.1.2b-Q3.png",
-          "phonemes": [
-            "/s/",
-            "/t/",
-            "/o/",
-            "/p/"
-          ],
-          "target_word": "stop",
-          "distractors": [
-            "/a/",
-            "/m/"
-          ]
-        },
-        {
-          "id": "RF.1.2b-Q4",
-          "type": "sound_machine",
-          "prompt": "Blend these sounds to make a word!",
-          "correct": "/d/ /r/ /i/ /p/",
-          "hint": "Start with /d/ /r/ together, then add /i/ /p/.",
-          "difficulty": 2,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2b/RF.1.2b-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2b/RF.1.2b-Q4-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.2b/RF.1.2b-Q4.png",
-          "phonemes": [
-            "/d/",
-            "/r/",
-            "/i/",
-            "/p/"
-          ],
-          "target_word": "drip",
-          "distractors": [
-            "/a/",
-            "/t/"
-          ]
-        },
-        {
-          "id": "RF.1.2b-Q5",
-          "type": "sound_machine",
-          "prompt": "Blend these sounds to make a word!",
-          "correct": "/g/ /r/ /a/ /b/",
-          "hint": "/g/ /r/ together, then /a/ /b/.",
-          "difficulty": 2,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2b/RF.1.2b-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2b/RF.1.2b-Q5-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.2b/RF.1.2b-Q5.png",
-          "phonemes": [
-            "/g/",
-            "/r/",
-            "/a/",
-            "/b/"
-          ],
-          "target_word": "grab",
-          "distractors": [
-            "/u/",
-            "/s/"
-          ]
-        }
-      ]
+      "questions": []
     },
     {
       "standard_id": "RF.1.2c",
@@ -1889,23 +1617,6 @@
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.2c/RF.1.2c-Q3.png"
         },
         {
-          "id": "RF.1.2c-Q4",
-          "type": "multiple_choice",
-          "prompt": "Which word has the SAME first sound as **top**?",
-          "choices": [
-            "Big",
-            "Dog",
-            "Man",
-            "Ten"
-          ],
-          "correct": "Ten",
-          "hint": "Say 'top' and each choice out loud. Which two start with the same first sound?",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2c/RF.1.2c-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2c/RF.1.2c-Q4-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.2c/RF.1.2c-Q4.png"
-        },
-        {
           "id": "RF.1.2c-Q5",
           "type": "multiple_choice",
           "prompt": "Which word has the SAME middle sound as **cat**?",
@@ -1931,48 +1642,6 @@
       "parent_tip": "Practice breaking words apart: 'dog' has three sounds: /d/ /o/ /g/. Try it with other words!",
       "questions": [
         {
-          "id": "RF.1.2d-Q1",
-          "type": "multiple_choice",
-          "prompt": "Listen carefully to the word \"ship\". Which choice shows all the individual sounds you hear?",
-          "choices": [
-            "s-h-i-p",
-            "sh-i-p",
-            "shi-p",
-            "s-hi-p"
-          ],
-          "correct": "sh-i-p",
-          "hint": "Say the word \"ship\" slowly. Remember that some letters work together to make one sound.",
-          "difficulty": 1
-        },
-        {
-          "id": "RF.1.2d-Q2",
-          "type": "multiple_choice",
-          "prompt": "Listen carefully to the word **ship**. Which choice shows each single sound you hear?",
-          "choices": [
-            "s, h, i, p",
-            "s, hi, p",
-            "sh, i, p",
-            "sh, ip"
-          ],
-          "correct": "sh, i, p",
-          "hint": "Say the word 'ship' slowly and listen for each distinct sound you make.",
-          "difficulty": 2
-        },
-        {
-          "id": "RF.1.2d-Q3",
-          "type": "multiple_choice",
-          "prompt": "Imagine you are saying the word **bug** very slowly, stretching out each sound. Which choice shows the sounds you would make, one by one?",
-          "choices": [
-            "/bu/ /g/",
-            "/b/ /a/ /g/",
-            "/b/ /u/ /g/",
-            "/b/ /ug/"
-          ],
-          "correct": "/b/ /u/ /g/",
-          "hint": "Try saying the word \"bug\" out loud very slowly, listening carefully for each separate sound you make from beginning to end.",
-          "difficulty": 1
-        },
-        {
           "id": "RF.1.2d-Q4",
           "type": "multiple_choice",
           "prompt": "How many sounds in the word **stop**?",
@@ -1988,20 +1657,6 @@
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2d/RF.1.2d-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2d/RF.1.2d-Q4-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.2d/RF.1.2d-Q4.png"
-        },
-        {
-          "id": "RF.1.2d-Q5",
-          "type": "multiple_choice",
-          "prompt": "Your teacher asks you to say each separate sound you hear in the word **jump**. Which choice shows all the sounds you would say?",
-          "choices": [
-            "/j/ /u/ /mp/",
-            "/j/ /u/ /m/ /p/",
-            "/ju/ /mp/",
-            "/jum/ /p/"
-          ],
-          "correct": "/j/ /u/ /m/ /p/",
-          "hint": "Remember to break the word 'jump' into the smallest sound parts you can hear.",
-          "difficulty": 2
         }
       ]
     },
@@ -2075,20 +1730,6 @@
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4b/RF.1.4b-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4b/RF.1.4b-Q4-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.4b/RF.1.4b-Q4.png"
-        },
-        {
-          "id": "RF.1.4b-Q5",
-          "type": "multiple_choice",
-          "prompt": "A teacher asks a student to \"read this story with more expression.\" What does the teacher want the student to do?",
-          "choices": [
-            "Read all the words very fast.",
-            "Skip over some of the words.",
-            "Use their voice to make the story sound exciting or sad.",
-            "Read all the words in a quiet, flat voice."
-          ],
-          "correct": "Use their voice to make the story sound exciting or sad.",
-          "hint": "Think about how your voice can change to show feelings or make the story come alive for listeners.",
-          "difficulty": 1
         }
       ]
     },
@@ -2098,72 +1739,6 @@
       "domain": "Foundational Skills",
       "parent_tip": "If your child reads a word wrong, ask: Does that make sense? Encourage them to try again.",
       "questions": [
-        {
-          "id": "RF.1.4c-Q1",
-          "type": "missing_word",
-          "prompt": "Pick the right word to fill the blank.",
-          "correct": "Tree",
-          "hint": "Where do birds usually fly over?",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4c/RF.1.4c-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4c/RF.1.4c-Q1-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.4c/RF.1.4c-Q1.png",
-          "blank_index": 5,
-          "missing_choices": [
-            "Tree",
-            "Chair",
-            "Book",
-            "Cup"
-          ],
-          "sentence_words": [
-            "The",
-            "bird",
-            "flew",
-            "over",
-            "the",
-            "___"
-          ]
-        },
-        {
-          "id": "RF.1.4c-Q2",
-          "type": "multiple_choice",
-          "prompt": "You read the sentence: \"The cat sat on the map.\" Which word would make the sentence make more sense?",
-          "choices": [
-            "man",
-            "mop",
-            "mat",
-            "mom"
-          ],
-          "correct": "mat",
-          "hint": "Think about where a cat usually sits inside a house.",
-          "difficulty": 1
-        },
-        {
-          "id": "RF.1.4c-Q3",
-          "type": "missing_word",
-          "prompt": "Pick the right word to fill the blank.",
-          "correct": "Milk",
-          "hint": "What do people drink?",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4c/RF.1.4c-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4c/RF.1.4c-Q3-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.4c/RF.1.4c-Q3.png",
-          "blank_index": 5,
-          "missing_choices": [
-            "Rocks",
-            "Paper",
-            "Milk",
-            "Shoes"
-          ],
-          "sentence_words": [
-            "I",
-            "drank",
-            "a",
-            "glass",
-            "of",
-            "___"
-          ]
-        },
         {
           "id": "RF.1.4c-Q4",
           "type": "multiple_choice",
@@ -2180,31 +1755,6 @@
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4c/RF.1.4c-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4c/RF.1.4c-Q4-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.4c/RF.1.4c-Q4.png"
-        },
-        {
-          "id": "RF.1.4c-Q5",
-          "type": "missing_word",
-          "prompt": "Pick the right word to fill the blank.",
-          "correct": "Bright",
-          "hint": "Think about what the sun is like — does it give light?",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4c/RF.1.4c-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4c/RF.1.4c-Q5-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.4c/RF.1.4c-Q5.png",
-          "blank_index": 4,
-          "missing_choices": [
-            "Wet",
-            "Cold",
-            "Dark",
-            "Bright"
-          ],
-          "sentence_words": [
-            "The",
-            "sun",
-            "is",
-            "very",
-            "___"
-          ]
         }
       ]
     },
@@ -2227,32 +1777,6 @@
           "correct": "A stick used to play a game.",
           "hint": "Think about what the boy is doing with the bat in the sentence. What kind of bat do you use to hit a ball?",
           "difficulty": 2
-        },
-        {
-          "id": "L.1.4-Q6",
-          "type": "tap_to_pair",
-          "prompt": "Match each word to its meaning!",
-          "correct": "Tiny→Very small, Furious→Very angry, Slippery→Easy to slide on, Peeked→Looked quickly",
-          "hint": "Think about what each word means!",
-          "difficulty": 1,
-          "left_items": [
-            "Tiny",
-            "Furious",
-            "Slippery",
-            "Peeked"
-          ],
-          "right_items": [
-            "Very angry",
-            "Looked quickly",
-            "Easy to slide on",
-            "Very small"
-          ],
-          "correct_pairs": {
-            "Tiny": "Very small",
-            "Peeked": "Looked quickly",
-            "Furious": "Very angry",
-            "Slippery": "Easy to slide on"
-          }
         }
       ]
     },
@@ -2261,37 +1785,7 @@
       "standard_description": "Use sentence-level context as a clue to the meaning of a word or phrase",
       "domain": "Language",
       "parent_tip": "Teach your child to be a word detective — the clues to a word's meaning are in the sentence around it!",
-      "questions": [
-        {
-          "id": "L.1.4a-Q6",
-          "type": "tap_to_pair",
-          "prompt": "Match each word to its meaning!",
-          "correct": "Famished→Very hungry, Sweltering→Very hot, Cheerful→Happy, Exhausted→Very tired, Timid→Shy or scared",
-          "hint": "Use clues from the word to figure out the meaning!",
-          "difficulty": 1,
-          "left_items": [
-            "Famished",
-            "Sweltering",
-            "Cheerful",
-            "Exhausted",
-            "Timid"
-          ],
-          "right_items": [
-            "Shy or scared",
-            "Very tired",
-            "Happy",
-            "Very hungry",
-            "Very hot"
-          ],
-          "correct_pairs": {
-            "Timid": "Shy or scared",
-            "Cheerful": "Happy",
-            "Famished": "Very hungry",
-            "Exhausted": "Very tired",
-            "Sweltering": "Very hot"
-          }
-        }
-      ]
+      "questions": []
     },
     {
       "standard_id": "L.1.4b",
@@ -2312,32 +1806,6 @@
           "correct": "A person who teaches you things",
           "hint": "Think about the word 'teach' and what the ending '-er' means when it's added to a word.",
           "difficulty": 2
-        },
-        {
-          "id": "L.1.4b-Q6",
-          "type": "tap_to_pair",
-          "prompt": "Match each word to its meaning!",
-          "correct": "Unhappy→Not happy, Redo→Do again, Unkind→Not kind, Reread→Read again",
-          "hint": "'Un-' means not. 'Re-' means again.",
-          "difficulty": 1,
-          "left_items": [
-            "Unhappy",
-            "Redo",
-            "Unkind",
-            "Reread"
-          ],
-          "right_items": [
-            "Not kind",
-            "Read again",
-            "Do again",
-            "Not happy"
-          ],
-          "correct_pairs": {
-            "Redo": "Do again",
-            "Reread": "Read again",
-            "Unkind": "Not kind",
-            "Unhappy": "Not happy"
-          }
         }
       ]
     },
@@ -2501,41 +1969,6 @@
           "correct": "swim",
           "hint": "Think about how a fish moves in the water.",
           "difficulty": 1
-        },
-        {
-          "id": "L.1.5-Q5",
-          "type": "category_sort",
-          "prompt": "Sort the words — which ones are fruits?",
-          "correct": "correct",
-          "hint": "Fruits grow on trees or vines and you can eat them!",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5/L.1.5-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5/L.1.5-Q5-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.5/L.1.5-Q5.png",
-          "categories": [
-            "Fruits",
-            "Not Fruits"
-          ],
-          "category_items": {
-            "Fruits": [
-              "Apple",
-              "Banana",
-              "Grape"
-            ],
-            "Not Fruits": [
-              "Chair",
-              "Book",
-              "Lamp"
-            ]
-          },
-          "items": [
-            "Apple",
-            "Chair",
-            "Banana",
-            "Book",
-            "Grape",
-            "Lamp"
-          ]
         }
       ]
     },
@@ -2544,82 +1977,7 @@
       "standard_description": "Sort words into categories to gain a sense of the concepts the categories represent",
       "domain": "Language",
       "parent_tip": "Practice sorting: 'Let's put all the animals in one group and all the foods in another!'",
-      "questions": [
-        {
-          "id": "L.1.5a-Q2",
-          "type": "multiple_choice",
-          "prompt": "Which group does a 'bird' belong in?",
-          "choices": [
-            "A) Toys",
-            "B) Animals",
-            "C) Food",
-            "D) Colors"
-          ],
-          "correct": "B) Animals",
-          "hint": "Think about what kind of things 'cat,' 'dog,' and 'fish' are.",
-          "difficulty": 1
-        },
-        {
-          "id": "L.1.5a-Q4",
-          "type": "multiple_choice",
-          "prompt": "Look at these words: shirt, pants, shoes. Which word does NOT belong in this group?",
-          "choices": [
-            "A) hat",
-            "B) sock",
-            "C) apple",
-            "D) jacket"
-          ],
-          "correct": "C) apple",
-          "hint": "Think about what kind of things shirt, pants, and shoes are. Then find the word that is different from that group.",
-          "difficulty": 1
-        },
-        {
-          "id": "L.1.5a-Q5",
-          "type": "multiple_choice",
-          "prompt": "Which word best names the group for 'car, bus, train'?",
-          "choices": [
-            "Animals",
-            "Food",
-            "Ways to go",
-            "Books"
-          ],
-          "correct": "Ways to go",
-          "hint": "Think about what you do with a car, a bus, and a train.",
-          "difficulty": 2
-        },
-        {
-          "id": "L.1.5a-Q6",
-          "type": "category_sort",
-          "prompt": "Sort the words — which ones are colors?",
-          "correct": "correct",
-          "hint": "Red, blue, and green are all colors!",
-          "difficulty": 1,
-          "categories": [
-            "Colors",
-            "Not Colors"
-          ],
-          "category_items": {
-            "Colors": [
-              "Red",
-              "Blue",
-              "Green"
-            ],
-            "Not Colors": [
-              "Dog",
-              "Apple",
-              "Chair"
-            ]
-          },
-          "items": [
-            "Red",
-            "Dog",
-            "Blue",
-            "Apple",
-            "Green",
-            "Chair"
-          ]
-        }
-      ]
+      "questions": []
     },
     {
       "standard_id": "L.1.5b",
@@ -2831,23 +2189,6 @@
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.5d/L.1.5d-Q1.png"
         },
         {
-          "id": "L.1.5d-Q2",
-          "type": "sentence_build",
-          "prompt": "Put in order from quietest to loudest",
-          "correct": "whisper talk shout",
-          "hint": "Which is the quietest? Which is the loudest?",
-          "difficulty": 2,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5d/L.1.5d-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5d/L.1.5d-Q2-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.5d/L.1.5d-Q2.png",
-          "words": [
-            "talk",
-            "shout",
-            "whisper"
-          ],
-          "ordered": true
-        },
-        {
           "id": "L.1.5d-Q3",
           "type": "multiple_choice",
           "prompt": "Which word means to move FASTER than **walk**?",
@@ -2880,23 +2221,6 @@
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5d/L.1.5d-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5d/L.1.5d-Q4-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.5d/L.1.5d-Q4.png"
-        },
-        {
-          "id": "L.1.5d-Q5",
-          "type": "sentence_build",
-          "prompt": "Put in order from coldest to hottest",
-          "correct": "freezing warm hot",
-          "hint": "Start with the coldest temperature and end with the hottest.",
-          "difficulty": 2,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5d/L.1.5d-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.5d/L.1.5d-Q5-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.5d/L.1.5d-Q5.png",
-          "words": [
-            "hot",
-            "freezing",
-            "warm"
-          ],
-          "ordered": true
         }
       ]
     },
@@ -2906,34 +2230,6 @@
       "domain": "Language",
       "parent_tip": "Encourage your child to use new words they learn in books: 'Can you use enormous in a sentence?'",
       "questions": [
-        {
-          "id": "L.1.6-Q1",
-          "type": "missing_word",
-          "prompt": "Pick the best word to complete the sentence.",
-          "correct": "Enormous",
-          "hint": "Elephants are very big. Which word means very big?",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.6/L.1.6-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.6/L.1.6-Q1-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.6/L.1.6-Q1.png",
-          "blank_index": 1,
-          "missing_choices": [
-            "Quiet",
-            "Enormous",
-            "Tiny",
-            "Fast"
-          ],
-          "sentence_words": [
-            "The",
-            "___",
-            "elephant",
-            "sprayed",
-            "water",
-            "with",
-            "its",
-            "trunk."
-          ]
-        },
         {
           "id": "L.1.6-Q2",
           "type": "multiple_choice",
@@ -2950,51 +2246,6 @@
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.6/L.1.6-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.6/L.1.6-Q2-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.6/L.1.6-Q2.png"
-        },
-        {
-          "id": "L.1.6-Q3",
-          "type": "missing_word",
-          "prompt": "Pick the best word to complete the sentence.",
-          "correct": "Excited",
-          "hint": "Getting a new puppy is a happy thing!",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.6/L.1.6-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.6/L.1.6-Q3-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.6/L.1.6-Q3.png",
-          "blank_index": 2,
-          "missing_choices": [
-            "Excited",
-            "Bored",
-            "Sad",
-            "Angry"
-          ],
-          "sentence_words": [
-            "She",
-            "was",
-            "___",
-            "to",
-            "get",
-            "a",
-            "new",
-            "puppy."
-          ]
-        },
-        {
-          "id": "L.1.6-Q4",
-          "type": "multiple_choice",
-          "prompt": "**However** means the same as:",
-          "choices": [
-            "Because",
-            "But",
-            "Then",
-            "And also"
-          ],
-          "correct": "But",
-          "hint": "'I wanted ice cream. However, the store was closed.' — this means BUT.",
-          "difficulty": 2,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.6/L.1.6-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.6/L.1.6-Q4-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/L.1.6/L.1.6-Q4.png"
         },
         {
           "id": "L.1.6-Q5",
@@ -3112,20 +2363,6 @@
       "parent_tip": "Three-letter words are the foundation. Stretch each sound, then snap them together.",
       "questions": [
         {
-          "id": "RF.1.3b-Q1",
-          "type": "multiple_choice",
-          "prompt": "Read the word: fox",
-          "choices": [
-            "fan",
-            "fix",
-            "fog",
-            "fox"
-          ],
-          "correct": "fox",
-          "hint": "Sound out each letter in the word 'fox' to find the matching choice.",
-          "difficulty": 1
-        },
-        {
           "id": "RF.1.3b-Q2",
           "type": "multiple_choice",
           "prompt": "Which word names a small, furry pet that often says 'meow'?",
@@ -3138,48 +2375,6 @@
           "correct": "cat",
           "hint": "Sound out each word and think about what animal it names to find the best match.",
           "difficulty": 1
-        },
-        {
-          "id": "RF.1.3b-Q3",
-          "type": "multiple_choice",
-          "prompt": "Look at the word: **cat**. Which choice tells you about a **cat**?",
-          "choices": [
-            "It is a big animal that lives in the ocean.",
-            "It is a small animal that barks.",
-            "It is a pet that says 'meow'.",
-            "It is a bird that flies in the sky."
-          ],
-          "correct": "It is a pet that says 'meow'.",
-          "hint": "To answer, first read the word 'cat' and then think about the animal it names.",
-          "difficulty": 1
-        },
-        {
-          "id": "RF.1.3b-Q4",
-          "type": "multiple_choice",
-          "prompt": "Read the sentence. Which word best completes the sentence? \"I like to eat a sweet _______.\"",
-          "choices": [
-            "bit",
-            "bun",
-            "bat",
-            "big"
-          ],
-          "correct": "bun",
-          "hint": "Sound out each word choice and think about which one makes sense to eat and is sweet.",
-          "difficulty": 2
-        },
-        {
-          "id": "RF.1.3b-Q5",
-          "type": "multiple_choice",
-          "prompt": "Which word best completes the sentence: \"I see a big ____ in the sky.\"",
-          "choices": [
-            "A. pig",
-            "B. sun",
-            "C. box",
-            "D. cup"
-          ],
-          "correct": "B. sun",
-          "hint": "Read each word choice and think about what you see that is big in the sky.",
-          "difficulty": 2
         }
       ]
     },
@@ -3465,34 +2660,6 @@
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.3f/RF.1.3f-Q1.png"
         },
         {
-          "id": "RF.1.3f-Q2",
-          "type": "multiple_choice",
-          "prompt": "Which word has the -ing ending?",
-          "choices": [
-            "jumped",
-            "running",
-            "sings",
-            "smaller"
-          ],
-          "correct": "running",
-          "hint": "Read each word carefully and listen for the -ing sound at the end.",
-          "difficulty": 1
-        },
-        {
-          "id": "RF.1.3f-Q3",
-          "type": "multiple_choice",
-          "prompt": "Yesterday, the boy ________ to the store.",
-          "choices": [
-            "walk",
-            "walks",
-            "walked",
-            "walking"
-          ],
-          "correct": "walked",
-          "hint": "Look for the word that tells what the boy did yesterday.",
-          "difficulty": 1
-        },
-        {
           "id": "RF.1.3f-Q4",
           "type": "multiple_choice",
           "prompt": "What is the root word in **playing**?",
@@ -3531,23 +2698,6 @@
       "domain": "Foundational Skills",
       "parent_tip": "Some words just can't be sounded out. Memorize 'said', 'was', 'were', 'have'.",
       "questions": [
-        {
-          "id": "RF.1.3g-Q1",
-          "type": "multiple_choice",
-          "prompt": "The word **said** is tricky. How is it spelled?",
-          "choices": [
-            "s-e-d",
-            "s-a-i-d",
-            "s-a-d",
-            "s-i-d"
-          ],
-          "correct": "s-a-i-d",
-          "hint": "Four letters: s-a-i-d. But it sounds like \"sed\"!",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3g/RF.1.3g-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.3g/RF.1.3g-Q1-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RF.1.3g/RF.1.3g-Q1.png"
-        },
         {
           "id": "RF.1.3g-Q2",
           "type": "multiple_choice",
@@ -3627,48 +2777,6 @@
           "difficulty": 1
         },
         {
-          "id": "RF.1.4a-Q2",
-          "type": "multiple_choice",
-          "prompt": "What is the main reason you would choose to read 'A book about sharks'?",
-          "choices": [
-            "To learn how to make a delicious sandwich for lunch.",
-            "To understand how to tie your shoes all by yourself.",
-            "To find out what sharks look like and where they live.",
-            "To hear a funny story about a boy and his dog."
-          ],
-          "correct": "To find out what sharks look like and where they live.",
-          "hint": "Think about what kind of information a book about *sharks* would teach you.",
-          "difficulty": 1
-        },
-        {
-          "id": "RF.1.4a-Q3",
-          "type": "multiple_choice",
-          "prompt": "Read this story: My dog, Max, likes to run fast. He chases squirrels in the park. Max also loves to chew on his squeaky toy. When he is tired, he naps on the soft rug. Max is a fun dog to have! Now, what is this story mostly about?",
-          "choices": [
-            "Running fast in the park.",
-            "Where Max takes a nap.",
-            "What Max the dog likes to do.",
-            "How to find squirrels."
-          ],
-          "correct": "What Max the dog likes to do.",
-          "hint": "Think about all the different things Max does in the story to understand the main idea.",
-          "difficulty": 2
-        },
-        {
-          "id": "RF.1.4a-Q4",
-          "type": "multiple_choice",
-          "prompt": "Read this story: \"Lily loved her little red ball. She threw it up high. Her dog, Max, jumped and caught it! They played all afternoon. Lily giggled when Max brought the ball back.\" Why would someone read this story?",
-          "choices": [
-            "To learn how to throw a ball.",
-            "To enjoy reading a happy story.",
-            "To find out what dogs like to eat.",
-            "To know how to teach a dog tricks."
-          ],
-          "correct": "To enjoy reading a happy story.",
-          "hint": "Think about why people read simple stories like this one.",
-          "difficulty": 2
-        },
-        {
           "id": "RF.1.4a-Q5",
           "type": "multiple_choice",
           "prompt": "Read the text about butterflies.Butterflies start as small eggs. The eggs hatch into tiny caterpillars. Caterpillars eat many leaves to grow bigger. Then, a caterpillar makes a chrysalis around itself. Inside the chrysalis, it changes. After some time, a butterfly comes out! Butterflies fly and drink sweet nectar from flowers.What is the main reason the author wrote this text?",
@@ -3691,51 +2799,6 @@
       "parent_tip": "Read a little every day. Mix old favorites with new, trickier books.",
       "questions": [
         {
-          "id": "RL.1.10-Q1",
-          "type": "multiple_choice",
-          "prompt": "Read this short story: \"Max loved his dog, Sparky. Sparky had soft brown fur and a wagging tail. Every morning, Max and Sparky went to the park. Max would throw a yellow frisbee, and Sparky would run and catch it. They both loved playtime.\"  \n\nBased on the story, what color was the frisbee Max threw?",
-          "choices": [
-            "A) Blue",
-            "B) Green",
-            "C) Yellow",
-            "D) Red"
-          ],
-          "correct": "C) Yellow",
-          "hint": "Look at the sentence that talks about Max throwing the frisbee.",
-          "difficulty": 1
-        },
-        {
-          "id": "RL.1.10-Q2",
-          "type": "multiple_choice",
-          "prompt": "Read this story: Lily loves to play. She has a big red ball. Lily rolls the ball to her dog, Max. Max barks and runs after the ball. They play in the green park. What does Lily use to play with Max?",
-          "choices": [
-            "a stick",
-            "a big red ball",
-            "a toy car",
-            "a blue kite"
-          ],
-          "correct": "a big red ball",
-          "hint": "Look for the sentence that tells you what Lily has.",
-          "difficulty": 1
-        },
-        {
-          "id": "RL.1.10-Q3",
-          "type": "multiple_choice",
-          "prompt": "What should you do when a story gets tricky?",
-          "choices": [
-            "give up forever",
-            "ask for help",
-            "skip every page",
-            "close the book and never open it"
-          ],
-          "correct": "ask for help",
-          "hint": "When a story is hard, what's the smartest thing a reader can do?",
-          "difficulty": 2,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.10/RL.1.10-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.10/RL.1.10-Q3-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RL.1.10/RL.1.10-Q3.png"
-        },
-        {
           "id": "RL.1.10-Q4",
           "type": "multiple_choice",
           "prompt": "After reading the poem 'My Little Dog,' what does the dog in the poem love to do?",
@@ -3748,20 +2811,6 @@
           "correct": "chase a bouncy ball",
           "hint": "Read the second line of the poem to find out the dog's favorite activity.",
           "difficulty": 2
-        },
-        {
-          "id": "RL.1.10-Q5",
-          "type": "multiple_choice",
-          "prompt": "Read this little story:\n\n\"The little dog runs in the park.\nHe barks with joy, a happy sound.\nHe chases balls, then makes a mark,\nAnd digs a hole deep in the ground.\"\n\nWhat kind of story is this?",
-          "choices": [
-            "A) A recipe",
-            "B) A poem",
-            "C) A regular story",
-            "D) A joke"
-          ],
-          "correct": "B) A poem",
-          "hint": "Look at how the lines are written and how the words sound together at the end of each line.",
-          "difficulty": 2
         }
       ]
     },
@@ -3771,20 +2820,6 @@
       "domain": "Informational",
       "parent_tip": "Mix in fact books about the child's interests — animals, weather, sports.",
       "questions": [
-        {
-          "id": "RI.1.10-Q1",
-          "type": "multiple_choice",
-          "prompt": "What is one special thing about giraffes?",
-          "choices": [
-            "A) They can swim very fast.",
-            "B) They have very long necks.",
-            "C) They build big dams.",
-            "D) They like to eat fish."
-          ],
-          "correct": "B) They have very long necks.",
-          "hint": "Remember to look for details in the story that tell you what giraffes are like.",
-          "difficulty": 1
-        },
         {
           "id": "RI.1.10-Q2",
           "type": "multiple_choice",
@@ -3798,34 +2833,6 @@
           "correct": "B. Ants have six legs.",
           "hint": "Look at the sentences that tell you how many legs different bugs have.",
           "difficulty": 1
-        },
-        {
-          "id": "RI.1.10-Q3",
-          "type": "multiple_choice",
-          "prompt": "You need to find out one fact about a specific animal in a book. What is the best way to find that fact quickly?",
-          "choices": [
-            "Read every word on every page from the beginning.",
-            "Only read the words on the very first page.",
-            "Look at the pictures and the bold words that are like titles.",
-            "Ask a grown-up to tell you the fact."
-          ],
-          "correct": "Look at the pictures and the bold words that are like titles.",
-          "hint": "Think about what parts of a book help you know what each section is about without reading everything.",
-          "difficulty": 1
-        },
-        {
-          "id": "RI.1.10-Q4",
-          "type": "multiple_choice",
-          "prompt": "Which animal can live in the ocean?",
-          "choices": [
-            "a fox",
-            "a whale",
-            "a squirrel",
-            "a mouse"
-          ],
-          "correct": "a whale",
-          "hint": "Look for the part of the text that tells you about animals that make the ocean their home.",
-          "difficulty": 2
         },
         {
           "id": "RI.1.10-Q5",
@@ -3896,34 +2903,6 @@
           "correct": "are",
           "hint": "Think about if 'birds' means one bird or many birds. The verb needs to match the number of birds.",
           "difficulty": 1
-        },
-        {
-          "id": "L.1.1-Q4",
-          "type": "multiple_choice",
-          "prompt": "Yesterday, Mom ___ a big cake.",
-          "choices": [
-            "bake",
-            "bakes",
-            "baking",
-            "baked"
-          ],
-          "correct": "baked",
-          "hint": "Think about the word 'Yesterday' to choose the word that tells about something that already happened.",
-          "difficulty": 2
-        },
-        {
-          "id": "L.1.1-Q5",
-          "type": "multiple_choice",
-          "prompt": "Which word best completes the sentence: The ______ puppy wagged its tail.",
-          "choices": [
-            "under",
-            "runs",
-            "happy",
-            "bark"
-          ],
-          "correct": "happy",
-          "hint": "Think about which word describes the puppy in the sentence.",
-          "difficulty": 2
         }
       ]
     },

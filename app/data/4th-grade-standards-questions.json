@@ -2,7 +2,7 @@
   "grade": "4th",
   "standard_framework": "Common Core State Standards",
   "total_standards": 34,
-  "total_questions": 158,
+  "total_questions": 136,
   "standards": [
     {
       "standard_id": "RL.4.1",
@@ -191,23 +191,6 @@
       "parent_tip": "Ask your child to describe characters using evidence: 'What did they say or do that shows that trait?'",
       "questions": [
         {
-          "id": "RL.4.3-Q1",
-          "type": "multiple_choice",
-          "prompt": "Coach Reyes never raised her voice. When a player made a mistake, she'd kneel down, look them in the eye, and say, \"Tell me what you were thinking.\" By season's end, every player said she was the best coach they'd ever had.\n\nWhich word BEST describes Coach Reyes?",
-          "choices": [
-            "Strict",
-            "Impatient",
-            "Respectful",
-            "Careless"
-          ],
-          "correct": "Respectful",
-          "hint": "She kneels down, makes eye contact, and asks for their perspective — that's deep respect.",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.3/RL.4.3-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.3/RL.4.3-Q1-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.3/RL.4.3-Q1.png"
-        },
-        {
           "id": "RL.4.3-Q2",
           "type": "multiple_choice",
           "prompt": "The marketplace buzzed with voices in a dozen languages. Spices piled in colorful mountains — saffron yellow, paprika red, turmeric orange. Somewhere a radio played scratchy music, and the smell of roasting lamb drifted through the narrow aisles.\n\nThe author uses these details to create a setting that feels —",
@@ -391,33 +374,6 @@
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.5/RL.4.5-Q1.png"
         },
         {
-          "id": "RL.4.5-Q2",
-          "type": "missing_word",
-          "prompt": "Pick the right word to fill the blank.",
-          "correct": "Paragraphs",
-          "hint": "Stanzas group lines in a poem, just like ___ group sentences in prose.",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.5/RL.4.5-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.5/RL.4.5-Q2-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.5/RL.4.5-Q2.png",
-          "blank_index": 4,
-          "missing_choices": [
-            "Sentences",
-            "Titles",
-            "Paragraphs",
-            "Chapters"
-          ],
-          "sentence_words": [
-            "Stanzas",
-            "are",
-            "similar",
-            "to",
-            "___",
-            "in",
-            "prose."
-          ]
-        },
-        {
           "id": "RL.4.5-Q3",
           "type": "multiple_choice",
           "prompt": "How is dialogue presented differently in a play versus a novel?",
@@ -449,39 +405,6 @@
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.5/RL.4.5-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.5/RL.4.5-Q4-hint.mp3"
-        },
-        {
-          "id": "RL.4.5-Q5",
-          "type": "missing_word",
-          "prompt": "Pick the right word to fill the blank.",
-          "correct": "Line or sentence",
-          "hint": "A verse is a single line of poetry — similar to a sentence in prose.",
-          "difficulty": 2,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.5/RL.4.5-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.5/RL.4.5-Q5-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.5/RL.4.5-Q5.png",
-          "blank_index": 9,
-          "missing_choices": [
-            "Chapter",
-            "Setting",
-            "Line or sentence",
-            "Character"
-          ],
-          "sentence_words": [
-            "A",
-            "verse",
-            "in",
-            "a",
-            "poem",
-            "is",
-            "similar",
-            "to",
-            "a",
-            "___",
-            "in",
-            "a",
-            "novel."
-          ]
         }
       ]
     },
@@ -723,23 +646,6 @@
           "correct": "Look at what brave actions the characters take and the results of those actions.",
           "hint": "The standard asks you to compare how different stories *treat* or show a theme; think about what makes a theme clear in a story.",
           "difficulty": "easy"
-        },
-        {
-          "id": "RL.4.9-Q5",
-          "type": "multiple_choice",
-          "prompt": "When comparing myths from different cultures, the MOST important thing to examine is —",
-          "choices": [
-            "How long each myth is",
-            "How each culture uses its own characters and settings to explore universal themes",
-            "Which myth is more exciting",
-            "Which myth is older"
-          ],
-          "correct": "How each culture uses its own characters and settings to explore universal themes",
-          "hint": "The richest comparison looks at how different cultures express the same big ideas.",
-          "difficulty": "hard",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.9/RL.4.9-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.9/RL.4.9-Q5-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.9/RL.4.9-Q5.png"
         }
       ]
     },
@@ -1089,23 +995,6 @@
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.3/RI.4.3-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.3/RI.4.3-Q4-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.3/RI.4.3-Q4.png"
-        },
-        {
-          "id": "RI.4.3-Q5",
-          "type": "multiple_choice",
-          "prompt": "When explaining a historical event, it's important to include —",
-          "choices": [
-            "What happened, why it happened, and what resulted from it",
-            "Just the people involved",
-            "Only your opinion about it",
-            "Only the date"
-          ],
-          "correct": "What happened, why it happened, and what resulted from it",
-          "hint": "A complete explanation covers the event, its causes, and its effects.",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.3/RI.4.3-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.3/RI.4.3-Q5-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.3/RI.4.3-Q5.png"
         }
       ]
     },
@@ -1131,32 +1020,6 @@
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.4/RI.4.4-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.4/RI.4.4-Q2-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.4/RI.4.4-Q2.png"
-        },
-        {
-          "id": "RI.4.4-Q6",
-          "type": "tap_to_pair",
-          "prompt": "Match each word to its meaning!",
-          "correct": "Excavated→Dug up carefully, Interdependent→Depending on each other, Metamorphosis→A dramatic change in form, Famine→Extreme widespread hunger",
-          "hint": "Use context clues and word parts to match each word!",
-          "difficulty": 2,
-          "left_items": [
-            "Excavated",
-            "Interdependent",
-            "Metamorphosis",
-            "Famine"
-          ],
-          "right_items": [
-            "Depending on each other",
-            "Extreme widespread hunger",
-            "A dramatic change in form",
-            "Dug up carefully"
-          ],
-          "correct_pairs": {
-            "Famine": "Extreme widespread hunger",
-            "Excavated": "Dug up carefully",
-            "Metamorphosis": "A dramatic change in form",
-            "Interdependent": "Depending on each other"
-          }
         }
       ]
     },
@@ -1179,40 +1042,6 @@
           "correct": "Sequence",
           "hint": "Think about words that show the order in which things happen over time.",
           "difficulty": "medium"
-        },
-        {
-          "id": "RI.4.5-Q6",
-          "type": "category_sort",
-          "prompt": "Sort each passage description into its text structure!",
-          "correct": "correct",
-          "hint": "Look for signal words: problem/solution, first/next/then, similarly/however, because/as a result!",
-          "difficulty": 2,
-          "categories": [
-            "Problem & Solution",
-            "Chronological",
-            "Compare & Contrast",
-            "Cause & Effect"
-          ],
-          "category_items": {
-            "Chronological": [
-              "First, next, then, finally"
-            ],
-            "Cause & Effect": [
-              "Temperature dropped → pipes burst → basement flooded"
-            ],
-            "Compare & Contrast": [
-              "Hurricanes vs tornadoes: similarly, however"
-            ],
-            "Problem & Solution": [
-              "Too much trash in the ocean → recycling programs"
-            ]
-          },
-          "items": [
-            "Too much trash in the ocean → recycling programs",
-            "First, next, then, finally",
-            "Hurricanes vs tornadoes: similarly, however",
-            "Temperature dropped → pipes burst → basement flooded"
-          ]
         },
         {
           "id": "RI.4.5-Q3",
@@ -1263,64 +1092,6 @@
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q7.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q7-hint.mp3"
-        },
-        {
-          "id": "RI.4.5-Q8",
-          "type": "tap_to_pair",
-          "prompt": "Match each signal word to the text structure it belongs to!",
-          "correct": "First, next, finally→Chronological, Because, as a result→Cause & Effect, Both, however, unlike→Compare & Contrast, The problem is, one solution→Problem & Solution",
-          "hint": "Each set of signal words belongs to exactly one text structure!",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q8.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q8-hint.mp3",
-          "left_items": [
-            "First, next, finally",
-            "Because, as a result",
-            "Both, however, unlike",
-            "The problem is, one solution"
-          ],
-          "right_items": [
-            "Problem & Solution",
-            "Chronological",
-            "Compare & Contrast",
-            "Cause & Effect"
-          ],
-          "correct_pairs": {
-            "Because, as a result": "Cause & Effect",
-            "First, next, finally": "Chronological",
-            "Both, however, unlike": "Compare & Contrast",
-            "The problem is, one solution": "Problem & Solution"
-          }
-        },
-        {
-          "id": "RI.4.5-Q9",
-          "type": "missing_word",
-          "prompt": "Pick the right text structure name to fill the blank.",
-          "correct": "chronological",
-          "hint": "Events told in the order they happened = in time order. What's that called?",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q9.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q9-hint.mp3",
-          "blank_index": 9,
-          "missing_choices": [
-            "chronological",
-            "cause and effect",
-            "compare and contrast",
-            "problem and solution"
-          ],
-          "sentence_words": [
-            "A",
-            "passage",
-            "that",
-            "tells",
-            "events",
-            "in",
-            "time",
-            "order",
-            "uses",
-            "___",
-            "structure."
-          ]
         },
         {
           "id": "RI.4.5-Q10",
@@ -1639,23 +1410,6 @@
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.8/RI.4.8-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.8/RI.4.8-Q4-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.8/RI.4.8-Q4.png"
-        },
-        {
-          "id": "RI.4.8-Q5",
-          "type": "multiple_choice",
-          "prompt": "An author argues that school lunches should be healthier. Which evidence would NOT support this point?",
-          "choices": [
-            "Students who eat nutritious lunches concentrate better",
-            "Childhood obesity rates are rising",
-            "The cafeteria was painted blue last year",
-            "Processed foods are linked to health problems"
-          ],
-          "correct": "The cafeteria was painted blue last year",
-          "hint": "The paint color has nothing to do with how healthy the food is — it's irrelevant evidence.",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.8/RI.4.8-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.8/RI.4.8-Q5-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.8/RI.4.8-Q5.png"
         }
       ]
     },
@@ -1665,23 +1419,6 @@
       "domain": "Reading Informational Text",
       "parent_tip": "Read two articles on the same topic and help your child combine what they learned from both.",
       "questions": [
-        {
-          "id": "RI.4.9-Q1",
-          "type": "multiple_choice",
-          "prompt": "Text A explains how solar panels convert sunlight to electricity. Text B discusses the environmental benefits of solar energy. To write a complete report on solar energy, you should —",
-          "choices": [
-            "Ignore both and use your own knowledge",
-            "Only use Text A",
-            "Only use Text B",
-            "Combine information from both texts"
-          ],
-          "correct": "Combine information from both texts",
-          "hint": "Each text contributes different pieces. Together, they give you a complete picture.",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.9/RI.4.9-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.9/RI.4.9-Q1-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.9/RI.4.9-Q1.png"
-        },
         {
           "id": "RI.4.9-Q2",
           "type": "multiple_choice",
@@ -1755,23 +1492,6 @@
       "domain": "Reading Informational Text",
       "parent_tip": "Encourage reading nonfiction books, articles, and magazines about topics your child is passionate about.",
       "questions": [
-        {
-          "id": "RI.4.10-Q1",
-          "type": "multiple_choice",
-          "prompt": "The human brain weighs about three pounds but uses roughly 20% of the body's total energy. It contains approximately 86 billion neurons, each connected to thousands of others, forming a network more complex than any computer ever built.\n\nWhat comparison does the author make to emphasize the brain's complexity?",
-          "choices": [
-            "Comparing it to a computer",
-            "Comparing it to the heart",
-            "Comparing it to a muscle",
-            "Comparing it to other organs"
-          ],
-          "correct": "Comparing it to a computer",
-          "hint": "The author says the brain's network is 'more complex than any computer ever built.'",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.10/RI.4.10-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.10/RI.4.10-Q1-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.10/RI.4.10-Q1.png"
-        },
         {
           "id": "RI.4.10-Q2",
           "type": "multiple_choice",
@@ -2221,32 +1941,6 @@
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4a/L.4.4a-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4a/L.4.4a-Q4-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4a/L.4.4a-Q4.png"
-        },
-        {
-          "id": "L.4.4a-Q6",
-          "type": "tap_to_pair",
-          "prompt": "Match each word to its meaning!",
-          "correct": "Unprecedented→Never happened before, Resilient→Able to recover, Meticulous→Extremely careful, Verbose→Using too many words",
-          "hint": "Use context clues from the sentence around each word!",
-          "difficulty": 2,
-          "left_items": [
-            "Unprecedented",
-            "Resilient",
-            "Meticulous",
-            "Verbose"
-          ],
-          "right_items": [
-            "Able to recover",
-            "Using too many words",
-            "Extremely careful",
-            "Never happened before"
-          ],
-          "correct_pairs": {
-            "Verbose": "Using too many words",
-            "Resilient": "Able to recover",
-            "Meticulous": "Extremely careful",
-            "Unprecedented": "Never happened before"
-          }
         }
       ]
     },
@@ -2269,32 +1963,6 @@
           "correct": "Very small things",
           "hint": "Consider what 'micro-' suggests about the size of something.",
           "difficulty": "easy"
-        },
-        {
-          "id": "L.4.4b-Q6",
-          "type": "tap_to_pair",
-          "prompt": "Match each word to its root meaning!",
-          "correct": "Predict (dict=say)→To say before, Autograph (graph=write)→Own handwriting of name, Interrupt (rupt=break)→To break into, Benefactor (bene=good)→A person who does good",
-          "hint": "Use the Latin/Greek root in parentheses to figure out the meaning!",
-          "difficulty": 2,
-          "left_items": [
-            "Predict (dict=say)",
-            "Autograph (graph=write)",
-            "Interrupt (rupt=break)",
-            "Benefactor (bene=good)"
-          ],
-          "right_items": [
-            "Own handwriting of name",
-            "A person who does good",
-            "To break into",
-            "To say before"
-          ],
-          "correct_pairs": {
-            "Predict (dict=say)": "To say before",
-            "Benefactor (bene=good)": "A person who does good",
-            "Interrupt (rupt=break)": "To break into",
-            "Autograph (graph=write)": "Own handwriting of name"
-          }
         }
       ]
     },
@@ -2497,32 +2165,6 @@
           "correct": "Her laughter made him feel happy and pleased.",
           "hint": "Consider what \"like music to his ears\" tells you about the feeling or effect her laughter had on him.",
           "difficulty": "easy"
-        },
-        {
-          "id": "L.4.5a-Q6",
-          "type": "tap_to_pair",
-          "prompt": "Match each simile or metaphor to its meaning!",
-          "correct": "Smile bright as sun→Both are bright and warm, Time is money→Time is valuable, Dancer like water→Smooth and graceful, Heart of stone→Cold and unfeeling",
-          "hint": "Think about what the two things being compared have in common!",
-          "difficulty": 2,
-          "left_items": [
-            "Smile bright as sun",
-            "Time is money",
-            "Dancer like water",
-            "Heart of stone"
-          ],
-          "right_items": [
-            "Time is valuable",
-            "Cold and unfeeling",
-            "Smooth and graceful",
-            "Both are bright and warm"
-          ],
-          "correct_pairs": {
-            "Time is money": "Time is valuable",
-            "Heart of stone": "Cold and unfeeling",
-            "Dancer like water": "Smooth and graceful",
-            "Smile bright as sun": "Both are bright and warm"
-          }
         }
       ]
     },
@@ -2548,32 +2190,6 @@
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5b/L.4.5b-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5b/L.4.5b-Q4-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5b/L.4.5b-Q4.png"
-        },
-        {
-          "id": "L.4.5b-Q6",
-          "type": "tap_to_pair",
-          "prompt": "Match each idiom or proverb to its meaning!",
-          "correct": "Book by cover→Don't judge by appearance, Actions > words→What you do matters more, Arm and leg→Very expensive, When it rains→Problems come all at once",
-          "hint": "These sayings have hidden meanings — think about what they really teach!",
-          "difficulty": 2,
-          "left_items": [
-            "Book by cover",
-            "Actions > words",
-            "Arm and leg",
-            "When it rains"
-          ],
-          "right_items": [
-            "Very expensive",
-            "Problems come all at once",
-            "What you do matters more",
-            "Don't judge by appearance"
-          ],
-          "correct_pairs": {
-            "Arm and leg": "Very expensive",
-            "Book by cover": "Don't judge by appearance",
-            "When it rains": "Problems come all at once",
-            "Actions > words": "What you do matters more"
-          }
         }
       ]
     },
@@ -2624,29 +2240,6 @@
             "___",
             "Marcus."
           ]
-        },
-        {
-          "id": "L.4.5c-Q6",
-          "type": "tap_to_pair",
-          "prompt": "Match each word to its synonym or antonym!",
-          "correct": "Courageous→Brave (synonym), Generous→Selfish (antonym), Expand→Contract (antonym)",
-          "hint": "Synonyms mean the same, antonyms mean the opposite!",
-          "difficulty": 2,
-          "left_items": [
-            "Courageous",
-            "Generous",
-            "Expand"
-          ],
-          "right_items": [
-            "Contract (antonym)",
-            "Brave (synonym)",
-            "Selfish (antonym)"
-          ],
-          "correct_pairs": {
-            "Expand": "Contract (antonym)",
-            "Generous": "Selfish (antonym)",
-            "Courageous": "Brave (synonym)"
-          }
         }
       ]
     },
@@ -2765,51 +2358,6 @@
       "parent_tip": "Pronouns, modal verbs (can, may, must), prepositions, and run-on sentences.",
       "questions": [
         {
-          "id": "L.4.1-Q1",
-          "type": "multiple_choice",
-          "prompt": "The children played with ___ toys in the park.",
-          "choices": [
-            "there",
-            "they",
-            "their",
-            "theirs"
-          ],
-          "correct": "their",
-          "hint": "Think about which word shows that the toys belong to the children.",
-          "difficulty": 1
-        },
-        {
-          "id": "L.4.1-Q2",
-          "type": "multiple_choice",
-          "prompt": "What kind of word is **may** in: You may go now?",
-          "choices": [
-            "noun",
-            "modal verb",
-            "adjective",
-            "adverb"
-          ],
-          "correct": "modal verb",
-          "hint": "Modal verbs help other verbs (can, may, must)!",
-          "difficulty": 2,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.1/L.4.1-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.1/L.4.1-Q2-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.1/L.4.1-Q2.png"
-        },
-        {
-          "id": "L.4.1-Q3",
-          "type": "multiple_choice",
-          "prompt": "Which word best completes the sentence to show where the puppy hid? \"The puppy hid _______ the bed when it heard the thunder.\"",
-          "choices": [
-            "A. over",
-            "B. onto",
-            "C. under",
-            "D. with"
-          ],
-          "correct": "C. under",
-          "hint": "Think about what makes the most sense for where a puppy would go to hide and feel safe.",
-          "difficulty": 2
-        },
-        {
           "id": "L.4.1-Q4",
           "type": "multiple_choice",
           "prompt": "Which sentence correctly combines these two ideas: \"The cat stretched. It jumped onto the couch.\"",
@@ -2822,23 +2370,6 @@
           "correct": "The cat stretched and it jumped onto the couch.",
           "hint": "Think about how connecting words like 'and' can link two short sentences together to make one longer, smoother sentence.",
           "difficulty": 2
-        },
-        {
-          "id": "L.4.1-Q5",
-          "type": "multiple_choice",
-          "prompt": "Pick the right pronoun: My friend and ___ went to the park.",
-          "choices": [
-            "I",
-            "me",
-            "mine",
-            "my"
-          ],
-          "correct": "I",
-          "hint": "Use I as the subject!",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.1/L.4.1-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.1/L.4.1-Q5-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.1/L.4.1-Q5.png"
         }
       ]
     },
@@ -2895,23 +2426,6 @@
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.2/L.4.2-Q3.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.2/L.4.2-Q3-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.2/L.4.2-Q3.png"
-        },
-        {
-          "id": "L.4.2-Q4",
-          "type": "multiple_choice",
-          "prompt": "What needs a capital letter?",
-          "choices": [
-            "proper nouns like names and places",
-            "every other word",
-            "just verbs",
-            "nothing in the middle"
-          ],
-          "correct": "proper nouns like names and places",
-          "hint": "Names and places always get capitals!",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.2/L.4.2-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.2/L.4.2-Q4-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.2/L.4.2-Q4.png"
         },
         {
           "id": "L.4.2-Q5",

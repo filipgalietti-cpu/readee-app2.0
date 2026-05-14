@@ -2,7 +2,7 @@
   "grade": "2nd",
   "standard_framework": "Common Core State Standards",
   "total_standards": 43,
-  "total_questions": 212,
+  "total_questions": 180,
   "standards": [
     {
       "standard_id": "RL.2.1",
@@ -408,23 +408,6 @@
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RL.2.5/RL.2.5-Q2.png"
         },
         {
-          "id": "RL.2.5-Q3",
-          "type": "multiple_choice",
-          "prompt": "Devin wanted to win the art contest. He painted every day after school. His painting of a sunset won first place!\n\nWhat is the problem at the beginning?",
-          "choices": [
-            "Devin went to school",
-            "Devin won a prize",
-            "Devin wanted to win the contest",
-            "Devin painted a sunset"
-          ],
-          "correct": "Devin wanted to win the contest",
-          "hint": "The beginning tells you what the character wants or needs.",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RL.2.5/RL.2.5-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RL.2.5/RL.2.5-Q3-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RL.2.5/RL.2.5-Q3.png"
-        },
-        {
           "id": "RL.2.5-Q4",
           "type": "multiple_choice",
           "prompt": "Imagine you are starting to read a brand new story. What is the main reason the author writes the beginning part?",
@@ -658,20 +641,6 @@
           ],
           "correct": "A girl attends a royal party.",
           "hint": "Look closely at what both girls want to do and what event they both go to in the stories.",
-          "difficulty": "easy"
-        },
-        {
-          "id": "RL.2.9-Q2",
-          "type": "multiple_choice",
-          "prompt": "When you compare two different versions of the same story, what is the most important thing to notice about them?",
-          "choices": [
-            "A) How many pages each story has.",
-            "B) Which story is your favorite to read.",
-            "C) How the characters and events are alike or different.",
-            "D) The colors used in the pictures."
-          ],
-          "correct": "C) How the characters and events are alike or different.",
-          "hint": "Remember that when you compare stories, you look at the important parts of the story, like who is in it and what happens.",
           "difficulty": "easy"
         },
         {
@@ -1009,23 +978,6 @@
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RI.2.3/RI.2.3-Q1.png"
         },
         {
-          "id": "RI.2.3-Q2",
-          "type": "multiple_choice",
-          "prompt": "The sun heats the ocean water. The water evaporates into the air. Clouds form. Then rain falls back to the ground.\n\nWhat causes clouds to form?",
-          "choices": [
-            "Water evaporating into the air",
-            "The moon",
-            "Rain falling",
-            "Wind blowing"
-          ],
-          "correct": "Water evaporating into the air",
-          "hint": "What happens right BEFORE clouds form?",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q2-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RI.2.3/RI.2.3-Q2.png"
-        },
-        {
           "id": "RI.2.3-Q3",
           "type": "multiple_choice",
           "prompt": "In 1903, the Wright Brothers flew the first airplane. Their flight lasted only 12 seconds. Today, planes can fly across the whole world.\n\nHow are the events connected?",
@@ -1137,36 +1089,6 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q9-hint.mp3"
         },
         {
-          "id": "RI.2.3-Q10",
-          "type": "category_sort",
-          "prompt": "Sort each phrase — is it a cause or an effect?",
-          "correct": "correct",
-          "hint": "A cause is why something happens. An effect is what happens because of it!",
-          "difficulty": "hard",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q10.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q10-hint.mp3",
-          "categories": [
-            "Cause",
-            "Effect"
-          ],
-          "category_items": {
-            "Cause": [
-              "Ocean water gets warmer",
-              "A storm hits the reef"
-            ],
-            "Effect": [
-              "Coral turns white",
-              "Waves break the coral"
-            ]
-          },
-          "items": [
-            "Coral turns white",
-            "Ocean water gets warmer",
-            "Waves break the coral",
-            "A storm hits the reef"
-          ]
-        },
-        {
           "id": "RI.2.3-Q11",
           "type": "multiple_choice",
           "prompt": "When making sea salt, why is it important that the sun heats the ocean water?",
@@ -1179,34 +1101,6 @@
           "correct": "It causes the water to evaporate, leaving the salt behind.",
           "hint": "Look at what happens to the water right after the sun heats it, and what is left behind.",
           "difficulty": "easy"
-        },
-        {
-          "id": "RI.2.3-Q12",
-          "type": "missing_word",
-          "prompt": "Pick the right word to fill the blank.",
-          "correct": "white",
-          "hint": "When coral gets too warm, it loses its color. What color does it turn?",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q12.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q12-hint.mp3",
-          "blank_index": 8,
-          "missing_choices": [
-            "white",
-            "bigger",
-            "green",
-            "deeper"
-          ],
-          "sentence_words": [
-            "Because",
-            "the",
-            "water",
-            "got",
-            "warmer,",
-            "the",
-            "coral",
-            "turned",
-            "___."
-          ]
         },
         {
           "id": "RI.2.3-Q13",
@@ -1223,31 +1117,6 @@
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q13.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q13-hint.mp3"
-        },
-        {
-          "id": "RI.2.3-Q14",
-          "type": "tap_to_pair",
-          "prompt": "Match each cause to its effect!",
-          "correct": "Water gets warm→Coral bleaches, Trash in the ocean→Animals get sick, Storm hits the coast→Waves crash on shore",
-          "hint": "Think about what each event would cause to happen!",
-          "difficulty": "hard",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q14.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q14-hint.mp3",
-          "left_items": [
-            "Water gets warm",
-            "Trash in the ocean",
-            "Storm hits the coast"
-          ],
-          "right_items": [
-            "Waves crash on shore",
-            "Animals get sick",
-            "Coral bleaches"
-          ],
-          "correct_pairs": {
-            "Water gets warm": "Coral bleaches",
-            "Trash in the ocean": "Animals get sick",
-            "Storm hits the coast": "Waves crash on shore"
-          }
         },
         {
           "id": "RI.2.3-Q15",
@@ -1428,23 +1297,6 @@
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.5/RI.2.5-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.5/RI.2.5-Q4-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RI.2.5/RI.2.5-Q4.png"
-        },
-        {
-          "id": "RI.2.5-Q5",
-          "type": "multiple_choice",
-          "prompt": "A small sentence under a photograph that explains what's in the picture is called a —",
-          "choices": [
-            "Title",
-            "Heading",
-            "Paragraph",
-            "Caption"
-          ],
-          "correct": "Caption",
-          "hint": "Think of the little labels under photos in books and magazines.",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.5/RI.2.5-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.5/RI.2.5-Q5-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RI.2.5/RI.2.5-Q5.png"
         }
       ]
     },
@@ -1614,23 +1466,6 @@
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.7/RI.2.7-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.7/RI.2.7-Q4-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RI.2.7/RI.2.7-Q4.png"
-        },
-        {
-          "id": "RI.2.7-Q5",
-          "type": "multiple_choice",
-          "prompt": "Which type of image would BEST help explain how a bicycle works?",
-          "choices": [
-            "A photo of someone walking",
-            "A labeled diagram showing bicycle parts",
-            "A painting of a bicycle race",
-            "A photograph of a sunset"
-          ],
-          "correct": "A labeled diagram showing bicycle parts",
-          "hint": "To explain HOW something works, you need to see the parts and what they do.",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.7/RI.2.7-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.7/RI.2.7-Q5-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RI.2.7/RI.2.7-Q5.png"
         }
       ]
     },
@@ -1826,23 +1661,6 @@
           "difficulty": "easy"
         },
         {
-          "id": "RI.2.10-Q2",
-          "type": "multiple_choice",
-          "prompt": "The Great Wall of China was built over many centuries to protect China from invaders. It stretches over 13,000 miles, making it the longest structure ever built by humans.\n\nWhy was the Great Wall built?",
-          "choices": [
-            "To divide cities",
-            "To protect from invaders",
-            "For decoration",
-            "For tourists to visit"
-          ],
-          "correct": "To protect from invaders",
-          "hint": "The first sentence explains the purpose — to protect from what?",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.10/RI.2.10-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.10/RI.2.10-Q2-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RI.2.10/RI.2.10-Q2.png"
-        },
-        {
           "id": "RI.2.10-Q3",
           "type": "multiple_choice",
           "prompt": "Recycling one aluminum can saves enough energy to power a TV for three hours. Americans throw away enough cans each year to build more than 20 Eiffel Towers.\n\nWhat is the author trying to show with these facts?",
@@ -2035,34 +1853,6 @@
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.3a/RF.2.3a-Q3.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.3a/RF.2.3a-Q3-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RF.2.3a/RF.2.3a-Q3.png"
-        },
-        {
-          "id": "RF.2.3a-Q4",
-          "type": "multiple_choice",
-          "prompt": "Which word has a short 'a' sound?",
-          "choices": [
-            "A) Gate",
-            "B) Cake",
-            "C) Map",
-            "D) Ride"
-          ],
-          "correct": "C) Map",
-          "hint": "Listen carefully to the vowel sound in each word to find the one that sounds like the 'a' in 'cat'.",
-          "difficulty": "medium"
-        },
-        {
-          "id": "RF.2.3a-Q5",
-          "type": "multiple_choice",
-          "prompt": "Which word has the same vowel sound as the word 'kite'?",
-          "choices": [
-            "A) pig",
-            "B) tree",
-            "C) five",
-            "D) cat"
-          ],
-          "correct": "C) five",
-          "hint": "Say the word 'kite' out loud and listen to the vowel sound. Then, say each choice out loud and listen for the word with the same vowel sound.",
-          "difficulty": "medium"
         }
       ]
     },
@@ -2177,23 +1967,6 @@
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RF.2.3c/RF.2.3c-Q1.png"
         },
         {
-          "id": "RF.2.3c-Q2",
-          "type": "multiple_choice",
-          "prompt": "The word **robot** has two syllables. How do you break it apart?",
-          "choices": [
-            "Rob-ot",
-            "Ro-bot",
-            "Robo-t",
-            "R-obot"
-          ],
-          "correct": "Ro-bot",
-          "hint": "Each syllable needs a vowel. Where's the natural break?",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.3c/RF.2.3c-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.3c/RF.2.3c-Q2-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RF.2.3c/RF.2.3c-Q2.png"
-        },
-        {
           "id": "RF.2.3c-Q3",
           "type": "multiple_choice",
           "prompt": "Which two-syllable word has a long **i** sound?",
@@ -2279,29 +2052,6 @@
           "correct": "Full of help",
           "hint": "The word \"helpful\" has the suffix \"-ful.\" Think about what \"-ful\" means when you add it to a word like \"help.\"",
           "difficulty": "medium"
-        },
-        {
-          "id": "RF.2.3d-Q6",
-          "type": "tap_to_pair",
-          "prompt": "Match each word to its meaning!",
-          "correct": "Unkind→Not kind, Reread→Read again, Careless→Not careful",
-          "hint": "Look at the prefix or suffix for clues!",
-          "difficulty": 1,
-          "left_items": [
-            "Unkind",
-            "Reread",
-            "Careless"
-          ],
-          "right_items": [
-            "Not careful",
-            "Not kind",
-            "Read again"
-          ],
-          "correct_pairs": {
-            "Reread": "Read again",
-            "Unkind": "Not kind",
-            "Careless": "Not careful"
-          }
         }
       ]
     },
@@ -2399,20 +2149,6 @@
       "parent_tip": "Practice sight words like 'people,' 'again,' and 'friend' — these need to be memorized, not sounded out.",
       "questions": [
         {
-          "id": "RF.2.3f-Q1",
-          "type": "multiple_choice",
-          "prompt": "Read the sentence. Which word best completes the sentence? There were many ____ at the school fair.",
-          "choices": [
-            "A) things",
-            "B) People",
-            "C) places",
-            "D) colors"
-          ],
-          "correct": "B) People",
-          "hint": "Think about who you might see gathered together at a school fair.",
-          "difficulty": "easy"
-        },
-        {
           "id": "RF.2.3f-Q2",
           "type": "multiple_choice",
           "prompt": "Choose the correct spelling:",
@@ -2428,20 +2164,6 @@
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.3f/RF.2.3f-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.3f/RF.2.3f-Q2-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RF.2.3f/RF.2.3f-Q2.png"
-        },
-        {
-          "id": "RF.2.3f-Q3",
-          "type": "multiple_choice",
-          "prompt": "Which of these words is spelled in a way that is tricky or does not follow common sound rules?",
-          "choices": [
-            "A) cat",
-            "B) said",
-            "C) stop",
-            "D) jump"
-          ],
-          "correct": "B) said",
-          "hint": "Look for the word where the letters don't make the sounds you might expect them to make.",
-          "difficulty": "medium"
         },
         {
           "id": "RF.2.3f-Q4",
@@ -2549,23 +2271,6 @@
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.4/RF.2.4-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.4/RF.2.4-Q4-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RF.2.4/RF.2.4-Q4.png"
-        },
-        {
-          "id": "RF.2.4-Q5",
-          "type": "multiple_choice",
-          "prompt": "When a good reader comes to a word they don't know, they —",
-          "choices": [
-            "Stop reading the book",
-            "Use clues from the sentence to figure it out",
-            "Skip the whole page",
-            "Guess randomly"
-          ],
-          "correct": "Use clues from the sentence to figure it out",
-          "hint": "The other words in the sentence can help you figure out the mystery word!",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.4/RF.2.4-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.4/RF.2.4-Q5-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RF.2.4/RF.2.4-Q5.png"
         }
       ]
     },
@@ -2700,23 +2405,6 @@
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RF.2.4b/RF.2.4b-Q2.png"
         },
         {
-          "id": "RF.2.4b-Q3",
-          "type": "multiple_choice",
-          "prompt": "A character in a story whispers, \"Shhh, the baby is sleeping.\" How should you read this line?",
-          "choices": [
-            "In a loud voice",
-            "Softly and quietly",
-            "With an angry tone",
-            "Very fast"
-          ],
-          "correct": "Softly and quietly",
-          "hint": "The character is whispering — match that with your voice!",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.4b/RF.2.4b-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.4b/RF.2.4b-Q3-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RF.2.4b/RF.2.4b-Q3.png"
-        },
-        {
           "id": "RF.2.4b-Q4",
           "type": "multiple_choice",
           "prompt": "Imagine you are reading a story out loud to your younger brother or sister. What is the best way to read so they can easily understand and enjoy the story?",
@@ -2773,32 +2461,6 @@
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RF.2.4c/RF.2.4c-Q1.png"
         },
         {
-          "id": "RF.2.4c-Q2",
-          "type": "missing_word",
-          "prompt": "Pick the right word to fill the blank.",
-          "correct": "Nest",
-          "hint": "Where do birds live? Use the rest of the sentence to decide.",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.4c/RF.2.4c-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.4c/RF.2.4c-Q2-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RF.2.4c/RF.2.4c-Q2.png",
-          "blank_index": 5,
-          "missing_choices": [
-            "Best",
-            "Test",
-            "Desk",
-            "Nest"
-          ],
-          "sentence_words": [
-            "The",
-            "bird",
-            "flew",
-            "to",
-            "its",
-            "___"
-          ]
-        },
-        {
           "id": "RF.2.4c-Q3",
           "type": "multiple_choice",
           "prompt": "What is a good strategy when a sentence doesn't make sense?",
@@ -2814,63 +2476,6 @@
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.4c/RF.2.4c-Q3.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.4c/RF.2.4c-Q3-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RF.2.4c/RF.2.4c-Q3.png"
-        },
-        {
-          "id": "RF.2.4c-Q4",
-          "type": "missing_word",
-          "prompt": "Pick the right word to fill the blank.",
-          "correct": "Tree",
-          "hint": "What tall thing can a cat climb?",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.4c/RF.2.4c-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.4c/RF.2.4c-Q4-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RF.2.4c/RF.2.4c-Q4.png",
-          "blank_index": 6,
-          "missing_choices": [
-            "Tree",
-            "Cloud",
-            "Book",
-            "Spoon"
-          ],
-          "sentence_words": [
-            "The",
-            "cat",
-            "climbed",
-            "up",
-            "the",
-            "tall",
-            "___"
-          ]
-        },
-        {
-          "id": "RF.2.4c-Q5",
-          "type": "missing_word",
-          "prompt": "Pick the right word to fill the blank.",
-          "correct": "House",
-          "hint": "A family lives in a ____. Which word makes sense?",
-          "difficulty": 2,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.4c/RF.2.4c-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.4c/RF.2.4c-Q5-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/RF.2.4c/RF.2.4c-Q5.png",
-          "blank_index": 6,
-          "missing_choices": [
-            "Hope",
-            "House",
-            "Hose",
-            "Horse"
-          ],
-          "sentence_words": [
-            "The",
-            "family",
-            "lives",
-            "in",
-            "a",
-            "big",
-            "___",
-            "on",
-            "the",
-            "hill."
-          ]
         }
       ]
     },
@@ -2879,37 +2484,7 @@
       "standard_description": "Determine or clarify the meaning of unknown and multiple-meaning words and phrases.",
       "domain": "Language",
       "parent_tip": "When your child encounters an unknown word, help them use the sentence around it as a clue.",
-      "questions": [
-        {
-          "id": "L.2.4-Q6",
-          "type": "tap_to_pair",
-          "prompt": "Match each word to its meaning!",
-          "correct": "Tiny→Very small, Bat→A stick for hitting a ball, Exhausted→Very tired, Ring→To make a sound, Bright→Shining with a lot of light",
-          "hint": "Think about what each word means in context!",
-          "difficulty": 1,
-          "left_items": [
-            "Tiny",
-            "Bat",
-            "Exhausted",
-            "Ring",
-            "Bright"
-          ],
-          "right_items": [
-            "A stick for hitting a ball",
-            "Very tired",
-            "To make a sound",
-            "Shining with a lot of light",
-            "Very small"
-          ],
-          "correct_pairs": {
-            "Bat": "A stick for hitting a ball",
-            "Ring": "To make a sound",
-            "Tiny": "Very small",
-            "Bright": "Shining with a lot of light",
-            "Exhausted": "Very tired"
-          }
-        }
-      ]
+      "questions": []
     },
     {
       "standard_id": "L.2.4a",
@@ -2950,29 +2525,6 @@
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4a/L.2.4a-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4a/L.2.4a-Q4-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/L.2.4a/L.2.4a-Q4.png"
-        },
-        {
-          "id": "L.2.4a-Q6",
-          "type": "tap_to_pair",
-          "prompt": "Match each word to its meaning!",
-          "correct": "Famished→Very hungry, Cautious→Careful, Hilarious→Very funny",
-          "hint": "Use clues from the sentence to figure out the meaning!",
-          "difficulty": 1,
-          "left_items": [
-            "Famished",
-            "Cautious",
-            "Hilarious"
-          ],
-          "right_items": [
-            "Careful",
-            "Very hungry",
-            "Very funny"
-          ],
-          "correct_pairs": {
-            "Cautious": "Careful",
-            "Famished": "Very hungry",
-            "Hilarious": "Very funny"
-          }
         }
       ]
     },
@@ -2998,32 +2550,6 @@
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4b/L.2.4b-Q3.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4b/L.2.4b-Q3-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/L.2.4b/L.2.4b-Q3.png"
-        },
-        {
-          "id": "L.2.4b-Q6",
-          "type": "tap_to_pair",
-          "prompt": "Match each word to its meaning!",
-          "correct": "Unhappy→Not happy, Retell→Tell again, Unlock→Open with a key, Disagree→To not agree",
-          "hint": "'Un-' means not, 're-' means again, 'dis-' means not!",
-          "difficulty": 1,
-          "left_items": [
-            "Unhappy",
-            "Retell",
-            "Unlock",
-            "Disagree"
-          ],
-          "right_items": [
-            "Tell again",
-            "Open with a key",
-            "To not agree",
-            "Not happy"
-          ],
-          "correct_pairs": {
-            "Retell": "Tell again",
-            "Unlock": "Open with a key",
-            "Unhappy": "Not happy",
-            "Disagree": "To not agree"
-          }
         }
       ]
     },
@@ -3063,29 +2589,6 @@
           "correct": "They cannot do things by themselves and need help.",
           "hint": "Think about what the word \"help\" means on its own.",
           "difficulty": "easy"
-        },
-        {
-          "id": "L.2.4c-Q6",
-          "type": "tap_to_pair",
-          "prompt": "Match each word to its meaning!",
-          "correct": "Painter→A person who paints, Joyful→Full of joy, Movement→The act of moving",
-          "hint": "Look at the suffix: '-er' means a person who, '-ful' means full of, '-ment' means the act of!",
-          "difficulty": 1,
-          "left_items": [
-            "Painter",
-            "Joyful",
-            "Movement"
-          ],
-          "right_items": [
-            "Full of joy",
-            "The act of moving",
-            "A person who paints"
-          ],
-          "correct_pairs": {
-            "Joyful": "Full of joy",
-            "Painter": "A person who paints",
-            "Movement": "The act of moving"
-          }
         }
       ]
     },
@@ -3183,20 +2686,6 @@
       "parent_tip": "Show your child how to look up words in a dictionary or glossary — practice finding words alphabetically.",
       "questions": [
         {
-          "id": "L.2.4e-Q1",
-          "type": "multiple_choice",
-          "prompt": "In a nonfiction book, a glossary helps you understand new words. If you see this entry: \"desert: a very dry place with little water,\" what does \"desert\" mean?",
-          "choices": [
-            "a place where animals swim",
-            "a very dry place with little water",
-            "a place with many tall trees",
-            "a very cold place with snow"
-          ],
-          "correct": "a very dry place with little water",
-          "hint": "Look closely at the definition given right after the word 'desert' in the glossary entry.",
-          "difficulty": "easy"
-        },
-        {
           "id": "L.2.4e-Q2",
           "type": "multiple_choice",
           "prompt": "Read this sentence: 'Maya was excited to discover a hidden key under the rug.' If you used a dictionary to understand the word 'discover,' which meaning would best fit the sentence?",
@@ -3209,23 +2698,6 @@
           "correct": "to find something new or hidden",
           "hint": "Imagine you are using a dictionary to look up the word 'discover.' Which definition helps you understand what Maya did with the key?",
           "difficulty": "easy"
-        },
-        {
-          "id": "L.2.4e-Q3",
-          "type": "multiple_choice",
-          "prompt": "Which word would come FIRST in a dictionary?",
-          "choices": [
-            "Cat",
-            "Dog",
-            "Ant",
-            "Bird"
-          ],
-          "correct": "Ant",
-          "hint": "Which letter comes first in the alphabet: a, b, c, or d?",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4e/L.2.4e-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.4e/L.2.4e-Q3-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/L.2.4e/L.2.4e-Q3.png"
         },
         {
           "id": "L.2.4e-Q4",
@@ -3296,41 +2768,6 @@
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.5/L.2.5-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.5/L.2.5-Q2-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/L.2.5/L.2.5-Q2.png"
-        },
-        {
-          "id": "L.2.5-Q3",
-          "type": "category_sort",
-          "prompt": "Sort the words — which ones are about weather?",
-          "correct": "correct",
-          "hint": "Which words would you hear in a weather report?",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.5/L.2.5-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.5/L.2.5-Q3-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/L.2.5/L.2.5-Q3.png",
-          "categories": [
-            "Weather",
-            "Not Weather"
-          ],
-          "category_items": {
-            "Weather": [
-              "Rain",
-              "Snow",
-              "Sunny"
-            ],
-            "Not Weather": [
-              "Jump",
-              "Book",
-              "Dog"
-            ]
-          },
-          "items": [
-            "Rain",
-            "Jump",
-            "Snow",
-            "Book",
-            "Sunny",
-            "Dog"
-          ]
         },
         {
           "id": "L.2.5-Q4",
@@ -3468,23 +2905,6 @@
       "parent_tip": "Discuss word differences: 'Is it the same to toss, throw, and hurl? How are they different?'",
       "questions": [
         {
-          "id": "L.2.5b-Q1",
-          "type": "sentence_build",
-          "prompt": "Put in order from least strong to most strong",
-          "correct": "toss throw hurl",
-          "hint": "Tossing is gentle, throwing is normal, hurling is very powerful!",
-          "difficulty": 2,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.5b/L.2.5b-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.5b/L.2.5b-Q1-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/L.2.5b/L.2.5b-Q1.png",
-          "words": [
-            "throw",
-            "toss",
-            "hurl"
-          ],
-          "ordered": true
-        },
-        {
           "id": "L.2.5b-Q2",
           "type": "multiple_choice",
           "prompt": "Which word means being MORE than just **warm**?",
@@ -3517,23 +2937,6 @@
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.5b/L.2.5b-Q3.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.5b/L.2.5b-Q3-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/L.2.5b/L.2.5b-Q3.png"
-        },
-        {
-          "id": "L.2.5b-Q4",
-          "type": "sentence_build",
-          "prompt": "Put in order from quietest to loudest",
-          "correct": "whisper talk yell",
-          "hint": "Start with the softest voice and end with the loudest.",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.5b/L.2.5b-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.5b/L.2.5b-Q4-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/L.2.5b/L.2.5b-Q4.png",
-          "words": [
-            "talk",
-            "whisper",
-            "yell"
-          ],
-          "ordered": true
         },
         {
           "id": "L.2.5b-Q5",
@@ -3590,32 +2993,6 @@
           "correct": "Loudly",
           "hint": "Think about what kind of singing helps people hear from far away.",
           "difficulty": "easy"
-        },
-        {
-          "id": "L.2.6-Q3",
-          "type": "missing_word",
-          "prompt": "Pick the best adjective to fill the blank.",
-          "correct": "Powerful",
-          "hint": "You need a word that describes the storm. Which word tells you what kind of storm?",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.6/L.2.6-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.6/L.2.6-Q3-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/L.2.6/L.2.6-Q3.png",
-          "blank_index": 1,
-          "missing_choices": [
-            "Happily",
-            "Powerful",
-            "Gently",
-            "Slowly"
-          ],
-          "sentence_words": [
-            "The",
-            "___",
-            "storm",
-            "knocked",
-            "down",
-            "trees."
-          ]
         },
         {
           "id": "L.2.6-Q4",
@@ -3706,20 +3083,6 @@
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.1/L.2.1-Q3.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.1/L.2.1-Q3-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/L.2.1/L.2.1-Q3.png"
-        },
-        {
-          "id": "L.2.1-Q4",
-          "type": "multiple_choice",
-          "prompt": "Read the sentence: \"A flock of birds flew over the park.\" Imagine only one bird flew over the park. Which word would best complete this new sentence: \"A _______ flew over the park.\"",
-          "choices": [
-            "birds",
-            "group",
-            "bird",
-            "flock"
-          ],
-          "correct": "bird",
-          "hint": "Think about what word you use when there is only one of something, not many.",
-          "difficulty": 2
         },
         {
           "id": "L.2.1-Q5",
@@ -3900,23 +3263,6 @@
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.3/L.2.3-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.3/L.2.3-Q4-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/L.2.3/L.2.3-Q4.png"
-        },
-        {
-          "id": "L.2.3-Q5",
-          "type": "multiple_choice",
-          "prompt": "Why does word choice matter?",
-          "choices": [
-            "to look smart",
-            "to be funny",
-            "to use long words",
-            "words carry different feelings"
-          ],
-          "correct": "words carry different feelings",
-          "hint": "Each word has a tone and feeling!",
-          "difficulty": 2,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.3/L.2.3-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.3/L.2.3-Q5-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/2nd-grade/L.2.3/L.2.3-Q5.png"
         }
       ]
     }

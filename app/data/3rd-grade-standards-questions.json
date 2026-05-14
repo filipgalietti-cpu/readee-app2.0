@@ -2,7 +2,7 @@
   "grade": "3rd",
   "standard_framework": "Common Core State Standards",
   "total_standards": 41,
-  "total_questions": 198,
+  "total_questions": 167,
   "standards": [
     {
       "standard_id": "RL.3.1",
@@ -319,29 +319,6 @@
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.4/RL.3.4-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.4/RL.3.4-Q4-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RL.3.4/RL.3.4-Q4.png"
-        },
-        {
-          "id": "RL.3.4-Q6",
-          "type": "tap_to_pair",
-          "prompt": "Match each expression to its meaning!",
-          "correct": "On top of the world→Extremely happy, Let the cat out of the bag→Reveal a secret, Bit at their faces→Sharp and painful",
-          "hint": "These are figurative expressions — they don't mean what they literally say!",
-          "difficulty": 2,
-          "left_items": [
-            "On top of the world",
-            "Let the cat out of the bag",
-            "Bit at their faces"
-          ],
-          "right_items": [
-            "Sharp and painful",
-            "Extremely happy",
-            "Reveal a secret"
-          ],
-          "correct_pairs": {
-            "Bit at their faces": "Sharp and painful",
-            "On top of the world": "Extremely happy",
-            "Let the cat out of the bag": "Reveal a secret"
-          }
         }
       ]
     },
@@ -364,37 +341,6 @@
           "correct": "Read the second group of lines in the poem.",
           "hint": "Remember that a stanza is a way poems are organized into parts.",
           "difficulty": "easy"
-        },
-        {
-          "id": "RL.3.5-Q2",
-          "type": "missing_word",
-          "prompt": "Pick the right word to fill the blank.",
-          "correct": "Scene",
-          "hint": "Plays are divided into acts and these smaller parts.",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.5/RL.3.5-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.5/RL.3.5-Q2-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RL.3.5/RL.3.5-Q2.png",
-          "blank_index": 9,
-          "missing_choices": [
-            "Scene",
-            "Chapter",
-            "Paragraph",
-            "Stanza"
-          ],
-          "sentence_words": [
-            "In",
-            "a",
-            "play,",
-            "when",
-            "the",
-            "setting",
-            "changes,",
-            "a",
-            "new",
-            "___",
-            "begins."
-          ]
         },
         {
           "id": "RL.3.5-Q3",
@@ -426,44 +372,6 @@
           "correct": "Three",
           "hint": "Look at how the poem is arranged into different sections or groups of lines.",
           "difficulty": "medium"
-        },
-        {
-          "id": "RL.3.5-Q5",
-          "type": "category_sort",
-          "prompt": "Match each structural part to its text type!",
-          "correct": "correct",
-          "hint": "Plays use scenes, poems use stanzas, and novels use chapters!",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.5/RL.3.5-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.5/RL.3.5-Q5-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RL.3.5/RL.3.5-Q5.png",
-          "categories": [
-            "Play/Drama",
-            "Poem",
-            "Novel"
-          ],
-          "category_items": {
-            "Poem": [
-              "Stanza",
-              "Verse"
-            ],
-            "Novel": [
-              "Chapter",
-              "Paragraph"
-            ],
-            "Play/Drama": [
-              "Scene",
-              "Stage directions"
-            ]
-          },
-          "items": [
-            "Scene",
-            "Stanza",
-            "Chapter",
-            "Stage directions",
-            "Verse",
-            "Paragraph"
-          ]
         }
       ]
     },
@@ -503,23 +411,6 @@
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.6/RL.3.6-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.6/RL.3.6-Q2-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RL.3.6/RL.3.6-Q2.png"
-        },
-        {
-          "id": "RL.3.6-Q3",
-          "type": "multiple_choice",
-          "prompt": "I hated moving to a new town. Everything was different and terrible. But by the end of the year, I had the best friends I'd ever had.\n\nWho is telling this story?",
-          "choices": [
-            "An outside narrator",
-            "The main character, using 'I'",
-            "A teacher",
-            "A parent watching their child"
-          ],
-          "correct": "The main character, using 'I'",
-          "hint": "The word 'I' tells you this is first-person — the character is telling their own story.",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.6/RL.3.6-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.6/RL.3.6-Q3-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RL.3.6/RL.3.6-Q3.png"
         },
         {
           "id": "RL.3.6-Q4",
@@ -648,23 +539,6 @@
       "parent_tip": "If your child reads a book series, ask 'How was this adventure different from the last one?'",
       "questions": [
         {
-          "id": "RL.3.9-Q1",
-          "type": "multiple_choice",
-          "prompt": "An author writes two books about a character named Max. In Book 1, Max learns to be brave at summer camp. In Book 2, Max learns to be brave at a new school. What is SIMILAR in both books?",
-          "choices": [
-            "The setting",
-            "The theme of learning bravery",
-            "The ending",
-            "The other characters"
-          ],
-          "correct": "The theme of learning bravery",
-          "hint": "Both books are about the same big idea — bravery. That's the theme!",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.9/RL.3.9-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.9/RL.3.9-Q1-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RL.3.9/RL.3.9-Q1.png"
-        },
-        {
           "id": "RL.3.9-Q2",
           "type": "multiple_choice",
           "prompt": "Imagine two stories by the same author. The first story is about two friends who live near big buildings and play in a busy park. The second story is about two friends who live on a farm and play near animals in a field. Both stories show how important friendship is. Which part of the stories is clearly different?",
@@ -707,20 +581,6 @@
           ],
           "correct": "B) The lesson or message",
           "hint": "Think about what the author wants the reader to learn from each of Rosie's stories.",
-          "difficulty": "easy"
-        },
-        {
-          "id": "RL.3.9-Q5",
-          "type": "multiple_choice",
-          "prompt": "Story 1: Lily really wanted to win the school's running race. She practiced every single day, even when she was tired. She didn't come in first, but she was happy because she tried her very best.Story 2: Tom saw his elderly neighbor trying to carry a heavy bag. Tom quickly ran over to help his neighbor. His neighbor smiled and thanked him. Tom felt good inside for being helpful.What is a major difference between Story 1 and Story 2?",
-          "choices": [
-            "Both stories happen at school.",
-            "Both stories are about characters who feel happy at the end.",
-            "One story is about trying hard to win something for yourself, and the other is about helping someone else.",
-            "Both stories have a character who is very fast."
-          ],
-          "correct": "One story is about trying hard to win something for yourself, and the other is about helping someone else.",
-          "hint": "Think about what each main character *wants to do* and *does* in their story.",
           "difficulty": "easy"
         }
       ]
@@ -923,23 +783,6 @@
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RI.3.2/RI.3.2-Q1.png"
         },
         {
-          "id": "RI.3.2-Q2",
-          "type": "multiple_choice",
-          "prompt": "Sleep is important for kids. During sleep, your brain stores what you learned that day. Your body grows and repairs itself. Kids who get enough sleep do better in school.\n\nWhich detail supports the idea that sleep helps learning?",
-          "choices": [
-            "Sleep is important for kids",
-            "Your brain stores what you learned",
-            "Kids do better in school",
-            "Your body grows"
-          ],
-          "correct": "Your brain stores what you learned",
-          "hint": "Which detail specifically connects sleep to LEARNING?",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.2/RI.3.2-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.2/RI.3.2-Q2-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RI.3.2/RI.3.2-Q2.png"
-        },
-        {
           "id": "RI.3.2-Q3",
           "type": "multiple_choice",
           "prompt": "Coral reefs are in danger. Pollution poisons the water. Rising temperatures cause coral to turn white and die. Overfishing removes animals that keep reefs healthy.\n\nThe key details all support the main idea that —",
@@ -1044,34 +887,6 @@
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RI.3.3/RI.3.3-Q5.png"
         },
         {
-          "id": "RI.3.3-Q6",
-          "type": "category_sort",
-          "prompt": "Sort these into Cause or Effect!",
-          "correct": "correct",
-          "hint": "A cause is what MAKES something happen. An effect is what HAPPENS as a result.",
-          "difficulty": 2,
-          "categories": [
-            "Cause",
-            "Effect"
-          ],
-          "category_items": {
-            "Cause": [
-              "Temperatures rose globally",
-              "Ice caps melted"
-            ],
-            "Effect": [
-              "Sea levels rose",
-              "Coastal flooding increased"
-            ]
-          },
-          "items": [
-            "Temperatures rose globally",
-            "Sea levels rose",
-            "Ice caps melted",
-            "Coastal flooding increased"
-          ]
-        },
-        {
           "id": "RI.3.3-Q7",
           "type": "sentence_build",
           "prompt": "Put the steps of the ocean food chain in order.",
@@ -1105,72 +920,6 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q8-hint.mp3"
         },
         {
-          "id": "RI.3.3-Q9",
-          "type": "category_sort",
-          "prompt": "Sort each signal word — does it show cause and effect, or sequence?",
-          "correct": "correct",
-          "hint": "Sequence words tell you the order. Cause and effect words tell you why!",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q9.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q9-hint.mp3",
-          "categories": [
-            "Cause & Effect",
-            "Sequence"
-          ],
-          "category_items": {
-            "Sequence": [
-              "first",
-              "next",
-              "finally"
-            ],
-            "Cause & Effect": [
-              "because",
-              "as a result",
-              "therefore"
-            ]
-          },
-          "items": [
-            "first",
-            "because",
-            "next",
-            "as a result",
-            "finally",
-            "therefore"
-          ]
-        },
-        {
-          "id": "RI.3.3-Q10",
-          "type": "missing_word",
-          "prompt": "Pick the right signal word to fill the blank.",
-          "correct": "As a result",
-          "hint": "The fish getting sick is the effect of the oil spill. Which words show cause and effect?",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q10.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q10-hint.mp3",
-          "blank_index": 6,
-          "missing_choices": [
-            "As a result",
-            "First",
-            "However",
-            "Meanwhile"
-          ],
-          "sentence_words": [
-            "The",
-            "oil",
-            "spill",
-            "poisoned",
-            "the",
-            "water.",
-            "___,",
-            "many",
-            "fish",
-            "and",
-            "birds",
-            "became",
-            "sick."
-          ]
-        },
-        {
           "id": "RI.3.3-Q11",
           "type": "multiple_choice",
           "prompt": "To study whale migration, scientists first attach a small tracking device to the whale. Next, they monitor the whale's location using satellites. Then, they record the data over several months. Finally, they compare routes from different years.\n\nWhat do scientists do IMMEDIATELY AFTER attaching the tracking device?",
@@ -1185,34 +934,6 @@
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q11.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q11-hint.mp3"
-        },
-        {
-          "id": "RI.3.3-Q12",
-          "type": "tap_to_pair",
-          "prompt": "Match each ocean cause to its effect!",
-          "correct": "Warmer ocean water→Coral bleaching, Oil spill in the sea→Marine animals get sick, Overfishing of sharks→Smaller fish overpopulate, Mangrove trees removed→Shore erodes faster",
-          "hint": "Think about what each event would directly cause!",
-          "difficulty": "hard",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q12.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q12-hint.mp3",
-          "left_items": [
-            "Warmer ocean water",
-            "Oil spill in the sea",
-            "Overfishing of sharks",
-            "Mangrove trees removed"
-          ],
-          "right_items": [
-            "Shore erodes faster",
-            "Coral bleaching",
-            "Smaller fish overpopulate",
-            "Marine animals get sick"
-          ],
-          "correct_pairs": {
-            "Warmer ocean water": "Coral bleaching",
-            "Oil spill in the sea": "Marine animals get sick",
-            "Overfishing of sharks": "Smaller fish overpopulate",
-            "Mangrove trees removed": "Shore erodes faster"
-          }
         },
         {
           "id": "RI.3.3-Q13",
@@ -1354,23 +1075,6 @@
           "correct": "The index",
           "hint": "Think about which text feature lists many different topics in alphabetical order and tells you every page where that topic is mentioned in the book.",
           "difficulty": "easy"
-        },
-        {
-          "id": "RI.3.5-Q2",
-          "type": "multiple_choice",
-          "prompt": "A sidebar in a textbook usually contains —",
-          "choices": [
-            "The table of contents",
-            "The glossary",
-            "The main text of the chapter",
-            "Extra interesting facts or related information"
-          ],
-          "correct": "Extra interesting facts or related information",
-          "hint": "Sidebars are those boxes on the side of a page with bonus information!",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.5/RI.3.5-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.5/RI.3.5-Q2-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RI.3.5/RI.3.5-Q2.png"
         },
         {
           "id": "RI.3.5-Q3",
@@ -1741,23 +1445,6 @@
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RI.3.9/RI.3.9-Q3.png"
         },
         {
-          "id": "RI.3.9-Q4",
-          "type": "multiple_choice",
-          "prompt": "Text A: \"Mars has the tallest volcano in the solar system.\" Text B: \"Mars once had flowing water on its surface.\"\n\nThese texts provide —",
-          "choices": [
-            "The same exact information",
-            "Information about different planets",
-            "Different facts about the same planet",
-            "Contradicting facts"
-          ],
-          "correct": "Different facts about the same planet",
-          "hint": "Both are about Mars, but each shares a different interesting detail.",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.9/RI.3.9-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.9/RI.3.9-Q4-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RI.3.9/RI.3.9-Q4.png"
-        },
-        {
           "id": "RI.3.9-Q5",
           "type": "multiple_choice",
           "prompt": "Which statement best compares the main points of Text A and Text B?",
@@ -1809,23 +1496,6 @@
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.10/RI.3.10-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.10/RI.3.10-Q2-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RI.3.10/RI.3.10-Q2.png"
-        },
-        {
-          "id": "RI.3.10-Q3",
-          "type": "multiple_choice",
-          "prompt": "In 1928, Alexander Fleming noticed that mold had accidentally grown on one of his petri dishes. The bacteria around the mold had died. This accidental discovery led to the development of penicillin, the world's first antibiotic.\n\nWhat made Fleming's discovery unusual?",
-          "choices": [
-            "It happened by accident",
-            "He was looking for mold",
-            "He worked alone",
-            "He planned it carefully"
-          ],
-          "correct": "It happened by accident",
-          "hint": "The text uses the word 'accidentally' — Fleming didn't plan this discovery!",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.10/RI.3.10-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.10/RI.3.10-Q3-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RI.3.10/RI.3.10-Q3.png"
         },
         {
           "id": "RI.3.10-Q4",
@@ -2068,37 +1738,6 @@
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RF.3.3b/RF.3.3b-Q1.png"
         },
         {
-          "id": "RF.3.3b-Q2",
-          "type": "multiple_choice",
-          "prompt": "Which word contains the Latin suffix **-sion** and makes the /shun/ sound, like in 'push'?",
-          "choices": [
-            "A. vision",
-            "B. person",
-            "C. explosion",
-            "D. station"
-          ],
-          "correct": "C. explosion",
-          "hint": "Read each word carefully and listen to the sound the ending letters make. The suffix -sion sometimes makes a /shun/ sound and sometimes a /zhun/ sound, like in 'treasure'.",
-          "difficulty": "easy"
-        },
-        {
-          "id": "RF.3.3b-Q3",
-          "type": "multiple_choice",
-          "prompt": "The suffix **-ible** in **visible** means —",
-          "choices": [
-            "Able to be",
-            "Without",
-            "Before",
-            "Full of"
-          ],
-          "correct": "Able to be",
-          "hint": "Visible = able to be seen. So '-ible' means able to be!",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.3b/RF.3.3b-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.3b/RF.3.3b-Q3-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RF.3.3b/RF.3.3b-Q3.png"
-        },
-        {
           "id": "RF.3.3b-Q4",
           "type": "multiple_choice",
           "prompt": "The word \"active\" means \"full of action.\" Which word below uses a common Latin suffix to show that something has a lot of a certain quality?",
@@ -2227,34 +1866,6 @@
       "domain": "Reading Foundational Skills",
       "parent_tip": "Practice tricky words like 'enough,' 'through,' 'thought' — they don't follow regular phonics rules.",
       "questions": [
-        {
-          "id": "RF.3.3d-Q1",
-          "type": "multiple_choice",
-          "prompt": "Read the sentence below. Choose the word that best completes the sentence. I have had _______ to eat.",
-          "choices": [
-            "tough",
-            "through",
-            "though",
-            "enough"
-          ],
-          "correct": "enough",
-          "hint": "Think about which word means 'sufficient' or 'as much as needed' in the context of eating.",
-          "difficulty": "easy"
-        },
-        {
-          "id": "RF.3.3d-Q2",
-          "type": "multiple_choice",
-          "prompt": "When you used your brain to figure out a tough math problem, what did you do?",
-          "choices": [
-            "A) jumped",
-            "B) played",
-            "C) thought",
-            "D) slept"
-          ],
-          "correct": "C) thought",
-          "hint": "Consider which word describes the action of using your mind to solve a problem.",
-          "difficulty": "easy"
-        },
         {
           "id": "RF.3.3d-Q3",
           "type": "multiple_choice",
@@ -2601,36 +2212,6 @@
           "difficulty": "easy"
         },
         {
-          "id": "RF.3.4c-Q3",
-          "type": "missing_word",
-          "prompt": "Pick the right word to fill the blank.",
-          "correct": "Organisms",
-          "hint": "A microscope looks at TINY things. Which answer is something tiny a scientist would study?",
-          "difficulty": 2,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.4c/RF.3.4c-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.4c/RF.3.4c-Q3-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RF.3.4c/RF.3.4c-Q3.png",
-          "blank_index": 9,
-          "missing_choices": [
-            "Mountain",
-            "Building",
-            "Organisms",
-            "Elephant"
-          ],
-          "sentence_words": [
-            "The",
-            "scientist",
-            "used",
-            "a",
-            "microscope",
-            "to",
-            "examine",
-            "the",
-            "tiny",
-            "___"
-          ]
-        },
-        {
           "id": "RF.3.4c-Q4",
           "type": "multiple_choice",
           "prompt": "If you read a paragraph and it doesn't make sense, the BEST thing to do is —",
@@ -2685,32 +2266,6 @@
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4/L.3.4-Q1.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4/L.3.4-Q1-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.4/L.3.4-Q1.png"
-        },
-        {
-          "id": "L.3.4-Q6",
-          "type": "tap_to_pair",
-          "prompt": "Match each word to its meaning in context!",
-          "correct": "Light (candle)→To set fire to, Elaborate→Complex and detailed, Current (river)→The flow of water, Parched→Extremely dry",
-          "hint": "Think about how each word is used in the sentence!",
-          "difficulty": 2,
-          "left_items": [
-            "Light (candle)",
-            "Elaborate",
-            "Current (river)",
-            "Parched"
-          ],
-          "right_items": [
-            "Complex and detailed",
-            "Extremely dry",
-            "The flow of water",
-            "To set fire to"
-          ],
-          "correct_pairs": {
-            "Parched": "Extremely dry",
-            "Elaborate": "Complex and detailed",
-            "Light (candle)": "To set fire to",
-            "Current (river)": "The flow of water"
-          }
         }
       ]
     },
@@ -2736,32 +2291,6 @@
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4a/L.3.4a-Q5.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4a/L.3.4a-Q5-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.4a/L.3.4a-Q5.png"
-        },
-        {
-          "id": "L.3.4a-Q6",
-          "type": "tap_to_pair",
-          "prompt": "Match each word to its meaning!",
-          "correct": "Benevolent→Kind and generous, Abandoned→Left behind, Camouflaged→Disguised to blend in, Fragile→Easily broken",
-          "hint": "Use context clues to match each word to its definition!",
-          "difficulty": 2,
-          "left_items": [
-            "Benevolent",
-            "Abandoned",
-            "Camouflaged",
-            "Fragile"
-          ],
-          "right_items": [
-            "Left behind",
-            "Easily broken",
-            "Disguised to blend in",
-            "Kind and generous"
-          ],
-          "correct_pairs": {
-            "Fragile": "Easily broken",
-            "Abandoned": "Left behind",
-            "Benevolent": "Kind and generous",
-            "Camouflaged": "Disguised to blend in"
-          }
         }
       ]
     },
@@ -2787,32 +2316,6 @@
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4b/L.3.4b-Q3.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4b/L.3.4b-Q3-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.4b/L.3.4b-Q3.png"
-        },
-        {
-          "id": "L.3.4b-Q6",
-          "type": "tap_to_pair",
-          "prompt": "Match each word to its meaning!",
-          "correct": "Uncomfortable→Not comfortable, Misspell→To spell wrongly, Encourage→To give courage, Disappearance→The act of disappearing",
-          "hint": "Break each word into its prefix, root, and suffix for clues!",
-          "difficulty": 2,
-          "left_items": [
-            "Uncomfortable",
-            "Misspell",
-            "Encourage",
-            "Disappearance"
-          ],
-          "right_items": [
-            "To give courage",
-            "The act of disappearing",
-            "To spell wrongly",
-            "Not comfortable"
-          ],
-          "correct_pairs": {
-            "Misspell": "To spell wrongly",
-            "Encourage": "To give courage",
-            "Disappearance": "The act of disappearing",
-            "Uncomfortable": "Not comfortable"
-          }
         }
       ]
     },
@@ -2838,32 +2341,6 @@
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4c/L.3.4c-Q3.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4c/L.3.4c-Q3-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.4c/L.3.4c-Q3.png"
-        },
-        {
-          "id": "L.3.4c-Q6",
-          "type": "tap_to_pair",
-          "prompt": "Match each root or word to its meaning!",
-          "correct": "-action→The process of doing, Transport→To carry across, Bicycle→Two wheels, Companion→Being together",
-          "hint": "Latin and Greek roots give clues: '-tion' = process, 'trans-' = across, 'bi-' = two, 'com-' = together!",
-          "difficulty": 2,
-          "left_items": [
-            "-action",
-            "Transport",
-            "Bicycle",
-            "Companion"
-          ],
-          "right_items": [
-            "To carry across",
-            "Two wheels",
-            "Being together",
-            "The process of doing"
-          ],
-          "correct_pairs": {
-            "-action": "The process of doing",
-            "Bicycle": "Two wheels",
-            "Companion": "Being together",
-            "Transport": "To carry across"
-          }
         }
       ]
     },
@@ -2889,71 +2366,6 @@
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4d/L.3.4d-Q1.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4d/L.3.4d-Q1-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.4d/L.3.4d-Q1.png"
-        },
-        {
-          "id": "L.3.4d-Q2",
-          "type": "multiple_choice",
-          "prompt": "Guide words at the top of a dictionary page are **maple** and \"market.\" Which word would be on this page?",
-          "choices": [
-            "Master",
-            "March",
-            "Magic",
-            "Magazine"
-          ],
-          "correct": "March",
-          "hint": "The word must come between 'maple' and 'market' alphabetically.",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4d/L.3.4d-Q2.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4d/L.3.4d-Q2-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.4d/L.3.4d-Q2.png"
-        },
-        {
-          "id": "L.3.4d-Q3",
-          "type": "multiple_choice",
-          "prompt": "Read the dictionary entry below for the word 'giggle.'giggle (gig-uhl) verb.1. To laugh in a silly, often quiet way.Example: The children started to giggle when the clown made a funny face.What does the word 'giggle' mean?",
-          "choices": [
-            "To cry loudly",
-            "To shout with joy",
-            "To laugh in a silly, often quiet way",
-            "To sing a happy song"
-          ],
-          "correct": "To laugh in a silly, often quiet way",
-          "hint": "The definition in the dictionary entry tells you what the word 'giggle' means.",
-          "difficulty": "easy"
-        },
-        {
-          "id": "L.3.4d-Q4",
-          "type": "multiple_choice",
-          "prompt": "In a glossary, you find: \"ecosystem (n.) — a community of living things and their environment.\" The \"(n.)\" tells you that **ecosystem** is a —",
-          "choices": [
-            "Verb",
-            "Noun",
-            "Adjective",
-            "Adverb"
-          ],
-          "correct": "Noun",
-          "hint": "The abbreviation 'n.' stands for noun!",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4d/L.3.4d-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4d/L.3.4d-Q4-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.4d/L.3.4d-Q4.png"
-        },
-        {
-          "id": "L.3.4d-Q5",
-          "type": "multiple_choice",
-          "prompt": "When is it BEST to use a dictionary or glossary?",
-          "choices": [
-            "Never — just skip unknown words",
-            "When context clues and word parts don't help enough",
-            "When you already know the word",
-            "Only during tests"
-          ],
-          "correct": "When context clues and word parts don't help enough",
-          "hint": "Try context clues first, then word parts. If you're still stuck, grab the dictionary!",
-          "difficulty": "easy",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4d/L.3.4d-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4d/L.3.4d-Q5-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.4d/L.3.4d-Q5.png"
         }
       ]
     },
@@ -3243,23 +2655,6 @@
       "parent_tip": "Play 'word ladders' — arrange words by intensity: annoyed → angry → furious.",
       "questions": [
         {
-          "id": "L.3.5c-Q1",
-          "type": "sentence_build",
-          "prompt": "Put in order from least certain to most certain",
-          "correct": "wondered suspected knew",
-          "hint": "Wondering is just curious. Suspecting is thinking it might be true. Knowing is being certain!",
-          "difficulty": 2,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.5c/L.3.5c-Q1.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.5c/L.3.5c-Q1-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.5c/L.3.5c-Q1.png",
-          "words": [
-            "suspected",
-            "knew",
-            "wondered"
-          ],
-          "ordered": true
-        },
-        {
           "id": "L.3.5c-Q2",
           "type": "multiple_choice",
           "prompt": "Which word shows the STRONGEST feeling of anger?",
@@ -3275,23 +2670,6 @@
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.5c/L.3.5c-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.5c/L.3.5c-Q2-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.5c/L.3.5c-Q2.png"
-        },
-        {
-          "id": "L.3.5c-Q3",
-          "type": "sentence_build",
-          "prompt": "Put in order from least scared to most scared",
-          "correct": "uneasy nervous terrified",
-          "hint": "Uneasy is mild, nervous is moderate, terrified is extreme fear!",
-          "difficulty": 2,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.5c/L.3.5c-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.5c/L.3.5c-Q3-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.5c/L.3.5c-Q3.png",
-          "words": [
-            "nervous",
-            "terrified",
-            "uneasy"
-          ],
-          "ordered": true
         },
         {
           "id": "L.3.5c-Q4",
@@ -3411,33 +2789,6 @@
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.6/L.3.6-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.6/L.3.6-Q4-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.6/L.3.6-Q4.png"
-        },
-        {
-          "id": "L.3.6-Q5",
-          "type": "missing_word",
-          "prompt": "Pick the most specific word to complete the sentence.",
-          "correct": "Swift",
-          "hint": "'Swift' is the most vivid and precise for describing a cheetah's speed.",
-          "difficulty": 2,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.6/L.3.6-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.6/L.3.6-Q5-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.6/L.3.6-Q5.png",
-          "blank_index": 1,
-          "missing_choices": [
-            "Nice",
-            "Fast",
-            "Quick",
-            "Swift"
-          ],
-          "sentence_words": [
-            "The",
-            "___",
-            "cheetah",
-            "sprinted",
-            "across",
-            "the",
-            "savanna."
-          ]
         }
       ]
     },
@@ -3680,23 +3031,6 @@
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.3/L.3.3-Q3.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.3/L.3.3-Q3-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.3/L.3.3-Q3.png"
-        },
-        {
-          "id": "L.3.3-Q4",
-          "type": "multiple_choice",
-          "prompt": "Why do writers choose specific words?",
-          "choices": [
-            "to give a clearer picture",
-            "to use the longest words",
-            "to fill space",
-            "because it sounds smart"
-          ],
-          "correct": "to give a clearer picture",
-          "hint": "Specific words paint clearer pictures.",
-          "difficulty": 2,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.3/L.3.3-Q4.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.3/L.3.3-Q4-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/L.3.3/L.3.3-Q4.png"
         },
         {
           "id": "L.3.3-Q5",
