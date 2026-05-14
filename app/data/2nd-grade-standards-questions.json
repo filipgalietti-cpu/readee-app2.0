@@ -2,7 +2,7 @@
   "grade": "2nd",
   "standard_framework": "Common Core State Standards",
   "total_standards": 43,
-  "total_questions": 180,
+  "total_questions": 179,
   "standards": [
     {
       "standard_id": "RL.2.1",
@@ -1054,23 +1054,6 @@
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q7.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q7-hint.mp3"
-        },
-        {
-          "id": "RI.2.3-Q8",
-          "type": "sentence_build",
-          "prompt": "Put the ocean events in order from first to last.",
-          "correct": "Sun heats the ocean Water evaporates Clouds form Rain falls",
-          "hint": "The sun starts it all! Then water rises, makes clouds, and rain falls.",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q8.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q8-hint.mp3",
-          "words": [
-            "Clouds form",
-            "Water evaporates",
-            "Sun heats the ocean",
-            "Rain falls"
-          ],
-          "ordered": true
         },
         {
           "id": "RI.2.3-Q9",

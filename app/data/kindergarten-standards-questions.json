@@ -2,7 +2,7 @@
   "grade": "kindergarten",
   "standard_framework": "Common Core State Standards — English Language Arts",
   "total_standards": 38,
-  "total_questions": 146,
+  "total_questions": 144,
   "standards": [
     {
       "standard_id": "RL.K.1",
@@ -155,30 +155,6 @@
           "correct": "Turtle kept walking when Rabbit took a nap.",
           "hint": "Look at what Turtle did and what Rabbit did before the race ended.",
           "difficulty": 1
-        },
-        {
-          "id": "RL.K.2-Q5",
-          "type": "multiple_choice",
-          "prompt": "It rained all morning. Then the sun came out. A beautiful rainbow appeared in the sky. All the kids cheered!\n\nWhat happened AFTER the sun came out?",
-          "passage_audio_url": "/audio/kindergarten/RL.K.2-q5-passage.mp3",
-          "choices": [
-            "The kids went inside.",
-            "It started raining again.",
-            "A rainbow appeared",
-            "It got dark"
-          ],
-          "choices_audio_urls": [
-            "/audio/kindergarten/RL.K.2-q5-choice1.mp3",
-            "/audio/kindergarten/RL.K.2-q5-choice2.mp3",
-            "/audio/kindergarten/RL.K.2-q5-choice3.mp3",
-            "/audio/kindergarten/RL.K.2-q5-choice4.mp3"
-          ],
-          "correct": "A rainbow appeared",
-          "hint": "Look at what happened right after the sun came out.",
-          "difficulty": 2,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.2/RL.K.2-Q5.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.2/RL.K.2-Q5-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.2/RL.K.2-Q5.png"
         }
       ]
     },
@@ -1109,30 +1085,6 @@
           "correct": "Water can become ice, and ice can become water again.",
           "hint": "Think about what happens when water gets cold and what happens when ice gets warm to find the connection.",
           "difficulty": 1
-        },
-        {
-          "id": "RI.K.3-Q3",
-          "type": "multiple_choice",
-          "prompt": "First, the hen lays an egg. Then the egg cracks open. A baby chick comes out!\n\nWhat happens AFTER the egg cracks?",
-          "passage_audio_url": "/audio/kindergarten/RI.K.3-q3-passage.mp3",
-          "choices": [
-            "A baby chick comes out.",
-            "The egg disappears",
-            "The hen flies away.",
-            "The hen lays an egg."
-          ],
-          "choices_audio_urls": [
-            "/audio/kindergarten/RI.K.3-q3-choice1.mp3",
-            "/audio/kindergarten/RI.K.3-q3-choice2.mp3",
-            "/audio/kindergarten/RI.K.3-q3-choice3.mp3",
-            "/audio/kindergarten/RI.K.3-q3-choice4.mp3"
-          ],
-          "correct": "A baby chick comes out.",
-          "hint": "Follow the order: first, then, finally...",
-          "difficulty": 1,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.3/RI.K.3-Q3.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.3/RI.K.3-Q3-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RI.K.3/RI.K.3-Q3.png"
         },
         {
           "id": "RI.K.3-Q4",

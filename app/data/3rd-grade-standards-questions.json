@@ -2,7 +2,7 @@
   "grade": "3rd",
   "standard_framework": "Common Core State Standards",
   "total_standards": 41,
-  "total_questions": 167,
+  "total_questions": 166,
   "standards": [
     {
       "standard_id": "RL.3.1",
@@ -885,23 +885,6 @@
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q5.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q5-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RI.3.3/RI.3.3-Q5.png"
-        },
-        {
-          "id": "RI.3.3-Q7",
-          "type": "sentence_build",
-          "prompt": "Put the steps of the ocean food chain in order.",
-          "correct": "Tiny plants grow using sunlight Tiny animals eat the plants Small fish eat tiny animals Big fish eat small fish",
-          "hint": "Start with the smallest — tiny plants need sunlight to grow!",
-          "difficulty": "medium",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q7.mp3",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q7-hint.mp3",
-          "words": [
-            "Big fish eat small fish",
-            "Tiny plants grow using sunlight",
-            "Small fish eat tiny animals",
-            "Tiny animals eat the plants"
-          ],
-          "ordered": true
         },
         {
           "id": "RI.3.3-Q8",
