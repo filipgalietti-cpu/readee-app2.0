@@ -60,3 +60,8 @@ next-env.d.ts
 /playwright-report/
 /playwright/.cache/
 
+
+# Demo recorder auth cache
+.demo-auth.json
+.demo-rec-*/
+scripts/demo-out/
