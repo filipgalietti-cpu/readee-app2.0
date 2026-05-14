@@ -160,6 +160,94 @@ export async function sendOwnerDigest(): Promise<OwnerDigestResult> {
     else if (r.outcome === "quarantined") bucket.quarantined++;
   }
 
+  // Audit findings summary — the recently-run audit's findings,
+  // bucketed by type + severity. This is what kid-content QC is
+  // currently flagging across the catalog. Sourced from
+  // content_audit_findings; finds the latest audit_run_id from the
+  // last 24h and rolls up. Falls back to "all open findings" if no
+  // recent run.
+  const { data: latestRun } = await admin
+    .from("content_audit_runs")
+    .select("id, completed_at, scope, findings_pass, findings_warn, findings_fail, questions_scanned, lessons_scanned")
+    .eq("status", "completed")
+    .order("completed_at", { ascending: false })
+    .limit(1);
+  const latestRunRow = (latestRun ?? [])[0] as
+    | {
+        id: string;
+        completed_at: string | null;
+        scope: string;
+        findings_pass: number | null;
+        findings_warn: number | null;
+        findings_fail: number | null;
+        questions_scanned: number | null;
+        lessons_scanned: number | null;
+      }
+    | undefined;
+
+  const { data: openFindings } = await admin
+    .from("content_audit_findings")
+    .select("finding_type, severity, target_kind, target_id, grade")
+    .eq("status", "open")
+    .in("severity", ["fail", "warn"]);
+  const findingsList = (openFindings ?? []) as Array<{
+    finding_type: string;
+    severity: "fail" | "warn";
+    target_kind: string;
+    target_id: string;
+    grade: string | null;
+  }>;
+
+  // Bucket by finding_type × severity.
+  const byType = new Map<string, { fail: number; warn: number }>();
+  for (const f of findingsList) {
+    const b = byType.get(f.finding_type) ?? { fail: 0, warn: 0 };
+    b[f.severity]++;
+    byType.set(f.finding_type, b);
+  }
+  // Sort by total descending; cap at 10 rows for the email.
+  const findingTypeRows = Array.from(byType.entries())
+    .map(([type, c]) => ({ type, fail: c.fail, warn: c.warn, total: c.fail + c.warn }))
+    .sort((a, b) => b.total - a.total)
+    .slice(0, 10);
+
+  // Top affected standards — group by target_id prefix (the standard
+  // code before any `#slide-N` or `-Q\d+` suffix). Surfaces "this
+  // standard has the most issues" so the operator can spot patterns.
+  const stdCounts = new Map<string, number>();
+  for (const f of findingsList) {
+    const std = f.target_id.split(/[#-]/)[0];
+    stdCounts.set(std, (stdCounts.get(std) ?? 0) + 1);
+  }
+  const topStandards = Array.from(stdCounts.entries())
+    .map(([std, n]) => ({ std, n }))
+    .sort((a, b) => b.n - a.n)
+    .slice(0, 8);
+
+  // Open fails by grade — quick "where is the pain concentrated."
+  const gradeFails = new Map<string, number>();
+  for (const f of findingsList) {
+    if (f.severity !== "fail") continue;
+    const g = f.grade ?? "(unknown)";
+    gradeFails.set(g, (gradeFails.get(g) ?? 0) + 1);
+  }
+  const gradeFailRows = Array.from(gradeFails.entries())
+    .map(([g, n]) => ({ grade: g, n }))
+    .sort((a, b) => b.n - a.n);
+
+  const auditSummary = latestRunRow
+    ? {
+        runId: latestRunRow.id,
+        completedAt: latestRunRow.completed_at,
+        scope: latestRunRow.scope,
+        scanned:
+          (latestRunRow.questions_scanned ?? 0) + (latestRunRow.lessons_scanned ?? 0),
+        pass: latestRunRow.findings_pass ?? 0,
+        warn: latestRunRow.findings_warn ?? 0,
+        fail: latestRunRow.findings_fail ?? 0,
+      }
+    : null;
+
   const summary = {
     discovery: {
       total: discoveryTotal ?? 0,
@@ -180,6 +268,14 @@ export async function sendOwnerDigest(): Promise<OwnerDigestResult> {
     healStats,
     recent,
     holes,
+    audit: {
+      lastRun: auditSummary,
+      openFailsTotal: findingsList.filter((f) => f.severity === "fail").length,
+      openWarnsTotal: findingsList.filter((f) => f.severity === "warn").length,
+      byType: findingTypeRows,
+      topStandards,
+      failsByGrade: gradeFailRows,
+    },
   };
 
   const today = new Date().toISOString().slice(0, 10);
@@ -294,6 +390,52 @@ function renderText(s: any, today: string): string {
     lines.push("  → Ask Claude to close the loop on the top one.");
     lines.push("");
   }
+  if (s.audit) {
+    lines.push("─────────────────────────────────────────────────────");
+    lines.push("AUDIT SUMMARY");
+    lines.push("─────────────────────────────────────────────────────");
+    if (s.audit.lastRun) {
+      const when = s.audit.lastRun.completedAt
+        ? new Date(s.audit.lastRun.completedAt).toISOString().slice(0, 16).replace("T", " ")
+        : "?";
+      lines.push(`Last audit: ${when} UTC · ${s.audit.lastRun.scope}`);
+      lines.push(
+        `  scanned ${s.audit.lastRun.scanned} · pass ${s.audit.lastRun.pass} / warn ${s.audit.lastRun.warn} / fail ${s.audit.lastRun.fail}`,
+      );
+    }
+    lines.push(
+      `Open findings catalog-wide: ${s.audit.openFailsTotal} fail · ${s.audit.openWarnsTotal} warn`,
+    );
+    if (s.audit.byType.length > 0) {
+      lines.push("");
+      lines.push("Top finding types (open):");
+      for (const r of s.audit.byType) {
+        const parts: string[] = [];
+        if (r.fail > 0) parts.push(`${r.fail} fail`);
+        if (r.warn > 0) parts.push(`${r.warn} warn`);
+        lines.push(`  ${r.type.padEnd(28)} ${parts.join(" · ")}`);
+      }
+    }
+    if (s.audit.failsByGrade.length > 0) {
+      lines.push("");
+      lines.push("Open fails by grade:");
+      for (const r of s.audit.failsByGrade) {
+        lines.push(`  ${r.grade}: ${r.n}`);
+      }
+    }
+    if (s.audit.topStandards.length > 0) {
+      lines.push("");
+      lines.push("Standards with the most open findings:");
+      for (const r of s.audit.topStandards) {
+        lines.push(`  ${r.std}: ${r.n}`);
+      }
+    }
+    lines.push("");
+    lines.push(
+      `  → Drill in at /owner/qc-bot or query content_audit_findings by audit_run_id="${s.audit.lastRun?.runId ?? "n/a"}".`,
+    );
+    lines.push("");
+  }
   if (s.recent.length > 0) {
     lines.push("Latest discovery articles:");
     for (const r of s.recent) {
@@ -385,6 +527,53 @@ function renderHtml(s: any, today: string): string {
                 .join("\n")}
             </table>
             <div style="font-size:11px;color:#71717a;margin-top:10px;font-style:italic;">↑ Top class is where the auto-heal pipeline isn&rsquo;t recovering. Ask Claude to close that loop next.</div>
+          </td></tr>`
+            : ""
+        }
+        ${
+          s.audit
+            ? `<tr><td style="border-top:1px solid #e4e4e7;padding-top:16px;padding-bottom:16px;">
+            <div style="font-size:11px;font-weight:700;color:#6366f1;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">Audit summary</div>
+            ${
+              s.audit.lastRun
+                ? `<div style="font-size:13px;color:#3f3f46;margin-bottom:6px;"><strong>Last run:</strong> ${escapeHtml(new Date(s.audit.lastRun.completedAt ?? Date.now()).toISOString().slice(0, 16).replace("T", " "))} UTC · scanned ${s.audit.lastRun.scanned} ${pill(s.audit.lastRun.pass, "pass")}${pill(s.audit.lastRun.warn, "warn")}${pill(s.audit.lastRun.fail, "fail")}</div>`
+                : ""
+            }
+            <div style="font-size:13px;color:#3f3f46;font-weight:600;margin-bottom:10px;">Open catalog-wide: ${pill(s.audit.openFailsTotal, s.audit.openFailsTotal > 0 ? "fail" : "neutral")}${pill(s.audit.openWarnsTotal, s.audit.openWarnsTotal > 0 ? "warn" : "neutral")}</div>
+            ${
+              s.audit.byType.length > 0
+                ? `<div style="font-size:11px;font-weight:700;color:#3f3f46;margin-top:12px;margin-bottom:6px;">Top finding types</div>
+                <table width="100%" cellpadding="0" cellspacing="0">
+                  ${(s.audit.byType as Array<{ type: string; fail: number; warn: number }>)
+                    .map(
+                      (r) =>
+                        `<tr><td style="padding:4px 0;font-size:13px;"><span style="display:inline-block;min-width:200px;font-family:monospace;font-size:12px;color:#3f3f46;">${escapeHtml(r.type)}</span> ${pill(r.fail, r.fail > 0 ? "fail" : "neutral")}${pill(r.warn, r.warn > 0 ? "warn" : "neutral")}</td></tr>`,
+                    )
+                    .join("\n")}
+                </table>`
+                : ""
+            }
+            ${
+              s.audit.failsByGrade.length > 0
+                ? `<div style="font-size:11px;font-weight:700;color:#3f3f46;margin-top:12px;margin-bottom:6px;">Open fails by grade</div>
+                <div style="font-size:13px;color:#3f3f46;">
+                  ${(s.audit.failsByGrade as Array<{ grade: string; n: number }>)
+                    .map((r) => `<span style="display:inline-block;margin-right:14px;font-family:monospace;">${escapeHtml(r.grade)}: <strong>${r.n}</strong></span>`)
+                    .join("")}
+                </div>`
+                : ""
+            }
+            ${
+              s.audit.topStandards.length > 0
+                ? `<div style="font-size:11px;font-weight:700;color:#3f3f46;margin-top:12px;margin-bottom:6px;">Standards with the most issues</div>
+                <div style="font-size:13px;color:#3f3f46;font-family:monospace;">
+                  ${(s.audit.topStandards as Array<{ std: string; n: number }>)
+                    .map((r) => `<span style="display:inline-block;margin-right:14px;">${escapeHtml(r.std)}: <strong>${r.n}</strong></span>`)
+                    .join("")}
+                </div>`
+                : ""
+            }
+            <div style="font-size:11px;color:#71717a;margin-top:12px;font-style:italic;">Drill in at <a href="https://learn.readee.app/owner/qc-bot" style="color:#6366f1;">/owner/qc-bot</a> or query <code>content_audit_findings</code> by audit_run_id.</div>
           </td></tr>`
             : ""
         }
