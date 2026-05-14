@@ -543,7 +543,9 @@
             "sub": "a",
             "audioFile": "audio/lessons/RI.K.1/S1a.mp3",
             "ttsScript": "Hey! Did you know that some books teach us real facts about the world?",
-            "audioRegenAt": "2026-05-14T15:02:29.766Z",
+            "displayText": "",
+            "interaction": "Heading appears. A fact book with animals opens on screen.",
+            "audioRegenAt": "2026-05-14T15:06:52.641Z",
             "displayParts": [
               {
                 "text": "Hey! Did you know that some books teach us ",
@@ -551,21 +553,21 @@
               },
               {
                 "text": "real facts",
-                "delay": 1500
+                "delay": 2000
               },
               {
                 "text": " about the world?",
-                "delay": 2500
+                "delay": 3500
               }
             ],
             "highlightWord": {
               "word": "facts",
-              "delay": 1700
+              "delay": 2200
             },
             "highlightPills": [
               {
                 "pill": 1,
-                "delay": 1500
+                "delay": 2000
               }
             ]
           },
@@ -573,29 +575,31 @@
             "sub": "b",
             "audioFile": "audio/lessons/RI.K.1/S1b.mp3",
             "ttsScript": "These are called informational books, and they're full of amazing things to learn!",
-            "audioRegenAt": "2026-05-14T15:02:37.069Z",
+            "displayText": "Informational Books are Real Facts!",
+            "interaction": "Icons of cool topics pop in: animals, planets, dinosaurs.",
+            "audioRegenAt": "2026-05-14T15:06:59.087Z",
             "displayParts": [
               {
-                "text": "These are called ",
+                "text": "Informational Books",
                 "delay": 0
               },
               {
-                "text": "informational books",
-                "delay": 1000
-              },
-              {
-                "text": ", and they're full of amazing things to learn!",
-                "delay": 2500
+                "text": " are Real Facts!",
+                "delay": 1500
               }
             ],
             "highlightWord": {
-              "word": "informational",
-              "delay": 1200
+              "word": "Informational",
+              "delay": 300
             },
             "highlightPills": [
               {
+                "pill": 0,
+                "delay": 300
+              },
+              {
                 "pill": 1,
-                "delay": 1000
+                "delay": 1500
               }
             ]
           },
@@ -603,29 +607,31 @@
             "sub": "c",
             "audioFile": "audio/lessons/RI.K.1/S1c.mp3",
             "ttsScript": "Just like storybooks, fact books have key details too. Let's find out how to spot them!",
-            "audioRegenAt": "2026-05-14T15:02:47.276Z",
+            "displayText": "Fact books have key details too!",
+            "interaction": "A magnifying glass sweeps across the book. Tap to continue.",
+            "audioRegenAt": "2026-05-14T15:07:05.618Z",
             "displayParts": [
               {
-                "text": "Just like storybooks, fact books have ",
+                "text": "Fact books have ",
                 "delay": 0
               },
               {
                 "text": "key details",
-                "delay": 1500
+                "delay": 1200
               },
               {
-                "text": " too. Let's find out how to spot them!",
-                "delay": 2500
+                "text": " too!",
+                "delay": 2000
               }
             ],
             "highlightWord": {
               "word": "details",
-              "delay": 1700
+              "delay": 1400
             },
             "highlightPills": [
               {
                 "pill": 1,
-                "delay": 1500
+                "delay": 1200
               }
             ]
           }
@@ -642,51 +648,55 @@
             "sub": "a",
             "audioFile": "audio/lessons/RI.K.1/S2a.mp3",
             "ttsScript": "When we read a fact book, key details are the most important pieces of information.",
-            "displayText": "The most important information",
-            "interaction": "Heading appears. A clipboard with a checklist fades in.",
-            "audioRegenAt": "2026-05-14T15:03:05.232Z",
-            "displayDelay": 3750,
+            "audioRegenAt": "2026-05-14T15:07:26.533Z",
             "displayParts": [
               {
-                "text": "The most important",
+                "text": "When we read a fact book, ",
                 "delay": 0
               },
               {
-                "text": " information",
-                "delay": 1500
+                "text": "key details",
+                "delay": 1000
+              },
+              {
+                "text": " are the most important pieces of information.",
+                "delay": 2200
               }
             ],
             "highlightWord": {
               "word": "details",
-              "delay": 2500
-            }
+              "delay": 1200
+            },
+            "highlightPills": [
+              {
+                "pill": 1,
+                "delay": 1000
+              }
+            ]
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RI.K.1/S2b.mp3",
             "ttsScript": "They answer questions like: What is it?",
-            "displayText": "What is it?",
-            "interaction": "'What is it?' pops onto the checklist. Checkmark appears.",
-            "audioRegenAt": "2026-05-14T15:03:09.984Z",
-            "displayDelay": 1000,
+            "audioRegenAt": "2026-05-14T15:07:30.685Z",
             "displayParts": [
               {
-                "text": "What",
+                "text": "They answer questions like: ",
                 "delay": 0
               },
               {
-                "text": " is it?",
-                "delay": 700
+                "text": "What is it?",
+                "delay": 1000
               }
             ],
             "highlightWord": {
               "word": "What",
-              "delay": 300
+              "delay": 1200
             },
             "highlightPills": [
               {
-                "pill": 0,
-                "delay": 0
+                "pill": 1,
+                "delay": 1000
               }
             ]
           },
@@ -694,23 +704,16 @@
             "sub": "c",
             "audioFile": "audio/lessons/RI.K.1/S2c.mp3",
             "ttsScript": "What does it do?",
-            "displayText": "What does it do?",
-            "interaction": "'What does it do?' pops onto the checklist. Checkmark appears.",
-            "audioRegenAt": "2026-05-14T15:03:13.586Z",
-            "displayDelay": 800,
+            "audioRegenAt": "2026-05-14T15:07:34.725Z",
             "displayParts": [
               {
-                "text": "What",
+                "text": "What does it do?",
                 "delay": 0
-              },
-              {
-                "text": " does it do?",
-                "delay": 700
               }
             ],
             "highlightWord": {
-              "word": "What",
-              "delay": 300
+              "word": "do",
+              "delay": 500
             },
             "highlightPills": [
               {
@@ -723,37 +726,44 @@
             "sub": "d",
             "sfxClaps": [
               {
-                "delay": 3800
+                "delay": 4000
               }
             ],
             "audioFile": "audio/lessons/RI.K.1/S2d.mp3",
             "ttsScript": "And where does it live? When you can answer questions like these, you've found the key details!",
-            "displayText": "Where does it live?",
-            "interaction": "'Where does it live?' pops on. All three get checkmarks. Tap to continue.",
-            "audioRegenAt": "2026-05-14T15:03:21.212Z",
-            "displayDelay": 1500,
+            "audioRegenAt": "2026-05-14T15:07:41.951Z",
             "displayParts": [
               {
-                "text": "Where",
+                "text": "And ",
                 "delay": 0
               },
               {
-                "text": " does it live?",
-                "delay": 700
+                "text": "where does it live?",
+                "delay": 500
+              },
+              {
+                "text": " When you can answer questions like these, you've found the ",
+                "delay": 2000
+              },
+              {
+                "text": "key details!",
+                "delay": 3500
               }
             ],
             "highlightWord": {
-              "word": "details",
-              "delay": 3500
+              "word": "live",
+              "delay": 700
             },
             "highlightPills": [
               {
-                "pill": 0,
-                "delay": 0
+                "pill": 1,
+                "delay": 500
+              },
+              {
+                "pill": 3,
+                "delay": 3500
               }
-            ],
-            "checkmarkTriggerDelay": 3500,
-            "checkmarkTriggerStagger": 400
+            ]
           }
         ],
         "heading": "Key Details in Fact Books",
@@ -768,51 +778,31 @@
             "sub": "a",
             "audioFile": "audio/lessons/RI.K.1/S3a.mp3",
             "ttsScript": "Let me read you some facts, and we'll find the key details together.",
-            "audioRegenAt": "2026-05-14T15:03:39.142Z",
-            "displayParts": [
-              {
-                "text": "Let me read you some facts, ",
-                "delay": 0
-              },
-              {
-                "text": "and we'll find the key details together.",
-                "delay": 2000
-              }
-            ],
+            "displayText": "",
+            "interaction": "A mini book opens on screen. Penguin illustration appears.",
+            "audioRegenAt": "2026-05-14T15:08:05.836Z",
             "highlightWord": {
               "word": "key details",
-              "delay": 2500
+              "delay": 4000
             }
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RI.K.1/S3b.mp3",
             "ttsScript": "Penguins live in cold places. They eat fish. They cannot fly.",
-            "audioRegenAt": "2026-05-14T15:03:45.449Z",
-            "displayParts": [
-              {
-                "text": "Penguins live in cold places.",
-                "delay": 0
-              },
-              {
-                "text": "They eat fish.",
-                "delay": 2000
-              },
-              {
-                "text": "They cannot fly.",
-                "delay": 4000
-              }
-            ],
-            "highlightWord": {
-              "word": "Penguins",
-              "delay": 300
-            }
+            "displayText": "Penguins live in cold places.\nThey eat fish.\nThey cannot fly.",
+            "interaction": "Text appears line by line as the audio reads each sentence.",
+            "audioRegenAt": "2026-05-14T15:08:12.524Z",
+            "displayDelay": 1500,
+            "displayStyle": "passage"
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RI.K.1/S3c.mp3",
             "ttsScript": "Now, where do penguins live? Cold places! That's a key detail!",
-            "audioRegenAt": "2026-05-14T15:03:55.056Z",
+            "displayText": "",
+            "interaction": "'Where? Cold places!' highlights with a checkmark.",
+            "audioRegenAt": "2026-05-14T15:08:19.934Z",
             "displayParts": [
               {
                 "text": "Where?",
@@ -825,9 +815,13 @@
             ],
             "highlightWord": {
               "word": "key detail",
-              "delay": 7500
+              "delay": 8000
             },
             "highlightPills": [
+              {
+                "pill": 0,
+                "delay": 1000
+              },
               {
                 "pill": 1,
                 "delay": 6500
@@ -838,7 +832,9 @@
             "sub": "d",
             "audioFile": "audio/lessons/RI.K.1/S3d.mp3",
             "ttsScript": "What do they eat? Fish! Another key detail!",
-            "audioRegenAt": "2026-05-14T15:04:02.446Z",
+            "displayText": "",
+            "interaction": "'What do they eat? Fish!' highlights with a checkmark.",
+            "audioRegenAt": "2026-05-14T15:08:25.246Z",
             "displayParts": [
               {
                 "text": "What do they eat?",
@@ -851,9 +847,13 @@
             ],
             "highlightWord": {
               "word": "key detail",
-              "delay": 3000
+              "delay": 4000
             },
             "highlightPills": [
+              {
+                "pill": 0,
+                "delay": 500
+              },
               {
                 "pill": 1,
                 "delay": 2200
@@ -864,27 +864,33 @@
             "sub": "e",
             "sfxClaps": [
               {
-                "delay": 7000
+                "delay": 9000
               }
             ],
             "audioFile": "audio/lessons/RI.K.1/S3e.mp3",
             "ttsScript": "Can they fly? Nope! That's an important fact too. Look at you — you found all the key details!",
-            "audioRegenAt": "2026-05-14T15:04:09.667Z",
+            "displayText": "",
+            "interaction": "'Can they fly? No!' highlights. Celebration burst. Tap to continue.",
+            "audioRegenAt": "2026-05-14T15:08:33.306Z",
             "displayParts": [
               {
                 "text": "Can they fly?",
                 "delay": 500
               },
               {
-                "text": "Nope!",
+                "text": "No!",
                 "delay": 1800
               }
             ],
             "highlightWord": {
               "word": "key details",
-              "delay": 6000
+              "delay": 8000
             },
             "highlightPills": [
+              {
+                "pill": 0,
+                "delay": 500
+              },
               {
                 "pill": 1,
                 "delay": 1800
@@ -904,7 +910,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RI.K.1/S4a.mp3",
             "ttsScript": "Here are some fun facts about sea otters.",
-            "audioRegenAt": "2026-05-14T15:04:26.861Z",
+            "audioRegenAt": "2026-05-14T15:08:46.669Z",
             "displayParts": [
               {
                 "text": "Here are some fun ",
@@ -916,7 +922,7 @@
               },
               {
                 "text": " about sea otters.",
-                "delay": 1800
+                "delay": 2000
               }
             ],
             "highlightWord": {
@@ -928,29 +934,21 @@
             "sub": "b",
             "audioFile": "audio/lessons/RI.K.1/S4b.mp3",
             "ttsScript": "They have the thickest fur of any animal.",
-            "audioRegenAt": "2026-05-14T15:04:32.463Z",
+            "audioRegenAt": "2026-05-14T15:08:52.465Z",
             "displayParts": [
               {
-                "text": "They have the ",
+                "text": "Thickest fur of any animal!",
                 "delay": 0
-              },
-              {
-                "text": "thickest fur",
-                "delay": 800
-              },
-              {
-                "text": " of any animal.",
-                "delay": 1800
               }
             ],
             "highlightWord": {
               "word": "thickest",
-              "delay": 800
+              "delay": 300
             },
             "highlightPills": [
               {
-                "pill": 1,
-                "delay": 800
+                "pill": 0,
+                "delay": 500
               }
             ]
           },
@@ -958,29 +956,21 @@
             "sub": "c",
             "audioFile": "audio/lessons/RI.K.1/S4c.mp3",
             "ttsScript": "When they sleep, they hold hands so they don't float away.",
-            "audioRegenAt": "2026-05-14T15:04:38.512Z",
+            "audioRegenAt": "2026-05-14T15:08:58.030Z",
             "displayParts": [
               {
-                "text": "When they sleep, ",
+                "text": "They hold hands when they sleep!",
                 "delay": 0
-              },
-              {
-                "text": "they hold hands",
-                "delay": 1200
-              },
-              {
-                "text": " so they don't float away.",
-                "delay": 2500
               }
             ],
             "highlightWord": {
               "word": "hands",
-              "delay": 1200
+              "delay": 300
             },
             "highlightPills": [
               {
-                "pill": 1,
-                "delay": 1200
+                "pill": 0,
+                "delay": 500
               }
             ]
           },
@@ -988,29 +978,21 @@
             "sub": "d",
             "audioFile": "audio/lessons/RI.K.1/S4d.mp3",
             "ttsScript": "They even use rocks to crack open their food.",
-            "audioRegenAt": "2026-05-14T15:04:43.833Z",
+            "audioRegenAt": "2026-05-14T15:09:03.589Z",
             "displayParts": [
               {
-                "text": "They even use ",
+                "text": "They use rocks to open food!",
                 "delay": 0
-              },
-              {
-                "text": "rocks",
-                "delay": 1000
-              },
-              {
-                "text": " to crack open their food.",
-                "delay": 1800
               }
             ],
             "highlightWord": {
               "word": "rocks",
-              "delay": 1000
+              "delay": 300
             },
             "highlightPills": [
               {
-                "pill": 1,
-                "delay": 1000
+                "pill": 0,
+                "delay": 500
               }
             ]
           }
@@ -1033,7 +1015,7 @@
             "audioFile": "audio/lessons/RI.K.1/S5a.mp3",
             "ttsScript": "Super work! You really know how to find key details in fact books now!",
             "interaction": "Stars and confetti celebration.",
-            "audioRegenAt": "2026-05-14T15:05:02.649Z",
+            "audioRegenAt": "2026-05-14T15:09:20.534Z",
             "displayParts": [
               {
                 "text": "Super work!",
@@ -1041,25 +1023,25 @@
               },
               {
                 "text": "You really know how to find",
-                "delay": 1000
+                "delay": 800
               },
               {
                 "text": "key details",
-                "delay": 2500
+                "delay": 2000
               },
               {
                 "text": "in fact books now!",
-                "delay": 3800
+                "delay": 3000
               }
             ],
             "highlightWord": {
               "word": "details",
-              "delay": 2800
+              "delay": 2000
             },
             "highlightPills": [
               {
                 "pill": 2,
-                "delay": 2500
+                "delay": 2000
               }
             ]
           },
@@ -1068,23 +1050,15 @@
             "audioFile": "audio/lessons/RI.K.1/S5b.mp3",
             "ttsScript": "Now let's practice with some real facts. Read carefully, and look for the important information. You've totally got this!",
             "interaction": "'Let's Go!' button pulses. Transition to MCQs.",
-            "audioRegenAt": "2026-05-14T15:05:10.590Z",
+            "audioRegenAt": "2026-05-14T15:09:27.918Z",
             "displayParts": [
               {
-                "text": "Now let's practice",
+                "text": "Now let's practice with some real facts.",
                 "delay": 0
               },
               {
-                "text": "with some real facts.",
-                "delay": 1200
-              },
-              {
-                "text": "Read carefully,",
+                "text": "Read carefully, and look for the important information.",
                 "delay": 2500
-              },
-              {
-                "text": "and look for the important information.",
-                "delay": 3800
               },
               {
                 "text": "You've totally got this!",
@@ -1097,12 +1071,12 @@
             },
             "highlightPills": [
               {
-                "pill": 1,
-                "delay": 1200
+                "pill": 0,
+                "delay": 1500
               },
               {
-                "pill": 3,
-                "delay": 3800
+                "pill": 1,
+                "delay": 4000
               }
             ]
           }
@@ -61266,44 +61240,26 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.4.4/S1b.mp3",
-            "ttsScript": "Mythological references, allusions, and figurative language all show up.",
+            "ttsScript": "Authors use words in fun and surprising ways to add deeper meaning to their stories.",
             "audioRegenAt": null,
             "displayParts": [
               {
-                "text": "Mythological references",
+                "text": "Authors use words in fun and surprising ways",
                 "delay": 0
               },
               {
-                "text": ", allusions",
-                "delay": 1500
-              },
-              {
-                "text": ", and figurative language",
-                "delay": 3000
-              },
-              {
-                "text": "all show up.",
-                "delay": 4500
-              }
-            ],
-            "highlightWord": {
-              "word": "allusions",
-              "delay": 2000
-            },
-            "highlightPills": [
-              {
-                "pill": 0,
-                "delay": 500
-              },
-              {
-                "pill": 1,
+                "text": "to add deeper meaning",
                 "delay": 2000
               },
               {
-                "pill": 2,
-                "delay": 3500
+                "text": "to their stories.",
+                "delay": 4000
               }
-            ]
+            ],
+            "highlightWord": {
+              "word": "deeper",
+              "delay": 2500
+            }
           }
         ],
         "heading": "Meaning Beyond the Word",
@@ -67160,71 +67116,80 @@
         "steps": [
           {
             "sub": "a",
-            "audioFile": "audio/lessons/RF.4.3/S4a.mp3",
-            "ttsScript": "Here is a helpful trick.",
-            "audioRegenAt": "2026-05-11T02:30:14.914Z",
+            "audioFile": "audio/lessons/RF.4.3/S4_new_a.mp3",
+            "ttsScript": "Did you know that many big words are made of smaller parts?",
+            "audioRegenAt": null,
             "displayParts": [
               {
-                "text": "Here is a helpful ",
+                "text": "Did you know that many big words are made of smaller ",
                 "delay": 0
               },
               {
-                "text": "trick.",
+                "text": "parts?",
                 "delay": 1000
               }
             ],
             "highlightWord": {
-              "word": "trick",
+              "word": "parts",
               "delay": 1000
             }
           },
           {
             "sub": "b",
-            "audioFile": "audio/lessons/RF.4.3/S4b.mp3",
-            "ttsScript": "After decoding, reread the whole sentence. The meaning often clicks.",
-            "audioRegenAt": "2026-05-11T02:30:21.137Z",
+            "audioFile": "audio/lessons/RF.4.3/S4_new_b.mp3",
+            "ttsScript": "A prefix is a word part added to the beginning of a word that changes its meaning.",
+            "audioRegenAt": null,
             "displayParts": [
               {
-                "text": "After decoding, ",
+                "text": "A ",
                 "delay": 0
               },
               {
-                "text": "reread the whole sentence.",
-                "delay": 1000
+                "text": "prefix",
+                "delay": 500
               },
               {
-                "text": " The meaning often clicks.",
-                "delay": 2500
+                "text": " is a word part added to the beginning of a word that changes its meaning.",
+                "delay": 1200
               }
             ],
             "highlightWord": {
-              "word": "reread",
-              "delay": 1000
-            },
-            "highlightPills": [
-              {
-                "pill": 1,
-                "delay": 1000
-              },
-              {
-                "pill": 2,
-                "delay": 2500
-              }
-            ]
+              "word": "prefix",
+              "delay": 500
+            }
           },
           {
             "sub": "c",
-            "sfxClaps": [
-              {
-                "delay": 2500
-              }
-            ],
-            "audioFile": "audio/lessons/RF.4.3/S4c.mp3",
-            "ttsScript": "Now you are ready to decode powerful words!",
-            "audioRegenAt": "2026-05-11T02:30:27.486Z",
+            "audioFile": "audio/lessons/RF.4.3/S4_new_c.mp3",
+            "ttsScript": "A suffix is a word part added to the end of a word that changes its meaning or how it's used.",
+            "audioRegenAt": null,
             "displayParts": [
               {
-                "text": "Now you are ready to ",
+                "text": "A ",
+                "delay": 0
+              },
+              {
+                "text": "suffix",
+                "delay": 500
+              },
+              {
+                "text": " is a word part added to the end of a word that changes its meaning or how it's used.",
+                "delay": 1200
+              }
+            ],
+            "highlightWord": {
+              "word": "suffix",
+              "delay": 500
+            }
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RF.4.3/S4_new_d.mp3",
+            "ttsScript": "Knowing these parts helps you decode long words and understand what they mean.",
+            "audioRegenAt": null,
+            "displayParts": [
+              {
+                "text": "Knowing these parts helps you ",
                 "delay": 0
               },
               {
@@ -67232,7 +67197,7 @@
                 "delay": 1000
               },
               {
-                "text": " powerful words!",
+                "text": " long words and understand what they mean.",
                 "delay": 1800
               }
             ],
@@ -67242,9 +67207,9 @@
             }
           }
         ],
-        "heading": "Read in Context",
+        "heading": "Word Parts Help You Read",
         "imageFile": "images/lessons/RF.4.3/S4.png",
-        "imagePrompt": "A cheerful cartoon kid reading a sentence with the new word. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters."
+        "imagePrompt": "A cheerful cartoon kid looking at a word broken into prefix, root, and suffix, with arrows pointing to each part. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters."
       },
       {
         "type": "mcq",
