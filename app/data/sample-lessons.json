@@ -12600,148 +12600,103 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RL.1.4/S2a.mp3",
-            "ttsScript": "Some words help us use our senses.",
-            "displayText": "Use your senses",
-            "interaction": "",
-            "audioRegenAt": "2026-05-12T01:47:38.473Z",
-            "displayDelay": 2000,
+            "ttsScript": "Today, we will learn about words that tell us how characters feel.",
+            "audioRegenAt": null,
             "displayParts": [
               {
-                "text": "Some words help us ",
+                "text": "Today, we will learn about words that tell us how ",
                 "delay": 0
               },
               {
-                "text": "use our senses.",
-                "delay": 1000
+                "text": "characters feel.",
+                "delay": 2000
               }
             ],
             "highlightWord": {
-              "word": "senses",
-              "delay": 1200
+              "word": "feel",
+              "delay": 2200
             }
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.1.4/S2b.mp3",
-            "ttsScript": "Warm, soft, bright. These help us feel and see.",
-            "displayText": "Warm. Soft. Bright.",
-            "interaction": "",
-            "audioRegenAt": "2026-05-12T01:47:45.898Z",
-            "displayDelay": 2800,
+            "ttsScript": "Words like happy, excited, or joyful show us good feelings.",
+            "audioRegenAt": null,
             "displayParts": [
               {
-                "text": "Warm,",
+                "text": "Words like ",
                 "delay": 0
               },
               {
-                "text": " soft,",
-                "delay": 700
+                "text": "happy,",
+                "delay": 500
               },
               {
-                "text": " bright.",
-                "delay": 1400
+                "text": " excited,",
+                "delay": 1200
               },
               {
-                "text": " These help us feel and see.",
-                "delay": 2200
+                "text": " or joyful show us good feelings.",
+                "delay": 2000
               }
             ],
             "highlightWord": {
-              "word": "feel",
-              "delay": 2500
-            },
-            "highlightPills": [
-              {
-                "pill": 0,
-                "delay": 300
-              },
-              {
-                "pill": 1,
-                "delay": 1000
-              },
-              {
-                "pill": 2,
-                "delay": 1700
-              }
-            ]
+              "word": "happy",
+              "delay": 600
+            }
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RL.1.4/S2c.mp3",
-            "ttsScript": "Whisper, crash, boom. These help us hear.",
-            "displayText": "Whisper. Crash. Boom.",
-            "interaction": "",
-            "audioRegenAt": "2026-05-12T01:47:51.999Z",
-            "displayDelay": 2800,
+            "ttsScript": "Other words like sad, angry, or scared tell us when characters have different feelings.",
+            "audioRegenAt": null,
             "displayParts": [
               {
-                "text": "Whisper,",
+                "text": "Other words like ",
                 "delay": 0
               },
               {
-                "text": " crash,",
-                "delay": 700
+                "text": "sad,",
+                "delay": 500
               },
               {
-                "text": " boom.",
-                "delay": 1400
+                "text": " angry,",
+                "delay": 1200
               },
               {
-                "text": " These help us hear.",
-                "delay": 2200
+                "text": " or scared tell us when characters have different feelings.",
+                "delay": 2000
               }
             ],
             "highlightWord": {
-              "word": "hear",
-              "delay": 2500
-            },
-            "highlightPills": [
-              {
-                "pill": 0,
-                "delay": 300
-              },
-              {
-                "pill": 1,
-                "delay": 1000
-              },
-              {
-                "pill": 2,
-                "delay": 1700
-              }
-            ]
+              "word": "sad",
+              "delay": 600
+            }
           },
           {
             "sub": "d",
-            "sfxClaps": [
-              {
-                "delay": 1500
-              }
-            ],
             "audioFile": "audio/lessons/RL.1.4/S2d.mp3",
-            "ttsScript": "Listen for sense-y words as you read!",
-            "displayText": "Listen for them",
-            "interaction": "",
-            "audioRegenAt": "2026-05-12T01:47:56.437Z",
-            "displayDelay": 2000,
+            "ttsScript": "These feeling words help us understand what is happening in a story.",
+            "audioRegenAt": null,
             "displayParts": [
               {
-                "text": "Listen for sense-y words ",
+                "text": "These feeling words help us ",
                 "delay": 0
               },
               {
-                "text": "as you read!",
-                "delay": 1200
+                "text": "understand what is happening in a story.",
+                "delay": 1800
               }
             ],
             "highlightWord": {
-              "word": "sense-y",
-              "delay": 500
+              "word": "understand",
+              "delay": 2000
             }
           }
         ],
-        "heading": "Sense-y Words",
+        "heading": "Words That Show Feelings",
         "imageFile": "images/lessons/RL.1.4/S2.png",
-        "imagePrompt": "Four cheerful cartoon sensory icons arranged in a square, a small ear, a small eye, a tiny hand, and a tiny nose, each with a friendly face. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters."
+        "imagePrompt": "A group of diverse cartoon children showing various emotions like happy, sad, excited, and surprised. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters."
       },
       {
         "type": "example",
@@ -15211,98 +15166,111 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.1.1/S4a.mp3",
-            "ttsScript": "Here is a helpful trick.",
-            "audioRegenAt": "2026-05-12T01:38:59.612Z",
+            "ttsScript": "We can use special question words to help us ask about key details!",
+            "audioRegenAt": null,
             "displayParts": [
               {
-                "text": "Here is a ",
+                "text": "We can use special ",
                 "delay": 0
               },
               {
-                "text": "helpful trick.",
-                "delay": 500
+                "text": "question words",
+                "delay": 800
+              },
+              {
+                "text": " to help us ask about key details!",
+                "delay": 1800
               }
             ],
             "highlightWord": {
-              "word": "trick",
-              "delay": 800
-            },
-            "highlightPills": [
-              {
-                "pill": 1,
-                "delay": 500
-              }
-            ]
+              "word": "ask",
+              "delay": 2000
+            }
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RI.1.1/S4b.mp3",
-            "ttsScript": "If you are not sure, look back at the words. The answer is hiding there.",
-            "audioRegenAt": "2026-05-12T01:39:05.718Z",
+            "ttsScript": "The word 'Who' helps us ask about people or characters.",
+            "audioRegenAt": null,
             "displayParts": [
               {
-                "text": "If you are not sure, ",
+                "text": "The word 'Who' helps us ",
                 "delay": 0
               },
               {
-                "text": "look back at the words.",
-                "delay": 1000
-              },
-              {
-                "text": "The answer is hiding there.",
-                "delay": 2500
+                "text": "ask about people or characters.",
+                "delay": 1200
               }
             ],
             "highlightWord": {
-              "word": "words",
-              "delay": 1500
-            },
-            "highlightPills": [
-              {
-                "pill": 1,
-                "delay": 1000
-              },
-              {
-                "pill": 2,
-                "delay": 2500
-              }
-            ]
+              "word": "Who",
+              "delay": 500
+            }
           },
           {
             "sub": "c",
-            "sfxClaps": [
-              {
-                "delay": 1500
-              }
-            ],
             "audioFile": "audio/lessons/RI.1.1/S4c.mp3",
-            "ttsScript": "Now you are ready to answer fact questions!",
-            "audioRegenAt": "2026-05-12T01:39:11.726Z",
+            "ttsScript": "The word 'What' helps us ask about things or actions.",
+            "audioRegenAt": null,
             "displayParts": [
               {
-                "text": "Now you are ready ",
+                "text": "The word 'What' helps us ",
                 "delay": 0
               },
               {
-                "text": "to answer fact questions!",
-                "delay": 800
+                "text": "ask about things or actions.",
+                "delay": 1200
               }
             ],
             "highlightWord": {
-              "word": "questions",
-              "delay": 1200
-            },
-            "highlightPills": [
+              "word": "What",
+              "delay": 500
+            }
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RI.1.1/S4d.mp3",
+            "ttsScript": "The word 'Where' helps us ask about places.",
+            "audioRegenAt": null,
+            "displayParts": [
               {
-                "pill": 1,
-                "delay": 800
+                "text": "The word 'Where' helps us ",
+                "delay": 0
+              },
+              {
+                "text": "ask about places.",
+                "delay": 1200
               }
-            ]
+            ],
+            "highlightWord": {
+              "word": "Where",
+              "delay": 500
+            }
+          },
+          {
+            "sub": "e",
+            "audioFile": "audio/lessons/RI.1.1/S4e.mp3",
+            "ttsScript": "Now you know how to ask great fact questions!",
+            "audioRegenAt": null,
+            "displayParts": [
+              {
+                "text": "Now you know how to ",
+                "delay": 0
+              },
+              {
+                "text": "ask great fact questions!",
+                "delay": 1000
+              }
+            ],
+            "highlightWord": {
+              "word": "ask",
+              "delay": 1200
+            }
           }
         ],
-        "heading": "Look Back for the Answer",
+        "heading": "Question Words Help Us Ask!",
         "imageFile": "images/lessons/RI.1.1/S4.png",
-        "imagePrompt": "A friendly cartoon magnifying glass character with a big smile sweeping over an open fact book with diagrams. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters."
+        "imagePrompt": "A friendly cartoon child with a thought bubble above their head containing a big question mark, looking at an open informational book. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters."
       },
       {
         "type": "mcq",
@@ -17301,133 +17269,163 @@
         "steps": [
           {
             "sub": "a",
-            "audioFile": "audio/lessons/RI.1.6/S2a.mp3",
-            "ttsScript": "Listen. The text says ladybugs are small insects.",
+            "audioFile": "audio/lessons/RI.1.6/S2a_new.mp3",
+            "ttsScript": "Today, we will learn how words and pictures give us different kinds of information in a book.",
             "audioRegenAt": null,
             "displayParts": [
               {
-                "text": "Listen. The ",
+                "text": "Today, we will learn how ",
                 "delay": 0
-              },
-              {
-                "text": "text",
-                "delay": 500
-              },
-              {
-                "text": " says ladybugs are ",
-                "delay": 1000
-              },
-              {
-                "text": "small insects.",
-                "delay": 2000
-              }
-            ],
-            "highlightWord": {
-              "word": "text",
-              "delay": 500
-            },
-            "highlightPills": [
-              {
-                "pill": 1,
-                "delay": 500
-              },
-              {
-                "pill": 3,
-                "delay": 2000
-              }
-            ]
-          },
-          {
-            "sub": "b",
-            "audioFile": "audio/lessons/RI.1.6/S2b.mp3",
-            "ttsScript": "The picture shows a ladybug on a green leaf.",
-            "audioRegenAt": "2026-05-12T01:28:46.334Z",
-            "displayParts": [
-              {
-                "text": "The ",
-                "delay": 0
-              },
-              {
-                "text": "picture",
-                "delay": 300
-              },
-              {
-                "text": " shows a ladybug on a ",
-                "delay": 1000
-              },
-              {
-                "text": "green leaf.",
-                "delay": 2000
-              }
-            ],
-            "highlightWord": {
-              "word": "picture",
-              "delay": 300
-            },
-            "highlightPills": [
-              {
-                "pill": 1,
-                "delay": 300
-              },
-              {
-                "pill": 3,
-                "delay": 2000
-              }
-            ]
-          },
-          {
-            "sub": "c",
-            "audioFile": "audio/lessons/RI.1.6/S2c.mp3",
-            "ttsScript": "The picture shows us the colors, size, and shape. The words told us what kind of bug.",
-            "audioRegenAt": "2026-05-12T01:28:54.341Z",
-            "displayParts": [
-              {
-                "text": "The ",
-                "delay": 0
-              },
-              {
-                "text": "picture",
-                "delay": 300
-              },
-              {
-                "text": " shows us the colors, size, and shape. ",
-                "delay": 800
-              },
-              {
-                "text": "The ",
-                "delay": 3500
               },
               {
                 "text": "words",
-                "delay": 3800
+                "delay": 500
               },
               {
-                "text": " told us what kind of bug.",
-                "delay": 4300
+                "text": " and ",
+                "delay": 1000
+              },
+              {
+                "text": "pictures",
+                "delay": 1300
+              },
+              {
+                "text": " give us different kinds of information in a book.",
+                "delay": 2000
+              }
+            ],
+            "highlightWord": {
+              "word": "words",
+              "delay": 500
+            }
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.1.6/S2b_new.mp3",
+            "ttsScript": "Look at this book about ladybugs; the words tell us that ladybugs are small insects.",
+            "audioRegenAt": null,
+            "displayParts": [
+              {
+                "text": "Look at this book about ladybugs; the ",
+                "delay": 0
+              },
+              {
+                "text": "words",
+                "delay": 1500
+              },
+              {
+                "text": " tell us that ladybugs are ",
+                "delay": 2000
+              },
+              {
+                "text": "small insects.",
+                "delay": 3000
+              }
+            ],
+            "highlightWord": {
+              "word": "words",
+              "delay": 1500
+            }
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.1.6/S2c_new.mp3",
+            "ttsScript": "The picture shows us that ladybugs are red with black spots and have tiny legs.",
+            "audioRegenAt": null,
+            "displayParts": [
+              {
+                "text": "The ",
+                "delay": 0
+              },
+              {
+                "text": "picture",
+                "delay": 300
+              },
+              {
+                "text": " shows us that ladybugs are ",
+                "delay": 1000
+              },
+              {
+                "text": "red with black spots",
+                "delay": 2000
+              },
+              {
+                "text": " and have ",
+                "delay": 3000
+              },
+              {
+                "text": "tiny legs.",
+                "delay": 3500
               }
             ],
             "highlightWord": {
               "word": "picture",
               "delay": 300
-            },
-            "highlightPills": [
+            }
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RI.1.6/S2d_new.mp3",
+            "ttsScript": "So, the words gave us facts we can read, like what kind of animal it is.",
+            "audioRegenAt": null,
+            "displayParts": [
               {
-                "pill": 1,
+                "text": "So, the ",
+                "delay": 0
+              },
+              {
+                "text": "words",
                 "delay": 300
               },
               {
-                "pill": 2,
-                "delay": 800
+                "text": " gave us ",
+                "delay": 700
               },
               {
-                "pill": 4,
-                "delay": 3800
+                "text": "facts",
+                "delay": 1000
               },
               {
-                "pill": 5,
-                "delay": 4300
+                "text": " we can read, like what kind of animal it is.",
+                "delay": 1500
               }
-            ]
+            ],
+            "highlightWord": {
+              "word": "facts",
+              "delay": 1000
+            }
+          },
+          {
+            "sub": "e",
+            "audioFile": "audio/lessons/RI.1.6/S2e_new.mp3",
+            "ttsScript": "And the picture gave us details we can see, like its color and shape.",
+            "audioRegenAt": null,
+            "displayParts": [
+              {
+                "text": "And the ",
+                "delay": 0
+              },
+              {
+                "text": "picture",
+                "delay": 300
+              },
+              {
+                "text": " gave us ",
+                "delay": 700
+              },
+              {
+                "text": "details",
+                "delay": 1000
+              },
+              {
+                "text": " we can see, like its color and shape.",
+                "delay": 1500
+              }
+            ],
+            "highlightWord": {
+              "word": "details",
+              "delay": 1000
+            }
           }
         ],
         "heading": "Words Tell, Pictures Show",
@@ -17587,88 +17585,85 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.1.6/S4a.mp3",
-            "ttsScript": "Here is a helpful trick.",
-            "audioRegenAt": "2026-05-12T01:29:37.335Z",
+            "ttsScript": "Sometimes, pictures and words in a book tell us different things.",
+            "audioRegenAt": null,
             "displayParts": [
               {
-                "text": "Here is a helpful ",
+                "text": "Sometimes, pictures and words in a book tell us different things.",
                 "delay": 0
-              },
-              {
-                "text": "trick.",
-                "delay": 1000
               }
             ],
             "highlightWord": {
-              "word": "trick",
-              "delay": 1000
+              "word": "different",
+              "delay": 0
             }
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RI.1.6/S4b.mp3",
-            "ttsScript": "Read the words and look at the pictures. Together, they give you the whole story.",
-            "audioRegenAt": "2026-05-12T01:29:44.301Z",
+            "ttsScript": "Pictures often show us what something looks like or where it is.",
+            "audioRegenAt": null,
             "displayParts": [
               {
-                "text": "Read the words ",
+                "text": "Pictures often show us what something looks like or where it is.",
                 "delay": 0
-              },
-              {
-                "text": "and look at the pictures.",
-                "delay": 1500
-              },
-              {
-                "text": "Together, they give you the whole story.",
-                "delay": 3500
               }
             ],
             "highlightWord": {
-              "word": "story",
-              "delay": 5000
-            },
-            "highlightPills": [
-              {
-                "pill": 0,
-                "delay": 500
-              },
-              {
-                "pill": 1,
-                "delay": 2000
-              },
-              {
-                "pill": 2,
-                "delay": 4000
-              }
-            ]
+              "word": "Pictures",
+              "delay": 0
+            }
           },
           {
             "sub": "c",
-            "sfxClaps": [
-              {
-                "delay": 2500
-              }
-            ],
             "audioFile": "audio/lessons/RI.1.6/S4c.mp3",
-            "ttsScript": "Now you are ready to use both pictures and words!",
-            "audioRegenAt": "2026-05-12T01:29:50.387Z",
+            "ttsScript": "Words can tell us names, feelings, or why something happened.",
+            "audioRegenAt": null,
             "displayParts": [
               {
-                "text": "Now you are ready to use ",
+                "text": "Words can tell us names, feelings, or why something happened.",
                 "delay": 0
-              },
-              {
-                "text": "both pictures and words!",
-                "delay": 1200
               }
             ],
             "highlightWord": {
-              "word": "both",
-              "delay": 1500
+              "word": "Words",
+              "delay": 0
+            }
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RI.1.6/S4d.mp3",
+            "ttsScript": "It's important to notice if the picture or the words are giving you new information.",
+            "audioRegenAt": null,
+            "displayParts": [
+              {
+                "text": "It's important to notice if the picture or the words are giving you new information.",
+                "delay": 0
+              }
+            ],
+            "highlightWord": {
+              "word": "notice",
+              "delay": 0
+            }
+          },
+          {
+            "sub": "e",
+            "audioFile": "audio/lessons/RI.1.6/S4e.mp3",
+            "ttsScript": "You are now a pro at telling the difference between what pictures and words tell us!",
+            "audioRegenAt": null,
+            "displayParts": [
+              {
+                "text": "You are now a pro at telling the difference between what pictures and words tell us!",
+                "delay": 0
+              }
+            ],
+            "highlightWord": {
+              "word": "difference",
+              "delay": 0
             }
           }
         ],
-        "heading": "Use Both",
+        "heading": "What Tells What?",
         "imageFile": "images/lessons/RI.1.6/S4.png",
         "imagePrompt": "A cheerful cartoon child with a smiling face looking at an open fact book, eyes sparkling, two tiny thought bubbles over their head, one with words, one with a picture. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters."
       },
@@ -29483,104 +29478,107 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RL.2.10/S4a.mp3",
-            "ttsScript": "Here is a helpful trick.",
-            "audioRegenAt": "2026-05-11T23:54:43.055Z",
+            "ttsScript": "To understand stories better, it's a great idea to ask yourself questions.",
+            "audioRegenAt": null,
             "displayParts": [
               {
-                "text": "Here is a helpful ",
+                "text": "To understand stories better, it's a great idea to ask yourself ",
                 "delay": 0
               },
               {
-                "text": "trick.",
-                "delay": 800
+                "text": "questions.",
+                "delay": 2000
               }
             ],
             "highlightWord": {
-              "word": "trick",
-              "delay": 800
+              "word": "questions",
+              "delay": 2000
             }
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.2.10/S4b.mp3",
-            "ttsScript": "Find a reading spot. Read there every day.",
-            "audioRegenAt": "2026-05-11T23:54:48.791Z",
+            "ttsScript": "While you are reading, you can ask: Who is this story about?",
+            "audioRegenAt": null,
             "displayParts": [
               {
-                "text": "Find a reading ",
+                "text": "While you are reading, you can ask: ",
                 "delay": 0
               },
               {
-                "text": "spot.",
-                "delay": 700
+                "text": "Who",
+                "delay": 1500
               },
               {
-                "text": " Read there every ",
-                "delay": 1800
-              },
-              {
-                "text": "day.",
-                "delay": 2500
+                "text": " is this story about?",
+                "delay": 2000
               }
             ],
             "highlightWord": {
-              "word": "spot",
-              "delay": 700
-            },
-            "highlightPills": [
-              {
-                "pill": 1,
-                "delay": 700
-              },
-              {
-                "pill": 3,
-                "delay": 2500
-              }
-            ]
+              "word": "Who",
+              "delay": 1500
+            }
           },
           {
             "sub": "c",
-            "sfxClaps": [
-              {
-                "delay": 2500
-              }
-            ],
             "audioFile": "audio/lessons/RL.2.10/S4c.mp3",
-            "ttsScript": "Now you are ready to read stories all year!",
-            "audioRegenAt": "2026-05-11T23:54:54.370Z",
+            "ttsScript": "Or you can ask: What is happening in this part of the story?",
+            "audioRegenAt": null,
             "displayParts": [
               {
-                "text": "Now you are ready to read ",
+                "text": "Or you can ask: What is happening in this ",
                 "delay": 0
               },
               {
-                "text": "stories ",
-                "delay": 1200
+                "text": "part",
+                "delay": 1800
               },
               {
-                "text": "all year!",
-                "delay": 2000
+                "text": " of the story?",
+                "delay": 2300
               }
             ],
             "highlightWord": {
-              "word": "stories",
-              "delay": 1200
-            },
-            "highlightPills": [
+              "word": "part",
+              "delay": 1800
+            }
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RL.2.10/S4d.mp3",
+            "ttsScript": "Asking questions helps you think about the story and remember what you read.",
+            "audioRegenAt": null,
+            "displayParts": [
               {
-                "pill": 1,
+                "text": "Asking questions helps you ",
+                "delay": 0
+              },
+              {
+                "text": "think",
                 "delay": 1200
               },
               {
-                "pill": 2,
-                "delay": 2000
+                "text": " about the story and ",
+                "delay": 1800
+              },
+              {
+                "text": "remember",
+                "delay": 2500
+              },
+              {
+                "text": " what you read.",
+                "delay": 3000
               }
-            ]
+            ],
+            "highlightWord": {
+              "word": "think",
+              "delay": 1200
+            }
           }
         ],
-        "heading": "Read Every Day",
+        "heading": "Ask Questions as You Read!",
         "imageFile": "images/lessons/RL.2.10/S4.png",
-        "imagePrompt": "A cheerful cartoon cozy armchair with a stack of colorful books beside it, a warm lamp glowing. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters."
+        "imagePrompt": "A cheerful cartoon child, perhaps a boy or girl, sitting with an open book, a thought bubble above their head with a question mark inside. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters."
       },
       {
         "type": "mcq",
@@ -33641,62 +33639,50 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.2.10/S3a.mp3",
-            "ttsScript": "Sometimes try a harder book than usual.",
-            "audioRegenAt": "2026-05-11T23:37:35.858Z",
+            "ttsScript": "Sometimes, try reading informational books that are a little harder.",
+            "audioRegenAt": null,
             "displayParts": [
               {
-                "text": "Sometimes try a ",
+                "text": "Sometimes, try reading ",
                 "delay": 0
               },
               {
-                "text": "harder book",
+                "text": "informational books",
                 "delay": 1000
               },
               {
-                "text": " than usual.",
+                "text": " that are a little harder.",
                 "delay": 2000
               }
             ],
             "highlightWord": {
-              "word": "harder",
+              "word": "informational",
               "delay": 1000
-            },
-            "highlightPills": [
-              {
-                "pill": 1,
-                "delay": 1000
-              }
-            ]
+            }
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RI.2.10/S3b.mp3",
-            "ttsScript": "Stretch books grow your reading muscles.",
-            "audioRegenAt": "2026-05-11T23:37:41.133Z",
+            "ttsScript": "These stretch books help you understand more facts and ideas.",
+            "audioRegenAt": null,
             "displayParts": [
               {
-                "text": "Stretch books ",
+                "text": "These stretch books help you ",
                 "delay": 0
               },
               {
-                "text": "grow",
+                "text": "understand more facts",
                 "delay": 1000
               },
               {
-                "text": " your reading muscles.",
+                "text": " and ideas.",
                 "delay": 2000
               }
             ],
             "highlightWord": {
-              "word": "Stretch",
-              "delay": 300
-            },
-            "highlightPills": [
-              {
-                "pill": 1,
-                "delay": 1000
-              }
-            ]
+              "word": "facts",
+              "delay": 1000
+            }
           }
         ],
         "heading": "Try Stretch Books",
@@ -48187,66 +48173,45 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.3.10/S2a.mp3",
-            "ttsScript": "This year try a few harder books.",
-            "audioRegenAt": "2026-05-11T04:19:43.035Z",
+            "ttsScript": "This year, we will read and understand longer fact books.",
+            "audioRegenAt": null,
             "displayParts": [
               {
-                "text": "This year try a few ",
+                "text": "This year, we will read and understand ",
                 "delay": 0
               },
               {
-                "text": "harder books.",
-                "delay": 1200
-              }
-            ],
-            "highlightWord": {
-              "word": "harder",
-              "delay": 1500
-            },
-            "highlightPills": [
-              {
-                "pill": 1,
-                "delay": 1200
-              }
-            ]
-          },
-          {
-            "sub": "b",
-            "sfxClaps": [
-              {
+                "text": "longer fact books.",
                 "delay": 2000
               }
             ],
+            "highlightWord": {
+              "word": "longer",
+              "delay": 2200
+            }
+          },
+          {
+            "sub": "b",
             "audioFile": "audio/lessons/RI.3.10/S2b.mp3",
-            "ttsScript": "They will stretch what you know.",
-            "audioRegenAt": "2026-05-11T04:19:47.633Z",
+            "ttsScript": "These books will teach you many new things and help you comprehend more.",
+            "audioRegenAt": null,
             "displayParts": [
               {
-                "text": "They will ",
+                "text": "These books will teach you many new things and help you ",
                 "delay": 0
               },
               {
-                "text": "stretch",
-                "delay": 800
-              },
-              {
-                "text": " what you know.",
-                "delay": 1500
+                "text": "comprehend more.",
+                "delay": 3000
               }
             ],
             "highlightWord": {
-              "word": "stretch",
-              "delay": 1000
-            },
-            "highlightPills": [
-              {
-                "pill": 1,
-                "delay": 800
-              }
-            ]
+              "word": "comprehend",
+              "delay": 3200
+            }
           }
         ],
-        "heading": "Harder Books",
+        "heading": "Reading More Fact Books",
         "imageFile": "images/lessons/RI.3.10/S2.png",
         "imagePrompt": "A cheerful cartoon kid climbing a small ladder of books. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters."
       },
@@ -48338,81 +48303,67 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.3.10/S4a.mp3",
-            "ttsScript": "Here is a helpful trick.",
-            "interaction": "",
-            "audioRegenAt": "2026-05-11T04:20:45.301Z",
+            "ttsScript": "To understand facts in books, we have a special toolkit of reading tips!",
+            "audioRegenAt": null,
             "displayParts": [
               {
-                "text": "Here is a helpful ",
+                "text": "To understand facts in books, we have a special toolkit of reading tips!",
                 "delay": 0
-              },
-              {
-                "text": "trick.",
-                "delay": 700
               }
             ],
             "highlightWord": {
-              "word": "trick",
-              "delay": 700
+              "word": "toolkit",
+              "delay": 1000
             }
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RI.3.10/S4b.mp3",
-            "ttsScript": "Read a little every day. Even fifteen minutes adds up.",
-            "interaction": "",
-            "audioRegenAt": "2026-05-11T04:20:50.425Z",
-            "displayParts": [
-              {
-                "text": "Read a little every day.",
-                "delay": 0
-              },
-              {
-                "text": "Even fifteen minutes adds up.",
-                "delay": 1500
-              }
-            ],
+            "ttsScript": "First, look for the main idea, which is what the text is mostly about.",
+            "audioRegenAt": null,
+            "displayParts": [],
             "highlightWord": {
-              "word": "minutes",
-              "delay": 1800
-            },
-            "highlightPills": [
-              {
-                "pill": 1,
-                "delay": 1500
-              }
-            ]
+              "word": "idea",
+              "delay": 1000
+            }
           },
           {
             "sub": "c",
-            "sfxClaps": [
-              {
-                "delay": 1500
-              }
-            ],
             "audioFile": "audio/lessons/RI.3.10/S4c.mp3",
-            "ttsScript": "Now you are ready to read facts all year!",
-            "interaction": "",
-            "audioRegenAt": "2026-05-11T04:20:56.356Z",
-            "displayParts": [
-              {
-                "text": "Now you are ready to ",
-                "delay": 0
-              },
-              {
-                "text": "read facts all year!",
-                "delay": 1000
-              }
-            ],
+            "ttsScript": "Next, find important details that tell you more about the main idea.",
+            "audioRegenAt": null,
+            "displayParts": [],
             "highlightWord": {
-              "word": "facts",
-              "delay": 1300
+              "word": "details",
+              "delay": 1000
+            }
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RI.3.10/S4d.mp3",
+            "ttsScript": "Also, use text features like headings and pictures to help you understand.",
+            "audioRegenAt": null,
+            "displayParts": [],
+            "highlightWord": {
+              "word": "features",
+              "delay": 1000
+            }
+          },
+          {
+            "sub": "e",
+            "audioFile": "audio/lessons/RI.3.10/S4e.mp3",
+            "ttsScript": "With these tips, you are ready to read and understand facts all year long!",
+            "audioRegenAt": null,
+            "displayParts": [],
+            "highlightWord": {
+              "word": "understand",
+              "delay": 1000
             }
           }
         ],
-        "heading": "Read Daily",
+        "heading": "Your Fact-Finding Toolkit!",
         "imageFile": "images/lessons/RI.3.10/S4.png",
-        "imagePrompt": "A cheerful cartoon clock with a book inside. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters."
+        "imagePrompt": "A cartoon child wearing a detective hat, holding a magnifying glass, looking at an open informational book with various text features like headings, pictures, and captions. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters."
       },
       {
         "type": "mcq",
@@ -55272,88 +55223,71 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/L.3.6/S4a.mp3",
-            "ttsScript": "Here is a helpful trick.",
-            "audioRegenAt": "2026-05-11T03:49:14.271Z",
+            "ttsScript": "Conversation words are special words that help us talk with others.",
+            "audioRegenAt": null,
             "displayParts": [
               {
-                "text": "Here is a helpful ",
+                "text": "Conversation words are special words that help us talk with others.",
                 "delay": 0
-              },
-              {
-                "text": "trick.",
-                "delay": 1000
               }
             ],
             "highlightWord": {
-              "word": "trick",
-              "delay": 1000
+              "word": "Conversation",
+              "delay": 0
             }
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/L.3.6/S4b.mp3",
-            "ttsScript": "Pick one new word a day. Use it in a sentence!",
-            "audioRegenAt": "2026-05-11T03:49:20.609Z",
+            "ttsScript": "They help us show we are listening, like saying 'Oh' or 'I see' when someone shares something.",
+            "audioRegenAt": null,
             "displayParts": [
               {
-                "text": "Pick one new word a day.",
+                "text": "They help us show we are listening, like saying 'Oh' or 'I see' when someone shares something.",
                 "delay": 0
-              },
-              {
-                "text": "Use it in a sentence!",
-                "delay": 2000
               }
             ],
             "highlightWord": {
-              "word": "word",
-              "delay": 1200
-            },
-            "highlightPills": [
-              {
-                "pill": 0,
-                "delay": 1000
-              },
-              {
-                "pill": 1,
-                "delay": 2500
-              }
-            ]
+              "word": "listening",
+              "delay": 0
+            }
           },
           {
             "sub": "c",
-            "sfxClaps": [
-              {
-                "delay": 2500
-              }
-            ],
             "audioFile": "audio/lessons/L.3.6/S4c.mp3",
-            "ttsScript": "Now you are ready to use conversation words!",
-            "audioRegenAt": "2026-05-11T03:49:27.853Z",
+            "ttsScript": "We can also use words like 'Well' or 'So' to start a new idea or connect our thoughts.",
+            "audioRegenAt": null,
             "displayParts": [
               {
-                "text": "Now you are ready to use ",
+                "text": "We can also use words like 'Well' or 'So' to start a new idea or connect our thoughts.",
                 "delay": 0
-              },
-              {
-                "text": "conversation words!",
-                "delay": 1500
               }
             ],
             "highlightWord": {
-              "word": "conversation",
-              "delay": 1800
-            },
-            "highlightPills": [
+              "word": "connect",
+              "delay": 0
+            }
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/L.3.6/S4d.mp3",
+            "ttsScript": "Using these words makes our conversations smooth and friendly!",
+            "audioRegenAt": null,
+            "displayParts": [
               {
-                "pill": 1,
-                "delay": 2000
+                "text": "Using these words makes our conversations smooth and friendly!",
+                "delay": 0
               }
-            ]
+            ],
+            "highlightWord": {
+              "word": "smooth",
+              "delay": 0
+            }
           }
         ],
-        "heading": "One a Day",
+        "heading": "Words for Talking Together",
         "imageFile": "images/lessons/L.3.6/S4.png",
-        "imagePrompt": "A cheerful cartoon calendar with a tiny new word on each day. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters."
+        "imagePrompt": "A diverse group of cheerful cartoon kids having a lively conversation, with speech bubbles showing simple connecting words like 'Oh,' 'Well,' 'So.' Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters."
       },
       {
         "type": "mcq",
@@ -62045,72 +61979,99 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.4.10/S3a.mp3",
-            "ttsScript": "Try slightly harder books.",
-            "audioRegenAt": "2026-05-11T02:31:52.888Z",
+            "ttsScript": "Today, we will learn to find 'big facts' in informational texts.",
+            "audioRegenAt": null,
             "displayParts": [
               {
-                "text": "Try slightly ",
+                "text": "Today, we will learn to find 'big facts' in informational texts.",
                 "delay": 0
-              },
-              {
-                "text": "harder books.",
-                "delay": 700
               }
             ],
             "highlightWord": {
-              "word": "harder",
-              "delay": 700
-            },
-            "highlightPills": [
+              "word": "big facts",
+              "delay": 1000
+            }
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RI.4.10/S3b.mp3",
+            "ttsScript": "A big fact is a main idea or a very important piece of information about the topic.",
+            "audioRegenAt": null,
+            "displayParts": [
               {
-                "pill": 1,
-                "delay": 700
+                "text": "A big fact is a main idea or a very important piece of information about the topic.",
+                "delay": 0
+              }
+            ],
+            "highlightWord": {
+              "word": "main idea",
+              "delay": 500
+            }
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RI.4.10/S3c.mp3",
+            "ttsScript": "It helps you understand what the whole text is mostly about.",
+            "audioRegenAt": null,
+            "displayParts": [
+              {
+                "text": "It helps you understand what the whole text is mostly about.",
+                "delay": 0
+              }
+            ],
+            "highlightWord": {
+              "word": "mostly about",
+              "delay": 1000
+            }
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RI.4.10/S3d.mp3",
+            "ttsScript": "Let's look at an example to practice finding a big fact.",
+            "audioRegenAt": null,
+            "displayParts": [
+              {
+                "text": "Let's look at an example to practice finding a big fact.",
+                "delay": 0
+              }
+            ],
+            "highlightWord": {
+              "word": "example",
+              "delay": 500
+            }
+          },
+          {
+            "sub": "e",
+            "audioFile": "audio/lessons/RI.4.10/S3e.mp3",
+            "ttsScript": "Read this text: 'Butterflies start as tiny eggs, hatch into caterpillars, then form a chrysalis before becoming beautiful butterflies.'",
+            "audioRegenAt": null,
+            "displayParts": [
+              {
+                "text": "Read this text: 'Butterflies start as tiny eggs, hatch into caterpillars, then form a chrysalis before becoming beautiful butterflies.'",
+                "delay": 0
               }
             ]
           },
           {
-            "sub": "b",
-            "sfxClaps": [
-              {
-                "delay": 1500
-              }
-            ],
-            "audioFile": "audio/lessons/RI.4.10/S3b.mp3",
-            "ttsScript": "They grow your reading muscles.",
-            "audioRegenAt": "2026-05-11T02:31:56.913Z",
+            "sub": "f",
+            "audioFile": "audio/lessons/RI.4.10/S3f.mp3",
+            "ttsScript": "The big fact here is that butterflies go through different stages to grow.",
+            "audioRegenAt": null,
             "displayParts": [
               {
-                "text": "They ",
+                "text": "The big fact here is that butterflies go through different stages to grow.",
                 "delay": 0
-              },
-              {
-                "text": "grow your ",
-                "delay": 300
-              },
-              {
-                "text": "reading muscles.",
-                "delay": 1000
               }
             ],
             "highlightWord": {
-              "word": "muscles",
+              "word": "different stages to grow",
               "delay": 1000
-            },
-            "highlightPills": [
-              {
-                "pill": 1,
-                "delay": 300
-              },
-              {
-                "pill": 2,
-                "delay": 1000
-              }
-            ]
+            }
           }
         ],
-        "heading": "Stretch Books",
+        "heading": "Finding Big Facts",
         "imageFile": "images/lessons/RI.4.10/S3.png",
-        "imagePrompt": "A cheerful cartoon kid stretching to reach a high bookshelf. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters."
+        "imagePrompt": "A cheerful cartoon kid with a magnifying glass looking closely at an open informational book, pointing to a highlighted sentence. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters."
       },
       {
         "type": "tip",
@@ -62119,94 +62080,127 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.4.10/S4a.mp3",
-            "ttsScript": "Here is a helpful trick.",
-            "audioRegenAt": "2026-05-11T02:32:10.832Z",
+            "ttsScript": "Today, we'll learn a trick to find the most important information, called 'big facts,' in what we read.",
+            "audioRegenAt": null,
             "displayParts": [
               {
-                "text": "Here is a helpful ",
+                "text": "Today, we'll learn a trick to find the most important information, called '",
                 "delay": 0
               },
               {
-                "text": "trick.",
-                "delay": 1000
+                "text": "big facts",
+                "delay": 3000
+              },
+              {
+                "text": ",' in what we read.",
+                "delay": 4000
               }
             ],
             "highlightWord": {
-              "word": "trick",
-              "delay": 1000
+              "word": "facts",
+              "delay": 3500
             }
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RI.4.10/S4b.mp3",
-            "ttsScript": "Twenty minutes a day, all year. You will read so many big fact books!",
-            "audioRegenAt": "2026-05-11T02:32:18.153Z",
+            "ttsScript": "First, a big fact tells you the main idea of a paragraph or section.",
+            "audioRegenAt": null,
             "displayParts": [
               {
-                "text": "Twenty minutes a day,",
+                "text": "First, a big fact tells you the main ",
                 "delay": 0
               },
               {
-                "text": " all year.",
-                "delay": 1500
-              },
-              {
-                "text": " You will read so many ",
-                "delay": 3000
-              },
-              {
-                "text": "big fact books!",
-                "delay": 4500
-              }
-            ],
-            "highlightWord": {
-              "word": "books",
-              "delay": 4800
-            },
-            "highlightPills": [
-              {
-                "pill": 0,
-                "delay": 500
-              },
-              {
-                "pill": 1,
+                "text": "idea",
                 "delay": 2000
               },
               {
-                "pill": 3,
-                "delay": 5000
+                "text": " of a paragraph or section.",
+                "delay": 2500
               }
-            ]
+            ],
+            "highlightWord": {
+              "word": "idea",
+              "delay": 2000
+            }
           },
           {
             "sub": "c",
-            "sfxClaps": [
-              {
-                "delay": 2000
-              }
-            ],
             "audioFile": "audio/lessons/RI.4.10/S4c.mp3",
-            "ttsScript": "Now you are ready to read big facts!",
-            "audioRegenAt": "2026-05-11T02:32:25.419Z",
+            "ttsScript": "Next, big facts answer important questions like who, what, where, when, why, or how.",
+            "audioRegenAt": null,
             "displayParts": [
               {
-                "text": "Now you are ready to read ",
+                "text": "Next, big facts answer important ",
                 "delay": 0
               },
               {
-                "text": "big facts!",
-                "delay": 1500
+                "text": "questions",
+                "delay": 3000
+              },
+              {
+                "text": " like who, what, where, when, why, or how.",
+                "delay": 3500
               }
             ],
             "highlightWord": {
-              "word": "facts",
-              "delay": 1800
+              "word": "questions",
+              "delay": 3000
+            }
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RI.4.10/S4d.mp3",
+            "ttsScript": "Finally, smaller details in the text will help explain or prove these big facts.",
+            "audioRegenAt": null,
+            "displayParts": [
+              {
+                "text": "Finally, smaller ",
+                "delay": 0
+              },
+              {
+                "text": "details",
+                "delay": 2000
+              },
+              {
+                "text": " in the text will help explain or prove these big facts.",
+                "delay": 2500
+              }
+            ],
+            "highlightWord": {
+              "word": "details",
+              "delay": 2000
+            }
+          },
+          {
+            "sub": "e",
+            "audioFile": "audio/lessons/RI.4.10/S4e.mp3",
+            "ttsScript": "Spotting big facts helps you understand informational texts much better!",
+            "audioRegenAt": null,
+            "displayParts": [
+              {
+                "text": "Spotting big facts helps you ",
+                "delay": 0
+              },
+              {
+                "text": "understand",
+                "delay": 2000
+              },
+              {
+                "text": " informational texts much better!",
+                "delay": 3000
+              }
+            ],
+            "highlightWord": {
+              "word": "understand",
+              "delay": 2000
             }
           }
         ],
-        "heading": "Daily Reading",
+        "heading": "Finding Big Facts!",
         "imageFile": "images/lessons/RI.4.10/S4.png",
-        "imagePrompt": "A cheerful cartoon clock with a book inside. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters."
+        "imagePrompt": "A cheerful cartoon magnifying glass hovering over an open informational book, highlighting a key sentence. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters."
       },
       {
         "type": "mcq",
@@ -72059,108 +72053,71 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/L.3.1/S3a.mp3",
-            "ttsScript": "Use -ER to compare two things. Tall, taller.",
-            "audioRegenAt": "2026-05-11T02:18:05.677Z",
+            "ttsScript": "Most verbs become past tense by adding 'ed' to the end, like 'walk' becomes 'walked'.",
+            "audioRegenAt": null,
             "displayParts": [
               {
-                "text": "Use ",
+                "text": "Most verbs become past tense by adding 'ed' to the end, like 'walk' becomes 'walked'.",
                 "delay": 0
-              },
-              {
-                "text": "-ER",
-                "delay": 300
-              },
-              {
-                "text": " to compare ",
-                "delay": 600
-              },
-              {
-                "text": "two things.",
-                "delay": 1200
-              },
-              {
-                "text": " Tall, ",
-                "delay": 2000
-              },
-              {
-                "text": "taller.",
-                "delay": 2500
               }
             ],
             "highlightWord": {
-              "word": "-ER",
-              "delay": 300
-            },
-            "highlightPills": [
-              {
-                "pill": 3,
-                "delay": 1200
-              },
-              {
-                "pill": 5,
-                "delay": 2500
-              }
-            ]
+              "word": "walked",
+              "delay": 3000
+            }
           },
           {
             "sub": "b",
-            "sfxClaps": [
-              {
-                "delay": 3200
-              }
-            ],
             "audioFile": "audio/lessons/L.3.1/S3b.mp3",
-            "ttsScript": "Use -EST for three or more. Tall, taller, tallest!",
-            "audioRegenAt": "2026-05-11T02:18:16.728Z",
+            "ttsScript": "But some verbs are tricky and change in a different way.",
+            "audioRegenAt": null,
             "displayParts": [
               {
-                "text": "Use ",
+                "text": "But some verbs are tricky and change in a different way.",
                 "delay": 0
-              },
-              {
-                "text": "-EST",
-                "delay": 300
-              },
-              {
-                "text": " for ",
-                "delay": 600
-              },
-              {
-                "text": "three or more.",
-                "delay": 1200
-              },
-              {
-                "text": " Tall, ",
-                "delay": 2000
-              },
-              {
-                "text": "taller, ",
-                "delay": 2500
-              },
-              {
-                "text": "tallest!",
-                "delay": 3000
               }
             ],
             "highlightWord": {
-              "word": "-EST",
-              "delay": 300
-            },
-            "highlightPills": [
+              "word": "tricky",
+              "delay": 1500
+            }
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/L.3.1/S3c.mp3",
+            "ttsScript": "For example, the past tense of 'go' is not 'goed', it's 'went'.",
+            "audioRegenAt": null,
+            "displayParts": [
               {
-                "pill": 3,
-                "delay": 1200
-              },
-              {
-                "pill": 6,
-                "delay": 3000
+                "text": "For example, the past tense of 'go' is not 'goed', it's 'went'.",
+                "delay": 0
               }
-            ]
+            ],
+            "highlightWord": {
+              "word": "went",
+              "delay": 4000
+            }
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/L.3.1/S3d.mp3",
+            "ttsScript": "And the past tense of 'eat' is not 'eated', it's 'ate'.",
+            "audioRegenAt": null,
+            "displayParts": [
+              {
+                "text": "And the past tense of 'eat' is not 'eated', it's 'ate'.",
+                "delay": 0
+              }
+            ],
+            "highlightWord": {
+              "word": "ate",
+              "delay": 4000
+            }
           }
         ],
-        "heading": "Compare with -ER and -EST",
+        "heading": "Tricky Past Tense Verbs",
         "imageFile": "images/lessons/L.3.1/S3.png",
-        "imagePrompt": "Three cheerful cartoon kids standing in order from short to tall. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters."
+        "imagePrompt": "A cartoon character looking at two different paths, one straight and one winding, representing regular and irregular verbs. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters."
       },
       {
         "type": "tip",
@@ -72411,83 +72368,103 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/L.3.2/S3a.mp3",
-            "ttsScript": "Lists: apples, bananas, and grapes.",
-            "audioRegenAt": "2026-05-08T04:05:56.495Z",
+            "ttsScript": "When someone speaks in a story, we use special marks called quotation marks.",
+            "audioRegenAt": null,
             "displayParts": [
               {
-                "text": "Lists: ",
+                "text": "When someone speaks",
                 "delay": 0
               },
               {
-                "text": "apples",
-                "delay": 500
+                "text": ", we use ",
+                "delay": 1000
               },
               {
-                "text": ", bananas",
-                "delay": 1200
-              },
-              {
-                "text": ", and grapes.",
+                "text": "quotation marks",
                 "delay": 2000
+              },
+              {
+                "text": ".",
+                "delay": 3000
               }
             ],
             "highlightWord": {
-              "word": "Lists",
-              "delay": 300
-            },
-            "highlightPills": [
-              {
-                "pill": 1,
-                "delay": 500
-              },
-              {
-                "pill": 2,
-                "delay": 1200
-              },
-              {
-                "pill": 3,
-                "delay": 2000
-              }
-            ]
+              "word": "quotation marks",
+              "delay": 2000
+            }
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/L.3.2/S3b.mp3",
-            "ttsScript": "Dates: March 5, 2026.",
-            "audioRegenAt": "2026-05-08T04:06:03.408Z",
+            "ttsScript": "When the speaker talks first, a comma goes before their words, like in 'Mom said, Let's go!'",
+            "audioRegenAt": null,
             "displayParts": [
               {
-                "text": "Dates: ",
+                "text": "speaker talks first",
                 "delay": 0
               },
               {
-                "text": "March 5",
-                "delay": 500
+                "text": ", comma goes ",
+                "delay": 1500
               },
               {
-                "text": ", 2026.",
-                "delay": 1200
+                "text": "before their words",
+                "delay": 2500
               }
             ],
             "highlightWord": {
-              "word": "Dates",
-              "delay": 300
-            },
-            "highlightPills": [
+              "word": "comma",
+              "delay": 1500
+            }
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/L.3.2/S3c.mp3",
+            "ttsScript": "When the speaker's words come first, the comma goes inside the quotation marks, like in 'I love ice cream,' said Lily.",
+            "audioRegenAt": null,
+            "displayParts": [
               {
-                "pill": 1,
-                "delay": 500
+                "text": "speaker's words first",
+                "delay": 0
               },
               {
-                "pill": 2,
-                "delay": 1200
+                "text": ", comma goes ",
+                "delay": 1500
+              },
+              {
+                "text": "inside the quotation marks",
+                "delay": 2500
               }
-            ]
+            ],
+            "highlightWord": {
+              "word": "comma",
+              "delay": 1500
+            }
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/L.3.2/S3d.mp3",
+            "ttsScript": "These commas help us read stories and know exactly when someone is speaking.",
+            "audioRegenAt": null,
+            "displayParts": [
+              {
+                "text": "Commas help us read stories",
+                "delay": 0
+              },
+              {
+                "text": " and know when someone is speaking.",
+                "delay": 2000
+              }
+            ],
+            "highlightWord": {
+              "word": "commas",
+              "delay": 0
+            }
           }
         ],
-        "heading": "Commas in Lists and Dates",
+        "heading": "Commas with Quotation Marks",
         "imageFile": "images/lessons/L.3.2/S3.png",
-        "imagePrompt": "A cheerful cartoon list with commas between items. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters."
+        "imagePrompt": "A cheerful cartoon scene where two children are talking, with speech bubbles showing quotation marks and commas correctly placed. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters."
       },
       {
         "type": "tip",
@@ -73263,82 +73240,61 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/L.4.1/S4a.mp3",
-            "ttsScript": "Here is a helpful trick.",
-            "audioRegenAt": "2026-05-08T04:08:07.034Z",
+            "ttsScript": "Today, we will explore grammar rules and special words called pronouns.",
+            "audioRegenAt": null,
             "displayParts": [
               {
-                "text": "Here is a helpful trick.",
+                "text": "Today, we will explore",
                 "delay": 0
+              },
+              {
+                "text": "grammar rules",
+                "delay": 1000
+              },
+              {
+                "text": "and special words called pronouns.",
+                "delay": 2500
               }
             ],
             "highlightWord": {
-              "word": "trick",
-              "delay": 500
+              "word": "pronouns",
+              "delay": 3500
             }
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/L.4.1/S4b.mp3",
-            "ttsScript": "Read aloud. If you run out of breath, it might be a run-on!",
-            "audioRegenAt": "2026-05-08T04:08:13.683Z",
+            "ttsScript": "Knowing these rules helps us speak and write clearly so others can understand our thoughts.",
+            "audioRegenAt": null,
             "displayParts": [
               {
-                "text": "Read aloud.",
+                "text": "Knowing these rules helps us speak and write clearly",
                 "delay": 0
               },
               {
-                "text": " If you run out of breath,",
-                "delay": 1500
-              },
-              {
-                "text": " it might be a run-on!",
-                "delay": 3500
+                "text": "so others can understand our thoughts.",
+                "delay": 3000
               }
             ],
             "highlightWord": {
-              "word": "run-on",
-              "delay": 4000
-            },
-            "highlightPills": [
-              {
-                "pill": 2,
-                "delay": 3500
-              }
-            ]
+              "word": "clearly",
+              "delay": 1000
+            }
           },
           {
             "sub": "c",
-            "sfxClaps": [
-              {
-                "delay": 2500
-              }
-            ],
             "audioFile": "audio/lessons/L.4.1/S4c.mp3",
-            "ttsScript": "Now you are ready for pronouns and grammar rules!",
-            "audioRegenAt": "2026-05-08T04:08:19.376Z",
-            "displayParts": [
-              {
-                "text": "Now you are ready for",
-                "delay": 0
-              },
-              {
-                "text": " pronouns",
-                "delay": 1000
-              },
-              {
-                "text": " and grammar rules!",
-                "delay": 2000
-              }
-            ],
+            "ttsScript": "Let's get ready to become grammar champions!",
+            "audioRegenAt": null,
             "highlightWord": {
-              "word": "pronouns",
-              "delay": 1000
+              "word": "champions",
+              "delay": 2000
             }
           }
         ],
-        "heading": "Read It Aloud",
+        "heading": "Grammar Power!",
         "imageFile": "images/lessons/L.4.1/S4.png",
-        "imagePrompt": "A cheerful cartoon kid reading their own sentence out loud. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters."
+        "imagePrompt": "A cheerful cartoon kid looking excited and confident, holding a book with a 'G' on it, surrounded by sparkling grammar symbols like commas and periods. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters."
       },
       {
         "type": "mcq",
@@ -74518,94 +74474,99 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RL.K.10/S4a.mp3",
-            "ttsScript": "Here is a helpful trick.",
-            "audioRegenAt": "2026-05-08T04:10:04.549Z",
+            "ttsScript": "After we read a story together, it's fun to talk about it!",
+            "audioRegenAt": null,
             "displayParts": [
               {
-                "text": "Here is a helpful ",
+                "text": "After we read a story together, it's fun to ",
                 "delay": 0
               },
               {
-                "text": "trick.",
-                "delay": 1000
+                "text": "talk about it!",
+                "delay": 1500
               }
             ],
             "highlightWord": {
-              "word": "trick",
-              "delay": 1000
+              "word": "talk",
+              "delay": 1500
             }
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.K.10/S4b.mp3",
-            "ttsScript": "Pick a cozy spot just for reading. Curl up there every day.",
-            "audioRegenAt": "2026-05-08T04:10:10.627Z",
+            "ttsScript": "You can ask your friend: What was your favorite part of the story and why?",
+            "audioRegenAt": null,
             "displayParts": [
               {
-                "text": "Pick a ",
+                "text": "You can ask your friend: What was your ",
                 "delay": 0
               },
               {
-                "text": "cozy spot",
-                "delay": 800
-              },
-              {
-                "text": " just for reading.",
-                "delay": 2000
-              },
-              {
-                "text": " Curl up there every day.",
-                "delay": 3500
-              }
-            ],
-            "highlightWord": {
-              "word": "cozy",
-              "delay": 800
-            },
-            "highlightPills": [
-              {
-                "pill": 1,
-                "delay": 800
-              },
-              {
-                "pill": 3,
-                "delay": 3500
-              }
-            ]
-          },
-          {
-            "sub": "c",
-            "sfxClaps": [
-              {
-                "delay": 3000
-              }
-            ],
-            "audioFile": "audio/lessons/RL.K.10/S4c.mp3",
-            "ttsScript": "Now you are ready to enjoy stories all year long!",
-            "audioRegenAt": "2026-05-08T04:10:16.569Z",
-            "displayParts": [
-              {
-                "text": "Now you are ready to ",
-                "delay": 0
-              },
-              {
-                "text": "enjoy stories",
+                "text": "favorite part",
                 "delay": 1000
               },
               {
-                "text": " all year long!",
+                "text": " of the story and why?",
+                "delay": 2000
+              }
+            ],
+            "highlightWord": {
+              "word": "favorite",
+              "delay": 1000
+            }
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.K.10/S4c.mp3",
+            "ttsScript": "Sharing your ideas helps everyone understand the story even better.",
+            "audioRegenAt": null,
+            "displayParts": [
+              {
+                "text": "Sharing your ideas helps everyone ",
+                "delay": 0
+              },
+              {
+                "text": "understand",
+                "delay": 1500
+              },
+              {
+                "text": " the story even better.",
                 "delay": 2500
               }
             ],
             "highlightWord": {
-              "word": "stories",
-              "delay": 1000
+              "word": "understand",
+              "delay": 1500
+            }
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RL.K.10/S4d.mp3",
+            "ttsScript": "Talking about stories is a great way to learn and have fun with friends!",
+            "audioRegenAt": null,
+            "displayParts": [
+              {
+                "text": "Talking about stories is a great way to learn and have ",
+                "delay": 0
+              },
+              {
+                "text": "fun",
+                "delay": 2000
+              },
+              {
+                "text": " with friends!",
+                "delay": 2500
+              }
+            ],
+            "highlightWord": {
+              "word": "fun",
+              "delay": 2000
             }
           }
         ],
-        "heading": "Make a Reading Spot",
+        "heading": "Talk About Our Story!",
         "imageFile": "images/lessons/RL.K.10/S4.png",
-        "imagePrompt": "A cheerful cartoon cozy reading nook with pillows, a soft blanket, and a small lamp glowing warmly. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters."
+        "imagePrompt": "Two cheerful cartoon kindergarten children, a boy and a girl, sitting together and happily discussing a storybook they just read. They are looking at each other and gesturing. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters."
       },
       {
         "type": "mcq",
