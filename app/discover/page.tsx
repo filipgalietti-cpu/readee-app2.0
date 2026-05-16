@@ -2,6 +2,7 @@ import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { Sparkles } from "lucide-react";
 import { listCategories } from "@/lib/discover/categories";
+import DiscoveryTile from "./_components/DiscoveryTile";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 1800;
@@ -43,19 +44,17 @@ export default async function DiscoverIndexPage() {
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-violet-50 via-white to-indigo-50">
+    <main className="min-h-screen bg-white">
       <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6">
-        <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-violet-600">
+        <div className="inline-flex items-center gap-1.5 rounded-full bg-violet-100 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-violet-700">
           <Sparkles className="h-3 w-3" />
-          Readee Discover
+          Discover
         </div>
-        <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-zinc-900 sm:text-5xl">
-          Read something new today.
+        <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-zinc-900 sm:text-5xl">
+          What sounds <span className="text-violet-600">good</span> today?
         </h1>
-        <p className="mt-3 max-w-2xl text-zinc-600">
-          Fresh, fact-checked, kid-friendly reading passages — built every day
-          for K-4 students. Every piece is grade-level checked, every fact
-          grounded against Wikipedia, every question pedagogically reviewed.
+        <p className="mt-3 max-w-xl text-lg leading-relaxed text-zinc-600">
+          Pick a topic. We'll bring you something fresh to read, every day.
         </p>
 
         <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -67,12 +66,8 @@ export default async function DiscoverIndexPage() {
                 href={`/discover/${cat.slug}`}
                 className="group relative overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-sm transition hover:-translate-y-1 hover:border-violet-300 hover:shadow-xl"
               >
-                <div className="aspect-square w-full overflow-hidden bg-zinc-50">
-                  <img
-                    src={cat.tileImageUrl}
-                    alt={cat.label}
-                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                  />
+                <div className="aspect-square w-full overflow-hidden bg-zinc-50 transition duration-500 group-hover:scale-105">
+                  <DiscoveryTile category={cat.slug} />
                 </div>
                 <div className="p-5">
                   <h2 className="text-xl font-bold text-zinc-900">
@@ -120,7 +115,7 @@ export default async function DiscoverIndexPage() {
                         className="h-14 w-14 flex-shrink-0 rounded-xl object-cover"
                       />
                     ) : (
-                      <div className="h-14 w-14 flex-shrink-0 rounded-xl bg-gradient-to-br from-violet-100 to-indigo-100" />
+                      <div className="h-14 w-14 flex-shrink-0 rounded-xl bg-gradient-to-br from-violet-100 to-violet-100" />
                     )}
                     <div className="min-w-0">
                       <div className="text-[10px] font-bold uppercase tracking-widest text-violet-600">
@@ -137,7 +132,7 @@ export default async function DiscoverIndexPage() {
           </section>
         )}
 
-        <div className="mt-12 rounded-3xl border border-indigo-200 bg-white p-6 text-center shadow-sm">
+        <div className="mt-12 rounded-3xl border border-violet-200 bg-white p-6 text-center shadow-sm">
           <h2 className="text-lg font-bold text-zinc-900">
             {isSignedIn
               ? "Pick up where your reader left off."

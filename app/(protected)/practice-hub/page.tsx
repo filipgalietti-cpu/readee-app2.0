@@ -227,7 +227,7 @@ const KID_NAMES: Record<string, { name: string; desc: string }> = {
 };
 
 const DOMAIN_META: Record<string, { Icon: typeof BookOpen; color: string; bg: string }> = {
-  "Reading Literature": { Icon: BookOpen, color: "text-indigo-600", bg: "bg-indigo-50" },
+  "Reading Literature": { Icon: BookOpen, color: "text-violet-600", bg: "bg-violet-50" },
   "Reading Informational Text": { Icon: Newspaper, color: "text-violet-600", bg: "bg-violet-50" },
   "Foundational Skills": { Icon: Type, color: "text-amber-600", bg: "bg-amber-50" },
   "Language": { Icon: MessageCircle, color: "text-emerald-600", bg: "bg-emerald-50" },
@@ -372,7 +372,7 @@ function PracticeHubContent() {
         <p className="text-sm text-zinc-500">{loadError}</p>
         <Link
           href="/dashboard"
-          className="inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-6 py-3 text-sm font-bold text-white hover:bg-indigo-700"
+          className="inline-flex items-center gap-2 rounded-xl bg-violet-600 px-6 py-3 text-sm font-bold text-white hover:bg-violet-700"
         >
           Back to dashboard
         </Link>
@@ -436,14 +436,15 @@ function PracticeHubContent() {
   };
 
   return (
-    <div className="max-w-2xl mx-auto py-6 px-4 space-y-4">
+    <div className="mx-auto max-w-6xl space-y-6 px-4 py-6 sm:px-6">
       {/* Kid-forward hero — bunny mascot + greeting, matches the
           dashboard's vibe so /practice-hub feels like the same world
-          rather than a tools page. */}
+          rather than a tools page. Full width as a banner on every
+          viewport. */}
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
-        className="rounded-3xl bg-gradient-to-br from-indigo-50 via-violet-50 to-fuchsia-50 dark:from-indigo-950/30 dark:via-violet-950/30 dark:to-fuchsia-950/30 p-5 sm:p-6 flex items-center gap-4 sm:gap-5"
+        className="rounded-3xl bg-gradient-to-br from-violet-50 via-violet-50 to-fuchsia-50 dark:from-indigo-950/30 dark:via-violet-950/30 dark:to-fuchsia-950/30 p-5 sm:p-6 flex items-center gap-4 sm:gap-5"
       >
         <div className="relative flex h-20 w-20 sm:h-24 sm:w-24 flex-shrink-0 items-center justify-center rounded-2xl bg-white/70 dark:bg-slate-800/70 shadow-sm">
           <Image
@@ -456,7 +457,7 @@ function PracticeHubContent() {
           />
         </div>
         <div className="flex-1 min-w-0">
-          <div className="text-[11px] font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-300">
+          <div className="text-[11px] font-bold uppercase tracking-widest text-violet-600 dark:text-violet-300">
             Practice Time
           </div>
           <h1 className="mt-0.5 text-2xl sm:text-3xl font-extrabold text-zinc-900 dark:text-slate-100 leading-tight">
@@ -468,34 +469,46 @@ function PracticeHubContent() {
         </div>
       </motion.div>
 
-      {/* Smart search — Readee+ semantic search across canon lessons,
-          practice questions, and decodable stories. Hits route the kid
-          straight into /learn, /practice, or /stories with the resolved
-          child param attached, so clicks never dead-end. */}
-      <ProductSearchBar isPremium={plan === "premium"} childId={child.id} />
+      {/* Two-column layout on lg+: grade list on the left, the
+          discovery/shortcuts column (search + random + community) on
+          the right. On mobile everything stacks single-column —
+          discovery first, grades below — matching the prior order. */}
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+        {/* Right sidebar (rendered first on mobile via order, second
+            on lg via order). On lg it's sticky so it stays visible as
+            the kid scrolls grades. */}
+        <aside className="space-y-4 lg:order-2 lg:col-span-1 lg:sticky lg:top-6 lg:self-start">
+          {/* Smart search — Readee+ semantic search across canon lessons,
+              practice questions, and decodable stories. Hits route the
+              kid straight into /learn, /practice, or /stories with the
+              resolved child param attached, so clicks never dead-end. */}
+          <ProductSearchBar isPremium={plan === "premium"} childId={child.id} />
 
-      {/* Random */}
-      <motion.button
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.05 }}
-        onClick={handleRandom}
-        className="w-full flex items-center gap-4 px-5 py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white hover:from-indigo-700 hover:to-violet-600 transition-all shadow-md hover:shadow-lg active:scale-[0.98]"
-      >
-        <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center flex-shrink-0">
-          <Shuffle className="w-5 h-5 text-white" />
-        </div>
-        <div className="flex-1 text-left">
-          <p className="text-sm font-bold text-white">Random Practice</p>
-          <p className="text-xs text-white/70">Surprise me with any topic</p>
-        </div>
-        <ChevronRight className="w-5 h-5 text-white/60 flex-shrink-0" />
-      </motion.button>
+          {/* Random */}
+          <motion.button
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.05 }}
+            onClick={handleRandom}
+            className="w-full flex items-center gap-4 px-5 py-4 rounded-2xl bg-gradient-to-r from-violet-600 to-violet-500 text-white hover:from-violet-700 hover:to-violet-600 transition-all shadow-md hover:shadow-lg active:scale-[0.98]"
+          >
+            <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center flex-shrink-0">
+              <Shuffle className="w-5 h-5 text-white" />
+            </div>
+            <div className="flex-1 text-left">
+              <p className="text-sm font-bold text-white">Random Practice</p>
+              <p className="text-xs text-white/70">Surprise me with any topic</p>
+            </div>
+            <ChevronRight className="w-5 h-5 text-white/60 flex-shrink-0" />
+          </motion.button>
 
-      {/* Community top picks — auto-curated by reads. Quietly hides
-          when there are no approved community submissions yet. */}
-      <TopCommunityPicks />
+          {/* Community top picks — auto-curated by reads. Quietly hides
+              when there are no approved community submissions yet. */}
+          <TopCommunityPicks />
+        </aside>
 
+        {/* Main column — grade picker accordions. */}
+        <div className="space-y-4 lg:order-1 lg:col-span-2">
       {/* Grade → Domain → Topics */}
       {allGrades.map((grade, gIdx) => {
         const gradeOpen = openGrades.has(grade.gradeKey);
@@ -517,12 +530,12 @@ function PracticeHubContent() {
               onClick={() => toggleGrade(grade.gradeKey)}
               className={`w-full text-left px-5 py-4 flex items-center gap-4 transition-colors ${
                 gradeOpen
-                  ? "bg-gradient-to-r from-indigo-600 to-violet-500"
-                  : "hover:bg-indigo-50/40 dark:hover:bg-indigo-950/20"
+                  ? "bg-gradient-to-r from-violet-600 to-violet-500"
+                  : "hover:bg-violet-50/40 dark:hover:bg-indigo-950/20"
               }`}
             >
               <div className={`w-12 h-12 rounded-2xl overflow-hidden flex-shrink-0 ring-2 transition ${
-                gradeOpen ? "ring-white/40" : "ring-indigo-100 dark:ring-slate-700"
+                gradeOpen ? "ring-white/40" : "ring-violet-100 dark:ring-slate-700"
               }`}>
                 <Image
                   src={GRADE_BADGES[grade.gradeKey] || ""}
@@ -541,7 +554,7 @@ function PracticeHubContent() {
                 </p>
               </div>
               <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${
-                gradeOpen ? "text-white/70 rotate-180" : "text-indigo-400 dark:text-indigo-400/60"
+                gradeOpen ? "text-white/70 rotate-180" : "text-violet-400 dark:text-violet-400/60"
               }`} />
             </button>
 
@@ -567,7 +580,7 @@ function PracticeHubContent() {
                           <button
                             onClick={() => toggleDomain(domainKey)}
                             className={`w-full px-4 py-3 flex items-center gap-3 rounded-xl transition-colors ${
-                              domOpen ? "bg-indigo-50" : "hover:bg-zinc-50"
+                              domOpen ? "bg-violet-50" : "hover:bg-zinc-50"
                             }`}
                           >
                             <DIcon className={`w-4 h-4 flex-shrink-0 ${meta.color}`} strokeWidth={1.5} />
@@ -604,12 +617,12 @@ function PracticeHubContent() {
                                           className="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-zinc-50 transition-colors group"
                                         >
                                           <div className="flex-1 min-w-0">
-                                            <p className="text-sm font-semibold text-zinc-800 group-hover:text-indigo-700 transition-colors">
+                                            <p className="text-sm font-semibold text-zinc-800 group-hover:text-violet-700 transition-colors">
                                               {name} <span className="font-normal text-zinc-400">— {desc}</span>
                                             </p>
                                             <p className="text-[10px] text-zinc-400 mt-0.5">{std.standard_id} &middot; {qCount} questions</p>
                                           </div>
-                                          <ChevronRight className="w-4 h-4 text-zinc-300 group-hover:text-indigo-400 flex-shrink-0 transition-colors" />
+                                          <ChevronRight className="w-4 h-4 text-zinc-300 group-hover:text-violet-400 flex-shrink-0 transition-colors" />
                                         </Link>
                                       </motion.div>
                                     );
@@ -628,6 +641,8 @@ function PracticeHubContent() {
           </motion.div>
         );
       })}
+        </div>
+      </div>
     </div>
   );
 }

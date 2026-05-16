@@ -83,12 +83,12 @@ export default async function DiscoveryDetailPage({
   const isSignedIn = !!authData?.user;
 
   return (
-    <article className="min-h-screen bg-gradient-to-br from-violet-50 via-white to-indigo-50">
+    <article className="min-h-screen bg-white">
       <div className="mx-auto max-w-2xl px-4 py-10 sm:px-6">
         <div className="flex items-center gap-3">
           <Link
             href="/discover"
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-500 hover:text-indigo-600"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-500 hover:text-violet-600"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
             Discover
@@ -98,7 +98,7 @@ export default async function DiscoveryDetailPage({
               <span className="text-zinc-300">·</span>
               <Link
                 href={`/discover/${a.category}`}
-                className="text-xs font-semibold text-zinc-500 hover:text-indigo-600"
+                className="text-xs font-semibold text-zinc-500 hover:text-violet-600"
               >
                 {cat.label}
               </Link>
@@ -162,7 +162,7 @@ export default async function DiscoveryDetailPage({
           extras={extras}
         />
 
-        <div className="mt-12 rounded-3xl border border-indigo-200 bg-white p-6 text-center shadow-sm">
+        <div className="mt-12 rounded-3xl border border-violet-200 bg-white p-6 text-center shadow-sm">
           <h2 className="text-lg font-bold text-zinc-900">
             {isSignedIn ? "Keep your reader going" : "Want more like this?"}
           </h2>

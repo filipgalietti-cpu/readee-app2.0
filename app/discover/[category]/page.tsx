@@ -53,11 +53,11 @@ export default async function DiscoverCategoryPage({
   const items = (data ?? []) as ListItem[];
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-violet-50 via-white to-indigo-50">
+    <main className="min-h-screen bg-white">
       <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6">
         <Link
           href="/discover"
-          className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-500 hover:text-indigo-600"
+          className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-500 hover:text-violet-600"
         >
           <ArrowLeft className="h-3.5 w-3.5" />
           All categories
