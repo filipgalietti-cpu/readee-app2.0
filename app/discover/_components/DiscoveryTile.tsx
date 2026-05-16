@@ -1,3 +1,5 @@
+import type { ReactElement } from "react";
+
 /**
  * Discovery category tile — animated SVG per category. Sourced from
  * a Claude Design handoff bundle (readee-discover-tiles, May 2026).
@@ -345,7 +347,7 @@ function MathTile() {
   );
 }
 
-const TILES: Record<DiscoveryCategory, () => JSX.Element> = {
+const TILES: Record<DiscoveryCategory, () => ReactElement> = {
   science: ScienceTile,
   history: HistoryTile,
   nature: NatureTile,
