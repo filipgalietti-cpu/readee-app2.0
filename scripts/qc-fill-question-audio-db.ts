@@ -56,11 +56,19 @@ const DRY = args.includes("--dry-run");
 
 const TTS_SAMPLE_RATE = 24000;
 
+// The DB stores grade in mixed conventions — K canon uses "K", G1+
+// often store the bare numeric "1"/"2"/"3"/"4" per master_manifest.
+// Map both shapes to canonical storage folders.
 const GRADE_FOLDER: Record<string, string> = {
   K: "kindergarten",
+  Kindergarten: "kindergarten",
+  "1": "1st-grade",
   "1st": "1st-grade",
+  "2": "2nd-grade",
   "2nd": "2nd-grade",
+  "3": "3rd-grade",
   "3rd": "3rd-grade",
+  "4": "4th-grade",
   "4th": "4th-grade",
 };
 
