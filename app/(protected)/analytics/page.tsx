@@ -408,7 +408,7 @@ function AnalyticsDashboard({ child }: { child: Child }) {
         </motion.div>
 
         <motion.div variants={slideUp} className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-8 shadow-sm">
-          <Rocket className="w-12 h-12 text-indigo-500 mx-auto mb-4" strokeWidth={1.5} />
+          <Rocket className="w-12 h-12 text-violet-500 mx-auto mb-4" strokeWidth={1.5} />
           <h2 className="text-lg font-bold text-zinc-900 dark:text-slate-100 mb-2">
             Ready to get started?
           </h2>
@@ -417,14 +417,14 @@ function AnalyticsDashboard({ child }: { child: Child }) {
           </p>
           <Link
             href={`/practice?child=${child.id}`}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white font-bold text-sm hover:from-indigo-700 hover:to-violet-600 transition-all shadow-md hover:shadow-lg hover:scale-105"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-violet-600 to-violet-500 text-white font-bold text-sm hover:from-violet-700 hover:to-violet-600 transition-all shadow-md hover:shadow-lg hover:scale-105"
           >
             Start Practice →
           </Link>
         </motion.div>
 
         <motion.div variants={fadeUp} className="mt-6">
-          <Link href="/dashboard" className="text-sm text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 font-medium">
+          <Link href="/dashboard" className="text-sm text-violet-600 hover:text-violet-700 dark:text-violet-400 font-medium">
             &larr; Back to Dashboard
           </Link>
         </motion.div>
@@ -437,7 +437,7 @@ function AnalyticsDashboard({ child }: { child: Child }) {
       {/* ═══ Section 1 — Header ═══ */}
       <motion.div variants={slideUp} className="pt-6 mb-6">
         <div className="flex items-center gap-4 mb-4">
-          <div className="w-14 h-14 rounded-2xl bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center flex-shrink-0 overflow-hidden">
+          <div className="w-14 h-14 rounded-2xl bg-violet-100 dark:bg-violet-900/50 flex items-center justify-center flex-shrink-0 overflow-hidden">
             <img src={avatarSrc} alt={child.first_name} className="w-full h-full object-cover" draggable={false} />
           </div>
           <div className="flex-1 min-w-0">
@@ -448,7 +448,7 @@ function AnalyticsDashboard({ child }: { child: Child }) {
               {displayGrade(child.grade)} {child.reading_level ? `· ${child.reading_level}` : ""}
             </p>
           </div>
-          <Link href="/dashboard" className="text-sm text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 font-medium flex-shrink-0">
+          <Link href="/dashboard" className="text-sm text-violet-600 hover:text-violet-700 dark:text-violet-400 font-medium flex-shrink-0">
             &larr; Dashboard
           </Link>
         </div>
@@ -465,7 +465,7 @@ function AnalyticsDashboard({ child }: { child: Child }) {
               onClick={() => setDateRange(key)}
               className={`flex-1 py-2 px-3 rounded-lg text-sm font-medium transition-all ${
                 dateRange === key
-                  ? "bg-white dark:bg-slate-700 text-indigo-700 dark:text-indigo-300 shadow-sm"
+                  ? "bg-white dark:bg-slate-700 text-violet-700 dark:text-violet-300 shadow-sm"
                   : "text-zinc-500 dark:text-slate-400 hover:text-zinc-700 dark:hover:text-slate-300"
               }`}
             >
@@ -477,9 +477,9 @@ function AnalyticsDashboard({ child }: { child: Child }) {
 
       {/* ═══ Section 2 — Key Stats ═══ */}
       <motion.div variants={slideUp} className="grid grid-cols-3 gap-3 mb-6">
-        <StatCard label="Questions Answered" value={totals.attempted} icon={<FileText className="w-5 h-5 text-indigo-500" strokeWidth={1.5} />} />
+        <StatCard label="Questions Answered" value={totals.attempted} icon={<FileText className="w-5 h-5 text-violet-500" strokeWidth={1.5} />} />
         <AccuracyCard accuracy={totals.accuracy} />
-        <StatCard label="Practice Sessions" value={totals.sessions} icon={<Target className="w-5 h-5 text-indigo-500" strokeWidth={1.5} />} />
+        <StatCard label="Practice Sessions" value={totals.sessions} icon={<Target className="w-5 h-5 text-violet-500" strokeWidth={1.5} />} />
       </motion.div>
 
       {/* ═══ Premium Analytics Gate ═══ */}
@@ -494,7 +494,7 @@ function AnalyticsDashboard({ child }: { child: Child }) {
               </h2>
               <div className="h-[180px] flex items-end gap-2 px-4">
                 {[40, 55, 48, 65, 72, 60, 80, 75, 85, 78].map((h, i) => (
-                  <div key={i} className="flex-1 bg-gradient-to-t from-indigo-500 to-violet-400 rounded-t-md" style={{ height: `${h}%` }} />
+                  <div key={i} className="flex-1 bg-gradient-to-t from-violet-500 to-violet-400 rounded-t-md" style={{ height: `${h}%` }} />
                 ))}
               </div>
             </div>
@@ -533,7 +533,7 @@ function AnalyticsDashboard({ child }: { child: Child }) {
               <div className="space-y-3">
                 {[60, 45, 75, 30].map((w, i) => (
                   <div key={i} className="h-2.5 bg-zinc-100 dark:bg-slate-700 rounded-full overflow-hidden">
-                    <div className="h-full bg-indigo-400 rounded-full" style={{ width: `${w}%` }} />
+                    <div className="h-full bg-violet-400 rounded-full" style={{ width: `${w}%` }} />
                   </div>
                 ))}
               </div>
@@ -543,7 +543,7 @@ function AnalyticsDashboard({ child }: { child: Child }) {
           {/* Upgrade overlay */}
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-center px-6 py-8 max-w-sm">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-violet-100 to-indigo-100 dark:from-violet-900/40 dark:to-indigo-900/40 mx-auto mb-4 flex items-center justify-center shadow-sm">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-violet-100 to-violet-100 dark:from-violet-900/40 dark:to-violet-900/40 mx-auto mb-4 flex items-center justify-center shadow-sm">
                 <BarChart3 className="w-8 h-8 text-violet-600 dark:text-violet-400" strokeWidth={1.5} />
               </div>
               <h2 className="text-xl font-extrabold text-zinc-900 dark:text-slate-100 mb-2">
@@ -554,7 +554,7 @@ function AnalyticsDashboard({ child }: { child: Child }) {
               </p>
               <Link
                 href="/upgrade"
-                className="relative inline-flex items-center gap-2 px-7 py-3 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-bold text-sm hover:from-violet-700 hover:to-indigo-700 transition-all shadow-lg hover:shadow-xl hover:scale-105 overflow-hidden group"
+                className="relative inline-flex items-center gap-2 px-7 py-3 rounded-xl bg-gradient-to-r from-violet-600 to-violet-600 text-white font-bold text-sm hover:from-violet-700 hover:to-violet-700 transition-all shadow-lg hover:shadow-xl hover:scale-105 overflow-hidden group"
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
                 <Star className="relative w-4 h-4" strokeWidth={1.5} />
@@ -574,7 +574,7 @@ function AnalyticsDashboard({ child }: { child: Child }) {
               <AccuracyChart data={chartData} />
             ) : (
               <div className="text-center py-8">
-                <TrendingUp className="w-8 h-8 text-indigo-500 mx-auto mb-2" strokeWidth={1.5} />
+                <TrendingUp className="w-8 h-8 text-violet-500 mx-auto mb-2" strokeWidth={1.5} />
                 <p className="text-sm text-zinc-500 dark:text-slate-400">
                   Complete a few more sessions to see your progress trend!
                 </p>
@@ -632,7 +632,7 @@ function AnalyticsDashboard({ child }: { child: Child }) {
                         </div>
                         <Link
                           href={`/practice?child=${child.id}&standard=${d.worstSkill.standard_id}`}
-                          className="text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 flex-shrink-0 pt-0.5"
+                          className="text-xs font-bold text-violet-600 dark:text-violet-400 hover:text-violet-700 dark:hover:text-violet-300 flex-shrink-0 pt-0.5"
                         >
                           Practice →
                         </Link>
@@ -654,7 +654,7 @@ function AnalyticsDashboard({ child }: { child: Child }) {
             {/* Overall bar */}
             <div className="h-3 bg-zinc-100 dark:bg-slate-700 rounded-full overflow-hidden mb-5">
               <motion.div
-                className="h-full rounded-full bg-gradient-to-r from-indigo-500 to-violet-500"
+                className="h-full rounded-full bg-gradient-to-r from-violet-500 to-violet-500"
                 initial={{ width: 0 }}
                 animate={{ width: `${overallProgressPct}%` }}
                 transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
@@ -941,7 +941,7 @@ function AccuracyChart({ data }: { data: { label: string; accuracy: number; atte
               {/* X-axis label */}
               <text
                 x={pt.x} y={PAD_T + chartH + 18} textAnchor="middle"
-                className={isHovered ? "fill-indigo-600" : "fill-zinc-400 dark:fill-slate-500"}
+                className={isHovered ? "fill-violet-600" : "fill-zinc-400 dark:fill-slate-500"}
                 fontSize="10" fontWeight={isHovered ? "bold" : "normal"}
               >
                 {meta.label}
@@ -955,7 +955,7 @@ function AccuracyChart({ data }: { data: { label: string; accuracy: number; atte
                         x={pt.x - 52} y={pt.y - 48} width="104" height="38" rx="8"
                         fill="white" stroke="#e5e7eb" strokeWidth="1" filter="url(#tooltipShadow)"
                       />
-                      <text x={pt.x} y={pt.y - 30} textAnchor="middle" className="fill-indigo-700" fontSize="13" fontWeight="bold">
+                      <text x={pt.x} y={pt.y - 30} textAnchor="middle" className="fill-violet-700" fontSize="13" fontWeight="bold">
                         {acc}%
                       </text>
                       <text x={pt.x} y={pt.y - 17} textAnchor="middle" className="fill-zinc-400" fontSize="9">
@@ -964,7 +964,7 @@ function AccuracyChart({ data }: { data: { label: string; accuracy: number; atte
                     </>
                   )}
                   {!isHovered && isEndpoint && (
-                    <text x={pt.x} y={pt.y - 10} textAnchor="middle" className="fill-indigo-600" fontSize="10" fontWeight="bold">
+                    <text x={pt.x} y={pt.y - 10} textAnchor="middle" className="fill-violet-600" fontSize="10" fontWeight="bold">
                       {acc}%
                     </text>
                   )}

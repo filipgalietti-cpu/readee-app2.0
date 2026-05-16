@@ -146,7 +146,7 @@ function getGreeting(): { text: string; icon: ReactNode } {
   const h = new Date().getHours();
   if (h < 12) return { text: "Good morning", icon: <Sun className="w-8 h-8 text-amber-400" strokeWidth={1.5} /> };
   if (h < 17) return { text: "Good afternoon", icon: <CloudSun className="w-8 h-8 text-amber-400" strokeWidth={1.5} /> };
-  return { text: "Good evening", icon: <Moon className="w-8 h-8 text-indigo-400" strokeWidth={1.5} /> };
+  return { text: "Good evening", icon: <Moon className="w-8 h-8 text-violet-400" strokeWidth={1.5} /> };
 }
 
 function DashboardBackdrop({ src }: { src: string }) {
@@ -290,7 +290,7 @@ export default function Dashboard() {
         <button
           type="button"
           onClick={() => window.location.reload()}
-          className="mt-6 inline-flex h-11 items-center gap-2 rounded-full bg-indigo-600 px-5 text-sm font-bold text-white shadow-sm transition hover:bg-indigo-700"
+          className="mt-6 inline-flex h-11 items-center gap-2 rounded-full bg-violet-600 px-5 text-sm font-bold text-white shadow-sm transition hover:bg-violet-700"
         >
           Refresh
         </button>
@@ -537,7 +537,7 @@ function AddChildrenForm({
               placeholder="e.g. Lily"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full rounded-xl border border-zinc-200 bg-white px-3 py-2.5 text-sm text-zinc-900 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100"
+              className="w-full rounded-xl border border-zinc-200 bg-white px-3 py-2.5 text-sm text-zinc-900 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-violet-500 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100"
             />
           </div>
           <div className="space-y-2 rounded-2xl border border-zinc-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-800">
@@ -547,7 +547,7 @@ function AddChildrenForm({
             <select
               value={grade}
               onChange={(e) => setGrade(e.target.value)}
-              className="w-full rounded-xl border border-zinc-200 bg-white px-3 py-2.5 text-sm text-zinc-700 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-200"
+              className="w-full rounded-xl border border-zinc-200 bg-white px-3 py-2.5 text-sm text-zinc-700 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-violet-500 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-200"
             >
               <option value="">Select grade</option>
               {GRADES.map((g) => (
@@ -564,7 +564,7 @@ function AddChildrenForm({
         <button
           onClick={() => setStep("pfp")}
           disabled={!canAdvanceFromInfo}
-          className="w-full rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 py-4 text-lg font-bold text-white shadow-lg transition-all hover:from-indigo-700 hover:to-violet-600 disabled:cursor-not-allowed disabled:opacity-50"
+          className="w-full rounded-2xl bg-gradient-to-r from-violet-600 to-violet-500 py-4 text-lg font-bold text-white shadow-lg transition-all hover:from-violet-700 hover:to-violet-600 disabled:cursor-not-allowed disabled:opacity-50"
         >
           Continue
         </button>
@@ -615,14 +615,14 @@ function AddChildrenForm({
         <div className="flex items-center gap-3">
           <button
             onClick={() => setStep("info")}
-            className="rounded-2xl border border-zinc-200 px-4 py-4 text-sm font-bold text-zinc-700 transition hover:border-indigo-300 hover:text-indigo-700 dark:border-slate-700 dark:text-slate-300"
+            className="rounded-2xl border border-zinc-200 px-4 py-4 text-sm font-bold text-zinc-700 transition hover:border-violet-300 hover:text-violet-700 dark:border-slate-700 dark:text-slate-300"
           >
             Back
           </button>
           <button
             onClick={handleCreateChild}
             disabled={saving}
-            className="flex-1 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 py-4 text-lg font-bold text-white shadow-lg transition-all hover:from-indigo-700 hover:to-violet-600 disabled:cursor-not-allowed disabled:opacity-50"
+            className="flex-1 rounded-2xl bg-gradient-to-r from-violet-600 to-violet-500 py-4 text-lg font-bold text-white shadow-lg transition-all hover:from-violet-700 hover:to-violet-600 disabled:cursor-not-allowed disabled:opacity-50"
           >
             {saving ? "Saving…" : `Looks great, ${name || "let's go"}!`}
           </button>
@@ -654,7 +654,7 @@ function AddChildrenForm({
 
       <button
         onClick={handleHandoff}
-        className="w-full rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 py-4 text-lg font-bold text-white shadow-lg transition-all hover:from-indigo-700 hover:to-violet-600"
+        className="w-full rounded-2xl bg-gradient-to-r from-violet-600 to-violet-500 py-4 text-lg font-bold text-white shadow-lg transition-all hover:from-violet-700 hover:to-violet-600"
       >
         I&apos;m ready, start the check →
       </button>
@@ -687,14 +687,14 @@ function ChildSelector({
             className="group text-left w-full"
             variants={slideUp}
           >
-            <div className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 hover:border-indigo-300 dark:hover:border-indigo-700 hover:shadow-md transition-all duration-200 space-y-4">
+            <div className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 hover:border-violet-300 dark:hover:border-violet-700 hover:shadow-md transition-all duration-200 space-y-4">
               <button
                 type="button"
                 onClick={() => onSelect(child)}
                 className="w-full text-left"
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-xl bg-indigo-50 flex items-center justify-center flex-shrink-0 overflow-hidden">
+                  <div className="w-14 h-14 rounded-xl bg-violet-50 flex items-center justify-center flex-shrink-0 overflow-hidden">
                     <img src={getChildAvatarImage(child, index)} alt={child.first_name} className="w-full h-full object-cover" draggable={false} loading="lazy" decoding="async" />
                   </div>
                   <div className="flex-1 min-w-0">
@@ -702,7 +702,7 @@ function ChildSelector({
                       {child.first_name}
                     </h2>
                     {child.grade && (
-                      <span className="text-xs font-medium text-indigo-600">
+                      <span className="text-xs font-medium text-violet-600">
                         {GRADE_LABELS[child.grade] || child.grade}
                       </span>
                     )}
@@ -721,7 +721,7 @@ function ChildSelector({
               </button>
               <a
                 href={`/play/${child.id}`}
-                className="inline-flex w-full items-center justify-center gap-1.5 rounded-full bg-gradient-to-r from-indigo-600 to-violet-600 px-4 py-2 text-xs font-bold text-white shadow-sm transition hover:from-indigo-700 hover:to-violet-700"
+                className="inline-flex w-full items-center justify-center gap-1.5 rounded-full bg-gradient-to-r from-violet-600 to-violet-600 px-4 py-2 text-xs font-bold text-white shadow-sm transition hover:from-violet-700 hover:to-violet-700"
               >
                 Hand the device to {child.first_name}
               </a>
@@ -979,7 +979,7 @@ function ChildDashboard({
           <motion.div variants={slideUp} className="flex items-center justify-between">
             <button
               onClick={onBack}
-              className="text-sm text-indigo-600 hover:text-indigo-700 font-medium transition-colors"
+              className="text-sm text-violet-600 hover:text-violet-700 font-medium transition-colors"
             >
               &larr; All Readers
             </button>
@@ -989,7 +989,7 @@ function ChildDashboard({
                 const next = children.find((c) => c.id === e.target.value);
                 if (next) onSwitch(next);
               }}
-              className="text-sm border border-zinc-200 dark:border-slate-600 rounded-lg px-3 py-1.5 bg-white dark:bg-slate-800 text-zinc-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="text-sm border border-zinc-200 dark:border-slate-600 rounded-lg px-3 py-1.5 bg-white dark:bg-slate-800 text-zinc-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-violet-500"
             >
               {children.map((c) => (
                 <option key={c.id} value={c.id}>
@@ -1005,7 +1005,7 @@ function ChildDashboard({
           <div className="relative mx-auto mb-4 w-28">
             <button
               onClick={() => setAvatarPickerOpen(true)}
-              className="w-28 h-28 rounded-full bg-gradient-to-br from-indigo-100 to-violet-100 dark:from-indigo-900/40 dark:to-violet-900/40 flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer overflow-hidden ring-4 ring-white dark:ring-slate-800"
+              className="w-28 h-28 rounded-full bg-gradient-to-br from-violet-100 to-violet-100 dark:from-violet-900/40 dark:to-violet-900/40 flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer overflow-hidden ring-4 ring-white dark:ring-slate-800"
               aria-label="Change avatar"
             >
               {/* LCP candidate: above-the-fold hero avatar. fetchpriority
@@ -1022,7 +1022,7 @@ function ChildDashboard({
                 decoding="async"
               />
             </button>
-            <div className="absolute -bottom-1 -right-1 w-8 h-8 rounded-full bg-indigo-600 flex items-center justify-center shadow-md pointer-events-none ring-2 ring-white dark:ring-slate-800">
+            <div className="absolute -bottom-1 -right-1 w-8 h-8 rounded-full bg-violet-600 flex items-center justify-center shadow-md pointer-events-none ring-2 ring-white dark:ring-slate-800">
               <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
               </svg>
@@ -1043,7 +1043,7 @@ function ChildDashboard({
         <motion.div variants={slideUp} className="flex items-center justify-center">
           <Link
             href={`/levels?child=${child.id}`}
-            className={`group flex items-center gap-3 rounded-full border border-zinc-200 bg-white px-3 py-1.5 shadow-sm transition hover:border-indigo-300 dark:border-slate-700 dark:bg-slate-900`}
+            className={`group flex items-center gap-3 rounded-full border border-zinc-200 bg-white px-3 py-1.5 shadow-sm transition hover:border-violet-300 dark:border-slate-700 dark:bg-slate-900`}
           >
             <LevelBadge lifetimeCarrots={lifetimeCarrots} size="md" />
             {levelInfo.next ? (
@@ -1072,7 +1072,7 @@ function ChildDashboard({
           </Link>
           <div className="w-px h-6 bg-zinc-200 dark:bg-slate-700" />
           <Link href={`/stories?child=${child.id}`} className="flex items-center gap-1.5 group">
-            <BookOpen className="w-5 h-5 text-indigo-500 group-hover:animate-subtleBounce" strokeWidth={1.5} />
+            <BookOpen className="w-5 h-5 text-violet-500 group-hover:animate-subtleBounce" strokeWidth={1.5} />
             <span ref={storiesCount.ref} className="text-lg font-extrabold text-zinc-900 dark:text-slate-100">{storiesCount.value}</span>
           </Link>
         </motion.div>
@@ -1100,7 +1100,7 @@ function ChildDashboard({
                 />
               </svg>
               <div className="absolute inset-0 flex items-center justify-center">
-                {dailyGoalMet ? <Sparkles className="w-6 h-6 text-emerald-500" strokeWidth={1.5} /> : <Target className="w-6 h-6 text-indigo-500" strokeWidth={1.5} />}
+                {dailyGoalMet ? <Sparkles className="w-6 h-6 text-emerald-500" strokeWidth={1.5} /> : <Target className="w-6 h-6 text-violet-500" strokeWidth={1.5} />}
               </div>
             </div>
             <div className="flex-1 min-w-0">
@@ -1118,10 +1118,10 @@ function ChildDashboard({
           {/* Primary CTA: Assessment or Next Lesson */}
           {hasAssessment === false && (
             <Link href={`/assessment?child=${child.id}`} className="block">
-              <div className="rounded-3xl bg-gradient-to-r from-indigo-600 to-violet-500 p-6 text-center text-white hover:from-indigo-700 hover:to-violet-600 transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] cursor-pointer">
+              <div className="rounded-3xl bg-gradient-to-r from-violet-600 to-violet-500 p-6 text-center text-white hover:from-violet-700 hover:to-violet-600 transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] cursor-pointer">
                 <Target className="w-14 h-14 text-white mx-auto mb-3" strokeWidth={1.5} />
                 <div className="text-xl font-extrabold">Take Your Reading Quiz!</div>
-                <div className="text-indigo-200 text-sm mt-1">
+                <div className="text-violet-200 text-sm mt-1">
                   A fun 10-question quiz to find your reading level
                 </div>
               </div>
@@ -1167,14 +1167,14 @@ function ChildDashboard({
               <motion.div
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="rounded-3xl bg-gradient-to-r from-indigo-600 to-violet-500 p-5 text-white shadow-lg cursor-pointer"
+                className="rounded-3xl bg-gradient-to-r from-violet-600 to-violet-500 p-5 text-white shadow-lg cursor-pointer"
               >
                 <div className="flex items-center gap-4">
                   <div className="w-16 h-16 rounded-2xl bg-white/20 flex items-center justify-center flex-shrink-0">
                     {completedCount === 0 ? <Rocket className="w-9 h-9 text-white" strokeWidth={1.5} /> : <BookOpen className="w-9 h-9 text-white" strokeWidth={1.5} />}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="text-indigo-200 text-xs font-semibold uppercase tracking-wider">
+                    <div className="text-violet-200 text-xs font-semibold uppercase tracking-wider">
                       {completedCount === 0 ? "Start Your Adventure!" : `Lesson ${nextLessonIdx + 1} of ${lessons.length}`}
                     </div>
                     <div className="text-white font-extrabold text-xl leading-tight truncate mt-0.5">
@@ -1255,7 +1255,7 @@ function ChildDashboard({
             <motion.div
               whileHover={{ scale: 1.05, y: -4 }}
               whileTap={{ scale: 0.95 }}
-              className="h-28 sm:h-[130px] rounded-3xl bg-gradient-to-br from-indigo-500 to-violet-600 p-3 sm:p-4 flex flex-col items-center justify-center text-center shadow-lg cursor-pointer"
+              className="h-28 sm:h-[130px] rounded-3xl bg-gradient-to-br from-violet-500 to-violet-600 p-3 sm:p-4 flex flex-col items-center justify-center text-center shadow-lg cursor-pointer"
             >
               <Target className="w-8 h-8 sm:w-10 sm:h-10 text-white mb-1.5 sm:mb-2" strokeWidth={1.5} />
               <span className="text-xs sm:text-sm font-extrabold text-white leading-tight">Practice</span>
@@ -1406,7 +1406,7 @@ function ChildDashboard({
                       onClick={() => handleEquipAvatar(i === childIndex % DEFAULT_AVATARS.length ? null : id)}
                       className={`aspect-square rounded-2xl flex items-center justify-center overflow-hidden transition-all duration-200 ${
                         isActive
-                          ? "ring-3 ring-indigo-500 scale-110"
+                          ? "ring-3 ring-violet-500 scale-110"
                           : "hover:scale-105"
                       }`}
                     >
@@ -1431,7 +1431,7 @@ function ChildDashboard({
                       disabled={!owned}
                       className={`aspect-square rounded-2xl flex items-center justify-center relative overflow-hidden transition-all duration-200 ${
                         isActive
-                          ? "ring-3 ring-indigo-500 scale-110"
+                          ? "ring-3 ring-violet-500 scale-110"
                           : owned
                             ? "hover:scale-105"
                             : "opacity-40 cursor-not-allowed grayscale"
@@ -1441,7 +1441,7 @@ function ChildDashboard({
                       {imgSrc ? (
                         <img src={imgSrc} alt={item.name} className="w-full h-full object-cover rounded-2xl" draggable={false} loading="lazy" decoding="async" />
                       ) : (
-                        (() => { const SI = getShopIcon(item.icon); return <SI className="w-7 h-7 text-indigo-500" strokeWidth={1.5} />; })()
+                        (() => { const SI = getShopIcon(item.icon); return <SI className="w-7 h-7 text-violet-500" strokeWidth={1.5} />; })()
                       )}
                       {!owned && (
                         <span className="absolute bottom-0.5 right-0.5">
@@ -1454,7 +1454,7 @@ function ChildDashboard({
               </div>
               {shopAvatars.some((item) => !ownedAvatarIds.has(item.id)) && (
                 <p className="text-xs text-zinc-400 mt-3 text-center">
-                  Earn carrots <Carrot className="w-3 h-3 inline-block text-orange-500" strokeWidth={1.5} /> to unlock more avatars in the <Link href={`/shop?child=${currentChild.id}`} className="text-indigo-600 font-semibold hover:underline" onClick={() => setAvatarPickerOpen(false)}>Shop</Link>!
+                  Earn carrots <Carrot className="w-3 h-3 inline-block text-orange-500" strokeWidth={1.5} /> to unlock more avatars in the <Link href={`/shop?child=${currentChild.id}`} className="text-violet-600 font-semibold hover:underline" onClick={() => setAvatarPickerOpen(false)}>Shop</Link>!
                 </p>
               )}
             </div>
@@ -1548,12 +1548,12 @@ function ParentSidebar({
   const navLinkClass = (href: string) =>
     `flex items-center gap-2.5 px-2 py-1.5 rounded-lg text-[13px] transition-colors ${
       isActive(href)
-        ? "bg-indigo-50 text-indigo-700 font-medium"
+        ? "bg-violet-50 text-violet-700 font-medium"
         : "text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900"
     }`;
 
   const navIconClass = (href: string) =>
-    `w-4 h-4 ${isActive(href) ? "text-indigo-500" : "text-zinc-400"}`;
+    `w-4 h-4 ${isActive(href) ? "text-violet-500" : "text-zinc-400"}`;
 
   const NAV_SECTIONS = [
     {
@@ -1641,11 +1641,11 @@ function ParentSidebar({
                   href={href}
                   onClick={onClose}
                   className={emphasis && !isActive(href)
-                    ? "flex items-center gap-2.5 px-2 py-1.5 rounded-lg text-[13px] font-semibold transition-colors bg-indigo-50 text-indigo-700 hover:bg-indigo-100"
+                    ? "flex items-center gap-2.5 px-2 py-1.5 rounded-lg text-[13px] font-semibold transition-colors bg-violet-50 text-violet-700 hover:bg-violet-100"
                     : navLinkClass(href)
                   }
                 >
-                  <Icon className={iconColor || (emphasis && !isActive(href) ? "w-4 h-4 text-indigo-500" : navIconClass(href))} strokeWidth={1.5} />
+                  <Icon className={iconColor || (emphasis && !isActive(href) ? "w-4 h-4 text-violet-500" : navIconClass(href))} strokeWidth={1.5} />
                   <span>{itemLabel}</span>
                 </Link>
               ))}
@@ -1682,7 +1682,7 @@ function ParentSidebar({
                       dayCarrots > 0
                         ? "bg-emerald-500"
                         : isToday
-                        ? "bg-indigo-200"
+                        ? "bg-violet-200"
                         : ""
                     }`}
                     style={{ width: dayCarrots > 0 ? `${Math.max(pct, 8)}%` : isToday ? "4%" : "0%" }}
@@ -1934,10 +1934,10 @@ function LessonPath({
       {userPlan !== "premium" && lockedLessonsCount > 0 && (
         <Link
           href={`/upgrade?child=${child.id}`}
-          className="flex items-center gap-2 px-2.5 py-2 rounded-lg bg-indigo-50 hover:bg-indigo-100 transition-colors"
+          className="flex items-center gap-2 px-2.5 py-2 rounded-lg bg-violet-50 hover:bg-violet-100 transition-colors"
         >
-          <Star className="w-3.5 h-3.5 text-indigo-500" fill="currentColor" strokeWidth={0} />
-          <span className="text-[12px] font-medium text-indigo-700">Unlock {lockedLessonsCount} more lessons</span>
+          <Star className="w-3.5 h-3.5 text-violet-500" fill="currentColor" strokeWidth={0} />
+          <span className="text-[12px] font-medium text-violet-700">Unlock {lockedLessonsCount} more lessons</span>
         </Link>
       )}
 
@@ -1966,7 +1966,7 @@ function LessonPath({
                       </svg>
                     </div>
                   ) : isNext ? (
-                    <div className="w-[18px] h-[18px] rounded-full bg-indigo-500 ring-4 ring-indigo-100 flex items-center justify-center">
+                    <div className="w-[18px] h-[18px] rounded-full bg-violet-500 ring-4 ring-violet-100 flex items-center justify-center">
                       <div className="w-1.5 h-1.5 rounded-full bg-white" />
                     </div>
                   ) : isLocked ? (
@@ -1983,7 +1983,7 @@ function LessonPath({
                   href={isLocked ? `/upgrade?child=${child.id}` : `/lesson?child=${child.id}&lesson=${lesson.id}`}
                   className={`flex-1 min-w-0 rounded-lg px-2 py-1.5 -mx-1 transition-colors ${
                     isNext
-                      ? "bg-indigo-50 hover:bg-indigo-100"
+                      ? "bg-violet-50 hover:bg-violet-100"
                       : isLocked
                       ? "opacity-50"
                       : "hover:bg-zinc-50"
@@ -1991,12 +1991,12 @@ function LessonPath({
                 >
                   <div className="flex items-center gap-1.5">
                     <span className={`text-[11px] font-bold tabular-nums ${
-                      complete ? "text-emerald-600" : isNext ? "text-indigo-600" : "text-zinc-400"
+                      complete ? "text-emerald-600" : isNext ? "text-violet-600" : "text-zinc-400"
                     }`}>
                       {i + 1}
                     </span>
                     <span className={`text-[12px] font-medium truncate ${
-                      isLocked || isFuture ? "text-zinc-400" : isNext ? "text-indigo-900" : "text-zinc-700"
+                      isLocked || isFuture ? "text-zinc-400" : isNext ? "text-violet-900" : "text-zinc-700"
                     }`}>
                       {lesson.title}
                     </span>
@@ -2051,7 +2051,7 @@ function CurriculumOverview({
         className="w-full flex items-center justify-between p-5 hover:bg-zinc-50/50 dark:hover:bg-slate-700/50 transition-colors"
       >
         <h3 className="text-base font-bold text-zinc-900 dark:text-slate-100">Full Curriculum</h3>
-        <span className="text-xs text-indigo-600 font-medium">
+        <span className="text-xs text-violet-600 font-medium">
           {showCurriculum ? "Hide" : "View All Levels"}
         </span>
       </button>
@@ -2070,19 +2070,19 @@ function CurriculumOverview({
                   onClick={() => setExpandedGrade(isExpanded ? null : key)}
                   className={`w-full flex items-center justify-between p-3 rounded-xl text-left transition-colors ${
                     isCurrent
-                      ? "bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-800/40"
+                      ? "bg-violet-50 dark:bg-indigo-950/30 border border-violet-200 dark:border-violet-800/40"
                       : "bg-zinc-50 dark:bg-slate-700/50 border border-zinc-100 dark:border-slate-700 hover:bg-zinc-100 dark:hover:bg-slate-700"
                   }`}
                 >
                   <div className="flex items-center gap-2 flex-wrap">
-                    <span className={`text-sm font-semibold ${isCurrent ? "text-indigo-700 dark:text-indigo-300" : "text-zinc-700 dark:text-slate-300"}`}>
+                    <span className={`text-sm font-semibold ${isCurrent ? "text-violet-700 dark:text-violet-300" : "text-zinc-700 dark:text-slate-300"}`}>
                       {GRADE_LABELS[key]}
                     </span>
-                    <span className={`text-xs ${isCurrent ? "text-indigo-500 dark:text-indigo-400" : "text-zinc-400 dark:text-slate-500"}`}>
+                    <span className={`text-xs ${isCurrent ? "text-violet-500 dark:text-violet-400" : "text-zinc-400 dark:text-slate-500"}`}>
                       {level.level_name}
                     </span>
                     {isCurrent && (
-                      <span className="text-[10px] font-semibold text-indigo-600 bg-indigo-100 px-1.5 py-0.5 rounded-full">
+                      <span className="text-[10px] font-semibold text-violet-600 bg-violet-100 px-1.5 py-0.5 rounded-full">
                         Current
                       </span>
                     )}

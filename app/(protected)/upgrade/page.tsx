@@ -146,7 +146,7 @@ function UpgradeContent() {
         </p>
         <Link
           href="/dashboard"
-          className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-indigo-600 text-white font-semibold text-sm hover:bg-indigo-700 transition-colors"
+          className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-violet-600 text-white font-semibold text-sm hover:bg-violet-700 transition-colors"
         >
           Go to Dashboard
         </Link>
@@ -174,7 +174,7 @@ function UpgradeContent() {
           <>
             <h1 className="text-3xl sm:text-4xl font-extrabold text-zinc-900 tracking-tight">
               Unlock the full{" "}
-              <span className="bg-gradient-to-r from-indigo-600 to-violet-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-violet-600 to-violet-500 bg-clip-text text-transparent">
                 reading journey
               </span>
             </h1>
@@ -198,7 +198,7 @@ function UpgradeContent() {
             onClick={() => setBilling("monthly")}
             className={`px-4 py-2 rounded-lg text-sm font-semibold transition-colors ${
               billing === "monthly"
-                ? "bg-indigo-600 text-white"
+                ? "bg-violet-600 text-white"
                 : "bg-zinc-100 text-zinc-600 hover:bg-zinc-200"
             }`}
           >
@@ -208,7 +208,7 @@ function UpgradeContent() {
             onClick={() => setBilling("annual")}
             className={`px-4 py-2 rounded-lg text-sm font-semibold transition-colors ${
               billing === "annual"
-                ? "bg-indigo-600 text-white"
+                ? "bg-violet-600 text-white"
                 : "bg-zinc-100 text-zinc-600 hover:bg-zinc-200"
             }`}
           >
@@ -221,15 +221,15 @@ function UpgradeContent() {
 
         {/* Single tier — Readee+ for parents. B2C-only per May 4 reshape. */}
         <div className="mx-auto max-w-md">
-          <div className="rounded-2xl border-2 border-indigo-300 bg-white p-6 text-left shadow-sm ring-2 ring-indigo-100">
+          <div className="rounded-2xl border-2 border-violet-300 bg-white p-6 text-left shadow-sm ring-2 ring-violet-100">
             <div className="flex items-start justify-between gap-2">
               <div>
-                <p className="text-xs font-bold uppercase tracking-widest text-indigo-600">
+                <p className="text-xs font-bold uppercase tracking-widest text-violet-600">
                   Readee+
                 </p>
                 <p className="mt-0.5 text-sm text-zinc-500">For families</p>
               </div>
-              <span className="rounded-full bg-indigo-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-indigo-700">
+              <span className="rounded-full bg-violet-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-violet-700">
                 Most parents
               </span>
             </div>
@@ -261,7 +261,7 @@ function UpgradeContent() {
             <button
               onClick={() => handleStartTrial("premium")}
               disabled={checkoutLoading}
-              className="mt-5 w-full rounded-xl bg-indigo-600 py-3 text-sm font-bold text-white shadow-sm transition-colors hover:bg-indigo-700 disabled:opacity-50"
+              className="mt-5 w-full rounded-xl bg-violet-600 py-3 text-sm font-bold text-white shadow-sm transition-colors hover:bg-violet-700 disabled:opacity-50"
             >
               {checkoutLoading
                 ? "Redirecting…"
@@ -312,14 +312,14 @@ function UpgradeContent() {
 
       {/* ── Trust Signal (lifted above features for higher impact) ── */}
       <motion.div
-        className="rounded-2xl bg-gradient-to-r from-indigo-50 to-violet-50 p-6 border border-indigo-100"
+        className="rounded-2xl bg-gradient-to-r from-violet-50 to-violet-50 p-6 border border-violet-100"
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.15 }}
       >
         <div className="flex items-start gap-4">
-          <div className="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center flex-shrink-0">
-            <Award className="w-6 h-6 text-indigo-600" />
+          <div className="w-12 h-12 rounded-full bg-violet-100 flex items-center justify-center flex-shrink-0">
+            <Award className="w-6 h-6 text-violet-600" />
           </div>
           <div>
             <p className="font-bold text-zinc-900">Built by a reading specialist</p>
@@ -330,13 +330,13 @@ function UpgradeContent() {
               and grounded in the Science of Reading.
             </p>
             <div className="flex flex-wrap gap-2 mt-3">
-              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white text-xs font-medium text-indigo-700 border border-indigo-200">
+              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white text-xs font-medium text-violet-700 border border-violet-200">
                 <ShieldCheck className="w-3 h-3" /> Certified Reading Specialist
               </span>
-              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white text-xs font-medium text-indigo-700 border border-indigo-200">
+              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white text-xs font-medium text-violet-700 border border-violet-200">
                 <GraduationCap className="w-3 h-3" /> 3rd Grade Teacher
               </span>
-              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white text-xs font-medium text-indigo-700 border border-indigo-200">
+              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white text-xs font-medium text-violet-700 border border-violet-200">
                 <BookOpen className="w-3 h-3" /> Readee Co-founder
               </span>
             </div>
@@ -360,8 +360,8 @@ function UpgradeContent() {
               key={line}
               className="flex items-start gap-3 rounded-xl border border-zinc-100 bg-white p-4 shadow-sm"
             >
-              <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-indigo-50">
-                <Check className="h-4 w-4 text-indigo-600" strokeWidth={2.4} />
+              <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-violet-50">
+                <Check className="h-4 w-4 text-violet-600" strokeWidth={2.4} />
               </div>
               <p className="text-sm leading-snug text-zinc-700">{line}</p>
             </li>
@@ -404,7 +404,7 @@ function UpgradeContent() {
             placeholder="Enter code"
             value={promoCode}
             onChange={(e) => setPromoCode(e.target.value)}
-            className="flex-1 px-4 py-2.5 rounded-lg border border-zinc-200 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+            className="flex-1 px-4 py-2.5 rounded-lg border border-zinc-200 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent"
           />
           <button
             onClick={handleRedeemPromo}
@@ -461,7 +461,7 @@ function UpgradeContent() {
           className={`w-full py-3.5 rounded-xl text-white font-bold text-sm transition-colors shadow-sm disabled:opacity-50 ${
             leadWithTeacher
               ? "bg-violet-600 hover:bg-violet-700"
-              : "bg-indigo-600 hover:bg-indigo-700"
+              : "bg-violet-600 hover:bg-violet-700"
           }`}
         >
           {checkoutLoading
@@ -493,7 +493,7 @@ function UpgradeContent() {
       <div className="fixed bottom-0 inset-x-0 z-40 sm:hidden border-t border-zinc-200 bg-white/95 backdrop-blur px-4 py-3 shadow-[0_-4px_16px_rgba(0,0,0,0.06)]">
         <div className="mx-auto flex max-w-md items-center justify-between gap-3">
           <div className="min-w-0">
-            <p className="text-[11px] font-semibold uppercase tracking-wider text-indigo-600">
+            <p className="text-[11px] font-semibold uppercase tracking-wider text-violet-600">
               Readee+
             </p>
             <p className="truncate text-sm font-bold text-zinc-900">
@@ -506,7 +506,7 @@ function UpgradeContent() {
           <button
             onClick={() => handleStartTrial("premium")}
             disabled={checkoutLoading}
-            className="flex-shrink-0 rounded-xl bg-indigo-600 px-4 py-2.5 text-xs font-bold text-white hover:bg-indigo-700 disabled:opacity-50"
+            className="flex-shrink-0 rounded-xl bg-violet-600 px-4 py-2.5 text-xs font-bold text-white hover:bg-violet-700 disabled:opacity-50"
           >
             {checkoutLoading ? "…" : "Start trial"}
           </button>

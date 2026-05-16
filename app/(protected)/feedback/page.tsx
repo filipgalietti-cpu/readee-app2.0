@@ -105,7 +105,7 @@ export default function FeedbackPage() {
     <div className="max-w-md mx-auto py-8 px-4">
       {/* Nav */}
       <div className="flex items-center justify-between mb-8">
-        <Link href="/dashboard" className="text-sm text-indigo-600 hover:text-indigo-700 font-medium transition-colors">
+        <Link href="/dashboard" className="text-sm text-violet-600 hover:text-violet-700 font-medium transition-colors">
           &larr; Dashboard
         </Link>
       </div>
@@ -152,9 +152,9 @@ export default function FeedbackPage() {
             </motion.p>
 
             {rating && (
-              <motion.div variants={fadeUp} className="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 dark:bg-indigo-900/40">
-                {(() => { const R = RATINGS.find((r) => r.value === rating); return R ? <R.icon className="w-6 h-6 text-indigo-600" strokeWidth={1.5} /> : null; })()}
-                <span className="text-sm font-medium text-indigo-700 dark:text-indigo-300">
+              <motion.div variants={fadeUp} className="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-50 dark:bg-violet-900/40">
+                {(() => { const R = RATINGS.find((r) => r.value === rating); return R ? <R.icon className="w-6 h-6 text-violet-600" strokeWidth={1.5} /> : null; })()}
+                <span className="text-sm font-medium text-violet-700 dark:text-violet-300">
                   {RATINGS.find((r) => r.value === rating)?.label}
                 </span>
               </motion.div>
@@ -163,7 +163,7 @@ export default function FeedbackPage() {
             <motion.div variants={fadeUp} className="mt-8 flex flex-col items-center gap-3">
               <button
                 onClick={resetForm}
-                className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-sm font-bold hover:from-indigo-700 hover:to-violet-600 transition-all shadow-md"
+                className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-violet-600 to-violet-500 text-white text-sm font-bold hover:from-violet-700 hover:to-violet-600 transition-all shadow-md"
               >
                 Submit Another
               </button>
@@ -177,8 +177,8 @@ export default function FeedbackPage() {
         <>
           {/* Header */}
           <div className="text-center mb-8">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-50 to-violet-50 mx-auto mb-4 flex items-center justify-center">
-              <MessageCircle className="w-8 h-8 text-indigo-500" strokeWidth={1.5} />
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-violet-50 to-violet-50 mx-auto mb-4 flex items-center justify-center">
+              <MessageCircle className="w-8 h-8 text-violet-500" strokeWidth={1.5} />
             </div>
             <h1 className="text-2xl font-bold text-zinc-900 dark:text-slate-100 tracking-tight">
               Share Your Feedback
@@ -196,9 +196,9 @@ export default function FeedbackPage() {
                 onClick={() => { if (s <= step) setStep(s); }}
                 className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
                   s === step
-                    ? "w-8 bg-indigo-500"
+                    ? "w-8 bg-violet-500"
                     : s < step
-                    ? "bg-indigo-300 dark:bg-indigo-600 cursor-pointer"
+                    ? "bg-violet-300 dark:bg-violet-600 cursor-pointer"
                     : "bg-zinc-200 dark:bg-slate-700"
                 }`}
               />
@@ -222,13 +222,13 @@ export default function FeedbackPage() {
                     transition={{ type: "spring", stiffness: 400, damping: 15 }}
                     className={`group flex flex-col items-center gap-1.5 p-3 rounded-2xl transition-colors duration-200 ${
                       rating === r.value
-                        ? "bg-indigo-100 dark:bg-indigo-900/40 ring-2 ring-indigo-400"
+                        ? "bg-violet-100 dark:bg-violet-900/40 ring-2 ring-violet-400"
                         : "hover:bg-zinc-50 dark:hover:bg-slate-800"
                     }`}
                   >
                     <r.icon className="w-8 h-8" strokeWidth={1.5} />
                     <span className={`text-[10px] font-medium ${
-                      rating === r.value ? "text-indigo-700 dark:text-indigo-300" : "text-zinc-400 dark:text-slate-500"
+                      rating === r.value ? "text-violet-700 dark:text-violet-300" : "text-zinc-400 dark:text-slate-500"
                     }`}>
                       {r.label}
                     </span>
@@ -252,8 +252,8 @@ export default function FeedbackPage() {
                     onClick={() => selectCategory(c.id)}
                     className={`flex items-center gap-2 px-4 py-2.5 rounded-xl border text-sm font-medium transition-all duration-200 ${
                       category === c.id
-                        ? "bg-indigo-600 text-white border-indigo-600 shadow-md"
-                        : "bg-white dark:bg-slate-800 text-zinc-700 dark:text-slate-200 border-zinc-200 dark:border-slate-600 hover:border-indigo-300 dark:hover:border-indigo-700 hover:bg-indigo-50/50 dark:hover:bg-indigo-950/30"
+                        ? "bg-violet-600 text-white border-violet-600 shadow-md"
+                        : "bg-white dark:bg-slate-800 text-zinc-700 dark:text-slate-200 border-zinc-200 dark:border-slate-600 hover:border-violet-300 dark:hover:border-violet-700 hover:bg-violet-50/50 dark:hover:bg-indigo-950/30"
                     }`}
                   >
                     <c.icon className="w-4 h-4" strokeWidth={1.5} />
@@ -281,9 +281,9 @@ export default function FeedbackPage() {
               {/* Rating & category summary */}
               <div className="flex items-center justify-center gap-3">
                 {rating && (
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-900/40 text-sm">
-                    {(() => { const R = RATINGS.find((r) => r.value === rating); return R ? <R.icon className="w-5 h-5 text-indigo-600" strokeWidth={1.5} /> : null; })()}
-                    <span className="font-medium text-indigo-700 dark:text-indigo-300">{RATINGS.find((r) => r.value === rating)?.label}</span>
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-violet-50 dark:bg-violet-900/40 text-sm">
+                    {(() => { const R = RATINGS.find((r) => r.value === rating); return R ? <R.icon className="w-5 h-5 text-violet-600" strokeWidth={1.5} /> : null; })()}
+                    <span className="font-medium text-violet-700 dark:text-violet-300">{RATINGS.find((r) => r.value === rating)?.label}</span>
                   </span>
                 )}
                 {category && (
@@ -299,13 +299,13 @@ export default function FeedbackPage() {
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder="What could we do better? What do you love?"
                 rows={4}
-                className="w-full px-4 py-3 rounded-xl border border-zinc-200 dark:border-slate-600 text-sm text-zinc-900 dark:text-slate-100 bg-white dark:bg-slate-800 resize-none focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-transparent placeholder:text-zinc-400 dark:placeholder:text-slate-500"
+                className="w-full px-4 py-3 rounded-xl border border-zinc-200 dark:border-slate-600 text-sm text-zinc-900 dark:text-slate-100 bg-white dark:bg-slate-800 resize-none focus:outline-none focus:ring-2 focus:ring-violet-400 focus:border-transparent placeholder:text-zinc-400 dark:placeholder:text-slate-500"
               />
 
               <button
                 onClick={handleSubmit}
                 disabled={submitting}
-                className="w-full py-3.5 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white font-bold text-base hover:from-indigo-700 hover:to-violet-600 transition-all shadow-lg disabled:opacity-50"
+                className="w-full py-3.5 rounded-xl bg-gradient-to-r from-violet-600 to-violet-500 text-white font-bold text-base hover:from-violet-700 hover:to-violet-600 transition-all shadow-lg disabled:opacity-50"
               >
                 {submitting ? "Sending..." : "Send Feedback"}
               </button>

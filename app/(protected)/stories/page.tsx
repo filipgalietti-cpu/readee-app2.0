@@ -378,7 +378,7 @@ function StoriesContent() {
                 <button
                   type="button"
                   onClick={goNext}
-                  className="block w-full rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 py-4 text-base font-extrabold text-white shadow-sm transition active:scale-[0.97] hover:from-indigo-700 hover:to-violet-600"
+                  className="block w-full rounded-2xl bg-gradient-to-r from-violet-600 to-violet-500 py-4 text-base font-extrabold text-white shadow-sm transition active:scale-[0.97] hover:from-violet-700 hover:to-violet-600"
                 >
                   Next story: {next.title} →
                 </button>
@@ -402,7 +402,7 @@ function StoriesContent() {
 
     return (
       <div className="max-w-lg mx-auto py-6 px-4">
-        <button onClick={closeStory} className="text-sm text-indigo-600 font-medium mb-4">
+        <button onClick={closeStory} className="text-sm text-violet-600 font-medium mb-4">
           &larr; Back to Stories
         </button>
 
@@ -414,7 +414,7 @@ function StoriesContent() {
         >
           <LoadingImage
             src={storyImageUrl(story)}
-            className="w-full aspect-square object-contain bg-indigo-50"
+            className="w-full aspect-square object-contain bg-violet-50"
           />
           <div className="p-5">
             <h1 className="text-xl font-extrabold text-zinc-900 mb-3">{story.title}</h1>
@@ -425,7 +425,7 @@ function StoriesContent() {
             </div>
             <button
               onClick={() => playUrl(storyAudioUrl(story))}
-              className="mt-3 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-50 text-indigo-600 text-sm font-medium hover:bg-indigo-100 transition-colors"
+              className="mt-3 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-violet-50 text-violet-600 text-sm font-medium hover:bg-violet-100 transition-colors"
             >
               <Volume2 className="w-4 h-4" /> Listen again
             </button>
@@ -470,7 +470,7 @@ function StoriesContent() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               onClick={handleNext}
-              className="w-full mt-4 py-3 rounded-xl bg-indigo-600 text-white font-bold text-sm hover:bg-indigo-700 transition-colors"
+              className="w-full mt-4 py-3 rounded-xl bg-violet-600 text-white font-bold text-sm hover:bg-violet-700 transition-colors"
             >
               {isLastQ ? "Done" : "Next Question"}
             </motion.button>
@@ -490,7 +490,7 @@ function StoriesContent() {
         animate={{ opacity: 1, y: 0 }}
         className="text-center mb-2"
       >
-        <BookOpen className="w-10 h-10 text-indigo-500 mx-auto mb-2" strokeWidth={1.5} />
+        <BookOpen className="w-10 h-10 text-violet-500 mx-auto mb-2" strokeWidth={1.5} />
         <h1 className="text-2xl font-extrabold text-zinc-900">Stories Library</h1>
       </motion.div>
 
@@ -523,14 +523,14 @@ function StoriesContent() {
               className={`w-full text-left ${isLocked ? "opacity-50 cursor-not-allowed" : ""}`}
             >
               <div className={`px-5 py-4 flex items-center gap-3 ${
-                isExpanded ? "bg-gradient-to-r from-indigo-600 to-violet-500" : ""
+                isExpanded ? "bg-gradient-to-r from-violet-600 to-violet-500" : ""
               }`}>
                 <div className={`w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 ${
-                  isExpanded ? "bg-white/20" : isLocked ? "bg-zinc-100" : "bg-indigo-50"
+                  isExpanded ? "bg-white/20" : isLocked ? "bg-zinc-100" : "bg-violet-50"
                 }`}>
                   {isLocked
                     ? <Lock className="w-4 h-4 text-zinc-400" />
-                    : <BookOpen className={`w-4 h-4 ${isExpanded ? "text-white" : "text-indigo-600"}`} strokeWidth={1.5} />
+                    : <BookOpen className={`w-4 h-4 ${isExpanded ? "text-white" : "text-violet-600"}`} strokeWidth={1.5} />
                   }
                 </div>
                 <div className="flex-1">
@@ -604,7 +604,7 @@ function StoriesContent() {
                           />
                           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
                             <div className="w-10 h-10 rounded-full bg-white/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow">
-                              <Play className="w-5 h-5 text-indigo-600 ml-0.5" fill="currentColor" />
+                              <Play className="w-5 h-5 text-violet-600 ml-0.5" fill="currentColor" />
                             </div>
                           </div>
                         </div>

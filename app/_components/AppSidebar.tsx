@@ -263,34 +263,34 @@ function navLinkClass(pathname: string, href: string, emphasis?: boolean, shimme
   // near-black inner face by design — that read as "black button" rather
   // than "AI button" for us. ShineBorder gets layered in by the render.
   if (shimmer) {
-    return "relative overflow-hidden flex w-full items-center gap-2.5 rounded-xl bg-gradient-to-r from-indigo-600 via-violet-600 to-pink-500 px-3 py-2 text-[13px] font-bold text-white shadow-sm transition hover:brightness-110";
+    return "relative overflow-hidden flex w-full items-center gap-2.5 rounded-xl bg-gradient-to-r from-violet-600 via-violet-600 to-pink-500 px-3 py-2 text-[13px] font-bold text-white shadow-sm transition hover:brightness-110";
   }
   if (emphasis && !isActive(pathname, href)) {
-    return "flex items-center gap-2.5 px-2 py-1.5 rounded-lg text-[13px] font-semibold transition-colors bg-indigo-50 text-indigo-700 hover:bg-indigo-100 dark:bg-indigo-950/40 dark:text-indigo-300 dark:hover:bg-indigo-950/60";
+    return "flex items-center gap-2.5 px-2 py-1.5 rounded-lg text-[13px] font-semibold transition-colors bg-violet-50 text-violet-700 hover:bg-violet-100 dark:bg-indigo-950/40 dark:text-violet-300 dark:hover:bg-indigo-950/60";
   }
   return `flex items-center gap-2.5 px-2 py-1.5 rounded-lg text-[13px] transition-colors ${
     isActive(pathname, href)
-      ? "bg-indigo-50 text-indigo-700 font-medium dark:bg-indigo-950/40 dark:text-indigo-300"
+      ? "bg-violet-50 text-violet-700 font-medium dark:bg-indigo-950/40 dark:text-violet-300"
       : "text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-200"
   }`;
 }
 
 function navIconClass(pathname: string, href: string) {
-  // Inactive icons sit in the brand palette (indigo-300) instead of
-  // generic zinc grey — keeps hierarchy with active (indigo-500) but
+  // Inactive icons sit in the brand palette (violet-300) instead of
+  // generic zinc grey — keeps hierarchy with active (violet-500) but
   // makes the whole sidebar read as "Readee" instead of "SaaS dashboard."
-  return `w-4 h-4 ${isActive(pathname, href) ? "text-indigo-700 dark:text-indigo-300" : "text-indigo-500 dark:text-indigo-400"}`;
+  return `w-4 h-4 ${isActive(pathname, href) ? "text-violet-700 dark:text-violet-300" : "text-violet-500 dark:text-violet-400"}`;
 }
 
 function collapsedIconClass(pathname: string, href: string) {
   return isActive(pathname, href)
-    ? "w-10 h-10 rounded-lg flex items-center justify-center bg-indigo-50 dark:bg-indigo-950/40 transition-colors"
+    ? "w-10 h-10 rounded-lg flex items-center justify-center bg-violet-50 dark:bg-indigo-950/40 transition-colors"
     : "w-10 h-10 rounded-lg flex items-center justify-center hover:bg-zinc-100 dark:hover:bg-slate-800 transition-colors";
 }
 
 function collapsedIconColor(pathname: string, href: string) {
   // Same logic as navIconClass — inactive in soft indigo, active full.
-  return `w-5 h-5 ${isActive(pathname, href) ? "text-indigo-700 dark:text-indigo-300" : "text-indigo-500 dark:text-indigo-400"}`;
+  return `w-5 h-5 ${isActive(pathname, href) ? "text-violet-700 dark:text-violet-300" : "text-violet-500 dark:text-violet-400"}`;
 }
 
 /* ─── SidebarTooltip ─────────────────────────────── */
@@ -538,7 +538,7 @@ export default function AppSidebar({ mobileOnly = false }: { mobileOnly?: boolea
                         {shimmer ? (
                           <Link
                             href={href}
-                            className="relative overflow-hidden w-10 h-10 rounded-lg flex items-center justify-center bg-gradient-to-br from-indigo-600 via-violet-600 to-pink-500 shadow-sm transition hover:brightness-110"
+                            className="relative overflow-hidden w-10 h-10 rounded-lg flex items-center justify-center bg-gradient-to-br from-violet-600 via-violet-600 to-pink-500 shadow-sm transition hover:brightness-110"
                           >
                             <ShineBorder
                               borderWidth={1.5}
@@ -564,7 +564,7 @@ export default function AppSidebar({ mobileOnly = false }: { mobileOnly?: boolea
                 <SidebarTooltip label={sidebarName}>
                   <button
                     onClick={() => setOpen(true)}
-                    className="w-10 h-10 rounded-lg overflow-hidden ring-2 ring-zinc-200 dark:ring-slate-700 hover:ring-indigo-300 dark:hover:ring-indigo-600 transition-all"
+                    className="w-10 h-10 rounded-lg overflow-hidden ring-2 ring-zinc-200 dark:ring-slate-700 hover:ring-violet-300 dark:hover:ring-violet-600 transition-all"
                   >
                     {sidebarAvatarSrc ? (
                       <img
@@ -574,7 +574,7 @@ export default function AppSidebar({ mobileOnly = false }: { mobileOnly?: boolea
                         draggable={false}
                       />
                     ) : (
-                      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-indigo-500 to-violet-600 text-sm font-bold text-white">
+                      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-violet-500 to-violet-600 text-sm font-bold text-white">
                         {(sidebarName
                           .split(/\s+/)
                           .map((w) => w[0])
@@ -640,7 +640,7 @@ function NavSectionBlock({
                     ? "relative z-10 w-4 h-4 text-white drop-shadow-sm"
                     : iconColor ||
                       (emphasis && !isActive(pathname, href)
-                        ? "w-4 h-4 text-indigo-500"
+                        ? "w-4 h-4 text-violet-500"
                         : navIconClass(pathname, href))
                 }
                 strokeWidth={1.5}
@@ -689,7 +689,7 @@ function NavSectionBlock({
                     ? "relative z-10 w-4 h-4 text-white drop-shadow-sm"
                     : iconColor ||
                       (emphasis && !isActive(pathname, href)
-                        ? "w-4 h-4 text-indigo-500"
+                        ? "w-4 h-4 text-violet-500"
                         : navIconClass(pathname, href))
                 }
                 strokeWidth={1.5}
@@ -747,7 +747,7 @@ function ExpandedNav({
             <img src={avatarSrc} alt={sidebarName} className="w-full h-full object-cover" draggable={false} />
           </div>
         ) : (
-          <div className="w-8 h-8 rounded-lg flex-shrink-0 flex items-center justify-center bg-gradient-to-br from-indigo-500 to-violet-600 text-xs font-bold text-white ring-1 ring-indigo-200 dark:ring-indigo-900/60">
+          <div className="w-8 h-8 rounded-lg flex-shrink-0 flex items-center justify-center bg-gradient-to-br from-violet-500 to-violet-600 text-xs font-bold text-white ring-1 ring-violet-200 dark:ring-violet-900/60">
             {initials}
           </div>
         )}

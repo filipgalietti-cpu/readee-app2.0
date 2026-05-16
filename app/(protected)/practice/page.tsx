@@ -110,14 +110,14 @@ function highlightQuestion(text: string): React.ReactNode[] {
     if (/^\*\*[^*]+\*\*$/.test(segment)) {
       const inner = segment.slice(2, -2);
       return (
-        <span key={si} className="text-indigo-600 dark:text-indigo-400 font-extrabold">
+        <span key={si} className="text-violet-600 dark:text-violet-400 font-extrabold">
           {inner}
         </span>
       );
     }
     // "quoted" — render as is, just styled.
     if (/^[""][^""]+[""]$/.test(segment)) {
-      return <span key={si} className="text-indigo-600 dark:text-indigo-400 font-extrabold">{segment}</span>;
+      return <span key={si} className="text-violet-600 dark:text-violet-400 font-extrabold">{segment}</span>;
     }
     // Plain segment — handle ALL CAPS / question-word highlighting,
     // and defensively strip any stray asterisks that survived.
@@ -127,10 +127,10 @@ function highlightQuestion(text: string): React.ReactNode[] {
       const clean = part.replace(/[^a-zA-Z']/g, "");
       if (hasEmphasis) {
         if (/^[A-Z]{3,}$/.test(clean)) {
-          return <span key={`${si}-${pi}`} className="text-indigo-600 dark:text-indigo-400 font-extrabold">{part}</span>;
+          return <span key={`${si}-${pi}`} className="text-violet-600 dark:text-violet-400 font-extrabold">{part}</span>;
         }
       } else if (clean.length > 1 && QUESTION_WORDS.has(clean)) {
-        return <span key={`${si}-${pi}`} className="text-indigo-600 dark:text-indigo-400 font-extrabold">{part}</span>;
+        return <span key={`${si}-${pi}`} className="text-violet-600 dark:text-violet-400 font-extrabold">{part}</span>;
       }
       return part;
     });
@@ -346,8 +346,8 @@ export default function PracticePage() {
 function LoadingScreen() {
   return (
     <div className="flex flex-col items-center justify-center min-h-[100dvh] bg-white dark:bg-[#0f172a] gap-4">
-      <div className="h-12 w-12 rounded-full border-4 border-indigo-200 border-t-indigo-500 dark:border-indigo-900 dark:border-t-indigo-400 animate-spin" />
-      <p className="text-indigo-600 dark:text-indigo-300 text-sm font-medium">Loading questions...</p>
+      <div className="h-12 w-12 rounded-full border-4 border-violet-200 border-t-violet-500 dark:border-violet-900 dark:border-t-violet-400 animate-spin" />
+      <p className="text-violet-600 dark:text-violet-300 text-sm font-medium">Loading questions...</p>
     </div>
   );
 }
@@ -496,7 +496,7 @@ function PracticeLoader() {
           </p>
           <Link
             href="/dashboard"
-            className="mt-2 inline-block rounded-full bg-indigo-600 px-5 py-2.5 text-sm font-bold text-white hover:bg-indigo-700"
+            className="mt-2 inline-block rounded-full bg-violet-600 px-5 py-2.5 text-sm font-bold text-white hover:bg-violet-700"
           >
             Back to Dashboard
           </Link>
@@ -849,7 +849,7 @@ function PracticeSession({
           {sparkles.map((s, i) => (
             <motion.div
               key={i}
-              className="absolute rounded-full bg-indigo-400/15 dark:bg-indigo-400/10"
+              className="absolute rounded-full bg-violet-400/15 dark:bg-violet-400/10"
               style={{ top: s.top, left: s.left, width: s.size, height: s.size }}
               initial={{ opacity: 0, scale: 0 }}
               animate={{
@@ -952,7 +952,7 @@ function PracticeSession({
 
               {/* Info pills */}
               <motion.div className="flex flex-wrap gap-2 mb-6" variants={fadeUp}>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-indigo-50 dark:bg-indigo-500/10 text-xs font-medium text-indigo-600 dark:text-indigo-400">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-violet-50 dark:bg-violet-500/10 text-xs font-medium text-violet-600 dark:text-violet-400">
                   <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01" />
                   </svg>
@@ -1202,10 +1202,10 @@ function PracticeSession({
             {audioGradesEnabled && (
               <button
                 onClick={handleReplay}
-                className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-indigo-50 dark:bg-indigo-500/20 hover:bg-indigo-100 dark:hover:bg-indigo-500/30 transition-colors flex-shrink-0"
+                className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-violet-50 dark:bg-violet-500/20 hover:bg-violet-100 dark:hover:bg-violet-500/30 transition-colors flex-shrink-0"
                 aria-label="Replay audio"
               >
-                <svg className="w-5 h-5 text-indigo-600 dark:text-indigo-300" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-violet-600 dark:text-violet-300" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15.536 8.464a5 5 0 010 7.072M17.95 6.05a8 8 0 010 11.9M11 5L6 9H2v6h4l5 4V5z" />
                 </svg>
               </button>
@@ -1224,7 +1224,7 @@ function PracticeSession({
                 ? "bg-emerald-500"
                 : "bg-red-400";
             } else if (isCurrent) {
-              dotClass = "bg-indigo-500";
+              dotClass = "bg-violet-500";
             }
             return (
               <div
@@ -1251,9 +1251,9 @@ function PracticeSession({
             let extra = "";
 
             if (!answered && previewedChoice === choice) {
-              extra = "ring-2 ring-offset-2 ring-indigo-500 animate-pulse";
+              extra = "ring-2 ring-offset-2 ring-violet-500 animate-pulse";
             } else if (!answered && isSelected) {
-              extra = "ring-2 ring-offset-2 ring-indigo-500";
+              extra = "ring-2 ring-offset-2 ring-violet-500";
             } else if (answered) {
               if (isSelected && isCorrect) {
                 bg = "bg-emerald-500 border-emerald-600 dark:bg-emerald-500 dark:border-emerald-600";

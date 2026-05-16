@@ -422,7 +422,7 @@ export default function Settings() {
           {!showPasswordForm ? (
             <button
               onClick={() => setShowPasswordForm(true)}
-              className="text-sm font-medium text-indigo-600 hover:text-indigo-700 transition-colors"
+              className="text-sm font-medium text-violet-600 hover:text-violet-700 transition-colors"
             >
               Change Password
             </button>
@@ -458,7 +458,7 @@ export default function Settings() {
                 <button
                   onClick={handlePasswordChange}
                   disabled={savingPassword}
-                  className="px-4 py-2 rounded-lg bg-indigo-600 text-white text-sm font-medium hover:bg-indigo-700 transition-colors disabled:opacity-50"
+                  className="px-4 py-2 rounded-lg bg-violet-600 text-white text-sm font-medium hover:bg-violet-700 transition-colors disabled:opacity-50"
                 >
                   {savingPassword ? "Saving..." : "Save Password"}
                 </button>
@@ -493,7 +493,7 @@ export default function Settings() {
             </p>
             <button
               onClick={() => setShowAddChild(true)}
-              className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-indigo-600 px-5 py-2 text-sm font-bold text-white transition hover:bg-indigo-700"
+              className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-violet-600 px-5 py-2 text-sm font-bold text-white transition hover:bg-violet-700"
             >
               Add a reader
             </button>
@@ -519,14 +519,14 @@ export default function Settings() {
                         <select
                           value={editValues.grade}
                           onChange={(e) => setEditValues((p) => ({ ...p, grade: e.target.value }))}
-                          className="w-full px-3 py-2 rounded-lg border border-zinc-200 dark:border-slate-600 text-sm text-zinc-900 dark:text-slate-200 bg-white dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                          className="w-full px-3 py-2 rounded-lg border border-zinc-200 dark:border-slate-600 text-sm text-zinc-900 dark:text-slate-200 bg-white dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-violet-400"
                         >
                           {GRADES.map((g) => <option key={g} value={g}>{g}</option>)}
                         </select>
                       </div>
                     </div>
                     <div className="flex gap-2">
-                      <button onClick={() => saveEdit(child.id)} className="px-3 py-1.5 rounded-lg bg-indigo-600 text-white text-xs font-medium hover:bg-indigo-700 transition-colors">Save</button>
+                      <button onClick={() => saveEdit(child.id)} className="px-3 py-1.5 rounded-lg bg-violet-600 text-white text-xs font-medium hover:bg-violet-700 transition-colors">Save</button>
                       <button onClick={() => setEditingChildId(null)} className="px-3 py-1.5 rounded-lg border border-zinc-200 dark:border-slate-600 text-xs font-medium text-zinc-600 dark:text-slate-300 hover:bg-zinc-50 dark:hover:bg-slate-700 transition-colors">Cancel</button>
                     </div>
                   </div>
@@ -538,7 +538,7 @@ export default function Settings() {
                         <div className="font-semibold text-zinc-900 dark:text-slate-100">{child.first_name}</div>
                         <div className="flex items-center gap-2 mt-0.5">
                           {child.grade && (
-                            <span className="text-[10px] font-semibold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded-full">
+                            <span className="text-[10px] font-semibold text-violet-700 bg-violet-50 px-2 py-0.5 rounded-full">
                               {displayGrade(child.grade)}
                             </span>
                           )}
@@ -555,7 +555,7 @@ export default function Settings() {
                         </span>
                         <button
                           onClick={() => startEditing(child)}
-                          className="text-xs font-medium text-indigo-600 hover:text-indigo-700 transition-colors"
+                          className="text-xs font-medium text-violet-600 hover:text-violet-700 transition-colors"
                         >
                           Edit
                         </button>
@@ -568,7 +568,7 @@ export default function Settings() {
                       <select
                         value={child.reading_level || ""}
                         onChange={(e) => requestLevelChange(child.id, child.first_name, e.target.value)}
-                        className="w-full px-3 py-2 rounded-lg border border-zinc-200 dark:border-slate-600 text-sm text-zinc-900 dark:text-slate-200 bg-white dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                        className="w-full px-3 py-2 rounded-lg border border-zinc-200 dark:border-slate-600 text-sm text-zinc-900 dark:text-slate-200 bg-white dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-violet-400"
                       >
                         <option value="" disabled>Not assessed yet</option>
                         {READING_LEVELS.map((level) => (
@@ -595,7 +595,7 @@ export default function Settings() {
                               onClick={() => handleEquipBackground(child, null)}
                               className={`w-10 h-10 rounded-xl border-2 transition-all flex items-center justify-center text-xs font-medium ${
                                 !equippedBg
-                                  ? "border-indigo-500 ring-2 ring-indigo-200"
+                                  ? "border-violet-500 ring-2 ring-violet-200"
                                   : "border-zinc-200 dark:border-slate-600 hover:border-zinc-300"
                               } bg-white dark:bg-slate-700 text-zinc-400 dark:text-slate-400`}
                               title="Default (no background)"
@@ -616,7 +616,7 @@ export default function Settings() {
                                   onClick={() => handleEquipBackground(child, isActive ? null : bgId)}
                                   className={`w-10 h-10 rounded-xl border-2 transition-all overflow-hidden ${
                                     isActive
-                                      ? "border-indigo-500 ring-2 ring-indigo-200 scale-110"
+                                      ? "border-violet-500 ring-2 ring-violet-200 scale-110"
                                       : "border-zinc-200 dark:border-slate-600 hover:border-zinc-300 hover:scale-105"
                                   }`}
                                   style={{ backgroundImage: `url(${imgSrc})`, backgroundSize: "cover", backgroundPosition: "center" }}
@@ -657,7 +657,7 @@ export default function Settings() {
               {!showAddChild ? (
                 <button
                   onClick={() => setShowAddChild(true)}
-                  className="flex items-center gap-2 text-sm font-medium text-indigo-600 hover:text-indigo-700 transition-colors"
+                  className="flex items-center gap-2 text-sm font-medium text-violet-600 hover:text-violet-700 transition-colors"
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
@@ -665,7 +665,7 @@ export default function Settings() {
                   Add Another Child
                 </button>
               ) : (
-                <div className="rounded-xl border border-indigo-200 bg-indigo-50/30 p-4 space-y-3">
+                <div className="rounded-xl border border-violet-200 bg-violet-50/30 p-4 space-y-3">
                   <div className="grid grid-cols-2 gap-3">
                     <InputField
                       label="Name"
@@ -678,7 +678,7 @@ export default function Settings() {
                       <select
                         value={newChild.grade}
                         onChange={(e) => setNewChild((p) => ({ ...p, grade: e.target.value }))}
-                        className="w-full px-3 py-2 rounded-lg border border-zinc-200 dark:border-slate-600 text-sm text-zinc-900 dark:text-slate-200 bg-white dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                        className="w-full px-3 py-2 rounded-lg border border-zinc-200 dark:border-slate-600 text-sm text-zinc-900 dark:text-slate-200 bg-white dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-violet-400"
                       >
                         {GRADES.map((g) => <option key={g} value={g}>{g}</option>)}
                       </select>
@@ -688,7 +688,7 @@ export default function Settings() {
                     <button
                       onClick={handleAddChild}
                       disabled={addingChild || !newChild.name.trim()}
-                      className="px-4 py-2 rounded-lg bg-indigo-600 text-white text-sm font-medium hover:bg-indigo-700 transition-colors disabled:opacity-50"
+                      className="px-4 py-2 rounded-lg bg-violet-600 text-white text-sm font-medium hover:bg-violet-700 transition-colors disabled:opacity-50"
                     >
                       {addingChild ? "Adding..." : "Add Child"}
                     </button>
@@ -720,7 +720,7 @@ export default function Settings() {
                 <p className="text-sm font-medium text-zinc-900 dark:text-slate-100">Readee+ Premium</p>
                 <p className="text-xs text-zinc-500 dark:text-slate-400 mt-0.5">Full access to all lessons, stories, practice, and analytics.</p>
               </div>
-              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-indigo-100 to-violet-100 text-indigo-700">Active</span>
+              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-violet-100 to-violet-100 text-violet-700">Active</span>
             </div>
             {process.env.NODE_ENV === "development" && (
               <button
@@ -743,14 +743,14 @@ export default function Settings() {
             </div>
             <Link
               href="/upgrade"
-              className="block rounded-xl border border-indigo-200 bg-indigo-50/50 p-4 hover:border-indigo-300 hover:bg-indigo-50 transition-colors"
+              className="block rounded-xl border border-violet-200 bg-violet-50/50 p-4 hover:border-violet-300 hover:bg-violet-50 transition-colors"
             >
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-semibold text-indigo-900">Readee+ Household — $9.99/mo</p>
-                  <p className="text-xs text-indigo-600 mt-0.5">57 lessons, unlimited practice, all stories, and parent analytics.</p>
+                  <p className="text-sm font-semibold text-violet-900">Readee+ Household — $9.99/mo</p>
+                  <p className="text-xs text-violet-600 mt-0.5">57 lessons, unlimited practice, all stories, and parent analytics.</p>
                 </div>
-                <span className="px-3 py-1.5 rounded-lg bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-xs font-bold whitespace-nowrap">
+                <span className="px-3 py-1.5 rounded-lg bg-gradient-to-r from-violet-600 to-violet-500 text-white text-xs font-bold whitespace-nowrap">
                   Upgrade
                 </span>
               </div>
@@ -760,7 +760,7 @@ export default function Settings() {
               {!showPromo ? (
                 <button
                   onClick={() => setShowPromo(true)}
-                  className="text-xs text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 font-medium transition-colors"
+                  className="text-xs text-violet-600 dark:text-violet-400 hover:text-violet-700 dark:hover:text-violet-300 font-medium transition-colors"
                 >
                   Have a promo code?
                 </button>
@@ -773,13 +773,13 @@ export default function Settings() {
                       onChange={(e) => { setPromoCode(e.target.value); setPromoResult(null); }}
                       placeholder="Enter promo code"
                       disabled={promoResult?.success}
-                      className="flex-1 px-3 py-2 rounded-lg border border-zinc-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-sm text-zinc-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-400 placeholder:text-zinc-400 dark:placeholder:text-slate-500 disabled:opacity-50"
+                      className="flex-1 px-3 py-2 rounded-lg border border-zinc-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-sm text-zinc-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-violet-400 placeholder:text-zinc-400 dark:placeholder:text-slate-500 disabled:opacity-50"
                       onKeyDown={(e) => { if (e.key === "Enter") handleRedeemPromo(); }}
                     />
                     <button
                       onClick={handleRedeemPromo}
                       disabled={promoLoading || !promoCode.trim() || promoResult?.success}
-                      className="px-4 py-2 rounded-lg bg-indigo-600 text-white text-sm font-medium hover:bg-indigo-700 transition-colors disabled:opacity-50 whitespace-nowrap"
+                      className="px-4 py-2 rounded-lg bg-violet-600 text-white text-sm font-medium hover:bg-violet-700 transition-colors disabled:opacity-50 whitespace-nowrap"
                     >
                       {promoLoading ? "..." : "Redeem"}
                     </button>
@@ -1005,7 +1005,7 @@ function InputField({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="w-full px-3 py-2 rounded-lg border border-zinc-200 dark:border-slate-600 text-sm text-zinc-900 dark:text-slate-200 bg-white dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-400 placeholder:text-zinc-400 dark:placeholder:text-slate-500"
+        className="w-full px-3 py-2 rounded-lg border border-zinc-200 dark:border-slate-600 text-sm text-zinc-900 dark:text-slate-200 bg-white dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-violet-400 placeholder:text-zinc-400 dark:placeholder:text-slate-500"
       />
     </div>
   );
@@ -1024,7 +1024,7 @@ function Toggle({
       </div>
       <button
         onClick={() => onChange(!value)}
-        className={`relative w-11 h-6 rounded-full transition-colors ${value ? "bg-indigo-600" : "bg-zinc-200 dark:bg-slate-600"}`}
+        className={`relative w-11 h-6 rounded-full transition-colors ${value ? "bg-violet-600" : "bg-zinc-200 dark:bg-slate-600"}`}
       >
         <span
           className={`absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white shadow transition-transform ${value ? "translate-x-5" : "translate-x-0"}`}
@@ -1040,7 +1040,7 @@ function SupportLink({ href, label, desc, external }: { href: string; label: str
       href={href}
       target={external ? "_blank" : undefined}
       rel={external ? "noopener noreferrer" : undefined}
-      className="flex items-center justify-between rounded-xl border border-zinc-100 dark:border-slate-600 bg-zinc-50/50 dark:bg-slate-700/30 p-4 hover:border-indigo-200 dark:hover:border-indigo-800 hover:bg-indigo-50/30 dark:hover:bg-indigo-950/30 transition-colors"
+      className="flex items-center justify-between rounded-xl border border-zinc-100 dark:border-slate-600 bg-zinc-50/50 dark:bg-slate-700/30 p-4 hover:border-violet-200 dark:hover:border-violet-800 hover:bg-violet-50/30 dark:hover:bg-indigo-950/30 transition-colors"
     >
       <div>
         <p className="text-sm font-medium text-zinc-900 dark:text-slate-100">{label}</p>

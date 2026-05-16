@@ -148,13 +148,13 @@ function highlightQuestion(text: string): React.ReactNode[] {
     if (/^\*\*[^*]+\*\*$/.test(segment)) {
       const inner = segment.slice(2, -2);
       return (
-        <span key={si} className="text-indigo-600 dark:text-indigo-400 font-extrabold">
+        <span key={si} className="text-violet-600 dark:text-violet-400 font-extrabold">
           {inner}
         </span>
       );
     }
     if (/^[""][^""]+[""]$/.test(segment)) {
-      return <span key={si} className="text-indigo-600 dark:text-indigo-400 font-extrabold">{segment}</span>;
+      return <span key={si} className="text-violet-600 dark:text-violet-400 font-extrabold">{segment}</span>;
     }
     const cleanSegment = segment.replace(/\*\*/g, "");
     const hasEmphasis = /\b[A-Z]{3,}\b/.test(cleanSegment);
@@ -162,10 +162,10 @@ function highlightQuestion(text: string): React.ReactNode[] {
       const clean = part.replace(/[^a-zA-Z']/g, "");
       if (hasEmphasis) {
         if (/^[A-Z]{3,}$/.test(clean)) {
-          return <span key={`${si}-${pi}`} className="text-indigo-600 dark:text-indigo-400 font-extrabold">{part}</span>;
+          return <span key={`${si}-${pi}`} className="text-violet-600 dark:text-violet-400 font-extrabold">{part}</span>;
         }
       } else if (clean.length > 1 && QUESTION_WORDS.has(clean)) {
-        return <span key={`${si}-${pi}`} className="text-indigo-600 dark:text-indigo-400 font-extrabold">{part}</span>;
+        return <span key={`${si}-${pi}`} className="text-violet-600 dark:text-violet-400 font-extrabold">{part}</span>;
       }
       return part;
     });
@@ -195,7 +195,7 @@ function LoadingScreen() {
   return (
     <div className="min-h-[100dvh] bg-gray-50 dark:bg-[#0f172a] flex items-center justify-center">
       <div className="flex flex-col items-center gap-3">
-        <div className="w-10 h-10 rounded-full border-4 border-indigo-200 border-t-indigo-500 animate-spin" />
+        <div className="w-10 h-10 rounded-full border-4 border-violet-200 border-t-violet-500 animate-spin" />
         <p className="text-sm text-zinc-500 dark:text-slate-400">Loading lesson...</p>
       </div>
     </div>
@@ -303,7 +303,7 @@ function LearnLoader() {
           <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">{error}</p>
           <Link
             href="/dashboard"
-            className="mt-5 inline-block rounded-full bg-indigo-600 px-5 py-2.5 text-sm font-bold text-white hover:bg-indigo-700"
+            className="mt-5 inline-block rounded-full bg-violet-600 px-5 py-2.5 text-sm font-bold text-white hover:bg-violet-700"
           >
             Back to Dashboard
           </Link>
@@ -575,7 +575,7 @@ function LearnSession({
         {/* Progress bar */}
         <div className="flex-1 mx-3 h-2.5 rounded-full bg-zinc-200 dark:bg-slate-700 overflow-hidden">
           <motion.div
-            className="h-full rounded-full bg-indigo-500"
+            className="h-full rounded-full bg-violet-500"
             initial={{ width: 0 }}
             animate={{ width: `${((currentIdx + (showFeedback ? 1 : 0)) / totalQ) * 100}%` }}
             transition={{ duration: 0.4, ease: "easeOut" }}
@@ -703,10 +703,10 @@ function LearnSession({
             </h2>
             <button
               onClick={handleReplay}
-              className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-indigo-50 dark:bg-indigo-500/20 hover:bg-indigo-100 dark:hover:bg-indigo-500/30 transition-colors flex-shrink-0"
+              className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-violet-50 dark:bg-violet-500/20 hover:bg-violet-100 dark:hover:bg-violet-500/30 transition-colors flex-shrink-0"
               aria-label="Replay audio"
             >
-              <svg className="w-5 h-5 text-indigo-600 dark:text-indigo-300" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+              <svg className="w-5 h-5 text-violet-600 dark:text-violet-300" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.536 8.464a5 5 0 010 7.072M17.95 6.05a8 8 0 010 11.9M11 5L6 9H2v6h4l5 4V5z" />
               </svg>
             </button>
@@ -722,7 +722,7 @@ function LearnSession({
             if (answer) {
               dotClass = answer.correct ? "bg-emerald-500" : "bg-red-400";
             } else if (isCurrent) {
-              dotClass = "bg-indigo-500";
+              dotClass = "bg-violet-500";
             }
             return (
               <div
@@ -749,9 +749,9 @@ function LearnSession({
             let extra = "";
 
             if (!answered && previewedChoice === choice) {
-              extra = "ring-2 ring-offset-2 ring-indigo-500 animate-pulse";
+              extra = "ring-2 ring-offset-2 ring-violet-500 animate-pulse";
             } else if (!answered && isSelected) {
-              extra = "ring-2 ring-offset-2 ring-indigo-500";
+              extra = "ring-2 ring-offset-2 ring-violet-500";
             } else if (answered) {
               if (isSelected && isCorrect) {
                 bg = "bg-emerald-500 border-emerald-600 dark:bg-emerald-500 dark:border-emerald-600";

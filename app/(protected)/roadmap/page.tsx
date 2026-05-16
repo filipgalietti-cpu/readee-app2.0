@@ -581,7 +581,7 @@ function SnakePathRoadmap({ child, userPlan }: { child: Child; userPlan: string 
       <div className="max-w-lg mx-auto px-4">
         {/* ── Nav ── */}
         <div className="pt-4 mb-4">
-          <Link href="/dashboard" className="text-sm text-indigo-600 hover:text-indigo-700 font-medium transition-colors">
+          <Link href="/dashboard" className="text-sm text-violet-600 hover:text-violet-700 font-medium transition-colors">
             &larr; Dashboard
           </Link>
         </div>
@@ -753,7 +753,7 @@ function TopProgressBar({ pct, completedCount, totalStandards, totalCarrots, str
   streakDays: number;
 }) {
   return (
-    <div className="rounded-2xl bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 p-4 shadow-lg relative z-20">
+    <div className="rounded-2xl bg-gradient-to-r from-violet-600 via-violet-600 to-purple-600 p-4 shadow-lg relative z-20">
       <div className="flex items-center gap-3 mb-3">
         <div className="relative w-12 h-12 flex-shrink-0">
           <svg viewBox="0 0 100 100" className="w-12 h-12 -rotate-90">
@@ -877,11 +877,11 @@ function MapNode({
   const dark = isDarkZone(node.y, totalHeight);
   const labelColorClass = dark
     ? (status === "completed" ? "text-emerald-300"
-      : status === "current" ? "text-indigo-300"
+      : status === "current" ? "text-violet-300"
       : isPremium ? "text-violet-300"
       : "text-zinc-300")
     : (status === "completed" ? "text-emerald-700"
-      : status === "current" ? "text-indigo-700"
+      : status === "current" ? "text-violet-700"
       : isPremium ? "text-violet-400"
       : "text-zinc-400");
 
@@ -932,11 +932,11 @@ function MapNode({
           whileHover={{ scale: 1.1 }}
           className={`
             w-full h-full relative rounded-full flex items-center justify-center
-            bg-gradient-to-br from-indigo-500 to-violet-600 text-white
+            bg-gradient-to-br from-violet-500 to-violet-600 text-white
             shadow-[0_4px_0_0_#4338ca] outline-none select-none cursor-pointer
-            border-[3px] border-indigo-300/80
+            border-[3px] border-violet-300/80
             roadmap-breathe
-            ${isActive ? "ring-4 ring-indigo-400/40" : ""}
+            ${isActive ? "ring-4 ring-violet-400/40" : ""}
           `}
           aria-label={`${standard.standard_id}: ${standard.standard_description}`}
         >
@@ -952,7 +952,7 @@ function MapNode({
             w-full h-full relative rounded-full flex items-center justify-center cursor-pointer
             border-[3px]
             ${isPremium
-              ? "bg-gradient-to-b from-indigo-300 to-violet-400 text-white/70 shadow-[0_2px_0_0_#6d28d9] opacity-70 border-violet-300/50"
+              ? "bg-gradient-to-b from-violet-300 to-violet-400 text-white/70 shadow-[0_2px_0_0_#6d28d9] opacity-70 border-violet-300/50"
               : "bg-gradient-to-b from-zinc-300 to-zinc-400 text-zinc-500 shadow-[0_2px_0_0_#a1a1aa] opacity-60 border-zinc-200"
             }
           `}
@@ -968,7 +968,7 @@ function MapNode({
             </svg>
           )}
           {isPremium && (
-            <span className="absolute -top-1 -right-1 px-1 py-0.5 rounded-full bg-gradient-to-r from-indigo-500 to-violet-500 text-[6px] font-extrabold text-white shadow-sm leading-none border border-white">
+            <span className="absolute -top-1 -right-1 px-1 py-0.5 rounded-full bg-gradient-to-r from-violet-500 to-violet-500 text-[6px] font-extrabold text-white shadow-sm leading-none border border-white">
               R+
             </span>
           )}
@@ -1064,14 +1064,14 @@ function NodeTooltip({ standard, progress, isPremium, childId, nodeSize }: {
         )}
 
         {status === "current" && progress.score != null && (
-          <div className="bg-indigo-50 dark:bg-indigo-900/20 rounded-xl p-2.5">
+          <div className="bg-violet-50 dark:bg-violet-900/20 rounded-xl p-2.5">
             <div className="flex items-center justify-between">
-              <span className="text-xs text-indigo-600 dark:text-indigo-400 font-medium">Progress</span>
-              <span className="text-xs font-bold text-indigo-700 dark:text-indigo-300">{progress.score}/{progress.total}</span>
+              <span className="text-xs text-violet-600 dark:text-violet-400 font-medium">Progress</span>
+              <span className="text-xs font-bold text-violet-700 dark:text-violet-300">{progress.score}/{progress.total}</span>
             </div>
-            <div className="mt-1.5 h-2 bg-indigo-100 dark:bg-indigo-900/30 rounded-full overflow-hidden">
+            <div className="mt-1.5 h-2 bg-violet-100 dark:bg-violet-900/30 rounded-full overflow-hidden">
               <div
-                className="h-full bg-gradient-to-r from-indigo-500 to-violet-500 rounded-full"
+                className="h-full bg-gradient-to-r from-violet-500 to-violet-500 rounded-full"
                 style={{ width: `${((progress.score || 0) / (progress.total || 1)) * 100}%` }}
               />
             </div>
@@ -1081,7 +1081,7 @@ function NodeTooltip({ standard, progress, isPremium, childId, nodeSize }: {
         {status === "current" && (
           <Link
             href={`/practice?child=${childId}&standard=${standard.standard_id}`}
-            className="block w-full text-center px-4 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-sm font-bold hover:from-indigo-700 hover:to-violet-600 transition-all shadow-md"
+            className="block w-full text-center px-4 py-2.5 rounded-xl bg-gradient-to-r from-violet-600 to-violet-500 text-white text-sm font-bold hover:from-violet-700 hover:to-violet-600 transition-all shadow-md"
           >
             {progress.score && progress.score > 0 ? "Continue" : "Start"} Practice →
           </Link>
@@ -1095,14 +1095,14 @@ function NodeTooltip({ standard, progress, isPremium, childId, nodeSize }: {
 
         {status === "locked" && isPremium && (
           <div className="space-y-2">
-            <div className="bg-gradient-to-r from-indigo-50 to-violet-50 dark:from-indigo-900/20 dark:to-violet-900/20 rounded-xl p-3 text-center">
-              <p className="text-[11px] text-indigo-600 dark:text-indigo-400 font-medium">
+            <div className="bg-gradient-to-r from-violet-50 to-violet-50 dark:from-violet-900/20 dark:to-violet-900/20 rounded-xl p-3 text-center">
+              <p className="text-[11px] text-violet-600 dark:text-violet-400 font-medium">
                 This standard is part of Readee+
               </p>
             </div>
             <Link
               href={`/upgrade?child=${childId}`}
-              className="flex items-center justify-center gap-1.5 w-full px-4 py-2.5 rounded-xl bg-gradient-to-r from-indigo-500 to-violet-500 text-white text-sm font-bold hover:from-indigo-600 hover:to-violet-600 transition-all shadow-md"
+              className="flex items-center justify-center gap-1.5 w-full px-4 py-2.5 rounded-xl bg-gradient-to-r from-violet-500 to-violet-500 text-white text-sm font-bold hover:from-violet-600 hover:to-violet-600 transition-all shadow-md"
             >
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
@@ -1123,10 +1123,10 @@ function StatusBadge({ status, isPremium }: { status: StandardProgress["status"]
     return <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400">Completed ✓</span>;
   }
   if (status === "current") {
-    return <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-400">In Progress</span>;
+    return <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-violet-100 dark:bg-violet-900/30 text-violet-700 dark:text-violet-400">In Progress</span>;
   }
   if (isPremium) {
-    return <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-gradient-to-r from-indigo-100 to-violet-100 dark:from-indigo-900/30 dark:to-violet-900/30 text-indigo-600 dark:text-indigo-400">Readee+</span>;
+    return <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-gradient-to-r from-violet-100 to-violet-100 dark:from-violet-900/30 dark:to-violet-900/30 text-violet-600 dark:text-violet-400">Readee+</span>;
   }
   return <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 inline-flex items-center gap-0.5">Locked <Lock className="w-3 h-3" strokeWidth={1.5} /></span>;
 }

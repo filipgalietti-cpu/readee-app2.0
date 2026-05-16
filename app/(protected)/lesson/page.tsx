@@ -32,10 +32,10 @@ const LEARN_ICON_MAP: Record<string, LucideIcon> = {
 
 function emojiToIcon(emoji: string): React.ReactNode {
   const Icon = LEARN_ICON_MAP[emoji];
-  if (Icon) return <Icon className="w-12 h-12 text-indigo-500" strokeWidth={1.5} />;
+  if (Icon) return <Icon className="w-12 h-12 text-violet-500" strokeWidth={1.5} />;
   if (!emoji) return null;
   // For any unmapped emoji from JSON data, use BookOpen as fallback
-  return <BookOpen className="w-12 h-12 text-indigo-500" strokeWidth={1.5} />;
+  return <BookOpen className="w-12 h-12 text-violet-500" strokeWidth={1.5} />;
 }
 
 type Phase = "loading" | "learn" | "practice" | "complete";
@@ -189,7 +189,7 @@ function LessonSpeakerButton({ lessonId, audioFile, light = false }: { lessonId:
       // 44×44 tap target — kid fingers are big. The visible glyph stays
       // small via the inner icon size; padding does the work.
       className={`inline-flex items-center justify-center h-11 w-11 rounded-full transition-colors flex-shrink-0 ${
-        light ? "hover:bg-black/5 text-indigo-500" : "hover:bg-white/10 text-indigo-300"
+        light ? "hover:bg-black/5 text-violet-500" : "hover:bg-white/10 text-violet-300"
       }`}
       aria-label="Listen"
     >
@@ -205,7 +205,7 @@ function LessonMuteToggle() {
   return (
     <button
       onClick={toggleMute}
-      className="h-11 w-11 rounded-full flex items-center justify-center text-zinc-400 hover:text-indigo-600 hover:bg-indigo-50 transition-colors flex-shrink-0"
+      className="h-11 w-11 rounded-full flex items-center justify-center text-zinc-400 hover:text-violet-600 hover:bg-violet-50 transition-colors flex-shrink-0"
       aria-label={muted ? "Unmute" : "Mute"}
     >
       {muted ? (
@@ -278,7 +278,7 @@ function SectionProgressBar({
                 isComplete
                   ? "bg-green-400"
                   : isCurrent
-                  ? "bg-gradient-to-r from-indigo-500 to-violet-500"
+                  ? "bg-gradient-to-r from-violet-500 to-violet-500"
                   : "bg-zinc-100"
               }`} />
             </div>
@@ -292,7 +292,7 @@ function SectionProgressBar({
             const isCurrent = i === currentIdx && phase !== "complete";
             return (
               <span key={s.key} className={`inline-flex items-center gap-1 font-medium ${
-                isComplete ? "text-green-600" : isCurrent ? "text-indigo-600" : "text-zinc-300"
+                isComplete ? "text-green-600" : isCurrent ? "text-violet-600" : "text-zinc-300"
               }`}>
                 {isComplete && <Check className="h-3.5 w-3.5" strokeWidth={3} />}
                 {s.label}
@@ -372,8 +372,8 @@ function DragMatchQuestion({
                     : wrongPair === item
                     ? "border-red-400 bg-red-50 animate-wrongShake"
                     : dragging === item
-                    ? "border-indigo-500 bg-indigo-50 scale-105 shadow-md"
-                    : "border-zinc-200 bg-white hover:border-indigo-300"
+                    ? "border-violet-500 bg-violet-50 scale-105 shadow-md"
+                    : "border-zinc-200 bg-white hover:border-violet-300"
                 }`}
               >
                 {item}
@@ -440,7 +440,7 @@ function FillBlankQuestion({
               ? selected === question.blank_word
                 ? "border-green-400 bg-green-50 text-green-700"
                 : "border-red-400 bg-red-50 text-red-700"
-              : "border-indigo-300 bg-indigo-50 text-indigo-400"
+              : "border-violet-300 bg-violet-50 text-violet-400"
           }`}>
             {selected || "?"}
           </span>
@@ -460,7 +460,7 @@ function FillBlankQuestion({
                 ? "border-red-400 bg-red-50 text-red-700 animate-wrongShake"
                 : selected
                 ? "border-zinc-100 bg-zinc-50 text-zinc-300"
-                : "border-zinc-200 bg-white text-zinc-800 hover:border-indigo-300 hover:shadow-md active:scale-95"
+                : "border-zinc-200 bg-white text-zinc-800 hover:border-violet-300 hover:shadow-md active:scale-95"
             }`}
           >
             {chip}
@@ -478,7 +478,7 @@ export default function LessonPage() {
     <Suspense
       fallback={
         <div className="flex items-center justify-center min-h-[60vh]">
-          <div className="h-10 w-10 rounded-full border-4 border-indigo-200 border-t-indigo-600 animate-spin" />
+          <div className="h-10 w-10 rounded-full border-4 border-violet-200 border-t-violet-600 animate-spin" />
         </div>
       }
     >
@@ -885,7 +885,7 @@ function LessonContent() {
           <p className="text-sm text-zinc-500 dark:text-slate-400">{loadError}</p>
           <Link
             href="/dashboard"
-            className="mt-2 inline-block rounded-full bg-indigo-600 px-5 py-2.5 text-sm font-bold text-white hover:bg-indigo-700"
+            className="mt-2 inline-block rounded-full bg-violet-600 px-5 py-2.5 text-sm font-bold text-white hover:bg-violet-700"
           >
             Back to Dashboard
           </Link>
@@ -897,12 +897,12 @@ function LessonContent() {
   if (phase === "loading" || !child || !lesson) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="h-10 w-10 rounded-full border-4 border-indigo-200 border-t-indigo-600 animate-spin" />
+        <div className="h-10 w-10 rounded-full border-4 border-violet-200 border-t-violet-600 animate-spin" />
       </div>
     );
   }
 
-  const pageWrapper = "min-h-screen bg-gradient-to-b from-indigo-50/40 via-white to-violet-50/30";
+  const pageWrapper = "min-h-screen bg-gradient-to-b from-violet-50/40 via-white to-violet-50/30";
 
   /* ═══════════════════════════════════════════════════════
      LEARN PHASE — Flashcard Mode
@@ -934,7 +934,7 @@ function LessonContent() {
             <p className="text-zinc-500 mt-1 text-sm max-w-md mx-auto">
               {lesson.learn.content}
             </p>
-            <span className="inline-block mt-2 text-[11px] font-medium text-indigo-500 bg-indigo-50 px-2.5 py-0.5 rounded-full">
+            <span className="inline-block mt-2 text-[11px] font-medium text-violet-500 bg-violet-50 px-2.5 py-0.5 rounded-full">
               Skill: {formatSkillName(lesson.skill)}
             </span>
           </div>
@@ -950,7 +950,7 @@ function LessonContent() {
             {icon && <div className="flex justify-center">{icon}</div>}
 
             {/* Big title / letter */}
-            <div className="text-5xl sm:text-6xl font-black text-indigo-700 tracking-tight leading-tight">
+            <div className="text-5xl sm:text-6xl font-black text-violet-700 tracking-tight leading-tight">
               {title}
             </div>
 
@@ -967,7 +967,7 @@ function LessonContent() {
             {/* Speaker + Say it out loud prompt */}
             <div className="flex items-center justify-center gap-2 mt-4">
               <LessonSpeakerButton lessonId={lessonId!} audioFile={`learn-${learnIdx + 1}`} light />
-              <p className="text-sm text-indigo-500 font-semibold">
+              <p className="text-sm text-violet-500 font-semibold">
                 Say it out loud!
               </p>
             </div>
@@ -980,9 +980,9 @@ function LessonContent() {
                 key={i}
                 className={`rounded-full transition-all duration-300 ${
                   i === learnIdx
-                    ? "w-3 h-3 bg-indigo-500"
+                    ? "w-3 h-3 bg-violet-500"
                     : i < learnIdx
-                    ? "w-2 h-2 bg-indigo-300"
+                    ? "w-2 h-2 bg-violet-300"
                     : "w-2 h-2 bg-zinc-200"
                 }`}
               />
@@ -996,7 +996,7 @@ function LessonContent() {
           <button
             onClick={handleLearnNext}
             disabled={cardAnimating}
-            className="w-full py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white font-bold text-lg hover:from-indigo-700 hover:to-violet-600 transition-all shadow-lg animate-gentleBounce disabled:opacity-70"
+            className="w-full py-4 rounded-2xl bg-gradient-to-r from-violet-600 to-violet-500 text-white font-bold text-lg hover:from-violet-700 hover:to-violet-600 transition-all shadow-lg animate-gentleBounce disabled:opacity-70"
           >
             {learnIdx + 1 < totalCards ? "Next →" : "Got it! Let's practice!"}
           </button>
@@ -1085,7 +1085,7 @@ function LessonContent() {
                   feedback.type === "correct"
                     ? "bg-green-50 text-green-700 border border-green-200"
                     : feedback.type === "reveal"
-                    ? "bg-indigo-50 text-indigo-700 border border-indigo-200"
+                    ? "bg-violet-50 text-violet-700 border border-violet-200"
                     : "bg-amber-50 text-amber-700 border border-amber-200"
                 }`}>
                   {feedback.text}
@@ -1113,7 +1113,7 @@ function LessonContent() {
                             ? "border-green-500 bg-green-50 scale-[1.02]"
                             : isWrong
                             ? "border-red-200 bg-red-50/50 opacity-50"
-                            : "border-zinc-200 bg-white hover:border-indigo-300 hover:shadow-md active:scale-[0.98]"
+                            : "border-zinc-200 bg-white hover:border-violet-300 hover:shadow-md active:scale-[0.98]"
                         }
                         ${isWrong && !showCorrect ? "animate-wrongShake" : ""}
                         disabled:cursor-default
@@ -1207,7 +1207,7 @@ function LessonContent() {
             <div className="space-y-3 pt-4">
               <button
                 onClick={handleRetry}
-                className="block w-full py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white font-bold text-lg hover:from-indigo-700 hover:to-violet-600 transition-all shadow-lg"
+                className="block w-full py-4 rounded-2xl bg-gradient-to-r from-violet-600 to-violet-500 text-white font-bold text-lg hover:from-violet-700 hover:to-violet-600 transition-all shadow-lg"
               >
                 Try Again
               </button>
@@ -1239,7 +1239,7 @@ function LessonContent() {
             />
           ))}
 
-          <div className="flex justify-center"><Sparkles className="w-16 h-16 text-indigo-500" strokeWidth={1.5} /></div>
+          <div className="flex justify-center"><Sparkles className="w-16 h-16 text-violet-500" strokeWidth={1.5} /></div>
 
           <h1 className="text-3xl font-bold text-zinc-900 tracking-tight">
             Lesson Complete!
@@ -1291,7 +1291,7 @@ function LessonContent() {
                 </div>
               )}
               {showLevelUp && (
-                <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-gradient-to-r from-violet-100 to-indigo-100 border border-violet-200">
+                <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-gradient-to-r from-violet-100 to-violet-100 border border-violet-200">
                   <Rocket className="w-5 h-5 text-violet-600" strokeWidth={1.5} />
                   <div className="text-left">
                     <div className="text-[10px] font-medium text-violet-600 uppercase tracking-wider">Leveled up</div>
@@ -1309,14 +1309,14 @@ function LessonContent() {
             {showLevelUp ? (
               <Link
                 href="/dashboard"
-                className="block w-full py-4 rounded-2xl bg-gradient-to-r from-violet-600 to-indigo-500 text-white font-bold text-lg hover:from-violet-700 hover:to-indigo-600 transition-all shadow-lg"
+                className="block w-full py-4 rounded-2xl bg-gradient-to-r from-violet-600 to-violet-500 text-white font-bold text-lg hover:from-violet-700 hover:to-violet-600 transition-all shadow-lg"
               >
                 Level Up!
               </Link>
             ) : nextLessonId ? (
               <Link
                 href={`/lesson?child=${child.id}&lesson=${nextLessonId}`}
-                className="block w-full py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white font-bold text-lg hover:from-indigo-700 hover:to-violet-600 transition-all shadow-lg"
+                className="block w-full py-4 rounded-2xl bg-gradient-to-r from-violet-600 to-violet-500 text-white font-bold text-lg hover:from-violet-700 hover:to-violet-600 transition-all shadow-lg"
               >
                 Next Lesson →
               </Link>
@@ -1326,7 +1326,7 @@ function LessonContent() {
               className={`block w-full py-4 rounded-2xl font-bold text-lg transition-all ${
                 nextLessonId || showLevelUp
                   ? "bg-white border-2 border-zinc-200 text-zinc-700 hover:bg-zinc-50"
-                  : "bg-gradient-to-r from-indigo-600 to-violet-500 text-white hover:from-indigo-700 hover:to-violet-600 shadow-lg"
+                  : "bg-gradient-to-r from-violet-600 to-violet-500 text-white hover:from-violet-700 hover:to-violet-600 shadow-lg"
               }`}
             >
               Back to Dashboard
@@ -1344,7 +1344,7 @@ function LessonContent() {
               </p>
               <Link
                 href={`/upgrade?child=${child.id}`}
-                className="mt-3 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-sm font-bold hover:from-indigo-700 hover:to-violet-600 transition-all shadow-md"
+                className="mt-3 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-violet-600 to-violet-500 text-white text-sm font-bold hover:from-violet-700 hover:to-violet-600 transition-all shadow-md"
               >
                 Unlock Readee+
               </Link>
@@ -1353,19 +1353,19 @@ function LessonContent() {
 
           {/* Parent snapshot — collapsed by default so the kid's
               celebration owns the screen. Parents tap to expand. */}
-          <details className="text-left rounded-2xl border border-indigo-200 bg-gradient-to-r from-indigo-50/80 to-violet-50/80 p-4 group">
+          <details className="text-left rounded-2xl border border-violet-200 bg-gradient-to-r from-violet-50/80 to-violet-50/80 p-4 group">
             <summary className="flex items-center justify-between cursor-pointer list-none">
               <p className="text-sm font-semibold text-zinc-900">Parent progress snapshot</p>
-              <span className="px-2 py-1 rounded-full text-[11px] font-bold bg-white text-indigo-700 border border-indigo-100">
+              <span className="px-2 py-1 rounded-full text-[11px] font-bold bg-white text-violet-700 border border-violet-100">
                 {practiceAccuracy}% accuracy
               </span>
             </summary>
             <div className="grid grid-cols-2 gap-2 text-center mt-3">
-              <div className="rounded-lg bg-white border border-indigo-100 px-2 py-2">
+              <div className="rounded-lg bg-white border border-violet-100 px-2 py-2">
                 <p className="text-[11px] text-zinc-500">Score</p>
                 <p className="text-sm font-bold text-zinc-900">{practiceCorrect}/{practiceTotal}</p>
               </div>
-              <div className="rounded-lg bg-white border border-indigo-100 px-2 py-2">
+              <div className="rounded-lg bg-white border border-violet-100 px-2 py-2">
                 <p className="text-[11px] text-zinc-500">Accuracy</p>
                 <p className="text-sm font-bold text-zinc-900">{practiceAccuracy}%</p>
               </div>

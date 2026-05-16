@@ -71,8 +71,8 @@ function WordBankContent() {
       {/* Header */}
       <div className="mb-6">
         <div className="flex items-center gap-3 mb-2">
-          <div className="w-12 h-12 rounded-2xl bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center">
-            <BookOpen className="w-6 h-6 text-indigo-500 dark:text-indigo-400" strokeWidth={1.5} />
+          <div className="w-12 h-12 rounded-2xl bg-violet-100 dark:bg-violet-900/50 flex items-center justify-center">
+            <BookOpen className="w-6 h-6 text-violet-500 dark:text-violet-400" strokeWidth={1.5} />
           </div>
           <div>
             <h1 className="text-2xl font-bold text-zinc-900 dark:text-slate-100 tracking-tight">
@@ -93,7 +93,7 @@ function WordBankContent() {
             onClick={() => setActiveFilter(f.tag)}
             className={`flex-shrink-0 py-2 px-4 rounded-xl text-sm font-medium transition-all ${
               activeFilter === f.tag
-                ? "bg-indigo-600 text-white shadow-sm"
+                ? "bg-violet-600 text-white shadow-sm"
                 : "bg-zinc-100 dark:bg-slate-800 text-zinc-600 dark:text-slate-400 hover:bg-zinc-200 dark:hover:bg-slate-700"
             }`}
           >
@@ -126,14 +126,14 @@ function WordBankContent() {
                   isLocked
                     ? "blur-sm opacity-50 cursor-default border-zinc-200 dark:border-slate-700 bg-zinc-50 dark:bg-slate-800"
                     : isPlaying
-                    ? "border-indigo-500 bg-indigo-50 dark:bg-indigo-900/30 dark:border-indigo-400 scale-[1.05] shadow-md"
-                    : "border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-indigo-300 dark:hover:border-indigo-600 hover:shadow-sm active:scale-95"
+                    ? "border-violet-500 bg-violet-50 dark:bg-violet-900/30 dark:border-violet-400 scale-[1.05] shadow-md"
+                    : "border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-violet-300 dark:hover:border-violet-600 hover:shadow-sm active:scale-95"
                 }`}
               >
                 <div
                   className={`text-base font-bold capitalize ${
                     isPlaying
-                      ? "text-indigo-700 dark:text-indigo-300"
+                      ? "text-violet-700 dark:text-violet-300"
                       : "text-zinc-800 dark:text-slate-200"
                   }`}
                 >
@@ -141,13 +141,13 @@ function WordBankContent() {
                 </div>
                 {isPlaying && (
                   <div className="flex items-center justify-center gap-0.5 mt-1">
-                    <div className="w-1 h-3 bg-indigo-500 rounded-full animate-pulse" />
+                    <div className="w-1 h-3 bg-violet-500 rounded-full animate-pulse" />
                     <div
-                      className="w-1 h-4 bg-indigo-500 rounded-full animate-pulse"
+                      className="w-1 h-4 bg-violet-500 rounded-full animate-pulse"
                       style={{ animationDelay: "0.15s" }}
                     />
                     <div
-                      className="w-1 h-2 bg-indigo-500 rounded-full animate-pulse"
+                      className="w-1 h-2 bg-violet-500 rounded-full animate-pulse"
                       style={{ animationDelay: "0.3s" }}
                     />
                   </div>
@@ -178,7 +178,7 @@ function WordBankContent() {
         {!isPremium && filteredWords.length > FREE_WORD_LIMIT && (
           <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-white dark:from-slate-900 via-white/90 dark:via-slate-900/90 to-transparent flex items-end justify-center pb-6">
             <div className="text-center px-6 py-6 max-w-sm">
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-violet-100 to-indigo-100 dark:from-violet-900/40 dark:to-indigo-900/40 mx-auto mb-3 flex items-center justify-center shadow-sm">
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-violet-100 to-violet-100 dark:from-violet-900/40 dark:to-violet-900/40 mx-auto mb-3 flex items-center justify-center shadow-sm">
                 <BookOpen className="w-7 h-7 text-violet-600 dark:text-violet-400" strokeWidth={1.5} />
               </div>
               <h2 className="text-lg font-extrabold text-zinc-900 dark:text-slate-100 mb-1.5">
@@ -190,7 +190,7 @@ function WordBankContent() {
               </p>
               <Link
                 href="/upgrade"
-                className="relative inline-flex items-center gap-2 px-7 py-3 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-bold text-sm hover:from-violet-700 hover:to-indigo-700 transition-all shadow-lg hover:shadow-xl hover:scale-105 overflow-hidden group"
+                className="relative inline-flex items-center gap-2 px-7 py-3 rounded-xl bg-gradient-to-r from-violet-600 to-violet-600 text-white font-bold text-sm hover:from-violet-700 hover:to-violet-700 transition-all shadow-lg hover:shadow-xl hover:scale-105 overflow-hidden group"
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
                 <Star className="relative w-4 h-4" strokeWidth={1.5} />

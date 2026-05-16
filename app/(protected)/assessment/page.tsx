@@ -325,7 +325,7 @@ function WordBuilderInline({
     <div className="space-y-6 text-center">
       <h2 className="text-xl font-bold text-zinc-900">{prompt}</h2>
 
-      <div className="text-5xl font-bold text-indigo-600 tracking-wider">-{wordEnding}</div>
+      <div className="text-5xl font-bold text-violet-600 tracking-wider">-{wordEnding}</div>
 
       <div className={`flex items-center justify-center gap-2 ${shake ? "animate-shake" : ""}`}>
         <input
@@ -334,7 +334,7 @@ function WordBuilderInline({
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && input.trim() && handleTry()}
           placeholder="Type letters..."
-          className="w-32 text-center text-2xl font-bold border-2 border-indigo-300 rounded-xl px-3 py-2 focus:outline-none focus:border-indigo-500"
+          className="w-32 text-center text-2xl font-bold border-2 border-violet-300 rounded-xl px-3 py-2 focus:outline-none focus:border-violet-500"
           disabled={done}
           autoFocus
         />
@@ -342,7 +342,7 @@ function WordBuilderInline({
         <button
           onClick={handleTry}
           disabled={!input.trim() || done}
-          className="px-4 py-2 rounded-xl bg-indigo-600 text-white font-bold disabled:opacity-40"
+          className="px-4 py-2 rounded-xl bg-violet-600 text-white font-bold disabled:opacity-40"
         >
           Try
         </button>
@@ -355,7 +355,7 @@ function WordBuilderInline({
               key={i}
               className={`px-3 py-1.5 rounded-full font-semibold text-sm ${
                 a.valid
-                  ? "bg-indigo-100 text-indigo-700"
+                  ? "bg-violet-100 text-violet-700"
                   : "bg-zinc-100 text-zinc-400 line-through"
               }`}
             >
@@ -371,7 +371,7 @@ function WordBuilderInline({
 
       <button
         onClick={handleDone}
-        className="px-8 py-3 rounded-2xl bg-indigo-600 text-white font-bold text-lg hover:bg-indigo-700 transition-colors"
+        className="px-8 py-3 rounded-2xl bg-violet-600 text-white font-bold text-lg hover:bg-violet-700 transition-colors"
       >
         I&apos;m Done
       </button>
@@ -777,7 +777,7 @@ function AssessmentContent() {
   if (phase === "loading" || !child) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="h-10 w-10 rounded-full border-4 border-indigo-200 border-t-indigo-600 animate-spin" />
+        <div className="h-10 w-10 rounded-full border-4 border-violet-200 border-t-violet-600 animate-spin" />
       </div>
     );
   }
@@ -820,7 +820,7 @@ function AssessmentContent() {
           </motion.div>
 
           {/* Gradient header */}
-          <div className="relative px-6 pt-10 pb-8 text-center overflow-hidden rounded-t-3xl bg-gradient-to-br from-indigo-500 via-violet-500 to-violet-400">
+          <div className="relative px-6 pt-10 pb-8 text-center overflow-hidden rounded-t-3xl bg-gradient-to-br from-violet-500 via-violet-500 to-violet-400">
             {/* Floating sparkles */}
             <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
               {sparkles.map((dot, i) => (
@@ -853,7 +853,7 @@ function AssessmentContent() {
             </motion.h1>
 
             <motion.p
-              className="relative text-indigo-100 text-base mt-2 font-medium"
+              className="relative text-violet-100 text-base mt-2 font-medium"
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.6 }}
@@ -870,7 +870,7 @@ function AssessmentContent() {
                 unlockAudio();
                 playUrl(`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audio/ui/assessment-intro.mp3?v=2`);
               }}
-              className="mx-auto mb-4 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 text-indigo-600 font-semibold text-sm hover:bg-indigo-100 transition-colors"
+              className="mx-auto mb-4 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-50 text-violet-600 font-semibold text-sm hover:bg-violet-100 transition-colors"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.6 }}
@@ -925,7 +925,7 @@ function AssessmentContent() {
               onClick={handleStart}
               className={`relative w-full py-4 rounded-2xl font-extrabold ${
                 pendingDraft
-                  ? "text-base text-zinc-600 border-2 border-zinc-200 bg-white hover:border-indigo-300 hover:text-indigo-700"
+                  ? "text-base text-zinc-600 border-2 border-zinc-200 bg-white hover:border-violet-300 hover:text-violet-700"
                   : "text-xl text-white"
               } transition-all hover:scale-[1.02] active:scale-[0.97] flex items-center justify-center gap-3`}
               style={
@@ -988,14 +988,14 @@ function AssessmentContent() {
         {/* Progress */}
         <div className="space-y-2">
           <div className="flex justify-between text-sm">
-            <span className="font-medium text-indigo-600">
+            <span className="font-medium text-violet-600">
               Question {currentIdx + 1} of {questions.length}
             </span>
             <span className="text-zinc-400">Placement Test</span>
           </div>
           <div className="h-2 bg-zinc-100 rounded-full overflow-hidden">
             <div
-              className="h-full bg-gradient-to-r from-indigo-600 to-violet-500 rounded-full transition-all duration-500"
+              className="h-full bg-gradient-to-r from-violet-600 to-violet-500 rounded-full transition-all duration-500"
               style={{ width: `${progress}%` }}
             />
           </div>
@@ -1013,12 +1013,12 @@ function AssessmentContent() {
 
         {/* Stimulus (MCQ passages/words) */}
         {q.type === "mcq" && q.stimulus && (
-          <div className="rounded-2xl bg-indigo-50 border border-indigo-100 p-6 text-center">
+          <div className="rounded-2xl bg-violet-50 border border-violet-100 p-6 text-center">
             <p className="text-lg text-zinc-700 leading-relaxed italic">
               {q.stimulus}
             </p>
             {q.stimulus2 && (
-              <p className="text-lg text-zinc-700 leading-relaxed italic mt-4 pt-4 border-t border-indigo-200">
+              <p className="text-lg text-zinc-700 leading-relaxed italic mt-4 pt-4 border-t border-violet-200">
                 {q.stimulus2}
               </p>
             )}
@@ -1033,10 +1033,10 @@ function AssessmentContent() {
           {q.audio_url && (
             <button
               onClick={handleReplay}
-              className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-indigo-50 hover:bg-indigo-100 transition-colors flex-shrink-0"
+              className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-violet-50 hover:bg-violet-100 transition-colors flex-shrink-0"
               aria-label="Replay audio"
             >
-              <Volume2 className="w-5 h-5 text-indigo-600" />
+              <Volume2 className="w-5 h-5 text-violet-600" />
             </button>
           )}
         </div>
@@ -1051,9 +1051,9 @@ function AssessmentContent() {
                 key={i}
                 className={`rounded-full transition-all duration-300 ${
                   answered
-                    ? "bg-indigo-400"
+                    ? "bg-violet-400"
                     : isCurrent
-                    ? "bg-indigo-500"
+                    ? "bg-violet-500"
                     : "bg-zinc-300"
                 } ${isCurrent ? "w-3.5 h-3.5" : "w-2.5 h-2.5"}`}
               />
@@ -1172,13 +1172,13 @@ function AssessmentContent() {
           {/* Animated spinner */}
           <div className="relative w-24 h-24 mx-auto">
             <motion.div
-              className="absolute inset-0 rounded-full border-4 border-indigo-200"
+              className="absolute inset-0 rounded-full border-4 border-violet-200"
               animate={{ rotate: 360 }}
               transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
               style={{ borderTopColor: "#6366f1", borderRightColor: "#8b5cf6" }}
             />
             <div className="absolute inset-0 flex items-center justify-center">
-              <Sparkles className="w-8 h-8 text-indigo-500" />
+              <Sparkles className="w-8 h-8 text-violet-500" />
             </div>
           </div>
 
@@ -1207,7 +1207,7 @@ function AssessmentContent() {
         Icon: BookOpen,
         title: "Learn",
         desc: "Short, fun lessons that teach you new reading skills step by step.",
-        color: "bg-indigo-50 text-indigo-600",
+        color: "bg-violet-50 text-violet-600",
       },
       {
         Icon: Headphones,
@@ -1282,7 +1282,7 @@ function AssessmentContent() {
             onClick={() => {
               playUrl(`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audio/ui/assessment-results.mp3?v=1`);
             }}
-            className="mx-auto inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 text-indigo-600 font-semibold text-sm hover:bg-indigo-100 transition-colors"
+            className="mx-auto inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-50 text-violet-600 font-semibold text-sm hover:bg-violet-100 transition-colors"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.45 }}

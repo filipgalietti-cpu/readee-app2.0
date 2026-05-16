@@ -151,7 +151,7 @@ export default function AccountPage() {
           {/* Profile Section */}
           <section className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
             <div className="flex items-center gap-2 mb-5">
-              <User className="w-5 h-5 text-indigo-500" strokeWidth={1.5} />
+              <User className="w-5 h-5 text-violet-500" strokeWidth={1.5} />
               <h2 className="text-base font-semibold text-zinc-900">Profile</h2>
             </div>
 
@@ -167,7 +167,7 @@ export default function AccountPage() {
                     onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; (e.target as HTMLImageElement).nextElementSibling?.classList.remove("hidden"); }}
                   />
                 ) : null}
-                <div className={`w-16 h-16 rounded-xl bg-gradient-to-br from-indigo-500 to-violet-500 flex items-center justify-center text-white text-xl font-bold ring-2 ring-zinc-100 ${profile.avatar_url ? "hidden" : ""}`}>
+                <div className={`w-16 h-16 rounded-xl bg-gradient-to-br from-violet-500 to-violet-500 flex items-center justify-center text-white text-xl font-bold ring-2 ring-zinc-100 ${profile.avatar_url ? "hidden" : ""}`}>
                   {initials}
                 </div>
               </div>
@@ -182,13 +182,13 @@ export default function AccountPage() {
                         type="text"
                         value={editName}
                         onChange={(e) => setEditName(e.target.value)}
-                        className="flex-1 px-3 py-2 rounded-lg border border-zinc-200 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                        className="flex-1 px-3 py-2 rounded-lg border border-zinc-200 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent"
                         autoFocus
                       />
                       <button
                         onClick={handleSaveName}
                         disabled={saving || !editName.trim()}
-                        className="px-3 py-2 rounded-lg bg-indigo-600 text-white text-sm font-medium hover:bg-indigo-700 transition-colors disabled:opacity-50"
+                        className="px-3 py-2 rounded-lg bg-violet-600 text-white text-sm font-medium hover:bg-violet-700 transition-colors disabled:opacity-50"
                       >
                         {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : "Save"}
                       </button>
@@ -202,7 +202,7 @@ export default function AccountPage() {
                   ) : (
                     <div className="flex items-center gap-2 mt-1">
                       <span className="text-sm text-zinc-900 font-medium">{profile.display_name}</span>
-                      <button onClick={() => setEditing(true)} className="text-xs text-indigo-600 hover:text-indigo-700 font-medium">
+                      <button onClick={() => setEditing(true)} className="text-xs text-violet-600 hover:text-violet-700 font-medium">
                         Edit
                       </button>
                       {saved && (
@@ -231,7 +231,7 @@ export default function AccountPage() {
           {isTeacher && (
             <section className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
               <div className="flex items-center gap-2 mb-4">
-                <GraduationCap className="w-5 h-5 text-indigo-500" strokeWidth={1.5} />
+                <GraduationCap className="w-5 h-5 text-violet-500" strokeWidth={1.5} />
                 <h2 className="text-base font-semibold text-zinc-900">Teaching</h2>
               </div>
               <div className="space-y-2 text-sm">
@@ -244,7 +244,7 @@ export default function AccountPage() {
                       Roster, assignments, live quizzes, and analytics
                     </div>
                   </div>
-                  <Link href="/classroom" className="text-xs font-semibold text-indigo-600 hover:text-indigo-700">
+                  <Link href="/classroom" className="text-xs font-semibold text-violet-600 hover:text-violet-700">
                     Open
                   </Link>
                 </div>
@@ -255,7 +255,7 @@ export default function AccountPage() {
                       Invite another teacher and you both get +200 Readee.ai credits
                     </div>
                   </div>
-                  <Link href="/classroom/refer" className="text-xs font-semibold text-indigo-600 hover:text-indigo-700">
+                  <Link href="/classroom/refer" className="text-xs font-semibold text-violet-600 hover:text-violet-700">
                     Open
                   </Link>
                 </div>
@@ -285,7 +285,7 @@ export default function AccountPage() {
           {hasChildren && (
           <section className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
             <div className="flex items-center gap-2 mb-4">
-              <Users className="w-5 h-5 text-indigo-500" strokeWidth={1.5} />
+              <Users className="w-5 h-5 text-violet-500" strokeWidth={1.5} />
               <h2 className="text-base font-semibold text-zinc-900">Linked Readers</h2>
             </div>
               <div className="space-y-2.5">
@@ -301,7 +301,7 @@ export default function AccountPage() {
                           {child.grade || "No grade set"}{child.reading_level ? ` · ${child.reading_level}` : ""}
                         </div>
                       </div>
-                      <Link href="/settings" className="text-xs text-indigo-600 hover:text-indigo-700 font-medium">
+                      <Link href="/settings" className="text-xs text-violet-600 hover:text-violet-700 font-medium">
                         Manage
                       </Link>
                     </div>
@@ -325,13 +325,13 @@ export default function AccountPage() {
           {/* Plan Section */}
           <section className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
             <div className="flex items-center gap-2 mb-4">
-              <Shield className="w-5 h-5 text-indigo-500" strokeWidth={1.5} />
+              <Shield className="w-5 h-5 text-violet-500" strokeWidth={1.5} />
               <h2 className="text-base font-semibold text-zinc-900">Plan</h2>
             </div>
             {profile.plan === "premium" && (
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <span className="px-3 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-violet-100 to-indigo-100 text-violet-700 border border-violet-200">
+                  <span className="px-3 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-violet-100 to-violet-100 text-violet-700 border border-violet-200">
                     Readee+
                   </span>
                   <span className="text-sm text-zinc-700">Full access to all lessons and features</span>
@@ -347,7 +347,7 @@ export default function AccountPage() {
             {profile.plan === "teacher_solo" && (
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <span className="px-3 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-indigo-100 to-violet-100 text-indigo-700 border border-indigo-200">
+                  <span className="px-3 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-violet-100 to-violet-100 text-violet-700 border border-violet-200">
                     Teacher Solo
                   </span>
                   <span className="text-sm text-zinc-700">
@@ -376,7 +376,7 @@ export default function AccountPage() {
                 </div>
                 <Link
                   href={isTeacher ? "/upgrade?reason=teacher_solo" : "/upgrade"}
-                  className="px-4 py-2 rounded-lg bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-sm font-semibold hover:from-indigo-700 hover:to-violet-600 transition-all shadow-sm"
+                  className="px-4 py-2 rounded-lg bg-gradient-to-r from-violet-600 to-violet-500 text-white text-sm font-semibold hover:from-violet-700 hover:to-violet-600 transition-all shadow-sm"
                 >
                   Upgrade
                 </Link>
@@ -387,7 +387,7 @@ export default function AccountPage() {
           {/* Authentication */}
           <section className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
             <div className="flex items-center gap-2 mb-4">
-              <Mail className="w-5 h-5 text-indigo-500" strokeWidth={1.5} />
+              <Mail className="w-5 h-5 text-violet-500" strokeWidth={1.5} />
               <h2 className="text-base font-semibold text-zinc-900">Authentication</h2>
             </div>
             <div className="flex items-center gap-3">
