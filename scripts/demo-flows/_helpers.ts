@@ -18,8 +18,10 @@ export type FlowCtx = {
   baseUrl: string;
   parentEmail: string;
   parentPassword: string;
-  /** Active child id — every kid surface (/learn, /practice, /stories) requires `?child=<id>`. */
-  childId: string;
+  /** Active child id — every kid surface (/learn, /practice, /stories) requires `?child=<id>`.
+   *  Optional because the auth-state capture step runs before child resolution
+   *  and only touches login plumbing. */
+  childId?: string;
 };
 
 const AUTH_STATE_PATH = path.resolve(process.cwd(), ".demo-auth.json");
