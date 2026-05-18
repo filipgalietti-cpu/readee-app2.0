@@ -7834,7 +7834,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.1b/S1a.mp3",
             "ttsScript": "Did you know that every word you see is made up of letters? Like building blocks!",
-            "audioRegenAt": "2026-05-14T15:01:06.943Z",
+            "audioRegenAt": "2026-05-18T13:34:57.240Z",
             "displayParts": [
               {
                 "text": "Did you know that every word you see is made up of letters?",
@@ -7842,7 +7842,7 @@
               },
               {
                 "text": " Like building blocks!",
-                "delay": 4000
+                "delay": 4500
               }
             ],
             "highlightWord": {
@@ -7854,7 +7854,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.1b/S1b.mp3",
             "ttsScript": "The letters come together to make a word. C, A, T makes cat!",
-            "audioRegenAt": "2026-05-14T15:01:13.852Z",
+            "audioRegenAt": "2026-05-18T13:35:06.531Z",
             "displayParts": [
               {
                 "text": "The letters come together to make a word.",
@@ -7881,9 +7881,29 @@
                 "delay": 6500
               }
             ],
+            "afterPhonemes": [
+              "k",
+              "short_a",
+              "t"
+            ],
             "highlightWord": {
               "word": "cat",
               "delay": 6500
+            },
+            "displayDiagram": {
+              "delay": 6500,
+              "letters": [
+                {
+                  "text": "C"
+                },
+                {
+                  "text": "A"
+                },
+                {
+                  "text": "T"
+                }
+              ],
+              "revealCount": 3
             },
             "highlightPills": [
               {
@@ -7913,7 +7933,7 @@
             ],
             "audioFile": "audio/lessons/RF.K.1b/S1c.mp3",
             "ttsScript": "Let's learn about how letters build words!",
-            "audioRegenAt": "2026-05-14T15:01:19.151Z",
+            "audioRegenAt": "2026-05-18T13:35:11.109Z",
             "displayParts": [
               {
                 "text": "Let's learn about how letters build words!",
@@ -7938,7 +7958,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.1b/S2a.mp3",
             "ttsScript": "Letters are the tiny pieces that make up every word.",
-            "audioRegenAt": "2026-05-14T15:01:48.474Z",
+            "audioRegenAt": "2026-05-18T13:35:33.466Z",
             "displayParts": [
               {
                 "text": "Letters are the tiny pieces that make up ",
@@ -7952,13 +7972,19 @@
             "highlightWord": {
               "word": "Letters",
               "delay": 300
-            }
+            },
+            "highlightPills": [
+              {
+                "pill": 1,
+                "delay": 2500
+              }
+            ]
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.1b/S2b.mp3",
             "ttsScript": "Some words are short — like 'at.' That's just two letters! A and T.",
-            "audioRegenAt": "2026-05-14T15:01:55.529Z",
+            "audioRegenAt": "2026-05-18T13:35:41.697Z",
             "displayParts": [
               {
                 "text": "Some words are short — like ",
@@ -8001,6 +8027,16 @@
                 }
               ]
             },
+            "highlightPills": [
+              {
+                "pill": 1,
+                "delay": 1500
+              },
+              {
+                "pill": 3,
+                "delay": 3500
+              }
+            ],
             "phonemeLetterIndices": [
               0,
               1,
@@ -8011,7 +8047,7 @@
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.1b/S2c.mp3",
             "ttsScript": "Some words are longer — like 'dog.' That's three letters! D, O, G.",
-            "audioRegenAt": "2026-05-14T15:02:03.670Z",
+            "audioRegenAt": "2026-05-18T13:35:49.586Z",
             "displayParts": [
               {
                 "text": "Some words are longer — like ",
@@ -8058,6 +8094,16 @@
                 }
               ]
             },
+            "highlightPills": [
+              {
+                "pill": 1,
+                "delay": 1500
+              },
+              {
+                "pill": 3,
+                "delay": 3500
+              }
+            ],
             "phonemeLetterIndices": [
               0,
               1,
@@ -8074,7 +8120,7 @@
             ],
             "audioFile": "audio/lessons/RF.K.1b/S2d.mp3",
             "ttsScript": "Every word, short or long, is made of letters put together!",
-            "audioRegenAt": "2026-05-14T15:02:09.016Z",
+            "audioRegenAt": "2026-05-18T13:35:55.498Z",
             "displayParts": [
               {
                 "text": "Every word, short or long, is made of ",
@@ -8088,7 +8134,13 @@
             "highlightWord": {
               "word": "letters",
               "delay": 2500
-            }
+            },
+            "highlightPills": [
+              {
+                "pill": 1,
+                "delay": 2500
+              }
+            ]
           }
         ],
         "heading": "Letters Build Words!",
@@ -8103,7 +8155,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.1b/S3a.mp3",
             "ttsScript": "Let's look at the word 'sun.' How many letters does it have?",
-            "audioRegenAt": "2026-05-14T15:02:32.884Z",
+            "audioRegenAt": "2026-05-18T13:36:14.923Z",
             "displayParts": [
               {
                 "text": "Let's look at the word '",
@@ -8139,13 +8191,23 @@
                   "text": "N"
                 }
               ]
-            }
+            },
+            "highlightPills": [
+              {
+                "pill": 1,
+                "delay": 1000
+              },
+              {
+                "pill": 3,
+                "delay": 2000
+              }
+            ]
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.1b/S3b.mp3",
             "ttsScript": "S... U... N! That's three letters. S, U, N makes sun!",
-            "audioRegenAt": "2026-05-14T15:02:42.133Z",
+            "audioRegenAt": "2026-05-18T13:36:23.935Z",
             "displayParts": [
               {
                 "text": "S... U... N!",
@@ -8191,6 +8253,20 @@
                 }
               ]
             },
+            "highlightPills": [
+              {
+                "pill": 0,
+                "delay": 0
+              },
+              {
+                "pill": 2,
+                "delay": 1800
+              },
+              {
+                "pill": 4,
+                "delay": 3000
+              }
+            ],
             "phonemeLetterIndices": [
               0,
               1,
@@ -8206,7 +8282,7 @@
             ],
             "audioFile": "audio/lessons/RF.K.1b/S3c.mp3",
             "ttsScript": "Now try 'me.' M... E! Just two letters. Easy!",
-            "audioRegenAt": "2026-05-14T15:02:50.069Z",
+            "audioRegenAt": "2026-05-18T13:36:31.767Z",
             "displayParts": [
               {
                 "text": "Now try '",
@@ -8260,6 +8336,24 @@
                 }
               ]
             },
+            "highlightPills": [
+              {
+                "pill": 1,
+                "delay": 500
+              },
+              {
+                "pill": 3,
+                "delay": 1500
+              },
+              {
+                "pill": 5,
+                "delay": 2800
+              },
+              {
+                "pill": 7,
+                "delay": 3500
+              }
+            ],
             "phonemeLetterIndices": [
               0,
               1
@@ -8278,7 +8372,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.1b/S4a.mp3",
             "ttsScript": "Here's a fun trick. Think about your own name!",
-            "audioRegenAt": "2026-05-14T15:03:06.806Z",
+            "audioRegenAt": "2026-05-18T13:36:50.803Z",
             "displayParts": [
               {
                 "text": "Here's a fun trick.",
@@ -8298,7 +8392,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.1b/S4b.mp3",
             "ttsScript": "How many letters are in YOUR name? Count them with your finger!",
-            "audioRegenAt": "2026-05-14T15:03:13.278Z",
+            "audioRegenAt": "2026-05-18T13:36:58.852Z",
             "displayParts": [
               {
                 "text": "How many letters",
@@ -8316,6 +8410,20 @@
             "highlightWord": {
               "word": "letters",
               "delay": 500
+            },
+            "displayDiagram": {
+              "delay": 2800,
+              "letters": [
+                {
+                  "text": "S"
+                },
+                {
+                  "text": "A"
+                },
+                {
+                  "text": "M"
+                }
+              ]
             },
             "highlightPills": [
               {
@@ -8341,7 +8449,7 @@
             ],
             "audioFile": "audio/lessons/RF.K.1b/S4c.mp3",
             "ttsScript": "Every name is made of letters, just like every word!",
-            "audioRegenAt": "2026-05-14T15:03:18.868Z",
+            "audioRegenAt": "2026-05-18T13:37:05.058Z",
             "displayParts": [
               {
                 "text": "Every name is made of letters,",
@@ -8375,9 +8483,8 @@
             ],
             "audioFile": "audio/lessons/RF.K.1b/S5a.mp3",
             "ttsScript": "Great job learning about letters and words!",
-            "displayText": "",
             "interaction": "Stars celebration.",
-            "audioRegenAt": "2026-05-14T15:03:33.771Z",
+            "audioRegenAt": "2026-05-18T13:37:19.547Z",
             "displayParts": [
               {
                 "text": "Great job learning about ",
@@ -8415,10 +8522,8 @@
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.1b/S5b.mp3",
             "ttsScript": "Let's practice counting letters and finding words. Let's go!",
-            "displayText": "Let's match the letters!",
             "interaction": "'Let's Go!' button pulses.",
-            "audioRegenAt": "2026-05-14T15:03:39.836Z",
-            "displayDelay": 2250,
+            "audioRegenAt": "2026-05-18T13:37:24.907Z",
             "displayParts": [
               {
                 "text": "Let's practice ",
