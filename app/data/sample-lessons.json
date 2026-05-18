@@ -40065,31 +40065,108 @@
             "audioFile": "audio/lessons/RF.2.3d/S2a.mp3",
             "ttsScript": "UN means not. Unhappy means not happy.",
             "audioRegenAt": "2026-05-11T23:32:30.272Z",
-            "displayTableRow": {
-              "label": "UN",
-              "value": "not",
-              "example": "unhappy",
-              "exampleDelay": 1500,
-              "tableHeaders": [
-                "Prefix",
-                "Means",
-                "Example"
-              ]
+            "displayParts": [
+              {
+                "text": "UN",
+                "delay": 0
+              },
+              {
+                "text": " means ",
+                "delay": 300
+              },
+              {
+                "text": "not",
+                "delay": 800
+              },
+              {
+                "text": ". ",
+                "delay": 1300
+              },
+              {
+                "text": "Unhappy",
+                "delay": 1600
+              },
+              {
+                "text": " means ",
+                "delay": 2300
+              },
+              {
+                "text": "not happy.",
+                "delay": 2800
+              }
+            ],
+            "highlightWord": {
+              "word": "UN",
+              "delay": 0
             },
-            "displayDelay": 0
+            "highlightPills": [
+              {
+                "pill": 2,
+                "delay": 800
+              },
+              {
+                "pill": 4,
+                "delay": 1600
+              },
+              {
+                "pill": 6,
+                "delay": 2800
+              }
+            ]
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.2.3d/S2b.mp3",
             "ttsScript": "RE means again. Redo means do again.",
             "audioRegenAt": "2026-05-11T23:32:36.382Z",
-            "displayTableRow": {
-              "label": "RE",
-              "value": "again",
-              "example": "redo",
-              "exampleDelay": 1500
+            "displayParts": [
+              {
+                "text": "RE",
+                "delay": 0
+              },
+              {
+                "text": " means ",
+                "delay": 300
+              },
+              {
+                "text": "again",
+                "delay": 800
+              },
+              {
+                "text": ". ",
+                "delay": 1300
+              },
+              {
+                "text": "Redo",
+                "delay": 1600
+              },
+              {
+                "text": " means ",
+                "delay": 2000
+              },
+              {
+                "text": "do again.",
+                "delay": 2500
+              }
+            ],
+            "highlightWord": {
+              "word": "RE",
+              "delay": 0
             },
-            "displayDelay": 500
+            "highlightPills": [
+              {
+                "pill": 2,
+                "delay": 800
+              },
+              {
+                "pill": 4,
+                "delay": 1600
+              },
+              {
+                "pill": 6,
+                "delay": 2500
+              }
+            ]
           }
         ],
         "heading": "UN and RE Prefixes",
@@ -45623,26 +45700,68 @@
             "audioFile": "audio/lessons/L.2.5b/S2a.mp3",
             "ttsScript": "Angry means upset.",
             "audioRegenAt": "2026-05-11T23:09:23.762Z",
-            "displayTableRow": {
-              "label": "Angry",
-              "value": "upset",
-              "tableHeaders": [
-                "Word",
-                "Means"
-              ]
+            "displayParts": [
+              {
+                "text": "Angry",
+                "delay": 0
+              },
+              {
+                "text": " means ",
+                "delay": 500
+              },
+              {
+                "text": "upset.",
+                "delay": 1000
+              }
+            ],
+            "highlightWord": {
+              "word": "Angry",
+              "delay": 200
             },
-            "displayDelay": 0
+            "highlightPills": [
+              {
+                "pill": 0,
+                "delay": 300
+              },
+              {
+                "pill": 2,
+                "delay": 1100
+              }
+            ]
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/L.2.5b/S2b.mp3",
             "ttsScript": "Furious means very, very angry!",
             "audioRegenAt": "2026-05-11T23:09:28.185Z",
-            "displayTableRow": {
-              "label": "Furious",
-              "value": "very, very angry!"
+            "displayParts": [
+              {
+                "text": "Furious",
+                "delay": 0
+              },
+              {
+                "text": " means ",
+                "delay": 500
+              },
+              {
+                "text": "very, very angry!",
+                "delay": 1000
+              }
+            ],
+            "highlightWord": {
+              "word": "Furious",
+              "delay": 200
             },
-            "displayDelay": 500
+            "highlightPills": [
+              {
+                "pill": 0,
+                "delay": 300
+              },
+              {
+                "pill": 2,
+                "delay": 1100
+              }
+            ]
           }
         ],
         "heading": "Angry and Furious",
@@ -57128,37 +57247,95 @@
             "audioFile": "audio/lessons/L.3.4b/S2a.mp3",
             "ttsScript": "UN means not.",
             "audioRegenAt": "2026-05-11T03:57:51.994Z",
-            "displayTableRow": {
-              "label": "UN",
-              "value": "not",
-              "tableHeaders": [
-                "Prefix",
-                "Means"
-              ]
+            "displayParts": [
+              {
+                "text": "UN",
+                "delay": 0
+              },
+              {
+                "text": " means ",
+                "delay": 500
+              },
+              {
+                "text": "not.",
+                "delay": 1000
+              }
+            ],
+            "highlightWord": {
+              "word": "UN",
+              "delay": 0
             },
-            "displayDelay": 0
+            "highlightPills": [
+              {
+                "pill": 2,
+                "delay": 1000
+              }
+            ]
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/L.3.4b/S2b.mp3",
             "ttsScript": "RE means again.",
             "audioRegenAt": "2026-05-11T03:57:56.047Z",
-            "displayTableRow": {
-              "label": "RE",
-              "value": "again"
+            "displayParts": [
+              {
+                "text": "RE",
+                "delay": 0
+              },
+              {
+                "text": " means ",
+                "delay": 500
+              },
+              {
+                "text": "again.",
+                "delay": 1000
+              }
+            ],
+            "highlightWord": {
+              "word": "RE",
+              "delay": 0
             },
-            "displayDelay": 500
+            "highlightPills": [
+              {
+                "pill": 2,
+                "delay": 1000
+              }
+            ]
           },
           {
             "sub": "c",
+            "sfxClaps": [
+              {
+                "delay": 1500
+              }
+            ],
             "audioFile": "audio/lessons/L.3.4b/S2c.mp3",
             "ttsScript": "PRE means before.",
             "audioRegenAt": "2026-05-11T03:58:00.108Z",
-            "displayTableRow": {
-              "label": "PRE",
-              "value": "before"
+            "displayParts": [
+              {
+                "text": "PRE",
+                "delay": 0
+              },
+              {
+                "text": " means ",
+                "delay": 500
+              },
+              {
+                "text": "before.",
+                "delay": 1000
+              }
+            ],
+            "highlightWord": {
+              "word": "PRE",
+              "delay": 0
             },
-            "displayDelay": 500
+            "highlightPills": [
+              {
+                "pill": 2,
+                "delay": 1000
+              }
+            ]
           }
         ],
         "heading": "UN, RE, PRE",
@@ -68627,48 +68804,96 @@
             "audioFile": "audio/lessons/L.4.4b/S2a.mp3",
             "ttsScript": "Bio means life.",
             "audioRegenAt": "2026-05-11T23:49:03.980Z",
-            "displayTableRow": {
-              "label": "Bio",
-              "value": "life",
-              "tableHeaders": [
-                "Root",
-                "Means"
-              ]
-            },
-            "displayDelay": 0
+            "displayParts": [
+              {
+                "text": "Bio",
+                "delay": 0
+              },
+              {
+                "text": " means ",
+                "delay": 500
+              },
+              {
+                "text": "life.",
+                "delay": 1000
+              }
+            ],
+            "highlightWord": {
+              "word": "Bio",
+              "delay": 0
+            }
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/L.4.4b/S2b.mp3",
             "ttsScript": "Photo means light.",
             "audioRegenAt": "2026-05-11T23:49:07.463Z",
-            "displayTableRow": {
-              "label": "Photo",
-              "value": "light"
-            },
-            "displayDelay": 500
+            "displayParts": [
+              {
+                "text": "Photo",
+                "delay": 0
+              },
+              {
+                "text": " means ",
+                "delay": 500
+              },
+              {
+                "text": "light.",
+                "delay": 1000
+              }
+            ],
+            "highlightWord": {
+              "word": "Photo",
+              "delay": 0
+            }
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/L.4.4b/S2c.mp3",
             "ttsScript": "The root 'Tele' means far.",
             "audioRegenAt": null,
-            "displayTableRow": {
-              "label": "Tele",
-              "value": "far"
-            },
-            "displayDelay": 500
+            "displayParts": [
+              {
+                "text": "Tele",
+                "delay": 0
+              },
+              {
+                "text": " means ",
+                "delay": 500
+              },
+              {
+                "text": "far.",
+                "delay": 1000
+              }
+            ],
+            "highlightWord": {
+              "word": "Tele",
+              "delay": 0
+            }
           },
           {
             "sub": "d",
             "audioFile": "audio/lessons/L.4.4b/S2d.mp3",
             "ttsScript": "And the root 'Phone' means sound.",
             "audioRegenAt": null,
-            "displayTableRow": {
-              "label": "Phone",
-              "value": "sound"
-            },
-            "displayDelay": 500
+            "displayParts": [
+              {
+                "text": "Phone",
+                "delay": 0
+              },
+              {
+                "text": " means ",
+                "delay": 500
+              },
+              {
+                "text": "sound.",
+                "delay": 1000
+              }
+            ],
+            "highlightWord": {
+              "word": "Phone",
+              "delay": 0
+            }
           }
         ],
         "heading": "Common Roots",
