@@ -39177,71 +39177,223 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.2.3b/S2a.mp3",
             "ttsScript": "EA says EE, like in eat or read.",
+            "interaction": "",
             "audioRegenAt": "2026-05-12T01:03:34.475Z",
-            "displayDelay": 0,
-            "displayTableRow": {
-              "label": "EA",
-              "value": "EE",
-              "example": "eat, read",
-              "exampleDelay": 1500,
-              "tableHeaders": [
-                "Team",
-                "Says",
-                "Like in"
-              ]
+            "displayParts": [
+              {
+                "text": "EA says ",
+                "delay": 0
+              },
+              {
+                "text": "EE",
+                "delay": 700
+              },
+              {
+                "text": ", like in ",
+                "delay": 1500
+              },
+              {
+                "text": "eat",
+                "delay": 2000
+              },
+              {
+                "text": " or ",
+                "delay": 2500
+              },
+              {
+                "text": "read",
+                "delay": 3000
+              }
+            ],
+            "highlightWord": {
+              "word": "EA",
+              "delay": 300
             },
-            "interaction": ""
+            "highlightPills": [
+              {
+                "pill": 3,
+                "delay": 2000
+              },
+              {
+                "pill": 5,
+                "delay": 3000
+              }
+            ]
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.2.3b/S2b.mp3",
             "ttsScript": "EE says EE too, like in bee or tree.",
+            "interaction": "",
             "audioRegenAt": "2026-05-12T01:03:40.261Z",
-            "displayDelay": 500,
-            "displayTableRow": {
-              "label": "EE",
-              "value": "EE",
-              "example": "bee, tree",
-              "exampleDelay": 1500
+            "displayParts": [
+              {
+                "text": "EE says ",
+                "delay": 0
+              },
+              {
+                "text": "EE",
+                "delay": 700
+              },
+              {
+                "text": " too, like in ",
+                "delay": 1500
+              },
+              {
+                "text": "bee",
+                "delay": 2000
+              },
+              {
+                "text": " or ",
+                "delay": 2500
+              },
+              {
+                "text": "tree",
+                "delay": 3000
+              }
+            ],
+            "highlightWord": {
+              "word": "EE",
+              "delay": 300
             },
-            "interaction": ""
+            "highlightPills": [
+              {
+                "pill": 3,
+                "delay": 2000
+              },
+              {
+                "pill": 5,
+                "delay": 3000
+              }
+            ]
           },
           {
             "sub": "c",
+            "sfxClaps": [
+              {
+                "delay": 2000
+              }
+            ],
+            "audioFile": "audio/lessons/RF.2.3b/S2c.mp3",
+            "ttsScript": "Two different spellings, same sound!",
+            "interaction": "",
+            "audioRegenAt": "2026-05-12T01:03:44.888Z",
+            "displayParts": [
+              {
+                "text": "Two different spellings,",
+                "delay": 0
+              },
+              {
+                "text": " same sound!",
+                "delay": 1500
+              }
+            ],
+            "highlightWord": {
+              "word": "sound",
+              "delay": 1800
+            }
+          }
+        ],
+        "heading": "EA and EE",
+        "imageFile": "images/lessons/RF.2.3b/S2.png",
+        "imagePrompt": "A cheerful cartoon pea pod and a bumblebee side by side, both smiling. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters."
+      },
+      {
+        "type": "teach",
+        "slide": 3,
+        "steps": [
+          {
+            "sub": "a",
             "audioFile": "audio/lessons/RF.2.3b/S3a.mp3",
             "ttsScript": "AI says AY, like in rain or train.",
             "audioRegenAt": "2026-05-12T01:04:00.306Z",
-            "displayDelay": 500,
-            "displayTableRow": {
-              "label": "AI",
-              "value": "AY",
-              "example": "rain, train",
-              "exampleDelay": 1500
+            "displayParts": [
+              {
+                "text": "AI says ",
+                "delay": 0
+              },
+              {
+                "text": "AY,",
+                "delay": 1000
+              },
+              {
+                "text": "like in rain",
+                "delay": 2000
+              },
+              {
+                "text": " or train.",
+                "delay": 3000
+              }
+            ],
+            "highlightWord": {
+              "word": "AI",
+              "delay": 300
             },
-            "interaction": ""
+            "highlightPills": [
+              {
+                "pill": 1,
+                "delay": 1000
+              },
+              {
+                "pill": 2,
+                "delay": 2000
+              },
+              {
+                "pill": 3,
+                "delay": 3000
+              }
+            ]
           },
           {
-            "sub": "d",
+            "sub": "b",
             "audioFile": "audio/lessons/RF.2.3b/S3b.mp3",
             "ttsScript": "OA says OH, like in boat or road.",
             "audioRegenAt": "2026-05-12T01:04:06.468Z",
-            "displayDelay": 500,
-            "displayTableRow": {
-              "label": "OA",
-              "value": "OH",
-              "example": "boat, road",
-              "exampleDelay": 1500
+            "displayParts": [
+              {
+                "text": "OA says ",
+                "delay": 0
+              },
+              {
+                "text": "OH,",
+                "delay": 1000
+              },
+              {
+                "text": "like in boat",
+                "delay": 2000
+              },
+              {
+                "text": " or road.",
+                "delay": 3000
+              }
+            ],
+            "highlightWord": {
+              "word": "OA",
+              "delay": 300
             },
-            "interaction": ""
+            "highlightPills": [
+              {
+                "pill": 1,
+                "delay": 1000
+              },
+              {
+                "pill": 2,
+                "delay": 2000
+              },
+              {
+                "pill": 3,
+                "delay": 3000
+              }
+            ]
           }
         ],
-        "heading": "Meet the Vowel Teams",
-        "imageFile": "images/lessons/RF.2.3b/S2.png",
-        "imagePrompt": "A cheerful cartoon pea pod, bumblebee, rain cloud, and rowboat lined up in a row, all smiling. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters."
+        "heading": "AI and OA",
+        "imageFile": "images/lessons/RF.2.3b/S3.png",
+        "imagePrompt": "A cheerful cartoon rain cloud and a rowboat on a lake, both smiling. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters."
       },
       {
         "type": "tip",
-        "slide": 3,
+        "slide": 4,
         "steps": [
           {
             "sub": "a",
@@ -39295,6 +39447,11 @@
           },
           {
             "sub": "c",
+            "sfxClaps": [
+              {
+                "delay": 1500
+              }
+            ],
             "audioFile": "audio/lessons/RF.2.3b/S4c.mp3",
             "ttsScript": "Now you are ready to read vowel teams!",
             "audioRegenAt": "2026-05-12T01:04:33.632Z",
@@ -39321,27 +39478,27 @@
       {
         "type": "mcq",
         "mcqId": "RF.2.3b-Q1",
-        "slide": 4
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.2.3b-Q2",
         "slide": 5
       },
       {
         "type": "mcq",
-        "mcqId": "RF.2.3b-Q3",
+        "mcqId": "RF.2.3b-Q2",
         "slide": 6
       },
       {
         "type": "mcq",
-        "mcqId": "RF.2.3b-Q4",
+        "mcqId": "RF.2.3b-Q3",
         "slide": 7
       },
       {
         "type": "mcq",
-        "mcqId": "RF.2.3b-Q5",
+        "mcqId": "RF.2.3b-Q4",
         "slide": 8
+      },
+      {
+        "type": "mcq",
+        "mcqId": "RF.2.3b-Q5",
+        "slide": 9
       }
     ]
   },
