@@ -39077,8 +39077,8 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.2.3b/S1a.mp3",
-            "ttsScript": "Sometimes two vowels team up. They make one sound.",
-            "audioRegenAt": null,
+            "ttsScript": "Sometimes two vowels work together.",
+            "audioRegenAt": "2026-05-12T01:03:03.767Z",
             "displayParts": [
               {
                 "text": "Sometimes two ",
@@ -39089,16 +39089,8 @@
                 "delay": 700
               },
               {
-                "text": " team up.",
-                "delay": 1300
-              },
-              {
-                "text": " They make ",
-                "delay": 2200
-              },
-              {
-                "text": "one sound.",
-                "delay": 2900
+                "text": " work together.",
+                "delay": 1500
               }
             ],
             "highlightWord": {
@@ -39109,10 +39101,66 @@
               {
                 "pill": 1,
                 "delay": 700
+              }
+            ]
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.2.3b/S1b.mp3",
+            "ttsScript": "They make just one sound between them.",
+            "audioRegenAt": "2026-05-12T01:03:09.330Z",
+            "displayParts": [
+              {
+                "text": "They make just one ",
+                "delay": 0
               },
               {
-                "pill": 4,
-                "delay": 2900
+                "text": "sound",
+                "delay": 800
+              },
+              {
+                "text": " between them.",
+                "delay": 1600
+              }
+            ],
+            "highlightWord": {
+              "word": "sound",
+              "delay": 800
+            },
+            "highlightPills": [
+              {
+                "pill": 1,
+                "delay": 800
+              }
+            ]
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.2.3b/S1c.mp3",
+            "ttsScript": "Let us meet some vowel teams.",
+            "audioRegenAt": "2026-05-12T01:03:14.403Z",
+            "displayParts": [
+              {
+                "text": "Let us meet some ",
+                "delay": 0
+              },
+              {
+                "text": "vowel",
+                "delay": 700
+              },
+              {
+                "text": " teams.",
+                "delay": 1200
+              }
+            ],
+            "highlightWord": {
+              "word": "teams",
+              "delay": 1200
+            },
+            "highlightPills": [
+              {
+                "pill": 2,
+                "delay": 1200
               }
             ]
           }
@@ -39128,8 +39176,8 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.2.3b/S2a.mp3",
-            "ttsScript": "E A says ee, like in eat or read.",
-            "audioRegenAt": null,
+            "ttsScript": "EA says EE, like in eat or read.",
+            "audioRegenAt": "2026-05-12T01:03:34.475Z",
             "displayDelay": 0,
             "displayTableRow": {
               "label": "EA",
@@ -39147,8 +39195,8 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.2.3b/S2b.mp3",
-            "ttsScript": "E E also says ee, like in bee or tree.",
-            "audioRegenAt": null,
+            "ttsScript": "EE says EE too, like in bee or tree.",
+            "audioRegenAt": "2026-05-12T01:03:40.261Z",
             "displayDelay": 500,
             "displayTableRow": {
               "label": "EE",
@@ -39160,9 +39208,9 @@
           },
           {
             "sub": "c",
-            "audioFile": "audio/lessons/RF.2.3b/S2c.mp3",
-            "ttsScript": "A I says ay, like in rain or train.",
-            "audioRegenAt": null,
+            "audioFile": "audio/lessons/RF.2.3b/S3a.mp3",
+            "ttsScript": "AI says AY, like in rain or train.",
+            "audioRegenAt": "2026-05-12T01:04:00.306Z",
             "displayDelay": 500,
             "displayTableRow": {
               "label": "AI",
@@ -39174,9 +39222,9 @@
           },
           {
             "sub": "d",
-            "audioFile": "audio/lessons/RF.2.3b/S2d.mp3",
-            "ttsScript": "O A says oh, like in boat or road.",
-            "audioRegenAt": null,
+            "audioFile": "audio/lessons/RF.2.3b/S3b.mp3",
+            "ttsScript": "OA says OH, like in boat or road.",
+            "audioRegenAt": "2026-05-12T01:04:06.468Z",
             "displayDelay": 500,
             "displayTableRow": {
               "label": "OA",
@@ -39197,30 +39245,72 @@
         "steps": [
           {
             "sub": "a",
-            "audioFile": "audio/lessons/RF.2.3b/S3a.mp3",
-            "ttsScript": "When two vowels walk, the first one talks.",
-            "audioRegenAt": null,
+            "audioFile": "audio/lessons/RF.2.3b/S4a.mp3",
+            "ttsScript": "Here is a helpful trick.",
+            "audioRegenAt": "2026-05-12T01:04:18.818Z",
             "displayParts": [
               {
-                "text": "When two vowels walk,",
+                "text": "Here is a",
                 "delay": 0
               },
               {
-                "text": " the ",
-                "delay": 1500
+                "text": " helpful trick.",
+                "delay": 1140
+              }
+            ],
+            "highlightWord": {
+              "word": "trick",
+              "delay": 500
+            }
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RF.2.3b/S4b.mp3",
+            "ttsScript": "When two vowels walk together, the first one does the talking!",
+            "audioRegenAt": "2026-05-12T01:04:28.093Z",
+            "displayParts": [
+              {
+                "text": "When two vowels walk",
+                "delay": 0
               },
               {
-                "text": "first",
-                "delay": 1900
+                "text": " together, the first one",
+                "delay": 1520
               },
               {
-                "text": " one talks.",
-                "delay": 2600
+                "text": " does the talking!",
+                "delay": 3040
               }
             ],
             "highlightWord": {
               "word": "first",
-              "delay": 1900
+              "delay": 1000
+            },
+            "highlightPills": [
+              {
+                "pill": 1,
+                "delay": 500
+              }
+            ]
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RF.2.3b/S4c.mp3",
+            "ttsScript": "Now you are ready to read vowel teams!",
+            "audioRegenAt": "2026-05-12T01:04:33.632Z",
+            "displayParts": [
+              {
+                "text": "Now you are ready",
+                "delay": 0
+              },
+              {
+                "text": " to read vowel teams!",
+                "delay": 1520
+              }
+            ],
+            "highlightWord": {
+              "word": "teams",
+              "delay": 1000
             }
           }
         ],
