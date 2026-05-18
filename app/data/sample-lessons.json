@@ -39077,8 +39077,8 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.2.3b/S1a.mp3",
-            "ttsScript": "Sometimes two vowels work together.",
-            "audioRegenAt": "2026-05-12T01:03:03.767Z",
+            "ttsScript": "Sometimes two vowels team up. They make one sound.",
+            "audioRegenAt": null,
             "displayParts": [
               {
                 "text": "Sometimes two ",
@@ -39089,8 +39089,16 @@
                 "delay": 700
               },
               {
-                "text": " work together.",
-                "delay": 1500
+                "text": " team up.",
+                "delay": 1300
+              },
+              {
+                "text": " They make ",
+                "delay": 2200
+              },
+              {
+                "text": "one sound.",
+                "delay": 2900
               }
             ],
             "highlightWord": {
@@ -39101,66 +39109,10 @@
               {
                 "pill": 1,
                 "delay": 700
-              }
-            ]
-          },
-          {
-            "sub": "b",
-            "audioFile": "audio/lessons/RF.2.3b/S1b.mp3",
-            "ttsScript": "They make just one sound between them.",
-            "audioRegenAt": "2026-05-12T01:03:09.330Z",
-            "displayParts": [
-              {
-                "text": "They make just one ",
-                "delay": 0
               },
               {
-                "text": "sound",
-                "delay": 800
-              },
-              {
-                "text": " between them.",
-                "delay": 1600
-              }
-            ],
-            "highlightWord": {
-              "word": "sound",
-              "delay": 800
-            },
-            "highlightPills": [
-              {
-                "pill": 1,
-                "delay": 800
-              }
-            ]
-          },
-          {
-            "sub": "c",
-            "audioFile": "audio/lessons/RF.2.3b/S1c.mp3",
-            "ttsScript": "Let us meet some vowel teams.",
-            "audioRegenAt": "2026-05-12T01:03:14.403Z",
-            "displayParts": [
-              {
-                "text": "Let us meet some ",
-                "delay": 0
-              },
-              {
-                "text": "vowel",
-                "delay": 700
-              },
-              {
-                "text": " teams.",
-                "delay": 1200
-              }
-            ],
-            "highlightWord": {
-              "word": "teams",
-              "delay": 1200
-            },
-            "highlightPills": [
-              {
-                "pill": 2,
-                "delay": 1200
+                "pill": 4,
+                "delay": 2900
               }
             ]
           }
@@ -39176,298 +39128,99 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.2.3b/S2a.mp3",
-            "ttsScript": "EA says EE, like in eat or read.",
-            "interaction": "",
-            "audioRegenAt": "2026-05-12T01:03:34.475Z",
-            "displayParts": [
-              {
-                "text": "EA says ",
-                "delay": 0
-              },
-              {
-                "text": "EE",
-                "delay": 700
-              },
-              {
-                "text": ", like in ",
-                "delay": 1500
-              },
-              {
-                "text": "eat",
-                "delay": 2000
-              },
-              {
-                "text": " or ",
-                "delay": 2500
-              },
-              {
-                "text": "read",
-                "delay": 3000
-              }
-            ],
-            "highlightWord": {
-              "word": "EA",
-              "delay": 300
+            "ttsScript": "E A says ee, like in eat or read.",
+            "audioRegenAt": null,
+            "displayDelay": 0,
+            "displayTableRow": {
+              "label": "EA",
+              "value": "EE",
+              "example": "eat, read",
+              "exampleDelay": 1500,
+              "tableHeaders": [
+                "Team",
+                "Says",
+                "Like in"
+              ]
             },
-            "highlightPills": [
-              {
-                "pill": 3,
-                "delay": 2000
-              },
-              {
-                "pill": 5,
-                "delay": 3000
-              }
-            ]
+            "interaction": ""
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.2.3b/S2b.mp3",
-            "ttsScript": "EE says EE too, like in bee or tree.",
-            "interaction": "",
-            "audioRegenAt": "2026-05-12T01:03:40.261Z",
-            "displayParts": [
-              {
-                "text": "EE says ",
-                "delay": 0
-              },
-              {
-                "text": "EE",
-                "delay": 700
-              },
-              {
-                "text": " too, like in ",
-                "delay": 1500
-              },
-              {
-                "text": "bee",
-                "delay": 2000
-              },
-              {
-                "text": " or ",
-                "delay": 2500
-              },
-              {
-                "text": "tree",
-                "delay": 3000
-              }
-            ],
-            "highlightWord": {
-              "word": "EE",
-              "delay": 300
+            "ttsScript": "E E also says ee, like in bee or tree.",
+            "audioRegenAt": null,
+            "displayDelay": 500,
+            "displayTableRow": {
+              "label": "EE",
+              "value": "EE",
+              "example": "bee, tree",
+              "exampleDelay": 1500
             },
-            "highlightPills": [
-              {
-                "pill": 3,
-                "delay": 2000
-              },
-              {
-                "pill": 5,
-                "delay": 3000
-              }
-            ]
+            "interaction": ""
           },
           {
             "sub": "c",
-            "sfxClaps": [
-              {
-                "delay": 2000
-              }
-            ],
             "audioFile": "audio/lessons/RF.2.3b/S2c.mp3",
-            "ttsScript": "Two different spellings, same sound!",
-            "interaction": "",
-            "audioRegenAt": "2026-05-12T01:03:44.888Z",
-            "displayParts": [
-              {
-                "text": "Two different spellings,",
-                "delay": 0
-              },
-              {
-                "text": " same sound!",
-                "delay": 1500
-              }
-            ],
-            "highlightWord": {
-              "word": "sound",
-              "delay": 1800
-            }
+            "ttsScript": "A I says ay, like in rain or train.",
+            "audioRegenAt": null,
+            "displayDelay": 500,
+            "displayTableRow": {
+              "label": "AI",
+              "value": "AY",
+              "example": "rain, train",
+              "exampleDelay": 1500
+            },
+            "interaction": ""
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RF.2.3b/S2d.mp3",
+            "ttsScript": "O A says oh, like in boat or road.",
+            "audioRegenAt": null,
+            "displayDelay": 500,
+            "displayTableRow": {
+              "label": "OA",
+              "value": "OH",
+              "example": "boat, road",
+              "exampleDelay": 1500
+            },
+            "interaction": ""
           }
         ],
-        "heading": "EA and EE",
+        "heading": "Meet the Vowel Teams",
         "imageFile": "images/lessons/RF.2.3b/S2.png",
-        "imagePrompt": "A cheerful cartoon pea pod and a bumblebee side by side, both smiling. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters."
+        "imagePrompt": "A cheerful cartoon pea pod, bumblebee, rain cloud, and rowboat lined up in a row, all smiling. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters."
       },
       {
-        "type": "teach",
+        "type": "tip",
         "slide": 3,
         "steps": [
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.2.3b/S3a.mp3",
-            "ttsScript": "AI says AY, like in rain or train.",
-            "audioRegenAt": "2026-05-12T01:04:00.306Z",
+            "ttsScript": "When two vowels walk, the first one talks.",
+            "audioRegenAt": null,
             "displayParts": [
               {
-                "text": "AI says ",
+                "text": "When two vowels walk,",
                 "delay": 0
               },
               {
-                "text": "AY,",
-                "delay": 1000
+                "text": " the ",
+                "delay": 1500
               },
               {
-                "text": "like in rain",
-                "delay": 2000
+                "text": "first",
+                "delay": 1900
               },
               {
-                "text": " or train.",
-                "delay": 3000
-              }
-            ],
-            "highlightWord": {
-              "word": "AI",
-              "delay": 300
-            },
-            "highlightPills": [
-              {
-                "pill": 1,
-                "delay": 1000
-              },
-              {
-                "pill": 2,
-                "delay": 2000
-              },
-              {
-                "pill": 3,
-                "delay": 3000
-              }
-            ]
-          },
-          {
-            "sub": "b",
-            "audioFile": "audio/lessons/RF.2.3b/S3b.mp3",
-            "ttsScript": "OA says OH, like in boat or road.",
-            "audioRegenAt": "2026-05-12T01:04:06.468Z",
-            "displayParts": [
-              {
-                "text": "OA says ",
-                "delay": 0
-              },
-              {
-                "text": "OH,",
-                "delay": 1000
-              },
-              {
-                "text": "like in boat",
-                "delay": 2000
-              },
-              {
-                "text": " or road.",
-                "delay": 3000
-              }
-            ],
-            "highlightWord": {
-              "word": "OA",
-              "delay": 300
-            },
-            "highlightPills": [
-              {
-                "pill": 1,
-                "delay": 1000
-              },
-              {
-                "pill": 2,
-                "delay": 2000
-              },
-              {
-                "pill": 3,
-                "delay": 3000
-              }
-            ]
-          }
-        ],
-        "heading": "AI and OA",
-        "imageFile": "images/lessons/RF.2.3b/S3.png",
-        "imagePrompt": "A cheerful cartoon rain cloud and a rowboat on a lake, both smiling. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters."
-      },
-      {
-        "type": "tip",
-        "slide": 4,
-        "steps": [
-          {
-            "sub": "a",
-            "audioFile": "audio/lessons/RF.2.3b/S4a.mp3",
-            "ttsScript": "Here is a helpful trick.",
-            "audioRegenAt": "2026-05-12T01:04:18.818Z",
-            "displayParts": [
-              {
-                "text": "Here is a",
-                "delay": 0
-              },
-              {
-                "text": " helpful trick.",
-                "delay": 1140
-              }
-            ],
-            "highlightWord": {
-              "word": "trick",
-              "delay": 500
-            }
-          },
-          {
-            "sub": "b",
-            "audioFile": "audio/lessons/RF.2.3b/S4b.mp3",
-            "ttsScript": "When two vowels walk together, the first one does the talking!",
-            "audioRegenAt": "2026-05-12T01:04:28.093Z",
-            "displayParts": [
-              {
-                "text": "When two vowels walk",
-                "delay": 0
-              },
-              {
-                "text": " together, the first one",
-                "delay": 1520
-              },
-              {
-                "text": " does the talking!",
-                "delay": 3040
+                "text": " one talks.",
+                "delay": 2600
               }
             ],
             "highlightWord": {
               "word": "first",
-              "delay": 1000
-            },
-            "highlightPills": [
-              {
-                "pill": 1,
-                "delay": 500
-              }
-            ]
-          },
-          {
-            "sub": "c",
-            "sfxClaps": [
-              {
-                "delay": 1500
-              }
-            ],
-            "audioFile": "audio/lessons/RF.2.3b/S4c.mp3",
-            "ttsScript": "Now you are ready to read vowel teams!",
-            "audioRegenAt": "2026-05-12T01:04:33.632Z",
-            "displayParts": [
-              {
-                "text": "Now you are ready",
-                "delay": 0
-              },
-              {
-                "text": " to read vowel teams!",
-                "delay": 1520
-              }
-            ],
-            "highlightWord": {
-              "word": "teams",
-              "delay": 1000
+              "delay": 1900
             }
           }
         ],
@@ -39478,27 +39231,27 @@
       {
         "type": "mcq",
         "mcqId": "RF.2.3b-Q1",
-        "slide": 5
+        "slide": 4
       },
       {
         "type": "mcq",
         "mcqId": "RF.2.3b-Q2",
-        "slide": 6
+        "slide": 5
       },
       {
         "type": "mcq",
         "mcqId": "RF.2.3b-Q3",
-        "slide": 7
+        "slide": 6
       },
       {
         "type": "mcq",
         "mcqId": "RF.2.3b-Q4",
-        "slide": 8
+        "slide": 7
       },
       {
         "type": "mcq",
         "mcqId": "RF.2.3b-Q5",
-        "slide": 9
+        "slide": 8
       }
     ]
   },
