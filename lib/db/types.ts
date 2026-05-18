@@ -64,6 +64,27 @@ export interface ShopPurchase {
   purchased_at: string;
 }
 
+/**
+ * One row per practice question answered. Captured by the practice
+ * CompletionScreen save effect. Drives the adaptive review feature
+ * (`lib/adaptive/weak-spots.ts`) — count attempts + correct per
+ * (child_id, standard_id) over a time window to find tricky spots.
+ * Recorded for ALL kids (free + premium); the premium gate lives in
+ * the UI (only paid accounts see the Sharpen Up tile + targeted
+ * practice action). See migration 112_practice_answers.sql.
+ */
+export interface PracticeAnswer {
+  id: string;
+  child_id: string;
+  question_id: string;
+  standard_id: string;
+  /** mcq | sentence_build | category_sort | tap_to_pair | sound_machine | missing_word | space_insertion */
+  type: string;
+  was_correct: boolean;
+  answered_at: string;
+  created_at: string;
+}
+
 export interface Assessment {
   id: string; // UUID
   child_id: string; // UUID - references children.id

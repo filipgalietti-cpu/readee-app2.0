@@ -14,7 +14,11 @@ import { getDailyMultiplier, getSessionStreakTier } from "@/lib/carrots/multipli
 
 const PASS_THRESHOLD = 3;
 import { StreakFire } from "@/app/_components/StreakFire";
-import { Star, Sparkles, Rocket, Zap, Trophy, Target, Medal, Gem, Crown, Type, FileText, Search, Eye, CheckCircle, Check, PenTool, BookOpen, MessageSquare, Flame, Carrot } from "lucide-react";
+import { Star, Rocket, Zap, Trophy, Target, Medal, Gem, Crown, Type, FileText, Search, Eye, CheckCircle, Check, PenTool, BookOpen, MessageSquare, Flame, Carrot } from "lucide-react";
+import { BunnyReaction } from "@/app/_components/Bunny/Bunny";
+import { UnlockToast, mixUnlocks, type UnlockableItem } from "@/app/_components/UnlockToast";
+import type { Outfit } from "@/app/_components/Bunny/outfits";
+import { checkMilestones, checkBadgeMilestones } from "@/lib/unlock";
 import KidThumbs from "@/components/feedback/KidThumbs";
 import type { LucideIcon } from "lucide-react";
 
@@ -539,6 +543,7 @@ function LessonContent() {
   >([]);
   const [streakDays, setStreakDays] = useState(0);
   const [newBadge, setNewBadge] = useState<string | null>(null);
+  const [unlocks, setUnlocks] = useState<UnlockableItem[]>([]);
   const [nextLessonId, setNextLessonId] = useState<string | null>(null);
   const [celebrationMsg, setCelebrationMsg] = useState("");
   const [showLevelUp, setShowLevelUp] = useState(false);
@@ -858,6 +863,42 @@ function LessonContent() {
     }
 
     setCelebrationMsg(CELEBRATION_MESSAGES[Math.floor(Math.random() * CELEBRATION_MESSAGES.length)]);
+
+    // Milestone unlocks — fire after streak + grade-passed state above
+    // are known. Wrapped in try/catch so a Supabase blip can't block
+    // the celebration screen. We run the outfit + badge checks in
+    // parallel and merge their results into one celebration queue.
+    try {
+      const [{ data: owned }, { count: lessonsCompletedCount }] = await Promise.all([
+        supabase.from("shop_purchases").select("item_id").eq("child_id", child.id),
+        // Lifetime passing-lesson count — drives the "10 books / 50 / 100"
+        // badges. Count uses head:true so we don't pull the rows themselves.
+        supabase
+          .from("lessons_progress")
+          .select("lesson_id", { count: "exact", head: true })
+          .eq("child_id", child.id)
+          .eq("section", "practice")
+          .gte("score", 60),
+      ]);
+      const ownedIds = new Set((owned ?? []).map((p) => p.item_id));
+
+      const signals = {
+        lesson_completed: { passed: true },
+        streak_days: newStreak,
+        grade_finished: allPassed,
+        finished_grade: allPassed ? currentGradeKey : undefined,
+        lessons_completed: lessonsCompletedCount ?? undefined,
+      };
+
+      const [outfitRes, badgeRes] = await Promise.all([
+        checkMilestones(supabase, child.id, ownedIds, signals),
+        checkBadgeMilestones(supabase, child.id, ownedIds, signals),
+      ]);
+      const queue = mixUnlocks(outfitRes.newlyGranted, badgeRes.newlyGranted);
+      if (queue.length > 0) setUnlocks(queue);
+    } catch (err) {
+      console.error("[unlock] milestone check failed:", err);
+    }
 
     const pieces = Array.from({ length: 60 }, (_, i) => ({
       id: i,
@@ -1183,8 +1224,8 @@ function LessonContent() {
         <div className={`${pageWrapper} relative overflow-hidden`}>
           <div className="max-w-lg mx-auto text-center py-16 px-4 space-y-6 relative">
             <div className="flex justify-center">
-              <div className="w-20 h-20 rounded-full bg-amber-50 flex items-center justify-center">
-                <Target className="w-10 h-10 text-amber-500" strokeWidth={1.5} />
+              <div className="relative w-48 h-48">
+                <BunnyReaction outfitId={child?.equipped_items?.outfit ?? null} state="incorrect" />
               </div>
             </div>
 
@@ -1226,6 +1267,7 @@ function LessonContent() {
     /* ── Passed: celebration screen ── */
     return (
       <div className={`${pageWrapper} relative overflow-hidden`}>
+        <UnlockToast unlocked={unlocks} onDone={() => setUnlocks([])} />
         <div className="max-w-lg mx-auto text-center py-16 px-4 space-y-6 relative">
           {confettiPieces.map((p) => (
             <div
@@ -1239,7 +1281,11 @@ function LessonContent() {
             />
           ))}
 
-          <div className="flex justify-center"><Sparkles className="w-16 h-16 text-violet-500" strokeWidth={1.5} /></div>
+          <div className="flex justify-center">
+            <div className="relative w-48 h-48">
+              <BunnyReaction outfitId={child?.equipped_items?.outfit ?? null} state="levelup" />
+            </div>
+          </div>
 
           <h1 className="text-3xl font-bold text-zinc-900 tracking-tight">
             Lesson Complete!

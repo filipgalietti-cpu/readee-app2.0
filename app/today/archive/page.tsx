@@ -1,9 +1,13 @@
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
-import { Sparkles, ArrowLeft, Calendar } from "lucide-react";
-import ArchiveBrowser from "./_components/ArchiveBrowser";
+import { ArrowLeft, Calendar } from "lucide-react";
+import ArchiveCalendar from "./_components/ArchiveCalendar";
 
-export const dynamic = "force-dynamic";
+// Static + ISR. The previous `dynamic = "force-dynamic"` was overriding
+// the 30-min revalidate and re-fetching from Supabase on every hit
+// (the bottleneck). Removing it lets Next cache the rendered HTML and
+// only rebuild every 1800s — first visit warms the cache, subsequent
+// visits are instant.
 export const revalidate = 1800;
 
 type Row = {
@@ -17,60 +21,60 @@ type Row = {
 export const metadata = {
   title: "The Readee Daily — Archive",
   description:
-    "Browse every Readee Daily — a new reading passage for kids every morning, indexed by date, searchable, and grouped by month.",
+    "Browse every Readee Daily on a month-grid calendar — one new reading passage every morning, all yours to read together.",
 };
 
 /**
- * /today/archive — public, anonymous-friendly browse view of every
- * past Readee Daily. Server fetches the full set; the client browser
- * handles filter / theme chips / search / month jump-links so it's
- * snappy regardless of how big the archive grows.
+ * /today/archive — public archive of every past Readee Daily.
+ *
+ * Server fetches the last year of dailies; the client component
+ * renders a month-grid calendar (one cell per day, click to read).
+ * Previously this was a long-scroll month list — fine for ~20 entries,
+ * unwieldy past that. Calendar makes cadence + missed days legible at
+ * a glance.
  */
 export default async function DailyArchivePage() {
   const supabase = await createClient();
   const today = new Date().toISOString().slice(0, 10);
+  // 120-day window — calendar shows one month at a time and the prev/
+  // next nav steps only through months that have entries, so 4 months
+  // of history is ~3 months of nav range. Previously we pulled 365
+  // days for no benefit (kid never sees year-old content from this
+  // surface).
   const { data: rows } = await supabase
     .from("daily_questions")
     .select("date, slug, theme, passage_title, image_url")
     .lte("date", today)
     .eq("published_state", "live")
     .order("date", { ascending: false })
-    .limit(365);
+    .limit(120);
   const list = (rows ?? []) as Row[];
-
-  // First entry in the desc-sorted list is today (or the most recent).
-  const todaysEntry = list.find((r) => r.date === today) ?? null;
 
   // Stats for the hero strip — total, unique themes, span of dates.
   const themes = new Set(list.map((r) => r.theme).filter(Boolean));
   const oldestDate = list[list.length - 1]?.date ?? null;
 
   return (
-    <article className="min-h-screen bg-gradient-to-br from-violet-50 via-white to-indigo-50">
+    <article className="min-h-screen bg-white">
       <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6">
         <Link
           href="/today"
-          className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-500 hover:text-indigo-600"
+          className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-500 hover:text-zinc-900"
         >
           <ArrowLeft className="h-3.5 w-3.5" />
           Today&apos;s Readee
         </Link>
 
-        <div className="mt-4 flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-violet-600">
-          <Sparkles className="h-3 w-3" />
-          Daily archive
-        </div>
-        <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-zinc-900 sm:text-4xl">
-          Every Readee Daily, ever.
+        <h1 className="mt-4 font-display text-3xl font-extrabold tracking-tight text-zinc-900 sm:text-4xl">
+          The Daily Readee
         </h1>
-        <p className="mt-2 max-w-2xl text-sm text-zinc-500">
-          Browse passages from previous days. Curious what was on April
-          12th? It&apos;s here. Each one takes about 5 minutes to read with
-          a kid, and they&apos;re all yours.
+        <p className="mt-2 max-w-2xl text-sm leading-relaxed text-zinc-500">
+          Every passage we&apos;ve published, on a calendar. Tap a day to
+          read it — each one takes about 5 minutes with a kid.
         </p>
 
         {list.length > 0 && (
-          <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 rounded-2xl border border-zinc-200 bg-white px-5 py-3 text-sm shadow-sm">
+          <div className="mt-6 flex flex-wrap items-center gap-x-8 gap-y-2 text-sm">
             <Stat label="Passages" value={list.length.toLocaleString()} />
             <Stat label="Themes" value={themes.size.toLocaleString()} />
             <Stat
@@ -87,37 +91,6 @@ export default async function DailyArchivePage() {
           </div>
         )}
 
-        {todaysEntry && (
-          <Link
-            href={`/today/${todaysEntry.slug}`}
-            className="group mt-5 flex items-center gap-4 overflow-hidden rounded-2xl border border-violet-200 bg-gradient-to-r from-violet-50 to-indigo-50 p-3 shadow-sm transition hover:-translate-y-0.5 hover:border-violet-300 hover:shadow-md"
-          >
-            {todaysEntry.image_url ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                src={todaysEntry.image_url}
-                alt=""
-                className="h-20 w-20 flex-shrink-0 rounded-xl object-cover"
-              />
-            ) : (
-              <div className="flex h-20 w-20 flex-shrink-0 items-center justify-center rounded-xl bg-violet-200/60">
-                <Sparkles className="h-7 w-7 text-violet-500" />
-              </div>
-            )}
-            <div className="min-w-0 flex-1">
-              <div className="text-[10px] font-bold uppercase tracking-widest text-violet-700">
-                Today&apos;s Daily · {todaysEntry.theme}
-              </div>
-              <div className="mt-0.5 truncate text-base font-bold text-zinc-900 group-hover:text-indigo-700">
-                {todaysEntry.passage_title}
-              </div>
-              <div className="mt-0.5 text-[11px] font-semibold text-violet-700">
-                Read now →
-              </div>
-            </div>
-          </Link>
-        )}
-
         {list.length === 0 ? (
           <div className="mt-12 rounded-2xl border-2 border-dashed border-zinc-200 bg-white p-10 text-center">
             <Calendar className="mx-auto h-10 w-10 text-zinc-300" />
@@ -126,30 +99,22 @@ export default async function DailyArchivePage() {
             </p>
           </div>
         ) : (
-          <ArchiveBrowser entries={list} todayDate={today} />
+          <ArchiveCalendar entries={list} todayDate={today} />
         )}
 
-        <div className="mt-16 rounded-3xl border border-indigo-200 bg-white p-6 text-center shadow-sm">
-          <h2 className="text-lg font-bold text-zinc-900">
-            One new passage every morning.
-          </h2>
-          <p className="mt-1 text-sm text-zinc-500">
-            Designed by a certified reading specialist. Free to try.
+        {/* Footer — minimal, matches the rest of the page. Single
+            parent CTA, no colored card, no gradient. The calendar
+            above is the product; this is just the closing nudge. */}
+        <div className="mt-20 border-t border-zinc-100 pt-10 text-center">
+          <p className="text-sm text-zinc-500">
+            New passage every weekday morning.
           </p>
-          <div className="mt-4 flex items-center justify-center gap-2">
-            <Link
-              href="/signup"
-              className="rounded-full bg-violet-600 px-5 py-2 text-sm font-bold text-white transition hover:bg-violet-700"
-            >
-              Try Readee free
-            </Link>
-            <Link
-              href="/signup?as=teacher"
-              className="rounded-full border border-zinc-200 bg-white px-5 py-2 text-sm font-bold text-zinc-700 transition hover:border-violet-300"
-            >
-              I&apos;m a teacher
-            </Link>
-          </div>
+          <Link
+            href="/signup"
+            className="mt-4 inline-flex items-center justify-center rounded-full bg-zinc-900 px-6 py-2.5 text-sm font-bold text-white transition hover:bg-zinc-800"
+          >
+            Sign up free
+          </Link>
         </div>
       </div>
     </article>

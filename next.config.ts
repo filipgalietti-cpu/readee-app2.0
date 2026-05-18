@@ -22,6 +22,19 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: __dirname,
   },
+  // Allow Next/Image optimization for Supabase Storage assets.
+  // Every story cover, question image, and daily-archive thumbnail
+  // lives under the storage subpath of our project's Supabase host;
+  // without this allowlist Next/Image would refuse to serve them.
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "rwlvjtowmfrrqeqvwolo.supabase.co",
+        pathname: "/storage/v1/object/public/**",
+      },
+    ],
+  },
 };
 
 export default withSentryConfig(nextConfig, {

@@ -36,6 +36,17 @@ type ChildSummary = {
     accuracy: number;
     attempted: number;
   } | null;
+  /** Highest-accuracy standard (≥4 attempts in window). Drives the
+   *  "wins" column in the digest — celebrates what's working. */
+  strongestStandard: {
+    standard_id: string;
+    accuracy: number;
+    attempted: number;
+  } | null;
+  /** Outfits + badges granted this week (item_id starting with bunny_
+   *  or badge_ in shop_purchases). Powers the "Wins" cluster — visible
+   *  proof of milestones the kid hit. */
+  unlocksThisWeek: { itemId: string; kind: "outfit" | "badge" }[];
 };
 
 function weekStartIso(now = new Date()): string {
@@ -81,7 +92,7 @@ async function buildParentSummary(parentId: string): Promise<{
   }
 
   const childIds = children.map((c) => c.id);
-  const [{ data: practiceRows }, { data: lessonRows }] = await Promise.all([
+  const [{ data: practiceRows }, { data: lessonRows }, { data: unlockRows }] = await Promise.all([
     admin
       .from("practice_results")
       .select("child_id, standard_id, questions_attempted, questions_correct, created_at")
@@ -93,6 +104,14 @@ async function buildParentSummary(parentId: string): Promise<{
       .in("child_id", childIds)
       .eq("section", "learn")
       .gte("created_at", since),
+    // New: outfits + badges the kid earned this week. Drives the
+    // "wins" cluster in each child block (proof of milestones hit,
+    // not just numbers).
+    admin
+      .from("shop_purchases")
+      .select("child_id, item_id, purchased_at")
+      .in("child_id", childIds)
+      .gte("purchased_at", since),
   ]);
 
   const summaries: ChildSummary[] = children.map((c) => {
@@ -117,17 +136,36 @@ async function buildParentSummary(parentId: string): Promise<{
       byStd.set(k, agg);
     }
     let weakest: ChildSummary["weakestStandard"] = null;
+    let strongest: ChildSummary["strongestStandard"] = null;
     for (const [std, v] of byStd) {
       if (v.attempted < 4) continue;
       const acc = v.correct / v.attempted;
       if (!weakest || acc < weakest.accuracy) {
         weakest = { standard_id: std, accuracy: acc, attempted: v.attempted };
       }
+      // Strongest = highest accuracy, but only if it's actually a "win"
+      // (>=75%). Drives the wins column — no point celebrating 60%.
+      if (acc >= 0.75 && (!strongest || acc > strongest.accuracy)) {
+        strongest = { standard_id: std, accuracy: acc, attempted: v.attempted };
+      }
     }
 
     const passagesFinished = (lessonRows ?? []).filter(
       (r: any) => r.child_id === c.id,
     ).length;
+
+    // Outfits + badges granted to this child in the window. Filter to
+    // the items we explicitly render in the wins column (bunny_* and
+    // badge_*) so legacy shop items don't slip through.
+    const unlocksThisWeek = ((unlockRows ?? []) as any[])
+      .filter((r) => r.child_id === c.id)
+      .map((r) => {
+        const id = r.item_id as string;
+        if (id.startsWith("badge_")) return { itemId: id, kind: "badge" as const };
+        if (id.startsWith("bunny_")) return { itemId: id, kind: "outfit" as const };
+        return null;
+      })
+      .filter((x): x is NonNullable<typeof x> => x !== null);
 
     return {
       childId: c.id,
@@ -137,6 +175,8 @@ async function buildParentSummary(parentId: string): Promise<{
       questionsCorrect: correct,
       comprehensionPct,
       weakestStandard: weakest,
+      strongestStandard: strongest,
+      unlocksThisWeek,
     };
   });
 
@@ -177,7 +217,7 @@ function renderDigest(input: {
   const text = [
     greeting,
     "",
-    "Here's what your family read on Readee this week:",
+    "Here's how your family's week went on Readee:",
     "",
     ...input.children.map((c) => {
       const lines: string[] = [`— ${c.firstName}:`];
@@ -186,9 +226,23 @@ function renderDigest(input: {
         lines.push(
           `  · ${c.questionsCorrect} / ${c.questionsAttempted} comprehension correct (${c.comprehensionPct}%)`,
         );
+      // Wins
+      if (c.strongestStandard)
+        lines.push(
+          `  · ✅ Strongest: ${c.strongestStandard.standard_id} (${Math.round(c.strongestStandard.accuracy * 100)}%)`,
+        );
+      if (c.unlocksThisWeek.length > 0) {
+        const outfits = c.unlocksThisWeek.filter((u) => u.kind === "outfit").length;
+        const badges = c.unlocksThisWeek.filter((u) => u.kind === "badge").length;
+        const parts: string[] = [];
+        if (badges > 0) parts.push(`${badges} badge${badges === 1 ? "" : "s"}`);
+        if (outfits > 0) parts.push(`${outfits} outfit${outfits === 1 ? "" : "s"}`);
+        lines.push(`  · 🎉 Unlocked: ${parts.join(" + ")}`);
+      }
+      // Loss
       if (c.weakestStandard)
         lines.push(
-          `  · Working on: ${c.weakestStandard.standard_id} (${Math.round(c.weakestStandard.accuracy * 100)}% so far)`,
+          `  · ⚠️ Tricky spot: ${c.weakestStandard.standard_id} (${Math.round(c.weakestStandard.accuracy * 100)}% so far)`,
         );
       if (c.passagesFinished === 0 && c.questionsAttempted === 0)
         lines.push("  · No Readee time this week — try a passage together tonight!");
@@ -203,9 +257,40 @@ function renderDigest(input: {
 
   const childBlocks = input.children
     .map((c) => {
-      const weakestLine = c.weakestStandard
-        ? `<div style="margin-top:4px;font-size:13px;color:#6b7280;">Working on <a href="${BASE_URL}/standards/${slug(c.weakestStandard.standard_id)}" style="color:#4f46e5;text-decoration:none;font-weight:600;">${escapeHtml(c.weakestStandard.standard_id)}</a> — ${Math.round(c.weakestStandard.accuracy * 100)}% correct so far</div>`
-        : "";
+      // Wins/losses cluster — two-column row inside each child card.
+      // Email-client safe: uses inline styles + a stacked table fallback
+      // for narrow screens (most clients gracefully collapse).
+      const wins: string[] = [];
+      if (c.strongestStandard) {
+        wins.push(
+          `<div><span style="color:#16a34a;font-weight:700;">✅ Strongest:</span> <a href="${BASE_URL}/standards/${slug(c.strongestStandard.standard_id)}" style="color:#16a34a;text-decoration:none;font-weight:600;">${escapeHtml(c.strongestStandard.standard_id)}</a> &middot; ${Math.round(c.strongestStandard.accuracy * 100)}%</div>`,
+        );
+      }
+      if (c.unlocksThisWeek.length > 0) {
+        const outfits = c.unlocksThisWeek.filter((u) => u.kind === "outfit").length;
+        const badges = c.unlocksThisWeek.filter((u) => u.kind === "badge").length;
+        const parts: string[] = [];
+        if (badges > 0) parts.push(`${badges} badge${badges === 1 ? "" : "s"}`);
+        if (outfits > 0) parts.push(`${outfits} outfit${outfits === 1 ? "" : "s"}`);
+        wins.push(
+          `<div><span style="color:#7c3aed;font-weight:700;">🎉 Unlocked:</span> ${parts.join(" + ")} this week</div>`,
+        );
+      }
+      const losses: string[] = [];
+      if (c.weakestStandard) {
+        losses.push(
+          `<div><span style="color:#d97706;font-weight:700;">⚠️ Tricky spot:</span> <a href="${BASE_URL}/standards/${slug(c.weakestStandard.standard_id)}" style="color:#d97706;text-decoration:none;font-weight:600;">${escapeHtml(c.weakestStandard.standard_id)}</a> &middot; ${Math.round(c.weakestStandard.accuracy * 100)}%</div>`,
+        );
+      }
+
+      const winsLossesBlock =
+        wins.length > 0 || losses.length > 0
+          ? `<div style="margin-top:12px;padding-top:12px;border-top:1px solid #f4f4f5;font-size:13px;line-height:1.6;color:#3f3f46;">
+              ${wins.join("")}
+              ${losses.join("")}
+            </div>`
+          : "";
+
       const metric =
         c.questionsAttempted > 0
           ? `<div style="font-size:26px;font-weight:800;color:#4f46e5;">${c.comprehensionPct}%</div><div style="font-size:12px;color:#71717a;">comprehension</div>`
@@ -221,10 +306,10 @@ function renderDigest(input: {
                     ${c.passagesFinished} passage${c.passagesFinished === 1 ? "" : "s"} &middot;
                     ${c.questionsAttempted} question${c.questionsAttempted === 1 ? "" : "s"}
                   </div>
-                  ${weakestLine}
                 </div>
                 <div style="text-align:right;">${metric}</div>
               </div>
+              ${winsLossesBlock}
             </td>
           </tr>
         </table>`;
@@ -243,7 +328,8 @@ function renderDigest(input: {
                 <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;color:#4f46e5;text-transform:uppercase;">Your Readee week</div>
                 <h1 style="margin:8px 0 0;font-size:24px;font-weight:800;color:#18181b;">${escapeHtml(greeting)}</h1>
                 <p style="margin:12px 0 0;font-size:15px;line-height:1.5;color:#3f3f46;">
-                  Here's what your family read on Readee this week.
+                  Here's how the week went — what each kid nailed,
+                  what they unlocked, and where to focus next.
                 </p>
                 ${childBlocks}
                 <div style="margin-top:24px;text-align:center;">

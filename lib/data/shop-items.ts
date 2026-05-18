@@ -36,12 +36,79 @@ export const SHOP_ITEMS: ShopItem[] = [
   { id: "avatar_lion",      name: "King Leo",   icon: "crown",    category: "avatars", price: 250, description: "A regal lion with a crown" },
 
   // ── Readee Outfits ──
-  { id: "outfit_cape",       name: "Cape",        icon: "shield",   category: "outfits", price: 30,  description: "A hero's cape for Readee" },
-  { id: "outfit_crown",      name: "Crown",       icon: "crown",    category: "outfits", price: 50,  description: "A royal crown" },
-  { id: "outfit_wizard_hat", name: "Wizard Hat",  icon: "wand-2",   category: "outfits", price: 75,  description: "A magical wizard hat" },
-  { id: "outfit_pirate_hat", name: "Pirate Hat",  icon: "skull",    category: "outfits", price: 100, description: "Arr! A pirate hat" },
-  { id: "outfit_detective",  name: "Detective",   icon: "search",   category: "outfits", price: 125, description: "A detective outfit" },
-  { id: "outfit_space_suit", name: "Space Suit",  icon: "rocket",   category: "outfits", price: 200, description: "A full space suit" },
+  // Each bunny outfit re-skins the Readee mascot you see on right/wrong
+  // feedback and the lesson-complete screen. Art + animation live in
+  // /app/_components/Bunny — keep IDs in sync with OUTFITS there.
+  { id: "bunny_classic",   name: "Classic Readee", icon: "rabbit",   category: "outfits", price: 0,   description: "The original Readee bunny" },
+  { id: "bunny_bookworm",  name: "Bookworm",       icon: "book-open",category: "outfits", price: 200, description: "Cozy sweater, tiny reading specs" },
+  { id: "bunny_astronaut", name: "Astronaut",      icon: "rocket",   category: "outfits", price: 250, description: "Helmet bubble + space suit" },
+  { id: "bunny_superhero", name: "Superhero",      icon: "shield",   category: "outfits", price: 250, description: "Caped, with a gold star emblem" },
+  { id: "bunny_pirate",    name: "Pirate",         icon: "skull",    category: "outfits", price: 250, description: "Striped shirt + eyepatch + bandana" },
+  { id: "bunny_scientist", name: "Scientist",      icon: "brain",    category: "outfits", price: 250, description: "Lab coat with a pocket pencil" },
+  { id: "bunny_soccer",    name: "Soccer Star",    icon: "circle-dot", category: "outfits", price: 250, description: "Striped jersey, number 7" },
+  { id: "bunny_royal",     name: "Royal",          icon: "crown",    category: "outfits", price: 500, description: "Purple velvet cape + tiny gold crown" },
+  { id: "bunny_wizard",    name: "Wizard",         icon: "wand-2",   category: "outfits", price: 500, description: "Starry blue robe + pointed hat" },
+  { id: "bunny_birthday",  name: "Birthday",       icon: "sparkles", category: "outfits", price: 750, description: "Party hat + confetti shirt (rare)" },
+
+  // ── Season 2 (May 2026) — detective / ninja / chef / robot / cowboy / knight / popstar / dino / jester / vampire ──
+  { id: "bunny_detective", name: "Detective",      icon: "search",   category: "outfits", price: 250, description: "Plaid deerstalker + tan trench coat" },
+  { id: "bunny_ninja",     name: "Ninja",          icon: "swords",   category: "outfits", price: 250, description: "Black mask + red headband shuriken" },
+  { id: "bunny_chef",      name: "Chef",           icon: "flame",    category: "outfits", price: 250, description: "Double-breasted whites + red kerchief" },
+  { id: "bunny_robot",     name: "Robot",          icon: "bot",      category: "outfits", price: 500, description: "Antenna + chrome chest + glowing core (rare)" },
+  { id: "bunny_cowboy",    name: "Cowboy",         icon: "star",     category: "outfits", price: 250, description: "Stetson + denim vest + sheriff star" },
+  { id: "bunny_knight",    name: "Knight",         icon: "shield",   category: "outfits", price: 500, description: "Silver helmet + chainmail + crusader tabard (rare)" },
+  { id: "bunny_popstar",   name: "Pop Star",       icon: "sparkles", category: "outfits", price: 250, description: "Heart sunglasses + sparkly vest + mic" },
+  { id: "bunny_dino",      name: "Dino Onesie",    icon: "bone",     category: "outfits", price: 500, description: "Spiked green cap + cream belly + tail (rare)" },
+  { id: "bunny_jester",    name: "Jester",         icon: "smile",    category: "outfits", price: 250, description: "Three-bell hat + red/yellow harlequin" },
+  { id: "bunny_vampire",   name: "Vampire",        icon: "moon",     category: "outfits", price: 500, description: "High-collar black cape + bow tie + fangs (rare)" },
+
+  // ── Season 3 — fantasy & theatrical ──
+  { id: "bunny_magician", name: "Magician", icon: "wand-2", category: "outfits", price: 500, description: "Top hat + cape with wand spark" },
+  { id: "bunny_mermaid", name: "Mermaid", icon: "waves", category: "outfits", price: 500, description: "Iridescent scaled tail + seashell top" },
+  { id: "bunny_witch", name: "Witch", icon: "moon", category: "outfits", price: 250, description: "Pointy hat + bubbling cauldron" },
+  { id: "bunny_viking", name: "Viking", icon: "swords", category: "outfits", price: 500, description: "Horned helmet + fur tunic + braided beard" },
+  { id: "bunny_surfer", name: "Surfer", icon: "waves", category: "outfits", price: 250, description: "Hibiscus shirt + bare feet + zinc nose" },
+  { id: "bunny_mountaineer", name: "Mountaineer", icon: "mountain", category: "outfits", price: 500, description: "Climbing harness + helmet + ice axe" },
+  { id: "bunny_mummy", name: "Mummy", icon: "sparkles", category: "outfits", price: 250, description: "Bandage wrap + dusty cloth" },
+  { id: "bunny_disco", name: "Disco Star", icon: "sparkles", category: "outfits", price: 250, description: "Sequins + bell-bottoms + disco ball" },
+  { id: "bunny_racer", name: "Race Car Driver", icon: "circle-dot", category: "outfits", price: 250, description: "Race suit + checkered flag + helmet" },
+  { id: "bunny_fairy", name: "Fairy", icon: "sparkles", category: "outfits", price: 250, description: "Iridescent wings + flower crown" },
+
+  // ── Season 4 — sports collection ──
+  { id: "bunny_tennis", name: "Tennis Pro", icon: "circle-dot", category: "outfits", price: 250, description: "Polo + visor + tennis racquet" },
+  { id: "bunny_boxer", name: "Boxer", icon: "shield", category: "outfits", price: 250, description: "Red gloves + satin trunks + champion belt" },
+  { id: "bunny_baseball", name: "Baseball Slugger", icon: "circle-dot", category: "outfits", price: 250, description: "Pinstripes + cap + bat" },
+  { id: "bunny_hockey", name: "Hockey", icon: "swords", category: "outfits", price: 250, description: "Jersey + helmet + hockey stick" },
+  { id: "bunny_football", name: "Football", icon: "circle-dot", category: "outfits", price: 250, description: "Pads + helmet + football" },
+  { id: "bunny_karate", name: "Karate", icon: "swords", category: "outfits", price: 250, description: "White gi + black belt" },
+  { id: "bunny_cyclist", name: "Cyclist", icon: "star", category: "outfits", price: 250, description: "Lycra kit + aero helmet + goggles" },
+  { id: "bunny_swimmer", name: "Swimmer", icon: "waves", category: "outfits", price: 250, description: "Goggles + swim cap + medal" },
+  { id: "bunny_gymnast", name: "Gymnast", icon: "star", category: "outfits", price: 250, description: "Leotard + sparkle accents" },
+  { id: "bunny_cheer", name: "Cheerleader", icon: "star", category: "outfits", price: 250, description: "V-sweater + skirt + pom poms" },
+
+  // ── Season 5 — World Cup national teams ──
+  { id: "bunny_brazil", name: "Brazil", icon: "globe", category: "outfits", price: 250, description: "Yellow + green + soccer ball" },
+  { id: "bunny_argentina", name: "Argentina", icon: "globe", category: "outfits", price: 250, description: "Sky blue + white stripes" },
+  { id: "bunny_france", name: "France", icon: "globe", category: "outfits", price: 250, description: "Bleu, blanc, rouge" },
+  { id: "bunny_germany", name: "Germany", icon: "globe", category: "outfits", price: 250, description: "Black, red, gold trim" },
+  { id: "bunny_usa", name: "USA", icon: "star", category: "outfits", price: 250, description: "Stars + stripes + red socks" },
+  { id: "bunny_england", name: "England", icon: "shield", category: "outfits", price: 250, description: "Three lions + white kit" },
+  { id: "bunny_spain", name: "Spain", icon: "flame", category: "outfits", price: 250, description: "La Roja crest + red top" },
+  { id: "bunny_italy", name: "Italy", icon: "globe", category: "outfits", price: 250, description: "Azzurri blue + tricolor" },
+  { id: "bunny_netherlands", name: "Netherlands", icon: "globe", category: "outfits", price: 250, description: "Oranje top + lion crest" },
+  { id: "bunny_portugal", name: "Portugal", icon: "globe", category: "outfits", price: 250, description: "Maroon + green cross" },
+
+  // ── Season 6 — summer collection ──
+  { id: "bunny_flamingo", name: "Flamingo Float", icon: "bird", category: "outfits", price: 250, description: "Pink flamingo pool float" },
+  { id: "bunny_scuba", name: "Scuba Diver", icon: "fish", category: "outfits", price: 250, description: "Mask + flippers + air tank" },
+  { id: "bunny_lifeguard", name: "Lifeguard", icon: "shield", category: "outfits", price: 250, description: "Red trunks + whistle + zinc nose" },
+  { id: "bunny_icecream", name: "Ice Cream", icon: "candy", category: "outfits", price: 250, description: "Cone hat + cherry on top" },
+  { id: "bunny_watermelon", name: "Watermelon", icon: "cherry", category: "outfits", price: 250, description: "Watermelon slice cap + green vest" },
+  { id: "bunny_sailor", name: "Sailor", icon: "ship", category: "outfits", price: 250, description: "Sailor stripes + nautical hat" },
+  { id: "bunny_hula", name: "Hula", icon: "flower", category: "outfits", price: 250, description: "Grass skirt + lei + flower crown" },
+  { id: "bunny_fisherman", name: "Fisherman", icon: "fish", category: "outfits", price: 250, description: "Yellow slicker + bucket hat + rod" },
+  { id: "bunny_beachtowel", name: "Beach Day", icon: "sun", category: "outfits", price: 250, description: "Beach towel cape + flip flops" },
+  { id: "bunny_pineapple", name: "Pineapple", icon: "tree-palm", category: "outfits", price: 250, description: "Pineapple onesie + crown leaves" },
 
   // ── Themes ──
   { id: "theme_ocean",      name: "Ocean",       icon: "waves",      category: "themes", price: 50,  description: "Deep blue ocean theme" },

@@ -23,6 +23,10 @@ import { Carrot, Sparkles } from "lucide-react";
 import { getShopIcon } from "@/lib/data/shop-icons";
 import { AVATAR_IMAGES } from "@/lib/utils/get-child-avatar";
 import { SkeletonPage } from "@/app/_components/Skeleton";
+import { Bunny, BunnyReaction } from "@/app/_components/Bunny/Bunny";
+import { getOutfit, type Outfit } from "@/app/_components/Bunny/outfits";
+import { UnlockToast } from "@/app/_components/UnlockToast";
+import { checkSeasonalGrants, isSeasonalActive, monthName } from "@/lib/unlock";
 
 export default function ShopPage() {
   return (
@@ -79,17 +83,53 @@ function ShopContent({
   purchases: ShopPurchase[];
   setPurchases: (p: ShopPurchase[]) => void;
 }) {
-  const [activeCategory, setActiveCategory] = useState<ShopCategory>("avatars");
+  // Default to Outfits so the grid below the bunny showcase is the
+  // outfit picker (tap to preview, then equip in the hero). Avatars,
+  // backgrounds, etc. are one tab away.
+  const [activeCategory, setActiveCategory] = useState<ShopCategory>("outfits");
   const [buying, setBuying] = useState<string | null>(null);
   const [justBought, setJustBought] = useState<string | null>(null);
   const [mysteryReward, setMysteryReward] = useState<MysteryReward | null>(null);
   const [buyingMystery, setBuyingMystery] = useState(false);
   const [showGetMore, setShowGetMore] = useState<ShopItem | null>(null);
   const [buyError, setBuyError] = useState<string | null>(null);
+  const [unlocks, setUnlocks] = useState<Outfit[]>([]);
+  const [previewOutfitId, setPreviewOutfitId] = useState<string>(
+    child.equipped_items?.outfit ?? "bunny_classic",
+  );
   const setMysteryBoxMultiplier = usePracticeStore((s) => s.setMysteryBoxMultiplier);
 
   const ownedIds = new Set(purchases.map((p) => p.item_id));
   const items = getItemsByCategory(activeCategory);
+
+  // Run seasonal grants on every shop load — if it's October and the
+  // kid doesn't yet own Vampire, they get it now with a celebration.
+  // Idempotent + cheap, safe to call on every mount.
+  useEffect(() => {
+    let cancelled = false;
+    async function run() {
+      const supabase = supabaseBrowser();
+      const ids = new Set(purchases.map((p) => p.item_id));
+      const { newlyGranted } = await checkSeasonalGrants(supabase, child.id, ids);
+      if (cancelled || newlyGranted.length === 0) return;
+      setPurchases([
+        ...purchases,
+        ...newlyGranted.map((o) => ({
+          id: crypto.randomUUID(),
+          child_id: child.id,
+          item_id: o.id,
+          purchased_at: new Date().toISOString(),
+        })),
+      ]);
+      setUnlocks(newlyGranted);
+    }
+    run();
+    return () => {
+      cancelled = true;
+    };
+    // intentionally only on mount per child
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [child.id]);
 
   const handleBuy = useCallback(
     async (item: ShopItem) => {
@@ -204,6 +244,8 @@ function ShopContent({
 
   return (
     <div className="max-w-3xl mx-auto py-8 px-4 pb-16">
+      <UnlockToast unlocked={unlocks} onDone={() => setUnlocks([])} />
+
       {/* Back link */}
       <div className="flex items-center gap-3 mb-6">
         <Link
@@ -218,7 +260,7 @@ function ShopContent({
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
-        className="rounded-2xl bg-gradient-to-br from-orange-500 to-amber-500 p-6 text-center text-white shadow-lg mb-8"
+        className="rounded-2xl bg-gradient-to-br from-orange-500 to-amber-500 p-6 text-center text-white shadow-lg mb-6"
       >
         <div className="flex justify-center mb-2"><Carrot className="w-10 h-10 text-white" strokeWidth={1.5} /></div>
         <div className="text-3xl font-extrabold">{child.carrots}</div>
@@ -226,6 +268,21 @@ function ShopContent({
           {child.first_name}&apos;s Carrots
         </div>
       </motion.div>
+
+      {/* Bunny showcase — hero preview of the kid's currently-selected
+          bunny doing the lesson-complete dance. Tapping any outfit card
+          below sets the preview without committing; the action buttons
+          (Equip / Buy / Locked badge) live in this block. */}
+      <BunnyShowcase
+        child={child}
+        previewOutfitId={previewOutfitId}
+        ownedIds={ownedIds}
+        onBuy={(item) => handleBuy(item)}
+        onEquip={(item) => handleEquip(item)}
+        onCantAfford={(item) => setShowGetMore(item)}
+        buying={buying}
+      />
+
 
       {buyError && (
         <div
@@ -340,9 +397,13 @@ function ShopContent({
               canAfford={child.carrots >= item.price}
               buying={buying === item.id}
               justBought={justBought === item.id}
+              previewing={item.id === previewOutfitId}
               onBuy={() => handleBuy(item)}
               onEquip={() => handleEquip(item)}
               onCantAfford={() => setShowGetMore(item)}
+              onPreview={
+                item.id.startsWith("bunny_") ? () => setPreviewOutfitId(item.id) : undefined
+              }
             />
           ))}
         </motion.div>
@@ -369,6 +430,147 @@ function ShopContent({
   );
 }
 
+/**
+ * BunnyShowcase — hero preview at the top of the shop. Renders the
+ * currently-selected bunny doing the lesson-complete dance on loop,
+ * plus a contextual action (Equip / Buy / locked badge) for whichever
+ * outfit the kid is previewing.
+ *
+ * `previewOutfitId` drives the bunny + label; defaults to the equipped
+ * outfit and updates when the kid taps a card in the grid below.
+ */
+function BunnyShowcase({
+  child,
+  previewOutfitId,
+  ownedIds,
+  onBuy,
+  onEquip,
+  onCantAfford,
+  buying,
+}: {
+  child: Child;
+  previewOutfitId: string;
+  ownedIds: Set<string>;
+  onBuy: (item: ShopItem) => void;
+  onEquip: (item: ShopItem) => void;
+  onCantAfford: (item: ShopItem) => void;
+  buying: string | null;
+}) {
+  const outfit = getOutfit(previewOutfitId);
+  const item = SHOP_ITEMS.find((i) => i.id === previewOutfitId);
+  const owned = ownedIds.has(previewOutfitId);
+  const equipped = child.equipped_items?.outfit === previewOutfitId;
+  const canAfford = item ? child.carrots >= item.price : false;
+  const isBuying = buying === previewOutfitId;
+
+  // The action panel branches by unlock type, mirroring ShopItemCard so
+  // the showcase stays in lockstep with the grid.
+  const action = (() => {
+    if (owned && equipped) {
+      return (
+        <div className="inline-flex items-center gap-2 rounded-full bg-orange-500 px-5 py-2 text-sm font-bold text-white shadow-sm">
+          <CheckmarkIcon /> Equipped
+        </div>
+      );
+    }
+    if (owned) {
+      return (
+        <button
+          onClick={() => item && onEquip(item)}
+          className="rounded-2xl bg-orange-500 px-6 py-3 text-sm font-extrabold text-white shadow-sm transition active:scale-[0.97] hover:bg-orange-600"
+        >
+          Equip {outfit.name}
+        </button>
+      );
+    }
+    if (outfit.unlock.type === "milestone") {
+      return (
+        <div className="rounded-xl border-2 border-dashed border-violet-400 bg-violet-50 px-5 py-3 text-center text-sm font-bold text-violet-700">
+          🎯 {outfit.unlock.label}
+        </div>
+      );
+    }
+    if (outfit.unlock.type === "seasonal") {
+      const active = (new Date().getMonth() + 1) === outfit.unlock.month;
+      return (
+        <div
+          className={`rounded-xl border-2 border-dashed px-5 py-3 text-center text-sm font-bold ${
+            active
+              ? "border-emerald-400 bg-emerald-50 text-emerald-700"
+              : "border-zinc-300 bg-zinc-50 text-zinc-500"
+          }`}
+        >
+          {active ? `Free this ${monthName(outfit.unlock.month)}!` : `Back next ${monthName(outfit.unlock.month)}`}
+        </div>
+      );
+    }
+    // shop (or "free" which should always be owned, but guard anyway)
+    if (!item) return null;
+    return (
+      <button
+        onClick={() => (canAfford ? onBuy(item) : onCantAfford(item))}
+        disabled={isBuying}
+        className={`inline-flex items-center gap-2 rounded-2xl px-6 py-3 text-sm font-extrabold shadow-sm transition active:scale-[0.97] ${
+          canAfford
+            ? "bg-gradient-to-r from-orange-500 to-amber-500 text-white hover:from-orange-600 hover:to-amber-600"
+            : "bg-zinc-200 text-zinc-500 hover:bg-zinc-300"
+        }`}
+      >
+        {isBuying ? (
+          <span className="inline-block h-4 w-4 rounded-full border-2 border-white/40 border-t-white animate-spin" />
+        ) : (
+          <>
+            Get for {item.price}
+            <Carrot className="w-4 h-4" strokeWidth={1.5} />
+          </>
+        )}
+      </button>
+    );
+  })();
+
+  // Subtitle nudges the kid toward the grid below. Every branch ends in
+  // "tap an outfit below" so the interaction model is obvious from the
+  // hero alone — you don't have to scroll to discover the grid is live.
+  const subtitle = (() => {
+    if (equipped) return "Your active look · tap an outfit below to try it on";
+    if (owned) return "Tap Equip to wear, or pick another outfit below";
+    if (outfit.rarity === "rare") return "Rare collectible · keep tapping outfits below";
+    return "Tap an outfit below to preview it here";
+  })();
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.05 }}
+      className="rounded-3xl border-2 mb-6 px-5 pb-5 pt-4 shadow-sm"
+      style={{ background: outfit.tint, borderColor: outfit.border }}
+    >
+      <div className="text-center text-[10px] font-bold uppercase tracking-[0.18em] text-violet-700">
+        Your Bunny
+      </div>
+      <div className="relative mx-auto mt-1 h-44 w-40 sm:h-52 sm:w-48">
+        <BunnyReaction outfitId={previewOutfitId} state="levelup" />
+      </div>
+      <div className="mt-1 text-center">
+        <div className="font-display text-2xl font-extrabold tracking-tight text-zinc-900">
+          {outfit.name}
+        </div>
+        <div className="mt-0.5 text-xs text-zinc-600">{subtitle}</div>
+      </div>
+      <div className="mt-4 flex justify-center">{action}</div>
+    </motion.div>
+  );
+}
+
+function CheckmarkIcon() {
+  return (
+    <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+    </svg>
+  );
+}
+
 function ShopItemCard({
   item,
   owned,
@@ -376,9 +578,11 @@ function ShopItemCard({
   canAfford,
   buying,
   justBought,
+  previewing,
   onBuy,
   onEquip,
   onCantAfford,
+  onPreview,
 }: {
   item: ShopItem;
   owned: boolean;
@@ -386,18 +590,24 @@ function ShopItemCard({
   canAfford: boolean;
   buying: boolean;
   justBought: boolean;
+  previewing?: boolean;
   onBuy: () => void;
   onEquip: () => void;
   onCantAfford: () => void;
+  /** Bunny outfits only — tap card to show it in the top showcase. */
+  onPreview?: () => void;
 }) {
   return (
     <motion.div
       layout
+      onClick={onPreview}
       whileHover={{ scale: 1.04, y: -4 }}
       whileTap={{ scale: 0.97 }}
       transition={{ type: "spring", stiffness: 400, damping: 20 }}
-      className={`rounded-2xl border p-4 flex flex-col items-center text-center cursor-pointer transition-shadow ${
-        owned
+      className={`rounded-2xl border-2 p-4 flex flex-col items-center text-center cursor-pointer transition-shadow ${
+        previewing
+          ? "border-violet-400 bg-violet-50 ring-2 ring-violet-300 dark:bg-violet-950/30 dark:border-violet-600 dark:ring-violet-700"
+          : owned
           ? equipped
             ? "border-orange-300 bg-orange-50 dark:bg-orange-950/20 dark:border-orange-700"
             : "border-green-200 bg-green-50/50 dark:bg-green-950/20 dark:border-green-800"
@@ -412,7 +622,11 @@ function ShopItemCard({
         animate={justBought ? { scale: [1, 1.4, 1], rotate: [0, 10, -10, 0] } : {}}
         transition={{ duration: 0.5 }}
       >
-        {AVATAR_IMAGES[item.id] ? (
+        {item.id.startsWith("bunny_") ? (
+          <div className="relative w-20 h-20">
+            <Bunny outfitId={item.id} showRareSparkle={getOutfit(item.id).rarity === "rare"} />
+          </div>
+        ) : AVATAR_IMAGES[item.id] ? (
           <div className="w-14 h-14 rounded-xl overflow-hidden">
             <img src={AVATAR_IMAGES[item.id]} alt={item.name} className="w-full h-full object-cover" draggable={false} />
           </div>
@@ -431,35 +645,68 @@ function ShopItemCard({
         {item.description}
       </div>
 
-      {/* Action */}
-      {owned ? (
-        <button
-          onClick={onEquip}
-          className={`w-full py-2 rounded-xl text-xs font-bold transition-all active:scale-[0.97] ${
-            equipped
-              ? "bg-orange-500 text-white shadow-sm"
-              : "bg-zinc-100 dark:bg-slate-700 text-zinc-600 dark:text-slate-300 hover:bg-zinc-200 dark:hover:bg-slate-600"
-          }`}
-        >
-          {equipped ? "Equipped" : "Equip"}
-        </button>
-      ) : (
-        <button
-          onClick={canAfford ? onBuy : onCantAfford}
-          disabled={buying}
-          className={`w-full py-2 rounded-xl text-xs font-bold transition-all active:scale-[0.97] ${
-            canAfford
-              ? "bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-sm hover:from-orange-600 hover:to-amber-600"
+      {/* Action — branches by unlock method for bunny items, falls back
+          to the legacy buy/equip flow for everything else. */}
+      {(() => {
+        const bunny = item.id.startsWith("bunny_") ? getOutfit(item.id) : null;
+        const unlock = bunny?.unlock;
+
+        if (owned) {
+          return (
+            <button
+              onClick={onEquip}
+              className={`w-full py-2 rounded-xl text-xs font-bold transition-all active:scale-[0.97] ${
+                equipped
+                  ? "bg-orange-500 text-white shadow-sm"
+                  : "bg-zinc-100 dark:bg-slate-700 text-zinc-600 dark:text-slate-300 hover:bg-zinc-200 dark:hover:bg-slate-600"
+              }`}
+            >
+              {equipped ? "Equipped" : "Equip"}
+            </button>
+          );
+        }
+
+        if (unlock?.type === "milestone") {
+          return (
+            <div className="w-full rounded-xl border-2 border-dashed border-violet-300 bg-violet-50 px-2 py-2 text-center text-[11px] font-bold leading-tight text-violet-700 dark:border-violet-700 dark:bg-violet-950/30 dark:text-violet-300">
+              {unlock.label}
+            </div>
+          );
+        }
+
+        if (unlock?.type === "seasonal") {
+          const active = isSeasonalActive(bunny!);
+          return (
+            <div
+              className={`w-full rounded-xl border-2 border-dashed px-2 py-2 text-center text-[11px] font-bold leading-tight ${
+                active
+                  ? "border-emerald-300 bg-emerald-50 text-emerald-700 dark:border-emerald-700 dark:bg-emerald-950/30 dark:text-emerald-300"
+                  : "border-zinc-300 bg-zinc-50 text-zinc-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400"
+              }`}
+            >
+              {active ? `Free this ${monthName(unlock.month)}!` : `Back next ${monthName(unlock.month)}`}
+            </div>
+          );
+        }
+
+        return (
+          <button
+            onClick={canAfford ? onBuy : onCantAfford}
+            disabled={buying}
+            className={`w-full py-2 rounded-xl text-xs font-bold transition-all active:scale-[0.97] ${
+              canAfford
+                ? "bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-sm hover:from-orange-600 hover:to-amber-600"
               : "bg-zinc-200 dark:bg-slate-700 text-zinc-400 dark:text-slate-500 hover:bg-zinc-300 dark:hover:bg-slate-600"
           }`}
         >
-          {buying ? (
-            <span className="inline-block h-4 w-4 rounded-full border-2 border-white/40 border-t-white animate-spin" />
-          ) : (
-            <span className="inline-flex items-center gap-1">{item.price} <Carrot className="w-3.5 h-3.5" strokeWidth={1.5} /></span>
-          )}
-        </button>
-      )}
+            {buying ? (
+              <span className="inline-block h-4 w-4 rounded-full border-2 border-white/40 border-t-white animate-spin" />
+            ) : (
+              <span className="inline-flex items-center gap-1">{item.price} <Carrot className="w-3.5 h-3.5" strokeWidth={1.5} /></span>
+            )}
+          </button>
+        );
+      })()}
     </motion.div>
   );
 }

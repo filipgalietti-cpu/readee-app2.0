@@ -16,6 +16,7 @@ import { useThemeStore } from "@/lib/stores/theme-store";
 import { safeValidate } from "@/lib/validate";
 import { PracticeResultSchema } from "@/lib/schemas";
 import { levelNameToGradeKey } from "@/lib/assessment/questions";
+import { buildSharpenDeck, parseStandardFromQuestionId, type SharpenDeck } from "@/lib/adaptive/build-deck";
 import { getStandardsForGrade, findStandardById } from "@/lib/data/all-standards";
 import { fadeUp, fadeIn, staggerContainer, feedbackSlideUp, popIn, scaleIn } from "@/lib/motion/variants";
 import { SentenceBuild } from "@/app/components/practice/SentenceBuild";
@@ -26,12 +27,16 @@ import { SoundMachine } from "@/app/components/practice/SoundMachine";
 import { SpaceInsertion } from "@/app/components/practice/SpaceInsertion";
 import { getDailyMultiplier, getSessionStreakTier } from "@/lib/carrots/multipliers";
 import { StreakFire } from "@/app/_components/StreakFire";
-import { BookOpen, Newspaper, Type, MessageCircle, Star, Sparkles, Target, Carrot, Search } from "lucide-react";
+import { BookOpen, Newspaper, Type, MessageCircle, Carrot, Search } from "lucide-react";
 import { usePlanStore } from "@/lib/stores/plan-store";
 import { getLimits } from "@/lib/plan/limits";
 import { useLifetimeCarrots } from "@/lib/levels/use-lifetime-carrots";
 import LevelProgressCard from "@/app/_components/LevelProgressCard";
 import type { LucideIcon } from "lucide-react";
+import { BunnyReaction } from "@/app/_components/Bunny/Bunny";
+import { UnlockToast, mixUnlocks, type UnlockableItem } from "@/app/_components/UnlockToast";
+import type { Outfit } from "@/app/_components/Bunny/outfits";
+import { checkMilestones, checkBadgeMilestones } from "@/lib/unlock";
 
 /* ─── Types ──────────────────────────────────────────── */
 
@@ -231,15 +236,6 @@ const CORRECT_MESSAGES = [
 ];
 const CORRECT_EMOJIS = ["star", "sparkles", "sparkle", "star2", "zap", "target"];
 
-const FEEDBACK_ICON_MAP: Record<string, LucideIcon> = {
-  star: Star,
-  sparkles: Sparkles,
-  sparkle: Sparkles,
-  star2: Star,
-  zap: Target,
-  target: Target,
-};
-
 const INCORRECT_MESSAGES = [
   "Not quite!", "Almost!", "Good try!", "Keep learning!", "So close!",
   "Try again!", "You'll get it!", "Oops, not that one!", "Nice effort!", "Don't give up!",
@@ -360,6 +356,11 @@ function PracticeLoader() {
   const childId = params.get("child");
   const standardId = params.get("standard");
   const typesParam = params.get("types"); // e.g. "sentence_build,category_sort"
+  // ?mode=sharpen — premium adaptive review. Loads the kid's top weak
+  // standards and composes a multi-standard deck (round-robin interleave,
+  // 6-9 questions). See lib/adaptive/build-deck.ts.
+  const modeParam = params.get("mode");
+  const sharpenMode = modeParam === "sharpen";
   // Optional smart-search deep-link: pin a specific question to the
   // front of the session so the kid sees the one the parent searched
   // for first instead of waiting for the shuffle to surface it.
@@ -367,6 +368,9 @@ function PracticeLoader() {
   const [child, setChild] = useState<Child | null>(null);
   const [loading, setLoading] = useState(true);
   const [blocked, setBlocked] = useState(false);
+  // Sharpen Up deck — populated by buildSharpenDeck() when ?mode=sharpen.
+  // null = not yet loaded; { questions: [], ... } = empty (no weak spots).
+  const [sharpenDeck, setSharpenDeck] = useState<SharpenDeck<Question> | null>(null);
   // Deliverability gate — fetch quarantined question ids on mount and
   // strip them from the served set. Cached server-side; ~1 lightweight
   // request per session.
@@ -415,10 +419,36 @@ function PracticeLoader() {
         }
       }
 
+      // Sharpen Up: fetch the kid's weak standards + compose a multi-
+      // standard deck. Premium-gated at the UI layer — free users will
+      // never see the Sharpen Up CTA that points here, but if they
+      // somehow land on ?mode=sharpen we just bounce to /upgrade.
+      if (sharpenMode && data) {
+        if (plan !== null && plan !== "premium") {
+          router.replace("/upgrade?reason=sharpen");
+          return;
+        }
+        const childRow = data as Child;
+        const gradeKey = levelNameToGradeKey(childRow.reading_level ?? null);
+        const allGradeStandards = getStandardsForGrade(gradeKey);
+        const deck = await buildSharpenDeck<typeof allGradeStandards[number], Question>(
+          supabase,
+          childId,
+          allGradeStandards,
+          { topN: 3, perStandard: 3, maxTotal: 9 },
+        );
+        if (!deck || deck.questions.length === 0) {
+          // No weak spots yet — send the kid back to the review hub.
+          router.replace(`/review?child=${childId}`);
+          return;
+        }
+        setSharpenDeck(deck);
+      }
+
       setLoading(false);
     }
     load();
-  }, [childId, plan, standardId]);
+  }, [childId, plan, standardId, sharpenMode, router]);
 
   useEffect(() => {
     if (blocked) router.replace("/upgrade?reason=practice");
@@ -444,7 +474,20 @@ function PracticeLoader() {
 
   // Build a virtual standard when filtering by question types across all standards
   let standard: Standard | undefined;
-  if (typesParam) {
+  if (sharpenMode && sharpenDeck) {
+    // Sharpen Up — questions drawn from the kid's top weak standards.
+    // We use a synthetic standard_id ("sharpen-review") for the SESSION
+    // wrapper, but per-question save logic recovers each question's
+    // REAL source standard via parseStandardFromQuestionId(q.id) so
+    // practice_answers + practice_results split cleanly by standard.
+    standard = {
+      standard_id: "sharpen-review",
+      standard_description: "Sharpen Up review",
+      domain: "Mixed",
+      parent_tip: "",
+      questions: sharpenDeck.questions.filter((q) => !blockedSet.has(q.id)),
+    };
+  } else if (typesParam) {
     const types = new Set(typesParam.split(","));
     const filtered = gradeStandards.flatMap((s) =>
       s.questions.filter((q) => types.has(q.type))
@@ -542,7 +585,6 @@ function PracticeSession({
   const selected = usePracticeStore((s) => s.selected);
   const isCorrect = usePracticeStore((s) => s.isCorrect);
   const feedbackMsg = usePracticeStore((s) => s.feedbackMsg);
-  const feedbackEmoji = usePracticeStore((s) => s.feedbackEmoji);
   const selectAnswer = usePracticeStore((s) => s.selectAnswer);
   const nextQuestion = usePracticeStore((s) => s.nextQuestion);
   const resetStore = usePracticeStore((s) => s.reset);
@@ -1068,9 +1110,13 @@ function PracticeSession({
         <MuteToggle />
       </div>
 
-      {/* ── Question area ── */}
+      {/* ── Question area ──
+          Width: stays narrow (max-w-lg = 512px) up through tablet so
+          the kid focuses on one column of content. At lg+ widens to
+          max-w-5xl so the 2-col layout below has room to breathe
+          without stretching text across the whole viewport. */}
       <motion.div
-        className="flex-1 max-w-lg mx-auto w-full px-4 pt-4 pb-32 flex flex-col"
+        className="flex-1 max-w-lg lg:max-w-5xl mx-auto w-full px-4 pt-2 sm:pt-4 pb-32 flex flex-col"
         variants={staggerContainer}
         initial="hidden"
         animate="visible"
@@ -1172,24 +1218,41 @@ function PracticeSession({
           />
         ) : (
         <>
-        {/* ── Visual — chart takes priority over image when present ── */}
-        {q.chart_data ? (
-          <motion.div variants={fadeUp} className="mb-3 flex justify-center">
-            <QuestionChart chart={q.chart_data} />
-          </motion.div>
-        ) : (q.image_url || questionImageUrl(q.id, gradeKey)) ? (
-          <motion.div variants={fadeUp} className="flex justify-center mb-3">
-            <LoadingImage
-              src={q.image_url || questionImageUrl(q.id, gradeKey)}
-              className="max-h-[180px] sm:max-h-[220px] md:max-h-[300px] lg:max-h-[380px] w-auto object-contain rounded-2xl shadow-md border-2 border-white dark:border-slate-700"
-            />
-          </motion.div>
-        ) : null}
+        {/* Desktop (lg+) splits the screen: image on the left (40%),
+            prompt + choices on the right (60%). On mobile/tablet the
+            grid collapses to a single flowing column so nothing changes
+            below md.
 
-        {/* ── Passage — context before the question ── */}
+            The image cap switched from width-based breakpoints
+            (max-h-180/220/300/380) to viewport-HEIGHT units. The old
+            scale meant tall-but-wide screens (1024×768 tablets) got
+            300px-tall images that pushed every MCQ choice below the
+            fold. vh-based caps keep the image proportionate to what
+            the kid can actually see. */}
+        <div className="lg:grid lg:grid-cols-5 lg:gap-8 lg:items-start lg:flex-1">
+          <div className="lg:col-span-2 lg:sticky lg:top-4 lg:self-start">
+            {/* ── Visual — chart takes priority over image when present ── */}
+            {q.chart_data ? (
+              <motion.div variants={fadeUp} className="mb-3 flex justify-center">
+                <QuestionChart chart={q.chart_data} />
+              </motion.div>
+            ) : (q.image_url || questionImageUrl(q.id, gradeKey)) ? (
+              <motion.div variants={fadeUp} className="flex justify-center mb-3">
+                <LoadingImage
+                  src={q.image_url || questionImageUrl(q.id, gradeKey)}
+                  className="max-h-[20vh] sm:max-h-[28vh] md:max-h-[30vh] lg:max-h-[55vh] w-auto object-contain rounded-2xl shadow-md border-2 border-white dark:border-slate-700"
+                />
+              </motion.div>
+            ) : null}
+          </div>
+          <div className="lg:col-span-3 flex flex-col">
+
+        {/* ── Passage — context before the question.
+            Mobile uses tighter padding + smaller text so the question
+            and choices fit above the fold on a 667px viewport. */}
         {passage && (
-          <motion.div variants={fadeUp} className="mb-5 rounded-2xl bg-amber-50 border border-amber-200 dark:bg-amber-950/30 dark:border-amber-800/50 px-5 py-4">
-            <p className="text-xl md:text-2xl leading-relaxed font-semibold text-gray-800 dark:text-slate-200 tracking-wide whitespace-pre-line text-center">{passage}</p>
+          <motion.div variants={fadeUp} className="mb-3 sm:mb-5 rounded-2xl bg-amber-50 border border-amber-200 dark:bg-amber-950/30 dark:border-amber-800/50 px-4 py-2.5 sm:px-5 sm:py-4">
+            <p className="text-base sm:text-xl md:text-2xl leading-snug sm:leading-relaxed font-semibold text-gray-800 dark:text-slate-200 tracking-wide whitespace-pre-line text-center">{passage}</p>
           </motion.div>
         )}
 
@@ -1365,6 +1428,8 @@ function PracticeSession({
             )}
           </motion.div>
         )}
+          </div>{/* /lg:col-span-3 */}
+        </div>{/* /lg:grid */}
         </>
         )}
       </motion.div>
@@ -1384,18 +1449,13 @@ function PracticeSession({
             }`}
           >
             <div className="max-w-lg mx-auto px-5 py-5 safe-area-bottom">
-              <div className="flex items-start gap-3 mb-4">
-                {isCorrect ? (
-                  <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
-                    {(() => { const FI = FEEDBACK_ICON_MAP[feedbackEmoji] || Star; return <FI className="w-5 h-5 text-white" strokeWidth={1.5} />; })()}
-                  </div>
-                ) : (
-                  <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
-                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                  </div>
-                )}
+              <div className="flex items-center gap-4 mb-4">
+                <div className="relative w-28 h-32 sm:w-32 sm:h-36 flex-shrink-0 -my-2">
+                  <BunnyReaction
+                    outfitId={child.equipped_items?.outfit ?? null}
+                    state={isCorrect ? "correct" : "incorrect"}
+                  />
+                </div>
                 <div className="flex-1 min-w-0">
                   <p className="text-white font-extrabold text-lg">{feedbackMsg}</p>
                   {isCorrect && (() => {
@@ -1463,6 +1523,7 @@ function CompletionScreen({
   onRestart: () => void;
 }) {
   const [saved, setSaved] = useState(false);
+  const [unlocks, setUnlocks] = useState<UnlockableItem[]>([]);
   const darkMode = useThemeStore((s) => s.darkMode);
   const { playUrl: playCompletionUrl } = useAudio();
   const totalQ = questions.length;
@@ -1546,7 +1607,76 @@ function CompletionScreen({
         carrots_earned: carrotsEarned,
       });
 
-      await supabase.from("practice_results").insert(payload);
+      // Sharpen Up sessions span multiple source standards — we recover
+      // each question's REAL standard from its id ("RL.K.1-Q3" → "RL.K.1")
+      // so practice_results splits cleanly into per-standard rows and
+      // weak-spot analytics stay accurate. Single-standard sessions
+      // keep the existing one-row-per-session shape.
+      const isSharpenSession = standard.standard_id === "sharpen-review";
+
+      if (isSharpenSession) {
+        // Group answers by source standard, insert one aggregate row each.
+        const byStandard = new Map<string, { attempted: number; correct: number }>();
+        questions.forEach((qItem, i) => {
+          const a = answers[i];
+          if (!a) return;
+          const sourceStd = parseStandardFromQuestionId(qItem.id) ?? standard.standard_id;
+          const cur = byStandard.get(sourceStd) ?? { attempted: 0, correct: 0 };
+          cur.attempted += 1;
+          if (a.correct) cur.correct += 1;
+          byStandard.set(sourceStd, cur);
+        });
+        const rows = Array.from(byStandard.entries()).map(([sid, agg]) =>
+          safeValidate(PracticeResultSchema, {
+            child_id: child.id,
+            standard_id: sid,
+            questions_attempted: agg.attempted,
+            questions_correct: agg.correct,
+            // Carrots earned are computed across the whole session, so we
+            // attribute them to the standard with the most attempts (the
+            // kid worked hardest there). Simpler than proportional split.
+            carrots_earned: 0,
+          }),
+        );
+        if (rows.length > 0) {
+          await supabase.from("practice_results").insert(rows);
+        }
+      } else {
+        await supabase.from("practice_results").insert(payload);
+      }
+
+      // Per-question fidelity — every answered question becomes a row in
+      // `practice_answers` (one batch insert). Powers the adaptive review
+      // / "Sharpen Up" feature without needing a separate write surface.
+      // Captured for ALL kids (free + premium) — the signal also feeds
+      // content QC + cap tuning.
+      try {
+        const answerRows = questions
+          .map((qItem, i) => {
+            const a = answers[i];
+            if (!a) return null;
+            // For sharpen sessions, tag each answer with its source
+            // standard (not the synthetic "sharpen-review" wrapper id)
+            // so weak-spot analytics see real per-standard data.
+            const taggedStandard = isSharpenSession
+              ? parseStandardFromQuestionId(qItem.id) ?? standard.standard_id
+              : standard.standard_id;
+            return {
+              child_id: child.id,
+              question_id: qItem.id,
+              standard_id: taggedStandard,
+              type: qItem.type ?? "mcq",
+              was_correct: a.correct,
+            };
+          })
+          .filter((r): r is NonNullable<typeof r> => r !== null);
+        if (answerRows.length > 0) {
+          await supabase.from("practice_answers").insert(answerRows);
+        }
+      } catch (err) {
+        // Soft-fail: don't block the kid's celebration on analytics.
+        console.error("[adaptive] failed to save practice_answers:", err);
+      }
 
       if (carrotsEarned > 0) {
         const { data: current } = await supabase
@@ -1562,6 +1692,47 @@ function CompletionScreen({
         }
       }
 
+      // Check milestone + badge unlocks AFTER the result row is saved so
+      // the lifetime-correct + perfect-session counts include this session.
+      try {
+        const [{ data: rows }, { data: owned }] = await Promise.all([
+          supabase
+            .from("practice_results")
+            .select("questions_correct, questions_attempted")
+            .eq("child_id", child.id),
+          supabase
+            .from("shop_purchases")
+            .select("item_id")
+            .eq("child_id", child.id),
+        ]);
+        const totalCorrect =
+          rows?.reduce((sum, r) => sum + (r.questions_correct ?? 0), 0) ?? 0;
+        const perfectSessions =
+          rows?.filter(
+            (r) =>
+              (r.questions_attempted ?? 0) > 0 &&
+              (r.questions_correct ?? 0) === (r.questions_attempted ?? 0),
+          ).length ?? 0;
+        const ownedIds = new Set((owned ?? []).map((p) => p.item_id));
+        const sessionPerfect = correctCount === totalQ && totalQ >= 10;
+
+        const signals = {
+          total_correct: totalCorrect,
+          streak_days: child.streak_days,
+          consecutive_correct: sessionPerfect ? 10 : undefined,
+          perfect_sessions: perfectSessions,
+        };
+
+        const [outfitRes, badgeRes] = await Promise.all([
+          checkMilestones(supabase, child.id, ownedIds, signals),
+          checkBadgeMilestones(supabase, child.id, ownedIds, signals),
+        ]);
+        const queue = mixUnlocks(outfitRes.newlyGranted, badgeRes.newlyGranted);
+        if (queue.length > 0) setUnlocks(queue);
+      } catch (err) {
+        console.error("[unlock] milestone check failed:", err);
+      }
+
       setSaved(true);
       setSaving(false);
     }
@@ -1571,6 +1742,8 @@ function CompletionScreen({
 
   return (
     <div className="min-h-[100dvh] bg-white dark:bg-[#0f172a] relative overflow-hidden flex flex-col">
+      <UnlockToast unlocked={unlocks} onDone={() => setUnlocks([])} />
+
       {/* Confetti */}
       {confettiPieces.map((c) => (
         <motion.div
@@ -1600,6 +1773,14 @@ function CompletionScreen({
         initial="hidden"
         animate="visible"
       >
+        {/* Bunny reaction — drives the emotional moment, stars follow as the score badge. */}
+        <motion.div variants={scaleIn} className="relative w-40 h-44 sm:w-48 sm:h-52 mb-4">
+          <BunnyReaction
+            outfitId={child.equipped_items?.outfit ?? null}
+            state={stars === 3 ? "levelup" : stars >= 1 ? "correct" : "incorrect"}
+          />
+        </motion.div>
+
         {/* Stars */}
         <motion.div variants={scaleIn} className="flex items-end gap-2 mb-6">
           {[1, 2, 3].map((s) => (
@@ -1685,6 +1866,26 @@ function CompletionScreen({
 
         {/* Action buttons */}
         <motion.div variants={fadeUp} className="w-full space-y-3">
+          {/* Sharpen Up nudge — fires only when the kid bombed this
+              session (≥40% missed) AND they're premium. Drops them
+              straight into a multi-standard review deck composed from
+              their weak spots — bypasses /review since they just
+              practiced and need action, not a menu. */}
+          {(() => {
+            const sessionMissRate = totalQ > 0 ? 1 - correctCount / totalQ : 0;
+            const showNudge = sessionMissRate >= 0.4 && usePlanStore.getState().plan === "premium";
+            if (!showNudge) return null;
+            return (
+              <Link
+                href={`/practice?child=${child.id}&mode=sharpen`}
+                className="block w-full text-center py-4 rounded-2xl font-extrabold text-base text-white transition-all active:scale-[0.97]"
+                style={{ background: "linear-gradient(90deg, #8b5cf6, #6d28d9)", boxShadow: "0 4px 0 0 #5b21b6" }}
+              >
+                ✨ Sharpen up on what tripped you
+              </Link>
+            );
+          })()}
+
           {nextStandard && (
             <Link
               href={`/practice?child=${child.id}&standard=${nextStandard.standard_id}`}

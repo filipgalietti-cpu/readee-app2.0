@@ -52,6 +52,12 @@ const LearningPathCard = dynamic(
   () => import("@/app/_components/LearningPathCard"),
   { loading: () => <div className="rounded-3xl bg-zinc-100 dark:bg-slate-800/40 animate-pulse" style={{ height: 200 }} /> },
 );
+const SharpenUpCard = dynamic(
+  () => import("@/app/_components/SharpenUpCard"),
+  // No SSR fallback — the tile self-hides when there's nothing to
+  // show (no weak spots yet), so reserving layout would cause CLS.
+  { ssr: false, loading: () => null },
+);
 const TeacherAssignmentsCard = dynamic(
   () => import("@/app/_components/TeacherAssignmentsCard"),
   { ssr: false, loading: () => null },
@@ -1341,6 +1347,15 @@ function ChildDashboard({
             childFirstName={child.first_name ?? null}
             variant="parent"
           />
+        </motion.div>
+
+        {/* ── Sharpen Up — premium adaptive review.
+            Self-hides when the kid has no weak spots in the last
+            30 days, so free users with no signal don't see it
+            (avoids the empty-grey-box anti-pattern). Free users
+            with signal see a "Unlock" CTA → /upgrade?reason=sharpen. */}
+        <motion.div variants={slideUp}>
+          <SharpenUpCard childId={child.id} userPlan={userPlan} />
         </motion.div>
 
         {/* ── From Your Teacher — only renders when there's a

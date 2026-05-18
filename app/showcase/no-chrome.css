@@ -1,0 +1,20 @@
+/* Strips the root layout's nav + footer + main wrapper padding
+ * whenever a /showcase route is active. Scoped via body:has() — the
+ * showcase layout wraps every child in <div class="showcase-no-chrome">,
+ * so these selectors only fire on showcase pages even if the CSS leaks
+ * to other routes during dev HMR.
+ *
+ * Used so Screen Studio recordings of /showcase pages capture only the
+ * page content (clean white frame, no surrounding chrome).
+ */
+
+body:has(.showcase-no-chrome) nav,
+body:has(.showcase-no-chrome) footer {
+  display: none !important;
+}
+
+body:has(.showcase-no-chrome) main {
+  max-width: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}

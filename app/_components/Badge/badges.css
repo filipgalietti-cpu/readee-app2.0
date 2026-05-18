@@ -1,0 +1,126 @@
+/* Achievement badge animations.
+ *
+ * Same architectural pattern as bunny.css — CSS keyframes do the heavy
+ * lifting so badges can render anywhere (cards, toasts, dashboards)
+ * without re-authoring motion. All classes are namespaced `bg-*` so
+ * they don't collide with the bunny `bn-*` classes or with Tailwind's
+ * `bg-` color utilities (we use leading `.bg-stage`, `.bg-float`,
+ * etc. — never `.bg-{color}`).
+ */
+
+.bg-stage { width: 100%; height: 100%; position: relative; }
+.bg-svg { display: block; width: 100%; height: 100%; overflow: visible; position: absolute; inset: 0; }
+
+/* Medal floats gently — sells the "trophy" feel without being noisy */
+.bg-float {
+  transform-box: view-box;
+  transform-origin: 100px 110px;
+  animation: bgFloat 3.6s ease-in-out infinite;
+}
+@keyframes bgFloat {
+  0%, 100% { transform: translateY(0) rotate(-0.4deg); }
+  50%      { transform: translateY(-3px) rotate(0.4deg); }
+}
+
+/* Ground shadow pulses with the float */
+.bg-shadow {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: bgGround 3.6s ease-in-out infinite;
+}
+@keyframes bgGround {
+  0%, 100% { transform: scaleX(1); opacity: 0.22; }
+  50%      { transform: scaleX(0.86); opacity: 0.28; }
+}
+
+/* Slow continuous rotation — sunburst rays, comet trails */
+.bg-spin {
+  transform-box: view-box;
+  transform-origin: 100px 110px;
+  animation: bgSpin 22s linear infinite;
+}
+@keyframes bgSpin {
+  0%   { transform: rotate(0); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Sparkles around platinum/legendary badges */
+.bg-sparkle {
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+  animation: bgSparkle 2.8s ease-in-out infinite;
+}
+.bg-sparkle.s2 { animation-delay: -0.95s; }
+.bg-sparkle.s3 { animation-delay: -1.9s; }
+@keyframes bgSparkle {
+  0%, 100% { opacity: 0; transform: scale(0.5) rotate(0deg); }
+  40%      { opacity: 1; transform: scale(1)    rotate(30deg); }
+  70%      { opacity: 1; transform: scale(1.1)  rotate(55deg); }
+  90%      { opacity: 0; transform: scale(1.25) rotate(80deg); }
+}
+
+/* Natural flame flicker — irregular keyframes pivot around the flame base */
+.bg-flame {
+  transform-box: view-box;
+  transform-origin: 100px 170px;
+  animation: bgFlame 2.2s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+@keyframes bgFlame {
+  0%   { transform: scaleY(1)    scaleX(1)    skewX(0deg)   rotate(0deg); }
+  9%   { transform: scaleY(1.04) scaleX(0.97) skewX(0.8deg) rotate(0.4deg); }
+  18%  { transform: scaleY(1.02) scaleX(0.99) skewX(-0.4deg) rotate(-0.3deg); }
+  27%  { transform: scaleY(1.08) scaleX(0.93) skewX(0.7deg) rotate(0.6deg); }
+  39%  { transform: scaleY(1.03) scaleX(0.98) skewX(-0.9deg) rotate(-0.2deg); }
+  52%  { transform: scaleY(1.06) scaleX(0.95) skewX(0.3deg) rotate(0.5deg); }
+  64%  { transform: scaleY(1.01) scaleX(0.99) skewX(-0.7deg) rotate(-0.4deg); }
+  76%  { transform: scaleY(1.05) scaleX(0.96) skewX(1.1deg) rotate(0.5deg); }
+  88%  { transform: scaleY(1.03) scaleX(0.98) skewX(-0.5deg) rotate(-0.4deg); }
+  100% { transform: scaleY(1)    scaleX(1)    skewX(0deg)   rotate(0deg); }
+}
+
+/* Secondary flame layer with offset cadence — gives streak badges depth */
+.bg-flame-2 {
+  transform-box: view-box;
+  transform-origin: 100px 170px;
+  animation: bgFlame 1.7s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  animation-delay: -0.4s;
+}
+
+/* Rocket exhaust — vertical scale only, no rotation */
+.bg-jet {
+  transform-box: view-box;
+  transform-origin: 100px 156px;
+  animation: bgJet 1.1s ease-in-out infinite;
+}
+@keyframes bgJet {
+  0%, 100% { transform: scaleY(1)    scaleX(1); }
+  50%      { transform: scaleY(1.08) scaleX(0.94); }
+}
+
+/* Embers drift up from flames */
+.bg-ember {
+  transform-box: view-box;
+  transform-origin: 100px 110px;
+  opacity: 0;
+  animation: bgEmber 2.4s ease-in-out infinite;
+}
+.bg-ember.e2 { animation-delay: -0.7s; }
+.bg-ember.e3 { animation-delay: -1.5s; }
+@keyframes bgEmber {
+  0%   { opacity: 0; transform: translateY(0)     scale(0.6); }
+  20%  { opacity: 1; transform: translateY(-6px)  scale(1); }
+  80%  { opacity: 1; transform: translateY(-32px) scale(0.9); }
+  100% { opacity: 0; transform: translateY(-44px) scale(0.5); }
+}
+
+/* Star pulse — view-box so inline coordinate origins work */
+.bg-pulse {
+  transform-box: view-box;
+  transform-origin: 100px 110px;
+  animation: bgPulse 2.4s ease-in-out infinite;
+}
+@keyframes bgPulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.06); }
+}

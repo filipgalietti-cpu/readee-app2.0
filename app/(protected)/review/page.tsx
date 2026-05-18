@@ -3,8 +3,10 @@ import { redirect } from "next/navigation";
 import { ArrowLeft, Brain, ArrowRight, Check, CalendarClock } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/lib/auth/helpers";
+import { getUserPlan } from "@/lib/plan/check-access";
 import { getAllStandards, slugifyStandard } from "@/lib/data/standards";
 import { EmptyState } from "@/app/_components/EmptyState";
+import SharpenUpInsights from "@/app/_components/SharpenUpInsights";
 
 export const dynamic = "force-dynamic";
 
@@ -22,6 +24,7 @@ export default async function ReviewPage({
 }) {
   const profile = await requireProfile();
   const { child: childParam } = await searchParams;
+  const userPlan = (await getUserPlan()) ?? "free";
 
   const supabase = await createClient();
 
@@ -213,6 +216,12 @@ export default async function ReviewPage({
           ))}
         </ol>
       )}
+
+      {/* Sharpen Up — accuracy-based weak-spot view (premium feature).
+          Sibling to the SRS queue above: SRS asks "what's time-due?",
+          this asks "what's been wrong recently?". Self-hides when there's
+          no signal yet (kid hasn't accumulated enough practice_answers). */}
+      <SharpenUpInsights childId={active.id} userPlan={userPlan} />
 
       <div className="mt-8 rounded-2xl border border-zinc-200 bg-zinc-50/60 p-4 text-xs text-zinc-600 dark:border-slate-800 dark:bg-slate-900/40 dark:text-slate-400">
         <strong>How review works:</strong> Readee uses spaced repetition —
