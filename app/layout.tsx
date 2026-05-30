@@ -3,9 +3,22 @@ import PageTransition from "./_components/PageTransition";
 import JsonLd from "./_components/JsonLd";
 import ConditionalAnalytics from "./_components/ConditionalAnalytics";
 import type { Metadata, Viewport } from "next";
+import { Lexend } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
 import NavAuth from "./_components/NavAuth";
+
+// Lexend — scientifically designed for reading proficiency. Used by
+// Khan Academy Kids, Reading Rockets, and most K-4 ed-tech. The
+// extra letter spacing reduces visual stress and improves reading
+// speed for emerging readers. We load only the weights we use
+// (400 body, 600 semibold, 700 bold, 800 extrabold).
+const lexend = Lexend({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-lexend",
+  display: "swap",
+});
 
 export const viewport: Viewport = {
   viewportFit: "cover",
@@ -49,11 +62,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={lexend.variable}>
       <head>
         <JsonLd />
       </head>
-      <body className="antialiased min-h-screen flex flex-col">
+      <body className="antialiased min-h-screen flex flex-col font-sans">
 <ClientProviders>
         <NavAuth />
 

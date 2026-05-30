@@ -3,6 +3,17 @@
 /* Enable class-based dark mode for Tailwind v4 */
 @custom-variant dark (&:is(.dark *));
 
+/* Lexend as the primary kid-reading font. Scientifically designed
+   for reading proficiency — wider letter spacing reduces visual
+   stress for emerging readers (used by Khan Academy Kids, Reading
+   Rockets). `--font-lexend` is set by `next/font/google` in
+   app/layout.tsx and exposed via the html `className`. Overriding
+   Tailwind's default `font-sans` stack so every existing class
+   picks up Lexend without touching markup catalog-wide. */
+@theme {
+  --font-sans: var(--font-lexend), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
 /* Base styles */
 html, body {
   height: 100%;

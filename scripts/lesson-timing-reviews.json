@@ -1,0 +1,107 @@
+{
+  "reviews": [
+    {
+      "lessonId": "RL.K.1",
+      "slideNum": 1,
+      "rating": "up",
+      "notes": ""
+    },
+    {
+      "lessonId": "RL.K.1",
+      "slideNum": 2,
+      "rating": "up",
+      "notes": ""
+    },
+    {
+      "lessonId": "RL.K.1",
+      "slideNum": 3,
+      "rating": "up",
+      "notes": ""
+    },
+    {
+      "lessonId": "RL.K.1",
+      "slideNum": 4,
+      "rating": "up",
+      "notes": ""
+    },
+    {
+      "lessonId": "RL.K.1",
+      "slideNum": 5,
+      "rating": "up",
+      "notes": ""
+    },
+    {
+      "lessonId": "RL.1.1",
+      "slideNum": 1,
+      "rating": "up",
+      "notes": ""
+    },
+    {
+      "lessonId": "RL.1.1",
+      "slideNum": 2,
+      "rating": "down",
+      "notes": "can work on the timing ... revealing when the answers a bit later\n"
+    },
+    {
+      "lessonId": "RL.1.1",
+      "slideNum": 3,
+      "rating": "up",
+      "notes": ""
+    },
+    {
+      "lessonId": "RL.1.1",
+      "slideNum": 4,
+      "rating": "up",
+      "notes": ""
+    },
+    {
+      "lessonId": "RF.2.3b",
+      "slideNum": 1,
+      "rating": "up",
+      "notes": "Just a throw up of pills, we need to just summarize the TTS.. like we are in class"
+    },
+    {
+      "lessonId": "RF.2.3b",
+      "slideNum": 2,
+      "rating": "up",
+      "notes": "Same here , a throw up of pills, I heard the syllable clap leak into the ending there too... major bug"
+    },
+    {
+      "lessonId": "RF.2.3b",
+      "slideNum": 3,
+      "rating": "up",
+      "notes": ""
+    },
+    {
+      "lessonId": "RF.2.3b",
+      "slideNum": 4,
+      "rating": "up",
+      "notes": ""
+    },
+    {
+      "lessonId": "L.3.4b",
+      "slideNum": 1,
+      "rating": "down",
+      "notes": "terrible pic"
+    },
+    {
+      "lessonId": "L.3.4b",
+      "slideNum": 2,
+      "rating": "down",
+      "notes": "UN should be read like UNN not YOU -ENN ... then she should be reading the word to explain"
+    },
+    {
+      "lessonId": "L.3.4b",
+      "slideNum": 3,
+      "rating": "down",
+      "notes": "Same here \"DEE EYE ESS\" instead of DISS and MISS"
+    },
+    {
+      "lessonId": "L.3.4b",
+      "slideNum": 4,
+      "rating": "down",
+      "notes": "needs to be more ledgible font."
+    }
+  ],
+  "updated": "2026-05-24T22:48:19.065Z"
+}

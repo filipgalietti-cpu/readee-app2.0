@@ -8,6 +8,12 @@ import { LoadingImage } from "@/app/components/ui/LoadingImage";
 import { useAudioStore } from "@/lib/stores/audio-store";
 import { Volume2, ChevronRight, Rocket, SkipForward, RotateCcw } from "lucide-react";
 import { Fredoka } from "next/font/google";
+import {
+  LessonShellDesktop,
+  CelebrationContent,
+  CelebrationLeftPanel,
+} from "./LessonShellDesktop";
+import { LessonShellMobile } from "./LessonShellMobile";
 
 const fredoka = Fredoka({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 
@@ -29,6 +35,16 @@ interface Step {
   ttsScript: string;
   displayText: string;
   displayStyle?: "pill" | "passage"; // "passage" renders as a quote card instead of a pill
+  /** Substring to color violet inside displayText — e.g. set "ai"
+   *  on a "rain" pill to highlight the vowel team the kid should
+   *  focus on. Case-insensitive. Only affects the mobile hero card. */
+  displayHighlight?: string;
+  /** ms to wait AFTER the previous step's audio ends and BEFORE this
+   *  step's audio fires. Use to give the kid breathing room between
+   *  beats — e.g. when step b shows 3 example pills, set preStepDelay
+   *  on step c so the kid has time to read them before the transition
+   *  audio kicks in. Ignored on the first step of a slide. */
+  preStepDelay?: number;
   displayDelay?: number;       // ms delay before showing displayText
   displayParts?: DisplayPart[]; // staggered text reveals within one step
   feedbackDelay?: number;      // ms delay before showing ✓/✗ after both parts visible
@@ -92,6 +108,24 @@ interface LessonSlideshowProps {
   lesson: SampleLesson;
   onComplete: () => void;
   devMode?: boolean;
+  /**
+   * Fires whenever the visible teaching slide changes. Used by the
+   * audit page to keep its inline rating panel pinned to the slide
+   * currently on screen, so the reviewer doesn't have to wait for
+   * the lesson to finish before recording feedback.
+   */
+  onSlideChange?: (slideNum: number) => void;
+  /**
+   * Layout chrome.
+   *   - "centered" (default) — legacy narrow-column layout.
+   *   - "desktop-shell" — Claude-Design split-screen. Auto-swaps to
+   *      mobile shell when viewport <1024px (the live runner picks
+   *      this).
+   *   - "mobile-shell" — forces the mobile shell regardless of
+   *      viewport. Used by the audit page so reviewers can preview
+   *      the mobile layout from a laptop.
+   */
+  chrome?: "centered" | "desktop-shell" | "mobile-shell";
 }
 
 /* ─── Constants ──────────────────────────────────────── */
@@ -129,15 +163,22 @@ const SLIDE_THEMES: Record<string, {
     cardText: "text-violet-700 dark:text-violet-300",
     qaBg: "",
     storyBg: "",
-    contentBg: "bg-blue-50/60 dark:bg-blue-950/20 rounded-xl p-3",
+    // Dropped the blue-50/60 backdrop — it stacked under blue-tinted
+    // pills + table headers and created the "cheesy color-on-color"
+    // look Filip flagged. Pills now carry the color; container is
+    // neutral and lets the content breathe.
+    contentBg: "",
   },
   example: {
     bg: "bg-gray-50 dark:bg-[#0f172a]",
     text: "text-emerald-600 dark:text-emerald-400",
     cardText: "text-emerald-700 dark:text-emerald-300",
     qaBg: "",
+    // Example slides keep the white card — it's a real "passage
+    // anchor" container (defines the story-text region), not a
+    // tinted backdrop. Mobile-first padding via responsive class.
     storyBg: "bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700",
-    contentBg: "bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-xl shadow-sm p-4",
+    contentBg: "bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-xl shadow-sm p-2 sm:p-4",
   },
   tip: {
     bg: "bg-gray-50 dark:bg-[#0f172a]",
@@ -145,7 +186,9 @@ const SLIDE_THEMES: Record<string, {
     cardText: "text-amber-700 dark:text-amber-300",
     qaBg: "bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800",
     storyBg: "",
-    contentBg: "bg-amber-50/60 dark:bg-amber-950/20 rounded-xl p-3",
+    // Dropped amber-on-amber double-tint (anchor pill bg-amber-100
+    // sitting on a bg-amber-50/60 container looked templated).
+    contentBg: "",
   },
   "practice-intro": {
     bg: "bg-gray-50 dark:bg-[#0f172a]",
@@ -165,11 +208,58 @@ const revealVariants = {
 
 /* ─── Component ──────────────────────────────────────── */
 
-export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshowProps) {
+export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, chrome = "centered" }: LessonSlideshowProps) {
   const isMuted = useAudioStore((s) => s.isMuted);
 
+  // Shell-mode viewport detection — 75% of usage is phone. When the
+  // caller opts into "desktop-shell" but the viewport is phone-sized
+  // (<1024px), swap to LessonShellMobile. "mobile-shell" forces the
+  // mobile layout regardless of viewport (audit-page preview button).
+  // Avoid SSR/hydration mismatch by starting null and updating on
+  // mount; the shell branch renders nothing until we know.
+  const [isPhoneShell, setIsPhoneShell] = useState<boolean | null>(null);
+  useEffect(() => {
+    if (chrome === "centered" || typeof window === "undefined") return;
+    if (chrome === "mobile-shell") {
+      setIsPhoneShell(true);
+      return;
+    }
+    const mql = window.matchMedia("(max-width: 1023px)");
+    setIsPhoneShell(mql.matches);
+    const onChange = (e: MediaQueryListEvent) => setIsPhoneShell(e.matches);
+    mql.addEventListener("change", onChange);
+    return () => mql.removeEventListener("change", onChange);
+  }, [chrome]);
+
   const teachingSlides = useMemo(
-    () => lesson.slides.filter((s): s is TeachingSlide => s.type !== "mcq"),
+    () => {
+      const real = lesson.slides.filter((s): s is TeachingSlide => s.type !== "mcq");
+      // System-wide rule: any lesson with MCQs ahead deserves a
+      // celebratory "Time to try it!" bridge before the kid gets
+      // tested. Most authored lessons skip this. If the lesson has
+      // MCQs and no `practice-intro` teach slide already, inject a
+      // synthetic one at the end — no audio (kid taps Next when
+      // ready), uses the Claude Design celebration variant in the
+      // shell renderer. May 23 2026 — Filip wants this catalog-wide.
+      const hasMcqs = lesson.slides.some((s) => s.type === "mcq");
+      const hasPracticeIntro = real.some((s) => s.type === "practice-intro");
+      if (hasMcqs && !hasPracticeIntro) {
+        return [
+          ...real,
+          {
+            slide: (real[real.length - 1]?.slide ?? 0) + 1,
+            type: "practice-intro" as const,
+            heading: "Time to try it yourself!",
+            steps: [],
+            // Marker so the renderer knows this is a virtual bridge,
+            // not authored content. Currently unused but lets future
+            // logic (audio fallback, MCQ pre-roll) detect it.
+            __synthetic: true,
+          } as unknown as TeachingSlide,
+        ];
+      }
+      return real;
+    },
     [lesson.slides]
   );
 
@@ -194,6 +284,13 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
   const steps = slide?.steps ?? [];
   const totalSlides = teachingSlides.length;
   const isLastSlide = currentSlide === totalSlides - 1;
+
+  // Surface the visible slide number to host pages (e.g., the timing
+  // audit) so they can pin a feedback panel to the current slide
+  // without a duplicate slideshow walker.
+  useEffect(() => {
+    if (onSlideChange && slide) onSlideChange(slide.slide);
+  }, [currentSlide, onSlideChange, slide]);
   const theme = SLIDE_THEMES[slide?.type] ?? SLIDE_THEMES.intro;
   const isPracticeIntro = slide?.type === "practice-intro";
   const isExample = slide?.type === "example";
@@ -337,6 +434,34 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
         textTimersRef.current.push(t2);
       }
 
+      // Schedule table row reveal — must mark step textsVisible so
+      // the row renders. Previously this relied on a sibling
+      // displayText field also being present (RL.K.3 pattern), which
+      // silently failed for displayTableRow-only steps (table
+      // conversions in L.3.4b, RF.2.3b, etc.) — the row sat invisible.
+      //
+      // Pairs with the per-slide pre-populate above: rows are already
+      // visible from slide load; this scheduler additionally fires the
+      // "${idx}-check" key so each row gets the emerald glow +
+      // checkmark when its audio plays — teacher pointing at the
+      // chart, building accumulated progress as the slide advances.
+      if (step.displayTableRow) {
+        const rowDelay = step.displayDelay ?? 0;
+        const reveal = () => {
+          setTextsVisible((prev) => new Set(prev).add(stepIdx));
+          setPartsVisible((prev) => new Set(prev).add(`${stepIdx}-check`));
+        };
+        if (rowDelay > 0) {
+          const t = setTimeout(() => {
+            if (runIdRef.current !== runId) return;
+            reveal();
+          }, rowDelay);
+          textTimersRef.current.push(t);
+        } else {
+          reveal();
+        }
+      }
+
       // Schedule table example column reveal
       if (step.displayTableRow?.example) {
         const rowDelay = step.displayDelay ?? 0;
@@ -365,7 +490,16 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
 
       const advance = () => {
         if (runIdRef.current !== runId) return;
-        scheduleStep(stepIdx + 1, runId, slideSteps);
+        const nextStep = slideSteps[stepIdx + 1];
+        const gap = nextStep?.preStepDelay ?? 0;
+        if (gap > 0) {
+          timerRef.current = setTimeout(() => {
+            if (runIdRef.current !== runId) return;
+            scheduleStep(stepIdx + 1, runId, slideSteps);
+          }, gap);
+        } else {
+          scheduleStep(stepIdx + 1, runId, slideSteps);
+        }
       };
 
       const playPhonemesThenAdvance = async () => {
@@ -383,7 +517,13 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
       };
 
       if (!isMuted && audioManager) {
-        const audioUrl = `${SUPABASE_STORAGE}/${step.audioFile}`;
+        // Cache-bust audio URL with `?v=<audioRegenAt>` so a fresh
+        // TTS regen isn't masked by the browser playing the cached
+        // mp3. regen-lesson-step-audio.ts stamps audioRegenAt after
+        // upload. Without this, "you-en" spelling persists in cache
+        // even after the new mp3 says "uhn".
+        const stamp = (step as any).audioRegenAt;
+        const audioUrl = `${SUPABASE_STORAGE}/${step.audioFile}${stamp ? `?v=${encodeURIComponent(stamp)}` : ""}`;
         audioManager.play(audioUrl)
           .then(() => { playPhonemesThenAdvance(); })
           .catch(() => {
@@ -403,7 +543,17 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
     if (audioManager) audioManager.stop();
     const runId = ++runIdRef.current;
     setStepsRevealed(0);
-    setTextsVisible(new Set());
+    // For tableRow slides, pre-populate all row steps as visible on
+    // slide load — teacher pattern: lay out the whole chart up front,
+    // then point at each row as the audio teaches it (via the existing
+    // `${idx}-check` highlight). Without this, steps b/c/d/e remain
+    // invisible until their audio fires sequentially, leaving the
+    // chart half-empty for the first 3-10 seconds of the slide.
+    const initialVisible = new Set<number>();
+    steps.forEach((s, idx) => {
+      if (s.displayTableRow) initialVisible.add(idx);
+    });
+    setTextsVisible(initialVisible);
     setExamplesVisible(new Set());
     setPlayingStep(-1);
     setHighlightedPill(-1);
@@ -488,7 +638,14 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
   // swap to it so the visual advances with the audio.
   const activeStepImage = playingStep >= 0 ? steps[playingStep]?.imageFile : undefined;
   const effectiveImageFile = activeStepImage ?? slide?.imageFile;
-  const imageUrl = effectiveImageFile ? `${SUPABASE_STORAGE}/${effectiveImageFile}` : "";
+  // Cache-bust the image URL with `?v=<imageRegenAt>` so a fresh regen
+  // doesn't get masked by the browser holding the previous PNG (the
+  // Supabase URL is identical across regens — only the bytes change).
+  // The regen script stamps `slide.imageRegenAt` after upload.
+  const imageRegenStamp = (slide as any)?.imageRegenAt;
+  const imageUrl = effectiveImageFile
+    ? `${SUPABASE_STORAGE}/${effectiveImageFile}${imageRegenStamp ? `?v=${encodeURIComponent(imageRegenStamp)}` : ""}`
+    : "";
 
   // Preload every per-step image as soon as the slide mounts so transitions
   // between beats don't flash the LoadingImage skeleton.
@@ -593,23 +750,29 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
           initial="hidden"
           animate="visible"
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="grid w-full items-center gap-x-3"
-          style={{ gridTemplateColumns: "6.5rem 1fr 1.5rem" }}
+          // Vertical stack: question pill on top, answer below it
+          // (the kid hears the Q, has a beat to think, then the
+          // answer appears below). Replaces the side-by-side grid
+          // which felt cramped on mobile and left dead space on
+          // laptop. Centered as a unit, generous gap between Q and
+          // A so the "reveal" lands as a visual beat.
+          className="flex flex-col items-center justify-center gap-3 lg:gap-5 py-3 lg:py-5"
         >
           <motion.span
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ type: "spring", stiffness: 400, damping: 15 }}
-            className={`rounded-full py-2 text-lg font-bold shadow-sm text-center ${qaPillColor}`}
+            className={`inline-flex items-center justify-center rounded-full py-2 lg:py-3 px-5 lg:px-8 text-xl lg:text-3xl font-bold shadow-sm text-center ${qaPillColor}`}
           >
             {parts[0].text}
           </motion.span>
-          <span className="text-xl font-semibold text-zinc-700 dark:text-zinc-200 min-h-[2.5rem] flex items-center">
+          <span className="min-h-[2.75rem] lg:min-h-[4rem] flex items-center justify-center">
             {aVisible && (
               <motion.span
-                initial={{ opacity: 0, x: 8 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                initial={{ opacity: 0, y: 12, scale: 0.9 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ type: "spring", stiffness: 400, damping: 18 }}
+                className="text-2xl lg:text-4xl font-extrabold text-zinc-800 dark:text-zinc-100"
               >
                 {parts[1].text}
               </motion.span>
@@ -809,8 +972,17 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
                 initial="hidden"
                 animate="visible"
                 transition={{ duration: 0.3, ease: "easeOut" }}
-                className={`text-xl font-semibold leading-relaxed ${
-                  isExample ? "text-zinc-700 dark:text-zinc-200" : theme.cardText
+                // Intro / teach pairs ("Great readers are" /
+                // "detectives.") were rendering at text-xl which felt
+                // small with Lexend's wider spacing. Bumped to
+                // text-2xl mobile / text-4xl laptop + font-extrabold
+                // so the anchor lands like a slide title. Example
+                // story text stays softer (semibold, smaller) — it's
+                // the passage, not the focal teaching word.
+                className={`leading-relaxed ${
+                  isExample
+                    ? "text-xl lg:text-2xl font-semibold text-zinc-700 dark:text-zinc-200"
+                    : `text-2xl lg:text-4xl font-extrabold ${theme.cardText}`
                 }`}
               >
                 {highlightCaps(part.text)}
@@ -821,7 +993,140 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
       );
     }
 
-    // ── 3+ items: colorful horizontal pills ──
+    // Tip-slide parts — TWO patterns depending on the parts shape:
+    //   FLOWING (e.g. ["unhappy", " → un + happy", " = not happy"]):
+    //     parts include their own whitespace separators → render
+    //     inline as one equation inside a single violet card.
+    //   DISCRETE (e.g. ["Who?", "What?", "Where?"]):
+    //     no inter-part whitespace → would smash to "Who?What?Where?"
+    //     if rendered inline. Stack them as separate violet rows.
+    if (isTip) {
+      const isFlowing = parts.some(
+        (p) => typeof p.text === "string" && /^\s/.test(p.text),
+      );
+      if (isFlowing) {
+        // Mobile: shrink text + allow wrap (the inline `whitespace-pre`
+        // span used on desktop overflows narrow phone screens for
+        // strings like "un + happy = not happy" or "aqua → aquarium ·
+        // aquatic · aqueduct"). Filip 2026-05-24 PM.
+        return (
+          <motion.div
+            key={`${currentSlide}-${step.sub}`}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ type: "spring", stiffness: 400, damping: 20 }}
+            className="w-full rounded-2xl bg-violet-50 dark:bg-indigo-950/30 border border-violet-100 dark:border-violet-800 px-4 py-3 sm:px-5 sm:py-4 lg:px-8 lg:py-6 text-center"
+          >
+            <p className="text-base sm:text-2xl lg:text-3xl font-semibold text-violet-800 dark:text-violet-200 leading-relaxed [text-wrap:balance]">
+              {parts.map((part, p) => {
+                if (!partsVisible.has(`${i}-${p}`)) return null;
+                return (
+                  <motion.span
+                    key={`${currentSlide}-${step.sub}-${p}`}
+                    initial={{ opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 20 }}
+                  >
+                    {highlightCaps(part.text)}
+                  </motion.span>
+                );
+              })}
+            </p>
+          </motion.div>
+        );
+      }
+      // Discrete anchors → stacked violet card per part. Same look
+      // as the renderText hero card, one per anchor (accumulates as
+      // each reveals).
+      return (
+        <div
+          key={`${currentSlide}-${step.sub}`}
+          className="flex w-full flex-col items-center justify-center gap-2"
+        >
+          {parts.map((part, p) => {
+            if (!partsVisible.has(`${i}-${p}`)) return null;
+            return (
+              <motion.div
+                key={`${currentSlide}-${step.sub}-${p}`}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ type: "spring", stiffness: 400, damping: 20 }}
+                className="w-full rounded-2xl bg-violet-50 dark:bg-indigo-950/30 border border-violet-100 dark:border-violet-800 px-5 py-4 text-center"
+              >
+                <p className="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-[1.15] tracking-tight text-violet-800 dark:text-violet-200">
+                  {part.text}
+                </p>
+              </motion.div>
+            );
+          })}
+        </div>
+      );
+    }
+
+    // Mobile parts = hero in the violet card with violet-800 text
+    // (NOT zinc — at extrabold weight zinc reads as black, which
+    // Filip has flagged repeatedly). Everything stays in the violet
+    // family.
+    if (isPhoneShell) {
+      // Short one-word anchors (e.g. intro roots Bio/Photo/Geo/Aqua)
+      // wrap in a compact row instead of stacking as full-width cards —
+      // four stacked cards overflow the phone. Filip 2026-05-30.
+      const allShortAnchors =
+        parts.length >= 3 &&
+        parts.every(
+          (pt) =>
+            pt.text.trim().split(/\s+/).length === 1 &&
+            pt.text.trim().length <= 9,
+        );
+      if (allShortAnchors) {
+        return (
+          <div
+            key={`${currentSlide}-${step.sub}`}
+            className="flex w-full flex-wrap items-center justify-center gap-2"
+          >
+            {parts.map((part, p) => {
+              if (!partsVisible.has(`${i}-${p}`)) return null;
+              return (
+                <motion.span
+                  key={`${currentSlide}-${step.sub}-${p}`}
+                  initial={{ opacity: 0, scale: 0.6 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 18 }}
+                  className="rounded-full bg-violet-100 dark:bg-violet-900/40 px-4 py-2 text-[22px] font-extrabold text-violet-800 dark:text-violet-200 shadow-sm"
+                >
+                  {part.text}
+                </motion.span>
+              );
+            })}
+          </div>
+        );
+      }
+      return (
+        <div
+          key={`${currentSlide}-${step.sub}`}
+          className="flex w-full flex-col items-center justify-center gap-2"
+        >
+          {parts.map((part, p) => {
+            if (!partsVisible.has(`${i}-${p}`)) return null;
+            return (
+              <motion.div
+                key={`${currentSlide}-${step.sub}-${p}`}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ type: "spring", stiffness: 400, damping: 20 }}
+                className="w-full rounded-2xl bg-violet-50 dark:bg-indigo-950/30 border border-violet-100 dark:border-violet-800 px-4 py-3.5 text-center"
+              >
+                <p className="text-[24px] font-extrabold leading-[1.15] tracking-tight text-violet-800 dark:text-violet-200 [text-wrap:balance]">
+                  {part.text}
+                </p>
+              </motion.div>
+            );
+          })}
+        </div>
+      );
+    }
+
+    // ── 3+ items: colorful horizontal pills (desktop only) ──
     return (
       <div key={`${currentSlide}-${step.sub}`} className="flex flex-wrap items-center justify-center gap-3">
         {parts.map((part, p) => {
@@ -839,7 +1144,10 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
                 ? { scale: { duration: 1.4, repeat: Infinity, ease: "easeInOut" } }
                 : { type: "spring", stiffness: 400, damping: 15 }
               }
-              className={`rounded-full px-5 py-2 text-xl font-bold text-center shadow-sm ${PILL_COLORS[p % PILL_COLORS.length]}`}
+              // Single-pill / 3+ pill fallback. font-extrabold + a
+              // notch larger so anchors like "Peel the Prefix" steps
+              // read with weight, not as polite captions.
+              className={`rounded-full px-4 sm:px-8 lg:px-12 py-1.5 sm:py-3 lg:py-5 text-sm sm:text-3xl lg:text-5xl font-extrabold text-center shadow-sm ${PILL_COLORS[p % PILL_COLORS.length]}`}
             >
               {highlightCaps(part.text)}
             </motion.span>
@@ -1097,8 +1405,15 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
       textTimersRef.current.push(t);
     }
 
-    // Passage style — compact quote card for full sentences
-    if (step.displayStyle === "passage") {
+    // Passage style — compact quote card for full sentences.
+    // Auto-detect: displayText with ≥7 words is a passage (story
+    // text), not an anchor. Otherwise it renders as a pill which is
+    // wrong for long text (Filip flagged Bella passage rendering at
+    // the same size as Q&A pills on slide 3 — visual hierarchy off).
+    const isLongText =
+      typeof step.displayText === "string" &&
+      step.displayText.trim().split(/\s+/).length >= 7;
+    if (step.displayStyle === "passage" || isLongText) {
       const text = step.displayText!;
       const renderPassageText = () => {
         if (!highlightedWord) return <>&ldquo;{text}&rdquo;</>;
@@ -1124,14 +1439,142 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ type: "spring", stiffness: 400, damping: 20 }}
-          className="w-full rounded-2xl bg-violet-50 dark:bg-indigo-950/30 border border-violet-100 dark:border-violet-800 px-5 py-4 text-center"
+          // Bumped to text-2xl/3xl on laptop — narrow phone column
+          // keeps text-lg, but shell-mode laptop kids see the passage
+          // at proper reading size. py also scales.
+          className="w-full rounded-2xl bg-violet-50 dark:bg-indigo-950/30 border border-violet-100 dark:border-violet-800 px-5 py-4 lg:px-8 lg:py-6 text-center"
         >
-          <p className="text-lg sm:text-xl font-semibold text-zinc-800 dark:text-zinc-200 leading-relaxed whitespace-pre-line">
+          <p className="text-lg sm:text-xl lg:text-2xl font-semibold text-zinc-800 dark:text-zinc-200 leading-relaxed whitespace-pre-line">
             {renderPassageText()}
           </p>
         </motion.div>
       );
     }
+
+    // Tip-slide single text — render in the same soft violet card
+    // style as the story passage (Bella/Max). Pills on tip slides
+    // ("A helpful trick" / "Prefix power!") read as cheap chips next
+    // to the worked example; the passage card style reads as warm
+    // teacher voice and visually ties the tip back to the lesson.
+    if (isTip) {
+      return (
+        <motion.div
+          key={`${currentSlide}-${step.sub}`}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ type: "spring", stiffness: 400, damping: 20 }}
+          className="w-full rounded-2xl bg-violet-50 dark:bg-indigo-950/30 border border-violet-100 dark:border-violet-800 px-5 py-4 lg:px-8 lg:py-6 text-center"
+        >
+          <p className="text-xl sm:text-2xl lg:text-3xl font-semibold text-zinc-800 dark:text-zinc-200 leading-relaxed">
+            {step.displayText.split(/(\s+)/).map((seg, si) =>
+              /^[A-Z]{2,}[!?.,]?$/.test(seg) ? (
+                <span key={si} className="text-violet-700 dark:text-violet-300 font-extrabold">{seg}</span>
+              ) : (
+                <span key={si}>{seg}</span>
+              )
+            )}
+          </p>
+        </motion.div>
+      );
+    }
+
+    // Mobile single-text = hero in the violet passage card. Text
+    // color is text-violet-800 (NOT zinc-800 — at font-extrabold it
+    // reads as black even inside the card; Filip flagged this 5+
+    // times). Everything stays in the violet family.
+    //
+    // Adaptive size: short single-word anchors (≤8 chars) get
+    // text-[34px] so they don't feel lost on a sparse slide ("rain"
+    // hero pill on the example slide). Longer text drops to [26px].
+    //
+    // `displayHighlight` (case-insensitive substring) renders that
+    // chunk in a brighter violet so the kid's eye lands on the
+    // vowel team / prefix / root being taught (e.g. "ai" in "rain").
+    if (isPhoneShell) {
+      const text = step.displayText;
+      const isShort = text.trim().length <= 8 && !text.includes(" ");
+      const sizeClass = isShort ? "text-[34px]" : "text-[26px]";
+      const highlight = step.displayHighlight;
+      let content: any = text;
+      if (highlight && typeof highlight === "string" && highlight.length > 0) {
+        const re = new RegExp(`(${highlight})`, "i");
+        // Underline-on-trigger: the substring stays plain text until
+        // a sibling step's `highlightWord` matches it (case-insensitive)
+        // — same pattern as the Bella passage. Filip's call: don't pop
+        // on initial render, fire when the question step asks.
+        const trigger = !!(
+          highlightedWord &&
+          highlight.toLowerCase() === highlightedWord.toLowerCase()
+        );
+        content = text.split(re).map((seg, i) => {
+          if (!re.test(seg)) return <span key={i}>{seg}</span>;
+          return trigger ? (
+            <motion.span
+              key={i}
+              initial={{ scale: 1 }}
+              animate={{ scale: [1, 1.12, 1] }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="inline-block underline decoration-violet-500 decoration-4 underline-offset-4"
+            >
+              {seg}
+            </motion.span>
+          ) : (
+            <span key={i}>{seg}</span>
+          );
+        });
+      }
+      return (
+        <motion.div
+          key={`${currentSlide}-${step.sub}`}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ type: "spring", stiffness: 400, damping: 20 }}
+          className="w-full rounded-2xl bg-violet-50 dark:bg-indigo-950/30 border border-violet-100 dark:border-violet-800 px-5 py-5 text-center"
+        >
+          <p className={`${sizeClass} font-extrabold leading-[1.15] tracking-tight text-violet-800 dark:text-violet-200 [text-wrap:balance]`}>
+            {content}
+          </p>
+        </motion.div>
+      );
+    }
+
+    // Desktop pill body — displayHighlight uses the SAME underline-
+    // on-trigger pattern as the mobile branch + the Bella passage:
+    // substring stays plain until a sibling step's highlightWord
+    // fires, then it gets underlined with a quick scale pulse.
+    const dHighlight = step.displayHighlight;
+    const dTrigger = !!(
+      dHighlight &&
+      highlightedWord &&
+      dHighlight.toLowerCase() === highlightedWord.toLowerCase()
+    );
+    const pillBody = dHighlight && typeof dHighlight === "string" && dHighlight.length > 0
+      ? (() => {
+          const re = new RegExp(`(${dHighlight})`, "i");
+          return step.displayText.split(re).map((seg, i) => {
+            if (!re.test(seg)) return <span key={i}>{seg}</span>;
+            return dTrigger ? (
+              <motion.span
+                key={i}
+                initial={{ scale: 1 }}
+                animate={{ scale: [1, 1.12, 1] }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+                className="inline-block underline decoration-violet-500 decoration-4 underline-offset-4"
+              >
+                {seg}
+              </motion.span>
+            ) : (
+              <span key={i}>{seg}</span>
+            );
+          });
+        })()
+      : step.displayText.split(/(\s+)/).map((seg, si) =>
+          /^[A-Z]{2,}[!?.,]?$/.test(seg) ? (
+            <span key={si} className="text-blue-700 dark:text-blue-300 font-extrabold">{seg}</span>
+          ) : (
+            <span key={si}>{seg}</span>
+          ),
+        );
 
     const pill = (
       <motion.span
@@ -1139,17 +1582,11 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ type: "spring", stiffness: 400, damping: 15 }}
-        className={`rounded-full ${isPracticeIntro ? "px-5 sm:px-7 py-2 sm:py-3 text-lg sm:text-2xl" : "px-5 sm:px-7 py-2 sm:py-3 text-lg sm:text-2xl"} font-bold text-center shadow-sm ${pillColor} ${
+        className={`rounded-full px-4 sm:px-8 lg:px-12 py-1.5 sm:py-3 lg:py-5 text-sm sm:text-3xl lg:text-5xl font-extrabold text-center shadow-sm ${pillColor} ${
           showCheck ? "ring-2 ring-green-400 ring-offset-2" : ""
         }`}
       >
-        {step.displayText.split(/(\s+)/).map((seg, si) =>
-          /^[A-Z]{2,}[!?.,]?$/.test(seg) ? (
-            <span key={si} className="text-blue-700 dark:text-blue-300 font-extrabold">{seg}</span>
-          ) : (
-            <span key={si}>{seg}</span>
-          )
-        )}
+        {pillBody}
       </motion.span>
     );
 
@@ -1173,6 +1610,482 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
   };
 
   /* ─── JSX ─── */
+
+  // ── Shell-mode render (Claude Design split-screen for laptop) ──
+  // Wraps the same audio engine + content renderers in
+  // LessonShellDesktop. Image, progress, and Next button move to the
+  // shell's chrome; the slide heading + content body become the
+  // contentSlot. Audio scheduling, Whisper-aligned reveals, table
+  // stagger, replace-not-accumulate — all the same as centered mode.
+  if (chrome === "desktop-shell" || chrome === "mobile-shell") {
+    const isSynthetic = (slide as any)?.__synthetic === true;
+    const hasTableContent = steps.some(
+      (s) => s.displayTableRow?.label && s.displayTableRow?.value,
+    );
+    // ── Example-slide Q→A worksheet (rendered on the RIGHT panel,
+    //    below the passage). Image stays on the left as normal. ──
+    // Filip 2026-05-24: the Q | A | check grid sits inside the
+    // right-panel content body alongside the heading + passage —
+    // NOT swapped in for the image. Image left, worksheet right.
+    const qaPairSteps = steps
+      .map((s, idx) =>
+        Array.isArray(s.displayParts) &&
+        s.displayParts.length === 2 &&
+        typeof s.displayParts[0]?.text === "string" &&
+        s.displayParts[0].text.trim().endsWith("?")
+          ? { step: s, idx }
+          : null,
+      )
+      .filter(Boolean) as { step: Step; idx: number }[];
+    // Worksheet — Q→A diagram below the passage. Filip 2026-05-23:
+    // example slides have wasted mobile dead space; the answer-key
+    // diagram fills it well and accumulates so the kid sees all 3
+    // answers by the end. Mobile uses ExampleWorksheetGridMobile
+    // (compact rows, violet palette, no black text); desktop uses
+    // the wide ExampleWorksheetGrid.
+    const useExampleWorksheet = isExample && qaPairSteps.length >= 2;
+    // One focal point per slide — image suppressed when a chart owns
+    // the visual. Example slides keep the image (worksheet goes on
+    // the right beside the passage, not in place of the image).
+    const shellImageUrl =
+      isSynthetic || hasTableContent ? undefined : imageUrl || undefined;
+
+    // Wait for the viewport check to resolve before painting — avoids
+    // a desktop-shell flash on phones (the rebuild swap would push
+    // the content above the fold for a beat).
+    if (isPhoneShell === null) {
+      return <div className="fixed inset-0 z-[100] bg-[#fcfcfe]" />;
+    }
+
+    // Per-variant image height on mobile (design spec):
+    //   intro / tip / practice-intro → 35vh (visual anchor)
+    //   teach   → 28vh (shrunk so chart breathes)
+    //   example → 25vh (tightest crop — passage card needs room)
+    const imageHeightVh: 35 | 28 | 25 = isExample
+      ? 25
+      : slide?.type === "teach"
+        ? 28
+        : 35;
+
+    const nextLabel = isLastSlide
+      ? "Let's Go!"
+      : isPracticeIntro
+        ? "Start practice →"
+        : "Next →";
+    const sharedNextDisabled = !showNext && !devMode;
+    const sharedOnNext = (showNext || devMode) ? handleNext : () => {};
+    const sharedLeftSlot = isSynthetic ? <CelebrationLeftPanel /> : undefined;
+    const nonSyntheticContent = (
+      <div className="flex flex-1 flex-col items-center text-center w-full">
+        {slide?.heading && (
+          <motion.h1
+            key={`shell-heading-${currentSlide}`}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.15, type: "spring", stiffness: 200 }}
+            // Mobile heading = small uppercase eyebrow (per Claude
+            // Design mobile spec — the pill below IS the slide
+            // title; the heading is just informational chrome).
+            // Desktop keeps the big colored heading. Filip 2026-05-23:
+            // earlier text-2xl on mobile was a "screen-dominating
+            // banner" — kid couldn't see Who?/What?/Where? below.
+            className={
+              isPhoneShell
+                ? "text-[11px] font-semibold uppercase tracking-widest text-center text-zinc-400 leading-tight"
+                : `font-extrabold text-2xl sm:text-3xl lg:text-5xl leading-[1.1] tracking-tight text-center ${theme.text}`
+            }
+          >
+            {slide.heading}
+          </motion.h1>
+        )}
+        {/* Slide content body — same renderers as centered mode.
+            flex-1 + my-auto inside parent flex-col centers the
+            body vertically in the leftover space below the
+            heading. items-center + text-center keeps each
+            renderer's output centered horizontally too. */}
+        <div className="flex w-full flex-1 my-auto flex-col items-center justify-center gap-3 lg:gap-6 text-center">
+          {(() => {
+            const hasTable = steps.some((s) => s.displayTableRow);
+            let tableRendered = false;
+            // Build the table JSX once, hoisted from inside the step
+            // iteration so we can render it from EITHER the first
+            // table-row step (normal) OR a filler intro step like
+            // RL.1.1 S2.a ("Good detectives ask five big questions")
+            // that has audio but no visual. Without the early render
+            // the kid sees a blank body for ~4s before the chart
+            // appears. Filip 2026-05-24.
+            const renderShellTable = () => {
+              const tableSteps = steps
+                .map((s, idx) =>
+                  s.displayTableRow ? { step: s, idx } : null,
+                )
+                .filter(Boolean) as { step: Step; idx: number }[];
+              const hasExamples = tableSteps.some(
+                (ts) => ts.step.displayTableRow?.example,
+              );
+              const headers = tableSteps.find(
+                (ts) => ts.step.displayTableRow?.tableHeaders,
+              )?.step.displayTableRow?.tableHeaders;
+              const widestLabel = tableSteps.reduce(
+                (max, ts) =>
+                  Math.max(
+                    max,
+                    (ts.step.displayTableRow?.label ?? "").length,
+                  ),
+                0,
+              );
+              const labelCol = `${Math.max(5.5, widestLabel * 0.7 + 1.5).toFixed(2)}rem`;
+              const cols3 = `${labelCol} 1fr 1fr`;
+              const cols2 = `${labelCol} 1fr`;
+              const gridCols = hasExamples ? cols3 : cols2;
+              return (
+                <div
+                  key={`${currentSlide}-shell-table`}
+                  className="w-full max-w-3xl mx-auto space-y-3 lg:space-y-6"
+                >
+                  {headers && (
+                    <div
+                      className="grid items-center gap-x-3 lg:gap-x-4 pb-2 lg:pb-3 border-b-2 border-violet-200 dark:border-violet-700"
+                      style={{ gridTemplateColumns: gridCols }}
+                    >
+                      {headers.map((h, hi) => (
+                        <span
+                          key={hi}
+                          className="text-xs sm:text-sm lg:text-2xl font-extrabold uppercase tracking-wider text-violet-600 dark:text-violet-300 text-center"
+                        >
+                          {h}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                  {tableSteps.map((ts) => {
+                    const row = ts.step.displayTableRow!;
+                    const colorIdx = tableSteps.indexOf(ts);
+                    const checkKey = `${ts.idx}-check`;
+                    const rowHighlighted = partsVisible.has(checkKey);
+                    const staggerDelay = colorIdx * 0.12;
+                    return (
+                      <motion.div
+                        key={`${currentSlide}-shell-row-${ts.idx}`}
+                        initial={{ opacity: 0, y: 14 }}
+                        animate={{
+                          opacity: 1,
+                          y: 0,
+                          scale: rowHighlighted ? [1, 1.03, 1] : 1,
+                        }}
+                        transition={{
+                          default: {
+                            type: "spring",
+                            stiffness: 400,
+                            damping: 20,
+                            delay: staggerDelay,
+                          },
+                          scale: {
+                            duration: 0.4,
+                            ease: "easeInOut",
+                            delay: staggerDelay,
+                          },
+                        }}
+                        className={`grid items-center gap-x-3 lg:gap-x-4 rounded-xl px-2 py-2 lg:py-4 transition-colors duration-500 ${
+                          rowHighlighted
+                            ? "bg-emerald-50 dark:bg-emerald-950/20 ring-2 ring-emerald-300 dark:ring-emerald-700"
+                            : ""
+                        }`}
+                        style={{ gridTemplateColumns: gridCols }}
+                      >
+                        <span
+                          className={`rounded-xl py-2 lg:py-4 text-lg sm:text-xl lg:text-3xl font-bold shadow-sm text-center ${PILL_COLORS[colorIdx % PILL_COLORS.length]}`}
+                        >
+                          {row.label}
+                        </span>
+                        <span className="text-base sm:text-lg lg:text-3xl font-semibold text-zinc-700 dark:text-zinc-200 text-center">
+                          {row.value}
+                        </span>
+                        {hasExamples && (
+                          <span className="text-sm sm:text-base lg:text-2xl text-zinc-500 dark:text-zinc-400 italic text-center">
+                            {row.example ?? ""}
+                          </span>
+                        )}
+                      </motion.div>
+                    );
+                  })}
+                </div>
+              );
+            };
+            // Filler intro step: audio narrates a framing line but
+            // the step has no visual. On table slides we render the
+            // chart NOW so the kid sees the structure while audio
+            // plays, instead of blank space → table-pop later.
+            const isFillerStep = (s: Step) =>
+              !s.displayText &&
+              (!s.displayParts || s.displayParts.length === 0) &&
+              !s.displayTableRow &&
+              !s.displayDiagram &&
+              !s.displayDiagramSwap &&
+              !s.displayAlphabetGrid;
+            const earlyTable =
+              hasTable && steps.length > 0 && isFillerStep(steps[0])
+                ? (tableRendered = true, renderShellTable())
+                : null;
+            // Detect short anchor steps (Who? / What? / Where? /
+            // UN / RE / etc.) — single short displayText, no parts,
+            // no table. On mobile we accumulate consecutive runs of
+            // these because the focal idea IS the trio (e.g. RL.K.1
+            // slide 2: kid should see Who? + What? + Where? together
+            // after all three reveal). Long beats still replace.
+            const isShortAnchor = (s: Step) =>
+              !!s.displayText &&
+              !s.displayParts &&
+              !s.displayTableRow &&
+              s.displayText.trim().split(/\s+/).length <= 2;
+            const stepNodes = steps.map((step, i) => {
+              const currentDisplayStep =
+                playingStep >= 0
+                  ? playingStep
+                  : Math.max(0, stepsRevealed - 1);
+              // Replace-not-accumulate on mobile (rule §12) — UNLESS:
+              //   (a) Example slides → always accumulate so the
+              //       passage card stays visible while the Q→A
+              //       worksheet diagram fills in beside/below it.
+              //       Filip 2026-05-23: "if you don't remove the
+              //       story I think this is a pass."
+              //   (b) Anchor runs (consecutive ≤2-word steps) →
+              //       accumulate so the kid sees the full trio
+               //      (e.g. Who? + What? + Where?).
+              //   (c) Table-row steps on a table slide → always
+              //       render once their step has been reached so a
+              //       conclusion displayText on a later step (e.g.
+              //       RF.2.3b S2c "Same sound, two ways!") sits
+              //       UNDER the chart instead of replacing it.
+              //       Filip 2026-05-24.
+              // Q→A pair steps on example slides are still suppressed
+              // inline (the worksheet handles them) via the
+              // `useExampleWorksheet && isQAPair` guard below.
+              const isIntro = slide?.type === "intro";
+              let shouldRenderForCurrentStep: boolean;
+              if (!isPhoneShell || isExample || isIntro) {
+                // Mobile accumulate exceptions:
+                //   - example slides (passage + worksheet stays put)
+                //   - intro slides (2-3 short anchors fit fine and
+                //     mobile felt empty when only 1 was visible)
+                // Tip slides REVERTED to replace — worked-example pills
+                // overflow if accumulated. Filip 2026-05-24 PM.
+                shouldRenderForCurrentStep = i <= currentDisplayStep;
+              } else if (i === currentDisplayStep) {
+                shouldRenderForCurrentStep = true;
+              } else if (
+                step.displayTableRow &&
+                i <= currentDisplayStep
+              ) {
+                shouldRenderForCurrentStep = true;
+              } else if (
+                i < currentDisplayStep &&
+                isShortAnchor(step) &&
+                isShortAnchor(steps[currentDisplayStep])
+              ) {
+                let allAnchor = true;
+                for (let j = i + 1; j < currentDisplayStep; j++) {
+                  if (!isShortAnchor(steps[j])) {
+                    allAnchor = false;
+                    break;
+                  }
+                }
+                shouldRenderForCurrentStep = allAnchor;
+              } else {
+                shouldRenderForCurrentStep = false;
+              }
+              if (!shouldRenderForCurrentStep) return null;
+              if (step.displayTableRow) {
+                if (tableRendered) return null;
+                tableRendered = true;
+                const tableSteps = steps
+                  .map((s, idx) =>
+                    s.displayTableRow ? { step: s, idx } : null,
+                  )
+                  .filter(Boolean) as { step: Step; idx: number }[];
+                const hasExamples = tableSteps.some(
+                  (ts) => ts.step.displayTableRow?.example,
+                );
+                const headers = tableSteps.find(
+                  (ts) => ts.step.displayTableRow?.tableHeaders,
+                )?.step.displayTableRow?.tableHeaders;
+                const widestLabel = tableSteps.reduce(
+                  (max, ts) =>
+                    Math.max(
+                      max,
+                      (ts.step.displayTableRow?.label ?? "").length,
+                    ),
+                  0,
+                );
+                const labelCol = `${Math.max(5.5, widestLabel * 0.7 + 1.5).toFixed(2)}rem`;
+                const cols3 = `${labelCol} 1fr 1fr`;
+                const cols2 = `${labelCol} 1fr`;
+                const gridCols = hasExamples ? cols3 : cols2;
+                return (
+                  <div
+                    key={`${currentSlide}-shell-table`}
+                    className="w-full max-w-3xl mx-auto space-y-3 lg:space-y-6"
+                  >
+                    {headers && (
+                      <div
+                        className="grid items-center gap-x-3 lg:gap-x-4 pb-2 lg:pb-3 border-b-2 border-violet-200 dark:border-violet-700"
+                        style={{ gridTemplateColumns: gridCols }}
+                      >
+                        {headers.map((h, hi) => (
+                          <span
+                            key={hi}
+                            className="text-xs sm:text-sm lg:text-2xl font-extrabold uppercase tracking-wider text-violet-600 dark:text-violet-300 text-center"
+                          >
+                            {h}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                    {tableSteps.map((ts) => {
+                      const row = ts.step.displayTableRow!;
+                      const colorIdx = tableSteps.indexOf(ts);
+                      const checkKey = `${ts.idx}-check`;
+                      const rowHighlighted = partsVisible.has(checkKey);
+                      const staggerDelay = colorIdx * 0.12;
+                      return (
+                        <motion.div
+                          key={`${currentSlide}-shell-row-${ts.idx}`}
+                          initial={{ opacity: 0, y: 14 }}
+                          animate={{
+                            opacity: 1,
+                            y: 0,
+                            scale: rowHighlighted ? [1, 1.03, 1] : 1,
+                          }}
+                          transition={{
+                            default: {
+                              type: "spring",
+                              stiffness: 400,
+                              damping: 20,
+                              delay: staggerDelay,
+                            },
+                            scale: {
+                              duration: 0.4,
+                              ease: "easeInOut",
+                              delay: staggerDelay,
+                            },
+                          }}
+                          className={`grid items-center gap-x-3 lg:gap-x-4 rounded-xl px-2 py-2 lg:py-4 transition-colors duration-500 ${
+                            rowHighlighted
+                              ? "bg-emerald-50 dark:bg-emerald-950/20 ring-2 ring-emerald-300 dark:ring-emerald-700"
+                              : ""
+                          }`}
+                          style={{ gridTemplateColumns: gridCols }}
+                        >
+                          <span
+                            className={`rounded-xl py-2 lg:py-4 text-lg sm:text-xl lg:text-3xl font-bold shadow-sm text-center ${PILL_COLORS[colorIdx % PILL_COLORS.length]}`}
+                          >
+                            {row.label}
+                          </span>
+                          <span className="text-base sm:text-lg lg:text-3xl font-semibold text-zinc-700 dark:text-zinc-200 text-center">
+                            {row.value}
+                          </span>
+                          {hasExamples && (
+                            <span className="text-sm sm:text-base lg:text-2xl text-zinc-500 dark:text-zinc-400 italic text-center">
+                              {row.example ?? ""}
+                            </span>
+                          )}
+                        </motion.div>
+                      );
+                    })}
+                  </div>
+                );
+              }
+              if (step.displayDiagramSwap) {
+                return renderDiagramSwap(step, i);
+              }
+              if (step.displayDiagram) {
+                return renderDiagram(step, i);
+              }
+              if (step.displayAlphabetGrid) {
+                return renderAlphabetGrid(step, i);
+              }
+              if (!hasTable && step.displayParts && step.displayParts.length > 0) {
+                const isQAPair =
+                  step.displayParts.length === 2 &&
+                  typeof step.displayParts[0]?.text === "string" &&
+                  step.displayParts[0].text.trim().endsWith("?");
+                if (useExampleWorksheet && isQAPair) return null;
+                return renderParts(step, i);
+              }
+              if (!step.displayTableRow) {
+                return renderText(step, i);
+              }
+              return null;
+            });
+            return earlyTable ? [earlyTable, ...stepNodes] : stepNodes;
+          })()}
+          {useExampleWorksheet && (
+            isPhoneShell ? (
+              <ExampleWorksheetGridMobile
+                pairs={qaPairSteps}
+                partsVisible={partsVisible}
+                playingStep={playingStep}
+              />
+            ) : (
+              <ExampleWorksheetGrid
+                pairs={qaPairSteps}
+                partsVisible={partsVisible}
+                playingStep={playingStep}
+              />
+            )
+          )}
+        </div>
+      </div>
+    );
+    const sharedContentSlot = isSynthetic ? (
+      <CelebrationContent
+        title={slide?.heading || "Time to try it yourself!"}
+        body="Quick questions ahead — you've got this."
+      />
+    ) : (
+      nonSyntheticContent
+    );
+
+    if (isPhoneShell) {
+      return (
+        <div className={fredoka.className}>
+          <LessonShellMobile
+            slideNum={currentSlide + 1}
+            totalSlides={teachingSlides.length}
+            onClose={onComplete}
+            onNext={sharedOnNext}
+            nextDisabled={sharedNextDisabled}
+            nextLabel={nextLabel}
+            imageUrl={shellImageUrl}
+            imageAlt={lesson.title}
+            imageHeightVh={imageHeightVh}
+            audioPlaying={isPlaying}
+            leftSlot={sharedLeftSlot}
+            contentSlot={sharedContentSlot}
+          />
+        </div>
+      );
+    }
+
+    return (
+      <div className={fredoka.className}>
+        <LessonShellDesktop
+          slideNum={currentSlide + 1}
+          totalSlides={teachingSlides.length}
+          lessonTitle={lesson.title}
+          onClose={onComplete}
+          onNext={sharedOnNext}
+          nextDisabled={sharedNextDisabled}
+          nextLabel={nextLabel}
+          imageUrl={shellImageUrl}
+          imageAlt={lesson.title}
+          audioPlaying={isPlaying}
+          leftSlot={sharedLeftSlot}
+          contentSlot={sharedContentSlot}
+        />
+      </div>
+    );
+  }
 
   return (
     <div
@@ -1247,14 +2160,32 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
         >
           {/* ── Image ── */}
           {(() => {
-            const visibleContent = steps.filter((s, i) =>
-              (textsVisible.has(i) && s.displayText) ||
-              (s.displayParts && s.displayParts.some((_, p) => partsVisible.has(`${i}-${p}`))) ||
-              (textsVisible.has(i) && s.displayTableRow)
-            ).length;
-            const imgH = isPracticeIntro ? "max-h-[45vh]" : visibleContent >= 3 ? "max-h-[25vh]" : "max-h-[38vh]";
+            // Rule: max ONE visual focal point per slide. If the slide
+            // has a table with real row content, the table IS the
+            // visual — suppress the image so it doesn't compete with
+            // the chart for the kid's attention (Filip's "image is
+            // useless here, the chart takes over" feedback on Story
+            // Questions). Image still shows on intro/teach text slides
+            // and on the celebratory practice-intro.
+            const hasTableContent = steps.some(
+              (s) =>
+                s.displayTableRow &&
+                s.displayTableRow.label &&
+                s.displayTableRow.value,
+            );
+            if (hasTableContent) return null;
+
+            // Fixed height — the old `visibleContent >= 3 ? 25vh : 38vh`
+            // ternary made the image jitter as text revealed during the
+            // slide. Stable 34vh reads as a calm anchor.
+            // Image scales with viewport height; bumped on `lg:` so
+            // laptop kids get a richer visual without the image
+            // dominating phone where vertical space is tight.
+            const imgH = isPracticeIntro
+              ? "max-h-[45vh] lg:max-h-[55vh]"
+              : "max-h-[34vh] lg:max-h-[42vh]";
             return (
-              <div className="flex-shrink-0 flex justify-center px-6 pt-1">
+              <div className="flex-shrink-0 flex justify-center px-4 sm:px-6 pt-1">
                 <LoadingImage
                   src={imageUrl}
                   className={`w-full h-full object-cover ${imgH}`}
@@ -1271,9 +2202,13 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.15, type: "spring", stiffness: 200 }}
-                className={`font-bold text-center tracking-wide leading-snug ${theme.text} ${
-                  textsVisible.size > 0 || partsVisible.size > 0 ? "text-xl" : "text-3xl"
-                }`}
+                // Fixed size — the old dynamic resize (3xl → xl when
+                // content appeared) snapped jarringly on slides where
+                // the heading was the only visible content for an
+                // audio beat (filler intros). Stable text-xl reads
+                // cleaner across the whole lesson and matches the
+                // "replace not accumulate" content rhythm.
+                className={`font-bold text-center tracking-wide leading-snug text-xl lg:text-3xl ${theme.text}`}
               >
                 {slide.heading}
               </motion.h1>
@@ -1290,14 +2225,24 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
           </div>
 
           {/* ── Content ── */}
-          <div className="flex-1 min-h-0 overflow-hidden flex items-center justify-center px-6">
+          {/* Mobile-first padding: tight at 375-390px (kid on phone),
+              comfortable at sm+ (tablet/desktop). px-4 instead of
+              px-6 buys ~16px of horizontal real estate on phone. */}
+          <div className="flex-1 min-h-0 overflow-hidden flex items-center justify-center px-4 sm:px-6">
             {(() => {
               const hasContent = steps.some(
                 (s) => s.displayText || (s.displayParts && s.displayParts.length > 0) || s.displayTableRow || s.displayDiagram || s.displayDiagramSwap || s.displayAlphabetGrid
               );
               const bgClass = hasContent ? theme.contentBg : "";
+              // Content max-width scales by viewport. Mobile-first
+              // kept tight (max-w-sm = 384px fits iPhone exactly),
+              // then grows substantially on `lg:` (≥1024px) so
+              // laptop/desktop kids and the audit page reviewer
+              // don't stare at a narrow column floating in empty
+              // pixels. Text now reads at text-2xl/4xl, needs the
+              // horizontal room to breathe.
               return (
-            <div className={`w-full ${steps.some((s) => s.displayTableRow) || steps.some((s) => s.displayDiagram?.letters?.some((l) => l.text.length > 1)) ? "max-w-lg" : "max-w-sm"} flex flex-col items-center gap-3 ${bgClass}`}>
+            <div className={`w-full ${steps.some((s) => s.displayTableRow) || steps.some((s) => s.displayDiagram?.letters?.some((l) => l.text.length > 1)) ? "max-w-lg lg:max-w-4xl" : "max-w-sm lg:max-w-3xl"} flex flex-col items-center gap-3 lg:gap-6 ${bgClass}`}>
               {(() => {
                 const hasTable = steps.some((s) => s.displayTableRow);
                 let tableRendered = false;
@@ -1314,11 +2259,21 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
                     const headers = tableSteps.find((ts) => ts.step.displayTableRow?.tableHeaders)?.step.displayTableRow?.tableHeaders;
                     // Show headers immediately when slide loads if headers exist, even before rows
                     if (!anyVisible && !headers) return null;
-                    const cols3 = "8.5rem 1fr 1fr";
-                    const cols2 = "8.5rem 1fr";
+                    // Compute the widest label across all rows so every
+                    // label column lands the same width without leaving
+                    // dead space around the longest entry (Filip's "lot
+                    // of dead space on Where + When?" complaint).
+                    // Approx 0.7rem per character + 1.5rem pill padding.
+                    const widestLabel = tableSteps.reduce(
+                      (max, ts) => Math.max(max, (ts.step.displayTableRow?.label ?? "").length),
+                      0,
+                    );
+                    const labelCol = `${Math.max(5.5, widestLabel * 0.7 + 1.5).toFixed(2)}rem`;
+                    const cols3 = `${labelCol} 1fr 1fr`;
+                    const cols2 = `${labelCol} 1fr`;
                     const gridCols = hasExamples ? cols3 : cols2;
                     return (
-                      <div key={`${currentSlide}-table`} className="w-full space-y-4">
+                      <div key={`${currentSlide}-table`} className="w-full max-w-md lg:max-w-3xl mx-auto space-y-3 lg:space-y-5">
                         {/* Header row */}
                         {headers && (
                           <div
@@ -1326,30 +2281,60 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
                             style={{ gridTemplateColumns: gridCols }}
                           >
                             {headers.map((h, hi) => (
-                              <span key={hi} className="text-sm font-bold uppercase tracking-wider text-violet-500 dark:text-violet-400 text-center">
+                              <span key={hi} className="text-base lg:text-xl font-extrabold uppercase tracking-wider text-violet-600 dark:text-violet-300 text-center">
                                 {h}
                               </span>
                             ))}
                           </div>
                         )}
                         {tableSteps.map((ts) => {
-                          const visible = textsVisible.has(ts.idx);
-                          if (!visible) return null;
+                          // Tables render in full from slide load — the
+                          // "teacher draws the whole chart, then points
+                          // at each row" pattern. Previous visibility-
+                          // gated approach silently failed when state
+                          // updates raced (rows stayed invisible even
+                          // when textsVisible was pre-populated).
+                          // `rowHighlighted` (set per-step when its
+                          // audio plays) is the affordance for "which
+                          // row are we teaching right now."
                           const row = ts.step.displayTableRow!;
                           const colorIdx = tableSteps.indexOf(ts);
                           const exampleShown = examplesVisible.has(ts.idx);
                           const checkKey = `${ts.idx}-check`;
                           const rowHighlighted = partsVisible.has(checkKey);
+                          // Stagger rows in by their position so the
+                          // chart appears with rhythm — feels like a
+                          // teacher writing each row in turn instead of
+                          // the whole chart slapping onto the board.
+                          // 120ms per row sums to ~500ms for a 4-row
+                          // chart, fast enough not to delay teaching.
+                          const staggerDelay = colorIdx * 0.12;
                           return (
                             <motion.div
                               key={`${currentSlide}-table-${ts.idx}`}
-                              initial={{ opacity: 0, y: 10 }}
+                              initial={{ opacity: 0, y: 14 }}
                               animate={{
                                 opacity: 1,
                                 y: 0,
                                 scale: rowHighlighted ? [1, 1.03, 1] : 1,
                               }}
-                              transition={{ type: "spring", stiffness: 400, damping: 20 }}
+                              // Per-property transitions: spring for
+                              // opacity/y (the entrance), ease tween for
+                              // the scale pulse — Motion forbids spring
+                              // with multi-keyframe arrays.
+                              transition={{
+                                default: {
+                                  type: "spring",
+                                  stiffness: 400,
+                                  damping: 20,
+                                  delay: staggerDelay,
+                                },
+                                scale: {
+                                  duration: 0.4,
+                                  ease: "easeInOut",
+                                  delay: staggerDelay,
+                                },
+                              }}
                               className={`grid items-center gap-x-4 rounded-xl px-2 py-1 transition-colors duration-500 ${
                                 rowHighlighted ? "bg-emerald-50 dark:bg-emerald-950/20 ring-2 ring-emerald-300 dark:ring-emerald-700" : ""
                               }`}
@@ -1380,14 +2365,9 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
                                 )}
                               </span>
                               {hasExamples && (
-                                <motion.span
-                                  initial={{ opacity: 0 }}
-                                  animate={{ opacity: exampleShown ? 1 : 0 }}
-                                  transition={{ duration: 0.4 }}
-                                  className="text-base text-zinc-500 dark:text-zinc-400 italic text-center"
-                                >
+                                <span className="text-base text-zinc-500 dark:text-zinc-400 italic text-center">
                                   {row.example ?? ""}
-                                </motion.span>
+                                </span>
                               )}
                             </motion.div>
                           );
@@ -1398,6 +2378,36 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
                   if (step.displayAlphabetGrid) {
                     return renderAlphabetGrid(step, i);
                   }
+                  // "Replace not accumulate" gate — for non-table content,
+                  // only render the step that's currently being narrated.
+                  // Previous step's content fades out as the new step's
+                  // audio begins. Tables are exempt (full chart pattern).
+                  // Without this, displayText/displayParts piled up into a
+                  // wall of text by the end of a slide (Filip's "throw up
+                  // of pills" complaint on 5 of 5 audited 1st-grade lessons).
+                  //
+                  // currentDisplayStep: the step "owning" the screen right
+                  // now. While audio is playing, that's playingStep. When
+                  // a slide first loads (700ms gap before audio), or after
+                  // the last step finishes, fall back to the last revealed
+                  // step so we don't blank the screen.
+                  //
+                  // Passage exemption: a displayText with ≥7 words is
+                  // treated as a passage that persists across Q&A steps
+                  // (example slides — kid needs the passage on screen
+                  // while answering questions about it).
+                  const currentDisplayStep =
+                    playingStep >= 0
+                      ? playingStep
+                      : Math.max(0, stepsRevealed - 1);
+                  const isPassage =
+                    typeof step.displayText === "string" &&
+                    step.displayText.trim().split(/\s+/).length >= 7;
+                  const shouldRenderForCurrentStep =
+                    i === currentDisplayStep ||
+                    !!step.displayTableRow ||
+                    (isPassage && i <= currentDisplayStep);
+                  if (!shouldRenderForCurrentStep) return null;
                   if (step.displayDiagramSwap) {
                     return renderDiagramSwap(step, i);
                   }
@@ -1427,20 +2437,20 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
               className="max-w-xs mx-auto"
             >
               <button
-                onClick={showNext ? handleNext : undefined}
-                disabled={!showNext}
+                onClick={(showNext || devMode) ? handleNext : undefined}
+                disabled={!showNext && !devMode}
                 className={`relative w-full py-3.5 rounded-2xl font-extrabold text-xl text-white flex items-center justify-center gap-2 transition-all duration-300 ${
-                  showNext
+                  (showNext || devMode)
                     ? "active:scale-95"
                     : "opacity-50 pointer-events-none"
                 }`}
                 style={{
-                  background: showNext
+                  background: (showNext || devMode)
                     ? isLastSlide
                       ? "linear-gradient(135deg, #10b981, #059669)"
                       : "linear-gradient(135deg, #6366f1, #8b5cf6)"
                     : undefined,
-                  boxShadow: showNext
+                  boxShadow: (showNext || devMode)
                     ? isLastSlide
                       ? "0 4px 0 0 #047857"
                       : "0 4px 0 0 #4f46e5"
@@ -1464,7 +2474,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
                   />
                 )}
                 <span className="relative z-10 flex items-center gap-2">
-                  {!showNext ? (
+                  {!showNext && !devMode ? (
                     // While audio is playing, the button is intentionally
                     // locked so the kid hears each sub-step before moving
                     // on. The "Listening…" label tells them *why* they
@@ -1480,7 +2490,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
                     </>
                   ) : (
                     <>
-                      Next
+                      {devMode && !showNext ? "Skip" : "Next"}
                       <ChevronRight className="w-5 h-5" />
                     </>
                   )}
@@ -1490,6 +2500,180 @@ export function LessonSlideshow({ lesson, onComplete, devMode }: LessonSlideshow
           </div>
         </motion.div>
       </AnimatePresence>
+    </div>
+  );
+}
+
+/* ───────────────────────────────────────────────────────────────── */
+/*  ExampleWorksheetGrid — detective board on the LEFT panel        */
+/* ───────────────────────────────────────────────────────────────── */
+/**
+ * Filip 2026-05-24: example-slide Q→A pairs render on the LEFT panel
+ * as a vertical "worksheet" — three columns per row:
+ *   Question pill | Answer text | check
+ *
+ * - Question is always visible (the kid sees what's being asked)
+ * - Answer reveals when partsVisible has `${idx}-1` (Whisper-aligned + 700ms post-roll)
+ * - Check fades in once the answer is visible (the row's been "taught")
+ * - Currently-playing row gets a violet ring so the kid knows where we are
+ */
+/**
+ * Mobile-tuned worksheet — same Q→A diagram below the passage, but
+ * compact enough for a 393×852 phone. Two-row per item (Q above, A
+ * below) so the answer text isn't fighting a fixed Q column for
+ * width. Everything in the violet palette (NO black text — Filip
+ * flagged this 5+ times). Active row gets a violet ring; answered
+ * rows tint emerald + show a small check.
+ */
+function ExampleWorksheetGridMobile({
+  pairs,
+  partsVisible,
+  playingStep,
+}: {
+  pairs: Array<{ step: Step; idx: number }>;
+  partsVisible: Set<string>;
+  playingStep: number;
+}) {
+  return (
+    <div className="w-full flex flex-col gap-2">
+      {pairs.map((p) => {
+        const q = p.step.displayParts?.[0]?.text ?? "";
+        const a = p.step.displayParts?.[1]?.text ?? "";
+        // Gate: only reveal the question text once the step has
+        // started (its part-0 is visible OR it's the currently
+        // playing step). Stops Q2's text from spoiling Q1's answer
+        // before the kid is asked. Filip 2026-05-24.
+        const qVisible = partsVisible.has(`${p.idx}-0`) || playingStep === p.idx;
+        const aVisible = partsVisible.has(`${p.idx}-1`);
+        const isCurrent = playingStep === p.idx;
+        return (
+          <motion.div
+            key={`mw-${p.idx}`}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ type: "spring", stiffness: 400, damping: 20 }}
+            className={`flex items-center justify-between gap-3 rounded-xl border-2 px-4 py-2.5 transition-all duration-300 ${
+              isCurrent
+                ? "border-violet-400 bg-violet-50 dark:bg-violet-950/30 shadow-sm"
+                : aVisible
+                  ? "border-emerald-200 bg-emerald-50 dark:bg-emerald-950/20"
+                  : "border-violet-100 bg-white dark:bg-slate-900"
+            }`}
+          >
+            <div className="flex min-w-0 items-baseline gap-2.5">
+              <span className="flex-shrink-0 text-sm font-extrabold uppercase tracking-wider text-violet-500 dark:text-violet-400">
+                {qVisible ? q : "?"}
+              </span>
+              <span className="min-w-0 truncate text-base font-extrabold text-violet-800 dark:text-violet-200">
+                {!qVisible ? (
+                  <span className="text-violet-200 dark:text-violet-800">…</span>
+                ) : aVisible ? (
+                  <motion.span
+                    initial={{ opacity: 0, y: 4 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 18 }}
+                  >
+                    {a}
+                  </motion.span>
+                ) : (
+                  <span className="text-violet-200 dark:text-violet-800">…</span>
+                )}
+              </span>
+            </div>
+            {aVisible && (
+              <motion.span
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 500,
+                  damping: 15,
+                  delay: 0.15,
+                }}
+                className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-emerald-500 text-white"
+              >
+                <Check className="h-3.5 w-3.5" strokeWidth={3} />
+              </motion.span>
+            )}
+          </motion.div>
+        );
+      })}
+    </div>
+  );
+}
+
+function ExampleWorksheetGrid({
+  pairs,
+  partsVisible,
+  playingStep,
+}: {
+  pairs: Array<{ step: Step; idx: number }>;
+  partsVisible: Set<string>;
+  playingStep: number;
+}) {
+  return (
+    <div className="w-full max-w-xl flex flex-col gap-4 lg:gap-5">
+      {pairs.map((p, rowIdx) => {
+        const q = p.step.displayParts?.[0]?.text ?? "";
+        const a = p.step.displayParts?.[1]?.text ?? "";
+        const aVisible = partsVisible.has(`${p.idx}-1`);
+        const isCurrent = playingStep === p.idx;
+        const wasTaught = aVisible;
+        const pillColor = PILL_COLORS[rowIdx % PILL_COLORS.length];
+        return (
+          <motion.div
+            key={`worksheet-${p.idx}`}
+            initial={{ opacity: 0, x: -16 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{
+              type: "spring",
+              stiffness: 400,
+              damping: 22,
+              delay: rowIdx * 0.1,
+            }}
+            className={`grid items-center gap-4 lg:gap-6 rounded-2xl border-2 bg-white dark:bg-slate-900 px-5 py-4 lg:px-7 lg:py-6 transition-all duration-300 ${
+              isCurrent
+                ? "border-violet-400 shadow-md ring-4 ring-violet-100 dark:ring-violet-900/40"
+                : wasTaught
+                  ? "border-emerald-200 dark:border-emerald-800"
+                  : "border-zinc-200 dark:border-slate-700"
+            }`}
+            style={{ gridTemplateColumns: "7.5rem 1fr 2.5rem" }}
+          >
+            <span
+              className={`inline-flex items-center justify-center rounded-full py-2 lg:py-3 px-4 lg:px-5 text-lg lg:text-2xl font-bold shadow-sm text-center ${pillColor}`}
+            >
+              {q}
+            </span>
+            <span className="text-xl lg:text-3xl font-extrabold text-zinc-800 dark:text-zinc-100 leading-tight">
+              {aVisible ? (
+                <motion.span
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 18 }}
+                  className="inline-block"
+                >
+                  {a}
+                </motion.span>
+              ) : (
+                <span className="text-zinc-300 dark:text-slate-600">…</span>
+              )}
+            </span>
+            <span className="flex items-center justify-center">
+              {wasTaught && (
+                <motion.span
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ type: "spring", stiffness: 500, damping: 15, delay: 0.15 }}
+                  className="flex h-9 w-9 lg:h-10 lg:w-10 items-center justify-center rounded-full bg-emerald-500 text-white"
+                >
+                  <Check className="h-5 w-5 lg:h-6 lg:w-6" strokeWidth={3} />
+                </motion.span>
+              )}
+            </span>
+          </motion.div>
+        );
+      })}
     </div>
   );
 }

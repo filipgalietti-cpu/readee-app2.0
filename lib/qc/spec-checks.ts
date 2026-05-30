@@ -12,6 +12,8 @@
  * file is the shared definition. When in doubt, encode the rule here
  * (deterministic) rather than ship a softer judge prompt.
  */
+import { checkCanonDrift } from "./lesson-canon";
+import { checkDeadSpace } from "./dead-space";
 // Accept every grade-string format the DB uses (JSON banks use "1st",
 // questions_db uses bare "1", lessons_db uses "Kindergarten"/"1st Grade").
 // normalizeGrade in audit-sources.ts collapses these to the JSON form,
@@ -304,6 +306,186 @@ export function checkLessonStepAudioForKG1(lesson: {
   return out;
 }
 
+// ── May 18 audit-driven checks ────────────────────────────────────
+// Every check below was added because Filip's 5-lesson sample audit on
+// /owner/lesson-timing-audit surfaced a class of slop that the existing
+// judges weren't catching. The fixes for each issue go in
+// LessonSlideshow.tsx + content rewrites; these checks make sure new
+// content can't ship with the same issues.
+
+/**
+ * `slide.tableRow_empty` — a step has displayTableRow but missing
+ * required label/value. Renderer would show nothing for that row,
+ * silently degrading the chart.
+ */
+export function checkTableRowComplete(step: {
+  displayTableRow?: { label?: unknown; value?: unknown } | null;
+}): CheckResult {
+  const t = step.displayTableRow;
+  if (!t) return { ok: true, findingType: "slide.tableRow_empty", message: "", severity: "fail" };
+  const label = typeof t.label === "string" ? t.label.trim() : "";
+  const value = typeof t.value === "string" ? t.value.trim() : "";
+  if (!label || !value) {
+    return {
+      ok: false,
+      findingType: "slide.tableRow_empty",
+      message: `displayTableRow missing required ${!label ? "label" : "value"}`,
+      severity: "fail",
+    };
+  }
+  return { ok: true, findingType: "slide.tableRow_empty", message: "", severity: "fail" };
+}
+
+/**
+ * `slide.filler_step` — step has audio but contributes no anchor
+ * content (no displayText, no displayParts, no displayTableRow, no
+ * diagram, no alphabet grid). Almost always a filler "Listen…" /
+ * "Let's see how!" beat that fragments attention without teaching.
+ *
+ * Exception: a step CAN be content-less if it's a deliberate
+ * audio-only beat in a tableRow slide (the chart carries the visual).
+ * We tolerate that by checking sibling steps in the same slide.
+ */
+export function checkFillerStep(step: {
+  sub?: string;
+  ttsScript?: string;
+  displayText?: string;
+  displayParts?: unknown[];
+  displayTableRow?: unknown;
+  displayDiagram?: unknown;
+  displayDiagramSwap?: unknown;
+  displayAlphabetGrid?: unknown;
+  imageFile?: string;
+}, slideHasTableRows: boolean): CheckResult {
+  const hasAnchor =
+    !!step.displayText ||
+    (Array.isArray(step.displayParts) && step.displayParts.length > 0) ||
+    !!step.displayTableRow ||
+    !!step.displayDiagram ||
+    !!step.displayDiagramSwap ||
+    !!step.displayAlphabetGrid ||
+    !!step.imageFile;
+  if (hasAnchor) {
+    return { ok: true, findingType: "slide.filler_step", message: "", severity: "warn" };
+  }
+  // Audio-only step is fine if slide has a chart that owns the visual
+  if (slideHasTableRows) {
+    return { ok: true, findingType: "slide.filler_step", message: "", severity: "warn" };
+  }
+  return {
+    ok: false,
+    findingType: "slide.filler_step",
+    message: `step ${step.sub ?? "?"} has audio "${(step.ttsScript ?? "").slice(0, 60)}" but no visual anchor — kid sees nothing for this beat`,
+    severity: "warn",
+  };
+}
+
+/**
+ * `slide.heading_redundancy` — displayText that just repeats the
+ * slide heading verbatim (or near-verbatim). Filip flagged "A
+ * Detective Trick" displayText on a slide titled "A Detective Trick"
+ * as duplicating itself. Anchor should advance the concept, not echo.
+ */
+export function checkHeadingRedundancy(step: {
+  sub?: string;
+  displayText?: string;
+}, slideHeading?: string): CheckResult {
+  const text = (step.displayText ?? "").trim();
+  const heading = (slideHeading ?? "").trim();
+  if (!text || !heading) {
+    return { ok: true, findingType: "slide.heading_redundancy", message: "", severity: "warn" };
+  }
+  const t = normText(text);
+  const h = normText(heading);
+  if (!t || !h) {
+    return { ok: true, findingType: "slide.heading_redundancy", message: "", severity: "warn" };
+  }
+  if (t === h || t.includes(h) || h.includes(t)) {
+    return {
+      ok: false,
+      findingType: "slide.heading_redundancy",
+      message: `step ${step.sub ?? "?"} displayText "${text}" duplicates slide heading "${heading}"`,
+      severity: "warn",
+    };
+  }
+  return { ok: true, findingType: "slide.heading_redundancy", message: "", severity: "warn" };
+}
+
+/**
+ * `slide.text_accumulation` — slide-level check. If a single slide
+ * has a total of ≥7 displayParts chunks across all steps (or any
+ * single step has ≥4 chunks fragmenting a sentence), it's the "throw
+ * up of pills" pattern Filip flagged on RL.1.1 slide 1 (13 chunks)
+ * and RF.2.3b slide 2 (14 chunks).
+ */
+export function checkTextAccumulation(slide: {
+  slide?: number;
+  steps?: Array<{ sub?: string; displayParts?: unknown[] }>;
+}): CheckResult {
+  const steps = Array.isArray(slide.steps) ? slide.steps : [];
+  let total = 0;
+  let worstSub: string | null = null;
+  let worstCount = 0;
+  for (const st of steps) {
+    const n = Array.isArray(st.displayParts) ? st.displayParts.length : 0;
+    total += n;
+    if (n > worstCount) {
+      worstCount = n;
+      worstSub = String(st.sub ?? "?");
+    }
+  }
+  if (worstCount >= 4) {
+    return {
+      ok: false,
+      findingType: "slide.text_accumulation",
+      message: `slide ${slide.slide ?? "?"} step ${worstSub} fragments into ${worstCount} displayParts — should be ≤3 beats per step`,
+      severity: "warn",
+    };
+  }
+  if (total >= 7) {
+    return {
+      ok: false,
+      findingType: "slide.text_accumulation",
+      message: `slide ${slide.slide ?? "?"} has ${total} displayParts chunks across ${steps.length} steps — too dense, kid sees wall of text`,
+      severity: "warn",
+    };
+  }
+  return { ok: true, findingType: "slide.text_accumulation", message: "", severity: "warn" };
+}
+
+/**
+ * `step.tts_example_leak` — TTS script reads example values that are
+ * also in a sibling step's displayTableRow.example. Filip flagged
+ * L.4.4b S4b where audio reads "aquarium, aquatic, aqueduct" out
+ * loud — those are visual table examples; audio shouldn't narrate
+ * what the eye is supposed to do.
+ */
+export function checkTtsExampleLeak(step: {
+  sub?: string;
+  ttsScript?: string;
+}, allExamples: string[]): CheckResult {
+  const script = (step.ttsScript ?? "").toLowerCase();
+  if (!script) {
+    return { ok: true, findingType: "step.tts_example_leak", message: "", severity: "warn" };
+  }
+  const leaks = allExamples
+    .map((ex) => ex.toLowerCase().split(/[,\s]+/).filter((w) => w.length > 3))
+    .flat()
+    .filter((w, i, a) => a.indexOf(w) === i);
+  const hits = leaks.filter((w) => new RegExp(`\\b${w}\\b`).test(script));
+  // Allow ≤1 leaked example word — the script can reference one as
+  // a teaching anchor. ≥2 is reading the table aloud.
+  if (hits.length >= 2) {
+    return {
+      ok: false,
+      findingType: "step.tts_example_leak",
+      message: `step ${step.sub ?? "?"} ttsScript reads table examples aloud: ${hits.slice(0, 4).join(", ")} — examples belong to the visual`,
+      severity: "warn",
+    };
+  }
+  return { ok: true, findingType: "step.tts_example_leak", message: "", severity: "warn" };
+}
+
 // ── Aggregator helpers used by audit-content.ts ───────────────────
 
 export function runQuestionSpecChecks(q: {
@@ -324,6 +506,7 @@ export function runQuestionSpecChecks(q: {
 }
 
 export function runLessonSpecChecks(lesson: {
+  standardId?: string | null;
   grade?: string | null;
   slides?: any[];
 }): Array<CheckResult & { targetSubId: string | null }> {
@@ -333,6 +516,20 @@ export function runLessonSpecChecks(lesson: {
   // Grade-conditional TTS-required check
   for (const r of checkLessonStepAudioForKG1(lesson)) {
     if (!r.ok) out.push({ ...r, targetSubId: null });
+  }
+
+  // Canon drift — slide-sequence + per-slide structural rules
+  // matched against the 5 reference lessons (RL.K.1 et al). Canon
+  // lessons themselves are skipped inside checkCanonDrift.
+  for (const r of checkCanonDrift(lesson)) {
+    if (!r.ok) out.push(r);
+  }
+
+  // Dead-space estimator — flag slides where mobile or desktop
+  // content uses < 60% of available vertical space (50% for intro /
+  // practice-intro which are lighter by design).
+  for (const r of checkDeadSpace(lesson)) {
+    if (!r.ok) out.push(r);
   }
 
   for (let si = 0; si < slides.length; si++) {
@@ -349,8 +546,20 @@ export function runLessonSpecChecks(lesson: {
       if (!imgR.ok) out.push({ ...imgR, targetSubId: `slide-${si + 1}` });
     }
 
-    // Per-step checks
+    // Slide-level: text accumulation (May 18 audit)
+    const accR = checkTextAccumulation(slide);
+    if (!accR.ok) out.push({ ...accR, targetSubId: `slide-${si + 1}` });
+
     const steps = Array.isArray(slide.steps) ? slide.steps : [];
+    const slideHasTableRows = steps.some((s: any) => s?.displayTableRow);
+
+    // Collect all table examples on this slide so we can flag tts
+    // scripts that read them aloud (step.tts_example_leak).
+    const allExamples: string[] = steps
+      .map((s: any) => s?.displayTableRow?.example)
+      .filter((e: any): e is string => typeof e === "string" && !!e);
+
+    // Per-step checks
     for (const step of steps) {
       const sub = String(step?.sub ?? "?");
       const subId = `S${si + 1}${sub}`;
@@ -366,6 +575,21 @@ export function runLessonSpecChecks(lesson: {
 
       const r4 = checkNoEmojiLeak(step?.ttsScript ?? null, `step.${subId}.ttsScript`);
       if (!r4.ok) out.push({ ...r4, targetSubId: subId });
+
+      // May 18 audit-driven checks
+      const r5 = checkTableRowComplete(step);
+      if (!r5.ok) out.push({ ...r5, targetSubId: subId });
+
+      const r6 = checkFillerStep(step, slideHasTableRows);
+      if (!r6.ok) out.push({ ...r6, targetSubId: subId });
+
+      const r7 = checkHeadingRedundancy(step, slide?.heading);
+      if (!r7.ok) out.push({ ...r7, targetSubId: subId });
+
+      if (allExamples.length > 0) {
+        const r8 = checkTtsExampleLeak(step, allExamples);
+        if (!r8.ok) out.push({ ...r8, targetSubId: subId });
+      }
     }
   }
   return out;
