@@ -505,6 +505,127 @@ export function runQuestionSpecChecks(q: {
   return results.filter((r) => !r.ok);
 }
 
+// ── Canon architecture checks (2026-05-30) ─────────────────────────
+// The golden rule from the canon scrub: the on-screen text ANCHORS the
+// audio, it never transcribes it. These flag the non-canon catalog's
+// core disease — full sentences dumped in pills, multiple concepts
+// crammed into one pill, and verbose Q→A. See reference_lesson_architecture.
+
+function toks(s: string): string[] {
+  return normText(s).split(" ").filter(Boolean);
+}
+/** Word count that keeps contractions intact ("What's" = 1 word). */
+function wcount(s: string): number {
+  return String(s).toLowerCase().replace(/[^a-z0-9' ]/g, " ").trim().split(/\s+/).filter(Boolean).length;
+}
+function overlapRatio(a: string[], b: string[]): number {
+  if (!a.length) return 0;
+  const bs = new Set(b);
+  return a.filter((t) => bs.has(t)).length / a.length;
+}
+
+/**
+ * Flags an on-screen pill that transcribes its TTS sentence instead of
+ * anchoring it: ≥6 words, ≥80% token overlap with the ttsScript, AND
+ * ≥60% as long as the audio (so a short anchor PHRASE pulled from a long
+ * sentence — canon — is NOT flagged, but the whole sentence on screen
+ * IS). Example-slide passages (the intended 2-sentence anchor) are
+ * exempt; their Q→A parts are covered by checkQaTerseness.
+ */
+export function checkTranscriptPill(
+  step: { ttsScript?: string; displayText?: string; displayParts?: Array<{ text?: string }> },
+  slideType: string,
+): CheckResult {
+  const na = { ok: true, findingType: "slide.text_is_transcript", message: "n/a", severity: "warn" as const };
+  const ttsToks = toks(step?.ttsScript ?? "");
+  if (ttsToks.length < 6) return na;
+
+  const chunks: string[] = [];
+  if (typeof step?.displayText === "string" && step.displayText.trim() && slideType !== "example") {
+    chunks.push(step.displayText);
+  }
+  const dp = step?.displayParts;
+  const isQA =
+    Array.isArray(dp) && dp.length === 2 &&
+    typeof dp[0]?.text === "string" && dp[0].text.trim().endsWith("?");
+  if (Array.isArray(dp) && !isQA) {
+    // The slide shows the parts together, so judge them combined.
+    chunks.push(dp.map((p) => p?.text ?? "").join(" "));
+  }
+
+  for (const c of chunks) {
+    // Structured anchors (arrow mappings / equations like "rain → A",
+    // "un + happy = unhappy") are canon, not prose — skip them.
+    if (/[→=+]/.test(c)) continue;
+    const ct = toks(c);
+    if (
+      ct.length >= 6 &&
+      overlapRatio(ct, ttsToks) >= 0.8 &&
+      ct.length >= 0.6 * ttsToks.length
+    ) {
+      return {
+        ok: false,
+        findingType: "slide.text_is_transcript",
+        severity: "warn",
+        message: `On-screen pill transcribes the audio (${ct.length} words): "${c.trim().slice(0, 60)}". Anchor it — show the one idea, not the sentence.`,
+      };
+    }
+  }
+  return { ok: true, findingType: "slide.text_is_transcript", message: "ok", severity: "warn" };
+}
+
+/**
+ * Flags a single pill that crams ≥3 comma-separated concepts (e.g.
+ * "Characters, setting, and events" / "the who, where, and what").
+ * Canon shows one idea per pill. Example passages are exempt (narrative,
+ * not a concept list).
+ */
+export function checkCrammedPill(
+  step: { displayText?: string; displayParts?: Array<{ text?: string }> },
+  slideType: string,
+): CheckResult {
+  const chunks: string[] = [];
+  if (typeof step?.displayText === "string" && slideType !== "example") chunks.push(step.displayText);
+  for (const p of step?.displayParts ?? []) if (typeof p?.text === "string") chunks.push(p.text);
+
+  for (const c of chunks) {
+    const commas = (c.match(/,/g) ?? []).length;
+    if (commas >= 2) {
+      return {
+        ok: false,
+        findingType: "slide.crammed_pill",
+        severity: "warn",
+        message: `One pill lists ${commas + 1} concepts: "${c.trim().slice(0, 60)}". Split into separate pills — one idea each.`,
+      };
+    }
+  }
+  return { ok: true, findingType: "slide.crammed_pill", message: "ok", severity: "warn" };
+}
+
+/**
+ * Flags verbose Q→A on a worked-example pair: the question must be ≤3
+ * words and the answer ≤4 words (canon: "Who?" → "Bella!"). A sentence
+ * answer like "Rolled his toy car down the slide." is what makes a slide
+ * feel like "too much going on".
+ */
+export function checkQaTerseness(step: { displayParts?: Array<{ text?: string }> }): CheckResult {
+  const na = { ok: true, findingType: "slide.qa_not_terse", message: "n/a", severity: "warn" as const };
+  const dp = step?.displayParts;
+  if (!Array.isArray(dp) || dp.length !== 2) return na;
+  if (!(typeof dp[0]?.text === "string" && dp[0].text.trim().endsWith("?"))) return na;
+  // Caps bracket canon exactly: longest canon question is "What does it
+  // mean?" (4), longest answer is "Played with a red ball!" (5).
+  const qw = wcount(dp[0].text);
+  const aw = wcount(String(dp[1]?.text ?? ""));
+  if (qw > 4) {
+    return { ok: false, findingType: "slide.qa_not_terse", severity: "warn", message: `Question "${dp[0].text.trim()}" is ${qw} words (max 4) — terse anchor like "Who?".` };
+  }
+  if (aw > 5) {
+    return { ok: false, findingType: "slide.qa_not_terse", severity: "warn", message: `Answer "${String(dp[1]?.text).trim()}" is ${aw} words (max 5) — terse anchor like "Bella!".` };
+  }
+  return { ok: true, findingType: "slide.qa_not_terse", message: "ok", severity: "warn" };
+}
+
 export function runLessonSpecChecks(lesson: {
   standardId?: string | null;
   grade?: string | null;
@@ -590,6 +711,16 @@ export function runLessonSpecChecks(lesson: {
         const r8 = checkTtsExampleLeak(step, allExamples);
         if (!r8.ok) out.push({ ...r8, targetSubId: subId });
       }
+
+      // Canon architecture (anchor, not transcript)
+      const r9 = checkTranscriptPill(step, slide?.type);
+      if (!r9.ok) out.push({ ...r9, targetSubId: subId });
+
+      const r10 = checkCrammedPill(step, slide?.type);
+      if (!r10.ok) out.push({ ...r10, targetSubId: subId });
+
+      const r11 = checkQaTerseness(step);
+      if (!r11.ok) out.push({ ...r11, targetSubId: subId });
     }
   }
   return out;

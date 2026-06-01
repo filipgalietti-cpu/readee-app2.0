@@ -31,7 +31,18 @@ const SAMPLE_STANDARDS = [
   "L.4.4b",
 ];
 
-export default async function LessonTimingAuditPage() {
+export default async function LessonTimingAuditPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ standard?: string }>;
+}) {
+  // ?standard=RL.1.3 (comma-separated) audits any lesson(s) with the same
+  // per-slide thumb + notes UX as the canon set. Default = the 5 canon.
+  const sp = await searchParams;
+  const requested = sp.standard
+    ? sp.standard.split(",").map((s) => s.trim()).filter(Boolean)
+    : null;
+  const standards = requested && requested.length ? requested : SAMPLE_STANDARDS;
   const profile = await requireProfile();
   if (!isPlatformAdmin(profile as any)) {
     return (
@@ -51,7 +62,7 @@ export default async function LessonTimingAuditPage() {
     );
   }
 
-  const lessons = SAMPLE_STANDARDS.map((id) =>
+  const lessons = standards.map((id) =>
     (sampleLessons as any[]).find((l) => l.standardId === id),
   ).filter(Boolean);
 

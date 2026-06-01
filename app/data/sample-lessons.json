@@ -126,7 +126,7 @@
           {
             "sub": "c",
             "audioFile": "audio/lessons/RL.K.1/S3c.mp3",
-            "ttsScript": "Now let's find the key details! Who is the story about? That's right \u2014 Max the dog!",
+            "ttsScript": "Now let's find the key details! Who is the story about? That's right — Max the dog!",
             "interaction": "'Who? Max the dog!' highlights with a checkmark.",
             "displayDelay": 0,
             "displayParts": [
@@ -322,7 +322,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.2a/S1b.mp3",
-            "ttsScript": "Rhyming words are words that sound the same at the end. Like cat and hat! Listen \u2014 cat, hat. Hear how they match?",
+            "ttsScript": "Rhyming words are words that sound the same at the end. Like cat and hat! Listen — cat, hat. Hear how they match?",
             "interaction": "'Cat' and 'Hat' appear on screen and bounce together. A sound wave connects them.",
             "displayParts": [
               {
@@ -823,7 +823,7 @@
           {
             "sub": "e",
             "audioFile": "audio/lessons/RI.K.1/S3e.mp3",
-            "ttsScript": "Can they fly? Nope! That's an important fact too. Look at you \u2014 you found all the key details!",
+            "ttsScript": "Can they fly? Nope! That's an important fact too. Look at you — you found all the key details!",
             "displayText": "",
             "interaction": "'Can they fly? No!' highlights. Celebration burst. Tap to continue.",
             "audioRegenAt": "2026-05-14T15:08:33.306Z",
@@ -1273,7 +1273,7 @@
         ],
         "heading": "A Secret Trick!",
         "imageFile": "images/lessons/RL.K.2/S4.png",
-        "imagePrompt": "Three colorful stepping stones in a row \u2014 a gold stone with one star, a blue stone with two stars, and a green stone with three stars. A cartoon child hops across them happily. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
+        "imagePrompt": "Three colorful stepping stones in a row — a gold stone with one star, a blue stone with two stars, and a green stone with three stars. A cartoon child hops across them happily. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
       },
       {
         "type": "practice-intro",
@@ -1289,7 +1289,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.K.2/S5b.mp3",
-            "ttsScript": "Now let's practice retelling some short stories. Remember \u2014 beginning, middle, end. Let's go!",
+            "ttsScript": "Now let's practice retelling some short stories. Remember — beginning, middle, end. Let's go!",
             "displayText": "Let's retell some stories!",
             "interaction": "'Let's Go!' button pulses.",
             "displayDelay": 3500
@@ -2024,7 +2024,7 @@
             "displayTableRow": {
               "label": "Storybook",
               "value": "Characters & Adventures",
-              "example": "Beginning \u2192 Middle \u2192 End",
+              "example": "Beginning → Middle → End",
               "exampleDelay": 2500,
               "tableHeaders": [
                 "Type",
@@ -2220,7 +2220,7 @@
         ],
         "heading": "Time to Practice!",
         "imageFile": "images/lessons/RL.K.5/S5.png",
-        "imagePrompt": "A cartoon child happily organizing colorful storybooks into two bright bins \u2014 one red bin and one blue bin. The books are different colors and sizes. Gold stars float around. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
+        "imagePrompt": "A cartoon child happily organizing colorful storybooks into two bright bins — one red bin and one blue bin. The books are different colors and sizes. Gold stars float around. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
       },
       {
         "type": "mcq",
@@ -2366,7 +2366,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.K.6/S3b.mp3",
-            "ttsScript": "On the cover, it says 'Written by' \u2014 that's the author! They wrote all the words.",
+            "ttsScript": "On the cover, it says 'Written by' — that's the author! They wrote all the words.",
             "displayText": "Author",
             "interaction": "Table row: Written by = Author with checkmark.",
             "displayDelay": 4000,
@@ -2386,7 +2386,7 @@
           {
             "sub": "c",
             "audioFile": "audio/lessons/RL.K.6/S3c.mp3",
-            "ttsScript": "And it says 'Illustrated by' \u2014 that's the illustrator! They drew all the pictures.",
+            "ttsScript": "And it says 'Illustrated by' — that's the illustrator! They drew all the pictures.",
             "displayText": "Illustrator",
             "interaction": "Table row: Illustrated by = Illustrator with checkmark.",
             "displayDelay": 4000,
@@ -2424,7 +2424,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.K.6/S4b.mp3",
-            "ttsScript": "Find the name after 'by' or 'written by' \u2014 that's the author.",
+            "ttsScript": "Find the name after 'by' or 'written by' — that's the author.",
             "displayText": "Author",
             "interaction": "Table row: Author = Look for 'Written by'.",
             "displayDelay": 930,
@@ -2563,7 +2563,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.K.7/S2b.mp3",
-            "ttsScript": "They show us the setting \u2014 where the story is happening!",
+            "ttsScript": "They show us the setting — where the story is happening!",
             "displayText": "Setting",
             "interaction": "Setting row fills in.",
             "displayDelay": 0,
@@ -2641,7 +2641,7 @@
           {
             "sub": "c",
             "audioFile": "audio/lessons/RL.K.7/S3c.mp3",
-            "ttsScript": "How does the kid feel? Look at that big smile \u2014 happy and having fun!",
+            "ttsScript": "How does the kid feel? Look at that big smile — happy and having fun!",
             "displayText": "Feeling",
             "interaction": "Feeling row fills in with checkmark.",
             "displayDelay": 5000,
@@ -2862,7 +2862,7 @@
           {
             "sub": "d",
             "audioFile": "audio/lessons/RL.K.9/S2d.mp3",
-            "ttsScript": "Same and different \u2014 that's comparing! Easy, right?",
+            "ttsScript": "Same and different — that's comparing! Easy, right?",
             "displayText": "",
             "interaction": "Both pills side by side. Tap to continue."
           }
@@ -3070,11 +3070,11 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RI.K.2/S1b.mp3",
-            "ttsScript": "Like a book about dogs \u2014 the main topic is dogs! Everything in it tells us about dogs.",
+            "ttsScript": "Like a book about dogs — the main topic is dogs! Everything in it tells us about dogs.",
             "audioRegenAt": "2026-05-14T14:57:13.722Z",
             "displayParts": [
               {
-                "text": "Like a book about dogs \u2014 the main topic is dogs! Everything in it tells us about dogs.",
+                "text": "Like a book about dogs — the main topic is dogs! Everything in it tells us about dogs.",
                 "delay": 0
               }
             ],
@@ -3139,11 +3139,11 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RI.K.2/S2b.mp3",
-            "ttsScript": "If a book talks about where fish live, what fish eat, and how fish swim \u2014 what's the main topic?",
+            "ttsScript": "If a book talks about where fish live, what fish eat, and how fish swim — what's the main topic?",
             "audioRegenAt": "2026-05-14T14:57:55.465Z",
             "displayParts": [
               {
-                "text": "If a book talks about where fish live, what fish eat, and how fish swim \u2014 what's the main topic?",
+                "text": "If a book talks about where fish live, what fish eat, and how fish swim — what's the main topic?",
                 "delay": 0
               }
             ],
@@ -3262,7 +3262,7 @@
         ],
         "heading": "Let's Try One Together!",
         "imageFile": "images/lessons/RI.K.2/S3.png",
-        "imagePrompt": "A basket full of colorful cartoon apples \u2014 red, green, and yellow \u2014 on a farm table with an orchard in the background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
+        "imagePrompt": "A basket full of colorful cartoon apples — red, green, and yellow — on a farm table with an orchard in the background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
       },
       {
         "type": "tip",
@@ -3521,7 +3521,7 @@
         ],
         "heading": "Let's Make Connections!",
         "imageFile": "images/lessons/RI.K.3/S1.png",
-        "imagePrompt": "Colorful cartoon puzzle pieces fitting together, each showing a different nature scene \u2014 sun, rain, flowers growing. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
+        "imagePrompt": "Colorful cartoon puzzle pieces fitting together, each showing a different nature scene — sun, rain, flowers growing. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
       },
       {
         "type": "teach",
@@ -3645,7 +3645,7 @@
             "audioRegenAt": "2026-05-14T14:55:34.696Z",
             "displayParts": [
               {
-                "text": "The connection?Eating leaves helps the caterpillar grow so it can become a butterfly!Eating \u2192 Growing \u2192 Butterfly!",
+                "text": "The connection?Eating leaves helps the caterpillar grow so it can become a butterfly!Eating → Growing → Butterfly!",
                 "delay": 0
               }
             ],
@@ -3902,7 +3902,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RI.K.4/S1b.mp3",
-            "ttsScript": "But don't worry \u2014 the book gives us clues to figure out what those new words mean!",
+            "ttsScript": "But don't worry — the book gives us clues to figure out what those new words mean!",
             "displayText": "",
             "interaction": "'New Words' bubbles float up with question marks."
           },
@@ -4378,7 +4378,7 @@
         ],
         "heading": "Let's Find the Parts!",
         "imageFile": "images/lessons/RI.K.5/S3.png",
-        "imagePrompt": "Three views of a children's picture book side by side on a wooden table, evenly spaced. LEFT: closed FRONT cover \u2014 a smiling blue cartoon whale swimming with bubbles on a light blue background; the title \"Ocean Animals\" centered at the top in large friendly rounded kid-book letters; no other text. MIDDLE: the same book opened flat to reveal its TITLE PAGE \u2014 a plain white page with a small cartoon whale doodle in the middle; absolutely NO text, NO words, NO letters on the page. RIGHT: closed BACK cover \u2014 plain light blue background with a cute cartoon starfish in the center and a small simple barcode rectangle in the bottom right corner; absolutely no text, no writing. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
+        "imagePrompt": "Three views of a children's picture book side by side on a wooden table, evenly spaced. LEFT: closed FRONT cover — a smiling blue cartoon whale swimming with bubbles on a light blue background; the title \"Ocean Animals\" centered at the top in large friendly rounded kid-book letters; no other text. MIDDLE: the same book opened flat to reveal its TITLE PAGE — a plain white page with a small cartoon whale doodle in the middle; absolutely NO text, NO words, NO letters on the page. RIGHT: closed BACK cover — plain light blue background with a cute cartoon starfish in the center and a small simple barcode rectangle in the bottom right corner; absolutely no text, no writing. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
       },
       {
         "type": "tip",
@@ -4409,15 +4409,15 @@
             "sub": "b",
             "audioFile": "audio/lessons/RI.K.5/S4b.mp3",
             "ttsScript": "Look at the front cover to learn what the book is about. Check the title page for who made it!",
-            "interaction": "Pills: [Front Cover \u2192 What it's about] [Title Page \u2192 Who made it] pop in.",
+            "interaction": "Pills: [Front Cover → What it's about] [Title Page → Who made it] pop in.",
             "audioRegenAt": "2026-05-14T14:53:35.397Z",
             "displayParts": [
               {
-                "text": "Front Cover \u2192 What it's about",
+                "text": "Front Cover → What it's about",
                 "delay": 300
               },
               {
-                "text": "Title Page \u2192 Who made it",
+                "text": "Title Page → Who made it",
                 "delay": 4000
               }
             ],
@@ -4563,11 +4563,11 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RI.K.6/S1b.mp3",
-            "ttsScript": "Every fact book has two important people \u2014 the author and the illustrator!",
+            "ttsScript": "Every fact book has two important people — the author and the illustrator!",
             "audioRegenAt": "2026-05-14T14:49:01.934Z",
             "displayParts": [
               {
-                "text": "Every fact book has two important people \u2014 the author and the illustrator!",
+                "text": "Every fact book has two important people — the author and the illustrator!",
                 "delay": 0
               }
             ],
@@ -4686,7 +4686,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RI.K.6/S2b.mp3",
-            "ttsScript": "Right there on the cover \u2014 by Dr. Mia Orion! That's the author's name.",
+            "ttsScript": "Right there on the cover — by Dr. Mia Orion! That's the author's name.",
             "audioRegenAt": "2026-05-14T14:49:37.757Z",
             "displayParts": [
               {
@@ -4755,7 +4755,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RI.K.6/S3b.mp3",
-            "ttsScript": "Right there on the cover \u2014 pictures by Leo Bright! That's the illustrator's name.",
+            "ttsScript": "Right there on the cover — pictures by Leo Bright! That's the illustrator's name.",
             "audioRegenAt": "2026-05-14T14:50:10.195Z",
             "displayParts": [
               {
@@ -5016,13 +5016,13 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.K.7/S1a.mp3",
-            "ttsScript": "Fact books don't just have words \u2014 they have pictures too! And those pictures are super helpful.",
+            "ttsScript": "Fact books don't just have words — they have pictures too! And those pictures are super helpful.",
             "displayText": "",
             "interaction": "Heading fades in.",
             "audioRegenAt": "2026-05-14T14:45:43.100Z",
             "displayParts": [
               {
-                "text": "Fact books don't just have words \u2014 they have pictures too! And those pictures are super helpful.",
+                "text": "Fact books don't just have words — they have pictures too! And those pictures are super helpful.",
                 "delay": 0
               }
             ],
@@ -5399,7 +5399,7 @@
         ],
         "heading": "Time to Practice!",
         "imageFile": "images/lessons/RI.K.7/S5.png",
-        "imagePrompt": "A cartoon child surrounded by fact book pictures floating around them \u2014 animals, planets, plants \u2014 all teaching something. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
+        "imagePrompt": "A cartoon child surrounded by fact book pictures floating around them — animals, planets, plants — all teaching something. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
       },
       {
         "type": "mcq",
@@ -5645,7 +5645,7 @@
         ],
         "heading": "Let's Find the Reasons!",
         "imageFile": "images/lessons/RI.K.8/S3.png",
-        "imagePrompt": "A simple colorful cartoon arrangement of fresh fruit on a clean light background: a bright red apple, a yellow banana, a bunch of purple grapes, juicy red strawberries, and an orange orange. The fruit is plain and realistic in style \u2014 NO faces, NO eyes, NO mouths, NO expressions on any of the fruit. Just clean inanimate fruit. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
+        "imagePrompt": "A simple colorful cartoon arrangement of fresh fruit on a clean light background: a bright red apple, a yellow banana, a bunch of purple grapes, juicy red strawberries, and an orange orange. The fruit is plain and realistic in style — NO faces, NO eyes, NO mouths, NO expressions on any of the fruit. Just clean inanimate fruit. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
       },
       {
         "type": "tip",
@@ -6129,7 +6129,7 @@
             "audioRegenAt": "2026-05-14T14:41:00.768Z",
             "displayParts": [
               {
-                "text": "Left \u2192 Right",
+                "text": "Left → Right",
                 "delay": 0
               }
             ],
@@ -6151,7 +6151,7 @@
             "audioRegenAt": "2026-05-14T14:41:08.741Z",
             "displayParts": [
               {
-                "text": "End of line \u2192 Next line \u2192 Start left again!",
+                "text": "End of line → Next line → Start left again!",
                 "delay": 0
               }
             ],
@@ -6169,7 +6169,7 @@
         ],
         "heading": "How Do We Read?",
         "imageFile": "images/lessons/RF.K.1a/S2.gif",
-        "imagePrompt": "Animated GIF built from one Imagen base workbook (S2-base.png) with green bars composited onto rows 1 and 2 via sharp. Cycles: blank \u2192 top row highlighted \u2192 top + middle rows highlighted. Guarantees identical workbook across frames. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
+        "imagePrompt": "Animated GIF built from one Imagen base workbook (S2-base.png) with green bars composited onto rows 1 and 2 via sharp. Cycles: blank → top row highlighted → top + middle rows highlighted. Guarantees identical workbook across frames. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
       },
       {
         "type": "example",
@@ -6208,7 +6208,7 @@
             "imageFile": "images/lessons/RF.K.1a/S3-b.gif",
             "ttsScript": "I start here on the left. I read the cat sat.",
             "displayText": "",
-            "interaction": "Line 1 karaoke animation plays: The \u2192 cat \u2192 sat.",
+            "interaction": "Line 1 karaoke animation plays: The → cat → sat.",
             "audioRegenAt": "2026-05-14T14:41:34.409Z",
             "displayParts": [
               {
@@ -6233,7 +6233,7 @@
             "imageFile": "images/lessons/RF.K.1a/S3-c.gif",
             "ttsScript": "Now I drop down to the next line. I start on the left again. On a mat.",
             "displayText": "",
-            "interaction": "Line 2 karaoke animation plays: on \u2192 a \u2192 mat. Line 1 shown grayed.",
+            "interaction": "Line 2 karaoke animation plays: on → a → mat. Line 1 shown grayed.",
             "audioRegenAt": "2026-05-14T14:41:43.288Z",
             "displayParts": [
               {
@@ -6341,13 +6341,13 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.1a/S5a.mp3",
-            "ttsScript": "You know exactly how to read \u2014 left to right!",
+            "ttsScript": "You know exactly how to read — left to right!",
             "displayText": "",
             "interaction": "Stars celebration.",
             "audioRegenAt": "2026-05-14T14:42:29.148Z",
             "displayParts": [
               {
-                "text": "You know exactly how to read \u2014 ",
+                "text": "You know exactly how to read — ",
                 "delay": 0
               },
               {
@@ -6540,11 +6540,11 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.1b/S2b.mp3",
-            "ttsScript": "Some words are short \u2014 like 'at.' That's just two letters! A and T.",
+            "ttsScript": "Some words are short — like 'at.' That's just two letters! A and T.",
             "audioRegenAt": "2026-05-14T15:01:55.529Z",
             "displayParts": [
               {
-                "text": "Some words are short \u2014 like 'at.' That's just two letters! A and T.",
+                "text": "Some words are short — like 'at.' That's just two letters! A and T.",
                 "delay": 0
               }
             ],
@@ -6581,11 +6581,11 @@
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.1b/S2c.mp3",
-            "ttsScript": "Some words are longer \u2014 like 'dog.' That's three letters! D, O, G.",
+            "ttsScript": "Some words are longer — like 'dog.' That's three letters! D, O, G.",
             "audioRegenAt": "2026-05-14T15:02:03.670Z",
             "displayParts": [
               {
-                "text": "Some words are longer \u2014 like 'dog.' That's three letters! D, O, G.",
+                "text": "Some words are longer — like 'dog.' That's three letters! D, O, G.",
                 "delay": 0
               }
             ],
@@ -7064,7 +7064,7 @@
         ],
         "heading": "Why Do We Need Spaces?",
         "imageFile": "images/lessons/RF.K.1c/S2-c.png",
-        "imagePrompt": "Code-generated per-step visuals (see scripts/make-rfk1c-s2-gif.js). S2-a.png squished 'thecatsat' red state. S2-b.gif animates letters spreading apart into 'the cat sat'. S2-c.png final green state with Twemoji \ud83d\udc46 finger-space markers between words. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
+        "imagePrompt": "Code-generated per-step visuals (see scripts/make-rfk1c-s2-gif.js). S2-a.png squished 'thecatsat' red state. S2-b.gif animates letters spreading apart into 'the cat sat'. S2-c.png final green state with Twemoji 👆 finger-space markers between words. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
       },
       {
         "type": "example",
@@ -7139,7 +7139,7 @@
         ],
         "heading": "Let's Find the Words!",
         "imageFile": "images/lessons/RF.K.1c/S3.png",
-        "imagePrompt": "Three cartoon puppies sitting in a row with clear gaps between each one \u2014 a brown puppy, a white puppy, and a spotted puppy. Each puppy sits on its own colorful mat. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
+        "imagePrompt": "Three cartoon puppies sitting in a row with clear gaps between each one — a brown puppy, a white puppy, and a spotted puppy. Each puppy sits on its own colorful mat. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
       },
       {
         "type": "tip",
@@ -7349,11 +7349,11 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.1d/S1b.mp3",
-            "ttsScript": "There are uppercase letters \u2014 the big ones! And lowercase letters \u2014 the little ones!",
+            "ttsScript": "There are uppercase letters — the big ones! And lowercase letters — the little ones!",
             "audioRegenAt": "2026-05-14T14:27:21.164Z",
             "displayParts": [
               {
-                "text": "There are uppercase letters \u2014 the BIG ones! And lowercase letters \u2014 the little ones!",
+                "text": "There are uppercase letters — the BIG ones! And lowercase letters — the little ones!",
                 "delay": 0
               }
             ],
@@ -7640,7 +7640,7 @@
             "audioRegenAt": "2026-05-14T14:29:12.892Z",
             "displayParts": [
               {
-                "text": "See a letter\u2192 Say its name\u2192 UPPERCASE?LOWERCASE?",
+                "text": "See a letter→ Say its name→ UPPERCASE?LOWERCASE?",
                 "delay": 0
               }
             ],
@@ -7803,7 +7803,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.2b/S1b.mp3",
-            "ttsScript": "Like the word 'tiger' \u2014 ti-ger! That's two claps, two syllables!",
+            "ttsScript": "Like the word 'tiger' — ti-ger! That's two claps, two syllables!",
             "interaction": "'Ti' and 'ger' appear as two separate blocks with clap icons.",
             "displayParts": [
               {
@@ -7843,7 +7843,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.2b/S2b.mp3",
-            "ttsScript": "Some words have one beat \u2014 like 'cat.' Just one clap! Cat!",
+            "ttsScript": "Some words have one beat — like 'cat.' Just one clap! Cat!",
             "displayText": "Cat has 1 clap",
             "interaction": "Pill: [Cat = 1 clap] pops in with hand clap icon.",
             "displayDelay": 930
@@ -7851,7 +7851,7 @@
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.2b/S2c.mp3",
-            "ttsScript": "Some words have two beats \u2014 like 'apple.' Ap-ple! Two claps!",
+            "ttsScript": "Some words have two beats — like 'apple.' Ap-ple! Two claps!",
             "displayText": "Ap-ple has 2 claps",
             "interaction": "Pill: [Ap-ple = 2 claps] pops in.",
             "audioRegenAt": null,
@@ -7860,7 +7860,7 @@
           {
             "sub": "d",
             "audioFile": "audio/lessons/RF.K.2b/S2d.mp3",
-            "ttsScript": "And some have three or more \u2014 like 'banana.' Ba-na-na! Three claps!",
+            "ttsScript": "And some have three or more — like 'banana.' Ba-na-na! Three claps!",
             "displayText": "Ba-na-na has 3 claps",
             "interaction": "Pill: [Ba-na-na = 3 claps] pops in.",
             "displayDelay": 930
@@ -7868,7 +7868,7 @@
         ],
         "heading": "What Are Syllables?",
         "imageFile": "images/lessons/RF.K.2b/S2.png",
-        "imagePrompt": "A cartoon drum with word parts bouncing off it like beats \u2014 'ba-na-na' shown as three drum hits. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
+        "imagePrompt": "A cartoon drum with word parts bouncing off it like beats — 'ba-na-na' shown as three drum hits. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
       },
       {
         "type": "example",
@@ -8015,7 +8015,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.2c/S1b.mp3",
-            "ttsScript": "Like 'dog' \u2014 it starts with the duh sound and ends with the guh sound!",
+            "ttsScript": "Like 'dog' — it starts with the duh sound and ends with the guh sound!",
             "interaction": "D-O-G diagram appears with Start label on D and End label on G.",
             "afterPhonemes": [
               "d",
@@ -8860,7 +8860,7 @@
         ],
         "heading": "Letters and Their Sounds!",
         "imageFile": "images/lessons/RF.K.3a/S1.png",
-        "imagePrompt": "A cheerful cartoon child sitting in a circle of colorful musical instruments \u2014 a red drum, a blue xylophone, a green tambourine, a yellow triangle. Musical notes float around. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
+        "imagePrompt": "A cheerful cartoon child sitting in a circle of colorful musical instruments — a red drum, a blue xylophone, a green tambourine, a yellow triangle. Musical notes float around. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
       },
       {
         "type": "teach",
@@ -10159,7 +10159,7 @@
         ],
         "heading": "Look-Alike Words!",
         "imageFile": "images/lessons/RF.K.3d/S1.png",
-        "imagePrompt": "Two cartoon characters who look almost identical \u2014 same outfit but one wears a red hat and the other a blue hat \u2014 standing next to a mirror and looking confused at their reflections. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
+        "imagePrompt": "Two cartoon characters who look almost identical — same outfit but one wears a red hat and the other a blue hat — standing next to a mirror and looking confused at their reflections. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
       },
       {
         "type": "teach",
@@ -10355,7 +10355,7 @@
             "audioRegenAt": "2026-05-12T02:10:24.837Z",
             "displayParts": [
               {
-                "text": "Point \u2192 Say each letter \u2192 Read correctly!",
+                "text": "Point → Say each letter → Read correctly!",
                 "delay": 0
               }
             ],
@@ -10950,7 +10950,7 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/K.L.1/S2a.mp3",
-            "ttsScript": "Did you know that words have different jobs? Some words name things \u2014 like 'cat' or 'ball.'",
+            "ttsScript": "Did you know that words have different jobs? Some words name things — like 'cat' or 'ball.'",
             "displayText": "",
             "interaction": "Heading appears.",
             "audioRegenAt": "2026-05-12T02:03:45.437Z",
@@ -10964,7 +10964,7 @@
                 "delay": 2500
               },
               {
-                "text": "\u2014 like 'cat' or 'ball.'",
+                "text": "— like 'cat' or 'ball.'",
                 "delay": 4500
               }
             ],
@@ -11009,14 +11009,14 @@
           {
             "sub": "c",
             "audioFile": "audio/lessons/K.L.1/S2c.mp3",
-            "ttsScript": "Other words show action \u2014 like 'run,' 'jump,' or 'eat.' These are verbs!",
+            "ttsScript": "Other words show action — like 'run,' 'jump,' or 'eat.' These are verbs!",
             "displayText": "Verb",
             "interaction": "Verb row fills in.",
             "audioRegenAt": "2026-05-12T02:04:00.254Z",
             "displayDelay": 1500,
             "displayParts": [
               {
-                "text": "Other words show action \u2014 like 'run,''jump,'or 'eat.' These are verbs!",
+                "text": "Other words show action — like 'run,''jump,'or 'eat.' These are verbs!",
                 "delay": 0
               }
             ],
@@ -11061,7 +11061,7 @@
         ],
         "heading": "Words Have Jobs!",
         "imageFile": "images/lessons/K.L.1/S2.png",
-        "imagePrompt": "Cartoon characters doing different jobs \u2014 a dog carrying a bone, a cat jumping over a fence, a bird flying with a worm. Each character wears a tiny colorful hard hat. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
+        "imagePrompt": "Cartoon characters doing different jobs — a dog carrying a bone, a cat jumping over a fence, a bird flying with a worm. Each character wears a tiny colorful hard hat. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
       },
       {
         "type": "example",
@@ -11159,11 +11159,11 @@
             "audioRegenAt": "2026-05-12T02:05:09.908Z",
             "displayParts": [
               {
-                "text": "Can I touch it? \u2192 Noun!",
+                "text": "Can I touch it? → Noun!",
                 "delay": 300
               },
               {
-                "text": "Can I do it? \u2192 Verb!",
+                "text": "Can I do it? → Verb!",
                 "delay": 2800
               }
             ],
@@ -11205,7 +11205,7 @@
         ],
         "heading": "A Helpful Trick!",
         "imageFile": "images/lessons/K.L.1/S4.png",
-        "imagePrompt": "A cartoon child pointing at different objects around them \u2014 a bright red ball, a tall green tree, and a friend waving. Each object has a sparkling highlight around it. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
+        "imagePrompt": "A cartoon child pointing at different objects around them — a bright red ball, a tall green tree, and a friend waving. Each object has a sparkling highlight around it. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
       },
       {
         "type": "practice-intro",
@@ -11261,7 +11261,7 @@
         ],
         "heading": "Time to Practice!",
         "imageFile": "images/lessons/K.L.1/S5.png",
-        "imagePrompt": "A cartoon child happily sorting colorful toy figures into two bright boxes \u2014 action figures (jumping, running) in one box and object toys (ball, car, teddy bear) in the other. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
+        "imagePrompt": "A cartoon child happily sorting colorful toy figures into two bright boxes — action figures (jumping, running) in one box and object toys (ball, car, teddy bear) in the other. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
       },
       {
         "type": "mcq",
@@ -11341,7 +11341,7 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/K.L.2/S2a.mp3",
-            "ttsScript": "Every sentence starts with a capital letter \u2014 that's the big, tall version of the letter!",
+            "ttsScript": "Every sentence starts with a capital letter — that's the big, tall version of the letter!",
             "displayText": "",
             "interaction": "Heading appears."
           },
@@ -11396,9 +11396,9 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/K.L.2/S3b.mp3",
-            "ttsScript": "the cat is big. Hmm \u2014 'the' needs a capital T at the beginning!",
+            "ttsScript": "the cat is big. Hmm — 'the' needs a capital T at the beginning!",
             "displayText": "Capital T",
-            "interaction": "'the' transforms to 'The' with sparkle. Pill: [Capital T \u2713] pops in.",
+            "interaction": "'the' transforms to 'The' with sparkle. Pill: [Capital T ✓] pops in.",
             "displayDelay": 3500
           },
           {
@@ -11406,7 +11406,7 @@
             "audioFile": "audio/lessons/K.L.2/S3c.mp3",
             "ttsScript": "And we need a period at the end! The cat is big. Period! Now it's perfect!",
             "displayText": "Period",
-            "interaction": "Period appears at end. Pill: [Period \u2713] pops in. Stars.",
+            "interaction": "Period appears at end. Pill: [Period ✓] pops in. Stars.",
             "displayDelay": 2200
           }
         ],
@@ -11647,11 +11647,11 @@
           {
             "sub": "d",
             "audioFile": "audio/lessons/K.L.4/S2d.mp3",
-            "ttsScript": "Context clues plus pictures plus asking \u2014 that's the triple combo!",
+            "ttsScript": "Context clues plus pictures plus asking — that's the triple combo!",
             "audioRegenAt": "2026-05-12T02:01:12.109Z",
             "displayParts": [
               {
-                "text": "Context cluesplus picturesplus asking\u2014 that's the triple combo!",
+                "text": "Context cluesplus picturesplus asking— that's the triple combo!",
                 "delay": 0
               }
             ],
@@ -11688,11 +11688,11 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/K.L.4/S3b.mp3",
-            "ttsScript": "What does 'swift' mean? Look at the clue \u2014 it ran very fast!",
+            "ttsScript": "What does 'swift' mean? Look at the clue — it ran very fast!",
             "audioRegenAt": "2026-05-12T02:01:38.869Z",
             "displayParts": [
               {
-                "text": "What does 'swift' mean? Look at the clue \u2014 it ran very fast!",
+                "text": "What does 'swift' mean? Look at the clue — it ran very fast!",
                 "delay": 0
               }
             ],
@@ -11916,7 +11916,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/K.L.5/S1b.mp3",
-            "ttsScript": "Some words are opposites \u2014 like 'hot' and 'cold.' Some words are similar \u2014 like 'happy' and 'glad!'",
+            "ttsScript": "Some words are opposites — like 'hot' and 'cold.' Some words are similar — like 'happy' and 'glad!'",
             "audioRegenAt": "2026-05-12T01:58:06.137Z",
             "displayParts": [
               {
@@ -12145,7 +12145,7 @@
         ],
         "heading": "Let's Find the Connections!",
         "imageFile": "images/lessons/K.L.5/S3.png",
-        "imagePrompt": "Two cartoon faces side by side \u2014 one smiling happily and one frowning sadly, with a double arrow between them. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
+        "imagePrompt": "Two cartoon faces side by side — one smiling happily and one frowning sadly, with a double arrow between them. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
       },
       {
         "type": "tip",
@@ -12220,7 +12220,7 @@
         ],
         "heading": "A Helpful Trick!",
         "imageFile": "images/lessons/K.L.5/S4.png",
-        "imagePrompt": "A cartoon child with two thought bubbles \u2014 one showing an opposite pair and one showing a category group. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
+        "imagePrompt": "A cartoon child with two thought bubbles — one showing an opposite pair and one showing a category group. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
       },
       {
         "type": "practice-intro",
@@ -12395,8 +12395,8 @@
             "sub": "b",
             "audioFile": "audio/lessons/K.L.6/S2b.mp3",
             "ttsScript": "Like if you learn the word 'enormous,' try saying: That building is enormous!",
-            "displayText": "New word: enormous \u2192 Use it: That building is enormous!",
-            "interaction": "Pill: [New word: enormous \u2192 Use it: That building is enormous!] pops in.",
+            "displayText": "New word: enormous → Use it: That building is enormous!",
+            "interaction": "Pill: [New word: enormous → Use it: That building is enormous!] pops in.",
             "audioRegenAt": "2026-05-12T01:56:10.806Z",
             "displayDelay": 1008,
             "displayParts": [
@@ -12420,8 +12420,8 @@
             "sub": "c",
             "audioFile": "audio/lessons/K.L.6/S2c.mp3",
             "ttsScript": "The more you use a word, the better you remember it!",
-            "displayText": "Use it \u2192 Remember it!",
-            "interaction": "Pill: [Use it \u2192 Remember it!] pops in.",
+            "displayText": "Use it → Remember it!",
+            "interaction": "Pill: [Use it → Remember it!] pops in.",
             "audioRegenAt": "2026-05-12T01:56:16.251Z",
             "displayDelay": 853,
             "displayParts": [
@@ -13665,8 +13665,77 @@
         "imagePrompt": "A cheerful cartoon little seaside cottage with a red roof, next to a sandy beach with gentle waves, flowers blooming around the door, and seabirds flying in the sky. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
       },
       {
-        "type": "tip",
+        "type": "example",
         "slide": 4,
+        "heading": "Let's Try One",
+        "imageFile": "images/lessons/RL.1.3/S4.png",
+        "imagePrompt": "A happy boy with brown hair playing fetch with a brown dog in a green park under a bright sun. The boy is throwing a red ball, and the dog is running to catch it. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters.",
+        "steps": [
+          {
+            "sub": "a",
+            "audioFile": "audio/lessons/RL.1.3/S4a.mp3",
+            "ttsScript": "Let's try one together.",
+            "audioRegenAt": "2026-05-30T05:36:26.967Z"
+          },
+          {
+            "sub": "b",
+            "audioFile": "audio/lessons/RL.1.3/S4b.mp3",
+            "ttsScript": "Tom played with his dog, Max. They ran in the sunny park.",
+            "displayText": "Tom played with his dog, Max. They ran in the sunny park.",
+            "audioRegenAt": "2026-05-30T05:36:33.309Z"
+          },
+          {
+            "sub": "c",
+            "audioFile": "audio/lessons/RL.1.3/S4c.mp3",
+            "ttsScript": "Who is this story about? Tom!",
+            "displayParts": [
+              {
+                "text": "Who?",
+                "delay": 0
+              },
+              {
+                "text": "Tom!",
+                "delay": 2800
+              }
+            ],
+            "highlightWord": {
+              "word": "Tom",
+              "delay": 2800
+            },
+            "audioRegenAt": "2026-05-30T05:36:39.609Z"
+          },
+          {
+            "sub": "d",
+            "audioFile": "audio/lessons/RL.1.3/S4d.mp3",
+            "ttsScript": "Where did they play? In the park.",
+            "displayParts": [
+              {
+                "text": "Where?",
+                "delay": 0
+              },
+              {
+                "text": "In the park.",
+                "delay": 3120
+              }
+            ],
+            "highlightWord": {
+              "word": "park",
+              "delay": 3120
+            },
+            "audioRegenAt": "2026-05-30T05:36:44.315Z"
+          },
+          {
+            "sub": "e",
+            "audioFile": "audio/lessons/RL.1.3/S4e.mp3",
+            "ttsScript": "So, Tom and Max played in the park. We found key details!",
+            "audioRegenAt": "2026-05-30T05:36:49.329Z"
+          }
+        ],
+        "imageRegenAt": "2026-05-30T05:36:24.722Z"
+      },
+      {
+        "type": "tip",
+        "slide": 5,
         "steps": [
           {
             "sub": "a",
@@ -31063,7 +31132,7 @@
             "audioFile": "audio/lessons/RF.2.3b/S1c.mp3",
             "ttsScript": "Let us meet some vowel teams.",
             "audioRegenAt": "2026-05-12T01:03:14.403Z",
-            "displayText": "Meet the teams \u2192",
+            "displayText": "Meet the teams →",
             "displayDelay": 0,
             "preStepDelay": 2000
           }
@@ -31269,19 +31338,19 @@
           {
             "sub": "ba",
             "audioFile": "audio/lessons/RF.2.3b/S5ba.mp3",
-            "ttsScript": "Like rain \u2014 A talks. Team \u2014 E talks. Boat \u2014 O talks!",
+            "ttsScript": "Like rain — A talks. Team — E talks. Boat — O talks!",
             "audioRegenAt": "2026-05-24T23:19:11.996Z",
             "displayParts": [
               {
-                "text": "rain \u2192 A",
+                "text": "rain → A",
                 "delay": 0
               },
               {
-                "text": "team \u2192 E",
+                "text": "team → E",
                 "delay": 1500
               },
               {
-                "text": "boat \u2192 O",
+                "text": "boat → O",
                 "delay": 3000
               }
             ]
@@ -31297,7 +31366,7 @@
         ],
         "heading": "First Vowel Talks",
         "imageFile": "images/lessons/RF.2.3b/S5.png",
-        "imagePrompt": "Two cheerful cartoon vowel letter characters \u2014 the front one speaking into a small microphone with a smile, the back one standing quietly behind with a finger on its lips. Solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. Natural-looking eyes, no AI-generated glints.",
+        "imagePrompt": "Two cheerful cartoon vowel letter characters — the front one speaking into a small microphone with a smile, the back one standing quietly behind with a finger on its lips. Solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. Natural-looking eyes, no AI-generated glints.",
         "imageRegenAt": "2026-05-24T05:35:15.166Z"
       },
       {
@@ -34351,11 +34420,11 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/L.2.4b/S2b.mp3",
-            "ttsScript": "Unlock, unsafe, unkind \u2014 all start with UN.",
+            "ttsScript": "Unlock, unsafe, unkind — all start with UN.",
             "audioRegenAt": "2026-05-11T23:19:16.984Z",
             "displayParts": [
               {
-                "text": "Unlock, unsafe, unkind \u2014 all start with UN.",
+                "text": "Unlock, unsafe, unkind — all start with UN.",
                 "delay": 0
               }
             ],
@@ -38803,14 +38872,14 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.3.9/S2b.mp3",
-            "ttsScript": "Same idea \u2014 courage. Different plots and settings.",
+            "ttsScript": "Same idea — courage. Different plots and settings.",
             "displayText": "Same idea, different worlds",
             "interaction": "",
             "audioRegenAt": "2026-05-11T22:54:14.564Z",
             "displayDelay": 2800,
             "displayParts": [
               {
-                "text": "Same idea \u2014 courage. Different plots and settings.",
+                "text": "Same idea — courage. Different plots and settings.",
                 "delay": 0
               }
             ],
@@ -40188,11 +40257,11 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RI.3.4/S1b.mp3",
-            "ttsScript": "Each subject has its own set \u2014 science, history, math.",
+            "ttsScript": "Each subject has its own set — science, history, math.",
             "audioRegenAt": "2026-05-11T22:46:07.763Z",
             "displayParts": [
               {
-                "text": "Each subject has its own set \u2014 science, history, math.",
+                "text": "Each subject has its own set — science, history, math.",
                 "delay": 0
               }
             ],
@@ -43717,11 +43786,11 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.3.4/S4b.mp3",
-            "ttsScript": "Read aloud to someone \u2014 family, pet, or even a stuffed animal!",
+            "ttsScript": "Read aloud to someone — family, pet, or even a stuffed animal!",
             "audioRegenAt": "2026-05-11T04:09:21.414Z",
             "displayParts": [
               {
-                "text": "Read aloud to someone \u2014 family, pet, or even a stuffed animal!",
+                "text": "Read aloud to someone — family, pet, or even a stuffed animal!",
                 "delay": 0
               }
             ],
@@ -45247,9 +45316,9 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/L.3.4b/S1b.mp3",
-            "ttsScript": "Take happy. Add un at the front. Now it's unhappy \u2014 meaning not happy!",
+            "ttsScript": "Take happy. Add un at the front. Now it's unhappy — meaning not happy!",
             "audioRegenAt": "2026-05-24T23:49:20.656Z",
-            "displayText": "happy \u2192 unhappy",
+            "displayText": "happy → unhappy",
             "displayDelay": 0,
             "displayHighlight": "un",
             "highlightWord": {
@@ -45262,7 +45331,7 @@
             "audioFile": "audio/lessons/L.3.4b/S1c.mp3",
             "ttsScript": "Let's explore some common prefixes and see the power they have!",
             "audioRegenAt": "2026-05-11T03:57:29.179Z",
-            "displayText": "Meet 5 prefixes \u2192",
+            "displayText": "Meet 5 prefixes →",
             "displayDelay": 0
           }
         ],
@@ -45470,7 +45539,7 @@
                 "delay": 0
               },
               {
-                "text": "  \u2192  un + happy",
+                "text": "  →  un + happy",
                 "delay": 2200
               },
               {
@@ -53845,7 +53914,7 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.4.4/S4b.mp3",
-            "ttsScript": "Read aloud to anyone \u2014 friend, family, even a pet. Builds smoothness fast!",
+            "ttsScript": "Read aloud to anyone — friend, family, even a pet. Builds smoothness fast!",
             "audioRegenAt": "2026-05-11T02:25:57.123Z",
             "displayParts": [
               {
@@ -54563,7 +54632,7 @@
           {
             "sub": "c",
             "audioFile": "audio/lessons/L.4.4b/S1c.mp3",
-            "ttsScript": "Like Bio, Photo, Geo, and Aqua \u2014 let us meet them!",
+            "ttsScript": "Like Bio, Photo, Geo, and Aqua — let us meet them!",
             "audioRegenAt": "2026-05-25T02:09:29.932Z",
             "displayParts": [
               {
@@ -54797,7 +54866,7 @@
             "audioRegenAt": "2026-05-24T05:44:02.738Z",
             "displayParts": [
               {
-                "text": "AQUA \u2192",
+                "text": "AQUA →",
                 "delay": 0
               },
               {
@@ -54805,11 +54874,11 @@
                 "delay": 5260
               },
               {
-                "text": "  \u00b7  aquatic",
+                "text": "  ·  aquatic",
                 "delay": 7040
               },
               {
-                "text": "  \u00b7  aqueduct",
+                "text": "  ·  aqueduct",
                 "delay": 8660
               }
             ],
@@ -54829,7 +54898,7 @@
         ],
         "heading": "Learn Roots, Win Big",
         "imageFile": "images/lessons/L.4.4b/S5.png",
-        "imagePrompt": "A cheerful cartoon tree with a large root system visible underground, glowing softly. Each root branches into smaller roots \u2014 a clear visual metaphor for one root unlocking many words. Solid warm-amber background above the soil line. NO horizontal stripes, NO rainbow, NO pastel gradient bands. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. Natural-looking eyes, no AI-generated glints.",
+        "imagePrompt": "A cheerful cartoon tree with a large root system visible underground, glowing softly. Each root branches into smaller roots — a clear visual metaphor for one root unlocking many words. Solid warm-amber background above the soil line. NO horizontal stripes, NO rainbow, NO pastel gradient bands. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. Natural-looking eyes, no AI-generated glints.",
         "imageRegenAt": "2026-05-24T05:44:41.334Z"
       },
       {
@@ -55056,7 +55125,7 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/L.4.4c/S3a.mp3",
-            "ttsScript": "A thesaurus gives synonyms \u2014 words with similar meanings.",
+            "ttsScript": "A thesaurus gives synonyms — words with similar meanings.",
             "displayParts": [
               {
                 "text": "A thesaurus",
@@ -55067,7 +55136,7 @@
                 "delay": 1000
               },
               {
-                "text": " \u2014 words with similar meanings.",
+                "text": " — words with similar meanings.",
                 "delay": 2500
               }
             ],
@@ -62263,11 +62332,11 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/L.4.2/S2a.mp3",
-            "ttsScript": "When two complete sentences join with and, or, but \u2014 use a comma before the conjunction.",
+            "ttsScript": "When two complete sentences join with and, or, but — use a comma before the conjunction.",
             "audioRegenAt": "2026-05-11T01:48:08.150Z",
             "displayParts": [
               {
-                "text": "When two complete sentences join with and, or, but \u2014 use a comma before the conjunction.",
+                "text": "When two complete sentences join with and, or, but — use a comma before the conjunction.",
                 "delay": 0
               }
             ],

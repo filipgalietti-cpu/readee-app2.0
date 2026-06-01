@@ -271,17 +271,14 @@ function FullScreenAuditModal({
   }, []);
 
   const openPopout = () => {
-    // Real OS-level popup window the reviewer can drag to a second
-    // monitor. The /play route renders ONLY the iPhone shell —
-    // nothing else — so the popup is a clean phone preview.
-    const w = 460;
-    const h = 920;
-    const left = (window.screen.availWidth - w) / 2;
-    const top = (window.screen.availHeight - h) / 2;
+    // Open in a normal Chrome TAB (not a chrome-less popup window —
+    // Filip 2026-05-30: the OS popup "isn't Google Chrome"). The reviewer
+    // can tear the tab off to a second monitor if they want. The /play
+    // route renders ONLY the iPhone shell — a clean phone preview.
     window.open(
       `/owner/lesson-timing-audit/mobile/play/${lesson.standardId}`,
-      `mobile-preview-${lesson.standardId}`,
-      `width=${w},height=${h},left=${left},top=${top},menubar=no,toolbar=no,location=no,status=no`,
+      "_blank",
+      "noopener",
     );
   };
 
