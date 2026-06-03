@@ -1676,7 +1676,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
     const sharedOnNext = (showNext || devMode) ? handleNext : () => {};
     const sharedLeftSlot = isSynthetic ? <CelebrationLeftPanel /> : undefined;
     const nonSyntheticContent = (
-      <div className="flex flex-1 flex-col items-center text-center w-full">
+      <div className="flex flex-1 flex-col items-center justify-center text-center w-full gap-5 lg:gap-8">
         {slide?.heading && (
           <motion.h1
             key={`shell-heading-${currentSlide}`}
@@ -1703,7 +1703,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
             body vertically in the leftover space below the
             heading. items-center + text-center keeps each
             renderer's output centered horizontally too. */}
-        <div className="flex w-full flex-1 my-auto flex-col items-center justify-center gap-3 lg:gap-6 text-center">
+        <div className="flex w-full flex-col items-center justify-center gap-3 lg:gap-6 text-center">
           {(() => {
             const hasTable = steps.some((s) => s.displayTableRow);
             let tableRendered = false;

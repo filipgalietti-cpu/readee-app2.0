@@ -1,0 +1,2771 @@
+[
+  {
+    "std": "RI.K.6",
+    "title": "Who Made This Fact Book?",
+    "grade": "Kindergarten",
+    "clarity": 1,
+    "structure": 3,
+    "content": 5,
+    "overall": 3,
+    "needsContent": false,
+    "issues": [
+      "9 clarity flag(s)",
+      "missing intro",
+      "example has no Q→A"
+    ]
+  },
+  {
+    "std": "RI.K.7",
+    "title": "Pictures Help Us Learn",
+    "grade": "Kindergarten",
+    "clarity": 2,
+    "structure": 4,
+    "content": 4,
+    "overall": 3.3,
+    "needsContent": false,
+    "issues": [
+      "5 clarity flag(s)",
+      "example has no Q→A",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "RL.2.9",
+    "title": "Same Story, Different Versions",
+    "grade": "2nd Grade",
+    "clarity": 3,
+    "structure": 3,
+    "content": 4,
+    "overall": 3.3,
+    "needsContent": false,
+    "issues": [
+      "4 clarity flag(s)",
+      "missing practice-intro",
+      "example has no Q→A",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "RI.2.9",
+    "title": "Comparing Two Fact Books",
+    "grade": "2nd Grade",
+    "clarity": 3,
+    "structure": 3,
+    "content": 4,
+    "overall": 3.3,
+    "needsContent": false,
+    "issues": [
+      "4 clarity flag(s)",
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RI.K.5",
+    "title": "Parts of a Book",
+    "grade": "Kindergarten",
+    "clarity": 2,
+    "structure": 4,
+    "content": 5,
+    "overall": 3.7,
+    "needsContent": false,
+    "issues": [
+      "5 clarity flag(s)",
+      "example has no Q→A"
+    ]
+  },
+  {
+    "std": "L.1.5a",
+    "title": "Sorting Words Into Groups",
+    "grade": "1st Grade",
+    "clarity": 5,
+    "structure": 4,
+    "content": 2,
+    "overall": 3.7,
+    "needsContent": true,
+    "issues": [
+      "missing practice-intro",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "L.1.5b",
+    "title": "Defining Words",
+    "grade": "1st Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 3,
+    "overall": 3.7,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "example has no Q→A",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "RF.2.3c",
+    "title": "Two-Syllable Long Vowel Words",
+    "grade": "2nd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 3,
+    "overall": 3.7,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "example has no Q→A",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "RF.2.4a",
+    "title": "Reading with Purpose",
+    "grade": "2nd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 3,
+    "overall": 3.7,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "example has no Q→A",
+      "only 2 teach beats"
+    ]
+  },
+  {
+    "std": "L.2.4a",
+    "title": "Sentence Clues",
+    "grade": "2nd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 3,
+    "overall": 3.7,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "example has no Q→A",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "L.2.4c",
+    "title": "Root Word Help",
+    "grade": "2nd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 3,
+    "overall": 3.7,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "example has no Q→A",
+      "only 2 teach beats"
+    ]
+  },
+  {
+    "std": "L.2.6",
+    "title": "Using Smart Words",
+    "grade": "2nd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 3,
+    "overall": 3.7,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "example has no Q→A",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "RL.3.3",
+    "title": "What Characters Are Like",
+    "grade": "3rd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 3,
+    "overall": 3.7,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "example has no Q→A",
+      "only 2 teach beats"
+    ]
+  },
+  {
+    "std": "RL.3.4",
+    "title": "Word Meanings in Stories",
+    "grade": "3rd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 3,
+    "overall": 3.7,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "example has no Q→A",
+      "only 2 teach beats"
+    ]
+  },
+  {
+    "std": "RL.3.7",
+    "title": "Pictures and Mood",
+    "grade": "3rd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 3,
+    "overall": 3.7,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "example has no Q→A",
+      "only 2 teach beats"
+    ]
+  },
+  {
+    "std": "RI.3.2",
+    "title": "Main Idea and Key Details",
+    "grade": "3rd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 3,
+    "overall": 3.7,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "example has no Q→A",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "RI.3.4",
+    "title": "Academic Word Meanings",
+    "grade": "3rd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 3,
+    "overall": 3.7,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "RI.3.6",
+    "title": "Author's Point of View",
+    "grade": "3rd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 3,
+    "overall": 3.7,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "example has no Q→A",
+      "only 2 teach beats"
+    ]
+  },
+  {
+    "std": "RI.3.7",
+    "title": "Illustrations Tell Stories Too",
+    "grade": "3rd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 3,
+    "overall": 3.7,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "RI.3.8",
+    "title": "Logical Connections",
+    "grade": "3rd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 3,
+    "overall": 3.7,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "example has no Q→A",
+      "only 2 teach beats"
+    ]
+  },
+  {
+    "std": "RI.3.9",
+    "title": "Comparing Two Texts",
+    "grade": "3rd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 3,
+    "overall": 3.7,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "RI.3.10",
+    "title": "Reading Facts All Year",
+    "grade": "3rd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 3,
+    "overall": 3.7,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RF.3.3",
+    "title": "Word Analysis Skills",
+    "grade": "3rd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 3,
+    "overall": 3.7,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "example has no Q→A",
+      "only 2 teach beats"
+    ]
+  },
+  {
+    "std": "RF.3.3c",
+    "title": "Multisyllable Words",
+    "grade": "3rd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 3,
+    "overall": 3.7,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "RF.3.4a",
+    "title": "Reading with Purpose",
+    "grade": "3rd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 3,
+    "overall": 3.7,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "example has no Q→A",
+      "only 1 teach beats"
+    ]
+  },
+  {
+    "std": "RF.3.4c",
+    "title": "Self-Correcting While Reading",
+    "grade": "3rd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 3,
+    "overall": 3.7,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "example has no Q→A",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "L.3.4",
+    "title": "Word Meaning Detective",
+    "grade": "3rd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 3,
+    "overall": 3.7,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "L.3.4a",
+    "title": "Sentence Clues",
+    "grade": "3rd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 3,
+    "overall": 3.7,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "example has no Q→A",
+      "only 2 teach beats"
+    ]
+  },
+  {
+    "std": "L.3.4c",
+    "title": "Root Word Help",
+    "grade": "3rd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 3,
+    "overall": 3.7,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "example has no Q→A",
+      "only 2 teach beats"
+    ]
+  },
+  {
+    "std": "L.3.5",
+    "title": "Words With Hidden Meanings",
+    "grade": "3rd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 3,
+    "overall": 3.7,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "L.3.6",
+    "title": "Using Conversation Words",
+    "grade": "3rd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 3,
+    "overall": 3.7,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "RL.4.2",
+    "title": "Discovering Themes",
+    "grade": "4th Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 3,
+    "overall": 3.7,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "example has no Q→A",
+      "only 2 teach beats"
+    ]
+  },
+  {
+    "std": "RL.4.3",
+    "title": "Deep Character Detail",
+    "grade": "4th Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 3,
+    "overall": 3.7,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "example has no Q→A",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "RL.4.5",
+    "title": "Poems, Drama, and Prose",
+    "grade": "4th Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 3,
+    "overall": 3.7,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "RL.4.7",
+    "title": "Stories Across Mediums",
+    "grade": "4th Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 3,
+    "overall": 3.7,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "example has no Q→A",
+      "only 2 teach beats"
+    ]
+  },
+  {
+    "std": "RL.4.9",
+    "title": "Same Theme, Different Cultures",
+    "grade": "4th Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 3,
+    "overall": 3.7,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro",
+      "only 2 teach beats"
+    ]
+  },
+  {
+    "std": "RI.4.1",
+    "title": "Finding Fact Details",
+    "grade": "4th Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 3,
+    "overall": 3.7,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "example has no Q→A",
+      "only 1 teach beats"
+    ]
+  },
+  {
+    "std": "RI.4.2",
+    "title": "Main Idea Mastery",
+    "grade": "4th Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 3,
+    "overall": 3.7,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "example has no Q→A",
+      "only 1 teach beats"
+    ]
+  },
+  {
+    "std": "RI.4.4",
+    "title": "Academic Word Meanings",
+    "grade": "4th Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 3,
+    "overall": 3.7,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro",
+      "only 2 teach beats"
+    ]
+  },
+  {
+    "std": "RI.4.6",
+    "title": "Firsthand vs Secondhand",
+    "grade": "4th Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 3,
+    "overall": 3.7,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "example has no Q→A",
+      "only 2 teach beats"
+    ]
+  },
+  {
+    "std": "RI.4.7",
+    "title": "Information Across Forms",
+    "grade": "4th Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 3,
+    "overall": 3.7,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "example has no Q→A",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "RF.4.3",
+    "title": "Word Decoding Skills",
+    "grade": "4th Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 3,
+    "overall": 3.7,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "example has no Q→A",
+      "only 1 teach beats"
+    ]
+  },
+  {
+    "std": "L.4.4a",
+    "title": "Sentence Clues",
+    "grade": "4th Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 3,
+    "overall": 3.7,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "example has no Q→A",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "L.4.5b",
+    "title": "Idioms and Sayings",
+    "grade": "4th Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 3,
+    "overall": 3.7,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "L.2.1",
+    "title": "Sentence Skills",
+    "grade": "2nd Grade",
+    "clarity": 3,
+    "structure": 3,
+    "content": 5,
+    "overall": 3.7,
+    "needsContent": false,
+    "issues": [
+      "4 clarity flag(s)",
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "L.3.1",
+    "title": "Verb Tenses and More",
+    "grade": "3rd Grade",
+    "clarity": 3,
+    "structure": 3,
+    "content": 5,
+    "overall": 3.7,
+    "needsContent": false,
+    "issues": [
+      "4 clarity flag(s)",
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "L.3.3",
+    "title": "Picking the Best Words",
+    "grade": "3rd Grade",
+    "clarity": 4,
+    "structure": 3,
+    "content": 4,
+    "overall": 3.7,
+    "needsContent": false,
+    "issues": [
+      "1 clarity flag(s)",
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RL.K.5",
+    "title": "Types of Stories",
+    "grade": "Kindergarten",
+    "clarity": 4,
+    "structure": 4,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "1 clarity flag(s)",
+      "example has no Q→A"
+    ]
+  },
+  {
+    "std": "RF.K.2c",
+    "title": "Beginning and Ending Sounds",
+    "grade": "Kindergarten",
+    "clarity": 5,
+    "structure": 4,
+    "content": 3,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "example has no Q→A",
+      "56% audio-only (sparse)"
+    ]
+  },
+  {
+    "std": "RF.K.3c",
+    "title": "Sight Words",
+    "grade": "Kindergarten",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "example has no Q→A",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "K.L.1",
+    "title": "Grammar Basics",
+    "grade": "Kindergarten",
+    "clarity": 2,
+    "structure": 5,
+    "content": 5,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "6 clarity flag(s)"
+    ]
+  },
+  {
+    "std": "K.L.5",
+    "title": "Word Relationships",
+    "grade": "Kindergarten",
+    "clarity": 2,
+    "structure": 5,
+    "content": 5,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "6 clarity flag(s)"
+    ]
+  },
+  {
+    "std": "RI.1.7",
+    "title": "Pictures Show Key Ideas",
+    "grade": "1st Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RF.1.1a",
+    "title": "What Makes a Sentence",
+    "grade": "1st Grade",
+    "clarity": 5,
+    "structure": 2,
+    "content": 5,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing tip",
+      "missing practice-intro",
+      "example has no Q→A"
+    ]
+  },
+  {
+    "std": "L.1.5c",
+    "title": "Real-Life Word Connections",
+    "grade": "1st Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "example has no Q→A",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "L.1.6",
+    "title": "Using Big Words",
+    "grade": "1st Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "example has no Q→A",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "RL.2.3",
+    "title": "How Characters React",
+    "grade": "2nd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "example has no Q→A",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "RL.2.4",
+    "title": "Words That Sing",
+    "grade": "2nd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "example has no Q→A",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "RL.2.5",
+    "title": "The Shape of a Story",
+    "grade": "2nd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RL.2.6",
+    "title": "Different Points of View",
+    "grade": "2nd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "example has no Q→A",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "RL.2.10",
+    "title": "Reading Stories All Year",
+    "grade": "2nd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "example has no Q→A",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "RI.2.3",
+    "title": "Connecting History and Science",
+    "grade": "2nd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "example has no Q→A",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "RI.2.4",
+    "title": "Word Meanings in Texts",
+    "grade": "2nd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "example has no Q→A",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "RI.2.6",
+    "title": "Why Did the Author Write This?",
+    "grade": "2nd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RI.2.10",
+    "title": "Reading Facts All Year",
+    "grade": "2nd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RF.2.3",
+    "title": "Phonics and Word Skills",
+    "grade": "2nd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RF.2.3a",
+    "title": "Long and Short Vowels",
+    "grade": "2nd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RF.2.3d",
+    "title": "Prefixes and Suffixes",
+    "grade": "2nd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RF.2.3e",
+    "title": "Tricky Spellings",
+    "grade": "2nd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RF.2.3f",
+    "title": "Sight Words Round Two",
+    "grade": "2nd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RF.2.4",
+    "title": "Reading with Flow",
+    "grade": "2nd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RF.2.4b",
+    "title": "Smooth Out-Loud Reading",
+    "grade": "2nd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RF.2.4c",
+    "title": "Self-Correcting While Reading",
+    "grade": "2nd Grade",
+    "clarity": 5,
+    "structure": 4,
+    "content": 3,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "L.2.4",
+    "title": "Word Meaning Detective",
+    "grade": "2nd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "L.2.4b",
+    "title": "Prefix Power",
+    "grade": "2nd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "L.2.4d",
+    "title": "Compound Word Power",
+    "grade": "2nd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "L.2.4e",
+    "title": "Using a Glossary",
+    "grade": "2nd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "L.2.5",
+    "title": "Word Connections",
+    "grade": "2nd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "L.2.5a",
+    "title": "Words in Real Life",
+    "grade": "2nd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "L.2.5b",
+    "title": "Shades of Meaning",
+    "grade": "2nd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RL.3.1",
+    "title": "Asking Smart Story Questions",
+    "grade": "3rd Grade",
+    "clarity": 5,
+    "structure": 4,
+    "content": 3,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "RL.3.2",
+    "title": "Folktales and Their Lessons",
+    "grade": "3rd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RL.3.5",
+    "title": "Parts of Stories and Poems",
+    "grade": "3rd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RL.3.6",
+    "title": "My View vs the Narrator's",
+    "grade": "3rd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RL.3.9",
+    "title": "Comparing Themes and Plots",
+    "grade": "3rd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RL.3.10",
+    "title": "Reading Stories All Year",
+    "grade": "3rd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RI.3.1",
+    "title": "Asking Smart Fact Questions",
+    "grade": "3rd Grade",
+    "clarity": 5,
+    "structure": 4,
+    "content": 3,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "only 2 teach beats"
+    ]
+  },
+  {
+    "std": "RI.3.3",
+    "title": "Connecting Events and Ideas",
+    "grade": "3rd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RI.3.5",
+    "title": "Using Text Features",
+    "grade": "3rd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RF.3.3a",
+    "title": "Common Prefixes and Suffixes",
+    "grade": "3rd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RF.3.3b",
+    "title": "Latin Suffixes",
+    "grade": "3rd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RF.3.4",
+    "title": "Reading with Flow",
+    "grade": "3rd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RF.3.4b",
+    "title": "Reading Prose and Poetry",
+    "grade": "3rd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "L.3.4d",
+    "title": "Using a Dictionary",
+    "grade": "3rd Grade",
+    "clarity": 4,
+    "structure": 3,
+    "content": 5,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "1 clarity flag(s)",
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "L.3.5a",
+    "title": "Real and Imaginary Meanings",
+    "grade": "3rd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "example has no Q→A"
+    ]
+  },
+  {
+    "std": "L.3.5b",
+    "title": "Words in Real Life",
+    "grade": "3rd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RL.4.1",
+    "title": "Finding Story Details",
+    "grade": "4th Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "example has no Q→A",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "RL.4.4",
+    "title": "Word Meanings in Stories",
+    "grade": "4th Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RL.4.6",
+    "title": "Different Storytelling Voices",
+    "grade": "4th Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RL.4.10",
+    "title": "Reading Big Stories",
+    "grade": "4th Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RI.4.3",
+    "title": "Explaining Procedures",
+    "grade": "4th Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "example has no Q→A",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "RI.4.8",
+    "title": "Author's Reasons and Evidence",
+    "grade": "4th Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RI.4.9",
+    "title": "Combining Two Texts",
+    "grade": "4th Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RF.4.3a",
+    "title": "Letter-Sound Combos",
+    "grade": "4th Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RF.4.4",
+    "title": "Smooth Reading Skills",
+    "grade": "4th Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "L.4.4",
+    "title": "Word Meaning Detective",
+    "grade": "4th Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "example has no Q→A",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "L.4.4c",
+    "title": "Reference Materials",
+    "grade": "4th Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "L.4.5",
+    "title": "Figurative Language",
+    "grade": "4th Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "example has no Q→A",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "L.4.5a",
+    "title": "Similes and Metaphors",
+    "grade": "4th Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "L.4.5c",
+    "title": "Word Strength Levels",
+    "grade": "4th Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "L.4.6",
+    "title": "Using Big Vocabulary",
+    "grade": "4th Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RF.1.3a",
+    "title": "Two-Letter Sounds",
+    "grade": "1st Grade",
+    "clarity": 4,
+    "structure": 3,
+    "content": 5,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "1 clarity flag(s)",
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RF.1.3d",
+    "title": "Counting Syllables",
+    "grade": "1st Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RF.1.3e",
+    "title": "Two-Syllable Words",
+    "grade": "1st Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "example has no Q→A",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "L.2.2",
+    "title": "Apostrophes and Commas",
+    "grade": "2nd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "L.2.3",
+    "title": "Choosing Words to Sound Right",
+    "grade": "2nd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "L.3.2",
+    "title": "Quotes and Commas",
+    "grade": "3rd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 4,
+    "overall": 4,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RL.K.3",
+    "title": "Characters, Settings, and Events",
+    "grade": "Kindergarten",
+    "clarity": 5,
+    "structure": 4,
+    "content": 4,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "missing example"
+    ]
+  },
+  {
+    "std": "RL.K.6",
+    "title": "Authors and Illustrators",
+    "grade": "Kindergarten",
+    "clarity": 5,
+    "structure": 4,
+    "content": 4,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "example has no Q→A"
+    ]
+  },
+  {
+    "std": "RL.K.7",
+    "title": "Pictures Tell the Story",
+    "grade": "Kindergarten",
+    "clarity": 5,
+    "structure": 4,
+    "content": 4,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "example has no Q→A"
+    ]
+  },
+  {
+    "std": "RL.K.9",
+    "title": "Comparing Characters",
+    "grade": "Kindergarten",
+    "clarity": 5,
+    "structure": 4,
+    "content": 4,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "example has no Q→A"
+    ]
+  },
+  {
+    "std": "RI.K.3",
+    "title": "Making Connections",
+    "grade": "Kindergarten",
+    "clarity": 4,
+    "structure": 5,
+    "content": 4,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "2 clarity flag(s)",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "RI.K.4",
+    "title": "New Words in Facts",
+    "grade": "Kindergarten",
+    "clarity": 5,
+    "structure": 4,
+    "content": 4,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "example has no Q→A"
+    ]
+  },
+  {
+    "std": "RI.K.8",
+    "title": "Reasons and Support",
+    "grade": "Kindergarten",
+    "clarity": 5,
+    "structure": 4,
+    "content": 4,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "example has no Q→A",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "RI.K.9",
+    "title": "Comparing Fact Books",
+    "grade": "Kindergarten",
+    "clarity": 5,
+    "structure": 5,
+    "content": 3,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "RF.K.1a",
+    "title": "Reading Left to Right",
+    "grade": "Kindergarten",
+    "clarity": 5,
+    "structure": 4,
+    "content": 4,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "example has no Q→A",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "RF.K.1c",
+    "title": "Spaces Between Words",
+    "grade": "Kindergarten",
+    "clarity": 5,
+    "structure": 4,
+    "content": 4,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "example has no Q→A",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "RF.K.2d",
+    "title": "Sounds in Words",
+    "grade": "Kindergarten",
+    "clarity": 5,
+    "structure": 4,
+    "content": 4,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "example has no Q→A"
+    ]
+  },
+  {
+    "std": "RF.K.2e",
+    "title": "Changing Sounds, Changing Words",
+    "grade": "Kindergarten",
+    "clarity": 5,
+    "structure": 4,
+    "content": 4,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "example has no Q→A"
+    ]
+  },
+  {
+    "std": "RF.K.3d",
+    "title": "Look-Alike Words",
+    "grade": "Kindergarten",
+    "clarity": 5,
+    "structure": 4,
+    "content": 4,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "example has no Q→A",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "K.L.2",
+    "title": "Capitals and Punctuation",
+    "grade": "Kindergarten",
+    "clarity": 4,
+    "structure": 4,
+    "content": 5,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "1 clarity flag(s)",
+      "example has no Q→A"
+    ]
+  },
+  {
+    "std": "RL.1.5",
+    "title": "Story Books vs Fact Books",
+    "grade": "1st Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 5,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RL.1.6",
+    "title": "Who's Telling the Story",
+    "grade": "1st Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 5,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RL.1.7",
+    "title": "Pictures and Stories Together",
+    "grade": "1st Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 5,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RL.1.9",
+    "title": "Comparing Story Adventures",
+    "grade": "1st Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 5,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RI.1.3",
+    "title": "Connecting Ideas in Facts",
+    "grade": "1st Grade",
+    "clarity": 5,
+    "structure": 4,
+    "content": 4,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "RI.1.4",
+    "title": "Figuring Out New Words",
+    "grade": "1st Grade",
+    "clarity": 5,
+    "structure": 4,
+    "content": 4,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "RI.1.5",
+    "title": "Parts of a Fact Book",
+    "grade": "1st Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 5,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RI.1.6",
+    "title": "Pictures vs Words",
+    "grade": "1st Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 5,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RI.1.8",
+    "title": "Reasons the Author Gives",
+    "grade": "1st Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 5,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "example has no Q→A"
+    ]
+  },
+  {
+    "std": "RI.1.9",
+    "title": "Comparing Two Fact Books",
+    "grade": "1st Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 5,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RF.1.2b",
+    "title": "Blending Sounds Into Words",
+    "grade": "1st Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 5,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "example has no Q→A"
+    ]
+  },
+  {
+    "std": "RF.1.2c",
+    "title": "First, Middle, and Last Sounds",
+    "grade": "1st Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 5,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "example has no Q→A"
+    ]
+  },
+  {
+    "std": "RF.1.2d",
+    "title": "Breaking Words Into Sounds",
+    "grade": "1st Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 5,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "example has no Q→A"
+    ]
+  },
+  {
+    "std": "RF.1.4b",
+    "title": "Reading Out Loud",
+    "grade": "1st Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 5,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "L.1.4",
+    "title": "Word Meaning Detective",
+    "grade": "1st Grade",
+    "clarity": 5,
+    "structure": 4,
+    "content": 4,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "L.1.4a",
+    "title": "Sentence Clues",
+    "grade": "1st Grade",
+    "clarity": 5,
+    "structure": 4,
+    "content": 4,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "L.1.4b",
+    "title": "Word Beginnings and Endings",
+    "grade": "1st Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 5,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "L.1.5",
+    "title": "How Words Connect",
+    "grade": "1st Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 5,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "L.1.5d",
+    "title": "Strong vs Mild Words",
+    "grade": "1st Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 5,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RL.2.1",
+    "title": "Story Detective Questions",
+    "grade": "2nd Grade",
+    "clarity": 5,
+    "structure": 4,
+    "content": 4,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "RL.2.2",
+    "title": "Tales and Their Lessons",
+    "grade": "2nd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 5,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "example has no Q→A"
+    ]
+  },
+  {
+    "std": "RL.2.7",
+    "title": "Pictures Tell More",
+    "grade": "2nd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 5,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RI.2.1",
+    "title": "Asking Smart Fact Questions",
+    "grade": "2nd Grade",
+    "clarity": 5,
+    "structure": 4,
+    "content": 4,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "RI.2.5",
+    "title": "Finding Information Fast",
+    "grade": "2nd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 5,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RI.2.7",
+    "title": "Pictures Help Explain",
+    "grade": "2nd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 5,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RI.2.8",
+    "title": "How Authors Back Up Their Points",
+    "grade": "2nd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 5,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "example has no Q→A"
+    ]
+  },
+  {
+    "std": "RF.3.3d",
+    "title": "Tricky Spelling Patterns",
+    "grade": "3rd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 5,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "L.3.5c",
+    "title": "Word Strength Levels",
+    "grade": "3rd Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 5,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RI.4.5",
+    "title": "How Texts Are Built",
+    "grade": "4th Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 5,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RI.4.10",
+    "title": "Reading Big Facts",
+    "grade": "4th Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 5,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RF.1.3b",
+    "title": "Sounding Out Short Words",
+    "grade": "1st Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 5,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "example has no Q→A"
+    ]
+  },
+  {
+    "std": "RF.1.3c",
+    "title": "The Magic E",
+    "grade": "1st Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 5,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RF.1.3f",
+    "title": "Word Endings",
+    "grade": "1st Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 5,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RF.1.3g",
+    "title": "Tricky Sight Words",
+    "grade": "1st Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 5,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RF.1.4a",
+    "title": "Reading with Purpose",
+    "grade": "1st Grade",
+    "clarity": 5,
+    "structure": 4,
+    "content": 4,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro",
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "L.1.1",
+    "title": "Grammar Power",
+    "grade": "1st Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 5,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "L.1.2",
+    "title": "Capitals and Periods",
+    "grade": "1st Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 5,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "L.4.1",
+    "title": "Pronouns and Grammar Rules",
+    "grade": "4th Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 5,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "L.4.2",
+    "title": "Punctuation Mastery",
+    "grade": "4th Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 5,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "L.4.3",
+    "title": "Word Choice for Style",
+    "grade": "4th Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 5,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RL.K.10",
+    "title": "Storytime All Year",
+    "grade": "Kindergarten",
+    "clarity": 5,
+    "structure": 3,
+    "content": 5,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RI.K.10",
+    "title": "Fact Books All Year",
+    "grade": "Kindergarten",
+    "clarity": 5,
+    "structure": 3,
+    "content": 5,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RL.1.10",
+    "title": "Storytime All Year",
+    "grade": "1st Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 5,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RI.1.10",
+    "title": "Fact Books All Year",
+    "grade": "1st Grade",
+    "clarity": 5,
+    "structure": 3,
+    "content": 5,
+    "overall": 4.3,
+    "needsContent": false,
+    "issues": [
+      "missing example",
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RF.K.2a",
+    "title": "Rhyming Words",
+    "grade": "Kindergarten",
+    "clarity": 5,
+    "structure": 4,
+    "content": 5,
+    "overall": 4.7,
+    "needsContent": false,
+    "issues": [
+      "example has no Q→A"
+    ]
+  },
+  {
+    "std": "RL.K.4",
+    "title": "Discovering New Words",
+    "grade": "Kindergarten",
+    "clarity": 5,
+    "structure": 4,
+    "content": 5,
+    "overall": 4.7,
+    "needsContent": false,
+    "issues": [
+      "example has no Q→A"
+    ]
+  },
+  {
+    "std": "RI.K.2",
+    "title": "Finding the Main Topic",
+    "grade": "Kindergarten",
+    "clarity": 5,
+    "structure": 5,
+    "content": 4,
+    "overall": 4.7,
+    "needsContent": false,
+    "issues": [
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "RF.K.1b",
+    "title": "Words Are Made of Letters",
+    "grade": "Kindergarten",
+    "clarity": 5,
+    "structure": 4,
+    "content": 5,
+    "overall": 4.7,
+    "needsContent": false,
+    "issues": [
+      "example has no Q→A"
+    ]
+  },
+  {
+    "std": "RF.K.1d",
+    "title": "Knowing Your Letters",
+    "grade": "Kindergarten",
+    "clarity": 5,
+    "structure": 4,
+    "content": 5,
+    "overall": 4.7,
+    "needsContent": false,
+    "issues": [
+      "example has no Q→A"
+    ]
+  },
+  {
+    "std": "RF.K.2b",
+    "title": "Clapping Syllables",
+    "grade": "Kindergarten",
+    "clarity": 5,
+    "structure": 4,
+    "content": 5,
+    "overall": 4.7,
+    "needsContent": false,
+    "issues": [
+      "example has no Q→A"
+    ]
+  },
+  {
+    "std": "RF.K.3a",
+    "title": "Letters and Their Sounds",
+    "grade": "Kindergarten",
+    "clarity": 5,
+    "structure": 4,
+    "content": 5,
+    "overall": 4.7,
+    "needsContent": false,
+    "issues": [
+      "example has no Q→A"
+    ]
+  },
+  {
+    "std": "RF.K.3b",
+    "title": "Vowel Sounds",
+    "grade": "Kindergarten",
+    "clarity": 5,
+    "structure": 4,
+    "content": 5,
+    "overall": 4.7,
+    "needsContent": false,
+    "issues": [
+      "example has no Q→A"
+    ]
+  },
+  {
+    "std": "RF.K.4",
+    "title": "Reading with Purpose",
+    "grade": "Kindergarten",
+    "clarity": 5,
+    "structure": 5,
+    "content": 4,
+    "overall": 4.7,
+    "needsContent": false,
+    "issues": [
+      "only 3 teach beats"
+    ]
+  },
+  {
+    "std": "K.L.6",
+    "title": "Using New Words",
+    "grade": "Kindergarten",
+    "clarity": 5,
+    "structure": 4,
+    "content": 5,
+    "overall": 4.7,
+    "needsContent": false,
+    "issues": [
+      "example has no Q→A"
+    ]
+  },
+  {
+    "std": "RL.1.2",
+    "title": "Retelling Stories",
+    "grade": "1st Grade",
+    "clarity": 5,
+    "structure": 4,
+    "content": 5,
+    "overall": 4.7,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RL.1.3",
+    "title": "Characters, Settings, and Events",
+    "grade": "1st Grade",
+    "clarity": 5,
+    "structure": 4,
+    "content": 5,
+    "overall": 4.7,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RL.1.4",
+    "title": "Words That Show Feelings",
+    "grade": "1st Grade",
+    "clarity": 5,
+    "structure": 4,
+    "content": 5,
+    "overall": 4.7,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RI.1.1",
+    "title": "Asking Fact Questions",
+    "grade": "1st Grade",
+    "clarity": 5,
+    "structure": 4,
+    "content": 5,
+    "overall": 4.7,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RI.1.2",
+    "title": "Main Topic and Key Details",
+    "grade": "1st Grade",
+    "clarity": 5,
+    "structure": 4,
+    "content": 5,
+    "overall": 4.7,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RF.1.4c",
+    "title": "Using Clues to Read",
+    "grade": "1st Grade",
+    "clarity": 5,
+    "structure": 4,
+    "content": 5,
+    "overall": 4.7,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "L.1.4c",
+    "title": "Root Word Magic",
+    "grade": "1st Grade",
+    "clarity": 5,
+    "structure": 4,
+    "content": 5,
+    "overall": 4.7,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RI.2.2",
+    "title": "Finding the Big Idea",
+    "grade": "2nd Grade",
+    "clarity": 5,
+    "structure": 4,
+    "content": 5,
+    "overall": 4.7,
+    "needsContent": false,
+    "issues": [
+      "missing practice-intro"
+    ]
+  },
+  {
+    "std": "RI.K.1",
+    "title": "Key Details in Facts",
+    "grade": "Kindergarten",
+    "clarity": 5,
+    "structure": 5,
+    "content": 5,
+    "overall": 5,
+    "needsContent": false,
+    "issues": []
+  },
+  {
+    "std": "RL.K.2",
+    "title": "Retelling Stories",
+    "grade": "Kindergarten",
+    "clarity": 5,
+    "structure": 5,
+    "content": 5,
+    "overall": 5,
+    "needsContent": false,
+    "issues": []
+  },
+  {
+    "std": "K.L.4",
+    "title": "Figuring Out Word Meanings",
+    "grade": "Kindergarten",
+    "clarity": 5,
+    "structure": 5,
+    "content": 5,
+    "overall": 5,
+    "needsContent": false,
+    "issues": []
+  }
+]

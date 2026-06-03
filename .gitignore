@@ -65,3 +65,4 @@ next-env.d.ts
 .demo-auth.json
 .demo-rec-*/
 scripts/demo-out/
+lesson-shots/

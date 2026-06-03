@@ -533,10 +533,14 @@ function overlapRatio(a: string[], b: string[]): number {
  * exempt; their Q→A parts are covered by checkQaTerseness.
  */
 export function checkTranscriptPill(
-  step: { ttsScript?: string; displayText?: string; displayParts?: Array<{ text?: string }> },
+  step: { ttsScript?: string; displayText?: string; displayStyle?: string; displayParts?: Array<{ text?: string }> },
   slideType: string,
 ): CheckResult {
   const na = { ok: true, findingType: "slide.text_is_transcript", message: "n/a", severity: "warn" as const };
+  // A story box (displayStyle "passage") is a deliberate canon element —
+  // the example story text (Max/Bella) sits in an italic card. It is
+  // SUPPOSED to be the full sentence, so it's never a transcript.
+  if (step?.displayStyle === "passage") return na;
   const ttsToks = toks(step?.ttsScript ?? "");
   if (ttsToks.length < 6) return na;
 
@@ -581,9 +585,14 @@ export function checkTranscriptPill(
  * not a concept list).
  */
 export function checkCrammedPill(
-  step: { displayText?: string; displayParts?: Array<{ text?: string }> },
+  step: { displayText?: string; displayStyle?: string; displayParts?: Array<{ text?: string }> },
   slideType: string,
 ): CheckResult {
+  // A story box is narrative prose — its commas are sentence commas
+  // ("Apples can be red, green, or yellow"), not a crammed concept list.
+  if (step?.displayStyle === "passage") {
+    return { ok: true, findingType: "slide.crammed_pill", message: "n/a", severity: "warn" };
+  }
   const chunks: string[] = [];
   if (typeof step?.displayText === "string" && slideType !== "example") chunks.push(step.displayText);
   for (const p of step?.displayParts ?? []) if (typeof p?.text === "string") chunks.push(p.text);
@@ -624,6 +633,49 @@ export function checkQaTerseness(step: { displayParts?: Array<{ text?: string }>
     return { ok: false, findingType: "slide.qa_not_terse", severity: "warn", message: `Answer "${String(dp[1]?.text).trim()}" is ${aw} words (max 5) — terse anchor like "Bella!".` };
   }
   return { ok: true, findingType: "slide.qa_not_terse", message: "ok", severity: "warn" };
+}
+
+/**
+ * Flags the UNAMBIGUOUS fragmentation artifact: a pill that starts with
+ * a leaked connector (", irregular verbs" / "and tricky pronouns") — a
+ * sentence list chopped mid-stream with the punctuation left in. Canon
+ * pills are always clean tokens, so this never fires on the golden set.
+ * (Subtler sentence-chops like "The other wordsin | the sentence" that
+ * have no leaked connector are left to the Claude judge pass — a
+ * deterministic "starts lowercase" rule false-positives canon's
+ * legitimate lowercase pills like "team | rain | boat".)
+ */
+export function checkFragmentedPill(step: {
+  displayStyle?: string;
+  displayParts?: Array<{ text?: string }>;
+}): CheckResult {
+  const na = { ok: true, findingType: "slide.fragmented_pill", message: "n/a", severity: "warn" as const };
+  if (step?.displayStyle === "passage") return na;
+  const dp = step?.displayParts;
+  if (!Array.isArray(dp) || dp.length < 2) return na;
+  const isQA =
+    dp.length === 2 && typeof dp[0]?.text === "string" && dp[0].text.trim().endsWith("?");
+  if (isQA) return na;
+  for (let i = 0; i < dp.length; i++) {
+    const t = String(dp[i]?.text ?? "").trim();
+    // Arrow/equation anchors ("rain → A", "un + happy") are canon — skip.
+    if (/[→=+]/.test(t)) continue;
+    // (a) leaked connector ", irregular verbs"; OR (b) a MULTI-WORD
+    // lowercase continuation ("the sentence", "give hints") — a sentence
+    // chopped across pills. Canon's lowercase pills are single words
+    // (team/rain/boat, "detectives."), so they never trip (b).
+    const leaked = /^(,|and\b|or\b)/i.test(t);
+    const midSentence = i > 0 && /^[a-z]/.test(t) && t.split(/\s+/).length >= 2;
+    if (leaked || midSentence) {
+      return {
+        ok: false,
+        findingType: "slide.fragmented_pill",
+        severity: "warn",
+        message: `Pills are a chopped-up sentence, not anchors: [${dp.map((q) => q?.text).join(" | ").slice(0, 60)}]. Rewrite as clean anchors.`,
+      };
+    }
+  }
+  return na;
 }
 
 export function runLessonSpecChecks(lesson: {
@@ -721,6 +773,9 @@ export function runLessonSpecChecks(lesson: {
 
       const r11 = checkQaTerseness(step);
       if (!r11.ok) out.push({ ...r11, targetSubId: subId });
+
+      const r12 = checkFragmentedPill(step);
+      if (!r12.ok) out.push({ ...r12, targetSubId: subId });
     }
   }
   return out;
